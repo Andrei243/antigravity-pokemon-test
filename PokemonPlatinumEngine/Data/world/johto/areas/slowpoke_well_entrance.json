@@ -1,0 +1,29 @@
+{
+  "key": "slowpoke_well_entrance",
+  "index": 114,
+  "name": "Slowpoke Well",
+  "matrix": 45,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 17, "z": 5, "to": "azalea", "toWarp": 7 },
+    { "x": 11, "z": 6, "to": "slowpoke_well_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d26r0101_gantetsu", "looks": "gantetsu", "movement": "15", "x": 17, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1AA", "script": "D26R0101_000+1" },
+    { "id": "d26r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 16, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D26R0101_001+1" }
+  ],
+  "signs": [
+    { "x": 17, "z": 8, "type": 2, "script": "std_hiddenitem_d26r0101_great_ball", "item": "Great Ball", "flag": "FLAG_HIDDEN_ITEM_D26R0101_GREAT_BALL" }
+  ],
+  "triggers": []
+}

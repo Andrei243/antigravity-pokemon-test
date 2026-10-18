@@ -1,0 +1,48 @@
+# The Goldenrod Department Store's lift (plan 20 · J7). docs/scripts.md describes the language; the lines are our own,
+# on HeartGold's beats (scr_seq_T25R1007).
+#
+# HeartGold's car remembers the floor it last stopped at and its door leads back there. Here, as the Celadon store's
+# lift in Kanto (plan 19 · K5, part b), the car's door leads to the ground floor, and the attendant rides the car and
+# lets the player out before the lift's door of the floor chosen: the ride is the original's set piece
+# (`anim elevator`), up or down from the floor it last stopped at (VAR_GOLDENROD_STORE_LIFT_FLOOR, a variable of
+# ours, the floor's number from 1 to 6; nought, never ridden, is the ground floor). The basement is shut.
+
+
+script Attendant
+  face t25r1007_gswoman6 player
+  speaker "Attendant"
+  if var VAR_GOLDENROD_STORE_LIFT_FLOOR == 0 setvar VAR_GOLDENROD_STORE_LIFT_FLOOR 1
+  choose "Welcome. Which floor would you like?" "6F" "5F" "4F" "3F" "1F OR 2F" "Stay here"
+  if result == 5 end
+  setvar VAR_TEMP_1 6
+  if result == 1 setvar VAR_TEMP_1 5
+  if result == 2 setvar VAR_TEMP_1 4
+  if result == 3 setvar VAR_TEMP_1 3
+  if result != 4 goto Ride
+  choose "The ground floor, or the second?" "1F" "2F" "Stay here"
+  if result == 2 end
+  setvar VAR_TEMP_1 1
+  if result == 1 setvar VAR_TEMP_1 2
+label Ride
+  if var VAR_TEMP_1 == VAR_GOLDENROD_STORE_LIFT_FLOOR goto Out
+  if var VAR_TEMP_1 < VAR_GOLDENROD_STORE_LIFT_FLOOR goto Down
+  say "Going up!"
+  face t25r1007_gswoman6 down
+  anim elevator up
+  goto Arrived
+label Down
+  say "Going down!"
+  face t25r1007_gswoman6 down
+  anim elevator down
+label Arrived
+  setvar VAR_GOLDENROD_STORE_LIFT_FLOOR VAR_TEMP_1
+label Out
+  face t25r1007_gswoman6 player
+  say "Here we are. Please come again!"
+  if var VAR_GOLDENROD_STORE_LIFT_FLOOR == 6 warp "Goldenrod_DeptStore_6F" 19 3 down
+  if var VAR_GOLDENROD_STORE_LIFT_FLOOR == 5 warp "Goldenrod_DeptStore_5F" 19 3 down
+  if var VAR_GOLDENROD_STORE_LIFT_FLOOR == 4 warp "Goldenrod_DeptStore_4F" 19 3 down
+  if var VAR_GOLDENROD_STORE_LIFT_FLOOR == 3 warp "Goldenrod_DeptStore_3F" 19 3 down
+  if var VAR_GOLDENROD_STORE_LIFT_FLOOR == 2 warp "Goldenrod_DeptStore_2F" 19 3 down
+  if var VAR_GOLDENROD_STORE_LIFT_FLOOR == 1 warp "Goldenrod_DeptStore_1F" 19 3 down
+  end

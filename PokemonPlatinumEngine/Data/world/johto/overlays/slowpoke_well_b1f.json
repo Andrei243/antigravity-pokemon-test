@@ -1,0 +1,56 @@
+{
+  // The Slowpoke Well's lower floor (plan 20 · J7): HeartGold's cave, our words. Team Rocket's three grunts and their
+  // executive, Proton, with two of the town's Slowpoke, until Proton is beaten (FLAG_UNK_1A9, FLAG_UNK_1D5); the
+  // trainers battle by their own records (Johto's trainers.json). Kurt comes down once it is over (a flag of ours:
+  // HeartGold moves its own object, which stands out of the way in the meantime)
+  "area": "slowpoke_well_b1f",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "d26r0102_rkanbum3": {
+      "name": "Proton",
+      "script": "Proton",
+      "still": true
+    },
+    "d26r0102_rocketm": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Slowpoke Tails fetch top money, and these dopey things grow them back! It's a perfect racket!",
+        "dialogueAfter": "Grunt: Aw, come on! We were just getting started!"
+      }
+    },
+    "d26r0102_rocketm_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: A kid? Down here? You picked the wrong well to fall into!",
+        "dialogueAfter": "Grunt: Ugh. The boss is going to hear about this."
+      }
+    },
+    "d26r0102_rocketw": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Don't look at me like that. Slowpoke don't even notice when their tails are gone!",
+        "dialogueAfter": "Grunt: Well, I noticed that. You're tougher than you look."
+      }
+    },
+    "d26r0102_yadon": {
+      "name": "Slowpoke",
+      "npcType": "Pokemon",
+      "species": "Slowpoke",
+      "still": true,
+      "dialog": [ "A Slowpoke with its tail cut short. It doesn't seem to have noticed..." ]
+    },
+    "d26r0102_yadon_2": {
+      "name": "Slowpoke",
+      "npcType": "Pokemon",
+      "species": "Slowpoke",
+      "still": true,
+      "dialog": [ "Slowpoke is staring at the water. Its tail is gone, but it looks quite content." ]
+    },
+    "d26r0102_gantetsu": {
+      "name": "Kurt",
+      "still": true,
+      "hiddenBy": "FLAG_HIDE_SLOWPOKE_WELL_B1F_KURT",
+      "dialog": [ "Well done!" ]
+    }
+  }
+}

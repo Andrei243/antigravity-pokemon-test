@@ -104,6 +104,24 @@
         ]
       }
     },
+    "r34_policeman_2": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Afternoon! I patrol this road by day. It's after dark you want to watch yourself out here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "r34_campboy_2": {
       "name": {
         "en": [

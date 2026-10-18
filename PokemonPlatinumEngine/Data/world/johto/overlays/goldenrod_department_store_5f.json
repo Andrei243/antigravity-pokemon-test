@@ -1,11 +1,8 @@
 {
-  // The Department Store's fifth floor (plan 20 · J5, part b). Its lift (warp 2) stays shut until it can carry anyone. The woman who judges a Pokémon's fondness on
+  // The Department Store's fifth floor (plan 20 · J5, part b). Its lift (warp 2) rides to every floor (plan 20 · J7). The woman who judges a Pokémon's fondness on
   // Sundays is a later chapter's
   "area": "goldenrod_department_store_5f",
   "bgmTrack": "johto/goldenrod",
-  "locked": [
-    2
-  ],
   "people": {
     "t25r1005_shopm1_2": {
       "name": "Clerk",

@@ -1,0 +1,34 @@
+# Ecruteak City (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T27_005).
+#
+# Once the Fog Badge is won (VAR_UNK_4079 3, ecruteak_gym.txt), the red-haired boy storms out of the Dance Theater
+# into the player at its door (the area's trigger 0): he has been to see the Kimono Girls about the legend of the
+# towers and been laughed at. After him the five dancers take the stage (FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS cleared;
+# FLAG_UNK_241 takes the audience, FLAG_UNK_23B the girl Team Rocket bothered, now one of the five), VAR_UNK_4079 4.
+
+
+script RivalBumps
+  scene "The red-haired boy in Ecruteak"
+  show t27_gsrivel
+  sound "bump"
+  walk player back down 1
+  face player up
+  speaker "{rival}"
+  say "Watch where you're going! ...Oh. It's you."
+  music "johto/rival"
+  say "I asked those dancers about the Pokémon of the towers. They just smiled and said it chooses who it likes."
+  say "A legendary Pokémon that picks its trainer? Nonsense. Strength is the only thing any Pokémon respects."
+  say "I'll find it and make it mine. And you'd better not get in my way, {player}."
+  walk player left 1
+  face player right
+  walk t27_gsrivel down 4 fast
+  hide t27_gsrivel
+  setflag FLAG_HIDE_ECRUTEAK_RIVAL
+  clearflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
+  setflag FLAG_UNK_241
+  setflag FLAG_UNK_23B
+  setvar VAR_UNK_4079 4
+  setvar VAR_UNK_410C 4
+  music area
+  endscene
+  end

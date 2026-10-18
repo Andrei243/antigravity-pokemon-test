@@ -19,6 +19,82 @@
           ""
         ]
       }
+    },
+    "d36r0101_gsboy1": {
+      "name": {
+        "en": [
+          "Apprentice"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d36r0101_gsfighter": {
+      "name": {
+        "en": [
+          "Charcoal Maker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d36r0101_tsure_poke_static_farfetchd": {
+      "name": {
+        "en": [
+          "Farfetch'd"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d36r0101_tsure_poke_static_farfetchd_2": {
+      "name": {
+        "en": [
+          "Farfetch'd"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d36r0101_tsure_poke_static_farfetchd_3": {
+      "name": {
+        "en": [
+          "Farfetch'd"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Farfetch'd is clutching its leek and staying close to the boy."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d36r0101_tsure_poke_static_farfetchd_4": {
+      "name": {
+        "en": [
+          "Farfetch'd"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Farfetch'd is clutching its leek and staying close to the boy."
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

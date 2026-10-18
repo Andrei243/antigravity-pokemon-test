@@ -1,7 +1,21 @@
 {
-  // The Burned Tower's basement (plan 20 · J5, part b): where the floor gave way in the fire. The three beasts who sleep
-  // here and their waking are the next chapter's (plan 20 · J7); the boulders and the cracked rocks are the field's own
+  // The Burned Tower's basement (plan 20 · J5, part b): HeartGold's cave, its boulders and cracked rocks the field's own
+  // obstacles. Plan 20 · J7 (scripts/burned_tower_b1f.txt): the three Pokémon sleep here until the player comes near
+  // (trigger 0); they wake and flee, Raikou and Entei to roam Johto, and Eusine comes down after them. Its charred look
+  // is still the stand-in a later session paints
   "area": "burned_tower_b1f",
   "bgmTrack": "johto/burned_tower",
-  "people": {}
+  "triggers": [
+    { "trigger": 0, "script": "Awaken" }
+  ],
+  "people": {
+    "d18r0102_tsure_poke_static_raikou": { "name": "Raikou", "npcType": "Pokemon", "species": "Raikou", "still": true, "dialog": [ "..." ] },
+    "d18r0102_tsure_poke_static_entei": { "name": "Entei", "npcType": "Pokemon", "species": "Entei", "still": true, "dialog": [ "..." ] },
+    "d18r0102_tsure_poke_static_suicune": { "name": "Suicune", "npcType": "Pokemon", "species": "Suicune", "still": true, "dialog": [ "..." ] },
+    "d18r0102_minaki": {
+      "name": "Eusine",
+      "still": true,
+      "dialog": [ "Suicune..." ]
+    }
+  }
 }

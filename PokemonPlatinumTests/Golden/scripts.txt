@@ -5902,6 +5902,194 @@ way 0
 way 1, from answer 1
   Receptionist> I see. Do come back whenever you fancy a stroll.
   ? Welcome to Amity Square! Would you like to take Turtwig out for a stroll? = No
+=== azalea.Charcoal
+from Man at 407,464 of Johto
+way -
+  Man> Smell that? The charcoal kiln is going. Azalea's charcoal is the finest in Johto, so they say.
+  Man> Though with Team Rocket hanging about the well, nobody's in the mood for buying.
+=== azalea.Guard
+from Grunt at 434,461 of Johto
+way -
+  Grunt> Slowpoke Well? Never heard of it. Now beat it before I lose my temper.
+=== azalea.OldMan
+from Old Man at 419,460 of Johto
+way -
+  Old Man> The Slowpoke used to doze in every street of this town. Now there's not one to be seen.
+  Old Man> Our town has long said a Slowpoke's yawn brings the rain. It hasn't rained properly in days.
+=== azalea.Rival
+from the trigger at 395,462 of Johto
+way 0
+  Barry> ...So it was you who chased Team Rocket out of the well. Don't think that makes you strong.
+  Barry> Team Rocket ganging up on a few Slowpoke. Pathetic. I'll show you what real strength is!
+  Barry> Tch. My Pokémon just aren't strong enough yet. I'll get stronger ones, whatever it takes.
+  Barry> Don't get in my way again.
+  * scene azalea.The red-haired boy in Azalea
+  * music johto/rival
+  * battle johto_rival_silver Won
+  * music area
+  * endscene
+  = VAR_UNK_4075 0 -> 2
+  + beaten johto_rival_silver
+  + seen azalea.The red-haired boy in Azalea
+way 1, from answer 1
+  * battle johto_rival_silver Lost
+  * scene over, unseen
+=== azalea.Shove
+from the trigger at 434,466 of Johto
+way -
+  Grunt> I said get lost! Nobody goes near that well. Team Rocket's orders!
+  Man> Ow! All right, all right, I'm going!
+  Grunt> What are you staring at? This well's closed for business. Move along!
+  * scene azalea.The grunt by the well
+  * endscene
+  + FLAG_AZALEA_HARASSED_CIVILIAN
+  + FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
+  = VAR_UNK_4080 0 -> 1
+  + seen azalea.The grunt by the well
+=== azalea.Slowpoke
+from Slowpoke at 397,474 of Johto
+from Slowpoke at 411,472 of Johto
+from Slowpoke at 414,461 of Johto
+from Slowpoke at 431,461 of Johto
+way -
+  > The Slowpoke gave a long, slow yawn...
+  * cry Slowpoke
+=== azalea_charcoal_kiln.Apprentice
+from Apprentice at 5,5 of Azalea_CharcoalKiln
+way -
+  Apprentice> I'll find wood. Just watch me!
+=== azalea_charcoal_kiln.Master
+from Charcoal Maker at 2,6 of Azalea_CharcoalKiln
+way -
+  Charcoal Maker> With Team Rocket in town and the Slowpoke gone, nobody's got the heart for work. Even the kiln's gone cold.
+=== azalea_gym.Bugsy
+from Bugsy at 9,5 of Azalea_Gym
+way 0
+  Bugsy> I'm Bugsy! I never lose when it comes to Bug Pokémon. I've studied every one of them, inside and out.
+  Bugsy> Let me show you what I've learned!
+  Bugsy> Whoa, amazing! You really know your stuff. Okay, you win. This is yours: the Hive Badge!
+  > Lucas received the Hive Badge from Bugsy!
+  Bugsy> With the Hive Badge, Pokémon up to level thirty will obey you, and you can use Cut outside of battle.
+  Bugsy> Here, take this as well. It's a move my Bug Pokémon love.
+  > Lucas received the TM89!
+  > TM89 holds the move U-turn.
+  > Lucas put it away in the TMs & HMs pocket.
+  Bugsy> TM89 is U-turn. Your Pokémon hits the foe, then swaps out for another. Hit and run, just like a bug!
+  * scene azalea_gym.Bugsy
+  * battle johto_leader_bugsy_bugsy Won
+  * fanfare FanfareBadge
+  * defeat johto_bug_catcher_al
+  * defeat johto_bug_catcher_benny
+  * defeat johto_bug_catcher_josh
+  * defeat johto_twins_amy_and_mimi
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_GOT_TM89_FROM_BUGSY
+  + beaten johto_bug_catcher_al
+  + beaten johto_bug_catcher_benny
+  + beaten johto_bug_catcher_josh
+  + beaten johto_leader_bugsy_bugsy
+  + beaten johto_twins_amy_and_mimi
+  = badges Johto 0 -> 10
+  + seen azalea_gym.Bugsy
+way 1, from answer 1
+  * battle johto_leader_bugsy_bugsy Lost
+  * scene over, unseen
+=== azalea_gym.Cart0
+from the trigger at 3,32 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart1
+from the trigger at 9,32 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart10
+from the trigger at 9,9 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart11
+from the trigger at 15,9 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart2
+from the trigger at 15,32 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart3
+from the trigger at 3,24 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart4
+from the trigger at 9,24 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart5
+from the trigger at 15,24 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart6
+from the trigger at 3,17 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart7
+from the trigger at 9,17 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart8
+from the trigger at 15,17 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym.Cart9
+from the trigger at 3,9 of Azalea_Gym
+way -
+  * sound lift
+  * fade out
+  * fade in
+=== azalea_gym_entrance.GymGuy
+from Gym Guide at 9,9 of Azalea_GymEntrance
+way -
+  Gym Guide> Bugsy's off looking into the Slowpoke Well. Something's wrong in town, and he can't sit still till it's sorted.
+=== azalea_kurt_house.Granddaughter
+from Girl at 6,5 of Azalea_KurtsHouse
+way -
+  Girl> Grandpa's been grumpy all morning. He keeps looking out of the window at the well.
+=== azalea_kurt_house.Kurt
+from Kurt at 4,4 of Azalea_KurtsHouse
+way -
+  Kurt> Hm? A trainer? I make Poké Balls, the old way, from Apricorns. But I've no heart for it today.
+  Kurt> Team Rocket are down in the Slowpoke Well, cutting off the Slowpoke's tails to sell! I won't stand for it.
+  Kurt> I'll give those thugs a piece of my mind myself. Stand aside!
+  * scene azalea_kurt_house.Kurt runs to the well
+  * endscene
+  + FLAG_AZALEA_HARASSED_CIVILIAN
+  + FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
+  + FLAG_UNK_077
+  + FLAG_UNK_19E
+  + FLAG_UNK_19F
+  = VAR_UNK_4080 0 -> 1
+  + seen azalea_kurt_house.Kurt runs to the well
 === battle_frontier.EnterBattleArcade
 from the trigger at 61,62 of BattleFrontier
 way -
@@ -6095,6 +6283,71 @@ from the tile read at 47,48 of BattleFrontier
 from the tile read at 47,49 of BattleFrontier
 way -
   > A statue of a trainer holding a Poké Ball high, with a Pokémon just caught inside it.
+=== burned_tower_1f.Eusine
+from the trigger at 19,23 of BurnedTower_1F
+way -
+  Eusine> Ah, a fellow seeker! My name is Eusine. I've followed the legendary Pokémon Suicune all the way here.
+  Eusine> They say three Pokémon sleep beneath this tower. Suicune may be among them. Morty agrees with me, you know.
+  * scene burned_tower_1f.Eusine in the Burned Tower
+  * endscene
+  = VAR_UNK_40A2 0 -> 1
+  + seen burned_tower_1f.Eusine in the Burned Tower
+=== burned_tower_1f.EusineTalk
+from Eusine at 23,23 of BurnedTower_1F
+way -
+  Eusine> Suicune is the one I want to see. It's said to purify water wherever it runs. Imagine it!
+=== burned_tower_1f.Morty
+from Morty at 23,26 of BurnedTower_1F
+way -
+  Morty> I'm Morty, Ecruteak's Gym Leader. Legend says a rainbow Pokémon will appear before a trainer it chooses.
+  Morty> I've trained here all my life hoping to be that trainer. Something stirs in this tower today. I can feel it.
+=== burned_tower_1f.Rival
+from the trigger at 22,19 of BurnedTower_1F
+way 0
+  Barry> ...Oh, it's you. I came to see the legendary Pokémon everyone talks about. There's nothing here but ashes.
+  Barry> Since you're here, you can make yourself useful. Let's battle!
+  Barry> Hmph. I'm wasting my time. If there were a legendary Pokémon here, I'd have found it already.
+  * scene burned_tower_1f.The red-haired boy in the Burned Tower
+  * music johto/rival
+  * battle johto_rival_silver_4 Won
+  * music area
+  * endscene
+  + FLAG_HIDE_BURNED_TOWER_1F_RIVAL
+  = VAR_UNK_40A6 0 -> 1
+  + beaten johto_rival_silver_4
+  + seen burned_tower_1f.The red-haired boy in the Burned Tower
+way 1, from answer 1
+  * battle johto_rival_silver_4 Lost
+  * scene over, unseen
+=== burned_tower_b1f.Awaken
+from the trigger at 20,16 of BurnedTower_B1F
+way -
+  > The three Pokémon have woken up!
+  Eusine> Was that... Suicune? It was! It ran straight past me! And the other two with it!
+  Eusine> I'm Eusine. I've spent years tracking Suicune. Now that it's awake, it'll roam all over Johto.
+  Eusine> Lucas, was it? I'll catch up with Suicune one day. Until then, farewell!
+  * scene burned_tower_b1f.The three beasts wake
+  * cry Raikou
+  * cry Entei
+  * cry Suicune
+  * emote player Exclaim
+  * flicker Raikou 4
+  * flicker Entei 4
+  * cry Suicune
+  * flicker Suicune 4
+  * sound stairs
+  * sound stairs
+  * endscene
+  + FLAG_HIDE_BURNED_TOWER_1F_EUSINE
+  + FLAG_HIDE_BURNED_TOWER_1F_MORTY
+  + FLAG_HIDE_BURNED_TOWER_B1F_ENTEI
+  + FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
+  + FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU
+  + FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE
+  + FLAG_UNK_247
+  = VAR_UNK_4079 0 -> 2
+  = VAR_UNK_40A1 0 -> 1
+  + seen burned_tower_b1f.The three beasts wake
 === canalave_city.AceTrainer
 from Trainer at 33,730 of Sinnoh
 way -
@@ -7820,20 +8073,65 @@ way -
   * fanfare FanfareItem
   * journal ItemWasObtained Potion
   + FLAG_OBTAINED_TEST_POTION
+=== common.JohtoChapterTwo
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_AZALEA_GYM_BUGSY
+  + FLAG_HIDE_AZALEA_RIVAL
+  + FLAG_HIDE_AZALEA_SLOWPOKES
+  + FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
+  + FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
+  + FLAG_HIDE_ECRUTEAK_GYM_MORTY
+  + FLAG_HIDE_ECRUTEAK_OLD_MAN
+  + FLAG_HIDE_ECRUTEAK_RIVAL
+  + FLAG_HIDE_FARFETCHD_1_FOUND
+  + FLAG_HIDE_FARFETCHD_1_LOST
+  + FLAG_HIDE_FARFETCHD_2_FOUND
+  + FLAG_HIDE_FARFETCHD_2_LOST
+  + FLAG_HIDE_GOLDENROD_BILL
+  + FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL
+  + FLAG_HIDE_ILEX_APPRENTICE
+  + FLAG_HIDE_ILEX_CUT_MASTER
+  + FLAG_HIDE_SLOWPOKE_WELL_B1F_KURT
+  + FLAG_UNK_19F
+  + FLAG_UNK_1C4
+  + FLAG_UNK_1CE
+  + FLAG_UNK_1D2
 === common.JohtoNewGame
 from a trainer with lines of their own
 way -
+  + FLAG_HIDE_AZALEA_GYM_BUGSY
+  + FLAG_HIDE_AZALEA_RIVAL
+  + FLAG_HIDE_AZALEA_SLOWPOKES
+  + FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
   + FLAG_HIDE_CHERRYGROVE_RIVAL
+  + FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
+  + FLAG_HIDE_ECRUTEAK_GYM_MORTY
+  + FLAG_HIDE_ECRUTEAK_OLD_MAN
+  + FLAG_HIDE_ECRUTEAK_RIVAL
   + FLAG_HIDE_ELMS_LAB_FRIEND
   + FLAG_HIDE_ELMS_LAB_OFFICER
+  + FLAG_HIDE_FARFETCHD_1_FOUND
+  + FLAG_HIDE_FARFETCHD_1_LOST
+  + FLAG_HIDE_FARFETCHD_2_FOUND
+  + FLAG_HIDE_FARFETCHD_2_LOST
+  + FLAG_HIDE_GOLDENROD_BILL
+  + FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL
+  + FLAG_HIDE_ILEX_APPRENTICE
+  + FLAG_HIDE_ILEX_CUT_MASTER
   + FLAG_HIDE_NEW_BARK_FRIEND
   + FLAG_HIDE_NEW_BARK_MARILL
   + FLAG_HIDE_NEW_BARK_MOM
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
+  + FLAG_HIDE_SLOWPOKE_WELL_B1F_KURT
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
+  + FLAG_UNK_19F
+  + FLAG_UNK_1C4
+  + FLAG_UNK_1CE
+  + FLAG_UNK_1D2
 === common.JohtoOpeningDone
 from a trainer with lines of their own
 way -
@@ -8604,6 +8902,91 @@ way 0
   * warp TurnbackCaveGiratinaRoom 11 15
 way 1, from answer 1
   ? The air is torn here, and Turnback Cave shows through the tear. Leap into the portal? = No
+=== ecruteak.RivalBumps
+from the trigger at 397,174 of Johto
+way -
+  Barry> Watch where you're going! ...Oh. It's you.
+  Barry> I asked those dancers about the Pokémon of the towers. They just smiled and said it chooses who it likes.
+  Barry> A legendary Pokémon that picks its trainer? Nonsense. Strength is the only thing any Pokémon respects.
+  Barry> I'll find it and make it mine. And you'd better not get in my way, Lucas.
+  * scene ecruteak.The red-haired boy in Ecruteak
+  * sound bump
+  * walk player back down
+  * music johto/rival
+  * music area
+  * endscene
+  + FLAG_HIDE_ECRUTEAK_RIVAL
+  + FLAG_UNK_23B
+  + FLAG_UNK_241
+  = VAR_UNK_4079 0 -> 4
+  = VAR_UNK_410C 0 -> 4
+  + seen ecruteak.The red-haired boy in Ecruteak
+=== ecruteak_dance_theater.Bothered
+from Kimono Girl at 10,6 of Ecruteak_DanceTheater
+way -
+  Kimono Girl> Thank you for saving me. My Eevee and I would have been so frightened without you.
+=== ecruteak_dance_theater.Gentleman
+from Gentleman at 8,12 of Ecruteak_DanceTheater
+way -
+  Gentleman> I never miss a performance. My Psyduck enjoys it as much as I do.
+=== ecruteak_dance_theater.Grunt
+from Grunt at 7,6 of Ecruteak_DanceTheater
+way -
+=== ecruteak_dance_theater.Surf
+from the trigger at 11,8 of Ecruteak_DanceTheater
+from the trigger at 3,8 of Ecruteak_DanceTheater
+way -
+=== ecruteak_gym.Fall
+from the trigger at 11,12 of Ecruteak_Gym
+from the trigger at 12,19 of Ecruteak_Gym
+from the trigger at 12,21 of Ecruteak_Gym
+from the trigger at 12,24 of Ecruteak_Gym
+from the trigger at 12,31 of Ecruteak_Gym
+from the trigger at 13,38 of Ecruteak_Gym
+from the trigger at 14,20 of Ecruteak_Gym
+from the trigger at 15,30 of Ecruteak_Gym
+from the trigger at 17,40 of Ecruteak_Gym
+from the trigger at 20,32 of Ecruteak_Gym
+from the trigger at 21,29 of Ecruteak_Gym
+from the trigger at 8,29 of Ecruteak_Gym
+from the trigger at 9,12 of Ecruteak_Gym
+from the trigger at 9,21 of Ecruteak_Gym
+from the trigger at 9,30 of Ecruteak_Gym
+way -
+  > Whoa! The floor gave way!
+  * sound ledge
+  * fade out
+  * warp Ecruteak_Gym 16 49
+=== ecruteak_gym.GymGuy
+from Gym Guide at 18,51 of Ecruteak_Gym
+way -
+  Gym Guide> Yo, challenger! Morty's Ghost types can't be touched by Normal or Fighting moves. Dark moves work wonders!
+  Gym Guide> And watch your feet. This floor is full of holes you can't see. Stick to the path!
+=== ecruteak_gym.Morty
+from Morty at 10,8 of Ecruteak_Gym
+way 0
+  Morty> Good of you to come. I've trained here all my life to see what others cannot.
+  Morty> They say a rainbow Pokémon will appear before the trainer it chooses. I'd like to know if that's you. Let's see!
+  Morty> I'm not good enough yet... All right. You've earned this. The Fog Badge is yours.
+  > Lucas received the Fog Badge from Morty!
+  Morty> With the Fog Badge, Pokémon up to level fifty will obey you, and you can use Surf outside of battle.
+  Morty> Take this too. It's a move that suits a Ghost Pokémon well.
+  > Lucas received the TM30!
+  > TM30 holds the move Shadow Ball.
+  > Lucas put it away in the TMs & HMs pocket.
+  Morty> TM30 is Shadow Ball. It may lower the foe's Special Defense. A fine move for any trainer who walks among ghosts.
+  * scene ecruteak_gym.Morty
+  * battle johto_leader_morty_morty Won
+  * fanfare FanfareBadge
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_GOT_TM30_FROM_MORTY
+  + beaten johto_leader_morty_morty
+  = badges Johto 0 -> 1000
+  + seen ecruteak_gym.Morty
+way 1, from answer 1
+  * battle johto_leader_morty_morty Lost
+  * scene over, unseen
 === eterna_city.BlockSouth
 from the trigger at 303,565 of Sinnoh
 way -
@@ -9021,6 +9404,177 @@ way -
   * flicker Cresselia 6
   + FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
   + FLAG_MET_CRESSELIA
+=== goldenrod_bike_shop.Owner
+from Owner at 8,6 of Goldenrod_BikeShop
+way 0.0
+  Owner> Welcome to my Bike Shop! I only just moved here from Kanto, and not a soul has bought a bike yet.
+  Owner> Say, how would you like a Bicycle? Ride it around Johto and show everyone how great it is!
+  Owner> Really? You'll help me out? In that case, it's yours. No charge!
+  > Lucas received the Bicycle!
+  > Lucas put it away in the Key Items pocket.
+  Owner> Ride it everywhere you go! When people ask where you got it, tell them about my shop.
+  ? Say, how would you like a Bicycle? Ride it around Johto and show everyone how great it is! = Yes
+  ? Really? You'll help me out? In that case, it's yours. No charge! = Yes
+  * fanfare FanfareKeyItem
+  + FLAG_UNK_089
+way 0.1, from answer 2
+  Owner> Oh... Well, if you change your mind, I'll be right here.
+  ? Really? You'll help me out? In that case, it's yours. No charge! = No
+way 1, from answer 1
+  Owner> Oh... Well, if you change your mind, I'll be right here.
+  ? Say, how would you like a Bicycle? Ride it around Johto and show everyone how great it is! = No
+=== goldenrod_bills_house.Bill
+from Bill at 8,5 of Goldenrod_BillsHouse
+way 0
+  Bill> Oh, hi, Lucas! Thanks for coming. Remember the Eevee I told you about? It's right here.
+  Bill> It's a rare one, and it can evolve in all sorts of ways. Would you like to raise it?
+  > Lucas received Eevee!
+  Bill> Eevee's a funny one. Its genes are unstable, so it can turn into lots of different Pokémon. Take good care of it!
+  ? It's a rare one, and it can evolve in all sorts of ways. Would you like to raise it? = Yes
+  * fanfare FanfarePokemon
+  + FLAG_GOT_EEVEE_FROM_BILL
+way 1, from answer 1
+  Bill> No? That's a shame. If you change your mind, come back. Eevee will be here.
+  ? It's a rare one, and it can evolve in all sorts of ways. Would you like to raise it? = No
+=== goldenrod_bills_house.Mother
+from Woman at 5,5 of Goldenrod_BillsHouse
+way -
+  Woman> My son Bill made the PC storage system you use. He's off in Ecruteak City just now.
+  Woman> He calls whenever he wants feeding. Typical!
+=== goldenrod_department_store_2f.BallClerk
+from Clerk at 23,5 of Goldenrod_DeptStore_2F
+way -
+  Clerk> Welcome! How can I help you?
+  Clerk> Thank you! Do come again.
+  * open Shop goldenrod_2f_balls
+=== goldenrod_department_store_2f.MedicineClerk
+from Clerk at 23,7 of Goldenrod_DeptStore_2F
+way -
+  Clerk> Welcome! How can I help you?
+  Clerk> Thank you! Do come again.
+  * open Shop goldenrod_2f_medicine
+=== goldenrod_department_store_3f.Clerk
+from Clerk at 23,7 of Goldenrod_DeptStore_3F
+way -
+  Clerk> Welcome! How can I help you?
+  Clerk> Thank you! Do come again.
+  * open Shop goldenrod_3f
+=== goldenrod_department_store_4f.Clerk
+from Clerk at 23,7 of Goldenrod_DeptStore_4F
+way -
+  Clerk> Welcome! How can I help you?
+  Clerk> Thank you! Do come again.
+  * open Shop goldenrod_4f
+=== goldenrod_department_store_5f.Clerk
+from Clerk at 23,7 of Goldenrod_DeptStore_5F
+way -
+  Clerk> Welcome! How can I help you?
+  Clerk> Thank you! Do come again.
+  * open Shop goldenrod_5f
+=== goldenrod_department_store_6f.Vending
+from the tile read at 11,3 of Goldenrod_DeptStore_6F
+from the tile read at 12,3 of Goldenrod_DeptStore_6F
+from the tile read at 13,3 of Goldenrod_DeptStore_6F
+way 0
+  > A drinks machine. Which drink would you like?
+  > Clang! A bottle of Fresh Water dropped down.
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  > Lucky! Another bottle of Fresh Water dropped down.
+  > Lucas received the Fresh Water!
+  > Lucas put it away in the Medicine pocket.
+  ? A drinks machine. Which drink would you like? = FRESH WATER  200
+  * sound bump
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+way 3, from answer 1
+  > Decided not to buy a drink.
+  ? A drinks machine. Which drink would you like? = NONE
+way 2, from answer 1
+  > Clang! A can of Lemonade dropped down.
+  > Lucas received the Lemonade!
+  > Lucas put it away in the Medicine pocket.
+  > Lucky! Another can of Lemonade dropped down.
+  > Lucas received the Lemonade!
+  > Lucas put it away in the Medicine pocket.
+  ? A drinks machine. Which drink would you like? = LEMONADE  350
+  * sound bump
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+way 1, from answer 1
+  > Clang! A can of Soda Pop dropped down.
+  > Lucas received the Soda Pop!
+  > Lucas put it away in the Medicine pocket.
+  > Lucky! Another can of Soda Pop dropped down.
+  > Lucas received the Soda Pop!
+  > Lucas put it away in the Medicine pocket.
+  ? A drinks machine. Which drink would you like? = SODA POP  300
+  * sound bump
+  * fanfare FanfareItem
+  * fanfare FanfareItem
+=== goldenrod_department_store_elevator.Attendant
+from Attendant at 1,6 of Goldenrod_DeptStore_Elevator
+way 0
+  Attendant> Welcome. Which floor would you like?
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = 6F
+  * anim elevator up 4
+  * warp Goldenrod_DeptStore_6F 19 3
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 6
+  = VAR_TEMP_1 0 -> 6
+way 5, from answer 1
+  ? Welcome. Which floor would you like? = Stay here
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 1
+way 4.0, from answer 1
+  Attendant> The ground floor, or the second?
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = 1F OR 2F
+  ? The ground floor, or the second? = 1F
+  * warp Goldenrod_DeptStore_1F 19 3
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 1
+way 4.2, from answer 2
+  ? The ground floor, or the second? = Stay here
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 6
+way 4.1, from answer 2
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? The ground floor, or the second? = 2F
+  * anim elevator up 4
+  * warp Goldenrod_DeptStore_2F 19 3
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 2
+  = VAR_TEMP_1 0 -> 2
+way 3, from answer 1
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = 3F
+  * anim elevator up 4
+  * warp Goldenrod_DeptStore_3F 19 3
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 3
+  = VAR_TEMP_1 0 -> 3
+way 2, from answer 1
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = 4F
+  * anim elevator up 4
+  * warp Goldenrod_DeptStore_4F 19 3
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 4
+  = VAR_TEMP_1 0 -> 4
+way 1, from answer 1
+  Attendant> Going up!
+  Attendant> Here we are. Please come again!
+  ? Welcome. Which floor would you like? = 5F
+  * anim elevator up 4
+  * warp Goldenrod_DeptStore_5F 19 3
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 5
+  = VAR_TEMP_1 0 -> 5
+=== goldenrod_flower_shop.Florist
+from Florist at 3,5 of Goldenrod_FlowerShop
+way -
+  Florist> My sister says a strange tree is blocking the road on Route 36. It wiggles when you water it, apparently!
+  Florist> I'd lend my SquirtBottle to someone strong enough to handle it. Someone with a Gym Badge from Whitney, say.
 === goldenrod_gym.GymGuy
 from Gym Guide at 7,23 of Goldenrod_Gym
 way -
@@ -9050,6 +9604,54 @@ way 0
 way 1, from answer 1
   * battle johto_leader_whitney Lost
   * scene over, unseen
+=== goldenrod_radio_tower_1f.Quiz
+from Receptionist at 13,12 of Goldenrod_RadioTower_1F
+way 0.0.0.0
+  Receptionist> It's quiz time at the Radio Tower! Answer five questions right and win a Radio Card for your Pokégear. Ready?
+  Receptionist> Question one! Can a Pokémon learn new moves as it levels up?
+  Receptionist> Question two! Is Chikorita a Grass-type Pokémon?
+  Receptionist> Question three! Will an Antidote wake a Pokémon that is fast asleep?
+  Receptionist> Oh, I'm sorry! That's not right. Have another go any time you like.
+  ? It's quiz time at the Radio Tower! Answer five questions right and win a Radio Card for your Pokégear. Ready? = Yes
+  ? Question one! Can a Pokémon learn new moves as it levels up? = Yes
+  ? Question two! Is Chikorita a Grass-type Pokémon? = Yes
+  ? Question three! Will an Antidote wake a Pokémon that is fast asleep? = Yes
+  * sound select
+  * sound select
+  * sound error
+way 0.0.0.1.0.0, from answer 4
+  Receptionist> Question four! Do Fire-type moves hit Grass-type Pokémon especially hard?
+  Receptionist> Last question! Can you throw a Poké Ball to catch another trainer's Pokémon?
+  Receptionist> Oh, I'm sorry! That's not right. Have another go any time you like.
+  ? Question three! Will an Antidote wake a Pokémon that is fast asleep? = No
+  ? Question four! Do Fire-type moves hit Grass-type Pokémon especially hard? = Yes
+  ? Last question! Can you throw a Poké Ball to catch another trainer's Pokémon? = Yes
+  * sound select
+  * sound select
+  * sound error
+way 0.0.0.1.0.1, from answer 6
+  Receptionist> Five out of five! Congratulations! Here's your prize: a Radio Card for your Pokégear!
+  > Lucas's Pokégear can now tune in to the radio!
+  Receptionist> Turn the dial to find our stations. We broadcast all over Johto, day and night!
+  ? Last question! Can you throw a Poké Ball to catch another trainer's Pokémon? = No
+  * sound select
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_RADIO_CARD
+way 0.0.0.1.1, from answer 5
+  Receptionist> Oh, I'm sorry! That's not right. Have another go any time you like.
+  ? Question four! Do Fire-type moves hit Grass-type Pokémon especially hard? = No
+  * sound error
+way 0.0.1, from answer 3
+  Receptionist> Oh, I'm sorry! That's not right. Have another go any time you like.
+  ? Question two! Is Chikorita a Grass-type Pokémon? = No
+  * sound error
+way 0.1, from answer 2
+  Receptionist> Oh, I'm sorry! That's not right. Have another go any time you like.
+  ? Question one! Can a Pokémon learn new moves as it levels up? = No
+  * sound error
+way 1, from answer 1
+  Receptionist> No? Come back when you're feeling clever!
+  ? It's quiz time at the Radio Tower! Answer five questions right and win a Radio Card for your Pokégear. Ready? = No
 === hearthome_city.Buneary
 from the trigger at 461,725 of Sinnoh
 way -
@@ -9082,6 +9684,40 @@ from Gym Guide at 499,698 of Sinnoh
 way -
   Gym Guide> Hey there, champ in the making! Here to take on Fantina? Bad timing, I'm afraid. She's out.
   Gym Guide> When she's not in her Gym, you'll usually find her at the Contest Hall, watching the Pokémon on stage. Try there!
+=== ilex_forest.Apprentice
+from Apprentice at 15,64 of IlexForest
+way -
+  Apprentice> Oh no, oh no... Both our Farfetch'd ran off into the forest. My master will roast me alive!
+  Apprentice> Without them I can't cut any wood, and without wood there's no charcoal. Could you help me find them?
+=== ilex_forest.ApprenticeStops
+from the trigger at 15,65 of IlexForest
+way -
+  Apprentice> Oh no, oh no... Both our Farfetch'd ran off into the forest. My master will roast me alive!
+  Apprentice> Without them I can't cut any wood, and without wood there's no charcoal. Could you help me find them?
+  * scene ilex_forest.The apprentice in Ilex Forest
+  * emote Apprentice Exclaim
+  * endscene
+  + seen ilex_forest.The apprentice in Ilex Forest
+=== ilex_forest.FirstFarfetchd
+from Farfetch'd at 25,62 of IlexForest
+way -
+  > Farfetch'd took fright and dashed off, waving its leek!
+  * cry Farfetch'd
+  * fade out
+  * fade in
+  = VAR_FARFETCHD1_PLACE 0 -> 1
+=== ilex_forest.Master
+from Charcoal Maker at 11,75 of IlexForest
+way -
+  Charcoal Maker> Thanks again for finding those birds.
+=== ilex_forest.SecondFarfetchd
+from Farfetch'd at 41,54 of IlexForest
+way -
+  > Farfetch'd took fright and dashed off, waving its leek!
+  * cry Farfetch'd
+  * fade out
+  * fade in
+  = VAR_FARFETCHD2_PLACE 0 -> 1
 === iron_island.Ferry
 from Sailor at 99,502 of Sinnoh
 way 0
@@ -11272,6 +11908,33 @@ way 0
 way 1, from answer 1
   Fishing Guru> Oh. Well, the fish will still be here if you change your mind.
   ? Would you like a rod of your own? = No
+=== route_36.Arthur
+from Arthur at 431,244 of Johto
+way -
+  Arthur> Today isn't Thursday. Come back then.
+=== route_36.FlowerGirl
+from Girl at 415,249 of Johto
+way -
+  Girl> This tree won't let anybody past. It wiggles when you touch it! My sister in Goldenrod might know what to do.
+=== route_36.Girl
+from Girl at 435,245 of Johto
+way -
+  Girl> There's a strange tree blocking the way to Route 37. Nobody can get past it!
+=== route_36.RockSmash
+from Man at 426,246 of Johto
+way -
+  Man> Rocks in your way? Smash 'em! That's my motto. Here, take this. You'll know what to do with it.
+  > Lucas received the HM06!
+  > HM06 holds the move Rock Smash.
+  > Lucas put it away in the TMs & HMs pocket.
+  Man> HM06 is Rock Smash. With the Zephyr Badge, a Pokémon that knows it can break cracked rocks outside of battle.
+  Man> Sometimes there's a Pokémon hiding under the rock, too!
+  * fanfare FanfareTM
+=== route_36.Sudowoodo
+from Strange Tree at 415,246 of Johto
+way -
+  > It's a weird tree. It's wiggling ever so slightly... and it's blocking the way.
+  * sound bump
 === route_4.MegaKick
 from Black Belt at 206,53 of Kanto
 way 0
@@ -12106,6 +12769,48 @@ way 1, from answer 1
   * warp SilphCo_2F 22 4
   = VAR_SILPH_CO_LIFT_FLOOR 0 -> 2
   = VAR_TEMP_1 0 -> 2
+=== slowpoke_well_b1f.Proton
+from Proton at 27,3 of SlowpokeWell_B1F
+way 0
+  Proton> Well, well. A child, sticking their nose into Team Rocket's business. How brave. How stupid.
+  Proton> I'm Proton, the scariest man in Team Rocket. Cutting off a Slowpoke's tail is nothing to me. Shall I show you why?
+  Proton> Tch. Fine. We've made our money here anyway. Everyone out!
+  Kurt> They've gone! Well done, youngster. My back may be no use, but you're worth ten of those crooks.
+  Kurt> Come, let's get out of this damp hole. I'll see you at my house.
+  * scene slowpoke_well_b1f.Proton in the Slowpoke Well
+  * battle johto_executive_proton_proton Won
+  * fade out
+  * fade in
+  * endscene
+  * warp Azalea_KurtsHouse 4 5
+  + FLAG_BEAT_AZALEA_ROCKETS
+  + FLAG_HIDE_SLOWPOKE_WELL_B1F_KURT
+  + FLAG_UNK_1A9
+  + FLAG_UNK_1AA
+  + FLAG_UNK_1AC
+  + FLAG_UNK_1D5
+  = VAR_UNK_4075 0 -> 1
+  = VAR_UNK_4080 0 -> 2
+  = VAR_UNK_40F4 0 -> 1
+  + beaten johto_executive_proton_proton
+  + seen slowpoke_well_b1f.Proton in the Slowpoke Well
+way 1, from answer 1
+  * battle johto_executive_proton_proton Lost
+  * scene over, unseen
+=== slowpoke_well_b2f.Researcher
+from Researcher at 10,7 of SlowpokeWell_B2F
+way -
+  Researcher> I've studied Slowpoke all my life, and I still can't tell you what they're thinking.
+  Researcher> They say a Slowpoke bitten on the head by a Shellder becomes wise. Here, I found this down here. Take it.
+  > Lucas received the King's Rock!
+  > Lucas put it away in the Items pocket.
+  Researcher> Let a Slowpoke hold the King's Rock when you trade it, and something remarkable may happen.
+  * fanfare FanfareItem
+  + FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN
+=== slowpoke_well_entrance.Kurt
+from Kurt at 17,8 of SlowpokeWell_Entrance
+way -
+  Kurt> This is no place for a youngster. Off home with you!
 === snowpoint_city.Candice
 from Candice at 366,208 of Sinnoh
 way -

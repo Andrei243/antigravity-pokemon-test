@@ -1,11 +1,8 @@
 {
-  // The Goldenrod Department Store's ground floor (plan 20 · J5, part b). Its lift (warp 2) stays shut until it can carry anyone. The delivery men are the original's
+  // The Goldenrod Department Store's ground floor (plan 20 · J5, part b). Its lift (warp 2) rides to every floor (plan 20 · J7). The delivery men are the original's
   // gifts, which this game has no use for
   "area": "goldenrod_department_store_1f",
   "bgmTrack": "johto/goldenrod",
-  "locked": [
-    2
-  ],
   "people": {
     "t25r1001_gswoman6": {
       "name": "Receptionist",

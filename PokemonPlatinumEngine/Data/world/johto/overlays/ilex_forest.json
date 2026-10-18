@@ -1,14 +1,19 @@
 {
   // Ilex Forest (plan 20 · J5, part b): HeartGold's forest, our words. Dark under its trees even at noon, with the
   // shrine of the forest's protector at its heart. Its music is the dungeons' theme, as HeartGold's header gives it
-  // (Union Cave's). The cut tree that blocks the way north is the field's own obstacle. The apprentice's lost
-  // Farfetch'd, the Cut master, the old man of the shrine and Cameron are the next chapter's (plan 20 · J7)
+  // (Union Cave's). The cut tree that blocks the way north is the field's own obstacle. Plan 20 · J7: once the
+  // Slowpoke Well is cleared the charcoal maker's apprentice stands by the tree with both his Farfetch'd lost in the
+  // wood (scripts/ilex_forest.txt), and finding them brings his master with HM01. The old man of the shrine and
+  // Cameron are later chapters'
   "area": "ilex_forest",
   "bgmTrack": "johto/union_cave",
   "trees": "Round",
   "locked": [
     4,
     5
+  ],
+  "triggers": [
+    { "trigger": 8, "script": "ApprenticeStops" }
   ],
   "people": {
     "d36r0101_gsbigman": {
@@ -17,6 +22,44 @@
         "The trees here are so old and so close together that the sun hardly gets in.",
         "Stay on the path. People have wandered in here and not come out for days."
       ]
+    },
+    "d36r0101_gsboy1": {
+      "name": "Apprentice",
+      "script": "Apprentice",
+      "still": true
+    },
+    "d36r0101_gsfighter": {
+      "name": "Charcoal Maker",
+      "script": "Master",
+      "still": true
+    },
+    "d36r0101_tsure_poke_static_farfetchd": {
+      "name": "Farfetch'd",
+      "npcType": "Pokemon",
+      "species": "Farfetch'd",
+      "script": "FirstFarfetchd",
+      "still": true
+    },
+    "d36r0101_tsure_poke_static_farfetchd_2": {
+      "name": "Farfetch'd",
+      "npcType": "Pokemon",
+      "species": "Farfetch'd",
+      "script": "SecondFarfetchd",
+      "still": true
+    },
+    "d36r0101_tsure_poke_static_farfetchd_3": {
+      "name": "Farfetch'd",
+      "npcType": "Pokemon",
+      "species": "Farfetch'd",
+      "still": true,
+      "dialog": [ "Farfetch'd is clutching its leek and staying close to the boy." ]
+    },
+    "d36r0101_tsure_poke_static_farfetchd_4": {
+      "name": "Farfetch'd",
+      "npcType": "Pokemon",
+      "species": "Farfetch'd",
+      "still": true,
+      "dialog": [ "Farfetch'd is clutching its leek and staying close to the boy." ]
     }
   },
   "signs": {

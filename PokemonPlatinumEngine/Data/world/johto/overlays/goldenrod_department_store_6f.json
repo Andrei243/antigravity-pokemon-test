@@ -1,10 +1,7 @@
 {
-  // The Department Store's top floor (plan 20 · J5, part b), with its drinks machines. Its lift (warp 1) stays shut
+  // The Department Store's top floor (plan 20 · J5, part b), with its drinks machines. Its lift (warp 1) rides to every floor (plan 20 · J7)
   "area": "goldenrod_department_store_6f",
   "bgmTrack": "johto/goldenrod",
-  "locked": [
-    1
-  ],
   "people": {
     "t25r1006_gsman1": {
       "name": "Man",
@@ -33,8 +30,9 @@
       ]
     }
   },
+  // The drinks machines sell Fresh Water, Soda Pop and Lemonade (plan 20 · J7, scripts/goldenrod_department_store_6f.txt)
+  "read": { "T25R1006_003+1": "Vending" },
   "signs": {
-    "T25R1006_002+1": "6F: Tranquil Square\nThe rooftop is closed for now.",
-    "T25R1006_003+1": "A drinks machine. It's out of order."
+    "T25R1006_002+1": "6F: Tranquil Square\nThe rooftop is closed for now."
   }
 }

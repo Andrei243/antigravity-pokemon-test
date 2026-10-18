@@ -1,5 +1,43 @@
 {
   "people": {
+    "d18r0101_gsrivel": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d18r0101_minaki": {
+      "name": {
+        "en": [
+          "Eusine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d18r0101_gsleader4": {
+      "name": {
+        "en": [
+          "Morty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "d18r0101_fire": {
       "name": {
         "en": [

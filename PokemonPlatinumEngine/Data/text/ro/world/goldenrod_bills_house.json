@@ -1,21 +1,21 @@
 {
   "people": {
+    "t25r0401_masaki": {
+      "name": {
+        "en": [
+          "Bill"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "t25r0401_middlewoman1_2": {
       "name": {
         "en": [
           "Woman"
         ],
         "text": [
-          ""
-        ]
-      },
-      "dialog": {
-        "en": [
-          "My son Bill made the PC storage system you use. He's off in Ecruteak City just now.",
-          "He calls whenever he wants feeding. Typical!"
-        ],
-        "text": [
-          "",
           ""
         ]
       }

@@ -113,11 +113,11 @@ public class JohtoTests
                      "RuinsOfAlph_NortheastChamber", "Azalea_KurtsHouse", "Azalea_CharcoalKiln", "Azalea_PokemonCenter_B1F" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // What waits for its chapter stays shut: the Slowpoke Well and the Gym (J7), the Ruins' hall and the rooms behind
-        // the chambers' back walls
+        // The Slowpoke Well and the Gym are open since plan 20 · J7; what waits for its chapter stays shut: the Ruins'
+        // hall and the rooms behind the chambers' back walls
         var azalea = Johto.Area("azalea")!;
-        foreach (int shut in new[] { 2, 7 })
-            Assert.Empty(Overworld.WarpsAt(azalea.Warps[shut].X, azalea.Warps[shut].Z));
+        Assert.Contains(Overworld.WarpsAt(azalea.Warps[2].X, azalea.Warps[2].Z), w => w.TargetMap == "Azalea_GymEntrance");
+        Assert.Contains(Overworld.WarpsAt(azalea.Warps[7].X, azalea.Warps[7].Z), w => w.TargetMap == "SlowpokeWell_Entrance");
         var hall = Johto.Area("ruins_of_alph")!.Warps[8];
         Assert.Empty(Overworld.WarpsAt(hall.X, hall.Z));
         Assert.Null(MapNamed("RuinsOfAlph_NortheastChamber").GetWarpAt(6, 2));
@@ -156,12 +156,13 @@ public class JohtoTests
                      "Goldenrod_Underground", "Goldenrod_GameCorner", "Ecruteak_DanceTheater", "BurnedTower_B1F", "Ecruteak_BellTowerGate" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // What waits stays shut: the Magnet Train and the Global Terminal, Ecruteak's Gym and the roads west and east,
-        // the Bell Tower beyond its gate, the Radio Tower's upper floors
+        // What waits stays shut: the Magnet Train and the Global Terminal, the roads west and east of Ecruteak City, the
+        // Bell Tower beyond its gate, the Radio Tower's upper floors (Ecruteak's Gym is open since plan 20 · J7)
         var goldenrod = Johto.Area("goldenrod")!;
         foreach (int shut in new[] { 9, 16 }) Assert.Empty(Overworld.WarpsAt(goldenrod.Warps[shut].X, goldenrod.Warps[shut].Z));
         var ecruteak = Johto.Area("ecruteak")!;
-        foreach (int shut in new[] { 7, 8, 10 }) Assert.Empty(Overworld.WarpsAt(ecruteak.Warps[shut].X, ecruteak.Warps[shut].Z));
+        foreach (int shut in new[] { 8, 10 }) Assert.Empty(Overworld.WarpsAt(ecruteak.Warps[shut].X, ecruteak.Warps[shut].Z));
+        Assert.Contains(Overworld.WarpsAt(ecruteak.Warps[7].X, ecruteak.Warps[7].Z), w => w.TargetMap == "Ecruteak_Gym");
         Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("BellTower", StringComparison.Ordinal));
 
         // The two cities are built their own ways, with songs of their own
@@ -171,13 +172,50 @@ public class JohtoTests
         Assert.Equal("johto/ecruteak", Overworld.BgmTrackAt(ecruteak.Warps[5].X, ecruteak.Warps[5].Z + 1));
         Assert.Equal("johto/union_cave", MapNamed("IlexForest").BgmTrackAt(15, 70));
 
-        // The Day Care is the common one, the strange tree waits for its chapter (J7), and the trainers battle by
-        // HeartGold's records, the twins of Route 37 as one
+        // The Day Care is the common one, the strange tree stands in the way since plan 20 · J7 (JohtoStoryTests), and
+        // the trainers battle by HeartGold's records, the twins of Route 37 as one
         Assert.Contains(MapNamed("Route34_DayCare").Everyone, n => n.Script == "DayCareLady");
-        Assert.DoesNotContain(Overworld.Everyone, n => n.Species == "Sudowoodo");
+        Assert.Contains(Overworld.Everyone, n => n.Species == "Sudowoodo" && n.GridX == 415 && n.GridY == 246);
         Assert.Equal(2, Overworld.Everyone.Count(n => n.Id == "johto_twins_tori_and_til"));
         Assert.Contains(MapNamed("Goldenrod_Gym").Everyone, n => n.Id == "johto_beauty_samantha");
         Assert.Contains(MapNamed("BurnedTower_1F").Everyone, n => n.Id == "johto_firebreather_ned");
+    }
+
+    [Fact]
+    public void TheStrangeTreeAloneKeepsEcruteakCityFromBothSidesOfRouteThirtySix()
+    {
+        // Plan 20 · J7 (docs/mechanics/rulings.md, "Johto's second chapter"): the tree stands on HeartGold's own tile in
+        // the one-tile way between Violet City's side of Route 36 and Route 37's turning, and the ledges of the way from
+        // the National Park drop a walker east of it. A walk of the whole game with every field move, in which the tree
+        // stays where it is, reaches neither Route 37 nor Ecruteak City; the walk in which its scene has been played
+        // reaches both (IlexForestToEcruteakCity...)
+        var maps = Johto.BuildMaps().ToDictionary(m => m.Name);
+        Map Named(string name) => maps.TryGetValue(name, out var map) ? map : MapDatabase.Get(name);
+        var tree = maps["Johto"].Everyone.Single(n => n.Species == "Sudowoodo");
+        Assert.Equal((415, 246), (tree.GridX, tree.GridY));
+        tree.HiddenBy = null;
+        var outside = WorldWalk.From(Named, RegionDatabase.Get(RegionDatabase.Johto)!.Start!).Single(kv => kv.Key.Name == "Johto").Value;
+        Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "national_park" || Overworld.AreaAt(t.X, t.Y)?.Key == "route_36");
+        Assert.DoesNotContain(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key is "route_37" or "ecruteak");
+    }
+
+    [Fact]
+    public void TheSecondChaptersPlacesAreWalkedTo()
+    {
+        // Plan 20 · J7: the Slowpoke Well's three floors, the two Gyms (the Azalea Gym's islands by its carts) and the
+        // Department Store's lift are walked into, and every tile Ilex Forest's two Farfetch'd run to can be stood beside
+        var walked = Walked.Value;
+        foreach (string name in new[] { "SlowpokeWell_Entrance", "SlowpokeWell_B1F", "Azalea_GymEntrance", "Azalea_Gym", "Ecruteak_Gym", "Goldenrod_DeptStore_Elevator" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+        var gym = walked.Single(kv => kv.Key.Name == "Azalea_Gym").Value;
+        Assert.Contains((9, 6), gym);
+        var ilex = MapNamed("IlexForest");
+        var forest = walked.Single(kv => kv.Key.Name == "IlexForest").Value;
+        foreach (var (x, y) in new[] { (25, 62), (32, 62), (32, 52), (41, 54), (46, 65), (51, 50) })
+            Assert.True(new[] { (x, y + 1), (x, y - 1), (x - 1, y), (x + 1, y) }.Any(forest.Contains), $"nobody can stand beside {x},{y} of Ilex Forest");
+        // The Department Store's counters sell their own stock
+        foreach (string counter in new[] { "goldenrod_2f_medicine", "goldenrod_2f_balls", "goldenrod_3f", "goldenrod_4f", "goldenrod_5f" })
+            Assert.True(MartDatabase.Specialties[counter].All(i => ItemDatabase.Get(i) != null), counter);
     }
 
     [Fact]

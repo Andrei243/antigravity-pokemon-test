@@ -1,0 +1,174 @@
+{
+  "Shove": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I said get lost! Nobody goes near that well. Team Rocket's orders!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ow! All right, all right, I'm going!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What are you staring at? This well's closed for business. Move along!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Slowpoke Well? Never heard of it. Now beat it before I lose my temper."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...So it was you who chased Team Rocket out of the well. Don't think that makes you strong."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket ganging up on a few Slowpoke. Pathetic. I'll show you what real strength is!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tch. My Pokémon just aren't strong enough yet. I'll get stronger ones, whatever it takes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Don't get in my way again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Slowpoke": [
+    {
+      "en": [
+        "The Slowpoke gave a long, slow yawn..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "OldMan": [
+    {
+      "en": [
+        "The Slowpoke used to doze in every street of this town. Now there's not one to be seen."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Our town has long said a Slowpoke's yawn brings the rain. It hasn't rained properly in days."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Slowpoke are back! Look at them, yawning away as if nothing had happened."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Charcoal": [
+    {
+      "en": [
+        "Smell that? The charcoal kiln is going. Azalea's charcoal is the finest in Johto, so they say."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Though with Team Rocket hanging about the well, nobody's in the mood for buying."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You ran Team Rocket out of the well? Then the kiln will be busy again. Thanks!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

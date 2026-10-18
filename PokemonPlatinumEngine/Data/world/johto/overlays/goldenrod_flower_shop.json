@@ -1,22 +1,20 @@
 {
-  // Goldenrod's flower shop (plan 20 · J5, part b). The SquirtBottle is the next chapter's (plan 20 · J7); until then
-  // the shop's two talk
+  // Goldenrod City's flower shop (plan 20 · J5, part b; plan 20 · J7, scripts/goldenrod_flower_shop.txt): the florist
+  // lends the SquirtBottle to a trainer with the Plain Badge, and once the strange tree on Route 36 is dealt with she
+  // sells mulch. Her sister is out on Route 36 by the tree until then (FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL)
   "area": "goldenrod_flower_shop",
   "bgmTrack": "johto/goldenrod",
   "people": {
     "t25r0601_gswoman1": {
       "name": "Florist",
-      "dialog": [
-        "Welcome! Every flower here was grown by my sister on Route 36."
-      ]
+      "script": "Florist"
     },
     "t25r0601_gsgirl1": {
       "name": "Girl",
       "still": true,
       "dialog": [
-        "My sister grows flowers out on Route 36. I water ours here every morning!"
-      ],
-      "hiddenBy": ""
+        "That tree on Route 36 was a Pokémon all along! I'm back to watering our flowers here every morning."
+      ]
     }
   }
 }

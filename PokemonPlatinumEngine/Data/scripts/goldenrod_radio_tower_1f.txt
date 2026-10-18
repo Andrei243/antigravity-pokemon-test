@@ -1,0 +1,42 @@
+# The Radio Tower's ground floor in Goldenrod City (plan 20 · J7). docs/scripts.md describes the language; the lines
+# and the questions are our own, on HeartGold's beats (scr_seq_D23R0101_002): five questions answered yes or no, all
+# right in a row, win the Pokégear's Radio Card (FLAG_GOT_RADIO_CARD); one wrong ends the quiz until it is tried again.
+
+
+script Quiz
+  face d23r0101_gswoman6_3 player
+  speaker "Receptionist"
+  if flag FLAG_GOT_RADIO_CARD goto Won
+  ask "It's quiz time at the Radio Tower! Answer five questions right and win a Radio Card for your Pokégear. Ready?"
+  if no goto NotNow
+  ask "Question one! Can a Pokémon learn new moves as it levels up?"
+  if no goto Wrong
+  sound "select"
+  ask "Question two! Is Chikorita a Grass-type Pokémon?"
+  if no goto Wrong
+  sound "select"
+  ask "Question three! Will an Antidote wake a Pokémon that is fast asleep?"
+  if yes goto Wrong
+  sound "select"
+  ask "Question four! Do Fire-type moves hit Grass-type Pokémon especially hard?"
+  if no goto Wrong
+  sound "select"
+  ask "Last question! Can you throw a Poké Ball to catch another trainer's Pokémon?"
+  if yes goto Wrong
+  sound "select"
+  say "Five out of five! Congratulations! Here's your prize: a Radio Card for your Pokégear!"
+  setflag FLAG_GOT_RADIO_CARD
+  fanfare keyitem
+  text "{player}'s Pokégear can now tune in to the radio!"
+  say "Turn the dial to find our stations. We broadcast all over Johto, day and night!"
+  end
+label Wrong
+  sound "error"
+  say "Oh, I'm sorry! That's not right. Have another go any time you like."
+  end
+label NotNow
+  say "No? Come back when you're feeling clever!"
+  end
+label Won
+  say "Enjoying the radio? Try every station on the dial. There's always something on!"
+  end

@@ -1,0 +1,54 @@
+# The Burned Tower's basement (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D18R0102).
+#
+# The three Pokémon wake as the player comes near (the area's trigger 0, on VAR_UNK_40A1 0) and flee one after
+# another: Raikou and Entei roam Johto from then on (`roamer start`, HeartGold's CreateRoamer 0 and 1, at level 40),
+# and Suicune runs on ahead of Eusine (where it is next seen is a later chapter's). Eusine comes down the
+# stairs too late, and Morty goes back to his Gym (VAR_UNK_4079 2; the tower's people gone by their flags, and the
+# old man of the town out to tell of it, FLAG_HIDE_ECRUTEAK_OLD_MAN cleared).
+
+
+script Awaken
+  scene "The three beasts wake"
+  cry "Raikou"
+  wait 0.4
+  cry "Entei"
+  wait 0.4
+  cry "Suicune"
+  emote player exclaim
+  text "The three Pokémon have woken up!"
+  flicker d18r0102_tsure_poke_static_raikou 4
+  hide d18r0102_tsure_poke_static_raikou
+  wait 0.3
+  flicker d18r0102_tsure_poke_static_entei 4
+  hide d18r0102_tsure_poke_static_entei
+  wait 0.3
+  cry "Suicune"
+  flicker d18r0102_tsure_poke_static_suicune 4
+  hide d18r0102_tsure_poke_static_suicune
+  setflag FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU
+  setflag FLAG_HIDE_BURNED_TOWER_B1F_ENTEI
+  setflag FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE
+  roamer start "Raikou"
+  roamer start "Entei"
+  wait 0.4
+  sound "stairs"
+  place d18r0102_minaki 22 16 left
+  show d18r0102_minaki
+  face player right
+  speaker "Eusine"
+  say "Was that... Suicune? It was! It ran straight past me! And the other two with it!"
+  say "I'm Eusine. I've spent years tracking Suicune. Now that it's awake, it'll roam all over Johto."
+  say "{player}, was it? I'll catch up with Suicune one day. Until then, farewell!"
+  sound "stairs"
+  hide d18r0102_minaki
+  setflag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
+  setflag FLAG_HIDE_BURNED_TOWER_1F_EUSINE
+  setflag FLAG_HIDE_BURNED_TOWER_1F_MORTY
+  clearflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
+  clearflag FLAG_HIDE_ECRUTEAK_OLD_MAN
+  setflag FLAG_UNK_247
+  setvar VAR_UNK_40A1 1
+  setvar VAR_UNK_4079 2
+  endscene
+  end

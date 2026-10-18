@@ -1,5 +1,43 @@
 {
   "people": {
+    "t27_gsrivel": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27_gsoldman1_3": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I saw them! Three Pokémon, bursting out of the Burned Tower like the wind itself!",
+          "Folk say they were the three that died in the fire, brought back by the great bird of the Bell Tower."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
     "t27_gsgirl1": {
       "name": {
         "en": [

@@ -8,16 +8,6 @@
         "text": [
           "Kurt"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Hm? A trainer? I make Poké Balls, the old way, from Apricorns. But I've no heart for it today.",
-          "The town's Slowpoke have all gone missing. Something's wrong down at the well, I'm sure of it."
-        ],
-        "text": [
-          "Hm? Un Antrenor? Eu fac Poké Ball-uri după metoda veche, din Apricorne. Dar azi n-am inimă de lucru.",
-          "Toți Slowpokeii orașului au dispărut. E ceva în neregulă jos, la fântână, sunt sigur."
-        ]
       }
     },
     "t23r0501_gsbabygirl1": {
@@ -28,13 +18,23 @@
         "text": [
           "Fata"
         ]
+      }
+    },
+    "t23r0501_tsure_poke_static_slowpoke": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
       },
       "dialog": {
         "en": [
-          "Grandpa's been grumpy all morning. He keeps looking out of the window at the well."
+          "Slowpoke gazed at nothing in particular, very contentedly."
         ],
         "text": [
-          "Bunicul e morocănos de dimineață. Se tot uită pe geam la fântână."
+          ""
         ]
       }
     }

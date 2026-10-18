@@ -1,0 +1,41 @@
+# Goldenrod City's flower shop (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T25R0601).
+#
+# The florist won't lend her SquirtBottle to just anyone: with the Plain Badge she does. Once the strange tree on
+# Route 36 is dealt with (FLAG_UNK_0B5) she sells the four mulches, 200 each.
+
+
+script Florist
+  face t25r0601_gswoman1 player
+  speaker "Florist"
+  if flag FLAG_UNK_0B5 goto Mulch
+  if not badge plain goto NoBadge
+  if item "SquirtBottle" goto HasIt
+  say "You beat Whitney? Then you're strong enough to deal with that wiggling tree on Route 36!"
+  say "My sister's been waiting by it for days. Take this and give the tree a good squirt."
+  give "SquirtBottle"
+  end
+label HasIt
+  say "Go on, give that tree on Route 36 a squirt. My sister's waiting there to see what happens!"
+  end
+label NoBadge
+  say "My sister says a strange tree is blocking the road on Route 36. It wiggles when you water it, apparently!"
+  say "I'd lend my SquirtBottle to someone strong enough to handle it. Someone with a Gym Badge from Whitney, say."
+  end
+label Mulch
+  say "Thanks for helping my sister! We sell mulch for berry soil now. They're 200 each."
+  choose "Which mulch would you like?" "Growth Mulch" "Damp Mulch" "Stable Mulch" "Gooey Mulch" "No thanks"
+  if result == 4 goto Bye
+  setvar VAR_TEMP_1 RESULT
+  takemoney 200
+  if result == 0 goto Short
+  if var VAR_TEMP_1 == 0 give "Growth Mulch"
+  if var VAR_TEMP_1 == 1 give "Damp Mulch"
+  if var VAR_TEMP_1 == 2 give "Stable Mulch"
+  if var VAR_TEMP_1 == 3 give "Gooey Mulch"
+  goto Bye
+label Short
+  say "Oh dear, you don't have enough money."
+label Bye
+  say "Come again! A little care goes a long way with berries."
+  end

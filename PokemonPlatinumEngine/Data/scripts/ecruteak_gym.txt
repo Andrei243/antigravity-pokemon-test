@@ -1,0 +1,73 @@
+# The Ecruteak Gym (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T27GYM0101).
+#
+# Until the three Pokémon have fled the Burned Tower (VAR_UNK_4079 below 2), an old man meets visitors at the door and
+# sees them out (HeartGold's T27GYM0101_004), and Morty is away. Every hole off the safe path is one of the room's
+# triggers, and a step onto one drops the player back by the door (T27GYM0101_002). Morty battles, gives the Fog
+# Badge (`givebadge fog`) and TM30, Shadow Ball (FLAG_GOT_TM30_FROM_MORTY); once both the Fog Badge and HM03 are had,
+# the red-haired boy's scene at the Dance Theater can play (VAR_UNK_4079 3, ecruteak.txt).
+
+
+script OnEnter
+  if var VAR_UNK_4079 >= 2 goto Open
+  setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
+  scene "Morty is out"
+  face t27gym0101_gsoldman1 player
+  speaker "Old Man"
+  say "I'm afraid Morty isn't here. He's gone to the Burned Tower, the one in the city's north-west."
+  say "He says something stirs there. Come back when he's returned, young one."
+  if var VAR_UNK_4079 == 0 setvar VAR_UNK_4079 1
+  fade out 0.4
+  warp "Johto" 376 184 down
+  endscene
+  end
+label Open
+  clearflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
+  end
+
+
+# T27GYM0101_002: a hole in the floor
+script Fall
+  sound "ledge"
+  text "Whoa! The floor gave way!"
+  fade out 0.3
+  warp "Ecruteak_Gym" 16 49 up
+  end
+
+
+script Morty
+  face t27gym0101_gsleader4 player
+  speaker "Morty"
+  if badge fog goto Won
+  scene "Morty"
+  say "Good of you to come. I've trained here all my life to see what others cannot."
+  say "They say a rainbow Pokémon will appear before the trainer it chooses. I'd like to know if that's you. Let's see!"
+  battle self as "johto_leader_morty_morty"
+  say "I'm not good enough yet... All right. You've earned this. The Fog Badge is yours."
+  givebadge fog
+  text "{player} received the Fog Badge from Morty!"
+  say "With the Fog Badge, Pokémon up to level fifty will obey you, and you can use Surf outside of battle."
+  if var VAR_UNK_410C >= 3 setvar VAR_UNK_4079 3
+  endscene
+label Tm
+  say "Take this too. It's a move that suits a Ghost Pokémon well."
+  give "TM30"
+  setflag FLAG_GOT_TM30_FROM_MORTY
+  say "TM30 is Shadow Ball. It may lower the foe's Special Defense. A fine move for any trainer who walks among ghosts."
+  end
+label Won
+  if not flag FLAG_GOT_TM30_FROM_MORTY goto Tm
+  say "I see now. The legend is about the bond between a trainer and Pokémon. I'll keep training until I understand it."
+  end
+
+
+# T27GYM0101_003
+script GymGuy
+  speaker "Gym Guide"
+  if badge fog goto Won
+  say "Yo, challenger! Morty's Ghost types can't be touched by Normal or Fighting moves. Dark moves work wonders!"
+  say "And watch your feet. This floor is full of holes you can't see. Stick to the path!"
+  end
+label Won
+  say "You saw your way across that floor and beat Morty! Your eyes are sharper than mine, champ."
+  end

@@ -1,0 +1,60 @@
+# Kurt's house in Azalea Town (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T23R0501).
+#
+# Kurt hears of Team Rocket in the well and runs there himself (FLAG_UNK_19E takes him from the house, FLAG_UNK_19F
+# the guard from the well's mouth, FLAG_UNK_077 says he went). Once the well is cleared its scene brings the player
+# here (VAR_UNK_4080 2), where Kurt thanks them with a Lure Ball (FLAG_UNK_07C). Making balls of Apricorns is plan 20
+# · J6's.
+
+
+script OnEnter
+  if var VAR_UNK_4080 != 2 end
+  scene "Kurt's thanks"
+  face t23r0501_gantetsu player
+  speaker "Kurt"
+  say "Ah, there you are! The Slowpoke are safe and Team Rocket are gone, all thanks to you."
+  say "I make Poké Balls, you know, from Apricorns. Here, take this one. It's one of my own."
+  give "Lure Ball"
+  setflag FLAG_UNK_07C
+  say "A Lure Ball is just the thing for a Pokémon you've hooked with a rod. Bring me Apricorns and I'll make you more."
+  setvar VAR_UNK_4080 3
+  endscene
+  end
+
+
+script Kurt
+  face t23r0501_gantetsu player
+  speaker "Kurt"
+  if flag FLAG_BEAT_AZALEA_ROCKETS goto Thanked
+  scene "Kurt runs to the well"
+  say "Hm? A trainer? I make Poké Balls, the old way, from Apricorns. But I've no heart for it today."
+  say "Team Rocket are down in the Slowpoke Well, cutting off the Slowpoke's tails to sell! I won't stand for it."
+  say "I'll give those thugs a piece of my mind myself. Stand aside!"
+  walk t23r0501_gantetsu down 3 fast
+  hide t23r0501_gantetsu
+  setflag FLAG_UNK_077
+  setflag FLAG_UNK_19E
+  setflag FLAG_UNK_19F
+  # Whoever had not yet seen the shove by the well finds the street clear of it too
+  if var VAR_UNK_4080 == 0 setvar VAR_UNK_4080 1
+  setflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
+  setflag FLAG_AZALEA_HARASSED_CIVILIAN
+  endscene
+  end
+label Thanked
+  say "Bring me Apricorns and I'll turn them into Poké Balls. Every colour makes a ball of its own."
+  end
+
+
+# T23R0501_002: the granddaughter, before Kurt goes, while he is gone and once he is back
+script Granddaughter
+  if flag FLAG_BEAT_AZALEA_ROCKETS goto Back
+  if flag FLAG_UNK_077 goto Gone
+  say "Grandpa's been grumpy all morning. He keeps looking out of the window at the well."
+  end
+label Gone
+  say "Grandpa ran off to the well. He said he'd sort out Team Rocket on his own. I hope he's all right..."
+  end
+label Back
+  say "The Slowpoke are home again! Grandpa says he'll get back to making Poké Balls now."
+  end

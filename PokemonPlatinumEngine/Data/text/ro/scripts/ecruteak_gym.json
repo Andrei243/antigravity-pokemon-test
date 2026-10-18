@@ -1,0 +1,146 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid Morty isn't here. He's gone to the Burned Tower, the one in the city's north-west."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He says something stirs there. Come back when he's returned, young one."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Fall": [
+    {
+      "en": [
+        "Whoa! The floor gave way!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Morty": [
+    {
+      "en": [
+        "Morty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good of you to come. I've trained here all my life to see what others cannot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They say a rainbow Pokémon will appear before the trainer it chooses. I'd like to know if that's you. Let's see!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm not good enough yet... All right. You've earned this. The Fog Badge is yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Fog Badge from Morty!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With the Fog Badge, Pokémon up to level fifty will obey you, and you can use Surf outside of battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this too. It's a move that suits a Ghost Pokémon well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM30 is Shadow Ball. It may lower the foe's Special Defense. A fine move for any trainer who walks among ghosts."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I see now. The legend is about the bond between a trainer and Pokémon. I'll keep training until I understand it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yo, challenger! Morty's Ghost types can't be touched by Normal or Fighting moves. Dark moves work wonders!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And watch your feet. This floor is full of holes you can't see. Stick to the path!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You saw your way across that floor and beat Morty! Your eyes are sharper than mine, champ."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

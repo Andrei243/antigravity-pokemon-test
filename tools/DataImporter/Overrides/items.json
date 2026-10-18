@@ -70,6 +70,19 @@
     "description": "A watering can shaped like a Wailmer. It waters the soil of a berry tree.",
     "cantBeTossed": true
   },
+  // Johto's key item of the second chapter (plan 20 · J7), which no game this importer reads has: Goldenrod's flower
+  // shop lends it for the strange tree on Route 36
+  "SquirtBottle": {
+    "id": 9200,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A bottle that sprays a fine mist of water. Plants love it, and so do some things that only look like plants.",
+    "cantBeTossed": true
+  },
   // FireRed's key items of the third chapter (plan 19 · K5, part b), which no game this importer reads has: the
   // Rocket Hideout's Lift Key and the Silph Scope Giovanni leaves, Mr. Fuji's Poké Flute, the Tea Celadon's old lady
   // gives (for the thirsty guards of Saffron City's gates) and Silph Co.'s Card Key

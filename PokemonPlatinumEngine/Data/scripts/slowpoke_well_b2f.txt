@@ -1,0 +1,17 @@
+# The Slowpoke Well's deepest floor (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D26R0103): the man who studies Slowpoke gives the King's Rock once
+# (FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN).
+
+
+script Researcher
+  face d26r0103_gsassistantm player
+  if flag FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN goto Given
+  say "I've studied Slowpoke all my life, and I still can't tell you what they're thinking."
+  say "They say a Slowpoke bitten on the head by a Shellder becomes wise. Here, I found this down here. Take it."
+  give "King's Rock"
+  setflag FLAG_GOT_KINGS_ROCK_FROM_SLOWPOKE_WELL_MAN
+  say "Let a Slowpoke hold the King's Rock when you trade it, and something remarkable may happen."
+  end
+label Given
+  say "A King's Rock can make a foe flinch now and then. A small crown with a big effect."
+  end

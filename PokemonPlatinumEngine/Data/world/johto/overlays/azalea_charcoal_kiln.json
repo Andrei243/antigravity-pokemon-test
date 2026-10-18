@@ -1,15 +1,30 @@
 {
-  // The charcoal kiln in Azalea Town (plan 20 · J5): its master. His apprentice and their Farfetch'd are in Ilex
-  // Forest as the chapter finds them, and their thanks are the next chapter's (plan 20 · J7)
+  // The charcoal kiln in Azalea Town (plan 20 · J5): its master, his apprentice and their two Farfetch'd. Plan 20 · J7:
+  // once the Slowpoke Well is cleared the apprentice and the birds are off in Ilex Forest (FLAG_UNK_1AC) until the
+  // master's HM01 is given, and the master's words follow the chapter (scripts/azalea_charcoal_kiln.txt)
   "area": "azalea_charcoal_kiln",
   "bgmTrack": "johto/azalea",
   "people": {
     "t23r0201_gsfighter": {
       "name": "Charcoal Maker",
-      "dialog": [
-        "My apprentice went off to Ilex Forest with our Farfetch'd to cut wood, and he still isn't back.",
-        "That boy. Without wood there's no charcoal, and without charcoal there's no work."
-      ]
+      "script": "Master",
+      "hiddenBy": ""
+    },
+    "t23r0201_gsboy1": {
+      "name": "Apprentice",
+      "script": "Apprentice"
+    },
+    "t23r0201_tsure_poke_static_farfetchd": {
+      "name": "Farfetch'd",
+      "npcType": "Pokemon",
+      "species": "Farfetch'd",
+      "dialog": [ "Farfetch'd waved its leek proudly." ]
+    },
+    "t23r0201_tsure_poke_static_farfetchd_2": {
+      "name": "Farfetch'd",
+      "npcType": "Pokemon",
+      "species": "Farfetch'd",
+      "dialog": [ "Farfetch'd waved its leek proudly." ]
     }
   }
 }

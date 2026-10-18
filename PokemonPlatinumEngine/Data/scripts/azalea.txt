@@ -1,0 +1,111 @@
+# Azalea Town (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T23).
+#
+# As the player first comes near the well (the area's trigger 1, on VAR_UNK_4080 0), a man of Team Rocket shoves a
+# passer-by away from it and stands guard (FLAG_UNK_19F cleared); he stays until Kurt runs to the well himself
+# (azalea_kurt_house.txt). Once the well is cleared (slowpoke_well_b1f.txt sets VAR_UNK_4075 1), the red-haired boy
+# stops the player on the way to Ilex Forest's gate (trigger 0) and battles with the team that beats the player's
+# starter. The town's Slowpoke are back once the well is cleared (FLAG_HIDE_AZALEA_SLOWPOKES).
+
+
+script OnEnter
+  if var VAR_UNK_4080 != 0 end
+  setflag FLAG_UNK_19F
+  clearflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
+  clearflag FLAG_AZALEA_HARASSED_CIVILIAN
+  end
+
+
+# HeartGold's T23_003: the shove by the well
+script Shove
+  scene "The grunt by the well"
+  face t23_rocketm_3 t23_gsmiddleman1_2
+  speaker "Grunt"
+  say "I said get lost! Nobody goes near that well. Team Rocket's orders!"
+  speaker "Man"
+  say "Ow! All right, all right, I'm going!"
+  walk t23_gsmiddleman1_2 down 2 left 2 fast
+  hide t23_gsmiddleman1_2
+  setflag FLAG_AZALEA_HARASSED_CIVILIAN
+  face t23_rocketm_3 player
+  speaker "Grunt"
+  say "What are you staring at? This well's closed for business. Move along!"
+  hide t23_rocketm_3
+  setflag FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN
+  clearflag FLAG_UNK_19F
+  show t23_rocketm
+  setvar VAR_UNK_4080 1
+  endscene
+  end
+
+
+# The guard by the well (T23_000)
+script Guard
+  face t23_rocketm player
+  speaker "Grunt"
+  say "Slowpoke Well? Never heard of it. Now beat it before I lose my temper."
+  end
+
+
+# T23_002: the red-haired boy at the gate to Ilex Forest, once the well is cleared
+script Rival
+  scene "The red-haired boy in Azalea"
+  music "johto/rival"
+  if var PLAYER_Y == 462 place t23_gsrivel 397 462 left
+  if var PLAYER_Y == 463 place t23_gsrivel 397 463 left
+  if var PLAYER_Y == 464 place t23_gsrivel 397 464 left
+  if var PLAYER_Y == 465 place t23_gsrivel 397 465 left
+  if var PLAYER_Y == 466 place t23_gsrivel 397 466 left
+  show t23_gsrivel
+  face player right
+  walk t23_gsrivel left 1
+  speaker "{rival}"
+  say "...So it was you who chased Team Rocket out of the well. Don't think that makes you strong."
+  say "Team Rocket ganging up on a few Slowpoke. Pathetic. I'll show you what real strength is!"
+  if starter "Chikorita" goto VsQuilava
+  if starter "Cyndaquil" goto VsCroconaw
+  battle t23_gsrivel as "johto_rival_silver"
+  goto Won
+label VsQuilava
+  battle t23_gsrivel as "johto_rival_silver_7"
+  goto Won
+label VsCroconaw
+  battle t23_gsrivel as "johto_rival_silver_10"
+label Won
+  say "Tch. My Pokémon just aren't strong enough yet. I'll get stronger ones, whatever it takes."
+  say "Don't get in my way again."
+  walk t23_gsrivel right 3 fast
+  hide t23_gsrivel
+  setvar VAR_UNK_4075 2
+  music area
+  endscene
+  end
+
+
+# The town's Slowpoke (T23_001)
+script Slowpoke
+  cry "Slowpoke"
+  text "The Slowpoke gave a long, slow yawn..."
+  end
+
+
+# T23_007: the old man, before and after the well
+script OldMan
+  if flag FLAG_BEAT_AZALEA_ROCKETS goto Back
+  say "The Slowpoke used to doze in every street of this town. Now there's not one to be seen."
+  say "Our town has long said a Slowpoke's yawn brings the rain. It hasn't rained properly in days."
+  end
+label Back
+  say "The Slowpoke are back! Look at them, yawning away as if nothing had happened."
+  end
+
+
+# T23_006: the charcoal man, before and after the well
+script Charcoal
+  if flag FLAG_BEAT_AZALEA_ROCKETS goto Back
+  say "Smell that? The charcoal kiln is going. Azalea's charcoal is the finest in Johto, so they say."
+  say "Though with Team Rocket hanging about the well, nobody's in the mood for buying."
+  end
+label Back
+  say "You ran Team Rocket out of the well? Then the kiln will be busy again. Thanks!"
+  end

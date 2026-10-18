@@ -1,0 +1,44 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Bill"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi there! I'm Bill, the one who made the PC storage system. Maybe you've used it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came to Ecruteak to see the city's old buildings, but my mum's just called me home to Goldenrod City."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! Come and visit me there. I've got an Eevee that needs a good trainer, and you look like one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "See you in Goldenrod!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "Eusine": [
+    {
+      "en": [
+        "Eusine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, a fellow seeker! My name is Eusine. I've followed the legendary Pokémon Suicune all the way here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They say three Pokémon sleep beneath this tower. Suicune may be among them. Morty agrees with me, you know."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "EusineTalk": [
+    {
+      "en": [
+        "Eusine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Suicune is the one I want to see. It's said to purify water wherever it runs. Imagine it!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Morty": [
+    {
+      "en": [
+        "Morty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Morty, Ecruteak's Gym Leader. Legend says a rainbow Pokémon will appear before a trainer it chooses."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've trained here all my life hoping to be that trainer. Something stirs in this tower today. I can feel it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Oh, it's you. I came to see the legendary Pokémon everyone talks about. There's nothing here but ashes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Since you're here, you can make yourself useful. Let's battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmph. I'm wasting my time. If there were a legendary Pokémon here, I'd have found it already."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

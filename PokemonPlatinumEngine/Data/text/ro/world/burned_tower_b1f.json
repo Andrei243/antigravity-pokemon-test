@@ -1,0 +1,77 @@
+{
+  "people": {
+    "d18r0102_tsure_poke_static_raikou": {
+      "name": {
+        "en": [
+          "Raikou"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d18r0102_tsure_poke_static_entei": {
+      "name": {
+        "en": [
+          "Entei"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d18r0102_tsure_poke_static_suicune": {
+      "name": {
+        "en": [
+          "Suicune"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d18r0102_minaki": {
+      "name": {
+        "en": [
+          "Eusine"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Suicune..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

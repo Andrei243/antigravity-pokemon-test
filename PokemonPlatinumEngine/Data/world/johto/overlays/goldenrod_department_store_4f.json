@@ -1,10 +1,7 @@
 {
-  // The Department Store's fourth floor (plan 20 · J5, part b). Its lift (warp 2) stays shut until it can carry anyone
+  // The Department Store's fourth floor (plan 20 · J5, part b). Its lift (warp 2) rides to every floor (plan 20 · J7).
   "area": "goldenrod_department_store_4f",
   "bgmTrack": "johto/goldenrod",
-  "locked": [
-    2
-  ],
   "people": {
     "t25r1004_shopm1_2": {
       "name": "Clerk",

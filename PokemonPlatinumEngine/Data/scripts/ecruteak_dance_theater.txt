@@ -1,0 +1,92 @@
+# Ecruteak City's Dance Theater (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T27R0501).
+#
+# VAR_UNK_410C: 0 before the player has come in, 1 while the grunt bothers the Kimono Girl, 2 once he is beaten, 3 once
+# the gentleman has given HM03, Surf (FLAG_GOT_HM03), 4 once the five dancers are on the stage (ecruteak.txt). The
+# red-haired boy's scene outside waits for both the Fog Badge and Surf (VAR_UNK_4079 3: ecruteak_gym.txt, and here).
+
+
+# T27R0501_013 and _015: the grunt on the stage, the first time the player comes in
+script OnEnter
+  if var VAR_UNK_410C != 0 end
+  scene "Team Rocket at the Dance Theater"
+  face t27r0501_rocketm t27r0501_dancer_3
+  speaker "Grunt"
+  say "Come on, give us a dance! What, you won't dance for Team Rocket? Then I'll take that Eevee off your hands instead!"
+  speaker "Kimono Girl"
+  say "Please, stop it! Somebody, help!"
+  setvar VAR_UNK_410C 1
+  endscene
+  end
+
+
+# T27R0501_003: the grunt
+script Grunt
+  face t27r0501_rocketm player
+  speaker "Grunt"
+  if var VAR_UNK_410C != 1 end
+  scene "The grunt at the Dance Theater"
+  music "johto/eye_mystery"
+  say "Who asked you? Team Rocket goes where it likes and takes what it wants. Get lost, or get hurt!"
+  battle self as "johto_team_rocket_grunt_26"
+  say "Tch! Whatever. Dancing's boring anyway. I'm out of here!"
+  fade out 0.4
+  hide t27r0501_rocketm
+  fade in
+  setflag FLAG_UNK_23A
+  setvar VAR_UNK_410C 2
+  music area
+  endscene
+  end
+
+
+# T27R0501_004: the girl Team Rocket bothered
+script Bothered
+  face t27r0501_dancer_3 player
+  speaker "Kimono Girl"
+  if var VAR_UNK_410C == 1 goto Help
+  say "Thank you for saving me. My Eevee and I would have been so frightened without you."
+  end
+label Help
+  say "That man won't leave me alone. Please, can't somebody make him go away?"
+  end
+
+
+# T27R0501_011 and _012: the gentleman comes over once the grunt has gone, and gives HM03
+script Surf
+  if var VAR_UNK_410C != 2 end
+  scene "The gentleman's thanks"
+  face t27r0501_gsgentleman player
+  call GiveSurf
+  endscene
+  end
+
+
+# T27R0501_000: the gentleman of the audience
+script Gentleman
+  face t27r0501_gsgentleman player
+  speaker "Gentleman"
+  if var VAR_UNK_410C == 2 goto Thanks
+  if flag FLAG_GOT_HM03 goto Given
+  say "I never miss a performance. My Psyduck enjoys it as much as I do."
+  end
+label Thanks
+  scene "The gentleman asked"
+  call GiveSurf
+  endscene
+  end
+label Given
+  say "Surf lets a Pokémon carry you over the water. With the Fog Badge, you'll be able to use it outside of battle."
+  end
+
+script GiveSurf
+  speaker "Gentleman"
+  say "That was splendid! You stood up to that ruffian when the rest of us only watched. I'm ashamed of myself."
+  say "Please, accept this. It's a technique I treasure, but you'll put it to far better use."
+  give "HM03"
+  setflag FLAG_GOT_HM03
+  setvar VAR_UNK_410C 3
+  setvar VAR_UNK_4090 1
+  if badge fog setvar VAR_UNK_4079 3
+  say "That's Surf. A Pokémon that knows it can carry you over the water once you have Morty's Fog Badge."
+  return

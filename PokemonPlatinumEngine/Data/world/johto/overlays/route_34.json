@@ -1,7 +1,7 @@
 {
   // Route 34 (plan 20 · J5, part b): from Ilex Forest's gate north to Goldenrod City, past the Pokémon Day Care. The
-  // Day-Care Man runs the common script of every Day Care. Officer Keith, who battles in HeartGold only after dark,
-  // stands here at every hour for now (his daytime double, who only talks, is left out). The friend with the Marill and
+  // Day-Care Man runs the common script of every Day Care. Officer Keith battles only after dark, as in HeartGold;
+  // by day his double stands on his tile and only talks (plan 20 · J7, scripts/route_34.txt). The friend with the Marill and
   // Cameron are later chapters'
   "area": "route_34",
   "bgmTrack": "johto/route34",
@@ -33,8 +33,12 @@
       "trainer": {
         "dialogueBefore": "Officer Keith: Out on the road at this hour? Let's see some proof you can look after yourself!",
         "dialogueAfter": "Officer Keith: All right, you can handle yourself. Off you go, then."
-      },
-      "hiddenBy": ""
+      }
+    },
+    // His daytime double on the same tile (HeartGold's FLAG_UNK_1D1), who only talks
+    "r34_policeman_2": {
+      "name": "Officer",
+      "dialog": [ "Afternoon! I patrol this road by day. It's after dark you want to watch yourself out here." ]
     },
     "r34_campboy_2": {
       "name": "Todd",

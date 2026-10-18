@@ -8,14 +8,6 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
-        "en": [
-          "Ecruteak City is up Route 37, just west of here. It's the old city of the two towers."
-        ],
-        "text": [
-          ""
-        ]
       }
     },
     "r36_gsgirl1": {
@@ -26,10 +18,32 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
+      }
+    },
+    "r36_usokky": {
+      "name": {
         "en": [
-          "From here you can see all the way to Violet City. I love this route!"
+          "Strange Tree"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r36_gsgirl1_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r36_gsboy1_2": {
+      "name": {
+        "en": [
+          "Arthur"
         ],
         "text": [
           ""

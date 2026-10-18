@@ -628,6 +628,40 @@ public class WildEncounterTests
     // ================================================================== roaming Pokémon
 
     [Fact]
+    public void JohtosRoamersMoveAmongJohtosRoutesAsThePlayerGoesAndKeepTheirHp()
+    {
+        // Plan 20 · J7: HeartGold's Raikou and Entei, set loose by the Burned Tower, roam its sixteen routes of Johto by
+        // the same rules as Platinum's (field_roamer.c's sRoamerLocations and sRoamerAdjacencyTable), never Sinnoh's
+        var state = new SpecialEncounters { PreviousPlace = "route_29" };
+        var rng = new Random(5);
+        int raikou = Roamers.SlotOf("Raikou")!.Value;
+        Roamers.SetLoose(state, raikou, rng);
+        var roamer = state.Roamers[raikou];
+        Assert.Equal(40, roamer.Level);
+        var seen = new HashSet<string>();
+        for (int i = 0; i < 200; i++)
+        {
+            Roamers.PlayerWalkedInto(state, i % 2 == 0 ? "route_30" : "route_31", rng);
+            seen.Add(Roamers.PlaceOf(roamer)!);
+        }
+        Assert.All(seen, place => Assert.Contains(place, Roamers.JohtoRoutes));
+        Assert.True(seen.Count > 4, $"Raikou only went to {string.Join(", ", seen)}");
+        Assert.DoesNotContain(Roamers.Routes, seen.Contains);
+        // A battle it comes out of on its feet leaves it the HP it had
+        var foe = Roamers.ToBattle(roamer);
+        foe.CurrentHP = 10;
+        Roamers.AfterBattle(state, foe, won: false, caught: false, Roamers.PlaceOf(roamer), new PokemonPlatinumEngine.Story.StoryState(), rng);
+        Assert.True(roamer.Active);
+        Assert.Equal(10, roamer.Pokemon!.CurrentHP);
+        // A save from before Johto's two were added is given their slots as it is read
+        var old = new SpecialEncounters();
+        old.Roamers.RemoveRange(6, old.Roamers.Count - 6);
+        var read = System.Text.Json.JsonSerializer.Deserialize<SpecialEncounters>(System.Text.Json.JsonSerializer.Serialize(old))!;
+        Assert.Equal(Roamers.Slots.Length, read.Roamers.Count);
+        Assert.Equal("Entei", read.Roamers[^1].Species);
+    }
+
+    [Fact]
     public void ARoamerSetLooseIsMadeAtFullHealthSomewhereNew()
     {
         // RoamingPokemon_ActivateSlot: Mesprit at 50, Cresselia at 50, the birds at 60; HP full, no condition
@@ -640,7 +674,7 @@ public class WildEncounterTests
         Assert.Equal(made.MaxHP, made.CurrentHP);
         Assert.NotEqual("route_202", Roamers.PlaceOf(mesprit));
         Assert.NotEqual("route_201", Roamers.PlaceOf(mesprit));   // MoveRoamerRandom never stays where it was (index 0 at first)
-        Assert.Equal(new[] { 50, 50, 40, 60, 60, 60 }, Roamers.Slots.Select(s => s.Level));
+        Assert.Equal(new[] { 50, 50, 40, 60, 60, 60, 40, 40 }, Roamers.Slots.Select(s => s.Level));   // and HeartGold's Raikou and Entei (plan 20 · J7)
         Assert.Null(Roamers.SlotOf("Bidoof"));
     }
 

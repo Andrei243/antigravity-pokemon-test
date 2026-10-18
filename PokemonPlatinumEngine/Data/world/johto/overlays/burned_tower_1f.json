@@ -1,10 +1,32 @@
 {
-  // The Burned Tower's ground floor (plan 20 · J5, part b): what the fire left of it, with two Firebreathers among the
-  // ashes. The rival, Eusine, Morty and the three beasts below are the next chapter's (plan 20 · J7); the cracked rocks
-  // are the field's own obstacles
+  // The Burned Tower's ground floor (plan 20 · J5, part b): HeartGold's cave, our words, and two Firebreathers by their
+  // own records. Plan 20 · J7 (scripts/burned_tower_1f.txt): Eusine, who has chased Suicune here, introduces himself
+  // (trigger 0), the red-haired boy battles by the hole in the floor (trigger 1), and Morty is looking into the
+  // tower's legend; all three are gone once the three Pokémon below have fled. Its charred look is still the
+  // stand-in a later session paints
   "area": "burned_tower_1f",
   "bgmTrack": "johto/burned_tower",
+  "triggers": [
+    { "trigger": 0, "script": "Eusine" },
+    { "trigger": 1, "script": "Rival" }
+  ],
   "people": {
+    "d18r0101_gsrivel": {
+      "name": "{rival}",
+      "npcType": "Silver",
+      "still": true,
+      "dialog": [ "..." ]
+    },
+    "d18r0101_minaki": {
+      "name": "Eusine",
+      "script": "EusineTalk",
+      "still": true
+    },
+    "d18r0101_gsleader4": {
+      "name": "Morty",
+      "script": "Morty",
+      "still": true
+    },
     "d18r0101_fire": {
       "name": "Richard",
       "trainer": {

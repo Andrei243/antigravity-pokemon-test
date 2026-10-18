@@ -1,81 +1,71 @@
 {
-  // The Ecruteak Dance Theater (plan 20 · J5, part b): the Kimono Girls on their stage and their audience. Their first
-  // meeting with the player and the gift of Surf are the next chapter's (plan 20 · J7), as is the Rocket in the stalls
+  // Ecruteak City's Dance Theater (plan 20 · J5, part b; plan 20 · J7, scripts/ecruteak_dance_theater.txt): a grunt of
+  // Team Rocket bothers a Kimono Girl on the stage the first time the player comes in (HeartGold's FLAG_UNK_23A, the
+  // girl FLAG_UNK_23B); once he is beaten the gentleman of the audience gives HM03, Surf (the area's triggers 0 and 1,
+  // or spoken to). After the Fog Badge and the red-haired boy's visit the five Kimono Girls take the stage
+  // (FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS) and the audience goes home (FLAG_UNK_241)
   "area": "ecruteak_dance_theater",
   "bgmTrack": "johto/ecruteak",
+  "triggers": [
+    { "trigger": 0, "script": "Surf" },
+    { "trigger": 1, "script": "Surf" }
+  ],
   "people": {
     "t27r0501_gsoldwoman1": {
       "name": "Old Woman",
       "still": true,
-      "dialog": [
-        "Those girls have danced here since they were tiny. Such grace!"
-      ],
-      "hiddenBy": ""
+      "dialog": [ "Those girls have danced here since they were tiny. Such grace!" ]
     },
     "t27r0501_gsman1": {
       "name": "Man",
-      "dialog": [
-        "Each of the Kimono Girls has an Eevee, and each one evolved differently. Isn't that something?"
-      ],
-      "hiddenBy": ""
+      "dialog": [ "Each of the Kimono Girls has an Eevee, and each one evolved differently. Isn't that something?" ]
     },
     "t27r0501_gsgentleman": {
       "name": "Gentleman",
-      "still": true,
-      "dialog": [
-        "I never miss a performance. My Psyduck enjoys it as much as I do."
-      ],
-      "hiddenBy": ""
+      "script": "Gentleman",
+      "still": true
     },
     "t27r0501_tsure_poke_static_psyduck": {
       "name": "Psyduck",
       "npcType": "Pokemon",
       "species": "Psyduck",
       "still": true,
-      "dialog": [
-        "Psyduck: Psy... duck?"
-      ],
-      "hiddenBy": ""
+      "dialog": [ "Psyduck: Psy... duck?" ]
+    },
+    "t27r0501_rocketm": {
+      "name": "Grunt",
+      "script": "Grunt",
+      "still": true
+    },
+    "t27r0501_dancer_3": {
+      "name": "Kimono Girl",
+      "script": "Bothered",
+      "still": true
     },
     "t27r0501_dancer": {
       "name": "Kimono Girl",
       "still": true,
-      "dialog": [
-        "We dance for the Pokémon of the towers, as the dancers before us did."
-      ],
-      "hiddenBy": ""
+      "dialog": [ "We dance for the Pokémon of the towers, as the dancers before us did." ]
     },
     "t27r0501_dancer_2": {
       "name": "Kimono Girl",
       "still": true,
-      "dialog": [
-        "Please don't mind us. We're only practising."
-      ],
-      "hiddenBy": ""
-    },
-    "t27r0501_dancer_3": {
-      "name": "Kimono Girl",
-      "still": true,
-      "dialog": [
-        "My Eevee and I have danced together since we were both very small."
-      ],
-      "hiddenBy": ""
+      "dialog": [ "Please don't mind us. We're only practising." ]
     },
     "t27r0501_dancer_4": {
       "name": "Kimono Girl",
       "still": true,
-      "dialog": [
-        "A dance is a kind of prayer, my teacher says."
-      ],
-      "hiddenBy": ""
+      "dialog": [ "A dance is a kind of prayer, my teacher says." ]
     },
     "t27r0501_dancer_5": {
       "name": "Kimono Girl",
       "still": true,
-      "dialog": [
-        "Have you come to watch? Then sit and enjoy it."
-      ],
-      "hiddenBy": ""
+      "dialog": [ "Have you come to watch? Then sit and enjoy it." ]
+    },
+    "t27r0501_dancer_6": {
+      "name": "Kimono Girl",
+      "still": true,
+      "dialog": [ "My Eevee and I have danced together since we were both very small. Thank you for helping me." ]
     }
   },
   "signs": {

@@ -68,6 +68,9 @@ var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")
 importer.AddLaterMachines(species, items);
 importer.AddTechnicalRecords(species, items);
 var marts = importer.Marts();
+// Counters of other regions's own (plan 20 · J7: the Goldenrod Department Store's, from HeartGold's src/scrcmd_mart.c), which
+// Platinum's lists don't have: Overrides/marts.json's specialties, laid over the imported ones
+Overrides.AddMarts(marts, Path.Combine(overrides, "marts.json"));
 var contests = importer.Contests();
 contests.Backdrops = importer.Backdrops();
 var seals = importer.Seals();
@@ -211,6 +214,15 @@ static void Check(List<PokemonSpecies> species, List<MoveData> moves, List<Abili
 /// a name the import doesn't have adds a whole new entry.</summary>
 static class Overrides
 {
+    /// <summary>The specialty counters of <c>Overrides/marts.json</c> (<c>{ "specialties": { key: [items] } }</c>), added to the imported ones.</summary>
+    public static void AddMarts(PokemonPlatinumEngine.Data.MartData marts, string path)
+    {
+        if (!File.Exists(path)) return;
+        var node = JsonNode.Parse(File.ReadAllText(path), documentOptions: new() { CommentHandling = System.Text.Json.JsonCommentHandling.Skip, AllowTrailingCommas = true })!.AsObject();
+        foreach (var (key, stock) in node["specialties"]!.AsObject())
+            marts.Specialties[key] = stock!.AsArray().Select(i => (string)i!).ToList();
+    }
+
     public static List<T> Apply<T>(List<T> records, string path)
     {
         if (!File.Exists(path)) return records;

@@ -354,7 +354,7 @@ Plan 06 · R13. What the game remembers of its wild Pokémon beyond the tables (
 | `honeytree battle` | Battles whatever came to the tree faced, which takes the honey with it. A battle lost ends the script. |
 | `swarms on` | Swarms begin (`SpecialEncounter_EnableSwarms`): from now on one place of 22 has one each day. |
 | `trophygarden` | Mr. Backlot brings one more Pokémon to the Trophy Garden (`TrophyGarden_AddNewMon`); `{trophygarden}` names it. |
-| `roamer start "Mesprit"` | Sets a roaming Pokémon loose (`RoamingPokemon_ActivateSlot`): Mesprit, Cresselia, Darkrai, Moltres, Zapdos or Articuno, made afresh at its level and full HP, somewhere at random. |
+| `roamer start "Mesprit"` | Sets a roaming Pokémon loose (`RoamingPokemon_ActivateSlot`): Mesprit, Cresselia, Darkrai, Moltres, Zapdos or Articuno, made afresh at its level and full HP, somewhere at random; Raikou or Entei (plan 20 · J7, HeartGold's two) roam Johto's routes instead. |
 | `lottery draw` | The Lottery Corner's draw (plan 06 · R14a; `Models/Lottery.cs`): `RESULT` is how many of the day's ticket's digits, from the right, match the ID number of the original trainer of a Pokémon on the team or in the boxes, at best (0 to 5); `{winner}` names it. |
 | `berry status` | The patch of soil the script belongs to (plan 06 · R14a; `Overworld/BerryPatches.cs`): `RESULT` is its stage, 0 bare, 1 planted, 2 sprouted, 3 growing, 4 in flower, 5 in fruit; `{berry}` and `{yield}` say what grows and how many. |
 | `berry mulched` | `RESULT` 1 when mulch is laid on the patch, and `{mulch}` names it. |

@@ -1,0 +1,162 @@
+{
+  "people": {
+    "t23gym0102_gsleader2": {
+      "name": {
+        "en": [
+          "Bugsy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23gym0102_gsboy3": {
+      "name": {
+        "en": [
+          "Al"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Al: The carts only go one way at a time. So do I: straight at you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Al: Squashed flat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23gym0102_gsboy3_2": {
+      "name": {
+        "en": [
+          "Benny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Benny: My Beedrill's sting is legendary in this Gym!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Benny: Legend over, I guess."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23gym0102_gsboy3_3": {
+      "name": {
+        "en": [
+          "Josh"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Josh: You won't get to Bugsy without getting past me and my Paras!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Josh: Okay, you got past me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23gym0102_gsbabygirl1_2": {
+      "name": {
+        "en": [
+          "Amy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Amy: We love bugs! Bugsy taught us everything!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Amy: We still love bugs, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23gym0102_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Mimi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Mimi: Two bugs are better than one!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Mimi: Two bugs weren't better this time."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T23GYM0102_014+1": {
+      "en": [
+        "A lever for the carts' tracks. It's set so each cart runs straight across."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T23GYM0102_015+1": {
+      "en": [
+        "A lever for the carts' tracks. It's set so each cart runs straight across."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

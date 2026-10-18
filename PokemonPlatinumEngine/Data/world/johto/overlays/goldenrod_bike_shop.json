@@ -1,15 +1,12 @@
 {
-  // The Bike Shop (plan 20 · J5, part b). Its loan of a Bicycle is the next chapter's (plan 20 · J7)
+  // The Bike Shop (plan 20 · J5, part b). Its owner lends the player a Bicycle (plan 20 · J7, scripts/goldenrod_bike_shop.txt)
   "area": "goldenrod_bike_shop",
   "bgmTrack": "johto/goldenrod",
   "people": {
     "t25r0201_gsmiddleman1": {
       "name": "Owner",
-      "still": true,
-      "dialog": [
-        "Welcome to my Bike Shop! I only just moved here from Kanto, so business is slow.",
-        "Nobody in Johto has heard of me yet. One day everybody will be riding my bikes!"
-      ]
+      "script": "Owner",
+      "still": true
     }
   },
   "signs": {

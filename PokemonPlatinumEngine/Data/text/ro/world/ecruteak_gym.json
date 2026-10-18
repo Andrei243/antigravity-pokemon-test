@@ -1,0 +1,156 @@
+{
+  "people": {
+    "t27gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27gym0101_gsleader4": {
+      "name": {
+        "en": [
+          "Morty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27gym0101_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Morty isn't here. He's gone to the Burned Tower."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27gym0101_itako": {
+      "name": {
+        "en": [
+          "Georgina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Medium Georgina: The path is there for those who can see it. Can you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Medium Georgina: You see more than most."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27gym0101_itako_2": {
+      "name": {
+        "en": [
+          "Grace"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Medium Grace: My Haunter float over the holes. You'd better watch your step!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Medium Grace: You didn't fall in. How?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27gym0101_itako_3": {
+      "name": {
+        "en": [
+          "Edith"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Medium Edith: Morty trains to see what others can't. So do we!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Medium Edith: I didn't see that coming."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27gym0101_itako_4": {
+      "name": {
+        "en": [
+          "Martha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Medium Martha: You've come so far without falling. The spirits must favour you."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Medium Martha: The spirits favour you twice over."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T27GYM0101_005+1": {
+      "en": [
+        "Ecruteak City Pokémon Gym\nLeader: Morty"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

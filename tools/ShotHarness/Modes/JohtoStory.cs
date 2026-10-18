@@ -8,7 +8,7 @@ partial class Harness
     /// Violet City and Route 32's head (<c>jst01</c> to <c>jst22</c>), through the game's own steps, <c>TryInteract</c>
     /// and arrivals. It wins every battle a scene starts (the lead never tires) and prints what each scene left behind.
     /// </summary>
-    private void JohtoScenes()
+    private void JohtoScenes(bool second = false)
     {
         var story = game.Story;
         DialogueManager Box() => game.Dialogue;
@@ -95,6 +95,26 @@ partial class Harness
                 + $"Pokégear {story.Has("FLAG_GOT_POKEGEAR")}, map card {story.Has("FLAG_GOT_MAP_CARD")}, Pokédex {story.Has(StoryState.PokedexFlag)}, "
                 + $"shoes {story.Has(StoryState.RunningShoesFlag)}, Zephyr Badge {story.HasBadge("Johto", "Zephyr")}, "
                 + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        // The second chapter (plan 20 · J7) is played in a new game set as the first leaves it, at the mode's end
+        if (second)
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.State = GameState.Overworld;
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            foreach (string flag in new[] { "FLAG_GOT_POKEGEAR", "FLAG_GOT_STARTER", "FLAG_GOT_MAP_CARD", "FLAG_GOT_MYSTERY_EGG",
+                         "FLAG_GAVE_MYSTERY_EGG_TO_ELM", "FLAG_HIDE_NEW_BARK_RIVAL", "FLAG_HIDE_MR_POKEMONS_HOUSE_OAK",
+                         "FLAG_HIDE_CHERRYGROVE_GUIDE_GENT", StoryState.PokedexFlag, StoryState.RunningShoesFlag })
+                story.Set(flag);
+            story.SetVar("VAR_SCENE_PLAYERS_HOUSE_1F", 1);
+            story.SetVar("VAR_SCENE_ELMS_LAB", 5);
+            story.ChooseStarter("Cyndaquil");
+            story.GiveBadge("Johto", "Zephyr");
+            game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 40));
+            goto ChapterTwo;
+        }
 
         // A new game of Johto, from its first step
         engine.NewGameRegion = "Johto";
@@ -202,5 +222,151 @@ partial class Harness
         ReadTo("That's the Zephyr Badge"); Frames(10); Shot("jst24_route_32");
         ReadTo(null);
         Left("the chapter's end");
+        return;
+
+    // ================= The second chapter (plan 20 · J7): the Slowpoke Well to the Fog Badge (jst30 to jst57)
+    ChapterTwo:
+        void Second(string what) =>
+            Console.WriteLine($"  {what}: well {story.Var("VAR_UNK_4080")}, rival {story.Var("VAR_UNK_4075")}, ecruteak {story.Var("VAR_UNK_4079")}, "
+                + $"theater {story.Var("VAR_UNK_410C")}, rockets beaten {story.Has("FLAG_BEAT_AZALEA_ROCKETS")}, HM01 {story.Has("FLAG_GOT_HM01")}, "
+                + $"tree {story.Has("FLAG_HIDE_ROUTE_36_SUDOWOODO")}, Bill {story.Has("FLAG_SYS_MET_BILL")}, radio {story.Has("FLAG_GOT_RADIO_CARD")}, "
+                + $"badges {string.Join(", ", new[] { "Zephyr", "Hive", "Plain", "Fog" }.Where(b => story.HasBadge("Johto", b)))}, "
+                + $"roaming {string.Join(", ", game.Encounters.Roamers.Where(r => r.Active).Select(r => $"{r.Species} on {Roamers.PlaceOf(r)}"))}, "
+                + $"team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+        void Answer(int pick)
+        {
+            for (int i = 0; i < 900 && !engine.Choice.IsOpen; i++)
+            {
+                if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+                else Frames(1);
+            }
+            Frames(10);
+            engine.Choice.Move(pick);
+            engine.Choice.Confirm();
+            Frames(4);
+        }
+        var lead = game.Party.Members[0];
+
+        // ---- Azalea Town: the grunt by the well, and Kurt's run
+        StepOnto("Johto", 434, 466, Direction.Up);
+        ReadTo("Nobody goes near that well"); Frames(10); Shot("jst30_the_shove");
+        ReadTo(null);
+        TalkTo("Azalea_KurtsHouse", "t23r0501_gantetsu");
+        ReadTo("Stand aside!"); Frames(10); Shot("jst31_kurt");
+        ReadTo(null);
+        Second("Kurt has gone");
+
+        // ---- the Slowpoke Well: Proton, Kurt and the Lure Ball
+        TalkTo("SlowpokeWell_B1F", "d26r0102_rkanbum3");
+        ReadTo("I'm Proton"); Frames(10); Shot("jst32_proton");
+        IntoBattle("Proton's battle");
+        ToMainMenu(game.Battle); Shot("jst33_protons_battle");
+        Win();
+        ReadTo("They've gone!"); Frames(10); Shot("jst34_kurt_in_the_well");
+        ReadTo("one of my own"); Frames(10); Shot("jst35_kurts_thanks");
+        ReadTo(null);
+        Second("the well cleared");
+
+        // ---- the Azalea Gym: its carts, Bugsy and the Hive Badge
+        At("Azalea_Gym", 9, 35, Direction.Up); Frames(30); Shot("jst36_azalea_gym");
+        TalkTo("Azalea_Gym", "t23gym0102_gsleader2");
+        ReadTo("I'm Bugsy"); Frames(10); Shot("jst37_bugsy");
+        IntoBattle("Bugsy's battle");
+        Win();
+        ReadTo("received the Hive Badge"); Frames(10); Shot("jst38_the_hive_badge");
+        ReadTo(null);
+        lead.CurrentHP = lead.MaxHP;
+
+        // ---- the red-haired boy at the gate to Ilex Forest
+        StepOnto("Johto", 395, 463, Direction.Left);
+        ReadTo("chased Team Rocket out of the well"); Frames(10); Shot("jst39_the_rival_in_azalea");
+        IntoBattle("the rival's battle");
+        Win();
+        ReadTo(null);
+
+        // ---- Ilex Forest: the apprentice, both Farfetch'd and HM01
+        At("IlexForest", 15, 67, Direction.Up); Frames(30); Shot("jst40_the_apprentice");
+        foreach (string bird in new[] { "d36r0101_tsure_poke_static_farfetchd", "d36r0101_tsure_poke_static_farfetchd_2" })
+            for (int tries = 0; tries < 3; tries++)
+            {
+                var ff = game.Map.Name == "IlexForest" ? game.Map.NPCs.FirstOrDefault(n => n.Key == bird) : null;
+                if (ff == null) { At("IlexForest", 15, 67, Direction.Up); ff = game.Map.NPCs.FirstOrDefault(n => n.Key == bird); }
+                if (ff == null) break;
+                At("IlexForest", ff.GridX + 1, ff.GridY, Direction.Left);
+                game.Interact();
+                if (tries == 0 && bird.EndsWith("farfetchd")) { Until(() => Box().IsActive, "the bird's cry"); Frames(20); Shot("jst41_a_farfetchd"); }
+                ReadTo(null);
+            }
+        ReadTo(null);
+        Second("both birds found");
+        Shot("jst42_hm01");
+
+        // ---- Goldenrod City: the SquirtBottle, the Bicycle and the Radio Card (Whitney's Badge is given)
+        story.GiveBadge("Johto", "Plain");
+        TalkTo("Goldenrod_FlowerShop", "t25r0601_gswoman1");
+        ReadTo("give the tree a good squirt"); Frames(10); Shot("jst43_the_squirtbottle");
+        ReadTo(null);
+        TalkTo("Goldenrod_BikeShop", "t25r0201_gsmiddleman1");
+        ReadTo("Ride it everywhere you go"); Frames(10); Shot("jst44_the_bicycle");
+        ReadTo(null);
+        TalkTo("Goldenrod_RadioTower_1F", "d23r0101_gswoman6_3");
+        foreach (int pick in new[] { 0, 0, 0, 1, 0, 1 }) Answer(pick);
+        ReadTo("Here's your prize"); Frames(10); Shot("jst45_the_radio_card");
+        ReadTo(null);
+
+        // ---- Route 36: the strange tree watered and battled, and the way north
+        TalkTo("Johto", "r36_usokky", 1, 0);
+        ReadTo("Use the SquirtBottle on it?"); Frames(10); Shot("jst46_the_strange_tree");
+        IntoBattle("the tree's battle");
+        ToMainMenu(game.Battle); Shot("jst47_sudowoodo");
+        Win();
+        ReadTo("These are from my sister's garden"); Frames(10); Shot("jst48_the_sister");
+        ReadTo(null);
+        Second("the tree gone");
+        lead.CurrentHP = lead.MaxHP;
+
+        // ---- Ecruteak City: Bill, the Burned Tower and the three set loose
+        ComeThrough("Ecruteak_PokemonCenter_1F", 8, 18, Direction.Up);
+        ReadTo("I'm Bill"); Frames(10); Shot("jst49_bill");
+        ReadTo(null);
+        StepOnto("BurnedTower_1F", 22, 19, Direction.Up);
+        ReadTo("Let's battle!"); Frames(10); Shot("jst50_the_rival_in_the_burned_tower");
+        IntoBattle("the rival's battle in the tower");
+        Win();
+        ReadTo(null);
+        StepOnto("BurnedTower_B1F", 20, 16, Direction.Left);
+        ReadTo("The three Pokémon have woken up!"); Frames(10); Shot("jst51_the_three_wake");
+        ReadTo("Was that... Suicune?"); Frames(10); Shot("jst52_eusine");
+        ReadTo(null);
+        Second("the three set loose");
+
+        // ---- the Dance Theater: the grunt and Surf
+        ComeThrough("Ecruteak_DanceTheater", 7, 16, Direction.Up);
+        ReadTo("Somebody, help!"); Frames(10); Shot("jst53_the_grunt_on_the_stage");
+        ReadTo(null);
+        TalkTo("Ecruteak_DanceTheater", "t27r0501_rocketm");
+        IntoBattle("the grunt's battle");
+        Win();
+        ReadTo(null);
+        StepOnto("Ecruteak_DanceTheater", 3, 8, Direction.Up);
+        ReadTo("That's Surf."); Frames(10); Shot("jst54_surf");
+        ReadTo(null);
+
+        // ---- Morty and the Fog Badge, and the Kimono Girls on their stage
+        ComeThrough("Ecruteak_Gym", 16, 52, Direction.Up);
+        Frames(20); Shot("jst55_ecruteak_gym");
+        TalkTo("Ecruteak_Gym", "t27gym0101_gsleader4");
+        ReadTo("Good of you to come."); Frames(10); Shot("jst56_morty");
+        IntoBattle("Morty's battle");
+        Win();
+        ReadTo("received the Fog Badge"); Frames(10); Shot("jst57_the_fog_badge");
+        ReadTo(null);
+        StepOnto("Johto", 397, 174, Direction.Up);
+        ReadTo("Watch where you're going!"); Frames(10); Shot("jst58_the_rival_in_ecruteak");
+        ReadTo(null);
+        ComeThrough("Ecruteak_DanceTheater", 7, 16, Direction.Up);
+        Frames(20); Shot("jst59_the_kimono_girls");
+        Second("the chapter's end");
     }
 }

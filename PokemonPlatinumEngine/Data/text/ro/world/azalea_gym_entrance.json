@@ -1,0 +1,24 @@
+{
+  "people": {
+    "t23gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T23GYM0101_001+1": {
+      "en": [
+        "Azalea Town Pokémon Gym\nLeader: Bugsy"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

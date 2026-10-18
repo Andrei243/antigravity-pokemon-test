@@ -1,0 +1,116 @@
+# The Azalea Gym (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T23GYM0102).
+#
+# Bugsy battles, gives the Hive Badge (`givebadge hive`) and TM89, U-turn (FLAG_GOT_TM89_FROM_BUGSY), and his four
+# trainers count beaten, as the original's script sets their trainer flags. The twelve docks of the Spinarak carts
+# (the room's triggers) each ride the player across the web to the dock facing it (CartRide): HeartGold's carts run
+# on tracks its two levers turn, which are left out here (docs/mechanics/rulings.md, "Johto's second chapter").
+
+
+script Bugsy
+  face t23gym0102_gsleader2 player
+  speaker "Bugsy"
+  if badge hive goto Won
+  scene "Bugsy"
+  say "I'm Bugsy! I never lose when it comes to Bug Pokémon. I've studied every one of them, inside and out."
+  say "Let me show you what I've learned!"
+  battle self as "johto_leader_bugsy_bugsy"
+  say "Whoa, amazing! You really know your stuff. Okay, you win. This is yours: the Hive Badge!"
+  givebadge hive
+  text "{player} received the Hive Badge from Bugsy!"
+  defeat "johto_bug_catcher_al"
+  defeat "johto_bug_catcher_benny"
+  defeat "johto_bug_catcher_josh"
+  defeat "johto_twins_amy_and_mimi"
+  say "With the Hive Badge, Pokémon up to level thirty will obey you, and you can use Cut outside of battle."
+  endscene
+label Tm
+  say "Here, take this as well. It's a move my Bug Pokémon love."
+  give "TM89"
+  setflag FLAG_GOT_TM89_FROM_BUGSY
+  say "TM89 is U-turn. Your Pokémon hits the foe, then swaps out for another. Hit and run, just like a bug!"
+  end
+label Won
+  if not flag FLAG_GOT_TM89_FROM_BUGSY goto Tm
+  say "Bug Pokémon are so deep. There's always something new to learn about them. I'm going to keep studying!"
+  end
+
+
+# A ride on a Spinarak cart across the web: the sound of the cart, the dark, and the dock on the far side
+script Cart0
+  call CartOut
+  place player 3 24 up
+  fade in
+  end
+
+script Cart1
+  call CartOut
+  place player 9 24 up
+  fade in
+  end
+
+script Cart2
+  call CartOut
+  place player 15 24 up
+  fade in
+  end
+
+script Cart3
+  call CartOut
+  place player 3 32 down
+  fade in
+  end
+
+script Cart4
+  call CartOut
+  place player 9 32 down
+  fade in
+  end
+
+script Cart5
+  call CartOut
+  place player 15 32 down
+  fade in
+  end
+
+script Cart6
+  call CartOut
+  place player 3 9 up
+  fade in
+  end
+
+script Cart7
+  call CartOut
+  place player 9 9 up
+  fade in
+  end
+
+script Cart8
+  call CartOut
+  place player 15 9 up
+  fade in
+  end
+
+script Cart9
+  call CartOut
+  place player 3 17 down
+  fade in
+  end
+
+script Cart10
+  call CartOut
+  place player 9 17 down
+  fade in
+  end
+
+script Cart11
+  call CartOut
+  # the middle island has no dock under this one: its cart runs along the web to the middle dock
+  place player 9 17 down
+  fade in
+  end
+
+script CartOut
+  sound "lift"
+  fade out 0.3
+  return

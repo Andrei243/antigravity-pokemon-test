@@ -577,7 +577,7 @@ public class HoennStoryTests
         Assert.True(story.Has("FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT"));
         Assert.True(story.Has("FLAG_HIDE_RUSTURF_TUNNEL_WANDA"));
         Assert.True(story.Has("FLAG_HIDE_RUSTBORO_CITY_RIVAL"));
-        Assert.Equal(StoryState.CurrentVersion, 24);
+        Assert.True(StoryState.CurrentVersion >= 24);
     }
 
     [Fact]

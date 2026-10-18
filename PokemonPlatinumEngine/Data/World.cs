@@ -412,6 +412,30 @@ public static class WorldMapBuilder
             foreach (var (x, z) in vague) map.SetGroundTile(x, z, TileType.Floor, map.IsSolid(x, z));
             foreach (var (x, z) in blank) map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
             if (world.Index.BuildingsAtDoors) Furnish(map, furniture, entrances);
+            // A DS game's room longer than a chunk (plan 20 · J7: the Azalea Gym, whose islands only its carts join) is
+            // walled where neither its ways in nor its triggers reach, as a room of one chunk is: the chunks' open floor
+            // round the hall is no part of it
+            else if (reach == null && matrix.Width * matrix.Height > 1)
+            {
+                var seeds = new HashSet<(int X, int Z)>(entrances);
+                foreach (string key in areas.Keys)
+                    foreach (var t in world.Area(key)?.Triggers ?? new())
+                        for (int z = t.Z; z < t.Z + Math.Max(1, t.Depth); z++)
+                            for (int x = t.X; x < t.X + Math.Max(1, t.Width); x++) seeds.Add((x, z));
+                var walked = new bool[map.Width * map.Height];
+                var open = new Stack<(int X, int Z)>(seeds);
+                while (open.Count > 0)
+                {
+                    var (x, z) = open.Pop();
+                    if (!map.InBounds(x, z) || walked[z * map.Width + x]) continue;
+                    if (map.IsSolid(x, z) && !entrances.Contains((x, z))) continue;
+                    walked[z * map.Width + x] = true;
+                    open.Push((x + 1, z)); open.Push((x - 1, z)); open.Push((x, z + 1)); open.Push((x, z - 1));
+                }
+                for (int z = 0; z < map.Height; z++)
+                    for (int x = 0; x < map.Width; x++)
+                        if (!walked[z * map.Width + x] && !map.IsSolid(x, z)) map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+            }
             else if (reach != null)
             {
                 // What no way in reaches is wall, and the back wall is the row before the first that is walked on

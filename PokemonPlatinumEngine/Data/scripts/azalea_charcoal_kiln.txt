@@ -1,0 +1,33 @@
+# The charcoal kiln in Azalea Town (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T23R0201): the master's word before the well, while his apprentice is lost in Ilex Forest
+# and once HM01 is given; the apprentice's Charcoal once he is home (FLAG_GOT_CHARCOAL_FROM_AZALEA_TOWN_MAN).
+
+
+script Master
+  if flag FLAG_GOT_HM01 goto Home
+  if flag FLAG_BEAT_AZALEA_ROCKETS goto Lost
+  say "With Team Rocket in town and the Slowpoke gone, nobody's got the heart for work. Even the kiln's gone cold."
+  end
+label Lost
+  say "My apprentice took our two Farfetch'd into Ilex Forest to cut wood, and he still isn't back."
+  say "That boy. Without wood there's no charcoal, and without charcoal there's no work. I'll go and fetch him myself."
+  end
+label Home
+  say "Thanks to you, the boy's back with both birds, and the kiln's burning again. Azalea's charcoal is the best there is!"
+  end
+
+
+script Apprentice
+  if flag FLAG_GOT_HM01 goto Home
+  say "I'll find wood. Just watch me!"
+  end
+label Home
+  if flag FLAG_GOT_CHARCOAL_FROM_AZALEA_TOWN_MAN goto Given
+  say "You found both our Farfetch'd! I'd never have got them back on my own. Please, take this. I made it myself."
+  give "Charcoal"
+  setflag FLAG_GOT_CHARCOAL_FROM_AZALEA_TOWN_MAN
+  say "Charcoal makes Fire-type moves stronger when a Pokémon holds it."
+  end
+label Given
+  say "The Farfetch'd are much better at finding good wood than I am. Don't tell my master I said so."
+  end

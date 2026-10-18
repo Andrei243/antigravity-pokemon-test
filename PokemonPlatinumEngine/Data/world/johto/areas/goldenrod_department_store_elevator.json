@@ -1,0 +1,25 @@
+{
+  "key": "goldenrod_department_store_elevator",
+  "index": 441,
+  "name": "Goldenrod City",
+  "matrix": 262,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_FS",
+  "nightMusic": "GS_FS",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 6, "to": "4095", "toWarp": 256 }
+  ],
+  "objects": [
+    { "id": "t25r1007_gswoman6", "looks": "gswoman6", "movement": "17", "x": 1, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T25R1007_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,117 @@
+# Route 36 (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_R36).
+#
+# The strange tree in the way (HeartGold's Sudowoodo, FLAG_HIDE_ROUTE_36_SUDOWOODO) wiggles when touched. Watered with
+# the SquirtBottle from Goldenrod's flower shop, it jumps up and battles (level 20); won or caught, it is gone for good
+# (FLAG_CAUGHT_SUDOWOODO for one caught), the way to Route 37 and Ecruteak City is open, and the flower shop's sister,
+# who waits by it, gives three Oran and three Pecha Berries (FLAG_UNK_0B5) and goes back to the shop
+# (FLAG_HIDE_ROUTE_36_FLOWERSHOP_GIRL set, FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL cleared). Run from, it stays. The man by
+# the gate gives HM06, Rock Smash; Arthur of Thursday is here on Thursdays (FLAG_UNK_1C4) and gives a Hard Stone once.
+
+
+# HeartGold's R36_002, the route's own script as it loads
+script OnEnter
+  setflag FLAG_UNK_1C4
+  if weekday thursday clearflag FLAG_UNK_1C4
+  end
+
+
+# R36_000: the strange tree
+script Sudowoodo
+  speaker none
+  if not item "SquirtBottle" goto Wiggles
+  face r36_gsgirl1_2 up
+  scene "The strange tree"
+  sound "bump"
+  text "The tree is wiggling!"
+  ask "It's a weird tree. Use the SquirtBottle on it?"
+  if no goto NotNow
+  text "{player} watered the tree with the SquirtBottle!"
+  sound "use_water_sport"
+  text "The tree hated the water! It jumped up and attacked!"
+  wildbattle "Sudowoodo" 20
+  if result == 2 goto Fled
+  if result == 3 setflag FLAG_CAUGHT_SUDOWOODO
+  hide self
+  setflag FLAG_HIDE_ROUTE_36_SUDOWOODO
+  setflag FLAG_UNK_0B5
+  face r36_gsgirl1_2 player
+  speaker "Girl"
+  say "So it was a Pokémon pretending to be a tree! You were so brave. Thank you!"
+  say "These are from my sister's garden. Please take them."
+  give "Oran Berry" 3
+  give "Pecha Berry" 3
+  say "I'm going back to the flower shop now. Come and see us in Goldenrod sometime!"
+  walk r36_gsgirl1_2 left 10
+  hide r36_gsgirl1_2
+  setflag FLAG_HIDE_ROUTE_36_FLOWERSHOP_GIRL
+  clearflag FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL
+  endscene
+  end
+label NotNow
+  endscene
+  end
+label Fled
+  text "The strange tree has gone still again..."
+  endscene
+  end
+label Wiggles
+  sound "bump"
+  text "It's a weird tree. It's wiggling ever so slightly... and it's blocking the way."
+  end
+
+
+# R36_007: the flower shop's sister by the tree
+script FlowerGirl
+  face r36_gsgirl1_2 player
+  if item "SquirtBottle" goto Bottle
+  say "This tree won't let anybody past. It wiggles when you touch it! My sister in Goldenrod might know what to do."
+  end
+label Bottle
+  say "That's my sister's SquirtBottle! Go on, give the tree a squirt. I want to see what it does!"
+  end
+
+
+# R36_008: HM06 from the man by the gate
+script RockSmash
+  face r36_gsbigman player
+  if item "HM06" goto Given
+  say "Rocks in your way? Smash 'em! That's my motto. Here, take this. You'll know what to do with it."
+  give "HM06"
+  say "HM06 is Rock Smash. With the Zephyr Badge, a Pokémon that knows it can break cracked rocks outside of battle."
+  say "Sometimes there's a Pokémon hiding under the rock, too!"
+  end
+label Given
+  say "Smash those rocks! Every rock you break is a rock that can't get in your way."
+  end
+
+
+# R36_009: the girl by the Ruins' gate, before and after the tree
+script Girl
+  face r36_gsgirl1 player
+  if flag FLAG_HIDE_ROUTE_36_SUDOWOODO goto Gone
+  say "There's a strange tree blocking the way to Route 37. Nobody can get past it!"
+  end
+label Gone
+  say "The tree that blocked the road turned out to be a Pokémon! Now we can walk to Ecruteak City again."
+  end
+
+
+# R36_001: Arthur of Thursday
+script Arthur
+  face r36_gsboy1_2 player
+  speaker "Arthur"
+  if flag FLAG_GOT_HARD_STONE_FROM_ARTHUR goto Again
+  if not weekday thursday goto NotToday
+  say "Who are you? I'm Arthur of Thursday. My sisters and brothers each have a day, and Thursday is mine."
+  give "Hard Stone"
+  setflag FLAG_GOT_HARD_STONE_FROM_ARTHUR
+  addvar VAR_NUM_MET_WEEKDAY_SIBLINGS 1
+  say "A Pokémon that holds a Hard Stone hits harder with Rock-type moves. Thursdays are solid as a rock!"
+  end
+label Again
+  say "I'm Arthur of Thursday. Did you meet my brothers and sisters? Each of them has a day of their own."
+  end
+label NotToday
+  say "Today isn't Thursday. Come back then."
+  end

@@ -1,0 +1,66 @@
+# The Burned Tower's ground floor (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D18R0101).
+#
+# Eusine steps up as the player comes in (the area's trigger 0, on VAR_UNK_40A2 0); the red-haired boy battles by the
+# hole in the floor (trigger 1, on VAR_UNK_40A6 0) with the team that beats the player's starter, and leaves
+# (FLAG_HIDE_BURNED_TOWER_1F_RIVAL). Morty and Eusine stay until the three Pokémon below have fled
+# (burned_tower_b1f.txt).
+
+
+# D18R0101_000
+script Eusine
+  scene "Eusine in the Burned Tower"
+  face d18r0101_minaki player
+  speaker "Eusine"
+  say "Ah, a fellow seeker! My name is Eusine. I've followed the legendary Pokémon Suicune all the way here."
+  say "They say three Pokémon sleep beneath this tower. Suicune may be among them. Morty agrees with me, you know."
+  setvar VAR_UNK_40A2 1
+  endscene
+  end
+
+
+# D18R0101_001
+script EusineTalk
+  face d18r0101_minaki player
+  speaker "Eusine"
+  say "Suicune is the one I want to see. It's said to purify water wherever it runs. Imagine it!"
+  end
+
+
+# D18R0101_002
+script Morty
+  face d18r0101_gsleader4 player
+  speaker "Morty"
+  say "I'm Morty, Ecruteak's Gym Leader. Legend says a rainbow Pokémon will appear before a trainer it chooses."
+  say "I've trained here all my life hoping to be that trainer. Something stirs in this tower today. I can feel it."
+  end
+
+
+# D18R0101_003: the red-haired boy by the hole
+script Rival
+  scene "The red-haired boy in the Burned Tower"
+  music "johto/rival"
+  walk d18r0101_gsrivel down 4 left 1
+  face d18r0101_gsrivel player
+  face player d18r0101_gsrivel
+  speaker "{rival}"
+  say "...Oh, it's you. I came to see the legendary Pokémon everyone talks about. There's nothing here but ashes."
+  say "Since you're here, you can make yourself useful. Let's battle!"
+  if starter "Chikorita" goto VsQuilava
+  if starter "Cyndaquil" goto VsCroconaw
+  battle d18r0101_gsrivel as "johto_rival_silver_4"
+  goto Won
+label VsQuilava
+  battle d18r0101_gsrivel as "johto_rival_silver_8"
+  goto Won
+label VsCroconaw
+  battle d18r0101_gsrivel as "johto_rival_silver_11"
+label Won
+  say "Hmph. I'm wasting my time. If there were a legendary Pokémon here, I'd have found it already."
+  walk d18r0101_gsrivel right 1 up 4 fast
+  hide d18r0101_gsrivel
+  setflag FLAG_HIDE_BURNED_TOWER_1F_RIVAL
+  setvar VAR_UNK_40A6 1
+  music area
+  endscene
+  end

@@ -1,0 +1,167 @@
+# Ilex Forest (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_D36R0101).
+#
+# Once the Slowpoke Well is cleared, the charcoal maker's apprentice waits by the cut tree with both his Farfetch'd
+# lost in the wood (FLAG_HIDE_ILEX_APPRENTICE and FLAG_HIDE_FARFETCHD_1_LOST, _2_LOST cleared; he stops the player
+# once, the area's trigger 8 on VAR_UNK_40F4 1). HeartGold's birds flee from sticks the player steps on and are
+# caught from behind; here each runs to a new spot twice as the player comes up to it and is caught the third time
+# (VAR_FARFETCHD1_PLACE and VAR_FARFETCHD2_PLACE, variables of ours; docs/mechanics/rulings.md, "Johto's second
+# chapter"). A bird caught is back beside the boy (FLAG_FOUND_FIRST_FARFETCHD, FLAG_FOUND_SECOND_FARFETCHD) and the
+# player with it; with both, his master comes for them and gives HM01, Cut (FLAG_GOT_HM01), and the kiln has them all
+# back (FLAG_UNK_1AC cleared).
+
+
+# Where each bird ran to is put back as the forest is come to again
+script OnEnter
+  if var VAR_FARFETCHD1_PLACE == 1 place d36r0101_tsure_poke_static_farfetchd 32 62 left
+  if var VAR_FARFETCHD1_PLACE == 2 place d36r0101_tsure_poke_static_farfetchd 32 52 down
+  if var VAR_FARFETCHD2_PLACE == 1 place d36r0101_tsure_poke_static_farfetchd_2 46 65 left
+  if var VAR_FARFETCHD2_PLACE == 2 place d36r0101_tsure_poke_static_farfetchd_2 51 50 down
+  end
+
+
+# D36R0101_017: the apprentice sees the player come up
+script ApprenticeStops
+  scene "The apprentice in Ilex Forest"
+  emote d36r0101_gsboy1 exclaim
+  face player up
+  call ApprenticeLost
+  setvar VAR_UNK_40F4 0
+  endscene
+  end
+
+
+# D36R0101_010
+script Apprentice
+  face d36r0101_gsboy1 player
+  speaker "Apprentice"
+  if flag FLAG_FOUND_FIRST_FARFETCHD goto OneFound
+  if flag FLAG_FOUND_SECOND_FARFETCHD goto OneFound
+  call ApprenticeLost
+  setvar VAR_UNK_40F4 0
+  end
+label OneFound
+  say "You found one of them! The other one's still out there somewhere. Please, keep looking!"
+  end
+
+script ApprenticeLost
+  speaker "Apprentice"
+  say "Oh no, oh no... Both our Farfetch'd ran off into the forest. My master will roast me alive!"
+  say "Without them I can't cut any wood, and without wood there's no charcoal. Could you help me find them?"
+  return
+
+
+# The first bird: two runs, and caught the third time
+script FirstFarfetchd
+  cry "Farfetch'd"
+  if var VAR_FARFETCHD1_PLACE == 2 goto Caught
+  text "Farfetch'd took fright and dashed off, waving its leek!"
+  fade out 0.2
+  if var VAR_FARFETCHD1_PLACE == 1 goto Further
+  place self 32 62 left
+  setvar VAR_FARFETCHD1_PLACE 1
+  fade in
+  end
+label Further
+  place self 32 52 down
+  setvar VAR_FARFETCHD1_PLACE 2
+  fade in
+  end
+label Caught
+  scene "The first Farfetch'd"
+  text "Farfetch'd is out of breath. It lets itself be led home."
+  hide self
+  setflag FLAG_HIDE_FARFETCHD_1_LOST
+  setflag FLAG_FOUND_FIRST_FARFETCHD
+  clearflag FLAG_HIDE_FARFETCHD_1_FOUND
+  if flag FLAG_FOUND_SECOND_FARFETCHD goto Both
+  call BackToTheBoy
+  endscene
+  end
+label Both
+  call MasterComes
+  endscene
+  end
+
+
+# The second bird: the same, in the forest's east
+script SecondFarfetchd
+  cry "Farfetch'd"
+  if var VAR_FARFETCHD2_PLACE == 2 goto Caught
+  text "Farfetch'd took fright and dashed off, waving its leek!"
+  fade out 0.2
+  if var VAR_FARFETCHD2_PLACE == 1 goto Further
+  place self 46 65 left
+  setvar VAR_FARFETCHD2_PLACE 1
+  fade in
+  end
+label Further
+  place self 51 50 down
+  setvar VAR_FARFETCHD2_PLACE 2
+  fade in
+  end
+label Caught
+  scene "The second Farfetch'd"
+  text "Farfetch'd is out of breath. It lets itself be led home."
+  hide self
+  setflag FLAG_HIDE_FARFETCHD_2_LOST
+  setflag FLAG_FOUND_SECOND_FARFETCHD
+  clearflag FLAG_HIDE_FARFETCHD_2_FOUND
+  if flag FLAG_FOUND_FIRST_FARFETCHD goto Both
+  call BackToTheBoy
+  endscene
+  end
+label Both
+  call MasterComes
+  endscene
+  end
+
+
+# A bird brought back to the boy, the other still lost
+script BackToTheBoy
+  fade out 0.4
+  place player 15 65 up
+  fade in
+  speaker "Apprentice"
+  say "You found one! Thank you! Now there's just one more out there..."
+  return
+
+
+# Both birds back: the master has come looking for his apprentice, and gives HM01
+script MasterComes
+  fade out 0.4
+  place player 15 65 up
+  clearflag FLAG_HIDE_ILEX_CUT_MASTER
+  place d36r0101_gsfighter 16 66 left
+  show d36r0101_gsfighter
+  fade in
+  speaker "Apprentice"
+  say "Both of them! You found both of them! Thank you, thank you!"
+  face player right
+  speaker "Charcoal Maker"
+  say "So here you are, boy! Lost the birds again, did you? And this young trainer found them for you."
+  say "You've done us a real kindness. Take this. It's a technique for clearing trees out of your way."
+  give "HM01"
+  setflag FLAG_GOT_HM01
+  say "HM01 is Cut. With the Hive Badge, a Pokémon that knows it can cut down a small tree like the one here."
+  say "Come on, boy. Back to the kiln with you!"
+  fade out 0.4
+  hide d36r0101_gsfighter
+  hide d36r0101_gsboy1
+  hide d36r0101_tsure_poke_static_farfetchd_3
+  hide d36r0101_tsure_poke_static_farfetchd_4
+  setflag FLAG_HIDE_ILEX_CUT_MASTER
+  setflag FLAG_HIDE_ILEX_APPRENTICE
+  setflag FLAG_HIDE_FARFETCHD_1_FOUND
+  setflag FLAG_HIDE_FARFETCHD_2_FOUND
+  clearflag FLAG_UNK_1AC
+  fade in
+  return
+
+
+# The master, should he be spoken to before he leaves (D36R0101_011)
+script Master
+  face d36r0101_gsfighter player
+  speaker "Charcoal Maker"
+  say "Thanks again for finding those birds."
+  end
