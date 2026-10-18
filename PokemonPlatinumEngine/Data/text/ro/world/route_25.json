@@ -1,0 +1,284 @@
+{
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bill lives in that cottage at the end of the path. He's a bit odd, but he knows everything about Pokémon."
+        ],
+        "text": [
+          "Bill stă în căsuța de la capătul cărării. E cam ciudat, dar știe totul despre Pokémoni."
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Are you here on your own? Brave of you. Lots of trainers come this way looking for battles."
+        ],
+        "text": [
+          "Nu te însoțește nimeni? Ce curaj! Pe-aici trec mulți antrenori în căutare de lupte."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Franklin"
+        ],
+        "text": [
+          "Franklin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Franklin: Ho! You're climbing up to see Bill? Battle me first!"
+        ],
+        "text": [
+          "Drumeț Franklin: Ho! Urci să-l vezi pe Bill? Întâi te lupți cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Franklin: Whew! You've got legs like a mountain goat."
+        ],
+        "text": [
+          "Drumeț Franklin: Pfiu! Ai picioare de capră de munte."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Joey"
+        ],
+        "text": [
+          "Joey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Joey: Local trainers come here to practise. Let's see how you measure up!"
+        ],
+        "text": [
+          "Puști Joey: Antrenorii de pe-aici vin să se antreneze aici. Să vedem cât valorezi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Joey: My Rattata's still the best. It just had a bad day."
+        ],
+        "text": [
+          "Puști Joey: Rattata al meu tot e cel mai bun. Doar că a avut o zi proastă."
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Wayne"
+        ],
+        "text": [
+          "Wayne"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Wayne: You look like you could use a workout. Let's go!"
+        ],
+        "text": [
+          "Drumeț Wayne: Pari să ai nevoie de puțină mișcare. Hai!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Wayne: Ha! You've worked me out instead."
+        ],
+        "text": [
+          "Drumeț Wayne: Ha! Până la urmă, tu m-ai pus pe mine la treabă."
+        ]
+      }
+    },
+    "youngster_2": {
+      "name": {
+        "en": [
+          "Dan"
+        ],
+        "text": [
+          "Dan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Dan: Dad told me to make friends on my journey. Battling counts, right?"
+        ],
+        "text": [
+          "Puști Dan: Tata mi-a zis să-mi fac prieteni în călătorie. Luptele se pun, nu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Dan: Friends, then? Even though you beat me?"
+        ],
+        "text": [
+          "Puști Dan: Prieteni, deci? Chiar dacă m-ai învins?"
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Kelsey"
+        ],
+        "text": [
+          "Kelsey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Kelsey: I came out here for a picnic, but a battle's just as good!"
+        ],
+        "text": [
+          "Excursionistă Kelsey: Am venit aici la picnic, dar și o luptă e la fel de bună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Kelsey: Oh well. Back to my sandwiches."
+        ],
+        "text": [
+          "Excursionistă Kelsey: Asta e. Înapoi la sandvișurile mele."
+        ]
+      }
+    },
+    "hiker_3": {
+      "name": {
+        "en": [
+          "Nob"
+        ],
+        "text": [
+          "Nob"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Nob: Ha-hah! My Pokémon are as tough as the cliffs here!"
+        ],
+        "text": [
+          "Drumeț Nob: Ha-ha! Pokémonii mei sunt duri ca stâncile de aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Nob: Cliffs crumble too, I suppose."
+        ],
+        "text": [
+          "Drumeț Nob: Și stâncile se fărâmă, cred."
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Flint"
+        ],
+        "text": [
+          "Flint"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Flint: I'm off to see Bill's rare Pokémon. You too? Let's battle on the way!"
+        ],
+        "text": [
+          "Campist Flint: Mă duc să văd Pokémonii rari ai lui Bill. Și tu? Hai să ne luptăm pe drum!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Flint: You go first, then. I'll catch up."
+        ],
+        "text": [
+          "Campist Flint: Atunci du-te tu înainte. Te ajung eu."
+        ]
+      }
+    },
+    "youngster_3": {
+      "name": {
+        "en": [
+          "Chad"
+        ],
+        "text": [
+          "Chad"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Chad: I've been pacing this path all day waiting for a challenger!"
+        ],
+        "text": [
+          "Puști Chad: Toată ziua m-am plimbat pe cărarea asta așteptând un adversar!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Chad: Worth the wait. Even if I lost."
+        ],
+        "text": [
+          "Puști Chad: A meritat așteptarea. Chiar dacă am pierdut."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Haley"
+        ],
+        "text": [
+          "Haley"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Haley: My Pokémon and I love the sea breeze. Want to battle in it?"
+        ],
+        "text": [
+          "Domnișoară Haley: Eu și Pokémonii mei iubim briza mării. Vrei să ne luptăm în ea?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Haley: The breeze didn't help at all!"
+        ],
+        "text": [
+          "Domnișoară Haley: Briza nu m-a ajutat deloc!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route25_EventScript_SeaCottageSign": {
+      "en": [
+        "Sea Cottage\nBill lives here!"
+      ],
+      "text": [
+        "Căsuța de lângă Mare\nAici stă Bill!"
+      ]
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "Lesson": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Over here! The professor told me you've got Poké Balls now."
+      ],
+      "text": [
+        "{player}! Aici! Profesorul mi-a zis că acum ai Poké Ball."
+      ]
+    },
+    {
+      "en": [
+        "Have you ever caught a Pokémon? It's easy once you've seen it done. Watch me!"
+      ],
+      "text": [
+        "Ai prins vreodată un Pokémon? E ușor după ce vezi cum se face. Uită-te la mine!"
+      ]
+    },
+    {
+      "en": [
+        "See? Wear it down first, then throw the ball. Now you try! Fill up that Pokédex."
+      ],
+      "text": [
+        "Vezi? Întâi îl obosești, apoi arunci mingea. Acum încearcă tu! Umple Pokédexul ăla."
+      ]
+    },
+    {
+      "en": [
+        "Marill and I are off home. See you around, {player}!"
+      ],
+      "text": [
+        "Eu și Marill mergem acasă. Ne mai vedem, {player}!"
+      ]
+    }
+  ]
+}

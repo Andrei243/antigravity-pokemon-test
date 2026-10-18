@@ -1,0 +1,86 @@
+{
+  "people": {
+    "misty": {
+      "name": {
+        "en": [
+          "Misty"
+        ],
+        "text": [
+          "Misty"
+        ]
+      }
+    },
+    "gym_guy": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "swimmer_m_water": {
+      "name": {
+        "en": [
+          "Luis"
+        ],
+        "text": [
+          "Luis"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Luis: Splash! I'm the first wave you'll have to get through!"
+        ],
+        "text": [
+          "Înotător Luis: Pleosc! Eu sunt primul val prin care trebuie să treci!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Luis: Washed out... Misty's a much stronger swimmer than me."
+        ],
+        "text": [
+          "Înotător Luis: M-a luat valul... Misty înoată mult mai bine ca mine."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Diana"
+        ],
+        "text": [
+          "Diana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Diana: You'll never get to Misty with me here!"
+        ],
+        "text": [
+          "Excursionistă Diana: Cât sunt eu aici, n-ajungi la Misty!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Diana: Misty won't go as easy on you, you know!"
+        ],
+        "text": [
+          "Excursionistă Diana: Misty n-o să fie la fel de blândă cu tine, să știi!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeruleanCity_Gym_EventScript_GymStatue": {
+      "en": [
+        "Cerulean City Pokémon Gym\nLeader: Misty"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Cerulean\nLider: Misty"
+      ]
+    }
+  }
+}

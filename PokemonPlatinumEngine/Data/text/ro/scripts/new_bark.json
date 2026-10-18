@@ -1,0 +1,172 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "...What are you staring at? This is the famous Pokémon lab, is it? Doesn't look like much."
+      ],
+      "text": [
+        "...Ce te holbezi? Ăsta e faimosul laborator Pokémon? Nu arată mare lucru."
+      ]
+    },
+    {
+      "en": [
+        "Get lost. I'm busy."
+      ],
+      "text": [
+        "Cară-te. Sunt ocupat."
+      ]
+    }
+  ],
+  "Friend": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Morning, {player}! The professor was looking for you. Something about a favour, he said."
+      ],
+      "text": [
+        "Bună dimineața, {player}! Te căuta profesorul. Zicea ceva de o favoare."
+      ]
+    },
+    {
+      "en": [
+        "Marill and I were just out for a walk. Go on, he's at the lab!"
+      ],
+      "text": [
+        "Eu și Marill tocmai ne plimbam. Hai, du-te, e la laborator!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, you've got a Pokémon of your own! It suits you. Marill likes it already, look."
+      ],
+      "text": [
+        "O, ai un Pokémon al tău! Ți se potrivește. Uite, lui Marill deja îi place de el."
+      ]
+    },
+    {
+      "en": [
+        "I heard about the break-in at the lab. Poor Professor Elm! Whoever it was, I hope they catch him."
+      ],
+      "text": [
+        "Am auzit de spargerea de la laborator. Bietul Profesor Elm! Oricine ar fi fost, sper să-l prindă."
+      ]
+    }
+  ],
+  "Marill": [
+    {
+      "en": [
+        "Marill: Rill! Rill!"
+      ],
+      "text": [
+        "Marill: Rill! Rill!"
+      ]
+    },
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Ha ha, Marill likes you! It doesn't do that for everyone."
+      ],
+      "text": [
+        "Ha ha, lui Marill îi place de tine! Nu face așa cu oricine."
+      ]
+    }
+  ],
+  "WestExit": [
+    {
+      "en": [
+        "{assistant}"
+      ],
+      "text": [
+        "{assistant}"
+      ]
+    },
+    {
+      "en": [
+        "Wait, {player}! The grass on Route 29 is full of wild Pokémon. You can't go out there with none of your own!"
+      ],
+      "text": [
+        "Stai, {player}! Iarba de pe Ruta 29 e plină de Pokémoni sălbatici. Nu poți ieși acolo fără un Pokémon al tău!"
+      ]
+    },
+    {
+      "en": [
+        "Professor Elm's lab is just up the lane. Go and see him first."
+      ],
+      "text": [
+        "Laboratorul Profesorului Elm e chiar mai sus pe alee. Du-te întâi la el."
+      ]
+    }
+  ],
+  "RunningShoes": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Wait a moment!"
+      ],
+      "text": [
+        "{player}! Stai o clipă!"
+      ]
+    },
+    {
+      "en": [
+        "So the professor gave you a Pokémon! And now you're off on an errand for him? Then you'll want these."
+      ],
+      "text": [
+        "Deci profesorul ți-a dat un Pokémon! Și acum pleci cu o treabă de-a lui? Atunci o să-ți trebuiască ăștia."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Running Shoes!"
+      ],
+      "text": [
+        "{player} a primit Pantofii de Alergare!"
+      ]
+    },
+    {
+      "en": [
+        "Hold the run button down and you'll go twice as fast. Just don't run in the house!"
+      ],
+      "text": [
+        "Ține apăsat butonul de alergare și o să mergi de două ori mai repede. Doar să nu alergi prin casă!"
+      ]
+    },
+    {
+      "en": [
+        "Come home whenever you're tired. I'll be right here."
+      ],
+      "text": [
+        "Vino acasă oricând obosești. Eu sunt aici."
+      ]
+    }
+  ]
+}

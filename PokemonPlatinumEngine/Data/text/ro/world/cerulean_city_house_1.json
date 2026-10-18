@@ -1,0 +1,25 @@
+{
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Gym Badge you earn lets your Pokémon do more outside battle, and makes traded ones listen better.",
+          "Collect them all and they'll even let you into the Pokémon League!"
+        ],
+        "text": [
+          "Fiecare Insignă câștigată îi lasă pe Pokémonii tăi să facă mai multe în afara luptei, iar pe cei primiți la schimb îi face mai ascultători.",
+          "Adună-le pe toate și te lasă să intri chiar și în Liga Pokémon!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

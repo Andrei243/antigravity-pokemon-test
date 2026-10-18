@@ -1,5 +1,41 @@
 {
   "people": {
+    "r29_var_2": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Watch closely!"
+        ],
+        "text": [
+          "Fii cu ochii pe mine!"
+        ]
+      }
+    },
+    "r29_tsure_poke_static_marill": {
+      "name": {
+        "en": [
+          "Marill"
+        ],
+        "text": [
+          "Marill"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Marill: Rill!"
+        ],
+        "text": [
+          "Marill: Rill!"
+        ]
+      }
+    },
     "r29_gsboy2": {
       "name": {
         "en": [

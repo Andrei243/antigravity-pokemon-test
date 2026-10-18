@@ -8,16 +8,6 @@
         "text": [
           "Profesorul Elm"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Ah, {player}! Good timing. I was just reading about how some Pokémon only evolve when they're happy.",
-          "Isn't that something? There's so much we still don't understand."
-        ],
-        "text": [
-          "A, {player}! Chiar la timp. Tocmai citeam că unii Pokémoni evoluează doar când sunt fericiți.",
-          "Nu-i așa că e ceva? Sunt atâtea lucruri pe care încă nu le înțelegem."
-        ]
       }
     },
     "t20r0101_assistantm": {
@@ -28,13 +18,23 @@
         "text": [
           "Asistentul"
         ]
+      }
+    },
+    "t20r0101_policeman": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
       },
       "dialog": {
         "en": [
-          "The professor forgets to eat when he's on to something. I've started leaving sandwiches on his desk."
+          "I'm here about the theft."
         ],
         "text": [
-          "Profesorul uită să mănânce când e pe urmele a ceva. Am început să-i las sandvișuri pe birou."
+          "Am venit în legătură cu furtul."
         ]
       }
     }
@@ -70,14 +70,6 @@
       ],
       "text": [
         "Ghiduri de teren despre Pokémonii din Johto."
-      ]
-    },
-    "T20R0101_009+1": {
-      "en": [
-        "A machine that holds three Poké Balls. It hums quietly."
-      ],
-      "text": [
-        "Un aparat care ține trei Poké Ball. Zumzăie încet."
       ]
     },
     "T20R0101_012+1": {

@@ -1,0 +1,59 @@
+{
+  "people": {
+    "r32r0101_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Ruins of Alph are through here, but the scientists have closed them for now while they work."
+        ],
+        "text": [
+          "Pe-aici se ajunge la Ruinele Alph, dar deocamdată oamenii de știință le-au închis cât lucrează."
+        ]
+      }
+    },
+    "r32r0101_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are strange carvings in the Ruins. My dad says they're letters, but nobody can read them."
+        ],
+        "text": [
+          "În Ruine sunt niște sculpturi ciudate. Tata zice că sunt litere, dar nimeni nu le poate citi."
+        ]
+      }
+    },
+    "r32r0101_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Ruins are older than Violet City, they say. Older than anyone can work out."
+        ],
+        "text": [
+          "Se zice că Ruinele sunt mai vechi decât Orașul Violet. Mai vechi decât poate socoti oricine."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

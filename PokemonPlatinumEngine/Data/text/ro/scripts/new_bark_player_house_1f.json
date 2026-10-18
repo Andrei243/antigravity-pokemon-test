@@ -1,0 +1,110 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! You're finally up."
+      ],
+      "text": [
+        "O, {player}! În sfârșit te-ai trezit."
+      ]
+    },
+    {
+      "en": [
+        "Professor Elm came by while you were asleep. He said he has a favour to ask you, and that it couldn't wait."
+      ],
+      "text": [
+        "Profesorul Elm a trecut pe-aici cât dormeai. A zis că vrea să-ți ceară o favoare și că nu poate aștepta."
+      ]
+    },
+    {
+      "en": [
+        "And before I forget, this came back from the repair shop. Your Pokégear!"
+      ],
+      "text": [
+        "Și până să uit, a venit înapoi de la reparat. Pokégearul tău!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Pokégear!"
+      ],
+      "text": [
+        "{player} a primit Pokégearul!"
+      ]
+    },
+    {
+      "en": [
+        "It's a phone and a clock and a map all in one. Keep it with you, so I can always reach you."
+      ],
+      "text": [
+        "E telefon, ceas și hartă, toate într-unul. Ține-l la tine, ca să te pot găsi oricând."
+      ]
+    },
+    {
+      "en": [
+        "Now off you go. The professor's lab is just down the lane. Don't keep him waiting!"
+      ],
+      "text": [
+        "Acum, la drum. Laboratorul profesorului e chiar pe alee. Nu-l lăsa să aștepte!"
+      ]
+    }
+  ],
+  "Mom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Back already? You look tired out. Sit down for a minute."
+      ],
+      "text": [
+        "Te-ai întors deja? Se vede pe tine oboseala. Stai jos un minut."
+      ]
+    },
+    {
+      "en": [
+        "There, all better. Take care of each other out there, won't you?"
+      ],
+      "text": [
+        "Gata, totul e bine. Aveți grijă unul de altul pe-acolo, da?"
+      ]
+    },
+    {
+      "en": [
+        "Professor Elm is waiting for you at his lab. It's the big building up the lane."
+      ],
+      "text": [
+        "Profesorul Elm te așteaptă la laborator. E clădirea mare de pe alee."
+      ]
+    },
+    {
+      "en": [
+        "A Badge from Violet City! I'm so proud of you. Let your Pokémon rest a moment."
+      ],
+      "text": [
+        "O Insignă din Orașul Violet! Sunt atât de mândră de tine. Lasă-ți Pokémonii să se odihnească puțin."
+      ]
+    },
+    {
+      "en": [
+        "There. Go on, then. Johto is a big place, and you've only just started."
+      ],
+      "text": [
+        "Gata. Hai, du-te. Johto e mare, și abia ai început."
+      ]
+    }
+  ]
+}

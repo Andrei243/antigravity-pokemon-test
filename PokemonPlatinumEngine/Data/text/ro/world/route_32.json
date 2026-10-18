@@ -1,0 +1,268 @@
+{
+  "people": {
+    "r32_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    },
+    "r32_gsbigman": {
+      "name": {
+        "en": [
+          "Fat Man"
+        ],
+        "text": [
+          "Bărbatul solid"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Ruins of Alph are just west of here. Scientists come from all over to study the strange stones.",
+          "I can't make head nor tail of them myself."
+        ],
+        "text": [
+          "Ruinele Alph sunt chiar la vest de aici. Vin oameni de știință de peste tot să studieze pietrele ciudate.",
+          "Eu unul nu le dau de cap deloc."
+        ]
+      }
+    },
+    "r32_gsboy2": {
+      "name": {
+        "en": [
+          "Albert"
+        ],
+        "text": [
+          "Albert"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Albert: I don't know if I'm any good yet. Let's find out!"
+        ],
+        "text": [
+          "Puști Albert: Nu știu încă dacă mă pricep. Hai să aflăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Albert: Guess I'm not good yet. I'll keep at it!"
+        ],
+        "text": [
+          "Puști Albert: Se pare că încă nu mă pricep. Mai încerc!"
+        ]
+      }
+    },
+    "r32_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Liz"
+        ],
+        "text": [
+          "Liz"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Liz: You're a trainer too? Let's battle, then we can swap stories!"
+        ],
+        "text": [
+          "Excursionistă Liz: Și tu ai Pokémoni? Hai să ne luptăm, apoi ne povestim pățaniile!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Liz: Wow, you're strong! Tell me where you've been!"
+        ],
+        "text": [
+          "Excursionistă Liz: Uau, ce tare ești! Povestește-mi pe unde ai fost!"
+        ]
+      }
+    },
+    "r32_fishing_2": {
+      "name": {
+        "en": [
+          "Henry"
+        ],
+        "text": [
+          "Henry"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Henry: Nothing's biting today. A battle will pass the time!"
+        ],
+        "text": [
+          "Pescar Henry: Azi nu trage nimic. O luptă o să-mi treacă timpul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Henry: That's the one that got away, I suppose."
+        ],
+        "text": [
+          "Pescar Henry: Asta a fost peștele care a scăpat, presupun."
+        ]
+      }
+    },
+    "r32_fishing_2_2": {
+      "name": {
+        "en": [
+          "Justin"
+        ],
+        "text": [
+          "Justin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Justin: Shh! You'll scare the fish. Oh, you want a battle? Fine!"
+        ],
+        "text": [
+          "Pescar Justin: Șșt! Sperii peștii. A, vrei o luptă? Bine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Justin: Now the fish have all gone. Thanks a lot."
+        ],
+        "text": [
+          "Pescar Justin: Acum au plecat toți peștii. Mersi frumos."
+        ]
+      }
+    },
+    "r32_fishing_2_3": {
+      "name": {
+        "en": [
+          "Ralph"
+        ],
+        "text": [
+          "Ralph"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Ralph: I fish every day of the week. My Pokémon are as tough as old boots!"
+        ],
+        "text": [
+          "Pescar Ralph: Pescuiesc în fiecare zi a săptămânii. Pokémonii mei sunt tari ca talpa iadului!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Ralph: Tougher boots than mine, then. Good battle."
+        ],
+        "text": [
+          "Pescar Ralph: Ai tălpi mai tari decât mine, atunci. Bună luptă."
+        ]
+      }
+    },
+    "r32_campboy_2": {
+      "name": {
+        "en": [
+          "Roland"
+        ],
+        "text": [
+          "Roland"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Roland: I'm camping out here to toughen up. You're just the challenge I needed!"
+        ],
+        "text": [
+          "Campist Roland: Stau la cort aici ca să mă călesc. Ești exact provocarea de care aveam nevoie!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Roland: Back to the tent for more training, I think."
+        ],
+        "text": [
+          "Campist Roland: Înapoi la cort, pentru mai mult antrenament, zic eu."
+        ]
+      }
+    },
+    "r32_gsboy2_2": {
+      "name": {
+        "en": [
+          "Gordon"
+        ],
+        "text": [
+          "Gordon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Gordon: I found a really good Pokémon in the grass here. Want to see it?"
+        ],
+        "text": [
+          "Puști Gordon: Am găsit un Pokémon foarte bun în iarba de aici. Vrei să-l vezi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Gordon: It's still a really good Pokémon. I just need practice."
+        ],
+        "text": [
+          "Puști Gordon: Tot e un Pokémon foarte bun. Eu doar am nevoie de exercițiu."
+        ]
+      }
+    },
+    "r32_gsman2": {
+      "name": {
+        "en": [
+          "Peter"
+        ],
+        "text": [
+          "Peter"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Peter: My birds love the breeze off the water. Watch them go!"
+        ],
+        "text": [
+          "Crescător de păsări Peter: Păsările mele adoră briza dinspre apă. Uită-te la ele!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Peter: Grounded again. The breeze must have dropped."
+        ],
+        "text": [
+          "Crescător de păsări Peter: Iar la pământ. Probabil s-a oprit briza."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R32_006+1": {
+      "en": [
+        "Route 32\nViolet City - Azalea Town"
+      ],
+      "text": [
+        "Ruta 32\nOrașul Violet - Orășelul Azalea"
+      ]
+    },
+    "R32_007+1": {
+      "en": [
+        "Ruins of Alph\nEast Entrance"
+      ],
+      "text": [
+        "Ruinele Alph\nIntrarea de Est"
+      ]
+    },
+    "R32_008+1": {
+      "en": [
+        "Union Cave"
+      ],
+      "text": [
+        "Peștera Uniunii"
+      ]
+    }
+  }
+}

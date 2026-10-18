@@ -1,0 +1,178 @@
+{
+  "people": {
+    "cerulean_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Smell you later!"
+        ],
+        "text": [
+          "Ne mai vedem! Pa-pa!"
+        ]
+      }
+    },
+    "cerulean_grunt": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      }
+    },
+    "cerulean_policeman": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      }
+    },
+    "cerulean_slowbro": {
+      "name": {
+        "en": [
+          "Slowbro"
+        ],
+        "text": [
+          "Slowbro"
+        ]
+      }
+    },
+    "cerulean_lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      }
+    },
+    "cerulean_woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ever read a Pokémon encyclopaedia? I can't put mine down. Every page is a new surprise!"
+        ],
+        "text": [
+          "Ai citit vreodată o enciclopedie Pokémon? Pe a mea n-o pot lăsa din mână. Fiecare pagină e o surpriză!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A trainer's life is tough, isn't it? But every battle makes you a little stronger."
+        ],
+        "text": [
+          "Viața de antrenor e grea, nu? Dar fiecare luptă te face un pic mai tare."
+        ]
+      }
+    },
+    "cerulean_cave_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznic"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is Cerulean Cave. The Pokémon in there are terribly strong, so nobody gets in. Sorry!"
+        ],
+        "text": [
+          "Aici e Peștera Cerulean. Pokémonii dinăuntru sunt îngrozitor de puternici, așa că nu intră nimeni. Îmi pare rău!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeruleanCity_EventScript_CitySign": {
+      "en": [
+        "Cerulean City\nA mysterious, blue aura surrounds it."
+      ],
+      "text": [
+        "Orașul Cerulean\nO aură albastră și misterioasă îl învăluie."
+      ]
+    },
+    "CeruleanCity_EventScript_GymSign": {
+      "en": [
+        "Cerulean City Pokémon Gym\nLeader: Misty\nThe tomboyish mermaid!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Cerulean\nLider: Misty\nSirena cu apucături de băiețoi!"
+      ]
+    },
+    "CeruleanCity_EventScript_BikeShopSign": {
+      "en": [
+        "Grass and caves handled with ease!\nBike Shop"
+      ],
+      "text": [
+        "Iarbă și peșteri, fără niciun efort!\nMagazinul de Biciclete"
+      ]
+    },
+    "CeruleanCity_EventScript_TrainerTips": {
+      "en": [
+        "TRAINER TIPS\nA Pokémon that is asleep or paralysed\nis much easier to catch."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nUn Pokémon adormit sau paralizat\ne mult mai ușor de prins."
+      ]
+    },
+    "CeruleanCity_BikeShop_EventScript_Bicycle": {
+      "en": [
+        "A shiny new bicycle, gleaming in the window."
+      ],
+      "text": [
+        "O bicicletă nouă și lucioasă strălucește în vitrină."
+      ]
+    }
+  }
+}

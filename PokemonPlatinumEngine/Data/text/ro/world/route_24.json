@@ -1,0 +1,171 @@
+{
+  "people": {
+    "route24_rocket": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Ethan"
+        ],
+        "text": [
+          "Ethan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Ethan: This is Nugget Bridge! Beat all five of us and you win a prize! I'm the first!"
+        ],
+        "text": [
+          "Campist Ethan: Ăsta e Podul Pepitelor! Învinge-ne pe toți cinci și câștigi un premiu! Eu sunt primul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Ethan: Whoa, that was fast! Four more to go!"
+        ],
+        "text": [
+          "Campist Ethan: Uau, ce repede! Mai sunt patru!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Reli"
+        ],
+        "text": [
+          "Reli"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Reli: I'm number two! You won't get past me so easily!"
+        ],
+        "text": [
+          "Domnișoară Reli: Eu sunt a doua! Nu treci de mine așa ușor!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Reli: Hmph. Go on, then. Number three is waiting."
+        ],
+        "text": [
+          "Domnișoară Reli: Hmf. Hai, treci. Te așteaptă al treilea."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Timmy"
+        ],
+        "text": [
+          "Timmy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Timmy: Number three, that's me! Here I come!"
+        ],
+        "text": [
+          "Puști Timmy: Al treilea, eu sunt! Vin peste tine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Timmy: Aww. Only two more for you, I guess."
+        ],
+        "text": [
+          "Puști Timmy: Of. Îți mai rămân doar doi, cred."
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Ali"
+        ],
+        "text": [
+          "Ali"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Ali: I'm the fourth! The prize is almost yours, if you can beat me."
+        ],
+        "text": [
+          "Domnișoară Ali: Eu sunt a patra! Premiul e aproape al tău, dacă mă învingi."
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Ali: Hmm, you're good. Just one more trainer left."
+        ],
+        "text": [
+          "Domnișoară Ali: Hm, te pricepi. A mai rămas un singur antrenor."
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Cale"
+        ],
+        "text": [
+          "Cale"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Cale: Last one! I'm the toughest of all five, so get ready!"
+        ],
+        "text": [
+          "Vânător de insecte Cale: Ultimul! Sunt cel mai tare dintre toți cinci, așa că pregătește-te!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Cale: You did it! Go and claim your prize up ahead!"
+        ],
+        "text": [
+          "Vânător de insecte Cale: Ai reușit! Du-te și ia-ți premiul, mai încolo!"
+        ]
+      }
+    },
+    "camper_2": {
+      "name": {
+        "en": [
+          "Shane"
+        ],
+        "text": [
+          "Shane"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Shane: I saw you cross the bridge. Now try getting past me!"
+        ],
+        "text": [
+          "Campist Shane: Te-am văzut trecând podul. Acum încearcă să treci de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Shane: You really are strong. No wonder you won the prize."
+        ],
+        "text": [
+          "Campist Shane: Chiar ești tare. Nu-i de mirare că ai câștigat premiul."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

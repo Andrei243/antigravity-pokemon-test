@@ -1,0 +1,59 @@
+{
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Repel keeps weak wild Pokémon away. It's a lifesaver in caves like Mt. Moon."
+        ],
+        "text": [
+          "Sprayul ține departe Pokémonii sălbatici slabi. E salvator în peșteri ca Muntele Lunii."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you tried the Mart's Escape Ropes? One pull and you're out of any cave."
+        ],
+        "text": [
+          "Ai încercat Frânghiile de la Mart? Tragi o dată și ai ieșit din orice peșteră."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

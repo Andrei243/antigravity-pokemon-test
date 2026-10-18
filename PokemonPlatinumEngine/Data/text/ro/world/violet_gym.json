@@ -1,0 +1,96 @@
+{
+  "people": {
+    "t22gym0101_gsleader1": {
+      "name": {
+        "en": [
+          "Falkner"
+        ],
+        "text": [
+          "Falkner"
+        ]
+      }
+    },
+    "t22gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "t22gym0101_sunglasses_2": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "t22gym0101_gsman2": {
+      "name": {
+        "en": [
+          "Abe"
+        ],
+        "text": [
+          "Abe"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Abe: Falkner flies higher than anyone. You'll have to get past me to reach him!"
+        ],
+        "text": [
+          "Crescător de păsări Abe: Falkner zboară mai sus decât oricine. Ca să ajungi la el, trebuie să treci de mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Abe: Grounded... Falkner won't go so easy on you."
+        ],
+        "text": [
+          "Crescător de păsări Abe: La pământ... Falkner n-o să fie la fel de blând cu tine."
+        ]
+      }
+    },
+    "t22gym0101_gsman2_2": {
+      "name": {
+        "en": [
+          "Rod"
+        ],
+        "text": [
+          "Rod"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Rod: The wind's on our side in here. Ready for a battle?"
+        ],
+        "text": [
+          "Crescător de păsări Rod: Aici înăuntru vântul e de partea noastră. Gata de luptă?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Rod: You weathered that storm. Go on, then."
+        ],
+        "text": [
+          "Crescător de păsări Rod: Ai trecut prin furtuna aia. Hai, mergi mai departe."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T22GYM0101_003+1": {
+      "en": [
+        "Violet City Pokémon Gym\nLeader: Falkner"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Violet\nLider: Falkner"
+      ]
+    }
+  }
+}

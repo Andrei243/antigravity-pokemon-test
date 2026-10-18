@@ -1,0 +1,68 @@
+{
+  "MagikarpSalesman": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        "Bărbatul"
+      ]
+    },
+    {
+      "en": [
+        "Psst! Got a minute? I've got a very special Pokémon here, a real secret."
+      ],
+      "text": [
+        "Pst! Ai un minut? Am aici un Pokémon foarte special, un adevărat secret."
+      ]
+    },
+    {
+      "en": [
+        "Just ¥500 and this Magikarp is yours. How about it?"
+      ],
+      "text": [
+        "Doar ¥500 și Magikarpul ăsta e al tău. Ce zici?"
+      ]
+    },
+    {
+      "en": [
+        "{player} paid ¥500 and received a Magikarp!"
+      ],
+      "text": [
+        "{player} a plătit ¥500 și a primit un Magikarp!"
+      ]
+    },
+    {
+      "en": [
+        "Pleasure doing business with you. No refunds, mind!"
+      ],
+      "text": [
+        "Mi-a făcut plăcere să fac afaceri cu tine. Fără returnări, să știi!"
+      ]
+    },
+    {
+      "en": [
+        "No? Your loss. Pokémon like this don't come along every day."
+      ],
+      "text": [
+        "Nu? Pierderea ta. Pokémoni ca ăsta nu apar în fiecare zi."
+      ]
+    },
+    {
+      "en": [
+        "You don't have ¥500? Come back when you do, then."
+      ],
+      "text": [
+        "N-ai ¥500? Atunci vino înapoi când ai."
+      ]
+    },
+    {
+      "en": [
+        "No refunds! I told you. A deal's a deal."
+      ],
+      "text": [
+        "Fără returnări! Ți-am zis. Târgul e târg."
+      ]
+    }
+  ]
+}

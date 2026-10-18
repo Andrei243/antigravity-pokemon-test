@@ -153,6 +153,16 @@
           "Un Pokémon plin de viață nu-ți folosește dacă nu știe o mișcare bună. Verifică-ți din când în când mișcările echipei."
         ]
       }
+    },
+    "violet_pokecenter_1f.Aide": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      }
     }
   },
   "signs": {}

@@ -1,0 +1,214 @@
+{
+  "people": {
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clefairy are said to come out on nights of the full moon. I've been waiting here for weeks!"
+        ],
+        "text": [
+          "Se zice că Clefairy ies în nopțile cu lună plină. Aștept aici de săptămâni întregi!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Iris"
+        ],
+        "text": [
+          "Iris"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Iris: What? I'm waiting for my friends to find me here!"
+        ],
+        "text": [
+          "Domnișoară Iris: Ce? Îmi aștept prietenii să mă găsească aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Iris: I lost... and they still haven't come."
+        ],
+        "text": [
+          "Domnișoară Iris: Am pierdut... și ei tot n-au venit."
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Robby"
+        ],
+        "text": [
+          "Robby"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Robby: Did you come to explore the cave too? Let's battle first!"
+        ],
+        "text": [
+          "Vânător de insecte Robby: Și tu ai venit să explorezi peștera? Hai întâi să ne luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Robby: Aww, my bugs aren't used to the dark."
+        ],
+        "text": [
+          "Vânător de insecte Robby: Of, insectele mele nu sunt obișnuite cu întunericul."
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Jovan"
+        ],
+        "text": [
+          "Jovan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Jovan: There's a rare stone somewhere in this cave, and I'm going to find it before you!"
+        ],
+        "text": [
+          "Tocilar Jovan: Undeva în peștera asta e o piatră rară, și o s-o găsesc eu înaintea ta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Jovan: Fine. But I'm still finding that stone first."
+        ],
+        "text": [
+          "Tocilar Jovan: Bine. Dar tot eu găsesc piatra aia primul."
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Miriam"
+        ],
+        "text": [
+          "Miriam"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Miriam: Did you see Clefairy? Everyone says they're here!"
+        ],
+        "text": [
+          "Domnișoară Miriam: Ai văzut vreun Clefairy? Toată lumea zice că sunt pe-aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Miriam: I'll keep looking. They have to be here somewhere!"
+        ],
+        "text": [
+          "Domnișoară Miriam: Mai caut. Trebuie să fie pe undeva!"
+        ]
+      }
+    },
+    "bug_catcher_2": {
+      "name": {
+        "en": [
+          "Kent"
+        ],
+        "text": [
+          "Kent"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Kent: Suspicious men in black are lurking down below. I'm scared, so let's battle!"
+        ],
+        "text": [
+          "Vânător de insecte Kent: Mai jos se învârt niște bărbați suspecți îmbrăcați în negru. Mi-e frică, așa că hai să ne luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Kent: Watch out for those men in black, OK?"
+        ],
+        "text": [
+          "Vânător de insecte Kent: Ai grijă de bărbații ăia în negru, bine?"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Josh"
+        ],
+        "text": [
+          "Josh"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Josh: Whoa! I didn't hear you come in. Battle me!"
+        ],
+        "text": [
+          "Puști Josh: Uau! Nu te-am auzit venind. Luptă cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Josh: I'm getting out of here. It's too dark!"
+        ],
+        "text": [
+          "Puști Josh: Eu plec de-aici. E prea întuneric!"
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Marcos"
+        ],
+        "text": [
+          "Marcos"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Marcos: Wahah! The mountain's full of rocks, and so's my team!"
+        ],
+        "text": [
+          "Drumeț Marcos: Ha-ha! Muntele e plin de pietre, și echipa mea la fel!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Marcos: Rock solid, you are! I'll keep climbing."
+        ],
+        "text": [
+          "Drumeț Marcos: Tare ca stânca, nu glumă! Eu mai urc."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MtMoon_1F_EventScript_ZubatSign": {
+      "en": [
+        "Beware! Zubat drain the strength of whoever walks here. Bring Potions!"
+      ],
+      "text": [
+        "Atenție! Zubat le sug puterea celor care trec pe-aici. Luați Poțiuni!"
+      ]
+    }
+  }
+}

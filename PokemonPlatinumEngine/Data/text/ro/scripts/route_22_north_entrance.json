@@ -1,0 +1,56 @@
+{
+  "GuardTrigger": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznic"
+      ]
+    },
+    {
+      "en": [
+        "Halt! Only trainers who hold the Boulder Badge may pass beyond this gate."
+      ],
+      "text": [
+        "Stai! Doar antrenorii care au Insigna Bolovan pot trece de poarta asta."
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznic"
+      ]
+    },
+    {
+      "en": [
+        "Beyond this gate lies the road to the Pokémon League. Only trainers with the Boulder Badge may pass."
+      ],
+      "text": [
+        "Dincolo de poarta asta e drumul spre Liga Pokémon. Pot trece doar antrenorii cu Insigna Bolovan."
+      ]
+    },
+    {
+      "en": [
+        "The road ahead is a hard one. There are more Badges to show before you reach the League."
+      ],
+      "text": [
+        "Drumul de aici e greu. Mai ai de arătat și alte Insigne până să ajungi la Ligă."
+      ]
+    }
+  ],
+  "Shown": [
+    {
+      "en": [
+        "Oh! That's the Boulder Badge! All right, you may go on through."
+      ],
+      "text": [
+        "O! Asta e Insigna Bolovan! Bine, poți trece."
+      ]
+    }
+  ]
+}

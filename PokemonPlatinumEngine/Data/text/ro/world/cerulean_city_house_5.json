@@ -1,0 +1,32 @@
+{
+  "people": {
+    "old_man_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Crushing berries into powder is my favourite pastime. It's best with friends, though."
+        ],
+        "text": [
+          "Să zdrobesc Boabe și să le fac pulbere e distracția mea preferată. Dar e mai frumos cu prietenii."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeruleanCity_House5_EventScript_BerryCrushRankings": {
+      "en": [
+        "A list of berry-crushing records. The top names are all scribbled out."
+      ],
+      "text": [
+        "O listă cu recordurile la zdrobit Boabe. Numele din vârf sunt toate mâzgălite."
+      ]
+    }
+  }
+}
