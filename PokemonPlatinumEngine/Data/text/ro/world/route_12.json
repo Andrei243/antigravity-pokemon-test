@@ -1,0 +1,266 @@
+{
+  "people": {
+    "snorlax": {
+      "name": {
+        "en": [
+          "Snorlax"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher": {
+      "name": {
+        "en": [
+          "Ned"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Ned: Yeah! I've got a bite! Oh, it's just you."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Ned: The one that got away, that's you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher_2": {
+      "name": {
+        "en": [
+          "Chip"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Chip: Shh! You'll scare the fish!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Chip: Well, they're scared now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher_3": {
+      "name": {
+        "en": [
+          "Hank"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Hank: I've been fishing here since dawn. Want to see what I caught?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Hank: Back to the waiting, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher_4": {
+      "name": {
+        "en": [
+          "Elliot"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Elliot: The sea's full of Pokémon. Let me show you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Elliot: Hooked and landed. By you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Luca"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rocker Luca: My Pokémon and I make music! Loud music!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Rocker Luca: Our encore will have to wait."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Justin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Justin: Camping by the sea is the best! Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Justin: I'll go back to my tent now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher_5": {
+      "name": {
+        "en": [
+          "Andrew"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Andrew: Hey, you! Fancy a battle while the fish aren't biting?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Andrew: Still no fish. Still no wins."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Gia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Gia and Jes: We're together in everything, battles too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Gia and Jes: Together in losing, as well."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Jes"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Gia and Jes: We're together in everything, battles too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Gia and Jes: Together in losing, as well."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route12_EventScript_RouteSign": {
+      "en": [
+        "Route 12\nNorth to Lavender Town"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route12_EventScript_FishingSign": {
+      "en": [
+        "Sports Fishing Area"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

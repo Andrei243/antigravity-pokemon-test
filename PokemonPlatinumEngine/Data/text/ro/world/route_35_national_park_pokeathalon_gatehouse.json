@@ -1,0 +1,58 @@
+{
+  "people": {
+    "r35r0201_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The National Park is through the north door. The Pokéathlon Dome is through the west one, but it isn't open yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35r0201_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! The National Park is just to the north. Do enjoy your visit."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R35R0201_006+1": {
+      "en": [
+        "A poster of the Pokéathlon. It says \"Coming soon!\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R35R0201_007+1": {
+      "en": [
+        "A poster of the Pokéathlon's events: racing, jumping, throwing and more."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

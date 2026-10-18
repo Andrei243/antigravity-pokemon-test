@@ -1,0 +1,59 @@
+{
+  "people": {
+    "t27r0201_bozu": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Beyond this gate is the Bell Tower. Only one the tower's Pokémon has chosen may pass."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0201_bozu_2": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We guard the tower day and night. It is our duty, and our honour."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0201_bozu_3": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Burned Tower and the Bell Tower were built as a pair, to let Pokémon and people meet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

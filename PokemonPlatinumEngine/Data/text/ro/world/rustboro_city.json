@@ -1,0 +1,300 @@
+{
+  "people": {
+    "rustboro_devon_employee": {
+      "name": {
+        "en": [
+          "Devon Employee"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rustboro_grunt": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Out of my way!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rustboro_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rustboro_scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Match Call lets you talk to the trainers you've registered, wherever you are!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "devon_employee": {
+      "name": {
+        "en": [
+          "Devon Employee"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Devon makes everything a trainer needs, from Poké Balls to the newest gadgets. I'm proud to work there!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rustboro is built from the stone of the hills around it. Even the school is made of rock!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I go to the Trainers' School. Today we learned about status conditions. I fell asleep. Ironic, huh?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big sister says Roxanne was the cleverest student the school ever had. Now she's the Gym Leader!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rustboro_little_boy": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're playing a game! You have to guess which Pokémon I'm thinking of. It's always Zigzagoon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rustboro_little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Zigzagoon! I guessed it again!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Cutter's house by the trees is where you go if you want to learn how to clear a path. He's a kind fellow."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The tunnel east of town was dug by one man with his bare hands! He stopped when the Whismur got upset by the noise."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RustboroCity_EventScript_GymSign": {
+      "en": [
+        "Rustboro City Pokémon Gym\nLeader: Roxanne\nA scholar of the strength of stone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RustboroCity_EventScript_TrainersSchoolSign": {
+      "en": [
+        "Pokémon Trainers' School\nLearn the basics, then go beyond them!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RustboroCity_EventScript_CitySign": {
+      "en": [
+        "Rustboro City\nA city of stone, where the newest ideas are cut."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RustboroCity_EventScript_DevonCorpSign": {
+      "en": [
+        "Devon Corporation\nFor every trainer, wherever the road leads."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RustboroCity_EventScript_TunnelSign": {
+      "en": [
+        "Rusturf Tunnel\nThe way east, toward Verdanturf Town"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RustboroCity_EventScript_CuttersHouseSign": {
+      "en": [
+        "The Cutter's House"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

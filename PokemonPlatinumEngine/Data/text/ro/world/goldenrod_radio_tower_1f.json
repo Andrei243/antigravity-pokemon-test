@@ -1,0 +1,112 @@
+{
+  "people": {
+    "d23r0101_gswoman6": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Radio Tower! I'm sorry, visitors may only see the ground floor today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0101_gswoman6_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We broadcast all over Johto, day and night. Do keep your radio tuned in!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0101_gswoman6_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our quiz is being set up. Come back soon, and you could win something special!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0101_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I work on the Lucky Number Show. Tune in once a week and see if your number comes up!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0101_gsgirl2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to see the DJs, but they're all upstairs. Maybe next time."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D23R0101_006+1": {
+      "en": [
+        "Ground floor: Reception\nUpper floors: staff only"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D23R0101_007+1": {
+      "en": [
+        "Radio Tower\nThe voice of Johto."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

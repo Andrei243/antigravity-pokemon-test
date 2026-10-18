@@ -1,0 +1,41 @@
+{
+  "people": {
+    "devon_employee": {
+      "name": {
+        "en": [
+          "Devon Employee"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I live right across from work. Very handy, except I can never say I'm stuck in traffic."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From up here you can see the whole city. And the sea, on a clear day!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

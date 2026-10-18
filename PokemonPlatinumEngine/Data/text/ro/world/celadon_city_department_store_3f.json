@@ -1,0 +1,152 @@
+{
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our games are the newest around! Have a go at the ones on display."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gba_kid": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm trading Pokémon with my friend over the link cable. Nearly done!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gba_kid_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This game's great! I've been playing it since the store opened."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gba_kid_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! I'm about to beat my high score!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big brother says he'll buy me a game if I'm good all day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeladonCity_DepartmentStore_3F_EventScript_FloorSign": {
+      "en": [
+        "3F: TV Game Shop"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_DepartmentStore_3F_EventScript_TV1": {
+      "en": [
+        "A Pokémon battle on the screen. The two are evenly matched!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_DepartmentStore_3F_EventScript_TV2": {
+      "en": [
+        "A game about a trainer on a long journey. It looks familiar."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_DepartmentStore_3F_EventScript_TV3": {
+      "en": [
+        "A racing game. The cars go round and round."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_DepartmentStore_3F_EventScript_TV4": {
+      "en": [
+        "A puzzle game with falling blocks."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_DepartmentStore_3F_EventScript_SuperNES": {
+      "en": [
+        "A games console, set up for anyone to try."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_DepartmentStore_3F_EventScript_Poster": {
+      "en": [
+        "A poster for a new game. Coming soon!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

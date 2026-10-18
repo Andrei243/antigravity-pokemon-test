@@ -1,0 +1,270 @@
+{
+  "displayName": {
+    "en": [
+      "Silph Co."
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "scientist": {
+      "name": {
+        "en": [
+          "Ed"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Ed: Team Rocket pays better than Silph Co. ever did!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Ed: Maybe I should go back to my old job."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: Silph Co. belongs to Team Rocket now! Get out!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Ugh! The boss will hear about this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: You again? How did you get in here?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Fine, fine. You win this one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_00": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_10": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_01": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_11": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door2_00": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door2_10": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door2_01": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door2_11": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door3_00": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door3_10": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door3_01": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door3_11": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door4_00": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door4_10": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door4_01": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door4_11": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SilphCo_9F_EventScript_FloorSign": {
+      "en": [
+        "Silph Co. Head Office\n9F"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

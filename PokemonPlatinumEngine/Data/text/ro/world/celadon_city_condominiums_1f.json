@@ -1,0 +1,78 @@
+{
+  "people": {
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "meowth": {
+      "name": {
+        "en": [
+          "Meowth"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Meow! Mrrrow?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clefairy": {
+      "name": {
+        "en": [
+          "Clefairy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pi pippi!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "nidoran_f": {
+      "name": {
+        "en": [
+          "Nidoran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kya kya!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeladonCity_Condominiums_1F_EventScript_SuiteSign": {
+      "en": [
+        "Celadon Mansion\nThe manager's suite"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

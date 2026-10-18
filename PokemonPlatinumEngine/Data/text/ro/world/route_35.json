@@ -1,0 +1,256 @@
+{
+  "people": {
+    "r35_policeman": {
+      "name": {
+        "en": [
+          "Dirk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Officer Dirk: Hold it! It's my job to keep these roads safe. Let's see your Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Officer Dirk: Fine work. The roads are safe with you on them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Kim"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Kim: My Vulpix and I are on a picnic. Will you battle us before lunch?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Kim: Now I've lost my appetite!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35_campboy_2": {
+      "name": {
+        "en": [
+          "Elliot"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Elliot: My girlfriend's watching! I can't lose this one!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Elliot: She saw that, didn't she?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35_picnicgirl_2_2": {
+      "name": {
+        "en": [
+          "Brooke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Brooke: Elliot always says he'll win. Let's see how I do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Brooke: Well, at least we lost together."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35_campboy_2_2": {
+      "name": {
+        "en": [
+          "Ivan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Ivan: I just came out of a cave. My Pokémon love the dark!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Ivan: Back into the cave I go."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35_juggrer": {
+      "name": {
+        "en": [
+          "Irwin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Irwin: Watch my Voltorb roll! One, two, three, four!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Irwin: I dropped them all at once."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35_gsboy3": {
+      "name": {
+        "en": [
+          "Arnie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Arnie: I'm looking for rare bugs for the Bug-Catching Contest!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Arnie: My Venonat needs more practice."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35_gsman2": {
+      "name": {
+        "en": [
+          "Bryan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Bryan: My birds fly faster than the wind. Try and keep up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Bryan: They flew straight into a wall."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35_fire": {
+      "name": {
+        "en": [
+          "Walt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Firebreather Walt: I breathe fire to warm up my Magmar. Feel the heat!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Firebreather Walt: Snuffed out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R35_004+1": {
+      "en": [
+        "National Park\nThe gate is to the west."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R35_000+1": {
+      "en": [
+        "Route 35\nNational Park - Goldenrod City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

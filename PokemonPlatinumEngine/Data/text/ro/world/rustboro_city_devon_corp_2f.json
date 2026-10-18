@@ -1,0 +1,113 @@
+{
+  "people": {
+    "scientist_1": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm working on a device that lets people talk to their Pokémon. So far, it only says \"Hello.\""
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_1_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're designing new Poké Balls. One that works better on Pokémon already caught once... maybe someday."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_1_3": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The PokéNav was my team's work. A map, a phone and more, all in one little case!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_1_4": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I dream of the day a Pokémon can be sent across the whole world in an instant."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fossil_scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Somewhere in the desert, ancient Pokémon lie sleeping in the rock. One day we'll wake them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_1_5": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Match Call lets trainers stay in touch. Register someone, and you can ring them from anywhere!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

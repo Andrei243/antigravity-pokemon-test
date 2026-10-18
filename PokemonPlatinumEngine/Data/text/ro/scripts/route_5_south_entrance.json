@@ -1,0 +1,70 @@
+{
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold it! I'm so thirsty I can hardly think. Nobody gets through until I've had a drink."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold it! I'm so thirsty... Oh! Is that tea? May I?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} gave the guard the Tea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, wonderful! I'll share it with the other guards. You're free to go through!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GuardTalk": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi, how's it going? Saffron City's closed for now, I'm afraid."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi, how's it going? Thanks for the tea, by the way!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

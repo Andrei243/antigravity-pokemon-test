@@ -1,0 +1,50 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine on the table, open at a page about Erika and her flowers."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "0_2": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine on the table, open at a page about Erika and her flowers."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeladonCity_Condominiums_2F_EventScript_MeetingRoomSign": {
+      "en": [
+        "Meeting Room"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

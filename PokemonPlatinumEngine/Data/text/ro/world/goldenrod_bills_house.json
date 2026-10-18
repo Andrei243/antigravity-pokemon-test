@@ -1,0 +1,43 @@
+{
+  "people": {
+    "t25r0401_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My son Bill made the PC storage system you use. He's off in Ecruteak City just now.",
+          "He calls whenever he wants feeding. Typical!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "t25r0401_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big brother Bill knows everything about Pokémon. I want to be just like him!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

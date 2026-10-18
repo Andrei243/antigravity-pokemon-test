@@ -1,0 +1,134 @@
+{
+  "Roxanne": [
+    {
+      "en": [
+        "Roxanne"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello! I'm Roxanne, the Leader of the Rustboro Gym. I teach at the Trainers' School, too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I learned everything I know about battling from books and from my Rock-type Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let's see if your lessons were learned in the field. Show me what you can do!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So I lost... I see now that there's still so much I have to learn."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've earned this. Please accept the Stone Badge, the official proof of your victory here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Stone Badge from Roxanne!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With the Stone Badge, your Pokémon can use Cut outside of battle, to clear small trees from your path."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And please take this TM as well. It's one I use myself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM39 holds Rock Tomb. It hurls boulders at the foe and slows it down, too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There are other Gyms waiting for you. I hope you'll keep studying as you travel. I know I will!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Battles teach lessons that no textbook can. I'm grateful for ours, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey there, rookie! Roxanne uses Rock-type Pokémon. They're tough, but they can't take Water or Grass moves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rock moves hit Fire and Flying types hard, so think twice before you send those out!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whoa, you beat Roxanne! You're a natural. The next Gym is a long way off, so take care out there!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

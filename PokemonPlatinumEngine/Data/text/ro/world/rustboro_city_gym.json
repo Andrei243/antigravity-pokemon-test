@@ -1,0 +1,120 @@
+{
+  "people": {
+    "roxanne": {
+      "name": {
+        "en": [
+          "Roxanne"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Josh"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Josh: Don't take this Gym lightly! Roxanne's rocks will crush you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Josh: You might actually have a chance..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster_2": {
+      "name": {
+        "en": [
+          "Tommy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Tommy: If you can't beat me, you'll never beat Roxanne!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Tommy: OK, you can beat me. Roxanne's another story."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Marc"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Marc: My Geodude and I climbed every hill in Hoenn. A little trainer won't stop us!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Marc: Stopped. By a little trainer."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RustboroCity_Gym_EventScript_LeftGymStatue": {
+      "en": [
+        "Rustboro City Pokémon Gym\nLeader: Roxanne"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RustboroCity_Gym_EventScript_RightGymStatue": {
+      "en": [
+        "Rustboro City Pokémon Gym\nLeader: Roxanne"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

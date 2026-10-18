@@ -1,0 +1,86 @@
+{
+  "people": {
+    "t25r1004_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1004_gsman2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Vitamins make a Pokémon stronger in a way battles alone never could."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1004_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm saving up for a Protein. My Rattata deserves it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1004_gsdsboy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm waiting for the lift. It hasn't come for ages..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T25R1004_004+1": {
+      "en": [
+        "4F: Medicine Box\nFor a Pokémon's health and strength."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,268 @@
+{
+  "people": {
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Keep out of our way, kid. Team Rocket has business in this town."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Get lost! I'm waiting for orders from upstairs, and you're blocking the view."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This Poliwrath is my pal. Don't you go getting any ideas about catching it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celadon_poliwrath": {
+      "name": {
+        "en": [
+          "Poliwrath"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poli! Poliwrath!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to the Gym to get some flowers. Erika grows the prettiest ones in town!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The department store has five floors. You could shop all day and still not see it all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hm? The Game Corner? Bah. It's all slot machines and thieves, if you ask me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Once, a Chansey taught me how it shares its strength with friends. Kind creatures, Chansey."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_1_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lovely flowers, aren't they? The Gym's young lady tends every one of them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The mansion over there is for rich folk. Someone on the roof gives away a Pokémon, I heard!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I work for Silph Co. in Saffron City. Team Rocket is everywhere lately. It makes me nervous."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeladonCity_EventScript_TrainerTips2": {
+      "en": [
+        "Trainer Tips\nA Pokémon's held item can turn a battle. Try giving one a berry!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_EventScript_PrizeExchangeSign": {
+      "en": [
+        "Coins exchanged for prizes!\nPrize Exchange"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_EventScript_GameCornerSign": {
+      "en": [
+        "Rocket Game Corner\nThe playground for grown-ups!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_EventScript_CitySign": {
+      "en": [
+        "Celadon City\nThe City of Rainbow Dreams"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_EventScript_MansionSign": {
+      "en": [
+        "Celadon Mansion"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_EventScript_TrainerTips1": {
+      "en": [
+        "Trainer Tips\nX Accuracy makes a move hard to miss. Find it at the department store!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_EventScript_DeptStoreSign": {
+      "en": [
+        "Find what you need at the Celadon Department Store!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_EventScript_GymSign": {
+      "en": [
+        "Celadon City Pokémon Gym\nLeader: Erika\nThe Nature-Loving Princess!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

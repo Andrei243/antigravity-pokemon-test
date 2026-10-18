@@ -1,0 +1,180 @@
+{
+  "people": {
+    "karate_master": {
+      "name": {
+        "en": [
+          "Koichi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Karate Master Koichi: Hwaaah! You dare challenge the Fighting Dojo?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Karate Master Koichi: Hoo! You are a true master yourself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Hitoshi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Hitoshi: Hyah! A challenger! Show me your fighting spirit!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Hitoshi: My spirit is broken... for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Hideki"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Hideki: Nobody reaches our master without beating me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Hideki: Go on. The master awaits."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_3": {
+      "name": {
+        "en": [
+          "Aaron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Aaron: Kiyaaa! Feel the power of my fists!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Aaron: My fists were not enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_4": {
+      "name": {
+        "en": [
+          "Mike"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Mike: We train day and night. Can you keep up?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Mike: Back to training, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "item_ball": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "item_ball_2": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SaffronCity_Dojo_EventScript_Statue": {
+      "en": [
+        "Fighting Dojo"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SaffronCity_Dojo_EventScript_LeftScroll": {
+      "en": [
+        "A scroll on the wall: \"Enemies on every side!\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SaffronCity_Dojo_EventScript_RightScroll": {
+      "en": [
+        "A scroll on the wall: \"Never give up, never surrender!\""
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "people": {
+    "t25r0901_gsoldman1": {
+      "name": {
+        "en": [
+          "Name Rater"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hello, hello! I'm the Name Rater. I rate the names of Pokémon.",
+          "My pen is resting just now. Do come back another day, and I'll rate your Pokémon's names!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -15,6 +15,30 @@
       "text": [
         "Stai! Sunt de serviciu și mi-e prea sete ca să las pe cineva să treacă. Întoarce-te după ce beau ceva."
       ]
+    },
+    {
+      "en": [
+        "Halt! I'm on duty, and I'm too... Wait, is that tea? It smells wonderful!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} gave the guard the Tea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahh, that hits the spot! I'll share the rest with the other guards. Go on through, and thanks!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "GuardTalk": [
@@ -32,6 +56,14 @@
       ],
       "text": [
         "Orașul Saffron e închis pentru călători deocamdată. Ordin de sus, mă tem."
+      ]
+    },
+    {
+      "en": [
+        "Thanks again for the tea! Saffron City's just through here."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

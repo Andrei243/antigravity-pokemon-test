@@ -1,0 +1,39 @@
+{
+  "displayName": {
+    "en": [
+      "Rocket Hideout"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: Dizzy yet? These floors spin you right round!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Now I'm the one seeing stars."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

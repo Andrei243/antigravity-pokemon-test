@@ -1,0 +1,36 @@
+{
+  "EeveeBall": [
+    {
+      "en": [
+        "There's a Pokémon in this Poké Ball. It's an Eevee!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take the Eevee?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received an Eevee!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's a Pokémon in this Poké Ball, but there's no room on the team for it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

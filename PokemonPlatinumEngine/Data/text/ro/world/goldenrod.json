@@ -1,0 +1,222 @@
+{
+  "people": {
+    "t25_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Department Store has six floors and a rooftop! I could spend all day in there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They're building a railway that runs all the way to Kanto. A train that floats on magnets!",
+          "In my day you walked, and you were glad of it."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "t25_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you been to the Game Corner? I'm not old enough to play, but I watch the lights."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_gsboy1_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Whitney is the Gym Leader here. She's super nice, until you battle her!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Radio Tower plays music all day. I always have my radio on."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_gswoman2_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Underground there's a passage that runs under the whole city. Shops set up down there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Goldenrod is the biggest city in Johto! Everybody comes here sooner or later."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T25_019+1": {
+      "en": [
+        "Goldenrod City Station\nMagnet Train service to Saffron City in Kanto."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_020+1": {
+      "en": [
+        "Goldenrod Radio Tower\nJohto's voice on the air."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_021+1": {
+      "en": [
+        "Goldenrod City Pokémon Gym\nLeader: Whitney\nShe's cute and she's strong."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_022+1": {
+      "en": [
+        "Goldenrod City\nThe festive city of gold and glitter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_023+1": {
+      "en": [
+        "The Bike Shop\nThe world is your oyster on two wheels."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_024+1": {
+      "en": [
+        "Goldenrod Game Corner\nYour playground for every age."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_025+1": {
+      "en": [
+        "The Name Rater\nA second opinion on your Pokémon's name."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_026+1": {
+      "en": [
+        "Underground Entrance\nThe passage under the city."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_027+1": {
+      "en": [
+        "Underground Entrance\nThe passage under the city."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_028+1": {
+      "en": [
+        "Global Terminal\nClosed for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25_029+1": {
+      "en": [
+        "Goldenrod Flower Shop\nFlowers for every Trainer."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

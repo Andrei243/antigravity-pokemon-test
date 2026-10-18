@@ -1,0 +1,278 @@
+{
+  "people": {
+    "d22r0101_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I love lying on the grass here and watching the clouds go by."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Bug-Catching Contest is held here on certain days. The whole park fills with Bug Catchers."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My brother and I race each other round the fountain. I always win!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_gsboy1_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He always cheats. I'll win next time!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_gsdsboy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People come from all over Johto to walk their Pokémon in this park."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Persian loves its walks in the park. It's the only time it's ever in a good mood."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_tsure_poke_static_persian": {
+      "name": {
+        "en": [
+          "Persian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Persian: Fufufu..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The park's grass is long. Bug Pokémon love to hide in it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_middlewoman1_2_2": {
+      "name": {
+        "en": [
+          "Beverly"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Beverly: My Snubbull is the sweetest thing. Look at its little face!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Beverly: Its little face is so sad now..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_gsgirl1_2": {
+      "name": {
+        "en": [
+          "Krise"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Krise: You look like you'd be fun to battle. Let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Krise: That was fun, even though I lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_gsmiddleman1_2": {
+      "name": {
+        "en": [
+          "William"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan William: My Raichu and I have been together for years. We're a team!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan William: Still a team, just a beaten one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d22r0101_gsboy1_4": {
+      "name": {
+        "en": [
+          "Jack"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Jack: I've read every book on battling. Let me show you what I know!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Jack: The books didn't cover that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D22R0101_001+1": {
+      "en": [
+        "National Park\nA place of rest for people and Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D22R0101_002+1": {
+      "en": [
+        "Trainer Tips\nPrint out Pokémon you've caught on your Pokédex... or just admire them here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D22R0101_003+1": {
+      "en": [
+        "Please keep the park clean. Take your rubbish home with you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

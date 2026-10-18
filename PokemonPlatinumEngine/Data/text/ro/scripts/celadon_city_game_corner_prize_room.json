@@ -1,0 +1,60 @@
+{
+  "Prizes": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! You have {coins} coins. Which prize would you like?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The {item} for {price} coins?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {item}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prizes are exchanged for coins. You'll need a Coin Case first."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough coins."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

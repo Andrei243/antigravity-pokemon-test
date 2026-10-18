@@ -1,0 +1,306 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, good, I caught you! Our president just gave you a PokéNav, didn't he? It's missing something important."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let me add Match Call to it. With Match Call, you can talk to the people you've registered, wherever they are."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There! I've put in your mother's number, and our president's. Open the PokéNav from your menu to try it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Trainers you meet on the road may want to swap numbers too. They'll call you when they want a rematch!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "StolenGoods": [
+    {
+      "en": [
+        "Team Aqua Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Outta my way! Coming through!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Devon Employee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "W-wait! Stop, thief! Give those back! Those goods belong to Devon!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HelpGetGoods": [
+    {
+      "en": [
+        "Devon Employee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You there! You're a trainer, aren't you? That was Team Aqua! They snatched a package of our parts right out of my hands!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The thief ran off east, toward Rusturf Tunnel. Please, you have to get the Devon Goods back!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DevonEmployee": [
+    {
+      "en": [
+        "The thief went east, into Rusturf Tunnel. Please hurry! Those parts are very important!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ReturnGoods": [
+    {
+      "en": [
+        "Devon Employee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah! You got the Devon Goods back from that thief! You're amazing! Thank you, thank you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, please take this. It's a Great Ball, one of our very own!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, and our president would like to thank you himself. Please, come with me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ready for that battle now, {player}?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RivalMeets": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I didn't expect to see you in Rustboro. Wait, is that a PokéNav? Devon only just made those!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, let's register each other. That way we can talk whenever we want!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So... how strong have you got since Route 103? Want to find out?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AskToBattle": [
+    {
+      "en": [
+        "Battle {rival}?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All right! Don't hold back, now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've been training hard, haven't you? I'll have to work twice as hard to keep up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, OK. Come and find me when you're ready. I'll be right here!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BrineyHint": [
+    {
+      "en": [
+        "Hey, have you heard of Mr. Briney? He's an old sailor who lives by the beach on Route 104."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They say he'll take people across the sea in his boat. Dewford Town's just a short sail away!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FatMan": [
+    {
+      "en": [
+        "Devon's building is the tallest in town. They say its president collects rare stones."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Did you see that fellow in the striped shirt? He ran past me so fast, my hat nearly blew off!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Boy2": [
+    {
+      "en": [
+        "The tunnel east of town goes nowhere. They stopped digging halfway because of the Pokémon living there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I saw old Mr. Briney hurrying home with his Wingull. He looked so happy!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Man1": [
+    {
+      "en": [
+        "The Gym Leader here is a teacher at the school, too. Clever and strong. Quite the combination!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, that's a Stone Badge! You beat Roxanne? You'll go far, I'm sure of it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

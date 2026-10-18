@@ -1,0 +1,41 @@
+{
+  "people": {
+    "policeman": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Cycling Road starts south of here. You'll need a Bicycle to ride it, and it's a long way down!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I used to ride the Cycling Road every day, back when my knees worked."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

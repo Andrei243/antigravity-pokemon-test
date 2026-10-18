@@ -1,0 +1,59 @@
+{
+  "people": {
+    "old_man_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hm? The slot machines? Every one of them is fixed, if you want my opinion."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! We're counting the takings. Get out of here!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Game Corner's a good little earner for the boss. Not that I said that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,149 @@
+{
+  "people": {
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Mother"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Walda won't stop crying until she hears just the right words. We've tried everything!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Walda"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Waaah!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "waldas_dad": {
+      "name": {
+        "en": [
+          "Father"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daughter only calms down for one particular phrase. If only I could remember what it was..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "skitty_doll": {
+      "name": {
+        "en": [
+          "Doll"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A soft Skitty doll."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "treecko_doll": {
+      "name": {
+        "en": [
+          "Doll"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A soft Treecko doll."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "torchic_doll": {
+      "name": {
+        "en": [
+          "Doll"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A soft Torchic doll."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mudkip_doll": {
+      "name": {
+        "en": [
+          "Doll"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A soft Mudkip doll."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pikachu_doll": {
+      "name": {
+        "en": [
+          "Doll"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A soft Pikachu doll."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

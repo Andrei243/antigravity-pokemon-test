@@ -1,0 +1,61 @@
+{
+  "people": {
+    "t25r0301_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon that's kept at the front of the team and treated kindly grows to love its Trainer.",
+          "A Pokémon that loves you will try that little bit harder for you."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "t25r0301_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pidgey follows me everywhere. Mum says that means it likes me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r0301_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some Pokémon only evolve when they're very fond of their Trainer. Strange but true."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

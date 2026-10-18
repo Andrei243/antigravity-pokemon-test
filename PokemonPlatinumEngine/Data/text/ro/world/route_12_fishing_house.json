@@ -1,0 +1,32 @@
+{
+  "people": {
+    "fisher": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm the Fishing Guru's younger brother. Fishing is life, and life is fishing!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route12_FishingHouse_EventScript_MagikarpRecordSign": {
+      "en": [
+        "The record Magikarp caught here. Nobody has beaten it yet!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

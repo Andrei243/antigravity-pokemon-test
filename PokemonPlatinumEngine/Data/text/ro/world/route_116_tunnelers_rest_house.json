@@ -1,0 +1,59 @@
+{
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Tunneler"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We were digging a tunnel to Verdanturf, but the noise upset the Whismur living there. So we stopped."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_m_2": {
+      "name": {
+        "en": [
+          "Tunneler"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "One fellow kept digging by himself, with nothing but his hands. Love makes a man do strange things."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_m_3": {
+      "name": {
+        "en": [
+          "Tunneler"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rest up here as long as you like. Digging's thirsty work."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

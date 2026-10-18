@@ -1,0 +1,76 @@
+{
+  "people": {
+    "t25sp0101_suit": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Game Corner! I'm afraid the prize counter is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25sp0101_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I used to come here every day. Now I just like the sound of the place."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25sp0101_gsgentleman_2": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say the prizes here include rare Pokémon. If only the counter were open!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T25SP0101_000+1": {
+      "en": [
+        "Prize Exchange\nClosed for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T25SP0101_001+1": {
+      "en": [
+        "A list of prizes. Every one of them is marked sold out."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

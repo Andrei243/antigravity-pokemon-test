@@ -1,0 +1,108 @@
+{
+  "Door1": [
+    {
+      "en": [
+        "The Card Key opened the door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. It takes a card to open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door2": [
+    {
+      "en": [
+        "The Card Key opened the door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. It takes a card to open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door3": [
+    {
+      "en": [
+        "The Card Key opened the door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. It takes a card to open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door4": [
+    {
+      "en": [
+        "The Card Key opened the door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. It takes a card to open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HealWoman": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You look worn out! Your Pokémon should take a quick nap. Here, let them rest a moment."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There. Don't give up now!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you so much! Team Rocket's gone, and we can all go home at last."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "people": {
+    "d18r0101_fire": {
+      "name": {
+        "en": [
+          "Richard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Firebreather Richard: This tower burned once. Shall I set it alight again?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Firebreather Richard: All my fire's gone up in smoke."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d18r0101_fire_2": {
+      "name": {
+        "en": [
+          "Ned"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Firebreather Ned: The ashes here are still warm, I swear. Feel that heat!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Firebreather Ned: Cooled right down."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

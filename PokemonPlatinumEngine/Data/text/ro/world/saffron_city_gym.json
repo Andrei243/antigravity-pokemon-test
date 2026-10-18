@@ -1,0 +1,207 @@
+{
+  "people": {
+    "sabrina": {
+      "name": {
+        "en": [
+          "Sabrina"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gym_guy": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m": {
+      "name": {
+        "en": [
+          "Cameron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Cameron: Our Leader can bend spoons with her mind! Can you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Cameron: I couldn't see that coming."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m_2": {
+      "name": {
+        "en": [
+          "Johan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Johan: I knew you'd teleport in here. I foresaw it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Johan: I didn't foresee that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m_3": {
+      "name": {
+        "en": [
+          "Preston"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Preston: The pads here can lead you anywhere. Even into a battle with me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Preston: You have a strong will."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m_4": {
+      "name": {
+        "en": [
+          "Tyron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Tyron: Do you believe in the power of the mind? You will!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Tyron: My mind is blank."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "channeler": {
+      "name": {
+        "en": [
+          "Amanda"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Amanda: The spirits whisper your name... Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Amanda: The spirits have gone quiet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "channeler_2": {
+      "name": {
+        "en": [
+          "Stacy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Stacy: Sabrina's power flows through this Gym. Can you feel it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Stacy: Your power is stronger."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "channeler_3": {
+      "name": {
+        "en": [
+          "Tasha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Tasha: You won't find Sabrina so easily. Stay a while!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Tasha: Very well. Find her, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

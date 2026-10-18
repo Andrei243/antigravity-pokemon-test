@@ -1,0 +1,132 @@
+{
+  "displayName": {
+    "en": [
+      "Silph Co."
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "scientist": {
+      "name": {
+        "en": [
+          "Travis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Travis: My research belongs to whoever pays the most. Today, that's Team Rocket!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Travis: That was poorly calculated."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "worker_f": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I hid in the corner when they came in. I'm still hiding, really."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: Halt! This floor is off limits to kids!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Off limits... to me, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_00": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_10": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_01": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_11": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SilphCo_10F_EventScript_FloorSign": {
+      "en": [
+        "Silph Co. Head Office\n10F"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

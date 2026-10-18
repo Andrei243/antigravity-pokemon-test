@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t25r0801_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you know there's a passage under the city? It joins the north end of town to the south."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r0801_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My dad works at the Radio Tower. He says everybody in Johto listens!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

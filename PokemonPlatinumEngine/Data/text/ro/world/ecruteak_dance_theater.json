@@ -1,0 +1,176 @@
+{
+  "people": {
+    "t27r0501_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Those girls have danced here since they were tiny. Such grace!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0501_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Each of the Kimono Girls has an Eevee, and each one evolved differently. Isn't that something?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0501_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I never miss a performance. My Psyduck enjoys it as much as I do."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0501_tsure_poke_static_psyduck": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psyduck: Psy... duck?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0501_dancer": {
+      "name": {
+        "en": [
+          "Kimono Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We dance for the Pokémon of the towers, as the dancers before us did."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0501_dancer_2": {
+      "name": {
+        "en": [
+          "Kimono Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Please don't mind us. We're only practising."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0501_dancer_3": {
+      "name": {
+        "en": [
+          "Kimono Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Eevee and I have danced together since we were both very small."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0501_dancer_4": {
+      "name": {
+        "en": [
+          "Kimono Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A dance is a kind of prayer, my teacher says."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0501_dancer_5": {
+      "name": {
+        "en": [
+          "Kimono Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you come to watch? Then sit and enjoy it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T27R0501_010+1": {
+      "en": [
+        "The stage. It's polished so well you can see your face in it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

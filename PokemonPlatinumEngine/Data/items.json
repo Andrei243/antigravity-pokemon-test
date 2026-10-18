@@ -13627,6 +13627,66 @@
     "cantBeTossed": true
   },
   {
+    "id": 9020,
+    "name": "Lift Key",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key that works the lift in Team Rocket's hideout under the Game Corner.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9021,
+    "name": "Silph Scope",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A scope made by Silph Co. It shows the true shape of a ghost nobody else can make out.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9022,
+    "name": "Poké Flute",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A flute whose gentle tune wakes even a Pokémon in the deepest sleep.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9023,
+    "name": "Tea",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A flask of hot, fragrant tea. Just the thing for someone who is parched.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9024,
+    "name": "Card Key",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A card that opens the locked doors of Silph Co.'s office building.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9100,
     "name": "Letter",
     "pocket": "KeyItems",

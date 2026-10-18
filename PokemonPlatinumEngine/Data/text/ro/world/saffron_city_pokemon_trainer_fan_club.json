@@ -1,0 +1,77 @@
+{
+  "people": {
+    "trainer_fan_club_battle_girl": {
+      "name": {
+        "en": [
+          "Battle Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm the biggest fan of Bruno of the Elite Four! His muscles are amazing!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trainer_fan_club_little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I like Lorelei of the Elite Four. She's so cool and calm."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trainer_fan_club_youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lance is the best! Dragon Pokémon are the coolest!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "trainer_fan_club_gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Agatha has been a trainer for longer than anyone. Experience counts for everything."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

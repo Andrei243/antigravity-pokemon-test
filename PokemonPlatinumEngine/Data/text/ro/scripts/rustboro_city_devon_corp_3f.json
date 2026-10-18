@@ -1,0 +1,152 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Devon Employee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the top floor. Our president's office is right this way. Please, follow me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Devon Employee"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "President, this is the trainer who got the Devon Goods back from Team Aqua."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mr. Stone"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you are the one! I'm Stone, the president of Devon. You have my deepest thanks."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those parts are for an important project. If they had gone missing, we'd have lost months of work."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'd like to give you something. Here, this is our newest product, the PokéNav."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the PokéNav!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It has a map of Hoenn, and much more besides. I hope it serves you well on your travels."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now, I hate to ask more of you, but might I trouble you with two errands?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "First, this letter. It is for my son, Steven. He is somewhere in Dewford Town, across the sea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And second, the Devon Goods. Please take them to Captain Stern at the shipyard in Slateport City."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mr. Briney, the sailor on Route 104, will surely take you across the water if you ask him."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon look tired. Let me see to them before you go."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MrStone": [
+    {
+      "en": [
+        "Mr. Stone"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My son Steven is in Dewford Town, and Captain Stern awaits the goods in Slateport. I'm counting on you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Employee": [
+    {
+      "en": [
+        "That PokéNav was my team's work. I hope you like it! Try the map: it shows where you are in Hoenn."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "people": {
+    "r34r0201_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ilex Forest is spooky. I always hold my breath the whole way through."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34r0201_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Butterfree grew up in Ilex Forest. It still flutters about whenever we pass the shrine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34r0201_tsure_poke_static_butterfree": {
+      "name": {
+        "en": [
+          "Butterfree"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Butterfree: Free! Freee!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

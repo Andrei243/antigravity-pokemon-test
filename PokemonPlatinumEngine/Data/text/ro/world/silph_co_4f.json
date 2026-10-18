@@ -1,0 +1,198 @@
+{
+  "displayName": {
+    "en": [
+      "Silph Co."
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: The boss wants the Master Ball, and nothing will stop him!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Nothing except you, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: Hey! Who let you up the stairs?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Next time I lock the stairs too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Rodney"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Rodney: Team Rocket pays better than Silph Co. ever did!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Rodney: Maybe I should go back to my old job."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "worker_m": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Please, save the president! He's on the top floor."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_00": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_10": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_01": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_11": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door2_00": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door2_10": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door2_01": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door2_11": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SilphCo_4F_EventScript_FloorSign": {
+      "en": [
+        "Silph Co. Head Office\n4F"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

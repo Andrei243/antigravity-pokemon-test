@@ -1,0 +1,59 @@
+{
+  "people": {
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daughter copies everyone she meets. She's upstairs, if you'd like to be copied too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our girl can mimic anybody. She does a wonderful Chansey!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "chansey": {
+      "name": {
+        "en": [
+          "Chansey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Chaaansey!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

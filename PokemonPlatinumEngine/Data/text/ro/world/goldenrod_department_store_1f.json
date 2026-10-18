@@ -1,0 +1,86 @@
+{
+  "people": {
+    "t25r1001_gswoman6": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Goldenrod Department Store! Every floor has something for you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1001_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come here every morning for the sales. You never know what you'll find."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1001_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm waiting for my daughter. She's been in the toy section for an hour!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1001_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to the rooftop! You can see the whole city from up there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T25R1001_004+1": {
+      "en": [
+        "1F Service Counter  2F Market  3F Battle Items\n4F Medicine  5F TM Corner  6F Tranquil Square"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

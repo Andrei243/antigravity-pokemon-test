@@ -1,0 +1,25 @@
+{
+  "people": {
+    "brineys_house_briney": {
+      "name": {
+        "en": [
+          "Mr. Briney"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "brineys_house_peeko": {
+      "name": {
+        "en": [
+          "Peeko"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

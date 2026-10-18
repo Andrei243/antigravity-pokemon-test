@@ -1,0 +1,228 @@
+{
+  "people": {
+    "worker_f": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Game Corner! Coins for the machines are sold at the next counter."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "worker_m": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Keep at it and the sevens will come. That's what I tell myself, anyway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! I'm on a winning streak. Don't break my concentration!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came here for one game, and that was three hours ago."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gym_guy": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some machines pay out more than others. Or so they say!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This place belongs to Team Rocket, you know. Everybody knows it, and nobody says a thing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've worked out the odds of every machine. It doesn't help one bit."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A little flutter now and then keeps an old man young."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "game_corner_grunt": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: I'm guarding this poster! Huh? You saw nothing, got it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Our boss will take care of you!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeladonCity_GameCorner_EventScript_UnusableSlotMachine1": {
+      "en": [
+        "This machine is out of order."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_GameCorner_EventScript_UnusableSlotMachine2": {
+      "en": [
+        "This machine is out of order."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_GameCorner_EventScript_UnusableSlotMachine3": {
+      "en": [
+        "This machine is out of order."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_GameCorner_EventScript_PhotoPrinter": {
+      "en": [
+        "A photo printer. It's not working today."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

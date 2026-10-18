@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t27r0801_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Things get dropped and lost all over Johto. A sharp eye can find them in the grass."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27r0801_babyboy1_2": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Daddy found a shiny stone once! He keeps it in a box."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,152 @@
+{
+  "people": {
+    "r37_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Tori"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Tori: We're twins! We battle together, two at a time!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Tori: We lost together, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r37_gsbabygirl1_2": {
+      "name": {
+        "en": [
+          "Til"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Til: Two of us against one of you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Til: Two of us still wasn't enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r37_mystery_2": {
+      "name": {
+        "en": [
+          "Greg"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Greg: My Drowzee sees dreams. What does your Pokémon dream of?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Greg: It dreamt of losing, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r37_gswoman2": {
+      "name": {
+        "en": [
+          "Callie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Callie: Aren't my Pokémon lovely? They're strong too, you know."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Callie: Lovely and beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r37_gswoman2_2": {
+      "name": {
+        "en": [
+          "Kassandra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Kassandra: Callie and I train together. Let's see if you can beat us both!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Kassandra: Callie, she beat me too!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R37_002+1": {
+      "en": [
+        "Route 37"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R37_003+1": {
+      "en": [
+        "Route 37\nEcruteak City is to the north."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "people": {
+    "devon_employee": {
+      "name": {
+        "en": [
+          "Devon Employee"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our research covers everything from Poké Balls to the newest gadgets. And rocks. Lots of rocks."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "devon_corp_stair_guard": {
+      "name": {
+        "en": [
+          "Devon Employee"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Devon Corporation. We make products for trainers all over Hoenn."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RustboroCity_DevonCorp_1F_EventScript_ProductsDisplay": {
+      "en": [
+        "Devon's products: Poké Balls of every kind, Potions, and the PokéNav, a trainer's best friend on the road."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RustboroCity_DevonCorp_1F_EventScript_RocksMetalDisplay": {
+      "en": [
+        "Rocks and metals dug from the hills around Rustboro. Devon began here, with a pickaxe."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

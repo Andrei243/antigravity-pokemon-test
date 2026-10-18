@@ -4651,6 +4651,11 @@
     "Lycanium Z": "Lougarozélite",
     "Kommonium Z": "Ékaïzélite",
     "Bike Voucher": "Bon Commande",
+    "Lift Key": "Clé Ascenseur",
+    "Silph Scope": "Scope Sylphe",
+    "Poké Flute": "Poké Flûte",
+    "Tea": "Thé",
+    "Card Key": "Carte Magnétique",
     "Letter": "Lettre à Pierre",
     "Devon Goods": "Pack Devon",
     "Wailmer Pail": "Wailmerrosoir"
@@ -7274,6 +7279,11 @@
       "Lycanium Z": "XXX nouvel effet pour lycanium-z--held",
       "Kommonium Z": "XXX nouvel effet pour kommonium-z--held",
       "Bike Voucher": "À échanger aux Cycles à Gogo à Azuria pour un Vélo.",
+      "Lift Key": "Met en marche l'ascenseur du Repaire Rocket de Céladopole.",
+      "Silph Scope": "Utilisé pour identifier les vraies formes des fantômes de la Tour Pokémon.",
+      "Poké Flute": "À utiliser pour réveiller un Pokémon endormi, incluant Ronflex sur les routes.",
+      "Tea": "Permet d'accéder à Safrania.",
+      "Card Key": "HS: Ouvre les portes de la Tour Radio. Gén III: Déverouille les portes de la Sylphe SARL.",
       "Letter": "Une lettre pour Rochard de la part du président de la Devon SARL.",
       "Devon Goods": "Contient les pièces mécaniques à livrer au Capitaine Poupe.",
       "Wailmer Pail": "Utilisé pour arroser les baies."

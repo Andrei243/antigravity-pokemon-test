@@ -1,0 +1,104 @@
+{
+  "people": {
+    "t25r1002_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1002_shopm1_2_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1002_campboy_2": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Potions, Poké Balls, Escape Ropes... everything a Trainer needs, right here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1002_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm buying my first Poké Balls today! My mum gave me the money."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r1002_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Prices go up and down from day to day. A wise shopper keeps an eye on them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T25R1002_005+1": {
+      "en": [
+        "2F: Trainer's Market\nEverything for the road."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

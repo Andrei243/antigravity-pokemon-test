@@ -1,0 +1,166 @@
+{
+  "Door1": [
+    {
+      "en": [
+        "The Card Key opened the door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. It takes a card to open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door2": [
+    {
+      "en": [
+        "The Card Key opened the door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. It takes a card to open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door3": [
+    {
+      "en": [
+        "The Card Key opened the door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. It takes a card to open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RivalTrigger": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What kept you, {player}? I've been up here for ages. Team Rocket's made a real mess of this place."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came to see the president, but first let's see if you've been training. Here I come!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tch. Not bad. Team Rocket's boss is upstairs, you know. Think you can handle him? I doubt it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm off. Smell you later, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huh? Don't just stand there gawking. Come on!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LaprasGuy": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank goodness you're here! Team Rocket nearly took this one. Please, take it somewhere safe."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received a Lapras!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a Lapras. It's very smart, and it'll carry you across the water, too."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How's the Lapras getting on? Team Rocket would have sold it. You saved it!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

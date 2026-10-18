@@ -1,0 +1,120 @@
+{
+  "Door": [
+    {
+      "en": [
+        "The Card Key opened the door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. It takes a card to open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Giovanni": [
+    {
+      "en": [
+        "Giovanni"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, it's you again. We meet once more. The president and I are discussing a business deal."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Silph Co. will hand over its Master Ball to Team Rocket, and you will keep out of it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Or will you? Very well. I'll make sure you never interfere again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Giovanni"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Arrgh! I lose again?! Blast it all... You ruined our plans for Silph Co."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But Team Rocket will never fall! I'll be waiting for you, child. Remember that."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "President": [
+    {
+      "en": [
+        "President"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you, my young friend! You saved Silph Co. from Team Rocket. I can't thank you enough."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please accept this as a token of our gratitude. You won't find another anywhere."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's our secret prototype, the Master Ball. It will catch any wild Pokémon without fail."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Master Ball is the only one of its kind. Use it wisely!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

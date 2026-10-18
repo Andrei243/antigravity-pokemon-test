@@ -1,0 +1,50 @@
+{
+  "people": {
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a Pokémon in that ball on the table. Nobody here can look after it. Go on, take it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "eevee_pokeball": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeladonCity_Condominiums_RoofRoom_EventScript_Blackboard": {
+      "en": [
+        "Notes on how moves are sorted: physical, special and status."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_Condominiums_RoofRoom_EventScript_TMsPamphlet": {
+      "en": [
+        "A pamphlet about TMs. Each one teaches a Pokémon a move!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

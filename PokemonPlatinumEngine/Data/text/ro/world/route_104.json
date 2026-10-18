@@ -1,0 +1,416 @@
+{
+  "people": {
+    "route104_briney": {
+      "name": {
+        "en": [
+          "Mr. Briney"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ahoy! The sea's calling, but my old boat needs a little more work."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm looking for Bug Pokémon. The woods up ahead are full of them, but they're so dark!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon that like water show up where the grass meets the beach. I saw a Wingull just now!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If you see a Trainer standing still, watch out! The moment your eyes meet, the battle's on."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Two trainers who stand side by side will battle together. That's a double battle. Twice the fun!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The flower shop up the road sells berries and the pail to water them with. My garden's all from there!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mr. Briney used to sail every day. Since his Wingull friend got sick, his boat's just sat on the beach."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rustboro City's just up ahead! It's the biggest city around here, all stone and big buildings."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Florist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A White Herb puts a Pokémon's lowered stats right again. I grow them myself!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Haley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Haley: I picked my Pokémon because they're cute. Is that a problem?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Haley: Cute and beaten. That's not fair!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Ivan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Ivan: I fished up three Magikarp today! Let's see what they can do."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Ivan: Splash, splash, splash. That's all they did."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Gina & Mia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Gina & Mia: Two of us, two of them! Get ready for a double battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Gina & Mia: We'll practise our teamwork some more..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "twin_2": {
+      "name": {
+        "en": [
+          "Gina & Mia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Gina & Mia: Two of us, two of them! Get ready for a double battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Gina & Mia: We'll practise our teamwork some more..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Winston"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rich Boy Winston: My Pokémon wears only the finest. Can yours keep up?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Rich Boy Winston: Money can't buy everything, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2_2": {
+      "name": {
+        "en": [
+          "Cindy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Cindy: A lady never refuses a battle. Shall we?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Cindy: How very rude of you to win so easily."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Billy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Billy: My Zigzagoon goes all over the place! Try and keep up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Billy: It went all over the place. Mostly the wrong place."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman_2": {
+      "name": {
+        "en": [
+          "Darian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Darian: This Magikarp's the biggest I ever caught. It must be strong!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Darian: Big isn't the same as strong, I guess."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route104_EventScript_BrineysCottageSign": {
+      "en": [
+        "Mr. Briney's Cottage"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route104_EventScript_RouteSignPetalburg": {
+      "en": [
+        "Route 104\nPetalburg City to the south"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route104_EventScript_RouteSignRustboro": {
+      "en": [
+        "Route 104\nRustboro City to the north"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route104_EventScript_FlowerShopSign": {
+      "en": [
+        "Pretty Petal Flower Shop"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route104_EventScript_TrainerTipsDoubleBattles": {
+      "en": [
+        "Trainer Tips\nTwo trainers who see you together will battle you together. Bring at least two Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "people": {
+    "erika": {
+      "name": {
+        "en": [
+          "Erika"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Kay"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Kay: Hey! You can't just walk into Erika's garden like that!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Kay: Fine, go on through. Erika won't go easy, though!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Bridget"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Bridget: Oh, a visitor! Do you like flowers? My Pokémon smell lovely."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Bridget: Oh dear. My bouquet's been trampled."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Tina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Tina: I'm here to learn about Grass Pokémon from Erika! Show me what you've got!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Tina: I've still got a lot to learn."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Tamia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Tamia: Look at my Pokémon! Aren't they elegant?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Tamia: Elegance isn't everything, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_3": {
+      "name": {
+        "en": [
+          "Lori"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Lori: Erika is resting. You'll have to get past me first."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Lori: Very well. She'll want to meet you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Lisa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Lisa: I don't like bugs, so I don't like people who use Bug Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Lisa: Ugh, you're strong."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Mary"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cool Trainer Mary: Erika's students are tough. I'm the toughest of all!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cool Trainer Mary: Not tough enough, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

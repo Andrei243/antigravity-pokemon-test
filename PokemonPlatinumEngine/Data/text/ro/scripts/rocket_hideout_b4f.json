@@ -1,0 +1,90 @@
+{
+  "Barrier": [
+    {
+      "en": [
+        "The barrier switched off!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A barrier of light blocks the way. Its switch must be under guard."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LiftKey": [
+    {
+      "en": [
+        "The Lift Key! The grunt beside it won't let anyone near it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Giovanni": [
+    {
+      "en": [
+        "Giovanni"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So. You've come all the way down here. I'm impressed that a child could find our hideout at all."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket captures Pokémon from around the world. They're tools for making us rich, nothing more."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you, child, are in my way. I'm Giovanni, and I'll teach you the price of meddling!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What?! This can't be! You've put me in my place, I see."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll leave this hideout to you. But remember: Team Rocket isn't finished. We'll meet again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SilphScope": [
+    {
+      "en": [
+        "A strange scope on Giovanni's desk. Not with him standing right there!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "people": {
+    "t27_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Burned Tower caught fire long ago. Some say three Pokémon died in the blaze."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Kimono Girls dance at the theater every day. They're the best dancers in Johto!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ecruteak has two towers. The Bell Tower in the north-east, and the burned one in the north-west."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Bell Tower is said to be where a great rainbow-coloured Pokémon rests.",
+          "Only a Trainer it accepts may climb to the top."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "t27_gsoldman1_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "In my youth I saw a great bird fly over the city, and a rainbow behind it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t27_gsgirl2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Morty, our Gym Leader, trains at the Burned Tower. He's always looking for something."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T27_001+1": {
+      "en": [
+        "Ecruteak City\nA historical city where the past meets the present."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T27_002+1": {
+      "en": [
+        "Ecruteak City Pokémon Gym\nLeader: Morty\nThe mystic seer of the future."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T27_003+1": {
+      "en": [
+        "Ecruteak Dance Theater"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T27_004+1": {
+      "en": [
+        "Burned Tower\nIt was destroyed by a fire long ago."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T27_016+1": {
+      "en": [
+        "Bell Tower\nThe way is closed to all but the chosen."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

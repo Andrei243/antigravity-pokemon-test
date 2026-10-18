@@ -1,0 +1,42 @@
+{
+  "people": {
+    "d36r0101_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The trees here are so old and so close together that the sun hardly gets in.",
+          "Stay on the path. People have wandered in here and not come out for days."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D36R0101_012+1": {
+      "en": [
+        "Ilex Forest Shrine\nThe forest's protector is said to rest here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D36R0101_013+1": {
+      "en": [
+        "Ilex Forest\nThe forest is so thick that it's dark even at midday."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

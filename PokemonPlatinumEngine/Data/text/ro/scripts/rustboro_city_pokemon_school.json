@@ -1,0 +1,46 @@
+{
+  "Teacher": [
+    {
+      "en": [
+        "Welcome to the Trainers' School! Our pupils learn everything from type matchups to held items."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're a trainer already, I can tell. Here, a little something for your Pokémon to hold."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon holding a Quick Claw will sometimes get to move first, however slow it is. Isn't that clever?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Scott": [
+    {
+      "en": [
+        "Hmm? Oh, don't mind me. I'm just watching the young trainers here. I'm always looking for talent."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You look like you've got some yourself. I'll be keeping an eye on you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

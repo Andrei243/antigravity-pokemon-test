@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "Silph Co."
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "worker_f": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to Silph Co. Thanks to you, we're open for business again!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SilphCo_1F_EventScript_FloorSign": {
+      "en": [
+        "Silph Co. Head Office\n1F"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

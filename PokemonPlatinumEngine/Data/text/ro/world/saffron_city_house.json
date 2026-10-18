@@ -1,0 +1,68 @@
+{
+  "people": {
+    "pidgey": {
+      "name": {
+        "en": [
+          "Pidgey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bi bibii!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I sent a letter by Pidgey once. It ended up in Vermilion City!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Rocket has taken over Silph Co. Dad works there, and he can't get home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SaffronCity_House_EventScript_Letter": {
+      "en": [
+        "A letter on the table: \"I'm safe, but Team Rocket won't let us leave the building.\""
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

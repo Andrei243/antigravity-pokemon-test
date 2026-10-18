@@ -1,0 +1,240 @@
+{
+  "people": {
+    "snorlax": {
+      "name": {
+        "en": [
+          "Snorlax"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker": {
+      "name": {
+        "en": [
+          "Lao"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Lao: What're you looking at? You wanna race?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Lao: Aw, man. I got left in the dust."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_2": {
+      "name": {
+        "en": [
+          "Koji"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cue Ball Koji: This road's ours! Pay the toll or battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cue Ball Koji: Okay, okay, no toll for you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_3": {
+      "name": {
+        "en": [
+          "Luke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cue Ball Luke: Nobody passes without a fight. That's the rule round here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cue Ball Luke: Fine. Pass."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_4": {
+      "name": {
+        "en": [
+          "Ruben"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Ruben: Hey kid! Ever hear an engine roar like my Pokémon?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Ruben: My engine stalled."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_5": {
+      "name": {
+        "en": [
+          "Hideo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Hideo: We're the toughest gang on the Cycling Road!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Hideo: Not so tough, it turns out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_6": {
+      "name": {
+        "en": [
+          "Camron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cue Ball Camron: You've got guts coming down here alone!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cue Ball Camron: Guts and a strong team, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Lea"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Lea and Jed: We're on a date! Battle us together, if you dare!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Lea and Jed: Losing together isn't so bad."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Jed"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Lea and Jed: We're on a date! Battle us together, if you dare!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Lea and Jed: Losing together isn't so bad."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route16_EventScript_RouteSign": {
+      "en": [
+        "Route 16\nCeladon City - Fuchsia City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route16_EventScript_CyclingRoadSign": {
+      "en": [
+        "Cycling Road\nNo pedestrians allowed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

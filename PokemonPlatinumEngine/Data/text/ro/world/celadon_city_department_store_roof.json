@@ -1,0 +1,58 @@
+{
+  "people": {
+    "cooltrainer_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My sister's dying for a drink, but I'm too broke to buy her one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm so thirsty... The machines over there sell drinks, if only I had money!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeladonCity_DepartmentStore_Roof_EventScript_FloorSign": {
+      "en": [
+        "Rooftop Square: Vending Machines"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_DepartmentStore_Roof_EventScript_VendingMachine": {
+      "en": [
+        "A vending machine. Fresh Water, Soda Pop and Lemonade."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

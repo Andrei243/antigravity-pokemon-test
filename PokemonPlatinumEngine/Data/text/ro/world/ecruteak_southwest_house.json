@@ -1,0 +1,43 @@
+{
+  "people": {
+    "t27r0401_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three hundred years ago there were two towers here, and a great bird nested on each.",
+          "One tower burned. The bird left, and never came back."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "t27r0401_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Grandpa's told me about the towers a hundred times. I still like hearing it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

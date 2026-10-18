@@ -1,0 +1,89 @@
+{
+  "people": {
+    "rusturf_tunnel_grunt": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rusturf_tunnel_peeko": {
+      "name": {
+        "en": [
+          "Peeko"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rusturf_tunnel_briney": {
+      "name": {
+        "en": [
+          "Mr. Briney"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Peeko! Where is my Peeko?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rusturf_tunnel_wandas_bf": {
+      "name": {
+        "en": [
+          "Young Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rusturf_tunnel_wanda": {
+      "name": {
+        "en": [
+          "Wanda"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Mike"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Mike: I came down here to see the tunnel. Found you instead. Let's rumble!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Mike: Rumbled. I'll stick to looking at rocks."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

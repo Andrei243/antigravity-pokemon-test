@@ -1,0 +1,130 @@
+{
+  "MasterTrigger": [
+    {
+      "en": [
+        "Koichi"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hwaaah! You have beaten my students. Now face the master of the Fighting Dojo!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hwa! You have beaten me fairly. As is the custom, you may take one of the Pokémon on the dais."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Master": [
+    {
+      "en": [
+        "Koichi"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hwa! You have beaten me fairly. As is the custom, you may take one of the Pokémon on the dais."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take one of the Pokémon on the dais, as is your right. Choose wisely!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Train hard with the Pokémon you chose. Strength comes from the heart!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hitmonlee": [
+    {
+      "en": [
+        "Hitmonlee, the kicking fiend! Take it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received a Hitmonlee!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Poké Ball on the dais. It's the Dojo's prize, for whoever beats the master."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Better not be greedy. One Pokémon is plenty."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Hitmonchan": [
+    {
+      "en": [
+        "Hitmonchan, the piercing puncher! Take it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received a Hitmonchan!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Poké Ball on the dais. It's the Dojo's prize, for whoever beats the master."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Better not be greedy. One Pokémon is plenty."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

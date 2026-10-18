@@ -1,0 +1,33 @@
+{
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Cutter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My father planted every tree around this house. Then he cut them all into shapes. He loves both jobs!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

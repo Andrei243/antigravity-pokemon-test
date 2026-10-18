@@ -1,0 +1,28 @@
+{
+  "Panel": [
+    {
+      "en": [
+        "Which floor?",
+        "B1F",
+        "B2F",
+        "B4F",
+        "Stay here"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The lift's panel won't respond. It needs a key to work."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

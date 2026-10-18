@@ -1,0 +1,40 @@
+{
+  "people": {
+    "worker_f": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hello! Welcome to the Celadon Department Store. The board on the right shows what's on each floor."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeladonCity_DepartmentStore_1F_EventScript_LayoutSign": {
+      "en": [
+        "2F: Trainer's Market. 3F: TV Games.\n4F: Gifts. 5F: Drugstore. Roof: Square."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_DepartmentStore_1F_EventScript_FloorSign": {
+      "en": [
+        "1F: Service Counter"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

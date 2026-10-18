@@ -1,0 +1,40 @@
+{
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My boyfriend gave me a Pokémon. I wonder if it's a good one?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route12_NorthEntrance_2F_EventScript_LeftBinoculars": {
+      "en": [
+        "Looking through the binoculars... There's a big Pokémon asleep on the road!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route12_NorthEntrance_2F_EventScript_RightBinoculars": {
+      "en": [
+        "Looking through the binoculars... The Pokémon Tower stands tall over Lavender Town."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

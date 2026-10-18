@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t25r0601_gswoman1": {
+      "name": {
+        "en": [
+          "Florist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! Every flower here was grown by my sister on Route 36."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25r0601_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My sister grows flowers out on Route 36. I water ours here every morning!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

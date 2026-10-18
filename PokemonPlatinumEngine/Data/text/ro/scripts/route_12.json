@@ -1,0 +1,52 @@
+{
+  "Snorlax": [
+    {
+      "en": [
+        "A sleeping Pokémon blocks the way. It's snoring soundly."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A sleeping Pokémon blocks the way. Use the Poké Flute?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} played the Poké Flute."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Snorlax woke up! It doesn't look happy about it..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Snorlax lumbered off somewhere quieter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Snorlax calmed down, and lumbered off."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

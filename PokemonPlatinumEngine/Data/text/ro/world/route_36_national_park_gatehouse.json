@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r36r0201_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The National Park is to the west. Route 36 runs east toward Violet City."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

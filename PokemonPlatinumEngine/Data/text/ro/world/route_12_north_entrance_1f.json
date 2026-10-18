@@ -1,0 +1,23 @@
+{
+  "people": {
+    "policeman": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a Snorlax asleep on the road south of here. Nobody can get past it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

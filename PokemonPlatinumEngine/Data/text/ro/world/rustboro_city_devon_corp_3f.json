@@ -1,0 +1,44 @@
+{
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Mr. Stone"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman_2": {
+      "name": {
+        "en": [
+          "Mr. Stone"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "devon_corp_3f_employee": {
+      "name": {
+        "en": [
+          "Devon Employee"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RustboroCity_DevonCorp_3F_EventScript_RareRocksDisplay": {
+      "en": [
+        "Rare stones from all over Hoenn, each labelled in the president's own hand."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

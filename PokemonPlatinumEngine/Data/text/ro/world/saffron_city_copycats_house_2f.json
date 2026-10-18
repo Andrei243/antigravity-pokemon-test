@@ -1,0 +1,94 @@
+{
+  "people": {
+    "little_girl": {
+      "name": {
+        "en": [
+          "Copycat"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hi! Do you like Pokémon? I do! See? I'm copying you. Hee hee!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "doduo": {
+      "name": {
+        "en": [
+          "Doduo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Doo doo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Doll"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pikachu doll. It's very soft."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "jigglypuff": {
+      "name": {
+        "en": [
+          "Doll"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Jigglypuff doll, round as a ball."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SaffronCity_CopycatsHouse_2F_EventScript_Computer": {
+      "en": [
+        "A computer with a diary on it. Today I copied a Clefairy!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SaffronCity_CopycatsHouse_2F_EventScript_Game": {
+      "en": [
+        "A game about a trainer copying moves. Fitting."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

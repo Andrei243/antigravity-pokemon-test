@@ -1,0 +1,20 @@
+{
+  "Door": [
+    {
+      "en": [
+        "The Card Key opened the door!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door is locked. It takes a card to open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

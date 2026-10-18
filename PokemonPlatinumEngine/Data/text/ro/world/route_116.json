@@ -1,0 +1,354 @@
+{
+  "people": {
+    "route116_briney": {
+      "name": {
+        "en": [
+          "Mr. Briney"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Devon Employee"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route116_wandas_bf": {
+      "name": {
+        "en": [
+          "Young Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I dropped my glasses somewhere around here. I can't see a thing without them!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Joey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Joey: My Machop's been training every day! It's going to flatten you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Joey: Flattened. Me, I mean."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Jose"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Jose: I've been waiting all day for a trainer to walk by. Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Jose: Waited all day just to lose. Oh well."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Clark"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Clark: The mountains made me tough. Let's see how tough you are!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Clark: Hah! You're tougher than a mountain path."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Janice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Janice: My Marill is round and blue and very, very strong!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Janice: Still round and blue. Less strong."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Karen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Karen: Let me show you what I learned at the Trainers' School!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Karen: I'll have to study harder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Jerry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Jerry: Our teacher says a battle is a test. I'm going to ace this one!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Jerry: I failed the test..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Sarah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Sarah: My Pokémon and I take a stroll every afternoon. A battle would be a pleasant change."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Sarah: Most pleasant indeed, though not for us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Dawson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Rich Boy Dawson: Do you know how much my Pokémon cost? You can't beat money!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Rich Boy Dawson: I should have bought stronger ones."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster_2": {
+      "name": {
+        "en": [
+          "Johnson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Johnson: Hey! You looked at me! That means we battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Johnson: Next time I'll look the other way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Devan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Devan: Two Geodude, solid as boulders. Ready to roll?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Devan: Rolled right over us, you did."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route116_EventScript_RouteSignRustboro": {
+      "en": [
+        "Route 116\nRustboro City to the west"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route116_EventScript_RusturfTunnelSign": {
+      "en": [
+        "Rusturf Tunnel\nDigging under way. The far end isn't through yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route116_EventScript_TunnelersRestHouseSign": {
+      "en": [
+        "Tunnelers' Rest House"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route116_EventScript_TrainerTipsBToStopEvolution": {
+      "en": [
+        "Trainer Tips\nIf your Pokémon starts to evolve and you'd rather it didn't, press B to stop it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route116_EventScript_TrainerTipsBagHasPockets": {
+      "en": [
+        "Trainer Tips\nYour bag has pockets for every kind of item. Move between them with left and right."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

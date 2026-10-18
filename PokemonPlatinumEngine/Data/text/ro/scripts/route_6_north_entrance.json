@@ -1,0 +1,70 @@
+{
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry, no one gets past. I've been on duty all day without a drop to drink!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry, no one gets... Is that tea? You're a lifesaver!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} gave the guard the Tea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Much better! I'll pass the rest round the other gates. Go right ahead!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GuardTalk": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Saffron City's closed to everyone for the time being. I don't know why."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That tea really hit the spot. Off you go to Saffron City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

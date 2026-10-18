@@ -1,0 +1,160 @@
+{
+  "displayName": {
+    "en": [
+      "Silph Co."
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "worker_f": {
+      "name": {
+        "en": [
+          "Secretary"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Thank you for rescuing us! The president would surely have given in to Team Rocket."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "silph_co_11f_grunt1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: The boss wants the Master Ball, and nothing will stop him!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Nothing except you, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "silph_co_11f_grunt2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: Hey! Who let you up the stairs?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Next time I lock the stairs too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_2": {
+      "name": {
+        "en": [
+          "President"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "silph_co_giovanni": {
+      "name": {
+        "en": [
+          "Giovanni"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_00": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_10": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_01": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door1_11": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SilphCo_11F_EventScript_FloorSign": {
+      "en": [
+        "Silph Co. Head Office\n11F"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

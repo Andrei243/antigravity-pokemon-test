@@ -1,0 +1,110 @@
+{
+  "people": {
+    "rocker": {
+      "name": {
+        "en": [
+          "Programmer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Me? I write the code. If the game crashes, it's probably my fault."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Designer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I plan the maps. Every town needs a place to explore, don't you think?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I draw the Pokémon. Getting their eyes right takes the longest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Writer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I write what people say. A good line is harder than it looks!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeladonCity_Condominiums_3F_EventScript_DevelopmentRoomSign": {
+      "en": [
+        "Development Room\nDo not disturb!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_Condominiums_3F_EventScript_Computer1": {
+      "en": [
+        "The screen is full of numbers that scroll past too fast to read."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_Condominiums_3F_EventScript_Computer2": {
+      "en": [
+        "A drawing of a Pokémon nobody has named yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CeladonCity_Condominiums_3F_EventScript_Computer3": {
+      "en": [
+        "A map of a town, half finished."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

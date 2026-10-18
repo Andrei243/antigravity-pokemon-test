@@ -1,0 +1,41 @@
+{
+  "people": {
+    "d37r0101_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The shops down here open only on certain days. Come back now and then and see."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0101_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This passage runs right under the city. It's the fastest way from one end to the other."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

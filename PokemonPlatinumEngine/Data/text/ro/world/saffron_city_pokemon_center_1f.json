@@ -1,0 +1,105 @@
+{
+  "people": {
+    "saffron_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Rocket took over Silph Co. right under our noses. The whole city's on edge."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sabrina, the Gym Leader, can read minds, they say. I wouldn't want to battle her!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Fighting Dojo next to the Gym used to be the city's Gym, until Sabrina beat them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "0": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine on the seat, open at a page about Sabrina."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "0_2": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine on the seat, open at a page about Sabrina."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

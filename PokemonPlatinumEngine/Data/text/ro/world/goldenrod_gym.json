@@ -1,0 +1,138 @@
+{
+  "people": {
+    "t25gym0101_gsleader3": {
+      "name": {
+        "en": [
+          "Whitney"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25gym0101_gsgirl1": {
+      "name": {
+        "en": [
+          "Cathy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Cathy: Whitney's Pokémon are so cute! Mine are too, aren't they?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Cathy: Even my three Jigglypuff couldn't sing you to sleep."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25gym0101_gsgirl1_2": {
+      "name": {
+        "en": [
+          "Carrie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Carrie: Don't be fooled by how sweet Snubbull looks. It bites!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Carrie: Ow. That one bit back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25gym0101_gswoman2": {
+      "name": {
+        "en": [
+          "Victoria"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Victoria: Whitney is my idol. I'll show you what she taught me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Victoria: Whitney would have won, I'm sure."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25gym0101_gswoman2_2": {
+      "name": {
+        "en": [
+          "Samantha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Samantha: My Meowth and I are a matching pair. Shall we?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Samantha: Our matching pair, beaten together."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T25GYM0101_003+1": {
+      "en": [
+        "Goldenrod City Pokémon Gym\nLeader: Whitney"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

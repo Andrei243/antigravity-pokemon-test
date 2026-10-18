@@ -1,0 +1,76 @@
+{
+  "people": {
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm watching the bikers through the binoculars. They're so cool!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a big Pokémon asleep on the road outside. It's been there for days!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm one of Professor Oak's aides. Keep filling that Pokédex, and I may have something for you one day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route16_NorthEntrance_2F_EventScript_LeftBinoculars": {
+      "en": [
+        "Looking through the binoculars... The Cycling Road runs on and on to the south."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route16_NorthEntrance_2F_EventScript_RightBinoculars": {
+      "en": [
+        "Looking through the binoculars... A Snorlax is fast asleep on the road!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

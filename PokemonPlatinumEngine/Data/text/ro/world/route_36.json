@@ -1,0 +1,126 @@
+{
+  "people": {
+    "r36_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ecruteak City is up Route 37, just west of here. It's the old city of the two towers."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r36_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "From here you can see all the way to Violet City. I love this route!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r36_mystery_2": {
+      "name": {
+        "en": [
+          "Mark"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Mark: I can read your mind. You're thinking of battling me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Mark: I didn't foresee that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r36_gsboy1": {
+      "name": {
+        "en": [
+          "Alan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Alan: My teacher says I'm ready for a real battle. Are you real enough?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Alan: I have a lot of homework to do now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R36_005+1": {
+      "en": [
+        "Route 36\nNational Park"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R36_004+1": {
+      "en": [
+        "Ruins of Alph\nNorth Entrance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R36_003+1": {
+      "en": [
+        "Route 36"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R36_006+1": {
+      "en": [
+        "Route 37\nEcruteak City is to the north."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

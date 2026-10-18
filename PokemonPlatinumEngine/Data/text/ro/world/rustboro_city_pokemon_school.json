@@ -1,0 +1,132 @@
+{
+  "people": {
+    "gameboy_kid": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm trading Pokémon with my friend! Well, we're pretending. The link is down."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gameboy_kid_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to be the best trainer in the class. Just as soon as I catch a second Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Status conditions! Poison, burn, paralysis, sleep, freezing. I have to memorise them all for the test."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our teacher says a Pokémon holding the right item can turn a battle around."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If your Pokémon is asleep, you can't do much but wait. Or use an item!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Teacher"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RustboroCity_PokemonSchool_EventScript_Blackboard": {
+      "en": [
+        "Today's lesson: the five status conditions, and the items that cure them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "RustboroCity_PokemonSchool_EventScript_StudentNotebook": {
+      "en": [
+        "A student's notebook. \"Roxanne: Rock type. Water and Grass work well.\" Underlined twice."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

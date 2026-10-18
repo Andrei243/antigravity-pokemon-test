@@ -1,0 +1,41 @@
+{
+  "people": {
+    "r35r0101_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 35 runs north to the National Park. Lots of Trainers battle on the way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r35r0101_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm meeting a friend from Ecruteak City. She always comes this way, through the park."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

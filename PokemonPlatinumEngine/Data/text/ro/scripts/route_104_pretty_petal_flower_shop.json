@@ -1,0 +1,56 @@
+{
+  "ShopOwner": [
+    {
+      "en": [
+        "Welcome to the Pretty Petal! We grow flowers, and berries too. Plant a berry in soft soil, and it grows into a tree."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Water it well, and it gives you more berries than you planted. Isn't nature generous?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "WailmerPailGirl": [
+    {
+      "en": [
+        "Do you like plants? Then you'll want one of these. It's for watering berry trees!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dry soil makes for a poor harvest. Water your berry trees often with the Wailmer Pail!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RandomBerryGirl": [
+    {
+      "en": [
+        "Hi! I give away one berry every day. Here's today's!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That was today's berry. Come back tomorrow for another!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "people": {
+    "r34_gsboy2": {
+      "name": {
+        "en": [
+          "Samuel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Samuel: I've been training on this route all week. Let's see what I've learned!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Samuel: Back to training, then. All week again..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Gina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Gina: Oh, a Trainer! My Hoppip have been dying to battle somebody."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Gina: They floated off the moment you hit them!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34_gsboy2_2": {
+      "name": {
+        "en": [
+          "Ian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Ian: My Pokémon dig and scratch. Yours had better watch out!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Ian: Dug ourselves into a hole there..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34_policeman": {
+      "name": {
+        "en": [
+          "Keith"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Officer Keith: Out on the road at this hour? Let's see some proof you can look after yourself!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Officer Keith: All right, you can handle yourself. Off you go, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34_campboy_2": {
+      "name": {
+        "en": [
+          "Todd"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Todd: I camp out here so I can be first in line at the Department Store sales!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Todd: That was a sale I wasn't ready for."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Brandon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Brandon: My Snubbull and Mareep are the cutest pair in Johto. Want to see?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Brandon: Even losing, they're still the cutest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34_gsoldman1": {
+      "name": {
+        "en": [
+          "Day-Care Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We three come here to train together every week. It's much more fun than training alone!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34_gswoman3_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Day Care up the road raises Pokémon for you. Sometimes they find an Egg, too!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r34_gswoman3_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Goldenrod City is just north. You can buy anything at all in its Department Store."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R34_009+1": {
+      "en": [
+        "Route 34\nGoldenrod City - Azalea Town\nIlex Forest is in between."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R34_010+1": {
+      "en": [
+        "Pokémon Day Care\nLet us raise your Pokémon for you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R34_011+1": {
+      "en": [
+        "Trainer Tips\nA Pokémon left at the Day Care grows as you walk. Your steps are its training!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

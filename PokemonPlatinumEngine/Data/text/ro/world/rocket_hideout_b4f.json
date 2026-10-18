@@ -1,0 +1,161 @@
+{
+  "displayName": {
+    "en": [
+      "Rocket Hideout"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "hideout_giovanni": {
+      "name": {
+        "en": [
+          "Giovanni"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "silph_scope": {
+      "name": {
+        "en": [
+          "Silph Scope"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lift_key": {
+      "name": {
+        "en": [
+          "Lift Key"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: The Lift Key? It's right here. Come and take it, if you dare!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Oh no! I dropped the Lift Key!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: Nobody gets past this door. The boss is busy!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: I've let the boss down..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: The boss's office is through here, and you're not going in!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Go on, then. The boss will finish you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_1": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_2": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_3": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_4": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
