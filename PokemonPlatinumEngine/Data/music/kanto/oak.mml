@@ -1,0 +1,31 @@
+# Professor Oak (FireRed's MUS_OAK): a cheerful walking tune in F for the professor hurrying up from town, a clarinet
+# over plucked chords and a stepping bass. Original composition for this game (plan 19 · K3).
+title Professor Oak
+tempo 122
+meter 4/4
+reverb 0.26
+nighttempo 0.95
+
+track lead clarinet night=flute vol=0.72 pan=0 rev=0.28
+  L o5 c4 o4 a8 o5 c8 o4 f4 a4 | o4 g4 e8 g8 o5 c4 o4 g4 | o4 a4 f8 a8 o5 d4 o4 a4 | o4 b-4 o5 d8 o4 b-8 f4 d4 |
+  o5 c4 f8 e8 d4 c4 | o4 b-4 g8 e8 c4 e4 | o4 d4 f4 e4 g4 | o4 f2. r4 |
+  o5 d4 c8 o4 a8 f4 a4 | o5 d4 o4 b-8 f8 d4 f4 | o5 c4 o4 a8 f8 c4 f4 | o4 g4 e8 g8 b-4 g4 |
+  o4 b-4 o5 d8 f8 d4 o4 b-4 | o5 c4 o4 a8 o5 c8 f4 c4 | o5 d4 o4 b-4 o5 c4 e4 | o5 f2. r4 |
+
+track comp epiano night=harp vol=0.36 pan=-0.25 rev=0.22
+  L o4 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 | r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 | r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 |
+  r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (e g b-)8 r8 (e g b-)8 r8 (e g b-)8 r8 (e g b-)8 | r8 (d f b-)8 r8 (d f b-)8 r8 (e g >c)8 r8 (e g >c)8 | r8 (f a >c)8 r8 (f a >c)8 (f a >c)4 r4 |
+  r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 | r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 | r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (e g b-)8 r8 (e g b-)8 r8 (e g b-)8 r8 (e g b-)8 |
+  r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 | r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (d f b-)8 r8 (d f b-)8 r8 (e g >c)8 r8 (e g >c)8 | r8 (f a >c)8 r8 (f a >c)8 (f a >c)4 r4 |
+
+track bass bass vol=0.62 rev=0.08
+  L o3 f4 o4 c4 o3 f4 o4 c4 | o3 c4 g4 c4 g4 | o3 d4 a4 d4 a4 | o2 b-4 o3 f4 o2 b-4 o3 f4 |
+  o3 f4 o4 c4 o3 f4 o4 c4 | o3 c4 g4 c4 g4 | o2 b-4 o3 f4 c4 g4 | o3 f4 o4 c4 o3 f2 |
+  o3 d4 a4 d4 a4 | o2 b-4 o3 f4 o2 b-4 o3 f4 | o3 f4 o4 c4 o3 f4 o4 c4 | o3 c4 g4 c4 g4 |
+  o2 b-4 o3 f4 o2 b-4 o3 f4 | o3 f4 o4 c4 o3 f4 o4 c4 | o2 b-4 o3 f4 c4 g4 | o3 f4 o4 c4 o3 f2 |
+
+track drums kit vol=0.42 rev=0.12
+  v85 L [ b4 s8 b8 b4 s4 | ]16
+
+track hats kit vol=0.34 pan=0.15 rev=0.1
+  v60 L [ h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 h8 v40 h8 v60 | ]16

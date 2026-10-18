@@ -5,16 +5,19 @@
   "map": "Kanto",
   "dex": "kanto",
   "nationalUnlock": "Caught60",
-  "hasStory": false,
+  "hasStory": true,
   "rival": "Blue",
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },
   "starters": [ "Bulbasaur", "Charmander", "Squirtle" ],
   "badges": [ "Boulder", "Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano", "Earth" ],
   "gates": {
+    "Flash": "Boulder",
     "Cut": "Cascade",
     "Fly": "Thunder",
+    "Strength": "Rainbow",
     "Surf": "Soul",
-    "Strength": "Rainbow"
+    "RockSmash": "Marsh",
+    "Waterfall": "Volcano"
   },
   "professor": {
     "name": "Prof. Oak",

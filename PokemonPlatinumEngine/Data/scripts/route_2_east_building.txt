@@ -1,0 +1,29 @@
+# The building on Route 2's east lane (plan 19 · K3). docs/scripts.md describes the language; the lines are our own,
+# on FireRed's beats (data/maps/Route2_EastBuilding/scripts.inc).
+#
+# Professor Oak's aide hands out Flash for ten species caught (FireRed's REQUIRED_SEEN_MONS, which counts those
+# caught). FireRed's is HM05; Platinum's HM05 is Defog and its Flash a TM, TM70, which is what he gives here
+# (docs/mechanics/rulings.md, "Kanto's first chapter"). Its use outside battle asks for the Boulder Badge (Kanto's gates).
+
+
+script Aide
+  if flag FLAG_GOT_HM05 goto Given
+  if not flag FLAG_HAS_POKEDEX goto NoDex
+  ask "Hi! I'm one of Professor Oak's aides. Shall I see how many kinds of Pokémon you've caught?"
+  if no goto Declined
+  if var CAUGHT < 10 goto NotYet
+  say "You've caught {var:CAUGHT} kinds already? Wonderful! The Professor asked me to give you this."
+  give "TM70"
+  setflag FLAG_GOT_HM05
+label Given
+  say "That's Flash. It lights up the darkest caves, as long as you hold the Boulder Badge from Pewter City."
+  end
+label NoDex
+  sayown
+  end
+label Declined
+  say "Oh. Well, come and see me whenever you like."
+  end
+label NotYet
+  say "Hmm, only {var:CAUGHT} so far. Come back once you've caught ten kinds, and I'll have something for you."
+  end

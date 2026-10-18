@@ -77,6 +77,10 @@
     // Teala, upstairs in every Pokémon Center and at the Battle Tower's counter: brown hair in a bun, a teal jacket with a white collar and a darker teal skirt
     "teala": { "hairColor": "#5a3a2e", "hair": "Bun", "top": "#2e9a9a", "accent": "#f6f6fa", "bottom": "#24747a", "shoes": "#24343a", "eyes": "#3a6a6a", "skirt": true, "build": "Adult", "lashes": true, "blush": true },
     // Professor Oak, come from Kanto after the Hall of Fame (plan 02 · S15): spiky grey hair, a white lab coat over a red shirt and khaki trousers
+    // Kanto's rival and Pewter's Gym Leader (plan 19 · K3). The rival: spiky chestnut hair and a purple shirt over dark trousers, a cocky grin
+    "blue": { "hairColor": "#8a5a34", "hair": "Spiky", "top": "#6a4a9a", "accent": "#2e2a36", "bottom": "#2e3240", "shoes": "#5a3a2a", "eyes": "#3a2e28", "shortSleeves": true, "sole": "#d8d4cc", "blush": true },
+    // Brock, the tallest boy of Pewter: spiky dark brown hair, a green shirt under an orange-brown vest and brown trousers
+    "brock": { "hairColor": "#4a3224", "hair": "Spiky", "top": "#4e7a3e", "accent": "#b0703a", "bottom": "#6a5038", "shoes": "#3a2e26", "eyes": "#2e2620", "coat": true, "build": "Adult", "height": 1.02 },
     "prof_oak": { "hairColor": "#c4c6d0", "hair": "Spiky", "top": "#f2f2f6", "accent": "#c8443c", "bottom": "#8a7a5a", "shoes": "#4a3a2c", "eyes": "#3a3240", "coat": true, "build": "Adult", "height": 1.04 },
     // The Frontier Brains (plan 06 · R18) and the lady of the Battle Castle. Thorton, the Factory Head: short, mauve-grey hair, glasses and a pale grey coat with an orange collar
     "thorton": { "hairColor": "#8c8098", "top": "#dcdee6", "accent": "#e88a3a", "bottom": "#3c3e4c", "shoes": "#2c2a30", "eyes": "#4a4058", "glasses": "#2a2834", "coat": true, "build": "Adult", "height": 0.9 },
@@ -154,7 +158,6 @@
     "grunt_f": "Grunt",
     "briefcase": "StarterBriefcase",
     // FireRed's looks (plan 19 · K1), until each Kanto chapter gives the classes and the cast it meets their own
-    "blue": "Rival",
     "daisy": "Lady",
     "woman_1": "Lady",
     "woman_2": "Lady",
@@ -166,7 +169,14 @@
     "gym_guy": "Gentleman",
     "boy": "Youngster",
     "cable_club_receptionist": "Nurse",
-    "mg_deliveryman": "Clerk"
+    "mg_deliveryman": "Clerk",
+    // Plan 19 · K3: the looks of Route 2's rooms, Route 22's gate and Pewter City
+    "gba_kid": "Youngster",
+    "rocker": "Gentleman",
+    "cooltrainer_f": "Lass",
+    "man": "Gentleman",
+    "worker_m": "Gentleman",
+    "old_man_2": "Gentleman"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field
@@ -182,7 +192,7 @@
     "Scientist": "scientist",
     "Black Belt": "blackbelt",
     "Galactic": "grunt",
-    "Rival": "rival",
+    "Rival": [ "rival", "blue" ],
     "Leader": null,
     "Elite Four": null,
     "Champion": null,

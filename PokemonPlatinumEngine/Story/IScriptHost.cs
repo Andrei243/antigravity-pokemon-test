@@ -48,6 +48,9 @@ public interface IScriptHost
 
     /// <summary>How many species of the Sinnoh Pokédex the player has seen (the original's <c>GetLocalDexSeenCount</c>).</summary>
     int SeenInSinnoh { get; }
+
+    /// <summary>How many species the player has caught, every one the Pokédex has (plan 19 · K3, <c>CAUGHT</c>: the original's <c>GetPokedexCount</c>, which Oak's aides ask).</summary>
+    int Caught => 0;
     int Money { get; set; }
     string PlayerName { get; }
     PlayerLook PlayerLook { get; }

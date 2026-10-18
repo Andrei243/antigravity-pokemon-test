@@ -1,0 +1,56 @@
+# Route 22 (plan 19 · K3). docs/scripts.md describes the language; the lines are our own, on FireRed's beats
+# (data/maps/Route22/scripts.inc).
+#
+# VAR_MAP_SCENE_ROUTE22, as FireRed counts it: 1 once Oak has given out the Pokédex, when the rival waits on the road
+# west for whoever comes (the area's triggers 0 to 2); 2 that battle fought; 3 and 4 the second, before the League's
+# gate, which is plan 19 · K7's (triggers 3 to 5). The first may be lost and the game goes on.
+
+
+script EarlyRival
+  scene "The rival on Route 22"
+  music "kanto/rival"
+  clearflag FLAG_HIDE_ROUTE_22_RIVAL
+  show route22_rival
+  speaker "{rival}"
+  say "Hey! {player}! Over here!"
+  face player left
+  if var PLAYER_Y == 194 goto Across
+  if var PLAYER_Y == 195 goto OneDown
+  walk route22_rival down 2 right 7
+  goto Met
+label OneDown
+  walk route22_rival down 1 right 7
+  goto Met
+label Across
+  walk route22_rival right 7
+label Met
+  face route22_rival player
+  say "Heading for the Pokémon League, are you? Forget it. You need Badges to get in, and you've got none."
+  say "The guard won't even let you through the gate. Still, how about a battle while you're here?"
+  if starter "Bulbasaur" goto VsCharmander
+  if starter "Charmander" goto VsSquirtle
+  battle route22_rival as "kanto_rival_route22_early_bulbasaur" canlose
+  goto After
+label VsCharmander
+  battle route22_rival as "kanto_rival_route22_early_charmander" canlose
+  goto After
+label VsSquirtle
+  battle route22_rival as "kanto_rival_route22_early_squirtle" canlose
+label After
+  speaker "{rival}"
+  if lost goto Lost
+  say "Huh, not bad. My Pokémon just needed a warm-up, that's all."
+  goto Leave
+label Lost
+  say "Ha! Told you. You're nowhere near ready for the League."
+label Leave
+  heal
+  say "I'm off to Pewter City to get myself a Badge. Try to keep up, {player}!"
+  music "kanto/rival"
+  walk route22_rival left 8 fast
+  hide route22_rival
+  setflag FLAG_HIDE_ROUTE_22_RIVAL
+  music area
+  setvar VAR_MAP_SCENE_ROUTE22 2
+  endscene
+  end

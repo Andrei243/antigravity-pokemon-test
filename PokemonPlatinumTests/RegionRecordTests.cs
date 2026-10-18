@@ -212,7 +212,7 @@ public class RegionRecordTests
     }
 
     [Fact]
-    public void TheKantoStandInBeginsWithItsFirstStarterAndTheSinnohGameWithNothing()
+    public void AGameOfKantoAndAGameOfSinnohBothBeginInTheBedroomWithNothing()
     {
         string folder = Path.Combine(Path.GetTempPath(), "region-record-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(folder);
@@ -223,11 +223,12 @@ public class RegionRecordTests
             var kanto = Headless();
             kanto.NewGameRegion = "Kanto";
             kanto.StartNewGame();
-            Assert.Equal(1, kanto.Drive.Party.Count);
-            Assert.Equal("Bulbasaur", kanto.Drive.Party.Members[0].Species.Name);
+            // Kanto's story is written since plan 19 · K3: its game, as Sinnoh's, wakes upstairs with nothing
+            Assert.Equal(0, kanto.Drive.Party.Count);
+            Assert.Equal("PalletTown_PlayersHouse_2F", kanto.Drive.Map.Name);
             Assert.Equal("Kanto", kanto.Here.Id);
             Assert.Equal("Blue", PlayerIdentity.RivalName);
-            Assert.True(kanto.Drive.Bag.GetQuantity(ItemDatabase.Get("Potion")!) > 0);
+            Assert.Equal(0, kanto.Drive.Bag.GetQuantity(ItemDatabase.Get("Potion")!));
             kanto.Close();
 
             var sinnoh = Headless();

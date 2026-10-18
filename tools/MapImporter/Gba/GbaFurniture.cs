@@ -65,8 +65,10 @@ public static class GbaFurniture
             },
             ["gTileset_GenericBuilding1"] = new (int, int, PropType)[]
             {
-                // The player's bedroom: the games console on the rug before the television, the stool by the window
-                (0x28E, 0x28E, PropType.Table), (0x294, 0x294, PropType.Chair),
+                // The player's bedroom: the games console on the rug before the television, and the bed by the window, three
+                // metatiles by three (plan 19 · K3: K2 read its blocked foot as a stool)
+                (0x28E, 0x28E, PropType.Table),
+                (0x283, 0x285, PropType.Bed), (0x28B, 0x28D, PropType.Bed), (0x293, 0x295, PropType.Bed),
                 // The desk with the player's PC at the back wall's west end (its sign event reads it)
                 (0x28F, 0x28F, PropType.Computer),
             },
@@ -116,6 +118,13 @@ public static class GbaFurniture
                 (0x299, 0x29A, PropType.LabDesk),
                 // The plants in the room's front corners
                 (0x289, 0x28A, PropType.Plant),
+            },
+            // Plan 19 · K3: the Pewter City Gym's hall, a floor of rock with boulders standing in it, and the two
+            // statues by the door (the layout's blocked metatiles; the statues are the signs FireRed reads there)
+            ["gTileset_PewterGym"] = new (int, int, PropType)[]
+            {
+                (0x2A2, 0x2A4, PropType.Boulder), (0x29B, 0x29B, PropType.Boulder),
+                (0x2B2, 0x2B2, PropType.TrainerStatue),
             },
         };
 

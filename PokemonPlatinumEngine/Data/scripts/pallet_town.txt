@@ -1,0 +1,35 @@
+# Pallet Town (plan 19 · K3). docs/scripts.md describes the language; the lines are our own, on FireRed's beats
+# (data/maps/PalletTown/scripts.inc).
+#
+# The two steps at the top of the road north (the area's triggers 0 and 1, on VAR_MAP_SCENE_PALLET_TOWN_OAK 0): Oak
+# calls out from behind, the player turns, he hurries up from the town, says the grass is no place to be without a
+# Pokémon and takes the player to his lab. In FireRed the two walk there together and he opens the lab's door; here
+# the picture goes dark at his word and comes up again inside, where the lab's own arrival plays the rest
+# (pallet_town_professor_oaks_lab.txt; docs/mechanics/rulings.md, "Kanto's first chapter").
+
+
+script OakStops
+  scene "Oak in the grass"
+  music "kanto/oak"
+  speaker "???"
+  say "Hold it! Don't take another step out there!"
+  face player down
+  emote player exclaim
+  show pallet_prof_oak
+  if var PLAYER_X == 73 goto FromTheRight
+  walk pallet_prof_oak up 6 right 2
+  goto Talk
+label FromTheRight
+  walk pallet_prof_oak up 6 right 3
+label Talk
+  face pallet_prof_oak player
+  speaker "Prof. Oak"
+  say "Phew, I caught you in time! Wild Pokémon hide in that grass, and they don't take kindly to visitors."
+  say "Without a Pokémon of your own to keep you safe, you'd be in real danger. Come along to my lab. Hurry, now!"
+  fade out
+  hide pallet_prof_oak
+  setvar VAR_MAP_SCENE_PALLET_TOWN_OAK 1
+  setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 1
+  warp "PalletTown_ProfessorOaksLab" 6 12 up
+  endscene
+  end

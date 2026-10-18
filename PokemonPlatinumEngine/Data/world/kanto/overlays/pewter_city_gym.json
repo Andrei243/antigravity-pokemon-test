@@ -1,0 +1,20 @@
+{
+  // The Pewter City Gym (plan 19 · K3), its hall as FireRed lays it out. Brock, his Camper and the guide are
+  // pewter_city_gym.txt's; Liam battles by his own record (Kanto's trainers.json, TRAINER_CAMPER_LIAM)
+  "area": "pewter_city_gym",
+  "bgmTrack": "kanto/gym",
+  "people": {
+    "brock": { "name": "Brock", "script": "Brock", "still": true },
+    "gym_guy": { "name": "Gym Guide", "script": "GymGuy" },
+    "camper": {
+      "name": "Liam",
+      "trainer": {
+        "dialogueBefore": "Camper Liam: Stop right there! You're a hundred years too early to face Brock!",
+        "dialogueAfter": "Camper Liam: Rock beat... I mean, you beat my rocks. Brock's even tougher, though!"
+      }
+    }
+  },
+  "signs": {
+    "PewterCity_Gym_EventScript_GymStatue": "Pewter City Pokémon Gym\nLeader: Brock"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  // The floor above Pewter City's Pokémon Center (plan 19 · K3): the wireless link is down, as in every Center
+  // (decision 06 · 7), so the rooms behind it stay shut
+  "area": "pewter_city_pokemon_center_2f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "cable_club_receptionist": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "cable_club_receptionist_2": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "cable_club_receptionist_3": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "mg_deliveryman": { "name": "Deliveryman", "dialog": [ "Nothing to deliver today, I'm afraid." ] }
+  }
+}

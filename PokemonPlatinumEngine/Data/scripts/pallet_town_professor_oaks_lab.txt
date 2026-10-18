@@ -1,0 +1,216 @@
+# Professor Oak's lab (plan 19 · K3). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/PalletTown_ProfessorOaksLab/scripts.inc).
+#
+# VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB, as FireRed counts it: 1 Oak bringing the player in from the grass,
+# 2 the three Poké Balls waiting on the table, 3 a Pokémon each and the rival's challenge on the way out, 4 the
+# battle fought and the Parcel to fetch from Viridian City, 6 the Pokédex given. The three balls open the choice of
+# three, as Sinnoh's briefcase does (`starter`), whichever is looked at first: the screen shows all three, and the
+# rival takes the one strong against the player's (Region.RivalStarterFor), the ball beside it in FireRed's row.
+
+
+# The arrival from the grass (FireRed's OnFrame at 1): Oak walks in ahead to his desk, the player behind him; the rival
+# has been waiting all along.
+script OnEnter
+  if var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB != 1 end
+  scene "Oak's lab"
+  clearflag FLAG_HIDE_OAK_IN_HIS_LAB
+  place oaks_lab_prof_oak 6 11 up
+  show oaks_lab_prof_oak
+  walk oaks_lab_prof_oak up 8
+  face oaks_lab_prof_oak down
+  walk player up 8
+  face oaks_lab_rival up
+  music area
+  speaker "{rival}"
+  say "Gramps! Finally! I've been standing here for ages!"
+  speaker "Prof. Oak"
+  say "{rival}? Ah, of course, I asked you to come. Forgive an old man. Wait there a moment."
+  say "{player}, on that table are three Poké Balls, and in each of them a Pokémon."
+  say "When I was young I was quite the trainer myself. These days I keep only these three. Go on, choose one!"
+  speaker "{rival}"
+  say "Hey, hold on! That's not fair, Gramps! What about me?"
+  speaker "Prof. Oak"
+  say "Patience, {rival}. You'll have one too, once {player} has chosen."
+  setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 2
+  endscene
+  end
+
+
+# Walking off while the balls wait (the area's triggers 0 to 2, on 2).
+script DontGoYet
+  face oaks_lab_prof_oak down
+  speaker "Prof. Oak"
+  say "Hey! Don't wander off yet. Your Pokémon is on the table!"
+  walk player up 1
+  end
+
+
+# The three balls on the table: each opens the choice.
+script StarterBall
+  if var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB >= 3 goto Last
+  if var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB == 2 goto Choose
+  text "Three Poké Balls sit on the table, each with a Pokémon inside."
+  end
+label Last
+  text "Professor Oak's last Pokémon is in this one. It's best left for him."
+  end
+label Choose
+  scene "The starters"
+  starter
+  if result == 0 goto TookBulbasaur
+  if result == 1 goto TookCharmander
+  setflag FLAG_HIDE_SQUIRTLE_BALL
+  hide squirtle_ball
+  setflag FLAG_HIDE_BULBASAUR_BALL
+  hide bulbasaur_ball
+  goto Took
+label TookBulbasaur
+  setflag FLAG_HIDE_BULBASAUR_BALL
+  hide bulbasaur_ball
+  setflag FLAG_HIDE_CHARMANDER_BALL
+  hide charmander_ball
+  goto Took
+label TookCharmander
+  setflag FLAG_HIDE_CHARMANDER_BALL
+  hide charmander_ball
+  setflag FLAG_HIDE_SQUIRTLE_BALL
+  hide squirtle_ball
+label Took
+  fanfare pokemon
+  text "{player} received the {starter} from Professor Oak!"
+  speaker "Prof. Oak"
+  say "A fine choice. That Pokémon is full of energy. Look after it, and it will look after you."
+  face oaks_lab_rival up
+  speaker "{rival}"
+  say "Then I'll take this one!"
+  text "{rival} received the {rivalstarter} from Professor Oak!"
+  face oaks_lab_rival player
+  speaker "{rival}"
+  say "Heh. Mine looks way tougher than yours, {player}."
+  setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 3
+  endscene
+  end
+
+
+# On the way out with a Pokémon each (the area's triggers 3 to 5, on 3): the rival's challenge, the game's first
+# battle, which may be lost.
+script RivalChallenges
+  scene "The first battle"
+  music "kanto/rival"
+  face oaks_lab_rival down
+  face player up
+  speaker "{rival}"
+  say "Wait up, {player}! Let's see what our Pokémon can do. Come on, I'll take you on!"
+  walk oaks_lab_rival down 3
+  if var PLAYER_X == 5 goto Faced
+  if var PLAYER_X == 6 goto OneAcross
+  walk oaks_lab_rival right 2
+  goto Faced
+label OneAcross
+  walk oaks_lab_rival right 1
+label Faced
+  face oaks_lab_rival down
+  face player up
+  if starter "Bulbasaur" goto VsCharmander
+  if starter "Charmander" goto VsSquirtle
+  battle oaks_lab_rival as "kanto_rival_oaks_lab_bulbasaur" first canlose
+  goto After
+label VsCharmander
+  battle oaks_lab_rival as "kanto_rival_oaks_lab_charmander" first canlose
+  goto After
+label VsSquirtle
+  battle oaks_lab_rival as "kanto_rival_oaks_lab_squirtle" first canlose
+label After
+  speaker "{rival}"
+  if lost goto Lost
+  say "What?! No way! I must have picked the wrong one!"
+  setflag FLAG_BEAT_RIVAL_IN_OAKS_LAB
+  goto Leave
+label Lost
+  say "Ha! Did you see that? I'm a natural!"
+label Leave
+  heal
+  say "Right. I'm off to toughen my Pokémon up out there. Gramps, {player}, see you around!"
+  music "kanto/rival"
+  if var PLAYER_X == 5 goto LeaveRight
+  walk oaks_lab_rival left 1 down 5 fast
+  goto Gone
+label LeaveRight
+  walk oaks_lab_rival right 1 down 5 fast
+label Gone
+  hide oaks_lab_rival
+  setflag FLAG_HIDE_RIVAL_IN_LAB
+  music area
+  setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 4
+  endscene
+  end
+
+
+# The rival, while he is here.
+script Rival
+  if var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB >= 3 goto Chose
+  if var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB == 2 goto Waiting
+  say "Gramps went out somewhere. He said he'd give me a Pokémon if I waited here."
+  end
+label Waiting
+  say "Go on, hurry up and pick. I've been waiting forever."
+  end
+label Chose
+  say "My Pokémon's way better than yours. Just you watch."
+  end
+
+
+# Professor Oak, by how far the chapter has come; with the Parcel in the bag, the Pokédex (FireRed's
+# ReceiveDexScene): the rival comes back in, Oak shows them his invention, gives each one and five Poké Balls to the
+# player, and the rival is off. Everything the scene opens is set at its end: the Mart's counter, the old man's
+# lesson in Viridian City, the rival's sister's Town Map, the rival's wait on Route 22.
+script ProfOak
+  if var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB >= 6 goto AfterTheDex
+  if item "Parcel" goto Parcel
+  if var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB == 4 goto Train
+  say "If a wild Pokémon jumps out at you, let your Pokémon battle it. Together you'll make it to the next town."
+  end
+label Train
+  say "Your Pokémon grows stronger by battling. Viridian City is just north of here, up Route 1."
+  end
+label AfterTheDex
+  say "Pokémon are waiting for you all over the world, {player}. Fill that Pokédex with every one you meet!"
+  end
+label Parcel
+  scene "Oak's invention"
+  say "Oh, {player}! How is my old Pokémon treating you?"
+  say "What's this? A parcel from the Mart? So my order has finally come. Thank you!"
+  take "Parcel"
+  speaker "{rival}"
+  music "kanto/rival"
+  clearflag FLAG_HIDE_RIVAL_IN_LAB
+  place oaks_lab_rival 6 11 up
+  show oaks_lab_rival
+  walk oaks_lab_rival up 6
+  say "Gramps! You called? What's this about?"
+  music area
+  speaker "Prof. Oak"
+  say "Ah, {rival}, perfect timing. I have a favour to ask the two of you."
+  say "This is the Pokédex, a device of my own design. It records every Pokémon you see or catch, all by itself."
+  say "My dream has always been a complete guide to every Pokémon in the world. But I'm too old to travel the way I used to."
+  say "So I want the two of you to finish it for me. Here, take one each."
+  setflag FLAG_HIDE_POKEDEX
+  setflag FLAG_HAS_POKEDEX
+  fanfare keyitem
+  text "{player} received the Pokédex from Professor Oak!"
+  say "To see a Pokémon you only have to meet it. To catch one, you'll need these."
+  give "Poké Ball" 5
+  say "Throw a Poké Ball at a wild Pokémon once it's tired out, and it may be yours."
+  speaker "{rival}"
+  say "Leave it to me, Gramps! I'll fill the whole thing before {player} has even started."
+  say "I'll ask my sister for a Town Map. Don't bother asking her yourself, {player}. Smell ya!"
+  walk oaks_lab_rival down 6 fast
+  hide oaks_lab_rival
+  setflag FLAG_HIDE_RIVAL_IN_LAB
+  setvar VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 6
+  setvar VAR_MAP_SCENE_VIRIDIAN_CITY_MART 2
+  setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 1
+  setvar VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE 1
+  setvar VAR_MAP_SCENE_ROUTE22 1
+  endscene
+  end

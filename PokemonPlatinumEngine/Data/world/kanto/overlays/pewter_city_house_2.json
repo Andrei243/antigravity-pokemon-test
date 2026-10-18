@@ -1,0 +1,9 @@
+{
+  // A house in Pewter City (plan 19 · K3)
+  "area": "pewter_city_house_2",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "old_man_1": { "name": "Old Man", "dialog": [ "A Pokémon learns new moves as it grows. Some of them it can only learn from a TM." ] },
+    "little_boy": { "name": "Boy", "dialog": [ "Brock gives every trainer who beats him a TM. I'm going to win one someday!" ] }
+  }
+}

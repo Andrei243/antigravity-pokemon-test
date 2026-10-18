@@ -1,0 +1,50 @@
+{
+  "key": "route_3",
+  "index": 11,
+  "name": "Route 3",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_3",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Spearow", "level": 6 },
+    { "species": "Pidgey", "level": 6 },
+    { "species": "Spearow", "level": 7 },
+    { "species": "Mankey", "level": 7 },
+    { "species": "Nidoran♂", "level": 6 },
+    { "species": "Pidgey", "level": 7 },
+    { "species": "Spearow", "level": 8 },
+    { "species": "Jigglypuff", "level": 3 },
+    { "species": "Nidoran♂", "level": 7 },
+    { "species": "Jigglypuff", "level": 5 },
+    { "species": "Nidoran♀", "level": 6 },
+    { "species": "Jigglypuff", "level": 7 }
+  ],
+  "landRate": 21,
+  "warps": [],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "look_around", "x": 166, "z": 83, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route3_EventScript_Youngster" },
+    { "id": "lass", "looks": "lass", "movement": "wander_north_and_south", "x": 136, "z": 81, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_ROBIN" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "look_east", "x": 128, "z": 76, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_BUG_CATCHER_JAMES" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_west", "x": 126, "z": 73, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_LASS_SALLY" },
+    { "id": "bug_catcher_2", "looks": "bug_catcher", "movement": "look_south", "x": 121, "z": 74, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BUG_CATCHER_GREG" },
+    { "id": "youngster_2", "looks": "youngster", "movement": "look_west", "x": 125, "z": 80, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_YOUNGSTER_CALVIN" },
+    { "id": "lass_3", "looks": "lass", "movement": "look_west", "x": 115, "z": 79, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_LASS_JANICE" },
+    { "id": "bug_catcher_3", "looks": "bug_catcher", "movement": "look_east", "x": 108, "z": 76, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_BUG_CATCHER_COLTON" },
+    { "id": "youngster_3", "looks": "youngster", "movement": "look_south", "x": 113, "z": 74, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_YOUNGSTER_BEN" }
+  ],
+  "signs": [
+    { "x": 168, "z": 81, "type": 0, "script": "Route3_EventScript_RouteSign" },
+    { "x": 122, "z": 79, "type": 2, "script": "", "item": "Oran Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE3_ORAN_BERRY" }
+  ],
+  "triggers": []
+}

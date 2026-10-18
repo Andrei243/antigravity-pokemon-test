@@ -191,7 +191,9 @@ public enum Architecture
 
     // Kanto (plan 19): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>Logs under evergreen gable roofs with shutters and a chimney: the town at the forest's edge (Viridian, plan 19 · K2).</summary>
-    Evergreen
+    Evergreen,
+    /// <summary>Pale cut stone under hipped slate-brown roofs with a chimney: the stone-grey city under the mountain (Pewter, plan 19 · K3).</summary>
+    Granite
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

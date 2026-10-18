@@ -1,17 +1,22 @@
 {
   // Viridian City (plan 19 · K1), built in logs under evergreen roofs since K2 (the style guide's "Buildings": Evergreen).
-  // The old man who lies across the road north, the lesson in catching and
-  // the Dream Eater tutor are the story's (K3); here they only talk
+  // The old man who lies across the road north and his lesson in catching are the story's (K3, viridian_city.txt);
+  // the Dream Eater tutor only talks
   "area": "viridian_city",
   "bgmTrack": "kanto/viridian",
   "trees": "Round",
   "architecture": "Evergreen",
   // The Gym's door (warp 2) is shut as FireRed shuts it: the step before it turns the player back until the city is
   // come to with six of Kanto's badges (viridian_city.txt); its Leader and his trainers are plan 19 · K7's
-  "triggers": [ { "trigger": 1, "script": "GymDoorLocked" } ],
+  "triggers": [
+    { "trigger": 1, "script": "GymDoorLocked" },
+    // Plan 19 · K3: the old man across the road north until the Pokédex is had, and his lesson after it
+    { "trigger": 0, "script": "RoadBlocked" }, { "trigger": 2, "script": "Tutorial" }, { "trigger": 3, "script": "Tutorial" }
+  ],
   "people": {
     "tutorial_man": {
       "name": "Old Man",
+      "script": "OldMan",
       "dialog": [
         "Hmph! The road north is no place for a youngster without a Pokémon of their own.",
         "Come back when you've got one, and maybe I'll show you a thing or two."
@@ -26,6 +31,7 @@
     },
     "viridian_woman": {
       "name": "Woman",
+      "script": "Granddaughter",
       "dialog": [
         "My grandfather is in a terrible mood this morning. He hasn't even had his coffee yet.",
         "Please don't mind him if he's rude to you."

@@ -185,6 +185,31 @@ public static class MusicDirector
         _ => null
     };
 
+    /// <summary>
+    /// The roles a region's original has no song of its own for and plays another of its own songs over, by region
+    /// (plan 19 · K3; plan 19's design, "Music"): FireRed fights its rival, Team Rocket and Giovanni to the trainers'
+    /// theme and the Elite Four to the Gym Leaders' (<c>GetBattleBGM</c> in <c>src/pokemon.c</c>), and wins over each
+    /// to the same victories. Read by <see cref="Resolve"/> before <c>common</c>, so Sinnoh's songs never answer them.
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, IReadOnlyDictionary<MusicRole, MusicRole>> StandIns =
+        new Dictionary<string, IReadOnlyDictionary<MusicRole, MusicRole>>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["Kanto"] = new Dictionary<MusicRole, MusicRole>
+            {
+                [MusicRole.BattleRival] = MusicRole.BattleTrainer,
+                [MusicRole.BattleGalactic] = MusicRole.BattleTrainer,
+                [MusicRole.BattleGalacticBoss] = MusicRole.BattleTrainer,
+                [MusicRole.BattleEliteFour] = MusicRole.BattleGymLeader,
+                [MusicRole.VictoryGalactic] = MusicRole.VictoryTrainer,
+                [MusicRole.VictoryGalacticBoss] = MusicRole.VictoryTrainer,
+                [MusicRole.VictoryEliteFour] = MusicRole.VictoryGymLeader
+            }
+        };
+
+    /// <summary>The role a region plays in place of this one, or null where it has its own or none is named.</summary>
+    public static MusicRole? StandIn(string? region, MusicRole role) =>
+        region != null && StandIns.TryGetValue(region, out var table) && table.TryGetValue(role, out var standIn) ? standIn : null;
+
     /// <summary>The song id for a role in a region, or null if nothing fits.</summary>
     public static string? Resolve(MusicRole role, string? region, Func<string, bool> exists)
     {
@@ -195,6 +220,9 @@ public static class MusicDirector
             {
                 string own = $"{region.ToLowerInvariant()}/{file}";
                 if (exists(own)) return own;
+                // A role the region's original plays another of its songs for (plan 19 · K3), before common's
+                if (StandIn(region, r.Value) is { } standIn && exists($"{region.ToLowerInvariant()}/{FileName(standIn)}"))
+                    return $"{region.ToLowerInvariant()}/{FileName(standIn)}";
             }
             string shared = $"{Common}/{file}";
             if (exists(shared)) return shared;

@@ -2482,3 +2482,41 @@ What R19b, R20 to R23, R27b and R28b left of the forms, outside a battle, and th
 - **The forms an evolution chooses** (`Evolution.Find` hands back the evolution with the form decided, so the scene shows it): Toxtricity is Low Key for the twelve natures Sword and Shield name (its own nature, not a mint's); a Maushold of three and a three-segment Dudunsparce come once in a hundred, when the personality is a multiple of a hundred (Scarlet and Violet's encryption constant, which is the personality here); Alcremie's cream is the spin's way, length and hour, its decoration the sweet held. **A spin is told once it is over** (`SpinTracker`: the player stops turning for 1.2 s, or turns the other way), so Milcery evolves a moment after the player stops, where it evolved on the fourth quarter turn before; a spin is long past five seconds from its first quarter turn to its last, and the Rainbow Swirl wants ten anticlockwise at dusk (Platinum's evening, 17:00 to 19:59, **our ruling**: Sword and Shield's is 19:00 to 19:59). Dusk is day for the other creams.
 - **Golden files**: `battles-platinum.txt` held still. `battles-modern.txt` moved in block 151 alone: its Scrafty draws the Griseous Core where it drew the Griseous Orb, since the corpus draws held items by hold effect and the core shares the orb's, and the rest of the foe's team is drawn after it. `scripts.txt` moved in Veilstone City's meteorites (four scripts in place of one).
 - **Left for R29b**: Furfrou's trims (a groomer of a later region), the Zygarde Cube's moves and Zygarde's cells, a choice screen for the Rotom Catalog, Hoopa's and Shaymin's going back in a box (Shaymin's is Platinum's and done; Hoopa's is the old games' and not Sword and Shield's), Necrozma-Ultra outside Ultra Burst (none), Magearna's and the Pokémon whose forms are only looks given by events, Zarude's Dada (an event), the names the data gives some forms otherwise than Showdown does (above, "Found on the way"); and the oracle, which knows none of these forms by Showdown's names.
+## Kanto's first chapter (2026-10-18, plan 19 · K3)
+
+FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its
+beats (`pallet_town.txt`, `pallet_town_professor_oaks_lab.txt`, `viridian_city_mart.txt`, `viridian_city.txt`,
+`pallet_town_rivals_house.txt`, `route_22.txt`, `route_2_east_building.txt`, `pewter_city.txt`, `pewter_city_gym.txt`,
+`pewter_city_museum_1f.txt`), under FireRed's own flags and variables (`VAR_MAP_SCENE_PALLET_TOWN_OAK`,
+`VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB`, `VAR_MAP_SCENE_VIRIDIAN_CITY_MART`, `FLAG_HIDE_OAK_IN_HIS_LAB`…). What
+differs from FireRed, and why:
+
+- **Whose rules.** Kanto is fought by the rules the game is played by (since plan 06 · R19, the modern ones for every
+  game: decision of 2026-10-12), with abilities, held items and the physical-special split, on FireRed's teams and
+  levels (`Data/world/kanto/trainers.json`). FireRed's own Generation 3 rules are no preset. The levels are FireRed's;
+  whether a Champion who crosses from Sinnoh meets them scaled is the user's choice, still to be made, and nothing scales
+  them yet.
+- **A new game** begins on FireRed's tile of the bedroom (6, 6 of `PalletTown_PlayersHouse_2F`) with no Pokémon and an
+  empty bag (`kanto.json`'s `hasStory`). Whoever crosses from Sinnoh arrives before the house instead (`Region.Arrival`).
+  What a Kanto game starts with is `common.KantoNewGame`, which `StoryMigration.BeginNewGame` runs after `NewGame` for
+  every new game (each region's `<Region>NewGame`), since Sinnoh's and Kanto's flags never meet.
+- **Oak in the grass.** FireRed's Oak walks the player round to his lab and opens its door; here he catches up with the
+  player, says his piece and the picture goes dark to come up inside the lab, where its own arrival walks him to his desk
+  and the player after him. So does the Gym's guide in Pewter City, who in FireRed leads the player round to the Gym's
+  door: the player is put down before it.
+- **The three Poké Balls** each open the choice of three, as Sinnoh's briefcase does (`starter`), whichever is looked at;
+  the rival takes the one strong against the player's (`Region.RivalStarterFor`), and both balls leave the table.
+  `StoryState.RivalStarterFor` reads the briefcase the species is in, so a Kanto starter is answered by a Kanto one. A
+  game that crosses from Sinnoh and plays Kanto's opening keeps one choice of starter, the last made.
+- **The rival** is FireRed's two classes (`Rival Early`, `Rival Late`), which are the rival's class here
+  (`TrainerDatabase.IsRival`): his name is the player's choice, his battle music the rival's role, which Kanto plays as
+  its trainers' theme (`MusicDirector.StandIns`), as FireRed does.
+- **Viridian's old man** shows no catch: FireRed's lesson is a battle he fights against a Weedle while the player
+  watches; here he tells it, since the watched lesson of this game is the professor's assistant's (`catchinglesson`).
+- **Flash** is FireRed's HM05; Platinum's HM05 is Defog and its Flash TM70, which Oak's aide on Route 2 gives for ten
+  species caught (the new built-in variable `CAUGHT`). Using it outside battle asks for the Boulder Badge (Kanto's gates:
+  Flash Boulder, Cut Cascade, Fly Thunder, Strength Rainbow, Surf Soul, Rock Smash Marsh, Waterfall Volcano).
+- **The Running Shoes** come from Oak's aide in Pewter City once the Boulder Badge is won, as FireRed's do; until then
+  nobody in Kanto runs.
+- **A save of Kanto from before the chapter** (K1 and K2's stand-in start, which owned one of Oak's three and recorded no
+  starter) is taken past the opening (`common.KantoOpeningDone`, story version 20), its starter the one it owns.

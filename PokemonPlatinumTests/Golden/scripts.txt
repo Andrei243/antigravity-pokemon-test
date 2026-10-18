@@ -7285,6 +7285,29 @@ way -
   * fanfare FanfareItem
   * journal ItemWasObtained Potion
   + FLAG_OBTAINED_TEST_POTION
+=== common.KantoNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_OAK_IN_HIS_LAB
+  + FLAG_HIDE_OAK_IN_PALLET_TOWN
+  + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_ROUTE_22_RIVAL
+=== common.KantoOpeningDone
+from a trainer with lines of their own
+way -
+  + FLAG_HAS_POKEDEX
+  + FLAG_HIDE_BULBASAUR_BALL
+  + FLAG_HIDE_CHARMANDER_BALL
+  + FLAG_HIDE_OAK_IN_PALLET_TOWN
+  + FLAG_HIDE_POKEDEX
+  + FLAG_HIDE_RIVAL_IN_LAB
+  + FLAG_HIDE_SQUIRTLE_BALL
+  = VAR_MAP_SCENE_PALLET_TOWN_OAK 0 -> 1
+  = VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 0 -> 6
+  = VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE 0 -> 1
+  = VAR_MAP_SCENE_ROUTE22 0 -> 1
+  = VAR_MAP_SCENE_VIRIDIAN_CITY_MART 0 -> 2
+  = VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 0 -> 2
 === common.Nurse
 from a trainer with lines of their own
 way 0
@@ -8916,6 +8939,76 @@ way 0
 way 1, from answer 1
   Park Attendant> That's the spirit, Lucas! They're out there in the grass and the water.
   ? How is the show going? You haven't caught all six yet. Will you give up? = No
+=== pallet_town.OakStops
+from the trigger at 72,261 of Kanto
+from the trigger at 73,261 of Kanto
+way -
+  ???> Hold it! Don't take another step out there!
+  Prof. Oak> Phew, I caught you in time! Wild Pokémon hide in that grass, and they don't take kindly to visitors.
+  Prof. Oak> Without a Pokémon of your own to keep you safe, you'd be in real danger. Come along to my lab. Hurry, now!
+  * scene pallet_town.Oak in the grass
+  * music kanto/oak
+  * emote player Exclaim
+  * fade out
+  * warp PalletTown_ProfessorOaksLab 6 12
+  * endscene
+  = VAR_MAP_SCENE_PALLET_TOWN_OAK 0 -> 1
+  = VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 0 -> 1
+  + seen pallet_town.Oak in the grass
+=== pallet_town_professor_oaks_lab.DontGoYet
+from the trigger at 5,8 of PalletTown_ProfessorOaksLab
+from the trigger at 6,8 of PalletTown_ProfessorOaksLab
+from the trigger at 7,8 of PalletTown_ProfessorOaksLab
+way -
+  Prof. Oak> Hey! Don't wander off yet. Your Pokémon is on the table!
+=== pallet_town_professor_oaks_lab.ProfOak
+from Prof. Oak at 6,3 of PalletTown_ProfessorOaksLab
+way -
+  Prof. Oak> If a wild Pokémon jumps out at you, let your Pokémon battle it. Together you'll make it to the next town.
+=== pallet_town_professor_oaks_lab.Rival
+from {rival} at 5,4 of PalletTown_ProfessorOaksLab
+way -
+  Barry> Gramps went out somewhere. He said he'd give me a Pokémon if I waited here.
+=== pallet_town_professor_oaks_lab.RivalChallenges
+from the trigger at 5,8 of PalletTown_ProfessorOaksLab
+from the trigger at 6,8 of PalletTown_ProfessorOaksLab
+from the trigger at 7,8 of PalletTown_ProfessorOaksLab
+way 0
+  Barry> Wait up, Lucas! Let's see what our Pokémon can do. Come on, I'll take you on!
+  Barry> What?! No way! I must have picked the wrong one!
+  Barry> Right. I'm off to toughen my Pokémon up out there. Gramps, Lucas, see you around!
+  * scene pallet_town_professor_oaks_lab.The first battle
+  * music kanto/rival
+  * battle kanto_rival_oaks_lab_bulbasaur first Won
+  * music kanto/rival
+  * music area
+  * endscene
+  + FLAG_BEAT_RIVAL_IN_OAKS_LAB
+  + FLAG_HIDE_RIVAL_IN_LAB
+  = VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 0 -> 4
+  + beaten kanto_rival_oaks_lab_bulbasaur
+  + seen pallet_town_professor_oaks_lab.The first battle
+way 1, from answer 1
+  Barry> Ha! Did you see that? I'm a natural!
+  Barry> Right. I'm off to toughen my Pokémon up out there. Gramps, Lucas, see you around!
+  * battle kanto_rival_oaks_lab_bulbasaur first Lost
+  * music kanto/rival
+  * music area
+  * endscene
+  + FLAG_HIDE_RIVAL_IN_LAB
+  = VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB 0 -> 4
+  + seen pallet_town_professor_oaks_lab.The first battle
+=== pallet_town_professor_oaks_lab.StarterBall
+from Poké Ball at 10,4 of PalletTown_ProfessorOaksLab
+from Poké Ball at 8,4 of PalletTown_ProfessorOaksLab
+from Poké Ball at 9,4 of PalletTown_ProfessorOaksLab
+way -
+  > Three Poké Balls sit on the table, each with a Pokémon inside.
+=== pallet_town_rivals_house.Daisy
+from Daisy at 10,6 of PalletTown_RivalsHouse
+way -
+  Daisy> Hi there! My brother's out somewhere, as usual.
+  Daisy> He's talked about nothing but Pokémon since Grandpa came home.
 === pastoria_city.BlockGreatMarsh
 from the trigger at 610,810 of Sinnoh
 way -
@@ -8982,6 +9075,106 @@ way 1, from answer 1
 from Crasher Wake at 589,827 of Sinnoh
 way -
   Crasher Wake> Wahahaha! Pastoria's waters are calm today. Just how I like them!
+=== pewter_city.GymGuide
+from Boy at 90,80 of Kanto
+from the trigger at 90,81 of Kanto
+from the trigger at 90,82 of Kanto
+from the trigger at 90,83 of Kanto
+from the trigger at 91,83 of Kanto
+way -
+  Boy> Hey, you're a trainer, right? Brock's always looking for someone new to battle! Come on, the Gym's this way!
+  Boy> There, that's the Gym. Go on, show Brock what you can do!
+  * scene pewter_city.To the Gym
+  * emote Boy Exclaim
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * endscene
+  + seen pewter_city.To the Gym
+=== pewter_city.MuseumGuide
+from Man at 81,77 of Kanto
+way 0
+  Man> Have you been to the Museum of Science yet? It's full of fossils!
+  Man> Weren't those fossils amazing? Imagine Pokémon that lived so long ago!
+  ? Have you been to the Museum of Science yet? It's full of fossils! = Yes
+way 1, from answer 1
+  Man> You haven't? You really must. It's just over there, by the big rocks.
+  ? Have you been to the Museum of Science yet? It's full of fossils! = No
+=== pewter_city.RunningShoes
+from Aide at 94,80 of Kanto
+from the trigger at 94,81 of Kanto
+from the trigger at 94,82 of Kanto
+from the trigger at 94,83 of Kanto
+way -
+  Aide> Oh, Lucas! There you are. Professor Oak asked me to bring you something.
+  Aide> Your mother sent these to the lab for you. A pair of Running Shoes!
+  > Lucas put on the Running Shoes!
+  Aide> Hold the run button down as you walk, and you'll go twice as fast. There's a note with them, too.
+  > "Don't forget to rest when you're tired, and call home now and then. Love, Mom."
+  Aide> Well, I'd better be getting back to the lab. Good luck out there!
+  * scene pewter_city.The Running Shoes
+  * emote Aide Exclaim
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  = VAR_MAP_SCENE_PEWTER_CITY 0 -> 2
+  + seen pewter_city.The Running Shoes
+=== pewter_city_gym.Brock
+from Brock at 6,5 of PewterCity_Gym
+way 0
+  Brock> So you're the new challenger. I'm Brock, Pewter's Gym Leader.
+  Brock> I believe in rock-hard defence and unshakable will. My Pokémon are Rock types, solid to the core.
+  Brock> Show me what you've got!
+  Brock> ...I misjudged you. You and your Pokémon fought as one. That deserves the Boulder Badge.
+  > Lucas received the Boulder Badge from Brock!
+  Brock> With it, Flash can be used outside battle, and Pokémon you get in trades will listen to you a little better.
+  Brock> Wait, take this as well. It's a TM of my own choosing.
+  > Lucas received the TM39!
+  > TM39 holds the move Rock Tomb.
+  > Lucas put it away in the TMs & HMs pocket.
+  Brock> TM39 holds Rock Tomb. It drops rocks on the foe and slows it down. A move worthy of a Pewter trainer.
+  Brock> There are other Gyms all over Kanto, each tougher than the last. Go and test yourself against them.
+  * scene pewter_city_gym.Brock
+  * battle kanto_leader_brock Won
+  * fanfare FanfareBadge
+  * defeat kanto_camper_liam
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_BROCK
+  + FLAG_GOT_TM39_FROM_BROCK
+  + FLAG_HIDE_PEWTER_CITY_GYM_GUIDE
+  = VAR_MAP_SCENE_PEWTER_CITY 0 -> 1
+  + beaten kanto_camper_liam
+  + beaten kanto_leader_brock
+  = badges Kanto 0 -> 1
+  + seen pewter_city_gym.Brock
+way 1, from answer 1
+  * battle kanto_leader_brock Lost
+  * scene over, unseen
+=== pewter_city_gym.GymGuy
+from Gym Guide at 7,12 of PewterCity_Gym
+way -
+  Gym Guide> Hey, future Champion! Brock's Pokémon are Rock types, hard as stone.
+  Gym Guide> Normal moves bounce right off them. Water and Grass moves are what they hate.
+  Gym Guide> If your Pokémon can't do either, train up a bit more before you take him on!
+=== pewter_city_museum_1f.Receptionist
+from Receptionist at 16,5 of PewterCity_Museum_1F
+way -
+  Receptionist> Amber is sap from ancient trees that hardened over time. Sometimes something is caught inside it.
+=== pewter_city_museum_1f.Ticket
+from the trigger at 12,5 of PewterCity_Museum_1F
+from the trigger at 13,5 of PewterCity_Museum_1F
+from the trigger at 14,5 of PewterCity_Museum_1F
+way 0
+  Receptionist> Welcome! A child's ticket is 50. Would you like to come in?
+  Receptionist> Thank you! Please enjoy the exhibits.
+  ? Welcome! A child's ticket is 50. Would you like to come in? = Yes
+  = VAR_MAP_SCENE_PEWTER_CITY_MUSEUM_1F 0 -> 1
+way 1, from answer 1
+  Receptionist> Do come again!
+  ? Welcome! A child's ticket is 50. Would you like to come in? = No
 === pokemon_league.Statue
 from the tile read at 837,561 of Sinnoh
 from the tile read at 838,561 of Sinnoh
@@ -9531,6 +9724,36 @@ from Pikachu at 73,756 of Sinnoh
 way -
   Pikachu> Pika-pikaaa!
   * cry Pikachu
+=== route_22.EarlyRival
+from the trigger at 33,194 of Kanto
+from the trigger at 33,195 of Kanto
+from the trigger at 33,196 of Kanto
+way 0
+  Barry> Hey! Lucas! Over here!
+  Barry> Heading for the Pokémon League, are you? Forget it. You need Badges to get in, and you've got none.
+  Barry> The guard won't even let you through the gate. Still, how about a battle while you're here?
+  Barry> Huh, not bad. My Pokémon just needed a warm-up, that's all.
+  Barry> I'm off to Pewter City to get myself a Badge. Try to keep up, Lucas!
+  * scene route_22.The rival on Route 22
+  * music kanto/rival
+  * battle kanto_rival_route22_early_bulbasaur Won
+  * music kanto/rival
+  * music area
+  * endscene
+  + FLAG_HIDE_ROUTE_22_RIVAL
+  = VAR_MAP_SCENE_ROUTE22 0 -> 2
+  + beaten kanto_rival_route22_early_bulbasaur
+  + seen route_22.The rival on Route 22
+way 1, from answer 1
+  Barry> Ha! Told you. You're nowhere near ready for the League.
+  Barry> I'm off to Pewter City to get myself a Badge. Try to keep up, Lucas!
+  * battle kanto_rival_route22_early_bulbasaur Lost
+  * music kanto/rival
+  * music area
+  * endscene
+  + FLAG_HIDE_ROUTE_22_RIVAL
+  = VAR_MAP_SCENE_ROUTE22 0 -> 2
+  + seen route_22.The rival on Route 22
 === route_222.RichBoy
 from Rich Boy at 788,781 of Sinnoh
 way -
@@ -9601,6 +9824,11 @@ way -
   * fanfare FanfareItem
   * fanfare FanfareItem
   + FLAG_RECEIVED_ROUTE_229_NUGGET
+=== route_2_east_building.Aide
+from Aide at 4,6 of Route2_EastBuilding
+way -
+  Aide> I'm one of Professor Oak's aides. I keep an eye on how his Pokédex is coming along.
+  Aide> Catch plenty of Pokémon and I may have something for you.
 === sandgem_town.Counterpart
 from {assistant} at 168,845 of Sinnoh
 way -
@@ -10408,10 +10636,41 @@ from the trigger at 4,55 of VictoryRoad1FRoom2
 way -
   Marley> ...You're going back? ...I see. I'll wait here, then.
   * partner off
+=== viridian_city.Granddaughter
+from Woman at 68,192 of Kanto
+way -
+  Woman> My grandfather is in a terrible mood this morning. He hasn't even had his coffee yet.
+  Woman> Please don't mind him if he's rude to you.
 === viridian_city.GymDoorLocked
 from the trigger at 84,191 of Kanto
 way -
   > The Gym's doors are locked tight. Nobody seems to be inside.
+=== viridian_city.OldMan
+from Old Man at 69,186 of Kanto
+way -
+  Old Man> Grumble... This is private property! No coffee, no passing. Go away!
+=== viridian_city.RoadBlocked
+from the trigger at 70,191 of Kanto
+way -
+  Woman> Oh, I'm so sorry! That's my grandfather lying across the road. He won't budge until he's had his coffee.
+  Woman> Could you go round another way for now?
+=== viridian_city.Tutorial
+from the trigger at 68,188 of Kanto
+from the trigger at 70,188 of Kanto
+way -
+  Old Man> Ah, there you are! You look like a trainer in a hurry. Got a Pokédex, have you?
+  Old Man> Then listen to an old man. You can't just throw a Poké Ball at any wild Pokémon and hope.
+  Old Man> Wear it down in battle first, without making it faint. The weaker it is, the easier it is to catch.
+  Old Man> A Pokémon that's asleep or paralysed is easier still. Now go and try it for yourself!
+  * scene viridian_city.The old man's lesson
+  * emote Old Man Exclaim
+  * endscene
+  = VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 0 -> 2
+  + seen viridian_city.The old man's lesson
+=== viridian_city_mart.MartClerk
+from Clerk at 2,3 of ViridianCity_Mart
+way -
+  Clerk> Professor Oak's waiting on that parcel. Off you go, quick as you can!
 === wayward_cave_1f.Exit
 from the trigger at 41,53 of WaywardCave1F
 way -

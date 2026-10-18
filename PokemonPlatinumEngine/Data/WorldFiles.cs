@@ -902,6 +902,12 @@ public sealed class OverlayPerson
     /// Pokémon of the team let out of its ball there).
     /// </summary>
     public string? Species { get; set; }
+
+    /// <summary>
+    /// How far above the floor under them they are drawn, in the room's drawn units, where the original lays them on furniture (plan 19 · K3:
+    /// the three Poké Balls on Oak's table); left out, on the floor.
+    /// </summary>
+    public float? Level { get; set; }
 }
 
 /// <summary>A tile that leads elsewhere: to the warp numbered <see cref="ToWarp"/> of the area <see cref="To"/>.</summary>

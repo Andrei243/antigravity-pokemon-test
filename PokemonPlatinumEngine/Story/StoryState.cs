@@ -18,7 +18,7 @@ public sealed class StoryState
     /// How much of the story a save knows about. A save from before story state existed is 0; every chapter that
     /// needs older saves brought up to date raises it and adds a step to <see cref="Story.StoryMigration"/>.
     /// </summary>
-    public const int CurrentVersion = 19;
+    public const int CurrentVersion = 20;
 
     /// <summary>The Pokédex is the player's (the original's own flag, set as Rowan hands it over).</summary>
     public const string PokedexFlag = "FLAG_HAS_POKEDEX";
@@ -249,10 +249,19 @@ public sealed class StoryState
     public string? RivalStarter { get; private set; }
 
     /// <summary>The species the professor's assistant has: the one left in the briefcase (the original's counterpart's starter); null until the player has chosen.</summary>
-    public string? AssistantStarter => PlayerStarter == null ? null : Starters.First(s => s != PlayerStarter && s != RivalStarter);
+    public string? AssistantStarter => PlayerStarter == null ? null : StartersOf(PlayerStarter).First(s => s != PlayerStarter && s != RivalStarter);
 
-    /// <summary>The starter the rival takes when the player takes this one (grass is answered with fire, fire with water, water with grass).</summary>
-    public static string RivalStarterFor(string playerStarter) => RegionDatabase.Get(RegionDatabase.Sinnoh)!.RivalStarterFor(playerStarter);
+    /// <summary>
+    /// The starter the rival takes when the player takes this one (grass is answered with fire, fire with water, water
+    /// with grass), from the briefcase the species was in: Sinnoh's, or Kanto's on Oak's table (plan 19 · K3).
+    /// </summary>
+    public static string RivalStarterFor(string playerStarter) => RegionOfStarter(playerStarter).RivalStarterFor(playerStarter);
+
+    /// <summary>The three a starter was chosen from: the first region whose briefcase holds it, else Sinnoh's.</summary>
+    public static IReadOnlyList<string> StartersOf(string starter) => RegionOfStarter(starter).Starters;
+
+    private static Region RegionOfStarter(string starter) =>
+        RegionDatabase.All.FirstOrDefault(r => r.Starters.Contains(starter)) ?? RegionDatabase.Get(RegionDatabase.Sinnoh)!;
 
     public void ChooseStarter(string species)
     {

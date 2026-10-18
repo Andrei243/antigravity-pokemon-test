@@ -780,6 +780,7 @@ public partial class GameEngine
         public Poketch Poketch => game.flow.Poketch;
         public SafariGame Safari => game.flow.Safari;
         public int SeenInSinnoh => game.flow.Pokedex.SeenIn(Pokedex.Sinnoh);
+        public int Caught => game.flow.Pokedex.CaughtCount;
 
         public int Money
         {

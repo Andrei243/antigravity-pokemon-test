@@ -1,11 +1,13 @@
 {
   // Pallet Town (plan 19 · K1): FireRed's map, our words. Professor Oak's scene at the edge of the grass, which the
-  // two triggers north of town start in the original, is plan 19 · K3's, and so is Oak himself
+  // two triggers north of town start, is plan 19 · K3's (pallet_town.txt)
   "area": "pallet_town",
   "bgmTrack": "kanto/pallet",
   "trees": "Round",
   "architecture": "Clapboard",
+  "triggers": [ { "trigger": 0, "script": "OakStops" }, { "trigger": 1, "script": "OakStops" } ],
   "people": {
+    "pallet_prof_oak": { "name": "Prof. Oak", "still": true, "dialog": [ "Wild Pokémon live in that grass. Stay close!" ] },
     "pallet_sign_lady": {
       "name": "Neighbour",
       "dialog": [

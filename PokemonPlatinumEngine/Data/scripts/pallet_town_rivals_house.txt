@@ -1,0 +1,24 @@
+# The rival's house in Pallet Town (plan 19 · K3). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/PalletTown_RivalsHouse/scripts.inc).
+#
+# VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE is 1 once Oak has given out the Pokédex: the rival's sister has heard of the
+# errand and hands over the Town Map that lies on the table, whatever her brother said.
+
+
+script Daisy
+  if flag FLAG_GOT_TOWN_MAP goto Given
+  if var VAR_MAP_SCENE_PALLET_TOWN_RIVALS_HOUSE >= 1 goto Errand
+  sayown
+  end
+label Errand
+  say "Hi, {player}! Grandpa asked you to help with his Pokédex? He asked my brother too."
+  say "You'll be travelling all over Kanto, then. Here, this will help you find your way."
+  setflag FLAG_HIDE_TOWN_MAP
+  setflag FLAG_GOT_TOWN_MAP
+  give "Town Map"
+  say "Don't tell my brother I gave you that. He wanted it all to himself."
+  end
+label Given
+  say "Keep an eye on my little brother out there for me, would you? He's not as tough as he thinks."
+  end
+

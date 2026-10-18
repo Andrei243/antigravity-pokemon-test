@@ -1,0 +1,32 @@
+# Kanto's trainer battle theme (FireRed's MUS_VS_TRAINER, which it also plays against the rival and Team Rocket): a
+# chromatic count-in and a driving square-wave lead in E minor. Original composition for this game (plan 19 · K3).
+title Battle! Trainer (Kanto)
+tempo 160
+meter 4/4
+lowhptempo 1.08
+reverb 0.18
+
+track lead square lowhp=sawlead vol=0.9 pan=0.05 rev=0.2
+  o4 e8 e8 e8 e8 f8 f8 f8 f8 | o4 f+8 f+8 f+8 f+8 g8 a8 b8 o5 d8 | L o5 e4 g8 b8 o6 e4 o5 b4 | o5 c4 e8 g8 o6 c4 o5 g4 |
+  o5 d4 f+8 a8 o6 d4 o5 a4 | o5 d+4 f+8 b8 f+4 d+4 | o5 g4 f+8 e8 b4 e4 | o5 e4 g8 c8 e4 g4 |
+  o5 a4 e4 f+4 b4 | o5 e2 b4 g4 |
+
+track pad strings vol=0.3 pan=-0.25 rev=0.25
+  r1 | r1 | L o4 (e g b)1 | (c e g)1 |
+  (d f+ a)1 | (d+ f+ b)1 | (e g b)1 | (c e g)1 |
+  (c e a)2 (d+ f+ b)2 | (e g b)1 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 e8 e8 e8 e8 f8 f8 f8 f8 | o3 f+8 f+8 f+8 f+8 g8 a8 b8 o4 d8 | L o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 | o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 |
+  o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 o2 d8 o3 d8 | o2 b8 o3 b8 o2 b8 o3 b8 o2 b8 o3 b8 o2 b8 o3 b8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 | o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 o2 c8 o3 c8 |
+  o2 a8 o3 a8 o2 a8 o3 a8 o2 b8 o3 b8 o2 b8 o3 b8 | o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 |
+
+track drums kit vol=0.52 rev=0.1
+  v95 b8 r8 b8 r8 s8 r8 b8 r8 | b8 r8 b8 r8 s16 s16 s16 s16 s16 s16 s16 s16 | L [ b8 r8 s8 b8 r8 b8 s8 r8 | ]7 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.46 pan=0.15 rev=0.1
+  r1 | r1 | L v65 [ h8 v45 h8 v65 h8 v45 h8 v65 h8 v45 h8 v65 h8 v45 h8 v65 | ]8
+
+# Low HP: the alarm figure, two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | ]8

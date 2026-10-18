@@ -1784,6 +1784,8 @@ public sealed partial class ScriptRunner
 
         // Whether the player rides the Bicycle (plan 01 · M11, part d: the Cycling Road's gate keepers)
         "CYCLING" => host.Cycling ? 1 : 0,
+        // How many species are caught (plan 19 · K3: Oak's aides, who hand out a reward for so many)
+        "CAUGHT" => host.Caught,
         _ => host.Story.Var(variable)
     };
 

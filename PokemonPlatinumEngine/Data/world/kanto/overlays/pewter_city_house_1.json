@@ -1,0 +1,10 @@
+{
+  // A house in Pewter City (plan 19 · K3); the boy's Nidoran, which FireRed's trade stands for, is plan 07's
+  "area": "pewter_city_house_1",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "balding_man": { "name": "Man", "dialog": [ "My son wanted a Pokémon so badly. Now he won't let it out of his sight." ] },
+    "little_boy": { "name": "Boy", "dialog": [ "Nidoran! Sit! ...Good boy. He's still learning." ] },
+    "pewter_house_nidoran": { "name": "Nidoran", "npcType": "Pokemon", "species": "Nidoran♂", "dialog": [ "Nidoran: Kyuu!" ] }
+  }
+}

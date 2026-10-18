@@ -347,6 +347,9 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 30-55
+=== pewter_city_gym
+Pewter City
+trainers 1, 10-11: kanto_camper_liam 11
 === pokemon_league
 Pokémon League
 surf 30-50
@@ -615,6 +618,10 @@ old rod 3-15
 good rod 10-25
 super rod 20-55
 trainers 6, 51-54: swimmer_glenn 53, swimmer_joanna 54, swimmer_kurt 54, swimmer_mallory 54, swimmer_sam 53, swimmer_sophia 53
+=== route_3
+Route 3
+grass 3-8
+trainers 8, 9-14: kanto_bug_catcher_colton 10, kanto_bug_catcher_greg 9, kanto_bug_catcher_james 11, kanto_lass_janice 9, kanto_lass_robin 14, kanto_lass_sally 10, kanto_youngster_ben 11, kanto_youngster_calvin 14
 === ruin_maniac_cave_short
 Ruin Maniac Cave
 grass 21-24

@@ -311,9 +311,11 @@ public static class RegionDatabase
         new()
         {
             Id = Kanto, Name = "Kanto", Generation = 1, File = RegionFiles.Load(Kanto),
-            // FireRed's Kanto, read by the GBA reader (plan 19 · K1): a new game begun there stands before the player's
-            // house in Pallet Town, on the region's own overworld
-            Start = new MapSpot("Kanto", 66, 268, Direction.Down),
+            // FireRed's Kanto, read by the GBA reader (plan 19 · K1). A new game begun there wakes in the player's room
+            // upstairs, as FireRed's does (plan 19 · K3: the original's warp to the bedroom's 6, 6), with nothing; a
+            // Champion come across from Sinnoh steps out before the player's house in Pallet Town, on the overworld
+            Start = new MapSpot("PalletTown_PlayersHouse_2F", 6, 6, Direction.Up),
+            Arrival = new MapSpot("Kanto", 66, 268, Direction.Down),
             Maps = new[]
             {
                 "Kanto",
@@ -324,6 +326,9 @@ public static class RegionDatabase
                 // Plan 19 · K2: Viridian Forest, Route 2's rooms and Route 22's gate
                 "ViridianForest", "Route2_ViridianForest_SouthEntrance", "Route2_House", "Route2_EastBuilding",
                 "Route2_ViridianForest_NorthEntrance", "Route22_NorthEntrance",
+                // Plan 19 · K3: Pewter City's rooms
+                "PewterCity_Museum_1F", "PewterCity_Museum_2F", "PewterCity_Gym", "PewterCity_Mart", "PewterCity_House1",
+                "PewterCity_PokemonCenter_1F", "PewterCity_PokemonCenter_2F", "PewterCity_House2",
             }
         },
         new() { Id = Johto, Name = "Johto", Generation = 2 },

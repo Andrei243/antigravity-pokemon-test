@@ -502,10 +502,11 @@ public static class WorldMapBuilder
                     if (map.InBounds(x, y)) map.SetGroundTile(x, y, TileType.Floor, map.IsSolid(x, y));
             switch (piece.Type)
             {
-                case PropType.Table or PropType.Counter or PropType.Rug or PropType.StoreShelf or PropType.LabDesk or PropType.Bench:
+                // A bed is one piece however wide (plan 19 · K3: the bedroom's, three metatiles by three, a bed for two as the Villa's is)
+                case PropType.Table or PropType.Counter or PropType.Rug or PropType.StoreShelf or PropType.LabDesk or PropType.Bench or PropType.Bed:
                     map.Props.Add(piece);
                     break;
-                case PropType.Stairs or PropType.Bed or PropType.LabMachine:
+                case PropType.Stairs or PropType.LabMachine:
                     for (int x = piece.X; x < piece.X + piece.Width; x++)
                         map.Props.Add(new Prop { Type = piece.Type, X = x, Y = piece.Y, Depth = piece.Depth });
                     break;
@@ -2052,6 +2053,9 @@ public static class WorldMapBuilder
             }, map.Name);
             // Someone the original stands on a bridge's deck stands there, over whoever walks under it
             if (o.Y is > 0 && map.DeckAt(o.X, o.Z) is { } deck) npc.Level = deck;
+            // Something the overlay lays on a table stands on its top (plan 19 · K3)
+            // (drawn there only: they are spoken to from the floor before the furniture, as from beside it)
+            if (person.Level is { } above) npc.RaisedBy = above;
             // Scripts call them by their id in the area's file, and look their own scripts up in the area's
             npc.Key = o.Id;
             npc.LinesPlace = key;

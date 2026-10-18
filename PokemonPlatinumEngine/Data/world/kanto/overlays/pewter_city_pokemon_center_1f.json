@@ -1,0 +1,14 @@
+{
+  // Pewter City's Pokémon Center (plan 19 · K3), its floor as FireRed lays it out
+  "area": "pewter_city_pokemon_center_1f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "pewter_nurse": { "name": "Nurse", "script": "Nurse" },
+    "jigglypuff": { "name": "Jigglypuff", "npcType": "Pokemon", "species": "Jigglypuff", "dialog": [ "Jigglypuff: Puu, pupuu..." ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "Nothing soothes a weary trainer like Jigglypuff's song. I could listen all day." ] },
+    "youngster": { "name": "Youngster", "dialog": [ "That Jigglypuff sings to everyone who comes in. It's the Center's mascot!" ] },
+    "woman_1": { "name": "Woman", "dialog": [ "I'm waiting for my Pokémon. The nurse is very good, isn't she?" ] },
+    "gba_kid": { "name": "Boy", "dialog": [ "I'm trading with my friend over the link cable. Well, I would be if it worked." ] },
+    "gba_kid_2": { "name": "Boy", "dialog": [ "The link is closed today. Maybe next time!" ] }
+  }
+}

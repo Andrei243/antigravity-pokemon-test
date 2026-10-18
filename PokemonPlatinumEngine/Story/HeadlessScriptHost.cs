@@ -26,6 +26,7 @@ public sealed class HeadlessScriptHost : IScriptHost
     public Poketch Poketch { get; } = new();
     public SafariGame Safari { get; } = new();
     public int SeenInSinnoh { get; set; }
+    public int Caught { get; set; }
     public int Money { get; set; } = 3000;
     public string PlayerName { get; set; } = PlayerIdentity.DefaultName(PlayerLook.Boy);
     public PlayerLook PlayerLook { get; set; }
@@ -681,8 +682,10 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (screen != ScriptScreen.Starter) return;
 
         // As the game does: the Pokémon chosen joins the team (the player's first, since plan 02 · S4)
-        int choice = Math.Clamp(StarterChoice, 0, StoryState.Starters.Count - 1);
-        string species = StoryState.Starters[choice];
+        // From the briefcase of the region the script plays in (Oak's table in Kanto, plan 19 · K3)
+        var three = RegionDatabase.Get(Region)?.Starters is { Count: > 0 } own ? own : StoryState.Starters;
+        int choice = Math.Clamp(StarterChoice, 0, three.Count - 1);
+        string species = three[choice];
         GivePokemon(new Pokemon(PokemonDatabase.Get(species)!, 5));
         Story.ChooseStarter(species);
         Answer = choice;

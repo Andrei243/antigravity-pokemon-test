@@ -32,7 +32,13 @@ public static class StoryMigration
         var runner = new ScriptRunner(scripts, new HeadlessScriptHost(story) { ShowsNothing = true });
         runner.Start(script);
         runner.RunToEnd();
+        // And each region's own (plan 19 · K3: common.KantoNewGame), whose flags are the region's original's
+        foreach (string regional in RegionalNewGames) Run(story, scripts, regional);
     }
+
+    /// <summary>The scripts of what a game starts with in each region beside Sinnoh's: <c>common.&lt;Region&gt;NewGame</c>.</summary>
+    public static IEnumerable<string> RegionalNewGames =>
+        RegionDatabase.All.Where(r => r.Id != RegionDatabase.Sinnoh).Select(r => $"common.{r.Id}NewGame");
 
     /// <summary>
     /// Brings a loaded save's story up to today's. <paramref name="savedVersion"/> is the save's
@@ -87,7 +93,37 @@ public static class StoryMigration
         // Version 19: the badges by region (plan 18 · W2). A save from before kept one mask of Sinnoh's eight; it is
         // given to the region the save was made in as the story is read (Core.SaveData.RegionalBadges), before the first
         // step here, since the steps above ask for the Coal, Icicle and Beacon Badges. Nothing is left to do here.
+        // Version 20: Kanto's first chapter (plan 19 · K3), and a game begun in Kanto before it was written taken past it
+        if (savedVersion < 20) KantoChapterOne(story, scripts, owned);
     }
+
+    /// <summary>
+    /// Version 20, a save from before Kanto's first chapter was written (plan 19 · K3): its Kanto people are hidden until
+    /// their scenes by <c>common.KantoNewGame</c>, which a new game runs too. A game begun in Kanto before then began in
+    /// front of the player's house with a Pokémon of its own and no choice of starter recorded, which no game of Sinnoh
+    /// has (Sinnoh's begins with none and records the briefcase's): it has its opening played by
+    /// <c>common.KantoOpeningDone</c>, and its starter is the first of Oak's three it owns.
+    /// </summary>
+    private static void KantoChapterOne(StoryState story, ScriptLibrary scripts, IEnumerable<Pokemon> owned)
+    {
+        Run(story, scripts, "common.KantoNewGame");
+        var mine = owned.ToList();
+        // A game of Kanto's stand-in start owned one of Oak's three and none of the briefcase's (a game of Sinnoh made
+        // by a tool may have its Turtwig with no choice recorded)
+        if (story.PlayerStarter != null || StarterAmong(mine) != null) return;
+        var species = mine.Select(p => p.Species.Name).ToHashSet(StringComparer.Ordinal);
+        if (KantoStarterLines.FirstOrDefault(line => line.Any(species.Contains))?[0] is not { } starter) return;
+        Run(story, scripts, "common.KantoOpeningDone");
+        story.ChooseStarter(starter);
+    }
+
+    /// <summary>Oak's three and what each grows into (plan 19 · K3).</summary>
+    private static readonly string[][] KantoStarterLines =
+    {
+        new[] { "Bulbasaur", "Ivysaur", "Venusaur" },
+        new[] { "Charmander", "Charmeleon", "Charizard" },
+        new[] { "Squirtle", "Wartortle", "Blastoise" }
+    };
 
     /// <summary>The flags that first arriving in the Battle Zone's three towns sets (<see cref="Data.SpawnLocation.ArrivalFlag"/>).</summary>
     public static readonly string[] ArrivedInTheBattleZone =

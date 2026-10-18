@@ -1,10 +1,11 @@
 {
-  // The rival's house (plan 19 · K1). His sister's Town Map is the story's (K3)
+  // The rival's house (plan 19 · K1). His sister's Town Map is the story's since K3 (pallet_town_rivals_house.txt)
   "area": "pallet_town_rivals_house",
   "bgmTrack": "kanto/pallet",
   "people": {
     "daisy": {
       "name": "Daisy",
+      "script": "Daisy",
       "dialog": [
         "Hi there! My brother's out somewhere, as usual.",
         "He's talked about nothing but Pokémon since Grandpa came home."

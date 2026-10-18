@@ -1,0 +1,28 @@
+{
+  "key": "pewter_city_house_2",
+  "index": 271,
+  "name": "Pewter City",
+  "matrix": 218,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "pewter_city", "toWarp": 6 },
+    { "x": 4, "z": 7, "to": "pewter_city", "toWarp": 6 },
+    { "x": 5, "z": 7, "to": "pewter_city", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "look_east", "x": 3, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_House2_EventScript_OldMan" },
+    { "id": "little_boy", "looks": "little_boy", "movement": "look_south_and_north", "x": 5, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PewterCity_House2_EventScript_LittleBoy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,9 +1,14 @@
 {
-  // Route 22 (plan 19 · K2): west of Viridian City to the gate of the Pokémon League. The rival who waits here twice
-  // in the original, and the triggers that bring him on, are the story's (K3 and K7): until then he is not here
+  // Route 22 (plan 19 · K2): west of Viridian City to the gate of the Pokémon League. The rival waits here once the
+  // Pokédex is given (plan 19 · K3, route_22.txt: the area's triggers 0 to 2); his second wait, before the gate, is
+  // K7's (triggers 3 to 5), and until then nobody stands there
   "area": "route_22",
   "bgmTrack": "kanto/route3",
   "trees": "Round",
+  "triggers": [ { "trigger": 0, "script": "EarlyRival" }, { "trigger": 1, "script": "EarlyRival" }, { "trigger": 2, "script": "EarlyRival" } ],
+  "people": {
+    "route22_rival": { "name": "{rival}", "still": true, "dialog": [ "Shouldn't you be out training?" ] }
+  },
   "signs": {
     "Route22_EventScript_LeagueGateSign": "Pokémon League\nFront Gate"
   }

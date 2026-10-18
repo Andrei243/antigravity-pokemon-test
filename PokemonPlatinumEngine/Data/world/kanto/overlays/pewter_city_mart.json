@@ -1,0 +1,10 @@
+{
+  // Pewter City's Poké Mart (plan 19 · K3)
+  "area": "pewter_city_mart",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "youngster": { "name": "Youngster", "dialog": [ "A good trainer carries plenty of Potions. Battles can turn fast!" ] },
+    "boy": { "name": "Boy", "dialog": [ "Mt. Moon is east of here, past Route 3. It's dark and full of Zubat." ] }
+  }
+}
