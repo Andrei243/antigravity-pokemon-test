@@ -214,6 +214,10 @@ public sealed partial class BattleCore
                     ConsumeItem(t);
                 }
                 break;
+            default:
+                // The later games' (plan 06 · R28a; BattleCore.LaterItems.cs)
+                LaterItemOnHit(use, hit, item);
+                break;
         }
     }
 

@@ -52,7 +52,8 @@ public class CoverageTests
         // All 123 since plan 06 · R7
         AtLeast(123, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(167, n.LaterAbilitiesRun, "later abilities with an effect");
-        AtLeast(304, n.PlatinumItemsFully, "Platinum's items that work");
+        AtLeast(308, n.PlatinumItemsFully, "Platinum's items that work"); // plan 06 · R28a: the Luxury and Heal Balls
+        AtLeast(260, n.LaterItemsFully, "later items that work"); // plan 06 · R28a
         AtLeast(357, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
         AtLeast(158, n.HoldEffectsRun, "hold effects run");
         // The 35 Z-Moves since plan 06 · R21
@@ -232,7 +233,8 @@ public class CoverageTests
 
         // What works is judged job by job
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Net Ball")!));       // catches by its own condition
-        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Luxury Ball")!));   // catches, without the friendship after
+        Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Luxury Ball")!));    // catches, and its friendship is the field's (plan 06 · R28a)
+        Assert.Equal(Works.Partly, Coverage.Of(ItemDatabase.Get("Safari Ball")!));   // the Great Marsh's own
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Full Restore")!));   // from the bag and in battle (plan 06 · R8)
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("X Attack")!));       // in battle, which is all it is for
         Assert.Equal(Works.Fully, Coverage.Of(ItemDatabase.Get("Poké Doll")!));

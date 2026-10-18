@@ -124,7 +124,9 @@ public sealed partial class BattleCore
             Start = (b, use) =>
             {
                 string? hold = BattleEffects.ItemInHand(use.User)?.HoldEffect;
-                if (hold != null && hold.StartsWith("Arceus") && Enum.TryParse(hold["Arceus".Length..], out PokemonType type)) Retype(use, type);
+                // Multi-Attack takes its Memory's and Techno Blast its Drive's (plan 06 · R28a)
+                string prefix = use.Data.Name switch { "Multi-Attack" => LaterItems.Memory, "Techno Blast" => LaterItems.Drive, _ => "Arceus" };
+                if (LaterItems.TypeOf(hold, prefix) is { } type) Retype(use, type);
                 return true;
             }
         },
@@ -309,6 +311,8 @@ public sealed partial class BattleCore
     private int MultiHitCount(Battler user)
     {
         if (BattleEffects.Of(user).Any(e => e.AlwaysHitsFiveTimes)) return 5;
+        // Loaded Dice: four or five (plan 06 · R28a; Showdown's loadeddice onModifyMove, sample([4, 5]))
+        if (BattleEffects.HoldEffectOf(user) == "LoadedDice") return 4 + rng.Roll(RollKind.HitCount, 2);
         if (Rules.MultiHitByHundredths)
         {
             int r = rng.Roll(RollKind.HitCount, 100);

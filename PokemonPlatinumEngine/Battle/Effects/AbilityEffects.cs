@@ -115,7 +115,10 @@ internal sealed class Intimidate : BattleEffect
         foreach (var foe in ctx.ActiveFoes(self).ToList())
         {
             ctx.Announce(Text.Of("battle.cutsAttack", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("foe", foe.Name)));
+            int before = foe.Pokemon!.StatStages.GetValueOrDefault(StatType.Attack);
             ctx.ChangeStat(foe, StatType.Attack, -1, self, announceFailure: true);
+            // An Adrenaline Orb answers it (plan 06 · R28a)
+            LaterItems.Intimidated(ctx, foe, before);
         }
     }
 }

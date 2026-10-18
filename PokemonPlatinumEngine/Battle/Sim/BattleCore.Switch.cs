@@ -347,6 +347,8 @@ public sealed partial class BattleCore
     /// </summary>
     private void Hazards(Battler b)
     {
+        // Heavy-Duty Boots walk over all of it, but a Poison type takes the Toxic Spikes up all the same (plan 06 · R28a)
+        if (WalksInBoots(b)) return;
         Hurts(b);
         // Sticky Web after the rest, which Magic Guard doesn't walk through (plan 06 · R19b)
         CaughtInTheWeb(b);

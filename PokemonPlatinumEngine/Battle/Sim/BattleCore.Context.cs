@@ -52,6 +52,8 @@ public sealed partial class BattleCore
             // Mirror Armor turns it back on whoever tried (plan 06 · R27)
             if (!breaks && MirrorsTheDrop(target, source!, stat, amount, announceFailure, how)) return false;
             if (!breaks && GuardDogStands(target, source!, stat, how)) return false;
+            // A Clear Amulet keeps it off (plan 06 · R28a)
+            if (ClearAmuletKeeps(target, announceFailure)) return false;
         }
 
         // By the modern rules Simple doubles the change itself; under Platinum's its stages count double where they are read
@@ -77,6 +79,8 @@ public sealed partial class BattleCore
             .With(new StageChanged(target.Place, stat, next, next > current));
         // Defiant and Competitive answer a stage a foe took (plan 06 · R27)
         if (next < current && byAnother) AnswersTheDrop(target, source!);
+        // An Eject Pack and a Mirror Herb take note, for the move's end (plan 06 · R28a)
+        StagesNoted(target, stat, next - current);
         return true;
     }
 

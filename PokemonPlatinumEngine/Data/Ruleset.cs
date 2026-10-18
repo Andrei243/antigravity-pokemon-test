@@ -257,6 +257,14 @@ public sealed class Ruleset
     /// </summary>
     public bool Terastallization { get; private init; }
 
+    /// <summary>
+    /// The balls of the later games (plan 06 · R28a; <c>docs/mechanics/rulings.md</c>, "The later games' held items,
+    /// medicine and balls"): each ball's bonus as the newest games give it (a Quick Ball's five times, a Net Ball's three
+    /// and a half, a Timer Ball's 1229/4096 a turn), and the balls Platinum doesn't have (Johto's, the Dream, Beast and
+    /// Hisui's). Platinum's own balls keep Platinum's bonuses without it (<see cref="Battle.Sim.Formulas.BallTenths"/>).
+    /// </summary>
+    public bool LaterBalls { get; private init; }
+
     /// <summary>The weather these rules make of one asked for: snow for hail where <see cref="SnowInPlaceOfHail"/> holds.</summary>
     public Battle.Sim.BattleWeather Sky(Battle.Sim.BattleWeather weather) =>
         SnowInPlaceOfHail && weather == Battle.Sim.BattleWeather.Hail ? Battle.Sim.BattleWeather.Snow : weather;
@@ -314,7 +322,8 @@ public sealed class Ruleset
         MegaEvolution = true,
         ZMoves = true,
         Dynamax = true,
-        Terastallization = true
+        Terastallization = true,
+        LaterBalls = true
     };
 
     public static Ruleset Of(RulesPreset preset) => preset == RulesPreset.Modern ? Modern : Platinum;

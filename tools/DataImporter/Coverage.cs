@@ -37,7 +37,7 @@ public static class Coverage
         int PlatinumAbilities, int PlatinumAbilitiesRun, int LaterAbilities, int LaterAbilitiesRun,
         int PlatinumItems, int PlatinumItemsFully, int PlatinumItemsPartly, int PlatinumItemsNothingToRun,
         int HoldEffects, int HoldEffectsRun,
-        int LaterItems, int MegaStones, int ZCrystals);
+        int LaterItems, int MegaStones, int ZCrystals, int LaterItemsFully = 0, int LaterItemsPartly = 0);
 
     public static Numbers Tally(IReadOnlyList<MoveData> moves, IReadOnlyList<AbilityDatabase.AbilityRecord> abilities, IReadOnlyList<ItemData> items)
     {
@@ -57,7 +57,37 @@ public static class Coverage
             abilities.Count(a => a.Generation > 4), abilities.Count(a => a.Generation > 4 && run.Contains(a.Name)),
             own.Count, own.Count(i => Of(i) == Works.Fully), own.Count(i => Of(i) == Works.Partly), own.Count(i => Of(i) == Works.NothingToRun),
             held.Count, held.Count(HeldItemEffects.IsHoldable),
-            items.Count(i => !IsPlatinums(i) && i.Id < 9000), items.Count(i => i.MegaStone != null), items.Count(i => i.ZCrystal != null));
+            items.Count(i => !IsPlatinums(i) && i.Id < 9000), items.Count(i => i.MegaStone != null), items.Count(i => i.ZCrystal != null),
+            items.Count(i => IsLaters(i) && LaterOf(i) == Works.Fully), items.Count(i => IsLaters(i) && LaterOf(i) == Works.Partly));
+    }
+
+    /// <summary>One of the later games' items (ids from 1000 to the game's own 9000).</summary>
+    public static bool IsLaters(ItemData item) => item.Id >= 1000 && item.Id < 9000;
+
+    // The later items the mechanics of plan 06 · R20 to R23 run by name: the Key Stone, the Z-Ring, the Dynamax Band
+    // and the Tera Orb that let a trainer use them, and the two orbs of Primal Reversion
+    private static readonly HashSet<string> RunByTheirMechanic = new() { "Key Stone", "Z-Ring", "Dynamax Band", "Tera Orb", "Red Orb", "Blue Orb" };
+
+    /// <summary>
+    /// How much of a later item the engine runs (plan 06 · R28a), on the same jobs as Platinum's: a ball's catch, a
+    /// medicine's or battle item's use, what holding it does, an evolution it brings, a Mega Stone, a Z-Crystal or a
+    /// key item of a later mechanic. One that has none of those yet (a mint, a candy, a nectar) is *not yet*.
+    /// </summary>
+    public static Works LaterOf(ItemData item)
+    {
+        if (item.MegaStone != null || item.ZCrystal != null || RunByTheirMechanic.Contains(item.Name)) return Works.Fully;
+        var jobs = new List<Works>();
+        if (item.Pocket == ItemPocket.PokeBalls) jobs.Add(PokemonPlatinumEngine.Battle.CatchCalculator.KnowsBall(item.Name) ? Works.Fully : Works.NotYet);
+        else
+        {
+            if (item.BattleUse != null || item.BattlePocket != null) jobs.Add(BattleCore.CanUseInBattle(item) ? Works.Fully : Works.NotYet);
+            if (item.FieldUse != null) jobs.Add(FieldUseOf(item));
+        }
+        if (item.HoldEffect != null) jobs.Add(HeldItemEffects.IsHoldable(item) ? Works.Fully : Works.NotYet);
+        if (Evolution.IsUsedToEvolve(item) || Evolution.IsHeldForEvolution(item)) jobs.Add(Works.Fully);
+        if (jobs.Count == 0) return Works.NotYet;
+        if (jobs.All(j => j == Works.Fully)) return Works.Fully;
+        return jobs.All(j => j == Works.NotYet) ? Works.NotYet : Works.Partly;
     }
 
     /// <summary>One of Platinum's own 446 items (later games' items have ids from 1000; the game's own from 9000).</summary>
@@ -78,7 +108,7 @@ public static class Coverage
     // friendship, a Heal Ball's cure) or belong to a place of their own (the Great Marsh, Pal Park)
     private static readonly HashSet<string> PlainBalls = new()
     {
-        "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Premier Ball", "Cherish Ball",
+        "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Premier Ball", "Cherish Ball", "Luxury Ball", "Heal Ball",
         "Net Ball", "Dive Ball", "Nest Ball", "Repeat Ball", "Timer Ball", "Dusk Ball", "Quick Ball"
     };
 
@@ -156,7 +186,7 @@ public static class Coverage
         Line($"| Platinum's items | {n.PlatinumItems} | {n.PlatinumItemsFully} | {n.PlatinumItemsPartly} | " +
              $"{n.PlatinumItems - n.PlatinumItemsFully - n.PlatinumItemsPartly - n.PlatinumItemsNothingToRun} (and {n.PlatinumItemsNothingToRun} with nothing to run) |");
         Line($"| of which hold effects | {n.HoldEffects} | {n.HoldEffectsRun} | – | {n.HoldEffects - n.HoldEffectsRun} |");
-        Line($"| Items of later games | {n.LaterItems} | – | – | – |");
+        Line($"| Items of later games | {n.LaterItems} | {n.LaterItemsFully} | {n.LaterItemsPartly} | {n.LaterItems - n.LaterItemsFully - n.LaterItemsPartly} |");
         Line();
         Line($"The data has {moves.Count} moves in all. The games number 919 of them, because each of the eighteen type Z-Moves has a physical and a special id; " +
              $"here each is one move, which with the {n.GMaxMoves} G-Max Moves makes {moves.Count}.");
@@ -239,6 +269,31 @@ public static class Coverage
              "and for the items species evolve with. In a battle every medicine and battle item of Platinum's runs (`BattleCore.CanUseInBattle`): HP, " +
              "a condition, confusion, infatuation, a revival, PP, the X items, Dire Hit, Guard Spec., and a Poké Doll's or Fluffy Tail's escape. " +
              "Balls catch by Platinum's own formula, the ones with a condition (Net, Dusk, Timer and the like) included.");
+        Line();
+
+        Line("## The later games' items");
+        Line();
+        Line("Judged as Platinum's are (plan 06 · R28a): a ball by its catch, medicine and battle items by their use, a held item by its hold effect " +
+             "(`Battle/Effects/HeldItemEffects.Later.cs`), an evolution item by the evolution it brings, a Mega Stone, a Z-Crystal and a later mechanic's key " +
+             "item by that mechanic. Mints, candies, feathers, nectars and the rest that only change a Pokémon outside a battle are *not yet*, for R28b.");
+        Line();
+        var later = items.Where(IsLaters).ToList();
+        Line("| Pocket | Items | Works | Partly | Not yet |");
+        Line("| --- | --- | --- | --- | --- |");
+        foreach (var pocket in later.GroupBy(i => i.Pocket).OrderBy(g => g.Key))
+            Line($"| {pocket.Key} | {pocket.Count()} | {pocket.Count(i => LaterOf(i) == Works.Fully)} | {pocket.Count(i => LaterOf(i) == Works.Partly)} | " +
+                 $"{pocket.Count(i => LaterOf(i) == Works.NotYet)} |");
+        Line();
+        foreach (var status in new[] { Works.Partly, Works.NotYet })
+        {
+            Line($"**{char.ToUpperInvariant(Word(status)[0])}{Word(status)[1..]}**");
+            Line();
+            foreach (var pocket in later.Where(i => LaterOf(i) == status).GroupBy(i => i.Pocket).OrderBy(g => g.Key))
+                Line($"- {pocket.Key} ({pocket.Count()}): {string.Join(", ", pocket.Select(i => i.Name))}");
+            Line();
+        }
+        Line($"Held items that work (of {later.Count(i => i.HoldEffect != null)} with a hold effect): " +
+             string.Join(", ", later.Where(i => i.HoldEffect != null && HeldItemEffects.IsHoldable(i) && i.MegaStone == null && i.ZCrystal == null).Select(i => i.Name)) + ".");
         Line();
 
         Line("## The later mechanics' data");

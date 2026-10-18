@@ -438,6 +438,14 @@ internal sealed class Volatiles
     /// <summary>Protean or Libero has changed its type since it came in (generation 9: once a stay on the field).</summary>
     public bool ProteanUsed;
 
+    // ---- The later held items (plan 06 · R28a)
+
+    /// <summary>Booster Energy has set its Protosynthesis or Quark Drive going for as long as it stays in.</summary>
+    public bool BoosterEnergy;
+
+    /// <summary>What a binding move takes of it at each turn's end, as a share of its HP: six from a Binding Band in the binder's hands, nought for the rules' own.</summary>
+    public int BindDivisor;
+
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 
     /// <summary>What Baton Pass hands on to the Pokémon that takes its place (the original's two <c>BATON_PASSED</c> masks).</summary>
@@ -575,6 +583,9 @@ internal sealed class TurnFlags
     /// Bond's second (a quarter as strong).
     /// </summary>
     public bool AteBoosted, SheerForced, ParentalChild;
+
+    /// <summary>A Gem went off for the move it is using (plan 06 · R28a): its power is 5325/4096 of itself.</summary>
+    public bool GemBoosted;
 
     public void Took(Place from, MoveCategory category, int damage)
     {

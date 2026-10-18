@@ -63,6 +63,7 @@ Console.WriteLine("Items…");
 var evolutionItems = species.SelectMany(s => s.Evolutions ?? new()).Select(e => e.Item).OfType<string>().ToHashSet();
 var importedItems = importer.Items(evolutionItems, moves);
 importer.AddLaterMechanics(importedItems, showdown);
+importer.AddLaterItemEffects(importedItems, showdown);
 var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
 importer.AddLaterMachines(species, items);
 var marts = importer.Marts();

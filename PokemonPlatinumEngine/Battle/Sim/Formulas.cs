@@ -313,4 +313,7 @@ public sealed class BattleConditions
     /// where the rules read it, and a <see cref="BattleRecord"/> keeps it.
     /// </summary>
     public bool Inverse { get; init; }
+
+    /// <summary>The wild Pokémon was hooked on a rod (plan 06 · R28a: what the Lure Ball asks).</summary>
+    public bool Fishing { get; init; }
 }

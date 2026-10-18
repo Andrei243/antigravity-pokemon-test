@@ -152,6 +152,7 @@ public partial class GameEngine
         Inverse = terms?.Inverse ?? false,
         // A Pokémon hooked on a rod is fought on the water, wherever the player stands (FieldBattleDTO_SetWaterTerrain)
         Terrain = flow.Hooked ? Battle.Sim.BattleTerrain.Water : TerrainAt(flow.Map, flow.Player.GridX, flow.Player.GridY),
+        Fishing = flow.Hooked,
         Night = GameClock.IsNight,
         HasCaught = species => flow.Pokedex.IsCaught(species.DexNumber),
         Weather = Weathers.InBattle(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)),

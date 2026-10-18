@@ -94,6 +94,8 @@ public static partial class DamageCalculator
             if (move.Data.Effect == "SkipChargeTurnInSun" && field?.WeatherDimsTheSun == true) bp.Add(2048);
             // The later abilities' (plan 06 · R27; DamageCalculator.Abilities.cs)
             if (!selfHit) LaterPower(bp, attacker, defender, move, mine, typed, weather);
+            // The later items' (plan 06 · R28a; DamageCalculator.Items.cs)
+            if (!selfHit) LaterItemPower(bp, attacker, move, myHold);
             power = Math.Max(1, (int)Formulas.RoundHalfDown((long)power * Formulas.Chain(bp, 41, 2097152)));
 
             // ---- The stats: the stage first, then the bonuses (onModifyAtk and its kin)
@@ -146,12 +148,13 @@ public static partial class DamageCalculator
             if (!defensePhysical && theirHold == "ClamperlSpdef" && theirSpecies == "Clamperl") df.Add(8192);
             if (defensePhysical && theirHold == "DittoDefUp" && theirSpecies == "Ditto" && !defender.Volatile.Transformed) df.Add(8192);
             if (!selfHit) LaterDefense(df, defender, theirs, defensePhysical);
+            if (!selfHit) LaterItemDefense(df, defender, theirHold, defensePhysical);
             defense = Math.Max(1, (int)Formulas.RoundHalfDown((long)defense * Formulas.Chain(df, 410, 131072)));
 
             // ---- The base damage, then a spread hit, the weather and a critical hit
             int damage = Formulas.ModernBaseDamage(atkPokemon.Level, power, attack, defense);
             if (spread) damage = Formulas.Modify(damage, 3072);
-            if (typed && !selfHit)
+            if (typed && !selfHit && !UnderAnUmbrella(defender))
             {
                 bool strong = (weather == BattleWeather.Sun && (type == PokemonType.Fire || SteamsInTheSun(move.Data, weather))) || (weather == BattleWeather.Rain && type == PokemonType.Water);
                 bool weak = (weather == BattleWeather.Sun && type == PokemonType.Water && !SteamsInTheSun(move.Data, weather)) || (weather == BattleWeather.Rain && type == PokemonType.Fire);

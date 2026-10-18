@@ -887,7 +887,8 @@ public sealed partial class BattleCore : IBattleContext
         }
 
         // The catching lesson's ball and Pal Park's can't fail (BATTLE_TYPE_ALWAYS_CATCH)
-        int shakes = Kind is BattleKind.CatchingLesson or BattleKind.PalPark ? 4 : CatchCalculator.Shakes(foe, ball, rng, Turn, Conditions, SafariCatchStage);
+        int shakes = Kind is BattleKind.CatchingLesson or BattleKind.PalPark ? 4 : CatchCalculator.Shakes(foe, ball, rng, Turn, Conditions, SafariCatchStage,
+            Rules, PlayerSlots.FirstOrDefault(b => b.IsActive)?.Pokemon);
         if (ball.Name == "Safari Ball") SpecialBalls = Math.Max(0, SpecialBalls - 1);
         Emit(new BallThrown(ball.Name, target.Slot, shakes));
         if (shakes < 4)
@@ -914,6 +915,8 @@ public sealed partial class BattleCore : IBattleContext
 
         foe.ResetStatStages();
         foe.Ball = ball.Name;
+        // A Heal Ball makes it whole and a Friend Ball its friend (plan 06 · R28a)
+        CatchCalculator.AfterTheCatch(foe, ball);
         bool toBox = PlayerParty.IsFull;
         if (!toBox) PlayerParty.Add(foe);
         Emit(new Caught(foe, ball.Name, toBox));

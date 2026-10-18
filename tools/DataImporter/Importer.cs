@@ -1378,7 +1378,7 @@ public sealed partial class Importer
         {
             int id = row.Int("id");
             if (id >= FirstAlternateForm || !api.HasItemName(id)) continue;
-            bool byName = LaterItemsByName.TryGetValue(row["identifier"], out var namedPocket);
+            bool byName = LaterItemsByName.TryGetValue(row["identifier"], out var namedPocket) || JohtoBall(row["identifier"], out namedPocket);
             if (!byName && !LaterItemCategories.Contains(row.Int("category_id")) && !evolutionItems.Contains(api.ItemName(id))) continue;
             if (!byName && api.ItemGeneration(id) is var gen && (gen <= 4 && gen != 0)) continue;
             string name = api.ItemName(id);

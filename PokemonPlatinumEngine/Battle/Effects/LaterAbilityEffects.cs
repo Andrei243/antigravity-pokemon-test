@@ -565,7 +565,7 @@ internal static class LaterAbilities
             "Protosynthesis" => field.WeatherInEffect is BattleWeather.Sun or BattleWeather.HarshSun,
             "Quark Drive" => field.Has(FieldCondition.ElectricTerrain),
             _ => false
-        };
+        } || (b.Volatile.BoosterEnergy && ability is "Protosynthesis" or "Quark Drive");
         if (!on) return null;
         var best = StatType.Attack;
         int value = Formulas.Staged(p.Attack, p.StatStages.GetValueOrDefault(StatType.Attack));

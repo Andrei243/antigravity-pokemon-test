@@ -40,5 +40,16 @@
   // The orb of Terastallization (plan 06 · R23): our own words for what it does
   "Tera Orb": {
     "description": "An orb that lets one of the player's Pokémon a battle Terastallize, shining in its Tera Type."
-  }
+  },
+  // Johto's balls and the Park Ball (plan 06 · R28a): PokeAPI's words name the Apricorns and the old games; ours say
+  // what each does by the rules the game catches by
+  "Lure Ball": { "description": "Catches a Pokémon hooked on a rod four times as easily." },
+  "Level Ball": { "description": "The further your Pokémon's level is above the target's, the easier the catch." },
+  "Moon Ball": { "description": "Catches Pokémon that evolve with a Moon Stone four times as easily." },
+  "Heavy Ball": { "description": "The heavier the Pokémon, the easier it is to catch." },
+  "Fast Ball": { "description": "Catches Pokémon with a base Speed of 100 or more four times as easily." },
+  "Friend Ball": { "description": "A Pokémon caught in it is very friendly from the start." },
+  "Love Ball": { "description": "Catches a Pokémon of your own Pokémon's species and the other gender eight times as easily." },
+  "Park Ball": { "description": "A Poké Ball that never fails. It belongs to the Pal Park." },
+  "Sport Ball": { "description": "A Poké Ball made for catching contests. It catches 1.5 times as easily." }
 }

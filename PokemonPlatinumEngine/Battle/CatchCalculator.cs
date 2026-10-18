@@ -1,5 +1,6 @@
 using System;
 using PokemonPlatinumEngine.Battle.Sim;
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.Battle;
@@ -9,7 +10,7 @@ namespace PokemonPlatinumEngine.Battle;
 /// the decompilation's <c>BattleScript_CalcCatchShakes</c>): a catch rate from the species, the ball, the foe's HP
 /// and its condition, then four rolls against a shake rate worked out from it. The ball holds if all four do.
 /// </summary>
-public static class CatchCalculator
+public static partial class CatchCalculator
 {
     public struct CatchResult
     {
@@ -35,15 +36,23 @@ public static class CatchCalculator
     /// <summary>How many times the ball shakes: 4 means it held.</summary>
     /// <param name="turn">Turns of the battle already played (the Timer and Quick Balls count them).</param>
     /// <param name="safariStage">For a Safari Ball, the Great Marsh's stage the species' catch rate is taken at.</param>
-    public static int Shakes(Pokemon wild, ItemData ball, Random rng, int turn, BattleConditions conditions, int safariStage = 6)
+    /// <param name="rules">The battle's rules: the later games' balls and bonuses are theirs (plan 06 · R28a); left out, Platinum's.</param>
+    /// <param name="mine">The player's Pokémon on the field, which a Level Ball and a Love Ball go by.</param>
+    public static int Shakes(Pokemon wild, ItemData ball, Random rng, int turn, BattleConditions conditions, int safariStage = 6,
+        Ruleset? rules = null, Pokemon? mine = null)
     {
-        // A Master Ball holds whatever the rolls would have said
-        if (ball.EffectValue >= 9999) return 4;
+        // A Master Ball holds whatever the rolls would have said (and an Origin Ball and a Park Ball: plan 06 · R28a)
+        if (ball.EffectValue >= 9999 || (rules?.LaterBalls == true && AlwaysHolds(ball.Name))) return 4;
 
         int speciesRate = wild.CatchRate;
         if (ball.Name == "Safari Ball") speciesRate = speciesRate * SafariStages[safariStage].Num / SafariStages[safariStage].Den;
-        int rate = Formulas.CatchRate(speciesRate, Formulas.BallTenths(ball.Name, wild, turn, conditions),
-            wild.MaxHP, wild.CurrentHP, wild.Status);
+        int tenths = Formulas.BallTenths(ball.Name, wild, turn, conditions);
+        if (rules?.LaterBalls == true)
+        {
+            speciesRate = HeavyBallRate(ball.Name, wild, speciesRate);
+            tenths = LaterBallTenths(ball.Name, wild, turn, conditions, mine);
+        }
+        int rate = Formulas.CatchRate(speciesRate, tenths, wild.MaxHP, wild.CurrentHP, wild.Status);
         if (rate >= 255) return 4;
 
         int holds = Formulas.ShakeRate(rate);
