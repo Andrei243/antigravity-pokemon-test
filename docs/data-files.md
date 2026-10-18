@@ -208,6 +208,7 @@ A cave nothing leads into names the tiles it is come to by (plan 06 · R16a: the
   "trees": "Pine",                    // optional: Round or Pine
   "architecture": "Timber",           // optional: how its fences and walls are built, where its houses don't say
   "battleArena": "Forest",            // optional, as in a map file
+  "arenaType": "Rock",                // optional: a room built from a layout that is a Gym's hall, drawn as that type's hall (plan 19 · K4)
   "climate": "Volcanic",             // optional: air of its own, Volcanic or Frozen (style guide, "Climates")
   "evolutionSites": [ "Moss Rock" ],  // optional, as in a map file
   "doors": [ { "warp": 1, "map": "PlayerHouse", "x": 6, "y": 10, "facing": "Up" } ],   // "openedBy": a flag it waits for

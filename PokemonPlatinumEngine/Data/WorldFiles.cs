@@ -684,6 +684,13 @@ public sealed class WorldOverlayFile
     public AreaClimate? Climate { get; set; }
 
     public BattleArena? BattleArena { get; set; }
+
+    /// <summary>
+    /// A room built from a layout that is a Gym's hall (plan 19 · K4): the type of its Leader, which makes the room a
+    /// <see cref="InteriorStyle.Gym"/> whose floor and walls are that type's hall, as a Gym rebuilt from the original's plan
+    /// takes them (<c>Map.ArenaType</c>; style guide, "Gyms"). Left out, a room is the kind its name says.
+    /// </summary>
+    public PokemonType? ArenaType { get; set; }
     public List<string>? EvolutionSites { get; set; }
 
     /// <summary>Where the area's warps lead among the hand-made maps, by the warp's number in the area file.</summary>

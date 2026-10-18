@@ -16,13 +16,13 @@ track lead square vol=0.74 pan=0 rev=0.44
 track drip glockenspiel vol=0.22 pan=0.35 rev=0.6
   L [ r4 o5 e8 r8 r4 c8 r8 | r2 o4 b8 r8 r4 | ]8
 
-track pad strings vol=0.3 pan=-0.25 rev=0.5
+track pad strings vol=0.36 pan=-0.25 rev=0.5
   L o3 (a >c e)1 | (g b >d)1 | (a >c e)1 | (e g+ b)1 |
   (a >c e)1 | (f a >d)1 | (f a >c)2 (e g+ b)2 | (a >c e)1 |
   (a >c e)1 | (g b >d)1 | (f a >c)1 | (e g+ b)1 |
   (a >c e)1 | (f a >d)1 | (e g+ b)1 | (a >c e)1 |
 
-track bass bass vol=0.62 rev=0.16
+track bass bass vol=0.7 rev=0.16
   L o3 a2 a2 | g2 g2 | a2 a2 | e2 e2 |
   a2 a2 | f2 f2 | f2 e2 | a2 a2 |
   a2 a2 | g2 g2 | f2 f2 | e2 e2 |

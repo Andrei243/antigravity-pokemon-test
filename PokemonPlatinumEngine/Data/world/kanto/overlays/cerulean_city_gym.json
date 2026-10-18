@@ -3,6 +3,8 @@
   // cerulean_city_gym.txt's; her two trainers battle by their own records (Kanto's trainers.json)
   "area": "cerulean_city_gym",
   "bgmTrack": "kanto/gym",
+  // The hall of its Leader's type (plan 19 · K4)
+  "arenaType": "Water",
   "people": {
     "misty": { "name": "Misty", "script": "Misty", "still": true },
     "gym_guy": { "name": "Gym Guide", "script": "GymGuy" },
