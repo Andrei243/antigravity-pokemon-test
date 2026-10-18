@@ -1,0 +1,32 @@
+{
+  "key": "rustboro_city_devon_corp_1f",
+  "index": 133,
+  "name": "Rustboro City",
+  "matrix": 82,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "rustboro_city", "toWarp": 5 },
+    { "x": 6, "z": 8, "to": "rustboro_city", "toWarp": 6 },
+    { "x": 14, "z": 1, "to": "rustboro_city_devon_corp_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "devon_employee", "looks": "devon_employee", "movement": "wander_around", "x": 2, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "RustboroCity_DevonCorp_1F_EventScript_Employee" },
+    { "id": "devon_corp_stair_guard", "looks": "devon_employee", "movement": "wander_around", "x": 15, "z": 5, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "RustboroCity_DevonCorp_1F_EventScript_StairGuard" },
+    { "id": "woman_3", "looks": "woman_3", "movement": "look_south", "x": 5, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_DevonCorp_1F_EventScript_Greeter" }
+  ],
+  "signs": [
+    { "x": 3, "z": 2, "type": 0, "script": "RustboroCity_DevonCorp_1F_EventScript_ProductsDisplay" },
+    { "x": 8, "z": 2, "type": 0, "script": "RustboroCity_DevonCorp_1F_EventScript_RocksMetalDisplay" }
+  ],
+  "triggers": []
+}

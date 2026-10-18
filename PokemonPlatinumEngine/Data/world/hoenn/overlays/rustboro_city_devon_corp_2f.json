@@ -1,0 +1,43 @@
+{
+  // Devon Corporation's laboratories (plan 21 · H2, part b)
+  "area": "rustboro_city_devon_corp_2f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "scientist_1": {
+      "name": "Scientist",
+      "dialog": [
+        "I'm working on a device that lets people talk to their Pokémon. So far, it only says \"Hello.\""
+      ]
+    },
+    "scientist_1_2": {
+      "name": "Scientist",
+      "dialog": [
+        "We're designing new Poké Balls. One that works better on Pokémon already caught once... maybe someday."
+      ]
+    },
+    "scientist_1_3": {
+      "name": "Scientist",
+      "dialog": [
+        "The PokéNav was my team's work. A map, a phone and more, all in one little case!"
+      ]
+    },
+    "scientist_1_4": {
+      "name": "Scientist",
+      "dialog": [
+        "I dream of the day a Pokémon can be sent across the whole world in an instant."
+      ]
+    },
+    "fossil_scientist": {
+      "name": "Scientist",
+      "dialog": [
+        "Somewhere in the desert, ancient Pokémon lie sleeping in the rock. One day we'll wake them."
+      ]
+    },
+    "scientist_1_5": {
+      "name": "Scientist",
+      "dialog": [
+        "Match Call lets trainers stay in touch. Register someone, and you can ring them from anywhere!"
+      ]
+    }
+  }
+}

@@ -1,0 +1,45 @@
+# The Pretty Petal flower shop on Route 104 (plan 21 · H2, part b). docs/scripts.md describes the language; the lines
+# are our own, on Emerald's beats (data/maps/Route104_PrettyPetalFlowerShop/scripts.inc): the Wailmer Pail
+# (FLAG_RECEIVED_WAILMER_PAIL), and a berry a day (FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY).
+
+
+script ShopOwner
+  say "Welcome to the Pretty Petal! We grow flowers, and berries too. Plant a berry in soft soil, and it grows into a tree."
+  say "Water it well, and it gives you more berries than you planted. Isn't nature generous?"
+  end
+
+
+script WailmerPailGirl
+  if flag FLAG_RECEIVED_WAILMER_PAIL goto Explain
+  say "Do you like plants? Then you'll want one of these. It's for watering berry trees!"
+  give "Wailmer Pail"
+  setflag FLAG_RECEIVED_WAILMER_PAIL
+  end
+label Explain
+  say "Dry soil makes for a poor harvest. Water your berry trees often with the Wailmer Pail!"
+  end
+
+
+script RandomBerryGirl
+  if flag FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY goto Tomorrow
+  say "Hi! I give away one berry every day. Here's today's!"
+  random 4
+  if result == 1 goto Pecha
+  if result == 2 goto Oran
+  if result == 3 goto Rawst
+  give "Cheri Berry"
+  goto Given
+label Pecha
+  give "Pecha Berry"
+  goto Given
+label Oran
+  give "Oran Berry"
+  goto Given
+label Rawst
+  give "Rawst Berry"
+label Given
+  setflag FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY
+  end
+label Tomorrow
+  say "That was today's berry. Come back tomorrow for another!"
+  end

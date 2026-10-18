@@ -4650,7 +4650,10 @@
     "Mimikium Z": "Mimiquizélite",
     "Lycanium Z": "Lougarozélite",
     "Kommonium Z": "Ékaïzélite",
-    "Bike Voucher": "Bon Commande"
+    "Bike Voucher": "Bon Commande",
+    "Letter": "Lettre à Pierre",
+    "Devon Goods": "Pack Devon",
+    "Wailmer Pail": "Wailmerrosoir"
   },
   "types": {
     "Normal": "Normal",
@@ -7270,7 +7273,10 @@
       "Mimikium Z": "XXX nouvel effet pour mimikium-z--held",
       "Lycanium Z": "XXX nouvel effet pour lycanium-z--held",
       "Kommonium Z": "XXX nouvel effet pour kommonium-z--held",
-      "Bike Voucher": "À échanger aux Cycles à Gogo à Azuria pour un Vélo."
+      "Bike Voucher": "À échanger aux Cycles à Gogo à Azuria pour un Vélo.",
+      "Letter": "Une lettre pour Rochard de la part du président de la Devon SARL.",
+      "Devon Goods": "Contient les pièces mécaniques à livrer au Capitaine Poupe.",
+      "Wailmer Pail": "Utilisé pour arroser les baies."
     }
   }
 }

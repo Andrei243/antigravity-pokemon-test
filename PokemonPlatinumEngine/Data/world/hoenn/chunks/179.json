@@ -93,14 +93,14 @@
     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
     "~~~~~~~~~~~~~~~~TTTTTTTTTTTTTTTT",
     "~~~~~~~~~~~~~~~~TTTTTTTTTTTTTTTT",
-    "~??~~~~~~~~~~~~~TTTTTTTTTTTTTTTT",
-    "~??~??~~~~~~~~~~TTTTTTTTTTTTTTTT",
-    "~~????~??~~~~~~~TTTTTTTTTTTTTTTT",
-    "????~????~~~~~~~TTTTTTTTTTTTTTTT",
-    "??~~~??~??~~~~~~TTTTTTTTTTTTTTTT",
+    "~RR~~~~~~~~~~~~~TTTTTTTTTTTTTTTT",
+    "~RR~RR~~~~~~~~~~TTTTTTTTTTTTTTTT",
+    "~~C?RR~RR~~~~~~~TTTTTTTTTTTTTTTT",
+    "RR??~C?RR~~~~~~~TTTTTTTTTTTTTTTT",
+    "RR~~~??~C?~~~~~~TTTTTTTTTTTTTTTT",
     "~~~~~~~~??~~~~~~TTTTTTTTTTTTTTTT",
-    "~~~~~~~~~??~~~~~TTTTTTTTTTTTTTTT",
-    "~~~~~~~~~??~~~~~TTTTTTTTTTTTTTTT"
+    "~~~~~~~~~RR~~~~~TTTTTTTTTTTTTTTT",
+    "~~~~~~~~~RR~~~~~TTTTTTTTTTTTTTTT"
   ],
   "heights": [
     { "x": 0, "z": 22, "width": 16, "depth": 10, "height": 1, "slopeX": 0, "slopeZ": 0 }

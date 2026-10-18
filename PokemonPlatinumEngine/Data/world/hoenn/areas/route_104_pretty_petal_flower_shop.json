@@ -1,0 +1,28 @@
+{
+  "key": "route_104_pretty_petal_flower_shop",
+  "index": 227,
+  "name": "Route 104",
+  "matrix": 176,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG",
+  "nightMusic": "MUS_PETALBURG",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 8, "to": "route_104", "toWarp": 1 },
+    { "x": 3, "z": 8, "to": "route_104", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "flower_shop_owner", "looks": "woman_2", "movement": "look_east", "x": 0, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "Route104_PrettyPetalFlowerShop_EventScript_ShopOwner" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "wander_west_and_east", "x": 7, "z": 3, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "Route104_PrettyPetalFlowerShop_EventScript_WailmerPailGirl" },
+    { "id": "girl_1", "looks": "girl_1", "movement": "wander_around", "x": 11, "z": 6, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "Route104_PrettyPetalFlowerShop_EventScript_RandomBerryGirl" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -98,7 +98,8 @@
     "Gamer": "fun",
     "Engineer": "mountain",
     "Channeler": "mystery",
-    "Pokemaniac": "mystery"
+    "Pokemaniac": "mystery",
+    "Team Aqua": "galactic"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -118,6 +119,7 @@
     "Executive Petrel": "galactic",
     "Rocket Boss": "galacticBoss",
     "Elite Four": "eliteFour",
-    "Champion": "champion"
+    "Champion": "champion",
+    "Team Aqua": "galactic"
   }
 }

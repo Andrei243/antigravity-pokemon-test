@@ -1,0 +1,49 @@
+{
+  // The Pokémon Trainers' School (plan 21 · H2, part b). The teacher's gift is rustboro_city_pokemon_school.txt's
+  "area": "rustboro_city_pokemon_school",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "gameboy_kid": {
+      "name": "Boy",
+      "dialog": [
+        "I'm trading Pokémon with my friend! Well, we're pretending. The link is down."
+      ]
+    },
+    "gameboy_kid_2": {
+      "name": "Boy",
+      "dialog": [
+        "I'm going to be the best trainer in the class. Just as soon as I catch a second Pokémon."
+      ]
+    },
+    "rich_boy": {
+      "name": "Boy",
+      "dialog": [
+        "Status conditions! Poison, burn, paralysis, sleep, freezing. I have to memorise them all for the test."
+      ]
+    },
+    "lass": {
+      "name": "Girl",
+      "dialog": [
+        "Our teacher says a Pokémon holding the right item can turn a battle around."
+      ]
+    },
+    "school_kid_m": {
+      "name": "Boy",
+      "dialog": [
+        "If your Pokémon is asleep, you can't do much but wait. Or use an item!"
+      ]
+    },
+    "gentleman": {
+      "name": "Teacher",
+      "script": "Teacher"
+    },
+    "scott": {
+      "name": "Scott",
+      "script": "Scott"
+    }
+  },
+  "signs": {
+    "RustboroCity_PokemonSchool_EventScript_Blackboard": "Today's lesson: the five status conditions, and the items that cure them.",
+    "RustboroCity_PokemonSchool_EventScript_StudentNotebook": "A student's notebook. \"Roxanne: Rock type. Water and Grass work well.\" Underlined twice."
+  }
+}

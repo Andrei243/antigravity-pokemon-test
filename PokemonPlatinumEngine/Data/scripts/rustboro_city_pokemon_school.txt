@@ -1,0 +1,21 @@
+# The Pokémon Trainers' School in Rustboro City (plan 21 · H2, part b). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/RustboroCity_PokemonSchool/scripts.inc): the teacher's Quick Claw
+# (FLAG_RECEIVED_QUICK_CLAW), and Scott, who watches the class until the PokéNav is had.
+
+
+script Teacher
+  if flag FLAG_RECEIVED_QUICK_CLAW goto Explain
+  say "Welcome to the Trainers' School! Our pupils learn everything from type matchups to held items."
+  say "You're a trainer already, I can tell. Here, a little something for your Pokémon to hold."
+  give "Quick Claw"
+  setflag FLAG_RECEIVED_QUICK_CLAW
+  end
+label Explain
+  say "A Pokémon holding a Quick Claw will sometimes get to move first, however slow it is. Isn't that clever?"
+  end
+
+
+script Scott
+  say "Hmm? Oh, don't mind me. I'm just watching the young trainers here. I'm always looking for talent."
+  say "You look like you've got some yourself. I'll be keeping an eye on you!"
+  end

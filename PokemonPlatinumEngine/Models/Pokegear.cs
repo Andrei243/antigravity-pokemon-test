@@ -63,27 +63,46 @@ public sealed class PhoneContact
                 return Text.Of("battle.fullTitle", ("class", Models.Trainer.ClassName(record.Class)), ("name", record.Name));
             // (the table's key is the id in camel case: prof_elm is profElm)
             string person = char.ToLowerInvariant(Script[0]) + Script[1..];
-            return Text.Of($"pokegear.people.{person}");
+            // (Hoenn's rival is whichever hero the player isn't: the table says {rival})
+            return PlayerIdentity.Fill(Text.Of($"pokegear.people.{person}"));
         }
     }
+
+    /// <summary>The region whose book the contact is in (<c>johto</c>, <c>hoenn</c>), set as the book is read.</summary>
+    [System.Text.Json.Serialization.JsonIgnore]
+    public string Region { get; set; } = "johto";
 
     /// <summary>The kinds that ring on their own (<c>ov02_02251FDC</c>): trainers, Gym Leaders, the friend, Buena and the juggler.</summary>
     public bool RingsOnItsOwn => Type is 0 or 10 or 11 or 12 or 14;
 }
 
-/// <summary>Johto's phone book, read once from <c>Data/world/johto/phone.json</c>.</summary>
+/// <summary>
+/// The phone books: Johto's, read once from <c>Data/world/johto/phone.json</c>, and the PokéNav's Match Call of Hoenn
+/// (plan 21 · H2, part b), from <c>Data/world/hoenn/phone.json</c>, written by hand. An id is never in both, and
+/// <c>addcontact</c> registers a number of either.
+/// </summary>
 public static class PhoneBook
 {
-    private static readonly Lazy<List<PhoneContact>> all = new(() =>
+    private static List<PhoneContact> Read(string region)
     {
-        string path = Path.Combine(World.Folder, "johto", "phone.json");
-        return File.Exists(GameDataFiles.PathOf(path)) ? GameDataFiles.Load<List<PhoneContact>>(path) : new List<PhoneContact>();
-    });
+        string path = Path.Combine(World.Folder, region, "phone.json");
+        var book = File.Exists(GameDataFiles.PathOf(path)) ? GameDataFiles.Load<List<PhoneContact>>(path) : new List<PhoneContact>();
+        foreach (var contact in book) contact.Region = region;
+        return book;
+    }
 
-    /// <summary>Every contact, in the book's order (the order the Pokégear lists them in).</summary>
+    private static readonly Lazy<List<PhoneContact>> all = new(() => Read("johto"));
+    private static readonly Lazy<List<PhoneContact>> hoenn = new(() => Read("hoenn"));
+
+    /// <summary>Every contact of the Pokégear, in the book's order (the order the Pokégear lists them in).</summary>
     public static IReadOnlyList<PhoneContact> All => all.Value;
 
-    public static PhoneContact? Get(string id) => All.FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase));
+    /// <summary>Every contact of the PokéNav's Match Call, in the book's order.</summary>
+    public static IReadOnlyList<PhoneContact> Hoenn => hoenn.Value;
+
+    public static PhoneContact? Get(string id) =>
+        All.FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase))
+        ?? Hoenn.FirstOrDefault(c => string.Equals(c.Id, id, StringComparison.OrdinalIgnoreCase));
 
     /// <summary>The contact who is a trainer, by the trainer's id; null for none.</summary>
     public static PhoneContact? ByTrainer(string trainer) => All.FirstOrDefault(c => string.Equals(c.Trainer, trainer, StringComparison.OrdinalIgnoreCase));

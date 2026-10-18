@@ -298,6 +298,7 @@
     "pokemon": "POKÉMON",
     "bag": "RUCSAC",
     "pokegear": "POKéGEAR",
+    "pokenav": "POKéNAV",
     "save": "SALVEAZĂ",
     "options": "OPȚIUNI",
     "close": "ÎNCHIDE",
@@ -809,7 +810,41 @@
       "buena": "Buena",
       "bill": "Bill",
       "bikeShop": "Magazinul de biciclete",
-      "baoba": "Baoba"
+      "baoba": "Baoba",
+      "hoennMom": "Mama",
+      "mrStone": "Domnul Stone",
+      "hoennRival": "{rival}"
+    }
+  },
+  "pokenav": {
+    "title": "POKéNAV",
+    "page": {
+      "Map": "HARTA HOENN",
+      "Condition": "CONDIȚIE",
+      "MatchCall": "APELURI",
+      "Ribbons": "PANGLICI"
+    },
+    "hints": {
+      "open": "Deschide harta",
+      "call": "Sună",
+      "pages": "Pagini",
+      "pokemon": "Pokémon"
+    },
+    "map": {
+      "body": "Deschide harta ca să vezi tot Hoenn-ul, oraș cu oraș și drum cu drum."
+    },
+    "matchCall": {
+      "empty": "Nimeni nu e înregistrat încă.",
+      "where": "UNDE ÎI GĂSEȘTI",
+      "registered": "{name} e înregistrat în PokéNav!"
+    },
+    "condition": {
+      "empty": "Niciun Pokémon de privit."
+    },
+    "ribbons": {
+      "count": "{count} panglici",
+      "one": "o panglică",
+      "none": "Nicio panglică încă."
     }
   },
   "poketch": {

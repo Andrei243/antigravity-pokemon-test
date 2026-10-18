@@ -1,0 +1,19 @@
+{
+  // A house in Rustboro City (plan 21 · H2, part b)
+  "area": "rustboro_city_house_1",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "camper": {
+      "name": "Boy",
+      "dialog": [
+        "I'd love to trade Pokémon with someone, but nobody has what I want."
+      ]
+    },
+    "hiker": {
+      "name": "Hiker",
+      "dialog": [
+        "The rock around Rustboro is hard as iron. That's why the tunnel east never got finished."
+      ]
+    }
+  }
+}

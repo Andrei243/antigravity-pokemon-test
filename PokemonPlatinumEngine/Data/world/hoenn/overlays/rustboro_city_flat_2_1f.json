@@ -1,0 +1,19 @@
+{
+  // A block of flats in Rustboro City, its ground floor (plan 21 · H2, part b)
+  "area": "rustboro_city_flat_2_1f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "skitty": {
+      "name": "Skitty",
+      "dialog": [
+        "Mew!"
+      ]
+    },
+    "old_woman": {
+      "name": "Old Woman",
+      "dialog": [
+        "My Skitty chases its own tail all day. I chased mine once, when I was younger."
+      ]
+    }
+  }
+}

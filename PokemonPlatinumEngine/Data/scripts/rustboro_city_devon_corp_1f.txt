@@ -1,0 +1,27 @@
+# Devon Corporation's lobby (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/RustboroCity_DevonCorp_1F/scripts.inc).
+#
+# Until the Devon Goods are back (FLAG_RETURNED_DEVON_GOODS) the guard stands before the stairs, which only staff may
+# take; afterwards he goes back to his round of the floor.
+
+
+script OnEnter
+  if flag FLAG_RETURNED_DEVON_GOODS goto Round
+  place devon_corp_stair_guard 14 2 down
+  end
+label Round
+  place devon_corp_stair_guard 15 5 down
+  end
+
+
+script StairGuard
+  if flag FLAG_RETURNED_DEVON_GOODS goto Welcome
+  if flag FLAG_DEVON_GOODS_STOLEN goto Stolen
+  say "I'm sorry, the floors upstairs are for Devon staff only."
+  end
+label Stolen
+  say "Something's been stolen? Oh dear. I can't leave my post, though. Nobody goes upstairs without permission!"
+  end
+label Welcome
+  say "Our president is expecting you any time. Go right on up!"
+  end

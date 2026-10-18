@@ -1,0 +1,32 @@
+{
+  // Rustboro City's Poké Mart (plan 21 · H2, part b)
+  "area": "rustboro_city_mart",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "rustboro_mart_clerk": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! What can I get for you?"
+      ]
+    },
+    "boy_1": {
+      "name": "Boy",
+      "dialog": [
+        "Great Balls catch Pokémon more easily than plain Poké Balls. Worth the extra money!"
+      ]
+    },
+    "pokefan_f": {
+      "name": "Woman",
+      "dialog": [
+        "Escape Ropes get you out of caves in a hurry. I never go underground without one."
+      ]
+    },
+    "bug_catcher": {
+      "name": "Boy",
+      "dialog": [
+        "I'm saving up for a Repel. The Wurmple in the woods won't leave me alone!"
+      ]
+    }
+  }
+}

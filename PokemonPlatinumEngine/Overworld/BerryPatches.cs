@@ -57,7 +57,13 @@ public sealed class BerryPatch
 /// </summary>
 public sealed class BerryPatches
 {
-    public const int Count = 128;
+    /// <summary>
+    /// Every patch: Sinnoh's 128, then Hoenn's 88 berry trees (plan 21 · H2, part b), numbered from
+    /// <see cref="HoennFirst"/> in the order of Emerald's <c>BERRY_TREE_</c> names (the map importer's
+    /// <c>GbaTables.BerryTrees</c>), so no tree of Hoenn shares a number with a patch of Sinnoh. They grow by the same
+    /// rules; Emerald's own (watered by the Wailmer Pail, three of its own stages) are a later session's.
+    /// </summary>
+    public const int SinnohCount = 128, HoennFirst = SinnohCount, HoennCount = 88, Count = SinnohCount + HoennCount;
     private const int HarvestStages = 4, ReplantCount = 10, MaxMoisture = 100, MaxYieldRating = 5;
 
     public List<BerryPatch> Patches { get; set; } = Enumerable.Range(0, Count).Select(_ => new BerryPatch()).ToList();
@@ -105,15 +111,60 @@ public sealed class BerryPatches
         for (int i = 0; i < NewGameBerries.Length; i++)
         {
             var (berry, yield) = NewGameBerries[i];
-            var patch = patches.Patches[i];
-            patch.Berry = berry;
-            patch.Stage = BerryStage.Fruit;
-            patch.StageMinutes = StageMinutesOf(berry, Mulch.None) * HarvestStages;
-            patch.Yield = yield;
-            patch.Moisture = MaxMoisture;
-            patch.YieldRating = 3;
+            InFruit(patches.Patches[i], berry, yield);
         }
+        patches.PlantHoenn();
         return patches;
+    }
+
+    /// <summary>
+    /// What each of Hoenn's trees holds as a new game begins (plan 21 · H2, part b): the berry its Emerald name gives
+    /// (<c>BERRY_TREE_ROUTE_104_CHERI_1</c>: a Cheri Berry), or bare soil for one named <c>SOIL</c>, in the order of
+    /// the names. Every tree with a berry is in fruit with two, as Emerald's routes are when first walked.
+    /// </summary>
+    public static readonly string?[] HoennNewGameBerries =
+    {
+        "Oran Berry", "Pecha Berry", "Cheri Berry", "Cheri Berry", "Leppa Berry", "Cheri Berry", "Cheri Berry", "Leppa Berry",
+        "Oran Berry", "Oran Berry", "Pecha Berry", null, null, null, null, "Nanab Berry",
+        "Nanab Berry", "Nanab Berry", "Oran Berry", "Oran Berry", "Razz Berry", "Razz Berry", "Pecha Berry", "Pecha Berry",
+        "Rawst Berry", "Rawst Berry", "Persim Berry", "Persim Berry", "Persim Berry", "Bluk Berry", "Bluk Berry", "Kelpsy Berry",
+        "Kelpsy Berry", "Kelpsy Berry", "Chesto Berry", "Chesto Berry", "Pinap Berry", "Pinap Berry", "Wepear Berry", "Wepear Berry",
+        "Wepear Berry", "Sitrus Berry", "Sitrus Berry", null, "Hondew Berry", "Hondew Berry", "Leppa Berry", "Pomeg Berry",
+        "Pomeg Berry", "Pomeg Berry", "Sitrus Berry", "Aspear Berry", "Aspear Berry", "Aspear Berry", "Nanab Berry", "Pecha Berry",
+        "Pecha Berry", "Pecha Berry", "Pinap Berry", "Razz Berry", "Wepear Berry", "Aspear Berry", "Chesto Berry", "Nanab Berry",
+        "Nanab Berry", "Persim Berry", "Rawst Berry", null, null, "Grepa Berry", "Grepa Berry", "Grepa Berry",
+        "Grepa Berry", "Leppa Berry", "Leppa Berry", "Pecha Berry", "Pomeg Berry", "Pomeg Berry", "Pomeg Berry", "Pomeg Berry",
+        "Qualot Berry", "Qualot Berry", "Qualot Berry", "Qualot Berry", "Rawst Berry", "Sitrus Berry", null, "Liechi Berry"
+    };
+
+    private static void InFruit(BerryPatch patch, string berry, int yield)
+    {
+        patch.Berry = berry;
+        patch.Stage = BerryStage.Fruit;
+        patch.StageMinutes = StageMinutesOf(berry, Mulch.None) * HarvestStages;
+        patch.Yield = yield;
+        patch.Moisture = MaxMoisture;
+        patch.YieldRating = 3;
+    }
+
+    /// <summary>Hoenn's trees as a new game finds them, from <see cref="HoennFirst"/> on.</summary>
+    private void PlantHoenn()
+    {
+        for (int i = 0; i < HoennNewGameBerries.Length; i++)
+            if (HoennNewGameBerries[i] is { } berry) InFruit(Patches[HoennFirst + i], berry, 2);
+    }
+
+    /// <summary>
+    /// A save's patches made whole: a save from before Hoenn's trees (plan 21 · H2, part b) holds Sinnoh's 128, and is
+    /// given Hoenn's as a new game finds them.
+    /// </summary>
+    public BerryPatches Grown()
+    {
+        if (Patches.Count >= Count) return this;
+        int had = Patches.Count;
+        while (Patches.Count < Count) Patches.Add(new BerryPatch());
+        if (had <= HoennFirst) PlantHoenn();
+        return this;
     }
 
     public BerryPatch this[int patch] => Patches[patch];

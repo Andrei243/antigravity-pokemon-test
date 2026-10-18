@@ -123,6 +123,17 @@
     "wally": { "skin": "#f8e2d4", "hairColor": "#8ec48a", "hair": "Swept", "top": "#f4f4f6", "accent": "#7ab07a", "bottom": "#3a5a40", "shoes": "#5a4a3a", "eyes": "#4a6a4a", "shorts": true, "height": 0.94 },
     // Norman, Petalburg's Gym Leader and the player's father: short dark hair, a red jacket over a dark shirt, khaki trousers
     "norman": { "hairColor": "#2a2630", "top": "#c4383c", "accent": "#2c2c36", "bottom": "#a48c62", "shoes": "#3a2e26", "eyes": "#2e2a2a", "coat": true, "build": "Adult", "bushyBrows": true, "height": 1.08 },
+    // Plan 21 · H2, part b (our own takes): Roxanne, Rustboro's Gym Leader and a star pupil of its school: dark hair in
+    // bunches, a navy school blazer over a white blouse with a red tie, a pleated navy skirt
+    "roxanne": { "hairColor": "#2e2a36", "hair": "Bunches", "top": "#2c3460", "accent": "#d8403c", "bottom": "#2c3460", "shoes": "#3a2e2a", "eyes": "#4a3a5a", "skirt": true, "lashes": true, "blush": true, "height": 0.98 },
+    // A grunt of Team Aqua: a blue bandana tied over dark hair, a striped sailor's top in white and navy, dark blue trousers
+    "aqua_grunt": { "hairColor": "#2a2a34", "hat": "Cap", "hatColor": "#2a5ab0", "hatBand": "#f2f2f6", "top": "#f2f2f6", "accent": "#2a3a8a", "bottom": "#24346a", "shoes": "#2a2a30", "eyes": "#2e3a5a", "stripes": true, "build": "Adult" },
+    // Mr. Stone, Devon's president: swept grey hair, a moustache, a dark grey suit with a white shirt and a red tie
+    "mr_stone": { "hairColor": "#a8a8b2", "hair": "Swept", "top": "#4a4c58", "accent": "#c43a3a", "bottom": "#3e404c", "shoes": "#2a2626", "eyes": "#3a3a40", "mustache": true, "coat": true, "build": "Adult", "height": 1.04 },
+    // A Devon employee: short brown hair, a white shirt with Devon's green tie, grey trousers
+    "devon_employee": { "hairColor": "#5a4232", "top": "#f2f2f6", "accent": "#3a8a5a", "bottom": "#6a6e7a", "shoes": "#2e2a28", "build": "Adult" },
+    // Mr. Briney, the old sailor of Route 104: white hair and a white beard, a navy captain's cap, a striped jersey
+    "briney": { "hairColor": "#ececf0", "hat": "Cap", "hatColor": "#2a3460", "hatBand": "#f2f2f6", "top": "#2a3460", "accent": "#f2f2f6", "bottom": "#4a4a5a", "shoes": "#3a2e26", "beard": true, "stripes": true, "build": "Adult", "height": 0.94 },
     // A scientist (plan 02 · S6: Team Galactic's in its Eterna building, the museum's man at the Underground Man's): our own take, short brown hair and a long white lab coat with a blue collar over grey trousers
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
     // Kanto's cast of plan 19 · K5 (our own takes): Lt. Surge, the tallest, spiky pale-gold hair and an olive soldier's vest over a khaki shirt; the
@@ -286,6 +297,8 @@
     // of their own, above)
     "gsleader3": "whitney", "gsleader4": "morty", "dancer": "kimono_girl", "itako": "channeler", "minaki": "Gentleman",
     "masaki": "Gentleman", "kurumi": "Lass", "workman": "Gentleman", "babyboy1_2": "Youngster"
+    // Plan 21 · H2, part b: Emerald's looks of the road to Rustboro that have one of their own now
+    "aqua_member_m": "aqua_grunt", "aqua_member_f": "aqua_grunt", "devon_employee": "devon_employee"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field
@@ -315,6 +328,7 @@
     "Castle Valet": null,
     "Factory Head": null,
     "Hall Matron": null,
-    "Tower Tycoon": null
+    "Tower Tycoon": null,
+    "Team Aqua": "aqua_grunt"
   }
 }

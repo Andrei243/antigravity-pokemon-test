@@ -1,0 +1,27 @@
+{
+  "key": "rustboro_city_cutters_house",
+  "index": 144,
+  "name": "Rustboro City",
+  "matrix": 93,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "rustboro_city", "toWarp": 8 },
+    { "x": 6, "z": 8, "to": "rustboro_city", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_east", "x": 7, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_CuttersHouse_EventScript_Cutter" },
+    { "id": "lass", "looks": "lass", "movement": "wander_west_and_east", "x": 9, "z": 2, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "RustboroCity_CuttersHouse_EventScript_Lass" }
+  ],
+  "signs": [],
+  "triggers": []
+}

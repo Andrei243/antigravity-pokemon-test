@@ -1,0 +1,19 @@
+{
+  // The middle floor of a block of flats in Rustboro City (plan 21 · H2, part b)
+  "area": "rustboro_city_flat_2_2f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "old_man": {
+      "name": "Old Man",
+      "dialog": [
+        "When I was young, Devon was a little shop that sold stones. Look at it now!"
+      ]
+    },
+    "ninja_boy": {
+      "name": "Boy",
+      "dialog": [
+        "I can run up and down these stairs a hundred times! My mum says I have too much energy."
+      ]
+    }
+  }
+}

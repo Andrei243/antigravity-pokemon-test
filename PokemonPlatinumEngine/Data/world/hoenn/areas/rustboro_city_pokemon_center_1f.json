@@ -1,0 +1,30 @@
+{
+  "key": "rustboro_city_pokemon_center_1f",
+  "index": 138,
+  "name": "Rustboro City",
+  "matrix": 87,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "rustboro_city", "toWarp": 3 },
+    { "x": 6, "z": 8, "to": "rustboro_city", "toWarp": 3 },
+    { "x": 1, "z": 6, "to": "rustboro_city_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rustboro_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "man_1", "looks": "man_1", "movement": "look_west", "x": 11, "z": 2, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_PokemonCenter_1F_EventScript_Man" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "wander_around", "x": 3, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "RustboroCity_PokemonCenter_1F_EventScript_Boy" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "look_east", "x": 10, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_PokemonCenter_1F_EventScript_Girl" }
+  ],
+  "signs": [],
+  "triggers": []
+}

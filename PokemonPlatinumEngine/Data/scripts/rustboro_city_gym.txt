@@ -1,0 +1,53 @@
+# Rustboro City's Gym (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/RustboroCity_Gym/scripts.inc).
+#
+# Roxanne battles for the Stone Badge (FLAG_BADGE01_GET is the badge itself, `givebadge stone`) and gives TM39, Rock
+# Tomb (FLAG_RECEIVED_TM_ROCK_TOMB). Her Badge counts the Gym's trainers beaten (Emerald's SetGymTrainers), adds one to
+# Petalburg's count of Badges (VAR_PETALBURG_GYM_STATE: 2 + four Badges opens Norman's rooms, plan 21 · H4), and sets
+# VAR_RUSTBORO_CITY_STATE 1, which brings on the theft of the Devon Goods outside (rustboro_city.txt).
+
+
+script Roxanne
+  face roxanne player
+  speaker "Roxanne"
+  if badge stone goto Won
+  scene "Roxanne"
+  say "Hello! I'm Roxanne, the Leader of the Rustboro Gym. I teach at the Trainers' School, too."
+  say "I learned everything I know about battling from books and from my Rock-type Pokémon."
+  say "Let's see if your lessons were learned in the field. Show me what you can do!"
+  battle self as "hoenn_roxanne_1"
+  say "So I lost... I see now that there's still so much I have to learn."
+  say "You've earned this. Please accept the Stone Badge, the official proof of your victory here."
+  givebadge stone
+  text "{player} received the Stone Badge from Roxanne!"
+  say "With the Stone Badge, your Pokémon can use Cut outside of battle, to clear small trees from your path."
+  setflag FLAG_DEFEATED_RUSTBORO_GYM
+  setvar VAR_RUSTBORO_CITY_STATE 1
+  addvar VAR_PETALBURG_GYM_STATE 1
+  defeat "hoenn_josh"
+  defeat "hoenn_tommy"
+  defeat "hoenn_marc"
+label Tm
+  say "And please take this TM as well. It's one I use myself."
+  give "TM39"
+  setflag FLAG_RECEIVED_TM_ROCK_TOMB
+  say "TM39 holds Rock Tomb. It hurls boulders at the foe and slows it down, too."
+  say "There are other Gyms waiting for you. I hope you'll keep studying as you travel. I know I will!"
+  endscene
+  end
+label Won
+  if not flag FLAG_RECEIVED_TM_ROCK_TOMB goto Tm
+  say "Battles teach lessons that no textbook can. I'm grateful for ours, {player}."
+  end
+
+
+# The guide by the door: advice before the Badge, praise after
+script GymGuide
+  speaker "Gym Guide"
+  if flag FLAG_DEFEATED_RUSTBORO_GYM goto Won
+  say "Hey there, rookie! Roxanne uses Rock-type Pokémon. They're tough, but they can't take Water or Grass moves."
+  say "Rock moves hit Fire and Flying types hard, so think twice before you send those out!"
+  end
+label Won
+  say "Whoa, you beat Roxanne! You're a natural. The next Gym is a long way off, so take care out there!"
+  end

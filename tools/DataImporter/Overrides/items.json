@@ -35,6 +35,41 @@
     "description": "A voucher for one free bicycle. Take it to the Bike Shop in Cerulean City.",
     "cantBeTossed": true
   },
+  // Hoenn's key items of plan 21 · H2 (part b), which no game this importer reads has: Mr. Stone's Letter to Steven,
+  // the Devon Goods the grunt snatched, and the Pretty Petal flower shop's pail for watering berries
+  "Letter": {
+    "id": 9100,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A letter from Devon's president to his son Steven, who is said to be in Dewford Town.",
+    "cantBeTossed": true
+  },
+  "Devon Goods": {
+    "id": 9101,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A package of Devon parts, bound for Captain Stern at the shipyard in Slateport City.",
+    "cantBeTossed": true
+  },
+  "Wailmer Pail": {
+    "id": 9102,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A watering can shaped like a Wailmer. It waters the soil of a berry tree.",
+    "cantBeTossed": true
+  },
   // The orbs of Primal Reversion (plan 06 · R20): PokeAPI's words are a story's; ours say what they do when held
   "Blue Orb": {
     "description": "Held by Kyogre, it brings out its primal form when it enters battle."

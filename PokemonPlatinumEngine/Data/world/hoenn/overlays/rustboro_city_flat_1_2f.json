@@ -1,0 +1,60 @@
+{
+  // The upper floor of a block of flats in Rustboro City (plan 21 · H2, part b): Walda's family
+  "area": "rustboro_city_flat_1_2f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "pokefan_f": {
+      "name": "Mother",
+      "dialog": [
+        "Walda won't stop crying until she hears just the right words. We've tried everything!"
+      ]
+    },
+    "twin": {
+      "name": "Walda",
+      "dialog": [
+        "Waaah!"
+      ]
+    },
+    "waldas_dad": {
+      "name": "Father",
+      "dialog": [
+        "My daughter only calms down for one particular phrase. If only I could remember what it was..."
+      ]
+    },
+    "skitty_doll": {
+      "name": "Doll",
+      "script": "Doll",
+      "dialog": [
+        "A soft Skitty doll."
+      ]
+    },
+    "treecko_doll": {
+      "name": "Doll",
+      "script": "Doll",
+      "dialog": [
+        "A soft Treecko doll."
+      ]
+    },
+    "torchic_doll": {
+      "name": "Doll",
+      "script": "Doll",
+      "dialog": [
+        "A soft Torchic doll."
+      ]
+    },
+    "mudkip_doll": {
+      "name": "Doll",
+      "script": "Doll",
+      "dialog": [
+        "A soft Mudkip doll."
+      ]
+    },
+    "pikachu_doll": {
+      "name": "Doll",
+      "script": "Doll",
+      "dialog": [
+        "A soft Pikachu doll."
+      ]
+    }
+  }
+}

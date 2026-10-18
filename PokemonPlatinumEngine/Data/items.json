@@ -13625,5 +13625,41 @@
     "canUseInOverworld": false,
     "description": "A voucher for one free bicycle. Take it to the Bike Shop in Cerulean City.",
     "cantBeTossed": true
+  },
+  {
+    "id": 9100,
+    "name": "Letter",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A letter from Devon's president to his son Steven, who is said to be in Dewford Town.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9101,
+    "name": "Devon Goods",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A package of Devon parts, bound for Captain Stern at the shipyard in Slateport City.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9102,
+    "name": "Wailmer Pail",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A watering can shaped like a Wailmer. It waters the soil of a berry tree.",
+    "cantBeTossed": true
   }
 ]

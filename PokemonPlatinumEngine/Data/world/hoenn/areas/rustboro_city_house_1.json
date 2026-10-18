@@ -1,0 +1,27 @@
+{
+  "key": "rustboro_city_house_1",
+  "index": 143,
+  "name": "Rustboro City",
+  "matrix": 92,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 7, "to": "rustboro_city", "toWarp": 7 },
+    { "x": 6, "z": 7, "to": "rustboro_city", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "camper", "looks": "camper", "movement": "look_west", "x": 6, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_House1_EventScript_Trader" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 9, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_House1_EventScript_Hiker" }
+  ],
+  "signs": [],
+  "triggers": []
+}

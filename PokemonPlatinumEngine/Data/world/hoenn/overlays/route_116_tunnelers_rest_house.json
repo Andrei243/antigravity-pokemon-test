@@ -1,0 +1,25 @@
+{
+  // The Tunnelers' Rest House on Route 116 (plan 21 · H2, part b)
+  "area": "route_116_tunnelers_rest_house",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "pokefan_m": {
+      "name": "Tunneler",
+      "dialog": [
+        "We were digging a tunnel to Verdanturf, but the noise upset the Whismur living there. So we stopped."
+      ]
+    },
+    "pokefan_m_2": {
+      "name": "Tunneler",
+      "dialog": [
+        "One fellow kept digging by himself, with nothing but his hands. Love makes a man do strange things."
+      ]
+    },
+    "pokefan_m_3": {
+      "name": "Tunneler",
+      "dialog": [
+        "Rest up here as long as you like. Digging's thirsty work."
+      ]
+    }
+  }
+}

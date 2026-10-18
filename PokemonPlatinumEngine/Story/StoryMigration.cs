@@ -102,6 +102,9 @@ public static class StoryMigration
         if (savedVersion < 22) Run(story, scripts, "common.JohtoPokegear");
         // Version 23: Hoenn's first chapter (plan 21 · H2), and a game begun in Hoenn before it was written taken past it
         if (savedVersion < 23) HoennChapterOne(story, scripts, owned);
+        // Version 24: Hoenn's second stretch (plan 21 · H2, part b): the people of Route 104 to Rusturf Tunnel are hidden
+        // until their scenes by common.HoennChapterTwo, which a new game runs too
+        if (savedVersion < 24) Run(story, scripts, "common.HoennChapterTwo");
     }
 
     /// <summary>

@@ -1,0 +1,67 @@
+# Devon Corporation's top floor (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/RustboroCity_DevonCorp_3F/scripts.inc).
+#
+# VAR_DEVON_CORP_3F_STATE 0: the employee brings the player up with the Devon Goods back, and Mr. Stone thanks them
+# with the PokéNav (FLAG_SYS_POKENAV_GET, FLAG_RECEIVED_POKENAV) and asks two favours: the Letter to his son Steven in
+# Dewford Town, and the goods to Captain Stern in Slateport City. His thanks send the people of the next chapter where
+# they wait: Mr. Briney and Peeko home, Wanda and her young man into Rusturf Tunnel, the rival into Rustboro's south
+# road, and Rustboro on to the scientist with Match Call (VAR_RUSTBORO_CITY_STATE 6). 1: met.
+
+
+script OnEnter
+  if var VAR_DEVON_CORP_3F_STATE != 0 end
+  scene "Mr Stone and the PokeNav"
+  place devon_corp_3f_employee 3 2 left
+  face player right
+  speaker "Devon Employee"
+  say "This is the top floor. Our president's office is right this way. Please, follow me!"
+  fade out
+  place player 17 6 up
+  place devon_corp_3f_employee 18 6 left
+  fade in
+  music "hoenn/help"
+  speaker "Devon Employee"
+  say "President, this is the trainer who got the Devon Goods back from Team Aqua."
+  face gentleman player
+  speaker "Mr. Stone"
+  say "So you are the one! I'm Stone, the president of Devon. You have my deepest thanks."
+  say "Those parts are for an important project. If they had gone missing, we'd have lost months of work."
+  say "I'd like to give you something. Here, this is our newest product, the PokéNav."
+  fanfare keyitem
+  text "{player} received the PokéNav!"
+  setflag FLAG_SYS_POKENAV_GET
+  setflag FLAG_RECEIVED_POKENAV
+  say "It has a map of Hoenn, and much more besides. I hope it serves you well on your travels."
+  say "Now, I hate to ask more of you, but might I trouble you with two errands?"
+  say "First, this letter. It is for my son, Steven. He is somewhere in Dewford Town, across the sea."
+  give "Letter"
+  say "And second, the Devon Goods. Please take them to Captain Stern at the shipyard in Slateport City."
+  say "Mr. Briney, the sailor on Route 104, will surely take you across the water if you ask him."
+  say "Your Pokémon look tired. Let me see to them before you go."
+  heal
+  fanfare heal
+  setflag FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT
+  setflag FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND
+  clearflag FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
+  clearflag FLAG_HIDE_RUSTURF_TUNNEL_WANDA
+  clearflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
+  clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
+  setvar VAR_BRINEY_LOCATION 1
+  clearflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
+  setvar VAR_DEVON_CORP_3F_STATE 1
+  setvar VAR_RUSTBORO_CITY_STATE 6
+  music area
+  endscene
+  end
+
+
+# Mr. Stone (Emerald's MrStone): his errands, until a later chapter's thanks
+script MrStone
+  speaker "Mr. Stone"
+  say "My son Steven is in Dewford Town, and Captain Stern awaits the goods in Slateport. I'm counting on you!"
+  end
+
+
+script Employee
+  say "That PokéNav was my team's work. I hope you like it! Try the map: it shows where you are in Hoenn."
+  end

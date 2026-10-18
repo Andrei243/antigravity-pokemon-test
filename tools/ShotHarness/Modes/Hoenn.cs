@@ -40,6 +40,23 @@ partial class Harness
             ("h16_oldale_mart", "OldaleTown_Mart", 5, 6, Direction.Up),
             ("h17_petalburg_center", "PetalburgCity_PokemonCenter_1F", 7, 6, Direction.Up),
             ("h18_wallys_house", "PetalburgCity_WallysHouse", 5, 6, Direction.Up),
+            // Plan 21 · H2, part b: Route 104's two halves, Petalburg Woods, Rustboro City, Route 116 and Rusturf Tunnel,
+            // and their rooms
+            ("h19_route104_south", "Hoenn", 20, 240, Direction.Up),
+            ("h20_petalburg_woods", "PetalburgWoods", 15, 20, Direction.Up),
+            ("h21_route104_north", "Hoenn", 20, 205, Direction.Up),
+            ("h22_rustboro_city", "Hoenn", 20, 158, Direction.Up),
+            ("h22b_rustboro_devon", "Hoenn", 15, 146, Direction.Up),
+            ("h23_route116", "Hoenn", 70, 134, Direction.Right),
+            ("h24_rusturf_tunnel", "RusturfTunnel", 8, 6, Direction.Right),
+            ("h25_devon_lobby", "RustboroCity_DevonCorp_1F", 6, 6, Direction.Up),
+            ("h26_devon_office", "RustboroCity_DevonCorp_3F", 10, 6, Direction.Up),
+            ("h27_rustboro_gym", "RustboroCity_Gym", 5, 17, Direction.Up),
+            ("h28_trainers_school", "RustboroCity_PokemonSchool", 5, 8, Direction.Up),
+            ("h29_cutters_house", "RustboroCity_CuttersHouse", 5, 6, Direction.Up),
+            ("h30_brineys_cottage", "Route104_MrBrineysHouse", 5, 6, Direction.Up),
+            ("h31_flower_shop", "Route104_PrettyPetalFlowerShop", 4, 6, Direction.Up),
+            ("h32_rustboro_center", "RustboroCity_PokemonCenter_1F", 7, 6, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {

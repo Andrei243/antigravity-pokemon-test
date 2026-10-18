@@ -1,0 +1,58 @@
+{
+  "key": "rusturf_tunnel",
+  "index": 242,
+  "name": "Rusturf Tunnel",
+  "matrix": 191,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "encounters": "rusturf_tunnel",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Whismur", "level": 6 },
+    { "species": "Whismur", "level": 7 },
+    { "species": "Whismur", "level": 6 },
+    { "species": "Whismur", "level": 6 },
+    { "species": "Whismur", "level": 7 },
+    { "species": "Whismur", "level": 7 },
+    { "species": "Whismur", "level": 5 },
+    { "species": "Whismur", "level": 8 },
+    { "species": "Whismur", "level": 5 },
+    { "species": "Whismur", "level": 8 },
+    { "species": "Whismur", "level": 5 },
+    { "species": "Whismur", "level": 8 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 4, "z": 10, "to": "route_116", "toWarp": 0 },
+    { "x": 29, "z": 16, "to": "verdanturf_town", "toWarp": 4 },
+    { "x": 18, "z": 20, "to": "route_116", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "rusturf_tunnel_wandas_bf", "looks": "black_belt", "movement": "look_east", "x": 23, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND", "script": "RusturfTunnel_EventScript_WandasBoyfriend" },
+    { "id": "breakable_rock", "looks": "breakable_rock", "movement": "look_around", "x": 24, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1", "script": "EventScript_RockSmash" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 3, "z": 1, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_RUSTURF_TUNNEL_POKE_BALL", "item": "Poké Ball", "script": "RusturfTunnel_EventScript_ItemPokeBall" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 30, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_RUSTURF_TUNNEL_MAX_ETHER", "item": "Max Ether", "script": "RusturfTunnel_EventScript_ItemMaxEther" },
+    { "id": "rusturf_tunnel_briney", "looks": "expert_m", "movement": "look_east", "x": 5, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUSTURF_TUNNEL_BRINEY", "script": "" },
+    { "id": "rusturf_tunnel_grunt", "looks": "aqua_member_m", "movement": "look_west", "x": 14, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT", "script": "RusturfTunnel_EventScript_Grunt" },
+    { "id": "rusturf_tunnel_peeko", "looks": "wingull", "movement": "look_west", "x": 14, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUSTURF_TUNNEL_PEEKO", "script": "RusturfTunnel_EventScript_Peeko" },
+    { "id": "breakable_rock_2", "looks": "breakable_rock", "movement": "look_south", "x": 24, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2", "script": "EventScript_RockSmash" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_west", "x": 32, "z": 13, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_MIKE_2" },
+    { "id": "rusturf_tunnel_wanda", "looks": "woman_2", "movement": "look_west", "x": 25, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RUSTURF_TUNNEL_WANDA", "script": "RusturfTunnel_EventScript_Wanda" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 23, "z": 4, "width": 1, "depth": 1, "script": "RusturfTunnel_EventScript_TunnelBlockagePos1", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" },
+    { "x": 9, "z": 4, "width": 1, "depth": 1, "script": "RusturfTunnel_EventScript_AquaGruntBackUp", "variable": "VAR_RUSTURF_TUNNEL_STATE", "value": "2" },
+    { "x": 9, "z": 5, "width": 1, "depth": 1, "script": "RusturfTunnel_EventScript_AquaGruntBackUp", "variable": "VAR_RUSTURF_TUNNEL_STATE", "value": "2" },
+    { "x": 25, "z": 4, "width": 1, "depth": 1, "script": "RusturfTunnel_EventScript_TunnelBlockagePos2", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" },
+    { "x": 25, "z": 5, "width": 1, "depth": 1, "script": "RusturfTunnel_EventScript_TunnelBlockagePos3", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" }
+  ]
+}

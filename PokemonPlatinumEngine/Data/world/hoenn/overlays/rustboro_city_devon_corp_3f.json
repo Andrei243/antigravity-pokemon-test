@@ -1,0 +1,26 @@
+{
+  // Devon Corporation's top floor, the president's office (plan 21 · H2, part b). Mr. Stone gives the PokéNav and the Letter on the player's first visit (rustboro_city_devon_corp_3f.txt)
+  "area": "rustboro_city_devon_corp_3f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "gentleman": {
+      "name": "Mr. Stone",
+      "script": "MrStone",
+      "npcType": "mr_stone"
+    },
+    "gentleman_2": {
+      "name": "Mr. Stone",
+      "hiddenBy": "FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_MR_STONE_2",
+      "script": "MrStone",
+      "npcType": "mr_stone"
+    },
+    "devon_corp_3f_employee": {
+      "name": "Devon Employee",
+      "script": "Employee",
+      "npcType": "devon_employee"
+    }
+  },
+  "signs": {
+    "RustboroCity_DevonCorp_3F_EventScript_RareRocksDisplay": "Rare stones from all over Hoenn, each labelled in the president's own hand."
+  }
+}

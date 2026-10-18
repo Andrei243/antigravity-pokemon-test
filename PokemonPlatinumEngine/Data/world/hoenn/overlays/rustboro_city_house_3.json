@@ -1,0 +1,25 @@
+{
+  // A house in Rustboro City (plan 21 · H2, part b)
+  "area": "rustboro_city_house_3",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "old_man": {
+      "name": "Old Man",
+      "dialog": [
+        "My wife and I have shared our lives with this Pikachu for many years."
+      ]
+    },
+    "old_woman": {
+      "name": "Old Woman",
+      "dialog": [
+        "We call him Pekachu. Don't ask why. It just stuck."
+      ]
+    },
+    "pikachu": {
+      "name": "Pekachu",
+      "dialog": [
+        "Pika!"
+      ]
+    }
+  }
+}

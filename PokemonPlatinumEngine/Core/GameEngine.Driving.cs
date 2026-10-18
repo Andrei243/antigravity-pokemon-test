@@ -166,6 +166,8 @@ public partial class GameEngine
         /// <summary>The Pokégear (plan 20 · J3): its screen, opened as the start menu opens it (on a card), and what the radio plays.</summary>
         public PokegearScreen PokegearScreen => game.flow.PokegearScreen;
         public void OpenPokegear(PokegearCard? on = null) => game.OpenPokegear(on);
+        public PokeNavScreen PokeNavScreen => game.flow.PokeNavScreen;
+        public void OpenPokeNav(PokeNavPage? on = null) => game.OpenPokeNav(on);
         public RadioSong RadioSong => game.radioSong;
         /// <summary>The phone's clock: a tool moves it on so that the next step may ring (the ten minutes HeartGold waits).</summary>
         public PhoneRinger PhoneRinger => game.phoneRinger;

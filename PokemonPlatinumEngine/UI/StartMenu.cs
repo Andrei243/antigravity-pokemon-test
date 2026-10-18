@@ -8,7 +8,7 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>What the player picked from the start menu.</summary>
-public enum StartMenuChoice { None, Pokedex, Pokemon, Bag, Trainer, Save, Options, SaveAndQuit, Quit, Pokegear }
+public enum StartMenuChoice { None, Pokedex, Pokemon, Bag, Trainer, Save, Options, SaveAndQuit, Quit, Pokegear, PokeNav }
 
 /// <summary>
 /// The field's start menu, in Platinum's order (Pokédex, Pokémon, Bag, the player's card, Save, Options, then
@@ -16,7 +16,7 @@ public enum StartMenuChoice { None, Pokedex, Pokemon, Bag, Trainer, Save, Option
 /// </summary>
 public class StartMenu
 {
-    private enum Entry { Pokedex, Pokemon, Bag, Pokegear, Trainer, Save, Options, Close, Quit }
+    private enum Entry { Pokedex, Pokemon, Bag, Pokegear, PokeNav, Trainer, Save, Options, Close, Quit }
 
     private static readonly Entry[] Entries = Enum.GetValues<Entry>();
 
@@ -30,8 +30,11 @@ public class StartMenu
     /// <summary>Whether the Pokégear is the player's here: Johto's, once Mom has handed it over (plan 20 · J3; HeartGold's menu has it after the bag).</summary>
     public bool HasPokegear { get; set; }
 
+    /// <summary>Whether the PokéNav is the player's here: Hoenn's, once Mr. Stone has given it (plan 21 · H2, part b; Emerald's menu has it after the bag).</summary>
+    public bool HasPokeNav { get; set; }
+
     /// <summary>The entries the menu shows now, in order.</summary>
-    private Entry[] Shown => Entries.Where(e => (e != Entry.Pokedex || HasPokedex) && (e != Entry.Pokemon || HasPokemon) && (e != Entry.Pokegear || HasPokegear)).ToArray();
+    private Entry[] Shown => Entries.Where(e => (e != Entry.Pokedex || HasPokedex) && (e != Entry.Pokemon || HasPokemon) && (e != Entry.Pokegear || HasPokegear) && (e != Entry.PokeNav || HasPokeNav)).ToArray();
 
     /// <summary>The answers to "Quit the game?", in button order; the first (staying) is highlighted when it opens.</summary>
     public static string[] QuitAnswers => new[] { Text.Of("start.quit.keepPlaying"), Text.Of("start.quit.saveAndQuit"), Text.Of("start.quit.quit") };
@@ -114,6 +117,7 @@ public class StartMenu
             case Entry.Pokemon: return StartMenuChoice.Pokemon;
             case Entry.Bag: return StartMenuChoice.Bag;
             case Entry.Pokegear: return StartMenuChoice.Pokegear;
+            case Entry.PokeNav: return StartMenuChoice.PokeNav;
             case Entry.Trainer: return StartMenuChoice.Trainer;
             case Entry.Save: return StartMenuChoice.Save;
             case Entry.Options: return StartMenuChoice.Options;
@@ -169,6 +173,7 @@ public class StartMenu
         Entry.Pokemon => (Text.Of("start.pokemon"), UiIcon.Ball, ModernUi.Green),
         Entry.Bag => (Text.Of("start.bag"), UiIcon.Bag, ModernUi.Gold),
         Entry.Pokegear => (Text.Of("start.pokegear"), UiIcon.Gear, new Color(40, 168, 186, 255)),
+        Entry.PokeNav => (Text.Of("start.pokenav"), UiIcon.MapCard, ModernUi.NavOrange),
         Entry.Trainer => (PlayerName.ToUpperInvariant(), UiIcon.Trainer, ModernUi.Blue),
         Entry.Save => (Text.Of("start.save"), UiIcon.Save, new Color(126, 110, 222, 255)),
         Entry.Options => (Text.Of("start.options"), UiIcon.Options, ModernUi.Muted),

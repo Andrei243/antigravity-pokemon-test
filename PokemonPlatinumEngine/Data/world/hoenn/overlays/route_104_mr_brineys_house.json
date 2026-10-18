@@ -1,0 +1,18 @@
+{
+  // Mr. Briney's cottage on Route 104's beach (plan 21 · H2, part b). He and Peeko come home once the Devon Goods are back (route_104_mr_brineys_house.txt); his boat to Dewford is plan 21 · H3's
+  "area": "route_104_mr_brineys_house",
+  "bgmTrack": "hoenn/petalburg",
+  "people": {
+    "brineys_house_briney": {
+      "name": "Mr. Briney",
+      "script": "Briney",
+      "npcType": "briney",
+      "still": true
+    },
+    "brineys_house_peeko": {
+      "name": "Peeko",
+      "script": "Peeko",
+      "still": true
+    }
+  }
+}

@@ -427,6 +427,14 @@ public static class RegionDatabase
                 "PetalburgCity_PokemonCenter_1F", "PetalburgCity_PokemonCenter_2F", "PetalburgCity_Mart",
                 // Plan 21 · H2: Petalburg's Gym, its hall at the door
                 "PetalburgCity_Gym",
+                // Plan 21 · H2, part b: Petalburg Woods, Rusturf Tunnel, and the rooms of Route 104, Rustboro City and
+                // Route 116
+                "PetalburgWoods", "RusturfTunnel",
+                "RustboroCity_DevonCorp_1F", "RustboroCity_DevonCorp_2F", "RustboroCity_DevonCorp_3F", "RustboroCity_Gym",
+                "RustboroCity_PokemonSchool", "RustboroCity_PokemonCenter_1F", "RustboroCity_PokemonCenter_2F", "RustboroCity_Mart",
+                "RustboroCity_Flat1_1F", "RustboroCity_Flat1_2F", "RustboroCity_House1", "RustboroCity_CuttersHouse",
+                "RustboroCity_House2", "RustboroCity_Flat2_1F", "RustboroCity_Flat2_2F", "RustboroCity_Flat2_3F",
+                "RustboroCity_House3", "Route104_MrBrineysHouse", "Route104_PrettyPetalFlowerShop", "Route116_TunnelersRestHouse",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

@@ -1,0 +1,57 @@
+# Petalburg Woods (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/PetalburgWoods/scripts.inc).
+#
+# VAR_PETALBURG_WOODS_STATE 0: a researcher of Devon is looking for Shroomish on the path north, and the first step
+# past him (the area's triggers 0 and 1) brings on a grunt of Team Aqua after the papers he carries. Beaten, the grunt
+# runs; the researcher gives a Great Ball and hurries on to Rustboro City. 1: the path is quiet.
+
+
+script DevonResearcher
+  scene "The Devon researcher in the woods"
+  speaker "Researcher"
+  say "Hmm... Not a single Shroomish anywhere. They're supposed to love these damp woods."
+  face petalburg_woods_devon_employee player
+  emote petalburg_woods_devon_employee exclaim
+  walk petalburg_woods_devon_employee down 2
+  say "Oh! Hello there. Have you seen a Shroomish around here? I study them, you see."
+  clearflag FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  show petalburg_woods_grunt
+  music "hoenn/eye_galactic"
+  speaker "Team Aqua Grunt"
+  say "Hold it right there, Devon man! I've been waiting all morning for you to wander off on your own."
+  walk petalburg_woods_grunt down 4
+  say "Those papers you're carrying belong to Team Aqua now. Give them here!"
+  speaker "Researcher"
+  say "Eek! You there, trainer! Please, you have to help me! I'm no good at battling!"
+  speaker "Team Aqua Grunt"
+  say "A kid playing hero? Get in Team Aqua's way and you'll be sorry!"
+  battle petalburg_woods_grunt as "hoenn_grunt_petalburg_woods"
+  say "Tch! Beaten by a kid. Fine, there are other ways into Rustboro. Remember this face!"
+  walk petalburg_woods_grunt up 4 fast
+  hide petalburg_woods_grunt
+  setflag FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  music area
+  face petalburg_woods_devon_employee player
+  speaker "Researcher"
+  say "Oh, my heart is still racing... Thank you! Please, take this as my thanks."
+  give "Great Ball"
+  say "That grunt said something about Rustboro. Team Aqua must be after something at Devon!"
+  say "I must hurry back and warn everyone. Goodbye, and thank you again!"
+  walk petalburg_woods_devon_employee up 5 fast
+  hide petalburg_woods_devon_employee
+  setflag FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE
+  setvar VAR_PETALBURG_WOODS_STATE 1
+  endscene
+  end
+
+
+# The girl who gives a Miracle Seed (Emerald's PetalburgWoods_EventScript_Girl)
+script Girl
+  if flag FLAG_RECEIVED_MIRACLE_SEED goto Explain
+  say "You've come all the way through the woods? Your Pokémon must be tired. Here, this might help!"
+  give "Miracle Seed"
+  setflag FLAG_RECEIVED_MIRACLE_SEED
+  end
+label Explain
+  say "A Pokémon that holds a Miracle Seed puts more power into its Grass moves. Isn't that something?"
+  end

@@ -1,0 +1,28 @@
+{
+  "key": "rustboro_city_flat_1_1f",
+  "index": 141,
+  "name": "Rustboro City",
+  "matrix": 90,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 7, "to": "rustboro_city", "toWarp": 1 },
+    { "x": 7, "z": 7, "to": "rustboro_city", "toWarp": 1 },
+    { "x": 2, "z": 1, "to": "rustboro_city_flat_1_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "man_3", "looks": "man_3", "movement": "look_east", "x": 9, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_Flat1_1F_EventScript_Man" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "look_west", "x": 12, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_Flat1_1F_EventScript_Woman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

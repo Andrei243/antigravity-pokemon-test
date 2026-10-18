@@ -1,0 +1,35 @@
+# Rusturf Tunnel: a tunnel dug by hand and given up halfway, a slow, echoing clarinet line in D minor over a
+# patient pluck and a low hum, with the tap of a pick in the dark. A cave plays the same by day and night. Original
+# composition for this game (plan 21 · H2, part b).
+title Rusturf Tunnel
+tempo 96
+meter 4/4
+reverb 0.46
+night none
+
+track lead clarinet vol=0.68 pan=0 rev=0.48
+  L o4 d4 f4 a2 | o4 b-4 g4 d2 | o4 c+4 e4 a2 | o4 d2. r4 |
+  o4 f4 a4 o5 d2 | o4 b-4 o5 d4 c2 | o4 a4 e4 c+4 e4 | o4 d2. r4 |
+  o4 g4 b-4 o5 d2 | o4 f4 a4 o5 c2 | o4 e4 g4 a4 c+4 | o4 d2. r4 |
+  o4 a4 f4 d2 | o4 g4 b-4 o5 d2 | o4 a4 e4 c+4 e4 | o4 d2. r4 |
+
+track pluck pizzicato vol=0.3 pan=-0.3 rev=0.44
+  L o3 d8 r8 a8 r8 d8 r8 a8 r8 | o3 g8 r8 o4 d8 r8 o3 g8 r8 o4 d8 r8 | o3 a8 r8 o4 e8 r8 o3 a8 r8 o4 e8 r8 | o3 d8 r8 a8 r8 d8 r8 a8 r8 |
+  o3 d8 r8 a8 r8 d8 r8 a8 r8 | o3 g8 r8 o4 d8 r8 o3 g8 r8 o4 d8 r8 | o3 a8 r8 o4 e8 r8 o3 a8 r8 o4 e8 r8 | o3 d8 r8 a8 r8 d8 r8 a8 r8 |
+  o3 g8 r8 o4 d8 r8 o3 g8 r8 o4 d8 r8 | o3 f8 r8 o4 c8 r8 o3 f8 r8 o4 c8 r8 | o3 a8 r8 o4 e8 r8 o3 a8 r8 o4 e8 r8 | o3 d8 r8 a8 r8 d8 r8 a8 r8 |
+  o3 d8 r8 a8 r8 d8 r8 a8 r8 | o3 g8 r8 o4 d8 r8 o3 g8 r8 o4 d8 r8 | o3 a8 r8 o4 e8 r8 o3 a8 r8 o4 e8 r8 | o3 d8 r8 a8 r8 d8 r8 a8 r8 |
+
+track pad strings vol=0.3 pan=0.25 rev=0.52
+  L o3 (d f a)1 | (g b- >d)1 | (a >c+ e)1 | (d f a)1 |
+  (d f a)1 | (g b- >d)1 | (a >c+ e)1 | (d f a)1 |
+  (g b- >d)1 | (f a >c)1 | (a >c+ e)1 | (d f a)1 |
+  (d f a)1 | (g b- >d)1 | (a >c+ e)1 | (d f a)1 |
+
+track bass contrabass vol=0.66 rev=0.2
+  L o2 d2 d2 | g2 g2 | a2 a2 | d2 d2 |
+  d2 d2 | g2 g2 | a2 a2 | d2 d2 |
+  g2 g2 | f2 f2 | a2 a2 | d2 d2 |
+  d2 d2 | g2 g2 | a2 a2 | d2 d2 |
+
+track pick kit vol=0.26 pan=0.3 rev=0.5
+  v70 L [ r2 h8 r8 r4 | r4 r8 h8 r2 | ]8

@@ -1,0 +1,27 @@
+{
+  "key": "rustboro_city_flat_2_2f",
+  "index": 147,
+  "name": "Rustboro City",
+  "matrix": 96,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 1, "to": "rustboro_city_flat_2_1f", "toWarp": 2 },
+    { "x": 1, "z": 1, "to": "rustboro_city_flat_2_3f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "old_man", "looks": "old_man", "movement": "look_east", "x": 11, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_Flat2_2F_EventScript_OldMan" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "wander_west_and_east", "x": 7, "z": 3, "facing": 2, "rangeX": 2, "rangeZ": 0, "script": "RustboroCity_Flat2_2F_EventScript_NinjaBoy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

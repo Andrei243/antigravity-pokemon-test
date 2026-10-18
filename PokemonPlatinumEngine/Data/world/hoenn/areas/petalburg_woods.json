@@ -1,0 +1,68 @@
+{
+  "key": "petalburg_woods",
+  "index": 249,
+  "name": "Petalburg Woods",
+  "matrix": 198,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "encounters": "petalburg_woods",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Poochyena", "level": 5 },
+    { "species": "Wurmple", "level": 5 },
+    { "species": "Shroomish", "level": 5 },
+    { "species": "Poochyena", "level": 6 },
+    { "species": "Silcoon", "level": 5 },
+    { "species": "Cascoon", "level": 5 },
+    { "species": "Wurmple", "level": 6 },
+    { "species": "Shroomish", "level": 6 },
+    { "species": "Taillow", "level": 5 },
+    { "species": "Slakoth", "level": 5 },
+    { "species": "Taillow", "level": 6 },
+    { "species": "Slakoth", "level": 6 }
+  ],
+  "landRate": 20,
+  "warps": [
+    { "x": 14, "z": 5, "to": "route_104", "toWarp": 2 },
+    { "x": 15, "z": 5, "to": "route_104", "toWarp": 3 },
+    { "x": 16, "z": 38, "to": "route_104", "toWarp": 4 },
+    { "x": 17, "z": 38, "to": "route_104", "toWarp": 5 },
+    { "x": 36, "z": 38, "to": "route_104", "toWarp": 6 },
+    { "x": 37, "z": 38, "to": "route_104", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "cuttable_tree", "looks": "cuttable_tree", "movement": "look_around", "x": 19, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_2", "looks": "cuttable_tree", "movement": "look_around", "x": 19, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "petalburg_woods_grunt", "looks": "aqua_member_m", "movement": "look_east", "x": 26, "z": 17, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT", "script": "" },
+    { "id": "petalburg_woods_devon_employee", "looks": "man_2", "movement": "look_around", "x": 26, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE", "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 45, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_PETALBURG_WOODS_GREAT_BALL", "item": "Great Ball", "script": "PetalburgWoods_EventScript_ItemGreatBall" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 35, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_PETALBURG_WOODS_X_ATTACK", "item": "X Attack", "script": "PetalburgWoods_EventScript_ItemXAttack" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_around", "x": 4, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_PETALBURG_WOODS_ETHER", "item": "Ether", "script": "PetalburgWoods_EventScript_ItemEther" },
+    { "id": "boy_2", "looks": "boy_2", "movement": "wander_north_and_south", "x": 15, "z": 19, "facing": 0, "rangeX": 1, "rangeZ": 2, "script": "PetalburgWoods_EventScript_Boy1" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "look_south_west_and_east", "x": 7, "z": 32, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LYLE" },
+    { "id": "bug_catcher_2", "looks": "bug_catcher", "movement": "look_south_north_and_east", "x": 4, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_JAMES_1" },
+    { "id": "boy_3", "looks": "boy_3", "movement": "wander_around", "x": 30, "z": 34, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "PetalburgWoods_EventScript_Boy2" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_around", "x": 4, "z": 26, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_PETALBURG_WOODS_PARALYZE_HEAL", "item": "Paralyze Heal", "script": "PetalburgWoods_EventScript_ItemParalyzeHeal" },
+    { "id": "girl_2", "looks": "girl_2", "movement": "look_around", "x": 33, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PetalburgWoods_EventScript_Girl" }
+  ],
+  "signs": [
+    { "x": 14, "z": 32, "type": 0, "script": "PetalburgWoods_EventScript_Sign1" },
+    { "x": 39, "z": 35, "type": 2, "script": "", "item": "Potion", "flag": "FLAG_HIDDEN_ITEM_PETALBURG_WOODS_POTION" },
+    { "x": 26, "z": 6, "type": 2, "script": "", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_PETALBURG_WOODS_TINY_MUSHROOM_1" },
+    { "x": 40, "z": 29, "type": 2, "script": "", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_PETALBURG_WOODS_TINY_MUSHROOM_2" },
+    { "x": 4, "z": 19, "type": 2, "script": "", "item": "Poké Ball", "flag": "FLAG_HIDDEN_ITEM_PETALBURG_WOODS_POKE_BALL" },
+    { "x": 11, "z": 8, "type": 0, "script": "PetalburgWoods_EventScript_Sign2" }
+  ],
+  "triggers": [
+    { "x": 26, "z": 23, "width": 1, "depth": 1, "script": "PetalburgWoods_EventScript_DevonResearcherLeft", "variable": "VAR_PETALBURG_WOODS_STATE", "value": "0" },
+    { "x": 27, "z": 23, "width": 1, "depth": 1, "script": "PetalburgWoods_EventScript_DevonResearcherRight", "variable": "VAR_PETALBURG_WOODS_STATE", "value": "0" }
+  ]
+}

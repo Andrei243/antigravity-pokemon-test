@@ -1254,7 +1254,9 @@ public partial class GameEngine
         {
             if (Skipping) return;
             AudioManager.PlaySound("phone_registered");
-            game.ShowNotification(Text.Of("pokegear.phone.registered", ("name", contact.Name)));
+            game.ShowNotification(contact.Region == "hoenn"
+                ? Text.Of("pokenav.matchCall.registered", ("name", contact.Name))
+                : Text.Of("pokegear.phone.registered", ("name", contact.Name)));
         }
 
         // ---- Ball Capsules, Seals and ribbons (plan 06 · R17b)

@@ -1,0 +1,42 @@
+{
+  // Petalburg Woods (plan 21 · H2, part b), the dark wood between Route 104's halves. The Devon researcher looking for
+  // Shroomish and the Team Aqua grunt who corners him are petalburg_woods.txt's (the two triggers on the path north)
+  "area": "petalburg_woods",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "trees": "Round",
+  "triggers": [
+    { "trigger": 0, "script": "DevonResearcher" },
+    { "trigger": 1, "script": "DevonResearcher" }
+  ],
+  "people": {
+    "petalburg_woods_grunt": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "Get lost, kid. I'm busy." ] },
+    "petalburg_woods_devon_employee": { "name": "Researcher", "npcType": "devon_employee", "still": true, "dialog": [ "Shroomish, where are you hiding?" ] },
+    "boy_2": {
+      "name": "Boy",
+      "dialog": [ "The grass grows tall in here, and the Pokémon hide in it. Stick to the path if you're in a hurry!" ]
+    },
+    "boy_3": {
+      "name": "Boy",
+      "dialog": [ "Some items are hidden right on the ground where you can't see them. Try looking where nothing seems to be." ]
+    },
+    "girl_2": { "name": "Girl", "script": "Girl" },
+    "bug_catcher": {
+      "name": "Lyle",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Lyle: I caught four Wurmple this morning! Want to see them all at once?",
+        "dialogueAfter": "Bug Catcher Lyle: I'm out of Poké Balls, and out of Wurmple too..."
+      }
+    },
+    "bug_catcher_2": {
+      "name": "James",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher James: Bug Pokémon love me! Watch how well we work together!",
+        "dialogueAfter": "Bug Catcher James: They still love me. I think."
+      }
+    }
+  },
+  "signs": {
+    "PetalburgWoods_EventScript_Sign1": "Trainer Tips\nThe grass in the woods grows thick. Pokémon may leap out at any step!",
+    "PetalburgWoods_EventScript_Sign2": "Trainer Tips\nA Pokémon that knows a move often learns a stronger one as it grows. Keep training!"
+  }
+}

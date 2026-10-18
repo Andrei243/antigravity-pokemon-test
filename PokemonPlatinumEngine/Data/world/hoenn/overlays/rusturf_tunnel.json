@@ -1,0 +1,27 @@
+{
+  // Rusturf Tunnel (plan 21 · H2, part b), dug by one man toward Verdanturf Town and given up where the rock grew hard.
+  // The grunt with the Devon Goods and Mr. Briney's Peeko, cornered at its dead end, and Wanda and her young man by the
+  // rocks are rusturf_tunnel.txt's. The rocks only Rock Smash moves (plan 21 · H3) keep the far end shut, and with it the
+  // way out to Verdanturf Town; the three steps that start the young man's scene there are H3's too
+  "area": "rusturf_tunnel",
+  "bgmTrack": "hoenn/rusturf",
+  "locked": [ 1 ],
+  "triggers": [
+    { "trigger": 1, "script": "GruntBacksUp" },
+    { "trigger": 2, "script": "GruntBacksUp" }
+  ],
+  "people": {
+    "rusturf_tunnel_grunt": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "script": "Grunt", "still": true },
+    "rusturf_tunnel_peeko": { "name": "Peeko", "script": "Peeko", "still": true },
+    "rusturf_tunnel_briney": { "name": "Mr. Briney", "npcType": "briney", "still": true, "dialog": [ "My Peeko! Where is my Peeko?" ] },
+    "rusturf_tunnel_wandas_bf": { "name": "Young Man", "script": "WandasBoyfriend", "still": true },
+    "rusturf_tunnel_wanda": { "name": "Wanda", "script": "Wanda", "still": true },
+    "hiker": {
+      "name": "Mike",
+      "trainer": {
+        "dialogueBefore": "Hiker Mike: I came down here to see the tunnel. Found you instead. Let's rumble!",
+        "dialogueAfter": "Hiker Mike: Rumbled. I'll stick to looking at rocks."
+      }
+    }
+  }
+}
