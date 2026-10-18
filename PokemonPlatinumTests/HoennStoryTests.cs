@@ -372,4 +372,275 @@ public class HoennStoryTests
         Assert.Equal(0, sinnoh.Var("VAR_BIRCH_LAB_STATE"));
         Assert.True(sinnoh.Has("FLAG_HIDE_PETALBURG_CITY_WALLY"));
     }
+
+    // ------------------------------------------------------------------ part b: Route 104 to Rusturf Tunnel
+
+    /// <summary>A game past Wally's catch: the opening played, the starter chosen and on the team.</summary>
+    private static Game PastWallysCatch(int starter, PlayerLook look, BattleOutcome fight = BattleOutcome.Won)
+    {
+        var game = new Game(starter, look, fight);
+        string mine = RegionDatabase.Get(RegionDatabase.Hoenn)!.Starters[starter];
+        game.Play(Scripts.Find("HoennOpeningDone", ScriptLibrary.Common)!);
+        game.Story.SetVar("VAR_PETALBURG_GYM_STATE", 2);
+        game.Story.ChooseStarter(mine);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get(mine)!, 15));
+        return game;
+    }
+
+    [Theory]
+    [InlineData(0, PlayerLook.Boy)]
+    [InlineData(1, PlayerLook.Girl)]
+    [InlineData(2, PlayerLook.Boy)]
+    [InlineData(2, PlayerLook.Girl)]
+    public void TheSecondStretchPlaysFromTheWoodsToThePokeNav(int starter, PlayerLook look)
+    {
+        var game = PastWallysCatch(starter, look);
+        string mine = RegionDatabase.Get(RegionDatabase.Hoenn)!.Starters[starter];
+
+        // Petalburg Woods: the Devon researcher, the grunt, the battle and a Great Ball
+        game.Arrive("PetalburgWoods", 26, 25);
+        Assert.Null(game.Present("petalburg_woods_grunt"));
+        Assert.NotNull(game.Present("petalburg_woods_devon_employee"));
+        Assert.True(game.Fires("DevonResearcher"));
+        var woods = game.Step("DevonResearcher");
+        Assert.Contains(woods.Log, l => l.StartsWith("battle hoenn_grunt_petalburg_woods"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Great Ball")!));
+        Assert.Equal(1, game.Story.Var("VAR_PETALBURG_WOODS_STATE"));
+        Assert.Null(game.Present("petalburg_woods_grunt"));
+        Assert.Null(game.Present("petalburg_woods_devon_employee"));
+        Assert.False(game.Fires("DevonResearcher"));
+
+        // Rustboro's Gym: Roxanne, the Stone Badge and TM39; her trainers count as beaten, and Cut's gate is open
+        game.Arrive("RustboroCity_Gym", 5, 16);
+        var roxanne = game.Talk("roxanne");
+        Assert.Contains(roxanne.Log, l => l.StartsWith("battle hoenn_roxanne_1"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Hoenn, "Stone"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM39")!));
+        Assert.Equal(1, game.Story.Var("VAR_RUSTBORO_CITY_STATE"));
+        Assert.Equal(3, game.Story.Var("VAR_PETALBURG_GYM_STATE"));
+        Assert.True(game.Story.HasDefeated("hoenn_josh"));
+        Assert.Equal("Stone", FieldMoveRules.BadgeFor(FieldMove.Cut, RegionDatabase.Hoenn));
+
+        // The Cutter gives HM01 once
+        game.Arrive("RustboroCity_CuttersHouse", 6, 6);
+        game.Talk("pokefan_m");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM01")!));
+        game.Talk("pokefan_m");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM01")!));
+
+        // Out of the Gym, west along the road: the goods snatched and the chase sets up the tunnel
+        game.Arrive("Hoenn", 24, 143);
+        Assert.True(game.Fires("StolenGoods"));
+        game.Step("StolenGoods");
+        Assert.True(game.Story.Has("FLAG_DEVON_GOODS_STOLEN"));
+        Assert.Equal(2, game.Story.Var("VAR_RUSTBORO_CITY_STATE"));
+        Assert.Equal(2, game.Story.Var("VAR_RUSTURF_TUNNEL_STATE"));
+        Assert.NotNull(game.Present("rustboro_devon_employee"));
+        Assert.False(game.Fires("StolenGoods"));
+        Assert.True(game.Fires("HelpGetGoods"));
+        game.Step("HelpGetGoods");
+        Assert.Equal(3, game.Story.Var("VAR_RUSTBORO_CITY_STATE"));
+
+        // Route 116: Mr. Briney frantic at the tunnel's mouth
+        game.Arrive("Hoenn", 87, 132);
+        Assert.NotNull(game.Present("route116_briney"));
+        Assert.True(game.Fires("BrineyTrigger"));
+        game.Step("BrineyTrigger");
+        Assert.Equal(2, game.Story.Var("VAR_ROUTE116_STATE"));
+
+        // Rusturf Tunnel: the grunt cornered with Peeko, his battle, the goods back and Mr. Briney's thanks
+        game.Arrive("RusturfTunnel", 7, 4);
+        var grunt = game.Present("rusturf_tunnel_grunt");
+        Assert.NotNull(grunt);
+        Assert.Equal((13, 5), (grunt!.GridX, grunt.GridY));
+        Assert.True(game.Fires("GruntBacksUp"));
+        game.Step("GruntBacksUp");
+        Assert.Equal(3, game.Story.Var("VAR_RUSTURF_TUNNEL_STATE"));
+        var tunnel = game.Talk("rusturf_tunnel_grunt");
+        Assert.Contains(tunnel.Log, l => l.StartsWith("battle hoenn_grunt_rusturf_tunnel"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Devon Goods")!));
+        Assert.True(game.Story.Has("FLAG_RECOVERED_DEVON_GOODS"));
+        Assert.False(game.Story.Has("FLAG_DEVON_GOODS_STOLEN"));
+        Assert.Equal(4, game.Story.Var("VAR_RUSTBORO_CITY_STATE"));
+        Assert.Equal(1, game.Story.Var("VAR_BRINEY_HOUSE_STATE"));
+        Assert.Null(game.Present("rusturf_tunnel_grunt"));
+        Assert.Null(game.Present("rusturf_tunnel_peeko"));
+
+        // Back in Rustboro: the employee's Great Ball, and up to the president with the PokéNav and the Letter
+        game.Arrive("Hoenn", 30, 135);
+        Assert.True(game.Fires("ReturnGoods"));
+        game.Step("ReturnGoods");
+        Assert.Equal(2, game.Bag.GetQuantity(ItemDatabase.Get("Great Ball")!));
+        Assert.True(game.Story.Has("FLAG_RETURNED_DEVON_GOODS"));
+        Assert.Equal("RustboroCity_DevonCorp_3F", game.Map.Name);
+        Assert.True(game.Story.Has(PokeNav.Flag));
+        Assert.True(PokeNav.Has(game.Story, RegionDatabase.Hoenn));
+        Assert.False(PokeNav.Has(game.Story, RegionDatabase.Sinnoh));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Letter")!));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Devon Goods")!));
+        Assert.Equal(6, game.Story.Var("VAR_RUSTBORO_CITY_STATE"));
+        Assert.Equal(1, game.Story.Var("VAR_DEVON_CORP_3F_STATE"));
+
+        // Out of Devon: Match Call, with Mom's and Mr. Stone's numbers
+        game.Arrive("Hoenn", 11, 138);
+        Assert.Equal(7, game.Story.Var("VAR_RUSTBORO_CITY_STATE"));
+        Assert.True(game.Story.Has(PokeNav.MatchCallFlag));
+        Assert.Equal(new[] { "hoenn_mom", "mr_stone" }, PokeNav.Contacts(game.Story).Select(c => c.Id));
+        Assert.Equal(new[] { PokeNavPage.Map, PokeNavPage.Condition, PokeNavPage.MatchCall }, PokeNav.Pages(game.Story, game.Party.Members));
+
+        // The rival at the south edge: registered, asked to battle and beaten with Emerald's team for the starter
+        game.Arrive("Hoenn", 14, 174);
+        Assert.NotNull(game.Present("rustboro_rival"));
+        Assert.True(game.Fires("RivalTrigger"));
+        var rival = game.Step("RivalTrigger");
+        string team = $"hoenn_{game.Rival.ToLowerInvariant()}_rustboro_{mine.ToLowerInvariant()}";
+        Assert.Contains(rival.Log, l => l.StartsWith($"battle {team}"));
+        Assert.Contains("addcontact hoenn_rival", rival.Log);
+        Assert.True(game.Story.Has("FLAG_DEFEATED_RIVAL_RUSTBORO"));
+        Assert.Equal(8, game.Story.Var("VAR_RUSTBORO_CITY_STATE"));
+        Assert.Contains(PokeNav.Contacts(game.Story), c => c.Id == "hoenn_rival");
+        Assert.False(game.Fires("RivalTrigger"));
+
+        // Wanda's young man now digs in the tunnel; Mr. Briney and Peeko are home
+        game.Arrive("RusturfTunnel", 7, 4);
+        Assert.NotNull(game.Present("rusturf_tunnel_wandas_bf"));
+        game.Arrive("Route104_MrBrineysHouse", 5, 6);
+        Assert.NotNull(game.Present("brineys_house_briney"));
+        Assert.NotNull(game.Present("brineys_house_peeko"));
+    }
+
+    [Fact]
+    public void TheRivalInRustboroMayBeToldNotNowAndAsksAgain()
+    {
+        var game = PastWallysCatch(0, PlayerLook.Boy);
+        game.Story.SetVar("VAR_RUSTBORO_CITY_STATE", 7);
+        game.Story.Unset("FLAG_HIDE_RUSTBORO_CITY_RIVAL");
+        game.Arrive("Hoenn", 14, 174);
+        var host = PlayWithAnswer(game, "RivalTrigger", yes: false);
+        Assert.DoesNotContain(host.Log, l => l.StartsWith("battle "));
+        Assert.True(game.Story.Has("FLAG_MET_RIVAL_RUSTBORO"));
+        Assert.False(game.Story.Has("FLAG_DEFEATED_RIVAL_RUSTBORO"));
+        Assert.False(game.Fires("RivalTrigger"));
+        Assert.NotNull(game.Present("rustboro_rival"));
+    }
+
+    /// <summary>A trigger's script played with every question answered one way.</summary>
+    private static HeadlessScriptHost PlayWithAnswer(Game game, string script, bool yes)
+    {
+        var trigger = game.Map.Triggers.First(t => t.Script == script);
+        game.Tile = (trigger.X, trigger.Y);
+        var host = new HeadlessScriptHost(game.Story, game.Party, game.Bag)
+        {
+            Map = game.Map,
+            PlayerTile = game.Tile,
+            StarterChoice = game.Starter,
+            RivalName = game.Rival,
+            PlayerLook = game.Look,
+            Fight = _ => BattleOutcome.Won,
+            Decide = (_, _) => yes ? 0 : 1
+        };
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(Scripts.Find(trigger.Script, trigger.ScriptFile ?? game.Map.Name)!);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        game.Map.ApplyPresence(game.Story.Has);
+        return host;
+    }
+
+    [Fact]
+    public void ALostBattleWithTheGruntInTheWoodsLeavesTheResearcherWaiting()
+    {
+        var game = PastWallysCatch(0, PlayerLook.Boy, BattleOutcome.Lost);
+        game.Arrive("PetalburgWoods", 26, 25);
+        game.Step("DevonResearcher");
+        Assert.Equal(0, game.Story.Var("VAR_PETALBURG_WOODS_STATE"));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Great Ball")!));
+    }
+
+    [Fact]
+    public void TheDevonStairsAreGuardedUntilTheGoodsAreBack()
+    {
+        var game = PastWallysCatch(0, PlayerLook.Boy);
+        game.Arrive("RustboroCity_DevonCorp_1F", 6, 7);
+        var guard = game.Present("devon_corp_stair_guard")!;
+        Assert.Equal((14, 2), (guard.GridX, guard.GridY));
+        game.Story.Set("FLAG_RETURNED_DEVON_GOODS");
+        game.Arrive("RustboroCity_DevonCorp_1F", 6, 7);
+        Assert.NotEqual((14, 2), (game.Present("devon_corp_stair_guard")!.GridX, game.Present("devon_corp_stair_guard")!.GridY));
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheSecondStretchHasItsPeopleHidden()
+    {
+        var story = new StoryState();
+        StoryMigration.Upgrade(story, 23, Array.Empty<Pokemon>(), Scripts);
+        Assert.True(story.Has("FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT"));
+        Assert.True(story.Has("FLAG_HIDE_RUSTURF_TUNNEL_WANDA"));
+        Assert.True(story.Has("FLAG_HIDE_RUSTBORO_CITY_RIVAL"));
+        Assert.Equal(StoryState.CurrentVersion, 24);
+    }
+
+    [Fact]
+    public void HoennsBerryTreesArePatchesOfTheirOwnPastSinnohs()
+    {
+        var map = Hoenn.Value.BuildMaps().Single(m => m.Name == "Hoenn");
+        var soil = map.Everyone.Where(n => n.IsBerrySoil).ToList();
+        Assert.NotEmpty(soil);
+        Assert.All(soil, n => Assert.InRange(n.BerryPatch!.Value, BerryPatches.HoennFirst, BerryPatches.Count - 1));
+        Assert.Equal(soil.Count, soil.Select(n => n.BerryPatch).Distinct().Count());
+        // A new game finds Route 104's Cheri trees in fruit; a save from before Hoenn's trees is given them
+        var fresh = BerryPatches.NewGame();
+        Assert.Equal(BerryPatches.Count, fresh.Patches.Count);
+        Assert.Equal("Cheri Berry", fresh[BerryPatches.HoennFirst + 2].Berry);
+        var old = new BerryPatches { Patches = fresh.Patches.Take(BerryPatches.SinnohCount).ToList() };
+        Assert.Equal(BerryPatches.Count, old.Grown().Patches.Count);
+        Assert.Equal("Cheri Berry", old[BerryPatches.HoennFirst + 2].Berry);
+    }
+
+    [Fact]
+    public void ThePokeNavsScreenMovesBetweenItsPagesAndRingsAContact()
+    {
+        var story = new StoryState();
+        story.Set(PokeNav.Flag);
+        story.Set(PokeNav.MatchCallFlag);
+        Pokegear.Register(story, "hoenn_mom");
+        Pokegear.Register(story, "mr_stone");
+        var team = new List<Pokemon> { new(PokemonDatabase.Get("Treecko")!, 10), new(PokemonDatabase.Get("Wingull")!, 8) };
+        var screen = new PokemonPlatinumEngine.UI.PokeNavScreen();
+        screen.Open(PokeNav.Pages(story, team), PokeNav.Contacts(story), team);
+        Assert.Equal(PokeNavPage.Map, screen.Page);
+        screen.Move(1, 0);
+        Assert.Equal(PokeNavPage.Condition, screen.Page);
+        screen.Move(0, 1);
+        Assert.Equal(1, screen.PokemonIndex);
+        screen.Move(1, 0);
+        Assert.Equal(PokeNavPage.MatchCall, screen.Page);
+        screen.Move(0, 1);
+        screen.Confirm();
+        Assert.Equal(PokemonPlatinumEngine.UI.PokeNavRequest.Call, screen.TakeRequest());
+        Assert.Equal("mr_stone", screen.Called!.Id);
+        // Mr. Stone and Mom are Hoenn's numbers: the Pokégear never lists them
+        Assert.Empty(Pokegear.Contacts(story));
+        Assert.NotNull(Scripts.Find("MrStone", GameEngine.PhoneScripts));
+        Assert.NotNull(Scripts.Find("HoennMom", GameEngine.PhoneScripts));
+        Assert.NotNull(Scripts.Find("HoennRival", GameEngine.PhoneScripts));
+        // The ribbons' page is there once a Pokémon of the team wears one
+        team[0].Ribbons.Add("RIBBON_EFFORT");
+        Assert.Contains(PokeNavPage.Ribbons, PokeNav.Pages(story, team));
+        // Hoenn has a map for its page
+        Assert.NotNull(RegionMap.Of("hoenn"));
+    }
+
+    [Fact]
+    public void TheSongsOfTheRoadToRustboroAreThere()
+    {
+        foreach (string song in new[] { "hoenn/route104", "hoenn/petalburg_woods", "hoenn/rustboro", "hoenn/rusturf" })
+            Assert.True(MusicLibrary.Exists(song), song);
+        Assert.Equal("hoenn/battle_gym", MusicDirector.Resolve(MusicRole.BattleGymLeader, "Hoenn", MusicLibrary.Exists));
+        Assert.Equal("hoenn/victory_gym", MusicDirector.Resolve(MusicRole.VictoryGymLeader, "Hoenn", MusicLibrary.Exists));
+        Assert.Equal("hoenn/battle_galactic", MusicDirector.Resolve(MusicRole.BattleGalactic, "Hoenn", MusicLibrary.Exists));
+        Assert.Equal("hoenn/eye_galactic", MusicDirector.Resolve(MusicRole.EyeGalactic, "Hoenn", MusicLibrary.Exists));
+        Assert.Equal(MusicRole.BattleGalactic, MusicDirector.BattleRoleOf("Team Aqua"));
+        Assert.Equal(MusicRole.EyeGalactic, MusicDirector.EyeRole("Team Aqua"));
+    }
 }

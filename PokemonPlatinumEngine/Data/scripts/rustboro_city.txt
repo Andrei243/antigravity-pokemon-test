@@ -122,6 +122,8 @@ script RivalTrigger
   music "hoenn/rival"
   face rustboro_rival player
   emote rustboro_rival exclaim
+  walk rustboro_rival down 2
+  face rustboro_rival player
   call RivalMeets
   endscene
   end

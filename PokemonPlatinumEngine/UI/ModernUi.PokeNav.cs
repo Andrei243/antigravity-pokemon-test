@@ -32,8 +32,6 @@ internal static partial class ModernUi
     {
         Backdrop(sw, sh);
         ScreenTitle(Text.Of("pokenav.title"));
-        // The case's colour as a band under the title, as the device's own frame
-        UiShapes.Fill(new Rectangle(sw - Margin - 220, 50, 220, 36), 18, NavOrange);
 
         var tabs = new List<(string, UiIcon, Color)>();
         foreach (var page in screen.Pages) tabs.Add(NavTab(page));
@@ -114,7 +112,6 @@ internal static partial class ModernUi
         Panel(chart, 32);
         var p = screen.Team[screen.PokemonIndex];
         int[] values = Models.PokeNav.Condition(p);
-        string[] names = { "Cool", "Beauty", "Cute", "Smart", "Tough" };
         Color[] colors = { new(232, 84, 74, 255), new(84, 140, 232, 255), new(236, 120, 176, 255), new(96, 186, 104, 255), new(232, 196, 72, 255) };
         var centre = new Vector2(chart.X + chart.Width / 2f - 120, chart.Y + chart.Height / 2f + 10);
         const float reach = 250;
@@ -135,14 +132,14 @@ internal static partial class ModernUi
         {
             var at = Corner(i, 1.2f);
             UiShapes.Circle(Corner(i, 1f), 10, colors[i]);
-            UiFonts.DrawCentered(Text.Of($"condition.quality.{names[i]}"), at.X, at.Y, 26, colors[i], UiWeight.Black);
+            UiFonts.DrawCentered(ConditionName(i), at.X, at.Y, 26, colors[i], UiWeight.Black);
         }
         // The numbers beside it, and the sheen
         float x = chart.X + chart.Width - 300;
         for (int i = 0; i < 5; i++)
         {
             float y = chart.Y + 70 + i * 66;
-            UiFonts.Draw(Text.Of($"condition.quality.{names[i]}"), x, y, 30, colors[i], UiWeight.Black);
+            UiFonts.Draw(ConditionName(i), x, y, 30, colors[i], UiWeight.Black);
             UiFonts.Draw(values[i].ToString(), x + 200, y, 30, Ink, UiWeight.Black);
         }
         UiShapes.Fill(new Rectangle(x, chart.Y + 410, 240, 3), 1.5f, Rule);

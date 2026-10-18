@@ -206,6 +206,44 @@ public static class GbaCover
                 (0x130, 0x131, TerrainCover.Path),
                 // The soil round a berry patch
                 (0x113, 0x115, TerrainCover.Path),
+                // Plan 21 · H2, part b (Route 104, Petalburg Woods, Rustboro City, Route 116): the shaded lawn of the
+                // woods' floor between its trees, a ledge's end, the crossing where Rustboro's streets meet, the sandy
+                // path's other pieces along Route 104's beach, the rocks standing in the water, the rocky shore round
+                // the sea and Rustboro's pond, and the forest's last trees beside its paths
+                (0x00D, 0x00D, TerrainCover.Grass), (0x0D3, 0x0D3, TerrainCover.Grass), (0x05E, 0x05E, TerrainCover.Paving),
+                (0x123, 0x127, TerrainCover.Path), (0x12B, 0x12C, TerrainCover.Path),
+                (0x150, 0x151, TerrainCover.Boulder), (0x158, 0x159, TerrainCover.Boulder),
+                (0x175, 0x175, TerrainCover.Cliff), (0x17A, 0x17A, TerrainCover.Cliff),
+                (0x1F2, 0x1F3, TerrainCover.Tree),
+            },
+            // Plan 21 · H2, part b: Rustboro City, a city of stone on a raised ground, read from its layout
+            ["gTileset_Rustboro"] = new (int, int, TerrainCover)[]
+            {
+                // The flagstones of the city's streets and squares, their shaded edges along the buildings, and the
+                // kerbs of the two streets that cross it
+                (0x2BB, 0x2BB, TerrainCover.Paving), (0x2BD, 0x2BD, TerrainCover.Paving), (0x2C3, 0x2C4, TerrainCover.Paving),
+                (0x2E0, 0x2E1, TerrainCover.Paving), (0x2E8, 0x2E8, TerrainCover.Paving), (0x2EA, 0x2EA, TerrainCover.Paving),
+                (0x2F1, 0x2F1, TerrainCover.Paving), (0x2F8, 0x2FA, TerrainCover.Paving), (0x300, 0x302, TerrainCover.Paving),
+                (0x308, 0x30A, TerrainCover.Paving),
+                // The street lamps in pairs along the streets: the post on its blocked tile, and the paving under the lamp's head
+                (0x212, 0x212, TerrainCover.Paving), (0x21A, 0x21A, TerrainCover.Lamp),
+                // The low stone walls the raised city stands behind, and the rails along their tops
+                (0x2A7, 0x2A7, TerrainCover.Fence), (0x2B7, 0x2B7, TerrainCover.Fence), (0x2BE, 0x2BF, TerrainCover.Fence),
+                (0x2DE, 0x2DF, TerrainCover.Fence), (0x2E9, 0x2E9, TerrainCover.Fence), (0x2EC, 0x2EC, TerrainCover.Fence),
+                (0x2FC, 0x2FC, TerrainCover.Fence), (0x315, 0x315, TerrainCover.Fence), (0x318, 0x31B, TerrainCover.Fence),
+                (0x31D, 0x31D, TerrainCover.Fence), (0x320, 0x321, TerrainCover.Fence), (0x32C, 0x32D, TerrainCover.Fence),
+                (0x352, 0x352, TerrainCover.Fence),
+            },
+            // Plan 21 · H2, part b: the way down a house's stairs (Rustboro's flats), whose label (the Trick House's)
+            // would make it a house standing in the room
+            ["gTileset_GenericBuilding"] = new (int, int, TerrainCover)[]
+            {
+                (0x219, 0x219, TerrainCover.Path),
+            },
+            // Plan 21 · H2, part b: Rusturf Tunnel's floor (its walls are the cave's rock wherever nobody walks)
+            ["gTileset_RusturfTunnel"] = new (int, int, TerrainCover)[]
+            {
+                (0x201, 0x204, TerrainCover.CaveFloor),
             },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {

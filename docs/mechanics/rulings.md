@@ -2781,5 +2781,38 @@ meets a name of Platinum's, Kanto's or Johto's, so none needed `HOENN_`. What di
 - **A save of Hoenn from before the chapter** (H1's stand-in start, which owned one of Birch's three and recorded no
   starter) is taken past the opening (`common.HoennOpeningDone`, story version 23), its starter the one it owns;
   Petalburg's Gym and Wally's catch are left for it to play.
-- **Still to come in H2**: Route 104, Petalburg Woods and its grunt, Rustboro City, Roxanne and the Stone Badge, Rusturf
-  Tunnel and the Devon Goods, and Mr. Stone's PokéNav.
+- **Wally on the platform.** In the lesson, the figure on the player's platform is Wally's own look (`BattleSetup.PlayerLook`,
+  the catcher's name read as a look); Sinnoh's lesson keeps the player's, as it had.
+
+## The road to Rustboro (2026-10-18, plan 21 · H2, its second part)
+
+Route 104 to Rusturf Tunnel is scripts of ours on Emerald's beats (`petalburg_woods.txt`, `rustboro_city.txt`,
+`rustboro_city_gym.txt`, `rustboro_city_devon_corp_1f.txt`, `_3f.txt`, `rustboro_city_cutters_house.txt`,
+`rustboro_city_pokemon_school.txt`, `route_116.txt`, `rusturf_tunnel.txt`, `route_104_mr_brineys_house.txt`,
+`route_104_pretty_petal_flower_shop.txt`), under Emerald's flags and variables (`VAR_PETALBURG_WOODS_STATE`,
+`VAR_RUSTBORO_CITY_STATE`, `VAR_RUSTURF_TUNNEL_STATE`, `VAR_ROUTE116_STATE`, `VAR_DEVON_CORP_3F_STATE`,
+`VAR_BRINEY_HOUSE_STATE`, `FLAG_DEVON_GOODS_STOLEN`, `FLAG_RECOVERED_DEVON_GOODS`, `FLAG_RETURNED_DEVON_GOODS`,
+`FLAG_SYS_POKENAV_GET`, `FLAG_HAS_MATCH_CALL`, `FLAG_BADGE01_GET` through `givebadge stone`). What differs, and why:
+
+- **The Devon researcher** stays where he stands as the grunt comes down the path, rather than hiding behind the player:
+  the path through the woods is one tile wide there.
+- **Mr. Stone's office**: the employee's walk to the desk is a fade, and the player stands before the president's desk.
+  The PokéNav is no item in the bag: it is the start menu's entry once Mr. Stone has given it, as Emerald's is.
+- **Match Call**: the scientist who adds it at Devon's door registers Mom's and Mr. Stone's numbers, the rival registers
+  in Rustboro, and the calls are ours (`phone.txt`); its tutorial, which opens the PokéNav on its own in Emerald, is a
+  line. Hoenn's trainers who swap numbers, and their rematches, are a later session's.
+- **The rival in Rustboro** is met at the city's south edge only; Emerald's other place, by Mr. Briney's cottage for a
+  player who left by another way, is plan 21 · H3's, with the boat.
+- **The PokéNav's pages**: the map (the region's picture, a cell to each chunk), the contest condition (round a
+  pentagon, each quality's number beside it), Match Call and the ribbons. Emerald's search of Pokémon by condition and
+  its ribbon list per Pokémon are left out for now.
+- **Rusturf Tunnel**: the grunt cornered with Peeko at the dead end, his battle and Mr. Briney's thanks as Emerald plays
+  them; the rocks that keep Wanda from her young man are Rock Smash's, and his breaking through (with HM04's gift) is
+  plan 21 · H3's. Wanda speaks of her cousin Wally coming to stay, which Emerald tells in Verdanturf.
+- **Mr. Briney** is home with Peeko once the goods are back, and his offer to sail is a line: the sailing to Dewford is
+  plan 21 · H3's.
+- **Hoenn's berry trees** are patches of their own past Sinnoh's 128 (`BerryPatches.HoennFirst`), numbered in the
+  order of Emerald's tree names, each starting with the berry its name gives; they grow by Platinum's rules until
+  Emerald's own come (the Wailmer Pail waters nothing yet).
+- **Petalburg's Gym** is as long as the hall the camera follows: a GBA room longer than a chunk is as wide as its
+  floor, not as its column of chunks (`World.cs`).

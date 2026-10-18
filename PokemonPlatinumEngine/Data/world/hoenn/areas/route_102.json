@@ -65,8 +65,8 @@
     { "id": "lass", "looks": "lass", "movement": "look_south_and_east", "x": 78, "z": 249, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TIANA" },
     { "id": "boy_1", "looks": "boy_1", "movement": "wander_around", "x": 107, "z": 246, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route102_EventScript_Boy" },
     { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 81, "z": 257, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_102_POTION", "item": "Potion", "script": "Route102_EventScript_ItemPotion" },
-    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 94, "z": 244, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "BerryTreeScript" },
-    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 95, "z": 244, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "BerryTreeScript" },
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 94, "z": 244, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 128, "script": "BerryTreeScript" },
+    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 95, "z": 244, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 129, "script": "BerryTreeScript" },
     { "id": "youngster_2", "looks": "youngster", "movement": "look_south", "x": 89, "z": 246, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ALLEN" }
   ],
   "signs": [

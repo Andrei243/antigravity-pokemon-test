@@ -44,6 +44,13 @@ public sealed class GbaTables
 
     public List<TrainerRecord> Trainers { get; } = new();
     public List<GbaHealLocation> HealLocations { get; } = new();
+
+    /// <summary>
+    /// Every berry tree of the game's maps by its constant (<c>BERRY_TREE_ROUTE_104_CHERI_1</c>), in the order of the
+    /// names (plan 21 · H2, part b): a tree's place in the list is its patch past Sinnoh's
+    /// (<c>BerryPatches.HoennFirst</c> + the place), the same whichever areas are open, since every map is read.
+    /// </summary>
+    public List<string> BerryTrees { get; } = new();
     public List<string> Problems { get; } = new();
 
     public GbaTables() { }
@@ -56,6 +63,9 @@ public sealed class GbaTables
     public GbaTables(string dir, IEnumerable<GbaMap> maps, string trainerPrefix = "", IReadOnlyDictionary<string, int>? moneyRates = null)
     {
         string Path_(params string[] parts) => Path.Combine(new[] { dir }.Concat(parts).ToArray());
+        maps = maps.ToList();
+        BerryTrees.AddRange(maps.SelectMany(m => m.Objects).Select(o => o.SightOrBerryTree)
+            .Where(s => s.StartsWith("BERRY_TREE_", StringComparison.Ordinal)).Distinct().OrderBy(s => s, StringComparer.Ordinal));
         if (File.Exists(Path_("data", "scripts", "item_ball_scripts.inc")))
             foreach (var (label, item, count) in ParseItemBalls(File.ReadAllText(Path_("data", "scripts", "item_ball_scripts.inc"))))
                 ItemBalls[label] = (item, count);

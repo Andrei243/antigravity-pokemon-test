@@ -490,7 +490,7 @@ public partial class GameEngine
         // What the game remembered of its wild Pokémon (a save from before plan 06 · R13 is given a new start); a
         // game come back to sends every roamer anywhere (the original's continue task)
         flow.Encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
-        flow.Berries = save.Berries ?? BerryPatches.NewGame();
+        flow.Berries = (save.Berries ?? BerryPatches.NewGame()).Grown();
         flow.PoffinCase.Restore(save.Poffins);
         phoneRinger.Reset();
         SilenceTheRadio();

@@ -68,6 +68,9 @@ public static class GbaEvents
                 if (tables.TrainerScripts.TryGetValue(o.Script, out var trainer)) obj.Script = trainer;
                 else problems.Add($"{map.Name}: the trainer {unique}'s script {o.Script} names no trainer");
             }
+            // A berry tree is the save's berry patch past Sinnoh's that its name's place gives (plan 21 · H2, part b)
+            if (tables.BerryTrees.IndexOf(o.SightOrBerryTree) is >= 0 and var tree)
+                obj.Patch = PokemonPlatinumEngine.Overworld.BerryPatches.HoennFirst + tree;
             if (looks == ItemBallLooks)
             {
                 if (tables.ItemBalls.TryGetValue(o.Script, out var held))

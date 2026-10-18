@@ -6,8 +6,11 @@
 
 
 script OnEnter
-  if flag FLAG_RETURNED_DEVON_GOODS end
+  if flag FLAG_RETURNED_DEVON_GOODS goto Round
   place devon_corp_stair_guard 14 2 down
+  end
+label Round
+  place devon_corp_stair_guard 15 5 down
   end
 
 

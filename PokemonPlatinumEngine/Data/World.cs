@@ -215,7 +215,13 @@ public static class WorldMapBuilder
         bool[]? reach = null;
         var (mapWidth, mapHeight) = room && matrix.Width == 1 && matrix.Height == 1 && world.Chunk(ChunkOf(0, 0)) is { } only
             ? world.Index.BuildingsAtDoors ? RoomExtent(only) : RoomExtent(only, reach = RoomReach(only, world.Area(entry.Area ?? "")?.Warps ?? new()))
-            : (matrix.Width * T, matrix.Height * T);
+            // A GBA game's room longer than a chunk (plan 21 · H2, part b: Petalburg's Gym, 112 tiles deep) lies in the
+            // west of a column of chunks: it is as wide as the widest of them shows, and as long as all of them, so the
+            // camera looks at the hall and not at the column's empty east
+            : room && world.Index.BuildingsAtDoors && matrix.Width == 1 && matrix.Height > 1
+                && Enumerable.Range(0, matrix.Height).Select(cy => world.Chunk(ChunkOf(0, cy))).ToList() is var column && column.All(c => c != null)
+                ? (column.Max(c => RoomExtent(c!).Width), (matrix.Height - 1) * T + RoomExtent(column[^1]!).Height)
+                : (matrix.Width * T, matrix.Height * T);
         var map = new Map(mapWidth, mapHeight)
         {
             Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel, Setting = entry.Setting

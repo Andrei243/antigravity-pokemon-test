@@ -101,6 +101,12 @@ public sealed class BattleSetup
     public string? PlayerName { get; init; }
 
     /// <summary>
+    /// The look the figure on the player's platform is drawn in; left out, the player's own (the catching lesson's is
+    /// whoever shows it: the assistant, or plan 21 · H2's Wally).
+    /// </summary>
+    public string? PlayerLook { get; init; }
+
+    /// <summary>
     /// The move cards say how a damaging move will do against each foe already seen (plan 12 · Q10): presentation
     /// only, never read by the rules.
     /// </summary>

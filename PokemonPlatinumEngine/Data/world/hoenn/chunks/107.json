@@ -98,9 +98,9 @@
     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
     "TTTTTTTTTTTTTTTTTT~~~~~~~~~~~~CC",
-    "TTTTTTTTTTTTTTTTTT~??~~~~~~~~~CC",
+    "TTTTTTTTTTTTTTTTTT~C?~~~~~~~~~CC",
     "..wwwwwwTTTTTTTTTT~??~~~~~~~~~~~",
-    ":::wwwwwTTTTTTTTTT~~~~~~~????~~~"
+    ":::wwwwwTTTTTTTTTT~~~~~~~C?RR~~~"
   ],
   "heights": [
     { "x": 0, "z": 28, "width": 32, "depth": 4, "height": 1, "slopeX": 0, "slopeZ": 0 }

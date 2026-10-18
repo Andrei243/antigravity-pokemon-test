@@ -195,6 +195,7 @@ public partial class BattleEngine
 
         Kind = setup.Kind;
         Partner = setup.Partner;
+        if (setup.PlayerLook != null) Anim.PlayerTrainer = setup.PlayerLook;
         // The ground fought on, for the looks that go by it (plan 25 · Y6: Secret Power, Camouflage); never the rules'
         terrain = setup.Conditions?.Terrain ?? BattleTerrain.Plain;
         // Whoever battles beside the player stands on the platform beside them, in their class's look or their own

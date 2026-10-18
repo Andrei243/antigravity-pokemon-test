@@ -880,6 +880,13 @@ for a rematch (and from then on waits on their map, spinning, until fought: `bat
 do), 3 a rematch asked for is still waiting. A trainer who gives a number is a script of their place's file that
 battles as `common.Trainer` does and, beaten, asks (`route_30.txt`'s `Joey`).
 
+Hoenn's PokéNav (plan 21 · H2, part b; `Models/PokeNav.cs`) keeps the numbers of its Match Call the same way, by the
+same flags: `addcontact` registers a contact of Hoenn's book too (`Data/world/hoenn/phone.json`, written by hand: Mom,
+Mr. Stone and the rival so far), whose call is a script of `phone.txt` in the same way (`hoenn_mom`: `HoennMom`). The
+PokéNav itself is a flag (`FLAG_SYS_POKENAV_GET`, Emerald's own), and its Match Call page another
+(`FLAG_HAS_MATCH_CALL`): a script sets them. Nobody of Hoenn rings on their own yet, and no trainer of Hoenn is in the
+book: their rematches by Match Call are a later session's.
+
 ## The Ruins of Alph's panels
 
 Plan 20 · J5. A chamber's stone panel is a screen of its own (`UI/AlphPuzzleScreen.cs`, on `Models/AlphPuzzle.cs`).

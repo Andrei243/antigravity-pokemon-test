@@ -35,7 +35,7 @@
       "name": "Boy",
       "dialog": [ "Rustboro City's just up ahead! It's the biggest city around here, all stone and big buildings." ]
     },
-    "woman_5": { "name": "Florist", "script": "WhiteHerbFlorist" },
+    "woman_5": { "name": "Florist", "dialog": [ "A White Herb puts a Pokémon's lowered stats right again. I grow them myself!" ] },
     "lass": {
       "name": "Haley",
       "trainer": {

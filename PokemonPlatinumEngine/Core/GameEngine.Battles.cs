@@ -78,7 +78,7 @@ public partial class GameEngine
         // The lesson is the assistant's: their own Pokémon, their name, a bag of twenty Poké Balls (FieldBattleDTO_NewCatchingTutorial)
         var party = flow.Party;
         var bag = flow.Bag;
-        string? name = null;
+        string? name = null, lessonLook = null;
         if (kind == BattleKind.CatchingLesson)
         {
             party = new Party();
@@ -87,6 +87,13 @@ public partial class GameEngine
             bag = new Inventory();
             bag.AddItem(ItemDatabase.Get("Poké Ball")!, 20);
             name = catcher != null ? PlayerIdentity.Fill(catcher.Name) : PlayerIdentity.Fill("{assistant}");
+            // And someone else's lesson has their figure on the player's platform, made behind the fade: their own look
+            // by their name where the looks have one (plan 21 · H2: Wally's). The assistant's is left as it was
+            if (catcher != null)
+            {
+                lessonLook = CharacterStyles.Default.CharacterFor(catcher.Name.ToLowerInvariant());
+                CharacterModels.Preload(new[] { lessonLook });
+            }
         }
 
         // The battle theme cuts in as the screen starts to flash, before the battle itself appears: a legendary's or
@@ -131,6 +138,7 @@ public partial class GameEngine
                 Kind = kind,
                 CannotFlee = cannotFlee,
                 PlayerName = name,
+                PlayerLook = lessonLook,
                 SpecialBalls = kind == BattleKind.Safari ? flow.Safari.Balls : kind == BattleKind.PalPark ? flow.Pastimes.PalPark.Show?.ParkBalls ?? 0 : 0,
                 MoveHints = MoveHintsOn,
                 Scene = Settings.BattleScene

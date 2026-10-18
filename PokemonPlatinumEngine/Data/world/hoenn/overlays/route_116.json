@@ -12,7 +12,7 @@
   "people": {
     "route116_briney": { "name": "Mr. Briney", "npcType": "briney", "script": "Briney", "still": true },
     "man_2": { "name": "Devon Employee", "npcType": "devon_employee", "script": "DevonEmployee" },
-    "route116_wandas_bf": { "name": "Young Man", "script": "WandasBoyfriend" },
+    "route116_wandas_bf": { "name": "Young Man", "script": "WandasBoyfriend", "at": [ 79, 131 ] },
     "maniac": { "name": "Man", "dialog": [ "I dropped my glasses somewhere around here. I can't see a thing without them!" ] },
     "youngster": {
       "name": "Joey",

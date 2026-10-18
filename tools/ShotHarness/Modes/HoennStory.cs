@@ -206,5 +206,92 @@ partial class Harness
         ReadTo("Mr. Norman! I caught a Ralts!"); Frames(10); Shot("hs23_wallys_thanks");
         ReadTo(null);
         Left("the chapter's part");
+
+        // ---- Plan 21 · H2, part b: the woods, Rustboro, the tunnel and the PokéNav
+        void Rustboro(string what) =>
+            Console.WriteLine($"  {what}: woods {story.Var("VAR_PETALBURG_WOODS_STATE")}, rustboro {story.Var("VAR_RUSTBORO_CITY_STATE")}, "
+                + $"tunnel {story.Var("VAR_RUSTURF_TUNNEL_STATE")}, route 116 {story.Var("VAR_ROUTE116_STATE")}, devon {story.Var("VAR_DEVON_CORP_3F_STATE")}, "
+                + $"briney {story.Var("VAR_BRINEY_HOUSE_STATE")}, gym {story.Var("VAR_PETALBURG_GYM_STATE")}, stone badge {story.HasBadge(RegionDatabase.Hoenn, "Stone")}, "
+                + $"goods stolen {story.Has("FLAG_DEVON_GOODS_STOLEN")}, recovered {story.Has("FLAG_RECOVERED_DEVON_GOODS")}, pokenav {story.Has("FLAG_SYS_POKENAV_GET")}, "
+                + $"match call {story.Has("FLAG_HAS_MATCH_CALL")}, numbers {string.Join(", ", PokeNav.Contacts(story).Select(c => c.Name))}, "
+                + $"rival met {story.Has("FLAG_MET_RIVAL_RUSTBORO")} beaten {story.Has("FLAG_DEFEATED_RIVAL_RUSTBORO")}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        // A team that holds its own on the road to Rustboro: a Swampert of 40 leads it (the battles are only shot, and won)
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Swampert")!, 40));
+        game.Party.Swap(0, game.Party.Count - 1);
+        StepOnto("PetalburgWoods", 26, 23, Direction.Up);
+        ReadTo("Have you seen a Shroomish"); Frames(10); Shot("hs24_the_researcher");
+        ReadTo("belong to Team Aqua now"); Frames(10); Shot("hs25_the_aqua_grunt");
+        IntoBattle("the grunt in the woods");
+        ToMainMenu(game.Battle); Shot("hs26_the_grunts_battle");
+        Win();
+        ReadTo("Please, take this as my thanks"); Frames(10); Shot("hs27_the_researchers_thanks");
+        ReadTo(null);
+        Rustboro("the woods");
+
+        TalkTo("RustboroCity_Gym", "roxanne");
+        ReadTo("I'm Roxanne"); Frames(10); Shot("hs28_roxanne");
+        IntoBattle("Roxanne's battle");
+        ToMainMenu(game.Battle); Shot("hs29_roxannes_battle");
+        Win();
+        ReadTo("received the Stone Badge"); Frames(10); Shot("hs30_the_stone_badge");
+        ReadTo(null);
+        Rustboro("the Stone Badge");
+
+        StepOnto("Hoenn", 23, 143, Direction.Left);
+        ReadTo("Outta my way!"); Frames(10); Shot("hs31_the_thief");
+        ReadTo("Stop, thief!"); Frames(10); Shot("hs32_the_employee_after_him");
+        ReadTo(null);
+        StepOnto("Hoenn", 29, 132, Direction.Right);
+        ReadTo("toward Rusturf Tunnel"); Frames(10); Shot("hs33_get_them_back");
+        ReadTo(null);
+        StepOnto("Hoenn", 87, 131, Direction.Up);
+        ReadTo("snatched my dear Peeko"); Frames(10); Shot("hs34_mr_briney");
+        ReadTo(null);
+        Rustboro("the theft");
+
+        ComeThrough("RusturfTunnel", 7, 4, Direction.Right);
+        StepOnto("RusturfTunnel", 9, 4, Direction.Right);
+        ReadTo("Don't come any closer!"); Frames(10); Shot("hs35_the_grunt_cornered");
+        ReadTo(null);
+        TalkTo("RusturfTunnel", "rusturf_tunnel_grunt", dx: -1, dy: 0);
+        ReadTo("it's a battle you'll get"); Frames(10);
+        IntoBattle("the grunt in the tunnel");
+        ToMainMenu(game.Battle); Shot("hs36_the_tunnel_battle");
+        Win();
+        ReadTo("my dear Peeko, you're safe"); Frames(10); Shot("hs37_peeko_safe");
+        ReadTo(null);
+        Rustboro("the goods recovered");
+
+        StepOnto("Hoenn", 30, 134, Direction.Up);
+        ReadTo("You got the Devon Goods back"); Frames(10); Shot("hs38_the_goods_returned");
+        ReadTo("our newest product, the PokéNav"); Frames(10); Shot("hs39_mr_stone");
+        ReadTo(null);
+        ComeThrough("Hoenn", 11, 138, Direction.Down);
+        ReadTo("Let me add Match Call"); Frames(10); Shot("hs40_match_call");
+        ReadTo(null);
+        Rustboro("the PokéNav");
+
+        game.OpenPokeNav();
+        Frames(20); Shot("hs41_pokenav_map");
+        game.PokeNavScreen.MovePage(1); Frames(10); Shot("hs42_pokenav_condition");
+        game.PokeNavScreen.MovePage(1); Frames(10); Shot("hs43_pokenav_match_call");
+        game.PokeNavScreen.Cancel(); Frames(10);
+
+        StepOnto("Hoenn", 14, 175, Direction.Down);
+        ReadTo("let's register each other"); Frames(10); Shot("hs44_the_rival_in_rustboro");
+        IntoBattle("the rival's battle in Rustboro");
+        ToMainMenu(game.Battle); Shot("hs45_the_rivals_second_battle");
+        Win();
+        ReadTo("have you heard of Mr. Briney"); Frames(10); Shot("hs46_briney_hint");
+        ReadTo(null);
+        TalkTo("RustboroCity_CuttersHouse", "pokefan_m", dx: 1, dy: 0);
+        ReadTo("A gift from one cutter to another"); Frames(10); Shot("hs47_the_cutter");
+        ReadTo(null);
+        TalkTo("RusturfTunnel", "rusturf_tunnel_wandas_bf", dx: -1, dy: 0);
+        ReadTo("I'll dig through to you"); Frames(10); Shot("hs48_wandas_young_man");
+        ReadTo(null);
+        Rustboro("the chapter");
     }
 }
