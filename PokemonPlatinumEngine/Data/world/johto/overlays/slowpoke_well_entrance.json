@@ -1,0 +1,14 @@
+{
+  // The Slowpoke Well's mouth (plan 20 · J7): HeartGold's room, our words. Kurt, who came down to sort Team Rocket out
+  // himself and fell, waits here with his bad back until the well below is cleared (HeartGold's FLAG_UNK_1AA). Its
+  // music is the dungeons' theme, as HeartGold's header gives it
+  "area": "slowpoke_well_entrance",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "d26r0101_gantetsu": {
+      "name": "Kurt",
+      "script": "Kurt",
+      "still": true
+    }
+  }
+}

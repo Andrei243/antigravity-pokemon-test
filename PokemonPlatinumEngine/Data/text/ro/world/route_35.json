@@ -26,6 +26,24 @@
         ]
       }
     },
+    "r35_policeman_2": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "All quiet on Route 35 today. Come by after dark if you fancy a real test of your team."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "r35_picnicgirl_2": {
       "name": {
         "en": [

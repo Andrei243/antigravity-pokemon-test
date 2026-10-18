@@ -427,6 +427,9 @@ public static class RegionDatabase
                 "Route36_NationalParkGate", "Ecruteak_PokemonCenter_1F", "Ecruteak_PokemonCenter_B1F", "Ecruteak_Mart",
                 "Ecruteak_DanceTheater", "Ecruteak_SouthwestHouse", "Ecruteak_DowsingHouse", "Ecruteak_BellTowerGate",
                 "BurnedTower_1F", "BurnedTower_B1F",
+                // Plan 20 · J7: the Slowpoke Well, the Azalea and Ecruteak Gyms and the Department Store's lift
+                "SlowpokeWell_Entrance", "SlowpokeWell_B1F", "SlowpokeWell_B2F", "Azalea_GymEntrance", "Azalea_Gym",
+                "Ecruteak_Gym", "Goldenrod_DeptStore_Elevator",
             }
         },
         new()

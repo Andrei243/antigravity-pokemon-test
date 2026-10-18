@@ -9,6 +9,8 @@ partial class Harness
     /// </summary>
     public void JohtoMode()
     {
+        // JOHTO_FROM=well plays only the second chapter (plan 20 · J7)
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "well") { JohtoScenes(second: true); engine.NewGameRegion = "Sinnoh"; return; }
         engine.NewGameRegion = "Johto";
         engine.StartNewGame();
         game.State = GameState.Overworld;
@@ -109,6 +111,8 @@ partial class Harness
         // And the centre plan 20 · J5 opened: the Ruins of Alph, Union Cave, Route 33 and Azalea Town
         JohtoCentreShots();
         JohtoNorthShots();
+        // And last the second chapter played by its own scripts, in a new game of its own (plan 20 · J7: jst30 to jst59)
+        JohtoScenes(second: true);
         engine.NewGameRegion = "Sinnoh";
     }
 }

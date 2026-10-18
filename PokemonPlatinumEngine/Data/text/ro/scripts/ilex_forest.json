@@ -1,0 +1,176 @@
+{
+  "Apprentice": [
+    {
+      "en": [
+        "Apprentice"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You found one of them! The other one's still out there somewhere. Please, keep looking!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ApprenticeLost": [
+    {
+      "en": [
+        "Apprentice"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh no, oh no... Both our Farfetch'd ran off into the forest. My master will roast me alive!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Without them I can't cut any wood, and without wood there's no charcoal. Could you help me find them?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FirstFarfetchd": [
+    {
+      "en": [
+        "Farfetch'd took fright and dashed off, waving its leek!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Farfetch'd is out of breath. It lets itself be led home."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SecondFarfetchd": [
+    {
+      "en": [
+        "Farfetch'd took fright and dashed off, waving its leek!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Farfetch'd is out of breath. It lets itself be led home."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BackToTheBoy": [
+    {
+      "en": [
+        "Apprentice"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You found one! Thank you! Now there's just one more out there..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MasterComes": [
+    {
+      "en": [
+        "Apprentice"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Both of them! You found both of them! Thank you, thank you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Charcoal Maker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So here you are, boy! Lost the birds again, did you? And this young trainer found them for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've done us a real kindness. Take this. It's a technique for clearing trees out of your way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "HM01 is Cut. With the Hive Badge, a Pokémon that knows it can cut down a small tree like the one here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come on, boy. Back to the kiln with you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Master": [
+    {
+      "en": [
+        "Charcoal Maker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks again for finding those birds."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

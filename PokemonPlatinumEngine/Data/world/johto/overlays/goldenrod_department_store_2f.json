@@ -1,14 +1,11 @@
 {
-  // The Department Store's second floor (plan 20 · J5, part b), its two counters the common counter of every Mart. Its lift (warp 2) stays shut until it can carry anyone
+  // The Department Store's second floor (plan 20 · J5, part b), its two counters medicine and Poké Balls (plan 20 · J7: scripts/goldenrod_department_store_2f.txt). Its lift (warp 2) rides to every floor (plan 20 · J7).
   "area": "goldenrod_department_store_2f",
   "bgmTrack": "johto/goldenrod",
-  "locked": [
-    2
-  ],
   "people": {
     "t25r1002_shopm1_2": {
       "name": "Clerk",
-      "script": "Clerk",
+      "script": "MedicineClerk",
       "still": true,
       "dialog": [
         "Welcome! How can I help you?"
@@ -16,7 +13,7 @@
     },
     "t25r1002_shopm1_2_2": {
       "name": "Clerk",
-      "script": "Clerk",
+      "script": "BallClerk",
       "still": true,
       "dialog": [
         "Welcome! How can I help you?"

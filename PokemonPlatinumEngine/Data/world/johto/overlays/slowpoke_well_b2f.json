@@ -1,0 +1,12 @@
+{
+  // The Slowpoke Well's deepest floor (plan 20 · J7): HeartGold's cave, our words. A man who studies Slowpoke gives
+  // the King's Rock once (scripts/slowpoke_well_b2f.txt)
+  "area": "slowpoke_well_b2f",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "d26r0103_gsassistantm": {
+      "name": "Researcher",
+      "script": "Researcher"
+    }
+  }
+}

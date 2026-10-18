@@ -1,0 +1,25 @@
+# Ecruteak City's Pokémon Center (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T27PC0101): the first time the player comes in, Bill, who made the PC storage system,
+# is on his way home to Goldenrod City, and tells of the Eevee waiting there (FLAG_SYS_MET_BILL; FLAG_UNK_1C5 takes him
+# from here, FLAG_HIDE_GOLDENROD_BILL puts him at home, VAR_UNK_410D 1).
+
+
+script OnEnter
+  if flag FLAG_SYS_MET_BILL end
+  scene "Bill in Ecruteak"
+  emote t27pc0101_masaki exclaim
+  face t27pc0101_masaki player
+  speaker "Bill"
+  say "Hi there! I'm Bill, the one who made the PC storage system. Maybe you've used it?"
+  say "I came to Ecruteak to see the city's old buildings, but my mum's just called me home to Goldenrod City."
+  say "Oh! Come and visit me there. I've got an Eevee that needs a good trainer, and you look like one."
+  say "See you in Goldenrod!"
+  fade out 0.4
+  hide t27pc0101_masaki
+  fade in
+  setflag FLAG_UNK_1C5
+  clearflag FLAG_HIDE_GOLDENROD_BILL
+  setflag FLAG_SYS_MET_BILL
+  setvar VAR_UNK_410D 1
+  endscene
+  end

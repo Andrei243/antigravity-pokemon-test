@@ -1,0 +1,94 @@
+{
+  "Bill": [
+    {
+      "en": [
+        "Bill"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, hi, {player}! Thanks for coming. Remember the Eevee I told you about? It's right here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a rare one, and it can evolve in all sorts of ways. Would you like to raise it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Eevee!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Eevee's a funny one. Its genes are unstable, so it can turn into lots of different Pokémon. Take good care of it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? That's a shame. If you change your mind, come back. Eevee will be here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whoa, your team's full! Make some room, then come and see me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How's Eevee doing? I can't wait to see what it turns into."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Mother": [
+    {
+      "en": [
+        "My son Bill made the PC storage system you use. He's off in Ecruteak City just now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He calls whenever he wants feeding. Typical!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bill came home all of a sudden. He always rushes in like that, then off again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

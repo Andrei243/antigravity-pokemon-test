@@ -1,0 +1,17 @@
+# The Azalea Gym's hall (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_T23GYM0101): the guide, before and after the Hive Badge.
+
+
+script GymGuy
+  speaker "Gym Guide"
+  if badge hive goto Won
+  if not flag FLAG_BEAT_AZALEA_ROCKETS goto Away
+  say "Yo, challenger! Bugsy's Bug types are tough, but Fire and Flying moves will scorch and blow them away."
+  say "Ride the Spinarak carts across the webs to reach him. Step onto a cart's dock and off you go!"
+  end
+label Away
+  say "Bugsy's off looking into the Slowpoke Well. Something's wrong in town, and he can't sit still till it's sorted."
+  end
+label Won
+  say "You beat Bugsy! Those bugs didn't stand a chance. On to Goldenrod City, champ!"
+  end

@@ -6,7 +6,7 @@
   "people": {
     "r36r0101_counterm": {
       "name": "Officer",
-      "dialog": [ "Route 36 is north of here. Go west along it and Route 37 takes you up to Ecruteak City." ]
+      "dialog": [ "Route 36 is north of here. A strange tree is blocking the road, so nobody's getting through for now." ]
     },
     "r36r0101_gsoldman1": {
       "name": "Old Man",

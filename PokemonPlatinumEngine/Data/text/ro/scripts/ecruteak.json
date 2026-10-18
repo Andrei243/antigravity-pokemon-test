@@ -1,0 +1,44 @@
+{
+  "RivalBumps": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Watch where you're going! ...Oh. It's you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I asked those dancers about the Pokémon of the towers. They just smiled and said it chooses who it likes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A legendary Pokémon that picks its trainer? Nonsense. Strength is the only thing any Pokémon respects."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll find it and make it mine. And you'd better not get in my way, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

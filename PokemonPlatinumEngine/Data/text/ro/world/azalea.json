@@ -8,15 +8,117 @@
         "text": [
           "Grunt"
         ]
+      }
+    },
+    "t23_rocketm_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
       },
       "dialog": {
         "en": [
-          "What, you want something? Beat it, kid. This town's got nothing worth seeing.",
-          "And stay away from that well."
+          "This is Team Rocket business. Keep walking, kid."
         ],
         "text": [
-          "Ce, vrei ceva? Șterge-o de aici. Orașul ăsta n-are nimic de văzut.",
-          "Și ține-te departe de fântâna aia."
+          ""
+        ]
+      }
+    },
+    "t23_gsmiddleman1_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I only wanted to see the Slowpoke. Why won't he let me past?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Slowpoke Tails sell for a fortune, you know. Nobody here's going to stop us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23_tsure_poke_static_slowpoke": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23_tsure_poke_static_slowpoke_2": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23_tsure_poke_static_slowpoke_3": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23_tsure_poke_static_slowpoke_4": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t23_gsrivel": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
         ]
       }
     },
@@ -27,16 +129,6 @@
         ],
         "text": [
           "Bătrânul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "The Slowpoke used to doze in every street of this town. Now there's not one to be seen.",
-          "Our town has long said a Slowpoke's yawn brings the rain. It hasn't rained properly in days."
-        ],
-        "text": [
-          "Slowpokeii moțăiau pe fiecare stradă a orașului ăstuia. Acum nu se mai vede niciunul.",
-          "De mult se zice în orașul nostru că un căscat de Slowpoke aduce ploaia. N-a mai plouat cum trebuie de zile întregi."
         ]
       }
     },
@@ -83,14 +175,6 @@
         ],
         "text": [
           "Bărbatul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Smell that? The charcoal kiln is going. Azalea's charcoal is the finest in Johto, so they say."
-        ],
-        "text": [
-          "Simți mirosul? Merge cuptorul de cărbune. Se zice că mangalul din Azalea e cel mai bun din Johto."
         ]
       }
     }

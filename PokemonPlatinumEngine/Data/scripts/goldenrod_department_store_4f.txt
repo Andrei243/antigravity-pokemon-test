@@ -1,0 +1,9 @@
+# The Goldenrod Department Store's fourth floor (plan 20 · J7). docs/scripts.md describes the language. Its counter
+# sells what HeartGold's does, the vitamins (src/scrcmd_mart.c's list 6: marts.json's goldenrod_4f).
+
+
+script Clerk
+  sayown
+  shop "goldenrod_4f"
+  say "Thank you! Do come again."
+  end

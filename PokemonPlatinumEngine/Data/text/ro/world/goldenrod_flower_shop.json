@@ -6,15 +6,7 @@
           "Florist"
         ],
         "text": [
-          "Florăreasa"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome! Every flower here was grown by my sister on Route 36."
-        ],
-        "text": [
-          "Bun venit! Fiecare floare de aici a fost crescută de sora mea pe Ruta 36."
+          ""
         ]
       }
     },
@@ -24,15 +16,15 @@
           "Girl"
         ],
         "text": [
-          "Fata"
+          ""
         ]
       },
       "dialog": {
         "en": [
-          "My sister grows flowers out on Route 36. I water ours here every morning!"
+          "That tree on Route 36 was a Pokémon all along! I'm back to watering our flowers here every morning."
         ],
         "text": [
-          "Sora mea crește flori pe Ruta 36. Eu le ud pe ale noastre aici în fiecare dimineață!"
+          ""
         ]
       }
     }

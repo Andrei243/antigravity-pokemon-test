@@ -8,6 +8,12 @@
     "0": "PC"
   },
   "people": {
+    // Bill, on his way home the first time the player comes in (plan 20 · J7, scripts/ecruteak_pokecenter_1f.txt)
+    "t27pc0101_masaki": {
+      "name": "Bill",
+      "still": true,
+      "dialog": [ "See you in Goldenrod!" ]
+    },
     "t27pc0101_pcwoman1": {
       "name": "Nurse",
       "script": "Nurse"

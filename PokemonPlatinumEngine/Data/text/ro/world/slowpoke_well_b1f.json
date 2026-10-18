@@ -1,0 +1,147 @@
+{
+  "people": {
+    "d26r0102_rkanbum3": {
+      "name": {
+        "en": [
+          "Proton"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d26r0102_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Slowpoke Tails fetch top money, and these dopey things grow them back! It's a perfect racket!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Aw, come on! We were just getting started!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d26r0102_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: A kid? Down here? You picked the wrong well to fall into!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Ugh. The boss is going to hear about this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d26r0102_rocketw": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Don't look at me like that. Slowpoke don't even notice when their tails are gone!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Well, I noticed that. You're tougher than you look."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d26r0102_yadon": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Slowpoke with its tail cut short. It doesn't seem to have noticed..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d26r0102_yadon_2": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Slowpoke is staring at the water. Its tail is gone, but it looks quite content."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d26r0102_gantetsu": {
+      "name": {
+        "en": [
+          "Kurt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Well done!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

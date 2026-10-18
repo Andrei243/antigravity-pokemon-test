@@ -1,0 +1,9 @@
+# The Goldenrod Department Store's third floor (plan 20 · J7). docs/scripts.md describes the language. Its counter
+# sells what HeartGold's does, the items of battle (src/scrcmd_mart.c's list 5: marts.json's goldenrod_3f).
+
+
+script Clerk
+  sayown
+  shop "goldenrod_3f"
+  say "Thank you! Do come again."
+  end

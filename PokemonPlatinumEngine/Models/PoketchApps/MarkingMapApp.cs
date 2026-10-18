@@ -69,7 +69,7 @@ public static class PoketchMap
     {
         if (encounters == null) yield break;
         for (int slot = 0; slot < encounters.Roamers.Count; slot++)
-            if (encounters.Roamers[slot] is { Active: true } roamer && RouteCell(roamer.Route) is var (x, y))
+            if (encounters.Roamers[slot] is { Active: true } roamer && !Roamers.InJohto(roamer.Species) && RouteCell(roamer.Route) is var (x, y))
                 yield return (slot, x, y);
     }
 

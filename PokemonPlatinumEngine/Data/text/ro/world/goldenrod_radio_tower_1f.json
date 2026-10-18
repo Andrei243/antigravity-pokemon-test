@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          "Recepționera"
+          ""
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Radio Tower! I'm sorry, visitors may only see the ground floor today."
         ],
         "text": [
-          "Bun venit la Turnul Radio! Îmi pare rău, azi vizitatorii pot vedea doar parterul."
+          ""
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Receptionist"
         ],
         "text": [
-          "Recepționera"
+          ""
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "We broadcast all over Johto, day and night. Do keep your radio tuned in!"
         ],
         "text": [
-          "Emitem în tot Johto, zi și noapte. Ține radioul pe frecvența noastră!"
+          ""
         ]
       }
     },
@@ -42,15 +42,7 @@
           "Receptionist"
         ],
         "text": [
-          "Recepționera"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Our quiz is being set up. Come back soon, and you could win something special!"
-        ],
-        "text": [
-          "Concursul nostru e în pregătire. Revino curând și ai putea câștiga ceva special!"
+          ""
         ]
       }
     },
@@ -60,7 +52,7 @@
           "Man"
         ],
         "text": [
-          "Bărbatul"
+          ""
         ]
       },
       "dialog": {
@@ -68,7 +60,7 @@
           "I work on the Lucky Number Show. Tune in once a week and see if your number comes up!"
         ],
         "text": [
-          "Lucrez la emisiunea Numărul Norocos. Ascultă o dată pe săptămână și vezi dacă iese numărul tău!"
+          ""
         ]
       }
     },
@@ -78,7 +70,7 @@
           "Girl"
         ],
         "text": [
-          "Fata"
+          ""
         ]
       },
       "dialog": {
@@ -86,7 +78,7 @@
           "I came to see the DJs, but they're all upstairs. Maybe next time."
         ],
         "text": [
-          "Am venit să-i văd pe DJ, dar sunt toți sus. Poate data viitoare."
+          ""
         ]
       }
     }
@@ -97,7 +89,7 @@
         "Ground floor: Reception\nUpper floors: staff only"
       ],
       "text": [
-        "Parter: Recepție\nEtajele de sus: doar personalul"
+        ""
       ]
     },
     "D23R0101_007+1": {
@@ -105,7 +97,7 @@
         "Radio Tower\nThe voice of Johto."
       ],
       "text": [
-        "Turnul Radio\nVocea Johto-ului."
+        ""
       ]
     }
   }

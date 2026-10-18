@@ -1,0 +1,94 @@
+{
+  "Florist": [
+    {
+      "en": [
+        "Florist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Whitney? Then you're strong enough to deal with that wiggling tree on Route 36!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My sister's been waiting by it for days. Take this and give the tree a good squirt."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go on, give that tree on Route 36 a squirt. My sister's waiting there to see what happens!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My sister says a strange tree is blocking the road on Route 36. It wiggles when you water it, apparently!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'd lend my SquirtBottle to someone strong enough to handle it. Someone with a Gym Badge from Whitney, say."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks for helping my sister! We sell mulch for berry soil now. They're 200 each."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which mulch would you like?",
+        "Growth Mulch",
+        "Damp Mulch",
+        "Stable Mulch",
+        "Gooey Mulch",
+        "No thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, you don't have enough money."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come again! A little care goes a long way with berries."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

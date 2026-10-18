@@ -1,0 +1,17 @@
+# Route 35 (plan 20 · J7). docs/scripts.md describes the language; HeartGold's beats (scr_seq_R35_001).
+#
+# Officer Dirk battles only after dark: at night and late at night he stands on his tile (HeartGold's FLAG_UNK_1CE
+# cleared), and the rest of the day his double, who only talks, stands there instead (FLAG_UNK_1CD), as the place is
+# come to.
+
+
+script OnEnter
+  if time night goto Night
+  if time latenight goto Night
+  clearflag FLAG_UNK_1CD
+  setflag FLAG_UNK_1CE
+  end
+label Night
+  clearflag FLAG_UNK_1CE
+  setflag FLAG_UNK_1CD
+  end

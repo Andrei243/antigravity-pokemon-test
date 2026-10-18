@@ -1,0 +1,73 @@
+{
+  // The Ecruteak Gym (plan 20 · J7): HeartGold's room, our words. Its floor hides holes off the one safe path, each one
+  // of HeartGold's triggers: a step onto one drops the player back to the door (scripts/ecruteak_gym.txt). Until the
+  // three Pokémon have fled the Burned Tower an old man sends visitors away (HeartGold's FLAG_UNK_247) and Morty is
+  // out (FLAG_HIDE_ECRUTEAK_GYM_MORTY); his four Mediums battle by their own records (Johto's trainers.json)
+  "area": "ecruteak_gym",
+  "bgmTrack": "johto/gym",
+  "triggers": [
+    { "trigger": 0, "script": "Fall" },
+    { "trigger": 1, "script": "Fall" },
+    { "trigger": 2, "script": "Fall" },
+    { "trigger": 3, "script": "Fall" },
+    { "trigger": 4, "script": "Fall" },
+    { "trigger": 5, "script": "Fall" },
+    { "trigger": 6, "script": "Fall" },
+    { "trigger": 7, "script": "Fall" },
+    { "trigger": 8, "script": "Fall" },
+    { "trigger": 9, "script": "Fall" },
+    { "trigger": 10, "script": "Fall" },
+    { "trigger": 11, "script": "Fall" },
+    { "trigger": 12, "script": "Fall" },
+    { "trigger": 13, "script": "Fall" },
+    { "trigger": 14, "script": "Fall" }
+  ],
+  "people": {
+    "t27gym0101_sunglasses": {
+      "name": "Gym Guide",
+      "script": "GymGuy",
+      "still": true
+    },
+    "t27gym0101_gsleader4": {
+      "name": "Morty",
+      "script": "Morty",
+      "still": true
+    },
+    "t27gym0101_gsoldman1": {
+      "name": "Old Man",
+      "still": true,
+      "dialog": [ "Morty isn't here. He's gone to the Burned Tower." ]
+    },
+    "t27gym0101_itako": {
+      "name": "Georgina",
+      "trainer": {
+        "dialogueBefore": "Medium Georgina: The path is there for those who can see it. Can you?",
+        "dialogueAfter": "Medium Georgina: You see more than most."
+      }
+    },
+    "t27gym0101_itako_2": {
+      "name": "Grace",
+      "trainer": {
+        "dialogueBefore": "Medium Grace: My Haunter float over the holes. You'd better watch your step!",
+        "dialogueAfter": "Medium Grace: You didn't fall in. How?"
+      }
+    },
+    "t27gym0101_itako_3": {
+      "name": "Edith",
+      "trainer": {
+        "dialogueBefore": "Medium Edith: Morty trains to see what others can't. So do we!",
+        "dialogueAfter": "Medium Edith: I didn't see that coming."
+      }
+    },
+    "t27gym0101_itako_4": {
+      "name": "Martha",
+      "trainer": {
+        "dialogueBefore": "Medium Martha: You've come so far without falling. The spirits must favour you.",
+        "dialogueAfter": "Medium Martha: The spirits favour you twice over."
+      }
+    }
+  },
+  "signs": {
+    "T27GYM0101_005+1": "Ecruteak City Pokémon Gym\nLeader: Morty"
+  }
+}

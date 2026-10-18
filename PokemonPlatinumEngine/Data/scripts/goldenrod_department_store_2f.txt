@@ -1,0 +1,17 @@
+# The Goldenrod Department Store's second floor (plan 20 · J7). docs/scripts.md describes the language. Its two
+# counters sell what HeartGold's do (src/scrcmd_mart.c's lists 3 and 4: marts.json's goldenrod_2f_medicine and
+# goldenrod_2f_balls).
+
+
+script MedicineClerk
+  sayown
+  shop "goldenrod_2f_medicine"
+  say "Thank you! Do come again."
+  end
+
+
+script BallClerk
+  sayown
+  shop "goldenrod_2f_balls"
+  say "Thank you! Do come again."
+  end

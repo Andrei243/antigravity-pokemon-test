@@ -1,0 +1,17 @@
+{
+  // The Goldenrod Department Store's lift (plan 20 · J7): HeartGold's car, our words. Its attendant rides it to the
+  // floor asked for (scripts/goldenrod_department_store_elevator.txt); its door, HeartGold's way back to wherever the
+  // player came from, leads to the ground floor here, as the Celadon store's in Kanto
+  "area": "goldenrod_department_store_elevator",
+  "bgmTrack": "johto/goldenrod",
+  "doors": [
+    { "warp": 0, "map": "Goldenrod_DeptStore_1F", "x": 19, "y": 3, "facing": "Down" }
+  ],
+  "people": {
+    "t25r1007_gswoman6": {
+      "name": "Attendant",
+      "script": "Attendant",
+      "still": true
+    }
+  }
+}

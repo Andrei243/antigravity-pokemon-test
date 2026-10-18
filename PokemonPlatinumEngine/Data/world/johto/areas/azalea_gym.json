@@ -1,0 +1,48 @@
+{
+  "key": "azalea_gym",
+  "index": 180,
+  "name": "Azalea Town",
+  "matrix": 105,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "5",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 37, "to": "azalea_gym_entrance", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t23gym0102_gsboy3", "looks": "gsboy3", "movement": "0", "x": 15, "z": 22, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_BUG_CATCHER_AL" },
+    { "id": "t23gym0102_gsboy3_2", "looks": "gsboy3", "movement": "0", "x": 7, "z": 20, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BUG_CATCHER_BENNY" },
+    { "id": "t23gym0102_gsbabygirl1", "looks": "gsbabygirl1", "movement": "0", "x": 3, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_2(TRAINER_TWINS_AMY_AND_MIMI)" },
+    { "id": "t23gym0102_gsbabygirl1_2", "looks": "gsbabygirl1", "movement": "0", "x": 2, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_TWINS_AMY_AND_MIMI" },
+    { "id": "t23gym0102_gsboy3_3", "looks": "gsboy3", "movement": "0", "x": 15, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_BUG_CATCHER_JOSH" },
+    { "id": "t23gym0102_gsleader2", "looks": "gsleader2", "movement": "0", "x": 9, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_AZALEA_GYM_BUGSY", "script": "T23GYM0102_001+1" }
+  ],
+  "signs": [
+    { "x": 4, "z": 7, "type": 0, "script": "T23GYM0102_014+1" },
+    { "x": 11, "z": 8, "type": 0, "script": "T23GYM0102_014+1" },
+    { "x": 11, "z": 18, "type": 0, "script": "T23GYM0102_014+1" },
+    { "x": 2, "z": 18, "type": 0, "script": "T23GYM0102_015+1" }
+  ],
+  "triggers": [
+    { "x": 3, "z": 32, "width": 1, "depth": 1, "script": "T23GYM0102_002+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 9, "z": 32, "width": 1, "depth": 1, "script": "T23GYM0102_003+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 15, "z": 32, "width": 1, "depth": 1, "script": "T23GYM0102_004+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 3, "z": 24, "width": 1, "depth": 1, "script": "T23GYM0102_005+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 9, "z": 24, "width": 1, "depth": 1, "script": "T23GYM0102_006+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 15, "z": 24, "width": 1, "depth": 1, "script": "T23GYM0102_007+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 3, "z": 17, "width": 1, "depth": 1, "script": "T23GYM0102_008+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 9, "z": 17, "width": 1, "depth": 1, "script": "T23GYM0102_009+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 15, "z": 17, "width": 1, "depth": 1, "script": "T23GYM0102_010+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 3, "z": 9, "width": 1, "depth": 1, "script": "T23GYM0102_011+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 9, "z": 9, "width": 1, "depth": 1, "script": "T23GYM0102_012+1", "variable": "VAR_TEMP_x4000", "value": "0" },
+    { "x": 15, "z": 9, "width": 1, "depth": 1, "script": "T23GYM0102_013+1", "variable": "VAR_TEMP_x4000", "value": "0" }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "key": "slowpoke_well_b1f",
+  "index": 177,
+  "name": "Slowpoke Well",
+  "matrix": 46,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D26R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 5 },
+    { "species": "Zubat", "level": 6 },
+    { "species": "Zubat", "level": 5 },
+    { "species": "Zubat", "level": 6 },
+    { "species": "Zubat", "level": 7 },
+    { "species": "Zubat", "level": 7 },
+    { "species": "Slowpoke", "level": 6 },
+    { "species": "Slowpoke", "level": 6 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Slowpoke", "level": 8 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Slowpoke", "level": 8 }
+  ],
+  "landRate": 5,
+  "water": [
+    { "species": "Slowpoke", "level": 10, "maxLevel": 20 },
+    { "species": "Slowpoke", "level": 15, "maxLevel": 25 },
+    { "species": "Slowpoke", "level": 5, "maxLevel": 15 },
+    { "species": "Slowpoke", "level": 5, "maxLevel": 15 },
+    { "species": "Slowpoke", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 42, "z": 27, "to": "slowpoke_well_entrance", "toWarp": 1 },
+    { "x": 27, "z": 20, "to": "slowpoke_well_b2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d26r0102_rock", "looks": "rock", "movement": "0", "x": 23, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d26r0102_rocketm", "looks": "rocketm", "movement": "15", "x": 42, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_UNK_1A9", "script": "TRAINER_TEAM_ROCKET_GRUNT_2" },
+    { "id": "d26r0102_rocketm_2", "looks": "rocketm", "movement": "17", "x": 27, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_UNK_1A9", "script": "TRAINER_TEAM_ROCKET_GRUNT" },
+    { "id": "d26r0102_rocketw", "looks": "rocketw", "movement": "16", "x": 37, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_UNK_1A9", "script": "TRAINER_TEAM_ROCKET_F_GRUNT" },
+    { "id": "d26r0102_rkanbum3", "looks": "rkanbum3", "movement": "15", "x": 27, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1A9", "script": "D26R0102_002+1" },
+    { "id": "d26r0102_yadon", "looks": "yadon", "movement": "15", "x": 31, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1D5", "script": "D26R0102_001+1" },
+    { "id": "d26r0102_yadon_2", "looks": "yadon", "movement": "15", "x": 29, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1D5", "script": "D26R0102_000+1" },
+    { "id": "d26r0102_gantetsu", "looks": "gantetsu", "movement": "15", "x": 21, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1AA", "script": "0" },
+    { "id": "d26r0102_monstarball", "looks": "monstarball", "movement": "0", "x": 34, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D26R0102_SUPER_POTION", "item": "Super Potion", "script": "std_itemball_d26r0102_super_potion" }
+  ],
+  "signs": [
+    { "x": 38, "z": 15, "type": 2, "script": "std_hiddenitem_d26r0102_super_potion", "item": "Super Potion", "flag": "FLAG_HIDDEN_ITEM_D26R0102_SUPER_POTION" },
+    { "x": 36, "z": 19, "type": 2, "script": "std_hiddenitem_d26r0102_full_heal", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_D26R0102_FULL_HEAL" }
+  ],
+  "triggers": []
+}

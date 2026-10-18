@@ -206,6 +206,20 @@ public static partial class WorldModels
         Ground("machine_pc03", "the front of the healing machine"), Ground("t_map01", "the region's map on the wall"),
         Ground("door_pc01", "a door in a Pokémon Center's back wall"), Ground("door_wi01", "a door in the back wall"),
         Ground("flower_pc01", "flowers on the counter"), Ground("poster_fs01", "a poster on the wall"),
+        // Plan 20 · J7: the Slowpoke Well, the Azalea and Ecruteak Gyms and the Department Store's lift
+        Ground("dun_stairup", "a ladder up: the warp's tile is the way"),
+        Ground("dun_stairdw", "a ladder down: the warp's tile is the way"),
+        Ground("yado_light", "the light falling down the Slowpoke Well's shaft: the cave's own light stands for it"),
+        Ground("gym02rope_1", "the Azalea Gym's web of ropes: the floor between its islands draws it"),
+        Ground("gym02rope_2", "the Azalea Gym's web of ropes: the floor between its islands draws it"),
+        Ground("gym02switch", "a lever for the Azalea Gym's carts: the sign's tile is read"),
+        Ground("gym02switch_r", "a lever for the Azalea Gym's carts: the sign's tile is read"),
+        Ground("g04_light1", "a candle of the Ecruteak Gym: the room's own light stands for it"),
+        Ground("g04_light2", "a candle of the Ecruteak Gym: the room's own light stands for it"),
+        Ground("r07_00bot", "the lift car's floor: the room draws it"),
+        Ground("r07_01bot", "the lift car's floor: the room draws it"),
+        Ground("r07_cs01", "the lift car's control panel: the attendant works it"),
+        Ground("ev_o01", "the lift car's doors in the back wall"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

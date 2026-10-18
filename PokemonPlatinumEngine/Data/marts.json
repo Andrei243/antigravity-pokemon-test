@@ -222,6 +222,65 @@
       "Mago Berry",
       "Aguav Berry",
       "Iapapa Berry"
+    ],
+    "goldenrod_2f_medicine": [
+      "Potion",
+      "Super Potion",
+      "Hyper Potion",
+      "Max Potion",
+      "Revive",
+      "Antidote",
+      "Paralyze Heal",
+      "Burn Heal",
+      "Ice Heal",
+      "Awakening",
+      "Full Heal"
+    ],
+    "goldenrod_2f_balls": [
+      "Poké Ball",
+      "Great Ball",
+      "Ultra Ball",
+      "Escape Rope",
+      "Poké Doll",
+      "Repel",
+      "Super Repel",
+      "Max Repel",
+      "Grass Mail",
+      "Flame Mail",
+      "Bubble Mail",
+      "Space Mail"
+    ],
+    "goldenrod_3f": [
+      "X Speed",
+      "X Attack",
+      "X Defense",
+      "Guard Spec.",
+      "Dire Hit",
+      "X Accuracy",
+      "X Sp. Atk",
+      "X Sp. Def"
+    ],
+    "goldenrod_4f": [
+      "Protein",
+      "Iron",
+      "Calcium",
+      "Zinc",
+      "Carbos",
+      "HP Up"
+    ],
+    "goldenrod_5f": [
+      "TM70",
+      "TM17",
+      "TM54",
+      "TM83",
+      "TM16",
+      "TM33",
+      "TM22",
+      "TM52",
+      "TM38",
+      "TM25",
+      "TM14",
+      "TM15"
     ]
   }
 }

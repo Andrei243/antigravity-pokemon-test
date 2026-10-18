@@ -1,0 +1,15 @@
+# The Slowpoke Well's mouth (plan 20 · J7). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D26R0101).
+
+
+# Kurt with his bad back (D26R0101_000)
+script Kurt
+  face d26r0101_gantetsu player
+  speaker "Kurt"
+  if flag FLAG_UNK_077 goto Fell
+  say "This is no place for a youngster. Off home with you!"
+  end
+label Fell
+  say "Ooh, my back... I jumped down after those Rocket thugs and landed badly. I can hardly stand."
+  say "You'll have to go for me. They're further in, down below. Show them what Azalea thinks of thieves!"
+  end

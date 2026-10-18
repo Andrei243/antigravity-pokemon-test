@@ -1,0 +1,13 @@
+// Counters of other regions' own, which Platinum's lists (include/data/mart_items.h) don't have, added to the imported
+// specialties of marts.json by their keys.
+{
+  "specialties": {
+    // The Goldenrod Department Store (plan 20 · J7), in HeartGold's order (src/scrcmd_mart.c, the lists the store's
+    // scripts ask for with SpecialMartBuy 3 to 7): the second floor's two counters, then the third, fourth and fifth
+    "goldenrod_2f_medicine": [ "Potion", "Super Potion", "Hyper Potion", "Max Potion", "Revive", "Antidote", "Paralyze Heal", "Burn Heal", "Ice Heal", "Awakening", "Full Heal" ],
+    "goldenrod_2f_balls": [ "Poké Ball", "Great Ball", "Ultra Ball", "Escape Rope", "Poké Doll", "Repel", "Super Repel", "Max Repel", "Grass Mail", "Flame Mail", "Bubble Mail", "Space Mail" ],
+    "goldenrod_3f": [ "X Speed", "X Attack", "X Defense", "Guard Spec.", "Dire Hit", "X Accuracy", "X Sp. Atk", "X Sp. Def" ],
+    "goldenrod_4f": [ "Protein", "Iron", "Calcium", "Zinc", "Carbos", "HP Up" ],
+    "goldenrod_5f": [ "TM70", "TM17", "TM54", "TM83", "TM16", "TM33", "TM22", "TM52", "TM38", "TM25", "TM14", "TM15" ]
+  }
+}

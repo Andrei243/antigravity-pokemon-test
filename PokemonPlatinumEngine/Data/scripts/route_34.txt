@@ -1,0 +1,17 @@
+# Route 34 (plan 20 · J7). docs/scripts.md describes the language; HeartGold's beats (scr_seq_R34_000).
+#
+# Officer Keith battles only after dark: at night and late at night he stands on his tile (HeartGold's FLAG_UNK_1D2
+# cleared), and the rest of the day his double, who only talks, stands there instead (FLAG_UNK_1D1), as the place is
+# come to.
+
+
+script OnEnter
+  if time night goto Night
+  if time latenight goto Night
+  clearflag FLAG_UNK_1D1
+  setflag FLAG_UNK_1D2
+  end
+label Night
+  clearflag FLAG_UNK_1D2
+  setflag FLAG_UNK_1D1
+  end

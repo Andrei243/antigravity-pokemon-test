@@ -98,7 +98,15 @@
     { "name": "Ecruteak_DowsingHouse", "matrix": 66, "area": "ecruteak_dowsing_machine_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Ecruteak_BellTowerGate", "matrix": 68, "area": "ecruteak_bell_tower_barrier_station", "trees": "Round", "setting": "Indoors" },
     { "name": "BurnedTower_1F", "matrix": 25, "area": "burned_tower_1f", "trees": "Round", "setting": "Cave" },
-    { "name": "BurnedTower_B1F", "matrix": 26, "area": "burned_tower_b1f", "trees": "Round", "setting": "Cave" }
+    { "name": "BurnedTower_B1F", "matrix": 26, "area": "burned_tower_b1f", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J7: the Slowpoke Well, Azalea's and Ecruteak's Gyms and the Department Store's lift
+    { "name": "SlowpokeWell_Entrance", "matrix": 45, "area": "slowpoke_well_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "SlowpokeWell_B1F", "matrix": 46, "area": "slowpoke_well_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "SlowpokeWell_B2F", "matrix": 106, "area": "slowpoke_well_b2f", "trees": "Round", "setting": "Cave" },
+    { "name": "Azalea_GymEntrance", "matrix": 88, "area": "azalea_gym_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "Azalea_Gym", "matrix": 105, "area": "azalea_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Ecruteak_Gym", "matrix": 90, "area": "ecruteak_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_DeptStore_Elevator", "matrix": 262, "area": "goldenrod_department_store_elevator", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -133,6 +141,9 @@
     "route_35_goldenrod_gatehouse", "route_35_national_park_pokeathalon_gatehouse", "national_park", "route_36_national_park_gatehouse",
     "route_36", "route_37", "ecruteak", "ecruteak_pokecenter_1f",
     "ecruteak_pokecenter_b1f", "ecruteak_pokemart", "ecruteak_dance_theater", "ecruteak_southwest_house",
-    "ecruteak_dowsing_machine_house", "ecruteak_bell_tower_barrier_station", "burned_tower_1f", "burned_tower_b1f"
+    "ecruteak_dowsing_machine_house", "ecruteak_bell_tower_barrier_station", "burned_tower_1f", "burned_tower_b1f",
+    // Plan 20 · J7: the Slowpoke Well, the two Gyms and the Department Store's lift
+    "slowpoke_well_entrance", "slowpoke_well_b1f", "slowpoke_well_b2f", "azalea_gym_entrance", "azalea_gym", "ecruteak_gym",
+    "goldenrod_department_store_elevator"
   ]
 }

@@ -1244,6 +1244,41 @@ script JohtoNewGame
   setflag FLAG_HIDE_SPROUT_TOWER_RIVAL
   setflag FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   setflag FLAG_HIDE_VIOLET_POKECENTER_AIDE
+  call JohtoChapterTwo
+  return
+
+
+# What Johto's second chapter hides until its scenes (plan 20 · J7), as HeartGold's new game has it: the guard by the
+# Slowpoke Well until he shoves the passer-by aside, the town's Slowpoke until the well is cleared, the red-haired boy
+# at Azalea's gate and Bugsy until then too (two flags of ours), Kurt's second place in the well, the charcoal maker's
+# apprentice, his master and their Farfetch'd in Ilex Forest, Officer Keith and Officer Dirk (who battle only after
+# dark: their routes' own scripts swap them with their doubles as they are come to), Arthur of Thursday, the flower
+# shop's sister in the shop while she waits by the tree on Route 36, Bill at home until he is met in Ecruteak City,
+# the red-haired boy in Ecruteak City, the five Kimono Girls on the stage, Ecruteak's old man until the three have
+# fled the Burned Tower, Eusine's second place there, and Morty in his Gym. JohtoNewGame calls it; a save from before
+# it was written (version 25) runs it as it loads. It may only set flags and variables, and ends in return.
+script JohtoChapterTwo
+  setflag FLAG_UNK_19F
+  setflag FLAG_HIDE_AZALEA_SLOWPOKES
+  setflag FLAG_HIDE_AZALEA_RIVAL
+  setflag FLAG_HIDE_AZALEA_GYM_BUGSY
+  setflag FLAG_HIDE_SLOWPOKE_WELL_B1F_KURT
+  setflag FLAG_HIDE_ILEX_APPRENTICE
+  setflag FLAG_HIDE_FARFETCHD_1_LOST
+  setflag FLAG_HIDE_FARFETCHD_2_LOST
+  setflag FLAG_HIDE_FARFETCHD_1_FOUND
+  setflag FLAG_HIDE_FARFETCHD_2_FOUND
+  setflag FLAG_HIDE_ILEX_CUT_MASTER
+  setflag FLAG_UNK_1D2
+  setflag FLAG_UNK_1CE
+  setflag FLAG_UNK_1C4
+  setflag FLAG_HIDE_GOLDENROD_FLOWERSHOP_GIRL
+  setflag FLAG_HIDE_GOLDENROD_BILL
+  setflag FLAG_HIDE_ECRUTEAK_RIVAL
+  setflag FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS
+  setflag FLAG_HIDE_ECRUTEAK_OLD_MAN
+  setflag FLAG_HIDE_BURNED_TOWER_B1F_EUSINE
+  setflag FLAG_HIDE_ECRUTEAK_GYM_MORTY
   return
 
 

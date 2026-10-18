@@ -1,14 +1,18 @@
 {
-  // Bill's family's house in Goldenrod City (plan 20 · J5, part b). Bill himself and his Eevee are a later chapter's
+  // Bill's family's house in Goldenrod City (plan 20 · J5, part b): his mother and little sister. Plan 20 · J7: Bill
+  // himself is home once met in Ecruteak City's Pokémon Center (FLAG_HIDE_GOLDENROD_BILL), with an Eevee for the
+  // player (scripts/goldenrod_bills_house.txt)
   "area": "goldenrod_bills_house",
   "bgmTrack": "johto/goldenrod",
   "people": {
+    "t25r0401_masaki": {
+      "name": "Bill",
+      "script": "Bill",
+      "still": true
+    },
     "t25r0401_middlewoman1_2": {
       "name": "Woman",
-      "dialog": [
-        "My son Bill made the PC storage system you use. He's off in Ecruteak City just now.",
-        "He calls whenever he wants feeding. Typical!"
-      ]
+      "script": "Mother"
     },
     "t25r0401_gsbabygirl1": {
       "name": "Little Girl",

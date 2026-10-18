@@ -105,6 +105,9 @@ public static class StoryMigration
         // Version 24: Hoenn's second stretch (plan 21 · H2, part b): the people of Route 104 to Rusturf Tunnel are hidden
         // until their scenes by common.HoennChapterTwo, which a new game runs too
         if (savedVersion < 24) Run(story, scripts, "common.HoennChapterTwo");
+        // Version 25: Johto's second chapter (plan 20 · J7): its people are hidden until their scenes by
+        // common.JohtoChapterTwo, which a new game runs too (the strange tree on Route 36 stands again in the way it kept)
+        if (savedVersion < 25) Run(story, scripts, "common.JohtoChapterTwo");
     }
 
     /// <summary>

@@ -1,0 +1,83 @@
+{
+  "key": "slowpoke_well_b2f",
+  "index": 181,
+  "name": "Slowpoke Well",
+  "matrix": 106,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D26R0103",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 21 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Zubat", "level": 21 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Zubat", "level": 19 },
+    { "species": "Zubat", "level": 19 },
+    { "species": "Slowpoke", "level": 21 },
+    { "species": "Slowpoke", "level": 21 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Slowpoke", "level": 23 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Slowpoke", "level": 23 }
+  ],
+  "landRate": 15,
+  "water": [
+    { "species": "Slowpoke", "level": 10, "maxLevel": 20 },
+    { "species": "Slowpoke", "level": 15, "maxLevel": 25 },
+    { "species": "Slowbro", "level": 15, "maxLevel": 25 },
+    { "species": "Slowbro", "level": 15, "maxLevel": 25 },
+    { "species": "Slowbro", "level": 30, "maxLevel": 30 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 13, "z": 20, "to": "slowpoke_well_b1f", "toWarp": 1 },
+    { "x": 13, "z": 19, "to": "slowpoke_well_b1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d26r0103_gsassistantm", "looks": "gsassistantm", "movement": "3", "x": 10, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "D26R0103_000+1" },
+    { "id": "d26r0103_monstarball", "looks": "monstarball", "movement": "0", "x": 25, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D26R0103_TM18", "item": "TM18", "script": "std_itemball_d26r0103_tm18" }
+  ],
+  "signs": [],
+  "triggers": []
+}

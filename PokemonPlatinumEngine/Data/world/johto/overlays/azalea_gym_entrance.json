@@ -1,0 +1,15 @@
+{
+  // The Azalea Gym's hall (plan 20 · J7): HeartGold's room, our words. Its guide and its two statues
+  "area": "azalea_gym_entrance",
+  "bgmTrack": "johto/gym",
+  "people": {
+    "t23gym0101_sunglasses": {
+      "name": "Gym Guide",
+      "script": "GymGuy",
+      "still": true
+    }
+  },
+  "signs": {
+    "T23GYM0101_001+1": "Azalea Town Pokémon Gym\nLeader: Bugsy"
+  }
+}

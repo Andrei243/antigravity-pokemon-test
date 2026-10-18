@@ -36,6 +36,9 @@ public class JohtoStoryTests
         public bool Impatient { get; init; }
         public bool PuzzleSolved { get; set; } = true;
         public Queue<int> Answers { get; } = new();
+        public SpecialEncounters Encounters { get; } = SpecialEncounters.NewGame(new Random(0));
+        public TimeOfDay Time { get; set; } = TimeOfDay.Morning;
+        public DayOfWeek Weekday { get; set; } = DayOfWeek.Monday;
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
         public const string Rival = "Silver";
@@ -114,7 +117,10 @@ public class JohtoStoryTests
                 RivalName = Rival,
                 Fight = _ => Fight,
                 NeedsPokemon = true,
-                PuzzleSolved = PuzzleSolved
+                PuzzleSolved = PuzzleSolved,
+                Encounters = Encounters,
+                TimeOfDay = Time,
+                Weekday = Weekday
             };
             while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
             var runner = new ScriptRunner(Scripts, host) { Impatient = Impatient };
@@ -425,5 +431,206 @@ public class JohtoStoryTests
         var after = game.Play(script);
         Assert.DoesNotContain(after.Log, l => l.StartsWith("open AlphPuzzle"));
         Assert.Empty(after.Asked);
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void TheSecondChapterPlaysFromTheSlowpokeWellToTheFogBadge(int starter)
+    {
+        // Plan 20 · J7: the Slowpoke Well and Kurt, Bugsy and the Hive Badge, the red-haired boy at Azalea's gate, the
+        // Farfetch'd and Cut in Ilex Forest, Whitney, the SquirtBottle, the Bicycle and the Radio Card in Goldenrod City,
+        // the strange tree on Route 36, Bill and his Eevee, the Burned Tower and the beasts set loose, the Dance Theater
+        // and Surf, Morty and the Fog Badge, and the Kimono Girls on their stage
+        var game = new Game(starter);
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        game.Story.ChooseStarter(johto.Starters[starter]);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machop")!, 30));
+
+        // Azalea Town: the grunt shoves a passer-by away from the well and stands guard
+        game.Arrive("Johto", 420, 465);
+        Assert.Null(game.Present("t23_rocketm"));
+        Assert.NotNull(game.Present("t23_rocketm_3"));
+        game.Step("Shove");
+        Assert.NotNull(game.Present("t23_rocketm"));
+        Assert.Null(game.Present("t23_rocketm_3"));
+        Assert.False(game.Fires("Shove"));
+        Assert.Null(game.Present("t23_tsure_poke_static_slowpoke"));
+
+        // Kurt runs to the well, and the guard is gone with him
+        game.Arrive("Azalea_KurtsHouse", 4, 8);
+        game.Talk("t23r0501_gantetsu");
+        Assert.Null(game.Present("t23r0501_gantetsu"));
+        game.Arrive("Johto", 420, 465);
+        Assert.Null(game.Present("t23_rocketm"));
+
+        // The well: Kurt's bad back, the grunts and Proton; beaten, the player is brought to Kurt's for his Lure Ball
+        game.Arrive("SlowpokeWell_Entrance", 17, 9);
+        Assert.Contains(game.Talk("d26r0101_gantetsu").Transcript, l => l.Speaker == "Kurt");
+        game.Arrive("SlowpokeWell_B1F", 42, 26);
+        foreach (string grunt in new[] { "d26r0102_rocketm", "d26r0102_rocketm_2", "d26r0102_rocketw" })
+            Assert.True(game.Present(grunt)?.IsTrainer, grunt);
+        var proton = game.Talk("d26r0102_rkanbum3");
+        Assert.Contains("battle johto_executive_proton_proton", string.Join("|", proton.Log));
+        Assert.True(game.Story.Has("FLAG_BEAT_AZALEA_ROCKETS"));
+        Assert.Equal("Azalea_KurtsHouse", game.Map.Name);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Lure Ball")!));
+        Assert.Equal(3, game.Story.Var("VAR_UNK_4080"));
+        game.Arrive("Johto", 420, 465);
+        Assert.NotNull(game.Present("t23_tsure_poke_static_slowpoke"));
+
+        // The Azalea Gym: a cart across the web, Bugsy, the Hive Badge and TM89
+        game.Arrive("Azalea_Gym", 9, 36);
+        Assert.Equal((9, 24), game.Step("Cart1").PlayerTile);
+        var bugsy = game.Talk("t23gym0102_gsleader2");
+        Assert.Contains(bugsy.Log, l => l.StartsWith("battle johto_leader_bugsy_bugsy"));
+        Assert.True(game.Story.HasBadge("Johto", "Hive"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM89")!));
+        Assert.True(game.Story.HasDefeated("johto_bug_catcher_josh"));
+
+        // The red-haired boy at the gate to Ilex Forest, with the team that beats the player's starter
+        game.Arrive("Johto", 400, 463);
+        Assert.True(game.Fires("Rival"));
+        var rival = game.Step("Rival");
+        string team = starter switch { 0 => "johto_rival_silver_7", 1 => "johto_rival_silver_10", _ => "johto_rival_silver" };
+        Assert.Contains(rival.Log, l => l.StartsWith($"battle {team} "));
+        Assert.False(game.Fires("Rival"));
+
+        // Ilex Forest: the apprentice, both Farfetch'd found, his master and HM01
+        game.Arrive("IlexForest", 15, 70);
+        Assert.NotNull(game.Present("d36r0101_gsboy1"));
+        game.Step("ApprenticeStops");
+        foreach (string bird in new[] { "d36r0101_tsure_poke_static_farfetchd", "d36r0101_tsure_poke_static_farfetchd_2" })
+            for (int tries = 0; tries < 3; tries++) game.Talk(bird);
+        Assert.True(game.Story.Has("FLAG_GOT_HM01"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM01")!));
+        Assert.Null(game.Present("d36r0101_gsboy1"));
+        game.Arrive("Azalea_CharcoalKiln", 4, 8);
+        game.Talk("t23r0201_gsboy1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Charcoal")!));
+
+        // Goldenrod City: Whitney's Badge, the SquirtBottle, the Bicycle and the Radio Card
+        game.Arrive("Goldenrod_Gym", 6, 24);
+        game.Talk("t25gym0101_gsleader3");
+        game.Talk("t25gym0101_gsleader3");
+        game.Arrive("Goldenrod_FlowerShop", 5, 8);
+        Assert.Null(game.Present("t25r0601_gsgirl1"));
+        game.Talk("t25r0601_gswoman1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("SquirtBottle")!));
+        game.Arrive("Goldenrod_BikeShop", 6, 10);
+        game.Talk("t25r0201_gsmiddleman1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Bicycle")!));
+        game.Arrive("Goldenrod_RadioTower_1F", 2, 13);
+        foreach (int answer in new[] { 0, 0, 0, 1, 0, 1 }) game.Answers.Enqueue(answer);
+        game.Talk("d23r0101_gswoman6_3");
+        Assert.True(game.Story.Has(PokemonPlatinumEngine.Models.Pokegear.RadioCardFlag));
+
+        // Route 36: the strange tree, watered and battled; the sister's berries and the way north
+        game.Arrive("Johto", 420, 246);
+        Assert.NotNull(game.Present("r36_usokky"));
+        game.Answers.Enqueue(0);
+        var tree = game.Talk("r36_usokky");
+        Assert.Contains("wildbattle Sudowoodo 20 Won", tree.Log);
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_36_SUDOWOODO"));
+        Assert.Null(game.Present("r36_usokky"));
+        Assert.Equal(3, game.Bag.GetQuantity(ItemDatabase.Get("Pecha Berry")!));
+        Assert.Null(game.Present("r36_gsgirl1_2"));
+        game.Talk("r36_gsbigman");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM06")!));
+
+        // Ecruteak City: the Gym's old man sees the player out while Morty is away
+        game.Arrive("Ecruteak_Gym", 16, 52);
+        Assert.Equal("Johto", game.Map.Name);
+        Assert.Equal(1, game.Story.Var("VAR_UNK_4079"));
+
+        // Bill on his way home, and his Eevee in Goldenrod
+        game.Arrive("Ecruteak_PokemonCenter_1F", 8, 18);
+        Assert.True(game.Story.Has("FLAG_SYS_MET_BILL"));
+        game.Arrive("Goldenrod_BillsHouse", 4, 7);
+        game.Talk("t25r0401_masaki");
+        Assert.Contains(game.Party.Members, p => p.Species.Name == "Eevee");
+
+        // The Burned Tower: Eusine, the red-haired boy, and the three below set loose
+        game.Arrive("BurnedTower_1F", 15, 25);
+        game.Step("Eusine");
+        var tower = game.Step("Rival");
+        string towerTeam = starter switch { 0 => "johto_rival_silver_8", 1 => "johto_rival_silver_11", _ => "johto_rival_silver_4" };
+        Assert.Contains(tower.Log, l => l.StartsWith($"battle {towerTeam} "));
+        game.Arrive("BurnedTower_B1F", 22, 16);
+        game.Step("Awaken");
+        foreach (string beast in new[] { "Raikou", "Entei" })
+        {
+            var roamer = game.Encounters.Roamers[Roamers.SlotOf(beast)!.Value];
+            Assert.True(roamer.Active, beast);
+            Assert.Contains(Roamers.PlaceOf(roamer), Roamers.JohtoRoutes);
+        }
+        Assert.Equal(2, game.Story.Var("VAR_UNK_4079"));
+        game.Arrive("BurnedTower_1F", 15, 25);
+        Assert.Null(game.Present("d18r0101_gsleader4"));
+
+        // The Dance Theater: the grunt, and Surf from the gentleman
+        game.Arrive("Ecruteak_DanceTheater", 7, 16);
+        Assert.Equal(1, game.Story.Var("VAR_UNK_410C"));
+        game.Talk("t27r0501_rocketm");
+        Assert.Null(game.Present("t27r0501_rocketm"));
+        game.Step("Surf");
+        Assert.True(game.Story.Has("FLAG_GOT_HM03"));
+
+        // Morty: a hole drops the player back by the door; the Fog Badge and TM30
+        game.Arrive("Ecruteak_Gym", 16, 52);
+        Assert.Equal("Ecruteak_Gym", game.Map.Name);
+        Assert.Equal((16, 49), game.Step("Fall").PlayerTile);
+        var morty = game.Talk("t27gym0101_gsleader4");
+        Assert.Contains(morty.Log, l => l.StartsWith("battle johto_leader_morty_morty"));
+        Assert.True(game.Story.HasBadge("Johto", "Fog"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM30")!));
+        Assert.Equal(3, game.Story.Var("VAR_UNK_4079"));
+
+        // The red-haired boy at the theater's door, and the five Kimono Girls on the stage
+        game.Arrive("Johto", 397, 176);
+        Assert.True(game.Fires("RivalBumps"));
+        game.Step("RivalBumps");
+        game.Arrive("Ecruteak_DanceTheater", 7, 16);
+        Assert.NotNull(game.Present("t27r0501_dancer"));
+        Assert.Null(game.Present("t27r0501_gsgentleman"));
+        foreach (string badge in new[] { "Hive", "Plain", "Fog" }) Assert.True(game.Story.HasBadge("Johto", badge), badge);
+    }
+
+    [Fact]
+    public void TheStrangeTreeWaitsForTheSquirtBottleAndStaysWhenRunFrom()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machop")!, 30));
+        game.Arrive("Johto", 420, 246);
+        // No SquirtBottle: it only wiggles
+        var wiggle = game.Talk("r36_usokky");
+        Assert.DoesNotContain(wiggle.Log, l => l.StartsWith("wildbattle"));
+        Assert.Empty(wiggle.Asked);
+        // Run from, it stands still again in the way
+        game.Bag.AddItem(ItemDatabase.Get("SquirtBottle")!, 1);
+        game.Fight = BattleOutcome.Fled;
+        game.Answers.Enqueue(0);
+        game.Talk("r36_usokky");
+        Assert.False(game.Story.Has("FLAG_HIDE_ROUTE_36_SUDOWOODO"));
+        Assert.NotNull(game.Present("r36_usokky"));
+        Assert.NotNull(game.Present("r36_gsgirl1_2"));
+    }
+
+    [Theory]
+    [InlineData(TimeOfDay.Day, false)]
+    [InlineData(TimeOfDay.Night, true)]
+    [InlineData(TimeOfDay.LateNight, true)]
+    public void TheDayCareRoadsOfficersBattleOnlyAfterDark(TimeOfDay time, bool battles)
+    {
+        // HeartGold's R34_000 and R35_001: Officer Keith and Officer Dirk stand on their tiles at night and late at
+        // night; the rest of the day their doubles, who only talk, stand there instead
+        var game = new Game { Time = time };
+        game.Arrive("Johto", 365, 420);
+        Assert.Equal(battles, game.Present("r34_policeman") != null);
+        Assert.Equal(!battles, game.Present("r34_policeman_2") != null);
+        game.Arrive("Johto", 366, 300);
+        Assert.Equal(battles, game.Present("r35_policeman") != null);
+        Assert.Equal(!battles, game.Present("r35_policeman_2") != null);
     }
 }

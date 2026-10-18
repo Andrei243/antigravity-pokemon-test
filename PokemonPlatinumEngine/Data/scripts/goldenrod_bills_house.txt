@@ -1,0 +1,38 @@
+# Bill's family's house in Goldenrod City (plan 20 · J7). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_T25R0401): Bill, home once met in Ecruteak City (VAR_UNK_410D 1), gives an Eevee
+# to a team with room for it (FLAG_GOT_EEVEE_FROM_BILL); his mother tells where he is.
+
+
+script Bill
+  face t25r0401_masaki player
+  speaker "Bill"
+  if flag FLAG_GOT_EEVEE_FROM_BILL goto Given
+  say "Oh, hi, {player}! Thanks for coming. Remember the Eevee I told you about? It's right here."
+  ask "It's a rare one, and it can evolve in all sorts of ways. Would you like to raise it?"
+  if no goto No
+  if var PARTY_COUNT >= 6 goto Full
+  givepokemon "Eevee" 5
+  setflag FLAG_GOT_EEVEE_FROM_BILL
+  fanfare pokemon
+  text "{player} received Eevee!"
+  say "Eevee's a funny one. Its genes are unstable, so it can turn into lots of different Pokémon. Take good care of it!"
+  end
+label No
+  say "No? That's a shame. If you change your mind, come back. Eevee will be here."
+  end
+label Full
+  say "Whoa, your team's full! Make some room, then come and see me."
+  end
+label Given
+  say "How's Eevee doing? I can't wait to see what it turns into."
+  end
+
+
+script Mother
+  if var VAR_UNK_410D == 1 goto Home
+  say "My son Bill made the PC storage system you use. He's off in Ecruteak City just now."
+  say "He calls whenever he wants feeding. Typical!"
+  end
+label Home
+  say "Bill came home all of a sudden. He always rushes in like that, then off again!"
+  end

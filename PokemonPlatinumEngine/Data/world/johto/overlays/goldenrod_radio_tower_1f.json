@@ -1,6 +1,6 @@
 {
-  // The Radio Tower's ground floor (plan 20 · J5, part b). The quiz and the Radio Card are the next chapter's (plan 20 ·
-  // J7), and Team Rocket's takeover the eleventh's: the stairs up (warp 1) stay shut, and the staff the takeover hides
+  // The Radio Tower's ground floor (plan 20 · J5, part b). The quiz for the Radio Card is plan 20 · J7's
+  // (scripts/goldenrod_radio_tower_1f.txt), and Team Rocket's takeover the eleventh's: the stairs up (warp 1) stay shut, and the staff the takeover hides
   // stand at every hour
   "area": "goldenrod_radio_tower_1f",
   "bgmTrack": "johto/goldenrod",
@@ -23,12 +23,11 @@
       ],
       "hiddenBy": ""
     },
+    // The quiz for the Radio Card (plan 20 · J7, scripts/goldenrod_radio_tower_1f.txt)
     "d23r0101_gswoman6_3": {
       "name": "Receptionist",
+      "script": "Quiz",
       "still": true,
-      "dialog": [
-        "Our quiz is being set up. Come back soon, and you could win something special!"
-      ],
       "hiddenBy": ""
     },
     "d23r0101_gsman1": {

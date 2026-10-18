@@ -19,14 +19,55 @@ namespace PokemonPlatinumEngine.Overworld;
 /// it would any Pokémon of its level. It keeps the HP and condition each battle leaves it with; knocked out or caught
 /// it roams no more, and after any battle with it every roamer there moves on, as they do three times in ten after
 /// another wild battle.
+/// Johto's two (plan 20 · J7; HeartGold's <c>src/field_roamer.c</c>): Raikou and Entei, set loose at level 40 when they
+/// flee the Burned Tower, roam HeartGold's sixteen routes of Johto (<see cref="JohtoRoutes"/>) by the same rules, each
+/// moving among its own region's places alone.
 /// </summary>
 public static class Roamers
 {
     /// <summary>The original's six slots (<c>ROAMING_SLOT_*</c>, <c>RoamingPokemon_ActivateSlot</c>): each one's species and level.</summary>
     public static readonly (string Species, int Level)[] Slots =
     {
-        ("Mesprit", 50), ("Cresselia", 50), ("Darkrai", 40), ("Moltres", 60), ("Zapdos", 60), ("Articuno", 60)
+        ("Mesprit", 50), ("Cresselia", 50), ("Darkrai", 40), ("Moltres", 60), ("Zapdos", 60), ("Articuno", 60),
+        // HeartGold's ROAMER_RAIKOU and ROAMER_ENTEI (Save_CreateRoamerByID: level 40), after Platinum's six
+        ("Raikou", 40), ("Entei", 40)
     };
+
+    /// <summary>The slots that roam Johto (HeartGold's <c>roamer_idx == ROAMER_RAIKOU || ROAMER_ENTEI</c>): the rest roam Sinnoh.</summary>
+    public static bool InJohto(string species) => species is "Raikou" or "Entei";
+
+    /// <summary>Johto's places a roamer goes (HeartGold's <c>sRoamerLocations</c>, <c>ROAMER_LOC_R29</c> to <c>R46</c>), by its area keys.</summary>
+    public static readonly string[] JohtoRoutes =
+    {
+        "route_29", "route_30", "route_31", "route_32", "route_33", "route_34", "route_35", "route_36", "route_37",
+        "route_38", "route_39", "route_42", "route_43", "route_44", "route_45", "route_46"
+    };
+
+    // HeartGold's sRoamerAdjacencyTable for Johto, in JohtoRoutes' order
+    private static readonly int[][] JohtoNearby =
+    {
+        new[] { 1, 15 },        // 29: 30, 46
+        new[] { 0, 2 },         // 30: 29, 31
+        new[] { 1, 3, 7 },      // 31: 30, 32, 36
+        new[] { 2, 4, 7 },      // 32: 31, 33, 36
+        new[] { 3, 5 },         // 33: 32, 34
+        new[] { 4, 6 },         // 34: 33, 35
+        new[] { 5, 7 },         // 35: 34, 36
+        new[] { 2, 3, 8 },      // 36: 31, 32, 37
+        new[] { 7, 9, 11 },     // 37: 36, 38, 42
+        new[] { 8, 10, 11 },    // 38: 37, 39, 42
+        new[] { 9 },            // 39: 38
+        new[] { 8, 9, 12, 13 }, // 42: 37, 38, 43, 44
+        new[] { 11, 13 },       // 43: 42, 44
+        new[] { 11, 12, 15 },   // 44: 42, 43, 46
+        new[] { 13, 15 },       // 45: 44, 46
+        new[] { 0, 14 }         // 46: 29, 45
+    };
+
+    /// <summary>The places a species roams: Johto's for Raikou and Entei, Sinnoh's for the rest.</summary>
+    public static string[] RoutesOf(string species) => InJohto(species) ? JohtoRoutes : Routes;
+
+    private static int[][] NearbyOf(string species) => InJohto(species) ? JohtoNearby : Nearby;
 
     /// <summary>The places roamers go, by the original's numbers (<c>RoamingPokemonRoutes</c>, <c>RI_*</c>).</summary>
     public static readonly string[] Routes =
@@ -87,7 +128,12 @@ public static class Roamers
     }
 
     /// <summary>The place a roamer is, by its key; null for one that isn't roaming.</summary>
-    public static string? PlaceOf(Roamer roamer) => roamer.Active ? Routes[Math.Clamp(roamer.Route, 0, Routes.Length - 1)] : null;
+    public static string? PlaceOf(Roamer roamer)
+    {
+        if (!roamer.Active) return null;
+        var routes = RoutesOf(roamer.Species);
+        return routes[Math.Clamp(roamer.Route, 0, routes.Length - 1)];
+    }
 
     /// <summary>
     /// <c>RoamingPokemon_ActivateSlot</c>: the slot's Pokémon is made (random IVs, at full HP, with no condition) and
@@ -109,11 +155,12 @@ public static class Roamers
     public static void MoveRandom(SpecialEncounters state, int slot, Random rng)
     {
         var roamer = state.Roamers[slot];
-        string current = Routes[Math.Clamp(roamer.Route, 0, Routes.Length - 1)];
+        var routes = RoutesOf(roamer.Species);
+        string current = routes[Math.Clamp(roamer.Route, 0, routes.Length - 1)];
         while (true)
         {
-            int next = rng.Next(Routes.Length);
-            if (Routes[next] == state.PreviousPlace || Routes[next] == current) continue;
+            int next = rng.Next(routes.Length);
+            if (routes[next] == state.PreviousPlace || routes[next] == current) continue;
             roamer.Route = next;
             return;
         }
@@ -123,17 +170,18 @@ public static class Roamers
     public static void MoveNearby(SpecialEncounters state, int slot, Random rng)
     {
         var roamer = state.Roamers[slot];
-        var near = Nearby[Math.Clamp(roamer.Route, 0, Routes.Length - 1)];
+        var routes = RoutesOf(roamer.Species);
+        var near = NearbyOf(roamer.Species)[Math.Clamp(roamer.Route, 0, routes.Length - 1)];
         if (near.Length == 1)
         {
-            if (Routes[near[0]] == state.PreviousPlace) MoveRandom(state, slot, rng);
+            if (routes[near[0]] == state.PreviousPlace) MoveRandom(state, slot, rng);
             else roamer.Route = near[0];
             return;
         }
         while (true)
         {
             int next = near[rng.Next(near.Length)];
-            if (Routes[next] == state.PreviousPlace) continue;
+            if (routes[next] == state.PreviousPlace) continue;
             roamer.Route = next;
             return;
         }

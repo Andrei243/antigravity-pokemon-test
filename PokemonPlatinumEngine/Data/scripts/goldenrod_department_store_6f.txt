@@ -1,0 +1,49 @@
+# The Goldenrod Department Store's top floor (plan 20 · J7). docs/scripts.md describes the language; HeartGold's beats
+# (scr_seq_T25R1006): the drinks machines sell Fresh Water, Soda Pop and Lemonade at 200, 300 and 350, and now and
+# then drop a second can (one time in sixty-four, as Veilstone's do).
+
+
+script Vending
+  speaker none
+  choose "A drinks machine. Which drink would you like?" "FRESH WATER  200" "SODA POP  300" "LEMONADE  350" "NONE"
+  if result == 0 goto Water
+  if result == 1 goto Soda
+  if result == 2 goto Lemonade
+  text "Decided not to buy a drink."
+  end
+label Water
+  takemoney 200
+  if result == 0 goto Poor
+  sound "bump"
+  text "Clang! A bottle of Fresh Water dropped down."
+  give "Fresh Water"
+  random 64
+  if result != 0 end
+  text "Lucky! Another bottle of Fresh Water dropped down."
+  give "Fresh Water"
+  end
+label Soda
+  takemoney 300
+  if result == 0 goto Poor
+  sound "bump"
+  text "Clang! A can of Soda Pop dropped down."
+  give "Soda Pop"
+  random 64
+  if result != 0 end
+  text "Lucky! Another can of Soda Pop dropped down."
+  give "Soda Pop"
+  end
+label Lemonade
+  takemoney 350
+  if result == 0 goto Poor
+  sound "bump"
+  text "Clang! A can of Lemonade dropped down."
+  give "Lemonade"
+  random 64
+  if result != 0 end
+  text "Lucky! Another can of Lemonade dropped down."
+  give "Lemonade"
+  end
+label Poor
+  text "Not enough money..."
+  end

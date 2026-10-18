@@ -1,0 +1,70 @@
+{
+  // The Azalea Gym (plan 20 · J7): HeartGold's room of webs, our words. Its three islands are joined by Spinarak carts:
+  // each of the twelve docks is one of HeartGold's triggers, and stepping onto one rides the player across the web to
+  // the dock facing it (docs/mechanics/rulings.md, "Johto's second chapter": HeartGold's switches that turn the carts'
+  // tracks are left out, so a cart runs straight across). Bugsy is back once the Slowpoke Well is cleared; his
+  // trainers battle by their own records (Johto's trainers.json)
+  "area": "azalea_gym",
+  "bgmTrack": "johto/gym",
+  "triggers": [
+    { "trigger": 0, "script": "Cart0" },
+    { "trigger": 1, "script": "Cart1" },
+    { "trigger": 2, "script": "Cart2" },
+    { "trigger": 3, "script": "Cart3" },
+    { "trigger": 4, "script": "Cart4" },
+    { "trigger": 5, "script": "Cart5" },
+    { "trigger": 6, "script": "Cart6" },
+    { "trigger": 7, "script": "Cart7" },
+    { "trigger": 8, "script": "Cart8" },
+    { "trigger": 9, "script": "Cart9" },
+    { "trigger": 10, "script": "Cart10" },
+    { "trigger": 11, "script": "Cart11" }
+  ],
+  "people": {
+    "t23gym0102_gsleader2": {
+      "name": "Bugsy",
+      "script": "Bugsy",
+      "still": true
+    },
+    "t23gym0102_gsboy3": {
+      "name": "Al",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Al: The carts only go one way at a time. So do I: straight at you!",
+        "dialogueAfter": "Bug Catcher Al: Squashed flat."
+      }
+    },
+    "t23gym0102_gsboy3_2": {
+      "name": "Benny",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Benny: My Beedrill's sting is legendary in this Gym!",
+        "dialogueAfter": "Bug Catcher Benny: Legend over, I guess."
+      }
+    },
+    "t23gym0102_gsboy3_3": {
+      "name": "Josh",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Josh: You won't get to Bugsy without getting past me and my Paras!",
+        "dialogueAfter": "Bug Catcher Josh: Okay, you got past me."
+      }
+    },
+    "t23gym0102_gsbabygirl1_2": {
+      "name": "Amy",
+      "trainer": {
+        "dialogueBefore": "Twins Amy: We love bugs! Bugsy taught us everything!",
+        "dialogueAfter": "Twins Amy: We still love bugs, though."
+      }
+    },
+    "t23gym0102_gsbabygirl1": {
+      "name": "Mimi",
+      "trainer": {
+        "id": "johto_twins_amy_and_mimi",
+        "dialogueBefore": "Twins Mimi: Two bugs are better than one!",
+        "dialogueAfter": "Twins Mimi: Two bugs weren't better this time."
+      }
+    }
+  },
+  "signs": {
+    "T23GYM0102_014+1": "A lever for the carts' tracks. It's set so each cart runs straight across.",
+    "T23GYM0102_015+1": "A lever for the carts' tracks. It's set so each cart runs straight across."
+  }
+}

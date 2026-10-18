@@ -120,6 +120,9 @@ trainers 4, 23-28: black_belt_colby 27, black_belt_darren 25, black_belt_jeffery
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
+=== azalea_gym
+Azalea Town
+trainers 4, 7-13: johto_bug_catcher_al 12, johto_bug_catcher_benny 12, johto_bug_catcher_josh 13, johto_twins_amy_and_mimi 10
 === burned_tower_1f
 Burned Tower
 grass 13-16
@@ -175,6 +178,9 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+=== ecruteak_gym
+Ecruteak City
+trainers 4, 16-22: johto_medium_edith 22, johto_medium_georgina 16, johto_medium_grace 20, johto_medium_martha 20
 === eterna_city
 Eterna City
 surf 20-40
@@ -1028,6 +1034,21 @@ trainers 3, 26-29: kanto_scientist_parker 29, kanto_team_rocket_grunt_32 26, kan
 === silph_co_9f
 Silph Co.
 trainers 3, 28: kanto_scientist_ed 28, kanto_team_rocket_grunt_37 28, kanto_team_rocket_grunt_38 28
+=== slowpoke_well_b1f
+Slowpoke Well
+grass 5-8
+surf 5-25
+old rod 10
+good rod 20
+super rod 40
+trainers 3, 7-11: johto_team_rocket_f_grunt 11, johto_team_rocket_grunt 9, johto_team_rocket_grunt_2 9
+=== slowpoke_well_b2f
+Slowpoke Well
+grass 19-23
+surf 10-30
+old rod 10
+good rod 20
+super rod 40
 === snowpoint_temple_1f
 Snowpoint Temple
 grass 47-50

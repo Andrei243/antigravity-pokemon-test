@@ -12,8 +12,18 @@ namespace PokemonPlatinumEngine.Models;
 /// Radar's battery, the roaming Pokémon and the places the player was last in, and the steps poison counts. No
 /// drawing or input; saved whole (<see cref="Core.SaveData.Encounters"/>).
 /// </summary>
-public sealed class SpecialEncounters
+public sealed class SpecialEncounters : System.Text.Json.Serialization.IJsonOnDeserialized
 {
+    /// <summary>
+    /// A save from before a slot was added (plan 20 · J7: Johto's Raikou and Entei after Platinum's six) is given the
+    /// slots it lacks, each as a new game has it.
+    /// </summary>
+    public void OnDeserialized()
+    {
+        for (int slot = Roamers.Count; slot < Overworld.Roamers.Slots.Length; slot++)
+            Roamers.Add(new Roamer { Species = Overworld.Roamers.Slots[slot].Species, Level = Overworld.Roamers.Slots[slot].Level });
+    }
+
     /// <summary>
     /// The number the original keeps for the player's record-mixing group (<c>RecordMixedRNG_GetRand</c>): it moves
     /// on once a day by its own generator (<see cref="Next"/>), and Feebas's tiles, the Great Marsh's daily Pokémon
@@ -141,7 +151,7 @@ public sealed class HoneyTree
 
 /// <summary>
 /// A roaming Pokémon as the save keeps it (<c>Roamer</c>): its species and level, whether it roams, where (a place in
-/// the roamers' list of routes, <see cref="Overworld.Roamers.Routes"/>), and the Pokémon itself as it was made when
+/// the roamers' list of routes of its region, <see cref="Overworld.Roamers.RoutesOf"/>), and the Pokémon itself as it was made when
 /// it was set loose (its IVs, personality, nature and gender), with the HP and condition its last battle left it.
 /// </summary>
 public sealed class Roamer

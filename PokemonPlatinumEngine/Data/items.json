@@ -13733,5 +13733,17 @@
     "canUseInOverworld": false,
     "description": "A watering can shaped like a Wailmer. It waters the soil of a berry tree.",
     "cantBeTossed": true
+  },
+  {
+    "id": 9200,
+    "name": "SquirtBottle",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A bottle that sprays a fine mist of water. Plants love it, and so do some things that only look like plants.",
+    "cantBeTossed": true
   }
 ]

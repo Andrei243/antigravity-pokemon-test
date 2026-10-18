@@ -1,6 +1,6 @@
 {
-  // Route 35 (plan 20 · J5, part b): north from Goldenrod City to the National Park's gate. Officer Dirk, who battles in
-  // HeartGold only after dark, stands here at every hour for now. Its Apricorn tree is plan 20 · J6's and Cameron a later
+  // Route 35 (plan 20 · J5, part b): north from Goldenrod City to the National Park's gate. Officer Dirk battles only after
+  // dark, as in HeartGold; by day his double stands on his tile and only talks (plan 20 · J7, scripts/route_35.txt). Its Apricorn tree is plan 20 · J6's and Cameron a later
   // chapter's
   "area": "route_35",
   "bgmTrack": "johto/route34",
@@ -11,8 +11,12 @@
       "trainer": {
         "dialogueBefore": "Officer Dirk: Hold it! It's my job to keep these roads safe. Let's see your Pokémon!",
         "dialogueAfter": "Officer Dirk: Fine work. The roads are safe with you on them."
-      },
-      "hiddenBy": ""
+      }
+    },
+    // His daytime double on the same tile (HeartGold's FLAG_UNK_1CD), who only talks
+    "r35_policeman_2": {
+      "name": "Officer",
+      "dialog": [ "All quiet on Route 35 today. Come by after dark if you fancy a real test of your team." ]
     },
     "r35_picnicgirl_2": {
       "name": "Kim",

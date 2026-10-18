@@ -1,0 +1,148 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come on, give us a dance! What, you won't dance for Team Rocket? Then I'll take that Eevee off your hands instead!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Kimono Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, stop it! Somebody, help!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Who asked you? Team Rocket goes where it likes and takes what it wants. Get lost, or get hurt!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tch! Whatever. Dancing's boring anyway. I'm out of here!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Bothered": [
+    {
+      "en": [
+        "Kimono Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you for saving me. My Eevee and I would have been so frightened without you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That man won't leave me alone. Please, can't somebody make him go away?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Gentleman": [
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I never miss a performance. My Psyduck enjoys it as much as I do."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Surf lets a Pokémon carry you over the water. With the Fog Badge, you'll be able to use it outside of battle."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GiveSurf": [
+    {
+      "en": [
+        "Gentleman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That was splendid! You stood up to that ruffian when the rest of us only watched. I'm ashamed of myself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, accept this. It's a technique I treasure, but you'll put it to far better use."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's Surf. A Pokémon that knows it can carry you over the water once you have Morty's Fog Badge."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

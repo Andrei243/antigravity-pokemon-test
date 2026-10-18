@@ -1,0 +1,196 @@
+{
+  "Sudowoodo": [
+    {
+      "en": [
+        "The tree is wiggling!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a weird tree. Use the SquirtBottle on it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} watered the tree with the SquirtBottle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The tree hated the water! It jumped up and attacked!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So it was a Pokémon pretending to be a tree! You were so brave. Thank you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "These are from my sister's garden. Please take them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm going back to the flower shop now. Come and see us in Goldenrod sometime!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The strange tree has gone still again..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a weird tree. It's wiggling ever so slightly... and it's blocking the way."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FlowerGirl": [
+    {
+      "en": [
+        "This tree won't let anybody past. It wiggles when you touch it! My sister in Goldenrod might know what to do."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's my sister's SquirtBottle! Go on, give the tree a squirt. I want to see what it does!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RockSmash": [
+    {
+      "en": [
+        "Rocks in your way? Smash 'em! That's my motto. Here, take this. You'll know what to do with it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "HM06 is Rock Smash. With the Zephyr Badge, a Pokémon that knows it can break cracked rocks outside of battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sometimes there's a Pokémon hiding under the rock, too!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Smash those rocks! Every rock you break is a rock that can't get in your way."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Girl": [
+    {
+      "en": [
+        "There's a strange tree blocking the way to Route 37. Nobody can get past it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The tree that blocked the road turned out to be a Pokémon! Now we can walk to Ecruteak City again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Arthur": [
+    {
+      "en": [
+        "Arthur"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Who are you? I'm Arthur of Thursday. My sisters and brothers each have a day, and Thursday is mine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that holds a Hard Stone hits harder with Rock-type moves. Thursdays are solid as a rock!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Arthur of Thursday. Did you meet my brothers and sisters? Each of them has a day of their own."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Today isn't Thursday. Come back then."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

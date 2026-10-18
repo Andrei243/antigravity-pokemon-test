@@ -99,7 +99,7 @@ public class StarkMountainAndTheLegendaryPokemonTests
     {
         var game = new OpeningTests.Game();
         // No story version of its own: common.ChapterTwelve hid this part's people already (plan 02 · S15, part a)
-        Assert.Equal(24, StoryState.CurrentVersion);   // 23 and 24 are plan 21 · H2's Hoenn story, not this part's
+        Assert.Equal(25, StoryState.CurrentVersion);   // 23 and 24 are plan 21 · H2's Hoenn story, 25 plan 20 · J7's Johto, not this part's
         var sinnoh = game.Maps["Sinnoh"];
         NPC Of(Map map, string place, string key) => Assert.Single(map.Everyone, n => n.Key == key && (map.ScriptFileAt(n.GridX, n.GridY) == place || n.ScriptFile == place));
 
@@ -1055,11 +1055,13 @@ public class StarkMountainAndTheLegendaryPokemonTests
     public void TheRoamersAreTheOriginalsSixAtItsLevels()
     {
         // src/roaming_pokemon.c, RoamingPokemon_ActivateSlot: Mesprit and Cresselia at 50, Darkrai at 40, the three birds at 60
-        Assert.Equal(new[] { ("Mesprit", 50), ("Cresselia", 50), ("Darkrai", 40), ("Moltres", 60), ("Zapdos", 60), ("Articuno", 60) }, Roamers.Slots);
+        Assert.Equal(new[] { ("Mesprit", 50), ("Cresselia", 50), ("Darkrai", 40), ("Moltres", 60), ("Zapdos", 60), ("Articuno", 60) }, Roamers.Slots.Take(6));
+        // and after them HeartGold's two, which roam Johto (plan 20 · J7, the Burned Tower)
+        Assert.Equal(new[] { ("Raikou", 40), ("Entei", 40) }, Roamers.Slots.Skip(6));
         // Each is set loose by a scene of its own: Mesprit's cavern (plan 02 · S13), Cresselia's wood, Professor Oak's
         // three birds in Eterna City (plan 02 · S15, part a). Darkrai's belongs to one of the original's events
         var loosed = Scripts.All.SelectMany(s => s.Everything()).Where(i => i.Op == Op.Roamer).Select(i => i.Name).Distinct().Order().ToList();
-        Assert.Equal(new[] { "Articuno", "Cresselia", "Mesprit", "Moltres", "Zapdos" }, loosed);
+        Assert.Equal(new[] { "Articuno", "Cresselia", "Entei", "Mesprit", "Moltres", "Raikou", "Zapdos" }, loosed);
     }
 
     // ------------------------------------------------------------------ the Pokédex, the things and the walk

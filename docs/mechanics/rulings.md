@@ -2928,3 +2928,62 @@ why:
 - **Gifts**: the Good Rod in Fuchsia and the Super Rod on Route 12 for a yes, Route 15's aide's Exp. Share for fifty
   kinds caught, Substitute taught once by the boy by Fuchsia's Mart (`MoveTutors.Kanto`). The Move Deleter is
   Canalave's. Route 18's trade, FireRed's Magikarp measure on Route 12 and its Fame Checker are left away.
+## Johto's second chapter (2026-10-18, plan 20 · J7)
+
+From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,
+`T23GYM0102`, `D36R0101`, `R36`, `T25R0201`, `T25R0401`, `T25R0601`, `D23R0101`, `T27PC0101`, `D18R0101`, `D18R0102`,
+`T27R0501`, `T27GYM0101`, `T27`), in our own words. Flags keep HeartGold's names, `FLAG_UNK_*` included; where
+HeartGold's object has no flag, or moves its own object instead of hiding one, the flag is ours
+(`FLAG_HIDE_AZALEA_RIVAL`, `FLAG_HIDE_AZALEA_GYM_BUGSY`, `FLAG_HIDE_SLOWPOKE_WELL_B1F_KURT`). `common.JohtoChapterTwo`
+hides the chapter's people for a new game and for a save from before it (story version 25).
+
+- **The strange tree on Route 36 stands where HeartGold stands it** (415, 246), in the one-tile way between Violet
+  City's side of the route and the turning north to Route 37; the ledges of the way from the National Park drop a
+  walker east of it. So Ecruteak City is come to only once the tree has been watered with the SquirtBottle and battled
+  (a wild Sudowoodo at level 20, won or caught; run from, it stands again), as in HeartGold, and a walk of the whole
+  game in which the tree stays reaches neither Route 37 nor Ecruteak City (`JohtoTests`). A save made west of the tree
+  before it stood is never shut in: Goldenrod City, Ilex Forest and Union Cave lead round to Violet City. The florist
+  lends the SquirtBottle (a key item of ours, `Overrides/items.json`) to a trainer with the Plain Badge; her sister,
+  who waits by the tree, gives three Oran and three Pecha Berries and goes home, where HeartGold's Berry Pots, a key
+  item with no use in this game yet, are left out. The florist sells the four mulches afterwards.
+- **Bugsy is away until the Slowpoke Well is cleared** (a flag of ours): HeartGold's Gym is open all along, but the
+  Hive Badge is what lets Cut be used outside of battle, and Ilex Forest's apprentice and his birds only come once the
+  well is cleared, so the chapter is played in HeartGold's order either way.
+- **The Azalea Gym's Spinarak carts run straight across**: each of HeartGold's twelve docks is one of its triggers, and
+  stepping onto one rides the player (a sound and the dark) to the dock facing it on the next island. HeartGold's carts
+  run on tracks its two levers turn; the levers are read and left as they are. The top island's north-east dock, which
+  has none below it, runs to the middle dock. A room of a DS game longer than a chunk is walled where neither its ways
+  in nor its triggers reach (`WorldMapBuilder`), so the islands are part of the room and the open floor round the hall
+  isn't.
+- **Ilex Forest's two Farfetch'd each run twice and are caught the third time**: HeartGold's birds flee from sticks the
+  player steps on and are caught from behind; here each hops to a new spot (two of HeartGold's) as it is spoken to and
+  gives in at the third (`VAR_FARFETCHD1_PLACE`, `VAR_FARFETCHD2_PLACE`, ours, which the forest's own script puts back
+  as it is come to). With both, the charcoal maker comes for his apprentice and gives HM01; the apprentice's Charcoal
+  waits at the kiln.
+- **Kurt gives a Lure Ball** for the well, as HeartGold's Kurt does; making balls of Apricorns is plan 20 · J6's.
+- **The Radio Card** is won at the Radio Tower's quiz: five questions of ours, yes or no in HeartGold's pattern of
+  answers, all right in a row. The Pokégear's radio (plan 20 · J3) reads its flag.
+- **Raikou and Entei roam Johto**, set loose by the Burned Tower at level 40 (HeartGold's `CreateRoamer 0` and `1`):
+  two slots after Platinum's six in `Overworld/Roamers.cs`, each roaming HeartGold's sixteen routes of Johto by its
+  own table of neighbours (`field_roamer.c`), never Sinnoh's; a save of the six slots is given the two as it is read.
+  Suicune doesn't roam, as in HeartGold (the plan's "three roamers" is the Gold and Silver of 2000): it runs on ahead
+  of Eusine, and where it is next seen is a later chapter's.
+- **The Ecruteak Gym's floor hides its holes** as HeartGold's does: each hole off the safe path is one of its triggers,
+  and a step onto one drops the player back by the door. Nothing on the floor tells the path; the Gym Guide warns of it.
+  Until the Burned Tower's three have fled, an old man sees visitors out and Morty is away.
+- **Surf is the Dance Theater's gift**: the gentleman of the audience gives HM03 once the grunt bothering a Kimono Girl
+  is beaten, walked up to on the stage's steps or spoken to. The red-haired boy's scene at the theater's door, after
+  which the five Kimono Girls take the stage, waits for both the Fog Badge and HM03 (`VAR_UNK_4079` 3, set by whichever
+  comes second): HeartGold's variable is set by a script of its own this game hasn't, and the scene sets
+  `VAR_UNK_410C` past the gift.
+- **Officers Keith and Dirk battle after dark only**: at night and late at night, by their routes' own scripts as the
+  place is come to; by day their doubles stand on their tiles and talk.
+- **Bill** meets the player on the first visit to Ecruteak City's Pokémon Center and is home in Goldenrod City
+  afterwards with an Eevee for a team with room for it; his number isn't given (the Pokégear's PC calls are later).
+- **The Goldenrod Department Store's counters sell HeartGold's stock** (`src/scrcmd_mart.c`'s lists 3 to 7, laid over
+  the imported marts by `tools/DataImporter/Overrides/marts.json`), its roof's machines sell drinks, and its lift is
+  ridden as the Celadon store's is (plan 19 · K5): the car's door leads to the ground floor, and the attendant lets
+  the player out on the floor chosen. Its basement stays shut.
+- **Left for later**: the Bug-Catching Contest; Headbutt from the forest's man (he only talks); the Game Corner's
+  prizes; the phone numbers of Kurt, Bill and the Day-Care couple; Cameron and the photo album; Suicune's sightings;
+  the Kimono Girls' battles (J11).
