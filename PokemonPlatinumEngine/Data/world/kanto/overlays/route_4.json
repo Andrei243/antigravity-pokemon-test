@@ -1,15 +1,15 @@
 {
   // Route 4 (plan 19 · K4): from Route 3 past the Pokémon Center to Mt. Moon's mouth, and on the far side of the
-  // mountain the ledges down to Cerulean City. Its two Black Belts teach Mega Punch and Mega Kick in FireRed; here
-  // they talk, until Kanto's tutors are written
+  // mountain the ledges down to Cerulean City. Its two Black Belts teach Mega Punch and Mega Kick, once each
+  // (route_4.txt, plan 19 · K5)
   "area": "route_4",
   "bgmTrack": "kanto/route3",
   "trees": "Round",
   "people": {
     "woman_1": { "name": "Woman", "dialog": [ "I tripped over a Geodude on the way out of Mt. Moon. They look just like rocks!" ] },
     "boy": { "name": "Boy", "dialog": [ "Mt. Moon's a maze. If you get lost, an Escape Rope will take you straight back outside." ] },
-    "black_belt": { "name": "Black Belt", "dialog": [ "Hah! A punch is all in the hips. One day I'll teach you, once you've earned it." ] },
-    "black_belt_2": { "name": "Black Belt", "dialog": [ "My kicks could split a boulder! Come back when your Pokémon are ready to learn them." ] },
+    "black_belt": { "name": "Black Belt", "script": "MegaPunch" },
+    "black_belt_2": { "name": "Black Belt", "script": "MegaKick" },
     "lass": {
       "name": "Crissy",
       "trainer": {

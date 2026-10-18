@@ -1,0 +1,47 @@
+{
+  "key": "pokemon_tower_4f",
+  "index": 133,
+  "name": "Pokemon Tower",
+  "matrix": 97,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_TOWER",
+  "nightMusic": "MUS_POKE_TOWER",
+  "encounters": "pokemon_tower_4f",
+  "bike": false,
+  "running": false,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Gastly", "level": 15 },
+    { "species": "Gastly", "level": 16 },
+    { "species": "Gastly", "level": 17 },
+    { "species": "Gastly", "level": 13 },
+    { "species": "Gastly", "level": 14 },
+    { "species": "Gastly", "level": 18 },
+    { "species": "Haunter", "level": 20 },
+    { "species": "Cubone", "level": 15 },
+    { "species": "Gastly", "level": 17 },
+    { "species": "Cubone", "level": 17 },
+    { "species": "Gastly", "level": 17 },
+    { "species": "Gastly", "level": 19 }
+  ],
+  "landRate": 4,
+  "warps": [
+    { "x": 4, "z": 10, "to": "pokemon_tower_5f", "toWarp": 0 },
+    { "x": 18, "z": 10, "to": "pokemon_tower_3f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "channeler", "looks": "channeler", "movement": "look_south", "x": 17, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CHANNELER_LAUREL" },
+    { "id": "channeler_2", "looks": "channeler", "movement": "look_west", "x": 15, "z": 13, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_CHANNELER_JODY" },
+    { "id": "channeler_3", "looks": "channeler", "movement": "look_east", "x": 4, "z": 12, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_CHANNELER_PAULA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 12, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_TOWER_4F_ELIXIR", "item": "Elixir", "script": "PokemonTower_4F_EventScript_ItemElixir" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 8, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_TOWER_4F_AWAKENING", "item": "Awakening", "script": "PokemonTower_4F_EventScript_ItemAwakening" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 11, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_TOWER_4F_GREAT_BALL", "item": "Great Ball", "script": "PokemonTower_4F_EventScript_ItemGreatBall" }
+  ],
+  "signs": [],
+  "triggers": []
+}

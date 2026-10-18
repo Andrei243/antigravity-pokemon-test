@@ -406,4 +406,64 @@ public class KantoTests
         Assert.Equal("Kanto", link.DepartureMap);
         Assert.Contains(Overworld.Everyone, n => n.IsTransportAttendant);
     }
+
+    // ------------------------------------------------------------------ plan 19 · K5, part a: Rock Tunnel to Lavender
+
+    [Fact]
+    public void RockTunnelToLavenderIsOpenAndWalkedTo()
+    {
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Kanto").Value;
+        foreach (string key in new[] { "route_9", "route_10", "lavender_town", "route_8", "route_7" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string room in new[] { "RockTunnel_1F", "RockTunnel_B1F", "PokemonTower_6F", "UndergroundPath_EastWestTunnel", "Route7_EastEntrance" })
+            Assert.True(walked.Keys.Any(m => m.Name == room), $"nobody walks into {room}");
+        // Rock Tunnel is dark until Flash is used, as FireRed's map says (requires_flash), and a cave
+        Assert.True(BuiltMaps.Value["RockTunnel_1F"].IsDark);
+        Assert.True(BuiltMaps.Value["RockTunnel_B1F"].IsDark);
+        Assert.False(BuiltMaps.Value["MtMoon_1F"].IsDark);
+        // The Power Plant's doors on Route 10 stay shut until plan 19 · K6
+        Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap.StartsWith("PowerPlant"));
+    }
+
+    [Fact]
+    public void LavenderBuildsInLilacAndItsTowerIsATowerOfStoneWithGravestonesInside()
+    {
+        Assert.Equal(Architecture.Lilac, Overworld.ArchitectureAt(398, 140));
+        Assert.Equal(Architecture.Portside, Overworld.ArchitectureAt(283, 220));
+        var tower = Overworld.PlacedBuildings.Single(b => b.Kind == BuildingKind.Tower && Overworld.AreaAt(b.X0, b.Y1)?.Key == "lavender_town");
+        Assert.Equal(BuildingKind.Tower, tower.Kind);
+        var third = BuiltMaps.Value["PokemonTower_3F"];
+        Assert.Equal(InteriorStyle.Lab, third.Interior);
+        Assert.True(third.Props.Count(p => p.Type == PropType.Headstone) >= 30, "the third floor's gravestones aren't laid");
+        Assert.All(third.Props.Where(p => p.Type == PropType.Headstone), p => Assert.True(third.IsSolid(p.X, p.Y)));
+    }
+
+    [Fact]
+    public void TheGangwayAtVermilionsPierIsNoHouseAndTheShipsCabinsAreFurnished()
+    {
+        // A way off the open country onto a map that is no room (the gangway onto SSAnne_Exterior) is no building's door
+        Assert.DoesNotContain(Overworld.PlacedBuildings, b => b.X0 <= 288 && b.X1 >= 286 && b.Y0 <= 236 && b.Y1 >= 235);
+        Assert.DoesNotContain(Overworld.PlacedBuildings, b => b.Doors.Any(d => d.Target == "SSAnne_Exterior"));
+        // The cabins have their beds, tables and chairs, the galley its worktops, the captain his desk and bed
+        Assert.Contains(BuiltMaps.Value["SSAnne_1F_Room1"].Props, p => p.Type == PropType.Bed);
+        Assert.Contains(BuiltMaps.Value["SSAnne_1F_Room1"].Props, p => p.Type == PropType.Table);
+        Assert.Contains(BuiltMaps.Value["SSAnne_2F_Room1"].Props, p => p.Type == PropType.Bed);
+        Assert.Contains(BuiltMaps.Value["SSAnne_Kitchen"].Props, p => p.Type == PropType.KitchenCounter);
+        Assert.Contains(BuiltMaps.Value["SSAnne_CaptainsOffice"].Props, p => p.Type == PropType.Bed);
+        // Vermilion's paved square before the harbour is paving, not the lawn round it
+        Assert.Equal(TileType.Paving, Overworld.GetGroundTile(292, 229));
+    }
+
+    [Fact]
+    public void AGymRoomOfKantoIsFoughtInOnItsLeadersStage()
+    {
+        foreach (var (gym, type) in new[] { ("PewterCity_Gym", PokemonType.Rock), ("CeruleanCity_Gym", PokemonType.Water), ("VermilionCity_Gym", PokemonType.Electric) })
+        {
+            var map = BuiltMaps.Value[gym];
+            Assert.Equal(type, map.ArenaType);
+            Assert.Equal(BattleArena.Gym, map.ArenaAt(5, 10));
+        }
+        Assert.Equal(BattleArena.Indoors, BuiltMaps.Value["VermilionCity_PokemonFanClub"].ArenaAt(5, 5));
+    }
 }

@@ -1,0 +1,27 @@
+{
+  // The gate between Route 7 and Saffron City (plan 19 · K5, part a): its guard, thirsty on duty, turns everyone
+  // back (route_7_east_entrance.txt; the drink that wins him over is part b's)
+  "area": "route_7_east_entrance",
+  "bgmTrack": "kanto/route3",
+  "triggers": [
+    {
+      "trigger": 0,
+      "script": "Guard"
+    },
+    {
+      "trigger": 1,
+      "script": "Guard"
+    },
+    {
+      "trigger": 2,
+      "script": "Guard"
+    }
+  ],
+  "people": {
+    "policeman": {
+      "name": "Guard",
+      "script": "GuardTalk",
+      "still": true
+    }
+  }
+}

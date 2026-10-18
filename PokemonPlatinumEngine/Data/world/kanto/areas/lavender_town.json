@@ -1,0 +1,37 @@
+{
+  "key": "lavender_town",
+  "index": 32,
+  "name": "Lavender Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LAVENDER",
+  "nightMusic": "MUS_LAVENDER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 402, "z": 136, "to": "pokemon_tower_1f", "toWarp": 1 },
+    { "x": 390, "z": 135, "to": "lavender_town_pokemon_center_1f", "toWarp": 1 },
+    { "x": 394, "z": 141, "to": "lavender_town_volunteer_pokemon_house", "toWarp": 1 },
+    { "x": 389, "z": 146, "to": "lavender_town_house_1", "toWarp": 1 },
+    { "x": 394, "z": 146, "to": "lavender_town_house_2", "toWarp": 1 },
+    { "x": 404, "z": 145, "to": "lavender_town_mart", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "little_girl", "looks": "little_girl", "movement": "wander_around", "x": 403, "z": 140, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "LavenderTown_EventScript_LittleGirl" },
+    { "id": "worker_m", "looks": "worker_m", "movement": "look_south", "x": 396, "z": 142, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_EventScript_WorkerM" },
+    { "id": "boy", "looks": "boy", "movement": "look_west_and_east", "x": 394, "z": 137, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_EventScript_Boy" }
+  ],
+  "signs": [
+    { "x": 396, "z": 134, "type": 0, "script": "LavenderTown_EventScript_SilphScopeNotice" },
+    { "x": 399, "z": 141, "type": 0, "script": "LavenderTown_EventScript_TownSign" },
+    { "x": 405, "z": 137, "type": 0, "script": "LavenderTown_EventScript_PokemonTowerSign" },
+    { "x": 391, "z": 141, "type": 0, "script": "LavenderTown_EventScript_VolunteerHouseSign" }
+  ],
+  "triggers": []
+}

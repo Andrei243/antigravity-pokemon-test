@@ -1,0 +1,32 @@
+{
+  // The Pokémon Tower's second floor (plan 19 · K5, part a): the rival, come to visit a grave, waits by the stairs
+  // up (pokemon_tower_2f.txt, FireRed's two triggers before him)
+  "area": "pokemon_tower_2f",
+  "name": "Pokémon Tower",
+  "bgmTrack": "kanto/pokemon_tower",
+  "triggers": [
+    {
+      "trigger": 0,
+      "script": "Rival"
+    },
+    {
+      "trigger": 1,
+      "script": "Rival"
+    }
+  ],
+  "people": {
+    "pokemon_tower_rival": {
+      "name": "{rival}",
+      "still": true,
+      "dialog": [
+        "Smell you later!"
+      ]
+    },
+    "channeler": {
+      "name": "Channeler",
+      "dialog": [
+        "Silph Co. makes a scope that shows ghosts as they really are. I wish I had one."
+      ]
+    }
+  }
+}

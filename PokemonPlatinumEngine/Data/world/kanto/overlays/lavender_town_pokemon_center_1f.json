@@ -1,0 +1,35 @@
+{
+  // Lavender Town's Pokémon Center (plan 19 · K5, part a)
+  "area": "lavender_town_pokemon_center_1f",
+  "bgmTrack": "kanto/lavender",
+  "people": {
+    "lavender_nurse": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "gentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "Team Rocket would sell any Pokémon for money. Even the bones of a Cubone's mother, I hear."
+      ]
+    },
+    "lass": {
+      "name": "Lass",
+      "dialog": [
+        "I came to the tower to say goodbye to my Pokémon. I still miss it so."
+      ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [
+        "Mr. Fuji looks after Pokémon nobody wants. But he hasn't been home for days."
+      ]
+    },
+    "balding_man": {
+      "name": "Man",
+      "dialog": [
+        "They say a Champion has passed through town. I wonder who it was?"
+      ]
+    }
+  }
+}

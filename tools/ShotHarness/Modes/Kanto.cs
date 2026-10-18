@@ -107,6 +107,32 @@ partial class Harness
             ("k88_rivals_town_map", "PalletTown_RivalsHouse", 6, 6, Direction.Up),
             ("k89_museum_old_amber", "PewterCity_Museum_1F", 22, 5, Direction.Up),
             ("k90_mt_moon_fossils", "MtMoon_B2F", 15, 11, Direction.Left),
+            // Plan 19 · K5, part a: Routes 9 and 10, Rock Tunnel, Lavender Town and its rooms, the Pokémon Tower's floors,
+            // Route 8, the Underground Path under Saffron City, Route 7 and the gates; and K4's left-overs looked at again
+            ("k93_route9", "Kanto", 345, 58, Direction.Right),
+            ("k94_route10_north", "Kanto", 393, 74, Direction.Down),
+            ("k95_route10_center", "Route10_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("k96_rock_tunnel_1f", "RockTunnel_1F", 17, 4, Direction.Down),
+            ("k97_rock_tunnel_b1f", "RockTunnel_B1F", 33, 5, Direction.Down),
+            ("k98_route10_south", "Kanto", 393, 112, Direction.Down),
+            ("k99_lavender_day", "Kanto", 398, 143, Direction.Up),
+            ("ka0_pokemon_tower_outside", "Kanto", 402, 139, Direction.Up),
+            ("ka1_lavender_center", "LavenderTown_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("ka2_volunteer_house", "LavenderTown_VolunteerPokemonHouse", 4, 6, Direction.Up),
+            ("ka3_lavender_house", "LavenderTown_House1", 4, 6, Direction.Up),
+            ("ka4_lavender_mart", "LavenderTown_Mart", 4, 6, Direction.Up),
+            ("ka5_tower_1f", "PokemonTower_1F", 11, 15, Direction.Up),
+            ("ka6_tower_3f", "PokemonTower_3F", 10, 11, Direction.Up),
+            ("ka7_tower_5f", "PokemonTower_5F", 11, 13, Direction.Up),
+            ("ka8_tower_6f", "PokemonTower_6F", 12, 13, Direction.Up),
+            ("ka9_route8", "Kanto", 345, 139, Direction.Left),
+            ("kb0_underground_path_west_east", "UndergroundPath_EastWestTunnel", 40, 4, Direction.Left),
+            ("kb1_route7", "Kanto", 250, 142, Direction.Right),
+            ("kb2_saffron_gate", "Route8_WestEntrance", 7, 5, Direction.Left),
+            ("kb3_vermilion_harbour_again", "Kanto", 287, 229, Direction.Down),
+            ("kb4_ss_anne_cabin_furnished", "SSAnne_1F_Room1", 3, 4, Direction.Up),
+            ("kb5_ss_anne_kitchen_furnished", "SSAnne_Kitchen", 7, 9, Direction.Up),
+            ("kb6_captains_cabin_furnished", "SSAnne_CaptainsOffice", 5, 5, Direction.Left),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -126,6 +152,8 @@ partial class Harness
         At("Kanto", 287, 25, Direction.Up); Frames(2); Shot("k62_nugget_bridge_night");
         At("Kanto", 285, 213, Direction.Up); Frames(2); Shot("k91_vermilion_night");
         At("Kanto", 335, 222, Direction.Right); Frames(2); Shot("k92_route11_night");
+        At("Kanto", 398, 143, Direction.Up); Frames(2); Shot("kb7_lavender_night");
+        At("Kanto", 345, 58, Direction.Right); Frames(2); Shot("kb8_route9_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

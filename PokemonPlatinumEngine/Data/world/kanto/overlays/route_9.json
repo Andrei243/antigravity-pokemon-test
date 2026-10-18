@@ -1,0 +1,75 @@
+{
+  // Route 9 (plan 19 · K5, part a): east from Cerulean City to Rock Tunnel, its trainers FireRed's. The tree at its
+  // west end falls to Cut
+  "area": "route_9",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "picnicker": {
+      "name": "Alicia",
+      "trainer": {
+        "dialogueBefore": "Picnicker Alicia: My grass Pokémon love the sun out here. Want to see them?",
+        "dialogueAfter": "Picnicker Alicia: Oh! They wilted."
+      }
+    },
+    "hiker": {
+      "name": "Jeremy",
+      "trainer": {
+        "dialogueBefore": "Hiker Jeremy: I came down from the hills to train. You look like a good warm-up!",
+        "dialogueAfter": "Hiker Jeremy: Whoa, you're tougher than a mountain!"
+      }
+    },
+    "hiker_2": {
+      "name": "Alan",
+      "trainer": {
+        "dialogueBefore": "Hiker Alan: Rock Tunnel's dark as night inside. Bring Flash, or bring a strong team!",
+        "dialogueAfter": "Hiker Alan: Guess you've got the strong team."
+      }
+    },
+    "camper": {
+      "name": "Chris",
+      "trainer": {
+        "dialogueBefore": "Camper Chris: My Pokémon are fired up today. Let's go!",
+        "dialogueAfter": "Camper Chris: Burned out already..."
+      }
+    },
+    "bug_catcher": {
+      "name": "Brent",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Brent: My Beedrill have stingers sharp as needles!",
+        "dialogueAfter": "Bug Catcher Brent: They flew off..."
+      }
+    },
+    "bug_catcher_2": {
+      "name": "Conner",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Conner: I found all of these in the grass round here!",
+        "dialogueAfter": "Bug Catcher Conner: I need to find stronger bugs."
+      }
+    },
+    "hiker_3": {
+      "name": "Brice",
+      "trainer": {
+        "dialogueBefore": "Hiker Brice: Huff... climbing makes you strong! Want to test me?",
+        "dialogueAfter": "Hiker Brice: I need more climbing."
+      }
+    },
+    "picnicker_2": {
+      "name": "Caitlin",
+      "trainer": {
+        "dialogueBefore": "Picnicker Caitlin: My Meowth is the cutest one you'll ever meet!",
+        "dialogueAfter": "Picnicker Caitlin: Even cute isn't enough, huh?"
+      }
+    },
+    "camper_2": {
+      "name": "Drew",
+      "trainer": {
+        "dialogueBefore": "Camper Drew: I raise every kind I catch. Let's see how they do!",
+        "dialogueAfter": "Camper Drew: Not bad. You really know your stuff."
+      }
+    }
+  },
+  "signs": {
+    "Route9_EventScript_RouteSign": "Route 9\nCerulean City - Rock Tunnel"
+  }
+}

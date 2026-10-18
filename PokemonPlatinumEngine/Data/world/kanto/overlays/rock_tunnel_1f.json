@@ -1,0 +1,61 @@
+{
+  // Rock Tunnel's first floor (plan 19 · K5, part a): a cave of FireRed's, dark until Flash is used (requires_flash),
+  // its trainers FireRed's own
+  "area": "rock_tunnel_1f",
+  "name": "Rock Tunnel",
+  "bgmTrack": "kanto/mt_moon",
+  "people": {
+    "picnicker": {
+      "name": "Dana",
+      "trainer": {
+        "dialogueBefore": "Picnicker Dana: I got lost in the dark! You'd better battle me while I wait.",
+        "dialogueAfter": "Picnicker Dana: Lost, and beaten too."
+      }
+    },
+    "picnicker_2": {
+      "name": "Ariana",
+      "trainer": {
+        "dialogueBefore": "Picnicker Ariana: Who's there? Oh, a trainer! Let's battle!",
+        "dialogueAfter": "Picnicker Ariana: I couldn't see you coming!"
+      }
+    },
+    "picnicker_3": {
+      "name": "Leah",
+      "trainer": {
+        "dialogueBefore": "Picnicker Leah: Don't sneak up on me in a place like this!",
+        "dialogueAfter": "Picnicker Leah: You gave me a fright, and a beating."
+      }
+    },
+    "hiker": {
+      "name": "Lucas",
+      "trainer": {
+        "dialogueBefore": "Hiker Lucas: This tunnel goes right under the mountains. I've walked it a hundred times!",
+        "dialogueAfter": "Hiker Lucas: Never lost down here before..."
+      }
+    },
+    "hiker_2": {
+      "name": "Oliver",
+      "trainer": {
+        "dialogueBefore": "Hiker Oliver: My Onix love the dark. Come and meet them!",
+        "dialogueAfter": "Hiker Oliver: They didn't like that light of yours."
+      }
+    },
+    "hiker_3": {
+      "name": "Lenny",
+      "trainer": {
+        "dialogueBefore": "Hiker Lenny: Hold it! Hikers don't let anyone pass without a battle!",
+        "dialogueAfter": "Hiker Lenny: Go on, then. Mind your step."
+      }
+    },
+    "poke_maniac": {
+      "name": "Ashton",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Ashton: You won't find Pokémon like mine just anywhere!",
+        "dialogueAfter": "Poké Maniac Ashton: Hmph. Good ones, yours."
+      }
+    }
+  },
+  "signs": {
+    "RockTunnel_1F_EventScript_RouteSign": "Rock Tunnel\nCerulean City - Lavender Town"
+  }
+}

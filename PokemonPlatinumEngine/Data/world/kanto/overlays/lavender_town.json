@@ -1,0 +1,34 @@
+{
+  // Lavender Town (plan 19 · K5, part a): FireRed's map, our words. The town where people come to remember their
+  // Pokémon, with the Pokémon Tower at its north-east
+  "area": "lavender_town",
+  "bgmTrack": "kanto/lavender",
+  "trees": "Round",
+  "architecture": "Lilac",
+  "people": {
+    "little_girl": {
+      "name": "Girl",
+      "dialog": [
+        "Do you believe in ghosts? My big brother says they live in the Pokémon Tower."
+      ]
+    },
+    "worker_m": {
+      "name": "Man",
+      "dialog": [
+        "Pokémon that have passed away are laid to rest in the tower. People come from all over to visit them."
+      ]
+    },
+    "boy": {
+      "name": "Boy",
+      "dialog": [
+        "Team Rocket have been seen going into the tower. Why would anyone bother the Pokémon resting there?"
+      ]
+    }
+  },
+  "signs": {
+    "LavenderTown_EventScript_SilphScopeNotice": "NOTICE\nGhosts have been seen in the Pokémon Tower.\nSilph Co. is working on a scope that shows them as they are.",
+    "LavenderTown_EventScript_TownSign": "Lavender Town\nThe noble purple town.",
+    "LavenderTown_EventScript_PokemonTowerSign": "Pokémon Tower\nA place to rest and to remember.",
+    "LavenderTown_EventScript_VolunteerHouseSign": "Lavender Volunteer Pokémon House"
+  }
+}

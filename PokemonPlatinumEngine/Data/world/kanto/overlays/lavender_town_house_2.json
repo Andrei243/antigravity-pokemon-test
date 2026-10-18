@@ -1,0 +1,14 @@
+{
+  // A house of Lavender Town (plan 19 · K5, part a): the Name Rater, who only talks here (plan 13 · V4)
+  "area": "lavender_town_house_2",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "gentleman": {
+      "name": "Name Rater",
+      "dialog": [
+        "I am the Name Rater. I judge the names trainers give their Pokémon.",
+        "Come back once your Pokémon have names worth judging!"
+      ]
+    }
+  }
+}

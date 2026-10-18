@@ -1,0 +1,90 @@
+{
+  "key": "route_10",
+  "index": 26,
+  "name": "Route 10",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_10",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Spearow", "level": 16 },
+    { "species": "Voltorb", "level": 16 },
+    { "species": "Ekans", "level": 11 },
+    { "species": "Ekans", "level": 15 },
+    { "species": "Spearow", "level": 13 },
+    { "species": "Voltorb", "level": 14 },
+    { "species": "Spearow", "level": 17 },
+    { "species": "Voltorb", "level": 17 },
+    { "species": "Voltorb", "level": 14 },
+    { "species": "Ekans", "level": 13 },
+    { "species": "Voltorb", "level": 14 },
+    { "species": "Ekans", "level": 17 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 392, "z": 69, "to": "rock_tunnel_1f", "toWarp": 0 },
+    { "x": 392, "z": 107, "to": "rock_tunnel_1f", "toWarp": 5 },
+    { "x": 391, "z": 90, "to": "power_plant", "toWarp": 1 },
+    { "x": 397, "z": 70, "to": "route_10_pokemon_center_1f", "toWarp": 1 },
+    { "x": 386, "z": 87, "to": "power_plant", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_around", "x": 391, "z": 110, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_PICNICKER_CAROL" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_around", "x": 388, "z": 112, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_HIKER_CLARK" },
+    { "id": "poke_maniac", "looks": "poke_maniac", "movement": "wander_west_and_east", "x": 399, "z": 120, "facing": 2, "rangeX": 2, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_POKEMANIAC_HERMAN" },
+    { "id": "hiker_2", "looks": "hiker", "movement": "look_west", "x": 388, "z": 118, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_HIKER_TRENT" },
+    { "id": "poke_maniac_2", "looks": "poke_maniac", "movement": "look_west", "x": 397, "z": 94, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_POKEMANIAC_MARK" },
+    { "id": "picnicker_2", "looks": "picnicker", "movement": "look_south", "x": 393, "z": 77, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_PICNICKER_HEIDI" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 394, "z": 70, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_2", "looks": "cut_tree", "movement": "look_south", "x": 394, "z": 72, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_3", "looks": "cut_tree", "movement": "look_south", "x": 394, "z": 74, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_4", "looks": "cut_tree", "movement": "look_south", "x": 394, "z": 76, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_CutTree" }
+  ],
+  "signs": [
+    { "x": 399, "z": 109, "type": 0, "script": "Route10_EventScript_SouthRockTunnelSign" },
+    { "x": 390, "z": 92, "type": 0, "script": "Route10_EventScript_PowerPlantSign" },
+    { "x": 391, "z": 71, "type": 0, "script": "Route10_EventScript_NorthRockTunnelSign" },
+    { "x": 394, "z": 69, "type": 2, "script": "", "item": "Super Potion", "flag": "FLAG_HIDDEN_ITEM_ROUTE10_SUPER_POTION" },
+    { "x": 396, "z": 90, "type": 2, "script": "", "item": "Max Ether", "flag": "FLAG_HIDDEN_ITEM_ROUTE10_MAX_ETHER" },
+    { "x": 390, "z": 76, "type": 2, "script": "", "item": "Cheri Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE10_CHERI_BERRY" },
+    { "x": 401, "z": 79, "type": 2, "script": "", "item": "Persim Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE10_PERSIM_BERRY" },
+    { "x": 404, "z": 107, "type": 2, "script": "", "item": "Nanab Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE10_NANAB_BERRY" }
+  ],
+  "triggers": []
+}

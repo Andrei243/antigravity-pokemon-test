@@ -1,0 +1,26 @@
+# The Pokémon Tower's fifth floor (plan 19 · K5, part a). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/PokemonTower_5F/scripts.inc).
+#
+# A ring of tiles in the floor's middle is kept clean of evil spirits: stepping in heals the team (the area's triggers
+# on VAR_TEMP_1 0), and stepping out of it lets the next step in heal again (those on VAR_TEMP_1 1). FireRed's
+# VAR_TEMP_1 is forgotten on every arrival; here the floor's own arrival forgets it.
+
+
+script OnEnter
+  setvar VAR_TEMP_1 0
+  end
+
+
+script PurifiedZone
+  fade out 0.3
+  heal
+  fade in
+  speaker none
+  text "This ground is purified, and no evil spirit can come near. Your Pokémon are fully healed."
+  setvar VAR_TEMP_1 1
+  end
+
+
+script ExitPurifiedZone
+  setvar VAR_TEMP_1 0
+  end

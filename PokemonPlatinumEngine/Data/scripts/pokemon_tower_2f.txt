@@ -1,0 +1,52 @@
+# The Pokémon Tower's second floor (plan 19 · K5, part a). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/PokemonTower_2F/scripts.inc).
+#
+# VAR_MAP_SCENE_POKEMON_TOWER_2F: 0 until the rival, come to see a grave, battles the player on the step east of him or
+# the step south of him (the area's triggers 0 and 1), 1 after. He walks off down the stairs and is hidden by
+# FLAG_HIDE_TOWER_RIVAL, the flag his object carries.
+
+
+# The step east of him (trigger 0) and the step south (trigger 1)
+script Rival
+  scene "The rival in the tower"
+  music "kanto/rival"
+  if var PLAYER_Y == 6 goto FromBelow
+  face pokemon_tower_rival right
+  face player left
+  goto Talk
+label FromBelow
+  face pokemon_tower_rival down
+  face player up
+label Talk
+  emote pokemon_tower_rival exclaim 0.6
+  wait 0.8
+  speaker "{rival}"
+  say "Hey, {player}! What are you doing here? Your Pokémon don't look dead to me!"
+  say "Mine are alive and kicking, so I'll show you just how lively they are!"
+  if starter "Bulbasaur" goto VsCharmander
+  if starter "Charmander" goto VsSquirtle
+  battle pokemon_tower_rival as "kanto_rival_pokemon_tower_bulbasaur"
+  goto After
+label VsCharmander
+  battle pokemon_tower_rival as "kanto_rival_pokemon_tower_charmander"
+  goto After
+label VsSquirtle
+  battle pokemon_tower_rival as "kanto_rival_pokemon_tower_squirtle"
+label After
+  speaker "{rival}"
+  say "How did that happen? Fine, I'll go and catch more. You can stay here with the ghosts."
+  say "Oh, I heard a Pokémon called Cubone lost its mother here. Not that I care. Smell you later!"
+  music "kanto/rival"
+  if var PLAYER_Y == 6 goto LeaveFromBelow
+  walk pokemon_tower_rival down 1 right 2 down 4 fast
+  goto Gone
+label LeaveFromBelow
+  walk pokemon_tower_rival right 2 down 5 fast
+label Gone
+  sound "door_close"
+  hide pokemon_tower_rival
+  setflag FLAG_HIDE_TOWER_RIVAL
+  music area
+  setvar VAR_MAP_SCENE_POKEMON_TOWER_2F 1
+  endscene
+  end

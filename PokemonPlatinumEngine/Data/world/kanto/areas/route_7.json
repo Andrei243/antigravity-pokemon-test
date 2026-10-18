@@ -1,0 +1,43 @@
+{
+  "key": "route_7",
+  "index": 30,
+  "name": "Route 7",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_7",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Pidgey", "level": 19 },
+    { "species": "Meowth", "level": 17 },
+    { "species": "Oddish", "level": 19 },
+    { "species": "Meowth", "level": 18 },
+    { "species": "Pidgey", "level": 22 },
+    { "species": "Oddish", "level": 22 },
+    { "species": "Growlithe", "level": 18 },
+    { "species": "Growlithe", "level": 20 },
+    { "species": "Meowth", "level": 17 },
+    { "species": "Meowth", "level": 19 },
+    { "species": "Meowth", "level": 17 },
+    { "species": "Meowth", "level": 20 }
+  ],
+  "landRate": 21,
+  "warps": [
+    { "x": 247, "z": 144, "to": "underground_path_west_entrance", "toWarp": 1 },
+    { "x": 255, "z": 140, "to": "route_7_east_entrance", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 245, "z": 144, "type": 0, "script": "Route7_EventScript_UndergroundPathSign" },
+    { "x": 256, "z": 145, "type": 2, "script": "", "item": "Wepear Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE7_WEPEAR_BERRY" }
+  ],
+  "triggers": []
+}

@@ -128,6 +128,35 @@ public static class MoveTutors
         : TutorAnswer.Able;
 
     /// <summary>
+    /// Kanto's tutors of one move each (plan 19 · K5; <c>docs/mechanics/rulings.md</c>, "Kanto's tutors"), as FireRed
+    /// places them: each teaches its move free, to one Pokémon, once in a game. FireRed's own list of who may learn a
+    /// tutor's move is not read (it is outside what the importer fetches), so the table is ours: a Pokémon may learn the
+    /// move if its species could learn the move itself by Platinum's data, or could learn the move of Platinum's machine
+    /// named beside it, the nearest kin of the move among the machines (a punch or a kick for one who can learn Focus
+    /// Punch, Rock Slide for one who can learn it from TM80).
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, string> Kanto = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+    {
+        // Route 4's two Black Belts (FireRed's Route4_EventScript_MegaPunchTutor, _MegaKickTutor)
+        ["Mega Punch"] = "Focus Punch",
+        ["Mega Kick"] = "Focus Punch",
+        // Rock Tunnel's youngster (RockTunnel_B1F_EventScript_RockSlideTutor)
+        ["Rock Slide"] = "Rock Slide",
+    };
+
+    /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>
+    public static string KantoFlag(string move) =>
+        "FLAG_TUTOR_" + new string(move.ToUpperInvariant().Select(c => char.IsLetter(c) ? c : '_').ToArray());
+
+    /// <summary>A Kanto tutor's answer for a Pokémon: whether it may learn their move (ours: <see cref="Kanto"/>).</summary>
+    public static TutorAnswer ForKanto(Pokemon? p, string move) =>
+        p == null ? TutorAnswer.Nobody
+        : p.IsEgg ? TutorAnswer.Egg
+        : p.Knows(move) ? TutorAnswer.Knows
+        : !Kanto.TryGetValue(move, out var kin) || !(Legality.CanLearn(p.Species, move) || Legality.CanLearn(p.Species, kin)) ? TutorAnswer.NotAble
+        : TutorAnswer.Able;
+
+    /// <summary>
     /// The Move Deleter's rule (the original's Canalave script): any move may go, an HM's too, but a Pokémon's last.
     /// </summary>
     public static bool CanForget(Pokemon p) => !p.IsEgg && p.Moves.Count > 1;

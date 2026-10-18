@@ -397,6 +397,26 @@ surf 30-50
 old rod 3-15
 good rod 10-25
 super rod 20-55
+=== pokemon_tower_3f
+Pokémon Tower
+grass 13-20
+trainers 3, 22-24: kanto_channeler_carly 24, kanto_channeler_hope 23, kanto_channeler_patricia 22
+=== pokemon_tower_4f
+Pokémon Tower
+grass 13-20
+trainers 3, 22-24: kanto_channeler_jody 22, kanto_channeler_laurel 23, kanto_channeler_paula 24
+=== pokemon_tower_5f
+Pokémon Tower
+grass 13-20
+trainers 4, 22-24: kanto_channeler_janae 22, kanto_channeler_karina 24, kanto_channeler_ruth 22, kanto_channeler_tammy 23
+=== pokemon_tower_6f
+Pokémon Tower
+grass 14-23
+trainers 3, 22-24: kanto_channeler_angelica 22, kanto_channeler_emilia 24, kanto_channeler_jennifer 24
+=== pokemon_tower_7f
+Pokémon Tower
+grass 15-25
+trainers 3, 23-26: kanto_team_rocket_grunt_19 25, kanto_team_rocket_grunt_20 26, kanto_team_rocket_grunt_21 23
 === ravaged_path
 Ravaged Path
 grass 3-6
@@ -410,9 +430,25 @@ surf 35-55
 old rod 3-15
 good rod 10-35
 super rod 1-100
+=== rock_tunnel_1f
+Rock Tunnel
+grass 13-17
+trainers 7, 19-23: kanto_hiker_lenny 19, kanto_hiker_lucas 21, kanto_hiker_oliver 20, kanto_picnicker_ariana 19, kanto_picnicker_dana 20, kanto_picnicker_leah 22, kanto_pokemaniac_ashton 23
+=== rock_tunnel_b1f
+Rock Tunnel
+grass 13-17
+trainers 8, 20-25: kanto_hiker_allen 25, kanto_hiker_dudley 21, kanto_hiker_eric 20, kanto_picnicker_martha 22, kanto_picnicker_sofia 21, kanto_pokemaniac_cooper 20, kanto_pokemaniac_steve 22, kanto_pokemaniac_winston 25
 === route_1
 Route 1
 grass 2-5
+=== route_10
+Route 10
+grass 11-17
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 6, 19-29: kanto_hiker_clark 21, kanto_hiker_trent 19, kanto_picnicker_carol 21, kanto_picnicker_heidi 20, kanto_pokemaniac_herman 20, kanto_pokemaniac_mark 29
 === route_101
 Route 101
 grass 2-3
@@ -752,6 +788,17 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 6, 16-20: kanto_bug_catcher_elijah 20, kanto_bug_catcher_keigo 16, kanto_camper_jeff 16, kanto_camper_ricky 20, kanto_picnicker_isabelle 16, kanto_picnicker_nancy 16
+=== route_7
+Route 7
+grass 17-22
+=== route_8
+Route 8
+grass 15-20
+trainers 12, 19-26: kanto_biker_jaren 24, kanto_biker_ricardo 23, kanto_gamer_rich 24, kanto_gamer_stan 22, kanto_lass_andrea 24, kanto_lass_julia 22, kanto_lass_megan 19, kanto_lass_paige 23, kanto_super_nerd_aidan 20, kanto_super_nerd_glenn 22, kanto_super_nerd_leslie 26, kanto_twins_eli_anne 22
+=== route_9
+Route 9
+grass 11-17
+trainers 9, 18-23: kanto_bug_catcher_brent 19, kanto_bug_catcher_conner 20, kanto_camper_chris 21, kanto_camper_drew 19, kanto_hiker_alan 21, kanto_hiker_brice 20, kanto_hiker_jeremy 20, kanto_picnicker_alicia 18, kanto_picnicker_caitlin 23
 === ruin_maniac_cave_short
 Ruin Maniac Cave
 grass 21-24

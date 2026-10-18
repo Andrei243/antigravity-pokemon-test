@@ -1,0 +1,28 @@
+{
+  "key": "lavender_town_house_1",
+  "index": 285,
+  "name": "Lavender Town",
+  "matrix": 232,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LAVENDER",
+  "nightMusic": "MUS_LAVENDER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "lavender_town", "toWarp": 3 },
+    { "x": 4, "z": 7, "to": "lavender_town", "toWarp": 3 },
+    { "x": 5, "z": 7, "to": "lavender_town", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "cooltrainer_f", "looks": "cooltrainer_f", "movement": "look_south", "x": 4, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_House1_EventScript_CooltrainerF" },
+    { "id": "cubone", "looks": "cubone", "movement": "look_around", "x": 8, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_House1_EventScript_Cubone" }
+  ],
+  "signs": [],
+  "triggers": []
+}

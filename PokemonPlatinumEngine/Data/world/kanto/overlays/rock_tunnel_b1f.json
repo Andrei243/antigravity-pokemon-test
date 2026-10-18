@@ -1,0 +1,69 @@
+{
+  // Rock Tunnel's lower floor (plan 19 · K5, part a): its trainers FireRed's, its rocks Rock Smash's (the Marsh
+  // Badge), and the youngster who teaches Rock Slide once (rock_tunnel_b1f.txt)
+  "area": "rock_tunnel_b1f",
+  "name": "Rock Tunnel",
+  "bgmTrack": "kanto/mt_moon",
+  "people": {
+    "poke_maniac": {
+      "name": "Cooper",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Cooper: I've got three of my favourite Pokémon with me. Guess which!",
+        "dialogueAfter": "Poké Maniac Cooper: Slowpoke all along. They took it slowly."
+      }
+    },
+    "hiker": {
+      "name": "Dudley",
+      "trainer": {
+        "dialogueBefore": "Hiker Dudley: Rocks, rocks and more rocks! Here, have some!",
+        "dialogueAfter": "Hiker Dudley: That's me crushed."
+      }
+    },
+    "picnicker": {
+      "name": "Sofia",
+      "trainer": {
+        "dialogueBefore": "Picnicker Sofia: It's so dark down here. Battle me so I feel braver!",
+        "dialogueAfter": "Picnicker Sofia: I feel braver... and beaten."
+      }
+    },
+    "hiker_2": {
+      "name": "Allen",
+      "trainer": {
+        "dialogueBefore": "Hiker Allen: One Pokémon is all I need. My Geodude is solid!",
+        "dialogueAfter": "Hiker Allen: Not solid enough, it seems."
+      }
+    },
+    "hiker_3": {
+      "name": "Eric",
+      "trainer": {
+        "dialogueBefore": "Hiker Eric: I came down here to dig, but a battle will do!",
+        "dialogueAfter": "Hiker Eric: I should have kept digging."
+      }
+    },
+    "poke_maniac_2": {
+      "name": "Steve",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Steve: I've been hunting rare Pokémon in this tunnel all week!",
+        "dialogueAfter": "Poké Maniac Steve: And you're the rarest thing I've met."
+      }
+    },
+    "picnicker_2": {
+      "name": "Martha",
+      "trainer": {
+        "dialogueBefore": "Picnicker Martha: I came all the way from Lavender Town. Let's battle!",
+        "dialogueAfter": "Picnicker Martha: I'll walk back home now."
+      }
+    },
+    "poke_maniac_3": {
+      "name": "Winston",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Winston: My Slowpoke is one of a kind. Look at it go... slowly!",
+        "dialogueAfter": "Poké Maniac Winston: Slowly, but it lost."
+      }
+    },
+    "youngster": {
+      "name": "Youngster",
+      "script": "RockSlideTutor"
+    }
+  }
+}

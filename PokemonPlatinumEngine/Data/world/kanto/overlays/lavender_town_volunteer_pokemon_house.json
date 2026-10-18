@@ -1,0 +1,48 @@
+{
+  // The Lavender Volunteer Pokémon House (plan 19 · K5, part a): Mr. Fuji's home for Pokémon nobody has. He is up
+  // the Pokémon Tower until part b's rescue (lavender_town_volunteer_pokemon_house.txt)
+  "area": "lavender_town_volunteer_pokemon_house",
+  "bgmTrack": "kanto/lavender",
+  "people": {
+    "mr_fuji": {
+      "name": "Mr. Fuji",
+      "dialog": [
+        "Thank you for coming to see the Pokémon."
+      ]
+    },
+    "nidorino": {
+      "name": "Nidorino",
+      "dialog": [
+        "Nido! Nidorino!"
+      ]
+    },
+    "psyduck": {
+      "name": "Psyduck",
+      "dialog": [
+        "Psy... duck?"
+      ]
+    },
+    "little_boy": {
+      "name": "Boy",
+      "dialog": [
+        "Mr. Fuji went up the tower to pray for the Pokémon, and he never came back!"
+      ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [
+        "Every Pokémon here lost its trainer somehow. Mr. Fuji takes care of them all."
+      ]
+    },
+    "little_girl": {
+      "name": "Girl",
+      "dialog": [
+        "This Psyduck was left in the rain. It's much happier now."
+      ]
+    }
+  },
+  "signs": {
+    "LavenderTown_VolunteerPokemonHouse_EventScript_PokemonFanMagazine": "Pokémon Monthly. An issue on the Pokémon who wait for new trainers.",
+    "LavenderTown_VolunteerPokemonHouse_EventScript_Bookshelf": "Books on caring for Pokémon, well worn."
+  }
+}

@@ -1,0 +1,60 @@
+{
+  // Route 10 (plan 19 · K5, part a): down the cliffs east of Route 9 to Rock Tunnel and its Pokémon Center, and south
+  // of the tunnel to Lavender Town. The Power Plant's two doors, on the river, are plan 19 · K6's
+  "area": "route_10",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "locked": [
+    2,
+    4
+  ],
+  "people": {
+    "picnicker": {
+      "name": "Carol",
+      "trainer": {
+        "dialogueBefore": "Picnicker Carol: I just came out of Rock Tunnel. Now I want a battle in the sunshine!",
+        "dialogueAfter": "Picnicker Carol: Back into the dark with me, then..."
+      }
+    },
+    "hiker": {
+      "name": "Clark",
+      "trainer": {
+        "dialogueBefore": "Hiker Clark: Ha-hah! My rock Pokémon are as hard as they come!",
+        "dialogueAfter": "Hiker Clark: Crumbled like gravel!"
+      }
+    },
+    "poke_maniac": {
+      "name": "Herman",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Herman: I collect rare Pokémon. Do you have any I haven't seen?",
+        "dialogueAfter": "Poké Maniac Herman: Rare, and strong too..."
+      }
+    },
+    "hiker_2": {
+      "name": "Trent",
+      "trainer": {
+        "dialogueBefore": "Hiker Trent: The hills are my home. You're in my yard now!",
+        "dialogueAfter": "Hiker Trent: All right, you can pass."
+      }
+    },
+    "poke_maniac_2": {
+      "name": "Mark",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Mark: Behold my most prized Pokémon of all!",
+        "dialogueAfter": "Poké Maniac Mark: My prizes..."
+      }
+    },
+    "picnicker_2": {
+      "name": "Heidi",
+      "trainer": {
+        "dialogueBefore": "Picnicker Heidi: Aren't my Pokémon just lovely? Let's battle!",
+        "dialogueAfter": "Picnicker Heidi: Lovely, and beaten."
+      }
+    }
+  },
+  "signs": {
+    "Route10_EventScript_SouthRockTunnelSign": "Rock Tunnel",
+    "Route10_EventScript_PowerPlantSign": "Power Plant",
+    "Route10_EventScript_NorthRockTunnelSign": "Rock Tunnel\nThe way through to Lavender Town"
+  }
+}

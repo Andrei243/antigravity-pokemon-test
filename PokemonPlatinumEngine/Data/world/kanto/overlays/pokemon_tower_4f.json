@@ -1,0 +1,29 @@
+{
+  // The Pokémon Tower's fourth floor (plan 19 · K5, part a)
+  "area": "pokemon_tower_4f",
+  "name": "Pokémon Tower",
+  "bgmTrack": "kanto/pokemon_tower",
+  "people": {
+    "channeler": {
+      "name": "Laurel",
+      "trainer": {
+        "dialogueBefore": "Channeler Laurel: Ghosts! Ghosts all around! Run away!",
+        "dialogueAfter": "Channeler Laurel: Phew. The ghosts are gone."
+      }
+    },
+    "channeler_2": {
+      "name": "Jody",
+      "trainer": {
+        "dialogueBefore": "Channeler Jody: Give... me... your soul...",
+        "dialogueAfter": "Channeler Jody: I feel so tired all of a sudden."
+      }
+    },
+    "channeler_3": {
+      "name": "Paula",
+      "trainer": {
+        "dialogueBefore": "Channeler Paula: Go away... go awaaay...",
+        "dialogueAfter": "Channeler Paula: My head... What happened?"
+      }
+    }
+  }
+}

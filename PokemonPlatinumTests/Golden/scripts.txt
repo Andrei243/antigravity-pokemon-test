@@ -7842,7 +7842,7 @@ way 1, from answer 1
   ? The rock is riddled with cracks. Use Rock Smash? = No
 from an obstacle, with no field move and no badge
 way -
-  > The rock is riddled with cracks. A hard enough blow might break it apart, once Oreburgh's Gym Badge is won.
+  > The rock is riddled with cracks. A hard enough blow might break it apart, once the right Gym Badge is won.
 === common.RockFace
 from an obstacle, with every field move and every badge
 way 0
@@ -9641,6 +9641,60 @@ from the tile read at 856,561 of Sinnoh
 from the tile read at 857,561 of Sinnoh
 way -
   > POKéMON LEAGUE\nWhere every Trainer's road comes to its summit.
+=== pokemon_tower_2f.Rival
+from the trigger at 16,6 of PokemonTower_2F
+from the trigger at 17,5 of PokemonTower_2F
+way 0
+  Barry> Hey, Lucas! What are you doing here? Your Pokémon don't look dead to me!
+  Barry> Mine are alive and kicking, so I'll show you just how lively they are!
+  Barry> How did that happen? Fine, I'll go and catch more. You can stay here with the ghosts.
+  Barry> Oh, I heard a Pokémon called Cubone lost its mother here. Not that I care. Smell you later!
+  * scene pokemon_tower_2f.The rival in the tower
+  * music kanto/rival
+  * emote {rival} Exclaim
+  * battle kanto_rival_pokemon_tower_bulbasaur Won
+  * music kanto/rival
+  * sound door_close
+  * music area
+  * endscene
+  + FLAG_HIDE_TOWER_RIVAL
+  = VAR_MAP_SCENE_POKEMON_TOWER_2F 0 -> 1
+  + beaten kanto_rival_pokemon_tower_bulbasaur
+  + seen pokemon_tower_2f.The rival in the tower
+way 1, from answer 1
+  * battle kanto_rival_pokemon_tower_bulbasaur Lost
+  * scene over, unseen
+=== pokemon_tower_5f.ExitPurifiedZone
+from the trigger at 10,11 of PokemonTower_5F
+from the trigger at 11,11 of PokemonTower_5F
+from the trigger at 12,11 of PokemonTower_5F
+from the trigger at 13,10 of PokemonTower_5F
+from the trigger at 13,8 of PokemonTower_5F
+from the trigger at 13,9 of PokemonTower_5F
+from the trigger at 9,10 of PokemonTower_5F
+from the trigger at 9,8 of PokemonTower_5F
+from the trigger at 9,9 of PokemonTower_5F
+way -
+=== pokemon_tower_5f.PurifiedZone
+from the trigger at 10,10 of PokemonTower_5F
+from the trigger at 10,8 of PokemonTower_5F
+from the trigger at 10,9 of PokemonTower_5F
+from the trigger at 11,10 of PokemonTower_5F
+from the trigger at 11,8 of PokemonTower_5F
+from the trigger at 12,10 of PokemonTower_5F
+from the trigger at 12,8 of PokemonTower_5F
+from the trigger at 12,9 of PokemonTower_5F
+way -
+  > This ground is purified, and no evil spirit can come near. Your Pokémon are fully healed.
+  * fade out
+  * fade in
+  = VAR_TEMP_1 0 -> 1
+=== pokemon_tower_6f.MarowakGhost
+from the trigger at 11,15 of PokemonTower_6F
+from the trigger at 12,16 of PokemonTower_6F
+way -
+  Ghost> Be... gone... Intruders... be... gone...
+  > The ghost can't be made out. Without some way of seeing it, there's no going on.
 === resort_area.Byron
 from Byron at 823,473 of Sinnoh
 way 0
@@ -9724,6 +9778,21 @@ way 1, from answer 1
 from Boy at 816,473 of Sinnoh
 way -
   Boy> A Villa, going free! Walk up the path to me and it's yours.
+=== rock_tunnel_b1f.RockSlideTutor
+from Youngster at 2,29 of RockTunnel_B1F
+way 0
+  Youngster> I've been practising a move that brings the rocks down. Want me to teach Rock Slide to one of your Pokémon?
+  Youngster> Great! Which one?
+  Youngster> Hmm, that one can't learn Rock Slide.
+  ? I've been practising a move that brings the rocks down. Want me to teach Rock Slide to one of your Pokémon? = Yes
+  * open ChoosePokemon
+way 1, from answer 1
+  Youngster> Oh well. I'll be here, practising.
+  ? I've been practising a move that brings the rocks down. Want me to teach Rock Slide to one of your Pokémon? = No
+=== route_10_pokemon_center_1f.Aide
+from Aide at 12,5 of Route10_PokemonCenter_1F
+way -
+  Aide> I'm studying the Pokémon of Rock Tunnel for Professor Oak.
 === route_201.Briefcase
 from Professor's Briefcase at 112,854 of Sinnoh
 way 0.0
@@ -10461,6 +10530,28 @@ way 0
 way 1, from answer 1
   Fishing Guru> Oh. Well, the fish will still be here if you change your mind.
   ? Would you like a rod of your own? = No
+=== route_4.MegaKick
+from Black Belt at 206,53 of Kanto
+way 0
+  Black Belt> My kicks can split a boulder! Shall I teach one of your Pokémon Mega Kick?
+  Black Belt> Good! Which Pokémon is to learn it?
+  Black Belt> That Pokémon can't learn a kick like mine, I'm afraid.
+  ? My kicks can split a boulder! Shall I teach one of your Pokémon Mega Kick? = Yes
+  * open ChoosePokemon
+way 1, from answer 1
+  Black Belt> Come back if you change your mind. My kicks aren't going anywhere.
+  ? My kicks can split a boulder! Shall I teach one of your Pokémon Mega Kick? = No
+=== route_4.MegaPunch
+from Black Belt at 203,53 of Kanto
+way 0
+  Black Belt> A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch?
+  Black Belt> Good! Which Pokémon is to learn it?
+  Black Belt> That Pokémon can't learn a punch like mine, I'm afraid.
+  ? A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch? = Yes
+  * open ChoosePokemon
+way 1, from answer 1
+  Black Belt> Come back if you change your mind. My punches aren't going anywhere.
+  ? A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch? = No
 === route_4_pokemon_center_1f.MagikarpSalesman
 from Man at 1,3 of Route4_PokemonCenter_1F
 way 0
@@ -10474,6 +10565,26 @@ way 0
 way 1, from answer 1
   Man> No? Your loss. Pokémon like this don't come along every day.
   ? Just ¥500 and this Magikarp is yours. How about it? = No
+=== route_7_east_entrance.Guard
+from the trigger at 6,4 of Route7_EastEntrance
+from the trigger at 6,5 of Route7_EastEntrance
+from the trigger at 6,6 of Route7_EastEntrance
+way -
+  Guard> I'm on guard duty, and I'm parched! I'm not letting anyone through until I've had a drink.
+=== route_7_east_entrance.GuardTalk
+from Guard at 6,2 of Route7_EastEntrance
+way -
+  Guard> Hi there. Saffron City's closed to travellers for now. Sorry about that.
+=== route_8_west_entrance.Guard
+from the trigger at 6,4 of Route8_WestEntrance
+from the trigger at 6,5 of Route8_WestEntrance
+from the trigger at 6,6 of Route8_WestEntrance
+way -
+  Guard> Halt! I'm on duty, and I'm too thirsty to let anyone by. Come back once I've had something to drink.
+=== route_8_west_entrance.GuardTalk
+from Guard at 6,2 of Route8_WestEntrance
+way -
+  Guard> Saffron City's closed to travellers for now. Orders from the top, I'm afraid.
 === sandgem_town.Counterpart
 from {assistant} at 168,845 of Sinnoh
 way -

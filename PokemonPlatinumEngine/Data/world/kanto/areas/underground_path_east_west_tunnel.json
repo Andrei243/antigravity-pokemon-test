@@ -1,0 +1,32 @@
+{
+  "key": "underground_path_east_west_tunnel",
+  "index": 76,
+  "name": "Underground Path 2",
+  "matrix": 40,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE1",
+  "nightMusic": "MUS_ROUTE1",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 76, "z": 3, "to": "underground_path_east_entrance", "toWarp": 3 },
+    { "x": 3, "z": 4, "to": "underground_path_west_entrance", "toWarp": 3 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 7, "z": 3, "type": 2, "script": "", "item": "Potion", "flag": "FLAG_HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_POTION" },
+    { "x": 17, "z": 5, "type": 2, "script": "", "item": "Paralyze Heal", "flag": "FLAG_HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_PARALYZE_HEAL" },
+    { "x": 31, "z": 4, "type": 2, "script": "", "item": "Awakening", "flag": "FLAG_HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_AWAKENING" },
+    { "x": 45, "z": 3, "type": 2, "script": "", "item": "Burn Heal", "flag": "FLAG_HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_BURN_HEAL" },
+    { "x": 70, "z": 3, "type": 2, "script": "", "item": "Ice Heal", "flag": "FLAG_HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_ICE_HEAL" },
+    { "x": 55, "z": 2, "type": 2, "script": "", "item": "Ether", "flag": "FLAG_HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_ETHER" },
+    { "x": 62, "z": 5, "type": 2, "script": "", "item": "Antidote", "flag": "FLAG_HIDDEN_ITEM_UNDERGROUND_PATH_EAST_WEST_TUNNEL_ANTIDOTE" }
+  ],
+  "triggers": []
+}

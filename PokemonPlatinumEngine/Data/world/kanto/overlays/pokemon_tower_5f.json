@@ -1,0 +1,113 @@
+{
+  // The Pokémon Tower's fifth floor (plan 19 · K5, part a): a ring of tiles kept clean of evil spirits in its middle,
+  // where the team is healed (pokemon_tower_5f.txt)
+  "area": "pokemon_tower_5f",
+  "name": "Pokémon Tower",
+  "bgmTrack": "kanto/pokemon_tower",
+  "people": {
+    "channeler": {
+      "name": "Ruth",
+      "trainer": {
+        "dialogueBefore": "Channeler Ruth: You shall not pass the fifth floor!",
+        "dialogueAfter": "Channeler Ruth: Pass, then. I'm too tired."
+      }
+    },
+    "channeler_2": {
+      "name": "Tammy",
+      "trainer": {
+        "dialogueBefore": "Channeler Tammy: Ufufu... join us... join the spirits...",
+        "dialogueAfter": "Channeler Tammy: The spirits got bored of me."
+      }
+    },
+    "channeler_3": {
+      "name": "Karina",
+      "trainer": {
+        "dialogueBefore": "Channeler Karina: Can you see them? They're right behind you!",
+        "dialogueAfter": "Channeler Karina: Oh, they were behind me after all."
+      }
+    },
+    "channeler_4": {
+      "name": "Janae",
+      "trainer": {
+        "dialogueBefore": "Channeler Janae: Grrr... leave this place!",
+        "dialogueAfter": "Channeler Janae: Huh? I'm back to myself."
+      }
+    },
+    "channeler_5": {
+      "name": "Channeler",
+      "dialog": [
+        "The purified ground in the middle of this floor drives evil spirits away. Rest there and your Pokémon will be well again."
+      ]
+    }
+  },
+  "triggers": [
+    {
+      "trigger": 0,
+      "script": "PurifiedZone"
+    },
+    {
+      "trigger": 1,
+      "script": "PurifiedZone"
+    },
+    {
+      "trigger": 2,
+      "script": "PurifiedZone"
+    },
+    {
+      "trigger": 3,
+      "script": "PurifiedZone"
+    },
+    {
+      "trigger": 5,
+      "script": "PurifiedZone"
+    },
+    {
+      "trigger": 6,
+      "script": "PurifiedZone"
+    },
+    {
+      "trigger": 7,
+      "script": "PurifiedZone"
+    },
+    {
+      "trigger": 8,
+      "script": "PurifiedZone"
+    },
+    {
+      "trigger": 4,
+      "script": "ExitPurifiedZone"
+    },
+    {
+      "trigger": 9,
+      "script": "ExitPurifiedZone"
+    },
+    {
+      "trigger": 10,
+      "script": "ExitPurifiedZone"
+    },
+    {
+      "trigger": 11,
+      "script": "ExitPurifiedZone"
+    },
+    {
+      "trigger": 12,
+      "script": "ExitPurifiedZone"
+    },
+    {
+      "trigger": 13,
+      "script": "ExitPurifiedZone"
+    },
+    {
+      "trigger": 14,
+      "script": "ExitPurifiedZone"
+    },
+    {
+      "trigger": 15,
+      "script": "ExitPurifiedZone"
+    },
+    {
+      "trigger": 16,
+      "script": "ExitPurifiedZone"
+    }
+  ]
+}

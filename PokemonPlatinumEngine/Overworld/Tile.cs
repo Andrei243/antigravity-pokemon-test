@@ -202,6 +202,10 @@ public enum Architecture
     Granite,
     /// <summary>White clapboard under cerulean-blue gable roofs with flower boxes: the city of the river and the bridge (Cerulean, plan 19 · K4).</summary>
     Riverside,
+    /// <summary>Stucco under vermilion gable roofs with a chimney: the port of glowing sunsets (Vermilion, plan 19 · K5).</summary>
+    Portside,
+    /// <summary>Plaster under hipped lilac roofs with shutters: the quiet town of the tower (Lavender, plan 19 · K5).</summary>
+    Lilac,
 
     // Johto (plan 20): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>White plaster under slate-blue gable roofs with a chimney: the windy town by the sea (New Bark, plan 20 · J2).</summary>

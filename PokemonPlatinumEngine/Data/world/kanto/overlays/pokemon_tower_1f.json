@@ -1,0 +1,38 @@
+{
+  // The Pokémon Tower's ground floor (plan 19 · K5, part a): the hall of mourners, its floors FireRed's rooms
+  "area": "pokemon_tower_1f",
+  "name": "Pokémon Tower",
+  "bgmTrack": "kanto/pokemon_tower",
+  "people": {
+    "worker_f": {
+      "name": "Woman",
+      "dialog": [
+        "The Pokémon Tower is a place for remembering. Please be quiet as you go up."
+      ]
+    },
+    "channeler": {
+      "name": "Channeler",
+      "dialog": [
+        "Ghosts are restless upstairs. Without the Silph Scope, you can't even see what they are."
+      ]
+    },
+    "woman_2": {
+      "name": "Woman",
+      "dialog": [
+        "I came to see my Clefairy's grave. It liked flowers, so I brought some."
+      ]
+    },
+    "woman_3": {
+      "name": "Woman",
+      "dialog": [
+        "Every Pokémon here was loved by somebody."
+      ]
+    },
+    "balding_man": {
+      "name": "Man",
+      "dialog": [
+        "My Growlithe... I raised it from an Egg. Rest well, old friend."
+      ]
+    }
+  }
+}

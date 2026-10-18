@@ -1,0 +1,21 @@
+# The gate between Route 8 and Saffron City (plan 19 · K5, part a). docs/scripts.md describes the language; the lines
+# are our own, on FireRed's beats (data/maps/Route8_WestEntrance/scripts.inc).
+#
+# The guard is thirsty on duty and turns everyone back from the three steps before him (the area's triggers 0 to 2,
+# on VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES 0). FireRed lets through whoever brings him the Tea that Celadon
+# City's old lady gives; Celadon City and Saffron City beyond are part b's, so until then the gate stays shut.
+
+
+script Guard
+  face player up
+  speaker "Guard"
+  say "Halt! I'm on duty, and I'm too thirsty to let anyone by. Come back once I've had something to drink."
+  walk player right 1
+  end
+
+
+script GuardTalk
+  face policeman player
+  speaker "Guard"
+  say "Saffron City's closed to travellers for now. Orders from the top, I'm afraid."
+  end

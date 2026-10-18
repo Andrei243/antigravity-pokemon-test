@@ -75,6 +75,15 @@ public static class GbaCover
                 (0x0DF, 0x0DF, TerrainCover.Fence), (0x135, 0x135, TerrainCover.Fence), (0x13D, 0x13F, TerrainCover.Fence),
                 (0x146, 0x146, TerrainCover.Fence), (0x14D, 0x14D, TerrainCover.Fence), (0x157, 0x157, TerrainCover.Fence),
                 (0x0D6, 0x0D7, TerrainCover.Tree),
+                // Plan 19 · K5: the paved square before Vermilion's harbour, three by three with its edges (the set
+                // beside the town roads K4 named), which read as the lawn and sand round it
+                (0x1BD, 0x1BF, TerrainCover.Paving), (0x1C5, 0x1C7, TerrainCover.Paving), (0x1CD, 0x1CF, TerrainCover.Paving),
+            },
+            // Plan 19 · K5: Vermilion City's own: the pier's planks south of the square and the gangway at its head
+            // (MB_SOUTH_ARROW_WARP, the ways onto the S.S. Anne)
+            ["gTileset_VermilionCity"] = new (int, int, TerrainCover)[]
+            {
+                (0x2EB, 0x2ED, TerrainCover.Bridge), (0x302, 0x303, TerrainCover.Bridge), (0x308, 0x30A, TerrainCover.Bridge),
             },
             // Plan 19 · K4: Cerulean City's own: the bridges north of the town and Nugget Bridge, their railings, and the
             // rocks along Route 25's shore

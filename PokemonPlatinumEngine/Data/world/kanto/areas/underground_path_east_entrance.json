@@ -1,0 +1,28 @@
+{
+  "key": "underground_path_east_entrance",
+  "index": 77,
+  "name": "Underground Path 2",
+  "matrix": 41,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "route_8", "toWarp": 0 },
+    { "x": 6, "z": 8, "to": "route_8", "toWarp": 0 },
+    { "x": 7, "z": 8, "to": "route_8", "toWarp": 0 },
+    { "x": 7, "z": 4, "to": "underground_path_east_west_tunnel", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_around", "x": 5, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "UndergroundPath_EastEntrance_EventScript_Woman" }
+  ],
+  "signs": [],
+  "triggers": []
+}
