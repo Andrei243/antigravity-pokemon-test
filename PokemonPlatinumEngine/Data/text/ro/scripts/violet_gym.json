@@ -1,0 +1,150 @@
+{
+  "Falkner": [
+    {
+      "en": [
+        "Falkner"
+      ],
+      "text": [
+        "Falkner"
+      ]
+    },
+    {
+      "en": [
+        "I'm Falkner, Leader of the Violet City Gym. People call bird Pokémon weak, easy prey for an Electric move."
+      ],
+      "text": [
+        "Eu sunt Falkner, Liderul Arenei din Orașul Violet. Lumea zice că păsările Pokémon sunt slabe, o pradă ușoară pentru o mișcare Electrică."
+      ]
+    },
+    {
+      "en": [
+        "My father taught me otherwise. I'll show you the true strength of the sky!"
+      ],
+      "text": [
+        "Tatăl meu m-a învățat altceva. O să-ți arăt adevărata putere a cerului!"
+      ]
+    },
+    {
+      "en": [
+        "...My father's birds, beaten. You've earned this, fair and square. The Zephyr Badge!"
+      ],
+      "text": [
+        "...Păsările tatălui meu, învinse. Ai meritat-o pe drept. Insigna Zefir!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Zephyr Badge from Falkner!"
+      ],
+      "text": [
+        "{player} a primit Insigna Zefir de la Falkner!"
+      ]
+    },
+    {
+      "en": [
+        "With it, Pokémon up to level twenty will obey you, even ones you've traded for. And Rock Smash can be used outside battle."
+      ],
+      "text": [
+        "Cu ea, Pokémonii de până la nivelul douăzeci te vor asculta, chiar și cei primiți la schimb. Și poți folosi Spărgător de Pietre în afara luptei."
+      ]
+    },
+    {
+      "en": [
+        "Take this as well. It's my favourite move."
+      ],
+      "text": [
+        "Ia și asta. E mișcarea mea preferată."
+      ]
+    },
+    {
+      "en": [
+        "TM51 holds Roost. A Pokémon that uses it lands for a turn and gets back half of its health."
+      ],
+      "text": [
+        "TM51 conține Popas. Pokémonul care o folosește aterizează pentru o tură și își recapătă jumătate din viață."
+      ]
+    },
+    {
+      "en": [
+        "There are seven more Gyms in Johto. Fly high, {player}!"
+      ],
+      "text": [
+        "Mai sunt șapte Arene în Johto. Zbori sus, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Brrrring! Brrrring! It's the Pokégear..."
+      ],
+      "text": [
+        "Țârrr! Țârrr! E Pokégearul..."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        "Profesorul Elm"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I've found out something about that Egg. My aide is in Violet City's Pokémon Center. Would you go and see him?"
+      ],
+      "text": [
+        "{player}! Am aflat ceva despre Oul ăla. Asistentul meu e la Centrul Pokémon din Orașul Violet. Te duci să-l vezi?"
+      ]
+    },
+    {
+      "en": [
+        "Click... The call has ended."
+      ],
+      "text": [
+        "Clic... Convorbirea s-a încheiat."
+      ]
+    },
+    {
+      "en": [
+        "I'll train my birds until nobody calls them easy prey again. Come back and see how far we've flown!"
+      ],
+      "text": [
+        "O să-mi antrenez păsările până nu le mai zice nimeni pradă ușoară. Vino înapoi să vezi cât de sus am zburat!"
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey there, future Champion! Falkner's birds are Flying types. They swoop over Ground moves like they're nothing."
+      ],
+      "text": [
+        "Hei, tu, cu stofă de Campion! Păsările lui Falkner sunt de tip Zbor. Trec peste mișcările de tip Pământ de parcă n-ar fi."
+      ]
+    },
+    {
+      "en": [
+        "Electric and Rock moves are what they hate. If you've climbed Sprout Tower, you'll be ready for him!"
+      ],
+      "text": [
+        "Mișcările de tip Electric și Rocă le detestă. Dacă ai urcat în Turnul Lăstarilor, poți să te lupți cu el!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Falkner! That was something to see. The Zephyr Badge is only the first of many!"
+      ],
+      "text": [
+        "L-ai învins pe Falkner! A fost ceva de văzut. Insigna Zefir e doar prima din multe!"
+      ]
+    }
+  ]
+}

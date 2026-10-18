@@ -1,0 +1,102 @@
+{
+  "RivalLeaves": [
+    {
+      "en": [
+        "Elder Li"
+      ],
+      "text": [
+        "Bătrânul Li"
+      ]
+    },
+    {
+      "en": [
+        "You are strong, young man. But you treat your Pokémon as tools. Strength like that has nowhere to grow."
+      ],
+      "text": [
+        "Ești puternic, tinere. Dar îți tratezi Pokémonii ca pe niște unelte. O astfel de putere n-are unde să crească."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Spare me the sermon, old man. Strength is all that counts. I won, didn't I?"
+      ],
+      "text": [
+        "Scutește-mă de predică, moșule. Doar puterea contează. Am câștigat, nu?"
+      ]
+    },
+    {
+      "en": [
+        "...You again. Don't get in my way. I've got no time for a weakling like you."
+      ],
+      "text": [
+        "...Iar tu. Nu-mi sta în cale. N-am timp de slăbănogi ca tine."
+      ]
+    },
+    {
+      "en": [
+        "{rival} used an Escape Rope!"
+      ],
+      "text": [
+        "{rival} a folosit o Frânghie!"
+      ]
+    }
+  ],
+  "Elder": [
+    {
+      "en": [
+        "Elder Li"
+      ],
+      "text": [
+        "Bătrânul Li"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the top of Sprout Tower. You have climbed far, and your Pokémon climbed beside you."
+      ],
+      "text": [
+        "Bine ai venit în vârful Turnului Lăstarilor. Ai urcat mult, iar Pokémonii tăi au urcat alături de tine."
+      ]
+    },
+    {
+      "en": [
+        "The pillar at the tower's heart sways with every wind, and so it never falls. Let me see if your bond is as supple."
+      ],
+      "text": [
+        "Stâlpul din inima turnului se leagănă la fiecare vânt, și de aceea nu cade niciodată. Să văd dacă legătura voastră e la fel de mlădioasă."
+      ]
+    },
+    {
+      "en": [
+        "Splendid. You and your Pokémon move as one. Take this, and may it light your way."
+      ],
+      "text": [
+        "Splendid. Tu și Pokémonii tăi vă mișcați ca unul. Ia asta, și fie ca ea să-ți lumineze calea."
+      ]
+    },
+    {
+      "en": [
+        "TM70 holds Flash. It lights a dark cave and dazzles a foe. Falkner awaits you at the Gym. Go to him with my blessing."
+      ],
+      "text": [
+        "TM70 conține Bliț. Luminează o peșteră întunecată și orbește inamicul. Falkner te așteaptă la Arenă. Du-te la el cu binecuvântarea mea."
+      ]
+    },
+    {
+      "en": [
+        "Do not forget: the bond between you and your Pokémon is the strongest pillar of all."
+      ],
+      "text": [
+        "Nu uita: legătura dintre tine și Pokémonii tăi e cel mai puternic stâlp dintre toți."
+      ]
+    }
+  ]
+}

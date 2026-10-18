@@ -1,0 +1,132 @@
+{
+  "Miguel": [
+    {
+      "en": [
+        "Miguel"
+      ],
+      "text": [
+        "Miguel"
+      ]
+    },
+    {
+      "en": [
+        "Go on, then. Take whichever fossil you like. The other one's mine."
+      ],
+      "text": [
+        "Hai, atunci. Ia ce fosilă vrei. Cealaltă e a mea."
+      ]
+    },
+    {
+      "en": [
+        "They say there's a lab on Cinnabar Island that can bring fossils back to life. Imagine that!"
+      ],
+      "text": [
+        "Se zice că pe Insula Cinnabar e un laborator care poate readuce fosilele la viață. Închipuie-ți!"
+      ]
+    }
+  ],
+  "BattleMiguel": [
+    {
+      "en": [
+        "Miguel"
+      ],
+      "text": [
+        "Miguel"
+      ]
+    },
+    {
+      "en": [
+        "Hold it! I found these fossils first. They're mine, and nobody's taking them!"
+      ],
+      "text": [
+        "Stai! Eu am găsit primul fosilele astea. Sunt ale mele și nu mi le ia nimeni!"
+      ]
+    },
+    {
+      "en": [
+        "Miguel"
+      ],
+      "text": [
+        "Miguel"
+      ]
+    },
+    {
+      "en": [
+        "All right, all right! You win. Let's be fair about it: one fossil each. You choose first."
+      ],
+      "text": [
+        "Bine, bine! Ai câștigat. Să fim corecți: câte o fosilă fiecare. Tu alegi întâi."
+      ]
+    }
+  ],
+  "DomeFossil": [
+    {
+      "en": [
+        "It's a fossil shaped like a dome. Take the Dome Fossil?"
+      ],
+      "text": [
+        "E o fosilă în formă de cupolă. Iei Fosila Cupolă?"
+      ]
+    },
+    {
+      "en": [
+        "Miguel"
+      ],
+      "text": [
+        "Miguel"
+      ]
+    },
+    {
+      "en": [
+        "Then the Helix Fossil is mine! Thanks!"
+      ],
+      "text": [
+        "Atunci Fosila Spirală e a mea! Mersi!"
+      ]
+    }
+  ],
+  "HelixFossil": [
+    {
+      "en": [
+        "It's a fossil shaped like a spiral shell. Take the Helix Fossil?"
+      ],
+      "text": [
+        "E o fosilă în formă de cochilie răsucită. Iei Fosila Spirală?"
+      ]
+    },
+    {
+      "en": [
+        "Miguel"
+      ],
+      "text": [
+        "Miguel"
+      ]
+    },
+    {
+      "en": [
+        "Then the Dome Fossil is mine! Thanks!"
+      ],
+      "text": [
+        "Atunci Fosila Cupolă e a mea! Mersi!"
+      ]
+    }
+  ],
+  "Guarded": [
+    {
+      "en": [
+        "Miguel"
+      ],
+      "text": [
+        "Miguel"
+      ]
+    },
+    {
+      "en": [
+        "Hey! Hands off! Those fossils are mine!"
+      ],
+      "text": [
+        "Hei! Jos labele! Fosilele alea sunt ale mele!"
+      ]
+    }
+  ]
+}

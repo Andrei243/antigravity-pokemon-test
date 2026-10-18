@@ -1,0 +1,190 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Mr. Pokémon"
+      ],
+      "text": [
+        "Domnul Pokémon"
+      ]
+    },
+    {
+      "en": [
+        "Hello, hello! You must be {player}. Elm told me you'd be coming in his place. Do come in!"
+      ],
+      "text": [
+        "Bună, bună! Tu trebuie să fii {player}. Elm mi-a zis că vii în locul lui. Intră, te rog!"
+      ]
+    },
+    {
+      "en": [
+        "This is what I wanted him to see. A friend of mine in the south found it and passed it to me."
+      ],
+      "text": [
+        "Asta voiam să vadă. Un prieten de-al meu din sud a găsit-o și mi-a dat-o mie."
+      ]
+    },
+    {
+      "en": [
+        "It's an Egg! Or at least, everyone I've asked says it must be. Nobody can tell me what's inside."
+      ],
+      "text": [
+        "E un Ou! Sau cel puțin așa zic toți cei pe care i-am întrebat. Nimeni nu-mi poate spune ce e înăuntru."
+      ]
+    },
+    {
+      "en": [
+        "Elm is the man for Pokémon Eggs. Would you take it back to him?"
+      ],
+      "text": [
+        "Elm e omul potrivit pentru ouăle de Pokémon. I-l duci tu înapoi?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Mystery Egg!"
+      ],
+      "text": [
+        "{player} a primit Oul Misterios!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "So you're the one Elm trusted with his errand. I'm Oak. I study Pokémon too, over in Kanto."
+      ],
+      "text": [
+        "Deci ție ți-a încredințat Elm comisionul. Eu sunt Oak. Și eu studiez Pokémonii, în Kanto."
+      ]
+    },
+    {
+      "en": [
+        "I happened to be passing through on the way to Goldenrod. I do a little radio show there, you see."
+      ],
+      "text": [
+        "Treceam întâmplător pe-aici în drum spre Goldenrod. Am acolo o mică emisiune la radio, să știi."
+      ]
+    },
+    {
+      "en": [
+        "That {starter} of yours looks very happy with you. You two will go far together."
+      ],
+      "text": [
+        "{starter} al tău pare foarte fericit cu tine. Voi doi o să ajungeți departe împreună."
+      ]
+    },
+    {
+      "en": [
+        "Here. I think you'll put this to better use than I could. It's a Pokédex."
+      ],
+      "text": [
+        "Uite. Cred că tu o să-l folosești mai bine decât mine. E un Pokédex."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Pokédex from Professor Oak!"
+      ],
+      "text": [
+        "{player} a primit Pokédexul de la Profesorul Oak!"
+      ]
+    },
+    {
+      "en": [
+        "It records every Pokémon you meet. Fill it in as you travel, and come and show me some day!"
+      ],
+      "text": [
+        "Înregistrează fiecare Pokémon pe care-l întâlnești. Completează-l pe drum și vino să mi-l arăți într-o zi!"
+      ]
+    },
+    {
+      "en": [
+        "Well, I must be off. My show won't present itself."
+      ],
+      "text": [
+        "Ei, trebuie să plec. Emisiunea mea nu se prezintă singură."
+      ]
+    },
+    {
+      "en": [
+        "Mr. Pokémon"
+      ],
+      "text": [
+        "Domnul Pokémon"
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon looks worn out from the road. Let it rest a moment."
+      ],
+      "text": [
+        "Pokémonul tău pare istovit de drum. Lasă-l să se odihnească puțin."
+      ]
+    },
+    {
+      "en": [
+        "Brrrring! Brrrring! It's the Pokégear..."
+      ],
+      "text": [
+        "Țârrr! Țârrr! E Pokégearul..."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        "Profesorul Elm"
+      ]
+    },
+    {
+      "en": [
+        "{player}?! Thank goodness. Something terrible has happened! Come back to the lab as soon as you can!"
+      ],
+      "text": [
+        "{player}?! Slavă cerului. S-a întâmplat ceva groaznic! Întoarce-te la laborator cât poți de repede!"
+      ]
+    },
+    {
+      "en": [
+        "Click... The call has ended."
+      ],
+      "text": [
+        "Clic... Convorbirea s-a încheiat."
+      ]
+    }
+  ],
+  "MrPokemon": [
+    {
+      "en": [
+        "Mr. Pokémon"
+      ],
+      "text": [
+        "Domnul Pokémon"
+      ]
+    },
+    {
+      "en": [
+        "Hello, hello! Have a look round. Everything in here came from my travels."
+      ],
+      "text": [
+        "Bună, bună! Uită-te în voie. Tot ce e aici vine din călătoriile mele."
+      ]
+    },
+    {
+      "en": [
+        "Elm will get to the bottom of that Egg, mark my words. Do come and tell me what hatches!"
+      ],
+      "text": [
+        "Elm o să afle tot despre Oul ăla, ascultă-mă pe mine. Vino să-mi spui ce iese din el!"
+      ]
+    }
+  ]
+}

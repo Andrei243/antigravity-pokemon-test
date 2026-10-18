@@ -1,0 +1,274 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Well, look who finally made it! {player}! How's the Pokédex coming along?"
+      ],
+      "text": [
+        "Ia uite cine a ajuns în sfârșit! {player}! Cum merge cu Pokédexul?"
+      ]
+    },
+    {
+      "en": [
+        "Me? I've already caught loads. I went over that bridge and up to Bill's place, too."
+      ],
+      "text": [
+        "Eu? Am prins deja o grămadă. Am trecut și podul și am urcat până la Bill."
+      ]
+    },
+    {
+      "en": [
+        "Let's see if you've got any stronger. Come on, battle me!"
+      ],
+      "text": [
+        "Să vedem dacă te-ai mai întărit. Hai, luptă cu mine!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Tch! Lucky break. You'd better not get used to winning."
+      ],
+      "text": [
+        "Tch! Noroc chior. Să nu te obișnuiești să câștigi."
+      ]
+    },
+    {
+      "en": [
+        "Bill's up the road past the bridge. He knows more about Pokémon than anyone. Go and see him, if you can keep up."
+      ],
+      "text": [
+        "Bill stă mai sus pe drum, dincolo de pod. Știe despre Pokémoni mai mult decât oricine. Du-te la el, dacă ții pasul."
+      ]
+    },
+    {
+      "en": [
+        "I'm off. Smell you later, {player}!"
+      ],
+      "text": [
+        "Eu am plecat. Pa-pa, {player}!"
+      ]
+    }
+  ],
+  "GruntBattle": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        "Grunt"
+      ]
+    },
+    {
+      "en": [
+        "Hey! Stay out of here! This is none of your business. Get lost, kid!"
+      ],
+      "text": [
+        "Hei! Nu intra aici! Nu e treaba ta. Șterge-o, puștiule!"
+      ]
+    }
+  ],
+  "GiveBack": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        "Grunt"
+      ]
+    },
+    {
+      "en": [
+        "All right, all right! I'll give it back. It's just some TM I swiped from that house anyway."
+      ],
+      "text": [
+        "Bine, bine! Îl dau înapoi. Oricum e doar un TM pe care l-am șutit din casa aia."
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket doesn't forget a face, kid. I'm out of here!"
+      ],
+      "text": [
+        "Echipa Rocket nu uită o față, puștiule. Eu am șters-o!"
+      ]
+    }
+  ],
+  "Policeman": [
+    {
+      "en": [
+        "Policeman"
+      ],
+      "text": [
+        "Polițistul"
+      ]
+    },
+    {
+      "en": [
+        "This house was broken into last night. A Team Rocket thief, by the looks of it. Nobody goes in until we're done."
+      ],
+      "text": [
+        "Cineva a spart casa asta azi-noapte. Un hoț din Echipa Rocket, după toate semnele. Nu intră nimeni până terminăm."
+      ]
+    }
+  ],
+  "LittleBoy": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "If that Slowbro would just move, you could go round to the little tree and cut it down. Then you'd be on Route 5!"
+      ],
+      "text": [
+        "Dacă s-ar mișca Slowbro ăla, ai putea ocoli până la copăcelul de acolo și să-l tai. Și ai ajunge pe Ruta 5!"
+      ]
+    },
+    {
+      "en": [
+        "Some Pokémon can cut down small trees like that one. You need the right move and the right Badge."
+      ],
+      "text": [
+        "Unii Pokémoni pot tăia copăcei ca ăla. Ai nevoie de mișcarea potrivită și de Insigna potrivită."
+      ]
+    }
+  ],
+  "Lass": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        "Fata"
+      ]
+    },
+    {
+      "en": [
+        "Slowbro, use Water Gun! Come on, Slowbro!"
+      ],
+      "text": [
+        "Slowbro, folosește Pistol cu Apă! Haide, Slowbro!"
+      ]
+    },
+    {
+      "en": [
+        "Slowbro, are you even listening? It never pays attention..."
+      ],
+      "text": [
+        "Slowbro, măcar mă asculți? Nu e niciodată atent..."
+      ]
+    },
+    {
+      "en": [
+        "Slowbro, punch! Punch, I said!"
+      ],
+      "text": [
+        "Slowbro, pumnul! Pumnul, am zis!"
+      ]
+    },
+    {
+      "en": [
+        "...It's not doing anything. Why won't it listen to me?"
+      ],
+      "text": [
+        "...Nu face nimic. De ce nu mă ascultă?"
+      ]
+    },
+    {
+      "en": [
+        "Slowbro, withdraw! Slowbro?"
+      ],
+      "text": [
+        "Slowbro, Retragere! Slowbro?"
+      ]
+    },
+    {
+      "en": [
+        "Training a Pokémon to obey is so much harder than it looks."
+      ],
+      "text": [
+        "Să înveți un Pokémon să asculte e mult mai greu decât pare."
+      ]
+    }
+  ],
+  "Slowbro": [
+    {
+      "en": [
+        "Slowbro"
+      ],
+      "text": [
+        "Slowbro"
+      ]
+    },
+    {
+      "en": [
+        "Slowbro is having a little nap..."
+      ],
+      "text": [
+        "Slowbro trage un pui de somn..."
+      ]
+    },
+    {
+      "en": [
+        "Slowbro is just lazing about..."
+      ],
+      "text": [
+        "Slowbro doar lenevește..."
+      ]
+    },
+    {
+      "en": [
+        "Slowbro has turned its back on its trainer..."
+      ],
+      "text": [
+        "Slowbro i-a întors spatele antrenoarei lui..."
+      ]
+    },
+    {
+      "en": [
+        "Slowbro didn't hear a word of that order..."
+      ],
+      "text": [
+        "Slowbro n-a auzit niciun cuvânt din ordinul ăla..."
+      ]
+    }
+  ],
+  "Woman": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "I'd love one of those shiny red bicycles in the shop. But have you seen the price? A million!"
+      ],
+      "text": [
+        "Mi-aș dori una dintre bicicletele alea roșii și lucioase din magazin. Dar ai văzut prețul? Un milion!"
+      ]
+    }
+  ]
+}

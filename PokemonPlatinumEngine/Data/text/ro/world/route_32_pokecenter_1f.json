@@ -1,0 +1,115 @@
+{
+  "people": {
+    "r32pc0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "r32pc0101_pcwoman2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+        ],
+        "text": [
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
+        ]
+      }
+    },
+    "r32pc0101_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "r32pc0101_pcwoman2_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "r32pc0101_fishing_2": {
+      "name": {
+        "en": [
+          "Fishing Guru"
+        ],
+        "text": [
+          "Maestrul Pescar"
+        ]
+      }
+    },
+    "r32pc0101_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Union Cave is south of here. It's dark and damp, and full of Zubat. I always run straight through."
+        ],
+        "text": [
+          "Peștera Uniunii e la sud de aici. E întunecată și umedă și plină de Zubat. Eu o traversez mereu în fugă."
+        ]
+      }
+    },
+    "r32pc0101_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I walked all the way from Azalea Town. My feet ache, but my Pokémon are full of beans!"
+        ],
+        "text": [
+          "Am venit pe jos tocmai din Orășelul Azalea. Mă dor picioarele, dar Pokémonii mei sunt plini de energie!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

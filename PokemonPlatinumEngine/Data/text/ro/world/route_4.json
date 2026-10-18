@@ -1,0 +1,120 @@
+{
+  "people": {
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I tripped over a Geodude on the way out of Mt. Moon. They look just like rocks!"
+        ],
+        "text": [
+          "M-am împiedicat de un Geodude când ieșeam din Muntele Lunii. Arată exact ca niște pietre!"
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mt. Moon's a maze. If you get lost, an Escape Rope will take you straight back outside."
+        ],
+        "text": [
+          "Muntele Lunii e un labirint. Dacă te rătăcești, o Frânghie te scoate direct afară."
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hah! A punch is all in the hips. One day I'll teach you, once you've earned it."
+        ],
+        "text": [
+          "Ha! Un pumn vine tot din șold. Într-o zi o să te învăț, după ce o meriți."
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          "Centură Neagră"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My kicks could split a boulder! Come back when your Pokémon are ready to learn them."
+        ],
+        "text": [
+          "Loviturile mele de picior ar putea despica un bolovan! Vino înapoi când Pokémonii tăi sunt pregătiți să le învețe."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Crissy"
+        ],
+        "text": [
+          "Crissy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Crissy: I came all the way round Mt. Moon to train here. Let's battle!"
+        ],
+        "text": [
+          "Domnișoară Crissy: Am ocolit tot Muntele Lunii ca să mă antrenez aici. Hai să ne luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Crissy: All that training, and you still beat me. Not fair!"
+        ],
+        "text": [
+          "Domnișoară Crissy: Atâta antrenament, și tot m-ai învins. Nu e corect!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route4_EventScript_MtMoonSign": {
+      "en": [
+        "Mt. Moon\nTunnel entrance"
+      ],
+      "text": [
+        "Muntele Lunii\nIntrarea în tunel"
+      ]
+    },
+    "Route4_EventScript_RouteSign": {
+      "en": [
+        "Route 4\nMt. Moon - Cerulean City"
+      ],
+      "text": [
+        "Ruta 4\nMuntele Lunii - Orașul Cerulean"
+      ]
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "people": {
+    "d15r0102_bozu": {
+      "name": {
+        "en": [
+          "Nico"
+        ],
+        "text": [
+          "Nico"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sage Nico: The tower sways, but our hearts are steady. Are yours?"
+        ],
+        "text": [
+          "Călugăr Nico: Turnul se leagănă, dar inimile noastre stau neclintite. Ale voastre?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sage Nico: Steady indeed. I have more training to do."
+        ],
+        "text": [
+          "Călugăr Nico: Neclintite, într-adevăr. Mai am de lucrat la antrenament."
+        ]
+      }
+    },
+    "d15r0102_bozu_2": {
+      "name": {
+        "en": [
+          "Edmond"
+        ],
+        "text": [
+          "Edmond"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sage Edmond: Every step up this tower is a lesson. Here is mine!"
+        ],
+        "text": [
+          "Călugăr Edmond: Fiecare treaptă a turnului e o lecție. Iat-o pe a mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sage Edmond: A lesson for me, it seems. Climb on."
+        ],
+        "text": [
+          "Călugăr Edmond: O lecție pentru mine, se pare. Urcă mai departe."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,110 @@
+{
+  "Misty": [
+    {
+      "en": [
+        "Misty"
+      ],
+      "text": [
+        "Misty"
+      ]
+    },
+    {
+      "en": [
+        "Hi, you're a new face! Trainers who want to turn pro need a policy for raising their Pokémon."
+      ],
+      "text": [
+        "Salut, o față nouă! Antrenorii care vor să devină profesioniști au nevoie de un stil al lor de a-și crește Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "Mine? It's all-out offence with Water types! Let's see if you can keep your head above water!"
+      ],
+      "text": [
+        "Al meu? Atac total cu Pokémoni de tip Apă! Să vedem dacă reușești să ții capul deasupra apei!"
+      ]
+    },
+    {
+      "en": [
+        "Wow, you're too much! All right, you can have the Cascade Badge to show you beat me."
+      ],
+      "text": [
+        "Uau, ești prea tare! Bine, poți primi Insigna Cascadă, ca dovadă că m-ai învins."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Cascade Badge from Misty!"
+      ],
+      "text": [
+        "{player} a primit Insigna Cascadă de la Misty!"
+      ]
+    },
+    {
+      "en": [
+        "With the Cascade Badge, your Pokémon can use Cut outside of battle, to clear away small trees."
+      ],
+      "text": [
+        "Cu Insigna Cascadă, Pokémonii tăi pot folosi Tăiere în afara luptei, ca să curețe drumul de copăcei."
+      ]
+    },
+    {
+      "en": [
+        "And take this too. It's one of my favourite moves."
+      ],
+      "text": [
+        "Și ia și asta. E una dintre mișcările mele preferate."
+      ]
+    },
+    {
+      "en": [
+        "TM03 is Water Pulse. It hits with a wave of sound and water, and it can leave the foe confused."
+      ],
+      "text": [
+        "TM03 conține Puls de Apă. Lovește cu un val de sunet și apă și îl poate lăsa pe inamic confuz."
+      ]
+    },
+    {
+      "en": [
+        "Water Pulse can throw the foe off balance. Use it well, and remember who taught you!"
+      ],
+      "text": [
+        "Puls de Apă îl poate dezechilibra pe inamic. Folosește-l bine și nu uita cine te-a învățat!"
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Yo, champ in the making! Misty's Pokémon are Water types, and they hit hard."
+      ],
+      "text": [
+        "Salut, tu, cu stofă de Campion! Pokémonii lui Misty sunt de tip Apă și lovesc tare."
+      ]
+    },
+    {
+      "en": [
+        "Electric and Grass moves are what you want here. Zap them or root them out!"
+      ],
+      "text": [
+        "Aici îți trebuie mișcări de tip Electric și Iarbă. Electrocutează-i sau prinde-i în rădăcini!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Misty! What a battle. We make a pretty good team, you and me!"
+      ],
+      "text": [
+        "Ai învins-o pe Misty! Ce luptă! Facem o echipă bună, tu și cu mine!"
+      ]
+    }
+  ]
+}

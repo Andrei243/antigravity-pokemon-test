@@ -1,0 +1,70 @@
+{
+  "people": {
+    "man": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Bike Shop! Our bicycles are the best in Kanto. Only ¥1,000,000 each!",
+          "...No? Come back if you ever win the lottery."
+        ],
+        "text": [
+          "Bun venit la Magazinul de Biciclete! Bicicletele noastre sunt cele mai bune din Kanto. Doar ¥1.000.000 bucata!",
+          "...Nu? Vino înapoi dacă iei vreodată lozul cel mare."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A bicycle gets you round twice as fast as running shoes. I want one so badly!"
+        ],
+        "text": [
+          "Cu bicicleta ajungi peste tot de două ori mai repede decât cu Pantofii de Alergare. Îmi doresc una așa de tare!"
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A bicycle that folds up small enough to fit in your bag. What will they think of next?"
+        ],
+        "text": [
+          "O bicicletă care se pliază atât de mică încât îți intră în rucsac. Ce-or mai inventa?"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeruleanCity_BikeShop_EventScript_Bicycle": {
+      "en": [
+        "A shiny new bicycle. The price tag says ¥1,000,000!"
+      ],
+      "text": [
+        "O bicicletă nouă și lucioasă. Pe etichetă scrie ¥1.000.000!"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "people": {
+    "bill_human": {
+      "name": {
+        "en": [
+          "Bill"
+        ],
+        "text": [
+          "Bill"
+        ]
+      }
+    },
+    "bill_clefairy": {
+      "name": {
+        "en": [
+          "Bill"
+        ],
+        "text": [
+          "Bill"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

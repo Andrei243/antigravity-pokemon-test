@@ -2715,7 +2715,9 @@
     "SeabreakPath": "Cărarea Valurilor", "underground": "Subteranul", "BattleZone": "Ținutul Luptelor",
     "PalletTown": "Orășelul Pallet", "ViridianCity": "Orașul Viridian", "PewterCity": "Orașul Pewter",
     "ViridianForest": "Pădurea Viridian", "Route1": "Ruta 1", "Route2": "Ruta 2", "Route3": "Ruta 3", "Route22": "Ruta 22",
+    "MtMoon": "Muntele Lunii", "Route4": "Ruta 4", "CeruleanCity": "Orașul Cerulean", "Route24": "Ruta 24", "Route25": "Ruta 25",
     "NewBarkTown": "Orășelul New Bark", "CherrygroveCity": "Orașul Cherrygrove", "VioletCity": "Orașul Violet",
-    "Route29": "Ruta 29", "Route30": "Ruta 30", "Route31": "Ruta 31", "Route36": "Ruta 36"
+    "Route29": "Ruta 29", "Route30": "Ruta 30", "Route31": "Ruta 31", "Route32": "Ruta 32", "Route36": "Ruta 36",
+    "SproutTower": "Turnul Lăstarilor"
   }
 }

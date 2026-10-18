@@ -1,0 +1,105 @@
+{
+  "people": {
+    "d15r0101_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come here every morning to hear the pillar creak. It sounds like the tower is breathing."
+        ],
+        "text": [
+          "Vin aici în fiecare dimineață să aud stâlpul scârțâind. Parcă ar respira turnul."
+        ]
+      }
+    },
+    "d15r0101_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a Bellsprout as tall as the sky was turned into the pillar in the middle of this tower.",
+          "That's why it bends with the wind, like a Bellsprout does."
+        ],
+        "text": [
+          "Se spune că un Bellsprout înalt până la cer a fost prefăcut în stâlpul din mijlocul turnului.",
+          "De-asta se îndoaie în vânt, cum face un Bellsprout."
+        ]
+      }
+    },
+    "d15r0101_bozu": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          "Călugărul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Sages of this tower train with Bellsprout. Their bodies bend, but their spirits never do."
+        ],
+        "text": [
+          "Călugării acestui turn se antrenează cu Bellsprout. Trupurile lor se îndoaie, dar spiritul niciodată."
+        ]
+      }
+    },
+    "d15r0101_bozu_2": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          "Călugărul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Elder waits at the very top. Only trainers whose Pokémon trust them reach him."
+        ],
+        "text": [
+          "Bătrânul așteaptă chiar în vârf. Ajung la el doar antrenorii în care Pokémonii lor au încredere."
+        ]
+      }
+    },
+    "d15r0101_bozu_3": {
+      "name": {
+        "en": [
+          "Chow"
+        ],
+        "text": [
+          "Chow"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sage Chow: Welcome to Sprout Tower. Let our battle be your first step upward!"
+        ],
+        "text": [
+          "Călugăr Chow: Bine ai venit în Turnul Lăstarilor. Lupta noastră să fie primul tău pas în sus!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sage Chow: A fine first step. The stairs are that way."
+        ],
+        "text": [
+          "Călugăr Chow: Un prim pas bun. Scările sunt pe acolo."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

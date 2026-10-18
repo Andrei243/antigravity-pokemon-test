@@ -8,15 +8,23 @@
         "text": [
           "Domnul Pokémon"
         ]
+      }
+    },
+    "r30r0201_ookido": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          "Profesorul Oak"
+        ]
       },
       "dialog": {
         "en": [
-          "Hello, hello! Have a look round. Everything in here came from my travels.",
-          "That coin over there is from a country so far away I've forgotten its name."
+          "Fill in that Pokédex as you travel!"
         ],
         "text": [
-          "Bună, bună! Uită-te în voie. Tot ce e aici l-am adus din călătoriile mele.",
-          "Moneda aia de acolo e dintr-o țară atât de îndepărtată, că i-am uitat numele."
+          "Completează Pokédexul ăla pe drum!"
         ]
       }
     }

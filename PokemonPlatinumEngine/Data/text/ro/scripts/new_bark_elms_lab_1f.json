@@ -1,0 +1,440 @@
+{
+  "Errand": [
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        "Profesorul Elm"
+      ]
+    },
+    {
+      "en": [
+        "{player}! There you are. Come over here a moment, would you?"
+      ],
+      "text": [
+        "{player}! Aici erai. Vino puțin încoace, te rog."
+      ]
+    },
+    {
+      "en": [
+        "Thank you for coming so early. I've had an e-mail from an old friend, Mr. Pokémon. He lives up past Cherrygrove City."
+      ],
+      "text": [
+        "Mulțumesc că ai venit așa devreme. Am primit un e-mail de la un vechi prieten, Domnul Pokémon. Stă dincolo de Orașul Cherrygrove."
+      ]
+    },
+    {
+      "en": [
+        "He says he's found something remarkable, and he wants me to come and see it. But my research won't wait!"
+      ],
+      "text": [
+        "Zice că a găsit ceva extraordinar și vrea să vin să văd. Dar cercetarea mea nu poate aștepta!"
+      ]
+    },
+    {
+      "en": [
+        "Ah, that's the chime again. More results coming in, see? I can't leave the lab for a minute."
+      ],
+      "text": [
+        "A, iar sună. Mai vin rezultate, vezi? Nu pot părăsi laboratorul nici un minut."
+      ]
+    },
+    {
+      "en": [
+        "So I was wondering... could you go in my place? The way there has wild Pokémon in its grass, so you'll need one of your own."
+      ],
+      "text": [
+        "Așa că mă gândeam... ai putea merge în locul meu? Pe drum sunt Pokémoni sălbatici în iarbă, deci o să-ți trebuiască unul al tău."
+      ]
+    },
+    {
+      "en": [
+        "In the machine behind my desk are three Pokémon I've been raising. Choose one, and it's yours to keep!"
+      ],
+      "text": [
+        "În aparatul din spatele biroului meu sunt trei Pokémoni pe care i-am crescut. Alege unul și e al tău!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        "Profesorul Elm"
+      ]
+    },
+    {
+      "en": [
+        "Wait, {player}! You can't go out there without a Pokémon. Choose one from the machine first!"
+      ],
+      "text": [
+        "Stai, {player}! Nu poți ieși fără un Pokémon. Alege întâi unul din aparat!"
+      ]
+    }
+  ],
+  "Machine": [
+    {
+      "en": [
+        "A machine with three Poké Balls in it. It hums quietly."
+      ],
+      "text": [
+        "Un aparat cu trei Poké Ball în el. Zumzăie încet."
+      ]
+    },
+    {
+      "en": [
+        "A machine for raising Pokémon. Two of its three places are empty now."
+      ],
+      "text": [
+        "Un aparat pentru creșterea Pokémonilor. Două dintre cele trei locuri ale lui sunt acum goale."
+      ]
+    }
+  ],
+  "Choose": [
+    {
+      "en": [
+        "{player} received the {starter} from Professor Elm!"
+      ],
+      "text": [
+        "{player} a primit {starter} de la Profesorul Elm!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        "Profesorul Elm"
+      ]
+    },
+    {
+      "en": [
+        "A wonderful choice! I've raised that {starter} since it hatched. It already seems to like you."
+      ],
+      "text": [
+        "O alegere minunată! L-am crescut pe {starter} de când a ieșit din ou. Deja pare să te placă."
+      ]
+    },
+    {
+      "en": [
+        "Mr. Pokémon's house is north of Cherrygrove City, up Route 30. Just tell him I sent you."
+      ],
+      "text": [
+        "Casa Domnului Pokémon e la nord de Orașul Cherrygrove, pe Ruta 30. Spune-i doar că te-am trimis eu."
+      ]
+    },
+    {
+      "en": [
+        "Oh, and if anything comes up, I'll ring you. I'll put my number in your Pokégear."
+      ],
+      "text": [
+        "A, și dacă apare ceva, te sun. Îți pun numărul meu în Pokégear."
+      ]
+    },
+    {
+      "en": [
+        "Professor Elm's number was registered in the Pokégear!"
+      ],
+      "text": [
+        "Numărul Profesorului Elm a fost înregistrat în Pokégear!"
+      ]
+    },
+    {
+      "en": [
+        "Your {starter} will look after you, and you look after it. Off you go!"
+      ],
+      "text": [
+        "{starter} al tău o să aibă grijă de tine, iar tu de el. Hai, la drum!"
+      ]
+    }
+  ],
+  "AideStops": [
+    {
+      "en": [
+        "Aide"
+      ],
+      "text": [
+        "Asistentul"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Hold on. The professor asked me to give you this, in case your Pokémon gets hurt on the way."
+      ],
+      "text": [
+        "{player}! Stai puțin. Profesorul m-a rugat să-ți dau asta, în caz că Pokémonul tău se rănește pe drum."
+      ]
+    },
+    {
+      "en": [
+        "Spray it on your Pokémon and it'll feel better straight away. Good luck!"
+      ],
+      "text": [
+        "Pulverizeaz-o pe Pokémonul tău și o să se simtă imediat mai bine. Baftă!"
+      ]
+    }
+  ],
+  "OnEnter": [
+    {
+      "en": [
+        "Officer"
+      ],
+      "text": [
+        "Polițistul"
+      ]
+    },
+    {
+      "en": [
+        "Hold it right there! The thief always comes back to the scene. So it was you, was it?"
+      ],
+      "text": [
+        "Pe loc! Hoțul se întoarce mereu la locul faptei. Deci tu erai, nu?"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        "Profesorul Elm"
+      ]
+    },
+    {
+      "en": [
+        "No, no, Officer! That's {player}, who was running an errand for me. {player} couldn't have done it."
+      ],
+      "text": [
+        "Nu, nu, domnule polițist! Ăsta e {player}, care îmi făcea un serviciu. {player} n-are cum să fi fost."
+      ]
+    },
+    {
+      "en": [
+        "Officer"
+      ],
+      "text": [
+        "Polițistul"
+      ]
+    },
+    {
+      "en": [
+        "Oh. Then I'm sorry. Someone broke in while the professor was out and took one of his Pokémon from the machine."
+      ],
+      "text": [
+        "A. Atunci îmi cer scuze. Cineva a intrat cât profesorul era plecat și a luat unul dintre Pokémonii lui din aparat."
+      ]
+    },
+    {
+      "en": [
+        "{player}, was it? Did you see anyone on the way? A boy with red hair, quick on his feet?"
+      ],
+      "text": [
+        "{player}, da? Ai văzut pe cineva pe drum? Un băiat cu păr roșu, iute de picior?"
+      ]
+    },
+    {
+      "en": [
+        "Did you meet the thief?"
+      ],
+      "text": [
+        "L-ai întâlnit pe hoț?"
+      ]
+    },
+    {
+      "en": [
+        "You battled him? Then you'd know him again. Did he give you a name?"
+      ],
+      "text": [
+        "Te-ai luptat cu el? Atunci l-ai recunoaște. Ți-a spus cum îl cheamă?"
+      ]
+    },
+    {
+      "en": [
+        "{player} told the officer the name the boy had boasted of: {rival}."
+      ],
+      "text": [
+        "{player} i-a spus polițistului numele cu care se lăudase băiatul: {rival}."
+      ]
+    },
+    {
+      "en": [
+        "{rival}... I'll make a note of it. Thank you, that's a real help."
+      ],
+      "text": [
+        "{rival}... Notez. Mulțumesc, chiar ne ajută."
+      ]
+    },
+    {
+      "en": [
+        "No? Well, if you do see him, a boy called {rival} is who we're after, from what the neighbours heard."
+      ],
+      "text": [
+        "Nu? Ei, dacă-l vezi: după ce au auzit vecinii, căutăm un băiat pe nume {rival}."
+      ]
+    },
+    {
+      "en": [
+        "Leave this to the police. Good day, Professor."
+      ],
+      "text": [
+        "Lăsați asta în seama poliției. O zi bună, domnule profesor."
+      ]
+    },
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        "Profesorul Elm"
+      ]
+    },
+    {
+      "en": [
+        "What a morning! And what did Mr. Pokémon have to show? Something remarkable, he said..."
+      ],
+      "text": [
+        "Ce dimineață! Și ce avea Domnul Pokémon să-mi arate? Ceva extraordinar, zicea..."
+      ]
+    },
+    {
+      "en": [
+        "{player} handed over the Mystery Egg."
+      ],
+      "text": [
+        "{player} i-a dat Oul Misterios."
+      ]
+    },
+    {
+      "en": [
+        "An Egg?! Nobody knows for certain where Pokémon Eggs come from! I'll study it day and night."
+      ],
+      "text": [
+        "Un Ou?! Nimeni nu știe sigur de unde vin ouăle de Pokémon! O să-l studiez zi și noapte."
+      ]
+    },
+    {
+      "en": [
+        "And Professor Oak gave you a Pokédex? Then you mustn't stop at errands. Go and see Johto, {player}!"
+      ],
+      "text": [
+        "Și Profesorul Oak ți-a dat un Pokédex? Atunci nu te opri la comisioane. Du-te și vezi Johto, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "The nearest Gym is in Violet City, past Cherrygrove. Its Leader, Falkner, flies with bird Pokémon."
+      ],
+      "text": [
+        "Cea mai apropiată Arenă e în Orașul Violet, după Cherrygrove. Liderul ei, Falkner, luptă cu păsări Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "Aide"
+      ],
+      "text": [
+        "Asistentul"
+      ]
+    },
+    {
+      "en": [
+        "{player}, take these. You'll want them if you're going to fill that Pokédex."
+      ],
+      "text": [
+        "{player}, ia-le pe astea. O să-ți trebuiască dacă vrei să umpli Pokédexul ăla."
+      ]
+    },
+    {
+      "en": [
+        "Throw one at a wild Pokémon once it's tired out, and it might be yours."
+      ],
+      "text": [
+        "Aruncă unul spre un Pokémon sălbatic după ce l-ai obosit și s-ar putea să fie al tău."
+      ]
+    }
+  ],
+  "Elm": [
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        "Profesorul Elm"
+      ]
+    },
+    {
+      "en": [
+        "Have you chosen? The three of them are in the machine behind my desk."
+      ],
+      "text": [
+        "Ai ales? Toți trei sunt în aparatul din spatele biroului meu."
+      ]
+    },
+    {
+      "en": [
+        "Would you like to choose now?"
+      ],
+      "text": [
+        "Vrei să alegi acum?"
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}! Good timing. I was just reading about how some Pokémon only evolve when they're happy."
+      ],
+      "text": [
+        "A, {player}! Chiar la timp. Tocmai citeam că unii Pokémoni evoluează doar când sunt fericiți."
+      ]
+    },
+    {
+      "en": [
+        "Mr. Pokémon lives north of Cherrygrove City, up Route 30. Thank you for going, {player}!"
+      ],
+      "text": [
+        "Domnul Pokémon stă la nord de Orașul Cherrygrove, pe Ruta 30. Mulțumesc că te duci, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "This Egg is a marvel. I've been listening to it all day. I'm sure something is moving in there!"
+      ],
+      "text": [
+        "Oul ăsta e o minune. Toată ziua am stat cu urechea pe el. Sunt sigur că se mișcă ceva înăuntru!"
+      ]
+    },
+    {
+      "en": [
+        "The Egg is in my aide's hands now. I'm so glad you'll be the one to raise what comes out of it."
+      ],
+      "text": [
+        "Oul e acum la asistentul meu. Mă bucur tare că tu o să crești ce iese din el."
+      ]
+    }
+  ],
+  "Aide": [
+    {
+      "en": [
+        "Aide"
+      ],
+      "text": [
+        "Asistentul"
+      ]
+    },
+    {
+      "en": [
+        "The professor forgets to eat when he's on to something. I've started leaving sandwiches on his desk."
+      ],
+      "text": [
+        "Profesorul uită să mănânce când e pe urmele a ceva. Am început să-i las sandvișuri pe birou."
+      ]
+    },
+    {
+      "en": [
+        "To think someone walked in and took a Pokémon while we were busy. We've changed the locks since."
+      ],
+      "text": [
+        "Să te gândești că a intrat cineva și a luat un Pokémon cât eram ocupați. Între timp am schimbat yalele."
+      ]
+    }
+  ]
+}

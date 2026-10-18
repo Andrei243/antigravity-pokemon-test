@@ -1,0 +1,97 @@
+{
+  "people": {
+    "route4_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I hear Team Rocket has been causing trouble in Cerulean City. Be careful over there."
+        ],
+        "text": [
+          "Am auzit că Echipa Rocket face necazuri în Orașul Cerulean. Ai grijă pe-acolo."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You can carry six Pokémon with you. The rest go into the PC's boxes."
+        ],
+        "text": [
+          "Poți purta cu tine șase Pokémoni. Restul merg în cutiile PC-ului."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mt. Moon is right next door. Heal up before you go in. Trust me!"
+        ],
+        "text": [
+          "Muntele Lunii e chiar alături. Vindecă-ți Pokémonii înainte să intri. Ascultă-mă!"
+        ]
+      }
+    },
+    "clipboard": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          "Anunț"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's today's paper. The headline reads: \"Thefts at Mt. Moon! Fossils go missing.\""
+        ],
+        "text": [
+          "E ziarul de azi. Titlul spune: „Furturi pe Muntele Lunii! Dispar fosile.”"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

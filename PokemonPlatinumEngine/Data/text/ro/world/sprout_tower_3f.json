@@ -1,0 +1,111 @@
+{
+  "people": {
+    "d15r0103_chourou": {
+      "name": {
+        "en": [
+          "Elder Li"
+        ],
+        "text": [
+          "Bătrânul Li"
+        ]
+      }
+    },
+    "d15r0103_gsrivel": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          "..."
+        ]
+      }
+    },
+    "d15r0103_bozu": {
+      "name": {
+        "en": [
+          "Jin"
+        ],
+        "text": [
+          "Jin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sage Jin: The top of the tower is near. Show me you are worthy of it!"
+        ],
+        "text": [
+          "Călugăr Jin: Vârful turnului e aproape. Arată-mi că-l meriți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sage Jin: Your bond is strong. Go on to the Elder."
+        ],
+        "text": [
+          "Călugăr Jin: Legătura voastră e puternică. Mergi mai departe, la Bătrân."
+        ]
+      }
+    },
+    "d15r0103_bozu_2": {
+      "name": {
+        "en": [
+          "Neal"
+        ],
+        "text": [
+          "Neal"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sage Neal: Listen. Can you hear the pillar creak? It sways, and it stands. Let us battle!"
+        ],
+        "text": [
+          "Călugăr Neal: Ascultă. Auzi stâlpul scârțâind? Se leagănă, și totuși stă în picioare. Să ne luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sage Neal: You bent, but you did not break. Well done."
+        ],
+        "text": [
+          "Călugăr Neal: Te-ai îndoit, dar nu te-ai frânt. Bravo."
+        ]
+      }
+    },
+    "d15r0103_bozu_3": {
+      "name": {
+        "en": [
+          "Troy"
+        ],
+        "text": [
+          "Troy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sage Troy: The Elder waits beyond me. First, my Pokémon and I will test you."
+        ],
+        "text": [
+          "Călugăr Troy: Bătrânul așteaptă dincolo de mine. Întâi, eu și Pokémonii mei te vom pune la încercare."
+        ]
+      },
+      "after": {
+        "en": [
+          "Sage Troy: Calm as the tower itself. You may pass."
+        ],
+        "text": [
+          "Călugăr Troy: Liniștea ta e ca a turnului însuși. Poți trece."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

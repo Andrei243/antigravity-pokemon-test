@@ -1,0 +1,139 @@
+{
+  "people": {
+    "miguel": {
+      "name": {
+        "en": [
+          "Miguel"
+        ],
+        "text": [
+          "Miguel"
+        ]
+      }
+    },
+    "dome_fossil": {
+      "name": {
+        "en": [
+          "Dome Fossil"
+        ],
+        "text": [
+          "Fosilă Cupolă"
+        ]
+      }
+    },
+    "helix_fossil": {
+      "name": {
+        "en": [
+          "Helix Fossil"
+        ],
+        "text": [
+          "Fosilă Spirală"
+        ]
+      }
+    },
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: We, Team Rocket, are after the fossils in this cave. Beat it, kid!"
+        ],
+        "text": [
+          "Grunt: Noi, Echipa Rocket, căutăm fosilele din peștera asta. Valea, puștiule!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: You're tougher than you look. The boss won't like this."
+        ],
+        "text": [
+          "Grunt: Ești mai tare decât pari. Șefului n-o să-i placă."
+        ]
+      }
+    },
+    "rocket_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Hey! Nobody comes down here without Team Rocket's say-so!"
+        ],
+        "text": [
+          "Grunt: Hei! Nimeni nu coboară aici fără voia Echipei Rocket!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: So you beat me. Big deal. There are plenty more of us."
+        ],
+        "text": [
+          "Grunt: Deci m-ai învins. Mare scofală. Suntem mult mai mulți."
+        ]
+      }
+    },
+    "rocket_m_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Little kids shouldn't wander into dark caves. Let me teach you a lesson!"
+        ],
+        "text": [
+          "Grunt: Copiii mici n-au ce căuta prin peșteri întunecate. Să-ți dau o lecție!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Ugh... Maybe it's me who needs the lesson."
+        ],
+        "text": [
+          "Grunt: Of... Poate că eu am nevoie de lecție."
+        ]
+      }
+    },
+    "rocket_m_4": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Team Rocket will sell these fossils for a fortune! Out of the way!"
+        ],
+        "text": [
+          "Grunt: Echipa Rocket o să vândă fosilele astea pe o avere! Fă-te încolo!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: My fortune! You've ruined everything!"
+        ],
+        "text": [
+          "Grunt: Averea mea! Ai stricat tot!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

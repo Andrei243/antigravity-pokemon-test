@@ -1,0 +1,158 @@
+{
+  "GuideGent": [
+    {
+      "en": [
+        "Guide Gent"
+      ],
+      "text": [
+        "Domnul Ghid"
+      ]
+    },
+    {
+      "en": [
+        "You're a new face! Starting out on a journey, are you? I can always tell."
+      ],
+      "text": [
+        "O față nouă! Abia pornești la drum, nu-i așa? Mereu îmi dau seama."
+      ]
+    },
+    {
+      "en": [
+        "Shall I show you round Cherrygrove? I know every corner of it."
+      ],
+      "text": [
+        "Vrei să-ți arăt Cherrygrove? Îi știu fiecare colțișor."
+      ]
+    },
+    {
+      "en": [
+        "Splendid! Follow me, then."
+      ],
+      "text": [
+        "Splendid! Atunci vino după mine."
+      ]
+    },
+    {
+      "en": [
+        "The Guide Gent showed {player} the Pokémon Center, where tired Pokémon are made well for nothing,"
+      ],
+      "text": [
+        "Domnul Ghid i-a arătat lui {player} Centrul Pokémon, unde Pokémonii obosiți sunt îngrijiți pe gratis,"
+      ]
+    },
+    {
+      "en": [
+        "and the Mart, where Poké Balls and Potions are sold, and the sea, which nobody crosses without a swimmer."
+      ],
+      "text": [
+        "și Mart-ul, unde se vând Poké Ball și Poțiuni, și marea, pe care n-o trece nimeni fără un înotător."
+      ]
+    },
+    {
+      "en": [
+        "And this is my house. Thank you for listening to an old man ramble! Here, a little something for your trouble."
+      ],
+      "text": [
+        "Iar aici e casa mea. Mulțumesc că ai ascultat un bătrân care vorbește prea mult! Uite, un mic dar pentru osteneală."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokégear now has a Map Card!"
+      ],
+      "text": [
+        "Pokégearul lui {player} are acum un Card de Hartă!"
+      ]
+    },
+    {
+      "en": [
+        "It shows the whole of Johto, and where you are on it. Off you go, and safe travels!"
+      ],
+      "text": [
+        "Arată tot Johto și locul în care te afli. Hai, la drum, și drum bun!"
+      ]
+    },
+    {
+      "en": [
+        "No? Well, a traveller likes to find their own way. Speak to me if you change your mind."
+      ],
+      "text": [
+        "Nu? Ei, unui călător îi place să-și găsească singur drumul. Vorbește cu mine dacă te răzgândești."
+      ]
+    },
+    {
+      "en": [
+        "Guide Gent"
+      ],
+      "text": [
+        "Domnul Ghid"
+      ]
+    },
+    {
+      "en": [
+        "How's that Map Card treating you? Johto's a big place, but you'll never be lost."
+      ],
+      "text": [
+        "Cum te descurci cu Cardul de Hartă? Johto e mare, dar cu el nu te rătăcești niciodată."
+      ]
+    }
+  ],
+  "RivalAmbush": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "Hold it. You're the one with the Pokémon from that lab, aren't you?"
+      ],
+      "text": [
+        "Stai așa. Tu ai Pokémonul de la laboratorul ăla, nu?"
+      ]
+    },
+    {
+      "en": [
+        "A waste on someone like you. I've got a good Pokémon too, now. Let me show you what a real trainer does with one!"
+      ],
+      "text": [
+        "Păcat de el, la unul ca tine. Am și eu acum un Pokémon bun. Să-ți arăt ce face un antrenor adevărat cu el!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Tch. Just luck. My Pokémon isn't used to me yet, that's all."
+      ],
+      "text": [
+        "Tch. Doar noroc. Pokémonul meu nu s-a obișnuit încă cu mine, atâta tot."
+      ]
+    },
+    {
+      "en": [
+        "Ha! You see? Weak trainers don't deserve good Pokémon."
+      ],
+      "text": [
+        "Ha! Vezi? Antrenorii slabi nu merită Pokémoni buni."
+      ]
+    },
+    {
+      "en": [
+        "...My name? It's {rival}. Remember it. I'm going to be the world's greatest trainer."
+      ],
+      "text": [
+        "...Numele meu? E {rival}. Ține-l minte. O să fiu cel mai mare antrenor din lume."
+      ]
+    }
+  ]
+}

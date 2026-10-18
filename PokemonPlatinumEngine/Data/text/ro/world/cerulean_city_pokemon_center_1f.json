@@ -1,0 +1,123 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          "Anunț"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine left on the seat. It has a page about Misty."
+        ],
+        "text": [
+          "O revistă uitată pe scaun. Are o pagină despre Misty."
+        ]
+      }
+    },
+    "cerulean_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bill lives up past Nugget Bridge. He invented the PC storage system, you know."
+        ],
+        "text": [
+          "Bill stă dincolo de Podul Pepitelor. El a inventat sistemul de stocare din PC, să știi."
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Rocker"
+        ],
+        "text": [
+          "Rockerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you heard of the Bike Shop here? The bikes cost a fortune, but man, they're fast!"
+        ],
+        "text": [
+          "Ai auzit de Magazinul de Biciclete de aici? Bicicletele costă o avere, dar, omule, ce repede merg!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some Pokémon learn moves that can be used in the field. Cut, for example!"
+        ],
+        "text": [
+          "Unii Pokémoni învață mișcări care se pot folosi pe teren. Tăiere, de exemplu!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Misty, the Gym Leader, is so cool. I want to be a Water-type trainer just like her!"
+        ],
+        "text": [
+          "Misty, Lidera Arenei, e atât de tare. Vreau să fiu antrenoare de tip Apă exact ca ea!"
+        ]
+      }
+    },
+    "0_2": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          "Anunț"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine left on the seat. It has a page about Misty."
+        ],
+        "text": [
+          "O revistă uitată pe scaun. Are o pagină despre Misty."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

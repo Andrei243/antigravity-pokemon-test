@@ -1,0 +1,60 @@
+{
+  "Aide": [
+    {
+      "en": [
+        "Aide"
+      ],
+      "text": [
+        "Asistentul"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Over here. The professor sent me with the Egg from Mr. Pokémon."
+      ],
+      "text": [
+        "{player}! Aici. Profesorul m-a trimis cu Oul de la Domnul Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "He's sure it really is a Pokémon Egg. And he thinks it hatches faster in the company of other Pokémon."
+      ],
+      "text": [
+        "E sigur că e chiar un Ou de Pokémon. Și crede că eclozează mai repede în preajma altor Pokémoni."
+      ]
+    },
+    {
+      "en": [
+        "He'd like you to take it with you on your journey. Will you look after it?"
+      ],
+      "text": [
+        "Ar vrea să-l iei cu tine în călătorie. Ai grijă de el?"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Egg!"
+      ],
+      "text": [
+        "{player} a primit Oul!"
+      ]
+    },
+    {
+      "en": [
+        "Keep it on your team and walk with it. The professor would love to hear what hatches!"
+      ],
+      "text": [
+        "Ține-l în echipă și plimbă-te cu el. Profesorul ar vrea tare mult să afle ce iese din el!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, but your team is full! Make room for it, and come back to me."
+      ],
+      "text": [
+        "O, dar echipa ta e plină! Fă-i loc și vino înapoi la mine."
+      ]
+    }
+  ]
+}

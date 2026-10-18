@@ -1,0 +1,50 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Those Rocket thieves smashed right through my back wall! They took a TM and ran off into the yard."
+        ],
+        "text": [
+          "Hoții ăia de la Rocket mi-au spart peretele din spate! Au luat un TM și au fugit în curte."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Rocket stole one of our TMs. I hope somebody gets it back..."
+        ],
+        "text": [
+          "Echipa Rocket ne-a furat un TM. Sper să-l aducă cineva înapoi..."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CeruleanCity_House2_EventScript_WallHole": {
+      "en": [
+        "Team Rocket left a big hole in the wall when they ran off."
+      ],
+      "text": [
+        "Echipa Rocket a lăsat o gaură mare în perete când a fugit."
+      ]
+    }
+  }
+}

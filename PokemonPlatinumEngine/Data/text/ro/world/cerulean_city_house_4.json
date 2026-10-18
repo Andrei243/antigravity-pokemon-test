@@ -1,0 +1,23 @@
+{
+  "people": {
+    "wonder_news_berry_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I used to get news of rare berries from friends far away. The link has been quiet for ages now."
+        ],
+        "text": [
+          "Primeam vești despre Boabe rare de la prieteni de departe. Legătura tace de mult timp."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

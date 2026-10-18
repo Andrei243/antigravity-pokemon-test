@@ -1,0 +1,41 @@
+{
+  "people": {
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm looking for a Pokémon to trade with someone. Maybe one day the right trainer will come along."
+        ],
+        "text": [
+          "Caut un Pokémon pe care să-l schimb cu cineva. Poate într-o zi va trece pe-aici antrenorul potrivit."
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband is always on about trading Pokémon. Kids these days don't trade like they used to, he says."
+        ],
+        "text": [
+          "Bărbatul meu tot vorbește de schimburi de Pokémoni. Zice că tinerii de azi nu mai fac schimburi ca pe vremuri."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

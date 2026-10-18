@@ -1,5 +1,53 @@
 {
   "people": {
+    "t20_gsrivel": {
+      "name": {
+        "en": [
+          "???"
+        ],
+        "text": [
+          "???"
+        ]
+      }
+    },
+    "t20_var_1_2": {
+      "name": {
+        "en": [
+          "{assistant}"
+        ],
+        "text": [
+          "{assistant}"
+        ]
+      }
+    },
+    "t20_tsure_poke_static_marill_2": {
+      "name": {
+        "en": [
+          "Marill"
+        ],
+        "text": [
+          "Marill"
+        ]
+      }
+    },
+    "t20_gsmama": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Take care, {player}!"
+        ],
+        "text": [
+          "Ai grijă de tine, {player}!"
+        ]
+      }
+    },
     "t20_gswoman1": {
       "name": {
         "en": [
