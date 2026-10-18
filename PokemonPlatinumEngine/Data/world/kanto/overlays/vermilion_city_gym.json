@@ -1,0 +1,56 @@
+{
+  // The Vermilion City Gym (plan 19 · K4, part b), its hall as FireRed lays it out. Lt. Surge, the guide, the statues
+  // and the fifteen bins are vermilion_city_gym.txt's; his three trainers battle by their own records (Kanto's
+  // trainers.json)
+  "area": "vermilion_city_gym",
+  "bgmTrack": "kanto/gym",
+  // The hall of its Leader's type (plan 19 · K4)
+  "arenaType": "Electric",
+  "people": {
+    "lt_surge": { "name": "Lt. Surge", "script": "LtSurge", "still": true },
+    "gym_guy": { "name": "Gym Guide", "script": "GymGuy" },
+    "balding_man": {
+      "name": "Baily",
+      "trainer": {
+        "dialogueBefore": "Engineer Baily: I wired every gate in this Gym myself! You'll never find the switches!",
+        "dialogueAfter": "Engineer Baily: Short-circuited! Well, the switches are still hidden..."
+      }
+    },
+    "sailor": {
+      "name": "Dwayne",
+      "trainer": {
+        "dialogueBefore": "Sailor Dwayne: Lt. Surge was a soldier, and I was a sailor. We're tough as they come!",
+        "dialogueAfter": "Sailor Dwayne: Washed overboard! You'd make a fine sailor."
+      }
+    },
+    "gentleman": {
+      "name": "Tucker",
+      "trainer": {
+        "dialogueBefore": "Gentleman Tucker: Lt. Surge is a hero of the war. Show some respect, youngster!",
+        "dialogueAfter": "Gentleman Tucker: Hmm. Perhaps you'll be the one he respects."
+      }
+    }
+  },
+  // The bins and the statues, read where they stand
+  "read": {
+    "VermilionCity_Gym_EventScript_TrashCan1": "Can1", "VermilionCity_Gym_EventScript_TrashCan2": "Can2",
+    "VermilionCity_Gym_EventScript_TrashCan3": "Can3", "VermilionCity_Gym_EventScript_TrashCan4": "Can4",
+    "VermilionCity_Gym_EventScript_TrashCan5": "Can5", "VermilionCity_Gym_EventScript_TrashCan6": "Can6",
+    "VermilionCity_Gym_EventScript_TrashCan7": "Can7", "VermilionCity_Gym_EventScript_TrashCan8": "Can8",
+    "VermilionCity_Gym_EventScript_TrashCan9": "Can9", "VermilionCity_Gym_EventScript_TrashCan10": "Can10",
+    "VermilionCity_Gym_EventScript_TrashCan11": "Can11", "VermilionCity_Gym_EventScript_TrashCan12": "Can12",
+    "VermilionCity_Gym_EventScript_TrashCan13": "Can13", "VermilionCity_Gym_EventScript_TrashCan14": "Can14",
+    "VermilionCity_Gym_EventScript_TrashCan15": "Can15",
+    "VermilionCity_Gym_EventScript_GymStatue": "Statue"
+  },
+  // The two electric gates across the way to Lt. Surge, which FireRed draws into its tiles and changes with
+  // setmetatile: things of ours on the gap's six tiles (opened under them), in the way until both switches are found
+  "npcs": [
+    { "id": "gate_1", "name": "Electric gate", "npcType": "ElectricGate", "x": 4, "y": 6, "hiddenBy": "FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES", "script": "Gate" },
+    { "id": "gate_2", "name": "Electric gate", "npcType": "ElectricGate", "x": 5, "y": 6, "hiddenBy": "FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES", "script": "Gate" },
+    { "id": "gate_3", "name": "Electric gate", "npcType": "ElectricGate", "x": 6, "y": 6, "hiddenBy": "FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES", "script": "Gate" },
+    { "id": "gate_4", "name": "Electric gate", "npcType": "ElectricGate", "x": 4, "y": 7, "hiddenBy": "FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES", "script": "Gate" },
+    { "id": "gate_5", "name": "Electric gate", "npcType": "ElectricGate", "x": 5, "y": 7, "hiddenBy": "FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES", "script": "Gate" },
+    { "id": "gate_6", "name": "Electric gate", "npcType": "ElectricGate", "x": 6, "y": 7, "hiddenBy": "FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES", "script": "Gate" }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  // A crew cabin below the S.S. Anne's decks (plan 19 · K4, part b)
+  "area": "ss_anne_b1f_room_3",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "sailor": {
+      "name": "Dylan",
+      "trainer": {
+        "dialogueBefore": "Sailor Dylan: My Pokémon and I have been to every sea there is!",
+        "dialogueAfter": "Sailor Dylan: Never been sunk like that before!"
+      }
+    }
+  }
+}

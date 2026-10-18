@@ -29,3 +29,20 @@ label NotToday
 script Receptionist
   say "Amber is sap from ancient trees that hardened over time. Sometimes something is caught inside it."
   end
+
+
+# The scientist in the back room, beside the Old Amber on its stand (plan 19 · K4, part b; FireRed's
+# OldAmberScientist): he asks for it to be taken to a lab that can look into it, and gives it (FLAG_GOT_OLD_AMBER,
+# FLAG_HIDE_OLD_AMBER). The lab that revives it is Cinnabar Island's, plan 19 · K7's.
+script OldAmberScientist
+  speaker "Scientist"
+  if flag FLAG_GOT_OLD_AMBER goto Given
+  say "Ssh! I think this chunk of amber holds the genes of an ancient Pokémon. Could you take it to a lab to be checked?"
+  hide old_amber
+  setflag FLAG_HIDE_OLD_AMBER
+  give "Old Amber"
+  setflag FLAG_GOT_OLD_AMBER
+  end
+label Given
+  say "Ssh! Get that Old Amber looked at by someone who knows fossils. I'm sure there's a Pokémon inside!"
+  end

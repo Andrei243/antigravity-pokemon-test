@@ -1,0 +1,15 @@
+{
+  // A cabin of the S.S. Anne's first deck (plan 19 · K4, part b)
+  "area": "ss_anne_1f_room_7",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "gentleman": {
+      "name": "Thomas",
+      "trainer": {
+        "dialogueBefore": "Gentleman Thomas: This party is a bore. Entertain me with a battle!",
+        "dialogueAfter": "Gentleman Thomas: Most entertaining. Thank you."
+      }
+    }
+  }
+}

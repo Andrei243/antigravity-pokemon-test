@@ -1,0 +1,22 @@
+{
+  // A cabin of the S.S. Anne's second deck (plan 19 · K4, part b)
+  "area": "ss_anne_2f_room_2",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "fisher": {
+      "name": "Dale",
+      "trainer": {
+        "dialogueBefore": "Fisherman Dale: Even on a cruise, I've got my rod with me!",
+        "dialogueAfter": "Fisherman Dale: That one got away..."
+      }
+    },
+    "gentleman": {
+      "name": "Brooks",
+      "trainer": {
+        "dialogueBefore": "Gentleman Brooks: A battle before dinner? Why not!",
+        "dialogueAfter": "Gentleman Brooks: Well played, young one."
+      }
+    }
+  }
+}

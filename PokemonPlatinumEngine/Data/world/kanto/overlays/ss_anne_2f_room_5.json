@@ -1,0 +1,20 @@
+{
+  // A cabin of the S.S. Anne's second deck (plan 19 · K4, part b)
+  "area": "ss_anne_2f_room_5",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "gentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "My grandson wants to become a sailor when he grows up."
+      ]
+    },
+    "little_boy": {
+      "name": "Boy",
+      "dialog": [
+        "When I grow up, I'm going to be the captain of this ship!"
+      ]
+    }
+  }
+}

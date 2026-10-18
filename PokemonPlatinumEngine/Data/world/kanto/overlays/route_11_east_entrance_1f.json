@@ -1,0 +1,19 @@
+{
+  // Route 11's gate east (plan 19 · K4, part b): the way on to Route 12 is plan 19 · K5's
+  "area": "route_11_east_entrance_1f",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "policeman": {
+      "name": "Guard",
+      "dialog": [
+        "The road east is blocked by a sleeping Pokémon. It's been snoring there for days!"
+      ]
+    },
+    "policeman_2": {
+      "name": "Guard",
+      "dialog": [
+        "The view from upstairs is something. Have a look through the binoculars."
+      ]
+    }
+  }
+}

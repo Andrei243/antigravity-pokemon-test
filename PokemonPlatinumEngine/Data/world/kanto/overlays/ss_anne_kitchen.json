@@ -1,0 +1,50 @@
+{
+  // The S.S. Anne's galley (plan 19 · K4, part b): the cooks are far too busy to stop
+  "area": "ss_anne_kitchen",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "chef": {
+      "name": "Cook",
+      "dialog": [
+        "You're not supposed to be in here! Go on, out of my kitchen!"
+      ]
+    },
+    "chef_2": {
+      "name": "Cook",
+      "dialog": [
+        "Busy, busy! The guests want their dinner on time."
+      ]
+    },
+    "chef_3": {
+      "name": "Cook",
+      "dialog": [
+        "Today's special is a seafood stew. Don't tell the Water types!"
+      ]
+    },
+    "chef_4": {
+      "name": "Cook",
+      "dialog": [
+        "I'm peeling potatoes. A thousand potatoes. Want to help?"
+      ]
+    },
+    "chef_5": {
+      "name": "Cook",
+      "dialog": [
+        "Shh! I've hidden some berries in the bins. Keep it a secret."
+      ]
+    },
+    "chef_6": {
+      "name": "Cook",
+      "dialog": [
+        "The captain's been too seasick to eat. Poor fellow."
+      ]
+    },
+    "chef_7": {
+      "name": "Cook",
+      "dialog": [
+        "A good chef is a fast chef! Out of the way!"
+      ]
+    }
+  }
+}

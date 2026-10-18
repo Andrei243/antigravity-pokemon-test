@@ -1,0 +1,44 @@
+{
+  "key": "route_5",
+  "index": 20,
+  "name": "Route 5",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_5",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Meowth", "level": 10 },
+    { "species": "Pidgey", "level": 13 },
+    { "species": "Oddish", "level": 13 },
+    { "species": "Meowth", "level": 12 },
+    { "species": "Oddish", "level": 15 },
+    { "species": "Pidgey", "level": 15 },
+    { "species": "Oddish", "level": 16 },
+    { "species": "Pidgey", "level": 16 },
+    { "species": "Pidgey", "level": 15 },
+    { "species": "Meowth", "level": 14 },
+    { "species": "Pidgey", "level": 15 },
+    { "species": "Meowth", "level": 16 }
+  ],
+  "landRate": 21,
+  "warps": [
+    { "x": 295, "z": 111, "to": "underground_path_north_entrance", "toWarp": 1 },
+    { "x": 287, "z": 105, "to": "route_5_pokemon_day_care", "toWarp": 1 },
+    { "x": 288, "z": 112, "to": "route_5_south_entrance", "toWarp": 1 },
+    { "x": 289, "z": 112, "to": "route_5_south_entrance", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 296, "z": 112, "type": 0, "script": "Route5_EventScript_UndergroundPathSign" }
+  ],
+  "triggers": []
+}

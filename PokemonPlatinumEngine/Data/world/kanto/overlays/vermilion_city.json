@@ -1,0 +1,29 @@
+{
+  // Vermilion City (plan 19 · K4, part b): FireRed's map, our words. The sailor at the head of the pier checks for the
+  // S.S. Ticket, and the old man and the sailors know when the ship has sailed (vermilion_city.txt). The tree beside
+  // the Gym is cut down with the Cascade Badge and HM01, which the S.S. Anne's captain gives
+  "area": "vermilion_city",
+  "bgmTrack": "kanto/vermilion",
+  "trees": "Round",
+  // The pier's two steps before the ship's gangway (0, 1) and the two steps back north of them (2, 3)
+  "triggers": [
+    { "trigger": 0, "script": "CheckTicket" }, { "trigger": 1, "script": "CheckTicket" },
+    { "trigger": 2, "script": "ExitedTicketCheck" }, { "trigger": 3, "script": "ExitedTicketCheck" }
+  ],
+  "people": {
+    "woman_1": { "name": "Woman", "dialog": [ "Grimer love the sludge round the harbour. Leave a mess, and more of them turn up!" ] },
+    "old_man_1": { "name": "Old Man", "script": "OldMan" },
+    "old_man_2": { "name": "Old Man", "dialog": [ "I'm putting up a building on this plot. My Machop is flattening the ground for me." ] },
+    "machop": { "name": "Machop", "script": "Machop" },
+    "sailor": { "name": "Sailor", "dialog": [ "The S.S. Anne only drops anchor here once a year. People come from all over to see her." ] },
+    "vermilion_ferry_sailor": { "name": "Sailor", "script": "FerrySailor", "still": true },
+    "scientist": { "name": "Aide", "script": "OaksAide" }
+  },
+  "signs": {
+    "VermilionCity_EventScript_CitySign": "Vermilion City\nThe port of glowing sunsets.",
+    "VermilionCity_EventScript_PokemonFanClubSign": "Pokémon Fan Club\nAll Pokémon fans welcome!",
+    "VermilionCity_EventScript_GymSign": "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nThe lightning soldier!",
+    "VermilionCity_EventScript_HarborSign": "Vermilion Harbour",
+    "VermilionCity_EventScript_SnorlaxNotice": "NOTICE\nA sleeping Pokémon is blocking Route 12.\nPlease take the road through Rock Tunnel."
+  }
+}

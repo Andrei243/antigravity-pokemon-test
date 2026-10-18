@@ -679,7 +679,7 @@ script TrainerPair
 script CutTree
   speaker none
   if not knows "Cut" goto Cannot
-  if not badge forest goto Cannot
+  if not movebadge "Cut" goto Cannot
   ask "This thin tree could be cut down. Use Cut?"
   if no end
   usemove "Cut"
@@ -700,7 +700,7 @@ script UseCut
 script Rock
   speaker none
   if not knows "Rock Smash" goto Cannot
-  if not badge coal goto NoBadge
+  if not movebadge "Rock Smash" goto NoBadge
   ask "The rock is riddled with cracks. Use Rock Smash?"
   if no end
   usemove "Rock Smash"
@@ -711,7 +711,7 @@ label NoBadge
   end
 label Cannot
   if item "HM06" goto Teach
-  if not badge coal goto Early
+  if not movebadge "Rock Smash" goto Early
   text "The rock is riddled with cracks. A Pokémon that knows Rock Smash could break it apart."
   end
 label Teach
@@ -732,7 +732,7 @@ script Boulder
   speaker none
   if flag FLAG_STRENGTH_ACTIVE goto Ready
   if not knows "Strength" goto Cannot
-  if not badge mine goto Cannot
+  if not movebadge "Strength" goto Cannot
   ask "A heavy boulder. Use Strength to shift it?"
   if no end
   call StrengthOn
@@ -762,7 +762,7 @@ script StrengthOn
 # A rock face along its grain. Rock Climb goes up or down it, with the Icicle Badge.
 script RockFace
   if not knows "Rock Climb" goto Cannot
-  if not badge icicle goto Cannot
+  if not movebadge "Rock Climb" goto Cannot
   ask "The rock face is rough enough to grip. Use Rock Climb?"
   if no end
   usemove "Rock Climb"
@@ -795,7 +795,7 @@ script UseSurf
 # A waterfall, faced from the water below it. Waterfall goes up it, with the Beacon Badge.
 script Waterfall
   if not knows "Waterfall" goto Cannot
-  if not badge beacon goto Cannot
+  if not movebadge "Waterfall" goto Cannot
   ask "A great waterfall. Use Waterfall to go up it?"
   if no end
   usemove "Waterfall"
@@ -1179,6 +1179,11 @@ script KantoNewGame
   setflag FLAG_HIDE_CERULEAN_RIVAL
   setflag FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   setflag FLAG_HIDE_POSTGAME_GOSSIPERS
+  # Plan 19 · K4, part b: the rival on the S.S. Anne until he steps out of the captain's door, and Oak's aide in
+  # Vermilion City until Lt. Surge is beaten. A save from before part b never came aboard or to Vermilion, whose own
+  # arrival scripts hide the same two for it
+  setflag FLAG_HIDE_SS_ANNE_RIVAL
+  setflag FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   return
 
 

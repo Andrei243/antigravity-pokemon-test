@@ -1,0 +1,13 @@
+{
+  // The Underground Path's north entrance on Route 5 (plan 19 · K4, part b)
+  "area": "underground_path_north_entrance",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "little_girl": {
+      "name": "Girl",
+      "dialog": [
+        "The Underground Path runs right under Saffron City. People say it's safer than going over the top!"
+      ]
+    }
+  }
+}

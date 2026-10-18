@@ -1,0 +1,28 @@
+{
+  "key": "underground_path_north_entrance",
+  "index": 72,
+  "name": "Underground Path",
+  "matrix": 36,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "route_5", "toWarp": 0 },
+    { "x": 6, "z": 8, "to": "route_5", "toWarp": 0 },
+    { "x": 7, "z": 8, "to": "route_5", "toWarp": 0 },
+    { "x": 7, "z": 4, "to": "underground_path_north_south_tunnel", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "little_girl", "looks": "little_girl", "movement": "look_south", "x": 5, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "UndergroundPath_NorthEntrance_EventScript_Saige" }
+  ],
+  "signs": [],
+  "triggers": []
+}

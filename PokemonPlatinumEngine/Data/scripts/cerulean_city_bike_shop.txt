@@ -1,0 +1,42 @@
+# Cerulean City's Bike Shop (plan 19 · K4, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/CeruleanCity_BikeShop/scripts.inc).
+#
+# A bicycle costs a million, which nobody has; the Bike Voucher from Vermilion City's Pokémon Fan Club
+# (vermilion_city_pokemon_fan_club.txt) is taken for one (FLAG_GOT_BICYCLE). The Bicycle is plan 02 · S2's.
+
+
+script Clerk
+  speaker "Clerk"
+  if flag FLAG_GOT_BICYCLE goto Riding
+  if item "Bike Voucher" goto Voucher
+  say "Welcome to the Bike Shop! Our bicycles are the best in Kanto."
+  choose "A bicycle is ¥1,000,000. Would you like one?" "Buy one" "No, thanks"
+  if result == 0 goto TooDear
+  say "Thanks for dropping in! Come back any time."
+  end
+label TooDear
+  say "Oh... I'm sorry, you don't have enough money. Come back if you ever win the lottery!"
+  end
+label Voucher
+  scene "The Bike Voucher"
+  say "Oh! That's a Bike Voucher! Those are good for one free bicycle!"
+  take "Bike Voucher"
+  give "Bicycle"
+  setflag FLAG_GOT_BICYCLE
+  say "There you go! Use it wherever there's room to ride, and come back and tell us how you like it."
+  endscene
+  end
+label Riding
+  say "How's the bicycle treating you? Riding is so much faster than walking, isn't it?"
+  end
+
+
+# The boy who wants a bicycle so badly.
+script Youngster
+  speaker "Youngster"
+  if flag FLAG_GOT_BICYCLE goto Jealous
+  say "A bicycle gets you round twice as fast as running shoes. I want one so badly!"
+  end
+label Jealous
+  say "Whoa, you've got a bicycle? How did you ever afford it?"
+  end

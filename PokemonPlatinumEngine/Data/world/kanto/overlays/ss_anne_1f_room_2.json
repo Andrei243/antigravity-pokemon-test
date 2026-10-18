@@ -1,0 +1,28 @@
+{
+  // A cabin of the S.S. Anne's first deck (plan 19 · K4, part b)
+  "area": "ss_anne_1f_room_2",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "lass": {
+      "name": "Ann",
+      "trainer": {
+        "dialogueBefore": "Lass Ann: I'm on holiday with my family. But a battle sounds even more fun!",
+        "dialogueAfter": "Lass Ann: Oh! You're really strong!"
+      }
+    },
+    "youngster": {
+      "name": "Tyler",
+      "trainer": {
+        "dialogueBefore": "Youngster Tyler: I love battling on boats. The floor wobbles!",
+        "dialogueAfter": "Youngster Tyler: I got seasick and lost..."
+      }
+    },
+    "woman_2": {
+      "name": "Woman",
+      "dialog": [
+        "My children won't stop battling. At least it keeps them out of trouble."
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "key": "ss_anne_b1f_corridor",
+  "index": 50,
+  "name": "S S Anne",
+  "matrix": 14,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 19, "z": 3, "to": "ss_anne_1f_corridor", "toWarp": 5 },
+    { "x": 2, "z": 2, "to": "ss_anne_b1f_room_1", "toWarp": 0 },
+    { "x": 6, "z": 2, "to": "ss_anne_b1f_room_2", "toWarp": 0 },
+    { "x": 10, "z": 2, "to": "ss_anne_b1f_room_3", "toWarp": 0 },
+    { "x": 14, "z": 2, "to": "ss_anne_b1f_room_4", "toWarp": 0 },
+    { "x": 18, "z": 2, "to": "ss_anne_b1f_room_5", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 21, "z": 5, "type": 2, "script": "", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_SSANNE_B1F_CORRIDOR_HYPER_POTION" }
+  ],
+  "triggers": []
+}

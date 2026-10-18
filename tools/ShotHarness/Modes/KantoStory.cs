@@ -247,5 +247,101 @@ partial class Harness
         game.TrainerCard.Close();
         story.SetBadges("Kanto", had);
         Frames(10);
+
+        // ---- Plan 19 · K4, part b: Vermilion City and the S.S. Anne
+        void LeftThree(string what) =>
+            Console.WriteLine($"  {what}: voucher {story.Has("FLAG_GOT_BIKE_VOUCHER")}, bicycle {story.Has("FLAG_GOT_BICYCLE")}, "
+                + $"ticket check {story.Var("VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER")}, ship's rival {story.Var("VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR")}, "
+                + $"HM01 {story.Has("FLAG_GOT_HM01")}, Vermilion {story.Var("VAR_MAP_SCENE_VERMILION_CITY")}, "
+                + $"switches {story.Var("VAR_VERMILION_GYM_SWITCH_1")}/{story.Var("VAR_VERMILION_GYM_SWITCH_2")} first {story.Has("FLAG_MAP_LOCAL_VERMILION_GYM_FIRST_SWITCH")} both {story.Has("FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES")}, "
+                + $"Thunder Badge {story.HasBadge("Kanto", "Thunder")}, aide hidden {story.Has("FLAG_HIDE_VERMILION_CITY_OAKS_AIDE")}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        // ---- the Fan Club's chairman and his Bike Voucher, and the Bicycle for it
+        TalkTo("VermilionCity_PokemonFanClub", "gentleman");
+        ReadTo("My favourite is my Rapidash"); Frames(10); Shot("ks30_the_chairman");
+        ReadTo(null);
+        TalkTo("CeruleanCity_BikeShop", "man");
+        ReadTo("That's a Bike Voucher"); Frames(10); Shot("ks31_the_bike_voucher");
+        ReadTo(null);
+        At("Kanto", 292, 104, Direction.Down);
+        game.Player.SetCycling(true);
+        Frames(30); Shot("ks32_on_the_bicycle");
+        game.Player.SetCycling(false);
+        LeftThree("the Bicycle");
+
+        // ---- the pier: the sailor asks for the ticket
+        StepOnto("Kanto", 286, 233, Direction.Down);
+        ReadTo("May I see your ticket"); Frames(10); Shot("ks33_the_ticket_check");
+        ReadTo(null);
+
+        // ---- the rival on the S.S. Anne
+        StepOnto("SSAnne_2F_Corridor", 31, 6, Direction.Up);
+        ReadTo("Fancy running into you"); Frames(10); Shot("ks34_the_rival_on_the_ship");
+        IntoBattle("the rival's battle on the S.S. Anne");
+        Win();
+        ReadTo(null);
+
+        // ---- the seasick captain and HM01
+        TalkTo("SSAnne_CaptainsOffice", "ss_anne_captain");
+        ReadTo("rubbed the captain's back"); Frames(10); Shot("ks35_the_seasick_captain");
+        ReadTo("That's Cut"); Frames(10); Shot("ks36_hm01_cut");
+        ReadTo(null);
+        LeftThree("the captain");
+
+        // ---- off the ship, and she sails
+        ComeThrough("SSAnne_Exterior", 32, 13, Direction.Down);
+        ReadTo("sounded her horn"); Frames(10); Shot("ks37_the_ship_sails");
+        for (int i = 0; i < 1200 && game.Map.Name != "Kanto"; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        ReadTo(null); Frames(30);
+        Console.WriteLine($"  off the ship at ({game.Player.GridX}, {game.Player.GridY}) on {game.Map.Name}");
+        Shot("ks38_the_ship_has_sailed");
+
+        // ---- Cut, and the tree before Lt. Surge's Gym
+        var lead = game.Party.Members[0];
+        if (!lead.Moves.Any(m => m.Data.Name == "Cut"))
+        {
+            if (lead.Moves.Count >= 4) lead.Moves.RemoveAt(3);
+            lead.Moves.Add(new Move(MoveDatabase.Get("Cut")!));
+        }
+        var vermilion = MapDatabase.Get("Kanto");
+        var tree = vermilion.Everyone.First(n => n.Obstacle == PropType.CutTree && (n.GridX, n.GridY) == (283, 224));
+        At("Kanto", 283, 225, Direction.Up); Frames(10);
+        game.Interact();
+        Until(() => engine.Choice.IsOpen, "the tree's question"); Frames(20); Shot("ks39_cut_asks");
+        engine.Choice.Confirm(); Frames(4);
+        ReadTo(null); Frames(30);
+        Shot("ks40_the_tree_cut");
+        Console.WriteLine($"  the tree before the Gym: gone {!vermilion.NPCs.Contains(tree)}");
+
+        // ---- Lt. Surge's bins: the first switch, the second beside it, the gates down
+        ComeThrough("VermilionCity_Gym", 5, 18, Direction.Up);
+        Frames(20); Shot("ks41_the_electric_gates");
+        void Bin(int n)
+        {
+            int x = 1 + 2 * ((n - 1) % 5), z = 10 + 2 * ((n - 1) / 5);
+            At("VermilionCity_Gym", x, z + 1, Direction.Up); Frames(4);
+            game.Interact();
+        }
+        LeftThree("the Gym");
+        Bin(story.Var("VAR_VERMILION_GYM_SWITCH_1"));
+        ReadTo("The first electric lock opened"); Frames(10); Shot("ks42_the_first_switch");
+        ReadTo(null);
+        Bin(story.Var("VAR_VERMILION_GYM_SWITCH_2"));
+        ReadTo("the gates are down"); Frames(10); Shot("ks43_the_second_switch");
+        ReadTo(null);
+        At("VermilionCity_Gym", 5, 9, Direction.Up); Frames(20); Shot("ks44_the_gates_down");
+        TalkTo("VermilionCity_Gym", "lt_surge");
+        ReadTo("electric Pokémon saved me"); Frames(10); Shot("ks45_lt_surge");
+        IntoBattle("Lt. Surge's battle");
+        ToMainMenu(game.Battle); Shot("ks46_lt_surges_battle");
+        Win();
+        ReadTo("Thunder Badge from Lt. Surge"); Frames(10); Shot("ks47_the_thunder_badge");
+        ReadTo(null);
+        LeftThree("the chapter's end");
     }
 }

@@ -717,6 +717,130 @@ internal static class OutdoorProps
         c.HLine(6, 13, 9, ink);
         Pix.Outline(c);
     }
+
+    // ---- Plan 19 · K4, part b: things of Kanto's story (style guide, "Obstacles" and what follows it)
+
+    /// <summary>An electric gate, 32 by 30: two steel posts with a lamp on each cap and three beams between them.</summary>
+    public static void PaintElectricGate(PixelCanvas c)
+    {
+        var steel = Rgb(70, 72, 84);
+        var lit = Rgb(112, 116, 130);
+        var cap = Rgb(150, 154, 168);
+        var lamp = Rgb(250, 214, 64);
+        var core = Rgb(255, 246, 180);
+        var glow = Rgb(246, 206, 60);
+        var spark = Rgb(255, 255, 224);
+        foreach (int x in new[] { 1, 26 })
+        {
+            c.Rect(x, 8, 5, 22, steel);
+            c.VLine(x, 8, 22, lit);
+            c.Rect(x - 1, 6, 7, 3, cap);
+            c.Rect(x + 1, 4, 3, 2, lamp);
+        }
+        foreach (int y in new[] { 12, 18, 24 })
+        {
+            c.HLine(6, y - 1, 20, glow);
+            c.HLine(6, y, 20, core);
+            c.HLine(6, y + 1, 20, glow);
+            c.Set(6, y, spark);
+            c.Set(25, y, spark);
+            c.Set(7, y - 2, spark);
+            c.Set(24, y + 2, spark);
+        }
+        Pix.Outline(c);
+    }
+
+    /// <summary>A fossil in its stone, 24 by 16: the Dome Fossil's ribbed half disc or the Helix Fossil's spiral.</summary>
+    public static void PaintFossil(PixelCanvas c, bool helix)
+    {
+        var stone = Rgb(168, 150, 128);
+        var light = Rgb(198, 184, 160);
+        var shade = Rgb(118, 104, 92);
+        var shell = Rgb(132, 112, 96);
+        for (int y = 2; y < 16; y++)
+            for (int x = 1; x < 23; x++)
+            {
+                float u = (x + 0.5f - 12f) / 11f, v = (y + 0.5f - 9f) / 7f;
+                float d = u * u + v * v;
+                if (d > 1f) continue;
+                c.Set(x, y, u + v < -0.6f ? light : u + v > 0.6f || y >= 14 ? shade : stone);
+            }
+        if (helix)
+        {
+            // Four turns of a spiral, from the middle out
+            for (float t = 0; t < 4 * MathF.Tau; t += 0.05f)
+            {
+                float r = 0.35f * t;
+                int x = (int)MathF.Round(12f + r * MathF.Cos(t)), y = (int)MathF.Round(9f + 0.7f * r * MathF.Sin(t));
+                if (c.Get(x, y).A > 0) c.Set(x, y, shell);
+            }
+        }
+        else
+        {
+            // A half disc standing on its flat side, ribbed by three arcs
+            for (int y = 4; y <= 12; y++)
+                for (int x = 4; x <= 20; x++)
+                {
+                    float u = (x + 0.5f - 12.5f) / 8f, v = (y + 0.5f - 12.5f) / 8f;
+                    if (u * u + v * v <= 1f) c.Set(x, y, shell);
+                }
+            foreach (int r in new[] { 3, 5, 7 })
+                for (float t = MathF.PI; t <= MathF.Tau; t += 0.04f)
+                    c.Set((int)MathF.Round(12f + r * MathF.Cos(t)), (int)MathF.Round(12f + r * MathF.Sin(t)), light);
+        }
+        Pix.Outline(c);
+    }
+
+    /// <summary>The Old Amber on its stand, 20 by 20: a lump of honey with a dark speck held inside.</summary>
+    public static void PaintOldAmber(PixelCanvas c)
+    {
+        var amber = Rgb(222, 150, 50);
+        var lit = Rgb(250, 206, 108);
+        var shade = Rgb(170, 96, 34);
+        var speck = Rgb(92, 52, 30);
+        var wood = Rgb(120, 84, 56);
+        c.Rect(3, 16, 14, 4, wood);
+        c.HLine(3, 16, 14, Rgb(150, 110, 76));
+        for (int y = 2; y < 16; y++)
+            for (int x = 3; x < 17; x++)
+            {
+                float u = (x + 0.5f - 10f) / 7f, v = (y + 0.5f - 9.5f) / 7f;
+                float d = u * u + v * v;
+                if (d > 1f) continue;
+                c.Set(x, y, u + v < -0.7f ? lit : u + v > 0.5f ? shade : amber);
+            }
+        c.Rect(9, 9, 2, 2, speck);
+        c.Set(8, 10, speck);
+        Pix.Outline(c);
+    }
+
+    /// <summary>A Pokédex laid on a desk, 16 by 12: a closed red book with a hinge line and a small blue lens.</summary>
+    public static void PaintDeskPokedex(PixelCanvas c)
+    {
+        var red = Rgb(206, 56, 48);
+        var shade = Rgb(148, 36, 38);
+        c.Rect(1, 2, 14, 9, red);
+        c.HLine(1, 10, 14, shade);
+        c.VLine(14, 2, 9, shade);
+        c.VLine(5, 2, 9, Rgb(82, 24, 30));
+        c.Rect(8, 4, 3, 3, Rgb(112, 190, 240));
+        c.Set(8, 4, Rgb(220, 240, 255));
+        Pix.Outline(c);
+    }
+
+    /// <summary>The Town Map rolled up on a table, 20 by 12: a roll of paper tied with a red ribbon.</summary>
+    public static void PaintRolledTownMap(PixelCanvas c)
+    {
+        var paper = Rgb(236, 228, 204);
+        var shade = Rgb(196, 186, 160);
+        c.Rect(1, 3, 18, 7, paper);
+        c.HLine(1, 8, 18, shade);
+        c.HLine(1, 9, 18, shade);
+        c.Rect(1, 3, 2, 7, shade);
+        c.Set(1, 6, Rgb(160, 150, 126));
+        c.Rect(9, 2, 2, 9, Rgb(206, 56, 48));
+        Pix.Outline(c);
+    }
 }
 
 /// <summary>
@@ -742,6 +866,12 @@ public static class ThingCards
             PropType.Rubble => (30, 20, OutdoorProps.PaintRubble),
             PropType.CavePainting => (32, 52, OutdoorProps.PaintCavePainting),
             PropType.MagmaStone => (30, 28, OutdoorProps.PaintMagmaStone),
+            PropType.ElectricGate => (32, 30, OutdoorProps.PaintElectricGate),
+            PropType.DomeFossil => (24, 16, c => OutdoorProps.PaintFossil(c, helix: false)),
+            PropType.HelixFossil => (24, 16, c => OutdoorProps.PaintFossil(c, helix: true)),
+            PropType.OldAmber => (20, 20, OutdoorProps.PaintOldAmber),
+            PropType.DeskPokedex => (16, 12, OutdoorProps.PaintDeskPokedex),
+            PropType.RolledTownMap => (20, 12, OutdoorProps.PaintRolledTownMap),
             _ => (OutdoorProps.ItemBallCard, OutdoorProps.ItemBallCard, OutdoorProps.PaintItemBall)
         };
         var art = new PixelCanvas(w, h);

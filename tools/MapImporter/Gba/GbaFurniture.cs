@@ -126,6 +126,16 @@ public static class GbaFurniture
                 (0x2A2, 0x2A4, PropType.Boulder), (0x29B, 0x29B, PropType.Boulder),
                 (0x2B2, 0x2B2, PropType.TrainerStatue),
             },
+            // Plan 19 · K4, part b: Bill's Sea Cottage, his two teleporters three metatiles by three either side of the
+            // cable between them (metatile_labels.h names their doors and lights), the low table in the middle of
+            // the floor and the pots by the door
+            ["gTileset_SeaCottage"] = new (int, int, PropType)[]
+            {
+                (0x286, 0x287, PropType.LabMachine), (0x289, 0x28B, PropType.LabMachine), (0x28E, 0x28F, PropType.LabMachine),
+                (0x291, 0x293, PropType.LabMachine), (0x295, 0x297, PropType.LabMachine),
+                (0x2A5, 0x2A6, PropType.Table),
+                (0x2A3, 0x2A3, PropType.Plant),
+            },
         };
 
     /// <summary>A metatile's furniture: by its behaviour where that names one, then by its tileset's ranges, or none.</summary>

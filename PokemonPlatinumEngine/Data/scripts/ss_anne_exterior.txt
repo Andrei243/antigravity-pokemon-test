@@ -1,0 +1,26 @@
+# The S.S. Anne at Vermilion's pier (plan 19 · K4, part b). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/SSAnne_Exterior/scripts.inc).
+#
+# Coming off the ship with HM01 (VAR_MAP_SCENE_VERMILION_CITY 1, ss_anne_captains_office.txt), the player sees her
+# sail from the gangway and is back on Vermilion's quay with the scene's variable at 3 (FireRed's
+# DoSSAnneDepartureCutscene, then its 2 and its walk up the pier, both done here at once). From then on the sailor at
+# the head of the pier turns everyone back (vermilion_city.txt).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_VERMILION_CITY != 1 end
+  scene "The ship sets sail"
+  music stop
+  face player down
+  camera pan 32 20 1
+  wait 0.6
+  text "Bwooo-oooh!\nThe S.S. Anne sounded her horn."
+  camera shake 0.4
+  text "The great ship slipped away from the pier and out to sea..."
+  fade out
+  setvar VAR_MAP_SCENE_VERMILION_CITY 3
+  setvar VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER 0
+  camera release 0
+  warp "Kanto" 287 232 up
+  endscene
+  end

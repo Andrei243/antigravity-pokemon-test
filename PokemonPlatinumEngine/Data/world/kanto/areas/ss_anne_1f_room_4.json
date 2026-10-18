@@ -1,0 +1,25 @@
+{
+  "key": "ss_anne_1f_room_4",
+  "index": 57,
+  "name": "S S Anne",
+  "matrix": 21,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 1, "to": "ss_anne_1f_corridor", "toWarp": 9 }
+  ],
+  "objects": [
+    { "id": "woman_1", "looks": "woman_1", "movement": "wander_around", "x": 2, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_1F_Room4_EventScript_Woman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

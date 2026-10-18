@@ -147,6 +147,9 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+=== digletts_cave_b1f
+Diglett's Cave
+grass 15-31
 === eterna_city
 Eterna City
 surf 20-40
@@ -404,6 +407,14 @@ super rod 1-100
 === route_1
 Route 1
 grass 2-5
+=== route_11
+Route 11
+grass 11-17
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 10, 17-21: kanto_engineer_bernie 18, kanto_engineer_braxton 21, kanto_gamer_darian 18, kanto_gamer_dirk 18, kanto_gamer_hugo 18, kanto_gamer_jasper 18, kanto_youngster_dave 18, kanto_youngster_dillon 19, kanto_youngster_eddie 21, kanto_youngster_yasu 17
 === route_2
 Route 2
 grass 2-5
@@ -705,6 +716,17 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 1, 31: kanto_lass_crissy 31
+=== route_5
+Route 5
+grass 10-16
+=== route_6
+Route 6
+grass 10-16
+surf 20-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 6, 16-20: kanto_bug_catcher_elijah 20, kanto_bug_catcher_keigo 16, kanto_camper_jeff 16, kanto_camper_ricky 20, kanto_picnicker_isabelle 16, kanto_picnicker_nancy 16
 === ruin_maniac_cave_short
 Ruin Maniac Cave
 grass 21-24
@@ -799,6 +821,42 @@ trainers 2, 3: johto_sage_edmond 3, johto_sage_nico 3
 Sprout Tower
 grass 3-6
 trainers 3, 6-7: johto_sage_jin 6, johto_sage_neal 6, johto_sage_troy 7
+=== ss_anne_1f_room_2
+S.S. Anne
+trainers 2, 18-21: kanto_lass_ann 18, kanto_youngster_tyler 21
+=== ss_anne_1f_room_5
+S.S. Anne
+trainers 1, 19: kanto_gentleman_arthur 19
+=== ss_anne_1f_room_7
+S.S. Anne
+trainers 1, 18: kanto_gentleman_thomas 18
+=== ss_anne_2f_room_2
+S.S. Anne
+trainers 2, 17-23: kanto_fisherman_dale 17, kanto_gentleman_brooks 23
+=== ss_anne_2f_room_4
+S.S. Anne
+trainers 2, 17-18: kanto_gentleman_lamar 17, kanto_lass_dawn 18
+=== ss_anne_b1f_room_1
+S.S. Anne
+trainers 2, 17-20: kanto_fisherman_barny 17, kanto_sailor_phillip 20
+=== ss_anne_b1f_room_2
+S.S. Anne
+trainers 1, 18: kanto_sailor_huey 18
+=== ss_anne_b1f_room_3
+S.S. Anne
+trainers 1, 17: kanto_sailor_dylan 17
+=== ss_anne_b1f_room_4
+S.S. Anne
+trainers 2, 17-21: kanto_sailor_duncan 17, kanto_sailor_leonard 21
+=== ss_anne_deck
+S.S. Anne
+trainers 2, 17-18: kanto_sailor_edmond 18, kanto_sailor_trevor 17
+=== ss_anne_exterior
+S.S. Anne
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
 === stark_mountain_outside
 Stark Mountain
 grass 51-54
@@ -889,6 +947,15 @@ grass 25-28
 === veilstone_city
 Veilstone City
 trainers 2, 24-26: galactic_grunt_veilstone_city_1 26, galactic_grunt_veilstone_city_2 26
+=== vermilion_city
+Vermilion City
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+=== vermilion_city_gym
+Vermilion City
+trainers 3, 21-23: kanto_engineer_baily 21, kanto_gentleman_tucker 23, kanto_sailor_dwayne 21
 === victory_road_1f
 Victory Road
 grass 40-43

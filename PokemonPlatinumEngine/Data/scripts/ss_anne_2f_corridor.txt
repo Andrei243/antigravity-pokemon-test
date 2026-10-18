@@ -1,0 +1,64 @@
+# The S.S. Anne's second deck (plan 19 · K4, part b). docs/scripts.md describes the language; the lines are our own,
+# on FireRed's beats (data/maps/SSAnne_2F_Corridor/scripts.inc).
+#
+# VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR: 0 until the rival steps out of the captain's door and battles the player (the
+# area's triggers 0 to 2, west to east, below the door), 1 after. He is hidden by FLAG_HIDE_SS_ANNE_RIVAL until then
+# (common.KantoNewGame, and this place's arrival for a save from before plan 19 · K4, part b).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR == 0 setflag FLAG_HIDE_SS_ANNE_RIVAL
+  end
+
+
+# The three steps below the captain's door (triggers 0 to 2): he comes down to the player's column, or beside it.
+script Rival
+  scene "The rival aboard the ship"
+  sound "door_open"
+  music "kanto/rival"
+  place ss_anne_rival 30 2 down
+  show ss_anne_rival
+  emote ss_anne_rival exclaim 0.6
+  if var PLAYER_X == 31 goto Mid
+  if var PLAYER_X == 32 goto Right
+  walk ss_anne_rival down 3
+  goto Talk
+label Mid
+  walk ss_anne_rival down 4
+  face ss_anne_rival right
+  face player left
+  goto Talk
+label Right
+  face player left
+  walk ss_anne_rival down 4 right 1
+  face ss_anne_rival right
+label Talk
+  speaker "{rival}"
+  say "Well, well! {player}! Fancy running into you on a ship like this. Were you invited to the party too?"
+  say "I bet you've hardly caught anything. Come on, let's see how your Pokémon are doing!"
+  if starter "Bulbasaur" goto VsCharmander
+  if starter "Charmander" goto VsSquirtle
+  battle ss_anne_rival as "kanto_rival_ss_anne_bulbasaur"
+  goto After
+label VsCharmander
+  battle ss_anne_rival as "kanto_rival_ss_anne_charmander"
+  goto After
+label VsSquirtle
+  battle ss_anne_rival as "kanto_rival_ss_anne_squirtle"
+label After
+  speaker "{rival}"
+  say "Humph! Fine, you got lucky. I already saw the captain, by the way. He showed me a neat move called Cut."
+  say "He's not looking too well, though. You'd better go and see him yourself. Smell you later!"
+  music "kanto/rival"
+  if var PLAYER_X == 30 goto AroundEast
+  walk ss_anne_rival down 7 fast
+  goto Gone
+label AroundEast
+  walk ss_anne_rival right 1 down 7 fast
+label Gone
+  hide ss_anne_rival
+  setflag FLAG_HIDE_SS_ANNE_RIVAL
+  music area
+  setvar VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR 1
+  endscene
+  end

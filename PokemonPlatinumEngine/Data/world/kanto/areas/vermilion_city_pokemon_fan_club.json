@@ -1,0 +1,35 @@
+{
+  "key": "vermilion_city_pokemon_fan_club",
+  "index": 291,
+  "name": "Vermilion City",
+  "matrix": 238,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VERMILLION",
+  "nightMusic": "MUS_VERMILLION",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 10, "to": "vermilion_city", "toWarp": 5 },
+    { "x": 5, "z": 10, "to": "vermilion_city", "toWarp": 5 },
+    { "x": 6, "z": 10, "to": "vermilion_city", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_south", "x": 5, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonFanClub_EventScript_Chairman" },
+    { "id": "worker_f", "looks": "worker_f", "movement": "look_south", "x": 6, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonFanClub_EventScript_WorkerF" },
+    { "id": "pikachu", "looks": "pikachu", "movement": "look_around", "x": 7, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonFanClub_EventScript_Pikachu" },
+    { "id": "seel", "looks": "seel", "movement": "look_around", "x": 4, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonFanClub_EventScript_Seel" },
+    { "id": "pokemon_fan_club_woman", "looks": "woman_1", "movement": "look_south", "x": 4, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonFanClub_EventScript_Woman" },
+    { "id": "pokemon_fan_club_fat_man", "looks": "fat_man", "movement": "look_south", "x": 7, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonFanClub_EventScript_FatMan" }
+  ],
+  "signs": [
+    { "x": 2, "z": 1, "type": 0, "script": "VermilionCity_PokemonFanClub_EventScript_RulesSign1" },
+    { "x": 9, "z": 1, "type": 0, "script": "VermilionCity_PokemonFanClub_EventScript_RulesSign2" }
+  ],
+  "triggers": []
+}

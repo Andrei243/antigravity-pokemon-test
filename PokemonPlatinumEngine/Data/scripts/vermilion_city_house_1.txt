@@ -1,0 +1,21 @@
+# The Fishing Guru's house in Vermilion City (plan 19 · K4, part b). docs/scripts.md describes the language; the lines
+# are our own, on FireRed's beats (data/maps/VermilionCity_House1/scripts.inc): an Old Rod for a trainer who likes to
+# fish (FLAG_GOT_OLD_ROD).
+
+
+script FishingGuru
+  speaker "Fishing Guru"
+  if flag FLAG_GOT_OLD_ROD goto Biting
+  ask "I'm the Fishing Guru! I simply love fishing. Do you like to fish?"
+  if yes goto Give
+  say "Oh... That's a shame. Fishing is such a peaceful way to pass the time."
+  end
+label Give
+  say "Grand! Then take this, and give it a try."
+  give "Old Rod"
+  setflag FLAG_GOT_OLD_ROD
+  say "Cast it wherever there's water. You never know what might bite! Fishing is a way of life, you know."
+  end
+label Biting
+  say "Hello there! How are the fish biting?"
+  end

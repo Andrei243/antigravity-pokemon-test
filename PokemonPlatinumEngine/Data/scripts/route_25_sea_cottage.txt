@@ -79,6 +79,26 @@ label Separate
   fanfare levelup
   endscene
   end
+# Bill's list of his favourite Pokémon, a picture of each (plan 19 · K4, part b; FireRed's
+# MULTICHOICE_EEVEELUTIONS, each choice showing a picture): the picture told in words, and the Pokédex told it was seen.
 label List
-  text "It's Bill's list of favourite Pokémon: Eevee, and all three of its evolutions."
+  choose "Bill's favourite Pokémon. Which picture will you look at?" "Eevee" "Flareon" "Jolteon" "Vaporeon" "Log off"
+  if result == 1 goto Flareon
+  if result == 2 goto Jolteon
+  if result == 3 goto Vaporeon
+  if result == 4 end
+  seen "Eevee"
+  text "Eevee: a little brown Pokémon with a fluffy collar. Its genes let it evolve in many different ways."
+  end
+label Flareon
+  seen "Flareon"
+  text "Flareon: an Eevee touched by a Fire Stone, its mane a warm, fiery yellow."
+  end
+label Jolteon
+  seen "Jolteon"
+  text "Jolteon: an Eevee touched by a Thunder Stone, its fur standing up in sharp spikes."
+  end
+label Vaporeon
+  seen "Vaporeon"
+  text "Vaporeon: an Eevee touched by a Water Stone, with fins and a tail like a mermaid's."
   end

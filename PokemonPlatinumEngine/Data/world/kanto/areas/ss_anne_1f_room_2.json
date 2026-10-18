@@ -1,0 +1,28 @@
+{
+  "key": "ss_anne_1f_room_2",
+  "index": 55,
+  "name": "S S Anne",
+  "matrix": 19,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 1, "to": "ss_anne_1f_corridor", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_south_and_west", "x": 5, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_LASS_ANN" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_east", "x": 0, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_YOUNGSTER_TYLER" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west", "x": 2, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_1F_Room2_EventScript_Woman" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 5, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SSANNE_1F_ROOM2_TM31", "item": "TM31", "script": "SSAnne_1F_Room2_EventScript_ItemTM31" }
+  ],
+  "signs": [],
+  "triggers": []
+}

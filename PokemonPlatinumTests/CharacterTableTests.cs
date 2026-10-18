@@ -284,8 +284,8 @@ public class CharacterTableTests
             if (look == null) Assert.Equal("Roark", Table.InBattle(trainerClass, "Roark"));
             else if (!Table.Has(look)) plain.Add(trainerClass);
         }
-        // Plan 11 · C2 to C4 draw these: the count only falls (83 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, which plan 11 · C13 and plan 20 · J14 will draw)
-        Assert.True(plain.Count <= 83, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
+        // Plan 11 · C2 to C4 draw these: the count only falls (85 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, and K4's second part the Gamer and the Engineer of the sound map, which plan 11 · C13 and plan 20 · J14 will draw)
+        Assert.True(plain.Count <= 85, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
         Assert.Contains("Hiker", plain);
         Assert.DoesNotContain("Lass", plain);
     }

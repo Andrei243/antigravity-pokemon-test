@@ -1,0 +1,11 @@
+{
+  // The Fishing Guru's house in Vermilion City (plan 19 · K4, part b): his Old Rod is vermilion_city_house_1.txt's
+  "area": "vermilion_city_house_1",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "fisher": {
+      "name": "Fishing Guru",
+      "script": "FishingGuru"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "key": "ss_anne_kitchen",
+  "index": 52,
+  "name": "S S Anne",
+  "matrix": 16,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 1, "to": "ss_anne_1f_corridor", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "chef", "looks": "chef", "movement": "wander_north_and_south", "x": 1, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_Kitchen_EventScript_Chef1" },
+    { "id": "chef_2", "looks": "chef", "movement": "wander_north_and_south", "x": 6, "z": 6, "facing": 0, "rangeX": 1, "rangeZ": 2, "script": "SSAnne_Kitchen_EventScript_Chef2" },
+    { "id": "chef_3", "looks": "chef", "movement": "look_south_and_east", "x": 10, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_Kitchen_EventScript_Chef3" },
+    { "id": "chef_4", "looks": "chef", "movement": "look_north", "x": 8, "z": 9, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_Kitchen_EventScript_Chef4" },
+    { "id": "chef_5", "looks": "chef", "movement": "look_north", "x": 14, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_Kitchen_EventScript_Chef5" },
+    { "id": "chef_6", "looks": "chef", "movement": "look_west", "x": 14, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_Kitchen_EventScript_Chef6" },
+    { "id": "chef_7", "looks": "chef", "movement": "look_north", "x": 14, "z": 9, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_Kitchen_EventScript_Chef7" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 1, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SSANNE_KITCHEN_GREAT_BALL", "item": "Great Ball", "script": "SSAnne_Kitchen_EventScript_ItemGreatBall" }
+  ],
+  "signs": [
+    { "x": 14, "z": 8, "type": 2, "script": "", "item": "Chesto Berry", "flag": "FLAG_HIDDEN_ITEM_SSANNE_KITCHEN_CHESTO_BERRY" },
+    { "x": 14, "z": 4, "type": 2, "script": "", "item": "Pecha Berry", "flag": "FLAG_HIDDEN_ITEM_SSANNE_KITCHEN_PECHA_BERRY" },
+    { "x": 14, "z": 6, "type": 2, "script": "", "item": "Cheri Berry", "flag": "FLAG_HIDDEN_ITEM_SSANNE_KITCHEN_CHERI_BERRY" }
+  ],
+  "triggers": []
+}

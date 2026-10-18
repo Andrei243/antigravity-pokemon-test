@@ -22,6 +22,19 @@
     "canUseInOverworld": true,
     "description": "A dark orb that seems to pull at the space around it."
   },
+  // FireRed's Bike Voucher (plan 19 · K4, part b), which no game this importer reads has: the Pokémon Fan Club's
+  // chairman gives it, and Cerulean City's Bike Shop takes it for a Bicycle
+  "Bike Voucher": {
+    "id": 9010,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A voucher for one free bicycle. Take it to the Bike Shop in Cerulean City.",
+    "cantBeTossed": true
+  },
   // The orbs of Primal Reversion (plan 06 · R20): PokeAPI's words are a story's; ours say what they do when held
   "Blue Orb": {
     "description": "Held by Kyogre, it brings out its primal form when it enters battle."

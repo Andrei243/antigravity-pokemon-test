@@ -1,0 +1,6 @@
+{
+  // The Underground Path between Routes 5 and 6 (plan 19 · K4, part b): a long tunnel, nobody in it but what
+  // lies hidden on its floor. FireRed gives it no song of its own: the entrances' plays on
+  "area": "underground_path_north_south_tunnel",
+  "bgmTrack": "kanto/route3"
+}

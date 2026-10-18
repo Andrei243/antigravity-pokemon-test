@@ -1,0 +1,6 @@
+{
+  // The S.S. Anne's crew quarters below (plan 19 · K4, part b)
+  "area": "ss_anne_b1f_corridor",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne"
+}

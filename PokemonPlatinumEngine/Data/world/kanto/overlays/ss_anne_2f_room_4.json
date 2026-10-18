@@ -1,0 +1,22 @@
+{
+  // A cabin of the S.S. Anne's second deck (plan 19 · K4, part b)
+  "area": "ss_anne_2f_room_4",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "gentleman": {
+      "name": "Lamar",
+      "trainer": {
+        "dialogueBefore": "Gentleman Lamar: I am a man of means. My Pokémon are the finest money can buy!",
+        "dialogueAfter": "Gentleman Lamar: Hmm. Money can't buy a win, it seems."
+      }
+    },
+    "lass": {
+      "name": "Dawn",
+      "trainer": {
+        "dialogueBefore": "Lass Dawn: I've been waiting for someone fun to battle!",
+        "dialogueAfter": "Lass Dawn: You're fun all right. Fun to lose to!"
+      }
+    }
+  }
+}

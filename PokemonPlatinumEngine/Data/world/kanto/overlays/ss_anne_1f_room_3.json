@@ -1,0 +1,26 @@
+{
+  // A cabin of the S.S. Anne's first deck (plan 19 · K4, part b)
+  "area": "ss_anne_1f_room_3",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "little_girl": {
+      "name": "Girl",
+      "dialog": [
+        "Wigglytuff is my best friend. It's soft as a cushion!"
+      ]
+    },
+    "wigglytuff": {
+      "name": "Wigglytuff",
+      "dialog": [
+        "Wigglytuff: Puffy... puff!"
+      ]
+    },
+    "balding_man": {
+      "name": "Man",
+      "dialog": [
+        "My daughter's Wigglytuff sings her to sleep every night. Puts me to sleep too."
+      ]
+    }
+  }
+}

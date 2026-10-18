@@ -334,6 +334,18 @@ public static class RegionDatabase
                 "CeruleanCity_House1", "CeruleanCity_House2", "CeruleanCity_House3", "CeruleanCity_PokemonCenter_1F",
                 "CeruleanCity_PokemonCenter_2F", "CeruleanCity_Gym", "CeruleanCity_BikeShop", "CeruleanCity_Mart",
                 "CeruleanCity_House4", "CeruleanCity_House5", "Route25_SeaCottage",
+                // Plan 19 · K4, part b: Vermilion City's rooms, the Underground Path, Route 11's gate, the S.S. Anne
+                // and Diglett's Cave
+                "VermilionCity_House1", "VermilionCity_PokemonCenter_1F", "VermilionCity_PokemonCenter_2F",
+                "VermilionCity_PokemonFanClub", "VermilionCity_House2", "VermilionCity_Mart", "VermilionCity_Gym",
+                "VermilionCity_House3", "UndergroundPath_NorthEntrance", "UndergroundPath_NorthSouthTunnel",
+                "UndergroundPath_SouthEntrance", "Route11_EastEntrance_1F", "Route11_EastEntrance_2F",
+                "SSAnne_Exterior", "SSAnne_1F_Corridor", "SSAnne_2F_Corridor", "SSAnne_3F_Corridor", "SSAnne_B1F_Corridor",
+                "SSAnne_Deck", "SSAnne_Kitchen", "SSAnne_CaptainsOffice", "SSAnne_1F_Room1", "SSAnne_1F_Room2",
+                "SSAnne_1F_Room3", "SSAnne_1F_Room4", "SSAnne_1F_Room5", "SSAnne_1F_Room7", "SSAnne_1F_Room6",
+                "SSAnne_2F_Room1", "SSAnne_2F_Room2", "SSAnne_2F_Room3", "SSAnne_2F_Room4", "SSAnne_2F_Room5",
+                "SSAnne_2F_Room6", "SSAnne_B1F_Room1", "SSAnne_B1F_Room2", "SSAnne_B1F_Room3", "SSAnne_B1F_Room4",
+                "SSAnne_B1F_Room5", "DiglettsCave_NorthEntrance", "DiglettsCave_B1F", "DiglettsCave_SouthEntrance",
             }
         },
         new()

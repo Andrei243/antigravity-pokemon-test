@@ -6493,6 +6493,20 @@ way -
 from Woman at 276,70 of Kanto
 way -
   Woman> I'd love one of those shiny red bicycles in the shop. But have you seen the price? A million!
+=== cerulean_city_bike_shop.Clerk
+from Clerk at 9,3 of CeruleanCity_BikeShop
+way 0
+  Clerk> Welcome to the Bike Shop! Our bicycles are the best in Kanto.
+  Clerk> A bicycle is ¥1,000,000. Would you like one?
+  Clerk> Oh... I'm sorry, you don't have enough money. Come back if you ever win the lottery!
+  ? A bicycle is ¥1,000,000. Would you like one? = Buy one
+way 1, from answer 1
+  Clerk> Thanks for dropping in! Come back any time.
+  ? A bicycle is ¥1,000,000. Would you like one? = No, thanks
+=== cerulean_city_bike_shop.Youngster
+from Youngster at 9,7 of CeruleanCity_BikeShop
+way -
+  Youngster> A bicycle gets you round twice as fast as running shoes. I want one so badly!
 === cerulean_city_gym.GymGuy
 from Gym Guide at 7,16 of CeruleanCity_Gym
 way -
@@ -7601,6 +7615,8 @@ way -
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
   + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_22_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
 === common.KantoOpeningDone
 from a trainer with lines of their own
 way -
@@ -9586,6 +9602,15 @@ way -
   Gym Guide> Hey, future Champion! Brock's Pokémon are Rock types, hard as stone.
   Gym Guide> Normal moves bounce right off them. Water and Grass moves are what they hate.
   Gym Guide> If your Pokémon can't do either, train up a bit more before you take him on!
+=== pewter_city_museum_1f.OldAmberScientist
+from Scientist at 21,3 of PewterCity_Museum_1F
+way -
+  Scientist> Ssh! I think this chunk of amber holds the genes of an ancient Pokémon. Could you take it to a lab to be checked?
+  > Lucas received the Old Amber!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_GOT_OLD_AMBER
+  + FLAG_HIDE_OLD_AMBER
 === pewter_city_museum_1f.Receptionist
 from Receptionist at 16,5 of PewterCity_Museum_1F
 way -
@@ -10719,6 +10744,49 @@ way -
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
   = VAR_UNK_40A4 0 -> 1
   + seen sprout_tower_3f.Sprout Tower's top
+=== ss_anne_2f_corridor.Rival
+from the trigger at 30,6 of SSAnne_2F_Corridor
+from the trigger at 31,6 of SSAnne_2F_Corridor
+from the trigger at 32,6 of SSAnne_2F_Corridor
+way 0
+  Barry> Well, well! Lucas! Fancy running into you on a ship like this. Were you invited to the party too?
+  Barry> I bet you've hardly caught anything. Come on, let's see how your Pokémon are doing!
+  Barry> Humph! Fine, you got lucky. I already saw the captain, by the way. He showed me a neat move called Cut.
+  Barry> He's not looking too well, though. You'd better go and see him yourself. Smell you later!
+  * scene ss_anne_2f_corridor.The rival aboard the ship
+  * sound door_open
+  * music kanto/rival
+  * emote {rival} Exclaim
+  * battle kanto_rival_ss_anne_bulbasaur Won
+  * music kanto/rival
+  * music area
+  * endscene
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  = VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR 0 -> 1
+  + beaten kanto_rival_ss_anne_bulbasaur
+  + seen ss_anne_2f_corridor.The rival aboard the ship
+way 1, from answer 1
+  * battle kanto_rival_ss_anne_bulbasaur Lost
+  * scene over, unseen
+=== ss_anne_captains_office.Captain
+from Captain at 5,4 of SSAnne_CaptainsOffice
+way -
+  Captain> Ooh... I feel terrible... Seasick, of all things. A captain, seasick...
+  > Lucas rubbed the captain's back.\nRub-rub... Rub-rub...
+  Captain> Whew! Thank you, I feel much better now. You came to see my Pokémon, didn't you?
+  Captain> To thank you, I'll teach you a secret technique. A sailor's best friend for clearing a way through the trees!
+  > Lucas received the HM01!
+  > HM01 holds the move Cut.
+  > Lucas put it away in the TMs & HMs pocket.
+  Captain> That's Cut. Teach it to a Pokémon, and with the right Badge it can cut down small trees outside of battle.
+  Captain> Now, if you'll excuse me, the S.S. Anne must make ready to sail. Safe travels!
+  * scene ss_anne_captains_office.The seasick captain
+  * fanfare FanfareHeal
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_GOT_HM01
+  = VAR_MAP_SCENE_VERMILION_CITY 0 -> 1
+  + seen ss_anne_captains_office.The seasick captain
 === stark_mountain_outside.Grunt
 from Grunt at 742,232 of Sinnoh
 from Grunt at 742,233 of Sinnoh
@@ -11211,6 +11279,206 @@ way -
   * music common/rival
   * warp LakeVerity 46 53
   = VAR_VERITY_LAKEFRONT_STATE 0 -> 1
+=== vermilion_city.CheckTicket
+from the trigger at 286,233 of Kanto
+from the trigger at 287,233 of Kanto
+way -
+  Sailor> Welcome to the S.S. Anne! May I see your ticket, please?
+  Sailor> Oh dear, no ticket? I'm afraid I can't let you aboard without one.
+=== vermilion_city.ExitedTicketCheck
+from the trigger at 286,232 of Kanto
+from the trigger at 287,232 of Kanto
+way -
+=== vermilion_city.FerrySailor
+from Sailor at 288,233 of Kanto
+way -
+  Sailor> Welcome to the S.S. Anne! Have your ticket ready at the gangway, please.
+=== vermilion_city.Machop
+from Machop at 299,211 of Kanto
+way -
+  Machop> Guoh! Gogogoh!
+  > The Machop is stamping the ground flat.
+  * cry Machop
+=== vermilion_city.OaksAide
+from Aide at 289,207 of Kanto
+way -
+  Aide> Hello, Lucas! The Professor asked me to pass on a message.
+  Aide> One of his aides is waiting for you in the building on Route 2. He has something for you, once you've caught a few Pokémon.
+  + FLAG_TALKED_TO_OAKS_AIDE_IN_VERMILION
+=== vermilion_city.OldMan
+from Old Man at 281,209 of Kanto
+way -
+  Old Man> Did you see the S.S. Anne down in the harbour? What a beauty she is!
+=== vermilion_city_gym.Can1
+from the tile read at 1,10 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 1
+=== vermilion_city_gym.Can10
+from the tile read at 9,12 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 10
+=== vermilion_city_gym.Can11
+from the tile read at 1,14 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 11
+=== vermilion_city_gym.Can12
+from the tile read at 3,14 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 12
+=== vermilion_city_gym.Can13
+from the tile read at 5,14 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 13
+=== vermilion_city_gym.Can14
+from the tile read at 7,14 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 14
+=== vermilion_city_gym.Can15
+from the tile read at 9,14 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 15
+=== vermilion_city_gym.Can2
+from the tile read at 3,10 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 2
+=== vermilion_city_gym.Can3
+from the tile read at 5,10 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 3
+=== vermilion_city_gym.Can4
+from the tile read at 7,10 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 4
+=== vermilion_city_gym.Can5
+from the tile read at 9,10 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 5
+=== vermilion_city_gym.Can6
+from the tile read at 1,12 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 6
+=== vermilion_city_gym.Can7
+from the tile read at 3,12 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 7
+=== vermilion_city_gym.Can8
+from the tile read at 5,12 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 8
+=== vermilion_city_gym.Can9
+from the tile read at 7,12 of VermilionCity_Gym
+way -
+  > Nope! There's only rubbish in here.
+  = VAR_VERMILION_GYM_CAN 0 -> 9
+=== vermilion_city_gym.Gate
+from Electric gate at 4,6 of VermilionCity_Gym
+from Electric gate at 4,7 of VermilionCity_Gym
+from Electric gate at 5,6 of VermilionCity_Gym
+from Electric gate at 5,7 of VermilionCity_Gym
+from Electric gate at 6,6 of VermilionCity_Gym
+from Electric gate at 6,7 of VermilionCity_Gym
+way -
+  > A beam of electricity crackles across the way. It must be switched off somewhere in the Gym.
+=== vermilion_city_gym.GymGuy
+from Gym Guide at 4,17 of VermilionCity_Gym
+way -
+  Gym Guide> Yo! Champ in the making! Lt. Surge has locked himself in behind electric gates.
+  Gym Guide> The switches are hidden in the bins round the hall. Find the first, and the second is always right beside it!
+  Gym Guide> His Pokémon are Electric types, so bring a Ground type. Electric moves can't touch them!
+=== vermilion_city_gym.LtSurge
+from Lt. Surge at 5,2 of VermilionCity_Gym
+way 0
+  Lt. Surge> Hey, kid! What do you think you're doing here? You won't last long in battle, not with your puny power!
+  Lt. Surge> I tell you, kid, electric Pokémon saved me during the war! Now let's see you survive a jolt like that!
+  Lt. Surge> Whoa! You're the real deal, kid! Fine then, take the Thunder Badge!
+  > Lucas received the Thunder Badge from Lt. Surge!
+  Lt. Surge> The Thunder Badge lets your Pokémon use Fly outside of battle, once you have the move.
+  Lt. Surge> And here, take this as well. It's my special move!
+  > Lucas received the TM34!
+  > TM34 holds the move Shock Wave.
+  > Lucas put it away in the TMs & HMs pocket.
+  Lt. Surge> TM34 is Shock Wave. It strikes so fast that it never misses. Electric, like me!
+  * scene vermilion_city_gym.Surge
+  * battle kanto_leader_lt_surge Won
+  * fanfare FanfareBadge
+  * defeat kanto_engineer_baily
+  * defeat kanto_sailor_dwayne
+  * defeat kanto_gentleman_tucker
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_LT_SURGE
+  + FLAG_GOT_TM34_FROM_SURGE
+  + beaten kanto_engineer_baily
+  + beaten kanto_gentleman_tucker
+  + beaten kanto_leader_lt_surge
+  + beaten kanto_sailor_dwayne
+  = badges Kanto 0 -> 100
+  + seen vermilion_city_gym.Surge
+way 1, from answer 1
+  * battle kanto_leader_lt_surge Lost
+  * scene over, unseen
+=== vermilion_city_gym.Statue
+from the tile read at 3,17 of VermilionCity_Gym
+from the tile read at 7,17 of VermilionCity_Gym
+way -
+  > Vermilion City Pokémon Gym\nLeader: Lt. Surge
+=== vermilion_city_house_1.FishingGuru
+from Fishing Guru at 4,5 of VermilionCity_House1
+way 0
+  Fishing Guru> I'm the Fishing Guru! I simply love fishing. Do you like to fish?
+  Fishing Guru> Grand! Then take this, and give it a try.
+  > Lucas received the Old Rod!
+  > Lucas put it away in the Key Items pocket.
+  Fishing Guru> Cast it wherever there's water. You never know what might bite! Fishing is a way of life, you know.
+  ? I'm the Fishing Guru! I simply love fishing. Do you like to fish? = Yes
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_OLD_ROD
+way 1, from answer 1
+  Fishing Guru> Oh... That's a shame. Fishing is such a peaceful way to pass the time.
+  ? I'm the Fishing Guru! I simply love fishing. Do you like to fish? = No
+=== vermilion_city_pokemon_fan_club.Chairman
+from Chairman at 5,4 of VermilionCity_PokemonFanClub
+way 0
+  Chairman> Did you come to hear about my Pokémon? I'm the chairman of the Pokémon Fan Club!
+  Chairman> Splendid! My favourite is my Rapidash. Its mane is a blaze, and it runs like the wind!
+  Chairman> When it gallops, the whole field lights up. And it nuzzles me like a little Ponyta still. Simply darling!
+  Chairman> ...Oh, I've gone on far too long again. Thank you for listening! Please, take this.
+  > Lucas received the Bike Voucher!
+  > Lucas put it away in the Key Items pocket.
+  Chairman> Take that voucher to the Bike Shop in Cerulean City. It's good for one free bicycle!
+  ? Did you come to hear about my Pokémon? I'm the chairman of the Pokémon Fan Club! = Yes
+  * scene vermilion_city_pokemon_fan_club.The chairman's Rapidash
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_GOT_BIKE_VOUCHER
+  + seen vermilion_city_pokemon_fan_club.The chairman's Rapidash
+way 1, from answer 1
+  Chairman> Oh, how sad. Come back when you have time to listen, won't you?
+  ? Did you come to hear about my Pokémon? I'm the chairman of the Pokémon Fan Club! = No
+=== vermilion_city_pokemon_fan_club.FatMan
+from Man at 7,5 of VermilionCity_PokemonFanClub
+way -
+  Man> Look at my Pikachu's tail! The way it twitches when it's happy... I could watch it all day.
+  + FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_FAT_MAN
+=== vermilion_city_pokemon_fan_club.Woman
+from Woman at 4,5 of VermilionCity_PokemonFanClub
+way -
+  Woman> Isn't my Seel adorable? That little nose! That sleek coat!
+  + FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_WOMAN
 === victory_road_1f.Collector
 from Collector at 45,33 of VictoryRoad1F
 way -

@@ -1,0 +1,30 @@
+{
+  "key": "ss_anne_deck",
+  "index": 51,
+  "name": "S S Anne",
+  "matrix": 15,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 8, "to": "ss_anne_3f_corridor", "toWarp": 0 },
+    { "x": 16, "z": 9, "to": "ss_anne_3f_corridor", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "look_north", "x": 12, "z": 10, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_SAILOR_TREVOR" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_south", "x": 14, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_Deck_EventScript_BaldingMan" },
+    { "id": "sailor_2", "looks": "sailor", "movement": "walk_west_and_east", "x": 13, "z": 13, "facing": 2, "rangeX": 4, "rangeZ": 1, "script": "SSAnne_Deck_EventScript_Sailor" },
+    { "id": "sailor_3", "looks": "sailor", "movement": "wander_around", "x": 6, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SAILOR_EDMOND" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 11, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_Deck_EventScript_Youngster" }
+  ],
+  "signs": [],
+  "triggers": []
+}

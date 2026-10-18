@@ -1,0 +1,81 @@
+{
+  // Route 11 (plan 19 · K4, part b): east of Vermilion City, a road of Gamers and Engineers. Its gate east is open
+  // to its upper floor; the way on to Route 12 is plan 19 · K5's
+  "area": "route_11",
+  "bgmTrack": "kanto/route11",
+  "people": {
+    "youngster": {
+      "name": "Eddie",
+      "trainer": {
+        "dialogueBefore": "Youngster Eddie: Who's the toughest trainer around here? Me, that's who!",
+        "dialogueAfter": "Youngster Eddie: Okay... so you're tougher than me."
+      }
+    },
+    "old_man_1": {
+      "name": "Hugo",
+      "trainer": {
+        "dialogueBefore": "Gamer Hugo: Let's make a bet! If I win, you buy me lunch.",
+        "dialogueAfter": "Gamer Hugo: Rats. Looks like lunch is on me."
+      }
+    },
+    "youngster_2": {
+      "name": "Dillon",
+      "trainer": {
+        "dialogueBefore": "Youngster Dillon: I'm on my way to the Pokémon Fan Club. But first, a battle!",
+        "dialogueAfter": "Youngster Dillon: Maybe I'll just go and look at Pokémon instead."
+      }
+    },
+    "youngster_3": {
+      "name": "Dave",
+      "trainer": {
+        "dialogueBefore": "Youngster Dave: My Pokémon and I train on this road every day!",
+        "dialogueAfter": "Youngster Dave: Back to training, I guess..."
+      }
+    },
+    "old_man_1_2": {
+      "name": "Jasper",
+      "trainer": {
+        "dialogueBefore": "Gamer Jasper: Battles are all about luck. And today I feel lucky!",
+        "dialogueAfter": "Gamer Jasper: My luck's run dry. Time to go home."
+      }
+    },
+    "old_man_1_3": {
+      "name": "Darian",
+      "trainer": {
+        "dialogueBefore": "Gamer Darian: I'll bet everything on this battle. Ready?",
+        "dialogueAfter": "Gamer Darian: Lost the lot! Never gamble on a sure thing."
+      }
+    },
+    "balding_man": {
+      "name": "Braxton",
+      "trainer": {
+        "dialogueBefore": "Engineer Braxton: I'm on a break from work. A battle will keep my mind sharp!",
+        "dialogueAfter": "Engineer Braxton: Back to the drawing board for me."
+      }
+    },
+    "youngster_4": {
+      "name": "Yasu",
+      "trainer": {
+        "dialogueBefore": "Youngster Yasu: Hey, you! You look like you could use a battle!",
+        "dialogueAfter": "Youngster Yasu: Okay, okay, you're good!"
+      }
+    },
+    "old_man_1_4": {
+      "name": "Dirk",
+      "trainer": {
+        "dialogueBefore": "Gamer Dirk: Heads or tails? Let's let our Pokémon decide!",
+        "dialogueAfter": "Gamer Dirk: Tails, I lose. Again."
+      }
+    },
+    "balding_man_2": {
+      "name": "Bernie",
+      "trainer": {
+        "dialogueBefore": "Engineer Bernie: Careful round here. Electricity runs through the cables under this road!",
+        "dialogueAfter": "Engineer Bernie: Shocking! I mean, you shocked me."
+      }
+    }
+  },
+  "signs": {
+    "Route11_EventScript_DiglettsCaveSign": "Diglett's Cave"
+  }
+}

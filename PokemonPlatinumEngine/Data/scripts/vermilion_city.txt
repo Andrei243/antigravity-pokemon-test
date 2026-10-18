@@ -1,0 +1,85 @@
+# Vermilion City (plan 19 · K4, part b). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/VermilionCity/scripts.inc).
+#
+# VAR_MAP_SCENE_VERMILION_CITY, as FireRed counts it: 0 until the S.S. Anne's captain gives HM01 Cut, 1 once he has,
+# 3 once the ship has sailed (ss_anne_exterior.txt, as the player comes off her; FireRed's 2 is the step between,
+# which the warp does at once here). VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER: 0 until the sailor at the head of the
+# pier has seen the S.S. Ticket, 1 while the player stands past him, and 0 again once they step back north.
+
+
+# FireRed's OnTransition: Oak's aide is gone once spoken to. He comes only after Lt. Surge, for a trainer who never
+# had Flash from his colleague on Route 2 (vermilion_city_gym.txt); a new game hides him (common.KantoNewGame), and so
+# does this for a save from before plan 19 · K4, part b, which never came here.
+script OnEnter
+  if not flag FLAG_DEFEATED_LT_SURGE setflag FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
+  if flag FLAG_TALKED_TO_OAKS_AIDE_IN_VERMILION setflag FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
+  end
+
+
+# The two steps at the head of the pier (triggers 0 and 1): the sailor asks for a ticket.
+script CheckTicket
+  face vermilion_ferry_sailor left
+  face player right
+  speaker "Sailor"
+  if var VAR_MAP_SCENE_VERMILION_CITY == 3 goto Sailed
+  say "Welcome to the S.S. Anne! May I see your ticket, please?"
+  if not flag FLAG_GOT_SS_TICKET goto NoTicket
+  text "{player} showed the S.S. Ticket."
+  say "Thank you! Mind your step on the gangway, and enjoy the party!"
+  setvar VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER 1
+  end
+label NoTicket
+  say "Oh dear, no ticket? I'm afraid I can't let you aboard without one."
+  walk player up 1
+  end
+label Sailed
+  say "The S.S. Anne has already set sail. She won't be back until next year."
+  walk player up 1
+  end
+
+
+# The two steps north of them (triggers 2 and 3): back on the quay, the check starts again.
+script ExitedTicketCheck
+  setvar VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER 0
+  end
+
+
+# The sailor spoken to.
+script FerrySailor
+  face vermilion_ferry_sailor player
+  speaker "Sailor"
+  if var VAR_MAP_SCENE_VERMILION_CITY == 3 goto Sailed
+  say "Welcome to the S.S. Anne! Have your ticket ready at the gangway, please."
+  end
+label Sailed
+  say "The S.S. Anne has already set sail. She won't be back until next year."
+  end
+
+
+# The old man who watches the harbour.
+script OldMan
+  speaker "Old Man"
+  if var VAR_MAP_SCENE_VERMILION_CITY == 3 goto Sailed
+  say "Did you see the S.S. Anne down in the harbour? What a beauty she is!"
+  end
+label Sailed
+  say "So the S.S. Anne has gone. She'll be sailing the world for a whole year before she's back."
+  end
+
+
+# The Machop flattening the building plot.
+script Machop
+  cry "Machop"
+  speaker "Machop"
+  say "Guoh! Gogogoh!"
+  text "The Machop is stamping the ground flat."
+  end
+
+
+# Oak's aide, after Lt. Surge, for a trainer without Flash.
+script OaksAide
+  setflag FLAG_TALKED_TO_OAKS_AIDE_IN_VERMILION
+  speaker "Aide"
+  say "Hello, {player}! The Professor asked me to pass on a message."
+  say "One of his aides is waiting for you in the building on Route 2. He has something for you, once you've caught a few Pokémon."
+  end

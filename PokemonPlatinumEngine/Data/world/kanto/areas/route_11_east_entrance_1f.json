@@ -1,0 +1,30 @@
+{
+  "key": "route_11_east_entrance_1f",
+  "index": 360,
+  "name": "Route 11",
+  "matrix": 307,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VERMILLION",
+  "nightMusic": "MUS_VERMILLION",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 6, "to": "route_11", "toWarp": 1 },
+    { "x": 1, "z": 7, "to": "route_11", "toWarp": 1 },
+    { "x": 11, "z": 6, "to": "route_11", "toWarp": 2 },
+    { "x": 11, "z": 7, "to": "route_11", "toWarp": 2 },
+    { "x": 9, "z": 10, "to": "route_11_east_entrance_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "policeman", "looks": "policeman", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route11_EastEntrance_1F_EventScript_TopGuard" },
+    { "id": "policeman_2", "looks": "policeman", "movement": "look_north", "x": 4, "z": 10, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "Route11_EastEntrance_1F_EventScript_BottomGuard" }
+  ],
+  "signs": [],
+  "triggers": []
+}

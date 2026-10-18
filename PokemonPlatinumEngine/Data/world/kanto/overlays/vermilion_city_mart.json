@@ -1,0 +1,26 @@
+{
+  // Vermilion City's Poké Mart (plan 19 · K4, part b)
+  "area": "vermilion_city_mart",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "clerk": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "cooltrainer_f": {
+      "name": "Woman",
+      "dialog": [
+        "Pokémon can be sweet, or they can be fierce. It's up to the trainer who raises them."
+      ]
+    },
+    "balding_man": {
+      "name": "Man",
+      "dialog": [
+        "Team Rocket? They're a bunch of thieves. They'd steal Pokémon from anyone!"
+      ]
+    }
+  }
+}

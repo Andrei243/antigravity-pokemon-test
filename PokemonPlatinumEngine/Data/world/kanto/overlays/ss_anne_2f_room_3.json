@@ -1,0 +1,20 @@
+{
+  // A cabin of the S.S. Anne's second deck (plan 19 · K4, part b)
+  "area": "ss_anne_2f_room_3",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "gentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "Ah, the sea air. Nothing like it for the lungs."
+      ]
+    },
+    "old_man_1": {
+      "name": "Old Man",
+      "dialog": [
+        "When I was young, I sailed the seas with my Pokémon too. Those were the days."
+      ]
+    }
+  }
+}

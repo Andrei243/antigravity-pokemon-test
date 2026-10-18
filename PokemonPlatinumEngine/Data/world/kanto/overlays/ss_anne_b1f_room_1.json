@@ -1,0 +1,22 @@
+{
+  // A crew cabin below the S.S. Anne's decks (plan 19 · K4, part b)
+  "area": "ss_anne_b1f_room_1",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "fisher": {
+      "name": "Barny",
+      "trainer": {
+        "dialogueBefore": "Fisherman Barny: I'm the ship's fisherman. Hook, line and battle!",
+        "dialogueAfter": "Fisherman Barny: My line snapped!"
+      }
+    },
+    "sailor": {
+      "name": "Phillip",
+      "trainer": {
+        "dialogueBefore": "Sailor Phillip: We sailors don't lose to landlubbers!",
+        "dialogueAfter": "Sailor Phillip: Blast! A landlubber beat me!"
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  // Vermilion City's Pokémon Center (plan 19 · K4, part b), its floor as FireRed lays it out
+  "area": "vermilion_city_pokemon_center_1f",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "vermilion_nurse": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "man": {
+      "name": "Man",
+      "dialog": [
+        "Have you got a bicycle yet? It makes getting about so much quicker."
+      ]
+    },
+    "hiker": {
+      "name": "Hiker",
+      "dialog": [
+        "Diglett's Cave goes all the way under the hills to Route 2. Handy, if you don't mind the dark."
+      ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [
+        "The S.S. Anne is in the harbour! I wish I could go aboard."
+      ]
+    },
+    "cooltrainer_f": {
+      "name": "Woman",
+      "dialog": [
+        "Trainers you've beaten will want a rematch one day. Keep getting stronger!"
+      ]
+    }
+  }
+}

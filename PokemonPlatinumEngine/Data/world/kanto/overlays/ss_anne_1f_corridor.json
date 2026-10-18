@@ -1,0 +1,20 @@
+{
+  // The S.S. Anne's first deck (plan 19 · K4, part b)
+  "area": "ss_anne_1f_corridor",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "sailor": {
+      "name": "Sailor",
+      "dialog": [
+        "The passengers are getting restless. The party's been going on for days!"
+      ]
+    },
+    "worker_m": {
+      "name": "Waiter",
+      "dialog": [
+        "Champagne? Ah, non, you are too young. Some lemonade, perhaps?"
+      ]
+    }
+  }
+}

@@ -224,6 +224,18 @@ public enum PropType
     WallShelf,
     /// <summary>A blackboard on a room's back wall (plan 01 · M11, the last rooms: the Trainers' School), on the wall's own row like a painting.</summary>
     Blackboard,
+    /// <summary>An electric gate's beams between two posts (plan 19 · K4, part b: the Vermilion City Gym's locks): a thing of the map (<see cref="NPC.ElectricGateType"/>), drawn as a card.</summary>
+    ElectricGate,
+    /// <summary>The Dome Fossil laid on the ground to be taken (plan 19 · K4, part b: Mt. Moon): a thing of the map (<see cref="NPC.DomeFossilType"/>), drawn as a card.</summary>
+    DomeFossil,
+    /// <summary>The Helix Fossil laid on the ground to be taken (plan 19 · K4, part b: Mt. Moon): a thing of the map (<see cref="NPC.HelixFossilType"/>), drawn as a card.</summary>
+    HelixFossil,
+    /// <summary>The Old Amber on its stand (plan 19 · K4, part b: Pewter City's museum): a thing of the map (<see cref="NPC.OldAmberType"/>), drawn as a card.</summary>
+    OldAmber,
+    /// <summary>A Pokédex laid on a desk (plan 19 · K4, part b: Professor Oak's lab): a thing of the map (<see cref="NPC.PokedexType"/>), drawn as a card.</summary>
+    DeskPokedex,
+    /// <summary>The Town Map rolled up on a table (plan 19 · K4, part b: the rival's house): a thing of the map (<see cref="NPC.TownMapType"/>), drawn as a card.</summary>
+    RolledTownMap,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

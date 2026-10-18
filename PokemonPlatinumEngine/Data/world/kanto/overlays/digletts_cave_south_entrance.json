@@ -1,0 +1,14 @@
+{
+  // Diglett's Cave's mouth on Route 11 (plan 19 · K4, part b)
+  "area": "digletts_cave_south_entrance",
+  "name": "Diglett's Cave",
+  "bgmTrack": "kanto/viridian_forest",
+  "people": {
+    "old_man_1": {
+      "name": "Old Man",
+      "dialog": [
+        "Some Diglett have lived down here for generations. Their tunnels are as old as the town."
+      ]
+    }
+  }
+}

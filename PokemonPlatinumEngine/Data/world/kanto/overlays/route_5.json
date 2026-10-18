@@ -1,0 +1,9 @@
+{
+  // Route 5 (plan 19 · K4, part b): the road south out of Cerulean City to the Underground Path. Its gate to Saffron City
+  // and the Day Care are plan 19 · K5's, and stay shut
+  "area": "route_5",
+  "bgmTrack": "kanto/route3",
+  "signs": {
+    "Route5_EventScript_UndergroundPathSign": "Underground Path\nCerulean City - Vermilion City"
+  }
+}

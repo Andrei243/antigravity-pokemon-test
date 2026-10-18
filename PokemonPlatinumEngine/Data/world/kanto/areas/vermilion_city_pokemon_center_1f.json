@@ -1,0 +1,34 @@
+{
+  "key": "vermilion_city_pokemon_center_1f",
+  "index": 289,
+  "name": "Vermilion City",
+  "matrix": 236,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 8, "to": "vermilion_city", "toWarp": 4 },
+    { "x": 7, "z": 8, "to": "vermilion_city", "toWarp": 4 },
+    { "x": 8, "z": 8, "to": "vermilion_city", "toWarp": 4 },
+    { "x": 1, "z": 6, "to": "vermilion_city_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "vermilion_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "man", "looks": "man", "movement": "wander_west_and_east", "x": 4, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonCenter_1F_EventScript_Man" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 12, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonCenter_1F_EventScript_Hiker" },
+    { "id": "youngster", "looks": "youngster", "movement": "wander_north_and_south", "x": 14, "z": 4, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonCenter_1F_EventScript_Youngster" },
+    { "id": "cooltrainer_f", "looks": "cooltrainer_f", "movement": "look_south", "x": 6, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_PokemonCenter_1F_EventScript_VSSeekerWoman" },
+    { "id": "0", "looks": "0", "movement": "invisible", "x": 2, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FAME_CHECKER_LT_SURGE_JOURNAL", "script": "VermilionCity_PokemonCenter_1F_EventScript_PokemonJournalLtSurge" },
+    { "id": "0_2", "looks": "0", "movement": "invisible", "x": 3, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FAME_CHECKER_LT_SURGE_JOURNAL", "script": "VermilionCity_PokemonCenter_1F_EventScript_PokemonJournalLtSurge" }
+  ],
+  "signs": [],
+  "triggers": []
+}

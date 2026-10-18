@@ -279,6 +279,21 @@ public class NPC
     /// </summary>
     public const string FalseRockType = "FalseRock";
 
+    /// <summary>
+    /// A lock of the Vermilion City Gym (plan 19 · K4, part b; FireRed draws its beams into the tiles and changes them
+    /// with <c>setmetatile</c>): a thing of the map on a tile of the gap it shuts, which the world builder opens under
+    /// it, in the way like a person and read like one until its flag takes it away. Drawn as a card.
+    /// </summary>
+    public const string ElectricGateType = "ElectricGate";
+
+    /// <summary>
+    /// Things FireRed lays out to be taken with a look of their own (plan 19 · K4, part b): Mt. Moon's two fossils, the
+    /// museum's Old Amber, the Pokédexes on Professor Oak's desk and the Town Map on the rival's sister's table. In the
+    /// way like an item's ball and read like one (their scripts give them); drawn as cards of their own.
+    /// </summary>
+    public const string DomeFossilType = "DomeFossil", HelixFossilType = "HelixFossil", OldAmberType = "OldAmber",
+        PokedexType = "Pokedex", TownMapType = "TownMap";
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -292,6 +307,12 @@ public class NPC
         CavePaintingType => PropType.CavePainting,
         MagmaStoneType => PropType.MagmaStone,
         FalseRockType => PropType.CrackedRock,
+        ElectricGateType => PropType.ElectricGate,
+        DomeFossilType => PropType.DomeFossil,
+        HelixFossilType => PropType.HelixFossil,
+        OldAmberType => PropType.OldAmber,
+        PokedexType => PropType.DeskPokedex,
+        TownMapType => PropType.RolledTownMap,
         _ => null
     };
 

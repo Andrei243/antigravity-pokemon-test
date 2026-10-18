@@ -1,0 +1,48 @@
+# The S.S. Anne (FireRed's MUS_SS_ANNE, on every deck and in every cabin): a gracious ballroom waltz in F for the
+# liner's party, a violin tune over oom-pah-pah strings and a harp's sweep at each phrase's end. Original
+# composition for this game (plan 19 · K4).
+title S.S. Anne
+tempo 138
+meter 3/4
+reverb 0.34
+nighttempo 0.95
+
+track lead violin night=flute vol=0.69 pan=0 rev=0.32
+  L o5 c2 f4 | a2 o6 c4 | o5 g2 e4 | f2. |
+  o5 g2 b-4 | o6 d2 o5 a4 | b-2 g4 | g2. |
+  o5 c2 e4 | g2 b-4 | a2 f4 | f2 a4 |
+  o5 g2 e4 | e2 c4 | g2 e4 | f2. |
+  o5 a2 o6 c4 | f2 c4 | d2 o5 a4 | b-2. |
+  o5 g2 b-4 | o6 d2 o5 a4 | b-2 g4 | a2. |
+  o5 f2 a4 | o6 c2 o5 a4 | g2 e4 | f2 d4 |
+  o5 c2 e4 | g2 b-4 | b-2 g4 | f2. |
+
+track sweep harp night=celesta vol=0.32 pan=0.35 rev=0.4
+  L r2. | r2. | r2. | o4 f8 a8 o5 c8 f8 a8 o6 c8 |
+  r2. | r2. | r2. | o4 c8 e8 g8 o5 c8 e8 g8 |
+  r2. | r2. | r2. | o4 d8 f8 a8 o5 d8 f8 a8 |
+  r2. | r2. | r2. | o4 f8 a8 o5 c8 f8 a8 o6 c8 |
+  r2. | r2. | r2. | o4 b-8 o5 d8 f8 b-8 o6 d8 f8 |
+  r2. | r2. | r2. | o4 a8 o5 c+8 e8 a8 o6 c+8 e8 |
+  r2. | r2. | r2. | o4 d8 f8 a8 o5 d8 f8 a8 |
+  r2. | r2. | r2. | o4 f8 a8 o5 c8 f8 a8 o6 c8 |
+
+track oompah strings night=pad vol=0.30 pan=-0.3 rev=0.36
+  L o4 r4 (f a >c)4 (f a >c)4 | r4 (f a >c)4 (f a >c)4 | r4 (e g b- >c)4 (e g b- >c)4 | r4 (f a >c)4 (f a >c)4 |
+  r4 (g b- >d)4 (g b- >d)4 | r4 (f a >d)4 (f a >d)4 | r4 (g b- >d)4 (g b- >d)4 | r4 (e g b- >c)4 (e g b- >c)4 |
+  r4 (e g >c)4 (e g >c)4 | r4 (e g b- >c)4 (e g b- >c)4 | r4 (f a >c)4 (f a >c)4 | r4 (d f a)4 (d f a)4 |
+  r4 (e g b- >c)4 (e g b- >c)4 | r4 (e g >c)4 (e g >c)4 | r4 (e g b- >c)4 (e g b- >c)4 | r4 (f a >c)4 (f a >c)4 |
+  r4 (f a >c)4 (f a >c)4 | r4 (f a >c)4 (f a >c)4 | r4 (f a >d)4 (f a >d)4 | r4 (f b- >d)4 (f b- >d)4 |
+  r4 (g b- >d)4 (g b- >d)4 | r4 (f a >d)4 (f a >d)4 | r4 (g b- >d)4 (g b- >d)4 | r4 (e a >c+)4 (e a >c+)4 |
+  r4 (f a >c)4 (f a >c)4 | r4 (f a >c)4 (f a >c)4 | r4 (e g b- >c)4 (e g b- >c)4 | r4 (d f a)4 (d f a)4 |
+  r4 (e g b- >c)4 (e g b- >c)4 | r4 (e g b- >c)4 (e g b- >c)4 | r4 (e g b- >c)4 (e g b- >c)4 | r4 (f a >c)4 (f a >c)4 |
+
+track bass bass vol=0.69 rev=0.1
+  L o3 f2. | f2. | c2. | f2. |
+  g2. | d2. | g2. | c2. |
+  c2. | c2. | f2. | d2. |
+  c2. | c2. | c2. | f2. |
+  f2. | f2. | d2. | b-2. |
+  g2. | d2. | g2. | a2. |
+  f2. | f2. | c2. | d2. |
+  c2. | c2. | c2. | f2. |

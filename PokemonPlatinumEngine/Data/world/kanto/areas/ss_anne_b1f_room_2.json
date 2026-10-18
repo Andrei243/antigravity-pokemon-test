@@ -1,0 +1,26 @@
+{
+  "key": "ss_anne_b1f_room_2",
+  "index": 67,
+  "name": "S S Anne",
+  "matrix": 31,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "ss_anne_b1f_corridor", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "look_around", "x": 3, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SAILOR_HUEY" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 3, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SSANNE_B1F_ROOM2_TM44", "item": "TM44", "script": "SSAnne_B1F_Room2_EventScript_ItemTM44" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -4649,7 +4649,8 @@
     "Ultranecrozium Z": "Ultranécrozélite",
     "Mimikium Z": "Mimiquizélite",
     "Lycanium Z": "Lougarozélite",
-    "Kommonium Z": "Ékaïzélite"
+    "Kommonium Z": "Ékaïzélite",
+    "Bike Voucher": "Bon Commande"
   },
   "types": {
     "Normal": "Normal",
@@ -7268,7 +7269,8 @@
       "Ultranecrozium Z": "XXX nouvel effet pour ultranecrozium-z--held",
       "Mimikium Z": "XXX nouvel effet pour mimikium-z--held",
       "Lycanium Z": "XXX nouvel effet pour lycanium-z--held",
-      "Kommonium Z": "XXX nouvel effet pour kommonium-z--held"
+      "Kommonium Z": "XXX nouvel effet pour kommonium-z--held",
+      "Bike Voucher": "À échanger aux Cycles à Gogo à Azuria pour un Vélo."
     }
   }
 }

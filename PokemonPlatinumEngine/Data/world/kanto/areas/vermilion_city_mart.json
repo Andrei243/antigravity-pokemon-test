@@ -1,0 +1,29 @@
+{
+  "key": "vermilion_city_mart",
+  "index": 293,
+  "name": "Vermilion City",
+  "matrix": 240,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "vermilion_city", "toWarp": 7 },
+    { "x": 4, "z": 7, "to": "vermilion_city", "toWarp": 7 },
+    { "x": 5, "z": 7, "to": "vermilion_city", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "clerk", "looks": "clerk", "movement": "look_east", "x": 2, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_Mart_EventScript_Clerk" },
+    { "id": "cooltrainer_f", "looks": "cooltrainer_f", "movement": "look_west", "x": 4, "z": 2, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_Mart_EventScript_CooltrainerF" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "wander_around", "x": 9, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 2, "script": "VermilionCity_Mart_EventScript_BaldingMan" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,20 @@
+{
+  // A cabin of the S.S. Anne's second deck (plan 19 · K4, part b)
+  "area": "ss_anne_2f_room_6",
+  "name": "S.S. Anne",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "woman_3": {
+      "name": "Woman",
+      "dialog": [
+        "Did you know some Pokémon can carry you across the water?"
+      ]
+    },
+    "woman_1": {
+      "name": "Woman",
+      "dialog": [
+        "Some people cut through the trees with their Pokémon. Isn't that clever?"
+      ]
+    }
+  }
+}

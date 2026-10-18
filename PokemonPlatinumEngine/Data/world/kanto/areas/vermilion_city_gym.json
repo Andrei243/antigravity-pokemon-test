@@ -1,0 +1,49 @@
+{
+  "key": "vermilion_city_gym",
+  "index": 294,
+  "name": "Vermilion City",
+  "matrix": 241,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GYM",
+  "nightMusic": "MUS_GYM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 19, "to": "vermilion_city", "toWarp": 9 },
+    { "x": 5, "z": 19, "to": "vermilion_city", "toWarp": 9 },
+    { "x": 6, "z": 19, "to": "vermilion_city", "toWarp": 9 }
+  ],
+  "objects": [
+    { "id": "lt_surge", "looks": "lt_surge", "movement": "look_south", "x": 5, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_Gym_EventScript_LtSurge" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_around", "x": 2, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ENGINEER_BAILY" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_around", "x": 8, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_SAILOR_DWAYNE" },
+    { "id": "gym_guy", "looks": "gym_guy", "movement": "look_south", "x": 4, "z": 17, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_Gym_EventScript_GymGuy" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_west", "x": 7, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_GENTLEMAN_TUCKER" }
+  ],
+  "signs": [
+    { "x": 3, "z": 17, "type": 0, "script": "VermilionCity_Gym_EventScript_GymStatue" },
+    { "x": 7, "z": 17, "type": 0, "script": "VermilionCity_Gym_EventScript_GymStatue" },
+    { "x": 1, "z": 10, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan1" },
+    { "x": 3, "z": 10, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan2" },
+    { "x": 5, "z": 10, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan3" },
+    { "x": 7, "z": 10, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan4" },
+    { "x": 9, "z": 10, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan5" },
+    { "x": 1, "z": 12, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan6" },
+    { "x": 3, "z": 12, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan7" },
+    { "x": 5, "z": 12, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan8" },
+    { "x": 7, "z": 12, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan9" },
+    { "x": 9, "z": 12, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan10" },
+    { "x": 1, "z": 14, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan11" },
+    { "x": 3, "z": 14, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan12" },
+    { "x": 5, "z": 14, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan13" },
+    { "x": 7, "z": 14, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan14" },
+    { "x": 9, "z": 14, "type": 0, "script": "VermilionCity_Gym_EventScript_TrashCan15" }
+  ],
+  "triggers": []
+}

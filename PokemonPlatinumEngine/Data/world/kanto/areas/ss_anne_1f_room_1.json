@@ -1,0 +1,25 @@
+{
+  "key": "ss_anne_1f_room_1",
+  "index": 54,
+  "name": "S S Anne",
+  "matrix": 18,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 1, "to": "ss_anne_1f_corridor", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "gentleman", "looks": "gentleman", "movement": "wander_west_and_east", "x": 2, "z": 5, "facing": 2, "rangeX": 2, "rangeZ": 1, "script": "SSAnne_1F_Room1_EventScript_Gentleman" }
+  ],
+  "signs": [],
+  "triggers": []
+}
