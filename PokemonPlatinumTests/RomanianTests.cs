@@ -61,6 +61,85 @@ public class RomanianTests
     private static HashSet<string> Holes(JsonElement entry) =>
         Strings(entry).SelectMany(s => Regex.Matches(s, @"\{[A-Za-z0-9]+\}").Select(m => m.Value)).ToHashSet();
 
+    /// <summary>Every trainer of every region's files as (class, name), Master Trainers' classes left out (they name their species).</summary>
+    private static List<(string Class, string Name)> EveryTrainer()
+    {
+        string data = Path.Combine(Repository.Root, "PokemonPlatinumEngine", "Data");
+        var files = new List<string> { Path.Combine(data, "trainers.json"), Path.Combine(data, "our-trainers.json") };
+        files.AddRange(Directory.GetFiles(Path.Combine(data, "world"), "trainers.json", SearchOption.AllDirectories));
+        var all = new List<(string, string)>();
+        foreach (string file in files.Where(File.Exists))
+            using (var document = JsonDocument.Parse(File.ReadAllText(file)))
+                foreach (var t in document.RootElement.EnumerateArray())
+                    if (t.TryGetProperty("class", out var c) && c.GetString() is { Length: > 0 } cls)
+                        all.Add((cls, t.TryGetProperty("name", out var n) ? n.GetString() ?? "" : ""));
+        return all;
+    }
+
+    [Fact]
+    public void EveryTrainerClassOfEveryRegionHasANameInEnglishAndRomanian()
+    {
+        // Plan 17 · N6d: Kanto's and Johto's classes came out as the data wrote them ("Swimmer M", "Bird Keeper Gs").
+        // The failures are listed as the lines to add to both tables, so a session that brings a class adds them at once.
+        var english = Entries("en");
+        var romanian = Entries(Romanian);
+        var missing = EveryTrainer().Select(t => t.Class).Distinct().OrderBy(c => c, StringComparer.Ordinal)
+            .Where(c => !c.EndsWith(" Master", StringComparison.Ordinal))
+            .Select(c => (Class: c, Key: "classes." + PokemonPlatinumEngine.Models.Trainer.KeyOf(c)))
+            .Where(c => !english.ContainsKey(c.Key) || !romanian.ContainsKey(c.Key))
+            .Select(c => $"\"{c.Key["classes.".Length..]}\"   (class \"{c.Class}\"; en: {english.ContainsKey(c.Key)}, ro: {romanian.ContainsKey(c.Key)})")
+            .ToList();
+        Assert.True(missing.Count == 0, "Classes with no `classes.*` key in en/ui.json and ro/ui.json:\n" + string.Join("\n", missing));
+    }
+
+    [Fact]
+    public void ARomanianClassAgreesWithTheEnglishOneItTranslatesAndNoClassIsStillRaw()
+    {
+        try
+        {
+            Text.Use(Romanian);
+            Assert.Equal("Înotător", PokemonPlatinumEngine.Models.Trainer.ClassName("Swimmer M"));
+            Assert.Equal("Tocilar", PokemonPlatinumEngine.Models.Trainer.ClassName("Super Nerd"));
+            Assert.Equal("Călugăr", PokemonPlatinumEngine.Models.Trainer.ClassName("Sage"));
+            Text.Use(Text.English);
+            Assert.Equal("Swimmer", PokemonPlatinumEngine.Models.Trainer.ClassName("Swimmer M"));
+            Assert.Equal("Bird Keeper", PokemonPlatinumEngine.Models.Trainer.ClassName("Bird Keeper Gs"));
+            Assert.Equal("Rocket", PokemonPlatinumEngine.Models.Trainer.ClassName("Team Rocket"));
+        }
+        finally { Text.Use(Text.English); }
+    }
+
+    [Fact]
+    public void ABattleTitleOfTheWidestClassAndNameFitsTheMessageBoxInBothLanguages()
+    {
+        var trainers = EveryTrainer();
+        string widestName = trainers.Select(t => t.Name).Distinct().OrderByDescending(n => n.Length).First();
+        var classes = trainers.Select(t => t.Class).Where(c => !c.EndsWith(" Master", StringComparison.Ordinal)).Distinct().ToList();
+        var keys = Text.EnglishKeys.Where(k => k.StartsWith("battle.", StringComparison.Ordinal))
+            .Where(k => Text.Of(k, ("n", 1L)).Contains("{trainer}")).OrderBy(k => k).ToList();
+        Assert.NotEmpty(keys);
+        var tooLong = new List<string>();
+        try
+        {
+            foreach (string tag in new[] { "en", Romanian })
+            {
+                Text.Use(tag);
+                var widest = classes.Select(PokemonPlatinumEngine.Models.Trainer.ClassName).Distinct()
+                    .OrderByDescending(c => TextMetrics.Measure(c, ModernUi.MessageSize, UiWeight.ExtraBold)).Take(3).ToList();
+                foreach (string cls in widest)
+                    foreach (string key in keys)
+                    {
+                        string line = Text.Of(key, ("n", 1L)).Replace("{trainer}", cls + " " + widestName);
+                        line = Regex.Replace(line, @"\{[A-Za-z0-9]+\}", "Kangaskhan");
+                        if (TextMetrics.Wrap(line, ModernUi.MessageBoxWidth - ModernUi.MessageMargin, ModernUi.MessageSize, UiWeight.ExtraBold).Count > 2)
+                            tooLong.Add($"{tag} {key}: {line}");
+                    }
+            }
+        }
+        finally { Text.Use(Text.English); }
+        Assert.True(tooLong.Count == 0, "Titles that run past the box's two lines:\n" + string.Join("\n", tooLong));
+    }
+
     [Fact]
     public void RomanianIsOfferedAndCallsItselfByItsOwnName()
     {
