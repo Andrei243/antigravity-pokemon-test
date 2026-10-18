@@ -709,6 +709,104 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_volt_switch` | — | Volt Switch: a crackling zap, a thud, then a falling zip back. |
 | `use_struggle_bug` | — | Struggle Bug: a scuttling patter of tiny feet, a thud and a buzzing scatter. |
 | `use_bulldoze` | — | Bulldoze: a long grinding rumble, a vast thud and a rattle of rocks. |
+| `use_frost_breath` | — | Frost Breath: a cold hissing breath, a rising glassy tone, a thud and a high bell with a crackle of frost. |
+| `use_dragon_tail` | — | Dragon Tail: a whooshing lash, a rising growl, a heavy thud and a falling groan. |
+| `use_work_up` | — | Work Up: a rising hum, four quick notes, two heavy beats and a bright bell. |
+| `use_electroweb` | — | Electroweb: a spreading crackle, a wavering whine, a thud and three falling pings. |
+| `use_wild_charge` | — | Wild Charge: a rising crackling roar, a heavy thud with a burst of sparks and a falling zip. |
+| `use_drill_run` | — | Drill Run: a rising whirring whine with grinding, a thud and a rattle of rock. |
+| `use_dual_chop` | — | Dual Chop: two sharp cuts each with a thud and a ringing bell. |
+| `use_heart_stamp` | — | Heart Stamp: a falling note, a heavy thud, a sweet bell and three rising notes. |
+| `use_horn_leech` | — | Horn Leech: a sharp rush, a thud, a rising hum with a rustle and four warm notes. |
+| `use_sacred_sword` | — | Sacred Sword: a holy rising tone, two bright cuts, a thud and a ringing bell. |
+| `use_razor_shell` | — | Razor Shell: two sharp swishes, a thud, a wash of water with bubbles and a high bell. |
+| `use_heat_crash` | — | Heat Crash: a falling roar, a vast crashing thud and a long crackling blaze. |
+| `use_leaf_tornado` | — | Leaf Tornado: a whirling rush of leaves, a thud, a rustling shower and three falling notes. |
+| `use_steamroller` | — | Steamroller: a rumbling roll with six beats, a vast thud and three falling notes. |
+| `use_cotton_guard` | — | Cotton Guard: a soft billowing hush, a gentle rising tune and a small bell. |
+| `use_night_daze` | — | Night Daze: a low falling drone, three deep beats, a dark swell and a falling tune. |
+| `use_psystrike` | — | Psystrike: a rising whine, a thud, a crackle of breaking crystal and a ringing bell. |
+| `use_tail_slap` | — | Tail Slap: four quick slaps each with a thud and three bright notes. |
+| `use_hurricane` | — | Hurricane: a long howling gale with a rising tone, a thud, a rushing hiss and four notes. |
+| `use_head_charge` | — | Head Charge: a rushing charge, a vast thud, a low ring and a rebounding thump. |
+| `use_gear_grind` | — | Gear Grind: a whirring grind, a thud and shower of sparks, a second thud and a ringing bell. |
+| `use_searing_shot` | — | Searing Shot: six quick whooshes of fire, a thud and a long crackling sizzle. |
+| `use_techno_blast` | — | Techno Blast: a quick digital run of notes, a rising zip, a thud and a falling run. |
+| `use_relic_song` | — | Relic Song: a slow old tune over a low drone, a bell and three falling notes. |
+| `use_secret_sword` | — | Secret Sword: a rising tone, a bright long cut, a thud, a ringing bell and three notes. |
+| `use_glaciate` | — | Glaciate: a long icy wind, a thud, a crackle of frost and a run of high chimes. |
+| `use_bolt_strike` | — | Bolt Strike: a rising zap, a vast thunderous thud, a long crackle and a low rolling rumble. |
+| `use_blue_flare` | — | Blue Flare: a rising roar of flame, a vast boom, a rushing blaze and a ringing bell. |
+| `use_fiery_dance` | — | Fiery Dance: a dancing run of notes with a roar of flame, a thud, crackling and three high notes. |
+| `use_freeze_shock` | — | Freeze Shock: a falling glassy tone, a vast crack of ice with a storm of sparks and a bell. |
+| `use_ice_burn` | — | Ice Burn: a rising cold roar of flame, a thud, crackling and a glassy ringing bell. |
+| `use_snarl` | — | Snarl: a growling snarl, a thud and three falling notes. |
+| `use_icicle_crash` | — | Icicle Crash: three falling shatters each with a thud and a bell, then a last crash. |
+| `use_v_create` | — | V-create: a rising blazing roar, a vast boom, a crackling blaze and a long falling tone. |
+| `use_fusion_flare` | — | Fusion Flare: a falling roar of flame, a vast boom, a long blaze and a low bell. |
+| `use_fusion_bolt` | — | Fusion Bolt: a rising electric whine, a vast thud with a burst of sparks and a ringing bell. |
+| `use_flying_press` | — | Flying Press: a rushing fall, a vast thud, a rush of air and three bright notes. |
+| `use_mat_block` | — | Mat Block: a slap of a mat, two thuds, a low bell and three soft notes. |
+| `use_belch` | — | Belch: a deep rumbling burp, gurgling bubbles, a thud and a sour hiss. |
+| `use_rototiller` | — | Rototiller: a chugging engine with six digging beats and a bright rising tune. |
+| `use_sticky_web` | — | Sticky Web: a stringy hiss, a thin wavering tone, a soft thud and four tiny chimes. |
+| `use_fell_stinger` | — | Fell Stinger: two thin stabs with thuds, a heavy thud and three sharp notes. |
+| `use_phantom_force` | — | Phantom Force: a hollow falling hum, a dark thud, a hiss and a groaning tail. |
+| `use_trick_or_treat` | — | Trick-or-Treat: a spooky little tune, a wobbling hum, a bell and three sharp notes. |
+| `use_noble_roar` | — | Noble Roar: a great regal roar, a thud and four rising notes. |
+| `use_ion_deluge` | — | Ion Deluge: a long crackling hum under a charged hiss and four falling pings. |
+| `use_parabolic_charge` | — | Parabolic Charge: a crackling zap, a thud, a rising swell and three bright notes. |
+| `use_forest_s_curse` | — | Forest's Curse: a rustle, a low wavering drone, four falling notes and a dark bell. |
+| `use_petal_blizzard` | — | Petal Blizzard: a long rushing gale, a rising tune, a soft thud and a patter of petals. |
+| `use_freeze_dry` | — | Freeze-Dry: a thin icy tone, a hiss, a thud and a crackle of fine frost. |
+| `use_disarming_voice` | — | Disarming Voice: a sweet sung tune in two voices over a bell and three high chimes. |
+| `use_parting_shot` | — | Parting Shot: a growl, a thud, three falling notes and a rushing zip away. |
+| `use_topsy_turvy` | — | Topsy-Turvy: a falling tone crossing a rising one, a run of notes and a bell. |
+| `use_draining_kiss` | — | Draining Kiss: three sweet notes, a bell, a small smack and a rising tone with chimes. |
+| `use_crafty_shield` | — | Crafty Shield: a quick run of six glassy notes, a rising hum and a bell. |
+| `use_flower_shield` | — | Flower Shield: a rising run of five soft notes, a warm hum and a bell. |
+| `use_grassy_terrain` | — | Grassy Terrain: a long rustle, a warm hum, four rising notes and a bell. |
+| `use_misty_terrain` | — | Misty Terrain: a soft breath of mist, a wavering hum and five shimmering notes. |
+| `use_electrify` | — | Electrify: a rising crackling zap, a thud, a long crackle and a buzz. |
+| `use_play_rough` | — | Play Rough: a scuffling rush, five quick thumps with a tune, a last thud and a bell. |
+| `use_fairy_wind` | — | Fairy Wind: a light breeze, a run of six sparkling notes, a soft thud and a chime. |
+| `use_moonblast` | — | Moonblast: a rising glow, four bright notes, a vast thud with a bell and a falling tone. |
+| `use_boomburst` | — | Boomburst: a rising growl, a colossal boom, four rolling thuds and a crackle. |
+| `use_fairy_lock` | — | Fairy Lock: three bright notes, a clank, a ringing bell and five links of chain. |
+| `use_king_s_shield` | — | King's Shield: a rush, a ringing clang of steel, a long bell and three firm notes. |
+| `use_play_nice` | — | Play Nice: a friendly three-note tune, two soft claps, a bell and three notes. |
+| `use_confide` | — | Confide: a whispering hiss, three soft notes, a bell and three falling notes. |
+| `use_diamond_storm` | — | Diamond Storm: a rush of glittering grit, a thud, a shower of high chimes and a bell. |
+| `use_steam_eruption` | — | Steam Eruption: a rising rumble, a vast thud, a long jet of steam and bubbling. |
+| `use_hyperspace_hole` | — | Hyperspace Hole: a rising hum, four stepping notes, a thud, a crackle, a bell and a falling tone. |
+| `use_water_shuriken` | — | Water Shuriken: three quick throws each with a thud and a splash, bubbles and a bell. |
+| `use_mystical_fire` | — | Mystical Fire: a rising flicker of flame, a thud, crackling and four falling notes. |
+| `use_spiky_shield` | — | Spiky Shield: six quick spikes, a rising tone, a thud, a ringing bell and three notes. |
+| `use_aromatic_mist` | — | Aromatic Mist: a soft breath of mist, five gentle rising notes, a bell and a warm tone. |
+| `use_eerie_impulse` | — | Eerie Impulse: a wavering hum, four pulsing notes, a crackle and a falling groan. |
+| `use_venom_drench` | — | Venom Drench: a hiss, the smash of a flask, a thick splash, bubbling and a sour drone. |
+| `use_powder` | — | Powder: a hissing puff of dust, four soft notes, a faint crackle and a tone. |
+| `use_geomancy` | — | Geomancy: a deep rising hum, six climbing notes, a shimmering hiss and a bell. |
+| `use_magnetic_flux` | — | Magnetic Flux: two humming tones drawing together, a crackle, four notes and a bell. |
+| `use_happy_hour` | — | Happy Hour: a shower of nine coin-bells over a jaunty run of notes. |
+| `use_electric_terrain` | — | Electric Terrain: a long buzzing hum, a spreading crackle and four high pings. |
+| `use_dazzling_gleam` | — | Dazzling Gleam: a rising glittering tone, a thud, a great bell and four high chimes. |
+| `use_celebrate` | — | Celebrate: a pop, a burst of streamers, a bouncing tune and two bells. |
+| `use_hold_hands` | — | Hold Hands: a warm four-note tune over a soft hum, a bell and three notes. |
+| `use_baby_doll_eyes` | — | Baby-Doll Eyes: a quick run of four twinkling notes, two bells and three falling notes. |
+| `use_nuzzle` | — | Nuzzle: a small crackle, a soft thud, a longer crackle and three tingling notes. |
+| `use_hold_back` | — | Hold Back: a soft rustle, a gentle tap, two notes and a small bell. |
+| `use_infestation` | — | Infestation: a skittering scatter of tiny feet, a thud, a buzzing drone and three notes. |
+| `use_power_up_punch` | — | Power-Up Punch: a rising growl, a whoosh, a heavy thud and four rising notes with a bell. |
+| `use_oblivion_wing` | — | Oblivion Wing: a flapping rush, a growl, a thud and a long rising draining tone. |
+| `use_thousand_arrows` | — | Thousand Arrows: nine quick arrows each with a thud, then one great thud and a crackle. |
+| `use_thousand_waves` | — | Thousand Waves: five rolling waves of earth, a deep thud and a rattle. |
+| `use_land_s_wrath` | — | Land's Wrath: a deep grinding rumble, a vast thud, a long crumbling crackle and a low bell. |
+| `use_light_of_ruin` | — | Light of Ruin: five rising bright notes, a vast thud, a great bell and a falling tone. |
+| `use_origin_pulse` | — | Origin Pulse: a rising hum, three beams hissing in, a vast thud, bubbling and a bell. |
+| `use_precipice_blades` | — | Precipice Blades: a rising growl, four heavy thrusts, a vast thud and a crackling fall of rock. |
+| `use_dragon_ascent` | — | Dragon Ascent: a climbing rush, a vast thud, a falling tone and a ringing bell. |
+| `use_hyperspace_fury` | — | Hyperspace Fury: a rising hum, four quick pounding blows, a vast thud, a crackle and a bell. |
 
 ## Cries
 

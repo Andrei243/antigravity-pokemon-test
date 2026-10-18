@@ -547,7 +547,71 @@ public class MovePresentationTests
     {
         int own = MoveDatabase.GetAll().Count(m => m.Id > 467 && MoveFx.BatchOf(m.Name) != null && SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name)));
         output.WriteLine($"{own} of the later games' moves have a look and a sound of their own");
-        Assert.True(own >= 56, $"only {own}");
+        Assert.True(own >= 154, $"only {own}");
+    }
+
+    /// <summary>Y11b's moves: the other 36 of Generation 5, from Frost Breath (524) to Fusion Bolt (559).</summary>
+    private static IEnumerable<MoveData> EleventhBatchSecondPart => MoveDatabase.GetAll().Where(m => m.Id is >= 524 and <= 559);
+
+    /// <summary>Y12's moves: Generation 6's, from Flying Press (560) to Hyperspace Fury (621).</summary>
+    private static IEnumerable<MoveData> TwelfthBatch => MoveDatabase.GetAll().Where(m => m.Id is >= 560 and <= 621);
+
+    [Fact]
+    public void TheEleventhBatchsSecondPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        var part = EleventhBatchSecondPart.ToList();
+        output.WriteLine($"{part.Count} moves in Y11b: {string.Join(", ", part.Select(m => m.Name))}");
+        Assert.Equal(36, part.Count);
+        Assert.All(part, move => Assert.Equal("Y11b", MoveFx.BatchOf(move.Name)));
+        Assert.All(part, move => Assert.True(SoundBank.Exists("use_" + SoundBank.MoveKey(move.Name)), move.Name));
+        Assert.All(part, move => Assert.Equal("use_" + SoundBank.MoveKey(move.Name), SoundBank.MoveSound(move.Name, move.Type)));
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y11b"), b => Assert.Contains(part, m => m.Name.Equals(b.Key, StringComparison.OrdinalIgnoreCase)));
+    }
+
+    [Fact]
+    public void TheTwelfthBatchAllHaveALookAndASoundOfTheirOwn()
+    {
+        var batch = TwelfthBatch.ToList();
+        output.WriteLine($"{batch.Count} moves in Y12: {string.Join(", ", batch.Select(m => m.Name))}");
+        Assert.Equal(62, batch.Count);
+        Assert.All(batch, move => Assert.Equal("Y12", MoveFx.BatchOf(move.Name)));
+        Assert.All(batch, move => Assert.True(SoundBank.Exists("use_" + SoundBank.MoveKey(move.Name)), move.Name));
+        Assert.All(batch, move => Assert.Equal("use_" + SoundBank.MoveKey(move.Name), SoundBank.MoveSound(move.Name, move.Type)));
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y12"), b => Assert.Contains(batch, m => m.Name.Equals(b.Key, StringComparison.OrdinalIgnoreCase)));
+    }
+
+    [Fact]
+    public void TheTwelfthAndTheEleventhBatchsMovesThatAreAlikeInKindLookDifferentHere()
+    {
+        foreach (var (a, b) in new[]
+        {
+            // Y11b
+            ("Fusion Flare", "Fusion Bolt"), ("Blue Flare", "Ice Burn"), ("Sacred Sword", "Secret Sword"), ("Dual Chop", "Dragon Tail"), ("Frost Breath", "Glaciate"),
+            ("Bolt Strike", "Fusion Bolt"), ("Freeze Shock", "Ice Burn"), ("Icicle Crash", "Glaciate"), ("Wild Charge", "Head Charge"), ("Drill Run", "Steamroller"),
+            ("Gear Grind", "Dual Chop"), ("Hurricane", "Leaf Tornado"), ("Night Daze", "Snarl"), ("Psystrike", "Psyshock"), ("Searing Shot", "Fiery Dance"),
+            ("Razor Shell", "Sacred Sword"), ("Heat Crash", "Heart Stamp"), ("Techno Blast", "Frost Breath"),
+            // Y12
+            ("Thousand Arrows", "Thousand Waves"), ("Thousand Arrows", "Precipice Blades"), ("Land's Wrath", "Precipice Blades"), ("Grassy Terrain", "Misty Terrain"),
+            ("Misty Terrain", "Electric Terrain"), ("Electric Terrain", "Ion Deluge"), ("Play Nice", "Hold Hands"), ("Play Nice", "Confide"), ("Baby-Doll Eyes", "Confide"),
+            ("Crafty Shield", "King's Shield"), ("King's Shield", "Spiky Shield"), ("Mat Block", "Crafty Shield"), ("Fairy Wind", "Disarming Voice"),
+            ("Moonblast", "Dazzling Gleam"), ("Light of Ruin", "Moonblast"), ("Draining Kiss", "Oblivion Wing"), ("Parabolic Charge", "Electrify"),
+            ("Boomburst", "Noble Roar"), ("Parting Shot", "Snarl"), ("Venom Drench", "Belch"), ("Powder", "Aromatic Mist"), ("Flower Shield", "Aromatic Mist"),
+            ("Celebrate", "Happy Hour"), ("Power-Up Punch", "Hold Back"), ("Fell Stinger", "Infestation"), ("Hyperspace Hole", "Hyperspace Fury"),
+            ("Origin Pulse", "Steam Eruption"), ("Diamond Storm", "Petal Blizzard"), ("Mystical Fire", "Blue Flare"), ("Water Shuriken", "Origin Pulse")
+        })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
     }
 
     [Fact]

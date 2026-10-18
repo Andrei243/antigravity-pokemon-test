@@ -59,7 +59,8 @@ partial class Harness
         {
             foreach (string moveName in named)
             {
-                var move = MoveDatabase.Get(moveName);
+                // A number names a move by its id (`moves 571 588`), for the names with an apostrophe a shell trips on
+                var move = int.TryParse(moveName, out int id) ? MoveDatabase.GetAll().FirstOrDefault(m => m.Id == id) : MoveDatabase.Get(moveName);
                 if (move == null)
                 {
                     Console.WriteLine($"!! no move called {moveName}");

@@ -366,7 +366,7 @@ internal static partial class MoveFx
         float after = Fx.Envelope(c.Age, 0.65f, 0.75f, 0.9f, 1.1f);
         if (after > 0f)
         {
-            fx.Flat(FxShape.Ring, c.FromFeet + Vector3.UnitY * c.FromSize * 0.5f, Vector3.UnitY, c.FromSize * 0.7f, Fx.Fade(Rgb(180, 220, 255), after), depth: true);
+            fx.Flat(FxShape.Ring, c.FromFeet + Vector3.UnitY * c.FromSize * 0.5f, Vector3.UnitY, c.FromSize * 1.0f, Fx.Fade(Rgb(180, 220, 255), after), depth: true);
             Fx.Glint(fx, c.Age, c.From, c.FromSize, 0.66f, White, 0.45f);
         }
     }
@@ -383,9 +383,9 @@ internal static partial class MoveFx
                 float rise = Fx.EaseOut(Math.Clamp(c.Age / 0.16f, 0f, 1f));
                 var home = c.From + new Vector3((i - 1) * h * 0.6f, h * (0.2f + 0.5f * rise), -0.1f);
                 var p = Vector3.Lerp(home, c.Aim + new Vector3((i - 1) * c.ToSize * 0.3f, 0f, 0f), k * k);
-                fx.Sprite(FxShape.Glow, p, h * 1.0f, Fx.Fade(Rgb(120, 130, 220), fade * 0.5f), FxBlend.Alpha);
-                fx.Sprite(FxShape.Wisp, p, h * 0.95f, Fx.Fade(Rgb(236, 240, 255), fade), FxBlend.Alpha);
-                fx.Sprite(FxShape.Eye, p + new Vector3(0f, h * 0.1f, 0.1f), h * 0.2f, Fx.Fade(Rgb(80, 70, 160), fade), FxBlend.Alpha);
+                fx.Sprite(FxShape.Glow, p, h * 0.6f, Fx.Fade(Rgb(120, 130, 220), fade * 0.5f), FxBlend.Alpha);
+                fx.Sprite(FxShape.Wisp, p, h * 0.55f, Fx.Fade(Rgb(236, 240, 255), fade), FxBlend.Alpha);
+                fx.Sprite(FxShape.Eye, p + new Vector3(0f, h * 0.1f, 0.1f), h * 0.13f, Fx.Fade(Rgb(80, 70, 160), fade), FxBlend.Alpha);
                 fx.Streak(FxShape.Streak, p, c.Aim - c.From, h * 0.07f, 5f * k + 1f, Fx.Fade(White, fade * 0.7f * k));
             }
         SpeedLines(c, fx, 0.1f, I, 4, 0.4f);
@@ -457,8 +457,8 @@ internal static partial class MoveFx
     {
         float h = c.ToSize;
         L1Column(c, fx, Rgb(80, 160, 255), Rgb(214, 240, 255), col.Light, 0.1f, 0.34f);
-        L1Spiral(fx, c.Age, c.Seed, c.ToFeet, h, 0.14f, 0.95f, 8, FxShape.Bubble, White, col.Light, 0.16f, 0.45f, 1.9f);
-        if (c.Cue.Landed) Splash(c, fx, c.ToFeet + Vector3.UnitY * h * 1.6f, h, I + 0.1f, col.Main, col.Light, 9, 4);
+        L1Spiral(fx, c.Age, c.Seed, c.ToFeet, h, 0.14f, 0.95f, 8, FxShape.Bubble, White, col.Light, 0.16f, 0.45f, 1.25f);
+        if (c.Cue.Landed) Splash(c, fx, c.ToFeet + Vector3.UnitY * h * 1.1f, h, I + 0.1f, col.Main, col.Light, 9, 4);
         Impact(c, col, fx, 0.85f);
     }
 
@@ -471,7 +471,7 @@ internal static partial class MoveFx
         for (int i = 0; i < 8 && embers > 0f; i++)
         {
             float u = (c.Age * 1.1f + i / 8f) % 1f;
-            fx.Sprite(FxShape.Ember, c.ToFeet + new Vector3(Fx.Signed(c.Seed, i, 480) * h * 0.7f, h * (1.9f - 1.8f * u), 0.1f), h * 0.1f, Fx.Fade(col.Light, embers * MathF.Sin(u * MathF.PI)));
+            fx.Sprite(FxShape.Ember, c.ToFeet + new Vector3(Fx.Signed(c.Seed, i, 480) * h * 0.7f, h * (1.25f - 1.15f * u), 0.1f), h * 0.1f, Fx.Fade(col.Light, embers * MathF.Sin(u * MathF.PI)));
         }
         if (c.Cue.Landed) Fx.Burst(fx, c.Seed, c.Age, c.To, h, I, 0.6f, 9, FxShape.Flame, col.Main, col.Dark, 0.16f, 0.9f, -0.8f, salt: 256);
         Impact(c, col, fx, 0.85f);
@@ -492,7 +492,7 @@ internal static partial class MoveFx
                 for (int j = 0; j < n; j++)
                 {
                     float t = grow * j / (n - 1);
-                    pts[j] = c.ToFeet + new Vector3(root + MathF.Sin(t * 7f + i) * h * 0.22f * t, h * 1.7f * t, 0.1f + 0.05f * i);
+                    pts[j] = c.ToFeet + new Vector3(root + MathF.Sin(t * 7f + i) * h * 0.22f * t, h * 1.15f * t, 0.1f + 0.05f * i);
                 }
                 fx.Ribbon(pts, h * 0.12f, Fx.Fade(col.Dark, env), FxBlend.Alpha);
                 fx.Ribbon(pts, h * 0.05f, Fx.Fade(col.Main, env));
