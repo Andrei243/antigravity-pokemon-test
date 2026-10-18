@@ -66,11 +66,37 @@ public sealed partial class BattleCore
     private void ShapedByAbility(MoveUse use)
     {
         var user = use.User;
+        string? ability = user.Ability?.Name;
+        if (use.Move.Data == StruggleData)
+        {
+            user.Turn.AteBoosted = user.Turn.SheerForced = user.Turn.ParentalChild = false;
+            return;
+        }
+        var shaped = ShapedBy(user, use.Move.Data);
+        if (shaped != use.Move.Data) use.Move = new Move(shaped, use.Move.CurrentPP);
+        if (ability == null) return;
+
+        // Protean and Libero: before the move, its user becomes its type (once a stay, from generation 9)
+        if (ability is "Protean" or "Libero" && !user.Volatile.ProteanUsed && user.Pokemon!.Terastallized == null)
+        {
+            var type = use.Move.Type;
+            if (user.Types.Count == 1 && user.Types[0] == type) return;
+            user.Volatile.ProteanUsed = true;
+            user.Volatile.Types = new List<PokemonType> { type };
+            Say(Text.Of("battle.transformedIntoTheType", ("user", user.Name), ("pick", type)));
+        }
+    }
+
+    /// <summary>
+    /// The move as the user's ability makes it, its marks for the formula set on the user's turn (a -ate ability's fifth,
+    /// Sheer Force's power): what <see cref="ShapedByAbility"/> hands the course, and what the oracle hands the formula
+    /// (plan 06 · R27b), so both see the same move.
+    /// </summary>
+    internal static MoveData ShapedBy(Battler user, MoveData data)
+    {
         user.Turn.AteBoosted = user.Turn.SheerForced = user.Turn.ParentalChild = false;
         string? ability = user.Ability?.Name;
-        if (ability == null || use.Move.Data == StruggleData) return;
-        var data = use.Move.Data;
-
+        if (ability == null) return data;
         PokemonType? ate = ability switch
         {
             "Aerilate" => PokemonType.Flying,
@@ -82,28 +108,17 @@ public sealed partial class BattleCore
         };
         if (ate is { } to && data.Type == PokemonType.Normal && !TypedByItsOwnRule(data) && data.Kind == MoveKind.Standard)
         {
-            use.Move = new Move(data.OfType(to), use.Move.CurrentPP);
             user.Turn.AteBoosted = true;
+            return data.OfType(to);
         }
-        else if (ability == "Liquid Voice" && (data.Flags & MoveFlags.Sound) != 0 && data.Type != PokemonType.Water)
-            use.Move = new Move(data.OfType(PokemonType.Water), use.Move.CurrentPP);
-        else if (ability == "Long Reach" && data.MakesContact)
-            use.Move = new Move(data.CopyWith(d => d.Flags &= ~MoveFlags.Contact), use.Move.CurrentPP);
-        else if (ability == "Sheer Force" && DamageCalculator.HasSecondaries(data))
+        if (ability == "Liquid Voice" && (data.Flags & MoveFlags.Sound) != 0 && data.Type != PokemonType.Water) return data.OfType(PokemonType.Water);
+        if (ability == "Long Reach" && data.MakesContact) return data.CopyWith(d => d.Flags &= ~MoveFlags.Contact);
+        if (ability == "Sheer Force" && DamageCalculator.HasSecondaries(data))
         {
-            use.Move = new Move(data.CopyWith(WithoutSecondaries), use.Move.CurrentPP);
             user.Turn.SheerForced = true;
+            return data.CopyWith(WithoutSecondaries);
         }
-
-        // Protean and Libero: before the move, its user becomes its type (once a stay, from generation 9)
-        if (ability is "Protean" or "Libero" && !user.Volatile.ProteanUsed && user.Pokemon!.Terastallized == null)
-        {
-            var type = use.Move.Type;
-            if (user.Types.Count == 1 && user.Types[0] == type) return;
-            user.Volatile.ProteanUsed = true;
-            user.Volatile.Types = new List<PokemonType> { type };
-            Say(Text.Of("battle.transformedIntoTheType", ("user", user.Name), ("pick", type)));
-        }
+        return data;
     }
 
     /// <summary>The moves whose type is their own rule's, which a -ate ability leaves alone (Showdown's <c>noModifyType</c>).</summary>
@@ -118,7 +133,8 @@ public sealed partial class BattleCore
         d.StatusChancePercent = 0;
         d.FlinchChancePercent = 0;
         d.ConfuseChancePercent = 0;
-        if (d.TargetStatChange != null && (!d.StatChangeTargetSelf || d.StatChangeChancePercent < 100))
+        d.EffectChance = 0;
+        if (d.TargetStatChange != null && (!d.StatChangeTargetSelf || d.StatChangeChancePercent < 100 || d.StatStageAmount > 0))
         {
             d.TargetStatChange = null;
             d.StatChangeChancePercent = 0;
@@ -170,6 +186,8 @@ public sealed partial class BattleCore
         }
         bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility) || DamageCalculator.IgnoresAbilities(move.Data);
         if (breaks) return false;
+        // Aroma Veil over the target's side (plan 06 · R27b)
+        if (AromaVeils(use, target, hit)) return true;
         if (foe && move.Priority + AbilityPriority(user, use.Own == null ? move : new Move(use.Own)) > 0 && move.Data.Target is not (MoveTarget.FoeSide or MoveTarget.Field or MoveTarget.AllPokemon)
             && SlotsOf(target.Side).FirstOrDefault(b => b.IsActive && b.Ability?.Name is "Dazzling" or "Queenly Majesty" or "Armor Tail") is { } guard)
         {
@@ -238,7 +256,8 @@ public sealed partial class BattleCore
     /// </summary>
     private bool MirrorsTheDrop(Battler target, Battler source, StatType stat, int amount, bool announceFailure, By how)
     {
-        if (!Has(target, "Mirror Armor") || !source.IsActive || Has(source, "Mirror Armor")) return false;
+        // (Not a stage already at its lowest: plan 06 · R27b's audit, Showdown's mirrorarmor onTryBoost)
+        if (!Has(target, "Mirror Armor") || !source.IsActive || Has(source, "Mirror Armor") || target.Pokemon!.StatStages.GetValueOrDefault(stat) <= -6) return false;
         Say(Text.Of("battle.mirrorArmor", ("pokemon", target.Name), ("ability", AbilityOf(target))));
         ChangeStat(source, stat, amount, target, announceFailure, how);
         return true;
@@ -274,7 +293,8 @@ public sealed partial class BattleCore
     internal static float AbilityWeight(Battler b, float kg) => b.Ability?.Name switch
     {
         "Heavy Metal" => kg * 2f,
-        "Light Metal" => Math.Max(0.1f, kg / 2f),
+        // (halved in whole hectograms, as Showdown truncates it: plan 06 · R27b's audit)
+        "Light Metal" => Math.Max(1, (int)Math.Round(kg * 10f) / 2) / 10f,
         _ => kg
     };
 

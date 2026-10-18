@@ -206,6 +206,7 @@ public sealed partial class BattleCore
             b.Ability?.Effect?.AtEndOfTurn(this, b);
             if (b.IsActive) ItemEffectOf(b)?.OnConditionChanged(this, b, null);
             if (b.IsActive) ItemEffectOf(b)?.AtEndOfTurn(this, b);
+            Digest(turnEnd: true);
 
             // Leech Seed: an eighth of its HP goes to whoever stands where the seeder stood
             if (b.IsActive && v.SeededBy is { } to && At(to).IsActive && !guarded)

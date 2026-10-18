@@ -141,6 +141,9 @@ internal sealed class Paradox(bool sun) : BattleEffect
         if (LaterAbilities.ParadoxStat(self) is { } stat)
             ctx.Announce(Text.Of(sun ? "battle.protosynthesis" : "battle.quarkDrive", ("pokemon", self.Name), ("ability", ctx.AbilityOf(self)), ("stat", BattleText.StatName(stat))));
     }
+
+    /// <summary>The terrain came or went: the stat is fixed as it takes hold, or let go (plan 06 · R27b).</summary>
+    public override void OnTerrainChange(IBattleContext ctx, Battler self) => LaterAbilities.ParadoxStat(self);
 }
 
 /// <summary>Intrepid Sword, Dauntless Shield, Supersweet Syrup: once a battle, as the holder first comes in (Showdown's generation 9 <c>swordBoost</c>, <c>shieldBoost</c>, <c>syrupTriggered</c>).</summary>
@@ -342,6 +345,8 @@ internal sealed class Poisoner(bool chain) : BattleEffect
         foreach (var (target, damage) in hits)
         {
             if (damage <= 0 || !target.IsActive || target == self || target.Pokemon!.Status != StatusCondition.None) continue;
+            // Shield Dust keeps it off (plan 06 · R27b's audit; Showdown's poisontouch onSourceDamagingHit)
+            if (target.Ability?.Name == "Shield Dust") continue;
             if (ctx.Random.Roll(RollKind.AbilityChance, 100) >= 30) continue;
             ctx.TryInflictStatus(target, chain ? StatusCondition.Toxic : StatusCondition.Poison, self);
         }
@@ -513,7 +518,7 @@ internal sealed class Comatose : BattleEffect
 }
 
 /// <summary>What the later abilities read of moves and stats: Showdown's lists of slicing, wind and healing moves, Beast Boost's stat and the paradox Pokémon's.</summary>
-internal static class LaterAbilities
+internal static partial class LaterAbilities
 {
     /// <summary>Showdown's slicing moves (Sharpness).</summary>
     public static readonly HashSet<string> Slicing = new()
@@ -555,7 +560,11 @@ internal static class LaterAbilities
         return best;
     }
 
-    /// <summary>The stat Protosynthesis or Quark Drive raises now, by its stage, or null while it isn't in force (no sun, no Electric Terrain).</summary>
+    /// <summary>
+    /// The stat Protosynthesis or Quark Drive raises now, or null while it isn't in force (no sun, no Electric Terrain).
+    /// The stat is the best by its stage as the ability takes hold, and stays that one while it holds (Showdown's
+    /// <c>bestStat</c>, worked out in the condition's onStart; plan 06 · R27b's audit: R27 worked it out afresh at every read).
+    /// </summary>
     public static StatType? ParadoxStat(Battler b)
     {
         if (b.Pokemon is not { } p || b.Field is not { } field) return null;
@@ -566,7 +575,17 @@ internal static class LaterAbilities
             "Quark Drive" => field.Has(FieldCondition.ElectricTerrain),
             _ => false
         };
-        if (!on) return null;
+        if (!on)
+        {
+            b.Volatile.ParadoxBest = null;
+            return null;
+        }
+        return b.Volatile.ParadoxBest ??= BestStaged(p);
+    }
+
+    /// <summary>The highest stat by its stage, Attack first among equals (Showdown's <c>getBestStat(false, true)</c>).</summary>
+    private static StatType BestStaged(Pokemon p)
+    {
         var best = StatType.Attack;
         int value = Formulas.Staged(p.Attack, p.StatStages.GetValueOrDefault(StatType.Attack));
         foreach (var (stat, raw) in new[] { (StatType.Defense, p.Defense), (StatType.SpAttack, p.SpAttack), (StatType.SpDefense, p.SpDefense), (StatType.Speed, p.Speed) })

@@ -52,7 +52,11 @@ public sealed partial class BattleCore
             // Mirror Armor turns it back on whoever tried (plan 06 · R27)
             if (!breaks && MirrorsTheDrop(target, source!, stat, amount, announceFailure, how)) return false;
             if (!breaks && GuardDogStands(target, source!, stat, how)) return false;
+            // Flower Veil keeps it off a Grass type of its side (plan 06 · R27b)
+            if (!breaks && FlowerVeiled(target, announceFailure)) return false;
         }
+        // A berry eaten with Ripen raises twice as much (plan 06 · R27b)
+        if (source == target && amount > 0) amount = Ripened(target, amount);
 
         // By the modern rules Simple doubles the change itself; under Platinum's its stages count double where they are read
         if (Rules.SimpleDoublesChanges) foreach (var e in BattleEffects.Of(target)) amount = e.ScaleStatChange(amount);
@@ -77,6 +81,9 @@ public sealed partial class BattleCore
             .With(new StageChanged(target.Place, stat, next, next > current));
         // Defiant and Competitive answer a stage a foe took (plan 06 · R27)
         if (next < current && byAnother) AnswersTheDrop(target, source!);
+        // Rattled answers an Intimidate, and Opportunist copies a foe's rise (plan 06 · R27b)
+        if (next < current) RattledByIntimidate(target, source, stat, how);
+        else Opportunism(target, stat, next - current);
         return true;
     }
 
@@ -135,6 +142,8 @@ public sealed partial class BattleCore
             if (announceFailure) Say(Text.Of("battle.prevents", ("target", target.Name), ("ability", AbilityOf(target)), ("condition", BattleText.StatusName(status))));
             return false;
         }
+        // An ally's veil: Sweet Veil, Pastel Veil, Flower Veil (plan 06 · R27b)
+        if (VeiledFrom(target, status, source, announceFailure)) return false;
 
         if (status == StatusCondition.Sleep && UproarIsOn && !Has(target, "Soundproof"))
         {
@@ -167,7 +176,9 @@ public sealed partial class BattleCore
             Say(Text.Of("battle.changedBackIntoIts", ("target", target.Name))).With(new Reshaped(target.Place));
         CheckConditionHooks(target, source);
         // Poison Puppeteer confuses whoever it poisons (plan 06 · R27)
-        if (byAnother && status is StatusCondition.Poison or StatusCondition.Toxic && Has(source!, "Poison Puppeteer")) Confuse(target, source, false, By.Ability);
+        // (only Pecharunt's, and only by a move: plan 06 · R27b's audit, Showdown's poisonpuppeteer onAnyAfterSetStatus)
+        if (byAnother && status is StatusCondition.Poison or StatusCondition.Toxic && Has(source!, "Poison Puppeteer") && source!.Pokemon!.Species.Name == "Pecharunt"
+            && how is By.Move or By.SideEffect) Confuse(target, source, false, By.Ability);
         return true;
     }
 
@@ -221,7 +232,8 @@ public sealed partial class BattleCore
             return;
         }
         var p = target.Pokemon!;
-        p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + amount);
+        // A berry eaten with Ripen gives twice as much (plan 06 · R27b)
+        p.CurrentHP = Math.Min(p.MaxHP, p.CurrentHP + Ripened(target, amount));
         Say(message).With(new HpChanged(target.Place, p.CurrentHP, Healed: true));
     }
 
@@ -260,6 +272,8 @@ public sealed partial class BattleCore
         if (item.Pocket == ItemPocket.Berries) ateBerry.Add(holder.Pokemon);
         holder.Volatile.ConsumedItem = item;
         holder.Pokemon.HeldItem = null;
+        // Cheek Pouch, Ripen, Cud Chew and Symbiosis answer it (plan 06 · R27b)
+        Ate(holder, item);
     }
 
     public bool AnyoneHas(string ability) => AllBattlers.Any(b => b.IsActive && b.Ability?.Name == ability);
@@ -312,6 +326,8 @@ public sealed partial class BattleCore
         Say(line).With(new WeatherChanged(weather));
         // Snow mends a broken icy face (plan 06 · R19b)
         IceFaceInTheSnow();
+        // The sun wakes Protosynthesis, its stat fixed now (plan 06 · R27b)
+        ParadoxesWake();
         return true;
     }
 }

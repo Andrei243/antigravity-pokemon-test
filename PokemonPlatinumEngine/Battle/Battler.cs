@@ -50,7 +50,10 @@ public sealed class Battler
     public bool IsActive => Pokemon != null && !Pokemon.IsFainted;
 
     /// <summary>How the battle's messages name it: "Turtwig" for the player's, "Foe Starly" for the other side's.</summary>
-    public string Name => Pokemon == null ? "" : IsPlayerSide ? Pokemon.DisplayName : Text.Of("battle.foe", ("pokemon", Pokemon.DisplayName));
+    public string Name => Pokemon == null ? "" : IsPlayerSide ? Shown : Text.Of("battle.foe", ("pokemon", Shown));
+
+    /// <summary>The name it goes by: its own, or under an Illusion the one it looks like (plan 06 · R27b).</summary>
+    private string Shown => Volatile.Illusion ?? Pokemon!.DisplayName;
 
     // ---- Conditions that end when the Pokémon leaves the field
 
@@ -93,7 +96,7 @@ public sealed class Battler
     public bool IsHeldToItsMove => Volatile.Recharging || Volatile.RampageTurns > 0 || Volatile.UproarTurns > 0 || Volatile.Charging || Volatile.RolloutTurns > 0;
 
     /// <summary>The ability in force: none while Gastro Acid has suppressed it.</summary>
-    public Ability? Ability => Volatile.AbilitySuppressed ? null : Pokemon?.Ability;
+    public Ability? Ability => Volatile.AbilitySuppressed || (Field != null && Effects.LaterAbilities.Neutralized(this)) ? null : Pokemon?.Ability;
 
     /// <summary>Clears everything that only lasts while on the field (on switching out or in).</summary>
     internal void ClearVolatile()
@@ -135,6 +138,9 @@ public sealed class Battler
     {
         get
         {
+            // Silvally with RKS System is the type of the memory it holds, and Normal with none (plan 06 · R27b; Showdown's silvally condition)
+            if (Pokemon is { AbilityName: "RKS System" } s && s.Species.Name == "Silvally" && !Volatile.Transformed)
+                return s.HeldItem?.Name is { } memory && memory.EndsWith(" Memory") && System.Enum.TryParse(memory[..^" Memory".Length], out PokemonType kind) ? kind : PokemonType.Normal;
             if (Pokemon is not { AbilityName: "Multitype" } p || p.Species.Name != "Arceus") return null;
             return p.HeldItem?.HoldEffect is { } hold && hold.StartsWith("Arceus") && System.Enum.TryParse(hold["Arceus".Length..], out PokemonType type)
                 ? type : PokemonType.Normal;
@@ -356,6 +362,8 @@ internal sealed class Volatiles
         Lifting = to(Lifting);
         LiftedBy = to(LiftedBy);
         OctolockedBy = to(OctolockedBy);
+        Commanding = to(Commanding);
+        CommandedBy = to(CommandedBy);
     }
 
     // ---- Abilities (plan 06 · R7)
@@ -437,6 +445,24 @@ internal sealed class Volatiles
 
     /// <summary>Protean or Libero has changed its type since it came in (generation 9: once a stay on the field).</summary>
     public bool ProteanUsed;
+
+    // ---- The later abilities, the rest (plan 06 · R27b)
+
+    /// <summary>Illusion: the name of the party member it looks like, which the battle's lines call it by until a hit breaks it; null with none.</summary>
+    public string? Illusion;
+
+    /// <summary>The stat Protosynthesis or Quark Drive raised as it took hold (Showdown's <c>bestStat</c>, fixed then); null while it isn't in force.</summary>
+    public StatType? ParadoxBest;
+
+    /// <summary>Supreme Overlord: how many of its side had fainted as it came in, five at most (Showdown's <c>fallen</c>).</summary>
+    public int Fallen;
+
+    /// <summary>Cud Chew: the berry it ate and will chew again, and the turn ends left until it does (Showdown's <c>counter</c>).</summary>
+    public ItemData? CudChewBerry;
+    public int CudChewTurns;
+
+    /// <summary>Commander: the Tatsugiri is in its Dondozo's mouth (the Dondozo's place), and the Dondozo is commanded by it (the Tatsugiri's place).</summary>
+    public Place? Commanding, CommandedBy;
 
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 

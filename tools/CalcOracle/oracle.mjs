@@ -84,7 +84,9 @@ function mon(m, notes) {
     boosts: { atk: m.boosts[0], def: m.boosts[1], spa: m.boosts[2], spd: m.boosts[3] },
     status: m.status || '',
     // A hit in a battle that has only begun: Slow Start is still at work
-    abilityOn: m.ability === 'Slow Start'
+    abilityOn: m.ability === 'Slow Start',
+    // Protosynthesis and Quark Drive take hold under their sky or terrain, on the best stat by its stage (plan 06 · R27b)
+    boostedStat: m.ability === 'Protosynthesis' || m.ability === 'Quark Drive' ? 'auto' : undefined
   };
   const species = speciesOf(m.species, notes);
   let p = new Pokemon(gen, species, options);

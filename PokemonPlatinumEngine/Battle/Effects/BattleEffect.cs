@@ -345,7 +345,7 @@ public static class BattleEffects
 
     /// <summary>The held item's effect alone: none under an Embargo or with Klutz (the original's <c>Battler_HeldItem</c> says it holds nothing).</summary>
     public static BattleEffect? ItemOf(Battler battler) =>
-        battler.Pokemon == null || ItemsAreOff(battler) ? null : HeldItemEffects.For(battler.Pokemon.HeldItem);
+        battler.Pokemon == null || ItemsAreOff(battler) || (battler.Pokemon.HeldItem?.Pocket == ItemPocket.Berries && LaterAbilities.Unnerved(battler)) ? null : HeldItemEffects.For(battler.Pokemon.HeldItem);
 
     /// <summary>The item in the holder's hands as far as a move can use it: none under an Embargo or with Klutz.</summary>
     public static ItemData? ItemInHand(Battler battler) =>

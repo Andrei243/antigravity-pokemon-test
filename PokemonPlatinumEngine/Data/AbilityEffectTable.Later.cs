@@ -19,7 +19,7 @@ public static partial class AbilityEffectTable
                      "Sheer Force", "Defeatist", "Toxic Boost", "Flare Boost", "Analytic", "Tough Claws", "Strong Jaw", "Mega Launcher", "Sharpness",
                      "Punk Rock", "Steelworker", "Steely Spirit", "Transistor", "Dragon's Maw", "Rocky Payload", "Fire Mane", "Fur Coat", "Grass Pelt",
                      "Ice Scales", "Fluffy", "Multiscale", "Shadow Shield", "Neuroforce", "Friend Guard", "Battery", "Power Spot", "Stakeout",
-                     "Supreme Overlord", "Aura Guard", "Aerilate", "Pixilate", "Refrigerate", "Galvanize", "Dragonize", "Liquid Voice", "Long Reach",
+                     "Aura Guard", "Aerilate", "Pixilate", "Refrigerate", "Galvanize", "Dragonize", "Liquid Voice", "Long Reach",
                      "Infiltrator", "Unseen Fist", "Piercing Drill", "Merciless", "Parental Bond", "Corrosion", "Heavy Metal", "Light Metal",
                      "Victory Star", "Wonder Skin", "Prankster", "Gale Wings", "Triage", "Telepathy", "Dazzling", "Queenly Majesty", "Armor Tail",
                      "Good as Gold", "Magic Bounce", "Protean", "Libero", "Defiant", "Competitive", "Mirror Armor", "Propeller Tail", "Stalwart",
@@ -73,7 +73,7 @@ public static partial class AbilityEffectTable
         Add("Lightning Rod", new AbsorbRaises(m => m.Type == PokemonType.Electric, StatType.SpAttack, 1, PokemonType.Electric));
         Add("Storm Drain", new AbsorbRaises(m => m.Type == PokemonType.Water, StatType.SpAttack, 1, PokemonType.Water));
         Add("Well-Baked Body", new AbsorbRaises(m => m.Type == PokemonType.Fire, StatType.Defense, 2));
-        Add("Wind Rider", new AbsorbRaises(m => LaterAbilities.IsWind(m.Data) && m.Data.Target is not (MoveTarget.User or MoveTarget.UserSide), StatType.Attack, 1));
+        Add("Wind Rider", new WindRider());
         Add("Earth Eater", new EarthEater());
 
         // Answering a hit
@@ -120,7 +120,7 @@ public static partial class AbilityEffectTable
         Add("Full Metal Body", new StatGuard());
         Add("Mind's Eye", new MindsEye());
         Add("Sweet Veil", new StatusImmunity(StatusCondition.Sleep));
-        Add("Pastel Veil", new StatusImmunity(StatusCondition.Poison, StatusCondition.Toxic));
+        Add("Pastel Veil", new PastelVeil());
         Add("Shields Down", new NoStatus((b, s) => s != StatusCondition.None && b.Pokemon?.Form is { } form && form.EndsWith("-Meteor")
                                                     || s != StatusCondition.None && b.Pokemon is { Form: null, Species.Name: "Minior" }));
 
@@ -137,5 +137,8 @@ public static partial class AbilityEffectTable
                      "Embody Aspect", "Tera Shift", "Tera Shell", "Teraform Zero"
                  })
             Add(name, new FlagEffect());
+
+        // The rest (plan 06 · R27b: AbilityEffectTable.Later2.cs)
+        AddLater2();
     }
 }

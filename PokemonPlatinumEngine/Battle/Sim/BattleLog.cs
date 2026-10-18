@@ -382,3 +382,9 @@ public enum MoveMark { SaltCure, SyrupBomb }
 /// every mark with no event, as it clears a confusion. Whoever shows the battle shows the mark while it lasts.
 /// </summary>
 public sealed record MarkChanged(Place Place, MoveMark Mark, bool On) : BattleEvent;
+
+/// <summary>
+/// A form taken in the middle of a battle raised its most HP, and its HP with it (plan 06 · R27b: Power Construct's
+/// Complete Forme): on the line that tells of it, beside its <see cref="Reshaped"/>.
+/// </summary>
+public sealed record FormHpChanged(Place Place, int MaxHp, int Hp) : BattleEvent;

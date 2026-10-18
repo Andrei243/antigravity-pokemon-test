@@ -5272,10 +5272,12 @@ log:
     + Entered E0 Pokemon=foe#0 Mesprit FromBall=true
   say Go! Pyroar!
     + Entered P0 Pokemon=mine#0 Pyroar FromBall=true
+  say Pyroar's Unnerve makes its foes too nervous to eat Berries!
+    + AbilityShown P0 Ability=Unnerve
   say Pyroar used Crunch!
     + Lunged P0 Category=Physical
     + MoveShown Move=Crunch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck E0 Hp=69 Hard=true
+    ! Struck E0 Hp=63 Hard=true
     ! HitSounded SuperEffective=true NotVeryEffective=false
   say It's super effective!
   say Foe Mesprit used Flatter!
@@ -5289,40 +5291,13 @@ log:
   say Pyroar is confused!
     + Confused P0
     + MomentShown P0 Moment=Confused From=none
-  say It hurt itself in its confusion!
-    ! Struck P0 Hp=203 Hard=false
+  say Pyroar used Overheat!
+    + Lunged P0 Category=Special
+    + MoveShown Move=Overheat Type=Fire Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Foe Mesprit used Charm!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Charm Type=Fairy Category=Status From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Pyroar's Attack harshly fell!
-    + StageChanged P0 Stat=Attack Stage=-2 Rose=false
-  say Pyroar is confused!
-    + Confused P0
-    + MomentShown P0 Moment=Confused From=none
-  say Pyroar used Crunch!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Crunch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck E0 Hp=21 Hard=true
-    ! HitSounded SuperEffective=true NotVeryEffective=false
-  say It's super effective!
-  say Foe Mesprit's Defense fell!
-    + StageChanged E0 Stat=Defense Stage=-1 Rose=false
-  say Foe Mesprit used Extrasensory!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Extrasensory Type=Psychic Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=true SuperEffective=false
-    ! Struck P0 Hp=125 Hard=true
-    ! HitSounded SuperEffective=false NotVeryEffective=false
-  say A critical hit!
-  say Pyroar is confused!
-    + Confused P0
-    + MomentShown P0 Moment=Confused From=none
-  say Pyroar used Crunch!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Crunch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck E0 Hp=0 Hard=true
-    ! HitSounded SuperEffective=true NotVeryEffective=false
-  say It's super effective!
+  say Pyroar's Sp. Atk harshly fell!
+    + StageChanged P0 Stat=SpAttack Stage=-1 Rose=false
   say Foe Mesprit fainted!
     + Fainted E0
     + TrainerReacts E0 Cue=FirstDown
@@ -5337,12 +5312,11 @@ log:
     + Entered E0 Pokemon=foe#2 Clawitzer FromBall=true
   say Pyroar snapped out of confusion!
     + VolatileChanged P0 Confused=false InLove=false
-  say Pyroar used Incinerate!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Incinerate Type=Fire Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+  say Pyroar used Crunch!
+    + Lunged P0 Category=Physical
+    + MoveShown Move=Crunch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=0 Hard=false
-    ! HitSounded SuperEffective=false NotVeryEffective=true
-  say It's not very effective...
+    ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Clawitzer fainted!
     + Fainted E0
   say Pyroar gained 14 EXP. Points!
@@ -5355,44 +5329,11 @@ log:
     + Seen Species=Spewpa
     + Entered E0 Pokemon=foe#1 Spewpa FromBall=true
     + TrainerReacts E0 Cue=LastPokemon
-  say Foe Spewpa used Protect!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Protect Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Spewpa protected itself!
-  say Pyroar used Crunch!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Crunch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
-  say Foe Spewpa protected itself!
-  say Foe Spewpa used Protect!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Protect Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Spewpa protected itself!
   say Pyroar used Hyper Voice!
     + Lunged P0 Category=Special
-    + MoveShown Move=Hyper Voice Type=Normal Category=Special From=P0 To=E0 Missed=false Blocked=true Critical=false SuperEffective=false
-  say Foe Spewpa protected itself!
-  say Pyroar used Crunch!
-    + Lunged P0 Category=Physical
-    + MoveShown Move=Crunch Type=Dark Category=Physical From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck E0 Hp=8 Hard=false
+    + MoveShown Move=Hyper Voice Type=Normal Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Foe Spewpa restored its health using its Iapapa Berry!
-    + ItemShown E0 Item=Iapapa Berry
-    + MomentShown E0 Moment=HeldItem From=none
-    + HpChanged E0 Hp=16 Healed=true
-  say Foe Spewpa used Harden!
-    + Lunged E0 Category=Status
-    + MoveShown Move=Harden Type=Normal Category=Status From=E0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Spewpa's Defense rose!
-    + StageChanged E0 Stat=Defense Stage=1 Rose=true
-  say Pyroar used Overheat!
-    + Lunged P0 Category=Special
-    + MoveShown Move=Overheat Type=Fire Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck E0 Hp=0 Hard=true
-    ! HitSounded SuperEffective=true NotVeryEffective=false
-  say It's super effective!
-  say Pyroar's Sp. Atk harshly fell!
-    + StageChanged P0 Stat=SpAttack Stage=-1 Rose=false
   say Foe Spewpa fainted!
     + Fainted E0
   say Pyroar gained 115 EXP. Points!
@@ -5405,7 +5346,7 @@ log:
   say Lucas defeated Ace Trainer Tester!
   say Lucas received $300 for winning!
   Ended Result=PlayerVictory
-result: PlayerVictory after 8 turns
+result: PlayerVictory after 3 turns
 === battle 131
 rules: Modern rules
 format: Single
@@ -12253,6 +12194,8 @@ log:
     + Entered E0 Pokemon=foe#0 Igglybuff FromBall=true
   say Go! Joltik!
     + Entered P0 Pokemon=mine#0 Joltik FromBall=true
+  say Joltik's Unnerve makes its foes too nervous to eat Berries!
+    + AbilityShown P0 Ability=Unnerve
   say Joltik used Bug Buzz!
     + Lunged P0 Category=Special
     + MoveShown Move=Bug Buzz Type=Bug Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
@@ -12271,29 +12214,14 @@ log:
   say Ace Trainer Tester sent out Victini!
     + Seen Species=Victini
     + Entered E0 Pokemon=foe#1 Victini FromBall=true
-  say Joltik used Gastro Acid!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Gastro Acid Type=Poison Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Victini's ability was suppressed!
-  say Foe Victini used Incinerate!
-    + Lunged E0 Category=Special
-    + MoveShown Move=Incinerate Type=Fire Category=Special From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=true
-    ! Struck P0 Hp=127 Hard=true
-    ! HitSounded SuperEffective=true NotVeryEffective=false
-  say It's super effective!
   say Foe Victini used Quick Attack!
     + Lunged E0 Category=Physical
     + MoveShown Move=Quick Attack Type=Normal Category=Physical From=E0 To=P0 Missed=false Blocked=false Critical=false SuperEffective=false
-    ! Struck P0 Hp=122 Hard=false
+    ! Struck P0 Hp=140 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
-  say Joltik used Screech!
-    + Lunged P0 Category=Status
-    + MoveShown Move=Screech Type=Normal Category=Status From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
-  say Foe Victini's Defense harshly fell!
-    + StageChanged E0 Stat=Defense Stage=-2 Rose=false
-  say Joltik used Discharge!
+  say Joltik used Bug Buzz!
     + Lunged P0 Category=Special
-    + MoveShown Move=Discharge Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
+    + MoveShown Move=Bug Buzz Type=Bug Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=false
     ! Struck E0 Hp=0 Hard=false
     ! HitSounded SuperEffective=false NotVeryEffective=false
   say Foe Victini fainted!
@@ -12310,10 +12238,9 @@ log:
     + TrainerReacts E0 Cue=LastPokemon
   say Joltik used Discharge!
     + Lunged P0 Category=Special
-    + MoveShown Move=Discharge Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=true SuperEffective=true
+    + MoveShown Move=Discharge Type=Electric Category=Special From=P0 To=E0 Missed=false Blocked=false Critical=false SuperEffective=true
     ! Struck E0 Hp=0 Hard=true
     ! HitSounded SuperEffective=true NotVeryEffective=false
-  say A critical hit!
   say It's super effective!
   say Foe Pidgeot fainted!
     + Fainted E0
@@ -12327,7 +12254,7 @@ log:
   say Lucas defeated Ace Trainer Tester!
   say Lucas received $300 for winning!
   Ended Result=PlayerVictory
-result: PlayerVictory after 4 turns
+result: PlayerVictory after 2 turns
 === battle 176
 rules: Modern rules
 format: Single

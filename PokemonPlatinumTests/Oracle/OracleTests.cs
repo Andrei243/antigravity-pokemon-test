@@ -152,6 +152,8 @@ public class OracleTests
         // The move as the core hands it to the formula: Normal, whatever it was, for a user with Normalize
         var data = OracleScenarios.MoveOf(s.Move);
         if (s.Attacker.Ability == "Normalize" && data.Type != PokemonType.Normal) data = data.OfType(PokemonType.Normal);
+        // and as the later abilities make it (plan 06 · R27b): a -ate ability's type, Sheer Force's side effects gone
+        data = BattleCore.ShapedBy(attacker, data);
         var move = new Move(data);
         var rolls = new int[16];
         bool? crit = null;

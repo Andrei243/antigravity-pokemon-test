@@ -685,6 +685,10 @@ public partial class BattleEngine
                 }
                 break;
             }
+            case FormHpChanged raised:
+                // A form that raised its most HP (plan 06 · R27b: Power Construct): the box takes the numbers at once
+                TakeRaisedHp(raised.Place, At(raised.Place).Pokemon, raised.MaxHp, raised.Hp);
+                break;
             case Dynamaxed or DynamaxEnded:
                 // A Dynamax and its end (plan 06 · R22)
                 ShowDynamax(happening);

@@ -182,11 +182,16 @@ public sealed partial class BattleCore
         // A Dynamaxed Pokémon's move becomes its Max Move (plan 06 · R22)
         else if (v.Dynamaxed && !goesOn) BecomeMaxMove(use, target);
         failedNow = false;
+        exits.Clear();
         bool wentOn = Perform(use, goesOn);
-        if (failedNow || (use.Hits.Count > 0 && !use.Hits.Any(h => h.Landed))) failedOnTurn[user.Pokemon!] = Turn;
+        bool failed = failedNow || (use.Hits.Count > 0 && !use.Hits.Any(h => h.Landed));
+        if (failed) failedOnTurn[user.Pokemon!] = Turn;
         failedNow = false;
         lastMoveShown = move.Data;
         if (!wentOn) yield break;
+        // A dance danced again, and whoever the move sent running (plan 06 · R27b)
+        if (!failed) Dance(use);
+        foreach (var request in EmergencyExits(use)) yield return request;
         foreach (var request in Leave(use)) yield return request;
     }
 
@@ -374,6 +379,8 @@ public sealed partial class BattleCore
 
         // Carried into the sky by a foe's Sky Drop, it does nothing, and nothing is said (plan 06 · R25's leftovers)
         if (v.LiftedBy != null) return false;
+        // A Tatsugiri in its Dondozo's mouth does nothing (plan 06 · R27b; Showdown's commanding onBeforeTurn)
+        if (v.Commanding != null) return false;
 
         if (p.Status == StatusCondition.Sleep)
         {
@@ -850,7 +857,8 @@ public sealed partial class BattleCore
             if (!breaks && Has(target, "Simple")) evasion *= 2;
         }
         if (targetEffects.Any(e => e.IgnoresOthersStatStages)) accuracy = 0;
-        if (userEffects.Any(e => e.IgnoresOthersStatStages) || DamageCalculator.IgnoresDefenseStages(move.Data)) evasion = 0;
+        // (Mind's Eye too: plan 06 · R27b's audit, Showdown's ignoreEvasion)
+        if (userEffects.Any(e => e.IgnoresOthersStatStages) || DamageCalculator.IgnoresDefenseStages(move.Data) || Has(user, "Mind's Eye")) evasion = 0;
         // A target that has been identified can't hide behind raised evasion
         if ((target.Volatile.Identified || target.Volatile.MiracleEye) && evasion > 0) evasion = 0;
         int rate = Formulas.HitRate(use.Effect.AccuracyUnder(weather, move.Accuracy), accuracy, evasion);
@@ -1056,7 +1064,8 @@ public sealed partial class BattleCore
         // A berry against the move's type halves the hit as it lands, and is eaten (subscript_type_resist_berry)
         if (!hit.OneHitKo && effect.Deals == null && WeakenedByBerry(t, move, result, out var berry))
         {
-            damage = Formulas.Divide(damage, 2);
+            // (a quarter with Ripen: plan 06 · R27b)
+            damage = Formulas.Divide(damage, Has(t, "Ripen") ? 4 : 2);
             hit.Notes.AddRange(Capture(() =>
             {
                 Say(Text.Of("battle.theWeakenedPower", ("item", ItemAtWork(t, berry)), ("move", move.DisplayName)));
@@ -1191,6 +1200,8 @@ public sealed partial class BattleCore
         {
             foreach (var e in BattleEffects.Of(t, includeAbility: !userBreaks).ToList())
                 e.AfterHit(this, t, user, move, dealt, hit.LastCritical);
+            // Wimp Out and Emergency Exit leave once the move is done (plan 06 · R27b)
+            NoteTheExit(use, hit);
             CheckConditionHooks(t, user);
             ItemsOnHit(use, hit);
         }
@@ -1409,5 +1420,7 @@ public sealed partial class BattleCore
         // Unburden is armed again by an item in its hands (the original's RecoverStatusByAbility, after every move)
         if (b.Pokemon.HeldItem != null) b.Volatile.CanUnburden = true;
         foreach (var e in BattleEffects.Of(b).ToList()) e.OnConditionChanged(this, b, cause);
+        // What answers a berry eaten (plan 06 · R27b)
+        Digest();
     }
 }
