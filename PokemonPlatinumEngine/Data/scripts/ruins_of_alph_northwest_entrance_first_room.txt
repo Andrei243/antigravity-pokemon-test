@@ -1,0 +1,23 @@
+# The Ruins of Alph's northwest chamber (plan 20 · J5). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beat: the stone panel in the floor, its picture of a great bird broken into sixteen pieces, to be put back
+# together. What solving it opens (the floor giving way to the rooms below, the Unown) is a later chapter's.
+
+
+# The panel (HeartGold's background event at 6, 6)
+script Panel
+  if flag FLAG_ALPH_HOOH_PANEL_SOLVED goto Whole
+  text "A stone panel is set in the floor. It shows a great bird, broken into sixteen pieces that seem to slide."
+  ask "Try to put the picture back together?"
+  if no goto Left
+  puzzle hooh
+  if result == 0 goto Left
+  setflag FLAG_ALPH_HOOH_PANEL_SOLVED
+  sound "boulder"
+  text "The last piece slid home with a deep click. Somewhere under the Ruins, something rumbled."
+  end
+label Left
+  text "The pieces lie where they were."
+  end
+label Whole
+  text "The panel shows a great bird, whole again. The stone around it is warm to the touch."
+  end

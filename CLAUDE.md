@@ -40,6 +40,7 @@ dotnet run --project tools/ShotHarness -- <out dir> [all|field|lineup|battle|dou
 dotnet run --project tools/ShotHarness -- <out dir> area <key>                        # one shot of an area of the imported world (twinleaf_town, route_201…)
 dotnet run --project tools/ShotHarness -- <out dir> area <region>:<key>               # an area of a GBA import (kanto:pallet_town, from tools/MapImporter/out/<region>/world or SHOTS_IMPORT), and inside each room its doors lead into
 dotnet run --project tools/ShotHarness -- <out dir> cities [key ...]                  # every town of Sinnoh from the importer's last full run: a shot per building and prop, a sheet per town
+dotnet run --project tools/ShotHarness -- <out dir> cities johto [key ...]            # the same for Johto, from the importer's last full `--game heartgold` run (tools/MapImporter/out/johto/world)
 dotnet run --project tools/ShotHarness -- <out dir> dex [--back] [species ...]        # boards of every species' 3D model (or the species and forms named), sixty to a page; --back from behind
 dotnet run --project tools/ShotHarness -- <out dir> export [species ...]              # species' models as .glb files, to refine in Blender and drop into overrides/models
 dotnet run --project tools/ShotHarness -- <out dir> pokemon [species ...]             # the named species' turntables on one board (91_turntables), for sculpting

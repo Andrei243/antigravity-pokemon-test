@@ -4,7 +4,6 @@
   "area": "ruins_of_alph_southeast_entrance_first_room",
   "bgmTrack": "johto/ruins_of_alph",
   "locked": [ 1 ],
-  "signs": {
-    "D24R0204_000+1": "A stone panel shows an Aerodactyl, its wings split into sixteen squares. The pieces have been jumbled."
-  }
+  // The panel in the floor (HeartGold's background event 0) runs the room's Panel script: the puzzle
+  "read": { "D24R0204_000+1": "Panel" }
 }

@@ -5,27 +5,35 @@ partial class Harness
     // The whole of Sinnoh as the importer last wrote it (tools/MapImporter/out/world: run the importer first), with
     // every area open, to look at the buildings and landmarks of towns the game hasn't reached yet. For each town:
     // a shot before each of its different buildings and the things that stand about, and a sheet of them all.
+    // `cities johto [town ...]` does the same for HeartGold's Johto (plan 20 · J5), from tools/MapImporter/out/johto/world
+    // (run `dotnet run --project tools/MapImporter -- --game heartgold` first), its towns by HeartGold's keys.
     public void CitiesMode()
     {
+        bool johto = args.Length > 2 && args[2] == "johto";
         string? repo = null;
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir != null && repo == null; dir = dir.Parent)
             if (File.Exists(Path.Combine(dir.FullName, "PokemonPlatinum.sln"))) repo = dir.FullName;
-        string import = Path.Combine(repo ?? startDir, "tools", "MapImporter", "out", "world");
+        string import = johto ? Path.Combine(repo ?? startDir, "tools", "MapImporter", "out", "johto", "world")
+            : Path.Combine(repo ?? startDir, "tools", "MapImporter", "out", "world");
         if (!Directory.Exists(Path.Combine(import, "chunks")))
         {
-            Console.WriteLine($"No import at {import}: run `dotnet run --project tools/MapImporter` first.");
+            Console.WriteLine($"No import at {import}: run the importer first (for Johto with --game heartgold).");
             return;
         }
 
-        var index = new WorldIndexFile { Region = "Sinnoh" };
-        index.Maps.Add(new WorldMapEntry { Name = "SinnohWhole", Matrix = 0, Trees = TreeStyle.Pine });
+        var index = new WorldIndexFile { Region = johto ? "Johto" : "Sinnoh" };
+        index.Maps.Add(new WorldMapEntry { Name = johto ? "JohtoWhole" : "SinnohWhole", Matrix = 0, Trees = johto ? TreeStyle.Round : TreeStyle.Pine });
         foreach (string file in Directory.GetFiles(Path.Combine(import, "areas"), "*.json")) index.Areas.Add(Path.GetFileNameWithoutExtension(file));
         var built = System.Diagnostics.Stopwatch.StartNew();
         var whole = WorldMapBuilder.Build(World.Open(import, index), index.Maps[0]);
         var all = MapStructures.BuildingsOf(whole);
-        Console.WriteLine($"all of Sinnoh: {all.Count} blocks of buildings, {whole.Props.Count} props, made in {built.Elapsed.TotalSeconds:F1} s");
+        Console.WriteLine($"all of {index.Region}: {all.Count} blocks of buildings, {whole.Props.Count} props, made in {built.Elapsed.TotalSeconds:F1} s");
 
-        string[] towns = args.Length > 2 ? args[2..] : new[]
+        string[] towns = johto ? (args.Length > 3 ? args[3..] : new[]
+        {
+            "new_bark", "cherrygrove", "violet", "ruins_of_alph", "azalea", "goldenrod", "ecruteak", "olivine", "cianwood",
+            "mahogany", "blackthorn"
+        }) : args.Length > 2 ? args[2..] : new[]
         {
             "twinleaf_town", "sandgem_town", "jubilife_city", "oreburgh_city", "floaroma_town", "valley_windworks_outside", "eterna_city",
             "hearthome_city", "solaceon_town", "veilstone_city", "pastoria_city", "celestic_town", "canalave_city", "snowpoint_city",
@@ -95,6 +103,7 @@ partial class Harness
             Save(sheet, "city_" + town);
         }
 
+        if (johto) return;
         // Jubilife City is the densest place there is: its middle by day and after dark
         Look("c_jubilife_middle", 150, 768);
         engine.Settings.TimeOfDay = TimeOfDay.Night;

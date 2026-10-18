@@ -106,6 +106,8 @@ partial class Harness
         JohtoScenes();
         // And the Pokégear's cards, on the game the chapter left (plan 20 · J3)
         PokegearShots();
+        // And the centre plan 20 · J5 opened: the Ruins of Alph, Union Cave, Route 33 and Azalea Town
+        JohtoCentreShots();
         engine.NewGameRegion = "Sinnoh";
     }
 }

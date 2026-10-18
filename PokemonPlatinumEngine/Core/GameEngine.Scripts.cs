@@ -1056,6 +1056,13 @@ public partial class GameEngine
                 case ScriptScreen.Credits:
                     game.OpenCredits();
                     break;
+                // A stone panel of the Ruins of Alph (plan 20 · J5): the script waits, and hears whether it was solved
+                case ScriptScreen.AlphPuzzle:
+                    game.flow.AlphPuzzleScreen.Open(counter ?? "kabuto");
+                    // The picture is the species' menu sprite, asked for now so that it is baked by the time it is seen
+                    PokemonSprites.Request(game.flow.AlphPuzzleScreen.Puzzle!.Species);
+                    game.flow.State = GameState.AlphPuzzle;
+                    break;
                 case ScriptScreen.Travel:
                     // The way to the next region, where this map has one: the attendant says how things stand,
                     // and the ship leaves when the story of this region is done

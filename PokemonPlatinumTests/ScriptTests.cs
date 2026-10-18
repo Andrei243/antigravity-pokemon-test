@@ -110,6 +110,7 @@ public class ScriptTests
           setflag FLAG_A
           clearflag FLAG_A
           addcontact joey
+          puzzle kabuto
           setvar VAR_A 3
           addvar VAR_A -1
           give "Potion" 2

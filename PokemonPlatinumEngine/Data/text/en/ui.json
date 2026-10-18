@@ -722,6 +722,16 @@
     "safariBalls": "SAFARI BALLS",
     "steps": "STEPS"
   },
+  "alphPuzzle": {
+    "title": "STONE PANEL",
+    "hint": {
+      "take": "Take / put down",
+      "turn": "Turn"
+    },
+    "prompt": "Put the picture back together.",
+    "holding": "Put the piece down on an empty square.",
+    "solved": "The picture is whole again!"
+  },
   "pokegear": {
     "title": "POKéGEAR",
     "clock": "{day} {time}",

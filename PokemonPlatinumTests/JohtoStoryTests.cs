@@ -34,6 +34,7 @@ public class JohtoStoryTests
         public int Starter { get; init; }
         public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
         public bool Impatient { get; init; }
+        public bool PuzzleSolved { get; set; } = true;
         public Queue<int> Answers { get; } = new();
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
@@ -112,7 +113,8 @@ public class JohtoStoryTests
                 StarterChoice = Starter,
                 RivalName = Rival,
                 Fight = _ => Fight,
-                NeedsPokemon = true
+                NeedsPokemon = true,
+                PuzzleSolved = PuzzleSolved
             };
             while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
             var runner = new ScriptRunner(Scripts, host) { Impatient = Impatient };
@@ -339,5 +341,44 @@ public class JohtoStoryTests
         Assert.Null(sinnoh.PlayerStarter);
         Assert.Equal(0, sinnoh.Var("VAR_SCENE_ELMS_LAB"));
         Assert.True(sinnoh.Has("FLAG_HIDE_NEW_BARK_MOM"));
+    }
+
+    [Theory]
+    [InlineData("northeast", "kabuto")]
+    [InlineData("southeast", "aerodactyl")]
+    [InlineData("southwest", "omanyte")]
+    [InlineData("northwest", "hooh")]
+    public void AChambersPanelIsRefusedLeftOrPutBackTogether(string chamber, string panel)
+    {
+        // Plan 20 · J5: the panel in the floor of each of the Ruins of Alph's chambers (HeartGold's background event at
+        // 6, 6, wherever the room is cut to) runs the room's Panel script, which asks, opens the puzzle and keeps it whole once solved
+        string room = "RuinsOfAlph_" + char.ToUpperInvariant(chamber[0]) + chamber[1..] + "Chamber";
+        string flag = $"FLAG_ALPH_{panel.ToUpperInvariant()}_PANEL_SOLVED";
+        var game = new Game();
+        game.Arrive(room, 6, 16);
+        var (panelTile, _) = Assert.Single(game.Map.TileScripts, kv => kv.Value == "Panel");
+        var script = Scripts.Find("Panel", $"ruins_of_alph_{chamber}_entrance_first_room")!;
+        game.Tile = (panelTile.X, panelTile.Y + 1);
+
+        // Refused: nothing opens
+        game.Answers.Enqueue(1);
+        var refused = game.Play(script);
+        Assert.DoesNotContain(refused.Log, l => l.StartsWith("open AlphPuzzle"));
+        Assert.False(game.Story.Has(flag));
+
+        // Opened and left half done: the panel stays as it was
+        game.PuzzleSolved = false;
+        var left = game.Play(script);
+        Assert.Contains($"open AlphPuzzle {panel} left", left.Log);
+        Assert.False(game.Story.Has(flag));
+
+        // Put back together: kept so, and the panel isn't offered again
+        game.PuzzleSolved = true;
+        var solved = game.Play(script);
+        Assert.Contains($"open AlphPuzzle {panel} solved", solved.Log);
+        Assert.True(game.Story.Has(flag));
+        var after = game.Play(script);
+        Assert.DoesNotContain(after.Log, l => l.StartsWith("open AlphPuzzle"));
+        Assert.Empty(after.Asked);
     }
 }

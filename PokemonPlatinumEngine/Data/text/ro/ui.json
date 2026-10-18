@@ -725,6 +725,16 @@
     "safariBalls": "SAFARI BALLS",
     "steps": "PAȘI"
   },
+  "alphPuzzle": {
+    "title": "PANOU DE PIATRĂ",
+    "hint": {
+      "take": "Ia / pune jos",
+      "turn": "Rotește"
+    },
+    "prompt": "Refă imaginea din bucăți.",
+    "holding": "Pune bucata pe un pătrat gol.",
+    "solved": "Imaginea este din nou întreagă!"
+  },
   "pokegear": {
     "title": "POKéGEAR",
     "clock": "{day} {time}",

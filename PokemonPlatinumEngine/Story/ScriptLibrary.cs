@@ -271,6 +271,9 @@ public sealed class ScriptLibrary
                     case Op.ChoosePokemon when i.Name.Length > 0 && PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
                         break;
+                    case Op.Puzzle when !Models.AlphPuzzle.Pictures.ContainsKey(i.Name):
+                        Wrong(i, $"there is no panel '{i.Name}' in the Ruins of Alph");
+                        break;
                     case Op.AddContact when Models.PhoneBook.Get(i.Name) == null:
                         Wrong(i, $"the phone book has no contact '{i.Name}'");
                         break;
