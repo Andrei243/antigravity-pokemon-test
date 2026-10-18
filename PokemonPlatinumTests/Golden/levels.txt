@@ -132,6 +132,15 @@ surf 20-40
 old rod 3-15
 good rod 10-35
 super rod 30-55
+=== cerulean_city
+Cerulean City
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+=== cerulean_city_gym
+Cerulean City
+trainers 2, 16-19: kanto_picnicker_diana 19, kanto_swimmer_male_luis 16
 === cherrygrove
 Cherrygrove City
 surf 10-25
@@ -322,6 +331,17 @@ grass 36-40
 === mt_coronet_outside_south
 Mt. Coronet
 grass 36-40
+=== mt_moon_1f
+Mt Moon
+grass 7-10
+trainers 7, 10-14: kanto_bug_catcher_kent 11, kanto_bug_catcher_robby 10, kanto_hiker_marcos 10, kanto_lass_iris 14, kanto_lass_miriam 11, kanto_super_nerd_jovan 11, kanto_youngster_josh 10
+=== mt_moon_b1f
+Mt Moon
+grass 5-10
+=== mt_moon_b2f
+Mt Moon
+grass 8-12
+trainers 4, 11-13: kanto_team_rocket_grunt 13, kanto_team_rocket_grunt_2 11, kanto_team_rocket_grunt_3 11, kanto_team_rocket_grunt_4 13
 === new_bark
 New Bark Town
 surf 10-25
@@ -630,6 +650,22 @@ old rod 3-15
 good rod 10-25
 super rod 20-55
 trainers 6, 51-54: swimmer_glenn 53, swimmer_joanna 54, swimmer_kurt 54, swimmer_mallory 54, swimmer_sam 53, swimmer_sophia 53
+=== route_24
+Route 24
+grass 7-14
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 6, 10-18: kanto_bug_catcher_cale 10, kanto_camper_ethan 18, kanto_camper_shane 14, kanto_lass_ali 12, kanto_lass_reli 16, kanto_youngster_timmy 14
+=== route_25
+Route 25
+grass 8-14
+surf 20-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 9, 13-17: kanto_camper_flint 14, kanto_hiker_franklin 15, kanto_hiker_nob 13, kanto_hiker_wayne 17, kanto_lass_haley 13, kanto_picnicker_kelsey 15, kanto_youngster_chad 14, kanto_youngster_dan 17, kanto_youngster_joey 15
 === route_29
 Route 29
 grass 2-4
@@ -653,6 +689,14 @@ old rod 10
 good rod 20
 super rod 40
 trainers 1, 2-3: johto_bug_catcher_wade 3
+=== route_4
+Route 4
+grass 6-12
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 1, 31: kanto_lass_crissy 31
 === ruin_maniac_cave_short
 Ruin Maniac Cave
 grass 21-24

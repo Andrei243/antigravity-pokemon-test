@@ -354,23 +354,6 @@ internal static partial class ModernUi
     /// </summary>
     public static void Badge(Vector2 center, float r, int index, bool earned) => Badge(center, r, index, earned, null);
 
-    /// <summary>The marks a region's own badges carry (style guide, "Badges"): a badge whose name is here has its own look.</summary>
-    public enum BadgeMark { Stone, Drop, Bolt, Rings, Heart, Twins, Flame, Leaf }
-
-    /// <summary>The badges with a look of their own, by the name their region's file gives them (plan 19 · K4: Kanto's eight).</summary>
-    public static readonly IReadOnlyDictionary<string, (Color Color, BadgeMark Mark)> BadgeLooks =
-        new Dictionary<string, (Color, BadgeMark)>(StringComparer.OrdinalIgnoreCase)
-        {
-            ["Boulder"] = (new Color(150, 146, 140, 255), BadgeMark.Stone),
-            ["Cascade"] = (new Color(64, 150, 222, 255), BadgeMark.Drop),
-            ["Thunder"] = (new Color(236, 160, 52, 255), BadgeMark.Bolt),
-            ["Rainbow"] = (new Color(156, 110, 214, 255), BadgeMark.Rings),
-            ["Soul"] = (new Color(222, 92, 140, 255), BadgeMark.Heart),
-            ["Marsh"] = (new Color(214, 178, 68, 255), BadgeMark.Twins),
-            ["Volcano"] = (new Color(220, 72, 54, 255), BadgeMark.Flame),
-            ["Earth"] = (new Color(82, 160, 86, 255), BadgeMark.Leaf)
-        };
-
     /// <summary>
     /// A badge as <see cref="Badge(Vector2, float, int, bool)"/> draws it, in its own colour and with its own mark where its
     /// <paramref name="name"/> has a look of its own (<see cref="BadgeLooks"/>).
@@ -384,15 +367,15 @@ internal static partial class ModernUi
             return;
         }
 
-        bool own = name != null && BadgeLooks.ContainsKey(name);
-        var color = own ? BadgeLooks[name!].Color : BadgeColors[index % BadgeColors.Length];
+        bool own = name != null && BadgeLooks.ByName.ContainsKey(name);
+        var color = own ? BadgeLooks.ByName[name!].Color : BadgeColors[index % BadgeColors.Length];
         UiShapes.Shadow(slot, r, 8f, new Vector2(0, 3), ShadowColor);
         UiShapes.Shape(slot, r, Lighter(color, 0.35f), Darker(color, 0.15f), Darker(color, 0.5f), 3f);
         var white = new Color(255, 255, 255, 235);
         float m = r * 0.42f;
         if (own)
         {
-            DrawBadgeMark(center, m, BadgeLooks[name!].Mark, white, Darker(color, 0.1f));
+            DrawBadgeMark(center, m, BadgeLooks.ByName[name!].Mark, white, Darker(color, 0.1f));
             UiShapes.Circle(center + new Vector2(-r * 0.42f, -r * 0.45f), r * 0.16f, new Color(255, 255, 255, 150));
             return;
         }

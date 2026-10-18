@@ -26,6 +26,9 @@ label Talk
   speaker "Prof. Oak"
   say "Phew, I caught you in time! Wild Pokémon hide in that grass, and they don't take kindly to visitors."
   say "Without a Pokémon of your own to keep you safe, you'd be in real danger. Come along to my lab. Hurry, now!"
+  # FireRed's MUS_FOLLOW_ME as he leads the way (plan 19 · K4); the lab plays its own once there
+  music "kanto/follow_me"
+  wait 0.8
   fade out
   hide pallet_prof_oak
   setvar VAR_MAP_SCENE_PALLET_TOWN_OAK 1

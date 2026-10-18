@@ -1292,7 +1292,7 @@ Plan 06 · R18d.
 
 - Round medallions in gym order (`ModernUi.Badge`), each in its gym's colour with a simple white mark; our own designs, not the games' badge art. A row holds the region's own count (plan 18 · W2: the names its file lists, none to eight), so Sinnoh's and Kanto's rows show eight and a region with fewer shows fewer; the colours and marks go by the place in the row.
 - Not yet won: a flat grey-blue disc with a darker rim, same size, so the row always shows every badge of its region.
-- **A region's own badges** (plan 19 · K4): where a badge's name has a look of its own (`ModernUi.BadgeLooks`), the medallion takes that colour and that mark instead of the row's; every other badge keeps the row's. Kanto's eight, each a mark of ours that says what the badge is named for and nothing of the games' art:
+- **A region's own badges** (plan 19 · K4): where a badge's name has a look of its own (`Graphics/BadgeLooks.cs`), the medallion takes that colour and that mark instead of the row's; every other badge keeps the row's. Kanto's eight, each a mark of ours that says what the badge is named for and nothing of the games' art:
 
   | Badge | Colour | Mark |
   | --- | --- | --- |

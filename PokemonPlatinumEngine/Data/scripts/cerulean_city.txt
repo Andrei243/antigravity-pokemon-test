@@ -62,7 +62,13 @@ label After
   say "Bill's up the road past the bridge. He knows more about Pokémon than anyone. Go and see him, if you can keep up."
   say "I'm off. Smell you later, {player}!"
   music "kanto/rival"
+  # Round the player and away south, by the west where the bridge's east rail is beside him (FireRed's right trigger)
+  if var PLAYER_X == 288 goto West
   walk cerulean_rival right 1 down 7 fast
+  goto Gone
+label West
+  walk cerulean_rival left 1 down 7 fast
+label Gone
   hide cerulean_rival
   music area
   setvar VAR_MAP_SCENE_CERULEAN_CITY_RIVAL 1

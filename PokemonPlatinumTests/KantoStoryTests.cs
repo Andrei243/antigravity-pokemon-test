@@ -320,6 +320,187 @@ public class KantoStoryTests
         Assert.Equal(TrainerDatabase.RivalClass, trainer.TrainerClass);
     }
 
+    // ------------------------------------------------------------------ plan 19 · K4: Mt. Moon to Bill
+
+    /// <summary>A game past the first chapter, with a starter on its team, standing where the test puts it.</summary>
+    private static Game PastPewter(int starter = 0)
+    {
+        var game = new Game(starter);
+        game.Story.ChooseStarter(RegionDatabase.Get(RegionDatabase.Kanto)!.Starters[starter]);
+        game.Party.Members.Add(new Pokemon(PokemonDatabase.Get(RegionDatabase.Get(RegionDatabase.Kanto)!.Starters[starter])!, 20));
+        game.Story.Set(StoryState.PokedexFlag);
+        return game;
+    }
+
+    [Theory]
+    [InlineData("dome_fossil", "Dome Fossil", "helix_fossil", "FLAG_GOT_DOME_FOSSIL")]
+    [InlineData("helix_fossil", "Helix Fossil", "dome_fossil", "FLAG_GOT_HELIX_FOSSIL")]
+    public void MiguelBattlesForMtMoonsFossilsAndTakesTheOneThePlayerLeaves(string taken, string item, string left, string flag)
+    {
+        var game = PastPewter();
+        game.Arrive("MtMoon_B2F", 15, 11);
+        Assert.NotNull(game.Present("dome_fossil"));
+        Assert.NotNull(game.Present("helix_fossil"));
+        // Hands off before he is beaten
+        game.Talk(taken);
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get(item)!));
+        // The step beside him starts his battle
+        Assert.True(game.Fires("MiguelTrigger"));
+        var battle = game.Step("MiguelTrigger");
+        Assert.Contains(battle.Log, l => l.StartsWith("battle kanto_super_nerd_miguel"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_MT_MOON_B2F"));
+        Assert.False(game.Fires("MiguelTrigger"));
+        // One fossil for the player, the other for Miguel, and neither lies there any more, then or on the next visit
+        game.Talk(taken);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get(item)!));
+        Assert.True(game.Story.Has(flag));
+        Assert.True(game.Story.Has("FLAG_GOT_FOSSIL_FROM_MT_MOON"));
+        Assert.Null(game.Present(taken));
+        Assert.Null(game.Present(left));
+        game.Arrive("MtMoon_B2F", 15, 11);
+        Assert.Null(game.Present(taken));
+        Assert.Null(game.Present(left));
+    }
+
+    [Theory]
+    [InlineData(0, "RivalLeft")]
+    [InlineData(1, "RivalMid")]
+    [InlineData(2, "RivalRight")]
+    public void TheRivalComesDownFromNuggetBridgeAndBattlesWithTheStarterStrongAgainstThePlayers(int starter, string trigger)
+    {
+        var game = PastPewter(starter);
+        string rivals = StoryState.RivalStarterFor(RegionDatabase.Get(RegionDatabase.Kanto)!.Starters[starter]);
+        game.Arrive("Kanto", 287, 52);
+        Assert.Null(game.Present("cerulean_rival"));
+        Assert.True(game.Fires(trigger));
+        var scene = game.Step(trigger);
+        Assert.Contains($"battle kanto_rival_cerulean_{rivals.ToLowerInvariant()} Won", scene.Log);
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_CERULEAN_CITY_RIVAL"));
+        Assert.Equal(2, game.Story.Var("VAR_MAP_SCENE_ROUTE22"));
+        Assert.Null(game.Present("cerulean_rival"));
+        Assert.False(game.Fires(trigger));
+    }
+
+    [Theory]
+    [InlineData("RocketLeft")]
+    [InlineData("RocketRight")]
+    public void NuggetBridgesPrizeIsANuggetAndTeamRocketsOffer(string trigger)
+    {
+        var game = PastPewter();
+        game.Arrive("Kanto", 287, 30);
+        Assert.True(game.Fires(trigger));
+        var scene = game.Step(trigger);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Nugget")!));
+        Assert.Contains(scene.Log, l => l.StartsWith("battle kanto_team_rocket_grunt_6"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_ROUTE24"));
+        Assert.False(game.Fires(trigger));
+        // Spoken to again, he only talks
+        Assert.DoesNotContain(game.Talk("route24_rocket").Log, l => l.StartsWith("battle"));
+    }
+
+    [Fact]
+    public void BillIsSortedOutByTheCellSeparatorAndGivesTheTicketThatOpensCerulean()
+    {
+        var game = PastPewter();
+        game.Arrive("Route25_SeaCottage", 7, 8);
+        Assert.NotNull(game.Present("bill_clefairy"));
+        Assert.Null(game.Present("bill_human"));
+        var computer = game.Map.TileScripts.Single(kv => kv.Value == "Computer");
+        // The PC does nothing yet; the Clefairy asks for help and steps into the teleporter
+        game.Play(Scripts.Find("Computer", game.Map.ScriptFileAt(computer.Key.X, computer.Key.Y))!);
+        Assert.False(game.Story.Has("FLAG_HELPED_BILL_IN_SEA_COTTAGE"));
+        game.Talk("bill_clefairy");
+        Assert.Null(game.Present("bill_clefairy"));
+        // Now the cell separator brings Bill out as himself
+        game.Play(Scripts.Find("Computer", game.Map.ScriptFileAt(computer.Key.X, computer.Key.Y))!);
+        Assert.True(game.Story.Has("FLAG_HELPED_BILL_IN_SEA_COTTAGE"));
+        Assert.NotNull(game.Present("bill_human"));
+        game.Talk("bill_human");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("S.S. Ticket")!));
+        Assert.True(game.Story.Has("FLAG_GOT_SS_TICKET"));
+        Assert.True(game.Story.Has("FLAG_HIDE_NUGGET_BRIDGE_ROCKET"));
+        // Come back, and he is himself still, with no Clefairy beside him
+        game.Arrive("Route25_SeaCottage", 7, 8);
+        Assert.NotNull(game.Present("bill_human"));
+        Assert.Null(game.Present("bill_clefairy"));
+
+        // Cerulean City: before the ticket the policeman keeps the burgled house's door; after it he steps aside, and
+        // the thief in the yard behind hands back TM28 once beaten
+        var before = PastPewter();
+        before.Arrive("Kanto", 287, 60);
+        Assert.Equal((294, 52), (before.Present("cerulean_policeman")!.GridX, before.Present("cerulean_policeman")!.GridY));
+        game.Arrive("Kanto", 287, 60);
+        Assert.Equal((295, 52), (game.Present("cerulean_policeman")!.GridX, game.Present("cerulean_policeman")!.GridY));
+        Assert.True(game.Fires("GruntBottom"));
+        var thief = game.Step("GruntBottom");
+        Assert.Contains(thief.Log, l => l.StartsWith("battle kanto_team_rocket_grunt_5"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM28")!));
+        Assert.Null(game.Present("cerulean_grunt"));
+        Assert.False(game.Fires("GruntTop"));
+    }
+
+    [Fact]
+    public void MistyGivesTheCascadeBadgeAndTmThreeAndCutsGateOpens()
+    {
+        var game = PastPewter();
+        game.Arrive("CeruleanCity_Gym", 8, 16);
+        var misty = game.Talk("misty");
+        Assert.Contains(misty.Log, l => l.StartsWith("battle kanto_leader_misty"));
+        Assert.True(game.Story.HasBadge("Kanto", "Cascade"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM03")!));
+        Assert.True(game.Story.HasDefeated("kanto_picnicker_diana"));
+        Assert.True(game.Story.HasDefeated("kanto_swimmer_male_luis"));
+        Assert.Equal("Cascade", FieldMoveRules.BadgeFor(FieldMove.Cut, "Kanto"));
+        // Spoken to again she battles no more
+        Assert.DoesNotContain(game.Talk("misty").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM03")!));
+    }
+
+    [Fact]
+    public void TheMagikarpSalesmanSellsOneForFiveHundred()
+    {
+        var game = PastPewter();
+        game.Arrive("Route4_PokemonCenter_1F", 7, 7);
+        game.Talk("balding_man");
+        Assert.Contains(game.Party.Members, p => p.Species.Name == "Magikarp");
+        Assert.True(game.Story.Has("FLAG_BOUGHT_MAGIKARP"));
+        Assert.Equal(2500, game.Last.Money);
+        int team = game.Party.Count;
+        game.Talk("balding_man");
+        Assert.Equal(team, game.Party.Count);
+    }
+
+    [Fact]
+    public void EveryBadgeOfKantoHasItsOwnColourAndMark()
+    {
+        // Style guide, "Badges": Kanto's eight each have a look of their own, all different; Sinnoh's keep the row's
+        var kanto = RegionDatabase.Get(RegionDatabase.Kanto)!;
+        Assert.Equal(8, kanto.BadgeNames.Count);
+        foreach (string name in kanto.BadgeNames) Assert.True(PokemonPlatinumEngine.Graphics.BadgeLooks.ByName.ContainsKey(name), name);
+        var looks = kanto.BadgeNames.Select(n => PokemonPlatinumEngine.Graphics.BadgeLooks.ByName[n]).ToList();
+        Assert.Equal(8, looks.Select(l => l.Mark).Distinct().Count());
+        Assert.Equal(8, looks.Select(l => (l.Color.R, l.Color.G, l.Color.B)).Distinct().Count());
+        foreach (string name in RegionDatabase.Get(RegionDatabase.Sinnoh)!.BadgeNames)
+            Assert.False(PokemonPlatinumEngine.Graphics.BadgeLooks.ByName.ContainsKey(name), name);
+    }
+
+    [Fact]
+    public void ANewGameOfKantoHidesTheRivalAtNuggetBridgeAndBillAsHimself()
+    {
+        var game = new Game();
+        Assert.True(game.Story.Has("FLAG_HIDE_CERULEAN_RIVAL"));
+        Assert.True(game.Story.Has("FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE"));
+        // A save from before K4 has neither, and the places hide them themselves as they are come to
+        game.Story.Unset("FLAG_HIDE_CERULEAN_RIVAL");
+        game.Story.Unset("FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE");
+        game.Arrive("Kanto", 287, 60);
+        Assert.True(game.Story.Has("FLAG_HIDE_CERULEAN_RIVAL"));
+        Assert.Null(game.Present("cerulean_rival"));
+        game.Arrive("Route25_SeaCottage", 7, 8);
+        Assert.True(game.Story.Has("FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE"));
+        Assert.Null(game.Present("bill_human"));
+    }
+
     [Fact]
     public void ASaveOfKantoFromBeforeTheChapterIsTakenPastItsOpening()
     {
