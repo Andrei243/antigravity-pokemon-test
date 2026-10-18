@@ -612,6 +612,12 @@ internal sealed class TurnFlags
     /// <summary>A Gem went off for the move it is using (plan 06 · R28a): its power is 5325/4096 of itself.</summary>
     public bool GemBoosted;
 
+    /// <summary>
+    /// The move it is using touches, but its Protective Pads took the touch out (plan 06 · R28b): Tough Claws and Unseen
+    /// Fist, which Showdown reads off the move's own flag, still count it.
+    /// </summary>
+    public bool PaddedTouch;
+
     public void Took(Place from, MoveCategory category, int damage)
     {
         TookDamage = true;

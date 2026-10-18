@@ -544,6 +544,11 @@ public class SavedPokemonData
     /// <summary>Its Tera Type where one was given to it (plan 06 · R23: a type's name or "Stellar"); left out for one that has its first type.</summary>
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public string? TeraType { get; set; }
+    /// <summary>The nature a mint gave its stats and the stats hyper training raised (plan 06 · R28b); left out for one with neither.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public Nature? MintNature { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
+    public int HyperTrained { get; set; }
     public List<SavedMoveData> Moves { get; set; } = new();
 
     public static SavedPokemonData FromPokemon(Pokemon p)
@@ -599,7 +604,9 @@ public class SavedPokemonData
             Capsule = p.CapsuleId != 0 ? (p.Capsule ?? BallCapsule.Empty).ToSave() : null,
             DynamaxLevel = p.DynamaxLevel,
             GigantamaxFactor = p.GigantamaxFactor,
-            TeraType = p.HasOwnTeraType ? p.TeraType.Name : null
+            TeraType = p.HasOwnTeraType ? p.TeraType.Name : null,
+            MintNature = p.MintNature,
+            HyperTrained = p.HyperTrained
         };
 
         foreach (var m in p.Moves)
@@ -650,7 +657,9 @@ public class SavedPokemonData
             MetDate = MetDate,
             Language = Language,
             DynamaxLevel = Math.Clamp(DynamaxLevel, 0, 10),
-            GigantamaxFactor = GigantamaxFactor
+            GigantamaxFactor = GigantamaxFactor,
+            MintNature = MintNature,
+            HyperTrained = HyperTrained & HyperTraining.All
         };
         p.IsEgg = IsEgg;
         if (Models.TeraType.Parse(TeraType) is { } tera) p.TeraType = tera;

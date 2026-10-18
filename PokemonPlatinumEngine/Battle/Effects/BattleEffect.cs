@@ -339,7 +339,8 @@ public static class BattleEffects
     {
         if (battler.Pokemon == null) yield break;
         // Gastro Acid takes the ability away and Embargo the item, for as long as each lasts
-        if (includeAbility && battler.Ability?.Effect is { } ability) yield return ability;
+        // A breaker of abilities is the only one to leave it out, and never past an Ability Shield (plan 06 · R28b)
+        if ((includeAbility || LaterItems.AbilityShielded(battler)) && battler.Ability?.Effect is { } ability) yield return ability;
         if (ItemOf(battler) is { } item) yield return item;
     }
 
@@ -368,6 +369,6 @@ public static class BattleEffects
     public static bool Has(Battler battler, string ability, Battler? against = null)
     {
         if (battler.Ability?.Name != ability) return false;
-        return against == null || battler == against || !Of(against).Any(e => e.IgnoresTargetAbility);
+        return against == null || battler == against || !LaterItems.Breaks(Of(against).Any(e => e.IgnoresTargetAbility), battler);
     }
 }

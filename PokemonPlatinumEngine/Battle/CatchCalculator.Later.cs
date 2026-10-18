@@ -101,6 +101,10 @@ public static partial class CatchCalculator
         }
     }
 
-    /// <summary>Whether a ball's catch runs in full (the coverage report asks): every ball but the Strange Ball, which only Legends: Arceus's way of being brought over makes.</summary>
-    public static bool KnowsBall(string ball) => ball != "Strange Ball";
+    /// <summary>
+    /// Whether a ball's catch runs in full (the coverage report asks): every ball. The Strange Ball, which the games give only
+    /// to a Pokémon brought over from Legends: Arceus and never let anyone throw, catches as a Poké Ball if one is thrown
+    /// here (plan 06 · R28b: our ruling).
+    /// </summary>
+    public static bool KnowsBall(string ball) => true;
 }

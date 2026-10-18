@@ -316,6 +316,11 @@ public static class Evolution
     /// <summary>An item a Pokémon holds for its evolution's sake: one some species must hold to evolve, or the Everstone.</summary>
     public static bool IsHeldForEvolution(ItemData item) => item.HoldEffect == EverstoneEffect || HeldItems.Value.Contains(item.Name);
 
+    private static readonly Lazy<HashSet<string>> GatheredItems = new(() => ItemsOf(m => m == EvolutionMethod.LevelWithItemsInBag));
+
+    /// <summary>An item a species evolves on by having so many of it in the bag (plan 06 · R28b): the Gimmighoul Coin and the Meltan Candy.</summary>
+    public static bool IsGatheredForEvolution(ItemData item) => GatheredItems.Value.Contains(item.Name);
+
     // ---------------------------------------------------------------- things that are counted
 
     public static int Progress(Pokemon p, string key) => p.EvolutionProgress.GetValueOrDefault(key);

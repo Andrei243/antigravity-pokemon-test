@@ -7836,9 +7836,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 300,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Increases HP effort by 1."
+    "description": "Increases HP effort by 1.",
+    "fieldUse": "Healing",
+    "use": {
+      "hpEVs": 1
+    }
   },
   {
     "id": 1607,
@@ -7847,9 +7851,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 300,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Increases Attack effort by 1."
+    "description": "Increases Attack effort by 1.",
+    "fieldUse": "Healing",
+    "use": {
+      "atkEVs": 1
+    }
   },
   {
     "id": 1608,
@@ -7858,9 +7866,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 300,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Increases Defense effort by 1."
+    "description": "Increases Defense effort by 1.",
+    "fieldUse": "Healing",
+    "use": {
+      "defEVs": 1
+    }
   },
   {
     "id": 1609,
@@ -7869,9 +7881,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 300,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Increases Special Attack effort by 1."
+    "description": "Increases Special Attack effort by 1.",
+    "fieldUse": "Healing",
+    "use": {
+      "spatkEVs": 1
+    }
   },
   {
     "id": 1610,
@@ -7880,9 +7896,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 300,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Increases Special Defense effort by 1."
+    "description": "Increases Special Defense effort by 1.",
+    "fieldUse": "Healing",
+    "use": {
+      "spdefEVs": 1
+    }
   },
   {
     "id": 1611,
@@ -7891,9 +7911,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 300,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Increases Speed effort by 1."
+    "description": "Increases Speed effort by 1.",
+    "fieldUse": "Healing",
+    "use": {
+      "speedEVs": 1
+    }
   },
   {
     "id": 1616,
@@ -8013,9 +8037,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 10000,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Switches a Pokémon between its two possible (non-Hidden) Abilities."
+    "description": "Switches a Pokémon between its two possible (non-Hidden) Abilities.",
+    "fieldUse": "AbilityCapsule"
   },
   {
     "id": 1686,
@@ -9164,6 +9189,30 @@
     }
   },
   {
+    "id": 1836,
+    "name": "Bottle Cap",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 5000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Trade to Mr. Hyper to maximize one of a Pokémon's genes.",
+    "flingPower": 30
+  },
+  {
+    "id": 1837,
+    "name": "Gold Bottle Cap",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Trade to Mr. Hyper to maximize all of a Pokémon's genes.",
+    "flingPower": 30
+  },
+  {
     "id": 1838,
     "name": "Z-Ring",
     "pocket": "KeyItems",
@@ -9430,8 +9479,9 @@
     "effectValue": 0,
     "price": 300,
     "canUseInBattle": false,
-    "canUseInOverworld": false,
-    "description": "Changes Oricorio to Baile Style."
+    "canUseInOverworld": true,
+    "description": "Changes Oricorio to Baile Style.",
+    "fieldUse": "Nectar"
   },
   {
     "id": 1890,
@@ -9441,8 +9491,9 @@
     "effectValue": 0,
     "price": 300,
     "canUseInBattle": false,
-    "canUseInOverworld": false,
-    "description": "Changes Oricorio to Pom-Pom Style."
+    "canUseInOverworld": true,
+    "description": "Changes Oricorio to Pom-Pom Style.",
+    "fieldUse": "Nectar"
   },
   {
     "id": 1891,
@@ -9452,8 +9503,9 @@
     "effectValue": 0,
     "price": 300,
     "canUseInBattle": false,
-    "canUseInOverworld": false,
-    "description": "Changes Oricorio to Pa'u Style."
+    "canUseInOverworld": true,
+    "description": "Changes Oricorio to Pa'u Style.",
+    "fieldUse": "Nectar"
   },
   {
     "id": 1892,
@@ -9463,8 +9515,9 @@
     "effectValue": 0,
     "price": 300,
     "canUseInBattle": false,
-    "canUseInOverworld": false,
-    "description": "Changes Oricorio to Sensu Style."
+    "canUseInOverworld": true,
+    "description": "Changes Oricorio to Sensu Style.",
+    "fieldUse": "Nectar"
   },
   {
     "id": 1896,
@@ -9782,9 +9835,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "hpEVs": 25
+    }
   },
   {
     "id": 2041,
@@ -9793,9 +9850,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "atkEVs": 25
+    }
   },
   {
     "id": 2042,
@@ -9804,9 +9865,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "defEVs": 25
+    }
   },
   {
     "id": 2043,
@@ -9815,9 +9880,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "spatkEVs": 25
+    }
   },
   {
     "id": 2044,
@@ -9826,9 +9895,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "spdefEVs": 25
+    }
   },
   {
     "id": 2045,
@@ -9837,9 +9910,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "speedEVs": 25
+    }
   },
   {
     "id": 2046,
@@ -9848,9 +9925,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "hpEVs": 50
+    }
   },
   {
     "id": 2047,
@@ -9859,9 +9940,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "atkEVs": 50
+    }
   },
   {
     "id": 2048,
@@ -9870,9 +9955,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "defEVs": 50
+    }
   },
   {
     "id": 2049,
@@ -9881,9 +9970,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "spatkEVs": 50
+    }
   },
   {
     "id": 2050,
@@ -9892,9 +9985,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "spdefEVs": 50
+    }
   },
   {
     "id": 2051,
@@ -9903,9 +10000,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "speedEVs": 50
+    }
   },
   {
     "id": 2052,
@@ -9914,9 +10015,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "hpEVs": 75
+    }
   },
   {
     "id": 2053,
@@ -9925,9 +10030,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "atkEVs": 75
+    }
   },
   {
     "id": 2054,
@@ -9936,9 +10045,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "defEVs": 75
+    }
   },
   {
     "id": 2055,
@@ -9947,9 +10060,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "spatkEVs": 75
+    }
   },
   {
     "id": 2056,
@@ -9958,9 +10075,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "spdefEVs": 75
+    }
   },
   {
     "id": 2057,
@@ -9969,9 +10090,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "speedEVs": 75
+    }
   },
   {
     "id": 2136,
@@ -10004,7 +10129,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "RustedSword"
   },
   {
     "id": 2162,
@@ -10015,7 +10141,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "RustedShield"
   },
   {
     "id": 2167,
@@ -10212,9 +10339,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "ExpCandy",
+    "use": {
+      "exp": 100
+    }
   },
   {
     "id": 2183,
@@ -10223,9 +10354,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 240,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "ExpCandy",
+    "use": {
+      "exp": 800
+    }
   },
   {
     "id": 2184,
@@ -10234,9 +10369,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 1000,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "ExpCandy",
+    "use": {
+      "exp": 3000
+    }
   },
   {
     "id": 2185,
@@ -10245,9 +10384,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 3000,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "ExpCandy",
+    "use": {
+      "exp": 10000
+    }
   },
   {
     "id": 2186,
@@ -10256,9 +10399,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 10000,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "ExpCandy",
+    "use": {
+      "exp": 30000
+    }
   },
   {
     "id": 2187,
@@ -10267,9 +10414,1410 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 0,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "DynamaxCandy"
+  },
+  {
+    "id": 2188,
+    "name": "TR00",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Swords Dance to a compatible Pokémon, and is used up. Raises the user's Attack by two stages.",
+    "teachesMove": "Swords Dance",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2189,
+    "name": "TR01",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Body Slam to a compatible Pokémon, and is used up. Has a chance to paralyze the target.",
+    "teachesMove": "Body Slam",
+    "flingPower": 85,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2190,
+    "name": "TR02",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Flamethrower to a compatible Pokémon, and is used up. Has a chance to burn the target.",
+    "teachesMove": "Flamethrower",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2191,
+    "name": "TR03",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Hydro Pump to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "Hydro Pump",
+    "flingPower": 110,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2192,
+    "name": "TR04",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Surf to a compatible Pokémon, and is used up. Inflicts regular damage and can hit Dive users.",
+    "teachesMove": "Surf",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2193,
+    "name": "TR05",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Ice Beam to a compatible Pokémon, and is used up. Has a chance to freeze the target.",
+    "teachesMove": "Ice Beam",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2194,
+    "name": "TR06",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Blizzard to a compatible Pokémon, and is used up. Has a chance to freeze the target.",
+    "teachesMove": "Blizzard",
+    "flingPower": 110,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2195,
+    "name": "TR07",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Low Kick to a compatible Pokémon, and is used up. Inflicts more damage to heavier targets, with a maximum of 120 power.",
+    "teachesMove": "Low Kick",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2196,
+    "name": "TR08",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Thunderbolt to a compatible Pokémon, and is used up. Has a chance to paralyze the target.",
+    "teachesMove": "Thunderbolt",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2197,
+    "name": "TR09",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Thunder to a compatible Pokémon, and is used up. Has a chance to paralyze the target.",
+    "teachesMove": "Thunder",
+    "flingPower": 110,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2198,
+    "name": "TR10",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Earthquake to a compatible Pokémon, and is used up. Inflicts regular damage and can hit Dig users.",
+    "teachesMove": "Earthquake",
+    "flingPower": 100,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2199,
+    "name": "TR11",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Psychic to a compatible Pokémon, and is used up. Has a chance to lower the target's Special Defense by one stage.",
+    "teachesMove": "Psychic",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2200,
+    "name": "TR12",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Agility to a compatible Pokémon, and is used up. Raises the user's Speed by two stages.",
+    "teachesMove": "Agility",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2201,
+    "name": "TR13",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 2000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Focus Energy to a compatible Pokémon, and is used up. Increases the user's chance to score a critical hit.",
+    "teachesMove": "Focus Energy",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2202,
+    "name": "TR14",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 2000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Metronome to a compatible Pokémon, and is used up. Randomly selects and uses any move in the game.",
+    "teachesMove": "Metronome",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2203,
+    "name": "TR15",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Fire Blast to a compatible Pokémon, and is used up. Has a chance to burn the target.",
+    "teachesMove": "Fire Blast",
+    "flingPower": 110,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2204,
+    "name": "TR16",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Waterfall to a compatible Pokémon, and is used up. Has a chance to make the target flinch.",
+    "teachesMove": "Waterfall",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2205,
+    "name": "TR17",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Amnesia to a compatible Pokémon, and is used up. Raises the user's Special Defense by two stages.",
+    "teachesMove": "Amnesia",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2206,
+    "name": "TR18",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Leech Life to a compatible Pokémon, and is used up. Drains half the damage inflicted to heal the user.",
+    "teachesMove": "Leech Life",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2207,
+    "name": "TR19",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Tri Attack to a compatible Pokémon, and is used up. Has a chance to burn, freeze, or paralyze the target.",
+    "teachesMove": "Tri Attack",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2208,
+    "name": "TR20",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Substitute to a compatible Pokémon, and is used up. Transfers 1/4 of the user's max HP into a doll, protecting the user from further damage or status changes until it breaks.",
+    "teachesMove": "Substitute",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2209,
+    "name": "TR21",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Reversal to a compatible Pokémon, and is used up. Inflicts more damage when the user has less HP remaining, with a maximum of 200 power.",
+    "teachesMove": "Reversal",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2210,
+    "name": "TR22",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Sludge Bomb to a compatible Pokémon, and is used up. Has a chance to poison the target.",
+    "teachesMove": "Sludge Bomb",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2211,
+    "name": "TR23",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Spikes to a compatible Pokémon, and is used up. Scatters Spikes, hurting opposing Pokémon that switch in.",
+    "teachesMove": "Spikes",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2212,
+    "name": "TR24",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Outrage to a compatible Pokémon, and is used up. Hits every turn for 2-3 turns, then confuses the user.",
+    "teachesMove": "Outrage",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2213,
+    "name": "TR25",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Psyshock to a compatible Pokémon, and is used up. Inflicts damage based on the target's Defense, not Special Defense.",
+    "teachesMove": "Psyshock",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2214,
+    "name": "TR26",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 2000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Endure to a compatible Pokémon, and is used up. Prevents the user's HP from lowering below 1 this turn.",
+    "teachesMove": "Endure",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2215,
+    "name": "TR27",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Sleep Talk to a compatible Pokémon, and is used up. Randomly uses one of the user's other three moves. Only works if the user is sleeping.",
+    "teachesMove": "Sleep Talk",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2216,
+    "name": "TR28",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Megahorn to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "Megahorn",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2217,
+    "name": "TR29",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Baton Pass to a compatible Pokémon, and is used up. Allows the trainer to switch out the user and pass effects along to its replacement.",
+    "teachesMove": "Baton Pass",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2218,
+    "name": "TR30",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Encore to a compatible Pokémon, and is used up. Forces the target to repeat its last used move every turn for 2 to 6 turns.",
+    "teachesMove": "Encore",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2219,
+    "name": "TR31",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Iron Tail to a compatible Pokémon, and is used up. Has a chance to lower the target's Defense by one stage.",
+    "teachesMove": "Iron Tail",
+    "flingPower": 100,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2220,
+    "name": "TR32",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Crunch to a compatible Pokémon, and is used up. Has a chance to lower the target's Defense by one stage.",
+    "teachesMove": "Crunch",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2221,
+    "name": "TR33",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Shadow Ball to a compatible Pokémon, and is used up. Has a chance to lower the target's Special Defense by one stage.",
+    "teachesMove": "Shadow Ball",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2222,
+    "name": "TR34",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Future Sight to a compatible Pokémon, and is used up. Hits the target two turns later.",
+    "teachesMove": "Future Sight",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2223,
+    "name": "TR35",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Uproar to a compatible Pokémon, and is used up. Forced to use this move for several turns. Pokémon cannot fall asleep in that time.",
+    "teachesMove": "Uproar",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2224,
+    "name": "TR36",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Heat Wave to a compatible Pokémon, and is used up. Has a chance to burn the target.",
+    "teachesMove": "Heat Wave",
+    "flingPower": 95,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2225,
+    "name": "TR37",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Taunt to a compatible Pokémon, and is used up. For the next few turns, the target can only use damaging moves.",
+    "teachesMove": "Taunt",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2226,
+    "name": "TR38",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Trick to a compatible Pokémon, and is used up. User and target swap items.",
+    "teachesMove": "Trick",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2227,
+    "name": "TR39",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Superpower to a compatible Pokémon, and is used up. Lowers the user's Attack and Defense by one stage after inflicting damage.",
+    "teachesMove": "Superpower",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2228,
+    "name": "TR40",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 2000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Skill Swap to a compatible Pokémon, and is used up. User and target swap abilities.",
+    "teachesMove": "Skill Swap",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2229,
+    "name": "TR41",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Blaze Kick to a compatible Pokémon, and is used up. Has an increased chance for a critical hit and a chance to burn the target.",
+    "teachesMove": "Blaze Kick",
+    "flingPower": 85,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2230,
+    "name": "TR42",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Hyper Voice to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "Hyper Voice",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2231,
+    "name": "TR43",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Overheat to a compatible Pokémon, and is used up. Lowers the user's Special Attack by two stages after inflicting damage.",
+    "teachesMove": "Overheat",
+    "flingPower": 130,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2232,
+    "name": "TR44",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Cosmic Power to a compatible Pokémon, and is used up. Raises the user's Defense and Special Defense by one stage.",
+    "teachesMove": "Cosmic Power",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2233,
+    "name": "TR45",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Muddy Water to a compatible Pokémon, and is used up. Has a chance to lower the target's accuracy by one stage.",
+    "teachesMove": "Muddy Water",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2234,
+    "name": "TR46",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Iron Defense to a compatible Pokémon, and is used up. Raises the user's Defense by two stages.",
+    "teachesMove": "Iron Defense",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2235,
+    "name": "TR47",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Dragon Claw to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "Dragon Claw",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2236,
+    "name": "TR48",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Bulk Up to a compatible Pokémon, and is used up. Raises the user's Attack and Defense by one stage.",
+    "teachesMove": "Bulk Up",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2237,
+    "name": "TR49",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Calm Mind to a compatible Pokémon, and is used up. Raises the user's Special Attack and Special Defense by one stage.",
+    "teachesMove": "Calm Mind",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2238,
+    "name": "TR50",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Leaf Blade to a compatible Pokémon, and is used up. Has an increased chance for a critical hit.",
+    "teachesMove": "Leaf Blade",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2239,
+    "name": "TR51",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Dragon Dance to a compatible Pokémon, and is used up. Raises the user's Attack and Speed by one stage.",
+    "teachesMove": "Dragon Dance",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2240,
+    "name": "TR52",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Gyro Ball to a compatible Pokémon, and is used up. Power raises when the user has lower Speed, up to a maximum of 150.",
+    "teachesMove": "Gyro Ball",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2241,
+    "name": "TR53",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Close Combat to a compatible Pokémon, and is used up. Lowers the user's Defense and Special Defense by one stage after inflicting damage.",
+    "teachesMove": "Close Combat",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2242,
+    "name": "TR54",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Toxic Spikes to a compatible Pokémon, and is used up. Scatters poisoned spikes, poisoning opposing Pokémon that switch in.",
+    "teachesMove": "Toxic Spikes",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2243,
+    "name": "TR55",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Flare Blitz to a compatible Pokémon, and is used up. User takes 1/3 the damage inflicted in recoil. Has a chance to burn the target.",
+    "teachesMove": "Flare Blitz",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2244,
+    "name": "TR56",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Aura Sphere to a compatible Pokémon, and is used up. Never misses.",
+    "teachesMove": "Aura Sphere",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2245,
+    "name": "TR57",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Poison Jab to a compatible Pokémon, and is used up. Has a chance to poison the target.",
+    "teachesMove": "Poison Jab",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2246,
+    "name": "TR58",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Dark Pulse to a compatible Pokémon, and is used up. Has a chance to make the target flinch.",
+    "teachesMove": "Dark Pulse",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2247,
+    "name": "TR59",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Seed Bomb to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "Seed Bomb",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2248,
+    "name": "TR60",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches X-Scissor to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "X-Scissor",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2249,
+    "name": "TR61",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Bug Buzz to a compatible Pokémon, and is used up. Has a chance to lower the target's Special Defense by one stage.",
+    "teachesMove": "Bug Buzz",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2250,
+    "name": "TR62",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Dragon Pulse to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "Dragon Pulse",
+    "flingPower": 85,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2251,
+    "name": "TR63",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Power Gem to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "Power Gem",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2252,
+    "name": "TR64",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Focus Blast to a compatible Pokémon, and is used up. Has a chance to lower the target's Special Defense by one stage.",
+    "teachesMove": "Focus Blast",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2253,
+    "name": "TR65",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Energy Ball to a compatible Pokémon, and is used up. Has a chance to lower the target's Special Defense by one stage.",
+    "teachesMove": "Energy Ball",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2254,
+    "name": "TR66",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Brave Bird to a compatible Pokémon, and is used up. User receives 1/3 the damage inflicted in recoil.",
+    "teachesMove": "Brave Bird",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2255,
+    "name": "TR67",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Earth Power to a compatible Pokémon, and is used up. Has a chance to lower the target's Special Defense by one stage.",
+    "teachesMove": "Earth Power",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2256,
+    "name": "TR68",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Nasty Plot to a compatible Pokémon, and is used up. Raises the user's Special Attack by two stages.",
+    "teachesMove": "Nasty Plot",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2257,
+    "name": "TR69",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Zen Headbutt to a compatible Pokémon, and is used up. Has a chance to make the target flinch.",
+    "teachesMove": "Zen Headbutt",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2258,
+    "name": "TR70",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Flash Cannon to a compatible Pokémon, and is used up. Has a chance to lower the target's Special Defense by one stage.",
+    "teachesMove": "Flash Cannon",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2259,
+    "name": "TR71",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Leaf Storm to a compatible Pokémon, and is used up. Lowers the user's Special Attack by two stages after inflicting damage.",
+    "teachesMove": "Leaf Storm",
+    "flingPower": 130,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2260,
+    "name": "TR72",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Power Whip to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "Power Whip",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2261,
+    "name": "TR73",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Gunk Shot to a compatible Pokémon, and is used up. Has a chance to poison the target.",
+    "teachesMove": "Gunk Shot",
+    "flingPower": 120,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2262,
+    "name": "TR74",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Iron Head to a compatible Pokémon, and is used up. Has a chance to make the target flinch.",
+    "teachesMove": "Iron Head",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2263,
+    "name": "TR75",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Stone Edge to a compatible Pokémon, and is used up. Has an increased chance for a critical hit.",
+    "teachesMove": "Stone Edge",
+    "flingPower": 100,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2264,
+    "name": "TR76",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Stealth Rock to a compatible Pokémon, and is used up. Causes damage when opposing Pokémon switch in.",
+    "teachesMove": "Stealth Rock",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2265,
+    "name": "TR77",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Grass Knot to a compatible Pokémon, and is used up. Inflicts more damage to heavier targets, with a maximum of 120 power.",
+    "teachesMove": "Grass Knot",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2266,
+    "name": "TR78",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Sludge Wave to a compatible Pokémon, and is used up. Has a chance to poison the target.",
+    "teachesMove": "Sludge Wave",
+    "flingPower": 95,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2267,
+    "name": "TR79",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Heavy Slam to a compatible Pokémon, and is used up. Power is higher when the user weighs more than the target, up to a maximum of 120.",
+    "teachesMove": "Heavy Slam",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2268,
+    "name": "TR80",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Electro Ball to a compatible Pokémon, and is used up. Power is higher when the user has greater Speed than the target, up to a maximum of 150.",
+    "teachesMove": "Electro Ball",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2269,
+    "name": "TR81",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Foul Play to a compatible Pokémon, and is used up. Calculates damage with the target's attacking stat.",
+    "teachesMove": "Foul Play",
+    "flingPower": 95,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2270,
+    "name": "TR82",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Stored Power to a compatible Pokémon, and is used up. Power is higher the more the user's stats have been raised, to a maximum of 31×.",
+    "teachesMove": "Stored Power",
+    "flingPower": 20,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2271,
+    "name": "TR83",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Ally Switch to a compatible Pokémon, and is used up. User switches places with the friendly Pokémon opposite it.",
+    "teachesMove": "Ally Switch",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2272,
+    "name": "TR84",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Scald to a compatible Pokémon, and is used up. Has a chance to burn the target.",
+    "teachesMove": "Scald",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2273,
+    "name": "TR85",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 2000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Work Up to a compatible Pokémon, and is used up. Raises the user's Attack and Special Attack by one stage each.",
+    "teachesMove": "Work Up",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2274,
+    "name": "TR86",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Wild Charge to a compatible Pokémon, and is used up. User receives 1/4 the damage it inflicts in recoil.",
+    "teachesMove": "Wild Charge",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2275,
+    "name": "TR87",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Drill Run to a compatible Pokémon, and is used up. Has an increased chance for a critical hit.",
+    "teachesMove": "Drill Run",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2276,
+    "name": "TR88",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Heat Crash to a compatible Pokémon, and is used up. Power is higher when the user weighs more than the target, up to a maximum of 120.",
+    "teachesMove": "Heat Crash",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2277,
+    "name": "TR89",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 16000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Hurricane to a compatible Pokémon, and is used up. Has a chance to confuse the target.",
+    "teachesMove": "Hurricane",
+    "flingPower": 110,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2278,
+    "name": "TR90",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Play Rough to a compatible Pokémon, and is used up. Has a chance to lower the target's Attack by one stage.",
+    "teachesMove": "Play Rough",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2279,
+    "name": "TR91",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 4000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Venom Drench to a compatible Pokémon, and is used up. Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned.",
+    "teachesMove": "Venom Drench",
+    "flingPower": 10,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2280,
+    "name": "TR92",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Dazzling Gleam to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "Dazzling Gleam",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2281,
+    "name": "TR93",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Darkest Lariat to a compatible Pokémon, and is used up. Ignores the target's stat modifiers.",
+    "teachesMove": "Darkest Lariat",
+    "flingPower": 85,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2282,
+    "name": "TR94",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches High Horsepower to a compatible Pokémon, and is used up. Inflicts regular damage with no additional effect.",
+    "teachesMove": "High Horsepower",
+    "flingPower": 95,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2283,
+    "name": "TR95",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Throat Chop to a compatible Pokémon, and is used up. Prevents the target from using sound-based moves for two turns.",
+    "teachesMove": "Throat Chop",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2284,
+    "name": "TR96",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Pollen Puff to a compatible Pokémon, and is used up. Damages opponents, but heals allies for 50% of their max HP.",
+    "teachesMove": "Pollen Puff",
+    "flingPower": 90,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2285,
+    "name": "TR97",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 10000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Psychic Fangs to a compatible Pokémon, and is used up. Destroys Reflect and Light Screen.",
+    "teachesMove": "Psychic Fangs",
+    "flingPower": 85,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2286,
+    "name": "TR98",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Liquidation to a compatible Pokémon, and is used up. Has a chance to lower the target's Defense by one stage.",
+    "teachesMove": "Liquidation",
+    "flingPower": 85,
+    "fieldUse": "TmHm"
+  },
+  {
+    "id": 2287,
+    "name": "TR99",
+    "pocket": "TMsAndHMs",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 6000,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Teaches Body Press to a compatible Pokémon, and is used up. Damage is calculated using the user's Defense stat as its Attack, including stat stage changes.",
+    "teachesMove": "Body Press",
+    "flingPower": 80,
+    "fieldUse": "TmHm"
   },
   {
     "id": 2289,
@@ -10278,9 +11826,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2290,
@@ -10289,9 +11838,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2291,
@@ -10300,9 +11850,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2292,
@@ -10311,9 +11862,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2293,
@@ -10322,9 +11874,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2294,
@@ -10333,9 +11886,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2295,
@@ -10344,9 +11898,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2296,
@@ -10355,9 +11910,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2297,
@@ -10366,9 +11922,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2298,
@@ -10377,9 +11934,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2299,
@@ -10388,9 +11946,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2300,
@@ -10399,9 +11958,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2301,
@@ -10410,9 +11970,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2302,
@@ -10421,9 +11982,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2303,
@@ -10432,9 +11994,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2304,
@@ -10443,9 +12006,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2305,
@@ -10454,9 +12018,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2306,
@@ -10465,9 +12030,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2307,
@@ -10476,9 +12042,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2308,
@@ -10487,9 +12054,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2309,
@@ -10498,9 +12066,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Mint"
   },
   {
     "id": 2311,
@@ -10594,9 +12163,10 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 20,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "AbilityPatch"
   },
   {
     "id": 2662,
@@ -10607,7 +12177,9 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "ArceusNormal",
+    "holdParam": 20
   },
   {
     "id": 2664,
@@ -10618,7 +12190,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "LegendPlate"
   },
   {
     "id": 2669,
@@ -10804,6 +12377,8 @@
     "canUseInBattle": false,
     "canUseInOverworld": false,
     "description": "",
+    "holdEffect": "MaskWellspring",
+    "holdParam": 20,
     "flingPower": 60
   },
   {
@@ -10816,6 +12391,8 @@
     "canUseInBattle": false,
     "canUseInOverworld": false,
     "description": "",
+    "holdEffect": "MaskHearthflame",
+    "holdParam": 20,
     "flingPower": 60
   },
   {
@@ -10828,6 +12405,8 @@
     "canUseInBattle": false,
     "canUseInOverworld": false,
     "description": "",
+    "holdEffect": "MaskCornerstone",
+    "holdParam": 20,
     "flingPower": 60
   },
   {
@@ -10873,9 +12452,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 125,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "hpEVs": 10
+    }
   },
   {
     "id": 3113,
@@ -10884,9 +12467,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 125,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "atkEVs": 10
+    }
   },
   {
     "id": 3114,
@@ -10895,9 +12482,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 125,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "defEVs": 10
+    }
   },
   {
     "id": 3115,
@@ -10906,9 +12497,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 125,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "spatkEVs": 10
+    }
   },
   {
     "id": 3116,
@@ -10917,9 +12512,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 125,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "spdefEVs": 10
+    }
   },
   {
     "id": 3117,
@@ -10928,9 +12527,13 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 125,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "speedEVs": 10
+    }
   },
   {
     "id": 3118,
@@ -10939,9 +12542,18 @@
     "effectType": "None",
     "effectValue": 0,
     "price": 75,
-    "canUseInBattle": true,
+    "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "use": {
+      "hpEVs": -255,
+      "atkEVs": -255,
+      "defEVs": -255,
+      "spatkEVs": -255,
+      "spdefEVs": -255,
+      "speedEVs": -255
+    }
   },
   {
     "id": 3160,

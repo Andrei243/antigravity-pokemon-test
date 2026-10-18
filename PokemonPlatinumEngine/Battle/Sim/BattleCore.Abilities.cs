@@ -184,7 +184,7 @@ public sealed partial class BattleCore
             hit.FailLine = Text.Of("battle.itDoesntAffect", ("target", target.Name));
             return true;
         }
-        bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility) || DamageCalculator.IgnoresAbilities(move.Data);
+        bool breaks = LaterItems.Breaks(BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility) || DamageCalculator.IgnoresAbilities(move.Data), target);
         if (breaks) return false;
         // Aroma Veil over the target's side (plan 06 · R27b)
         if (AromaVeils(use, target, hit)) return true;
@@ -211,7 +211,7 @@ public sealed partial class BattleCore
     }
 
     /// <summary>Unseen Fist and Piercing Drill: a move that touches goes through Protect and its kin (not the side's guards).</summary>
-    private static bool PiercesProtect(MoveUse use) => use.Data.MakesContact && use.User.Ability?.Name is "Unseen Fist" or "Piercing Drill";
+    private static bool PiercesProtect(MoveUse use) => (use.Data.MakesContact || use.User.Turn.PaddedTouch) && use.User.Ability?.Name is "Unseen Fist" or "Piercing Drill";
 
     /// <summary>Infiltrator: its hits go past a Substitute (Showdown's <c>infiltrates</c>), as they go past the screens.</summary>
     private static bool Infiltrates(MoveUse use) => DamageCalculator.Infiltrates(use.User) && use.Move.Data.Name is not ("Transform");
@@ -242,7 +242,7 @@ public sealed partial class BattleCore
     {
         var user = use.User;
         if (SlotsOf(user.Side).Any(b => b.IsActive && Has(b, "Victory Star"))) rate = rate * 4506 / 4096;
-        bool breaks = BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility);
+        bool breaks = LaterItems.Breaks(BattleEffects.Of(user).Any(e => e.IgnoresTargetAbility), target);
         if (!breaks && use.Move.Category == MoveCategory.Status && use.Move.Accuracy > 50 && Has(target, "Wonder Skin") && target != user)
             rate = rate * 50 / use.Move.Accuracy;
         return rate;
@@ -311,6 +311,8 @@ public sealed partial class BattleCore
         string? own = theirs.AbilityName;
         if (own == null || own == mine.AbilityName || CantBeReplaced.Contains(own) || (swaps && (NotHandedOn.Contains(own) || own == "Wonder Guard"))) return;
         string given = mine.AbilityName!;
+        // An Ability Shield keeps the toucher's, and for a swap the holder's, as they are (plan 06 · R28b)
+        if (ShieldsItsAbility(toucher) || (swaps && ShieldsItsAbility(holder))) return;
         KeepAbility(Keep(toucher), theirs);
         theirs.AbilityName = given;
         if (swaps)

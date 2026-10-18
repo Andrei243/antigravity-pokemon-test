@@ -443,6 +443,7 @@ public sealed partial class BattleCore
             Does = (b, use) => b.OnEach(use, t =>
             {
                 if (t.HasSubstitute || t.Volatile.AbilitySuppressed || t.Pokemon!.AbilityName == "Multitype") return b.Fails();
+                if (b.ShieldsItsAbility(t)) return false;
                 t.Volatile.AbilitySuppressed = true;
                 b.Say(Text.Of("battle.abilityWasSuppressed", ("target", t.Name)));
                 return true;

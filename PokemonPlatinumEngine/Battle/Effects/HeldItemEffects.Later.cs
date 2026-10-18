@@ -42,6 +42,12 @@ public static partial class HeldItemEffects
         ["MirrorHerb"] = Plain, ["AdrenalineOrb"] = Plain,
         // The Roseli Berry against a Fairy hit, as Platinum's berries against a type (WeakenedByBerry)
         ["WeakenSeFairy"] = Plain,
+        // Plan 06 · R28b: the Ability Shield (BattleCore.LaterItems2.cs and wherever an ability is changed or broken),
+        // the Rusted Sword and Shield (Crown), Ogerpon's masks (DamageCalculator.Items.cs), the Legend Plate (Judgment)
+        // and the Blank Plate, which leaves Arceus and its Judgment Normal as no plate does
+        ["AbilityShield"] = Plain, ["RustedSword"] = Plain, ["RustedShield"] = Plain,
+        ["MaskWellspring"] = Plain, ["MaskHearthflame"] = Plain, ["MaskCornerstone"] = Plain,
+        [LaterItems.LegendPlate] = Plain, ["ArceusNormal"] = Plain,
 
         // ---- Hooks
         ["AirBalloon"] = _ => new AirBalloon(),
@@ -61,6 +67,19 @@ internal static class LaterItems
 {
     /// <summary>The start of the hold effects named for a type: a Gem's, a Memory's (Multi-Attack), a Drive's (Techno Blast).</summary>
     public const string Gem = "Gem", Memory = "Memory", Drive = "Drive";
+
+    /// <summary>The Legend Plate's hold effect (plan 06 · R28b).</summary>
+    public const string LegendPlate = "LegendPlate";
+
+    /// <summary>
+    /// Its Ability Shield is at work (plan 06 · R28b; Showdown's <c>hasItem('abilityshield')</c>): in force under Klutz
+    /// (<c>ignoreKlutz</c>), out of use under an Embargo or in Magic Room.
+    /// </summary>
+    public static bool AbilityShielded(Battler b) =>
+        b.Pokemon?.HeldItem?.HoldEffect == "AbilityShield" && b.Volatile.EmbargoTurns == 0 && !(b.Field?.MagicRoomTurns > 0);
+
+    /// <summary>Whether a breaker of abilities (Mold Breaker and its kin, a move that ignores abilities) goes past this target's: never past an Ability Shield.</summary>
+    public static bool Breaks(bool breaks, Battler target) => breaks && !AbilityShielded(target);
 
     /// <summary>The holder's item in force has this hold effect (none under an Embargo, with Klutz or in Magic Room).</summary>
     public static bool Holds(Battler b, string hold) => BattleEffects.HoldEffectOf(b) == hold;
@@ -177,5 +196,11 @@ internal sealed class BoosterEnergy : BattleEffect
         self.Volatile.BoosterEnergy = true;
         var stat = LaterAbilities.ParadoxStat(self) ?? StatType.Attack;
         ctx.Announce(Text.Of("battle.boosterEnergy", ("pokemon", self.Name), ("item", item), ("ability", ctx.AbilityOf(self)), ("stat", BattleText.StatName(stat))));
+    }
+
+    /// <summary>The Electric Terrain gone with its holder on the field sets Quark Drive going by it (plan 06 · R28b).</summary>
+    public override void OnTerrainChange(IBattleContext ctx, Battler self)
+    {
+        if (self.IsActive) OnEntry(ctx, self);
     }
 }

@@ -15,6 +15,9 @@ public static partial class DamageCalculator
     {
         if (myHold == "PunchingGlove" && (move.Data.Flags & MoveFlags.Punch) != 0) bp.Add(4506);
         if (attacker.Turn.GemBoosted) bp.Add(5325);
+        // Ogerpon's mask: a fifth more for the Ogerpon whose mask it is (plan 06 · R28b; Showdown's onBasePower)
+        if (myHold != null && myHold.StartsWith("Mask", System.StringComparison.Ordinal)
+            && attacker.Pokemon!.Form?.StartsWith("Ogerpon-" + myHold["Mask".Length..], System.StringComparison.Ordinal) == true) bp.Add(4915);
     }
 
     /// <summary>The defence's (onModifyDef, onModifySpD): an Eviolite on a Pokémon that can still evolve, an Assault Vest against a special move.</summary>

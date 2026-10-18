@@ -96,6 +96,11 @@ public static class FormRules
                 form = p.HeldItem?.HoldEffect is { } hold && hold.StartsWith("Arceus", StringComparison.Ordinal)
                     ? p.Species.Form("Arceus-" + hold["Arceus".Length..])?.Name : null;
                 break;
+            // Ogerpon wears the mask it holds (plan 06 · R28b; Showdown's formes by their required items), its Teal Mask without one
+            case "Ogerpon" when p.Form == null || p.Form.EndsWith("-Mask", StringComparison.Ordinal):
+                form = p.HeldItem?.HoldEffect is { } mask && mask.StartsWith("Mask", StringComparison.Ordinal)
+                    ? p.Species.Form($"Ogerpon-{mask["Mask".Length..]}-Mask")?.Name : null;
+                break;
             default:
                 return false;
         }

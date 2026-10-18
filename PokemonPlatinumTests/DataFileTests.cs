@@ -336,7 +336,7 @@ public class DataFileTests
     {
         var all = ItemDatabase.GetAll().ToList();
         var machines = all.Where(i => i.TeachesMove != null).ToList();
-        Assert.Equal(100, machines.Count); // Platinum's 92 TMs and 8 HMs
+        Assert.Equal(200, machines.Count); // Platinum's 92 TMs and 8 HMs, and Sword and Shield's hundred TRs (plan 06 · R28b)
 
         // Any move's name standing as words of its own; the longest first, so Flash Cannon isn't read as Flash
         var names = MoveDatabase.GetAll().Select(m => m.Name).OrderByDescending(n => n.Length).Select(Regex.Escape);

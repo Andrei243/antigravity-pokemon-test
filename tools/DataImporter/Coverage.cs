@@ -37,7 +37,7 @@ public static class Coverage
         int PlatinumAbilities, int PlatinumAbilitiesRun, int LaterAbilities, int LaterAbilitiesRun,
         int PlatinumItems, int PlatinumItemsFully, int PlatinumItemsPartly, int PlatinumItemsNothingToRun,
         int HoldEffects, int HoldEffectsRun,
-        int LaterItems, int MegaStones, int ZCrystals, int LaterItemsFully = 0, int LaterItemsPartly = 0);
+        int LaterItems, int MegaStones, int ZCrystals, int LaterItemsFully = 0, int LaterItemsPartly = 0, int LaterItemsNothingToRun = 0);
 
     public static Numbers Tally(IReadOnlyList<MoveData> moves, IReadOnlyList<AbilityDatabase.AbilityRecord> abilities, IReadOnlyList<ItemData> items)
     {
@@ -58,7 +58,8 @@ public static class Coverage
             own.Count, own.Count(i => Of(i) == Works.Fully), own.Count(i => Of(i) == Works.Partly), own.Count(i => Of(i) == Works.NothingToRun),
             held.Count, held.Count(HeldItemEffects.IsHoldable),
             items.Count(i => !IsPlatinums(i) && i.Id < 9000), items.Count(i => i.MegaStone != null), items.Count(i => i.ZCrystal != null),
-            items.Count(i => IsLaters(i) && LaterOf(i) == Works.Fully), items.Count(i => IsLaters(i) && LaterOf(i) == Works.Partly));
+            items.Count(i => IsLaters(i) && LaterOf(i) == Works.Fully), items.Count(i => IsLaters(i) && LaterOf(i) == Works.Partly),
+            items.Count(i => IsLaters(i) && LaterOf(i) == Works.NothingToRun));
     }
 
     /// <summary>One of the later games' items (ids from 1000 to the game's own 9000).</summary>
@@ -68,6 +69,10 @@ public static class Coverage
     // and the Tera Orb that let a trainer use them, and the two orbs of Primal Reversion
     private static readonly HashSet<string> RunByTheirMechanic = new() { "Key Stone", "Z-Ring", "Dynamax Band", "Tera Orb", "Red Orb", "Blue Orb" };
 
+    // The later items only there to be had (plan 06 · R28b): Unova's Pass Orbs, which bought the Entralink's powers, of a
+    // link this game has none of. docs/mechanics/where-items-are-found.md says where each later item comes from
+    private static readonly HashSet<string> OnlyToHave = new() { "Pass Orb" };
+
     /// <summary>
     /// How much of a later item the engine runs (plan 06 · R28a), on the same jobs as Platinum's: a ball's catch, a
     /// medicine's or battle item's use, what holding it does, an evolution it brings, a Mega Stone, a Z-Crystal or a
@@ -76,6 +81,9 @@ public static class Coverage
     public static Works LaterOf(ItemData item)
     {
         if (item.MegaStone != null || item.ZCrystal != null || RunByTheirMechanic.Contains(item.Name)) return Works.Fully;
+        if (OnlyToHave.Contains(item.Name)) return Works.NothingToRun;
+        // Hyper training's caps by its rules (plan 06 · R28b), and the coins and candies a species evolves on by the hundred
+        if (HyperTraining.IsCap(item) || Evolution.IsGatheredForEvolution(item)) return Works.Fully;
         var jobs = new List<Works>();
         if (item.Pocket == ItemPocket.PokeBalls) jobs.Add(PokemonPlatinumEngine.Battle.CatchCalculator.KnowsBall(item.Name) ? Works.Fully : Works.NotYet);
         else
@@ -141,7 +149,7 @@ public static class Coverage
     /// </summary>
     private static Works FieldUseOf(ItemData item)
     {
-        if (BagScreen.UsedInField(item) || BagScreen.UsedInBag(item) || MoveTeaching.IsMachine(item) || item.FieldUse == "Gracidea")
+        if (BagScreen.UsedInField(item) || BagScreen.UsedInBag(item) || MoveTeaching.IsMachine(item) || item.FieldUse == "Gracidea" || LaterItemUse.Handles(item))
             return Works.Fully;
         if (Evolution.IsUsedToEvolve(item) && !ItemUse.IsUsedOnPokemon(item)) return Works.Fully;
         if (!BagScreen.CanUse(item)) return Works.NotYet;
@@ -186,7 +194,7 @@ public static class Coverage
         Line($"| Platinum's items | {n.PlatinumItems} | {n.PlatinumItemsFully} | {n.PlatinumItemsPartly} | " +
              $"{n.PlatinumItems - n.PlatinumItemsFully - n.PlatinumItemsPartly - n.PlatinumItemsNothingToRun} (and {n.PlatinumItemsNothingToRun} with nothing to run) |");
         Line($"| of which hold effects | {n.HoldEffects} | {n.HoldEffectsRun} | – | {n.HoldEffects - n.HoldEffectsRun} |");
-        Line($"| Items of later games | {n.LaterItems} | {n.LaterItemsFully} | {n.LaterItemsPartly} | {n.LaterItems - n.LaterItemsFully - n.LaterItemsPartly} |");
+        Line($"| Items of later games | {n.LaterItems} | {n.LaterItemsFully} | {n.LaterItemsPartly} | {n.LaterItems - n.LaterItemsFully - n.LaterItemsPartly - n.LaterItemsNothingToRun} (and {n.LaterItemsNothingToRun} with nothing to run) |");
         Line();
         Line($"The data has {moves.Count} moves in all. The games number 919 of them, because each of the eighteen type Z-Moves has a physical and a special id; " +
              $"here each is one move, which with the {n.GMaxMoves} G-Max Moves makes {moves.Count}.");
@@ -275,16 +283,18 @@ public static class Coverage
         Line();
         Line("Judged as Platinum's are (plan 06 · R28a): a ball by its catch, medicine and battle items by their use, a held item by its hold effect " +
              "(`Battle/Effects/HeldItemEffects.Later.cs`), an evolution item by the evolution it brings, a Mega Stone, a Z-Crystal and a later mechanic's key " +
-             "item by that mechanic. Mints, candies, feathers, nectars and the rest that only change a Pokémon outside a battle are *not yet*, for R28b.");
+             "item by that mechanic; since R28b a mint, a candy, a feather, a nectar or a capsule by what using it from the bag does (`Models/LaterItemUse.cs`, `EffortRules`), " +
+             "a TR by the species that learn it, a bottle cap by hyper training's rules (`Models/HyperTraining.cs`) and a coin or candy gathered for an evolution by that evolution. " +
+             "An item only there to be had has *nothing to run*; where each is found is `docs/mechanics/where-items-are-found.md`.");
         Line();
         var later = items.Where(IsLaters).ToList();
-        Line("| Pocket | Items | Works | Partly | Not yet |");
-        Line("| --- | --- | --- | --- | --- |");
+        Line("| Pocket | Items | Works | Partly | Not yet | Nothing to run |");
+        Line("| --- | --- | --- | --- | --- | --- |");
         foreach (var pocket in later.GroupBy(i => i.Pocket).OrderBy(g => g.Key))
             Line($"| {pocket.Key} | {pocket.Count()} | {pocket.Count(i => LaterOf(i) == Works.Fully)} | {pocket.Count(i => LaterOf(i) == Works.Partly)} | " +
-                 $"{pocket.Count(i => LaterOf(i) == Works.NotYet)} |");
+                 $"{pocket.Count(i => LaterOf(i) == Works.NotYet)} | {pocket.Count(i => LaterOf(i) == Works.NothingToRun)} |");
         Line();
-        foreach (var status in new[] { Works.Partly, Works.NotYet })
+        foreach (var status in new[] { Works.Partly, Works.NotYet, Works.NothingToRun })
         {
             Line($"**{char.ToUpperInvariant(Word(status)[0])}{Word(status)[1..]}**");
             Line();

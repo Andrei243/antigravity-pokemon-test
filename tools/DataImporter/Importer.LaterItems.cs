@@ -25,6 +25,80 @@ public sealed partial class Importer
         return JohtoBalls.Contains(identifier);
     }
 
+    /// <summary>Sword and Shield's version group in PokeAPI, whose machine table numbers the hundred TRs from 100.</summary>
+    private const int SwordShield = 20, FirstRecord = 100;
+
+    /// <summary>A TR of Sword and Shield (plan 06 · R28b: <c>tr00</c> to <c>tr99</c>), brought in by name to the TMs pocket.</summary>
+    private static bool TechnicalRecord(string identifier, out ItemPocket pocket)
+    {
+        pocket = ItemPocket.TMsAndHMs;
+        return identifier.Length == 4 && identifier.StartsWith("tr", StringComparison.Ordinal) && char.IsDigit(identifier[2]) && char.IsDigit(identifier[3]);
+    }
+
+    private Dictionary<int, string>? recordMoves;
+
+    /// <summary>Each TR's item id and the move it teaches, from PokeAPI's machine table for Sword and Shield.</summary>
+    private Dictionary<int, string> TechnicalRecordMoves() => recordMoves ??= api.Table("machines")
+        .Where(r => r.Int("version_group_id") == SwordShield && r.Int("machine_number") >= FirstRecord)
+        .ToDictionary(r => r.Int("item_id"), r => api.MoveName(r.Int("move_id")));
+
+    private static string RecordText(string move, string? moveText) =>
+        $"Teaches {move} to a compatible Pokémon, and is used up. {moveText}".TrimEnd();
+
+    /// <summary>
+    /// Which species learn each TR (plan 06 · R28b): a species learns a TR when it learns the TR's move by a machine in
+    /// Sword and Shield, the one game that had them; its TRs go at the end of its <see cref="PokemonSpecies.TmMoves"/>,
+    /// after its own machines. A species Sword and Shield left out learns none.
+    /// </summary>
+    public void AddTechnicalRecords(List<PokemonSpecies> species, List<ItemData> items)
+    {
+        var records = items.Where(i => i.Pocket == ItemPocket.TMsAndHMs && i.Id >= 1000 && i.TeachesMove != null).OrderBy(i => i.Name, StringComparer.Ordinal).ToList();
+        var byMachine = api.Table("pokemon_moves").Where(r => r.Int("version_group_id") == SwordShield && r.Int("pokemon_move_method_id") == 4)
+            .GroupBy(r => r.Int("pokemon_id")).ToDictionary(g => g.Key, g => g.Select(r => api.MoveName(r.Int("move_id"))).ToHashSet());
+        foreach (var s in species)
+        {
+            if (!byMachine.TryGetValue(s.DexNumber, out var moves)) continue;
+            var learned = records.Where(r => moves.Contains(r.TeachesMove!)).Select(r => r.Name).ToList();
+            if (learned.Count == 0) continue;
+            s.TmMoves = (s.TmMoves ?? new()).Concat(learned).ToList();
+        }
+    }
+
+    /// <summary>
+    /// The later items used on a Pokémon outside a battle (plan 06 · R28b): what the bag does with each, by a field use
+    /// of our own (<c>Models/LaterItemUse.cs</c>), and the effort the feathers, mochi and Legends: Arceus's candies give
+    /// as Platinum's vitamins' use parameters, which <c>EffortRules</c> carries out. A feather gives one point, a mochi
+    /// ten, a candy of Legends: Arceus 25, 50 or 75 (its effort level, our ruling), and the Fresh Start Mochi takes
+    /// every point away. docs/mechanics/rulings.md, "Items used outside a battle", has the rulings.
+    /// </summary>
+    private static Dictionary<string, (string FieldUse, Dictionary<string, int>? Use)> LaterShaping()
+    {
+        var shaping = new Dictionary<string, (string, Dictionary<string, int>?)>();
+        string[] keys = { "hpEVs", "atkEVs", "defEVs", "spatkEVs", "spdefEVs", "speedEVs" };
+        string[][] names =
+        {
+            new[] { "Health", "Muscle", "Resist", "Genius", "Clever", "Swift" },
+            new[] { "Health", "Mighty", "Tough", "Smart", "Courage", "Quick" }
+        };
+        for (int i = 0; i < 6; i++)
+        {
+            shaping[$"{names[0][i]} Feather"] = ("Healing", new() { [keys[i]] = 1 });
+            shaping[$"{names[0][i]} Mochi"] = ("Healing", new() { [keys[i]] = 10 });
+            shaping[$"{names[1][i]} Candy"] = ("Healing", new() { [keys[i]] = 25 });
+            shaping[$"{names[1][i]} Candy L"] = ("Healing", new() { [keys[i]] = 50 });
+            shaping[$"{names[1][i]} Candy XL"] = ("Healing", new() { [keys[i]] = 75 });
+        }
+        shaping["Fresh Start Mochi"] = ("Healing", keys.ToDictionary(k => k, _ => -EffortRules.MaxStat));
+        foreach (var (candy, exp) in new[] { ("XS", 100), ("S", 800), ("M", 3000), ("L", 10000), ("XL", 30000) })
+            shaping[$"Exp. Candy {candy}"] = ("ExpCandy", new() { ["exp"] = exp });
+        foreach (var nature in Enum.GetNames<Nature>()) shaping[$"{nature} Mint"] = ("Mint", null);
+        shaping["Ability Capsule"] = ("AbilityCapsule", null);
+        shaping["Ability Patch"] = ("AbilityPatch", null);
+        shaping["Dynamax Candy"] = ("DynamaxCandy", null);
+        foreach (var nectar in new[] { "Red", "Yellow", "Pink", "Purple" }) shaping[$"{nectar} Nectar"] = ("Nectar", null);
+        return shaping;
+    }
+
     /// <summary>Each later item's hold effect and its number (a Gem's and a plate's power in a hundred more, a Rocky Helmet's share of HP).</summary>
     private static readonly Dictionary<string, (string Hold, int Param)> LaterHoldEffects = new()
     {
@@ -48,6 +122,11 @@ public sealed partial class Importer
         ["Booster Energy"] = ("BoosterEnergy", 0), ["Ability Shield"] = ("AbilityShield", 0), ["Clear Amulet"] = ("ClearAmulet", 0),
         ["Mirror Herb"] = ("MirrorHerb", 0), ["Punching Glove"] = ("PunchingGlove", 10), ["Covert Cloak"] = ("CovertCloak", 0),
         ["Loaded Dice"] = ("LoadedDice", 0), ["Fairy Feather"] = ("StrengthenFairy", 20),
+        // Plan 06 · R28b: the Ability Shield, Zacian's and Zamazenta's swords and shields, Ogerpon's masks (a fifth more,
+        // 4915/4096, for the Ogerpon whose mask it is) and Legends: Arceus's two plates (the Blank Plate is Normal's)
+        ["Ability Shield"] = ("AbilityShield", 0), ["Rusted Sword"] = ("RustedSword", 0), ["Rusted Shield"] = ("RustedShield", 0),
+        ["Wellspring Mask"] = ("MaskWellspring", 20), ["Hearthflame Mask"] = ("MaskHearthflame", 20), ["Cornerstone Mask"] = ("MaskCornerstone", 20),
+        ["Legend Plate"] = ("LegendPlate", 0), ["Blank Plate"] = ("ArceusNormal", 20),
     };
 
     private static readonly string[] GemTypes =
@@ -89,8 +168,17 @@ public sealed partial class Importer
             .GroupBy(e => e.Name, StringComparer.OrdinalIgnoreCase)
             .ToDictionary(g => g.Key, g => Showdown.Inner(Showdown.Block(g.First().Body, "fling"), "basePower") ?? 0, StringComparer.OrdinalIgnoreCase);
 
+        var shaping = LaterShaping();
         foreach (var item in items.Where(i => i.Id >= 1000 && i.Id < 9000))
         {
+            if (shaping.TryGetValue(item.Name, out var shape))
+            {
+                item.FieldUse = shape.FieldUse;
+                item.Use = shape.Use;
+                item.CanUseInOverworld = true;
+                // Nothing of these is used in a battle: the games' bag keeps them for outside one
+                item.CanUseInBattle = false;
+            }
             if (holds.TryGetValue(item.Name, out var hold))
             {
                 item.HoldEffect = hold.Hold;

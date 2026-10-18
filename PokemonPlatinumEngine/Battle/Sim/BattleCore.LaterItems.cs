@@ -35,12 +35,20 @@ public sealed partial class BattleCore
     {
         var user = use.User;
         user.Turn.GemBoosted = false;
+        user.Turn.PaddedTouch = false;
+        // What was noted outside a move and not taken up then goes no further (plan 06 · R28b)
+        ejectPacks.Clear();
+        mirrored.Clear();
         itemsArmed = true;
         var data = use.Move.Data;
         if (!data.MakesContact) return;
         string? hold = BattleEffects.HoldEffectOf(user);
         if (hold == "ProtectivePads" || (hold == "PunchingGlove" && (data.Flags & MoveFlags.Punch) != 0))
+        {
             use.Move = new Move(data.CopyWith(d => d.Flags &= ~MoveFlags.Contact), use.Move.CurrentPP);
+            // The pads keep the touch for Tough Claws and Unseen Fist; a Punching Glove takes it from the move itself
+            user.Turn.PaddedTouch = hold == "ProtectivePads";
+        }
     }
 
     /// <summary>
@@ -126,10 +134,11 @@ public sealed partial class BattleCore
         return true;
     }
 
-    /// <summary>A stage changed while a move is under way: an Eject Pack notes a drop of its holder's, a foe's Mirror Herb a rise (each for the move's end).</summary>
+    /// <summary>A stage changed: an Eject Pack notes a drop of its holder's, a foe's Mirror Herb a rise (each for the move's end).</summary>
     private void StagesNoted(Battler target, StatType stat, int change)
     {
-        if (!itemsArmed || change == 0) return;
+        // Outside a move too since R28b: what a coming in did is taken up once the switch-in checks are done (ItemsAfterTheEntry)
+        if (change == 0) return;
         if (change < 0 && Holds(target, "EjectPack") && !ejectPacks.Contains(target)) ejectPacks.Add(target);
         if (change > 0)
             foreach (var foe in SlotsOf(Other(target.Side)).Where(b => b.IsActive && Holds(b, "MirrorHerb")))
@@ -159,7 +168,7 @@ public sealed partial class BattleCore
         if (user.IsActive && (data.Flags & MoveFlags.Sound) != 0 && Holds(user, "ThroatSpray") && !failed)
             LaterItems.GoesOff(this, user, StatType.SpAttack, Math.Max(1, BattleEffects.HoldParamOf(user)));
         // Blunder Policy: a move that missed by its accuracy (not a one-hit knockout, which decides for itself)
-        if (user.IsActive && Holds(user, "BlunderPolicy") && use.Effect.Decides == null && use.Hits.Any(h => h.Missed && h.FailLine == null))
+        if (user.IsActive && Holds(user, "BlunderPolicy") && use.Effect.Decides == null && (use.Hits.Any(h => h.Missed && h.FailLine == null) || use.StatusMissed))
             LaterItems.GoesOff(this, user, StatType.Speed, Math.Max(1, BattleEffects.HoldParamOf(user)));
         // A Mirror Herb takes on what its foe gained
         foreach (var holder in mirrored.Select(m => m.Holder).Distinct().ToList())

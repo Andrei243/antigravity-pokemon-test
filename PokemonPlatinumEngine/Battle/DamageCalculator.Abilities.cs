@@ -44,7 +44,7 @@ public static partial class DamageCalculator
         var p = attacker.Pokemon!;
         bool physical = move.Category == MoveCategory.Physical;
         if (attacker.Turn.SheerForced) bp.Add(5325);
-        if (mine == "Tough Claws" && data.MakesContact) bp.Add(5325);
+        if (mine == "Tough Claws" && (data.MakesContact || attacker.Turn.PaddedTouch)) bp.Add(5325);
         if (mine == "Strong Jaw" && (data.Flags & MoveFlags.Bite) != 0) bp.Add(6144);
         if (mine == "Mega Launcher" && (data.Flags & MoveFlags.Pulse) != 0) bp.Add(6144);
         if (mine == "Sharpness" && LaterAbilities.Slicing.Contains(data.Name)) bp.Add(6144);

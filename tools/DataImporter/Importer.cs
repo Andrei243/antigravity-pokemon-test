@@ -42,7 +42,9 @@ public sealed partial class Importer
     /// </summary>
     private static readonly Dictionary<string, ItemPocket> LaterItemsByName = new()
     {
-        ["key-stone"] = ItemPocket.KeyItems, ["z-ring"] = ItemPocket.KeyItems, ["dynamax-band"] = ItemPocket.KeyItems, ["tera-orb"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items
+        ["key-stone"] = ItemPocket.KeyItems, ["z-ring"] = ItemPocket.KeyItems, ["dynamax-band"] = ItemPocket.KeyItems, ["tera-orb"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items,
+        // The bottle caps hyper training is paid in (plan 06 · R28b)
+        ["bottle-cap"] = ItemPocket.Items, ["gold-bottle-cap"] = ItemPocket.Items
     };
 
     private readonly Decomp decomp;
@@ -1378,7 +1380,8 @@ public sealed partial class Importer
         {
             int id = row.Int("id");
             if (id >= FirstAlternateForm || !api.HasItemName(id)) continue;
-            bool byName = LaterItemsByName.TryGetValue(row["identifier"], out var namedPocket) || JohtoBall(row["identifier"], out namedPocket);
+            bool byName = LaterItemsByName.TryGetValue(row["identifier"], out var namedPocket) || JohtoBall(row["identifier"], out namedPocket)
+                || TechnicalRecord(row["identifier"], out namedPocket);
             if (!byName && !LaterItemCategories.Contains(row.Int("category_id")) && !evolutionItems.Contains(api.ItemName(id))) continue;
             if (!byName && api.ItemGeneration(id) is var gen && (gen <= 4 && gen != 0)) continue;
             string name = api.ItemName(id);
@@ -1391,6 +1394,16 @@ public sealed partial class Importer
             };
             // A Z-Crystal is held, so it is an ordinary item here (the games keep the ones in the bag apart)
             if (row.Int("category_id") == ZCrystals) pocket = ItemPocket.Items;
+            if (pocket == ItemPocket.TMsAndHMs && TechnicalRecordMoves().TryGetValue(id, out string? recorded))
+            {
+                items.Add(new ItemData
+                {
+                    Id = 1000 + id, Name = name, Pocket = pocket, Price = row.IntOrNull("cost") ?? 0,
+                    CanUseInBattle = false, CanUseInOverworld = true, TeachesMove = recorded, FieldUse = "TmHm",
+                    Description = RecordText(recorded, moves.FirstOrDefault(m => m.Name == recorded)?.Description)
+                });
+                continue;
+            }
             items.Add(new ItemData
             {
                 Id = 1000 + id,

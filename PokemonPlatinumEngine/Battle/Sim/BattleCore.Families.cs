@@ -127,6 +127,8 @@ public sealed partial class BattleCore
                 // Multi-Attack takes its Memory's and Techno Blast its Drive's (plan 06 · R28a)
                 string prefix = use.Data.Name switch { "Multi-Attack" => LaterItems.Memory, "Techno Blast" => LaterItems.Drive, _ => "Arceus" };
                 if (LaterItems.TypeOf(hold, prefix) is { } type) Retype(use, type);
+                // The Legend Plate gives Judgment the type that does its target the most (plan 06 · R28b)
+                else if (hold == LaterItems.LegendPlate && use.Data.Name == "Judgment" && b.LegendPlateType(use) is { } best) Retype(use, best);
                 return true;
             }
         },

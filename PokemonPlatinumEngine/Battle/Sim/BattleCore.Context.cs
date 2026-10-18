@@ -43,7 +43,7 @@ public sealed partial class BattleCore
                 if (announceFailure) Say(Text.Of("battle.isProtectedByThe", ("target", target.Name)));
                 return false;
             }
-            bool breaks = BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
+            bool breaks = LaterItems.Breaks(BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility), target);
             if (!breaks && target.Ability?.Effect is { } guard && guard.BlocksStatDrop(target, stat))
             {
                 if (announceFailure) Say(Text.Of("battle.preventsItsFromBeing", ("target", target.Name), ("ability", AbilityOf(target)), ("stat", BattleText.StatName(stat))));
@@ -140,7 +140,7 @@ public sealed partial class BattleCore
             return false;
         }
 
-        bool breaks = byAnother && BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility);
+        bool breaks = byAnother && LaterItems.Breaks(BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility), target);
         if (!breaks && target.Ability?.Effect is { } guard && guard.BlocksStatus(target, status))
         {
             if (announceFailure) Say(Text.Of("battle.prevents", ("target", target.Name), ("ability", AbilityOf(target)), ("condition", BattleText.StatusName(status))));

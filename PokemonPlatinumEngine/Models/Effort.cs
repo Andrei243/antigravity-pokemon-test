@@ -140,7 +140,7 @@ public static class EffortRules
     /// </summary>
     public static bool UseItem(ItemData item, Pokemon p, Ruleset? rules = null)
     {
-        int limit = (rules ?? Ruleset.Current).VitaminLimit;
+        int limit = LimitFor(item, rules ?? Ruleset.Current);
         if (!WouldHelp(item, p, rules)) return false;
         bool changed = false, raises = false;
         foreach (var stat in Order)
@@ -162,10 +162,16 @@ public static class EffortRules
         return true;
     }
 
+    /// <summary>
+    /// How far an item raises a stat's effort: a vitamin to the rules' vitamin limit, and a later game's feather, mochi or
+    /// candy to the most a stat may hold (plan 06 · R28b), as those games have it.
+    /// </summary>
+    public static int LimitFor(ItemData item, Ruleset rules) => item.Id >= 1000 && item.Id < 9000 ? rules.EvStatCap : rules.VitaminLimit;
+
     /// <summary>Whether using it on this Pokémon would do anything (<c>Pokemon_CheckItemEffects</c>).</summary>
     public static bool WouldHelp(ItemData item, Pokemon p, Ruleset? rules = null)
     {
-        int limit = (rules ?? Ruleset.Current).VitaminLimit;
+        int limit = LimitFor(item, rules ?? Ruleset.Current);
         foreach (var stat in Order)
         {
             int change = ChangeBy(item, stat);

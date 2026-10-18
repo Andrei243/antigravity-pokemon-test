@@ -53,6 +53,7 @@ public sealed partial class BattleCore
         Field.WeatherTurns = 0;
         Field.StrongWeatherBy = null;
         Say(Stops(gone)).With(new WeatherChanged(BattleWeather.None));
+        BoostersWake();
     }
 
     /// <summary>
