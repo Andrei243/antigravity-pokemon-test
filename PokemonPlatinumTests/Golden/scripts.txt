@@ -10399,6 +10399,10 @@ from the trigger at 4,55 of VictoryRoad1FRoom2
 way -
   Marley> ...You're going back? ...I see. I'll wait here, then.
   * partner off
+=== viridian_city.GymDoorLocked
+from the trigger at 84,191 of Kanto
+way -
+  > The Gym's doors are locked tight. Nobody seems to be inside.
 === wayward_cave_1f.Exit
 from the trigger at 41,53 of WaywardCave1F
 way -

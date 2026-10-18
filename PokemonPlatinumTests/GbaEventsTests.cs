@@ -367,4 +367,15 @@ public sealed class GbaEventsTests : IDisposable
     [InlineData("ITEM_POKE_BALL", "Poké Ball")]
     [InlineData("ITEM_X_DEFEND", "X Defense")]
     public void AGbaConstantIsTheDatasName(string constant, string name) => Assert.Equal(name, GbaNames.Item(constant));
+
+    [Theory]
+    // A warp on a wall that is no way anywhere is never taken (FireRed's player's house, its third mat warp at 3, 9)
+    [InlineData(TileBehavior.None, true, true)]
+    // A door, the mat at a room's edge and a pad are walked into or onto, blocked or not, and so is open floor
+    [InlineData(TileBehavior.Door, true, false)]
+    [InlineData(TileBehavior.ExitSouth, false, false)]
+    [InlineData(TileBehavior.WarpPanel, true, false)]
+    [InlineData(TileBehavior.None, false, false)]
+    public void AWarpOnAWallThatIsNoWayIsNeverTaken(TileBehavior behaviour, bool blocked, bool never) =>
+        Assert.Equal(never, GbaEvents.NeverTaken(behaviour, blocked));
 }

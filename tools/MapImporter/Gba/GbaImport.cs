@@ -126,7 +126,7 @@ public static class GbaImport
             foreach (var placed in matrix.Maps)
             {
                 var area = GbaWorld.AreaFile(placed.Map, mapIndex++, matrix.Id);
-                GbaEvents.Fill(area, placed, tables, id => world.Source.ById.GetValueOrDefault(id), world.Problems);
+                GbaEvents.Fill(area, placed, tables, id => world.Source.ById.GetValueOrDefault(id), world.Problems, matrix);
                 areas[placed.Map.Key] = area;
                 if (open != null && !open.Contains(placed.Map.Key)) continue;
                 Write("areas", placed.Map.Key, area);
