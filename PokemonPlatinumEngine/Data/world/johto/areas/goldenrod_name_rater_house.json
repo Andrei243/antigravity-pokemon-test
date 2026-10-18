@@ -1,0 +1,25 @@
+{
+  "key": "goldenrod_name_rater_house",
+  "index": 206,
+  "name": "Goldenrod City",
+  "matrix": 140,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "goldenrod", "toWarp": 15 }
+  ],
+  "objects": [
+    { "id": "t25r0901_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 5, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T25R0901_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

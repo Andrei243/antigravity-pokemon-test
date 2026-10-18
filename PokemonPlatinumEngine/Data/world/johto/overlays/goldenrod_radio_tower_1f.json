@@ -1,0 +1,53 @@
+{
+  // The Radio Tower's ground floor (plan 20 · J5, part b). The quiz and the Radio Card are the next chapter's (plan 20 ·
+  // J7), and Team Rocket's takeover the eleventh's: the stairs up (warp 1) stay shut, and the staff the takeover hides
+  // stand at every hour
+  "area": "goldenrod_radio_tower_1f",
+  "bgmTrack": "johto/goldenrod",
+  "locked": [
+    1
+  ],
+  "people": {
+    "d23r0101_gswoman6": {
+      "name": "Receptionist",
+      "still": true,
+      "dialog": [
+        "Welcome to the Radio Tower! I'm sorry, visitors may only see the ground floor today."
+      ]
+    },
+    "d23r0101_gswoman6_2": {
+      "name": "Receptionist",
+      "still": true,
+      "dialog": [
+        "We broadcast all over Johto, day and night. Do keep your radio tuned in!"
+      ],
+      "hiddenBy": ""
+    },
+    "d23r0101_gswoman6_3": {
+      "name": "Receptionist",
+      "still": true,
+      "dialog": [
+        "Our quiz is being set up. Come back soon, and you could win something special!"
+      ],
+      "hiddenBy": ""
+    },
+    "d23r0101_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "I work on the Lucky Number Show. Tune in once a week and see if your number comes up!"
+      ],
+      "hiddenBy": ""
+    },
+    "d23r0101_gsgirl2": {
+      "name": "Girl",
+      "dialog": [
+        "I came to see the DJs, but they're all upstairs. Maybe next time."
+      ],
+      "hiddenBy": ""
+    }
+  },
+  "signs": {
+    "D23R0101_006+1": "Ground floor: Reception\nUpper floors: staff only",
+    "D23R0101_007+1": "Radio Tower\nThe voice of Johto."
+  }
+}

@@ -1,0 +1,50 @@
+{
+  // Route 37 (plan 20 · J5, part b): the short way north from Route 36 to Ecruteak City. Tori and Til battle together
+  // (one trainer of HeartGold's table carried by both twins). Its three Apricorn trees are plan 20 · J6's and the
+  // Wednesday sibling a later chapter's
+  "area": "route_37",
+  "bgmTrack": "johto/route34",
+  "trees": "Round",
+  "people": {
+    "r37_gsbabygirl1": {
+      "name": "Tori",
+      "trainer": {
+        "dialogueBefore": "Twins Tori: We're twins! We battle together, two at a time!",
+        "dialogueAfter": "Twins Tori: We lost together, too."
+      }
+    },
+    "r37_gsbabygirl1_2": {
+      "name": "Til",
+      "trainer": {
+        "id": "johto_twins_tori_and_til",
+        "dialogueBefore": "Twins Til: Two of us against one of you!",
+        "dialogueAfter": "Twins Til: Two of us still wasn't enough."
+      }
+    },
+    "r37_mystery_2": {
+      "name": "Greg",
+      "trainer": {
+        "dialogueBefore": "Psychic Greg: My Drowzee sees dreams. What does your Pokémon dream of?",
+        "dialogueAfter": "Psychic Greg: It dreamt of losing, it seems."
+      }
+    },
+    "r37_gswoman2": {
+      "name": "Callie",
+      "trainer": {
+        "dialogueBefore": "Beauty Callie: Aren't my Pokémon lovely? They're strong too, you know.",
+        "dialogueAfter": "Beauty Callie: Lovely and beaten."
+      }
+    },
+    "r37_gswoman2_2": {
+      "name": "Kassandra",
+      "trainer": {
+        "dialogueBefore": "Beauty Kassandra: Callie and I train together. Let's see if you can beat us both!",
+        "dialogueAfter": "Beauty Kassandra: Callie, she beat me too!"
+      }
+    }
+  },
+  "signs": {
+    "R37_002+1": "Route 37",
+    "R37_003+1": "Route 37\nEcruteak City is to the north."
+  }
+}

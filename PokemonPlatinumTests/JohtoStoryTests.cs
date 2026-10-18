@@ -284,6 +284,46 @@ public class JohtoStoryTests
     }
 
     [Fact]
+    public void WhitneyCriesAndThenGivesThePlainBadge()
+    {
+        // Plan 20 · J5, part b: the Goldenrod Gym. Whitney battles, loses and cries; spoken to again, she gives the Plain
+        // Badge and TM45; after that she only talks. Her four trainers count as beaten with the battle
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machop")!, 25));
+        game.Arrive("Goldenrod_Gym", 6, 24);
+        Assert.Contains(game.Talk("t25gym0101_sunglasses").Transcript, l => l.Speaker == "Gym Guide");
+
+        var battle = game.Talk("t25gym0101_gsleader3");
+        Assert.Contains(battle.Log, l => l.StartsWith("battle johto_leader_whitney "));
+        Assert.True(game.Story.Has("FLAG_DEFEATED_WHITNEY"));
+        Assert.False(game.Story.HasBadge("Johto", "Plain"));
+        foreach (string trainer in new[] { "johto_lass_cathy", "johto_lass_carrie", "johto_beauty_victoria", "johto_beauty_samantha" })
+            Assert.True(game.Story.HasDefeated(trainer), trainer);
+
+        game.Talk("t25gym0101_gsleader3");
+        Assert.True(game.Story.HasBadge("Johto", "Plain"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM45")!));
+        Assert.True(game.Story.Has("FLAG_GOT_TM45_FROM_WHITNEY"));
+
+        var after = game.Talk("t25gym0101_gsleader3");
+        Assert.DoesNotContain(after.Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM45")!));
+        Assert.Contains(game.Talk("t25gym0101_sunglasses").Transcript, l => l.Text.Contains("cry"));
+    }
+
+    [Fact]
+    public void ALostBattleWithWhitneyLeavesNoBadge()
+    {
+        // A lost battle ends the script before she cries: nothing is set
+        var game = new Game(fight: BattleOutcome.Lost);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machop")!, 25));
+        game.Arrive("Goldenrod_Gym", 6, 24);
+        game.Talk("t25gym0101_gsleader3");
+        Assert.False(game.Story.Has("FLAG_DEFEATED_WHITNEY"));
+        Assert.False(game.Story.HasBadge("Johto", "Plain"));
+    }
+
+    [Fact]
     public void RouteThirtyTwosManTurnsBackWhoeverHasNoBadge()
     {
         var game = new Game();
@@ -320,6 +360,11 @@ public class JohtoStoryTests
         Assert.Equal("johto/battle_galactic", MusicDirector.Resolve(MusicRole.BattleGalacticBoss, "Johto", MusicLibrary.Exists));
         Assert.Equal("johto/victory_trainer", MusicDirector.Resolve(MusicRole.VictoryGalactic, "Johto", MusicLibrary.Exists));
         Assert.Equal("johto/eye_mystery", MusicDirector.Resolve(MusicRole.EyeMystery, "Johto", MusicLibrary.Exists));
+        // Plan 20 · J5, part b: the Beauties', the tough ones' and the cheerful ones' eye themes of Johto's own
+        Assert.Equal("johto/eye_lady", MusicDirector.Resolve(MusicRole.EyeLady, "Johto", MusicLibrary.Exists));
+        Assert.Equal("johto/eye_fighter", MusicDirector.Resolve(MusicRole.EyeFighter, "Johto", MusicLibrary.Exists));
+        Assert.Equal("johto/eye_fun", MusicDirector.Resolve(MusicRole.EyeFun, "Johto", MusicLibrary.Exists));
+        Assert.Equal("common/eye_lady", MusicDirector.Resolve(MusicRole.EyeLady, "Sinnoh", MusicLibrary.Exists));
         Assert.Equal("common/battle_galactic", MusicDirector.Resolve(MusicRole.BattleGalactic, "Sinnoh", MusicLibrary.Exists));
         Assert.Equal("common/battle_wild", MusicDirector.Resolve(MusicRole.BattleWild, "Sinnoh", MusicLibrary.Exists));
     }

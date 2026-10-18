@@ -1,0 +1,34 @@
+{
+  // The Department Store's third floor (plan 20 · J5, part b). Its lift (warp 2) stays shut until it can carry anyone
+  "area": "goldenrod_department_store_3f",
+  "bgmTrack": "johto/goldenrod",
+  "locked": [
+    2
+  ],
+  "people": {
+    "t25r1003_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t25r1003_mania": {
+      "name": "Poké Maniac",
+      "dialog": [
+        "X Attack, X Defend... a little help in battle goes a long way."
+      ]
+    },
+    "t25r1003_gsman2": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Items that raise a Pokémon's stats in battle wear off once it's switched out. Use them well."
+      ]
+    }
+  },
+  "signs": {
+    "T25R1003_003+1": "3F: Battle Collection\nItems for the heat of battle."
+  }
+}

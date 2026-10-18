@@ -1,0 +1,37 @@
+{
+  // Ecruteak City's Poké Mart (plan 20 · J5, part b). Its delivery men are the original's gifts, which this game has no
+  // use for
+  "area": "ecruteak_pokemart",
+  "bgmTrack": "johto/ecruteak",
+  "people": {
+    "t27fs0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t27fs0101_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t27fs0101_gsoldwoman1": {
+      "name": "Old Woman",
+      "still": true,
+      "dialog": [
+        "Morty's Ghost Pokémon don't mind Normal moves one bit. Bring something stronger."
+      ]
+    },
+    "t27fs0101_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "Repels keep weak wild Pokémon away. Very handy in the towers."
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  // The Underground passage under Goldenrod City (plan 20 · J5, part b), joining the north end of the city to the south.
+  // Its ways down to the basements and the warehouse (warps 2 to 9) stay shut until the Radio Tower's chapter
+  // (plan 20 · J11). The friend with the Marill is a later chapter's
+  "area": "goldenrod_tunnel_1f",
+  "bgmTrack": "johto/goldenrod",
+  "locked": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "people": {
+    "d37r0101_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "The shops down here open only on certain days. Come back now and then and see."
+      ]
+    },
+    "d37r0101_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "This passage runs right under the city. It's the fastest way from one end to the other."
+      ]
+    }
+  }
+}

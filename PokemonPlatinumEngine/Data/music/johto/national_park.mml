@@ -1,0 +1,31 @@
+# The National Park: a gentle waltz in F major for the lawns and the fountain, a flute over a harp's broken chords and
+# a soft string pad. Original composition for this game (plan 20 · J5, part b).
+title National Park
+tempo 108
+meter 3/4
+reverb 0.4
+nighttempo 0.92
+
+track lead flute night=ocarina vol=0.7 pan=0 rev=0.4
+  L o5 c4 f4 a4 | o5 g4 e4 c4 | o5 d4 f4 a4 | o5 b-4 f4 d4 |
+  o5 a4 o6 c4 o5 a4 | o5 g2 e4 | o5 f4 d4 b-4 | o5 c2. |
+  o5 a4 f4 d4 | o5 e4 a4 o6 c4 | o5 b-4 o6 d4 o5 b-4 | o5 a2 f4 |
+  o5 g4 b-4 d4 | o5 e4 g4 o6 c4 | o5 a4 g8 f8 c4 | o5 f2. |
+
+track pluck harp night=pizzicato vol=0.4 pan=-0.25 rev=0.36
+  L o4 f4 a4 o5 c4 | o4 c4 e4 g4 | o4 d4 f4 a4 | o4 d4 f4 b-4 |
+  o4 f4 a4 o5 c4 | o4 c4 e4 g4 | o4 d4 f4 b-4 | o4 c4 e4 g4 |
+  o4 d4 f4 a4 | o4 c4 e4 a4 | o4 d4 f4 b-4 | o4 f4 a4 o5 c4 |
+  o4 d4 g4 b-4 | o4 c4 e4 g4 | o4 f4 a4 o5 c4 | o4 f4 a4 o5 c4 |
+
+track pad strings night=pad vol=0.24 pan=0.25 rev=0.46
+  L o3 (f a >c)2. | (e g >c)2. | (d f a)2. | (d f b-)2. |
+  (f a >c)2. | (e g >c)2. | (d f b-)2. | (e g >c)2. |
+  (d f a)2. | (e a >c)2. | (d f b-)2. | (f a >c)2. |
+  (d g b-)2. | (e g >c)2. | (f a >c)2. | (f a >c)2. |
+
+track bass bass vol=0.5 rev=0.12
+  L o2 f4 o3 c4 c4 | o2 c4 g4 g4 | o2 d4 a4 a4 | o2 b-4 o3 f4 f4 |
+  o2 f4 o3 c4 c4 | o2 c4 g4 g4 | o2 b-4 o3 f4 f4 | o2 c4 g4 g4 |
+  o2 d4 a4 a4 | o2 a4 o3 e4 e4 | o2 b-4 o3 f4 f4 | o2 f4 o3 c4 c4 |
+  o2 g4 o3 d4 d4 | o2 c4 g4 g4 | o2 f4 o3 c4 c4 | o2 f2. |

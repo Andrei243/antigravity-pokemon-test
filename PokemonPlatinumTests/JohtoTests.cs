@@ -113,15 +113,16 @@ public class JohtoTests
                      "RuinsOfAlph_NortheastChamber", "Azalea_KurtsHouse", "Azalea_CharcoalKiln", "Azalea_PokemonCenter_B1F" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // What waits for its chapter stays shut: the Slowpoke Well and the Gym (J7), Ilex Forest (J7), Route 36 (the
-        // stretch north), the Ruins' hall and the rooms behind the chambers' back walls
+        // What waits for its chapter stays shut: the Slowpoke Well and the Gym (J7), the Ruins' hall and the rooms behind
+        // the chambers' back walls
         var azalea = Johto.Area("azalea")!;
         foreach (int shut in new[] { 2, 7 })
             Assert.Empty(Overworld.WarpsAt(azalea.Warps[shut].X, azalea.Warps[shut].Z));
         var hall = Johto.Area("ruins_of_alph")!.Warps[8];
         Assert.Empty(Overworld.WarpsAt(hall.X, hall.Z));
         Assert.Null(MapNamed("RuinsOfAlph_NortheastChamber").GetWarpAt(6, 2));
-        Assert.Null(MapNamed("Azalea_IlexForestGate").GetWarpAt(1, 7));
+        // ...and Ilex Forest beyond Azalea's gate house is open since J5's part b
+        Assert.Equal("IlexForest", MapNamed("Azalea_IlexForestGate").GetWarpAt(1, 7)?.TargetMap);
 
         // Azalea is built in logs (Woodland), its music its own, and Route 33 meets Hoppip by day and Zubat at night
         Assert.Equal(Architecture.Woodland, Overworld.ArchitectureAt(azalea.Warps[6].X, azalea.Warps[6].Z + 2));
@@ -134,6 +135,49 @@ public class JohtoTests
         // The chambers' trainers and Union Cave's battle by HeartGold's records
         Assert.Contains(MapNamed("UnionCave_1F").Everyone, n => n.Id == "johto_hiker_daniel");
         Assert.Contains(Overworld.Everyone, n => n.Id == "johto_psychic_m_nathan");
+    }
+
+    private static readonly string[] NorthOfAzalea = { "ilex_forest", "route_34", "goldenrod", "route_35", "national_park", "route_36", "route_37", "ecruteak" };
+
+    [Fact]
+    public void IlexForestToEcruteakCityIsWalkedThroughGoldenrodAndTheNationalPark()
+    {
+        // Plan 20 · J5, part b: from Azalea Town through Ilex Forest (its small tree cut), up Route 34 to Goldenrod City,
+        // north by Route 35 and the National Park to Route 36 and up Route 37 to Ecruteak City, every room come into
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in NorthOfAzalea)
+        {
+            Assert.Contains(key, Johto.Index.Areas);
+            if (key is "ilex_forest" or "national_park") Assert.Contains(walked.Keys, m => m.Name == (key == "ilex_forest" ? "IlexForest" : "NationalPark"));
+            else Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        }
+        foreach (string name in new[] { "Route34_DayCare", "Goldenrod_DeptStore_6F", "Goldenrod_Gym", "Goldenrod_RadioTower_1F",
+                     "Goldenrod_Underground", "Goldenrod_GameCorner", "Ecruteak_DanceTheater", "BurnedTower_B1F", "Ecruteak_BellTowerGate" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+
+        // What waits stays shut: the Magnet Train and the Global Terminal, Ecruteak's Gym and the roads west and east,
+        // the Bell Tower beyond its gate, the Radio Tower's upper floors
+        var goldenrod = Johto.Area("goldenrod")!;
+        foreach (int shut in new[] { 9, 16 }) Assert.Empty(Overworld.WarpsAt(goldenrod.Warps[shut].X, goldenrod.Warps[shut].Z));
+        var ecruteak = Johto.Area("ecruteak")!;
+        foreach (int shut in new[] { 7, 8, 10 }) Assert.Empty(Overworld.WarpsAt(ecruteak.Warps[shut].X, ecruteak.Warps[shut].Z));
+        Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("BellTower", StringComparison.Ordinal));
+
+        // The two cities are built their own ways, with songs of their own
+        Assert.Equal(Architecture.Boulevard, WorldModels.Of("ko_h01", "johto")!.Town);
+        Assert.Equal(Architecture.Heritage, WorldModels.Of("en_h01a", "johto")!.Town);
+        Assert.Equal("johto/goldenrod", Overworld.BgmTrackAt(goldenrod.Warps[5].X, goldenrod.Warps[5].Z + 1));
+        Assert.Equal("johto/ecruteak", Overworld.BgmTrackAt(ecruteak.Warps[5].X, ecruteak.Warps[5].Z + 1));
+        Assert.Equal("johto/union_cave", MapNamed("IlexForest").BgmTrackAt(15, 70));
+
+        // The Day Care is the common one, the strange tree waits for its chapter (J7), and the trainers battle by
+        // HeartGold's records, the twins of Route 37 as one
+        Assert.Contains(MapNamed("Route34_DayCare").Everyone, n => n.Script == "DayCareLady");
+        Assert.DoesNotContain(Overworld.Everyone, n => n.Species == "Sudowoodo");
+        Assert.Equal(2, Overworld.Everyone.Count(n => n.Id == "johto_twins_tori_and_til"));
+        Assert.Contains(MapNamed("Goldenrod_Gym").Everyone, n => n.Id == "johto_beauty_samantha");
+        Assert.Contains(MapNamed("BurnedTower_1F").Everyone, n => n.Id == "johto_firebreather_ned");
     }
 
     [Fact]

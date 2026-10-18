@@ -1,0 +1,26 @@
+{
+  "key": "goldenrod_northeast_house",
+  "index": 205,
+  "name": "Goldenrod City",
+  "matrix": 96,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "goldenrod", "toWarp": 14 }
+  ],
+  "objects": [
+    { "id": "t25r0801_gsbigman", "looks": "gsbigman", "movement": "16", "x": 8, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "T25R0801_000+1" },
+    { "id": "t25r0801_gsgirl1", "looks": "gsgirl1", "movement": "3", "x": 2, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T25R0801_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

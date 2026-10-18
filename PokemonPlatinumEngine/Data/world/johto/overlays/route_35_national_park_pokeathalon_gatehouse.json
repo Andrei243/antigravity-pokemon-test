@@ -1,0 +1,29 @@
+{
+  // The gate house between Route 35, the National Park and the Pokéathlon Dome (plan 20 · J5, part b). The way to the
+  // Pokéathlon Dome (warp 2) stays shut until the Pokéathlon (plan 15); its enthusiasts are left out with it
+  "area": "route_35_national_park_pokeathalon_gatehouse",
+  "bgmTrack": "johto/route34",
+  "locked": [
+    2
+  ],
+  "people": {
+    "r35r0201_gsboy2": {
+      "name": "Boy",
+      "dialog": [
+        "The National Park is through the north door. The Pokéathlon Dome is through the west one, but it isn't open yet."
+      ]
+    },
+    "r35r0201_counterm": {
+      "name": "Officer",
+      "still": true,
+      "dialog": [
+        "Welcome! The National Park is just to the north. Do enjoy your visit."
+      ],
+      "hiddenBy": ""
+    }
+  },
+  "signs": {
+    "R35R0201_006+1": "A poster of the Pokéathlon. It says \"Coming soon!\"",
+    "R35R0201_007+1": "A poster of the Pokéathlon's events: racing, jumping, throwing and more."
+  }
+}

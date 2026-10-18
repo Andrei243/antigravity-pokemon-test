@@ -1,0 +1,19 @@
+{
+  // A house of Goldenrod City (plan 20 · J5, part b)
+  "area": "goldenrod_northeast_house",
+  "bgmTrack": "johto/goldenrod",
+  "people": {
+    "t25r0801_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "Did you know there's a passage under the city? It joins the north end of town to the south."
+      ]
+    },
+    "t25r0801_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "My dad works at the Radio Tower. He says everybody in Johto listens!"
+      ]
+    }
+  }
+}

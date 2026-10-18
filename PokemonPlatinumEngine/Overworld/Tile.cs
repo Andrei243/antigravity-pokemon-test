@@ -216,6 +216,10 @@ public enum Architecture
     OldTimber,
     /// <summary>Logs under dark-brown gable roofs with a chimney: the old town of charcoal smoke and Slowpoke at the forest's edge (Azalea, plan 20 · J5).</summary>
     Woodland,
+    /// <summary>Brick under gold hipped roofs with shutters: the great city of the Radio Tower and the Department Store (Goldenrod, plan 20 · J5, part b).</summary>
+    Boulevard,
+    /// <summary>Dark planks under deep red-brown hipped roofs of tile: the old city of the two towers and the dancers (Ecruteak, plan 20 · J5, part b).</summary>
+    Heritage,
 
     // Hoenn (plan 21): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>Boards under leaf-green gable roofs with a chimney and flower boxes: the little town where the grass starts (Littleroot, plan 21 · H1).</summary>

@@ -1,0 +1,28 @@
+{
+  "key": "ecruteak_bell_tower_barrier_station",
+  "index": 83,
+  "name": "Ecruteak City",
+  "matrix": 68,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_ENJU",
+  "nightMusic": "GS_C_ENJU",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 11, "to": "ecruteak", "toWarp": 2 },
+    { "x": 15, "z": 3, "to": "ecruteak_bell_tower_barrier_station_corridor", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t27r0201_bozu", "looks": "bozu", "movement": "15", "x": 15, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T27R0201_000+1" },
+    { "id": "t27r0201_bozu_2", "looks": "bozu", "movement": "15", "x": 9, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 0, "script": "T27R0201_002+1" },
+    { "id": "t27r0201_bozu_3", "looks": "bozu", "movement": "15", "x": 3, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T27R0201_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

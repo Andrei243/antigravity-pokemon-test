@@ -1,0 +1,109 @@
+{
+  "key": "route_34",
+  "index": 38,
+  "name": "Route 34",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_4_34",
+  "nightMusic": "GS_R_4_34",
+  "encounters": "R34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Drowzee", "level": 10 },
+    { "species": "Rattata", "level": 11 },
+    { "species": "Drowzee", "level": 10 },
+    { "species": "Rattata", "level": 11 },
+    { "species": "Drowzee", "level": 12 },
+    { "species": "Drowzee", "level": 12 },
+    { "species": "Abra", "level": 10 },
+    { "species": "Abra", "level": 10 },
+    { "species": "Rattata", "level": 13 },
+    { "species": "Ditto", "level": 10 },
+    { "species": "Rattata", "level": 13 },
+    { "species": "Ditto", "level": 10 }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Tentacool", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 29, "maxLevel": 29 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Corsola", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Corsola", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 372, "z": 449, "to": "route_34_ilex_forest_gatehouse", "toWarp": 0 },
+    { "x": 373, "z": 449, "to": "route_34_ilex_forest_gatehouse", "toWarp": 0 },
+    { "x": 368, "z": 410, "to": "route_34_daycare", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r34_gsboy2", "looks": "gsboy2", "movement": "2", "x": 375, "z": 443, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_YOUNGSTER_SAMUEL" },
+    { "id": "r34_picnicgirl_2", "looks": "picnicgirl_2", "movement": "17", "x": 366, "z": 429, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 7, "script": "TRAINER_PICNICKER_GINA" },
+    { "id": "r34_gsboy2_2", "looks": "gsboy2", "movement": "15", "x": 376, "z": 418, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_YOUNGSTER_IAN" },
+    { "id": "r34_policeman", "looks": "policeman", "movement": "16", "x": 364, "z": 404, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "hiddenBy": "FLAG_UNK_1D2", "script": "TRAINER_POLICEMAN_KEITH" },
+    { "id": "r34_campboy_2", "looks": "campboy_2", "movement": "16", "x": 365, "z": 395, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_CAMPER_TODD" },
+    { "id": "r34_gswoman3", "looks": "gswoman3", "movement": "0", "x": 375, "z": 472, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R34_006+1" },
+    { "id": "r34_gswoman3_2", "looks": "gswoman3", "movement": "0", "x": 365, "z": 472, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R34_007+1" },
+    { "id": "r34_gswoman3_3", "looks": "gswoman3", "movement": "0", "x": 370, "z": 476, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "R34_008+1" },
+    { "id": "r34_monstarball", "looks": "monstarball", "movement": "0", "x": 364, "z": 438, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R34_NUGGET", "item": "Nugget", "script": "std_itemball_r34_nugget" },
+    { "id": "r34_policeman_2", "looks": "policeman", "movement": "16", "x": 364, "z": 404, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1D1", "script": "R34_002+1" },
+    { "id": "r34_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 365, "z": 410, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_daycare_man" },
+    { "id": "r34_var_1", "looks": "var_1", "movement": "0", "x": 361, "z": 402, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_22D", "script": "0" },
+    { "id": "r34_tsure_poke_static_marill", "looks": "follower_mon_static_marill", "movement": "0", "x": 361, "z": 401, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_22D", "script": "0" },
+    { "id": "r34_gsmiddleman1", "looks": "gsmiddleman1", "movement": "16", "x": 381, "z": 431, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_POKEFAN_M_BRANDON" },
+    { "id": "r34_monstarball_2", "looks": "monstarball", "movement": "0", "x": 372, "z": 390, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R34_TM63", "item": "TM63", "script": "std_itemball_r34_tm63" },
+    { "id": "r34_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "14", "x": 363, "z": 414, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 65536, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R34_012+1" }
+  ],
+  "signs": [
+    { "x": 372, "z": 443, "type": 1, "script": "R34_009+1" },
+    { "x": 366, "z": 410, "type": 1, "script": "R34_010+1" },
+    { "x": 363, "z": 394, "type": 1, "script": "R34_011+1" },
+    { "x": 363, "z": 436, "type": 2, "script": "std_hiddenitem_r34_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_R34_RARE_CANDY" },
+    { "x": 381, "z": 417, "type": 2, "script": "std_hiddenitem_r34_super_potion", "item": "Super Potion", "flag": "FLAG_HIDDEN_ITEM_R34_SUPER_POTION" },
+    { "x": 369, "z": 380, "type": 2, "script": "std_hiddenitem_r34_t25_super_potion", "item": "Super Potion", "flag": "FLAG_HIDDEN_ITEM_R34_T25_SUPER_POTION" }
+  ],
+  "triggers": [
+    { "x": 363, "z": 413, "width": 7, "depth": 1, "script": "R34_003+1", "variable": "VAR_UNK_408E", "value": "0" },
+    { "x": 370, "z": 472, "width": 1, "depth": 1, "script": "R34_004+1", "variable": "VAR_UNK_4097", "value": "0" },
+    { "x": 370, "z": 473, "width": 1, "depth": 1, "script": "R34_005+1", "variable": "VAR_UNK_4097", "value": "1" }
+  ]
+}

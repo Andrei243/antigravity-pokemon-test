@@ -62,7 +62,43 @@
     { "name": "Azalea_Mart", "matrix": 104, "area": "azalea_pokemart", "trees": "Round", "setting": "Indoors" },
     { "name": "Azalea_KurtsHouse", "matrix": 127, "area": "azalea_kurt_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Azalea_CharcoalKiln", "matrix": 125, "area": "azalea_charcoal_kiln", "trees": "Round", "setting": "Indoors" },
-    { "name": "Azalea_IlexForestGate", "matrix": 70, "area": "azalea_ilex_forest_gatehouse", "trees": "Round", "setting": "Indoors" }
+    { "name": "Azalea_IlexForestGate", "matrix": 70, "area": "azalea_ilex_forest_gatehouse", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J5, part b: Ilex Forest, Route 34 and the Day Care, Goldenrod City and its rooms, Routes 35 to 37, the
+    // National Park and Ecruteak City with the Burned Tower
+    { "name": "IlexForest", "matrix": 56, "area": "ilex_forest", "trees": "Round" },
+    { "name": "Route34_IlexForestGate", "matrix": 69, "area": "route_34_ilex_forest_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route34_DayCare", "matrix": 179, "area": "route_34_daycare", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_PokemonCenter_1F", "matrix": 73, "area": "goldenrod_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_PokemonCenter_B1F", "matrix": 77, "area": "goldenrod_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_FlowerShop", "matrix": 108, "area": "goldenrod_flower_shop", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_BikeShop", "matrix": 107, "area": "goldenrod_bike_shop", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_BillsHouse", "matrix": 97, "area": "goldenrod_bills_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_NameRatersHouse", "matrix": 140, "area": "goldenrod_name_rater_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_FriendshipHouse", "matrix": 96, "area": "goldenrod_friendship_checker_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_NortheastHouse", "matrix": 96, "area": "goldenrod_northeast_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_Gym", "matrix": 89, "area": "goldenrod_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_GameCorner", "matrix": 286, "area": "goldenrod_game_corner", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_DeptStore_1F", "matrix": 113, "area": "goldenrod_department_store_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_DeptStore_2F", "matrix": 114, "area": "goldenrod_department_store_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_DeptStore_3F", "matrix": 115, "area": "goldenrod_department_store_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_DeptStore_4F", "matrix": 116, "area": "goldenrod_department_store_4f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_DeptStore_5F", "matrix": 117, "area": "goldenrod_department_store_5f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_DeptStore_6F", "matrix": 118, "area": "goldenrod_department_store_6f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_RadioTower_1F", "matrix": 28, "area": "goldenrod_radio_tower_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_Underground", "matrix": 57, "area": "goldenrod_tunnel_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route35_GoldenrodGate", "matrix": 69, "area": "route_35_goldenrod_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route35_NationalParkGate", "matrix": 196, "area": "route_35_national_park_pokeathalon_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "NationalPark", "matrix": 27, "area": "national_park", "trees": "Round" },
+    { "name": "Route36_NationalParkGate", "matrix": 70, "area": "route_36_national_park_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Ecruteak_PokemonCenter_1F", "matrix": 73, "area": "ecruteak_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Ecruteak_PokemonCenter_B1F", "matrix": 77, "area": "ecruteak_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Ecruteak_Mart", "matrix": 104, "area": "ecruteak_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Ecruteak_DanceTheater", "matrix": 126, "area": "ecruteak_dance_theater", "trees": "Round", "setting": "Indoors" },
+    { "name": "Ecruteak_SouthwestHouse", "matrix": 66, "area": "ecruteak_southwest_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Ecruteak_DowsingHouse", "matrix": 66, "area": "ecruteak_dowsing_machine_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Ecruteak_BellTowerGate", "matrix": 68, "area": "ecruteak_bell_tower_barrier_station", "trees": "Round", "setting": "Indoors" },
+    { "name": "BurnedTower_1F", "matrix": 25, "area": "burned_tower_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "BurnedTower_B1F", "matrix": 26, "area": "burned_tower_b1f", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -86,6 +122,17 @@
     "route_36_ruins_of_alph_gatehouse",
     "union_cave_1f", "union_cave_b1f", "union_cave_b2f",
     "route_33", "azalea", "azalea_pokecenter_1f", "azalea_pokecenter_b1f", "azalea_pokemart", "azalea_kurt_house",
-    "azalea_charcoal_kiln", "azalea_ilex_forest_gatehouse"
+    "azalea_charcoal_kiln", "azalea_ilex_forest_gatehouse",
+    // Plan 20 · J5, part b: Ilex Forest to Ecruteak City
+    "ilex_forest", "route_34", "route_34_ilex_forest_gatehouse", "route_34_daycare",
+    "goldenrod", "goldenrod_pokecenter_1f", "goldenrod_pokecenter_b1f", "goldenrod_flower_shop",
+    "goldenrod_bike_shop", "goldenrod_bills_house", "goldenrod_name_rater_house", "goldenrod_friendship_checker_house",
+    "goldenrod_northeast_house", "goldenrod_gym", "goldenrod_game_corner", "goldenrod_department_store_1f",
+    "goldenrod_department_store_2f", "goldenrod_department_store_3f", "goldenrod_department_store_4f", "goldenrod_department_store_5f",
+    "goldenrod_department_store_6f", "goldenrod_radio_tower_1f", "goldenrod_tunnel_1f", "route_35",
+    "route_35_goldenrod_gatehouse", "route_35_national_park_pokeathalon_gatehouse", "national_park", "route_36_national_park_gatehouse",
+    "route_36", "route_37", "ecruteak", "ecruteak_pokecenter_1f",
+    "ecruteak_pokecenter_b1f", "ecruteak_pokemart", "ecruteak_dance_theater", "ecruteak_southwest_house",
+    "ecruteak_dowsing_machine_house", "ecruteak_bell_tower_barrier_station", "burned_tower_1f", "burned_tower_b1f"
   ]
 }

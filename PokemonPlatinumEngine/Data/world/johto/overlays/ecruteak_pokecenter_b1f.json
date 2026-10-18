@@ -1,0 +1,25 @@
+{
+  // Ecruteak City's Pokémon Center below ground (plan 20 · J5, part b): the Wi-Fi counters, closed (decision 06 · 7)
+  "area": "ecruteak_pokecenter_b1f",
+  "bgmTrack": "johto/ecruteak",
+  "people": {
+    "t27pc0105_wifisf": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t27pc0105_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t27pc0105_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    }
+  }
+}

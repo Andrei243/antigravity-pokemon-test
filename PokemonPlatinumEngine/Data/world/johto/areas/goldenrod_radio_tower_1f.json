@@ -1,0 +1,38 @@
+{
+  "key": "goldenrod_radio_tower_1f",
+  "index": 112,
+  "name": "Radio Tower",
+  "matrix": 28,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 14, "to": "goldenrod", "toWarp": 7 },
+    { "x": 23, "z": 5, "to": "goldenrod_radio_tower_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d23r0101_gswoman6", "looks": "gswoman6", "movement": "0", "x": 5, "z": 12, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D23R0101_000+1" },
+    { "id": "d23r0101_gswoman6_2", "looks": "gswoman6", "movement": "14", "x": 8, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D23R0101_001+1" },
+    { "id": "d23r0101_gswoman6_3", "looks": "gswoman6", "movement": "14", "x": 13, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D23R0101_002+1" },
+    { "id": "d23r0101_gsman1", "looks": "gsman1", "movement": "17", "x": 18, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D23R0101_004+1" },
+    { "id": "d23r0101_gsgirl2", "looks": "gsgirl2", "movement": "16", "x": 21, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D23R0101_003+1" },
+    { "id": "d23r0101_gsrivel", "looks": "gsrivel", "movement": "0", "x": 26, "z": 25, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RADIO_TOWER_RIVAL", "script": "0" },
+    { "id": "d23r0101_rocketm", "looks": "rocketm", "movement": "16", "x": 23, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_6", "script": "D23R0101_005+1" },
+    { "id": "d23r0101_gsleader3", "looks": "gsleader3", "movement": "0", "x": 15, "z": 12, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_318", "script": "D23R0101_010+1" }
+  ],
+  "signs": [
+    { "x": 3, "z": 4, "type": 0, "script": "D23R0101_006+1" },
+    { "x": 21, "z": 4, "type": 0, "script": "D23R0101_007+1" }
+  ],
+  "triggers": [
+    { "x": 23, "z": 5, "width": 1, "depth": 1, "script": "D23R0101_009+1", "variable": "VAR_SCENE_ROCKET_TAKEOVER", "value": "3" }
+  ]
+}

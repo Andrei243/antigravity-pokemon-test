@@ -1,0 +1,79 @@
+{
+  // Goldenrod City (plan 20 · J5, part b): HeartGold's map, our words. The great city of the Radio Tower, the
+  // Department Store, the Game Corner and Whitney's Gym, built in brick under gold roofs (Boulevard). Team Rocket's
+  // takeover is the eleventh chapter's (plan 20 · J11): its grunts are left out, and the townspeople the takeover hides
+  // stand at every hour. The Magnet Train station (warp 9) and the Global Terminal (warp 16) stay shut
+  "area": "goldenrod",
+  "bgmTrack": "johto/goldenrod",
+  "trees": "Round",
+  "architecture": "Boulevard",
+  "locked": [
+    9,
+    16
+  ],
+  "people": {
+    "t25_gswoman2": {
+      "name": "Woman",
+      "dialog": [
+        "The Department Store has six floors and a rooftop! I could spend all day in there."
+      ],
+      "hiddenBy": ""
+    },
+    "t25_gsoldman1": {
+      "name": "Old Man",
+      "dialog": [
+        "They're building a railway that runs all the way to Kanto. A train that floats on magnets!",
+        "In my day you walked, and you were glad of it."
+      ],
+      "hiddenBy": ""
+    },
+    "t25_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "Have you been to the Game Corner? I'm not old enough to play, but I watch the lights."
+      ],
+      "hiddenBy": ""
+    },
+    "t25_gsboy1_2": {
+      "name": "Boy",
+      "dialog": [
+        "Whitney is the Gym Leader here. She's super nice, until you battle her!"
+      ],
+      "hiddenBy": ""
+    },
+    "t25_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "The Radio Tower plays music all day. I always have my radio on."
+      ],
+      "hiddenBy": ""
+    },
+    "t25_gswoman2_2": {
+      "name": "Woman",
+      "dialog": [
+        "Underground there's a passage that runs under the whole city. Shops set up down there."
+      ],
+      "hiddenBy": ""
+    },
+    "t25_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "Goldenrod is the biggest city in Johto! Everybody comes here sooner or later."
+      ],
+      "hiddenBy": ""
+    }
+  },
+  "signs": {
+    "T25_019+1": "Goldenrod City Station\nMagnet Train service to Saffron City in Kanto.",
+    "T25_020+1": "Goldenrod Radio Tower\nJohto's voice on the air.",
+    "T25_021+1": "Goldenrod City Pokémon Gym\nLeader: Whitney\nShe's cute and she's strong.",
+    "T25_022+1": "Goldenrod City\nThe festive city of gold and glitter.",
+    "T25_023+1": "The Bike Shop\nThe world is your oyster on two wheels.",
+    "T25_024+1": "Goldenrod Game Corner\nYour playground for every age.",
+    "T25_025+1": "The Name Rater\nA second opinion on your Pokémon's name.",
+    "T25_026+1": "Underground Entrance\nThe passage under the city.",
+    "T25_027+1": "Underground Entrance\nThe passage under the city.",
+    "T25_028+1": "Global Terminal\nClosed for now.",
+    "T25_029+1": "Goldenrod Flower Shop\nFlowers for every Trainer."
+  }
+}

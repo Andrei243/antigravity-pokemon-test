@@ -1,0 +1,20 @@
+{
+  // A house of Ecruteak City (plan 20 · J5, part b)
+  "area": "ecruteak_southwest_house",
+  "bgmTrack": "johto/ecruteak",
+  "people": {
+    "t27r0401_gsoldman1": {
+      "name": "Old Man",
+      "dialog": [
+        "Three hundred years ago there were two towers here, and a great bird nested on each.",
+        "One tower burned. The bird left, and never came back."
+      ]
+    },
+    "t27r0401_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "Grandpa's told me about the towers a hundred times. I still like hearing it."
+      ]
+    }
+  }
+}

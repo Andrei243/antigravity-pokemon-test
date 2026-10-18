@@ -1,0 +1,36 @@
+{
+  "key": "ecruteak_pokecenter_1f",
+  "index": 81,
+  "name": "Ecruteak City",
+  "matrix": 73,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_POKESEN",
+  "nightMusic": "GS_POKESEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 19, "to": "ecruteak", "toWarp": 5 },
+    { "x": 7, "z": 2, "to": "union", "toWarp": 0 },
+    { "x": 14, "z": 17, "to": "ecruteak_pokecenter_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t27pc0101_pcwoman1", "looks": "pcwoman1", "movement": "0", "x": 8, "z": 11, "facing": 1, "rangeX": 2, "rangeZ": 0, "script": "T27PC0101_000+1" },
+    { "id": "t27pc0101_pcwoman2", "looks": "pcwoman2", "movement": "0", "x": 6, "z": 4, "facing": 1, "rangeX": 2, "rangeZ": 0, "script": "std_union_room" },
+    { "id": "t27pc0101_pcwoman2_2", "looks": "pcwoman2", "movement": "0", "x": 11, "z": 4, "facing": 1, "rangeX": 2, "rangeZ": 0, "script": "std_wireless_colosseum" },
+    { "id": "t27pc0101_pcwoman2_3", "looks": "pcwoman2", "movement": "0", "x": 2, "z": 4, "facing": 1, "rangeX": 2, "rangeZ": 0, "script": "std_trainer_card_explain" },
+    { "id": "t27pc0101_masaki", "looks": "masaki", "movement": "0", "x": 2, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1C5", "script": "0" },
+    { "id": "t27pc0101_gsassistantm", "looks": "gsassistantm", "movement": "15", "x": 15, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T27PC0101_004+1" },
+    { "id": "t27pc0101_gswoman3", "looks": "gswoman3", "movement": "2", "x": 4, "z": 18, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T27PC0101_003+1" },
+    { "id": "t27pc0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "2", "x": 12, "z": 15, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T27PC0101_002+1" }
+  ],
+  "signs": [
+    { "x": 4, "z": 8, "type": 0, "script": "0" }
+  ],
+  "triggers": []
+}

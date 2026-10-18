@@ -1,0 +1,15 @@
+{
+  // The Name Rater's house (plan 20 · J5, part b). Renaming is plan 13 · V4's; until then he says what he does
+  "area": "goldenrod_name_rater_house",
+  "bgmTrack": "johto/goldenrod",
+  "people": {
+    "t25r0901_gsoldman1": {
+      "name": "Name Rater",
+      "still": true,
+      "dialog": [
+        "Hello, hello! I'm the Name Rater. I rate the names of Pokémon.",
+        "My pen is resting just now. Do come back another day, and I'll rate your Pokémon's names!"
+      ]
+    }
+  }
+}

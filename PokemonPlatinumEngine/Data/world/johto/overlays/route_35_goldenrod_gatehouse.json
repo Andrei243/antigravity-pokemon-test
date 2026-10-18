@@ -1,0 +1,21 @@
+{
+  // The gate house between Goldenrod City and Route 35 (plan 20 · J5, part b)
+  "area": "route_35_goldenrod_gatehouse",
+  "bgmTrack": "johto/route34",
+  "people": {
+    "r35r0101_counterm": {
+      "name": "Officer",
+      "still": true,
+      "dialog": [
+        "Route 35 runs north to the National Park. Lots of Trainers battle on the way."
+      ]
+    },
+    "r35r0101_middlewoman1_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "I'm meeting a friend from Ecruteak City. She always comes this way, through the park."
+      ]
+    }
+  }
+}

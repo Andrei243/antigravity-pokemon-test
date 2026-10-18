@@ -1,0 +1,27 @@
+{
+  "key": "route_35_goldenrod_gatehouse",
+  "index": 101,
+  "name": "Route 35",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_5_34",
+  "nightMusic": "GS_R_5_34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 12, "to": "goldenrod", "toWarp": 0 },
+    { "x": 5, "z": 2, "to": "route_35", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r35r0101_counterm", "looks": "counterm", "movement": "17", "x": 1, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R35R0101_000+1" },
+    { "id": "r35r0101_middlewoman1_2", "looks": "middlewoman1_2", "movement": "0", "x": 6, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 2, "script": "R35R0101_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

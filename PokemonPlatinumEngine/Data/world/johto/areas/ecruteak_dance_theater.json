@@ -1,0 +1,43 @@
+{
+  "key": "ecruteak_dance_theater",
+  "index": 86,
+  "name": "Ecruteak City",
+  "matrix": 126,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "15",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_KABURENJOU",
+  "nightMusic": "GS_KABURENJOU",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 17, "to": "ecruteak", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "t27r0501_gsoldwoman1", "looks": "gsoldwoman1", "movement": "14", "x": 10, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_241", "script": "T27R0501_014+1" },
+    { "id": "t27r0501_gsman1", "looks": "gsman1", "movement": "17", "x": 4, "z": 12, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_241", "script": "T27R0501_002+1" },
+    { "id": "t27r0501_gsgentleman", "looks": "gsgentleman", "movement": "14", "x": 8, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_241", "script": "T27R0501_000+1" },
+    { "id": "t27r0501_tsure_poke_static_psyduck", "looks": "follower_mon_static_psyduck", "movement": "14", "x": 9, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_241", "script": "T27R0501_001+1" },
+    { "id": "t27r0501_dancer", "looks": "dancer", "movement": "0", "x": 2, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS", "script": "T27R0501_005+1" },
+    { "id": "t27r0501_dancer_2", "looks": "dancer", "movement": "0", "x": 4, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS", "script": "T27R0501_006+1" },
+    { "id": "t27r0501_dancer_3", "looks": "dancer", "movement": "0", "x": 10, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_23B", "script": "T27R0501_004+1" },
+    { "id": "t27r0501_dancer_4", "looks": "dancer", "movement": "0", "x": 10, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS", "script": "T27R0501_008+1" },
+    { "id": "t27r0501_dancer_5", "looks": "dancer", "movement": "0", "x": 12, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS", "script": "T27R0501_009+1" },
+    { "id": "t27r0501_rocketm", "looks": "rocketm", "movement": "19", "x": 7, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_23A", "script": "T27R0501_003+1" },
+    { "id": "t27r0501_dancer_6", "looks": "dancer", "movement": "0", "x": 7, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_DANCE_STUDIO_KIMONO_GIRLS", "script": "T27R0501_007+1" },
+    { "id": "t27r0501_gsbabygirl1", "looks": "gsbabygirl1", "movement": "0", "x": 3, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_DANCE_STUDIO_LITTLE_GIRL", "script": "0" },
+    { "id": "t27r0501_rocketm_2", "looks": "rocketm", "movement": "0", "x": 29, "z": 29, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_23A", "script": "0" }
+  ],
+  "signs": [
+    { "x": 6, "z": 10, "type": 0, "script": "T27R0501_010+1" },
+    { "x": 7, "z": 10, "type": 0, "script": "T27R0501_010+1" }
+  ],
+  "triggers": [
+    { "x": 3, "z": 8, "width": 1, "depth": 1, "script": "T27R0501_011+1", "variable": "VAR_UNK_410C", "value": "2" },
+    { "x": 11, "z": 8, "width": 1, "depth": 1, "script": "T27R0501_012+1", "variable": "VAR_UNK_410C", "value": "2" }
+  ]
+}

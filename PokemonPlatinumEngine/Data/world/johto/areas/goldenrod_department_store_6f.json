@@ -1,0 +1,35 @@
+{
+  "key": "goldenrod_department_store_6f",
+  "index": 196,
+  "name": "Goldenrod City",
+  "matrix": 118,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_FS",
+  "nightMusic": "GS_FS",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 18, "z": 7, "to": "goldenrod_department_store_5f", "toWarp": 1 },
+    { "x": 19, "z": 2, "to": "goldenrod_department_store_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t25r1006_gsman1", "looks": "gsman1", "movement": "4", "x": 10, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T25R1006_000+1" },
+    { "id": "t25r1006_gsgirl2", "looks": "gsgirl2", "movement": "3", "x": 17, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T25R1006_001+1" },
+    { "id": "t25r1006_gswoman6", "looks": "gswoman6", "movement": "16", "x": 23, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T25R1006_004+1" },
+    { "id": "t25r1006_gsleader3", "looks": "gsleader3", "movement": "0", "x": 3, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_26F", "script": "T25R1006_007+1" },
+    { "id": "t25r1006_gswoman6_2", "looks": "gswoman6", "movement": "16", "x": 23, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T25R1006_005+1" }
+  ],
+  "signs": [
+    { "x": 17, "z": 2, "type": 0, "script": "T25R1006_002+1" },
+    { "x": 11, "z": 3, "type": 0, "script": "T25R1006_003+1" },
+    { "x": 12, "z": 3, "type": 0, "script": "T25R1006_003+1" },
+    { "x": 13, "z": 3, "type": 0, "script": "T25R1006_003+1" }
+  ],
+  "triggers": []
+}

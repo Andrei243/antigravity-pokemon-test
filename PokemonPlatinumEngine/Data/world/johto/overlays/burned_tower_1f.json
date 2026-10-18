@@ -1,0 +1,23 @@
+{
+  // The Burned Tower's ground floor (plan 20 · J5, part b): what the fire left of it, with two Firebreathers among the
+  // ashes. The rival, Eusine, Morty and the three beasts below are the next chapter's (plan 20 · J7); the cracked rocks
+  // are the field's own obstacles
+  "area": "burned_tower_1f",
+  "bgmTrack": "johto/burned_tower",
+  "people": {
+    "d18r0101_fire": {
+      "name": "Richard",
+      "trainer": {
+        "dialogueBefore": "Firebreather Richard: This tower burned once. Shall I set it alight again?",
+        "dialogueAfter": "Firebreather Richard: All my fire's gone up in smoke."
+      }
+    },
+    "d18r0101_fire_2": {
+      "name": "Ned",
+      "trainer": {
+        "dialogueBefore": "Firebreather Ned: The ashes here are still warm, I swear. Feel that heat!",
+        "dialogueAfter": "Firebreather Ned: Cooled right down."
+      }
+    }
+  }
+}

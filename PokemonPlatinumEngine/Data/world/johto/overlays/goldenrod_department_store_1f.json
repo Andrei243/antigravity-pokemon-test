@@ -1,0 +1,40 @@
+{
+  // The Goldenrod Department Store's ground floor (plan 20 · J5, part b). Its lift (warp 2) stays shut until it can carry anyone. The delivery men are the original's
+  // gifts, which this game has no use for
+  "area": "goldenrod_department_store_1f",
+  "bgmTrack": "johto/goldenrod",
+  "locked": [
+    2
+  ],
+  "people": {
+    "t25r1001_gswoman6": {
+      "name": "Receptionist",
+      "still": true,
+      "dialog": [
+        "Welcome to the Goldenrod Department Store! Every floor has something for you."
+      ]
+    },
+    "t25r1001_gsgentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "I come here every morning for the sales. You never know what you'll find."
+      ]
+    },
+    "t25r1001_middlewoman1_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "I'm waiting for my daughter. She's been in the toy section for an hour!"
+      ]
+    },
+    "t25r1001_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "I'm going to the rooftop! You can see the whole city from up there."
+      ]
+    }
+  },
+  "signs": {
+    "T25R1001_004+1": "1F Service Counter  2F Market  3F Battle Items\n4F Medicine  5F TM Corner  6F Tranquil Square"
+  }
+}

@@ -1,13 +1,12 @@
 {
-  // The gate house between the Ruins of Alph and Route 36 (plan 20 · J5). The way on north to Route 36 (warp 0) stays
-  // shut until the route opens with the next stretch of the centre
+  // The gate house between the Ruins of Alph and Route 36 (plan 20 · J5). The way on north to Route 36 (warp 0) is
+  // open since J5's part b
   "area": "route_36_ruins_of_alph_gatehouse",
   "bgmTrack": "johto/route30",
-  "locked": [ 0 ],
   "people": {
     "r36r0101_counterm": {
       "name": "Officer",
-      "dialog": [ "Route 36 is north of here. A strange tree is blocking the road, so nobody's getting through for now." ]
+      "dialog": [ "Route 36 is north of here. Go west along it and Route 37 takes you up to Ecruteak City." ]
     },
     "r36r0101_gsoldman1": {
       "name": "Old Man",

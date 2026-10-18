@@ -1,0 +1,89 @@
+{
+  "key": "ecruteak",
+  "index": 78,
+  "name": "Ecruteak City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_ENJU",
+  "nightMusic": "GS_C_ENJU",
+  "encounters": "T27",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 20 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 376, "z": 149, "to": "burned_tower_1f", "toWarp": 0 },
+    { "x": 375, "z": 173, "to": "ecruteak_southwest_house", "toWarp": 0 },
+    { "x": 392, "z": 153, "to": "ecruteak_bell_tower_barrier_station", "toWarp": 0 },
+    { "x": 386, "z": 183, "to": "ecruteak_dowsing_machine_house", "toWarp": 0 },
+    { "x": 397, "z": 173, "to": "ecruteak_dance_theater", "toWarp": 0 },
+    { "x": 397, "z": 183, "to": "ecruteak_pokecenter_1f", "toWarp": 0 },
+    { "x": 406, "z": 173, "to": "ecruteak_pokemart", "toWarp": 0 },
+    { "x": 376, "z": 183, "to": "ecruteak_gym", "toWarp": 0 },
+    { "x": 358, "z": 166, "to": "route_38_ecruteak_gatehouse", "toWarp": 0 },
+    { "x": 358, "z": 167, "to": "route_38_ecruteak_gatehouse", "toWarp": 0 },
+    { "x": 415, "z": 175, "to": "route_42_ecruteak_gatehouse", "toWarp": 0 },
+    { "x": 415, "z": 176, "to": "route_42_ecruteak_gatehouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t27_gsgirl1", "looks": "gsgirl1", "movement": "14", "x": 379, "z": 155, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T27_006+1" },
+    { "id": "t27_gsboy1", "looks": "gsboy1", "movement": "5", "x": 381, "z": 162, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "T27_007+1" },
+    { "id": "t27_gsbigman", "looks": "gsbigman", "movement": "5", "x": 378, "z": 176, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T27_008+1" },
+    { "id": "t27_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 396, "z": 162, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T27_009+1" },
+    { "id": "t27_gsoldman1_2", "looks": "gsoldman1", "movement": "16", "x": 392, "z": 171, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T27_010+1" },
+    { "id": "t27_gsgirl2", "looks": "gsgirl2", "movement": "5", "x": 404, "z": 185, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "T27_011+1" },
+    { "id": "t27_gsrivel", "looks": "gsrivel", "movement": "0", "x": 397, "z": 173, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ECRUTEAK_RIVAL", "script": "0" },
+    { "id": "t27_gsoldman1_3", "looks": "gsoldman1", "movement": "3", "x": 374, "z": 153, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ECRUTEAK_OLD_MAN", "script": "T27_013+1" },
+    { "id": "t27_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 390, "z": 160, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T27_014+1" }
+  ],
+  "signs": [
+    { "x": 388, "z": 173, "type": 1, "script": "T27_001+1" },
+    { "x": 378, "z": 184, "type": 1, "script": "T27_002+1" },
+    { "x": 395, "z": 174, "type": 1, "script": "T27_003+1" },
+    { "x": 378, "z": 153, "type": 1, "script": "T27_004+1" },
+    { "x": 385, "z": 170, "type": 2, "script": "std_hiddenitem_t27_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_T27_HYPER_POTION" },
+    { "x": 379, "z": 146, "type": 2, "script": "std_hiddenitem_t27_ether", "item": "Ether", "flag": "FLAG_HIDDEN_ITEM_T27_ETHER" },
+    { "x": 406, "z": 163, "type": 2, "script": "std_hiddenitem_t27_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_T27_RARE_CANDY" },
+    { "x": 365, "z": 164, "type": 2, "script": "std_hiddenitem_t27_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_T27_ULTRA_BALL" },
+    { "x": 394, "z": 154, "type": 1, "script": "T27_016+1" }
+  ],
+  "triggers": [
+    { "x": 397, "z": 174, "width": 1, "depth": 1, "script": "T27_005+1", "variable": "VAR_UNK_4079", "value": "3" }
+  ]
+}

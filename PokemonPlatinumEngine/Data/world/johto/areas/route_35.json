@@ -1,0 +1,102 @@
+{
+  "key": "route_35",
+  "index": 39,
+  "name": "Route 35",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_5_34",
+  "nightMusic": "GS_R_5_34",
+  "encounters": "R35",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Nidoran♂", "level": 12 },
+    { "species": "Nidoran♀", "level": 12 },
+    { "species": "Nidoran♂", "level": 12 },
+    { "species": "Nidoran♀", "level": 12 },
+    { "species": "Drowzee", "level": 14 },
+    { "species": "Drowzee", "level": 14 },
+    { "species": "Abra", "level": 10 },
+    { "species": "Abra", "level": 10 },
+    { "species": "Pidgey", "level": 14, "night": "Hoothoot" },
+    { "species": "Ditto", "level": 10 },
+    { "species": "Pidgey", "level": 14, "night": "Hoothoot" },
+    { "species": "Yanma", "level": 12 }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 10, "maxLevel": 20 },
+    { "species": "Golduck", "level": 15, "maxLevel": 25 },
+    { "species": "Golduck", "level": 15, "maxLevel": 25 },
+    { "species": "Golduck", "level": 31, "maxLevel": 31 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 358, "z": 316, "to": "route_35_goldenrod_gatehouse", "toWarp": 1 },
+    { "x": 359, "z": 316, "to": "route_35_goldenrod_gatehouse", "toWarp": 1 },
+    { "x": 362, "z": 266, "to": "route_35_national_park_pokeathalon_gatehouse", "toWarp": 0 },
+    { "x": 363, "z": 266, "to": "route_35_national_park_pokeathalon_gatehouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r35_policeman", "looks": "policeman", "movement": "15", "x": 365, "z": 267, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_UNK_1CE", "script": "TRAINER_POLICEMAN_DIRK" },
+    { "id": "r35_picnicgirl_2", "looks": "picnicgirl_2", "movement": "17", "x": 356, "z": 307, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PICNICKER_KIM" },
+    { "id": "r35_campboy_2", "looks": "campboy_2", "movement": "15", "x": 368, "z": 287, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_CAMPER_ELLIOT" },
+    { "id": "r35_picnicgirl_2_2", "looks": "picnicgirl_2", "movement": "15", "x": 367, "z": 287, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_PICNICKER_BROOKE" },
+    { "id": "r35_campboy_2_2", "looks": "campboy_2", "movement": "17", "x": 361, "z": 286, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_CAMPER_IVAN" },
+    { "id": "r35_juggrer", "looks": "juggrer", "movement": "5", "x": 364, "z": 279, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_JUGGLER_IRWIN" },
+    { "id": "r35_gsboy3", "looks": "gsboy3", "movement": "15", "x": 378, "z": 266, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BUG_CATCHER_ARNIE" },
+    { "id": "r35_gsman2", "looks": "gsman2", "movement": "15", "x": 367, "z": 313, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BIRD_KEEPER_GS_BRYAN" },
+    { "id": "r35_policeman_2", "looks": "policeman", "movement": "15", "x": 365, "z": 267, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1CD", "script": "R35_002+1" },
+    { "id": "r35_monstarball", "looks": "monstarball", "movement": "0", "x": 380, "z": 317, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R35_TM66", "item": "TM66", "script": "std_itemball_r35_tm66" },
+    { "id": "r35_tree", "looks": "tree", "movement": "0", "x": 380, "z": 265, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r35_bonguri", "looks": "bonguri", "movement": "0", "x": 358, "z": 293, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r35_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 372, "z": 307, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R35_003+1" },
+    { "id": "r35_fire", "looks": "fire", "movement": "5", "x": 361, "z": 275, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_FIREBREATHER_WALT" },
+    { "id": "r35_monstarball_2", "looks": "monstarball", "movement": "0", "x": 375, "z": 277, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R35_PARLYZ_HEAL", "item": "Paralyze Heal", "script": "std_itemball_r35_parlyz_heal" }
+  ],
+  "signs": [
+    { "x": 360, "z": 267, "type": 1, "script": "R35_004+1" },
+    { "x": 361, "z": 310, "type": 1, "script": "R35_000+1" },
+    { "x": 357, "z": 278, "type": 2, "script": "std_hiddenitem_r35_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_R35_NUGGET" }
+  ],
+  "triggers": []
+}

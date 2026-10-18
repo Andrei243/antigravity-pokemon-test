@@ -1,0 +1,42 @@
+{
+  "key": "route_35_national_park_pokeathalon_gatehouse",
+  "index": 102,
+  "name": "Route 35",
+  "matrix": 196,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_5_34",
+  "nightMusic": "GS_R_5_34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 25, "z": 11, "to": "route_35", "toWarp": 2 },
+    { "x": 25, "z": 2, "to": "national_park", "toWarp": 0 },
+    { "x": 4, "z": 2, "to": "pokeathlon_dome", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r35r0201_gsboy2", "looks": "gsboy2", "movement": "3", "x": 27, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "R35R0201_005+1" },
+    { "id": "r35r0201_counterm", "looks": "counterm", "movement": "0", "x": 21, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1C3", "script": "R35R0201_001+1" },
+    { "id": "r35r0201_workman", "looks": "workman", "movement": "0", "x": 19, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PARK_SOUTH_GATE_POKEATHLON_ENTHUSIASTS_LOCKED", "script": "R35R0201_000+1" },
+    { "id": "r35r0201_counterm_2", "looks": "counterm", "movement": "0", "x": 19, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PARK_SOUTH_GATE_POKEATHLON_ENTHUSIASTS_UNLOCKED", "script": "R35R0201_002+1" },
+    { "id": "r35r0201_gsfighter", "looks": "gsfighter", "movement": "0", "x": 9, "z": 4, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_PARK_SOUTH_GATE_POKEATHLON_ENTHUSIASTS_UNLOCKED", "script": "R35R0201_003+1" },
+    { "id": "r35r0201_gsgirl1", "looks": "gsgirl1", "movement": "3", "x": 6, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_PARK_SOUTH_GATE_POKEATHLON_ENTHUSIASTS_UNLOCKED", "script": "R35R0201_004+1" },
+    { "id": "r35r0201_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 10, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R35R0201_011+1" },
+    { "id": "r35r0201_counterm_3", "looks": "counterm", "movement": "0", "x": 24, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1C4", "script": "R35R0201_001+1" }
+  ],
+  "signs": [
+    { "x": 15, "z": 2, "type": 0, "script": "R35R0201_006+1" },
+    { "x": 11, "z": 2, "type": 0, "script": "R35R0201_006+1" },
+    { "x": 7, "z": 2, "type": 0, "script": "R35R0201_006+1" },
+    { "x": 13, "z": 2, "type": 0, "script": "R35R0201_007+1" },
+    { "x": 9, "z": 2, "type": 0, "script": "R35R0201_007+1" }
+  ],
+  "triggers": [
+    { "x": 19, "z": 7, "width": 1, "depth": 5, "script": "R35R0201_008+1", "variable": "VAR_UNK_40DA", "value": "0" }
+  ]
+}
