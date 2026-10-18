@@ -108,6 +108,7 @@ partial class Harness
         PokegearShots();
         // And the centre plan 20 · J5 opened: the Ruins of Alph, Union Cave, Route 33 and Azalea Town
         JohtoCentreShots();
+        JohtoNorthShots();
         engine.NewGameRegion = "Sinnoh";
     }
 }

@@ -1360,6 +1360,9 @@ public static class WorldMapBuilder
                 }
                 if (map.IsCave) (type, prop) = InACave(type, blocks, prop);
                 else if (map.IsVoid) (type, blocks, prop) = InTheVoid(cover, behaviour, solid, type, blocks, prop);
+                // A room's blocked texture that the cover's rules take for a fence (a rail along a DS room's back wall:
+                // Route 34's Day Care, Goldenrod's Underground, plan 20 · J5) is the room's wall, which builds no fence
+                else if (map.IsIndoors && prop == PropType.Fence) prop = null;
                 // An area that isn't built yet is scenery: seen from its neighbours, entered by nobody
                 map.SetGroundTile(ox + x, oy + z, type, blocks || !area.Open);
                 if (cover is TerrainCover.Building or TerrainCover.Lamp && solid) under[(oy + z) * map.Width + ox + x] = true;
@@ -1429,7 +1432,7 @@ public static class WorldMapBuilder
     private static bool FencesInWood(Architecture? town) =>
         town is Architecture.Timber or Architecture.Plaster or Architecture.Clapboard or Architecture.Cottage or Architecture.Farm
             or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber or Architecture.Evergreen or Architecture.Breeze
-            or Architecture.Bayside or Architecture.Sapling or Architecture.Meadow or Architecture.Woodland;
+            or Architecture.Bayside or Architecture.Sapling or Architecture.Meadow or Architecture.Woodland or Architecture.Heritage;
 
     /// <summary>
     /// Cuts a set of tiles into rectangles, the largest first: a house is one, a museum with a wing two. Ties go

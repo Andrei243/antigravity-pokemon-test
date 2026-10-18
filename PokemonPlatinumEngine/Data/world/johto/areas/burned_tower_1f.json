@@ -1,0 +1,69 @@
+{
+  "key": "burned_tower_1f",
+  "index": 7,
+  "name": "Burned Tower",
+  "matrix": 25,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_YAKETA",
+  "nightMusic": "GS_TO_YAKETA",
+  "encounters": "D18R0101",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Rattata", "level": 13 },
+    { "species": "Koffing", "level": 14 },
+    { "species": "Rattata", "level": 13 },
+    { "species": "Koffing", "level": 14 },
+    { "species": "Rattata", "level": 15 },
+    { "species": "Rattata", "level": 15 },
+    { "species": "Zubat", "level": 14 },
+    { "species": "Zubat", "level": 14 },
+    { "species": "Koffing", "level": 16 },
+    { "species": "Raticate", "level": 15 },
+    { "species": "Koffing", "level": 16 },
+    { "species": "Raticate", "level": 15 }
+  ],
+  "landRate": 10,
+  "hoennSounds": [
+    "Zigzagoon",
+    "Spinda"
+  ],
+  "sinnohSounds": [
+    "Chatot",
+    "Meditite"
+  ],
+  "warps": [
+    { "x": 15, "z": 26, "to": "ecruteak", "toWarp": 0 },
+    { "x": 22, "z": 16, "to": "burned_tower_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d18r0101_gsrivel", "looks": "gsrivel", "movement": "14", "x": 23, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_1F_RIVAL", "script": "0" },
+    { "id": "d18r0101_minaki", "looks": "minaki", "movement": "2", "x": 23, "z": 23, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_1F_EUSINE", "script": "D18R0101_001+1" },
+    { "id": "d18r0101_gsleader4", "looks": "gsleader4", "movement": "3", "x": 23, "z": 26, "facing": 3, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_1F_MORTY", "script": "D18R0101_002+1" },
+    { "id": "d18r0101_fire", "looks": "fire", "movement": "17", "x": 6, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_FIREBREATHER_RICHARD" },
+    { "id": "d18r0101_fire_2", "looks": "fire", "movement": "15", "x": 22, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_FIREBREATHER_NED" },
+    { "id": "d18r0101_tsure_poke_static_suicune", "looks": "follower_mon_static_suicune", "movement": "15", "x": 15, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_1F_SUICUNE", "script": "0" },
+    { "id": "d18r0101_tsure_poke_static_raikou", "looks": "follower_mon_static_raikou", "movement": "15", "x": 14, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_1F_RAIKOU", "script": "0" },
+    { "id": "d18r0101_tsure_poke_static_entei", "looks": "follower_mon_static_entei", "movement": "15", "x": 16, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_1F_ENTEI", "script": "0" },
+    { "id": "d18r0101_breakrock", "looks": "breakrock", "movement": "0", "x": 5, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "d18r0101_breakrock_2", "looks": "breakrock", "movement": "0", "x": 6, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "d18r0101_breakrock_3", "looks": "breakrock", "movement": "0", "x": 7, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_rock_smash" },
+    { "id": "d18r0101_monstarball", "looks": "monstarball", "movement": "0", "x": 7, "z": 26, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D18R0101_HP_UP", "item": "HP Up", "script": "std_itemball_d18r0101_hp_up" },
+    { "id": "d18r0101_monstarball_2", "looks": "monstarball", "movement": "0", "x": 15, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D18R0101_ANTIDOTE", "item": "Antidote", "script": "std_itemball_d18r0101_antidote" },
+    { "id": "d18r0101_tsure_poke_static_suicune_2", "looks": "follower_mon_static_suicune", "movement": "15", "x": 14, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE", "script": "0" }
+  ],
+  "signs": [
+    { "x": 8, "z": 24, "type": 2, "script": "std_hiddenitem_d18r0101_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D18R0101_ULTRA_BALL" },
+    { "x": 11, "z": 6, "type": 2, "script": "std_hiddenitem_d18r0101_ether", "item": "Ether", "flag": "FLAG_HIDDEN_ITEM_D18R0101_ETHER" }
+  ],
+  "triggers": [
+    { "x": 19, "z": 23, "width": 1, "depth": 1, "script": "D18R0101_000+1", "variable": "VAR_UNK_40A2", "value": "0" },
+    { "x": 22, "z": 19, "width": 1, "depth": 1, "script": "D18R0101_003+1", "variable": "VAR_UNK_40A6", "value": "0" }
+  ]
+}

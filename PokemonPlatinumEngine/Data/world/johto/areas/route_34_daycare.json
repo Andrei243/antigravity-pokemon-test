@@ -1,0 +1,27 @@
+{
+  "key": "route_34_daycare",
+  "index": 331,
+  "name": "Route 34",
+  "matrix": 179,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_4_34",
+  "nightMusic": "GS_R_4_34",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 12, "to": "route_34", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "r34r0101_gsoldwoman1", "looks": "gsoldwoman1", "movement": "0", "x": 3, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_daycare_lady" },
+    { "id": "r34r0101_var_1", "looks": "var_1", "movement": "0", "x": 3, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_22D", "script": "0" },
+    { "id": "r34r0101_tsure_poke_static_marill", "looks": "follower_mon_static_marill", "movement": "0", "x": 4, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_22D", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

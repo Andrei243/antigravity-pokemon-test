@@ -1,0 +1,28 @@
+{
+  "key": "route_34_ilex_forest_gatehouse",
+  "index": 171,
+  "name": "Route 34",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_4_34",
+  "nightMusic": "GS_R_4_34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 2, "to": "route_34", "toWarp": 0 },
+    { "x": 5, "z": 12, "to": "ilex_forest", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "r34r0201_gsgirl1", "looks": "gsgirl1", "movement": "4", "x": 4, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 2, "script": "R34R0201_002+1" },
+    { "id": "r34r0201_gswoman1", "looks": "gswoman1", "movement": "16", "x": 9, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R34R0201_000+1" },
+    { "id": "r34r0201_tsure_poke_static_butterfree", "looks": "follower_mon_static_butterfree", "movement": "16", "x": 9, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R34R0201_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,43 @@
+{
+  // Route 36 (plan 20 · J5, part b): from the National Park's gate east to Violet City, past the Ruins of Alph's gate and
+  // Route 37's turning north. The strange tree (HeartGold's Sudowoodo), whose ledges keep the National Park's side from
+  // Route 37, is the next chapter's (plan 20 · J7, with the SquirtBottle) and left out until then, so no flag is set; the
+  // flower shop's sister and the boy of the Ruins are that chapter's too, and the Apricorn tree J6's
+  "area": "route_36",
+  "bgmTrack": "johto/route34",
+  "trees": "Round",
+  "people": {
+    "r36_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "Ecruteak City is up Route 37, just west of here. It's the old city of the two towers."
+      ]
+    },
+    "r36_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "From here you can see all the way to Violet City. I love this route!"
+      ]
+    },
+    "r36_mystery_2": {
+      "name": "Mark",
+      "trainer": {
+        "dialogueBefore": "Psychic Mark: I can read your mind. You're thinking of battling me!",
+        "dialogueAfter": "Psychic Mark: I didn't foresee that."
+      }
+    },
+    "r36_gsboy1": {
+      "name": "Alan",
+      "trainer": {
+        "dialogueBefore": "School Kid Alan: My teacher says I'm ready for a real battle. Are you real enough?",
+        "dialogueAfter": "School Kid Alan: I have a lot of homework to do now."
+      }
+    }
+  },
+  "signs": {
+    "R36_005+1": "Route 36\nNational Park",
+    "R36_004+1": "Ruins of Alph\nNorth Entrance",
+    "R36_003+1": "Route 36",
+    "R36_006+1": "Route 37\nEcruteak City is to the north."
+  }
+}

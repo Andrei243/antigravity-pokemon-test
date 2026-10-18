@@ -1,0 +1,33 @@
+{
+  "key": "goldenrod_game_corner",
+  "index": 536,
+  "name": "Goldenrod City",
+  "matrix": 286,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GAME",
+  "nightMusic": "GS_GAME",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 12, "to": "goldenrod", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "t25sp0101_suit", "looks": "suit", "movement": "0", "x": 7, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T25SP0101_002+1" },
+    { "id": "t25sp0101_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 13, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T25SP0101_003+1" },
+    { "id": "t25sp0101_gsgentleman_2", "looks": "gsgentleman", "movement": "0", "x": 11, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T25SP0101_004+1" }
+  ],
+  "signs": [
+    { "x": 7, "z": 7, "type": 0, "script": "T25SP0101_000+1" },
+    { "x": 6, "z": 6, "type": 0, "script": "T25SP0101_001+1" },
+    { "x": 6, "z": 7, "type": 0, "script": "T25SP0101_001+1" },
+    { "x": 8, "z": 7, "type": 0, "script": "T25SP0101_001+1" },
+    { "x": 8, "z": 6, "type": 0, "script": "T25SP0101_001+1" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,53 @@
+{
+  // Goldenrod City's Pokémon Center (plan 20 · J5, part b), the Centers' floor with the town's people. The counters for the
+  // link say it is closed, as in every Center (decision 06 · 7)
+  "area": "goldenrod_pokecenter_1f",
+  "bgmTrack": "johto/goldenrod",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t25pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t25pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t25pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t25pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t25pc0101_gsdsboy": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [
+        "In the Underground there's a man who'll cut your Pokémon's hair. It makes them so happy!"
+      ]
+    },
+    "t25pc0101_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "This Center is always busy. It's the biggest city in Johto, after all."
+      ]
+    },
+    "t25pc0101_gsbabygirl1": {
+      "name": "Little Girl",
+      "still": true,
+      "dialog": [
+        "My big brother says the Radio Tower is the tallest building in the world!"
+      ]
+    }
+  }
+}

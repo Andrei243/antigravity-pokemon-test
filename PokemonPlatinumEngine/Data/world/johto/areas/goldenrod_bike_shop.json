@@ -1,0 +1,42 @@
+{
+  "key": "goldenrod_bike_shop",
+  "index": 182,
+  "name": "Goldenrod City",
+  "matrix": 107,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 11, "to": "goldenrod", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "t25r0201_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 8, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T25R0201_000+1" }
+  ],
+  "signs": [
+    { "x": 1, "z": 5, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 2, "z": 5, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 1, "z": 7, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 2, "z": 7, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 1, "z": 9, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 2, "z": 9, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 1, "z": 11, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 2, "z": 11, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 4, "z": 4, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 4, "z": 3, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 6, "z": 3, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 6, "z": 4, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 8, "z": 3, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 8, "z": 4, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 11, "z": 11, "type": 0, "script": "T25R0201_001+1" },
+    { "x": 12, "z": 11, "type": 0, "script": "T25R0201_001+1" }
+  ],
+  "triggers": []
+}

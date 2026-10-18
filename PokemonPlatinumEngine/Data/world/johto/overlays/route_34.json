@@ -1,0 +1,85 @@
+{
+  // Route 34 (plan 20 · J5, part b): from Ilex Forest's gate north to Goldenrod City, past the Pokémon Day Care. The
+  // Day-Care Man runs the common script of every Day Care. Officer Keith, who battles in HeartGold only after dark,
+  // stands here at every hour for now (his daytime double, who only talks, is left out). The friend with the Marill and
+  // Cameron are later chapters'
+  "area": "route_34",
+  "bgmTrack": "johto/route34",
+  "trees": "Round",
+  "people": {
+    "r34_gsboy2": {
+      "name": "Samuel",
+      "trainer": {
+        "dialogueBefore": "Youngster Samuel: I've been training on this route all week. Let's see what I've learned!",
+        "dialogueAfter": "Youngster Samuel: Back to training, then. All week again..."
+      }
+    },
+    "r34_picnicgirl_2": {
+      "name": "Gina",
+      "trainer": {
+        "dialogueBefore": "Picnicker Gina: Oh, a Trainer! My Hoppip have been dying to battle somebody.",
+        "dialogueAfter": "Picnicker Gina: They floated off the moment you hit them!"
+      }
+    },
+    "r34_gsboy2_2": {
+      "name": "Ian",
+      "trainer": {
+        "dialogueBefore": "Youngster Ian: My Pokémon dig and scratch. Yours had better watch out!",
+        "dialogueAfter": "Youngster Ian: Dug ourselves into a hole there..."
+      }
+    },
+    "r34_policeman": {
+      "name": "Keith",
+      "trainer": {
+        "dialogueBefore": "Officer Keith: Out on the road at this hour? Let's see some proof you can look after yourself!",
+        "dialogueAfter": "Officer Keith: All right, you can handle yourself. Off you go, then."
+      },
+      "hiddenBy": ""
+    },
+    "r34_campboy_2": {
+      "name": "Todd",
+      "trainer": {
+        "dialogueBefore": "Camper Todd: I camp out here so I can be first in line at the Department Store sales!",
+        "dialogueAfter": "Camper Todd: That was a sale I wasn't ready for."
+      }
+    },
+    "r34_gsmiddleman1": {
+      "name": "Brandon",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Brandon: My Snubbull and Mareep are the cutest pair in Johto. Want to see?",
+        "dialogueAfter": "Pokéfan Brandon: Even losing, they're still the cutest."
+      }
+    },
+    "r34_gsoldman1": {
+      "name": "Day-Care Man",
+      "script": "DayCareMan",
+      "still": true
+    },
+    "r34_gswoman3": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "We three come here to train together every week. It's much more fun than training alone!"
+      ]
+    },
+    "r34_gswoman3_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "The Day Care up the road raises Pokémon for you. Sometimes they find an Egg, too!"
+      ]
+    },
+    "r34_gswoman3_3": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "Goldenrod City is just north. You can buy anything at all in its Department Store."
+      ]
+    }
+  },
+  "signs": {
+    "R34_009+1": "Route 34\nGoldenrod City - Azalea Town\nIlex Forest is in between.",
+    "R34_010+1": "Pokémon Day Care\nLet us raise your Pokémon for you!",
+    "R34_011+1": "Trainer Tips\nA Pokémon left at the Day Care grows as you walk. Your steps are its training!"
+  }
+}

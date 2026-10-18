@@ -1,0 +1,27 @@
+{
+  "key": "goldenrod_bills_house",
+  "index": 203,
+  "name": "Goldenrod City",
+  "matrix": 97,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "goldenrod", "toWarp": 12 }
+  ],
+  "objects": [
+    { "id": "t25r0401_masaki", "looks": "masaki", "movement": "0", "x": 8, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_GOLDENROD_BILL", "script": "T25R0401_000+1" },
+    { "id": "t25r0401_middlewoman1_2", "looks": "middlewoman1_2", "movement": "17", "x": 5, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T25R0401_001+1" },
+    { "id": "t25r0401_gsbabygirl1", "looks": "gsbabygirl1", "movement": "3", "x": 2, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "T25R0401_002+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

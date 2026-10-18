@@ -1,0 +1,48 @@
+{
+  // The Department Store's second floor (plan 20 · J5, part b), its two counters the common counter of every Mart. Its lift (warp 2) stays shut until it can carry anyone
+  "area": "goldenrod_department_store_2f",
+  "bgmTrack": "johto/goldenrod",
+  "locked": [
+    2
+  ],
+  "people": {
+    "t25r1002_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t25r1002_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t25r1002_campboy_2": {
+      "name": "Camper",
+      "dialog": [
+        "Potions, Poké Balls, Escape Ropes... everything a Trainer needs, right here."
+      ]
+    },
+    "t25r1002_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "I'm buying my first Poké Balls today! My mum gave me the money."
+      ]
+    },
+    "t25r1002_gsgentleman": {
+      "name": "Gentleman",
+      "still": true,
+      "dialog": [
+        "Prices go up and down from day to day. A wise shopper keeps an eye on them."
+      ]
+    }
+  },
+  "signs": {
+    "T25R1002_005+1": "2F: Trainer's Market\nEverything for the road."
+  }
+}

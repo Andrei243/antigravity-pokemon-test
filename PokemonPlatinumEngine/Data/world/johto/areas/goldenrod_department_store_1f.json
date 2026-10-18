@@ -1,0 +1,34 @@
+{
+  "key": "goldenrod_department_store_1f",
+  "index": 191,
+  "name": "Goldenrod City",
+  "matrix": 113,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_FS",
+  "nightMusic": "GS_FS",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 12, "z": 11, "to": "goldenrod", "toWarp": 8 },
+    { "x": 13, "z": 7, "to": "goldenrod_department_store_2f", "toWarp": 0 },
+    { "x": 19, "z": 2, "to": "goldenrod_department_store_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t25r1001_gswoman6", "looks": "gswoman6", "movement": "0", "x": 7, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T25R1001_000+1" },
+    { "id": "t25r1001_gsgentleman", "looks": "gsgentleman", "movement": "2", "x": 11, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T25R1001_001+1" },
+    { "id": "t25r1001_middlewoman1_2", "looks": "middlewoman1_2", "movement": "0", "x": 22, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T25R1001_002+1" },
+    { "id": "t25r1001_gsboy1", "looks": "gsboy1", "movement": "4", "x": 20, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T25R1001_003+1" },
+    { "id": "t25r1001_delivery2", "looks": "delivery2", "movement": "0", "x": 5, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MOM_GIFT_DELIVERYMAN", "script": "std_moms_gift_deliveryman" },
+    { "id": "t25r1001_delivery", "looks": "delivery", "movement": "0", "x": 5, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MYSTERY_GIFT_DELIVERYMAN", "script": "std_mystery_gift_deliveryman" }
+  ],
+  "signs": [
+    { "x": 17, "z": 2, "type": 0, "script": "T25R1001_004+1" }
+  ],
+  "triggers": []
+}

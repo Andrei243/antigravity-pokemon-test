@@ -1,0 +1,27 @@
+{
+  "key": "route_36_national_park_gatehouse",
+  "index": 104,
+  "name": "Route 36",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_5_34",
+  "nightMusic": "GS_R_5_34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 7, "to": "national_park", "toWarp": 2 },
+    { "x": 10, "z": 7, "to": "route_36", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r36r0201_counterm", "looks": "counterm", "movement": "0", "x": 5, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1C3", "script": "R36R0201_001+1" },
+    { "id": "r36r0201_counterm_2", "looks": "counterm", "movement": "0", "x": 1, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1C4", "script": "R36R0201_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

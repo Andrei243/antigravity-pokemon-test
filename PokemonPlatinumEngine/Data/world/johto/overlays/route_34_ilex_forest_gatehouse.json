@@ -1,0 +1,29 @@
+{
+  // The gate house between Route 34 and Ilex Forest (plan 20 · J5, part b)
+  "area": "route_34_ilex_forest_gatehouse",
+  "bgmTrack": "johto/route34",
+  "people": {
+    "r34r0201_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "Ilex Forest is spooky. I always hold my breath the whole way through."
+      ]
+    },
+    "r34r0201_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "My Butterfree grew up in Ilex Forest. It still flutters about whenever we pass the shrine."
+      ]
+    },
+    "r34r0201_tsure_poke_static_butterfree": {
+      "name": "Butterfree",
+      "npcType": "Pokemon",
+      "species": "Butterfree",
+      "still": true,
+      "dialog": [
+        "Butterfree: Free! Freee!"
+      ]
+    }
+  }
+}

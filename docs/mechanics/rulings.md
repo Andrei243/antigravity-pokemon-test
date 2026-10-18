@@ -2735,6 +2735,34 @@ commit), in our own words and music.
   the cave's three floors are open, the lowest reached as in HeartGold.
 - **Azalea Town is built in logs** under dark-brown roofs (`Architecture.Woodland`, the style guide's row), where
   HeartGold's houses are plain timber; its signs say what they say in our own words.
+## The centre of Johto, second part (2026-10-18, plan 20 · J5)
+
+Ilex Forest, Route 34 and the Day Care, Goldenrod City, Routes 35 to 37, the National Park and Ecruteak City with the
+Burned Tower, from HeartGold's maps, events and tables, in our own words and music.
+
+- **The road north goes as HeartGold's does, but for the strange tree**: Ilex Forest's small tree waits for Cut (the
+  field's own obstacle), and the Sudowoodo HeartGold stands on Route 36 is the next chapter's (plan 20 · J7, with the
+  SquirtBottle) and is left out until then, so no flag is set. Its ledges are what keep the National Park's side of
+  Route 36 from Route 37 in HeartGold; with it gone, Ecruteak City is reached from Violet City as well as by Goldenrod
+  and the park. Whoever spoke of the tree says something else meanwhile.
+- **The Pokémon Day Care on Route 34 is Solaceon's**: its man and lady run the common Day Care scripts on the one Day
+  Care the save holds, so a Pokémon left in either region is the same Pokémon, growing as the player walks anywhere.
+- **Officers Keith and Dirk**, who battle in HeartGold only after dark (a talking double stands there by day), battle at
+  every hour for now; their doubles are left out until the day's people are swapped as Sinnoh's joggers are.
+- **Whitney** battles, cries and gives the Plain Badge and TM45 only when spoken to again, as in HeartGold (her lass's
+  nudge is folded into the Gym Guide's line); the Badge counts her four trainers beaten. The Plain Badge's Strength and
+  obedience follow the region's record.
+- **What is shut until its session**: the Department Store's lift and basement, the Radio Tower above its ground floor
+  (the quiz and the Radio Card are J7's, the takeover J11's), the Underground's lower floors, the Magnet Train, the
+  Global Terminal, the Pokéathlon Dome, the Bell Tower beyond its gate, Morty's Gym and the roads to Routes 38 and 42.
+  The Game Corner has no machines to play, as HeartGold's has none, and its prize counter is shut; every counter of
+  the Department Store is the common counter of every Mart until the store's own stock is written. The Bug-Catching
+  Contest, the Kimono Girls' first meeting, the Burned Tower's beasts, Eusine and the rival, the Farfetch'd and the
+  Cut master, Bill and the Name Rater's renaming are left out or only talk.
+- **Goldenrod is built in brick under gold roofs** (`Architecture.Boulevard`) and **Ecruteak in dark planks under deep
+  red tile** (`Architecture.Heritage`), the style guide's rows; Ilex Forest plays the dungeons' theme as HeartGold's
+  header gives it, and Routes 34 to 37 one theme of ours for HeartGold's two arrangements.
+
 ## Hoenn's first chapter (2026-10-18, plan 21 · H2, its first part)
 
 Emerald's first chapter, from the moving van to Wally's catch in Petalburg City, is scripts of ours on its beats

@@ -1,0 +1,31 @@
+{
+  "key": "goldenrod_department_store_3f",
+  "index": 193,
+  "name": "Goldenrod City",
+  "matrix": 115,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_FS",
+  "nightMusic": "GS_FS",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 18, "z": 7, "to": "goldenrod_department_store_2f", "toWarp": 1 },
+    { "x": 13, "z": 7, "to": "goldenrod_department_store_4f", "toWarp": 0 },
+    { "x": 19, "z": 2, "to": "goldenrod_department_store_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t25r1003_shopm1_2", "looks": "shopm1_2", "movement": "0", "x": 23, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T25R1003_000+1" },
+    { "id": "t25r1003_mania", "looks": "mania", "movement": "3", "x": 10, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T25R1003_001+1" },
+    { "id": "t25r1003_gsman2", "looks": "gsman2", "movement": "45", "x": 5, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T25R1003_002+1" }
+  ],
+  "signs": [
+    { "x": 17, "z": 2, "type": 0, "script": "T25R1003_003+1" }
+  ],
+  "triggers": []
+}

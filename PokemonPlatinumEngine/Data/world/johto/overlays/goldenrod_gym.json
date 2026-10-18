@@ -1,0 +1,50 @@
+{
+  // The Goldenrod City Gym (plan 20 · J5, part b), HeartGold's room: its flower beds and its four trainers, by their
+  // own records (Johto's trainers.json). Whitney, her guide and the Plain Badge are goldenrod_gym.txt's
+  "area": "goldenrod_gym",
+  "bgmTrack": "johto/gym",
+  "people": {
+    "t25gym0101_gsleader3": {
+      "name": "Whitney",
+      "script": "Whitney",
+      "still": true,
+      "hiddenBy": ""
+    },
+    "t25gym0101_sunglasses": {
+      "name": "Gym Guide",
+      "script": "GymGuy",
+      "still": true
+    },
+    "t25gym0101_gsgirl1": {
+      "name": "Cathy",
+      "trainer": {
+        "dialogueBefore": "Lass Cathy: Whitney's Pokémon are so cute! Mine are too, aren't they?",
+        "dialogueAfter": "Lass Cathy: Even my three Jigglypuff couldn't sing you to sleep."
+      }
+    },
+    "t25gym0101_gsgirl1_2": {
+      "name": "Carrie",
+      "trainer": {
+        "dialogueBefore": "Lass Carrie: Don't be fooled by how sweet Snubbull looks. It bites!",
+        "dialogueAfter": "Lass Carrie: Ow. That one bit back."
+      }
+    },
+    "t25gym0101_gswoman2": {
+      "name": "Victoria",
+      "trainer": {
+        "dialogueBefore": "Beauty Victoria: Whitney is my idol. I'll show you what she taught me!",
+        "dialogueAfter": "Beauty Victoria: Whitney would have won, I'm sure."
+      }
+    },
+    "t25gym0101_gswoman2_2": {
+      "name": "Samantha",
+      "trainer": {
+        "dialogueBefore": "Beauty Samantha: My Meowth and I are a matching pair. Shall we?",
+        "dialogueAfter": "Beauty Samantha: Our matching pair, beaten together."
+      }
+    }
+  },
+  "signs": {
+    "T25GYM0101_003+1": "Goldenrod City Pokémon Gym\nLeader: Whitney"
+  }
+}

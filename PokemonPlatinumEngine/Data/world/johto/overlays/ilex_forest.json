@@ -1,0 +1,26 @@
+{
+  // Ilex Forest (plan 20 · J5, part b): HeartGold's forest, our words. Dark under its trees even at noon, with the
+  // shrine of the forest's protector at its heart. Its music is the dungeons' theme, as HeartGold's header gives it
+  // (Union Cave's). The cut tree that blocks the way north is the field's own obstacle. The apprentice's lost
+  // Farfetch'd, the Cut master, the old man of the shrine and Cameron are the next chapter's (plan 20 · J7)
+  "area": "ilex_forest",
+  "bgmTrack": "johto/union_cave",
+  "trees": "Round",
+  "locked": [
+    4,
+    5
+  ],
+  "people": {
+    "d36r0101_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "The trees here are so old and so close together that the sun hardly gets in.",
+        "Stay on the path. People have wandered in here and not come out for days."
+      ]
+    }
+  },
+  "signs": {
+    "D36R0101_012+1": "Ilex Forest Shrine\nThe forest's protector is said to rest here.",
+    "D36R0101_013+1": "Ilex Forest\nThe forest is so thick that it's dark even at midday."
+  }
+}

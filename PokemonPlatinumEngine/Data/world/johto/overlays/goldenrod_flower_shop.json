@@ -1,0 +1,22 @@
+{
+  // Goldenrod's flower shop (plan 20 · J5, part b). The SquirtBottle is the next chapter's (plan 20 · J7); until then
+  // the shop's two talk
+  "area": "goldenrod_flower_shop",
+  "bgmTrack": "johto/goldenrod",
+  "people": {
+    "t25r0601_gswoman1": {
+      "name": "Florist",
+      "dialog": [
+        "Welcome! Every flower here was grown by my sister on Route 36."
+      ]
+    },
+    "t25r0601_gsgirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [
+        "My sister grows flowers out on Route 36. I water ours here every morning!"
+      ],
+      "hiddenBy": ""
+    }
+  }
+}

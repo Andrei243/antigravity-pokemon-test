@@ -1,0 +1,22 @@
+# A lady of Johto spots the player (Beauties and their like; HeartGold's beauties' eye theme): a poised, gliding
+# vibraphone in B-flat over a soft piano and a light bass. Original composition for this game (plan 20 · J5, part b).
+title Eyes Meet: Lady (Johto)
+tempo 120
+meter 4/4
+reverb 0.28
+night none
+
+track lead vibraphone vol=0.8 pan=0.05 rev=0.28
+  o5 b-4 o6 d4 f2 | L o6 d4 c8 o5 b-8 f4 d4 | o5 e-4 g8 b-8 o6 e-2 |
+  o6 d4 o5 b-8 o6 d8 f4 d4 | o5 c4 e-4 f2 |
+
+track pad piano vol=0.34 pan=-0.25 rev=0.28
+  o4 (d f b-)1 | L (d f b-)1 | (e- g b-)1 |
+  (d f b-)1 | (c e- f)2 (d f b-)2 |
+
+track bass bass vol=0.62 rev=0.08
+  o2 b-4 o3 f4 o2 b-4 o3 f4 | L o2 b-4 o3 f4 o2 b-4 o3 f4 | o3 e-4 b-4 e-4 b-4 |
+  o2 b-4 o3 f4 o2 b-4 o3 f4 | o3 f4 c4 o2 b-4 o3 f4 |
+
+track drums kit vol=0.3 rev=0.12
+  v76 b4 k4 s4 k4 | L [ b4 k8 k8 s4 k4 | ]4

@@ -1,0 +1,67 @@
+{
+  "key": "burned_tower_b1f",
+  "index": 217,
+  "name": "Burned Tower",
+  "matrix": 26,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_YAKETA",
+  "nightMusic": "GS_TO_YAKETA",
+  "encounters": "D18R0102",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Rattata", "level": 14 },
+    { "species": "Koffing", "level": 14 },
+    { "species": "Rattata", "level": 14 },
+    { "species": "Koffing", "level": 14 },
+    { "species": "Koffing", "level": 16 },
+    { "species": "Koffing", "level": 16 },
+    { "species": "Rattata", "level": 16, "day": "Magmar" },
+    { "species": "Rattata", "level": 16, "day": "Magmar" },
+    { "species": "Zubat", "level": 15 },
+    { "species": "Magmar", "level": 14, "day": "Rattata" },
+    { "species": "Zubat", "level": 15 },
+    { "species": "Magmar", "level": 14, "day": "Rattata" }
+  ],
+  "landRate": 10,
+  "hoennSounds": [
+    "Zigzagoon",
+    "Spinda"
+  ],
+  "sinnohSounds": [
+    "Chatot",
+    "Meditite"
+  ],
+  "warps": [
+    { "x": 23, "z": 16, "to": "burned_tower_1f", "toWarp": 1 },
+    { "x": 23, "z": 15, "to": "burned_tower_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d18r0102_tsure_poke_static_suicune", "looks": "follower_mon_static_suicune", "movement": "15", "x": 15, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_B1F_SUICUNE", "script": "0" },
+    { "id": "d18r0102_tsure_poke_static_entei", "looks": "follower_mon_static_entei", "movement": "15", "x": 16, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_B1F_ENTEI", "script": "0" },
+    { "id": "d18r0102_tsure_poke_static_raikou", "looks": "follower_mon_static_raikou", "movement": "15", "x": 14, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_B1F_RAIKOU", "script": "0" },
+    { "id": "d18r0102_minaki", "looks": "minaki", "movement": "16", "x": 23, "z": 16, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_B1F_EUSINE", "script": "0" },
+    { "id": "d18r0102_rock", "looks": "rock", "movement": "0", "x": 14, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d18r0102_rock_2", "looks": "rock", "movement": "0", "x": 14, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d18r0102_rock_3", "looks": "rock", "movement": "0", "x": 18, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d18r0102_rock_4", "looks": "rock", "movement": "0", "x": 19, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d18r0102_breakrock", "looks": "breakrock", "movement": "0", "x": 18, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "d18r0102_breakrock_2", "looks": "breakrock", "movement": "0", "x": 17, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "d18r0102_rock_5", "looks": "rock", "movement": "0", "x": 12, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d18r0102_monstarball", "looks": "monstarball", "movement": "0", "x": 5, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D18R0102_TM12", "item": "TM12", "script": "std_itemball_d18r0102_tm12" },
+    { "id": "d18r0102_tsure_poke_static_suicune_2", "looks": "follower_mon_static_suicune", "movement": "15", "x": 14, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BURNED_TOWER_STATIC_SUICUNE", "script": "D18R0102_001+1" }
+  ],
+  "signs": [
+    { "x": 15, "z": 24, "type": 2, "script": "std_hiddenitem_d18r0102_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D18R0102_REVIVE" },
+    { "x": 10, "z": 7, "type": 2, "script": "std_hiddenitem_d18r0102_antidote", "item": "Antidote", "flag": "FLAG_HIDDEN_ITEM_D18R0102_ANTIDOTE" }
+  ],
+  "triggers": [
+    { "x": 20, "z": 16, "width": 1, "depth": 2, "script": "D18R0102_000+1", "variable": "VAR_UNK_40A1", "value": "0" }
+  ]
+}

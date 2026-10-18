@@ -1,0 +1,7 @@
+{
+  // The Burned Tower's basement (plan 20 · J5, part b): where the floor gave way in the fire. The three beasts who sleep
+  // here and their waking are the next chapter's (plan 20 · J7); the boulders and the cracked rocks are the field's own
+  "area": "burned_tower_b1f",
+  "bgmTrack": "johto/burned_tower",
+  "people": {}
+}

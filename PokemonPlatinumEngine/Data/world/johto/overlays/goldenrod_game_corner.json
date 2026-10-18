@@ -1,0 +1,33 @@
+{
+  // The Goldenrod Game Corner (plan 20 · J5, part b). HeartGold's own has no slot machines to play, and neither has
+  // ours: its people talk, and the prize counter is shut
+  "area": "goldenrod_game_corner",
+  "bgmTrack": "johto/game_corner",
+  "people": {
+    "t25sp0101_suit": {
+      "name": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome to the Game Corner! I'm afraid the prize counter is closed for now."
+      ]
+    },
+    "t25sp0101_gsgentleman": {
+      "name": "Gentleman",
+      "still": true,
+      "dialog": [
+        "I used to come here every day. Now I just like the sound of the place."
+      ]
+    },
+    "t25sp0101_gsgentleman_2": {
+      "name": "Gentleman",
+      "still": true,
+      "dialog": [
+        "They say the prizes here include rare Pokémon. If only the counter were open!"
+      ]
+    }
+  },
+  "signs": {
+    "T25SP0101_000+1": "Prize Exchange\nClosed for now.",
+    "T25SP0101_001+1": "A list of prizes. Every one of them is marked sold out."
+  }
+}

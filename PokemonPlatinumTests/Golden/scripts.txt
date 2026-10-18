@@ -8821,6 +8821,35 @@ way -
   * flicker Cresselia 6
   + FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
   + FLAG_MET_CRESSELIA
+=== goldenrod_gym.GymGuy
+from Gym Guide at 7,23 of Goldenrod_Gym
+way -
+  Gym Guide> Yo, future Champion! Whitney's Pokémon are Normal types. They look cute, but they hit hard.
+  Gym Guide> Her Miltank is the one to watch. It can roll right over a team. Fighting moves are your best bet!
+=== goldenrod_gym.Whitney
+from Whitney at 13,4 of Goldenrod_Gym
+way 0
+  Whitney> Hi! I'm Whitney! Everyone was into Pokémon, so I got into them too. They're just so cute!
+  Whitney> You want to battle? I'm warning you, I'm good!
+  Whitney> Sob... Waaaaah! You're so mean! Picking on me like that...
+  > Whitney is crying too hard to say anything more...
+  * scene goldenrod_gym.Whitney
+  * battle johto_leader_whitney Won
+  * defeat johto_lass_cathy
+  * defeat johto_lass_carrie
+  * defeat johto_beauty_victoria
+  * defeat johto_beauty_samantha
+  * endscene
+  + FLAG_DEFEATED_WHITNEY
+  + beaten johto_beauty_samantha
+  + beaten johto_beauty_victoria
+  + beaten johto_lass_carrie
+  + beaten johto_lass_cathy
+  + beaten johto_leader_whitney
+  + seen goldenrod_gym.Whitney
+way 1, from answer 1
+  * battle johto_leader_whitney Lost
+  * scene over, unseen
 === hearthome_city.Buneary
 from the trigger at 461,725 of Sinnoh
 way -

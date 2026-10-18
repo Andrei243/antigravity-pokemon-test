@@ -1,0 +1,13 @@
+{
+  // The Pokémon Day Care on Route 34 (plan 20 · J5, part b): the Day-Care Lady runs the common script of every Day Care,
+  // so a Pokémon left here grows as the player walks, wherever they go. The friend with the Marill is a later chapter's
+  "area": "route_34_daycare",
+  "bgmTrack": "johto/route34",
+  "people": {
+    "r34r0101_gsoldwoman1": {
+      "name": "Day-Care Lady",
+      "script": "DayCareLady",
+      "still": true
+    }
+  }
+}

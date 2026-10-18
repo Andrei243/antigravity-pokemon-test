@@ -1,0 +1,116 @@
+{
+  // The National Park (plan 20 · J5, part b): its lawns, its fountain and its Trainers. The Bug-Catching Contest is the
+  // next chapter's (plan 20 · J7, through plan 15 · E5): its contestants, who stand off the park's ground until a
+  // contest, are left out with its warden. The old gate house to the north (warps 4 to 6) stays shut
+  "area": "national_park",
+  "bgmTrack": "johto/national_park",
+  "trees": "Round",
+  "locked": [
+    4,
+    5,
+    6
+  ],
+  "people": {
+    "d22r0101_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "I love lying on the grass here and watching the clouds go by."
+      ],
+      "hiddenBy": ""
+    },
+    "d22r0101_middlewoman1_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "The Bug-Catching Contest is held here on certain days. The whole park fills with Bug Catchers."
+      ],
+      "hiddenBy": ""
+    },
+    "d22r0101_gsboy1": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [
+        "My brother and I race each other round the fountain. I always win!"
+      ],
+      "hiddenBy": ""
+    },
+    "d22r0101_gsboy1_2": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [
+        "He always cheats. I'll win next time!"
+      ],
+      "hiddenBy": ""
+    },
+    "d22r0101_gsdsboy": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [
+        "People come from all over Johto to walk their Pokémon in this park."
+      ],
+      "hiddenBy": ""
+    },
+    "d22r0101_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "My Persian loves its walks in the park. It's the only time it's ever in a good mood."
+      ],
+      "hiddenBy": ""
+    },
+    "d22r0101_tsure_poke_static_persian": {
+      "name": "Persian",
+      "npcType": "Pokemon",
+      "species": "Persian",
+      "still": true,
+      "dialog": [
+        "Persian: Fufufu..."
+      ],
+      "hiddenBy": ""
+    },
+    "d22r0101_gswoman2": {
+      "name": "Woman",
+      "dialog": [
+        "The park's grass is long. Bug Pokémon love to hide in it."
+      ],
+      "hiddenBy": ""
+    },
+    "d22r0101_middlewoman1_2_2": {
+      "name": "Beverly",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Beverly: My Snubbull is the sweetest thing. Look at its little face!",
+        "dialogueAfter": "Pokéfan Beverly: Its little face is so sad now..."
+      },
+      "hiddenBy": ""
+    },
+    "d22r0101_gsgirl1_2": {
+      "name": "Krise",
+      "trainer": {
+        "dialogueBefore": "Lass Krise: You look like you'd be fun to battle. Let's go!",
+        "dialogueAfter": "Lass Krise: That was fun, even though I lost."
+      },
+      "hiddenBy": ""
+    },
+    "d22r0101_gsmiddleman1_2": {
+      "name": "William",
+      "trainer": {
+        "dialogueBefore": "Pokéfan William: My Raichu and I have been together for years. We're a team!",
+        "dialogueAfter": "Pokéfan William: Still a team, just a beaten one."
+      },
+      "hiddenBy": ""
+    },
+    "d22r0101_gsboy1_4": {
+      "name": "Jack",
+      "trainer": {
+        "dialogueBefore": "School Kid Jack: I've read every book on battling. Let me show you what I know!",
+        "dialogueAfter": "School Kid Jack: The books didn't cover that."
+      },
+      "hiddenBy": ""
+    }
+  },
+  "signs": {
+    "D22R0101_001+1": "National Park\nA place of rest for people and Pokémon.",
+    "D22R0101_002+1": "Trainer Tips\nPrint out Pokémon you've caught on your Pokédex... or just admire them here.",
+    "D22R0101_003+1": "Please keep the park clean. Take your rubbish home with you."
+  }
+}

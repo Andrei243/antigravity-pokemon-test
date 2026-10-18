@@ -1,0 +1,54 @@
+# The Goldenrod City Gym (plan 20 · J5, part b). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T25GYM0101).
+#
+# Whitney battles, loses and bursts into tears (FLAG_DEFEATED_WHITNEY): she won't hand anything over until she has been
+# spoken to again, when she gives the Plain Badge (`givebadge plain`) and TM45, Attract (FLAG_GOT_TM45_FROM_WHITNEY).
+# Her Badge counts her four trainers beaten, as the original's gym script does.
+
+
+script Whitney
+  face t25gym0101_gsleader3 player
+  speaker "Whitney"
+  if badge plain goto Won
+  if flag FLAG_DEFEATED_WHITNEY goto Calmer
+  scene "Whitney"
+  say "Hi! I'm Whitney! Everyone was into Pokémon, so I got into them too. They're just so cute!"
+  say "You want to battle? I'm warning you, I'm good!"
+  battle self as "johto_leader_whitney"
+  say "Sob... Waaaaah! You're so mean! Picking on me like that..."
+  text "Whitney is crying too hard to say anything more..."
+  setflag FLAG_DEFEATED_WHITNEY
+  defeat "johto_lass_cathy"
+  defeat "johto_lass_carrie"
+  defeat "johto_beauty_victoria"
+  defeat "johto_beauty_samantha"
+  endscene
+  end
+label Calmer
+  say "...Sniff... Sorry about that. I just hate losing!"
+  say "Oh, right, the Badge. You won it fair and square. Here's the Plain Badge!"
+  givebadge plain
+  text "{player} received the Plain Badge from Whitney!"
+  say "With it, Pokémon up to level thirty will obey you, and you can use Strength outside of battle."
+label Tm
+  say "And this is for you too. It's my favourite move!"
+  give "TM45"
+  setflag FLAG_GOT_TM45_FROM_WHITNEY
+  say "TM45 is Attract. It makes a Pokémon of the other gender fall for yours, so it hardly fights back. Isn't that cute?"
+  end
+label Won
+  if not flag FLAG_GOT_TM45_FROM_WHITNEY goto Tm
+  say "Ah, that was fun! Even though I lost. Come and battle me again when you're stronger. I'll be stronger too!"
+  end
+
+
+# The guide by the door: advice, and praise once the Badge is won.
+script GymGuy
+  speaker "Gym Guide"
+  if badge plain goto Won
+  say "Yo, future Champion! Whitney's Pokémon are Normal types. They look cute, but they hit hard."
+  say "Her Miltank is the one to watch. It can roll right over a team. Fighting moves are your best bet!"
+  end
+label Won
+  say "You beat Whitney! Did she cry? She always cries. Don't worry, she'll be fine in a minute."
+  end

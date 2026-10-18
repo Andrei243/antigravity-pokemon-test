@@ -1,0 +1,21 @@
+{
+  // A house of Ecruteak City (plan 20 · J5, part b). The Dowsing Machine its man gives in HeartGold is a later chapter's
+  "area": "ecruteak_dowsing_machine_house",
+  "bgmTrack": "johto/ecruteak",
+  "people": {
+    "t27r0801_gsman3": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Things get dropped and lost all over Johto. A sharp eye can find them in the grass."
+      ]
+    },
+    "t27r0801_babyboy1_2": {
+      "name": "Little Boy",
+      "still": true,
+      "dialog": [
+        "Daddy found a shiny stone once! He keeps it in a box."
+      ]
+    }
+  }
+}

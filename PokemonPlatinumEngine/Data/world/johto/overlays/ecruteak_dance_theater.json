@@ -1,0 +1,84 @@
+{
+  // The Ecruteak Dance Theater (plan 20 · J5, part b): the Kimono Girls on their stage and their audience. Their first
+  // meeting with the player and the gift of Surf are the next chapter's (plan 20 · J7), as is the Rocket in the stalls
+  "area": "ecruteak_dance_theater",
+  "bgmTrack": "johto/ecruteak",
+  "people": {
+    "t27r0501_gsoldwoman1": {
+      "name": "Old Woman",
+      "still": true,
+      "dialog": [
+        "Those girls have danced here since they were tiny. Such grace!"
+      ],
+      "hiddenBy": ""
+    },
+    "t27r0501_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "Each of the Kimono Girls has an Eevee, and each one evolved differently. Isn't that something?"
+      ],
+      "hiddenBy": ""
+    },
+    "t27r0501_gsgentleman": {
+      "name": "Gentleman",
+      "still": true,
+      "dialog": [
+        "I never miss a performance. My Psyduck enjoys it as much as I do."
+      ],
+      "hiddenBy": ""
+    },
+    "t27r0501_tsure_poke_static_psyduck": {
+      "name": "Psyduck",
+      "npcType": "Pokemon",
+      "species": "Psyduck",
+      "still": true,
+      "dialog": [
+        "Psyduck: Psy... duck?"
+      ],
+      "hiddenBy": ""
+    },
+    "t27r0501_dancer": {
+      "name": "Kimono Girl",
+      "still": true,
+      "dialog": [
+        "We dance for the Pokémon of the towers, as the dancers before us did."
+      ],
+      "hiddenBy": ""
+    },
+    "t27r0501_dancer_2": {
+      "name": "Kimono Girl",
+      "still": true,
+      "dialog": [
+        "Please don't mind us. We're only practising."
+      ],
+      "hiddenBy": ""
+    },
+    "t27r0501_dancer_3": {
+      "name": "Kimono Girl",
+      "still": true,
+      "dialog": [
+        "My Eevee and I have danced together since we were both very small."
+      ],
+      "hiddenBy": ""
+    },
+    "t27r0501_dancer_4": {
+      "name": "Kimono Girl",
+      "still": true,
+      "dialog": [
+        "A dance is a kind of prayer, my teacher says."
+      ],
+      "hiddenBy": ""
+    },
+    "t27r0501_dancer_5": {
+      "name": "Kimono Girl",
+      "still": true,
+      "dialog": [
+        "Have you come to watch? Then sit and enjoy it."
+      ],
+      "hiddenBy": ""
+    }
+  },
+  "signs": {
+    "T27R0501_010+1": "The stage. It's polished so well you can see your face in it."
+  }
+}

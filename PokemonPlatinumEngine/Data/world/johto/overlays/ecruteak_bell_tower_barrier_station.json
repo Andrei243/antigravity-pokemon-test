@@ -1,0 +1,32 @@
+{
+  // The gate before the Bell Tower (plan 20 · J5, part b): its Sages let nobody by. The way on to the tower (warp 1)
+  // stays shut until its chapter
+  "area": "ecruteak_bell_tower_barrier_station",
+  "bgmTrack": "johto/ecruteak",
+  "locked": [
+    1
+  ],
+  "people": {
+    "t27r0201_bozu": {
+      "name": "Sage",
+      "still": true,
+      "dialog": [
+        "Beyond this gate is the Bell Tower. Only one the tower's Pokémon has chosen may pass."
+      ]
+    },
+    "t27r0201_bozu_2": {
+      "name": "Sage",
+      "still": true,
+      "dialog": [
+        "We guard the tower day and night. It is our duty, and our honour."
+      ]
+    },
+    "t27r0201_bozu_3": {
+      "name": "Sage",
+      "still": true,
+      "dialog": [
+        "The Burned Tower and the Bell Tower were built as a pair, to let Pokémon and people meet."
+      ]
+    }
+  }
+}

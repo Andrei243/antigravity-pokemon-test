@@ -1,0 +1,78 @@
+{
+  // Route 35 (plan 20 · J5, part b): north from Goldenrod City to the National Park's gate. Officer Dirk, who battles in
+  // HeartGold only after dark, stands here at every hour for now. Its Apricorn tree is plan 20 · J6's and Cameron a later
+  // chapter's
+  "area": "route_35",
+  "bgmTrack": "johto/route34",
+  "trees": "Round",
+  "people": {
+    "r35_policeman": {
+      "name": "Dirk",
+      "trainer": {
+        "dialogueBefore": "Officer Dirk: Hold it! It's my job to keep these roads safe. Let's see your Pokémon!",
+        "dialogueAfter": "Officer Dirk: Fine work. The roads are safe with you on them."
+      },
+      "hiddenBy": ""
+    },
+    "r35_picnicgirl_2": {
+      "name": "Kim",
+      "trainer": {
+        "dialogueBefore": "Picnicker Kim: My Vulpix and I are on a picnic. Will you battle us before lunch?",
+        "dialogueAfter": "Picnicker Kim: Now I've lost my appetite!"
+      }
+    },
+    "r35_campboy_2": {
+      "name": "Elliot",
+      "trainer": {
+        "dialogueBefore": "Camper Elliot: My girlfriend's watching! I can't lose this one!",
+        "dialogueAfter": "Camper Elliot: She saw that, didn't she?"
+      }
+    },
+    "r35_picnicgirl_2_2": {
+      "name": "Brooke",
+      "trainer": {
+        "dialogueBefore": "Picnicker Brooke: Elliot always says he'll win. Let's see how I do!",
+        "dialogueAfter": "Picnicker Brooke: Well, at least we lost together."
+      }
+    },
+    "r35_campboy_2_2": {
+      "name": "Ivan",
+      "trainer": {
+        "dialogueBefore": "Camper Ivan: I just came out of a cave. My Pokémon love the dark!",
+        "dialogueAfter": "Camper Ivan: Back into the cave I go."
+      }
+    },
+    "r35_juggrer": {
+      "name": "Irwin",
+      "trainer": {
+        "dialogueBefore": "Juggler Irwin: Watch my Voltorb roll! One, two, three, four!",
+        "dialogueAfter": "Juggler Irwin: I dropped them all at once."
+      }
+    },
+    "r35_gsboy3": {
+      "name": "Arnie",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Arnie: I'm looking for rare bugs for the Bug-Catching Contest!",
+        "dialogueAfter": "Bug Catcher Arnie: My Venonat needs more practice."
+      }
+    },
+    "r35_gsman2": {
+      "name": "Bryan",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Bryan: My birds fly faster than the wind. Try and keep up!",
+        "dialogueAfter": "Bird Keeper Bryan: They flew straight into a wall."
+      }
+    },
+    "r35_fire": {
+      "name": "Walt",
+      "trainer": {
+        "dialogueBefore": "Firebreather Walt: I breathe fire to warm up my Magmar. Feel the heat!",
+        "dialogueAfter": "Firebreather Walt: Snuffed out."
+      }
+    }
+  },
+  "signs": {
+    "R35_004+1": "National Park\nThe gate is to the west.",
+    "R35_000+1": "Route 35\nNational Park - Goldenrod City"
+  }
+}

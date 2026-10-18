@@ -1,0 +1,40 @@
+{
+  // The Department Store's fourth floor (plan 20 · J5, part b). Its lift (warp 2) stays shut until it can carry anyone
+  "area": "goldenrod_department_store_4f",
+  "bgmTrack": "johto/goldenrod",
+  "locked": [
+    2
+  ],
+  "people": {
+    "t25r1004_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t25r1004_gsman2": {
+      "name": "Man",
+      "dialog": [
+        "Vitamins make a Pokémon stronger in a way battles alone never could."
+      ]
+    },
+    "t25r1004_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "I'm saving up for a Protein. My Rattata deserves it!"
+      ]
+    },
+    "t25r1004_gsdsboy": {
+      "name": "Boy",
+      "still": true,
+      "dialog": [
+        "I'm waiting for the lift. It hasn't come for ages..."
+      ]
+    }
+  },
+  "signs": {
+    "T25R1004_004+1": "4F: Medicine Box\nFor a Pokémon's health and strength."
+  }
+}

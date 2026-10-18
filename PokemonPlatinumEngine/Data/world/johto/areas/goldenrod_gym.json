@@ -1,0 +1,35 @@
+{
+  "key": "goldenrod_gym",
+  "index": 137,
+  "name": "Goldenrod City",
+  "matrix": 89,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "2",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 25, "to": "goldenrod", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "t25gym0101_gsleader3", "looks": "gsleader3", "movement": "15", "x": 13, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_GOLDENROD_GYM_WHITNEY", "script": "T25GYM0101_000+1" },
+    { "id": "t25gym0101_gsgirl1", "looks": "gsgirl1", "movement": "16", "x": 14, "z": 15, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_LASS_CATHY" },
+    { "id": "t25gym0101_gsgirl1_2", "looks": "gsgirl1", "movement": "17", "x": 9, "z": 18, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_LASS_CARRIE" },
+    { "id": "t25gym0101_gswoman2", "looks": "gswoman2", "movement": "17", "x": 6, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "y": 196608, "trainer": "sees", "sight": 2, "script": "TRAINER_BEAUTY_VICTORIA" },
+    { "id": "t25gym0101_gswoman2_2", "looks": "gswoman2", "movement": "16", "x": 24, "z": 18, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_BEAUTY_SAMANTHA" },
+    { "id": "t25gym0101_sunglasses", "looks": "sunglasses", "movement": "0", "x": 7, "z": 23, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 196608, "script": "T25GYM0101_002+1" }
+  ],
+  "signs": [
+    { "x": 2, "z": 24, "type": 0, "script": "T25GYM0101_003+1" },
+    { "x": 8, "z": 24, "type": 0, "script": "T25GYM0101_003+1" }
+  ],
+  "triggers": [
+    { "x": 13, "z": 11, "width": 1, "depth": 1, "script": "T25GYM0101_001+1", "variable": "VAR_UNK_410A", "value": "1" }
+  ]
+}

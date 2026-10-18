@@ -1,0 +1,26 @@
+{
+  // A house of Goldenrod City (plan 20 · J5, part b), whose woman can tell how a Pokémon feels about its Trainer
+  "area": "goldenrod_friendship_checker_house",
+  "bgmTrack": "johto/goldenrod",
+  "people": {
+    "t25r0301_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "A Pokémon that's kept at the front of the team and treated kindly grows to love its Trainer.",
+        "A Pokémon that loves you will try that little bit harder for you."
+      ]
+    },
+    "t25r0301_gsbabygirl1": {
+      "name": "Little Girl",
+      "dialog": [
+        "My Pidgey follows me everywhere. Mum says that means it likes me!"
+      ]
+    },
+    "t25r0301_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "Some Pokémon only evolve when they're very fond of their Trainer. Strange but true."
+      ]
+    }
+  }
+}

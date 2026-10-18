@@ -394,6 +394,16 @@ public static class RegionDatabase
                 "UnionCave_1F", "UnionCave_B1F", "UnionCave_B2F",
                 "Azalea_PokemonCenter_1F", "Azalea_PokemonCenter_B1F", "Azalea_Mart", "Azalea_KurtsHouse",
                 "Azalea_CharcoalKiln", "Azalea_IlexForestGate",
+                // Plan 20 · J5, part b: Ilex Forest, Route 34, Goldenrod City, Routes 35 to 37, the National Park and Ecruteak City
+                "IlexForest", "Route34_IlexForestGate", "Route34_DayCare", "Goldenrod_PokemonCenter_1F",
+                "Goldenrod_PokemonCenter_B1F", "Goldenrod_FlowerShop", "Goldenrod_BikeShop", "Goldenrod_BillsHouse",
+                "Goldenrod_NameRatersHouse", "Goldenrod_FriendshipHouse", "Goldenrod_NortheastHouse", "Goldenrod_Gym",
+                "Goldenrod_GameCorner", "Goldenrod_DeptStore_1F", "Goldenrod_DeptStore_2F", "Goldenrod_DeptStore_3F",
+                "Goldenrod_DeptStore_4F", "Goldenrod_DeptStore_5F", "Goldenrod_DeptStore_6F", "Goldenrod_RadioTower_1F",
+                "Goldenrod_Underground", "Route35_GoldenrodGate", "Route35_NationalParkGate", "NationalPark",
+                "Route36_NationalParkGate", "Ecruteak_PokemonCenter_1F", "Ecruteak_PokemonCenter_B1F", "Ecruteak_Mart",
+                "Ecruteak_DanceTheater", "Ecruteak_SouthwestHouse", "Ecruteak_DowsingHouse", "Ecruteak_BellTowerGate",
+                "BurnedTower_1F", "BurnedTower_B1F",
             }
         },
         new()

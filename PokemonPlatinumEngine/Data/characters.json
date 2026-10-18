@@ -104,6 +104,13 @@
     "elm": { "hairColor": "#6a4a32", "hair": "Spiky", "top": "#f2f2f6", "accent": "#5f9a6a", "bottom": "#4a4e6a", "shoes": "#3a2e2a", "eyes": "#4a3a2a", "glasses": "#3a3036", "coat": true, "build": "Adult", "height": 1.06 },
     "silver": { "hairColor": "#c23a3a", "hair": "Long", "top": "#2e2a3c", "accent": "#c8463c", "bottom": "#3a3a52", "shoes": "#2a2632", "eyes": "#b03030", "sole": "#d84a40" },
     "falkner": { "hairColor": "#2a3460", "hair": "Swept", "top": "#3c6ab8", "accent": "#f2f2f6", "bottom": "#26304e", "shoes": "#2a2a36", "eyes": "#2e4a90", "build": "Adult", "height": 1.02 },
+    // The centre of Johto's cast (plan 20 · J5, part b, ahead of J14; our own takes): Whitney, pink hair in bunches, a
+    // white top with pink trim and blue shorts; Morty, pale-gold hair, a dark top under a purple scarf and pale trousers;
+    // a Kimono Girl, long black hair and a long red robe with a gold sash; a Sage of the towers, a long grey-violet robe
+    "whitney": { "hairColor": "#f08aac", "hair": "Bunches", "top": "#f6f2f4", "accent": "#f08aac", "bottom": "#3a5a9a", "shoes": "#e86a8a", "eyes": "#7a4a5a", "shorts": true, "shortSleeves": true, "lashes": true, "blush": true, "height": 1.0 },
+    "morty": { "hairColor": "#e8d27a", "hair": "Swept", "top": "#3a3450", "accent": "#8a5ab0", "bottom": "#e8e2d0", "shoes": "#3a2e2a", "eyes": "#5a4a7a", "scarf": true, "build": "Adult", "height": 1.06 },
+    "kimono_girl": { "hairColor": "#2a2026", "hair": "Long", "top": "#d84a6a", "accent": "#f2d27a", "bottom": "#d84a6a", "shoes": "#3a2a2e", "eyes": "#4a2a3a", "skirt": true, "coat": true, "build": "Adult", "lashes": true },
+    "sage": { "hairColor": "#4a4448", "top": "#7a7090", "accent": "#e6dcc2", "bottom": "#7a7090", "shoes": "#3a3036", "eyes": "#3a3036", "skirt": true, "coat": true, "build": "Adult", "height": 0.98 },
     // Hoenn's first cast (plan 21 · H2; our own takes). Professor Birch, who would rather be in the grass: tousled brown
     // hair and a short beard, a green shirt under a pale field vest, khaki shorts and sandals
     "prof_birch": { "hairColor": "#6a4630", "hair": "Spiky", "top": "#4e8a52", "accent": "#e6dcc2", "bottom": "#b49a6a", "shoes": "#6a4a34", "eyes": "#3e2e24", "beard": true, "shorts": true, "shortSleeves": true, "build": "Adult", "height": 1.04 },
@@ -247,8 +254,8 @@
     "delivery": "Clerk",
     "delivery2": "Clerk",
     // Plan 20 · J4: Sprout Tower, Violet's Gym and Route 32
-    "bozu": "Gentleman",
-    "chourou": "Gentleman",
+    "bozu": "sage",
+    "chourou": "sage",
     "gsleader1": "Youngster",
     "sunglasses": "Gentleman",
     "picnicgirl_2": "Lass",
@@ -274,7 +281,11 @@
     // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
     "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "Gentleman",
     "gsfighter": "Gentleman", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",
-    "mount_2": "Gentleman", "fire": "Youngster", "mania": "Gentleman", "mystery_2": "Youngster"
+    "mount_2": "Gentleman", "fire": "Youngster", "mania": "Gentleman", "mystery_2": "Youngster",
+    // Plan 20 · J5, part b: Ilex Forest to Ecruteak City (Whitney, Morty, the Kimono Girls and the Sages stand as looks
+    // of their own, above)
+    "gsleader3": "whitney", "gsleader4": "morty", "dancer": "kimono_girl", "itako": "channeler", "minaki": "Gentleman",
+    "masaki": "Gentleman", "kurumi": "Lass", "workman": "Gentleman", "babyboy1_2": "Youngster"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field
