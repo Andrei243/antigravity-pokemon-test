@@ -888,6 +888,151 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_bolt_beak` | — | Bolt Beak: a crackling charge, a thud with a burst of sparks and three high notes. |
 | `use_fishious_rend` | — | Fishious Rend: a rushing hiss, a thud with a double snap, bubbling and three notes. |
 | `use_court_change` | — | Court Change: a rising tone crossing a falling one, two thuds, a bell and three notes. |
+| `use_clangorous_soul` | — | Clangorous Soul: five rising notes, a roaring rise, a soft thud, a bell. |
+| `use_body_press` | — | Body Press: a first knock, a heavy thud, two high notes. |
+| `use_decorate` | — | Decorate: five rising notes, four sparkling notes, a soft thud, a bell. |
+| `use_drum_beating` | — | Drum Beating: a leafy rustle, 4 quick blows, a bell. |
+| `use_snap_trap` | — | Snap Trap: a leafy rustle, a heavy thud, two high notes. |
+| `use_pyro_ball` | — | Pyro Ball: a roaring rush, a heavy thud, two high notes. |
+| `use_behemoth_blade` | — | Behemoth Blade: a ringing of metal, a heavy thud, a bell. |
+| `use_behemoth_bash` | — | Behemoth Bash: a ringing of metal, a heavy thud, a bell. |
+| `use_aura_wheel` | — | Aura Wheel: a crackle of sparks, a heavy thud, a bell. |
+| `use_breaking_swipe` | — | Breaking Swipe: a roaring rise, a heavy thud, two high notes. |
+| `use_branch_poke` | — | Branch Poke: a leafy rustle, a heavy thud, two high notes. |
+| `use_overdrive` | — | Overdrive: a rising hum, a hissing beam, a crackle of sparks, a thud, a bell. |
+| `use_apple_acid` | — | Apple Acid: a rising hum, a hissing beam, a leafy rustle, a thud, a bell. |
+| `use_grav_apple` | — | Grav Apple: a leafy rustle, a heavy thud, a bell. |
+| `use_spirit_break` | — | Spirit Break: four sparkling notes, a heavy thud, a bell. |
+| `use_strange_steam` | — | Strange Steam: a rising hum, a hissing beam, four sparkling notes, a thud, a bell. |
+| `use_life_dew` | — | Life Dew: five rising notes, bubbling, a soft thud, a bell. |
+| `use_obstruct` | — | Obstruct: five rising notes, a dark growl, a soft thud, a bell. |
+| `use_false_surrender` | — | False Surrender: a dark growl, a heavy thud, two high notes. |
+| `use_meteor_assault` | — | Meteor Assault: a first knock, a heavy thud, two high notes. |
+| `use_eternabeam` | — | Eternabeam: a rising hum, a hissing beam, a roaring rise, a thud, a bell. |
+| `use_steel_beam` | — | Steel Beam: a rising hum, a hissing beam, a ringing of metal, a thud, a bell. |
+| `use_expanding_force` | — | Expanding Force: a rising hum, a heavy thud, two high notes. |
+| `use_steel_roller` | — | Steel Roller: a ringing of metal, a heavy thud, two high notes. |
+| `use_scale_shot` | — | Scale Shot: a roaring rise, 4 quick blows, a bell. |
+| `use_meteor_beam` | — | Meteor Beam: a rising hum, a hissing beam, a clatter of stones, a thud, a bell. |
+| `use_shell_side_arm` | — | Shell Side Arm: a rising hum, a hissing beam, sour gurgling, a thud, a bell. |
+| `use_misty_explosion` | — | Misty Explosion: four sparkling notes, a heavy thud, two high notes. |
+| `use_grassy_glide` | — | Grassy Glide: a leafy rustle, a heavy thud, a bell. |
+| `use_rising_voltage` | — | Rising Voltage: a crackle of sparks, a heavy thud, a bell. |
+| `use_terrain_pulse` | — | Terrain Pulse: five rising notes, a plain hiss, a soft thud, a bell. |
+| `use_skitter_smack` | — | Skitter Smack: skittering clicks, a heavy thud, two high notes. |
+| `use_burning_jealousy` | — | Burning Jealousy: a roaring rush, a heavy thud, two high notes. |
+| `use_lash_out` | — | Lash Out: a dark growl, 4 quick blows, a bell. |
+| `use_poltergeist` | — | Poltergeist: a hollow falling moan, a heavy thud, a bell. |
+| `use_corrosive_gas` | — | Corrosive Gas: five rising notes, sour gurgling, a soft thud, a bell. |
+| `use_coaching` | — | Coaching: five rising notes, a first knock, a soft thud, a bell. |
+| `use_flip_turn` | — | Flip Turn: bubbling, a heavy thud, a bell. |
+| `use_triple_axel` | — | Triple Axel: an icy ringing, 4 quick blows, a bell. |
+| `use_dual_wingbeat` | — | Dual Wingbeat: a rush of wind, 3 quick blows, a bell. |
+| `use_scorching_sands` | — | Scorching Sands: a crumbling crackle, a heavy thud, two high notes. |
+| `use_jungle_healing` | — | Jungle Healing: five rising notes, a leafy rustle, a soft thud, a bell. |
+| `use_wicked_blow` | — | Wicked Blow: a dark growl, a heavy thud, two high notes. |
+| `use_surging_strikes` | — | Surging Strikes: bubbling, 4 quick blows, a bell. |
+| `use_thunder_cage` | — | Thunder Cage: a crackle of sparks, a heavy thud, a bell. |
+| `use_dragon_energy` | — | Dragon Energy: a rising hum, a hissing beam, a roaring rise, a thud, a bell. |
+| `use_freezing_glare` | — | Freezing Glare: a rising hum, a hissing beam, a rising hum, a thud, a bell. |
+| `use_fiery_wrath` | — | Fiery Wrath: a dark growl, a heavy thud, two high notes. |
+| `use_thunderous_kick` | — | Thunderous Kick: a first knock, a heavy thud, two high notes. |
+| `use_glacial_lance` | — | Glacial Lance: an icy ringing, a heavy thud, a bell. |
+| `use_astral_barrage` | — | Astral Barrage: a rising hum, a hissing beam, a hollow falling moan, a thud, a bell. |
+| `use_eerie_spell` | — | Eerie Spell: a rising hum, a heavy thud, a bell. |
+| `use_dire_claw` | — | Dire Claw: sour gurgling, a heavy thud, two high notes. |
+| `use_psyshield_bash` | — | Psyshield Bash: a rising hum, a heavy thud, two high notes. |
+| `use_power_shift` | — | Power Shift: five rising notes, a plain hiss, a soft thud, a bell. |
+| `use_stone_axe` | — | Stone Axe: a clatter of stones, a heavy thud, two high notes. |
+| `use_springtide_storm` | — | Springtide Storm: a rising gale, four sparkling notes, a deep thud, a crackle. |
+| `use_mystical_power` | — | Mystical Power: a rising hum, a heavy thud, two high notes. |
+| `use_raging_fury` | — | Raging Fury: a roaring rush, a heavy thud, a bell. |
+| `use_wave_crash` | — | Wave Crash: bubbling, a heavy thud, a bell. |
+| `use_chloroblast` | — | Chloroblast: a rising hum, a hissing beam, a leafy rustle, a thud, a bell. |
+| `use_mountain_gale` | — | Mountain Gale: an icy ringing, a heavy thud, a bell. |
+| `use_victory_dance` | — | Victory Dance: five rising notes, a first knock, a soft thud, a bell. |
+| `use_headlong_rush` | — | Headlong Rush: a crumbling crackle, a heavy thud, a bell. |
+| `use_barb_barrage` | — | Barb Barrage: sour gurgling, 3 quick blows, a bell. |
+| `use_esper_wing` | — | Esper Wing: a rising hum, a heavy thud, a bell. |
+| `use_bitter_malice` | — | Bitter Malice: a hollow falling moan, a heavy thud, two high notes. |
+| `use_shelter` | — | Shelter: five rising notes, a ringing of metal, a soft thud, a bell. |
+| `use_triple_arrows` | — | Triple Arrows: a first knock, 4 quick blows, a bell. |
+| `use_infernal_parade` | — | Infernal Parade: a hollow falling moan, a heavy thud, a bell. |
+| `use_ceaseless_edge` | — | Ceaseless Edge: a dark growl, a heavy thud, two high notes. |
+| `use_bleakwind_storm` | — | Bleakwind Storm: a rising gale, a rush of wind, a deep thud, a crackle. |
+| `use_wildbolt_storm` | — | Wildbolt Storm: a rising gale, a crackle of sparks, a deep thud, a crackle. |
+| `use_sandsear_storm` | — | Sandsear Storm: a rising gale, a crumbling crackle, a deep thud, a crackle. |
+| `use_lunar_blessing` | — | Lunar Blessing: five rising notes, a rising hum, a soft thud, a bell. |
+| `use_take_heart` | — | Take Heart: five rising notes, a rising hum, a soft thud, a bell. |
+| `use_tera_blast` | — | Tera Blast: a rising hum, a hissing beam, a plain hiss, a thud, a bell. |
+| `use_silk_trap` | — | Silk Trap: five rising notes, skittering clicks, a soft thud, a bell. |
+| `use_axe_kick` | — | Axe Kick: a first knock, a heavy thud, a bell. |
+| `use_last_respects` | — | Last Respects: a hollow falling moan, a heavy thud, two high notes. |
+| `use_lumina_crash` | — | Lumina Crash: a rising hum, a heavy thud, two high notes. |
+| `use_order_up` | — | Order Up: a roaring rise, a heavy thud, two high notes. |
+| `use_jet_punch` | — | Jet Punch: bubbling, a heavy thud, two high notes. |
+| `use_spicy_extract` | — | Spicy Extract: five rising notes, a leafy rustle, a soft thud, a bell. |
+| `use_spin_out` | — | Spin Out: a ringing of metal, a heavy thud, a bell. |
+| `use_population_bomb` | — | Population Bomb: a plain hiss, 3 quick blows, a bell. |
+| `use_ice_spinner` | — | Ice Spinner: an icy ringing, a heavy thud, a bell. |
+| `use_glaive_rush` | — | Glaive Rush: a roaring rise, a heavy thud, a bell. |
+| `use_revival_blessing` | — | Revival Blessing: five rising notes, a plain hiss, a soft thud, a bell. |
+| `use_salt_cure` | — | Salt Cure: a clatter of stones, a heavy thud, two high notes. |
+| `use_triple_dive` | — | Triple Dive: bubbling, 4 quick blows, a bell. |
+| `use_mortal_spin` | — | Mortal Spin: sour gurgling, a heavy thud, two high notes. |
+| `use_doodle` | — | Doodle: five rising notes, a plain hiss, a soft thud, a bell. |
+| `use_fillet_away` | — | Fillet Away: five rising notes, a plain hiss, a soft thud, a bell. |
+| `use_kowtow_cleave` | — | Kowtow Cleave: a dark growl, a heavy thud, two high notes. |
+| `use_flower_trick` | — | Flower Trick: a leafy rustle, a heavy thud, a bell. |
+| `use_torch_song` | — | Torch Song: a rising hum, a hissing beam, a roaring rush, a thud, a bell. |
+| `use_aqua_step` | — | Aqua Step: bubbling, a heavy thud, a bell. |
+| `use_raging_bull` | — | Raging Bull: a plain hiss, a heavy thud, two high notes. |
+| `use_make_it_rain` | — | Make It Rain: a ringing of metal, a heavy thud, two high notes. |
+| `use_psyblade` | — | Psyblade: a rising hum, a heavy thud, a bell. |
+| `use_hydro_steam` | — | Hydro Steam: a rising hum, a hissing beam, bubbling, a thud, a bell. |
+| `use_ruination` | — | Ruination: a dark growl, a heavy thud, two high notes. |
+| `use_collision_course` | — | Collision Course: a first knock, a heavy thud, two high notes. |
+| `use_electro_drift` | — | Electro Drift: a crackle of sparks, a heavy thud, two high notes. |
+| `use_shed_tail` | — | Shed Tail: five rising notes, a plain hiss, a soft thud, a bell. |
+| `use_chilly_reception` | — | Chilly Reception: five rising notes, an icy ringing, a soft thud, a bell. |
+| `use_tidy_up` | — | Tidy Up: five rising notes, a plain hiss, a soft thud, a bell. |
+| `use_snowscape` | — | Snowscape: five rising notes, an icy ringing, a soft thud, a bell. |
+| `use_pounce` | — | Pounce: skittering clicks, a heavy thud, a bell. |
+| `use_trailblaze` | — | Trailblaze: a leafy rustle, a heavy thud, a bell. |
+| `use_chilling_water` | — | Chilling Water: a rising hum, a hissing beam, bubbling, a thud, a bell. |
+| `use_hyper_drill` | — | Hyper Drill: a plain hiss, a heavy thud, two high notes. |
+| `use_twin_beam` | — | Twin Beam: a rising hum, a hissing beam, a rising hum, a thud, a bell. |
+| `use_rage_fist` | — | Rage Fist: a hollow falling moan, a heavy thud, two high notes. |
+| `use_armor_cannon` | — | Armor Cannon: a rising hum, a hissing beam, a roaring rush, a thud, a bell. |
+| `use_bitter_blade` | — | Bitter Blade: a roaring rush, a heavy thud, a bell. |
+| `use_double_shock` | — | Double Shock: a crackle of sparks, 3 quick blows, a bell. |
+| `use_gigaton_hammer` | — | Gigaton Hammer: a ringing of metal, a heavy thud, two high notes. |
+| `use_comeuppance` | — | Comeuppance: a dark growl, a heavy thud, a bell. |
+| `use_aqua_cutter` | — | Aqua Cutter: bubbling, a heavy thud, two high notes. |
+| `use_blazing_torque` | — | Blazing Torque: a roaring rush, a heavy thud, two high notes. |
+| `use_wicked_torque` | — | Wicked Torque: a dark growl, a heavy thud, two high notes. |
+| `use_noxious_torque` | — | Noxious Torque: sour gurgling, a heavy thud, two high notes. |
+| `use_combat_torque` | — | Combat Torque: a first knock, a heavy thud, a bell. |
+| `use_magical_torque` | — | Magical Torque: four sparkling notes, a heavy thud, a bell. |
+| `use_blood_moon` | — | Blood Moon: a plain hiss, a heavy thud, two high notes. |
+| `use_matcha_gotcha` | — | Matcha Gotcha: a rising hum, a hissing beam, a leafy rustle, a thud, a bell. |
+| `use_syrup_bomb` | — | Syrup Bomb: a leafy rustle, a heavy thud, two high notes. |
+| `use_ivy_cudgel` | — | Ivy Cudgel: a leafy rustle, a heavy thud, a bell. |
+| `use_electro_shot` | — | Electro Shot: a rising hum, a hissing beam, a crackle of sparks, a thud, a bell. |
+| `use_tera_starstorm` | — | Tera Starstorm: a plain hiss, a heavy thud, two high notes. |
+| `use_fickle_beam` | — | Fickle Beam: a rising hum, a hissing beam, a roaring rise, a thud, a bell. |
+| `use_burning_bulwark` | — | Burning Bulwark: five rising notes, a roaring rush, a soft thud, a bell. |
+| `use_thunderclap` | — | Thunderclap: a crackle of sparks, a heavy thud, a bell. |
+| `use_mighty_cleave` | — | Mighty Cleave: a clatter of stones, a heavy thud, a bell. |
+| `use_tachyon_cutter` | — | Tachyon Cutter: a ringing of metal, 3 quick blows, a bell. |
+| `use_hard_press` | — | Hard Press: a ringing of metal, a heavy thud, a bell. |
+| `use_dragon_cheer` | — | Dragon Cheer: five rising notes, a roaring rise, a soft thud, a bell. |
+| `use_alluring_voice` | — | Alluring Voice: a rising hum, a hissing beam, four sparkling notes, a thud, a bell. |
+| `use_temper_flare` | — | Temper Flare: a roaring rush, a heavy thud, two high notes. |
+| `use_supercell_slam` | — | Supercell Slam: a crackle of sparks, a heavy thud, a bell. |
+| `use_psychic_noise` | — | Psychic Noise: a rising hum, a hissing beam, a rising hum, a thud, a bell. |
+| `use_upper_hand` | — | Upper Hand: a first knock, a heavy thud, two high notes. |
+| `use_malignant_chain` | — | Malignant Chain: sour gurgling, a heavy thud, a bell. |
 
 ## Cries
 

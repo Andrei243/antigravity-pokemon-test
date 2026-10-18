@@ -547,7 +547,7 @@ public class MovePresentationTests
     {
         int own = MoveDatabase.GetAll().Count(m => m.Id > 467 && MoveFx.BatchOf(m.Name) != null && SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name)));
         output.WriteLine($"{own} of the later games' moves have a look and a sound of their own");
-        Assert.True(own >= 235, $"only {own}");
+        Assert.True(own >= 380, $"only {own}");
     }
 
     /// <summary>Y11b's moves: the other 36 of Generation 5, from Frost Breath (524) to Fusion Bolt (559).</summary>
@@ -641,6 +641,57 @@ public class MovePresentationTests
             ("Freezy Frost", "Sparkly Swirl"), ("Leafage", "Trop Kick"), ("Sappy Seed", "Strength Sap"), ("Darkest Lariat", "Brutal Swing"), ("Spirit Shackle", "Anchor Shot"),
             ("Throat Chop", "Shadow Bone"), ("Smart Strike", "Laser Focus"), ("Toxic Thread", "Spirit Shackle"), ("Beak Blast", "Smart Strike"), ("Psychic Terrain", "Instruct"),
             ("Clanging Scales", "Core Enforcer"), ("Revelation Dance", "Multi-Attack"), ("Solar Blade", "Liquidation"), ("Floaty Fall", "Pollen Puff"), ("Shell Trap", "Beak Blast"), ("Dynamax Cannon", "Prismatic Laser"), ("Snipe Shot", "Smart Strike"), ("Jaw Lock", "Psychic Fangs"), ("Stuff Cheeks", "Gear Up"), ("No Retreat", "Power Trip"), ("Tar Shot", "Sappy Seed"), ("Magic Powder", "Pollen Puff"), ("Dragon Darts", "Spirit Shackle"), ("Octolock", "Toxic Thread"), ("Bolt Beak", "Zing Zap"), ("Fishious Rend", "Jaw Lock"), ("Court Change", "Speed Swap"), ("Teatime", "Psychic Terrain")
+        })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
+    }
+
+    /// <summary>Y13b's moves: the rest of Generation 8 (Clangorous Soul 775 to Take Heart 850) and all of Generation 9 (Tera Blast 851 to Malignant Chain 919).</summary>
+    private static IEnumerable<MoveData> ThirteenthBatchSecondPart => MoveDatabase.GetAll().Where(m => m.Id is >= 775 and <= 919 && m.Kind == MoveKind.Standard);
+
+    [Fact]
+    public void TheThirteenthBatchsSecondPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        var part = ThirteenthBatchSecondPart.ToList();
+        Assert.Equal(145, part.Count);
+        Assert.All(part, move => Assert.Equal("Y13b", MoveFx.BatchOf(move.Name)));
+        Assert.All(part, move => Assert.True(SoundBank.Exists("use_" + SoundBank.MoveKey(move.Name)), move.Name));
+        Assert.All(part, move => Assert.Equal("use_" + SoundBank.MoveKey(move.Name), SoundBank.MoveSound(move.Name, move.Type)));
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y13b"), b => Assert.Contains(part, m => m.Name.Equals(b.Key, StringComparison.OrdinalIgnoreCase)));
+    }
+
+    [Fact]
+    public void EveryRegularMoveOfTheDataHasALookAndASoundOfItsOwn()
+    {
+        var regular = MoveDatabase.GetAll().Where(m => m.Kind == MoveKind.Standard).ToList();
+        output.WriteLine($"{regular.Count} regular moves");
+        Assert.True(regular.Count >= 847, $"only {regular.Count}");
+        var missing = regular.Where(m => MoveFx.BatchOf(m.Name) == null || !(SoundBank.CryModesOf(m.Name) != null || SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name)))).Select(m => m.Name).ToList();
+        Assert.True(missing.Count == 0, "no look or sound: " + string.Join(", ", missing));
+    }
+
+    [Fact]
+    public void TheThirteenthBatchsSecondPartsMovesThatAreAlikeInKindLookDifferentHere()
+    {
+        foreach (var (a, b) in new[]
+        {
+            ("Behemoth Blade", "Mighty Cleave"), ("Behemoth Bash", "Body Press"), ("Behemoth Bash", "Psyshield Bash"), ("Gigaton Hammer", "Dragon Hammer"), ("Eternabeam", "Dynamax Cannon"),
+            ("Steel Beam", "Meteor Beam"), ("Chloroblast", "Electro Shot"), ("Blazing Torque", "Wicked Torque"), ("Noxious Torque", "Magical Torque"), ("Combat Torque", "Blazing Torque"),
+            ("Bleakwind Storm", "Sandsear Storm"), ("Wildbolt Storm", "Sandsear Storm"), ("Grassy Glide", "Trailblaze"), ("Pounce", "Skitter Smack"), ("Triple Axel", "Ice Spinner"),
+            ("Surging Strikes", "Jet Punch"), ("Apple Acid", "Grav Apple"), ("Dire Claw", "Lash Out"), ("Stone Axe", "Ceaseless Edge"), ("Life Dew", "Lunar Blessing"),
+            ("Take Heart", "Victory Dance"), ("Burning Bulwark", "Shelter"), ("Silk Trap", "Obstruct"), ("Thunderclap", "Rising Voltage"), ("Psyblade", "Bitter Blade"),
+            ("Aqua Cutter", "Wave Crash"), ("Chilly Reception", "Snowscape"), ("Tachyon Cutter", "Aqua Cutter"), ("Twin Beam", "Fickle Beam"), ("Alluring Voice", "Psychic Noise")
         })
         {
             var ma = MoveDatabase.Get(a)!;

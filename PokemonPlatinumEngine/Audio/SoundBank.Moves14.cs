@@ -656,6 +656,6 @@ public static partial class SoundBank
                 d.Notes(0.7f, 0.06f, 0.12f, Wave.Triangle, Pitches(84, 88, 91), 0.04f, 0.01f);
                 return Finish(d.S, 0.36f);
         }
-        return null;
+        return MakeMoveSoundY13b(name);
     }
 }
