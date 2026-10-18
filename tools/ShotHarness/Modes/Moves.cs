@@ -57,6 +57,9 @@ partial class Harness
 
         if (named.Length > 0)
         {
+            // MOVES_BOARD=1: the field of each moment cropped side by side, a row to a move, four moves to a board (mvb_NN)
+            bool boardMode = Environment.GetEnvironmentVariable("MOVES_BOARD") is { Length: > 0 };
+            var rows = new List<(string Label, List<Image> Tiles)>();
             foreach (string moveName in named)
             {
                 // A number names a move by its id (`moves 571 588`), for the names with an apostrophe a shell trips on
@@ -78,9 +81,33 @@ partial class Harness
                 {
                     Skip(age - at);
                     at = age;
-                    Shot($"mv_{key}_{moment}");
+                    if (boardMode)
+                    {
+                        var snap = Capture();
+                        Raylib.ImageResize(ref snap, GameEngine.VirtualWidth, GameEngine.VirtualHeight);
+                        var crop = Raylib.ImageFromImage(snap, new Rectangle(230, 40, 1670, 760));
+                        Raylib.UnloadImage(snap);
+                        Raylib.ImageResize(ref crop, 700, 319);
+                        if (!rows.Any(r => r.Label == move.Name)) rows.Add((move.Name, new List<Image>()));
+                        rows.First(r => r.Label == move.Name).Tiles.Add(crop);
+                    }
+                    else Shot($"mv_{key}_{moment}");
                     Console.WriteLine($"    {moment} at {cue.Age:0.00} s: {Drawn(cue, cue.Age)} quads and ribbons");
                 }
+            }
+            for (int first = 0; first < rows.Count; first += 4)
+            {
+                int n = Math.Min(4, rows.Count - first);
+                var sheet = Raylib.GenImageColor(700 * 4, n * 341, new Color(24, 26, 34, 255));
+                for (int r = 0; r < n; r++)
+                {
+                    var (label, tiles) = rows[first + r];
+                    for (int t = 0; t < tiles.Count && t < 4; t++)
+                        Raylib.ImageDraw(ref sheet, tiles[t], new Rectangle(0, 0, 700, 319), new Rectangle(t * 700, r * 341, 700, 319), Color.White);
+                    Raylib.ImageDrawText(ref sheet, label, 6, r * 341 + 321, 18, new Color(150, 240, 150, 255));
+                    foreach (var tile in tiles) Raylib.UnloadImage(tile);
+                }
+                Save(sheet, $"mvb_{first / 4:00}");
             }
         }
         else
