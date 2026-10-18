@@ -297,9 +297,9 @@ public sealed class GbaImportTests : IDisposable
             Assert.EndsWith(".", TileBehaviors.Meaning(behaviour));
             Assert.False(string.IsNullOrWhiteSpace(TileBehaviors.InGame(behaviour).Note));
         }
-        // The GBA's own values lie among those Platinum leaves unused at the top of its byte
+        // The GBA's own values lie among those Platinum leaves unused at the top of its byte (and HeartGold's Magma and ladders from 0xE6, plan 20 · J2)
         foreach (var behaviour in Enum.GetValues<TileBehavior>().Where(b => (int)b > (int)TileBehavior.ShopShelf))
-            Assert.InRange((int)behaviour, 0xED, 0xFE);
+            Assert.InRange((int)behaviour, 0xE6, 0xFE);
         Assert.Equal(0x3A, (int)GbaBehaviours.Of("MB_JUMP_NORTH"));
         Assert.Equal(TileBehavior.None, GbaBehaviours.Of("MB_SIGNPOST", out bool known));
         Assert.False(known);
