@@ -288,7 +288,7 @@ public class DataFileTests
         var names = all.Select(a => a.Name).ToHashSet();
         Assert.All(AbilityEffectTable.Names, n => Assert.Contains(n, names));
         Assert.True(AbilityDatabase.Get("Intimidate")!.IsImplemented);
-        Assert.False(AbilityDatabase.Get("Neutralizing Gas")!.IsImplemented);
+        Assert.True(AbilityDatabase.Get("Neutralizing Gas")!.IsImplemented); // plan 06 · R27b: every ability of the data runs
     }
 
     [Fact]
