@@ -53,7 +53,7 @@ public sealed class GbaTables
     /// takes <paramref name="trainerPrefix"/> before it (<c>kanto_</c>, plan 19 · K2), so a region's trainers never
     /// meet Platinum's ids, or each other's, in the save's list of trainers beaten.
     /// </summary>
-    public GbaTables(string dir, IEnumerable<GbaMap> maps, string trainerPrefix = "")
+    public GbaTables(string dir, IEnumerable<GbaMap> maps, string trainerPrefix = "", IReadOnlyDictionary<string, int>? moneyRates = null)
     {
         string Path_(params string[] parts) => Path.Combine(new[] { dir }.Concat(parts).ToArray());
         if (File.Exists(Path_("data", "scripts", "item_ball_scripts.inc")))
@@ -69,7 +69,7 @@ public sealed class GbaTables
             foreach (var (map, wild) in ParseWild(File.ReadAllText(Path_("src", "data", "wild_encounters.json")), Problems))
                 Wild[map] = wild;
         if (File.Exists(Path_("src", "data", "trainers.h")) && File.Exists(Path_("src", "data", "trainer_parties.h")))
-            Trainers.AddRange(ParseTrainers(File.ReadAllText(Path_("src", "data", "trainers.h")), File.ReadAllText(Path_("src", "data", "trainer_parties.h")), Problems, trainerPrefix));
+            Trainers.AddRange(ParseTrainers(File.ReadAllText(Path_("src", "data", "trainers.h")), File.ReadAllText(Path_("src", "data", "trainer_parties.h")), Problems, trainerPrefix, moneyRates));
         if (File.Exists(Path_("src", "data", "heal_locations.json")))
             HealLocations.AddRange(ParseHealLocations(File.ReadAllText(Path_("src", "data", "heal_locations.json"))));
     }
@@ -189,7 +189,7 @@ public sealed class GbaTables
     /// read (the class's money, the name's hash), which the region's plan adds. A trainer with no party (TRAINER_NONE)
     /// is left out.
     /// </summary>
-    public static List<TrainerRecord> ParseTrainers(string trainersH, string partiesH, List<string> problems, string idPrefix = "")
+    public static List<TrainerRecord> ParseTrainers(string trainersH, string partiesH, List<string> problems, string idPrefix = "", IReadOnlyDictionary<string, int>? moneyRates = null)
     {
         var parties = new Dictionary<string, List<TrainerPokemonRecord>>(StringComparer.Ordinal);
         // A party ends at the first "};" (FireRed's empty ones are a line each, {DUMMY_TRAINER_MON};)
@@ -248,7 +248,7 @@ public sealed class GbaTables
                 Ai = ai,
                 Items = items,
                 DoubleBattle = doubleBattle,
-                PrizeMoney = PrizeMoney(trainerClass, members[^1].Level, doubleBattle),
+                PrizeMoney = PrizeMoney(trainerClass, members[^1].Level, doubleBattle, moneyRates),
                 Party = members.Select((m, i) => new TrainerPokemonRecord
                 {
                     Species = m.Species, Level = m.Level, IvScale = m.IvScale, Personality = personalities[i], Item = m.Item, Moves = m.Moves?.ToList()
@@ -279,8 +279,28 @@ public sealed class GbaTables
     /// A trainer's prize as FireRed's <c>Cmd_getmoneyreward</c> works it out: four times the last Pokémon's level times
     /// the class's rate, twice that in a double battle.
     /// </summary>
-    public static int PrizeMoney(string trainerClass, int lastLevel, bool doubleBattle) =>
-        4 * lastLevel * (doubleBattle ? 2 : 1) * MoneyRates.GetValueOrDefault(trainerClass, 5);
+    public static int PrizeMoney(string trainerClass, int lastLevel, bool doubleBattle, IReadOnlyDictionary<string, int>? rates = null) =>
+        4 * lastLevel * (doubleBattle ? 2 : 1) * (rates ?? MoneyRates).GetValueOrDefault(trainerClass, 5);
+
+    /// <summary>
+    /// Emerald's <c>gTrainerMoneyTable</c> (<c>src/battle_main.c</c> of the pinned commit, plan 21 · H1), which the
+    /// checkout's folders don't hold either: the same formula (<c>GetTrainerMoneyToGive</c>), another table. A class it
+    /// doesn't list takes its last row, 5. Emerald's trainers' personalities are made as FireRed's are
+    /// (<c>CreateNPCTrainerParty</c> is the same in both).
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, int> EmeraldMoneyRates = new Dictionary<string, int>(StringComparer.Ordinal)
+    {
+        ["TEAM_AQUA"] = 5, ["AQUA_ADMIN"] = 10, ["AQUA_LEADER"] = 20, ["AROMA_LADY"] = 10, ["RUIN_MANIAC"] = 15,
+        ["INTERVIEWER"] = 12, ["TUBER_F"] = 1, ["TUBER_M"] = 1, ["SIS_AND_BRO"] = 3, ["COOLTRAINER"] = 12,
+        ["HEX_MANIAC"] = 6, ["LADY"] = 50, ["BEAUTY"] = 20, ["RICH_BOY"] = 50, ["POKEMANIAC"] = 15, ["SWIMMER_M"] = 2,
+        ["BLACK_BELT"] = 8, ["GUITARIST"] = 8, ["KINDLER"] = 8, ["CAMPER"] = 4, ["OLD_COUPLE"] = 10, ["BUG_MANIAC"] = 15,
+        ["PSYCHIC"] = 6, ["GENTLEMAN"] = 20, ["ELITE_FOUR"] = 25, ["LEADER"] = 25, ["SCHOOL_KID"] = 5, ["SR_AND_JR"] = 4,
+        ["POKEFAN"] = 20, ["EXPERT"] = 10, ["YOUNGSTER"] = 4, ["CHAMPION"] = 50, ["FISHERMAN"] = 10, ["TRIATHLETE"] = 10,
+        ["DRAGON_TAMER"] = 12, ["BIRD_KEEPER"] = 8, ["NINJA_BOY"] = 3, ["BATTLE_GIRL"] = 6, ["PARASOL_LADY"] = 10,
+        ["SWIMMER_F"] = 2, ["PICNICKER"] = 4, ["TWINS"] = 3, ["SAILOR"] = 8, ["COLLECTOR"] = 15, ["RIVAL"] = 15,
+        ["PKMN_BREEDER"] = 10, ["PKMN_RANGER"] = 12, ["TEAM_MAGMA"] = 5, ["MAGMA_ADMIN"] = 10, ["MAGMA_LEADER"] = 20,
+        ["LASS"] = 4, ["BUG_CATCHER"] = 4, ["HIKER"] = 10, ["YOUNG_COUPLE"] = 8, ["WINSTRATE"] = 10
+    };
 
     /// <summary>
     /// The personalities of a trainer's Pokémon as FireRed's <c>CreateNPCTrainerParty</c> makes them: 0x80 for a

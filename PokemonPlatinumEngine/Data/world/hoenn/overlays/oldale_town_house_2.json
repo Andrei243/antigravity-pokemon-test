@@ -1,0 +1,15 @@
+{
+  // Another house in Oldale Town (plan 21 · H1)
+  "area": "oldale_town_house_2",
+  "bgmTrack": "hoenn/oldale",
+  "people": {
+    "pokefan_f": {
+      "name": "Woman",
+      "dialog": [ "If your Pokémon gets hurt, don't push it. A Pokémon Center will have it right as rain in no time." ]
+    },
+    "school_kid_m": {
+      "name": "Boy",
+      "dialog": [ "I want to be a Gym Leader one day. First I need to beat one, though!" ]
+    }
+  }
+}

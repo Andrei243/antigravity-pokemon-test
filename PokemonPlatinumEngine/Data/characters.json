@@ -228,7 +228,27 @@
     "sunglasses": "Gentleman",
     "picnicgirl_2": "Lass",
     "campboy_2": "Youngster",
-    "fishing_2": "Gentleman"
+    "fishing_2": "Gentleman",
+    // Emerald's looks (plan 21 · H1), until each Hoenn chapter gives the classes and the cast it meets their own
+    "prof_birch": "Rowan",
+    "scientist_1": "scientist",
+    "mart_employee": "Clerk",
+    "mystery_gift_man": "Clerk",
+    "boy_1": "Youngster",
+    "boy_2": "Youngster",
+    "girl_1": "Lass",
+    "girl_3": "Lass",
+    "woman_4": "Lady",
+    "woman_5": "Lady",
+    "man_1": "Gentleman",
+    "man_2": "Gentleman",
+    "man_3": "Gentleman",
+    "man_4": "Gentleman",
+    "man_5": "Youngster",
+    "maniac": "Gentleman",
+    "norman": "Gentleman",
+    "wally": "Youngster",
+    "scott": "Gentleman"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field

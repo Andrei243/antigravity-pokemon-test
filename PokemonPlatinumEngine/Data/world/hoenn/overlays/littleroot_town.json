@@ -1,0 +1,39 @@
+{
+  // Littleroot Town (plan 21 · H1): Emerald's map, our words. The moving van, Mom at the door, the rival's family next
+  // door and Professor Birch's run up Route 101 are the story's (plan 21 · H2); until then nobody stands for them, and
+  // the triggers north of town that stop a player with no Pokémon are left to that chapter too
+  "area": "littleroot_town",
+  "bgmTrack": "hoenn/littleroot",
+  "trees": "Round",
+  "architecture": "Sapling",
+  "people": {
+    "littleroot_twin": {
+      "name": "Little Girl",
+      "dialog": [
+        "The professor goes out into the grass all the time to look at Pokémon.",
+        "Mom says that's why his shoes are always muddy!"
+      ]
+    },
+    "fat_man": {
+      "name": "Man",
+      "dialog": [
+        "I've lived here my whole life. It's small, but the air is the freshest in Hoenn.",
+        "Every plant you see started out as a tiny seed. Same goes for us, I suppose."
+      ]
+    },
+    "boy_2": {
+      "name": "Boy",
+      "dialog": [
+        "The professor's lab is right there, the big building at the south end of town.",
+        "He's hardly ever in it, though."
+      ]
+    }
+  },
+  // The signposts, by the original's script each runs: what each says is ours
+  "signs": {
+    "LittlerootTown_EventScript_TownSign": "Littleroot Town\nA town where the grass begins.",
+    "LittlerootTown_EventScript_BirchsLabSign": "Professor Birch's\nPokémon Lab",
+    "LittlerootTown_EventScript_BrendansHouseSign": "A family's house.\nA moving van stood outside it not long ago.",
+    "LittlerootTown_EventScript_MaysHouseSign": "A family's house.\nFlower pots line the windowsill."
+  }
+}

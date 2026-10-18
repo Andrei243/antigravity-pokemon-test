@@ -1,0 +1,84 @@
+{
+  // Route 103 (plan 21 · H1), north of Oldale Town, where the water begins. The rival watching Pokémon by the shore and
+  // Professor Birch are plan 21 · H2's. The trainers across the water are reached by Surf, which the Balance Badge lets
+  // a Pokémon use; the way into the cave on the far bank leads nowhere yet
+  "area": "route_103",
+  "bgmTrack": "hoenn/route101",
+  "trees": "Round",
+  "people": {
+    "man_3": {
+      "name": "Man",
+      "dialog": [ "Past the water there's a road that leads all the way to Slateport. You'll need a Pokémon that can swim, though." ]
+    },
+    "boy_1": {
+      "name": "Boy",
+      "dialog": [ "The professor's kid comes up here every day to watch Pokémon by the water. They know everything about them!" ]
+    },
+    "woman_2": {
+      "name": "Daisy",
+      "trainer": {
+        "dialogueBefore": "Aroma Lady Daisy: Can you smell the flowers on the breeze? My Pokémon carry that scent into battle.",
+        "dialogueAfter": "Aroma Lady Daisy: What a refreshing battle that was."
+      }
+    },
+    "twin": {
+      "name": "Amy and Liv",
+      "trainer": {
+        "dialogueBefore": "Twins Amy and Liv: We always battle together! Two against two, that's fair, isn't it?",
+        "dialogueAfter": "Twins Amy and Liv: We lost together, too..."
+      }
+    },
+    "twin_2": {
+      "name": "Amy and Liv",
+      "trainer": {
+        "dialogueBefore": "Twins Amy and Liv: We always battle together! Two against two, that's fair, isn't it?",
+        "dialogueAfter": "Twins Amy and Liv: We lost together, too..."
+      }
+    },
+    "fisherman": {
+      "name": "Andrew",
+      "trainer": {
+        "dialogueBefore": "Fisherman Andrew: You scared off my bite! You owe me a battle for that.",
+        "dialogueAfter": "Fisherman Andrew: Fine, fine. Back to waiting for a bite."
+      }
+    },
+    "pokefan_m": {
+      "name": "Miguel",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Miguel: My Pokémon is the cutest in all of Hoenn. Let me prove it!",
+        "dialogueAfter": "Pokéfan Miguel: Still the cutest. Just not the strongest."
+      }
+    },
+    "black_belt": {
+      "name": "Rhett",
+      "trainer": {
+        "dialogueBefore": "Black Belt Rhett: Hah! I train out here where nobody can see me. Until now!",
+        "dialogueAfter": "Black Belt Rhett: More training. Much more training."
+      }
+    },
+    "man_5": {
+      "name": "Marcos",
+      "trainer": {
+        "dialogueBefore": "Guitarist Marcos: My guitar and my Pokémon play the same tune. Want to hear it?",
+        "dialogueAfter": "Guitarist Marcos: I hit a wrong note there, didn't I?"
+      }
+    },
+    "swimmer_f": {
+      "name": "Isabelle",
+      "trainer": {
+        "dialogueBefore": "Swimmer Isabelle: The water's lovely today! Are you here to swim or to battle?",
+        "dialogueAfter": "Swimmer Isabelle: Swimming it is, then."
+      }
+    },
+    "swimmer_m": {
+      "name": "Pete",
+      "trainer": {
+        "dialogueBefore": "Swimmer Pete: Nobody gets past me without a battle! Not even on the water!",
+        "dialogueAfter": "Swimmer Pete: Go on past. I'll just float here."
+      }
+    }
+  },
+  "signs": {
+    "Route103_EventScript_RouteSign": "Route 103\nOldale Town to the south"
+  }
+}

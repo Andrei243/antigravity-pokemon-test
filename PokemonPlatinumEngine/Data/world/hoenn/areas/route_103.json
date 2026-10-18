@@ -1,0 +1,89 @@
+{
+  "key": "route_103",
+  "index": 3,
+  "name": "Route 103",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE101",
+  "nightMusic": "MUS_ROUTE101",
+  "encounters": "route_103",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Poochyena", "level": 2 },
+    { "species": "Poochyena", "level": 3 },
+    { "species": "Poochyena", "level": 3 },
+    { "species": "Poochyena", "level": 4 },
+    { "species": "Wingull", "level": 2 },
+    { "species": "Zigzagoon", "level": 3 },
+    { "species": "Zigzagoon", "level": 3 },
+    { "species": "Zigzagoon", "level": 4 },
+    { "species": "Wingull", "level": 3 },
+    { "species": "Wingull", "level": 3 },
+    { "species": "Wingull", "level": 2 },
+    { "species": "Wingull", "level": 4 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Sharpedo", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 165, "z": 226, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "man_3", "looks": "man_3", "movement": "look_west", "x": 169, "z": 232, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "Route103_EventScript_Man" },
+    { "id": "route103_rival", "looks": "var_0", "movement": "look_east", "x": 130, "z": 223, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_103_RIVAL", "script": "Route103_EventScript_Rival" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_south_and_east", "x": 191, "z": 231, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_DAISY" },
+    { "id": "twin", "looks": "twin", "movement": "look_south", "x": 185, "z": 232, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_AMY_AND_LIV_1" },
+    { "id": "twin_2", "looks": "twin", "movement": "look_south", "x": 184, "z": 232, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_AMY_AND_LIV_1" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "walk_south_and_north", "x": 170, "z": 228, "facing": 1, "rangeX": 0, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ANDREW" },
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 178, "z": 225, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "BerryTreeScript" },
+    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 179, "z": 225, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "BerryTreeScript" },
+    { "id": "berry_tree_3", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 180, "z": 225, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "BerryTreeScript" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "wander_around", "x": 140, "z": 230, "facing": 1, "rangeX": 1, "rangeZ": 2, "script": "Route103_EventScript_Boy" },
+    { "id": "prof_birch", "looks": "prof_birch", "movement": "wander_around", "x": 127, "z": 223, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE_103_BIRCH", "script": "ProfBirch_EventScript_RatePokedexOrRegister" },
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_east", "x": 176, "z": 233, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_MIGUEL_1" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 170, "z": 225, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_103_GUARD_SPEC", "item": "Guard Spec.", "script": "Route103_EventScript_ItemGuardSpec" },
+    { "id": "cuttable_tree", "looks": "cuttable_tree", "movement": "look_around", "x": 187, "z": 227, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_2", "looks": "cuttable_tree", "movement": "look_around", "x": 192, "z": 228, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_south", "x": 187, "z": 225, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_RHETT" },
+    { "id": "man_5", "looks": "man_5", "movement": "look_north", "x": 187, "z": 229, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_MARCOS" },
+    { "id": "swimmer_f", "looks": "swimmer_f", "movement": "walk_south_and_north", "x": 156, "z": 226, "facing": 1, "rangeX": 1, "rangeZ": 3, "trainer": "normal", "sight": 5, "script": "TRAINER_ISABELLE" },
+    { "id": "swimmer_m", "looks": "swimmer_m", "movement": "walk_north_and_south", "x": 156, "z": 233, "facing": 0, "rangeX": 1, "rangeZ": 3, "trainer": "normal", "sight": 5, "script": "TRAINER_PETE" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 184, "z": 227, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_103_PP_UP", "item": "PP Up", "script": "Route103_EventScript_ItemPPUp" }
+  ],
+  "signs": [
+    { "x": 131, "z": 229, "type": 0, "script": "Route103_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

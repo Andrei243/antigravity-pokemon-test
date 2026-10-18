@@ -1,0 +1,84 @@
+{
+  "key": "petalburg_city",
+  "index": 6,
+  "name": "Petalburg City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG",
+  "nightMusic": "MUS_PETALBURG",
+  "encounters": "petalburg_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Marill", "level": 20, "maxLevel": 30 },
+    { "species": "Marill", "level": 10, "maxLevel": 20 },
+    { "species": "Marill", "level": 30, "maxLevel": 35 },
+    { "species": "Marill", "level": 5, "maxLevel": 10 },
+    { "species": "Marill", "level": 5, "maxLevel": 10 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Corphish", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Corphish", "level": 25, "maxLevel": 30 },
+    { "species": "Corphish", "level": 30, "maxLevel": 35 },
+    { "species": "Corphish", "level": 20, "maxLevel": 25 },
+    { "species": "Corphish", "level": 35, "maxLevel": 40 },
+    { "species": "Corphish", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 50, "z": 251, "to": "petalburg_city_house_1", "toWarp": 0 },
+    { "x": 47, "z": 237, "to": "petalburg_city_wallys_house", "toWarp": 0 },
+    { "x": 55, "z": 240, "to": "petalburg_city_gym", "toWarp": 0 },
+    { "x": 60, "z": 248, "to": "petalburg_city_pokemon_center_1f", "toWarp": 0 },
+    { "x": 60, "z": 256, "to": "petalburg_city_house_2", "toWarp": 0 },
+    { "x": 65, "z": 244, "to": "petalburg_city_mart", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "woman_4", "looks": "woman_4", "movement": "wander_around", "x": 56, "z": 250, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_PETALBURG_CITY_WALLYS_MOM", "script": "PetalburgCity_EventScript_WallysMom" },
+    { "id": "petalburg_wally", "looks": "wally", "movement": "look_north", "x": 55, "z": 242, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PETALBURG_CITY_WALLY", "script": "" },
+    { "id": "petalburg_boy", "looks": "boy_1", "movement": "look_south", "x": 48, "z": 254, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_EventScript_Boy" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "wander_north_and_south", "x": 60, "z": 242, "facing": 0, "rangeX": 0, "rangeZ": 1, "script": "PetalburgCity_EventScript_Gentleman" },
+    { "id": "petalburg_wallys_dad", "looks": "pokefan_m", "movement": "look_north", "x": 55, "z": 242, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD", "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 59, "z": 234, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_PETALBURG_CITY_MAX_REVIVE", "item": "Max Revive", "script": "PetalburgCity_EventScript_ItemMaxRevive" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 43, "z": 260, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_PETALBURG_CITY_ETHER", "item": "Ether", "script": "PetalburgCity_EventScript_ItemEther" },
+    { "id": "gym_boy", "looks": "boy_2", "movement": "look_around", "x": 52, "z": 247, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_EventScript_GymBoy" },
+    { "id": "petalburg_scott", "looks": "scott", "movement": "look_around", "x": 53, "z": 244, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_PETALBURG_CITY_SCOTT", "script": "" }
+  ],
+  "signs": [
+    { "x": 57, "z": 242, "type": 0, "script": "PetalburgCity_EventScript_GymSign" },
+    { "x": 66, "z": 244, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 61, "z": 248, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 57, "z": 248, "type": 0, "script": "PetalburgCity_EventScript_CitySign" },
+    { "x": 62, "z": 248, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 67, "z": 244, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 48, "z": 241, "type": 0, "script": "PetalburgCity_EventScript_WallyHouseSign" },
+    { "x": 51, "z": 261, "type": 2, "script": "", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_PETALBURG_CITY_RARE_CANDY" }
+  ],
+  "triggers": [
+    { "x": 48, "z": 242, "width": 1, "depth": 1, "script": "PetalburgCity_EventScript_ShowGymToPlayer0", "variable": "VAR_PETALBURG_CITY_STATE", "value": "0" },
+    { "x": 48, "z": 243, "width": 1, "depth": 1, "script": "PetalburgCity_EventScript_ShowGymToPlayer1", "variable": "VAR_PETALBURG_CITY_STATE", "value": "0" },
+    { "x": 48, "z": 244, "width": 1, "depth": 1, "script": "PetalburgCity_EventScript_ShowGymToPlayer2", "variable": "VAR_PETALBURG_CITY_STATE", "value": "0" },
+    { "x": 48, "z": 245, "width": 1, "depth": 1, "script": "PetalburgCity_EventScript_ShowGymToPlayer3", "variable": "VAR_PETALBURG_CITY_STATE", "value": "0" },
+    { "x": 44, "z": 242, "width": 1, "depth": 1, "script": "PetalburgCity_EventScript_Scott0", "variable": "VAR_SCOTT_PETALBURG_ENCOUNTER", "value": "0" },
+    { "x": 44, "z": 243, "width": 1, "depth": 1, "script": "PetalburgCity_EventScript_Scott1", "variable": "VAR_SCOTT_PETALBURG_ENCOUNTER", "value": "0" },
+    { "x": 44, "z": 244, "width": 1, "depth": 1, "script": "PetalburgCity_EventScript_Scott2", "variable": "VAR_SCOTT_PETALBURG_ENCOUNTER", "value": "0" },
+    { "x": 44, "z": 245, "width": 1, "depth": 1, "script": "PetalburgCity_EventScript_Scott3", "variable": "VAR_SCOTT_PETALBURG_ENCOUNTER", "value": "0" }
+  ]
+}

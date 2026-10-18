@@ -1,0 +1,12 @@
+{
+  // The bedroom upstairs (plan 21 · H1): the room Emerald's game begins in once the van has stopped, which plan 21 · H2
+  // makes the start; the clock on the wall is set there too
+  "area": "littleroot_town_brendans_house_2f",
+  "bgmTrack": "hoenn/littleroot",
+  "signs": {
+    "LittlerootTown_BrendansHouse_2F_EventScript_PC": "The PC is still in its box from the move.\nIt will have to be plugged in first.",
+    "PlayersHouse_2F_EventScript_Notebook": "A notebook with a list on the first page:\nUnpack. Meet the neighbours. See the professor.",
+    "LittlerootTown_BrendansHouse_2F_EventScript_WallClock": "A clock hangs on the wall.\nIts hands haven't been set since the move.",
+    "PlayersHouse_2F_EventScript_GameCube": "A games console sits under the television.\nThe controller's cable is still tangled up."
+  }
+}

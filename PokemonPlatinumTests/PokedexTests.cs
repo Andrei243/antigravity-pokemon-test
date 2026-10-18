@@ -235,7 +235,8 @@ public class PokedexTests
         Assert.Equal("kanto", kanto.Dex);
         Assert.Equal(new NationalUnlock(NationalUnlockRule.Caught, 60), kanto.NationalUnlock);
         Assert.Equal("updated-johto", RegionDatabase.Get("Johto")!.Dex);
-        Assert.Null(RegionDatabase.Get("Hoenn")!.Dex);
+        Assert.Equal("hoenn", RegionDatabase.Get("Hoenn")!.Dex);
+        Assert.Null(RegionDatabase.Get("Unova")!.Dex);
         Assert.Equal(NationalUnlockRule.HallOfFame, NationalUnlock.Parse(null).Rule);
         Assert.Equal(NationalUnlockRule.HallOfFame, NationalUnlock.Parse("Caught").Rule);
         Assert.Equal(new NationalUnlock(NationalUnlockRule.Caught, 100), NationalUnlock.Parse("Caught100"));
@@ -266,7 +267,7 @@ public class PokedexTests
     {
         var dex = new Pokedex();
         Assert.Equal(new[] { Pokedex.Sinnoh }, dex.Dexes);
-        dex.Enter(RegionDatabase.Get("Hoenn")!);   // no Pokédex yet: nothing is added
+        dex.Enter(RegionDatabase.Get("Unova")!);   // no Pokédex yet: nothing is added
         Assert.Equal(new[] { Pokedex.Sinnoh }, dex.Dexes);
         dex.Enter(RegionDatabase.Get("Kanto")!);
         dex.Enter(RegionDatabase.Get("Kanto")!);
@@ -312,7 +313,8 @@ public class PokedexTests
     {
         Assert.NotNull(Habitats.Of(RegionDatabase.Get("Sinnoh")!));
         Assert.Same(Habitats.Sinnoh, Habitats.Of(RegionDatabase.Get("Sinnoh")!));
-        Assert.Null(Habitats.Of(RegionDatabase.Get("Hoenn")!));
+        Assert.Null(Habitats.Of(RegionDatabase.Get("Unova")!));
+        Assert.NotNull(Habitats.Of(RegionDatabase.Get("Hoenn")!));
         // Kanto has its own since plan 19 · K1, Johto since plan 20 · J1 (HeartGold's tables, before any area opens)
         Assert.NotNull(Habitats.Of(RegionDatabase.Get("Kanto")!));
         Assert.NotNull(Habitats.Of(RegionDatabase.Get("Johto")!));

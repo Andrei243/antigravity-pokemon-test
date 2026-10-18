@@ -1,0 +1,27 @@
+{
+  "key": "oldale_town_house_2",
+  "index": 63,
+  "name": "Oldale Town",
+  "matrix": 12,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_OLDALE",
+  "nightMusic": "MUS_OLDALE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "oldale_town", "toWarp": 1 },
+    { "x": 4, "z": 7, "to": "oldale_town", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "OldaleTown_House2_EventScript_Woman" },
+    { "id": "school_kid_m", "looks": "school_kid_m", "movement": "look_west", "x": 7, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "OldaleTown_House2_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}

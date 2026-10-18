@@ -1,0 +1,24 @@
+{
+  // Petalburg City's Pokémon Center (plan 21 · H1), its floor as Emerald lays it out
+  "area": "petalburg_city_pokemon_center_1f",
+  "bgmTrack": "hoenn/petalburg",
+  "people": {
+    "petalburg_nurse": { "name": "Nurse", "script": "Nurse" },
+    "fat_man": {
+      "name": "Man",
+      "dialog": [ "I heard there's a forest past Route 104 so thick it's dark at noon. Bug Pokémon love it." ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [ "Some Pokémon only show up near the water. Keep your eyes open on the bridges!" ]
+    },
+    "woman_5": {
+      "name": "Woman",
+      "dialog": [ "My Pokémon and I came here all the way from Oldale. It's tired, but it's so proud of itself." ]
+    },
+    "man_4": {
+      "name": "Man",
+      "dialog": [ "I write down a word or two about every trainer I meet. Come back when you've made a name for yourself!" ]
+    }
+  }
+}

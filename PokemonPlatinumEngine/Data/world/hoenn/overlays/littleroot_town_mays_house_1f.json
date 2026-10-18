@@ -1,0 +1,24 @@
+{
+  // The neighbours' house downstairs (plan 21 · H1), where the professor's family lives: the rival's mother and little
+  // brother are at home, and the rival is out on Route 103 until plan 21 · H2 brings them in
+  "area": "littleroot_town_mays_house_1f",
+  "bgmTrack": "hoenn/littleroot",
+  "people": {
+    "rivals_house_1f_mom": {
+      "name": "Neighbour",
+      "hiddenBy": "",
+      "dialog": [
+        "Oh, you must be from the family that just moved in! Welcome to Littleroot.",
+        "My husband is the professor down the road. If you ever see him lying in the grass, he's fine. He's working."
+      ]
+    },
+    "ninja_boy": {
+      "name": "Little Boy",
+      "hiddenBy": "",
+      "dialog": [
+        "My big sibling went out to Route 103 to help Dad count Pokémon.",
+        "When I'm older I'm going to count them too!"
+      ]
+    }
+  }
+}

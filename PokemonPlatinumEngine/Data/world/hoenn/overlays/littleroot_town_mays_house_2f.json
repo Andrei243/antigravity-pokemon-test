@@ -1,0 +1,11 @@
+{
+  // The neighbours' child's room upstairs (plan 21 · H1)
+  "area": "littleroot_town_mays_house_2f",
+  "bgmTrack": "hoenn/littleroot",
+  "signs": {
+    "LittlerootTown_MaysHouse_2F_EventScript_PC": "The PC's screen shows a map of Hoenn,\nwith little marks wherever Pokémon were seen.",
+    "PlayersHouse_2F_EventScript_Notebook": "A notebook full of sketches of Pokémon,\neach one labelled with where it was found.",
+    "LittlerootTown_MaysHouse_2F_EventScript_WallClock": "A clock hangs on the wall.\nIt ticks along quietly.",
+    "PlayersHouse_2F_EventScript_GameCube": "A games console sits under the television.\nSomebody left a game paused."
+  }
+}

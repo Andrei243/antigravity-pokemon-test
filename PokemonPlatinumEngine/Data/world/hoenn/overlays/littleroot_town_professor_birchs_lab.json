@@ -1,0 +1,21 @@
+{
+  // Professor Birch's lab (plan 21 · H1): a room built from Emerald's layout. The professor, the rival and the Pokédex
+  // are plan 21 · H2's; until then his aide keeps the lab
+  "area": "littleroot_town_professor_birchs_lab",
+  "bgmTrack": "hoenn/birch_lab",
+  "people": {
+    "birchs_lab_aide": {
+      "name": "Aide",
+      "dialog": [
+        "The professor? He's out on Route 101 again, I'm afraid.",
+        "He says you can't learn how Pokémon live by sitting indoors. So I sit indoors and do his paperwork."
+      ]
+    }
+  },
+  "signs": {
+    "LittlerootTown_ProfessorBirchsLab_EventScript_Machine": "A machine hums away quietly.\nIts lights blink in a steady pattern.",
+    "LittlerootTown_ProfessorBirchsLab_EventScript_Book": "A thick book about where Pokémon make their homes.\nThe margins are full of muddy fingerprints.",
+    "LittlerootTown_ProfessorBirchsLab_EventScript_Bookshelf": "The shelves are crammed with field notes,\nsorted by route.",
+    "LittlerootTown_ProfessorBirchsLab_EventScript_PC": "The screen is covered in charts\nof Pokémon sightings."
+  }
+}

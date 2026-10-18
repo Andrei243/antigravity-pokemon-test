@@ -1,0 +1,37 @@
+{
+  // Petalburg City (plan 21 · H1). Its Gym, the player's father's, stays shut (warp 2) until plan 21 · H2 opens it with
+  // Wally's catch; Wally, his parents in the street and Scott are that chapter's too. The road west to Route 104 isn't
+  // open yet
+  "area": "petalburg_city",
+  "bgmTrack": "hoenn/petalburg",
+  "trees": "Round",
+  "architecture": "Parkside",
+  "locked": [ 2 ],
+  "people": {
+    "petalburg_boy": {
+      "name": "Boy",
+      "dialog": [
+        "The Gym Leader here is the strongest trainer I know.",
+        "He only battles people who have already won four badges somewhere else!"
+      ]
+    },
+    "gentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "The pond in the middle of town is lovely in the evening.",
+        "Water Pokémon come up to the surface to look at the lamps."
+      ]
+    },
+    "gym_boy": {
+      "name": "Boy",
+      "dialog": [ "The Gym's doors are shut today. I keep coming back in case they open!" ]
+    }
+  },
+  "signs": {
+    "PetalburgCity_EventScript_GymSign": "Petalburg City Pokémon Gym\nThe doors are shut for now.",
+    "PetalburgCity_EventScript_CitySign": "Petalburg City\nWhere ordinary days are cherished.",
+    "PetalburgCity_EventScript_WallyHouseSign": "A family's house.\nA little garden grows by the door.",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
+    "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
+  }
+}

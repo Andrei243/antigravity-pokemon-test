@@ -185,14 +185,14 @@ public sealed class GbaWorld
                     var behaviour = GbaBehaviours.Of(name);
                     var (tileset, _) = Source.TilesetOf(layout, metatile);
                     string? label = Source.LabelOf(layout, metatile);
-                    var cover = GbaCover.Of(behaviour, label, tileset, metatile);
+                    var cover = GbaCover.Of(behaviour, label, tileset, metatile, Source.Game);
 
                     m.Area[i] = index;
                     m.Behaviour[i] = (byte)behaviour;
                     m.Solid[i] = GbaLayout.CollisionOf(block) != 0;
                     m.Elevation[i] = (byte)GbaLayout.ElevationOf(block);
                     m.Cover[i] = cover;
-                    if (indoors) m.Furniture[i] = GbaFurniture.Of(name, tileset, metatile);
+                    if (indoors) m.Furniture[i] = GbaFurniture.Of(name, tileset, metatile, Source.Game);
                     BehaviourUse[name] = BehaviourUse.GetValueOrDefault(name) + 1;
                     if (cover == TerrainCover.Unknown)
                     {

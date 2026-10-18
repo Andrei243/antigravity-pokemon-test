@@ -1,0 +1,19 @@
+{
+  // Route 101 (plan 21 · H1), between Littleroot Town and Oldale Town. Professor Birch chased up a tree by a Zigzagoon,
+  // his bag and the triggers that start the scene are plan 21 · H2's; until then the route is open grass
+  "area": "route_101",
+  "bgmTrack": "hoenn/route101",
+  "trees": "Round",
+  "people": {
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [
+        "Wild Pokémon jump out of the tall grass when you least expect it.",
+        "If you haven't got a Pokémon of your own, stick to the path!"
+      ]
+    }
+  },
+  "signs": {
+    "Route101_EventScript_RouteSign": "Route 101\nOldale Town - Littleroot Town"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  // Another house in Petalburg City (plan 21 · H1)
+  "area": "petalburg_city_house_2",
+  "bgmTrack": "hoenn/petalburg",
+  "people": {
+    "pokefan_f": { "name": "Woman", "dialog": [ "Petalburg is a quiet place. That's what I love about it. Nothing ever happens here, and that's fine by me." ] },
+    "school_kid_m": { "name": "Boy", "dialog": [ "At school we learned that every Pokémon type has another type it's weak against. Even Dragon types!" ] }
+  }
+}

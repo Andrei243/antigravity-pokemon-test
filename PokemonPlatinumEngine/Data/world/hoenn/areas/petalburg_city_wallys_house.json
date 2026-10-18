@@ -1,0 +1,27 @@
+{
+  "key": "petalburg_city_wallys_house",
+  "index": 104,
+  "name": "Petalburg City",
+  "matrix": 53,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG",
+  "nightMusic": "MUS_PETALBURG",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "petalburg_city", "toWarp": 1 },
+    { "x": 4, "z": 7, "to": "petalburg_city", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "wallys_house_wallys_dad", "looks": "pokefan_m", "movement": "look_east", "x": 3, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_WallysHouse_EventScript_WallysDad" },
+    { "id": "woman_4", "looks": "woman_4", "movement": "look_west", "x": 7, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_WallysHouse_EventScript_WallysMom" }
+  ],
+  "signs": [],
+  "triggers": []
+}

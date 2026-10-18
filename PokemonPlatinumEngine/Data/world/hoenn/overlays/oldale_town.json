@@ -1,0 +1,37 @@
+{
+  // Oldale Town (plan 21 · H1). The Mart's clerk who walks the player to the shop and hands out a Potion, the man who
+  // keeps the west road shut while he sketches footprints, and the rival at the south edge are plan 21 · H2's; here
+  // they only talk, and the west road is open
+  "area": "oldale_town",
+  "bgmTrack": "hoenn/oldale",
+  "trees": "Round",
+  "architecture": "Meadow",
+  "people": {
+    "girl_3": {
+      "name": "Girl",
+      "dialog": [
+        "Oldale sits right where the roads meet. Everyone passes through sooner or later.",
+        "The Pokémon Center's red roof is the first thing you see coming up from the south."
+      ]
+    },
+    "oldale_mart_employee": {
+      "name": "Mart Clerk",
+      "dialog": [
+        "Welcome to Oldale! Our Poké Mart has everything a new trainer needs.",
+        "Potions, Poké Balls, Antidotes... stock up before you head out!"
+      ]
+    },
+    "footprints_man": {
+      "name": "Man",
+      "dialog": [
+        "Shh! I'm studying footprints. A Pokémon passed this way only a moment ago.",
+        "Look how deep that one is. Something heavy, wouldn't you say?"
+      ]
+    }
+  },
+  "signs": {
+    "OldaleTown_EventScript_TownSign": "Oldale Town\nWhere things begin to get busy.",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
+    "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
+  }
+}

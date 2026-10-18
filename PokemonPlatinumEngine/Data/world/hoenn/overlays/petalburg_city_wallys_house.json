@@ -1,0 +1,18 @@
+{
+  // A family's house in Petalburg City (plan 21 · H1): Wally's, whose story is plan 21 · H2's; his parents only talk
+  "area": "petalburg_city_wallys_house",
+  "bgmTrack": "hoenn/petalburg",
+  "people": {
+    "wallys_house_wallys_dad": {
+      "name": "Man",
+      "dialog": [
+        "Our boy is going off to stay with relatives in Verdanturf soon. The air there is better for him.",
+        "He's always wanted a Pokémon of his own to take along. Maybe one day."
+      ]
+    },
+    "woman_4": {
+      "name": "Woman",
+      "dialog": [ "Please make yourself at home. We don't get many visitors, but we love having them." ]
+    }
+  }
+}

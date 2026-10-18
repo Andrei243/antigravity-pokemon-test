@@ -162,10 +162,72 @@ public static class GbaCover
         return TerrainCover.Unknown;
     }
 
-    /// <summary>A tile's look: by its behaviour, its label, the hand-written ranges, or <see cref="TerrainCover.Unknown"/>.</summary>
-    public static TerrainCover Of(TileBehavior behaviour, string? label, string tileset, int metatile)
+    /// <summary>
+    /// Emerald's rows (plan 21 · H1), apart from FireRed's: the two games both call their primary tileset
+    /// <c>gTileset_General</c>, with other metatiles in it. They are asked before a metatile's label, since Emerald's
+    /// labels name a lawn under a tree's overhang <c>Grass_TreeLeft</c> and a mountain's foot <c>RockWall_GrassBase</c>,
+    /// which the words would take for a tree and a wall. Hoenn's first rows are for the tilesets of Littleroot Town,
+    /// Routes 101 to 103, Oldale Town and Petalburg City; a house's own metatiles are left out, as Kanto's are.
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, (int From, int To, TerrainCover Cover)[]> HoennRanges =
+        new Dictionary<string, (int, int, TerrainCover)[]>(StringComparer.Ordinal)
+        {
+            ["gTileset_General"] = new (int, int, TerrainCover)[]
+            {
+                // The lawn, its edge along a pond's south bank, and the signposts on it (the sign is the event's)
+                (0x001, 0x003, TerrainCover.Grass),
+                // Flowers in the grass
+                (0x004, 0x004, TerrainCover.Flowers),
+                // A lawn under a tree's overhang, beside a tree or a tall grass's tree
+                (0x00E, 0x00F, TerrainCover.Grass), (0x1CE, 0x1CF, TerrainCover.Grass),
+                // Small trees and bushes standing in the grass (Route 103's east bank)
+                (0x016, 0x017, TerrainCover.Tree), (0x0C6, 0x0C7, TerrainCover.Tree),
+                // The forest every route is walled in by: four metatiles a tree, row over row, beside the earth paths
+                (0x1D4, 0x1D7, TerrainCover.Tree), (0x1DC, 0x1DF, TerrainCover.Tree), (0x1E4, 0x1E7, TerrainCover.Tree),
+                // Earth paths: three by three with their edges (MB_NORMAL beside the trees in the same rows)
+                (0x1D0, 0x1D3, TerrainCover.Path), (0x1D8, 0x1DB, TerrainCover.Path), (0x1E0, 0x1E3, TerrainCover.Path),
+                // Ledges in the grass, hopped over south, east or south-east (MB_JUMP_*)
+                (0x06E, 0x06F, TerrainCover.Grass), (0x086, 0x087, TerrainCover.Grass), (0x08D, 0x08E, TerrainCover.Grass),
+                (0x0D4, 0x0D6, TerrainCover.Grass), (0x0FF, 0x0FF, TerrainCover.Grass),
+                // The rocky mountains' faces, edges and foot (Route 103's north rim)
+                (0x070, 0x07F, TerrainCover.Cliff), (0x089, 0x089, TerrainCover.Cliff), (0x091, 0x091, TerrainCover.Cliff),
+                (0x0A9, 0x0A9, TerrainCover.Cliff), (0x0CE, 0x0CE, TerrainCover.Cliff),
+                // A town's paved road (Petalburg City's, Route 103's south bank), three by three with its edges
+                (0x118, 0x11A, TerrainCover.Path), (0x120, 0x122, TerrainCover.Path), (0x128, 0x12A, TerrainCover.Path),
+                (0x130, 0x131, TerrainCover.Path),
+                // The soil round a berry patch
+                (0x113, 0x115, TerrainCover.Path),
+            },
+            ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
+            {
+                // The doormat before a house's door, and the earth where the paths meet the towns' edges
+                (0x201, 0x201, TerrainCover.Path), (0x206, 0x207, TerrainCover.Path), (0x271, 0x272, TerrainCover.Path),
+                (0x278, 0x279, TerrainCover.Path), (0x27B, 0x27B, TerrainCover.Path), (0x252, 0x253, TerrainCover.Path),
+                // The wooden fences round Petalburg's yards, and the fences' tops drawn over the lawn north of them
+                (0x23F, 0x23F, TerrainCover.Fence), (0x244, 0x246, TerrainCover.Fence), (0x24C, 0x24E, TerrainCover.Fence),
+                (0x254, 0x256, TerrainCover.Fence), (0x23C, 0x23E, TerrainCover.Grass),
+                // A berry patch's frame (MB_BERRY_TREE_SOIL in its middle)
+                (0x28C, 0x28E, TerrainCover.Path),
+                // The hedge in the yard west of Petalburg's Gym
+                (0x264, 0x266, TerrainCover.Tree),
+            },
+        };
+
+    /// <summary>
+    /// A tile's look: by its behaviour, its label, the hand-written ranges, or <see cref="TerrainCover.Unknown"/>. For
+    /// Emerald (<paramref name="game"/>) its own ranges are asked before the label, and FireRed's never.
+    /// </summary>
+    public static TerrainCover Of(TileBehavior behaviour, string? label, string tileset, int metatile, GbaGame? game = null)
     {
         if (OfBehaviour(behaviour) is { } shown) return shown;
+        if (game == GbaGame.Emerald)
+        {
+            if (HoennRanges.TryGetValue(tileset, out var hoenn))
+                foreach (var (from, to, cover) in hoenn)
+                    if (metatile >= from && metatile <= to) return cover;
+            if (label != null && OfLabel(label) is var labelled && labelled != TerrainCover.Unknown) return labelled;
+            return TerrainCover.Unknown;
+        }
         if (label != null && OfLabel(label) is var named && named != TerrainCover.Unknown) return named;
         if (Ranges.TryGetValue(tileset, out var ranges))
             foreach (var (from, to, cover) in ranges)

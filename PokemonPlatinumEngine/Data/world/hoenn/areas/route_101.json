@@ -1,0 +1,56 @@
+{
+  "key": "route_101",
+  "index": 1,
+  "name": "Route 101",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE101",
+  "nightMusic": "MUS_ROUTE101",
+  "encounters": "route_101",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Wurmple", "level": 2 },
+    { "species": "Poochyena", "level": 2 },
+    { "species": "Wurmple", "level": 2 },
+    { "species": "Wurmple", "level": 3 },
+    { "species": "Poochyena", "level": 3 },
+    { "species": "Poochyena", "level": 3 },
+    { "species": "Wurmple", "level": 3 },
+    { "species": "Poochyena", "level": 3 },
+    { "species": "Zigzagoon", "level": 2 },
+    { "species": "Zigzagoon", "level": 2 },
+    { "species": "Zigzagoon", "level": 3 },
+    { "species": "Zigzagoon", "level": 3 }
+  ],
+  "landRate": 20,
+  "warps": [],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "look_around", "x": 136, "z": 270, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route101_EventScript_Youngster" },
+    { "id": "route101_birch", "looks": "prof_birch", "movement": "jog_in_place_east", "x": 129, "z": 275, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE", "script": "" },
+    { "id": "birchs_bag", "looks": "birchs_bag", "movement": "look_around", "x": 127, "z": 276, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG", "script": "Route101_EventScript_BirchsBag" },
+    { "id": "route101_zigzagoon", "looks": "zigzagoon_1", "movement": "jog_in_place_west", "x": 130, "z": 275, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_101_ZIGZAGOON", "script": "" },
+    { "id": "prof_birch", "looks": "prof_birch", "movement": "look_around", "x": 125, "z": 273, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_101_BIRCH", "script": "ProfBirch_EventScript_RatePokedexOrRegister" },
+    { "id": "boy_2", "looks": "boy_2", "movement": "wander_west_and_east", "x": 122, "z": 275, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE_101_BOY", "script": "Route101_EventScript_Boy" }
+  ],
+  "signs": [
+    { "x": 125, "z": 271, "type": 0, "script": "Route101_EventScript_RouteSign" }
+  ],
+  "triggers": [
+    { "x": 130, "z": 281, "width": 1, "depth": 1, "script": "Route101_EventScript_StartBirchRescue", "variable": "VAR_ROUTE101_STATE", "value": "1" },
+    { "x": 131, "z": 281, "width": 1, "depth": 1, "script": "Route101_EventScript_StartBirchRescue", "variable": "VAR_ROUTE101_STATE", "value": "1" },
+    { "x": 130, "z": 280, "width": 1, "depth": 1, "script": "Route101_EventScript_PreventExitSouth", "variable": "VAR_ROUTE101_STATE", "value": "2" },
+    { "x": 131, "z": 280, "width": 1, "depth": 1, "script": "Route101_EventScript_PreventExitSouth", "variable": "VAR_ROUTE101_STATE", "value": "2" },
+    { "x": 126, "z": 278, "width": 1, "depth": 1, "script": "Route101_EventScript_PreventExitWest", "variable": "VAR_ROUTE101_STATE", "value": "2" },
+    { "x": 126, "z": 277, "width": 1, "depth": 1, "script": "Route101_EventScript_PreventExitWest", "variable": "VAR_ROUTE101_STATE", "value": "2" },
+    { "x": 126, "z": 279, "width": 1, "depth": 1, "script": "Route101_EventScript_PreventExitWest", "variable": "VAR_ROUTE101_STATE", "value": "2" },
+    { "x": 126, "z": 280, "width": 1, "depth": 1, "script": "Route101_EventScript_PreventExitWest", "variable": "VAR_ROUTE101_STATE", "value": "2" },
+    { "x": 127, "z": 275, "width": 1, "depth": 1, "script": "Route101_EventScript_PreventExitNorth", "variable": "VAR_ROUTE101_STATE", "value": "2" }
+  ]
+}

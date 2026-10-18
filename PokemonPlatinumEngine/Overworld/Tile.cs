@@ -93,7 +93,13 @@ public enum MapSetting
     /// maps of their own and not as models): wall where no chunk says otherwise and wherever no way in reaches, the
     /// room's open tiles floor where the import couldn't name their ground. Sinnoh's rooms are map files instead.
     /// </summary>
-    Indoors
+    Indoors,
+    /// <summary>
+    /// The sea floor under Hoenn's eastern routes (plan 21): reached by Dive from the tile of deep water above it. A
+    /// value only since plan 21 · H1; no map is made with it until H5 builds the dive, its light and its kelp, and
+    /// until then the builder treats it as open country.
+    /// </summary>
+    Underwater
 }
 
 /// <summary>
@@ -203,7 +209,15 @@ public enum Architecture
     /// <summary>Warm boards under terracotta hip roofs with shutters: the town where the sea meets the cherry trees (Cherrygrove, plan 20 · J2).</summary>
     Bayside,
     /// <summary>Dark boards under hipped tile roofs of slate: the old towns of temples and lanterns (Violet, plan 20 · J2's first rows).</summary>
-    OldTimber
+    OldTimber,
+
+    // Hoenn (plan 21): each town's own way of building, a row of the style guide's "Buildings" first
+    /// <summary>Boards under leaf-green gable roofs with a chimney and flower boxes: the little town where the grass starts (Littleroot, plan 21 · H1).</summary>
+    Sapling,
+    /// <summary>White clapboard under sky-blue hip roofs with shutters: the crossroads town between the routes (Oldale, plan 21 · H1).</summary>
+    Meadow,
+    /// <summary>Plaster under ochre hip roofs with a chimney: the quiet city of the Gym by the pond (Petalburg, plan 21 · H1).</summary>
+    Parkside
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

@@ -1,0 +1,52 @@
+{
+  // Route 102 (plan 21 · H1), west from Oldale Town to Petalburg City. Its trainers are Emerald's own, their teams read
+  // from Hoenn's trainers.json by the trainer each object's script names; the berry trees wait for Hoenn's berries
+  "area": "route_102",
+  "bgmTrack": "hoenn/route101",
+  "trees": "Round",
+  "people": {
+    "little_boy": {
+      "name": "Little Boy",
+      "dialog": [ "I saw a Pokémon with a big leaf on its head! It ran off into the grass when I said hello." ]
+    },
+    "boy_1": {
+      "name": "Boy",
+      "dialog": [
+        "Petalburg City is just ahead. The Gym there is run by a really strong trainer.",
+        "Nobody gets to challenge him until they've proved themselves somewhere else first."
+      ]
+    },
+    "youngster": {
+      "name": "Calvin",
+      "trainer": {
+        "dialogueBefore": "Youngster Calvin: You looked at me! That means we battle. Those are the rules!",
+        "dialogueAfter": "Youngster Calvin: Hmm. Maybe the rules need changing."
+      }
+    },
+    "bug_catcher": {
+      "name": "Rick",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Rick: Stop right there! My bugs have been itching for a battle.",
+        "dialogueAfter": "Bug Catcher Rick: My bugs are buzzing with disappointment."
+      }
+    },
+    "lass": {
+      "name": "Tiana",
+      "trainer": {
+        "dialogueBefore": "Lass Tiana: I'm still learning, but I'm learning fast! Let's battle!",
+        "dialogueAfter": "Lass Tiana: That's one more thing learned, then."
+      }
+    },
+    "youngster_2": {
+      "name": "Allen",
+      "trainer": {
+        "dialogueBefore": "Youngster Allen: You're new around here, aren't you? Let me show you how it's done!",
+        "dialogueAfter": "Youngster Allen: Well, you've shown me how it's done instead."
+      }
+    }
+  },
+  "signs": {
+    "Route102_EventScript_RouteSignPetalburg": "Route 102\nPetalburg City ahead",
+    "Route102_EventScript_RouteSignOldale": "Route 102\nOldale Town ahead"
+  }
+}
