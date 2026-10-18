@@ -1,0 +1,11 @@
+{
+  // Captain Stern's shipyard (plan 21 · H3): Dock, his foreman, sends whoever brings the Devon Goods on to the Oceanic
+  // Museum, where the captain is (slateport_city_sterns_shipyard_1f.txt)
+  "area": "slateport_city_sterns_shipyard_1f",
+  "bgmTrack": "hoenn/slateport",
+  "people": {
+    "dock": { "name": "Dock", "script": "Dock", "still": true },
+    "scientist_1": { "name": "Scientist", "npcType": "scientist", "dialog": [ "A submarine that dives to the sea floor... The captain's dream is nearly built." ] },
+    "scientist_1_2": { "name": "Scientist", "npcType": "scientist", "dialog": [ "These blueprints need one more part from Devon. Then we can start on the hull." ] }
+  }
+}

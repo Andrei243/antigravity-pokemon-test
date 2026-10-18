@@ -1,0 +1,47 @@
+{
+  "key": "granite_cave_b1f",
+  "index": 246,
+  "name": "Granite Cave",
+  "matrix": 195,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "DarkFlash",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "encounters": "granite_cave_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 9 },
+    { "species": "Aron", "level": 10 },
+    { "species": "Aron", "level": 9 },
+    { "species": "Aron", "level": 11 },
+    { "species": "Zubat", "level": 10 },
+    { "species": "Abra", "level": 9 },
+    { "species": "Makuhita", "level": 10 },
+    { "species": "Makuhita", "level": 11 },
+    { "species": "Sableye", "level": 10 },
+    { "species": "Sableye", "level": 10 },
+    { "species": "Sableye", "level": 9 },
+    { "species": "Sableye", "level": 11 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 25, "z": 13, "to": "granite_cave_1f", "toWarp": 1 },
+    { "x": 4, "z": 21, "to": "granite_cave_1f", "toWarp": 2 },
+    { "x": 29, "z": 13, "to": "granite_cave_b2f", "toWarp": 0 },
+    { "x": 28, "z": 21, "to": "granite_cave_b2f", "toWarp": 1 },
+    { "x": 8, "z": 5, "to": "granite_cave_b2f", "toWarp": 2 },
+    { "x": 12, "z": 3, "to": "granite_cave_b2f", "toWarp": 3 },
+    { "x": 29, "z": 2, "to": "granite_cave_b2f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 15, "z": 21, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_GRANITE_CAVE_B1F_POKE_BALL", "item": "Poké Ball", "script": "GraniteCave_B1F_EventScript_ItemPokeBall" }
+  ],
+  "signs": [],
+  "triggers": []
+}

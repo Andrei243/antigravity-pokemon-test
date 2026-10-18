@@ -1,0 +1,18 @@
+{
+  // Route 105 (plan 21 · H3): the open sea south of Route 104, crossed on Mr. Briney's boat until Surf (plan 21 · H4's
+  // Balance Badge). Its swimmers and the hikers on its islet wait for a surfer; the way into the Island Cave on its
+  // western rocks waits for the Regis' riddles (plan 21 · H12)
+  "area": "route_105",
+  "bgmTrack": "hoenn/route104",
+  "trees": "Round",
+  "locked": [ 0 ],
+  "people": {
+    "swimmer_m": { "name": "Luis", "trainer": { "dialogueBefore": "Swimmer Luis: The current out here is strong. Only the toughest swimmers get this far!", "dialogueAfter": "Swimmer Luis: Swept away by a stronger current..." } },
+    "swimmer_m_2": { "name": "Dominik", "trainer": { "dialogueBefore": "Swimmer Dominik: I swim out here every morning. Battle me before I get cold!", "dialogueAfter": "Swimmer Dominik: Brr! Now I'm cold AND beaten." } },
+    "swimmer_f": { "name": "Beverly", "trainer": { "dialogueBefore": "Swimmer Beverly: My Pokémon and I race the Wingull. Want to race us?", "dialogueAfter": "Swimmer Beverly: You win this race." } },
+    "swimmer_f_2": { "name": "Imani", "trainer": { "dialogueBefore": "Swimmer Imani: Round and round I go, and now you're in my way!", "dialogueAfter": "Swimmer Imani: I'm too dizzy to battle properly..." } },
+    "hiker": { "name": "Foster", "trainer": { "dialogueBefore": "Ruin Maniac Foster: This islet hides old caves. Don't come snooping around them!", "dialogueAfter": "Ruin Maniac Foster: All right, all right. Snoop if you must." } },
+    "man_5": { "name": "Josue", "trainer": { "dialogueBefore": "Bird Keeper Josue: My birds fly over the whole sea. They spotted you from far off!", "dialogueAfter": "Bird Keeper Josue: They should have kept on flying." } },
+    "hiker_2": { "name": "Andres", "trainer": { "dialogueBefore": "Ruin Maniac Andres: I've been digging here for days. A battle's a nice break!", "dialogueAfter": "Ruin Maniac Andres: Back to digging, I suppose." } }
+  }
+}

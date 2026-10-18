@@ -1,0 +1,64 @@
+{
+  "key": "granite_cave_b2f",
+  "index": 247,
+  "name": "Granite Cave",
+  "matrix": 196,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "DarkFlash",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "encounters": "granite_cave_b2f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 10 },
+    { "species": "Aron", "level": 11 },
+    { "species": "Aron", "level": 10 },
+    { "species": "Zubat", "level": 11 },
+    { "species": "Aron", "level": 12 },
+    { "species": "Abra", "level": 10 },
+    { "species": "Sableye", "level": 10 },
+    { "species": "Sableye", "level": 11 },
+    { "species": "Sableye", "level": 12 },
+    { "species": "Sableye", "level": 10 },
+    { "species": "Sableye", "level": 12 },
+    { "species": "Sableye", "level": 10 }
+  ],
+  "landRate": 10,
+  "rockSmash": [
+    { "species": "Geodude", "level": 10, "maxLevel": 15 },
+    { "species": "Nosepass", "level": 10, "maxLevel": 20 },
+    { "species": "Geodude", "level": 5, "maxLevel": 10 },
+    { "species": "Geodude", "level": 15, "maxLevel": 20 },
+    { "species": "Geodude", "level": 15, "maxLevel": 20 }
+  ],
+  "rockSmashRate": 20,
+  "warps": [
+    { "x": 29, "z": 13, "to": "granite_cave_b1f", "toWarp": 2 },
+    { "x": 28, "z": 21, "to": "granite_cave_b1f", "toWarp": 3 },
+    { "x": 8, "z": 5, "to": "granite_cave_b1f", "toWarp": 4 },
+    { "x": 12, "z": 3, "to": "granite_cave_b1f", "toWarp": 5 },
+    { "x": 29, "z": 2, "to": "granite_cave_b1f", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_GRANITE_CAVE_B2F_REPEL", "item": "Repel", "script": "GraniteCave_B2F_EventScript_ItemRepel" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 29, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_GRANITE_CAVE_B2F_RARE_CANDY", "item": "Rare Candy", "script": "GraniteCave_B2F_EventScript_ItemRareCandy" },
+    { "id": "breakable_rock", "looks": "breakable_rock", "movement": "look_around", "x": 5, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_2", "looks": "breakable_rock", "movement": "look_around", "x": 3, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_3", "looks": "breakable_rock", "movement": "look_around", "x": 2, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_4", "looks": "breakable_rock", "movement": "look_around", "x": 7, "z": 12, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_5", "looks": "breakable_rock", "movement": "look_around", "x": 4, "z": 22, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_6", "looks": "breakable_rock", "movement": "look_around", "x": 6, "z": 22, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_7", "looks": "breakable_rock", "movement": "look_around", "x": 3, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_RockSmash" }
+  ],
+  "signs": [
+    { "x": 28, "z": 6, "type": 2, "script": "", "item": "Everstone", "flag": "FLAG_HIDDEN_ITEM_GRANITE_CAVE_B2F_EVERSTONE_1" },
+    { "x": 15, "z": 11, "type": 2, "script": "", "item": "Everstone", "flag": "FLAG_HIDDEN_ITEM_GRANITE_CAVE_B2F_EVERSTONE_2" }
+  ],
+  "triggers": []
+}

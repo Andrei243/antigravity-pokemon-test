@@ -1,0 +1,124 @@
+# Dewford Town (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/DewfordTown/scripts.inc).
+#
+# Mr. Briney waits at the jetty while his boat is here (VAR_BRINEY_LOCATION 2, FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN clear):
+# back to his cottage on Route 104 until Steven has his letter (FLAG_DELIVERED_STEVEN_LETTER), then to Slateport's
+# beach on Route 109 too. The fisherman gives the Old Rod, and the boy by the hall asks after the latest craze.
+
+
+script OnEnter
+  setflag FLAG_VISITED_DEWFORD_TOWN
+  end
+
+
+script Briney
+  speaker "Mr. Briney"
+  face self player
+  if flag FLAG_DELIVERED_STEVEN_LETTER goto Choose
+  ask "Ahoy! Shall we sail back to my cottage on Route 104?"
+  if yes goto ToPetalburg
+  say "Go on and deliver your letter, then. I'll wait right here."
+  end
+label Choose
+  choose "Ahoy! Where shall we sail to?" "Route 104" "Slateport" "Stay here"
+  if var RESULT == 0 goto ToPetalburg
+  if var RESULT == 1 goto ToSlateport
+  say "Just tell me whenever you need to set sail."
+  end
+label ToPetalburg
+  say "Back to the cottage it is! Hold on to your hat!"
+  call SailToRoute104
+  end
+label ToSlateport
+  say "Slateport it is! Hoist the sails, Peeko!"
+  call SailToSlateport
+  end
+
+
+# Back north across the sea to the cottage on Route 104, where Mr. Briney and Peeko are home again
+script SailToRoute104
+  scene "Sailing back to Route 104"
+  setvar VAR_BRINEY_LOCATION 1
+  setflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+  clearflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
+  clearflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
+  music "hoenn/sailing"
+  letterbox on
+  camera path 70 368 52 352 30 330 16 290 12 250 14
+  wait 0.4
+  fade out
+  camera release 0
+  letterbox off 0.1
+  warp "Route104_MrBrineysHouse" 5 4 up
+  fade in
+  music area
+  speaker "Mr. Briney"
+  say "Home sweet home! Whenever you need the sea again, you know where to find me."
+  endscene
+  return
+
+
+# East across the sea of Routes 107 and 108 to Slateport's beach on Route 109
+script SailToSlateport
+  scene "Sailing to Slateport"
+  setvar VAR_BRINEY_LOCATION 3
+  setflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+  clearflag FLAG_HIDE_ROUTE_109_MR_BRINEY
+  music "hoenn/sailing"
+  letterbox on
+  camera path 80 370 110 368 150 366 190 360 220 348 14
+  wait 0.4
+  fade out
+  camera release 0
+  letterbox off 0.1
+  warp "Hoenn" 221 343 down
+  fade in
+  music area
+  speaker "Mr. Briney"
+  if flag FLAG_DELIVERED_DEVON_GOODS goto Landed
+  say "Land ho! That's Slateport's beach. The city's just to the north. Off you go with your parcel!"
+  say "I'll wait here. Whenever you want to go back to Dewford, just say so."
+  endscene
+  return
+label Landed
+  say "Land ho! Slateport, as promised. I'll wait here for whenever you need me."
+  endscene
+  return
+
+
+# The fisherman who hands out the Old Rod (FLAG_RECEIVED_OLD_ROD), and asks how the fishing goes afterwards
+script OldRodFisherman
+  face self player
+  speaker "Fisherman"
+  if flag FLAG_RECEIVED_OLD_ROD goto HowsFishing
+  ask "This is a fishing island, you know. Doesn't the sea make you itch to cast a line?"
+  if no goto NotItching
+  say "That's the spirit! Here, take one of my old rods. I've got plenty."
+  give "Old Rod"
+  setflag FLAG_RECEIVED_OLD_ROD
+  say "Face the water and use the rod. When something bites, reel it in quick!"
+  end
+label NotItching
+  say "No? A shame. The fish around here practically jump onto the hook."
+  end
+label HowsFishing
+  choose "How's the fishing going?" "Excellent" "Not so good"
+  if var RESULT == 0 goto Excellent
+  say "Keep at it! Different rods bring in different Pokémon. Try every spot you can."
+  end
+label Excellent
+  say "Ha ha! That's what I like to hear. There's a Pokémon out there for every fisher."
+  end
+
+
+# The boy who knows what's popular (Emerald's trendy phrase; ours is the word of the week, which nobody can change)
+script TrendyBoy
+  face self player
+  speaker "Boy"
+  ask "Everyone's talking about fishing right now. It's the biggest thing on the island! You knew that, right?"
+  if no goto Outdated
+  say "Of course you did. Anyone who's anyone knows what's in right now."
+  end
+label Outdated
+  say "You didn't know? Come on! Dewford Hall's the place to hear what's popular. Go and listen in."
+  end

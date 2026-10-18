@@ -1,0 +1,10 @@
+{
+  // The floor above Dewford Town's Pokémon Center (plan 21 · H3): the wireless link is down, as in every Center (decision 06 · 7)
+  "area": "dewford_town_pokemon_center_2f",
+  "bgmTrack": "hoenn/dewford",
+  "people": {
+    "teala": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "teala_2": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "teala_3": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] }
+  }
+}

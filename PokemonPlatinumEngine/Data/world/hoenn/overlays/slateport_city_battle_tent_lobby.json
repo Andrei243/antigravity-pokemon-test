@@ -1,0 +1,16 @@
+{
+  // The lobby of Slateport's Battle Tent (plan 21 · H3): its three bouts on rental Pokémon, the Battle Factory's rules
+  // (plan 06 · R18b), are plan 21 · H3's second part; the attendant says so for now
+  "area": "slateport_city_battle_tent_lobby",
+  "bgmTrack": "hoenn/slateport",
+  "people": {
+    "slateport_tent_attendant": { "name": "Attendant", "npcType": "scientist", "dialog": [ "Welcome to the Battle Tent! Our rental Pokémon are still being looked after. Please come back another day." ] },
+    "sailor": { "name": "Sailor", "dialog": [ "You battle here with Pokémon the Tent lends you. Your own stay safe on the bench!" ] },
+    "man_3": { "name": "Man", "dialog": [ "Three wins in a row with rentals. That's what it takes to impress anyone here." ] },
+    "girl_1": { "name": "Girl", "dialog": [ "I got a Pokémon I'd never even seen before! I had no idea what its moves did." ] },
+    "woman_2": { "name": "Woman", "dialog": [ "My husband swears the rentals are random. I swear he just picks badly." ] }
+  },
+  "signs": {
+    "SlateportCity_BattleTentLobby_EventScript_RulesBoard": "Battle Tent Rules\nBorrow three rental Pokémon and win three battles in a row!"
+  }
+}

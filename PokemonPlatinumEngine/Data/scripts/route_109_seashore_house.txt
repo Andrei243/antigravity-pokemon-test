@@ -1,0 +1,27 @@
+# The Seashore House on Route 109 (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/Route109_SeashoreHouse/scripts.inc): its owner gives six Soda Pops to whoever beats the
+# three trainers resting inside (FLAG_RECEIVED_6_SODA_POP), and sells Soda Pop afterwards (marts.json's seashore_house).
+
+
+script Owner
+  face self player
+  speaker "Owner"
+  if flag FLAG_RECEIVED_6_SODA_POP goto Shop
+  if not defeated "hoenn_dwayne" goto Challenge
+  if not defeated "hoenn_simon" goto Challenge
+  if not defeated "hoenn_johanna" goto Challenge
+  say "You beat every trainer in my house? Now that's the hottest thing I've seen all summer!"
+  say "Here, have a cold drink on me. Have six, actually!"
+  give "Soda Pop" 6
+  setflag FLAG_RECEIVED_6_SODA_POP
+  say "If you want more, I'll sell you some. Just come and ask."
+  end
+label Challenge
+  say "Welcome to the Seashore House! The trainers in here are hot to battle."
+  say "Beat all of them, and I'll treat you to something cool to drink."
+  end
+label Shop
+  say "Want a Soda Pop? Nothing beats the heat like a fizzy drink!"
+  shop "seashore_house"
+  say "Come back whenever you're thirsty!"
+  end

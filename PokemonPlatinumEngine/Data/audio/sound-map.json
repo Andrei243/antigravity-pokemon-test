@@ -105,7 +105,11 @@
     "Rocker": "fun",
     "Cooltrainer": "ace",
     "Crush Kin": "fighter",
-    "Tamer": "fighter"
+    "Tamer": "fighter",
+    "Tuber M": "kid",
+    "Tuber F": "kid",
+    "Sis And Bro": "sport",
+    "Triathlete": "sport"
   },
   "battleThemes": {
     "Leader": "gym",

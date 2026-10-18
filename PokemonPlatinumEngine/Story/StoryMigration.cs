@@ -108,6 +108,9 @@ public static class StoryMigration
         // Version 25: Johto's second chapter (plan 20 · J7): its people are hidden until their scenes by
         // common.JohtoChapterTwo, which a new game runs too (the strange tree on Route 36 stands again in the way it kept)
         if (savedVersion < 25) Run(story, scripts, "common.JohtoChapterTwo");
+        // Version 26: Hoenn's third stretch (plan 21 · H3): the people of Dewford Town to Slateport City are hidden until
+        // their scenes by common.HoennChapterThree, which a new game runs too
+        if (savedVersion < 26) Run(story, scripts, "common.HoennChapterThree");
     }
 
     /// <summary>

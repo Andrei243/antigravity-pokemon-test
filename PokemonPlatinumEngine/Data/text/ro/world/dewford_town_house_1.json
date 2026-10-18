@@ -1,0 +1,51 @@
+{
+  "people": {
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband and I moved here from the big city. The quiet took some getting used to."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Life on an island is simple. Fish, sun and sea. What more could anyone want?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "zigzagoon_2": {
+      "name": {
+        "en": [
+          "Zigzagoon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

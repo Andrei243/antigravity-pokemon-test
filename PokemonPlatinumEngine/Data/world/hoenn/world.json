@@ -54,7 +54,32 @@
     { "name": "RustboroCity_House3", "matrix": 98, "area": "rustboro_city_house_3", "trees": "Round", "setting": "Indoors" },
     { "name": "Route104_MrBrineysHouse", "matrix": 175, "area": "route_104_mr_brineys_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Route104_PrettyPetalFlowerShop", "matrix": 176, "area": "route_104_pretty_petal_flower_shop", "trees": "Round", "setting": "Indoors" },
-    { "name": "Route116_TunnelersRestHouse", "matrix": 184, "area": "route_116_tunnelers_rest_house", "trees": "Round", "setting": "Indoors" }
+    { "name": "Route116_TunnelersRestHouse", "matrix": 184, "area": "route_116_tunnelers_rest_house", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H3: Dewford Town's rooms and Granite Cave, Route 109's seashore house and Slateport City's rooms (its
+    // Battle Tent's lobby alone: the corridor and the battle room wait for the Tent's bouts)
+    { "name": "DewfordTown_House1", "matrix": 16, "area": "dewford_town_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "DewfordTown_PokemonCenter_1F", "matrix": 17, "area": "dewford_town_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "DewfordTown_PokemonCenter_2F", "matrix": 18, "area": "dewford_town_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "DewfordTown_Gym", "matrix": 19, "area": "dewford_town_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "DewfordTown_Hall", "matrix": 20, "area": "dewford_town_hall", "trees": "Round", "setting": "Indoors" },
+    { "name": "DewfordTown_House2", "matrix": 21, "area": "dewford_town_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "GraniteCave_1F", "matrix": 194, "area": "granite_cave_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "GraniteCave_B1F", "matrix": 195, "area": "granite_cave_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "GraniteCave_B2F", "matrix": 196, "area": "granite_cave_b2f", "trees": "Round", "setting": "Cave" },
+    { "name": "GraniteCave_StevensRoom", "matrix": 197, "area": "granite_cave_stevens_room", "trees": "Round", "setting": "Cave" },
+    { "name": "Route109_SeashoreHouse", "matrix": 441, "area": "route_109_seashore_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_SternsShipyard_1F", "matrix": 60, "area": "slateport_city_sterns_shipyard_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_SternsShipyard_2F", "matrix": 61, "area": "slateport_city_sterns_shipyard_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_BattleTentLobby", "matrix": 62, "area": "slateport_city_battle_tent_lobby", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_NameRatersHouse", "matrix": 65, "area": "slateport_city_name_raters_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_PokemonFanClub", "matrix": 66, "area": "slateport_city_pokemon_fan_club", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_OceanicMuseum_1F", "matrix": 67, "area": "slateport_city_oceanic_museum_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_OceanicMuseum_2F", "matrix": 68, "area": "slateport_city_oceanic_museum_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_Harbor", "matrix": 69, "area": "slateport_city_harbor", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_House", "matrix": 70, "area": "slateport_city_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_PokemonCenter_1F", "matrix": 71, "area": "slateport_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_PokemonCenter_2F", "matrix": 72, "area": "slateport_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SlateportCity_Mart", "matrix": 73, "area": "slateport_city_mart", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -71,6 +96,16 @@
     "rustboro_city_devon_corp_1f", "rustboro_city_devon_corp_2f", "rustboro_city_devon_corp_3f", "rustboro_city_gym", "rustboro_city_pokemon_school",
     "rustboro_city_pokemon_center_1f", "rustboro_city_pokemon_center_2f", "rustboro_city_mart", "rustboro_city_flat_1_1f", "rustboro_city_flat_1_2f",
     "rustboro_city_house_1", "rustboro_city_cutters_house", "rustboro_city_house_2", "rustboro_city_flat_2_1f", "rustboro_city_flat_2_2f",
-    "rustboro_city_flat_2_3f", "rustboro_city_house_3", "route_104_mr_brineys_house", "route_104_pretty_petal_flower_shop", "route_116_tunnelers_rest_house"
+    "rustboro_city_flat_2_3f", "rustboro_city_house_3", "route_104_mr_brineys_house", "route_104_pretty_petal_flower_shop", "route_116_tunnelers_rest_house",
+    // Plan 21 · H3, part a: Mr. Briney's waters, Routes 105 to 109, Dewford Town and Granite Cave, Slateport City, with their rooms
+    "route_105", "route_106", "route_107", "route_108", "route_109", "dewford_town", "slateport_city",
+    "dewford_town_house_1", "dewford_town_pokemon_center_1f", "dewford_town_pokemon_center_2f", "dewford_town_gym",
+    "dewford_town_hall", "dewford_town_house_2",
+    "granite_cave_1f", "granite_cave_b1f", "granite_cave_b2f", "granite_cave_stevens_room",
+    "route_109_seashore_house",
+    "slateport_city_sterns_shipyard_1f", "slateport_city_sterns_shipyard_2f", "slateport_city_battle_tent_lobby",
+    "slateport_city_name_raters_house", "slateport_city_pokemon_fan_club", "slateport_city_oceanic_museum_1f",
+    "slateport_city_oceanic_museum_2f", "slateport_city_harbor", "slateport_city_house",
+    "slateport_city_pokemon_center_1f", "slateport_city_pokemon_center_2f", "slateport_city_mart"
   ]
 }

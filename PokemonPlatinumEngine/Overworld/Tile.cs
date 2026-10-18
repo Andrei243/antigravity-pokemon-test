@@ -231,7 +231,11 @@ public enum Architecture
     /// <summary>Plaster under ochre hip roofs with a chimney: the quiet city of the Gym by the pond (Petalburg, plan 21 · H1).</summary>
     Parkside,
     /// <summary>Pale cut stone under brick-red gable roofs with a chimney: the stone city of Devon and the school (Rustboro, plan 21 · H2, part b).</summary>
-    Quarry
+    Quarry,
+    /// <summary>Weathered boards under straw hip roofs with shutters: the fishermen's island of sand (Dewford, plan 21 · H3).</summary>
+    Islet,
+    /// <summary>Stucco under sea-teal gable roofs with shutters and flower boxes: the busy port of the market and the museum (Slateport, plan 21 · H3).</summary>
+    Wharf
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

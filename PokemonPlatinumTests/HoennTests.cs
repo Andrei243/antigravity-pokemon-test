@@ -116,7 +116,10 @@ public class HoennTests
         foreach (var room in BuiltMaps.Value.Values.Where(m => m.IsIndoors))
             foreach (var warp in room.Warps.Where(w => w.TargetMap == "Hoenn"))
             {
-                Assert.True(Overworld.IsWalkable(warp.TargetX, warp.TargetY) || Overworld.GetWarpAt(warp.TargetX, warp.TargetY) != null,
+                // (someone of the story may stand on it for a while: Team Aqua queues at the Oceanic Museum's door until
+                // the shipyard sends them in, plan 21 · H3, and nobody comes out of the museum before then)
+                Assert.True(Overworld.IsWalkable(warp.TargetX, warp.TargetY) || Overworld.GetWarpAt(warp.TargetX, warp.TargetY) != null
+                    || (!Overworld.IsSolid(warp.TargetX, warp.TargetY) && Overworld.GetNpcAt(warp.TargetX, warp.TargetY) is { HiddenBy: not null }),
                     $"{room.Name}'s way out lands on {warp.TargetX},{warp.TargetY}, which is shut");
                 Assert.Contains(Overworld.Warps, w => w.TargetMap == room.Name);
             }

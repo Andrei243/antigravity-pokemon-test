@@ -52,6 +52,10 @@
   "spawns": [
     { "id": 12, "area": "littleroot_town", "x": 125, "y": 291, "room": "LittlerootTown_BrendansHouse_1F" },
     { "id": 14, "area": "oldale_town", "x": 126, "y": 259, "room": "OldaleTown_PokemonCenter_1F" },
-    { "id": 3, "area": "petalburg_city", "x": 60, "y": 249, "room": "PetalburgCity_PokemonCenter_1F" }
+    { "id": 3, "area": "petalburg_city", "x": 60, "y": 249, "room": "PetalburgCity_PokemonCenter_1F" },
+    // Plan 21 · H3: Rustboro's (open since H2, part b), Dewford's and Slateport's
+    { "id": 6, "area": "rustboro_city", "x": 16, "y": 161, "room": "RustboroCity_PokemonCenter_1F" },
+    { "id": 15, "area": "dewford_town", "x": 62, "y": 373, "room": "DewfordTown_PokemonCenter_1F" },
+    { "id": 4, "area": "slateport_city", "x": 219, "y": 280, "room": "SlateportCity_PokemonCenter_1F" }
   ]
 }

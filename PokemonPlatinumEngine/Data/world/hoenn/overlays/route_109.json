@@ -1,0 +1,37 @@
+{
+  // Route 109 (plan 21 · H3): Slateport City's beach and the sea south of it, where Mr. Briney moors his boat once he has
+  // brought the player from Dewford (route_109.txt), with the Seashore House on the sand and children everywhere
+  "area": "route_109",
+  "bgmTrack": "hoenn/route104",
+  "trees": "Round",
+  "people": {
+    "route109_briney": { "name": "Mr. Briney", "npcType": "briney", "script": "Briney", "still": true },
+    "swimmer_m": { "name": "David", "trainer": { "dialogueBefore": "Swimmer David: The beach is for kids. Real swimmers battle out here!", "dialogueAfter": "Swimmer David: Maybe I'll go back to the beach." } },
+    "swimmer_f": { "name": "Alice", "trainer": { "dialogueBefore": "Swimmer Alice: I swim here every summer. Every summer, I win!", "dialogueAfter": "Swimmer Alice: Not this summer, apparently." } },
+    "sailor": { "name": "Huey", "trainer": { "dialogueBefore": "Sailor Huey: My shore leave's almost over. One quick battle before I sail!", "dialogueAfter": "Sailor Huey: Back to the ship with my tail between my legs." } },
+    "sailor_2": { "name": "Edmond", "trainer": { "dialogueBefore": "Sailor Edmond: I've sailed all seven seas. Well, three of them. Battle!", "dialogueAfter": "Sailor Edmond: Make that three seas and one loss." } },
+    "tuber_m": { "name": "Ricky", "script": "Ricky", "trainer": { "dialogueBefore": "Tuber Ricky: I can't swim yet, but I can battle!", "dialogueAfter": "Tuber Ricky: I'll learn to swim AND battle. Just wait!" } },
+    "tuber_f": { "name": "Lola", "script": "Lola", "trainer": { "dialogueBefore": "Tuber Lola: My Azurill and me are floating all day! Wanna play?", "dialogueAfter": "Tuber Lola: That wasn't the game I wanted to play..." } },
+    "tuber_f_2": { "name": "Gwen", "trainer": { "dialogueBefore": "Tuber Gwen: Splash! I'm out here where it's deep. Brave, huh?", "dialogueAfter": "Tuber Gwen: Brave, but beaten." } },
+    "tuber_f_3": { "name": "Austina", "trainer": { "dialogueBefore": "Tuber Austina: My Marill and I swim together everywhere!", "dialogueAfter": "Tuber Austina: Marill, let's paddle home." } },
+    "fisherman": { "name": "Carter", "trainer": { "dialogueBefore": "Fisherman Carter: Hooked a trainer! Let's reel in a battle!", "dialogueAfter": "Fisherman Carter: The one that got away..." } },
+    "woman_4": { "name": "Mel & Paul", "trainer": { "dialogueBefore": "Young Couple Mel & Paul: We came here on our honeymoon. Let's battle together, dear!", "dialogueAfter": "Young Couple Mel & Paul: We lost together. That's love, I suppose." } },
+    "man_4": { "name": "Mel & Paul", "trainer": { "dialogueBefore": "Young Couple Mel & Paul: Two hearts, one team! Ready?", "dialogueAfter": "Young Couple Mel & Paul: At least we have each other." } },
+    "tuber_f_5": { "name": "Hailey", "trainer": { "dialogueBefore": "Tuber Hailey: I'm building a sandcastle! Battle me while it dries!", "dialogueAfter": "Tuber Hailey: My castle is still better than yours." } },
+    "tuber_m_3": { "name": "Chandler", "trainer": { "dialogueBefore": "Tuber Chandler: Two Tentacool! I found them in the shallows!", "dialogueAfter": "Tuber Chandler: Put them back where you found them, Mum says." } },
+    "man_5": { "name": "Elijah", "trainer": { "dialogueBefore": "Bird Keeper Elijah: My Skarmory soar over the waves. Look up!", "dialogueAfter": "Bird Keeper Elijah: Grounded." } },
+    "little_girl": { "name": "Little Girl", "dialog": [ "That's my papa's Seashore House! Go inside and cool off. Everybody does!" ] },
+    "tuber_m_2": { "name": "Boy", "script": "SandCastleBoy" },
+    "tuber_f_4": { "name": "Girl", "script": "SoftSandGirl" },
+    "pokefan_f": { "name": "Woman", "dialog": [ "The little ones dart all over the beach. I can't take my eyes off them for a moment!" ] },
+    "old_man": { "name": "Old Man", "dialog": [ "My Zigzagoon picks up the litter folk leave on the sand. A clean beach for everyone!" ] },
+    "zigzagoon_2": { "name": "Zigzagoon", "script": "Zigzagoon" }
+  },
+  "signs": {
+    "Route109_EventScript_SeashoreHouseSign": "Seashore House\nMay the sea's power fill you!",
+    "Route109_EventScript_TrainerTipsSign": "Trainer Tips\nKids on the beach can be trainers too. Watch where you walk!"
+  },
+  // Mr. Briney's boat, moored where the sand runs out into the sea (Emerald's own boat is an object of his; ours lies
+  // at each of his three moorings)
+  "props": [ { "type": "Boat", "x": 220, "y": 345, "width": 3, "depth": 2 } ]
+}

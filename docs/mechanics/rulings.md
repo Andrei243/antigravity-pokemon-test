@@ -2847,6 +2847,45 @@ Route 104 to Rusturf Tunnel is scripts of ours on Emerald's beats (`petalburg_wo
 - **Still to come in H2**: Route 104, Petalburg Woods and its grunt, Rustboro City, Roxanne and the Stone Badge, Rusturf
   Tunnel and the Devon Goods, and Mr. Stone's PokéNav.
 
+## Mr. Briney's waters, Dewford and Slateport (2026-10-18, plan 21 · H3, its first part)
+
+Mr. Briney's boat to Slateport's museum is scripts of ours on Emerald's beats (`route_104_mr_brineys_house.txt`,
+`dewford_town.txt`, `dewford_town_gym.txt`, `dewford_town_hall.txt`, `dewford_town_house_1.txt`, `_2.txt`,
+`granite_cave_1f.txt`, `granite_cave_stevens_room.txt`, `route_109.txt`, `route_109_seashore_house.txt`,
+`slateport_city.txt`, `slateport_city_sterns_shipyard_1f.txt`, `slateport_city_oceanic_museum_1f.txt`, `_2f.txt`,
+`slateport_city_pokemon_fan_club.txt`), under Emerald's flags and variables (`VAR_BRINEY_LOCATION` with Emerald's
+numbers, 1 the cottage, 2 Dewford, 3 Route 109; `FLAG_MR_BRINEY_SAILING_INTRO`, `FLAG_DELIVERED_STEVEN_LETTER`,
+`FLAG_BADGE02_GET` through `givebadge knuckle`, `FLAG_DEFEATED_DEWFORD_GYM`, `FLAG_DOCK_REJECTED_DEVON_GOODS`,
+`FLAG_DELIVERED_DEVON_GOODS`, `VAR_SLATEPORT_MUSEUM_1F_STATE`, `VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE`). What differs, and why:
+
+- **The boat** doesn't move: Emerald slides the boat and the player across the sea tile by tile, which the field can't
+  do for a boat (only a surfer crosses water). The voyage is a scene: out of the cottage to the jetty, the sailing song,
+  the cinema bars and the camera travelling over the sea of Routes 105 and 106 (or 107 and 108), then the far jetty.
+  A boat of ours (`PropType.Boat`, an open hull) lies at each of Mr. Briney's three moorings, whether he is there or not.
+- **Where he sails**: from the cottage only to Dewford; from Dewford back to the cottage, and to Slateport's beach once
+  Steven has his letter (Emerald's own rule); from Route 109 back to Dewford. Emerald's call from Dad on the first
+  voyage is left out: Norman has no number yet.
+- **Brawly's Gym** is dark by its own light, not a cave's: every trainer of the six beaten widens the circle the player
+  sees by Emerald's flash levels (`Overworld/DewfordLights.cs`, `sFlashLevelToRadius`), and Brawly's defeat lights the
+  hall. Flash does nothing there, as in Emerald.
+- **Flash** is TM70 from the hiker at Granite Cave's mouth, as Kanto's aide gives it: Emerald's HM05 is Platinum's Defog.
+- **Steven** asks for the Letter only from someone who carries it, and leaves the way the player came in.
+- **Match Call** gains Steven, Brawly and Scott with their scenes, and Ricky and Lola, the two tubers of Route 109's
+  beach, who ask once beaten. Emerald's other trainers who register, and every rematch, wait for Emerald's table of
+  rematches, which the reader doesn't read yet.
+- **Dewford Hall's** trendy phrase is a word of the week nobody can change (Emerald's Easy Chat has no place here),
+  and the man with TM36 stands there from the start.
+- **The Oceanic Museum**: fifty Poké Dollars at the counter (waved in short of money while carrying the goods, as
+  Emerald does); Team Aqua's grunt from the tunnel gives TM46 and is gone in a fade; upstairs the two grunts' battles
+  one after the other, Archie's warning and the captain's thanks, the team healed. The visitors come back once Team
+  Aqua has gone. Scott meets the player at the door and swaps numbers.
+- **Slateport's market** has the Energy Guru's vitamins; the decoration and doll stalls say their stock hasn't come in
+  (secret bases are plan 21 · H10), and the Battle Tent's lobby is open with its bouts to come.
+- **Granite Cave's cracked floor**, which only the Mach Bike crosses, is a floor like any other until the bikes come.
+- **Still to come in H3**: Route 110 and its Trick House, the Cycling Road, Mauville City, Wattson and the Dynamo Badge,
+  Rydel's two bikes, Route 117, Verdanturf and the three Battle Tents' bouts, Rock Smash for Rusturf Tunnel and the young
+  man's HM04, the rival on Route 110.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

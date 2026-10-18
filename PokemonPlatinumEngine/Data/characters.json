@@ -135,6 +135,17 @@
     // Mr. Briney, the old sailor of Route 104: white hair and a white beard, a navy captain's cap, a striped jersey
     "briney": { "hairColor": "#ececf0", "hat": "Cap", "hatColor": "#2a3460", "hatBand": "#f2f2f6", "top": "#2a3460", "accent": "#f2f2f6", "bottom": "#4a4a5a", "shoes": "#3a2e26", "beard": true, "stripes": true, "build": "Adult", "height": 0.94 },
     // A scientist (plan 02 · S6: Team Galactic's in its Eterna building, the museum's man at the Underground Man's): our own take, short brown hair and a long white lab coat with a blue collar over grey trousers
+    // Plan 21 · H3 (our own takes): Brawly, Dewford's Gym Leader and a surfer: long wavy navy hair, a sky-blue vest over
+    // a white shirt, navy board shorts and bare feet
+    "brawly": { "hairColor": "#2e3c7a", "hair": "Long", "top": "#3c84cc", "accent": "#f2f2f6", "bottom": "#2a3a5c", "shoes": "#e8c4a0", "eyes": "#2e3a5a", "shorts": true, "shortSleeves": true, "build": "Adult", "height": 1.06 },
+    // Steven, the stone collector met in Granite Cave: swept silver-blue hair, a dark suit with a wine-red scarf
+    "steven": { "hairColor": "#a6b4c8", "hair": "Swept", "top": "#2c2e3a", "accent": "#8a2e4a", "bottom": "#2c2e3a", "shoes": "#1e1e24", "eyes": "#4a5a7a", "coat": true, "scarf": true, "build": "Adult", "height": 1.08 },
+    // Captain Stern of Slateport's shipyard: short dark hair and a full beard, a white lab coat with a sea-blue collar
+    "capt_stern": { "hairColor": "#3e3028", "top": "#f0f2f6", "accent": "#3a6a9a", "bottom": "#4a4e5a", "shoes": "#2e2a28", "eyes": "#3a2e28", "beard": true, "coat": true, "build": "Adult", "height": 1.04 },
+    // Archie, the leader of Team Aqua: a black bandana over dark hair, a beard, a dark diver's suit with a gold chain
+    "archie": { "hairColor": "#262028", "hat": "Cap", "hatColor": "#1c1e2a", "hatBand": "#2a5ab0", "top": "#22273a", "accent": "#d8b04a", "bottom": "#22273a", "shoes": "#1a1a20", "eyes": "#2a3a5a", "beard": true, "build": "Adult", "bushyBrows": true, "height": 1.12 },
+    // Scott, who watches trainers: short brown hair, a white shirt open over a blue tee, khaki trousers
+    "scott": { "hairColor": "#5a4230", "top": "#f2f2f6", "accent": "#3a8ac8", "bottom": "#c4ac80", "shoes": "#4a3a2a", "eyes": "#3a2e28", "shortSleeves": true, "build": "Adult", "height": 1.02 },
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
     // Kanto's cast of plan 19 · K5 (our own takes): Lt. Surge, the tallest, spiky pale-gold hair and an olive soldier's vest over a khaki shirt; the
     // S.S. Anne's captain, a white cap with a navy band and a white coat, a moustache; Mr. Fuji, small, short white hair and a long plum robe;
@@ -304,7 +315,6 @@
     "man_4": "Gentleman",
     "man_5": "Youngster",
     "maniac": "Gentleman",
-    "scott": "Gentleman",
     // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
     "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "Gentleman",
     "gsfighter": "Gentleman", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",

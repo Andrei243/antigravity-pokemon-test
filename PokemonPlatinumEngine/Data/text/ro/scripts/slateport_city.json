@@ -1,0 +1,78 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Scott"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you're the one who drove Team Aqua out of the museum! The whole city's talking about it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Scott. I travel all over looking for trainers with real promise. And you might just be one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, let me register you in my PokéNav. I'd like to keep an eye on how you do."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Registered Scott in the PokéNav."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Keep at it, and I'm sure we'll meet again. Take care!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "EnergyGuru": [
+    {
+      "en": [
+        "Energy Guru"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome! I'm the Energy Guru! I sell whatever your Pokémon needs to grow strong!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever your Pokémon need a boost!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

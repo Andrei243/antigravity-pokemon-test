@@ -35,6 +35,8 @@ public class HoennStoryTests
         public PlayerLook Look { get; init; }
         public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
         public bool Impatient { get; init; }
+        /// <summary>How the questions of the scripts to come are answered (left out, the first answer: yes).</summary>
+        public Func<string, IReadOnlyList<string>, int>? Decide { get; set; }
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
         public string Rival => Look == PlayerLook.Girl ? "Brendan" : "May";
@@ -90,7 +92,8 @@ public class HoennStoryTests
 
         public HeadlessScriptHost Talk(string key)
         {
-            var npc = Map.NPCs.First(n => n.Key == key);
+            // (the nearest of that key: the overworld has a fisherman on Route 104 and another in Dewford Town)
+            var npc = Map.NPCs.Where(n => n.Key == key).OrderBy(n => Math.Abs(n.GridX - Tile.X) + Math.Abs(n.GridY - Tile.Y)).First();
             Tile = (npc.GridX, npc.GridY + 1);
             return Play(Scripts.Find(FieldScripts.For(npc)!, npc.ScriptFile ?? Map.ScriptFileAt(npc.GridX, npc.GridY))!, npc);
         }
@@ -114,6 +117,7 @@ public class HoennStoryTests
                 RivalName = Rival,
                 PlayerLook = Look,
                 Fight = _ => Fight,
+                Decide = Decide,
                 NeedsPokemon = true
             };
             var runner = new ScriptRunner(Scripts, host) { Impatient = Impatient };
@@ -642,5 +646,185 @@ public class HoennStoryTests
         Assert.Equal("hoenn/eye_galactic", MusicDirector.Resolve(MusicRole.EyeGalactic, "Hoenn", MusicLibrary.Exists));
         Assert.Equal(MusicRole.BattleGalactic, MusicDirector.BattleRoleOf("Team Aqua"));
         Assert.Equal(MusicRole.EyeGalactic, MusicDirector.EyeRole("Team Aqua"));
+    }
+
+    /// <summary>A game past the second stretch: Peeko safe, the Devon Goods and the Letter in the bag, the PokéNav had.</summary>
+    private static Game PastThePokeNav(int starter, PlayerLook look)
+    {
+        var game = PastWallysCatch(starter, look);
+        game.Story.SetVar("VAR_BRINEY_HOUSE_STATE", 1);
+        game.Story.Set("FLAG_RECOVERED_DEVON_GOODS");
+        game.Story.Set("FLAG_RETURNED_DEVON_GOODS");
+        game.Story.Set(PokeNav.Flag);
+        game.Story.Set(PokeNav.MatchCallFlag);
+        game.Story.GiveBadge(RegionDatabase.Hoenn, "Stone");
+        game.Story.SetVar("VAR_PETALBURG_GYM_STATE", 3);
+        game.Bag.AddItem(ItemDatabase.Get("Letter")!);
+        game.Bag.AddItem(ItemDatabase.Get("Devon Goods")!);
+        return game;
+    }
+
+    [Theory]
+    [InlineData(0, PlayerLook.Boy)]
+    [InlineData(1, PlayerLook.Girl)]
+    [InlineData(2, PlayerLook.Boy)]
+    public void TheThirdStretchPlaysFromBrineysBoatToTheMuseum(int starter, PlayerLook look)
+    {
+        var game = PastThePokeNav(starter, look);
+
+        // Mr. Briney's cottage: asked, he sails to Dewford Town's jetty, where he waits
+        game.Arrive("Route104_MrBrineysHouse", 5, 6);
+        var sail = game.Talk("brineys_house_briney");
+        Assert.Contains(sail.Log, l => l.StartsWith("warp Hoenn 71 371"));
+        Assert.Equal("Hoenn", game.Map.Name);
+        Assert.Equal("dewford_town", game.Map.AreaAt(game.Tile.X, game.Tile.Y)?.Key);
+        Assert.Equal(2, game.Story.Var("VAR_BRINEY_LOCATION"));
+        Assert.True(game.Story.Has("FLAG_VISITED_DEWFORD_TOWN"));
+        Assert.NotNull(game.Present("dewford_briney"));
+
+        // The fisherman's Old Rod, once
+        game.Talk("fisherman");
+        game.Talk("fisherman");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Old Rod")!));
+
+        // Before Steven has the letter, Mr. Briney only offers the way home (answered no)
+        game.Decide = (_, _) => 1;
+        var offer = game.Talk("dewford_briney");
+        game.Decide = null;
+        Assert.DoesNotContain(offer.Log, l => l.StartsWith("warp "));
+
+        // Granite Cave: the hiker's Flash, then Steven takes the Letter, gives TM47, swaps numbers and leaves
+        game.Arrive("GraniteCave_1F", 37, 11);
+        game.Talk("hiker");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM70")!));
+        game.Arrive("GraniteCave_StevensRoom", 7, 4);
+        game.Talk("granite_cave_steven");
+        Assert.True(game.Story.Has("FLAG_DELIVERED_STEVEN_LETTER"));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Letter")!));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM47")!));
+        Assert.Contains(PokeNav.Contacts(game.Story), c => c.Id == "steven");
+        Assert.Null(game.Present("granite_cave_steven"));
+        game.Arrive("GraniteCave_StevensRoom", 7, 4);
+        Assert.Null(game.Present("granite_cave_steven"));
+
+        // Brawly's Gym: dark at first, lighter for each trainer beaten, lit once he is beaten
+        game.Arrive("DewfordTown_Gym", 5, 26);
+        Assert.Equal(7, DewfordLights.LevelFor(game.Story));
+        DewfordLights.Keep(game.Map, game.Story, 0f);
+        Assert.True(game.Map.IsDark);
+        float darkest = game.Map.DarkReach;
+        game.Story.Defeat("hoenn_takao");
+        game.Story.Defeat("hoenn_jocelyn");
+        Assert.Equal(5, DewfordLights.LevelFor(game.Story));
+        DewfordLights.Keep(game.Map, game.Story, 0f);
+        Assert.True(game.Map.DarkReach > darkest);
+        var brawly = game.Talk("brawly");
+        Assert.Contains(brawly.Log, l => l.StartsWith("battle hoenn_brawly_1"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Hoenn, "Knuckle"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM08")!));
+        Assert.Equal(4, game.Story.Var("VAR_PETALBURG_GYM_STATE"));
+        Assert.True(game.Story.HasDefeated("hoenn_lilith"));
+        Assert.Contains(PokeNav.Contacts(game.Story), c => c.Id == "brawly");
+        Assert.Equal(0, DewfordLights.LevelFor(game.Story));
+        DewfordLights.Keep(game.Map, game.Story, 0f);
+        Assert.False(game.Map.IsDark);
+        Assert.Equal("Knuckle", FieldMoveRules.BadgeFor(FieldMove.Flash, RegionDatabase.Hoenn));
+
+        // Back at the jetty: Slateport now, across to Route 109's beach
+        game.Arrive("Hoenn", 70, 371);
+        game.Decide = (_, answers) => answers.ToList().FindIndex(a => a.Contains("Slateport"));
+        var east = game.Talk("dewford_briney");
+        game.Decide = null;
+        Assert.Contains(east.Log, l => l.StartsWith("warp Hoenn 221 343"));
+        Assert.Equal("route_109", game.Map.AreaAt(game.Tile.X, game.Tile.Y)?.Key);
+        Assert.Equal(3, game.Story.Var("VAR_BRINEY_LOCATION"));
+        Assert.NotNull(game.Present("route109_briney"));
+        game.Arrive("Hoenn", 72, 372);
+        Assert.Null(game.Present("dewford_briney"));
+
+        // Slateport: Team Aqua queues at the museum's door until Dock sends the player there
+        game.Arrive("Hoenn", 219, 281);
+        Assert.True(game.Story.Has("FLAG_VISITED_SLATEPORT_CITY"));
+        Assert.NotNull(game.Present("slateport_grunt_1"));
+        game.Arrive("SlateportCity_SternsShipyard_1F", 2, 13);
+        game.Talk("dock");
+        Assert.True(game.Story.Has("FLAG_DOCK_REJECTED_DEVON_GOODS"));
+        game.Arrive("Hoenn", 219, 281);
+        Assert.Null(game.Present("slateport_grunt_1"));
+
+        // The museum: the fee, the familiar grunt's TM46, and upstairs the captain, two grunts, Archie and the goods
+        game.Arrive("SlateportCity_OceanicMuseum_1F", 9, 7);
+        Assert.True(game.Fires("PayEntranceFee"));
+        game.Step("PayEntranceFee");
+        Assert.Equal(1, game.Story.Var("VAR_SLATEPORT_MUSEUM_1F_STATE"));
+        Assert.False(game.Fires("PayEntranceFee"));
+        game.Talk("oceanic_museum_familiar_grunt");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM46")!));
+        game.Arrive("SlateportCity_OceanicMuseum_2F", 6, 2);
+        Assert.Null(game.Present("oceanic_museum_2f_archie"));
+        Assert.Null(game.Present("old_man"));
+        var museum = game.Talk("oceanic_museum_2f_capt_stern");
+        Assert.Contains(museum.Log, l => l.StartsWith("battle hoenn_grunt_museum_1"));
+        Assert.Contains(museum.Log, l => l.StartsWith("battle hoenn_grunt_museum_2"));
+        Assert.True(game.Story.Has("FLAG_DELIVERED_DEVON_GOODS"));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Devon Goods")!));
+        Assert.False(game.Story.Has("FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE"));
+        Assert.Equal(1, game.Story.Var("VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE"));
+        Assert.Null(game.Present("oceanic_museum_2f_capt_stern"));
+        Assert.Null(game.Present("oceanic_museum_2f_grunt_1"));
+        Assert.NotNull(game.Present("old_man"));
+
+        // Out of the door: Scott, and his number
+        game.Arrive("Hoenn", 230, 287);
+        Assert.Equal(2, game.Story.Var("VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE"));
+        Assert.Contains(PokeNav.Contacts(game.Story), c => c.Id == "scott");
+        Assert.Null(game.Present("slateport_scott"));
+
+        // Mr. Briney on the beach sails back to Dewford when asked, the parcel delivered
+        game.Arrive("Hoenn", 221, 343);
+        game.Decide = (_, answers) => answers.ToList().FindIndex(a => a.Contains("Dewford"));
+        var west = game.Talk("route109_briney");
+        game.Decide = null;
+        Assert.Contains(west.Log, l => l.StartsWith("warp Hoenn 71 371"));
+        Assert.Equal(2, game.Story.Var("VAR_BRINEY_LOCATION"));
+
+        // And home again to the cottage from Dewford
+        game.Decide = (_, answers) => answers.ToList().FindIndex(a => a.Contains("104"));
+        game.Talk("dewford_briney");
+        game.Decide = null;
+        Assert.Equal("Route104_MrBrineysHouse", game.Map.Name);
+        Assert.Equal(1, game.Story.Var("VAR_BRINEY_LOCATION"));
+        Assert.NotNull(game.Present("brineys_house_briney"));
+    }
+
+    [Fact]
+    public void TheSeashoreHousesOwnerGivesSodaPopOnceItsTrainersAreBeaten()
+    {
+        var game = PastThePokeNav(0, PlayerLook.Boy);
+        game.Arrive("Route109_SeashoreHouse", 6, 8);
+        game.Talk("pokefan_m");
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Soda Pop")!));
+        foreach (string t in new[] { "hoenn_dwayne", "hoenn_simon", "hoenn_johanna" }) game.Story.Defeat(t);
+        game.Talk("pokefan_m");
+        Assert.Equal(6, game.Bag.GetQuantity(ItemDatabase.Get("Soda Pop")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_6_SODA_POP"));
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheThirdStretchHasItsPeopleHidden()
+    {
+        var story = new StoryState();
+        StoryMigration.Upgrade(story, 24, Array.Empty<Pokemon>(), Scripts);
+        Assert.True(story.Has("FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN"));
+        Assert.True(story.Has("FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE"));
+        Assert.True(story.Has("FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION"));
+        Assert.True(StoryState.CurrentVersion >= 25);
+    }
+
+    [Fact]
+    public void TheSongsOfDewfordAndSlateportAreThere()
+    {
+        foreach (string song in new[] { "hoenn/dewford", "hoenn/slateport", "hoenn/sailing" })
+            Assert.True(MusicLibrary.Exists(song), song);
     }
 }

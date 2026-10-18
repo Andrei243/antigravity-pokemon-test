@@ -1,0 +1,45 @@
+# The Oceanic Museum's ground floor (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SlateportCity_OceanicMuseum_1F/scripts.inc).
+#
+# The counter asks fifty Poké Dollars of whoever steps up to it (the area's two triggers, VAR_SLATEPORT_MUSEUM_1F_STATE
+# 0: Slateport's arrival sets it so every time); short of the money, someone carrying the Devon Goods is waved in as
+# one of "the group" upstairs. The grunt who stole the goods in Rusturf Tunnel remembers the player and hands over
+# TM46, Thief (FLAG_RECEIVED_TM_THIEF), to be rid of them.
+
+
+script PayEntranceFee
+  speaker "Receptionist"
+  ask "Welcome to the Oceanic Museum. The entrance fee is 50 Poké Dollars. Would you like to come in?"
+  if no goto Back
+  takemoney 50
+  if result == 0 goto Short
+  sound "select"
+  say "Thank you. Please enjoy the museum!"
+  setvar VAR_SLATEPORT_MUSEUM_1F_STATE 1
+  end
+label Short
+  if not flag FLAG_DELIVERED_DEVON_GOODS goto Group
+  say "I'm sorry, but you don't have enough money."
+label Back
+  walk player down 1
+  end
+label Group
+  say "Oh, you're with that group that went upstairs? Go right in, then. Hurry, they're waiting!"
+  setvar VAR_SLATEPORT_MUSEUM_1F_STATE 1
+  end
+
+
+script FamiliarGrunt
+  face self player
+  emote self exclaim
+  speaker "Team Aqua Grunt"
+  say "Aaah! It's you, the kid from the tunnel! Don't look at me like that. I'm just a visitor today!"
+  say "Here, take this and forget you ever saw me. Please!"
+  give "TM46"
+  setflag FLAG_RECEIVED_TM_THIEF
+  say "Now leave me alone! I hope I never see you again!"
+  fade out 0.3
+  hide oceanic_museum_familiar_grunt
+  fade in
+  setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_FAMILIAR_AQUA_GRUNT
+  end

@@ -1,0 +1,39 @@
+# Dewford Town (and its hall and houses, and Route 109's seashore house, as Emerald shares the theme): a small island
+# of fishermen and sand, an unhurried marimba tune in F over a strummed guitar and a soft hand drum. Original
+# composition for this game (plan 21 · H3).
+title Dewford Town
+tempo 100
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+
+track lead marimba night=vibraphone vol=0.7 pan=0.05 rev=0.3
+  L o5 c4 f8 a8 o6 c4 o5 a4 | o5 d4 f8 a8 f4 d4 | o5 d4 f8 b-8 o6 d4 o5 b-4 | o5 e4 g8 o6 c8 o5 g2 |
+  o5 f4 a8 o6 c8 f4 c4 | o5 e4 a8 o6 c8 o5 a4 e4 | o5 f4 b-8 o6 d8 o5 b-4 f4 | o5 g2 e4 c4 |
+  o5 a4 f8 d8 f4 a4 | o5 b-4 o6 d8 f8 d4 o5 b-4 | o5 a4 o6 c8 f8 c4 o5 a4 | o5 g4 e8 c8 e4 g4 |
+  o5 f4 d8 f8 b-4 f4 | o5 e4 g8 o6 c8 e4 o5 g4 | o5 f4 a8 o6 c8 o5 a4 f4 | o5 f2. r4 |
+
+track strum guitar night=harp vol=0.34 pan=-0.3 rev=0.3
+  L o4 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 |
+  r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 | r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 |
+  r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (e a >c)8 r8 (e a >c)8 r8 (e a >c)8 r8 (e a >c)8 |
+  r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 | r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 |
+  r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 | r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 |
+  r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 |
+  r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 | r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 r8 (e g >c)8 |
+  r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (f a >c)8 r8 (f a >c)8 (f a >c)2 |
+
+track pad strings night=pad vol=0.22 pan=0.25 rev=0.45
+  L o4 (f a >c)1 | (d f a)1 | (d f b-)1 | (e g >c)1 |
+  (f a >c)1 | (e a >c)1 | (d f b-)1 | (e g >c)1 |
+  (d f a)1 | (d f b-)1 | (f a >c)1 | (e g >c)1 |
+  (d f b-)1 | (e g >c)1 | (f a >c)1 | (f a >c)1 |
+
+track bass bass vol=0.6 rev=0.1
+  L o2 f4. f8 o3 c4 o2 f4 | o2 d4. d8 a4 d4 | o2 b-4. b-8 o3 f4 o2 b-4 | o2 c4. c8 g4 c4 |
+  o2 f4. f8 o3 c4 o2 f4 | o2 a4. a8 e4 a4 | o2 b-4. b-8 o3 f4 o2 b-4 | o2 c4. c8 g4 c4 |
+  o2 d4. d8 a4 d4 | o2 b-4. b-8 o3 f4 o2 b-4 | o2 f4. f8 o3 c4 o2 f4 | o2 c4. c8 g4 c4 |
+  o2 b-4. b-8 o3 f4 o2 b-4 | o2 c4. c8 g4 c4 | o2 f4. f8 o3 c4 o2 f4 | o2 f4 o3 c4 o2 f2 |
+
+track drums kit vol=0.36 rev=0.16
+  v84 L [ [ b4 k8 k8 t8 k8 k4 | ]7 b4 k8 k8 t8 t8 m4 | ]2

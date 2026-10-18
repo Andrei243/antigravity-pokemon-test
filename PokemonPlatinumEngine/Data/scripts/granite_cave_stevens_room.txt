@@ -1,0 +1,38 @@
+# The room at the end of Granite Cave (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/GraniteCave_StevensRoom/scripts.inc).
+#
+# Steven, the son of Devon's president, takes his father's Letter (FLAG_DELIVERED_STEVEN_LETTER), gives TM47, Steel
+# Wing, swaps numbers for the PokéNav's Match Call (FLAG_REGISTERED_STEVEN_POKENAV) and leaves by the way in, for good
+# (FLAG_HIDE_GRANITE_CAVE_STEVEN).
+
+
+script Steven
+  face self player
+  speaker "Steven"
+  if not item "Letter" goto Stranger
+  scene "Steven's letter"
+  say "My name is Steven. I'm interested in rare stones, so I travel here and there looking for them."
+  say "Oh? A letter for me? From my father, it seems... Thank you for bringing it all this way."
+  take "Letter"
+  text "{player} handed over the Letter."
+  setflag FLAG_DELIVERED_STEVEN_LETTER
+  say "This is a thank-you for your trouble. It's a TM I'm rather fond of."
+  give "TM47"
+  say "Your Pokémon seem to trust you a great deal. You might even become the Champion one day."
+  say "Let's register each other in our PokéNavs, so we can keep in touch."
+  addcontact steven
+  text "Registered Steven in the PokéNav."
+  say "I'm afraid I have to hurry along now. I'm sure we'll meet again."
+  if var PLAYER_Y < 8 goto Around
+  walk granite_cave_steven up 5
+  goto Gone
+label Around
+  walk granite_cave_steven left 1 up 4 right 1 up 1
+label Gone
+  hide granite_cave_steven
+  setflag FLAG_HIDE_GRANITE_CAVE_STEVEN
+  endscene
+  end
+label Stranger
+  say "Hello. I'm Steven. I came here looking for rare stones. Did you come for the same thing?"
+  end

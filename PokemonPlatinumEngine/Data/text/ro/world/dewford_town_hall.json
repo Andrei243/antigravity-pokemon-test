@@ -1,0 +1,176 @@
+{
+  "people": {
+    "girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everyone in Dewford talks about whatever's trendy. This week it's all about fishing!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come here for the latest gossip. Did you hear about the old sailor and his boat?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Words go out of fashion faster than clothes around here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dewford_hall_expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I was young, the trendy word was 'excellent'. Now nobody says it. Excellent!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dewford_hall_twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I made up a new word today, but nobody's using it yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm gonna be the trendiest kid on the whole island!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dewford_hall_school_kid_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're arguing about which word is cooler. He's wrong, obviously."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dewford_hall_psychic_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He's the one who's wrong. My word is way cooler."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "DewfordTown_Hall_EventScript_Bookshelf": {
+      "en": [
+        "A shelf of magazines full of the latest trends. Most of them look out of date already."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "DewfordTown_Hall_EventScript_Painting": {
+      "en": [
+        "A painting of Dewford Town's harbour at sunset."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

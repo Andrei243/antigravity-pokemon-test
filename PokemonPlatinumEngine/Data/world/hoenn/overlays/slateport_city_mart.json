@@ -1,0 +1,10 @@
+{
+  // Slateport City's Poké Mart (plan 21 · H3)
+  "area": "slateport_city_mart",
+  "bgmTrack": "hoenn/slateport",
+  "people": {
+    "slateport_mart_clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! What can I get for you?" ] },
+    "black_belt": { "name": "Black Belt", "dialog": [ "A Great Ball for a tough Pokémon. Never leave the city without a few." ] },
+    "man_3": { "name": "Man", "dialog": [ "The market outside sells things you won't find in here. Have a look around!" ] }
+  }
+}

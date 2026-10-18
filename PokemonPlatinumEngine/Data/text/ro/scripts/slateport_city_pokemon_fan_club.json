@@ -1,0 +1,74 @@
+{
+  "SootheBellWoman": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon could be a little closer to you. Spend time together, and it'll grow fond of you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, your Pokémon adores you! I can tell just by looking. You deserve this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that holds the Soothe Bell grows fond of its trainer even faster."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Is the Soothe Bell ringing for your Pokémon? Its sound is so calming."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Zigzagoon": [
+    {
+      "en": [
+        "Zigzagoon: Gugugu!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Skitty": [
+    {
+      "en": [
+        "Skitty: Nyaa!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Azumarill": [
+    {
+      "en": [
+        "Azumarill: Marimari!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

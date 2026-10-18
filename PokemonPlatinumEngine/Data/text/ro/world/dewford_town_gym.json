@@ -1,0 +1,198 @@
+{
+  "people": {
+    "brawly": {
+      "name": {
+        "en": [
+          "Brawly"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Takao"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Takao: Can you even see me in the dark? My fists can see you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Takao: The light's a little brighter now. For you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Jocelyn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Jocelyn: No need to see. Just feel the punch coming!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Jocelyn: I felt that one coming. Too late."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3_2": {
+      "name": {
+        "en": [
+          "Laura"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Laura: Don't be scared of the dark. Be scared of me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Laura: Now I'm the one who's scared."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Cristian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Cristian: Brawly trains us in the dark to sharpen our senses. Hyah!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Cristian: My senses were too dull."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3_3": {
+      "name": {
+        "en": [
+          "Lilith"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Lilith: You found me! Now let's see if you can beat me."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Lilith: Go on, the Leader's waiting. The way's lighter now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Brenden"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Brenden: I sailed here to train under Brawly. Show me what you've got!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Brenden: I've still got a lot of training to do."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "DewfordTown_Gym_EventScript_LeftGymStatue": {
+      "en": [
+        "Dewford Town Pokémon Gym\nLeader: Brawly"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "DewfordTown_Gym_EventScript_RightGymStatue": {
+      "en": [
+        "Dewford Town Pokémon Gym\nLeader: Brawly"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

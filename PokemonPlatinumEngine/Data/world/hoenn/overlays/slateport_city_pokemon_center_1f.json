@@ -1,0 +1,10 @@
+{
+  // Slateport City's Pokémon Center (plan 21 · H3), its floor as Emerald lays it out
+  "area": "slateport_city_pokemon_center_1f",
+  "bgmTrack": "hoenn/slateport",
+  "people": {
+    "slateport_nurse": { "name": "Nurse", "script": "Nurse" },
+    "sailor": { "name": "Sailor", "dialog": [ "Ah, the Pokémon Center. The one place every sailor visits before the tavern." ] },
+    "woman_5": { "name": "Woman", "dialog": [ "Mr. Briney brought you here? He hasn't sailed in years. You must be someone special." ] }
+  }
+}

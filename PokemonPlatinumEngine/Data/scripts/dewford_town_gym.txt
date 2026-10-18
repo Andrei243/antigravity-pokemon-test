@@ -1,0 +1,58 @@
+# Dewford Town's Gym (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/DewfordTown_Gym/scripts.inc).
+#
+# The hall is dark, and grows lighter with each of its six trainers beaten (Overworld/DewfordLights.cs, Emerald's
+# flash levels). Brawly battles for the Knuckle Badge (FLAG_BADGE02_GET, `givebadge knuckle`), which lights the hall
+# (FLAG_DEFEATED_DEWFORD_GYM) and lets Flash be used outside battle, and gives TM08, Bulk Up (FLAG_RECEIVED_TM_BULK_UP).
+# His Badge counts the Gym's trainers beaten and adds one to Petalburg's count of Badges (VAR_PETALBURG_GYM_STATE).
+
+
+script Brawly
+  face brawly player
+  speaker "Brawly"
+  if badge knuckle goto Won
+  scene "Brawly"
+  say "I'm Brawly! Dewford's Gym Leader. I've been riding the big waves out there, and they've made me tough."
+  say "Training in the dark sharpens every sense. Let's see if you can keep your head above water. Here I come!"
+  battle self as "hoenn_brawly_1"
+  say "Whoa, you knocked me right off my board! You've got some real power."
+  say "Here, this is the Knuckle Badge. You've earned it, no question."
+  givebadge knuckle
+  text "{player} received the Knuckle Badge from Brawly!"
+  say "With the Knuckle Badge, your Pokémon can use Flash outside of battle to light up dark places."
+  setflag FLAG_DEFEATED_DEWFORD_GYM
+  addvar VAR_PETALBURG_GYM_STATE 1
+  defeat "hoenn_takao"
+  defeat "hoenn_jocelyn"
+  defeat "hoenn_laura"
+  defeat "hoenn_brenden"
+  defeat "hoenn_cristian"
+  defeat "hoenn_lilith"
+  if not flag FLAG_SYS_POKENAV_GET goto Tm
+  say "You've got a PokéNav? Let's swap numbers. I'll let you know when the surf's up!"
+  addcontact brawly
+  text "Registered Brawly in the PokéNav."
+label Tm
+  say "Take this too. It's a move I swear by."
+  give "TM08"
+  setflag FLAG_RECEIVED_TM_BULK_UP
+  say "TM08 holds Bulk Up. It pumps up your Pokémon's Attack and Defense at the same time."
+  say "There's a whole sea of trainers out there. Ride every wave you can!"
+  endscene
+  end
+label Won
+  if not flag FLAG_RECEIVED_TM_BULK_UP goto Tm
+  say "I'm going to get back out on the water and train harder. Next time, I won't wipe out so easily!"
+  end
+
+
+# The guide by the door: advice before the Badge, praise after
+script GymGuide
+  speaker "Gym Guide"
+  if flag FLAG_DEFEATED_DEWFORD_GYM goto Won
+  say "Hey, rookie! It's dark in here, isn't it? Every trainer you beat makes the hall a little brighter."
+  say "Brawly's Pokémon are Fighting types. Flying and Psychic moves will hit them hard!"
+  end
+label Won
+  say "You beat Brawly! Now the whole hall's lit up. That was some battle!"
+  end

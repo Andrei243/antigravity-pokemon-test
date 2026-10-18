@@ -1,0 +1,10 @@
+{
+  // Granite Cave (plan 21 · H3), in the rock west of Dewford Town, entered from Route 106's beach. The hiker by the
+  // mouth gives HM05 (granite_cave_1f.txt); its floors below are dark until Flash, and Steven waits in the room at the
+  // far end of this floor (granite_cave_stevens_room.txt)
+  "area": "granite_cave_1f",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "people": {
+    "hiker": { "name": "Hiker", "script": "Hiker" }
+  }
+}

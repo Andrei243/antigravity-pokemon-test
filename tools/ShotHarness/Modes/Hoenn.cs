@@ -57,11 +57,31 @@ partial class Harness
             ("h30_brineys_cottage", "Route104_MrBrineysHouse", 5, 6, Direction.Up),
             ("h31_flower_shop", "Route104_PrettyPetalFlowerShop", 4, 6, Direction.Up),
             ("h32_rustboro_center", "RustboroCity_PokemonCenter_1F", 7, 6, Direction.Up),
+            // Plan 21 · H3, part a: Mr. Briney's jetties, Dewford Town and Granite Cave, Route 109's beach and Slateport City,
+            // and their rooms
+            ("h33_brineys_jetty", "Hoenn", 13, 233, Direction.Left),
+            ("h34_dewford_town", "Hoenn", 66, 373, Direction.Up),
+            ("h35_dewford_jetty", "Hoenn", 70, 371, Direction.Right),
+            ("h36_route106_beach", "Hoenn", 51, 357, Direction.Left),
+            ("h37_granite_cave", "GraniteCave_1F", 36, 11, Direction.Up),
+            ("h38_granite_cave_b1f", "GraniteCave_B1F", 25, 14, Direction.Up),
+            ("h39_stevens_room", "GraniteCave_StevensRoom", 7, 5, Direction.Down),
+            ("h40_dewford_gym", "DewfordTown_Gym", 5, 25, Direction.Up),
+            ("h41_dewford_hall", "DewfordTown_Hall", 5, 7, Direction.Up),
+            ("h42_route109_beach", "Hoenn", 221, 340, Direction.Up),
+            ("h43_slateport_city", "Hoenn", 219, 283, Direction.Up),
+            ("h44_slateport_market", "Hoenn", 210, 305, Direction.Up),
+            ("h45_oceanic_museum", "SlateportCity_OceanicMuseum_1F", 9, 6, Direction.Up),
+            ("h46_museum_upstairs", "SlateportCity_OceanicMuseum_2F", 8, 4, Direction.Down),
+            ("h47_sterns_shipyard", "SlateportCity_SternsShipyard_1F", 3, 12, Direction.Up),
+            ("h48_seashore_house", "Route109_SeashoreHouse", 6, 8, Direction.Up),
+            ("h49_slateport_harbour", "SlateportCity_Harbor", 11, 13, Direction.Up),
+            ("h50_dewford_center", "DewfordTown_PokemonCenter_1F", 7, 6, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -70,6 +90,8 @@ partial class Harness
         At("Hoenn", 130, 272, Direction.Up); Frames(2); Shot("h04_route101_night");
         At("Hoenn", 130, 252, Direction.Up); Frames(2); Shot("h06_oldale_night");
         At("Hoenn", 56, 247, Direction.Up); Frames(2); Shot("h10_petalburg_night");
+        At("Hoenn", 66, 373, Direction.Up); Frames(2); Shot("h51_dewford_night");
+        At("Hoenn", 219, 283, Direction.Up); Frames(2); Shot("h52_slateport_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

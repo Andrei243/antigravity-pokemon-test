@@ -1,0 +1,86 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Dewford's a tiny island, but everyone knows everyone. We look after each other here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dewford_briney": {
+      "name": {
+        "en": [
+          "Mr. Briney"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "DewfordTown_EventScript_TownSign": {
+      "en": [
+        "Dewford Town\nA tiny island in the blue sea"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "DewfordTown_EventScript_GymSign": {
+      "en": [
+        "Dewford Town Pokémon Gym\nLeader: Brawly\nA big wave in fighting!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "DewfordTown_EventScript_HallSign": {
+      "en": [
+        "Dewford Hall\nEveryone's information exchange!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

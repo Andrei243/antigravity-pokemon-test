@@ -1,0 +1,40 @@
+{
+  "key": "slateport_city_harbor",
+  "index": 120,
+  "name": "Slateport City",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SLATEPORT",
+  "nightMusic": "MUS_SLATEPORT",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 14, "to": "slateport_city", "toWarp": 8 },
+    { "x": 12, "z": 14, "to": "slateport_city", "toWarp": 8 },
+    { "x": 19, "z": 15, "to": "slateport_city", "toWarp": 9 },
+    { "x": 20, "z": 15, "to": "slateport_city", "toWarp": 9 }
+  ],
+  "objects": [
+    { "id": "beauty", "looks": "beauty", "movement": "look_south", "x": 8, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS", "script": "SlateportCity_Harbor_EventScript_FerryAttendant" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_west", "x": 4, "z": 12, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS", "script": "SlateportCity_Harbor_EventScript_Sailor" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_east", "x": 1, "z": 12, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_PATRONS", "script": "SlateportCity_Harbor_EventScript_FatMan" },
+    { "id": "slateport_harbor_capt_stern", "looks": "scientist_1", "movement": "look_around", "x": 6, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_CAPTAIN_STERN", "script": "SlateportCity_Harbor_EventScript_CaptStern" },
+    { "id": "slateport_harbor_ss_tidal", "looks": "ss_tidal", "movement": "look_east", "x": 8, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_SS_TIDAL", "script": "" },
+    { "id": "slateport_harbor_grunt", "looks": "aqua_member_m", "movement": "look_east", "x": 7, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_AQUA_GRUNT", "script": "" },
+    { "id": "slateport_harbor_archie", "looks": "archie", "movement": "look_west", "x": 8, "z": 10, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_ARCHIE", "script": "" },
+    { "id": "slateport_harbor_submarine", "looks": "submarine_shadow", "movement": "look_east", "x": 7, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_HARBOR_SUBMARINE_SHADOW", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 8, "z": 11, "width": 1, "depth": 1, "script": "SlateportCity_Harbor_EventScript_AquaEscapeTrigger0", "variable": "VAR_SLATEPORT_HARBOR_STATE", "value": "1" },
+    { "x": 8, "z": 12, "width": 1, "depth": 1, "script": "SlateportCity_Harbor_EventScript_AquaEscapeTrigger1", "variable": "VAR_SLATEPORT_HARBOR_STATE", "value": "1" },
+    { "x": 8, "z": 13, "width": 1, "depth": 1, "script": "SlateportCity_Harbor_EventScript_AquaEscapeTrigger2", "variable": "VAR_SLATEPORT_HARBOR_STATE", "value": "1" },
+    { "x": 8, "z": 14, "width": 1, "depth": 1, "script": "SlateportCity_Harbor_EventScript_AquaEscapeTrigger3", "variable": "VAR_SLATEPORT_HARBOR_STATE", "value": "1" }
+  ]
+}

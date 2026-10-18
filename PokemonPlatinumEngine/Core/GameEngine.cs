@@ -1182,6 +1182,7 @@ public partial class GameEngine
         float fieldDt = FieldTime(dt);
         // What field moves left in force (Strength, Flash, Defog), and boulders sliding on from a push
         KeepFieldMovesInForce();
+        if (flow.Map.Name == DewfordLights.GymMap) DewfordLights.Keep(flow.Map, flow.Story, fieldDt);
         KeepPuzzleInForce(fieldDt);
         ShatterSnowball();
         KeepTheClock();

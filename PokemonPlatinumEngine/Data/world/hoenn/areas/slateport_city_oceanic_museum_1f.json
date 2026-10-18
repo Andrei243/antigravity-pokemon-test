@@ -1,0 +1,57 @@
+{
+  "key": "slateport_city_oceanic_museum_1f",
+  "index": 118,
+  "name": "Slateport City",
+  "matrix": 67,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_OCEANIC_MUSEUM",
+  "nightMusic": "MUS_OCEANIC_MUSEUM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 8, "to": "slateport_city", "toWarp": 5 },
+    { "x": 10, "z": 8, "to": "slateport_city", "toWarp": 7 },
+    { "x": 6, "z": 1, "to": "slateport_city_oceanic_museum_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "beauty", "looks": "beauty", "movement": "look_east", "x": 7, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant" },
+    { "id": "aqua_member_m", "looks": "aqua_member_m", "movement": "look_north", "x": 18, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt3" },
+    { "id": "aqua_member_m_2", "looks": "aqua_member_m", "movement": "look_north", "x": 12, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt4" },
+    { "id": "aqua_member_m_3", "looks": "aqua_member_m", "movement": "look_north", "x": 2, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt2" },
+    { "id": "aqua_member_f", "looks": "aqua_member_f", "movement": "look_west", "x": 3, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt1" },
+    { "id": "aqua_member_m_4", "looks": "aqua_member_m", "movement": "look_east", "x": 14, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt5" },
+    { "id": "beauty_2", "looks": "beauty", "movement": "look_west", "x": 12, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_EntranceAttendant" },
+    { "id": "aqua_member_m_5", "looks": "aqua_member_m", "movement": "look_south", "x": 8, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumGrunt6" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "look_around", "x": 4, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron1" },
+    { "id": "maniac", "looks": "maniac", "movement": "look_north", "x": 10, "z": 2, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron2" },
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_east", "x": 17, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron3" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "look_north", "x": 18, "z": 8, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION", "script": "SlateportCity_OceanicMuseum_1F_EventScript_MuseumPatron4" },
+    { "id": "oceanic_museum_familiar_grunt", "looks": "aqua_member_m", "movement": "look_north_west_and_east", "x": 9, "z": 4, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_FAMILIAR_AQUA_GRUNT", "script": "SlateportCity_OceanicMuseum_1F_EventScript_FamiliarGrunt" },
+    { "id": "reporter_m", "looks": "reporter_m", "movement": "look_around", "x": 7, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION", "script": "SlateportCity_OceanicMuseum_1F_EventScript_Reporter" }
+  ],
+  "signs": [
+    { "x": 2, "z": 7, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_WhirlpoolExperiment" },
+    { "x": 2, "z": 4, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_WaterfallExperiment" },
+    { "x": 9, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_OceanSoilDisplay" },
+    { "x": 12, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_BeachSandDisplay" },
+    { "x": 10, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_OceanSoilDisplay" },
+    { "x": 13, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_BeachSandDisplay" },
+    { "x": 15, "z": 4, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact1" },
+    { "x": 18, "z": 4, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact2" },
+    { "x": 18, "z": 7, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact3" },
+    { "x": 2, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_FossilDisplay" },
+    { "x": 3, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_FossilDisplay" },
+    { "x": 16, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_DepthMeasuringMachine" },
+    { "x": 17, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_1F_EventScript_DepthMeasuringMachine" }
+  ],
+  "triggers": [
+    { "x": 9, "z": 7, "width": 1, "depth": 1, "script": "SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFeeLeft", "variable": "VAR_SLATEPORT_MUSEUM_1F_STATE", "value": "0" },
+    { "x": 10, "z": 7, "width": 1, "depth": 1, "script": "SlateportCity_OceanicMuseum_1F_EventScript_PayEntranceFeeRight", "variable": "VAR_SLATEPORT_MUSEUM_1F_STATE", "value": "0" }
+  ]
+}

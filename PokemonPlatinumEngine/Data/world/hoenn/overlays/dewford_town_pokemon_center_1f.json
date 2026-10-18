@@ -1,0 +1,10 @@
+{
+  // Dewford Town's Pokémon Center (plan 21 · H3), its floor as Emerald lays it out
+  "area": "dewford_town_pokemon_center_1f",
+  "bgmTrack": "hoenn/dewford",
+  "people": {
+    "dewford_nurse": { "name": "Nurse", "script": "Nurse" },
+    "pokefan_f": { "name": "Woman", "dialog": [ "Granite Cave is just west of town. It's pitch dark deep inside, so you'll want Flash." ] },
+    "man_3": { "name": "Man", "dialog": [ "The fishermen say Mr. Briney was the best sailor in Hoenn. Fancy him sailing again!" ] }
+  }
+}

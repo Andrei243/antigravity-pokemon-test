@@ -1,0 +1,51 @@
+{
+  "people": {
+    "dock": {
+      "name": {
+        "en": [
+          "Dock"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_1": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A submarine that dives to the sea floor... The captain's dream is nearly built."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_1_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These blueprints need one more part from Devon. Then we can start on the hull."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

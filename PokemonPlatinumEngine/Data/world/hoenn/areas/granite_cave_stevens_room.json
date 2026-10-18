@@ -1,0 +1,41 @@
+{
+  "key": "granite_cave_stevens_room",
+  "index": 248,
+  "name": "Granite Cave",
+  "matrix": 197,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "encounters": "granite_cave_stevens_room",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 7 },
+    { "species": "Makuhita", "level": 8 },
+    { "species": "Makuhita", "level": 7 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Makuhita", "level": 9 },
+    { "species": "Abra", "level": 8 },
+    { "species": "Makuhita", "level": 10 },
+    { "species": "Makuhita", "level": 6 },
+    { "species": "Aron", "level": 7 },
+    { "species": "Aron", "level": 8 },
+    { "species": "Aron", "level": 7 },
+    { "species": "Aron", "level": 8 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 7, "z": 3, "to": "granite_cave_1f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "granite_cave_steven", "looks": "steven", "movement": "look_around", "x": 7, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_GRANITE_CAVE_STEVEN", "script": "GraniteCave_StevensRoom_EventScript_Steven" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,16 @@
+# A house in Dewford Town (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/DewfordTown_House2/scripts.inc): the boy who hands out a Silk Scarf (FLAG_RECEIVED_SILK_SCARF).
+
+
+script Boy
+  face self player
+  speaker "Boy"
+  if flag FLAG_RECEIVED_SILK_SCARF goto Given
+  say "Grandpa gave me this scarf, but it's way too smooth for me. You have it!"
+  give "Silk Scarf"
+  setflag FLAG_RECEIVED_SILK_SCARF
+  say "If a Pokémon holds it, its Normal-type moves get stronger. That's what Grandpa says."
+  end
+label Given
+  say "A sailor needs a rough scarf, not a silky one. That's what I think."
+  end

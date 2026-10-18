@@ -222,6 +222,31 @@ public static class GbaFurniture
                 // The till's end of the counter, and the plant by the door
                 (0x242, 0x242, PropType.Counter), (0x22D, 0x22D, PropType.Plant),
             },
+            // Plan 21 · H3: Devon's offices, Stern's shipyard and Slateport's harbour, read from their layouts: Devon's
+            // reception counter and the potted plants by its stairs, the president's great desk and the researchers'
+            // desks with their PCs, the machines along the research floor's west wall; the shipyard's crates along
+            // its west wall, its engineers' desks, and the submarine taking shape in its middle
+            ["gTileset_Facility"] = new (int, int, PropType)[]
+            {
+                (0x38E, 0x38F, PropType.Counter), (0x39C, 0x39C, PropType.Counter), (0x3FE, 0x3FE, PropType.Plant),
+                (0x3BB, 0x3BD, PropType.LabDesk), (0x3C0, 0x3C5, PropType.LabDesk), (0x2E5, 0x2E5, PropType.Plant),
+                (0x3AB, 0x3AC, PropType.Computer), (0x39D, 0x39D, PropType.LabMachine), (0x3A5, 0x3A6, PropType.LabMachine),
+                (0x3AD, 0x3AE, PropType.LabMachine),
+                (0x249, 0x24A, PropType.Crates), (0x20C, 0x20D, PropType.LabDesk), (0x214, 0x215, PropType.LabDesk),
+                (0x233, 0x236, PropType.LabMachine), (0x23B, 0x23E, PropType.LabMachine), (0x243, 0x246, PropType.LabMachine),
+                (0x24B, 0x24E, PropType.LabMachine), (0x255, 0x256, PropType.LabMachine), (0x25B, 0x25C, PropType.LabMachine),
+                (0x263, 0x264, PropType.LabMachine), (0x26B, 0x26C, PropType.LabMachine), (0x2D0, 0x2D7, PropType.LabMachine),
+            },
+            // Plan 21 · H3: the Oceanic Museum's exhibits: the experiments and the displays on their stands, and upstairs
+            // the models of ships under glass
+            ["gTileset_OceanicMuseum"] = new (int, int, PropType)[]
+            {
+                (0x228, 0x229, PropType.DisplayCase), (0x248, 0x249, PropType.DisplayCase), (0x255, 0x256, PropType.DisplayCase),
+                (0x23E, 0x23E, PropType.DisplayCase), (0x244, 0x244, PropType.DisplayCase), (0x260, 0x260, PropType.DisplayCase),
+                (0x259, 0x25C, PropType.DisplayCase), (0x235, 0x235, PropType.DisplayCase),
+                (0x22D, 0x22D, PropType.DisplayCase),
+                (0x22A, 0x22A, PropType.ScaleModel), (0x22C, 0x22C, PropType.ScaleModel), (0x230, 0x234, PropType.ScaleModel), (0x238, 0x240, PropType.ScaleModel),
+            },
             ["gTileset_GenericBuilding"] = new (int, int, PropType)[]
             {
                 // A house's table, two metatiles by two, and the rug round it

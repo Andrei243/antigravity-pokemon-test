@@ -1,0 +1,59 @@
+{
+  "people": {
+    "scientist_1": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh, I'm counting rivets. Three hundred and twelve, three hundred and thirteen..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_1_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The deeper a submarine goes, the harder the water presses on it. Our hull has to be very strong."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_1_3": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The captain once found a Pokémon nobody had seen before, deep under the sea. Or so he says!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,10 @@
+{
+  // The shipyard's upper floor (plan 21 · H3): drawing boards and the captain's engineers
+  "area": "slateport_city_sterns_shipyard_2f",
+  "bgmTrack": "hoenn/slateport",
+  "people": {
+    "scientist_1": { "name": "Scientist", "npcType": "scientist", "dialog": [ "Shh, I'm counting rivets. Three hundred and twelve, three hundred and thirteen..." ] },
+    "scientist_1_2": { "name": "Scientist", "npcType": "scientist", "dialog": [ "The deeper a submarine goes, the harder the water presses on it. Our hull has to be very strong." ] },
+    "scientist_1_3": { "name": "Scientist", "npcType": "scientist", "dialog": [ "The captain once found a Pokémon nobody had seen before, deep under the sea. Or so he says!" ] }
+  }
+}

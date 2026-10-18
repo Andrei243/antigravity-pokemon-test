@@ -1,0 +1,30 @@
+{
+  "key": "slateport_city_sterns_shipyard_1f",
+  "index": 111,
+  "name": "Slateport City",
+  "matrix": 60,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SLATEPORT",
+  "nightMusic": "MUS_SLATEPORT",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 14, "to": "slateport_city", "toWarp": 2 },
+    { "x": 3, "z": 14, "to": "slateport_city", "toWarp": 2 },
+    { "x": 3, "z": 1, "to": "slateport_city_sterns_shipyard_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "dock", "looks": "man_1", "movement": "look_south", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_SternsShipyard_1F_EventScript_Dock" },
+    { "id": "scientist_1", "looks": "scientist_1", "movement": "look_north", "x": 10, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_SternsShipyard_1F_EventScript_Scientist1" },
+    { "id": "scientist_1_2", "looks": "scientist_1", "movement": "wander_west_and_east", "x": 18, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "SlateportCity_SternsShipyard_1F_EventScript_Scientist2" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "wander_around", "x": 12, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 2, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_STERNS_SHIPYARD_MR_BRINEY", "script": "SlateportCity_SternsShipyard_1F_EventScript_Briney" }
+  ],
+  "signs": [],
+  "triggers": []
+}

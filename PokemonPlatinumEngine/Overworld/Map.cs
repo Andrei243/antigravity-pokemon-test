@@ -170,6 +170,12 @@ public class Map
     public bool IsDark { get; set; }
 
     /// <summary>
+    /// How far round the player a dark place is seen, in tiles to where nothing is: a cave's is <see cref="Darkness.Reach"/>;
+    /// Dewford's Gym widens it as its trainers fall (<see cref="DewfordLights"/>, plan 21 · H3).
+    /// </summary>
+    public float DarkReach { get; set; } = Darkness.Reach;
+
+    /// <summary>
     /// Whether Flash has lit this dark place (plan 02 · S2): the game keeps it from <see cref="FieldMoveRules.FlashFlag"/>
     /// for the map the player is on. A dark map that isn't lit is covered (<see cref="Darkness.Covers"/>).
     /// </summary>

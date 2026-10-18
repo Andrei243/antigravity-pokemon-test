@@ -1,0 +1,62 @@
+{
+  "key": "route_106",
+  "index": 26,
+  "name": "Route 106",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE104",
+  "nightMusic": "MUS_ROUTE104",
+  "encounters": "route_106",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 20, "maxLevel": 25 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 48, "z": 358, "to": "granite_cave_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "swimmer_m", "looks": "swimmer_m", "movement": "walk_west_and_east", "x": 18, "z": 347, "facing": 2, "rangeX": 4, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_DOUGLAS" },
+    { "id": "swimmer_f", "looks": "swimmer_f", "movement": "look_around", "x": 29, "z": 352, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_KYLA" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_east", "x": 51, "z": 356, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ELLIOT_1" },
+    { "id": "fisherman_2", "looks": "fisherman", "movement": "look_around", "x": 65, "z": 356, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_NED" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 29, "z": 356, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_106_PROTEIN", "item": "Protein", "script": "Route106_EventScript_ItemProtein" }
+  ],
+  "signs": [
+    { "x": 41, "z": 353, "type": 2, "script": "", "item": "Poké Ball", "flag": "FLAG_HIDDEN_ITEM_ROUTE_106_POKE_BALL" },
+    { "x": 53, "z": 354, "type": 2, "script": "", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_ROUTE_106_STARDUST" },
+    { "x": 68, "z": 357, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_ROUTE_106_HEART_SCALE" },
+    { "x": 59, "z": 355, "type": 0, "script": "Route106_EventScript_TrainerTipsSign" }
+  ],
+  "triggers": []
+}

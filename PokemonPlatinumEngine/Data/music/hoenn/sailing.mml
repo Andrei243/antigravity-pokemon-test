@@ -1,0 +1,32 @@
+# Mr. Briney's boat (Emerald's MUS_SAILING role): an old sailor's skiff on open water, a jaunty accordion and fiddle
+# tune in D in six-eight over a rocking bass. Original composition for this game (plan 21 · H3).
+title Sailing
+tempo 92
+meter 6/8
+reverb 0.3
+night none
+
+track lead violin vol=0.72 pan=0.08 rev=0.3
+  L o5 d4 f+8 a4 f+8 | o5 g4 b8 o6 d4 o5 b8 | o5 a4 f+8 d4 f+8 | o5 e4. r4. |
+  o5 d4 f+8 a4 o6 d8 | o6 c+4 o5 a8 e4 g8 | o5 f+4 e8 d4 c+8 | o5 d4. r4. |
+  o5 b4 a8 g4 b8 | o5 a4 f+8 d4 f+8 | o5 g4 e8 c+4 e8 | o5 a4. a4 r8 |
+  o5 b4 o6 d8 o5 b4 g8 | o5 a4 f+8 a4 o6 d8 | o6 c+4 o5 a8 e4 c+8 | o5 d4. r4. |
+
+track accord accordion vol=0.38 pan=-0.28 rev=0.26
+  L o4 r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 | r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 |
+  r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 | r8 (e a >c+)8 (e a >c+)8 r8 (e a >c+)8 (e a >c+)8 |
+  r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 | r8 (e a >c+)8 (e a >c+)8 r8 (e g a)8 (e g a)8 |
+  r8 (d f+ a)8 (d f+ a)8 r8 (d f+ a)8 (e a >c+)8 | r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 |
+  r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 | r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 |
+  r8 (e g >c+)8 (e g >c+)8 r8 (e g >c+)8 (e g >c+)8 | r8 (e a >c+)8 (e a >c+)8 r8 (e a >c+)8 (e a >c+)8 |
+  r8 (g b >d)8 (g b >d)8 r8 (g b >d)8 (g b >d)8 | r8 (f+ a >d)8 (f+ a >d)8 r8 (f+ a >d)8 (f+ a >d)8 |
+  r8 (e a >c+)8 (e a >c+)8 r8 (e g a)8 (e g a)8 | r8 (f+ a >d)8 (f+ a >d)8 (f+ a >d)4. |
+
+track bass bass vol=0.68 rev=0.1
+  L o2 d4. a4. | o2 g4. d4. | o2 d4. a4. | o2 a4. e4. |
+  o2 d4. a4. | o2 a4. e4. | o2 d4 a8 a4 e8 | o2 d4. a4. |
+  o2 g4. d4. | o2 d4. a4. | o2 a4. e4. | o2 a4. c+4. |
+  o2 g4. d4. | o2 d4. a4. | o2 a4. e4. | o2 d4. d4. |
+
+track drums kit vol=0.34 rev=0.14
+  v80 L [ b8 k8 k8 s8 k8 k8 | ]16

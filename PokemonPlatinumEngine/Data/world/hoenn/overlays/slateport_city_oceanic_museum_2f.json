@@ -1,0 +1,28 @@
+{
+  // The Oceanic Museum's upper floor (plan 21 · H3): Captain Stern waits for Devon's parts by the model of the S.S.
+  // Anne; two of Team Aqua's grunts and then Archie come up the stairs for them (slateport_city_oceanic_museum_2f.txt).
+  // The visitors come back once Team Aqua has gone
+  "area": "slateport_city_oceanic_museum_2f",
+  "bgmTrack": "hoenn/slateport",
+  "people": {
+    "oceanic_museum_2f_capt_stern": { "name": "Captain Stern", "npcType": "capt_stern", "script": "CaptStern", "still": true },
+    "oceanic_museum_2f_archie": { "name": "Archie", "npcType": "archie", "still": true, "dialog": [ "..." ] },
+    "oceanic_museum_2f_grunt_1": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "..." ] },
+    "oceanic_museum_2f_grunt_2": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "..." ] },
+    "old_man": { "name": "Old Man", "dialog": [ "Models of famous ships! The S.S. Anne sailed in a far-off region, long ago." ] },
+    "pokefan_f": { "name": "Woman", "dialog": [ "This model of Hoenn shows how much of it is sea. Most of it, really!" ] },
+    "ninja_boy": { "name": "Boy", "dialog": [ "I want to ride in a real submarine and see the bottom of the sea!" ] }
+  },
+  "signs": {
+    "SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1": "A jar of sea water from near the shore. A little cloudy.",
+    "SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample2": "A jar of sea water from far out at sea. Clear as glass.",
+    "SlateportCity_OceanicMuseum_2F_EventScript_SubmersibleReplica": "A model of a small submersible that carries one explorer under the waves.",
+    "SlateportCity_OceanicMuseum_2F_EventScript_SubmarineReplica": "A model of Captain Stern's submarine, still being built at his shipyard.",
+    "SlateportCity_OceanicMuseum_2F_EventScript_SSTidalReplica": "A model of the S.S. Tidal, the ferry between Slateport and Lilycove.",
+    "SlateportCity_OceanicMuseum_2F_EventScript_SSAnneReplica": "A model of the S.S. Anne, a luxury liner of a far-off land.",
+    "SlateportCity_OceanicMuseum_2F_EventScript_SurfaceSeawaterDisplay": "Water from the sea's surface. Warmed by the sun, full of life.",
+    "SlateportCity_OceanicMuseum_2F_EventScript_DeepSeawaterDisplay": "Water from the deep sea. Cold and dark, and still full of life.",
+    "SlateportCity_OceanicMuseum_2F_EventScript_HoennModel": "A model of Hoenn. The sea covers far more of it than the land does.",
+    "SlateportCity_OceanicMuseum_2F_EventScript_PressureExperiment": "A balloon in a tank of water. The deeper it's pushed, the smaller it gets."
+  }
+}

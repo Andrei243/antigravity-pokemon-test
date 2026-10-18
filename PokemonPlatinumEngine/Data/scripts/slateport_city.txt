@@ -1,0 +1,42 @@
+# Slateport City (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/SlateportCity/scripts.inc).
+#
+# Every arrival sets the museum's counter to ask for its fee again (VAR_SLATEPORT_MUSEUM_1F_STATE 0, as Emerald's own
+# arrival does). Once Team Aqua has been driven out of the museum (VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE 1), Scott, a man
+# who watches trainers, meets the player outside its door and swaps numbers for the PokéNav (2). The Energy Guru
+# sells vitamins at the market (marts.json's slateport_energy_guru).
+
+
+script OnEnter
+  setflag FLAG_VISITED_SLATEPORT_CITY
+  setvar VAR_SLATEPORT_MUSEUM_1F_STATE 0
+  if var VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE != 1 end
+  scene "Scott outside the museum"
+  place slateport_scott 225 288 right
+  show slateport_scott
+  walk slateport_scott right 3 up 1
+  face player slateport_scott
+  speaker "Scott"
+  say "So you're the one who drove Team Aqua out of the museum! The whole city's talking about it."
+  say "I'm Scott. I travel all over looking for trainers with real promise. And you might just be one!"
+  if not flag FLAG_SYS_POKENAV_GET goto Leave
+  say "Here, let me register you in my PokéNav. I'd like to keep an eye on how you do."
+  addcontact scott
+  text "Registered Scott in the PokéNav."
+label Leave
+  say "Keep at it, and I'm sure we'll meet again. Take care!"
+  walk slateport_scott down 1 left 6
+  hide slateport_scott
+  setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE 2
+  endscene
+  end
+
+
+# The Energy Guru of the market, who sells the vitamins
+script EnergyGuru
+  face self player
+  speaker "Energy Guru"
+  say "Welcome! I'm the Energy Guru! I sell whatever your Pokémon needs to grow strong!"
+  shop "slateport_energy_guru"
+  say "Come back whenever your Pokémon need a boost!"
+  end

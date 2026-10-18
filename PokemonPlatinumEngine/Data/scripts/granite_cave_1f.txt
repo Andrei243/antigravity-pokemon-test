@@ -1,0 +1,17 @@
+# Granite Cave (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/GraniteCave_1F/scripts.inc): the hiker by the mouth hands out Flash (FLAG_RECEIVED_HM_FLASH). Emerald's is
+# HM05; Platinum's HM05 is Defog and its Flash a TM, TM70, which is what he gives here (as Kanto's aide does).
+
+
+script Hiker
+  face self player
+  speaker "Hiker"
+  if flag FLAG_RECEIVED_HM_FLASH goto Given
+  say "Hey, you! It gets pitch dark further in. You'll want to see where you're going. Take this!"
+  give "TM70"
+  setflag FLAG_RECEIVED_HM_FLASH
+  say "That's Flash. Once you hold Dewford's Badge, it'll light up a dark cave all the way through."
+  end
+label Given
+  say "Flash lights up the darkest cave. You'll need Dewford's Badge before you can use it outside battle, though."
+  end

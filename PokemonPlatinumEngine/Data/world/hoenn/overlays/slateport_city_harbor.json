@@ -1,0 +1,13 @@
+{
+  // Slateport's harbour (plan 21 · H3): the ferry's quay and its attendant. The S.S. Tidal and Captain Stern's
+  // submarine, with what Team Aqua does there, are later chapters' (plan 21 · H7, H9); its people stand by until then
+  "area": "slateport_city_harbor",
+  "bgmTrack": "hoenn/slateport",
+  // The quay's way out onto the open water by the submarine's berth is a surfer's (Route 134's side of the harbour): shut until then
+  "locked": [ 2, 3 ],
+  "people": {
+    "beauty": { "name": "Attendant", "hiddenBy": "", "dialog": [ "Welcome to Slateport's harbour. The S.S. Tidal sails for Lilycove, but only for passengers with a ticket." ] },
+    "sailor": { "name": "Sailor", "hiddenBy": "", "dialog": [ "The captain's submarine will be launched from here one day. What a sight that'll be!" ] },
+    "fat_man": { "name": "Man", "hiddenBy": "", "dialog": [ "I'm waiting for my ferry. I've been waiting a long time." ] }
+  }
+}

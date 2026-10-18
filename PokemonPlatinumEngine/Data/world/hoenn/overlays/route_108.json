@@ -1,0 +1,16 @@
+{
+  // Route 108 (plan 21 · H3): the open sea between Routes 107 and 109, with the wreck of the Abandoned Ship lying in it;
+  // the ship's deck waits for plan 21 · H7
+  "area": "route_108",
+  "bgmTrack": "hoenn/route104",
+  "trees": "Round",
+  "locked": [ 0 ],
+  "people": {
+    "swimmer_m": { "name": "Jerome", "trainer": { "dialogueBefore": "Swimmer Jerome: I swim laps around the old wreck. Want to see how fast?", "dialogueAfter": "Swimmer Jerome: Not fast enough, it seems." } },
+    "swimmer_f": { "name": "Tara", "trainer": { "dialogueBefore": "Swimmer Tara: Don't go near that old ship. Battle me instead!", "dialogueAfter": "Swimmer Tara: Fine, but I warned you about the ship." } },
+    "swimmer_m_2": { "name": "Matthew", "trainer": { "dialogueBefore": "Swimmer Matthew: I've been watching for trainers all morning. Here you are!", "dialogueAfter": "Swimmer Matthew: I'll watch a little more carefully next time." } },
+    "swimmer_f_2": { "name": "Missy", "trainer": { "dialogueBefore": "Swimmer Missy: The sea's so wide, and still we bumped into each other!", "dialogueAfter": "Swimmer Missy: I should have swum the other way." } },
+    "woman_5": { "name": "Carolina", "trainer": { "dialogueBefore": "Cooltrainer Carolina: I sail out here to train where nobody bothers us. Except you.", "dialogueAfter": "Cooltrainer Carolina: You've earned your place out here." } },
+    "sailor": { "name": "Cory", "trainer": { "dialogueBefore": "Sailor Cory: Ahoy! A sailor never turns down a battle at sea!", "dialogueAfter": "Sailor Cory: Sunk without a trace!" } }
+  }
+}

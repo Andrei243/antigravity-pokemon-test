@@ -1,0 +1,28 @@
+{
+  "key": "dewford_town_house_1",
+  "index": 67,
+  "name": "Dewford Town",
+  "matrix": 16,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_DEWFORD",
+  "nightMusic": "MUS_DEWFORD",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "dewford_town", "toWarp": 3 },
+    { "x": 4, "z": 7, "to": "dewford_town", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "woman_3", "looks": "woman_3", "movement": "look_west", "x": 6, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_House1_EventScript_Woman" },
+    { "id": "man_1", "looks": "man_1", "movement": "look_east", "x": 3, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_House1_EventScript_Man" },
+    { "id": "zigzagoon_2", "looks": "zigzagoon_2", "movement": "look_south", "x": 4, "z": 2, "facing": 1, "rangeX": 3, "rangeZ": 1, "script": "DewfordTown_House1_EventScript_Zigzagoon" }
+  ],
+  "signs": [],
+  "triggers": []
+}

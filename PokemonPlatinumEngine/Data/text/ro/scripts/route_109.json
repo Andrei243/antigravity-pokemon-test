@@ -1,0 +1,212 @@
+{
+  "Briney": [
+    {
+      "en": [
+        "Mr. Briney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahoy! Shall we sail back to Dewford?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then off you go and deliver that parcel of yours! Slateport's just up the beach."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahoy! Where shall we sail to?",
+        "Dewford",
+        "Stay here"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Just tell me whenever you need to set sail."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dewford it is! Hold tight!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SailToDewford": [
+    {
+      "en": [
+        "Mr. Briney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dewford, safe and sound! I'll be at the jetty when you need me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SandCastleBoy": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm building the biggest sandcastle ever! It's taking a really, really long time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SoftSandGirl": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You look like you'd be good at building sandcastles! Here, you can have this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're going to build the biggest castle on the whole beach!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Zigzagoon": [
+    {
+      "en": [
+        "Zigzagoon: Guguuh!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ricky": [
+    {
+      "en": [
+        "Ricky"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're really strong! Can I have your number? I'll call when I can swim. And battle better!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Ricky in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yay! I'll call you all the time!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aww. OK, maybe later then."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Lola": [
+    {
+      "en": [
+        "Lola"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Azurill liked you! Let's be friends. I'll tell you everything about floating!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Lola in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hooray! Azurill says hi!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh... Azurill's sad now."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

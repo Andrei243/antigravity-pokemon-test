@@ -1,0 +1,28 @@
+{
+  "key": "slateport_city_mart",
+  "index": 124,
+  "name": "Slateport City",
+  "matrix": 73,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "slateport_city", "toWarp": 1 },
+    { "x": 4, "z": 7, "to": "slateport_city", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "slateport_mart_clerk", "looks": "mart_employee", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_Mart_EventScript_Clerk" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_north", "x": 4, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_Mart_EventScript_BlackBelt" },
+    { "id": "man_3", "looks": "man_3", "movement": "look_around", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_Mart_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}

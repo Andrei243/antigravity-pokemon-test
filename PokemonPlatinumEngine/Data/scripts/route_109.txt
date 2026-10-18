@@ -1,0 +1,120 @@
+# Route 109 (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route109/scripts.inc).
+#
+# Mr. Briney waits on the beach while his boat is here (VAR_BRINEY_LOCATION 3, FLAG_HIDE_ROUTE_109_MR_BRINEY clear) and
+# sails back to Dewford Town when asked. The girl gives Soft Sand (FLAG_RECEIVED_SOFT_SAND), and the two tubers Ricky
+# and Lola, beaten, swap numbers for the PokéNav's Match Call (Emerald's RegisterMatchCallAfterBattle; their rematches
+# wait for Emerald's table of rematches, which the reader doesn't read yet).
+
+
+script Briney
+  speaker "Mr. Briney"
+  face self player
+  if flag FLAG_DELIVERED_DEVON_GOODS goto Choose
+  ask "Ahoy! Shall we sail back to Dewford?"
+  if yes goto Sail
+  say "Then off you go and deliver that parcel of yours! Slateport's just up the beach."
+  end
+label Choose
+  choose "Ahoy! Where shall we sail to?" "Dewford" "Stay here"
+  if var RESULT == 0 goto Sail
+  say "Just tell me whenever you need to set sail."
+  end
+label Sail
+  say "Dewford it is! Hold tight!"
+  call SailToDewford
+  end
+
+
+# West across the sea of Routes 108 and 107 to Dewford's jetty
+script SailToDewford
+  scene "Sailing back to Dewford"
+  setvar VAR_BRINEY_LOCATION 2
+  setflag FLAG_HIDE_ROUTE_109_MR_BRINEY
+  clearflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+  music "hoenn/sailing"
+  letterbox on
+  camera path 220 348 190 360 150 366 110 368 80 370 14
+  wait 0.4
+  fade out
+  camera release 0
+  letterbox off 0.1
+  warp "Hoenn" 71 371 right
+  fade in
+  music area
+  speaker "Mr. Briney"
+  say "Dewford, safe and sound! I'll be at the jetty when you need me."
+  endscene
+  return
+
+
+script SandCastleBoy
+  face self player
+  speaker "Boy"
+  say "I'm building the biggest sandcastle ever! It's taking a really, really long time."
+  end
+
+
+script SoftSandGirl
+  face self player
+  speaker "Girl"
+  if flag FLAG_RECEIVED_SOFT_SAND goto Given
+  say "You look like you'd be good at building sandcastles! Here, you can have this."
+  give "Soft Sand"
+  setflag FLAG_RECEIVED_SOFT_SAND
+  end
+label Given
+  say "We're going to build the biggest castle on the whole beach!"
+  end
+
+
+script Zigzagoon
+  cry "Zigzagoon"
+  text "Zigzagoon: Guguuh!"
+  end
+
+
+# Ricky, beaten, gives his number for the PokéNav
+script Ricky
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_RICKY goto Known
+  speaker "Ricky"
+  say "You're really strong! Can I have your number? I'll call when I can swim. And battle better!"
+  ask "Register Ricky in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_ricky
+  say "Yay! I'll call you all the time!"
+  end
+label Refused
+  say "Aww. OK, maybe later then."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  end
+
+
+# Lola, beaten, gives her number for the PokéNav
+script Lola
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_LOLA goto Known
+  speaker "Lola"
+  say "Azurill liked you! Let's be friends. I'll tell you everything about floating!"
+  ask "Register Lola in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_lola
+  say "Hooray! Azurill says hi!"
+  end
+label Refused
+  say "Oh... Azurill's sad now."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  end

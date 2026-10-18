@@ -18,7 +18,7 @@
     },
     {
       "en": [
-        "Ahoy, my friend! You saved my Peeko, and an old sailor never forgets a debt."
+        "Hold still, Peeko! Why, it's {player}! You saved my darling Peeko. I owe you more than I can say."
       ],
       "text": [
         "Ahoi! Mi-ai salvat-o pe Peeko, iar un marinar bătrân nu-și uită datoriile."
@@ -26,7 +26,73 @@
     },
     {
       "en": [
-        "Whenever you need to cross the water, my boat is yours. Just give me a little while to get her seaworthy!"
+        "You want to go to sea? A letter for Dewford and a parcel for Slateport, you say? My, you're a busy one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, you've come to the right sailor. Shall we set sail for Dewford?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mm? Not ready? Then come back whenever you are. The sea isn't going anywhere."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahoy, my friend! Shall we set sail for Dewford, then?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Just say the word whenever you want to cross the water."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dewford it is! Anchors aweigh! Come along, Peeko, we're going to sea!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SailToDewford": [
+    {
+      "en": [
+        "Mr. Briney"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahoy! Here we are, Dewford Town! A tiny island, but a fine one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've a letter to deliver, haven't you? I'll wait here at the jetty. Off you go!"
       ],
       "text": [
         "Oricând trebuie să treci apa, barca mea e a ta. Dă-mi doar puțin timp s-o pregătesc de larg!"

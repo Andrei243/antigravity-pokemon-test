@@ -111,7 +111,7 @@ label Waiting
 
 # ------------------------------------------------------------------ Hoenn's Match Call (plan 21 · H2, part b)
 # The PokéNav's numbers (Data/world/hoenn/phone.json): calls the player makes from its Match Call page. Nobody of
-# Hoenn rings on their own yet.
+# Hoenn rings on their own yet. Plan 21 · H3 added Steven, Brawly, Scott and the two tubers of Route 109's beach.
 
 # Mom, at home in Littleroot Town
 script HoennMom
@@ -142,4 +142,40 @@ script HoennRival
   end
 label Two
   say "{player}! Did you know some Pokémon only appear at night? I've been staying up late to find them!"
+  end
+
+
+# Steven, the stone collector met in Granite Cave
+script Steven
+  speaker "Steven"
+  say "Hello, {player}. I'm still out looking for rare stones. Hoenn hides a great many under its mountains."
+  say "Take good care of your Pokémon. A strong bond is worth more than any stone."
+  end
+
+
+# Brawly, Dewford's Gym Leader, registered with his Badge
+script Brawly
+  speaker "Brawly"
+  say "Yo, {player}! The waves were huge today. I wiped out three times, but that's how you learn!"
+  end
+
+
+# Scott, who watches trainers, met outside Slateport's museum
+script Scott
+  speaker "Scott"
+  say "Hi, {player}! I've been watching the trainers all over Hoenn. You're the one people are talking about!"
+  end
+
+
+# Ricky, the tuber of Route 109
+script HoennRicky
+  speaker "Ricky"
+  say "It's Ricky! I put my face in the water today. Next I'm gonna kick my legs!"
+  end
+
+
+# Lola, the tuber of Route 109
+script HoennLola
+  speaker "Lola"
+  say "Hi! It's Lola! Azurill and me floated all the way to the rocks and back!"
   end

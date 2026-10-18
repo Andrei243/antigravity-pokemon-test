@@ -1,0 +1,8 @@
+{
+  // The Name Rater's house in Slateport City (plan 21 · H3). He talks and changes nothing yet (plan 12 · Q19, plan 13 · V4)
+  "area": "slateport_city_name_raters_house",
+  "bgmTrack": "hoenn/slateport",
+  "people": {
+    "expert_m": { "name": "Name Rater", "dialog": [ "I'm the Name Rater! I judge the names trainers give their Pokémon. Come back once you've thought of a few." ] }
+  }
+}
