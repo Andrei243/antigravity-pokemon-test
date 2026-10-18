@@ -31,7 +31,7 @@ public static partial class DamageCalculator
     {
         if (total == 0f || move.Category == MoveCategory.Status || move.Data == Sim.BattleCore.StruggleData) return total;
         if (defender.Ability?.Name != "Tera Shell" || defender.Pokemon is not { } p || p.CurrentHP < p.MaxHP || attacker == defender) return total;
-        if (BattleEffects.Of(attacker).Any(e => e.IgnoresTargetAbility) || IgnoresAbilities(move.Data)) return total;
+        if (LaterItems.Breaks(BattleEffects.Of(attacker).Any(e => e.IgnoresTargetAbility) || IgnoresAbilities(move.Data), defender)) return total;
         return 0.5f;
     }
 

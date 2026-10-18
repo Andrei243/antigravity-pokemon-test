@@ -71,7 +71,7 @@ The scene (`GameState.Evolution`) plays the queued evolutions one after the othe
 | `LevelAfterSteps` | That many steps at the head of the party | Pawmo, Bramblin, Rellor (1000) | 9 | |
 | `LevelAfterMoveUses` | The move used that many times in battle | Primeape (Rage Fist ×20), Stantler (Psyshield Bash ×20) | 8 (Legends: Arceus) | |
 | `LevelAfterDefeating` | That many of the species knocked out while it was on the field | Bisharp (3 Bisharp) | 9 | |
-| `LevelWithItemsInBag` | That many of the item in the bag (they are used up) | Gimmighoul (999 Gimmighoul Coins), Meltan (400 Meltan Candies) | 9, GO | A way to collect them (plan 03 · D12) |
+| `LevelWithItemsInBag` | That many of the item in the bag (they are used up) | Gimmighoul (999 Gimmighoul Coins), Meltan (400 Meltan Candies) | 9, GO | A way to collect them (plan 03 · D12; the coins and candies count as working since plan 06 · R28b, `Evolution.IsGatheredForEvolution`, and docs/mechanics/where-items-are-found.md says where the games give them) |
 | `LevelAfterDamage` | 49 HP lost to moves without fainting since, then a level-up on a map with the `Stone Arch` | Galarian Yamask into Runerigus (the original: walking under the Dusty Bowl's stone arch) | 8 | A map with a Stone Arch (plan 03 · D12) |
 | `LevelAfterRecoil` | 294 HP lost to its own moves' recoil without fainting since | White-Striped Basculin into Basculegion | 8 (Legends: Arceus) | |
 
@@ -96,7 +96,7 @@ What these count is kept in `Pokemon.EvolutionProgress` like the steps and the u
 | Method | Needs | Examples | First seen | Waits for |
 | --- | --- | --- | --- | --- |
 | `Trade` | Being traded | Kadabra, Machoke, Graveler, Haunter, Boldore, Gurdurr, Phantump, Pumpkaboo | 1 | Trading |
-| `TradeHoldingItem` | Being traded while holding the item | Onix and Scyther (Metal Coat), Seadra, Poliwhirl and Slowpoke (King's Rock), Porygon, Porygon2, Rhydon, Electabuzz, Magmar, Dusclops, Clamperl, Spritzee, Swirlix | 2 | Trading |
+| `TradeHoldingItem` | Being traded while holding the item | Onix and Scyther (Metal Coat), Seadra, Poliwhirl and Slowpoke (King's Rock), Porygon, Porygon2, Rhydon, Electabuzz, Magmar, Dusclops, Clamperl, Feebas (Prism Scale, from Generation 5; its beauty stays Sinnoh's way, plan 06 · R28b), Spritzee, Swirlix | 2 | Trading |
 | `TradeWithSpecies` | Being traded for that species | Karrablast for Shelmet, and the other way round | 5 | Trading |
 
 A **Linking Cord** used on a Pokémon counts as a trade (Legends: Arceus). It is in `items.json` and works today; nothing in the game hands one out yet. For Karrablast and Shelmet the partner has to be in the party.

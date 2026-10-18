@@ -388,6 +388,7 @@
     "category": "Pokémon {category}",
     "place": "{index} / {count}",
     "nature": "FIRE",
+    "minted": "{nature} (mentă {mint})",
     "ability": "ABILITATE",
     "heldItem": "OBIECT ȚINUT",
     "none": "Niciunul",
@@ -1523,7 +1524,12 @@
     "recovered": "{name} și-a recuperat {hp} HP.",
     "ppRose": "PP-ul mișcării {move} a crescut.",
     "allPpRestored": "PP-ul lui {name} a fost refăcut.",
-    "ppRestored": "PP-ul mișcării {move} a fost refăcut."
+    "ppRestored": "PP-ul mișcării {move} a fost refăcut.",
+    "effortReset": "{name} a pierdut tot efortul pus în statisticile lui de bază.",
+    "minted": "De acum, statisticile lui {name} vor crește ca ale unui Pokémon cu firea {nature}.",
+    "gainedExp": "{name} a primit {exp} Puncte EXP.",
+    "abilityChanged": "Abilitatea lui {name} a devenit {ability}.",
+    "dynamaxLevel": "Nivelul Dynamax al lui {name} a crescut la {level}."
   },
   "teaching": {
     "hmMove": "Mișcările HM nu pot fi uitate acum.",
@@ -2127,6 +2133,7 @@
     "clearAmulet": "Obiectul {item} al lui {pokemon} îi apără statisticile!",
     "boosterEnergy": "{pokemon} a folosit obiectul {item}: {ability} i-a crescut {stat}!",
     "mirroredStats": "{pokemon} a folosit obiectul {item} și a copiat statisticile adversarului!",
+    "abilityShield": "Abilitatea lui {pokemon} e apărată de obiectul {item}!",
     "returnedItsStatsTo": "{pokemon} și-a readus statisticile la normal cu {item}!",
     "curedItsInfatuationUsing": "{pokemon} și-a vindecat îndrăgostirea cu {item}!",
     "giveTheMatchUp": "Abandonezi meciul și închei provocarea aici?",

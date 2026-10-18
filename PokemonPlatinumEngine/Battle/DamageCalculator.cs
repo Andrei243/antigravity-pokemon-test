@@ -220,7 +220,7 @@ public static partial class DamageCalculator
         var field = defender.Field;
         var weather = selfHit ? BattleWeather.None : field?.WeatherInEffect ?? BattleWeather.None;
         var attackerEffects = BattleEffects.Of(attacker).ToList();
-        bool breaksAbility = attackerEffects.Any(e => e.IgnoresTargetAbility) || IgnoresAbilities(move.Data);
+        bool breaksAbility = LaterItems.Breaks(attackerEffects.Any(e => e.IgnoresTargetAbility) || IgnoresAbilities(move.Data), defender);
         // Photon Geyser hits as a physical move when its user's Attack at its stage is the higher (plan 06 · R24)
         if (PhysicalByStats(attacker, move.Data) && move.Category == MoveCategory.Special) move = new Move(move.Data.OfCategory(MoveCategory.Physical), move.CurrentPP);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaksAbility).ToList();
@@ -421,7 +421,7 @@ public static partial class DamageCalculator
     public static bool RollsCritical(Battler attacker, Battler defender, Move move, Random rng, Ruleset rules, int critBonus = 0)
     {
         var attackerEffects = BattleEffects.Of(attacker).ToList();
-        bool breaks = attackerEffects.Any(e => e.IgnoresTargetAbility);
+        bool breaks = LaterItems.Breaks(attackerEffects.Any(e => e.IgnoresTargetAbility), defender);
         var defenderEffects = BattleEffects.Of(defender, includeAbility: !breaks).ToList();
         int stage = move.Data.CritStage + critBonus + attackerEffects.Sum(e => e.CritStageBonus) + ItemCritStages(attacker) + (attacker.Volatile.FocusEnergy ? 2 : 0) + attacker.Volatile.ChiStrike + attacker.Volatile.DragonCheer;
         // Storm Throw, Frost Breath and Wicked Blow are critical with no roll (Showdown's willCrit; plan 06 · R24)

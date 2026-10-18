@@ -788,6 +788,7 @@ public sealed partial class BattleCore
         var p = user.Pokemon!;
         var q = t.Pokemon!;
         if (q.AbilityName is null or "Wonder Guard" or "Multitype" || p.AbilityName == "Multitype" || p.HeldItem?.Name == "Griseous Orb") return Fails();
+        if (ShieldsItsAbility(user)) return false;
         KeepAbility(Keep(user), p);
         p.AbilityName = q.AbilityName;
         // The line tells of the ability in both places
@@ -805,6 +806,7 @@ public sealed partial class BattleCore
         if (p.AbilityName is "Wonder Guard" or "Multitype" || q.AbilityName is "Wonder Guard" or "Multitype") return Fails();
         if (p.HeldItem?.Name == "Griseous Orb" || q.HeldItem?.Name == "Griseous Orb") return Fails();
         if (p.AbilityName == null && q.AbilityName == null) return Fails();
+        if (ShieldsItsAbility(t) || ShieldsItsAbility(user)) return false;
         KeepAbility(Keep(user), p);
         KeepAbility(Keep(t), q);
         (p.AbilityName, q.AbilityName) = (q.AbilityName, p.AbilityName);
@@ -817,6 +819,7 @@ public sealed partial class BattleCore
     {
         var q = t.Pokemon!;
         if (t.HasSubstitute || q.AbilityName is "Truant" or "Multitype" || q.HeldItem?.Name == "Griseous Orb") return Fails();
+        if (ShieldsItsAbility(t)) return false;
         KeepAbility(Keep(t), q);
         q.AbilityName = "Insomnia";
         Say(Text.Of("battle.acquired", ("target", t.Name), ("ability", AbilityOf(t))));

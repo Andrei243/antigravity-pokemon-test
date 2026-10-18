@@ -176,7 +176,7 @@ public sealed partial class BattleCore
     private bool VeiledFrom(Battler target, StatusCondition status, Battler? source, bool announce)
     {
         bool byAnother = source != null && source != target;
-        if (byAnother && BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility)) return false;
+        if (byAnother && LaterItems.Breaks(BattleEffects.Of(source!).Any(e => e.IgnoresTargetAbility), target)) return false;
         foreach (var ally in SlotsOf(target.Side).Where(b => b.IsActive))
         {
             bool veils = ally.Ability?.Name switch
@@ -264,6 +264,7 @@ public sealed partial class BattleCore
         foreach (var b in SlotsOf(down.Side).Where(b => b != down && b.IsActive && b.Ability?.Name is "Receiver" or "Power of Alchemy").ToList())
         {
             var p = b.Pokemon!;
+            if (ShieldsItsAbility(b)) continue;
             KeepAbility(Keep(b), p);
             p.AbilityName = ability;
             b.Volatile.Announced &= EntryCheck.Item | EntryCheck.Shape;
@@ -443,5 +444,7 @@ public sealed partial class BattleCore
     private void ParadoxesWake()
     {
         foreach (var b in AllBattlers.Where(b => b.IsActive)) LaterAbilities.ParadoxStat(b);
+        // Another weather in the sun's place sets Booster Energy going (plan 06 · R28b)
+        BoostersWake();
     }
 }

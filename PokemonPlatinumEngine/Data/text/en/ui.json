@@ -387,6 +387,7 @@
     "category": "{category} Pokémon",
     "place": "{index} / {count}",
     "nature": "NATURE",
+    "minted": "{nature} ({mint} mint)",
     "ability": "ABILITY",
     "heldItem": "HELD ITEM",
     "none": "None",
@@ -1520,7 +1521,12 @@
     "recovered": "{name} recovered {hp} HP.",
     "ppRose": "{move}'s PP rose.",
     "allPpRestored": "{name}'s PP was restored.",
-    "ppRestored": "{move}'s PP was restored."
+    "ppRestored": "{move}'s PP was restored.",
+    "effortReset": "{name} lost all the effort it had put into its base stats.",
+    "minted": "{name}'s stats will now grow as if it were {nature}.",
+    "gainedExp": "{name} gained {exp} Exp. Points.",
+    "abilityChanged": "{name}'s Ability became {ability}.",
+    "dynamaxLevel": "{name}'s Dynamax Level rose to {level}."
   },
   "teaching": {
     "hmMove": "HM moves can't be forgotten now.",
@@ -2124,6 +2130,7 @@
     "clearAmulet": "{pokemon}'s {item} keeps its stats from being lowered!",
     "boosterEnergy": "{pokemon} used its {item}: its {ability} raised its {stat}!",
     "mirroredStats": "{pokemon} used its {item} to mirror its foe's stat changes!",
+    "abilityShield": "{pokemon}'s Ability is guarded by its {item}!",
     "returnedItsStatsTo": "{pokemon} returned its stats to normal using its {item}!",
     "curedItsInfatuationUsing": "{pokemon} cured its infatuation using its {item}!",
     "giveTheMatchUp": "Give the match up and end the challenge here?",

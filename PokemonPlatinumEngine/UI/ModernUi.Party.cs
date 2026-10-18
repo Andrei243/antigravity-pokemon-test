@@ -197,7 +197,9 @@ internal static partial class ModernUi
 
         UiShapes.Fill(new Rectangle(x, who.Y + 732, who.Width - 88, 3), 1.5f, Rule);
         Label(Text.Of("summary.nature"), x, who.Y + 752);
-        UiFonts.Draw(Words.Nature(p.Nature), x, who.Y + 776, 34, Ink, UiWeight.Black);
+        // A mint's nature beside its own (plan 06 · R28b): the stats below are the mint's
+        string nature = p.MintNature is { } mint ? Text.Of("summary.minted", ("nature", Words.Nature(p.Nature)), ("mint", Words.Nature(mint))) : Words.Nature(p.Nature);
+        UiFonts.Draw(nature, x, who.Y + 776, p.MintNature != null ? 26 : 34, Ink, UiWeight.Black);
         if (rental)
         {
             Label(Text.Of("summary.ability"), x + 260, who.Y + 752);

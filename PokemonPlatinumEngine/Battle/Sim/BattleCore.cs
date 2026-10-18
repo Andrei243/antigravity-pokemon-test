@@ -473,6 +473,8 @@ public sealed partial class BattleCore : IBattleContext
     private IEnumerable<BattleRequest> Course()
     {
         Intro();
+        // An Intimidate as the battle opens sets off an Eject Pack or a Mirror Herb (plan 06 · R28b)
+        foreach (var request in ItemsAfterTheEntry()) yield return request;
         while (Result == BattleResult.None)
         {
             // Whoever faces a foe at the start of a turn has fought it, for the EXP it leaves
@@ -628,6 +630,9 @@ public sealed partial class BattleCore : IBattleContext
             speedOrder = BySpeed();
             // A Pokémon that fainted (or was switched out by its own trainer) loses its action
             if (act.User.Pokemon != act.Actor || !act.User.IsActive) continue;
+            // What a stage noted before this action and nothing took up goes no further (plan 06 · R28b)
+            ejectPacks.Clear();
+            mirrored.Clear();
 
             switch (act.Choice.Kind)
             {
@@ -657,6 +662,8 @@ public sealed partial class BattleCore : IBattleContext
             // What acts on entry is looked for again after every action (an ability gained by a Transform, a
             // shape the weather changed), as the original runs its switch-in check after every move
             if (Result == BattleResult.None) SwitchInChecks();
+            // An Eject Pack and a Mirror Herb take up what a coming in did (plan 06 · R28b)
+            foreach (var request in ItemsAfterTheEntry()) yield return request;
             // A trainer whose last Pokémon the action left in the red speaks once it has been told (plan 11 · C12)
             WatchTheRed();
 

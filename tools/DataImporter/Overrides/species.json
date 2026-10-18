@@ -1,5 +1,13 @@
 // Hand corrections to species.json: a name maps to the fields to change.
 {
+  // Generation 5 on, Feebas also evolves when traded holding a Prism Scale (plan 06 · R28b); Platinum has only its beauty.
+  // PokeAPI keeps that row with the later evolutions, which the importer reads only for species after Platinum's
+  "Feebas": {
+    "evolutions": [
+      { "method": "Beauty", "targetSpecies": "Milotic", "value": 170 },
+      { "method": "TradeHoldingItem", "targetSpecies": "Milotic", "item": "Prism Scale" }
+    ]
+  },
   // Solgaleo in Sun and Sword, Lunala in Moon and Shield. This game has no versions, so the hour decides:
   // the sun's by day, the moon's at night (docs/mechanics/rulings.md)
   "Cosmoem": {

@@ -405,6 +405,33 @@ public class Pokemon
     public int Level { get; private set; }
     public Gender Gender { get; set; }
     public Nature Nature { get; set; }
+
+    /// <summary>
+    /// The nature a mint gave its stats (plan 06 · R28b; the later games' stat nature), or null for none: its stats grow
+    /// as this nature's would, while its own <see cref="Nature"/> stays what it was for everything else (the tastes of a
+    /// Poffin or a berry, Synchronize, breeding).
+    /// </summary>
+    public Nature? MintNature { get; set; }
+
+    /// <summary>The nature its stats are reckoned by: a mint's, or its own.</summary>
+    public Nature StatNature => MintNature ?? Nature;
+
+    /// <summary>
+    /// The stats hyper training has raised (plan 06 · R28b; <see cref="HyperTraining"/>): a bit for each of
+    /// <see cref="EffortRules.Order"/>'s six. A trained stat is reckoned as if its IV were 31; the IV itself stays as it
+    /// was, which is what an Egg inherits and Hidden Power reads.
+    /// </summary>
+    public int HyperTrained { get; set; }
+
+    /// <summary>Whether hyper training has raised a stat.</summary>
+    public bool IsHyperTrained(StatType stat) => (HyperTrained & HyperTraining.Bit(stat)) != 0;
+
+    /// <summary>The IV a stat is reckoned with: 31 once hyper trained, its own otherwise.</summary>
+    public int StatIv(StatType stat, int own) => IsHyperTrained(stat) ? HyperTraining.Perfect : own;
+
+    /// <summary>The hidden ability its form (or species) has, or null where it has none.</summary>
+    public string? HiddenAbilityName => FormData?.HiddenAbility ?? Species.HiddenAbility;
+
     public bool IsShiny { get; set; }
 
     /// <summary>The name of its ability (one of its species' abilities), or null if the species has none listed yet.</summary>
@@ -828,12 +855,14 @@ public class Pokemon
         var form = FormData?.BaseStats;
         int baseHP = form?.HP ?? Species.BaseHP;
         // Shedinja's one hit point is a rule of its own, not the formula's
-        MaxHP = baseHP == 1 ? 1 : CalculateHP(baseHP, IvHP, EvHP, Level);
-        Attack = CalculateOtherStat(form?.Attack ?? Species.BaseAttack, IvAttack, EvAttack, Level, GetNatureMultiplier(Nature, StatType.Attack));
-        Defense = CalculateOtherStat(form?.Defense ?? Species.BaseDefense, IvDefense, EvDefense, Level, GetNatureMultiplier(Nature, StatType.Defense));
-        SpAttack = CalculateOtherStat(form?.SpAttack ?? Species.BaseSpAttack, IvSpAttack, EvSpAttack, Level, GetNatureMultiplier(Nature, StatType.SpAttack));
-        SpDefense = CalculateOtherStat(form?.SpDefense ?? Species.BaseSpDefense, IvSpDefense, EvSpDefense, Level, GetNatureMultiplier(Nature, StatType.SpDefense));
-        Speed = CalculateOtherStat(form?.Speed ?? Species.BaseSpeed, IvSpeed, EvSpeed, Level, GetNatureMultiplier(Nature, StatType.Speed));
+        // A mint's nature and hyper training count here alone (plan 06 · R28b)
+        var nature = StatNature;
+        MaxHP = baseHP == 1 ? 1 : CalculateHP(baseHP, StatIv(StatType.HP, IvHP), EvHP, Level);
+        Attack = CalculateOtherStat(form?.Attack ?? Species.BaseAttack, StatIv(StatType.Attack, IvAttack), EvAttack, Level, GetNatureMultiplier(nature, StatType.Attack));
+        Defense = CalculateOtherStat(form?.Defense ?? Species.BaseDefense, StatIv(StatType.Defense, IvDefense), EvDefense, Level, GetNatureMultiplier(nature, StatType.Defense));
+        SpAttack = CalculateOtherStat(form?.SpAttack ?? Species.BaseSpAttack, StatIv(StatType.SpAttack, IvSpAttack), EvSpAttack, Level, GetNatureMultiplier(nature, StatType.SpAttack));
+        SpDefense = CalculateOtherStat(form?.SpDefense ?? Species.BaseSpDefense, StatIv(StatType.SpDefense, IvSpDefense), EvSpDefense, Level, GetNatureMultiplier(nature, StatType.SpDefense));
+        Speed = CalculateOtherStat(form?.Speed ?? Species.BaseSpeed, StatIv(StatType.Speed, IvSpeed), EvSpeed, Level, GetNatureMultiplier(nature, StatType.Speed));
     }
 
     private static int CalculateHP(int baseStat, int iv, int ev, int level)
@@ -1053,13 +1082,16 @@ public class Pokemon
     {
         string oldName = Species.Name;
         int abilitySlot = Math.Max(0, Abilities.ToList().IndexOf(AbilityName ?? ""));
+        // A hidden ability (an Ability Patch's, plan 06 · R28b) stays the hidden one of what it becomes
+        bool hidden = AbilityName != null && AbilityName == HiddenAbilityName && !Abilities.Contains(AbilityName);
         int oldMaxHP = MaxHP;
 
         // It becomes the new species' own form (or its females'); Evolution.Evolve gives it another one where the evolution says so
         Species = next;
         Form = FormOfGender();
         var abilities = Abilities;
-        if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
+        if (hidden && HiddenAbilityName is { } stillHidden) AbilityName = stillHidden;
+        else if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
         // A Pokémon with no nickname is called what its species is; one called by its old species' name (older saves wrote it in) has none either
         if (string.IsNullOrWhiteSpace(Nickname) || Nickname == oldName) Nickname = string.Empty;
 
@@ -1077,11 +1109,14 @@ public class Pokemon
     {
         if (form != null && Species.Form(form) == null) throw new ArgumentException($"{Species.Name} has no form {form}", nameof(form));
         int abilitySlot = Math.Max(0, Abilities.ToList().IndexOf(AbilityName ?? ""));
+        // A hidden ability (an Ability Patch's, plan 06 · R28b) stays the hidden one of what it becomes
+        bool hidden = AbilityName != null && AbilityName == HiddenAbilityName && !Abilities.Contains(AbilityName);
         int oldMaxHP = MaxHP;
 
         Form = Species.Form(form)?.Name;
         var abilities = Abilities;
-        if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
+        if (hidden && HiddenAbilityName is { } stillHidden) AbilityName = stillHidden;
+        else if (abilities.Count > 0) AbilityName = abilities[Math.Min(abilitySlot, abilities.Count - 1)];
 
         RecalculateStats();
         if (CurrentHP > 0) CurrentHP = Math.Clamp(CurrentHP + MaxHP - oldMaxHP, 1, MaxHP);
@@ -1172,6 +1207,8 @@ public class Pokemon
         Level = other.Level;
         Gender = other.Gender;
         Nature = other.Nature;
+        MintNature = other.MintNature;
+        HyperTrained = other.HyperTrained;
         IsShiny = other.IsShiny;
         AbilityName = other.AbilityName;
         HeldItem = other.HeldItem;

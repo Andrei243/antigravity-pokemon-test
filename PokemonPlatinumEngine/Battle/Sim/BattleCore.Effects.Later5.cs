@@ -452,6 +452,7 @@ public sealed partial class BattleCore
         {
             var p = b.Pokemon!;
             if (p.AbilityName == drawn || (p.AbilityName != null && CantBeReplaced.Contains(p.AbilityName) && p.AbilityName != "Truant")) continue;
+            if (ShieldsItsAbility(b)) continue;
             KeepAbility(Keep(b), p);
             p.AbilityName = drawn;
             Say(Text.Of("battle.acquired", ("target", b.Name), ("ability", AbilityOf(b))));

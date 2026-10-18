@@ -124,6 +124,8 @@ public sealed partial class BattleCore
             Say(Stops(Field.Weather)).With(new WeatherChanged(BattleWeather.None));
             Field.Weather = BattleWeather.None;
             Field.WeatherTurns = 0;
+            // The sun gone sets Booster Energy going (plan 06 · R28b)
+            BoostersWake();
         }
         else if (Field.Weather != BattleWeather.None)
         {

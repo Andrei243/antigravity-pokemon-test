@@ -66,6 +66,7 @@ importer.AddLaterMechanics(importedItems, showdown);
 importer.AddLaterItemEffects(importedItems, showdown);
 var items = Overrides.Apply(importedItems, Path.Combine(overrides, "items.json")).OrderBy(i => i.Id).ToList();
 importer.AddLaterMachines(species, items);
+importer.AddTechnicalRecords(species, items);
 var marts = importer.Marts();
 var contests = importer.Contests();
 contests.Backdrops = importer.Backdrops();

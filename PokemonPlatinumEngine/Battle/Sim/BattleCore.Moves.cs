@@ -79,6 +79,9 @@ public sealed partial class BattleCore
         public MoveData? Own;
         public List<Battler> Targets = new();
 
+        /// <summary>A status move missed a target by its accuracy roll (plan 06 · R28b): Blunder Policy goes off for it.</summary>
+        public bool StatusMissed;
+
         /// <summary>The line "X used Y!", which the move's effects are shown with.</summary>
         public Said Line = null!;
 
@@ -1124,6 +1127,7 @@ public sealed partial class BattleCore
         log.AddRange(hit.Notes);
         hit.Notes.Clear();
         if (hit.IntoSubstitute) SubstituteLines(hit);
+        if (hit.IntoSubstitute) PopUnderTheDoll(hit);
         if (hit.LastCritical) Say(use.Hits.Count > 1 ? Text.Of("battle.aCriticalHitOn", ("target", t.Name)) : Text.Of("battle.aCriticalHit"));
         if (lastPlanned || !t.IsActive || use.User.Pokemon!.Status == StatusCondition.Sleep)
         {
@@ -1282,6 +1286,7 @@ public sealed partial class BattleCore
             }
 
             if (hit.IntoSubstitute) SubstituteLines(hit);
+            if (hit.IntoSubstitute) PopUnderTheDoll(hit);
             if (hit.LastCritical) Say(several ? Text.Of("battle.aCriticalHitOn", ("target", t.Name)) : Text.Of("battle.aCriticalHit"));
             if (hit.EnduredByMove) Say(Text.Of("battle.enduredTheHit", ("target", t.Name)));
             else if (hit.Endured) log.AddRange(hit.Notes);
@@ -1418,7 +1423,11 @@ public sealed partial class BattleCore
             Say(hit.FailLine ?? Text.Of("battle.protectedItself", ("user", target.Name)));
             ShieldBites(use, hit);
         }
-        else Say(hit.FailLine ?? (use.Targets.Count > 1 || IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", use.User.Name))));
+        else
+        {
+            if (hit.Missed && hit.FailLine == null) use.StatusMissed = true;
+            Say(hit.FailLine ?? (use.Targets.Count > 1 || IsDouble ? Text.Of("battle.avoidedTheAttack", ("target", target.Name)) : Text.Of("battle.attackMissed", ("user", use.User.Name))));
+        }
         return false;
     }
 

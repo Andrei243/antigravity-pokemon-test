@@ -120,7 +120,11 @@ public static class ItemUse
         {
             int before = EffortRules.Total(p);
             if (!EffortRules.UseItem(item, p, rules)) return ItemUseResult.Nothing;
-            return new ItemUseResult(true, EffortRules.Total(p) > before ? Text.Of("itemUse.statsGrew", ("name", name), ("item", item.DisplayName))
+            int after = EffortRules.Total(p);
+            // The Fresh Start Mochi (plan 06 · R28b) takes effort away and pleases nobody
+            if (after < before && EffortRules.FriendshipOf(item) == (0, 0, 0))
+                return new ItemUseResult(true, Text.Of("itemUse.effortReset", ("name", name)));
+            return new ItemUseResult(true, after > before ? Text.Of("itemUse.statsGrew", ("name", name), ("item", item.DisplayName))
                 : Text.Of("itemUse.friendlier", ("name", name)));
         }
 

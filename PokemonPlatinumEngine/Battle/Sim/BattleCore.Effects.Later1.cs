@@ -289,6 +289,7 @@ public sealed partial class BattleCore
     {
         var q = t.Pokemon!;
         if (t.HasSubstitute || q.AbilityName == "Simple" || (q.AbilityName != null && CantBeReplaced.Contains(q.AbilityName))) return Fails();
+        if (ShieldsItsAbility(t)) return false;
         KeepAbility(Keep(t), q);
         q.AbilityName = "Simple";
         Say(Text.Of("battle.acquired", ("target", t.Name), ("ability", AbilityOf(t))));
@@ -305,6 +306,7 @@ public sealed partial class BattleCore
         var q = t.Pokemon!;
         if (t == user || t.HasSubstitute || p.AbilityName == null || q.AbilityName == p.AbilityName) return Fails();
         if ((q.AbilityName != null && CantBeReplaced.Contains(q.AbilityName)) || CantBeReplaced.Contains(p.AbilityName) || NotHandedOn.Contains(p.AbilityName)) return Fails();
+        if (ShieldsItsAbility(t)) return false;
         KeepAbility(Keep(t), q);
         q.AbilityName = p.AbilityName;
         Say(Text.Of("battle.acquired", ("target", t.Name), ("ability", AbilityOf(t))));

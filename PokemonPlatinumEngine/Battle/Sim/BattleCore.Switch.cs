@@ -542,6 +542,9 @@ public sealed partial class BattleCore
             if (Result != BattleResult.None) yield break;
             SwitchInChecks();
             ResolveFaints();
+            // An Eject Pack and a Mirror Herb take up what the newcomers' coming in did (plan 06 · R28b)
+            if (Result == BattleResult.None)
+                foreach (var request in ItemsAfterTheEntry()) yield return request;
         }
     }
 

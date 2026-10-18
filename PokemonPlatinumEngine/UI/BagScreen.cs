@@ -263,7 +263,7 @@ public class BagScreen
     /// </summary>
     public static bool CanUse(ItemData item) =>
         ItemUse.IsUsedOnPokemon(item) || Evolution.IsUsedToEvolve(item) || EffortRules.IsEffortItem(item)
-        || item.FieldUse == "Gracidea" || MoveTeaching.IsMachine(item);
+        || item.FieldUse == "Gracidea" || MoveTeaching.IsMachine(item) || LaterItemUse.Handles(item);
 
     /// <summary>
     /// Items used in the field itself rather than on a Pokémon (plan 02 · S2), by the original's use of each: the
@@ -611,11 +611,12 @@ public class BagScreen
             AudioManager.PlayCry(target);
             onNotification(Text.Of("bag.skyForme", ("name", target.DisplayName)));
         }
-        else if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item))
+        else if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item) || LaterItemUse.Handles(item))
         {
-            // Medicine, berries, vitamins and the Rare Candy, by the item table (Pokemon_ApplyItemEffects)
+            // Medicine, berries, vitamins and the Rare Candy, by the item table (Pokemon_ApplyItemEffects); the later
+            // games' mints, Exp. Candies, capsules, patches and nectars by their own rules (plan 06 · R28b)
             var before = target.Stats();
-            var result = ItemUse.Apply(item, target);
+            var result = LaterItemUse.Handles(item) ? LaterItemUse.Apply(item, target) : ItemUse.Apply(item, target);
             if (!result.Applied)
             {
                 onNotification(result.Message);
@@ -800,6 +801,7 @@ public class BagScreen
             return Evolution.Find(p, EvolutionTrigger.UseItem, probe) != null;
         }
         if (item.FieldUse == "Gracidea") return FormRules.CanTakeToTheSky(p, (int)GameClock.Hour);
+        if (LaterItemUse.Handles(item)) return LaterItemUse.WouldHelp(item, p);
         if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item)) return ItemUse.WouldHelpAnyMove(item, p);
         return null;
     }

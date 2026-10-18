@@ -148,7 +148,7 @@ internal sealed class Trace : BattleEffect
 
     public override void OnEntry(IBattleContext ctx, Battler self)
     {
-        if (self.Pokemon!.HeldItem?.Name == "Griseous Orb") return;
+        if (self.Pokemon!.HeldItem?.Name == "Griseous Orb" || LaterItems.AbilityShielded(self)) return;
         var foes = Candidates(ctx, self);
         if (foes.Count == 0) return;
         var foe = foes.Count == 1 ? foes[0] : foes[ctx.Random.Roll(RollKind.AbilityPick, foes.Count)];

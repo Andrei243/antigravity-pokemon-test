@@ -138,6 +138,8 @@ public class SinnohSpeciesTests
             foreach (var e in species.Evolutions ?? new())
             {
                 if (e.Region != null || e.FromForm != null || PokemonDatabase.Get(e.TargetSpecies)!.DexNumber > SpeciesSources.HighestInSinnoh) continue;
+                // A later way to the same species beside one Sinnoh has (Feebas and the Prism Scale, plan 06 · R28b) is the later regions' to place
+                if (e.Item != null && species.Evolutions!.Any(o => o != e && o.TargetSpecies == e.TargetSpecies && o.Item == null)) continue;
                 if (e.Item != null) Assert.True(Sinnoh.Items.ContainsKey(e.Item), $"{species.Name} into {e.TargetSpecies} wants a {e.Item}");
                 if (e.Location != null) Assert.True(Sinnoh.Sites.Contains(e.Location), $"{species.Name} into {e.TargetSpecies} wants the {e.Location}");
             }
