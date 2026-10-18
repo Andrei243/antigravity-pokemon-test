@@ -547,7 +547,7 @@ public class MovePresentationTests
     {
         int own = MoveDatabase.GetAll().Count(m => m.Id > 467 && MoveFx.BatchOf(m.Name) != null && SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name)));
         output.WriteLine($"{own} of the later games' moves have a look and a sound of their own");
-        Assert.True(own >= 154, $"only {own}");
+        Assert.True(own >= 235, $"only {own}");
     }
 
     /// <summary>Y11b's moves: the other 36 of Generation 5, from Frost Breath (524) to Fusion Bolt (559).</summary>
@@ -598,6 +598,49 @@ public class MovePresentationTests
             ("Boomburst", "Noble Roar"), ("Parting Shot", "Snarl"), ("Venom Drench", "Belch"), ("Powder", "Aromatic Mist"), ("Flower Shield", "Aromatic Mist"),
             ("Celebrate", "Happy Hour"), ("Power-Up Punch", "Hold Back"), ("Fell Stinger", "Infestation"), ("Hyperspace Hole", "Hyperspace Fury"),
             ("Origin Pulse", "Steam Eruption"), ("Diamond Storm", "Petal Blizzard"), ("Mystical Fire", "Blue Flare"), ("Water Shuriken", "Origin Pulse")
+        })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
+    }
+
+    /// <summary>Y13a's moves: Generation 7's 68 regular moves, Shore Up (659) to Double Iron Bash (742), and Generation 8's first 13, Dynamax Cannon (744) to Court Change (756); the Z-Moves and Max Moves between are Y14's and Y15's.</summary>
+    private static IEnumerable<MoveData> ThirteenthBatchFirstPart => MoveDatabase.GetAll().Where(m => m.Id is >= 659 and <= 756 && m.Kind == MoveKind.Standard);
+
+    [Fact]
+    public void TheThirteenthBatchsFirstPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        var part = ThirteenthBatchFirstPart.ToList();
+        output.WriteLine($"{part.Count} moves in Y13a: {string.Join(", ", part.Select(m => m.Name))}");
+        Assert.Equal(81, part.Count);
+        Assert.All(part, move => Assert.Equal("Y13", MoveFx.BatchOf(move.Name)));
+        Assert.All(part, move => Assert.True(SoundBank.Exists("use_" + SoundBank.MoveKey(move.Name)), move.Name));
+        Assert.All(part, move => Assert.Equal("use_" + SoundBank.MoveKey(move.Name), SoundBank.MoveSound(move.Name, move.Type)));
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y13"), b => Assert.Contains(part, m => m.Name.Equals(b.Key, StringComparison.OrdinalIgnoreCase)));
+    }
+
+    [Fact]
+    public void TheThirteenthBatchsMovesThatAreAlikeInKindLookDifferentHere()
+    {
+        foreach (var (a, b) in new[]
+        {
+            ("Ice Hammer", "Dragon Hammer"), ("Dragon Hammer", "Power Trip"), ("High Horsepower", "Stomping Tantrum"), ("Baneful Bunker", "Aurora Veil"),
+            ("Glitzy Glow", "Baddy Bad"), ("Zippy Zap", "Zing Zap"), ("Zippy Zap", "Buzzy Buzz"), ("Pika Papow", "Buzzy Buzz"), ("Plasma Fists", "Double Iron Bash"),
+            ("Sunsteel Strike", "Burn Up"), ("Mind Blown", "Burn Up"), ("Fire Lash", "Sizzly Slide"), ("Moongeist Beam", "Prismatic Laser"), ("Photon Geyser", "Prismatic Laser"),
+            ("Psychic Fangs", "Lunge"), ("Floral Healing", "Purify"), ("Strength Sap", "Spectral Thief"), ("Sparkling Aria", "Splishy Splash"), ("Splishy Splash", "Bouncy Bubble"),
+            ("Freezy Frost", "Sparkly Swirl"), ("Leafage", "Trop Kick"), ("Sappy Seed", "Strength Sap"), ("Darkest Lariat", "Brutal Swing"), ("Spirit Shackle", "Anchor Shot"),
+            ("Throat Chop", "Shadow Bone"), ("Smart Strike", "Laser Focus"), ("Toxic Thread", "Spirit Shackle"), ("Beak Blast", "Smart Strike"), ("Psychic Terrain", "Instruct"),
+            ("Clanging Scales", "Core Enforcer"), ("Revelation Dance", "Multi-Attack"), ("Solar Blade", "Liquidation"), ("Floaty Fall", "Pollen Puff"), ("Shell Trap", "Beak Blast"), ("Dynamax Cannon", "Prismatic Laser"), ("Snipe Shot", "Smart Strike"), ("Jaw Lock", "Psychic Fangs"), ("Stuff Cheeks", "Gear Up"), ("No Retreat", "Power Trip"), ("Tar Shot", "Sappy Seed"), ("Magic Powder", "Pollen Puff"), ("Dragon Darts", "Spirit Shackle"), ("Octolock", "Toxic Thread"), ("Bolt Beak", "Zing Zap"), ("Fishious Rend", "Jaw Lock"), ("Court Change", "Speed Swap"), ("Teatime", "Psychic Terrain")
         })
         {
             var ma = MoveDatabase.Get(a)!;

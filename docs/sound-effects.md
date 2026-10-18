@@ -807,6 +807,87 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_precipice_blades` | — | Precipice Blades: a rising growl, four heavy thrusts, a vast thud and a crackling fall of rock. |
 | `use_dragon_ascent` | — | Dragon Ascent: a climbing rush, a vast thud, a falling tone and a ringing bell. |
 | `use_hyperspace_fury` | — | Hyperspace Fury: a rising hum, four quick pounding blows, a vast thud, a crackle and a bell. |
+| `use_shore_up` | — | Shore Up: a soft rush of sand, a small thud, a rising tune and a bell. |
+| `use_first_impression` | — | First Impression: a bright quick hiss, a sharp thud, a second hiss and two high notes. |
+| `use_baneful_bunker` | — | Baneful Bunker: a dull thud, a wavering hum, gurgling bubbles and a low bell. |
+| `use_spirit_shackle` | — | Spirit Shackle: a falling hiss, a dark thud, three hollow bells and a groaning tail. |
+| `use_darkest_lariat` | — | Darkest Lariat: a whirling rush with a growl, a vast thud and a dark falling hiss. |
+| `use_sparkling_aria` | — | Sparkling Aria: a sung run of notes over bubbles, a thud and a high bell. |
+| `use_ice_hammer` | — | Ice Hammer: a falling tone, a vast thud, a crackle of frost, a bell and three falling notes. |
+| `use_floral_healing` | — | Floral Healing: five rising soft notes, a bell and a gentle shimmer. |
+| `use_high_horsepower` | — | High Horsepower: a first stamp, a vast second thud, a crumbling crackle and two low notes. |
+| `use_strength_sap` | — | Strength Sap: a falling draining tone, bubbles, then a rising tone and two notes. |
+| `use_solar_blade` | — | Solar Blade: a rising tone with bright notes, a long bright cut, a thud and a bell. |
+| `use_leafage` | — | Leafage: four quick leafy flicks, a small thud and two notes. |
+| `use_spotlight` | — | Spotlight: a click, a steady hum, four bright notes and a high bell. |
+| `use_toxic_thread` | — | Toxic Thread: a thin stringy hiss, a wavering buzz, bubbles and three falling notes. |
+| `use_laser_focus` | — | Laser Focus: a rising whine, a thin hiss and a sharp locking tick. |
+| `use_gear_up` | — | Gear Up: six clicking gears, a whirring hum, a bell and three rising notes. |
+| `use_throat_chop` | — | Throat Chop: a sharp hiss, a heavy thud with a choked-off tone and two low notes. |
+| `use_pollen_puff` | — | Pollen Puff: a soft rising hum, a puff, a small thud and a shimmer of three notes. |
+| `use_anchor_shot` | — | Anchor Shot: a rushing swish, a vast thud with a low bell and four rattling chain links. |
+| `use_psychic_terrain` | — | Psychic Terrain: two slow wavering drones, four soft notes and a high bell. |
+| `use_lunge` | — | Lunge: a quick rush, a thud, two snapping notes and a falling tone. |
+| `use_fire_lash` | — | Fire Lash: a cracking whip, a roar of flame, a thud and a crackle. |
+| `use_power_trip` | — | Power Trip: a growing growl, four climbing beats, a vast thud and a deep falling tone. |
+| `use_burn_up` | — | Burn Up: a long roaring flame, a vast boom, a crackling blaze and a dying hiss. |
+| `use_speed_swap` | — | Speed Swap: a rising tone crossing a falling one, a fast hiss, a bell and three notes. |
+| `use_smart_strike` | — | Smart Strike: two ticks of a sight locking, a sharp hiss, a thud and a bright bell. |
+| `use_purify` | — | Purify: a clear bell, four rising notes, a shimmer and a gentle glow of a tone. |
+| `use_revelation_dance` | — | Revelation Dance: a lilting dance of seven notes with soft beats, a thud and a bell. |
+| `use_core_enforcer` | — | Core Enforcer: a rising growl, a rush, a vast thud, a sharp tone and a deep bell. |
+| `use_trop_kick` | — | Trop Kick: a swinging rush, a thud and three bright notes. |
+| `use_instruct` | — | Instruct: two sharp ticks, a wavering tone, a tune of five notes and a bell. |
+| `use_beak_blast` | — | Beak Blast: a heating hum, a vast thud, a sizzling crackle and two sharp notes. |
+| `use_clanging_scales` | — | Clanging Scales: six ringing scales, a vast thud, a great bell and a rush of hiss. |
+| `use_dragon_hammer` | — | Dragon Hammer: a falling tone, a vast thud, a crackling split and a low bell. |
+| `use_brutal_swing` | — | Brutal Swing: a heavy sweeping rush, a vast thud, a dark hiss and three low notes. |
+| `use_aurora_veil` | — | Aurora Veil: two slow shimmering drones, four high notes, a fine hiss and a bell. |
+| `use_shell_trap` | — | Shell Trap: a click of a trap, a vast boom, a rushing blaze and a crackle. |
+| `use_fleur_cannon` | — | Fleur Cannon: four soft notes, a rising roar, a vast thud, a bell and a falling tone. |
+| `use_psychic_fangs` | — | Psychic Fangs: a wavering tone, a thud, a double snap, a crackle of glass and a bell. |
+| `use_stomping_tantrum` | — | Stomping Tantrum: an angry buzz, a first stamp, a vast second stamp and a crumbling crackle. |
+| `use_shadow_bone` | — | Shadow Bone: a spinning whirr, a clack, a thud and a hollow falling tone. |
+| `use_accelerock` | — | Accelerock: a fast rising rush, a thud and a rocky crackle. |
+| `use_liquidation` | — | Liquidation: a keen rush of water, a thud, a splash, bubbling and three notes. |
+| `use_prismatic_laser` | — | Prismatic Laser: a rising whine, five bright notes, a vast thud, a crackle and a ringing bell. |
+| `use_spectral_thief` | — | Spectral Thief: a hollow falling hum, a dark thud, four creeping notes and a bell. |
+| `use_sunsteel_strike` | — | Sunsteel Strike: a blazing falling roar, a vast boom, a ringing bell and a crackle. |
+| `use_moongeist_beam` | — | Moongeist Beam: a slow dark hum, four soft notes, a deep thud, a bell and a falling tone. |
+| `use_tearful_look` | — | Tearful Look: a trembling tone, four falling notes, a few bubbles and a small bell. |
+| `use_zing_zap` | — | Zing Zap: a hard crackling hiss, a thud and three sharp notes. |
+| `use_nature_s_madness` | — | Nature's Madness: a rustling wild wash, a wobbling tone, five notes, a thud and a bell. |
+| `use_multi_attack` | — | Multi-Attack: a rising run of six notes, a vast thud and four clashing bells. |
+| `use_mind_blown` | — | Mind Blown: a swelling growl, a vast boom, a crackle, and a second boom. |
+| `use_plasma_fists` | — | Plasma Fists: two thuds each with a crackle of plasma and a rising buzz. |
+| `use_photon_geyser` | — | Photon Geyser: a rising hum, a vast thud, a soaring tone, four bright notes and a bell. |
+| `use_zippy_zap` | — | Zippy Zap: a quick crackling zip, a thud and three sharp notes. |
+| `use_splishy_splash` | — | Splishy Splash: a rushing wash with bubbles, a thud, a splash, a few sparks and two notes. |
+| `use_floaty_fall` | — | Floaty Fall: a floating tone, a hush of air, a drop, a soft thud and three falling notes. |
+| `use_pika_papow` | — | Pika Papow: four bright notes, a quavering tone, a thud, a crackle and four high notes. |
+| `use_bouncy_bubble` | — | Bouncy Bubble: three bouncing bubbles, a thud, a burst of bubbles and three notes. |
+| `use_buzzy_buzz` | — | Buzzy Buzz: a long buzzing hum with a crackle, a small thud and two sharp notes. |
+| `use_sizzly_slide` | — | Sizzly Slide: a long sizzling slide, a thud, a crackle and two notes. |
+| `use_glitzy_glow` | — | Glitzy Glow: six glittering high notes, a fine hiss, a thud and a bell. |
+| `use_baddy_bad` | — | Baddy Bad: a low growl, four sneering notes, a dark swell, a thud and a bell. |
+| `use_sappy_seed` | — | Sappy Seed: a flick, a small thud, a growing tone, a rustle, bubbling and three notes. |
+| `use_freezy_frost` | — | Freezy Frost: a long icy hiss, a glassy tone, a thud, a crackle of frost and four chimes. |
+| `use_sparkly_swirl` | — | Sparkly Swirl: a rising swirl of notes, a thud, a bell, a glitter and three falling notes. |
+| `use_veevee_volley` | — | Veevee Volley: three quick light pats each with a note, a thud and a bright run. |
+| `use_double_iron_bash` | — | Double Iron Bash: two iron blows each with a clang, a crackle and a ring. |
+| `use_dynamax_cannon` | — | Dynamax Cannon: three ringing muzzle bells, a rising roar, a colossal thud, a long crackle and a deep falling tone. |
+| `use_snipe_shot` | — | Snipe Shot: three ticks of a sight, a razor hiss, a thud, bubbles and two notes. |
+| `use_jaw_lock` | — | Jaw Lock: a growl, a heavy thud with a snap, then five rattling chain links and a bell. |
+| `use_stuff_cheeks` | — | Stuff Cheeks: four soft pops with a rustle, a swelling tone and three happy notes. |
+| `use_no_retreat` | — | No Retreat: four heavy stakes driven in, a rising growl, five climbing notes and a bell. |
+| `use_tar_shot` | — | Tar Shot: a sticky rush, a wet thud, thick bubbling and a low falling tone. |
+| `use_magic_powder` | — | Magic Powder: a fine glittering hiss, five high notes over a wavering tone and a bell. |
+| `use_dragon_darts` | — | Dragon Darts: two quick hisses each with a thud, a deep bell and two falling notes. |
+| `use_teatime` | — | Teatime: a china chime, a gentle five-note tune over a soft steam hiss and a low glow. |
+| `use_octolock` | — | Octolock: a writhing growl, a grinding rush, three squeezing thuds and three falling notes. |
+| `use_bolt_beak` | — | Bolt Beak: a crackling charge, a thud with a burst of sparks and three high notes. |
+| `use_fishious_rend` | — | Fishious Rend: a rushing hiss, a thud with a double snap, bubbling and three notes. |
+| `use_court_change` | — | Court Change: a rising tone crossing a falling one, two thuds, a bell and three notes. |
 
 ## Cries
 
