@@ -1,0 +1,42 @@
+{
+  // Violet City's Pokémon Academy (plan 20 · J2): a teacher, her pupils and a blackboard of lessons
+  "area": "violet_pokemon_school",
+  "bgmTrack": "johto/violet",
+  "people": {
+    "t22r0301_gsbigman": {
+      "name": "Teacher",
+      "dialog": [
+        "Welcome to the Academy! Today's lesson: a Pokémon that is poisoned keeps losing HP, even after the battle.",
+        "Carry an Antidote, and you'll never be caught out."
+      ]
+    },
+    "t22r0301_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "I'm copying the notes off the board. Fire beats Grass, Water beats Fire, Grass beats Water..." ]
+    },
+    "t22r0301_gsboy1_2": {
+      "name": "Boy",
+      "dialog": [ "A sleeping Pokémon can't do anything. So I'm going to catch them all while they nap!" ]
+    },
+    "t22r0301_gsdsboy": {
+      "name": "Boy",
+      "dialog": [ "Shh! I'm reading about Pokémon that only come out at night." ]
+    },
+    "t22r0301_gsdsboy_2": {
+      "name": "Boy",
+      "dialog": [ "He's not reading, he's playing a game. I can see the screen." ]
+    },
+    "t22r0301_gsman2": {
+      "name": "Student",
+      "dialog": [ "I'm the oldest pupil here. It's never too late to learn something about Pokémon!" ]
+    },
+    "t22r0301_gsgirl2": {
+      "name": "Girl",
+      "dialog": [ "Paralysis makes a Pokémon slow, and sometimes it can't move at all. Did I get that right?" ]
+    }
+  },
+  "signs": {
+    "T22R0301_001+1": "The blackboard: STATUS CONDITIONS\nPoison, Paralysis, Sleep, Burn, Freeze.",
+    "T22R0301_002+1": "A notebook, open at a page about type matchups. The handwriting is very neat."
+  }
+}

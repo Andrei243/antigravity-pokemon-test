@@ -1,0 +1,11 @@
+{
+  // The Guide Gent's house in Cherrygrove City (plan 20 · J2). Its owner is out showing newcomers about town
+  "area": "cherrygrove_guide_gent_house",
+  "bgmTrack": "johto/cherrygrove",
+  "people": {
+    "t21r0401_gsoldman1": {
+      "name": "Old Man",
+      "dialog": [ "My friend down the road loves showing people round. He'd talk the ears off a Donphan if you let him." ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "new_bark_elms_lab_2f",
+  "index": 62,
+  "name": "New Bark Town",
+  "matrix": 101,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_WAKABA",
+  "nightMusic": "GS_T_WAKABA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 12, "z": 6, "to": "new_bark", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "t20r0102_gswoman1", "looks": "gswoman1", "movement": "0", "x": 7, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T20R0102_000+1" },
+    { "id": "t20r0102_gsboy2", "looks": "gsboy2", "movement": "3", "x": 3, "z": 9, "facing": 2, "rangeX": 1, "rangeZ": 2, "script": "T20R0102_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

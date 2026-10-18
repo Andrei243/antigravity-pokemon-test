@@ -1,0 +1,16 @@
+{
+  // The gate house between Violet City and Route 36 (plan 20 · J2). Route 36 is plan 20 · J5's: the gate house's
+  // west door stays shut until then
+  "area": "violet_route_36_gatehouse",
+  "bgmTrack": "johto/violet",
+  "people": {
+    "t22r0701_counterm": {
+      "name": "Officer",
+      "dialog": [ "Route 36 is closed for now. Some strange tree is standing in the road, and nobody can shift it." ]
+    },
+    "t22r0701_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "I poked the tree on Route 36 and it wobbled at me! Trees don't do that!" ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  // A house in the south-west of New Bark Town (plan 20 · J2)
+  "area": "new_bark_southwest_house",
+  "bgmTrack": "johto/new_bark",
+  "people": {
+    "t20r0301_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "Pokémon don't go into the tall grass by the town's edge for nothing. They're shy of people.",
+        "If you go out there, take a Pokémon of your own with you."
+      ]
+    }
+  }
+}

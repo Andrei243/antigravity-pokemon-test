@@ -210,8 +210,12 @@ public static class WorldMapBuilder
         bool cave = entry.Setting == MapSetting.Cave, nothing = entry.Setting == MapSetting.Void, room = entry.Setting == MapSetting.Indoors;
         // A room built from a layout is as large as its floor and the walls round it, not the chunk it is laid in: a
         // room is looked at from its middle and walled at its edges (plan 19 · K1)
+        // A DS game's room (plan 20 · J2) lies in its chunk's corner too, but the original leaves the chunk round it open:
+        // it is as large as what can be walked to from its ways in, and the rest of it is wall
+        bool[]? reach = null;
         var (mapWidth, mapHeight) = room && matrix.Width == 1 && matrix.Height == 1 && world.Chunk(ChunkOf(0, 0)) is { } only
-            ? RoomExtent(only) : (matrix.Width * T, matrix.Height * T);
+            ? world.Index.BuildingsAtDoors ? RoomExtent(only) : RoomExtent(only, reach = RoomReach(only, world.Area(entry.Area ?? "")?.Warps ?? new()))
+            : (matrix.Width * T, matrix.Height * T);
         var map = new Map(mapWidth, mapHeight)
         {
             Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel, Setting = entry.Setting
@@ -284,7 +288,23 @@ public static class WorldMapBuilder
                             furniture.Add(new Prop { Type = kind, X = cx * T + (int)prop.BoxX, Y = cy * T + (int)prop.BoxZ, Width = (int)prop.Width, Depth = (int)prop.Depth });
                         continue;
                     }
-                    models.Add(new Placed(prop, cx * T + prop.BoxX, cy * T + prop.BoxZ, WorldModels.Of(prop.Name), area));
+                    var model = WorldModels.Of(prop.Name, world.Index.Region);
+                    // A DS game's room (plan 20 · J2): its models are furniture, laid once the room's floor and walls are
+                    if (room && !world.Index.BuildingsAtDoors)
+                    {
+                        if (model is { Role: ModelRole.Scenery } piece)
+                        {
+                            // The tiles whose middle lies in the box; a thing smaller than a tile stands on the one under its middle
+                            float bx = cx * T + prop.BoxX, bz = cy * T + prop.BoxZ;
+                            int x0 = (int)MathF.Floor(bx - 0.5f) + 1, x1 = (int)MathF.Ceiling(bx + prop.Width - 0.5f) - 1;
+                            int z0 = (int)MathF.Floor(bz - 0.5f) + 1, z1 = (int)MathF.Ceiling(bz + prop.Depth - 0.5f) - 1;
+                            if (x1 < x0) x0 = x1 = (int)MathF.Floor(bx + prop.Width / 2f);
+                            if (z1 < z0) z0 = z1 = (int)MathF.Floor(bz + prop.Depth / 2f);
+                            furniture.Add(new Prop { Type = piece.Prop, X = x0, Y = z0, Width = x1 - x0 + 1, Depth = z1 - z0 + 1 });
+                        }
+                        continue;
+                    }
+                    models.Add(new Placed(prop, cx * T + prop.BoxX, cy * T + prop.BoxZ, model, area));
                 }
 
                 var count = trees.GetValueOrDefault(area);
@@ -322,6 +342,10 @@ public static class WorldMapBuilder
                         .Select(d => TreesOfChunk(cx + d.Item1, cy + d.Item2)).OfType<TreeStyle>().ToList();
                     if (beside.Count > 0 && beside.All(style => style == TreeStyle.Round)) map.SetChunkTrees(cx, cy, TreeStyle.Round);
                 }
+
+        // A room cut down to what can be walked to (a DS game's, plan 20 · J2) leaves its chunk's open tiles beyond it
+        vague.RemoveAll(t => !map.InBounds(t.X, t.Z));
+        blank.RemoveAll(t => !map.InBounds(t.X, t.Z));
 
         // The tiles that lead somewhere, in every area whose file the game has: a building's way in
         var entrances = new HashSet<(int X, int Z)>();
@@ -373,6 +397,35 @@ public static class WorldMapBuilder
             foreach (var (x, z) in vague) map.SetGroundTile(x, z, TileType.Floor, map.IsSolid(x, z));
             foreach (var (x, z) in blank) map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
             if (world.Index.BuildingsAtDoors) Furnish(map, furniture, entrances);
+            else if (reach != null)
+            {
+                // What no way in reaches is wall, and the back wall is the row before the first that is walked on
+                int back = map.Height;
+                for (int z = 0; z < map.Height; z++)
+                    for (int x = 0; x < map.Width; x++)
+                    {
+                        if (reach[z * T + x]) { back = Math.Min(back, z); continue; }
+                        map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+                    }
+                // What hangs on the wall hangs on the wall over the floor's first row
+                bool OnTheWall(Prop p) => p.Type is PropType.Clock or PropType.Painting or PropType.Window;
+                // A row of furniture standing all along the back wall (Elm's lab: its machines, its desk and its bin)
+                // blocks the row before the first one walked on: that row is floor along the wall's foot, blocked
+                if (furniture.Any(p => !OnTheWall(p) && p.Y == back - 1 && back >= 2))
+                {
+                    back--;
+                    for (int x = 1; x < map.Width - 1; x++)
+                        if (map.GetGroundTile(x, back) == TileType.Wall) map.SetGroundTile(x, back, TileType.Floor, isSolid: true);
+                }
+                furniture = furniture.Select(p => OnTheWall(p) ? new Prop { Type = p.Type, X = p.X, Y = back, Width = p.Width, Depth = 1 } : p).ToList();
+                // A piece of furniture stands on the floor: the tiles under it that no way reaches (it blocks them) are floor
+                foreach (var piece in furniture.Where(p => !OnTheWall(p)))
+                    for (int z = piece.Y; z < piece.Y + piece.Depth; z++)
+                        for (int x = piece.X; x < piece.X + piece.Width; x++)
+                            if (map.InBounds(x, z) && z >= back && x > 0 && x < map.Width - 1 && z < map.Height - 1)
+                                map.SetGroundTile(x, z, TileType.Floor, map.IsSolid(x, z));
+                LayFurniture(map, furniture.Where(p => p.Y >= back && p.X > 0 && p.X + p.Width < map.Width && p.Y + p.Depth < map.Height).ToList(), back);
+            }
         }
         else
         {
@@ -435,6 +488,42 @@ public static class WorldMapBuilder
         return (Math.Min(T, maxX + 2), Math.Min(T, maxZ + 2));
     }
 
+    /// <summary>
+    /// The tiles of a DS game's room (plan 20 · J2) that can be walked to from its ways in, by the chunk's own tiles:
+    /// the original leaves the chunk round the room open, where nobody can come.
+    /// </summary>
+    public static bool[] RoomReach(WorldChunkFile chunk, IReadOnlyList<AreaWarp> warps)
+    {
+        var reached = new bool[T * T];
+        var open = new Stack<(int X, int Z)>();
+        foreach (var w in warps)
+            if (w.X >= 0 && w.Z >= 0 && w.X < T && w.Z < T) open.Push((w.X, w.Z));
+        var ways = warps.Select(w => (w.X, w.Z)).ToHashSet();
+        while (open.Count > 0)
+        {
+            var (x, z) = open.Pop();
+            if (x < 0 || z < 0 || x >= T || z >= T || reached[z * T + x]) continue;
+            if (chunk.SolidAt(x, z) && !ways.Contains((x, z))) continue;
+            reached[z * T + x] = true;
+            open.Push((x + 1, z)); open.Push((x - 1, z)); open.Push((x, z + 1)); open.Push((x, z - 1));
+        }
+        return reached;
+    }
+
+    /// <summary>How large a DS game's room is (plan 20 · J2): one tile past the last tile its ways in reach, east and south, for the wall there.</summary>
+    public static (int Width, int Height) RoomExtent(WorldChunkFile chunk, bool[] reach)
+    {
+        int maxX = 0, maxZ = 0;
+        for (int z = 0; z < T; z++)
+            for (int x = 0; x < T; x++)
+                if (reach[z * T + x])
+                {
+                    maxX = Math.Max(maxX, x);
+                    maxZ = Math.Max(maxZ, z);
+                }
+        return (Math.Min(T, maxX + 2), Math.Min(T, maxZ + 2));
+    }
+
     /// <summary>The prefix of a chunk's prop that is a piece of a GBA room's furniture (<c>gba:Table</c>; plan 19 · K2).</summary>
     public const string FurniturePrefix = "gba:";
 
@@ -487,6 +576,17 @@ public static class WorldMapBuilder
         }
         furniture = furniture.Where(p => p.Type != PropType.Rug)
             .Concat(rugs.Select(r => new Prop { Type = PropType.Rug, X = r.X0, Y = r.Z0, Width = r.X1 - r.X0 + 1, Depth = r.Z1 - r.Z0 + 1 })).ToList();
+        LayFurniture(map, furniture, wallRow);
+    }
+
+    /// <summary>
+    /// A room's furniture laid on its floor (plan 19 · K2, and plan 20 · J2's rooms of a DS game): each piece's tiles are
+    /// floor, blocked or not as they were; what hangs on the back wall (a window, a painting, a clock) hangs on the
+    /// row above <paramref name="wallRow"/>, the floor's foot along the wall, where a piece stands on it; a piece this
+    /// game builds a tile at a time is laid a tile at a time.
+    /// </summary>
+    public static void LayFurniture(Map map, IReadOnlyList<Prop> furniture, int wallRow)
+    {
         foreach (var piece in furniture)
         {
             if (piece.Type is PropType.Window or PropType.Painting or PropType.Clock or PropType.WallEmblem)
@@ -1068,7 +1168,9 @@ public static class WorldMapBuilder
                     SpeciesName = wild.Species,
                     MinLevel = wild.Level,
                     MaxLevel = wild.MaxLevel ?? wild.Level,
-                    Weight = wild.Weight ?? (slot < weights.Length ? weights[slot] : 1)
+                    Weight = wild.Weight ?? (slot < weights.Length ? weights[slot] : 1),
+                    DaySpecies = wild.Day,
+                    NightSpecies = wild.Night
                 });
             }
         }
@@ -1285,7 +1387,8 @@ public static class WorldMapBuilder
     /// <summary>Towns whose yards are fenced in wood; elsewhere what a model leaves standing about is a low wall.</summary>
     private static bool FencesInWood(Architecture? town) =>
         town is Architecture.Timber or Architecture.Plaster or Architecture.Clapboard or Architecture.Cottage or Architecture.Farm
-            or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber or Architecture.Evergreen;
+            or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber or Architecture.Evergreen or Architecture.Breeze
+            or Architecture.Bayside;
 
     /// <summary>
     /// Cuts a set of tiles into rectangles, the largest first: a house is one, a museum with a wing two. Ties go
@@ -1911,8 +2014,9 @@ public static class WorldMapBuilder
     /// <summary>The obstacle an object of the original is, by the name of its looks: what Cut, Rock Smash and Strength clear.</summary>
     public static PropType? ObstacleFor(string looks) => looks switch
     {
-        "cut_tree" => PropType.CutTree,
-        "rock_smash" => PropType.CrackedRock,
+        // (HeartGold's small tree is "tree", plan 20 · J2)
+        "cut_tree" or "tree" => PropType.CutTree,
+        "rock_smash" or "breakrock" => PropType.CrackedRock,
         "strength_boulder" => PropType.StrengthBoulder,
         _ => null
     };
@@ -2094,7 +2198,7 @@ public static class WorldMapBuilder
             // A GBA game's signpost is a tile and a sign event (plan 19 · K1): where the overlay gives the sign's script
             // our words, a blocked tile of the open country that does nothing stands a signpost, read like one of
             // Sinnoh's; in a room (a bookshelf, a PC) and on a door the tile is what it was, and is read all the same
-            else if (s.Type == AreaSign.Read && s.Script.Length > 0 && overlay?.Signs?.GetValueOrDefault(s.Script) is { } text)
+            else if (s.Type != AreaSign.HiddenItem && s.Script.Length > 0 && overlay?.Signs?.GetValueOrDefault(s.Script) is { } text)
             {
                 if (!map.IsIndoors && map.IsSolid(s.X, s.Z) && map.BehaviourAt(s.X, s.Z) == TileBehavior.None)
                     map.SetGroundTile(s.X, s.Z, TileType.Signpost, isSolid: true);
@@ -2203,7 +2307,12 @@ public static class WorldMapBuilder
         // the west, walked off to the north or the south) put whoever comes up them down in the passage: the original
         // leaves the player on the stairs' own tile, which here would take the warp again
         bool Blocked(int tx, int tz) => world.ChunkAt(target.Matrix, tx, tz) is not { } at || at.Chunk.SolidAt(at.X, at.Z);
-        if (world.BehaviourAt(target.Matrix, to.X, to.Z) is TileBehavior.StairsEast or TileBehavior.StairsWest && Blocked(x, z))
+        // HeartGold's ways out (plan 20 · J2) are told the same way, but a few face a wall (Elm's house in New Bark
+        // Town, whose door's tile says "out to the west" with the lab's wall there): whoever comes out stands on the
+        // open tile beside it, as on stairs
+        bool besideIt = world.BehaviourAt(target.Matrix, to.X, to.Z) is TileBehavior.StairsEast or TileBehavior.StairsWest
+            || string.Equals(world.Index.Region, RegionDatabase.Johto, StringComparison.OrdinalIgnoreCase) && (x != to.X || z != to.Z);
+        if (besideIt && Blocked(x, z))
             foreach (var (dx, dz, way) in new[] { (0, 1, Direction.Down), (0, -1, Direction.Up), (-1, 0, Direction.Left), (1, 0, Direction.Right) })
                 if (!Blocked(to.X + dx, to.Z + dz))
                 {

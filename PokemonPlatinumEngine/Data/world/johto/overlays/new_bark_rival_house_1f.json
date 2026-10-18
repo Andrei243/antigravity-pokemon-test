@@ -1,0 +1,14 @@
+{
+  // The house next door in New Bark Town (plan 20 · J2), where the hero the player didn't choose lives
+  "area": "new_bark_rival_house_1f",
+  "bgmTrack": "johto/new_bark",
+  "people": {
+    "t20r0401_gsmiddleman1": {
+      "name": "Neighbour",
+      "dialog": [
+        "Oh, hello! Come to see our youngster? Up the stairs, as usual.",
+        "The two of you have been running about this town since you could walk."
+      ]
+    }
+  }
+}

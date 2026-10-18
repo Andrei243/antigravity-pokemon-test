@@ -1,0 +1,42 @@
+{
+  // Violet City's Pokémon Center (plan 20 · J2), Cherrygrove's floor with Violet's people. The counters for the link
+  // say it is closed, as in every Center (decision 06 · 7); the Wi-Fi Club's receptionist before the stairs down is left
+  // out, as in Cherrygrove's
+  "area": "violet_pokecenter_1f",
+  "bgmTrack": "johto/violet",
+  "people": {
+    "t22pc0101_pcwoman1": { "name": "Nurse", "script": "Nurse" },
+    "t22pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [ "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu." ]
+    },
+    "t22pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t22pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t22pc0101_gsman1": {
+      "name": "Man",
+      "dialog": [ "I've been all over Johto, and this Center has the softest sofas of the lot." ]
+    },
+    "t22pc0101_gsgentleman": {
+      "name": "Gentleman",
+      "dialog": [ "Trade a Pokémon with a friend and it grows faster than the ones you caught yourself. Curious, isn't it?" ]
+    },
+    "t22pc0101_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "My Pokémon got worn out in the tower. The nurse fixed it right up!" ]
+    },
+    "t22pc0101_instructor": {
+      "name": "Teacher",
+      "dialog": [ "I teach at the Academy across the way. Come by if you want to learn about status conditions." ]
+    },
+    "t22pc0101_gsman3": {
+      "name": "Man",
+      "dialog": [ "A Pokémon at full health is no use if it doesn't know a good move. Check your team's moves now and then." ]
+    }
+  }
+}

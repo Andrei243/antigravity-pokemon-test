@@ -603,7 +603,7 @@ public class ScriptTests
     [InlineData("script A\n end now", "more than the line needs")]
     [InlineData("script A\n emote self none", "no bubble")]
     [InlineData("script A\n givepokemon \"Starly\" 101", "1 to 100")]
-    [InlineData("script A\n givebadge glacier", "not a badge")]
+    [InlineData("script A\n givebadge thistle", "not a badge")]
     [InlineData("script A\n choose \"Which?\" \"Only one\"", "at least two answers")]
     [InlineData("script A\n fade sideways", "'out' or 'in'")]
     [InlineData("script A\n wait soon", "not a time")]

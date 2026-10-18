@@ -1,0 +1,76 @@
+{
+  "key": "cherrygrove",
+  "index": 67,
+  "name": "Cherrygrove City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_C_YOSHINO",
+  "nightMusic": "GS_C_YOSHINO",
+  "encounters": "T21",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Corsola", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Corsola", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 564, "z": 391, "to": "cherrygrove_pokecenter_1f", "toWarp": 0 },
+    { "x": 555, "z": 391, "to": "cherrygrove_pokemart", "toWarp": 0 },
+    { "x": 547, "z": 399, "to": "cherrygrove_southwest_house", "toWarp": 0 },
+    { "x": 558, "z": 401, "to": "cherrygrove_guide_gent_house", "toWarp": 0 },
+    { "x": 567, "z": 405, "to": "cherrygrove_southeast_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t21_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 566, "z": 396, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CHERRYGROVE_GUIDE_GENT", "script": "T21_000+1" },
+    { "id": "t21_gsboy1", "looks": "gsboy1", "movement": "3", "x": 554, "z": 399, "facing": 2, "rangeX": 0, "rangeZ": 1, "script": "T21_007+1" },
+    { "id": "t21_gswoman1", "looks": "gswoman1", "movement": "5", "x": 561, "z": 407, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "T21_008+1" },
+    { "id": "t21_gsbigman", "looks": "gsbigman", "movement": "17", "x": 530, "z": 406, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T21_004+1" },
+    { "id": "t21_gsrivel", "looks": "gsrivel", "movement": "0", "x": 575, "z": 384, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CHERRYGROVE_RIVAL", "script": "0" },
+    { "id": "t21_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 562, "z": 402, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T21_009+1" }
+  ],
+  "signs": [
+    { "x": 556, "z": 401, "type": 1, "script": "T21_005+1" },
+    { "x": 554, "z": 396, "type": 1, "script": "T21_006+1" },
+    { "x": 572, "z": 390, "type": 2, "script": "std_hiddenitem_r29_r30_t21_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_R29_R30_T21_NUGGET" },
+    { "x": 522, "z": 388, "type": 2, "script": "std_hiddenitem_t21_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_T21_NUGGET" }
+  ],
+  "triggers": [
+    { "x": 566, "z": 397, "width": 1, "depth": 4, "script": "T21_001+1", "variable": "VAR_SCENE_CHERRYGROVE_CITY_OW", "value": "0" },
+    { "x": 575, "z": 398, "width": 1, "depth": 4, "script": "T21_003+1", "variable": "VAR_SCENE_CHERRYGROVE_CITY_OW", "value": "3" },
+    { "x": 547, "z": 385, "width": 4, "depth": 1, "script": "T21_002+1", "variable": "VAR_SCENE_CHERRYGROVE_CITY_OW", "value": "1" }
+  ]
+}

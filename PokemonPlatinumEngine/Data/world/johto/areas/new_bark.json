@@ -1,0 +1,82 @@
+{
+  "key": "new_bark",
+  "index": 60,
+  "name": "New Bark Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_T_WAKABA",
+  "nightMusic": "GS_T_WAKABA",
+  "encounters": "T20",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 },
+    { "species": "Shellder", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Chinchou", "level": 40, "maxLevel": 40 },
+    { "species": "Shellder", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 },
+    { "species": "Lanturn", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 684, "z": 393, "to": "new_bark_elms_lab_1f", "toWarp": 0 },
+    { "x": 695, "z": 396, "to": "new_bark_player_house_1f", "toWarp": 0 },
+    { "x": 679, "z": 405, "to": "new_bark_southwest_house", "toWarp": 0 },
+    { "x": 690, "z": 407, "to": "new_bark_rival_house_1f", "toWarp": 0 },
+    { "x": 688, "z": 392, "to": "new_bark_elms_lab_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t20_gsrivel", "looks": "gsrivel", "movement": "0", "x": 682, "z": 391, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_NEW_BARK_RIVAL", "script": "T20_000+1" },
+    { "id": "t20_gswoman1", "looks": "gswoman1", "movement": "2", "x": 683, "z": 399, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T20_001+1" },
+    { "id": "t20_gsbigman", "looks": "gsbigman", "movement": "3", "x": 685, "z": 408, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T20_015+1" },
+    { "id": "t20_tsure_poke_static_marill", "looks": "follower_mon_static_marill", "movement": "0", "x": 695, "z": 406, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_NEW_BARK_MARILL", "script": "T20_005+1" },
+    { "id": "t20_var_1", "looks": "var_1", "movement": "0", "x": 688, "z": 392, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_NEW_BARK_FRIEND", "script": "T20_004+1" },
+    { "id": "t20_doctor", "looks": "doctor", "movement": "0", "x": 703, "z": 384, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t20_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 695, "z": 403, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T20_017+1" },
+    { "id": "t20_gsmama", "looks": "gsmama", "movement": "0", "x": 695, "z": 396, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_NEW_BARK_MOM", "script": "0" },
+    { "id": "t20_var_1_2", "looks": "var_1", "movement": "0", "x": 694, "z": 400, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_NEW_BARK_FRIEND_2", "script": "T20_004+1" },
+    { "id": "t20_tsure_poke_static_marill_2", "looks": "follower_mon_static_marill", "movement": "0", "x": 693, "z": 400, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_NEW_BARK_FRIEND_2", "script": "T20_005+1" }
+  ],
+  "signs": [
+    { "x": 682, "z": 393, "type": 1, "script": "T20_013+1" },
+    { "x": 693, "z": 396, "type": 1, "script": "T20_007+1" },
+    { "x": 685, "z": 400, "type": 1, "script": "T20_014+1" },
+    { "x": 688, "z": 407, "type": 1, "script": "T20_016+1" },
+    { "x": 682, "z": 391, "type": 2, "script": "std_hiddenitem_t20_potion", "item": "Potion", "flag": "FLAG_HIDDEN_ITEM_T20_POTION" }
+  ],
+  "triggers": [
+    { "x": 676, "z": 396, "width": 1, "depth": 7, "script": "T20_002+1", "variable": "VAR_SCENE_NEW_BARK_WEST_EXIT", "value": "0" },
+    { "x": 688, "z": 392, "width": 1, "depth": 1, "script": "T20_010+1", "variable": "VAR_TEMP_x4003", "value": "0" },
+    { "x": 700, "z": 398, "width": 1, "depth": 5, "script": "T20_011+1", "variable": "VAR_SCENE_NEW_BARK_EAST_EXIT", "value": "1" },
+    { "x": 700, "z": 398, "width": 1, "depth": 5, "script": "T20_012+1", "variable": "VAR_SCENE_NEW_BARK_EAST_EXIT", "value": "2" }
+  ]
+}

@@ -15,8 +15,8 @@ namespace MapImporter.Hg;
 /// every region's file), the name, the class, the AI's routines
 /// (the same engine's bits as Platinum's, <see cref="AiFlags"/>), the items, the double battle and the team
 /// (species, level, the IVs' share of 255 the original calls difficulty, the held item and the moves the trainer
-/// chose). The file's <c>messages</c>, the trainers' lines, are never read. Prize money and personalities are left
-/// at nought, as the GBA reader leaves them: their tables are a later session's.
+/// chose), with the prize money <c>CalcPrizeMoney</c> pays and each Pokémon's personality as <c>TrainerData_BuildParty</c>
+/// makes it (plan 20 · J2). The file's <c>messages</c>, the trainers' lines, are never read.
 /// </summary>
 public static class HgssTrainers
 {
@@ -27,8 +27,79 @@ public static class HgssTrainers
         ["MOVE_SMELLING_SALT"] = "MOVE_SMELLING_SALTS"
     };
 
-    public static List<TrainerRecord> Parse(string json, string trainersH, List<string> problems, string idPrefix = "")
+    /// <summary>
+    /// The trainer classes in <c>include/constants/trainer_class.h</c>'s order, by their constants: a class's number is
+    /// how many times <c>TrainerData_BuildParty</c> runs the generator for each of its Pokémon.
+    /// </summary>
+    public static Dictionary<string, int> ClassNumbers(string trainerClassH)
     {
+        var numbers = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (Match m in Regex.Matches(trainerClassH, @"^#define\s+(TRAINERCLASS_\w+)\s+(\d+)", RegexOptions.Multiline))
+            numbers.TryAdd(m.Groups[1].Value, int.Parse(m.Groups[2].Value, CultureInfo.InvariantCulture));
+        return numbers;
+    }
+
+    /// <summary>
+    /// Which classes are women (<c>sTrainerGenders</c> of <c>src/trainer_data.c</c>, a row for each class in its
+    /// number's order): their Pokémon's personalities end in 0x78 where a man's or a pair's end in 0x88.
+    /// </summary>
+    public static List<bool> ClassWomen(string trainerDataC)
+    {
+        int start = trainerDataC.IndexOf("sTrainerGenders[]", StringComparison.Ordinal);
+        if (start < 0) return new();
+        string table = trainerDataC[start..trainerDataC.IndexOf("};", start, StringComparison.Ordinal)];
+        return Regex.Matches(table, @"\bTRAINER_(MALE|FEMALE|DOUBLE)\b").Select(m => m.Groups[1].Value == "FEMALE").ToList();
+    }
+
+    /// <summary>
+    /// The prize money's number by class (<c>sPrizeMoneyTbl</c>, still assembly in <c>asm/overlay_12_battle_command.s</c>:
+    /// a class and its number a row). <c>CalcPrizeMoney</c> pays the last Pokémon's level × 4 × that number, twice it in
+    /// a double battle; a class the table lacks is paid as its third row (the Youngster's), as the original falls back.
+    /// </summary>
+    public static Dictionary<string, int> PrizeRates(string battleCommandS)
+    {
+        var rates = new Dictionary<string, int>(StringComparer.Ordinal);
+        int start = battleCommandS.IndexOf("sPrizeMoneyTbl:", StringComparison.Ordinal);
+        if (start < 0) return rates;
+        foreach (Match m in Regex.Matches(battleCommandS[start..], @"^\s*\.short\s+(TRAINERCLASS_\w+)\s*,\s*(\d+)", RegexOptions.Multiline))
+            rates.TryAdd(m.Groups[1].Value, int.Parse(m.Groups[2].Value, CultureInfo.InvariantCulture));
+        return rates;
+    }
+
+    /// <summary>
+    /// A Pokémon's personality as HeartGold's <c>TrainerData_BuildParty</c> makes it: the console's generator seeded with
+    /// the IVs' share, the level, the species' number and the trainer's, run once for each class before the trainer's,
+    /// its high half shifted a byte and the gender's number added. The gender's number is the class's (0x78 for a
+    /// woman, 0x88 otherwise) until a Pokémon overrides it, and the override stays for the Pokémon after it, as the
+    /// original keeps it in one variable: a gender asked for is the species' share of females two over (a male) or
+    /// two under (a female), and an ability asked for clears or sets the lowest bit.
+    /// </summary>
+    public static uint Personality(int difficulty, int level, int species, int trainer, int classNumber, ref uint gender)
+    {
+        uint seed = (uint)(difficulty + level + species + trainer), value = seed;
+        for (int j = 0; j < classNumber; j++)
+        {
+            seed = unchecked(seed * 1103515245u + 24691u);
+            value = seed >> 16;
+        }
+        return unchecked((value << 8) + gender);
+    }
+
+    /// <summary>What a Pokémon of the file asks of the gender's number before its personality is made (<c>TrMon_OverridePidGender</c>).</summary>
+    public static void Override(string genderOverride, string abilityOverride, int femaleThreshold, ref uint gender)
+    {
+        if (genderOverride == "TRPOKE_GENDER_OVERRIDE_MALE") gender = (uint)(femaleThreshold + 2);
+        else if (genderOverride == "TRPOKE_GENDER_OVERRIDE_FEMALE") gender = (uint)(femaleThreshold - 2);
+        if (abilityOverride == "TRPOKE_ABILITY_OVERRIDE_FIRST") gender &= ~1u;
+        else if (abilityOverride == "TRPOKE_ABILITY_OVERRIDE_SECOND") gender |= 1u;
+    }
+
+    public static List<TrainerRecord> Parse(string json, string trainersH, List<string> problems, string idPrefix = "",
+        string? trainerClassH = null, string? trainerDataC = null, string? battleCommandS = null)
+    {
+        var classNumbers = trainerClassH == null ? new() : ClassNumbers(trainerClassH);
+        var women = trainerDataC == null ? new() : ClassWomen(trainerDataC);
+        var rates = battleCommandS == null ? new() : PrizeRates(battleCommandS);
         var ids = new Dictionary<int, string>();
         foreach (Match m in Regex.Matches(trainersH, @"^#define\s+(TRAINER_\w+)\s+(\d+)", RegexOptions.Multiline))
             if (m.Groups[1].Value is not ("TRAINER_NONE" or "FIRST_TRAINER_INDEX") && !m.Groups[1].Value.StartsWith("TRAINER_NUM", StringComparison.Ordinal))
@@ -41,6 +112,9 @@ public static class HgssTrainers
         {
             int n = number++;
             if (!ids.TryGetValue(n, out string? id)) continue;   // number 0 is nobody
+            string classConstant = t.GetProperty("class").GetString() ?? "";
+            int classNumber = classNumbers.GetValueOrDefault(classConstant);
+            uint gender = classNumber < women.Count && women[classNumber] ? 0x78u : 0x88u;
             var party = new List<TrainerPokemonRecord>();
             foreach (var p in t.GetProperty("party").EnumerateArray())
             {
@@ -51,6 +125,12 @@ public static class HgssTrainers
                     Level = p.GetProperty("level").GetInt32(),
                     IvScale = p.TryGetProperty("difficulty", out var d) ? d.GetInt32() : 0
                 };
+                if (classNumbers.Count > 0 && PokemonPlatinumEngine.Data.PokemonDatabase.Get(member.Species) is { } kind)
+                {
+                    string Text(string name) => p.TryGetProperty(name, out var v) ? v.GetString() ?? "" : "";
+                    Override(Text("genderOverride"), Text("abilityOverride"), PokemonPlatinumEngine.Models.Personality.GenderThreshold(kind), ref gender);
+                    member.Personality = Personality(member.IvScale, member.Level, kind.DexNumber, n, classNumber, ref gender);
+                }
                 if (p.TryGetProperty("item", out var item) && item.GetString() is { } held && held != "ITEM_NONE")
                     member.Item = Name(GbaNames.Item(held), held, id, problems);
                 if (p.TryGetProperty("moves", out var moves))
@@ -60,6 +140,9 @@ public static class HgssTrainers
             }
             if (party.Count == 0) continue;
             uint flags = (uint)t.GetProperty("ai_flags").GetInt64();
+            bool twice = t.GetProperty("double").GetInt32() != 0;
+            // CalcPrizeMoney: a class the table lacks is paid as its third row
+            int rate = rates.TryGetValue(classConstant, out int own) ? own : rates.Count > 2 ? rates.ElementAt(2).Value : 0;
             records.Add(new TrainerRecord
             {
                 Id = idPrefix + id["TRAINER_".Length..].ToLowerInvariant(),
@@ -68,7 +151,8 @@ public static class HgssTrainers
                 Ai = Enum.GetValues<AiFlags>().Where(f => f != AiFlags.None && (flags & (uint)f) != 0).Select(f => f.ToString()).ToList(),
                 Items = t.GetProperty("items").EnumerateArray().Select(i => i.GetString() ?? "").Where(i => i.Length > 0 && i != "ITEM_NONE")
                     .Select(i => Name(GbaNames.Item(i), i, id, problems)).ToList(),
-                DoubleBattle = t.GetProperty("double").GetInt32() != 0,
+                DoubleBattle = twice,
+                PrizeMoney = party[^1].Level * 4 * rate * (twice ? 2 : 1),
                 Party = party
             });
         }

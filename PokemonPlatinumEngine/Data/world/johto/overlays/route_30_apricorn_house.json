@@ -1,0 +1,14 @@
+{
+  // A house beside an Apricorn tree on Route 30 (plan 20 · J2). Apricorns and Kurt's balls are plan 20 · J6's
+  "area": "route_30_apricorn_house",
+  "bgmTrack": "johto/route30",
+  "people": {
+    "r30r0101_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "See the tree outside with the round fruit? Those are Apricorns.",
+        "In Azalea Town there's an old man who can turn them into Poké Balls. Clever, eh?"
+      ]
+    }
+  }
+}

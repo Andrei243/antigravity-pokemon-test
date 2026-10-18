@@ -1,0 +1,19 @@
+{
+  // Professor Elm's house beside his lab (plan 20 · J2; HeartGold calls it the lab's second floor, MAP_NEW_BARK_ELMS_LAB_2F,
+  // though its door is the town's own), where his wife and son live
+  "area": "new_bark_elms_lab_2f",
+  "bgmTrack": "johto/new_bark",
+  "people": {
+    "t20r0102_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "My husband's next door, I expect. He spends more nights in that lab than he does here.",
+        "Still, I've never seen anyone so happy at work."
+      ]
+    },
+    "t20r0102_gsboy2": {
+      "name": "Boy",
+      "dialog": [ "When I grow up I'm going to be a Pokémon Professor too. But I'll go to bed on time." ]
+    }
+  }
+}

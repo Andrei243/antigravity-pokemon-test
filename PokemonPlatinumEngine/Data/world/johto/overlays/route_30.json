@@ -1,0 +1,51 @@
+{
+  // Route 30 (plan 20 · J2): north from Cherrygrove City to Mr. Pokémon's house. Its three trainers are HeartGold's,
+  // their teams read from Johto's trainers.json by the trainer each object's script names. The two boys whose
+  // Pokémon block the path until Mr. Pokémon has been visited, and the call that comes there, are plan 20 · J4's
+  // (Joey stands from the start meanwhile); the Apricorn trees are J6's
+  "area": "route_30",
+  "bgmTrack": "johto/route30",
+  "trees": "Round",
+  "people": {
+    "r30_gsboy3": {
+      "name": "Don",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Don: I've been catching bugs since sunrise! Let's see what yours can do!",
+        "dialogueAfter": "Bug Catcher Don: Beaten by a newcomer... I'll go back to catching."
+      }
+    },
+    "r30_gsboy2": {
+      "name": "Joey",
+      "hiddenBy": "",
+      "trainer": {
+        "dialogueBefore": "Youngster Joey: My Rattata is in the top bit of all Rattata. Want to see?",
+        "dialogueAfter": "Youngster Joey: Huh. It's still the top bit. Just maybe not the very top."
+      }
+    },
+    "r30_gsboy2_2": {
+      "name": "Mikey",
+      "trainer": {
+        "dialogueBefore": "Youngster Mikey: You're a trainer, right? Then we have to battle. That's the rule!",
+        "dialogueAfter": "Youngster Mikey: The rule is no fun when you lose."
+      }
+    },
+    "r30_gsman1": {
+      "name": "Man",
+      "dialog": [ "Trainers on this road will battle you the moment they catch your eye. Keep your team healthy." ]
+    },
+    "r30_gsgirl2": {
+      "name": "Girl",
+      "dialog": [ "Mr. Pokémon lives in the house at the top of the road. He collects all sorts of odd things." ]
+    },
+    "r30_gsboy3_2": {
+      "name": "Boy",
+      "dialog": [ "Pokémon you meet on this road are a little stronger than on Route 29. Be careful!" ]
+    }
+  },
+  "signs": {
+    "R30_005+1": "Route 30\nViolet City - Cherrygrove City",
+    "R30_006+1": "Route 30\nViolet City - Cherrygrove City",
+    "R30_007+1": "TRAINER TIPS\nWhen two trainers' eyes meet, a battle begins. A trainer won't battle again once beaten.",
+    "R30_008+1": "Mr. Pokémon's House\nVisitors welcome."
+  }
+}

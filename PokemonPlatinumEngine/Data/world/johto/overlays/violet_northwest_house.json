@@ -1,0 +1,15 @@
+{
+  // A house in the north-west of Violet City (plan 20 · J2). Its Pidgey is plan 10's to stand as itself
+  "area": "violet_northwest_house",
+  "bgmTrack": "johto/violet",
+  "people": {
+    "t22r0401_gswoman1": {
+      "name": "Woman",
+      "dialog": [ "My daughter's Pidgey follows her everywhere. It even tries to sleep on her pillow." ]
+    },
+    "t22r0401_gsgirl1": {
+      "name": "Girl",
+      "dialog": [ "When my Pidgey grows up, it'll be big enough to fly me to school!" ]
+    }
+  }
+}

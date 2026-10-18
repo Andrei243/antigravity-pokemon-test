@@ -1,0 +1,26 @@
+{
+  "key": "cherrygrove_southeast_house",
+  "index": 72,
+  "name": "Cherrygrove City",
+  "matrix": 97,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_YOSHINO",
+  "nightMusic": "GS_C_YOSHINO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "cherrygrove", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "t21r0501_gsboy1", "looks": "gsboy1", "movement": "17", "x": 5, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T21R0501_001+1" },
+    { "id": "t21r0501_gsgirl1", "looks": "gsgirl1", "movement": "16", "x": 8, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T21R0501_002+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

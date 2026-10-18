@@ -193,7 +193,15 @@ public enum Architecture
     /// <summary>Logs under evergreen gable roofs with shutters and a chimney: the town at the forest's edge (Viridian, plan 19 · K2).</summary>
     Evergreen,
     /// <summary>Pale cut stone under hipped slate-brown roofs with a chimney: the stone-grey city under the mountain (Pewter, plan 19 · K3).</summary>
-    Granite
+    Granite,
+
+    // Johto (plan 20): each town's own way of building, a row of the style guide's "Buildings" first
+    /// <summary>White plaster under slate-blue gable roofs with a chimney: the windy town by the sea (New Bark, plan 20 · J2).</summary>
+    Breeze,
+    /// <summary>Warm boards under terracotta hip roofs with shutters: the town where the sea meets the cherry trees (Cherrygrove, plan 20 · J2).</summary>
+    Bayside,
+    /// <summary>Dark boards under hipped tile roofs of slate: the old towns of temples and lanterns (Violet, plan 20 · J2's first rows).</summary>
+    OldTimber
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>
@@ -342,6 +350,15 @@ public class WildEncounterEntry
     public int MinLevel { get; set; } = 2;
     public int MaxLevel { get; set; } = 4;
     public int Weight { get; set; } = 10;
+
+    /// <summary>
+    /// The species the slot gives by day and by night where it isn't <see cref="SpeciesName"/>, the morning's (plan 20 ·
+    /// J2: HeartGold's grass); null for a slot the same all day. <c>EncounterSlots.Grass</c> puts the time's in.
+    /// </summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? DaySpecies { get; set; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public string? NightSpecies { get; set; }
 
     /// <summary>The gender Cute Charm chose for the Pokémon met; never in a table.</summary>
     [System.Text.Json.Serialization.JsonIgnore]

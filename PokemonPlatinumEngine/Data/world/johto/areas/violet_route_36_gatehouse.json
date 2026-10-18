@@ -1,0 +1,27 @@
+{
+  "key": "violet_route_36_gatehouse",
+  "index": 149,
+  "name": "Route 36",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_5_34",
+  "nightMusic": "GS_R_5_34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 7, "to": "violet", "toWarp": 3 },
+    { "x": 1, "z": 7, "to": "route_36", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "t22r0701_counterm", "looks": "counterm", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T22R0701_000+1" },
+    { "id": "t22r0701_gsboy1", "looks": "gsboy1", "movement": "5", "x": 4, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T22R0701_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

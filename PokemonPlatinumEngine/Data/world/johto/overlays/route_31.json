@@ -1,0 +1,36 @@
+{
+  // Route 31 (plan 20 · J2): east of Violet City's gate house to the Dark Cave. Violet City (beyond the gate house) and
+  // the Dark Cave (warp 2) are plan 20's next stretch, and their ways stay shut until then. Bug Catcher Wade's team is
+  // read from Johto's trainers.json; the man who wants his mail taken is plan 20 · J4's
+  "area": "route_31",
+  "bgmTrack": "johto/route30",
+  "trees": "Round",
+  "people": {
+    "r31_gsboy3": {
+      "name": "Wade",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Wade: I caught all of these in the long grass here! Let's battle!",
+        "dialogueAfter": "Bug Catcher Wade: Wow, you're good. I'd better train my bugs some more."
+      }
+    },
+    "r31_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "The Dark Cave is pitch black inside. You can't see a thing without a Pokémon to light the way.",
+        "Some people say there's a Pokémon in there that's never seen the sun."
+      ]
+    },
+    "r31_gsbigman": {
+      "name": "Fat Man",
+      "dialog": [ "Violet City is just through that gate house. It's the oldest town in Johto, they say." ]
+    },
+    "r31_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "There's a tall tower in Violet City. It sways when the wind blows, but it never falls down!" ]
+    }
+  },
+  "signs": {
+    "R31_002+1": "Route 31\nViolet City - Cherrygrove City",
+    "R31_003+1": "Dark Cave"
+  }
+}

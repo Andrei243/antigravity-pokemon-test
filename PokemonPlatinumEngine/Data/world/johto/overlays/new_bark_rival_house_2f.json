@@ -1,0 +1,9 @@
+{
+  // The room upstairs next door (plan 20 · J2). Its owner and their Marill are plan 20 · J4's
+  "area": "new_bark_rival_house_2f",
+  "bgmTrack": "johto/new_bark",
+  "signs": {
+    "T20R0402_003+1": "A games console. The save file is called MARILL FAN CLUB.",
+    "T20R0402_004+1": "A desk covered in notes about where Pokémon like to nest."
+  }
+}

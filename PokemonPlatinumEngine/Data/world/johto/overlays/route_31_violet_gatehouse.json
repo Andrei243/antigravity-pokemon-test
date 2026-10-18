@@ -1,0 +1,11 @@
+{
+  // The gate house between Route 31 and Violet City (plan 20 · J2)
+  "area": "route_31_violet_gatehouse",
+  "bgmTrack": "johto/route30",
+  "people": {
+    "r31r0101_counterm": {
+      "name": "Officer",
+      "dialog": [ "Violet City is just beyond this gate. Welcome, and mind the lanterns!" ]
+    }
+  }
+}

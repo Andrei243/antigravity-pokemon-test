@@ -56,7 +56,7 @@ public sealed class Renders
         ("GYM FLOOR", Rgb.Of(120, 200, 190), b => b is >= 0x56 and <= 0x59),
         ("DOOR OR WARP", Rgb.Of(224, 48, 60), b => b is >= 0x5E and <= 0x6F and not 0x61 and not 0x66 and not 0x68),
         ("BRIDGE", Rgb.Of(172, 122, 80), b => b is >= 0x70 and <= 0x7D),
-        ("FURNITURE", Rgb.Of(152, 112, 172), b => b is >= 0x80 and <= 0x8F or >= 0xE0 and <= 0xEC),
+        ("FURNITURE", Rgb.Of(152, 112, 172), b => b is >= 0x80 and <= 0x8F or >= 0xE0 and <= 0xE5 or >= 0xEA and <= 0xEC),
         ("BERRY PATCH", Rgb.Of(232, 130, 172), b => b == 0xA0),
         ("SHALLOW SNOW", Rgb.Of(240, 244, 248), b => b is 0xA8 or 0xA9),
         ("DEEP SNOW", Rgb.Of(206, 220, 242), b => b is >= 0xA1 and <= 0xA3),
@@ -68,6 +68,12 @@ public sealed class Renders
         ("SEA FLOOR", Rgb.Of(56, 96, 120), b => b is 0xEE or 0xEF),
         ("TRICK FLOOR", Rgb.Of(210, 120, 220), b => b is >= 0xF0 and <= 0xF2 or 0xF7 or 0xFD),
         ("SECRET BASE SPOT", Rgb.Of(250, 120, 40), b => b == 0xF8),
+        // HeartGold's own (plan 20 · J1 moved them, J2 named them)
+        ("HEADBUTT TREE", Rgb.Of(34, 88, 48), b => b == 0x06),
+        ("WHIRLPOOL", Rgb.Of(30, 60, 160), b => b == 0x11),
+        ("STOP SLIDING", Rgb.Of(150, 200, 210), b => b == 0x4D),
+        ("MAGMA", Rgb.Of(230, 90, 30), b => b == 0xE6),
+        ("LADDER", Rgb.Of(200, 150, 60), b => b is >= 0xE7 and <= 0xE9),
     };
 
     private static Rgb OpenGround(Setting setting) => setting switch

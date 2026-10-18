@@ -1,0 +1,30 @@
+{
+  "key": "new_bark_player_house_2f",
+  "index": 64,
+  "name": "New Bark Town",
+  "matrix": 72,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_WAKABA",
+  "nightMusic": "GS_T_WAKABA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 4, "to": "new_bark_player_house_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t20r0202_storophy", "looks": "storophy", "movement": "0", "x": 8, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PLAYERS_ROOM_SILVER_TROPHY", "script": "0" },
+    { "id": "t20r0202_gtorophy", "looks": "gtorophy", "movement": "0", "x": 9, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PLAYERS_ROOM_GOLD_TROPHY", "script": "0" },
+    { "id": "t20r0202_btorophy", "looks": "btorophy", "movement": "0", "x": 7, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_PLAYERS_ROOM_BRONZE_TROPHY", "script": "0" }
+  ],
+  "signs": [
+    { "x": 6, "z": 4, "type": 0, "script": "T20R0202_000+1" },
+    { "x": 8, "z": 4, "type": 0, "script": "T20R0202_001+1" }
+  ],
+  "triggers": []
+}

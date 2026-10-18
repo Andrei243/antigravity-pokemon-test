@@ -1,0 +1,32 @@
+{
+  // New Bark Town (plan 20 · J2): HeartGold's map, our words. The story's people (Elm out by the town's east edge,
+  // the rival at the lab's window, the hero next door and their Marill, Mom at the door) are plan 20 · J4's, and so
+  // are the town's triggers
+  "area": "new_bark",
+  "bgmTrack": "johto/new_bark",
+  "trees": "Round",
+  "architecture": "Breeze",
+  "people": {
+    "t20_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "The wind off the sea never quite stops here. That's what the turbines are for.",
+        "On a blowy day you can hear them humming from one end of town to the other."
+      ]
+    },
+    "t20_gsbigman": {
+      "name": "Fat Man",
+      "dialog": [
+        "Professor Elm's lab is the big building up the lane. He's always buried in his research.",
+        "If you see the light on late at night, that's him, still at it."
+      ]
+    }
+  },
+  // The signposts, by the original's script each runs: what each says is ours
+  "signs": {
+    "T20_014+1": "New Bark Town\nWhere a fresh wind starts things moving.",
+    "T20_013+1": "Elm Pokémon Lab",
+    "T20_007+1": "{player}'s House",
+    "T20_016+1": "{assistant}'s House"
+  }
+}

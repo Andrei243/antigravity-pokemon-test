@@ -1,0 +1,18 @@
+{
+  // Violet City's Poké Mart (plan 20 · J2). Its delivery men are the original's gifts, which this game has no use for,
+  // and Elm's aide with the Mystery Egg is plan 20 · J4's
+  "area": "violet_pokemart",
+  "bgmTrack": "johto/violet",
+  "people": {
+    "t22fs0101_shopm1_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "t22fs0101_shopm1_2_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "t22fs0101_gsoldwoman1": {
+      "name": "Old Woman",
+      "dialog": [ "When your Pokémon's moves run out of PP, an Ether brings them back. They're dear, but worth it." ]
+    },
+    "t22fs0101_gsman3": {
+      "name": "Man",
+      "dialog": [ "Escape Ropes get you out of a cave in a heartbeat. Handy in the Dark Cave, if you go." ]
+    }
+  }
+}

@@ -51,9 +51,9 @@ public class RegionRecordTests
                 Assert.False(string.IsNullOrWhiteSpace((string)property.GetValue(professor.Lines)!), $"{id}'s {property.Name}");
         }
         // The record of a region without a file is empty, not missing
-        Assert.Null(Of(RegionDatabase.Johto).File);
-        Assert.Empty(Of(RegionDatabase.Johto).Starters);
-        Assert.False(Of(RegionDatabase.Johto).HasStory);
+        Assert.Null(Of(RegionDatabase.Hoenn).File);
+        Assert.Empty(Of(RegionDatabase.Hoenn).Starters);
+        Assert.False(Of(RegionDatabase.Hoenn).HasStory);
     }
 
     [Fact]

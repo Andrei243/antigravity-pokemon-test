@@ -131,7 +131,18 @@ public enum TileBehavior : byte
     RailEastWest = 0xFA,
     BumpySlope = 0xFB,
     CyclingRoadPull = 0xFC,
-    NoRunning = 0xFD
+    NoRunning = 0xFD,
+
+    // What HeartGold and SoulSilver have and Platinum has no value for (plan 20 · J1 maps them by name, J2 names them):
+    // Headbutt, Whirlpool and Stop Sliding keep HeartGold's own values, which Platinum leaves unused; magma and the
+    // ladders, whose values Platinum uses for other things, take four it leaves unused
+    HeadbuttTree = 0x06,
+    Whirlpool = 0x11,
+    StopSliding = 0x4D,
+    Magma = 0xE6,
+    LadderNorth = 0xE7,
+    LadderSouth = 0xE8,
+    LadderDown = 0xE9
 }
 
 /// <summary>What each <see cref="TileBehavior"/> means, in a sentence, and the two facts the original keeps in a
@@ -258,7 +269,14 @@ public static class TileBehaviors
         [TileBehavior.RailEastWest] = "A rail running east to west, hopped along on the Acro Bike (the GBA's).",
         [TileBehavior.BumpySlope] = "A bumpy slope only the Acro Bike's hops climb (the GBA's).",
         [TileBehavior.CyclingRoadPull] = "The Cycling Road's slope, which pulls a rider south (the GBA's).",
-        [TileBehavior.NoRunning] = "Ground where nobody may run (the GBA's)."
+        [TileBehavior.NoRunning] = "Ground where nobody may run (the GBA's).",
+        [TileBehavior.HeadbuttTree] = "A tree that Headbutt shakes, and Pokémon may drop out of (HeartGold's).",
+        [TileBehavior.Whirlpool] = "A whirlpool on the water: crossed only with Whirlpool (HeartGold's).",
+        [TileBehavior.StopSliding] = "Ground that stops a slide on ice (HeartGold's).",
+        [TileBehavior.Magma] = "Magma (HeartGold's).",
+        [TileBehavior.LadderNorth] = "A ladder climbed northward (HeartGold's).",
+        [TileBehavior.LadderSouth] = "A ladder climbed southward (HeartGold's).",
+        [TileBehavior.LadderDown] = "A ladder going down (HeartGold's)."
     };
 
     /// <summary>True for the values the enum names: those Sinnoh's maps use, and those the GBA reader makes (plan 18 · W6).</summary>
@@ -353,6 +371,10 @@ public static class TileBehaviors
         // A step onto a panel is a step like any other: what it does comes once the step has ended (plan 02 · S11)
         TileBehavior.WarpPanel => (BehaviourSupport.Plain, "Walked onto; whoever ends a step on it is carried to the panel its warp names and stands there facing as they did, turning on the spot on the way. Arriving is no step, so the far panel carries them back only once they step off it and on again (`WarpPanels`; the floors of Team Galactic's headquarters)."),
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
+        TileBehavior.HeadbuttTree => (BehaviourSupport.Waiting, "A tree that blocks the way; shaking it with Headbutt is plan 20 · J7's."),
+        TileBehavior.Whirlpool => (BehaviourSupport.Waiting, "A whirlpool; stopping a surfer until the party knows Whirlpool is plan 20 · J8's."),
+        TileBehavior.StopSliding or TileBehavior.Magma or TileBehavior.LadderNorth or TileBehavior.LadderSouth or TileBehavior.LadderDown
+            => (BehaviourSupport.Waiting, "A HeartGold behaviour whose rule comes with the session of plan 20 that opens a place using it; walked like plain ground until then."),
         _ => (BehaviourSupport.Plain, "Ground like any other: only the blocked flag and the height matter.")
     };
 }

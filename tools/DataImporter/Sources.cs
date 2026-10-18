@@ -129,6 +129,10 @@ public static class Sources
         "/files/arc/headbutt.json", "/files/arc/safari_enc.json", "/files/poketool/trainer/trainers.json", "/files/tel/pmtel_book.json",
         "/src/data/map_headers.h", "/include/constants/maps.h", "/include/map_header.h", "/include/constants/metatile_behavior.h",
         "/src/map_matrix.c", "/src/metatile_behavior.c", "/include/constants/trainers.h", "/include/constants/trainer_class.h",
-        "/include/constants/sndseq.h", "/include/constants/map_sections.h"
+        "/include/constants/sndseq.h", "/include/constants/map_sections.h",
+        // Plan 20 · J2: the trainers' class genders and personalities (src/trainer_data.c), the prize money's table by
+        // class (sPrizeMoneyTbl, still assembly), and what each hidden item holds
+        "/src/trainer_data.c", "/asm/overlay_12_battle_command.s", "/src/data/fieldmap/hidden_items.h",
+        "/include/constants/hidden_items.h"
     };
 }

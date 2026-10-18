@@ -1,0 +1,98 @@
+{
+  "key": "route_30",
+  "index": 34,
+  "name": "Route 30",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_1_30",
+  "nightMusic": "GS_R_1_30",
+  "encounters": "R30",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Pidgey", "level": 2, "night": "Spinarak" },
+    { "species": "Caterpie", "level": 3, "night": "Rattata" },
+    { "species": "Pidgey", "level": 2, "night": "Spinarak" },
+    { "species": "Caterpie", "level": 3, "night": "Rattata" },
+    { "species": "Caterpie", "level": 4, "day": "Pidgey", "night": "Hoothoot" },
+    { "species": "Caterpie", "level": 4, "day": "Pidgey", "night": "Hoothoot" },
+    { "species": "Metapod", "level": 4, "night": "Rattata" },
+    { "species": "Metapod", "level": 4, "night": "Rattata" },
+    { "species": "Pidgey", "level": 4, "day": "Caterpie", "night": "Hoothoot" },
+    { "species": "Pidgey", "level": 4, "day": "Metapod", "night": "Hoothoot" },
+    { "species": "Pidgey", "level": 4, "day": "Caterpie", "night": "Hoothoot" },
+    { "species": "Pidgey", "level": 4, "day": "Metapod", "night": "Hoothoot" }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 20 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 32, "maxLevel": 32 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 568, "z": 294, "to": "route_30_mr_pokemon_house", "toWarp": 0 },
+    { "x": 555, "z": 355, "to": "route_30_apricorn_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r30_gsman1", "looks": "gsman1", "movement": "5", "x": 554, "z": 335, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "R30_009+1" },
+    { "id": "r30_gsgirl2", "looks": "gsgirl2", "movement": "15", "x": 548, "z": 306, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R30_010+1" },
+    { "id": "r30_tree", "looks": "tree", "movement": "0", "x": 559, "z": 295, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r30_gsboy3", "looks": "gsboy3", "movement": "17", "x": 550, "z": 298, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BUG_CATCHER_DON" },
+    { "id": "r30_gsboy2", "looks": "gsboy2", "movement": "16", "x": 553, "z": 332, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_HIDE_ROUTE_30_YOUNGSTER_JOEY", "script": "TRAINER_YOUNGSTER_JOEY" },
+    { "id": "r30_gsboy2_2", "looks": "gsboy2", "movement": "15", "x": 552, "z": 325, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_YOUNGSTER_MIKEY" },
+    { "id": "r30_tsure_poke_static_rattata", "looks": "follower_mon_static_rattata", "movement": "14", "x": 552, "z": 327, "facing": 0, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_30_BATTLERS", "script": "0" },
+    { "id": "r30_tsure_poke_static_pidgey", "looks": "follower_mon_static_pidgey", "movement": "15", "x": 552, "z": 326, "facing": 1, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_30_BATTLERS", "script": "0" },
+    { "id": "r30_gsboy2_3", "looks": "gsboy2", "movement": "14", "x": 552, "z": 329, "facing": 0, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_30_BATTLERS", "script": "R30_000+1" },
+    { "id": "r30_monstarball", "looks": "monstarball", "movement": "0", "x": 554, "z": 342, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R30_ANTIDOTE", "item": "Antidote", "script": "std_itemball_r30_antidote" },
+    { "id": "r30_monstarball_2", "looks": "monstarball", "movement": "0", "x": 564, "z": 369, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R30_POTION", "item": "Potion", "script": "std_itemball_r30_potion" },
+    { "id": "r30_bonguri", "looks": "bonguri", "movement": "0", "x": 553, "z": 355, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r30_bonguri_2", "looks": "bonguri", "movement": "0", "x": 562, "z": 293, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r30_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 555, "z": 355, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_30_APRICORN_MAN", "script": "0" },
+    { "id": "r30_gsboy3_2", "looks": "gsboy3", "movement": "4", "x": 557, "z": 366, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R30_003+1" }
+  ],
+  "signs": [
+    { "x": 554, "z": 363, "type": 1, "script": "R30_005+1" },
+    { "x": 561, "z": 332, "type": 1, "script": "R30_006+1" },
+    { "x": 549, "z": 319, "type": 1, "script": "R30_007+1" },
+    { "x": 566, "z": 294, "type": 1, "script": "R30_008+1" },
+    { "x": 555, "z": 319, "type": 2, "script": "std_hiddenitem_r30_potion", "item": "Potion", "flag": "FLAG_HIDDEN_ITEM_R30_POTION" },
+    { "x": 572, "z": 390, "type": 2, "script": "std_hiddenitem_r29_r30_t21_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_R29_R30_T21_NUGGET" }
+  ],
+  "triggers": [
+    { "x": 558, "z": 354, "width": 4, "depth": 1, "script": "R30_002+1", "variable": "VAR_SCENE_ROUTE_30_OW", "value": "0" },
+    { "x": 553, "z": 292, "width": 1, "depth": 1, "script": "R30_004+1", "variable": "VAR_SCENE_ROUTE_30_PHONE_CALL", "value": "1" }
+  ]
+}
