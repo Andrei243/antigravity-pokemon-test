@@ -27,6 +27,9 @@ public class MovePresentationTests
 
     private static IEnumerable<MoveData> PlatinumMoves => MoveDatabase.GetAll().Where(m => m.Id <= 467);
 
+    /// <summary>Platinum's moves and every later move that has a look of its own (plan 25 · Y11 on).</summary>
+    private static IEnumerable<MoveData> LookedMoves => MoveDatabase.GetAll().Where(m => m.Id <= 467 || MoveFx.BatchOf(m.Name) != null);
+
     private static EffectCue Cue(MoveData move, bool critical = false, bool superEffective = false, bool missed = false, BattleTerrain terrain = BattleTerrain.Plain)
     {
         // A move on the user itself plays on the user (Swords Dance); everything else crosses to the foe
@@ -59,7 +62,7 @@ public class MovePresentationTests
     public void EveryMoveLandsWithItsDamageWithinAFrame()
     {
         var late = new List<string>();
-        foreach (var move in PlatinumMoves)
+        foreach (var move in LookedMoves)
         {
             var fx = Draw(Cue(move), BattleAnimator.ImpactTime);
             if (Math.Abs(fx.Landed - BattleAnimator.ImpactTime) > Frame) late.Add($"{move.Name} lands at {fx.Landed:0.000}");
@@ -70,7 +73,7 @@ public class MovePresentationTests
     [Fact]
     public void EveryMoveIsOverByTheEndOfItsCue()
     {
-        foreach (var move in PlatinumMoves)
+        foreach (var move in LookedMoves)
             foreach (var cue in new[] { Cue(move), Cue(move, critical: true, superEffective: true), Cue(move, missed: true) })
             {
                 var fx = Draw(cue, BattleAnimator.EffectTime + Frame);
@@ -82,7 +85,7 @@ public class MovePresentationTests
     public void NoMoveDrawsMoreThanTheCapAtAnyAge()
     {
         var over = new List<string>();
-        foreach (var move in PlatinumMoves)
+        foreach (var move in LookedMoves)
         {
             var cue = Cue(move, critical: true, superEffective: true);
             for (float age = 0f; age < BattleAnimator.EffectTime; age += Frame)
@@ -117,7 +120,7 @@ public class MovePresentationTests
     [Fact]
     public void EveryLookIsTheSameForTheSameAgeAndSeed()
     {
-        foreach (var move in PlatinumMoves.Where(m => MoveFx.BatchOf(m.Name) != null))
+        foreach (var move in LookedMoves.Where(m => MoveFx.BatchOf(m.Name) != null))
         {
             var a = Cue(move, critical: true);
             var b = Cue(move, critical: true);
@@ -130,7 +133,7 @@ public class MovePresentationTests
     [Fact]
     public void NoBatchFlashesHarderThanTheStyleGuideAllows()
     {
-        foreach (var move in PlatinumMoves.Where(m => MoveFx.BatchOf(m.Name) != null))
+        foreach (var move in LookedMoves.Where(m => MoveFx.BatchOf(m.Name) != null))
         {
             var cue = Cue(move, critical: true, superEffective: true);
             for (float age = 0f; age < BattleAnimator.EffectTime; age += 0.02f)
@@ -145,7 +148,7 @@ public class MovePresentationTests
     [Fact]
     public void ABatchsLookIsItsOwnAndNotItsTemplate()
     {
-        foreach (var move in PlatinumMoves.Where(m => MoveFx.BatchOf(m.Name) != null))
+        foreach (var move in LookedMoves.Where(m => MoveFx.BatchOf(m.Name) != null))
         {
             var cue = Cue(move);
             var template = MoveFx.Template(move.Type, move.Category, cue.OnSelf);
@@ -497,6 +500,61 @@ public class MovePresentationTests
             Assert.InRange(covered, 80, 1200);
             Assert.True(FxTextures.Coverage(shape, new System.Numerics.Vector2(1.15f, 1.15f)) < 0.01f, $"{shape} reaches its cell's corner");
         }
+    }
+
+    // ------------------------------------------------------------------ the later games' moves (plan 25 · Y11)
+
+    /// <summary>Y11a's moves: Generation 5's, from Hone Claws (468) to Bulldoze (523).</summary>
+    private static IEnumerable<MoveData> EleventhBatchFirstPart => MoveDatabase.GetAll().Where(m => m.Id is >= 468 and <= 523);
+
+    [Fact]
+    public void TheEleventhBatchsFirstPartAllHaveALookAndASoundOfTheirOwn()
+    {
+        var part = EleventhBatchFirstPart.ToList();
+        output.WriteLine($"{part.Count} moves in Y11a: {string.Join(", ", part.Select(m => m.Name))}");
+        Assert.Equal(56, part.Count);
+        Assert.All(part, move => Assert.Equal("Y11", MoveFx.BatchOf(move.Name)));
+        Assert.All(part, move => Assert.True(SoundBank.Exists("use_" + SoundBank.MoveKey(move.Name)), move.Name));
+        Assert.All(part, move => Assert.Equal("use_" + SoundBank.MoveKey(move.Name), SoundBank.MoveSound(move.Name, move.Type)));
+        // No other move is in the batch
+        Assert.All(MoveFx.Batches.Where(b => b.Value == "Y11"), b => Assert.Contains(part, m => m.Name.Equals(b.Key, StringComparison.OrdinalIgnoreCase)));
+    }
+
+    [Fact]
+    public void TheEleventhBatchsMovesThatAreAlikeInKindLookDifferentHere()
+    {
+        foreach (var (a, b) in new[] { ("Guard Split", "Power Split"), ("Wide Guard", "Quick Guard"), ("Wonder Room", "Magic Room"), ("Smack Down", "Heavy Slam"),
+            ("Water Pledge", "Fire Pledge"), ("Fire Pledge", "Grass Pledge"), ("Fire Pledge", "Inferno"), ("Storm Throw", "Circle Throw"), ("Psyshock", "Synchronoise"),
+            ("Round", "Echoed Voice"), ("Round", "Entrainment"), ("Flame Burst", "Flame Charge"), ("Sludge Wave", "Venoshock"), ("Acid Spray", "Scald"),
+            ("Hone Claws", "Chip Away"), ("Coil", "Shift Gear"), ("Autotomize", "Shell Smash"), ("Telekinesis", "Sky Drop"), ("Quash", "Smack Down") })
+        {
+            var ma = MoveDatabase.Get(a)!;
+            var mb = MoveDatabase.Get(b)!;
+            int same = 0;
+            foreach (float age in new[] { 0.15f, 0.3f, 0.5f, 0.8f })
+            {
+                var ca = Cue(ma);
+                var cb = Cue(mb);
+                cb.Seed = ca.Seed;
+                if (Picture(Draw(ca, age)) == Picture(Draw(cb, age))) same++;
+            }
+            Assert.True(same < 4, $"{a} and {b} look alike");
+        }
+    }
+
+    [Fact]
+    public void TheFloorOfTheLaterMovesWithALookAndASoundOfTheirOwnOnlyRises()
+    {
+        int own = MoveDatabase.GetAll().Count(m => m.Id > 467 && MoveFx.BatchOf(m.Name) != null && SoundBank.Exists("use_" + SoundBank.MoveKey(m.Name)));
+        output.WriteLine($"{own} of the later games' moves have a look and a sound of their own");
+        Assert.True(own >= 56, $"only {own}");
+    }
+
+    [Fact]
+    public void EveryLaterBatchMoveHasItsOwnSound()
+    {
+        foreach (var move in MoveDatabase.GetAll().Where(m => m.Id > 467 && MoveFx.BatchOf(m.Name) != null))
+            Assert.Equal("use_" + SoundBank.MoveKey(move.Name), SoundBank.MoveSound(move.Name, move.Type));
     }
 
     [Fact]

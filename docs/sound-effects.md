@@ -653,6 +653,62 @@ One sound for each type, played as a move of that type sets off (`SoundBank.Move
 | `use_dark_void` | `SEQ_SE_DP_W464` | Dark Void: a deep sinking drone, a falling tune and a hollow toll. |
 | `use_seed_flare` | `SEQ_SE_DP_W465` | Seed Flare: a bright rising gather, a glittering flash and a ringing burst. |
 | `use_shadow_force` | `SEQ_SE_DP_W467` | Shadow Force: a fading shadowy whine, a dark slam and a growling crackle. |
+| `use_hone_claws` | — | Hone Claws: three whetting scrapes, a rising hum and a glassy ring. |
+| `use_wide_guard` | — | Wide Guard: five stony thuds in a row and a ringing, shimmering wall. |
+| `use_guard_split` | — | Guard Split: two gliding tones that meet in a bell and part again with a falling run. |
+| `use_power_split` | — | Power Split: two rising growls that meet in a thud and part with a bold run of notes. |
+| `use_wonder_room` | — | Wonder Room: a slow wavering hum, a tumbling run of notes and a ringing bell. |
+| `use_psyshock` | — | Psyshock: a rising whine, a quick run of notes, then a thud and a crackle of breaking crystal. |
+| `use_venoshock` | — | Venoshock: a gurgling pour, bubbling, a heavy splat and a low sour drone. |
+| `use_autotomize` | — | Autotomize: a crackle of peeling metal flakes, a hiss and a rising glassy ring. |
+| `use_rage_powder` | — | Rage Powder: a hissing puff of dust over an angry growl and three sharp notes. |
+| `use_telekinesis` | — | Telekinesis: a slow rising hum, lifting notes and a soft whoosh ending in a high bell. |
+| `use_magic_room` | — | Magic Room: a wavering drone with six bright pings one after another and a last hiss. |
+| `use_smack_down` | — | Smack Down: a falling rush, a vast thud, a crack of rock and a scatter of grit. |
+| `use_storm_throw` | — | Storm Throw: a whirling rush, a heavy slam, a crack and three quick notes. |
+| `use_flame_burst` | — | Flame Burst: a rising roar, a boom and a crackling scatter of flames. |
+| `use_sludge_wave` | — | Sludge Wave: a long thick rolling rush, bubbling, a heavy splat and a growling drone. |
+| `use_quiver_dance` | — | Quiver Dance: a dancing run of notes over a soft hum, a shimmer and a high bell. |
+| `use_heavy_slam` | — | Heavy Slam: a falling growl, a vast crashing thud with a ringing steel bell and a rattle. |
+| `use_synchronoise` | — | Synchronoise: three paired bell pings, a wavering hum, a thud and a ringing bell. |
+| `use_electro_ball` | — | Electro Ball: a rising crackling whine, a thud and a burst of sparks with a bell. |
+| `use_soak` | — | Soak: a long drenching rain, bubbles, a small splash and a falling tune. |
+| `use_flame_charge` | — | Flame Charge: a rushing roar with crackling, a thud and a hiss of embers. |
+| `use_coil` | — | Coil: a winding hiss, a rising growl, a thud and a small bell. |
+| `use_low_sweep` | — | Low Sweep: a swish low to the ground and a sharp thud with a skid of grit. |
+| `use_acid_spray` | — | Acid Spray: a spitting spray, bubbling, a splat and a long sizzle. |
+| `use_foul_play` | — | Foul Play: a dark wavering growl, a rush, a heavy hit and a falling groan. |
+| `use_simple_beam` | — | Simple Beam: a plain steady tone with a thin hiss and two flat bell pings. |
+| `use_entrainment` | — | Entrainment: a run of notes in a tune, then three beats and a bell. |
+| `use_after_you` | — | After You: a soft rustle, three polite notes and a bright bell. |
+| `use_round` | — | Round: three rounds of a tune overlapping, each a little higher, over a bell. |
+| `use_echoed_voice` | — | Echoed Voice: one clear note and its echo rolling after it, with a soft thud. |
+| `use_chip_away` | — | Chip Away: three quick chisel taps with thuds and a patter of chips. |
+| `use_clear_smog` | — | Clear Smog: a hissing puff, a thud and a bright sweeping clearing hiss with a rising run. |
+| `use_stored_power` | — | Stored Power: a rising glow, a quick run of notes, a thud, a bell and a falling run. |
+| `use_quick_guard` | — | Quick Guard: a snap, a thud with a bright bell and three glancing hisses. |
+| `use_ally_switch` | — | Ally Switch: two gliding tones that cross over, a rustle and a bell. |
+| `use_scald` | — | Scald: a spitting jet, a thud and a long hiss of steam with bubbles. |
+| `use_shell_smash` | — | Shell Smash: a rising tone, a vast cracking burst and four bright notes. |
+| `use_heal_pulse` | — | Heal Pulse: a bell, a run of soft notes and two more bells over a warm hum. |
+| `use_hex` | — | Hex: a low wavering drone, falling spooky notes, a thud and a dark bell. |
+| `use_sky_drop` | — | Sky Drop: a rising rush of wind, a snap of talons, a heavy thud and dust. |
+| `use_shift_gear` | — | Shift Gear: six quick ratchet clicks over a rising whine and a bell. |
+| `use_circle_throw` | — | Circle Throw: a whirling rush, a heavy slam, a crack and a skid. |
+| `use_incinerate` | — | Incinerate: a rising flame roar, crackling, a thud and a sizzling hiss. |
+| `use_quash` | — | Quash: a falling growl, a vast pressing thud and a low rumble. |
+| `use_acrobatics` | — | Acrobatics: a rush, a quick tumbling run of notes, two quick cuts and a light thud. |
+| `use_reflect_type` | — | Reflect Type: a glassy bell, a shimmering hiss, a falling tune and a high chime. |
+| `use_retaliate` | — | Retaliate: a ghostly wavering hum, a rush, a heavy thud and a bell. |
+| `use_final_gambit` | — | Final Gambit: a rising swell, a run of notes, a vast boom with a bright bell and a falling tone. |
+| `use_bestow` | — | Bestow: a soft toss, a gentle run of notes, a tap and a bell. |
+| `use_inferno` | — | Inferno: a long roaring blaze with a growl, crackling and a boom. |
+| `use_water_pledge` | — | Water Pledge: a rising rush of water, a thud, a splash and bubbles. |
+| `use_fire_pledge` | — | Fire Pledge: a rising roar, a thud and a long crackling blaze. |
+| `use_grass_pledge` | — | Grass Pledge: a rustling burst of vines, a thud, a shower of leaves and a short tune. |
+| `use_volt_switch` | — | Volt Switch: a crackling zap, a thud, then a falling zip back. |
+| `use_struggle_bug` | — | Struggle Bug: a scuttling patter of tiny feet, a thud and a buzzing scatter. |
+| `use_bulldoze` | — | Bulldoze: a long grinding rumble, a vast thud and a rattle of rocks. |
 
 ## Cries
 
