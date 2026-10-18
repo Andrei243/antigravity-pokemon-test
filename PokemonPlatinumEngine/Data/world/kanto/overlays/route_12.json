@@ -1,0 +1,25 @@
+{
+  // Route 12 (plan 19 · K5, part b), south of Lavender Town along the sea: the Snorlax asleep across the way south
+  // (route_12.txt), the fishermen on the pier and the fishing house. Route 13 beyond is K6's
+  "area": "route_12",
+  "bgmTrack": "kanto/route11",
+  "trees": "Round",
+  // The gate's second door tile leads to a warp FireRed never lets anyone take (on its wall): it goes to the first
+  "doors": [ { "warp": 2, "map": "Route12_NorthEntrance_1F", "x": 5, "y": 1, "facing": "Down" } ],
+  "people": {
+    "snorlax": { "name": "Snorlax", "script": "Snorlax", "still": true },
+    "fisher": { "name": "Ned", "trainer": { "dialogueBefore": "Fisherman Ned: Yeah! I've got a bite! Oh, it's just you.", "dialogueAfter": "Fisherman Ned: The one that got away, that's you." } },
+    "fisher_2": { "name": "Chip", "trainer": { "dialogueBefore": "Fisherman Chip: Shh! You'll scare the fish!", "dialogueAfter": "Fisherman Chip: Well, they're scared now." } },
+    "fisher_3": { "name": "Hank", "trainer": { "dialogueBefore": "Fisherman Hank: I've been fishing here since dawn. Want to see what I caught?", "dialogueAfter": "Fisherman Hank: Back to the waiting, then." } },
+    "fisher_4": { "name": "Elliot", "trainer": { "dialogueBefore": "Fisherman Elliot: The sea's full of Pokémon. Let me show you!", "dialogueAfter": "Fisherman Elliot: Hooked and landed. By you." } },
+    "rocker": { "name": "Luca", "trainer": { "dialogueBefore": "Rocker Luca: My Pokémon and I make music! Loud music!", "dialogueAfter": "Rocker Luca: Our encore will have to wait." } },
+    "camper": { "name": "Justin", "trainer": { "dialogueBefore": "Camper Justin: Camping by the sea is the best! Let's battle!", "dialogueAfter": "Camper Justin: I'll go back to my tent now." } },
+    "fisher_5": { "name": "Andrew", "trainer": { "dialogueBefore": "Fisherman Andrew: Hey, you! Fancy a battle while the fish aren't biting?", "dialogueAfter": "Fisherman Andrew: Still no fish. Still no wins." } },
+    "beauty": { "name": "Gia", "trainer": { "dialogueBefore": "Young Couple Gia and Jes: We're together in everything, battles too!", "dialogueAfter": "Young Couple Gia and Jes: Together in losing, as well." } },
+    "man": { "name": "Jes", "trainer": { "dialogueBefore": "Young Couple Gia and Jes: We're together in everything, battles too!", "dialogueAfter": "Young Couple Gia and Jes: Together in losing, as well." } }
+  },
+  "signs": {
+    "Route12_EventScript_RouteSign": "Route 12\nNorth to Lavender Town",
+    "Route12_EventScript_FishingSign": "Sports Fishing Area"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  // Mr. Psychic's house in Saffron City (plan 19 · K5, part b): he knows why the player has come, and gives TM29
+  // (saffron_city_mr_psychics_house.txt)
+  "area": "saffron_city_mr_psychics_house",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "balding_man": { "name": "Mr. Psychic", "script": "MrPsychic" }
+  }
+}

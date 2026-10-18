@@ -1,0 +1,73 @@
+# Silph Co.'s 9F (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/SilphCo_9F/scripts.inc).
+#
+# Team Rocket holds the building. A door of the floor is shut until the Card Key (from the fifth floor) opens it
+# for good: FireRed draws it into its tiles and changes them with setmetatile; here it is four things of ours on
+# its tiles (a shutter each), gone once its flag is set (FLAG_SILPH_<FLOOR>F_DOOR_<N>, FireRed's).
+
+script Door1
+  speaker none
+  if flag FLAG_SILPH_9F_DOOR_1 end
+  if not item "Card Key" goto Locked
+  sound "door_slide"
+  setflag FLAG_SILPH_9F_DOOR_1
+  text "The Card Key opened the door!"
+  end
+label Locked
+  text "The door is locked. It takes a card to open it."
+  end
+
+
+script Door2
+  speaker none
+  if flag FLAG_SILPH_9F_DOOR_2 end
+  if not item "Card Key" goto Locked
+  sound "door_slide"
+  setflag FLAG_SILPH_9F_DOOR_2
+  text "The Card Key opened the door!"
+  end
+label Locked
+  text "The door is locked. It takes a card to open it."
+  end
+
+
+script Door3
+  speaker none
+  if flag FLAG_SILPH_9F_DOOR_3 end
+  if not item "Card Key" goto Locked
+  sound "door_slide"
+  setflag FLAG_SILPH_9F_DOOR_3
+  text "The Card Key opened the door!"
+  end
+label Locked
+  text "The door is locked. It takes a card to open it."
+  end
+
+
+script Door4
+  speaker none
+  if flag FLAG_SILPH_9F_DOOR_4 end
+  if not item "Card Key" goto Locked
+  sound "door_slide"
+  setflag FLAG_SILPH_9F_DOOR_4
+  text "The Card Key opened the door!"
+  end
+label Locked
+  text "The door is locked. It takes a card to open it."
+  end
+
+
+# The woman in the west room puts the team to rest while Team Rocket still holds the building.
+script HealWoman
+  speaker "Woman"
+  if var VAR_MAP_SCENE_SILPH_CO_11F >= 1 goto Free
+  say "You look worn out! Your Pokémon should take a quick nap. Here, let them rest a moment."
+  fade out 0.4
+  heal
+  fanfare heal
+  fade in 0.4
+  say "There. Don't give up now!"
+  end
+label Free
+  say "Thank you so much! Team Rocket's gone, and we can all go home at last."
+  end

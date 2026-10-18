@@ -1,0 +1,13 @@
+{
+  // Saffron City's Pokémon Center (plan 19 · K5, part b)
+  "area": "saffron_city_pokemon_center_1f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "saffron_nurse": { "name": "Nurse", "script": "Nurse" },
+    "gentleman": { "name": "Gentleman", "dialog": [ "Team Rocket took over Silph Co. right under our noses. The whole city's on edge." ] },
+    "woman_3": { "name": "Woman", "dialog": [ "Sabrina, the Gym Leader, can read minds, they say. I wouldn't want to battle her!" ] },
+    "youngster": { "name": "Youngster", "dialog": [ "The Fighting Dojo next to the Gym used to be the city's Gym, until Sabrina beat them." ] },
+    "0": { "name": "Notice", "dialog": [ "A magazine on the seat, open at a page about Sabrina." ] },
+    "0_2": { "name": "Notice", "dialog": [ "A magazine on the seat, open at a page about Sabrina." ] }
+  }
+}

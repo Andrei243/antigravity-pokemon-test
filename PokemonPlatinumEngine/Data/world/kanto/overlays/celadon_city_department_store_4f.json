@@ -1,0 +1,13 @@
+{
+  // The Celadon Department Store's fourth floor (plan 19 · K5, part b): gifts and evolution stones
+  "area": "celadon_city_department_store_4f",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "man": { "name": "Man", "dialog": [ "I'm buying my girlfriend a present. Do you think she'd like a Poké Doll?" ] },
+    "youngster": { "name": "Youngster", "dialog": [ "Some Pokémon evolve when they touch a special stone. Wild, right?" ] }
+  },
+  "signs": {
+    "CeladonCity_DepartmentStore_4F_EventScript_FloorSign": "4F: Wise Man Gifts\nExpress yourself with gifts!"
+  }
+}

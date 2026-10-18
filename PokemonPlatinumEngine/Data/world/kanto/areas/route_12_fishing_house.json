@@ -1,0 +1,29 @@
+{
+  "key": "route_12_fishing_house",
+  "index": 364,
+  "name": "Route 12",
+  "matrix": 311,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CELADON",
+  "nightMusic": "MUS_CELADON",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 8, "to": "", "toWarp": 0 },
+    { "x": 3, "z": 7, "to": "route_12", "toWarp": 0 },
+    { "x": 4, "z": 8, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "fisher", "looks": "fisher", "movement": "look_south", "x": 4, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route12_FishingHouse_EventScript_FishingGuruBrother" }
+  ],
+  "signs": [
+    { "x": 9, "z": 1, "type": 0, "script": "Route12_FishingHouse_EventScript_MagikarpRecordSign" }
+  ],
+  "triggers": []
+}

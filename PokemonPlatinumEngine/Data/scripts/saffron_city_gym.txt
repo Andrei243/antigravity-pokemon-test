@@ -1,0 +1,61 @@
+# The Saffron City Gym (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/SaffronCity_Gym/scripts.inc).
+#
+# Sabrina battles for the Marsh Badge (FLAG_BADGE06_GET is the badge itself, `givebadge marsh`, which opens Rock
+# Smash in the field), counts her seven trainers beaten (FireRed's set_gym_trainers 6) and gives TM04, Calm Mind.
+# FireRed lets her be challenged before or after the Soul Badge; Kanto's badges here are counted by name, not order.
+
+
+script Sabrina
+  face sabrina player
+  speaker "Sabrina"
+  if badge marsh goto Won
+  scene "Sabrina"
+  say "I knew you would come. I had a vision of your arrival, three years ago."
+  say "Psychic power has been mine since I was a child. I don't enjoy battling, but if you insist..."
+  say "Very well. I'll show you my powers!"
+  battle self as "kanto_leader_sabrina"
+  say "This loss... It shocks me. But I won't deny it. Take the Marsh Badge."
+  givebadge marsh
+  text "{player} received the Marsh Badge from Sabrina!"
+  say "With the Marsh Badge, your Pokémon can use Rock Smash outside of battle."
+  setflag FLAG_DEFEATED_SABRINA
+  defeat "kanto_psychic_cameron"
+  defeat "kanto_psychic_johan"
+  defeat "kanto_psychic_preston"
+  defeat "kanto_psychic_tyron"
+  defeat "kanto_channeler_amanda"
+  defeat "kanto_channeler_stacy"
+  defeat "kanto_channeler_tasha"
+label Tm
+  say "And please take this TM. Its move suits someone of strong mind."
+  give "TM04"
+  setflag FLAG_GOT_TM04_FROM_SABRINA
+  say "TM04 is Calm Mind. It quiets the mind, raising both Special Attack and Special Defense."
+  endscene
+  end
+label Won
+  if not flag FLAG_GOT_TM04_FROM_SABRINA goto Tm
+  say "I foresaw your victory, and still I fought. Perhaps the future isn't fixed after all."
+  end
+
+
+script GymGuy
+  speaker "Gym Guide"
+  if badge marsh goto Won
+  say "Yo, champ in the making! Sabrina's Psychic Pokémon are tough. Bug and Ghost moves hit them hard."
+  say "The pads on the floor warp you between rooms. Find the right ones and you'll reach her!"
+  end
+label Won
+  say "You beat Sabrina! I never would've predicted that. Ha!"
+  end
+
+
+script Statue
+  speaker none
+  if badge marsh goto Won
+  text "Saffron City Pokémon Gym. Leader: Sabrina. Winning trainers: {rival}."
+  end
+label Won
+  text "Saffron City Pokémon Gym. Leader: Sabrina. Winning trainers: {rival}, {player}."
+  end

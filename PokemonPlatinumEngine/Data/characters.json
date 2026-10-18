@@ -143,6 +143,16 @@
     "captain": { "hairColor": "#c8c8d0", "hat": "Cap", "hatColor": "#f2f2f6", "hatBand": "#2a3460", "top": "#f2f2f6", "accent": "#2a3460", "bottom": "#f2f2f6", "shoes": "#2a2a30", "mustache": true, "coat": true, "build": "Adult", "height": 1.04 },
     "mr_fuji": { "hairColor": "#ececf0", "top": "#7a4a6e", "accent": "#d8c8a8", "bottom": "#7a4a6e", "shoes": "#3a2e2a", "eyes": "#4a3a32", "coat": true, "build": "Adult", "height": 0.9 },
     "channeler": { "hairColor": "#2a2430", "hair": "Long", "top": "#f0eef4", "accent": "#7a4a9a", "bottom": "#f0eef4", "shoes": "#4a3a5a", "eyes": "#5a3a6a", "skirt": true, "coat": true, "build": "Adult", "lashes": true },
+    // Kanto's cast of plan 19 · K5, part b (our own takes): Erika, short dark hair in a bun with a red bow, a long
+    // green robe over a yellow sash; Sabrina, long straight dark-green hair and a long red top over white trousers;
+    // Giovanni, slicked dark hair and a long orange-brown suit coat over a black shirt; a Biker, a spiky dark crop and a
+    // black leather jacket with a red band over dark jeans; a cook (the S.S. Anne's galley, Celadon's restaurant), a
+    // white cap and a white jacket over dark trousers
+    "erika": { "hairColor": "#2a2430", "hair": "Bun", "hat": "Bow", "hatColor": "#d84a4a", "top": "#4a8a52", "accent": "#f2c84a", "bottom": "#4a8a52", "shoes": "#c8463c", "eyes": "#3a3040", "skirt": true, "coat": true, "build": "Adult", "lashes": true, "blush": true },
+    "sabrina": { "hairColor": "#2c4a3c", "hair": "Long", "top": "#b02c3c", "accent": "#e8c84a", "bottom": "#f0eef4", "shoes": "#2a2a30", "eyes": "#b8a04a", "build": "Adult", "lashes": true, "height": 1.04 },
+    "giovanni": { "hairColor": "#2a2224", "hair": "Swept", "top": "#9a5a34", "accent": "#1e1e24", "bottom": "#2a2a30", "shoes": "#1e1a1a", "eyes": "#2a2024", "coat": true, "build": "Adult", "height": 1.1 },
+    "biker": { "hairColor": "#2a2224", "hair": "Spiky", "top": "#26262c", "accent": "#c83a3a", "bottom": "#3a4a66", "shoes": "#1e1e22", "eyes": "#2a2024", "build": "Adult", "height": 1.04 },
+    "chef": { "hairColor": "#5c4638", "hat": "Cap", "hatColor": "#f6f6fa", "hatBand": "#f6f6fa", "top": "#f6f6fa", "accent": "#d8d8e0", "bottom": "#4a4a52", "shoes": "#2a2a30", "build": "Adult", "height": 1.0 },
     "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "height": 1.02 }
   },
   // Names that are another look
@@ -318,6 +328,9 @@
     "Team Rocket": "rocket",
     "Super Nerd": "scientist",
     "Channeler": "channeler",
+    "Biker": "biker",
+    "Cue Ball": "biker",
+    "Boss": "giovanni",
     "Leader": null,
     "Elite Four": null,
     "Champion": null,

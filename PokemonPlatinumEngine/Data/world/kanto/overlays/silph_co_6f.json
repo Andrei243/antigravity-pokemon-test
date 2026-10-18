@@ -1,0 +1,99 @@
+{
+  "area": "silph_co_6f",
+  "name": "Silph Co.",
+  "bgmTrack": "kanto/silph",
+  "people": {
+    "rocket_m": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: Silph Co. belongs to Team Rocket now! Get out!",
+        "dialogueAfter": "Team Rocket Grunt: Ugh! The boss will hear about this."
+      }
+    },
+    "worker_m": {
+      "name": "Worker",
+      "dialog": [
+        "I hid in the corner when they came in. I'm still hiding, really."
+      ]
+    },
+    "worker_f": {
+      "name": "Worker",
+      "dialog": [
+        "Team Rocket burst in and took over the whole building. We can't go home!"
+      ]
+    },
+    "worker_m_2": {
+      "name": "Worker",
+      "dialog": [
+        "They're after the Master Ball, a ball that never fails. The president won't hand it over."
+      ]
+    },
+    "worker_m_3": {
+      "name": "Worker",
+      "dialog": [
+        "Please, save the president! He's on the top floor."
+      ]
+    },
+    "worker_f_2": {
+      "name": "Worker",
+      "dialog": [
+        "The doors are locked by card. The Card Key is somewhere in the building."
+      ]
+    },
+    "scientist": {
+      "name": "Taylor",
+      "trainer": {
+        "dialogueBefore": "Scientist Taylor: Team Rocket pays better than Silph Co. ever did!",
+        "dialogueAfter": "Scientist Taylor: Maybe I should go back to my old job."
+      }
+    },
+    "rocket_m_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: You again? How did you get in here?",
+        "dialogueAfter": "Team Rocket Grunt: Fine, fine. You win this one."
+      }
+    }
+  },
+  "npcs": [
+    {
+      "id": "door1_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 5,
+      "y": 15,
+      "hiddenBy": "FLAG_SILPH_6F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 6,
+      "y": 15,
+      "hiddenBy": "FLAG_SILPH_6F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 5,
+      "y": 16,
+      "hiddenBy": "FLAG_SILPH_6F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 6,
+      "y": 16,
+      "hiddenBy": "FLAG_SILPH_6F_DOOR",
+      "script": "Door"
+    }
+  ],
+  "signs": {
+    "SilphCo_6F_EventScript_FloorSign": "Silph Co. Head Office\n6F"
+  }
+}

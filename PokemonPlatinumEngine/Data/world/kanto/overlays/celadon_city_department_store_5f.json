@@ -1,0 +1,14 @@
+{
+  // The Celadon Department Store's fifth floor (plan 19 · K5, part b): the drugstore's two counters
+  "area": "celadon_city_department_store_5f",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "clerk_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "Vitamins make a Pokémon stronger. Expensive, mind, but worth every coin." ] },
+    "sailor": { "name": "Sailor", "dialog": [ "X items give a Pokémon a boost in battle. Only for that battle, though!" ] }
+  },
+  "signs": {
+    "CeladonCity_DepartmentStore_5F_EventScript_FloorSign": "5F: Drugstore"
+  }
+}

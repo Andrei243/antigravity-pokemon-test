@@ -1,0 +1,13 @@
+{
+  // The Celadon Department Store's lift (plan 19 · K5, part b). FireRed's car leads back to whichever floor it last
+  // stopped at (MAP_DYNAMIC); here its doorway leads to the ground floor and the panel takes the player straight out onto the
+  // floor chosen (celadon_city_department_store_elevator.txt)
+  "area": "celadon_city_department_store_elevator",
+  "bgmTrack": "kanto/celadon",
+  "doors": [ { "warp": 0, "map": "CeladonCity_DepartmentStore_1F", "x": 6, "y": 2, "facing": "Down" } ],
+  // The doorway's second tile, behind the first, is never stood on
+  "locked": [ 1 ],
+  "read": {
+    "CeladonCity_DepartmentStore_Elevator_EventScript_FloorSelect": "Panel"
+  }
+}

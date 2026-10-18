@@ -1,0 +1,11 @@
+{
+  // A house of Celadon City behind the restaurant (plan 19 · K5, part b): an old man and two of Team Rocket, who run
+  // the Game Corner from here
+  "area": "celadon_city_house_1",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "old_man_2": { "name": "Old Man", "dialog": [ "Hm? The slot machines? Every one of them is fixed, if you want my opinion." ] },
+    "rocket_m": { "name": "Grunt", "dialog": [ "Shh! We're counting the takings. Get out of here!" ] },
+    "rocket_m_2": { "name": "Grunt", "dialog": [ "The Game Corner's a good little earner for the boss. Not that I said that." ] }
+  }
+}

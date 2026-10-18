@@ -1,0 +1,25 @@
+# Saffron City (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/SaffronCity/scripts.inc).
+#
+# Team Rocket holds the city until Giovanni is beaten at the top of Silph Co. (FLAG_HIDE_SAFFRON_ROCKETS,
+# silph_co_11f.txt), and its own people stay indoors until then (FLAG_HIDE_SAFFRON_CIVILIANS, which FireRed's new
+# game sets: here the city's arrival sets it for a game that hasn't freed the city). The grunt at Silph Co.'s door
+# stands in it until Mr. Fuji is rescued (FireRed's setobjectxyperm on FLAG_RESCUED_MR_FUJI), and dozes beside it
+# afterwards.
+
+
+script OnEnter
+  if not flag FLAG_HIDE_SAFFRON_ROCKETS setflag FLAG_HIDE_SAFFRON_CIVILIANS
+  if not flag FLAG_RESCUED_MR_FUJI place saffron_door_guard_grunt 287 144 down
+  end
+
+
+script DoorGuard
+  speaker "Grunt"
+  if flag FLAG_RESCUED_MR_FUJI goto Asleep
+  say "Silph Co. is closed today. Team Rocket's orders! Now beat it, kid!"
+  end
+label Asleep
+  speaker none
+  text "Zzz... Zzz... The grunt has dozed off at his post."
+  end

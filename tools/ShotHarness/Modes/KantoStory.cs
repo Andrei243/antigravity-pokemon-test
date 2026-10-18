@@ -42,7 +42,12 @@ partial class Harness
                 {
                     foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
                     // From the second chapter on the lead never tires: the foes move first more often there
-                    if (keepLead && fight.PlayerPokemon is { } tired) tired.CurrentHP = tired.MaxHP;
+                    if (keepLead && fight.PlayerPokemon is { } tired)
+                    {
+                        tired.CurrentHP = tired.MaxHP;
+                        // and never runs out of PP: the third chapter's battles come one after another
+                        foreach (var move in tired.Moves) move.CurrentPP = move.MaxPP;
+                    }
                     fight.SelectMainMenuOption(0);
                     // The first move that hurts: a starter's first is often Growl or Tail Whip
                     var lead = fight.PlayerPokemon;
@@ -386,5 +391,96 @@ partial class Harness
         engine.Choice.Move(1); Frames(4); engine.Choice.Confirm(); Frames(4);
         ReadTo(null);
         Console.WriteLine($"  Mega Punch: taught {story.Has("FLAG_TUTOR_MEGA_PUNCH")}");
+
+        // ---- Plan 19 · K5, part b: the Tea, Erika, the Game Corner's poster, the Rocket Hideout and Giovanni
+        keepLead = true;
+        TalkTo("CeladonCity_Condominiums_1F", "old_woman", 1, 0);
+        ReadTo("have some of my tea"); Frames(10); Shot("ks58_the_tea");
+        ReadTo(null);
+        TalkTo("CeladonCity_Gym", "erika");
+        ReadTo("I'm Erika"); Frames(10); Shot("ks59_erika");
+        IntoBattle("Erika's battle");
+        ToMainMenu(game.Battle); Shot("ks60_erikas_battle");
+        Win();
+        ReadTo("Rainbow Badge from Erika"); Frames(10); Shot("ks61_the_rainbow_badge");
+        ReadTo(null);
+        TalkTo("CeladonCity_GameCorner", "game_corner_grunt");
+        IntoBattle("the Game Corner's grunt");
+        Win();
+        ReadTo(null);
+        At("CeladonCity_GameCorner", 11, 2, Direction.Up); Frames(4);
+        game.Interact();
+        ReadTo("switch behind the poster"); Frames(10); Shot("ks62_the_posters_switch");
+        ReadTo("hidden staircase"); Frames(10); Shot("ks63_the_stairs_open");
+        ReadTo(null);
+        Console.WriteLine($"  the poster: opened {story.Has("FLAG_OPENED_ROCKET_HIDEOUT")}, stairs shut {game.Map.Warps.Single(w => w.TargetMap == "RocketHideout_B1F").Shut}");
+        story.Set("FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN");
+        TalkTo("RocketHideout_B4F", "hideout_giovanni");
+        ReadTo("I'm Giovanni"); Frames(10); Shot("ks64_giovanni");
+        IntoBattle("Giovanni's battle");
+        ToMainMenu(game.Battle); Shot("ks65_giovannis_battle");
+        Win();
+        ReadTo(null); Frames(20); Shot("ks66_the_silph_scope_left");
+        Console.WriteLine($"  Giovanni: beaten {story.Has("FLAG_DEFEATED_ROCKET_HIDEOUT_GIOVANNI")}, Celadon's Rockets gone {story.Has("FLAG_HIDE_CELADON_ROCKETS")}");
+
+        // ---- the ghost seen for Marowak, Mr. Fuji, the Poké Flute and a Snorlax woken
+        game.Bag.AddItem(ItemDatabase.Get("Silph Scope")!, 1);
+        StepOnto("PokemonTower_6F", 11, 15, Direction.Left);
+        ReadTo("for what it is"); Frames(10); Shot("ks67_the_scope_shows_marowak");
+        IntoBattle("the ghost's battle");
+        ToMainMenu(game.Battle); Shot("ks68_marowaks_battle");
+        Win();
+        ReadTo("calmed"); Frames(10); Shot("ks69_the_spirit_at_rest");
+        ReadTo(null);
+        TalkTo("PokemonTower_7F", "mr_fuji");
+        ReadTo("a long way to find an old man"); Frames(10); Shot("ks70_mr_fuji");
+        ReadTo(null); Frames(30);
+        TalkTo("LavenderTown_VolunteerPokemonHouse", "mr_fuji");
+        ReadTo("Poké Flute"); Frames(10); Shot("ks71_the_poke_flute");
+        ReadTo(null);
+        At("Kanto", 398, 221, Direction.Up); Frames(4);
+        game.Interact();
+        ReadTo("played the Poké Flute"); Frames(10); Shot("ks72_the_flute_played");
+        ReadTo("woke up"); Frames(10); Shot("ks73_snorlax_wakes");
+        IntoBattle("the Snorlax's battle");
+        Win();
+        ReadTo(null);
+        Console.WriteLine($"  Snorlax of Route 12: gone {story.Has("FLAG_HIDE_ROUTE_12_SNORLAX")}");
+
+        // ---- Fly's map of Kanto
+        At("Kanto", 288, 150, Direction.Down); Frames(4);
+        game.OpenTownMap(TownMapMode.Fly);
+        Frames(30); Shot("ks74_fly_over_kanto");
+        game.TownMapScreen.Cancel(); Frames(4);
+        game.State = GameState.Overworld;
+
+        // ---- Silph Co.: a door and the Card Key, the rival, Giovanni, Sabrina
+        game.Bag.AddItem(ItemDatabase.Get("Card Key")!, 1);
+        TalkTo("SilphCo_5F", "door1_00", 0, 1);
+        ReadTo("Card Key opened"); Frames(10); Shot("ks75_the_card_key");
+        ReadTo(null);
+        StepOnto("SilphCo_7F", 2, 4, Direction.Down);
+        ReadTo("What kept you"); Frames(10); Shot("ks76_the_rival_at_silph");
+        IntoBattle("the rival's battle at Silph Co.");
+        Win();
+        ReadTo(null);
+        story.Set("FLAG_SILPH_11F_DOOR");
+        StepOnto("SilphCo_11F", 5, 15, Direction.Up);
+        ReadTo("We meet once more"); Frames(10); Shot("ks77_giovanni_at_silph");
+        IntoBattle("Giovanni's second battle");
+        Win();
+        ReadTo(null); Frames(20);
+        TalkTo("SilphCo_11F", "old_man_2");
+        ReadTo("secret prototype"); Frames(10); Shot("ks78_the_master_ball");
+        ReadTo(null);
+        Console.WriteLine($"  Silph Co.: Rockets gone {story.Has("FLAG_HIDE_SAFFRON_ROCKETS")}, Master Ball {game.Bag.GetQuantity(ItemDatabase.Get("Master Ball")!)}");
+        TalkTo("SaffronCity_Gym", "sabrina");
+        ReadTo("I had a vision"); Frames(10); Shot("ks79_sabrina");
+        IntoBattle("Sabrina's battle");
+        ToMainMenu(game.Battle); Shot("ks80_sabrinas_battle");
+        Win();
+        ReadTo("Marsh Badge from Sabrina"); Frames(10); Shot("ks81_the_marsh_badge");
+        ReadTo(null);
+        Console.WriteLine($"  badges: {string.Join(", ", new[] { "Boulder", "Cascade", "Thunder", "Rainbow", "Marsh" }.Where(b => story.HasBadge("Kanto", b)))}");
     }
 }

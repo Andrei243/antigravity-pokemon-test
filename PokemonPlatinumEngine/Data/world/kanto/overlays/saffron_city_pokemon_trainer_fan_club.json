@@ -1,0 +1,12 @@
+{
+  // The Pokémon Trainer Fan Club in Saffron City (plan 19 · K5, part b): fans of the region's strongest trainers.
+  // Those FireRed brings in later (the woman, the rocker, the beauty and the black belt) stay away until their day
+  "area": "saffron_city_pokemon_trainer_fan_club",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "trainer_fan_club_battle_girl": { "name": "Battle Girl", "dialog": [ "I'm the biggest fan of Bruno of the Elite Four! His muscles are amazing!" ] },
+    "trainer_fan_club_little_girl": { "name": "Girl", "dialog": [ "I like Lorelei of the Elite Four. She's so cool and calm." ] },
+    "trainer_fan_club_youngster": { "name": "Youngster", "dialog": [ "Lance is the best! Dragon Pokémon are the coolest!" ] },
+    "trainer_fan_club_gentleman": { "name": "Gentleman", "dialog": [ "Agatha has been a trainer for longer than anyone. Experience counts for everything." ] }
+  }
+}

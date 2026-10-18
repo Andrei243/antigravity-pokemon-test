@@ -1,0 +1,30 @@
+# Route 12 (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on FireRed's beats
+# (data/maps/Route12/scripts.inc).
+#
+# A Snorlax sleeps across the way south. Only the Poké Flute (lavender_town_volunteer_pokemon_house.txt) wakes it;
+# woken, it is angry and battles (level 30), and once the battle is over, won, caught or run from, it is gone from
+# the road (FLAG_HIDE_ROUTE_12_SNORLAX). Route 16's is the same (route_16.txt).
+
+
+script Snorlax
+  speaker none
+  if item "Poké Flute" goto Flute
+  text "A sleeping Pokémon blocks the way. It's snoring soundly."
+  end
+label Flute
+  ask "A sleeping Pokémon blocks the way. Use the Poké Flute?"
+  if no end
+  scene "Snorlax"
+  text "{player} played the Poké Flute."
+  music "kanto/poke_flute"
+  wait 3
+  music area
+  cry "Snorlax"
+  text "Snorlax woke up! It doesn't look happy about it..."
+  wildbattle "Snorlax" 30
+  setflag FLAG_HIDE_ROUTE_12_SNORLAX
+  hide self
+  if result == 2 text "Snorlax lumbered off somewhere quieter."
+  if result == 1 text "Snorlax calmed down, and lumbered off."
+  endscene
+  end

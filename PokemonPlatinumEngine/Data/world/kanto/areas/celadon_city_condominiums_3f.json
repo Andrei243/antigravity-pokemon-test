@@ -1,0 +1,40 @@
+{
+  "key": "celadon_city_condominiums_3f",
+  "index": 305,
+  "name": "Celadon City",
+  "matrix": 252,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CELADON",
+  "nightMusic": "MUS_CELADON",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 2, "to": "celadon_city_condominiums_2f", "toWarp": 1 },
+    { "x": 4, "z": 2, "to": "celadon_city_condominiums_roof", "toWarp": 0 },
+    { "x": 12, "z": 2, "to": "celadon_city_condominiums_roof", "toWarp": 1 },
+    { "x": 11, "z": 2, "to": "celadon_city_condominiums_2f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "rocker", "looks": "rocker", "movement": "look_north", "x": 0, "z": 10, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_Condominiums_3F_EventScript_Programmer" },
+    { "id": "man", "looks": "man", "movement": "look_south", "x": 3, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_Condominiums_3F_EventScript_Designer" },
+    { "id": "poke_maniac", "looks": "poke_maniac", "movement": "look_north", "x": 4, "z": 10, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_Condominiums_3F_EventScript_GraphicArtist" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_east", "x": 0, "z": 13, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_Condominiums_3F_EventScript_Writer" }
+  ],
+  "signs": [
+    { "x": 8, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_3F_EventScript_DevelopmentRoomSign" },
+    { "x": 1, "z": 9, "type": 0, "script": "CeladonCity_Condominiums_3F_EventScript_Computer1" },
+    { "x": 5, "z": 9, "type": 0, "script": "CeladonCity_Condominiums_3F_EventScript_Computer2" },
+    { "x": 1, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_3F_EventScript_Computer3" },
+    { "x": 7, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_3F_EventScript_DevelopmentRoomSign" },
+    { "x": 0, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_3F_EventScript_Computer3" },
+    { "x": 0, "z": 9, "type": 0, "script": "CeladonCity_Condominiums_3F_EventScript_Computer1" },
+    { "x": 4, "z": 9, "type": 0, "script": "CeladonCity_Condominiums_3F_EventScript_Computer2" }
+  ],
+  "triggers": []
+}

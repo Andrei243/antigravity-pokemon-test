@@ -1,0 +1,14 @@
+{
+  // The gate between Route 5 and Saffron City (plan 19 · K5, part b): its guard, thirsty on duty, turns everyone back
+  // until he has had the Tea (route_5_south_entrance.txt)
+  "area": "route_5_south_entrance",
+  "bgmTrack": "kanto/viridian",
+  "triggers": [
+    { "trigger": 0, "script": "Guard" },
+    { "trigger": 1, "script": "Guard" },
+    { "trigger": 2, "script": "Guard" }
+  ],
+  "people": {
+    "policeman": { "name": "Guard", "script": "GuardTalk", "still": true }
+  }
+}

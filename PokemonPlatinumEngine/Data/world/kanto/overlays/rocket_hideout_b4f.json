@@ -1,0 +1,24 @@
+{
+  // The Rocket Hideout's fourth basement (plan 19 · K5, part b): Giovanni in his office behind a barrier that two
+  // grunts keep, the Lift Key that the third grunt keeps, and the Silph Scope on Giovanni's desk
+  // (rocket_hideout_b4f.txt). FireRed draws the barrier into its tiles and changes them with setmetatile; here it is
+  // four things of ours on its tiles, gone once both its grunts are beaten
+  // (FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN)
+  "area": "rocket_hideout_b4f",
+  "name": "Rocket Hideout",
+  "bgmTrack": "kanto/rocket_hideout",
+  "people": {
+    "hideout_giovanni": { "name": "Giovanni", "script": "Giovanni", "still": true },
+    "silph_scope": { "name": "Silph Scope", "script": "SilphScope" },
+    "lift_key": { "name": "Lift Key", "script": "LiftKey" },
+    "rocket_m": { "name": "Grunt", "script": "KeyGrunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: The Lift Key? It's right here. Come and take it, if you dare!", "dialogueAfter": "Team Rocket Grunt: Oh no! I dropped the Lift Key!" } },
+    "rocket_m_2": { "name": "Grunt", "script": "DoorGrunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: Nobody gets past this door. The boss is busy!", "dialogueAfter": "Team Rocket Grunt: I've let the boss down..." } },
+    "rocket_m_3": { "name": "Grunt", "script": "DoorGrunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: The boss's office is through here, and you're not going in!", "dialogueAfter": "Team Rocket Grunt: Go on, then. The boss will finish you." } }
+  },
+  "npcs": [
+    { "id": "barrier_1", "name": "Barrier", "npcType": "ElectricGate", "x": 17, "y": 12, "hiddenBy": "FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN", "script": "Barrier" },
+    { "id": "barrier_2", "name": "Barrier", "npcType": "ElectricGate", "x": 18, "y": 12, "hiddenBy": "FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN", "script": "Barrier" },
+    { "id": "barrier_3", "name": "Barrier", "npcType": "ElectricGate", "x": 17, "y": 13, "hiddenBy": "FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN", "script": "Barrier" },
+    { "id": "barrier_4", "name": "Barrier", "npcType": "ElectricGate", "x": 18, "y": 13, "hiddenBy": "FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN", "script": "Barrier" }
+  ]
+}

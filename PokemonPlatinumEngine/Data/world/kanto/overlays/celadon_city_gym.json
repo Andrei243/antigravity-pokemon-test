@@ -1,0 +1,64 @@
+{
+  // The Celadon City Gym (plan 19 · K5, part b), its garden as FireRed lays it out: Erika at the back behind her
+  // trees, and her seven trainers, who battle by their own records (Kanto's trainers.json). celadon_city_gym.txt has
+  // Erika, the Rainbow Badge and TM19
+  "area": "celadon_city_gym",
+  "bgmTrack": "kanto/gym",
+  // The hall of its Leader's type (plan 19 · K4)
+  "arenaType": "Grass",
+  "people": {
+    "erika": { "name": "Erika", "script": "Erika", "still": true },
+    "lass": {
+      "name": "Kay",
+      "trainer": {
+        "dialogueBefore": "Lass Kay: Hey! You can't just walk into Erika's garden like that!",
+        "dialogueAfter": "Lass Kay: Fine, go on through. Erika won't go easy, though!"
+      }
+    },
+    "beauty": {
+      "name": "Bridget",
+      "trainer": {
+        "dialogueBefore": "Beauty Bridget: Oh, a visitor! Do you like flowers? My Pokémon smell lovely.",
+        "dialogueAfter": "Beauty Bridget: Oh dear. My bouquet's been trampled."
+      }
+    },
+    "picnicker": {
+      "name": "Tina",
+      "trainer": {
+        "dialogueBefore": "Picnicker Tina: I'm here to learn about Grass Pokémon from Erika! Show me what you've got!",
+        "dialogueAfter": "Picnicker Tina: I've still got a lot to learn."
+      }
+    },
+    "beauty_2": {
+      "name": "Tamia",
+      "trainer": {
+        "dialogueBefore": "Beauty Tamia: Look at my Pokémon! Aren't they elegant?",
+        "dialogueAfter": "Beauty Tamia: Elegance isn't everything, it seems."
+      }
+    },
+    "beauty_3": {
+      "name": "Lori",
+      "trainer": {
+        "dialogueBefore": "Beauty Lori: Erika is resting. You'll have to get past me first.",
+        "dialogueAfter": "Beauty Lori: Very well. She'll want to meet you."
+      }
+    },
+    "lass_2": {
+      "name": "Lisa",
+      "trainer": {
+        "dialogueBefore": "Lass Lisa: I don't like bugs, so I don't like people who use Bug Pokémon!",
+        "dialogueAfter": "Lass Lisa: Ugh, you're strong."
+      }
+    },
+    "cooltrainer_f": {
+      "name": "Mary",
+      "trainer": {
+        "dialogueBefore": "Cool Trainer Mary: Erika's students are tough. I'm the toughest of all!",
+        "dialogueAfter": "Cool Trainer Mary: Not tough enough, apparently."
+      }
+    }
+  },
+  "read": {
+    "CeladonCity_Gym_EventScript_GymStatue": "Statue"
+  }
+}

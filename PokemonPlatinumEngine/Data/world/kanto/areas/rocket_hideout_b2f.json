@@ -1,0 +1,33 @@
+{
+  "key": "rocket_hideout_b2f",
+  "index": 85,
+  "name": "Rocket Hideout",
+  "matrix": 49,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROCKET_HIDEOUT",
+  "nightMusic": "MUS_ROCKET_HIDEOUT",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 21, "z": 2, "to": "rocket_hideout_b3f", "toWarp": 0 },
+    { "x": 28, "z": 2, "to": "rocket_hideout_b1f", "toWarp": 1 },
+    { "x": 23, "z": 12, "to": "rocket_hideout_b1f", "toWarp": 2 },
+    { "x": 28, "z": 16, "to": "rocket_hideout_elevator", "toWarp": 1 },
+    { "x": 29, "z": 16, "to": "", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "look_around", "x": 20, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_13" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 15, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_X_SPEED", "item": "X Speed", "script": "RocketHideout_B2F_EventScript_ItemXSpeed" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 2, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_MOON_STONE", "item": "Moon Stone", "script": "RocketHideout_B2F_EventScript_ItemMoonStone" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 5, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_TM12", "item": "TM12", "script": "RocketHideout_B2F_EventScript_ItemTM12" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_south", "x": 0, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B2F_SUPER_POTION", "item": "Super Potion", "script": "RocketHideout_B2F_EventScript_ItemSuperPotion" }
+  ],
+  "signs": [],
+  "triggers": []
+}

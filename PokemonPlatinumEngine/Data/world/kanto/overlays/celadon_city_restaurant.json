@@ -1,0 +1,13 @@
+{
+  // Celadon City's restaurant (plan 19 · K5, part b): the man down on his luck gives his Coin Case away
+  // (celadon_city_restaurant.txt)
+  "area": "celadon_city_restaurant",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "balding_man": { "name": "Man", "script": "CoinCaseMan" },
+    "chef": { "name": "Chef", "dialog": [ "Hi! We're not open yet, I'm afraid. The kitchen's still being set up." ] },
+    "woman_2": { "name": "Woman", "dialog": [ "My Pokémon and I come here every week. The food is delicious!" ] },
+    "fat_man": { "name": "Man", "dialog": [ "Mmph! Mmph mmph! Sorry, my mouth's full. This is so good!" ] },
+    "worker_m": { "name": "Worker", "dialog": [ "Psst... I hear there's something strange going on in the Game Corner's back room." ] }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  // Celadon Mansion's third floor (plan 19 · K5, part b): a team of game makers at work
+  "area": "celadon_city_condominiums_3f",
+  "bgmTrack": "kanto/celadon",
+  // The east stairs, up to the roof and down to the second floor, are FireRed's side stairs, taken with a step off one
+  // onto the other, which this game does not do: both are shut, and the floor and the roof are come to by the west
+  // stairs (celadon_city_condominiums_2f.json)
+  "locked": [ 2, 3 ],
+  "people": {
+    "rocker": { "name": "Programmer", "dialog": [ "Me? I write the code. If the game crashes, it's probably my fault." ] },
+    "man": { "name": "Designer", "dialog": [ "I plan the maps. Every town needs a place to explore, don't you think?" ] },
+    "poke_maniac": { "name": "Artist", "dialog": [ "I draw the Pokémon. Getting their eyes right takes the longest." ] },
+    "fat_man": { "name": "Writer", "dialog": [ "I write what people say. A good line is harder than it looks!" ] }
+  },
+  "signs": {
+    "CeladonCity_Condominiums_3F_EventScript_DevelopmentRoomSign": "Development Room\nDo not disturb!",
+    "CeladonCity_Condominiums_3F_EventScript_Computer1": "The screen is full of numbers that scroll past too fast to read.",
+    "CeladonCity_Condominiums_3F_EventScript_Computer2": "A drawing of a Pokémon nobody has named yet.",
+    "CeladonCity_Condominiums_3F_EventScript_Computer3": "A map of a town, half finished."
+  }
+}

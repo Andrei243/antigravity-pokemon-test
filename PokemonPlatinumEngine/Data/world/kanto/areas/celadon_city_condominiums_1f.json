@@ -1,0 +1,36 @@
+{
+  "key": "celadon_city_condominiums_1f",
+  "index": 303,
+  "name": "Celadon City",
+  "matrix": 250,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CELADON",
+  "nightMusic": "MUS_CELADON",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 19, "to": "", "toWarp": 3 },
+    { "x": 12, "z": 18, "to": "celadon_city", "toWarp": 3 },
+    { "x": 13, "z": 19, "to": "", "toWarp": 3 },
+    { "x": 4, "z": 2, "to": "celadon_city_condominiums_2f", "toWarp": 0 },
+    { "x": 12, "z": 2, "to": "celadon_city_condominiums_2f", "toWarp": 3 },
+    { "x": 2, "z": 1, "to": "celadon_city", "toWarp": 11 }
+  ],
+  "objects": [
+    { "id": "meowth", "looks": "meowth", "movement": "look_east", "x": 1, "z": 9, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_Condominiums_1F_EventScript_Meowth" },
+    { "id": "clefairy", "looks": "clefairy", "movement": "wander_west_and_east", "x": 5, "z": 13, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_Condominiums_1F_EventScript_Clefairy" },
+    { "id": "nidoran_f", "looks": "nidoran_f", "movement": "wander_around", "x": 5, "z": 8, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "CeladonCity_Condominiums_1F_EventScript_Nidoran" },
+    { "id": "old_woman", "looks": "old_woman", "movement": "look_south", "x": 2, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_Condominiums_1F_EventScript_TeaWoman" }
+  ],
+  "signs": [
+    { "x": 8, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_1F_EventScript_SuiteSign" },
+    { "x": 7, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_1F_EventScript_SuiteSign" }
+  ],
+  "triggers": []
+}

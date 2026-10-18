@@ -1,0 +1,81 @@
+{
+  "area": "silph_co_8f",
+  "name": "Silph Co.",
+  "bgmTrack": "kanto/silph",
+  "people": {
+    "rocket_m": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: Team Rocket never gives up! Battle!",
+        "dialogueAfter": "Team Rocket Grunt: We never give up... but I do."
+      }
+    },
+    "rocket_m_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: You think you can take back this building alone?",
+        "dialogueAfter": "Team Rocket Grunt: Huh. Maybe you can."
+      }
+    },
+    "scientist": {
+      "name": "Parker",
+      "trainer": {
+        "dialogueBefore": "Scientist Parker: I programmed every door in this building. You won't get far!",
+        "dialogueAfter": "Scientist Parker: You got far enough."
+      }
+    },
+    "worker_m": {
+      "name": "Worker",
+      "dialog": [
+        "The doors are locked by card. The Card Key is somewhere in the building."
+      ]
+    },
+    "scientist_2": {
+      "name": "Scientist",
+      "dialog": [
+        "I locked myself in here when Team Rocket came. Is it safe to come out?"
+      ]
+    }
+  },
+  "npcs": [
+    {
+      "id": "door1_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 5,
+      "y": 10,
+      "hiddenBy": "FLAG_SILPH_8F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 6,
+      "y": 10,
+      "hiddenBy": "FLAG_SILPH_8F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 5,
+      "y": 11,
+      "hiddenBy": "FLAG_SILPH_8F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 6,
+      "y": 11,
+      "hiddenBy": "FLAG_SILPH_8F_DOOR",
+      "script": "Door"
+    }
+  ],
+  "signs": {
+    "SilphCo_8F_EventScript_FloorSign": "Silph Co. Head Office\n8F"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "key": "celadon_city_gym",
+  "index": 312,
+  "name": "Celadon City",
+  "matrix": 259,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GYM",
+  "nightMusic": "MUS_GYM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 18, "to": "celadon_city", "toWarp": 6 },
+    { "x": 6, "z": 18, "to": "celadon_city", "toWarp": 6 },
+    { "x": 7, "z": 18, "to": "celadon_city", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 3, "z": 11, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_KAY" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_west", "x": 9, "z": 10, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_BEAUTY_BRIDGET" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_south", "x": 10, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_PICNICKER_TINA" },
+    { "id": "beauty_2", "looks": "beauty", "movement": "look_south", "x": 2, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_BEAUTY_TAMIA" },
+    { "id": "beauty_3", "looks": "beauty", "movement": "look_south", "x": 5, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_BEAUTY_LORI" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_south", "x": 7, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_LASS_LISA" },
+    { "id": "erika", "looks": "erika", "movement": "look_south", "x": 6, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_Gym_EventScript_Erika" },
+    { "id": "cooltrainer_f", "looks": "cooltrainer_f", "movement": "look_west", "x": 8, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_COOLTRAINER_MARY" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 6, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_2", "looks": "cut_tree", "movement": "look_south", "x": 3, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_3", "looks": "cut_tree", "movement": "look_south", "x": 9, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_CutTree" }
+  ],
+  "signs": [
+    { "x": 4, "z": 16, "type": 0, "script": "CeladonCity_Gym_EventScript_GymStatue" },
+    { "x": 8, "z": 16, "type": 0, "script": "CeladonCity_Gym_EventScript_GymStatue" }
+  ],
+  "triggers": []
+}

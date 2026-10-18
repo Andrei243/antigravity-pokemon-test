@@ -1,0 +1,10 @@
+{
+  // The Rocket Hideout's second basement (plan 19 · K5, part b): its floor of arrows, which set whoever steps on one
+  // spinning on until a stop (FieldMovement.Spins)
+  "area": "rocket_hideout_b2f",
+  "name": "Rocket Hideout",
+  "bgmTrack": "kanto/rocket_hideout",
+  "people": {
+    "rocket_m": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: Dizzy yet? These floors spin you right round!", "dialogueAfter": "Team Rocket Grunt: Now I'm the one seeing stars." } }
+  }
+}

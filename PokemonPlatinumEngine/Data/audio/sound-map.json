@@ -99,7 +99,11 @@
     "Engineer": "mountain",
     "Channeler": "mystery",
     "Pokemaniac": "mystery",
-    "Team Aqua": "galactic"
+    "Team Aqua": "galactic",
+    "Cue Ball": "fighter",
+    "Boss": "galactic",
+    "Rocker": "fun",
+    "Cooltrainer": "ace"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -120,6 +124,7 @@
     "Rocket Boss": "galacticBoss",
     "Elite Four": "eliteFour",
     "Champion": "champion",
-    "Team Aqua": "galactic"
+    "Team Aqua": "galactic",
+    "Boss": "galacticBoss"
   }
 }

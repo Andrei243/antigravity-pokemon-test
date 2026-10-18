@@ -1,0 +1,19 @@
+# The house on Route 16 (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/Route16_House/scripts.inc).
+#
+# The woman who has found her way here gives HM02, Fly (FLAG_GOT_HM02), which the Thunder Badge lets a Pokémon use
+# outside battle: Kanto's towns once come to are on its map.
+
+
+script Woman
+  speaker "Woman"
+  if flag FLAG_GOT_HM02 goto Given
+  say "Oh! You found my little hideaway. Not many people make it this far."
+  say "My Fearow and I fly everywhere together. You ought to try it. Here, take this!"
+  give "HM02"
+  setflag FLAG_GOT_HM02
+  say "HM02 is Fly. A Pokémon that knows it can carry you to any town you've been to before."
+  end
+label Given
+  say "Flying over Kanto is wonderful. Every town looks so small from up there!"
+  end

@@ -1,0 +1,28 @@
+# The Game Corner's prize exchange in Celadon City (plan 19 · K5, part b). docs/scripts.md describes the language;
+# the lines are our own, on FireRed's beats (data/maps/CeladonCity_GameCorner_PrizeRoom/scripts.inc).
+#
+# FireRed's three counters give Pokémon, TMs and items for coins. The exchange here is plan 06 · R16b's list
+# (gamecorner prize, gamecorner buy), the same at all three; FireRed's Pokémon prizes are left for a later session.
+
+
+script Prizes
+  speaker "Clerk"
+  if not item "Coin Case" goto NoCase
+  gamecorner coins
+  say "Welcome! You have {coins} coins. Which prize would you like?"
+  gamecorner prize
+  if result == 0 goto Bye
+  ask "The {item} for {price} coins?"
+  if no goto Bye
+  gamecorner buy
+  if result == 0 goto Poor
+  text "{player} received the {item}!"
+label Bye
+  say "Please come again!"
+  end
+label NoCase
+  say "Prizes are exchanged for coins. You'll need a Coin Case first."
+  end
+label Poor
+  say "I'm sorry, you don't have enough coins."
+  end

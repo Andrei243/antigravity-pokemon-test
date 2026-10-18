@@ -2844,3 +2844,48 @@ Route 104 to Rusturf Tunnel is scripts of ours on Emerald's beats (`petalburg_wo
   Emerald's own come (the Wailmer Pail waters nothing yet).
 - **Petalburg's Gym** is as long as the hall the camera follows: a GBA room longer than a chunk is as wide as its
   floor, not as its column of chunks (`World.cs`).
+- **Still to come in H2**: Route 104, Petalburg Woods and its grunt, Rustboro City, Roxanne and the Stone Badge, Rusturf
+  Tunnel and the Devon Goods, and Mr. Stone's PokéNav.
+
+## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
+
+From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,
+`pokemon_tower_6f.txt`, `pokemon_tower_7f.txt`, `lavender_town_volunteer_pokemon_house.txt`, `route_12.txt`,
+`route_16.txt`, `route_16_house.txt`, `route_5_south_entrance.txt` and the other three gates, `saffron_city*.txt`,
+`silph_co_*.txt`), under FireRed's flags and variables. What differs from FireRed, and why:
+
+- **Saffron City is laid into the overworld.** FireRed's routes join a 48 by 40 copy of the city's middle
+  (`SaffronCity_Connection`), and the real city (66 by 55, its houses, people and the far doors of its four gates) is a
+  map no connection reaches. The importer lays the real city in where the copy would be, ten tiles west and seven north
+  of it (its middle is the copy, metatile for metatile), and lays it last, so its frame, which repeats the ends of
+  Routes 5 to 8, gives way to the routes themselves (`GbaWorld.StandIns`). The overworld stays 416 tiles square and the
+  copy is a matrix of its own with nothing joined to it, so the matrices keep their numbers; the chunks after it were
+  renumbered once.
+- **The Rocket Hideout's arrows spin** as FireRed's do: an arrow is a slide of Platinum's, and on a map that has
+  FireRed's stop tiles a spin goes on over plain floor in the last arrow's way until a stop tile or a wall
+  (`FieldMovement.Spins`; Platinum's own slides, on maps with no stop tiles, end on plain floor as before).
+- **The lifts** (the department store's, the hideout's, Silph Co.'s): FireRed's car leads back to the floor it last
+  stopped at (`MAP_DYNAMIC`). Here the panel rides the car (`anim elevator`) and puts the player out before the lift's
+  door of the floor chosen, and the car's own doorway leads to the ground floor (the first basement in the hideout),
+  so nobody is shut in a car. The hideout's panel does nothing without the Lift Key.
+- **Barriers and Silph Co.'s locked doors** are things of the map on their tiles (FireRed changes metatiles): the
+  hideout's barrier (`ElectricGate`) goes once both its grunts are beaten (FireRed counts them as the map loads; here
+  each one's battle asks), Silph Co.'s twenty doors (`GalacticDoor`, four to a door) open to the Card Key for good under
+  FireRed's flags (`FLAG_SILPH_5F_DOOR_1`).
+- **The ghost of the sixth floor is Marowak** once the Silph Scope shows it: a wild battle at level 30, after which
+  the spirit rests and the way up opens; run from, it pushes the player back as before. FireRed's ghost can't be
+  caught; a wild battle here has no such rule yet, so a Marowak caught is taken for a spirit at rest too.
+- **The Snorlax of Routes 12 and 16** wake to the Poké Flute (its tune, `kanto/poke_flute`, played over the field) and
+  battle at level 30; once the battle is over, however it ended, the Snorlax is gone.
+- **The Tea** is taken by the first thirsty guard given it, who shares it with the other three: one variable for the
+  four gates (`VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES`), as FireRed's.
+- **Saffron's grunts on doormats.** FireRed stands grunts on the mats of the Gym, a house and Copycat's house until
+  Team Rocket leaves; a way out of a room must land on open ground here, so those three are left away and the Gym's door
+  is shut until Giovanni is beaten at Silph Co. (`FLAG_HIDE_SAFFRON_ROCKETS`), which keeps FireRed's order of Silph Co.
+  before Sabrina. The grunt at Silph Co.'s door keeps it until Mr. Fuji is rescued, as FireRed's.
+- **Prizes and slots.** The Game Corner's machines and the prize exchange are plan 06 · R16b's (the same machines and
+  list as Veilstone's); FireRed's Pokémon prizes, its Soft-Boiled and Thunder Wave tutors, Copycat's trade and the
+  other gifts of the chapter not written here are left for a later session.
+- **Fly over Kanto** is the Town Map's Fly mode on Kanto's own `townmap.json`: a cell for each chunk of the overworld,
+  the area whose chunk it is, a town on the cell of its Pokémon Center's spawn; Fly lands at the region's spawns,
+  each once come to (FireRed's `FLAG_WORLD_MAP_*` are its first arrivals). HM02 is given in Route 16's house.

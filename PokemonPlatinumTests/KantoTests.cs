@@ -465,5 +465,49 @@ public class KantoTests
             Assert.Equal(BattleArena.Gym, map.ArenaAt(5, 10));
         }
         Assert.Equal(BattleArena.Indoors, BuiltMaps.Value["VermilionCity_PokemonFanClub"].ArenaAt(5, 5));
+        foreach (var (gym, type) in new[] { ("CeladonCity_Gym", PokemonType.Grass), ("SaffronCity_Gym", PokemonType.Psychic) })
+            Assert.Equal(type, BuiltMaps.Value[gym].ArenaType);
+    }
+
+    [Fact]
+    public void SaffronCityIsLaidIntoTheOverworldWhereItsStandInWas()
+    {
+        // Plan 19 · K5, part b: FireRed's routes join SaffronCity_Connection; the real city is laid in ten tiles west and
+        // seven north of it, its frame giving way to the routes, so its doors and the far doors of its four gates are on
+        // the overworld, and the overworld is as large as it was
+        Assert.Equal(("MAP_SAFFRON_CITY", -10, -7), MapImporter.Gba.GbaWorld.StandIns["MAP_SAFFRON_CITY_CONNECTION"]);
+        Assert.Equal(416, Overworld.Width);
+        Assert.Equal(416, Overworld.Height);
+        Assert.Equal("saffron_city", Overworld.AreaAt(287, 143)?.Key);
+        foreach (string target in new[] { "SilphCo_1F", "SaffronCity_Gym", "SaffronCity_Dojo", "SaffronCity_PokemonCenter_1F", "Route7_EastEntrance", "Route8_WestEntrance", "Route5_SouthEntrance", "Route6_NorthEntrance" })
+            Assert.Contains(Overworld.Warps, w => w.TargetMap == target);
+        // The frame gives way to the routes it copies: Route 7's gate stands on Route 7's tiles
+        Assert.Equal("route_7", Overworld.AreaAt(262, 140)?.Key);
+        Assert.DoesNotContain(Kanto.Index.Maps, m => m.Area == "saffron_city");
+    }
+
+    [Fact]
+    public void TheRocketHideoutsArrowsSpinThePlayerOnUntilAStop()
+    {
+        // FireRed's spin arrows are slides on a map with stop tiles: a spin goes on over plain floor until a stop
+        var b2f = BuiltMaps.Value["RocketHideout_B2F"];
+        Assert.True(b2f.HasSpinStops);
+        Assert.Contains(Enumerable.Range(0, b2f.Width).SelectMany(x => Enumerable.Range(0, b2f.Height).Select(y => b2f.BehaviourAt(x, y))), b => b == TileBehavior.SlideEast);
+        Assert.Equal(Direction.Right, FieldMovement.Spins(b2f, TileBehavior.SlideEast, Direction.Right, null));
+        Assert.Equal(Direction.Right, FieldMovement.Spins(b2f, TileBehavior.None, null, Direction.Right));
+        Assert.Null(FieldMovement.Spins(b2f, TileBehavior.Spinner, null, Direction.Right));
+        // Platinum's own slides end on plain floor, on a map with no stop tiles
+        Assert.False(Overworld.HasSpinStops);
+        Assert.Null(FieldMovement.Spins(Overworld, TileBehavior.SlideEast, Direction.Right, null));
+        Assert.Null(FieldMovement.Spins(Overworld, TileBehavior.None, null, null));
+    }
+
+    [Fact]
+    public void CeladonAndSaffronAreOpenWithTheirCastsLooks()
+    {
+        foreach (string key in new[] { "celadon_city", "saffron_city", "rocket_hideout_b4f", "silph_co_11f", "route_16", "route_12", "celadon_city_gym", "saffron_city_gym" })
+            Assert.Contains(key, Kanto.Index.Areas);
+        foreach (string look in new[] { "erika", "sabrina", "giovanni", "biker", "chef" })
+            Assert.True(CharacterStyles.Default.Has(look), look);
     }
 }

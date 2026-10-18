@@ -1,0 +1,32 @@
+{
+  "key": "celadon_city_condominiums_2f",
+  "index": 304,
+  "name": "Celadon City",
+  "matrix": 251,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CELADON",
+  "nightMusic": "MUS_CELADON",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 2, "to": "celadon_city_condominiums_1f", "toWarp": 3 },
+    { "x": 2, "z": 2, "to": "celadon_city_condominiums_3f", "toWarp": 0 },
+    { "x": 11, "z": 2, "to": "celadon_city_condominiums_3f", "toWarp": 3 },
+    { "x": 12, "z": 2, "to": "celadon_city_condominiums_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "0", "movement": "invisible", "x": 6, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FAME_CHECKER_ERIKA_JOURNALS", "script": "CeladonCity_Condominiums_2F_EventScript_PokemonJournalErika" },
+    { "id": "0_2", "looks": "0", "movement": "invisible", "x": 5, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FAME_CHECKER_ERIKA_JOURNALS", "script": "CeladonCity_Condominiums_2F_EventScript_PokemonJournalErika" }
+  ],
+  "signs": [
+    { "x": 8, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_2F_EventScript_MeetingRoomSign" },
+    { "x": 7, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_2F_EventScript_MeetingRoomSign" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,13 @@
+{
+  // The Game Corner's prize exchange (plan 19 · K5, part b): coins for prizes at the three counters
+  // (celadon_city_game_corner_prize_room.txt, on plan 06 · R16b's exchange)
+  "area": "celadon_city_game_corner_prize_room",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "worker_m": { "name": "Clerk", "script": "Prizes" },
+    "worker_m_2": { "name": "Clerk", "script": "Prizes" },
+    "worker_m_3": { "name": "Clerk", "script": "Prizes" },
+    "balding_man": { "name": "Man", "dialog": [ "I won so many coins, and then I spent them all on one prize. Worth it!" ] },
+    "old_man_2": { "name": "Old Man", "dialog": [ "The prizes here can't be bought anywhere else. That's the trick of it." ] }
+  }
+}

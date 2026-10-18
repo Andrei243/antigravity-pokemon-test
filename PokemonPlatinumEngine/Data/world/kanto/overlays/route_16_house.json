@@ -1,0 +1,10 @@
+{
+  // The house on Route 16 (plan 19 · K5, part b): the woman and her Fearow, and HM02 for whoever finds her secret
+  // garden (route_16_house.txt)
+  "area": "route_16_house",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "woman_1": { "name": "Woman", "script": "Woman" },
+    "fearow": { "name": "Fearow", "dialog": [ "Kyaaah!" ] }
+  }
+}

@@ -1,0 +1,18 @@
+# Celadon Mansion's ground floor (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/CeladonCity_Condominiums_1F/scripts.inc).
+#
+# The old lady gives the Tea (FLAG_GOT_TEA), which the four guards of Saffron City's gates are thirsty for
+# (route_5_south_entrance.txt and its three fellows).
+
+
+script TeaWoman
+  speaker "Old Woman"
+  if flag FLAG_GOT_TEA goto Given
+  say "My, you look parched. Here, have some of my tea. It's my own blend!"
+  give "Tea"
+  setflag FLAG_GOT_TEA
+  say "Do share it with anyone who looks thirsty, won't you?"
+  end
+label Given
+  say "Nothing like a cup of tea, is there? It puts the world to rights."
+  end

@@ -1,17 +1,36 @@
-# The Pokémon Tower's sixth floor (plan 19 · K5, part a). docs/scripts.md describes the language; the lines are our
-# own, on FireRed's beats (data/maps/PokemonTower_6F/scripts.inc).
+# The Pokémon Tower's sixth floor (plan 19 · K5, parts a and b). docs/scripts.md describes the language; the lines
+# are our own, on FireRed's beats (data/maps/PokemonTower_6F/scripts.inc).
 #
 # A spirit waits before the stairs up (the area's triggers on VAR_MAP_SCENE_POKEMON_TOWER_6F 0): Cubone's mother,
 # whom Team Rocket struck down. Without the Silph Scope nobody can see what it is, and FireRed's battle with a ghost
 # nobody can see can only be run from, so here it says its piece and pushes the player back
-# (docs/mechanics/rulings.md, "Kanto's third chapter, first part"). The Scope, from the Rocket Hideout under Celadon
-# City, is part b's, and with it the battle with Marowak and the way on to the top floor.
+# (docs/mechanics/rulings.md, "Kanto's third chapter, first part"). With the Scope (part b, from Giovanni in the
+# Rocket Hideout) it is seen for the Marowak it is and battled (level 30, FireRed's StartMarowakBattle); beaten, it
+# is at peace and the way up is open (VAR_MAP_SCENE_POKEMON_TOWER_6F 1). Run from, it pushes the player back as
+# before. FireRed's Marowak can't be caught; a battle here has no such rule yet, and a Marowak caught is taken for a
+# spirit at rest (the rulings, "Kanto's third chapter, second part").
 
 
 script MarowakGhost
   speaker "Ghost"
   say "Be... gone... Intruders... be... gone..."
   speaker none
+  if item "Silph Scope" goto Seen
   text "The ghost can't be made out. Without some way of seeing it, there's no going on."
   walk player up 1
+  end
+label Seen
+  scene "Marowak"
+  text "The Silph Scope shows the ghost for what it is: a Marowak!"
+  wildbattle "Marowak" 30
+  if result == 2 goto Fled
+  text "The ghost was the spirit of Cubone's mother, Marowak."
+  cry "Marowak"
+  text "The mother's spirit was calmed. It went away to rest at last..."
+  setvar VAR_MAP_SCENE_POKEMON_TOWER_6F 1
+  endscene
+  end
+label Fled
+  walk player up 1
+  endscene
   end

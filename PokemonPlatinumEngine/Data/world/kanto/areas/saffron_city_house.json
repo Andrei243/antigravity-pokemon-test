@@ -1,0 +1,32 @@
+{
+  "key": "saffron_city_house",
+  "index": 340,
+  "name": "Saffron City",
+  "matrix": 287,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "saffron_city", "toWarp": 4 },
+    { "x": 4, "z": 7, "to": "saffron_city", "toWarp": 4 },
+    { "x": 5, "z": 7, "to": "saffron_city", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "pidgey", "looks": "pidgey", "movement": "wander_north_and_south", "x": 0, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 4, "script": "SaffronCity_House_EventScript_Pidgey" },
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "SaffronCity_House_EventScript_Lass" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SaffronCity_House_EventScript_Youngster" },
+    { "id": "clipboard", "looks": "clipboard", "movement": "look_north", "x": 5, "z": 4, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "" }
+  ],
+  "signs": [
+    { "x": 5, "z": 4, "type": 0, "script": "SaffronCity_House_EventScript_Letter" }
+  ],
+  "triggers": []
+}

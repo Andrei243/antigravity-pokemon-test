@@ -1,0 +1,46 @@
+{
+  "key": "silph_co_2f",
+  "index": 90,
+  "name": "Silph Co",
+  "matrix": 54,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SILPH",
+  "nightMusic": "MUS_SILPH",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 28, "z": 2, "to": "silph_co_3f", "toWarp": 0 },
+    { "x": 2, "z": 6, "to": "silph_co_3f", "toWarp": 8 },
+    { "x": 15, "z": 6, "to": "silph_co_8f", "toWarp": 5 },
+    { "x": 30, "z": 2, "to": "silph_co_1f", "toWarp": 3 },
+    { "x": 7, "z": 19, "to": "silph_co_6f", "toWarp": 1 },
+    { "x": 33, "z": 19, "to": "silph_co_8f", "toWarp": 2 },
+    { "x": 22, "z": 3, "to": "silph_co_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "look_north", "x": 29, "z": 12, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_24" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_north_and_west", "x": 28, "z": 18, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_SCIENTIST_JERRY" },
+    { "id": "rocket_m_2", "looks": "rocket_m", "movement": "look_south_and_north", "x": 20, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_23" },
+    { "id": "scientist_2", "looks": "scientist", "movement": "look_around", "x": 5, "z": 19, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 0, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_SCIENTIST_CONNOR" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_north", "x": 10, "z": 4, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_2F_EventScript_ThunderWaveTutor" }
+  ],
+  "signs": [
+    { "x": 5, "z": 8, "type": 0, "script": "SilphCo_2F_EventScript_Door1" },
+    { "x": 6, "z": 8, "type": 0, "script": "SilphCo_2F_EventScript_Door1" },
+    { "x": 5, "z": 9, "type": 0, "script": "SilphCo_2F_EventScript_Door1" },
+    { "x": 6, "z": 9, "type": 0, "script": "SilphCo_2F_EventScript_Door1" },
+    { "x": 5, "z": 15, "type": 0, "script": "SilphCo_2F_EventScript_Door2" },
+    { "x": 6, "z": 15, "type": 0, "script": "SilphCo_2F_EventScript_Door2" },
+    { "x": 5, "z": 16, "type": 0, "script": "SilphCo_2F_EventScript_Door2" },
+    { "x": 6, "z": 16, "type": 0, "script": "SilphCo_2F_EventScript_Door2" },
+    { "x": 11, "z": 21, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_SILPH_CO_2F_ULTRA_BALL" },
+    { "x": 29, "z": 1, "type": 0, "script": "SilphCo_2F_EventScript_FloorSign" }
+  ],
+  "triggers": []
+}

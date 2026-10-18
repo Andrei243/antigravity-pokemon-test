@@ -133,6 +133,29 @@ partial class Harness
             ("kb4_ss_anne_cabin_furnished", "SSAnne_1F_Room1", 3, 4, Direction.Up),
             ("kb5_ss_anne_kitchen_furnished", "SSAnne_Kitchen", 7, 9, Direction.Up),
             ("kb6_captains_cabin_furnished", "SSAnne_CaptainsOffice", 5, 5, Direction.Left),
+            // Plan 19 · K5, part b: Celadon City and its rooms, the Rocket Hideout, Routes 16 and 12 to their Snorlax,
+            // Saffron City laid into the overworld, Silph Co.'s floors, Sabrina's Gym and the Dojo
+            ("kb9_celadon_day", "Kanto", 214, 144, Direction.Up),
+            ("kc0_celadon_dept_store_outside", "Kanto", 193, 137, Direction.Up),
+            ("kc1_celadon_gym_outside", "Kanto", 191, 153, Direction.Up),
+            ("kc2_dept_store_1f", "CeladonCity_DepartmentStore_1F", 6, 12, Direction.Up),
+            ("kc3_dept_store_roof", "CeladonCity_DepartmentStore_Roof", 13, 6, Direction.Left),
+            ("kc4_game_corner", "CeladonCity_GameCorner", 10, 11, Direction.Up),
+            ("kc5_celadon_gym", "CeladonCity_Gym", 6, 16, Direction.Up),
+            ("kc6_condominiums", "CeladonCity_Condominiums_1F", 12, 17, Direction.Up),
+            ("kc7_hideout_b1f", "RocketHideout_B1F", 12, 4, Direction.Down),
+            ("kc8_hideout_b2f", "RocketHideout_B2F", 28, 4, Direction.Down),
+            ("kc9_hideout_b4f", "RocketHideout_B4F", 20, 24, Direction.Up),
+            ("kd0_route16", "Kanto", 168, 141, Direction.Left),
+            ("kd1_route12_snorlax", "Kanto", 398, 217, Direction.Down),
+            ("kd2_saffron_day", "Kanto", 288, 150, Direction.Up),
+            ("kd3_silph_outside", "Kanto", 289, 147, Direction.Up),
+            ("kd4_silph_1f", "SilphCo_1F", 8, 18, Direction.Up),
+            ("kd5_silph_5f", "SilphCo_5F", 22, 5, Direction.Down),
+            ("kd6_silph_11f", "SilphCo_11F", 13, 5, Direction.Down),
+            ("kd7_saffron_gym", "SaffronCity_Gym", 14, 21, Direction.Up),
+            ("kd8_dojo", "SaffronCity_Dojo", 6, 12, Direction.Up),
+            ("kd9_saffron_gate_route7", "Kanto", 260, 140, Direction.Right),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -154,6 +177,8 @@ partial class Harness
         At("Kanto", 335, 222, Direction.Right); Frames(2); Shot("k92_route11_night");
         At("Kanto", 398, 143, Direction.Up); Frames(2); Shot("kb7_lavender_night");
         At("Kanto", 345, 58, Direction.Right); Frames(2); Shot("kb8_route9_night");
+        At("Kanto", 214, 144, Direction.Up); Frames(2); Shot("ke0_celadon_night");
+        At("Kanto", 288, 150, Direction.Up); Frames(2); Shot("ke1_saffron_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

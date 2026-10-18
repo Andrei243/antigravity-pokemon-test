@@ -896,6 +896,8 @@ public class FieldMovementTests
                     changes |= onto.Kind != StepKind.Walk || off.Kind != StepKind.Walk || onto.Pace != Pace.Fast || off.Pace != Pace.Fast;
                 }
             changes |= FieldMovement.Carries(behaviour, East) != null;
+            // A GBA spin's stop tile changes no step of its own: it ends a spin (plan 19 · K5, part b)
+            changes |= FieldMovement.Spins(map, behaviour, null, East) == null;
             Assert.True(changes, $"{behaviour} is listed as having a rule and changes nothing");
         }
     }

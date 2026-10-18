@@ -1,0 +1,107 @@
+# The Rocket Game Corner in Celadon City (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/CeladonCity_GameCorner/scripts.inc).
+#
+# The machines are plan 06 · R16b's slot machines, played by whoever carries a Coin Case (the restaurant's man gives
+# one, celadon_city_restaurant.txt), and the clerk sells coins. A grunt stands guard before the poster at the back
+# (FLAG_HIDE_GAME_CORNER_ROCKET once he is beaten and runs); behind the poster is a switch, and the switch opens the
+# stairs down to Team Rocket's hideout (FLAG_OPENED_ROCKET_HIDEOUT, the overlay's switch of the stairs' way).
+
+
+script Slots
+  speaker none
+  if not item "Coin Case" goto NoCase
+  ask "A slot machine. Play it?"
+  if no end
+  random 12
+  fade out 0.3
+  if result == 0 gamecorner slots 0
+  if result == 1 gamecorner slots 1
+  if result == 2 gamecorner slots 2
+  if result == 3 gamecorner slots 3
+  if result == 4 gamecorner slots 4
+  if result == 5 gamecorner slots 5
+  if result == 6 gamecorner slots 6
+  if result == 7 gamecorner slots 7
+  if result == 8 gamecorner slots 8
+  if result == 9 gamecorner slots 9
+  if result == 10 gamecorner slots 10
+  if result == 11 gamecorner slots 11
+  fade in 0.3
+  end
+label NoCase
+  text "A slot machine. Without a Coin Case there is nothing to play with."
+  end
+
+
+# The coin counter: 50 coins for $1,000, as long as they fit in the case.
+script CoinsClerk
+  speaker "Clerk"
+  if not item "Coin Case" goto NoCase
+  ask "We sell coins for the machines: 50 for $1,000. Would you like some?"
+  if no goto Bye
+  gamecorner room 50
+  if result == 0 goto Full
+  if money < 1000 goto Poor
+  takemoney 1000
+  gamecorner add 50
+  text "{player} bought 50 coins."
+label Bye
+  say "Please come again!"
+  end
+label NoCase
+  say "Sorry, you'll need a Coin Case to keep coins in."
+  end
+label Full
+  say "Your Coin Case is full already!"
+  end
+label Poor
+  say "I'm sorry, you don't have enough money."
+  end
+
+
+script GymGuy
+  speaker "Gym Guide"
+  if badge rainbow goto Won
+  say "Hey, champ in the making! Celadon's Gym Leader is Erika, and she uses Grass types."
+  say "Fire, Ice and Flying moves will see you through. Good luck, and don't let the slots distract you!"
+  end
+label Won
+  say "You beat Erika! Grass types don't stand a chance against you."
+  end
+
+
+# The grunt before the poster battles whoever speaks to him, then runs off.
+script Grunt
+  if defeated self goto Gone
+  trainerline before
+  battle self
+  speaker "Grunt"
+  say "Argh! I'd better tell the boss! Don't you dare touch that poster!"
+  fade out 0.3
+  setflag FLAG_HIDE_GAME_CORNER_ROCKET
+  hide self
+  fade in 0.3
+  end
+label Gone
+  trainerline after
+  end
+
+
+# The poster: a switch behind it while the grunt guards it, and the stairs open once it is pressed.
+script Poster
+  speaker none
+  if flag FLAG_OPENED_ROCKET_HIDEOUT goto Open
+  if not flag FLAG_HIDE_GAME_CORNER_ROCKET goto Guarded
+  text "Hey! There's a switch behind the poster!"
+  ask "Press it?"
+  if no end
+  sound "door_slide"
+  setflag FLAG_OPENED_ROCKET_HIDEOUT
+  text "A hidden staircase has opened up!"
+  end
+label Guarded
+  text "A poster of a Pokémon. Something about it seems odd."
+  end
+label Open
+  text "A poster with a switch behind it. The stairs are open."
+  end

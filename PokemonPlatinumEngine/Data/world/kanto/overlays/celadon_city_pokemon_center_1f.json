@@ -1,0 +1,11 @@
+{
+  // Celadon City's Pokémon Center (plan 19 · K5, part b)
+  "area": "celadon_city_pokemon_center_1f",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "celadon_nurse": { "name": "Nurse", "script": "Nurse" },
+    "gentleman": { "name": "Gentleman", "dialog": [ "A Pokémon that sleeps can't be woken by any ordinary means. A tune, perhaps, would do it." ] },
+    "cooltrainer_f": { "name": "Woman", "dialog": [ "The Cycling Road runs south from Route 16. You'll want a Bicycle for that!" ] },
+    "youngster": { "name": "Youngster", "dialog": [ "There's a huge Pokémon sleeping on the road west of town. Nobody can get past it!" ] }
+  }
+}

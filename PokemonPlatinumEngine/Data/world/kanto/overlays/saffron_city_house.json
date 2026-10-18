@@ -1,0 +1,13 @@
+{
+  // A house of Saffron City (plan 19 · K5, part b): a family and their Pidgey, and a letter on the table
+  "area": "saffron_city_house",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "pidgey": { "name": "Pidgey", "dialog": [ "Bi bibii!" ] },
+    "lass": { "name": "Lass", "dialog": [ "I sent a letter by Pidgey once. It ended up in Vermilion City!" ] },
+    "youngster": { "name": "Youngster", "dialog": [ "Team Rocket has taken over Silph Co. Dad works there, and he can't get home." ] }
+  },
+  "signs": {
+    "SaffronCity_House_EventScript_Letter": "A letter on the table: \"I'm safe, but Team Rocket won't let us leave the building.\""
+  }
+}

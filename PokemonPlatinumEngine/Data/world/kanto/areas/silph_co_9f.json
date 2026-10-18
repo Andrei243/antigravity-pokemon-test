@@ -1,0 +1,52 @@
+{
+  "key": "silph_co_9f",
+  "index": 97,
+  "name": "Silph Co",
+  "matrix": 61,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SILPH",
+  "nightMusic": "MUS_SILPH",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 2, "to": "silph_co_8f", "toWarp": 0 },
+    { "x": 22, "z": 18, "to": "silph_co_5f", "toWarp": 3 },
+    { "x": 9, "z": 4, "to": "silph_co_3f", "toWarp": 4 },
+    { "x": 18, "z": 2, "to": "silph_co_10f", "toWarp": 3 },
+    { "x": 24, "z": 3, "to": "silph_co_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "scientist", "looks": "scientist", "movement": "wander_north_and_south", "x": 26, "z": 16, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_SCIENTIST_ED" },
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "look_north", "x": 15, "z": 18, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_38" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_south", "x": 2, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_9F_EventScript_HealWoman" },
+    { "id": "rocket_m_2", "looks": "rocket_m", "movement": "look_south", "x": 1, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_37" }
+  ],
+  "signs": [
+    { "x": 11, "z": 14, "type": 2, "script": "", "item": "Max Potion", "flag": "FLAG_HIDDEN_ITEM_SILPH_CO_9F_MAX_POTION" },
+    { "x": 3, "z": 10, "type": 0, "script": "SilphCo_9F_EventScript_Door1" },
+    { "x": 3, "z": 11, "type": 0, "script": "SilphCo_9F_EventScript_Door1" },
+    { "x": 13, "z": 16, "type": 0, "script": "SilphCo_9F_EventScript_Door2" },
+    { "x": 13, "z": 17, "type": 0, "script": "SilphCo_9F_EventScript_Door2" },
+    { "x": 21, "z": 6, "type": 0, "script": "SilphCo_9F_EventScript_Door3" },
+    { "x": 22, "z": 6, "type": 0, "script": "SilphCo_9F_EventScript_Door3" },
+    { "x": 22, "z": 7, "type": 0, "script": "SilphCo_9F_EventScript_Door3" },
+    { "x": 21, "z": 7, "type": 0, "script": "SilphCo_9F_EventScript_Door3" },
+    { "x": 21, "z": 13, "type": 0, "script": "SilphCo_9F_EventScript_Door4" },
+    { "x": 21, "z": 12, "type": 0, "script": "SilphCo_9F_EventScript_Door4" },
+    { "x": 22, "z": 12, "type": 0, "script": "SilphCo_9F_EventScript_Door4" },
+    { "x": 22, "z": 13, "type": 0, "script": "SilphCo_9F_EventScript_Door4" },
+    { "x": 2, "z": 11, "type": 0, "script": "SilphCo_9F_EventScript_Door1" },
+    { "x": 2, "z": 10, "type": 0, "script": "SilphCo_9F_EventScript_Door1" },
+    { "x": 12, "z": 16, "type": 0, "script": "SilphCo_9F_EventScript_Door2" },
+    { "x": 12, "z": 17, "type": 0, "script": "SilphCo_9F_EventScript_Door2" },
+    { "x": 5, "z": 8, "type": 2, "script": "", "item": "Calcium", "flag": "FLAG_HIDDEN_ITEM_SILPH_CO_9F_CALCIUM" },
+    { "x": 17, "z": 1, "type": 0, "script": "SilphCo_9F_EventScript_FloorSign" }
+  ],
+  "triggers": []
+}

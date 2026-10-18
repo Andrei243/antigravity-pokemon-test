@@ -1,0 +1,17 @@
+{
+  // Celadon Mansion's ground floor (plan 19 · K5, part b): the old lady and her Pokémon, who gives the Tea that the
+  // thirsty guards of Saffron City's gates are waiting for (celadon_city_condominiums_1f.txt)
+  "area": "celadon_city_condominiums_1f",
+  "bgmTrack": "kanto/celadon",
+  // The east stairs are shut, as they are on every floor (celadon_city_condominiums_2f.json)
+  "locked": [ 4 ],
+  "people": {
+    "old_woman": { "name": "Old Woman", "script": "TeaWoman" },
+    "meowth": { "name": "Meowth", "dialog": [ "Meow! Mrrrow?" ] },
+    "clefairy": { "name": "Clefairy", "dialog": [ "Pi pippi!" ] },
+    "nidoran_f": { "name": "Nidoran", "dialog": [ "Kya kya!" ] }
+  },
+  "signs": {
+    "CeladonCity_Condominiums_1F_EventScript_SuiteSign": "Celadon Mansion\nThe manager's suite"
+  }
+}

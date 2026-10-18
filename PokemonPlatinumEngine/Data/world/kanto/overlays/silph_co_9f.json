@@ -1,0 +1,181 @@
+{
+  "area": "silph_co_9f",
+  "name": "Silph Co.",
+  "bgmTrack": "kanto/silph",
+  "people": {
+    "scientist": {
+      "name": "Ed",
+      "trainer": {
+        "dialogueBefore": "Scientist Ed: Team Rocket pays better than Silph Co. ever did!",
+        "dialogueAfter": "Scientist Ed: Maybe I should go back to my old job."
+      }
+    },
+    "rocket_m": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: Silph Co. belongs to Team Rocket now! Get out!",
+        "dialogueAfter": "Team Rocket Grunt: Ugh! The boss will hear about this."
+      }
+    },
+    "rocket_m_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: You again? How did you get in here?",
+        "dialogueAfter": "Team Rocket Grunt: Fine, fine. You win this one."
+      }
+    },
+    "woman_2": {
+      "name": "Woman",
+      "script": "HealWoman"
+    }
+  },
+  "npcs": [
+    {
+      "id": "door1_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 2,
+      "y": 10,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door1_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 3,
+      "y": 10,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door1_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 2,
+      "y": 11,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door1_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 3,
+      "y": 11,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door2_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 12,
+      "y": 16,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door2_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 13,
+      "y": 16,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door2_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 12,
+      "y": 17,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door2_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 13,
+      "y": 17,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door3_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 21,
+      "y": 6,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_3",
+      "script": "Door3"
+    },
+    {
+      "id": "door3_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 22,
+      "y": 6,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_3",
+      "script": "Door3"
+    },
+    {
+      "id": "door3_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 21,
+      "y": 7,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_3",
+      "script": "Door3"
+    },
+    {
+      "id": "door3_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 22,
+      "y": 7,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_3",
+      "script": "Door3"
+    },
+    {
+      "id": "door4_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 21,
+      "y": 12,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_4",
+      "script": "Door4"
+    },
+    {
+      "id": "door4_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 22,
+      "y": 12,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_4",
+      "script": "Door4"
+    },
+    {
+      "id": "door4_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 21,
+      "y": 13,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_4",
+      "script": "Door4"
+    },
+    {
+      "id": "door4_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 22,
+      "y": 13,
+      "hiddenBy": "FLAG_SILPH_9F_DOOR_4",
+      "script": "Door4"
+    }
+  ],
+  "signs": {
+    "SilphCo_9F_EventScript_FloorSign": "Silph Co. Head Office\n9F"
+  }
+}

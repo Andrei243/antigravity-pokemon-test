@@ -1,0 +1,81 @@
+# The Fighting Dojo in Saffron City (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/SaffronCity_Dojo/scripts.inc).
+#
+# The master battles whoever steps up before him (the area's triggers on VAR_MAP_SCENE_SAFFRON_CITY_DOJO 0, or a
+# word with him), and once beaten lets the player take one of the two Pokémon on the dais, Hitmonlee or Hitmonchan,
+# at level 25 (FLAG_GOT_HITMON_FROM_DOJO; the other ball stays put, as FireRed keeps it).
+
+
+script MasterTrigger
+  if defeated "kanto_black_belt_koichi" end
+  scene "The Dojo master"
+  face karate_master player
+  face player up
+  speaker "Koichi"
+  say "Hwaaah! You have beaten my students. Now face the master of the Fighting Dojo!"
+  battle karate_master
+  setvar VAR_MAP_SCENE_SAFFRON_CITY_DOJO 1
+  say "Hwa! You have beaten me fairly. As is the custom, you may take one of the Pokémon on the dais."
+  endscene
+  end
+
+
+script Master
+  speaker "Koichi"
+  if defeated self goto Beaten
+  scene "Dojo"
+  trainerline before
+  battle self
+  setvar VAR_MAP_SCENE_SAFFRON_CITY_DOJO 1
+  say "Hwa! You have beaten me fairly. As is the custom, you may take one of the Pokémon on the dais."
+  endscene
+  end
+label Beaten
+  if flag FLAG_GOT_HITMON_FROM_DOJO goto Given
+  say "Take one of the Pokémon on the dais, as is your right. Choose wisely!"
+  end
+label Given
+  say "Train hard with the Pokémon you chose. Strength comes from the heart!"
+  end
+
+
+script Hitmonlee
+  speaker none
+  if not defeated "kanto_black_belt_koichi" goto Not
+  if flag FLAG_GOT_HITMON_FROM_DOJO goto Taken
+  ask "Hitmonlee, the kicking fiend! Take it?"
+  if no end
+  givepokemon "Hitmonlee" 25
+  fanfare pokemon
+  text "{player} received a Hitmonlee!"
+  setflag FLAG_GOT_HITMON_FROM_DOJO
+  setflag FLAG_HIDE_DOJO_HITMONLEE_BALL
+  hide self
+  end
+label Not
+  text "A Poké Ball on the dais. It's the Dojo's prize, for whoever beats the master."
+  end
+label Taken
+  text "Better not be greedy. One Pokémon is plenty."
+  end
+
+
+script Hitmonchan
+  speaker none
+  if not defeated "kanto_black_belt_koichi" goto Not
+  if flag FLAG_GOT_HITMON_FROM_DOJO goto Taken
+  ask "Hitmonchan, the piercing puncher! Take it?"
+  if no end
+  givepokemon "Hitmonchan" 25
+  fanfare pokemon
+  text "{player} received a Hitmonchan!"
+  setflag FLAG_GOT_HITMON_FROM_DOJO
+  setflag FLAG_HIDE_DOJO_HITMONCHAN_BALL
+  hide self
+  end
+label Not
+  text "A Poké Ball on the dais. It's the Dojo's prize, for whoever beats the master."
+  end
+label Taken
+  text "Better not be greedy. One Pokémon is plenty."
+  end

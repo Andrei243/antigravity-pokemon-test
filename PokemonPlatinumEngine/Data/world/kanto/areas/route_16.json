@@ -1,0 +1,58 @@
+{
+  "key": "route_16",
+  "index": 26,
+  "name": "Route 16",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_16",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Spearow", "level": 20 },
+    { "species": "Doduo", "level": 18 },
+    { "species": "Rattata", "level": 18 },
+    { "species": "Rattata", "level": 20 },
+    { "species": "Spearow", "level": 22 },
+    { "species": "Doduo", "level": 20 },
+    { "species": "Rattata", "level": 22 },
+    { "species": "Doduo", "level": 22 },
+    { "species": "Rattata", "level": 18 },
+    { "species": "Raticate", "level": 23 },
+    { "species": "Rattata", "level": 18 },
+    { "species": "Raticate", "level": 25 }
+  ],
+  "landRate": 21,
+  "warps": [
+    { "x": 142, "z": 135, "to": "route_16_house", "toWarp": 1 },
+    { "x": 152, "z": 136, "to": "route_16_north_entrance_1f", "toWarp": 0 },
+    { "x": 159, "z": 136, "to": "route_16_north_entrance_1f", "toWarp": 1 },
+    { "x": 152, "z": 143, "to": "route_16_north_entrance_1f", "toWarp": 2 },
+    { "x": 159, "z": 143, "to": "route_16_north_entrance_1f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "biker", "looks": "biker", "movement": "look_around", "x": 148, "z": 142, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BIKER_LAO" },
+    { "id": "biker_2", "looks": "biker", "movement": "look_around", "x": 146, "z": 144, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_CUE_BALL_KOJI" },
+    { "id": "biker_3", "looks": "biker", "movement": "look_around", "x": 144, "z": 142, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_CUE_BALL_LUKE" },
+    { "id": "biker_4", "looks": "biker", "movement": "look_around", "x": 140, "z": 142, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BIKER_RUBEN" },
+    { "id": "biker_5", "looks": "biker", "movement": "look_around", "x": 142, "z": 144, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BIKER_HIDEO" },
+    { "id": "biker_6", "looks": "biker", "movement": "look_around", "x": 138, "z": 144, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_CUE_BALL_CAMRON" },
+    { "id": "route16_cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 173, "z": 141, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_south", "x": 162, "z": 135, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_YOUNG_COUPLE_LEA_JED" },
+    { "id": "man", "looks": "man", "movement": "look_south", "x": 163, "z": 135, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_YOUNG_COUPLE_LEA_JED" },
+    { "id": "snorlax", "looks": "snorlax", "movement": "look_south", "x": 163, "z": 143, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE_16_SNORLAX", "script": "Route16_EventScript_Snorlax" }
+  ],
+  "signs": [
+    { "x": 138, "z": 147, "type": 0, "script": "Route16_EventScript_RouteSign" },
+    { "x": 165, "z": 141, "type": 0, "script": "Route16_EventScript_CyclingRoadSign" },
+    { "x": 163, "z": 143, "type": 2, "script": "", "item": "Leftovers", "flag": "FLAG_HIDDEN_ITEM_ROUTE16_LEFTOVERS" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,34 @@
+# The Rocket Hideout's lift (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/RocketHideout_Elevator/scripts.inc).
+#
+# Without the Lift Key (FLAG_CAN_USE_ROCKET_HIDEOUT_LIFT, rocket_hideout_b4f.txt) the panel does nothing, and the
+# car's doorway leads back to the first basement (FireRed's leads to the floor it stopped at); with the key, it
+# rides the car and puts the player out on the floor chosen, before the lift's door there, as the department store's
+# does (VAR_ROCKET_HIDEOUT_LIFT_FLOOR, ours: 1, 2 or 4 basements down; nought, never ridden, is the first).
+
+
+script Panel
+  speaker none
+  if not flag FLAG_CAN_USE_ROCKET_HIDEOUT_LIFT goto NoKey
+  if var VAR_ROCKET_HIDEOUT_LIFT_FLOOR == 0 setvar VAR_ROCKET_HIDEOUT_LIFT_FLOOR 1
+  choose "Which floor?" "B1F" "B2F" "B4F" "Stay here"
+  if result == 3 end
+  setvar VAR_TEMP_1 1
+  if result == 1 setvar VAR_TEMP_1 2
+  if result == 2 setvar VAR_TEMP_1 4
+  if var VAR_TEMP_1 == VAR_ROCKET_HIDEOUT_LIFT_FLOOR goto Out
+  if var VAR_TEMP_1 < VAR_ROCKET_HIDEOUT_LIFT_FLOOR goto Up
+  anim elevator down
+  goto Ride
+label Up
+  anim elevator up
+label Ride
+  setvar VAR_ROCKET_HIDEOUT_LIFT_FLOOR VAR_TEMP_1
+label Out
+  if var VAR_ROCKET_HIDEOUT_LIFT_FLOOR == 1 warp "RocketHideout_B1F" 24 26 down
+  if var VAR_ROCKET_HIDEOUT_LIFT_FLOOR == 2 warp "RocketHideout_B2F" 28 17 down
+  if var VAR_ROCKET_HIDEOUT_LIFT_FLOOR == 4 warp "RocketHideout_B4F" 20 24 down
+  end
+label NoKey
+  text "The lift's panel won't respond. It needs a key to work."
+  end

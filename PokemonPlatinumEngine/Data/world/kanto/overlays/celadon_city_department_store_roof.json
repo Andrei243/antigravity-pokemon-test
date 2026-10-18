@@ -1,0 +1,13 @@
+{
+  // The Celadon Department Store's roof (plan 19 · K5, part b): the vending machines and a thirsty girl
+  "area": "celadon_city_department_store_roof",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "cooltrainer_m": { "name": "Man", "dialog": [ "My sister's dying for a drink, but I'm too broke to buy her one." ] },
+    "little_girl": { "name": "Girl", "dialog": [ "I'm so thirsty... The machines over there sell drinks, if only I had money!" ] }
+  },
+  "signs": {
+    "CeladonCity_DepartmentStore_Roof_EventScript_FloorSign": "Rooftop Square: Vending Machines",
+    "CeladonCity_DepartmentStore_Roof_EventScript_VendingMachine": "A vending machine. Fresh Water, Soda Pop and Lemonade."
+  }
+}

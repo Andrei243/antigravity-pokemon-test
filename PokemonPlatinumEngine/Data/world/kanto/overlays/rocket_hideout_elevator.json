@@ -1,0 +1,11 @@
+{
+  // The Rocket Hideout's lift (plan 19 · K5, part b): its doorway leads to the first basement and its panel, once the Lift Key is
+  // had, puts the player out on the floor chosen (rocket_hideout_elevator.txt)
+  "area": "rocket_hideout_elevator",
+  "name": "Rocket Hideout",
+  "bgmTrack": "kanto/rocket_hideout",
+  "doors": [ { "warp": 0, "map": "RocketHideout_B1F", "x": 24, "y": 26, "facing": "Down" }, { "warp": 1, "map": "RocketHideout_B1F", "x": 24, "y": 26, "facing": "Down" } ],
+  "read": {
+    "RocketHideout_Elevator_EventScript_FloorSelect": "Panel"
+  }
+}

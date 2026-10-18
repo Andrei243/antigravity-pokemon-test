@@ -1,10 +1,30 @@
-# The Lavender Volunteer Pokémon House (plan 19 · K5, part a). docs/scripts.md describes the language; the lines are
-# our own, on FireRed's beats (data/maps/LavenderTown_VolunteerPokemonHouse/scripts.inc).
+# The Lavender Volunteer Pokémon House (plan 19 · K5, parts a and b). docs/scripts.md describes the language; the
+# lines are our own, on FireRed's beats (data/maps/LavenderTown_VolunteerPokemonHouse/scripts.inc).
 #
-# Mr. Fuji is at the top of the Pokémon Tower, held by Team Rocket, until the player comes for him there (part b), and
-# his place at home is empty (FLAG_HIDE_POKEHOUSE_FUJI, which FireRed's new game sets). Part b's rescue clears it.
+# Mr. Fuji is at the top of the Pokémon Tower, held by Team Rocket, until the player comes for him there, and his
+# place at home is empty (FLAG_HIDE_POKEHOUSE_FUJI). Once rescued (FLAG_RESCUED_MR_FUJI, pokemon_tower_7f.txt) he is
+# home, and gives the Poké Flute (FLAG_GOT_POKE_FLUTE), which wakes the sleeping Snorlax of Routes 12 and 16.
 
 
 script OnEnter
+  if flag FLAG_RESCUED_MR_FUJI goto Home
   setflag FLAG_HIDE_POKEHOUSE_FUJI
+  end
+label Home
+  clearflag FLAG_HIDE_POKEHOUSE_FUJI
+  end
+
+
+script MrFuji
+  face mr_fuji player
+  speaker "Mr. Fuji"
+  if flag FLAG_GOT_POKE_FLUTE goto Given
+  say "I'm Mr. Fuji. I look after Pokémon who have lost their trainers. Thank you for coming for me."
+  say "Please take this. It is a Poké Flute. Its tune will wake any Pokémon from even the deepest sleep."
+  give "Poké Flute"
+  setflag FLAG_GOT_POKE_FLUTE
+  say "There's a huge Pokémon asleep on the road, I hear. The flute should rouse it."
+  end
+label Given
+  say "Has the Poké Flute been of use? Pokémon and people are happiest together, I always say."
   end

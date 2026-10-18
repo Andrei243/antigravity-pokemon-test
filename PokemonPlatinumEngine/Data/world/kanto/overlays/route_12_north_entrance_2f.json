@@ -1,0 +1,12 @@
+{
+  // The upper floor of Route 12's gate (plan 19 · K5, part b): the binoculars over the sea
+  "area": "route_12_north_entrance_2f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "lass": { "name": "Lass", "dialog": [ "My boyfriend gave me a Pokémon. I wonder if it's a good one?" ] }
+  },
+  "signs": {
+    "Route12_NorthEntrance_2F_EventScript_LeftBinoculars": "Looking through the binoculars... There's a big Pokémon asleep on the road!",
+    "Route12_NorthEntrance_2F_EventScript_RightBinoculars": "Looking through the binoculars... The Pokémon Tower stands tall over Lavender Town."
+  }
+}

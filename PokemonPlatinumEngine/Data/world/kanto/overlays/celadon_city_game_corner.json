@@ -1,0 +1,48 @@
+{
+  // The Rocket Game Corner (plan 19 · K5, part b): the slot machines (plan 06 · R16b's), the coin clerk, the players,
+  // and the grunt before the poster. The poster hides a switch, and the switch the stairs down to the Rocket Hideout
+  // (FLAG_OPENED_ROCKET_HIDEOUT; FireRed draws the stairs as floor until then: here the way is shut, a switch of the
+  // overlay's). celadon_city_game_corner.txt has the scripts
+  "area": "celadon_city_game_corner",
+  "bgmTrack": "kanto/game_corner",
+  "switches": [ { "warp": 3, "from": "FLAG_OPENED_ROCKET_HIDEOUT" } ],
+  "people": {
+    "worker_f": { "name": "Clerk", "dialog": [ "Welcome to the Game Corner! Coins for the machines are sold at the next counter." ] },
+    "worker_m": { "name": "Clerk", "script": "CoinsClerk" },
+    "balding_man": { "name": "Man", "dialog": [ "Keep at it and the sevens will come. That's what I tell myself, anyway." ] },
+    "woman_2": { "name": "Woman", "dialog": [ "Shh! I'm on a winning streak. Don't break my concentration!" ] },
+    "fisher": { "name": "Fisherman", "dialog": [ "I came here for one game, and that was three hours ago." ] },
+    "gym_guy": { "name": "Gym Guide", "script": "GymGuy" },
+    "woman_1": { "name": "Woman", "dialog": [ "Some machines pay out more than others. Or so they say!" ] },
+    "old_man_2": { "name": "Old Man", "dialog": [ "This place belongs to Team Rocket, you know. Everybody knows it, and nobody says a thing." ] },
+    "scientist": { "name": "Scientist", "dialog": [ "I've worked out the odds of every machine. It doesn't help one bit." ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "A little flutter now and then keeps an old man young." ] },
+    "game_corner_grunt": {
+      "name": "Grunt",
+      "script": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: I'm guarding this poster! Huh? You saw nothing, got it?",
+        "dialogueAfter": "Team Rocket Grunt: Our boss will take care of you!"
+      }
+    }
+  },
+  "read": {
+    "CeladonCity_GameCorner_EventScript_Poster": "Poster",
+    "CeladonCity_GameCorner_EventScript_SlotMachine0": "Slots", "CeladonCity_GameCorner_EventScript_SlotMachine1": "Slots",
+    "CeladonCity_GameCorner_EventScript_SlotMachine2": "Slots", "CeladonCity_GameCorner_EventScript_SlotMachine3": "Slots",
+    "CeladonCity_GameCorner_EventScript_SlotMachine5": "Slots", "CeladonCity_GameCorner_EventScript_SlotMachine6": "Slots",
+    "CeladonCity_GameCorner_EventScript_SlotMachine7": "Slots", "CeladonCity_GameCorner_EventScript_SlotMachine8": "Slots",
+    "CeladonCity_GameCorner_EventScript_SlotMachine9": "Slots", "CeladonCity_GameCorner_EventScript_SlotMachine10": "Slots",
+    "CeladonCity_GameCorner_EventScript_SlotMachine11": "Slots", "CeladonCity_GameCorner_EventScript_SlotMachine12": "Slots",
+    "CeladonCity_GameCorner_EventScript_SlotMachine13": "Slots", "CeladonCity_GameCorner_EventScript_SlotMachine14": "Slots",
+    "CeladonCity_GameCorner_EventScript_SlotMachine16": "Slots", "CeladonCity_GameCorner_EventScript_SlotMachine17": "Slots",
+    "CeladonCity_GameCorner_EventScript_SlotMachine19": "Slots", "CeladonCity_GameCorner_EventScript_SlotMachine20": "Slots",
+    "CeladonCity_GameCorner_EventScript_SlotMachine21": "Slots"
+  },
+  "signs": {
+    "CeladonCity_GameCorner_EventScript_UnusableSlotMachine1": "This machine is out of order.",
+    "CeladonCity_GameCorner_EventScript_UnusableSlotMachine2": "This machine is out of order.",
+    "CeladonCity_GameCorner_EventScript_UnusableSlotMachine3": "This machine is out of order.",
+    "CeladonCity_GameCorner_EventScript_PhotoPrinter": "A photo printer. It's not working today."
+  }
+}

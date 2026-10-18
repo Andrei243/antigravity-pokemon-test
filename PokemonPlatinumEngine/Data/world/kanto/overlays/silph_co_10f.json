@@ -1,0 +1,68 @@
+{
+  "area": "silph_co_10f",
+  "name": "Silph Co.",
+  "bgmTrack": "kanto/silph",
+  "people": {
+    "scientist": {
+      "name": "Travis",
+      "trainer": {
+        "dialogueBefore": "Scientist Travis: My research belongs to whoever pays the most. Today, that's Team Rocket!",
+        "dialogueAfter": "Scientist Travis: That was poorly calculated."
+      }
+    },
+    "worker_f": {
+      "name": "Worker",
+      "dialog": [
+        "I hid in the corner when they came in. I'm still hiding, really."
+      ]
+    },
+    "rocket_m": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: Halt! This floor is off limits to kids!",
+        "dialogueAfter": "Team Rocket Grunt: Off limits... to me, apparently."
+      }
+    }
+  },
+  "npcs": [
+    {
+      "id": "door1_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 12,
+      "y": 11,
+      "hiddenBy": "FLAG_SILPH_10F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 13,
+      "y": 11,
+      "hiddenBy": "FLAG_SILPH_10F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 12,
+      "y": 12,
+      "hiddenBy": "FLAG_SILPH_10F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 13,
+      "y": 12,
+      "hiddenBy": "FLAG_SILPH_10F_DOOR",
+      "script": "Door"
+    }
+  ],
+  "signs": {
+    "SilphCo_10F_EventScript_FloorSign": "Silph Co. Head Office\n10F"
+  }
+}

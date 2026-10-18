@@ -1,0 +1,111 @@
+{
+  "area": "silph_co_4f",
+  "name": "Silph Co.",
+  "bgmTrack": "kanto/silph",
+  "people": {
+    "rocket_m": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: The boss wants the Master Ball, and nothing will stop him!",
+        "dialogueAfter": "Team Rocket Grunt: Nothing except you, it seems."
+      }
+    },
+    "rocket_m_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: Hey! Who let you up the stairs?",
+        "dialogueAfter": "Team Rocket Grunt: Next time I lock the stairs too."
+      }
+    },
+    "scientist": {
+      "name": "Rodney",
+      "trainer": {
+        "dialogueBefore": "Scientist Rodney: Team Rocket pays better than Silph Co. ever did!",
+        "dialogueAfter": "Scientist Rodney: Maybe I should go back to my old job."
+      }
+    },
+    "worker_m": {
+      "name": "Worker",
+      "dialog": [
+        "Please, save the president! He's on the top floor."
+      ]
+    }
+  },
+  "npcs": [
+    {
+      "id": "door1_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 3,
+      "y": 16,
+      "hiddenBy": "FLAG_SILPH_4F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door1_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 4,
+      "y": 16,
+      "hiddenBy": "FLAG_SILPH_4F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door1_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 3,
+      "y": 17,
+      "hiddenBy": "FLAG_SILPH_4F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door1_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 4,
+      "y": 17,
+      "hiddenBy": "FLAG_SILPH_4F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door2_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 14,
+      "y": 11,
+      "hiddenBy": "FLAG_SILPH_4F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door2_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 15,
+      "y": 11,
+      "hiddenBy": "FLAG_SILPH_4F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door2_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 14,
+      "y": 12,
+      "hiddenBy": "FLAG_SILPH_4F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door2_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 15,
+      "y": 12,
+      "hiddenBy": "FLAG_SILPH_4F_DOOR_2",
+      "script": "Door2"
+    }
+  ],
+  "signs": {
+    "SilphCo_4F_EventScript_FloorSign": "Silph Co. Head Office\n4F"
+  }
+}

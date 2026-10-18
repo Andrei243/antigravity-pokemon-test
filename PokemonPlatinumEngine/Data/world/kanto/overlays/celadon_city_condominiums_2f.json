@@ -1,0 +1,16 @@
+{
+  // Celadon Mansion's second floor (plan 19 · K5, part b): a meeting room, with a magazine about Erika on the table
+  "area": "celadon_city_condominiums_2f",
+  "bgmTrack": "kanto/celadon",
+  // The Mansion's east stairs, a pair on each floor, are FireRed's side stairs, taken with a step off one onto the
+  // other, which this game does not do: they are shut from the ground floor to the roof, and every floor is come to by
+  // the west stairs (the overlays of the ground floor, the third and the roof say the same)
+  "locked": [ 2, 3 ],
+  "people": {
+    "0": { "name": "Notice", "dialog": [ "A magazine on the table, open at a page about Erika and her flowers." ] },
+    "0_2": { "name": "Notice", "dialog": [ "A magazine on the table, open at a page about Erika and her flowers." ] }
+  },
+  "signs": {
+    "CeladonCity_Condominiums_2F_EventScript_MeetingRoomSign": "Meeting Room"
+  }
+}

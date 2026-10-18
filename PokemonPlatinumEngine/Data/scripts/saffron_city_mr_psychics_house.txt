@@ -1,0 +1,17 @@
+# Mr. Psychic's house in Saffron City (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/SaffronCity_MrPsychicsHouse/scripts.inc).
+#
+# Mr. Psychic gives TM29, Psychic (FLAG_GOT_TM29_FROM_MR_PSYCHIC).
+
+
+script MrPsychic
+  speaker "Mr. Psychic"
+  if flag FLAG_GOT_TM29_FROM_MR_PSYCHIC goto Given
+  say "...Wait! Don't say a word! You came here wanting this. I knew it before you knocked."
+  give "TM29"
+  setflag FLAG_GOT_TM29_FROM_MR_PSYCHIC
+  say "TM29 is Psychic. It strikes with the mind, and it may lower the foe's Special Defense."
+  end
+label Given
+  say "I sense that you will go far. Very far indeed."
+  end
