@@ -72,7 +72,7 @@ public static partial class WorldModels
         Door("hw_door1"),
 
         // ---------------------------------------------------------------- Sprout Tower's floors (plan 20 · J4): furniture
-        Furniture("d15_light", PropType.LampPost, "a lantern of Sprout Tower"),
+        Furniture("d15_light", PropType.Statue, "a stone lantern of Sprout Tower"),
         Furniture("d15_obj", PropType.Statue, "a carved Bellsprout of Sprout Tower"),
         Furniture("d15_pillar", PropType.Column, "the swaying pillar at Sprout Tower's heart"),
         Ground("d15_stairup", "a ladder up: the warp's tile is the way"),
