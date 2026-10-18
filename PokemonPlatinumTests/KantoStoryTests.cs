@@ -471,6 +471,22 @@ public class KantoStoryTests
     }
 
     [Fact]
+    public void RouteTwentyTwosGuardTurnsBackWhoeverHasNoBoulderBadge()
+    {
+        var game = PastPewter();
+        game.Arrive("Route22_NorthEntrance", 7, 6);
+        Assert.True(game.Fires("GuardTrigger"));
+        var turned = game.Step("GuardTrigger");
+        Assert.Equal((7, 3), turned.PlayerTile);
+        Assert.Equal(0, game.Story.Var("VAR_MAP_SCENE_ROUTE23"));
+        // With the Badge he lets the player by, and the step no longer stops anyone
+        game.Story.SetBadges("Kanto", 1);
+        game.Step("GuardTrigger");
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_ROUTE23"));
+        Assert.False(game.Fires("GuardTrigger"));
+    }
+
+    [Fact]
     public void EveryBadgeOfKantoHasItsOwnColourAndMark()
     {
         // Style guide, "Badges": Kanto's eight each have a look of their own, all different; Sinnoh's keep the row's

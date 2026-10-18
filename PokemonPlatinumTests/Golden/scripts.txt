@@ -10059,6 +10059,14 @@ way -
   * fanfare FanfareItem
   * fanfare FanfareItem
   + FLAG_RECEIVED_ROUTE_229_NUGGET
+=== route_22_north_entrance.Guard
+from Guard at 8,2 of Route22_NorthEntrance
+way -
+  Guard> Beyond this gate lies the road to the Pokémon League. Only trainers with the Boulder Badge may pass.
+=== route_22_north_entrance.GuardTrigger
+from the trigger at 7,2 of Route22_NorthEntrance
+way -
+  Guard> Halt! Only trainers who hold the Boulder Badge may pass beyond this gate.
 === route_24.Rocket
 from Man at 288,15 of Kanto
 way 0

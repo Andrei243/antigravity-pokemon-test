@@ -2547,3 +2547,6 @@ What differs from FireRed, and why:
 - **Route 4's two Black Belts** talk: FireRed's Mega Punch and Mega Kick tutors wait for Kanto's tutors.
 - **The Bike Shop** names its price and sells nothing: the Bike Voucher is Vermilion City's (the chapter's second part).
 - **Kanto's badges** have colours and marks of their own (style guide, "Badges").
+- **Route 22's gate** keeps FireRed's guard for the Boulder Badge (its Route 23 badge check, by the Badge itself): the
+  step beside him turns back whoever hasn't it, and once he has seen it nobody is stopped there. Route 23 beyond, with
+  its guards for the other seven, is plan 19 · K7's.
