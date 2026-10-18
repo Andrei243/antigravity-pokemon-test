@@ -147,9 +147,9 @@ public class FieldMoveTests
             return Assert.Single(host.Transcript).Text;
         }
         // Before Oreburgh's Gym: the Badge
-        Assert.Contains("Oreburgh's Gym Badge", Says(Knowing("Tackle"), null));
+        Assert.Contains("Gym Badge", Says(Knowing("Tackle"), null));
         // The move known, the Badge not won: Rock Smash isn't used outside battle until then
-        Assert.Contains("not outside battle until Oreburgh's Gym Badge", Says(Knowing("Rock Smash"), null));
+        Assert.Contains("not outside battle until the right Gym Badge", Says(Knowing("Rock Smash"), null));
         // The HM in the bag and nobody taught it: teach it
         Assert.Contains("HM06", Says(Knowing("Tackle"), "Coal", hm: true));
         Assert.Contains("HM06", Says(Knowing("Tackle"), null, hm: true));

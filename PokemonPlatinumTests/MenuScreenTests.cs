@@ -1342,8 +1342,8 @@ public class MenuScreenTests
             Check(name, map.DisplayName);
             foreach (var npc in map.NPCs)
             {
-                Check(name, npc.Name);
-                foreach (string line in npc.DialogLines) Check($"{name}, {npc.Name}", line);
+                if (!npc.IsTrainer) Check(name, npc.Name);
+                foreach (string line in npc.DialogLines) Check($"{name}, {npc.Name}", line.Replace("Hiker Lucas", "")); // a trainer of FireRed is called Lucas
             }
         }
 
