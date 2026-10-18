@@ -506,13 +506,21 @@ public class EvolutionTests
         const float dt = 1f / 60f;
         var clockwise = new[] { Direction.Up, Direction.Right, Direction.Down, Direction.Left, Direction.Up };
 
+        // A spin is told once it is over (plan 06 · R29): the player stops turning for longer than the gap
+        static bool Stops(SpinTracker s, Direction facing) =>
+            Enumerable.Range(0, (int)(SpinTracker.MaxGap * 60) + 2).Select(_ => s.Update(facing, dt)).Any(x => x);
+
         var spin = new SpinTracker();
         var results = clockwise.Select(d => spin.Update(d, dt)).ToList();
-        Assert.Equal(new[] { false, false, false, false, true }, results);
+        Assert.Equal(new[] { false, false, false, false, false }, results);
+        Assert.True(Stops(spin, Direction.Up));
+        Assert.True(spin.Last!.Value.Clockwise);
 
         // The other way round works too
         spin = new SpinTracker();
-        Assert.True(clockwise.Reverse().Select(d => spin.Update(d, dt)).ToList().Last());
+        Assert.DoesNotContain(true, clockwise.Reverse().Select(d => spin.Update(d, dt)));
+        Assert.True(Stops(spin, Direction.Up));
+        Assert.False(spin.Last!.Value.Clockwise);
 
         // Turning back, or dawdling, starts the count again
         spin = new SpinTracker();
@@ -527,7 +535,7 @@ public class EvolutionTests
         bool done = false;
         foreach (var d in clockwise)
             for (int i = 0; i < 20; i++) done |= spin.Update(d, dt);
-        Assert.True(done);
+        Assert.True(done || Stops(spin, Direction.Up));
     }
 
     // ---------------------------------------------------------------- what evolving does

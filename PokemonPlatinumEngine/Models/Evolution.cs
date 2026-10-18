@@ -50,7 +50,13 @@ public sealed class EvolutionContext
     /// happen only there (Pikachu into Alolan Raichu in Alola).
     /// </summary>
     public string? Region { get; set; }
+
+    /// <summary>The spin just made, for <see cref="EvolutionTrigger.Spin"/>: which way and how long (plan 06 · R29, Alcremie's cream).</summary>
+    public SpinMade? Spin { get; set; }
 }
+
+/// <summary>A spin of the player's (<c>SpinTracker</c>): clockwise seen from above or not, and how long it lasted from its first turn to its last.</summary>
+public readonly record struct SpinMade(bool Clockwise, float Seconds);
 
 /// <summary>What an evolution did.</summary>
 public sealed class EvolutionOutcome
@@ -121,9 +127,80 @@ public static class Evolution
         if ((trigger != EvolutionTrigger.UseItem) && p.HeldItem?.HoldEffect == EverstoneEffect && p.Species.Name != "Kadabra")
             return null;
 
-        return p.Species.Evolutions.FirstOrDefault(e =>
+        var found = p.Species.Evolutions.FirstOrDefault(e =>
             TriggerOf(e.Method) == trigger && FitsForm(p, e) && (e.Region == null || e.Region == context.Region)
             && Meets(p, e, context, cord) && PokemonDatabase.Get(e.TargetSpecies) != null);
+        return found == null ? null : Chosen(p, found, context);
+    }
+
+    // ---------------------------------------------------------------- the form the games choose (plan 06 · R29)
+
+    /// <summary>The natures that make a Low Key Toxtricity (Sword and Shield's); the rest make an Amped one.</summary>
+    public static IReadOnlySet<Nature> LowKeyNatures { get; } = new HashSet<Nature>
+    {
+        Nature.Lonely, Nature.Bold, Nature.Relaxed, Nature.Timid, Nature.Serious, Nature.Modest,
+        Nature.Mild, Nature.Quiet, Nature.Bashful, Nature.Calm, Nature.Gentle, Nature.Careful
+    };
+
+    /// <summary>The seconds past which a spin is a long one, and the longer one Rainbow Swirl asks for.</summary>
+    public const float LongSpin = 5f, LongestSpin = 10f;
+
+    /// <summary>
+    /// The form an evolution leads into where the games choose it rather than the data (plan 06 · R29; docs/mechanics/
+    /// evolution.md, "Forms"): Toxtricity by its nature (its own nature, not a mint's), a Maushold of three and a
+    /// three-segment Dudunsparce once in a hundred by the personality (Scarlet and Violet's encryption constant, which
+    /// is the personality here), and Alcremie's cream by the spin and the hour with its sweet's decoration. Any other
+    /// evolution is as the data has it.
+    /// </summary>
+    private static EvolutionData Chosen(Pokemon p, EvolutionData e, EvolutionContext context)
+    {
+        string? form = e.TargetSpecies switch
+        {
+            "Toxtricity" when e.TargetForm == null => LowKeyNatures.Contains(p.Nature) ? "Toxtricity-Low-Key" : null,
+            "Maushold" when e.TargetForm == null => p.Personality % 100 == 0 ? "Maushold-Family-Of-Three" : null,
+            "Dudunsparce" when e.TargetForm == null => p.Personality % 100 == 0 ? "Dudunsparce-Three-Segment" : null,
+            "Alcremie" when e.Method == EvolutionMethod.SpinHoldingItem => AlcremieForm(e.Item, context),
+            _ => e.TargetForm
+        };
+        if (form == e.TargetForm || form != null && PokemonDatabase.Get(e.TargetSpecies)?.Form(form) == null) return e;
+        return new EvolutionData
+        {
+            Method = e.Method, TargetSpecies = e.TargetSpecies, Level = e.Level, Item = e.Item, Move = e.Move, Type = e.Type,
+            Species = e.Species, Location = e.Location, Value = e.Value, NeedsFriendship = e.NeedsFriendship, Note = e.Note,
+            FromForm = e.FromForm, TargetForm = form, Region = e.Region
+        };
+    }
+
+    /// <summary>
+    /// Alcremie's cream (Sword and Shield's, as Serebii gives them): clockwise or not, quick or for more than five
+    /// seconds, by day or at night; anticlockwise for more than ten seconds at dusk is the Rainbow Swirl. Dusk is also
+    /// day, as it is for the rest of the rules.
+    /// </summary>
+    public static string AlcremieCream(bool clockwise, float seconds, bool night, bool dusk)
+    {
+        if (!clockwise && seconds > LongestSpin && dusk) return "Rainbow-Swirl";
+        bool slow = seconds > LongSpin;
+        return (clockwise, slow, night) switch
+        {
+            (true, false, false) => "Vanilla-Cream",
+            (false, false, false) => "Ruby-Cream",
+            (true, false, true) => "Matcha-Cream",
+            (false, true, true) => "Mint-Cream",
+            (true, true, true) => "Lemon-Cream",
+            (false, false, true) => "Salted-Cream",
+            (false, true, false) => "Ruby-Swirl",
+            _ => "Caramel-Swirl"
+        };
+    }
+
+    /// <summary>The Alcremie a spin makes holding a sweet: the cream, then the sweet's decoration (the species' own is Vanilla Cream with the Strawberry Sweet).</summary>
+    public static string? AlcremieForm(string? sweet, EvolutionContext context)
+    {
+        var spin = context.Spin ?? new SpinMade(true, 0f);
+        string cream = AlcremieCream(spin.Clockwise, spin.Seconds, context.IsNight, context.IsDusk);
+        string decoration = (sweet ?? "Strawberry Sweet").Replace(' ', '-');
+        string form = $"Alcremie-{cream}-{decoration}";
+        return form == "Alcremie-Vanilla-Cream-Strawberry-Sweet" ? null : form;
     }
 
     /// <summary>

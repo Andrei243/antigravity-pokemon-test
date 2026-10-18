@@ -454,6 +454,8 @@
     "learned": "{name} learned {move}!",
     "didNotLearn": "{name} did not learn {move}.",
     "changedForm": "{name} changed its form!",
+    "fused": "{name} and {partner} became one!",
+    "split": "{partner} split away from {name} and rejoined the team.",
     "swapped": "{name} swapped its {previous} for the {item}.",
     "given": "{name} was given the {item} to hold.",
     "giveTo": "Give the {item} to which Pokémon?",

@@ -654,5 +654,45 @@
         "O piatră misterioasă care a căzut din stele demult de tot. E ușor caldă la atingere."
       ]
     }
+  ],
+  "MeteoriteSpeed": [
+    {
+      "en": [
+        "The meteorite glowed, and Deoxys answered it. Deoxys took its Speed Forme!"
+      ],
+      "text": [
+        "Meteoritul a strălucit, iar Deoxys i-a răspuns. Deoxys a luat Forma Viteză!"
+      ]
+    }
+  ],
+  "MeteoriteDefense": [
+    {
+      "en": [
+        "The meteorite glowed, and Deoxys answered it. Deoxys took its Defense Forme!"
+      ],
+      "text": [
+        "Meteoritul a strălucit, iar Deoxys i-a răspuns. Deoxys a luat Forma Apărare!"
+      ]
+    }
+  ],
+  "MeteoriteAttack": [
+    {
+      "en": [
+        "The meteorite glowed, and Deoxys answered it. Deoxys took its Attack Forme!"
+      ],
+      "text": [
+        "Meteoritul a strălucit, iar Deoxys i-a răspuns. Deoxys a luat Forma Atac!"
+      ]
+    }
+  ],
+  "MeteoriteNormal": [
+    {
+      "en": [
+        "The meteorite glowed, and Deoxys answered it. Deoxys took its Normal Forme!"
+      ],
+      "text": [
+        "Meteoritul a strălucit, iar Deoxys i-a răspuns. Deoxys a luat Forma Normală!"
+      ]
+    }
   ]
 }

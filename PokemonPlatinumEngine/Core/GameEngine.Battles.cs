@@ -193,7 +193,11 @@ public partial class GameEngine
             PokerusRules.TryInfect(flow.Party, fieldRandom);
             PokerusRules.Spread(flow.Party, fieldRandom);
         }
-        foreach (var p in flow.Party.Members) FormRules.ByHeldItem(p);
+        foreach (var p in flow.Party.Members)
+        {
+            FormRules.ByHeldItem(p);
+            FormRules.ByMoves(p);
+        }
         // One caught in a form its item doesn't give it (Giratina, met in its Origin Forme in the Distortion World, plan
         // 02 · S12) is in the form it has outside, wherever the catch was put: the team or a box
         if (fought.Caught is { } caught) FormRules.ByHeldItem(caught);

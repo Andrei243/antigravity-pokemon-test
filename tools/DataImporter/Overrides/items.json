@@ -51,5 +51,14 @@
   "Friend Ball": { "description": "A Pokémon caught in it is very friendly from the start." },
   "Love Ball": { "description": "Catches a Pokémon of your own Pokémon's species and the other gender eight times as easily." },
   "Park Ball": { "description": "A Poké Ball that never fails. It belongs to the Pal Park." },
-  "Sport Ball": { "description": "A Poké Ball made for catching contests. It catches 1.5 times as easily." }
+  "Sport Ball": { "description": "A Poké Ball made for catching contests. It catches 1.5 times as easily." },
+  // The key items that change a form (plan 06 · R29): our own words, where PokeAPI's are a placeholder or say what
+  // isn't so here
+  "N-Solarizer": { "description": "Fuses Necrozma with Solgaleo, or splits them apart again." },
+  "N-Lunarizer": { "description": "Fuses Necrozma with Lunala, or splits them apart again." },
+  "Reveal Glass": { "description": "Switches Tornadus, Thundurus, Landorus and Enamorus between their Incarnate and Therian Formes." },
+  "Prison Bottle": { "description": "Unbinds Hoopa into its Unbound form, or binds it again." },
+  "Zygarde Cube": { "description": "Switches Zygarde between its 10% Forme and its 50% Forme." },
+  "Rotom Catalog": { "description": "A catalogue of appliances. Rotom slips into the next one in it, or back out." },
+  "Reins of Unity": { "description": "Fuses Calyrex with Glastrier or Spectrier, or splits them apart again." }
 }

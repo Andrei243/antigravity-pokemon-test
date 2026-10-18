@@ -370,9 +370,50 @@ label Given
   end
 
 
-# The meteorites at the east end of town (the original's scripts 25 to 28). Touching them changes a Deoxys's forme in
-# the original, which waits for a command that changes a Pokémon's form.
+# The meteorites at the east end of town (the original's scripts 25 to 28, VeilstoneCity_DeoxysMeteoriteSpeed,
+# Defense, Attack and Normal): each puts every Deoxys of the team in its own forme (plan 06 · R29, ChangeDeoxysForm),
+# and with no Deoxys it is only a stone (VeilstoneCity_MeteoriteFromTheStars).
 script Meteorite
   speaker none
   say "A mysterious stone that fell from the stars long, long ago. It is faintly warm to the touch."
   end
+
+script MeteoriteSpeed
+  if not has "Deoxys" goto Stone
+  team deoxys "Deoxys-Speed"
+  cry "Deoxys"
+  speaker none
+  say "The meteorite glowed, and Deoxys answered it. Deoxys took its Speed Forme!"
+  end
+label Stone
+  call Meteorite
+
+script MeteoriteDefense
+  if not has "Deoxys" goto Stone
+  team deoxys "Deoxys-Defense"
+  cry "Deoxys"
+  speaker none
+  say "The meteorite glowed, and Deoxys answered it. Deoxys took its Defense Forme!"
+  end
+label Stone
+  call Meteorite
+
+script MeteoriteAttack
+  if not has "Deoxys" goto Stone
+  team deoxys "Deoxys-Attack"
+  cry "Deoxys"
+  speaker none
+  say "The meteorite glowed, and Deoxys answered it. Deoxys took its Attack Forme!"
+  end
+label Stone
+  call Meteorite
+
+script MeteoriteNormal
+  if not has "Deoxys" goto Stone
+  team deoxys "Deoxys"
+  cry "Deoxys"
+  speaker none
+  say "The meteorite glowed, and Deoxys answered it. Deoxys took its Normal Forme!"
+  end
+label Stone
+  call Meteorite

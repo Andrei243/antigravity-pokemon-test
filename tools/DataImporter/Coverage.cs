@@ -149,7 +149,8 @@ public static class Coverage
     /// </summary>
     private static Works FieldUseOf(ItemData item)
     {
-        if (BagScreen.UsedInField(item) || BagScreen.UsedInBag(item) || MoveTeaching.IsMachine(item) || item.FieldUse == "Gracidea" || LaterItemUse.Handles(item))
+        if (BagScreen.UsedInField(item) || BagScreen.UsedInBag(item) || MoveTeaching.IsMachine(item) || item.FieldUse == "Gracidea" || LaterItemUse.Handles(item)
+            || FormChanges.Handles(item))
             return Works.Fully;
         if (Evolution.IsUsedToEvolve(item) && !ItemUse.IsUsedOnPokemon(item)) return Works.Fully;
         if (!BagScreen.CanUse(item)) return Works.NotYet;

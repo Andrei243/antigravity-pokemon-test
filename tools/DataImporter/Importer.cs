@@ -44,7 +44,13 @@ public sealed partial class Importer
     {
         ["key-stone"] = ItemPocket.KeyItems, ["z-ring"] = ItemPocket.KeyItems, ["dynamax-band"] = ItemPocket.KeyItems, ["tera-orb"] = ItemPocket.KeyItems, ["red-orb"] = ItemPocket.Items, ["blue-orb"] = ItemPocket.Items,
         // The bottle caps hyper training is paid in (plan 06 · R28b)
-        ["bottle-cap"] = ItemPocket.Items, ["gold-bottle-cap"] = ItemPocket.Items
+        ["bottle-cap"] = ItemPocket.Items, ["gold-bottle-cap"] = ItemPocket.Items,
+        // The later games' key items that change a Pokémon's form outside a battle (plan 06 · R29), and Legends:
+        // Arceus's three that hold Dialga, Palkia and Giratina in their Origin Formes
+        ["dna-splicers"] = ItemPocket.KeyItems, ["reveal-glass"] = ItemPocket.KeyItems, ["prison-bottle"] = ItemPocket.KeyItems,
+        ["zygarde-cube"] = ItemPocket.KeyItems, ["n-solarizer--merge"] = ItemPocket.KeyItems, ["n-lunarizer--merge"] = ItemPocket.KeyItems,
+        ["rotom-catalog"] = ItemPocket.KeyItems, ["reins-of-unity"] = ItemPocket.KeyItems,
+        ["adamant-crystal"] = ItemPocket.Items, ["lustrous-globe"] = ItemPocket.Items, ["griseous-core"] = ItemPocket.Items
     };
 
     private readonly Decomp decomp;

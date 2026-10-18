@@ -51,11 +51,14 @@ public static class MoveTeaching
         if (p.Moves.Count < 4)
         {
             p.Moves.Add(learned);
+            FormRules.ByMoves(p);
             return Text.Of("bag.learned", ("name", p.DisplayName), ("move", move));
         }
         if (forget < 0 || forget >= p.Moves.Count) throw new ArgumentOutOfRangeException(nameof(forget), "A Pokémon with four moves forgets one to learn another");
         string old = p.Moves[forget].DisplayName;
         p.Moves[forget] = learned;
+        // Keldeo's form goes with Secret Sword (plan 06 · R29)
+        FormRules.ByMoves(p);
         return Text.Of("teaching.forgot", ("name", p.DisplayName), ("old", old), ("move", LocalNames.Move(move)));
     }
 }

@@ -888,7 +888,18 @@
     "TR96": "TR96",
     "TR97": "TR97",
     "TR98": "TR98",
-    "TR99": "TR99"
+    "TR99": "TR99",
+    "DNA Splicers": "Îmbinătoare ADN",
+    "Reveal Glass": "Oglinda Adevărului",
+    "Prison Bottle": "Sticla-Închisoare",
+    "Zygarde Cube": "Cubul Zygarde",
+    "N-Solarizer": "N-Solarizator",
+    "N-Lunarizer": "N-Lunarizator",
+    "Rotom Catalog": "Catalogul Rotom",
+    "Reins of Unity": "Frâiele Unității",
+    "Adamant Crystal": "Cristalul de Diamant",
+    "Lustrous Globe": "Sfera de Perlă",
+    "Griseous Core": "Miezul Cenușiu"
   },
   "descriptions": {
     "items": {
@@ -1780,7 +1791,18 @@
       "TR96": "Un TR: învață un Pokémon compatibil o mișcare și se consumă.",
       "TR97": "Un TR: învață un Pokémon compatibil o mișcare și se consumă.",
       "TR98": "Un TR: învață un Pokémon compatibil o mișcare și se consumă.",
-      "TR99": "Un TR: învață un Pokémon compatibil o mișcare și se consumă."
+      "TR99": "Un TR: învață un Pokémon compatibil o mișcare și se consumă.",
+      "DNA Splicers": "Îl unește pe Kyurem cu Reshiram sau cu Zekrom ori îi desparte din nou.",
+      "Reveal Glass": "Îi schimbă pe Tornadus, Thundurus, Landorus și Enamorus între Forma Încarnată și Forma Totemică.",
+      "Prison Bottle": "Îl dezlănțuie pe Hoopa în forma lui Dezlănțuită ori îl leagă din nou.",
+      "Zygarde Cube": "Îl schimbă pe Zygarde între Forma 10% și Forma 50%.",
+      "N-Solarizer": "Îl unește pe Necrozma cu Solgaleo ori îi desparte din nou.",
+      "N-Lunarizer": "Îl unește pe Necrozma cu Lunala ori îi desparte din nou.",
+      "Rotom Catalog": "Un catalog de aparate. Rotom intră în următorul din el ori iese înapoi.",
+      "Reins of Unity": "Îl unește pe Calyrex cu Glastrier sau cu Spectrier ori îi desparte din nou.",
+      "Adamant Crystal": "Ținut de Dialga, îl ține în Forma Origine și îi întărește mișcările de tip Dragon și Oțel.",
+      "Lustrous Globe": "Ținut de Palkia, îl ține în Forma Origine și îi întărește mișcările de tip Dragon și Apă.",
+      "Griseous Core": "Ținut de Giratina, îl ține în Forma Origine și îi întărește mișcările de tip Dragon și Fantomă."
     }
   }
 }

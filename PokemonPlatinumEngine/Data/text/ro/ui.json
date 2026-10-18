@@ -455,6 +455,8 @@
     "learned": "{name} a învățat {move}!",
     "didNotLearn": "{name} nu a învățat {move}.",
     "changedForm": "{name} și-a schimbat forma!",
+    "fused": "{name} și {partner} au devenit unul!",
+    "split": "{partner} s-a desprins de {name} și s-a întors în echipă.",
     "swapped": "{name} a dat {previous} pe {item}.",
     "given": "{name} a primit {item} să țină.",
     "giveTo": "Cui îi dai {item}?",

@@ -105,7 +105,7 @@ A **Linking Cord** used on a Pokémon counts as a trade (Legends: Arceus). It is
 
 | Method | Needs | Examples | First seen |
 | --- | --- | --- | --- |
-| `SpinHoldingItem` | The player turns four quarter turns the same way, each within 1.2 s of the last, while the Pokémon holds the item | Milcery with any of the seven Sweets | 8 |
+| `SpinHoldingItem` | The player turns four quarter turns or more the same way, each within 1.2 s of the last, while the Pokémon holds the item; the spin counts once it is over (1.2 s without a turn, or a turn the other way), and its way and length choose Alcremie's cream (plan 06 · R29) | Milcery with any of the seven Sweets | 8 |
 
 ## Friendship
 
@@ -133,9 +133,9 @@ A Pokémon can be in one of its species' forms (`Pokemon.Form`; plan 03 · D11).
 - Any other form also evolves by its species' own evolutions into species its form has none into: a male Burmy in a sandy cloak still becomes Mothim. An Own Tempo Rockruff, whose own evolution is into Lycanroc, waits for dusk.
 - An evolution into another region's form happens in that region only, and is listed first: Pikachu becomes an Alolan Raichu in Alola and a Raichu anywhere else, Koffing a Galarian Weezing in Galar. None of those regions is in the game yet, so for now they become the species' own forms.
 
-Which Alcremie, Toxtricity, Urshifu, Maushold or Dudunsparce comes out, where the games pick by chance, nature or a choice, is one evolution here, into the species' own form. Lycanroc's three forms are three evolutions, by the hour.
+Where the games choose the form an evolution leads into, `Evolution.Find` hands back the evolution with that form (plan 06 · R29), so the scene shows it: Toxtricity is Low Key for twelve natures (its own, not a mint's) and Amped for the rest; a Maushold of three and a three-segment Dudunsparce come once in a hundred, when the personality is a multiple of a hundred; Alcremie's cream is the spin's way and length and the hour (`Evolution.AlcremieCream`), its decoration the sweet it held. Urshifu's two styles are two evolutions, by the scroll, and Lycanroc's three forms three evolutions, by the hour.
 
-Mega Evolution, Primal Reversion, Gigantamax and form changes are not evolutions; plan 06 · R19–R23 and R29 cover them.
+Mega Evolution, Primal Reversion, Gigantamax and form changes are not evolutions; plan 06 · R19–R23 and R29 cover them (docs/mechanics/rulings.md, "Shapes that change in battle" and "Forms changed outside a battle").
 
 ## For trading
 

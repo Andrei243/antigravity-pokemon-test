@@ -394,6 +394,7 @@ public class ScriptTests
           team size "Remoraid"
           team size keep
           team holds "Adamant Orb"
+          team deoxys "Deoxys-Speed"
           setvar VAR_X RESULT
           nationaldex
           hall enough single

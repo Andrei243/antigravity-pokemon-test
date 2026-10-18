@@ -149,7 +149,8 @@ public class VeilstoneAndPastoriaTests
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM63")!));
         Assert.Contains(game.Said, l => l.Text.Contains("Embargo"));
         // The meteorites at the east end of town are read
-        Assert.Equal(4, game.Map.TileScripts.Count(kv => kv.Value == "Meteorite"));
+        // (one forme of Deoxys's each since plan 06 · R29)
+        Assert.Equal(4, game.Map.TileScripts.Count(kv => kv.Value.StartsWith("Meteorite", StringComparison.Ordinal)));
         Assert.Contains("stars", game.Play(Scripts.Find("Meteorite", "veilstone_city")!).Transcript.Single().Text);
     }
 

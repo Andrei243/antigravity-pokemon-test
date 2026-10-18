@@ -549,6 +549,9 @@ public class SavedPokemonData
     public Nature? MintNature { get; set; }
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingDefault)]
     public int HyperTrained { get; set; }
+    /// <summary>The partner fused into it (plan 06 · R29: a Kyurem's Zekrom, a Calyrex's steed), whole; left out for one fused with nobody.</summary>
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public SavedPokemonData? FusedWith { get; set; }
     public List<SavedMoveData> Moves { get; set; } = new();
 
     public static SavedPokemonData FromPokemon(Pokemon p)
@@ -606,7 +609,8 @@ public class SavedPokemonData
             GigantamaxFactor = p.GigantamaxFactor,
             TeraType = p.HasOwnTeraType ? p.TeraType.Name : null,
             MintNature = p.MintNature,
-            HyperTrained = p.HyperTrained
+            HyperTrained = p.HyperTrained,
+            FusedWith = p.FusedWith is { } partner ? FromPokemon(partner) : null
         };
 
         foreach (var m in p.Moves)
@@ -663,6 +667,7 @@ public class SavedPokemonData
         };
         p.IsEgg = IsEgg;
         if (Models.TeraType.Parse(TeraType) is { } tera) p.TeraType = tera;
+        if (FusedWith != null) p.FusedWith = FusedWith.ToPokemon(rules);
         p.Id = Id ?? Guid.Empty;
         if (Form != null) p.RestoreForm(Form);
         if (Ability != null) p.AbilityName = Ability;

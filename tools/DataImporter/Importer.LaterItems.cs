@@ -96,6 +96,9 @@ public sealed partial class Importer
         shaping["Ability Patch"] = ("AbilityPatch", null);
         shaping["Dynamax Candy"] = ("DynamaxCandy", null);
         foreach (var nectar in new[] { "Red", "Yellow", "Pink", "Purple" }) shaping[$"{nectar} Nectar"] = ("Nectar", null);
+        // Plan 06 · R29: the key items that change a form, never used up (Models/FormChanges.cs)
+        foreach (var key in new[] { "DNA Splicers", "Reveal Glass", "Prison Bottle", "Zygarde Cube", "N-Solarizer", "N-Lunarizer", "Rotom Catalog", "Reins of Unity" })
+            shaping[key] = ("FormChange", null);
         return shaping;
     }
 
@@ -127,6 +130,8 @@ public sealed partial class Importer
         ["Ability Shield"] = ("AbilityShield", 0), ["Rusted Sword"] = ("RustedSword", 0), ["Rusted Shield"] = ("RustedShield", 0),
         ["Wellspring Mask"] = ("MaskWellspring", 20), ["Hearthflame Mask"] = ("MaskHearthflame", 20), ["Cornerstone Mask"] = ("MaskCornerstone", 20),
         ["Legend Plate"] = ("LegendPlate", 0), ["Blank Plate"] = ("ArceusNormal", 20),
+        // Plan 06 · R29: Legends: Arceus's three, which hold their Pokémon in its Origin Forme and power it as the orbs do
+        ["Adamant Crystal"] = ("DialgaBoost", 20), ["Lustrous Globe"] = ("PalkiaBoost", 20), ["Griseous Core"] = ("GiratinaBoost", 20),
     };
 
     private static readonly string[] GemTypes =
