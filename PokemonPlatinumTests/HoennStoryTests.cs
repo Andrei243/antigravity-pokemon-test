@@ -200,6 +200,8 @@ public class HoennStoryTests
         Assert.Equal(2, game.Story.Var("VAR_LITTLEROOT_TOWN_STATE"));
         game.Arrive("Hoenn", 130, 279);
         Assert.Equal(1, game.Story.Var("VAR_ROUTE101_STATE"));
+        Assert.NotNull(game.Present("route101_birch"));
+        Assert.NotNull(game.Present("route101_zigzagoon"));
         game.Step("BirchInTrouble");
         Assert.Equal(2, game.Story.Var("VAR_ROUTE101_STATE"));
         Assert.True(game.Fires("DontLeaveMe"));

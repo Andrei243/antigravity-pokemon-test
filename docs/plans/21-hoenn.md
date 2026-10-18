@@ -222,6 +222,9 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     and the Stone Badge, Rusturf Tunnel and the Devon Goods, the PokéNav, Roxanne's and the classes' looks, `eye_aqua`
     and `battle_gym`, `petalburg_woods`, `route104`, `rustboro`; still from H1: the cover rows of the rest of Emerald's
     tilesets, Hoenn's berry trees (patch numbers of their own above Sinnoh's 128), the triggers north of Oldale.
+    Seen in the shots and left: the Gym's hall is drawn small at the corner of a camera that frames the whole long
+    building over the dark (a room 112 tiles deep; its side walls had to be laid in lengths for it to draw at all,
+    `MapScene.AddInterior`), and in Wally's lesson the player's own figure stands on the platform, not Wally's.
 - [ ] H3 Dewford, Slateport and Mauville
 - [ ] H4 The desert, Mt. Chimney and Lavaridge
 - [ ] H5 Dive and the sea floor

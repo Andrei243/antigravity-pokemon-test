@@ -16,6 +16,9 @@ script OnEnter
 # Up from Littleroot Town into the scene (the area's triggers 0 and 1, on 1)
 script BirchInTrouble
   scene "The professor in trouble"
+  # (Emerald moves the two into the open below the ledge before they run round: setobjectxy)
+  place route101_birch 129 277 right
+  place route101_zigzagoon 130 277 left
   music "hoenn/help"
   emote route101_birch exclaim
   speaker "???"
