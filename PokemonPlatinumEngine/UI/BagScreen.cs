@@ -263,7 +263,7 @@ public class BagScreen
     /// </summary>
     public static bool CanUse(ItemData item) =>
         ItemUse.IsUsedOnPokemon(item) || Evolution.IsUsedToEvolve(item) || EffortRules.IsEffortItem(item)
-        || item.FieldUse == "Gracidea" || MoveTeaching.IsMachine(item) || LaterItemUse.Handles(item);
+        || item.FieldUse == "Gracidea" || MoveTeaching.IsMachine(item) || LaterItemUse.Handles(item) || FormChanges.Handles(item);
 
     /// <summary>
     /// Items used in the field itself rather than on a Pokémon (plan 02 · S2), by the original's use of each: the
@@ -611,6 +611,22 @@ public class BagScreen
             AudioManager.PlayCry(target);
             onNotification(Text.Of("bag.skyForme", ("name", target.DisplayName)));
         }
+        else if (FormChanges.Handles(item))
+        {
+            // The later games' key items that change a form (plan 06 · R29): never used up, and the move a form brings
+            // that doesn't fit is asked about as a level's is
+            var result = FormChanges.Apply(item, target, party);
+            if (!result.Applied)
+            {
+                onNotification(Text.Of("bag.noEffect"));
+                AudioManager.PlaySound("error");
+                return;
+            }
+            AudioManager.PlayCry(target);
+            onNotification(result.Message);
+            foreach (string wanted in result.Wanted) toTeach.Enqueue((target, wanted, null));
+            if (NextTeaching()) return;
+        }
         else if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item) || LaterItemUse.Handles(item))
         {
             // Medicine, berries, vitamins and the Rare Candy, by the item table (Pokemon_ApplyItemEffects); the later
@@ -802,6 +818,7 @@ public class BagScreen
         }
         if (item.FieldUse == "Gracidea") return FormRules.CanTakeToTheSky(p, (int)GameClock.Hour);
         if (LaterItemUse.Handles(item)) return LaterItemUse.WouldHelp(item, p);
+        if (FormChanges.Handles(item)) return FormChanges.WouldHelp(item, p, probe.Party);
         if (ItemUse.IsUsedOnPokemon(item) || EffortRules.IsEffortItem(item)) return ItemUse.WouldHelpAnyMove(item, p);
         return null;
     }

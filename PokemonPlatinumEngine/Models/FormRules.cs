@@ -19,6 +19,7 @@ namespace PokemonPlatinumEngine.Models;
 public static class FormRules
 {
     public const string GriseousOrb = "Griseous Orb";
+    public const string GriseousCore = "Griseous Core", AdamantCrystal = "Adamant Crystal", LustrousGlobe = "Lustrous Globe";
 
     // ---------------------------------------------------------------- Burmy
 
@@ -90,7 +91,27 @@ public static class FormRules
         switch (p.Species.Name)
         {
             case "Giratina":
-                form = p.HeldItem?.Name == GriseousOrb ? "Giratina-Origin" : null;
+                // The Griseous Orb is Platinum's way, the Griseous Core Legends: Arceus's (plan 06 · R29)
+                form = p.HeldItem?.Name is GriseousOrb or GriseousCore ? "Giratina-Origin" : null;
+                break;
+            // Plan 06 · R29: Legends: Arceus's crystal and globe hold Dialga and Palkia in their Origin Formes
+            case "Dialga":
+                form = p.HeldItem?.Name == AdamantCrystal ? p.Species.Form("Dialga-Origin")?.Name : null;
+                break;
+            case "Palkia":
+                form = p.HeldItem?.Name == LustrousGlobe ? p.Species.Form("Palkia-Origin")?.Name : null;
+                break;
+            // Genesect's look is the drive it holds, Silvally's (with RKS System) the type of its memory (Showdown's formes by their required items)
+            case "Genesect":
+                form = p.HeldItem?.HoldEffect switch
+                {
+                    "DriveWater" => "Genesect-Douse", "DriveElectric" => "Genesect-Shock", "DriveFire" => "Genesect-Burn", "DriveIce" => "Genesect-Chill", _ => null
+                };
+                form = form != null ? p.Species.Form(form)?.Name : null;
+                break;
+            case "Silvally" when p.AbilityName == "RKS System":
+                form = p.HeldItem?.HoldEffect is { } memory && memory.StartsWith("Memory", StringComparison.Ordinal)
+                    ? p.Species.Form("Silvally-" + memory["Memory".Length..])?.Name : null;
                 break;
             case "Arceus" when p.AbilityName == "Multitype":
                 form = p.HeldItem?.HoldEffect is { } hold && hold.StartsWith("Arceus", StringComparison.Ordinal)
@@ -104,6 +125,19 @@ public static class FormRules
             default:
                 return false;
         }
+        if (p.Form == form) return false;
+        p.ChangeForm(form);
+        return true;
+    }
+
+    /// <summary>
+    /// What its moves do to its form (plan 06 · R29): Keldeo is in its Resolute Form while it knows Secret Sword and in
+    /// its Ordinary Form without (Showdown's Keldeo-Resolute by its required move). True when the form changed.
+    /// </summary>
+    public static bool ByMoves(Pokemon p)
+    {
+        if (p.Species.Name != "Keldeo" || p.IsEgg) return false;
+        string? form = p.Knows("Secret Sword") ? p.Species.Form("Keldeo-Resolute")?.Name : null;
         if (p.Form == form) return false;
         p.ChangeForm(form);
         return true;

@@ -528,6 +528,13 @@ public class Pokemon
     /// <summary>It has the Gigantamax Factor (plan 06 · R22): a species with a Gigantamax form takes it as it Dynamaxes, and its moves of one type become its G-Max Move.</summary>
     public bool GigantamaxFactor { get; set; }
 
+    /// <summary>
+    /// The partner it has taken in (plan 06 · R29, <see cref="FormChanges"/>): a Kyurem's Zekrom or Reshiram, a Necrozma's
+    /// Solgaleo or Lunala, a Calyrex's steed, kept whole inside it until the two are split again; null for one fused with
+    /// nobody. Saved with it.
+    /// </summary>
+    public Pokemon? FusedWith { get; set; }
+
     /// <summary>A Dynamax raises or lowers both its HP and its most HP at once (plan 06 · R22): only a battle's rules do it, and give the most back as the Dynamax ends.</summary>
     internal void TakeHp(int max, int current)
     {
@@ -1228,6 +1235,7 @@ public class Pokemon
         Capsule = other.Capsule;
         DynamaxLevel = other.DynamaxLevel;
         GigantamaxFactor = other.GigantamaxFactor;
+        FusedWith = other.FusedWith;
         teraType = other.teraType;
         MetLocation = other.MetLocation;
         MetLevel = other.MetLevel;

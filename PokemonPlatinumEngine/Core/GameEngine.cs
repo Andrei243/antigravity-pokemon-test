@@ -1529,7 +1529,9 @@ public partial class GameEngine
         IsDusk = GameClock.Now == TimeOfDay.Twilight,
         IsRaining = Weathers.IsRain(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)),
         Sites = flow.Map.EvolutionSitesAt(flow.Player.GridX, flow.Player.GridY),
-        Region = RegionDatabase.RegionOfMap(flow.Map.Name)?.Name
+        Region = RegionDatabase.RegionOfMap(flow.Map.Name)?.Name,
+        // The spin just ended, for Alcremie's cream (plan 06 · R29)
+        Spin = flow.Spin.Last
     };
 
     /// <summary>The evolutions a trigger sets off among these Pokémon right now.</summary>

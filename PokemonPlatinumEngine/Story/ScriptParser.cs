@@ -725,9 +725,11 @@ public static class ScriptParser
             // What a room's people ask of the team (plan 01 · M11, part b)
             case "team":
             {
-                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "holds");
+                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "holds", "deoxys");
                 return what switch
                 {
+                    // Plan 06 · R29: Veilstone City's meteorites (ChangeDeoxysForm): "Deoxys" is its Normal Forme
+                    "deoxys" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = DeoxysForm(r) },
                     // Plan 01 · M11, part c: a nature by its name, and a size beside the record ("team size keep" keeps it)
                     "nature" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = NatureWord(r) },
                     "size" when r.PeekWord("keep") => new Instruction { Op = Op.Team, Line = line, Name = what, Option = r.OneOf("keep") == "keep" },
@@ -1254,6 +1256,14 @@ public static class ScriptParser
     }
 
     /// <summary>A nature by its name, in any case (<c>team nature serious</c>).</summary>
+    /// <summary>A forme of Deoxys's by its name ("Deoxys-Speed"), or "Deoxys" for its Normal Forme.</summary>
+    private static string DeoxysForm(Reader r)
+    {
+        string form = r.Text("a forme of Deoxys's");
+        if (form != "Deoxys" && PokemonDatabase.Get("Deoxys")?.Form(form) == null) throw r.Error($"'{form}' is no forme of Deoxys's");
+        return form;
+    }
+
     private static string NatureWord(Reader r)
     {
         string word = r.Word("a nature");

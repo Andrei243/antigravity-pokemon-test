@@ -1685,6 +1685,20 @@ public sealed partial class ScriptRunner
             case "holds":
                 Result = team.Any(p => !p.IsEgg && p.HeldItem?.Name == i.Other) ? 1 : 0;
                 break;
+            // ScrCmd_ChangeDeoxysForm (plan 06 · R29): every Deoxys of the team takes the meteorite's forme. RESULT is
+            // how many changed
+            case "deoxys":
+            {
+                string? form = i.Other == "Deoxys" ? null : i.Other;
+                int changed = 0;
+                foreach (var p in team.Where(p => !p.IsEgg && p.Species.Name == "Deoxys" && p.Form != form))
+                {
+                    p.ChangeForm(form);
+                    changed++;
+                }
+                Result = changed;
+                break;
+            }
             // ScrCmd_TryGetRandomMassageGirlAccessory and Common_GiveAccessory: one of her sixteen, drawn among those the
             // Fashion Case still has room for
             case "massage":

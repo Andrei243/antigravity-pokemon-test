@@ -8039,9 +8039,9 @@ mine:
   mine#1 Bayleef L37 Male Bashful Overgrow @Weakness Policy | Magical Leaf, Leech Seed, Sweet Scent, Light Screen | HP 101 Atk 61 Def 71 SpA 60 SpD 73 Spe 56
   mine#2 Pinsir L26 Male Brave Mold Breaker @nothing | Seismic Toss, Bug Bite, Storm Throw, Double Hit | HP 72 Atk 83 Def 65 SpA 34 SpD 48 Spe 46
 foe: Ace Trainer Tester, ai Basic, items none
-  foe#0 Scrafty L79 Female Adamant Moxie @Griseous Orb | Crunch, High Jump Kick, Focus Punch, Head Smash | HP 201 Atk 163 Def 201 SpA 81 SpD 202 Spe 97
-  foe#1 Cacnea L47 Male Hasty Sand Veil @Wide Lens | Sucker Punch, Pin Missile, Energy Ball, Cotton Spore | HP 105 Atk 96 Def 39 SpA 90 SpD 45 Spe 42
-  foe#2 Poliwhirl L24 Male Docile Water Absorb @Room Service | Water Gun, Pound, Bubble Beam, Rain Dance | HP 69 Atk 41 Def 42 SpA 33 SpD 31 Spe 48
+  foe#0 Scrafty L79 Female Adamant Moxie @Griseous Core | Crunch, High Jump Kick, Focus Punch, Head Smash | HP 201 Atk 163 Def 201 SpA 81 SpD 202 Spe 97
+  foe#1 Scolipede L14 Male Modest Swarm @Draco Plate | Poison Sting, Baton Pass, Iron Defense, Poison Tail | HP 41 Atk 30 Def 30 SpA 24 SpD 26 Spe 38
+  foe#2 Scizor L39 Female Adamant Technician @nothing | Slash, Focus Energy, Iron Defense, Iron Head | HP 103 Atk 125 Def 87 SpA 52 SpD 78 Spe 56
 log:
   Seen Species=Scrafty
   TrainersStand First=Ace Trainer Second=none

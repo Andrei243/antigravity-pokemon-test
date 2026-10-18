@@ -536,6 +536,7 @@ it, each after one command of the original's. Part c (the north and the Battle Z
 | `team nature serious` | `RESULT` is the place of the first of the team, no Egg, of that nature, or 255 with none (`FindPartySlotWithNature`): the inventor of Sunyshore City, who gives a Pokétch app for the sight of one. |
 | `team size "Remoraid"` | The Pokémon `RESULT` names (after `choosepokemon`) is measured against the size record (`CalcSizeContestResult`; `Models/SizeContest.cs`): `RESULT` 0 smaller, 1 the same, 2 larger, and 3 where it isn't that species (an Egg is none, and so is nobody chosen). `{size}` is its size and `{record}` the record's, as that species. The record is the story's `VAR_SIZE_CONTEST_RECORD`, and until one is kept the original's first (33,280). |
 | `team size keep` | The Pokémon last measured is the record from now on (`UpdateSizeContestRecord`). |
+| `team deoxys "Deoxys-Speed"` | Every Deoxys of the team, no Egg, takes that forme (`"Deoxys"` is its Normal Forme); `RESULT` is how many changed (plan 06 · R29; `ChangeDeoxysForm`, Veilstone City's four meteorites). |
 | `team holds "Adamant Orb"` | `RESULT` 1 when anyone of the team holds the item, 0 when nobody does; an Egg holds nothing (plan 02 · S15, part c; `CheckPartyHasHeldItem`). Mt. Coronet's sixth floor asks it of the Adamant and the Lustrous Orb beside `if item`, which asks the bag. |
 
 ### The Battle Factory

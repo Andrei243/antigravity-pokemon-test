@@ -7990,6 +7990,30 @@
     "holdParam": 30
   },
   {
+    "id": 1671,
+    "name": "DNA Splicers",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Fuses Kyurem with Reshiram or Zekrom, or splits them apart again.",
+    "fieldUse": "FormChange"
+  },
+  {
+    "id": 1681,
+    "name": "Reveal Glass",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Switches Tornadus, Thundurus, Landorus and Enamorus between their Incarnate and Therian Formes.",
+    "fieldUse": "FormChange"
+  },
+  {
     "id": 1682,
     "name": "Weakness Policy",
     "pocket": "Items",
@@ -8848,6 +8872,18 @@
     }
   },
   {
+    "id": 1806,
+    "name": "Prison Bottle",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Unbinds Hoopa into its Unbound form, or binds it again.",
+    "fieldUse": "FormChange"
+  },
+  {
     "id": 1808,
     "name": "Cameruptite",
     "pocket": "Items",
@@ -9427,6 +9463,18 @@
     "flingPower": 30
   },
   {
+    "id": 1884,
+    "name": "Zygarde Cube",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Switches Zygarde between its 10% Forme and its 50% Forme.",
+    "fieldUse": "FormChange"
+  },
+  {
     "id": 1885,
     "name": "Ice Stone",
     "pocket": "Items",
@@ -9805,6 +9853,30 @@
     "canUseInOverworld": false,
     "description": "Held: Changes Silvally to its Fairy form. Changes Multi-Attack's type to Fairy.",
     "holdEffect": "MemoryFairy"
+  },
+  {
+    "id": 1989,
+    "name": "N-Solarizer",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Fuses Necrozma with Solgaleo, or splits them apart again.",
+    "fieldUse": "FormChange"
+  },
+  {
+    "id": 1990,
+    "name": "N-Lunarizer",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Fuses Necrozma with Lunala, or splits them apart again.",
+    "fieldUse": "FormChange"
   },
   {
     "id": 2039,
@@ -12096,6 +12168,18 @@
     "flingPower": 80
   },
   {
+    "id": 2329,
+    "name": "Rotom Catalog",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A catalogue of appliances. Rotom slips into the next one in it, or back out.",
+    "fieldUse": "FormChange"
+  },
+  {
     "id": 2630,
     "name": "Max Honey",
     "pocket": "Medicine",
@@ -12167,6 +12251,57 @@
     "canUseInOverworld": true,
     "description": "",
     "fieldUse": "AbilityPatch"
+  },
+  {
+    "id": 2658,
+    "name": "Reins of Unity",
+    "pocket": "KeyItems",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Fuses Calyrex with Glastrier or Spectrier, or splits them apart again.",
+    "fieldUse": "FormChange"
+  },
+  {
+    "id": 2659,
+    "name": "Adamant Crystal",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "",
+    "holdEffect": "DialgaBoost",
+    "holdParam": 20
+  },
+  {
+    "id": 2660,
+    "name": "Lustrous Globe",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "",
+    "holdEffect": "PalkiaBoost",
+    "holdParam": 20
+  },
+  {
+    "id": 2661,
+    "name": "Griseous Core",
+    "pocket": "Items",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "",
+    "holdEffect": "GiratinaBoost",
+    "holdParam": 20
   },
   {
     "id": 2662,

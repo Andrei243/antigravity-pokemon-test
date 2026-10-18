@@ -53,7 +53,7 @@ public class CoverageTests
         AtLeast(123, n.PlatinumAbilitiesRun, "Platinum's abilities with an effect");
         AtLeast(190, n.LaterAbilitiesRun, "later abilities with an effect");
         AtLeast(308, n.PlatinumItemsFully, "Platinum's items that work"); // plan 06 · R28a: the Luxury and Heal Balls
-        AtLeast(438, n.LaterItemsFully, "later items that work"); // plan 06 · R28b: everything used outside a battle, the TRs, the last held items
+        AtLeast(449, n.LaterItemsFully, "later items that work"); // plan 06 · R28b: everything used outside a battle, the TRs, the last held items; R29: the key items that change a form, the Origin Formes' three
         AtLeast(357, n.PlatinumItemsFully + n.PlatinumItemsPartly, "Platinum's items that work at least partly");
         AtLeast(158, n.HoldEffectsRun, "hold effects run");
         // The 35 Z-Moves since plan 06 · R21

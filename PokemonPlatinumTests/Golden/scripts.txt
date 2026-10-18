@@ -10312,11 +10312,20 @@ way 0
 way 1, from answer 1
   Looker> ...Yes. I take your point. To creep into the lair of Team Galactic... it is no small thing.
   ? Well? You will come into the hideout with me? You have your own reasons to, I think. = No
-=== veilstone_city.Meteorite
-from the tile read at 729,616 of Sinnoh
-from the tile read at 730,629 of Sinnoh
-from the tile read at 731,622 of Sinnoh
+=== veilstone_city.MeteoriteAttack
 from the tile read at 732,628 of Sinnoh
+way -
+  > A mysterious stone that fell from the stars long, long ago. It is faintly warm to the touch.
+=== veilstone_city.MeteoriteDefense
+from the tile read at 730,629 of Sinnoh
+way -
+  > A mysterious stone that fell from the stars long, long ago. It is faintly warm to the touch.
+=== veilstone_city.MeteoriteNormal
+from the tile read at 731,622 of Sinnoh
+way -
+  > A mysterious stone that fell from the stars long, long ago. It is faintly warm to the touch.
+=== veilstone_city.MeteoriteSpeed
+from the tile read at 729,616 of Sinnoh
 way -
   > A mysterious stone that fell from the stars long, long ago. It is faintly warm to the touch.
 === veilstone_city.Roughneck2

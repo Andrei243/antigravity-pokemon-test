@@ -36,7 +36,7 @@
   // (trigger 0), and Crasher Wake coming out of the Gym (trigger 1)
   "triggers": [ { "trigger": 0, "script": "GruntsBlock" }, { "trigger": 1, "script": "CrasherWake" } ],
   // The meteorites at the east end of town
-  "read": { "25": "Meteorite", "26": "Meteorite", "27": "Meteorite", "28": "Meteorite" },
+  "read": { "25": "MeteoriteSpeed", "26": "MeteoriteDefense", "27": "MeteoriteAttack", "28": "MeteoriteNormal" },
   "people": {
     // The assistant before the Gym, and later by the warehouse; Crasher Wake, out of the Gym for one scene; the
     // warehouse's guards, whom a script battles; Looker, who takes the player into the warehouse (plan 02 · S8)
