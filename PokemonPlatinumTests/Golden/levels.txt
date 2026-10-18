@@ -388,6 +388,10 @@ surf 5-35
 old rod 5-10
 good rod 10-30
 super rod 20-45
+=== petalburg_woods
+Petalburg Woods
+grass 5-6
+trainers 2, 3-6: hoenn_james_1 6, hoenn_lyle 3
 === pewter_city_gym
 Pewter City
 trainers 1, 10-11: kanto_camper_liam 11
@@ -468,6 +472,14 @@ old rod 5-10
 good rod 10-30
 super rod 25-45
 trainers 8, 5-15: hoenn_amy_and_liv_1 15, hoenn_andrew 15, hoenn_daisy 14, hoenn_isabelle 15, hoenn_marcos 15, hoenn_miguel_1 15, hoenn_pete 15, hoenn_rhett 15
+=== route_104
+Route 104
+grass 3-5
+surf 10-30
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 7, 5-9: hoenn_billy 7, hoenn_cindy_1 7, hoenn_darian 9, hoenn_gina_and_mia_1 6, hoenn_haley_1 6, hoenn_ivan 7, hoenn_winston_1 7
 === route_11
 Route 11
 grass 11-17
@@ -476,6 +488,10 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 10, 17-21: kanto_engineer_bernie 18, kanto_engineer_braxton 21, kanto_gamer_darian 18, kanto_gamer_dirk 18, kanto_gamer_hugo 18, kanto_gamer_jasper 18, kanto_youngster_dave 18, kanto_youngster_dillon 19, kanto_youngster_eddie 21, kanto_youngster_yasu 17
+=== route_116
+Route 116
+grass 6-8
+trainers 10, 8-9: hoenn_clark 8, hoenn_dawson 8, hoenn_devan 8, hoenn_janice 9, hoenn_jerry_1 9, hoenn_joey 9, hoenn_johnson 8, hoenn_jose 8, hoenn_karen_1 9, hoenn_sarah 8
 === route_2
 Route 2
 grass 2-5
@@ -814,6 +830,13 @@ old rod 10
 good rod 20
 super rod 40
 trainers 1, 26: johto_psychic_m_nathan 26
+=== rustboro_city_gym
+Rustboro City
+trainers 3, 8-10: hoenn_josh 10, hoenn_marc 8, hoenn_tommy 8
+=== rusturf_tunnel
+Rusturf Tunnel
+grass 5-8
+trainers 1, 16: hoenn_mike_2 16
 === sendoff_spring
 Sendoff Spring
 grass 37-40

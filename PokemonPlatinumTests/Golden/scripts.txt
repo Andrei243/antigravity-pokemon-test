@@ -7519,6 +7519,25 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_OBTAINED_HIDDEN_TEST_STARDUST
+=== common.HoennChapterTwo
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_ROUTE_104_MR_BRINEY
+  + FLAG_HIDE_ROUTE_104_RIVAL
+  + FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST
+  + FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+  + FLAG_HIDE_ROUTE_116_MR_BRINEY
+  + FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
+  + FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_MR_STONE_2
+  + FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
+  + FLAG_HIDE_RUSTBORO_CITY_RIVAL
+  + FLAG_HIDE_RUSTBORO_CITY_SCIENTIST
+  + FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
+  + FLAG_HIDE_RUSTURF_TUNNEL_BRINEY
+  + FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
+  + FLAG_HIDE_RUSTURF_TUNNEL_WANDA
+  + FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
 === common.HoennNewGame
 from a trainer with lines of their own
 way -
@@ -7537,9 +7556,25 @@ way -
   + FLAG_HIDE_PETALBURG_CITY_WALLY
   + FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_GYM_WALLY
+  + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
   + FLAG_HIDE_ROUTE_103_BIRCH
+  + FLAG_HIDE_ROUTE_104_MR_BRINEY
+  + FLAG_HIDE_ROUTE_104_RIVAL
+  + FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST
+  + FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+  + FLAG_HIDE_ROUTE_116_MR_BRINEY
+  + FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
+  + FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_MR_STONE_2
+  + FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
+  + FLAG_HIDE_RUSTBORO_CITY_RIVAL
+  + FLAG_HIDE_RUSTBORO_CITY_SCIENTIST
+  + FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
+  + FLAG_HIDE_RUSTURF_TUNNEL_BRINEY
+  + FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
+  + FLAG_HIDE_RUSTURF_TUNNEL_WANDA
+  + FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
   = VAR_LITTLEROOT_HOUSES_STATE_MAY 0 -> 1
 === common.HoennOpeningDone
 from a trainer with lines of their own
@@ -9731,6 +9766,45 @@ way -
   = VAR_PETALBURG_CITY_STATE 0 -> 2
   = VAR_PETALBURG_GYM_STATE 0 -> 1
   + seen petalburg_city_gym.Norman and Wally
+=== petalburg_woods.DevonResearcher
+from the trigger at 26,23 of PetalburgWoods
+from the trigger at 27,23 of PetalburgWoods
+way 0
+  Researcher> Hmm... Not a single Shroomish anywhere. They're supposed to love these damp woods.
+  Researcher> Oh! Hello there. Have you seen a Shroomish around here? I study them, you see.
+  Team Aqua Grunt> Hold it right there, Devon man! I've been waiting all morning for you to wander off on your own.
+  Team Aqua Grunt> Those papers you're carrying belong to Team Aqua now. Give them here!
+  Researcher> Eek! You there, trainer! Please, you have to help me! I'm no good at battling!
+  Team Aqua Grunt> A kid playing hero? Get in Team Aqua's way and you'll be sorry!
+  Team Aqua Grunt> Tch! Beaten by a kid. Fine, there are other ways into Rustboro. Remember this face!
+  Researcher> Oh, my heart is still racing... Thank you! Please, take this as my thanks.
+  > Lucas received the Great Ball!
+  > Lucas put it away in the Poké Balls pocket.
+  Researcher> That grunt said something about Rustboro. Team Aqua must be after something at Devon!
+  Researcher> I must hurry back and warn everyone. Goodbye, and thank you again!
+  * scene petalburg_woods.The Devon researcher in the woods
+  * emote Researcher Exclaim
+  * music hoenn/eye_galactic
+  * battle hoenn_grunt_petalburg_woods Won
+  * music area
+  * fanfare FanfareItem
+  * endscene
+  + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  + FLAG_HIDE_PETALBURG_WOODS_DEVON_EMPLOYEE
+  = VAR_PETALBURG_WOODS_STATE 0 -> 1
+  + beaten hoenn_grunt_petalburg_woods
+  + seen petalburg_woods.The Devon researcher in the woods
+way 1, from answer 1
+  * battle hoenn_grunt_petalburg_woods Lost
+  * scene over, unseen
+=== petalburg_woods.Girl
+from Girl at 33,5 of PetalburgWoods
+way -
+  Girl> You've come all the way through the woods? Your Pokémon must be tired. Here, this might help!
+  > Lucas received the Miracle Seed!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_MIRACLE_SEED
 === pewter_city.GymGuide
 from Boy at 90,80 of Kanto
 from the trigger at 90,81 of Kanto
@@ -10059,10 +10133,68 @@ way 0
 way 1, from answer 1
   * battle hoenn_may_route_103_mudkip Lost
   * scene over, unseen
+=== route_104_mr_brineys_house.Briney
+from Mr. Briney at 5,3 of Route104_MrBrineysHouse
+way -
+  Mr. Briney> Ahoy! I'm Briney. Once I sailed every day. These days I'd rather sit here with Peeko and watch the waves.
+=== route_104_mr_brineys_house.Peeko
+from Peeko at 6,3 of Route104_MrBrineysHouse
+way -
+  > Peeko: Pihyoo!
+  * cry Wingull
+=== route_104_pretty_petal_flower_shop.RandomBerryGirl
+from Girl at 11,6 of Route104_PrettyPetalFlowerShop
+way -
+  Girl> Hi! I give away one berry every day. Here's today's!
+  > Lucas received the Cheri Berry!
+  > Lucas put it away in the Berries pocket.
+  * fanfare FanfareItem
+  + FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY
+=== route_104_pretty_petal_flower_shop.ShopOwner
+from Florist at 0,3 of Route104_PrettyPetalFlowerShop
+way -
+  Florist> Welcome to the Pretty Petal! We grow flowers, and berries too. Plant a berry in soft soil, and it grows into a tree.
+  Florist> Water it well, and it gives you more berries than you planted. Isn't nature generous?
+=== route_104_pretty_petal_flower_shop.WailmerPailGirl
+from Girl at 7,3 of Route104_PrettyPetalFlowerShop
+way -
+  Girl> Do you like plants? Then you'll want one of these. It's for watering berry trees!
+  > Lucas received the Wailmer Pail!
+  > Lucas put it away in the Key Items pocket.
+  * fanfare FanfareKeyItem
+  + FLAG_RECEIVED_WAILMER_PAIL
 === route_10_pokemon_center_1f.Aide
 from Aide at 12,5 of Route10_PokemonCenter_1F
 way -
   Aide> I'm studying the Pokémon of Rock Tunnel for Professor Oak.
+=== route_116.Briney
+from Mr. Briney at 86,131 of Hoenn
+way -
+  Mr. Briney> Oh, help! Please, you must help me! A ruffian in a striped shirt snatched my dear Peeko!
+  Mr. Briney> He ran into the tunnel with her, and my old legs can't keep up. My poor little Wingull...
+  = VAR_ROUTE116_STATE 0 -> 2
+=== route_116.BrineyTrigger
+from the trigger at 87,131 of Hoenn
+way -
+  Mr. Briney> Oh, help! Please, you must help me! A ruffian in a striped shirt snatched my dear Peeko!
+  Mr. Briney> He ran into the tunnel with her, and my old legs can't keep up. My poor little Wingull...
+  * scene route_116.Mr Briney at the tunnel
+  * emote Mr. Briney Exclaim
+  * endscene
+  = VAR_ROUTE116_STATE 0 -> 2
+  + seen route_116.Mr Briney at the tunnel
+=== route_116.DevonEmployee
+from Devon Employee at 86,133 of Hoenn
+way -
+  Devon Employee> Oh, it's you! Thank you again for your help. Please, take one of our newest Poké Balls.
+  > Lucas received the Repeat Ball!
+  > Lucas put it away in the Poké Balls pocket.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_REPEAT_BALL
+=== route_116.WandasBoyfriend
+from Young Man at 79,131 of Hoenn
+way -
+  Young Man> My girlfriend Wanda lives in Verdanturf, on the far side of the hill. If only the tunnel went all the way through!
 === route_201.Briefcase
 from Professor's Briefcase at 112,854 of Sinnoh
 way 0.0
@@ -10907,6 +11039,323 @@ way 0
 way 1, from answer 1
   > The pieces lie where they were.
   ? Try to put the picture back together? = No
+=== rustboro_city.Boy2
+from Boy at 12,167 of Hoenn
+way -
+  Boy> The tunnel east of town goes nowhere. They stopped digging halfway because of the Pokémon living there.
+=== rustboro_city.DevonEmployee
+from Devon Employee at 30,132 of Hoenn
+way -
+  Devon Employee> The thief went east, into Rusturf Tunnel. Please hurry! Those parts are very important!
+=== rustboro_city.FatMan
+from Man at 19,135 of Hoenn
+way -
+  Man> Devon's building is the tallest in town. They say its president collects rare stones.
+=== rustboro_city.HelpGetGoods
+from the trigger at 29,132 of Hoenn
+from the trigger at 30,131 of Hoenn
+from the trigger at 30,133 of Hoenn
+from the trigger at 30,134 of Hoenn
+way -
+  Devon Employee> You there! You're a trainer, aren't you? That was Team Aqua! They snatched a package of our parts right out of my hands!
+  Devon Employee> The thief ran off east, toward Rusturf Tunnel. Please, you have to get the Devon Goods back!
+  * scene rustboro_city.Devon's employee asks for help
+  * emote Devon Employee Exclaim
+  * endscene
+  + FLAG_INTERACTED_WITH_DEVON_EMPLOYEE_GOODS_STOLEN
+  = VAR_RUSTBORO_CITY_STATE 0 -> 3
+  + seen rustboro_city.Devon's employee asks for help
+=== rustboro_city.Man1
+from Man at 26,145 of Hoenn
+way -
+  Man> The Gym Leader here is a teacher at the school, too. Clever and strong. Quite the combination!
+=== rustboro_city.ReturnGoods
+from the trigger at 30,131 of Hoenn
+from the trigger at 30,133 of Hoenn
+from the trigger at 30,134 of Hoenn
+from the trigger at 31,132 of Hoenn
+way -
+  Devon Employee> Ah! You got the Devon Goods back from that thief! You're amazing! Thank you, thank you!
+  Devon Employee> Here, please take this. It's a Great Ball, one of our very own!
+  > Lucas received the Great Ball!
+  > Lucas put it away in the Poké Balls pocket.
+  Devon Employee> Oh, and our president would like to thank you himself. Please, come with me!
+  * scene rustboro_city.The Devon Goods returned
+  * fanfare FanfareItem
+  * warp RustboroCity_DevonCorp_3F 2 2
+  * endscene
+  + FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
+  + FLAG_RETURNED_DEVON_GOODS
+  = VAR_RUSTBORO_CITY_STATE 0 -> 5
+  + seen rustboro_city.The Devon Goods returned
+=== rustboro_city.Rival
+from {rival} at 16,172 of Hoenn
+way 0.0
+  Barry> Lucas! I didn't expect to see you in Rustboro. Wait, is that a PokéNav? Devon only just made those!
+  Barry> Here, let's register each other. That way we can talk whenever we want!
+  Barry> So... how strong have you got since Route 103? Want to find out?
+  Barry> Battle Barry?
+  Barry> All right! Don't hold back, now!
+  Barry> You've been training hard, haven't you? I'll have to work twice as hard to keep up!
+  Barry> Hey, have you heard of Mr. Briney? He's an old sailor who lives by the beach on Route 104.
+  Barry> They say he'll take people across the sea in his boat. Dewford Town's just a short sail away!
+  ? Battle Barry? = Yes
+  * music hoenn/rival
+  * addcontact hoenn_rival
+  * battle hoenn_may_rustboro_mudkip Won
+  * music area
+  + FLAG_DEFEATED_RIVAL_RUSTBORO
+  + FLAG_ENABLE_RIVAL_MATCH_CALL
+  + FLAG_MET_RIVAL_RUSTBORO
+  + FLAG_PHONE_CONTACT_HOENN_RIVAL
+  = VAR_ROUTE104_STATE 0 -> 2
+  = VAR_RUSTBORO_CITY_STATE 0 -> 8
+  + beaten hoenn_may_rustboro_mudkip
+way 0.1, from answer 2
+  * battle hoenn_may_rustboro_mudkip Lost
+  + FLAG_ENABLE_RIVAL_MATCH_CALL
+  + FLAG_MET_RIVAL_RUSTBORO
+  + FLAG_PHONE_CONTACT_HOENN_RIVAL
+  = VAR_ROUTE104_STATE 0 -> 2
+  = VAR_RUSTBORO_CITY_STATE 0 -> 8
+way 1, from answer 1
+  Barry> Oh, OK. Come and find me when you're ready. I'll be right here!
+  ? Battle Barry? = No
+  * music area
+  + FLAG_ENABLE_RIVAL_MATCH_CALL
+  + FLAG_MET_RIVAL_RUSTBORO
+  + FLAG_PHONE_CONTACT_HOENN_RIVAL
+  = VAR_ROUTE104_STATE 0 -> 2
+  = VAR_RUSTBORO_CITY_STATE 0 -> 8
+=== rustboro_city.RivalTrigger
+from the trigger at 12,175 of Hoenn
+from the trigger at 13,175 of Hoenn
+from the trigger at 14,175 of Hoenn
+from the trigger at 15,175 of Hoenn
+from the trigger at 16,175 of Hoenn
+from the trigger at 17,175 of Hoenn
+from the trigger at 18,175 of Hoenn
+from the trigger at 19,175 of Hoenn
+way 0.0
+  Barry> Lucas! I didn't expect to see you in Rustboro. Wait, is that a PokéNav? Devon only just made those!
+  Barry> Here, let's register each other. That way we can talk whenever we want!
+  Barry> So... how strong have you got since Route 103? Want to find out?
+  Barry> Battle Barry?
+  Barry> All right! Don't hold back, now!
+  Barry> You've been training hard, haven't you? I'll have to work twice as hard to keep up!
+  Barry> Hey, have you heard of Mr. Briney? He's an old sailor who lives by the beach on Route 104.
+  Barry> They say he'll take people across the sea in his boat. Dewford Town's just a short sail away!
+  ? Battle Barry? = Yes
+  * scene rustboro_city.The rival in Rustboro
+  * music hoenn/rival
+  * emote {rival} Exclaim
+  * addcontact hoenn_rival
+  * battle hoenn_may_rustboro_mudkip Won
+  * music area
+  * endscene
+  + FLAG_DEFEATED_RIVAL_RUSTBORO
+  + FLAG_ENABLE_RIVAL_MATCH_CALL
+  + FLAG_MET_RIVAL_RUSTBORO
+  + FLAG_PHONE_CONTACT_HOENN_RIVAL
+  = VAR_ROUTE104_STATE 0 -> 2
+  = VAR_RUSTBORO_CITY_STATE 0 -> 8
+  + beaten hoenn_may_rustboro_mudkip
+  + seen rustboro_city.The rival in Rustboro
+way 0.1, from answer 2
+  * battle hoenn_may_rustboro_mudkip Lost
+  * scene over, unseen
+  + FLAG_ENABLE_RIVAL_MATCH_CALL
+  + FLAG_MET_RIVAL_RUSTBORO
+  + FLAG_PHONE_CONTACT_HOENN_RIVAL
+  = VAR_ROUTE104_STATE 0 -> 2
+  = VAR_RUSTBORO_CITY_STATE 0 -> 8
+way 1, from answer 1
+  Barry> Oh, OK. Come and find me when you're ready. I'll be right here!
+  ? Battle Barry? = No
+  * music area
+  * endscene
+  + FLAG_ENABLE_RIVAL_MATCH_CALL
+  + FLAG_MET_RIVAL_RUSTBORO
+  + FLAG_PHONE_CONTACT_HOENN_RIVAL
+  = VAR_ROUTE104_STATE 0 -> 2
+  = VAR_RUSTBORO_CITY_STATE 0 -> 8
+  + seen rustboro_city.The rival in Rustboro
+=== rustboro_city.StolenGoods
+from the trigger at 23,142 of Hoenn
+from the trigger at 23,143 of Hoenn
+from the trigger at 23,144 of Hoenn
+from the trigger at 23,145 of Hoenn
+from the trigger at 23,146 of Hoenn
+way -
+  Team Aqua Grunt> Outta my way! Coming through!
+  Devon Employee> W-wait! Stop, thief! Give those back! Those goods belong to Devon!
+  * scene rustboro_city.The Devon Goods stolen
+  * music hoenn/eye_galactic
+  * emote player Exclaim
+  * music area
+  * endscene
+  + FLAG_DEVON_GOODS_STOLEN
+  + FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
+  + FLAG_HIDE_BRINEYS_HOUSE_PEEKO
+  + FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
+  = VAR_ROUTE116_STATE 0 -> 1
+  = VAR_RUSTBORO_CITY_STATE 0 -> 2
+  = VAR_RUSTURF_TUNNEL_STATE 0 -> 2
+  + seen rustboro_city.The Devon Goods stolen
+=== rustboro_city_cutters_house.Cutter
+from Cutter at 7,5 of RustboroCity_CuttersHouse
+way -
+  Cutter> Ah, a young trainer with a keen eye! You look like someone who'd put this to good use.
+  Cutter> I've spent my life trimming trees and hedges. Here, take my favourite move. A gift from one cutter to another!
+  > Lucas received the HM01!
+  > HM01 holds the move Cut.
+  > Lucas put it away in the TMs & HMs pocket.
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_HM_CUT
+=== rustboro_city_devon_corp_1f.StairGuard
+from Devon Employee at 15,5 of RustboroCity_DevonCorp_1F
+way -
+  Devon Employee> I'm sorry, the floors upstairs are for Devon staff only.
+=== rustboro_city_devon_corp_3f.Employee
+from Devon Employee at 3,5 of RustboroCity_DevonCorp_3F
+way -
+  Devon Employee> That PokéNav was my team's work. I hope you like it! Try the map: it shows where you are in Hoenn.
+=== rustboro_city_devon_corp_3f.MrStone
+from Mr. Stone at 15,5 of RustboroCity_DevonCorp_3F
+from Mr. Stone at 17,5 of RustboroCity_DevonCorp_3F
+way -
+  Mr. Stone> My son Steven is in Dewford Town, and Captain Stern awaits the goods in Slateport. I'm counting on you!
+=== rustboro_city_flat_1_2f.Doll
+from Doll at 10,5 of RustboroCity_Flat1_2F
+way -
+  Doll> A soft Treecko doll.
+from Doll at 10,6 of RustboroCity_Flat1_2F
+way -
+  Doll> A soft Torchic doll.
+from Doll at 8,6 of RustboroCity_Flat1_2F
+way -
+  Doll> A soft Mudkip doll.
+from Doll at 9,4 of RustboroCity_Flat1_2F
+way -
+  Doll> A soft Skitty doll.
+from Doll at 9,7 of RustboroCity_Flat1_2F
+way -
+  Doll> A soft Pikachu doll.
+=== rustboro_city_gym.GymGuide
+from Gym Guide at 3,18 of RustboroCity_Gym
+way -
+  Gym Guide> Hey there, rookie! Roxanne uses Rock-type Pokémon. They're tough, but they can't take Water or Grass moves.
+  Gym Guide> Rock moves hit Fire and Flying types hard, so think twice before you send those out!
+=== rustboro_city_gym.Roxanne
+from Roxanne at 5,2 of RustboroCity_Gym
+way 0
+  Roxanne> Hello! I'm Roxanne, the Leader of the Rustboro Gym. I teach at the Trainers' School, too.
+  Roxanne> I learned everything I know about battling from books and from my Rock-type Pokémon.
+  Roxanne> Let's see if your lessons were learned in the field. Show me what you can do!
+  Roxanne> So I lost... I see now that there's still so much I have to learn.
+  Roxanne> You've earned this. Please accept the Stone Badge, the official proof of your victory here.
+  > Lucas received the Stone Badge from Roxanne!
+  Roxanne> With the Stone Badge, your Pokémon can use Cut outside of battle, to clear small trees from your path.
+  Roxanne> And please take this TM as well. It's one I use myself.
+  > Lucas received the TM39!
+  > TM39 holds the move Rock Tomb.
+  > Lucas put it away in the TMs & HMs pocket.
+  Roxanne> TM39 holds Rock Tomb. It hurls boulders at the foe and slows it down, too.
+  Roxanne> There are other Gyms waiting for you. I hope you'll keep studying as you travel. I know I will!
+  * scene rustboro_city_gym.Roxanne
+  * battle hoenn_roxanne_1 Won
+  * fanfare FanfareBadge
+  * defeat hoenn_josh
+  * defeat hoenn_tommy
+  * defeat hoenn_marc
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_RUSTBORO_GYM
+  + FLAG_RECEIVED_TM_ROCK_TOMB
+  = VAR_PETALBURG_GYM_STATE 0 -> 1
+  = VAR_RUSTBORO_CITY_STATE 0 -> 1
+  + beaten hoenn_josh
+  + beaten hoenn_marc
+  + beaten hoenn_roxanne_1
+  + beaten hoenn_tommy
+  = badges Hoenn 0 -> 1
+  + seen rustboro_city_gym.Roxanne
+way 1, from answer 1
+  * battle hoenn_roxanne_1 Lost
+  * scene over, unseen
+=== rustboro_city_pokemon_school.Scott
+from Scott at 0,10 of RustboroCity_PokemonSchool
+way -
+  Scott> Hmm? Oh, don't mind me. I'm just watching the young trainers here. I'm always looking for talent.
+  Scott> You look like you've got some yourself. I'll be keeping an eye on you!
+=== rustboro_city_pokemon_school.Teacher
+from Teacher at 5,3 of RustboroCity_PokemonSchool
+way -
+  Teacher> Welcome to the Trainers' School! Our pupils learn everything from type matchups to held items.
+  Teacher> You're a trainer already, I can tell. Here, a little something for your Pokémon to hold.
+  > Lucas received the Quick Claw!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_QUICK_CLAW
+=== rusturf_tunnel.Grunt
+from Team Aqua Grunt at 14,5 of RusturfTunnel
+way 0
+  Team Aqua Grunt> Grr... What a dead end! Whoever dug this tunnel gave up halfway. And now I'm stuck with you!
+  Team Aqua Grunt> Fine! If it's a battle you want, it's a battle you'll get!
+  Team Aqua Grunt> Ugh, I lost? This job was supposed to be easy!
+  Team Aqua Grunt> Take your stupid parts, then! I was told to grab them, not to fight kids over them!
+  > Lucas received the Devon Goods!
+  > Lucas put it away in the Key Items pocket.
+  Team Aqua Grunt> Team Aqua won't forget this. Out of my way!
+  Mr. Briney> Peeko! Oh, my dear Peeko, you're safe! I was so worried about you!
+  Mr. Briney> And you got her back for me? Thank you, thank you! I'm Briney. I live in the cottage on Route 104's beach.
+  Mr. Briney> If ever there's anything I can do for you, come and see me. I'll never forget this!
+  * scene rusturf_tunnel.The Devon Goods recovered
+  * music hoenn/eye_galactic
+  * battle hoenn_grunt_rusturf_tunnel Won
+  * fanfare FanfareKeyItem
+  * music area
+  * cry Wingull
+  * endscene
+  + FLAG_HIDE_ROUTE_116_MR_BRINEY
+  + FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
+  + FLAG_HIDE_RUSTURF_TUNNEL_BRINEY
+  + FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
+  + FLAG_RECOVERED_DEVON_GOODS
+  = VAR_BRINEY_HOUSE_STATE 0 -> 1
+  = VAR_RUSTBORO_CITY_STATE 0 -> 4
+  + beaten hoenn_grunt_rusturf_tunnel
+  + seen rusturf_tunnel.The Devon Goods recovered
+way 1, from answer 1
+  * battle hoenn_grunt_rusturf_tunnel Lost
+  * scene over, unseen
+=== rusturf_tunnel.GruntBacksUp
+from the trigger at 9,4 of RusturfTunnel
+from the trigger at 9,5 of RusturfTunnel
+way -
+  Team Aqua Grunt> Huh? You followed me all the way in here? Stay back! Don't come any closer!
+  * scene rusturf_tunnel.The grunt cornered
+  * emote Team Aqua Grunt Exclaim
+  * walk Team Aqua Grunt back right
+  * endscene
+  = VAR_RUSTURF_TUNNEL_STATE 0 -> 3
+  + seen rusturf_tunnel.The grunt cornered
+=== rusturf_tunnel.Peeko
+from Peeko at 14,4 of RusturfTunnel
+way -
+  > Peeko: Pihyoo...
+  > The Wingull looks frightened.
+  * cry Wingull
+=== rusturf_tunnel.Wanda
+from Wanda at 25,4 of RusturfTunnel
+way -
+  Wanda> Is somebody there? My cousin Wally is coming to stay with us in Verdanturf. I hope this tunnel is open by then!
+=== rusturf_tunnel.WandasBoyfriend
+from Young Man at 23,5 of RusturfTunnel
+way -
+  Young Man> Wanda! Can you hear me? I'll dig through to you, I promise! Nothing's going to keep us apart!
+  Young Man> Oh, sorry. Wanda's my girlfriend. She's just on the other side of these rocks, but they're too hard to move.
+  Young Man> If only someone had a Pokémon strong enough to smash them...
 === sandgem_town.Counterpart
 from {assistant} at 168,845 of Sinnoh
 way -
