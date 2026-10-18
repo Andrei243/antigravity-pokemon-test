@@ -21,6 +21,21 @@ public sealed class CombatantView
     /// <summary>Still in the battle but out of sight for now: up in the air or under the ground, in the middle of a move.</summary>
     public bool Away { get; internal set; }
 
+    /// <summary>
+    /// Seconds since it began to leave the field for its move's turn out of sight (plan 25 · Y16): it is drawn going
+    /// for <see cref="Graphics.BodyMotions.LeaveTime"/>, and not at all after (-1 = not leaving).
+    /// </summary>
+    public float AwayAge { get; internal set; } = -1f;
+
+    /// <summary>Seconds since it came back from out of sight (-1 = not coming back).</summary>
+    public float BackAge { get; internal set; } = -1f;
+
+    /// <summary>The move it went out of sight for: how it goes and comes back (up, under, into the dark).</summary>
+    public string AwayMove { get; internal set; } = "";
+
+    /// <summary>Seconds since a move began to spend it (Memento, Final Gambit, Healing Wish): it collapses until it faints (-1 = none).</summary>
+    public float SpentAge { get; internal set; } = -1f;
+
     /// <summary>Seconds since the send-out began: the ball flies onto the platform, opens, and the Pokémon grows out of it.</summary>
     public float SendOutAge { get; internal set; } = -1f;
     public float AttackAge { get; internal set; } = -1f;
@@ -730,7 +745,33 @@ public sealed class BattleAnimator
         cue.Seed = ++cueCount * 7919 + cue.Move.Length;
         cue.Age = 0f;
         if (Shows(cue)) cues.Add(cue);
+        // A move that spends its user collapses it until it faints (plan 25 · Y16)
+        if (cue.Kind == CueKind.Move && !cue.Charging && !cue.Arriving && Graphics.BodyMotions.SpendsTheUser(cue.Move))
+            this[cue.FromSide, Math.Clamp(cue.FromSlot, 0, 1)].SpentAge = 0f;
         return cue;
+    }
+
+    /// <summary>
+    /// The Pokémon here goes out of sight for its move's turn (plan 25 · Y16): it is drawn leaving, up, under the
+    /// ground or into the dark by <paramref name="move"/>, and then not at all.
+    /// </summary>
+    public void GoAway(BattleSide side, int slot, string move)
+    {
+        var v = this[side, slot];
+        v.Away = true;
+        v.AwayAge = 0f;
+        v.BackAge = -1f;
+        if (move.Length > 0) v.AwayMove = move;
+    }
+
+    /// <summary>The Pokémon here comes back into sight: drawn coming back the way it went.</summary>
+    public void ComeBack(BattleSide side, int slot)
+    {
+        var v = this[side, slot];
+        if (!v.Away) return;
+        v.Away = false;
+        v.AwayAge = -1f;
+        v.BackAge = 0f;
     }
 
     /// <summary>A stat going up or down on one Pokémon.</summary>
@@ -1066,6 +1107,14 @@ public sealed class BattleAnimator
         v.CheerAge = Tick(v.CheerAge, dt, CheerTime);
         v.StatAge = Tick(v.StatAge, dt, StatEyesTime);
         if (v.ChargeAge >= 0f) v.ChargeAge += dt;
+        v.AwayAge = Tick(v.AwayAge, dt, Graphics.BodyMotions.LeaveTime);
+        v.BackAge = Tick(v.BackAge, dt, Graphics.BodyMotions.ReturnTime);
+        // A spent body stays down while it lies fainted, and is let go once it stands again or is gone
+        if (v.SpentAge >= 0f)
+        {
+            v.SpentAge += dt;
+            if (v.SpentAge > EffectTime + 0.3f && v.Shown is { CurrentHP: > 0 }) v.SpentAge = -1f;
+        }
         if (v.GiantAge >= 0f && (v.GiantAge += dt) >= (v.Dynamaxed ? DynamaxTime : DynamaxEndTime)) v.GiantAge = -1f;
 
         if (v.FaintAge >= 0f)
@@ -1109,6 +1158,7 @@ public sealed class BattleAnimator
         v.Away = false;
         v.SendOutAge = v.AttackAge = v.HitAge = v.FaintAge = v.RecallAge = v.CaptureAge = -1f;
         v.DodgeAge = v.CheerAge = v.ChargeAge = v.StatAge = -1f;
+        v.AwayAge = v.BackAge = v.SpentAge = -1f;
         v.FaintDelay = v.CaptureDelay = 0f;
         // A new Pokémon on the place stands in front of nothing (a passed doll comes in after it, by its own line)
         v.Substitute = null;

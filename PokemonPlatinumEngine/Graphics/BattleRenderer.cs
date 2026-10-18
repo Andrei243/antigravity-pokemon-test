@@ -39,6 +39,9 @@ public sealed class BattleRenderer
     /// <summary>The effects drawn in the last frame.</summary>
     internal FxList Effects => fx;
 
+    /// <summary>The stage's light in the last frame (plan 25 · Y16): what a move washed it toward, if anything.</summary>
+    internal StageLight StageLit { get; private set; } = StageLight.None;
+
     public BattleRenderer(RenderContext context) => this.context = context;
 
     /// <summary>The stage for a battle starting with the player on (<paramref name="x"/>, <paramref name="y"/>) of <paramref name="map"/>.</summary>
@@ -103,8 +106,11 @@ public sealed class BattleRenderer
         float shake = (anim.ShakeAge >= 0f ? (1f - anim.ShakeAge / 0.4f) * anim.ShakeStrength : 0f) + fx.Shake;
         camera = director.Update(dt, anim, places, shake, choosing: battle.HUD.MenuState != BattleMenuState.Message);
 
+        // A move's light over the stage alone (plan 25 · Y16): the Pokémon and the effects keep the scene's own
+        StageLit = StageLights.Of(anim);
+
         FrameProfiler.Lap(FrameSection.Prepare);
-        RenderStage(stage, anim, rig);
+        RenderStage(stage, anim, rig, StageLit);
         FrameProfiler.Lap(FrameSection.Scene);
         context.PreparePost(rig.Post, new DepthRange(Near, Far, camera.FovY, (float)context.Width / context.Height));
     }
@@ -182,7 +188,7 @@ public sealed class BattleRenderer
 
     // ------------------------------------------------------------------ offscreen passes
 
-    private void RenderStage(BattleStage stage, BattleAnimator anim, LightRig rig)
+    private void RenderStage(BattleStage stage, BattleAnimator anim, LightRig rig, StageLight stageLight)
     {
         var shaders = context.Shaders;
         var light = rig.Light;
@@ -221,18 +227,21 @@ public sealed class BattleRenderer
         var target = context.Target;
         int tw = target.Texture.Width, th = target.Texture.Height;
         Raylib.BeginTextureMode(target);
-        SkyPainter.Draw(anim.Time, tw, th, rig.Sky, clouds: Arena.Outdoors);
+        // The sky, the stage, its lights and whoever stands on it take a move's light; the Pokémon do not (plan 25 · Y16)
+        SkyPainter.Draw(anim.Time, tw, th, stageLight.Apply(rig.Sky), clouds: Arena.Outdoors);
 
         Rlgl.SetClipPlanes(Near, Far);
         Raylib.BeginMode3D(camera);
         Rlgl.DisableBackfaceCulling();
         context.BindShadowMap();
 
+        shaders.SetStageWash(stageLight);
         stage.Draw();
         // A room's windows take the colour of the sky outside; every other arena's lights are their own colour
-        stage.DrawLights(rig.LampGlow, Arena.Kind == BattleArena.Indoors ? rig.GlowColor : Vector3.One);
+        stage.DrawLights(rig.LampGlow * stageLight.LightsLeft, Arena.Kind == BattleArena.Indoors ? rig.GlowColor : Vector3.One);
         DrawPokemonShadows(anim);
         DrawTrainers(CharacterPass.Color);
+        shaders.SetStageWash(StageLight.None);
         DrawPokemon3D(anim, CharacterPass.Color);
         DrawDolls(anim, CharacterPass.Color);
         DrawBalls(CharacterPass.Color);
@@ -658,7 +667,8 @@ public sealed class BattleRenderer
     {
         var a = new Appearance { Grow = 1f, FlashColor = Color.White, Visible = true };
         bool fainting = v.FaintAge >= 0f, recalling = v.RecallAge >= 0f, capturing = v.CaptureAge >= 0f;
-        if (v.Shown == null || v.Away || (!v.Present && !fainting && !recalling && !capturing))
+        // Out of sight for its move's turn, once it has finished leaving (plan 25 · Y16)
+        if (v.Shown == null || (v.Away && v.AwayAge < 0f) || (!v.Present && !fainting && !recalling && !capturing))
         {
             a.Visible = false;
             return a;
@@ -768,7 +778,15 @@ public sealed class BattleRenderer
             var from = Spot(v.DodgeFromSide, v.DodgeFromSlot, anim.Slots);
             feet += PokemonAnimation.DodgeAway(from, spot) * PokemonAnimation.DodgeAside(model, dodge) * model.Height * scale;
         }
-        var root = Matrix4x4.CreateScale(scale * a.Grow) * Matrix4x4.CreateRotationY(framing.Yaw) * Matrix4x4.CreateTranslation(feet);
+        // What a move does to the body itself (plan 25 · Y16): a rush, a leap, a spin, a squash, a squeeze, a collapse,
+        // and its going and coming back for a turn out of sight, in its own height
+        var motion = BodyMotions.Of(anim, isPlayer ? BattleSide.Player : BattleSide.Enemy, slot);
+        float body = model.Height * scale;
+        feet += new Vector3(toward.X, 0f, toward.Z) * motion.Toward * body + Vector3.UnitY * (motion.Up - motion.Sink) * body;
+        var (width, tall) = motion.Shape;
+        float size = scale * a.Grow * motion.Grow;
+        if (size <= 0.001f) return;
+        var root = Matrix4x4.CreateScale(size * width, size * tall, size * width) * Matrix4x4.CreateRotationY(framing.Yaw + motion.Spin) * Matrix4x4.CreateTranslation(feet);
 
         float phase = (isPlayer ? 0.37f : 0f) + slot * 0.53f;
         var pose = new PokePose

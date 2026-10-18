@@ -39,19 +39,36 @@ partial class Harness
         cb.SelectMove(0);
 
         // Reads on to a line and lets what it starts play for a moment
-        void ReadTo(string line)
+        void ReadTo(string line, double after = 0.6)
         {
             for (int i = 0; i < 40 && cb.CurrentMessage != line; i++)
             {
                 Confirm(cb);
                 Skip(0.3);
             }
-            Skip(0.6);
+            Skip(after);
         }
 
-        ReadTo("Staravia flew up high!");
+        // Reads on to a line, looking for it every twentieth of a second, so a shot can be counted from the line itself
+        void ReadToClosely(string line)
+        {
+            for (int i = 0; i < 40 && cb.CurrentMessage != line; i++)
+            {
+                Confirm(cb);
+                for (int k = 0; k < 6 && cb.CurrentMessage != line; k++) Skip(0.05);
+            }
+        }
+
+        // The body leaving for the sky and coming back down (plan 25 · Y16)
+        ReadToClosely("Staravia flew up high!");
+        Skip(0.2);
+        Shot("96_flight_leaving");
+        Skip(0.6);
         Shot("96_flight_away");
-        ReadTo("Staravia used Fly!");
+        ReadToClosely("Staravia used Fly!");
+        Skip(0.12);
+        Shot("96_flight_returning");
+        Skip(0.48);
         Shot("96_flight_strike");
         Skip(1.6);
         Shot("96_flight_back");
