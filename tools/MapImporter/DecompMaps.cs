@@ -1,3 +1,5 @@
+using System.Buffers.Binary;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
@@ -514,6 +516,49 @@ public sealed class Matrix
             Headers = Grid("headers", e => e.GetString()!),
             Altitudes = Grid("altitudes", e => e.GetInt32())
         };
+    }
+
+    /// <summary>The value of a cell with no chunk in a binary matrix.</summary>
+    public const int BinaryNoLand = 0xFFFF;
+
+    /// <summary>
+    /// A matrix as HeartGold keeps it (plan 20 · J1; <c>src/map_matrix.c</c>, <c>MapMatrix_MapMatrixData_Load</c>): a
+    /// byte each of width and height, whether the headers' section and the altitudes' are there, the name's length
+    /// and the name; then, if there, a header id (<c>u16</c>) for each cell, an altitude (<c>u8</c>) for each cell;
+    /// and last a chunk id (<c>u16</c>) for each cell, <see cref="BinaryNoLand"/> where there is none.
+    /// <paramref name="headerName"/> turns a header's number into its constant (<c>MAP_NEW_BARK</c>).
+    /// </summary>
+    public static Matrix ParseBinary(int id, ReadOnlySpan<byte> file, Func<int, string> headerName)
+    {
+        if (file.Length < 5) throw new InvalidDataException($"Matrix {id} is shorter than its header");
+        int width = file[0], height = file[1], cells = width * height;
+        bool hasHeaders = file[2] != 0, hasAltitudes = file[3] != 0;
+        int nameLength = file[4];
+        int at = 5 + nameLength;
+        int expected = at + (hasHeaders ? cells * 2 : 0) + (hasAltitudes ? cells : 0) + cells * 2;
+        if (file.Length != expected) throw new InvalidDataException($"Matrix {id} is {file.Length} bytes, not the {expected} its header says");
+        string name = Encoding.ASCII.GetString(file.Slice(5, nameLength)).TrimEnd('\0');
+        string[]? headers = null;
+        int[]? altitudes = null;
+        if (hasHeaders)
+        {
+            headers = new string[cells];
+            for (int i = 0; i < cells; i++) headers[i] = headerName(BinaryPrimitives.ReadUInt16LittleEndian(file[(at + i * 2)..]));
+            at += cells * 2;
+        }
+        if (hasAltitudes)
+        {
+            altitudes = new int[cells];
+            for (int i = 0; i < cells; i++) altitudes[i] = file[at + i];
+            at += cells;
+        }
+        var land = new int[cells];
+        for (int i = 0; i < cells; i++)
+        {
+            int chunk = BinaryPrimitives.ReadUInt16LittleEndian(file[(at + i * 2)..]);
+            land[i] = chunk == BinaryNoLand ? NoLand : chunk;
+        }
+        return new Matrix { Id = id, Name = name, Width = width, Height = height, Land = land, Headers = headers, Altitudes = altitudes };
     }
 }
 

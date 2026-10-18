@@ -311,8 +311,9 @@ public class PokedexTests
     {
         Assert.NotNull(Habitats.Of(RegionDatabase.Get("Sinnoh")!));
         Assert.Same(Habitats.Sinnoh, Habitats.Of(RegionDatabase.Get("Sinnoh")!));
-        Assert.Null(Habitats.Of(RegionDatabase.Get("Johto")!));
-        // Kanto has its own since plan 19 · K1
+        Assert.Null(Habitats.Of(RegionDatabase.Get("Hoenn")!));
+        // Kanto has its own since plan 19 · K1, Johto since plan 20 · J1 (HeartGold's tables, before any area opens)
         Assert.NotNull(Habitats.Of(RegionDatabase.Get("Kanto")!));
+        Assert.NotNull(Habitats.Of(RegionDatabase.Get("Johto")!));
     }
 }

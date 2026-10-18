@@ -9,7 +9,9 @@
 //   dotnet run --project tools/MapImporter -- --room <key>      print a room of the original as text, to write its map file from
 //   dotnet run --project tools/MapImporter -- --game firered|emerald [--quick]   a Game Boy Advance game into out/kanto or out/hoenn (plan 18 · W6, W7)
 //   dotnet run --project tools/MapImporter -- --game firered|emerald --data      rewrite what the region's world.json opens in Data/world/<region> (W7)
-//   dotnet run --project tools/MapImporter -- --chunk <id>     print which texture lies over each tile of a chunk (the names only), to sort a new area's ground by
+//   dotnet run --project tools/MapImporter -- --game heartgold [--quick] [--data]   HeartGold's Johto and Kanto into out/johto, or Data/world/johto (plan 20 · J1)
+//   dotnet run --project tools/MapImporter -- --game platinum   the same as no --game: Sinnoh
+//   dotnet run --project tools/MapImporter -- --chunk <id>    print which texture lies over each tile of a chunk (the names only), to sort a new area's ground by
 
 using System.Diagnostics;
 using System.Globalization;
@@ -23,8 +25,14 @@ string? decompDir = Arg("--decomp");
 string outDir = Arg("--out") ?? Path.Combine(repo, "tools", "MapImporter", "out");
 bool quick = args.Contains("--quick");
 
-// A Game Boy Advance game (plan 18 · W6): its own pin, its own folder under out/
-if (Arg("--game") is { } game)
+// HeartGold (plan 20 · J1): the second DS game, its own pin, out/johto/
+if (Arg("--game") is "heartgold" or "soulsilver")
+    return args.Contains("--data")
+        ? MapImporter.Hg.HgImport.Data(repo, decompDir, Arg("--data-dir"))
+        : MapImporter.Hg.HgImport.Run(repo, decompDir, Path.Combine(outDir, MapImporter.Hg.HgImport.Region), quick);
+
+// A Game Boy Advance game (plan 18 · W6): its own pin, its own folder under out/. Platinum is the run below.
+if (Arg("--game") is { } game and not "platinum")
     return args.Contains("--data")
         ? MapImporter.Gba.GbaImport.Data(repo, game, decompDir, Arg("--data-dir"))
         : MapImporter.Gba.GbaImport.Run(repo, game, decompDir, Path.Combine(outDir, MapImporter.Gba.GbaImport.RegionOf(game)), quick);
