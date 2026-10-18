@@ -1,0 +1,9 @@
+{
+  // The rest house of the Safari Zone's centre (plan 19 · K6, part a): Sara, who is waiting for Erik, and Oak's aide
+  "area": "safari_zone_center_rest_house",
+  "bgmTrack": "kanto/safari_zone",
+  "people": {
+    "woman_1": { "name": "Sara", "dialog": [ "Erik said he'd meet me here. Where has he got to? If you see him, tell him I'm waiting!" ] },
+    "scientist": { "name": "Aide", "dialog": [ "Professor Oak sent me to study the Pokémon of the zone. There are so many I've never seen before!" ] }
+  }
+}

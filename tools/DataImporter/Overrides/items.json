@@ -128,6 +128,18 @@
     "description": "A card that opens the locked doors of Silph Co.'s office building.",
     "cantBeTossed": true
   },
+  // Plan 19 · K6: the Safari Zone Warden's lost dentures, found in the zone's west part and traded for HM04
+  "Gold Teeth": {
+    "id": 9025,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A set of gleaming false teeth. Someone in Fuchsia City must be missing them.",
+    "cantBeTossed": true
+  },
   // The orbs of Primal Reversion (plan 06 · R20): PokeAPI's words are a story's; ours say what they do when held
   "Blue Orb": {
     "description": "Held by Kyogre, it brings out its primal form when it enters battle."

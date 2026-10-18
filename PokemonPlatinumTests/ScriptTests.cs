@@ -180,6 +180,10 @@ public class ScriptTests
           poketchapp PartyStatus
           safari start
           safari end
+          safari start 600
+          safari end
+          bicycle on
+          bicycle off
           turnback
           defeat "lass_caroline"
           flowerclock
@@ -579,6 +583,7 @@ public class ScriptTests
               if weekday friday end
               if nationaldex end
               if movebadge "Cut" end
+              if region "Kanto" end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

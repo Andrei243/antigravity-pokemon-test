@@ -1,0 +1,24 @@
+{
+  // Route 14 (plan 19 · K6, part a): FireRed's map, our words. The road of grass and ledges between Route 13 and
+  // Route 15, its trainers, two trees that fall to Cut and the twins at its foot
+  "area": "route_14",
+  "bgmTrack": "kanto/route11",
+  "trees": "Round",
+  "people": {
+    "biker": { "name": "Gerald", "trainer": { "dialogueBefore": "Biker Gerald: Out of my way, or into a battle. Your choice!", "dialogueAfter": "Biker Gerald: Okay, okay. Out of your way, then." } },
+    "rocker": { "name": "Donald", "trainer": { "dialogueBefore": "Bird Keeper Donald: My Farfetch'd has trained with its leek for years!", "dialogueAfter": "Bird Keeper Donald: Its leek's all bent now." } },
+    "rocker_2": { "name": "Beck", "trainer": { "dialogueBefore": "Bird Keeper Beck: Sharp beaks and sharper eyes! Let's see yours!", "dialogueAfter": "Bird Keeper Beck: Your eyes are sharper, it seems." } },
+    "rocker_3": { "name": "Marlon", "trainer": { "dialogueBefore": "Bird Keeper Marlon: I've raised birds that run as fast as they fly!", "dialogueAfter": "Bird Keeper Marlon: Outrun and outflown." } },
+    "biker_2": { "name": "Isaac", "trainer": { "dialogueBefore": "Biker Isaac: My Grimer's been eating my lunch. Let's see if it can eat you!", "dialogueAfter": "Biker Isaac: Now I've lost my lunch and the battle." } },
+    "biker_3": { "name": "Malik", "trainer": { "dialogueBefore": "Biker Malik: This stretch of road is ours. Prove you belong on it!", "dialogueAfter": "Biker Malik: Fine. You belong." } },
+    "rocker_4": { "name": "Mitch", "trainer": { "dialogueBefore": "Bird Keeper Mitch: I've been waiting for a challenger all day!", "dialogueAfter": "Bird Keeper Mitch: That wasn't worth the wait." } },
+    "rocker_5": { "name": "Carter", "trainer": { "dialogueBefore": "Bird Keeper Carter: A trainer with no birds? Let me show you what you're missing!", "dialogueAfter": "Bird Keeper Carter: You're not missing much, apparently." } },
+    "biker_4": { "name": "Lukas", "trainer": { "dialogueBefore": "Biker Lukas: Breathe deep! My Koffing filled the air just for you!", "dialogueAfter": "Biker Lukas: Cough... Okay, you win." } },
+    "rocker_6": { "name": "Benny", "trainer": { "dialogueBefore": "Bird Keeper Benny: My Spearow are hungry for a battle!", "dialogueAfter": "Bird Keeper Benny: They'll have to go hungry." } },
+    "little_girl": { "name": "Kiri", "trainer": { "dialogueBefore": "Twins Kiri & Jan: We do everything together, battles too!", "dialogueAfter": "Twins Kiri & Jan: We lose together too." } },
+    "little_girl_2": { "name": "Jan", "trainer": { "dialogueBefore": "Twins Kiri & Jan: We do everything together, battles too!", "dialogueAfter": "Twins Kiri & Jan: We lose together too." } }
+  },
+  "signs": {
+    "Route14_EventScript_RouteSign": "Route 14\nWest to Fuchsia City"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  // The Safari Zone's centre (plan 19 · K6, part a): FireRed's map, our words. Its door back to the gate in Fuchsia
+  // City, its pond and rest house, and the ways into the other three parts. Every wild Pokémon here is met in a Safari
+  // battle while the game is on (Models/SafariGame.cs)
+  "area": "safari_zone_center",
+  "bgmTrack": "kanto/safari_zone",
+  "trees": "Round",
+  "signs": {
+    "SafariZone_Center_EventScript_RestHouseSign": "Rest House",
+    "SafariZone_Center_EventScript_TrainerTips": "Trainer Tips\nKeep an eye on your Safari Balls and your steps. When either runs out, the game is over!",
+    "SafariZone_Center_EventScript_AreaSign": "Centre Area\nNorth: Area 2  West: Area 3  East: Area 1"
+  }
+}

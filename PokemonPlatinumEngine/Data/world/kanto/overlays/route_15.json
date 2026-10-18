@@ -1,0 +1,24 @@
+{
+  // Route 15 (plan 19 · K6, part a): FireRed's map, our words. The road east from Fuchsia City through the grass,
+  // its gate house with Oak's aide upstairs, its trainers and the Crush Kin
+  "area": "route_15",
+  "bgmTrack": "kanto/route11",
+  "trees": "Round",
+  "people": {
+    "picnicker": { "name": "Yazmin", "trainer": { "dialogueBefore": "Picnicker Yazmin: My garden comes with me wherever I go! Let's battle!", "dialogueAfter": "Picnicker Yazmin: You've trampled my flowerbed." } },
+    "rocker": { "name": "Edwin", "trainer": { "dialogueBefore": "Bird Keeper Edwin: All sorts of birds, all sorts of tricks!", "dialogueAfter": "Bird Keeper Edwin: All sorts of losing, too." } },
+    "rocker_2": { "name": "Chester", "trainer": { "dialogueBefore": "Bird Keeper Chester: Two heads, three heads! My birds see everything!", "dialogueAfter": "Bird Keeper Chester: They didn't see that coming." } },
+    "picnicker_2": { "name": "Kindra", "trainer": { "dialogueBefore": "Picnicker Kindra: Mind your nose, my Gloom aren't shy about their smell!", "dialogueAfter": "Picnicker Kindra: Even the smell couldn't stop you." } },
+    "beauty": { "name": "Olivia", "trainer": { "dialogueBefore": "Beauty Olivia: I raised these two from a single seed! Well, almost.", "dialogueAfter": "Beauty Olivia: They'll bloom another day." } },
+    "biker": { "name": "Alex", "trainer": { "dialogueBefore": "Biker Alex: You came down the Cycling Road? Let's see how tough you are!", "dialogueAfter": "Biker Alex: Tougher than me, I'll give you that." } },
+    "biker_2": { "name": "Ernest", "trainer": { "dialogueBefore": "Biker Ernest: Five Pokémon full of smoke! Think you can breathe through that?", "dialogueAfter": "Biker Ernest: The smoke's cleared, and so's my team." } },
+    "picnicker_3": { "name": "Becky", "trainer": { "dialogueBefore": "Picnicker Becky: My Pikachu evolved just yesterday! Watch it go!", "dialogueAfter": "Picnicker Becky: It's still getting used to its new tail." } },
+    "beauty_2": { "name": "Grace", "trainer": { "dialogueBefore": "Beauty Grace: A soft Pokémon and a swift one. The perfect pair!", "dialogueAfter": "Beauty Grace: Perfect, but not quite enough." } },
+    "picnicker_4": { "name": "Celia", "trainer": { "dialogueBefore": "Picnicker Celia: My Clefairy came down from Mt. Moon just to battle you!", "dialogueAfter": "Picnicker Celia: Back to the moon with it, then." } },
+    "black_belt": { "name": "Ron", "trainer": { "dialogueBefore": "Crush Kin Ron & Mya: We train together every morning. Take us both on!", "dialogueAfter": "Crush Kin Ron & Mya: More training tomorrow, then." } },
+    "crush_girl": { "name": "Mya", "trainer": { "dialogueBefore": "Crush Kin Ron & Mya: We train together every morning. Take us both on!", "dialogueAfter": "Crush Kin Ron & Mya: More training tomorrow, then." } }
+  },
+  "signs": {
+    "Route15_EventScript_RouteSign": "Route 15\nWest to Fuchsia City"
+  }
+}

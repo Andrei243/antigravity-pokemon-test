@@ -142,6 +142,8 @@ public static class MoveTutors
         ["Mega Kick"] = "Focus Punch",
         // Rock Tunnel's youngster (RockTunnel_B1F_EventScript_RockSlideTutor)
         ["Rock Slide"] = "Rock Slide",
+        // Fuchsia City's boy by the Mart (FireRed's FuchsiaCity_EventScript_SubstituteTutor; plan 19 · K6)
+        ["Substitute"] = "Substitute",
     };
 
     /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>

@@ -377,6 +377,13 @@ public static class RegionDatabase
                 "SaffronCity_PokemonTrainerFanClub", "SilphCo_1F", "SilphCo_2F", "SilphCo_3F", "SilphCo_4F", "SilphCo_5F",
                 "SilphCo_6F", "SilphCo_7F", "SilphCo_8F", "SilphCo_9F", "SilphCo_10F", "SilphCo_11F", "SilphCo_Elevator",
                 "Route5_SouthEntrance", "Route6_NorthEntrance",
+                // Plan 19 · K6, part a: the gates of Routes 15 and 18, Fuchsia City's rooms and the Safari Zone
+                "Route15_WestEntrance_1F", "Route15_WestEntrance_2F", "Route18_EastEntrance_1F", "Route18_EastEntrance_2F",
+                "FuchsiaCity_SafariZone_Entrance", "FuchsiaCity_Mart", "FuchsiaCity_SafariZone_Office", "FuchsiaCity_Gym",
+                "FuchsiaCity_House1", "FuchsiaCity_PokemonCenter_1F", "FuchsiaCity_PokemonCenter_2F",
+                "FuchsiaCity_WardensHouse", "FuchsiaCity_House2", "FuchsiaCity_House3",
+                "SafariZone_Center", "SafariZone_East", "SafariZone_North", "SafariZone_West", "SafariZone_Center_RestHouse",
+                "SafariZone_East_RestHouse", "SafariZone_North_RestHouse", "SafariZone_West_RestHouse", "SafariZone_SecretHouse",
             }
         },
         new()

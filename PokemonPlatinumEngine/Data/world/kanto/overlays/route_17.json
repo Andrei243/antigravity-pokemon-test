@@ -1,0 +1,28 @@
+{
+  // Route 17 (plan 19 · K6, part a), the Cycling Road: FireRed's map, our words. One long slope from Route 16 down to
+  // Route 18 over the sea, ruled by bikers; its slope pulls a rider south (FieldMovement.Pulls) and nobody gets off
+  // the Bicycle on it (route_17.txt)
+  "area": "route_17",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "biker": { "name": "Virgil", "trainer": { "dialogueBefore": "Biker Virgil: Nobody rides my road without a race. And a battle!", "dialogueAfter": "Biker Virgil: You can have the road. For now." } },
+    "biker_2": { "name": "Isaiah", "trainer": { "dialogueBefore": "Cue Ball Isaiah: My Pokémon train their muscles on this slope every day!", "dialogueAfter": "Cue Ball Isaiah: More push-ups for us, then." } },
+    "biker_3": { "name": "Raul", "trainer": { "dialogueBefore": "Cue Ball Raul: I go round and round this bit of road. Now I'm going round you!", "dialogueAfter": "Cue Ball Raul: I'm dizzy now." } },
+    "biker_4": { "name": "Nikolas", "trainer": { "dialogueBefore": "Biker Nikolas: Watch out, my Voltorb have a short fuse!", "dialogueAfter": "Biker Nikolas: Fizzled out." } },
+    "biker_5": { "name": "Billy", "trainer": { "dialogueBefore": "Biker Billy: One Pokémon is all I need. Come on!", "dialogueAfter": "Biker Billy: Maybe I needed two." } },
+    "biker_6": { "name": "Jamal", "trainer": { "dialogueBefore": "Cue Ball Jamal: Lost your way? Lost your nerve? Let's find out!", "dialogueAfter": "Cue Ball Jamal: Lost the battle, that's what." } },
+    "biker_7": { "name": "Zeek", "trainer": { "dialogueBefore": "Cue Ball Zeek: My Machoke can lift a Bicycle with one arm. And its rider!", "dialogueAfter": "Cue Ball Zeek: It dropped the Bicycle." } },
+    "biker_8": { "name": "Corey", "trainer": { "dialogueBefore": "Cue Ball Corey: This hill's no place for slowpokes. Show me your speed!", "dialogueAfter": "Cue Ball Corey: Too fast for me." } },
+    "biker_9": { "name": "William", "trainer": { "dialogueBefore": "Biker William: Breathe in the fumes of the Cycling Road!", "dialogueAfter": "Biker William: The fumes got me instead." } },
+    "biker_10": { "name": "Jaxon", "trainer": { "dialogueBefore": "Biker Jaxon: You made it this far down? Then you can make it past me!", "dialogueAfter": "Biker Jaxon: Yeah, you made it past me." } }
+  },
+  "signs": {
+    "Route17_EventScript_RouteSign": "Route 17\nCeladon City - Fuchsia City",
+    "Route17_EventScript_TrainerTips1": "Trainer Tips\nThe Cycling Road slopes down to the south. Let go of the controls and you'll roll all the way.",
+    "Route17_EventScript_TrainerTips2": "Trainer Tips\nThe trainers of the Cycling Road battle in the middle of the road. Keep your eyes open!",
+    "Route17_EventScript_ItemsNotice": "Notice\nThings dropped on the Cycling Road are lost to the grass. Look closely!",
+    "Route17_EventScript_BallsNotice": "Notice\nDon't throw your Poké Balls at the bikers. They don't like it.",
+    "Route17_EventScript_CyclingRoadSign": "Cycling Road\nSlope ends here"
+  }
+}

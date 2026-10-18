@@ -1,0 +1,89 @@
+# Fuchsia City (plan 19 · K6, part a). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/FuchsiaCity/scripts.inc).
+#
+# The signs before the Safari Zone's little zoo name who lives in each pen, and the Pokédex takes note of it as seen
+# (FireRed's SetSeenMon beside its picture). The western pen holds Kabuto, or Omanyte for whoever took the Dome
+# Fossil (FLAG_GOT_DOME_FOSSIL, as FireRed's OnTransition chooses the pen's look). The boy by the Mart teaches
+# Substitute to one Pokémon, once in a game, for nothing (FireRed's FuchsiaCity_EventScript_SubstituteTutor;
+# Models/MoveTutors.cs).
+
+
+script ChanseySign
+  speaker none
+  seen "Chansey"
+  text "Chansey\nThe kindest Pokémon of all. Its egg is said to bring happiness to whoever eats it."
+  end
+
+script VoltorbSign
+  speaker none
+  seen "Voltorb"
+  text "Voltorb\nIt looks just like a Poké Ball. Anyone who reaches for it gets a nasty surprise!"
+  end
+
+script KangaskhanSign
+  speaker none
+  seen "Kangaskhan"
+  text "Kangaskhan\nA devoted parent that keeps its young safe in the pouch on its belly."
+  end
+
+script SlowpokeSign
+  speaker none
+  seen "Slowpoke"
+  text "Slowpoke\nIt takes a whole second for it to feel pain. Friendly, and ever so slow."
+  end
+
+script LaprasSign
+  speaker none
+  seen "Lapras"
+  text "Lapras\nA gentle giant of the sea that loves to ferry people across the water."
+  end
+
+script FossilSign
+  speaker none
+  if flag FLAG_GOT_DOME_FOSSIL goto Omanyte
+  seen "Kabuto"
+  text "Kabuto\nA Pokémon from ancient times, brought back to life from a fossil."
+  end
+label Omanyte
+  seen "Omanyte"
+  text "Omanyte\nA Pokémon from ancient seas, brought back to life from a fossil."
+  end
+
+
+script SubstituteTutor
+  speaker "Boy"
+  if flag FLAG_TUTOR_SUBSTITUTE goto Taught
+  ask "I know a move that makes a copy of yourself to take the hits. Want me to teach Substitute to one of your Pokémon?"
+  if no goto Later
+  say "Okay! Which one?"
+  choosepokemon
+  tutor once "Substitute"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_TUTOR_SUBSTITUTE
+label Taught
+  say "A Substitute costs some HP, but the foe will waste its moves on the copy. Sneaky, right?"
+  end
+label Later
+  say "Oh. Well, I'll be around if you change your mind."
+  end
+label Egg
+  say "That's an Egg! It can't learn anything yet."
+  end
+label Cannot
+  say "Hmm, that one can't learn Substitute, I'm afraid."
+  end
+label Knows
+  say "That one already knows {thing}!"
+  end
+label Hm
+  say "{forgotten} isn't a move that can be given up like that."
+  goto Later

@@ -1,0 +1,11 @@
+{
+  // The Safari Zone's office in Fuchsia City (plan 19 · K6, part a): the zone's workers at their desks
+  "area": "fuchsia_city_safari_zone_office",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "worker_m": { "name": "Worker", "dialog": [ "Our Warden is the man who runs the Safari Zone. He's been in a terrible mood since he lost his teeth." ] },
+    "worker_m_2": { "name": "Worker", "dialog": [ "Some of the Pokémon in the zone come from far away. You won't see them on any route in Kanto." ] },
+    "worker_m_3": { "name": "Worker", "dialog": [ "The Safari Zone is split into four parts. Each has its own Pokémon, so look around!" ] },
+    "worker_m_4": { "name": "Worker", "dialog": [ "There's a little house in the far corner of the zone. They say whoever finds it wins a prize." ] }
+  }
+}

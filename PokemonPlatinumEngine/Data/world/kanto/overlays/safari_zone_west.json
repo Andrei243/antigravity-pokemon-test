@@ -1,0 +1,13 @@
+{
+  // The Safari Zone's west part, Area 3 (plan 19 · K6, part a): FireRed's map, our words. The Warden's lost Gold Teeth
+  // lie here in an item ball, and in its far corner is the secret house with HM03
+  "area": "safari_zone_west",
+  "bgmTrack": "kanto/safari_zone",
+  "trees": "Round",
+  "signs": {
+    "SafariZone_West_EventScript_AreaSign": "Area 3\nEast: Centre Area",
+    "SafariZone_West_EventScript_RestHouseSign": "Rest House",
+    "SafariZone_West_EventScript_TrainerTips": "Trainer Tips\nZone exploration campaign! Find the Secret House and win a prize!",
+    "SafariZone_West_EventScript_LostTeethNotice": "Request\nThe Warden has lost his false teeth. If you find them, please bring them to his house in Fuchsia City!"
+  }
+}

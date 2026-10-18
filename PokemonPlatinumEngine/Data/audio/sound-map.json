@@ -103,7 +103,9 @@
     "Cue Ball": "fighter",
     "Boss": "galactic",
     "Rocker": "fun",
-    "Cooltrainer": "ace"
+    "Cooltrainer": "ace",
+    "Crush Kin": "fighter",
+    "Tamer": "fighter"
   },
   "battleThemes": {
     "Leader": "gym",

@@ -468,6 +468,13 @@ public class Player
                     }
                 }
             }
+            else if (FieldMovement.Pulls(map.BehaviourAt(GridX, GridY), Mode) is { } pulled
+                && FieldMovement.Step(map, GridX, GridY, pulled, WalkerOn(map)) is { Moves: true } rolled)
+            {
+                // The Cycling Road's slope (plan 19 · K6): a rider who steers nowhere rolls on down it
+                Facing = pulled;
+                Begin(map, rolled, pulled);
+            }
             else
             {
                 bumpCooldown = 0f;

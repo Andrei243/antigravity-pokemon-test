@@ -569,6 +569,13 @@ public interface IScriptHost
     bool Cycling { get; }
 
     /// <summary>
+    /// Puts the player on the Bicycle or takes them off it (<c>bicycle on</c>, <c>bicycle off</c>; plan 19 · K6:
+    /// FireRed's <c>ForcePlayerOntoBike</c>, which the Cycling Road does to whoever comes onto it from its gates). Not
+    /// on the water. A host with no field does nothing.
+    /// </summary>
+    void Ride(bool on) { }
+
+    /// <summary>
     /// The Battle Arcade challenge under way (plan 06 · R18d); null while none is. <see cref="FrontierAct"/> takes one
     /// more word for it: <c>arcadeboard</c> opens the game board the challenge has brought up
     /// (<see cref="Models.Frontier.BattleArcadeChallenge.Board"/>) and plays it until its cursor is stopped (the script

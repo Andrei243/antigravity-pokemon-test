@@ -1,0 +1,87 @@
+{
+  "key": "safari_zone_west",
+  "index": 108,
+  "name": "Kanto Safari Zone",
+  "matrix": 72,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_EVOLUTION",
+  "nightMusic": "MUS_EVOLUTION",
+  "encounters": "safari_zone_west",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Doduo", "level": 26 },
+    { "species": "Nidoran♂", "level": 22 },
+    { "species": "Exeggcute", "level": 25 },
+    { "species": "Exeggcute", "level": 27 },
+    { "species": "Venonat", "level": 23 },
+    { "species": "Nidorino", "level": 30 },
+    { "species": "Nidoran♀", "level": 30 },
+    { "species": "Venomoth", "level": 32 },
+    { "species": "Venonat", "level": 23 },
+    { "species": "Tauros", "level": 25 },
+    { "species": "Venonat", "level": 23 },
+    { "species": "Kangaskhan", "level": 28 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 20, "maxLevel": 30 },
+    { "species": "Dratini", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 35 },
+    { "species": "Dragonair", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 30, "z": 5, "to": "safari_zone_north", "toWarp": 0 },
+    { "x": 31, "z": 5, "to": "safari_zone_north", "toWarp": 1 },
+    { "x": 32, "z": 5, "to": "", "toWarp": 2 },
+    { "x": 37, "z": 5, "to": "safari_zone_north", "toWarp": 3 },
+    { "x": 38, "z": 5, "to": "safari_zone_north", "toWarp": 4 },
+    { "x": 39, "z": 5, "to": "", "toWarp": 5 },
+    { "x": 40, "z": 26, "to": "safari_zone_center", "toWarp": 6 },
+    { "x": 40, "z": 27, "to": "safari_zone_center", "toWarp": 7 },
+    { "x": 40, "z": 28, "to": "", "toWarp": 8 },
+    { "x": 12, "z": 7, "to": "safari_zone_secret_house", "toWarp": 1 },
+    { "x": 19, "z": 18, "to": "safari_zone_west_rest_house", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 28, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_WEST_GOLD_TEETH", "item": "Gold Teeth", "script": "SafariZone_West_EventScript_ItemGoldTeeth" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 17, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_WEST_TM32", "item": "TM32", "script": "SafariZone_West_EventScript_ItemTM32" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 16, "z": 27, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_WEST_MAX_POTION", "item": "Max Potion", "script": "SafariZone_West_EventScript_ItemMaxPotion" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_south", "x": 27, "z": 24, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_WEST_MAX_REVIVE", "item": "Max Revive", "script": "SafariZone_West_EventScript_ItemMaxRevive" }
+  ],
+  "signs": [
+    { "x": 27, "z": 9, "type": 0, "script": "SafariZone_West_EventScript_LostTeethNotice" },
+    { "x": 36, "z": 10, "type": 0, "script": "SafariZone_West_EventScript_TrainerTips" },
+    { "x": 35, "z": 26, "type": 0, "script": "SafariZone_West_EventScript_AreaSign" },
+    { "x": 22, "z": 19, "type": 0, "script": "SafariZone_West_EventScript_RestHouseSign" },
+    { "x": 13, "z": 11, "type": 2, "script": "", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_SAFARI_ZONE_WEST_REVIVE" }
+  ],
+  "triggers": []
+}

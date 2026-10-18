@@ -1,0 +1,56 @@
+{
+  "key": "route_15",
+  "index": 18,
+  "name": "Route 15",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE11",
+  "nightMusic": "MUS_ROUTE11",
+  "encounters": "route_15",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Oddish", "level": 24 },
+    { "species": "Venonat", "level": 24 },
+    { "species": "Oddish", "level": 22 },
+    { "species": "Pidgey", "level": 27 },
+    { "species": "Pidgey", "level": 25 },
+    { "species": "Venonat", "level": 26 },
+    { "species": "Oddish", "level": 26 },
+    { "species": "Ditto", "level": 25 },
+    { "species": "Pidgeotto", "level": 29 },
+    { "species": "Gloom", "level": 28 },
+    { "species": "Pidgeotto", "level": 29 },
+    { "species": "Gloom", "level": 30 }
+  ],
+  "landRate": 21,
+  "warps": [
+    { "x": 249, "z": 321, "to": "route_15_west_entrance_1f", "toWarp": 0 },
+    { "x": 256, "z": 321, "to": "route_15_west_entrance_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "picnicker", "looks": "picnicker", "movement": "wander_around", "x": 262, "z": 323, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PICNICKER_YAZMIN" },
+    { "id": "rocker", "looks": "rocker", "movement": "look_west", "x": 271, "z": 322, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_BIRD_KEEPER_EDWIN" },
+    { "id": "rocker_2", "looks": "rocker", "movement": "look_north", "x": 277, "z": 324, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BIRD_KEEPER_CHESTER" },
+    { "id": "picnicker_2", "looks": "picnicker", "movement": "wander_around", "x": 284, "z": 323, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PICNICKER_KINDRA" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_south", "x": 290, "z": 322, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BEAUTY_OLIVIA" },
+    { "id": "biker", "looks": "biker", "movement": "look_south_and_east", "x": 299, "z": 322, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BIKER_ALEX" },
+    { "id": "biker_2", "looks": "biker", "movement": "look_south_and_north", "x": 303, "z": 323, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BIKER_ERNEST" },
+    { "id": "picnicker_3", "looks": "picnicker", "movement": "wander_around", "x": 292, "z": 318, "facing": 1, "rangeX": 2, "rangeZ": 4, "trainer": "normal", "sight": 1, "script": "TRAINER_PICNICKER_BECKY" },
+    { "id": "beauty_2", "looks": "beauty", "movement": "look_south", "x": 294, "z": 322, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BEAUTY_GRACE" },
+    { "id": "picnicker_4", "looks": "picnicker", "movement": "wander_around", "x": 268, "z": 316, "facing": 1, "rangeX": 2, "rangeZ": 4, "trainer": "normal", "sight": 1, "script": "TRAINER_PICNICKER_CELIA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 260, "z": 316, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE15_TM18", "item": "TM18", "script": "Route15_EventScript_ItemTM18" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_south", "x": 279, "z": 317, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_CRUSH_KIN_RON_MYA" },
+    { "id": "crush_girl", "looks": "crush_girl", "movement": "look_south", "x": 280, "z": 317, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_CRUSH_KIN_RON_MYA" }
+  ],
+  "signs": [
+    { "x": 281, "z": 321, "type": 0, "script": "Route15_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

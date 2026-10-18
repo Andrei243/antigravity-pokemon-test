@@ -1,0 +1,16 @@
+{
+  // The Safari Zone's gate in Fuchsia City (plan 19 · K6, part a): its counter asks whoever walks up to the zone's door
+  // (the area's triggers 0 to 2) to play the Safari Game, and the attendant by the wall explains it
+  // (fuchsia_city_safari_zone_entrance.txt)
+  "area": "fuchsia_city_safari_zone_entrance",
+  "bgmTrack": "kanto/fuchsia",
+  "triggers": [
+    { "trigger": 0, "script": "Counter" },
+    { "trigger": 1, "script": "Counter" },
+    { "trigger": 2, "script": "Counter" }
+  ],
+  "people": {
+    "worker_m": { "name": "Attendant", "script": "CounterTalk", "still": true },
+    "worker_m_2": { "name": "Attendant", "script": "Explain", "still": true }
+  }
+}

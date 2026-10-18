@@ -1,0 +1,9 @@
+{
+  // The eldest fishing brother's house in Fuchsia City (plan 19 · K6, part a), by the water: his Good Rod is
+  // fuchsia_city_house_2.txt's
+  "area": "fuchsia_city_house_2",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "fisher": { "name": "Fisherman", "script": "FishingGurusBrother" }
+  }
+}

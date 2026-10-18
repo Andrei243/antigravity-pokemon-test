@@ -8979,6 +8979,182 @@ from Galactic Grunt at 163,641 of Sinnoh
 way -
   Galactic Grunt> Leaning on some old guy for his Honey... Is this really what I signed up to Team Galactic for?
   Galactic Grunt> Quit moaning. Orders are orders. Now look tough, there's a kid watching.
+=== fuchsia_city.ChanseySign
+from the tile read at 233,310 of Kanto
+way -
+  > Chansey\nThe kindest Pokémon of all. Its egg is said to bring happiness to whoever eats it.
+  * seen Chansey
+=== fuchsia_city.FossilSign
+from the tile read at 203,310 of Kanto
+way -
+  > Kabuto\nA Pokémon from ancient times, brought back to life from a fossil.
+  * seen Kabuto
+=== fuchsia_city.KangaskhanSign
+from the tile read at 209,310 of Kanto
+way -
+  > Kangaskhan\nA devoted parent that keeps its young safe in the pouch on its belly.
+  * seen Kangaskhan
+=== fuchsia_city.LaprasSign
+from the tile read at 209,318 of Kanto
+way -
+  > Lapras\nA gentle giant of the sea that loves to ferry people across the water.
+  * seen Lapras
+=== fuchsia_city.SlowpokeSign
+from the tile read at 230,316 of Kanto
+way -
+  > Slowpoke\nIt takes a whole second for it to feel pain. Friendly, and ever so slow.
+  * seen Slowpoke
+=== fuchsia_city.SubstituteTutor
+from Boy at 207,311 of Kanto
+way 0
+  Boy> I know a move that makes a copy of yourself to take the hits. Want me to teach Substitute to one of your Pokémon?
+  Boy> Okay! Which one?
+  Boy> Turtwig learned Substitute!
+  Boy> A Substitute costs some HP, but the foe will waste its moves on the copy. Sneaky, right?
+  ? I know a move that makes a copy of yourself to take the hits. Want me to teach Substitute to one of your Pokémon? = Yes
+  * open ChoosePokemon
+  * fanfare FanfareLevelUp
+  + FLAG_TUTOR_SUBSTITUTE
+way 1, from answer 1
+  Boy> Oh. Well, I'll be around if you change your mind.
+  ? I know a move that makes a copy of yourself to take the hits. Want me to teach Substitute to one of your Pokémon? = No
+=== fuchsia_city.VoltorbSign
+from the tile read at 227,310 of Kanto
+way -
+  > Voltorb\nIt looks just like a Poké Ball. Anyone who reaches for it gets a nasty surprise!
+  * seen Voltorb
+=== fuchsia_city_gym.GymGuy
+from Guide at 11,19 of FuchsiaCity_Gym
+way -
+  Guide> Hey, champ in the making! This Gym is full of walls you can't see.
+  Guide> Koga's Pokémon use poison and every trick in the book. Bring something to cure poison, and feel your way along!
+=== fuchsia_city_gym.Koga
+from Koga at 7,13 of FuchsiaCity_Gym
+way 0
+  Koga> Fwahahaha! A mere child dares to challenge me? I am Koga, Leader of this Gym!
+  Koga> Ninja arts are the arts of deception. My poisons will sap your strength while you stumble in confusion!
+  Koga> Hmph! You have proven your worth. Take the Soul Badge.
+  > Lucas received the Soul Badge from Koga!
+  Koga> With the Soul Badge, your Pokémon can use Surf outside of battle, to ride across the water.
+  Koga> Take this as well. It is the very essence of my art.
+  > Lucas received the TM06!
+  > TM06 holds the move Toxic.
+  > Lucas put it away in the TMs & HMs pocket.
+  Koga> TM06 is Toxic. It poisons the foe badly, and the poison grows worse with every turn.
+  * scene fuchsia_city_gym.Koga
+  * battle kanto_leader_koga Won
+  * fanfare FanfareBadge
+  * defeat kanto_juggler_kayden
+  * defeat kanto_juggler_shawn
+  * defeat kanto_juggler_kirk
+  * defeat kanto_juggler_nate
+  * defeat kanto_tamer_edgar
+  * defeat kanto_tamer_phil
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_KOGA
+  + FLAG_GOT_TM06_FROM_KOGA
+  + beaten kanto_juggler_kayden
+  + beaten kanto_juggler_kirk
+  + beaten kanto_juggler_nate
+  + beaten kanto_juggler_shawn
+  + beaten kanto_leader_koga
+  + beaten kanto_tamer_edgar
+  + beaten kanto_tamer_phil
+  = badges Kanto 0 -> 10000
+  + seen fuchsia_city_gym.Koga
+way 1, from answer 1
+  * battle kanto_leader_koga Lost
+  * scene over, unseen
+=== fuchsia_city_gym.Statue
+from the tile read at 10,19 of FuchsiaCity_Gym
+from the tile read at 4,19 of FuchsiaCity_Gym
+way -
+  > Fuchsia City Pokémon Gym. Leader: Koga. Winning trainers: Barry.
+=== fuchsia_city_house_2.FishingGurusBrother
+from Fisherman at 6,5 of FuchsiaCity_House2
+way 0
+  Fisherman> I'm the Fishing Guru's older brother. I bet you like fishing too, eh?
+  Fisherman> Ha! A fellow angler! Here, this is a better rod than my little brother's.
+  > Lucas received the Good Rod!
+  > Lucas put it away in the Key Items pocket.
+  Fisherman> A Good Rod lands better Pokémon than an Old Rod. Try it on the sea!
+  ? I'm the Fishing Guru's older brother. I bet you like fishing too, eh? = Yes
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_GOOD_ROD
+way 1, from answer 1
+  Fisherman> Oh. That's a pity. You don't know what you're missing!
+  ? I'm the Fishing Guru's older brother. I bet you like fishing too, eh? = No
+=== fuchsia_city_house_3.Deleter
+from Move Deleter at 4,4 of FuchsiaCity_House3
+way 0.0.0
+  Move Deleter> Hello. I'm the Move Deleter. I can make a Pokémon forget a move, any move at all.
+  Move Deleter> Is there a move you'd like one of your Pokémon to forget?
+  Move Deleter> Which Pokémon?
+  Move Deleter> Which move should be forgotten?
+  Move Deleter> Tackle? Should that move be forgotten?
+  Move Deleter> Done! Turtwig has forgotten Tackle completely.
+  ? Is there a move you'd like one of your Pokémon to forget? = Yes
+  ? Which move should be forgotten? = Tackle
+  ? Tackle? Should that move be forgotten? = Yes
+  * open ChoosePokemon
+way 0.0.1, from answer 3
+  Move Deleter> Come back if a move ever needs forgetting.
+  ? Tackle? Should that move be forgotten? = No
+way 0.2, from answer 2
+  Move Deleter> Come back if a move ever needs forgetting.
+  ? Which move should be forgotten? = Cancel
+way 0.1.0, from answer 2
+  Move Deleter> Withdraw? Should that move be forgotten?
+  Move Deleter> Done! Turtwig has forgotten Withdraw completely.
+  ? Which move should be forgotten? = Withdraw
+  ? Withdraw? Should that move be forgotten? = Yes
+way 0.1.1, from answer 3
+  Move Deleter> Come back if a move ever needs forgetting.
+  ? Withdraw? Should that move be forgotten? = No
+way 1, from answer 1
+  Move Deleter> Come back if a move ever needs forgetting.
+  ? Is there a move you'd like one of your Pokémon to forget? = No
+=== fuchsia_city_safari_zone_entrance.Counter
+from the trigger at 3,3 of FuchsiaCity_SafariZone_Entrance
+from the trigger at 4,3 of FuchsiaCity_SafariZone_Entrance
+from the trigger at 5,3 of FuchsiaCity_SafariZone_Entrance
+way 0
+  Attendant> Welcome to the Safari Zone!
+  Attendant> For just $500, you can catch all the Pokémon you like! Would you like to play the Safari Game?
+  Attendant> That'll be $500, thank you. Here you are: we use only these special balls in the zone.
+  > Lucas received 30 Safari Balls!
+  Attendant> We'll call you over the speakers when your game is up. Enjoy yourself!
+  ? For just $500, you can catch all the Pokémon you like! Would you like to play the Safari Game? = Yes
+  * sound select
+  * warp SafariZone_Center 26 29
+way 1, from answer 1
+  Attendant> Very well. Please come again!
+  ? For just $500, you can catch all the Pokémon you like! Would you like to play the Safari Game? = No
+=== fuchsia_city_safari_zone_entrance.CounterTalk
+from Attendant at 7,3 of FuchsiaCity_SafariZone_Entrance
+way -
+  Attendant> Walk up to the door behind me, and I'll ask whether you'd like to play the Safari Game.
+=== fuchsia_city_safari_zone_entrance.Explain
+from Attendant at 1,6 of FuchsiaCity_SafariZone_Entrance
+way 0
+  Attendant> The Safari Zone has four parts, each with its own Pokémon. Would you like to hear how the Safari Game works?
+  Attendant> You go in with 30 Safari Balls. They're the only balls you may throw inside.
+  Attendant> You can't battle the Pokémon you meet, but you can throw things to calm them or rile them up. Try it and see!
+  Attendant> The game is over when you've walked 600 steps, or when your last ball is thrown.
+  ? The Safari Zone has four parts, each with its own Pokémon. Would you like to hear how the Safari Game works? = Yes
+way 1, from answer 1
+  Attendant> Then enjoy the Safari Zone!
+  ? The Safari Zone has four parts, each with its own Pokémon. Would you like to hear how the Safari Game works? = No
+=== fuchsia_city_wardens_house.Warden
+from Warden at 3,5 of FuchsiaCity_WardensHouse
+way 0
+  Warden> Hif fuff hefifoo! Ha lof ha feef ee hafahi ho. Heff hee fwee!
+  Warden> Ah, howhee! Ho hoo hah! Hee hee!
+  ? Hif fuff hefifoo! Ha lof ha feef ee hafahi ho. Heff hee fwee! = Yes
+way 1, from answer 1
+  Warden> Heh? Oh hoo. Hee hah hee ho hah...
+  ? Hif fuff hefifoo! Ha lof ha feef ee hafahi ho. Heff hee fwee! = No
 === fuego_ironworks_building.MrFuego
 from Mr. Fuego at 25,19 of FuegoIronworksBuilding
 way 0
@@ -10520,6 +10696,29 @@ way -
 from Snorlax at 398,220 of Kanto
 way -
   > A sleeping Pokémon blocks the way. It's snoring soundly.
+=== route_12_fishing_house.FishingGurusBrother
+from Fisherman at 4,4 of Route12_FishingHouse
+way 0
+  Fisherman> I'm the youngest of the fishing brothers! Do you like to fish, too?
+  Fisherman> I knew it! You've got the look of a true angler. This is the best rod there is.
+  > Lucas received the Super Rod!
+  > Lucas put it away in the Key Items pocket.
+  Fisherman> With a Super Rod, you can hook Pokémon that the other rods could only dream of!
+  ? I'm the youngest of the fishing brothers! Do you like to fish, too? = Yes
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_SUPER_ROD
+way 1, from answer 1
+  Fisherman> No? Then I've nothing to say to you. Hmph.
+  ? I'm the youngest of the fishing brothers! Do you like to fish, too? = No
+=== route_15_west_entrance_2f.Aide
+from Aide at 5,5 of Route15_WestEntrance_2F
+way -
+  Aide> I'm watching the sea for Professor Oak. You'd be amazed at what flies over it.
+=== route_15_west_entrance_2f.LeftBinoculars
+from the tile read at 4,1 of Route15_WestEntrance_2F
+way -
+  > Looking through the binoculars... A great blue bird is flying far out over the sea!
+  * seen Articuno
 === route_16.Snorlax
 from Snorlax at 163,143 of Kanto
 way -
@@ -10535,6 +10734,44 @@ way -
   Woman> HM02 is Fly. A Pokémon that knows it can carry you to any town you've been to before.
   * fanfare FanfareTM
   + FLAG_GOT_HM02
+=== route_16_north_entrance_1f.NeedBike
+from the trigger at 6,10 of Route16_NorthEntrance_1F
+from the trigger at 6,11 of Route16_NorthEntrance_1F
+from the trigger at 6,12 of Route16_NorthEntrance_1F
+from the trigger at 6,13 of Route16_NorthEntrance_1F
+from the trigger at 6,14 of Route16_NorthEntrance_1F
+way -
+  Guard> Hold on! No one goes onto the Cycling Road on foot. Come back with a Bicycle.
+=== route_16_north_entrance_1f.OffTheRoad
+from the trigger at 10,12 of Route16_NorthEntrance_1F
+from the trigger at 11,11 of Route16_NorthEntrance_1F
+from the trigger at 11,13 of Route16_NorthEntrance_1F
+way -
+=== route_16_north_entrance_1f.OntoTheRoad
+from the trigger at 1,11 of Route16_NorthEntrance_1F
+from the trigger at 1,13 of Route16_NorthEntrance_1F
+from the trigger at 2,12 of Route16_NorthEntrance_1F
+way -
+  = VAR_MAP_SCENE_ROUTE16 0 -> 1
+=== route_18_east_entrance_1f.NeedBike
+from the trigger at 6,4 of Route18_EastEntrance_1F
+from the trigger at 6,5 of Route18_EastEntrance_1F
+from the trigger at 6,6 of Route18_EastEntrance_1F
+from the trigger at 6,7 of Route18_EastEntrance_1F
+from the trigger at 6,8 of Route18_EastEntrance_1F
+way -
+  Guard> Excuse me! The Cycling Road is for Bicycles only. You'll need one to go that way.
+=== route_18_east_entrance_1f.OffTheRoad
+from the trigger at 10,6 of Route18_EastEntrance_1F
+from the trigger at 11,5 of Route18_EastEntrance_1F
+from the trigger at 11,7 of Route18_EastEntrance_1F
+way -
+=== route_18_east_entrance_1f.OntoTheRoad
+from the trigger at 1,5 of Route18_EastEntrance_1F
+from the trigger at 1,7 of Route18_EastEntrance_1F
+from the trigger at 2,6 of Route18_EastEntrance_1F
+way -
+  = VAR_MAP_SCENE_ROUTE16 0 -> 1
 === route_201.Briefcase
 from Professor's Briefcase at 112,854 of Sinnoh
 way 0.0
@@ -11716,6 +11953,19 @@ way -
   Young Man> Wanda! Can you hear me? I'll dig through to you, I promise! Nothing's going to keep us apart!
   Young Man> Oh, sorry. Wanda's my girlfriend. She's just on the other side of these rocks, but they're too hard to move.
   Young Man> If only someone had a Pokémon strong enough to smash them...
+=== safari_zone_secret_house.Attendant
+from Attendant at 6,5 of SafariZone_SecretHouse
+way -
+  Attendant> Congratulations! You've found the Safari Zone's secret house, and won our grand prize!
+  > Lucas received the HM03!
+  > HM03 holds the move Surf.
+  > Lucas put it away in the TMs & HMs pocket.
+  Attendant> HM03 is Surf. A Pokémon that knows it can carry you across water, once you have the Soul Badge from Fuchsia's Gym.
+  * scene safari_zone_secret_house.The secret house
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_GOT_HM03
+  + seen safari_zone_secret_house.The secret house
 === saffron_city.DoorGuard
 from Grunt at 288,144 of Kanto
 way -

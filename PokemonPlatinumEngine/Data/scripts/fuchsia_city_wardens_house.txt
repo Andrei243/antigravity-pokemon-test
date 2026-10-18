@@ -1,0 +1,37 @@
+# The Safari Zone Warden's house in Fuchsia City (plan 19 · K6, part a). docs/scripts.md describes the language; the
+# lines are our own, on FireRed's beats (data/maps/FuchsiaCity_WardensHouse/scripts.inc).
+#
+# The Warden has lost his false teeth in the Safari Zone, and nobody can make out a word he says: he asks a question
+# that is no question and mumbles back whatever the answer. With the Gold Teeth in the bag (found in the zone's west
+# part, safari_zone_west's item ball) he takes them, puts them in and gives HM04, Strength (FLAG_GOT_HM04).
+
+
+script Warden
+  face old_man_2 player
+  speaker "Warden"
+  if flag FLAG_GOT_HM04 goto Strength
+  if item "Gold Teeth" goto Teeth
+  ask "Hif fuff hefifoo! Ha lof ha feef ee hafahi ho. Heff hee fwee!"
+  if yes goto Yes
+  say "Heh? Oh hoo. Hee hah hee ho hah..."
+  end
+label Yes
+  say "Ah, howhee! Ho hoo hah! Hee hee!"
+  end
+label Teeth
+  scene "The Gold Teeth"
+  speaker none
+  take "Gold Teeth"
+  fanfare keyitem
+  text "{player} gave the Gold Teeth to the Warden!"
+  text "The Warden popped in his teeth."
+  speaker "Warden"
+  if girl say "Thanks, young lady! You're a real treasure. Nobody understood a word I said all week!"
+  if boy say "Thanks, young man! You're a real treasure. Nobody understood a word I said all week!"
+  say "Here, take this. It's the least I can do."
+  give "HM04"
+  setflag FLAG_GOT_HM04
+  endscene
+label Strength
+  say "HM04 is Strength. A Pokémon that knows it can push big boulders out of the way, once you have the Rainbow Badge."
+  end

@@ -1,0 +1,79 @@
+# The Safari Zone's gate in Fuchsia City (plan 19 · K6, part a). docs/scripts.md describes the language; the lines
+# are our own, on FireRed's beats (data/maps/FuchsiaCity_SafariZone_Entrance/scripts.inc).
+#
+# Whoever walks up to the zone's door steps onto one of FireRed's three coordinate events before it (the area's
+# triggers 0 to 2) and is asked to play: for $500, thirty Safari Balls and FireRed's six hundred steps
+# (`safari start 600`; Models/SafariGame.cs), then in through the door to the zone's centre. Turned down, or short of
+# the fee, they are sent a step back.
+#
+# Coming back through the zone's door with a game still on, the player is asked whether to leave early: yes ends the
+# game, no leads back in (FireRed's ExitEarly, VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE 2). A game that ended
+# in the zone (its last step, its last ball: common.SafariTimeUp and SafariOutOfBalls, which bring a player of Kanto
+# here with the variable 1) is seen off at the counter (FireRed's ExitWarpIn).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE == 1 goto Over
+  if not safari end
+  speaker "Attendant"
+  ask "Leaving the Safari Zone already? You still have time left. Are you sure?"
+  if no goto Back
+  say "Very well. Please hand back your Safari Balls. We hope to see you again!"
+  safari end
+  walk player down 3
+  end
+label Back
+  say "Then off you go. Good luck out there!"
+  warp "SafariZone_Center" 26 29 up
+  end
+label Over
+  speaker "Attendant"
+  say "Did you catch your fair share? Come again any time!"
+  setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE 0
+  walk player down 2
+  end
+
+
+# The counter, from FireRed's coordinate events before the door (EntryTriggerLeft, Mid and Right)
+script Counter
+  if safari end
+  face player right
+  speaker "Attendant"
+  say "Welcome to the Safari Zone!"
+  ask "For just $500, you can catch all the Pokémon you like! Would you like to play the Safari Game?"
+  if no goto Away
+  takemoney 500
+  if result == 0 goto Short
+  sound "select"
+  safari start 600
+  say "That'll be $500, thank you. Here you are: we use only these special balls in the zone."
+  text "{player} received 30 Safari Balls!"
+  say "We'll call you over the speakers when your game is up. Enjoy yourself!"
+  walk player up 1
+  warp "SafariZone_Center" 26 29 up
+  end
+label Short
+  say "I'm sorry, you don't have enough money."
+label Away
+  say "Very well. Please come again!"
+  walk player down 1
+  end
+
+
+script CounterTalk
+  speaker "Attendant"
+  say "Walk up to the door behind me, and I'll ask whether you'd like to play the Safari Game."
+  end
+
+
+script Explain
+  speaker "Attendant"
+  ask "The Safari Zone has four parts, each with its own Pokémon. Would you like to hear how the Safari Game works?"
+  if no goto Enjoy
+  say "You go in with 30 Safari Balls. They're the only balls you may throw inside."
+  say "You can't battle the Pokémon you meet, but you can throw things to calm them or rile them up. Try it and see!"
+  say "The game is over when you've walked 600 steps, or when your last ball is thrown."
+  end
+label Enjoy
+  say "Then enjoy the Safari Zone!"
+  end

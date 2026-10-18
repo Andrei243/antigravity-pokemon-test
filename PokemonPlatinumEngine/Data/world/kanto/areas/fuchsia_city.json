@@ -1,0 +1,91 @@
+{
+  "key": "fuchsia_city",
+  "index": 15,
+  "name": "Fuchsia City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FUCHSIA",
+  "nightMusic": "MUS_FUCHSIA",
+  "encounters": "fuchsia_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 216, "z": 305, "to": "fuchsia_city_safari_zone_entrance", "toWarp": 2 },
+    { "x": 225, "z": 331, "to": "fuchsia_city_wardens_house", "toWarp": 1 },
+    { "x": 203, "z": 315, "to": "fuchsia_city_mart", "toWarp": 1 },
+    { "x": 220, "z": 316, "to": "fuchsia_city_safari_zone_office", "toWarp": 1 },
+    { "x": 201, "z": 332, "to": "fuchsia_city_gym", "toWarp": 1 },
+    { "x": 206, "z": 331, "to": "fuchsia_city_house_1", "toWarp": 1 },
+    { "x": 217, "z": 331, "to": "fuchsia_city_pokemon_center_1f", "toWarp": 1 },
+    { "x": 230, "z": 331, "to": "fuchsia_city_house_2", "toWarp": 1 },
+    { "x": 231, "z": 328, "to": "fuchsia_city_house_2", "toWarp": 3 },
+    { "x": 231, "z": 329, "to": "", "toWarp": 3 },
+    { "x": 211, "z": 331, "to": "fuchsia_city_house_3", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_south", "x": 229, "z": 317, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_EventScript_Erik" },
+    { "id": "slowpoke", "looks": "slowpoke", "movement": "wander_around_slower", "x": 228, "z": 315, "facing": 1, "rangeX": 4, "rangeZ": 1, "script": "" },
+    { "id": "voltorb", "looks": "voltorb", "movement": "look_south", "x": 225, "z": 308, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_north", "x": 225, "z": 311, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_EventScript_Youngster" },
+    { "id": "chansey", "looks": "chansey", "movement": "wander_around", "x": 231, "z": 308, "facing": 1, "rangeX": 3, "rangeZ": 1, "script": "" },
+    { "id": "little_boy", "looks": "little_boy", "movement": "wander_west_and_east", "x": 206, "z": 315, "facing": 2, "rangeX": 3, "rangeZ": 1, "script": "FuchsiaCity_EventScript_LittleBoy" },
+    { "id": "lapras", "looks": "lapras", "movement": "wander_around", "x": 204, "z": 320, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "wander_west_and_east", "x": 228, "z": 320, "facing": 2, "rangeX": 4, "rangeZ": 1, "script": "FuchsiaCity_EventScript_OldMan" },
+    { "id": "var_0", "looks": "var_0", "movement": "look_south", "x": 200, "z": 308, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "kangaskhan", "looks": "kangaskhan", "movement": "wander_around", "x": 208, "z": 309, "facing": 1, "rangeX": 4, "rangeZ": 1, "script": "" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 222, "z": 310, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_2", "looks": "cut_tree", "movement": "look_south", "x": 213, "z": 313, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_3", "looks": "cut_tree", "movement": "look_south", "x": 224, "z": 316, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_4", "looks": "cut_tree", "movement": "look_south", "x": 216, "z": 322, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_CutTree" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "look_north", "x": 207, "z": 311, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_EventScript_SubstituteTutor" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 232, "z": 306, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "FuchsiaCity_EventScript_Lass" }
+  ],
+  "signs": [
+    { "x": 223, "z": 318, "type": 0, "script": "FuchsiaCity_EventScript_CitySign" },
+    { "x": 218, "z": 318, "type": 0, "script": "FuchsiaCity_EventScript_SafariZoneSign" },
+    { "x": 197, "z": 332, "type": 0, "script": "FuchsiaCity_EventScript_GymSign" },
+    { "x": 223, "z": 331, "type": 0, "script": "FuchsiaCity_EventScript_WardensHomeSign" },
+    { "x": 227, "z": 310, "type": 0, "script": "FuchsiaCity_EventScript_VoltorbSign" },
+    { "x": 230, "z": 316, "type": 0, "script": "FuchsiaCity_EventScript_SlowpokeSign" },
+    { "x": 233, "z": 310, "type": 0, "script": "FuchsiaCity_EventScript_ChanseySign" },
+    { "x": 209, "z": 310, "type": 0, "script": "FuchsiaCity_EventScript_KangaskhanSign" },
+    { "x": 203, "z": 310, "type": 0, "script": "FuchsiaCity_EventScript_FossilMonSign" },
+    { "x": 209, "z": 318, "type": 0, "script": "FuchsiaCity_EventScript_LaprasSign" },
+    { "x": 214, "z": 307, "type": 0, "script": "FuchsiaCity_EventScript_SafariGameSign" },
+    { "x": 225, "z": 326, "type": 2, "script": "", "item": "Max Revive", "flag": "FLAG_HIDDEN_ITEM_FUCHSIA_CITY_MAX_REVIVE" }
+  ],
+  "triggers": []
+}

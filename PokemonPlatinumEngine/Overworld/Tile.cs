@@ -206,6 +206,8 @@ public enum Architecture
     Portside,
     /// <summary>Plaster under hipped lilac roofs with shutters: the quiet town of the tower (Lavender, plan 19 · K5).</summary>
     Lilac,
+    /// <summary>Boards under fuchsia gable roofs with flower boxes: the warm town of the Safari Zone and the ninja's Gym (Fuchsia, plan 19 · K6).</summary>
+    Wildwood,
 
     // Johto (plan 20): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>White plaster under slate-blue gable roofs with a chimney: the windy town by the sea (New Bark, plan 20 · J2).</summary>

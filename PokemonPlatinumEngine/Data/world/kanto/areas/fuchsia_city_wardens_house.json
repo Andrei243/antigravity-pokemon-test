@@ -1,0 +1,35 @@
+{
+  "key": "fuchsia_city_wardens_house",
+  "index": 323,
+  "name": "Fuchsia City",
+  "matrix": 270,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FUCHSIA",
+  "nightMusic": "MUS_FUCHSIA",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 10, "to": "", "toWarp": 1 },
+    { "x": 6, "z": 9, "to": "fuchsia_city", "toWarp": 1 },
+    { "x": 7, "z": 10, "to": "", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "old_man_2", "looks": "old_man_2", "movement": "look_around", "x": 3, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_WardensHouse_EventScript_Warden" },
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_south", "x": 11, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 11, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FUCHSIA_CITY_WARDENS_HOUSE_RARE_CANDY", "item": "Rare Candy", "script": "FuchsiaCity_WardensHouse_EventScript_ItemRareCandy" },
+    { "id": "0", "looks": "0", "movement": "invisible", "x": 4, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FAME_CHECKER_KOGA_JOURNAL", "script": "FuchsiaCity_WardensHouse_EventScript_PokemonJournalKoga" }
+  ],
+  "signs": [
+    { "x": 7, "z": 4, "type": 0, "script": "FuchsiaCity_WardensHouse_EventScript_DisplaySign2" },
+    { "x": 4, "z": 4, "type": 0, "script": "FuchsiaCity_WardensHouse_EventScript_DisplaySign1" },
+    { "x": 5, "z": 4, "type": 0, "script": "FuchsiaCity_WardensHouse_EventScript_DisplaySign1" },
+    { "x": 6, "z": 4, "type": 0, "script": "FuchsiaCity_WardensHouse_EventScript_DisplaySign2" }
+  ],
+  "triggers": []
+}

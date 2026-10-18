@@ -1,0 +1,25 @@
+# The gate on Route 18 (plan 19 · K6, part a). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/Route18_EastEntrance_1F/scripts.inc and data/scripts/cycling_road.inc).
+#
+# As Route 16's gate (route_16_north_entrance_1f.txt), from the road's foot: the guard calls back whoever crosses the
+# room westward without a Bicycle, and the steps by the doors note going onto the road (VAR_MAP_SCENE_ROUTE16 1, by
+# the west door) or coming off it (0, by the east door).
+
+
+script NeedBike
+  if item "Bicycle" end
+  speaker "Guard"
+  face player up
+  say "Excuse me! The Cycling Road is for Bicycles only. You'll need one to go that way."
+  walk player right 1
+  end
+
+
+script OntoTheRoad
+  setvar VAR_MAP_SCENE_ROUTE16 1
+  end
+
+
+script OffTheRoad
+  setvar VAR_MAP_SCENE_ROUTE16 0
+  end

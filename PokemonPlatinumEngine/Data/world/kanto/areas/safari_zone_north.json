@@ -1,0 +1,88 @@
+{
+  "key": "safari_zone_north",
+  "index": 107,
+  "name": "Kanto Safari Zone",
+  "matrix": 71,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_EVOLUTION",
+  "nightMusic": "MUS_EVOLUTION",
+  "encounters": "safari_zone_north",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Rhyhorn", "level": 26 },
+    { "species": "Nidoran♂", "level": 30 },
+    { "species": "Exeggcute", "level": 25 },
+    { "species": "Exeggcute", "level": 27 },
+    { "species": "Paras", "level": 23 },
+    { "species": "Nidorino", "level": 30 },
+    { "species": "Nidorina", "level": 30 },
+    { "species": "Venomoth", "level": 32 },
+    { "species": "Paras", "level": 23 },
+    { "species": "Chansey", "level": 26 },
+    { "species": "Paras", "level": 23 },
+    { "species": "Tauros", "level": 28 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 20, "maxLevel": 30 },
+    { "species": "Dratini", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 35 },
+    { "species": "Dragonair", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 10, "z": 34, "to": "safari_zone_west", "toWarp": 0 },
+    { "x": 11, "z": 34, "to": "safari_zone_west", "toWarp": 1 },
+    { "x": 12, "z": 34, "to": "", "toWarp": 2 },
+    { "x": 20, "z": 34, "to": "safari_zone_west", "toWarp": 3 },
+    { "x": 21, "z": 34, "to": "safari_zone_west", "toWarp": 4 },
+    { "x": 22, "z": 34, "to": "", "toWarp": 5 },
+    { "x": 48, "z": 31, "to": "safari_zone_east", "toWarp": 0 },
+    { "x": 48, "z": 32, "to": "safari_zone_east", "toWarp": 1 },
+    { "x": 48, "z": 33, "to": "", "toWarp": 2 },
+    { "x": 30, "z": 34, "to": "safari_zone_center", "toWarp": 3 },
+    { "x": 31, "z": 34, "to": "safari_zone_center", "toWarp": 4 },
+    { "x": 32, "z": 34, "to": "", "toWarp": 5 },
+    { "x": 43, "z": 8, "to": "safari_zone_north_rest_house", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 33, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_NORTH_PROTEIN", "item": "Protein", "script": "SafariZone_North_EventScript_ItemProtein" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 28, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_NORTH_TM47", "item": "TM47", "script": "SafariZone_North_EventScript_ItemTM47" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 29, "z": 17, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_NORTH_QUICK_CLAW", "item": "Quick Claw", "script": "SafariZone_North_EventScript_ItemQuickClaw" }
+  ],
+  "signs": [
+    { "x": 13, "z": 27, "type": 0, "script": "SafariZone_North_EventScript_TrainerTips1" },
+    { "x": 23, "z": 31, "type": 0, "script": "SafariZone_North_EventScript_AreaSign" },
+    { "x": 29, "z": 32, "type": 0, "script": "SafariZone_North_EventScript_TrainerTips2" },
+    { "x": 34, "z": 28, "type": 0, "script": "SafariZone_North_EventScript_TrainerTips3" },
+    { "x": 44, "z": 9, "type": 0, "script": "SafariZone_North_EventScript_RestHouseSign" }
+  ],
+  "triggers": []
+}

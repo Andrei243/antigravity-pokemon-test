@@ -1,0 +1,14 @@
+{
+  // The Safari Zone Warden's house in Fuchsia City (plan 19 · K6, part a): the Warden, who can't be understood
+  // without his Gold Teeth and gives HM04 for them (fuchsia_city_wardens_house.txt), his cases of photographs and old
+  // Pokémon goods, and a Rare Candy behind a boulder that Strength moves
+  "area": "fuchsia_city_wardens_house",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "old_man_2": { "name": "Warden", "script": "Warden", "still": true }
+  },
+  "signs": {
+    "FuchsiaCity_WardensHouse_EventScript_DisplaySign1": "Photographs of Pokémon and old fossils are on display.",
+    "FuchsiaCity_WardensHouse_EventScript_DisplaySign2": "Old Pokémon goods are on display. Some of them look very rare."
+  }
+}

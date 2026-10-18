@@ -1,0 +1,28 @@
+{
+  "key": "safari_zone_center_rest_house",
+  "index": 109,
+  "name": "Kanto Safari Zone",
+  "matrix": 73,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_EVOLUTION",
+  "nightMusic": "MUS_EVOLUTION",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 9, "to": "safari_zone_center", "toWarp": 12 },
+    { "x": 4, "z": 9, "to": "safari_zone_center", "toWarp": 12 },
+    { "x": 5, "z": 9, "to": "safari_zone_center", "toWarp": 12 }
+  ],
+  "objects": [
+    { "id": "scientist", "looks": "scientist", "movement": "wander_around", "x": 3, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_Center_RestHouse_EventScript_Scientist" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_south", "x": 7, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_Center_RestHouse_EventScript_Sara" }
+  ],
+  "signs": [],
+  "triggers": []
+}

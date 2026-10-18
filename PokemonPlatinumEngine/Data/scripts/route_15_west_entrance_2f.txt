@@ -1,0 +1,37 @@
+# The upper floor of Route 15's gate (plan 19 · K6, part a). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/Route15_WestEntrance_2F/scripts.inc).
+#
+# Professor Oak's aide hands out an Exp. Share for fifty kinds caught (FireRed's FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE),
+# and the left pair of binoculars catches sight of a great bird far out over the sea, which the Pokédex then counts
+# as seen (FireRed's showmonpic and SetSeenMon: Articuno, whose home is the Seafoam Islands, part b's).
+
+
+script Aide
+  speaker "Aide"
+  if flag FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE goto Given
+  if not flag FLAG_HAS_POKEDEX goto NoDex
+  ask "Hello! I'm one of Professor Oak's aides. Shall I see how many kinds of Pokémon you've caught?"
+  if no goto Declined
+  if var CAUGHT < 50 goto NotYet
+  say "{var:CAUGHT} kinds! That's remarkable. The Professor asked me to give you this."
+  give "Exp. Share"
+  setflag FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE
+label Given
+  say "A Pokémon holding an Exp. Share gains experience from every battle, even if it never steps out."
+  end
+label NoDex
+  say "I'm watching the sea for Professor Oak. You'd be amazed at what flies over it."
+  end
+label Declined
+  say "Very well. Drop by whenever you like."
+  end
+label NotYet
+  say "{var:CAUGHT} kinds so far. Come back once you've caught fifty, and I'll have something special for you."
+  end
+
+
+script LeftBinoculars
+  speaker none
+  text "Looking through the binoculars... A great blue bird is flying far out over the sea!"
+  seen "Articuno"
+  end

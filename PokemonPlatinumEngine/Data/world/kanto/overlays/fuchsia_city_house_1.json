@@ -1,0 +1,10 @@
+{
+  // A house in Fuchsia City (plan 19 · K6, part a)
+  "area": "fuchsia_city_house_1",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "old_man_1": { "name": "Old Man", "dialog": [ "Koga's Gym is full of walls you can't see. You'll bump your nose a few times before you find the way." ] },
+    "woman_2": { "name": "Woman", "dialog": [ "The Warden lives in the house to the east. He's a kind man, but nobody can understand a word he says lately." ] },
+    "little_boy": { "name": "Boy", "dialog": [ "I want to be a ninja like Koga when I grow up!" ] }
+  }
+}

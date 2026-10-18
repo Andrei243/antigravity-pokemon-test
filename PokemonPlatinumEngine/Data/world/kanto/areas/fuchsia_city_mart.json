@@ -1,0 +1,29 @@
+{
+  "key": "fuchsia_city_mart",
+  "index": 317,
+  "name": "Fuchsia City",
+  "matrix": 264,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "fuchsia_city", "toWarp": 2 },
+    { "x": 4, "z": 7, "to": "fuchsia_city", "toWarp": 2 },
+    { "x": 5, "z": 7, "to": "fuchsia_city", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "clerk", "looks": "clerk", "movement": "look_east", "x": 2, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_Mart_EventScript_Clerk" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_around", "x": 6, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_Mart_EventScript_Gentleman" },
+    { "id": "cooltrainer_f", "looks": "cooltrainer_f", "movement": "wander_around", "x": 9, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_Mart_EventScript_CooltrainerF" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -58,6 +58,14 @@ public sealed class StoryState
     public const string LocalVariablePrefix = "VAR_MAP_LOCAL_";
 
     /// <summary>
+    /// The GBA games' temporary variables (<c>VAR_TEMP_0</c> to <c>VAR_TEMP_F</c>), which FireRed and Emerald clear as
+    /// every map loads (<c>ClearTempFieldEventData</c>): they are forgotten with the local ones (plan 19 · K6, after the
+    /// Pokémon Tower's fifth floor left <c>VAR_TEMP_1</c> set and the Cycling Road's gates and the Safari Zone's counter,
+    /// whose triggers ask it to be 0, never fired again).
+    /// </summary>
+    public const string TemporaryVariablePrefix = "VAR_TEMP_";
+
+    /// <summary>
     /// Forgets the flags and variables that last only while the player stays in one place, as the original does
     /// whenever the map's header changes (<c>FieldSystem_ClearLocalFlags</c>): on walking into another area and on
     /// every warp. A tree that was cut grows back, a rock that was smashed is whole again.
@@ -65,7 +73,7 @@ public sealed class StoryState
     public void ClearLocal()
     {
         bool changed = flags.RemoveWhere(f => f.StartsWith(LocalFlagPrefix, StringComparison.Ordinal)) > 0;
-        foreach (var name in variables.Keys.Where(v => v.StartsWith(LocalVariablePrefix, StringComparison.Ordinal)).ToList())
+        foreach (var name in variables.Keys.Where(v => v.StartsWith(LocalVariablePrefix, StringComparison.Ordinal) || v.StartsWith(TemporaryVariablePrefix, StringComparison.Ordinal)).ToList())
         {
             variables.Remove(name);
             changed = true;

@@ -1,0 +1,13 @@
+{
+  // The upper floor of Route 18's gate (plan 19 · K6, part a): a boy who would trade for a Lickitung (FireRed's trade
+  // waits for plan 07's trades) and the binoculars
+  "area": "route_18_east_entrance_2f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "boy": { "name": "Boy", "dialog": [ "I'm looking for someone with a Slowbro. I'd swap my Lickitung for one, one day." ] }
+  },
+  "signs": {
+    "Route18_EastEntrance_2F_EventScript_LeftBinoculars": "Looking through the binoculars... Riders are racing down the Cycling Road!",
+    "Route18_EastEntrance_2F_EventScript_RightBinoculars": "Looking through the binoculars... Fuchsia City lies just to the east, beside the sea."
+  }
+}

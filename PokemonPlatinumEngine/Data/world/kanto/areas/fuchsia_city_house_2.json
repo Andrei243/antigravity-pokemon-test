@@ -1,0 +1,28 @@
+{
+  "key": "fuchsia_city_house_2",
+  "index": 324,
+  "name": "Fuchsia City",
+  "matrix": 271,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FUCHSIA",
+  "nightMusic": "MUS_FUCHSIA",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 9, "to": "", "toWarp": 7 },
+    { "x": 3, "z": 8, "to": "fuchsia_city", "toWarp": 7 },
+    { "x": 4, "z": 9, "to": "", "toWarp": 7 },
+    { "x": 3, "z": 1, "to": "fuchsia_city", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "fisher", "looks": "fisher", "movement": "look_east", "x": 6, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_House2_EventScript_FishingGurusBrother" }
+  ],
+  "signs": [],
+  "triggers": []
+}

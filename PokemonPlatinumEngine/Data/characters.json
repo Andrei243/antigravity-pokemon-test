@@ -153,6 +153,12 @@
     "giovanni": { "hairColor": "#2a2224", "hair": "Swept", "top": "#9a5a34", "accent": "#1e1e24", "bottom": "#2a2a30", "shoes": "#1e1a1a", "eyes": "#2a2024", "coat": true, "build": "Adult", "height": 1.1 },
     "biker": { "hairColor": "#2a2224", "hair": "Spiky", "top": "#26262c", "accent": "#c83a3a", "bottom": "#3a4a66", "shoes": "#1e1e22", "eyes": "#2a2024", "build": "Adult", "height": 1.04 },
     "chef": { "hairColor": "#5c4638", "hat": "Cap", "hatColor": "#f6f6fa", "hatBand": "#f6f6fa", "top": "#f6f6fa", "accent": "#d8d8e0", "bottom": "#4a4a52", "shoes": "#2a2a30", "build": "Adult", "height": 1.0 },
+    // Kanto's cast of plan 19 · K6 (our own takes): Koga, a ninja's dark purple hood and mask over a dark grey suit with
+    // a deep red sash; a Juggler, spiky orange hair and a striped red and yellow top over purple trousers; a Bird
+    // Keeper, a brown cap and a sky-blue vest over khaki trousers
+    "koga": { "hairColor": "#3a2a4a", "hat": "Mask", "hatColor": "#3a2a4a", "hatBand": "#a82a3a", "top": "#3a3a44", "accent": "#a82a3a", "bottom": "#3a3a44", "shoes": "#22222a", "eyes": "#2a2024", "coat": true, "build": "Adult", "height": 1.06 },
+    "juggler": { "hairColor": "#e0782a", "hair": "Spiky", "top": "#d83a3a", "accent": "#f2c84a", "bottom": "#6a3a8a", "shoes": "#2a2a30", "eyes": "#3a2a24", "build": "Adult", "height": 1.0 },
+    "bird_keeper": { "hairColor": "#4a3426", "hat": "Cap", "hatColor": "#7a5634", "hatBand": "#7a5634", "top": "#6aa8d8", "accent": "#f6f6fa", "bottom": "#b8a478", "shoes": "#4a3426", "eyes": "#2a2024", "build": "Adult", "height": 1.0 },
     "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "height": 1.02 }
   },
   // Names that are another look
@@ -331,6 +337,8 @@
     "Biker": "biker",
     "Cue Ball": "biker",
     "Boss": "giovanni",
+    "Juggler": "juggler",
+    "Bird Keeper": "bird_keeper",
     "Leader": null,
     "Elite Four": null,
     "Champion": null,

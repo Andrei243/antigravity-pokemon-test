@@ -103,6 +103,8 @@ public enum Op
     AddContact,
     // A stone panel of the Ruins of Alph (plan 20 · J5): its pieces put back together on a screen
     Puzzle,
+    // On or off the Bicycle by the story's say (plan 19 · K6: the Cycling Road of FireRed puts its riders on it)
+    Bicycle,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -113,7 +115,9 @@ public enum Query
 {
     Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, PoketchApp, Pokerus, Safari, Rematch, Partner, Time, Weekday, NationalDex,
     /// <summary>The badge a field move needs in the player's region is won, or the region asks none (plan 19 · K4, part b): <c>movebadge "Cut"</c>.</summary>
-    MoveBadge
+    MoveBadge,
+    /// <summary>The player is in a region (plan 19 · K6): <c>region "Kanto"</c>, for a common script two regions share (the Safari Game's end).</summary>
+    Region
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

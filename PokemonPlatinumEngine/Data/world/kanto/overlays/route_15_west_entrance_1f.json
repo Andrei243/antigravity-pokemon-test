@@ -1,0 +1,8 @@
+{
+  // The gate on Route 15 at Fuchsia City's east edge (plan 19 · K6, part a), its upper floor up the stairs
+  "area": "route_15_west_entrance_1f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "policeman": { "name": "Guard", "dialog": [ "Fuchsia City's just to the west. Are you here for the Safari Zone?" ] }
+  }
+}

@@ -492,7 +492,16 @@ public static class ScriptParser
             case "poketchapp":
                 return new Instruction { Op = Op.PoketchApp, Line = line, Name = r.Enum<Models.PoketchApp>("a Pokétch app").ToString() };
             case "safari":
-                return new Instruction { Op = Op.Safari, Line = line, Option = r.OneOf("start", "end") == "start" };
+            {
+                // A Safari Game of another game's own number of steps (plan 19 · K6: FireRed's Safari Zone is 600)
+                bool start = r.OneOf("start", "end") == "start";
+                int steps = start && r.PeekNumber ? r.Int("how many steps") : 0;
+                if (steps < 0) throw r.Error("a Safari Game has steps");
+                return new Instruction { Op = Op.Safari, Line = line, Option = start, Number = steps };
+            }
+            case "bicycle":
+                // On or off the Bicycle by the story's say (plan 19 · K6: FireRed's ForcePlayerOntoBike on the Cycling Road)
+                return new Instruction { Op = Op.Bicycle, Line = line, Option = r.OneOf("on", "off") == "on" };
 
             case "music":
                 if (r.PeekQuoted) return new Instruction { Op = Op.Music, Line = line, Name = r.Text("a song") };
@@ -1005,6 +1014,8 @@ public static class ScriptParser
                 return new Condition { Query = Query.Pokerus, Negated = negated };
             case "safari":
                 return new Condition { Query = Query.Safari, Negated = negated };
+            case "region":
+                return new Condition { Query = Query.Region, Negated = negated, Name = r.Text("a region") };
             case "partner":
                 return new Condition { Query = Query.Partner, Negated = negated };
             case "time":

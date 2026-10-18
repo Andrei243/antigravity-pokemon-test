@@ -1,0 +1,11 @@
+{
+  // Fuchsia City's Pokémon Center (plan 19 · K6, part a)
+  "area": "fuchsia_city_pokemon_center_1f",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "fuchsia_nurse": { "name": "Nurse", "script": "Nurse" },
+    "man": { "name": "Man", "dialog": [ "The Cycling Road runs all the way down to here from Celadon City. Quite the ride!" ] },
+    "cooltrainer_f": { "name": "Woman", "dialog": [ "Koga's Pokémon are all poison. Bring plenty of Antidotes, or a Pokémon that shrugs it off." ] },
+    "youngster": { "name": "Youngster", "dialog": [ "I got lost in the Safari Zone and ran out of steps. Six hundred goes faster than you'd think!" ] }
+  }
+}

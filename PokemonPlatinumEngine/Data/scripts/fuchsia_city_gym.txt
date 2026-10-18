@@ -1,0 +1,60 @@
+# The Fuchsia City Gym (plan 19 · K6, part a). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/FuchsiaCity_Gym/scripts.inc).
+#
+# Koga battles for the Soul Badge (FLAG_BADGE05_GET is the badge itself, `givebadge soul`, which opens Surf in the
+# field), counts his six trainers beaten (FireRed's set_gym_trainers 5) and gives TM06, Toxic
+# (FLAG_GOT_TM06_FROM_KOGA). The guide by the door tells of the walls nobody can see.
+
+
+script Koga
+  face koga player
+  speaker "Koga"
+  if badge soul goto Won
+  scene "Koga"
+  say "Fwahahaha! A mere child dares to challenge me? I am Koga, Leader of this Gym!"
+  say "Ninja arts are the arts of deception. My poisons will sap your strength while you stumble in confusion!"
+  battle self as "kanto_leader_koga"
+  say "Hmph! You have proven your worth. Take the Soul Badge."
+  givebadge soul
+  text "{player} received the Soul Badge from Koga!"
+  say "With the Soul Badge, your Pokémon can use Surf outside of battle, to ride across the water."
+  setflag FLAG_DEFEATED_KOGA
+  defeat "kanto_juggler_kayden"
+  defeat "kanto_juggler_shawn"
+  defeat "kanto_juggler_kirk"
+  defeat "kanto_juggler_nate"
+  defeat "kanto_tamer_edgar"
+  defeat "kanto_tamer_phil"
+label Tm
+  say "Take this as well. It is the very essence of my art."
+  give "TM06"
+  setflag FLAG_GOT_TM06_FROM_KOGA
+  say "TM06 is Toxic. It poisons the foe badly, and the poison grows worse with every turn."
+  endscene
+  end
+label Won
+  if not flag FLAG_GOT_TM06_FROM_KOGA goto Tm
+  say "You have the makings of a fine trainer. Remember: when strength fails, cunning wins the day."
+  end
+
+
+script GymGuy
+  speaker "Guide"
+  if flag FLAG_DEFEATED_KOGA goto Won
+  say "Hey, champ in the making! This Gym is full of walls you can't see."
+  say "Koga's Pokémon use poison and every trick in the book. Bring something to cure poison, and feel your way along!"
+  end
+label Won
+  say "You found your way through the invisible walls and beat Koga! What a ninja you'd make!"
+  end
+
+
+# The statues by the door: who has beaten Koga.
+script Statue
+  speaker none
+  if badge soul goto Won
+  text "Fuchsia City Pokémon Gym. Leader: Koga. Winning trainers: {rival}."
+  end
+label Won
+  text "Fuchsia City Pokémon Gym. Leader: Koga. Winning trainers: {rival}, {player}."
+  end

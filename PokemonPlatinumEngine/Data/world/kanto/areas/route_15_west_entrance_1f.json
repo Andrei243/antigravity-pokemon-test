@@ -1,0 +1,29 @@
+{
+  "key": "route_15_west_entrance_1f",
+  "index": 365,
+  "name": "Route 15",
+  "matrix": 312,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 6, "to": "route_15", "toWarp": 0 },
+    { "x": 1, "z": 7, "to": "route_15", "toWarp": 0 },
+    { "x": 11, "z": 6, "to": "route_15", "toWarp": 1 },
+    { "x": 11, "z": 7, "to": "route_15", "toWarp": 1 },
+    { "x": 9, "z": 10, "to": "route_15_west_entrance_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "policeman", "looks": "policeman", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route15_WestEntrance_1F_EventScript_Guard" }
+  ],
+  "signs": [],
+  "triggers": []
+}

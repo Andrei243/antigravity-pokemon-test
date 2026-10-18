@@ -1,10 +1,26 @@
 {
   // The gate on Route 16 (plan 19 · K5, part b) between Celadon's side and the bikers' road, its upper floor up the
-  // stairs. The Cycling Road's checks (no one on foot) are K6's, with the road
+  // stairs. Its lower lane is the Cycling Road's (plan 19 · K6, route_16_north_entrance_1f.txt): the guard turns back
+  // whoever has no Bicycle from the five steps across it (the area's triggers 2, 3, 8, 9 and 10), and the steps by
+  // the doors at either end note whether the player is going onto the road or coming off it (0 and 6 to 7, 1 and
+  // 4 to 5, on VAR_MAP_SCENE_ROUTE16). The upper lane, to Route 16's house, is anyone's
   "area": "route_16_north_entrance_1f",
   "bgmTrack": "kanto/viridian",
+  "triggers": [
+    { "trigger": 0, "script": "OffTheRoad" },
+    { "trigger": 1, "script": "OntoTheRoad" },
+    { "trigger": 2, "script": "NeedBike" },
+    { "trigger": 3, "script": "NeedBike" },
+    { "trigger": 4, "script": "OntoTheRoad" },
+    { "trigger": 5, "script": "OntoTheRoad" },
+    { "trigger": 6, "script": "OffTheRoad" },
+    { "trigger": 7, "script": "OffTheRoad" },
+    { "trigger": 8, "script": "NeedBike" },
+    { "trigger": 9, "script": "NeedBike" },
+    { "trigger": 10, "script": "NeedBike" }
+  ],
   "people": {
-    "policeman": { "name": "Guard", "dialog": [ "The Cycling Road starts south of here. You'll need a Bicycle to ride it, and it's a long way down!" ] },
+    "policeman": { "name": "Guard", "dialog": [ "The Cycling Road starts west of here. It's one long slope down to the south, so hold on tight!" ] },
     "old_man_1": { "name": "Old Man", "dialog": [ "I used to ride the Cycling Road every day, back when my knees worked." ] }
   }
 }

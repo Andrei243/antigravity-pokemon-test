@@ -184,7 +184,32 @@
     { "name": "SilphCo_11F", "matrix": 63, "area": "silph_co_11f", "trees": "Round", "setting": "Indoors" },
     { "name": "SilphCo_Elevator", "matrix": 64, "area": "silph_co_elevator", "trees": "Round", "setting": "Indoors" },
     { "name": "Route5_SouthEntrance", "matrix": 300, "area": "route_5_south_entrance", "trees": "Round", "setting": "Indoors" },
-    { "name": "Route6_NorthEntrance", "matrix": 301, "area": "route_6_north_entrance", "trees": "Round", "setting": "Indoors" }
+    { "name": "Route6_NorthEntrance", "matrix": 301, "area": "route_6_north_entrance", "trees": "Round", "setting": "Indoors" },
+    // Plan 19 · K6, part a: the gates of Routes 15 and 18 on both floors, Fuchsia City's rooms, and the Safari Zone's
+    // four parts (FireRed's MAP_TYPE_ROUTE: open country, joined by warps at their gaps) with their rest houses
+    { "name": "Route15_WestEntrance_1F", "matrix": 312, "area": "route_15_west_entrance_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route15_WestEntrance_2F", "matrix": 313, "area": "route_15_west_entrance_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route18_EastEntrance_1F", "matrix": 317, "area": "route_18_east_entrance_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route18_EastEntrance_2F", "matrix": 318, "area": "route_18_east_entrance_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_SafariZone_Entrance", "matrix": 263, "area": "fuchsia_city_safari_zone_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_Mart", "matrix": 264, "area": "fuchsia_city_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_SafariZone_Office", "matrix": 265, "area": "fuchsia_city_safari_zone_office", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_Gym", "matrix": 266, "area": "fuchsia_city_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_House1", "matrix": 267, "area": "fuchsia_city_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_PokemonCenter_1F", "matrix": 268, "area": "fuchsia_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_PokemonCenter_2F", "matrix": 269, "area": "fuchsia_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_WardensHouse", "matrix": 270, "area": "fuchsia_city_wardens_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_House2", "matrix": 271, "area": "fuchsia_city_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "FuchsiaCity_House3", "matrix": 272, "area": "fuchsia_city_house_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "SafariZone_Center", "matrix": 69, "area": "safari_zone_center", "trees": "Round" },
+    { "name": "SafariZone_East", "matrix": 70, "area": "safari_zone_east", "trees": "Round" },
+    { "name": "SafariZone_North", "matrix": 71, "area": "safari_zone_north", "trees": "Round" },
+    { "name": "SafariZone_West", "matrix": 72, "area": "safari_zone_west", "trees": "Round" },
+    { "name": "SafariZone_Center_RestHouse", "matrix": 73, "area": "safari_zone_center_rest_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "SafariZone_East_RestHouse", "matrix": 74, "area": "safari_zone_east_rest_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "SafariZone_North_RestHouse", "matrix": 75, "area": "safari_zone_north_rest_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "SafariZone_West_RestHouse", "matrix": 76, "area": "safari_zone_west_rest_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "SafariZone_SecretHouse", "matrix": 77, "area": "safari_zone_secret_house", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 19 · K1: Pallet Town, Route 1 and Viridian City, with their rooms
@@ -245,6 +270,15 @@
     "saffron_city_pokemon_center_1f", "saffron_city_pokemon_center_2f", "saffron_city_pokemon_trainer_fan_club",
     "silph_co_1f", "silph_co_2f", "silph_co_3f", "silph_co_4f", "silph_co_5f", "silph_co_6f", "silph_co_7f",
     "silph_co_8f", "silph_co_9f", "silph_co_10f", "silph_co_11f", "silph_co_elevator",
-    "route_5_south_entrance", "route_6_north_entrance"
+    "route_5_south_entrance", "route_6_north_entrance",
+    // Plan 19 · K6, part a: Routes 13 to 15 along the coast from Route 12's Snorlax to Fuchsia City, the Cycling Road
+    // (Routes 17 and 18 below Route 16) with Route 18's gate, Fuchsia City with its rooms, and the Safari Zone
+    "route_13", "route_14", "route_15", "route_15_west_entrance_1f", "route_15_west_entrance_2f",
+    "route_17", "route_18", "route_18_east_entrance_1f", "route_18_east_entrance_2f",
+    "fuchsia_city", "fuchsia_city_safari_zone_entrance", "fuchsia_city_mart", "fuchsia_city_safari_zone_office",
+    "fuchsia_city_gym", "fuchsia_city_house_1", "fuchsia_city_pokemon_center_1f", "fuchsia_city_pokemon_center_2f",
+    "fuchsia_city_wardens_house", "fuchsia_city_house_2", "fuchsia_city_house_3",
+    "safari_zone_center", "safari_zone_east", "safari_zone_north", "safari_zone_west", "safari_zone_center_rest_house",
+    "safari_zone_east_rest_house", "safari_zone_north_rest_house", "safari_zone_west_rest_house", "safari_zone_secret_house"
   ]
 }

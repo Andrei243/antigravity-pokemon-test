@@ -1,0 +1,27 @@
+# The gate on Route 16 (plan 19 · K6, part a). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/Route16_NorthEntrance_1F/scripts.inc and data/scripts/cycling_road.inc).
+#
+# The gate's lower lane leads onto the Cycling Road. The guard calls back whoever crosses its middle without a
+# Bicycle in the bag (FireRed's NeedBikeTrigger: FireRed asks the bag, not whether the player rides), and a step by
+# the west doors notes that the player is going onto the road (VAR_MAP_SCENE_ROUTE16 1, FireRed's
+# SetEnteringCyclingRoad), a step by the east doors that they have come off it (0). While the variable is 1, Route 16,
+# 17 and 18 put the player on the Bicycle and keep them on it (route_16.txt, route_17.txt, route_18.txt).
+
+
+script NeedBike
+  if item "Bicycle" end
+  speaker "Guard"
+  face player up
+  say "Hold on! No one goes onto the Cycling Road on foot. Come back with a Bicycle."
+  walk player right 1
+  end
+
+
+script OntoTheRoad
+  setvar VAR_MAP_SCENE_ROUTE16 1
+  end
+
+
+script OffTheRoad
+  setvar VAR_MAP_SCENE_ROUTE16 0
+  end

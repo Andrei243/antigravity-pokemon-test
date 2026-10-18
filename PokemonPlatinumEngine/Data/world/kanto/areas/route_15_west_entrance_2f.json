@@ -1,0 +1,28 @@
+{
+  "key": "route_15_west_entrance_2f",
+  "index": 366,
+  "name": "Route 15",
+  "matrix": 313,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 9, "to": "route_15_west_entrance_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "scientist", "looks": "scientist", "movement": "look_north", "x": 5, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "Route15_WestEntrance_2F_EventScript_Aide" }
+  ],
+  "signs": [
+    { "x": 4, "z": 1, "type": 0, "script": "Route15_WestEntrance_2F_EventScript_LeftBinoculars" },
+    { "x": 8, "z": 1, "type": 0, "script": "Route15_WestEntrance_2F_EventScript_RightBinoculars" }
+  ],
+  "triggers": []
+}

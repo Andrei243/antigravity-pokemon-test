@@ -1304,5 +1304,12 @@ public partial class GameEngine
         // ---- the Cycling Road's gates (plan 01 · M11, part d)
 
         public bool Cycling => game.flow.Player.Mode == TravelMode.Cycling;
+
+        // FireRed's ForcePlayerOntoBike (plan 19 · K6): the Cycling Road's riders, with the riding song
+        public void Ride(bool on)
+        {
+            if (Cycling == on) return;
+            if (game.flow.Player.SetCycling(on)) game.PlayFieldMusic();
+        }
     }
 }
