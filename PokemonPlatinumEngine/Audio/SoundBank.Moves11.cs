@@ -428,6 +428,6 @@ public static partial class SoundBank
                 d.Crackle(0.36f, 0.5f, 16, 1800f, 0.4f);
                 return Finish(d.S, 0.46f);
         }
-        return null;
+        return MakeMoveSoundY11b(name);
     }
 }

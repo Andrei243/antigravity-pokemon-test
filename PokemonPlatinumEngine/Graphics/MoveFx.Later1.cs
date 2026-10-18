@@ -151,7 +151,7 @@ internal static partial class MoveFx
     private static void L1Column(in FxCtx c, FxList fx, Color body, Color core, Color ring, float t0, float width)
     {
         float h = c.ToSize;
-        Shaft(fx, c.Age, c.ToFeet, t0, 0.8f, h * 2.1f, h * width, body, core);
+        Shaft(fx, c.Age, c.ToFeet, t0, 0.8f, h * 1.3f, h * width, body, core);
         if (c.Cue.Landed)
         {
             GroundRing(fx, c.Age, c.ToFeet, t0 + 0.04f, 0.5f, h * 1.2f, ring);
@@ -615,8 +615,8 @@ internal static partial class MoveFx
         {
             var at = c.To + new Vector3(0f, h * 0.85f, 0.2f);
             fx.Sprite(FxShape.Ring, at, h * 0.42f, Fx.Fade(Rgb(236, 232, 214), env), FxBlend.Alpha, c.Age);
-            fx.Streak(FxShape.Beam, at + Vector3.UnitY * h * 0.06f, Vector3.UnitX, h * 0.05f, 2.2f, Fx.Fade(Rgb(250, 248, 236), env), FxBlend.Alpha);
-            fx.Streak(FxShape.Beam, at - Vector3.UnitY * h * 0.06f, Vector3.UnitX, h * 0.05f, 2.2f, Fx.Fade(Rgb(250, 248, 236), env), FxBlend.Alpha);
+            fx.Streak(FxShape.Beam, at + Vector3.UnitY * h * 0.06f, Vector3.UnitX, h * 0.09f, 2.6f, Fx.Fade(Rgb(250, 248, 236), env), FxBlend.Alpha);
+            fx.Streak(FxShape.Beam, at - Vector3.UnitY * h * 0.06f, Vector3.UnitX, h * 0.09f, 2.6f, Fx.Fade(Rgb(250, 248, 236), env), FxBlend.Alpha);
         }
     }
 
