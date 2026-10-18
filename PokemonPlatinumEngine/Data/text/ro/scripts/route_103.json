@@ -1,0 +1,52 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Hey! Dad told me you saved him. And he gave you a Pokémon? That's so cool!"
+      ],
+      "text": [
+        "{player}! Hei! Tata mi-a spus că l-ai salvat. Și ți-a dat un Pokémon? Ce tare!"
+      ]
+    },
+    {
+      "en": [
+        "I was just counting the Pokémon around here. But I've got my own partner too, you know."
+      ],
+      "text": [
+        "Tocmai număram Pokémonii de pe aici. Dar să știi că am și eu un partener."
+      ]
+    },
+    {
+      "en": [
+        "Let's have a battle! I'll show you what being a trainer is all about!"
+      ],
+      "text": [
+        "Hai să ne luptăm! O să-ți arăt ce înseamnă să fii Antrenor!"
+      ]
+    },
+    {
+      "en": [
+        "Wow... You're really good! I can see why your Pokémon trusts you, {player}."
+      ],
+      "text": [
+        "Uau... Chiar te pricepi! Înțeleg de ce are Pokémonul tău încredere în tine, {player}."
+      ]
+    },
+    {
+      "en": [
+        "I think I've seen enough for today. I'm heading back to the lab. Come on, Dad will want to hear about this!"
+      ],
+      "text": [
+        "Cred că am văzut destule pe azi. Mă întorc la laborator. Hai, tata o să vrea să audă de asta!"
+      ]
+    }
+  ]
+}

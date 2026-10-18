@@ -1,0 +1,41 @@
+{
+  "people": {
+    "policeman": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznic"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road east is blocked by a sleeping Pokémon. It's been snoring there for days!"
+        ],
+        "text": [
+          "Drumul spre est e blocat de un Pokémon adormit. Sforăie acolo de zile întregi!"
+        ]
+      }
+    },
+    "policeman_2": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznic"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The view from upstairs is something. Have a look through the binoculars."
+        ],
+        "text": [
+          "Priveliștea de sus e ceva. Uită-te prin binoclu."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

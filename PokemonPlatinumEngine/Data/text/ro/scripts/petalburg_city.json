@@ -1,0 +1,98 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        "Wally"
+      ]
+    },
+    {
+      "en": [
+        "{player}... the grass is so tall here. Is a Pokémon really in there somewhere?"
+      ],
+      "text": [
+        "{player}... iarba e tare înaltă aici. Chiar e un Pokémon pe undeva prin ea?"
+      ]
+    },
+    {
+      "en": [
+        "I'm a little scared. But I'll do my best! Please, watch me!"
+      ],
+      "text": [
+        "Mi-e puțin frică. Dar o să fac tot ce pot! Te rog, uită-te la mine!"
+      ]
+    },
+    {
+      "en": [
+        "I did it! I caught a Ralts! It's mine... my very own Pokémon!"
+      ],
+      "text": [
+        "Am reușit! Am prins un Ralts! E al meu... primul meu Pokémon!"
+      ]
+    },
+    {
+      "en": [
+        "Thank you, {player}! Let's go back to the Gym and tell your dad!"
+      ],
+      "text": [
+        "Mulțumesc, {player}! Hai înapoi la Arenă să-i spunem tatălui tău!"
+      ]
+    }
+  ],
+  "ShowGym": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "Hey! You're new here, aren't you? Have you seen our Gym? It's that big building just up the road!"
+      ],
+      "text": [
+        "Hei! Nu ești de pe aici, nu? Ai văzut Arena noastră? E clădirea aia mare, puțin mai sus pe drum!"
+      ]
+    },
+    {
+      "en": [
+        "The Leader's name is Norman. He's moved here from Johto, and he's really, really strong!"
+      ],
+      "text": [
+        "Liderul se numește Norman. S-a mutat aici din Johto și e foarte, foarte puternic!"
+      ]
+    }
+  ],
+  "GymBoy": [
+    {
+      "en": [
+        "The Gym's that big building up the road. Norman's the Leader. Isn't that your dad?"
+      ],
+      "text": [
+        "Arena e clădirea mare de pe drum, mai sus. Liderul e Norman. Nu e tatăl tău?"
+      ]
+    },
+    {
+      "en": [
+        "Norman won't take on just anyone. You need four Badges from other Gyms before he'll battle you!"
+      ],
+      "text": [
+        "Norman nu se luptă cu oricine. Îți trebuie patru Insigne de la alte Arene ca să te înfrunte!"
+      ]
+    }
+  ],
+  "WallysMom": [
+    {
+      "en": [
+        "My boy Wally has always been frail. We're sending him to stay with relatives in Verdanturf, where the air is clean."
+      ],
+      "text": [
+        "Băiatul meu, Wally, a fost mereu firav. Îl trimitem la niște rude în Verdanturf, unde aerul e curat."
+      ]
+    }
+  ]
+}

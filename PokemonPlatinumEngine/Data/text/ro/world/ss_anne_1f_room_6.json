@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I collect seashells from every port we stop at. Vermilion's are the prettiest."
+        ],
+        "text": [
+          "Adun scoici din fiecare port în care oprim. Cele din Vermilion sunt cele mai frumoase."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

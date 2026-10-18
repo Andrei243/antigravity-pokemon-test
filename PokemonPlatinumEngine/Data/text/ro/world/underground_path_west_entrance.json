@@ -1,0 +1,23 @@
+{
+  "people": {
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "People say this path was dug because Team Rocket kept robbing travellers in Saffron City."
+        ],
+        "text": [
+          "Lumea zice că pasajul ăsta a fost săpat pentru că Echipa Rocket tot jefuia călătorii în Orașul Saffron."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

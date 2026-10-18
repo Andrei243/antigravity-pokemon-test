@@ -1,0 +1,41 @@
+{
+  "people": {
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Petalburg is a quiet place. That's what I love about it. Nothing ever happens here, and that's fine by me."
+        ],
+        "text": [
+          "Petalburg e un loc liniștit. Asta îmi place la el. Nu se întâmplă niciodată nimic aici, și mie mi-e bine așa."
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "At school we learned that every Pokémon type has another type it's weak against. Even Dragon types!"
+        ],
+        "text": [
+          "La școală am învățat că fiecare tip de Pokémon are un alt tip în fața căruia e slab. Chiar și tipul Dragon!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

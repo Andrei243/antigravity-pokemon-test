@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The captain's cabin is on the deck above. I heard he's terribly seasick, poor man."
+        ],
+        "text": [
+          "Cabina căpitanului e pe puntea de deasupra. Am auzit că are un rău de mare cumplit, sărmanul."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

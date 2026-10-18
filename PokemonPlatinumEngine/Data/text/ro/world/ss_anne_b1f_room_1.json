@@ -1,0 +1,65 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "fisher": {
+      "name": {
+        "en": [
+          "Barny"
+        ],
+        "text": [
+          "Barny"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Barny: I'm the ship's fisherman. Hook, line and battle!"
+        ],
+        "text": [
+          "Pescar Barny: Eu sunt pescarul vaporului. Cârlig, fir și luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Barny: My line snapped!"
+        ],
+        "text": [
+          "Pescar Barny: Mi s-a rupt firul!"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Phillip"
+        ],
+        "text": [
+          "Phillip"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Phillip: We sailors don't lose to landlubbers!"
+        ],
+        "text": [
+          "Marinar Phillip: Noi, marinarii, nu pierdem în fața celor de pe uscat!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Phillip: Blast! A landlubber beat me!"
+        ],
+        "text": [
+          "Marinar Phillip: Fir-ar! M-a bătut cineva de pe uscat!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

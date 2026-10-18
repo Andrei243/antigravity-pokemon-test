@@ -1,0 +1,39 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Huey"
+        ],
+        "text": [
+          "Huey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Huey: Ahoy, matey! Let's see what you're made of!"
+        ],
+        "text": [
+          "Marinar Huey: Ahoe! Să vedem ce poți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Huey: You're made of tough stuff!"
+        ],
+        "text": [
+          "Marinar Huey: Ești dintr-un aluat tare!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

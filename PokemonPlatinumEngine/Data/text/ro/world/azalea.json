@@ -1,0 +1,148 @@
+{
+  "people": {
+    "t23_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What, you want something? Beat it, kid. This town's got nothing worth seeing.",
+          "And stay away from that well."
+        ],
+        "text": [
+          "Ce, vrei ceva? Șterge-o de aici. Orașul ăsta n-are nimic de văzut.",
+          "Și ține-te departe de fântâna aia."
+        ]
+      }
+    },
+    "t23_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Slowpoke used to doze in every street of this town. Now there's not one to be seen.",
+          "Our town has long said a Slowpoke's yawn brings the rain. It hasn't rained properly in days."
+        ],
+        "text": [
+          "Slowpokeii moțăiau pe fiecare stradă a orașului ăstuia. Acum nu se mai vede niciunul.",
+          "De mult se zice în orașul nostru că un căscat de Slowpoke aduce ploaia. N-a mai plouat cum trebuie de zile întregi."
+        ]
+      }
+    },
+    "t23_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Azalea Gym is for Bug-type Pokémon. Its Leader is young, but he knows bugs better than anyone."
+        ],
+        "text": [
+          "Arena Azalea e pentru Pokémoni de tip Insectă. Liderul e tânăr, dar se pricepe la insecte mai bine ca oricine."
+        ]
+      }
+    },
+    "t23_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "West through the gate is Ilex Forest. It's so thick with trees that it's dark even at noon."
+        ],
+        "text": [
+          "Spre vest, prin poartă, e Pădurea Ilex. E atât de deasă încât e întuneric și la amiază."
+        ]
+      }
+    },
+    "t23_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Smell that? The charcoal kiln is going. Azalea's charcoal is the finest in Johto, so they say."
+        ],
+        "text": [
+          "Simți mirosul? Merge cuptorul de cărbune. Se zice că mangalul din Azalea e cel mai bun din Johto."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T23_008+1": {
+      "en": [
+        "Kurt's House"
+      ],
+      "text": [
+        "Casa lui Kurt"
+      ]
+    },
+    "T23_009+1": {
+      "en": [
+        "Azalea Town Pokémon Gym\nLeader: Bugsy\nHe knows every bug by its buzz."
+      ],
+      "text": [
+        "Arena Pokémon din Orășelul Azalea\nLider: Bugsy\nRecunoaște orice insectă după bâzâit."
+      ]
+    },
+    "T23_010+1": {
+      "en": [
+        "Charcoal Kiln"
+      ],
+      "text": [
+        "Cuptorul de Cărbune"
+      ]
+    },
+    "T23_011+1": {
+      "en": [
+        "Azalea Town\nSlowpoke doze in the shade of the forest here."
+      ],
+      "text": [
+        "Orășelul Azalea\nAici, Slowpokeii moțăie la umbra pădurii."
+      ]
+    },
+    "T23_012+1": {
+      "en": [
+        "Slowpoke Well\nIts water is said to call the rain."
+      ],
+      "text": [
+        "Fântâna Slowpoke\nSe spune că apa ei cheamă ploaia."
+      ]
+    },
+    "T23_013+1": {
+      "en": [
+        "Ilex Forest\nEnter through the gate."
+      ],
+      "text": [
+        "Pădurea Ilex\nIntrarea prin poartă."
+      ]
+    }
+  }
+}

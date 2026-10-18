@@ -1,0 +1,70 @@
+{
+  "RivalsBall": [
+    {
+      "en": [
+        "A Poké Ball sits on the floor. It's empty."
+      ],
+      "text": [
+        "Un Poké Ball stă pe podea. E gol."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Huh? Who are you? ...Oh! You're {player}, from next door! I heard you were moving in."
+      ],
+      "text": [
+        "Hm? Cine ești? ...A! Tu ești {player}, de alături! Am auzit că v-ați mutat aici."
+      ]
+    },
+    {
+      "en": [
+        "I'm {rival}. My dad's Professor Birch. I help him count Pokémon out on the routes."
+      ],
+      "text": [
+        "Eu sunt {rival}. Tata e Profesorul Birch. Îl ajut să numere Pokémonii de pe rute."
+      ]
+    },
+    {
+      "en": [
+        "I've always wanted a friend nearby who's into Pokémon too. Maybe someday you'll have one of your own!"
+      ],
+      "text": [
+        "Mereu mi-am dorit pe cineva în apropiere căruia să-i placă Pokémonii. Poate într-o zi o să ai și tu unul!"
+      ]
+    },
+    {
+      "en": [
+        "Oops, I'd better get going. Dad's out on Route 101 and I said I'd help. See you, {player}!"
+      ],
+      "text": [
+        "Ups, trebuie să plec. Tata e pe Ruta 101 și i-am promis că-l ajut. Pe curând, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "An empty Poké Ball."
+      ],
+      "text": [
+        "Un Poké Ball gol."
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "Our house is right next to yours, {player}. Come over any time!"
+      ],
+      "text": [
+        "Casa noastră e chiar lângă a ta, {player}. Treci pe la noi oricând!"
+      ]
+    }
+  ]
+}

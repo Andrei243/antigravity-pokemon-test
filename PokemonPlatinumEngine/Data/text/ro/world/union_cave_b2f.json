@@ -1,0 +1,83 @@
+{
+  "people": {
+    "d25r0103_gsman3": {
+      "name": {
+        "en": [
+          "Nick"
+        ],
+        "text": [
+          "Nick"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Nick: Nobody comes this deep by accident. Show me what brought you here!"
+        ],
+        "text": [
+          "Antrenor As Nick: Nimeni nu ajunge atât de adânc din întâmplare. Arată-mi ce te-a adus aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Nick: So that's what brought you. Impressive."
+        ],
+        "text": [
+          "Antrenor As Nick: Deci asta te-a adus. Impresionant."
+        ]
+      }
+    },
+    "d25r0103_gswoman3": {
+      "name": {
+        "en": [
+          "Gwen"
+        ],
+        "text": [
+          "Gwen"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Gwen: I train down here where nobody can watch. Now you've seen, so let's battle!"
+        ],
+        "text": [
+          "Antrenoare As Gwen: Mă antrenez aici unde nu mă vede nimeni. Acum m-ai văzut, deci hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Gwen: I'll have to find somewhere even deeper to train."
+        ],
+        "text": [
+          "Antrenoare As Gwen: O să trebuiască să găsesc un loc și mai adânc unde să mă antrenez."
+        ]
+      }
+    },
+    "d25r0103_gswoman3_2": {
+      "name": {
+        "en": [
+          "Emma"
+        ],
+        "text": [
+          "Emma"
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Emma: The water down here is so still. Let's make some waves!"
+        ],
+        "text": [
+          "Antrenoare As Emma: Apa e atât de liniștită aici jos. Hai să facem niște valuri!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Emma: Those were big waves. I'm soaked."
+        ],
+        "text": [
+          "Antrenoare As Emma: Au fost valuri mari. Sunt udă leoarcă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

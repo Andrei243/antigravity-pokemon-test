@@ -1,0 +1,58 @@
+{
+  "people": {
+    "rivals_house_2f_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "item_ball": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          "Poké Ball"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LittlerootTown_MaysHouse_2F_EventScript_PC": {
+      "en": [
+        "The PC's screen shows a map of Hoenn,\nwith little marks wherever Pokémon were seen."
+      ],
+      "text": [
+        "Pe ecranul PC-ului e o hartă a regiunii Hoenn,\ncu semne mici unde au fost văzuți Pokémoni."
+      ]
+    },
+    "PlayersHouse_2F_EventScript_Notebook": {
+      "en": [
+        "A notebook full of sketches of Pokémon,\neach one labelled with where it was found."
+      ],
+      "text": [
+        "Un caiet plin de schițe de Pokémoni,\nfiecare cu locul unde a fost găsit."
+      ]
+    },
+    "LittlerootTown_MaysHouse_2F_EventScript_WallClock": {
+      "en": [
+        "A clock hangs on the wall.\nIt ticks along quietly."
+      ],
+      "text": [
+        "Pe perete atârnă un ceas.\nTicăie liniștit."
+      ]
+    },
+    "PlayersHouse_2F_EventScript_GameCube": {
+      "en": [
+        "A games console sits under the television.\nSomebody left a game paused."
+      ],
+      "text": [
+        "Sub televizor e o consolă de jocuri.\nCineva a lăsat un joc pe pauză."
+      ]
+    }
+  }
+}

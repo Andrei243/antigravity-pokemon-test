@@ -1,0 +1,119 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Trevor"
+        ],
+        "text": [
+          "Trevor"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Trevor: Ahoy! A sailor's life is all about battles at sea!"
+        ],
+        "text": [
+          "Marinar Trevor: Ahoe! Viața de marinar înseamnă lupte pe mare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Trevor: I've been sunk!"
+        ],
+        "text": [
+          "Marinar Trevor: M-ai scufundat!"
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ugh... I'm feeling a bit seasick. Too much party food, I think."
+        ],
+        "text": [
+          "Uf... Mi-e cam rău de mare. Prea multă mâncare de la petrecere, cred."
+        ]
+      }
+    },
+    "sailor_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Scrub the deck, scrub the deck... It never ends on a ship like this."
+        ],
+        "text": [
+          "Freci puntea, freci puntea... Pe un vapor ca ăsta nu se termină niciodată."
+        ]
+      }
+    },
+    "sailor_3": {
+      "name": {
+        "en": [
+          "Edmond"
+        ],
+        "text": [
+          "Edmond"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Edmond: My Pokémon have sea legs. Do yours?"
+        ],
+        "text": [
+          "Marinar Edmond: Pokémonii mei au picior de marinar. Ai tăi au?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Edmond: Your Pokémon have sea legs and then some!"
+        ],
+        "text": [
+          "Marinar Edmond: Pokémonii tăi au picior de marinar și încă ceva pe deasupra!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Look at all the water! I can't even see land any more. Well, I can see Vermilion..."
+        ],
+        "text": [
+          "Uite câtă apă! Nici nu mai văd pământul. Mă rog, văd Vermilionul..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

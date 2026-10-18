@@ -1,0 +1,48 @@
+{
+  "people": {
+    "players_house_2f_mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your room looks lovely, {player}!"
+        ],
+        "text": [
+          "Ce frumoasă e camera ta, {player}!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LittlerootTown_BrendansHouse_2F_EventScript_PC": {
+      "en": [
+        "The PC is still in its box from the move.\nIt will have to be plugged in first."
+      ],
+      "text": [
+        "PC-ul e încă în cutia de la mutare.\nTrebuie mai întâi pus în priză."
+      ]
+    },
+    "PlayersHouse_2F_EventScript_Notebook": {
+      "en": [
+        "A notebook with a list on the first page:\nUnpack. Meet the neighbours. See the professor."
+      ],
+      "text": [
+        "Un caiet cu o listă pe prima pagină:\nDespachetat. Cunoscut vecinii. Mers la profesor."
+      ]
+    },
+    "PlayersHouse_2F_EventScript_GameCube": {
+      "en": [
+        "A games console sits under the television.\nThe controller's cable is still tangled up."
+      ],
+      "text": [
+        "Sub televizor e o consolă de jocuri.\nCablul controllerului e încă încâlcit."
+      ]
+    }
+  }
+}

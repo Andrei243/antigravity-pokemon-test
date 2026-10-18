@@ -1,0 +1,180 @@
+{
+  "Can": [
+    {
+      "en": [
+        "Nope! There's only rubbish in here."
+      ],
+      "text": [
+        "Nimic! Aici e doar gunoi."
+      ]
+    },
+    {
+      "en": [
+        "Hey! There's a switch under the rubbish! {player} pressed it.\nThe first electric lock opened!"
+      ],
+      "text": [
+        "Hei! Sub gunoi e un întrerupător! {player} l-a apăsat.\nPrimul zăvor electric s-a deschis!"
+      ]
+    },
+    {
+      "en": [
+        "Nope! There's only rubbish in here.\nHey! The electric locks were reset!"
+      ],
+      "text": [
+        "Nimic! Aici e doar gunoi.\nHei! Zăvoarele electrice s-au resetat!"
+      ]
+    },
+    {
+      "en": [
+        "There's another switch under the rubbish! {player} pressed it.\nThe second electric lock opened, and the gates are down!"
+      ],
+      "text": [
+        "Sub gunoi mai e un întrerupător! {player} l-a apăsat.\nAl doilea zăvor electric s-a deschis, iar porțile au căzut!"
+      ]
+    }
+  ],
+  "LtSurge": [
+    {
+      "en": [
+        "Lt. Surge"
+      ],
+      "text": [
+        "Lt. Surge"
+      ]
+    },
+    {
+      "en": [
+        "Hey, kid! What do you think you're doing here? You won't last long in battle, not with your puny power!"
+      ],
+      "text": [
+        "Hei, tu! Ce crezi că faci aici? N-o să reziști mult în luptă, nu cu puterea ta de nimic!"
+      ]
+    },
+    {
+      "en": [
+        "I tell you, kid, electric Pokémon saved me during the war! Now let's see you survive a jolt like that!"
+      ],
+      "text": [
+        "Să-ți spun ceva: Pokémonii electrici mi-au salvat pielea în război! Hai să vedem dacă supraviețuiești unui așa șoc!"
+      ]
+    },
+    {
+      "en": [
+        "Whoa! You're the real deal, kid! Fine then, take the Thunder Badge!"
+      ],
+      "text": [
+        "Uau! Chiar ești de calibru! Bine atunci, ia Insigna Tunet!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Thunder Badge from Lt. Surge!"
+      ],
+      "text": [
+        "{player} a primit Insigna Tunet de la Lt. Surge!"
+      ]
+    },
+    {
+      "en": [
+        "The Thunder Badge lets your Pokémon use Fly outside of battle, once you have the move."
+      ],
+      "text": [
+        "Insigna Tunet îi lasă pe Pokémonii tăi să folosească Zbor în afara luptei, după ce au mișcarea."
+      ]
+    },
+    {
+      "en": [
+        "And here, take this as well. It's my special move!"
+      ],
+      "text": [
+        "Și uite, ia și asta. E mișcarea mea specială!"
+      ]
+    },
+    {
+      "en": [
+        "TM34 is Shock Wave. It strikes so fast that it never misses. Electric, like me!"
+      ],
+      "text": [
+        "TM34 e Undă de Șoc. Lovește atât de repede încât nu ratează niciodată. Electric, ca mine!"
+      ]
+    },
+    {
+      "en": [
+        "A little word of advice, kid. Electricity is sure powerful, but it's useless against Ground types!"
+      ],
+      "text": [
+        "Un mic sfat. Electricitatea e puternică, sigur, dar nu folosește la nimic împotriva tipului Pământ!"
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Yo! Champ in the making! Lt. Surge has locked himself in behind electric gates."
+      ],
+      "text": [
+        "Salut! Iată un viitor Campion! Lt. Surge s-a încuiat în spatele unor porți electrice."
+      ]
+    },
+    {
+      "en": [
+        "The switches are hidden in the bins round the hall. Find the first, and the second is always right beside it!"
+      ],
+      "text": [
+        "Întrerupătoarele sunt ascunse în coșurile din sală. Găsește-l pe primul, iar al doilea e mereu chiar lângă el!"
+      ]
+    },
+    {
+      "en": [
+        "His Pokémon are Electric types, so bring a Ground type. Electric moves can't touch them!"
+      ],
+      "text": [
+        "Pokémonii lui sunt de tip Electric, așa că adu un tip Pământ. Mișcările electrice nu-l pot atinge!"
+      ]
+    },
+    {
+      "en": [
+        "Whew! That was an electrifying battle! You really showed Lt. Surge."
+      ],
+      "text": [
+        "Uf! Ce luptă electrizantă! Chiar i-ai arătat lui Lt. Surge."
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Vermilion City Pokémon Gym\nLeader: Lt. Surge"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Vermilion\nLider: Lt. Surge"
+      ]
+    },
+    {
+      "en": [
+        "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nWinning trainers: {rival}, {player}"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Vermilion\nLider: Lt. Surge\nAntrenori învingători: {rival}, {player}"
+      ]
+    }
+  ],
+  "Gate": [
+    {
+      "en": [
+        "A beam of electricity crackles across the way. It must be switched off somewhere in the Gym."
+      ],
+      "text": [
+        "O rază de electricitate trosnește de-a curmezișul drumului. Trebuie oprită de undeva din Arenă."
+      ]
+    }
+  ]
+}

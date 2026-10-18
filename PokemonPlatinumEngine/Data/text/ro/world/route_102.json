@@ -1,0 +1,164 @@
+{
+  "people": {
+    "little_boy": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          "Băiețelul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I saw a Pokémon with a big leaf on its head! It ran off into the grass when I said hello."
+        ],
+        "text": [
+          "Am văzut un Pokémon cu o frunză mare pe cap! A fugit în iarbă când l-am salutat."
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Petalburg City is just ahead. The Gym there is run by a really strong trainer.",
+          "Nobody gets to challenge him until they've proved themselves somewhere else first."
+        ],
+        "text": [
+          "Orașul Petalburg e chiar în față. Arena de acolo e condusă de un Antrenor foarte puternic.",
+          "Nimeni nu-l poate provoca până nu și-a dovedit întâi valoarea în altă parte."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Calvin"
+        ],
+        "text": [
+          "Calvin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Calvin: You looked at me! That means we battle. Those are the rules!"
+        ],
+        "text": [
+          "Puști Calvin: Te-ai uitat la mine! Asta înseamnă luptă. Așa sunt regulile!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Calvin: Hmm. Maybe the rules need changing."
+        ],
+        "text": [
+          "Puști Calvin: Hmm. Poate trebuie schimbate regulile."
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Rick"
+        ],
+        "text": [
+          "Rick"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Rick: Stop right there! My bugs have been itching for a battle."
+        ],
+        "text": [
+          "Vânător de insecte Rick: Stai pe loc! Insectele mele abia așteaptă o luptă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Rick: My bugs are buzzing with disappointment."
+        ],
+        "text": [
+          "Vânător de insecte Rick: Insectele mele bâzâie de dezamăgire."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Tiana"
+        ],
+        "text": [
+          "Tiana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Tiana: I'm still learning, but I'm learning fast! Let's battle!"
+        ],
+        "text": [
+          "Domnișoară Tiana: Încă învăț, dar învăț repede! Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Tiana: That's one more thing learned, then."
+        ],
+        "text": [
+          "Domnișoară Tiana: Încă un lucru învățat, atunci."
+        ]
+      }
+    },
+    "youngster_2": {
+      "name": {
+        "en": [
+          "Allen"
+        ],
+        "text": [
+          "Allen"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Allen: You're new around here, aren't you? Let me show you how it's done!"
+        ],
+        "text": [
+          "Puști Allen: Nu ești de pe aici, nu? Să-ți arăt cum se face!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Allen: Well, you've shown me how it's done instead."
+        ],
+        "text": [
+          "Puști Allen: Ei, mi-ai arătat tu mie cum se face."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route102_EventScript_RouteSignPetalburg": {
+      "en": [
+        "Route 102\nPetalburg City ahead"
+      ],
+      "text": [
+        "Ruta 102\nÎnainte: Orașul Petalburg"
+      ]
+    },
+    "Route102_EventScript_RouteSignOldale": {
+      "en": [
+        "Route 102\nOldale Town ahead"
+      ],
+      "text": [
+        "Ruta 102\nÎnainte: Orășelul Oldale"
+      ]
+    }
+  }
+}

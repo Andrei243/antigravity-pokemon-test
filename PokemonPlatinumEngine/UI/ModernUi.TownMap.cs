@@ -227,8 +227,10 @@ internal static partial class ModernUi
             float tx = x0 + Tag(x0, ty, label, colour) + 10;
             if (hoveredSpot != null)
                 Tag(tx, ty, Text.Of(hoveredSpot.Open ? (fly ? "townMap.tag.flyHere" : "townMap.tag.visited") : "townMap.tag.notVisited"), hoveredSpot.Open ? (fly ? Selection : Frame) : Muted);
-            float size = UiFonts.Measure(block.Name, 52, UiWeight.Black) <= wide ? 52 : 42;
-            UiFonts.Draw(block.Name, x0, ty + 50, size, Ink, UiWeight.Black);
+            // The place's name as the language shows it (plan 17 · N6f); the tag above goes by the English
+            string shownName = LocalNames.PlaceShown(null, block.Name);
+            float size = UiFonts.Measure(shownName, 52, UiWeight.Black) <= wide ? 52 : 42;
+            UiFonts.Draw(shownName, x0, ty + 50, size, Ink, UiWeight.Black);
             UiShapes.Fill(new Rectangle(x0, ty + 128, wide, 3), 1.5f, Rule);
             float y = ty + 154;
             if (state.Tells(block.Area)) y = Paragraph(block.Area.About, x0, y, wide, Ink);
@@ -238,7 +240,7 @@ internal static partial class ModernUi
                 y += 22;
                 UiShapes.Circle(new Vector2(x0 + 12, y + 20), 12, Blue);
                 UiShapes.Circle(new Vector2(x0 + 12, y + 20), 4.6f, Color.White);
-                UiFonts.Draw(landmark.Name ?? "", x0 + 36, y, 36, Ink, UiWeight.Black);
+                UiFonts.Draw(LocalNames.PlaceShown(null, landmark.Name ?? ""), x0 + 36, y, 36, Ink, UiWeight.Black);
                 Paragraph(landmark.About, x0, y + 56, wide, Ink);
             }
         }

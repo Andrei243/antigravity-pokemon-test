@@ -50,5 +50,31 @@
         "Chihlimbarul e seva unor copaci străvechi, întărită cu timpul. Uneori rămâne ceva prins înăuntru."
       ]
     }
+  ],
+  "OldAmberScientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        "Cercetătorul"
+      ]
+    },
+    {
+      "en": [
+        "Ssh! I think this chunk of amber holds the genes of an ancient Pokémon. Could you take it to a lab to be checked?"
+      ],
+      "text": [
+        "Sst! Cred că bucata asta de chihlimbar ascunde genele unui Pokémon străvechi. O poți duce la un laborator s-o cerceteze?"
+      ]
+    },
+    {
+      "en": [
+        "Ssh! Get that Old Amber looked at by someone who knows fossils. I'm sure there's a Pokémon inside!"
+      ],
+      "text": [
+        "Sst! Du Chihlimbarul Vechi la cineva care se pricepe la fosile. Sunt sigur că e un Pokémon înăuntru!"
+      ]
+    }
   ]
 }

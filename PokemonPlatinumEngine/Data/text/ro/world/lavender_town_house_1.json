@@ -1,0 +1,41 @@
+{
+  "people": {
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That Cubone's mother was attacked by Team Rocket. Now its spirit wanders the tower..."
+        ],
+        "text": [
+          "Mama acelui Cubone a fost atacată de Echipa Rocket. Acum spiritul ei bântuie turnul..."
+        ]
+      }
+    },
+    "cubone": {
+      "name": {
+        "en": [
+          "Cubone"
+        ],
+        "text": [
+          "Cubone"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kyarugoo..."
+        ],
+        "text": [
+          "Kiarugoo..."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

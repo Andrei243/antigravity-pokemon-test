@@ -1,0 +1,39 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Thomas"
+        ],
+        "text": [
+          "Thomas"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Thomas: This party is a bore. Entertain me with a battle!"
+        ],
+        "text": [
+          "Gentleman Thomas: Petrecerea asta e plictisitoare. Distrează-mă cu o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Thomas: Most entertaining. Thank you."
+        ],
+        "text": [
+          "Gentleman Thomas: Foarte distractiv. Mulțumesc."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

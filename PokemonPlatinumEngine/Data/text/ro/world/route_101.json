@@ -1,0 +1,98 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wild Pokémon jump out of the tall grass when you least expect it.",
+          "If you haven't got a Pokémon of your own, stick to the path!"
+        ],
+        "text": [
+          "Pokémonii sălbatici sar din iarba înaltă când te aștepți mai puțin.",
+          "Dacă n-ai un Pokémon al tău, nu te abate de la potecă!"
+        ]
+      }
+    },
+    "route101_birch": {
+      "name": {
+        "en": [
+          "Prof. Birch"
+        ],
+        "text": [
+          "Profesorul Birch"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Help! Get a Poké Ball from my bag!"
+        ],
+        "text": [
+          "Ajutor! Ia un Poké Ball din geanta mea!"
+        ]
+      }
+    },
+    "route101_zigzagoon": {
+      "name": {
+        "en": [
+          "Zigzagoon"
+        ],
+        "text": [
+          "Zigzagoon"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Zigzagoon: Guguuh!"
+        ],
+        "text": [
+          "Zigzagoon: Guguuh!"
+        ]
+      }
+    },
+    "birchs_bag": {
+      "name": {
+        "en": [
+          "Bag"
+        ],
+        "text": [
+          "Geanta"
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I heard the professor yelling for help all the way from here! Good thing you came along."
+        ],
+        "text": [
+          "L-am auzit pe profesor strigând după ajutor tocmai de aici! Noroc că ai venit tu."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route101_EventScript_RouteSign": {
+      "en": [
+        "Route 101\nOldale Town - Littleroot Town"
+      ],
+      "text": [
+        "Ruta 101\nOrășelul Oldale - Orășelul Littleroot"
+      ]
+    }
+  }
+}

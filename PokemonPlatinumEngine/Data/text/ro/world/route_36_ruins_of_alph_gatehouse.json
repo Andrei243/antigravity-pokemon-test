@@ -1,0 +1,41 @@
+{
+  "people": {
+    "r36r0101_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 36 is north of here. A strange tree is blocking the road, so nobody's getting through for now."
+        ],
+        "text": [
+          "Ruta 36 e la nord de aici. Un copac ciudat blochează drumul, așa că deocamdată nu trece nimeni."
+        ]
+      }
+    },
+    "r36r0101_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've walked through these Ruins every day for fifty years. I still find carvings I haven't seen."
+        ],
+        "text": [
+          "Trec prin Ruinele astea în fiecare zi de cincizeci de ani. Tot mai găsesc sculpturi pe care nu le-am văzut."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

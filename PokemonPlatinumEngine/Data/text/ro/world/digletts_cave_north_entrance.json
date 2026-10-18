@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Diglett's Cave"
+    ],
+    "text": [
+      "Peștera lui Diglett"
+    ]
+  },
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Diglett dug this whole cave. It runs all the way under the hills to Vermilion City!"
+        ],
+        "text": [
+          "Diglettii au săpat toată peștera asta. Merge pe sub dealuri până în Orașul Vermilion!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

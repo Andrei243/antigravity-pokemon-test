@@ -1,0 +1,39 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Arthur"
+        ],
+        "text": [
+          "Arthur"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Arthur: Young trainer! Let us have a civilised battle."
+        ],
+        "text": [
+          "Gentleman Arthur: Bună ziua! Să avem o luptă civilizată."
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Arthur: Splendid! You battle with real class."
+        ],
+        "text": [
+          "Gentleman Arthur: Splendid! Te lupți cu adevărată clasă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

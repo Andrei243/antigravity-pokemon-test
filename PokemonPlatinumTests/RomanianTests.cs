@@ -313,6 +313,8 @@ public class RomanianTests
         // stand over the introduction's lines (plan 17 · N6c)
         lines.UnionWith(TrainerLineTexts());
         lines.UnionWith(RegionDatabase.All.Select(r => r.Professor?.Name).OfType<string>());
+        // And the Pokégear's radio (plan 17 · N6f)
+        lines.UnionWith(RadioShows.AllLines);
         // Every line of the table is a line a region's file or trainer-lines.json has (a line rewritten in English leaves its entry behind)
         Assert.Empty(table.Keys.Where(k => !lines.Contains(k)).OrderBy(k => k));
         // Every line of Sinnoh's professor is in it, with the placeholders its English has and no character the faces lack
@@ -333,6 +335,33 @@ public class RomanianTests
         }
         finally { Text.Use(Text.English); }
         Assert.Equal(sinnoh.Hello, Text.OfData(sinnoh.Hello));
+    }
+
+    [Fact]
+    public void ThePokegearsRadioSpeaksRomanianAndDrawsTheSameLineInEveryLanguage()
+    {
+        // Plan 17 · N6f: every station's line has a Romanian one in data.json, with the same placeholders
+        var table = Text.DataTable(Romanian);
+        var wrong = new List<string>();
+        foreach (string en in RadioShows.AllLines)
+        {
+            if (!table.TryGetValue(en, out var ro) || ro.Length == 0) { wrong.Add($"no Romanian for: {en}"); continue; }
+            var holes = Regex.Matches(en, @"\{[a-z]+\}").Select(m => m.Value).OrderBy(h => h).ToList();
+            if (!holes.SequenceEqual(Regex.Matches(ro, @"\{[a-z]+\}").Select(m => m.Value).OrderBy(h => h))) wrong.Add($"placeholders differ: {ro}");
+            if (TextMetrics.Undrawable(ro, UiWeight.ExtraBold).Any()) wrong.Add($"can't be drawn: {ro}");
+        }
+        Assert.True(wrong.Count == 0, string.Join("\n", wrong));
+        // The dice draw the line from the English, so a seed gives the same line in both languages
+        string english = RadioShows.Line(RadioStation.PokemonTalk, new Random(3), "Pidgey", "Route 29");
+        try
+        {
+            Text.Use(Romanian);
+            string romanian = RadioShows.Line(RadioStation.PokemonTalk, new Random(3), "Pidgey", "Ruta 29");
+            Assert.NotEqual(english, romanian);
+            Assert.Contains(romanian, RadioShows.Of(RadioStation.PokemonTalk).Select(l => table[l].Replace("{species}", "Pidgey").Replace("{place}", "Ruta 29")));
+        }
+        finally { Text.Use(Text.English); }
+        Assert.Equal(english, RadioShows.Line(RadioStation.PokemonTalk, new Random(3), "Pidgey", "Route 29"));
     }
 
     /// <summary>Every line of <c>trainer-lines.json</c>, as its English is written.</summary>

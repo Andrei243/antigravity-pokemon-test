@@ -1,0 +1,39 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Dylan"
+        ],
+        "text": [
+          "Dylan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Dylan: My Pokémon and I have been to every sea there is!"
+        ],
+        "text": [
+          "Marinar Dylan: Eu și Pokémonii mei am fost pe toate mările lumii!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Dylan: Never been sunk like that before!"
+        ],
+        "text": [
+          "Marinar Dylan: N-am mai fost scufundat așa niciodată!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

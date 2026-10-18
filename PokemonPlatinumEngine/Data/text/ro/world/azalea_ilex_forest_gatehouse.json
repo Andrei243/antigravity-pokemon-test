@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t23r0101_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ilex Forest is through there, but a tree has come down across the path. Nobody's getting through yet."
+        ],
+        "text": [
+          "Pădurea Ilex e pe acolo, dar a căzut un copac de-a curmezișul cărării. Deocamdată nu trece nimeni."
+        ]
+      }
+    },
+    "t23r0101_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a shrine deep in Ilex Forest. They say the forest's protector visits it, though few have seen it."
+        ],
+        "text": [
+          "În adâncul Pădurii Ilex e un altar. Se zice că ocrotitorul pădurii îl vizitează, deși puțini l-au văzut."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,106 @@
+{
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Chairman"
+        ],
+        "text": [
+          "Președintele"
+        ]
+      }
+    },
+    "worker_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our chairman does love to talk about his Pokémon. Once he starts, he won't stop!"
+        ],
+        "text": [
+          "Președintelui nostru chiar îi place să vorbească despre Pokémonii lui. Odată ce pornește, nu se mai oprește!"
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          "Pikachu"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pika pika!"
+        ],
+        "text": [
+          "Pikachu: Pika pika!"
+        ]
+      }
+    },
+    "seel": {
+      "name": {
+        "en": [
+          "Seel"
+        ],
+        "text": [
+          "Seel"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Seel: Kyuoo!"
+        ],
+        "text": [
+          "Seel: Kiuuu!"
+        ]
+      }
+    },
+    "pokemon_fan_club_woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    },
+    "pokemon_fan_club_fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "VermilionCity_PokemonFanClub_EventScript_RulesSign1": {
+      "en": [
+        "Fan Club rule one:\nListen politely to other members."
+      ],
+      "text": [
+        "Regula unu a Clubului:\nAscultă-i politicos pe ceilalți membri."
+      ]
+    },
+    "VermilionCity_PokemonFanClub_EventScript_RulesSign2": {
+      "en": [
+        "Fan Club rule two:\nIf someone brags about their Pokémon, brag right back!"
+      ],
+      "text": [
+        "Regula doi a Clubului:\nDacă cineva se laudă cu Pokémonul lui, laudă-te și tu!"
+      ]
+    }
+  }
+}

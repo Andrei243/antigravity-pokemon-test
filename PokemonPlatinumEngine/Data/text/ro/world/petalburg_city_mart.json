@@ -1,0 +1,77 @@
+{
+  "people": {
+    "petalburg_mart_clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! What can I get for you?"
+        ],
+        "text": [
+          "Bun venit! Cu ce vă pot servi?"
+        ]
+      }
+    },
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Repel keeps weak Pokémon away for a while. Handy when you just want to get somewhere."
+        ],
+        "text": [
+          "Un Spray ține Pokémonii slabi la distanță o vreme. Util când vrei doar să ajungi undeva."
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I always buy one more Potion than I think I need. Then I never run out."
+        ],
+        "text": [
+          "Cumpăr mereu o Poțiune în plus față de câte cred că-mi trebuie. Așa nu rămân niciodată fără."
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym Leader's family shops here sometimes. Such polite people."
+        ],
+        "text": [
+          "Familia Liderului de Arenă face cumpărături aici uneori. Ce oameni politicoși."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

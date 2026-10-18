@@ -1,0 +1,83 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Ann"
+        ],
+        "text": [
+          "Ann"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Ann: I'm on holiday with my family. But a battle sounds even more fun!"
+        ],
+        "text": [
+          "Domnișoară Ann: Sunt în vacanță cu familia. Dar o luptă sună și mai distractiv!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Ann: Oh! You're really strong!"
+        ],
+        "text": [
+          "Domnișoară Ann: O! Ce putere ai!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Tyler"
+        ],
+        "text": [
+          "Tyler"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Tyler: I love battling on boats. The floor wobbles!"
+        ],
+        "text": [
+          "Puști Tyler: Ador să mă lupt pe vapoare. Podeaua se clatină!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Tyler: I got seasick and lost..."
+        ],
+        "text": [
+          "Puști Tyler: Mi s-a făcut rău de mare și am pierdut..."
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My children won't stop battling. At least it keeps them out of trouble."
+        ],
+        "text": [
+          "Copiii mei nu se mai opresc din luptat. Măcar așa nu fac boacăne."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

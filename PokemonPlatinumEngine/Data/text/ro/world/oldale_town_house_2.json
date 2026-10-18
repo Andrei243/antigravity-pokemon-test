@@ -1,0 +1,41 @@
+{
+  "people": {
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If your Pokémon gets hurt, don't push it. A Pokémon Center will have it right as rain in no time."
+        ],
+        "text": [
+          "Dacă Pokémonul tău e rănit, nu-l forța. Un Centru Pokémon îl pune pe picioare cât ai clipi."
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I want to be a Gym Leader one day. First I need to beat one, though!"
+        ],
+        "text": [
+          "Vreau să ajung Lider de Arenă într-o zi. Dar întâi trebuie să înving unul!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

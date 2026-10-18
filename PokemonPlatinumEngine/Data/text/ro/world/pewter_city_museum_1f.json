@@ -38,6 +38,24 @@
         ]
       }
     },
+    "old_amber": {
+      "name": {
+        "en": [
+          "Old Amber"
+        ],
+        "text": [
+          "Chihlimbar Vechi"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A beautiful piece of amber. Something dark is held deep inside it."
+        ],
+        "text": [
+          "O bucată frumoasă de chihlimbar. Ceva întunecat e prins adânc în ea."
+        ]
+      }
+    },
     "scientist_2": {
       "name": {
         "en": [

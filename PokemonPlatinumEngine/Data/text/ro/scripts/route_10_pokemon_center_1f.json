@@ -1,0 +1,60 @@
+{
+  "Aide": [
+    {
+      "en": [
+        "Aide"
+      ],
+      "text": [
+        "Asistentul"
+      ]
+    },
+    {
+      "en": [
+        "Hi! I'm one of Professor Oak's aides. Shall I see how many kinds of Pokémon you've caught?"
+      ],
+      "text": [
+        "Bună! Sunt unul dintre asistenții Profesorului Oak. Să văd câte specii de Pokémoni ai prins?"
+      ]
+    },
+    {
+      "en": [
+        "{var:CAUGHT} kinds! Splendid. The Professor wants you to have this."
+      ],
+      "text": [
+        "{var:CAUGHT} specii! Splendid. Profesorul vrea să primești asta."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon holding an Everstone won't evolve. Handy, if you like one just as it is."
+      ],
+      "text": [
+        "Un Pokémon care ține o Piatra Veșniciei nu evoluează. Util, dacă îți place exact cum e."
+      ]
+    },
+    {
+      "en": [
+        "I'm studying the Pokémon of Rock Tunnel for Professor Oak."
+      ],
+      "text": [
+        "Studiez Pokémonii din Tunelul de Piatră pentru Profesorul Oak."
+      ]
+    },
+    {
+      "en": [
+        "All right. Come and see me whenever you like."
+      ],
+      "text": [
+        "Bine. Treci pe la mine oricând vrei."
+      ]
+    },
+    {
+      "en": [
+        "Only {var:CAUGHT} so far. Come back once you've caught twenty kinds, and I'll have something for you."
+      ],
+      "text": [
+        "Abia {var:CAUGHT} până acum. Întoarce-te după ce ai prins douăzeci de specii și o să am ceva pentru tine."
+      ]
+    }
+  ]
+}

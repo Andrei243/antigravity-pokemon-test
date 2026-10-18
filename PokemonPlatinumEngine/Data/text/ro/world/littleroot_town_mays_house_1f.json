@@ -1,0 +1,25 @@
+{
+  "people": {
+    "rivals_house_1f_mom": {
+      "name": {
+        "en": [
+          "Neighbour"
+        ],
+        "text": [
+          "Vecina"
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          "Băiețelul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

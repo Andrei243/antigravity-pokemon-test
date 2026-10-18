@@ -1,0 +1,60 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'd love to trade my Pokémon for something new. Maybe another day."
+        ],
+        "text": [
+          "Mi-ar plăcea să-mi schimb Pokémonul pe ceva nou. Poate altă dată."
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Professor Oak sent me to watch how your Pokédex is coming along.",
+          "Keep catching! He'll be thrilled with every new Pokémon you record."
+        ],
+        "text": [
+          "Profesorul Oak m-a trimis să urmăresc cum progresează Pokédexul tău.",
+          "Prinde cât mai mulți! O să se bucure de fiecare Pokémon nou pe care-l înregistrezi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route11_EastEntrance_2F_EventScript_LeftBinoculars": {
+      "en": [
+        "Through the binoculars:\nA huge Pokémon is lying asleep across the road!"
+      ],
+      "text": [
+        "Prin binoclu:\nUn Pokémon uriaș doarme întins de-a curmezișul drumului!"
+      ]
+    },
+    "Route11_EastEntrance_2F_EventScript_RightBinoculars": {
+      "en": [
+        "Through the binoculars:\nRock Tunnel is the quickest way to Lavender Town."
+      ],
+      "text": [
+        "Prin binoclu:\nTunelul de Piatră e drumul cel mai scurt spre Orășelul Lavender."
+      ]
+    }
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "BlockedPath": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        "Bărbatul"
+      ]
+    },
+    {
+      "en": [
+        "Aaah! Stop right there! Don't step on these footprints!"
+      ],
+      "text": [
+        "Aaah! Stai pe loc! Nu călca pe urmele astea!"
+      ]
+    },
+    {
+      "en": [
+        "I'm sketching them. A rare Pokémon must have come through here, and I won't have them smudged!"
+      ],
+      "text": [
+        "Le desenez. Pe aici trebuie să fi trecut un Pokémon rar și nu las pe nimeni să le strice!"
+      ]
+    }
+  ],
+  "FootprintsMan": [
+    {
+      "en": [
+        "Look at these tracks! Three toes, a long stride... Whatever made them was in a hurry."
+      ],
+      "text": [
+        "Ia uite urmele astea! Trei degete, un pas lung... Ce le-a lăsat se grăbea tare."
+      ]
+    },
+    {
+      "en": [
+        "I've finished my sketches. You can go west now, toward Petalburg City. Mind the grass on Route 102!"
+      ],
+      "text": [
+        "Mi-am terminat desenele. Acum poți merge spre vest, spre Orașul Petalburg. Ai grijă la iarba de pe Ruta 102!"
+      ]
+    }
+  ],
+  "MartEmployee": [
+    {
+      "en": [
+        "Hi there! I work at the Poké Mart. That's the shop with the blue roof, right over there."
+      ],
+      "text": [
+        "Salut! Eu lucrez la Poké Mart. E magazinul cu acoperiș albastru, chiar acolo."
+      ]
+    },
+    {
+      "en": [
+        "Here's a little something to try. Think of it as a free sample!"
+      ],
+      "text": [
+        "Uite ceva de încercat. Gândește-te la el ca la o mostră gratuită!"
+      ]
+    },
+    {
+      "en": [
+        "A Potion heals a Pokémon that's been hurt in battle. The Mart sells them, and lots else besides!"
+      ],
+      "text": [
+        "O Poțiune vindecă un Pokémon rănit în luptă. Le găsești la Mart, și multe altele pe deasupra!"
+      ]
+    }
+  ],
+  "RivalWaiting": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I'm going on ahead to the lab. Dad's waiting for us both. Don't dawdle!"
+      ],
+      "text": [
+        "{player}! Eu o iau înainte spre laborator. Tata ne așteaptă pe amândoi. Nu întârzia!"
+      ]
+    }
+  ],
+  "Girl": [
+    {
+      "en": [
+        "Oldale's a stop on the way to bigger places. Everyone passes through, but hardly anyone stays."
+      ],
+      "text": [
+        "Oldale e o oprire în drum spre locuri mai mari. Toată lumea trece pe aici, dar aproape nimeni nu rămâne."
+      ]
+    }
+  ]
+}

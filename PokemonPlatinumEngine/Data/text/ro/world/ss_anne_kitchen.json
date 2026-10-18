@@ -1,0 +1,139 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "chef": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătăreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You're not supposed to be in here! Go on, out of my kitchen!"
+        ],
+        "text": [
+          "N-ai voie aici! Hai, afară din bucătăria mea!"
+        ]
+      }
+    },
+    "chef_2": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătăreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Busy, busy! The guests want their dinner on time."
+        ],
+        "text": [
+          "Repede, repede! Oaspeții vor cina la timp."
+        ]
+      }
+    },
+    "chef_3": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătăreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Today's special is a seafood stew. Don't tell the Water types!"
+        ],
+        "text": [
+          "Specialitatea zilei e o tocăniță cu fructe de mare. Nu le spune Pokémonilor de tip Apă!"
+        ]
+      }
+    },
+    "chef_4": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătăreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm peeling potatoes. A thousand potatoes. Want to help?"
+        ],
+        "text": [
+          "Curăț cartofi. O mie de cartofi. Vrei să ajuți?"
+        ]
+      }
+    },
+    "chef_5": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătăreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! I've hidden some berries in the bins. Keep it a secret."
+        ],
+        "text": [
+          "Sst! Am ascuns niște boabe în coșuri. Să rămână între noi."
+        ]
+      }
+    },
+    "chef_6": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătăreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The captain's been too seasick to eat. Poor fellow."
+        ],
+        "text": [
+          "Căpitanului i-a fost prea rău de mare ca să mănânce. Bietul om."
+        ]
+      }
+    },
+    "chef_7": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          "Bucătăreasa"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A good chef is a fast chef! Out of the way!"
+        ],
+        "text": [
+          "Un bucătar bun e un bucătar rapid! Fă-te-ncolo!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

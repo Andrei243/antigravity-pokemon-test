@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Tower"
+    ],
+    "text": [
+      "Turnul Pokémon"
+    ]
+  },
+  "people": {
+    "pokemon_tower_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Smell you later!"
+        ],
+        "text": [
+          "Ne mai vedem! Pa-pa!"
+        ]
+      }
+    },
+    "channeler": {
+      "name": {
+        "en": [
+          "Channeler"
+        ],
+        "text": [
+          "Spiritista"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Silph Co. makes a scope that shows ghosts as they really are. I wish I had one."
+        ],
+        "text": [
+          "Silph S.A. face o lunetă care arată fantomele așa cum sunt cu adevărat. Ce mi-aș dori una."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

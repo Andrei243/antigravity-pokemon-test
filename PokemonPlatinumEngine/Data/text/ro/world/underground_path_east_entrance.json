@@ -1,0 +1,23 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The tunnel comes out by Celadon City. It's the quickest way round Saffron."
+        ],
+        "text": [
+          "Tunelul iese lângă Orașul Celadon. E drumul cel mai scurt pe lângă Saffron."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

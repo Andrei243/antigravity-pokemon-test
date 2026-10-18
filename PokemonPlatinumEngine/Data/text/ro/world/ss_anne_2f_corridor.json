@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "ss_anne_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Smell you later!"
+        ],
+        "text": [
+          "Ne mai vedem! Pa-pa!"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This ship is a luxury liner for trainers. The guests come from every corner of the world!"
+        ],
+        "text": [
+          "Vaporul ăsta e un pachebot de lux pentru Antrenori. Oaspeții vin din toate colțurile lumii!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

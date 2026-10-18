@@ -1,0 +1,25 @@
+{
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Name Rater"
+        ],
+        "text": [
+          "Evaluatorul de nume"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I am the Name Rater. I judge the names trainers give their Pokémon.",
+          "Come back once your Pokémon have names worth judging!"
+        ],
+        "text": [
+          "Eu sunt Evaluatorul de nume. Judec numele pe care Antrenorii le dau Pokémonilor.",
+          "Întoarce-te când Pokémonii tăi au nume care merită judecate!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

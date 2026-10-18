@@ -1,0 +1,13 @@
+{
+  "people": {},
+  "signs": {
+    "Route7_EventScript_UndergroundPathSign": {
+      "en": [
+        "Underground Path\nRoute 7 - Route 8"
+      ],
+      "text": [
+        "Pasajul Subteran\nRuta 7 - Ruta 8"
+      ]
+    }
+  }
+}

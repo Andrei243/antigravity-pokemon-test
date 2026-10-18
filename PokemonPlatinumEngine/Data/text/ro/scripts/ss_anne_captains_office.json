@@ -1,0 +1,68 @@
+{
+  "Captain": [
+    {
+      "en": [
+        "Captain"
+      ],
+      "text": [
+        "Căpitanul"
+      ]
+    },
+    {
+      "en": [
+        "Ooh... I feel terrible... Seasick, of all things. A captain, seasick..."
+      ],
+      "text": [
+        "Ooo... Mi-e groaznic de rău... Rău de mare, tocmai mie. Un căpitan, cu rău de mare..."
+      ]
+    },
+    {
+      "en": [
+        "{player} rubbed the captain's back.\nRub-rub... Rub-rub..."
+      ],
+      "text": [
+        "{player} l-a frecat pe căpitan pe spate.\nFreci-freci... Freci-freci..."
+      ]
+    },
+    {
+      "en": [
+        "Whew! Thank you, I feel much better now. You came to see my Pokémon, didn't you?"
+      ],
+      "text": [
+        "Uf! Mulțumesc, mă simt mult mai bine. Ai venit să-mi vezi Pokémonii, nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "To thank you, I'll teach you a secret technique. A sailor's best friend for clearing a way through the trees!"
+      ],
+      "text": [
+        "Ca să-ți mulțumesc, o să te învăț o tehnică secretă. Cel mai bun prieten al marinarului când trebuie să-și facă drum printre copaci!"
+      ]
+    },
+    {
+      "en": [
+        "That's Cut. Teach it to a Pokémon, and with the right Badge it can cut down small trees outside of battle."
+      ],
+      "text": [
+        "Asta e Tăiere. Învață-l pe un Pokémon și, cu Insigna potrivită, poate tăia copăcei în afara luptei."
+      ]
+    },
+    {
+      "en": [
+        "Now, if you'll excuse me, the S.S. Anne must make ready to sail. Safe travels!"
+      ],
+      "text": [
+        "Acum, dacă mă scuzi, S.S. Anne trebuie să se pregătească de plecare. Drum bun!"
+      ]
+    },
+    {
+      "en": [
+        "The S.S. Anne will be setting sail soon. You'd better get ashore before we cast off!"
+      ],
+      "text": [
+        "S.S. Anne ridică ancora în curând. Ar fi bine să cobori pe țărm înainte să plecăm!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "people": {
+    "littleroot_twin": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've lived here my whole life. It's small, but the air is the freshest in Hoenn.",
+          "Every plant you see started out as a tiny seed. Same goes for us, I suppose."
+        ],
+        "text": [
+          "Am trăit aici toată viața. E mic, dar are cel mai curat aer din Hoenn.",
+          "Fiecare plantă pe care o vezi a pornit dintr-o sămânță mică. La fel și noi, cred."
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The professor's lab is right there, the big building at the south end of town.",
+          "He's hardly ever in it, though."
+        ],
+        "text": [
+          "Laboratorul profesorului e chiar acolo, clădirea mare din capătul de sud al orașului.",
+          "Doar că el nu prea stă în el."
+        ]
+      }
+    },
+    "littleroot_mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LittlerootTown_EventScript_TownSign": {
+      "en": [
+        "Littleroot Town\nA town where the grass begins."
+      ],
+      "text": [
+        "Orășelul Littleroot\nUn oraș unde începe iarba."
+      ]
+    },
+    "LittlerootTown_EventScript_BirchsLabSign": {
+      "en": [
+        "Professor Birch's\nPokémon Lab"
+      ],
+      "text": [
+        "Laboratorul Pokémon\nal Profesorului Birch"
+      ]
+    },
+    "LittlerootTown_EventScript_BrendansHouseSign": {
+      "en": [
+        "{player}'s House"
+      ],
+      "text": [
+        "Casa lui {player}"
+      ]
+    },
+    "LittlerootTown_EventScript_MaysHouseSign": {
+      "en": [
+        "Professor Birch's House"
+      ],
+      "text": [
+        "Casa Profesorului Birch"
+      ]
+    }
+  }
+}

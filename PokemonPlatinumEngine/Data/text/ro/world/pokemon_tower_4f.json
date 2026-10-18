@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Tower"
+    ],
+    "text": [
+      "Turnul Pokémon"
+    ]
+  },
+  "people": {
+    "channeler": {
+      "name": {
+        "en": [
+          "Laurel"
+        ],
+        "text": [
+          "Laurel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Laurel: Ghosts! Ghosts all around! Run away!"
+        ],
+        "text": [
+          "Spiritistă Laurel: Fantome! Fantome peste tot! Fugi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Laurel: Phew. The ghosts are gone."
+        ],
+        "text": [
+          "Spiritistă Laurel: Pfiu. Fantomele au plecat."
+        ]
+      }
+    },
+    "channeler_2": {
+      "name": {
+        "en": [
+          "Jody"
+        ],
+        "text": [
+          "Jody"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Jody: Give... me... your soul..."
+        ],
+        "text": [
+          "Spiritistă Jody: Dă-mi... sufletul... tău..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Jody: I feel so tired all of a sudden."
+        ],
+        "text": [
+          "Spiritistă Jody: Deodată mă simt atât de obosită."
+        ]
+      }
+    },
+    "channeler_3": {
+      "name": {
+        "en": [
+          "Paula"
+        ],
+        "text": [
+          "Paula"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Paula: Go away... go awaaay..."
+        ],
+        "text": [
+          "Spiritistă Paula: Pleacă... pleeacăăă..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Paula: My head... What happened?"
+        ],
+        "text": [
+          "Spiritistă Paula: Capul meu... Ce s-a întâmplat?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

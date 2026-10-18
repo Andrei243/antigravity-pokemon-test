@@ -1,0 +1,210 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Prof. Birch"
+      ],
+      "text": [
+        "Profesorul Birch"
+      ]
+    },
+    {
+      "en": [
+        "So! I'm Birch, the Pokémon professor. And you're Norman's child, {player}, aren't you? I thought so!"
+      ],
+      "text": [
+        "Ei bine! Eu sunt Birch, profesorul de Pokémoni. Iar tu ești copilul lui Norman, {player}, nu-i așa? Așa mă gândeam!"
+      ]
+    },
+    {
+      "en": [
+        "I'd just got back from the field when that Zigzagoon came at me. You and that {starter} were wonderful."
+      ],
+      "text": [
+        "Tocmai mă întorceam de pe teren când m-a atacat Zigzagoonul ăla. Tu și {starter} ați fost minunați."
+      ]
+    },
+    {
+      "en": [
+        "The way it listened to you... I'd say that {starter} has taken a shine to you already."
+      ],
+      "text": [
+        "Cum te-a ascultat... Aș zice că {starter} te-a îndrăgit deja."
+      ]
+    },
+    {
+      "en": [
+        "Why don't you keep it? Consider it a thank-you from me."
+      ],
+      "text": [
+        "De ce să nu-l păstrezi? Consideră-l un mulțumesc din partea mea."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {starter}!"
+      ],
+      "text": [
+        "{player} a primit {starter}!"
+      ]
+    },
+    {
+      "en": [
+        "You know, my child {rival} is out on Route 103 right now, north of Oldale Town, studying Pokémon."
+      ],
+      "text": [
+        "Să știi că {rival}, copilul meu, e chiar acum pe Ruta 103, la nord de Orășelul Oldale, și studiază Pokémonii."
+      ]
+    },
+    {
+      "en": [
+        "Why not go and see {rival}? I'm sure you two will get along. You might even learn a thing or two!"
+      ],
+      "text": [
+        "De ce să nu mergi la {rival}? Sunt sigur că o să vă înțelegeți. Poate chiar înveți ceva!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Birch"
+      ],
+      "text": [
+        "Profesorul Birch"
+      ]
+    },
+    {
+      "en": [
+        "Ah, {player}! {rival} tells me you two had a battle. And you held your own, did you? Well done!"
+      ],
+      "text": [
+        "A, {player}! {rival} îmi spune că v-ați luptat. Și te-ai descurcat bine, da? Bravo!"
+      ]
+    },
+    {
+      "en": [
+        "I've a feeling you've got what it takes to go far. So I'd like you to have this. It's my Pokédex."
+      ],
+      "text": [
+        "Am impresia că ai ce-ți trebuie ca să ajungi departe. Așa că aș vrea să-ți dau asta. E Pokédexul meu."
+      ]
+    },
+    {
+      "en": [
+        "It records every Pokémon you meet. Fill it with as many as you can, and you'll be helping my research no end!"
+      ],
+      "text": [
+        "Înregistrează fiecare Pokémon pe care-l întâlnești. Umple-l cu cât mai mulți și o să-mi ajuți enorm cercetarea!"
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Pokédex from Professor Birch!"
+      ],
+      "text": [
+        "{player} a primit Pokédexul de la Profesorul Birch!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Oh, wow! Dad gave you a Pokédex too? Then we're rivals now, {player}!"
+      ],
+      "text": [
+        "Uau! Și ție ți-a dat tata un Pokédex? Atunci de-acum suntem rivali, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Here, you'll need these to catch Pokémon. I've got loads."
+      ],
+      "text": [
+        "Uite, o să ai nevoie de astea ca să prinzi Pokémoni. Eu am o grămadă."
+      ]
+    },
+    {
+      "en": [
+        "Weaken a wild Pokémon first, then throw the ball. It's easy once you get the hang of it!"
+      ],
+      "text": [
+        "Întâi slăbește un Pokémon sălbatic, apoi aruncă mingea. E ușor după ce prinzi șmecheria!"
+      ]
+    },
+    {
+      "en": [
+        "I'm going to keep studying here for a bit. Go on, {player}, there's a whole region out there!"
+      ],
+      "text": [
+        "Eu mai stau puțin aici să studiez. Hai, {player}, te așteaptă o regiune întreagă!"
+      ]
+    }
+  ],
+  "Birch": [
+    {
+      "en": [
+        "Phew, what a morning! Thank you again, {player}."
+      ],
+      "text": [
+        "Uf, ce dimineață! Încă o dată mulțumesc, {player}."
+      ]
+    },
+    {
+      "en": [
+        "{rival} is on Route 103, north of Oldale Town. Go and say hello!"
+      ],
+      "text": [
+        "{rival} e pe Ruta 103, la nord de Orășelul Oldale. Du-te și salută!"
+      ]
+    },
+    {
+      "en": [
+        "Pokémon live in every corner of Hoenn. Fill that Pokédex for me, {player}, and tell me all about them!"
+      ],
+      "text": [
+        "Pokémonii trăiesc în fiecare colț din Hoenn. Umple Pokédexul ăla pentru mine, {player}, și povestește-mi totul despre ei!"
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "Dad's always running off into the grass without his Pokémon. One day I'll be a better field worker than him!"
+      ],
+      "text": [
+        "Tata fuge mereu în iarbă fără Pokémonii lui. Într-o zi o să lucrez pe teren mai bine decât el!"
+      ]
+    }
+  ],
+  "Aide": [
+    {
+      "en": [
+        "The professor? He's out on Route 101 again, I'm afraid."
+      ],
+      "text": [
+        "Profesorul? Mă tem că e iar pe Ruta 101."
+      ]
+    },
+    {
+      "en": [
+        "He says you can't learn how Pokémon live by sitting indoors. So I sit indoors and do his paperwork."
+      ],
+      "text": [
+        "Zice că nu poți afla cum trăiesc Pokémonii stând în casă. Așa că eu stau în casă și-i fac hârtiile."
+      ]
+    },
+    {
+      "en": [
+        "The professor's Pokémon from his bag! Take good care of it, all right? It's been looked after since it hatched."
+      ],
+      "text": [
+        "Pokémonul profesorului din geanta lui! Ai mare grijă de el, bine? E îngrijit de când a ieșit din ou."
+      ]
+    }
+  ]
+}

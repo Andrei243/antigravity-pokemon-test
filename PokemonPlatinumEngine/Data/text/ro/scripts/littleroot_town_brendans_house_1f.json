@@ -1,0 +1,136 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "See, {player}? The movers' Vigoroth are doing all the heavy lifting. Isn't that something?"
+      ],
+      "text": [
+        "Vezi, {player}? Vigorothii celor de la mutări fac toată treaba grea. Grozav, nu?"
+      ]
+    },
+    {
+      "en": [
+        "Your room is upstairs. Go and have a look! And Dad bought you a new clock. Set it for me, would you?"
+      ],
+      "text": [
+        "Camera ta e sus. Du-te să te uiți! Și tata ți-a cumpărat un ceas nou. Mi-l potrivești tu, te rog?"
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Quick, come here! It's Dad's Gym on the television! Petalburg City!"
+      ],
+      "text": [
+        "{player}! Repede, vino încoace! E Arena lui tata la televizor! Orașul Petalburg!"
+      ]
+    },
+    {
+      "en": [
+        "...the Gym's Leader, Norman, has kept his team in fine form this season. That's all from Petalburg..."
+      ],
+      "text": [
+        "...Liderul Arenei, Norman, și-a ținut echipa în formă bună sezonul ăsta. Atât de la Petalburg..."
+      ]
+    },
+    {
+      "en": [
+        "Oh! It's over already. We missed him. What a shame!"
+      ],
+      "text": [
+        "O! S-a terminat deja. L-am ratat. Ce păcat!"
+      ]
+    },
+    {
+      "en": [
+        "Your father has his Gym in Petalburg City now, so we'll see more of him. You should go and visit him."
+      ],
+      "text": [
+        "Tatăl tău are acum Arena în Orașul Petalburg, așa că o să-l vedem mai des. Ar trebui să mergi să-l vizitezi."
+      ]
+    },
+    {
+      "en": [
+        "But first, go next door and say hello. Professor Birch lives there, and his child is just about your age!"
+      ],
+      "text": [
+        "Dar întâi du-te alături și salută-i pe vecini. Acolo locuiește Profesorul Birch, iar copilul lui e cam de vârsta ta!"
+      ]
+    }
+  ],
+  "GoSeeRoom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Wait, {player}! You haven't even seen your room yet. And don't forget to set the clock!"
+      ],
+      "text": [
+        "Stai, {player}! Nici nu ți-ai văzut camera. Și nu uita să potrivești ceasul!"
+      ]
+    }
+  ],
+  "Mom": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "You look tired out, sweetie. Sit down for a minute and catch your breath."
+      ],
+      "text": [
+        "Se vede pe tine oboseala. Stai jos un minut și trage-ți sufletul."
+      ]
+    },
+    {
+      "en": [
+        "There, all better! Your Pokémon look happier already. Don't forget to come home now and then."
+      ],
+      "text": [
+        "Gata, acum e mai bine! Pokémonii tăi arată deja mai fericiți. Nu uita să mai vii acasă din când în când."
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Go on upstairs and see your room, {player}. The clock won't set itself!"
+      ],
+      "text": [
+        "Du-te sus să-ți vezi camera, {player}. Ceasul nu se potrivește singur!"
+      ]
+    }
+  ]
+}

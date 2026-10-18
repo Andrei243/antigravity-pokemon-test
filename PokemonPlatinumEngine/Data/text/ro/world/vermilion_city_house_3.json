@@ -1,0 +1,68 @@
+{
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm writing to my penfriend. My Pidgey is going to carry the letter for me!"
+        ],
+        "text": [
+          "Îi scriu prietenei mele prin corespondență. Pidgey al meu o să-i ducă scrisoarea!"
+        ]
+      }
+    },
+    "pidgey": {
+      "name": {
+        "en": [
+          "Pidgey"
+        ],
+        "text": [
+          "Pidgey"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pidgey: Kurr! Kurrr!"
+        ],
+        "text": [
+          "Pidgey: Curr! Currr!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pidgey can find its way home from anywhere. Isn't that clever?"
+        ],
+        "text": [
+          "Pidgey își găsește drumul spre casă de oriunde. Isteț, nu?"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "VermilionCity_House3_EventScript_Letter": {
+      "en": [
+        "A half-finished letter:\n\"Dear Pippi, I hope you're well...\""
+      ],
+      "text": [
+        "O scrisoare neterminată:\n„Dragă Pippi, sper că ești bine...”"
+      ]
+    }
+  }
+}

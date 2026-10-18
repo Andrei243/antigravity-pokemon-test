@@ -1,0 +1,23 @@
+{
+  "people": {
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Spearow flies all the way to the harbour and back every morning!"
+        ],
+        "text": [
+          "Spearow al meu zboară până la port și înapoi în fiecare dimineață!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

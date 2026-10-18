@@ -1,0 +1,15 @@
+{
+  "people": {
+    "policeman": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznic"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

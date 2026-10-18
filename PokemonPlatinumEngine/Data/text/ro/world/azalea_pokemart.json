@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t23fs0101_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "t23fs0101_shopm1_2_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "t23fs0101_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kurt's Poké Balls are something special. You won't find them on any shelf in this shop."
+        ],
+        "text": [
+          "Poké Ball-urile lui Kurt sunt ceva special. Nu le găsești pe niciun raft din magazinul ăsta."
+        ]
+      }
+    },
+    "t23fs0101_gsbabyboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bugsy's Bug Pokémon are fast. My mum says to bring a Fire type. Or a Flying type!"
+        ],
+        "text": [
+          "Pokémonii-insectă ai lui Bugsy sunt rapizi. Mama zice să aduci un tip Foc. Sau un tip Zbor!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

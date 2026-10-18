@@ -1,0 +1,59 @@
+{
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon can be sweet, or they can be fierce. It's up to the trainer who raises them."
+        ],
+        "text": [
+          "Pokémonii pot fi blânzi sau pot fi fioroși. Depinde de Antrenorul care-i crește."
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Rocket? They're a bunch of thieves. They'd steal Pokémon from anyone!"
+        ],
+        "text": [
+          "Echipa Rocket? O adunătură de hoți. Ar fura Pokémoni de la oricine!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

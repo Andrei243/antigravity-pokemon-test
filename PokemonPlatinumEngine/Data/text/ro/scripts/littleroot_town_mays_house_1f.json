@@ -1,0 +1,80 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Neighbour"
+      ],
+      "text": [
+        "Vecina"
+      ]
+    },
+    {
+      "en": [
+        "Oh! Hello there. You must be {player}, from the house next door. Welcome to Littleroot!"
+      ],
+      "text": [
+        "O! Bună ziua. Tu trebuie să fii {player}, din casa de alături. Bun venit în Littleroot!"
+      ]
+    },
+    {
+      "en": [
+        "I'm Professor Birch's wife. Our {rival} is about your age, and so excited to have someone new next door."
+      ],
+      "text": [
+        "Eu sunt soția Profesorului Birch. Copilul nostru, {rival}, e cam de vârsta ta și abia așteaptă să aibă pe cineva nou alături."
+      ]
+    },
+    {
+      "en": [
+        "{rival}'s upstairs. Go on up and say hello!"
+      ],
+      "text": [
+        "{rival} e sus. Urcă și salută!"
+      ]
+    }
+  ],
+  "RivalMom": [
+    {
+      "en": [
+        "{rival}'s upstairs. Go on up, {player}. Don't be shy!"
+      ],
+      "text": [
+        "{rival} e sus. Urcă, {player}. Nu te sfii!"
+      ]
+    },
+    {
+      "en": [
+        "{rival} went off to help my husband with his fieldwork. That child is never still!"
+      ],
+      "text": [
+        "{rival} a plecat să-l ajute pe soțul meu cu cercetarea pe teren. Copilul ăsta nu stă locului deloc!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}? Out on Route 103, I think, counting Pokémon. North of Oldale Town."
+      ],
+      "text": [
+        "{rival}? Pe Ruta 103, cred, numără Pokémoni. La nord de Orășelul Oldale."
+      ]
+    },
+    {
+      "en": [
+        "{rival} comes home every so often, usually covered in grass. I suppose I should be glad of the visits!"
+      ],
+      "text": [
+        "{rival} mai vine acasă din când în când, de obicei plin de iarbă din cap până-n picioare. Măcar ne vizitează!"
+      ]
+    }
+  ],
+  "RivalSibling": [
+    {
+      "en": [
+        "My big sibling is going to be the best Pokémon trainer ever. You'll see!"
+      ],
+      "text": [
+        "Într-o zi, cel mai mare copil din casa noastră o să ajungă în vârful tuturor Antrenorilor Pokémon. O să vezi!"
+      ]
+    }
+  ]
+}

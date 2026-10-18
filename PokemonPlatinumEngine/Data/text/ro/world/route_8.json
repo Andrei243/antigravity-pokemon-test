@@ -1,0 +1,352 @@
+{
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Julia"
+        ],
+        "text": [
+          "Julia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Julia: My Clefairy are twins, just like me and my sister!"
+        ],
+        "text": [
+          "Domnișoară Julia: Clefairy ale mele sunt gemeni, ca mine și sora mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Julia: Two Clefairy, one loss."
+        ],
+        "text": [
+          "Domnișoară Julia: Doi Clefairy, o înfrângere."
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Rich"
+        ],
+        "text": [
+          "Rich"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gamer Rich: Fire against your Pokémon! I like those odds!"
+        ],
+        "text": [
+          "Gamer Rich: Foc împotriva Pokémonilor tăi! Îmi plac șansele astea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gamer Rich: I bet on the wrong side."
+        ],
+        "text": [
+          "Gamer Rich: Am pariat pe partea greșită."
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Glenn"
+        ],
+        "text": [
+          "Glenn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Glenn: My Pokémon are a bit smelly, but they're fantastic!"
+        ],
+        "text": [
+          "Tocilar Glenn: Pokémonii mei miros cam urât, dar sunt fantastici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Glenn: Smelly AND beaten."
+        ],
+        "text": [
+          "Tocilar Glenn: Mirositori ȘI învinși."
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Paige"
+        ],
+        "text": [
+          "Paige"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Paige: I just love Nidoran! Don't you?"
+        ],
+        "text": [
+          "Domnișoară Paige: Pur și simplu ador Nidoranii! Ție nu-ți plac?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Paige: They're still lovely."
+        ],
+        "text": [
+          "Domnișoară Paige: Tot adorabili sunt."
+        ]
+      }
+    },
+    "scientist_2": {
+      "name": {
+        "en": [
+          "Leslie"
+        ],
+        "text": [
+          "Leslie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Leslie: Have you seen what a Koffing can do? Let me show you!"
+        ],
+        "text": [
+          "Tocilar Leslie: Ai văzut ce poate face un Koffing? Lasă-mă să-ți arăt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Leslie: It went up in smoke..."
+        ],
+        "text": [
+          "Tocilar Leslie: S-a făcut fum..."
+        ]
+      }
+    },
+    "lass_3": {
+      "name": {
+        "en": [
+          "Andrea"
+        ],
+        "text": [
+          "Andrea"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Andrea: Three Meowth, three times the fun!"
+        ],
+        "text": [
+          "Domnișoară Andrea: Trei Meowth, de trei ori mai multă distracție!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Andrea: Three times the loss, too."
+        ],
+        "text": [
+          "Domnișoară Andrea: Și de trei ori mai multă înfrângere."
+        ]
+      }
+    },
+    "lass_4": {
+      "name": {
+        "en": [
+          "Megan"
+        ],
+        "text": [
+          "Megan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Megan: I've got five Pokémon! That has to win, right?"
+        ],
+        "text": [
+          "Domnișoară Megan: Am cinci Pokémoni! Așa trebuie să câștig, nu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Megan: Five wasn't enough!"
+        ],
+        "text": [
+          "Domnișoară Megan: Cinci n-au fost de ajuns!"
+        ]
+      }
+    },
+    "old_man_1_2": {
+      "name": {
+        "en": [
+          "Stan"
+        ],
+        "text": [
+          "Stan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gamer Stan: I always play the long game. Let's battle!"
+        ],
+        "text": [
+          "Gamer Stan: Eu joc mereu pe termen lung. Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gamer Stan: The long game is over."
+        ],
+        "text": [
+          "Gamer Stan: Termenul lung s-a terminat."
+        ]
+      }
+    },
+    "scientist_3": {
+      "name": {
+        "en": [
+          "Aidan"
+        ],
+        "text": [
+          "Aidan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Aidan: I've built up a team of electric experiments!"
+        ],
+        "text": [
+          "Tocilar Aidan: Mi-am făcut o echipă de experimente electrice!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Aidan: My experiments failed."
+        ],
+        "text": [
+          "Tocilar Aidan: Experimentele mele au eșuat."
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Eli"
+        ],
+        "text": [
+          "Eli"
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Eli: We battle together, the two of us!"
+        ],
+        "text": [
+          "Gemene Eli: Ne luptăm împreună, amândouă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Eli: We lost together, too."
+        ],
+        "text": [
+          "Gemene Eli: Am și pierdut împreună."
+        ]
+      }
+    },
+    "little_girl_2": {
+      "name": {
+        "en": [
+          "Anne"
+        ],
+        "text": [
+          "Anne"
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Anne: Two against one sounds fair to us!"
+        ],
+        "text": [
+          "Gemene Anne: Două contra unu ni se pare corect!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Anne: Not so fair after all."
+        ],
+        "text": [
+          "Gemene Anne: Până la urmă nu chiar așa de corect."
+        ]
+      }
+    },
+    "biker": {
+      "name": {
+        "en": [
+          "Ricardo"
+        ],
+        "text": [
+          "Ricardo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Ricardo: Out of my way! I'm riding through!"
+        ],
+        "text": [
+          "Motociclist Ricardo: Fă-te-ncolo! Trec cu motorul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Ricardo: My ride's over."
+        ],
+        "text": [
+          "Motociclist Ricardo: S-a terminat cursa."
+        ]
+      }
+    },
+    "biker_2": {
+      "name": {
+        "en": [
+          "Jaren"
+        ],
+        "text": [
+          "Jaren"
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Jaren: Hey kid! Bikers rule this road!"
+        ],
+        "text": [
+          "Motociclist Jaren: Hei, tu! Motocicliștii fac legea pe drumul ăsta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Jaren: Rule this road? Not today."
+        ],
+        "text": [
+          "Motociclist Jaren: Legea pe drum? Nu azi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route8_EventScript_UndergroundPathSign": {
+      "en": [
+        "Underground Path\nRoute 8 - Route 7"
+      ],
+      "text": [
+        "Pasajul Subteran\nRuta 8 - Ruta 7"
+      ]
+    }
+  }
+}

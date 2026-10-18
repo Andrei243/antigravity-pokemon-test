@@ -1,0 +1,60 @@
+{
+  "people": {
+    "t23r0501_gantetsu": {
+      "name": {
+        "en": [
+          "Kurt"
+        ],
+        "text": [
+          "Kurt"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hm? A trainer? I make Poké Balls, the old way, from Apricorns. But I've no heart for it today.",
+          "The town's Slowpoke have all gone missing. Something's wrong down at the well, I'm sure of it."
+        ],
+        "text": [
+          "Hm? Un Antrenor? Eu fac Poké Ball-uri după metoda veche, din Apricorne. Dar azi n-am inimă de lucru.",
+          "Toți Slowpokeii orașului au dispărut. E ceva în neregulă jos, la fântână, sunt sigur."
+        ]
+      }
+    },
+    "t23r0501_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Grandpa's been grumpy all morning. He keeps looking out of the window at the well."
+        ],
+        "text": [
+          "Bunicul e morocănos de dimineață. Se tot uită pe geam la fântână."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T23R0501_004+1": {
+      "en": [
+        "Shelves of Apricorns, sorted by colour: red, blue, yellow, green, pink, white and black."
+      ],
+      "text": [
+        "Rafturi cu Apricorne, sortate pe culori: roșu, albastru, galben, verde, roz, alb și negru."
+      ]
+    },
+    "T23R0501_006+1": {
+      "en": [
+        "A small shrine with a Poké Ball set before it. It's been polished till it shines."
+      ],
+      "text": [
+        "Un mic altar cu un Poké Ball așezat în fața lui. E lustruit până strălucește."
+      ]
+    }
+  }
+}

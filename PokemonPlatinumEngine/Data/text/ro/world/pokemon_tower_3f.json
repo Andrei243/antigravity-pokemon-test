@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Tower"
+    ],
+    "text": [
+      "Turnul Pokémon"
+    ]
+  },
+  "people": {
+    "channeler": {
+      "name": {
+        "en": [
+          "Patricia"
+        ],
+        "text": [
+          "Patricia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Patricia: Begone... begone... this is no place for the living!"
+        ],
+        "text": [
+          "Spiritistă Patricia: Pleacă... pleacă... locul ăsta nu e pentru cei vii!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Patricia: Huh? What was I saying?"
+        ],
+        "text": [
+          "Spiritistă Patricia: Hm? Ce spuneam?"
+        ]
+      }
+    },
+    "channeler_2": {
+      "name": {
+        "en": [
+          "Carly"
+        ],
+        "text": [
+          "Carly"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Carly: Hoooo... the spirits want you gone!"
+        ],
+        "text": [
+          "Spiritistă Carly: Huuu... spiritele vor să pleci!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Carly: The spirits have left me..."
+        ],
+        "text": [
+          "Spiritistă Carly: Spiritele m-au părăsit..."
+        ]
+      }
+    },
+    "channeler_3": {
+      "name": {
+        "en": [
+          "Hope"
+        ],
+        "text": [
+          "Hope"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Hope: Kekeke... come closer, child..."
+        ],
+        "text": [
+          "Spiritistă Hope: He-he-he... vino mai aproape, copile..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Hope: Oh! Where am I?"
+        ],
+        "text": [
+          "Spiritistă Hope: O! Unde sunt?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

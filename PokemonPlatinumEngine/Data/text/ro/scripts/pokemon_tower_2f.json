@@ -1,0 +1,52 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! What are you doing here? Your Pokémon don't look dead to me!"
+      ],
+      "text": [
+        "Hei, {player}! Ce cauți aici? Pokémonii tăi nu mi se par morți!"
+      ]
+    },
+    {
+      "en": [
+        "Mine are alive and kicking, so I'll show you just how lively they are!"
+      ],
+      "text": [
+        "Ai mei sunt vii și nebunatici, așa că o să-ți arăt cât de plini de viață sunt!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "How did that happen? Fine, I'll go and catch more. You can stay here with the ghosts."
+      ],
+      "text": [
+        "Cum s-a întâmplat asta? Bine, mă duc să prind mai mulți. Tu poți să rămâi aici cu fantomele."
+      ]
+    },
+    {
+      "en": [
+        "Oh, I heard a Pokémon called Cubone lost its mother here. Not that I care. Smell you later!"
+      ],
+      "text": [
+        "A, am auzit că un Pokémon numit Cubone și-a pierdut mama aici. Nu că mi-ar păsa. Pa-pa!"
+      ]
+    }
+  ]
+}

@@ -284,9 +284,14 @@ public static class RadioShows
     public static IReadOnlyList<string> Of(RadioStation station) =>
         lines.Value.TryGetValue(station.ToString(), out var list) ? list : (IReadOnlyList<string>)Array.Empty<string>();
 
+    /// <summary>Every line of every station, as its English is written: a language translates them in its <c>data.json</c> (plan 17 · N6f).</summary>
+    public static IEnumerable<string> AllLines => lines.Value.Values.SelectMany(l => l).Where(l => l.Length > 0);
+
     /// <summary>
     /// A line of a station, drawn: <paramref name="species"/> and <paramref name="place"/> fill Professor Oak's talk (a
-    /// Pokémon the player has seen and a place it lives in, or none, when his talk has nothing to say yet).
+    /// Pokémon the player has seen and a place it lives in, or none, when his talk has nothing to say yet). The line is
+    /// drawn from the English and said in the language's own words where its <c>data.json</c> has them
+    /// (<see cref="Text.OfData"/>), so the dice draw the same line in every language.
     /// </summary>
     public static string Line(RadioStation station, Random rng, string? species, string? place)
     {
@@ -294,7 +299,7 @@ public static class RadioShows
         if (all.Count == 0) return "";
         var usable = all.Where(l => !l.Contains("{species}", StringComparison.Ordinal) || species != null).ToList();
         if (usable.Count == 0) return "";
-        string line = usable[rng.Next(usable.Count)];
+        string line = Text.OfData(usable[rng.Next(usable.Count)]);
         return line.Replace("{species}", species ?? "").Replace("{place}", place ?? "");
     }
 }
