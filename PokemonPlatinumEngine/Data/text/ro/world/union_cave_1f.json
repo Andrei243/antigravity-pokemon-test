@@ -1,0 +1,135 @@
+{
+  "people": {
+    "d25r0101_mount_2": {
+      "name": {
+        "en": [
+          "Daniel"
+        ],
+        "text": [
+          "Daniel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Daniel: Mind your step! This cave is my second home, and I don't like visitors who don't battle!"
+        ],
+        "text": [
+          "Drumeț Daniel: Ai grijă pe unde calci! Peștera asta e a doua mea casă și nu-mi plac musafirii care nu se luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Daniel: Ha! You've got legs for the mountains, kid."
+        ],
+        "text": [
+          "Drumeț Daniel: Ha! Ai picioare de munte."
+        ]
+      }
+    },
+    "d25r0101_mount_2_2": {
+      "name": {
+        "en": [
+          "Russel"
+        ],
+        "text": [
+          "Russel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Russel: I came down here for the cool air. You'll do for a warm-up!"
+        ],
+        "text": [
+          "Drumeț Russel: Am coborât aici pentru aerul răcoros. Cu tine mă încălzesc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Russel: Well, that warmed me up all right."
+        ],
+        "text": [
+          "Drumeț Russel: Ei, chiar m-am încălzit."
+        ]
+      }
+    },
+    "d25r0101_fire": {
+      "name": {
+        "en": [
+          "Bill"
+        ],
+        "text": [
+          "Bill"
+        ]
+      },
+      "before": {
+        "en": [
+          "Firebreather Bill: It's so dark in here! Lucky for you, I've brought my own light!"
+        ],
+        "text": [
+          "Scuipător de foc Bill: E atât de întuneric aici! Noroc de tine că mi-am adus propria lumină!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Firebreather Bill: My flame's gone out... and so has my luck."
+        ],
+        "text": [
+          "Scuipător de foc Bill: Mi s-a stins flacăra... și norocul la fel."
+        ]
+      }
+    },
+    "d25r0101_fire_2": {
+      "name": {
+        "en": [
+          "Ray"
+        ],
+        "text": [
+          "Ray"
+        ]
+      },
+      "before": {
+        "en": [
+          "Firebreather Ray: If the Zubat won't leave me alone, I'll battle you instead!"
+        ],
+        "text": [
+          "Scuipător de foc Ray: Dacă Zubații nu mă lasă în pace, mă lupt cu tine în schimb!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Firebreather Ray: Ow, my eyebrows. That was too close."
+        ],
+        "text": [
+          "Scuipător de foc Ray: Au, sprâncenele mele. A fost la limită."
+        ]
+      }
+    },
+    "d25r0101_mania": {
+      "name": {
+        "en": [
+          "Larry"
+        ],
+        "text": [
+          "Larry"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Larry: I've come to find rare Pokémon. Are yours rare? Let me see!"
+        ],
+        "text": [
+          "Pasionat Pokémon Larry: Am venit să găsesc Pokémoni rari. Ai tăi sunt rari? Să văd!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Larry: Not rare, but very, very strong. I'll take notes."
+        ],
+        "text": [
+          "Pasionat Pokémon Larry: Nu rari, dar foarte, foarte puternici. Îmi iau notițe."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

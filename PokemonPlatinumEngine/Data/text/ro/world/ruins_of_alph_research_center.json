@@ -1,0 +1,78 @@
+{
+  "people": {
+    "d24r0102_suit": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Each of the four chambers has a stone panel set in its floor. The pieces slide, as if someone meant them to.",
+          "Whoever built the Ruins left a puzzle for us. We just haven't worked out the picture yet."
+        ],
+        "text": [
+          "Fiecare din cele patru camere are în podea un panou de piatră. Bucățile alunecă, de parcă așa ar fi fost gândite.",
+          "Cine a construit Ruinele ne-a lăsat un puzzle. Doar că încă n-am descifrat imaginea."
+        ]
+      }
+    },
+    "d24r0102_gsassistantm": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The carvings on the walls look like letters. There are dozens of shapes, and no two quite alike."
+        ],
+        "text": [
+          "Sculpturile de pe pereți seamănă cu niște litere. Sunt zeci de forme și nu există două la fel."
+        ]
+      }
+    },
+    "d24r0102_gsassistantm_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sometimes, late at night, the radio here picks up a signal from the Ruins. It's very odd."
+        ],
+        "text": [
+          "Uneori, noaptea târziu, radioul de aici prinde un semnal din Ruine. E foarte ciudat."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D24R0102_003+1": {
+      "en": [
+        "Notes on the chambers: four puzzles, four pictures. Kabuto, Omanyte, Aerodactyl... and a bird no one has seen."
+      ],
+      "text": [
+        "Notițe despre camere: patru puzzle-uri, patru imagini. Kabuto, Omanyte, Aerodactyl... și o pasăre pe care n-a văzut-o nimeni."
+      ]
+    },
+    "D24R0102_004+1": {
+      "en": [
+        "Rubbings of the carvings, pinned up in rows. The shapes look like they might be Pokémon."
+      ],
+      "text": [
+        "Copii după sculpturi, prinse în rânduri. Formele par să fie Pokémoni."
+      ]
+    }
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "CheckTicket": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinar"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the S.S. Anne! May I see your ticket, please?"
+      ],
+      "text": [
+        "Bun venit pe S.S. Anne! Pot să vă văd biletul, vă rog?"
+      ]
+    },
+    {
+      "en": [
+        "{player} showed the S.S. Ticket."
+      ],
+      "text": [
+        "{player} a arătat Biletul de Vapor."
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Mind your step on the gangway, and enjoy the party!"
+      ],
+      "text": [
+        "Mulțumesc! Atenție pe pasarelă și distracție plăcută la petrecere!"
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, no ticket? I'm afraid I can't let you aboard without one."
+      ],
+      "text": [
+        "Vai, n-aveți bilet? Mă tem că nu vă pot lăsa la bord fără el."
+      ]
+    },
+    {
+      "en": [
+        "The S.S. Anne has already set sail. She won't be back until next year."
+      ],
+      "text": [
+        "S.S. Anne a ridicat deja ancora. Nu se mai întoarce până la anul."
+      ]
+    }
+  ],
+  "FerrySailor": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        "Marinar"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the S.S. Anne! Have your ticket ready at the gangway, please."
+      ],
+      "text": [
+        "Bun venit pe S.S. Anne! Pregătiți-vă biletul la pasarelă, vă rog."
+      ]
+    },
+    {
+      "en": [
+        "The S.S. Anne has already set sail. She won't be back until next year."
+      ],
+      "text": [
+        "S.S. Anne a ridicat deja ancora. Nu se mai întoarce până la anul."
+      ]
+    }
+  ],
+  "OldMan": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        "Bătrânul"
+      ]
+    },
+    {
+      "en": [
+        "Did you see the S.S. Anne down in the harbour? What a beauty she is!"
+      ],
+      "text": [
+        "Ai văzut S.S. Anne jos, în port? Ce frumusețe de vapor!"
+      ]
+    },
+    {
+      "en": [
+        "So the S.S. Anne has gone. She'll be sailing the world for a whole year before she's back."
+      ],
+      "text": [
+        "Deci S.S. Anne a plecat. O să navigheze în jurul lumii un an întreg până se întoarce."
+      ]
+    }
+  ],
+  "Machop": [
+    {
+      "en": [
+        "Machop"
+      ],
+      "text": [
+        "Machop"
+      ]
+    },
+    {
+      "en": [
+        "Guoh! Gogogoh!"
+      ],
+      "text": [
+        "Guoh! Gogogoh!"
+      ]
+    },
+    {
+      "en": [
+        "The Machop is stamping the ground flat."
+      ],
+      "text": [
+        "Machop bătătorește pământul."
+      ]
+    }
+  ],
+  "OaksAide": [
+    {
+      "en": [
+        "Aide"
+      ],
+      "text": [
+        "Asistentul"
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}! The Professor asked me to pass on a message."
+      ],
+      "text": [
+        "Bună, {player}! Profesorul m-a rugat să-ți transmit un mesaj."
+      ]
+    },
+    {
+      "en": [
+        "One of his aides is waiting for you in the building on Route 2. He has something for you, once you've caught a few Pokémon."
+      ],
+      "text": [
+        "Unul dintre asistenții lui te așteaptă în clădirea de pe Ruta 2. Are ceva pentru tine, după ce prinzi câțiva Pokémoni."
+      ]
+    }
+  ]
+}

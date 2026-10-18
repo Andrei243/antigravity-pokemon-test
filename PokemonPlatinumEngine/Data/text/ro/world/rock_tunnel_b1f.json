@@ -1,0 +1,231 @@
+{
+  "displayName": {
+    "en": [
+      "Rock Tunnel"
+    ],
+    "text": [
+      "Tunelul de Piatră"
+    ]
+  },
+  "people": {
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Cooper"
+        ],
+        "text": [
+          "Cooper"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Cooper: I've got three of my favourite Pokémon with me. Guess which!"
+        ],
+        "text": [
+          "Pasionat Pokémon Cooper: Am la mine trei dintre Pokémonii mei preferați. Ghici care!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Cooper: Slowpoke all along. They took it slowly."
+        ],
+        "text": [
+          "Pasionat Pokémon Cooper: Slowpoke, toți. Au luat-o încet."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Dudley"
+        ],
+        "text": [
+          "Dudley"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Dudley: Rocks, rocks and more rocks! Here, have some!"
+        ],
+        "text": [
+          "Drumeț Dudley: Pietre, pietre și iar pietre! Uite, ia și tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Dudley: That's me crushed."
+        ],
+        "text": [
+          "Drumeț Dudley: M-ai făcut praf."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Sofia"
+        ],
+        "text": [
+          "Sofia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Sofia: It's so dark down here. Battle me so I feel braver!"
+        ],
+        "text": [
+          "Excursionistă Sofia: E atât de întuneric aici. Luptă-te cu mine, să prind curaj!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Sofia: I feel braver... and beaten."
+        ],
+        "text": [
+          "Excursionistă Sofia: Am prins curaj... și bătaie."
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Allen"
+        ],
+        "text": [
+          "Allen"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Allen: One Pokémon is all I need. My Geodude is solid!"
+        ],
+        "text": [
+          "Drumeț Allen: Îmi trebuie un singur Pokémon. Geodude al meu e solid!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Allen: Not solid enough, it seems."
+        ],
+        "text": [
+          "Drumeț Allen: Nu destul de solid, se pare."
+        ]
+      }
+    },
+    "hiker_3": {
+      "name": {
+        "en": [
+          "Eric"
+        ],
+        "text": [
+          "Eric"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Eric: I came down here to dig, but a battle will do!"
+        ],
+        "text": [
+          "Drumeț Eric: Am coborât să sap, dar merge și o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Eric: I should have kept digging."
+        ],
+        "text": [
+          "Drumeț Eric: Trebuia să sap mai departe."
+        ]
+      }
+    },
+    "poke_maniac_2": {
+      "name": {
+        "en": [
+          "Steve"
+        ],
+        "text": [
+          "Steve"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Steve: I've been hunting rare Pokémon in this tunnel all week!"
+        ],
+        "text": [
+          "Pasionat Pokémon Steve: Vânez Pokémoni rari în tunelul ăsta de-o săptămână!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Steve: And you're the rarest thing I've met."
+        ],
+        "text": [
+          "Pasionat Pokémon Steve: Și tu ești cea mai rară apariție de până acum."
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Martha"
+        ],
+        "text": [
+          "Martha"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Martha: I came all the way from Lavender Town. Let's battle!"
+        ],
+        "text": [
+          "Excursionistă Martha: Am venit tocmai din Orășelul Lavender. Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Martha: I'll walk back home now."
+        ],
+        "text": [
+          "Excursionistă Martha: Acum mă întorc pe jos acasă."
+        ]
+      }
+    },
+    "poke_maniac_3": {
+      "name": {
+        "en": [
+          "Winston"
+        ],
+        "text": [
+          "Winston"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Winston: My Slowpoke is one of a kind. Look at it go... slowly!"
+        ],
+        "text": [
+          "Pasionat Pokémon Winston: Slowpoke al meu e unic. Uite-l cum se mișcă... încet!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Winston: Slowly, but it lost."
+        ],
+        "text": [
+          "Pasionat Pokémon Winston: Încet, dar a pierdut."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

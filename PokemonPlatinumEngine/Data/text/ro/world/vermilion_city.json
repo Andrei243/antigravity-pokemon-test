@@ -1,0 +1,140 @@
+{
+  "people": {
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Grimer love the sludge round the harbour. Leave a mess, and more of them turn up!"
+        ],
+        "text": [
+          "Grimerii adoră mâlul din jurul portului. Lasă mizerie și mai apar câțiva!"
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      }
+    },
+    "old_man_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm putting up a building on this plot. My Machop is flattening the ground for me."
+        ],
+        "text": [
+          "Construiesc o clădire pe terenul ăsta. Machop al meu îmi netezește pământul."
+        ]
+      }
+    },
+    "machop": {
+      "name": {
+        "en": [
+          "Machop"
+        ],
+        "text": [
+          "Machop"
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The S.S. Anne only drops anchor here once a year. People come from all over to see her."
+        ],
+        "text": [
+          "S.S. Anne aruncă ancora aici doar o dată pe an. Vin oameni de peste tot s-o vadă."
+        ]
+      }
+    },
+    "vermilion_ferry_sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "VermilionCity_EventScript_CitySign": {
+      "en": [
+        "Vermilion City\nThe port of glowing sunsets."
+      ],
+      "text": [
+        "Orașul Vermilion\nPortul apusurilor strălucitoare."
+      ]
+    },
+    "VermilionCity_EventScript_PokemonFanClubSign": {
+      "en": [
+        "Pokémon Fan Club\nAll Pokémon fans welcome!"
+      ],
+      "text": [
+        "Clubul Fanilor Pokémon\nToți fanii Pokémon sunt bineveniți!"
+      ]
+    },
+    "VermilionCity_EventScript_GymSign": {
+      "en": [
+        "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nThe lightning soldier!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Vermilion\nLider: Lt. Surge\nSoldatul fulgerului!"
+      ]
+    },
+    "VermilionCity_EventScript_HarborSign": {
+      "en": [
+        "Vermilion Harbour"
+      ],
+      "text": [
+        "Portul Vermilion"
+      ]
+    },
+    "VermilionCity_EventScript_SnorlaxNotice": {
+      "en": [
+        "NOTICE\nA sleeping Pokémon is blocking Route 12.\nPlease take the road through Rock Tunnel."
+      ],
+      "text": [
+        "ANUNȚ\nUn Pokémon adormit blochează Ruta 12.\nVă rugăm să luați drumul prin Tunelul de Piatră."
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "people": {
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Underground Path runs right under Saffron City. People say it's safer than going over the top!"
+        ],
+        "text": [
+          "Pasajul Subteran trece chiar pe sub Orașul Saffron. Lumea zice că e mai sigur decât pe deasupra!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

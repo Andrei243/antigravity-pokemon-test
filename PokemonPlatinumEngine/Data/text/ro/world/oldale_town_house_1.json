@@ -1,0 +1,25 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I was a girl, trainers came through here from all over Hoenn on their way to Petalburg.",
+          "They still do. Every one of them looks so excited."
+        ],
+        "text": [
+          "Când eram fată, pe aici treceau Antrenori din tot Hoenn în drum spre Petalburg.",
+          "Încă trec. Fiecare dintre ei pare atât de entuziasmat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

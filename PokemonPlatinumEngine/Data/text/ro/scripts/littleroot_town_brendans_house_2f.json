@@ -1,0 +1,52 @@
+{
+  "WallClock": [
+    {
+      "en": [
+        "It's the clock Dad sent from Petalburg. Its hands are still at twelve."
+      ],
+      "text": [
+        "E ceasul trimis de tata din Petalburg. Limbile încă arată ora douăsprezece."
+      ]
+    },
+    {
+      "en": [
+        "{player} set the clock to the right time."
+      ],
+      "text": [
+        "{player} a potrivit ceasul la ora exactă."
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "{player}, how's your room? Oh, you've set the clock! It looks lovely up there."
+      ],
+      "text": [
+        "{player}, cum e camera? O, ai potrivit ceasul! Ce frumos arată totul acolo sus."
+      ]
+    },
+    {
+      "en": [
+        "Come back downstairs for a minute, would you? I've got something to tell you."
+      ],
+      "text": [
+        "Coboară un minut, te rog. Am să-ți spun ceva."
+      ]
+    },
+    {
+      "en": [
+        "The clock ticks away quietly. It keeps good time."
+      ],
+      "text": [
+        "Ceasul ticăie încet. Merge exact."
+      ]
+    }
+  ]
+}

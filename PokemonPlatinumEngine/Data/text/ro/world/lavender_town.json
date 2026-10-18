@@ -1,0 +1,92 @@
+{
+  "people": {
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Do you believe in ghosts? My big brother says they live in the Pokémon Tower."
+        ],
+        "text": [
+          "Crezi în fantome? Fratele meu mai mare zice că trăiesc în Turnul Pokémon."
+        ]
+      }
+    },
+    "worker_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon that have passed away are laid to rest in the tower. People come from all over to visit them."
+        ],
+        "text": [
+          "Pokémonii care s-au stins sunt odihniți în turn. Vin oameni de peste tot să-i viziteze."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Rocket have been seen going into the tower. Why would anyone bother the Pokémon resting there?"
+        ],
+        "text": [
+          "Echipa Rocket a fost văzută intrând în turn. De ce-ar vrea cineva să-i tulbure pe Pokémonii care se odihnesc acolo?"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LavenderTown_EventScript_SilphScopeNotice": {
+      "en": [
+        "NOTICE\nGhosts have been seen in the Pokémon Tower.\nSilph Co. is working on a scope that shows them as they are."
+      ],
+      "text": [
+        "ANUNȚ\nÎn Turnul Pokémon au fost văzute fantome.\nSilph S.A. lucrează la o lunetă care le arată așa cum sunt."
+      ]
+    },
+    "LavenderTown_EventScript_TownSign": {
+      "en": [
+        "Lavender Town\nThe noble purple town."
+      ],
+      "text": [
+        "Orășelul Lavender\nNobilul oraș mov."
+      ]
+    },
+    "LavenderTown_EventScript_PokemonTowerSign": {
+      "en": [
+        "Pokémon Tower\nA place to rest and to remember."
+      ],
+      "text": [
+        "Turnul Pokémon\nUn loc de odihnă și de amintire."
+      ]
+    },
+    "LavenderTown_EventScript_VolunteerHouseSign": {
+      "en": [
+        "Lavender Volunteer Pokémon House"
+      ],
+      "text": [
+        "Casa Pokémonilor din Lavender"
+      ]
+    }
+  }
+}

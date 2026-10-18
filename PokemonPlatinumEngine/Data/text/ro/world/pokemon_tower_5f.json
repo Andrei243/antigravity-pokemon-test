@@ -1,0 +1,135 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Tower"
+    ],
+    "text": [
+      "Turnul Pokémon"
+    ]
+  },
+  "people": {
+    "channeler": {
+      "name": {
+        "en": [
+          "Ruth"
+        ],
+        "text": [
+          "Ruth"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Ruth: You shall not pass the fifth floor!"
+        ],
+        "text": [
+          "Spiritistă Ruth: Nu vei trece de etajul cinci!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Ruth: Pass, then. I'm too tired."
+        ],
+        "text": [
+          "Spiritistă Ruth: Treci, atunci. Sunt prea obosită."
+        ]
+      }
+    },
+    "channeler_2": {
+      "name": {
+        "en": [
+          "Tammy"
+        ],
+        "text": [
+          "Tammy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Tammy: Ufufu... join us... join the spirits..."
+        ],
+        "text": [
+          "Spiritistă Tammy: Ufufu... alătură-te nouă... alătură-te spiritelor..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Tammy: The spirits got bored of me."
+        ],
+        "text": [
+          "Spiritistă Tammy: Spiritele s-au plictisit de mine."
+        ]
+      }
+    },
+    "channeler_3": {
+      "name": {
+        "en": [
+          "Karina"
+        ],
+        "text": [
+          "Karina"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Karina: Can you see them? They're right behind you!"
+        ],
+        "text": [
+          "Spiritistă Karina: Le vezi? Sunt chiar în spatele tău!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Karina: Oh, they were behind me after all."
+        ],
+        "text": [
+          "Spiritistă Karina: O, până la urmă erau în spatele meu."
+        ]
+      }
+    },
+    "channeler_4": {
+      "name": {
+        "en": [
+          "Janae"
+        ],
+        "text": [
+          "Janae"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Janae: Grrr... leave this place!"
+        ],
+        "text": [
+          "Spiritistă Janae: Grrr... părăsește locul ăsta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Janae: Huh? I'm back to myself."
+        ],
+        "text": [
+          "Spiritistă Janae: Hm? Mi-am revenit."
+        ]
+      }
+    },
+    "channeler_5": {
+      "name": {
+        "en": [
+          "Channeler"
+        ],
+        "text": [
+          "Spiritista"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The purified ground in the middle of this floor drives evil spirits away. Rest there and your Pokémon will be well again."
+        ],
+        "text": [
+          "Pământul purificat din mijlocul etajului alungă duhurile rele. Odihnește-te acolo și Pokémonii tăi o să-și revină."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

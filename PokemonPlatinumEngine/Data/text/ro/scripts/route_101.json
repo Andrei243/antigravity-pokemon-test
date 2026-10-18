@@ -1,0 +1,166 @@
+{
+  "BirchInTrouble": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "H-help me!"
+      ],
+      "text": [
+        "A-ajutor!"
+      ]
+    },
+    {
+      "en": [
+        "Hello! You over there! Please, help!"
+      ],
+      "text": [
+        "Hei! Tu de acolo! Te rog, ajută-mă!"
+      ]
+    },
+    {
+      "en": [
+        "In my bag! There's a Poké Ball in it!"
+      ],
+      "text": [
+        "În geanta mea! E un Poké Ball în ea!"
+      ]
+    }
+  ],
+  "DontLeaveMe": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "W-wait! Don't leave me! Get a Poké Ball from my bag, quick!"
+      ],
+      "text": [
+        "S-stai! Nu mă lăsa! Ia un Poké Ball din geanta mea, repede!"
+      ]
+    }
+  ],
+  "DontLeaveMeWest": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "W-wait! Don't leave me! Get a Poké Ball from my bag, quick!"
+      ],
+      "text": [
+        "S-stai! Nu mă lăsa! Ia un Poké Ball din geanta mea, repede!"
+      ]
+    }
+  ],
+  "DontLeaveMeCorner": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "W-wait! Don't leave me! Get a Poké Ball from my bag, quick!"
+      ],
+      "text": [
+        "S-stai! Nu mă lăsa! Ia un Poké Ball din geanta mea, repede!"
+      ]
+    }
+  ],
+  "DontLeaveMeNorth": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "W-wait! Don't leave me! Get a Poké Ball from my bag, quick!"
+      ],
+      "text": [
+        "S-stai! Nu mă lăsa! Ia un Poké Ball din geanta mea, repede!"
+      ]
+    }
+  ],
+  "BirchsBag": [
+    {
+      "en": [
+        "It's a bag, lying in the grass. Inside are three Poké Balls!"
+      ],
+      "text": [
+        "E o geantă căzută în iarbă. Înăuntru sunt trei Poké Ball-uri!"
+      ]
+    },
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        "???"
+      ]
+    },
+    {
+      "en": [
+        "Don't just stand there looking! Go on, pick one and use it!"
+      ],
+      "text": [
+        "Nu sta acolo doar să te uiți! Hai, alege unul și folosește-l!"
+      ]
+    },
+    {
+      "en": [
+        "{player} chose the {starter}!"
+      ],
+      "text": [
+        "{player} l-a ales pe {starter}!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Birch"
+      ],
+      "text": [
+        "Profesorul Birch"
+      ]
+    },
+    {
+      "en": [
+        "Whew... I was in a real fix there! Thank you so much. You saved me!"
+      ],
+      "text": [
+        "Uf... Am fost la mare strâmtoare! Mulțumesc mult. M-ai salvat!"
+      ]
+    },
+    {
+      "en": [
+        "But let's not talk out here. Come with me to my lab, it's just down the road."
+      ],
+      "text": [
+        "Dar să nu stăm de vorbă aici. Vino cu mine la laborator, e chiar la capătul drumului."
+      ]
+    }
+  ]
+}

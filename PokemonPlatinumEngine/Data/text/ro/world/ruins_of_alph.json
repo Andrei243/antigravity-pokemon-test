@@ -1,0 +1,64 @@
+{
+  "people": {
+    "d24r0101_mystery_2": {
+      "name": {
+        "en": [
+          "Nathan"
+        ],
+        "text": [
+          "Nathan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Nathan: The stones here hum if you listen. My mind hears them. Can yours?"
+        ],
+        "text": [
+          "Medium Nathan: Pietrele de aici zumzăie dacă asculți. Mintea mea le aude. A ta le aude?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Nathan: You heard nothing, and still you won. How strange."
+        ],
+        "text": [
+          "Medium Nathan: N-ai auzit nimic și tot ai câștigat. Ce ciudat."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D24R0101_000+1": {
+      "en": [
+        "Ruins of Alph\nPlease do not touch the carvings."
+      ],
+      "text": [
+        "Ruinele Alph\nVă rugăm să nu atingeți sculpturile."
+      ]
+    },
+    "D24R0101_001+1": {
+      "en": [
+        "Ruins of Alph Research Center\nKeep the doors closed: some exhibits are fragile."
+      ],
+      "text": [
+        "Centrul de Cercetare al Ruinelor Alph\nȚineți ușile închise: unele exponate sunt fragile."
+      ]
+    },
+    "D24R0101_002+1": {
+      "en": [
+        "Ruins of Alph\nNorth Entrance"
+      ],
+      "text": [
+        "Ruinele Alph\nIntrarea de Nord"
+      ]
+    },
+    "D24R0101_003+1": {
+      "en": [
+        "Ruins of Alph\nVisitors are asked to keep to the paths."
+      ],
+      "text": [
+        "Ruinele Alph\nVizitatorii sunt rugați să rămână pe alei."
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "people": {
+    "petalburg_gym_norman": {
+      "name": {
+        "en": [
+          "Norman"
+        ],
+        "text": [
+          "Norman"
+        ]
+      }
+    },
+    "petalburg_gym_wally": {
+      "name": {
+        "en": [
+          "Wally"
+        ],
+        "text": [
+          "Wally"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mr. Norman is so kind..."
+        ],
+        "text": [
+          "Domnul Norman e atât de bun..."
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PetalburgCity_Gym_EventScript_SpeedRoomDoor": {
+      "en": [
+        "SPEED ROOM\nThe door is shut tight."
+      ],
+      "text": [
+        "CAMERA VITEZEI\nUșa e închisă bine."
+      ]
+    },
+    "PetalburgCity_Gym_EventScript_AccuracyRoomDoor": {
+      "en": [
+        "ACCURACY ROOM\nThe door is shut tight."
+      ],
+      "text": [
+        "CAMERA PRECIZIEI\nUșa e închisă bine."
+      ]
+    }
+  }
+}

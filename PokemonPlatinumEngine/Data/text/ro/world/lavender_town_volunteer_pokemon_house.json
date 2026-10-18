@@ -1,0 +1,130 @@
+{
+  "people": {
+    "mr_fuji": {
+      "name": {
+        "en": [
+          "Mr. Fuji"
+        ],
+        "text": [
+          "Domnul Fuji"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Thank you for coming to see the Pokémon."
+        ],
+        "text": [
+          "Mulțumesc că ai venit să vezi Pokémonii."
+        ]
+      }
+    },
+    "nidorino": {
+      "name": {
+        "en": [
+          "Nidorino"
+        ],
+        "text": [
+          "Nidorino"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nido! Nidorino!"
+        ],
+        "text": [
+          "Nido! Nidorino!"
+        ]
+      }
+    },
+    "psyduck": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          "Psyduck"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psy... duck?"
+        ],
+        "text": [
+          "Psy... duck?"
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mr. Fuji went up the tower to pray for the Pokémon, and he never came back!"
+        ],
+        "text": [
+          "Domnul Fuji a urcat în turn să se roage pentru Pokémoni și nu s-a mai întors!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Pokémon here lost its trainer somehow. Mr. Fuji takes care of them all."
+        ],
+        "text": [
+          "Fiecare Pokémon de aici și-a pierdut cumva Antrenorul. Domnul Fuji are grijă de toți."
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This Psyduck was left in the rain. It's much happier now."
+        ],
+        "text": [
+          "Psyduckul ăsta a fost lăsat în ploaie. Acum e mult mai fericit."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LavenderTown_VolunteerPokemonHouse_EventScript_PokemonFanMagazine": {
+      "en": [
+        "Pokémon Monthly. An issue on the Pokémon who wait for new trainers."
+      ],
+      "text": [
+        "Pokémon Lunar. Un număr despre Pokémonii care așteaptă Antrenori noi."
+      ]
+    },
+    "LavenderTown_VolunteerPokemonHouse_EventScript_Bookshelf": {
+      "en": [
+        "Books on caring for Pokémon, well worn."
+      ],
+      "text": [
+        "Cărți despre îngrijirea Pokémonilor, bine tocite."
+      ]
+    }
+  }
+}

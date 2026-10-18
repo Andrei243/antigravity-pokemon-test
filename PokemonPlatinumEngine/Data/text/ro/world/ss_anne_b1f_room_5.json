@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Machoke helps load the cargo. It's stronger than the whole crew!"
+        ],
+        "text": [
+          "Machoke al meu ajută la încărcatul mărfii. E mai puternic decât tot echipajul!"
+        ]
+      }
+    },
+    "machoke": {
+      "name": {
+        "en": [
+          "Machoke"
+        ],
+        "text": [
+          "Machoke"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machoke: Gwoh! Gwoh!"
+        ],
+        "text": [
+          "Machoke: Guoh! Guoh!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

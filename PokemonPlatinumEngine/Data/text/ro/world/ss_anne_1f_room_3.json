@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wigglytuff is my best friend. It's soft as a cushion!"
+        ],
+        "text": [
+          "Wigglytuff e cel mai bun prieten al meu. E moale ca o pernă!"
+        ]
+      }
+    },
+    "wigglytuff": {
+      "name": {
+        "en": [
+          "Wigglytuff"
+        ],
+        "text": [
+          "Wigglytuff"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wigglytuff: Puffy... puff!"
+        ],
+        "text": [
+          "Wigglytuff: Puf... puf!"
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daughter's Wigglytuff sings her to sleep every night. Puts me to sleep too."
+        ],
+        "text": [
+          "Wigglytuff-ul fiicei mele îi cântă de culcare în fiecare seară. Și pe mine mă adoarme."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,77 @@
+{
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ghosts can't be battled if you can't see them. That's what I've heard, anyway."
+        ],
+        "text": [
+          "Nu te poți lupta cu fantomele dacă nu le vezi. Cel puțin așa am auzit."
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Rocker"
+        ],
+        "text": [
+          "Rockerul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Escape Ropes are a must in Rock Tunnel. It goes on forever down there!"
+        ],
+        "text": [
+          "O Frânghie e obligatorie în Tunelul de Piatră. Acolo jos nu se mai termină!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cleanse Tags keep wild Pokémon away. Handy, if you're scared of ghosts."
+        ],
+        "text": [
+          "Talismanul Purificator ține Pokémonii sălbatici la distanță. Util, dacă te sperii de fantome."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

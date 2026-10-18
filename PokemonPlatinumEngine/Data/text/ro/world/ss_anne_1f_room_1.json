@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I travel the world with my Pokémon. Every port has trainers worth meeting."
+        ],
+        "text": [
+          "Călătoresc prin lume cu Pokémonii mei. În fiecare port sunt Antrenori care merită cunoscuți."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

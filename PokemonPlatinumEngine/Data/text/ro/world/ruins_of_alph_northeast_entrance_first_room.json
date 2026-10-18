@@ -1,0 +1,25 @@
+{
+  "people": {
+    "d24r0202_gswoman6": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This panel shows a Kabuto, we think. The pieces slide, but nobody has put the picture back together yet.",
+          "When someone does, I expect something in this chamber will change. The Ruins feel like they are waiting."
+        ],
+        "text": [
+          "Panoul ăsta arată un Kabuto, credem noi. Bucățile alunecă, dar nimeni n-a refăcut încă imaginea.",
+          "Când o va reface cineva, cred că se va schimba ceva în camera asta. Ruinele parcă așteaptă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,103 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Tower"
+    ],
+    "text": [
+      "Turnul Pokémon"
+    ]
+  },
+  "people": {
+    "worker_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon Tower is a place for remembering. Please be quiet as you go up."
+        ],
+        "text": [
+          "Turnul Pokémon e un loc de amintire. Te rog, fă liniște când urci."
+        ]
+      }
+    },
+    "channeler": {
+      "name": {
+        "en": [
+          "Channeler"
+        ],
+        "text": [
+          "Spiritista"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ghosts are restless upstairs. Without the Silph Scope, you can't even see what they are."
+        ],
+        "text": [
+          "Sus, fantomele n-au liniște. Fără Luneta Silph nici nu poți vedea ce sunt."
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to see my Clefairy's grave. It liked flowers, so I brought some."
+        ],
+        "text": [
+          "Am venit la mormântul lui Clefairy al meu. Îi plăceau florile, așa că i-am adus câteva."
+        ]
+      }
+    },
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Pokémon here was loved by somebody."
+        ],
+        "text": [
+          "Fiecare Pokémon de aici a fost iubit de cineva."
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Growlithe... I raised it from an Egg. Rest well, old friend."
+        ],
+        "text": [
+          "Growlithe al meu... L-am crescut de când era Ou. Odihnește-te în pace, prietene vechi."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

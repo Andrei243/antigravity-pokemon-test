@@ -1,0 +1,65 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Duncan"
+        ],
+        "text": [
+          "Duncan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Duncan: My Pokémon are as tough as an anchor!"
+        ],
+        "text": [
+          "Marinar Duncan: Pokémonii mei sunt tari ca o ancoră!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Duncan: Sunk like an anchor, too..."
+        ],
+        "text": [
+          "Marinar Duncan: S-au și scufundat ca o ancoră..."
+        ]
+      }
+    },
+    "sailor_2": {
+      "name": {
+        "en": [
+          "Leonard"
+        ],
+        "text": [
+          "Leonard"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Leonard: You came all the way down here? Then you'll battle me!"
+        ],
+        "text": [
+          "Marinar Leonard: Ai coborât tocmai până aici? Atunci te lupți cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Leonard: I should have stayed on deck."
+        ],
+        "text": [
+          "Marinar Leonard: Trebuia să rămân pe punte."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

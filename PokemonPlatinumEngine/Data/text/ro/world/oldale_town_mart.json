@@ -1,0 +1,59 @@
+{
+  "people": {
+    "oldale_mart_clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătoarea"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! What can I get for you?"
+        ],
+        "text": [
+          "Bun venit! Cu ce vă pot servi?"
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "An Antidote is cheap and it saves a lot of worry. Poison wears a Pokémon down with every step."
+        ],
+        "text": [
+          "Un Antidot e ieftin și te scapă de multe griji. Otrava îl slăbește pe Pokémon la fiecare pas."
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I saved up for a whole week to buy one Poké Ball. I'm saving it for something really special."
+        ],
+        "text": [
+          "Am strâns bani o săptămână întreagă ca să cumpăr un Poké Ball. Îl păstrez pentru ceva cu adevărat special."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

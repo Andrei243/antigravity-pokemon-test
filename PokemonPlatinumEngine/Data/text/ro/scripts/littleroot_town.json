@@ -1,0 +1,222 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "The moving van rumbles and sways down a country road..."
+      ],
+      "text": [
+        "Camionul de mutări huruie și se clatină pe un drum de țară..."
+      ]
+    },
+    {
+      "en": [
+        "Boxes bump and slide in the dark. Then the engine coughs, and everything goes still."
+      ],
+      "text": [
+        "Cutiile se lovesc și alunecă în întuneric. Apoi motorul tușește și totul se oprește."
+      ]
+    },
+    {
+      "en": [
+        "With a clatter, the back door rolls up. Sunlight pours in!"
+      ],
+      "text": [
+        "Cu un zăngănit, ușa din spate se ridică. Lumina soarelui năvălește înăuntru!"
+      ]
+    },
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "{player}! We're here, sweetie. Was the ride very bumpy? You must be worn out."
+      ],
+      "text": [
+        "{player}! Am ajuns! A fost drumul cu hopuri? Cred că te-a istovit de tot."
+      ]
+    },
+    {
+      "en": [
+        "Welcome to Littleroot Town! This is our new home. It's quaint, but it's a nice place to live, isn't it?"
+      ],
+      "text": [
+        "Bun venit în Orășelul Littleroot! Ăsta e noul nostru cămin. E mic și pitoresc, dar e un loc bun de trăit, nu?"
+      ]
+    },
+    {
+      "en": [
+        "And look, we didn't even have to lift a finger. The movers' Pokémon are carrying everything in for us!"
+      ],
+      "text": [
+        "Și uite, nici n-a trebuit să ridicăm un deget. Pokémonii celor de la mutări cară totul înăuntru pentru noi!"
+      ]
+    },
+    {
+      "en": [
+        "Come on, let's go inside."
+      ],
+      "text": [
+        "Hai, să intrăm."
+      ]
+    }
+  ],
+  "NeedPokemon": [
+    {
+      "en": [
+        "Little Girl"
+      ],
+      "text": [
+        "Fetița"
+      ]
+    },
+    {
+      "en": [
+        "Wait! You can't go out there! Wild Pokémon jump out of the tall grass, and you haven't got one of your own!"
+      ],
+      "text": [
+        "Stai! Nu poți ieși acolo! Din iarba înaltă sar Pokémoni sălbatici, iar tu nu ai niciunul!"
+      ]
+    },
+    {
+      "en": [
+        "If you had a Pokémon, it could keep you safe. But you don't, so stay in town!"
+      ],
+      "text": [
+        "Cu un Pokémon ai fi în siguranță. Dar n-ai, așa că rămâi în oraș!"
+      ]
+    }
+  ],
+  "GoSaveBirch": [
+    {
+      "en": [
+        "Little Girl"
+      ],
+      "text": [
+        "Fetița"
+      ]
+    },
+    {
+      "en": [
+        "Um, um, um! Did you hear that? Somebody's yelling out there on the route!"
+      ],
+      "text": [
+        "Ăă, ăă, ăă! Ai auzit? Strigă cineva acolo, pe rută!"
+      ]
+    },
+    {
+      "en": [
+        "It sounds like someone's in trouble. Please, go and help them! You're bigger than me!"
+      ],
+      "text": [
+        "Parcă cineva e în necaz. Te rog, du-te și ajută-l! Tu ești mai mare decât mine!"
+      ]
+    }
+  ],
+  "RunningShoes": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "{player}! Oh, there you are. Did you meet Professor Birch? I heard you've got a Pokémon now!"
+      ],
+      "text": [
+        "{player}! A, aici erai. L-ai cunoscut pe Profesorul Birch? Am auzit că acum ai un Pokémon!"
+      ]
+    },
+    {
+      "en": [
+        "Your father will be so proud. He sent these with the movers, you know. He said every trainer needs them."
+      ],
+      "text": [
+        "Tatăl tău o să fie tare mândru. Ți-a trimis astea cu cei de la mutări, să știi. Zice că orice Antrenor are nevoie de ele."
+      ]
+    },
+    {
+      "en": [
+        "{player} put on the Running Shoes!"
+      ],
+      "text": [
+        "{player} și-a pus Pantofii de Alergare!"
+      ]
+    },
+    {
+      "en": [
+        "Hold the run button down and off you go, faster than ever. Just watch where you're going indoors!"
+      ],
+      "text": [
+        "Ține apăsat butonul de alergare și pornești mai repede ca oricând. Doar ai grijă pe unde mergi prin casă!"
+      ]
+    },
+    {
+      "en": [
+        "And come home now and then, sweetie. Your Pokémon will want a rest, too."
+      ],
+      "text": [
+        "Și mai vino acasă din când în când. Și Pokémonii tăi au nevoie de odihnă."
+      ]
+    }
+  ],
+  "Twin": [
+    {
+      "en": [
+        "The professor goes out into the grass all the time to look at Pokémon."
+      ],
+      "text": [
+        "Profesorul iese tot timpul în iarbă să se uite la Pokémoni."
+      ]
+    },
+    {
+      "en": [
+        "Mom says that's why his shoes are always muddy!"
+      ],
+      "text": [
+        "Mama zice că de-asta are mereu pantofii plini de noroi!"
+      ]
+    },
+    {
+      "en": [
+        "Somebody's yelling for help on the route! Hurry!"
+      ],
+      "text": [
+        "Strigă cineva după ajutor pe rută! Repede!"
+      ]
+    },
+    {
+      "en": [
+        "You saved the professor? With a Pokémon? Wow! You're so brave!"
+      ],
+      "text": [
+        "L-ai salvat pe profesor? Cu un Pokémon? Uau! Ce curaj ai!"
+      ]
+    },
+    {
+      "en": [
+        "Are you going on a big journey now? Good luck out there!"
+      ],
+      "text": [
+        "Pleci acum într-o călătorie mare? Mult noroc!"
+      ]
+    }
+  ],
+  "MomOutside": [
+    {
+      "en": [
+        "Hold the run button to run, {player}. Dad's shoes are a perfect fit!"
+      ],
+      "text": [
+        "Ține apăsat butonul de alergare ca să alergi, {player}. Pantofii de la tata ți se potrivesc perfect!"
+      ]
+    }
+  ]
+}

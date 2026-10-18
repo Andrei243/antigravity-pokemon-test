@@ -1,0 +1,92 @@
+{
+  "RockSlideTutor": [
+    {
+      "en": [
+        "Youngster"
+      ],
+      "text": [
+        "Puștiul"
+      ]
+    },
+    {
+      "en": [
+        "I've been practising a move that brings the rocks down. Want me to teach Rock Slide to one of your Pokémon?"
+      ],
+      "text": [
+        "Exersez o mișcare care prăvălește stâncile. Vrei să-l învăț Avalanșă pe unul dintre Pokémonii tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Great! Which one?"
+      ],
+      "text": [
+        "Grozav! Pe care?"
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "{wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Rock Slide can make a foe flinch. Make it count!"
+      ],
+      "text": [
+        "Avalanșă poate face un inamic să tresară. Folosește-o cu cap!"
+      ]
+    },
+    {
+      "en": [
+        "Oh well. I'll be here, practising."
+      ],
+      "text": [
+        "Ei, bine. Eu rămân aici și exersez."
+      ]
+    },
+    {
+      "en": [
+        "An Egg? It can't learn anything yet!"
+      ],
+      "text": [
+        "Un Ou? Încă nu poate învăța nimic!"
+      ]
+    },
+    {
+      "en": [
+        "Hmm, that one can't learn Rock Slide."
+      ],
+      "text": [
+        "Hmm, ăsta nu poate învăța Avalanșă."
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}!"
+      ],
+      "text": [
+        "Ăsta știe deja {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa."
+      ]
+    }
+  ]
+}

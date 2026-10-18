@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The passengers are getting restless. The party's been going on for days!"
+        ],
+        "text": [
+          "Pasagerii își pierd răbdarea. Petrecerea ține de zile întregi!"
+        ]
+      }
+    },
+    "worker_m": {
+      "name": {
+        "en": [
+          "Waiter"
+        ],
+        "text": [
+          "Chelner"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Champagne? Ah, non, you are too young. Some lemonade, perhaps?"
+        ],
+        "text": [
+          "Șampanie? A, non, nu e pentru vârsta ta. Poate o limonadă?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

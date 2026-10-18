@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinar"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The deck's just up there. Mind the wind, it'll blow your hat clean off!"
+        ],
+        "text": [
+          "Puntea e chiar acolo sus. Atenție la vânt, că-ți zboară pălăria cât ai clipi!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

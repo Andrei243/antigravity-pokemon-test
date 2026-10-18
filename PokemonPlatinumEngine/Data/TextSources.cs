@@ -35,6 +35,8 @@ public static class TextSources
         foreach (var (_, set) in TrainerLines.All)
             foreach (var cue in Enum.GetValues<Battle.Sim.TrainerCue>())
                 if (set.For(cue)?.Text is { Length: > 0 } line) lines.Add(line);
+        // The Pokégear's radio (plan 17 · N6f): what each station says, drawn from the English and said in the language's words
+        foreach (string line in Models.RadioShows.AllLines) lines.Add(line);
         return lines;
     }
 
@@ -256,7 +258,7 @@ public static class TextSources
         report.AppendLine($"| Scripts (`scripts/<file>.json`) | {scripts.Count} | {Lines(scriptLines.Values)} |");
         report.AppendLine($"| Overlays (`world/<key>.json`) | {overlays.Count} | {Lines(overlayLines.Values)} |");
         report.AppendLine($"| Hand-made maps (`maps/<Name>.json`) | {maps.Count} | {Lines(mapLines.Values)} |");
-        report.AppendLine($"| Data files' lines (`data.json`: the professors, the trainers in battle) | 1 | {dataLines.Count} |");
+        report.AppendLine($"| Data files' lines (`data.json`: the professors, the trainers in battle, the radio) | 1 | {dataLines.Count} |");
         report.AppendLine();
         report.AppendLine("## Languages");
         report.AppendLine();

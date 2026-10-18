@@ -1,0 +1,38 @@
+{
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznic"
+      ]
+    },
+    {
+      "en": [
+        "Halt! I'm on duty, and I'm too thirsty to let anyone by. Come back once I've had something to drink."
+      ],
+      "text": [
+        "Stai! Sunt de serviciu și mi-e prea sete ca să las pe cineva să treacă. Întoarce-te după ce beau ceva."
+      ]
+    }
+  ],
+  "GuardTalk": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznic"
+      ]
+    },
+    {
+      "en": [
+        "Saffron City's closed to travellers for now. Orders from the top, I'm afraid."
+      ],
+      "text": [
+        "Orașul Saffron e închis pentru călători deocamdată. Ordin de sus, mă tem."
+      ]
+    }
+  ]
+}

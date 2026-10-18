@@ -1,0 +1,69 @@
+{
+  "people": {
+    "oldale_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The PC over there is free for anyone to use. Pokémon you can't carry are kept safe inside it."
+        ],
+        "text": [
+          "PC-ul de acolo poate fi folosit de oricine, gratis. Pokémonii pe care nu-i poți căra sunt ținuți în siguranță în el."
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon got so tired on Route 102! A quick visit here and it's raring to go again."
+        ],
+        "text": [
+          "Pokémonul meu a obosit tare pe Ruta 102! O vizită scurtă aici și e gata de drum din nou."
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon Centers never close. You can come in at midnight and the nurse will still be smiling!"
+        ],
+        "text": [
+          "Centrele Pokémon nu se închid niciodată. Poți să vii și la miezul nopții, că asistenta tot zâmbește!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

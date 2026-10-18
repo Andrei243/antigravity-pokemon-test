@@ -1,0 +1,87 @@
+{
+  "people": {
+    "petalburg_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I heard there's a forest past Route 104 so thick it's dark at noon. Bug Pokémon love it."
+        ],
+        "text": [
+          "Am auzit că dincolo de Ruta 104 e o pădure atât de deasă încât e întuneric la amiază. Pokémonii-insectă o adoră."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some Pokémon only show up near the water. Keep your eyes open on the bridges!"
+        ],
+        "text": [
+          "Unii Pokémoni apar doar lângă apă. Fii cu ochii-n patru pe poduri!"
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon and I came here all the way from Oldale. It's tired, but it's so proud of itself."
+        ],
+        "text": [
+          "Eu și Pokémonul meu am venit tocmai din Oldale. E obosit, dar e atât de mândru de el."
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I write down a word or two about every trainer I meet. Come back when you've made a name for yourself!"
+        ],
+        "text": [
+          "Notez un cuvânt-două despre fiecare Antrenor pe care-l întâlnesc. Întoarce-te după ce ți-ai făcut un nume!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

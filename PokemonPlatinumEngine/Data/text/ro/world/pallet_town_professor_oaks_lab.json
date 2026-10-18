@@ -50,6 +50,42 @@
         ]
       }
     },
+    "pokedex_1": {
+      "name": {
+        "en": [
+          "Pokédex"
+        ],
+        "text": [
+          "Pokédex"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's an encyclopaedia-like gadget with many blank pages. A Pokédex!"
+        ],
+        "text": [
+          "E un aparat ca o enciclopedie, cu multe pagini goale. Un Pokédex!"
+        ]
+      }
+    },
+    "pokedex_2": {
+      "name": {
+        "en": [
+          "Pokédex"
+        ],
+        "text": [
+          "Pokédex"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It's an encyclopaedia-like gadget with many blank pages. A Pokédex!"
+        ],
+        "text": [
+          "E un aparat ca o enciclopedie, cu multe pagini goale. Un Pokédex!"
+        ]
+      }
+    },
     "scientist": {
       "name": {
         "en": [

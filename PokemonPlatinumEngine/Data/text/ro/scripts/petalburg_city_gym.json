@@ -1,0 +1,176 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        "Wally"
+      ]
+    },
+    {
+      "en": [
+        "Mr. Norman! I caught a Ralts! Thank you so much for lending me your Zigzagoon."
+      ],
+      "text": [
+        "Domnule Norman! Am prins un Ralts! Mulțumesc mult că mi-ați împrumutat Zigzagoonul."
+      ]
+    },
+    {
+      "en": [
+        "And thank you too, {player}. I'll never forget it. I'm going to be a trainer, just like you!"
+      ],
+      "text": [
+        "Și mulțumesc și ție, {player}. N-o să uit niciodată. O să mă fac Antrenor, la fel ca tine!"
+      ]
+    },
+    {
+      "en": [
+        "Norman"
+      ],
+      "text": [
+        "Norman"
+      ]
+    },
+    {
+      "en": [
+        "That boy's eyes were shining. You did a good thing today, {player}."
+      ],
+      "text": [
+        "Băiatului ăluia îi străluceau ochii. Ai făcut un lucru bun azi, {player}."
+      ]
+    },
+    {
+      "en": [
+        "Now, about you. You want to battle me, don't you? I can see it. But I'm a Gym Leader, and I have my rules."
+      ],
+      "text": [
+        "Acum, despre tine. Vrei să te lupți cu mine, nu? Se vede. Dar sunt Lider de Arenă și am regulile mele."
+      ]
+    },
+    {
+      "en": [
+        "Win four Gym Badges first. Then come back, and we'll see what you've learned. Start with Rustboro City, north of the woods."
+      ],
+      "text": [
+        "Câștigă întâi patru Insigne de Arenă. Apoi întoarce-te și vedem ce-ai învățat. Începe cu Orașul Rustboro, la nord de pădure."
+      ]
+    }
+  ],
+  "Norman": [
+    {
+      "en": [
+        "Norman"
+      ],
+      "text": [
+        "Norman"
+      ]
+    },
+    {
+      "en": [
+        "{player}! So you made it to Petalburg on your own. And with a Pokémon of your own, too. I'm proud of you."
+      ],
+      "text": [
+        "{player}! Deci ai ajuns până la Petalburg fără nimeni. Și cu Pokémonul tău, pe deasupra. Sunt mândru de tine."
+      ]
+    },
+    {
+      "en": [
+        "It's a long way from Littleroot. Your mother must have told you I'm the Leader of this Gym now."
+      ],
+      "text": [
+        "E drum lung de la Littleroot. Mama ta ți-o fi spus că acum eu sunt Liderul acestei Arene."
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        "Wally"
+      ]
+    },
+    {
+      "en": [
+        "Um... excuse me. My name is Wally. I'm going to live with my relatives in Verdanturf Town for a while."
+      ],
+      "text": [
+        "Ăă... scuzați-mă. Mă numesc Wally. O să locuiesc o vreme la rudele mele din Orășelul Verdanturf."
+      ]
+    },
+    {
+      "en": [
+        "I thought... if I had a Pokémon with me, I wouldn't feel so lonely. But I've never caught one."
+      ],
+      "text": [
+        "M-am gândit... că dacă aș avea un Pokémon cu mine, nu m-aș simți atât de singur. Dar n-am prins niciodată unul."
+      ]
+    },
+    {
+      "en": [
+        "Norman"
+      ],
+      "text": [
+        "Norman"
+      ]
+    },
+    {
+      "en": [
+        "I see. Here, Wally, take my Zigzagoon. Weaken a wild Pokémon with it, then throw a Poké Ball."
+      ],
+      "text": [
+        "Înțeleg. Uite, Wally, ia Zigzagoonul meu. Slăbește cu el un Pokémon sălbatic, apoi aruncă un Poké Ball."
+      ]
+    },
+    {
+      "en": [
+        "{player}, go with Wally and keep an eye on him. There's tall grass just east of town."
+      ],
+      "text": [
+        "{player}, mergi cu Wally și ai grijă de el. E iarbă înaltă chiar la est de oraș."
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        "Wally"
+      ]
+    },
+    {
+      "en": [
+        "Th-thank you, Mr. Norman! Let's go, {player}!"
+      ],
+      "text": [
+        "M-mulțumesc, domnule Norman! Hai să mergem, {player}!"
+      ]
+    },
+    {
+      "en": [
+        "Four Gym Badges, {player}. Then come back and face me. I'll be waiting."
+      ],
+      "text": [
+        "Patru Insigne de Arenă, {player}. Apoi întoarce-te și înfruntă-mă. Te aștept."
+      ]
+    }
+  ],
+  "GymGuide": [
+    {
+      "en": [
+        "Hey there! This is the Petalburg Gym. Norman's rooms each test a trainer's skill a different way."
+      ],
+      "text": [
+        "Salut! Asta e Arena Petalburg. Fiecare cameră a lui Norman pune la încercare altă îndemânare a Antrenorului."
+      ]
+    },
+    {
+      "en": [
+        "But the doors stay shut until you've got four Badges. Rules are rules!"
+      ],
+      "text": [
+        "Dar ușile rămân închise până ai patru Insigne. Regula e regulă!"
+      ]
+    }
+  ]
+}

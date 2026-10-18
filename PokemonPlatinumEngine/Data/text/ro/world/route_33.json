@@ -1,0 +1,60 @@
+{
+  "people": {
+    "r33_mount_2": {
+      "name": {
+        "en": [
+          "Anthony"
+        ],
+        "text": [
+          "Anthony"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Anthony: Just came out of Union Cave and you want a battle? I like your nerve!"
+        ],
+        "text": [
+          "Drumeț Anthony: Abia am ieșit din Peștera Uniunii și vrei o luptă? Îmi place tupeul tău!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Anthony: All right, all right. I'm going back in where it's dry."
+        ],
+        "text": [
+          "Drumeț Anthony: Bine, bine. Mă întorc înăuntru, unde e uscat."
+        ]
+      }
+    },
+    "r33_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It rains here so much! My mum says the clouds get stuck on the mountain and can't get over.",
+          "The trees over there grow round fruit called Apricorns. Kurt in Azalea Town knows all about them."
+        ],
+        "text": [
+          "Plouă atât de mult aici! Mama zice că norii se agață de munte și nu pot trece peste el.",
+          "Copacii de acolo fac niște fructe rotunde, Apricorne. Kurt din Orășelul Azalea știe totul despre ele."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R33_001+1": {
+      "en": [
+        "Route 33\nAzalea Town - Union Cave"
+      ],
+      "text": [
+        "Ruta 33\nOrășelul Azalea - Peștera Uniunii"
+      ]
+    }
+  }
+}

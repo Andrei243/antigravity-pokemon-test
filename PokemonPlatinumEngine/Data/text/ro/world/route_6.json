@@ -1,0 +1,170 @@
+{
+  "people": {
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Keigo"
+        ],
+        "text": [
+          "Keigo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Keigo: Wait! I've got a bug Pokémon that's dying to meet you!"
+        ],
+        "text": [
+          "Vânător de insecte Keigo: Stai! Am un Pokémon-insectă care moare de nerăbdare să te cunoască!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Keigo: My bugs got squashed..."
+        ],
+        "text": [
+          "Vânător de insecte Keigo: Mi-au strivit insectele..."
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Ricky"
+        ],
+        "text": [
+          "Ricky"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Ricky: Nancy and I are out on a picnic. Want to join in? Battle first!"
+        ],
+        "text": [
+          "Campist Ricky: Eu și Nancy suntem la picnic. Vrei să te alături? Întâi o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Ricky: Aw, we lost. Maybe we should just eat lunch."
+        ],
+        "text": [
+          "Campist Ricky: Of, am pierdut. Poate ar trebui doar să mâncăm."
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Nancy"
+        ],
+        "text": [
+          "Nancy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Nancy: Ricky's gone and lost already? Then it's up to me!"
+        ],
+        "text": [
+          "Excursionistă Nancy: Ricky a pierdut deja? Atunci e rândul meu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Nancy: Okay, okay, you win. Do you want a sandwich?"
+        ],
+        "text": [
+          "Excursionistă Nancy: Bine, bine, ai câștigat. Vrei un sandviș?"
+        ]
+      }
+    },
+    "bug_catcher_2": {
+      "name": {
+        "en": [
+          "Elijah"
+        ],
+        "text": [
+          "Elijah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Elijah: I caught this one in the long grass. Bet you can't beat it!"
+        ],
+        "text": [
+          "Vânător de insecte Elijah: Pe ăsta l-am prins în iarba înaltă. Pun pariu că nu-l poți învinge!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Elijah: Hmph. I'll go and catch a stronger one."
+        ],
+        "text": [
+          "Vânător de insecte Elijah: Hmf. Mă duc să prind unul mai puternic."
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Isabelle"
+        ],
+        "text": [
+          "Isabelle"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Isabelle: Isn't it a lovely day for a battle? Let's go!"
+        ],
+        "text": [
+          "Excursionistă Isabelle: Nu-i așa că e o zi minunată de luptă? Hai!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Isabelle: That was fun, even if I lost!"
+        ],
+        "text": [
+          "Excursionistă Isabelle: A fost distractiv, chiar dacă am pierdut!"
+        ]
+      }
+    },
+    "camper_2": {
+      "name": {
+        "en": [
+          "Jeff"
+        ],
+        "text": [
+          "Jeff"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Jeff: I'm training hard so I can take on the Vermilion Gym!"
+        ],
+        "text": [
+          "Campist Jeff: Mă antrenez din greu ca să înfrunt Arena din Vermilion!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Jeff: Lt. Surge is going to eat me alive..."
+        ],
+        "text": [
+          "Campist Jeff: Lt. Surge o să mă mănânce de viu..."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route6_EventScript_UndergroundPathSign": {
+      "en": [
+        "Underground Path\nCerulean City - Vermilion City"
+      ],
+      "text": [
+        "Pasajul Subteran\nOrașul Cerulean - Orașul Vermilion"
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Well, well! {player}! Fancy running into you on a ship like this. Were you invited to the party too?"
+      ],
+      "text": [
+        "Ia te uită! {player}! Ce surpriză să te văd pe un vapor ca ăsta. Și pe tine te-au invitat la petrecere?"
+      ]
+    },
+    {
+      "en": [
+        "I bet you've hardly caught anything. Come on, let's see how your Pokémon are doing!"
+      ],
+      "text": [
+        "Pun pariu că n-ai prins mai nimic. Hai să vedem cum se descurcă Pokémonii tăi!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Humph! Fine, you got lucky. I already saw the captain, by the way. He showed me a neat move called Cut."
+      ],
+      "text": [
+        "Hmf! Bine, ai avut noroc. Apropo, am fost deja la căpitan. Mi-a arătat o mișcare grozavă, Tăiere."
+      ]
+    },
+    {
+      "en": [
+        "He's not looking too well, though. You'd better go and see him yourself. Smell you later!"
+      ],
+      "text": [
+        "Doar că nu arată prea bine. Ar fi bine să te duci tu să-l vezi. Pa-pa!"
+      ]
+    }
+  ]
+}

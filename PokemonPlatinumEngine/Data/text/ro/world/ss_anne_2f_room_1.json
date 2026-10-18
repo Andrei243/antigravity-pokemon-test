@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon from overseas are fascinating. I've seen some that would amaze you."
+        ],
+        "text": [
+          "Pokémonii de peste mări sunt fascinanți. Am văzut unii care te-ar lăsa cu gura căscată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

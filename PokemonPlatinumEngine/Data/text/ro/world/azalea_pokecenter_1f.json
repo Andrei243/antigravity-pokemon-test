@@ -1,0 +1,123 @@
+{
+  "people": {
+    "t23pc0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "t23pc0101_pcwoman2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+        ],
+        "text": [
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
+        ]
+      }
+    },
+    "t23pc0101_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "t23pc0101_pcwoman2_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "t23pc0101_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kurt makes Poké Balls out of Apricorns. Bring him the fruit and he'll carve you one. Amazing, isn't it?"
+        ],
+        "text": [
+          "Kurt face Poké Ball-uri din Apricorne. Adu-i fructul și-ți meșterește unul. Uimitor, nu?"
+        ]
+      }
+    },
+    "t23pc0101_fishing_2": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          "Pescarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Slowpoke's tails are the best bait there is, some say. I'd never cut one off. Who would?"
+        ],
+        "text": [
+          "Unii zic că o coadă de Slowpoke e cea mai bună momeală. Eu n-aș tăia niciodată una. Cine ar face așa ceva?"
+        ]
+      }
+    },
+    "t23pc0101_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon that sleeps can't fight. Keep some Awakening in your bag if you're going into the forest."
+        ],
+        "text": [
+          "Un Pokémon adormit nu se poate lupta. Ține niște Trezire în rucsac dacă intri în pădure."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

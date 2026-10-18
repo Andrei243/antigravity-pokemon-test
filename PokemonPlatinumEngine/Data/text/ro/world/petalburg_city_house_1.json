@@ -1,0 +1,41 @@
+{
+  "people": {
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My brother set off on a journey last spring. He writes home from a different town every week!"
+        ],
+        "text": [
+          "Fratele meu a plecat în călătorie primăvara trecută. Scrie acasă în fiecare săptămână dintr-alt oraș!"
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Travel light, travel far. That's what I always told my son. He never listened. He packed three tents."
+        ],
+        "text": [
+          "Călătorește ușor, ajungi departe. Asta i-am spus mereu fiului meu. N-a ascultat niciodată. A luat trei corturi."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

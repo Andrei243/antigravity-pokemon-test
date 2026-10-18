@@ -1,0 +1,274 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Eddie"
+        ],
+        "text": [
+          "Eddie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Eddie: Who's the toughest trainer around here? Me, that's who!"
+        ],
+        "text": [
+          "Puști Eddie: Cine e cel mai tare Antrenor de pe aici? Eu, cine altul!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Eddie: Okay... so you're tougher than me."
+        ],
+        "text": [
+          "Puști Eddie: Bine... deci ești mai tare decât mine."
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Hugo"
+        ],
+        "text": [
+          "Hugo"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gamer Hugo: Let's make a bet! If I win, you buy me lunch."
+        ],
+        "text": [
+          "Gamer Hugo: Hai să facem un pariu! Dacă câștig, îmi plătești prânzul."
+        ]
+      },
+      "after": {
+        "en": [
+          "Gamer Hugo: Rats. Looks like lunch is on me."
+        ],
+        "text": [
+          "Gamer Hugo: Fir-ar. Se pare că prânzul e din partea mea."
+        ]
+      }
+    },
+    "youngster_2": {
+      "name": {
+        "en": [
+          "Dillon"
+        ],
+        "text": [
+          "Dillon"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Dillon: I'm on my way to the Pokémon Fan Club. But first, a battle!"
+        ],
+        "text": [
+          "Puști Dillon: Merg la Clubul Fanilor Pokémon. Dar întâi, o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Dillon: Maybe I'll just go and look at Pokémon instead."
+        ],
+        "text": [
+          "Puști Dillon: Poate mai bine mă duc doar să mă uit la Pokémoni."
+        ]
+      }
+    },
+    "youngster_3": {
+      "name": {
+        "en": [
+          "Dave"
+        ],
+        "text": [
+          "Dave"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Dave: My Pokémon and I train on this road every day!"
+        ],
+        "text": [
+          "Puști Dave: Eu și Pokémonii mei ne antrenăm pe drumul ăsta în fiecare zi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Dave: Back to training, I guess..."
+        ],
+        "text": [
+          "Puști Dave: Înapoi la antrenament, cred..."
+        ]
+      }
+    },
+    "old_man_1_2": {
+      "name": {
+        "en": [
+          "Jasper"
+        ],
+        "text": [
+          "Jasper"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gamer Jasper: Battles are all about luck. And today I feel lucky!"
+        ],
+        "text": [
+          "Gamer Jasper: Luptele țin numai de noroc. Iar azi mă simt norocos!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gamer Jasper: My luck's run dry. Time to go home."
+        ],
+        "text": [
+          "Gamer Jasper: Mi-a secat norocul. E timpul să merg acasă."
+        ]
+      }
+    },
+    "old_man_1_3": {
+      "name": {
+        "en": [
+          "Darian"
+        ],
+        "text": [
+          "Darian"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gamer Darian: I'll bet everything on this battle. Ready?"
+        ],
+        "text": [
+          "Gamer Darian: Pun totul pe lupta asta. Gata?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gamer Darian: Lost the lot! Never gamble on a sure thing."
+        ],
+        "text": [
+          "Gamer Darian: Am pierdut tot! Nu paria niciodată pe un lucru sigur."
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Braxton"
+        ],
+        "text": [
+          "Braxton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Engineer Braxton: I'm on a break from work. A battle will keep my mind sharp!"
+        ],
+        "text": [
+          "Inginer Braxton: Sunt în pauză de la muncă. O luptă îmi ține mintea ascuțită!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Engineer Braxton: Back to the drawing board for me."
+        ],
+        "text": [
+          "Inginer Braxton: O iau de la capăt cu planurile."
+        ]
+      }
+    },
+    "youngster_4": {
+      "name": {
+        "en": [
+          "Yasu"
+        ],
+        "text": [
+          "Yasu"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Yasu: Hey, you! You look like you could use a battle!"
+        ],
+        "text": [
+          "Puști Yasu: Hei, tu! Arăți ca cineva căruia i-ar prinde bine o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Yasu: Okay, okay, you're good!"
+        ],
+        "text": [
+          "Puști Yasu: Bine, bine, te pricepi!"
+        ]
+      }
+    },
+    "old_man_1_4": {
+      "name": {
+        "en": [
+          "Dirk"
+        ],
+        "text": [
+          "Dirk"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gamer Dirk: Heads or tails? Let's let our Pokémon decide!"
+        ],
+        "text": [
+          "Gamer Dirk: Cap sau pajură? Să-i lăsăm pe Pokémoni să decidă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gamer Dirk: Tails, I lose. Again."
+        ],
+        "text": [
+          "Gamer Dirk: Pajură, am pierdut. Iar."
+        ]
+      }
+    },
+    "balding_man_2": {
+      "name": {
+        "en": [
+          "Bernie"
+        ],
+        "text": [
+          "Bernie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Engineer Bernie: Careful round here. Electricity runs through the cables under this road!"
+        ],
+        "text": [
+          "Inginer Bernie: Atenție pe aici. Pe sub drumul ăsta trec cabluri cu curent!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Engineer Bernie: Shocking! I mean, you shocked me."
+        ],
+        "text": [
+          "Inginer Bernie: Șocant! Adică, m-ai șocat."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route11_EventScript_DiglettsCaveSign": {
+      "en": [
+        "Diglett's Cave"
+      ],
+      "text": [
+        "Peștera lui Diglett"
+      ]
+    }
+  }
+}

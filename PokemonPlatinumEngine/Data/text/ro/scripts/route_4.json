@@ -1,0 +1,182 @@
+{
+  "MegaPunch": [
+    {
+      "en": [
+        "Black Belt"
+      ],
+      "text": [
+        "Centură Neagră"
+      ]
+    },
+    {
+      "en": [
+        "A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch?"
+      ],
+      "text": [
+        "Pumnul pornește din șolduri! Să-l învăț Mega Pumn pe unul dintre Pokémonii tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Good! Which Pokémon is to learn it?"
+      ],
+      "text": [
+        "Bine! Care Pokémon să-l învețe?"
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "{wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Keep that punch sharp! Hips first, then the fist."
+      ],
+      "text": [
+        "Ține pumnul ăla ascuțit! Întâi șoldurile, apoi pumnul."
+      ]
+    },
+    {
+      "en": [
+        "Come back if you change your mind. My punches aren't going anywhere."
+      ],
+      "text": [
+        "Întoarce-te dacă te răzgândești. Pumnii mei nu pleacă nicăieri."
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't throw a punch! Hatch it first."
+      ],
+      "text": [
+        "Un Ou nu poate da un pumn! Întâi să iasă puiul."
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon can't learn a punch like mine, I'm afraid."
+      ],
+      "text": [
+        "Mă tem că Pokémonul ăsta nu poate învăța un pumn ca al meu."
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}!"
+      ],
+      "text": [
+        "Ăsta știe deja {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa."
+      ]
+    }
+  ],
+  "MegaKick": [
+    {
+      "en": [
+        "Black Belt"
+      ],
+      "text": [
+        "Centură Neagră"
+      ]
+    },
+    {
+      "en": [
+        "My kicks can split a boulder! Shall I teach one of your Pokémon Mega Kick?"
+      ],
+      "text": [
+        "Șuturile mele despică bolovani! Să-l învăț Mega Șut pe unul dintre Pokémonii tăi?"
+      ]
+    },
+    {
+      "en": [
+        "Good! Which Pokémon is to learn it?"
+      ],
+      "text": [
+        "Bine! Care Pokémon să-l învețe?"
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        "{wearer} a uitat {forgotten}. Și..."
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        "{wearer} a învățat {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "Kick from the ground up, and you'll never lose your balance."
+      ],
+      "text": [
+        "Lovește pornind din pământ și n-o să-ți pierzi niciodată echilibrul."
+      ]
+    },
+    {
+      "en": [
+        "Come back if you change your mind. My kicks aren't going anywhere."
+      ],
+      "text": [
+        "Întoarce-te dacă te răzgândești. Șuturile mele nu pleacă nicăieri."
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't kick anything! Hatch it first."
+      ],
+      "text": [
+        "Un Ou nu poate lovi nimic! Întâi să iasă puiul."
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon can't learn a kick like mine, I'm afraid."
+      ],
+      "text": [
+        "Mă tem că Pokémonul ăsta nu poate învăța un șut ca al meu."
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}!"
+      ],
+      "text": [
+        "Ăsta știe deja {thing}!"
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        "{forgotten} nu e o mișcare la care să se poată renunța așa."
+      ]
+    }
+  ]
+}

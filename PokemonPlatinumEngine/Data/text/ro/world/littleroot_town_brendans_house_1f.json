@@ -1,0 +1,51 @@
+{
+  "people": {
+    "players_house_1f_mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      }
+    },
+    "vigoroth_carrying_box": {
+      "name": {
+        "en": [
+          "Vigoroth"
+        ],
+        "text": [
+          "Vigoroth"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Vigoroth: Gruoh! It's too busy carrying boxes to stop!"
+        ],
+        "text": [
+          "Vigoroth: Gruoh! E prea ocupat să care cutii ca să se oprească!"
+        ]
+      }
+    },
+    "vigoroth_facing_away": {
+      "name": {
+        "en": [
+          "Vigoroth"
+        ],
+        "text": [
+          "Vigoroth"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Vigoroth: Gyaoh! It's unpacking with great enthusiasm."
+        ],
+        "text": [
+          "Vigoroth: Giaoh! Despachetează cu mare entuziasm."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

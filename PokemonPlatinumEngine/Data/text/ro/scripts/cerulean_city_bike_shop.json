@@ -1,0 +1,98 @@
+{
+  "Clerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătoarea"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Bike Shop! Our bicycles are the best in Kanto."
+      ],
+      "text": [
+        "Bun venit la Magazinul de Biciclete! Bicicletele noastre sunt cele mai bune din Kanto."
+      ]
+    },
+    {
+      "en": [
+        "A bicycle is ¥1,000,000. Would you like one?",
+        "Buy one",
+        "No, thanks"
+      ],
+      "text": [
+        "O bicicletă costă ¥1.000.000. Vrei una?",
+        "Cumpăr una",
+        "Nu, mulțumesc"
+      ]
+    },
+    {
+      "en": [
+        "Thanks for dropping in! Come back any time."
+      ],
+      "text": [
+        "Mulțumim că ai trecut pe la noi! Revino oricând."
+      ]
+    },
+    {
+      "en": [
+        "Oh... I'm sorry, you don't have enough money. Come back if you ever win the lottery!"
+      ],
+      "text": [
+        "Of... Îmi pare rău, nu ai destui bani. Mai treci pe aici dacă vreodată câștigi la loterie!"
+      ]
+    },
+    {
+      "en": [
+        "Oh! That's a Bike Voucher! Those are good for one free bicycle!"
+      ],
+      "text": [
+        "O! Ăsta e un Tichet de Bicicletă! Cu el primești o bicicletă gratis!"
+      ]
+    },
+    {
+      "en": [
+        "There you go! Use it wherever there's room to ride, and come back and tell us how you like it."
+      ],
+      "text": [
+        "Poftim! Folosește-o oriunde e loc de mers pe bicicletă și vino să ne spui cum îți place."
+      ]
+    },
+    {
+      "en": [
+        "How's the bicycle treating you? Riding is so much faster than walking, isn't it?"
+      ],
+      "text": [
+        "Cum te descurci cu bicicleta? E mult mai rapid decât pe jos, nu-i așa?"
+      ]
+    }
+  ],
+  "Youngster": [
+    {
+      "en": [
+        "Youngster"
+      ],
+      "text": [
+        "Puștiul"
+      ]
+    },
+    {
+      "en": [
+        "A bicycle gets you round twice as fast as running shoes. I want one so badly!"
+      ],
+      "text": [
+        "Cu bicicleta ajungi de două ori mai repede decât cu pantofii de alergare. Tare mi-aș dori una!"
+      ]
+    },
+    {
+      "en": [
+        "Whoa, you've got a bicycle? How did you ever afford it?"
+      ],
+      "text": [
+        "Uau, ai bicicletă? Cum ți-ai permis-o?"
+      ]
+    }
+  ]
+}

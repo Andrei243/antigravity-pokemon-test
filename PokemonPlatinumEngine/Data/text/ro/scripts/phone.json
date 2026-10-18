@@ -1,0 +1,240 @@
+{
+  "Nobody": [
+    {
+      "en": [
+        "…There's no answer. Maybe they're busy."
+      ],
+      "text": [
+        "…Nu răspunde nimeni. Poate e ocupat."
+      ]
+    }
+  ],
+  "Mother": [
+    {
+      "en": [
+        "Mom"
+      ],
+      "text": [
+        "Mama"
+      ]
+    },
+    {
+      "en": [
+        "Hello, dear! It's so good to hear from you. Are you eating properly out there?"
+      ],
+      "text": [
+        "Alo, suflețelul meu! Ce bine că te aud. Mănânci cum trebuie pe-acolo?"
+      ]
+    },
+    {
+      "en": [
+        "Don't push yourself too hard. Come home and rest whenever you need to."
+      ],
+      "text": [
+        "Nu te forța prea tare. Vino acasă să te odihnești oricând ai nevoie."
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! The house is so quiet without you. Professor Elm stops by now and then to ask how you're doing."
+      ],
+      "text": [
+        "O, {player}! Casa e atât de liniștită fără tine. Profesorul Elm mai trece pe aici din când în când să întrebe ce mai faci."
+      ]
+    },
+    {
+      "en": [
+        "You sound well! Keep your Pokémon close and you'll be fine. I'm proud of you, you know."
+      ],
+      "text": [
+        "Se aude că ești bine! Ține-ți Pokémonii aproape și o să fie bine. Să știi că sunt mândră de tine."
+      ]
+    },
+    {
+      "en": [
+        "{player}? It's Mom. I just wanted to hear your voice. Take care of yourself, all right?"
+      ],
+      "text": [
+        "{player}? Sunt mama. Voiam doar să-ți aud vocea. Ai grijă de tine, bine?"
+      ]
+    }
+  ],
+  "ProfElm": [
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        "Profesorul Elm"
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}? Elm here. How's your Pokédex coming along? Every Pokémon you meet is a page of my research!"
+      ],
+      "text": [
+        "Alo, {player}? Aici Elm. Cum merge Pokédexul? Fiecare Pokémon pe care-l întâlnești e o pagină din cercetarea mea!"
+      ]
+    },
+    {
+      "en": [
+        "{player}! I've been reading up on how Pokémon change as they grow. If you see anything strange, call me first!"
+      ],
+      "text": [
+        "{player}! Am tot citit despre cum se schimbă Pokémonii pe măsură ce cresc. Dacă vezi ceva ciudat, sună-mă întâi pe mine!"
+      ]
+    }
+  ],
+  "Joey": [
+    {
+      "en": [
+        "Joey"
+      ],
+      "text": [
+        "Joey"
+      ]
+    },
+    {
+      "en": [
+        "Hey, it's Joey! My Rattata ate a whole berry by itself today. It's growing up so fast!"
+      ],
+      "text": [
+        "Hei, sunt Joey! Rattata al meu a mâncat azi o boabă întreagă singur. Crește atât de repede!"
+      ]
+    },
+    {
+      "en": [
+        "Joey here! I was just thinking about our battle. My Rattata's been training non-stop since then."
+      ],
+      "text": [
+        "Aici Joey! Tocmai mă gândeam la lupta noastră. Rattata al meu s-a antrenat non-stop de atunci."
+      ]
+    },
+    {
+      "en": [
+        "It's Joey! My Rattata's in even better shape now. Come and battle me again on Route 30!"
+      ],
+      "text": [
+        "Sunt Joey! Rattata al meu e într-o formă și mai bună acum. Vino să ne luptăm iar pe Ruta 30!"
+      ]
+    },
+    {
+      "en": [
+        "Joey here. I'm still waiting for you on Route 30! My Rattata is getting restless."
+      ],
+      "text": [
+        "Aici Joey. Încă te aștept pe Ruta 30! Rattata al meu nu-și mai găsește locul."
+      ]
+    }
+  ],
+  "Wade": [
+    {
+      "en": [
+        "Wade"
+      ],
+      "text": [
+        "Wade"
+      ]
+    },
+    {
+      "en": [
+        "This is Wade. I caught a bug in the long grass today that I've never seen before! It flew off, though."
+      ],
+      "text": [
+        "Sunt Wade. Azi am prins în iarba înaltă o insectă pe care n-o mai văzusem! Doar că mi-a zburat."
+      ]
+    },
+    {
+      "en": [
+        "Wade here! My bugs have grown a lot. Meet me on Route 31 for a battle, all right?"
+      ],
+      "text": [
+        "Aici Wade! Insectele mele au crescut mult. Vino pe Ruta 31 să ne luptăm, bine?"
+      ]
+    },
+    {
+      "en": [
+        "It's Wade. My bugs and I are still waiting on Route 31. Don't keep us too long!"
+      ],
+      "text": [
+        "Sunt Wade. Eu și insectele mele încă te așteptăm pe Ruta 31. Nu ne lăsa să așteptăm prea mult!"
+      ]
+    }
+  ],
+  "Liz": [
+    {
+      "en": [
+        "Liz"
+      ],
+      "text": [
+        "Liz"
+      ]
+    },
+    {
+      "en": [
+        "Hi, it's Liz! I heard there's a café somewhere in Goldenrod City with the sweetest cakes. Have you been?"
+      ],
+      "text": [
+        "Bună, sunt Liz! Am auzit că undeva în Orașul Goldenrod e o cafenea cu cele mai dulci prăjituri. Ai fost?"
+      ]
+    },
+    {
+      "en": [
+        "Liz here! Guess what? My cousin says Pokémon love it when you comb their fur. Isn't that cute?"
+      ],
+      "text": [
+        "Aici Liz! Ghici ce? Verișoara mea zice că Pokémonii adoră să fie pieptănați. Ce drăguț, nu?"
+      ]
+    },
+    {
+      "en": [
+        "It's Liz! Let's have another battle! I'll be on Route 32, near the bridge. Don't be late!"
+      ],
+      "text": [
+        "Sunt Liz! Hai să ne mai luptăm o dată! O să fiu pe Ruta 32, lângă pod. Nu întârzia!"
+      ]
+    },
+    {
+      "en": [
+        "Liz again! I'm still on Route 32, you know. Hurry up, I've got lots to tell you!"
+      ],
+      "text": [
+        "Iar Liz! Încă sunt pe Ruta 32, să știi. Grăbește-te, am o grămadă să-ți povestesc!"
+      ]
+    }
+  ],
+  "Ralph": [
+    {
+      "en": [
+        "Ralph"
+      ],
+      "text": [
+        "Ralph"
+      ]
+    },
+    {
+      "en": [
+        "Ralph here. The fish were biting all morning on Route 32. Nothing beats a good day by the water."
+      ],
+      "text": [
+        "Aici Ralph. Peștii au mușcat toată dimineața pe Ruta 32. Nimic nu se compară cu o zi bună lângă apă."
+      ]
+    },
+    {
+      "en": [
+        "It's Ralph. My Pokémon are fighting fit today. Come down to Route 32 and we'll have that rematch."
+      ],
+      "text": [
+        "Sunt Ralph. Pokémonii mei sunt în formă azi. Vino pe Ruta 32 și facem revanșa aia."
+      ]
+    },
+    {
+      "en": [
+        "Ralph again. I'm still by the water on Route 32, waiting for our battle. The fish can wait."
+      ],
+      "text": [
+        "Iar Ralph. Încă sunt lângă apă pe Ruta 32 și aștept lupta noastră. Peștii mai pot aștepta."
+      ]
+    }
+  ]
+}

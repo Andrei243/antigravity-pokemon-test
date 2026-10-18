@@ -1,0 +1,25 @@
+{
+  "people": {
+    "t23r0201_gsfighter": {
+      "name": {
+        "en": [
+          "Charcoal Maker"
+        ],
+        "text": [
+          "Cărbunarul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My apprentice went off to Ilex Forest with our Farfetch'd to cut wood, and he still isn't back.",
+          "That boy. Without wood there's no charcoal, and without charcoal there's no work."
+        ],
+        "text": [
+          "Ucenicul meu a plecat în Pădurea Ilex cu Farfetch'd al nostru să taie lemne și încă nu s-a întors.",
+          "Băiatul ăsta. Fără lemne nu e cărbune, iar fără cărbune nu e de lucru."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

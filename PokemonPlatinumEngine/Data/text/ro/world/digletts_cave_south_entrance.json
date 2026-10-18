@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Diglett's Cave"
+    ],
+    "text": [
+      "Peștera lui Diglett"
+    ]
+  },
+  "people": {
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some Diglett have lived down here for generations. Their tunnels are as old as the town."
+        ],
+        "text": [
+          "Unii Digletti trăiesc aici de generații. Tunelurile lor sunt la fel de vechi ca orașul."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

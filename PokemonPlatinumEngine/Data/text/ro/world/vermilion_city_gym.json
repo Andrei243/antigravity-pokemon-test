@@ -1,0 +1,163 @@
+{
+  "people": {
+    "lt_surge": {
+      "name": {
+        "en": [
+          "Lt. Surge"
+        ],
+        "text": [
+          "Lt. Surge"
+        ]
+      }
+    },
+    "gym_guy": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Baily"
+        ],
+        "text": [
+          "Baily"
+        ]
+      },
+      "before": {
+        "en": [
+          "Engineer Baily: I wired every gate in this Gym myself! You'll never find the switches!"
+        ],
+        "text": [
+          "Inginer Baily: Am făcut singur instalația fiecărei porți din Arena asta! N-o să găsești niciodată întrerupătoarele!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Engineer Baily: Short-circuited! Well, the switches are still hidden..."
+        ],
+        "text": [
+          "Inginer Baily: Scurtcircuit! Ei, întrerupătoarele tot ascunse sunt..."
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Dwayne"
+        ],
+        "text": [
+          "Dwayne"
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Dwayne: Lt. Surge was a soldier, and I was a sailor. We're tough as they come!"
+        ],
+        "text": [
+          "Marinar Dwayne: Lt. Surge a fost soldat, iar eu marinar. Suntem cei mai duri!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Dwayne: Washed overboard! You'd make a fine sailor."
+        ],
+        "text": [
+          "Marinar Dwayne: Aruncat peste bord! Ai avea ce căuta pe un vapor."
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Tucker"
+        ],
+        "text": [
+          "Tucker"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Tucker: Lt. Surge is a hero of the war. Show some respect, youngster!"
+        ],
+        "text": [
+          "Gentleman Tucker: Lt. Surge e un erou de război. Arată puțin respect!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Tucker: Hmm. Perhaps you'll be the one he respects."
+        ],
+        "text": [
+          "Gentleman Tucker: Hmm. Poate pe tine te va respecta el."
+        ]
+      }
+    },
+    "gate_1": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          "Poartă electrică"
+        ]
+      }
+    },
+    "gate_2": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          "Poartă electrică"
+        ]
+      }
+    },
+    "gate_3": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          "Poartă electrică"
+        ]
+      }
+    },
+    "gate_4": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          "Poartă electrică"
+        ]
+      }
+    },
+    "gate_5": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          "Poartă electrică"
+        ]
+      }
+    },
+    "gate_6": {
+      "name": {
+        "en": [
+          "Electric gate"
+        ],
+        "text": [
+          "Poartă electrică"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

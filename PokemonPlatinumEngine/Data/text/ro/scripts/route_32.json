@@ -56,5 +56,131 @@
         "Drumul merge spre sud până la Peștera Uniunii, și mai departe la Orășelul Azalea. Nu-i deranja pe pescari, nu le place."
       ]
     }
+  ],
+  "Liz": [
+    {
+      "en": [
+        "Liz"
+      ],
+      "text": [
+        "Liz"
+      ]
+    },
+    {
+      "en": [
+        "That was fun! Hey, let's swap numbers. I love a good chat, and I know all the gossip!"
+      ],
+      "text": [
+        "A fost distractiv! Hei, hai să facem schimb de numere. Îmi place mult să stau la povești și știu toate bârfele!"
+      ]
+    },
+    {
+      "en": [
+        "Register Liz's number in your Pokégear?"
+      ],
+      "text": [
+        "Înregistrezi numărul lui Liz în Pokégear?"
+      ]
+    },
+    {
+      "en": [
+        "Yay! I'll call you all the time. Well, maybe not all the time."
+      ],
+      "text": [
+        "Ura! O să te sun tot timpul. Mă rog, poate nu chiar tot timpul."
+      ]
+    },
+    {
+      "en": [
+        "Aww. Ask me again whenever you like!"
+      ],
+      "text": [
+        "Ooo. Mai întreabă-mă oricând vrei!"
+      ]
+    }
+  ],
+  "Ralph": [
+    {
+      "en": [
+        "Ralph"
+      ],
+      "text": [
+        "Ralph"
+      ]
+    },
+    {
+      "en": [
+        "You've got a strong team. I'd like a rematch one of these days. What's your number?"
+      ],
+      "text": [
+        "Ai o echipă puternică. Mi-ar plăcea o revanșă într-una din zilele astea. Care e numărul tău?"
+      ]
+    },
+    {
+      "en": [
+        "Register Ralph's number in your Pokégear?"
+      ],
+      "text": [
+        "Înregistrezi numărul lui Ralph în Pokégear?"
+      ]
+    },
+    {
+      "en": [
+        "Good. I'll ring you when the fish are biting and my Pokémon are ready."
+      ],
+      "text": [
+        "Bine. Te sun când mușcă peștii și Pokémonii mei sunt gata."
+      ]
+    },
+    {
+      "en": [
+        "Fair enough. I'll be here by the water either way."
+      ],
+      "text": [
+        "Cum vrei. Eu oricum sunt aici, lângă apă."
+      ]
+    }
+  ],
+  "Frieda": [
+    {
+      "en": [
+        "Frieda"
+      ],
+      "text": [
+        "Frieda"
+      ]
+    },
+    {
+      "en": [
+        "Yay! It's Friday! I'm Frieda of Friday. Nice to meet you! Here, I want you to have this."
+      ],
+      "text": [
+        "Ura! E vineri! Eu sunt Frieda de Vineri. Încântată de cunoștință! Uite, vreau să primești asta."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that holds it hits harder with Poison-type moves. Isn't Friday just the best day?"
+      ],
+      "text": [
+        "Un Pokémon care îl ține lovește mai tare cu mișcările de tip Otravă. Nu-i așa că vinerea e cea mai bună zi?"
+      ]
+    },
+    {
+      "en": [
+        "Fridays are the best! The weekend's nearly here, and everyone's smiling."
+      ],
+      "text": [
+        "Vinerea e cea mai bună! Vine weekendul și toată lumea zâmbește."
+      ]
+    },
+    {
+      "en": [
+        "Huh? Today isn't Friday. I only come out on Fridays!"
+      ],
+      "text": [
+        "Hm? Azi nu e vineri. Eu ies doar vinerea!"
+      ]
+    }
   ]
 }

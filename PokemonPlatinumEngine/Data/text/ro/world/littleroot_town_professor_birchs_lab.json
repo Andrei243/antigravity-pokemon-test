@@ -1,0 +1,68 @@
+{
+  "people": {
+    "birchs_lab_aide": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      }
+    },
+    "birchs_lab_birch": {
+      "name": {
+        "en": [
+          "Prof. Birch"
+        ],
+        "text": [
+          "Profesorul Birch"
+        ]
+      }
+    },
+    "birchs_lab_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LittlerootTown_ProfessorBirchsLab_EventScript_Machine": {
+      "en": [
+        "A machine hums away quietly.\nIts lights blink in a steady pattern."
+      ],
+      "text": [
+        "O mașinărie bâzâie încet.\nLuminile ei clipesc într-un ritm regulat."
+      ]
+    },
+    "LittlerootTown_ProfessorBirchsLab_EventScript_Book": {
+      "en": [
+        "A thick book about where Pokémon make their homes.\nThe margins are full of muddy fingerprints."
+      ],
+      "text": [
+        "O carte groasă despre locurile unde își fac casa Pokémonii.\nMarginile sunt pline de amprente cu noroi."
+      ]
+    },
+    "LittlerootTown_ProfessorBirchsLab_EventScript_Bookshelf": {
+      "en": [
+        "The shelves are crammed with field notes,\nsorted by route."
+      ],
+      "text": [
+        "Rafturile sunt ticsite cu notițe de teren,\nsortate pe rute."
+      ]
+    },
+    "LittlerootTown_ProfessorBirchsLab_EventScript_PC": {
+      "en": [
+        "The screen is covered in charts\nof Pokémon sightings."
+      ],
+      "text": [
+        "Ecranul e plin de grafice\ncu Pokémonii observați."
+      ]
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Lamar"
+        ],
+        "text": [
+          "Lamar"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Lamar: I am a man of means. My Pokémon are the finest money can buy!"
+        ],
+        "text": [
+          "Gentleman Lamar: Sunt un om cu stare. Pokémonii mei sunt cei mai buni pe care-i pot cumpăra banii!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Lamar: Hmm. Money can't buy a win, it seems."
+        ],
+        "text": [
+          "Gentleman Lamar: Hmm. Banii nu pot cumpăra o victorie, se pare."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Dawn"
+        ],
+        "text": [
+          "Dawn"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Dawn: I've been waiting for someone fun to battle!"
+        ],
+        "text": [
+          "Domnișoară Dawn: Așteptam pe cineva distractiv cu care să mă lupt!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Dawn: You're fun all right. Fun to lose to!"
+        ],
+        "text": [
+          "Domnișoară Dawn: Cu tine chiar e distracție, nimic de zis. Distracție până și la pierdut!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

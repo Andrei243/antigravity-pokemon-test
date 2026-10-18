@@ -1,0 +1,13 @@
+{
+  "people": {},
+  "signs": {
+    "Route5_EventScript_UndergroundPathSign": {
+      "en": [
+        "Underground Path\nCerulean City - Vermilion City"
+      ],
+      "text": [
+        "Pasajul Subteran\nOrașul Cerulean - Orașul Vermilion"
+      ]
+    }
+  }
+}

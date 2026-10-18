@@ -1,0 +1,38 @@
+{
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznic"
+      ]
+    },
+    {
+      "en": [
+        "I'm on guard duty, and I'm parched! I'm not letting anyone through until I've had a drink."
+      ],
+      "text": [
+        "Sunt de pază și mor de sete! Nu las pe nimeni să treacă până nu beau ceva."
+      ]
+    }
+  ],
+  "GuardTalk": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznic"
+      ]
+    },
+    {
+      "en": [
+        "Hi there. Saffron City's closed to travellers for now. Sorry about that."
+      ],
+      "text": [
+        "Salut. Orașul Saffron e închis pentru călători deocamdată. Îmi pare rău."
+      ]
+    }
+  ]
+}

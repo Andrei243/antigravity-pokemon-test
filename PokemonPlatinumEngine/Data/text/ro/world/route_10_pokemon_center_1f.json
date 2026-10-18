@@ -1,0 +1,79 @@
+{
+  "people": {
+    "route10_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rock Tunnel is pitch black. Without Flash you'd only grope along the walls."
+        ],
+        "text": [
+          "În Tunelul de Piatră e beznă. Fără Bliț ai merge doar pe pipăite pe lângă pereți."
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Nugget is a lump of solid gold. Nobody would part with one for nothing!"
+        ],
+        "text": [
+          "O Pepită e un bulgăre de aur curat. Nimeni nu s-ar despărți de una pe degeaba!"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Power Plant down the river has been empty for years. They say Electric Pokémon live there now."
+        ],
+        "text": [
+          "Centrala Electrică din josul râului e goală de ani de zile. Se zice că acum trăiesc acolo Pokémoni de tip Electric."
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

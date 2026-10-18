@@ -1,0 +1,124 @@
+{
+  "people": {
+    "petalburg_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym Leader here is the strongest trainer I know.",
+          "He only battles people who have already won four badges somewhere else!"
+        ],
+        "text": [
+          "Liderul Arenei de aici e cel mai puternic Antrenor pe care-l știu.",
+          "Se luptă doar cu cei care au câștigat deja patru Insigne în altă parte!"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The pond in the middle of town is lovely in the evening.",
+          "Water Pokémon come up to the surface to look at the lamps."
+        ],
+        "text": [
+          "Iazul din mijlocul orașului e minunat seara.",
+          "Pokémonii de apă ies la suprafață să se uite la felinare."
+        ]
+      }
+    },
+    "gym_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      }
+    },
+    "petalburg_wally": {
+      "name": {
+        "en": [
+          "Wally"
+        ],
+        "text": [
+          "Wally"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I did it... I really did it!"
+        ],
+        "text": [
+          "Am reușit... chiar am reușit!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PetalburgCity_EventScript_GymSign": {
+      "en": [
+        "Petalburg City Pokémon Gym\nLeader: Norman\nA man who reached for strength!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Petalburg\nLider: Norman\nUn om care a căutat puterea!"
+      ]
+    },
+    "PetalburgCity_EventScript_CitySign": {
+      "en": [
+        "Petalburg City\nWhere ordinary days are cherished."
+      ],
+      "text": [
+        "Orașul Petalburg\nUnde zilele obișnuite sunt prețuite."
+      ]
+    },
+    "PetalburgCity_EventScript_WallyHouseSign": {
+      "en": [
+        "Wally's House"
+      ],
+      "text": [
+        "Casa lui Wally"
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
+      ]
+    }
+  }
+}

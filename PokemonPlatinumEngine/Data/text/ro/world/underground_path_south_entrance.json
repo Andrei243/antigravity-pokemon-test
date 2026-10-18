@@ -1,0 +1,23 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They built this tunnel to go round Saffron City. It's a long walk, but at least it's dry!"
+        ],
+        "text": [
+          "Tunelul ăsta l-au construit ca să ocolească Orașul Saffron. E drum lung, dar măcar e uscat!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

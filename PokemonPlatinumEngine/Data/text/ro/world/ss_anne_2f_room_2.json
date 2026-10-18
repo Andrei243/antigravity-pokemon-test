@@ -1,0 +1,65 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "fisher": {
+      "name": {
+        "en": [
+          "Dale"
+        ],
+        "text": [
+          "Dale"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Dale: Even on a cruise, I've got my rod with me!"
+        ],
+        "text": [
+          "Pescar Dale: Chiar și în croazieră, am undița la mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Dale: That one got away..."
+        ],
+        "text": [
+          "Pescar Dale: Ăsta mi-a scăpat..."
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Brooks"
+        ],
+        "text": [
+          "Brooks"
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Brooks: A battle before dinner? Why not!"
+        ],
+        "text": [
+          "Gentleman Brooks: O luptă înainte de cină? De ce nu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Brooks: Well played, young one."
+        ],
+        "text": [
+          "Gentleman Brooks: Bine jucat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

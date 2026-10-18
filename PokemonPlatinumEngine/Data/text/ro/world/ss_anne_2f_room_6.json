@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you know some Pokémon can carry you across the water?"
+        ],
+        "text": [
+          "Știai că unii Pokémoni te pot duce peste apă?"
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some people cut through the trees with their Pokémon. Isn't that clever?"
+        ],
+        "text": [
+          "Unii își fac drum printre copaci cu ajutorul Pokémonilor. Isteț, nu?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

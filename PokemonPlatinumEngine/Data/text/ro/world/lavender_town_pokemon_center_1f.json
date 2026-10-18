@@ -1,0 +1,87 @@
+{
+  "people": {
+    "lavender_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Rocket would sell any Pokémon for money. Even the bones of a Cubone's mother, I hear."
+        ],
+        "text": [
+          "Echipa Rocket ar vinde orice Pokémon pe bani. Chiar și oasele mamei unui Cubone, am auzit."
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to the tower to say goodbye to my Pokémon. I still miss it so."
+        ],
+        "text": [
+          "Am venit la turn să-mi iau rămas-bun de la Pokémonul meu. Încă mi-e tare dor de el."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mr. Fuji looks after Pokémon nobody wants. But he hasn't been home for days."
+        ],
+        "text": [
+          "Domnul Fuji are grijă de Pokémonii pe care nu-i vrea nimeni. Dar n-a mai fost acasă de zile întregi."
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a Champion has passed through town. I wonder who it was?"
+        ],
+        "text": [
+          "Se zice că un Campion a trecut prin oraș. Oare cine o fi fost?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ah, the sea air. Nothing like it for the lungs."
+        ],
+        "text": [
+          "A, aerul mării. Nimic nu-i mai bun pentru plămâni."
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I was young, I sailed the seas with my Pokémon too. Those were the days."
+        ],
+        "text": [
+          "Când eram tânăr, și eu am navigat pe mări cu Pokémonii mei. Ce vremuri."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

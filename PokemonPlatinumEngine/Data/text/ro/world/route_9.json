@@ -1,0 +1,248 @@
+{
+  "people": {
+    "picnicker": {
+      "name": {
+        "en": [
+          "Alicia"
+        ],
+        "text": [
+          "Alicia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Alicia: My grass Pokémon love the sun out here. Want to see them?"
+        ],
+        "text": [
+          "Excursionistă Alicia: Pokémonilor mei de iarbă le place soarele de aici. Vrei să-i vezi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Alicia: Oh! They wilted."
+        ],
+        "text": [
+          "Excursionistă Alicia: O! S-au ofilit."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Jeremy"
+        ],
+        "text": [
+          "Jeremy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Jeremy: I came down from the hills to train. You look like a good warm-up!"
+        ],
+        "text": [
+          "Drumeț Jeremy: Am coborât de pe dealuri să mă antrenez. Arăți ca o încălzire bună!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Jeremy: Whoa, you're tougher than a mountain!"
+        ],
+        "text": [
+          "Drumeț Jeremy: Uau, ești mai tare decât un munte!"
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Alan"
+        ],
+        "text": [
+          "Alan"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Alan: Rock Tunnel's dark as night inside. Bring Flash, or bring a strong team!"
+        ],
+        "text": [
+          "Drumeț Alan: Tunelul de Piatră e întunecat ca noaptea. Adu Bliț sau adu o echipă puternică!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Alan: Guess you've got the strong team."
+        ],
+        "text": [
+          "Drumeț Alan: Se pare că ai echipa puternică."
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Chris"
+        ],
+        "text": [
+          "Chris"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Chris: My Pokémon are fired up today. Let's go!"
+        ],
+        "text": [
+          "Campist Chris: Pokémonii mei sunt plini de foc azi. Hai!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Chris: Burned out already..."
+        ],
+        "text": [
+          "Campist Chris: S-au stins deja..."
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Brent"
+        ],
+        "text": [
+          "Brent"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Brent: My Beedrill have stingers sharp as needles!"
+        ],
+        "text": [
+          "Vânător de insecte Brent: Beedrillii mei au ace ascuțite ca acele de cusut!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Brent: They flew off..."
+        ],
+        "text": [
+          "Vânător de insecte Brent: Au zburat..."
+        ]
+      }
+    },
+    "bug_catcher_2": {
+      "name": {
+        "en": [
+          "Conner"
+        ],
+        "text": [
+          "Conner"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Conner: I found all of these in the grass round here!"
+        ],
+        "text": [
+          "Vânător de insecte Conner: Pe toți i-am găsit în iarba de pe aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Conner: I need to find stronger bugs."
+        ],
+        "text": [
+          "Vânător de insecte Conner: Trebuie să găsesc insecte mai puternice."
+        ]
+      }
+    },
+    "hiker_3": {
+      "name": {
+        "en": [
+          "Brice"
+        ],
+        "text": [
+          "Brice"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Brice: Huff... climbing makes you strong! Want to test me?"
+        ],
+        "text": [
+          "Drumeț Brice: Uf... cățăratul te face puternic! Vrei să mă pui la încercare?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Brice: I need more climbing."
+        ],
+        "text": [
+          "Drumeț Brice: Trebuie să mă mai cațăr."
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Caitlin"
+        ],
+        "text": [
+          "Caitlin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Caitlin: My Meowth is the cutest one you'll ever meet!"
+        ],
+        "text": [
+          "Excursionistă Caitlin: Meowth al meu e cel mai drăguț pe care o să-l întâlnești vreodată!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Caitlin: Even cute isn't enough, huh?"
+        ],
+        "text": [
+          "Excursionistă Caitlin: Nici drăgălășenia nu ajunge, nu?"
+        ]
+      }
+    },
+    "camper_2": {
+      "name": {
+        "en": [
+          "Drew"
+        ],
+        "text": [
+          "Drew"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Drew: I raise every kind I catch. Let's see how they do!"
+        ],
+        "text": [
+          "Campist Drew: Cresc orice specie prind. Să vedem cum se descurcă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Drew: Not bad. You really know your stuff."
+        ],
+        "text": [
+          "Campist Drew: Nu-i rău. Chiar te pricepi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route9_EventScript_RouteSign": {
+      "en": [
+        "Route 9\nCerulean City - Rock Tunnel"
+      ],
+      "text": [
+        "Ruta 9\nOrașul Cerulean - Tunelul de Piatră"
+      ]
+    }
+  }
+}

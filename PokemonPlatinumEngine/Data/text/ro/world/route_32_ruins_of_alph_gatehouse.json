@@ -11,10 +11,10 @@
       },
       "dialog": {
         "en": [
-          "The Ruins of Alph are through here, but the scientists have closed them for now while they work."
+          "The Ruins of Alph are through here. Please don't touch the carvings: the scientists are still studying them."
         ],
         "text": [
-          "Pe-aici se ajunge la Ruinele Alph, dar deocamdată oamenii de știință le-au închis cât lucrează."
+          "Pe aici se ajunge la Ruinele Alph. Te rog nu atinge sculpturile: oamenii de știință încă le studiază."
         ]
       }
     },

@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "ss_anne_captain": {
+      "name": {
+        "en": [
+          "Captain"
+        ],
+        "text": [
+          "Căpitanul"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SSAnne_CaptainsOffice_EventScript_Book": {
+      "en": [
+        "A book: How to Beat Seasickness.\nThe first page says to rub the patient's back."
+      ],
+      "text": [
+        "O carte: Cum să învingi răul de mare.\nPrima pagină spune să-l freci pe bolnav pe spate."
+      ]
+    },
+    "SSAnne_CaptainsOffice_EventScript_TrashCan": {
+      "en": [
+        "Yuck! Somebody was sick in here. Better not look."
+      ],
+      "text": [
+        "Bleah! Cuiva i s-a făcut rău aici. Mai bine nu te uiți."
+      ]
+    }
+  }
+}

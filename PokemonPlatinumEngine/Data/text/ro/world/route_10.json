@@ -1,0 +1,186 @@
+{
+  "people": {
+    "picnicker": {
+      "name": {
+        "en": [
+          "Carol"
+        ],
+        "text": [
+          "Carol"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Carol: I just came out of Rock Tunnel. Now I want a battle in the sunshine!"
+        ],
+        "text": [
+          "Excursionistă Carol: Abia am ieșit din Tunelul de Piatră. Acum vreau o luptă în soare!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Carol: Back into the dark with me, then..."
+        ],
+        "text": [
+          "Excursionistă Carol: Înapoi în întuneric, atunci..."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Clark"
+        ],
+        "text": [
+          "Clark"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Clark: Ha-hah! My rock Pokémon are as hard as they come!"
+        ],
+        "text": [
+          "Drumeț Clark: Ha-ha! Pokémonii mei de piatră sunt cei mai tari!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Clark: Crumbled like gravel!"
+        ],
+        "text": [
+          "Drumeț Clark: S-au sfărâmat ca pietrișul!"
+        ]
+      }
+    },
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Herman"
+        ],
+        "text": [
+          "Herman"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Herman: I collect rare Pokémon. Do you have any I haven't seen?"
+        ],
+        "text": [
+          "Pasionat Pokémon Herman: Colecționez Pokémoni rari. Ai vreunul pe care nu l-am văzut?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Herman: Rare, and strong too..."
+        ],
+        "text": [
+          "Pasionat Pokémon Herman: Rari, și puternici pe deasupra..."
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Trent"
+        ],
+        "text": [
+          "Trent"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Trent: The hills are my home. You're in my yard now!"
+        ],
+        "text": [
+          "Drumeț Trent: Dealurile sunt casa mea. Acum ești în curtea mea!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Trent: All right, you can pass."
+        ],
+        "text": [
+          "Drumeț Trent: Bine, poți să treci."
+        ]
+      }
+    },
+    "poke_maniac_2": {
+      "name": {
+        "en": [
+          "Mark"
+        ],
+        "text": [
+          "Mark"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Mark: Behold my most prized Pokémon of all!"
+        ],
+        "text": [
+          "Pasionat Pokémon Mark: Privește cel mai prețios Pokémon al meu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Mark: My prizes..."
+        ],
+        "text": [
+          "Pasionat Pokémon Mark: Comorile mele..."
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Heidi"
+        ],
+        "text": [
+          "Heidi"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Heidi: Aren't my Pokémon just lovely? Let's battle!"
+        ],
+        "text": [
+          "Excursionistă Heidi: Nu-i așa că Pokémonii mei sunt minunați? Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Heidi: Lovely, and beaten."
+        ],
+        "text": [
+          "Excursionistă Heidi: Minunați, și învinși."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route10_EventScript_SouthRockTunnelSign": {
+      "en": [
+        "Rock Tunnel"
+      ],
+      "text": [
+        "Tunelul de Piatră"
+      ]
+    },
+    "Route10_EventScript_PowerPlantSign": {
+      "en": [
+        "Power Plant"
+      ],
+      "text": [
+        "Centrala Electrică"
+      ]
+    },
+    "Route10_EventScript_NorthRockTunnelSign": {
+      "en": [
+        "Rock Tunnel\nThe way through to Lavender Town"
+      ],
+      "text": [
+        "Tunelul de Piatră\nDrumul spre Orășelul Lavender"
+      ]
+    }
+  }
+}

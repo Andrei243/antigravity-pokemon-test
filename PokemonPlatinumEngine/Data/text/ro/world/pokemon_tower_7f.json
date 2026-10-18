@@ -1,0 +1,109 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Tower"
+    ],
+    "text": [
+      "Turnul Pokémon"
+    ]
+  },
+  "people": {
+    "mr_fuji": {
+      "name": {
+        "en": [
+          "Mr. Fuji"
+        ],
+        "text": [
+          "Domnul Fuji"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Heh... You have come a long way to find an old man."
+        ],
+        "text": [
+          "He-he... Ai făcut drum lung ca să găsești un bătrân."
+        ]
+      }
+    },
+    "pokemon_tower_grunt1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: What do you want? This old man is our business!"
+        ],
+        "text": [
+          "Rocket Grunt: Ce vrei? Bătrânul ăsta e treaba noastră!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Grr... you'll be sorry for this!"
+        ],
+        "text": [
+          "Rocket Grunt: Grr... o să-ți pară rău!"
+        ]
+      }
+    },
+    "pokemon_tower_grunt2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: Go home, kid! Team Rocket is busy here!"
+        ],
+        "text": [
+          "Rocket Grunt: Du-te acasă! Echipa Rocket e ocupată aici!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Ugh, we'll get you back!"
+        ],
+        "text": [
+          "Rocket Grunt: Uf, o să ne răzbunăm!"
+        ]
+      }
+    },
+    "pokemon_tower_grunt3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          "Grunt"
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: The old man's been nothing but trouble. And now you!"
+        ],
+        "text": [
+          "Rocket Grunt: Bătrânul ne-a făcut numai necazuri. Și acum și tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: This isn't over!"
+        ],
+        "text": [
+          "Rocket Grunt: Nu s-a terminat!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

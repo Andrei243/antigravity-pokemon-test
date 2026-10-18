@@ -116,10 +116,52 @@
     },
     {
       "en": [
-        "It's Bill's list of favourite Pokémon: Eevee, and all three of its evolutions."
+        "Bill's favourite Pokémon. Which picture will you look at?",
+        "Eevee",
+        "Flareon",
+        "Jolteon",
+        "Vaporeon",
+        "Log off"
       ],
       "text": [
-        "E lista Pokémonilor preferați ai lui Bill: Eevee și toate trei evoluțiile lui."
+        "Pokémonii preferați ai lui Bill. La ce poză te uiți?",
+        "Eevee",
+        "Flareon",
+        "Jolteon",
+        "Vaporeon",
+        "Ieși"
+      ]
+    },
+    {
+      "en": [
+        "Eevee: a little brown Pokémon with a fluffy collar. Its genes let it evolve in many different ways."
+      ],
+      "text": [
+        "Eevee: un Pokémon mic și maro, cu un guler pufos. Genele îl lasă să evolueze în multe feluri."
+      ]
+    },
+    {
+      "en": [
+        "Flareon: an Eevee touched by a Fire Stone, its mane a warm, fiery yellow."
+      ],
+      "text": [
+        "Flareon: un Eevee atins de o Piatra Focului, cu coama de un galben cald, ca focul."
+      ]
+    },
+    {
+      "en": [
+        "Jolteon: an Eevee touched by a Thunder Stone, its fur standing up in sharp spikes."
+      ],
+      "text": [
+        "Jolteon: un Eevee atins de o Piatra Fulgerului, cu blana ridicată în țepi ascuțiți."
+      ]
+    },
+    {
+      "en": [
+        "Vaporeon: an Eevee touched by a Water Stone, with fins and a tail like a mermaid's."
+      ],
+      "text": [
+        "Vaporeon: un Eevee atins de o Piatra Apei, cu înotătoare și o coadă ca de sirenă."
       ]
     }
   ]

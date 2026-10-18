@@ -1,0 +1,120 @@
+{
+  "Chairman": [
+    {
+      "en": [
+        "Chairman"
+      ],
+      "text": [
+        "Președintele"
+      ]
+    },
+    {
+      "en": [
+        "Did you come to hear about my Pokémon? I'm the chairman of the Pokémon Fan Club!"
+      ],
+      "text": [
+        "Ai venit să auzi despre Pokémonii mei? Sunt președintele Clubului Fanilor Pokémon!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, how sad. Come back when you have time to listen, won't you?"
+      ],
+      "text": [
+        "O, ce trist. Întoarce-te când ai timp să asculți, da?"
+      ]
+    },
+    {
+      "en": [
+        "Splendid! My favourite is my Rapidash. Its mane is a blaze, and it runs like the wind!"
+      ],
+      "text": [
+        "Splendid! Preferatul meu e Rapidash. Coama lui e o vâlvătaie și aleargă ca vântul!"
+      ]
+    },
+    {
+      "en": [
+        "When it gallops, the whole field lights up. And it nuzzles me like a little Ponyta still. Simply darling!"
+      ],
+      "text": [
+        "Când galopează, se luminează tot câmpul. Și se alintă pe lângă mine ca un mic Ponyta. Pur și simplu adorabil!"
+      ]
+    },
+    {
+      "en": [
+        "...Oh, I've gone on far too long again. Thank you for listening! Please, take this."
+      ],
+      "text": [
+        "...O, iar m-am lungit prea mult. Mulțumesc că m-ai ascultat! Te rog, ia asta."
+      ]
+    },
+    {
+      "en": [
+        "Take that voucher to the Bike Shop in Cerulean City. It's good for one free bicycle!"
+      ],
+      "text": [
+        "Du tichetul la Magazinul de Biciclete din Orașul Cerulean. Cu el primești o bicicletă gratis!"
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}! Did you come to hear about my Pokémon again? ...No? What a shame."
+      ],
+      "text": [
+        "Bună, {player}! Ai venit iar să auzi despre Pokémonii mei? ...Nu? Ce păcat."
+      ]
+    }
+  ],
+  "Woman": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "Isn't my Seel adorable? That little nose! That sleek coat!"
+      ],
+      "text": [
+        "Nu-i așa că Seel al meu e adorabil? Năsucul ăla! Blănița aia lucioasă!"
+      ]
+    },
+    {
+      "en": [
+        "Hmph! Whatever he says about his Pikachu, Seel is far more charming!"
+      ],
+      "text": [
+        "Hmf! Orice-ar zice el de Pikachu al lui, Seel e mult mai fermecător!"
+      ]
+    }
+  ],
+  "FatMan": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        "Bărbatul"
+      ]
+    },
+    {
+      "en": [
+        "Look at my Pikachu's tail! The way it twitches when it's happy... I could watch it all day."
+      ],
+      "text": [
+        "Uită-te la coada lui Pikachu al meu! Cum tresare când e fericit... M-aș uita la ea toată ziua."
+      ]
+    },
+    {
+      "en": [
+        "A Seel? Please. My Pikachu is twice as cute, any day of the week!"
+      ],
+      "text": [
+        "Un Seel? Te rog. Pikachu al meu e de două ori mai drăguț, în orice zi a săptămânii!"
+      ]
+    }
+  ]
+}

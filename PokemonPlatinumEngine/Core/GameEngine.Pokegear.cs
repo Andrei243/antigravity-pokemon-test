@@ -39,10 +39,11 @@ public partial class GameEngine
         var screen = flow.PokegearScreen;
         screen.Now = GameClock.Moment;
         screen.RegionName = Here.Id;
+        // A contact's place as the language names it (plan 17 · N6f)
         screen.PlaceOf = area => flow.Map.Areas.FirstOrDefault(a => a.Key == area)?.DisplayName is { Length: > 0 } name
-            ? PlayerIdentity.Fill(name)
+            ? PlayerIdentity.Fill(LocalNames.PlaceShown(area, name))
             : MapDatabase.MapNames.Select(MapDatabase.Get).SelectMany(m => m.Areas).FirstOrDefault(a => a.Key == area)?.DisplayName is { Length: > 0 } other
-                ? PlayerIdentity.Fill(other) : "";
+                ? PlayerIdentity.Fill(LocalNames.PlaceShown(area, other)) : "";
         screen.Waiting = c => flow.Story.Has(PhoneRematch.WaitingFlag(c.Id));
         screen.PlayerCell = RegionMapNow is { } region ? RegionCellNow(region) : null;
         screen.PlaceHere = PlaceName();
@@ -116,7 +117,7 @@ public partial class GameEngine
             {
                 species = seen[fieldRandom.Next(seen.Count)];
                 var lives = habitats.Of(species);
-                place = PlayerIdentity.Fill(lives[fieldRandom.Next(lives.Count)].Name);
+                place = PlayerIdentity.Fill(LocalNames.PlaceShown(null, lives[fieldRandom.Next(lives.Count)].Name));
             }
         }
         return PlayerIdentity.Fill(RadioShows.Line(station, fieldRandom, species, place));

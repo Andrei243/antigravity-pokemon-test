@@ -1,0 +1,204 @@
+{
+  "displayName": {
+    "en": [
+      "Rock Tunnel"
+    ],
+    "text": [
+      "Tunelul de Piatră"
+    ]
+  },
+  "people": {
+    "picnicker": {
+      "name": {
+        "en": [
+          "Dana"
+        ],
+        "text": [
+          "Dana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Dana: I got lost in the dark! You'd better battle me while I wait."
+        ],
+        "text": [
+          "Excursionistă Dana: M-am rătăcit în întuneric! Ar fi bine să te lupți cu mine cât aștept."
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Dana: Lost, and beaten too."
+        ],
+        "text": [
+          "Excursionistă Dana: Rătăcită și învinsă pe deasupra."
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Ariana"
+        ],
+        "text": [
+          "Ariana"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Ariana: Who's there? Oh, a trainer! Let's battle!"
+        ],
+        "text": [
+          "Excursionistă Ariana: Cine-i acolo? A, un Antrenor! Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Ariana: I couldn't see you coming!"
+        ],
+        "text": [
+          "Excursionistă Ariana: Nici nu te-am văzut venind!"
+        ]
+      }
+    },
+    "picnicker_3": {
+      "name": {
+        "en": [
+          "Leah"
+        ],
+        "text": [
+          "Leah"
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Leah: Don't sneak up on me in a place like this!"
+        ],
+        "text": [
+          "Excursionistă Leah: Nu te furișa așa spre mine într-un loc ca ăsta!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Leah: You gave me a fright, and a beating."
+        ],
+        "text": [
+          "Excursionistă Leah: M-ai speriat și m-ai și bătut."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Lucas"
+        ],
+        "text": [
+          "Lucas"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Lucas: This tunnel goes right under the mountains. I've walked it a hundred times!"
+        ],
+        "text": [
+          "Drumeț Lucas: Tunelul ăsta trece chiar pe sub munți. L-am străbătut de o sută de ori!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Lucas: Never lost down here before..."
+        ],
+        "text": [
+          "Drumeț Lucas: Niciodată nu m-am mai rătăcit aici..."
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Oliver"
+        ],
+        "text": [
+          "Oliver"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Oliver: My Onix love the dark. Come and meet them!"
+        ],
+        "text": [
+          "Drumeț Oliver: Onixii mei iubesc întunericul. Vino să-i cunoști!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Oliver: They didn't like that light of yours."
+        ],
+        "text": [
+          "Drumeț Oliver: Nu le-a plăcut lumina aia a ta."
+        ]
+      }
+    },
+    "hiker_3": {
+      "name": {
+        "en": [
+          "Lenny"
+        ],
+        "text": [
+          "Lenny"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Lenny: Hold it! Hikers don't let anyone pass without a battle!"
+        ],
+        "text": [
+          "Drumeț Lenny: Stai! Drumeții nu lasă pe nimeni să treacă fără o luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Lenny: Go on, then. Mind your step."
+        ],
+        "text": [
+          "Drumeț Lenny: Hai, treci. Ai grijă pe unde calci."
+        ]
+      }
+    },
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Ashton"
+        ],
+        "text": [
+          "Ashton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Ashton: You won't find Pokémon like mine just anywhere!"
+        ],
+        "text": [
+          "Pasionat Pokémon Ashton: Pokémoni ca ai mei nu găsești oriunde!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Ashton: Hmph. Good ones, yours."
+        ],
+        "text": [
+          "Pasionat Pokémon Ashton: Hmf. Buni ai tăi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "RockTunnel_1F_EventScript_RouteSign": {
+      "en": [
+        "Rock Tunnel\nCerulean City - Lavender Town"
+      ],
+      "text": [
+        "Tunelul de Piatră\nOrașul Cerulean - Orășelul Lavender"
+      ]
+    }
+  }
+}

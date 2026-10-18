@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "S.S. Anne"
+    ],
+    "text": [
+      "S.S. Anne"
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandson wants to become a sailor when he grows up."
+        ],
+        "text": [
+          "Nepotul meu vrea să se facă marinar când o să fie mare."
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I grow up, I'm going to be the captain of this ship!"
+        ],
+        "text": [
+          "Când o să fiu mare, o să fiu căpitanul vaporului ăstuia!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,109 @@
+{
+  "people": {
+    "d25r0102_mount_2": {
+      "name": {
+        "en": [
+          "Phillip"
+        ],
+        "text": [
+          "Phillip"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Phillip: It's been ages since I saw the sun. Let's battle while I remember how!"
+        ],
+        "text": [
+          "Drumeț Phillip: N-am mai văzut soarele de o veșnicie. Hai să ne luptăm cât încă îmi amintesc cum!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Phillip: Maybe I'll go and find that sun after all."
+        ],
+        "text": [
+          "Drumeț Phillip: Poate mă duc totuși să caut soarele ăla."
+        ]
+      }
+    },
+    "d25r0102_mount_2_2": {
+      "name": {
+        "en": [
+          "Leonard"
+        ],
+        "text": [
+          "Leonard"
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Leonard: I'm digging a tunnel to Azalea Town. Get out of my way, or battle me!"
+        ],
+        "text": [
+          "Drumeț Leonard: Sap un tunel până în Orășelul Azalea. Fă-te-ncolo sau luptă-te cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Leonard: Fine, fine. There's a tunnel already anyway."
+        ],
+        "text": [
+          "Drumeț Leonard: Bine, bine. Oricum există deja un tunel."
+        ]
+      }
+    },
+    "d25r0102_mania": {
+      "name": {
+        "en": [
+          "Andrew"
+        ],
+        "text": [
+          "Andrew"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Andrew: Every Friday, they say, something sings deep down in this cave. Have you heard it?"
+        ],
+        "text": [
+          "Pasionat Pokémon Andrew: Se zice că în fiecare vineri ceva cântă în adâncul peșterii. L-ai auzit?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Andrew: I'll keep listening. Fridays, remember!"
+        ],
+        "text": [
+          "Pasionat Pokémon Andrew: Eu mai ascult. Vinerea, nu uita!"
+        ]
+      }
+    },
+    "d25r0102_mania_2": {
+      "name": {
+        "en": [
+          "Calvin"
+        ],
+        "text": [
+          "Calvin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Calvin: I collect Pokémon from caves. Let me see what you've collected!"
+        ],
+        "text": [
+          "Pasionat Pokémon Calvin: Colecționez Pokémoni din peșteri. Să văd ce ai colecționat tu!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Calvin: A fine collection. Better than mine, sadly."
+        ],
+        "text": [
+          "Pasionat Pokémon Calvin: O colecție frumoasă. Mai bună decât a mea, din păcate."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

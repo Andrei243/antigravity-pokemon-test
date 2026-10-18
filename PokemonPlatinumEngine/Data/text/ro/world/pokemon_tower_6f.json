@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Tower"
+    ],
+    "text": [
+      "Turnul Pokémon"
+    ]
+  },
+  "people": {
+    "channeler": {
+      "name": {
+        "en": [
+          "Angelica"
+        ],
+        "text": [
+          "Angelica"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Angelica: Give... me... your... Pokémon..."
+        ],
+        "text": [
+          "Spiritistă Angelica: Dă-mi... Pokémonii... tăi..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Angelica: I... I don't remember a thing."
+        ],
+        "text": [
+          "Spiritistă Angelica: Nu... nu-mi amintesc nimic."
+        ]
+      }
+    },
+    "channeler_2": {
+      "name": {
+        "en": [
+          "Jennifer"
+        ],
+        "text": [
+          "Jennifer"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Jennifer: Kyaaah! The spirits are upon us!"
+        ],
+        "text": [
+          "Spiritistă Jennifer: Kiaaa! Spiritele ne-au ajuns!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Jennifer: Was I shouting? How embarrassing."
+        ],
+        "text": [
+          "Spiritistă Jennifer: Am țipat? Ce jenant."
+        ]
+      }
+    },
+    "channeler_3": {
+      "name": {
+        "en": [
+          "Emilia"
+        ],
+        "text": [
+          "Emilia"
+        ]
+      },
+      "before": {
+        "en": [
+          "Channeler Emilia: Fall... into... the dark..."
+        ],
+        "text": [
+          "Spiritistă Emilia: Cazi... în... întuneric..."
+        ]
+      },
+      "after": {
+        "en": [
+          "Channeler Emilia: What a strange dream that was."
+        ],
+        "text": [
+          "Spiritistă Emilia: Ce vis ciudat a fost."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

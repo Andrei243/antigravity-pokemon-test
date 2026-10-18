@@ -1,0 +1,294 @@
+{
+  "people": {
+    "route103_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Past the water there's a road that leads all the way to Slateport. You'll need a Pokémon that can swim, though."
+        ],
+        "text": [
+          "Dincolo de apă e un drum care duce tocmai până la Slateport. Dar îți trebuie un Pokémon care știe să înoate."
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The professor's kid comes up here every day to watch Pokémon by the water. They know everything about them!"
+        ],
+        "text": [
+          "Copilul profesorului vine aici în fiecare zi să se uite la Pokémonii de lângă apă. Știe totul despre ei!"
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Daisy"
+        ],
+        "text": [
+          "Daisy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Daisy: Can you smell the flowers on the breeze? My Pokémon carry that scent into battle."
+        ],
+        "text": [
+          "Doamna Aromelor Daisy: Simți mirosul florilor în adiere? Pokémonii mei duc parfumul ăsta în luptă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Daisy: What a refreshing battle that was."
+        ],
+        "text": [
+          "Doamna Aromelor Daisy: Ce luptă înviorătoare a fost."
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Amy and Liv"
+        ],
+        "text": [
+          "Amy și Liv"
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Amy and Liv: We always battle together! Two against two, that's fair, isn't it?"
+        ],
+        "text": [
+          "Gemene Amy și Liv: Noi ne luptăm mereu împreună! Doi contra doi, e corect, nu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Amy and Liv: We lost together, too..."
+        ],
+        "text": [
+          "Gemene Amy și Liv: Am și pierdut împreună..."
+        ]
+      }
+    },
+    "twin_2": {
+      "name": {
+        "en": [
+          "Amy and Liv"
+        ],
+        "text": [
+          "Amy și Liv"
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Amy and Liv: We always battle together! Two against two, that's fair, isn't it?"
+        ],
+        "text": [
+          "Gemene Amy și Liv: Noi ne luptăm mereu împreună! Doi contra doi, e corect, nu?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Amy and Liv: We lost together, too..."
+        ],
+        "text": [
+          "Gemene Amy și Liv: Am și pierdut împreună..."
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Andrew"
+        ],
+        "text": [
+          "Andrew"
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Andrew: You scared off my bite! You owe me a battle for that."
+        ],
+        "text": [
+          "Pescar Andrew: Mi-ai speriat peștele! Pentru asta îmi datorezi o luptă."
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Andrew: Fine, fine. Back to waiting for a bite."
+        ],
+        "text": [
+          "Pescar Andrew: Bine, bine. Înapoi la așteptat să muște."
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Miguel"
+        ],
+        "text": [
+          "Miguel"
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Miguel: My Pokémon is the cutest in all of Hoenn. Let me prove it!"
+        ],
+        "text": [
+          "Pokéfan Miguel: Pokémonul meu e cel mai drăguț din tot Hoenn. Lasă-mă să ți-o dovedesc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Miguel: Still the cutest. Just not the strongest."
+        ],
+        "text": [
+          "Pokéfan Miguel: Tot cel mai drăguț. Doar că nu și cel mai puternic."
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Rhett"
+        ],
+        "text": [
+          "Rhett"
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Rhett: Hah! I train out here where nobody can see me. Until now!"
+        ],
+        "text": [
+          "Centură Neagră Rhett: Ha! Mă antrenez aici unde nu mă vede nimeni. Până acum!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Rhett: More training. Much more training."
+        ],
+        "text": [
+          "Centură Neagră Rhett: Mai mult antrenament. Mult mai mult antrenament."
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Marcos"
+        ],
+        "text": [
+          "Marcos"
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Marcos: My guitar and my Pokémon play the same tune. Want to hear it?"
+        ],
+        "text": [
+          "Chitarist Marcos: Chitara mea și Pokémonii mei cântă aceeași melodie. Vrei s-o auzi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Marcos: I hit a wrong note there, didn't I?"
+        ],
+        "text": [
+          "Chitarist Marcos: Am greșit o notă acolo, nu?"
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Isabelle"
+        ],
+        "text": [
+          "Isabelle"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Isabelle: The water's lovely today! Are you here to swim or to battle?"
+        ],
+        "text": [
+          "Înotătoare Isabelle: Apa e minunată azi! Ai venit să înoți sau să te lupți?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Isabelle: Swimming it is, then."
+        ],
+        "text": [
+          "Înotătoare Isabelle: Atunci înotăm."
+        ]
+      }
+    },
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Pete"
+        ],
+        "text": [
+          "Pete"
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Pete: Nobody gets past me without a battle! Not even on the water!"
+        ],
+        "text": [
+          "Înotător Pete: Nimeni nu trece de mine fără luptă! Nici măcar pe apă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Pete: Go on past. I'll just float here."
+        ],
+        "text": [
+          "Înotător Pete: Treci. Eu doar plutesc aici."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route103_EventScript_RouteSign": {
+      "en": [
+        "Route 103\nOldale Town to the south"
+      ],
+      "text": [
+        "Ruta 103\nSpre sud: Orășelul Oldale"
+      ]
+    }
+  }
+}

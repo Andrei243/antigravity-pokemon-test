@@ -1,0 +1,87 @@
+{
+  "people": {
+    "vermilion_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you got a bicycle yet? It makes getting about so much quicker."
+        ],
+        "text": [
+          "Ai bicicletă? Te ajută să umbli mult mai repede."
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          "Drumețul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Diglett's Cave goes all the way under the hills to Route 2. Handy, if you don't mind the dark."
+        ],
+        "text": [
+          "Peștera lui Diglett merge pe sub dealuri până pe Ruta 2. Utilă, dacă nu te deranjează întunericul."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The S.S. Anne is in the harbour! I wish I could go aboard."
+        ],
+        "text": [
+          "S.S. Anne e în port! Ce mi-aș dori să urc la bord."
+        ]
+      }
+    },
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trainers you've beaten will want a rematch one day. Keep getting stronger!"
+        ],
+        "text": [
+          "Antrenorii pe care i-ai învins o să vrea într-o zi revanșa. Tot înainte cu antrenamentul!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,78 @@
+{
+  "people": {
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      }
+    },
+    "oldale_mart_employee": {
+      "name": {
+        "en": [
+          "Mart Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      }
+    },
+    "footprints_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    },
+    "oldale_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{player}! Dad's waiting at the lab!"
+        ],
+        "text": [
+          "{player}! Tata ne așteaptă la laborator!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "OldaleTown_EventScript_TownSign": {
+      "en": [
+        "Oldale Town\nWhere things begin to get busy."
+      ],
+      "text": [
+        "Orășelul Oldale\nAici lucrurile încep să se anime."
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
+      ]
+    }
+  }
+}
