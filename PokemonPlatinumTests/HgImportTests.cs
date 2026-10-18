@@ -254,10 +254,10 @@ public class HgImportTests
                "party":[{"difficulty":50,"level":9,"species":"SPECIES_PIDGEY","item":"ITEM_NONE","moves":["MOVE_TACKLE","MOVE_SAND_ATTACK"],"capsule":0},
                         {"difficulty":50,"level":13,"species":"SPECIES_PIDGEOTTO","item":"ITEM_ORAN_BERRY","moves":["MOVE_TACKLE","MOVE_FAINT_ATTACK","MOVE_NONE"],"capsule":0}],
                "messages":[{"type":"TRMSG_LOSE","message":"A line of the original's that must never be read"}]}]}
-            """, "#define TRAINER_NONE 0\n#define TRAINER_LEADER_FALKNER 1\n", problems);
+            """, "#define TRAINER_NONE 0\n#define TRAINER_LEADER_FALKNER 1\n", problems, HgWorld.TrainerPrefix);
         var falkner = Assert.Single(trainers);
         Assert.Empty(problems);
-        Assert.Equal(("leader_falkner", "Falkner", "Leader"), (falkner.Id, falkner.Name, falkner.Class));
+        Assert.Equal(("johto_leader_falkner", "Falkner", "Leader"), (falkner.Id, falkner.Name, falkner.Class));
         Assert.Equal(new[] { "Basic", "EvalAttack", "Expert" }, falkner.Ai);
         Assert.Equal(new[] { "Potion" }, falkner.Items);
         Assert.Equal(("Pidgeotto", 13, 50, "Oran Berry"), (falkner.Party[1].Species, falkner.Party[1].Level, falkner.Party[1].IvScale, falkner.Party[1].Item));
@@ -276,16 +276,49 @@ public class HgImportTests
               "unkC":255,"rematchWeekday":"RTC_WEEK_MONDAY","rematchTimeOfDay":"TIMEOFDAY_WILD_NITE","unkF":0,"sortParam":[1,2,3,0]},
               {"id":"PHONE_CONTACT_PROF__ELM","type":2,"trainerClass":"TRAINERCLASS_PHONE_POKEMON_PROFESSOR","trainerId":"TRAINER_NONE",
               "mapId":"MAP_NEW_BARK_ELMS_LAB_1F","gift":"ITEM_NONE","rematchWeekday":"RTC_WEEK_MAX","rematchTimeOfDay":"TIMEOFDAY_WILD_MAX"}]}
-            """, problems);
+            """, problems, HgWorld.TrainerPrefix);
         Assert.Empty(problems);
         var joey = book[0];
-        Assert.Equal(("youngster_joey", "Youngster", "youngster_joey", "route_30", "HP Up", "Monday", "Night"),
+        Assert.Equal(("youngster_joey", "Youngster", "johto_youngster_joey", "route_30", "HP Up", "Monday", "Night"),
             (joey.Id, joey.Class, joey.Trainer, joey.Area, joey.Gift, joey.RematchDay, joey.RematchTime));
         var elm = book[1];
         Assert.Equal(("prof_elm", "Pokémon Professor"), (elm.Id, elm.Class));
         Assert.Null(elm.Trainer);
         Assert.Null(elm.RematchDay);
         Assert.Null(elm.RematchTime);
+    }
+
+    [Fact]
+    public void EveryRegionsTrainerIdIsUniqueAcrossEveryRegionAndCarriesItsRegionsPrefix()
+    {
+        var regions = PokemonPlatinumEngine.Data.TrainerDatabase.Regions.ToList();
+        Assert.Contains("kanto", regions, StringComparer.OrdinalIgnoreCase);
+        Assert.Contains("johto", regions, StringComparer.OrdinalIgnoreCase);
+        var seen = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var t in PokemonPlatinumEngine.Data.TrainerDatabase.All) seen[t.Id] = "sinnoh";
+        foreach (string region in regions)
+            foreach (var t in PokemonPlatinumEngine.Data.TrainerDatabase.OfRegion(region))
+            {
+                Assert.True(t.Id.StartsWith(region.ToLowerInvariant() + "_", StringComparison.Ordinal), $"{region}'s trainer {t.Id} lacks the prefix {region.ToLowerInvariant()}_");
+                Assert.False(seen.TryGetValue(t.Id, out string? other), $"{t.Id} is both {other}'s and {region}'s");
+                seen[t.Id] = region;
+            }
+        // Johto's file is read, and a placed trainer is found by its constant in its own region
+        Assert.Equal("johto_youngster_joey", PokemonPlatinumEngine.Data.TrainerDatabase.Get("TRAINER_YOUNGSTER_JOEY", "johto")?.Id);
+        // Every phone contact who is a trainer names one of Johto's file
+        string phone = File.ReadAllText(PokemonPlatinumEngine.Data.GameDataFiles.PathOf(Path.Combine("world", "johto", "phone.json")));
+        foreach (var contact in PokemonPlatinumEngine.Data.GameDataFiles.Deserialize<List<PhoneContact>>(phone))
+            if (contact.Trainer != null) Assert.NotNull(PokemonPlatinumEngine.Data.TrainerDatabase.Get(contact.Trainer));
+    }
+
+    [Fact]
+    public void TwoFilesThatGiveOneTrainerIdAreBothNamed()
+    {
+        var a = new List<PokemonPlatinumEngine.Data.TrainerRecord> { new() { Id = "hiker_daniel" } };
+        var b = new List<PokemonPlatinumEngine.Data.TrainerRecord> { new() { Id = "Hiker_Daniel" } };
+        var e = Assert.Throws<InvalidOperationException>(() => PokemonPlatinumEngine.Data.TrainerDatabase.Index(new[] { ("trainers.json", a), ("world/johto/trainers.json", b) }));
+        Assert.Contains("trainers.json and world/johto/trainers.json", e.Message);
+        Assert.Contains("hiker_daniel", e.Message, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
