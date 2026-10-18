@@ -1,0 +1,314 @@
+{
+  "people": {
+    "biker": {
+      "name": {
+        "en": [
+          "Virgil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Virgil: Nobody rides my road without a race. And a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Virgil: You can have the road. For now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_2": {
+      "name": {
+        "en": [
+          "Isaiah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cue Ball Isaiah: My Pokémon train their muscles on this slope every day!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cue Ball Isaiah: More push-ups for us, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_3": {
+      "name": {
+        "en": [
+          "Raul"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cue Ball Raul: I go round and round this bit of road. Now I'm going round you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cue Ball Raul: I'm dizzy now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_4": {
+      "name": {
+        "en": [
+          "Nikolas"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Nikolas: Watch out, my Voltorb have a short fuse!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Nikolas: Fizzled out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_5": {
+      "name": {
+        "en": [
+          "Billy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Billy: One Pokémon is all I need. Come on!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Billy: Maybe I needed two."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_6": {
+      "name": {
+        "en": [
+          "Jamal"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cue Ball Jamal: Lost your way? Lost your nerve? Let's find out!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cue Ball Jamal: Lost the battle, that's what."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_7": {
+      "name": {
+        "en": [
+          "Zeek"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cue Ball Zeek: My Machoke can lift a Bicycle with one arm. And its rider!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cue Ball Zeek: It dropped the Bicycle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_8": {
+      "name": {
+        "en": [
+          "Corey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cue Ball Corey: This hill's no place for slowpokes. Show me your speed!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cue Ball Corey: Too fast for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_9": {
+      "name": {
+        "en": [
+          "William"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker William: Breathe in the fumes of the Cycling Road!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker William: The fumes got me instead."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_10": {
+      "name": {
+        "en": [
+          "Jaxon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Jaxon: You made it this far down? Then you can make it past me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Jaxon: Yeah, you made it past me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route17_EventScript_RouteSign": {
+      "en": [
+        "Route 17\nCeladon City - Fuchsia City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route17_EventScript_TrainerTips1": {
+      "en": [
+        "Trainer Tips\nThe Cycling Road slopes down to the south. Let go of the controls and you'll roll all the way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route17_EventScript_TrainerTips2": {
+      "en": [
+        "Trainer Tips\nThe trainers of the Cycling Road battle in the middle of the road. Keep your eyes open!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route17_EventScript_ItemsNotice": {
+      "en": [
+        "Notice\nThings dropped on the Cycling Road are lost to the grass. Look closely!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route17_EventScript_BallsNotice": {
+      "en": [
+        "Notice\nDon't throw your Poké Balls at the bikers. They don't like it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route17_EventScript_CyclingRoadSign": {
+      "en": [
+        "Cycling Road\nSlope ends here"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

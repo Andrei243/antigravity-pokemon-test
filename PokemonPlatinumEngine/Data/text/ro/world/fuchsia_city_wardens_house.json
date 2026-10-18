@@ -1,0 +1,32 @@
+{
+  "people": {
+    "old_man_2": {
+      "name": {
+        "en": [
+          "Warden"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FuchsiaCity_WardensHouse_EventScript_DisplaySign1": {
+      "en": [
+        "Photographs of Pokémon and old fossils are on display."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FuchsiaCity_WardensHouse_EventScript_DisplaySign2": {
+      "en": [
+        "Old Pokémon goods are on display. Some of them look very rare."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

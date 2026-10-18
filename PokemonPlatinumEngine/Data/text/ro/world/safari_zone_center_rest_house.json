@@ -1,0 +1,41 @@
+{
+  "people": {
+    "woman_1": {
+      "name": {
+        "en": [
+          "Sara"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Erik said he'd meet me here. Where has he got to? If you see him, tell him I'm waiting!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Professor Oak sent me to study the Pokémon of the zone. There are so many I've never seen before!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

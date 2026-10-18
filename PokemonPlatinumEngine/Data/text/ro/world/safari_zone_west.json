@@ -1,0 +1,37 @@
+{
+  "people": {},
+  "signs": {
+    "SafariZone_West_EventScript_AreaSign": {
+      "en": [
+        "Area 3\nEast: Centre Area"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_West_EventScript_RestHouseSign": {
+      "en": [
+        "Rest House"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_West_EventScript_TrainerTips": {
+      "en": [
+        "Trainer Tips\nZone exploration campaign! Find the Secret House and win a prize!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_West_EventScript_LostTeethNotice": {
+      "en": [
+        "Request\nThe Warden has lost his false teeth. If you find them, please bring them to his house in Fuchsia City!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

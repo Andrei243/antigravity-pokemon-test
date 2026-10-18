@@ -7937,6 +7937,16 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_OBTAINED_HIDDEN_TEST_STARDUST
+=== common.HoennChapterThree
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+  + FLAG_HIDE_ROUTE_109_MR_BRINEY
+  + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1
+  + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2
+  + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE
+  + FLAG_HIDE_SLATEPORT_CITY_SCOTT
+  + FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
 === common.HoennChapterTwo
 from a trainer with lines of their own
 way -
@@ -7969,6 +7979,7 @@ way -
   + FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
   + FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM
   + FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+  + FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
   + FLAG_HIDE_OLDALE_TOWN_RIVAL
   + FLAG_HIDE_PETALBURG_CITY_SCOTT
   + FLAG_HIDE_PETALBURG_CITY_WALLY
@@ -7981,6 +7992,7 @@ way -
   + FLAG_HIDE_ROUTE_104_MR_BRINEY
   + FLAG_HIDE_ROUTE_104_RIVAL
   + FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST
+  + FLAG_HIDE_ROUTE_109_MR_BRINEY
   + FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
   + FLAG_HIDE_ROUTE_116_MR_BRINEY
   + FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
@@ -7993,6 +8005,11 @@ way -
   + FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDA
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
+  + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1
+  + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2
+  + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE
+  + FLAG_HIDE_SLATEPORT_CITY_SCOTT
+  + FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
   = VAR_LITTLEROOT_HOUSES_STATE_MAY 0 -> 1
 === common.HoennOpeningDone
 from a trainer with lines of their own
@@ -8578,6 +8595,123 @@ way 1, from answer 1
 from an obstacle, with no field move and no badge
 way -
   > A wall of water comes crashing down.
+=== dewford_town.Briney
+from Mr. Briney at 72,371 of Hoenn
+way 0
+  Mr. Briney> Ahoy! Shall we sail back to my cottage on Route 104?
+  Mr. Briney> Back to the cottage it is! Hold on to your hat!
+  Mr. Briney> Home sweet home! Whenever you need the sea again, you know where to find me.
+  ? Ahoy! Shall we sail back to my cottage on Route 104? = Yes
+  * scene dewford_town.Sailing back to Route 104
+  * music hoenn/sailing
+  * letterbox on
+  * camera Path 70 368 52 352 30 330 16 290 12 250 at 14
+  * fade out
+  * camera Release
+  * letterbox off
+  * warp Route104_MrBrineysHouse 5 4
+  * fade in
+  * music area
+  * endscene
+  + FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+  = VAR_BRINEY_LOCATION 0 -> 1
+  + seen dewford_town.Sailing back to Route 104
+way 1, from answer 1
+  Mr. Briney> Go on and deliver your letter, then. I'll wait right here.
+  ? Ahoy! Shall we sail back to my cottage on Route 104? = No
+=== dewford_town.OldRodFisherman
+from Fisherman at 72,376 of Hoenn
+way 0
+  Fisherman> This is a fishing island, you know. Doesn't the sea make you itch to cast a line?
+  Fisherman> That's the spirit! Here, take one of my old rods. I've got plenty.
+  > Lucas received the Old Rod!
+  > Lucas put it away in the Key Items pocket.
+  Fisherman> Face the water and use the rod. When something bites, reel it in quick!
+  ? This is a fishing island, you know. Doesn't the sea make you itch to cast a line? = Yes
+  * fanfare FanfareKeyItem
+  + FLAG_RECEIVED_OLD_ROD
+way 1, from answer 1
+  Fisherman> No? A shame. The fish around here practically jump onto the hook.
+  ? This is a fishing island, you know. Doesn't the sea make you itch to cast a line? = No
+=== dewford_town.TrendyBoy
+from Boy at 61,368 of Hoenn
+way 0
+  Boy> Everyone's talking about fishing right now. It's the biggest thing on the island! You knew that, right?
+  Boy> Of course you did. Anyone who's anyone knows what's in right now.
+  ? Everyone's talking about fishing right now. It's the biggest thing on the island! You knew that, right? = Yes
+way 1, from answer 1
+  Boy> You didn't know? Come on! Dewford Hall's the place to hear what's popular. Go and listen in.
+  ? Everyone's talking about fishing right now. It's the biggest thing on the island! You knew that, right? = No
+=== dewford_town_gym.Brawly
+from Brawly at 4,3 of DewfordTown_Gym
+way 0
+  Brawly> I'm Brawly! Dewford's Gym Leader. I've been riding the big waves out there, and they've made me tough.
+  Brawly> Training in the dark sharpens every sense. Let's see if you can keep your head above water. Here I come!
+  Brawly> Whoa, you knocked me right off my board! You've got some real power.
+  Brawly> Here, this is the Knuckle Badge. You've earned it, no question.
+  > Lucas received the Knuckle Badge from Brawly!
+  Brawly> With the Knuckle Badge, your Pokémon can use Flash outside of battle to light up dark places.
+  Brawly> Take this too. It's a move I swear by.
+  > Lucas received the TM08!
+  > TM08 holds the move Bulk Up.
+  > Lucas put it away in the TMs & HMs pocket.
+  Brawly> TM08 holds Bulk Up. It pumps up your Pokémon's Attack and Defense at the same time.
+  Brawly> There's a whole sea of trainers out there. Ride every wave you can!
+  * scene dewford_town_gym.Brawly
+  * battle hoenn_brawly_1 Won
+  * fanfare FanfareBadge
+  * defeat hoenn_takao
+  * defeat hoenn_jocelyn
+  * defeat hoenn_laura
+  * defeat hoenn_brenden
+  * defeat hoenn_cristian
+  * defeat hoenn_lilith
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_DEWFORD_GYM
+  + FLAG_RECEIVED_TM_BULK_UP
+  = VAR_PETALBURG_GYM_STATE 0 -> 1
+  + beaten hoenn_brawly_1
+  + beaten hoenn_brenden
+  + beaten hoenn_cristian
+  + beaten hoenn_jocelyn
+  + beaten hoenn_laura
+  + beaten hoenn_lilith
+  + beaten hoenn_takao
+  = badges Hoenn 0 -> 10
+  + seen dewford_town_gym.Brawly
+way 1, from answer 1
+  * battle hoenn_brawly_1 Lost
+  * scene over, unseen
+=== dewford_town_gym.GymGuide
+from Gym Guide at 5,24 of DewfordTown_Gym
+way -
+  Gym Guide> Hey, rookie! It's dark in here, isn't it? Every trainer you beat makes the hall a little brighter.
+  Gym Guide> Brawly's Pokémon are Fighting types. Flying and Psychic moves will hit them hard!
+=== dewford_town_hall.SludgeBombMan
+from Man at 8,6 of DewfordTown_Hall
+way -
+  Man> Everyone here only cares about what's trendy. But a good move never goes out of fashion!
+  > Lucas received the TM36!
+  > TM36 holds the move Sludge Bomb.
+  > Lucas put it away in the TMs & HMs pocket.
+  Man> That's Sludge Bomb. It hurls filthy sludge, and it might poison the target too.
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_TM_SLUDGE_BOMB
+=== dewford_town_house_1.Zigzagoon
+from Zigzagoon at 4,2 of DewfordTown_House1
+way -
+  > Zigzagoon: Guguu!
+  * cry Zigzagoon
+=== dewford_town_house_2.Boy
+from Boy at 2,3 of DewfordTown_House2
+way -
+  Boy> Grandpa gave me this scarf, but it's way too smooth for me. You have it!
+  > Lucas received the Silk Scarf!
+  > Lucas put it away in the Items pocket.
+  Boy> If a Pokémon holds it, its Normal-type moves get stronger. That's what Grandpa says.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_SILK_SCARF
 === distortion_world_1f.CynthiaBySlab
 from Cynthia at 18,42 of DistortionWorld1F
 way -
@@ -9828,6 +9962,20 @@ way 0.1, from answer 2
 way 1, from answer 1
   Receptionist> No? Come back when you're feeling clever!
   ? It's quiz time at the Radio Tower! Answer five questions right and win a Radio Card for your Pokégear. Ready? = No
+=== granite_cave_1f.Hiker
+from Hiker at 36,9 of GraniteCave_1F
+way -
+  Hiker> Hey, you! It gets pitch dark further in. You'll want to see where you're going. Take this!
+  > Lucas received the TM70!
+  > TM70 holds the move Flash.
+  > Lucas put it away in the TMs & HMs pocket.
+  Hiker> That's Flash. Once you hold Dewford's Badge, it'll light up a dark cave all the way through.
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_HM_FLASH
+=== granite_cave_stevens_room.Steven
+from Steven at 7,8 of GraniteCave_StevensRoom
+way -
+  Steven> Hello. I'm Steven. I came here looking for rare stones. Did you come for the same thing?
 === hearthome_city.Buneary
 from the trigger at 461,725 of Sinnoh
 way -
@@ -11296,6 +11444,68 @@ way -
   > Lucas put it away in the Key Items pocket.
   * fanfare FanfareKeyItem
   + FLAG_RECEIVED_WAILMER_PAIL
+=== route_109.Briney
+from Mr. Briney at 221,344 of Hoenn
+way 0
+  Mr. Briney> Ahoy! Shall we sail back to Dewford?
+  Mr. Briney> Dewford it is! Hold tight!
+  Mr. Briney> Dewford, safe and sound! I'll be at the jetty when you need me.
+  ? Ahoy! Shall we sail back to Dewford? = Yes
+  * scene route_109.Sailing back to Dewford
+  * music hoenn/sailing
+  * letterbox on
+  * camera Path 220 348 190 360 150 366 110 368 80 370 at 14
+  * fade out
+  * camera Release
+  * letterbox off
+  * warp Hoenn 71 371
+  * fade in
+  * music area
+  * endscene
+  + FLAG_HIDE_ROUTE_109_MR_BRINEY
+  = VAR_BRINEY_LOCATION 0 -> 2
+  + seen route_109.Sailing back to Dewford
+way 1, from answer 1
+  Mr. Briney> Then off you go and deliver that parcel of yours! Slateport's just up the beach.
+  ? Ahoy! Shall we sail back to Dewford? = No
+=== route_109.Lola
+from Lola at 222,327 of Hoenn
+way 0
+  Tuber Lola> Tuber Lola: My Azurill and me are floating all day! Wanna play?
+  * battle hoenn_lola_1 Won
+  + beaten hoenn_lola_1
+way 1, from answer 1
+  * battle hoenn_lola_1 Lost
+=== route_109.Ricky
+from Ricky at 219,330 of Hoenn
+way 0
+  Tuber Ricky> Tuber Ricky: I can't swim yet, but I can battle!
+  * battle hoenn_ricky_1 Won
+  + beaten hoenn_ricky_1
+way 1, from answer 1
+  * battle hoenn_ricky_1 Lost
+=== route_109.SandCastleBoy
+from Boy at 224,338 of Hoenn
+way -
+  Boy> I'm building the biggest sandcastle ever! It's taking a really, really long time.
+=== route_109.SoftSandGirl
+from Girl at 225,338 of Hoenn
+way -
+  Girl> You look like you'd be good at building sandcastles! Here, you can have this.
+  > Lucas received the Soft Sand!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_SOFT_SAND
+=== route_109.Zigzagoon
+from Zigzagoon at 232,326 of Hoenn
+way -
+  > Zigzagoon: Guguuh!
+  * cry Zigzagoon
+=== route_109_seashore_house.Owner
+from Owner at 6,2 of Route109_SeashoreHouse
+way -
+  Owner> Welcome to the Seashore House! The trainers in here are hot to battle.
+  Owner> Beat all of them, and I'll treat you to something cool to drink.
 === route_10_pokemon_center_1f.Aide
 from Aide at 12,5 of Route10_PokemonCenter_1F
 way -
@@ -13019,6 +13229,69 @@ way 1, from answer 1
   * warp SilphCo_2F 22 4
   = VAR_SILPH_CO_LIFT_FLOOR 0 -> 2
   = VAR_TEMP_1 0 -> 2
+=== slateport_city.EnergyGuru
+from Energy Guru at 205,307 of Hoenn
+way -
+  Energy Guru> Welcome! I'm the Energy Guru! I sell whatever your Pokémon needs to grow strong!
+  Energy Guru> Come back whenever your Pokémon need a boost!
+  * open Shop slateport_energy_guru
+=== slateport_city_oceanic_museum_1f.FamiliarGrunt
+from Team Aqua Grunt at 9,4 of SlateportCity_OceanicMuseum_1F
+way -
+  Team Aqua Grunt> Aaah! It's you, the kid from the tunnel! Don't look at me like that. I'm just a visitor today!
+  Team Aqua Grunt> Here, take this and forget you ever saw me. Please!
+  > Lucas received the TM46!
+  > TM46 holds the move Thief.
+  > Lucas put it away in the TMs & HMs pocket.
+  Team Aqua Grunt> Now leave me alone! I hope I never see you again!
+  * emote Team Aqua Grunt Exclaim
+  * fanfare FanfareTM
+  * fade out
+  * fade in
+  + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_FAMILIAR_AQUA_GRUNT
+  + FLAG_RECEIVED_TM_THIEF
+=== slateport_city_oceanic_museum_1f.PayEntranceFee
+from the trigger at 10,7 of SlateportCity_OceanicMuseum_1F
+from the trigger at 9,7 of SlateportCity_OceanicMuseum_1F
+way 0
+  Receptionist> Welcome to the Oceanic Museum. The entrance fee is 50 Poké Dollars. Would you like to come in?
+  Receptionist> Thank you. Please enjoy the museum!
+  ? Welcome to the Oceanic Museum. The entrance fee is 50 Poké Dollars. Would you like to come in? = Yes
+  * sound select
+  = VAR_SLATEPORT_MUSEUM_1F_STATE 0 -> 1
+way 1, from answer 1
+  ? Welcome to the Oceanic Museum. The entrance fee is 50 Poké Dollars. Would you like to come in? = No
+=== slateport_city_oceanic_museum_2f.CaptStern
+from Captain Stern at 13,6 of SlateportCity_OceanicMuseum_2F
+way -
+  Captain Stern> I'm Stern, the captain of the shipyard. I'm waiting for some parts from Devon. They should be here by now...
+=== slateport_city_pokemon_fan_club.Azumarill
+from Azumarill at 10,8 of SlateportCity_PokemonFanClub
+way -
+  > Azumarill: Marimari!
+  * cry Azumarill
+=== slateport_city_pokemon_fan_club.Skitty
+from Skitty at 8,3 of SlateportCity_PokemonFanClub
+way -
+  > Skitty: Nyaa!
+  * cry Skitty
+=== slateport_city_pokemon_fan_club.SootheBellWoman
+from Woman at 6,2 of SlateportCity_PokemonFanClub
+way -
+  Woman> Your Pokémon could be a little closer to you. Spend time together, and it'll grow fond of you.
+=== slateport_city_pokemon_fan_club.Zigzagoon
+from Zigzagoon at 3,9 of SlateportCity_PokemonFanClub
+way -
+  > Zigzagoon: Gugugu!
+  * cry Zigzagoon
+=== slateport_city_sterns_shipyard_1f.Dock
+from Dock at 5,5 of SlateportCity_SternsShipyard_1F
+way -
+  Dock> Hmm... If we put the engine here, the hull bends there... I can't make heads or tails of these plans.
+  Dock> Oh, sorry! I'm Dock, Captain Stern's foreman. Parts from Devon? For the captain?
+  Dock> He's not here. He went over to the Oceanic Museum. Could you take them to him there?
+  + FLAG_DOCK_REJECTED_DEVON_GOODS
+  + FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA
 === slowpoke_well_b1f.Proton
 from Proton at 27,3 of SlowpokeWell_B1F
 way 0

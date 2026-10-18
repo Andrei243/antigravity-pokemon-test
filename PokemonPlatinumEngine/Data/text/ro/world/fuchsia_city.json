@@ -1,0 +1,272 @@
+{
+  "people": {
+    "fat_man": {
+      "name": {
+        "en": [
+          "Erik"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sara and I were supposed to meet here hours ago. Where could she have got to?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "See that Poké Ball in the pen? I tried to pick it up, and it was a Voltorb! It nearly blew up in my hand!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you played the Safari Game yet? You can catch Pokémon there you won't find anywhere else!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These pens are the Safari Zone's little zoo. The real thing is behind that building to the north."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My father is the Gym Leader here. He's a master of poison, and of hiding things in plain sight."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slowpoke": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Slowpoke is staring into space. It doesn't seem to have noticed you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "voltorb": {
+      "name": {
+        "en": [
+          "Voltorb"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "It looks like a Poké Ball, but it's a Voltorb! Better not touch it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "chansey": {
+      "name": {
+        "en": [
+          "Chansey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Chansey is carrying its egg very carefully."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lapras": {
+      "name": {
+        "en": [
+          "Lapras"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lapras is gliding across its pool, singing softly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kangaskhan": {
+      "name": {
+        "en": [
+          "Kangaskhan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kangaskhan's little one peeks out of its pouch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "var_0": {
+      "name": {
+        "en": [
+          "Kabuto"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kabuto is scuttling over the rocks of its pen."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "omanyte": {
+      "name": {
+        "en": [
+          "Omanyte"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Omanyte is drifting about the water of its pen."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FuchsiaCity_EventScript_CitySign": {
+      "en": [
+        "Fuchsia City\nWhere bright pinks and passions meet"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FuchsiaCity_EventScript_SafariZoneSign": {
+      "en": [
+        "Safari Zone\nCatch Pokémon of every kind!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FuchsiaCity_EventScript_SafariGameSign": {
+      "en": [
+        "The Safari Game\nPlay inside for just $500!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FuchsiaCity_EventScript_GymSign": {
+      "en": [
+        "Fuchsia City Pokémon Gym\nLeader: Koga\nThe Poisonous Ninja Master"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FuchsiaCity_EventScript_WardensHomeSign": {
+      "en": [
+        "Safari Zone Warden's Home"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

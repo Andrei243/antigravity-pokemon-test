@@ -1,0 +1,290 @@
+{
+  "people": {
+    "picnicker": {
+      "name": {
+        "en": [
+          "Alma"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Alma: My Water Pokémon love a day out by the sea! Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Alma: Washed out, and on such a sunny day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Sebastian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Sebastian: My birds have spotted you from above. There's no hiding!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Sebastian: They've flown off to sulk."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Susie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Susie: I caught every one of these myself! Aren't they cute?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Susie: Cute isn't quite enough, is it?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Sheila"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Sheila: Do my Pokémon look lovely today? Let me show you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Sheila: Oh, my hair's all windswept now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Lola"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Lola: You've walked right into my view of the sea. Battle me, then!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Lola: Fine. The view's yours."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_3": {
+      "name": {
+        "en": [
+          "Valerie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Valerie: Two Poliwag are better than one! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Valerie: Two weren't enough after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_4": {
+      "name": {
+        "en": [
+          "Gwen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Gwen: I've packed a lunch and a team of birds. Let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Gwen: Time to eat that lunch, I think."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_2": {
+      "name": {
+        "en": [
+          "Robert"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Robert: The wind off the sea is perfect for flying. Watch this!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Robert: The wind changed on me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_3": {
+      "name": {
+        "en": [
+          "Perry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Perry: A whole flock against you! Can you keep up?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Perry: My flock's scattered to the four winds."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker": {
+      "name": {
+        "en": [
+          "Jared"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Jared: Smell that? That's the smell of my Koffing. Get ready!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Jared: Blew away like smoke."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route13_EventScript_RouteSign": {
+      "en": [
+        "Route 13\nNorth to Silence Bridge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route13_EventScript_TrainerTips1": {
+      "en": [
+        "Trainer Tips\nLook closely at the fences and the grass. A way through might be hiding where you least expect it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route13_EventScript_TrainerTips2": {
+      "en": [
+        "Trainer Tips\nThe stats a Pokémon raises in battle are lost once it is called back. Use them while you can!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

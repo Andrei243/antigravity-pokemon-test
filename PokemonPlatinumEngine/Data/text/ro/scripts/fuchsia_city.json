@@ -1,0 +1,160 @@
+{
+  "ChanseySign": [
+    {
+      "en": [
+        "Chansey\nThe kindest Pokémon of all. Its egg is said to bring happiness to whoever eats it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VoltorbSign": [
+    {
+      "en": [
+        "Voltorb\nIt looks just like a Poké Ball. Anyone who reaches for it gets a nasty surprise!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KangaskhanSign": [
+    {
+      "en": [
+        "Kangaskhan\nA devoted parent that keeps its young safe in the pouch on its belly."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SlowpokeSign": [
+    {
+      "en": [
+        "Slowpoke\nIt takes a whole second for it to feel pain. Friendly, and ever so slow."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LaprasSign": [
+    {
+      "en": [
+        "Lapras\nA gentle giant of the sea that loves to ferry people across the water."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FossilSign": [
+    {
+      "en": [
+        "Kabuto\nA Pokémon from ancient times, brought back to life from a fossil."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Omanyte\nA Pokémon from ancient seas, brought back to life from a fossil."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SubstituteTutor": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I know a move that makes a copy of yourself to take the hits. Want me to teach Substitute to one of your Pokémon?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Okay! Which one?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Substitute costs some HP, but the foe will waste its moves on the copy. Sneaky, right?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh. Well, I'll be around if you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's an Egg! It can't learn anything yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm, that one can't learn Substitute, I'm afraid."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

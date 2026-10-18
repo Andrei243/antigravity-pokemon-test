@@ -1,23 +1,5 @@
 {
   "people": {
-    "0": {
-      "name": {
-        "en": [
-          "Notice"
-        ],
-        "text": [
-          "Anunț"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "A magazine on the seat, open at a page about Sabrina."
-        ],
-        "text": [
-          "O revistă pe scaun, deschisă la o pagină despre Sabrina."
-        ]
-      }
-    },
     "saffron_nurse": {
       "name": {
         "en": [
@@ -79,6 +61,24 @@
         ],
         "text": [
           "Dojoul de Luptă de lângă Arenă era Arena orașului, până când i-a învins Sabrina."
+        ]
+      }
+    },
+    "0": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          "Anunț"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine on the seat, open at a page about Sabrina."
+        ],
+        "text": [
+          "O revistă pe scaun, deschisă la o pagină despre Sabrina."
         ]
       }
     },

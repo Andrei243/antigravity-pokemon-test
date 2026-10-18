@@ -1,0 +1,326 @@
+{
+  "people": {
+    "biker": {
+      "name": {
+        "en": [
+          "Gerald"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Gerald: Out of my way, or into a battle. Your choice!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Gerald: Okay, okay. Out of your way, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Donald"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Donald: My Farfetch'd has trained with its leek for years!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Donald: Its leek's all bent now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_2": {
+      "name": {
+        "en": [
+          "Beck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Beck: Sharp beaks and sharper eyes! Let's see yours!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Beck: Your eyes are sharper, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_3": {
+      "name": {
+        "en": [
+          "Marlon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Marlon: I've raised birds that run as fast as they fly!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Marlon: Outrun and outflown."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_2": {
+      "name": {
+        "en": [
+          "Isaac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Isaac: My Grimer's been eating my lunch. Let's see if it can eat you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Isaac: Now I've lost my lunch and the battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_3": {
+      "name": {
+        "en": [
+          "Malik"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Malik: This stretch of road is ours. Prove you belong on it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Malik: Fine. You belong."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_4": {
+      "name": {
+        "en": [
+          "Mitch"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Mitch: I've been waiting for a challenger all day!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Mitch: That wasn't worth the wait."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_5": {
+      "name": {
+        "en": [
+          "Carter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Carter: A trainer with no birds? Let me show you what you're missing!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Carter: You're not missing much, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_4": {
+      "name": {
+        "en": [
+          "Lukas"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Lukas: Breathe deep! My Koffing filled the air just for you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Lukas: Cough... Okay, you win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_6": {
+      "name": {
+        "en": [
+          "Benny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Benny: My Spearow are hungry for a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Benny: They'll have to go hungry."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Kiri"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Kiri & Jan: We do everything together, battles too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Kiri & Jan: We lose together too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl_2": {
+      "name": {
+        "en": [
+          "Jan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Kiri & Jan: We do everything together, battles too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Kiri & Jan: We lose together too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route14_EventScript_RouteSign": {
+      "en": [
+        "Route 14\nWest to Fuchsia City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

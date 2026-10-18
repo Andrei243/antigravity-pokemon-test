@@ -1,0 +1,45 @@
+{
+  "people": {},
+  "signs": {
+    "SafariZone_North_EventScript_AreaSign": {
+      "en": [
+        "Area 2\nSouth: Centre Area"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_North_EventScript_RestHouseSign": {
+      "en": [
+        "Rest House"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_North_EventScript_TrainerTips1": {
+      "en": [
+        "Trainer Tips\nThe deeper into the zone you go, the rarer the Pokémon you'll meet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_North_EventScript_TrainerTips2": {
+      "en": [
+        "Trainer Tips\nThe Pokémon of the zone come and go as they please. Take your chance when you see one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_North_EventScript_TrainerTips3": {
+      "en": [
+        "Trainer Tips\nYour own Pokémon stay in their balls in the zone. It's you against the wild!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

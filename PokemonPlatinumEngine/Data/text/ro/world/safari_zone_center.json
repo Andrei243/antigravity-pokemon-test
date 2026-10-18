@@ -1,0 +1,29 @@
+{
+  "people": {},
+  "signs": {
+    "SafariZone_Center_EventScript_RestHouseSign": {
+      "en": [
+        "Rest House"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_Center_EventScript_TrainerTips": {
+      "en": [
+        "Trainer Tips\nKeep an eye on your Safari Balls and your steps. When either runs out, the game is over!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_Center_EventScript_AreaSign": {
+      "en": [
+        "Centre Area\nNorth: Area 2  West: Area 3  East: Area 1"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

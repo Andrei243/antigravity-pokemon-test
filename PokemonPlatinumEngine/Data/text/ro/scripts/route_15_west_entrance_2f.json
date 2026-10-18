@@ -1,0 +1,70 @@
+{
+  "Aide": [
+    {
+      "en": [
+        "Aide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello! I'm one of Professor Oak's aides. Shall I see how many kinds of Pokémon you've caught?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{var:CAUGHT} kinds! That's remarkable. The Professor asked me to give you this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon holding an Exp. Share gains experience from every battle, even if it never steps out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm watching the sea for Professor Oak. You'd be amazed at what flies over it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. Drop by whenever you like."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{var:CAUGHT} kinds so far. Come back once you've caught fifty, and I'll have something special for you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LeftBinoculars": [
+    {
+      "en": [
+        "Looking through the binoculars... A great blue bird is flying far out over the sea!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

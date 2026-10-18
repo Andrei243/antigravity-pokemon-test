@@ -1,0 +1,181 @@
+{
+  "people": {
+    "koga": {
+      "name": {
+        "en": [
+          "Koga"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gym_guy": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Kayden"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Kayden: Now you see me, now you don't! Can you keep up with my tricks?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Kayden: My last trick was disappearing. From the battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_2": {
+      "name": {
+        "en": [
+          "Shawn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Shawn: Bumped into a wall you couldn't see? There are plenty more!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Shawn: Bumped into a trainer you couldn't beat, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_3": {
+      "name": {
+        "en": [
+          "Kirk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Kirk: I'm Koga's student. I've learned to throw people off balance!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Kirk: You kept your balance. Impressive."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Edgar"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tamer Edgar: My snakes obey my every word. Do yours?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tamer Edgar: Mine stopped listening, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Phil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tamer Phil: A ninja's Gym needs fierce guardians. That's me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tamer Phil: Not fierce enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_4": {
+      "name": {
+        "en": [
+          "Nate"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Nate: Watch closely, or you'll miss the trick!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Nate: I missed the trick that beat me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

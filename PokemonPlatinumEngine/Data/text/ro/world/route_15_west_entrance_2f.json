@@ -1,0 +1,24 @@
+{
+  "people": {
+    "scientist": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route15_WestEntrance_2F_EventScript_RightBinoculars": {
+      "en": [
+        "Looking through the binoculars... A long road of grass runs east toward Lavender Town."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

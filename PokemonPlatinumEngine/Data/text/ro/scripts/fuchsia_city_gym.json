@@ -1,0 +1,128 @@
+{
+  "Koga": [
+    {
+      "en": [
+        "Koga"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fwahahaha! A mere child dares to challenge me? I am Koga, Leader of this Gym!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ninja arts are the arts of deception. My poisons will sap your strength while you stumble in confusion!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmph! You have proven your worth. Take the Soul Badge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Soul Badge from Koga!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With the Soul Badge, your Pokémon can use Surf outside of battle, to ride across the water."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this as well. It is the very essence of my art."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM06 is Toxic. It poisons the foe badly, and the poison grows worse with every turn."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You have the makings of a fine trainer. Remember: when strength fails, cunning wins the day."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, champ in the making! This Gym is full of walls you can't see."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Koga's Pokémon use poison and every trick in the book. Bring something to cure poison, and feel your way along!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You found your way through the invisible walls and beat Koga! What a ninja you'd make!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Fuchsia City Pokémon Gym. Leader: Koga. Winning trainers: {rival}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fuchsia City Pokémon Gym. Leader: Koga. Winning trainers: {rival}, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

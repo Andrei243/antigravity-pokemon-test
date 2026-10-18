@@ -1,0 +1,29 @@
+{
+  "people": {},
+  "signs": {
+    "SafariZone_East_EventScript_AreaSign": {
+      "en": [
+        "Area 1\nWest: Centre Area"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_East_EventScript_RestHouseSign": {
+      "en": [
+        "Rest House"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SafariZone_East_EventScript_TrainerTips": {
+      "en": [
+        "Trainer Tips\nThe Safari Zone's Pokémon are shy. Some run away the moment they see you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

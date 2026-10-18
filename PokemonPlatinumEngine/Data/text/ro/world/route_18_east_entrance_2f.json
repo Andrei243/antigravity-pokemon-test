@@ -1,0 +1,40 @@
+{
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm looking for someone with a Slowbro. I'd swap my Lickitung for one, one day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route18_EastEntrance_2F_EventScript_LeftBinoculars": {
+      "en": [
+        "Looking through the binoculars... Riders are racing down the Cycling Road!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route18_EastEntrance_2F_EventScript_RightBinoculars": {
+      "en": [
+        "Looking through the binoculars... Fuchsia City lies just to the east, beside the sea."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

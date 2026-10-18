@@ -1,0 +1,326 @@
+{
+  "people": {
+    "picnicker": {
+      "name": {
+        "en": [
+          "Yazmin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Yazmin: My garden comes with me wherever I go! Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Yazmin: You've trampled my flowerbed."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Edwin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Edwin: All sorts of birds, all sorts of tricks!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Edwin: All sorts of losing, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_2": {
+      "name": {
+        "en": [
+          "Chester"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Chester: Two heads, three heads! My birds see everything!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Chester: They didn't see that coming."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Kindra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Kindra: Mind your nose, my Gloom aren't shy about their smell!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Kindra: Even the smell couldn't stop you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Olivia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Olivia: I raised these two from a single seed! Well, almost."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Olivia: They'll bloom another day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker": {
+      "name": {
+        "en": [
+          "Alex"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Alex: You came down the Cycling Road? Let's see how tough you are!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Alex: Tougher than me, I'll give you that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_2": {
+      "name": {
+        "en": [
+          "Ernest"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Biker Ernest: Five Pokémon full of smoke! Think you can breathe through that?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Biker Ernest: The smoke's cleared, and so's my team."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_3": {
+      "name": {
+        "en": [
+          "Becky"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Becky: My Pikachu evolved just yesterday! Watch it go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Becky: It's still getting used to its new tail."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Grace"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Grace: A soft Pokémon and a swift one. The perfect pair!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Grace: Perfect, but not quite enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_4": {
+      "name": {
+        "en": [
+          "Celia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Celia: My Clefairy came down from Mt. Moon just to battle you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Celia: Back to the moon with it, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Ron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Crush Kin Ron & Mya: We train together every morning. Take us both on!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Crush Kin Ron & Mya: More training tomorrow, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crush_girl": {
+      "name": {
+        "en": [
+          "Mya"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Crush Kin Ron & Mya: We train together every morning. Take us both on!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Crush Kin Ron & Mya: More training tomorrow, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route15_EventScript_RouteSign": {
+      "en": [
+        "Route 15\nWest to Fuchsia City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

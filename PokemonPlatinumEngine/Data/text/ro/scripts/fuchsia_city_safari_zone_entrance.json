@@ -1,0 +1,186 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Leaving the Safari Zone already? You still have time left. Are you sure?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. Please hand back your Safari Balls. We hope to see you again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then off you go. Good luck out there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Did you catch your fair share? Come again any time!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Counter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Safari Zone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "For just $500, you can catch all the Pokémon you like! Would you like to play the Safari Game?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That'll be $500, thank you. Here you are: we use only these special balls in the zone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received 30 Safari Balls!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We'll call you over the speakers when your game is up. Enjoy yourself!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough money."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CounterTalk": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Walk up to the door behind me, and I'll ask whether you'd like to play the Safari Game."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Explain": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Safari Zone has four parts, each with its own Pokémon. Would you like to hear how the Safari Game works?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You go in with 30 Safari Balls. They're the only balls you may throw inside."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You can't battle the Pokémon you meet, but you can throw things to calm them or rile them up. Try it and see!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The game is over when you've walked 600 steps, or when your last ball is thrown."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then enjoy the Safari Zone!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
