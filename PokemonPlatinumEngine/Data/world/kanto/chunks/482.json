@@ -103,21 +103,18 @@
     "????????????????????????????????"
   ],
   "heights": [
-    { "x": 0, "z": 0, "width": 12, "depth": 5, "height": 1, "slopeX": 0, "slopeZ": 0 },
-    { "x": 0, "z": 5, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
-    { "x": 1, "z": 5, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 1.4000001 },
-    { "x": 2, "z": 5, "width": 1, "depth": 3, "height": 1, "slopeX": 0, "slopeZ": 0 },
-    { "x": 3, "z": 5, "width": 1, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 1.4000001 },
-    { "x": 4, "z": 5, "width": 8, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
-    { "x": 0, "z": 6, "width": 2, "depth": 1, "height": 2.4, "slopeX": 0, "slopeZ": 0 },
-    { "x": 3, "z": 6, "width": 1, "depth": 1, "height": 2.4, "slopeX": 0, "slopeZ": 0 },
-    { "x": 4, "z": 6, "width": 1, "depth": 1, "height": 2.4, "slopeX": -1.4000001, "slopeZ": 0 },
-    { "x": 5, "z": 6, "width": 7, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
-    { "x": 0, "z": 7, "width": 1, "depth": 1, "height": 2.4, "slopeX": 0, "slopeZ": 0 },
-    { "x": 1, "z": 7, "width": 1, "depth": 1, "height": 2.4, "slopeX": 0, "slopeZ": -1.4000001 },
-    { "x": 3, "z": 7, "width": 1, "depth": 1, "height": 2.4, "slopeX": 0, "slopeZ": -1.4000001 },
-    { "x": 4, "z": 7, "width": 8, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 },
-    { "x": 0, "z": 8, "width": 12, "depth": 1, "height": 1, "slopeX": 0, "slopeZ": 0 }
+    { "x": 0, "z": 0, "width": 12, "depth": 9, "height": 1, "slopeX": 0, "slopeZ": 0 }
   ],
-  "props": []
+  "props": [
+    { "model": 0, "name": "gba:Computer", "x": 1.5, "y": 0, "z": 1.5, "boxX": 1, "boxZ": 1, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Wardrobe", "x": 3.5, "y": 0, "z": 1.5, "boxX": 3, "boxZ": 1, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Bookshelf", "x": 5, "y": 0, "z": 1.5, "boxX": 4, "boxZ": 1, "width": 2, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Stairs", "x": 9, "y": 0, "z": 3, "boxX": 8, "boxZ": 2, "width": 2, "depth": 2, "height": 0 },
+    { "model": 0, "name": "gba:Rug", "x": 5, "y": 0, "z": 6, "boxX": 4, "boxZ": 4, "width": 2, "depth": 4, "height": 0 },
+    { "model": 0, "name": "gba:Television", "x": 6.5, "y": 0, "z": 4.5, "boxX": 6, "boxZ": 4, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Rug", "x": 8, "y": 0, "z": 6, "boxX": 7, "boxZ": 4, "width": 2, "depth": 4, "height": 0 },
+    { "model": 0, "name": "gba:Table", "x": 6.5, "y": 0, "z": 5.5, "boxX": 6, "boxZ": 5, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Chair", "x": 2.5, "y": 0, "z": 6.5, "boxX": 2, "boxZ": 6, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Rug", "x": 6.5, "y": 0, "z": 7.5, "boxX": 6, "boxZ": 7, "width": 1, "depth": 1, "height": 0 }
+  ]
 }

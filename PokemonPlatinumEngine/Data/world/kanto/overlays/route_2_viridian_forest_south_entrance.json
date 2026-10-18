@@ -1,0 +1,18 @@
+{
+  // The gate between Route 2 and Viridian Forest, on the forest's south side (plan 19 · K2)
+  "area": "route_2_viridian_forest_south_entrance",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "woman_2": {
+      "name": "Woman",
+      "dialog": [
+        "The forest is dark and easy to get lost in.",
+        "Keep to the paths and read the signs, and you'll come out the other side."
+      ]
+    },
+    "woman_1": {
+      "name": "Woman",
+      "dialog": [ "Bug Catchers hide in the trees in there. They love to jump out at passing trainers!" ]
+    }
+  }
+}

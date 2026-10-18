@@ -1,11 +1,11 @@
 {
-  // Viridian City (plan 19 · K1). Its way of building is plan 19 · K2's (the style guide's "Buildings" first); until
-  // then its houses are built as Sandgem's. The old man who lies across the road north, the lesson in catching and
+  // Viridian City (plan 19 · K1), built in logs under evergreen roofs since K2 (the style guide's "Buildings": Evergreen).
+  // The old man who lies across the road north, the lesson in catching and
   // the Dream Eater tutor are the story's (K3); here they only talk
   "area": "viridian_city",
-  "bgmTrack": "kanto/pallet",
+  "bgmTrack": "kanto/viridian",
   "trees": "Round",
-  "architecture": "Plaster",
+  "architecture": "Evergreen",
   // The Gym's door (warp 2) is shut as FireRed shuts it: the step before it turns the player back until the city is
   // come to with six of Kanto's badges (viridian_city.txt); its Leader and his trainers are plan 19 · K7's
   "triggers": [ { "trigger": 1, "script": "GymDoorLocked" } ],

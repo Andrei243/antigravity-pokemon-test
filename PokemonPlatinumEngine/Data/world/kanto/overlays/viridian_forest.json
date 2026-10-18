@@ -1,0 +1,63 @@
+{
+  // Viridian Forest (plan 19 · K2), a maze of trees between Route 2's two gates. Its five Bug Catchers are FireRed's
+  // own, their teams read from Kanto's trainers.json (plan 18's decision 8) by the trainer each object's script names
+  "area": "viridian_forest",
+  "bgmTrack": "kanto/viridian_forest",
+  "trees": "Round",
+  "people": {
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [
+        "I came in here to catch a Pikachu, but they're so hard to find!",
+        "They say they only turn up once in a while."
+      ]
+    },
+    "boy": {
+      "name": "Boy",
+      "dialog": [ "A Weedle's sting can poison your Pokémon. Watch out for the ones with horns!" ]
+    },
+    "bug_catcher": {
+      "name": "Rick",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Rick: Hey! You've got Pokémon! Let's see how they do against my bugs!",
+        "dialogueAfter": "Bug Catcher Rick: Aww, beaten already! My bugs need more practice."
+      }
+    },
+    "bug_catcher_2": {
+      "name": "Doug",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Doug: Bugs are tougher than they look! I'll prove it!",
+        "dialogueAfter": "Bug Catcher Doug: Huh, you know your stuff. I'll catch stronger bugs next time."
+      }
+    },
+    "bug_catcher_3": {
+      "name": "Sammy",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Sammy: You can't go through the forest without battling a Bug Catcher!",
+        "dialogueAfter": "Bug Catcher Sammy: That's the end of my Pokémon. You win this time!"
+      }
+    },
+    "bug_catcher_4": {
+      "name": "Anthony",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Anthony: I've been waiting in this spot all day. Battle me!",
+        "dialogueAfter": "Bug Catcher Anthony: I should have waited somewhere else."
+      }
+    },
+    "bug_catcher_5": {
+      "name": "Charlie",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Charlie: My friends and I hide out here. You found me, so let's battle!",
+        "dialogueAfter": "Bug Catcher Charlie: The way out is just north of here. Good luck in Pewter!"
+      }
+    }
+  },
+  "signs": {
+    "ViridianForest_EventScript_TrainerTips1": "TRAINER TIPS\nTall grass is where wild Pokémon hide.\nTake a Pokémon that can fight before you go in.",
+    "ViridianForest_EventScript_TrainerTips2": "TRAINER TIPS\nA poisoned Pokémon loses HP as it walks.\nAn Antidote cures it.",
+    "ViridianForest_EventScript_TrainerTips3": "TRAINER TIPS\nA Pokémon that faints wins no EXP.\nSwitch out one that is about to faint.",
+    "ViridianForest_EventScript_TrainerTips4": "TRAINER TIPS\nWeaken a wild Pokémon before you\nthrow a Poké Ball at it.",
+    "ViridianForest_EventScript_TrainerTips5": "TRAINER TIPS\nBug Catchers lie in wait among the trees.\nBe ready when they see you!",
+    "ViridianForest_EventScript_ExitSign": "Leaving Viridian Forest\nPewter City ahead"
+  }
+}

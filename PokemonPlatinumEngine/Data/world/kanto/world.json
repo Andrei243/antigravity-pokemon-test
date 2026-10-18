@@ -19,13 +19,25 @@
     { "name": "ViridianCity_School", "matrix": 207, "area": "viridian_city_school", "trees": "Round", "setting": "Indoors" },
     { "name": "ViridianCity_Mart", "matrix": 208, "area": "viridian_city_mart", "trees": "Round", "setting": "Indoors" },
     { "name": "ViridianCity_PokemonCenter_1F", "matrix": 209, "area": "viridian_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
-    { "name": "ViridianCity_PokemonCenter_2F", "matrix": 210, "area": "viridian_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" }
+    { "name": "ViridianCity_PokemonCenter_2F", "matrix": 210, "area": "viridian_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    // Plan 19 · K2: Route 2's rooms, Viridian Forest between its two gates, and Route 22's gate. The forest is a
+    // map of its own in FireRed, open country under a canopy (MAP_TYPE_ROUTE, the shade's weather)
+    { "name": "ViridianForest", "matrix": 6, "area": "viridian_forest", "trees": "Round" },
+    { "name": "Route2_ViridianForest_SouthEntrance", "matrix": 293, "area": "route_2_viridian_forest_south_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route2_House", "matrix": 294, "area": "route_2_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route2_EastBuilding", "matrix": 295, "area": "route_2_east_building", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route2_ViridianForest_NorthEntrance", "matrix": 296, "area": "route_2_viridian_forest_north_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route22_NorthEntrance", "matrix": 320, "area": "route_22_north_entrance", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 19 · K1: Pallet Town, Route 1 and Viridian City, with their rooms
     "pallet_town", "route_1", "viridian_city",
     "pallet_town_players_house_1f", "pallet_town_players_house_2f", "pallet_town_rivals_house", "pallet_town_professor_oaks_lab",
     "viridian_city_house", "viridian_city_gym", "viridian_city_school", "viridian_city_mart",
-    "viridian_city_pokemon_center_1f", "viridian_city_pokemon_center_2f"
+    "viridian_city_pokemon_center_1f", "viridian_city_pokemon_center_2f",
+    // Plan 19 · K2: Route 2, Viridian Forest and Route 22, with their rooms
+    "route_2", "viridian_forest", "route_22",
+    "route_2_viridian_forest_south_entrance", "route_2_house", "route_2_east_building", "route_2_viridian_forest_north_entrance",
+    "route_22_north_entrance"
   ]
 }

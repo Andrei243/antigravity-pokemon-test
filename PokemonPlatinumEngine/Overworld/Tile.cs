@@ -187,7 +187,11 @@ public enum Architecture
     /// <summary>White walls under flat or orange roofs with solar panels (Sunyshore).</summary>
     Seaside,
     /// <summary>White boards under hipped turquoise roofs: the lakeside hotel and the Battle Zone's villas.</summary>
-    Resort
+    Resort,
+
+    // Kanto (plan 19): each town's own way of building, a row of the style guide's "Buildings" first
+    /// <summary>Logs under evergreen gable roofs with shutters and a chimney: the town at the forest's edge (Viridian, plan 19 · K2).</summary>
+    Evergreen
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

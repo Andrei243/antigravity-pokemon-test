@@ -1,0 +1,12 @@
+{
+  // Route 2 (plan 19 · K2): from Viridian City north past the forest's two gates to Pewter City, which is K3's, with
+  // a lane to the east behind small trees that only Cut clears. The way into Diglett's Cave (its north mouth, warp 3)
+  // is shut until K4 opens the cave
+  "area": "route_2",
+  "bgmTrack": "kanto/route1",
+  "trees": "Round",
+  "signs": {
+    "Route2_EventScript_RouteSign": "Route 2\nViridian City - Pewter City",
+    "Route2_EventScript_DiglettsCaveSign": "Diglett's Cave"
+  }
+}

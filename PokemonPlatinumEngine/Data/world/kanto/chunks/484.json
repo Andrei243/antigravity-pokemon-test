@@ -105,5 +105,16 @@
   "heights": [
     { "x": 0, "z": 0, "width": 13, "depth": 14, "height": 1, "slopeX": 0, "slopeZ": 0 }
   ],
-  "props": []
+  "props": [
+    { "model": 0, "name": "gba:LabMachine", "x": 1.5, "y": 0, "z": 1.5, "boxX": 0, "boxZ": 1, "width": 3, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Window", "x": 8.5, "y": 0, "z": 1.5, "boxX": 8, "boxZ": 1, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Bookshelf", "x": 11, "y": 0, "z": 1.5, "boxX": 9, "boxZ": 1, "width": 4, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:LabMachine", "x": 0.5, "y": 0, "z": 4, "boxX": 0, "boxZ": 3, "width": 1, "depth": 2, "height": 0 },
+    { "model": 0, "name": "gba:LabMachine", "x": 2, "y": 0, "z": 5, "boxX": 1, "boxZ": 4, "width": 2, "depth": 2, "height": 0 },
+    { "model": 0, "name": "gba:LabDesk", "x": 9.5, "y": 0, "z": 4.5, "boxX": 8, "boxZ": 4, "width": 3, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Bookshelf", "x": 2.5, "y": 0, "z": 8.5, "boxX": 0, "boxZ": 8, "width": 5, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Bookshelf", "x": 10.5, "y": 0, "z": 8.5, "boxX": 8, "boxZ": 8, "width": 5, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Plant", "x": 0.5, "y": 0, "z": 12.5, "boxX": 0, "boxZ": 12, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Plant", "x": 12.5, "y": 0, "z": 12.5, "boxX": 12, "boxZ": 12, "width": 1, "depth": 1, "height": 0 }
+  ]
 }

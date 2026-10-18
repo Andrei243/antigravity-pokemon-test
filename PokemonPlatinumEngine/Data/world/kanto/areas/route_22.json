@@ -1,0 +1,78 @@
+{
+  "key": "route_22",
+  "index": 6,
+  "name": "Route 22",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_22",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Rattata", "level": 3 },
+    { "species": "Mankey", "level": 3 },
+    { "species": "Rattata", "level": 4 },
+    { "species": "Mankey", "level": 4 },
+    { "species": "Rattata", "level": 2 },
+    { "species": "Mankey", "level": 2 },
+    { "species": "Spearow", "level": 3 },
+    { "species": "Spearow", "level": 5 },
+    { "species": "Rattata", "level": 5 },
+    { "species": "Mankey", "level": 5 },
+    { "species": "Rattata", "level": 5 },
+    { "species": "Mankey", "level": 5 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 8, "z": 195, "to": "route_22_north_entrance", "toWarp": 2 },
+    { "x": 9, "z": 195, "to": "", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "route22_rival", "looks": "blue", "movement": "look_east", "x": 25, "z": 194, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE_22_RIVAL", "script": "" }
+  ],
+  "signs": [
+    { "x": 7, "z": 202, "type": 0, "script": "Route22_EventScript_LeagueGateSign" }
+  ],
+  "triggers": [
+    { "x": 33, "z": 194, "width": 1, "depth": 1, "script": "Route22_EventScript_EarlyRivalTriggerTop", "variable": "VAR_MAP_SCENE_ROUTE22", "value": "1" },
+    { "x": 33, "z": 195, "width": 1, "depth": 1, "script": "Route22_EventScript_EarlyRivalTriggerMid", "variable": "VAR_MAP_SCENE_ROUTE22", "value": "1" },
+    { "x": 33, "z": 196, "width": 1, "depth": 1, "script": "Route22_EventScript_EarlyRivalTriggerBottom", "variable": "VAR_MAP_SCENE_ROUTE22", "value": "1" },
+    { "x": 33, "z": 194, "width": 1, "depth": 1, "script": "Route22_EventScript_LateRivalTriggerTop", "variable": "VAR_MAP_SCENE_ROUTE22", "value": "3" },
+    { "x": 33, "z": 195, "width": 1, "depth": 1, "script": "Route22_EventScript_LateRivalTriggerMid", "variable": "VAR_MAP_SCENE_ROUTE22", "value": "3" },
+    { "x": 33, "z": 196, "width": 1, "depth": 1, "script": "Route22_EventScript_LateRivalTriggerBottom", "variable": "VAR_MAP_SCENE_ROUTE22", "value": "3" }
+  ]
+}

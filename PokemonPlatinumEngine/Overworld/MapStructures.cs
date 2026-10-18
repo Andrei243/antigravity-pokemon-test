@@ -56,6 +56,12 @@ public sealed class BuildingInfo
     public BuildingKind Kind { get; init; }
     public TileType RoofTile { get; init; }
 
+    /// <summary>
+    /// A house found at its door in a GBA world (plan 19 · K2): no roof tile of a hand-made map gives its colour, so
+    /// its roof is its town's own, as a building of Sinnoh's world takes its model's town's.
+    /// </summary>
+    public bool TownsRoof { get; init; }
+
     /// <summary>The original's short name for the model this building stands in for; empty on a hand-made map.</summary>
     public string Model { get; init; } = "";
 

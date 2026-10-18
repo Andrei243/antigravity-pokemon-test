@@ -31,7 +31,7 @@ public static class GbaImport
         string checkout = dir ?? Fetch(repo, game);
         var maps = new GbaMaps(checkout, game);
         var world = new GbaWorld(maps);
-        var tables = new GbaTables(checkout, maps.Maps);
+        var tables = new GbaTables(checkout, maps.Maps, game.Region + "_");
         Console.WriteLine($"Read {maps.Maps.Count} maps and {maps.Layouts.Count} layouts into {world.Matrices.Count} matrices, "
             + $"{tables.Wild.Count} tables of wild Pokémon, {tables.Trainers.Count} trainers ({clock.Elapsed.TotalSeconds:F1} s)");
 
@@ -187,7 +187,7 @@ public static class GbaImport
         string checkout = dir ?? Fetch(repo, game);
         var maps = new GbaMaps(checkout, game);
         var world = new GbaWorld(maps);
-        var tables = new GbaTables(checkout, maps.Maps);
+        var tables = new GbaTables(checkout, maps.Maps, game.Region + "_");
         int files = WriteWorld(world, tables, data, new HashSet<string>(index.Areas, StringComparer.Ordinal));
         foreach (string problem in world.Problems.Take(20)) Console.WriteLine("  " + problem);
         Console.WriteLine($"Wrote {files} files of {index.Areas.Count} open areas into {data}");

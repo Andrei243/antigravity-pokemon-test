@@ -21,7 +21,7 @@ public class KantoTests
     private static Map Overworld => BuiltMaps.Value["Kanto"];
     private static Map MapNamed(string name) => BuiltMaps.Value.TryGetValue(name, out var map) ? map : MapDatabase.Get(name);
 
-    private static readonly string[] FirstAreas = { "pallet_town", "route_1", "viridian_city" };
+    private static readonly string[] FirstAreas = { "pallet_town", "route_1", "viridian_city", "route_2", "route_22" };
 
     [Fact]
     public void TheIndexOpensPalletTownRouteOneAndViridianCityWithTheirRooms()
@@ -29,7 +29,8 @@ public class KantoTests
         Assert.Equal("Kanto", Kanto.Index.Region);
         Assert.True(Kanto.Index.BuildingsAtDoors);
         foreach (string key in FirstAreas) Assert.Contains(key, Kanto.Index.Areas);
-        Assert.True(Kanto.Index.Areas.Count >= 13, $"only {Kanto.Index.Areas.Count} areas open in Kanto");
+        Assert.True(Kanto.Index.Areas.Count >= 21, $"only {Kanto.Index.Areas.Count} areas open in Kanto");
+        Assert.Contains("viridian_forest", Kanto.Index.Areas);
         // Every map the index makes is the region's, and every room is a room
         var kanto = RegionDatabase.Get(RegionDatabase.Kanto)!;
         foreach (var entry in Kanto.Index.Maps)
@@ -78,9 +79,13 @@ public class KantoTests
         var outside = walked.Single(kv => kv.Key.Name == "Kanto").Value;
         foreach (string key in FirstAreas)
             Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
-        // Every room is come into, the Gym too: its door is shut by the step before it, which the story opens
-        foreach (var entry in Kanto.Index.Maps.Where(e => e.Setting == MapSetting.Indoors))
+        // Every room is come into, the Gym too: its door is shut by the step before it, which the story opens; and
+        // every map besides, Viridian Forest among them (plan 19 · K2), and Route 2's north end through it
+        foreach (var entry in Kanto.Index.Maps)
             Assert.True(walked.Keys.Any(m => m.Name == entry.Name), $"nobody walks into {entry.Name}");
+        var forest = walked.Single(kv => kv.Key.Name == "ViridianForest");
+        Assert.True(forest.Value.Count >= 300, $"only {forest.Value.Count} tiles of Viridian Forest walked");
+        Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_2" && t.Y < 120);
         // and the house's every way is a way somebody can take: FireRed's third warp for the mat, a row too low on the
         // wall under it, leads nowhere (GbaEvents.NeverTaken), and its tile stays wall
         var home = BuiltMaps.Value["PalletTown_PlayersHouse_1F"];
@@ -240,6 +245,122 @@ public class KantoTests
         for (int z = 260; z < 280; z++)
             for (int x = 60; x < 84; x++)
                 Assert.NotEqual(TileType.Rock, Overworld.GetGroundTile(x, z));
+    }
+
+    [Fact]
+    public void EveryRoomIsFurnishedWithoutChangingWhereOneWalks()
+    {
+        // Plan 19 · K2: a room built from a layout has its walls, a floor, its way back out and its furniture
+        foreach (var room in BuiltMaps.Value.Values.Where(m => m.IsIndoors))
+        {
+            Assert.Contains(room.Warps, w => w.TargetMap == "Kanto" || BuiltMaps.Value.ContainsKey(w.TargetMap));
+            Assert.True(room.HasRelief);
+            // A room is level: the escalator's foot stood on a step of earth before K2
+            float floor = room.HeightAt(room.RoomCorner().Left, room.RoomCorner().Back);
+            for (int y = 0; y < room.Height; y++)
+                for (int x = 0; x < room.Width; x++) Assert.Equal(floor, room.HeightAt(x, y));
+            // What blocks stands on blocked tiles, what is walked onto (a rug, a seat) on open ones; what hangs on the
+            // back wall hangs on the row above the floor
+            foreach (var prop in room.Props)
+                for (int y = prop.Y; y < prop.Y + prop.Depth; y++)
+                    for (int x = prop.X; x < prop.X + prop.Width; x++)
+                    {
+                        if (prop.Type is PropType.Window or PropType.Painting) Assert.Equal(TileType.Wall, room.GetGroundTile(x, y));
+                        else if (prop.IsSolid) Assert.True(room.IsSolid(x, y), $"{room.Name}: a {prop.Type} at {x},{y} stands on open floor");
+                    }
+        }
+        PropType[] In(string name) => BuiltMaps.Value[name].Props.Select(p => p.Type).Distinct().ToArray();
+        var home = In("PalletTown_PlayersHouse_1F");
+        foreach (var kind in new[] { PropType.Table, PropType.Television, PropType.KitchenCounter, PropType.Fridge, PropType.Stairs, PropType.Plant, PropType.Rug, PropType.Window })
+            Assert.Contains(kind, home);
+        // The rug round the table is one rug under it
+        Assert.Single(BuiltMaps.Value["PalletTown_PlayersHouse_1F"].Props, p => p.Type == PropType.Rug);
+        Assert.Contains(PropType.HealingMachine, In("ViridianCity_PokemonCenter_1F"));
+        Assert.Contains(PropType.Counter, In("ViridianCity_PokemonCenter_1F"));
+        Assert.Contains(PropType.Computer, In("ViridianCity_PokemonCenter_1F"));
+        Assert.Contains(PropType.StoreShelf, In("ViridianCity_Mart"));
+        Assert.Contains(PropType.Bookshelf, In("PalletTown_ProfessorOaksLab"));
+        Assert.Contains(PropType.LabMachine, In("PalletTown_ProfessorOaksLab"));
+        // The back wall stands behind the floor's first row, which the furniture against it stands on
+        var center = BuiltMaps.Value["ViridianCity_PokemonCenter_1F"];
+        Assert.Equal(1, center.RoomCorner().Back);
+        // Every piece the table names is a kind of this game's, by behaviour or by range
+        Assert.Equal(PropType.Bookshelf, MapImporter.Gba.GbaFurniture.Of("MB_BOOKSHELF", "gTileset_Building", 0x033));
+        Assert.Equal(PropType.Table, MapImporter.Gba.GbaFurniture.Of("MB_NORMAL", "gTileset_Building", 0x04C));
+        Assert.Null(MapImporter.Gba.GbaFurniture.Of("MB_NORMAL", "gTileset_Building", 0x001));
+    }
+
+    [Fact]
+    public void AKantoTrainerIsKantosOwnFromTheRegionsTable()
+    {
+        // Plan 18's decision 8, its engine half (plan 19 · K2): a trainer placed in Kanto is found in Kanto's own table
+        var forest = BuiltMaps.Value["ViridianForest"];
+        var rick = Assert.Single(forest.Everyone, n => n.TrainerData?.Id == "kanto_bug_catcher_rick").TrainerData!;
+        Assert.Equal(("Rick", "Bug Catcher"), (rick.Name, rick.TrainerClass));
+        var record = TrainerDatabase.Get("kanto_bug_catcher_rick")!;
+        Assert.Equal(record.Party.Select(p => (p.Species, p.Level)), rick.Party.Members.Select(p => (p.Species.Name, p.Level)));
+        // FireRed's prize: four times the last Pokémon's level times the Bug Catcher's rate of 3
+        Assert.Equal(4 * record.Party[^1].Level * 3, rick.PrizeMoney);
+        Assert.True(forest.Everyone.Count(n => n.TrainerData != null) >= 5);
+        // Where an id meets one of Platinum's, the region's own is the one placed there, and Platinum's stays Platinum's
+        Assert.Equal("kanto_youngster_tyler", TrainerDatabase.Get("TRAINER_YOUNGSTER_TYLER", "Kanto")!.Id);
+        Assert.Equal("youngster_tyler", TrainerDatabase.Get("TRAINER_YOUNGSTER_TYLER", "Sinnoh")!.Id);
+        Assert.Equal("youngster_tyler", TrainerDatabase.Get("youngster_tyler")!.Id);
+        Assert.DoesNotContain(TrainerDatabase.All, t => t.Id.StartsWith("kanto_", StringComparison.Ordinal));
+        Assert.True(TrainerDatabase.OfRegion("kanto").Count >= 600);
+        // Every Kanto trainer's team is of species the game has
+        foreach (var t in TrainerDatabase.OfRegion("kanto"))
+            foreach (var p in t.Party) Assert.NotNull(PokemonDatabase.Get(p.Species));
+    }
+
+    [Fact]
+    public void KantosPrizeMoneyAndPersonalitiesAreFireRedsOwn()
+    {
+        // Youngster Ben: a Rattata and an Ekans at 11, a man's (0x88). The hash adds "BEN" (0xBC + 0xBF + 0xC8 = 579)
+        // and "RATTATA" (0xCC + 0xBB + 0xCE + 0xCE + 0xBB + 0xCE + 0xBB = 1383): 1962, so 0x88 + (1962 << 8) = 502408;
+        // then "BEN" again and "EKANS" (0xBF + 0xC5 + 0xBB + 0xC8 + 0xCD = 980): 3521, so 0x88 + (3521 << 8) = 901512
+        Assert.Equal(new uint[] { 502408, 901512 }, MapImporter.Gba.GbaTables.Personalities("BEN", new[] { "Rattata", "Ekans" }, false, false));
+        // A woman's start at 0x78, a double battle's at 0x80
+        Assert.Equal(0x78u + (MapImporter.Gba.GbaTables.CharacterSum("ANNE") + MapImporter.Gba.GbaTables.CharacterSum("PIDGEY") << 8),
+            MapImporter.Gba.GbaTables.Personalities("ANNE", new[] { "Pidgey" }, false, true)[0]);
+        Assert.Equal(0x80u, MapImporter.Gba.GbaTables.Personalities("", new[] { "" }, true, true)[0]);
+        Assert.Equal(176, MapImporter.Gba.GbaTables.PrizeMoney("YOUNGSTER", 11, false));
+        Assert.Equal(2 * 4 * 20 * 25, MapImporter.Gba.GbaTables.PrizeMoney("LEADER", 20, true));
+        Assert.Equal(4 * 10 * 5, MapImporter.Gba.GbaTables.PrizeMoney("NOBODY_KNOWN", 10, false));
+        // The file the game reads has them
+        var ben = TrainerDatabase.Get("kanto_youngster_ben")!;
+        Assert.Equal(176, ben.PrizeMoney);
+        Assert.Equal(new uint[] { 502408, 901512 }, ben.Party.Select(p => p.Personality));
+    }
+
+    [Fact]
+    public void RouteTwoViridianForestAndRouteTwentyTwoAreOpen()
+    {
+        var forest = BuiltMaps.Value["ViridianForest"];
+        var area = forest.AreaAt(29, 58)!;
+        Assert.Equal("viridian_forest", area.Key);
+        Assert.Equal("kanto/viridian_forest", area.BgmTrack);
+        Assert.Contains("Pikachu", area.WildEncounters.Select(e => e.SpeciesName));
+        Assert.Contains("Caterpie", area.WildEncounters.Select(e => e.SpeciesName));
+        // Its trees are trees, not the grey rock of a metatile nobody named
+        int trees = 0, rock = 0; var rocks = new List<string>();
+        for (int y = 0; y < forest.Height; y++)
+            for (int x = 0; x < forest.Width; x++)
+            {
+                if (forest.GetGroundTile(x, y) == TileType.Tree) trees++;
+                if (forest.GetGroundTile(x, y) == TileType.Rock && forest.AreaAt(x, y)?.Key == "viridian_forest") { rock++; rocks.Add($"{x},{y}"); }
+            }
+        Assert.True(trees >= 1000, $"only {trees} trees in Viridian Forest");
+        Assert.True(rock < 60, $"{rock} tiles of bare rock in Viridian Forest: {string.Join(" ", rocks)}");
+        var route22 = Overworld.Areas.Single(a => a.Key == "route_22");
+        Assert.Equal("kanto/route3", route22.BgmTrack);
+        Assert.Contains("Mankey", route22.WildEncounters.Select(e => e.SpeciesName));
+        Assert.Equal("kanto/route1", Overworld.Areas.Single(a => a.Key == "route_2").BgmTrack);
+        // Viridian City plays its own song and builds in its own way
+        Assert.Equal("kanto/viridian", Overworld.Areas.Single(a => a.Key == "viridian_city").BgmTrack);
+        Assert.Equal(Architecture.Evergreen, Overworld.ArchitectureAt(74, 208));
+        // The gate to Viridian Forest's north, entered from its north side, is a building and no rock
+        Assert.Contains(Overworld.PlacedBuildings, b => b.X0 <= 65 && b.X1 >= 66 && b.Y0 == 114);
     }
 
     [Fact]

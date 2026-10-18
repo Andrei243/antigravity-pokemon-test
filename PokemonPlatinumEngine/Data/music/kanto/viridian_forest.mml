@@ -1,0 +1,32 @@
+# Viridian Forest (and the gate on Route 22, which FireRed gives the same MUS_VIRIDIAN_FOREST; Diglett's Cave and
+# the Seafoam Islands share it later): a hushed walk under the trees in A minor, a flute's slow line over long
+# chords and a soft tapping. Original composition for this game (plan 19 · K2).
+title Viridian Forest
+tempo 100
+meter 4/4
+reverb 0.42
+nighttempo 0.95
+
+track lead flute night=ocarina vol=0.66 pan=0 rev=0.45
+  L o5 a4. e8 c4 e4 | o5 f4. c8 o4 a4 o5 c4 | o5 d4. o4 b8 g4 b4 | o5 c2 o4 a2 |
+  o5 e4 a8 e8 c4 e4 | o5 d4 f8 d8 o4 a4 o5 d4 | o5 e4 g8 e8 o4 b4 o5 e4 | o5 a2. r4 |
+  o5 c4 f8 a8 f4 c4 | o5 d4 g8 b8 g4 d4 | o5 e4 a8 o6 c8 o5 a4 e4 | o5 b4 g8 e8 o4 b4 o5 e4 |
+  o5 a4 f4 c4 f4 | o5 g4 d4 o4 b4 o5 d4 | o5 c4 e4 a4 e4 | o5 a2. r4 |
+
+track pad strings night=pad vol=0.3 pan=-0.2 rev=0.5
+  L o4 (c e a)1 | (c f a)1 | (d g b)1 | (c e a)1 |
+  (c e a)1 | (d f a)1 | (e g b)1 | (c e a)1 |
+  (c f a)1 | (d g b)1 | (c e a)1 | (e g b)1 |
+  (c f a)1 | (d g b)1 | (c e a)1 | (c e a)1 |
+
+track bass bass vol=0.6 rev=0.2
+  L o3 a2 >e2 | <f2 >c2 | <g2 >d2 | <a2 >e2 |
+  <a2 >e2 | d2 a2 | e2 b2 | <a2 >e2 |
+  <f2 >c2 | <g2 >d2 | <a2 >e2 | e2 b2 |
+  <f2 >c2 | <g2 >d2 | <a2 >e2 | <a2 >e2 |
+
+track drums kit vol=0.36 rev=0.25
+  v70 L [ b4 r4 s8 r8 r4 | ]16
+
+track hats kit vol=0.3 pan=0.15 rev=0.2
+  v45 L [ h4 h4 h4 h4 | ]16

@@ -230,6 +230,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Snowpoint (Snow) | logs | gable, deep in snow | a chimney |
 | Sunyshore (Seaside) | stucco | hip, orange `240,150,70` | a solar panel on the south slope |
 | Lakeside, Battle Zone (Resort) | white clapboard | hip, turquoise `64,170,180` | shutters |
+| Viridian (Evergreen) | logs | gable, evergreen `48,116,82` | shutters, a stone chimney: the town at the forest's edge (plan 19 · K2) |
 
 - **Snow on a roof**: instead of tiles, a 64×64 sheet of snow `226,234,246` with drift lines `204,216,238` three to six texels long and a blue shade `188,202,230` along the two rows above the eave; the fascia stays the building's own. Snowpoint's Center and Mart keep their shapes and signs under it.
 - **Kinds of building** (public buildings look the same in every town unless said):

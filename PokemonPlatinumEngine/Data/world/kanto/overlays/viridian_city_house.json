@@ -1,7 +1,7 @@
 {
   // A house in Viridian City (plan 19 · K1)
   "area": "viridian_city_house",
-  "bgmTrack": "kanto/pallet",
+  "bgmTrack": "kanto/viridian",
   "people": {
     "balding_man": {
       "name": "Man",

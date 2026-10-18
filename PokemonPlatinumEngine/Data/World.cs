@@ -237,6 +237,8 @@ public static class WorldMapBuilder
 
         var areas = new Dictionary<string, MapArea>(StringComparer.OrdinalIgnoreCase);
         var models = new List<Placed>();
+        // A GBA room's furniture, from its chunks' props (plan 19 · K2)
+        var furniture = new List<Prop>();
         // Tiles that a model stands on: they get their look from the model, not from the ground's cover
         var under = new bool[map.Width * map.Height];
         // Open tiles whose ground the import couldn't name: they take the ground round them
@@ -274,7 +276,16 @@ public static class WorldMapBuilder
                 }
                 PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague, blank, tilesOwn);
                 foreach (var prop in chunk.Props)
+                {
+                    // A GBA room's furniture (plan 19 · K2) is laid once the room's floor and walls are
+                    if (prop.Name.StartsWith(FurniturePrefix, StringComparison.Ordinal))
+                    {
+                        if (Enum.TryParse<PropType>(prop.Name[FurniturePrefix.Length..], out var kind))
+                            furniture.Add(new Prop { Type = kind, X = cx * T + (int)prop.BoxX, Y = cy * T + (int)prop.BoxZ, Width = (int)prop.Width, Depth = (int)prop.Depth });
+                        continue;
+                    }
                     models.Add(new Placed(prop, cx * T + prop.BoxX, cy * T + prop.BoxZ, WorldModels.Of(prop.Name), area));
+                }
 
                 var count = trees.GetValueOrDefault(area);
                 var before = count;
@@ -361,6 +372,7 @@ public static class WorldMapBuilder
             // wall where it is blocked, never lawn and forest
             foreach (var (x, z) in vague) map.SetGroundTile(x, z, TileType.Floor, map.IsSolid(x, z));
             foreach (var (x, z) in blank) map.SetGroundTile(x, z, TileType.Wall, isSolid: true);
+            if (world.Index.BuildingsAtDoors) Furnish(map, furniture, entrances);
         }
         else
         {
@@ -423,6 +435,89 @@ public static class WorldMapBuilder
         return (Math.Min(T, maxX + 2), Math.Min(T, maxZ + 2));
     }
 
+    /// <summary>The prefix of a chunk's prop that is a piece of a GBA room's furniture (<c>gba:Table</c>; plan 19 · K2).</summary>
+    public const string FurniturePrefix = "gba:";
+
+    /// <summary>
+    /// A GBA room furnished (plan 19 · K2). The GBA draws a room's back wall two metatiles high and stands what is
+    /// against it (a bookshelf, the kitchen, a television) in the lower of the two; here the back wall is one face, so
+    /// that row becomes the floor along its foot, blocked as it was, and its furniture stands there; what hangs on the
+    /// wall (a window, a painting) hangs on the wall above it. A walkable tile above the wall (the Pokémon Center's)
+    /// is wall. Each piece's tiles are floor, blocked or not as the layout says; a piece this game builds a tile at a
+    /// time (a bookshelf, a plant) is laid a tile at a time, and a flight of stairs a column at a time.
+    /// </summary>
+    public static void Furnish(Map map, IReadOnlyList<Prop> furniture, IReadOnlySet<(int X, int Z)> ways)
+    {
+        // (a way out through the back wall, a gate's door north, is no floor)
+        bool Walkable(int x, int y) => map.InBounds(x, y) && !map.IsSolid(x, y) && !ways.Contains((x, y));
+        // The first row of the floor: the first that one can walk into from the row below
+        int back = -1;
+        for (int y = 0; y < map.Height - 2 && back < 0; y++)
+            for (int x = 0; x < map.Width; x++)
+                if (Walkable(x, y) && Walkable(x, y + 1)) { back = y; break; }
+        int wallRow = back - 1;
+        if (wallRow >= 0)
+        {
+            bool Leads(int x, int y) => ways.Contains((x, y));
+            for (int y = 0; y < wallRow; y++)
+                for (int x = 0; x < map.Width; x++)
+                    if (map.GetGroundTile(x, y) != TileType.Wall && !Leads(x, y)) map.SetGroundTile(x, y, TileType.Wall, isSolid: true);
+            for (int x = 0; x < map.Width - 1; x++)
+            {
+                if (map.GetGroundTile(x, wallRow) != TileType.Wall) continue;
+                bool floorBelow = false;
+                for (int y = back; y < map.Height - 1 && !floorBelow; y++) floorBelow = map.GetGroundTile(x, y) != TileType.Wall;
+                if (floorBelow) map.SetGroundTile(x, wallRow, TileType.Floor, isSolid: true);
+            }
+        }
+        // A rug the GBA draws round a table in pieces is one rug under the table
+        var rugs = furniture.Where(p => p.Type == PropType.Rug).Select(p => (X0: p.X, Z0: p.Y, X1: p.X + p.Width - 1, Z1: p.Y + p.Depth - 1)).ToList();
+        for (bool merged = true; merged;)
+        {
+            merged = false;
+            for (int a = 0; a < rugs.Count && !merged; a++)
+                for (int b = a + 1; b < rugs.Count && !merged; b++)
+                {
+                    var (p, q) = (rugs[a], rugs[b]);
+                    if (q.X0 > p.X1 + 1 || p.X0 > q.X1 + 1 || q.Z0 > p.Z1 + 1 || p.Z0 > q.Z1 + 1) continue;
+                    rugs[a] = (Math.Min(p.X0, q.X0), Math.Min(p.Z0, q.Z0), Math.Max(p.X1, q.X1), Math.Max(p.Z1, q.Z1));
+                    rugs.RemoveAt(b);
+                    merged = true;
+                }
+        }
+        furniture = furniture.Where(p => p.Type != PropType.Rug)
+            .Concat(rugs.Select(r => new Prop { Type = PropType.Rug, X = r.X0, Y = r.Z0, Width = r.X1 - r.X0 + 1, Depth = r.Z1 - r.Z0 + 1 })).ToList();
+        foreach (var piece in furniture)
+        {
+            if (piece.Type is PropType.Window or PropType.Painting or PropType.Clock or PropType.WallEmblem)
+            {
+                // Hung on the back wall: the row above the floor's foot
+                if (piece.Y != wallRow || wallRow < 1) continue;
+                for (int x = piece.X; x < piece.X + piece.Width; x++)
+                    map.Props.Add(new Prop { Type = piece.Type, X = x, Y = wallRow - 1 });
+                continue;
+            }
+            for (int y = piece.Y; y < piece.Y + piece.Depth; y++)
+                for (int x = piece.X; x < piece.X + piece.Width; x++)
+                    if (map.InBounds(x, y)) map.SetGroundTile(x, y, TileType.Floor, map.IsSolid(x, y));
+            switch (piece.Type)
+            {
+                case PropType.Table or PropType.Counter or PropType.Rug or PropType.StoreShelf or PropType.LabDesk or PropType.Bench:
+                    map.Props.Add(piece);
+                    break;
+                case PropType.Stairs or PropType.Bed or PropType.LabMachine:
+                    for (int x = piece.X; x < piece.X + piece.Width; x++)
+                        map.Props.Add(new Prop { Type = piece.Type, X = x, Y = piece.Y, Depth = piece.Depth });
+                    break;
+                default:
+                    for (int y = piece.Y; y < piece.Y + piece.Depth; y++)
+                        for (int x = piece.X; x < piece.X + piece.Width; x++)
+                            map.Props.Add(new Prop { Type = piece.Type, X = x, Y = y });
+                    break;
+            }
+        }
+    }
+
     /// <summary>The look of a room built from a layout, by its map's name (<see cref="MapStructures.KindOfDoor"/>).</summary>
     public static InteriorStyle RoomStyleOf(string name) => MapStructures.KindOfDoor(name) switch
     {
@@ -452,7 +547,9 @@ public static class WorldMapBuilder
         foreach (var warp in map.Warps.OrderBy(w => w.SourceY).ThenBy(w => w.SourceX))
         {
             int dx = warp.SourceX, dz = warp.SourceY;
-            if (!map.InBounds(dx, dz) || map.BehaviourAt(dx, dz) != TileBehavior.Door || taken.Contains((dx, dz))) continue;
+            if (!map.InBounds(dx, dz) || taken.Contains((dx, dz))) continue;
+            bool isDoor = map.BehaviourAt(dx, dz) == TileBehavior.Door;
+            if (!isDoor && (map.IsSolid(dx, dz) || !blank.Contains((dx, dz + 1)) && !blank.Contains((dx, dz - 1)))) continue;
             // The run of such tiles along a row through the door's column, no further than half the widest either way
             bool Wall(int x, int z) => (x == dx && z == dz) || blank.Contains((x, z)) && !taken.Contains((x, z));
             (int A, int B)? Run(int z)
@@ -465,11 +562,35 @@ public static class WorldMapBuilder
             }
             // The building is the body over its front row: a fence that runs on from the front wall is no part of it,
             // and a row that reaches much wider than the body (the trees behind a house) is where it ends
-            if (Run(dz) is not { } front || Run(dz - 1) is not { } body) continue;
-            int x0 = Math.Max(front.A, body.A), x1 = Math.Min(front.B, body.B), z0 = dz - 1, z1 = dz;
-            while (z0 - 1 > dz - DoorBuildingDepth && Run(z0 - 1) is { } above && above.A >= x0 - 1 && above.B <= x1 + 1
-                   && above.B - above.A + 1 >= (x1 - x0 + 1) * 3 / 4)
-                z0--;
+            if (Run(dz) is not { } front) continue;
+            int x0, x1, z0, z1;
+            bool fromNorth = false;
+            if (isDoor && Run(dz - 1) is { } body)
+            {
+                x0 = Math.Max(front.A, body.A); x1 = Math.Min(front.B, body.B); z0 = dz - 1; z1 = dz;
+                while (z0 - 1 > dz - DoorBuildingDepth && Run(z0 - 1) is { } above && above.A >= x0 - 1 && above.B <= x1 + 1
+                       && above.B - above.A + 1 >= (x1 - x0 + 1) * 3 / 4)
+                    z0--;
+            }
+            // A gate entered from the north (FireRed's gates of Viridian Forest on Route 2, plan 19 · K2): its door is
+            // the open tile before its north wall, and the building lies south of it, its own front shut
+            else if (!isDoor && Run(dz + 1) is { } under)
+            {
+                fromNorth = true;
+                x0 = under.A; x1 = under.B; z0 = dz + 1; z1 = dz + 1;
+                // A gate is as wide as its widest row (its roof reaches past the doorway either side): every row of
+                // blocked tiles nobody named behind the way is the gate's, as far as the largest building reaches
+                while (z1 + 1 < dz + DoorBuildingDepth && Run(z1 + 1) is { } below) { x0 = Math.Min(x0, below.A); x1 = Math.Max(x1, below.B); z1++; }
+            }
+            // The same gate seen from the forest inside it: a way on the open tile before its south wall
+            else if (!isDoor && Run(dz - 1) is { } wall)
+            {
+                x0 = wall.A; x1 = wall.B; z0 = dz - 1; z1 = dz - 1;
+                while (z0 - 1 > dz - DoorBuildingDepth && Run(z0 - 1) is { } above) { x0 = Math.Min(x0, above.A); x1 = Math.Max(x1, above.B); z0--; }
+            }
+            else continue;
+            // A run of blocked tiles one row deep before a way (a fence, a hedge) is no building
+            if (z1 - z0 < 1) continue;
             // Eaves and corners the original draws beside the walls (a column of blocked tiles nobody named down at least
             // half the house's rows) are the house's too, or they stand beside it as bare rock (plan 19 · K1)
             bool Eaves(int x)
@@ -486,12 +607,12 @@ public static class WorldMapBuilder
                     if (Wall(x, z)) tiles.Add((x, z));
             var info = new BuildingInfo
             {
-                X0 = x0, Y0 = z0, X1 = x1, Y1 = z1, RoofTile = TileType.RoofRed,
+                X0 = x0, Y0 = z0, X1 = x1, Y1 = z1, RoofTile = TileType.RoofRed, TownsRoof = true,
                 Kind = MapStructures.KindOfDoor(warp.TargetMap) ?? BuildingKind.House
             };
             // The house stands on the ground before its door: its tiles were raised as bare rock while nobody knew what
             // they were (RaiseRock), and a house on that would stand on a plinth (plan 19 · K1)
-            float ground = map.HeightAt(dx, dz + 1);
+            float ground = map.HeightAt(dx, fromNorth ? dz : dz + 1);
             for (int z = z0; z <= z1; z++)
                 for (int x = x0; x <= x1; x++)
                 {
@@ -506,6 +627,40 @@ public static class WorldMapBuilder
                     else if (tiles.Contains((x, z)) || map.IsSolid(x, z)) map.SetGroundTile(x, z, z == z1 ? TileType.Wall : TileType.RoofRed, isSolid: true);
                 }
             buildings.Add(info);
+        }
+
+        // What the original draws of a house past the box found at its door (a roof's back corner, an eave round a
+        // corner: Viridian City's Mart and houses) stood beside it as grey rock. Blocked tiles nobody named within eight
+        // steps of a building are the ground round them, still blocked, at the building's foot (plan 19 · K2)
+        var near = new Dictionary<(int X, int Z), float>();
+        var frontier = new Queue<((int X, int Z) Tile, int Steps, float Ground)>();
+        foreach (var b in buildings)
+        {
+            float foot = map.HeightAt(b.X0, b.Y1);
+            for (int z = b.Y0; z <= b.Y1; z++)
+                for (int x = b.X0; x <= b.X1; x++) frontier.Enqueue(((x, z), 0, foot));
+        }
+        while (frontier.Count > 0)
+        {
+            var ((x, z), steps, foot) = frontier.Dequeue();
+            if (steps >= 8) continue;
+            foreach (var (sx, sz) in new[] { (0, -1), (0, 1), (-1, 0), (1, 0) })
+            {
+                var next = (x + sx, z + sz);
+                if (!blank.Contains(next) || taken.Contains(next) || near.ContainsKey(next)) continue;
+                near[next] = foot;
+                frontier.Enqueue((next, steps + 1, foot));
+            }
+        }
+        foreach (var ((x, z), foot) in near)
+        {
+            TileType? ground = null;
+            for (int r = 1; r <= 3 && ground == null; r++)
+                foreach (var (sx, sz) in new[] { (0, r), (-r, 0), (r, 0), (0, -r) })
+                    if (map.InBounds(x + sx, z + sz) && !map.IsSolid(x + sx, z + sz) && map.GetGroundTile(x + sx, z + sz) is var t
+                        && t is not (TileType.Door or TileType.Water or TileType.Wall or TileType.Signpost or TileType.Floor)) { ground = t; break; }
+            map.SetGroundTile(x, z, ground == TileType.TallGrass ? TileType.Grass : ground ?? TileType.Tree, isSolid: true);
+            map.SetHeight(x, z, foot);
         }
         return buildings;
     }
@@ -1129,7 +1284,7 @@ public static class WorldMapBuilder
     /// <summary>Towns whose yards are fenced in wood; elsewhere what a model leaves standing about is a low wall.</summary>
     private static bool FencesInWood(Architecture? town) =>
         town is Architecture.Timber or Architecture.Plaster or Architecture.Clapboard or Architecture.Cottage or Architecture.Farm
-            or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber;
+            or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber or Architecture.Evergreen;
 
     /// <summary>
     /// Cuts a set of tiles into rectangles, the largest first: a house is one, a museum with a wing two. Ties go
@@ -1864,7 +2019,7 @@ public static class WorldMapBuilder
             MapFile.TrainerRecord? trainer = null;
             if (person.Trainer is { } lines)
             {
-                var record = TrainerDatabase.Get(o.Script) ?? TrainerDatabase.Get(lines.Id)
+                var record = TrainerDatabase.Get(o.Script, world.Index.Region) ?? TrainerDatabase.Get(lines.Id, world.Index.Region)
                     ?? throw new InvalidDataException($"{key}: {o.Id} battles, and neither its script '{o.Script}' nor the overlay names a trainer of trainers.json");
                 // Name and class left to the table, which Fill gives a trainer whose map wrote no team
                 trainer = new MapFile.TrainerRecord

@@ -36,6 +36,9 @@ public sealed class GbaMatrix
     public float[] SlopeZ = Array.Empty<float>();
     public float[] Deck = Array.Empty<float>();
 
+    /// <summary>The piece of furniture on each tile of a room (plan 19 · K2, <see cref="GbaFurniture"/>); null where none stands, and everywhere outdoors.</summary>
+    public PropType?[] Furniture = Array.Empty<PropType?>();
+
     internal void Allocate(int width, int height)
     {
         Width = (width + T - 1) / T * T;
@@ -50,6 +53,7 @@ public sealed class GbaMatrix
         SlopeX = new float[n];
         SlopeZ = new float[n];
         Deck = Enumerable.Repeat(float.NaN, n).ToArray();
+        Furniture = new PropType?[n];
     }
 
     public bool Has(int x, int y) => x >= 0 && y >= 0 && x < Width && y < Height && Area[y * Width + x] >= 0;
@@ -163,6 +167,7 @@ public sealed class GbaWorld
         for (int index = 0; index < m.Maps.Count; index++)
         {
             var (map, layout, ox, oy) = m.Maps[index];
+            bool indoors = GbaImport.SettingOf(map) == MapSetting.Indoors;
             for (int y = 0; y < layout.Height; y++)
                 for (int x = 0; x < layout.Width; x++)
                 {
@@ -187,6 +192,7 @@ public sealed class GbaWorld
                     m.Solid[i] = GbaLayout.CollisionOf(block) != 0;
                     m.Elevation[i] = (byte)GbaLayout.ElevationOf(block);
                     m.Cover[i] = cover;
+                    if (indoors) m.Furniture[i] = GbaFurniture.Of(name, tileset, metatile);
                     BehaviourUse[name] = BehaviourUse.GetValueOrDefault(name) + 1;
                     if (cover == TerrainCover.Unknown)
                     {
@@ -209,6 +215,13 @@ public sealed class GbaWorld
     private static void Heights(GbaMatrix m)
     {
         int w = m.Width, n = w * m.Height;
+        // A room is level (plan 19 · K2): its elevations say only which layer a walker is on (an escalator's foot is a
+        // level up), and drawn as heights they stood the Pokémon Center's escalator on a step of earth
+        if (m.Maps.Count > 0 && GbaImport.SettingOf(m.Maps[0].Map) == MapSetting.Indoors)
+        {
+            Array.Fill(m.Ground, GroundLevel);
+            return;
+        }
         var level = new float[n];
         var known = new bool[n];
         var queue = new Queue<int>();
@@ -358,7 +371,44 @@ public sealed class GbaWorld
         }
         if (mixed) chunk.Areas = areas;
         chunk.Heights = Plates(m, cx, cy);
+        chunk.Props.AddRange(FurnitureOf(m, cx, cy));
         return chunk;
+    }
+
+    /// <summary>
+    /// A chunk's furniture (plan 19 · K2) as props named for their kind (<c>gba:Table</c>): runs of one kind along a row,
+    /// merged down the rows where they line up. A piece that blocks stands only on tiles the layout blocks, and one that
+    /// is walked onto (a rug, a seat) only on open ones, so furnishing a room never changes where one can walk.
+    /// </summary>
+    public static IEnumerable<ChunkProp> FurnitureOf(GbaMatrix m, int cx, int cy)
+    {
+        const int T = GbaMatrix.T;
+        if (m.Furniture.Length == 0) yield break;
+        PropType? At(int x, int z)
+        {
+            int i = (cy * T + z) * m.Width + cx * T + x;
+            if (m.Furniture[i] is not { } prop) return null;
+            // What hangs on the wall is on the wall's own blocked tiles
+            if (prop is PropType.Window or PropType.Painting or PropType.Clock or PropType.WallEmblem) return m.Solid[i] ? prop : null;
+            return new Prop { Type = prop }.IsSolid == m.Solid[i] ? prop : null;
+        }
+        var done = new bool[T, T];
+        for (int z = 0; z < T; z++)
+            for (int x = 0; x < T; x++)
+            {
+                if (done[x, z] || At(x, z) is not { } prop) continue;
+                int width = 1;
+                while (x + width < T && !done[x + width, z] && At(x + width, z) == prop) width++;
+                int depth = 1;
+                while (z + depth < T && Enumerable.Range(x, width).All(xx => !done[xx, z + depth] && At(xx, z + depth) == prop)) depth++;
+                for (int dz = 0; dz < depth; dz++)
+                    for (int dx = 0; dx < width; dx++) done[x + dx, z + dz] = true;
+                yield return new ChunkProp
+                {
+                    Name = GbaFurniture.Prefix + prop, BoxX = x, BoxZ = z, Width = width, Depth = depth,
+                    X = x + width / 2f, Z = z + depth / 2f
+                };
+            }
     }
 
     /// <summary>The chunk's ground as plates: a flat plate per run of tiles at one height, merged down the rows where they agree; a slope or a deck a plate of its own.</summary>

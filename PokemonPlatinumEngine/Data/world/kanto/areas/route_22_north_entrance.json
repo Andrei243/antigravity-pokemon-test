@@ -1,0 +1,30 @@
+{
+  "key": "route_22_north_entrance",
+  "index": 373,
+  "name": "Route 22",
+  "matrix": 320,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VIRIDIAN_FOREST",
+  "nightMusic": "MUS_VIRIDIAN_FOREST",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 1, "to": "route_23", "toWarp": 2 },
+    { "x": 6, "z": 10, "to": "route_22", "toWarp": 0 },
+    { "x": 7, "z": 10, "to": "route_22", "toWarp": 0 },
+    { "x": 8, "z": 10, "to": "route_22", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "policeman", "looks": "policeman", "movement": "look_south", "x": 8, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route22_NorthEntrance_EventScript_BoulderBadgeGuard" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 7, "z": 2, "width": 1, "depth": 1, "script": "Route22_NorthEntrance_EventScript_BoulderBadgeGuardTrigger", "variable": "VAR_MAP_SCENE_ROUTE23", "value": "0" }
+  ]
+}

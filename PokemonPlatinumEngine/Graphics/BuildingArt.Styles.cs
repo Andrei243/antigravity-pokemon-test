@@ -88,6 +88,7 @@ internal static partial class BuildingArt
             Architecture.Snow => Pitched(WallKind.Log, SnowRoof) with { Chimney = true, Accent = Rgb(96, 110, 140) },
             Architecture.Seaside => Pitched(WallKind.Stucco, Rgb(240, 150, 70), RoofShape.Hip) with { Gear = RoofGear.Solar },
             Architecture.Resort => Pitched(WallKind.Clapboard, Rgb(64, 170, 180), RoofShape.Hip) with { Shutters = true },
+            Architecture.Evergreen => Pitched(WallKind.Log, Rgb(48, 116, 82)) with { Chimney = true, Shutters = true },
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };
     }
@@ -101,7 +102,7 @@ internal static partial class BuildingArt
         var town = b.Town ?? mapTown;
         bool placed = b.Model.Length > 0;
         // A hand-made map colours its houses' roofs by its roof tiles; a building of the world follows its town
-        var house = House(town, placed ? null : TileRoof(b.RoofTile));
+        var house = House(town, placed || b.TownsRoof ? null : TileRoof(b.RoofTile));
         bool snowy = placed && town == Architecture.Snow;
 
         var shop = new BuildingStyle { Wall = WallKind.Plaster, Roof = RoofShape.Hip, Window = WindowKind.Shop, GlassDoor = true, Portal = 52 };

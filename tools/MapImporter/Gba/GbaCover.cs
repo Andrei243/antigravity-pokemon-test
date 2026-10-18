@@ -45,6 +45,18 @@ public static class GbaCover
                 // A town's roads (Viridian City's, Route 22's) with their edges and corners
                 (0x162, 0x167, TerrainCover.Path), (0x16A, 0x177, TerrainCover.Path), (0x195, 0x196, TerrainCover.Path),
                 (0x19D, 0x19E, TerrainCover.Path),
+                // Plan 19 · K2: the wide sandy paths of Route 2, Route 22 and Viridian Forest's clearings, three by three
+                // with their edges (the same sets as the earth paths above, a column to the west)
+                (0x0D0, 0x0D2, TerrainCover.Path), (0x0D8, 0x0DA, TerrainCover.Path), (0x0E0, 0x0E2, TerrainCover.Path),
+                // The bushes either side of the gate on Route 22, and beside the stairs of the routes' gates
+                (0x005, 0x005, TerrainCover.Tree),
+            },
+            // Plan 19 · K2: Viridian Forest, a maze of trees three metatiles wide and two deep, row over row
+            ["gTileset_ViridianForest"] = new (int, int, TerrainCover)[]
+            {
+                (0x288, 0x293, TerrainCover.Tree), (0x298, 0x29B, TerrainCover.Tree), (0x2A0, 0x2A5, TerrainCover.Tree),
+                // The forest floor between them, and the trodden ground before its gates
+                (0x281, 0x287, TerrainCover.Grass), (0x294, 0x297, TerrainCover.Path), (0x29C, 0x29F, TerrainCover.Path),
             },
             ["gTileset_PalletTown"] = new (int, int, TerrainCover)[]
             {

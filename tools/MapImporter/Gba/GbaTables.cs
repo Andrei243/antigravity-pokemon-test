@@ -48,8 +48,12 @@ public sealed class GbaTables
 
     public GbaTables() { }
 
-    /// <summary>Reads what of the files is in the checkout; a file that isn't there leaves its table empty.</summary>
-    public GbaTables(string dir, IEnumerable<GbaMap> maps)
+    /// <summary>
+    /// Reads what of the files is in the checkout; a file that isn't there leaves its table empty. A trainer's id
+    /// takes <paramref name="trainerPrefix"/> before it (<c>kanto_</c>, plan 19 · K2), so a region's trainers never
+    /// meet Platinum's ids, or each other's, in the save's list of trainers beaten.
+    /// </summary>
+    public GbaTables(string dir, IEnumerable<GbaMap> maps, string trainerPrefix = "")
     {
         string Path_(params string[] parts) => Path.Combine(new[] { dir }.Concat(parts).ToArray());
         if (File.Exists(Path_("data", "scripts", "item_ball_scripts.inc")))
@@ -65,7 +69,7 @@ public sealed class GbaTables
             foreach (var (map, wild) in ParseWild(File.ReadAllText(Path_("src", "data", "wild_encounters.json")), Problems))
                 Wild[map] = wild;
         if (File.Exists(Path_("src", "data", "trainers.h")) && File.Exists(Path_("src", "data", "trainer_parties.h")))
-            Trainers.AddRange(ParseTrainers(File.ReadAllText(Path_("src", "data", "trainers.h")), File.ReadAllText(Path_("src", "data", "trainer_parties.h")), Problems));
+            Trainers.AddRange(ParseTrainers(File.ReadAllText(Path_("src", "data", "trainers.h")), File.ReadAllText(Path_("src", "data", "trainer_parties.h")), Problems, trainerPrefix));
         if (File.Exists(Path_("src", "data", "heal_locations.json")))
             HealLocations.AddRange(ParseHealLocations(File.ReadAllText(Path_("src", "data", "heal_locations.json"))));
     }
@@ -185,7 +189,7 @@ public sealed class GbaTables
     /// read (the class's money, the name's hash), which the region's plan adds. A trainer with no party (TRAINER_NONE)
     /// is left out.
     /// </summary>
-    public static List<TrainerRecord> ParseTrainers(string trainersH, string partiesH, List<string> problems)
+    public static List<TrainerRecord> ParseTrainers(string trainersH, string partiesH, List<string> problems, string idPrefix = "")
     {
         var parties = new Dictionary<string, List<TrainerPokemonRecord>>(StringComparer.Ordinal);
         // A party ends at the first "};" (FireRed's empty ones are a line each, {DUMMY_TRAINER_MON};)
@@ -232,22 +236,89 @@ public sealed class GbaTables
             var items = Regex.Match(body, @"\.items\s*=\s*\{([^}]*)\}") is { Success: true } i
                 ? i.Groups[1].Value.Split(',').Select(s => s.Trim()).Where(s => s.Length > 0 && s != "ITEM_NONE").Select(s => GbaNames.Item(s) ?? s).ToList()
                 : new List<string>();
+            string trainerClass = Field("trainerClass").Replace("TRAINER_CLASS_", "", StringComparison.Ordinal);
+            bool doubleBattle = Field("doubleBattle") == "TRUE";
+            bool female = Field("encounterMusic_gender").Contains("F_TRAINER_FEMALE", StringComparison.Ordinal);
+            var personalities = Personalities(name, members.Select(m => m.Species).ToList(), doubleBattle, female);
             records.Add(new TrainerRecord
             {
-                Id = t.Groups[1].Value["TRAINER_".Length..].ToLowerInvariant(),
+                Id = idPrefix + t.Groups[1].Value["TRAINER_".Length..].ToLowerInvariant(),
                 Name = Titled(name),
-                Class = Titled(Field("trainerClass").Replace("TRAINER_CLASS_", "", StringComparison.Ordinal).Replace('_', ' ')),
+                Class = Titled(trainerClass.Replace('_', ' ')),
                 Ai = ai,
                 Items = items,
-                DoubleBattle = Field("doubleBattle") == "TRUE",
-                Party = members.Select(m => new TrainerPokemonRecord
+                DoubleBattle = doubleBattle,
+                PrizeMoney = PrizeMoney(trainerClass, members[^1].Level, doubleBattle),
+                Party = members.Select((m, i) => new TrainerPokemonRecord
                 {
-                    Species = m.Species, Level = m.Level, IvScale = m.IvScale, Item = m.Item, Moves = m.Moves?.ToList()
+                    Species = m.Species, Level = m.Level, IvScale = m.IvScale, Personality = personalities[i], Item = m.Item, Moves = m.Moves?.ToList()
                 }).ToList()
             });
         }
         return records;
     }
+
+    /// <summary>
+    /// FireRed's <c>gTrainerMoneyTable</c> (<c>src/battle_main.c</c>) for the classes of Kanto, which the checkout's
+    /// folders don't hold: the factor of a trainer's prize. A class it doesn't list takes the table's last row, 5.
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, int> MoneyRates = new Dictionary<string, int>(StringComparer.Ordinal)
+    {
+        ["LEADER"] = 25, ["ELITE_FOUR"] = 25, ["PKMN_PROF"] = 25, ["RIVAL_EARLY"] = 4, ["RIVAL_LATE"] = 9, ["CHAMPION"] = 25,
+        ["YOUNGSTER"] = 4, ["BUG_CATCHER"] = 3, ["HIKER"] = 9, ["BIRD_KEEPER"] = 6, ["PICNICKER"] = 5, ["SUPER_NERD"] = 6,
+        ["FISHERMAN"] = 9, ["TEAM_ROCKET"] = 8, ["LASS"] = 4, ["BEAUTY"] = 18, ["BLACK_BELT"] = 6, ["CUE_BALL"] = 6,
+        ["CHANNELER"] = 8, ["ROCKER"] = 6, ["GENTLEMAN"] = 18, ["BURGLAR"] = 22, ["SWIMMER_M"] = 1, ["ENGINEER"] = 12,
+        ["JUGGLER"] = 10, ["SAILOR"] = 8, ["COOLTRAINER"] = 9, ["POKEMANIAC"] = 12, ["TAMER"] = 10, ["CAMPER"] = 5,
+        ["PSYCHIC"] = 5, ["BIKER"] = 5, ["GAMER"] = 18, ["SCIENTIST"] = 12, ["CRUSH_GIRL"] = 6, ["TUBER"] = 1,
+        ["PKMN_BREEDER"] = 7, ["PKMN_RANGER"] = 9, ["AROMA_LADY"] = 7, ["RUIN_MANIAC"] = 12, ["LADY"] = 50, ["PAINTER"] = 4,
+        ["TWINS"] = 3, ["YOUNG_COUPLE"] = 7, ["SIS_AND_BRO"] = 1, ["COOL_COUPLE"] = 6, ["CRUSH_KIN"] = 6, ["SWIMMER_F"] = 1,
+        ["PLAYER"] = 1, ["PKMN_TRAINER"] = 15, ["BOSS"] = 25
+    };
+
+    /// <summary>
+    /// A trainer's prize as FireRed's <c>Cmd_getmoneyreward</c> works it out: four times the last Pokémon's level times
+    /// the class's rate, twice that in a double battle.
+    /// </summary>
+    public static int PrizeMoney(string trainerClass, int lastLevel, bool doubleBattle) =>
+        4 * lastLevel * (doubleBattle ? 2 : 1) * MoneyRates.GetValueOrDefault(trainerClass, 5);
+
+    /// <summary>
+    /// The personalities of a trainer's Pokémon as FireRed's <c>CreateNPCTrainerParty</c> makes them: 0x80 for a
+    /// double battle's, 0x78 for a woman's and 0x88 for a man's, plus a hash shifted up a byte, which adds the
+    /// trainer's name and then the species' name, in the game's own characters, once for each Pokémon and never
+    /// starts again (so the second Pokémon's hash has the name twice). The species' name is the GBA's, in capitals.
+    /// </summary>
+    public static uint[] Personalities(string trainerName, IReadOnlyList<string> species, bool doubleBattle, bool female)
+    {
+        var values = new uint[species.Count];
+        uint hash = 0;
+        for (int i = 0; i < species.Count; i++)
+        {
+            uint value = doubleBattle ? 0x80u : female ? 0x78u : 0x88u;
+            hash += CharacterSum(trainerName);
+            hash += CharacterSum(species[i].ToUpperInvariant());
+            values[i] = unchecked(value + (hash << 8));
+        }
+        return values;
+    }
+
+    /// <summary>The sum of a name's characters in the GBA's own character set (<c>charmap.txt</c>): A is 0xBB, a 0xD5, 0 0xA1, a space nought.</summary>
+    public static uint CharacterSum(string text)
+    {
+        uint sum = 0;
+        foreach (char c in text) sum += GbaCharacter(c);
+        return sum;
+    }
+
+    private static uint GbaCharacter(char c) => c switch
+    {
+        >= 'A' and <= 'Z' => 0xBBu + (uint)(c - 'A'),
+        >= 'a' and <= 'z' => 0xD5u + (uint)(c - 'a'),
+        >= '0' and <= '9' => 0xA1u + (uint)(c - '0'),
+        ' ' => 0x00, '!' => 0xAB, '?' => 0xAC, '.' => 0xAD, '-' => 0xAE, '\'' or '’' => 0xB4,
+        '♂' => 0xB5, '♀' => 0xB6, ',' => 0xB8, '/' => 0xBA, '&' => 0x2D, 'é' => 0x1B, 'É' => 0x06,
+        _ => 0
+    };
 
     /// <summary>"YOUNGSTER" to "Youngster", "PKMN TRAINER 1" to "Pkmn Trainer 1": the data's capitals in ours.</summary>
     public static string Titled(string upper) =>

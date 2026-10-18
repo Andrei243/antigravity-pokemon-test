@@ -1,0 +1,29 @@
+{
+  "key": "route_2_viridian_forest_south_entrance",
+  "index": 346,
+  "name": "Route 2",
+  "matrix": 293,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 10, "to": "route_2", "toWarp": 2 },
+    { "x": 7, "z": 10, "to": "route_2", "toWarp": 2 },
+    { "x": 8, "z": 10, "to": "route_2", "toWarp": 2 },
+    { "x": 7, "z": 1, "to": "viridian_forest", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west", "x": 10, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route2_ViridianForest_SouthEntrance_EventScript_Woman1" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "wander_around", "x": 4, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route2_ViridianForest_SouthEntrance_EventScript_Woman2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,19 @@
+{
+  // The house on Route 2's east lane (plan 19 · K2). The boy's trade of a Mr. Mime for an Abra is plan 07's trades
+  // with characters; until then he only talks
+  "area": "route_2_house",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "scientist": {
+      "name": "Scientist",
+      "dialog": [
+        "A Pokémon that knows Cut can clear those small trees outside.",
+        "Mind you, it takes a Badge from Cerulean City before a Pokémon will use it for you."
+      ]
+    },
+    "gba_kid": {
+      "name": "Boy",
+      "dialog": [ "I'm looking for an Abra. If you ever catch one, come and show me!" ]
+    }
+  }
+}

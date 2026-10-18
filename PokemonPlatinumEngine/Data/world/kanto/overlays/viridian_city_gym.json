@@ -3,5 +3,5 @@
   // (viridian_city.txt) until six of Kanto's badges are won; its Leader, plan 19 · K7, brings its trainers and its
   // song (FireRed's MUS_GYM, plan 19 · K3); until then nobody stands in it
   "area": "viridian_city_gym",
-  "bgmTrack": "kanto/pallet"
+  "bgmTrack": "kanto/viridian"
 }

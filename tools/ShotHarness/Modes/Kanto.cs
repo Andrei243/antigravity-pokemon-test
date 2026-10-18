@@ -33,6 +33,21 @@ partial class Harness
             ("k14_oaks_lab", "PalletTown_ProfessorOaksLab", 6, 11, Direction.Up),
             ("k15_viridian_center", "ViridianCity_PokemonCenter_1F", 7, 7, Direction.Up),
             ("k16_viridian_mart", "ViridianCity_Mart", 4, 6, Direction.Up),
+            // Plan 19 · K2: Route 2, its rooms, Viridian Forest and Route 22, and the rooms of K1 furnished
+            ("k17_route2_south", "Kanto", 68, 170, Direction.Up),
+            ("k18_route2_gate_south", "Route2_ViridianForest_SouthEntrance", 7, 8, Direction.Up),
+            ("k19_viridian_forest", "ViridianForest", 29, 58, Direction.Up),
+            ("k20_viridian_forest_north", "ViridianForest", 10, 14, Direction.Up),
+            ("k21_route2_gate_north", "Route2_ViridianForest_NorthEntrance", 7, 8, Direction.Up),
+            ("k22_route2_north", "Kanto", 66, 110, Direction.Down),
+            ("k23_route2_house", "Route2_House", 4, 6, Direction.Up),
+            ("k24_route2_east_building", "Route2_EastBuilding", 7, 8, Direction.Up),
+            ("k25_route22", "Kanto", 22, 198, Direction.Left),
+            ("k26_route22_gate", "Route22_NorthEntrance", 7, 8, Direction.Up),
+            ("k27_players_room", "PalletTown_PlayersHouse_2F", 6, 7, Direction.Up),
+            ("k28_viridian_center_2f", "ViridianCity_PokemonCenter_2F", 7, 7, Direction.Up),
+            ("k29_viridian_school", "ViridianCity_School", 5, 6, Direction.Up),
+            ("k30_viridian_house", "ViridianCity_House", 5, 7, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -45,6 +60,8 @@ partial class Harness
         At("Kanto", 70, 272, Direction.Up); Frames(2); Shot("k02_pallet_night");
         At("Kanto", 72, 240, Direction.Up); Frames(2); Shot("k04_route1_night");
         At("Kanto", 74, 208, Direction.Up); Frames(2); Shot("k06_viridian_night");
+        At("Kanto", 22, 198, Direction.Left); Frames(2); Shot("k31_route22_night");
+        At("ViridianForest", 29, 58, Direction.Up); Frames(2); Shot("k32_viridian_forest_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

@@ -1,0 +1,28 @@
+{
+  "key": "route_2_house",
+  "index": 347,
+  "name": "Route 2",
+  "matrix": 294,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "route_2", "toWarp": 4 },
+    { "x": 4, "z": 7, "to": "route_2", "toWarp": 4 },
+    { "x": 5, "z": 7, "to": "route_2", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "scientist", "looks": "scientist", "movement": "look_east", "x": 4, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "Route2_House_EventScript_Scientist" },
+    { "id": "gba_kid", "looks": "gba_kid", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route2_House_EventScript_Reyley" }
+  ],
+  "signs": [],
+  "triggers": []
+}
