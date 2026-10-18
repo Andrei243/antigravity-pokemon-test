@@ -10,6 +10,9 @@
   "triggers": [ { "trigger": 0, "script": "BadgeCheck" } ],
   "people": {
     "r32_gsmiddleman1": { "name": "Man", "script": "SeedMan", "still": true },
+    // Frieda of Friday, one of the week's seven siblings (plan 20 · J3's stretch): here on Fridays alone, by the place's
+    // own OnEnter as HeartGold's map script has her (route_32.txt)
+    "r32_gsgirl1": { "name": "Frieda", "script": "Frieda" },
     "r32_gsbigman": {
       "name": "Fat Man",
       "dialog": [

@@ -85,3 +85,30 @@ label Rematch
   trainerline before
   battle self rematch
   end
+
+# Coming to the route (HeartGold's R32_004, the map's own script as it loads): Frieda of Friday is here on Fridays
+# alone. The photographer HeartGold has here on some days after the Plain Badge waits for the photo album (plan 20).
+script OnEnter
+  setflag FLAG_HIDE_CAMERON
+  setflag FLAG_UNK_208
+  if weekday friday clearflag FLAG_UNK_208
+  end
+
+# Frieda of Friday (HeartGold's R32_005): on her day she gives a Poison Barb, once, and counts herself among the siblings
+# met (VAR_NUM_MET_WEEKDAY_SIBLINGS); the ribbon she gives once all seven are met is the siblings' last chapter's.
+script Frieda
+  speaker "Frieda"
+  if flag FLAG_GOT_POISON_BARB_FROM_FRIEDA goto Again
+  if not weekday friday goto NotToday
+  say "Yay! It's Friday! I'm Frieda of Friday. Nice to meet you! Here, I want you to have this."
+  give "Poison Barb"
+  setflag FLAG_GOT_POISON_BARB_FROM_FRIEDA
+  addvar VAR_NUM_MET_WEEKDAY_SIBLINGS 1
+  say "A Pokémon that holds it hits harder with Poison-type moves. Isn't Friday just the best day?"
+  end
+label Again
+  say "Fridays are the best! The weekend's nearly here, and everyone's smiling."
+  end
+label NotToday
+  say "Huh? Today isn't Friday. I only come out on Fridays!"
+  end

@@ -272,3 +272,64 @@ public class PokegearTests
         Assert.Empty(Pokegear.Contacts(sinnoh));
     }
 }
+
+/// <summary>
+/// The week on Route 32 (plan 20, the stretch after J3): Frieda of Friday is there on Fridays alone, as HeartGold's map
+/// script has her, and gives her Poison Barb once.
+/// </summary>
+public class RouteThirtyTwoWeekTests
+{
+    private static readonly ScriptLibrary Scripts = ScriptLibrary.Default;
+    private static readonly Lazy<World> Johto = new(() => World.LoadAll().Single(w => w.Index.Region == RegionDatabase.Johto));
+    private readonly Lazy<Map> map = new(() => Johto.Value.BuildMaps().First(m => m.Name == "Johto"));
+
+    private HeadlessScriptHost Play(Script script, StoryState story, DayOfWeek day, NPC? subject = null)
+    {
+        var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { Map = map.Value, Weekday = day };
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(script, subject);
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        map.Value.ApplyPresence(story.Has);
+        return host;
+    }
+
+    private bool FriedaThere(DayOfWeek day, StoryState story)
+    {
+        Play(Scripts.In("route_32", ScriptLibrary.OnEnter)!, story, day);
+        return map.Value.NPCs.Any(n => n.Key == "r32_gsgirl1");
+    }
+
+    [Fact]
+    public void FriedaIsOnRouteThirtyTwoOnFridaysAloneAndGivesHerBarbOnce()
+    {
+        var story = new StoryState();
+        foreach (var day in Enum.GetValues<DayOfWeek>())
+            Assert.Equal(day == DayOfWeek.Friday, FriedaThere(day, story));
+        Assert.DoesNotContain(map.Value.NPCs, n => n.Key == "r32_gsmiddleman1_2");
+
+        Assert.True(FriedaThere(DayOfWeek.Friday, story));
+        var frieda = map.Value.NPCs.First(n => n.Key == "r32_gsgirl1");
+        var first = Play(Scripts.Find(FieldScripts.For(frieda)!, "route_32")!, story, DayOfWeek.Friday, frieda);
+        Assert.Contains(first.Transcript, l => l.Text.Contains("Poison Barb", StringComparison.Ordinal));
+        Assert.True(story.Has("FLAG_GOT_POISON_BARB_FROM_FRIEDA"));
+        Assert.Equal(1, story.Var("VAR_NUM_MET_WEEKDAY_SIBLINGS"));
+        var again = Play(Scripts.Find(FieldScripts.For(frieda)!, "route_32")!, story, DayOfWeek.Friday, frieda);
+        Assert.DoesNotContain(again.Transcript, l => l.Text.Contains("Poison Barb", StringComparison.Ordinal));
+        Assert.Equal(1, story.Var("VAR_NUM_MET_WEEKDAY_SIBLINGS"));
+    }
+
+    [Fact]
+    public void JohtosPokemonCentersHaveTheirPcAndTheCastTheirOwnLooks()
+    {
+        var maps = Johto.Value.BuildMaps().ToList();
+        // The PC left of each Center's counter is read as every PC is (common.PC)
+        foreach (var center in maps.Where(m => m.Areas.Any(a => a.Key.EndsWith("_pokecenter_1f", StringComparison.Ordinal))))
+            Assert.Equal("PC", center.TileScripts[(4, 8)]);
+        // Elm, the red-haired boy and Falkner stand as themselves, ahead of plan 20 · J14
+        NPC Who(string key) => maps.SelectMany(m => m.Everyone).First(n => n.Key == key);
+        Assert.Equal("elm", Who("t20r0101_doctor").NpcType, ignoreCase: true);
+        Assert.Equal("silver", Who("t21_gsrivel").NpcType, ignoreCase: true);
+        Assert.Equal("falkner", Who("t22gym0101_gsleader1").NpcType, ignoreCase: true);
+    }
+}

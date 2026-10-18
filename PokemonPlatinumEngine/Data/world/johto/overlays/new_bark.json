@@ -12,7 +12,7 @@
     { "script": "RunningShoes", "x": 684, "z": 394, "variable": "VAR_SCENE_NEW_BARK_TOWN_OW", "value": 1 }
   ],
   "people": {
-    "t20_gsrivel": { "name": "???", "script": "Rival", "still": true },
+    "t20_gsrivel": { "name": "???", "npcType": "Silver", "script": "Rival", "still": true },
     "t20_var_1_2": { "name": "{assistant}", "npcType": "Assistant", "script": "Friend", "still": true },
     "t20_tsure_poke_static_marill_2": { "name": "Marill", "npcType": "Pokemon", "species": "Marill", "script": "Marill", "still": true },
     "t20_gsmama": { "name": "Mom", "still": true, "dialog": [ "Take care, {player}!" ] },

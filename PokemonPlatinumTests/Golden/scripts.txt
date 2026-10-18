@@ -10396,6 +10396,10 @@ from the trigger at 475,305 of Johto
 way -
   Man> Hold on there! Have you been to the Gym in Violet City yet?
   Man> The road south gets rough. Trainers without a Badge to their name tend to come back in tears. Go and earn one first!
+=== route_32.Frieda
+from Frieda at 471,409 of Johto
+way -
+  Frieda> Huh? Today isn't Friday. I only come out on Fridays!
 === route_32.Liz
 from Liz at 466,342 of Johto
 way 0

@@ -5,7 +5,7 @@
   "area": "violet_gym",
   "bgmTrack": "johto/gym",
   "people": {
-    "t22gym0101_gsleader1": { "name": "Falkner", "script": "Falkner", "still": true },
+    "t22gym0101_gsleader1": { "name": "Falkner", "npcType": "Falkner", "script": "Falkner", "still": true },
     "t22gym0101_sunglasses": { "name": "Gym Guide", "script": "GymGuy", "still": true },
     "t22gym0101_sunglasses_2": { "name": "Gym Guide", "script": "GymGuy", "still": true },
     "t22gym0101_gsman2": {
