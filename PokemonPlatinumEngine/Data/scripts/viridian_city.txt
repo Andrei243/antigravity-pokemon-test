@@ -1,0 +1,31 @@
+# Viridian City (plan 19 · K1). docs/scripts.md describes the language; the lines are our own, on FireRed's beats
+# (data/maps/ViridianCity/scripts.inc).
+#
+# The Gym's door is a way like any other, and what keeps it shut is FireRed's own: the step before it (the map's
+# coordinate event, trigger 1 of the area, on VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR 0) turns the player back, until
+# the city is come to with the Cascade, Thunder, Rainbow, Soul, Marsh and Volcano Badges, when the variable is 1.
+# The old man across the road north and the lesson in catching are the story's (plan 19 · K3); the Gym's Leader and
+# his trainers K7's.
+
+
+# FireRed's OnTransition: ViridianCity_EventScript_TryUnlockGym, while the door is still shut.
+script OnEnter
+  if not var VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR == 0 end
+  if not badge cascade end
+  if not badge thunder end
+  if not badge rainbow end
+  if not badge soul end
+  if not badge marsh end
+  if not badge volcano end
+  setvar VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR 1
+  end
+
+
+# The step before the Gym's door (ViridianCity_EventScript_GymDoorLocked): the player looks at the doors, finds them
+# locked, and goes back down the way they came.
+script GymDoorLocked
+  face player up
+  wait 0.33
+  say "The Gym's doors are locked tight. Nobody seems to be inside."
+  walk player down
+  end

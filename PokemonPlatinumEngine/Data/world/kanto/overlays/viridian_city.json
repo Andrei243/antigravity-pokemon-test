@@ -6,8 +6,9 @@
   "bgmTrack": "kanto/pallet",
   "trees": "Round",
   "architecture": "Plaster",
-  // The Gym's door (warp 2) stays shut: its Leader is away until the last of Kanto's badges (plan 19 · K7)
-  "locked": [ 2 ],
+  // The Gym's door (warp 2) is shut as FireRed shuts it: the step before it turns the player back until the city is
+  // come to with six of Kanto's badges (viridian_city.txt); its Leader and his trainers are plan 19 · K7's
+  "triggers": [ { "trigger": 1, "script": "GymDoorLocked" } ],
   "people": {
     "tutorial_man": {
       "name": "Old Man",

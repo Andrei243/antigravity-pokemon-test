@@ -43,7 +43,7 @@ internal sealed class ScriptWalk
             }
             foreach (var map in World.BuildMaps()) built[map.Name] = map;
             // The other regions' worlds after Sinnoh's (plan 19 · K1: Kanto's), whose people start the common scripts too
-            foreach (var other in World.LoadAll().Where(w => w.Index.Region != "Sinnoh").OrderBy(w => w.Index.Region, StringComparer.Ordinal))
+            foreach (var other in others.Value)
                 foreach (var map in other.BuildMaps()) built[map.Name] = map;
             return built;
         });
@@ -57,8 +57,14 @@ internal sealed class ScriptWalk
 
     /// <summary>The map a script file belongs to: the one its area is part of, or the hand-made map it is named for. Null for the common file and for a file of nowhere.</summary>
     public Map? MapOfFile(string file) =>
-        World.Index.Areas.Contains(file) && World.MapOf(file) is { } entry ? OwnMaps[entry.Name]
+        Worlds.FirstOrDefault(w => w.Index.Areas.Contains(file)) is { } world && world.MapOf(file) is { } entry ? OwnMaps[entry.Name]
         : OwnMaps.GetValueOrDefault(file);
+
+    /// <summary>Every region's imported world, Sinnoh's first (plan 19 · K1: Kanto's areas have scripts of their own too).</summary>
+    private IEnumerable<World> Worlds => new[] { World }.Concat(others.Value);
+
+    private readonly Lazy<List<World>> others = new(() =>
+        World.LoadAll().Where(w => w.Index.Region != "Sinnoh").OrderBy(w => w.Index.Region, StringComparer.Ordinal).ToList());
 
     /// <summary>Everyone, every signboard and every trigger of the game, with the script each starts and the file it is looked for in.</summary>
     public IEnumerable<(string What, string Script, string File, Map Map, NPC? Person)> Starters()

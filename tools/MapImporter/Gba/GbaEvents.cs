@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Overworld;
 
 namespace MapImporter.Gba;
 
@@ -15,18 +16,31 @@ public static class GbaEvents
     public const string ItemBallLooks = "item_ball";
 
     /// <summary>
+    /// Whether a warp on a tile of this behaviour, blocked or not, is one the original's player can never take: a
+    /// blocked tile that is no way anywhere (no door, mat, stairs or pad), which nobody can step onto or walk into.
+    /// FireRed leaves such warps behind (the player's house in Pallet Town has a third for its mat, a row too low, on
+    /// the wall under it); laid out here, the wall would be a way out that nobody can reach.
+    /// </summary>
+    public static bool NeverTaken(TileBehavior behaviour, bool blocked) => blocked && behaviour == TileBehavior.None;
+
+    /// <summary>
     /// The area's warps, people and things, signs and hidden items, triggers and wild Pokémon, onto
     /// <paramref name="area"/>. A warp to <c>MAP_DYNAMIC</c> (the way back to wherever the player came from: the
-    /// lifts) is kept in its place among the warps, since others count them, and leads nowhere yet.
+    /// lifts) is kept in its place among the warps, since others count them, and leads nowhere yet. So is a warp the
+    /// original's player can never take (<see cref="NeverTaken"/>), when the <paramref name="matrix"/> it lies on is given.
     /// </summary>
-    public static void Fill(WorldAreaFile area, GbaPlaced placed, GbaTables tables, Func<string, GbaMap?> byId, List<string> problems)
+    public static void Fill(WorldAreaFile area, GbaPlaced placed, GbaTables tables, Func<string, GbaMap?> byId, List<string> problems,
+        GbaMatrix? matrix = null)
     {
         var (map, _, ox, oy) = placed;
         foreach (var w in map.Warps)
         {
-            var to = byId(w.DestMap);
-            if (to == null && w.DestMap != "MAP_DYNAMIC") problems.Add($"{map.Name}: a warp to {w.DestMap}, which has no map");
-            area.Warps.Add(new AreaWarp { X = ox + w.X, Z = oy + w.Y, To = to?.Key ?? "", ToWarp = w.DestWarp });
+            int x = ox + w.X, z = oy + w.Y;
+            bool never = matrix != null && matrix.Has(x, z)
+                && NeverTaken((TileBehavior)matrix.Behaviour[z * matrix.Width + x], matrix.Solid[z * matrix.Width + x]);
+            var to = never ? null : byId(w.DestMap);
+            if (to == null && !never && w.DestMap != "MAP_DYNAMIC") problems.Add($"{map.Name}: a warp to {w.DestMap}, which has no map");
+            area.Warps.Add(new AreaWarp { X = x, Z = z, To = to?.Key ?? "", ToWarp = w.DestWarp });
         }
 
         var ids = new HashSet<string>(StringComparer.Ordinal);

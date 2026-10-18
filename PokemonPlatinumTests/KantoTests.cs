@@ -78,16 +78,46 @@ public class KantoTests
         var outside = walked.Single(kv => kv.Key.Name == "Kanto").Value;
         foreach (string key in FirstAreas)
             Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
-        // Every room but the Gym, whose door stays shut until its Leader is back, is come into
-        foreach (var entry in Kanto.Index.Maps.Where(e => e.Setting == MapSetting.Indoors && e.Name != "ViridianCity_Gym"))
+        // Every room is come into, the Gym too: its door is shut by the step before it, which the story opens
+        foreach (var entry in Kanto.Index.Maps.Where(e => e.Setting == MapSetting.Indoors))
             Assert.True(walked.Keys.Any(m => m.Name == entry.Name), $"nobody walks into {entry.Name}");
-        Assert.DoesNotContain(walked.Keys, m => m.Name == "ViridianCity_Gym");
+        // and the house's every way is a way somebody can take: FireRed's third warp for the mat, a row too low on the
+        // wall under it, leads nowhere (GbaEvents.NeverTaken), and its tile stays wall
+        var home = BuiltMaps.Value["PalletTown_PlayersHouse_1F"];
+        Assert.Empty(home.WarpsAt(3, 9));
+        Assert.True(home.IsSolid(3, 9));
+        Assert.Equal(2, home.Warps.Count(w => w.TargetMap == "Kanto"));
+    }
+
+    [Fact]
+    public void TheGymsDoorIsShutAsFireRedShutsItUntilSixBadges()
+    {
+        // The way in is there, and the step before it turns back whoever comes while the door's variable is 0
+        var door = Assert.Single(Overworld.Warps, w => w.TargetMap == "ViridianCity_Gym");
+        var trigger = Assert.Single(Overworld.TriggersAt(door.SourceX, door.SourceY + 1));
+        Assert.Equal(("GymDoorLocked", "VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR", 0), (trigger.Script, trigger.Variable, trigger.Value));
+        Assert.True(FieldMovement.Step(Overworld, door.SourceX, door.SourceY + 1, Direction.Down, new Walker(TravelMode.OnFoot,
+            Overworld.HeightAt(door.SourceX, door.SourceY + 1))).Moves, "the player can't be turned back down from the Gym's door");
+
+        // Coming to the city with the Cascade to the Volcano Badges opens it; with one of them missing it stays shut
+        int Door(params string[] badges)
+        {
+            var host = new PokemonPlatinumEngine.Story.HeadlessScriptHost { Region = "Kanto" };
+            foreach (var badge in badges) host.Story.GiveBadge("Kanto", badge);
+            var library = PokemonPlatinumEngine.Story.ScriptLibrary.Default;
+            var runner = new PokemonPlatinumEngine.Story.ScriptRunner(library, host);
+            runner.Start(library.Find(PokemonPlatinumEngine.Story.ScriptLibrary.OnEnter, "viridian_city")!);
+            runner.RunToEnd();
+            return host.Story.Var("VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR");
+        }
+        Assert.Equal(0, Door("Boulder", "Cascade", "Thunder", "Rainbow", "Soul", "Marsh"));
+        Assert.Equal(1, Door("Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano"));
     }
 
     [Fact]
     public void EveryWayIntoARoomLandsOnOpenGroundAndLeadsBack()
     {
-        foreach (var room in BuiltMaps.Value.Values.Where(m => m.IsIndoors && m.Name != "ViridianCity_Gym"))
+        foreach (var room in BuiltMaps.Value.Values.Where(m => m.IsIndoors))
             foreach (var warp in room.Warps.Where(w => w.TargetMap == "Kanto"))
             {
                 Assert.True(Overworld.IsWalkable(warp.TargetX, warp.TargetY) || Overworld.GetWarpAt(warp.TargetX, warp.TargetY) != null,
