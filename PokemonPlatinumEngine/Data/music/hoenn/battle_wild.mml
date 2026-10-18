@@ -1,0 +1,32 @@
+# A wild Pokémon of Hoenn (Emerald's MUS_VS_WILD): a racing square lead in E minor over a driving octave bass, a
+# falling count-in and a loop that climbs twice before it tumbles back. Original composition for this game (plan 21 · H2).
+title Battle! Wild Pokémon (Hoenn)
+tempo 170
+meter 4/4
+lowhptempo 1.08
+reverb 0.16
+
+track lead square lowhp=sawlead vol=0.84 pan=0.05 rev=0.18
+  o6 e8 d8 o5 b8 a8 g8 f+8 e8 d+8 | o5 e2 b4 r4 | L o5 e4. g8 b4 a4 | o5 a4 f+8 e8 f+2 |
+  o5 c4. e8 g4 f+4 | o5 f+4 d+8 e8 b2 | o5 e4. g8 b4 o6 e4 | o6 d4 c8 o5 b8 a4 f+4 |
+  o5 g4 b4 a4 f+4 | o5 e2 b2 |
+
+track pad strings unless=lowhp vol=0.26 pan=-0.25 rev=0.22
+  r1 | r1 | L o4 (e g b)1 | (d f+ a)1 |
+  (c e g)1 | (b d+ f+)1 | (e g b)1 | (d f+ a)1 |
+  (c e a)2 (b d+ f+)2 | (e g b)1 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 | o3 e4 e4 o2 b4 r4 | L [ o2 e8 o3 e8 ]4 | [ o2 d8 o3 d8 ]4 |
+  [ o2 c8 o3 c8 ]4 | [ o2 b8 o3 b8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 d8 o3 d8 ]4 |
+  o2 c8 o3 c8 o2 c8 o3 c8 o2 b8 o3 b8 o2 b8 o3 b8 | [ o2 e8 o3 e8 ]4 |
+
+track drums kit vol=0.5 rev=0.1
+  v95 b8 s8 b8 s8 b8 s8 b8 s8 | (b c)4 (b c)4 (b c)4 r4 | L [ b8 r8 s8 b8 r8 b8 s8 r8 | ]7 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.4 pan=0.15 rev=0.1
+  r1 | r1 | L v60 [ h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 h8 v38 h8 v60 | ]8
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 b16 r16 b16 r16 r4 b16 r16 b16 r16 r4 | ]8

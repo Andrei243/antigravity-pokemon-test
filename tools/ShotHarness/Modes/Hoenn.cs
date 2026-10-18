@@ -11,6 +11,9 @@ partial class Harness
     {
         engine.NewGameRegion = "Hoenn";
         engine.StartNewGame();
+        // The places are shot as the town stands once the van has come and gone: the van's ride and the chapter are
+        // HoennScenes', at the end
+        game.Story.SetVar("VAR_LITTLEROOT_INTRO_STATE", 7);
         game.State = GameState.Overworld;
         game.SaveSlot = 1;
         game.LocationSign.Hide();
@@ -92,6 +95,8 @@ partial class Harness
                 Timing("hoenn " + label);
             }
         }
+        // And last the first chapter played by its own scripts, in a new game of its own (plan 21 · H2)
+        HoennScenes();
         engine.NewGameRegion = "Sinnoh";
     }
 }

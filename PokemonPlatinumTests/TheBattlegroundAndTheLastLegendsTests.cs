@@ -110,7 +110,7 @@ public class TheBattlegroundAndTheLastLegendsTests
     {
         var game = new OpeningTests.Game();
         // common.ChapterTwelve hid this part's people already (plan 02 · S15, part a): Buck in his room, Cynthia in the ruins
-        Assert.Equal(22, StoryState.CurrentVersion);   // 22 is plan 20 · J3's Pokégear, not this part's
+        Assert.Equal(23, StoryState.CurrentVersion);   // 23 is plan 21 · H2's Hoenn story, not this part's
         var room = game.Maps[Room];
         Assert.Equal((17, 13, InteriorStyle.House), (room.Width, room.Height, room.Interior));
         var buck = Assert.Single(room.Everyone, n => n.Key == "buck");

@@ -1,0 +1,73 @@
+# Petalburg City's Gym, the player's father's (plan 21 · H2). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/PetalburgCity_Gym/scripts.inc).
+#
+# VAR_PETALBURG_GYM_STATE, as Emerald counts it: 0 Norman met at the door, 1 back from Wally's catch, 2 told to win four
+# Badges first. Until the Balance Badge (plan 21 · H4) Norman stands in the hall at the door (Emerald's
+# MoveNormanToEntrance) and its doors on into the rooms stay shut (the overlay's `locked`).
+
+
+script OnEnter
+  if var VAR_PETALBURG_GYM_STATE >= 6 end
+  place petalburg_gym_norman 4 107 down
+  if var VAR_PETALBURG_GYM_STATE != 1 end
+  scene "Wally's thanks"
+  clearflag FLAG_HIDE_PETALBURG_GYM_WALLY
+  place petalburg_gym_wally 5 108 up
+  show petalburg_gym_wally
+  speaker "Wally"
+  say "Mr. Norman! I caught a Ralts! Thank you so much for lending me your Zigzagoon."
+  face petalburg_gym_wally player
+  say "And thank you too, {player}. I'll never forget it. I'm going to be a trainer, just like you!"
+  walk petalburg_gym_wally down 3
+  hide petalburg_gym_wally
+  setflag FLAG_HIDE_PETALBURG_GYM_WALLY
+  face petalburg_gym_norman player
+  speaker "Norman"
+  say "That boy's eyes were shining. You did a good thing today, {player}."
+  say "Now, about you. You want to battle me, don't you? I can see it. But I'm a Gym Leader, and I have my rules."
+  say "Win four Gym Badges first. Then come back, and we'll see what you've learned. Start with Rustboro City, north of the woods."
+  setvar VAR_PETALBURG_GYM_STATE 2
+  endscene
+  end
+
+
+# Norman (Emerald's PetalburgCity_Gym_EventScript_Norman): at the first visit, Wally comes in with his father's word
+# and Norman sends the player out with him to catch his first Pokémon
+script Norman
+  if var VAR_PETALBURG_GYM_STATE >= 2 goto Rules
+  scene "Norman and Wally"
+  speaker "Norman"
+  say "{player}! So you made it to Petalburg on your own. And with a Pokémon of your own, too. I'm proud of you."
+  say "It's a long way from Littleroot. Your mother must have told you I'm the Leader of this Gym now."
+  clearflag FLAG_HIDE_PETALBURG_GYM_WALLY
+  place petalburg_gym_wally 4 111 up
+  show petalburg_gym_wally
+  walk petalburg_gym_wally up 2
+  speaker "Wally"
+  say "Um... excuse me. My name is Wally. I'm going to live with my relatives in Verdanturf Town for a while."
+  say "I thought... if I had a Pokémon with me, I wouldn't feel so lonely. But I've never caught one."
+  speaker "Norman"
+  say "I see. Here, Wally, take my Zigzagoon. Weaken a wild Pokémon with it, then throw a Poké Ball."
+  say "{player}, go with Wally and keep an eye on him. There's tall grass just east of town."
+  speaker "Wally"
+  say "Th-thank you, Mr. Norman! Let's go, {player}!"
+  setflag FLAG_HIDE_PETALBURG_CITY_WALLYS_MOM
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+  clearflag FLAG_HIDE_PETALBURG_CITY_WALLY
+  setvar VAR_PETALBURG_GYM_STATE 1
+  setvar VAR_PETALBURG_CITY_STATE 2
+  fade out
+  hide petalburg_gym_wally
+  setflag FLAG_HIDE_PETALBURG_GYM_WALLY
+  warp "Hoenn" 55 241 down
+  endscene
+  end
+label Rules
+  say "Four Gym Badges, {player}. Then come back and face me. I'll be waiting."
+  end
+
+
+script GymGuide
+  say "Hey there! This is the Petalburg Gym. Norman's rooms each test a trainer's skill a different way."
+  say "But the doors stay shut until you've got four Badges. Rules are rules!"
+  end

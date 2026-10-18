@@ -336,7 +336,7 @@ public partial class GameEngine
         flow.PlayTime = 0f;
         // As in the games, the Trainer Card's number is drawn when the adventure begins
         PlayerIdentity.Set(name, look);
-        PlayerIdentity.SetRival(rival, NewGameRegionRecord.Rival);
+        PlayerIdentity.SetRival(rival, NewGameRegionRecord.RivalFor(look));
         flow.Wardrobe.Clear();
         PlayerIdentity.SetOutfit(flow.Wardrobe.Worn);
         flow.TrainerId = fieldRandom.Next(0, 65536);

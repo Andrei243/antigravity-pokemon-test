@@ -100,6 +100,8 @@ public static class StoryMigration
         // Version 22: the Pokégear's phone (plan 20 · J3): a game of Johto that has the Pokégear has Mom's number in
         // it, and Professor Elm's once his Pokémon is had, as the scenes that give them now register them
         if (savedVersion < 22) Run(story, scripts, "common.JohtoPokegear");
+        // Version 23: Hoenn's first chapter (plan 21 · H2), and a game begun in Hoenn before it was written taken past it
+        if (savedVersion < 23) HoennChapterOne(story, scripts, owned);
     }
 
     /// <summary>
@@ -146,6 +148,31 @@ public static class StoryMigration
         Run(story, scripts, "common.KantoOpeningDone");
         story.ChooseStarter(starter);
     }
+
+    /// <summary>
+    /// Version 23, a save from before Hoenn's first chapter was written (plan 21 · H2): its Hoenn people are hidden until
+    /// their scenes by <c>common.HoennNewGame</c>, which a new game runs too. A game begun in Hoenn before then began in
+    /// front of the family's house with Birch's first Pokémon and no choice recorded: it has its opening played by
+    /// <c>common.HoennOpeningDone</c>, and its starter is the first of Birch's three it owns.
+    /// </summary>
+    private static void HoennChapterOne(StoryState story, ScriptLibrary scripts, IEnumerable<Pokemon> owned)
+    {
+        Run(story, scripts, "common.HoennNewGame");
+        var mine = owned.ToList();
+        if (story.PlayerStarter != null || StarterAmong(mine) != null) return;
+        var species = mine.Select(p => p.Species.Name).ToHashSet(StringComparer.Ordinal);
+        if (HoennStarterLines.FirstOrDefault(line => line.Any(species.Contains))?[0] is not { } starter) return;
+        Run(story, scripts, "common.HoennOpeningDone");
+        story.ChooseStarter(starter);
+    }
+
+    /// <summary>Birch's three and what each grows into (plan 21 · H2).</summary>
+    private static readonly string[][] HoennStarterLines =
+    {
+        new[] { "Treecko", "Grovyle", "Sceptile" },
+        new[] { "Torchic", "Combusken", "Blaziken" },
+        new[] { "Mudkip", "Marshtomp", "Swampert" }
+    };
 
     /// <summary>Oak's three and what each grows into (plan 19 · K3).</summary>
     private static readonly string[][] KantoStarterLines =

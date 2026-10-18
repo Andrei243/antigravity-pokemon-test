@@ -978,8 +978,28 @@ internal sealed class MapScene
         }
         int westEnd = SideEnd(lx), eastEnd = SideEnd(w - 2);
         Art SideWall(int end) => kit.Face(end == front ? "wall.side" : $"wall.side.{end - back}", end - back, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
-        kit.Quad(kit.At(left, 0, westEnd), kit.At(left, 0, back), kit.At(left, wallH, back), kit.At(left, wallH, westEnd), SideWall(westEnd), Vector3.UnitX);
-        kit.Quad(kit.At(right, 0, back), kit.At(right, 0, eastEnd), kit.At(right, wallH, eastEnd), kit.At(right, wallH, back), SideWall(eastEnd), -Vector3.UnitX);
+        // A room deeper than the art sheet is wide (Petalburg's Gym, a hundred and twelve tiles from its door to its
+        // Leader, plan 21 · H2) has its side walls laid in lengths of thirty-two tiles too, as the back wall is
+        if (westEnd - back <= length && eastEnd - back <= length)
+        {
+            kit.Quad(kit.At(left, 0, westEnd), kit.At(left, 0, back), kit.At(left, wallH, back), kit.At(left, wallH, westEnd), SideWall(westEnd), Vector3.UnitX);
+            kit.Quad(kit.At(right, 0, back), kit.At(right, 0, eastEnd), kit.At(right, wallH, eastEnd), kit.At(right, wallH, back), SideWall(eastEnd), -Vector3.UnitX);
+        }
+        else
+        {
+            for (int a = back; a < westEnd; a += length)
+            {
+                int run = Math.Min(length, westEnd - a);
+                var side = kit.Face($"wall.side.run.{run}", run, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
+                kit.Quad(kit.At(left, 0, a + run), kit.At(left, 0, a), kit.At(left, wallH, a), kit.At(left, wallH, a + run), side, Vector3.UnitX);
+            }
+            for (int a = back; a < eastEnd; a += length)
+            {
+                int run = Math.Min(length, eastEnd - a);
+                var side = kit.Face($"wall.side.run.{run}", run, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
+                kit.Quad(kit.At(right, 0, a), kit.At(right, 0, a + run), kit.At(right, wallH, a + run), kit.At(right, wallH, a), side, -Vector3.UnitX);
+            }
+        }
 
         // A way on through the back wall of a room that is no Gym (a warp on the row behind the floor: the laboratory
         // of Team Galactic's headquarters, plan 02 · S11): a doorway on the wall, which whoever takes it walks into.

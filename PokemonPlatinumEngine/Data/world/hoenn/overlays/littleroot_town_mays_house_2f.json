@@ -1,7 +1,13 @@
 {
-  // The neighbours' child's room upstairs (plan 21 · H1)
+  // The neighbours' child's room upstairs (plan 21 · H1, H2): the empty Poké Ball on the floor, which the rival comes
+  // in to find the player looking at (littleroot_town_mays_house_2f.txt). The rival is drawn as the hero the player
+  // isn't: May for the boy, Brendan for the girl
   "area": "littleroot_town_mays_house_2f",
   "bgmTrack": "hoenn/littleroot",
+  "people": {
+    "rivals_house_2f_rival": { "name": "{rival}", "npcType": "Rival:MAY:BRENDAN", "script": "Rival", "still": true },
+    "item_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "RivalsBall", "still": true }
+  },
   "signs": {
     "LittlerootTown_MaysHouse_2F_EventScript_PC": "The PC's screen shows a map of Hoenn,\nwith little marks wherever Pokémon were seen.",
     "PlayersHouse_2F_EventScript_Notebook": "A notebook full of sketches of Pokémon,\neach one labelled with where it was found.",

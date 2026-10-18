@@ -1,0 +1,123 @@
+# Littleroot Town (plan 21 · H2). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/LittlerootTown/scripts.inc and InsideOfTruck/scripts.inc).
+#
+# VAR_LITTLEROOT_INTRO_STATE, as Emerald counts it: 0 riding in the van, 3 indoors with Mom, 4 told to set the clock,
+# 6 the clock set, 7 told to go next door. VAR_LITTLEROOT_TOWN_STATE: 0 no Pokémon (the girl at the top of the road
+# turns the player back), 1 the rival met (she calls for help instead), 2 off to save the professor, 3 the Pokédex had
+# (Mom waits outside with the Running Shoes), 4 the shoes given. A new game in Hoenn begins on the street beside the
+# moving van, and the van's ride is this place's arrival (docs/mechanics/rulings.md, "Hoenn's first chapter").
+
+
+# The van stops (Emerald's InsideOfTruck and LittlerootTown_EventScript_StepOffTruck): the ride told over the dark,
+# the back door rolled up, Mom out of the house to meet the player and the two of them in at its door. Only a game
+# begun here is in the van: a Champion who sails over arrives elsewhere.
+script OnEnter
+  if var VAR_LITTLEROOT_TOWN_STATE == 3 goto MomAtTheDoor
+  if var VAR_LITTLEROOT_INTRO_STATE != 0 end
+  if var PLAYER_X != 123 end
+  if var PLAYER_Y != 292 end
+  scene "The moving van"
+  fade out 0
+  text "The moving van rumbles and sways down a country road..."
+  text "Boxes bump and slide in the dark. Then the engine coughs, and everything goes still."
+  text "With a clatter, the back door rolls up. Sunlight pours in!"
+  fade in
+  emote player exclaim
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
+  show littleroot_mom
+  walk littleroot_mom down 1
+  walk player right 2
+  face player up
+  face littleroot_mom player
+  speaker "Mom"
+  say "{player}! We're here, sweetie. Was the ride very bumpy? You must be worn out."
+  say "Welcome to Littleroot Town! This is our new home. It's quaint, but it's a nice place to live, isn't it?"
+  say "And look, we didn't even have to lift a finger. The movers' Pokémon are carrying everything in for us!"
+  say "Come on, let's go inside."
+  fade out
+  hide littleroot_mom
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
+  setvar VAR_LITTLEROOT_INTRO_STATE 3
+  warp "LittlerootTown_BrendansHouse_1F" 8 7 up
+  endscene
+  end
+# With the Pokédex had, Mom waits before the house (Emerald's SetMomStandingInFrontOfDoorPos)
+label MomAtTheDoor
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
+  place littleroot_mom 125 291 down
+  show littleroot_mom
+  end
+
+
+# The top of the road north with no Pokémon (the area's triggers 0 and 1, on VAR_LITTLEROOT_TOWN_STATE 0): the little
+# girl will not let the player into the grass.
+script NeedPokemon
+  face littleroot_twin player
+  emote littleroot_twin exclaim
+  speaker "Little Girl"
+  say "Wait! You can't go out there! Wild Pokémon jump out of the tall grass, and you haven't got one of your own!"
+  say "If you had a Pokémon, it could keep you safe. But you don't, so stay in town!"
+  walk player down 1
+  end
+
+
+# The same steps once the rival has been met (trigger 2, and a step of ours beside it, on 1): she has heard someone
+# shouting out on the route.
+script GoSaveBirch
+  scene "Someone calling for help"
+  face littleroot_twin player
+  emote littleroot_twin exclaim
+  speaker "Little Girl"
+  say "Um, um, um! Did you hear that? Somebody's yelling out there on the route!"
+  say "It sounds like someone's in trouble. Please, go and help them! You're bigger than me!"
+  setvar VAR_LITTLEROOT_TOWN_STATE 2
+  endscene
+  end
+
+
+# Coming home with the Pokédex (triggers 3 to 8, on 3): Mom calls the player over and hands over the Running Shoes
+# that Dad sent with the movers.
+script RunningShoes
+  scene "The Running Shoes"
+  emote littleroot_mom exclaim
+  face littleroot_mom player
+  face player littleroot_mom
+  speaker "Mom"
+  say "{player}! Oh, there you are. Did you meet Professor Birch? I heard you've got a Pokémon now!"
+  say "Your father will be so proud. He sent these with the movers, you know. He said every trainer needs them."
+  setflag FLAG_HAS_RUNNING_SHOES
+  fanfare keyitem
+  text "{player} put on the Running Shoes!"
+  say "Hold the run button down and off you go, faster than ever. Just watch where you're going indoors!"
+  say "And come home now and then, sweetie. Your Pokémon will want a rest, too."
+  hide littleroot_mom
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
+  setvar VAR_LITTLEROOT_TOWN_STATE 4
+  endscene
+  end
+
+
+# The people of the town by how far the story has come
+script Twin
+  if flag FLAG_ADVENTURE_STARTED goto GoodLuck
+  if flag FLAG_RESCUED_BIRCH goto Saved
+  if var VAR_LITTLEROOT_TOWN_STATE != 0 goto Save
+  say "The professor goes out into the grass all the time to look at Pokémon."
+  say "Mom says that's why his shoes are always muddy!"
+  end
+label Save
+  say "Somebody's yelling for help on the route! Hurry!"
+  end
+label Saved
+  say "You saved the professor? With a Pokémon? Wow! You're so brave!"
+  end
+label GoodLuck
+  say "Are you going on a big journey now? Good luck out there!"
+  end
+
+
+script MomOutside
+  say "Hold the run button to run, {player}. Dad's shoes are a perfect fit!"
+  end

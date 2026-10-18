@@ -1,0 +1,89 @@
+# Route 101 (plan 21 · H2). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route101/scripts.inc and src/starter_choose.c).
+#
+# VAR_ROUTE101_STATE, as Emerald counts it: 1 the route come to, 2 the professor's rescue under way (the steps out of
+# the scene turn the player back), 3 the rescue done. The professor's bag holds the three Poké Balls: the choice of
+# three (`starter`) is made from it, and the first battle against the Zigzagoon follows at once, as Emerald's
+# ChooseStarter plays it.
+
+
+script OnEnter
+  if var VAR_ROUTE101_STATE != 0 end
+  setvar VAR_ROUTE101_STATE 1
+  end
+
+
+# Up from Littleroot Town into the scene (the area's triggers 0 and 1, on 1)
+script BirchInTrouble
+  scene "The professor in trouble"
+  music "hoenn/help"
+  emote route101_birch exclaim
+  speaker "???"
+  say "H-help me!"
+  walk player up 2
+  face player route101_birch
+  face route101_birch player
+  say "Hello! You over there! Please, help!"
+  say "In my bag! There's a Poké Ball in it!"
+  face route101_birch route101_zigzagoon
+  setvar VAR_ROUTE101_STATE 2
+  endscene
+  end
+
+
+# Walking away while the professor is chased (triggers 2 to 8, on 2)
+script DontLeaveMe
+  speaker "???"
+  say "W-wait! Don't leave me! Get a Poké Ball from my bag, quick!"
+  walk player back up 1
+  end
+script DontLeaveMeWest
+  speaker "???"
+  say "W-wait! Don't leave me! Get a Poké Ball from my bag, quick!"
+  walk player back right 1
+  end
+script DontLeaveMeCorner
+  speaker "???"
+  say "W-wait! Don't leave me! Get a Poké Ball from my bag, quick!"
+  walk player up 1
+  end
+script DontLeaveMeNorth
+  speaker "???"
+  say "W-wait! Don't leave me! Get a Poké Ball from my bag, quick!"
+  walk player back down 1
+  end
+
+
+# The bag on the ground (Emerald's Route101_EventScript_BirchsBag): the choice of three, the first battle, and the
+# professor's thanks back at his lab.
+script BirchsBag
+  if var VAR_ROUTE101_STATE != 2 end
+  scene "The professor's bag"
+  text "It's a bag, lying in the grass. Inside are three Poké Balls!"
+  speaker "???"
+  say "Don't just stand there looking! Go on, pick one and use it!"
+  fade out
+  hide route101_zigzagoon
+  setflag FLAG_HIDE_ROUTE_101_ZIGZAGOON
+  place player 128 276 left
+  fade in
+  starter
+  text "{player} chose the {starter}!"
+  setflag FLAG_RESCUED_BIRCH
+  setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+  setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+  setvar VAR_BIRCH_LAB_STATE 2
+  setvar VAR_ROUTE101_STATE 3
+  wildbattle "Zigzagoon" 2
+  heal
+  face route101_birch player
+  speaker "Prof. Birch"
+  say "Whew... I was in a real fix there! Thank you so much. You saved me!"
+  say "But let's not talk out here. Come with me to my lab, it's just down the road."
+  fade out
+  hide route101_birch
+  hide birchs_bag
+  warp "LittlerootTown_ProfessorBirchsLab" 6 5 up
+  endscene
+  end

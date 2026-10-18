@@ -689,7 +689,11 @@ public sealed partial class ScriptRunner
                 var kind = i.Op == Op.CatchingLesson ? BattleKind.CatchingLesson : BattleKind.Normal;
                 var wild = new Pokemon(species, i.Number);
                 if (!string.Equals(species.Name, i.Name, StringComparison.OrdinalIgnoreCase)) wild.ChangeForm(i.Name);
-                host.WildBattle(wild, kind, cannotFlee: i.Option);
+                // A lesson someone else shows (plan 21 · H2): their name and their Pokémon
+                var catcher = i.Op == Op.CatchingLesson && i.Other.Length > 0
+                    ? new LessonCatcher(i.Other, new Pokemon(PokemonDatabase.Get(i.Partner) ?? throw Wrong(i, $"there is no species '{i.Partner}'"), i.X))
+                    : null;
+                host.WildBattle(wild, kind, cannotFlee: i.Option, catcher);
                 afterBusy = () => AfterBattle(mayLose: false);
                 break;
             }

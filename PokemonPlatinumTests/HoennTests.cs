@@ -77,19 +77,22 @@ public class HoennTests
         // The rival is the other hero, so the introduction asks no rival's name; the professor is Birch
         Assert.Null(hoenn.Rival);
         Assert.Equal("Prof. Birch", hoenn.Professor!.Name);
-        // The story is plan 21 · H2's: until then a new game begins with the first of the three
-        Assert.False(hoenn.HasStory);
+        // The story begins with nothing since plan 21 · H2
+        Assert.True(hoenn.HasStory);
+        Assert.Equal("May", hoenn.RivalFor(PlayerLook.Boy));
     }
 
     [Fact]
-    public void ANewGameInHoennBeginsBeforeTheFamilysHouseInLittlerootTown()
+    public void ANewGameInHoennBeginsBesideTheVanBeforeTheFamilysHouseInLittlerootTown()
     {
         var start = RegionDatabase.Get(RegionDatabase.Hoenn)!.Start!;
+        // (The van stops beside the house, two tiles west and one south of its door: plan 21 · H2)
+        Assert.Equal((123, 292), (start.X, start.Y));
         Assert.Equal("Hoenn", start.Map);
         Assert.True(Overworld.IsWalkable(start.X, start.Y));
         Assert.Equal("littleroot_town", Overworld.AreaAt(start.X, start.Y)?.Key);
         Assert.Equal("Littleroot Town", Overworld.DisplayNameAt(start.X, start.Y));
-        Assert.Equal("LittlerootTown_BrendansHouse_1F", Overworld.GetWarpAt(start.X, start.Y - 1)?.TargetMap);
+        Assert.Equal("LittlerootTown_BrendansHouse_1F", Overworld.GetWarpAt(start.X + 2, start.Y - 2)?.TargetMap);
         Assert.Equal("hoenn/littleroot", Overworld.BgmTrackAt(start.X, start.Y));
         Assert.Equal(Architecture.Sapling, Overworld.ArchitectureAt(start.X, start.Y));
     }

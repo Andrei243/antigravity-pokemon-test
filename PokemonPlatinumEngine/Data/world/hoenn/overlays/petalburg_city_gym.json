@@ -1,0 +1,18 @@
+{
+  // Petalburg City's Gym (plan 21 · H2): Emerald's long building of rooms one behind another, of which only the hall at
+  // its door is walked for now. Norman stands there until his Badge (Emerald's MoveNormanToEntrance) and Wally comes in
+  // for his scenes (petalburg_city_gym.txt). Every way on into the rooms (the warps but the two at the street door) is
+  // shut until plan 21 · H4 plays the Gym, its trainers and Norman's battle
+  "area": "petalburg_city_gym",
+  "bgmTrack": "hoenn/gym",
+  "locked": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37 ],
+  "people": {
+    "petalburg_gym_norman": { "name": "Norman", "hiddenBy": "", "script": "Norman", "still": true },
+    "petalburg_gym_wally": { "name": "Wally", "still": true, "dialog": [ "Mr. Norman is so kind..." ] },
+    "man_2": { "name": "Gym Guide", "hiddenBy": "", "script": "GymGuide", "still": true }
+  },
+  "signs": {
+    "PetalburgCity_Gym_EventScript_SpeedRoomDoor": "SPEED ROOM\nThe door is shut tight.",
+    "PetalburgCity_Gym_EventScript_AccuracyRoomDoor": "ACCURACY ROOM\nThe door is shut tight."
+  }
+}

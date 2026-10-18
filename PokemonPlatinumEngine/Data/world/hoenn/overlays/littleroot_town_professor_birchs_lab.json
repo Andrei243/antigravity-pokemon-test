@@ -1,16 +1,13 @@
 {
-  // Professor Birch's lab (plan 21 · H1): a room built from Emerald's layout. The professor, the rival and the Pokédex
-  // are plan 21 · H2's; until then his aide keeps the lab
+  // Professor Birch's lab (plan 21 · H1, H2): a room built from Emerald's layout. The professor is back from Route 101
+  // once rescued, the rival from Route 103 once beaten (littleroot_town_professor_birchs_lab.txt); the three Poké Balls
+  // of Johto that Emerald lays here after the Hall of Fame are left out
   "area": "littleroot_town_professor_birchs_lab",
   "bgmTrack": "hoenn/birch_lab",
   "people": {
-    "birchs_lab_aide": {
-      "name": "Aide",
-      "dialog": [
-        "The professor? He's out on Route 101 again, I'm afraid.",
-        "He says you can't learn how Pokémon live by sitting indoors. So I sit indoors and do his paperwork."
-      ]
-    }
+    "birchs_lab_aide": { "name": "Aide", "script": "Aide" },
+    "birchs_lab_birch": { "name": "Prof. Birch", "script": "Birch", "still": true },
+    "birchs_lab_rival": { "name": "{rival}", "npcType": "Rival:MAY:BRENDAN", "script": "Rival", "still": true }
   },
   "signs": {
     "LittlerootTown_ProfessorBirchsLab_EventScript_Machine": "A machine hums away quietly.\nIts lights blink in a steady pattern.",

@@ -84,7 +84,18 @@ public static class PlayerIdentity
     public static string CharacterFor(string npcType, PlayerLook look) =>
         npcType.Equals("Assistant", StringComparison.OrdinalIgnoreCase) ? CharacterOf(Other(look))
         : npcType.Equals("Player", StringComparison.OrdinalIgnoreCase) ? CharacterOf(look)
-        : npcType;
+        : RivalLook(npcType, look) ?? npcType;
+
+    /// <summary>
+    /// A rival who is the hero the player isn't (plan 21 · H2: Hoenn's May and Brendan) is written
+    /// <c>Rival:MAY:BRENDAN</c>, the look of a boy's rival and then of a girl's; anything else is no such rival.
+    /// </summary>
+    private static string? RivalLook(string npcType, PlayerLook look)
+    {
+        if (!npcType.StartsWith("Rival:", StringComparison.OrdinalIgnoreCase)) return null;
+        var parts = npcType.Split(':');
+        return parts.Length == 3 ? parts[look == PlayerLook.Girl ? 2 : 1] : null;
+    }
 
     /// <summary>A written line with the player's, the assistant's and the rival's names put in.</summary>
     public static string Fill(string text) => Fill(text, Name, Look, RivalName);

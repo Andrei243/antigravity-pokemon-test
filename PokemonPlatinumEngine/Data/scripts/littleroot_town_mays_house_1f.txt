@@ -1,0 +1,42 @@
+# The rival's house downstairs, the east house of Littleroot Town (plan 21 · H2): Professor Birch's family. docs/scripts.md
+# describes the language; the lines are our own, on Emerald's beats (data/maps/LittlerootTown_MaysHouse_1F/scripts.inc,
+# RivalsHouse_1F_EventScript_RivalMom).
+
+
+# The first visit (VAR_LITTLEROOT_HOUSES_STATE_MAY 1, Emerald's YoureNewNeighbor): the professor's wife spots the new
+# neighbour at the door and sends them up to meet her child.
+script OnEnter
+  if var VAR_LITTLEROOT_HOUSES_STATE_MAY != 1 end
+  scene "The new neighbour"
+  emote rivals_house_1f_mom exclaim
+  face rivals_house_1f_mom player
+  speaker "Neighbour"
+  say "Oh! Hello there. You must be {player}, from the house next door. Welcome to Littleroot!"
+  say "I'm Professor Birch's wife. Our {rival} is about your age, and so excited to have someone new next door."
+  say "{rival}'s upstairs. Go on up and say hello!"
+  setflag FLAG_MET_RIVAL_MOM
+  setvar VAR_LITTLEROOT_HOUSES_STATE_MAY 2
+  endscene
+  end
+
+
+script RivalMom
+  if flag FLAG_DEFEATED_RIVAL_ROUTE103 goto Home
+  if var VAR_ROUTE101_STATE >= 3 goto OnTheRoute
+  if var VAR_LITTLEROOT_RIVAL_STATE >= 3 goto Busy
+  say "{rival}'s upstairs. Go on up, {player}. Don't be shy!"
+  end
+label Busy
+  say "{rival} went off to help my husband with his fieldwork. That child is never still!"
+  end
+label OnTheRoute
+  say "{rival}? Out on Route 103, I think, counting Pokémon. North of Oldale Town."
+  end
+label Home
+  say "{rival} comes home every so often, usually covered in grass. I suppose I should be glad of the visits!"
+  end
+
+
+script RivalSibling
+  say "My big sibling is going to be the best Pokémon trainer ever. You'll see!"
+  end

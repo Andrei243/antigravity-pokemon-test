@@ -293,7 +293,18 @@ public static class ScriptParser
                 string species = r.Text("a species' name");
                 int level = r.Int("its level");
                 if (level is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
-                if (word == "catchinglesson") return new Instruction { Op = Op.CatchingLesson, Line = line, Name = species, Number = level };
+                if (word == "catchinglesson")
+                {
+                    // Who shows the lesson, when it isn't the assistant (plan 21 · H2: Wally with his father's
+                    // Zigzagoon): `by "Wally" "Zigzagoon" 7`, the catcher's name, their Pokémon and its level
+                    if (!r.More) return new Instruction { Op = Op.CatchingLesson, Line = line, Name = species, Number = level };
+                    r.OneOf("by");
+                    string catcher = r.Text("the catcher's name");
+                    string theirs = r.Text("the catcher's Pokémon");
+                    int theirLevel = r.More ? r.Int("its level") : 5;
+                    if (theirLevel is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
+                    return new Instruction { Op = Op.CatchingLesson, Line = line, Name = species, Number = level, Other = catcher, Partner = theirs, X = theirLevel };
+                }
                 bool noFleeing = r.More && r.OneOf("nofleeing") == "nofleeing";
                 return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing };
             }

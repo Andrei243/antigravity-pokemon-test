@@ -1,0 +1,52 @@
+# Route 103 (plan 21 · H2). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route103/scripts.inc).
+#
+# The rival, counting Pokémon at the water's edge: spoken to, the first battle between the two, with Emerald's team for
+# the starter the player took (the rival's is the one strong against it: May's TRAINER_MAY_ROUTE_103_TREECKO is the
+# battle of a player who took Treecko). Beaten, the rival heads back to the lab ahead of the player.
+
+
+script Rival
+  if flag FLAG_DEFEATED_RIVAL_ROUTE103 end
+  scene "The rival on Route 103"
+  face self player
+  music "hoenn/rival"
+  speaker "{rival}"
+  say "{player}! Hey! Dad told me you saved him. And he gave you a Pokémon? That's so cool!"
+  say "I was just counting the Pokémon around here. But I've got my own partner too, you know."
+  say "Let's have a battle! I'll show you what being a trainer is all about!"
+  if girl goto Brendan
+  if starter "Treecko" goto MayTreecko
+  if starter "Torchic" goto MayTorchic
+  battle self as "hoenn_may_route_103_mudkip"
+  goto Beaten
+label MayTreecko
+  battle self as "hoenn_may_route_103_treecko"
+  goto Beaten
+label MayTorchic
+  battle self as "hoenn_may_route_103_torchic"
+  goto Beaten
+label Brendan
+  if starter "Treecko" goto BrendanTreecko
+  if starter "Torchic" goto BrendanTorchic
+  battle self as "hoenn_brendan_route_103_mudkip"
+  goto Beaten
+label BrendanTreecko
+  battle self as "hoenn_brendan_route_103_treecko"
+  goto Beaten
+label BrendanTorchic
+  battle self as "hoenn_brendan_route_103_torchic"
+label Beaten
+  say "Wow... You're really good! I can see why your Pokémon trusts you, {player}."
+  say "I think I've seen enough for today. I'm heading back to the lab. Come on, Dad will want to hear about this!"
+  walk self down 2 fast
+  hide self
+  setflag FLAG_HIDE_ROUTE_103_RIVAL
+  setflag FLAG_DEFEATED_RIVAL_ROUTE103
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+  clearflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+  setvar VAR_BIRCH_LAB_STATE 4
+  setvar VAR_OLDALE_RIVAL_STATE 1
+  music area
+  endscene
+  end

@@ -1,0 +1,63 @@
+# Oldale Town (plan 21 · H2). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/OldaleTown/scripts.inc).
+#
+# VAR_OLDALE_TOWN_STATE 0: the man studying footprints on the west road keeps everyone off it until the Pokédex is had
+# (FLAG_ADVENTURE_STARTED); 1 the road is free. VAR_OLDALE_RIVAL_STATE 1: the rival, back from Route 103, waits at the
+# south edge of town and runs on ahead to the lab.
+
+
+script OnEnter
+  if not flag FLAG_ADVENTURE_STARTED end
+  setvar VAR_OLDALE_TOWN_STATE 1
+  end
+
+
+# The west road before the Pokédex (the area's trigger 0, on VAR_OLDALE_TOWN_STATE 0)
+script BlockedPath
+  face footprints_man player
+  emote footprints_man exclaim
+  speaker "Man"
+  say "Aaah! Stop right there! Don't step on these footprints!"
+  say "I'm sketching them. A rare Pokémon must have come through here, and I won't have them smudged!"
+  walk player right 1
+  end
+
+
+script FootprintsMan
+  if flag FLAG_ADVENTURE_STARTED goto Done
+  say "Look at these tracks! Three toes, a long stride... Whatever made them was in a hurry."
+  end
+label Done
+  say "I've finished my sketches. You can go west now, toward Petalburg City. Mind the grass on Route 102!"
+  end
+
+
+# The clerk who walks new trainers to the Mart and hands them a Potion (Emerald's MartEmployee, without the walk)
+script MartEmployee
+  if flag FLAG_RECEIVED_POTION_OLDALE goto Explain
+  say "Hi there! I work at the Poké Mart. That's the shop with the blue roof, right over there."
+  say "Here's a little something to try. Think of it as a free sample!"
+  give "Potion"
+  setflag FLAG_RECEIVED_POTION_OLDALE
+  end
+label Explain
+  say "A Potion heals a Pokémon that's been hurt in battle. The Mart sells them, and lots else besides!"
+  end
+
+
+# The rival at the south edge of town, back from Route 103 (triggers 1 to 3, on VAR_OLDALE_RIVAL_STATE 1)
+script RivalWaiting
+  face oldale_rival player
+  face player oldale_rival
+  speaker "{rival}"
+  say "{player}! I'm going on ahead to the lab. Dad's waiting for us both. Don't dawdle!"
+  walk oldale_rival down 3 fast
+  hide oldale_rival
+  setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+  setvar VAR_OLDALE_RIVAL_STATE 2
+  end
+
+
+script Girl
+  say "Oldale's a stop on the way to bigger places. Everyone passes through, but hardly anyone stays."
+  end

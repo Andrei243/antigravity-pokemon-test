@@ -985,11 +985,11 @@ public partial class GameEngine
             game.StartTrainerBattle(trainer, second, partner, first, terms);
         }
 
-        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee)
+        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null)
         {
             game.flow.ScriptOutcome = BattleOutcome.None;
             game.flow.BattleMayBeLost = false;
-            game.MeetWildPokemon(wild, kind, cannotFlee);
+            game.MeetWildPokemon(wild, kind, cannotFlee, catcher: catcher);
         }
 
         public BattleOutcome Outcome => game.flow.ScriptOutcome;

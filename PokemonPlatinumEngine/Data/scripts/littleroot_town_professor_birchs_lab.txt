@@ -1,0 +1,81 @@
+# Professor Birch's lab (plan 21 · H2). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/LittlerootTown_ProfessorBirchsLab/scripts.inc).
+#
+# VAR_BIRCH_LAB_STATE, as Emerald counts it: 2 the starter chosen on Route 101, 3 told of the rival on Route 103, 4 the
+# rival beaten there, 5 the Pokédex had. Each scene is the lab's arrival.
+
+
+script OnEnter
+  if var VAR_BIRCH_LAB_STATE == 2 goto Thanks
+  if var VAR_BIRCH_LAB_STATE == 4 goto Pokedex
+  end
+# In from the rescue: the Pokémon is the player's to keep, and the rival is out on Route 103
+label Thanks
+  scene "The professor's thanks"
+  face birchs_lab_birch player
+  speaker "Prof. Birch"
+  say "So! I'm Birch, the Pokémon professor. And you're Norman's child, {player}, aren't you? I thought so!"
+  say "I'd just got back from the field when that Zigzagoon came at me. You and that {starter} were wonderful."
+  say "The way it listened to you... I'd say that {starter} has taken a shine to you already."
+  say "Why don't you keep it? Consider it a thank-you from me."
+  fanfare pokemon
+  text "{player} received the {starter}!"
+  say "You know, my child {rival} is out on Route 103 right now, north of Oldale Town, studying Pokémon."
+  say "Why not go and see {rival}? I'm sure you two will get along. You might even learn a thing or two!"
+  clearflag FLAG_HIDE_ROUTE_101_BOY
+  setvar VAR_BIRCH_LAB_STATE 3
+  endscene
+  end
+# Back from Route 103 (4): the Pokédex from the professor, and five Poké Balls from the rival
+label Pokedex
+  scene "The Pokedex given"
+  face birchs_lab_birch player
+  speaker "Prof. Birch"
+  say "Ah, {player}! {rival} tells me you two had a battle. And you held your own, did you? Well done!"
+  say "I've a feeling you've got what it takes to go far. So I'd like you to have this. It's my Pokédex."
+  say "It records every Pokémon you meet. Fill it with as many as you can, and you'll be helping my research no end!"
+  setflag FLAG_HAS_POKEDEX
+  fanfare keyitem
+  text "{player} received the Pokédex from Professor Birch!"
+  face birchs_lab_rival player
+  speaker "{rival}"
+  say "Oh, wow! Dad gave you a Pokédex too? Then we're rivals now, {player}!"
+  say "Here, you'll need these to catch Pokémon. I've got loads."
+  give "Poké Ball" 5
+  say "Weaken a wild Pokémon first, then throw the ball. It's easy once you get the hang of it!"
+  say "I'm going to keep studying here for a bit. Go on, {player}, there's a whole region out there!"
+  setflag FLAG_ADVENTURE_STARTED
+  setvar VAR_BIRCH_LAB_STATE 5
+  setvar VAR_OLDALE_TOWN_STATE 1
+  setvar VAR_LITTLEROOT_RIVAL_STATE 4
+  setvar VAR_LITTLEROOT_TOWN_STATE 3
+  endscene
+  end
+
+
+script Birch
+  if var VAR_BIRCH_LAB_STATE >= 5 goto Dex
+  if var VAR_BIRCH_LAB_STATE >= 3 goto Rival
+  say "Phew, what a morning! Thank you again, {player}."
+  end
+label Rival
+  say "{rival} is on Route 103, north of Oldale Town. Go and say hello!"
+  end
+label Dex
+  say "Pokémon live in every corner of Hoenn. Fill that Pokédex for me, {player}, and tell me all about them!"
+  end
+
+
+script Rival
+  say "Dad's always running off into the grass without his Pokémon. One day I'll be a better field worker than him!"
+  end
+
+
+script Aide
+  if var VAR_BIRCH_LAB_STATE >= 3 goto Starter
+  say "The professor? He's out on Route 101 again, I'm afraid."
+  say "He says you can't learn how Pokémon live by sitting indoors. So I sit indoors and do his paperwork."
+  end
+label Starter
+  say "The professor's Pokémon from his bag! Take good care of it, all right? It's been looked after since it hatched."
+  end

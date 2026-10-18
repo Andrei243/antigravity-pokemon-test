@@ -639,8 +639,9 @@ public sealed class HeadlessScriptHost : IScriptHost
         }
     }
 
-    public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee)
+    public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null)
     {
+        if (catcher != null) Log.Add($"catcher {catcher.Name} {catcher.Own.Species.Name} {catcher.Own.Level}");
         Shown("start a battle");
         NeverInAHurry("a battle");
         Waits();

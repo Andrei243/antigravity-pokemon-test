@@ -1,19 +1,25 @@
 {
-  // Littleroot Town (plan 21 · H1): Emerald's map, our words. The moving van, Mom at the door, the rival's family next
-  // door and Professor Birch's run up Route 101 are the story's (plan 21 · H2); until then nobody stands for them, and
-  // the triggers north of town that stop a player with no Pokémon are left to that chapter too
+  // Littleroot Town (plan 21 · H1, H2): Emerald's map, our words. A new game begins on the street beside the moving van,
+  // whose ride and Mom's welcome are the town's arrival (littleroot_town.txt); the little girl at the top of the road
+  // turns back a player with no Pokémon, and then sends them to help the professor; Mom waits before the house with
+  // the Running Shoes once the Pokédex is had
   "area": "littleroot_town",
   "bgmTrack": "hoenn/littleroot",
   "trees": "Round",
   "architecture": "Sapling",
+  "triggers": [
+    { "trigger": 0, "script": "NeedPokemon" },
+    { "trigger": 1, "script": "NeedPokemon" },
+    { "trigger": 2, "script": "GoSaveBirch" },
+    { "trigger": 3, "script": "RunningShoes" },
+    { "trigger": 4, "script": "RunningShoes" },
+    { "trigger": 5, "script": "RunningShoes" },
+    { "trigger": 6, "script": "RunningShoes" },
+    { "trigger": 7, "script": "RunningShoes" },
+    { "trigger": 8, "script": "RunningShoes" }
+  ],
   "people": {
-    "littleroot_twin": {
-      "name": "Little Girl",
-      "dialog": [
-        "The professor goes out into the grass all the time to look at Pokémon.",
-        "Mom says that's why his shoes are always muddy!"
-      ]
-    },
+    "littleroot_twin": { "name": "Little Girl", "script": "Twin" },
     "fat_man": {
       "name": "Man",
       "dialog": [
@@ -27,13 +33,14 @@
         "The professor's lab is right there, the big building at the south end of town.",
         "He's hardly ever in it, though."
       ]
-    }
+    },
+    "littleroot_mom": { "name": "Mom", "script": "MomOutside", "still": true }
   },
   // The signposts, by the original's script each runs: what each says is ours
   "signs": {
     "LittlerootTown_EventScript_TownSign": "Littleroot Town\nA town where the grass begins.",
     "LittlerootTown_EventScript_BirchsLabSign": "Professor Birch's\nPokémon Lab",
-    "LittlerootTown_EventScript_BrendansHouseSign": "A family's house.\nA moving van stood outside it not long ago.",
-    "LittlerootTown_EventScript_MaysHouseSign": "A family's house.\nFlower pots line the windowsill."
+    "LittlerootTown_EventScript_BrendansHouseSign": "{player}'s House",
+    "LittlerootTown_EventScript_MaysHouseSign": "Professor Birch's House"
   }
 }

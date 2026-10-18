@@ -1,0 +1,22 @@
+# A girl of Hoenn spots the player (Lasses, Picnickers, Twins and their like; Emerald's MUS_ENCOUNTER_FEMALE): a
+# sweet, skipping flute tune in D over plucked strings. Original composition for this game (plan 21 · H2).
+title Eyes Meet: Girl (Hoenn)
+tempo 140
+meter 4/4
+reverb 0.2
+night none
+
+track lead flute vol=0.72 pan=0.05 rev=0.2
+  o5 a8 o6 d8 f+8 a8 r4 f+4 | L o6 d8 f+8 a8 f+8 e4 c+4 | o6 d8 f+8 a8 b8 a4 f+4 |
+  o5 g8 b8 o6 d8 o5 b8 a4 o6 c+4 | o6 d4 o5 a4 o6 d4 r4 |
+
+track pad pizzicato vol=0.36 pan=-0.25 rev=0.24
+  o4 (d f+ a)1 | L (d f+ a)2 (e a c+)2 | (d f+ a)1 |
+  (d g b)2 (e a c+)2 | (d f+ a)1 |
+
+track bass bass vol=0.58 rev=0.08
+  o3 d8 r8 d8 r8 a4 a4 | L o3 d4 a4 a4 e4 | o3 d4 a4 d4 a4 |
+  o3 g4 d4 a4 e4 | o3 d4 a4 d4 r4 |
+
+track drums kit vol=0.38 rev=0.1
+  v80 b8 r8 s8 r8 b4 s4 | L [ b4 s8 b8 r8 b8 s4 | ]3 b4 s8 b8 s16 s16 s16 s16 s4 |
