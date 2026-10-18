@@ -331,7 +331,7 @@ public sealed partial class ScriptRunner
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker => false,
         // A field move's cut-in and what it does, a step out onto the water or up a face, a flight: the player's own to see
         Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape => true,
-        Op.Poketch or Op.PoketchApp or Op.Safari or Op.Turnback or Op.Partner or Op.Defeat => false,
+        Op.Poketch or Op.PoketchApp or Op.Safari or Op.Turnback or Op.Partner or Op.Defeat or Op.Bicycle => false,
         // A puzzle's pieces move while the field waits
         Op.FlowerClock or Op.PressButton or Op.GearButton => true,
         Op.PlatformLift => !i.Option,
@@ -794,8 +794,11 @@ public sealed partial class ScriptRunner
                 host.Poketch.Register(Enum.Parse<PoketchApp>(i.Name));
                 break;
             case Op.Safari:
-                if (i.Option) host.Safari.Start();
+                if (i.Option) host.Safari.Start(i.Number > 0 ? i.Number : SafariGame.StartSteps);
                 else host.Safari.End();
+                break;
+            case Op.Bicycle:
+                host.Ride(i.Option);
                 break;
             case Op.SweetScent:
                 // A wild Pokémon comes out where any live, and its battle is waited for
@@ -1845,6 +1848,7 @@ public sealed partial class ScriptRunner
             // ScrCmd_CheckPoketchAppRegistered
             Query.PoketchApp => host.Poketch.Has(Enum.Parse<PoketchApp>(c.Name)),
             Query.Safari => host.Safari.Active,
+            Query.Region => string.Equals(host.Region, c.Name, StringComparison.OrdinalIgnoreCase),
             Query.Partner => host.Partner != null,
             // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
             Query.Pokerus => host.Party.Members.Any(p => p.Pokerus != 0),

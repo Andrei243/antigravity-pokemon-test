@@ -1,0 +1,42 @@
+{
+  // Fuchsia City (plan 19 · K6, part a): FireRed's map, our words. The town of the Safari Zone, its little zoo of
+  // pens along the north, the Warden's house, the Move Deleter, the fishing brothers' eldest and Koga's Gym. The pen
+  // to the west holds Kabuto, or Omanyte for whoever took the Dome Fossil from Mt. Moon (FireRed's VAR_OBJ_GFX_ID_0,
+  // set as the town is come to); the pens' signs show the Pokédex who lives there (fuchsia_city.txt)
+  "area": "fuchsia_city",
+  "bgmTrack": "kanto/fuchsia",
+  "trees": "Round",
+  "architecture": "Wildwood",
+  "people": {
+    "fat_man": { "name": "Erik", "dialog": [ "Sara and I were supposed to meet here hours ago. Where could she have got to?" ] },
+    "youngster": { "name": "Youngster", "dialog": [ "See that Poké Ball in the pen? I tried to pick it up, and it was a Voltorb! It nearly blew up in my hand!" ] },
+    "little_boy": { "name": "Boy", "dialog": [ "Have you played the Safari Game yet? You can catch Pokémon there you won't find anywhere else!" ] },
+    "old_man_1": { "name": "Old Man", "dialog": [ "These pens are the Safari Zone's little zoo. The real thing is behind that building to the north." ] },
+    "lass": { "name": "Girl", "dialog": [ "My father is the Gym Leader here. He's a master of poison, and of hiding things in plain sight." ] },
+    "bug_catcher": { "name": "Boy", "script": "SubstituteTutor" },
+    "slowpoke": { "name": "Slowpoke", "npcType": "Pokemon", "species": "Slowpoke", "still": true, "dialog": [ "Slowpoke is staring into space. It doesn't seem to have noticed you." ] },
+    "voltorb": { "name": "Voltorb", "npcType": "Pokemon", "species": "Voltorb", "still": true, "dialog": [ "It looks like a Poké Ball, but it's a Voltorb! Better not touch it." ] },
+    "chansey": { "name": "Chansey", "npcType": "Pokemon", "species": "Chansey", "still": true, "dialog": [ "Chansey is carrying its egg very carefully." ] },
+    "lapras": { "name": "Lapras", "npcType": "Pokemon", "species": "Lapras", "still": true, "dialog": [ "Lapras is gliding across its pool, singing softly." ] },
+    "kangaskhan": { "name": "Kangaskhan", "npcType": "Pokemon", "species": "Kangaskhan", "still": true, "dialog": [ "Kangaskhan's little one peeks out of its pouch." ] },
+    "var_0": { "name": "Kabuto", "npcType": "Pokemon", "species": "Kabuto", "still": true, "hiddenBy": "FLAG_GOT_DOME_FOSSIL", "dialog": [ "Kabuto is scuttling over the rocks of its pen." ] }
+  },
+  "npcs": [
+    { "id": "omanyte", "name": "Omanyte", "npcType": "Pokemon", "species": "Omanyte", "x": 200, "y": 308, "facing": "Down", "shownBy": "FLAG_GOT_DOME_FOSSIL", "dialog": [ "Omanyte is drifting about the water of its pen." ] }
+  ],
+  "read": {
+    "FuchsiaCity_EventScript_ChanseySign": "ChanseySign",
+    "FuchsiaCity_EventScript_VoltorbSign": "VoltorbSign",
+    "FuchsiaCity_EventScript_KangaskhanSign": "KangaskhanSign",
+    "FuchsiaCity_EventScript_SlowpokeSign": "SlowpokeSign",
+    "FuchsiaCity_EventScript_LaprasSign": "LaprasSign",
+    "FuchsiaCity_EventScript_FossilMonSign": "FossilSign"
+  },
+  "signs": {
+    "FuchsiaCity_EventScript_CitySign": "Fuchsia City\nWhere bright pinks and passions meet",
+    "FuchsiaCity_EventScript_SafariZoneSign": "Safari Zone\nCatch Pokémon of every kind!",
+    "FuchsiaCity_EventScript_SafariGameSign": "The Safari Game\nPlay inside for just $500!",
+    "FuchsiaCity_EventScript_GymSign": "Fuchsia City Pokémon Gym\nLeader: Koga\nThe Poisonous Ninja Master",
+    "FuchsiaCity_EventScript_WardensHomeSign": "Safari Zone Warden's Home"
+  }
+}

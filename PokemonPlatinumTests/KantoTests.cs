@@ -510,4 +510,57 @@ public class KantoTests
         foreach (string look in new[] { "erika", "sabrina", "giovanni", "biker", "chef" })
             Assert.True(CharacterStyles.Default.Has(look), look);
     }
+
+    [Fact]
+    public void FuchsiaTheCyclingRoadAndTheSafariZoneAreOpenAndWalkedTo()
+    {
+        // Plan 19 · K6, part a: Route 12's foot opens onto Route 13, and on along the coast to Fuchsia City; the Cycling
+        // Road runs down from Route 16 to Route 18; the Safari Zone is behind its gate
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Kanto").Value;
+        foreach (string key in new[] { "route_13", "route_14", "route_15", "route_17", "route_18", "fuchsia_city" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string room in new[] { "FuchsiaCity_Gym", "FuchsiaCity_WardensHouse", "SafariZone_Center", "SafariZone_West", "SafariZone_SecretHouse", "Route18_EastEntrance_2F", "Route15_WestEntrance_2F" })
+            Assert.True(walked.Keys.Any(m => m.Name == room), $"nobody walks into {room}");
+        // Fuchsia builds in boards under fuchsia roofs, and Koga's hall is the Poison type's
+        Assert.Equal(Architecture.Wildwood, Overworld.ArchitectureAt(216, 320));
+        Assert.Equal(PokemonType.Poison, BuiltMaps.Value["FuchsiaCity_Gym"].ArenaType);
+        // The Safari Zone's four parts are open country, its houses rooms
+        Assert.False(BuiltMaps.Value["SafariZone_Center"].IsIndoors);
+        Assert.True(BuiltMaps.Value["SafariZone_SecretHouse"].IsIndoors);
+        Assert.NotEmpty(BuiltMaps.Value["SafariZone_Center"].AreaAt(26, 20)!.WildEncounters);
+        // Koga and the classes the chapter meets first have their looks
+        foreach (string look in new[] { "koga", "juggler", "bird_keeper" })
+            Assert.True(CharacterStyles.Default.Has(look), look);
+    }
+
+    [Fact]
+    public void TheCyclingRoadsSlopePullsARiderSouthAndLetsSomeoneOnFootStand()
+    {
+        // FireRed's MB_CYCLING_ROAD_PULL_DOWN on Route 17, read by the GBA reader as CyclingRoadPull
+        (int X, int Y) slope = default;
+        for (int y = 150; y < 320 && slope == default; y++)
+            for (int x = 120; x < 170 && slope == default; x++)
+                if (Overworld.AreaAt(x, y)?.Key == "route_17" && Overworld.BehaviourAt(x, y) == TileBehavior.CyclingRoadPull
+                    && Overworld.BehaviourAt(x, y + 1) == TileBehavior.CyclingRoadPull && !Overworld.IsSolid(x, y + 1) && Overworld.GetNpcAt(x, y + 1) == null)
+                    slope = (x, y);
+        Assert.NotEqual(default, slope);
+        Assert.Equal(Direction.Down, FieldMovement.Pulls(TileBehavior.CyclingRoadPull, TravelMode.Cycling));
+        Assert.Null(FieldMovement.Pulls(TileBehavior.CyclingRoadPull, TravelMode.OnFoot));
+        Assert.Null(FieldMovement.Pulls(TileBehavior.None, TravelMode.Cycling));
+
+        // A rider who steers nowhere rolls on down
+        var rider = new Player(slope.X, slope.Y);
+        Assert.True(rider.SetCycling(true));
+        for (int frame = 0; frame < 60 && rider.GridY == slope.Y; frame++)
+            rider.Advance(1f / 60f, Overworld, null, false, _ => { }, _ => { });
+        Assert.Equal((slope.X, slope.Y + 1), (rider.GridX, rider.GridY));
+        Assert.Equal(Direction.Down, rider.Facing);
+
+        // Someone on foot stands where they are
+        var walker = new Player(slope.X, slope.Y);
+        for (int frame = 0; frame < 60; frame++)
+            walker.Advance(1f / 60f, Overworld, null, false, _ => { }, _ => { });
+        Assert.Equal((slope.X, slope.Y), (walker.GridX, walker.GridY));
+    }
 }

@@ -1,0 +1,47 @@
+{
+  "key": "route_18",
+  "index": 17,
+  "name": "Route 18",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_18",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Spearow", "level": 20 },
+    { "species": "Doduo", "level": 24 },
+    { "species": "Spearow", "level": 22 },
+    { "species": "Doduo", "level": 26 },
+    { "species": "Raticate", "level": 25 },
+    { "species": "Fearow", "level": 25 },
+    { "species": "Doduo", "level": 28 },
+    { "species": "Raticate", "level": 29 },
+    { "species": "Rattata", "level": 22 },
+    { "species": "Fearow", "level": 27 },
+    { "species": "Rattata", "level": 22 },
+    { "species": "Fearow", "level": 29 }
+  ],
+  "landRate": 21,
+  "warps": [
+    { "x": 173, "z": 319, "to": "route_18_east_entrance_1f", "toWarp": 0 },
+    { "x": 180, "z": 319, "to": "route_18_east_entrance_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "rocker", "looks": "rocker", "movement": "look_west", "x": 178, "z": 324, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_BIRD_KEEPER_JACOB" },
+    { "id": "rocker_2", "looks": "rocker", "movement": "look_around", "x": 173, "z": 325, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BIRD_KEEPER_RAMIRO" },
+    { "id": "rocker_3", "looks": "rocker", "movement": "look_east", "x": 171, "z": 322, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_BIRD_KEEPER_WILTON" }
+  ],
+  "signs": [
+    { "x": 169, "z": 317, "type": 0, "script": "Route18_EventScript_CyclingRoadSign" },
+    { "x": 184, "z": 317, "type": 0, "script": "Route18_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

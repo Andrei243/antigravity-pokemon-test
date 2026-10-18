@@ -1,0 +1,22 @@
+{
+  // The Fuchsia City Gym (plan 19 · K6, part a), as FireRed lays it out: a hall of walls nobody can see, Koga in its
+  // middle, and his four Jugglers and two Tamers, who battle by their own records (Kanto's trainers.json).
+  // fuchsia_city_gym.txt has Koga, the Soul Badge and TM06
+  "area": "fuchsia_city_gym",
+  "bgmTrack": "kanto/gym",
+  // The hall of its Leader's type (plan 19 · K4)
+  "arenaType": "Poison",
+  "people": {
+    "koga": { "name": "Koga", "script": "Koga", "still": true },
+    "gym_guy": { "name": "Guide", "script": "GymGuy", "still": true },
+    "rocker": { "name": "Kayden", "trainer": { "dialogueBefore": "Juggler Kayden: Now you see me, now you don't! Can you keep up with my tricks?", "dialogueAfter": "Juggler Kayden: My last trick was disappearing. From the battle." } },
+    "rocker_2": { "name": "Shawn", "trainer": { "dialogueBefore": "Juggler Shawn: Bumped into a wall you couldn't see? There are plenty more!", "dialogueAfter": "Juggler Shawn: Bumped into a trainer you couldn't beat, too." } },
+    "rocker_3": { "name": "Kirk", "trainer": { "dialogueBefore": "Juggler Kirk: I'm Koga's student. I've learned to throw people off balance!", "dialogueAfter": "Juggler Kirk: You kept your balance. Impressive." } },
+    "man": { "name": "Edgar", "trainer": { "dialogueBefore": "Tamer Edgar: My snakes obey my every word. Do yours?", "dialogueAfter": "Tamer Edgar: Mine stopped listening, apparently." } },
+    "man_2": { "name": "Phil", "trainer": { "dialogueBefore": "Tamer Phil: A ninja's Gym needs fierce guardians. That's me!", "dialogueAfter": "Tamer Phil: Not fierce enough." } },
+    "rocker_4": { "name": "Nate", "trainer": { "dialogueBefore": "Juggler Nate: Watch closely, or you'll miss the trick!", "dialogueAfter": "Juggler Nate: I missed the trick that beat me." } }
+  },
+  "read": {
+    "FuchsiaCity_Gym_EventScript_GymStatue": "Statue"
+  }
+}

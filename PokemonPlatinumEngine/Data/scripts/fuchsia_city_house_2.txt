@@ -1,0 +1,21 @@
+# The fishing brother's house in Fuchsia City (plan 19 · K6, part a). docs/scripts.md describes the language; the
+# lines are our own, on FireRed's beats (data/maps/FuchsiaCity_House2/scripts.inc): the Fishing Guru's brother gives
+# a Good Rod to a trainer who likes to fish (FLAG_GOT_GOOD_ROD).
+
+
+script FishingGurusBrother
+  speaker "Fisherman"
+  if flag FLAG_GOT_GOOD_ROD goto Biting
+  ask "I'm the Fishing Guru's older brother. I bet you like fishing too, eh?"
+  if yes goto Give
+  say "Oh. That's a pity. You don't know what you're missing!"
+  end
+label Give
+  say "Ha! A fellow angler! Here, this is a better rod than my little brother's."
+  give "Good Rod"
+  setflag FLAG_GOT_GOOD_ROD
+  say "A Good Rod lands better Pokémon than an Old Rod. Try it on the sea!"
+  end
+label Biting
+  say "Are the fish biting for you? Keep at it!"
+  end

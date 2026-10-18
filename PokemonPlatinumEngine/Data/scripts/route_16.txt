@@ -4,6 +4,17 @@
 # A Snorlax sleeps across the lane south of the gate. Only the Poké Flute (lavender_town_volunteer_pokemon_house.txt)
 # wakes it; woken, it is angry and battles (level 30), and once the battle is over, won, caught or run from, it is
 # gone from the road (FLAG_HIDE_ROUTE_16_SNORLAX). Route 12's is the same (route_12.txt).
+#
+# West of the gate is the head of the Cycling Road (plan 19 · K6): arriving on Route 16 while VAR_MAP_SCENE_ROUTE16
+# says the player went onto the road (route_16_north_entrance_1f.txt) puts them on the Bicycle and keeps them there
+# until the next door (FireRed's OnTransition and ForcePlayerOntoBike; FLAG_ON_CYCLING_ROAD, which every warp clears).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_ROUTE16 != 1 end
+  bicycle on
+  setflag FLAG_ON_CYCLING_ROAD
+  end
 
 
 script Snorlax

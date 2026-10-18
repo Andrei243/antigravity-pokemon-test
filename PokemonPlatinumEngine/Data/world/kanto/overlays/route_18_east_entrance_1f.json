@@ -1,0 +1,25 @@
+{
+  // The gate on Route 18 (plan 19 · K6, part a) between the foot of the Cycling Road and Fuchsia City's side, its
+  // upper floor up the stairs. Its west door is the road's (route_18_east_entrance_1f.txt): the guard turns back
+  // whoever has no Bicycle from the five steps across the room (the area's triggers 1 to 5), and the steps by the
+  // doors note whether the player is going onto the road or coming off it (0, 9 and 10 by the west door, 6 to 8 by
+  // the east, on VAR_MAP_SCENE_ROUTE16)
+  "area": "route_18_east_entrance_1f",
+  "bgmTrack": "kanto/viridian",
+  "triggers": [
+    { "trigger": 0, "script": "OntoTheRoad" },
+    { "trigger": 1, "script": "NeedBike" },
+    { "trigger": 2, "script": "NeedBike" },
+    { "trigger": 3, "script": "NeedBike" },
+    { "trigger": 4, "script": "NeedBike" },
+    { "trigger": 5, "script": "NeedBike" },
+    { "trigger": 6, "script": "OffTheRoad" },
+    { "trigger": 7, "script": "OffTheRoad" },
+    { "trigger": 8, "script": "OffTheRoad" },
+    { "trigger": 9, "script": "OntoTheRoad" },
+    { "trigger": 10, "script": "OntoTheRoad" }
+  ],
+  "people": {
+    "policeman": { "name": "Guard", "dialog": [ "West of here is the bottom of the Cycling Road. Riders come down it at quite a speed!" ] }
+  }
+}

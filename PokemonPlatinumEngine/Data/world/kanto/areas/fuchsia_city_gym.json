@@ -1,0 +1,37 @@
+{
+  "key": "fuchsia_city_gym",
+  "index": 319,
+  "name": "Fuchsia City",
+  "matrix": 266,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GYM",
+  "nightMusic": "MUS_GYM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 21, "to": "fuchsia_city", "toWarp": 4 },
+    { "x": 7, "z": 21, "to": "fuchsia_city", "toWarp": 4 },
+    { "x": 8, "z": 21, "to": "fuchsia_city", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "rocker", "looks": "rocker", "movement": "look_south_and_east", "x": 12, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_JUGGLER_KAYDEN" },
+    { "id": "rocker_2", "looks": "rocker", "movement": "look_west", "x": 2, "z": 9, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_JUGGLER_SHAWN" },
+    { "id": "rocker_3", "looks": "rocker", "movement": "look_east", "x": 11, "z": 11, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_JUGGLER_KIRK" },
+    { "id": "man", "looks": "man", "movement": "look_around", "x": 13, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_TAMER_EDGAR" },
+    { "id": "man_2", "looks": "man", "movement": "look_around", "x": 4, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_TAMER_PHIL" },
+    { "id": "rocker_4", "looks": "rocker", "movement": "look_south", "x": 2, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_JUGGLER_NATE" },
+    { "id": "koga", "looks": "koga", "movement": "look_south", "x": 7, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_Gym_EventScript_Koga" },
+    { "id": "gym_guy", "looks": "gym_guy", "movement": "look_south", "x": 11, "z": 19, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_Gym_EventScript_GymGuy" }
+  ],
+  "signs": [
+    { "x": 4, "z": 19, "type": 0, "script": "FuchsiaCity_Gym_EventScript_GymStatue" },
+    { "x": 10, "z": 19, "type": 0, "script": "FuchsiaCity_Gym_EventScript_GymStatue" }
+  ],
+  "triggers": []
+}

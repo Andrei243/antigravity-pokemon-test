@@ -156,6 +156,23 @@ partial class Harness
             ("kd7_saffron_gym", "SaffronCity_Gym", 14, 21, Direction.Up),
             ("kd8_dojo", "SaffronCity_Dojo", 6, 12, Direction.Up),
             ("kd9_saffron_gate_route7", "Kanto", 260, 140, Direction.Right),
+            // Plan 19 · K6, part a: Routes 13 to 15 to Fuchsia City, the Cycling Road, Fuchsia's rooms and the Safari Zone
+            ("ke2_route13", "Kanto", 380, 279, Direction.Left),
+            ("ke3_route14", "Kanto", 323, 300, Direction.Down),
+            ("ke4_route15", "Kanto", 270, 321, Direction.Left),
+            ("ke5_route17_cycling_road", "Kanto", 136, 240, Direction.Down),
+            ("ke6_route18", "Kanto", 176, 322, Direction.Right),
+            ("ke7_fuchsia_day", "Kanto", 216, 320, Direction.Up),
+            ("ke8_fuchsia_pens", "Kanto", 220, 312, Direction.Up),
+            ("ke9_fuchsia_gym_outside", "Kanto", 201, 334, Direction.Up),
+            ("kf0_fuchsia_gym", "FuchsiaCity_Gym", 7, 19, Direction.Up),
+            ("kf1_wardens_house", "FuchsiaCity_WardensHouse", 6, 8, Direction.Up),
+            ("kf2_safari_gate", "FuchsiaCity_SafariZone_Entrance", 4, 6, Direction.Up),
+            ("kf3_safari_center", "SafariZone_Center", 26, 26, Direction.Up),
+            ("kf4_safari_west", "SafariZone_West", 26, 16, Direction.Up),
+            ("kf5_safari_secret_house", "SafariZone_SecretHouse", 4, 8, Direction.Up),
+            ("kf6_fuchsia_center", "FuchsiaCity_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("kf7_route15_gate_2f", "Route15_WestEntrance_2F", 6, 7, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -179,6 +196,7 @@ partial class Harness
         At("Kanto", 345, 58, Direction.Right); Frames(2); Shot("kb8_route9_night");
         At("Kanto", 214, 144, Direction.Up); Frames(2); Shot("ke0_celadon_night");
         At("Kanto", 288, 150, Direction.Up); Frames(2); Shot("ke1_saffron_night");
+        At("Kanto", 216, 320, Direction.Up); Frames(2); Shot("kf8_fuchsia_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

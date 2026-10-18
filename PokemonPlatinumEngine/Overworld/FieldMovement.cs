@@ -375,6 +375,15 @@ public static class FieldMovement
     };
 
     /// <summary>
+    /// The Cycling Road's slope (plan 19 · K6; FireRed's <c>MB_CYCLING_ROAD_PULL_DOWN</c>, read by plan 18 · W6 as
+    /// <see cref="TileBehavior.CyclingRoadPull"/>): a rider who steers nowhere is pulled one step south at a time, as
+    /// FireRed's bicycle rolls down it; one who steers goes where they steer, uphill too. Someone on foot stands.
+    /// Null where nothing pulls.
+    /// </summary>
+    public static Direction? Pulls(TileBehavior underfoot, TravelMode mode) =>
+        underfoot == TileBehavior.CyclingRoadPull && mode == TravelMode.Cycling ? Direction.Down : null;
+
+    /// <summary>
     /// A GBA spin (plan 19 · K5, part b; FireRed's <c>TryUpdatePlayerSpinDirection</c>): the Rocket Hideout's arrows
     /// are slides (<see cref="TileBehavior.SlideEast"/> and its kin) on a map that has stop tiles
     /// (<see cref="TileBehavior.Spinner"/>, <see cref="Map.HasSpinStops"/>), and there a spin goes on over plain floor

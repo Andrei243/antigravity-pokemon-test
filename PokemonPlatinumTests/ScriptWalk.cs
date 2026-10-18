@@ -45,6 +45,9 @@ internal sealed class ScriptWalk
             // The other regions' worlds after Sinnoh's (plan 19 · K1: Kanto's), whose people start the common scripts too
             foreach (var other in others.Value)
                 foreach (var map in other.BuildMaps()) built[map.Name] = map;
+            // Everyone as a new game finds them, as each way through a script leaves the maps afterwards: someone shown
+            // only by a flag (Fuchsia's Omanyte, plan 19 · K6) is off the map from the first way on, not only after one
+            foreach (var map in built.Values) map.ApplyPresence(_ => false);
             return built;
         });
     }

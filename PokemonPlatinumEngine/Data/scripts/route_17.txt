@@ -1,0 +1,13 @@
+# Route 17, the Cycling Road (plan 19 · K6, part a). docs/scripts.md describes the language; on FireRed's beats
+# (data/maps/Route16/scripts.inc and Route18/scripts.inc, whose OnTransition is the whole road's: Route 17 has none,
+# being reached only from them).
+#
+# Whoever comes onto the road from one of its gates (VAR_MAP_SCENE_ROUTE16 1) rides it: on the Bicycle, and kept on
+# it until the next door (FLAG_ON_CYCLING_ROAD).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_ROUTE16 != 1 end
+  bicycle on
+  setflag FLAG_ON_CYCLING_ROAD
+  end

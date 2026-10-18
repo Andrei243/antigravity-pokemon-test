@@ -1,0 +1,9 @@
+{
+  // The Move Deleter's house in Fuchsia City (plan 19 · K6, part a): he makes a Pokémon forget a move, as Canalave's
+  // does (fuchsia_city_house_3.txt)
+  "area": "fuchsia_city_house_3",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "balding_man": { "name": "Move Deleter", "script": "Deleter" }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "key": "route_18_east_entrance_1f",
+  "index": 370,
+  "name": "Route 18",
+  "matrix": 317,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 6, "to": "route_18", "toWarp": 0 },
+    { "x": 11, "z": 6, "to": "route_18", "toWarp": 1 },
+    { "x": 9, "z": 10, "to": "route_18_east_entrance_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "policeman", "looks": "policeman", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route18_EastEntrance_1F_EventScript_Guard" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 2, "z": 6, "width": 1, "depth": 1, "script": "EventScript_SetEnteringCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "0" },
+    { "x": 6, "z": 4, "width": 1, "depth": 1, "script": "Route18_EastEntrance_1F_EventScript_NeedBikeTriggerTop", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 6, "z": 5, "width": 1, "depth": 1, "script": "Route18_EastEntrance_1F_EventScript_NeedBikeTriggerMidTop", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 6, "z": 6, "width": 1, "depth": 1, "script": "Route18_EastEntrance_1F_EventScript_NeedBikeTriggerMid", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 6, "z": 7, "width": 1, "depth": 1, "script": "Route18_EastEntrance_1F_EventScript_NeedBikeTriggerMidBottom", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 6, "z": 8, "width": 1, "depth": 1, "script": "Route18_EastEntrance_1F_EventScript_NeedBikeTriggerBottom", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 10, "z": 6, "width": 1, "depth": 1, "script": "EventScript_SetExitingCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "1" },
+    { "x": 11, "z": 5, "width": 1, "depth": 1, "script": "EventScript_SetExitingCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "1" },
+    { "x": 11, "z": 7, "width": 1, "depth": 1, "script": "EventScript_SetExitingCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "1" },
+    { "x": 1, "z": 5, "width": 1, "depth": 1, "script": "EventScript_SetEnteringCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "0" },
+    { "x": 1, "z": 7, "width": 1, "depth": 1, "script": "EventScript_SetEnteringCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "0" }
+  ]
+}

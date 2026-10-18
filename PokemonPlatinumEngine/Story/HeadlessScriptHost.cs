@@ -1138,4 +1138,10 @@ public sealed class HeadlessScriptHost : IScriptHost
     // ------------------------------------------------------------------ the Cycling Road's gates
 
     public bool Cycling => PlayerMode == TravelMode.Cycling;
+
+    public void Ride(bool on)
+    {
+        Log.Add(on ? "bicycle on" : "bicycle off");
+        if (PlayerMode != TravelMode.Surfing) PlayerMode = on ? TravelMode.Cycling : TravelMode.OnFoot;
+    }
 }

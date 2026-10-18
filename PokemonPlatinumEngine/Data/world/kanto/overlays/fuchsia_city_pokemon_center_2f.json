@@ -1,0 +1,11 @@
+{
+  // The floor above Fuchsia City's Pokémon Center (plan 19 · K6, part a): the link is down
+  "area": "fuchsia_city_pokemon_center_2f",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "cable_club_receptionist": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "cable_club_receptionist_2": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "cable_club_receptionist_3": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "mg_deliveryman": { "name": "Deliveryman", "dialog": [ "Nothing to deliver today, I'm afraid." ] }
+  }
+}

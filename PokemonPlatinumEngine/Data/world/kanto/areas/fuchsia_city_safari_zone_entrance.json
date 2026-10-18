@@ -1,0 +1,33 @@
+{
+  "key": "fuchsia_city_safari_zone_entrance",
+  "index": 316,
+  "name": "Fuchsia City",
+  "matrix": 263,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FUCHSIA",
+  "nightMusic": "MUS_FUCHSIA",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 1, "to": "safari_zone_center", "toWarp": 1 },
+    { "x": 5, "z": 7, "to": "fuchsia_city", "toWarp": 0 },
+    { "x": 4, "z": 7, "to": "fuchsia_city", "toWarp": 0 },
+    { "x": 3, "z": 7, "to": "fuchsia_city", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "worker_m", "looks": "worker_m", "movement": "look_west", "x": 7, "z": 3, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "worker_m_2", "looks": "worker_m", "movement": "look_east", "x": 1, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "FuchsiaCity_SafariZone_Entrance_EventScript_InfoAttendant" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 4, "z": 3, "width": 1, "depth": 1, "script": "FuchsiaCity_SafariZone_Entrance_EventScript_EntryTriggerMid", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 5, "z": 3, "width": 1, "depth": 1, "script": "FuchsiaCity_SafariZone_Entrance_EventScript_EntryTriggerRight", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 3, "z": 3, "width": 1, "depth": 1, "script": "FuchsiaCity_SafariZone_Entrance_EventScript_EntryTriggerLeft", "variable": "VAR_TEMP_1", "value": "0" }
+  ]
+}

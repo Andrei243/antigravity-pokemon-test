@@ -482,5 +482,49 @@ partial class Harness
         ReadTo("Marsh Badge from Sabrina"); Frames(10); Shot("ks81_the_marsh_badge");
         ReadTo(null);
         Console.WriteLine($"  badges: {string.Join(", ", new[] { "Boulder", "Cascade", "Thunder", "Rainbow", "Marsh" }.Where(b => story.HasBadge("Kanto", b)))}");
+
+        // ---- plan 19 · K6, part a: the Cycling Road's gate, the road, the Safari Zone, the Warden, Koga
+        int bicycles = game.Bag.GetQuantity(ItemDatabase.Get("Bicycle")!);
+        if (bicycles > 0) game.Bag.RemoveItem(ItemDatabase.Get("Bicycle")!, bicycles);
+        // Come in by the door, as a player does: the arrival forgets FireRed's temporary variables (VAR_TEMP_1, which the
+        // tower's fifth floor left set), on which the gate's steps wait
+        ComeThrough("Route16_NorthEntrance_1F", 10, 12, Direction.Left);
+        StepOnto("Route16_NorthEntrance_1F", 6, 12, Direction.Left);
+        ReadTo("No one goes onto the Cycling Road"); Frames(10); Shot("ks82_the_gate_turns_back");
+        ReadTo(null); Frames(20);
+        Console.WriteLine($"  Route 16's gate: the player turned back to {game.Player.GridX},{game.Player.GridY}");
+        game.Bag.AddItem(ItemDatabase.Get("Bicycle")!, 1);
+        story.SetVar("VAR_MAP_SCENE_ROUTE16", 1);
+        ComeThrough("Kanto", 136, 220, Direction.Down);
+        Frames(30); Shot("ks83_riding_the_cycling_road");
+        for (int i = 0; i < 90; i++) Frames(1);
+        Shot("ks84_rolling_down_the_slope");
+        Console.WriteLine($"  Cycling Road: riding {game.Player.Mode}, kept on {story.Has("FLAG_ON_CYCLING_ROAD")}, rolled from 220 at x 136 to {game.Player.GridY}");
+        story.SetVar("VAR_MAP_SCENE_ROUTE16", 0);
+        game.Player.SetCycling(false);
+        ComeThrough("FuchsiaCity_SafariZone_Entrance", 4, 6, Direction.Up);
+        StepOnto("FuchsiaCity_SafariZone_Entrance", 4, 3, Direction.Up);
+        ReadTo("Would you like to play the Safari Game"); Frames(10); Shot("ks85_the_safari_counter");
+        ReadTo(null); Frames(30); Shot("ks86_in_the_safari_zone");
+        Console.WriteLine($"  Safari Zone: on {game.Safari.Active}, balls {game.Safari.Balls}, steps {game.Safari.Steps}, at {game.Map.Name}");
+        game.Safari.End();
+        TalkTo("FuchsiaCity_WardensHouse", "old_man_2");
+        ReadTo("Hif fuff"); Frames(10); Shot("ks87_the_warden_mumbles");
+        ReadTo(null);
+        game.Bag.AddItem(ItemDatabase.Get("Gold Teeth")!, 1);
+        TalkTo("FuchsiaCity_WardensHouse", "old_man_2");
+        ReadTo("popped in his teeth"); Frames(10); Shot("ks88_the_gold_teeth");
+        ReadTo(null);
+        TalkTo("SafariZone_SecretHouse", "worker_m");
+        ReadTo("secret house"); Frames(10); Shot("ks89_the_secret_house");
+        ReadTo(null);
+        TalkTo("FuchsiaCity_Gym", "koga");
+        ReadTo("I am Koga"); Frames(10); Shot("ks90_koga");
+        IntoBattle("Koga's battle");
+        ToMainMenu(game.Battle); Shot("ks91_kogas_battle");
+        Win();
+        ReadTo("Soul Badge from Koga"); Frames(10); Shot("ks92_the_soul_badge");
+        ReadTo(null);
+        Console.WriteLine($"  Fuchsia: HM04 {game.Bag.GetQuantity(ItemDatabase.Get("HM04")!)}, HM03 {game.Bag.GetQuantity(ItemDatabase.Get("HM03")!)}, Soul Badge {story.HasBadge("Kanto", "Soul")}, TM06 {game.Bag.GetQuantity(ItemDatabase.Get("TM06")!)}");
     }
 }

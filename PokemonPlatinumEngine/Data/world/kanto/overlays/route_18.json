@@ -1,0 +1,16 @@
+{
+  // Route 18 (plan 19 · K6, part a): FireRed's map, our words. The foot of the Cycling Road, turning east along the
+  // shore to its gate and Fuchsia City; its bird keepers
+  "area": "route_18",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "rocker": { "name": "Jacob", "trainer": { "dialogueBefore": "Bird Keeper Jacob: My Spearow love the sea breeze down here. Let's battle!", "dialogueAfter": "Bird Keeper Jacob: They've been blown away." } },
+    "rocker_2": { "name": "Ramiro", "trainer": { "dialogueBefore": "Bird Keeper Ramiro: Three heads think faster than one. Ready?", "dialogueAfter": "Bird Keeper Ramiro: All three of them are stumped." } },
+    "rocker_3": { "name": "Wilton", "trainer": { "dialogueBefore": "Bird Keeper Wilton: I watch the riders zoom by. Now I'll watch you lose!", "dialogueAfter": "Bird Keeper Wilton: I'd better watch more closely." } }
+  },
+  "signs": {
+    "Route18_EventScript_RouteSign": "Route 18\nCeladon City - Fuchsia City",
+    "Route18_EventScript_CyclingRoadSign": "Cycling Road\nNo pedestrians allowed!"
+  }
+}

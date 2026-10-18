@@ -1,0 +1,13 @@
+{
+  // The Safari Zone's north part, Area 2 (plan 19 · K6, part a): FireRed's map, our words, with its rest house
+  "area": "safari_zone_north",
+  "bgmTrack": "kanto/safari_zone",
+  "trees": "Round",
+  "signs": {
+    "SafariZone_North_EventScript_AreaSign": "Area 2\nSouth: Centre Area",
+    "SafariZone_North_EventScript_RestHouseSign": "Rest House",
+    "SafariZone_North_EventScript_TrainerTips1": "Trainer Tips\nThe deeper into the zone you go, the rarer the Pokémon you'll meet.",
+    "SafariZone_North_EventScript_TrainerTips2": "Trainer Tips\nThe Pokémon of the zone come and go as they please. Take your chance when you see one!",
+    "SafariZone_North_EventScript_TrainerTips3": "Trainer Tips\nYour own Pokémon stay in their balls in the zone. It's you against the wild!"
+  }
+}

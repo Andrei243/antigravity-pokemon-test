@@ -124,6 +124,18 @@ public static class GbaCover
                 // The posts where a ledge meets a house's yard (west of the Pokémon Center's row): lawn that blocks
                 (0x286, 0x287, TerrainCover.Grass),
             },
+            // The Cycling Road (plan 19 · K6; Route 17 is all but the only user of these): its three asphalt lanes and
+            // their ends, the posts of its fences, and the mowed verges between, which pull a rider south as the lanes do
+            // (MB_CYCLING_ROAD_PULL_DOWN). Its water (MB_CYCLING_ROAD_WATER) is water by its behaviour
+            ["gTileset_CeladonCity"] = new (int, int, TerrainCover)[]
+            {
+                (0x320, 0x322, TerrainCover.Paving), (0x328, 0x32A, TerrainCover.Paving), (0x330, 0x332, TerrainCover.Paving),
+                (0x340, 0x345, TerrainCover.Paving),
+                (0x323, 0x323, TerrainCover.Fence), (0x32B, 0x32B, TerrainCover.Fence), (0x333, 0x333, TerrainCover.Fence),
+                (0x325, 0x325, TerrainCover.Fence), (0x32D, 0x32D, TerrainCover.Fence), (0x335, 0x335, TerrainCover.Fence),
+                (0x324, 0x324, TerrainCover.Grass), (0x32C, 0x32C, TerrainCover.Grass), (0x334, 0x334, TerrainCover.Grass),
+                (0x338, 0x33F, TerrainCover.Grass), (0x346, 0x351, TerrainCover.Grass),
+            },
         };
 
     /// <summary>Words in a label, first match wins, and the ground each says. A blocked tile with a building's word is a wall.</summary>

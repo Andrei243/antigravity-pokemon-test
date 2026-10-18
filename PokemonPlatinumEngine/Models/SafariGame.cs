@@ -23,11 +23,17 @@ public sealed class SafariGame
     /// </summary>
     public int Caught { get; set; }
 
-    public void Start()
+    /// <summary>FireRed's Safari Zone gives its thirty balls for six hundred steps (plan 19 · K6; <c>safari start 600</c>).</summary>
+    public const int KantoSteps = 600;
+
+    public void Start() => Start(StartSteps);
+
+    /// <summary>A game of so many steps: Platinum's five hundred, or another game's own (FireRed's six hundred).</summary>
+    public void Start(int steps)
     {
         Active = true;
         Balls = StartBalls;
-        Steps = StartSteps;
+        Steps = steps;
         Caught = 0;
     }
 

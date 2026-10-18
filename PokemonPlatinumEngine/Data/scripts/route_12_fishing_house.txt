@@ -1,0 +1,22 @@
+# The fishing house on Route 12 (plan 19 · K6, part a). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/Route12_FishingHouse/scripts.inc): the youngest of the three fishing brothers
+# gives a Super Rod to a trainer who likes to fish (FLAG_GOT_SUPER_ROD). FireRed's measure of the biggest Magikarp
+# brought him waits for one of Kanto's own.
+
+
+script FishingGurusBrother
+  speaker "Fisherman"
+  if flag FLAG_GOT_SUPER_ROD goto Biting
+  ask "I'm the youngest of the fishing brothers! Do you like to fish, too?"
+  if yes goto Give
+  say "No? Then I've nothing to say to you. Hmph."
+  end
+label Give
+  say "I knew it! You've got the look of a true angler. This is the best rod there is."
+  give "Super Rod"
+  setflag FLAG_GOT_SUPER_ROD
+  say "With a Super Rod, you can hook Pokémon that the other rods could only dream of!"
+  end
+label Biting
+  say "Caught anything big with that Super Rod yet?"
+  end

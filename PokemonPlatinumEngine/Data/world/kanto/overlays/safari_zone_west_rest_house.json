@@ -1,0 +1,10 @@
+{
+  // The rest house of the Safari Zone's west part (plan 19 · K6, part a)
+  "area": "safari_zone_west_rest_house",
+  "bgmTrack": "kanto/safari_zone",
+  "people": {
+    "scientist": { "name": "Scientist", "dialog": [ "The Warden lost his teeth somewhere out here. He went looking and came back without them!" ] },
+    "man": { "name": "Man", "dialog": [ "Tauros charge about the grass in this part. Catch one if you can!" ] },
+    "cooltrainer_f": { "name": "Woman", "dialog": [ "I'm taking a breather before I head out again. Six hundred steps go by so quickly!" ] }
+  }
+}

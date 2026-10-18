@@ -1,0 +1,11 @@
+{
+  // The Safari Zone's east part, Area 1 (plan 19 · K6, part a): FireRed's map, our words, with its rest house
+  "area": "safari_zone_east",
+  "bgmTrack": "kanto/safari_zone",
+  "trees": "Round",
+  "signs": {
+    "SafariZone_East_EventScript_AreaSign": "Area 1\nWest: Centre Area",
+    "SafariZone_East_EventScript_RestHouseSign": "Rest House",
+    "SafariZone_East_EventScript_TrainerTips": "Trainer Tips\nThe Safari Zone's Pokémon are shy. Some run away the moment they see you!"
+  }
+}

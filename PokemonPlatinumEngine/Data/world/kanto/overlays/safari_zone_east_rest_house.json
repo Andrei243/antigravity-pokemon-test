@@ -1,0 +1,10 @@
+{
+  // The rest house of the Safari Zone's east part (plan 19 · K6, part a)
+  "area": "safari_zone_east_rest_house",
+  "bgmTrack": "kanto/safari_zone",
+  "people": {
+    "scientist": { "name": "Scientist", "dialog": [ "Some Pokémon here hold items. Catch one, and you might be in luck!" ] },
+    "rocker": { "name": "Man", "dialog": [ "I came all this way for a Kangaskhan. Have you seen one?" ] },
+    "balding_man": { "name": "Man", "dialog": [ "My feet are killing me. The zone's bigger than it looks from the gate." ] }
+  }
+}

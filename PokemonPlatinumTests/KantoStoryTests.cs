@@ -1238,4 +1238,233 @@ public class KantoStoryTests
         game.Talk("balding_man");
         Assert.Equal(1, Count(game, "TM29"));
     }
+
+    // ---------------------------------------------------------------- plan 19 · K6, part a
+
+    [Theory]
+    [InlineData("Route16_NorthEntrance_1F", "route_16_north_entrance_1f")]
+    [InlineData("Route18_EastEntrance_1F", "route_18_east_entrance_1f")]
+    public void TheCyclingRoadsGatesTurnBackWhoeverHasNoBicycleAndNoteTheRoad(string gate, string file)
+    {
+        var game = PastPewter();
+        game.Arrive(gate, 6, 6);
+        var steps = game.Map.Triggers.Where(t => t.Script == "NeedBike").ToList();
+        Assert.Equal(5, steps.Count);
+        // On foot with no Bicycle, every step across the room is turned back east
+        foreach (var step in steps)
+        {
+            game.Tile = (step.X, step.Y);
+            var turned = game.Play(Scripts.Find("NeedBike", file)!);
+            Assert.Equal((step.X + 1, step.Y), game.Tile);
+            Assert.Contains(turned.Transcript, l => l.Text.Contains("Bicycle"));
+        }
+        // With one in the bag, nobody stops the player
+        game.Bag.AddItem(ItemDatabase.Get("Bicycle")!, 1);
+        var through = game.Step("NeedBike");
+        Assert.Empty(through.Transcript);
+        // The steps by the road's door note that the player is going onto it, those by the far door that they came off
+        game.Step("OntoTheRoad");
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_ROUTE16"));
+        Assert.False(game.Fires("OntoTheRoad"));
+        game.Step("OffTheRoad");
+        Assert.Equal(0, game.Story.Var("VAR_MAP_SCENE_ROUTE16"));
+    }
+
+    [Fact]
+    public void TheGbasTemporaryVariablesAreForgottenAsAPlaceIsLeft()
+    {
+        // FireRed clears VAR_TEMP_0 to F as every map loads: the Pokémon Tower's fifth floor sets VAR_TEMP_1 1, and the
+        // Cycling Road's gates and the Safari Zone's counter only fire on 0
+        var story = new StoryState();
+        story.SetVar("VAR_TEMP_1", 1);
+        story.SetVar("VAR_MAP_SCENE_ROUTE16", 1);
+        story.ClearLocal();
+        Assert.Equal(0, story.Var("VAR_TEMP_1"));
+        Assert.Equal(1, story.Var("VAR_MAP_SCENE_ROUTE16"));
+    }
+
+    [Theory]
+    [InlineData(150, 138)]
+    [InlineData(144, 250)]
+    [InlineData(170, 320)]
+    public void OnTheCyclingRoadThePlayerRidesAndCantGetOff(int x, int y)
+    {
+        var game = PastPewter();
+        // Come by any other way, the road's three routes leave the player as they were
+        game.Arrive("Kanto", x, y);
+        Assert.DoesNotContain(game.Played, p => p.Host.Log.Contains("bicycle on"));
+        Assert.False(game.Story.Has(BicycleRules.OnCyclingRoadFlag));
+        // Come through a gate onto it, they ride, and the Bicycle can't be got off until the next door
+        game.Story.SetVar("VAR_MAP_SCENE_ROUTE16", 1);
+        game.Arrive("Kanto", x, y);
+        Assert.Contains("bicycle on", game.Last.Log);
+        Assert.True(game.Last.Cycling);
+        Assert.True(game.Story.Has(BicycleRules.OnCyclingRoadFlag));
+    }
+
+    [Fact]
+    public void TheSafariZonesCounterLetsThePlayerInForFiveHundredWithThirtyBallsAndSixHundredSteps()
+    {
+        var game = PastPewter();
+        game.Arrive("FuchsiaCity_SafariZone_Entrance", 4, 6);
+        // Turned down, the player is sent back a step
+        game.Answers.Enqueue(1);
+        var away = game.Step("Counter");
+        Assert.False(away.Safari.Active);
+        Assert.Equal(4, game.Tile.Y);
+        // Agreed to, the fee is taken, the game begins with FireRed's numbers and the player is in the zone's centre
+        game.Arrive("FuchsiaCity_SafariZone_Entrance", 4, 6);
+        game.Answers.Enqueue(0);
+        var counter = game.Step("Counter");
+        Assert.True(counter.Safari.Active);
+        Assert.Equal((SafariGame.StartBalls, SafariGame.KantoSteps), (counter.Safari.Balls, counter.Safari.Steps));
+        Assert.Equal(2500, counter.Money);
+        Assert.Contains("warp SafariZone_Center 26 29", counter.Log);
+        Assert.Equal("SafariZone_Center", game.Map.Name);
+        Assert.False(game.Map.IsSolid(26, 29));
+        Assert.Equal("safari_zone_center", game.Map.AreaAt(26, 29)?.Key);
+    }
+
+    [Theory]
+    [InlineData("SafariTimeUp")]
+    [InlineData("SafariOutOfBalls")]
+    public void AKantoSafariGameThatRunsOutEndsAtTheSafariZonesCounterAndASinnohOneAtTheMarsh(string script)
+    {
+        var game = PastPewter();
+        game.Arrive("SafariZone_West", 20, 20);
+        var over = game.Play(Scripts.Find(script, "common")!);
+        Assert.False(over.Safari.Active);
+        Assert.Contains("warp FuchsiaCity_SafariZone_Entrance 4 2", over.Log);
+        // The gate sees the player off and leaves its counter quiet
+        Assert.Equal("FuchsiaCity_SafariZone_Entrance", game.Map.Name);
+        Assert.Equal(0, game.Story.Var("VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE"));
+        Assert.Equal((4, 4), game.Tile);
+        // In Sinnoh the same scripts take the player to Pastoria's observatory as before
+        var marsh = new HeadlessScriptHost { Region = RegionDatabase.Sinnoh };
+        marsh.Safari.Start();
+        var runner = new ScriptRunner(Scripts, marsh);
+        runner.Start(Scripts.Find(script, "common")!);
+        runner.RunToEnd();
+        Assert.Contains("warp PastoriaCityObservatoryGate1F 5 3", marsh.Log);
+    }
+
+    [Theory]
+    [InlineData(0, true)]
+    [InlineData(1, false)]
+    public void LeavingTheSafariZoneEarlyIsAskedAtItsGate(int answer, bool leaves)
+    {
+        var game = PastPewter();
+        game.Arrive("FuchsiaCity_SafariZone_Entrance", 4, 2);
+        var host = new HeadlessScriptHost(game.Story, game.Party, game.Bag) { Map = game.Map, PlayerTile = (4, 1) };
+        host.Safari.Start(SafariGame.KantoSteps);
+        host.Answers.Enqueue(answer);
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(Scripts.In("fuchsia_city_safari_zone_entrance", ScriptLibrary.OnEnter)!);
+        runner.RunToEnd();
+        // Yes ends the game and walks the player out past the counter; no leads back into the zone with the game on
+        Assert.Equal(leaves, !host.Safari.Active);
+        if (leaves) Assert.Equal((4, 4), host.PlayerTile);
+        else Assert.Contains("warp SafariZone_Center 26 29", host.Log);
+    }
+
+    [Fact]
+    public void TheWardenMumblesUntilHisGoldTeethAreBackAndGivesStrength()
+    {
+        var game = PastPewter();
+        game.Arrive("FuchsiaCity_WardensHouse", 6, 8);
+        game.Answers.Enqueue(0);
+        var mumbling = game.Talk("old_man_2");
+        Assert.Equal(0, Count(game, "HM04"));
+        Assert.Contains(mumbling.Transcript, l => l.Text.StartsWith("Ah, howhee"));
+        // The teeth lie in the zone's west part, in an item ball of FireRed's
+        game.Arrive("SafariZone_West", 28, 15);
+        var teeth = game.Present("item_ball")!;
+        Assert.Equal("Gold Teeth", teeth.Item);
+        game.Bag.AddItem(ItemDatabase.Get("Gold Teeth")!, 1);
+        game.Arrive("FuchsiaCity_WardensHouse", 6, 8);
+        game.Talk("old_man_2");
+        Assert.Equal(1, Count(game, "HM04"));
+        Assert.Equal(0, Count(game, "Gold Teeth"));
+        Assert.True(game.Story.Has("FLAG_GOT_HM04"));
+        game.Talk("old_man_2");
+        Assert.Equal(1, Count(game, "HM04"));
+    }
+
+    [Fact]
+    public void TheSafariZonesSecretHouseGivesSurfOnce()
+    {
+        var game = PastPewter();
+        game.Arrive("SafariZone_SecretHouse", 4, 8);
+        game.Talk("worker_m");
+        game.Talk("worker_m");
+        Assert.Equal(1, Count(game, "HM03"));
+        Assert.True(game.Story.Has("FLAG_GOT_HM03"));
+    }
+
+    [Fact]
+    public void KogaGivesTheSoulBadgeAndTmSixAndSurfsGateOpens()
+    {
+        var game = PastPewter();
+        game.Arrive("FuchsiaCity_Gym", 7, 20);
+        var koga = game.Talk("koga");
+        Assert.Contains(koga.Log, l => l.StartsWith("battle kanto_leader_koga Won"));
+        Assert.True(game.Story.HasBadge("Kanto", "Soul"));
+        Assert.Equal(1, Count(game, "TM06"));
+        foreach (string id in new[] { "kanto_juggler_kayden", "kanto_juggler_shawn", "kanto_juggler_kirk", "kanto_juggler_nate", "kanto_tamer_edgar", "kanto_tamer_phil" })
+            Assert.True(game.Story.HasDefeated(id), id);
+        Assert.Equal("Soul", FieldMoveRules.BadgeFor(FieldMove.Surf, "Kanto"));
+        Assert.DoesNotContain(game.Talk("koga").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, Count(game, "TM06"));
+        Assert.Equal(PokemonType.Poison, game.Map.ArenaType);
+    }
+
+    [Theory]
+    [InlineData("FuchsiaCity_House2", "Good Rod", "FLAG_GOT_GOOD_ROD")]
+    [InlineData("Route12_FishingHouse", "Super Rod", "FLAG_GOT_SUPER_ROD")]
+    public void TheFishingBrothersGiveTheirRodsToWhoeverLikesToFish(string room, string rod, string flag)
+    {
+        var game = PastPewter();
+        game.Arrive(room, 3, 6);
+        game.Answers.Enqueue(1);
+        game.Talk("fisher");
+        Assert.Equal(0, Count(game, rod));
+        game.Answers.Enqueue(0);
+        game.Talk("fisher");
+        Assert.Equal(1, Count(game, rod));
+        Assert.True(game.Story.Has(flag));
+    }
+
+    [Theory]
+    [InlineData(49, false)]
+    [InlineData(50, true)]
+    public void RouteFifteensAideGivesAnExpShareForFiftyKindsCaught(int caught, bool given)
+    {
+        var game = PastPewter();
+        game.Caught = caught;
+        game.Arrive("Route15_WestEntrance_2F", 5, 7);
+        game.Answers.Enqueue(0);
+        game.Talk("scientist");
+        Assert.Equal(given ? 1 : 0, Count(game, "Exp. Share"));
+        Assert.Equal(given, game.Story.Has("FLAG_GOT_EXP_SHARE_FROM_OAKS_AIDE"));
+    }
+
+    [Fact]
+    public void FuchsiasPensShowKabutoOrOmanyteAndItsBoyTeachesSubstitute()
+    {
+        var game = PastPewter();
+        game.Arrive("Kanto", 216, 320);
+        Assert.Equal("Kabuto", game.Map.NPCs.Single(n => n.Key == "var_0").Species);
+        Assert.DoesNotContain(game.Map.NPCs, n => n.Key == "omanyte");
+        game.Story.Set("FLAG_GOT_DOME_FOSSIL");
+        game.Arrive("Kanto", 216, 320);
+        Assert.Equal("Omanyte", game.Map.NPCs.Single(n => n.Key == "omanyte").Species);
+        Assert.DoesNotContain(game.Map.NPCs, n => n.Key == "var_0");
+        // The boy by the Mart teaches Substitute, once
+        var tutor = game.Map.NPCs.Single(n => n.Key == "bug_catcher" && game.Map.AreaAt(n.GridX, n.GridY)?.Key == "fuchsia_city");
+        game.Answers.Enqueue(0);
+        game.Talk(tutor);
+        Assert.True(game.Party.Members[0].Knows("Substitute"));
+        Assert.True(game.Story.Has("FLAG_TUTOR_SUBSTITUTE"));
+        Assert.Empty(game.Talk(tutor).Asked);
+    }
 }

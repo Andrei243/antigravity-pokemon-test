@@ -1,0 +1,12 @@
+# Route 18 (plan 19 · K6, part a). docs/scripts.md describes the language; on FireRed's beats
+# (data/maps/Route18/scripts.inc).
+#
+# West of its gate the road is the Cycling Road's foot: arriving here while VAR_MAP_SCENE_ROUTE16 says the player went
+# onto the road (the gates of Routes 16 and 18) puts them on the Bicycle and keeps them there until the next door.
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_ROUTE16 != 1 end
+  bicycle on
+  setflag FLAG_ON_CYCLING_ROAD
+  end

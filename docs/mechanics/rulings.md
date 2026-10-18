@@ -2889,3 +2889,42 @@ From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celad
 - **Fly over Kanto** is the Town Map's Fly mode on Kanto's own `townmap.json`: a cell for each chunk of the overworld,
   the area whose chunk it is, a town on the cell of its Pokémon Center's spawn; Fly lands at the region's spawns,
   each once come to (FireRed's `FLAG_WORLD_MAP_*` are its first arrivals). HM02 is given in Route 16's house.
+
+## Kanto's fourth chapter, first part (2026-10-18, plan 19 · K6)
+
+From Route 12's foot and the Cycling Road to the Soul Badge, scripts of ours on FireRed's beats
+(`route_16_north_entrance_1f.txt`, `route_18_east_entrance_1f.txt`, `route_16.txt`, `route_17.txt`, `route_18.txt`,
+`route_15_west_entrance_2f.txt`, `route_12_fishing_house.txt`, `fuchsia_city*.txt`, `safari_zone_secret_house.txt`,
+and `common.SafariTimeUp` and `SafariOutOfBalls`), under FireRed's flags and variables. What differs from FireRed, and
+why:
+
+- **The Cycling Road's gates ask the bag, not the saddle**, as FireRed's do: the guard calls back whoever crosses the
+  lower lane of Route 16's gate, or Route 18's gate westward, without a Bicycle (the trigger's script asks
+  `if item "Bicycle"`, where FireRed sets `VAR_TEMP_1` as the gate loads to end the triggers). The steps by the doors note going onto the
+  road and coming off it in FireRed's `VAR_MAP_SCENE_ROUTE16`, and while it is 1 Routes 16, 17 and 18 put the player on
+  the Bicycle as they are come to (`bicycle on`, a new command: FireRed's `ForcePlayerOntoBike`) and keep them on it
+  until the next door (`FLAG_ON_CYCLING_ROAD`, which every warp clears). Like FireRed, the variable is only put back by
+  the gates: a player who flies off the road rides again the next time they come to Route 16.
+- **The slope pulls a rider south** (`TileBehavior.CyclingRoadPull`, FireRed's `MB_CYCLING_ROAD_PULL_DOWN`): a rider
+  who steers nowhere is taken a step south at the Bicycle's pace, again and again; one who steers goes where they steer,
+  uphill too. Someone on foot stands (`FieldMovement.Pulls`).
+- **The Safari Zone is the Great Marsh's Safari Game with FireRed's numbers**: $500, thirty Safari Balls and six hundred
+  steps (`safari start 600`), every wild Pokémon met in a Safari battle of Platinum's (bait and mud, not FireRed's bait
+  and rocks). The counter asks from FireRed's three steps before the zone's door; coming back through the door with a
+  game on asks whether to leave early; a game that runs out sends a player of Kanto back inside the gate
+  (`if region "Kanto"`, a new condition, in the two common scripts), whose arrival sees them off.
+- **The Warden** mumbles until the Gold Teeth (an item of ours, id 9025, through the data importer's overrides, found
+  in the zone's west part where FireRed's item ball is) are in the bag: he takes them and gives HM04 (FireRed asks
+  whether the teeth's item ball has been taken; here the bag is asked, which is the same unless the teeth could leave
+  it, which they can't). The secret house gives HM03.
+- **Koga** battles for the Soul Badge and TM06 and counts his six trainers beaten (FireRed's `set_gym_trainers 5`);
+  his Gym's walls nobody can see are FireRed's blocked tiles, which a room of this game stands up as low partitions:
+  here they can be seen (a wall drawn as floor is a look still to make).
+- **FireRed's temporary variables** (`VAR_TEMP_0` to `F`) are forgotten as a place is left, as FireRed clears them as
+  every map loads; a trigger of FireRed's that waits on one being 0 fires again in the next place.
+- **The pens of Fuchsia's zoo** hold FireRed's Pokémon, the western one Kabuto, or Omanyte for whoever took the Dome
+  Fossil (FireRed's `VAR_OBJ_GFX_ID_0`; here two of the map, each behind `FLAG_GOT_DOME_FOSSIL` one way). Their signs
+  tell the Pokédex of the Pokémon as seen.
+- **Gifts**: the Good Rod in Fuchsia and the Super Rod on Route 12 for a yes, Route 15's aide's Exp. Share for fifty
+  kinds caught, Substitute taught once by the boy by Fuchsia's Mart (`MoveTutors.Kanto`). The Move Deleter is
+  Canalave's. Route 18's trade, FireRed's Magikarp measure on Route 12 and its Fame Checker are left away.

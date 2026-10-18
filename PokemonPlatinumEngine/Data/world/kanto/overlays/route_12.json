@@ -1,6 +1,6 @@
 {
   // Route 12 (plan 19 · K5, part b), south of Lavender Town along the sea: the Snorlax asleep across the way south
-  // (route_12.txt), the fishermen on the pier and the fishing house. Route 13 beyond is K6's
+  // (route_12.txt), the fishermen on the pier and the fishing house. Its foot opens onto Route 13 (plan 19 · K6)
   "area": "route_12",
   "bgmTrack": "kanto/route11",
   "trees": "Round",

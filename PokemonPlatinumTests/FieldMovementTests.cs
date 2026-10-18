@@ -898,6 +898,8 @@ public class FieldMovementTests
             changes |= FieldMovement.Carries(behaviour, East) != null;
             // A GBA spin's stop tile changes no step of its own: it ends a spin (plan 19 · K5, part b)
             changes |= FieldMovement.Spins(map, behaviour, null, East) == null;
+            // The Cycling Road's slope changes no step either: it pulls a rider who steers nowhere (plan 19 · K6)
+            changes |= FieldMovement.Pulls(behaviour, TravelMode.Cycling) != null;
             Assert.True(changes, $"{behaviour} is listed as having a rule and changes nothing");
         }
     }

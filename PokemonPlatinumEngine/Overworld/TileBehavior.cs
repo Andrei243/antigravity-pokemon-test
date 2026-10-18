@@ -319,8 +319,10 @@ public static class TileBehaviors
             => (BehaviourSupport.Ruled, "Ends a GBA spin: one begun on an arrow goes on over plain floor until a stop (FieldMovement.Spins)."),
         TileBehavior.Underwater or TileBehavior.Seaweed
             => (BehaviourSupport.Waiting, "The sea floor, reached by Dive: plan 21 (Hoenn)."),
+        TileBehavior.CyclingRoadPull
+            => (BehaviourSupport.Ruled, "A rider who steers nowhere is pulled south a step at a time (FieldMovement.Pulls; plan 19 · K6); someone on foot stands."),
         TileBehavior.ThinIce or TileBehavior.CrackedFloor or TileBehavior.Hole or TileBehavior.SecretBaseSpot
-            or TileBehavior.RailNorthSouth or TileBehavior.RailEastWest or TileBehavior.BumpySlope or TileBehavior.CyclingRoadPull
+            or TileBehavior.RailNorthSouth or TileBehavior.RailEastWest or TileBehavior.BumpySlope
             or TileBehavior.NoRunning
             => (BehaviourSupport.Waiting, "A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then."),
         TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest
