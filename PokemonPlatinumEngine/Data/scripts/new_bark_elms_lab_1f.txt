@@ -79,6 +79,7 @@ script Choose
   say "A wonderful choice! I've raised that {starter} since it hatched. It already seems to like you."
   say "Mr. Pokémon's house is north of Cherrygrove City, up Route 30. Just tell him I sent you."
   say "Oh, and if anything comes up, I'll ring you. I'll put my number in your Pokégear."
+  addcontact prof_elm
   text "Professor Elm's number was registered in the Pokégear!"
   say "Your {starter} will look after you, and you look after it. Off you go!"
   setflag FLAG_HIDE_NEW_BARK_RIVAL

@@ -101,6 +101,11 @@
         "ivScale": 0,
         "personality": 2134664
       }
+    ],
+    "rematches": [
+      "johto_bug_catcher_wade_2",
+      "johto_bug_catcher_wade_3",
+      "johto_bug_catcher_wade_4"
     ]
   },
   {
@@ -186,6 +191,11 @@
         "ivScale": 0,
         "personality": 4967561
       }
+    ],
+    "rematches": [
+      "johto_juggler_irwin_2",
+      "johto_juggler_irwin_3",
+      "johto_juggler_irwin_4"
     ]
   },
   {
@@ -204,6 +214,11 @@
         "ivScale": 0,
         "personality": 8073096
       }
+    ],
+    "rematches": [
+      "johto_youngster_joey_2",
+      "johto_youngster_joey_3",
+      "johto_youngster_joey_4"
     ]
   },
   {
@@ -434,6 +449,11 @@
         "ivScale": 30,
         "personality": 9847688
       }
+    ],
+    "rematches": [
+      "johto_black_belt_kenji_2",
+      "johto_black_belt_kenji_3",
+      "johto_black_belt_kenji_4"
     ]
   },
   {
@@ -534,6 +554,9 @@
           "Gust"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_falkner_falkner_2"
     ]
   },
   {
@@ -581,6 +604,9 @@
           "Tackle"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_bugsy_bugsy_2"
     ]
   },
   {
@@ -644,6 +670,11 @@
         "ivScale": 0,
         "personality": 3832968
       }
+    ],
+    "rematches": [
+      "johto_school_kid_m_alan_2",
+      "johto_school_kid_m_alan_3",
+      "johto_school_kid_m_alan_4"
     ]
   },
   {
@@ -713,6 +744,11 @@
         "ivScale": 0,
         "personality": 7771257
       }
+    ],
+    "rematches": [
+      "johto_picnicker_liz_2",
+      "johto_picnicker_liz_3",
+      "johto_picnicker_liz_4"
     ]
   },
   {
@@ -829,6 +865,9 @@
           "Milk Drink"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_whitney_2"
     ]
   },
   {
@@ -895,6 +934,9 @@
           "Night Shade"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_morty_morty_2"
     ]
   },
   {
@@ -950,6 +992,9 @@
           "Blizzard"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_pryce_pryce_2"
     ]
   },
   {
@@ -1004,6 +1049,9 @@
           "Iron Tail"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_jasmine_jasmine_2"
     ]
   },
   {
@@ -1045,6 +1093,9 @@
           "Body Slam"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_chuck_chuck_2"
     ]
   },
   {
@@ -1111,6 +1162,10 @@
           "Dragon Pulse"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_clair_clair_2",
+      "johto_leader_clair_clair_3"
     ]
   },
   {
@@ -1338,6 +1393,11 @@
           "Thunder Shock"
         ]
       }
+    ],
+    "rematches": [
+      "johto_pokefan_m_derek_2",
+      "johto_pokefan_m_derek_3",
+      "johto_pokefan_m_derek_4"
     ]
   },
   {
@@ -1441,6 +1501,11 @@
         "ivScale": 0,
         "personality": 13697672
       }
+    ],
+    "rematches": [
+      "johto_bug_catcher_rob_2",
+      "johto_bug_catcher_rob_3",
+      "johto_bug_catcher_rob_4"
     ]
   },
   {
@@ -1649,6 +1714,11 @@
         "ivScale": 0,
         "personality": 10646920
       }
+    ],
+    "rematches": [
+      "johto_fisherman_ralph_2",
+      "johto_fisherman_ralph_3",
+      "johto_fisherman_ralph_4"
     ]
   },
   {
@@ -1697,6 +1767,11 @@
         "ivScale": 0,
         "personality": 10657160
       }
+    ],
+    "rematches": [
+      "johto_fisherman_kyle_2",
+      "johto_fisherman_kyle_3",
+      "johto_fisherman_kyle_4"
     ]
   },
   {
@@ -1746,6 +1821,11 @@
         "ivScale": 0,
         "personality": 10026889
       }
+    ],
+    "rematches": [
+      "johto_hiker_anthony_2",
+      "johto_hiker_anthony_3",
+      "johto_hiker_anthony_4"
     ]
   },
   {
@@ -1836,6 +1916,11 @@
           "Sand Attack"
         ]
       }
+    ],
+    "rematches": [
+      "johto_youngster_ian_2",
+      "johto_youngster_ian_3",
+      "johto_youngster_ian_4"
     ]
   },
   {
@@ -1866,6 +1951,11 @@
         "ivScale": 0,
         "personality": 5858936
       }
+    ],
+    "rematches": [
+      "johto_picnicker_gina_2",
+      "johto_picnicker_gina_3",
+      "johto_picnicker_gina_4"
     ]
   },
   {
@@ -1886,6 +1976,11 @@
         "ivScale": 0,
         "personality": 13178760
       }
+    ],
+    "rematches": [
+      "johto_camper_todd_2",
+      "johto_camper_todd_3",
+      "johto_camper_todd_4"
     ]
   },
   {
@@ -2209,6 +2304,11 @@
         "ivScale": 0,
         "personality": 9644424
       }
+    ],
+    "rematches": [
+      "johto_bug_catcher_arnie_2",
+      "johto_bug_catcher_arnie_3",
+      "johto_bug_catcher_arnie_4"
     ]
   },
   {
@@ -2921,6 +3021,11 @@
           "Ember"
         ]
       }
+    ],
+    "rematches": [
+      "johto_ace_trainer_m_gaven_2",
+      "johto_ace_trainer_m_gaven_3",
+      "johto_ace_trainer_m_gaven_4"
     ]
   },
   {
@@ -3279,6 +3384,11 @@
           "Charge"
         ]
       }
+    ],
+    "rematches": [
+      "johto_ace_trainer_f_jamie_2",
+      "johto_ace_trainer_f_jamie_3",
+      "johto_ace_trainer_f_jamie_4"
     ]
   },
   {
@@ -3311,6 +3421,11 @@
         "ivScale": 50,
         "personality": 557944
       }
+    ],
+    "rematches": [
+      "johto_ace_trainer_f_reena_2",
+      "johto_ace_trainer_f_reena_3",
+      "johto_ace_trainer_f_reena_4"
     ]
   },
   {
@@ -3589,6 +3704,11 @@
         "ivScale": 0,
         "personality": 4207752
       }
+    ],
+    "rematches": [
+      "johto_fisherman_tully_2",
+      "johto_fisherman_tully_3",
+      "johto_fisherman_tully_4"
     ]
   },
   {
@@ -3619,6 +3739,11 @@
         "ivScale": 0,
         "personality": 2557320
       }
+    ],
+    "rematches": [
+      "johto_fisherman_wilton_2",
+      "johto_fisherman_wilton_3",
+      "johto_fisherman_wilton_4"
     ]
   },
   {
@@ -3814,6 +3939,11 @@
         "ivScale": 0,
         "personality": 7471240
       }
+    ],
+    "rematches": [
+      "johto_poke_maniac_brent_2",
+      "johto_poke_maniac_brent_3",
+      "johto_poke_maniac_brent_4"
     ]
   },
   {
@@ -3993,6 +4123,11 @@
         "ivScale": 50,
         "personality": 7517832
       }
+    ],
+    "rematches": [
+      "johto_bird_keeper_gs_vance_2",
+      "johto_bird_keeper_gs_vance_3",
+      "johto_bird_keeper_gs_vance_4"
     ]
   },
   {
@@ -4055,6 +4190,11 @@
         "ivScale": 0,
         "personality": 6733704
       }
+    ],
+    "rematches": [
+      "johto_bug_catcher_doug_2",
+      "johto_bug_catcher_doug_3",
+      "johto_bug_catcher_doug_4"
     ]
   },
   {
@@ -4186,6 +4326,11 @@
         "ivScale": 0,
         "personality": 14020488
       }
+    ],
+    "rematches": [
+      "johto_hiker_parry_2",
+      "johto_hiker_parry_3",
+      "johto_hiker_parry_4"
     ]
   },
   {
@@ -4345,6 +4490,11 @@
         "ivScale": 0,
         "personality": 85369
       }
+    ],
+    "rematches": [
+      "johto_picnicker_erin_2",
+      "johto_picnicker_erin_3",
+      "johto_picnicker_erin_4"
     ]
   },
   {
@@ -5045,6 +5195,11 @@
         "ivScale": 0,
         "personality": 16496520
       }
+    ],
+    "rematches": [
+      "johto_school_kid_m_jack_2",
+      "johto_school_kid_m_jack_3",
+      "johto_school_kid_m_jack_4"
     ]
   },
   {
@@ -5136,6 +5291,11 @@
         "ivScale": 0,
         "personality": 4546168
       }
+    ],
+    "rematches": [
+      "johto_pokefan_beverly_2",
+      "johto_pokefan_beverly_3",
+      "johto_pokefan_beverly_4"
     ]
   },
   {
@@ -5210,6 +5370,11 @@
         "ivScale": 0,
         "personality": 6831992
       }
+    ],
+    "rematches": [
+      "johto_lass_krise_2",
+      "johto_lass_krise_3",
+      "johto_lass_krise_4"
     ]
   },
   {
@@ -5928,6 +6093,11 @@
         "ivScale": 0,
         "personality": 5502600
       }
+    ],
+    "rematches": [
+      "johto_sailor_huey_2",
+      "johto_sailor_huey_3",
+      "johto_sailor_huey_4"
     ]
   },
   {
@@ -7391,6 +7561,9 @@
           "Giga Drain"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_brock_brock_2"
     ]
   },
   {
@@ -7458,6 +7631,9 @@
           "Ice Beam"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_misty_misty_2"
     ]
   },
   {
@@ -7537,6 +7713,9 @@
           "Low Kick"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_lt_surge_lt__surge_2"
     ]
   },
   {
@@ -7605,6 +7784,9 @@
           "Solar Beam"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_erika_erika_2"
     ]
   },
   {
@@ -7684,6 +7866,9 @@
           "Psychic"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_janine_janine_2"
     ]
   },
   {
@@ -7739,6 +7924,9 @@
           "Reflect"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_sabrina_sabrina_2"
     ]
   },
   {
@@ -7797,6 +7985,9 @@
           "Overheat"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_blaine_blaine_2"
     ]
   },
   {
@@ -7981,6 +8172,9 @@
           "Mirror Move"
         ]
       }
+    ],
+    "rematches": [
+      "johto_leader_blue_blue_2"
     ]
   },
   {
@@ -10035,6 +10229,11 @@
         "ivScale": 0,
         "personality": 44680
       }
+    ],
+    "rematches": [
+      "johto_biker_reese_2",
+      "johto_biker_reese_3",
+      "johto_biker_reese_4"
     ]
   },
   {
@@ -10571,6 +10770,11 @@
         "ivScale": 0,
         "personality": 3456137
       }
+    ],
+    "rematches": [
+      "johto_school_kid_m_billy_2",
+      "johto_school_kid_m_billy_3",
+      "johto_school_kid_m_billy_4"
     ]
   },
   {
@@ -11316,6 +11520,11 @@
         "ivScale": 0,
         "personality": 2186376
       }
+    ],
+    "rematches": [
+      "johto_hiker_kenny_2",
+      "johto_hiker_kenny_3",
+      "johto_hiker_kenny_4"
     ]
   },
   {
@@ -12012,6 +12221,11 @@
         "ivScale": 0,
         "personality": 16675449
       }
+    ],
+    "rematches": [
+      "johto_teacher_hillary_2",
+      "johto_teacher_hillary_3",
+      "johto_teacher_hillary_4"
     ]
   },
   {
@@ -12160,6 +12374,11 @@
         "ivScale": 0,
         "personality": 482952
       }
+    ],
+    "rematches": [
+      "johto_firebreather_walt_2",
+      "johto_firebreather_walt_3",
+      "johto_firebreather_walt_4"
     ]
   },
   {
@@ -12445,6 +12664,11 @@
         "ivScale": 0,
         "personality": 14269832
       }
+    ],
+    "rematches": [
+      "johto_school_kid_m_chad_2",
+      "johto_school_kid_m_chad_3",
+      "johto_school_kid_m_chad_4"
     ]
   },
   {
@@ -12550,6 +12774,11 @@
           "Confusion"
         ]
       }
+    ],
+    "rematches": [
+      "johto_lass_dana_2",
+      "johto_lass_dana_3",
+      "johto_lass_dana_4"
     ]
   },
   {
@@ -12570,6 +12799,11 @@
         "ivScale": 0,
         "personality": 8562312
       }
+    ],
+    "rematches": [
+      "johto_gentleman_alfred_2",
+      "johto_gentleman_alfred_3",
+      "johto_gentleman_alfred_4"
     ]
   },
   {
@@ -12594,6 +12828,11 @@
           "Minimize"
         ]
       }
+    ],
+    "rematches": [
+      "johto_picnicker_tiffany_2",
+      "johto_picnicker_tiffany_3",
+      "johto_picnicker_tiffany_4"
     ]
   },
   {
@@ -17827,6 +18066,11 @@
         "ivScale": 0,
         "personality": 2699912
       }
+    ],
+    "rematches": [
+      "johto_fisherman_kyler_2",
+      "johto_fisherman_kyler_3",
+      "johto_fisherman_kyler_4"
     ]
   },
   {
@@ -17852,6 +18096,11 @@
         "ivScale": 0,
         "personality": 13252488
       }
+    ],
+    "rematches": [
+      "johto_young_couple_tim_and_sue_2",
+      "johto_young_couple_tim_and_sue_3",
+      "johto_young_couple_tim_and_sue_4"
     ]
   },
   {
@@ -17892,6 +18141,11 @@
         "ivScale": 0,
         "personality": 2463368
       }
+    ],
+    "rematches": [
+      "johto_camper_tanner_2",
+      "johto_camper_tanner_3",
+      "johto_camper_tanner_4"
     ]
   },
   {
@@ -17985,6 +18239,11 @@
         "ivScale": 50,
         "personality": 12922760
       }
+    ],
+    "rematches": [
+      "johto_bird_keeper_gs_josh_2",
+      "johto_bird_keeper_gs_josh_3",
+      "johto_bird_keeper_gs_josh_4"
     ]
   },
   {
@@ -18036,6 +18295,11 @@
         "ivScale": 0,
         "personality": 7008648
       }
+    ],
+    "rematches": [
+      "johto_school_kid_m_torin_2",
+      "johto_school_kid_m_torin_3",
+      "johto_school_kid_m_torin_4"
     ]
   },
   {
@@ -18096,6 +18360,11 @@
           "Yawn"
         ]
       }
+    ],
+    "rematches": [
+      "johto_twins_kay_and_tia_2",
+      "johto_twins_kay_and_tia_3",
+      "johto_twins_kay_and_tia_4"
     ]
   },
   {
@@ -18205,6 +18474,11 @@
         "ivScale": 0,
         "personality": 3379593
       }
+    ],
+    "rematches": [
+      "johto_biker_aiden_2",
+      "johto_biker_aiden_3",
+      "johto_biker_aiden_4"
     ]
   },
   {
@@ -18313,6 +18587,11 @@
         "ivScale": 0,
         "personality": 7923081
       }
+    ],
+    "rematches": [
+      "johto_biker_ernest_2",
+      "johto_biker_ernest_3",
+      "johto_biker_ernest_4"
     ]
   },
   {

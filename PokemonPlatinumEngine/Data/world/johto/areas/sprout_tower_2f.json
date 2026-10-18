@@ -30,6 +30,14 @@
     { "species": "Rattata", "level": 5 }
   ],
   "landRate": 5,
+  "hoennSounds": [
+    "Zigzagoon",
+    "Spinda"
+  ],
+  "sinnohSounds": [
+    "Chatot",
+    "Meditite"
+  ],
   "warps": [
     { "x": 11, "z": 14, "to": "sprout_tower_1f", "toWarp": 1 },
     { "x": 24, "z": 9, "to": "sprout_tower_1f", "toWarp": 2 },

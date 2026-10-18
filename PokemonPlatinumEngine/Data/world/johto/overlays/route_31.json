@@ -8,6 +8,8 @@
   "people": {
     "r31_gsboy3": {
       "name": "Wade",
+      // Beaten, he gives his number for the Pokégear's phone (plan 20 · J3; route_31.txt)
+      "script": "Wade",
       "trainer": {
         "dialogueBefore": "Bug Catcher Wade: I caught all of these in the long grass here! Let's battle!",
         "dialogueAfter": "Bug Catcher Wade: Wow, you're good. I'd better train my bugs some more."

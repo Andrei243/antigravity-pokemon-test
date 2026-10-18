@@ -214,6 +214,8 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add($"seen {species.Name}");
     }
 
+    public void ContactAdded(Models.PhoneContact contact) => Log.Add($"addcontact {contact.Id}");
+
     /// <summary>What a walk or a placement ran into: off the map, or into something solid.</summary>
     public List<string> Problems { get; } = new();
 

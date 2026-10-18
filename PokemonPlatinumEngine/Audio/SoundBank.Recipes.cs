@@ -43,6 +43,8 @@ public static partial class SoundBank
         Add("pc_on", SoundGroup.Field, "SEQ_SE_DP_PC_LOGIN", "A PC is switched on.");
         Add("pc_off", SoundGroup.Field, "SEQ_SE_DP_PC_LOGOFF", "A PC is switched off.");
         Add("vs_seeker", SoundGroup.Field, "SE_DP_VS_SEEKER_BEEP_sseq", "The Vs. Seeker is used: it searches for trainers who want a rematch.");
+        Add("phone_ring", SoundGroup.Field, "SEQ_SE_GS_PHONE0", "The Pokégear's phone rings, or a call is placed (plan 20 · J3).");
+        Add("phone_registered", SoundGroup.Field, "SEQ_ME_POKEGEAR_REGIST", "A number is registered in the Pokégear's phone (plan 20 · J3).");
         Add("heal", SoundGroup.Field, "SEQ_SE_DP_KAIFUKU", "A medicine used from the bag, HP restored in battle.");
         Add("levelup", SoundGroup.Menu, null, "A Pokédex completed, an evolution done: a bright arpeggio.");
         Add("bike_bell", SoundGroup.Field, "SEQ_SE_DP_JITENSYA", "Getting on the Bicycle (waits for the Bicycle, plan 02 · S2).");
@@ -384,6 +386,18 @@ public static partial class SoundBank
                 d = new SoundDesign(0.9f);
                 d.Notes(0, 0.07f, 0.06f, Wave.Pulse, Pitches(84, 88, 91), 0.32f, 0.03f, 1.6f, 0.25f);
                 d.Bell(0.26f, 0.6f, N(96), 2f, 1.2f, 0.35f);
+                return Finish(d.S, 0.34f);
+            case "phone_ring":
+                // The Pokégear rings: two short trills of a high pulse, a breath apart
+                d = new SoundDesign(0.9f);
+                d.Notes(0, 0.045f, 0.04f, Wave.Pulse, Pitches(88, 91, 88, 91, 88, 91), 0.3f, 0.01f, 1.2f, 0.25f);
+                d.Notes(0.5f, 0.045f, 0.04f, Wave.Pulse, Pitches(88, 91, 88, 91, 88, 91), 0.3f, 0.01f, 1.2f, 0.25f);
+                return Finish(d.S, 0.32f);
+            case "phone_registered":
+                // A number registered: a bright little rise and a bell
+                d = new SoundDesign(0.7f);
+                d.Notes(0, 0.08f, 0.07f, Wave.Pulse, Pitches(79, 84, 88), 0.3f, 0.02f, 1.4f, 0.25f);
+                d.Bell(0.26f, 0.4f, N(91), 2.2f, 1f, 0.3f);
                 return Finish(d.S, 0.34f);
             case "pc_off":
                 d = new SoundDesign(0.36f);

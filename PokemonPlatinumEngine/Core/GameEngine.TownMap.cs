@@ -69,6 +69,12 @@ public partial class GameEngine
             flow.State = GameState.PartyMenu;
             flow.PartyScreen.IsActive = true;
         }
+        else if (townMapFromPokegear)
+        {
+            // The map card goes back to the Pokégear, on its own card (plan 20 · J3)
+            townMapFromPokegear = false;
+            OpenPokegear(PokegearCard.Map);
+        }
         else if (townMapFromBag)
         {
             flow.State = GameState.BagMenu;

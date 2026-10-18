@@ -859,6 +859,24 @@ Outside a scene nothing can be skipped, and with the row off nothing is read or 
 ways with `ScriptRunner.Impatient` (someone who holds the button the whole time), and `HeadlessScriptHost` notes what a
 hurry dropped (`Unread`, `Dropped`) and tells as a problem anything it reached that it should have stopped before.
 
+## The Pokégear's phone
+
+Plan 20 · J3. Johto's Pokégear keeps its numbers in the story, a flag of ours to each (`FLAG_PHONE_CONTACT_JOEY`,
+`Models/Pokegear.cs`), so a script may ask `if flag FLAG_PHONE_CONTACT_JOEY` and the test of flags asked about counts
+`addcontact` as setting it.
+
+| Command | What it does |
+|---|---|
+| `addcontact joey` | Registers a contact of the phone book (`Data/world/johto/phone.json`, by its id) in the Pokégear (the original's `RegisterPhoneNumber`): the host plays the jingle and says so over the field (dropped while a scene is skipped). `RESULT` is 1 for a number new to the phone and 0 for one it had. `ScriptLibrary.Problems` names a contact the book doesn't have. |
+
+A call is a script of `phone.txt`, the contact's id with each word's first letter up (`prof_elm`: `ProfElm`; one with
+no script of their own plays `Nobody`), started by the game over the field when the player rings from the Pokégear or
+a contact rings on a step. Before it starts the game sets `VAR_PHONE_CALL`, one of the game's own variables
+(`Pokegear.KeptByTheGame`): 0 the player rang, 1 the contact rang to talk, 2 a trainer on their day and hour now asks
+for a rematch (and from then on waits on their map, spinning, until fought: `battle self rematch`, as the Vs. Seeker's
+do), 3 a rematch asked for is still waiting. A trainer who gives a number is a script of their place's file that
+battles as `common.Trainer` does and, beaten, asks (`route_30.txt`'s `Joey`).
+
 ## Who is on the map
 
 A person can carry a flag that takes them off the map while it is set (`hiddenBy`) or one they wait for

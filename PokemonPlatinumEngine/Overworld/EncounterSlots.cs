@@ -51,6 +51,12 @@ public sealed record EncounterMoment
 
     /// <summary>What the game remembers of its wild Pokémon: the roamers, the day's number Feebas's tiles go by; null for none.</summary>
     public SpecialEncounters? State { get; init; }
+
+    /// <summary>
+    /// The song the Pokégear's radio plays over the field (plan 20 · J3): the March makes a step more likely to meet
+    /// something and the Lullaby less, the Hoenn and Sinnoh Sounds bring their species into the grass. None in Sinnoh.
+    /// </summary>
+    public RadioSong Radio { get; init; }
 }
 
 /// <summary>
@@ -104,6 +110,21 @@ public static class EncounterSlots
         {
             Put(0, area.SwarmSlots[0]);
             Put(1, area.SwarmSlots[1]);
+        }
+        // The Pokégear's Hoenn Sound and Sinnoh Sound on the radio (plan 20 · J3; EncSlotArray_Update_HoennSinnohSounds,
+        // after the swarm): the area's first species of the sound into slots 2 and 3, its second into 4 and 5
+        var sounds = moment.Radio switch
+        {
+            RadioSong.HoennSound => area.HoennSounds,
+            RadioSong.SinnohSound => area.SinnohSounds,
+            _ => null
+        };
+        if (sounds is { Count: 2 })
+        {
+            Put(2, sounds[0]);
+            Put(3, sounds[0]);
+            Put(4, sounds[1]);
+            Put(5, sounds[1]);
         }
         // Plan 03 · D12a: the other versions' species of ours, in the slots the original gave a second game in the
         // console (WildEncounters_ReplaceDualSlotEncounters), once the National Pokédex is had

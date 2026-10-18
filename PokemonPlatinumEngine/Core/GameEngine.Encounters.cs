@@ -40,7 +40,9 @@ public partial class GameEngine
             Partner = partner != null,
             Radar = flow.Radar.Active ? flow.Radar : null,
             Height = flow.Player.HeightOn(flow.Map),
-            State = flow.Encounters
+            State = flow.Encounters,
+            // The song the Pokégear's radio plays over the field (plan 20 · J3)
+            Radio = radioSong
         };
     }
 

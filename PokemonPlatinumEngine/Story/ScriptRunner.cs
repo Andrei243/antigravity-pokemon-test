@@ -357,6 +357,8 @@ public sealed partial class ScriptRunner
         Op.Tutor or Op.Amity => true,
         // A scene's own two lines
         Op.Scene or Op.EndScene => false,
+        // A number registered: the flag is set and the notice dropped
+        Op.AddContact => false,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -637,6 +639,8 @@ public sealed partial class ScriptRunner
                     TrainerDatabase.Fill(team, rematch);
                     foe.TrainerData = team;
                     foe.ReadyForRematch = false;
+                    // (and one asked for over the Pokégear's phone waits no longer, plan 20 · J3)
+                    Models.PhoneRematch.Fought(story, own.Id);
                     host.Battle(foe, second, partner, mayLose, i.FirstBattle, terms);
                     afterBusy = () =>
                     {
@@ -1050,6 +1054,13 @@ public sealed partial class ScriptRunner
             // (SetNationalDexEnabled). The words and the fanfare are the script's
             case Op.NationalDex:
                 host.GiveNationalDex();
+                break;
+
+            // A number registered in the Pokégear (plan 20 · J3; the original's RegisterPhoneNumber): kept by a flag of
+            // the story, and the host says so. RESULT is 1 for a number new to the phone, 0 for one it had
+            case Op.AddContact:
+                Result = Models.Pokegear.Register(story, i.Name) ? 1 : 0;
+                if (Result == 1) host.ContactAdded(Models.PhoneBook.Get(i.Name)!);
                 break;
 
             // The Battle Hall and the Battle Castle (plan 06 · R18c)

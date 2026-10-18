@@ -641,7 +641,8 @@ public class StoryTests
     [Fact]
     public void EveryScriptFileBelongsToAPlace()
     {
-        foreach (string file in Scripts.Files.Where(f => f != ScriptLibrary.Common))
+        // (but the Pokégear's calls, which the game starts by its name, plan 20 · J3)
+        foreach (string file in Scripts.Files.Where(f => f != ScriptLibrary.Common && f != PokemonPlatinumEngine.Core.GameEngine.PhoneScripts))
             Assert.True(Walk.MapOfFile(file) != null, $"scripts/{file}.txt is named for no open area and no map");
     }
 
@@ -666,6 +667,9 @@ public class StoryTests
         started.UnionWith(StoryMigration.RegionalNewGames);
         started.Add("common.KantoOpeningDone");
         started.Add("common.JohtoOpeningDone");
+        // The Pokégear's numbers for an older save of Johto, and the calls, which the game starts by the contact (plan 20 · J3)
+        started.Add("common.JohtoPokegear");
+        started.UnionWith(Scripts.All.Where(s => s.File == PokemonPlatinumEngine.Core.GameEngine.PhoneScripts).Select(s => s.FullName));
         // The field moves': what an obstacle, the water, a waterfall and a rock face run, and what the party menu runs
         started.UnionWith(new[] { FieldScripts.CutTree, FieldScripts.Rock, FieldScripts.Boulder, FieldScripts.Water, FieldScripts.Waterfall, FieldScripts.RockFace });
         // An Escape Rope from the bag, and a gate onto the Cycling Road refusing someone on foot
@@ -744,7 +748,9 @@ public class StoryTests
         // The slot machines' and the Catching Show's records and the Villa's visitor of the day are the game's to keep (plan 06 · R16b)
         // and so are those of Amity Square's walk, which `amity` and the player's steps keep (plan 06 · R16c)
         Assert.DoesNotContain(Scripts.VariablesRead, v => !Scripts.VariablesWritten.Contains(v) && !PokemonPlatinumEngine.Core.GameEngine.PastimeVariables.Contains(v)
-            && !PokemonPlatinumEngine.Overworld.AmitySquare.KeptByTheGame.Contains(v));
+            && !PokemonPlatinumEngine.Overworld.AmitySquare.KeptByTheGame.Contains(v)
+            // and what kind of call a call of the Pokégear's phone is, which the game sets as it begins (plan 20 · J3)
+            && !PokemonPlatinumEngine.Models.Pokegear.KeptByTheGame.Contains(v));
     }
 
     [Fact]

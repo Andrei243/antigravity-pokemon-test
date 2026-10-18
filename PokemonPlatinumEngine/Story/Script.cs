@@ -99,6 +99,8 @@ public enum Op
     Scene, EndScene,
     // Master Trainers (plan 14 · B14): one of the team, the one choosepokemon chose, against its species' master
     Master,
+    // The Pokégear's phone (plan 20 · J3): a number registered
+    AddContact,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

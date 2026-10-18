@@ -26,6 +26,8 @@
     },
     "r32_picnicgirl_2": {
       "name": "Liz",
+      // Beaten, she gives her number for the Pokégear's phone (plan 20 · J3; route_32.txt)
+      "script": "Liz",
       "trainer": {
         "dialogueBefore": "Picnicker Liz: You're a trainer too? Let's battle, then we can swap stories!",
         "dialogueAfter": "Picnicker Liz: Wow, you're strong! Tell me where you've been!"
@@ -47,6 +49,8 @@
     },
     "r32_fishing_2_3": {
       "name": "Ralph",
+      // Beaten, he gives his number for the Pokégear's phone (plan 20 · J3; route_32.txt)
+      "script": "Ralph",
       "trainer": {
         "dialogueBefore": "Fisherman Ralph: I fish every day of the week. My Pokémon are as tough as old boots!",
         "dialogueAfter": "Fisherman Ralph: Tougher boots than mine, then. Good battle."

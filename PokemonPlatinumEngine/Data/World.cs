@@ -1188,6 +1188,9 @@ public static class WorldMapBuilder
         area.NightSlots.AddRange(file?.Night ?? new());
         area.SwarmSlots.AddRange(file?.Swarm ?? new());
         area.RadarSlots.AddRange(file?.Radar ?? new());
+        // What the Pokégear's radio brings in on its days (plan 20 · J3)
+        area.HoennSounds.AddRange(file?.HoennSounds ?? new());
+        area.SinnohSounds.AddRange(file?.SinnohSounds ?? new());
         // Diamond's and Pearl's species of ours, once the National Pokédex is had (plan 03 · D12a)
         area.NationalSlots.AddRange(overlay?.National?.Land ?? new());
         area.NationalSuperRod.AddRange(overlay?.National?.SuperRod ?? new());

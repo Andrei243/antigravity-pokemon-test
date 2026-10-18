@@ -31,3 +31,57 @@ label Seed
 label After
   say "The road goes on south to Union Cave, and Azalea Town beyond. Mind the fishermen, they don't like being disturbed."
   return
+
+# Picnicker Liz and Fisherman Ralph battle as every trainer does; beaten, each asks for the player's number for the
+# Pokégear's phone, and once it is registered calls back for a rematch on their day (plan 20 · J3; phone.txt).
+script Liz
+  if not defeated self goto Fight
+  if rematch self goto Rematch
+  if flag FLAG_PHONE_CONTACT_LIZ goto Known
+  speaker "Liz"
+  say "That was fun! Hey, let's swap numbers. I love a good chat, and I know all the gossip!"
+  ask "Register Liz's number in your Pokégear?"
+  if no goto Refused
+  addcontact liz
+  say "Yay! I'll call you all the time. Well, maybe not all the time."
+  end
+label Refused
+  say "Aww. Ask me again whenever you like!"
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  end
+label Rematch
+  trainerline before
+  battle self rematch
+  end
+
+script Ralph
+  if not defeated self goto Fight
+  if rematch self goto Rematch
+  if flag FLAG_PHONE_CONTACT_RALPH goto Known
+  speaker "Ralph"
+  say "You've got a strong team. I'd like a rematch one of these days. What's your number?"
+  ask "Register Ralph's number in your Pokégear?"
+  if no goto Refused
+  addcontact ralph
+  say "Good. I'll ring you when the fish are biting and my Pokémon are ready."
+  end
+label Refused
+  say "Fair enough. I'll be here by the water either way."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  end
+label Rematch
+  trainerline before
+  battle self rematch
+  end

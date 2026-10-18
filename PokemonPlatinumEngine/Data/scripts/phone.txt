@@ -1,0 +1,109 @@
+# The Pokégear's calls (plan 20 · J3). docs/scripts.md describes the language; the lines are our own, on the
+# subjects of HeartGold's calls (src/application/pokegear/phone/scripts). A script is a contact of the phone book
+# (Data/world/johto/phone.json) by its id, the first letter of each word up (prof_elm: ProfElm); a contact with no
+# script of their own gets Nobody's. The game sets VAR_PHONE_CALL before a call plays (Models/Pokegear.cs): 0 the
+# player rang them, 1 they rang to talk, 2 they rang or were rung on their day and hour and now want a rematch, and
+# wait on their map for it, 3 a rematch they asked for is still waiting.
+
+
+# Someone with nothing of their own to say
+script Nobody
+  text "…There's no answer. Maybe they're busy."
+  end
+
+
+# Mom: news from home, and how the player's money is doing
+script Mother
+  speaker "Mom"
+  if var VAR_PHONE_CALL == 1 goto Rang
+  random 3
+  if result == 1 goto Two
+  if result == 2 goto Three
+  say "Hello, dear! It's so good to hear from you. Are you eating properly out there?"
+  say "Don't push yourself too hard. Come home and rest whenever you need to."
+  end
+label Two
+  say "Oh, {player}! The house is so quiet without you. Professor Elm stops by now and then to ask how you're doing."
+  end
+label Three
+  say "You sound well! Keep your Pokémon close and you'll be fine. I'm proud of you, you know."
+  end
+label Rang
+  say "{player}? It's Mom. I just wanted to hear your voice. Take care of yourself, all right?"
+  end
+
+
+# Professor Elm: his research, and the Egg
+script ProfElm
+  speaker "Prof. Elm"
+  random 2
+  if result == 1 goto Two
+  say "Hello, {player}? Elm here. How's your Pokédex coming along? Every Pokémon you meet is a page of my research!"
+  end
+label Two
+  say "{player}! I've been reading up on how Pokémon change as they grow. If you see anything strange, call me first!"
+  end
+
+
+# The trainers who gave their numbers: a word about their Pokémon, or a rematch on their day
+script Joey
+  speaker "Joey"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  random 2
+  if result == 1 goto Two
+  say "Hey, it's Joey! My Rattata ate a whole berry by itself today. It's growing up so fast!"
+  end
+label Two
+  say "Joey here! I was just thinking about our battle. My Rattata's been training non-stop since then."
+  end
+label Rematch
+  say "It's Joey! My Rattata's in even better shape now. Come and battle me again on Route 30!"
+  end
+label Waiting
+  say "Joey here. I'm still waiting for you on Route 30! My Rattata is getting restless."
+  end
+
+script Wade
+  speaker "Wade"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "This is Wade. I caught a bug in the long grass today that I've never seen before! It flew off, though."
+  end
+label Rematch
+  say "Wade here! My bugs have grown a lot. Meet me on Route 31 for a battle, all right?"
+  end
+label Waiting
+  say "It's Wade. My bugs and I are still waiting on Route 31. Don't keep us too long!"
+  end
+
+script Liz
+  speaker "Liz"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  random 2
+  if result == 1 goto Two
+  say "Hi, it's Liz! I heard there's a café somewhere in Goldenrod City with the sweetest cakes. Have you been?"
+  end
+label Two
+  say "Liz here! Guess what? My cousin says Pokémon love it when you comb their fur. Isn't that cute?"
+  end
+label Rematch
+  say "It's Liz! Let's have another battle! I'll be on Route 32, near the bridge. Don't be late!"
+  end
+label Waiting
+  say "Liz again! I'm still on Route 32, you know. Hurry up, I've got lots to tell you!"
+  end
+
+script Ralph
+  speaker "Ralph"
+  if var VAR_PHONE_CALL == 2 goto Rematch
+  if var VAR_PHONE_CALL == 3 goto Waiting
+  say "Ralph here. The fish were biting all morning on Route 32. Nothing beats a good day by the water."
+  end
+label Rematch
+  say "It's Ralph. My Pokémon are fighting fit today. Come down to Route 32 and we'll have that rematch."
+  end
+label Waiting
+  say "Ralph again. I'm still by the water on Route 32, waiting for our battle. The fish can wait."
+  end

@@ -27,7 +27,8 @@ public static class Scripts
 
         // A file is looked in for the place it is named for: an open area, or a room. One named for nowhere is never read
         var open = content.Regions.SelectMany(r => r.World.Index.Areas).ToHashSet(StringComparer.OrdinalIgnoreCase);
-        foreach (string file in scripts.Files.Where(f => f != ScriptLibrary.Common).OrderBy(f => f, StringComparer.Ordinal))
+        // (the Pokégear's calls are a file of their own, which the game starts by its name, plan 20 · J3)
+        foreach (string file in scripts.Files.Where(f => f != ScriptLibrary.Common && f != PokemonPlatinumEngine.Core.GameEngine.PhoneScripts).OrderBy(f => f, StringComparer.Ordinal))
             if (!open.Contains(file) && content.MapNamed(file) == null)
                 found.Add(new Finding(Kind.Misplaced, FileOf(file), file, "is named for no open area and no map: nothing starts its scripts"));
 

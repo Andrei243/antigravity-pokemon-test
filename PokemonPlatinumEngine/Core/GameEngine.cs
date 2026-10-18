@@ -74,6 +74,8 @@ public enum GameState
     CastleCounter,
     /// <summary>The Battle Arcade's game board (plan 06 · R18d).</summary>
     ArcadeBoard,
+    /// <summary>The Pokégear's cards: the phone, the map card and the radio (plan 20 · J3).</summary>
+    Pokegear,
     Transition,
     /// <summary>
     /// The window's close button asked (plan 12 · Q1): its question over whatever was on screen, which waits under it
@@ -302,6 +304,8 @@ public partial class GameEngine
         flow.Encounters = SpecialEncounters.NewGame(fieldRandom);
         flow.Berries = BerryPatches.NewGame();
         flow.PoffinCase.Clear();
+        phoneRinger.Reset();
+        SilenceTheRadio();
         flow.FashionCase.Load(null);
         flow.SealCase.Load(null);
         LoadUnderground(null);
@@ -484,6 +488,8 @@ public partial class GameEngine
         flow.Encounters = save.Encounters ?? SpecialEncounters.NewGame(fieldRandom);
         flow.Berries = save.Berries ?? BerryPatches.NewGame();
         flow.PoffinCase.Restore(save.Poffins);
+        phoneRinger.Reset();
+        SilenceTheRadio();
         // A save from before the Fashion Case that has been through the Contest Hall's first scene is owed its Glitter Powder (plan 06 · R17a)
         flow.FashionCase.Load(save.FashionCase, save.Backdrops);
         if (save.FashionCase == null && save.StoryFlags.Contains(ContestHallVisitedFlag)) flow.FashionCase.Add("Glitter Powder");
@@ -794,6 +800,8 @@ public partial class GameEngine
             RunTheSetPieces();
             // The poison's flash fades, and the Poké Radar's patches and the honey trees stir (plan 06 · R13)
             TickEncounters(dt);
+            // The Pokégear's phone counts the minutes before a call can come (plan 20 · J3)
+            RunThePhonesClock(dt);
             // Thunder follows a storm's lightning, a moment after the flash
             foreach (var thunder in WeatherFx.Thunder(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY), before, world.Life.Now))
                 AudioManager.PlaySound(thunder);
@@ -1037,6 +1045,9 @@ public partial class GameEngine
             case GameState.PoffinCase:
                 UpdatePoffinCase(dt);
                 break;
+            case GameState.Pokegear:
+                UpdatePokegear(dt);
+                break;
             case GameState.SuperContest:
                 UpdateContest(dt);
                 break;
@@ -1273,6 +1284,7 @@ public partial class GameEngine
         {
             flow.StartMenu.HasPokedex = flow.Story.Has(StoryState.PokedexFlag);
             flow.StartMenu.HasPokemon = flow.Party.Count > 0;
+            flow.StartMenu.HasPokegear = HasPokegear;
             flow.StartMenu.Open();
             // The team's menu sprites are asked for as the menu opens, so that they are there by the time a screen
             // shows them: only the opening's are made at the start, and a sprite long unshown is let go (plan 03 · D13)
@@ -1486,7 +1498,9 @@ public partial class GameEngine
             return true;
         }
         if (TryStepTrigger()) return true;
-        return CheckTrainerSight();
+        if (CheckTrainerSight()) return true;
+        // Last, a contact may ring the Pokégear (plan 20 · J3)
+        return PhoneRingsOnAStep();
     }
 
     /// <summary>
@@ -1901,6 +1915,13 @@ public partial class GameEngine
         eyeThemePlaying = false;
         musicTravel = flow.Player.Mode;
         AudioManager.Region = RegionDatabase.RegionOfMap(flow.Map.Name)?.Id;
+        // The Pokégear's radio plays over the field's theme while it is on (plan 20 · J3)
+        if (RadioDial.SongFile(radioSong) is { } radio)
+        {
+            AudioManager.LowHp = false;
+            AudioManager.PlayMusic(radio);
+            return;
+        }
         var ride = flow.Player.Mode switch { TravelMode.Surfing => MusicRole.Surf, TravelMode.Cycling => MusicRole.Bicycle, _ => (MusicRole?)null };
         if (ride != null && MusicDirector.Resolve(ride.Value, AudioManager.Region, MusicLibrary.Exists) != null) AudioManager.PlayMusic(ride.Value);
         else PlayAreaMusic(flow.Map, flow.Player.GridX, flow.Player.GridY);
@@ -1954,6 +1975,9 @@ public partial class GameEngine
                 flow.BagScreen.Aids = flow.EncounterAids;
                 flow.BagScreen.PlayerName = PlayerIdentity.Name;
                 flow.BagScreen.Open();
+                break;
+            case StartMenuChoice.Pokegear:
+                OpenPokegear();
                 break;
             case StartMenuChoice.Trainer:
                 flow.State = GameState.TrainerCard;
@@ -2336,6 +2360,9 @@ public partial class GameEngine
                 break;
             case GameState.PoffinCase:
                 flow.PoffinCaseScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Pokegear:
+                flow.PokegearScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SuperContest:
                 flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);

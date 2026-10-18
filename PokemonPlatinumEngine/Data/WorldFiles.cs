@@ -392,6 +392,14 @@ public sealed class WorldAreaFile
     public int? RockSmashRate { get; set; }
 
     /// <summary>
+    /// The two species the Pokégear's Hoenn Sound and Sinnoh Sound bring into the grass (plan 20 · J3; HeartGold's
+    /// <c>hoenn</c> and <c>sinnoh</c>, <c>EncSlotArray_Update_HoennSinnohSounds</c>: the first into slots 2 and 3, the
+    /// second into 4 and 5). Left out where the area has none.
+    /// </summary>
+    public List<string>? HoennSounds { get; set; }
+    public List<string>? SinnohSounds { get; set; }
+
+    /// <summary>
     /// For a GBA map with a sea floor under it (plan 18 · W7, the original's <c>dive</c> and <c>emerge</c>
     /// connections): the area Dive goes down into from its deep water, and the area surfacing from its sea floor comes
     /// up into, tile for tile. A join of every such tile, so no warp of <see cref="Warps"/>; plan 21's Dive reads it.

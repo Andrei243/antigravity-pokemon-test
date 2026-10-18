@@ -62,6 +62,14 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
   "warps": [
     { "x": 568, "z": 294, "to": "route_30_mr_pokemon_house", "toWarp": 0 },
     { "x": 555, "z": 355, "to": "route_30_apricorn_house", "toWarp": 0 }

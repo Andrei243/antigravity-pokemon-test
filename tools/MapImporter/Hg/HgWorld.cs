@@ -51,6 +51,16 @@ public sealed class HgWorld
             System.IO.File.ReadAllText(maps.PathOf("asm", "overlay_12_battle_command.s")));
         HiddenItems = ReadHiddenItems(maps);
         Phone = Phonebook.Parse(System.IO.File.ReadAllText(maps.PathOf("files", "tel", "pmtel_book.json")), Problems, TrainerPrefix);
+        // A contact who is a trainer battles again with the teams HeartGold numbers after their first (plan 20 · J3:
+        // TRAINER_YOUNGSTER_JOEY_2 to _5), which the phone's rematches bring in turn as plan 06 · R12's row of levels
+        var byId = Trainers.ToDictionary(t => t.Id, StringComparer.Ordinal);
+        foreach (var contact in Phone)
+        {
+            if (contact.Trainer is not { } id || !byId.TryGetValue(id, out var first)) continue;
+            var row = new List<string?>();
+            for (int n = 2; byId.ContainsKey($"{id}_{n}"); n++) row.Add($"{id}_{n}");
+            if (row.Count > 0) first.Rematches = row;
+        }
 
         // Which chunks are rooms: those of a matrix whose areas are interiors
         foreach (var header in maps.Headers.Values)
@@ -188,6 +198,14 @@ public sealed class HgWorld
         }).ToList();
     }
 
+    /// <summary>A sound's two species by the data's names, HeartGold's; null where the table has none.</summary>
+    private List<string>? Sounds(List<Versioned<string>> slots, string where)
+    {
+        var names = slots.Where(s => s.HeartGold is { Length: > 0 } && s.HeartGold != "SPECIES_NONE")
+            .Select(s => GbaNames.Species(s.HeartGold) ?? Note($"{where}: {s.HeartGold} is not in the game's data", s.HeartGold)).ToList();
+        return names.Count == 2 ? names : null;
+    }
+
     private string Note(string problem, string value)
     {
         if (!Problems.Contains(problem)) Problems.Add(problem);
@@ -241,6 +259,9 @@ public sealed class HgWorld
             SuperRodRate = wild is { SuperRod.Rate: > 0 } ? wild.SuperRod.Rate : null,
             RockSmash = wild == null ? null : Slots(wild.RockSmash, "day", header.Key, range: true),
             RockSmashRate = wild is { RockSmash.Rate: > 0 } ? wild.RockSmash.Rate : null,
+            // The radio's Hoenn and Sinnoh Sounds (plan 20 · J3), HeartGold's two species of each
+            HoennSounds = land == null ? null : Sounds(wild!.Hoenn, header.Key),
+            SinnohSounds = land == null ? null : Sounds(wild!.Sinnoh, header.Key),
             Warps = events.Warps.Select(w => new AreaWarp { X = w.X, Z = w.Z, To = KeyOf(w.DestHeaderId), ToWarp = w.DestWarpId }).ToList(),
             Objects = events.Objects.Select(o =>
             {

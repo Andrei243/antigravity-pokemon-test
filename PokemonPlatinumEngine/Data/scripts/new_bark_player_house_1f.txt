@@ -3,7 +3,7 @@
 #
 # VAR_SCENE_PLAYERS_HOUSE_1F: 0 until Mom has had her word on the first morning, 1 after. The first time the player
 # comes down, Mom gets up from the table: Professor Elm has been asking for them, and here is the Pokégear, mended at
-# last (FLAG_GOT_POKEGEAR; the Pokégear itself is plan 20 · J3's, and until it is built the flag is all it is).
+# last (FLAG_GOT_POKEGEAR), with her own number in its phone (plan 20 · J3).
 
 
 script OnEnter
@@ -20,6 +20,7 @@ script OnEnter
   fanfare keyitem
   text "{player} received the Pokégear!"
   say "It's a phone and a clock and a map all in one. Keep it with you, so I can always reach you."
+  addcontact mother
   say "Now off you go. The professor's lab is just down the lane. Don't keep him waiting!"
   walk t20r0201_gsmama right 2 down 3
   face t20r0201_gsmama right

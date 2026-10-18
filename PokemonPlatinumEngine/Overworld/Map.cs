@@ -75,6 +75,10 @@ public sealed class MapArea
     public List<string> SwarmSlots { get; } = new();
     public List<string> RadarSlots { get; } = new();
 
+    /// <summary>The two species the Pokégear's Hoenn Sound and Sinnoh Sound bring into slots 2 and 3, and 4 and 5 (plan 20 · J3).</summary>
+    public List<string> HoennSounds { get; } = new();
+    public List<string> SinnohSounds { get; } = new();
+
     /// <summary>
     /// Our own species once the National Pokédex is had (plan 03 · D12a, an overlay's <c>national</c>): two for the
     /// grass's slots 8 and 9, and one for the Super Rod's slot 3. Empty where the area adds none.
@@ -1227,7 +1231,7 @@ public class Map
         var (table, rate) = WildAt(x, y, water, moment);
         if (table.Count == 0 || rate <= 0) return null;
         rate = WildEncounterRules.Rate(rate, lead, WeatherAt(x, y));
-        bool meets = steps.Meets(rate, thick, rng, moment?.Today);
+        bool meets = steps.Meets(rate, thick, rng, moment?.Today, Models.Pokegear.RadioRateBonus(moment?.Radio ?? Models.RadioSong.None));
         // A shaking patch always has its Pokémon (PokeRadar_ShouldDoRadarEncounter)
         var radar = moment?.Radar?.StepOnto(x, y);
         if (!meets && radar == null) return null;
@@ -1283,7 +1287,10 @@ public sealed class EncounterSteps
     /// as the place's <paramref name="rate"/> out of a hundred.
     /// </summary>
     /// <param name="today">The day, whose date may change the odds that an attempt gets through (<see cref="SpecialDates"/>); left out, it doesn't.</param>
-    public bool Meets(int rate, bool thick, Random rng, DateTime? today = null)
+    /// <param name="radio">What the Pokégear's radio adds to the share of attempts that get through (plan 20 · J3: the
+    /// March 25, the Lullaby -25, as HeartGold adds them to its own share, <c>FieldSystem_EncounterRateRoll</c>);
+    /// nought without it.</param>
+    public bool Meets(int rate, bool thick, Random rng, DateTime? today = null, int radio = 0)
     {
         if (rate <= 0) return false;
         if (attempts < 8 - Math.Min(8, rate / 10))
@@ -1293,6 +1300,7 @@ public sealed class EncounterSteps
         }
         int flat = thick ? 70 : 40;
         if (today is { } day) flat = Math.Min(100, SpecialDates.ModifyEncounterRate(flat, day));
+        if (radio != 0) flat = Math.Clamp(flat + radio, 0, 100);
         return rng.Next(100) < flat && rng.Next(100) < rate;
     }
 }
