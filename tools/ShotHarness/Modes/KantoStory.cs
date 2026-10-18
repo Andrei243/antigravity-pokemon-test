@@ -1,0 +1,174 @@
+partial class Harness
+{
+    /// <summary>
+    /// Kanto's first chapter played by its own scripts (plan 19 · K3), the end of the <c>kanto</c> mode: Oak stopping the
+    /// player in the grass, his lab and the rival, the three Poké Balls, the first battle, Oak's Parcel at Viridian's Mart,
+    /// the Pokédex, the rival on Route 22, Pewter City's Gym guide, Brock's hall, his battle and the Boulder Badge, and the
+    /// Running Shoes (<c>ks01</c> to <c>ks14</c>), through the game's own steps, <c>TryInteract</c> and arrivals. It wins
+    /// every battle a scene starts and prints what each scene left behind.
+    /// </summary>
+    private void KantoScenes()
+    {
+        var story = game.Story;
+        DialogueManager Box() => game.Dialogue;
+        GameState State() => game.State;
+        void Until(Func<bool> holds, string what, int most = 900)
+        {
+            for (int i = 0; i < most && !holds(); i++) Frames(1);
+            if (!holds()) Console.WriteLine($"  !! never happened: {what}");
+        }
+        void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
+        void ReadTo(string? text, int most = 2400)
+        {
+            for (int i = 0; i < most; i++)
+            {
+                if (text != null && Box().IsActive && Translated.Saying(Box().CurrentLine, text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
+                if (text != null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld && i > 60) break;
+                if (text == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
+                if (State() == GameState.Battle) { Win(); continue; }
+                if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+                else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+                else Frames(1);
+            }
+            Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
+        }
+        void Win()
+        {
+            var fight = game.Battle;
+            for (int guard = 0; guard < 300 && !fight.IsBattleOver; guard++)
+            {
+                if (fight.HUD.MenuState == BattleMenuState.Main)
+                {
+                    foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                    fight.SelectMainMenuOption(0);
+                    // The first move that hurts: a starter's first is often Growl or Tail Whip
+                    var lead = fight.PlayerPokemon;
+                    int hurts = lead == null ? 0 : Math.Max(0, lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status));
+                    fight.SelectMove(hurts);
+                }
+                else Confirm(fight);
+                Skip(0.5);
+            }
+            Until(() => FieldAgain(), "the field again", 1500);
+            Frames(10);
+        }
+        void IntoBattle(string what)
+        {
+            for (int i = 0; i < 1500 && State() != GameState.Battle; i++)
+            {
+                if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+                else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+                else Frames(1);
+            }
+            if (State() != GameState.Battle) Console.WriteLine($"  !! never happened: {what}");
+            else Skip(1.0);
+        }
+        void StepOnto(string map, int x, int y, Direction way)
+        {
+            var (dx, dy) = way switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
+            At(map, x - dx, y - dy, way);
+            game.EnterArea();
+            Frames(2);
+            engine.Steering = (way, false);
+            Until(() => engine.ScriptRunning, $"the scene at {x},{y}", 120);
+            engine.Steering = null;
+        }
+        void ComeThrough(string map, int x, int y, Direction facing)
+        {
+            At(map, x, y, facing);
+            game.ArriveOnMap();
+            Frames(2);
+        }
+        void TalkTo(string map, string key, int dx = 0, int dy = 1)
+        {
+            var m = MapDatabase.Get(map);
+            var npc = m.NPCs.First(n => n.Key == key);
+            var facing = (dx, dy) switch { (0, 1) => Direction.Up, (0, -1) => Direction.Down, (1, 0) => Direction.Left, _ => Direction.Right };
+            At(map, npc.GridX + dx, npc.GridY + dy, facing);
+            game.Interact();
+        }
+        void Left(string what) =>
+            Console.WriteLine($"  {what}: lab {story.Var("VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB")}, mart {story.Var("VAR_MAP_SCENE_VIRIDIAN_CITY_MART")}, "
+                + $"old man {story.Var("VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN")}, route 22 {story.Var("VAR_MAP_SCENE_ROUTE22")}, pewter {story.Var("VAR_MAP_SCENE_PEWTER_CITY")}, "
+                + $"team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}, "
+                + $"Pokédex {story.Has(StoryState.PokedexFlag)}, shoes {story.Has(StoryState.RunningShoesFlag)}, Boulder Badge {story.HasBadge("Kanto", "Boulder")}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        // A new game of Kanto, from its first step
+        engine.NewGameRegion = "Kanto";
+        engine.StartNewGame();
+        game.State = GameState.Overworld;
+        game.SaveSlot = 1;
+        game.LocationSign.Hide();
+        Frames(30);
+        Left("the bedroom");
+
+        // ---- Oak in the grass
+        StepOnto("Kanto", 72, 261, Direction.Up);
+        ReadTo("Hold it!"); Frames(10); Shot("ks01_oak_calls_out");
+        ReadTo("Phew, I caught you"); Frames(20); Shot("ks02_oak_stops_you");
+        // ---- the lab: Oak walks in, the rival has been waiting
+        // The warp's fade, and the lab's own arrival after it
+        Until(() => game.Map.Name == "PalletTown_ProfessorOaksLab", "the lab", 900);
+        ReadTo("Gramps! Finally!"); Frames(20); Shot("ks03_the_lab");
+        ReadTo(null);
+        Left("in the lab");
+
+        // ---- the three Poké Balls
+        TalkTo("PalletTown_ProfessorOaksLab", "bulbasaur_ball");
+        Until(() => State() == GameState.StarterSelect, "the choice of three", 600);
+        Frames(40); Shot("ks04_the_three_poke_balls");
+        var choice = game.StarterSelect;
+        choice.SelectedIndex = 1;
+        choice.Confirm();
+        choice.Move(1);
+        Frames(20); Shot("ks05_charmander_asked");
+        InputManager.Feed(ActionFrame.Press(GameAction.Confirm)); Frames(1); InputManager.Feed(null);
+        ReadTo("Then I'll take this one!"); Frames(10); Shot("ks06_the_rival_takes_his");
+        ReadTo(null);
+        Left("a Pokémon each");
+
+        // ---- the rival's challenge on the way out, the first battle
+        StepOnto("PalletTown_ProfessorOaksLab", 6, 8, Direction.Down);
+        ReadTo("Wait up,"); Frames(10); Shot("ks07_the_rivals_challenge");
+        IntoBattle("the first battle");
+        ToMainMenu(game.Battle); Shot("ks08_the_first_battle");
+        Win();
+        ReadTo(null);
+        Left("the first battle");
+
+        // ---- Oak's Parcel at Viridian's Mart, and the Pokédex
+        ComeThrough("ViridianCity_Mart", 4, 6, Direction.Up);
+        ReadTo("You're from Pallet Town"); Frames(10); Shot("ks09_the_parcel");
+        ReadTo(null);
+        TalkTo("PalletTown_ProfessorOaksLab", "oaks_lab_prof_oak");
+        ReadTo("This is the Pokédex"); Frames(20); Shot("ks10_the_pokedex");
+        ReadTo(null);
+        Left("the Pokédex");
+
+        // ---- the rival on Route 22
+        StepOnto("Kanto", 33, 195, Direction.Left);
+        ReadTo("Heading for the Pokémon League"); Frames(10); Shot("ks11_route22_rival");
+        IntoBattle("the rival's battle on Route 22");
+        Win();
+        ReadTo(null);
+
+        // ---- Pewter City: the Gym's guide on the road east, Brock and his Badge
+        StepOnto("Kanto", 90, 82, Direction.Right);
+        ReadTo("Brock's always looking"); Frames(10); Shot("ks12_the_gym_guide");
+        ReadTo(null);
+        Console.WriteLine($"  the guide left the player at ({game.Player.GridX}, {game.Player.GridY})");
+        At("PewterCity_Gym", 6, 13, Direction.Up); Frames(30); Shot("ks13_brocks_hall");
+        TalkTo("PewterCity_Gym", "brock");
+        ReadTo("So you're the new challenger"); Frames(10); Shot("ks14_brock");
+        IntoBattle("Brock's battle");
+        ToMainMenu(game.Battle); Shot("ks15_brocks_battle");
+        Win();
+        ReadTo("Boulder Badge from Brock"); Frames(10); Shot("ks16_the_boulder_badge");
+        ReadTo(null);
+        StepOnto("Kanto", 94, 82, Direction.Right);
+        ReadTo("Your mother sent these"); Frames(10); Shot("ks17_the_running_shoes");
+        ReadTo(null);
+        Left("the chapter's end");
+    }
+}

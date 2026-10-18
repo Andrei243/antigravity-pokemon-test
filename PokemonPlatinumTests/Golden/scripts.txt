@@ -9009,10 +9009,6 @@ from Daisy at 10,6 of PalletTown_RivalsHouse
 way -
   Daisy> Hi there! My brother's out somewhere, as usual.
   Daisy> He's talked about nothing but Pokémon since Grandpa came home.
-=== pallet_town_rivals_house.TownMap
-from Town Map at 6,4 of PalletTown_RivalsHouse
-way -
-  > It's a big map of Kanto. Barry's sister keeps it on the table.
 === pastoria_city.BlockGreatMarsh
 from the trigger at 610,810 of Sinnoh
 way -

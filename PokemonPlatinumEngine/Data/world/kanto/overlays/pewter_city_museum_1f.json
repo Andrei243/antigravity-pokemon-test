@@ -1,6 +1,7 @@
 {
   // The Pewter Museum of Science, ground floor (plan 19 · K3). The desk's ticket is pewter_city_museum_1f.txt's; the
-  // Old Amber, which a scientist gives in FireRed, waits for the fossils of plan 06 · R16 and K7, and only talks here
+  // Old Amber, which a scientist gives in FireRed, waits for the fossils of plan 06 · R16 and K7: its case stands empty
+  // until it has a look of its own
   "area": "pewter_city_museum_1f",
   "bgmTrack": "kanto/viridian",
   "triggers": [ { "trigger": 0, "script": "Ticket" }, { "trigger": 1, "script": "Ticket" }, { "trigger": 2, "script": "Ticket" } ],
@@ -14,7 +15,6 @@
       "name": "Scientist",
       "dialog": [ "This piece of amber has something inside. We're trying to work out what." ]
     },
-    "old_amber": { "name": "Old Amber", "dialog": [ "A lump of amber, glowing gold. Something seems to be sealed inside." ] },
     "scientist_2": {
       "name": "Scientist",
       "dialog": [ "We dig fossils out of Mt. Moon. They tell us how Pokémon lived long ago." ]

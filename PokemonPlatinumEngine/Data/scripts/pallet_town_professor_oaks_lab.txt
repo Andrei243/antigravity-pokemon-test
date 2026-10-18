@@ -195,8 +195,6 @@ label Parcel
   say "My dream has always been a complete guide to every Pokémon in the world. But I'm too old to travel the way I used to."
   say "So I want the two of you to finish it for me. Here, take one each."
   setflag FLAG_HIDE_POKEDEX
-  hide pokedex_1
-  hide pokedex_2
   setflag FLAG_HAS_POKEDEX
   fanfare keyitem
   text "{player} received the Pokédex from Professor Oak!"

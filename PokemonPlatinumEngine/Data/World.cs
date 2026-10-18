@@ -502,10 +502,11 @@ public static class WorldMapBuilder
                     if (map.InBounds(x, y)) map.SetGroundTile(x, y, TileType.Floor, map.IsSolid(x, y));
             switch (piece.Type)
             {
-                case PropType.Table or PropType.Counter or PropType.Rug or PropType.StoreShelf or PropType.LabDesk or PropType.Bench:
+                // A bed is one piece however wide (plan 19 · K3: the bedroom's, three metatiles by three, a bed for two as the Villa's is)
+                case PropType.Table or PropType.Counter or PropType.Rug or PropType.StoreShelf or PropType.LabDesk or PropType.Bench or PropType.Bed:
                     map.Props.Add(piece);
                     break;
-                case PropType.Stairs or PropType.Bed or PropType.LabMachine:
+                case PropType.Stairs or PropType.LabMachine:
                     for (int x = piece.X; x < piece.X + piece.Width; x++)
                         map.Props.Add(new Prop { Type = piece.Type, X = x, Y = piece.Y, Depth = piece.Depth });
                     break;

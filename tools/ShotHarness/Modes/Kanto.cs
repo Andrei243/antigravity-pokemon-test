@@ -48,6 +48,17 @@ partial class Harness
             ("k28_viridian_center_2f", "ViridianCity_PokemonCenter_2F", 7, 7, Direction.Up),
             ("k29_viridian_school", "ViridianCity_School", 5, 6, Direction.Up),
             ("k30_viridian_house", "ViridianCity_House", 5, 7, Direction.Up),
+            // Plan 19 · K3: Pewter City, its rooms, and Route 3
+            ("k33_pewter_day", "Kanto", 70, 80, Direction.Up),
+            ("k34_pewter_gym_outside", "Kanto", 63, 79, Direction.Up),
+            ("k35_pewter_museum_outside", "Kanto", 66, 69, Direction.Up),
+            ("k36_pewter_gym", "PewterCity_Gym", 6, 13, Direction.Up),
+            ("k37_pewter_museum_1f", "PewterCity_Museum_1F", 14, 8, Direction.Up),
+            ("k38_pewter_museum_2f", "PewterCity_Museum_2F", 11, 7, Direction.Up),
+            ("k39_pewter_center", "PewterCity_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("k40_pewter_mart", "PewterCity_Mart", 4, 6, Direction.Up),
+            ("k41_pewter_house_1", "PewterCity_House1", 4, 6, Direction.Up),
+            ("k42_route3", "Kanto", 125, 78, Direction.Right),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -62,6 +73,7 @@ partial class Harness
         At("Kanto", 74, 208, Direction.Up); Frames(2); Shot("k06_viridian_night");
         At("Kanto", 22, 198, Direction.Left); Frames(2); Shot("k31_route22_night");
         At("ViridianForest", 29, 58, Direction.Up); Frames(2); Shot("k32_viridian_forest_night");
+        At("Kanto", 70, 80, Direction.Up); Frames(2); Shot("k43_pewter_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 
@@ -103,6 +115,8 @@ partial class Harness
                 Timing("kanto " + label);
             }
         }
+        // Plan 19 · K3: the first chapter's scenes, in a new game of their own
+        KantoScenes();
         engine.NewGameRegion = "Sinnoh";
     }
 }

@@ -14,7 +14,6 @@ label Errand
   say "Hi, {player}! Grandpa asked you to help with his Pokédex? He asked my brother too."
   say "You'll be travelling all over Kanto, then. Here, this will help you find your way."
   setflag FLAG_HIDE_TOWN_MAP
-  hide town_map
   setflag FLAG_GOT_TOWN_MAP
   give "Town Map"
   say "Don't tell my brother I gave you that. He wanted it all to himself."
@@ -23,8 +22,3 @@ label Given
   say "Keep an eye on my little brother out there for me, would you? He's not as tough as he thinks."
   end
 
-
-# The map on the table, until it is given.
-script TownMap
-  text "It's a big map of Kanto. {rival}'s sister keeps it on the table."
-  end

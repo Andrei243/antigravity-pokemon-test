@@ -5,7 +5,7 @@
   "bgmTrack": "kanto/viridian_forest",
   "people": {
     "policeman": {
-      "name": "Guard",
+      "name": "Guard", "npcType": "Gentleman",
       "dialog": [
         "Beyond this gate lies the road to the Pokémon League.",
         "Only trainers who hold the Badges of Kanto's Gyms may pass. Come back when you have them."

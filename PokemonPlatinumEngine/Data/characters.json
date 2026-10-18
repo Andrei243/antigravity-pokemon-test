@@ -169,7 +169,14 @@
     "gym_guy": "Gentleman",
     "boy": "Youngster",
     "cable_club_receptionist": "Nurse",
-    "mg_deliveryman": "Clerk"
+    "mg_deliveryman": "Clerk",
+    // Plan 19 · K3: the looks of Route 2's rooms, Route 22's gate and Pewter City
+    "gba_kid": "Youngster",
+    "rocker": "Gentleman",
+    "cooltrainer_f": "Lass",
+    "man": "Gentleman",
+    "worker_m": "Gentleman",
+    "old_man_2": "Gentleman"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field

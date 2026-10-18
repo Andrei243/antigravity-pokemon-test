@@ -3,7 +3,6 @@
   "area": "pallet_town_rivals_house",
   "bgmTrack": "kanto/pallet",
   "people": {
-    "town_map": { "name": "Town Map", "script": "TownMap" },
     "daisy": {
       "name": "Daisy",
       "script": "Daisy",

@@ -272,7 +272,8 @@ public class KantoTests
                     for (int x = prop.X; x < prop.X + prop.Width; x++)
                     {
                         if (prop.Type is PropType.Window or PropType.Painting) Assert.Equal(TileType.Wall, room.GetGroundTile(x, y));
-                        else if (prop.IsSolid) Assert.True(room.IsSolid(x, y), $"{room.Name}: a {prop.Type} at {x},{y} stands on open floor");
+                        // (A bed lies over the tiles FireRed lets the player climb onto as well: plan 19 · K3)
+                        else if (prop.IsSolid && prop.Type != PropType.Bed) Assert.True(room.IsSolid(x, y), $"{room.Name}: a {prop.Type} at {x},{y} stands on open floor");
                     }
         }
         PropType[] In(string name) => BuiltMaps.Value[name].Props.Select(p => p.Type).Distinct().ToArray();
@@ -367,6 +368,31 @@ public class KantoTests
         Assert.Equal(Architecture.Evergreen, Overworld.ArchitectureAt(74, 208));
         // The gate to Viridian Forest's north, entered from its north side, is a building and no rock
         Assert.Contains(Overworld.PlacedBuildings, b => b.X0 <= 65 && b.X1 >= 66 && b.Y0 == 114);
+    }
+
+    [Fact]
+    public void PewterCityRouteThreeAndPewtersRoomsAreOpenAndFurnished()
+    {
+        // Plan 19 · K3: Pewter City, built in pale stone, with Route 3 east of it and its eight rooms
+        foreach (string key in new[] { "pewter_city", "route_3", "pewter_city_gym", "pewter_city_museum_1f", "pewter_city_pokemon_center_1f" })
+            Assert.Contains(key, Kanto.Index.Areas);
+        var pewter = Overworld.Areas.Single(a => a.Key == "pewter_city");
+        Assert.Equal("kanto/viridian", pewter.BgmTrack);
+        Assert.Equal(Architecture.Granite, Overworld.ArchitectureAt(70, 80));
+        Assert.Equal("kanto/route3", Overworld.Areas.Single(a => a.Key == "route_3").BgmTrack);
+        Assert.True(Walked.Value.Keys.Any(m => m.Name == "PewterCity_Gym"), "nobody walks into Pewter's Gym");
+        // The Gym's hall: boulders on its blocked tiles (K2 drew them as cabinets) and the two statues by the door
+        var gym = BuiltMaps.Value["PewterCity_Gym"];
+        var boulders = gym.Props.Where(p => p.Type == PropType.Boulder).ToList();
+        Assert.True(boulders.Count >= 8, $"only {boulders.Count} boulders in Pewter's Gym");
+        Assert.All(boulders, b => Assert.True(gym.IsSolid(b.X, b.Y), $"a boulder at {b.X},{b.Y} stands on open floor"));
+        Assert.Equal(2, gym.Props.Count(p => p.Type == PropType.TrainerStatue));
+        Assert.Equal("kanto/gym", gym.Areas.Single().BgmTrack);
+        // The bedroom's bed is one bed, three metatiles by three, its foot the one tile FireRed blocks
+        var room = BuiltMaps.Value["PalletTown_PlayersHouse_2F"];
+        var bed = Assert.Single(room.Props, p => p.Type == PropType.Bed);
+        Assert.Equal((1, 4, 3, 3), (bed.X, bed.Y, bed.Width, bed.Depth));
+        Assert.DoesNotContain(room.Props, p => p.Type == PropType.Chair);
     }
 
     [Fact]

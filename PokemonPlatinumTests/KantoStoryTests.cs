@@ -200,10 +200,9 @@ public class KantoStoryTests
         // The rival's sister gives the Town Map from her table
         game.Through("Kanto");
         game.Through("PalletTown_RivalsHouse");
-        Assert.NotNull(game.Present("town_map"));
         game.Talk("daisy");
         Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Town Map")!));
-        Assert.Null(game.Present("town_map"));
+        Assert.True(game.Story.Has("FLAG_GOT_TOWN_MAP"));
 
         // Viridian again: the road north is open and the old man tells how to catch
         game.Through("Kanto");
