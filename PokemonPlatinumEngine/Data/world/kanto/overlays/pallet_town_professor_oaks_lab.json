@@ -13,9 +13,9 @@
   "people": {
     "oaks_lab_prof_oak": { "name": "Prof. Oak", "script": "ProfOak", "still": true },
     "oaks_lab_rival": { "name": "{rival}", "script": "Rival", "still": true },
-    "bulbasaur_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "StarterBall" },
-    "squirtle_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "StarterBall" },
-    "charmander_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "StarterBall" },
+    "bulbasaur_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "StarterBall", "level": 1.45 },
+    "squirtle_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "StarterBall", "level": 1.45 },
+    "charmander_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "StarterBall", "level": 1.45 },
     "scientist": {
       "name": "Aide",
       "dialog": [

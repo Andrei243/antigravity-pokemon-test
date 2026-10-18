@@ -106,6 +106,8 @@
     { "x": 0, "z": 0, "width": 13, "depth": 16, "height": 1, "slopeX": 0, "slopeZ": 0 }
   ],
   "props": [
+    { "model": 0, "name": "gba:Boulder", "x": 5.5, "y": 0, "z": 3.5, "boxX": 5, "boxZ": 3, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Boulder", "x": 7.5, "y": 0, "z": 3.5, "boxX": 7, "boxZ": 3, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:Boulder", "x": 4.5, "y": 0, "z": 5.5, "boxX": 4, "boxZ": 5, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:Boulder", "x": 8.5, "y": 0, "z": 5.5, "boxX": 8, "boxZ": 5, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:Boulder", "x": 3.5, "y": 0, "z": 7.5, "boxX": 3, "boxZ": 7, "width": 1, "depth": 1, "height": 0 },

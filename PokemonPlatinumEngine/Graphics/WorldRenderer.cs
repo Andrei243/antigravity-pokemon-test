@@ -1069,6 +1069,8 @@ public sealed class WorldRenderer
                 // A boulder over a pit of the Distortion World sinks into its mouth (plan 02 · S12)
                 bool overPit = map.BoulderPits.ContainsKey((npc.GridX, npc.GridY)) && map.GetGroundTile(npc.GridX, npc.GridY) == TileType.Void;
                 float ground = overPit ? Relief.InPit(map, npc.GridX, npc.GridY, MathF.Abs(npc.StepOffsetX) + MathF.Abs(npc.StepOffsetY)) : Relief.At(map, bx, bz);
+                // A thing laid on furniture stands that far over the floor (plan 19 · K3: Oak's three Poké Balls on his table)
+                if (!overPit) ground += npc.RaisedBy;
                 things.Add((new Vector3(bx + nudge, ground, bz), kind));
                 continue;
             }

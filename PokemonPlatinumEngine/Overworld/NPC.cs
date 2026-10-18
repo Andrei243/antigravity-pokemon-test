@@ -65,6 +65,9 @@ public class NPC
     /// </summary>
     public float? Level { get; set; }
 
+    /// <summary>How far over the floor a thing laid on furniture is drawn (plan 19 · K3: Oak's three Poké Balls on his table); nought on the floor.</summary>
+    public float RaisedBy { get; set; }
+
     /// <summary>
     /// How many rows of their sprite are under the surface of what they stand in: a swimmer in the Resort Area's pool
     /// stands on its floor, in water to the chest (plan 01 · M10). Nought for anyone on dry ground.

@@ -123,7 +123,7 @@ public static class GbaFurniture
             // statues by the door (the layout's blocked metatiles; the statues are the signs FireRed reads there)
             ["gTileset_PewterGym"] = new (int, int, PropType)[]
             {
-                (0x2A2, 0x2A4, PropType.Boulder),
+                (0x2A2, 0x2A4, PropType.Boulder), (0x29B, 0x29B, PropType.Boulder),
                 (0x2B2, 0x2B2, PropType.TrainerStatue),
             },
         };

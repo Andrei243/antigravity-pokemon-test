@@ -109,7 +109,12 @@ partial class Harness
         ReadTo("Phew, I caught you"); Frames(20); Shot("ks02_oak_stops_you");
         // ---- the lab: Oak walks in, the rival has been waiting
         // The warp's fade, and the lab's own arrival after it
-        Until(() => game.Map.Name == "PalletTown_ProfessorOaksLab", "the lab", 900);
+        for (int i = 0; i < 1200 && game.Map.Name != "PalletTown_ProfessorOaksLab"; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        Until(() => engine.ScriptRunning || Box().IsActive, "the lab's arrival", 600);
         ReadTo("Gramps! Finally!"); Frames(20); Shot("ks03_the_lab");
         ReadTo(null);
         Left("in the lab");

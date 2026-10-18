@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
@@ -288,6 +289,21 @@ public class KantoStoryTests
         Assert.Equal("Volcano", FieldMoveRules.BadgeFor(FieldMove.Waterfall, "Kanto"));
         Assert.Equal("Forest", FieldMoveRules.BadgeFor(FieldMove.Cut, "Sinnoh"));
         Assert.Null(FieldMoveRules.BadgeFor(FieldMove.Flash, "Sinnoh"));
+    }
+
+    [Fact]
+    public void KantosRolesWithNoSongOfTheirOwnPlayKantosAndSinnohsAreAsTheyWere()
+    {
+        // FireRed fights its rival and Team Rocket to the trainers' theme and the Elite Four to the Leaders'
+        Assert.Equal("kanto/battle_trainer", MusicDirector.Resolve(MusicRole.BattleRival, "Kanto", MusicLibrary.Exists));
+        Assert.Equal("kanto/battle_trainer", MusicDirector.Resolve(MusicRole.BattleGalactic, "Kanto", MusicLibrary.Exists));
+        Assert.Equal("kanto/battle_gym", MusicDirector.Resolve(MusicRole.BattleEliteFour, "Kanto", MusicLibrary.Exists));
+        Assert.Equal("kanto/victory_gym", MusicDirector.Resolve(MusicRole.VictoryEliteFour, "Kanto", MusicLibrary.Exists));
+        Assert.Equal("kanto/rival", MusicDirector.Resolve(MusicRole.Rival, "Kanto", MusicLibrary.Exists));
+        // Sinnoh's roles resolve to what they did
+        Assert.Equal("common/battle_rival", MusicDirector.Resolve(MusicRole.BattleRival, "Sinnoh", MusicLibrary.Exists));
+        Assert.Equal("common/battle_elite_four", MusicDirector.Resolve(MusicRole.BattleEliteFour, "Sinnoh", MusicLibrary.Exists));
+        Assert.Equal("common/battle_trainer", MusicDirector.Resolve(MusicRole.BattleTrainer, "Sinnoh", MusicLibrary.Exists));
     }
 
     [Fact]

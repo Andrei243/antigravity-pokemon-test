@@ -2053,6 +2053,9 @@ public static class WorldMapBuilder
             }, map.Name);
             // Someone the original stands on a bridge's deck stands there, over whoever walks under it
             if (o.Y is > 0 && map.DeckAt(o.X, o.Z) is { } deck) npc.Level = deck;
+            // Something the overlay lays on a table stands on its top (plan 19 · K3)
+            // (drawn there only: they are spoken to from the floor before the furniture, as from beside it)
+            if (person.Level is { } above) npc.RaisedBy = above;
             // Scripts call them by their id in the area's file, and look their own scripts up in the area's
             npc.Key = o.Id;
             npc.LinesPlace = key;
