@@ -1,0 +1,103 @@
+{
+  // Route 104 (plan 21 · H2, part b): the road north out of Petalburg City along the sea, in two halves with Petalburg
+  // Woods between them. Mr. Briney's cottage stands on the southern beach (his boat to Dewford is plan 21 · H3's) and the
+  // Pretty Petal flower shop on the northern half. The rival who waits by the cottage when not met in Rustboro is left to plan 21 · H3, with the boat
+  "area": "route_104",
+  "bgmTrack": "hoenn/route104",
+  "trees": "Round",
+  "people": {
+    "route104_briney": { "name": "Mr. Briney", "npcType": "briney", "still": true, "dialog": [ "Ahoy! The sea's calling, but my old boat needs a little more work." ] },
+    "bug_catcher": {
+      "name": "Boy",
+      "dialog": [ "I'm looking for Bug Pokémon. The woods up ahead are full of them, but they're so dark!" ]
+    },
+    "girl_2": {
+      "name": "Girl",
+      "dialog": [ "Pokémon that like water show up where the grass meets the beach. I saw a Wingull just now!" ]
+    },
+    "boy_1": {
+      "name": "Boy",
+      "dialog": [ "If you see a Trainer standing still, watch out! The moment your eyes meet, the battle's on." ]
+    },
+    "woman_2": {
+      "name": "Woman",
+      "dialog": [ "Two trainers who stand side by side will battle together. That's a double battle. Twice the fun!" ]
+    },
+    "girl_3": {
+      "name": "Girl",
+      "dialog": [ "The flower shop up the road sells berries and the pail to water them with. My garden's all from there!" ]
+    },
+    "expert_f": {
+      "name": "Old Woman",
+      "dialog": [ "Mr. Briney used to sail every day. Since his Wingull friend got sick, his boat's just sat on the beach." ]
+    },
+    "boy_2": {
+      "name": "Boy",
+      "dialog": [ "Rustboro City's just up ahead! It's the biggest city around here, all stone and big buildings." ]
+    },
+    "woman_5": { "name": "Florist", "script": "WhiteHerbFlorist" },
+    "lass": {
+      "name": "Haley",
+      "trainer": {
+        "dialogueBefore": "Lass Haley: I picked my Pokémon because they're cute. Is that a problem?",
+        "dialogueAfter": "Lass Haley: Cute and beaten. That's not fair!"
+      }
+    },
+    "fisherman": {
+      "name": "Ivan",
+      "trainer": {
+        "dialogueBefore": "Fisherman Ivan: I fished up three Magikarp today! Let's see what they can do.",
+        "dialogueAfter": "Fisherman Ivan: Splash, splash, splash. That's all they did."
+      }
+    },
+    "twin": {
+      "name": "Gina & Mia",
+      "trainer": {
+        "dialogueBefore": "Twins Gina & Mia: Two of us, two of them! Get ready for a double battle!",
+        "dialogueAfter": "Twins Gina & Mia: We'll practise our teamwork some more..."
+      }
+    },
+    "twin_2": {
+      "name": "Gina & Mia",
+      "trainer": {
+        "dialogueBefore": "Twins Gina & Mia: Two of us, two of them! Get ready for a double battle!",
+        "dialogueAfter": "Twins Gina & Mia: We'll practise our teamwork some more..."
+      }
+    },
+    "rich_boy": {
+      "name": "Winston",
+      "trainer": {
+        "dialogueBefore": "Rich Boy Winston: My Pokémon wears only the finest. Can yours keep up?",
+        "dialogueAfter": "Rich Boy Winston: Money can't buy everything, it seems."
+      }
+    },
+    "woman_2_2": {
+      "name": "Cindy",
+      "trainer": {
+        "dialogueBefore": "Lady Cindy: A lady never refuses a battle. Shall we?",
+        "dialogueAfter": "Lady Cindy: How very rude of you to win so easily."
+      }
+    },
+    "youngster": {
+      "name": "Billy",
+      "trainer": {
+        "dialogueBefore": "Youngster Billy: My Zigzagoon goes all over the place! Try and keep up!",
+        "dialogueAfter": "Youngster Billy: It went all over the place. Mostly the wrong place."
+      }
+    },
+    "fisherman_2": {
+      "name": "Darian",
+      "trainer": {
+        "dialogueBefore": "Fisherman Darian: This Magikarp's the biggest I ever caught. It must be strong!",
+        "dialogueAfter": "Fisherman Darian: Big isn't the same as strong, I guess."
+      }
+    }
+  },
+  "signs": {
+    "Route104_EventScript_BrineysCottageSign": "Mr. Briney's Cottage",
+    "Route104_EventScript_RouteSignPetalburg": "Route 104\nPetalburg City to the south",
+    "Route104_EventScript_RouteSignRustboro": "Route 104\nRustboro City to the north",
+    "Route104_EventScript_FlowerShopSign": "Pretty Petal Flower Shop",
+    "Route104_EventScript_TrainerTipsDoubleBattles": "Trainer Tips\nTwo trainers who see you together will battle you together. Bring at least two Pokémon!"
+  }
+}

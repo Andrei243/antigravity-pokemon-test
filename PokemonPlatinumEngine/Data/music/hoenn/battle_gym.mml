@@ -1,0 +1,33 @@
+# A Gym Leader of Hoenn (Emerald's Leader battle theme): a hard-driving brass line in E minor over pounding timpani,
+# a pumping synth bass and stabs of strings, with a second strain that climbs through C and D. Original composition
+# for this game (plan 21 · H2, part b).
+title Battle! Gym Leader (Hoenn)
+tempo 162
+meter 4/4
+lowhptempo 1.07
+reverb 0.18
+
+track lead trumpet lowhp=sawlead vol=0.78 pan=0.05 rev=0.2
+  o5 e8 r8 e8 r8 e8 r8 d8 r8 | o5 e8 r8 g8 r8 b4 b4 | L o5 e4. g8 b4 g4 | o5 c4 e8 g8 o6 c4 o5 g4 |
+  o5 d4. f+8 a4 f+4 | o5 b2 b4 r4 | o5 e4. g8 b4 o6 e4 | o5 c4 e8 g8 e4 c4 |
+  o5 d4 f+8 a8 o6 d4 o5 a4 | o5 b2. r4 |
+
+track brass brass unless=lowhp vol=0.36 pan=-0.25 rev=0.22
+  o4 (e g b)8 r8 (e g b)8 r8 (e g b)8 r8 (d f+ a)8 r8 | (e g b)8 r8 (e g b)8 r8 (e g b)4 (e g b)4 | L o4 (e g b)1 | (c e g)1 |
+  (d f+ a)1 | (b d+ f+)1 | (e g b)1 | (c e g)1 |
+  (d f+ a)1 | (b d+ f+)1 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 e8 r8 e8 r8 e8 r8 d8 r8 | o3 e8 r8 e8 r8 e4 e4 | L [ o2 e8 o3 e8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 d8 o3 d8 ]4 | [ o2 b8 o3 b8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 c8 o3 c8 ]4 |
+  [ o2 d8 o3 d8 ]4 | [ o2 b8 o3 b8 ]4 |
+
+track drums kit vol=0.5 rev=0.1
+  v100 (b c)8 r8 b8 r8 (b c)8 r8 b8 r8 | (b c)8 r8 b8 r8 s16 s16 s16 s16 s8 s8 | L [ b8 r8 s8 b8 r8 b8 s8 r8 | ]7 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.42 pan=0.15 rev=0.1
+  r1 | r1 | L v62 [ h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 | ]8
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 e16 r16 e16 r16 r4 e16 r16 e16 r16 r4 | ]8

@@ -1298,6 +1298,7 @@ script HoennNewGame
   setflag FLAG_HIDE_PETALBURG_GYM_WALLY
   setflag FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
   setflag FLAG_HIDE_PETALBURG_CITY_SCOTT
+  call HoennChapterTwo
   return
 
 
@@ -1334,4 +1335,30 @@ script HoennOpeningDone
   clearflag FLAG_HIDE_ROUTE_101_BOY
   setflag FLAG_HAS_POKEDEX
   setflag FLAG_HAS_RUNNING_SHOES
+  return
+
+# The people of Hoenn's second stretch, Route 104 to Rusturf Tunnel (plan 21 · H2, part b), hidden until their scenes:
+# the grunts of Team Aqua in Petalburg Woods, Rustboro City and the tunnel, the Devon employee who chases the thief, the
+# rival in Rustboro until the PokéNav and on Route 104, the scientist with Match Call, Mr. Briney away from home and his
+# Peeko in the tunnel, Wanda and her young man in the tunnel until the PokéNav, the florist of Route 104, the employee
+# of Route 116 and Mr. Stone's second place in his office. HoennNewGame calls it; a save from before it was written
+# (version 24) runs it as it loads. It may only set flags and variables, and ends in return.
+script HoennChapterTwo
+  setflag FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
+  setflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
+  setflag FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
+  setflag FLAG_HIDE_RUSTBORO_CITY_SCIENTIST
+  setflag FLAG_HIDE_ROUTE_104_MR_BRINEY
+  setflag FLAG_HIDE_ROUTE_104_RIVAL
+  setflag FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST
+  setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
+  setflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_BRINEY
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
+  setflag FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_MR_STONE_2
+  if flag FLAG_RECEIVED_POKENAV return
+  setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_WANDA
   return

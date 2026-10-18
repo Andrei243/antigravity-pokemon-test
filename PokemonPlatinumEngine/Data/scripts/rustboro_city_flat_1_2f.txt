@@ -1,0 +1,6 @@
+# The upper floor of a block of flats in Rustboro City (plan 21 · H2, part b): Walda's dolls, which are only looked at
+
+
+script Doll
+  sayown
+  end

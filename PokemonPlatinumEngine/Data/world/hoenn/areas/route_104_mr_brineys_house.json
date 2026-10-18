@@ -1,0 +1,27 @@
+{
+  "key": "route_104_mr_brineys_house",
+  "index": 226,
+  "name": "Route 104",
+  "matrix": 175,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG",
+  "nightMusic": "MUS_PETALBURG",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "route_104", "toWarp": 0 },
+    { "x": 6, "z": 8, "to": "route_104", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "brineys_house_briney", "looks": "expert_m", "movement": "walk_sequence_south_west_north_east", "x": 5, "z": 3, "facing": 1, "rangeX": 3, "rangeZ": 3, "hiddenBy": "FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY", "script": "Route104_MrBrineysHouse_EventScript_Briney" },
+    { "id": "brineys_house_peeko", "looks": "wingull", "movement": "look_south", "x": 6, "z": 3, "facing": 1, "rangeX": 3, "rangeZ": 3, "hiddenBy": "FLAG_HIDE_BRINEYS_HOUSE_PEEKO", "script": "Route104_MrBrineysHouse_EventScript_Peeko" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "hoenn_mom",
+    "type": 1,
+    "class": "Mom",
+    "area": "littleroot_town_brendans_house_1f"
+  },
+  {
+    "id": "mr_stone",
+    "type": 2,
+    "class": "President",
+    "area": "rustboro_city_devon_corp_3f"
+  },
+  {
+    "id": "hoenn_rival",
+    "type": 11,
+    "class": "Pokémon Trainer",
+    "area": "rustboro_city"
+  }
+]

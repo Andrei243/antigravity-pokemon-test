@@ -1,0 +1,42 @@
+{
+  // Rustboro City's Gym (plan 21 · H2, part b), its hall of rock as Emerald lays it out. Roxanne, her trainers and the guide are rustboro_city_gym.txt's
+  "area": "rustboro_city_gym",
+  "bgmTrack": "hoenn/gym",
+  "arenaType": "Rock",
+  "people": {
+    "roxanne": {
+      "name": "Roxanne",
+      "script": "Roxanne",
+      "still": true
+    },
+    "man_2": {
+      "name": "Gym Guide",
+      "script": "GymGuide"
+    },
+    "youngster": {
+      "name": "Josh",
+      "trainer": {
+        "dialogueBefore": "Youngster Josh: Don't take this Gym lightly! Roxanne's rocks will crush you!",
+        "dialogueAfter": "Youngster Josh: You might actually have a chance..."
+      }
+    },
+    "youngster_2": {
+      "name": "Tommy",
+      "trainer": {
+        "dialogueBefore": "Youngster Tommy: If you can't beat me, you'll never beat Roxanne!",
+        "dialogueAfter": "Youngster Tommy: OK, you can beat me. Roxanne's another story."
+      }
+    },
+    "hiker": {
+      "name": "Marc",
+      "trainer": {
+        "dialogueBefore": "Hiker Marc: My Geodude and I climbed every hill in Hoenn. A little trainer won't stop us!",
+        "dialogueAfter": "Hiker Marc: Stopped. By a little trainer."
+      }
+    }
+  },
+  "signs": {
+    "RustboroCity_Gym_EventScript_LeftGymStatue": "Rustboro City Pokémon Gym\nLeader: Roxanne",
+    "RustboroCity_Gym_EventScript_RightGymStatue": "Rustboro City Pokémon Gym\nLeader: Roxanne"
+  }
+}

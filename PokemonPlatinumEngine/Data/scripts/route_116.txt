@@ -1,0 +1,56 @@
+# Route 116 (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route116/scripts.inc).
+#
+# VAR_ROUTE116_STATE 1: the Devon Goods stolen, Mr. Briney waits frantic at the mouth of Rusturf Tunnel, and the first
+# step before it (the area's trigger 0) brings him to the player; 2: told. Until the PokéNav, Wanda's young man waits
+# by the Tunnelers' Rest House (he goes into the tunnel to dig once it is had, rustboro_city_devon_corp_3f.txt).
+
+
+script BrineyTrigger
+  scene "Mr Briney at the tunnel"
+  face route116_briney player
+  emote route116_briney exclaim
+  call BrineyPleads
+  setvar VAR_ROUTE116_STATE 2
+  endscene
+  end
+
+
+script Briney
+  face route116_briney player
+  call BrineyPleads
+  setvar VAR_ROUTE116_STATE 2
+  end
+
+
+script BrineyPleads
+  speaker "Mr. Briney"
+  say "Oh, help! Please, you must help me! A ruffian in a striped shirt snatched my dear Peeko!"
+  say "He ran into the tunnel with her, and my old legs can't keep up. My poor little Wingull..."
+  return
+
+
+script WandasBoyfriend
+  if flag FLAG_RECOVERED_DEVON_GOODS goto After
+  if flag FLAG_DEVON_GOODS_STOLEN goto Stolen
+  say "My girlfriend Wanda lives in Verdanturf, on the far side of the hill. If only the tunnel went all the way through!"
+  end
+label Stolen
+  say "Some fellow in a striped shirt just shoved past me and ran into the tunnel. What's the hurry?"
+  end
+label After
+  say "That ruffian came running back out of the tunnel and fled. Good riddance, I say!"
+  end
+
+
+# The Devon employee who hands out Repeat Balls (Emerald's DevonEmployee: on the road once Steven has his letter, a
+# later chapter's)
+script DevonEmployee
+  if flag FLAG_RECEIVED_REPEAT_BALL goto Explain
+  say "Oh, it's you! Thank you again for your help. Please, take one of our newest Poké Balls."
+  give "Repeat Ball"
+  setflag FLAG_RECEIVED_REPEAT_BALL
+  end
+label Explain
+  say "A Repeat Ball works best on Pokémon you've caught before. Devon's latest invention!"
+  end

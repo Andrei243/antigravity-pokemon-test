@@ -30,7 +30,31 @@
     { "name": "PetalburgCity_Mart", "matrix": 59, "area": "petalburg_city_mart", "trees": "Round", "setting": "Indoors" },
     // Plan 21 · H2: Petalburg's Gym, a row of rooms one behind another; only the hall at its door is walked until
     // Norman's Balance Badge (H4), its doors on into the rooms kept shut by the overlay
-    { "name": "PetalburgCity_Gym", "matrix": 54, "area": "petalburg_city_gym", "trees": "Round", "setting": "Indoors" }
+    { "name": "PetalburgCity_Gym", "matrix": 54, "area": "petalburg_city_gym", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H2, part b: Petalburg Woods between Route 104's halves, Rusturf Tunnel east of Route 116, and the rooms
+    // of Route 104, Rustboro City and Route 116
+    { "name": "PetalburgWoods", "matrix": 198, "area": "petalburg_woods", "trees": "Round" },
+    { "name": "RusturfTunnel", "matrix": 191, "area": "rusturf_tunnel", "trees": "Round", "setting": "Cave" },
+    { "name": "RustboroCity_DevonCorp_1F", "matrix": 82, "area": "rustboro_city_devon_corp_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_DevonCorp_2F", "matrix": 83, "area": "rustboro_city_devon_corp_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_DevonCorp_3F", "matrix": 84, "area": "rustboro_city_devon_corp_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_Gym", "matrix": 85, "area": "rustboro_city_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_PokemonSchool", "matrix": 86, "area": "rustboro_city_pokemon_school", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_PokemonCenter_1F", "matrix": 87, "area": "rustboro_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_PokemonCenter_2F", "matrix": 88, "area": "rustboro_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_Mart", "matrix": 89, "area": "rustboro_city_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_Flat1_1F", "matrix": 90, "area": "rustboro_city_flat_1_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_Flat1_2F", "matrix": 91, "area": "rustboro_city_flat_1_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_House1", "matrix": 92, "area": "rustboro_city_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_CuttersHouse", "matrix": 93, "area": "rustboro_city_cutters_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_House2", "matrix": 94, "area": "rustboro_city_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_Flat2_1F", "matrix": 95, "area": "rustboro_city_flat_2_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_Flat2_2F", "matrix": 96, "area": "rustboro_city_flat_2_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_Flat2_3F", "matrix": 97, "area": "rustboro_city_flat_2_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RustboroCity_House3", "matrix": 98, "area": "rustboro_city_house_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route104_MrBrineysHouse", "matrix": 175, "area": "route_104_mr_brineys_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route104_PrettyPetalFlowerShop", "matrix": 176, "area": "route_104_pretty_petal_flower_shop", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route116_TunnelersRestHouse", "matrix": 184, "area": "route_116_tunnelers_rest_house", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -41,6 +65,12 @@
     "petalburg_city_wallys_house", "petalburg_city_house_1", "petalburg_city_house_2",
     "petalburg_city_pokemon_center_1f", "petalburg_city_pokemon_center_2f", "petalburg_city_mart",
     // Plan 21 · H2: Petalburg's Gym, where Norman sends the player out with Wally
-    "petalburg_city_gym"
+    "petalburg_city_gym",
+    // Plan 21 · H2, part b: Route 104, Petalburg Woods, Rustboro City, Route 116 and Rusturf Tunnel, with their rooms
+    "route_104", "petalburg_woods", "rustboro_city", "route_116", "rusturf_tunnel",
+    "rustboro_city_devon_corp_1f", "rustboro_city_devon_corp_2f", "rustboro_city_devon_corp_3f", "rustboro_city_gym", "rustboro_city_pokemon_school",
+    "rustboro_city_pokemon_center_1f", "rustboro_city_pokemon_center_2f", "rustboro_city_mart", "rustboro_city_flat_1_1f", "rustboro_city_flat_1_2f",
+    "rustboro_city_house_1", "rustboro_city_cutters_house", "rustboro_city_house_2", "rustboro_city_flat_2_1f", "rustboro_city_flat_2_2f",
+    "rustboro_city_flat_2_3f", "rustboro_city_house_3", "route_104_mr_brineys_house", "route_104_pretty_petal_flower_shop", "route_116_tunnelers_rest_house"
   ]
 }

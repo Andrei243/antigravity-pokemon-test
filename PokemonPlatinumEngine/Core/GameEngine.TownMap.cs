@@ -75,6 +75,12 @@ public partial class GameEngine
             townMapFromPokegear = false;
             OpenPokegear(PokegearCard.Map);
         }
+        else if (townMapFromPokeNav)
+        {
+            // The map page goes back to the PokéNav, on its own page (plan 21 · H2, part b)
+            townMapFromPokeNav = false;
+            OpenPokeNav(PokeNavPage.Map);
+        }
         else if (townMapFromBag)
         {
             flow.State = GameState.BagMenu;

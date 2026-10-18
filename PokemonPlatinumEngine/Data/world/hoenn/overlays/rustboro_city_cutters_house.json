@@ -1,0 +1,17 @@
+{
+  // The Cutter's house in Rustboro City (plan 21 · H2, part b). HM01 is rustboro_city_cutters_house.txt's
+  "area": "rustboro_city_cutters_house",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "pokefan_m": {
+      "name": "Cutter",
+      "script": "Cutter"
+    },
+    "lass": {
+      "name": "Girl",
+      "dialog": [
+        "My father planted every tree around this house. Then he cut them all into shapes. He loves both jobs!"
+      ]
+    }
+  }
+}

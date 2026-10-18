@@ -1,0 +1,19 @@
+{
+  // A house in Rustboro City (plan 21 · H2, part b)
+  "area": "rustboro_city_house_2",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "pokefan_f": {
+      "name": "Woman",
+      "dialog": [
+        "My daughter wants to be a Gym Leader like Roxanne. She studies every night!"
+      ]
+    },
+    "little_girl": {
+      "name": "Little Girl",
+      "dialog": [
+        "When I grow up, I'll have a Gym full of Rock types. Big ones!"
+      ]
+    }
+  }
+}

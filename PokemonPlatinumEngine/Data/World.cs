@@ -2038,6 +2038,15 @@ public static class WorldMapBuilder
         "heatran" => "Heatran",
         "regigigas" => "Regigigas",
         "cresselia" => "Cresselia",
+        // Plan 21 · H2, part b: Mr. Briney's Peeko, the Pokémon of Rustboro's flats, and Walda's dolls (stood as the
+        // Pokémon they are made after, small as they are: a doll has no look of its own yet)
+        "wingull" => "Wingull",
+        "skitty" => "Skitty",
+        "skitty_doll" => "Skitty",
+        "treecko_doll" => "Treecko",
+        "torchic_doll" => "Torchic",
+        "mudkip_doll" => "Mudkip",
+        "pikachu_doll" => "Pikachu",
         _ => null
     };
 

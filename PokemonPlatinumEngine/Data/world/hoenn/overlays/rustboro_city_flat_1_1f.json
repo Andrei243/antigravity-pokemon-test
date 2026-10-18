@@ -1,0 +1,19 @@
+{
+  // A block of flats in Rustboro City, its ground floor (plan 21 · H2, part b)
+  "area": "rustboro_city_flat_1_1f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "man_3": {
+      "name": "Man",
+      "dialog": [
+        "Our building has a garden on the roof. Well, a potted plant. It's a start."
+      ]
+    },
+    "woman_5": {
+      "name": "Woman",
+      "dialog": [
+        "The family upstairs has a little girl who adores Pokémon dolls. Her room is full of them!"
+      ]
+    }
+  }
+}

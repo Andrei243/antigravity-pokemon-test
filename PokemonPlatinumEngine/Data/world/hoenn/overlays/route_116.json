@@ -1,0 +1,95 @@
+{
+  // Route 116 (plan 21 · H2, part b), east out of Rustboro City to Rusturf Tunnel. Mr. Briney, frantic at the tunnel's
+  // mouth while the grunt holds his Peeko inside, is route_116.txt's (trigger 0). East of the tunnel's mouth the road
+  // runs on toward Verdanturf Town past rocks only Rock Smash moves (plan 21 · H3), and the ways that lead there are shut
+  "area": "route_116",
+  "bgmTrack": "hoenn/route104",
+  "trees": "Round",
+  "locked": [ 3, 4 ],
+  "triggers": [
+    { "trigger": 0, "script": "BrineyTrigger" }
+  ],
+  "people": {
+    "route116_briney": { "name": "Mr. Briney", "npcType": "briney", "script": "Briney", "still": true },
+    "man_2": { "name": "Devon Employee", "npcType": "devon_employee", "script": "DevonEmployee" },
+    "route116_wandas_bf": { "name": "Young Man", "script": "WandasBoyfriend" },
+    "maniac": { "name": "Man", "dialog": [ "I dropped my glasses somewhere around here. I can't see a thing without them!" ] },
+    "youngster": {
+      "name": "Joey",
+      "trainer": {
+        "dialogueBefore": "Youngster Joey: My Machop's been training every day! It's going to flatten you!",
+        "dialogueAfter": "Youngster Joey: Flattened. Me, I mean."
+      }
+    },
+    "bug_catcher": {
+      "name": "Jose",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Jose: I've been waiting all day for a trainer to walk by. Battle!",
+        "dialogueAfter": "Bug Catcher Jose: Waited all day just to lose. Oh well."
+      }
+    },
+    "hiker": {
+      "name": "Clark",
+      "trainer": {
+        "dialogueBefore": "Hiker Clark: The mountains made me tough. Let's see how tough you are!",
+        "dialogueAfter": "Hiker Clark: Hah! You're tougher than a mountain path."
+      }
+    },
+    "lass": {
+      "name": "Janice",
+      "trainer": {
+        "dialogueBefore": "Lass Janice: My Marill is round and blue and very, very strong!",
+        "dialogueAfter": "Lass Janice: Still round and blue. Less strong."
+      }
+    },
+    "girl_3": {
+      "name": "Karen",
+      "trainer": {
+        "dialogueBefore": "School Kid Karen: Let me show you what I learned at the Trainers' School!",
+        "dialogueAfter": "School Kid Karen: I'll have to study harder."
+      }
+    },
+    "school_kid_m": {
+      "name": "Jerry",
+      "trainer": {
+        "dialogueBefore": "School Kid Jerry: Our teacher says a battle is a test. I'm going to ace this one!",
+        "dialogueAfter": "School Kid Jerry: I failed the test..."
+      }
+    },
+    "woman_2": {
+      "name": "Sarah",
+      "trainer": {
+        "dialogueBefore": "Lady Sarah: My Pokémon and I take a stroll every afternoon. A battle would be a pleasant change.",
+        "dialogueAfter": "Lady Sarah: Most pleasant indeed, though not for us."
+      }
+    },
+    "boy_2": {
+      "name": "Dawson",
+      "trainer": {
+        "dialogueBefore": "Rich Boy Dawson: Do you know how much my Pokémon cost? You can't beat money!",
+        "dialogueAfter": "Rich Boy Dawson: I should have bought stronger ones."
+      }
+    },
+    "youngster_2": {
+      "name": "Johnson",
+      "trainer": {
+        "dialogueBefore": "Youngster Johnson: Hey! You looked at me! That means we battle!",
+        "dialogueAfter": "Youngster Johnson: Next time I'll look the other way."
+      }
+    },
+    "hiker_2": {
+      "name": "Devan",
+      "trainer": {
+        "dialogueBefore": "Hiker Devan: Two Geodude, solid as boulders. Ready to roll?",
+        "dialogueAfter": "Hiker Devan: Rolled right over us, you did."
+      }
+    }
+  },
+  "signs": {
+    "Route116_EventScript_RouteSignRustboro": "Route 116\nRustboro City to the west",
+    "Route116_EventScript_RusturfTunnelSign": "Rusturf Tunnel\nDigging under way. The far end isn't through yet.",
+    "Route116_EventScript_TunnelersRestHouseSign": "Tunnelers' Rest House",
+    "Route116_EventScript_TrainerTipsBToStopEvolution": "Trainer Tips\nIf your Pokémon starts to evolve and you'd rather it didn't, press B to stop it.",
+    "Route116_EventScript_TrainerTipsBagHasPockets": "Trainer Tips\nYour bag has pockets for every kind of item. Move between them with left and right."
+  }
+}

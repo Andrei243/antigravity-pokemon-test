@@ -223,7 +223,9 @@ public enum Architecture
     /// <summary>White clapboard under sky-blue hip roofs with shutters: the crossroads town between the routes (Oldale, plan 21 · H1).</summary>
     Meadow,
     /// <summary>Plaster under ochre hip roofs with a chimney: the quiet city of the Gym by the pond (Petalburg, plan 21 · H1).</summary>
-    Parkside
+    Parkside,
+    /// <summary>Pale cut stone under brick-red gable roofs with a chimney: the stone city of Devon and the school (Rustboro, plan 21 · H2, part b).</summary>
+    Quarry
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

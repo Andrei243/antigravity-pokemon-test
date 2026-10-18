@@ -1,0 +1,24 @@
+{
+  // Devon Corporation's lobby (plan 21 · H2, part b). The guard at the stairs keeps visitors downstairs until Mr. Stone has asked for the player (rustboro_city_devon_corp_1f.txt)
+  "area": "rustboro_city_devon_corp_1f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "devon_employee": {
+      "name": "Devon Employee",
+      "dialog": [
+        "Our research covers everything from Poké Balls to the newest gadgets. And rocks. Lots of rocks."
+      ]
+    },
+    "devon_corp_stair_guard": { "name": "Devon Employee", "script": "StairGuard", "still": true },
+    "woman_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "Welcome to the Devon Corporation. We make products for trainers all over Hoenn."
+      ]
+    }
+  },
+  "signs": {
+    "RustboroCity_DevonCorp_1F_EventScript_ProductsDisplay": "Devon's products: Poké Balls of every kind, Potions, and the PokéNav, a trainer's best friend on the road.",
+    "RustboroCity_DevonCorp_1F_EventScript_RocksMetalDisplay": "Rocks and metals dug from the hills around Rustboro. Devon began here, with a pickaxe."
+  }
+}

@@ -1,0 +1,86 @@
+# Rusturf Tunnel (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/RusturfTunnel/scripts.inc).
+#
+# VAR_RUSTURF_TUNNEL_STATE 2: the grunt with the Devon Goods has fled into the tunnel with Mr. Briney's Peeko and stands
+# at its dead end; the first step toward him (the area's triggers 1 and 2) has him back away; 3 cornered. Beaten, he
+# gives the goods back and runs, and Mr. Briney comes for his Peeko (FLAG_RECOVERED_DEVON_GOODS,
+# VAR_RUSTBORO_CITY_STATE 4). Once the PokéNav is had, Wanda's young man digs at the rocks, with Wanda on their far side:
+# her cousin Wally is to stay with her family in Verdanturf. Breaking through is plan 21 · H3's, with Rock Smash.
+
+
+script OnEnter
+  if var VAR_RUSTURF_TUNNEL_STATE != 2 end
+  place rusturf_tunnel_peeko 13 4 left
+  place rusturf_tunnel_grunt 13 5 left
+  end
+
+
+script GruntBacksUp
+  scene "The grunt cornered"
+  face rusturf_tunnel_grunt player
+  emote rusturf_tunnel_grunt exclaim
+  speaker "Team Aqua Grunt"
+  say "Huh? You followed me all the way in here? Stay back! Don't come any closer!"
+  walk rusturf_tunnel_grunt back right 1
+  setvar VAR_RUSTURF_TUNNEL_STATE 3
+  endscene
+  end
+
+
+script Peeko
+  cry "Wingull"
+  text "Peeko: Pihyoo..."
+  text "The Wingull looks frightened."
+  end
+
+
+script Grunt
+  scene "The Devon Goods recovered"
+  face rusturf_tunnel_grunt player
+  music "hoenn/eye_galactic"
+  speaker "Team Aqua Grunt"
+  say "Grr... What a dead end! Whoever dug this tunnel gave up halfway. And now I'm stuck with you!"
+  say "Fine! If it's a battle you want, it's a battle you'll get!"
+  battle rusturf_tunnel_grunt as "hoenn_grunt_rusturf_tunnel"
+  say "Ugh, I lost? This job was supposed to be easy!"
+  say "Take your stupid parts, then! I was told to grab them, not to fight kids over them!"
+  give "Devon Goods"
+  say "Team Aqua won't forget this. Out of my way!"
+  walk rusturf_tunnel_grunt left 8 fast
+  hide rusturf_tunnel_grunt
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
+  music area
+  clearflag FLAG_HIDE_RUSTURF_TUNNEL_BRINEY
+  place rusturf_tunnel_briney 5 4 right
+  show rusturf_tunnel_briney
+  walk rusturf_tunnel_briney right 6
+  cry "Wingull"
+  speaker "Mr. Briney"
+  say "Peeko! Oh, my dear Peeko, you're safe! I was so worried about you!"
+  face rusturf_tunnel_briney player
+  say "And you got her back for me? Thank you, thank you! I'm Briney. I live in the cottage on Route 104's beach."
+  say "If ever there's anything I can do for you, come and see me. I'll never forget this!"
+  walk rusturf_tunnel_briney left 6
+  hide rusturf_tunnel_briney
+  hide rusturf_tunnel_peeko
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_BRINEY
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
+  clearflag FLAG_DEVON_GOODS_STOLEN
+  setflag FLAG_RECOVERED_DEVON_GOODS
+  setvar VAR_RUSTBORO_CITY_STATE 4
+  setvar VAR_BRINEY_HOUSE_STATE 1
+  setflag FLAG_HIDE_ROUTE_116_MR_BRINEY
+  endscene
+  end
+
+
+script WandasBoyfriend
+  say "Wanda! Can you hear me? I'll dig through to you, I promise! Nothing's going to keep us apart!"
+  say "Oh, sorry. Wanda's my girlfriend. She's just on the other side of these rocks, but they're too hard to move."
+  say "If only someone had a Pokémon strong enough to smash them..."
+  end
+
+
+script Wanda
+  say "Is somebody there? My cousin Wally is coming to stay with us in Verdanturf. I hope this tunnel is open by then!"
+  end

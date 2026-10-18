@@ -107,3 +107,39 @@ label Rematch
 label Waiting
   say "Ralph again. I'm still by the water on Route 32, waiting for our battle. The fish can wait."
   end
+
+
+# ------------------------------------------------------------------ Hoenn's Match Call (plan 21 · H2, part b)
+# The PokéNav's numbers (Data/world/hoenn/phone.json): calls the player makes from its Match Call page. Nobody of
+# Hoenn rings on their own yet.
+
+# Mom, at home in Littleroot Town
+script HoennMom
+  speaker "Mom"
+  random 2
+  if result == 1 goto Two
+  say "{player}? Oh, how lovely to hear from you! Your father would be so proud to see how far you've come."
+  say "Don't forget to rest, dear. Your Pokémon need it as much as you do!"
+  end
+label Two
+  say "Hello, dear! The house still smells of fresh paint. Come home whenever you like and tell me everything."
+  end
+
+
+# Mr. Stone, the president of Devon
+script MrStone
+  speaker "Mr. Stone"
+  say "Ah, {player}! How is the PokéNav treating you? My son Steven is in Dewford Town, if you're on your way."
+  end
+
+
+# The rival, the hero the player isn't
+script HoennRival
+  speaker "{rival}"
+  random 2
+  if result == 1 goto Two
+  say "Hi, {player}! I'm out looking for Pokémon for my dad's research. How's your team doing?"
+  end
+label Two
+  say "{player}! Did you know some Pokémon only appear at night? I've been staying up late to find them!"
+  end

@@ -1,0 +1,16 @@
+# The Cutter's house in Rustboro City (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/RustboroCity_CuttersHouse/scripts.inc): HM01, Cut, given once
+# (FLAG_RECEIVED_HM_CUT). The Stone Badge lets a Pokémon use it outside battle (hoenn.json's gates).
+
+
+script Cutter
+  if flag FLAG_RECEIVED_HM_CUT goto Explain
+  say "Ah, a young trainer with a keen eye! You look like someone who'd put this to good use."
+  say "I've spent my life trimming trees and hedges. Here, take my favourite move. A gift from one cutter to another!"
+  give "HM01"
+  setflag FLAG_RECEIVED_HM_CUT
+  end
+label Explain
+  say "HM01 teaches Cut. It clears away the thin trees that stand in your way."
+  say "You'll need the Stone Badge from our Gym before your Pokémon will use it outside a battle, mind."
+  end

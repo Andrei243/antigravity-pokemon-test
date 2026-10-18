@@ -1,0 +1,22 @@
+# Mr. Briney's cottage on Route 104 (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/Route104_MrBrineysHouse/scripts.inc).
+#
+# VAR_BRINEY_HOUSE_STATE 0: the old sailor at home with Peeko, his Wingull, his boat idle on the beach; 1 Peeko is safe,
+# and he would sail anywhere for the player. The sailing itself, to Dewford Town, is plan 21 · H3's.
+
+
+script Briney
+  speaker "Mr. Briney"
+  if var VAR_BRINEY_HOUSE_STATE >= 1 goto Grateful
+  say "Ahoy! I'm Briney. Once I sailed every day. These days I'd rather sit here with Peeko and watch the waves."
+  end
+label Grateful
+  say "Ahoy, my friend! You saved my Peeko, and an old sailor never forgets a debt."
+  say "Whenever you need to cross the water, my boat is yours. Just give me a little while to get her seaworthy!"
+  end
+
+
+script Peeko
+  cry "Wingull"
+  text "Peeko: Pihyoo!"
+  end

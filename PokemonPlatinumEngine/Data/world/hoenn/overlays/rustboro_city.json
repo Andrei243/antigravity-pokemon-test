@@ -1,0 +1,84 @@
+{
+  // Rustboro City (plan 21 · H2, part b), the stone city of Devon and the Trainers' School. Its scenes are
+  // rustboro_city.txt's: the Devon Goods snatched outside the Gym once Roxanne is beaten (triggers 0 to 4), the employee
+  // who begs the player to get them back and thanks them on their return (5 to 12), and the rival at the south edge once
+  // the PokéNav is had (13 to 20). The scientist who shows Match Call stands at Devon's door for its tutorial
+  "area": "rustboro_city",
+  "bgmTrack": "hoenn/rustboro",
+  "trees": "Round",
+  "architecture": "Quarry",
+  "triggers": [
+    { "trigger": 0, "script": "StolenGoods" },
+    { "trigger": 1, "script": "StolenGoods" },
+    { "trigger": 2, "script": "StolenGoods" },
+    { "trigger": 3, "script": "StolenGoods" },
+    { "trigger": 4, "script": "StolenGoods" },
+    { "trigger": 5, "script": "HelpGetGoods" },
+    { "trigger": 6, "script": "HelpGetGoods" },
+    { "trigger": 7, "script": "HelpGetGoods" },
+    { "trigger": 8, "script": "HelpGetGoods" },
+    { "trigger": 9, "script": "ReturnGoods" },
+    { "trigger": 10, "script": "ReturnGoods" },
+    { "trigger": 11, "script": "ReturnGoods" },
+    { "trigger": 12, "script": "ReturnGoods" },
+    { "trigger": 13, "script": "RivalTrigger" },
+    { "trigger": 14, "script": "RivalTrigger" },
+    { "trigger": 15, "script": "RivalTrigger" },
+    { "trigger": 16, "script": "RivalTrigger" },
+    { "trigger": 17, "script": "RivalTrigger" },
+    { "trigger": 18, "script": "RivalTrigger" },
+    { "trigger": 19, "script": "RivalTrigger" },
+    { "trigger": 20, "script": "RivalTrigger" }
+  ],
+  "people": {
+    "rustboro_devon_employee": { "name": "Devon Employee", "npcType": "devon_employee", "script": "DevonEmployee", "still": true },
+    "rustboro_grunt": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "Out of my way!" ] },
+    "rustboro_rival": { "name": "{rival}", "npcType": "Rival:MAY:BRENDAN", "script": "Rival", "still": true },
+    "rustboro_scientist": { "name": "Scientist", "still": true, "dialog": [ "Match Call lets you talk to the trainers you've registered, wherever you are!" ] },
+    "devon_employee": {
+      "name": "Devon Employee",
+      "dialog": [ "Devon makes everything a trainer needs, from Poké Balls to the newest gadgets. I'm proud to work there!" ]
+    },
+    "woman_5": {
+      "name": "Woman",
+      "dialog": [ "Rustboro is built from the stone of the hills around it. Even the school is made of rock!" ]
+    },
+    "fat_man": { "name": "Man", "script": "FatMan" },
+    "ninja_boy": {
+      "name": "Boy",
+      "dialog": [ "I go to the Trainers' School. Today we learned about status conditions. I fell asleep. Ironic, huh?" ]
+    },
+    "twin": {
+      "name": "Girl",
+      "dialog": [ "My big sister says Roxanne was the cleverest student the school ever had. Now she's the Gym Leader!" ]
+    },
+    "boy_2": { "name": "Boy", "script": "Boy2" },
+    "man_3": { "name": "Man", "script": "Man1" },
+    "rustboro_little_boy": {
+      "name": "Little Boy",
+      "dialog": [ "We're playing a game! You have to guess which Pokémon I'm thinking of. It's always Zigzagoon." ]
+    },
+    "rustboro_little_girl": {
+      "name": "Little Girl",
+      "dialog": [ "Zigzagoon! I guessed it again!" ]
+    },
+    "man_4": {
+      "name": "Man",
+      "dialog": [ "The Cutter's house by the trees is where you go if you want to learn how to clear a path. He's a kind fellow." ]
+    },
+    "boy_1": {
+      "name": "Boy",
+      "dialog": [ "The tunnel east of town was dug by one man with his bare hands! He stopped when the Whismur got upset by the noise." ]
+    }
+  },
+  "signs": {
+    "RustboroCity_EventScript_GymSign": "Rustboro City Pokémon Gym\nLeader: Roxanne\nA scholar of the strength of stone.",
+    "RustboroCity_EventScript_TrainersSchoolSign": "Pokémon Trainers' School\nLearn the basics, then go beyond them!",
+    "RustboroCity_EventScript_CitySign": "Rustboro City\nA city of stone, where the newest ideas are cut.",
+    "RustboroCity_EventScript_DevonCorpSign": "Devon Corporation\nFor every trainer, wherever the road leads.",
+    "RustboroCity_EventScript_TunnelSign": "Rusturf Tunnel\nThe way east, toward Verdanturf Town",
+    "RustboroCity_EventScript_CuttersHouseSign": "The Cutter's House",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
+    "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
+  }
+}

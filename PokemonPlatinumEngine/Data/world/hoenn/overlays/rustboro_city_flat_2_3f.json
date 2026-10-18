@@ -1,0 +1,19 @@
+{
+  // The top floor of a block of flats in Rustboro City (plan 21 · H2, part b)
+  "area": "rustboro_city_flat_2_3f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "devon_employee": {
+      "name": "Devon Employee",
+      "dialog": [
+        "I live right across from work. Very handy, except I can never say I'm stuck in traffic."
+      ]
+    },
+    "woman_1": {
+      "name": "Woman",
+      "dialog": [
+        "From up here you can see the whole city. And the sea, on a clear day!"
+      ]
+    }
+  }
+}

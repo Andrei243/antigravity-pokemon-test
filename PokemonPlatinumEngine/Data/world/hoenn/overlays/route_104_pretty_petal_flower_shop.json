@@ -1,0 +1,19 @@
+{
+  // The Pretty Petal flower shop on Route 104 (plan 21 · H2, part b). The Wailmer Pail and the day's berry are route_104_pretty_petal_flower_shop.txt's
+  "area": "route_104_pretty_petal_flower_shop",
+  "bgmTrack": "hoenn/petalburg",
+  "people": {
+    "flower_shop_owner": {
+      "name": "Florist",
+      "script": "ShopOwner"
+    },
+    "girl_3": {
+      "name": "Girl",
+      "script": "WailmerPailGirl"
+    },
+    "girl_1": {
+      "name": "Girl",
+      "script": "RandomBerryGirl"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "rustboro_city_house_3",
+  "index": 149,
+  "name": "Rustboro City",
+  "matrix": 98,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "rustboro_city", "toWarp": 11 },
+    { "x": 6, "z": 8, "to": "rustboro_city", "toWarp": 11 }
+  ],
+  "objects": [
+    { "id": "old_man", "looks": "old_man", "movement": "look_east", "x": 4, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_House3_EventScript_OldMan" },
+    { "id": "old_woman", "looks": "old_woman", "movement": "look_west", "x": 7, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_House3_EventScript_OldWoman" },
+    { "id": "pikachu", "looks": "pikachu", "movement": "look_south", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "RustboroCity_House3_EventScript_Pekachu" }
+  ],
+  "signs": [],
+  "triggers": []
+}

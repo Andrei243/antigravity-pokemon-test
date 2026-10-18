@@ -1,0 +1,228 @@
+# Rustboro City (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/RustboroCity/scripts.inc).
+#
+# VAR_RUSTBORO_CITY_STATE, as Emerald counts it: 1 Roxanne beaten, and the first steps west of the Gym (triggers 0 to 4)
+# see a grunt of Team Aqua run off east with the Devon Goods and an employee of Devon after him; 2 the employee waits
+# by the road to Route 116 and begs the player to get them back (triggers 5 to 8); 3 asked; 4 the goods recovered in
+# Rusturf Tunnel, and the employee takes the player up to the president (triggers 9 to 12, or spoken to); 5 gone up;
+# 6 the PokéNav had, and a scientist of Devon adds Match Call to it as the player comes out; 7 the rival waits at the
+# south edge of town (triggers 13 to 20) and registers in it; 8 met.
+
+
+# A scientist of Devon catches the player at the door with Match Call (Emerald's ScientistAddMatchCall)
+script OnEnter
+  if var VAR_RUSTBORO_CITY_STATE != 6 end
+  scene "Match Call"
+  clearflag FLAG_HIDE_RUSTBORO_CITY_SCIENTIST
+  place rustboro_scientist 13 139 up
+  show rustboro_scientist
+  walk rustboro_scientist up 1
+  face rustboro_scientist player
+  face player rustboro_scientist
+  speaker "Scientist"
+  say "Oh, good, I caught you! Our president just gave you a PokéNav, didn't he? It's missing something important."
+  say "Let me add Match Call to it. With Match Call, you can talk to the people you've registered, wherever they are."
+  setflag FLAG_HAS_MATCH_CALL
+  setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
+  addcontact hoenn_mom
+  addcontact mr_stone
+  say "There! I've put in your mother's number, and our president's. Open the PokéNav from your menu to try it."
+  say "Trainers you meet on the road may want to swap numbers too. They'll call you when they want a rematch!"
+  walk rustboro_scientist down 1
+  hide rustboro_scientist
+  setflag FLAG_HIDE_RUSTBORO_CITY_SCIENTIST
+  setvar VAR_ROUTE104_STATE 1
+  setvar VAR_RUSTBORO_CITY_STATE 7
+  endscene
+  end
+
+
+# The theft, seen from the road west of the Gym (Emerald's StolenGoodsScene)
+script StolenGoods
+  scene "The Devon Goods stolen"
+  music "hoenn/eye_galactic"
+  clearflag FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
+  place rustboro_grunt 13 143 right
+  show rustboro_grunt
+  emote player exclaim
+  speaker "Team Aqua Grunt"
+  say "Outta my way! Coming through!"
+  walk rustboro_grunt right 7 fast
+  hide rustboro_grunt
+  setflag FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
+  clearflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
+  place rustboro_devon_employee 13 143 right
+  show rustboro_devon_employee
+  speaker "Devon Employee"
+  say "W-wait! Stop, thief! Give those back! Those goods belong to Devon!"
+  walk rustboro_devon_employee right 7 fast
+  hide rustboro_devon_employee
+  music area
+  place rustboro_devon_employee 30 132 right
+  show rustboro_devon_employee
+  setflag FLAG_DEVON_GOODS_STOLEN
+  setvar VAR_RUSTBORO_CITY_STATE 2
+  setvar VAR_RUSTURF_TUNNEL_STATE 2
+  setvar VAR_ROUTE116_STATE 1
+  clearflag FLAG_HIDE_ROUTE_116_MR_BRINEY
+  clearflag FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
+  clearflag FLAG_HIDE_RUSTURF_TUNNEL_AQUA_GRUNT
+  setflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
+  setflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
+  endscene
+  end
+
+
+# The employee by the road east begs for help (Emerald's EmployeeAskToGetGoods)
+script HelpGetGoods
+  scene "Devon's employee asks for help"
+  face rustboro_devon_employee player
+  emote rustboro_devon_employee exclaim
+  speaker "Devon Employee"
+  say "You there! You're a trainer, aren't you? That was Team Aqua! They snatched a package of our parts right out of my hands!"
+  say "The thief ran off east, toward Rusturf Tunnel. Please, you have to get the Devon Goods back!"
+  setflag FLAG_INTERACTED_WITH_DEVON_EMPLOYEE_GOODS_STOLEN
+  setvar VAR_RUSTBORO_CITY_STATE 3
+  endscene
+  end
+
+
+script DevonEmployee
+  if not flag FLAG_RECOVERED_DEVON_GOODS goto Hurry
+  call ReturnGoods
+  end
+label Hurry
+  say "The thief went east, into Rusturf Tunnel. Please hurry! Those parts are very important!"
+  end
+
+
+# The goods back (Emerald's ReturnGoods): a Great Ball, and up to the president
+script ReturnGoods
+  if flag FLAG_RETURNED_DEVON_GOODS end
+  scene "The Devon Goods returned"
+  face rustboro_devon_employee player
+  speaker "Devon Employee"
+  say "Ah! You got the Devon Goods back from that thief! You're amazing! Thank you, thank you!"
+  say "Here, please take this. It's a Great Ball, one of our very own!"
+  give "Great Ball"
+  say "Oh, and our president would like to thank you himself. Please, come with me!"
+  setflag FLAG_RETURNED_DEVON_GOODS
+  setflag FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
+  hide rustboro_devon_employee
+  setvar VAR_RUSTBORO_CITY_STATE 5
+  warp "RustboroCity_DevonCorp_3F" 2 2 right
+  endscene
+  end
+
+
+# The rival at the south edge of town, once the PokéNav is had (Emerald's RivalEncounter)
+script RivalTrigger
+  if flag FLAG_MET_RIVAL_RUSTBORO end
+  scene "The rival in Rustboro"
+  music "hoenn/rival"
+  face rustboro_rival player
+  emote rustboro_rival exclaim
+  call RivalMeets
+  endscene
+  end
+
+
+script Rival
+  face rustboro_rival player
+  if not flag FLAG_MET_RIVAL_RUSTBORO goto First
+  if flag FLAG_DEFEATED_RIVAL_RUSTBORO goto Hint
+  speaker "{rival}"
+  say "Ready for that battle now, {player}?"
+  call AskToBattle
+  end
+label First
+  music "hoenn/rival"
+  call RivalMeets
+  end
+label Hint
+  call BrineyHint
+  end
+
+
+script RivalMeets
+  speaker "{rival}"
+  say "{player}! I didn't expect to see you in Rustboro. Wait, is that a PokéNav? Devon only just made those!"
+  say "Here, let's register each other. That way we can talk whenever we want!"
+  addcontact hoenn_rival
+  setflag FLAG_MET_RIVAL_RUSTBORO
+  setflag FLAG_ENABLE_RIVAL_MATCH_CALL
+  setvar VAR_RUSTBORO_CITY_STATE 8
+  setvar VAR_ROUTE104_STATE 2
+  say "So... how strong have you got since Route 103? Want to find out?"
+  call AskToBattle
+  return
+
+
+script AskToBattle
+  ask "Battle {rival}?"
+  if no goto Later
+  say "All right! Don't hold back, now!"
+  if girl goto Brendan
+  if starter "Treecko" goto MayTreecko
+  if starter "Torchic" goto MayTorchic
+  battle rustboro_rival as "hoenn_may_rustboro_mudkip"
+  goto Beaten
+label MayTreecko
+  battle rustboro_rival as "hoenn_may_rustboro_treecko"
+  goto Beaten
+label MayTorchic
+  battle rustboro_rival as "hoenn_may_rustboro_torchic"
+  goto Beaten
+label Brendan
+  if starter "Treecko" goto BrendanTreecko
+  if starter "Torchic" goto BrendanTorchic
+  battle rustboro_rival as "hoenn_brendan_rustboro_mudkip"
+  goto Beaten
+label BrendanTreecko
+  battle rustboro_rival as "hoenn_brendan_rustboro_treecko"
+  goto Beaten
+label BrendanTorchic
+  battle rustboro_rival as "hoenn_brendan_rustboro_torchic"
+label Beaten
+  setflag FLAG_DEFEATED_RIVAL_RUSTBORO
+  say "You've been training hard, haven't you? I'll have to work twice as hard to keep up!"
+  call BrineyHint
+  music area
+  return
+label Later
+  say "Oh, OK. Come and find me when you're ready. I'll be right here!"
+  music area
+  return
+
+
+script BrineyHint
+  say "Hey, have you heard of Mr. Briney? He's an old sailor who lives by the beach on Route 104."
+  say "They say he'll take people across the sea in his boat. Dewford Town's just a short sail away!"
+  return
+
+
+script FatMan
+  if flag FLAG_DEVON_GOODS_STOLEN goto Saw
+  say "Devon's building is the tallest in town. They say its president collects rare stones."
+  end
+label Saw
+  say "Did you see that fellow in the striped shirt? He ran past me so fast, my hat nearly blew off!"
+  end
+
+
+script Boy2
+  if flag FLAG_RETURNED_DEVON_GOODS goto Briney
+  say "The tunnel east of town goes nowhere. They stopped digging halfway because of the Pokémon living there."
+  end
+label Briney
+  say "I saw old Mr. Briney hurrying home with his Wingull. He looked so happy!"
+  end
+
+
+script Man1
+  if badge stone goto Badge
+  say "The Gym Leader here is a teacher at the school, too. Clever and strong. Quite the combination!"
+  end
+label Badge
+  say "Oh, that's a Stone Badge! You beat Roxanne? You'll go far, I'm sure of it."
+  end

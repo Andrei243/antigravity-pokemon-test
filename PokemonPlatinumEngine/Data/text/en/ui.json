@@ -297,6 +297,7 @@
     "pokemon": "POKÉMON",
     "bag": "BAG",
     "pokegear": "POKéGEAR",
+    "pokenav": "POKéNAV",
     "save": "SAVE",
     "options": "OPTIONS",
     "close": "CLOSE",
@@ -806,7 +807,41 @@
       "buena": "Buena",
       "bill": "Bill",
       "bikeShop": "Bike Shop",
-      "baoba": "Baoba"
+      "baoba": "Baoba",
+      "hoennMom": "Mom",
+      "mrStone": "Mr. Stone",
+      "hoennRival": "{rival}"
+    }
+  },
+  "pokenav": {
+    "title": "POKéNAV",
+    "page": {
+      "Map": "HOENN MAP",
+      "Condition": "CONDITION",
+      "MatchCall": "MATCH CALL",
+      "Ribbons": "RIBBONS"
+    },
+    "hints": {
+      "open": "Open the map",
+      "call": "Call",
+      "pages": "Pages",
+      "pokemon": "Pokémon"
+    },
+    "map": {
+      "body": "Open the map to look over all of Hoenn, town by town and route by route."
+    },
+    "matchCall": {
+      "empty": "Nobody is registered yet.",
+      "where": "WHERE TO FIND THEM",
+      "registered": "{name} is registered in your PokéNav!"
+    },
+    "condition": {
+      "empty": "No Pokémon to look at."
+    },
+    "ribbons": {
+      "count": "{count} ribbons",
+      "one": "1 ribbon",
+      "none": "No ribbons yet."
     }
   },
   "poketch": {

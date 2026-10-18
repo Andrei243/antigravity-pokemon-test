@@ -1,0 +1,29 @@
+{
+  // Rustboro City's Pokémon Center (plan 21 · H2, part b), its floor as Emerald lays it out
+  "area": "rustboro_city_pokemon_center_1f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "rustboro_nurse": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "man_1": {
+      "name": "Man",
+      "dialog": [
+        "Each of my Pokémon has its own nature. Some are hasty, some are calm. It changes how they grow."
+      ]
+    },
+    "boy_1": {
+      "name": "Boy",
+      "dialog": [
+        "The people at Devon made the Poké Balls in my bag. Rustboro's a city of clever folk!"
+      ]
+    },
+    "girl_3": {
+      "name": "Girl",
+      "dialog": [
+        "The Rustboro Gym is all Rock types. My poor Torchic didn't stand a chance."
+      ]
+    }
+  }
+}

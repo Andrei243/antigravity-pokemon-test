@@ -76,6 +76,8 @@ public enum GameState
     ArcadeBoard,
     /// <summary>The Pokégear's cards: the phone, the map card and the radio (plan 20 · J3).</summary>
     Pokegear,
+    /// <summary>The PokéNav's pages: the map, the condition, Match Call and the ribbons (plan 21 · H2, part b).</summary>
+    PokeNav,
     /// <summary>A stone panel of the Ruins of Alph's chambers (plan 20 · J5).</summary>
     AlphPuzzle,
     Transition,
@@ -1050,6 +1052,9 @@ public partial class GameEngine
             case GameState.Pokegear:
                 UpdatePokegear(dt);
                 break;
+            case GameState.PokeNav:
+                UpdatePokeNav(dt);
+                break;
             case GameState.AlphPuzzle:
                 // The script that opened the panel hears whether the picture was put back together (plan 20 · J5)
                 flow.AlphPuzzleScreen.Update(dt);
@@ -1296,6 +1301,7 @@ public partial class GameEngine
             flow.StartMenu.HasPokedex = flow.Story.Has(StoryState.PokedexFlag);
             flow.StartMenu.HasPokemon = flow.Party.Count > 0;
             flow.StartMenu.HasPokegear = HasPokegear;
+            flow.StartMenu.HasPokeNav = HasPokeNav;
             flow.StartMenu.Open();
             // The team's menu sprites are asked for as the menu opens, so that they are there by the time a screen
             // shows them: only the opening's are made at the start, and a sprite long unshown is let go (plan 03 · D13)
@@ -1990,6 +1996,9 @@ public partial class GameEngine
             case StartMenuChoice.Pokegear:
                 OpenPokegear();
                 break;
+            case StartMenuChoice.PokeNav:
+                OpenPokeNav();
+                break;
             case StartMenuChoice.Trainer:
                 flow.State = GameState.TrainerCard;
                 flow.TrainerCardScreen.Open(world.Portrait(PlayerIdentity.Character), TrainerCardNow().RegionPages.Count);
@@ -2374,6 +2383,9 @@ public partial class GameEngine
                 break;
             case GameState.Pokegear:
                 flow.PokegearScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.PokeNav:
+                flow.PokeNavScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.AlphPuzzle:
                 flow.AlphPuzzleScreen.Draw(VirtualWidth, VirtualHeight);
