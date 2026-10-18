@@ -517,6 +517,6 @@ public static partial class SoundBank
                 d.Bell(0.44f, 0.5f, N(84), 3.14f, 1.1f, 0.09f, 3f);
                 return Finish(d.S, 0.46f);
         }
-        return null;
+        return MakeMoveSoundY13(name);
     }
 }
