@@ -6,7 +6,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "One tower burned. The bird left, and never came back."
         ],
         "text": [
-          "",
-          ""
+          "Acum trei sute de ani erau aici două turnuri, și pe fiecare își făcea cuib o pasăre mare.",
+          "Un turn a ars. Pasărea a plecat și nu s-a mai întors niciodată."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Grandpa's told me about the towers a hundred times. I still like hearing it."
         ],
         "text": [
-          ""
+          "Bunicul mi-a povestit de turnuri de o sută de ori. Tot îmi place s-o aud."
         ]
       }
     }

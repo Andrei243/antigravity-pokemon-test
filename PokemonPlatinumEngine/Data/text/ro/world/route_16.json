@@ -6,7 +6,7 @@
           "Snorlax"
         ],
         "text": [
-          ""
+          "Snorlax"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Lao"
         ],
         "text": [
-          ""
+          "Lao"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Biker Lao: What're you looking at? You wanna race?"
         ],
         "text": [
-          ""
+          "Motociclist Lao: Ce te uiți? Vrei o cursă?"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Biker Lao: Aw, man. I got left in the dust."
         ],
         "text": [
-          ""
+          "Motociclist Lao: Of, frate. Am rămas în urmă, în praf."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Koji"
         ],
         "text": [
-          ""
+          "Koji"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Cue Ball Koji: This road's ours! Pay the toll or battle!"
         ],
         "text": [
-          ""
+          "Golan Koji: Drumul ăsta e al nostru! Plătește taxa sau luptă!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Cue Ball Koji: Okay, okay, no toll for you."
         ],
         "text": [
-          ""
+          "Golan Koji: Bine, bine, pentru tine nu e taxă."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Luke"
         ],
         "text": [
-          ""
+          "Luke"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Cue Ball Luke: Nobody passes without a fight. That's the rule round here!"
         ],
         "text": [
-          ""
+          "Golan Luke: Nimeni nu trece fără luptă. Asta-i regula pe aici!"
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "Cue Ball Luke: Fine. Pass."
         ],
         "text": [
-          ""
+          "Golan Luke: Fie. Treci."
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Ruben"
         ],
         "text": [
-          ""
+          "Ruben"
         ]
       },
       "before": {
@@ -102,7 +102,7 @@
           "Biker Ruben: Hey kid! Ever hear an engine roar like my Pokémon?"
         ],
         "text": [
-          ""
+          "Motociclist Ruben: Hei, puștiule! Ai auzit vreodată un motor care să urle ca Pokémonii mei?"
         ]
       },
       "after": {
@@ -110,7 +110,7 @@
           "Biker Ruben: My engine stalled."
         ],
         "text": [
-          ""
+          "Motociclist Ruben: Mi s-a înecat motorul."
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Hideo"
         ],
         "text": [
-          ""
+          "Hideo"
         ]
       },
       "before": {
@@ -128,7 +128,7 @@
           "Biker Hideo: We're the toughest gang on the Cycling Road!"
         ],
         "text": [
-          ""
+          "Motociclist Hideo: Suntem cea mai dură bandă de pe Drumul Bicicliștilor!"
         ]
       },
       "after": {
@@ -136,7 +136,7 @@
           "Biker Hideo: Not so tough, it turns out."
         ],
         "text": [
-          ""
+          "Motociclist Hideo: Nu chiar așa de dură, până la urmă."
         ]
       }
     },
@@ -146,7 +146,7 @@
           "Camron"
         ],
         "text": [
-          ""
+          "Camron"
         ]
       },
       "before": {
@@ -154,7 +154,7 @@
           "Cue Ball Camron: You've got guts coming down here alone!"
         ],
         "text": [
-          ""
+          "Golan Camron: Ai curaj să vii singur pe aici!"
         ]
       },
       "after": {
@@ -162,7 +162,7 @@
           "Cue Ball Camron: Guts and a strong team, apparently."
         ],
         "text": [
-          ""
+          "Golan Camron: Curaj și o echipă puternică, se pare."
         ]
       }
     },
@@ -172,7 +172,7 @@
           "Lea"
         ],
         "text": [
-          ""
+          "Lea"
         ]
       },
       "before": {
@@ -180,7 +180,7 @@
           "Young Couple Lea and Jed: We're on a date! Battle us together, if you dare!"
         ],
         "text": [
-          ""
+          "Cuplu tânăr Lea și Jed: Suntem la o întâlnire! Luptă cu noi amândoi, dacă îndrăznești!"
         ]
       },
       "after": {
@@ -188,7 +188,7 @@
           "Young Couple Lea and Jed: Losing together isn't so bad."
         ],
         "text": [
-          ""
+          "Cuplu tânăr Lea și Jed: Să pierzi împreună nu-i chiar așa de rău."
         ]
       }
     },
@@ -198,7 +198,7 @@
           "Jed"
         ],
         "text": [
-          ""
+          "Jed"
         ]
       },
       "before": {
@@ -206,7 +206,7 @@
           "Young Couple Lea and Jed: We're on a date! Battle us together, if you dare!"
         ],
         "text": [
-          ""
+          "Cuplu tânăr Lea și Jed: Suntem la o întâlnire! Luptă cu noi amândoi, dacă îndrăznești!"
         ]
       },
       "after": {
@@ -214,7 +214,7 @@
           "Young Couple Lea and Jed: Losing together isn't so bad."
         ],
         "text": [
-          ""
+          "Cuplu tânăr Lea și Jed: Să pierzi împreună nu-i chiar așa de rău."
         ]
       }
     }
@@ -225,7 +225,7 @@
         "Route 16\nCeladon City - Fuchsia City"
       ],
       "text": [
-        ""
+        "Ruta 16\nOrașul Celadon - Orașul Fuchsia"
       ]
     },
     "Route16_EventScript_CyclingRoadSign": {
@@ -233,7 +233,7 @@
         "Cycling Road\nNo pedestrians allowed!"
       ],
       "text": [
-        ""
+        "Drumul Bicicliștilor\nAccesul pietonilor interzis!"
       ]
     }
   }

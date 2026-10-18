@@ -5,7 +5,7 @@
         "Sabrina"
       ],
       "text": [
-        ""
+        "Sabrina"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "I knew you would come. I had a vision of your arrival, three years ago."
       ],
       "text": [
-        ""
+        "Știam că vei veni. Am avut o viziune a sosirii tale, acum trei ani."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Psychic power has been mine since I was a child. I don't enjoy battling, but if you insist..."
       ],
       "text": [
-        ""
+        "Am puteri psihice de când eram copil. Nu-mi plac luptele, dar dacă insiști..."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Very well. I'll show you my powers!"
       ],
       "text": [
-        ""
+        "Prea bine. Îți voi arăta puterile mele!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "This loss... It shocks me. But I won't deny it. Take the Marsh Badge."
       ],
       "text": [
-        ""
+        "Înfrângerea asta... Mă șochează. Dar n-o voi nega. Ia Insigna Smârc."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player} received the Marsh Badge from Sabrina!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Smârc de la Sabrina!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "With the Marsh Badge, your Pokémon can use Rock Smash outside of battle."
       ],
       "text": [
-        ""
+        "Cu Insigna Smârc, Pokémonii tăi pot folosi Spărgător de Pietre în afara luptei."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "And please take this TM. Its move suits someone of strong mind."
       ],
       "text": [
-        ""
+        "Și te rog să iei acest TM. Mișcarea lui se potrivește cuiva cu mintea puternică."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "TM04 is Calm Mind. It quiets the mind, raising both Special Attack and Special Defense."
       ],
       "text": [
-        ""
+        "TM04 e Minte Calmă. Liniștește mintea și crește atât Atacul Special, cât și Apărarea Specială."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "I foresaw your victory, and still I fought. Perhaps the future isn't fixed after all."
       ],
       "text": [
-        ""
+        "Ți-am prevăzut victoria și totuși am luptat. Poate că viitorul nu e scris, până la urmă."
       ]
     }
   ],
@@ -87,7 +87,7 @@
         "Gym Guide"
       ],
       "text": [
-        ""
+        "Ghidul Arenei"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Yo, champ in the making! Sabrina's Psychic Pokémon are tough. Bug and Ghost moves hit them hard."
       ],
       "text": [
-        ""
+        "Salut, viitor campion! Pokémonii Psihici ai Sabrinei sunt duri. Insectele și Fantomele îi lovesc tare."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "The pads on the floor warp you between rooms. Find the right ones and you'll reach her!"
       ],
       "text": [
-        ""
+        "Plăcile de pe podea te teleportează între camere. Găsește-le pe cele bune și ajungi la ea!"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "You beat Sabrina! I never would've predicted that. Ha!"
       ],
       "text": [
-        ""
+        "Ai învins-o pe Sabrina! N-aș fi prezis asta niciodată. Ha!"
       ]
     }
   ],
@@ -121,7 +121,7 @@
         "Saffron City Pokémon Gym. Leader: Sabrina. Winning trainers: {rival}."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Saffron. Lider: Sabrina. Antrenori învingători: {rival}."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Saffron City Pokémon Gym. Leader: Sabrina. Winning trainers: {rival}, {player}."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Saffron. Lider: Sabrina. Antrenori învingători: {rival}, {player}."
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Silph Co. makes the best Poké Balls in the world. And soon, they'll make them for us!"
         ],
         "text": [
-          ""
+          "Silph S.A. face cele mai bune Poké Balluri din lume. Și curând le va face pentru noi!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "What's a kid doing out on the streets? Go home!"
         ],
         "text": [
-          ""
+          "Ce caută un copil pe străzi? Du-te acasă!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Silph Co. has a secret project. The boss wants it badly."
         ],
         "text": [
-          ""
+          "Silph S.A. are un proiect secret. Șeful îl vrea cu orice preț."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "I'm keeping an eye on the Fan Club. They know too much about Pokémon."
         ],
         "text": [
-          ""
+          "Stau cu ochii pe Clubul Fanilor. Știu prea multe despre Pokémoni."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Team Rocket ran off! Saffron City feels like a city again."
         ],
         "text": [
-          ""
+          "Echipa Rocket a fugit! Orașul Saffron e iar un oraș adevărat."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I'm back at work at Silph Co. now. Thanks to you, I hear!"
         ],
         "text": [
-          ""
+          "M-am întors la lucru la Silph S.A. Datorită ție, am auzit!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Saffron City is the heart of Kanto. Every road leads here."
         ],
         "text": [
-          ""
+          "Orașul Saffron e inima Kanto-ului. Toate drumurile duc aici."
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -150,7 +150,7 @@
           "This is my Pidgeot. It can fly me anywhere I've been!"
         ],
         "text": [
-          ""
+          "Acesta e Pidgeot-ul meu. Mă poate duce în zbor oriunde am mai fost!"
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Pidgeot"
         ],
         "text": [
-          ""
+          "Pidgeot"
         ]
       },
       "dialog": {
@@ -168,7 +168,7 @@
           "Pidgeooo!"
         ],
         "text": [
-          ""
+          "Pidgeooo!"
         ]
       }
     },
@@ -178,7 +178,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "dialog": {
@@ -186,7 +186,7 @@
           "Is it true you sent Team Rocket packing? That's amazing!"
         ],
         "text": [
-          ""
+          "E adevărat că ai pus pe fugă Echipa Rocket? E uimitor!"
         ]
       }
     }
@@ -197,7 +197,7 @@
         "Saffron City\nShining, Golden Land of Commerce"
       ],
       "text": [
-        ""
+        "Orașul Saffron\nȚinutul Strălucitor și Auriu al Negoțului"
       ]
     },
     "SaffronCity_EventScript_DojoSign": {
@@ -205,7 +205,7 @@
         "Fighting Dojo"
       ],
       "text": [
-        ""
+        "Dojoul de Luptă"
       ]
     },
     "SaffronCity_EventScript_SilphProductSign": {
@@ -213,7 +213,7 @@
         "Silph's latest product!\nThe new Poké Ball, on sale soon!"
       ],
       "text": [
-        ""
+        "Cel mai nou produs Silph!\nNoul Poké Ball, în curând la vânzare!"
       ]
     },
     "SaffronCity_EventScript_TrainerTips2": {
@@ -221,7 +221,7 @@
         "Trainer Tips\nA Full Heal cures every status problem at once!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nUn Leac Total vindecă dintr-odată orice problemă de stare!"
       ]
     },
     "SaffronCity_EventScript_SilphCoSign": {
@@ -229,7 +229,7 @@
         "Silph Co. Office Building"
       ],
       "text": [
-        ""
+        "Clădirea de birouri Silph S.A."
       ]
     },
     "SaffronCity_EventScript_TrainerTips1": {
@@ -237,7 +237,7 @@
         "Trainer Tips\nThe Escape Rope takes you out of a cave in a flash!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nFrânghia te scoate dintr-o peșteră cât ai clipi!"
       ]
     },
     "SaffronCity_EventScript_GymSign": {
@@ -245,7 +245,7 @@
         "Saffron City Pokémon Gym\nLeader: Sabrina\nThe Master of Psychic Pokémon!"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Saffron\nLider: Sabrina\nStăpâna Pokémonilor Psihici!"
       ]
     },
     "SaffronCity_EventScript_MrPsychicsHouseSign": {
@@ -253,7 +253,7 @@
         "Mr. Psychic's House"
       ],
       "text": [
-        ""
+        "Casa Domnului Psihic"
       ]
     },
     "SaffronCity_EventScript_TrainerFanClubSign": {
@@ -261,7 +261,7 @@
         "Pokémon Trainer Fan Club\nOpen to everyone who loves strong trainers!"
       ],
       "text": [
-        ""
+        "Clubul Fanilor Antrenorilor Pokémon\nDeschis tuturor celor care iubesc antrenorii puternici!"
       ]
     }
   }

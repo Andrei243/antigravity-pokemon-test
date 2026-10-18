@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Goldenrod Department Store! Every floor has something for you."
         ],
         "text": [
-          ""
+          "Bun venit la Magazinul Universal Goldenrod! Fiecare etaj are ceva pentru tine."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I come here every morning for the sales. You never know what you'll find."
         ],
         "text": [
-          ""
+          "Vin aici în fiecare dimineață pentru reduceri. Nu știi niciodată ce găsești."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm waiting for my daughter. She's been in the toy section for an hour!"
         ],
         "text": [
-          ""
+          "Îmi aștept fiica. E la raionul de jucării de o oră!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm going to the rooftop! You can see the whole city from up there."
         ],
         "text": [
-          ""
+          "Mă duc pe terasă! De acolo de sus se vede tot orașul."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "1F Service Counter  2F Market  3F Battle Items\n4F Medicine  5F TM Corner  6F Tranquil Square"
       ],
       "text": [
-        ""
+        "P Servicii  2 Piață  3 Obiecte de luptă\n4 Medicamente  5 TM-uri  6 Piața Liniștii"
       ]
     }
   }

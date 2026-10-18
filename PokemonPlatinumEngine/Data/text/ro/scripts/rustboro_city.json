@@ -5,7 +5,7 @@
         "Scientist"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oh, good, I caught you! Our president just gave you a PokéNav, didn't he? It's missing something important."
       ],
       "text": [
-        ""
+        "A, bine că te-am prins! Președintele nostru ți-a dat un PokéNav, nu? Îi lipsește ceva important."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Let me add Match Call to it. With Match Call, you can talk to the people you've registered, wherever they are."
       ],
       "text": [
-        ""
+        "Să-i adaug Apelurile. Cu ele poți vorbi cu oamenii pe care i-ai înregistrat, oriunde ar fi."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "There! I've put in your mother's number, and our president's. Open the PokéNav from your menu to try it."
       ],
       "text": [
-        ""
+        "Gata! Am pus numărul mamei tale, și pe al președintelui. Deschide PokéNav-ul din meniu ca să-l încerci."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Trainers you meet on the road may want to swap numbers too. They'll call you when they want a rematch!"
       ],
       "text": [
-        ""
+        "Antrenorii de pe drum s-ar putea să vrea și ei să schimbe numere. Te sună când vor o revanșă!"
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "Team Aqua Grunt"
       ],
       "text": [
-        ""
+        "Aqua Grunt"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Outta my way! Coming through!"
       ],
       "text": [
-        ""
+        "La o parte! Trec!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Devon Employee"
       ],
       "text": [
-        ""
+        "Angajatul Devon"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "W-wait! Stop, thief! Give those back! Those goods belong to Devon!"
       ],
       "text": [
-        ""
+        "S-stai! Prindeți hoțul! Dă-le înapoi! Marfa aia e a Devon!"
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "Devon Employee"
       ],
       "text": [
-        ""
+        "Angajatul Devon"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "You there! You're a trainer, aren't you? That was Team Aqua! They snatched a package of our parts right out of my hands!"
       ],
       "text": [
-        ""
+        "Tu! Ești antrenor, nu? Ăla era de la Echipa Aqua! Mi-a smuls din mâini un pachet cu piesele noastre!"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "The thief ran off east, toward Rusturf Tunnel. Please, you have to get the Devon Goods back!"
       ],
       "text": [
-        ""
+        "Hoțul a fugit spre est, spre Tunelul Rusturf. Te rog, trebuie să recuperezi Coletul Devon!"
       ]
     }
   ],
@@ -107,7 +107,7 @@
         "The thief went east, into Rusturf Tunnel. Please hurry! Those parts are very important!"
       ],
       "text": [
-        ""
+        "Hoțul a luat-o spre est, în Tunelul Rusturf. Grăbește-te, te rog! Piesele alea sunt foarte importante!"
       ]
     }
   ],
@@ -117,7 +117,7 @@
         "Devon Employee"
       ],
       "text": [
-        ""
+        "Angajatul Devon"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "Ah! You got the Devon Goods back from that thief! You're amazing! Thank you, thank you!"
       ],
       "text": [
-        ""
+        "Ah! Ai recuperat Coletul Devon de la hoț! E uimitor! Mulțumesc, mulțumesc!"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Here, please take this. It's a Great Ball, one of our very own!"
       ],
       "text": [
-        ""
+        "Te rog, ia asta. E un Super Ball, făcut chiar de noi!"
       ]
     },
     {
@@ -141,7 +141,7 @@
         "Oh, and our president would like to thank you himself. Please, come with me!"
       ],
       "text": [
-        ""
+        "A, și președintele nostru vrea să-ți mulțumească personal. Te rog, vino cu mine!"
       ]
     }
   ],
@@ -151,7 +151,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -159,7 +159,7 @@
         "Ready for that battle now, {player}?"
       ],
       "text": [
-        ""
+        "Ești gata de lupta aia acum, {player}?"
       ]
     }
   ],
@@ -169,7 +169,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -177,7 +177,7 @@
         "{player}! I didn't expect to see you in Rustboro. Wait, is that a PokéNav? Devon only just made those!"
       ],
       "text": [
-        ""
+        "{player}! Nu mă așteptam să te văd în Rustboro. Stai, ăla e un PokéNav? Devon abia le-a scos!"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Here, let's register each other. That way we can talk whenever we want!"
       ],
       "text": [
-        ""
+        "Hai să ne înregistrăm unul pe altul. Așa putem vorbi oricând vrem!"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "So... how strong have you got since Route 103? Want to find out?"
       ],
       "text": [
-        ""
+        "Deci... cât te-ai întărit de pe Ruta 103? Vrei să aflăm?"
       ]
     }
   ],
@@ -203,7 +203,7 @@
         "Battle {rival}?"
       ],
       "text": [
-        ""
+        "Te lupți cu {rival}?"
       ]
     },
     {
@@ -211,7 +211,7 @@
         "All right! Don't hold back, now!"
       ],
       "text": [
-        ""
+        "Bine! Să nu te abții, auzi?"
       ]
     },
     {
@@ -219,7 +219,7 @@
         "You've been training hard, haven't you? I'll have to work twice as hard to keep up!"
       ],
       "text": [
-        ""
+        "Te-ai antrenat din greu, nu? Va trebui să muncesc de două ori mai mult ca să țin pasul!"
       ]
     },
     {
@@ -227,7 +227,7 @@
         "Oh, OK. Come and find me when you're ready. I'll be right here!"
       ],
       "text": [
-        ""
+        "A, bine. Caută-mă când ești gata. Sunt chiar aici!"
       ]
     }
   ],
@@ -237,7 +237,7 @@
         "Hey, have you heard of Mr. Briney? He's an old sailor who lives by the beach on Route 104."
       ],
       "text": [
-        ""
+        "Hei, ai auzit de Domnul Briney? E un marinar bătrân care locuiește lângă plaja de pe Ruta 104."
       ]
     },
     {
@@ -245,7 +245,7 @@
         "They say he'll take people across the sea in his boat. Dewford Town's just a short sail away!"
       ],
       "text": [
-        ""
+        "Se zice că duce oamenii peste mare cu barca lui. Orășelul Dewford e la doar o mică plimbare pe apă!"
       ]
     }
   ],
@@ -255,7 +255,7 @@
         "Devon's building is the tallest in town. They say its president collects rare stones."
       ],
       "text": [
-        ""
+        "Clădirea Devon e cea mai înaltă din oraș. Se zice că președintele colecționează pietre rare."
       ]
     },
     {
@@ -263,7 +263,7 @@
         "Did you see that fellow in the striped shirt? He ran past me so fast, my hat nearly blew off!"
       ],
       "text": [
-        ""
+        "L-ai văzut pe tipul în cămașă cu dungi? A trecut pe lângă mine atât de repede că era să-mi zboare pălăria!"
       ]
     }
   ],
@@ -273,7 +273,7 @@
         "The tunnel east of town goes nowhere. They stopped digging halfway because of the Pokémon living there."
       ],
       "text": [
-        ""
+        "Tunelul de la est de oraș nu duce nicăieri. Au oprit săpatul la jumătate din cauza Pokémonilor de acolo."
       ]
     },
     {
@@ -281,7 +281,7 @@
         "I saw old Mr. Briney hurrying home with his Wingull. He looked so happy!"
       ],
       "text": [
-        ""
+        "L-am văzut pe bătrânul Domn Briney grăbindu-se acasă cu Wingull-ul lui. Părea atât de fericit!"
       ]
     }
   ],
@@ -291,7 +291,7 @@
         "The Gym Leader here is a teacher at the school, too. Clever and strong. Quite the combination!"
       ],
       "text": [
-        ""
+        "Liderul Arenei de aici e și profesoară la școală. Deșteaptă și puternică. Ce combinație!"
       ]
     },
     {
@@ -299,7 +299,7 @@
         "Oh, that's a Stone Badge! You beat Roxanne? You'll go far, I'm sure of it."
       ],
       "text": [
-        ""
+        "A, aia e Insigna Piatră! Ai învins-o pe Roxanne? O să ajungi departe, sunt sigur."
       ]
     }
   ]

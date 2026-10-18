@@ -6,7 +6,7 @@
           "Name Rater"
         ],
         "text": [
-          ""
+          "Evaluatorul de nume"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "My pen is resting just now. Do come back another day, and I'll rate your Pokémon's names!"
         ],
         "text": [
-          "",
-          ""
+          "Salut, salut! Sunt Evaluatorul de nume. Evaluez numele Pokémonilor.",
+          "Stiloul meu se odihnește acum. Revino altă dată și îți evaluez numele Pokémonilor!"
         ]
       }
     }

@@ -4,7 +4,7 @@
       "Silph Co."
     ],
     "text": [
-      ""
+      "Silph S.A."
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: Team Rocket never gives up! Battle!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Echipa Rocket nu renunță niciodată! Luptă!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: We never give up... but I do."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Noi nu renunțăm niciodată... dar eu da."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Team Rocket Grunt: You think you can take back this building alone?"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Crezi că poți recuceri singur clădirea asta?"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Team Rocket Grunt: Huh. Maybe you can."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Hm. Poate chiar poți."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Parker"
         ],
         "text": [
-          ""
+          "Parker"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Scientist Parker: I programmed every door in this building. You won't get far!"
         ],
         "text": [
-          ""
+          "Om de știință Parker: Am programat toate ușile din clădire. N-o să ajungi departe!"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Scientist Parker: You got far enough."
         ],
         "text": [
-          ""
+          "Om de știință Parker: Ai ajuns destul de departe."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -100,7 +100,7 @@
           "The doors are locked by card. The Card Key is somewhere in the building."
         ],
         "text": [
-          ""
+          "Ușile se încuie cu card. Card-Cheia e undeva în clădire."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -118,7 +118,7 @@
           "I locked myself in here when Team Rocket came. Is it safe to come out?"
         ],
         "text": [
-          ""
+          "M-am încuiat aici când a venit Echipa Rocket. E sigur să ies?"
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -148,7 +148,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -158,7 +158,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     }
@@ -169,7 +169,7 @@
         "Silph Co. Head Office\n8F"
       ],
       "text": [
-        ""
+        "Sediul Silph S.A.\nEtajul 8"
       ]
     }
   }

@@ -243,7 +243,7 @@
         "Mom"
       ],
       "text": [
-        ""
+        "Mama"
       ]
     },
     {
@@ -251,7 +251,7 @@
         "{player}? Oh, how lovely to hear from you! Your father would be so proud to see how far you've come."
       ],
       "text": [
-        ""
+        "{player}? Ce bine îmi pare să te aud! Tatăl tău ar fi tare mândru să vadă cât de departe ai ajuns."
       ]
     },
     {
@@ -259,7 +259,7 @@
         "Don't forget to rest, dear. Your Pokémon need it as much as you do!"
       ],
       "text": [
-        ""
+        "Nu uita să te odihnești. Pokémonii tăi au nevoie de asta la fel de mult ca tine!"
       ]
     },
     {
@@ -267,7 +267,7 @@
         "Hello, dear! The house still smells of fresh paint. Come home whenever you like and tell me everything."
       ],
       "text": [
-        ""
+        "Bună! Casa încă miroase a vopsea proaspătă. Vino acasă oricând vrei și povestește-mi tot."
       ]
     }
   ],
@@ -277,7 +277,7 @@
         "Mr. Stone"
       ],
       "text": [
-        ""
+        "Domnul Stone"
       ]
     },
     {
@@ -285,7 +285,7 @@
         "Ah, {player}! How is the PokéNav treating you? My son Steven is in Dewford Town, if you're on your way."
       ],
       "text": [
-        ""
+        "A, {player}! Cum te descurci cu PokéNav-ul? Fiul meu Steven e în Orășelul Dewford, dacă treci pe acolo."
       ]
     }
   ],
@@ -295,7 +295,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -303,7 +303,7 @@
         "Hi, {player}! I'm out looking for Pokémon for my dad's research. How's your team doing?"
       ],
       "text": [
-        ""
+        "Salut, {player}! Caut Pokémoni pentru cercetările tatălui meu. Ce mai face echipa ta?"
       ]
     },
     {
@@ -311,7 +311,7 @@
         "{player}! Did you know some Pokémon only appear at night? I've been staying up late to find them!"
       ],
       "text": [
-        ""
+        "{player}! Știai că unii Pokémoni apar doar noaptea? Am stat până noaptea târziu ca să-i găsesc!"
       ]
     }
   ]

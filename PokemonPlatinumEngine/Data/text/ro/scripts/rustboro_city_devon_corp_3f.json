@@ -5,7 +5,7 @@
         "Devon Employee"
       ],
       "text": [
-        ""
+        "Angajatul Devon"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This is the top floor. Our president's office is right this way. Please, follow me!"
       ],
       "text": [
-        ""
+        "Acesta e ultimul etaj. Biroul președintelui e pe aici. Te rog, urmează-mă!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Devon Employee"
       ],
       "text": [
-        ""
+        "Angajatul Devon"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "President, this is the trainer who got the Devon Goods back from Team Aqua."
       ],
       "text": [
-        ""
+        "Domnule președinte, el e antrenorul care a recuperat Coletul Devon de la Echipa Aqua."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Mr. Stone"
       ],
       "text": [
-        ""
+        "Domnul Stone"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "So you are the one! I'm Stone, the president of Devon. You have my deepest thanks."
       ],
       "text": [
-        ""
+        "Deci tu ești! Sunt Stone, președintele Devon. Îți mulțumesc din suflet."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Those parts are for an important project. If they had gone missing, we'd have lost months of work."
       ],
       "text": [
-        ""
+        "Piesele alea sunt pentru un proiect important. Dacă se pierdeau, pierdeam luni de muncă."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "I'd like to give you something. Here, this is our newest product, the PokéNav."
       ],
       "text": [
-        ""
+        "Aș vrea să-ți dau ceva. Uite, cel mai nou produs al nostru, PokéNav-ul."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "{player} received the PokéNav!"
       ],
       "text": [
-        ""
+        "{player} a primit PokéNav-ul!"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "It has a map of Hoenn, and much more besides. I hope it serves you well on your travels."
       ],
       "text": [
-        ""
+        "Are o hartă a Hoenn-ului și multe altele. Sper să-ți fie de folos în călătorii."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Now, I hate to ask more of you, but might I trouble you with two errands?"
       ],
       "text": [
-        ""
+        "Acum, nu-mi place să-ți cer mai mult, dar te-aș putea ruga să-mi faci două servicii?"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "First, this letter. It is for my son, Steven. He is somewhere in Dewford Town, across the sea."
       ],
       "text": [
-        ""
+        "Întâi, scrisoarea asta. E pentru fiul meu, Steven. E undeva în Orășelul Dewford, peste mare."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "And second, the Devon Goods. Please take them to Captain Stern at the shipyard in Slateport City."
       ],
       "text": [
-        ""
+        "Și apoi, Coletul Devon. Te rog, du-l Căpitanului Stern, la șantierul naval din Orașul Slateport."
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Mr. Briney, the sailor on Route 104, will surely take you across the water if you ask him."
       ],
       "text": [
-        ""
+        "Domnul Briney, marinarul de pe Ruta 104, sigur te trece apa dacă îl rogi."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Your Pokémon look tired. Let me see to them before you go."
       ],
       "text": [
-        ""
+        "Pokémonii tăi par obosiți. Lasă-mă să am grijă de ei înainte să pleci."
       ]
     }
   ],
@@ -127,7 +127,7 @@
         "Mr. Stone"
       ],
       "text": [
-        ""
+        "Domnul Stone"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "My son Steven is in Dewford Town, and Captain Stern awaits the goods in Slateport. I'm counting on you!"
       ],
       "text": [
-        ""
+        "Fiul meu Steven e în Orășelul Dewford, iar Căpitanul Stern așteaptă coletul în Slateport. Mă bazez pe tine!"
       ]
     }
   ],
@@ -145,7 +145,7 @@
         "That PokéNav was my team's work. I hope you like it! Try the map: it shows where you are in Hoenn."
       ],
       "text": [
-        ""
+        "PokéNav-ul ăla e munca echipei mele. Sper să-ți placă! Încearcă harta: îți arată unde ești în Hoenn."
       ]
     }
   ]

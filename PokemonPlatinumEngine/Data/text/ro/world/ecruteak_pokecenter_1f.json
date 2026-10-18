@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Pokémon from far away sometimes don't obey a new Trainer. Gym Badges help with that."
         ],
         "text": [
-          ""
+          "Pokémonii veniți de departe uneori nu ascultă de un Antrenor nou. Insignele de Arenă ajută la asta."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "The Kimono Girls are wonderful, aren't they? They've each got an Eevee that evolved a different way."
         ],
         "text": [
-          ""
+          "Fetele în kimono sunt minunate, nu? Fiecare are un Eevee care a evoluat altfel."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Have you been to the Burned Tower? Watch your step, the floor gives way in places."
         ],
         "text": [
-          ""
+          "Ai fost la Turnul Ars? Ai grijă pe unde calci, podeaua cedează pe alocuri."
         ]
       }
     }

@@ -5,7 +5,7 @@
         "A sleeping Pokémon blocks the way. It's snoring soundly."
       ],
       "text": [
-        ""
+        "Un Pokémon adormit blochează drumul. Sforăie zdravăn."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "A sleeping Pokémon blocks the way. Use the Poké Flute?"
       ],
       "text": [
-        ""
+        "Un Pokémon adormit blochează drumul. Folosești Poké Flautul?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} played the Poké Flute."
       ],
       "text": [
-        ""
+        "{player} a cântat din Poké Flaut."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Snorlax woke up! It doesn't look happy about it..."
       ],
       "text": [
-        ""
+        "Snorlax s-a trezit! Nu pare prea încântat..."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Snorlax lumbered off somewhere quieter."
       ],
       "text": [
-        ""
+        "Snorlax a plecat greoi undeva mai liniștit."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Snorlax calmed down, and lumbered off."
       ],
       "text": [
-        ""
+        "Snorlax s-a liniștit și a plecat greoi."
       ]
     }
   ]

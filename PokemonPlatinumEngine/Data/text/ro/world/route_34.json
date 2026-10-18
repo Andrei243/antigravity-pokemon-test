@@ -6,7 +6,7 @@
           "Samuel"
         ],
         "text": [
-          ""
+          "Samuel"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Youngster Samuel: I've been training on this route all week. Let's see what I've learned!"
         ],
         "text": [
-          ""
+          "Puști Samuel: M-am antrenat pe ruta asta toată săptămâna. Să vedem ce am învățat!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Youngster Samuel: Back to training, then. All week again..."
         ],
         "text": [
-          ""
+          "Puști Samuel: Înapoi la antrenament, atunci. Încă o săptămână..."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Gina"
         ],
         "text": [
-          ""
+          "Gina"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Picnicker Gina: Oh, a Trainer! My Hoppip have been dying to battle somebody."
         ],
         "text": [
-          ""
+          "Excursionistă Gina: A, un Antrenor! Hoppip-ii mei abia așteaptă să se lupte cu cineva."
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Picnicker Gina: They floated off the moment you hit them!"
         ],
         "text": [
-          ""
+          "Excursionistă Gina: Au zburat în vânt cum i-ai lovit!"
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Ian"
         ],
         "text": [
-          ""
+          "Ian"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Youngster Ian: My Pokémon dig and scratch. Yours had better watch out!"
         ],
         "text": [
-          ""
+          "Puști Ian: Pokémonii mei sapă și zgârie. Ai tăi să fie atenți!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Youngster Ian: Dug ourselves into a hole there..."
         ],
         "text": [
-          ""
+          "Puști Ian: Ne-am săpat singuri groapa..."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Keith"
         ],
         "text": [
-          ""
+          "Keith"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Officer Keith: Out on the road at this hour? Let's see some proof you can look after yourself!"
         ],
         "text": [
-          ""
+          "Polițist Keith: Pe drum la ora asta? Arată-mi că te poți descurca singur!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Officer Keith: All right, you can handle yourself. Off you go, then."
         ],
         "text": [
-          ""
+          "Polițist Keith: Bine, te descurci. Poți să mergi."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Todd"
         ],
         "text": [
-          ""
+          "Todd"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Camper Todd: I camp out here so I can be first in line at the Department Store sales!"
         ],
         "text": [
-          ""
+          "Campist Todd: Stau cu cortul aici ca să fiu primul la coadă la reducerile de la Magazinul Universal!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Camper Todd: That was a sale I wasn't ready for."
         ],
         "text": [
-          ""
+          "Campist Todd: La reducerea asta nu mă așteptam."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Brandon"
         ],
         "text": [
-          ""
+          "Brandon"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Pokéfan Brandon: My Snubbull and Mareep are the cutest pair in Johto. Want to see?"
         ],
         "text": [
-          ""
+          "Pokéfan Brandon: Snubbull și Mareep ai mei sunt cea mai drăguță pereche din Johto. Vrei să-i vezi?"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Pokéfan Brandon: Even losing, they're still the cutest."
         ],
         "text": [
-          ""
+          "Pokéfan Brandon: Chiar și când pierd, tot cei mai drăguți sunt."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Day-Care Man"
         ],
         "text": [
-          ""
+          "Omul de la Pensiune"
         ]
       }
     },
@@ -172,7 +172,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -180,7 +180,7 @@
           "We three come here to train together every week. It's much more fun than training alone!"
         ],
         "text": [
-          ""
+          "Noi trei venim aici să ne antrenăm împreună în fiecare săptămână. E mult mai distractiv decât singure!"
         ]
       }
     },
@@ -190,7 +190,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -198,7 +198,7 @@
           "The Day Care up the road raises Pokémon for you. Sometimes they find an Egg, too!"
         ],
         "text": [
-          ""
+          "Pensiunea de mai sus îți crește Pokémonii. Uneori găsesc și un Ou!"
         ]
       }
     },
@@ -208,7 +208,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -216,7 +216,7 @@
           "Goldenrod City is just north. You can buy anything at all in its Department Store."
         ],
         "text": [
-          ""
+          "Orașul Goldenrod e chiar la nord. Poți cumpăra orice în Magazinul lui Universal."
         ]
       }
     }
@@ -227,7 +227,7 @@
         "Route 34\nGoldenrod City - Azalea Town\nIlex Forest is in between."
       ],
       "text": [
-        ""
+        "Ruta 34\nOrașul Goldenrod - Orășelul Azalea\nÎntre ele: Pădurea Ilex."
       ]
     },
     "R34_010+1": {
@@ -235,7 +235,7 @@
         "Pokémon Day Care\nLet us raise your Pokémon for you!"
       ],
       "text": [
-        ""
+        "Pensiunea Pokémon\nLasă-ne pe noi să-ți creștem Pokémonii!"
       ]
     },
     "R34_011+1": {
@@ -243,7 +243,7 @@
         "Trainer Tips\nA Pokémon left at the Day Care grows as you walk. Your steps are its training!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nUn Pokémon lăsat la Pensiune crește cât mergi tu. Pașii tăi sunt antrenamentul lui!"
       ]
     }
   }

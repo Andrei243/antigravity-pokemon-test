@@ -6,7 +6,7 @@
           "Roxanne"
         ],
         "text": [
-          ""
+          "Roxanne"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Josh"
         ],
         "text": [
-          ""
+          "Josh"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Youngster Josh: Don't take this Gym lightly! Roxanne's rocks will crush you!"
         ],
         "text": [
-          ""
+          "Puști Josh: Nu lua Arena asta în ușor! Pietrele lui Roxanne o să te strivească!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Youngster Josh: You might actually have a chance..."
         ],
         "text": [
-          ""
+          "Puști Josh: S-ar putea chiar să ai o șansă..."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Tommy"
         ],
         "text": [
-          ""
+          "Tommy"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Youngster Tommy: If you can't beat me, you'll never beat Roxanne!"
         ],
         "text": [
-          ""
+          "Puști Tommy: Dacă nu mă poți bate pe mine, n-o s-o bați niciodată pe Roxanne!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Youngster Tommy: OK, you can beat me. Roxanne's another story."
         ],
         "text": [
-          ""
+          "Puști Tommy: Bine, pe mine mă poți bate. Roxanne e altă poveste."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Marc"
         ],
         "text": [
-          ""
+          "Marc"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Hiker Marc: My Geodude and I climbed every hill in Hoenn. A little trainer won't stop us!"
         ],
         "text": [
-          ""
+          "Drumeț Marc: Geodude-ul meu și cu mine am urcat toate dealurile din Hoenn. Nu ne oprește un antrenor mititel!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Hiker Marc: Stopped. By a little trainer."
         ],
         "text": [
-          ""
+          "Drumeț Marc: Opriți. De un antrenor mititel."
         ]
       }
     }
@@ -105,7 +105,7 @@
         "Rustboro City Pokémon Gym\nLeader: Roxanne"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Rustboro\nLider: Roxanne"
       ]
     },
     "RustboroCity_Gym_EventScript_RightGymStatue": {
@@ -113,7 +113,7 @@
         "Rustboro City Pokémon Gym\nLeader: Roxanne"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Rustboro\nLider: Roxanne"
       ]
     }
   }

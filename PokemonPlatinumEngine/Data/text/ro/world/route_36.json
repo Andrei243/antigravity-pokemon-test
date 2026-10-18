@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Ecruteak City is up Route 37, just west of here. It's the old city of the two towers."
         ],
         "text": [
-          ""
+          "Orașul Ecruteak e în susul Rutei 37, chiar la vest de aici. E vechiul oraș al celor două turnuri."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "From here you can see all the way to Violet City. I love this route!"
         ],
         "text": [
-          ""
+          "De aici se vede până în Orașul Violet. Ador ruta asta!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Mark"
         ],
         "text": [
-          ""
+          "Mark"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Psychic Mark: I can read your mind. You're thinking of battling me!"
         ],
         "text": [
-          ""
+          "Medium Mark: Îți pot citi gândurile. Te gândești să te lupți cu mine!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Psychic Mark: I didn't foresee that."
         ],
         "text": [
-          ""
+          "Medium Mark: Asta n-am prevăzut-o."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Alan"
         ],
         "text": [
-          ""
+          "Alan"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "School Kid Alan: My teacher says I'm ready for a real battle. Are you real enough?"
         ],
         "text": [
-          ""
+          "Școlar Alan: Profesoara zice că sunt gata de o luptă adevărată. Tu ești destul de adevărat?"
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "School Kid Alan: I have a lot of homework to do now."
         ],
         "text": [
-          ""
+          "Școlar Alan: Acum am o grămadă de teme de făcut."
         ]
       }
     }
@@ -95,7 +95,7 @@
         "Route 36\nNational Park"
       ],
       "text": [
-        ""
+        "Ruta 36\nParcul Național"
       ]
     },
     "R36_004+1": {
@@ -103,7 +103,7 @@
         "Ruins of Alph\nNorth Entrance"
       ],
       "text": [
-        ""
+        "Ruinele Alph\nIntrarea de Nord"
       ]
     },
     "R36_003+1": {
@@ -111,7 +111,7 @@
         "Route 36"
       ],
       "text": [
-        ""
+        "Ruta 36"
       ]
     },
     "R36_006+1": {
@@ -119,7 +119,7 @@
         "Route 37\nEcruteak City is to the north."
       ],
       "text": [
-        ""
+        "Ruta 37\nLa nord: Orașul Ecruteak."
       ]
     }
   }

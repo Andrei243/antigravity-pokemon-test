@@ -6,7 +6,7 @@
           "Devon Employee"
         ],
         "text": [
-          ""
+          "Angajatul Devon"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Our research covers everything from Poké Balls to the newest gadgets. And rocks. Lots of rocks."
         ],
         "text": [
-          ""
+          "Cercetările noastre acoperă totul, de la Poké Balluri la cele mai noi aparate. Și pietre. Multe pietre."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Devon Employee"
         ],
         "text": [
-          ""
+          "Angajatul Devon"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Welcome to the Devon Corporation. We make products for trainers all over Hoenn."
         ],
         "text": [
-          ""
+          "Bun venit la Corporația Devon. Facem produse pentru antrenorii din tot Hoenn-ul."
         ]
       }
     }
@@ -53,7 +53,7 @@
         "Devon's products: Poké Balls of every kind, Potions, and the PokéNav, a trainer's best friend on the road."
       ],
       "text": [
-        ""
+        "Produsele Devon: Poké Balluri de tot felul, Poțiuni și PokéNav-ul, cel mai bun prieten al unui antrenor la drum."
       ]
     },
     "RustboroCity_DevonCorp_1F_EventScript_RocksMetalDisplay": {
@@ -61,7 +61,7 @@
         "Rocks and metals dug from the hills around Rustboro. Devon began here, with a pickaxe."
       ],
       "text": [
-        ""
+        "Pietre și metale scoase din dealurile din jurul Rustboro. Devon a început aici, cu un târnăcop."
       ]
     }
   }

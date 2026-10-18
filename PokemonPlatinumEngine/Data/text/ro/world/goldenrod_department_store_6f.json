@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I come up here to rest my feet after shopping. My wife is still downstairs."
         ],
         "text": [
-          ""
+          "Urc aici să-mi odihnesc picioarele după cumpărături. Soția mea e încă jos."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Lemonade is my favourite. It's good for Pokémon too, you know!"
         ],
         "text": [
-          ""
+          "Limonada e preferata mea. E bună și pentru Pokémoni, să știi!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "This is Tranquil Square. Please take your time and enjoy the view."
         ],
         "text": [
-          ""
+          "Aceasta e Piața Liniștii. Nu te grăbi și bucură-te de priveliște."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The rooftop is closed for now, I'm sorry. Do have a drink while you rest."
         ],
         "text": [
-          ""
+          "Terasa e închisă deocamdată, îmi pare rău. Bea ceva cât te odihnești."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "6F: Tranquil Square\nThe rooftop is closed for now."
       ],
       "text": [
-        ""
+        "Etajul 6: Piața Liniștii\nTerasa e închisă deocamdată."
       ]
     },
     "T25R1006_003+1": {
@@ -87,7 +87,7 @@
         "A drinks machine. It's out of order."
       ],
       "text": [
-        ""
+        "Un automat de băuturi. E defect."
       ]
     }
   }

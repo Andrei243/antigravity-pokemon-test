@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "My sister's dying for a drink, but I'm too broke to buy her one."
         ],
         "text": [
-          ""
+          "Sora mea moare de sete, dar n-am bani să-i cumpăr ceva de băut."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm so thirsty... The machines over there sell drinks, if only I had money!"
         ],
         "text": [
-          ""
+          "Mi-e atât de sete... Automatele de acolo vând băuturi, dacă aș avea bani!"
         ]
       }
     }
@@ -43,7 +43,7 @@
         "Rooftop Square: Vending Machines"
       ],
       "text": [
-        ""
+        "Terasa de pe acoperiș: Automate"
       ]
     },
     "CeladonCity_DepartmentStore_Roof_EventScript_VendingMachine": {
@@ -51,7 +51,7 @@
         "A vending machine. Fresh Water, Soda Pop and Lemonade."
       ],
       "text": [
-        ""
+        "Un automat. Apă Proaspătă, Suc Acidulat și Limonadă."
       ]
     }
   }

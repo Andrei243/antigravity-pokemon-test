@@ -4,7 +4,7 @@
       "Silph Co."
     ],
     "text": [
-      ""
+      "Silph S.A."
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Secretary"
         ],
         "text": [
-          ""
+          "Secretara"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "Thank you for rescuing us! The president would surely have given in to Team Rocket."
         ],
         "text": [
-          ""
+          "Mulțumim că ne-ai salvat! Președintele sigur ar fi cedat în fața Echipei Rocket."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Team Rocket Grunt: The boss wants the Master Ball, and nothing will stop him!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Șeful vrea Master Ball-ul, și nimic nu-l va opri!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Team Rocket Grunt: Nothing except you, it seems."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Nimic în afară de tine, se pare."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Team Rocket Grunt: Hey! Who let you up the stairs?"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Hei! Cine te-a lăsat să urci scările?"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Team Rocket Grunt: Next time I lock the stairs too."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Data viitoare încui și scările."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "President"
         ],
         "text": [
-          ""
+          "Președintele"
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Giovanni"
         ],
         "text": [
-          ""
+          "Giovanni"
         ]
       },
       "dialog": {
@@ -102,7 +102,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -122,7 +122,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     }
@@ -153,7 +153,7 @@
         "Silph Co. Head Office\n11F"
       ],
       "text": [
-        ""
+        "Sediul Silph S.A.\nEtajul 11"
       ]
     }
   }

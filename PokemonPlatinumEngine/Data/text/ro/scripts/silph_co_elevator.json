@@ -11,13 +11,13 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce etaj?",
+        "PARTER",
+        "ETAJUL 2",
+        "ETAJUL 3",
+        "ETAJUL 4",
+        "Mai sus",
+        "Rămân aici"
       ]
     },
     {
@@ -31,13 +31,13 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce etaj?",
+        "ETAJUL 5",
+        "ETAJUL 6",
+        "ETAJUL 7",
+        "ETAJUL 8",
+        "Mai sus",
+        "Rămân aici"
       ]
     },
     {
@@ -49,11 +49,11 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce etaj?",
+        "ETAJUL 9",
+        "ETAJUL 10",
+        "ETAJUL 11",
+        "Rămân aici"
       ]
     }
   ]

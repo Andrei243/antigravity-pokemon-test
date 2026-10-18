@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "A TM teaches a move once and is gone. An HM can be used over and over."
         ],
         "text": [
-          ""
+          "Un TM învață o mișcare o dată și dispare. Un HM poate fi folosit iar și iar."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I've bought every TM on this floor. Now I need more Pokémon to teach them to!"
         ],
         "text": [
-          ""
+          "Am cumpărat toate TM-urile de la etajul ăsta. Acum îmi trebuie mai mulți Pokémoni să-i învăț!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I want a TM for my Pikachu. Which one would suit it best?"
         ],
         "text": [
-          ""
+          "Vreau un TM pentru Pikachu-ul meu. Care i s-ar potrivi cel mai bine?"
         ]
       }
     }
@@ -79,7 +79,7 @@
         "5F: TM Corner\nMoves to teach your Pokémon."
       ],
       "text": [
-        ""
+        "Etajul 5: Colțul TM\nMișcări pentru Pokémonii tăi."
       ]
     }
   }

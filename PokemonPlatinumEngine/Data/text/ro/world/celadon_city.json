@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Keep out of our way, kid. Team Rocket has business in this town."
         ],
         "text": [
-          ""
+          "Nu ne sta în cale, puștiule. Echipa Rocket are treabă în orașul ăsta."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Get lost! I'm waiting for orders from upstairs, and you're blocking the view."
         ],
         "text": [
-          ""
+          "Dispari! Aștept ordine de sus și îmi stai în față."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "This Poliwrath is my pal. Don't you go getting any ideas about catching it!"
         ],
         "text": [
-          ""
+          "Poliwrath-ul ăsta e amicul meu. Să nu-ți treacă prin cap să-l prinzi!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Poliwrath"
         ],
         "text": [
-          ""
+          "Poliwrath"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Poli! Poliwrath!"
         ],
         "text": [
-          ""
+          "Poli! Poliwrath!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "I came to the Gym to get some flowers. Erika grows the prettiest ones in town!"
         ],
         "text": [
-          ""
+          "Am venit la Arenă după niște flori. Erika le crește pe cele mai frumoase din oraș!"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "The department store has five floors. You could shop all day and still not see it all."
         ],
         "text": [
-          ""
+          "Magazinul universal are cinci etaje. Poți face cumpărături toată ziua și tot nu vezi tot."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "Hm? The Game Corner? Bah. It's all slot machines and thieves, if you ask me."
         ],
         "text": [
-          ""
+          "Hm? Game Corner? Bah. Numai păcănele și hoți, dacă mă întrebi pe mine."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "Once, a Chansey taught me how it shares its strength with friends. Kind creatures, Chansey."
         ],
         "text": [
-          ""
+          "Odată, un Chansey m-a învățat cum își împarte puterea cu prietenii. Ce creaturi bune sunt Chansey!"
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "Lovely flowers, aren't they? The Gym's young lady tends every one of them."
         ],
         "text": [
-          ""
+          "Frumoase flori, nu? Domnișoara de la Arenă are grijă de fiecare."
         ]
       }
     },
@@ -168,7 +168,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -176,7 +176,7 @@
           "The mansion over there is for rich folk. Someone on the roof gives away a Pokémon, I heard!"
         ],
         "text": [
-          ""
+          "Conacul de acolo e pentru bogătași. Am auzit că cineva de pe acoperiș dă un Pokémon!"
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -194,7 +194,7 @@
           "I work for Silph Co. in Saffron City. Team Rocket is everywhere lately. It makes me nervous."
         ],
         "text": [
-          ""
+          "Lucrez la Silph S.A. în Orașul Saffron. Echipa Rocket e peste tot în ultima vreme. Mă face să am emoții."
         ]
       }
     }
@@ -205,7 +205,7 @@
         "Trainer Tips\nA Pokémon's held item can turn a battle. Try giving one a berry!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nObiectul ținut de un Pokémon poate întoarce o luptă. Dă-i unuia o boabă!"
       ]
     },
     "CeladonCity_EventScript_PrizeExchangeSign": {
@@ -213,7 +213,7 @@
         "Coins exchanged for prizes!\nPrize Exchange"
       ],
       "text": [
-        ""
+        "Fise schimbate pe premii!\nSchimbul de Premii"
       ]
     },
     "CeladonCity_EventScript_GameCornerSign": {
@@ -221,7 +221,7 @@
         "Rocket Game Corner\nThe playground for grown-ups!"
       ],
       "text": [
-        ""
+        "Rocket Game Corner\nLocul de joacă al celor mari!"
       ]
     },
     "CeladonCity_EventScript_CitySign": {
@@ -229,7 +229,7 @@
         "Celadon City\nThe City of Rainbow Dreams"
       ],
       "text": [
-        ""
+        "Orașul Celadon\nOrașul Viselor în Culorile Curcubeului"
       ]
     },
     "CeladonCity_EventScript_MansionSign": {
@@ -237,7 +237,7 @@
         "Celadon Mansion"
       ],
       "text": [
-        ""
+        "Conacul Celadon"
       ]
     },
     "CeladonCity_EventScript_TrainerTips1": {
@@ -245,7 +245,7 @@
         "Trainer Tips\nX Accuracy makes a move hard to miss. Find it at the department store!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nPrecizie X face ca o mișcare să rateze greu. O găsești la magazinul universal!"
       ]
     },
     "CeladonCity_EventScript_DeptStoreSign": {
@@ -253,7 +253,7 @@
         "Find what you need at the Celadon Department Store!"
       ],
       "text": [
-        ""
+        "Găsești tot ce-ți trebuie la Magazinul Universal Celadon!"
       ]
     },
     "CeladonCity_EventScript_GymSign": {
@@ -261,7 +261,7 @@
         "Celadon City Pokémon Gym\nLeader: Erika\nThe Nature-Loving Princess!"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Celadon\nLider: Erika\nPrințesa care iubește natura!"
       ]
     }
   }

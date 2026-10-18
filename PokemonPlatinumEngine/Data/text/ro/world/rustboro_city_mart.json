@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! What can I get for you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot servi?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Great Balls catch Pokémon more easily than plain Poké Balls. Worth the extra money!"
         ],
         "text": [
-          ""
+          "Super Ball-urile prind Pokémoni mai ușor decât Poké Ball-urile simple. Merită banii în plus!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Escape Ropes get you out of caves in a hurry. I never go underground without one."
         ],
         "text": [
-          ""
+          "Frânghiile te scot repede din peșteri. Nu intru niciodată sub pământ fără una."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm saving up for a Repel. The Wurmple in the woods won't leave me alone!"
         ],
         "text": [
-          ""
+          "Strâng bani pentru un Spray. Wurmple-ii din pădure nu mă lasă în pace!"
         ]
       }
     }

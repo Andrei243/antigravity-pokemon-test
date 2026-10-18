@@ -6,7 +6,7 @@
           "Koichi"
         ],
         "text": [
-          ""
+          "Koichi"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Karate Master Koichi: Hwaaah! You dare challenge the Fighting Dojo?"
         ],
         "text": [
-          ""
+          "Maestru de karate Koichi: Hwaaah! Îndrăznești să provoci Dojoul de Luptă?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Karate Master Koichi: Hoo! You are a true master yourself."
         ],
         "text": [
-          ""
+          "Maestru de karate Koichi: Huu! Și tu ești un adevărat maestru."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Hitoshi"
         ],
         "text": [
-          ""
+          "Hitoshi"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Black Belt Hitoshi: Hyah! A challenger! Show me your fighting spirit!"
         ],
         "text": [
-          ""
+          "Centură Neagră Hitoshi: Hiaa! Un provocator! Arată-mi spiritul tău de luptă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Black Belt Hitoshi: My spirit is broken... for now."
         ],
         "text": [
-          ""
+          "Centură Neagră Hitoshi: Spiritul meu e frânt... deocamdată."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Hideki"
         ],
         "text": [
-          ""
+          "Hideki"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Black Belt Hideki: Nobody reaches our master without beating me first!"
         ],
         "text": [
-          ""
+          "Centură Neagră Hideki: Nimeni nu ajunge la maestrul nostru fără să mă învingă întâi pe mine!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Black Belt Hideki: Go on. The master awaits."
         ],
         "text": [
-          ""
+          "Centură Neagră Hideki: Du-te. Maestrul te așteaptă."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Aaron"
         ],
         "text": [
-          ""
+          "Aaron"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Black Belt Aaron: Kiyaaa! Feel the power of my fists!"
         ],
         "text": [
-          ""
+          "Centură Neagră Aaron: Kiaaa! Simte puterea pumnilor mei!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Black Belt Aaron: My fists were not enough."
         ],
         "text": [
-          ""
+          "Centură Neagră Aaron: Pumnii mei n-au fost de ajuns."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Mike"
         ],
         "text": [
-          ""
+          "Mike"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Black Belt Mike: We train day and night. Can you keep up?"
         ],
         "text": [
-          ""
+          "Centură Neagră Mike: Ne antrenăm zi și noapte. Poți ține pasul?"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Black Belt Mike: Back to training, then."
         ],
         "text": [
-          ""
+          "Centură Neagră Mike: Înapoi la antrenament, atunci."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Poké Ball"
         ],
         "text": [
-          ""
+          "Poké Ball"
         ]
       }
     },
@@ -146,7 +146,7 @@
           "Poké Ball"
         ],
         "text": [
-          ""
+          "Poké Ball"
         ]
       }
     }
@@ -157,7 +157,7 @@
         "Fighting Dojo"
       ],
       "text": [
-        ""
+        "Dojoul de Luptă"
       ]
     },
     "SaffronCity_Dojo_EventScript_LeftScroll": {
@@ -165,7 +165,7 @@
         "A scroll on the wall: \"Enemies on every side!\""
       ],
       "text": [
-        ""
+        "Un pergament pe perete: „Dușmani din toate părțile!”"
       ]
     },
     "SaffronCity_Dojo_EventScript_RightScroll": {
@@ -173,7 +173,7 @@
         "A scroll on the wall: \"Never give up, never surrender!\""
       ],
       "text": [
-        ""
+        "Un pergament pe perete: „Nu renunța niciodată, nu te preda niciodată!”"
       ]
     }
   }

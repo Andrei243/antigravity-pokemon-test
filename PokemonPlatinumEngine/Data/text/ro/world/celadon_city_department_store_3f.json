@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Our games are the newest around! Have a go at the ones on display."
         ],
         "text": [
-          ""
+          "Jocurile noastre sunt cele mai noi! Încearcă-le pe cele expuse."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm trading Pokémon with my friend over the link cable. Nearly done!"
         ],
         "text": [
-          ""
+          "Fac schimb de Pokémoni cu prietenul meu prin cablu. Aproape gata!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "This game's great! I've been playing it since the store opened."
         ],
         "text": [
-          ""
+          "Jocul ăsta e super! Îl joc de când s-a deschis magazinul."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Shh! I'm about to beat my high score!"
         ],
         "text": [
-          ""
+          "Șșș! Sunt pe cale să-mi bat recordul!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "My big brother says he'll buy me a game if I'm good all day."
         ],
         "text": [
-          ""
+          "Fratele meu mai mare zice că-mi cumpără un joc dacă sunt cuminte toată ziua."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "3F: TV Game Shop"
       ],
       "text": [
-        ""
+        "Etajul 3: Magazinul de Jocuri"
       ]
     },
     "CeladonCity_DepartmentStore_3F_EventScript_TV1": {
@@ -105,7 +105,7 @@
         "A Pokémon battle on the screen. The two are evenly matched!"
       ],
       "text": [
-        ""
+        "O luptă Pokémon pe ecran. Cei doi sunt la egalitate!"
       ]
     },
     "CeladonCity_DepartmentStore_3F_EventScript_TV2": {
@@ -113,7 +113,7 @@
         "A game about a trainer on a long journey. It looks familiar."
       ],
       "text": [
-        ""
+        "Un joc despre un antrenor într-o călătorie lungă. Pare cunoscut."
       ]
     },
     "CeladonCity_DepartmentStore_3F_EventScript_TV3": {
@@ -121,7 +121,7 @@
         "A racing game. The cars go round and round."
       ],
       "text": [
-        ""
+        "Un joc cu curse. Mașinile se tot învârt în cerc."
       ]
     },
     "CeladonCity_DepartmentStore_3F_EventScript_TV4": {
@@ -129,7 +129,7 @@
         "A puzzle game with falling blocks."
       ],
       "text": [
-        ""
+        "Un joc de logică cu blocuri care cad."
       ]
     },
     "CeladonCity_DepartmentStore_3F_EventScript_SuperNES": {
@@ -137,7 +137,7 @@
         "A games console, set up for anyone to try."
       ],
       "text": [
-        ""
+        "O consolă de jocuri, pregătită ca oricine s-o încerce."
       ]
     },
     "CeladonCity_DepartmentStore_3F_EventScript_Poster": {
@@ -145,7 +145,7 @@
         "A poster for a new game. Coming soon!"
       ],
       "text": [
-        ""
+        "Un afiș pentru un joc nou. În curând!"
       ]
     }
   }

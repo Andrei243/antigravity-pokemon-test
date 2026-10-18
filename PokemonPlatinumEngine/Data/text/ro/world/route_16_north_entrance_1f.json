@@ -6,7 +6,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznic"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Cycling Road starts south of here. You'll need a Bicycle to ride it, and it's a long way down!"
         ],
         "text": [
-          ""
+          "Drumul Bicicliștilor începe la sud de aici. Îți trebuie o Bicicletă, și e mult de coborât!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I used to ride the Cycling Road every day, back when my knees worked."
         ],
         "text": [
-          ""
+          "Mergeam pe Drumul Bicicliștilor în fiecare zi, pe vremea când mă țineau genunchii."
         ]
       }
     }

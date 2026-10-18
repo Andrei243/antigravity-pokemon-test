@@ -6,7 +6,7 @@
           "Mr. Briney"
         ],
         "text": [
-          ""
+          "Domnul Briney"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Ahoy! The sea's calling, but my old boat needs a little more work."
         ],
         "text": [
-          ""
+          "Ahoi! Marea mă cheamă, dar bătrâna mea barcă mai are nevoie de ceva lucru."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm looking for Bug Pokémon. The woods up ahead are full of them, but they're so dark!"
         ],
         "text": [
-          ""
+          "Caut Pokémoni Insectă. Pădurea din față e plină de ei, dar e atât de întunecată!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Pokémon that like water show up where the grass meets the beach. I saw a Wingull just now!"
         ],
         "text": [
-          ""
+          "Pokémonii cărora le place apa apar unde iarba se întâlnește cu plaja. Tocmai am văzut un Wingull!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "If you see a Trainer standing still, watch out! The moment your eyes meet, the battle's on."
         ],
         "text": [
-          ""
+          "Dacă vezi un Antrenor care stă pe loc, ai grijă! Cum vă întâlniți privirile, începe lupta."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Two trainers who stand side by side will battle together. That's a double battle. Twice the fun!"
         ],
         "text": [
-          ""
+          "Doi antrenori care stau unul lângă altul se luptă împreună. Asta e o luptă dublă. Distracție dublă!"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "The flower shop up the road sells berries and the pail to water them with. My garden's all from there!"
         ],
         "text": [
-          ""
+          "Florăria de mai sus vinde boabe și stropitoarea cu care le uzi. Toată grădina mea e de acolo!"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "Mr. Briney used to sail every day. Since his Wingull friend got sick, his boat's just sat on the beach."
         ],
         "text": [
-          ""
+          "Domnul Briney ieșea pe mare zilnic. De când s-a îmbolnăvit prietenul lui Wingull, barca stă pe plajă."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "Rustboro City's just up ahead! It's the biggest city around here, all stone and big buildings."
         ],
         "text": [
-          ""
+          "Orașul Rustboro e chiar în față! E cel mai mare oraș de prin părțile astea, numai piatră și clădiri mari."
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Florist"
         ],
         "text": [
-          ""
+          "Florăreasa"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "A White Herb puts a Pokémon's lowered stats right again. I grow them myself!"
         ],
         "text": [
-          ""
+          "O Iarbă Albă readuce la normal statisticile scăzute ale unui Pokémon. Le cresc chiar eu!"
         ]
       }
     },
@@ -168,7 +168,7 @@
           "Haley"
         ],
         "text": [
-          ""
+          "Haley"
         ]
       },
       "before": {
@@ -176,7 +176,7 @@
           "Lass Haley: I picked my Pokémon because they're cute. Is that a problem?"
         ],
         "text": [
-          ""
+          "Domnișoară Haley: Mi-am ales Pokémonii pentru că sunt drăguți. E vreo problemă?"
         ]
       },
       "after": {
@@ -184,7 +184,7 @@
           "Lass Haley: Cute and beaten. That's not fair!"
         ],
         "text": [
-          ""
+          "Domnișoară Haley: Drăguți și învinși. Nu e corect!"
         ]
       }
     },
@@ -194,7 +194,7 @@
           "Ivan"
         ],
         "text": [
-          ""
+          "Ivan"
         ]
       },
       "before": {
@@ -202,7 +202,7 @@
           "Fisherman Ivan: I fished up three Magikarp today! Let's see what they can do."
         ],
         "text": [
-          ""
+          "Pescar Ivan: Azi am pescuit trei Magikarp! Să vedem ce pot."
         ]
       },
       "after": {
@@ -210,7 +210,7 @@
           "Fisherman Ivan: Splash, splash, splash. That's all they did."
         ],
         "text": [
-          ""
+          "Pescar Ivan: Pleosc, pleosc, pleosc. Doar asta au făcut."
         ]
       }
     },
@@ -220,7 +220,7 @@
           "Gina & Mia"
         ],
         "text": [
-          ""
+          "Gina și Mia"
         ]
       },
       "before": {
@@ -228,7 +228,7 @@
           "Twins Gina & Mia: Two of us, two of them! Get ready for a double battle!"
         ],
         "text": [
-          ""
+          "Gemene Gina și Mia: Două noi, doi ei! Pregătește-te de o luptă dublă!"
         ]
       },
       "after": {
@@ -236,7 +236,7 @@
           "Twins Gina & Mia: We'll practise our teamwork some more..."
         ],
         "text": [
-          ""
+          "Gemene Gina și Mia: O să ne mai exersăm lucrul în echipă..."
         ]
       }
     },
@@ -246,7 +246,7 @@
           "Gina & Mia"
         ],
         "text": [
-          ""
+          "Gina și Mia"
         ]
       },
       "before": {
@@ -254,7 +254,7 @@
           "Twins Gina & Mia: Two of us, two of them! Get ready for a double battle!"
         ],
         "text": [
-          ""
+          "Gemene Gina și Mia: Două noi, doi ei! Pregătește-te de o luptă dublă!"
         ]
       },
       "after": {
@@ -262,7 +262,7 @@
           "Twins Gina & Mia: We'll practise our teamwork some more..."
         ],
         "text": [
-          ""
+          "Gemene Gina și Mia: O să ne mai exersăm lucrul în echipă..."
         ]
       }
     },
@@ -272,7 +272,7 @@
           "Winston"
         ],
         "text": [
-          ""
+          "Winston"
         ]
       },
       "before": {
@@ -280,7 +280,7 @@
           "Rich Boy Winston: My Pokémon wears only the finest. Can yours keep up?"
         ],
         "text": [
-          ""
+          "Băiat bogat Winston: Pokémonul meu poartă numai lucruri fine. Ale tale țin pasul?"
         ]
       },
       "after": {
@@ -288,7 +288,7 @@
           "Rich Boy Winston: Money can't buy everything, it seems."
         ],
         "text": [
-          ""
+          "Băiat bogat Winston: Se pare că banii nu pot cumpăra totul."
         ]
       }
     },
@@ -298,7 +298,7 @@
           "Cindy"
         ],
         "text": [
-          ""
+          "Cindy"
         ]
       },
       "before": {
@@ -306,7 +306,7 @@
           "Lady Cindy: A lady never refuses a battle. Shall we?"
         ],
         "text": [
-          ""
+          "Doamnă Cindy: O doamnă nu refuză niciodată o luptă. Începem?"
         ]
       },
       "after": {
@@ -314,7 +314,7 @@
           "Lady Cindy: How very rude of you to win so easily."
         ],
         "text": [
-          ""
+          "Doamnă Cindy: Ce nepoliticos din partea ta să câștigi atât de ușor."
         ]
       }
     },
@@ -324,7 +324,7 @@
           "Billy"
         ],
         "text": [
-          ""
+          "Billy"
         ]
       },
       "before": {
@@ -332,7 +332,7 @@
           "Youngster Billy: My Zigzagoon goes all over the place! Try and keep up!"
         ],
         "text": [
-          ""
+          "Puști Billy: Zigzagoon-ul meu aleargă peste tot! Încearcă să ții pasul!"
         ]
       },
       "after": {
@@ -340,7 +340,7 @@
           "Youngster Billy: It went all over the place. Mostly the wrong place."
         ],
         "text": [
-          ""
+          "Puști Billy: A alergat peste tot. Mai ales unde nu trebuia."
         ]
       }
     },
@@ -350,7 +350,7 @@
           "Darian"
         ],
         "text": [
-          ""
+          "Darian"
         ]
       },
       "before": {
@@ -358,7 +358,7 @@
           "Fisherman Darian: This Magikarp's the biggest I ever caught. It must be strong!"
         ],
         "text": [
-          ""
+          "Pescar Darian: Magikarp-ul ăsta e cel mai mare prins de mine. Sigur e puternic!"
         ]
       },
       "after": {
@@ -366,7 +366,7 @@
           "Fisherman Darian: Big isn't the same as strong, I guess."
         ],
         "text": [
-          ""
+          "Pescar Darian: Mare nu înseamnă puternic, se pare."
         ]
       }
     }
@@ -377,7 +377,7 @@
         "Mr. Briney's Cottage"
       ],
       "text": [
-        ""
+        "Căsuța Domnului Briney"
       ]
     },
     "Route104_EventScript_RouteSignPetalburg": {
@@ -385,7 +385,7 @@
         "Route 104\nPetalburg City to the south"
       ],
       "text": [
-        ""
+        "Ruta 104\nLa sud: Orașul Petalburg"
       ]
     },
     "Route104_EventScript_RouteSignRustboro": {
@@ -393,7 +393,7 @@
         "Route 104\nRustboro City to the north"
       ],
       "text": [
-        ""
+        "Ruta 104\nLa nord: Orașul Rustboro"
       ]
     },
     "Route104_EventScript_FlowerShopSign": {
@@ -401,7 +401,7 @@
         "Pretty Petal Flower Shop"
       ],
       "text": [
-        ""
+        "Florăria Pretty Petal"
       ]
     },
     "Route104_EventScript_TrainerTipsDoubleBattles": {
@@ -409,7 +409,7 @@
         "Trainer Tips\nTwo trainers who see you together will battle you together. Bring at least two Pokémon!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nDoi antrenori care te văd împreună se luptă cu tine împreună. Ia cel puțin doi Pokémoni!"
       ]
     }
   }

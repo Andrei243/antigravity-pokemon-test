@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm buying my girlfriend a present. Do you think she'd like a Poké Doll?"
         ],
         "text": [
-          ""
+          "Îi cumpăr un cadou prietenei mele. Crezi că i-ar plăcea o Păpușă Poké?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Some Pokémon evolve when they touch a special stone. Wild, right?"
         ],
         "text": [
-          ""
+          "Unii Pokémoni evoluează când ating o piatră specială. Nebunie, nu?"
         ]
       }
     }
@@ -61,7 +61,7 @@
         "4F: Wise Man Gifts\nExpress yourself with gifts!"
       ],
       "text": [
-        ""
+        "Etajul 4: Cadourile Înțeleptului\nExprimă-te prin cadouri!"
       ]
     }
   }

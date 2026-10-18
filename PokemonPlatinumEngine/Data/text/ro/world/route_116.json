@@ -6,7 +6,7 @@
           "Mr. Briney"
         ],
         "text": [
-          ""
+          "Domnul Briney"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Devon Employee"
         ],
         "text": [
-          ""
+          "Angajatul Devon"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Young Man"
         ],
         "text": [
-          ""
+          "Tânărul"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -44,7 +44,7 @@
           "I dropped my glasses somewhere around here. I can't see a thing without them!"
         ],
         "text": [
-          ""
+          "Mi-am scăpat ochelarii pe undeva pe aici. Nu văd nimic fără ei!"
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Joey"
         ],
         "text": [
-          ""
+          "Joey"
         ]
       },
       "before": {
@@ -62,7 +62,7 @@
           "Youngster Joey: My Machop's been training every day! It's going to flatten you!"
         ],
         "text": [
-          ""
+          "Puști Joey: Machop-ul meu s-a antrenat în fiecare zi! O să te facă una cu pământul!"
         ]
       },
       "after": {
@@ -70,7 +70,7 @@
           "Youngster Joey: Flattened. Me, I mean."
         ],
         "text": [
-          ""
+          "Puști Joey: Făcut una cu pământul. Eu, adică."
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Jose"
         ],
         "text": [
-          ""
+          "Jose"
         ]
       },
       "before": {
@@ -88,7 +88,7 @@
           "Bug Catcher Jose: I've been waiting all day for a trainer to walk by. Battle!"
         ],
         "text": [
-          ""
+          "Vânător de insecte Jose: Am așteptat toată ziua să treacă un antrenor. Luptă!"
         ]
       },
       "after": {
@@ -96,7 +96,7 @@
           "Bug Catcher Jose: Waited all day just to lose. Oh well."
         ],
         "text": [
-          ""
+          "Vânător de insecte Jose: Am așteptat toată ziua doar ca să pierd. Asta e."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Clark"
         ],
         "text": [
-          ""
+          "Clark"
         ]
       },
       "before": {
@@ -114,7 +114,7 @@
           "Hiker Clark: The mountains made me tough. Let's see how tough you are!"
         ],
         "text": [
-          ""
+          "Drumeț Clark: Munții m-au călit. Să vedem cât de călit ești tu!"
         ]
       },
       "after": {
@@ -122,7 +122,7 @@
           "Hiker Clark: Hah! You're tougher than a mountain path."
         ],
         "text": [
-          ""
+          "Drumeț Clark: Ha! Ești mai greu de urcat decât o potecă de munte."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Janice"
         ],
         "text": [
-          ""
+          "Janice"
         ]
       },
       "before": {
@@ -140,7 +140,7 @@
           "Lass Janice: My Marill is round and blue and very, very strong!"
         ],
         "text": [
-          ""
+          "Domnișoară Janice: Marill-ul meu e rotund, albastru și foarte, foarte puternic!"
         ]
       },
       "after": {
@@ -148,7 +148,7 @@
           "Lass Janice: Still round and blue. Less strong."
         ],
         "text": [
-          ""
+          "Domnișoară Janice: Tot rotund și albastru. Mai puțin puternic."
         ]
       }
     },
@@ -158,7 +158,7 @@
           "Karen"
         ],
         "text": [
-          ""
+          "Karen"
         ]
       },
       "before": {
@@ -166,7 +166,7 @@
           "School Kid Karen: Let me show you what I learned at the Trainers' School!"
         ],
         "text": [
-          ""
+          "Școlăriță Karen: Să-ți arăt ce am învățat la Școala de Antrenori!"
         ]
       },
       "after": {
@@ -174,7 +174,7 @@
           "School Kid Karen: I'll have to study harder."
         ],
         "text": [
-          ""
+          "Școlăriță Karen: Va trebui să învăț mai mult."
         ]
       }
     },
@@ -184,7 +184,7 @@
           "Jerry"
         ],
         "text": [
-          ""
+          "Jerry"
         ]
       },
       "before": {
@@ -192,7 +192,7 @@
           "School Kid Jerry: Our teacher says a battle is a test. I'm going to ace this one!"
         ],
         "text": [
-          ""
+          "Școlar Jerry: Profesoara zice că o luptă e un test. Pe ăsta îl iau cu nota zece!"
         ]
       },
       "after": {
@@ -200,7 +200,7 @@
           "School Kid Jerry: I failed the test..."
         ],
         "text": [
-          ""
+          "Școlar Jerry: Am picat testul..."
         ]
       }
     },
@@ -210,7 +210,7 @@
           "Sarah"
         ],
         "text": [
-          ""
+          "Sarah"
         ]
       },
       "before": {
@@ -218,7 +218,7 @@
           "Lady Sarah: My Pokémon and I take a stroll every afternoon. A battle would be a pleasant change."
         ],
         "text": [
-          ""
+          "Doamnă Sarah: Pokémonii mei și cu mine ne plimbăm în fiecare după-amiază. O luptă ar fi o schimbare plăcută."
         ]
       },
       "after": {
@@ -226,7 +226,7 @@
           "Lady Sarah: Most pleasant indeed, though not for us."
         ],
         "text": [
-          ""
+          "Doamnă Sarah: Foarte plăcută, într-adevăr, deși nu pentru noi."
         ]
       }
     },
@@ -236,7 +236,7 @@
           "Dawson"
         ],
         "text": [
-          ""
+          "Dawson"
         ]
       },
       "before": {
@@ -244,7 +244,7 @@
           "Rich Boy Dawson: Do you know how much my Pokémon cost? You can't beat money!"
         ],
         "text": [
-          ""
+          "Băiat bogat Dawson: Știi cât au costat Pokémonii mei? Banii nu pot fi învinși!"
         ]
       },
       "after": {
@@ -252,7 +252,7 @@
           "Rich Boy Dawson: I should have bought stronger ones."
         ],
         "text": [
-          ""
+          "Băiat bogat Dawson: Trebuia să cumpăr unii mai puternici."
         ]
       }
     },
@@ -262,7 +262,7 @@
           "Johnson"
         ],
         "text": [
-          ""
+          "Johnson"
         ]
       },
       "before": {
@@ -270,7 +270,7 @@
           "Youngster Johnson: Hey! You looked at me! That means we battle!"
         ],
         "text": [
-          ""
+          "Puști Johnson: Hei! Te-ai uitat la mine! Asta înseamnă luptă!"
         ]
       },
       "after": {
@@ -278,7 +278,7 @@
           "Youngster Johnson: Next time I'll look the other way."
         ],
         "text": [
-          ""
+          "Puști Johnson: Data viitoare mă uit în altă parte."
         ]
       }
     },
@@ -288,7 +288,7 @@
           "Devan"
         ],
         "text": [
-          ""
+          "Devan"
         ]
       },
       "before": {
@@ -296,7 +296,7 @@
           "Hiker Devan: Two Geodude, solid as boulders. Ready to roll?"
         ],
         "text": [
-          ""
+          "Drumeț Devan: Doi Geodude, tari ca bolovanii. Gata să ne rostogolim?"
         ]
       },
       "after": {
@@ -304,7 +304,7 @@
           "Hiker Devan: Rolled right over us, you did."
         ],
         "text": [
-          ""
+          "Drumeț Devan: Ne-ai călcat în picioare, nu glumă."
         ]
       }
     }
@@ -315,7 +315,7 @@
         "Route 116\nRustboro City to the west"
       ],
       "text": [
-        ""
+        "Ruta 116\nLa vest: Orașul Rustboro"
       ]
     },
     "Route116_EventScript_RusturfTunnelSign": {
@@ -323,7 +323,7 @@
         "Rusturf Tunnel\nDigging under way. The far end isn't through yet."
       ],
       "text": [
-        ""
+        "Tunelul Rusturf\nSăpături în curs. Celălalt capăt nu e încă străpuns."
       ]
     },
     "Route116_EventScript_TunnelersRestHouseSign": {
@@ -331,7 +331,7 @@
         "Tunnelers' Rest House"
       ],
       "text": [
-        ""
+        "Casa de Odihnă a Săpătorilor"
       ]
     },
     "Route116_EventScript_TrainerTipsBToStopEvolution": {
@@ -339,7 +339,7 @@
         "Trainer Tips\nIf your Pokémon starts to evolve and you'd rather it didn't, press B to stop it."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nDacă Pokémonul tău începe să evolueze și nu vrei asta, apasă B ca să-l oprești."
       ]
     },
     "Route116_EventScript_TrainerTipsBagHasPockets": {
@@ -347,7 +347,7 @@
         "Trainer Tips\nYour bag has pockets for every kind of item. Move between them with left and right."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nRucsacul are buzunare pentru orice fel de obiect. Treci între ele cu stânga și dreapta."
       ]
     }
   }

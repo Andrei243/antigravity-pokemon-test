@@ -5,7 +5,7 @@
         "There's a Pokémon in this Poké Ball. It's an Eevee!"
       ],
       "text": [
-        ""
+        "În acest Poké Ball e un Pokémon. E un Eevee!"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Take the Eevee?"
       ],
       "text": [
-        ""
+        "Iei Eevee-ul?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} received an Eevee!"
       ],
       "text": [
-        ""
+        "{player} a primit un Eevee!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "There's a Pokémon in this Poké Ball, but there's no room on the team for it."
       ],
       "text": [
-        ""
+        "În acest Poké Ball e un Pokémon, dar nu mai e loc pentru el în echipă."
       ]
     }
   ]

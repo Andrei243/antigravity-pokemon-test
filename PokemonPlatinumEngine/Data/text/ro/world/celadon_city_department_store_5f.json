@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Vitamins make a Pokémon stronger. Expensive, mind, but worth every coin."
         ],
         "text": [
-          ""
+          "Vitaminele fac un Pokémon mai puternic. Scumpe, ce-i drept, dar merită fiecare bănuț."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "X items give a Pokémon a boost in battle. Only for that battle, though!"
         ],
         "text": [
-          ""
+          "Obiectele X îi dau unui Pokémon un avânt în luptă. Dar doar în lupta aia!"
         ]
       }
     }
@@ -79,7 +79,7 @@
         "5F: Drugstore"
       ],
       "text": [
-        ""
+        "Etajul 5: Farmacia"
       ]
     }
   }

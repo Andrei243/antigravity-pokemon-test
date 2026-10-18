@@ -4,7 +4,7 @@
       "Rocket Hideout"
     ],
     "text": [
-      ""
+      "Ascunzătoarea Rocket"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: Stop right there! Team Rocket doesn't take kindly to snoops!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Stai pe loc! Echipa Rocket nu-i iubește pe băgăcioși!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: You're a snoop with a strong team, I'll give you that."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Recunosc, ai o echipă puternică, deși îți bagi nasul peste tot."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Team Rocket Grunt: Whoa there! Where do you think you're spinning off to?"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Hopa! Încotro crezi că te învârți?"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Team Rocket Grunt: Fine. Spin off, then."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Bine. Învârte-te încolo, atunci."
         ]
       }
     }

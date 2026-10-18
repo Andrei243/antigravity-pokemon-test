@@ -4,7 +4,7 @@
       "Silph Co."
     ],
     "text": [
-      ""
+      "Silph S.A."
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: Silph Co. belongs to Team Rocket now! Get out!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Silph S.A. e acum a Echipei Rocket! Afară!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: Ugh! The boss will hear about this."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Uf! Șeful o să afle de asta."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Jerry"
         ],
         "text": [
-          ""
+          "Jerry"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Scientist Jerry: Team Rocket pays better than Silph Co. ever did!"
         ],
         "text": [
-          ""
+          "Om de știință Jerry: Echipa Rocket plătește mai bine decât a plătit vreodată Silph S.A.!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Scientist Jerry: Maybe I should go back to my old job."
         ],
         "text": [
-          ""
+          "Om de știință Jerry: Poate ar trebui să mă întorc la vechiul meu post."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Team Rocket Grunt: You again? How did you get in here?"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Iar tu? Cum ai intrat aici?"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Team Rocket Grunt: Fine, fine. You win this one."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Bine, bine. Runda asta e a ta."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Connor"
         ],
         "text": [
-          ""
+          "Connor"
         ]
       },
       "before": {
@@ -100,7 +100,7 @@
           "Scientist Connor: My research belongs to whoever pays the most. Today, that's Team Rocket!"
         ],
         "text": [
-          ""
+          "Om de știință Connor: Cercetările mele sunt ale celui care plătește mai mult. Azi, Echipa Rocket!"
         ]
       },
       "after": {
@@ -108,7 +108,7 @@
           "Scientist Connor: That was poorly calculated."
         ],
         "text": [
-          ""
+          "Om de știință Connor: Asta a fost prost calculat."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -126,7 +126,7 @@
           "I'm hiding up here until Team Rocket leaves. They're terrifying!"
         ],
         "text": [
-          ""
+          "Mă ascund aici sus până pleacă Echipa Rocket. Sunt înfricoșători!"
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -146,7 +146,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -166,7 +166,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -176,7 +176,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -196,7 +196,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -206,7 +206,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     }
@@ -217,7 +217,7 @@
         "Silph Co. Head Office\n2F"
       ],
       "text": [
-        ""
+        "Sediul Silph S.A.\nEtajul 2"
       ]
     }
   }

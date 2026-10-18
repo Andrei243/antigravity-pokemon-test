@@ -4,7 +4,7 @@
       "Silph Co."
     ],
     "text": [
-      ""
+      "Silph S.A."
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "Welcome to Silph Co. Thanks to you, we're open for business again!"
         ],
         "text": [
-          ""
+          "Bun venit la Silph S.A. Datorită ție, suntem iar deschiși!"
         ]
       }
     }
@@ -33,7 +33,7 @@
         "Silph Co. Head Office\n1F"
       ],
       "text": [
-        ""
+        "Sediul Silph S.A.\nParter"
       ]
     }
   }

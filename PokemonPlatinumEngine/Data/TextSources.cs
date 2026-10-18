@@ -19,8 +19,8 @@ public static class TextSources
 
     /// <summary>
     /// The lines of the data files that a language translates in its <c>data.json</c> (<see cref="Text.OfData"/>, keyed
-    /// by the English line): every region's professor in the introduction and every trainer's lines in battle
-    /// (<c>trainer-lines.json</c>). Each line once.
+    /// by the English line): every region's professor in the introduction, every trainer's lines in battle
+    /// (<c>trainer-lines.json</c>), the radio's lines and what the Town Map says of each place. Each line once.
     /// </summary>
     public static SortedSet<string> DataLines()
     {
@@ -37,6 +37,11 @@ public static class TextSources
                 if (set.For(cue)?.Text is { Length: > 0 } line) lines.Add(line);
         // The Pokégear's radio (plan 17 · N6f): what each station says, drawn from the English and said in the language's words
         foreach (string line in Models.RadioShows.AllLines) lines.Add(line);
+        // The Town Map's words about each area and landmark of every region's map (plan 17 · N6g), as the radio's are said
+        foreach (var region in RegionDatabase.All)
+            if (RegionMap.Of(region.Id) is { } map)
+                foreach (var place in map.Areas.Concat(map.Landmarks))
+                    if (place.About is { Length: > 0 } about) lines.Add(about);
         return lines;
     }
 
@@ -258,7 +263,7 @@ public static class TextSources
         report.AppendLine($"| Scripts (`scripts/<file>.json`) | {scripts.Count} | {Lines(scriptLines.Values)} |");
         report.AppendLine($"| Overlays (`world/<key>.json`) | {overlays.Count} | {Lines(overlayLines.Values)} |");
         report.AppendLine($"| Hand-made maps (`maps/<Name>.json`) | {maps.Count} | {Lines(mapLines.Values)} |");
-        report.AppendLine($"| Data files' lines (`data.json`: the professors, the trainers in battle, the radio) | 1 | {dataLines.Count} |");
+        report.AppendLine($"| Data files' lines (`data.json`: the professors, the trainers in battle, the radio, the Town Map's words about each place) | 1 | {dataLines.Count} |");
         report.AppendLine();
         report.AppendLine("## Languages");
         report.AppendLine();

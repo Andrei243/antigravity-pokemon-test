@@ -6,7 +6,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Burned Tower caught fire long ago. Some say three Pokémon died in the blaze."
         ],
         "text": [
-          ""
+          "Turnul Ars a luat foc demult. Unii spun că trei Pokémoni au murit în incendiu."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The Kimono Girls dance at the theater every day. They're the best dancers in Johto!"
         ],
         "text": [
-          ""
+          "Fetele în kimono dansează la teatru în fiecare zi. Sunt cele mai bune dansatoare din Johto!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Ecruteak has two towers. The Bell Tower in the north-east, and the burned one in the north-west."
         ],
         "text": [
-          ""
+          "Ecruteak are două turnuri. Turnul Clopotelor în nord-est și cel ars în nord-vest."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -69,8 +69,8 @@
           "Only a Trainer it accepts may climb to the top."
         ],
         "text": [
-          "",
-          ""
+          "Se spune că în Turnul Clopotelor se odihnește un Pokémon mare, în culorile curcubeului.",
+          "Doar un Antrenor acceptat de el poate urca până în vârf."
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "In my youth I saw a great bird fly over the city, and a rainbow behind it."
         ],
         "text": [
-          ""
+          "În tinerețe am văzut o pasăre mare zburând peste oraș, cu un curcubeu în urma ei."
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -106,7 +106,7 @@
           "Morty, our Gym Leader, trains at the Burned Tower. He's always looking for something."
         ],
         "text": [
-          ""
+          "Morty, Liderul Arenei noastre, se antrenează la Turnul Ars. Mereu caută ceva."
         ]
       }
     }
@@ -117,7 +117,7 @@
         "Ecruteak City\nA historical city where the past meets the present."
       ],
       "text": [
-        ""
+        "Orașul Ecruteak\nUn oraș istoric unde trecutul întâlnește prezentul."
       ]
     },
     "T27_002+1": {
@@ -125,7 +125,7 @@
         "Ecruteak City Pokémon Gym\nLeader: Morty\nThe mystic seer of the future."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Ecruteak\nLider: Morty\nMisticul care vede viitorul."
       ]
     },
     "T27_003+1": {
@@ -133,7 +133,7 @@
         "Ecruteak Dance Theater"
       ],
       "text": [
-        ""
+        "Teatrul de Dans Ecruteak"
       ]
     },
     "T27_004+1": {
@@ -141,7 +141,7 @@
         "Burned Tower\nIt was destroyed by a fire long ago."
       ],
       "text": [
-        ""
+        "Turnul Ars\nA fost distrus de un incendiu demult."
       ]
     },
     "T27_016+1": {
@@ -149,7 +149,7 @@
         "Bell Tower\nThe way is closed to all but the chosen."
       ],
       "text": [
-        ""
+        "Turnul Clopotelor\nDrumul e închis tuturor, în afară de cei aleși."
       ]
     }
   }

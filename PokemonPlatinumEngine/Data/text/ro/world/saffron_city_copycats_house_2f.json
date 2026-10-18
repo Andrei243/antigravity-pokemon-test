@@ -6,7 +6,7 @@
           "Copycat"
         ],
         "text": [
-          ""
+          "Imitatoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Hi! Do you like Pokémon? I do! See? I'm copying you. Hee hee!"
         ],
         "text": [
-          ""
+          "Salut! Îți plac Pokémonii? Mie da! Vezi? Te imit. Hi hi!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Doduo"
         ],
         "text": [
-          ""
+          "Doduo"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Doo doo!"
         ],
         "text": [
-          ""
+          "Du du!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Doll"
         ],
         "text": [
-          ""
+          "Păpușa"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "A Pikachu doll. It's very soft."
         ],
         "text": [
-          ""
+          "O păpușă Pikachu. E foarte moale."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Doll"
         ],
         "text": [
-          ""
+          "Păpușa"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "A Jigglypuff doll, round as a ball."
         ],
         "text": [
-          ""
+          "O păpușă Jigglypuff, rotundă ca o minge."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "A computer with a diary on it. Today I copied a Clefairy!"
       ],
       "text": [
-        ""
+        "Un computer cu un jurnal pe el. Azi am imitat un Clefairy!"
       ]
     },
     "SaffronCity_CopycatsHouse_2F_EventScript_Game": {
@@ -87,7 +87,7 @@
         "A game about a trainer copying moves. Fitting."
       ],
       "text": [
-        ""
+        "Un joc despre un antrenor care imită mișcări. Potrivit."
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Did you know there's a passage under the city? It joins the north end of town to the south."
         ],
         "text": [
-          ""
+          "Știai că e un pasaj pe sub oraș? Leagă capătul de nord al orașului de cel de sud."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "My dad works at the Radio Tower. He says everybody in Johto listens!"
         ],
         "text": [
-          ""
+          "Tata lucrează la Turnul Radio. Zice că toată lumea din Johto ascultă!"
         ]
       }
     }

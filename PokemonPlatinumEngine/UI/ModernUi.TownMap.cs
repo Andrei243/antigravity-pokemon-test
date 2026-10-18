@@ -233,7 +233,8 @@ internal static partial class ModernUi
             UiFonts.Draw(shownName, x0, ty + 50, size, Ink, UiWeight.Black);
             UiShapes.Fill(new Rectangle(x0, ty + 128, wide, 3), 1.5f, Rule);
             float y = ty + 154;
-            if (state.Tells(block.Area)) y = Paragraph(block.Area.About, x0, y, wide, Ink);
+            // What is said of the place, in the language's words where its data.json has them (plan 17 · N6g)
+            if (state.Tells(block.Area)) y = Paragraph(Text.OfData(block.Area.About), x0, y, wide, Ink);
             else y = Paragraph(Text.Of("townMap.notBeen"), x0, y, wide, Muted);
             if (block.Landmark is { } landmark && state.TellsLandmark(block))
             {
@@ -241,7 +242,7 @@ internal static partial class ModernUi
                 UiShapes.Circle(new Vector2(x0 + 12, y + 20), 12, Blue);
                 UiShapes.Circle(new Vector2(x0 + 12, y + 20), 4.6f, Color.White);
                 UiFonts.Draw(LocalNames.PlaceShown(null, landmark.Name ?? ""), x0 + 36, y, 36, Ink, UiWeight.Black);
-                Paragraph(landmark.About, x0, y + 56, wide, Ink);
+                Paragraph(Text.OfData(landmark.About), x0, y + 56, wide, Ink);
             }
         }
 

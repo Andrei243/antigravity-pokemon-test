@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Department Store has six floors and a rooftop! I could spend all day in there."
         ],
         "text": [
-          ""
+          "Magazinul Universal are șase etaje și o terasă! Aș putea sta acolo toată ziua."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -33,8 +33,8 @@
           "In my day you walked, and you were glad of it."
         ],
         "text": [
-          "",
-          ""
+          "Construiesc o cale ferată până în Kanto. Un tren care plutește pe magneți!",
+          "Pe vremea mea mergeai pe jos și te bucurai."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "Have you been to the Game Corner? I'm not old enough to play, but I watch the lights."
         ],
         "text": [
-          ""
+          "Ai fost la Game Corner? Nu sunt destul de mare să joc, dar mă uit la lumini."
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "Whitney is the Gym Leader here. She's super nice, until you battle her!"
         ],
         "text": [
-          ""
+          "Whitney e Liderul Arenei de aici. E super drăguță, până te lupți cu ea!"
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "The Radio Tower plays music all day. I always have my radio on."
         ],
         "text": [
-          ""
+          "Turnul Radio dă muzică toată ziua. Am mereu radioul pornit."
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -106,7 +106,7 @@
           "Underground there's a passage that runs under the whole city. Shops set up down there."
         ],
         "text": [
-          ""
+          "Sub pământ e un pasaj care trece pe sub tot orașul. Acolo jos își fac loc magazine."
         ]
       }
     },
@@ -116,7 +116,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -124,7 +124,7 @@
           "Goldenrod is the biggest city in Johto! Everybody comes here sooner or later."
         ],
         "text": [
-          ""
+          "Goldenrod e cel mai mare oraș din Johto! Toată lumea ajunge aici mai devreme sau mai târziu."
         ]
       }
     }
@@ -135,7 +135,7 @@
         "Goldenrod City Station\nMagnet Train service to Saffron City in Kanto."
       ],
       "text": [
-        ""
+        "Gara Orașului Goldenrod\nTrenul Magnetic spre Orașul Saffron din Kanto."
       ]
     },
     "T25_020+1": {
@@ -143,7 +143,7 @@
         "Goldenrod Radio Tower\nJohto's voice on the air."
       ],
       "text": [
-        ""
+        "Turnul Radio Goldenrod\nVocea Johto-ului pe unde."
       ]
     },
     "T25_021+1": {
@@ -151,7 +151,7 @@
         "Goldenrod City Pokémon Gym\nLeader: Whitney\nShe's cute and she's strong."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Goldenrod\nLider: Whitney\nDrăguță și puternică."
       ]
     },
     "T25_022+1": {
@@ -159,7 +159,7 @@
         "Goldenrod City\nThe festive city of gold and glitter."
       ],
       "text": [
-        ""
+        "Orașul Goldenrod\nOrașul festiv al aurului și strălucirii."
       ]
     },
     "T25_023+1": {
@@ -167,7 +167,7 @@
         "The Bike Shop\nThe world is your oyster on two wheels."
       ],
       "text": [
-        ""
+        "Magazinul de Biciclete\nLumea e a ta pe două roți."
       ]
     },
     "T25_024+1": {
@@ -175,7 +175,7 @@
         "Goldenrod Game Corner\nYour playground for every age."
       ],
       "text": [
-        ""
+        "Game Corner Goldenrod\nLocul tău de joacă la orice vârstă."
       ]
     },
     "T25_025+1": {
@@ -183,7 +183,7 @@
         "The Name Rater\nA second opinion on your Pokémon's name."
       ],
       "text": [
-        ""
+        "Evaluatorul de nume\nO a doua părere despre numele Pokémonului tău."
       ]
     },
     "T25_026+1": {
@@ -191,7 +191,7 @@
         "Underground Entrance\nThe passage under the city."
       ],
       "text": [
-        ""
+        "Intrarea în Subteran\nPasajul de sub oraș."
       ]
     },
     "T25_027+1": {
@@ -199,7 +199,7 @@
         "Underground Entrance\nThe passage under the city."
       ],
       "text": [
-        ""
+        "Intrarea în Subteran\nPasajul de sub oraș."
       ]
     },
     "T25_028+1": {
@@ -207,7 +207,7 @@
         "Global Terminal\nClosed for now."
       ],
       "text": [
-        ""
+        "Terminalul Global\nÎnchis deocamdată."
       ]
     },
     "T25_029+1": {
@@ -215,7 +215,7 @@
         "Goldenrod Flower Shop\nFlowers for every Trainer."
       ],
       "text": [
-        ""
+        "Florăria Goldenrod\nFlori pentru orice Antrenor."
       ]
     }
   }

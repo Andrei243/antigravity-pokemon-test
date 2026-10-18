@@ -4,7 +4,7 @@
       "Silph Co."
     ],
     "text": [
-      ""
+      "Silph S.A."
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: The boss wants the Master Ball, and nothing will stop him!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Șeful vrea Master Ball-ul, și nimic nu-l va opri!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: Nothing except you, it seems."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Nimic în afară de tine, se pare."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Team Rocket Grunt: Hey! Who let you up the stairs?"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Hei! Cine te-a lăsat să urci scările?"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Team Rocket Grunt: Next time I lock the stairs too."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Data viitoare încui și scările."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Rodney"
         ],
         "text": [
-          ""
+          "Rodney"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Scientist Rodney: Team Rocket pays better than Silph Co. ever did!"
         ],
         "text": [
-          ""
+          "Om de știință Rodney: Echipa Rocket plătește mai bine decât a plătit vreodată Silph S.A.!"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Scientist Rodney: Maybe I should go back to my old job."
         ],
         "text": [
-          ""
+          "Om de știință Rodney: Poate ar trebui să mă întorc la vechiul meu post."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -100,7 +100,7 @@
           "Please, save the president! He's on the top floor."
         ],
         "text": [
-          ""
+          "Te rog, salvează-l pe președinte! E la ultimul etaj."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -140,7 +140,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -170,7 +170,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     }
@@ -191,7 +191,7 @@
         "Silph Co. Head Office\n4F"
       ],
       "text": [
-        ""
+        "Sediul Silph S.A.\nEtajul 4"
       ]
     }
   }
