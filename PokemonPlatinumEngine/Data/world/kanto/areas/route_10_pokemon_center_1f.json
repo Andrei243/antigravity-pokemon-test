@@ -1,0 +1,32 @@
+{
+  "key": "route_10_pokemon_center_1f",
+  "index": 358,
+  "name": "Route 10",
+  "matrix": 305,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 8, "to": "route_10", "toWarp": 3 },
+    { "x": 7, "z": 8, "to": "route_10", "toWarp": 3 },
+    { "x": 8, "z": 8, "to": "route_10", "toWarp": 3 },
+    { "x": 1, "z": 6, "to": "route_10_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "route10_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route10_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "wander_west_and_east", "x": 9, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route10_PokemonCenter_1F_EventScript_Gentleman" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "wander_west_and_east", "x": 2, "z": 3, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route10_PokemonCenter_1F_EventScript_FatMan" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 14, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route10_PokemonCenter_1F_EventScript_Youngster" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_south", "x": 12, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route10_PokemonCenter_1F_EventScript_Aide" }
+  ],
+  "signs": [],
+  "triggers": []
+}

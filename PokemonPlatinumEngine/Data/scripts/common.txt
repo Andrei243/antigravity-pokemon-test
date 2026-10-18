@@ -695,8 +695,9 @@ script UseCut
   end
 
 
-# A rock full of cracks. Rock Smash breaks it, with the Coal Badge. It stands in the Ravaged Path's way north, so a
-# player who can't break it yet is told what is missing: the move, the HM that teaches it, or the Badge.
+# A rock full of cracks. Rock Smash breaks it, with the Badge the region asks for it (movebadge: the Coal Badge in
+# Sinnoh, the Marsh Badge in Kanto). It stands in the Ravaged Path's way north, so a player who can't break it yet is
+# told what is missing: the move, the HM that teaches it, or the Badge, named by no Gym of one region (plan 19 · K5).
 script Rock
   speaker none
   if not knows "Rock Smash" goto Cannot
@@ -707,7 +708,7 @@ script Rock
   setflag own
   end
 label NoBadge
-  text "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until Oreburgh's Gym Badge is won."
+  text "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until the right Gym Badge is won."
   end
 label Cannot
   if item "HM06" goto Teach
@@ -718,7 +719,7 @@ label Teach
   text "The rock is riddled with cracks. A Pokémon taught Rock Smash with HM06 could break it apart."
   end
 label Early
-  text "The rock is riddled with cracks. A hard enough blow might break it apart, once Oreburgh's Gym Badge is won."
+  text "The rock is riddled with cracks. A hard enough blow might break it apart, once the right Gym Badge is won."
   end
 
 script UseRockSmash
@@ -727,7 +728,7 @@ script UseRockSmash
   end
 
 
-# A heavy boulder. Strength, with the Mine Badge, lets every boulder here be pushed until the player leaves.
+# A heavy boulder. Strength, with the region's Badge for it (movebadge), lets every boulder here be pushed until the player leaves.
 script Boulder
   speaker none
   if flag FLAG_STRENGTH_ACTIVE goto Ready
@@ -759,7 +760,7 @@ script StrengthOn
   return
 
 
-# A rock face along its grain. Rock Climb goes up or down it, with the Icicle Badge.
+# A rock face along its grain. Rock Climb goes up or down it, with the region's Badge for it (movebadge).
 script RockFace
   if not knows "Rock Climb" goto Cannot
   if not movebadge "Rock Climb" goto Cannot
@@ -778,7 +779,8 @@ script UseRockClimb
   end
 
 
-# Deep water at the player's feet. The field offers it only to someone who may surf (the move and the Fen Badge).
+# Deep water at the player's feet. The field offers it only to someone who may surf (the move and the region's Badge
+# for it: the Fen Badge in Sinnoh, the Soul Badge in Kanto).
 script Water
   ask "The water is deep enough to cross on a Pokémon. Use Surf?"
   if no end
@@ -792,7 +794,7 @@ script UseSurf
   end
 
 
-# A waterfall, faced from the water below it. Waterfall goes up it, with the Beacon Badge.
+# A waterfall, faced from the water below it. Waterfall goes up it, with the region's Badge for it (movebadge).
 script Waterfall
   if not knows "Waterfall" goto Cannot
   if not movebadge "Waterfall" goto Cannot

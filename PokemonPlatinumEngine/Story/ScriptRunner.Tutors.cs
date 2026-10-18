@@ -80,6 +80,17 @@ public sealed partial class ScriptRunner
                 Result = (int)(ultimate ? MoveTutors.ForUltimateMove(pupil) : MoveTutors.ForDracoMeteor(pupil));
                 break;
             }
+            // A tutor of Kanto's who teaches one move (plan 19 · K5): the answers are special's, but 4 it knows it
+            // already and never 5
+            case "once":
+            {
+                pupil = Chosen();
+                tutorPrice = null;
+                tutorMove = pupil == null || pupil.IsEgg ? "" : i.Other;
+                lastThing = i.Other;
+                Result = (int)MoveTutors.ForKanto(pupil, i.Other);
+                break;
+            }
             // Route210GrandmaWilmaHouse_CheckCanAnyMonLearn
             case "dragons":
                 Result = team.Any(p => !p.IsEgg && p.HasType(PokemonType.Dragon)) ? 1 : 0;

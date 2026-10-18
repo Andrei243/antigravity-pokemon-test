@@ -1,0 +1,29 @@
+{
+  // The Pokémon Tower's third floor (plan 19 · K5, part a): its channelers FireRed's, possessed and battling
+  "area": "pokemon_tower_3f",
+  "name": "Pokémon Tower",
+  "bgmTrack": "kanto/pokemon_tower",
+  "people": {
+    "channeler": {
+      "name": "Patricia",
+      "trainer": {
+        "dialogueBefore": "Channeler Patricia: Begone... begone... this is no place for the living!",
+        "dialogueAfter": "Channeler Patricia: Huh? What was I saying?"
+      }
+    },
+    "channeler_2": {
+      "name": "Carly",
+      "trainer": {
+        "dialogueBefore": "Channeler Carly: Hoooo... the spirits want you gone!",
+        "dialogueAfter": "Channeler Carly: The spirits have left me..."
+      }
+    },
+    "channeler_3": {
+      "name": "Hope",
+      "trainer": {
+        "dialogueBefore": "Channeler Hope: Kekeke... come closer, child...",
+        "dialogueAfter": "Channeler Hope: Oh! Where am I?"
+      }
+    }
+  }
+}

@@ -286,6 +286,9 @@ public sealed class ScriptLibrary
                     case Op.Team when i.Name == "holds" && ItemDatabase.Get(i.Other) == null:
                         Wrong(i, $"there is no item '{i.Other}'");
                         break;
+                    case Op.Tutor when i.Name == "once" && !Models.MoveTutors.Kanto.ContainsKey(i.Other):
+                        Wrong(i, $"no tutor of Kanto teaches '{i.Other}'");
+                        break;
                     case Op.Tutor when i.Name == "moves" && !Models.MoveTutors.Places.Contains(i.Other):
                         Wrong(i, $"no shard tutor lives at '{i.Other}'");
                         break;

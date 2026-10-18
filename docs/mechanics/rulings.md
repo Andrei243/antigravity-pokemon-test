@@ -2626,6 +2626,40 @@ FireRed, and why:
 - **The people FireRed's new game hides** that this part brings on (the rival on the S.S. Anne, Oak's aide in Vermilion)
   are hidden by `common.KantoNewGame` for a new game and by the places' own arrival scripts for an older save, as in
   the first part: no story version is raised.
+
+## Kanto's third chapter, first part (2026-10-18, plan 19 · K5)
+
+From Cerulean City east over Routes 9 and 10 and through Rock Tunnel to Lavender Town and the Pokémon Tower, and west
+along Route 8 and under Saffron City to Route 7, scripts of ours on FireRed's beats (`pokemon_tower_2f.txt`,
+`pokemon_tower_5f.txt`, `pokemon_tower_6f.txt`, `lavender_town_volunteer_pokemon_house.txt`,
+`route_7_east_entrance.txt`, `route_8_west_entrance.txt`, `route_10_pokemon_center_1f.txt`, `route_4.txt`,
+`rock_tunnel_b1f.txt`), under FireRed's flags and variables. What differs from FireRed, and why:
+
+- **Rock Tunnel is dark** as FireRed's map says (`requires_flash`, which the GBA reader now reads as the weather
+  Sinnoh's dark caves have), until Flash is used, which Kanto's gates give to the Boulder Badge.
+- **The Pokémon Tower's wild ghosts are met as themselves**: FireRed shows them as an unknown "GHOST" that can't be
+  hit until the Silph Scope; this game has no such battle, so the Gastly and Haunter of the tower's grass of graves are
+  battled and caught as any wild Pokémon. The spirit before the stairs of the sixth floor, whose battle without the
+  Scope can only be run from, says its piece and pushes the player back instead: the tower is barred above the sixth
+  floor until the Silph Scope, which the Rocket Hideout under Celadon City gives (part b, with the battle with Marowak,
+  Mr. Fuji's rescue and the Poké Flute). Mr. Fuji's place at home stays empty until then.
+- **The purified ground of the fifth floor** heals the team every time it is stepped into, as FireRed's; FireRed's
+  `VAR_TEMP_1`, which the GBA forgets on every arrival, is forgotten by the floor's own arrival script.
+- **The gates to Saffron City** turn everyone back: their guards are thirsty, and FireRed lets through whoever brings
+  them the Tea from Celadon City's old lady, which is part b's. Their steps' variable
+  (`VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES`) is FireRed's.
+- **Kanto's tutors** (Route 4's Black Belts for Mega Punch and Mega Kick, Rock Tunnel's youngster for Rock Slide) teach
+  their move free, to one Pokémon, once in a game, as FireRed's do, each under FireRed's flag (`FLAG_TUTOR_MEGA_PUNCH`).
+  FireRed's own table of who may learn a tutor's move is not read (it lies outside what the importer fetches), so the
+  table is ours (`MoveTutors.Kanto`): a Pokémon may learn the move if its species could learn it by Platinum's data, or
+  could learn the Platinum machine move named beside it (Focus Punch for the punch and the kick, TM80 for Rock Slide).
+  The other tutors of FireRed (Dream Eater, Seismic Toss and the rest) come with their chapters.
+- **Oak's aide on Route 10** gives an Everstone for twenty kinds caught, as FireRed's does.
+- **A flight of stairs of Kanto's whose side is shut** (the tower's fifth floor, with a gravestone beside its west
+  flight) is walked off to the north first: FireRed's stairs are taken only when walked onto the way they go, and the
+  way on lies north; the engine takes a warp from any side.
+- **A Gym of Kanto's is fought in on its Leader's stage** (`BattleArena.Gym` with the room's `arenaType`): Lt. Surge's
+  battle had been fought indoors on a plain floor.
 ## The Pokégear (2026-10-18, plan 20 · J3)
 
 Johto's Pokégear, from HeartGold's `src/application/pokegear`, `src/field/overlay_2_gear_phone.c`,

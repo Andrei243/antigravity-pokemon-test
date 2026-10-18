@@ -90,9 +90,11 @@ public class KantoStoryTests
 
         public NPC? Present(string key) => Map.NPCs.FirstOrDefault(n => n.Key == key);
 
-        public HeadlessScriptHost Talk(string key)
+        public HeadlessScriptHost Talk(string key) => Talk(Map.NPCs.First(n => n.Key == key));
+
+        /// <summary>Someone in particular, where one map has several of a key (the map of Kanto's people of many places).</summary>
+        public HeadlessScriptHost Talk(NPC npc)
         {
-            var npc = Map.NPCs.First(n => n.Key == key);
             Tile = (npc.GridX, npc.GridY + 1);
             return Play(Scripts.Find(FieldScripts.For(npc)!, npc.ScriptFile ?? Map.ScriptFileAt(npc.GridX, npc.GridY))!, npc);
         }
@@ -760,6 +762,142 @@ public class KantoStoryTests
         game.Arrive("SSAnne_2F_Corridor", 30, 8);
         Assert.Null(game.Present("ss_anne_rival"));
         game.Arrive("Kanto", 287, 220);
-        Assert.Null(game.Present("scientist"));
+        // Vermilion's own: Route 8 has a Super Nerd of the same key (plan 19 · K5)
+        Assert.DoesNotContain(game.Map.NPCs, n => n.Key == "scientist" && game.Map.AreaAt(n.GridX, n.GridY)?.Key == "vermilion_city");
+    }
+
+    // ------------------------------------------------------------------ plan 19 · K5, part a: Rock Tunnel to Lavender
+
+    [Theory]
+    [InlineData(0, 0)]
+    [InlineData(0, 1)]
+    [InlineData(1, 0)]
+    [InlineData(1, 1)]
+    [InlineData(2, 0)]
+    [InlineData(2, 1)]
+    public void TheRivalBattlesInThePokemonTowerAndWalksOffDownTheStairs(int starter, int trigger)
+    {
+        var game = PastPewter(starter);
+        string rivals = StoryState.RivalStarterFor(RegionDatabase.Get(RegionDatabase.Kanto)!.Starters[starter]);
+        game.Arrive("PokemonTower_2F", 18, 10);
+        Assert.NotNull(game.Present("pokemon_tower_rival"));
+        var step = game.Map.Triggers.Where(t => t.Script == "Rival").OrderBy(t => t.Y).ElementAt(trigger);
+        game.Tile = (step.X, step.Y);
+        var scene = game.Play(Scripts.Find("Rival", step.ScriptFile!)!);
+        Assert.Contains($"battle kanto_rival_pokemon_tower_{rivals.ToLowerInvariant()} Won", scene.Log);
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_POKEMON_TOWER_2F"));
+        Assert.True(game.Story.Has("FLAG_HIDE_TOWER_RIVAL"));
+        Assert.Null(game.Present("pokemon_tower_rival"));
+        Assert.False(game.Fires("Rival"));
+        game.Arrive("PokemonTower_2F", 18, 10);
+        Assert.Null(game.Present("pokemon_tower_rival"));
+    }
+
+    [Fact]
+    public void ThePurifiedGroundOfTheFifthFloorHealsTheTeamOncePerStepIn()
+    {
+        var game = PastPewter();
+        game.Arrive("PokemonTower_5F", 18, 10);
+        game.Party.Members[0].CurrentHP = 1;
+        game.Step("PurifiedZone");
+        Assert.Equal(game.Party.Members[0].MaxHP, game.Party.Members[0].CurrentHP);
+        Assert.Equal(1, game.Story.Var("VAR_TEMP_1"));
+        Assert.False(game.Fires("PurifiedZone"));
+        game.Step("ExitPurifiedZone");
+        Assert.True(game.Fires("PurifiedZone"));
+        // Come in again from below, and the floor forgets the step in
+        game.Story.SetVar("VAR_TEMP_1", 1);
+        game.Arrive("PokemonTower_5F", 18, 10);
+        Assert.Equal(0, game.Story.Var("VAR_TEMP_1"));
+    }
+
+    [Fact]
+    public void TheTowersSixthFloorIsBarredWithoutTheSilphScope()
+    {
+        var game = PastPewter();
+        game.Arrive("PokemonTower_6F", 18, 10);
+        foreach (var step in game.Map.Triggers.Where(t => t.Script == "MarowakGhost").ToList())
+        {
+            game.Tile = (step.X, step.Y);
+            var ghost = game.Play(Scripts.Find("MarowakGhost", step.ScriptFile!)!);
+            Assert.DoesNotContain(ghost.Log, l => l.StartsWith("battle") || l.StartsWith("wildbattle"));
+            Assert.Equal((step.X, step.Y - 1), game.Tile);
+            Assert.Equal(0, game.Story.Var("VAR_MAP_SCENE_POKEMON_TOWER_6F"));
+        }
+        // and Mr. Fuji is up there with Team Rocket, not at home
+        game.Arrive("LavenderTown_VolunteerPokemonHouse", 4, 6);
+        Assert.Null(game.Present("mr_fuji"));
+        Assert.True(game.Story.Has("FLAG_HIDE_POKEHOUSE_FUJI"));
+        game.Arrive("PokemonTower_7F", 11, 15);
+        Assert.NotNull(game.Present("mr_fuji"));
+        Assert.Equal(3, game.Map.NPCs.Count(n => n.IsTrainer));
+    }
+
+    [Theory]
+    [InlineData("Route7_EastEntrance", -1)]
+    [InlineData("Route8_WestEntrance", 1)]
+    public void SaffronsGateGuardsAreThirstyAndTurnEveryoneBack(string gate, int back)
+    {
+        var game = PastPewter();
+        game.Arrive(gate, 6, 5);
+        foreach (var step in game.Map.Triggers.Where(t => t.Script == "Guard").ToList())
+        {
+            game.Tile = (step.X, step.Y);
+            var turned = game.Play(Scripts.Find("Guard", step.ScriptFile!)!);
+            Assert.Equal((step.X + back, step.Y), game.Tile);
+            Assert.Single(turned.Transcript);
+        }
+        Assert.Equal(3, game.Map.Triggers.Count(t => t.Script == "Guard"));
+    }
+
+    [Theory]
+    [InlineData("black_belt", "Mega Punch", 1, true)]
+    [InlineData("black_belt_2", "Mega Kick", 1, true)]
+    [InlineData("black_belt", "Mega Punch", 0, false)]
+    public void RouteFoursBlackBeltsTeachTheirMoveOnceToAPokemonThatCanLearnIt(string who, string move, int starter, bool able)
+    {
+        // Charmander can learn Focus Punch from TM01, so a punch or a kick; Bulbasaur can't
+        var game = PastPewter(starter);
+        game.Arrive("Kanto", 204, 54);
+        var black = game.Map.NPCs.Single(n => n.Key == who && game.Map.AreaAt(n.GridX, n.GridY)?.Key == "route_4");
+        game.Answers.Enqueue(0);
+        var taught = game.Talk(black);
+        Assert.Equal(able, game.Party.Members[0].Knows(move));
+        Assert.Equal(able, game.Story.Has(MoveTutors.KantoFlag(move)));
+        if (!able) return;
+        Assert.Contains(taught.Transcript, l => l.Text.Contains($"learned {move}"));
+        // Once only: spoken to again, nobody is asked for
+        var again = game.Talk(black);
+        Assert.Empty(again.Asked);
+        Assert.Equal("FLAG_TUTOR_MEGA_PUNCH", MoveTutors.KantoFlag("Mega Punch"));
+    }
+
+    [Fact]
+    public void RockTunnelsYoungsterTeachesRockSlideAndKantosTutorsKnowWhoCanLearn()
+    {
+        var game = PastPewter();
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Geodude")!, 20));
+        game.Arrive("RockTunnel_B1F", 3, 29);
+        game.Answers.Enqueue(0);
+        game.Talk("youngster");
+        Assert.True(game.Party.Members[0].Knows("Rock Slide"));
+        Assert.True(game.Story.Has("FLAG_TUTOR_ROCK_SLIDE"));
+        Assert.Equal(TutorAnswer.NotAble, MoveTutors.ForKanto(new Pokemon(PokemonDatabase.Get("Caterpie")!, 10), "Mega Kick"));
+        Assert.Equal(TutorAnswer.Able, MoveTutors.ForKanto(new Pokemon(PokemonDatabase.Get("Machop")!, 10), "Mega Kick"));
+        Assert.Equal(TutorAnswer.Nobody, MoveTutors.ForKanto(null, "Mega Punch"));
+    }
+
+    [Theory]
+    [InlineData(19, false)]
+    [InlineData(20, true)]
+    public void RouteTensAideGivesAnEverstoneForTwentyKindsCaught(int caught, bool given)
+    {
+        var game = PastPewter();
+        game.Caught = caught;
+        game.Arrive("Route10_PokemonCenter_1F", 7, 7);
+        game.Answers.Enqueue(0);
+        game.Talk("scientist");
+        Assert.Equal(given ? 1 : 0, game.Bag.GetQuantity(ItemDatabase.Get("Everstone")!));
+        Assert.Equal(given, game.Story.Has("FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE"));
     }
 }

@@ -1,0 +1,32 @@
+# Lavender Town (FireRed's MUS_LAVENDER, which the town and its rooms share): a slow, wistful waltz in D minor, a
+# music-box celesta over a harp's rippling arpeggios and a quiet bed of strings, for the town where people come to
+# remember their Pokémon. Original composition for this game (plan 19 · K5).
+title Lavender Town
+tempo 88
+meter 3/4
+reverb 0.4
+nighttempo 0.92
+
+track lead celesta night=vibraphone vol=0.76 pan=0 rev=0.42
+  L o5 a4 f4 d4 | o5 f4 d4 o4 b-4 | o4 b-4 o5 d4 g4 | o5 e2 c+4 |
+  o5 d4 f4 a4 | o6 c4 o5 a4 f4 | o5 b-4 g4 d4 | o5 c+2 e4 |
+  o5 f4 a4 o6 c4 | o6 c4 o5 g4 e4 | o5 f4 a4 d4 | o5 e2 a4 |
+  o5 f4 d4 o4 b-4 | o4 b-4 o5 d4 g4 | o5 e4 c+4 o4 a4 | o4 d2. |
+
+track harp harp vol=0.41 pan=0.35 rev=0.45
+  L o3 d8 a8 o4 d8 f8 a8 f8 | o2 b-8 o3 f8 b-8 o4 d8 f8 d8 | o3 g8 o4 d8 g8 b-8 o5 d8 o4 b-8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 |
+  o3 d8 a8 o4 d8 f8 a8 f8 | o3 f8 o4 c8 f8 a8 o5 c8 o4 a8 | o3 g8 o4 d8 g8 b-8 o5 d8 o4 b-8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 |
+  o3 f8 o4 c8 f8 a8 o5 c8 o4 a8 | o3 c8 g8 o4 c8 e8 g8 e8 | o3 d8 a8 o4 d8 f8 a8 f8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 |
+  o2 b-8 o3 f8 b-8 o4 d8 f8 d8 | o3 g8 o4 d8 g8 b-8 o5 d8 o4 b-8 | o3 a8 o4 e8 a8 o5 c+8 e8 c+8 | o3 d8 a8 o4 d8 f8 a8 f8 |
+
+track pad strings night=pad vol=0.29 pan=-0.3 rev=0.45
+  L o4 (d f a)2. | (d f b-)2. | (d g b-)2. | (c+ e a)2. |
+  (d f a)2. | (c f a)2. | (d g b-)2. | (c+ e a)2. |
+  (c f a)2. | (c e g)2. | (d f a)2. | (c+ e a)2. |
+  (d f b-)2. | (d g b-)2. | (c+ e a)2. | (d f a)2. |
+
+track bass contrabass vol=0.61 rev=0.2
+  L o3 d2. | o2 b-2. | o3 g2. | o3 a2. |
+  o3 d2. | o3 f2. | o3 g2. | o3 a2. |
+  o3 f2. | o3 c2. | o3 d2. | o3 a2. |
+  o2 b-2. | o3 g2. | o3 a2. | o3 d2. |

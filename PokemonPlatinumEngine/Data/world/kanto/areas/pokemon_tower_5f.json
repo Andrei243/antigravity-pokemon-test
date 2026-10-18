@@ -1,0 +1,68 @@
+{
+  "key": "pokemon_tower_5f",
+  "index": 134,
+  "name": "Pokemon Tower",
+  "matrix": 98,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_TOWER",
+  "nightMusic": "MUS_POKE_TOWER",
+  "encounters": "pokemon_tower_5f",
+  "bike": false,
+  "running": false,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Gastly", "level": 15 },
+    { "species": "Gastly", "level": 16 },
+    { "species": "Gastly", "level": 17 },
+    { "species": "Gastly", "level": 13 },
+    { "species": "Gastly", "level": 14 },
+    { "species": "Gastly", "level": 18 },
+    { "species": "Haunter", "level": 20 },
+    { "species": "Cubone", "level": 15 },
+    { "species": "Gastly", "level": 17 },
+    { "species": "Cubone", "level": 17 },
+    { "species": "Gastly", "level": 17 },
+    { "species": "Gastly", "level": 19 }
+  ],
+  "landRate": 6,
+  "warps": [
+    { "x": 4, "z": 10, "to": "pokemon_tower_4f", "toWarp": 0 },
+    { "x": 18, "z": 10, "to": "pokemon_tower_6f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "channeler", "looks": "channeler", "movement": "look_around", "x": 11, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_CHANNELER_RUTH" },
+    { "id": "channeler_2", "looks": "channeler", "movement": "look_west", "x": 19, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CHANNELER_TAMMY" },
+    { "id": "channeler_3", "looks": "channeler", "movement": "look_east", "x": 7, "z": 12, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_CHANNELER_KARINA" },
+    { "id": "channeler_4", "looks": "channeler", "movement": "look_around", "x": 11, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_CHANNELER_JANAE" },
+    { "id": "channeler_5", "looks": "channeler", "movement": "look_east", "x": 12, "z": 8, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "PokemonTower_5F_EventScript_Channeler" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 6, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_TOWER_5F_NUGGET", "item": "Nugget", "script": "PokemonTower_5F_EventScript_ItemNugget" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 11, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_TOWER_5F_CLEANSE_TAG", "item": "Cleanse Tag", "script": "PokemonTower_5F_EventScript_ItemCleanseTag" }
+  ],
+  "signs": [
+    { "x": 7, "z": 3, "type": 2, "script": "", "item": "Big Mushroom", "flag": "FLAG_HIDDEN_ITEM_POKEMON_TOWER_5F_BIG_MUSHROOM" }
+  ],
+  "triggers": [
+    { "x": 10, "z": 8, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_PurifiedZone", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 11, "z": 8, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_PurifiedZone", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 12, "z": 8, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_PurifiedZone", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 10, "z": 9, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_PurifiedZone", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 9, "z": 8, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_ExitPurifiedZone", "variable": "VAR_TEMP_1", "value": "1" },
+    { "x": 12, "z": 9, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_PurifiedZone", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 10, "z": 10, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_PurifiedZone", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 11, "z": 10, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_PurifiedZone", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 12, "z": 10, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_PurifiedZone", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 9, "z": 9, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_ExitPurifiedZone", "variable": "VAR_TEMP_1", "value": "1" },
+    { "x": 9, "z": 10, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_ExitPurifiedZone", "variable": "VAR_TEMP_1", "value": "1" },
+    { "x": 10, "z": 11, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_ExitPurifiedZone", "variable": "VAR_TEMP_1", "value": "1" },
+    { "x": 11, "z": 11, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_ExitPurifiedZone", "variable": "VAR_TEMP_1", "value": "1" },
+    { "x": 12, "z": 11, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_ExitPurifiedZone", "variable": "VAR_TEMP_1", "value": "1" },
+    { "x": 13, "z": 8, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_ExitPurifiedZone", "variable": "VAR_TEMP_1", "value": "1" },
+    { "x": 13, "z": 9, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_ExitPurifiedZone", "variable": "VAR_TEMP_1", "value": "1" },
+    { "x": 13, "z": 10, "width": 1, "depth": 1, "script": "PokemonTower_5F_EventScript_ExitPurifiedZone", "variable": "VAR_TEMP_1", "value": "1" }
+  ]
+}

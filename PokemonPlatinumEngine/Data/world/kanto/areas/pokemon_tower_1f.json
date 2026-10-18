@@ -1,0 +1,32 @@
+{
+  "key": "pokemon_tower_1f",
+  "index": 130,
+  "name": "Pokemon Tower",
+  "matrix": 94,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_TOWER",
+  "nightMusic": "MUS_POKE_TOWER",
+  "bike": false,
+  "running": false,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 19, "to": "", "toWarp": 0 },
+    { "x": 11, "z": 18, "to": "lavender_town", "toWarp": 0 },
+    { "x": 12, "z": 19, "to": "", "toWarp": 0 },
+    { "x": 18, "z": 9, "to": "pokemon_tower_2f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "worker_f", "looks": "worker_f", "movement": "look_north", "x": 18, "z": 13, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "PokemonTower_1F_EventScript_WorkerF" },
+    { "id": "channeler", "looks": "channeler", "movement": "look_west", "x": 18, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "PokemonTower_1F_EventScript_Channeler" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_north", "x": 15, "z": 6, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "PokemonTower_1F_EventScript_Woman1" },
+    { "id": "woman_3", "looks": "woman_3", "movement": "wander_around", "x": 7, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PokemonTower_1F_EventScript_Woman2" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "wander_around", "x": 8, "z": 12, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "PokemonTower_1F_EventScript_BaldingMan" }
+  ],
+  "signs": [],
+  "triggers": []
+}

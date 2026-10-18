@@ -353,6 +353,14 @@ public static class RegionDatabase
                 "SSAnne_2F_Room1", "SSAnne_2F_Room2", "SSAnne_2F_Room3", "SSAnne_2F_Room4", "SSAnne_2F_Room5",
                 "SSAnne_2F_Room6", "SSAnne_B1F_Room1", "SSAnne_B1F_Room2", "SSAnne_B1F_Room3", "SSAnne_B1F_Room4",
                 "SSAnne_B1F_Room5", "DiglettsCave_NorthEntrance", "DiglettsCave_B1F", "DiglettsCave_SouthEntrance",
+                // Plan 19 · K5, part a: Route 10's Pokémon Center, Rock Tunnel, Lavender Town's rooms, the Pokémon Tower,
+                // the Underground Path between Routes 7 and 8 and the gates of Routes 7 and 8
+                "Route10_PokemonCenter_1F", "Route10_PokemonCenter_2F", "RockTunnel_1F", "RockTunnel_B1F",
+                "LavenderTown_PokemonCenter_1F", "LavenderTown_PokemonCenter_2F", "LavenderTown_VolunteerPokemonHouse",
+                "LavenderTown_House1", "LavenderTown_House2", "LavenderTown_Mart", "PokemonTower_1F", "PokemonTower_2F",
+                "PokemonTower_3F", "PokemonTower_4F", "PokemonTower_5F", "PokemonTower_6F", "PokemonTower_7F",
+                "UndergroundPath_WestEntrance", "UndergroundPath_EastWestTunnel", "UndergroundPath_EastEntrance",
+                "Route7_EastEntrance", "Route8_WestEntrance",
             }
         },
         new()

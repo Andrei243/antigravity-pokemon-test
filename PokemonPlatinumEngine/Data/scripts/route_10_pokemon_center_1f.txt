@@ -1,0 +1,28 @@
+# The Pokémon Center at Rock Tunnel's north mouth (plan 19 · K5, part a). docs/scripts.md describes the language; the
+# lines are our own, on FireRed's beats (data/maps/Route10_PokemonCenter_1F/scripts.inc).
+#
+# Professor Oak's aide hands out an Everstone for twenty kinds caught (FireRed's FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE).
+
+
+script Aide
+  speaker "Aide"
+  if flag FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE goto Given
+  if not flag FLAG_HAS_POKEDEX goto NoDex
+  ask "Hi! I'm one of Professor Oak's aides. Shall I see how many kinds of Pokémon you've caught?"
+  if no goto Declined
+  if var CAUGHT < 20 goto NotYet
+  say "{var:CAUGHT} kinds! Splendid. The Professor wants you to have this."
+  give "Everstone"
+  setflag FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE
+label Given
+  say "A Pokémon holding an Everstone won't evolve. Handy, if you like one just as it is."
+  end
+label NoDex
+  say "I'm studying the Pokémon of Rock Tunnel for Professor Oak."
+  end
+label Declined
+  say "All right. Come and see me whenever you like."
+  end
+label NotYet
+  say "Only {var:CAUGHT} so far. Come back once you've caught twenty kinds, and I'll have something for you."
+  end

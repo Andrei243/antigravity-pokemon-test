@@ -514,7 +514,8 @@ public sealed class GbaWorld
             "MAP_TYPE_INDOOR" or "MAP_TYPE_SECRET_BASE" => "Indoors",
             _ => "None"
         },
-        Weather = map.Weather switch
+        // A map dark until Flash is used takes the weather Sinnoh's dark caves have (Map.IsDark; plan 19 · K5: Rock Tunnel)
+        Weather = map.Flash ? "DarkFlash" : map.Weather switch
         {
             "WEATHER_RAIN" => "Raining",
             "WEATHER_SHADE" or "WEATHER_SUNNY_CLOUDS" => "Cloudy",

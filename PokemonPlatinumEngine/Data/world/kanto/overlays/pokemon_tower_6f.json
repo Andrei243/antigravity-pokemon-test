@@ -1,0 +1,40 @@
+{
+  // The Pokémon Tower's sixth floor (plan 19 · K5, part a): the spirit at the head of the stairs up turns back whoever
+  // can't see it (pokemon_tower_6f.txt; the Silph Scope is part b's)
+  "area": "pokemon_tower_6f",
+  "name": "Pokémon Tower",
+  "bgmTrack": "kanto/pokemon_tower",
+  "people": {
+    "channeler": {
+      "name": "Angelica",
+      "trainer": {
+        "dialogueBefore": "Channeler Angelica: Give... me... your... Pokémon...",
+        "dialogueAfter": "Channeler Angelica: I... I don't remember a thing."
+      }
+    },
+    "channeler_2": {
+      "name": "Jennifer",
+      "trainer": {
+        "dialogueBefore": "Channeler Jennifer: Kyaaah! The spirits are upon us!",
+        "dialogueAfter": "Channeler Jennifer: Was I shouting? How embarrassing."
+      }
+    },
+    "channeler_3": {
+      "name": "Emilia",
+      "trainer": {
+        "dialogueBefore": "Channeler Emilia: Fall... into... the dark...",
+        "dialogueAfter": "Channeler Emilia: What a strange dream that was."
+      }
+    }
+  },
+  "triggers": [
+    {
+      "trigger": 0,
+      "script": "MarowakGhost"
+    },
+    {
+      "trigger": 1,
+      "script": "MarowakGhost"
+    }
+  ]
+}

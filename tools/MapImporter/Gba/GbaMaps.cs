@@ -60,6 +60,8 @@ public sealed class GbaMap
     public bool Cycling { get; init; }
     public bool Running { get; init; }
     public bool Escaping { get; init; }
+    /// <summary>The map is dark until Flash is used (map.json's <c>requires_flash</c>: Rock Tunnel, plan 19 · K5).</summary>
+    public bool Flash { get; init; }
     public string Group { get; init; } = "";
     public List<GbaConnection> Connections { get; init; } = new();
     public List<GbaObject> Objects { get; init; } = new();
@@ -249,7 +251,7 @@ public sealed class GbaMaps
         {
             Id = Str("id"), Name = Str("name"), Layout = Str("layout"), Music = Str("music"), Section = Str("region_map_section"),
             Weather = Str("weather"), MapType = Str("map_type"), Cycling = Bool("allow_cycling"), Running = Bool("allow_running"),
-            Escaping = Bool("allow_escaping"), Group = group, Connections = connections,
+            Escaping = Bool("allow_escaping"), Flash = Bool("requires_flash"), Group = group, Connections = connections,
             Objects = objects, Warps = warps, Coords = coords, Bgs = bgs
         };
     }

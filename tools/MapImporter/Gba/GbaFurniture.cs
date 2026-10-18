@@ -139,6 +139,29 @@ public static class GbaFurniture
                 (0x2A5, 0x2A6, PropType.Table),
                 (0x2A3, 0x2A3, PropType.Plant),
             },
+            // Plan 19 · K5: the S.S. Anne's cabins, galley and captain's cabin (K4's part b left them as floor and blocks
+            // of wall). A cabin's bed of two metatiles by three against the west wall (the first plan) or three by two
+            // at the back (the second), a table of one metatile between two chairs, and a plant by the door
+            ["gTileset_SSAnne"] = new (int, int, PropType)[]
+            {
+                (0x338, 0x339, PropType.Bed), (0x340, 0x341, PropType.Bed), (0x348, 0x349, PropType.Bed),
+                (0x342, 0x344, PropType.Bed), (0x34A, 0x34C, PropType.Bed),
+                (0x329, 0x329, PropType.Table), (0x331, 0x331, PropType.Table), (0x309, 0x309, PropType.Table), (0x311, 0x311, PropType.Table),
+                (0x328, 0x328, PropType.Cushion), (0x32A, 0x32A, PropType.Cushion), (0x330, 0x330, PropType.Cushion),
+                (0x332, 0x332, PropType.Cushion), (0x308, 0x308, PropType.Cushion), (0x30A, 0x30A, PropType.Cushion),
+                (0x310, 0x310, PropType.Cushion), (0x312, 0x312, PropType.Cushion),
+                (0x333, 0x333, PropType.Plant), (0x313, 0x313, PropType.Plant),
+                // The galley's three long worktops down the room, and its stoves along the back wall (MB_FOOD_SMELLS_TASTY)
+                (0x2D0, 0x2D4, PropType.KitchenCounter), (0x2D8, 0x2DB, PropType.KitchenCounter), (0x2F2, 0x2F2, PropType.Stove),
+                // The captain's desk in his cabin's corner and his bed along the west wall
+                (0x305, 0x307, PropType.Table), (0x30D, 0x30F, PropType.Table),
+                (0x2F5, 0x2F6, PropType.Bed), (0x2AB, 0x2AC, PropType.Bed), (0x2B3, 0x2B4, PropType.Bed),
+            },
+            // Plan 19 · K5: the Pokémon Tower's floors, rows of gravestones between the channelers
+            ["gTileset_PokemonTower"] = new (int, int, PropType)[]
+            {
+                (0x291, 0x291, PropType.Headstone),
+            },
         };
 
     /// <summary>

@@ -1,0 +1,84 @@
+# Route 4 (plan 19 · K5, from K4's list). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/Route4/scripts.inc and its tutors' common script).
+#
+# The two Black Belts below Mt. Moon's east side teach Mega Punch and Mega Kick, each to one Pokémon, once in a game,
+# for nothing (`tutor once`; Models/MoveTutors.cs, Kanto's table of who may learn them, our own). FLAG_TUTOR_MEGA_PUNCH
+# and FLAG_TUTOR_MEGA_KICK, FireRed's names: each has taught its move.
+
+
+script MegaPunch
+  speaker "Black Belt"
+  if flag FLAG_TUTOR_MEGA_PUNCH goto Taught
+  ask "A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch?"
+  if no goto Later
+  say "Good! Which Pokémon is to learn it?"
+  choosepokemon
+  tutor once "Mega Punch"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_TUTOR_MEGA_PUNCH
+label Taught
+  say "Keep that punch sharp! Hips first, then the fist."
+  end
+label Later
+  say "Come back if you change your mind. My punches aren't going anywhere."
+  end
+label Egg
+  say "An Egg can't throw a punch! Hatch it first."
+  end
+label Cannot
+  say "That Pokémon can't learn a punch like mine, I'm afraid."
+  end
+label Knows
+  say "That one already knows {thing}!"
+  end
+label Hm
+  say "{forgotten} isn't a move that can be given up like that."
+  goto Later
+
+
+script MegaKick
+  speaker "Black Belt"
+  if flag FLAG_TUTOR_MEGA_KICK goto Taught
+  ask "My kicks can split a boulder! Shall I teach one of your Pokémon Mega Kick?"
+  if no goto Later
+  say "Good! Which Pokémon is to learn it?"
+  choosepokemon
+  tutor once "Mega Kick"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_TUTOR_MEGA_KICK
+label Taught
+  say "Kick from the ground up, and you'll never lose your balance."
+  end
+label Later
+  say "Come back if you change your mind. My kicks aren't going anywhere."
+  end
+label Egg
+  say "An Egg can't kick anything! Hatch it first."
+  end
+label Cannot
+  say "That Pokémon can't learn a kick like mine, I'm afraid."
+  end
+label Knows
+  say "That one already knows {thing}!"
+  end
+label Hm
+  say "{forgotten} isn't a move that can be given up like that."
+  goto Later

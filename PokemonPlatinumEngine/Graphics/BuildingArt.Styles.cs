@@ -91,6 +91,8 @@ internal static partial class BuildingArt
             Architecture.Evergreen => Pitched(WallKind.Log, Rgb(48, 116, 82)) with { Chimney = true, Shutters = true },
             Architecture.Granite => Pitched(WallKind.PaleStone, Rgb(122, 104, 86), RoofShape.Hip) with { Chimney = true },
             Architecture.Riverside => Pitched(WallKind.Clapboard, Rgb(62, 118, 196)) with { FlowerBoxes = true },
+            Architecture.Portside => Pitched(WallKind.Stucco, Rgb(204, 78, 52)) with { Chimney = true },
+            Architecture.Lilac => Pitched(WallKind.Plaster, Rgb(142, 112, 178), RoofShape.Hip) with { Shutters = true },
             Architecture.Breeze => Pitched(WallKind.Plaster, Rgb(78, 104, 150)) with { Chimney = true, FlowerBoxes = true },
             Architecture.Bayside => Pitched(WallKind.Boards, Rgb(196, 104, 72), RoofShape.Hip) with { Shutters = true },
             Architecture.OldTimber => Pitched(WallKind.Planks, Rgb(72, 80, 104), RoofShape.Hip),
@@ -215,6 +217,13 @@ internal static partial class BuildingArt
             {
                 Wall = WallKind.PaleStone, Roof = RoofShape.Flat, RoofColor = FrontierBlue, Window = WindowKind.Arched, GlassDoor = true,
                 Band = true, Accent = FrontierBlue, Shaft = 288, StageCount = 4, Gear = RoofGear.Beacon
+            },
+            // Lavender Town's Pokémon Tower (plan 19 · K5): grey stone under a lilac cap, the town's own colour, its narrow
+            // windows arched as a chapel's
+            BuildingKind.Tower when string.IsNullOrEmpty(b.Model) => new BuildingStyle
+            {
+                Wall = WallKind.OldStone, Roof = RoofShape.Flat, RoofColor = Rgb(142, 112, 178), Window = WindowKind.Arched,
+                Accent = Rgb(142, 112, 178), Band = true
             },
             BuildingKind.Tower => new BuildingStyle { Wall = WallKind.Stone, Roof = RoofShape.Flat, RoofColor = Rgb(92, 104, 140), Window = WindowKind.Slit, Accent = Rgb(92, 104, 140) },
             BuildingKind.Lighthouse => new BuildingStyle { Wall = WallKind.Stucco, Roof = RoofShape.Flat, RoofColor = Red, Window = WindowKind.Slit, Accent = Rgb(214, 72, 62) },

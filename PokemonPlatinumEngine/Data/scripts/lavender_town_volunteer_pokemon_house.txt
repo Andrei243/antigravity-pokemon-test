@@ -1,0 +1,10 @@
+# The Lavender Volunteer Pokémon House (plan 19 · K5, part a). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/LavenderTown_VolunteerPokemonHouse/scripts.inc).
+#
+# Mr. Fuji is at the top of the Pokémon Tower, held by Team Rocket, until the player comes for him there (part b), and
+# his place at home is empty (FLAG_HIDE_POKEHOUSE_FUJI, which FireRed's new game sets). Part b's rescue clears it.
+
+
+script OnEnter
+  setflag FLAG_HIDE_POKEHOUSE_FUJI
+  end

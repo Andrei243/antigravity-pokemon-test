@@ -96,7 +96,9 @@
     "Mystery Man": "mystery",
     "Rocket Boss": "galactic",
     "Gamer": "fun",
-    "Engineer": "mountain"
+    "Engineer": "mountain",
+    "Channeler": "mystery",
+    "Pokemaniac": "mystery"
   },
   "battleThemes": {
     "Leader": "gym",

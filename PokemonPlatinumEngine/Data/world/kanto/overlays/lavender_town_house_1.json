@@ -1,0 +1,19 @@
+{
+  // A house of Lavender Town (plan 19 · K5, part a): the girl who took the Cubone in
+  "area": "lavender_town_house_1",
+  "bgmTrack": "kanto/lavender",
+  "people": {
+    "cooltrainer_f": {
+      "name": "Woman",
+      "dialog": [
+        "That Cubone's mother was attacked by Team Rocket. Now its spirit wanders the tower..."
+      ]
+    },
+    "cubone": {
+      "name": "Cubone",
+      "dialog": [
+        "Kyarugoo..."
+      ]
+    }
+  }
+}

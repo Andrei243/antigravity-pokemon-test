@@ -1,0 +1,49 @@
+{
+  "key": "pokemon_tower_6f",
+  "index": 135,
+  "name": "Pokemon Tower",
+  "matrix": 99,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_TOWER",
+  "nightMusic": "MUS_POKE_TOWER",
+  "encounters": "pokemon_tower_6f",
+  "bike": false,
+  "running": false,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Gastly", "level": 16 },
+    { "species": "Gastly", "level": 17 },
+    { "species": "Gastly", "level": 18 },
+    { "species": "Gastly", "level": 14 },
+    { "species": "Gastly", "level": 15 },
+    { "species": "Gastly", "level": 19 },
+    { "species": "Haunter", "level": 21 },
+    { "species": "Cubone", "level": 17 },
+    { "species": "Gastly", "level": 18 },
+    { "species": "Cubone", "level": 19 },
+    { "species": "Gastly", "level": 18 },
+    { "species": "Haunter", "level": 23 }
+  ],
+  "landRate": 8,
+  "warps": [
+    { "x": 11, "z": 16, "to": "pokemon_tower_7f", "toWarp": 0 },
+    { "x": 18, "z": 10, "to": "pokemon_tower_5f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "channeler", "looks": "channeler", "movement": "look_east", "x": 13, "z": 10, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CHANNELER_ANGELICA" },
+    { "id": "channeler_2", "looks": "channeler", "movement": "look_west", "x": 18, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CHANNELER_JENNIFER" },
+    { "id": "channeler_3", "looks": "channeler", "movement": "look_south", "x": 9, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CHANNELER_EMILIA" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 5, "z": 15, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_TOWER_6F_RARE_CANDY", "item": "Rare Candy", "script": "PokemonTower_6F_EventScript_ItemRareCandy" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 15, "z": 15, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_TOWER_6F_X_ACCURACY", "item": "X Accuracy", "script": "PokemonTower_6F_EventScript_ItemXAccuracy" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 11, "z": 15, "width": 1, "depth": 1, "script": "PokemonTower_6F_EventScript_MarowakGhost", "variable": "VAR_MAP_SCENE_POKEMON_TOWER_6F", "value": "0" },
+    { "x": 12, "z": 16, "width": 1, "depth": 1, "script": "PokemonTower_6F_EventScript_MarowakGhost", "variable": "VAR_MAP_SCENE_POKEMON_TOWER_6F", "value": "0" }
+  ]
+}

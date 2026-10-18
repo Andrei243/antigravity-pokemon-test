@@ -343,5 +343,48 @@ partial class Harness
         ReadTo("Thunder Badge from Lt. Surge"); Frames(10); Shot("ks47_the_thunder_badge");
         ReadTo(null);
         LeftThree("the chapter's end");
+
+        // ---- Plan 19 · K5, part a: Rock Tunnel dark and lit by Flash
+        ComeThrough("RockTunnel_1F", 17, 4, Direction.Down);
+        Frames(20); Shot("ks48_rock_tunnel_dark");
+        story.Set("FLAG_FLASH_ACTIVE");
+        Frames(20); Shot("ks49_rock_tunnel_lit");
+        Console.WriteLine($"  Rock Tunnel: dark {game.Map.IsDark}, lit {game.Map.Lit}");
+
+        // ---- the rival in the Pokémon Tower, from the step east of him
+        StepOnto("PokemonTower_2F", 17, 5, Direction.Left);
+        ReadTo("Your Pokémon don't look dead"); Frames(10); Shot("ks50_the_rival_in_the_tower");
+        IntoBattle("the rival's battle in the tower");
+        ToMainMenu(game.Battle); Shot("ks51_the_rivals_battle_in_the_tower");
+        Win();
+        ReadTo("Smell you later"); Frames(10); Shot("ks52_the_rival_leaves");
+        ReadTo(null); Frames(30);
+        Console.WriteLine($"  the tower's rival: scene {story.Var("VAR_MAP_SCENE_POKEMON_TOWER_2F")}, hidden {story.Has("FLAG_HIDE_TOWER_RIVAL")}");
+
+        // ---- the purified ground of the fifth floor, and the spirit on the sixth
+        game.Party.Members[0].CurrentHP = 1;
+        StepOnto("PokemonTower_5F", 11, 8, Direction.Down);
+        ReadTo("fully healed"); Frames(10); Shot("ks53_the_purified_ground");
+        ReadTo(null);
+        Console.WriteLine($"  purified: lead's HP {game.Party.Members[0].CurrentHP}/{game.Party.Members[0].MaxHP}");
+        StepOnto("PokemonTower_6F", 11, 15, Direction.Left);
+        ReadTo("Be... gone"); Frames(10); Shot("ks54_the_ghost");
+        ReadTo(null); Frames(20); Shot("ks55_pushed_back");
+        Console.WriteLine($"  the ghost: the player at ({game.Player.GridX}, {game.Player.GridY}), scene {story.Var("VAR_MAP_SCENE_POKEMON_TOWER_6F")}");
+
+        // ---- Saffron City's gate, and Route 4's Black Belt
+        StepOnto("Route8_WestEntrance", 6, 5, Direction.Left);
+        ReadTo("too thirsty"); Frames(10); Shot("ks56_the_thirsty_guard");
+        ReadTo(null); Frames(20);
+        Console.WriteLine($"  the gate: the player at ({game.Player.GridX}, {game.Player.GridY})");
+        var kanto = MapDatabase.Get("Kanto");
+        var black = kanto.NPCs.First(n => n.Key == "black_belt" && kanto.AreaAt(n.GridX, n.GridY)?.Key == "route_4");
+        At("Kanto", black.GridX, black.GridY + 1, Direction.Up); Frames(4);
+        game.Interact();
+        Until(() => engine.Choice.IsOpen, "the Black Belt's question"); Frames(20); Shot("ks57_mega_punch_asked");
+        // No, for now: yes opens the team to choose from, which this mode doesn't drive
+        engine.Choice.Move(1); Frames(4); engine.Choice.Confirm(); Frames(4);
+        ReadTo(null);
+        Console.WriteLine($"  Mega Punch: taught {story.Has("FLAG_TUTOR_MEGA_PUNCH")}");
     }
 }

@@ -110,12 +110,14 @@
     { "model": 0, "name": "gba:Window", "x": 5.5, "y": 0, "z": 1.5, "boxX": 5, "boxZ": 1, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:Window", "x": 10.5, "y": 0, "z": 1.5, "boxX": 10, "boxZ": 1, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:Window", "x": 13.5, "y": 0, "z": 1.5, "boxX": 13, "boxZ": 1, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:KitchenCounter", "x": 4, "y": 0, "z": 6.5, "boxX": 3, "boxZ": 4, "width": 2, "depth": 5, "height": 0 },
+    { "model": 0, "name": "gba:KitchenCounter", "x": 8, "y": 0, "z": 6.5, "boxX": 7, "boxZ": 4, "width": 2, "depth": 5, "height": 0 },
+    { "model": 0, "name": "gba:KitchenCounter", "x": 12, "y": 0, "z": 6.5, "boxX": 11, "boxZ": 4, "width": 2, "depth": 5, "height": 0 },
     { "model": 0, "name": "gba:TrashCan", "x": 14.5, "y": 0, "z": 4.5, "boxX": 14, "boxZ": 4, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:TrashCan", "x": 14.5, "y": 0, "z": 6.5, "boxX": 14, "boxZ": 6, "width": 1, "depth": 1, "height": 0 },
-    { "model": 0, "name": "gba:KitchenCounter", "x": 4, "y": 0, "z": 8.5, "boxX": 3, "boxZ": 8, "width": 2, "depth": 1, "height": 0 },
-    { "model": 0, "name": "gba:KitchenCounter", "x": 12, "y": 0, "z": 8.5, "boxX": 11, "boxZ": 8, "width": 2, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:TrashCan", "x": 14.5, "y": 0, "z": 8.5, "boxX": 14, "boxZ": 8, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:KitchenCounter", "x": 4, "y": 0, "z": 11.5, "boxX": 3, "boxZ": 11, "width": 2, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Stove", "x": 8, "y": 0, "z": 11.5, "boxX": 6, "boxZ": 11, "width": 4, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:KitchenCounter", "x": 12, "y": 0, "z": 11.5, "boxX": 11, "boxZ": 11, "width": 2, "depth": 1, "height": 0 }
   ]
 }

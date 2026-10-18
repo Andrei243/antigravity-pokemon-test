@@ -1,0 +1,32 @@
+# The Pokémon Tower (FireRed's MUS_POKE_TOWER, which its seven floors share): a hushed, slow lament in E minor, an
+# organ line over a choir's held chords, a low bell tolling each bar and a deep bass. A place indoors plays the same by
+# day and night. Original composition for this game (plan 19 · K5).
+title Pokémon Tower
+tempo 76
+meter 4/4
+reverb 0.5
+night none
+
+track lead organ vol=0.7 pan=0 rev=0.5
+  L o5 e2 g4 b4 | o5 c2 e4 g4 | o5 a2 o6 c4 o5 e4 | o5 f+2 d+4 o4 b4 |
+  o5 e2 b4 g4 | o5 d2 g4 b4 | o5 a4 e4 f+4 d+4 | o5 e1 |
+  o5 g2 e4 c4 | o5 d2 g4 b4 | o5 c2 e4 a4 | o5 b2 g4 e4 |
+  o5 e2 g4 o6 c4 | o5 a2 e4 c4 | o5 d+2 f+4 b4 | o5 e1 |
+
+track choir choir vol=0.36 pan=-0.25 rev=0.6
+  L o4 (e g b)1 | (e g >c)1 | (e a >c)1 | (d+ f+ b)1 |
+  (e g b)1 | (d g b)1 | (e a >c)2 (d+ f+ b)2 | (e g b)1 |
+  (e g >c)1 | (d g b)1 | (e a >c)1 | (e g b)1 |
+  (e g >c)1 | (e a >c)1 | (d+ f+ b)1 | (e g b)1 |
+
+track toll bell vol=0.31 pan=0.3 rev=0.7
+  L o4 e2 r2 | c2 r2 | a2 r2 | b2 r2 |
+  e2 r2 | g2 r2 | a2 b2 | e2 r2 |
+  c2 r2 | g2 r2 | a2 r2 | e2 r2 |
+  c2 r2 | a2 r2 | b2 r2 | e2 r2 |
+
+track bass contrabass vol=0.73 rev=0.3
+  L o3 e1 | c1 | o2 a1 | b1 |
+  o3 e1 | o2 g1 | a2 b2 | o3 e1 |
+  c1 | o2 g1 | a1 | o3 e1 |
+  c1 | o2 a1 | b1 | o3 e1 |

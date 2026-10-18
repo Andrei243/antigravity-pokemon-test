@@ -1,0 +1,36 @@
+{
+  // The Pokémon Tower's top floor (plan 19 · K5, part a): Team Rocket hold Mr. Fuji here. Nobody comes this far
+  // until the Silph Scope shows the spirit below for what it is (part b)
+  "area": "pokemon_tower_7f",
+  "name": "Pokémon Tower",
+  "bgmTrack": "kanto/pokemon_tower",
+  "people": {
+    "mr_fuji": {
+      "name": "Mr. Fuji",
+      "dialog": [
+        "Heh... You have come a long way to find an old man."
+      ]
+    },
+    "pokemon_tower_grunt1": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: What do you want? This old man is our business!",
+        "dialogueAfter": "Team Rocket Grunt: Grr... you'll be sorry for this!"
+      }
+    },
+    "pokemon_tower_grunt2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: Go home, kid! Team Rocket is busy here!",
+        "dialogueAfter": "Team Rocket Grunt: Ugh, we'll get you back!"
+      }
+    },
+    "pokemon_tower_grunt3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: The old man's been nothing but trouble. And now you!",
+        "dialogueAfter": "Team Rocket Grunt: This isn't over!"
+      }
+    }
+  }
+}

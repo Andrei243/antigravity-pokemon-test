@@ -1,0 +1,103 @@
+{
+  // Route 8 (plan 19 · K5, part a): west from Lavender Town to Saffron City's gate, its trainers FireRed's. The
+  // Underground Path's hut leads under Saffron City to Route 7
+  "area": "route_8",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "lass": {
+      "name": "Julia",
+      "trainer": {
+        "dialogueBefore": "Lass Julia: My Clefairy are twins, just like me and my sister!",
+        "dialogueAfter": "Lass Julia: Two Clefairy, one loss."
+      }
+    },
+    "old_man_1": {
+      "name": "Rich",
+      "trainer": {
+        "dialogueBefore": "Gamer Rich: Fire against your Pokémon! I like those odds!",
+        "dialogueAfter": "Gamer Rich: I bet on the wrong side."
+      }
+    },
+    "scientist": {
+      "name": "Glenn",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Glenn: My Pokémon are a bit smelly, but they're fantastic!",
+        "dialogueAfter": "Super Nerd Glenn: Smelly AND beaten."
+      }
+    },
+    "lass_2": {
+      "name": "Paige",
+      "trainer": {
+        "dialogueBefore": "Lass Paige: I just love Nidoran! Don't you?",
+        "dialogueAfter": "Lass Paige: They're still lovely."
+      }
+    },
+    "scientist_2": {
+      "name": "Leslie",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Leslie: Have you seen what a Koffing can do? Let me show you!",
+        "dialogueAfter": "Super Nerd Leslie: It went up in smoke..."
+      }
+    },
+    "lass_3": {
+      "name": "Andrea",
+      "trainer": {
+        "dialogueBefore": "Lass Andrea: Three Meowth, three times the fun!",
+        "dialogueAfter": "Lass Andrea: Three times the loss, too."
+      }
+    },
+    "lass_4": {
+      "name": "Megan",
+      "trainer": {
+        "dialogueBefore": "Lass Megan: I've got five Pokémon! That has to win, right?",
+        "dialogueAfter": "Lass Megan: Five wasn't enough!"
+      }
+    },
+    "old_man_1_2": {
+      "name": "Stan",
+      "trainer": {
+        "dialogueBefore": "Gamer Stan: I always play the long game. Let's battle!",
+        "dialogueAfter": "Gamer Stan: The long game is over."
+      }
+    },
+    "scientist_3": {
+      "name": "Aidan",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Aidan: I've built up a team of electric experiments!",
+        "dialogueAfter": "Super Nerd Aidan: My experiments failed."
+      }
+    },
+    "little_girl": {
+      "name": "Eli",
+      "trainer": {
+        "dialogueBefore": "Twins Eli: We battle together, the two of us!",
+        "dialogueAfter": "Twins Eli: We lost together, too."
+      }
+    },
+    "little_girl_2": {
+      "name": "Anne",
+      "trainer": {
+        "dialogueBefore": "Twins Anne: Two against one sounds fair to us!",
+        "dialogueAfter": "Twins Anne: Not so fair after all."
+      }
+    },
+    "biker": {
+      "name": "Ricardo",
+      "trainer": {
+        "dialogueBefore": "Biker Ricardo: Out of my way! I'm riding through!",
+        "dialogueAfter": "Biker Ricardo: My ride's over."
+      }
+    },
+    "biker_2": {
+      "name": "Jaren",
+      "trainer": {
+        "dialogueBefore": "Biker Jaren: Hey kid! Bikers rule this road!",
+        "dialogueAfter": "Biker Jaren: Rule this road? Not today."
+      }
+    }
+  },
+  "signs": {
+    "Route8_EventScript_UndergroundPathSign": "Underground Path\nRoute 8 - Route 7"
+  }
+}

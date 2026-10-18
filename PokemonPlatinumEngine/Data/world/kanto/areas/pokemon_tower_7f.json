@@ -1,0 +1,46 @@
+{
+  "key": "pokemon_tower_7f",
+  "index": 136,
+  "name": "Pokemon Tower",
+  "matrix": 100,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_TOWER",
+  "nightMusic": "MUS_POKE_TOWER",
+  "encounters": "pokemon_tower_7f",
+  "bike": false,
+  "running": false,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Gastly", "level": 16 },
+    { "species": "Gastly", "level": 17 },
+    { "species": "Gastly", "level": 18 },
+    { "species": "Gastly", "level": 15 },
+    { "species": "Gastly", "level": 19 },
+    { "species": "Haunter", "level": 23 },
+    { "species": "Cubone", "level": 17 },
+    { "species": "Cubone", "level": 19 },
+    { "species": "Gastly", "level": 18 },
+    { "species": "Haunter", "level": 23 },
+    { "species": "Gastly", "level": 18 },
+    { "species": "Haunter", "level": 25 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 11, "z": 16, "to": "pokemon_tower_6f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "mr_fuji", "looks": "mr_fuji", "movement": "look_south", "x": 11, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_TOWER_FUJI", "script": "PokemonTower_7F_EventScript_MrFuji" },
+    { "id": "pokemon_tower_grunt1", "looks": "rocket_m", "movement": "look_east", "x": 9, "z": 10, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_TOWER_ROCKET_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_19" },
+    { "id": "pokemon_tower_grunt2", "looks": "rocket_m", "movement": "look_west", "x": 13, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_TOWER_ROCKET_2", "script": "TRAINER_TEAM_ROCKET_GRUNT_20" },
+    { "id": "pokemon_tower_grunt3", "looks": "rocket_m", "movement": "look_east", "x": 9, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_TOWER_ROCKET_3", "script": "TRAINER_TEAM_ROCKET_GRUNT_21" }
+  ],
+  "signs": [
+    { "x": 11, "z": 4, "type": 2, "script": "", "item": "Soothe Bell", "flag": "FLAG_HIDDEN_ITEM_POKEMON_TOWER_7F_SOOTHE_BELL" }
+  ],
+  "triggers": []
+}

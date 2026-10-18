@@ -1,0 +1,30 @@
+{
+  "key": "pokemon_tower_2f",
+  "index": 131,
+  "name": "Pokemon Tower",
+  "matrix": 95,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_TOWER",
+  "nightMusic": "MUS_POKE_TOWER",
+  "bike": false,
+  "running": false,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 10, "to": "pokemon_tower_3f", "toWarp": 0 },
+    { "x": 18, "z": 10, "to": "pokemon_tower_1f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "pokemon_tower_rival", "looks": "blue", "movement": "look_north", "x": 16, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_TOWER_RIVAL", "script": "" },
+    { "id": "channeler", "looks": "channeler", "movement": "look_east", "x": 3, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "PokemonTower_2F_EventScript_Channeler" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 17, "z": 5, "width": 1, "depth": 1, "script": "PokemonTower_2F_EventScript_RivalTriggerRight", "variable": "VAR_MAP_SCENE_POKEMON_TOWER_2F", "value": "0" },
+    { "x": 16, "z": 6, "width": 1, "depth": 1, "script": "PokemonTower_2F_EventScript_RivalTriggerDown", "variable": "VAR_MAP_SCENE_POKEMON_TOWER_2F", "value": "0" }
+  ]
+}

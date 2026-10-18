@@ -1,0 +1,30 @@
+{
+  "key": "lavender_town_mart",
+  "index": 287,
+  "name": "Lavender Town",
+  "matrix": 234,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "lavender_town", "toWarp": 5 },
+    { "x": 4, "z": 7, "to": "lavender_town", "toWarp": 5 },
+    { "x": 5, "z": 7, "to": "lavender_town", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "clerk", "looks": "clerk", "movement": "look_east", "x": 2, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_Mart_EventScript_Clerk" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_around", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_Mart_EventScript_BaldingMan" },
+    { "id": "rocker", "looks": "rocker", "movement": "look_around", "x": 9, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_Mart_EventScript_Rocker" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west_and_east", "x": 9, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_Mart_EventScript_Youngster" }
+  ],
+  "signs": [],
+  "triggers": []
+}

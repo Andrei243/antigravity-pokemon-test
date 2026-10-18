@@ -118,6 +118,13 @@
     "norman": { "hairColor": "#2a2630", "top": "#c4383c", "accent": "#2c2c36", "bottom": "#a48c62", "shoes": "#3a2e26", "eyes": "#2e2a2a", "coat": true, "build": "Adult", "bushyBrows": true, "height": 1.08 },
     // A scientist (plan 02 · S6: Team Galactic's in its Eterna building, the museum's man at the Underground Man's): our own take, short brown hair and a long white lab coat with a blue collar over grey trousers
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
+    // Kanto's cast of plan 19 · K5 (our own takes): Lt. Surge, the tallest, spiky pale-gold hair and an olive soldier's vest over a khaki shirt; the
+    // S.S. Anne's captain, a white cap with a navy band and a white coat, a moustache; Mr. Fuji, small, short white hair and a long plum robe;
+    // a Channeler, long black hair and a long white robe with a purple sash
+    "lt_surge": { "hairColor": "#e8d48a", "hair": "Spiky", "top": "#6a7240", "accent": "#c8b68a", "bottom": "#4a4a3a", "shoes": "#2e2a24", "eyes": "#3a4a6a", "build": "Adult", "height": 1.14 },
+    "captain": { "hairColor": "#c8c8d0", "hat": "Cap", "hatColor": "#f2f2f6", "hatBand": "#2a3460", "top": "#f2f2f6", "accent": "#2a3460", "bottom": "#f2f2f6", "shoes": "#2a2a30", "mustache": true, "coat": true, "build": "Adult", "height": 1.04 },
+    "mr_fuji": { "hairColor": "#ececf0", "top": "#7a4a6e", "accent": "#d8c8a8", "bottom": "#7a4a6e", "shoes": "#3a2e2a", "eyes": "#4a3a32", "coat": true, "build": "Adult", "height": 0.9 },
+    "channeler": { "hairColor": "#2a2430", "hair": "Long", "top": "#f0eef4", "accent": "#7a4a9a", "bottom": "#f0eef4", "shoes": "#4a3a5a", "eyes": "#5a3a6a", "skirt": true, "coat": true, "build": "Adult", "lashes": true },
     "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "height": 1.02 }
   },
   // Names that are another look
@@ -286,6 +293,7 @@
     "Rival": [ "rival", "blue", "may", "brendan" ],
     "Team Rocket": "rocket",
     "Super Nerd": "scientist",
+    "Channeler": "channeler",
     "Leader": null,
     "Elite Four": null,
     "Champion": null,

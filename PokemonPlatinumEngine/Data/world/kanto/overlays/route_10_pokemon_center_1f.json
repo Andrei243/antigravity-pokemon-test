@@ -1,0 +1,33 @@
+{
+  // The Pokémon Center at Rock Tunnel's north mouth (plan 19 · K5, part a), its floor as FireRed lays it out
+  "area": "route_10_pokemon_center_1f",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "route10_nurse": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "gentleman": {
+      "name": "Gentleman",
+      "dialog": [
+        "Rock Tunnel is pitch black. Without Flash you'd only grope along the walls."
+      ]
+    },
+    "fat_man": {
+      "name": "Man",
+      "dialog": [
+        "A Nugget is a lump of solid gold. Nobody would part with one for nothing!"
+      ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [
+        "The Power Plant down the river has been empty for years. They say Electric Pokémon live there now."
+      ]
+    },
+    "scientist": {
+      "name": "Aide",
+      "script": "Aide"
+    }
+  }
+}

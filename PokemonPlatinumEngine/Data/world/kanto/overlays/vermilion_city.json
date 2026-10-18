@@ -5,6 +5,8 @@
   "area": "vermilion_city",
   "bgmTrack": "kanto/vermilion",
   "trees": "Round",
+  // The port of glowing sunsets builds in stucco under vermilion roofs (plan 19 · K5; the style guide's row)
+  "architecture": "Portside",
   // FireRed's gangway is three ways onto the ship, and its ferry sailor stands for good on the tile before the third
   // (288, 233): nobody, there or here, ever steps onto it. The two his ticket check lets through do the work
   "locked": [ 2 ],

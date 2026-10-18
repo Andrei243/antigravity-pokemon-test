@@ -100,7 +100,32 @@
     { "name": "SSAnne_B1F_Room5", "matrix": 34, "area": "ss_anne_b1f_room_5", "trees": "Round", "setting": "Indoors" },
     { "name": "DiglettsCave_NorthEntrance", "matrix": 42, "area": "digletts_cave_north_entrance", "trees": "Round", "setting": "Cave" },
     { "name": "DiglettsCave_B1F", "matrix": 43, "area": "digletts_cave_b1f", "trees": "Round", "setting": "Cave" },
-    { "name": "DiglettsCave_SouthEntrance", "matrix": 44, "area": "digletts_cave_south_entrance", "trees": "Round", "setting": "Cave" }
+    { "name": "DiglettsCave_SouthEntrance", "matrix": 44, "area": "digletts_cave_south_entrance", "trees": "Round", "setting": "Cave" },
+    // Plan 19 · K5, part a: Route 10's Pokémon Center, Rock Tunnel's two floors (caves), Lavender Town's rooms, the
+    // Pokémon Tower's seven floors (FireRed's MAP_TYPE_INDOOR), the Underground Path between Routes 7 and 8, and the
+    // gates of Routes 7 and 8 to Saffron City
+    { "name": "Route10_PokemonCenter_1F", "matrix": 305, "area": "route_10_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route10_PokemonCenter_2F", "matrix": 306, "area": "route_10_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "RockTunnel_1F", "matrix": 87, "area": "rock_tunnel_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "RockTunnel_B1F", "matrix": 88, "area": "rock_tunnel_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "LavenderTown_PokemonCenter_1F", "matrix": 229, "area": "lavender_town_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavenderTown_PokemonCenter_2F", "matrix": 230, "area": "lavender_town_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavenderTown_VolunteerPokemonHouse", "matrix": 231, "area": "lavender_town_volunteer_pokemon_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavenderTown_House1", "matrix": 232, "area": "lavender_town_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavenderTown_House2", "matrix": 233, "area": "lavender_town_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavenderTown_Mart", "matrix": 234, "area": "lavender_town_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonTower_1F", "matrix": 94, "area": "pokemon_tower_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonTower_2F", "matrix": 95, "area": "pokemon_tower_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonTower_3F", "matrix": 96, "area": "pokemon_tower_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonTower_4F", "matrix": 97, "area": "pokemon_tower_4f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonTower_5F", "matrix": 98, "area": "pokemon_tower_5f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonTower_6F", "matrix": 99, "area": "pokemon_tower_6f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonTower_7F", "matrix": 100, "area": "pokemon_tower_7f", "trees": "Round", "setting": "Indoors" },
+    { "name": "UndergroundPath_WestEntrance", "matrix": 39, "area": "underground_path_west_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "UndergroundPath_EastWestTunnel", "matrix": 40, "area": "underground_path_east_west_tunnel", "trees": "Round", "setting": "Indoors" },
+    { "name": "UndergroundPath_EastEntrance", "matrix": 41, "area": "underground_path_east_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route7_EastEntrance", "matrix": 303, "area": "route_7_east_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route8_WestEntrance", "matrix": 304, "area": "route_8_west_entrance", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 19 · K1: Pallet Town, Route 1 and Viridian City, with their rooms
@@ -134,6 +159,15 @@
     "ss_anne_1f_room_4", "ss_anne_1f_room_5", "ss_anne_1f_room_7", "ss_anne_1f_room_6", "ss_anne_2f_room_1",
     "ss_anne_2f_room_2", "ss_anne_2f_room_3", "ss_anne_2f_room_4", "ss_anne_2f_room_5", "ss_anne_2f_room_6",
     "ss_anne_b1f_room_1", "ss_anne_b1f_room_2", "ss_anne_b1f_room_3", "ss_anne_b1f_room_4", "ss_anne_b1f_room_5",
-    "digletts_cave_north_entrance", "digletts_cave_b1f", "digletts_cave_south_entrance"
+    "digletts_cave_north_entrance", "digletts_cave_b1f", "digletts_cave_south_entrance",
+    // Plan 19 · K5, part a: Routes 9 and 10 over Rock Tunnel to Lavender Town with its rooms and the Pokémon Tower,
+    // Route 8 west to Saffron City's gate and the Underground Path under it to Route 7
+    "route_9", "route_10", "route_10_pokemon_center_1f", "route_10_pokemon_center_2f", "rock_tunnel_1f", "rock_tunnel_b1f",
+    "lavender_town", "lavender_town_pokemon_center_1f", "lavender_town_pokemon_center_2f",
+    "lavender_town_volunteer_pokemon_house", "lavender_town_house_1", "lavender_town_house_2", "lavender_town_mart",
+    "pokemon_tower_1f", "pokemon_tower_2f", "pokemon_tower_3f", "pokemon_tower_4f", "pokemon_tower_5f",
+    "pokemon_tower_6f", "pokemon_tower_7f",
+    "route_8", "route_7", "underground_path_west_entrance", "underground_path_east_west_tunnel",
+    "underground_path_east_entrance", "route_7_east_entrance", "route_8_west_entrance"
   ]
 }

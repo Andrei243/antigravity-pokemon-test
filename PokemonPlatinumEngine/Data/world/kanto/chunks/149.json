@@ -108,6 +108,8 @@
   "props": [
     { "model": 0, "name": "gba:Painting", "x": 6, "y": 0, "z": 1.5, "boxX": 5, "boxZ": 1, "width": 2, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:Bookshelf", "x": 7.5, "y": 0, "z": 2.5, "boxX": 7, "boxZ": 2, "width": 1, "depth": 1, "height": 0 },
-    { "model": 0, "name": "gba:TrashCan", "x": 5.5, "y": 0, "z": 3.5, "boxX": 5, "boxZ": 3, "width": 1, "depth": 1, "height": 0 }
+    { "model": 0, "name": "gba:Table", "x": 2.5, "y": 0, "z": 4, "boxX": 1, "boxZ": 3, "width": 3, "depth": 2, "height": 0 },
+    { "model": 0, "name": "gba:TrashCan", "x": 5.5, "y": 0, "z": 3.5, "boxX": 5, "boxZ": 3, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Bed", "x": 2, "y": 0, "z": 7.5, "boxX": 1, "boxZ": 6, "width": 2, "depth": 3, "height": 0 }
   ]
 }

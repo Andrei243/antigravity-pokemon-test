@@ -1,0 +1,32 @@
+{
+  // Lavender Town's Poké Mart (plan 19 · K5, part a)
+  "area": "lavender_town_mart",
+  "bgmTrack": "kanto/lavender",
+  "people": {
+    "clerk": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "balding_man": {
+      "name": "Man",
+      "dialog": [
+        "Ghosts can't be battled if you can't see them. That's what I've heard, anyway."
+      ]
+    },
+    "rocker": {
+      "name": "Rocker",
+      "dialog": [
+        "Escape Ropes are a must in Rock Tunnel. It goes on forever down there!"
+      ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [
+        "Cleanse Tags keep wild Pokémon away. Handy, if you're scared of ghosts."
+      ]
+    }
+  }
+}

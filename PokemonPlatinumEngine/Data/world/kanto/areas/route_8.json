@@ -1,0 +1,61 @@
+{
+  "key": "route_8",
+  "index": 31,
+  "name": "Route 8",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_8",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Pidgey", "level": 18 },
+    { "species": "Meowth", "level": 18 },
+    { "species": "Growlithe", "level": 16 },
+    { "species": "Pidgey", "level": 20 },
+    { "species": "Meowth", "level": 20 },
+    { "species": "Ekans", "level": 17 },
+    { "species": "Growlithe", "level": 17 },
+    { "species": "Ekans", "level": 19 },
+    { "species": "Ekans", "level": 17 },
+    { "species": "Growlithe", "level": 15 },
+    { "species": "Ekans", "level": 17 },
+    { "species": "Growlithe", "level": 18 }
+  ],
+  "landRate": 21,
+  "warps": [
+    { "x": 325, "z": 134, "to": "underground_path_east_entrance", "toWarp": 1 },
+    { "x": 319, "z": 140, "to": "route_8_west_entrance", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_west", "x": 374, "z": 144, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_LASS_JULIA" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "look_south", "x": 367, "z": 145, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_GAMER_RICH" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_around", "x": 363, "z": 136, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_SUPER_NERD_GLENN" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_west", "x": 341, "z": 133, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_PAIGE" },
+    { "id": "scientist_2", "looks": "scientist", "movement": "look_east", "x": 341, "z": 134, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_SUPER_NERD_LESLIE" },
+    { "id": "lass_3", "looks": "lass", "movement": "look_west", "x": 341, "z": 135, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_ANDREA" },
+    { "id": "lass_4", "looks": "lass", "movement": "look_east", "x": 341, "z": 136, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_LASS_MEGAN" },
+    { "id": "old_man_1_2", "looks": "old_man_1", "movement": "look_around", "x": 333, "z": 133, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_GAMER_STAN" },
+    { "id": "scientist_3", "looks": "scientist", "movement": "look_east", "x": 321, "z": 136, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_SUPER_NERD_AIDAN" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 345, "z": 145, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_2", "looks": "cut_tree", "movement": "look_south", "x": 359, "z": 142, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "look_south", "x": 352, "z": 133, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_TWINS_ELI_ANNE" },
+    { "id": "little_girl_2", "looks": "little_girl", "movement": "look_south", "x": 353, "z": 133, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_TWINS_ELI_ANNE" },
+    { "id": "biker", "looks": "biker", "movement": "walk_sequence_east_south_west_north", "x": 326, "z": 146, "facing": 3, "rangeX": 5, "rangeZ": 2, "trainer": "normal", "sight": 1, "script": "TRAINER_BIKER_RICARDO" },
+    { "id": "biker_2", "looks": "biker", "movement": "walk_sequence_east_north_south_west", "x": 336, "z": 147, "facing": 3, "rangeX": 5, "rangeZ": 5, "trainer": "normal", "sight": 1, "script": "TRAINER_BIKER_JAREN" }
+  ],
+  "signs": [
+    { "x": 328, "z": 135, "type": 0, "script": "Route8_EventScript_UndergroundPathSign" },
+    { "x": 354, "z": 140, "type": 2, "script": "", "item": "Rawst Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE8_RAWST_BERRY" },
+    { "x": 350, "z": 141, "type": 2, "script": "", "item": "Lum Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE8_LUM_BERRY" },
+    { "x": 354, "z": 145, "type": 2, "script": "", "item": "Leppa Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE8_LEPPA_BERRY" }
+  ],
+  "triggers": []
+}

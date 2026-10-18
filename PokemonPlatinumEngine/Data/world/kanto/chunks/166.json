@@ -107,6 +107,11 @@
   ],
   "props": [
     { "model": 0, "name": "gba:Window", "x": 1.5, "y": 0, "z": 1.5, "boxX": 1, "boxZ": 1, "width": 1, "depth": 1, "height": 0 },
-    { "model": 0, "name": "gba:Window", "x": 4.5, "y": 0, "z": 1.5, "boxX": 4, "boxZ": 1, "width": 1, "depth": 1, "height": 0 }
+    { "model": 0, "name": "gba:Window", "x": 4.5, "y": 0, "z": 1.5, "boxX": 4, "boxZ": 1, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Bed", "x": 1.5, "y": 0, "z": 3, "boxX": 0, "boxZ": 2, "width": 3, "depth": 2, "height": 0 },
+    { "model": 0, "name": "gba:Cushion", "x": 3.5, "y": 0, "z": 3, "boxX": 3, "boxZ": 2, "width": 1, "depth": 2, "height": 0 },
+    { "model": 0, "name": "gba:Table", "x": 4.5, "y": 0, "z": 3, "boxX": 4, "boxZ": 2, "width": 1, "depth": 2, "height": 0 },
+    { "model": 0, "name": "gba:Cushion", "x": 5.5, "y": 0, "z": 3, "boxX": 5, "boxZ": 2, "width": 1, "depth": 2, "height": 0 },
+    { "model": 0, "name": "gba:Plant", "x": 0.5, "y": 0, "z": 7.5, "boxX": 0, "boxZ": 7, "width": 1, "depth": 1, "height": 0 }
   ]
 }

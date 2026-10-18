@@ -228,6 +228,9 @@ public static class WorldMapBuilder
         {
             map.Interior = InteriorStyle.Gym;
             map.ArenaType = arena;
+            // and its battles are fought on its Leader's stage, as a Gym of Sinnoh's are (plan 19 · K5: Lt. Surge's
+            // was fought indoors on a plain floor)
+            map.Arena ??= BattleArena.Gym;
         }
         // A place that is a matrix of its own is looked at with its own camera, and may be dark
         if (entry.Area != null && world.Area(entry.Area) is { } own)
@@ -474,7 +477,8 @@ public static class WorldMapBuilder
         map.PlacedBuildings = parts.Select(part => ToBuilding(map, part, entrances)).ToList();
         // A world whose houses are drawn into its tiles (a GBA game's, plan 18 · W7) has its buildings found at their doors
         if (world.Index.BuildingsAtDoors && !cave && !nothing && !room)
-            map.PlacedBuildings.AddRange(BuildingsAtDoors(map, blank, world.Index.Maps.FirstOrDefault(m => m.Matrix == 0)?.Name));
+            map.PlacedBuildings.AddRange(BuildingsAtDoors(map, blank, world.Index.Maps.FirstOrDefault(m => m.Matrix == 0)?.Name,
+                world.Index.Maps.Where(m => m.Setting != MapSetting.Indoors).Select(m => m.Name)));
         return map;
     }
 
@@ -632,6 +636,8 @@ public static class WorldMapBuilder
         BuildingKind.PokemonCenter => InteriorStyle.PokemonCenter,
         BuildingKind.PokeMart => InteriorStyle.PokeMart,
         BuildingKind.Lab => InteriorStyle.Lab,
+        // A tower's floors are bare stone as the Lost Tower's are (plan 19 · K5: the Pokémon Tower)
+        BuildingKind.Tower => InteriorStyle.Lab,
         _ => InteriorStyle.House
     };
 
@@ -660,9 +666,11 @@ public static class WorldMapBuilder
     /// Its kind is what the door leads into (<see cref="MapStructures.KindOfDoor"/>). The box is laid as a building's
     /// tiles: roof, the front row wall, the doors doors.
     /// </summary>
-    public static List<BuildingInfo> BuildingsAtDoors(Map map, IEnumerable<(int X, int Z)> unnamedBlocked, string? overworld = null)
+    public static List<BuildingInfo> BuildingsAtDoors(Map map, IEnumerable<(int X, int Z)> unnamedBlocked, string? overworld = null,
+        IEnumerable<string>? openMaps = null)
     {
         var blank = new HashSet<(int X, int Z)>(unnamedBlocked);
+        var open = new HashSet<string>(openMaps ?? Enumerable.Empty<string>(), StringComparer.OrdinalIgnoreCase);
         var buildings = new List<BuildingInfo>();
         var taken = new HashSet<(int X, int Z)>();
         // Every way in, and the doors an overlay keeps shut (plan 21 · H1: Petalburg's Gym), which lead nowhere yet but
@@ -676,6 +684,9 @@ public static class WorldMapBuilder
             // A way off a map of its own straight onto the region's open country is no building's door (plan 19 · K4,
             // part b: the S.S. Anne's gangway at Vermilion's pier)
             if (overworld != null && map.Name != overworld && warp.Target != null && warp.Target.Equals(overworld, StringComparison.OrdinalIgnoreCase)) continue;
+            // nor, the other way, a way off the open country onto a map that is no room: open country of its own or a
+            // cave (plan 19 · K5: the gangway at Vermilion's pier, which leads onto SSAnne_Exterior, grew a house there)
+            if (warp.Target != null && !warp.Target.Equals(map.Name, StringComparison.OrdinalIgnoreCase) && open.Contains(warp.Target)) continue;
             bool isDoor = map.BehaviourAt(dx, dz) == TileBehavior.Door;
             if (!isDoor && (map.IsSolid(dx, dz) || !blank.Contains((dx, dz + 1)) && !blank.Contains((dx, dz - 1)))) continue;
             // The run of such tiles along a row through the door's column, no further than half the widest either way
@@ -2362,8 +2373,15 @@ public static class WorldMapBuilder
         // open tile beside it, as on stairs
         bool besideIt = world.BehaviourAt(target.Matrix, to.X, to.Z) is TileBehavior.StairsEast or TileBehavior.StairsWest
             || string.Equals(world.Index.Region, RegionDatabase.Johto, StringComparison.OrdinalIgnoreCase) && (x != to.X || z != to.Z);
+        // FireRed's stairs are taken only walking onto them the way they go, so a flight with a gravestone beside it (the
+        // Pokémon Tower's fifth floor, plan 19 · K5) is walked off to the north as often as to the south, and the way
+        // on is the north: whoever comes up a flight of Kanto's whose side is shut steps off northwards first
+        bool northFirst = string.Equals(world.Index.Region, RegionDatabase.Kanto, StringComparison.OrdinalIgnoreCase);
+        var sides = northFirst
+            ? new[] { (0, -1, Direction.Up), (0, 1, Direction.Down), (-1, 0, Direction.Left), (1, 0, Direction.Right) }
+            : new[] { (0, 1, Direction.Down), (0, -1, Direction.Up), (-1, 0, Direction.Left), (1, 0, Direction.Right) };
         if (besideIt && Blocked(x, z))
-            foreach (var (dx, dz, way) in new[] { (0, 1, Direction.Down), (0, -1, Direction.Up), (-1, 0, Direction.Left), (1, 0, Direction.Right) })
+            foreach (var (dx, dz, way) in sides)
                 if (!Blocked(to.X + dx, to.Z + dz))
                 {
                     (x, z, facing) = (to.X + dx, to.Z + dz, way);

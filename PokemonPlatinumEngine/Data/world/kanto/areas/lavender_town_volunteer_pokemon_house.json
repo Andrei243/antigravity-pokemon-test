@@ -1,0 +1,36 @@
+{
+  "key": "lavender_town_volunteer_pokemon_house",
+  "index": 284,
+  "name": "Lavender Town",
+  "matrix": 231,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LAVENDER",
+  "nightMusic": "MUS_LAVENDER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "lavender_town", "toWarp": 2 },
+    { "x": 4, "z": 7, "to": "lavender_town", "toWarp": 2 },
+    { "x": 5, "z": 7, "to": "lavender_town", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "mr_fuji", "looks": "mr_fuji", "movement": "look_south", "x": 3, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEHOUSE_FUJI", "script": "LavenderTown_VolunteerPokemonHouse_EventScript_MrFuji" },
+    { "id": "nidorino", "looks": "nidorino", "movement": "look_around", "x": 1, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_VolunteerPokemonHouse_EventScript_Nidorino" },
+    { "id": "psyduck", "looks": "psyduck", "movement": "look_north", "x": 9, "z": 6, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_VolunteerPokemonHouse_EventScript_Psyduck" },
+    { "id": "little_boy", "looks": "little_boy", "movement": "look_south", "x": 9, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_VolunteerPokemonHouse_EventScript_LittleBoy" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_around", "x": 3, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_VolunteerPokemonHouse_EventScript_Youngster" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "look_around", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavenderTown_VolunteerPokemonHouse_EventScript_LittleGirl" }
+  ],
+  "signs": [
+    { "x": 5, "z": 4, "type": 0, "script": "LavenderTown_VolunteerPokemonHouse_EventScript_PokemonFanMagazine" },
+    { "x": 3, "z": 1, "type": 0, "script": "LavenderTown_VolunteerPokemonHouse_EventScript_Bookshelf" },
+    { "x": 4, "z": 1, "type": 0, "script": "LavenderTown_VolunteerPokemonHouse_EventScript_Bookshelf" }
+  ],
+  "triggers": []
+}

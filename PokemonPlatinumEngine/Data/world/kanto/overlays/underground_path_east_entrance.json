@@ -1,0 +1,13 @@
+{
+  // The Underground Path's hut on Route 8 (plan 19 · K5, part a)
+  "area": "underground_path_east_entrance",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "woman_2": {
+      "name": "Woman",
+      "dialog": [
+        "The tunnel comes out by Celadon City. It's the quickest way round Saffron."
+      ]
+    }
+  }
+}

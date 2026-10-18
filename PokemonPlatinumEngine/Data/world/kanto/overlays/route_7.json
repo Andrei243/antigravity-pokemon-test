@@ -1,0 +1,10 @@
+{
+  // Route 7 (plan 19 · K5, part a): the short road between Celadon City and Saffron City's gate. Celadon City is part
+  // b's, and stands as scenery to the west until then
+  "area": "route_7",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "signs": {
+    "Route7_EventScript_UndergroundPathSign": "Underground Path\nRoute 7 - Route 8"
+  }
+}

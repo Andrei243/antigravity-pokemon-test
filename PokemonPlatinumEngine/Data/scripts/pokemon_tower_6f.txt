@@ -1,0 +1,17 @@
+# The Pokémon Tower's sixth floor (plan 19 · K5, part a). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/PokemonTower_6F/scripts.inc).
+#
+# A spirit waits before the stairs up (the area's triggers on VAR_MAP_SCENE_POKEMON_TOWER_6F 0): Cubone's mother,
+# whom Team Rocket struck down. Without the Silph Scope nobody can see what it is, and FireRed's battle with a ghost
+# nobody can see can only be run from, so here it says its piece and pushes the player back
+# (docs/mechanics/rulings.md, "Kanto's third chapter, first part"). The Scope, from the Rocket Hideout under Celadon
+# City, is part b's, and with it the battle with Marowak and the way on to the top floor.
+
+
+script MarowakGhost
+  speaker "Ghost"
+  say "Be... gone... Intruders... be... gone..."
+  speaker none
+  text "The ghost can't be made out. Without some way of seeing it, there's no going on."
+  walk player up 1
+  end

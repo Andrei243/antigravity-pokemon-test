@@ -1,0 +1,44 @@
+# Rock Tunnel's lower floor (plan 19 · K5, part a). docs/scripts.md describes the language; the lines are our own,
+# on FireRed's beats (data/maps/RockTunnel_B1F/scripts.inc).
+#
+# The youngster in the west passage teaches Rock Slide to one Pokémon, once in a game, for nothing (`tutor once`;
+# Models/MoveTutors.cs). FLAG_TUTOR_ROCK_SLIDE, FireRed's name: he has taught it.
+
+
+script RockSlideTutor
+  speaker "Youngster"
+  if flag FLAG_TUTOR_ROCK_SLIDE goto Taught
+  ask "I've been practising a move that brings the rocks down. Want me to teach Rock Slide to one of your Pokémon?"
+  if no goto Later
+  say "Great! Which one?"
+  choosepokemon
+  tutor once "Rock Slide"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_TUTOR_ROCK_SLIDE
+label Taught
+  say "Rock Slide can make a foe flinch. Make it count!"
+  end
+label Later
+  say "Oh well. I'll be here, practising."
+  end
+label Egg
+  say "An Egg? It can't learn anything yet!"
+  end
+label Cannot
+  say "Hmm, that one can't learn Rock Slide."
+  end
+label Knows
+  say "That one already knows {thing}!"
+  end
+label Hm
+  say "{forgotten} isn't a move that can be given up like that."
+  goto Later

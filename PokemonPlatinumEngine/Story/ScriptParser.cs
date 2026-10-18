@@ -780,11 +780,13 @@ public static class ScriptParser
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {
-                string what = r.OneOf("moves", "afford", "pay", "special", "dragons", "learn", "forget", "delete");
+                string what = r.OneOf("moves", "afford", "pay", "special", "dragons", "learn", "forget", "delete", "once");
                 string which = what switch
                 {
                     "moves" => r.Text("the place of a shard tutor"),
                     "special" => r.OneOf("dracometeor", "ultimate"),
+                    // Plan 19 · K5: a tutor of Kanto's who teaches one move, once (MoveTutors.Kanto)
+                    "once" => r.Text("the move a tutor of Kanto teaches"),
                     _ => ""
                 };
                 return new Instruction { Op = Op.Tutor, Line = line, Name = what, Other = which };

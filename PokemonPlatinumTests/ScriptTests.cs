@@ -388,6 +388,7 @@ public class ScriptTests
           tutor pay
           tutor special dracometeor
           tutor special ultimate
+          tutor once "Mega Punch"
           tutor dragons
           tutor learn
           tutor forget

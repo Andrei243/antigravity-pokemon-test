@@ -1,0 +1,13 @@
+{
+  // The Underground Path's hut on Route 7 (plan 19 · K5, part a)
+  "area": "underground_path_west_entrance",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "balding_man": {
+      "name": "Man",
+      "dialog": [
+        "People say this path was dug because Team Rocket kept robbing travellers in Saffron City."
+      ]
+    }
+  }
+}
