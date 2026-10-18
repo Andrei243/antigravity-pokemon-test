@@ -6,7 +6,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Peeko"
         ],
         "text": [
-          ""
+          "Peeko"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Mr. Briney"
         ],
         "text": [
-          ""
+          "Domnul Briney"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "My Peeko! Where is my Peeko?"
         ],
         "text": [
-          ""
+          "Peeko a mea! Unde e Peeko a mea?"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Young Man"
         ],
         "text": [
-          ""
+          "Tânărul"
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Wanda"
         ],
         "text": [
-          ""
+          "Wanda"
         ]
       }
     },
@@ -64,7 +64,7 @@
           "Mike"
         ],
         "text": [
-          ""
+          "Mike"
         ]
       },
       "before": {
@@ -72,7 +72,7 @@
           "Hiker Mike: I came down here to see the tunnel. Found you instead. Let's rumble!"
         ],
         "text": [
-          ""
+          "Drumeț Mike: Am venit să văd tunelul. Te-am găsit pe tine în schimb. Hai la bătaie!"
         ]
       },
       "after": {
@@ -80,7 +80,7 @@
           "Hiker Mike: Rumbled. I'll stick to looking at rocks."
         ],
         "text": [
-          ""
+          "Drumeț Mike: Bătut. Mă mulțumesc să mă uit la pietre."
         ]
       }
     }

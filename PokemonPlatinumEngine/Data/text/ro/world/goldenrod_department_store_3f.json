@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Poké Maniac"
         ],
         "text": [
-          ""
+          "Pasionatul Pokémon"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "X Attack, X Defend... a little help in battle goes a long way."
         ],
         "text": [
-          ""
+          "Atac X, Apărare X... puțin ajutor în luptă face mult."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Items that raise a Pokémon's stats in battle wear off once it's switched out. Use them well."
         ],
         "text": [
-          ""
+          "Obiectele care cresc statisticile unui Pokémon în luptă își pierd efectul când e schimbat. Folosește-le bine."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "3F: Battle Collection\nItems for the heat of battle."
       ],
       "text": [
-        ""
+        "Etajul 3: Colecția de Luptă\nObiecte pentru focul luptei."
       ]
     }
   }

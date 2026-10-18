@@ -6,7 +6,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "My boyfriend gave me a Pokémon. I wonder if it's a good one?"
         ],
         "text": [
-          ""
+          "Prietenul meu mi-a dat un Pokémon. Oare e unul bun?"
         ]
       }
     }
@@ -25,7 +25,7 @@
         "Looking through the binoculars... There's a big Pokémon asleep on the road!"
       ],
       "text": [
-        ""
+        "Te uiți prin binoclu... Pe drum doarme un Pokémon mare!"
       ]
     },
     "Route12_NorthEntrance_2F_EventScript_RightBinoculars": {
@@ -33,7 +33,7 @@
         "Looking through the binoculars... The Pokémon Tower stands tall over Lavender Town."
       ],
       "text": [
-        ""
+        "Te uiți prin binoclu... Turnul Pokémon se înalță deasupra Orășelului Lavender."
       ]
     }
   }

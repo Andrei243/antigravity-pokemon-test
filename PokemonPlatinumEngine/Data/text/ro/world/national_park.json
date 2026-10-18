@@ -6,7 +6,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I love lying on the grass here and watching the clouds go by."
         ],
         "text": [
-          ""
+          "Îmi place să stau întinsă pe iarbă aici și să privesc norii cum trec."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The Bug-Catching Contest is held here on certain days. The whole park fills with Bug Catchers."
         ],
         "text": [
-          ""
+          "Concursul de Prins Insecte are loc aici în anumite zile. Tot parcul se umple de Vânători de insecte."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My brother and I race each other round the fountain. I always win!"
         ],
         "text": [
-          ""
+          "Fratele meu și cu mine ne întrecem în jurul fântânii. Eu câștig mereu!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "He always cheats. I'll win next time!"
         ],
         "text": [
-          ""
+          "El trișează mereu. Data viitoare câștig eu!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "People come from all over Johto to walk their Pokémon in this park."
         ],
         "text": [
-          ""
+          "Oamenii vin din tot Johto să-și plimbe Pokémonii în parcul ăsta."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "My Persian loves its walks in the park. It's the only time it's ever in a good mood."
         ],
         "text": [
-          ""
+          "Persian-ul meu adoră plimbările prin parc. E singura dată când e bine dispus."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Persian"
         ],
         "text": [
-          ""
+          "Persian"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "Persian: Fufufu..."
         ],
         "text": [
-          ""
+          "Persian: Fufufu..."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "The park's grass is long. Bug Pokémon love to hide in it."
         ],
         "text": [
-          ""
+          "Iarba din parc e înaltă. Pokémonilor Insectă le place să se ascundă în ea."
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Beverly"
         ],
         "text": [
-          ""
+          "Beverly"
         ]
       },
       "before": {
@@ -158,7 +158,7 @@
           "Pokéfan Beverly: My Snubbull is the sweetest thing. Look at its little face!"
         ],
         "text": [
-          ""
+          "Pokéfan Beverly: Snubbull-ul meu e cea mai dulce ființă. Uită-te la fețișoara lui!"
         ]
       },
       "after": {
@@ -166,7 +166,7 @@
           "Pokéfan Beverly: Its little face is so sad now..."
         ],
         "text": [
-          ""
+          "Pokéfan Beverly: Fețișoara lui e atât de tristă acum..."
         ]
       }
     },
@@ -176,7 +176,7 @@
           "Krise"
         ],
         "text": [
-          ""
+          "Krise"
         ]
       },
       "before": {
@@ -184,7 +184,7 @@
           "Lass Krise: You look like you'd be fun to battle. Let's go!"
         ],
         "text": [
-          ""
+          "Domnișoară Krise: Pari cineva cu care ar fi distractiv să mă lupt. Hai!"
         ]
       },
       "after": {
@@ -192,7 +192,7 @@
           "Lass Krise: That was fun, even though I lost."
         ],
         "text": [
-          ""
+          "Domnișoară Krise: A fost distractiv, chiar dacă am pierdut."
         ]
       }
     },
@@ -202,7 +202,7 @@
           "William"
         ],
         "text": [
-          ""
+          "William"
         ]
       },
       "before": {
@@ -210,7 +210,7 @@
           "Pokéfan William: My Raichu and I have been together for years. We're a team!"
         ],
         "text": [
-          ""
+          "Pokéfan William: Raichu-ul meu și cu mine suntem împreună de ani buni. Suntem o echipă!"
         ]
       },
       "after": {
@@ -218,7 +218,7 @@
           "Pokéfan William: Still a team, just a beaten one."
         ],
         "text": [
-          ""
+          "Pokéfan William: Tot o echipă, doar că învinsă."
         ]
       }
     },
@@ -228,7 +228,7 @@
           "Jack"
         ],
         "text": [
-          ""
+          "Jack"
         ]
       },
       "before": {
@@ -236,7 +236,7 @@
           "School Kid Jack: I've read every book on battling. Let me show you what I know!"
         ],
         "text": [
-          ""
+          "Școlar Jack: Am citit toate cărțile despre lupte. Să-ți arăt ce știu!"
         ]
       },
       "after": {
@@ -244,7 +244,7 @@
           "School Kid Jack: The books didn't cover that."
         ],
         "text": [
-          ""
+          "Școlar Jack: Asta nu scria în cărți."
         ]
       }
     }
@@ -255,7 +255,7 @@
         "National Park\nA place of rest for people and Pokémon."
       ],
       "text": [
-        ""
+        "Parcul Național\nUn loc de odihnă pentru oameni și Pokémoni."
       ]
     },
     "D22R0101_002+1": {
@@ -263,7 +263,7 @@
         "Trainer Tips\nPrint out Pokémon you've caught on your Pokédex... or just admire them here."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nTipărește Pokémonii prinși din Pokédex... sau admiră-i pur și simplu aici."
       ]
     },
     "D22R0101_003+1": {
@@ -271,7 +271,7 @@
         "Please keep the park clean. Take your rubbish home with you."
       ],
       "text": [
-        ""
+        "Vă rugăm să păstrați parcul curat. Luați-vă gunoiul acasă."
       ]
     }
   }

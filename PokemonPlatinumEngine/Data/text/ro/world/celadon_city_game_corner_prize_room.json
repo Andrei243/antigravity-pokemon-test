@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -44,7 +44,7 @@
           "I won so many coins, and then I spent them all on one prize. Worth it!"
         ],
         "text": [
-          ""
+          "Am câștigat o grămadă de fise și le-am cheltuit pe toate pe un premiu. A meritat!"
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -62,7 +62,7 @@
           "The prizes here can't be bought anywhere else. That's the trick of it."
         ],
         "text": [
-          ""
+          "Premiile de aici nu se găsesc de cumpărat nicăieri altundeva. Asta-i șmecheria."
         ]
       }
     }

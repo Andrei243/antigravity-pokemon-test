@@ -5,7 +5,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătoarea"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome! You have {coins} coins. Which prize would you like?"
       ],
       "text": [
-        ""
+        "Bun venit! Ai {coins} fise. Ce premiu vrei?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The {item} for {price} coins?"
       ],
       "text": [
-        ""
+        "{item} pentru {price} fise?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} received the {item}!"
       ],
       "text": [
-        ""
+        "{player} a primit {item}!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Să mai treci!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Prizes are exchanged for coins. You'll need a Coin Case first."
       ],
       "text": [
-        ""
+        "Premiile se dau pe fise. Întâi îți trebuie o Cutie de Fise."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "I'm sorry, you don't have enough coins."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destule fise."
       ]
     }
   ]

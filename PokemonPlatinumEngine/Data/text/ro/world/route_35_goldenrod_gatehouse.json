@@ -6,7 +6,7 @@
           "Officer"
         ],
         "text": [
-          ""
+          "Polițistul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Route 35 runs north to the National Park. Lots of Trainers battle on the way."
         ],
         "text": [
-          ""
+          "Ruta 35 duce spre nord, la Parcul Național. Mulți Antrenori se luptă pe drum."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm meeting a friend from Ecruteak City. She always comes this way, through the park."
         ],
         "text": [
-          ""
+          "Mă întâlnesc cu o prietenă din Orașul Ecruteak. Vine mereu pe aici, prin parc."
         ]
       }
     }

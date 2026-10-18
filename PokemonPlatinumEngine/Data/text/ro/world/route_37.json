@@ -6,7 +6,7 @@
           "Tori"
         ],
         "text": [
-          ""
+          "Tori"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Twins Tori: We're twins! We battle together, two at a time!"
         ],
         "text": [
-          ""
+          "Gemene Tori: Suntem gemene! Ne luptăm împreună, câte două!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Twins Tori: We lost together, too."
         ],
         "text": [
-          ""
+          "Gemene Tori: Am și pierdut împreună."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Til"
         ],
         "text": [
-          ""
+          "Til"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Twins Til: Two of us against one of you!"
         ],
         "text": [
-          ""
+          "Gemene Til: Două contra unul singur!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Twins Til: Two of us still wasn't enough."
         ],
         "text": [
-          ""
+          "Gemene Til: Nici două n-au fost destul."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Greg"
         ],
         "text": [
-          ""
+          "Greg"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Psychic Greg: My Drowzee sees dreams. What does your Pokémon dream of?"
         ],
         "text": [
-          ""
+          "Medium Greg: Drowzee-ul meu vede vise. Ce visează Pokémonul tău?"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Psychic Greg: It dreamt of losing, it seems."
         ],
         "text": [
-          ""
+          "Medium Greg: A visat că pierde, se pare."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Callie"
         ],
         "text": [
-          ""
+          "Callie"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Beauty Callie: Aren't my Pokémon lovely? They're strong too, you know."
         ],
         "text": [
-          ""
+          "Frumoasă Callie: Nu-s minunați Pokémonii mei? Sunt și puternici, să știi."
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Beauty Callie: Lovely and beaten."
         ],
         "text": [
-          ""
+          "Frumoasă Callie: Minunați și învinși."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Kassandra"
         ],
         "text": [
-          ""
+          "Kassandra"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Beauty Kassandra: Callie and I train together. Let's see if you can beat us both!"
         ],
         "text": [
-          ""
+          "Frumoasă Kassandra: Callie și cu mine ne antrenăm împreună. Să vedem dacă ne bați pe amândouă!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Beauty Kassandra: Callie, she beat me too!"
         ],
         "text": [
-          ""
+          "Frumoasă Kassandra: Callie, m-a bătut și pe mine!"
         ]
       }
     }
@@ -137,7 +137,7 @@
         "Route 37"
       ],
       "text": [
-        ""
+        "Ruta 37"
       ]
     },
     "R37_003+1": {
@@ -145,7 +145,7 @@
         "Route 37\nEcruteak City is to the north."
       ],
       "text": [
-        ""
+        "Ruta 37\nLa nord: Orașul Ecruteak."
       ]
     }
   }

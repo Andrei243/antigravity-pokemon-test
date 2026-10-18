@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "Stay on the path. People have wandered in here and not come out for days."
         ],
         "text": [
-          "",
-          ""
+          "Copacii de aici sunt atât de bătrâni și de deși că soarele abia pătrunde.",
+          "Nu te abate de la cărare. Unii s-au rătăcit aici și n-au mai ieșit zile întregi."
         ]
       }
     }
@@ -27,7 +27,7 @@
         "Ilex Forest Shrine\nThe forest's protector is said to rest here."
       ],
       "text": [
-        ""
+        "Altarul Pădurii Ilex\nSe spune că aici se odihnește ocrotitorul pădurii."
       ]
     },
     "D36R0101_013+1": {
@@ -35,7 +35,7 @@
         "Ilex Forest\nThe forest is so thick that it's dark even at midday."
       ],
       "text": [
-        ""
+        "Pădurea Ilex\nPădurea e atât de deasă că e întuneric și la amiază."
       ]
     }
   }

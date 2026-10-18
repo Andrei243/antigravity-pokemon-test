@@ -5,7 +5,7 @@
         "The Card Key opened the door!"
       ],
       "text": [
-        ""
+        "Card-Cheia a deschis ușa!"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "The door is locked. It takes a card to open it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Trebuie un card ca s-o deschizi."
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "Giovanni"
       ],
       "text": [
-        ""
+        "Giovanni"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "Ah, it's you again. We meet once more. The president and I are discussing a business deal."
       ],
       "text": [
-        ""
+        "A, iar tu. Ne întâlnim din nou. Președintele și cu mine discutăm o afacere."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Silph Co. will hand over its Master Ball to Team Rocket, and you will keep out of it."
       ],
       "text": [
-        ""
+        "Silph S.A. îi va preda Master Ball-ul Echipei Rocket, iar tu nu te vei amesteca."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Or will you? Very well. I'll make sure you never interfere again!"
       ],
       "text": [
-        ""
+        "Sau te amesteci? Prea bine. Mă voi asigura că nu te mai bagi niciodată!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Giovanni"
       ],
       "text": [
-        ""
+        "Giovanni"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Arrgh! I lose again?! Blast it all... You ruined our plans for Silph Co."
       ],
       "text": [
-        ""
+        "Arrgh! Pierd iar?! Fir-ar să fie... Ne-ai stricat planurile cu Silph S.A."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "But Team Rocket will never fall! I'll be waiting for you, child. Remember that."
       ],
       "text": [
-        ""
+        "Dar Echipa Rocket nu va cădea niciodată! Te voi aștepta, copile. Ține minte asta."
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "President"
       ],
       "text": [
-        ""
+        "Președintele"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Thank you, my young friend! You saved Silph Co. from Team Rocket. I can't thank you enough."
       ],
       "text": [
-        ""
+        "Îți mulțumesc din suflet! Ai salvat Silph S.A. de Echipa Rocket. Nu-ți pot mulțumi îndeajuns."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Please accept this as a token of our gratitude. You won't find another anywhere."
       ],
       "text": [
-        ""
+        "Te rog, primește asta ca semn al recunoștinței noastre. Nu vei mai găsi altul nicăieri."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "That's our secret prototype, the Master Ball. It will catch any wild Pokémon without fail."
       ],
       "text": [
-        ""
+        "E prototipul nostru secret, Master Ball-ul. Prinde orice Pokémon sălbatic, fără greș."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "The Master Ball is the only one of its kind. Use it wisely!"
       ],
       "text": [
-        ""
+        "Master Ball-ul e unicul de felul lui. Folosește-l cu înțelepciune!"
       ]
     }
   ]

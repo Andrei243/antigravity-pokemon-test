@@ -6,7 +6,7 @@
           "Programmer"
         ],
         "text": [
-          ""
+          "Programatorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Me? I write the code. If the game crashes, it's probably my fault."
         ],
         "text": [
-          ""
+          "Eu? Eu scriu codul. Dacă jocul se blochează, probabil e vina mea."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Designer"
         ],
         "text": [
-          ""
+          "Designerul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I plan the maps. Every town needs a place to explore, don't you think?"
         ],
         "text": [
-          ""
+          "Eu proiectez hărțile. Fiecare oraș are nevoie de un loc de explorat, nu crezi?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Artist"
         ],
         "text": [
-          ""
+          "Artistul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I draw the Pokémon. Getting their eyes right takes the longest."
         ],
         "text": [
-          ""
+          "Eu desenez Pokémonii. Cel mai mult durează să le nimeresc ochii."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Writer"
         ],
         "text": [
-          ""
+          "Scriitorul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I write what people say. A good line is harder than it looks!"
         ],
         "text": [
-          ""
+          "Eu scriu ce spun oamenii. O replică bună e mai grea decât pare!"
         ]
       }
     }
@@ -79,7 +79,7 @@
         "Development Room\nDo not disturb!"
       ],
       "text": [
-        ""
+        "Sala de Dezvoltare\nNu deranjați!"
       ]
     },
     "CeladonCity_Condominiums_3F_EventScript_Computer1": {
@@ -87,7 +87,7 @@
         "The screen is full of numbers that scroll past too fast to read."
       ],
       "text": [
-        ""
+        "Ecranul e plin de numere care defilează prea repede ca să le citești."
       ]
     },
     "CeladonCity_Condominiums_3F_EventScript_Computer2": {
@@ -95,7 +95,7 @@
         "A drawing of a Pokémon nobody has named yet."
       ],
       "text": [
-        ""
+        "Desenul unui Pokémon căruia nu i-a dat nimeni încă un nume."
       ]
     },
     "CeladonCity_Condominiums_3F_EventScript_Computer3": {
@@ -103,7 +103,7 @@
         "A map of a town, half finished."
       ],
       "text": [
-        ""
+        "Harta unui oraș, pe jumătate terminată."
       ]
     }
   }

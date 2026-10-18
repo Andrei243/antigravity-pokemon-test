@@ -5,7 +5,7 @@
         "Koichi"
       ],
       "text": [
-        ""
+        "Koichi"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hwaaah! You have beaten my students. Now face the master of the Fighting Dojo!"
       ],
       "text": [
-        ""
+        "Hwaaah! Mi-ai învins elevii. Acum înfruntă-l pe maestrul Dojoului de Luptă!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Hwa! You have beaten me fairly. As is the custom, you may take one of the Pokémon on the dais."
       ],
       "text": [
-        ""
+        "Hwa! M-ai învins cinstit. După obicei, poți lua unul din Pokémonii de pe podium."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Koichi"
       ],
       "text": [
-        ""
+        "Koichi"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Hwa! You have beaten me fairly. As is the custom, you may take one of the Pokémon on the dais."
       ],
       "text": [
-        ""
+        "Hwa! M-ai învins cinstit. După obicei, poți lua unul din Pokémonii de pe podium."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Take one of the Pokémon on the dais, as is your right. Choose wisely!"
       ],
       "text": [
-        ""
+        "Ia unul din Pokémonii de pe podium, e dreptul tău. Alege cu înțelepciune!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Train hard with the Pokémon you chose. Strength comes from the heart!"
       ],
       "text": [
-        ""
+        "Antrenează-te din greu cu Pokémonul ales. Puterea vine din inimă!"
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "Hitmonlee, the kicking fiend! Take it?"
       ],
       "text": [
-        ""
+        "Hitmonlee, maestrul loviturilor de picior! Îl iei?"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "{player} received a Hitmonlee!"
       ],
       "text": [
-        ""
+        "{player} a primit un Hitmonlee!"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "A Poké Ball on the dais. It's the Dojo's prize, for whoever beats the master."
       ],
       "text": [
-        ""
+        "Un Poké Ball pe podium. E premiul Dojoului pentru cine îl învinge pe maestru."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Better not be greedy. One Pokémon is plenty."
       ],
       "text": [
-        ""
+        "Mai bine să nu fii lacom. Un Pokémon e destul."
       ]
     }
   ],
@@ -99,7 +99,7 @@
         "Hitmonchan, the piercing puncher! Take it?"
       ],
       "text": [
-        ""
+        "Hitmonchan, pumnul fulgerător! Îl iei?"
       ]
     },
     {
@@ -107,7 +107,7 @@
         "{player} received a Hitmonchan!"
       ],
       "text": [
-        ""
+        "{player} a primit un Hitmonchan!"
       ]
     },
     {
@@ -115,7 +115,7 @@
         "A Poké Ball on the dais. It's the Dojo's prize, for whoever beats the master."
       ],
       "text": [
-        ""
+        "Un Poké Ball pe podium. E premiul Dojoului pentru cine îl învinge pe maestru."
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Better not be greedy. One Pokémon is plenty."
       ],
       "text": [
-        ""
+        "Mai bine să nu fii lacom. Un Pokémon e destul."
       ]
     }
   ]

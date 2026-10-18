@@ -4,7 +4,7 @@
       "Silph Co."
     ],
     "text": [
-      ""
+      "Silph S.A."
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: Team Rocket never gives up! Battle!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Echipa Rocket nu renunță niciodată! Luptă!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: We never give up... but I do."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Noi nu renunțăm niciodată... dar eu da."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Dalton"
         ],
         "text": [
-          ""
+          "Dalton"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Juggler Dalton: Watch my Pokémon juggle! Team Rocket pays me to keep you busy."
         ],
         "text": [
-          ""
+          "Jongler Dalton: Uite cum jonglează Pokémonii mei! Echipa Rocket mă plătește să te țin ocupat."
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Juggler Dalton: I dropped everything."
         ],
         "text": [
-          ""
+          "Jongler Dalton: Am scăpat tot."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -74,7 +74,7 @@
           "The doors are locked by card. The Card Key is somewhere in the building."
         ],
         "text": [
-          ""
+          "Ușile se încuie cu card. Card-Cheia e undeva în clădire."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Beau"
         ],
         "text": [
-          ""
+          "Beau"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Scientist Beau: I programmed every door in this building. You won't get far!"
         ],
         "text": [
-          ""
+          "Om de știință Beau: Am programat toate ușile din clădire. N-o să ajungi departe!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Scientist Beau: You got far enough."
         ],
         "text": [
-          ""
+          "Om de știință Beau: Ai ajuns destul de departe."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Team Rocket Grunt: You think you can take back this building alone?"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Crezi că poți recuceri singur clădirea asta?"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Team Rocket Grunt: Huh. Maybe you can."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Hm. Poate chiar poți."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -144,7 +144,7 @@
           "Team Rocket wants our Master Ball. It catches any Pokémon without fail!"
         ],
         "text": [
-          ""
+          "Echipa Rocket vrea Master Ball-ul nostru. Prinde orice Pokémon, fără greș!"
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -164,7 +164,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -174,7 +174,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -184,7 +184,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -194,7 +194,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -204,7 +204,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -214,7 +214,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -224,7 +224,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -234,7 +234,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -244,7 +244,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -254,7 +254,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -264,7 +264,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     }
@@ -275,7 +275,7 @@
         "Silph Co. Head Office\n5F"
       ],
       "text": [
-        ""
+        "Sediul Silph S.A.\nEtajul 5"
       ]
     },
     "SilphCo_5F_EventScript_PokemonReport1": {
@@ -283,7 +283,7 @@
         "A Pokémon report: Porygon, the first Pokémon made by people, came out of a lab like this one."
       ],
       "text": [
-        ""
+        "Un raport Pokémon: Porygon, primul Pokémon făcut de oameni, a ieșit dintr-un laborator ca acesta."
       ]
     },
     "SilphCo_5F_EventScript_PokemonReport2": {
@@ -291,7 +291,7 @@
         "A Pokémon report: a study of how Pokémon evolve. Very technical."
       ],
       "text": [
-        ""
+        "Un raport Pokémon: un studiu despre cum evoluează Pokémonii. Foarte tehnic."
       ]
     },
     "SilphCo_5F_EventScript_PokemonReport3": {
@@ -299,7 +299,7 @@
         "A Pokémon report: notes on a ball that never fails. Top secret!"
       ],
       "text": [
-        ""
+        "Un raport Pokémon: notițe despre un ball care nu dă greș. Strict secret!"
       ]
     }
   }

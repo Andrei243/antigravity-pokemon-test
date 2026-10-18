@@ -21,7 +21,7 @@
         "I'm on guard duty, and I'm parched! Hey, is that tea you've got there?"
       ],
       "text": [
-        ""
+        "Sunt de pază și mor de sete! Hei, ăla e ceai?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} gave the guard the Tea."
       ],
       "text": [
-        ""
+        "{player} i-a dat paznicului Ceaiul."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Glug, glug... That's better! I'll pass some along to the other gates. On you go!"
       ],
       "text": [
-        ""
+        "Gâl, gâl... Așa mai merge! Duc și la celelalte porți. Poți să treci!"
       ]
     }
   ],
@@ -63,7 +63,7 @@
         "That tea was delicious. Enjoy Saffron City!"
       ],
       "text": [
-        ""
+        "Ceaiul a fost delicios. Distracție plăcută în Orașul Saffron!"
       ]
     }
   ]

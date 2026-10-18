@@ -4,7 +4,7 @@
       "Rocket Hideout"
     ],
     "text": [
-      ""
+      "Ascunzătoarea Rocket"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: Who let a kid down here? Intruder!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Cine a lăsat un copil aici jos? Intrus!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: The boss isn't going to like this."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Șefului n-o să-i placă asta."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Team Rocket Grunt: The hideout's off limits! Scram!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Accesul în ascunzătoare e interzis! Valea!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Team Rocket Grunt: Ow... Okay, okay, I'm going."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Au... Bine, bine, plec."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Team Rocket Grunt: You'll never find your way around in here!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: N-o să te descurci niciodată pe aici!"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Team Rocket Grunt: Get lost already. Literally!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Rătăcește-te odată. La propriu!"
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -100,7 +100,7 @@
           "Team Rocket Grunt: A kid in the hideout? This is my lucky day!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Un copil în ascunzătoare? E ziua mea norocoasă!"
         ]
       },
       "after": {
@@ -108,7 +108,7 @@
           "Team Rocket Grunt: Not so lucky after all."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Până la urmă, nu chiar așa norocoasă."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -126,7 +126,7 @@
           "Team Rocket Grunt: The lift won't move without its key, kid. Not that you'll ever get it!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Liftul nu merge fără cheie, puștiule. Nu că ai pune vreodată mâna pe ea!"
         ]
       },
       "after": {
@@ -134,7 +134,7 @@
           "Team Rocket Grunt: The key? Someone further down has it. Oops."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Cheia? O are cineva mai jos. Hopa."
         ]
       }
     }

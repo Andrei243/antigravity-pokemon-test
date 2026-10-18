@@ -5,7 +5,7 @@
         "Erika"
       ],
       "text": [
-        ""
+        "Erika"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hello... Lovely weather, isn't it? I must have dozed off in the sunshine."
       ],
       "text": [
-        ""
+        "Bună... Ce vreme frumoasă, nu? Cred că am ațipit la soare."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I'm Erika, the Leader of this Gym. I study flower arranging, and my Pokémon are all of the Grass type."
       ],
       "text": [
-        ""
+        "Sunt Erika, Liderul acestei Arene. Studiez aranjamentele florale, iar Pokémonii mei sunt toți de tip Iarbă."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Oh, you want to battle me? Very well. I shan't lose, though."
       ],
       "text": [
-        ""
+        "A, vrei să te lupți cu mine? Prea bine. Dar n-o să pierd."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Oh... I concede. You are remarkably strong. Please, take the Rainbow Badge."
       ],
       "text": [
-        ""
+        "Vai... Recunosc înfrângerea. Ai o forță remarcabilă. Te rog, ia Insigna Curcubeu."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player} received the Rainbow Badge from Erika!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Curcubeu de la Erika!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "With the Rainbow Badge, your Pokémon can use Strength outside of battle, to push heavy boulders."
       ],
       "text": [
-        ""
+        "Cu Insigna Curcubeu, Pokémonii tăi pot folosi Forță în afara luptei, ca să împingă bolovani grei."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Please accept this as well. It's a move I'm very fond of."
       ],
       "text": [
-        ""
+        "Te rog să primești și asta. E o mișcare care îmi e foarte dragă."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "TM19 is Giga Drain. It takes the foe's strength and gives half of it back to your Pokémon."
       ],
       "text": [
-        ""
+        "TM19 e Giga Absorbție. Îi ia puterea adversarului și îi dă jumătate din ea Pokémonului tău."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Losing to you was no disgrace. I must devote myself to my studies of flowers and of battle."
       ],
       "text": [
-        ""
+        "N-a fost nicio rușine să pierd în fața ta. Trebuie să mă dedic studiului florilor și al luptei."
       ]
     }
   ],
@@ -87,7 +87,7 @@
         "Celadon City Pokémon Gym. Leader: Erika. Winning trainers: {rival}."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Celadon. Lider: Erika. Antrenori învingători: {rival}."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Celadon City Pokémon Gym. Leader: Erika. Winning trainers: {rival}, {player}."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Celadon. Lider: Erika. Antrenori învingători: {rival}, {player}."
       ]
     }
   ]

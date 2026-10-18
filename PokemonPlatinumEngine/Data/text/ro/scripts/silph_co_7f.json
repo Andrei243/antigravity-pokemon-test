@@ -5,7 +5,7 @@
         "The Card Key opened the door!"
       ],
       "text": [
-        ""
+        "Card-Cheia a deschis ușa!"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "The door is locked. It takes a card to open it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Trebuie un card ca s-o deschizi."
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "The Card Key opened the door!"
       ],
       "text": [
-        ""
+        "Card-Cheia a deschis ușa!"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "The door is locked. It takes a card to open it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Trebuie un card ca s-o deschizi."
       ]
     }
   ],
@@ -41,7 +41,7 @@
         "The Card Key opened the door!"
       ],
       "text": [
-        ""
+        "Card-Cheia a deschis ușa!"
       ]
     },
     {
@@ -49,7 +49,7 @@
         "The door is locked. It takes a card to open it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Trebuie un card ca s-o deschizi."
       ]
     }
   ],
@@ -59,7 +59,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -67,7 +67,7 @@
         "What kept you, {player}? I've been up here for ages. Team Rocket's made a real mess of this place."
       ],
       "text": [
-        ""
+        "Unde ai întârziat, {player}? Sunt aici de o veșnicie. Echipa Rocket a făcut prăpăd pe aici."
       ]
     },
     {
@@ -75,7 +75,7 @@
         "I came to see the president, but first let's see if you've been training. Here I come!"
       ],
       "text": [
-        ""
+        "Am venit să-l văd pe președinte, dar întâi să vedem dacă te-ai antrenat. Vin!"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -91,7 +91,7 @@
         "Tch. Not bad. Team Rocket's boss is upstairs, you know. Think you can handle him? I doubt it!"
       ],
       "text": [
-        ""
+        "Pff. Nu-i rău. Șeful Echipei Rocket e sus, să știi. Crezi că-i faci față? Mă îndoiesc!"
       ]
     },
     {
@@ -99,7 +99,7 @@
         "I'm off. Smell you later, {player}!"
       ],
       "text": [
-        ""
+        "Eu am plecat. Pa-pa, {player}!"
       ]
     }
   ],
@@ -109,7 +109,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Huh? Don't just stand there gawking. Come on!"
       ],
       "text": [
-        ""
+        "Ha? Nu sta acolo cu gura căscată. Hai!"
       ]
     }
   ],
@@ -127,7 +127,7 @@
         "Worker"
       ],
       "text": [
-        ""
+        "Muncitorul"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Thank goodness you're here! Team Rocket nearly took this one. Please, take it somewhere safe."
       ],
       "text": [
-        ""
+        "Slavă cerului că ești aici! Echipa Rocket aproape că l-a luat pe ăsta. Te rog, du-l undeva în siguranță."
       ]
     },
     {
@@ -143,7 +143,7 @@
         "{player} received a Lapras!"
       ],
       "text": [
-        ""
+        "{player} a primit un Lapras!"
       ]
     },
     {
@@ -151,7 +151,7 @@
         "It's a Lapras. It's very smart, and it'll carry you across the water, too."
       ],
       "text": [
-        ""
+        "E un Lapras. E foarte deștept și te poate duce și peste apă."
       ]
     },
     {
@@ -159,7 +159,7 @@
         "How's the Lapras getting on? Team Rocket would have sold it. You saved it!"
       ],
       "text": [
-        ""
+        "Ce mai face Lapras-ul? Echipa Rocket l-ar fi vândut. L-ai salvat!"
       ]
     }
   ]

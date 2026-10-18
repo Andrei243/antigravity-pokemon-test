@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! I'm sorry, every room is taken tonight. Do come again."
         ],
         "text": [
-          ""
+          "Bun venit! Îmi pare rău, toate camerele sunt ocupate în seara asta. Mai treceți."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Beauty"
         ],
         "text": [
-          ""
+          "Frumoasa"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "We came to Celadon for the shopping. My boyfriend's already tired of carrying the bags!"
         ],
         "text": [
-          ""
+          "Am venit în Celadon la cumpărături. Prietenul meu s-a săturat deja să care sacoșele!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Why did I agree to this trip? My arms are going to fall off."
         ],
         "text": [
-          ""
+          "De ce am acceptat excursia asta? O să-mi cadă brațele."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "My sister brought her boyfriend along. They're no fun at all!"
         ],
         "text": [
-          ""
+          "Sora mea și-a adus prietenul. Nu-s deloc distractivi!"
         ]
       }
     }

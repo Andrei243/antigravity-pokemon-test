@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Camper"
         ],
         "text": [
-          ""
+          "Campistul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Potions, Poké Balls, Escape Ropes... everything a Trainer needs, right here."
         ],
         "text": [
-          ""
+          "Poțiuni, Poké Balluri, Frânghii... tot ce-i trebuie unui Antrenor, chiar aici."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm buying my first Poké Balls today! My mum gave me the money."
         ],
         "text": [
-          ""
+          "Azi îmi cumpăr primele Poké Balluri! Mi-a dat mama banii."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Prices go up and down from day to day. A wise shopper keeps an eye on them."
         ],
         "text": [
-          ""
+          "Prețurile urcă și coboară de la o zi la alta. Un cumpărător înțelept stă cu ochii pe ele."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "2F: Trainer's Market\nEverything for the road."
       ],
       "text": [
-        ""
+        "Etajul 2: Piața Antrenorului\nTot ce-ți trebuie la drum."
       ]
     }
   }

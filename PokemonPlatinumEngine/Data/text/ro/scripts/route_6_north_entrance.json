@@ -5,7 +5,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Sorry, no one gets past. I've been on duty all day without a drop to drink!"
       ],
       "text": [
-        ""
+        "Scuze, nu trece nimeni. Am stat de pază toată ziua fără un strop de băut!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Sorry, no one gets... Is that tea? You're a lifesaver!"
       ],
       "text": [
-        ""
+        "Scuze, nu trece... E ceai? Mi-ai salvat viața!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} gave the guard the Tea."
       ],
       "text": [
-        ""
+        "{player} i-a dat paznicului Ceaiul."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Much better! I'll pass the rest round the other gates. Go right ahead!"
       ],
       "text": [
-        ""
+        "Mult mai bine! Restul îl duc la celelalte porți. Poftim, treci!"
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Saffron City's closed to everyone for the time being. I don't know why."
       ],
       "text": [
-        ""
+        "Orașul Saffron e închis pentru toată lumea deocamdată. Nu știu de ce."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "That tea really hit the spot. Off you go to Saffron City!"
       ],
       "text": [
-        ""
+        "Ceaiul ăla a picat exact bine. Hai, du-te în Orașul Saffron!"
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "A Pokémon that sleeps can't be woken by any ordinary means. A tune, perhaps, would do it."
         ],
         "text": [
-          ""
+          "Un Pokémon care doarme nu poate fi trezit prin mijloace obișnuite. Poate o melodie ar reuși."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "The Cycling Road runs south from Route 16. You'll want a Bicycle for that!"
         ],
         "text": [
-          ""
+          "Drumul Bicicliștilor pornește spre sud de pe Ruta 16. Îți trebuie o Bicicletă pentru el!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "There's a huge Pokémon sleeping on the road west of town. Nobody can get past it!"
         ],
         "text": [
-          ""
+          "Un Pokémon uriaș doarme pe drumul de la vest de oraș. Nimeni nu poate trece de el!"
         ]
       }
     }

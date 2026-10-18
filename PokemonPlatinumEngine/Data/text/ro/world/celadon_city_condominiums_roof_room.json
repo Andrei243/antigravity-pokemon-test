@@ -6,7 +6,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "There's a Pokémon in that ball on the table. Nobody here can look after it. Go on, take it!"
         ],
         "text": [
-          ""
+          "În ballul de pe masă e un Pokémon. Nimeni de aici nu poate avea grijă de el. Hai, ia-l!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Poké Ball"
         ],
         "text": [
-          ""
+          "Poké Ball"
         ]
       }
     }
@@ -35,7 +35,7 @@
         "Notes on how moves are sorted: physical, special and status."
       ],
       "text": [
-        ""
+        "Notițe despre felurile mișcărilor: fizice, speciale și de stare."
       ]
     },
     "CeladonCity_Condominiums_RoofRoom_EventScript_TMsPamphlet": {
@@ -43,7 +43,7 @@
         "A pamphlet about TMs. Each one teaches a Pokémon a move!"
       ],
       "text": [
-        ""
+        "O broșură despre TM-uri. Fiecare învață un Pokémon o mișcare!"
       ]
     }
   }

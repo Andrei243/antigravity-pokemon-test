@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Chef"
         ],
         "text": [
-          ""
+          "Bucătarul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Hi! We're not open yet, I'm afraid. The kitchen's still being set up."
         ],
         "text": [
-          ""
+          "Salut! Încă nu ne-am deschis, din păcate. Bucătăria e încă în amenajare."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "My Pokémon and I come here every week. The food is delicious!"
         ],
         "text": [
-          ""
+          "Pokémonul meu și cu mine venim aici în fiecare săptămână. Mâncarea e delicioasă!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Mmph! Mmph mmph! Sorry, my mouth's full. This is so good!"
         ],
         "text": [
-          ""
+          "Mmf! Mmf mmf! Scuze, am gura plină. E atât de bun!"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Psst... I hear there's something strange going on in the Game Corner's back room."
         ],
         "text": [
-          ""
+          "Psst... Am auzit că se întâmplă ceva ciudat în camera din spate a Game Corner."
         ]
       }
     }

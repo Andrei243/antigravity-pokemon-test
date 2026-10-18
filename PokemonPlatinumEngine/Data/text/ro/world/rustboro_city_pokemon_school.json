@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm trading Pokémon with my friend! Well, we're pretending. The link is down."
         ],
         "text": [
-          ""
+          "Fac schimb de Pokémoni cu prietenul meu! Mă rog, ne prefacem. Legătura nu merge."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm going to be the best trainer in the class. Just as soon as I catch a second Pokémon."
         ],
         "text": [
-          ""
+          "O să fiu cel mai bun antrenor din clasă. Imediat ce prind al doilea Pokémon."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Status conditions! Poison, burn, paralysis, sleep, freezing. I have to memorise them all for the test."
         ],
         "text": [
-          ""
+          "Stările! Otrăvire, arsură, paralizie, somn, înghețare. Trebuie să le memorez pe toate pentru test."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Our teacher says a Pokémon holding the right item can turn a battle around."
         ],
         "text": [
-          ""
+          "Profesoara zice că un Pokémon care ține obiectul potrivit poate întoarce o luptă."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "If your Pokémon is asleep, you can't do much but wait. Or use an item!"
         ],
         "text": [
-          ""
+          "Dacă Pokémonul tău doarme, n-ai ce face decât să aștepți. Sau să folosești un obiect!"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Teacher"
         ],
         "text": [
-          ""
+          "Profesoara"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Scott"
         ],
         "text": [
-          ""
+          "Scott"
         ]
       }
     }
@@ -117,7 +117,7 @@
         "Today's lesson: the five status conditions, and the items that cure them."
       ],
       "text": [
-        ""
+        "Lecția de azi: cele cinci stări și obiectele care le vindecă."
       ]
     },
     "RustboroCity_PokemonSchool_EventScript_StudentNotebook": {
@@ -125,7 +125,7 @@
         "A student's notebook. \"Roxanne: Rock type. Water and Grass work well.\" Underlined twice."
       ],
       "text": [
-        ""
+        "Caietul unui elev. „Roxanne: tip Rocă. Apa și Iarba merg bine.” Subliniat de două ori."
       ]
     }
   }

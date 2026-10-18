@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "A Pokémon that loves you will try that little bit harder for you."
         ],
         "text": [
-          "",
-          ""
+          "Un Pokémon ținut în fruntea echipei și tratat cu blândețe ajunge să-și iubească Antrenorul.",
+          "Un Pokémon care te iubește se străduiește un pic mai mult pentru tine."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "My Pidgey follows me everywhere. Mum says that means it likes me!"
         ],
         "text": [
-          ""
+          "Pidgey-ul meu mă urmează peste tot. Mama zice că asta înseamnă că mă place!"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "Some Pokémon only evolve when they're very fond of their Trainer. Strange but true."
         ],
         "text": [
-          ""
+          "Unii Pokémoni evoluează doar când țin foarte mult la Antrenorul lor. Ciudat, dar adevărat."
         ]
       }
     }

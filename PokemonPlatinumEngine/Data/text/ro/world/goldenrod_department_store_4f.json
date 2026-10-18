@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Vitamins make a Pokémon stronger in a way battles alone never could."
         ],
         "text": [
-          ""
+          "Vitaminele fac un Pokémon mai puternic cum n-ar putea niciodată doar luptele."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm saving up for a Protein. My Rattata deserves it!"
         ],
         "text": [
-          ""
+          "Strâng bani pentru o Proteină. Rattata meu o merită!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm waiting for the lift. It hasn't come for ages..."
         ],
         "text": [
-          ""
+          "Aștept liftul. N-a mai venit de o veșnicie..."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "4F: Medicine Box\nFor a Pokémon's health and strength."
       ],
       "text": [
-        ""
+        "Etajul 4: Cutia cu Medicamente\nPentru sănătatea și forța unui Pokémon."
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "He calls whenever he wants feeding. Typical!"
         ],
         "text": [
-          "",
-          ""
+          "Fiul meu Bill a făcut sistemul de stocare din PC pe care îl folosești. Acum e plecat în Orașul Ecruteak.",
+          "Sună ori de câte ori îi e foame. Tipic!"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "My big brother Bill knows everything about Pokémon. I want to be just like him!"
         ],
         "text": [
-          ""
+          "Fratele meu mai mare, Bill, știe totul despre Pokémoni. Vreau să fiu exact ca el!"
         ]
       }
     }

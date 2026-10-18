@@ -6,7 +6,7 @@
           "Owner"
         ],
         "text": [
-          ""
+          "Proprietarul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "Nobody in Johto has heard of me yet. One day everybody will be riding my bikes!"
         ],
         "text": [
-          "",
-          ""
+          "Bun venit la magazinul meu de biciclete! Abia m-am mutat aici din Kanto, așa că afacerile merg greu.",
+          "Nimeni din Johto n-a auzit încă de mine. Într-o zi toată lumea o să meargă pe bicicletele mele!"
         ]
       }
     }
@@ -27,7 +27,7 @@
         "Shiny new Bicycles, ready to ride."
       ],
       "text": [
-        ""
+        "Biciclete noi-nouțe, gata de drum."
       ]
     }
   }

@@ -21,7 +21,7 @@
         "Halt! I'm on duty, and I'm too... Wait, is that tea? It smells wonderful!"
       ],
       "text": [
-        ""
+        "Stai! Sunt de serviciu și sunt prea... Stai, e ceai? Miroase minunat!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} gave the guard the Tea."
       ],
       "text": [
-        ""
+        "{player} i-a dat paznicului Ceaiul."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Ahh, that hits the spot! I'll share the rest with the other guards. Go on through, and thanks!"
       ],
       "text": [
-        ""
+        "Ahh, exact ce-mi trebuia! Restul îl împart cu ceilalți paznici. Treci, și mersi!"
       ]
     }
   ],
@@ -63,7 +63,7 @@
         "Thanks again for the tea! Saffron City's just through here."
       ],
       "text": [
-        ""
+        "Mersi încă o dată pentru ceai! Orașul Saffron e chiar pe aici."
       ]
     }
   ]

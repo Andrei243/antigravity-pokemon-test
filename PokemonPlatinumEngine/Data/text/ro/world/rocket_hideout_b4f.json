@@ -4,7 +4,7 @@
       "Rocket Hideout"
     ],
     "text": [
-      ""
+      "Ascunzătoarea Rocket"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Giovanni"
         ],
         "text": [
-          ""
+          "Giovanni"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Silph Scope"
         ],
         "text": [
-          ""
+          "Luneta Silph"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Lift Key"
         ],
         "text": [
-          ""
+          "Cheia Liftului"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -52,7 +52,7 @@
           "Team Rocket Grunt: The Lift Key? It's right here. Come and take it, if you dare!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Cheia Liftului? E chiar aici. Vino s-o iei, dacă ai curaj!"
         ]
       },
       "after": {
@@ -60,7 +60,7 @@
           "Team Rocket Grunt: Oh no! I dropped the Lift Key!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: O, nu! Am scăpat Cheia Liftului!"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -78,7 +78,7 @@
           "Team Rocket Grunt: Nobody gets past this door. The boss is busy!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Nimeni nu trece de ușa asta. Șeful e ocupat!"
         ]
       },
       "after": {
@@ -86,7 +86,7 @@
           "Team Rocket Grunt: I've let the boss down..."
         ],
         "text": [
-          ""
+          "Rocket Grunt: L-am dezamăgit pe șef..."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -104,7 +104,7 @@
           "Team Rocket Grunt: The boss's office is through here, and you're not going in!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Biroul șefului e pe aici, și tu nu intri!"
         ]
       },
       "after": {
@@ -112,7 +112,7 @@
           "Team Rocket Grunt: Go on, then. The boss will finish you."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Du-te, atunci. Șeful o să te termine."
         ]
       }
     },
@@ -122,7 +122,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -152,7 +152,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     }

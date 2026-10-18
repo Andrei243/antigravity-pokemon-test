@@ -6,7 +6,7 @@
           "Sabrina"
         ],
         "text": [
-          ""
+          "Sabrina"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Cameron"
         ],
         "text": [
-          ""
+          "Cameron"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Psychic Cameron: Our Leader can bend spoons with her mind! Can you?"
         ],
         "text": [
-          ""
+          "Medium Cameron: Liderul nostru poate îndoi linguri cu mintea! Tu poți?"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Psychic Cameron: I couldn't see that coming."
         ],
         "text": [
-          ""
+          "Medium Cameron: Pe asta n-am văzut-o venind."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Johan"
         ],
         "text": [
-          ""
+          "Johan"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Psychic Johan: I knew you'd teleport in here. I foresaw it!"
         ],
         "text": [
-          ""
+          "Medium Johan: Știam că o să te teleportezi aici. Am prevăzut-o!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Psychic Johan: I didn't foresee that."
         ],
         "text": [
-          ""
+          "Medium Johan: Asta n-am prevăzut-o."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Preston"
         ],
         "text": [
-          ""
+          "Preston"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Psychic Preston: The pads here can lead you anywhere. Even into a battle with me!"
         ],
         "text": [
-          ""
+          "Medium Preston: Plăcile de aici te pot duce oriunde. Chiar și într-o luptă cu mine!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Psychic Preston: You have a strong will."
         ],
         "text": [
-          ""
+          "Medium Preston: Ai o voință puternică."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Tyron"
         ],
         "text": [
-          ""
+          "Tyron"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Psychic Tyron: Do you believe in the power of the mind? You will!"
         ],
         "text": [
-          ""
+          "Medium Tyron: Crezi în puterea minții? O să crezi!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Psychic Tyron: My mind is blank."
         ],
         "text": [
-          ""
+          "Medium Tyron: Am mintea goală."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Amanda"
         ],
         "text": [
-          ""
+          "Amanda"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Channeler Amanda: The spirits whisper your name... Battle!"
         ],
         "text": [
-          ""
+          "Spiritistă Amanda: Spiritele îți șoptesc numele... Luptă!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Channeler Amanda: The spirits have gone quiet."
         ],
         "text": [
-          ""
+          "Spiritistă Amanda: Spiritele au amuțit."
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Stacy"
         ],
         "text": [
-          ""
+          "Stacy"
         ]
       },
       "before": {
@@ -164,7 +164,7 @@
           "Channeler Stacy: Sabrina's power flows through this Gym. Can you feel it?"
         ],
         "text": [
-          ""
+          "Spiritistă Stacy: Puterea Sabrinei curge prin Arena asta. O simți?"
         ]
       },
       "after": {
@@ -172,7 +172,7 @@
           "Channeler Stacy: Your power is stronger."
         ],
         "text": [
-          ""
+          "Spiritistă Stacy: Puterea ta e mai mare."
         ]
       }
     },
@@ -182,7 +182,7 @@
           "Tasha"
         ],
         "text": [
-          ""
+          "Tasha"
         ]
       },
       "before": {
@@ -190,7 +190,7 @@
           "Channeler Tasha: You won't find Sabrina so easily. Stay a while!"
         ],
         "text": [
-          ""
+          "Spiritistă Tasha: N-o s-o găsești pe Sabrina așa ușor. Mai stai puțin!"
         ]
       },
       "after": {
@@ -198,7 +198,7 @@
           "Channeler Tasha: Very well. Find her, then."
         ],
         "text": [
-          ""
+          "Spiritistă Tasha: Prea bine. Găsește-o, atunci."
         ]
       }
     }

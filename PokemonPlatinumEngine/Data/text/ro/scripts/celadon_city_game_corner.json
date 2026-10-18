@@ -5,7 +5,7 @@
         "A slot machine. Play it?"
       ],
       "text": [
-        ""
+        "O păcănea. Joci?"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "A slot machine. Without a Coin Case there is nothing to play with."
       ],
       "text": [
-        ""
+        "O păcănea. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătoarea"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "We sell coins for the machines: 50 for $1,000. Would you like some?"
       ],
       "text": [
-        ""
+        "Vindem fise pentru aparate: 50 pentru $1.000. Vrei câteva?"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "{player} bought 50 coins."
       ],
       "text": [
-        ""
+        "{player} a cumpărat 50 de fise."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Please come again!"
       ],
       "text": [
-        ""
+        "Să mai treci!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Sorry, you'll need a Coin Case to keep coins in."
       ],
       "text": [
-        ""
+        "Îmi pare rău, îți trebuie o Cutie de Fise ca să ții fisele."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Your Coin Case is full already!"
       ],
       "text": [
-        ""
+        "Cutia ta de Fise e deja plină!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "I'm sorry, you don't have enough money."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destui bani."
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "Gym Guide"
       ],
       "text": [
-        ""
+        "Ghidul Arenei"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Hey, champ in the making! Celadon's Gym Leader is Erika, and she uses Grass types."
       ],
       "text": [
-        ""
+        "Salut, viitor campion! Liderul Arenei din Celadon e Erika, și folosește Pokémoni de tip Iarbă."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Fire, Ice and Flying moves will see you through. Good luck, and don't let the slots distract you!"
       ],
       "text": [
-        ""
+        "Mișcările de Foc, Gheață și Zbor te vor ajuta. Baftă, și nu te lăsa furat de păcănele!"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "You beat Erika! Grass types don't stand a chance against you."
       ],
       "text": [
-        ""
+        "Ai învins-o pe Erika! Tipul Iarbă n-are nicio șansă în fața ta."
       ]
     }
   ],
@@ -115,7 +115,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Argh! I'd better tell the boss! Don't you dare touch that poster!"
       ],
       "text": [
-        ""
+        "Argh! Trebuie să-i spun șefului! Să nu te atingi de afișul ăla!"
       ]
     }
   ],
@@ -133,7 +133,7 @@
         "Hey! There's a switch behind the poster!"
       ],
       "text": [
-        ""
+        "Hei! În spatele afișului e un comutator!"
       ]
     },
     {
@@ -141,7 +141,7 @@
         "Press it?"
       ],
       "text": [
-        ""
+        "Îl apeși?"
       ]
     },
     {
@@ -149,7 +149,7 @@
         "A hidden staircase has opened up!"
       ],
       "text": [
-        ""
+        "S-a deschis o scară ascunsă!"
       ]
     },
     {
@@ -157,7 +157,7 @@
         "A poster of a Pokémon. Something about it seems odd."
       ],
       "text": [
-        ""
+        "Un afiș cu un Pokémon. Ceva pare ciudat la el."
       ]
     },
     {
@@ -165,7 +165,7 @@
         "A poster with a switch behind it. The stairs are open."
       ],
       "text": [
-        ""
+        "Un afiș cu un comutator în spate. Scara e deschisă."
       ]
     }
   ]

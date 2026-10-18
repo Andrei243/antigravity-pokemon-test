@@ -4,7 +4,7 @@
       "Silph Co."
     ],
     "text": [
-      ""
+      "Silph S.A."
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: Silph Co. belongs to Team Rocket now! Get out!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Silph S.A. e acum a Echipei Rocket! Afară!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: Ugh! The boss will hear about this."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Uf! Șeful o să afle de asta."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -48,7 +48,7 @@
           "I hid in the corner when they came in. I'm still hiding, really."
         ],
         "text": [
-          ""
+          "M-am ascuns în colț când au intrat. De fapt, încă mă ascund."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -66,7 +66,7 @@
           "Team Rocket burst in and took over the whole building. We can't go home!"
         ],
         "text": [
-          ""
+          "Echipa Rocket a năvălit și a pus stăpânire pe toată clădirea. Nu putem merge acasă!"
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -84,7 +84,7 @@
           "They're after the Master Ball, a ball that never fails. The president won't hand it over."
         ],
         "text": [
-          ""
+          "Vor Master Ball-ul, un ball care nu dă greș niciodată. Președintele nu-l predă."
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -102,7 +102,7 @@
           "Please, save the president! He's on the top floor."
         ],
         "text": [
-          ""
+          "Te rog, salvează-l pe președinte! E la ultimul etaj."
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -120,7 +120,7 @@
           "The doors are locked by card. The Card Key is somewhere in the building."
         ],
         "text": [
-          ""
+          "Ușile se încuie cu card. Card-Cheia e undeva în clădire."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Taylor"
         ],
         "text": [
-          ""
+          "Taylor"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Scientist Taylor: Team Rocket pays better than Silph Co. ever did!"
         ],
         "text": [
-          ""
+          "Om de știință Taylor: Echipa Rocket plătește mai bine decât a plătit vreodată Silph S.A.!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Scientist Taylor: Maybe I should go back to my old job."
         ],
         "text": [
-          ""
+          "Om de știință Taylor: Poate ar trebui să mă întorc la vechiul meu post."
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -164,7 +164,7 @@
           "Team Rocket Grunt: You again? How did you get in here?"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Iar tu? Cum ai intrat aici?"
         ]
       },
       "after": {
@@ -172,7 +172,7 @@
           "Team Rocket Grunt: Fine, fine. You win this one."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Bine, bine. Runda asta e a ta."
         ]
       }
     },
@@ -182,7 +182,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -192,7 +192,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -202,7 +202,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -212,7 +212,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     }
@@ -223,7 +223,7 @@
         "Silph Co. Head Office\n6F"
       ],
       "text": [
-        ""
+        "Sediul Silph S.A.\nEtajul 6"
       ]
     }
   }

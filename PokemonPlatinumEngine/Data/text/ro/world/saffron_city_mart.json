@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Max Repels last the longest of all the Repels. They're worth the price."
         ],
         "text": [
-          ""
+          "Spray-urile Maxime țin cel mai mult dintre toate Spray-urile. Merită prețul."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Revives bring a fainted Pokémon back. I never travel without a few."
         ],
         "text": [
-          ""
+          "Reînvierile aduc înapoi un Pokémon leșinat. Nu călătoresc niciodată fără câteva."
         ]
       }
     }

@@ -5,7 +5,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hold it! I'm so thirsty I can hardly think. Nobody gets through until I've had a drink."
       ],
       "text": [
-        ""
+        "Stai! Mi-e atât de sete că abia mai gândesc. Nu trece nimeni până nu beau ceva."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Hold it! I'm so thirsty... Oh! Is that tea? May I?"
       ],
       "text": [
-        ""
+        "Stai! Mi-e atât de sete... A! E ceai? Pot să iau?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} gave the guard the Tea."
       ],
       "text": [
-        ""
+        "{player} i-a dat paznicului Ceaiul."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Ah, wonderful! I'll share it with the other guards. You're free to go through!"
       ],
       "text": [
-        ""
+        "Ah, minunat! Îl împart cu ceilalți paznici. Poți să treci!"
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Hi, how's it going? Saffron City's closed for now, I'm afraid."
       ],
       "text": [
-        ""
+        "Salut, ce faci? Orașul Saffron e închis deocamdată, din păcate."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Hi, how's it going? Thanks for the tea, by the way!"
       ],
       "text": [
-        ""
+        "Salut, ce faci? Apropo, mersi pentru ceai!"
       ]
     }
   ]

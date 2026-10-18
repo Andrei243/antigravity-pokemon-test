@@ -5,7 +5,7 @@
         "The Card Key opened the door!"
       ],
       "text": [
-        ""
+        "Card-Cheia a deschis ușa!"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "The door is locked. It takes a card to open it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Trebuie un card ca s-o deschizi."
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "The Card Key opened the door!"
       ],
       "text": [
-        ""
+        "Card-Cheia a deschis ușa!"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "The door is locked. It takes a card to open it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Trebuie un card ca s-o deschizi."
       ]
     }
   ],
@@ -41,7 +41,7 @@
         "The Card Key opened the door!"
       ],
       "text": [
-        ""
+        "Card-Cheia a deschis ușa!"
       ]
     },
     {
@@ -49,7 +49,7 @@
         "The door is locked. It takes a card to open it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Trebuie un card ca s-o deschizi."
       ]
     }
   ],
@@ -59,7 +59,7 @@
         "The Card Key opened the door!"
       ],
       "text": [
-        ""
+        "Card-Cheia a deschis ușa!"
       ]
     },
     {
@@ -67,7 +67,7 @@
         "The door is locked. It takes a card to open it."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Trebuie un card ca s-o deschizi."
       ]
     }
   ],
@@ -77,7 +77,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeia"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "You look worn out! Your Pokémon should take a quick nap. Here, let them rest a moment."
       ],
       "text": [
-        ""
+        "Se vede oboseala pe tine! Pokémonii tăi ar trebui să tragă un pui de somn. Lasă-i să se odihnească puțin."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "There. Don't give up now!"
       ],
       "text": [
-        ""
+        "Gata. Nu renunța acum!"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Thank you so much! Team Rocket's gone, and we can all go home at last."
       ],
       "text": [
-        ""
+        "Mulțumesc mult! Echipa Rocket a plecat și putem merge cu toții acasă, în sfârșit."
       ]
     }
   ]

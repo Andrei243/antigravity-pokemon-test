@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "My daughter copies everyone she meets. She's upstairs, if you'd like to be copied too."
         ],
         "text": [
-          ""
+          "Fiica mea îi imită pe toți pe care îi întâlnește. E sus, dacă vrei să te imite și pe tine."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Our girl can mimic anybody. She does a wonderful Chansey!"
         ],
         "text": [
-          ""
+          "Fata noastră poate imita pe oricine. Îl face minunat pe Chansey!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Chansey"
         ],
         "text": [
-          ""
+          "Chansey"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Chaaansey!"
         ],
         "text": [
-          ""
+          "Chaaansey!"
         ]
       }
     }

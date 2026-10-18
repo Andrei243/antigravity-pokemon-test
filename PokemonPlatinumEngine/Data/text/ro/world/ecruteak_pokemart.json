@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Morty's Ghost Pokémon don't mind Normal moves one bit. Bring something stronger."
         ],
         "text": [
-          ""
+          "Pokémonilor Fantomă ai lui Morty nu le pasă deloc de mișcările Normale. Adu ceva mai puternic."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Repels keep weak wild Pokémon away. Very handy in the towers."
         ],
         "text": [
-          ""
+          "Spray-urile țin departe Pokémonii sălbatici slabi. Foarte utile în turnuri."
         ]
       }
     }

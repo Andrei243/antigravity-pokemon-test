@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The National Park is through the north door. The Pokéathlon Dome is through the west one, but it isn't open yet."
         ],
         "text": [
-          ""
+          "Parcul Național e pe ușa de nord. Domul Pokéathlon e pe cea de vest, dar încă nu e deschis."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Officer"
         ],
         "text": [
-          ""
+          "Polițistul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! The National Park is just to the north. Do enjoy your visit."
         ],
         "text": [
-          ""
+          "Bun venit! Parcul Național e chiar la nord. Vizită plăcută."
         ]
       }
     }
@@ -43,7 +43,7 @@
         "A poster of the Pokéathlon. It says \"Coming soon!\""
       ],
       "text": [
-        ""
+        "Un afiș al Pokéathlonului. Scrie „În curând!”"
       ]
     },
     "R35R0201_007+1": {
@@ -51,7 +51,7 @@
         "A poster of the Pokéathlon's events: racing, jumping, throwing and more."
       ],
       "text": [
-        ""
+        "Un afiș cu probele Pokéathlonului: alergare, sărituri, aruncări și altele."
       ]
     }
   }

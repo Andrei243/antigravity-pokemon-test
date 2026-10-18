@@ -315,6 +315,10 @@ public class RomanianTests
         lines.UnionWith(RegionDatabase.All.Select(r => r.Professor?.Name).OfType<string>());
         // And the Pokégear's radio (plan 17 · N6f)
         lines.UnionWith(RadioShows.AllLines);
+        // And the Town Map's words about each place (plan 17 · N6g)
+        foreach (var region in RegionDatabase.All)
+            if (RegionMap.Of(region.Id) is { } map)
+                lines.UnionWith(map.Areas.Concat(map.Landmarks).Select(p => p.About).Where(a => a.Length > 0));
         // Every line of the table is a line a region's file or trainer-lines.json has (a line rewritten in English leaves its entry behind)
         Assert.Empty(table.Keys.Where(k => !lines.Contains(k)).OrderBy(k => k));
         // Every line of Sinnoh's professor is in it, with the placeholders its English has and no character the faces lack
@@ -362,6 +366,33 @@ public class RomanianTests
         }
         finally { Text.Use(Text.English); }
         Assert.Equal(english, RadioShows.Line(RadioStation.PokemonTalk, new Random(3), "Pidgey", "Route 29"));
+    }
+
+    [Fact]
+    public void TheTownMapSaysWhatEachPlaceIsInRomanian()
+    {
+        // Plan 17 · N6g: every area's and landmark's words on every region's map have a Romanian line in data.json
+        var table = Text.DataTable(Romanian);
+        var wrong = new List<string>();
+        int told = 0;
+        foreach (var region in RegionDatabase.All)
+            if (RegionMap.Of(region.Id) is { } map)
+                foreach (var place in map.Areas.Concat(map.Landmarks).Where(p => p.About.Length > 0))
+                {
+                    told++;
+                    if (!table.TryGetValue(place.About, out var ro) || ro.Length == 0) { wrong.Add($"{region.Id}: no Romanian for: {place.About}"); continue; }
+                    if (TextMetrics.Undrawable(ro, UiWeight.Bold).Any()) wrong.Add($"can't be drawn: {ro}");
+                }
+        Assert.True(told > 0);
+        Assert.True(wrong.Count == 0, string.Join("\n", wrong));
+        string about = RegionMap.Sinnoh!.Areas.First(a => a.About.Length > 0).About;
+        try
+        {
+            Text.Use(Romanian);
+            Assert.Equal(table[about], Text.OfData(about));
+        }
+        finally { Text.Use(Text.English); }
+        Assert.Equal(about, Text.OfData(about));
     }
 
     /// <summary>Every line of <c>trainer-lines.json</c>, as its English is written.</summary>

@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm watching the bikers through the binoculars. They're so cool!"
         ],
         "text": [
-          ""
+          "Mă uit la motocicliști prin binoclu. Sunt atât de tari!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "There's a big Pokémon asleep on the road outside. It's been there for days!"
         ],
         "text": [
-          ""
+          "Pe drumul de afară doarme un Pokémon mare. E acolo de zile întregi!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Aide"
         ],
         "text": [
-          ""
+          "Asistentul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm one of Professor Oak's aides. Keep filling that Pokédex, and I may have something for you one day."
         ],
         "text": [
-          ""
+          "Sunt unul din asistenții Profesorului Oak. Completează-ți Pokédexul și s-ar putea să am ceva pentru tine."
         ]
       }
     }
@@ -61,7 +61,7 @@
         "Looking through the binoculars... The Cycling Road runs on and on to the south."
       ],
       "text": [
-        ""
+        "Te uiți prin binoclu... Drumul Bicicliștilor se tot întinde spre sud."
       ]
     },
     "Route16_NorthEntrance_2F_EventScript_RightBinoculars": {
@@ -69,7 +69,7 @@
         "Looking through the binoculars... A Snorlax is fast asleep on the road!"
       ],
       "text": [
-        ""
+        "Te uiți prin binoclu... Un Snorlax doarme dus pe drum!"
       ]
     }
   }

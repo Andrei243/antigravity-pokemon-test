@@ -9,11 +9,11 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce etaj?",
+        "SUBSOL",
+        "SUBSOL 2",
+        "SUBSOL 4",
+        "Rămân aici"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The lift's panel won't respond. It needs a key to work."
       ],
       "text": [
-        ""
+        "Panoul liftului nu răspunde. Îi trebuie o cheie ca să meargă."
       ]
     }
   ]

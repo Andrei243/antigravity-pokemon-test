@@ -6,7 +6,7 @@
           "Richard"
         ],
         "text": [
-          ""
+          "Richard"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Firebreather Richard: This tower burned once. Shall I set it alight again?"
         ],
         "text": [
-          ""
+          "Scuipător de foc Richard: Turnul ăsta a mai ars o dată. Să-i dau iar foc?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Firebreather Richard: All my fire's gone up in smoke."
         ],
         "text": [
-          ""
+          "Scuipător de foc Richard: Tot focul meu s-a făcut fum."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Ned"
         ],
         "text": [
-          ""
+          "Ned"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Firebreather Ned: The ashes here are still warm, I swear. Feel that heat!"
         ],
         "text": [
-          ""
+          "Scuipător de foc Ned: Cenușa de aici încă e caldă, jur. Simte căldura!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Firebreather Ned: Cooled right down."
         ],
         "text": [
-          ""
+          "Scuipător de foc Ned: M-am răcit de tot."
         ]
       }
     }

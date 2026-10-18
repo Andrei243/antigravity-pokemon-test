@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Hello! Welcome to the Celadon Department Store. The board on the right shows what's on each floor."
         ],
         "text": [
-          ""
+          "Bună! Bun venit la Magazinul Universal Celadon. Panoul din dreapta arată ce e la fiecare etaj."
         ]
       }
     }
@@ -25,7 +25,7 @@
         "2F: Trainer's Market. 3F: TV Games.\n4F: Gifts. 5F: Drugstore. Roof: Square."
       ],
       "text": [
-        ""
+        "Et. 2: Piața Antrenorului. Et. 3: Jocuri.\nEt. 4: Cadouri. Et. 5: Farmacie. Terasă."
       ]
     },
     "CeladonCity_DepartmentStore_1F_EventScript_FloorSign": {
@@ -33,7 +33,7 @@
         "1F: Service Counter"
       ],
       "text": [
-        ""
+        "Parter: Ghișeul de Servicii"
       ]
     }
   }

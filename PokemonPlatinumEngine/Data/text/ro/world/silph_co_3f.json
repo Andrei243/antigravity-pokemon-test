@@ -4,7 +4,7 @@
       "Silph Co."
     ],
     "text": [
-      ""
+      "Silph S.A."
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: Halt! This floor is off limits to kids!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Stai! Etajul ăsta e interzis copiilor!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: Off limits... to me, apparently."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Interzis... mie, se pare."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -48,7 +48,7 @@
           "They're after the Master Ball, a ball that never fails. The president won't hand it over."
         ],
         "text": [
-          ""
+          "Vor Master Ball-ul, un ball care nu dă greș niciodată. Președintele nu-l predă."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Jose"
         ],
         "text": [
-          ""
+          "Jose"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Scientist Jose: I programmed every door in this building. You won't get far!"
         ],
         "text": [
-          ""
+          "Om de știință Jose: Am programat toate ușile din clădire. N-o să ajungi departe!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Scientist Jose: You got far enough."
         ],
         "text": [
-          ""
+          "Om de știință Jose: Ai ajuns destul de departe."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -134,7 +134,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -144,7 +144,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     }
@@ -165,7 +165,7 @@
         "Silph Co. Head Office\n3F"
       ],
       "text": [
-        ""
+        "Sediul Silph S.A.\nEtajul 3"
       ]
     }
   }

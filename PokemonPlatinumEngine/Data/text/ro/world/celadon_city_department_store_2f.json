@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Super Repels keep weak wild Pokémon away for longer. I always carry some!"
         ],
         "text": [
-          ""
+          "Super Spray-urile țin Pokémonii sălbatici slabi departe mai mult timp. Am mereu la mine!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I heard the Champion came shopping here once. Can you imagine?"
         ],
         "text": [
-          ""
+          "Am auzit că odată Campionul a venit la cumpărături aici. Îți dai seama?"
         ]
       }
     }
@@ -79,7 +79,7 @@
         "2F: Trainer's Market\nEverything a trainer needs"
       ],
       "text": [
-        ""
+        "Etajul 2: Piața Antrenorului\nTot ce-i trebuie unui Antrenor"
       ]
     }
   }

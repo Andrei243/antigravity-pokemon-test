@@ -6,7 +6,7 @@
           "Devon Employee"
         ],
         "text": [
-          ""
+          "Angajatul Devon"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Out of my way!"
         ],
         "text": [
-          ""
+          "La o parte!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "Match Call lets you talk to the trainers you've registered, wherever you are!"
         ],
         "text": [
-          ""
+          "Apelurile îți permit să vorbești cu antrenorii înregistrați, oriunde ai fi!"
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Devon Employee"
         ],
         "text": [
-          ""
+          "Angajatul Devon"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "Devon makes everything a trainer needs, from Poké Balls to the newest gadgets. I'm proud to work there!"
         ],
         "text": [
-          ""
+          "Devon face tot ce-i trebuie unui antrenor, de la Poké Balluri la cele mai noi aparate. Sunt mândru că lucrez acolo!"
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "Rustboro is built from the stone of the hills around it. Even the school is made of rock!"
         ],
         "text": [
-          ""
+          "Rustboro e construit din piatra dealurilor din jur. Până și școala e din piatră!"
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -108,7 +108,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -116,7 +116,7 @@
           "I go to the Trainers' School. Today we learned about status conditions. I fell asleep. Ironic, huh?"
         ],
         "text": [
-          ""
+          "Merg la Școala de Antrenori. Azi am învățat despre stări. Am adormit. Ironic, nu?"
         ]
       }
     },
@@ -126,7 +126,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -134,7 +134,7 @@
           "My big sister says Roxanne was the cleverest student the school ever had. Now she's the Gym Leader!"
         ],
         "text": [
-          ""
+          "Sora mea mai mare zice că Roxanne a fost cea mai deșteaptă elevă a școlii. Acum e Liderul Arenei!"
         ]
       }
     },
@@ -144,7 +144,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -164,7 +164,7 @@
           "Little Boy"
         ],
         "text": [
-          ""
+          "Băiețelul"
         ]
       },
       "dialog": {
@@ -172,7 +172,7 @@
           "We're playing a game! You have to guess which Pokémon I'm thinking of. It's always Zigzagoon."
         ],
         "text": [
-          ""
+          "Ne jucăm! Trebuie să ghicești la ce Pokémon mă gândesc. E mereu Zigzagoon."
         ]
       }
     },
@@ -182,7 +182,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       },
       "dialog": {
@@ -190,7 +190,7 @@
           "Zigzagoon! I guessed it again!"
         ],
         "text": [
-          ""
+          "Zigzagoon! Iar am ghicit!"
         ]
       }
     },
@@ -200,7 +200,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -208,7 +208,7 @@
           "The Cutter's house by the trees is where you go if you want to learn how to clear a path. He's a kind fellow."
         ],
         "text": [
-          ""
+          "La casa Tăietorului, lângă copaci, mergi dacă vrei să înveți să-ți faci drum. E un om de treabă."
         ]
       }
     },
@@ -218,7 +218,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -226,7 +226,7 @@
           "The tunnel east of town was dug by one man with his bare hands! He stopped when the Whismur got upset by the noise."
         ],
         "text": [
-          ""
+          "Tunelul de la est de oraș a fost săpat de un singur om, cu mâinile goale! S-a oprit când zgomotul i-a supărat pe Whismur."
         ]
       }
     }
@@ -237,7 +237,7 @@
         "Rustboro City Pokémon Gym\nLeader: Roxanne\nA scholar of the strength of stone."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Rustboro\nLider: Roxanne\nO cunoscătoare a forței pietrei."
       ]
     },
     "RustboroCity_EventScript_TrainersSchoolSign": {
@@ -245,7 +245,7 @@
         "Pokémon Trainers' School\nLearn the basics, then go beyond them!"
       ],
       "text": [
-        ""
+        "Școala de Antrenori Pokémon\nÎnvață elementele de bază, apoi mergi mai departe!"
       ]
     },
     "RustboroCity_EventScript_CitySign": {
@@ -253,7 +253,7 @@
         "Rustboro City\nA city of stone, where the newest ideas are cut."
       ],
       "text": [
-        ""
+        "Orașul Rustboro\nUn oraș de piatră, unde se șlefuiesc cele mai noi idei."
       ]
     },
     "RustboroCity_EventScript_DevonCorpSign": {
@@ -261,7 +261,7 @@
         "Devon Corporation\nFor every trainer, wherever the road leads."
       ],
       "text": [
-        ""
+        "Corporația Devon\nPentru orice antrenor, oriunde l-ar duce drumul."
       ]
     },
     "RustboroCity_EventScript_TunnelSign": {
@@ -269,7 +269,7 @@
         "Rusturf Tunnel\nThe way east, toward Verdanturf Town"
       ],
       "text": [
-        ""
+        "Tunelul Rusturf\nDrumul spre est, spre Orășelul Verdanturf"
       ]
     },
     "RustboroCity_EventScript_CuttersHouseSign": {
@@ -277,7 +277,7 @@
         "The Cutter's House"
       ],
       "text": [
-        ""
+        "Casa Tăietorului"
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -285,7 +285,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     },
     "Common_EventScript_ShowPokemartSign": {
@@ -293,7 +293,7 @@
         "Poké Mart\nFor all your trainer needs."
       ],
       "text": [
-        ""
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
       ]
     }
   }

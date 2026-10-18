@@ -1,12 +1,30 @@
 {
   "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          "Anunț"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine on the seat, open at a page about Sabrina."
+        ],
+        "text": [
+          "O revistă pe scaun, deschisă la o pagină despre Sabrina."
+        ]
+      }
+    },
     "saffron_nurse": {
       "name": {
         "en": [
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +34,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -24,7 +42,7 @@
           "Team Rocket took over Silph Co. right under our noses. The whole city's on edge."
         ],
         "text": [
-          ""
+          "Echipa Rocket a pus stăpânire pe Silph S.A. chiar sub nasul nostru. Tot orașul e cu nervii întinși."
         ]
       }
     },
@@ -34,7 +52,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -42,7 +60,7 @@
           "Sabrina, the Gym Leader, can read minds, they say. I wouldn't want to battle her!"
         ],
         "text": [
-          ""
+          "Se zice că Sabrina, Liderul Arenei, poate citi gândurile. N-aș vrea să mă lupt cu ea!"
         ]
       }
     },
@@ -52,7 +70,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -60,25 +78,7 @@
           "The Fighting Dojo next to the Gym used to be the city's Gym, until Sabrina beat them."
         ],
         "text": [
-          ""
-        ]
-      }
-    },
-    "0": {
-      "name": {
-        "en": [
-          "Notice"
-        ],
-        "text": [
-          ""
-        ]
-      },
-      "dialog": {
-        "en": [
-          "A magazine on the seat, open at a page about Sabrina."
-        ],
-        "text": [
-          ""
+          "Dojoul de Luptă de lângă Arenă era Arena orașului, până când i-a învins Sabrina."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Notice"
         ],
         "text": [
-          ""
+          "Anunț"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "A magazine on the seat, open at a page about Sabrina."
         ],
         "text": [
-          ""
+          "O revistă pe scaun, deschisă la o pagină despre Sabrina."
         ]
       }
     }
