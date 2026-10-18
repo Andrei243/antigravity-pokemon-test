@@ -1,0 +1,78 @@
+{
+  "PayEntranceFee": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Oceanic Museum. The entrance fee is 50 Poké Dollars. Would you like to come in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you. Please enjoy the museum!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, but you don't have enough money."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, you're with that group that went upstairs? Go right in, then. Hurry, they're waiting!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FamiliarGrunt": [
+    {
+      "en": [
+        "Team Aqua Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aaah! It's you, the kid from the tunnel! Don't look at me like that. I'm just a visitor today!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, take this and forget you ever saw me. Please!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now leave me alone! I hope I never see you again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

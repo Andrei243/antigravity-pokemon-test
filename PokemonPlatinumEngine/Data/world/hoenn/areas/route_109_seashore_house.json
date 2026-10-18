@@ -1,0 +1,29 @@
+{
+  "key": "route_109_seashore_house",
+  "index": 498,
+  "name": "Route 109",
+  "matrix": 441,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_DEWFORD",
+  "nightMusic": "MUS_DEWFORD",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 9, "to": "route_109", "toWarp": 0 },
+    { "x": 7, "z": 9, "to": "route_109", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route109_SeashoreHouse_EventScript_Owner" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_south", "x": 2, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_DWAYNE" },
+    { "id": "tuber_m", "looks": "tuber_m", "movement": "look_west", "x": 14, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_SIMON" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_west_and_east", "x": 10, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_JOHANNA" }
+  ],
+  "signs": [],
+  "triggers": []
+}

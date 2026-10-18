@@ -293,5 +293,90 @@ partial class Harness
         ReadTo("I'll dig through to you"); Frames(10); Shot("hs48_wandas_young_man");
         ReadTo(null);
         Rustboro("the chapter");
+
+        // ---- Plan 21 · H3, part a: Mr. Briney's boat, Dewford, Granite Cave, Brawly and Slateport's museum
+        void Sea(string what) =>
+            Console.WriteLine($"  {what}: briney at {story.Var("VAR_BRINEY_LOCATION")}, letter delivered {story.Has("FLAG_DELIVERED_STEVEN_LETTER")}, "
+                + $"knuckle badge {story.HasBadge(RegionDatabase.Hoenn, "Knuckle")}, gym {story.Var("VAR_PETALBURG_GYM_STATE")}, dewford lights {DewfordLights.LevelFor(story)}, "
+                + $"dock {story.Has("FLAG_DOCK_REJECTED_DEVON_GOODS")}, goods delivered {story.Has("FLAG_DELIVERED_DEVON_GOODS")}, "
+                + $"museum outside {story.Var("VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE")}, numbers {string.Join(", ", PokeNav.Contacts(story).Select(c => c.Name))}, "
+                + $"on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY}), bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+        void Pick(string option)
+        {
+            Until(() => engine.Choice.IsOpen, "the question's answers");
+            Frames(10);
+            int at = engine.Choice.Options.ToList().FindIndex(o => o.Contains(option, StringComparison.Ordinal));
+            for (int i = engine.Choice.Cursor; i < at; i++) { engine.Choice.Move(1); Frames(2); }
+            engine.Choice.Confirm();
+            Frames(4);
+        }
+
+        TalkTo("Route104_MrBrineysHouse", "brineys_house_briney");
+        ReadTo("You saved my darling Peeko"); Frames(10); Shot("hs49_briney_at_home");
+        ReadTo("Anchors aweigh"); Frames(10);
+        Box().Advance();
+        Skip(4.0); Shot("hs50_at_sea");
+        Skip(3.0); Shot("hs51_at_sea_nearing_dewford");
+        ReadTo("Here we are, Dewford Town"); Frames(10); Shot("hs52_landed_in_dewford");
+        ReadTo(null);
+        Sea("in Dewford");
+
+        TalkTo("GraniteCave_1F", "hiker");
+        ReadTo("Take this!"); Frames(10); Shot("hs53_the_hiker_and_flash");
+        ReadTo(null);
+        TalkTo("GraniteCave_StevensRoom", "granite_cave_steven");
+        ReadTo("A letter for me?"); Frames(10); Shot("hs54_steven");
+        ReadTo("hurry along"); Frames(10); Shot("hs55_steven_leaving");
+        ReadTo(null);
+        Sea("the letter delivered");
+
+        ComeThrough("DewfordTown_Gym", 5, 25, Direction.Up);
+        Frames(30); Shot("hs56_the_dark_gym");
+        story.Defeat("hoenn_takao");
+        story.Defeat("hoenn_jocelyn");
+        story.Defeat("hoenn_laura");
+        Frames(60); Shot("hs57_the_gym_lighter");
+        TalkTo("DewfordTown_Gym", "brawly");
+        ReadTo("I'm Brawly"); Frames(10); Shot("hs58_brawly");
+        IntoBattle("Brawly's battle");
+        ToMainMenu(game.Battle); Shot("hs59_brawlys_battle");
+        Win();
+        ReadTo("received the Knuckle Badge"); Frames(10); Shot("hs60_the_knuckle_badge");
+        ReadTo(null);
+        Frames(30); Shot("hs61_the_gym_lit");
+        Sea("the Knuckle Badge");
+
+        TalkTo("Hoenn", "dewford_briney", dx: -1, dy: 0);
+        Pick("Slateport");
+        ReadTo("Hoist the sails"); Frames(10);
+        Box().Advance();
+        Skip(6.0); Shot("hs62_at_sea_to_slateport");
+        ReadTo("Land ho!"); Frames(10); Shot("hs63_landed_on_route_109");
+        ReadTo(null);
+        Sea("on Route 109's beach");
+
+        At("Hoenn", 219, 283, Direction.Up); game.EnterArea(); Frames(20);
+        Shot("hs64_aqua_at_the_museum");
+        TalkTo("SlateportCity_SternsShipyard_1F", "dock");
+        ReadTo("He went over to the Oceanic Museum"); Frames(10); Shot("hs65_dock");
+        ReadTo(null);
+        StepOnto("SlateportCity_OceanicMuseum_1F", 9, 7, Direction.Up);
+        ReadTo("Would you like to come in?"); Frames(10); Shot("hs66_the_museums_fee");
+        ReadTo(null);
+        TalkTo("SlateportCity_OceanicMuseum_2F", "oceanic_museum_2f_capt_stern", dx: -1, dy: 0);
+        ReadTo("you've brought the parts from Devon"); Frames(10); Shot("hs67_captain_stern");
+        ReadTo("Those parts are coming with us!"); Frames(10); Shot("hs68_the_grunts_come_up");
+        IntoBattle("the first grunt's battle");
+        ToMainMenu(game.Battle); Shot("hs69_the_museum_battle");
+        Win();
+        ReadTo("I'm Archie"); Frames(10); Shot("hs70_archie");
+        ReadTo("You've saved us"); Frames(10); Shot("hs71_sterns_thanks");
+        ReadTo(null);
+        Sea("the goods delivered");
+
+        ComeThrough("Hoenn", 230, 287, Direction.Down);
+        ReadTo("The whole city's talking about it"); Frames(10); Shot("hs72_scott");
+        ReadTo(null);
+        Sea("the chapter");
     }
 }

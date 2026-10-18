@@ -1,0 +1,28 @@
+# Captain Stern's shipyard (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/SlateportCity_SternsShipyard_1F/scripts.inc).
+#
+# Dock, the foreman, is puzzling over the submarine's plans. Shown the Devon Goods, he sends the player on to the
+# Oceanic Museum, where the captain has gone (FLAG_DOCK_REJECTED_DEVON_GOODS); and Team Aqua, who were queuing at the
+# museum's door, go inside (FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA). Once the goods are delivered he waits for a veteran
+# sailor's advice, which is a later chapter's.
+
+
+script Dock
+  speaker "Dock"
+  if flag FLAG_DELIVERED_DEVON_GOODS goto Veteran
+  if flag FLAG_DOCK_REJECTED_DEVON_GOODS goto FindStern
+  say "Hmm... If we put the engine here, the hull bends there... I can't make heads or tails of these plans."
+  face self player
+  say "Oh, sorry! I'm Dock, Captain Stern's foreman. Parts from Devon? For the captain?"
+  say "He's not here. He went over to the Oceanic Museum. Could you take them to him there?"
+  setflag FLAG_DOCK_REJECTED_DEVON_GOODS
+  setflag FLAG_HIDE_SLATEPORT_CITY_TEAM_AQUA
+  end
+label FindStern
+  face self player
+  say "The captain's at the Oceanic Museum, just up the road. Please get those parts to him!"
+  end
+label Veteran
+  face self player
+  say "Thanks to those parts, the submarine's coming along. But I could use the advice of an old sea hand."
+  end

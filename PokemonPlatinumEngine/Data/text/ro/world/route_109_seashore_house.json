@@ -1,0 +1,93 @@
+{
+  "people": {
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Owner"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Dwayne"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Dwayne: I came in for a cold drink. A battle'll do just as well!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Dwayne: Now I really need that drink."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m": {
+      "name": {
+        "en": [
+          "Simon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Simon: My Azurill and Marill are the best of friends. And the best battlers!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Simon: Best of friends, at least."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Johanna"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Johanna: The sea breeze is lovely here. Shall we battle in it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Johanna: The breeze has turned against me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

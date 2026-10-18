@@ -1,0 +1,480 @@
+{
+  "people": {
+    "route109_briney": {
+      "name": {
+        "en": [
+          "Mr. Briney"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "David"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer David: The beach is for kids. Real swimmers battle out here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer David: Maybe I'll go back to the beach."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Alice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Alice: I swim here every summer. Every summer, I win!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Alice: Not this summer, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Huey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Huey: My shore leave's almost over. One quick battle before I sail!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Huey: Back to the ship with my tail between my legs."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor_2": {
+      "name": {
+        "en": [
+          "Edmond"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Edmond: I've sailed all seven seas. Well, three of them. Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Edmond: Make that three seas and one loss."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m": {
+      "name": {
+        "en": [
+          "Ricky"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Ricky: I can't swim yet, but I can battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Ricky: I'll learn to swim AND battle. Just wait!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_f": {
+      "name": {
+        "en": [
+          "Lola"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Lola: My Azurill and me are floating all day! Wanna play?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Lola: That wasn't the game I wanted to play..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_f_2": {
+      "name": {
+        "en": [
+          "Gwen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Gwen: Splash! I'm out here where it's deep. Brave, huh?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Gwen: Brave, but beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_f_3": {
+      "name": {
+        "en": [
+          "Austina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Austina: My Marill and I swim together everywhere!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Austina: Marill, let's paddle home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Carter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Carter: Hooked a trainer! Let's reel in a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Carter: The one that got away..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Mel & Paul"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Mel & Paul: We came here on our honeymoon. Let's battle together, dear!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Mel & Paul: We lost together. That's love, I suppose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Mel & Paul"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Mel & Paul: Two hearts, one team! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Mel & Paul: At least we have each other."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_f_5": {
+      "name": {
+        "en": [
+          "Hailey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Hailey: I'm building a sandcastle! Battle me while it dries!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Hailey: My castle is still better than yours."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m_3": {
+      "name": {
+        "en": [
+          "Chandler"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Chandler: Two Tentacool! I found them in the shallows!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Chandler: Put them back where you found them, Mum says."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Elijah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Elijah: My Skarmory soar over the waves. Look up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Elijah: Grounded."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That's my papa's Seashore House! Go inside and cool off. Everybody does!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_f_4": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The little ones dart all over the beach. I can't take my eyes off them for a moment!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Zigzagoon picks up the litter folk leave on the sand. A clean beach for everyone!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "zigzagoon_2": {
+      "name": {
+        "en": [
+          "Zigzagoon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route109_EventScript_SeashoreHouseSign": {
+      "en": [
+        "Seashore House\nMay the sea's power fill you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route109_EventScript_TrainerTipsSign": {
+      "en": [
+        "Trainer Tips\nKids on the beach can be trainers too. Watch where you walk!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

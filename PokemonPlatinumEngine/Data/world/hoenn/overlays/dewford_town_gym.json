@@ -1,0 +1,22 @@
+{
+  // Dewford Town's Gym (plan 21 · H3), Brawly's dark hall of fighting: the hall starts dark and grows lighter with
+  // every trainer beaten (Overworld/DewfordLights.cs), until Brawly's defeat lights it. Brawly and the guide are
+  // dewford_town_gym.txt's
+  "area": "dewford_town_gym",
+  "bgmTrack": "hoenn/gym",
+  "arenaType": "Fighting",
+  "people": {
+    "brawly": { "name": "Brawly", "npcType": "brawly", "script": "Brawly", "still": true },
+    "man_2": { "name": "Gym Guide", "script": "GymGuide" },
+    "black_belt": { "name": "Takao", "trainer": { "dialogueBefore": "Black Belt Takao: Can you even see me in the dark? My fists can see you!", "dialogueAfter": "Black Belt Takao: The light's a little brighter now. For you." } },
+    "girl_3": { "name": "Jocelyn", "trainer": { "dialogueBefore": "Battle Girl Jocelyn: No need to see. Just feel the punch coming!", "dialogueAfter": "Battle Girl Jocelyn: I felt that one coming. Too late." } },
+    "girl_3_2": { "name": "Laura", "trainer": { "dialogueBefore": "Battle Girl Laura: Don't be scared of the dark. Be scared of me!", "dialogueAfter": "Battle Girl Laura: Now I'm the one who's scared." } },
+    "black_belt_2": { "name": "Cristian", "trainer": { "dialogueBefore": "Black Belt Cristian: Brawly trains us in the dark to sharpen our senses. Hyah!", "dialogueAfter": "Black Belt Cristian: My senses were too dull." } },
+    "girl_3_3": { "name": "Lilith", "trainer": { "dialogueBefore": "Battle Girl Lilith: You found me! Now let's see if you can beat me.", "dialogueAfter": "Battle Girl Lilith: Go on, the Leader's waiting. The way's lighter now." } },
+    "sailor": { "name": "Brenden", "trainer": { "dialogueBefore": "Sailor Brenden: I sailed here to train under Brawly. Show me what you've got!", "dialogueAfter": "Sailor Brenden: I've still got a lot of training to do." } }
+  },
+  "signs": {
+    "DewfordTown_Gym_EventScript_LeftGymStatue": "Dewford Town Pokémon Gym\nLeader: Brawly",
+    "DewfordTown_Gym_EventScript_RightGymStatue": "Dewford Town Pokémon Gym\nLeader: Brawly"
+  }
+}

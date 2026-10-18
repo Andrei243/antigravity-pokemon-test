@@ -1,0 +1,9 @@
+{
+  // A house in Slateport City (plan 21 · H3)
+  "area": "slateport_city_house",
+  "bgmTrack": "hoenn/slateport",
+  "people": {
+    "pokefan_m": { "name": "Man", "dialog": [ "Every morning I watch the ships come into the harbour. It never gets old." ] },
+    "girl_3": { "name": "Girl", "dialog": [ "There's a Pokémon contest in a city far to the north-east. One day I'll enter!" ] }
+  }
+}

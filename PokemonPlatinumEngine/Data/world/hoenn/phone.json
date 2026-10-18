@@ -16,5 +16,37 @@
     "type": 11,
     "class": "Pokémon Trainer",
     "area": "rustboro_city"
+  },
+  {
+    "id": "steven",
+    "type": 2,
+    "class": "Pokémon Trainer",
+    "area": "granite_cave_stevens_room"
+  },
+  {
+    "id": "brawly",
+    "type": 12,
+    "class": "Leader",
+    "area": "dewford_town_gym"
+  },
+  {
+    "id": "scott",
+    "type": 2,
+    "class": "Pokémon Trainer",
+    "area": "slateport_city"
+  },
+  {
+    "id": "hoenn_ricky",
+    "type": 0,
+    "class": "Tuber",
+    "trainer": "hoenn_ricky_1",
+    "area": "route_109"
+  },
+  {
+    "id": "hoenn_lola",
+    "type": 0,
+    "class": "Tuber",
+    "trainer": "hoenn_lola_1",
+    "area": "route_109"
   }
 ]

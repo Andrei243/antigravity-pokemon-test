@@ -1,0 +1,22 @@
+{
+  // Dewford Hall (plan 21 · H3): the island's meeting place, where everyone talks about whatever is popular this week,
+  // and a man who hands out TM36 (dewford_town_hall.txt). Emerald keeps him off the floor by a flag of its new game;
+  // ours stands there from the start
+  "area": "dewford_town_hall",
+  "bgmTrack": "hoenn/dewford",
+  "people": {
+    "girl_2": { "name": "Girl", "dialog": [ "Everyone in Dewford talks about whatever's trendy. This week it's all about fishing!" ] },
+    "woman_2": { "name": "Woman", "dialog": [ "I come here for the latest gossip. Did you hear about the old sailor and his boat?" ] },
+    "man_1": { "name": "Man", "dialog": [ "Words go out of fashion faster than clothes around here." ] },
+    "dewford_hall_expert_m": { "name": "Old Man", "dialog": [ "When I was young, the trendy word was 'excellent'. Now nobody says it. Excellent!" ] },
+    "dewford_hall_twin": { "name": "Little Girl", "dialog": [ "I made up a new word today, but nobody's using it yet." ] },
+    "little_boy": { "name": "Little Boy", "dialog": [ "I'm gonna be the trendiest kid on the whole island!" ] },
+    "dewford_hall_school_kid_m": { "name": "Boy", "dialog": [ "We're arguing about which word is cooler. He's wrong, obviously." ] },
+    "dewford_hall_psychic_m": { "name": "Boy", "dialog": [ "He's the one who's wrong. My word is way cooler." ] },
+    "maniac": { "name": "Man", "script": "SludgeBombMan", "hiddenBy": "" }
+  },
+  "signs": {
+    "DewfordTown_Hall_EventScript_Bookshelf": "A shelf of magazines full of the latest trends. Most of them look out of date already.",
+    "DewfordTown_Hall_EventScript_Painting": "A painting of Dewford Town's harbour at sunset."
+  }
+}

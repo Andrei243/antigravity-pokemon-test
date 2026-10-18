@@ -1,0 +1,16 @@
+# Dewford Hall (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/DewfordTown_Hall/scripts.inc): the man who hands out TM36, Sludge Bomb (FLAG_RECEIVED_TM_SLUDGE_BOMB).
+
+
+script SludgeBombMan
+  face self player
+  speaker "Man"
+  if flag FLAG_RECEIVED_TM_SLUDGE_BOMB goto Given
+  say "Everyone here only cares about what's trendy. But a good move never goes out of fashion!"
+  give "TM36"
+  setflag FLAG_RECEIVED_TM_SLUDGE_BOMB
+  say "That's Sludge Bomb. It hurls filthy sludge, and it might poison the target too."
+  end
+label Given
+  say "Sludge Bomb was popular before any of these youngsters were born. And it still works!"
+  end

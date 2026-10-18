@@ -1,0 +1,37 @@
+{
+  "key": "dewford_town_hall",
+  "index": 71,
+  "name": "Dewford Town",
+  "matrix": 20,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_DEWFORD",
+  "nightMusic": "MUS_DEWFORD",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "dewford_town", "toWarp": 0 },
+    { "x": 6, "z": 8, "to": "dewford_town", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "girl_2", "looks": "girl_2", "movement": "look_north", "x": 4, "z": 6, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_Hall_EventScript_Girl" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_east", "x": 1, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_Hall_EventScript_Woman" },
+    { "id": "man_1", "looks": "man_1", "movement": "look_west", "x": 5, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_Hall_EventScript_Man" },
+    { "id": "dewford_hall_expert_m", "looks": "expert_m", "movement": "look_north", "x": 9, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_Hall_EventScript_ExpertM" },
+    { "id": "dewford_hall_twin", "looks": "twin", "movement": "look_north", "x": 5, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_Hall_EventScript_Twin" },
+    { "id": "little_boy", "looks": "little_boy", "movement": "wander_west_and_east", "x": 14, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "DewfordTown_Hall_EventScript_LittleBoy" },
+    { "id": "dewford_hall_school_kid_m", "looks": "school_kid_m", "movement": "look_east", "x": 12, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_Hall_EventScript_SchoolKidM" },
+    { "id": "dewford_hall_psychic_m", "looks": "psychic_m", "movement": "look_west", "x": 15, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_Hall_EventScript_PsychicM" },
+    { "id": "maniac", "looks": "maniac", "movement": "wander_west_and_east", "x": 8, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_DEWFORD_HALL_SLUDGE_BOMB_MAN", "script": "DewfordTown_Hall_EventScript_SludgeBombMan" }
+  ],
+  "signs": [
+    { "x": 0, "z": 1, "type": 0, "script": "DewfordTown_Hall_EventScript_Bookshelf" },
+    { "x": 7, "z": 1, "type": 0, "script": "DewfordTown_Hall_EventScript_Painting" }
+  ],
+  "triggers": []
+}

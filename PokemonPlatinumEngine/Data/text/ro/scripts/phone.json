@@ -314,5 +314,103 @@
         ""
       ]
     }
+  ],
+  "Steven": [
+    {
+      "en": [
+        "Steven"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}. I'm still out looking for rare stones. Hoenn hides a great many under its mountains."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take good care of your Pokémon. A strong bond is worth more than any stone."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Brawly": [
+    {
+      "en": [
+        "Brawly"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yo, {player}! The waves were huge today. I wiped out three times, but that's how you learn!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Scott": [
+    {
+      "en": [
+        "Scott"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi, {player}! I've been watching the trainers all over Hoenn. You're the one people are talking about!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennRicky": [
+    {
+      "en": [
+        "Ricky"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Ricky! I put my face in the water today. Next I'm gonna kick my legs!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennLola": [
+    {
+      "en": [
+        "Lola"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi! It's Lola! Azurill and me floated all the way to the rocks and back!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

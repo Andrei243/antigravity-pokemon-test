@@ -1,0 +1,38 @@
+{
+  // The Oceanic Museum's ground floor (plan 21 · H3): fifty Poké Dollars at the counter, exhibits of the sea, and Team
+  // Aqua's grunts among them while the captain is upstairs; the grunt from Rusturf Tunnel who remembers the player
+  // gives TM46 (slateport_city_oceanic_museum_1f.txt). The visitors come back once Team Aqua has gone
+  "area": "slateport_city_oceanic_museum_1f",
+  "bgmTrack": "hoenn/slateport",
+  "triggers": [
+    { "trigger": 0, "script": "PayEntranceFee" },
+    { "trigger": 1, "script": "PayEntranceFee" }
+  ],
+  "people": {
+    "beauty": { "name": "Receptionist", "dialog": [ "Welcome to the Oceanic Museum! Please pay at the counter as you come in." ] },
+    "beauty_2": { "name": "Receptionist", "dialog": [ "Welcome to the Oceanic Museum! Please pay at the counter as you come in." ] },
+    "aqua_member_m": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "This museum's full of things about the sea. The boss would love it all." ] },
+    "aqua_member_m_2": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "Don't mind me. Just admiring the soil samples. Totally normal." ] },
+    "aqua_member_m_3": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "We're waiting for something to be delivered upstairs. I mean... we're looking at exhibits." ] },
+    "aqua_member_f": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "The sea gives life to everything. People should give it more room!" ] },
+    "aqua_member_m_4": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "I paid fifty to get in here. Fifty! For rocks and water." ] },
+    "aqua_member_m_5": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "If you're going upstairs, don't get in our way." ] },
+    "oceanic_museum_familiar_grunt": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "script": "FamiliarGrunt" },
+    "woman_5": { "name": "Woman", "dialog": [ "The sea covers most of the world. And we've hardly seen any of it!" ] },
+    "maniac": { "name": "Man", "dialog": [ "Sand from the beach and soil from the sea floor, side by side. Fascinating!" ] },
+    "pokefan_m": { "name": "Man", "dialog": [ "That machine measures how deep the sea is. Deeper than you'd think!" ] },
+    "little_girl": { "name": "Little Girl", "dialog": [ "Where do the waves come from? Nobody here will tell me!" ] },
+    "reporter_m": { "name": "Reporter", "dialog": [ "I'm here to write about the museum. Those blue-clad visitors were awfully rude!" ] }
+  },
+  "signs": {
+    "SlateportCity_OceanicMuseum_1F_EventScript_WhirlpoolExperiment": "A whirlpool in a glass tank. Water swirls round and round, faster at the middle.",
+    "SlateportCity_OceanicMuseum_1F_EventScript_WaterfallExperiment": "A little waterfall pours into a basin. Its splash is what makes the bubbles.",
+    "SlateportCity_OceanicMuseum_1F_EventScript_OceanSoilDisplay": "Soil from the bottom of the sea. Fine and grey, full of tiny shells.",
+    "SlateportCity_OceanicMuseum_1F_EventScript_BeachSandDisplay": "Sand from Hoenn's beaches. Each grain was once a rock, worn down by the waves.",
+    "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact1": "Sea water is salty because rivers carry salt from the rocks into the sea, and it stays there.",
+    "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact2": "The deeper you go, the colder and darker the sea becomes.",
+    "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact3": "Some Pokémon live so deep that they make their own light.",
+    "SlateportCity_OceanicMuseum_1F_EventScript_FossilDisplay": "Fossils of Pokémon that lived in ancient seas, found under the rock.",
+    "SlateportCity_OceanicMuseum_1F_EventScript_DepthMeasuringMachine": "A machine that measures the sea's depth by sending down a sound and timing its echo."
+  }
+}

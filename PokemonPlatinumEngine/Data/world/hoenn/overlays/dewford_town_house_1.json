@@ -1,0 +1,10 @@
+{
+  // A house in Dewford Town (plan 21 · H3)
+  "area": "dewford_town_house_1",
+  "bgmTrack": "hoenn/dewford",
+  "people": {
+    "woman_3": { "name": "Woman", "dialog": [ "My husband and I moved here from the big city. The quiet took some getting used to." ] },
+    "man_1": { "name": "Man", "dialog": [ "Life on an island is simple. Fish, sun and sea. What more could anyone want?" ] },
+    "zigzagoon_2": { "name": "Zigzagoon", "script": "Zigzagoon" }
+  }
+}

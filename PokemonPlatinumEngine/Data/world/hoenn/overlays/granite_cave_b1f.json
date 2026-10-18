@@ -1,0 +1,6 @@
+{
+  // Granite Cave's first floor down (plan 21 · H3): dark until Flash. Its cracked floor, which only the Mach Bike crosses
+  // (plan 21 · H3's second part), lets anyone else fall through to the floor below
+  "area": "granite_cave_b1f",
+  "bgmTrack": "hoenn/petalburg_woods"
+}

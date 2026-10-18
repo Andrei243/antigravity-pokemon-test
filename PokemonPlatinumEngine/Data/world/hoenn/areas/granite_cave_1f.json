@@ -1,0 +1,45 @@
+{
+  "key": "granite_cave_1f",
+  "index": 245,
+  "name": "Granite Cave",
+  "matrix": 194,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "encounters": "granite_cave_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 7 },
+    { "species": "Makuhita", "level": 8 },
+    { "species": "Makuhita", "level": 7 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Makuhita", "level": 9 },
+    { "species": "Abra", "level": 8 },
+    { "species": "Makuhita", "level": 10 },
+    { "species": "Makuhita", "level": 6 },
+    { "species": "Geodude", "level": 7 },
+    { "species": "Geodude", "level": 8 },
+    { "species": "Geodude", "level": 6 },
+    { "species": "Geodude", "level": 9 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 37, "z": 12, "to": "route_106", "toWarp": 0 },
+    { "x": 35, "z": 3, "to": "granite_cave_b1f", "toWarp": 0 },
+    { "x": 17, "z": 11, "to": "granite_cave_b1f", "toWarp": 1 },
+    { "x": 5, "z": 10, "to": "granite_cave_stevens_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "hiker", "looks": "hiker", "movement": "look_around", "x": 36, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "GraniteCave_1F_EventScript_Hiker" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 17, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_GRANITE_CAVE_1F_ESCAPE_ROPE", "item": "Escape Rope", "script": "GraniteCave_1F_EventScript_ItemEscapeRope" }
+  ],
+  "signs": [],
+  "triggers": []
+}

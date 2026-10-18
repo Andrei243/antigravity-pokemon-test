@@ -1,0 +1,7 @@
+# A house in Dewford Town (plan 21 · H3): its Zigzagoon. The lines are our own.
+
+
+script Zigzagoon
+  cry "Zigzagoon"
+  text "Zigzagoon: Guguu!"
+  end

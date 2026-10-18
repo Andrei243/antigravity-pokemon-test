@@ -1,0 +1,187 @@
+{
+  "people": {
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Darrin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Darrin: Round and round, keeping an eye on everything. Spotted you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Darrin: I should have looked the other way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_2": {
+      "name": {
+        "en": [
+          "Tony"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Tony: My Carvanha bites anything that swims near. Even you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Tony: It bit off more than it could chew."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Denise"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Denise: The sea is my battlefield. Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Denise: The sea wasn't on my side today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_2": {
+      "name": {
+        "en": [
+          "Beth"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Beth: My Goldeen is the queen of these waters. Bow down!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Beth: Dethroned..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_3": {
+      "name": {
+        "en": [
+          "Lisa & Ray"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sis and Bro Lisa & Ray: My little brother and I always battle together!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sis and Bro Lisa & Ray: Ray, stop crying. We'll train harder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m_swimming": {
+      "name": {
+        "en": [
+          "Lisa & Ray"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sis and Bro Lisa & Ray: Me and my big sister! We're gonna win!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sis and Bro Lisa & Ray: Waaah! We lost!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_3": {
+      "name": {
+        "en": [
+          "Camron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Camron: Swim, cycle, run, battle! I train at all four."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Camron: I'll have to train at losing less."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

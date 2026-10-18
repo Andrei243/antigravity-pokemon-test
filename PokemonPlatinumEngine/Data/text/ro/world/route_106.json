@@ -1,0 +1,118 @@
+{
+  "people": {
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Douglas"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Douglas: Two Tentacool, twice the stings! Come on in!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Douglas: Ouch. Stung by my own pride."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Kyla"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kyla: My Wailmer gives the best rides. Shall we battle first?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kyla: Wailmer, let's float home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Elliot"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Elliot: You scared off my bite! Now you owe me a battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Elliot: I should have stuck to fishing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman_2": {
+      "name": {
+        "en": [
+          "Ned"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Ned: I've caught nothing all day. Maybe I'll catch a win instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Ned: Nothing all day, and now this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route106_EventScript_TrainerTipsSign": {
+      "en": [
+        "Trainer Tips\nA Pokémon that is asleep or frozen can't run away. That's the time to throw a Poké Ball!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

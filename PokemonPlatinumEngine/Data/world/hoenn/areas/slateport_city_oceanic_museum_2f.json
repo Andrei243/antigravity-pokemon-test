@@ -1,0 +1,53 @@
+{
+  "key": "slateport_city_oceanic_museum_2f",
+  "index": 119,
+  "name": "Slateport City",
+  "matrix": 68,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_OCEANIC_MUSEUM",
+  "nightMusic": "MUS_OCEANIC_MUSEUM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 1, "to": "slateport_city_oceanic_museum_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "oceanic_museum_2f_capt_stern", "looks": "scientist_1", "movement": "look_south", "x": 13, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN", "script": "SlateportCity_OceanicMuseum_2F_EventScript_CaptStern" },
+    { "id": "oceanic_museum_2f_archie", "looks": "archie", "movement": "look_south", "x": 6, "z": 1, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE", "script": "" },
+    { "id": "oceanic_museum_2f_grunt_1", "looks": "aqua_member_m", "movement": "look_south", "x": 6, "z": 1, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1", "script": "" },
+    { "id": "oceanic_museum_2f_grunt_2", "looks": "aqua_member_m", "movement": "look_south", "x": 6, "z": 1, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2", "script": "" },
+    { "id": "old_man", "looks": "old_man", "movement": "look_east", "x": 12, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION", "script": "SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron1" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_around", "x": 9, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION", "script": "SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron2" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION", "script": "SlateportCity_OceanicMuseum_2F_EventScript_MuseumPatron3" }
+  ],
+  "signs": [
+    { "x": 18, "z": 4, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1" },
+    { "x": 18, "z": 7, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample2" },
+    { "x": 4, "z": 3, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SubmersibleReplica" },
+    { "x": 4, "z": 4, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SubmersibleReplica" },
+    { "x": 3, "z": 3, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SubmarineReplica" },
+    { "x": 2, "z": 3, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SubmarineReplica" },
+    { "x": 3, "z": 4, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SubmarineReplica" },
+    { "x": 3, "z": 6, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SSTidalReplica" },
+    { "x": 4, "z": 6, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SSTidalReplica" },
+    { "x": 13, "z": 7, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SSAnneReplica" },
+    { "x": 14, "z": 7, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SSAnneReplica" },
+    { "x": 18, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SurfaceSeawaterDisplay" },
+    { "x": 19, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SurfaceSeawaterDisplay" },
+    { "x": 15, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_DeepSeawaterDisplay" },
+    { "x": 16, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_DeepSeawaterDisplay" },
+    { "x": 8, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_HoennModel" },
+    { "x": 9, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_HoennModel" },
+    { "x": 12, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_PressureExperiment" },
+    { "x": 13, "z": 1, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_PressureExperiment" },
+    { "x": 3, "z": 7, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SSTidalReplica" },
+    { "x": 4, "z": 7, "type": 0, "script": "SlateportCity_OceanicMuseum_2F_EventScript_SSTidalReplica" }
+  ],
+  "triggers": []
+}

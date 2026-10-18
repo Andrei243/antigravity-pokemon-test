@@ -1,0 +1,75 @@
+# The Oceanic Museum's upper floor (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SlateportCity_OceanicMuseum_2F/scripts.inc).
+#
+# Captain Stern is glad of Devon's parts, but two of Team Aqua's grunts come up the stairs for them and battle the
+# player one after the other; Archie, their leader, comes to see what is keeping them, warns the player off and takes
+# them away. The captain takes the Devon Goods (FLAG_DELIVERED_DEVON_GOODS), sees to the team and hurries off to his
+# shipyard. Team Aqua is gone from the museum for good (FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS), its
+# visitors come back (FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION), the Devon employee waits on Route 116 with a thank-you
+# (route_116.txt), and Scott waits outside (VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE 1, slateport_city.txt).
+
+
+script CaptStern
+  face self player
+  speaker "Captain Stern"
+  if not item "Devon Goods" goto Waiting
+  scene "Team Aqua at the museum"
+  say "Yes? Oh, you've brought the parts from Devon! Splendid! Now we can finish building our submarine."
+  music "hoenn/eye_galactic"
+  place oceanic_museum_2f_grunt_1 6 2 down
+  show oceanic_museum_2f_grunt_1
+  walk oceanic_museum_2f_grunt_1 down 3 right 3
+  place oceanic_museum_2f_grunt_2 6 2 down
+  show oceanic_museum_2f_grunt_2
+  walk oceanic_museum_2f_grunt_2 down 4 right 4
+  face player oceanic_museum_2f_grunt_2
+  speaker "Team Aqua Grunt"
+  say "Hold it right there! Those parts are coming with us!"
+  speaker "Captain Stern"
+  say "What? Who on earth are you?"
+  speaker "Team Aqua Grunt"
+  say "We're Team Aqua! The boss wants those parts, and what the boss wants, the boss gets. Hand them over!"
+  battle oceanic_museum_2f_grunt_2 as "hoenn_grunt_museum_1"
+  say "Ugh! Beaten by a kid? The boss is going to be furious..."
+  face player oceanic_museum_2f_grunt_1
+  say "Out of the way, you. I'll take care of this pest myself!"
+  battle oceanic_museum_2f_grunt_1 as "hoenn_grunt_museum_2"
+  say "No way... We lost too? You meddling little..."
+  place oceanic_museum_2f_archie 6 2 down
+  show oceanic_museum_2f_archie
+  walk oceanic_museum_2f_archie down 2 right 2
+  face player oceanic_museum_2f_archie
+  speaker "Archie"
+  say "What's taking so long? I came to see why my grunts can't fetch a few simple parts."
+  say "So it's you. You've been getting in Team Aqua's way, haven't you? I'm Archie, the one who leads them."
+  say "We love the sea, kid. All life came from it, and we mean to give it room to grow. Stay out of our business."
+  say "This time we'll go quietly. But stand in our way again, and you won't be let off so lightly."
+  fade out
+  hide oceanic_museum_2f_archie
+  hide oceanic_museum_2f_grunt_1
+  hide oceanic_museum_2f_grunt_2
+  setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_AQUA_GRUNTS
+  setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_FAMILIAR_AQUA_GRUNT
+  music area
+  fade in
+  face player oceanic_museum_2f_capt_stern
+  speaker "Captain Stern"
+  say "Thank you! If you hadn't been here, they'd have walked off with everything. You've saved us."
+  take "Devon Goods"
+  text "{player} handed over the Devon Goods."
+  say "I'd better get these back to the shipyard before anyone else comes for them. But first, let me see to your team."
+  fade out
+  heal
+  hide oceanic_museum_2f_capt_stern
+  setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_CAPTAIN_STERN
+  setflag FLAG_DELIVERED_DEVON_GOODS
+  clearflag FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
+  setflag FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_EMPLOYEE
+  clearflag FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
+  setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE 1
+  fade in
+  endscene
+  end
+label Waiting
+  say "I'm Stern, the captain of the shipyard. I'm waiting for some parts from Devon. They should be here by now..."
+  end

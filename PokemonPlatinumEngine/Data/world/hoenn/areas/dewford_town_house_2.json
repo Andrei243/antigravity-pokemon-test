@@ -1,0 +1,27 @@
+{
+  "key": "dewford_town_house_2",
+  "index": 72,
+  "name": "Dewford Town",
+  "matrix": 21,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_DEWFORD",
+  "nightMusic": "MUS_DEWFORD",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 8, "to": "dewford_town", "toWarp": 4 },
+    { "x": 4, "z": 8, "to": "dewford_town", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "man_3", "looks": "man_3", "movement": "look_east", "x": 6, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_House2_EventScript_Man" },
+    { "id": "boy_2", "looks": "boy_2", "movement": "look_around", "x": 2, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_House2_EventScript_Boy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

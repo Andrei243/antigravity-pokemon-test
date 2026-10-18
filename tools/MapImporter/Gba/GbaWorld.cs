@@ -426,6 +426,9 @@ public sealed class GbaWorld
             if (m.Furniture[i] is not { } prop) return null;
             // What hangs on the wall is on the wall's own blocked tiles
             if (prop is PropType.Window or PropType.Painting or PropType.Clock or PropType.WallEmblem) return m.Solid[i] ? prop : null;
+            // A museum's case blocks nothing by itself (Sinnoh's rooms block it by their own grid), but nobody walks
+            // onto one: it stands on the layout's blocked tiles (plan 21 · H3, the Oceanic Museum)
+            if (prop is PropType.DisplayCase) return m.Solid[i] ? prop : null;
             // A bed is one piece over the tiles FireRed blocks and those it lets the player climb onto (plan 19 · K3): the
             // map's own tiles still say which is which
             if (prop is PropType.Bed) return prop;

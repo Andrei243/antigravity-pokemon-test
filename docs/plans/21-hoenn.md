@@ -259,7 +259,39 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     Smash's rocks in Rusturf Tunnel and the young man's HM04, Verdanturf; Hoenn's trainers in Match Call and their
     rematches; Emerald's own berry rules (the Wailmer Pail waters nothing yet); cover rows of the tilesets not yet walked
     (`out/hoenn/report.md`); Walda's phrase; the Devon employee of Route 116 (shown once Steven has his letter).
-- [ ] H3 Dewford, Slateport and Mauville
+- [ ] H3 Dewford, Slateport and Mauville (part a done 2026-10-18, wave 32: Mr. Briney's boat to Slateport's museum)
+  - **Played**: Mr. Briney sails from his cottage to Dewford Town (a scene: the jetty, the sailing song, the camera over
+    the sea, Dewford's jetty), back again, and on to Route 109's beach once Steven has his letter, and back to Dewford
+    (`VAR_BRINEY_LOCATION`, Emerald's numbers); Dewford's fisherman and the Old Rod, the hall's word of the week and
+    TM36, the boy's Silk Scarf; Granite Cave's hiker and Flash (TM70, Platinum's number), Steven and the Letter, TM47 and
+    his number; Brawly's dark Gym, lighter for every trainer beaten (`Overworld/DewfordLights.cs`, Emerald's flash
+    levels), Brawly, the Knuckle Badge, TM08 and his number; Route 109's beach (Soft Sand, the Seashore House's six Soda
+    Pops), Slateport City (`Architecture.Wharf`; Dewford's `Islet`, style guide rows first), Team Aqua queuing at the
+    museum until Dock at the shipyard sends the player there, the museum's fee and the grunt's TM46, Captain Stern, the
+    two grunts' battles, Archie, the Devon Goods delivered (the Route 116 employee's Repeat Ball follows), Scott at the
+    door, the Energy Guru's vitamins. Every scene a `scene`. Story version 25 (`common.HoennChapterThree` hides the
+    stretch's people; `HoennNewGame` calls it). Rulings: "Mr. Briney's waters, Dewford and Slateport".
+  - **Opened**: Routes 105 to 109 (the sea routes' swimmers wait for Surf; the Island Cave and the Abandoned Ship stay
+    `locked`), Dewford Town and its six rooms, Granite Cave's four floors, the Seashore House, Slateport City and its
+    twelve rooms (the Battle Tent's lobby alone, the harbour's way out to the open water `locked`); 78 areas. Spawns for
+    Rustboro, Dewford and Slateport in `hoenn.json`; Dewford on the PokéNav's map.
+  - **Match Call**: Steven, Brawly and Scott by their scenes, and Route 109's tubers Ricky and Lola once beaten (their
+    calls in `phone.txt`); rematches still wait for Emerald's table of them, which the reader doesn't read.
+  - **Looks and music**: `brawly`, `steven`, `capt_stern`, `archie`, `scott` (rows of `characters.json`); songs
+    `dewford` (also the Seashore House), `slateport` (and its rooms), `sailing` (Mr. Briney's boat), ours, rendered
+    clash-free, −20.0 to −20.3 LUFS, not yet heard. Eye themes for Tuber M and F, Sis and Bro and the Triathlete.
+  - **The reader**: cover rows for Slateport's roads, squares and walls and Dewford's jetty and palms; furniture rows for
+    Devon's offices (the reception counter, the president's desk, the researchers' PCs and machines: no more dark blocks),
+    Stern's shipyard and the Oceanic Museum's cases and ship models (a case stands on the layout's blocked tiles). The
+    content check reads a tile's own area where a GBA chunk is shared (Dewford and Route 107).
+  - **Tests**: `HoennStoryTests` (the stretch three ways by look and starter, the Seashore House, an older save, the
+    songs); `HoennTests` (the region's maps, a museum door its queue stands on). Harness: the `hoenn` mode's `h33`–`h52`
+    and `hs49`–`hs72`.
+  - **Left for H3's second part**: Route 110 and the Trick House, the Cycling Road, Mauville City, Wattson and the Dynamo
+    Badge, Rydel's two bikes (`BikeKind`), Route 117, Verdanturf, the three Battle Tents' bouts, Rock Smash for Rusturf
+    Tunnel and the young man's HM04, the rival by Briney's cottage and on Route 110, New Mauville's door, the Game Corner;
+    `route110`, `verdanturf`, `trick_house`, `bicycle`. Still from H2: Emerald's berry rules (the Wailmer Pail waters
+    nothing yet), Walda's phrase, Hoenn's rematches.
 - [ ] H4 The desert, Mt. Chimney and Lavaridge
 - [ ] H5 Dive and the sea floor
 - [ ] H6 Route 118 to Fortree

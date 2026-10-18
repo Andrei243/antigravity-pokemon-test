@@ -1,0 +1,40 @@
+# Slateport's Pokémon Fan Club (plan 21 · H3). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/SlateportCity_PokemonFanClub/scripts.inc): the woman who gives a Soothe Bell to a trainer
+# whose lead Pokémon is very fond of them (a friendship of 200 or more, FLAG_RECEIVED_SOOTHE_BELL), and the members'
+# Pokémon.
+
+
+script SootheBellWoman
+  face self player
+  speaker "Woman"
+  if flag FLAG_RECEIVED_SOOTHE_BELL goto Given
+  if var LEAD_FRIENDSHIP >= 200 goto Fond
+  say "Your Pokémon could be a little closer to you. Spend time together, and it'll grow fond of you."
+  end
+label Fond
+  say "Oh, your Pokémon adores you! I can tell just by looking. You deserve this."
+  give "Soothe Bell"
+  setflag FLAG_RECEIVED_SOOTHE_BELL
+  say "A Pokémon that holds the Soothe Bell grows fond of its trainer even faster."
+  end
+label Given
+  say "Is the Soothe Bell ringing for your Pokémon? Its sound is so calming."
+  end
+
+
+script Zigzagoon
+  cry "Zigzagoon"
+  text "Zigzagoon: Gugugu!"
+  end
+
+
+script Skitty
+  cry "Skitty"
+  text "Skitty: Nyaa!"
+  end
+
+
+script Azumarill
+  cry "Azumarill"
+  text "Azumarill: Marimari!"
+  end

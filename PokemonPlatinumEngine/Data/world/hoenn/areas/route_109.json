@@ -1,0 +1,85 @@
+{
+  "key": "route_109",
+  "index": 13,
+  "name": "Route 109",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE104",
+  "nightMusic": "MUS_ROUTE104",
+  "encounters": "route_109",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 20, "maxLevel": 25 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 212, "z": 325, "to": "route_109_seashore_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "route109_boat", "looks": "mr_brineys_boat", "movement": "look_north", "x": 221, "z": 346, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_109_MR_BRINEY_BOAT", "script": "" },
+    { "id": "route109_briney", "looks": "expert_m", "movement": "look_north", "x": 221, "z": 344, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_109_MR_BRINEY", "script": "Route109_EventScript_MrBriney" },
+    { "id": "swimmer_m", "looks": "swimmer_m", "movement": "look_east", "x": 212, "z": 356, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_DAVID" },
+    { "id": "swimmer_f", "looks": "swimmer_f", "movement": "look_north_and_west", "x": 225, "z": 359, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 5, "script": "TRAINER_ALICE" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_south", "x": 215, "z": 337, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_HUEY" },
+    { "id": "sailor_2", "looks": "sailor", "movement": "look_west", "x": 224, "z": 333, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "script": "TRAINER_EDMOND" },
+    { "id": "tuber_m", "looks": "tuber_m", "movement": "look_south", "x": 219, "z": 330, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_RICKY_1" },
+    { "id": "tuber_f", "looks": "tuber_f", "movement": "walk_slowly_in_place_east", "x": 222, "z": 327, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_LOLA_1" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "look_south", "x": 211, "z": 326, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route109_EventScript_SeashoreHouseGirl" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 227, "z": 366, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_109_PP_UP", "item": "PP Up", "script": "Route109_EventScript_ItemPPUp" },
+    { "id": "tuber_f_2", "looks": "tuber_f", "movement": "look_south_and_north", "x": 229, "z": 352, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_GWEN" },
+    { "id": "tuber_f_3", "looks": "tuber_f", "movement": "look_south_and_west", "x": 228, "z": 351, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_AUSTINA" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_west", "x": 221, "z": 376, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_CARTER" },
+    { "id": "tuber_m_2", "looks": "tuber_m", "movement": "look_east", "x": 224, "z": 338, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "Route109_EventScript_SandCastleBoy" },
+    { "id": "tuber_f_4", "looks": "tuber_f", "movement": "look_west", "x": 225, "z": 338, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route109_EventScript_SoftSandGirl" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_south", "x": 230, "z": 352, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route109_EventScript_Woman" },
+    { "id": "woman_4", "looks": "woman_4", "movement": "look_south", "x": 208, "z": 361, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_MEL_AND_PAUL" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_south", "x": 209, "z": 361, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_MEL_AND_PAUL" },
+    { "id": "old_man", "looks": "old_man", "movement": "look_around", "x": 233, "z": 326, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route109_EventScript_OldMan" },
+    { "id": "zigzagoon_2", "looks": "zigzagoon_2", "movement": "look_around", "x": 232, "z": 326, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route109_EventScript_Zigzagoon" },
+    { "id": "tuber_f_5", "looks": "tuber_f", "movement": "walk_slowly_in_place_east", "x": 217, "z": 333, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_HAILEY" },
+    { "id": "tuber_m_3", "looks": "tuber_m", "movement": "walk_slowly_in_place_west", "x": 227, "z": 327, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_CHANDLER" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 225, "z": 326, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_109_POTION", "item": "Potion", "script": "Route109_EventScript_ItemPotion" },
+    { "id": "man_5", "looks": "man_5", "movement": "walk_slowly_in_place_east", "x": 217, "z": 376, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ELIJAH" }
+  ],
+  "signs": [
+    { "x": 215, "z": 325, "type": 0, "script": "Route109_EventScript_SeashoreHouseSign" },
+    { "x": 229, "z": 330, "type": 0, "script": "Route109_EventScript_TrainerTipsSign" },
+    { "x": 216, "z": 343, "type": 2, "script": "", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_REVIVE" },
+    { "x": 233, "z": 325, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_1" },
+    { "x": 209, "z": 330, "type": 2, "script": "", "item": "Great Ball", "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_GREAT_BALL" },
+    { "x": 228, "z": 340, "type": 2, "script": "", "item": "Ether", "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_ETHER" },
+    { "x": 213, "z": 336, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_2" },
+    { "x": 208, "z": 362, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_ROUTE_109_HEART_SCALE_3" }
+  ],
+  "triggers": []
+}

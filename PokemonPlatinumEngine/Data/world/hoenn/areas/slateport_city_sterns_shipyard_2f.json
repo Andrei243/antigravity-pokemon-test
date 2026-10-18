@@ -1,0 +1,27 @@
+{
+  "key": "slateport_city_sterns_shipyard_2f",
+  "index": 112,
+  "name": "Slateport City",
+  "matrix": 61,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SLATEPORT",
+  "nightMusic": "MUS_SLATEPORT",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 1, "to": "slateport_city_sterns_shipyard_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "scientist_1", "looks": "scientist_1", "movement": "look_north", "x": 10, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "scientist_1_2", "looks": "scientist_1", "movement": "look_east", "x": 8, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_SternsShipyard_2F_EventScript_Scientist1" },
+    { "id": "scientist_1_3", "looks": "scientist_1", "movement": "look_north", "x": 0, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_SternsShipyard_2F_EventScript_Scientist2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

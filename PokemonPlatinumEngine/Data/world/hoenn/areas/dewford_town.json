@@ -1,0 +1,67 @@
+{
+  "key": "dewford_town",
+  "index": 34,
+  "name": "Dewford Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_DEWFORD",
+  "nightMusic": "MUS_DEWFORD",
+  "encounters": "dewford_town",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 20, "maxLevel": 25 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 63, "z": 365, "to": "dewford_town_hall", "toWarp": 0 },
+    { "x": 62, "z": 372, "to": "dewford_town_pokemon_center_1f", "toWarp": 0 },
+    { "x": 68, "z": 379, "to": "dewford_town_gym", "toWarp": 0 },
+    { "x": 77, "z": 376, "to": "dewford_town_house_1", "toWarp": 0 },
+    { "x": 68, "z": 370, "to": "dewford_town_house_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "woman_2", "looks": "woman_2", "movement": "wander_west_and_east", "x": 67, "z": 374, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "DewfordTown_EventScript_Woman" },
+    { "id": "dewford_briney", "looks": "expert_m", "movement": "look_west", "x": 72, "z": 371, "facing": 2, "rangeX": 0, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN", "script": "DewfordTown_EventScript_Briney" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "wander_west_and_east", "x": 72, "z": 376, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "DewfordTown_EventScript_OldRodFisherman" },
+    { "id": "dewford_boat", "looks": "mr_brineys_boat", "movement": "look_south", "x": 72, "z": 370, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MR_BRINEY_BOAT_DEWFORD_TOWN", "script": "" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "look_around", "x": 61, "z": 368, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_EventScript_TrendyPhraseBoy" }
+  ],
+  "signs": [
+    { "x": 70, "z": 372, "type": 0, "script": "DewfordTown_EventScript_TownSign" },
+    { "x": 71, "z": 378, "type": 0, "script": "DewfordTown_EventScript_GymSign" },
+    { "x": 64, "z": 372, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 63, "z": 372, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 62, "z": 366, "type": 0, "script": "DewfordTown_EventScript_HallSign" }
+  ],
+  "triggers": []
+}

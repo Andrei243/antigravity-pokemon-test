@@ -1,0 +1,23 @@
+{
+  // Dewford Town (plan 21 · H3): a small island of fishermen and sand south of Route 104, reached on Mr. Briney's boat.
+  // Its Gym is Brawly's (dewford_town_gym.txt), its hall the place where the latest words are swapped, and Granite Cave
+  // lies past the beach of Route 106 to the west. Mr. Briney and his boat are at the jetty while he is here
+  // (dewford_town.txt)
+  "area": "dewford_town",
+  "bgmTrack": "hoenn/dewford",
+  "trees": "Round",
+  "architecture": "Islet",
+  "people": {
+    "woman_2": { "name": "Woman", "dialog": [ "Dewford's a tiny island, but everyone knows everyone. We look after each other here." ] },
+    "dewford_briney": { "name": "Mr. Briney", "npcType": "briney", "script": "Briney", "still": true },
+    "fisherman": { "name": "Fisherman", "script": "OldRodFisherman" },
+    "boy_1": { "name": "Boy", "script": "TrendyBoy" }
+  },
+  "signs": {
+    "DewfordTown_EventScript_TownSign": "Dewford Town\nA tiny island in the blue sea",
+    "DewfordTown_EventScript_GymSign": "Dewford Town Pokémon Gym\nLeader: Brawly\nA big wave in fighting!",
+    "DewfordTown_EventScript_HallSign": "Dewford Hall\nEveryone's information exchange!",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here."
+  },
+  "props": [ { "type": "Boat", "x": 73, "y": 371, "width": 3, "depth": 2 } ]
+}

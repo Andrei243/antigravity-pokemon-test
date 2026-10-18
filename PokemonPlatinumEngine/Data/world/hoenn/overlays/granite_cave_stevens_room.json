@@ -1,0 +1,9 @@
+{
+  // The room at the end of Granite Cave (plan 21 · H3), where Steven studies the stones and takes Mr. Stone's Letter
+  // (granite_cave_stevens_room.txt)
+  "area": "granite_cave_stevens_room",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "people": {
+    "granite_cave_steven": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true }
+  }
+}

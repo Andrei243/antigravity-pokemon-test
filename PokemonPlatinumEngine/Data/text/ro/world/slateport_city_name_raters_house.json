@@ -1,0 +1,23 @@
+{
+  "people": {
+    "expert_m": {
+      "name": {
+        "en": [
+          "Name Rater"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm the Name Rater! I judge the names trainers give their Pokémon. Come back once you've thought of a few."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,7 +1,8 @@
 {
   // Route 104 (plan 21 · H2, part b): the road north out of Petalburg City along the sea, in two halves with Petalburg
-  // Woods between them. Mr. Briney's cottage stands on the southern beach (his boat to Dewford is plan 21 · H3's) and the
-  // Pretty Petal flower shop on the northern half. The rival who waits by the cottage when not met in Rustboro is left to plan 21 · H3, with the boat
+  // Woods between them. Mr. Briney's cottage stands on the southern beach (his boat to Dewford sails from it since plan
+  // 21 · H3) and the Pretty Petal flower shop on the northern half. The rival who waits by the cottage when not met in
+  // Rustboro is still to come
   "area": "route_104",
   "bgmTrack": "hoenn/route104",
   "trees": "Round",
@@ -99,5 +100,8 @@
     "Route104_EventScript_RouteSignRustboro": "Route 104\nRustboro City to the north",
     "Route104_EventScript_FlowerShopSign": "Pretty Petal Flower Shop",
     "Route104_EventScript_TrainerTipsDoubleBattles": "Trainer Tips\nTwo trainers who see you together will battle you together. Bring at least two Pokémon!"
-  }
+  },
+  // Mr. Briney's boat at his own jetty below the cottage (plan 21 · H3: he sails it to Dewford Town from the cottage,
+  // route_104_mr_brineys_house.txt)
+  "props": [ { "type": "Boat", "x": 11, "y": 235, "width": 2, "depth": 3 } ]
 }

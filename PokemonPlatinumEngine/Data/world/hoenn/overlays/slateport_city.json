@@ -1,0 +1,58 @@
+{
+  // Slateport City (plan 21 · H3): Hoenn's port, with its market of stalls, Captain Stern's shipyard, the Oceanic Museum,
+  // the harbour and the Battle Tent. Team Aqua queues at the museum's door until the shipyard's dock has sent the
+  // player there (slateport_city_sterns_shipyard_1f.txt), and Scott meets the player outside once the museum's scene
+  // is played (slateport_city.txt). Route 110 north of the city is plan 21 · H3's second part
+  "area": "slateport_city",
+  "bgmTrack": "hoenn/slateport",
+  "trees": "Round",
+  "architecture": "Wharf",
+  // The harbour's way in from the open water, by the submarine's berth, is a surfer's: shut until then
+  "locked": [ 9 ],
+  "people": {
+    "slateport_fat_man": { "name": "Man", "dialog": [ "Slateport's market has everything! I came for one thing and left with ten." ] },
+    "slateport_man_1": { "name": "Man", "dialog": [ "Captain Stern builds a submarine in his shipyard. One day he'll explore the sea floor!" ] },
+    "slateport_rich_boy": { "name": "Boy", "dialog": [ "The Battle Tent here lends you Pokémon to battle with. You never know what you'll get!" ] },
+    "woman_4": { "name": "Woman", "dialog": [ "The Oceanic Museum shows off everything about the sea. Well worth the entrance fee." ] },
+    "slateport_grunt_1": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "Get to the back of the line! We were here first, and we're going in together." ] },
+    "slateport_grunt_2": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "We're all very keen on the sea. That's why we're queuing for the museum. Nothing else!" ] },
+    "slateport_grunt_3": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "Does the museum sell tickets in bulk, I wonder?" ] },
+    "slateport_grunt_4": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "No pushing! We're on a very important... sightseeing trip." ] },
+    "slateport_grunt_5": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "The boss told us to look at the exhibits. Very carefully." ] },
+    "slateport_grunt_6": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "I love the sea. It's so big, and so... wet." ] },
+    "slateport_grunt_7": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "This line's taking forever. Can't we just walk in?" ] },
+    "slateport_grunt_8": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "Hey, I've seen you somewhere before... Never mind." ] },
+    "slateport_grunt_9": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "Fifty Poké Dollars each? The boss had better pay me back." ] },
+    "aqua_member_m": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "Shh! We're just ordinary museum visitors." ] },
+    "slateport_grunt_11": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "Wait your turn, kid." ] },
+    "slateport_cook": { "name": "Cook", "dialog": [ "Seaweed's full of life, you know. A little in a soup, and you'll be strong as a Wailord." ] },
+    "slateport_old_woman": { "name": "Old Woman", "dialog": [ "This harbour has seen ships come and go for a hundred years. I've watched most of them." ] },
+    "slateport_girl": { "name": "Girl", "dialog": [ "Ooh, Slateport's market! I'm getting a doll for my secret hideaway." ] },
+    "sailor": { "name": "Sailor", "dialog": [ "The ferry to the far islands sails from the harbour. But you'll need a ticket first." ] },
+    "sailor_2": { "name": "Sailor", "dialog": [ "I've been at sea so long, the land feels like it's rocking!" ] },
+    "pokefan_f": { "name": "Woman", "dialog": [ "The market changes its stalls every so often. Come back and see what's new!" ] },
+    "man_3": { "name": "Man", "dialog": [ "My Pokémon loves the sea air. Can't keep it out of the water." ] },
+    "maniac": { "name": "Man", "dialog": [ "The Name Rater's house is right over there. He'll tell you what he thinks of your Pokémon's names." ] },
+    "woman_5": { "name": "Woman", "dialog": [ "The Pokémon Fan Club's chairman judges how much your Pokémon love you. Mine adore me!" ] },
+    "mart_employee": { "name": "Clerk", "dialog": [ "Decorations for a secret base! Desks, chairs, plants... Ah, but my stock hasn't come in yet." ] },
+    "mart_employee_2": { "name": "Clerk", "dialog": [ "Dolls and cushions for your secret base! Come back when my stall's open for business." ] },
+    "man_5": { "name": "Man", "dialog": [ "The stalls are busiest at noon. I come early to beat the crowd." ] },
+    "woman_5_2": { "name": "Woman", "dialog": [ "Your Pokémon looks like it's working hard. Keep at it, and it'll be the best it can be!" ] },
+    "slateport_energy_guru": { "name": "Energy Guru", "script": "EnergyGuru" },
+    "pokefan_f_2": { "name": "Woman", "dialog": [ "Berry powder? Oh, that comes from crushing berries. Not that I'd know how." ] },
+    "slateport_scott": { "name": "Scott", "npcType": "scott", "still": true, "dialog": [ "I'm always on the lookout for strong trainers." ] }
+  },
+  "signs": {
+    "SlateportCity_EventScript_NameRatersHouseSign": "Name Rater's House\nPokémon nicknames rated",
+    "SlateportCity_EventScript_HarborSign": "Slateport City Harbour\nShips to the far seas",
+    "SlateportCity_EventScript_MarketSign": "Slateport Market\nThe place for unusual goods",
+    "SlateportCity_EventScript_OceanicMuseumSign": "Oceanic Museum\nAll about the sea and its Pokémon",
+    "SlateportCity_EventScript_CitySign": "Slateport City\nThe port where people and Pokémon cross paths",
+    "SlateportCity_EventScript_PokemonFanClubSign": "Pokémon Fan Club\nCome in and talk Pokémon!",
+    "SlateportCity_EventScript_BattleTentSign": "Battle Tent: Slateport\nRental Pokémon battles",
+    "SlateportCity_EventScript_SternsShipyardSign": "Stern's Shipyard\nWhere the sea is studied and ships are built",
+    "SlateportCity_EventScript_BerryCrushRankingsSign": "A board of names and numbers. The rankings of the market's berry crushers.",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
+    "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
+  }
+}

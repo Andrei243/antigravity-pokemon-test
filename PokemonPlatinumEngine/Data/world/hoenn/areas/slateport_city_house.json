@@ -1,0 +1,27 @@
+{
+  "key": "slateport_city_house",
+  "index": 121,
+  "name": "Slateport City",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SLATEPORT",
+  "nightMusic": "MUS_SLATEPORT",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "slateport_city", "toWarp": 10 },
+    { "x": 4, "z": 7, "to": "slateport_city", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_House_EventScript_PokefanM" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "look_west", "x": 7, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "SlateportCity_House_EventScript_Girl" }
+  ],
+  "signs": [],
+  "triggers": []
+}

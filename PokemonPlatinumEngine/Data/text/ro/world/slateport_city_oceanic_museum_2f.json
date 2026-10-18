@@ -1,0 +1,204 @@
+{
+  "people": {
+    "oceanic_museum_2f_capt_stern": {
+      "name": {
+        "en": [
+          "Captain Stern"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "oceanic_museum_2f_archie": {
+      "name": {
+        "en": [
+          "Archie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "oceanic_museum_2f_grunt_1": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "oceanic_museum_2f_grunt_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Models of famous ships! The S.S. Anne sailed in a far-off region, long ago."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This model of Hoenn shows how much of it is sea. Most of it, really!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I want to ride in a real submarine and see the bottom of the sea!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample1": {
+      "en": [
+        "A jar of sea water from near the shore. A little cloudy."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample2": {
+      "en": [
+        "A jar of sea water from far out at sea. Clear as glass."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_2F_EventScript_SubmersibleReplica": {
+      "en": [
+        "A model of a small submersible that carries one explorer under the waves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_2F_EventScript_SubmarineReplica": {
+      "en": [
+        "A model of Captain Stern's submarine, still being built at his shipyard."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_2F_EventScript_SSTidalReplica": {
+      "en": [
+        "A model of the S.S. Tidal, the ferry between Slateport and Lilycove."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_2F_EventScript_SSAnneReplica": {
+      "en": [
+        "A model of the S.S. Anne, a luxury liner of a far-off land."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_2F_EventScript_SurfaceSeawaterDisplay": {
+      "en": [
+        "Water from the sea's surface. Warmed by the sun, full of life."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_2F_EventScript_DeepSeawaterDisplay": {
+      "en": [
+        "Water from the deep sea. Cold and dark, and still full of life."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_2F_EventScript_HoennModel": {
+      "en": [
+        "A model of Hoenn. The sea covers far more of it than the land does."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_2F_EventScript_PressureExperiment": {
+      "en": [
+        "A balloon in a tank of water. The deeper it's pushed, the smaller it gets."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

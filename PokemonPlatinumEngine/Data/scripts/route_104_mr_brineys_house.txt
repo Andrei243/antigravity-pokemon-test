@@ -1,8 +1,10 @@
-# Mr. Briney's cottage on Route 104 (plan 21 · H2, part b). docs/scripts.md describes the language; the lines are our
-# own, on Emerald's beats (data/maps/Route104_MrBrineysHouse/scripts.inc).
+# Mr. Briney's cottage on Route 104 (plan 21 · H2, part b; the sailing since plan 21 · H3). docs/scripts.md describes the
+# language; the lines are our own, on Emerald's beats (data/maps/Route104_MrBrineysHouse/scripts.inc).
 #
 # VAR_BRINEY_HOUSE_STATE 0: the old sailor at home with Peeko, his Wingull, his boat idle on the beach; 1 Peeko is safe,
-# and he would sail anywhere for the player. The sailing itself, to Dewford Town, is plan 21 · H3's.
+# and he would sail anywhere for the player. Asked, he sails to Dewford Town (FLAG_MR_BRINEY_SAILING_INTRO the first
+# time): the boat at his jetty, the camera out over the sea of Routes 105 and 106, and Dewford's jetty, where he waits
+# (VAR_BRINEY_LOCATION 2; 1 at home, 3 on Route 109's beach, as Emerald numbers its BRINEY_LOCATION_*).
 
 
 script Briney
@@ -11,9 +13,51 @@ script Briney
   say "Ahoy! I'm Briney. Once I sailed every day. These days I'd rather sit here with Peeko and watch the waves."
   end
 label Grateful
-  say "Ahoy, my friend! You saved my Peeko, and an old sailor never forgets a debt."
-  say "Whenever you need to cross the water, my boat is yours. Just give me a little while to get her seaworthy!"
+  face self player
+  if flag FLAG_MR_BRINEY_SAILING_INTRO goto Again
+  setflag FLAG_MR_BRINEY_SAILING_INTRO
+  say "Hold still, Peeko! Why, it's {player}! You saved my darling Peeko. I owe you more than I can say."
+  say "You want to go to sea? A letter for Dewford and a parcel for Slateport, you say? My, you're a busy one!"
+  ask "Well, you've come to the right sailor. Shall we set sail for Dewford?"
+  if yes goto Sail
+  say "Mm? Not ready? Then come back whenever you are. The sea isn't going anywhere."
   end
+label Again
+  ask "Ahoy, my friend! Shall we set sail for Dewford, then?"
+  if yes goto Sail
+  say "Just say the word whenever you want to cross the water."
+  end
+label Sail
+  say "Dewford it is! Anchors aweigh! Come along, Peeko, we're going to sea!"
+  call SailToDewford
+  end
+
+
+# The voyage itself: out of the cottage to the jetty, the boat's music, the camera over the sea, and Dewford's jetty
+script SailToDewford
+  scene "Sailing to Dewford"
+  setvar VAR_BRINEY_LOCATION 2
+  setflag FLAG_HIDE_BRINEYS_HOUSE_MR_BRINEY
+  setflag FLAG_HIDE_BRINEYS_HOUSE_PEEKO
+  clearflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+  fade out
+  warp "Hoenn" 13 233 left
+  fade in
+  music "hoenn/sailing"
+  letterbox on
+  camera path 12 250 16 290 30 330 52 352 70 368 14
+  wait 0.4
+  fade out
+  camera release 0
+  letterbox off 0.1
+  warp "Hoenn" 71 371 right
+  fade in
+  music area
+  speaker "Mr. Briney"
+  say "Ahoy! Here we are, Dewford Town! A tiny island, but a fine one."
+  say "You've a letter to deliver, haven't you? I'll wait here at the jetty. Off you go!"
+  endscene
+  return
 
 
 script Peeko

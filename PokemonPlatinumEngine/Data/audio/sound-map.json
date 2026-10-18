@@ -103,7 +103,11 @@
     "Cue Ball": "fighter",
     "Boss": "galactic",
     "Rocker": "fun",
-    "Cooltrainer": "ace"
+    "Cooltrainer": "ace",
+    "Tuber M": "kid",
+    "Tuber F": "kid",
+    "Sis And Bro": "sport",
+    "Triathlete": "sport"
   },
   "battleThemes": {
     "Leader": "gym",

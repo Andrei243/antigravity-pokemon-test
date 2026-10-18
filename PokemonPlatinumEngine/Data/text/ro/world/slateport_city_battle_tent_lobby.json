@@ -1,0 +1,104 @@
+{
+  "people": {
+    "slateport_tent_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Battle Tent! Our rental Pokémon are still being looked after. Please come back another day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You battle here with Pokémon the Tent lends you. Your own stay safe on the bench!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three wins in a row with rentals. That's what it takes to impress anyone here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I got a Pokémon I'd never even seen before! I had no idea what its moves did."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband swears the rentals are random. I swear he just picks badly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SlateportCity_BattleTentLobby_EventScript_RulesBoard": {
+      "en": [
+        "Battle Tent Rules\nBorrow three rental Pokémon and win three battles in a row!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

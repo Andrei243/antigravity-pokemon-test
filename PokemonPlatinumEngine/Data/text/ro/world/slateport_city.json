@@ -1,0 +1,644 @@
+{
+  "people": {
+    "slateport_fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Slateport's market has everything! I came for one thing and left with ten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Captain Stern builds a submarine in his shipyard. One day he'll explore the sea floor!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_rich_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Battle Tent here lends you Pokémon to battle with. You never know what you'll get!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Oceanic Museum shows off everything about the sea. Well worth the entrance fee."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_1": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Get to the back of the line! We were here first, and we're going in together."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're all very keen on the sea. That's why we're queuing for the museum. Nothing else!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_3": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Does the museum sell tickets in bulk, I wonder?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_4": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "No pushing! We're on a very important... sightseeing trip."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_5": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The boss told us to look at the exhibits. Very carefully."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_6": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I love the sea. It's so big, and so... wet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_7": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This line's taking forever. Can't we just walk in?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_8": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hey, I've seen you somewhere before... Never mind."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_9": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fifty Poké Dollars each? The boss had better pay me back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! We're just ordinary museum visitors."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_grunt_11": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wait your turn, kid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_cook": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Seaweed's full of life, you know. A little in a soup, and you'll be strong as a Wailord."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This harbour has seen ships come and go for a hundred years. I've watched most of them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ooh, Slateport's market! I'm getting a doll for my secret hideaway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ferry to the far islands sails from the harbour. But you'll need a ticket first."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've been at sea so long, the land feels like it's rocking!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The market changes its stalls every so often. Come back and see what's new!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon loves the sea air. Can't keep it out of the water."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Name Rater's house is right over there. He'll tell you what he thinks of your Pokémon's names."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon Fan Club's chairman judges how much your Pokémon love you. Mine adore me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mart_employee": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Decorations for a secret base! Desks, chairs, plants... Ah, but my stock hasn't come in yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mart_employee_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Dolls and cushions for your secret base! Come back when my stall's open for business."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The stalls are busiest at noon. I come early to beat the crowd."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your Pokémon looks like it's working hard. Keep at it, and it'll be the best it can be!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_energy_guru": {
+      "name": {
+        "en": [
+          "Energy Guru"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Berry powder? Oh, that comes from crushing berries. Not that I'd know how."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "slateport_scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm always on the lookout for strong trainers."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SlateportCity_EventScript_NameRatersHouseSign": {
+      "en": [
+        "Name Rater's House\nPokémon nicknames rated"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_EventScript_HarborSign": {
+      "en": [
+        "Slateport City Harbour\nShips to the far seas"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_EventScript_MarketSign": {
+      "en": [
+        "Slateport Market\nThe place for unusual goods"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_EventScript_OceanicMuseumSign": {
+      "en": [
+        "Oceanic Museum\nAll about the sea and its Pokémon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_EventScript_CitySign": {
+      "en": [
+        "Slateport City\nThe port where people and Pokémon cross paths"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_EventScript_PokemonFanClubSign": {
+      "en": [
+        "Pokémon Fan Club\nCome in and talk Pokémon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_EventScript_BattleTentSign": {
+      "en": [
+        "Battle Tent: Slateport\nRental Pokémon battles"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_EventScript_SternsShipyardSign": {
+      "en": [
+        "Stern's Shipyard\nWhere the sea is studied and ships are built"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_EventScript_BerryCrushRankingsSign": {
+      "en": [
+        "A board of names and numbers. The rankings of the market's berry crushers."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

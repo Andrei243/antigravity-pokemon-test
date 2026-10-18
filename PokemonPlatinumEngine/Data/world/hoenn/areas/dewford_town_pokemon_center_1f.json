@@ -1,0 +1,29 @@
+{
+  "key": "dewford_town_pokemon_center_1f",
+  "index": 68,
+  "name": "Dewford Town",
+  "matrix": 17,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "dewford_town", "toWarp": 1 },
+    { "x": 6, "z": 8, "to": "dewford_town", "toWarp": 1 },
+    { "x": 1, "z": 6, "to": "dewford_town_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "dewford_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_east", "x": 10, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "DewfordTown_PokemonCenter_1F_EventScript_PokefanF" },
+    { "id": "man_3", "looks": "man_3", "movement": "wander_west_and_east", "x": 5, "z": 5, "facing": 2, "rangeX": 2, "rangeZ": 1, "script": "DewfordTown_PokemonCenter_1F_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}

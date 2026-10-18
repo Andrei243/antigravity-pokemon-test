@@ -518,6 +518,7 @@ public sealed class WorldRenderer
 
         // In a cave nobody has lit, where the player stands on the picture and how large a tile is there
         dark = player != null && Darkness.Covers(map);
+        darkReach = map.DarkReach;
         if (dark)
         {
             var feet = new Vector3(px, groundY, pz);
@@ -686,6 +687,7 @@ public sealed class WorldRenderer
     public Vector2 PlayerOnPicture { get; private set; } = new(0.5f, 0.5f);
 
     private bool dark;
+    private float darkReach = Darkness.Reach;
     private Vector2 darkAt, darkTile;
 
     /// <summary>
@@ -695,7 +697,7 @@ public sealed class WorldRenderer
     private void DrawDarkness(int destWidth, int destHeight)
     {
         float cx = darkAt.X * destWidth, cy = darkAt.Y * destHeight;
-        float halfW = Darkness.Reach * darkTile.X * destWidth, halfH = Darkness.Reach * darkTile.Y * destHeight;
+        float halfW = darkReach * darkTile.X * destWidth, halfH = darkReach * darkTile.Y * destHeight;
         var texture = SceneTextures.Darkness;
         var lit = new Rectangle(MathF.Round(cx - halfW), MathF.Round(cy - halfH), MathF.Round(halfW * 2f), MathF.Round(halfH * 2f));
         Raylib.DrawTexturePro(texture, new Rectangle(0, 0, texture.Width, texture.Height), lit, Vector2.Zero, 0f, Color.White);

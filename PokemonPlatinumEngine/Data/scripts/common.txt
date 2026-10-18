@@ -1299,6 +1299,7 @@ script HoennNewGame
   setflag FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
   setflag FLAG_HIDE_PETALBURG_CITY_SCOTT
   call HoennChapterTwo
+  call HoennChapterThree
   return
 
 
@@ -1361,4 +1362,20 @@ script HoennChapterTwo
   setflag FLAG_HIDE_RUSTBORO_CITY_RIVAL
   setflag FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
   setflag FLAG_HIDE_RUSTURF_TUNNEL_WANDA
+  return
+
+# The people of Hoenn's third stretch, Dewford Town to Slateport City (plan 21 · H3), hidden until their scenes: Mr.
+# Briney at Dewford's jetty and on Route 109's beach until his boat brings him, Team Aqua's two grunts and Archie on
+# the Oceanic Museum's upper floor until they come up its stairs, Scott until he meets the player outside it, and the
+# museum's visitors until Team Aqua has gone. HoennNewGame calls it; a save from before it was written (version 25)
+# runs it as it loads. It may only set flags and variables, and ends in return.
+script HoennChapterThree
+  setflag FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+  setflag FLAG_HIDE_ROUTE_109_MR_BRINEY
+  setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE
+  setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1
+  setflag FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2
+  setflag FLAG_HIDE_SLATEPORT_CITY_SCOTT
+  if flag FLAG_DELIVERED_DEVON_GOODS return
+  setflag FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
   return

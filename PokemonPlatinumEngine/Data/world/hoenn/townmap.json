@@ -1,8 +1,8 @@
 // The PokéNav's map of Hoenn (plan 21 · H2, part b; docs/data-files.md, "The region map"): a cell for each chunk of
 // the overworld, Emerald's connected maps stitched into one. The blocks are each of Hoenn's areas on the cells its
 // chunks take (the matrix's own areas, a town on its own cell where a route took the chunk over); every word is ours.
-// A town not open yet whose chunk a route took over (Dewford, Verdanturf, Fallarbor) is put on its cell by the session that
-// opens it. No hidden places, no landmarks and no Fly yet: Fly over Hoenn is plan 21 · H6's.
+// A town not open yet whose chunk a route took over (Verdanturf, Fallarbor) is put on its cell by the session that
+// opens it (Dewford by plan 21 · H3). No hidden places, no landmarks and no Fly yet: Fly over Hoenn is plan 21 · H6's.
 {
   "map": "Hoenn",
   "columns": 25,
@@ -37,7 +37,8 @@
     { "key": "route_133", "about": "A sea route of strong currents far to the south." },
     { "key": "route_115", "about": "A road along the sea, north of Rustboro City." },
     { "key": "route_116", "about": "A road east from Rustboro City to Rusturf Tunnel." },
-    { "key": "route_106", "about": "A sea route north of Dewford Town." },
+    { "key": "route_106", "about": "A sea route west of Dewford Town, with Granite Cave on its shore." },
+    { "key": "dewford_town", "about": "A little island town of fishermen, with Brawly's Gym and a hall where the latest talk is traded." },
     { "key": "lavaridge_town", "about": "A hot spring town on the slopes of the volcano." },
     { "key": "fortree_city", "about": "A city built high in the treetops." },
     { "key": "route_122", "about": "A sea route around the island of Mt. Pyre." },
@@ -244,7 +245,7 @@
     { "x": 7, "y": 10, "kind": "Route", "name": "Route 109", "area": "route_109" },
     { "x": 0, "y": 11, "kind": "Route", "name": "Route 106", "area": "route_106" },
     { "x": 1, "y": 11, "kind": "Route", "name": "Route 106", "area": "route_106" },
-    { "x": 2, "y": 11, "kind": "Route", "name": "Route 107", "area": "route_107" },
+    { "x": 2, "y": 11, "kind": "Town", "name": "Dewford Town", "area": "dewford_town" },
     { "x": 3, "y": 11, "kind": "Route", "name": "Route 107", "area": "route_107" },
     { "x": 4, "y": 11, "kind": "Route", "name": "Route 108", "area": "route_108" },
     { "x": 5, "y": 11, "kind": "Route", "name": "Route 108", "area": "route_108" },

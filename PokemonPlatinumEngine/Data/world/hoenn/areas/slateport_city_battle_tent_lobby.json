@@ -1,0 +1,32 @@
+{
+  "key": "slateport_city_battle_tent_lobby",
+  "index": 113,
+  "name": "Slateport City",
+  "matrix": 62,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_B_TOWER_RS",
+  "nightMusic": "MUS_B_TOWER_RS",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 9, "to": "slateport_city", "toWarp": 3 },
+    { "x": 7, "z": 9, "to": "slateport_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "slateport_tent_attendant", "looks": "scientist_1", "movement": "look_south", "x": 6, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SlateportCity_BattleTentLobby_EventScript_Attendant" },
+    { "id": "sailor", "looks": "sailor", "movement": "wander_around", "x": 1, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SlateportCity_BattleTentLobby_EventScript_TormentGiver" },
+    { "id": "man_3", "looks": "man_3", "movement": "look_north", "x": 3, "z": 7, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SlateportCity_BattleTentLobby_EventScript_Man" },
+    { "id": "girl_1", "looks": "girl_1", "movement": "look_around", "x": 1, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SlateportCity_BattleTentLobby_EventScript_Girl" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west", "x": 11, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SlateportCity_BattleTentLobby_EventScript_Woman" }
+  ],
+  "signs": [
+    { "x": 4, "z": 5, "type": 0, "script": "SlateportCity_BattleTentLobby_EventScript_RulesBoard" }
+  ],
+  "triggers": []
+}

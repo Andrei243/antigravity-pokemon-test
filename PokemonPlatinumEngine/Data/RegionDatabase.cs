@@ -451,6 +451,14 @@ public static class RegionDatabase
                 "RustboroCity_Flat1_1F", "RustboroCity_Flat1_2F", "RustboroCity_House1", "RustboroCity_CuttersHouse",
                 "RustboroCity_House2", "RustboroCity_Flat2_1F", "RustboroCity_Flat2_2F", "RustboroCity_Flat2_3F",
                 "RustboroCity_House3", "Route104_MrBrineysHouse", "Route104_PrettyPetalFlowerShop", "Route116_TunnelersRestHouse",
+                // Plan 21 · H3: Dewford Town's rooms, Granite Cave, Route 109's seashore house and Slateport City's rooms
+                "DewfordTown_House1", "DewfordTown_PokemonCenter_1F", "DewfordTown_PokemonCenter_2F", "DewfordTown_Gym",
+                "DewfordTown_Hall", "DewfordTown_House2", "GraniteCave_1F", "GraniteCave_B1F", "GraniteCave_B2F",
+                "GraniteCave_StevensRoom", "Route109_SeashoreHouse", "SlateportCity_SternsShipyard_1F",
+                "SlateportCity_SternsShipyard_2F", "SlateportCity_BattleTentLobby", "SlateportCity_NameRatersHouse",
+                "SlateportCity_PokemonFanClub", "SlateportCity_OceanicMuseum_1F", "SlateportCity_OceanicMuseum_2F",
+                "SlateportCity_Harbor", "SlateportCity_House", "SlateportCity_PokemonCenter_1F",
+                "SlateportCity_PokemonCenter_2F", "SlateportCity_Mart",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

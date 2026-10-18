@@ -1,0 +1,16 @@
+{
+  // Route 106 (plan 21 · H3): the sea west of Dewford Town and its strip of beach, where fishermen stand by the mouth
+  // of Granite Cave. The beach is walked from Dewford; the open water waits for Surf
+  "area": "route_106",
+  "bgmTrack": "hoenn/route104",
+  "trees": "Round",
+  "people": {
+    "swimmer_m": { "name": "Douglas", "trainer": { "dialogueBefore": "Swimmer Douglas: Two Tentacool, twice the stings! Come on in!", "dialogueAfter": "Swimmer Douglas: Ouch. Stung by my own pride." } },
+    "swimmer_f": { "name": "Kyla", "trainer": { "dialogueBefore": "Swimmer Kyla: My Wailmer gives the best rides. Shall we battle first?", "dialogueAfter": "Swimmer Kyla: Wailmer, let's float home." } },
+    "fisherman": { "name": "Elliot", "trainer": { "dialogueBefore": "Fisherman Elliot: You scared off my bite! Now you owe me a battle.", "dialogueAfter": "Fisherman Elliot: I should have stuck to fishing." } },
+    "fisherman_2": { "name": "Ned", "trainer": { "dialogueBefore": "Fisherman Ned: I've caught nothing all day. Maybe I'll catch a win instead!", "dialogueAfter": "Fisherman Ned: Nothing all day, and now this." } }
+  },
+  "signs": {
+    "Route106_EventScript_TrainerTipsSign": "Trainer Tips\nA Pokémon that is asleep or frozen can't run away. That's the time to throw a Poké Ball!"
+  }
+}

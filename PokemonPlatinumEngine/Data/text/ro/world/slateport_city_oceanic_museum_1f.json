@@ -1,0 +1,322 @@
+{
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Oceanic Museum! Please pay at the counter as you come in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Oceanic Museum! Please pay at the counter as you come in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This museum's full of things about the sea. The boss would love it all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Don't mind me. Just admiring the soil samples. Totally normal."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_3": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're waiting for something to be delivered upstairs. I mean... we're looking at exhibits."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_f": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea gives life to everything. People should give it more room!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_4": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I paid fifty to get in here. Fifty! For rocks and water."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_5": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If you're going upstairs, don't get in our way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "oceanic_museum_familiar_grunt": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea covers most of the world. And we've hardly seen any of it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sand from the beach and soil from the sea floor, side by side. Fascinating!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That machine measures how deep the sea is. Deeper than you'd think!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Where do the waves come from? Nobody here will tell me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "reporter_m": {
+      "name": {
+        "en": [
+          "Reporter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm here to write about the museum. Those blue-clad visitors were awfully rude!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SlateportCity_OceanicMuseum_1F_EventScript_WhirlpoolExperiment": {
+      "en": [
+        "A whirlpool in a glass tank. Water swirls round and round, faster at the middle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_1F_EventScript_WaterfallExperiment": {
+      "en": [
+        "A little waterfall pours into a basin. Its splash is what makes the bubbles."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_1F_EventScript_OceanSoilDisplay": {
+      "en": [
+        "Soil from the bottom of the sea. Fine and grey, full of tiny shells."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_1F_EventScript_BeachSandDisplay": {
+      "en": [
+        "Sand from Hoenn's beaches. Each grain was once a rock, worn down by the waves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact1": {
+      "en": [
+        "Sea water is salty because rivers carry salt from the rocks into the sea, and it stays there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact2": {
+      "en": [
+        "The deeper you go, the colder and darker the sea becomes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact3": {
+      "en": [
+        "Some Pokémon live so deep that they make their own light."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_1F_EventScript_FossilDisplay": {
+      "en": [
+        "Fossils of Pokémon that lived in ancient seas, found under the rock."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SlateportCity_OceanicMuseum_1F_EventScript_DepthMeasuringMachine": {
+      "en": [
+        "A machine that measures the sea's depth by sending down a sound and timing its echo."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

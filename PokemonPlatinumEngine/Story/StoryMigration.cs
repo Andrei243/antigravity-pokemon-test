@@ -105,6 +105,9 @@ public static class StoryMigration
         // Version 24: Hoenn's second stretch (plan 21 · H2, part b): the people of Route 104 to Rusturf Tunnel are hidden
         // until their scenes by common.HoennChapterTwo, which a new game runs too
         if (savedVersion < 24) Run(story, scripts, "common.HoennChapterTwo");
+        // Version 25: Hoenn's third stretch (plan 21 · H3): the people of Dewford Town to Slateport City are hidden until
+        // their scenes by common.HoennChapterThree, which a new game runs too
+        if (savedVersion < 25) Run(story, scripts, "common.HoennChapterThree");
     }
 
     /// <summary>

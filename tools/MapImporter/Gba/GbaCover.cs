@@ -245,6 +245,30 @@ public static class GbaCover
             {
                 (0x201, 0x204, TerrainCover.CaveFloor),
             },
+            // Plan 21 · H3: Slateport City, read from its layout: the stone road that runs north and south through it
+            // and its branches (three by three with their edges and the corners where they meet), the paved squares
+            // before the Battle Tent and the Name Rater's, the market's and the harbour's flagstones, and the low walls
+            // and rails round the market and along the beach
+            ["gTileset_Slateport"] = new (int, int, TerrainCover)[]
+            {
+                (0x208, 0x20A, TerrainCover.Paving), (0x210, 0x212, TerrainCover.Paving), (0x216, 0x216, TerrainCover.Paving),
+                (0x218, 0x21A, TerrainCover.Paving), (0x21E, 0x21E, TerrainCover.Paving), (0x232, 0x233, TerrainCover.Paving),
+                (0x23A, 0x23B, TerrainCover.Paving), (0x270, 0x272, TerrainCover.Paving), (0x277, 0x27A, TerrainCover.Paving),
+                (0x202, 0x202, TerrainCover.Paving), (0x246, 0x247, TerrainCover.Paving), (0x24E, 0x24F, TerrainCover.Paving),
+                (0x2D5, 0x2D6, TerrainCover.Paving), (0x2DD, 0x2DE, TerrainCover.Paving), (0x330, 0x334, TerrainCover.Paving),
+                (0x33B, 0x33D, TerrainCover.Paving), (0x343, 0x343, TerrainCover.Paving), (0x345, 0x345, TerrainCover.Paving),
+                (0x34B, 0x34D, TerrainCover.Paving),
+                (0x23C, 0x23C, TerrainCover.Fence), (0x245, 0x245, TerrainCover.Fence), (0x24D, 0x24D, TerrainCover.Fence),
+                (0x255, 0x255, TerrainCover.Fence), (0x25D, 0x25D, TerrainCover.Fence), (0x2B8, 0x2BB, TerrainCover.Fence),
+                (0x27E, 0x27E, TerrainCover.Fence), (0x2FE, 0x2FF, TerrainCover.Fence), (0x32D, 0x32D, TerrainCover.Fence),
+            },
+            // Plan 21 · H3: Dewford Town, read from its layout: the planks of the jetty where Mr. Briney moors, and the
+            // palms the island is ringed by
+            ["gTileset_Dewford"] = new (int, int, TerrainCover)[]
+            {
+                (0x228, 0x229, TerrainCover.Bridge),
+                (0x23A, 0x23A, TerrainCover.Tree), (0x243, 0x243, TerrainCover.Tree),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

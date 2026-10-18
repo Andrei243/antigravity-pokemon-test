@@ -62,11 +62,19 @@ public static class Overlays
         }
         if (!world.IsOpen(key)) Add(Kind.Misplaced, key, $"the area isn't among the open areas of {World.IndexFile}: nothing reads this overlay");
 
-        // The area's own matrix says which area a tile is in, whatever is built of it
+        // The area's own matrix says which area a tile is in, whatever is built of it: the tile's own where its chunk
+        // names one (a GBA game's maps share chunks, plan 18 · W6: Dewford Town and Route 107), else the cell's
         var matrix = world.Matrix(area.Matrix);
-        string? AreaAt(int x, int z) =>
-            x < 0 || z < 0 || x >= matrix.Width * WorldChunkFile.Tiles || z >= matrix.Height * WorldChunkFile.Tiles ? null
-            : matrix.AreaAt(x / WorldChunkFile.Tiles, z / WorldChunkFile.Tiles) ?? world.MapOf(key)?.Area;
+        string? AreaAt(int x, int z)
+        {
+            if (x < 0 || z < 0 || x >= matrix.Width * WorldChunkFile.Tiles || z >= matrix.Height * WorldChunkFile.Tiles) return null;
+            int cx = x / WorldChunkFile.Tiles, cz = z / WorldChunkFile.Tiles;
+            int chunk = matrix.ChunkAt(cx, cz);
+            if (chunk != WorldMatrixFile.NoChunk && matrix.AreaKeys != null
+                && world.Chunk(chunk)?.AreaIndexAt(x % WorldChunkFile.Tiles, z % WorldChunkFile.Tiles) is { } own && own < matrix.AreaKeys.Count)
+                return matrix.AreaKeys[own];
+            return matrix.AreaAt(cx, cz) ?? world.MapOf(key)?.Area;
+        }
         bool Inside(int x, int z) => string.Equals(AreaAt(x, z), key, StringComparison.OrdinalIgnoreCase);
         // The map the game makes of it, where the world loads
         var map = world.MapOf(key) is { } entry ? region.Maps?.FirstOrDefault(m => m.Name == entry.Name) : null;
