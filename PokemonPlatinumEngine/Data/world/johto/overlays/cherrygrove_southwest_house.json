@@ -1,0 +1,15 @@
+{
+  // A house in the south-west of Cherrygrove City (plan 20 · J2)
+  "area": "cherrygrove_southwest_house",
+  "bgmTrack": "johto/cherrygrove",
+  "people": {
+    "t21r0301_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [ "I came to Cherrygrove to fish and never left. The sea here is full of surprises." ]
+    },
+    "t21r0301_gsbabyboy1": {
+      "name": "Little Boy",
+      "dialog": [ "Daddy caught a big fish! It was this big! No, bigger!" ]
+    }
+  }
+}

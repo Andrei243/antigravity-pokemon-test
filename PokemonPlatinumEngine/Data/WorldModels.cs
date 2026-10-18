@@ -66,7 +66,7 @@ public sealed record WorldModel(string Name, ModelRole Role)
 /// being furniture; and of those that stand in the caves that are open (plan 01 · M5 on). <c>tools/MapImporter</c> lists them with their sizes and places in <c>docs/world-models.md</c>
 /// and reports any that this table doesn't know.
 /// </summary>
-public static class WorldModels
+public static partial class WorldModels
 {
     private static WorldModel House(string name, Architecture town, string what, int storeys = 0) =>
         new(name, ModelRole.Building) { Kind = BuildingKind.House, Town = town, Storeys = storeys, What = what };
@@ -297,7 +297,9 @@ public static class WorldModels
     /// with no world yet has an empty one (plan 18 · W1; Kanto's and Hoenn's are plan 19's and 21's).
     /// </summary>
     public static IReadOnlyList<WorldModel> Catalogue(string models) =>
-        string.Equals(models, "sinnoh", StringComparison.OrdinalIgnoreCase) ? Table : Array.Empty<WorldModel>();
+        string.Equals(models, "sinnoh", StringComparison.OrdinalIgnoreCase) ? Table
+        : string.Equals(models, "johto", StringComparison.OrdinalIgnoreCase) ? JohtoTable
+        : Array.Empty<WorldModel>();
 
     /// <summary>What a model is in Sinnoh's catalogue, by the original's short name for it; null for a name the catalogue doesn't know.</summary>
     public static WorldModel? Of(string name) => ByName.GetValueOrDefault(name);

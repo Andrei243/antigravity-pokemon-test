@@ -1,0 +1,36 @@
+{
+  // Cherrygrove City (plan 20 · J2): HeartGold's map, our words. The Guide Gent's tour, the rival's challenge north of
+  // town and their triggers are plan 20 · J4's
+  "area": "cherrygrove",
+  "bgmTrack": "johto/cherrygrove",
+  "trees": "Round",
+  "architecture": "Bayside",
+  "people": {
+    "t21_gsoldman1": {
+      "name": "Old Man",
+      "dialog": [
+        "You're new in town, aren't you? I can always tell.",
+        "The Pokémon Center has the red roof, and the Mart's the blue one beside it. Can't miss them."
+      ]
+    },
+    "t21_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "The Mart sells Poké Balls now! I'm going to save up for ten." ]
+    },
+    "t21_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "The cherry trees here flower every spring. Pokémon come down from the hills to see them.",
+        "It's the prettiest time of the year in Cherrygrove."
+      ]
+    },
+    "t21_gsbigman": {
+      "name": "Fat Man",
+      "dialog": [ "The sea goes all the way west from here. You'd need a Pokémon that can swim to cross it." ]
+    }
+  },
+  "signs": {
+    "T21_006+1": "Cherrygrove City\nThe city of cherry blossoms by the sea.",
+    "T21_005+1": "Guide Gent's House"
+  }
+}

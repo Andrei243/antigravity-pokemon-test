@@ -1,0 +1,30 @@
+{
+  "key": "route_31_violet_gatehouse",
+  "index": 97,
+  "name": "Route 31",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_1_30",
+  "nightMusic": "GS_R_1_30",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 7, "to": "violet", "toWarp": 0 },
+    { "x": 10, "z": 7, "to": "route_31", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r31r0101_counterm", "looks": "counterm", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R31R0101_002+1" },
+    { "id": "r31r0101_var_1", "looks": "var_1", "movement": "0", "x": 14, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "r31r0101_tsure_poke_static_marill", "looks": "follower_mon_static_marill", "movement": "0", "x": 13, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 5, "z": 6, "width": 1, "depth": 3, "script": "R31R0101_000+1", "variable": "VAR_UNK_4132", "value": "0" }
+  ]
+}

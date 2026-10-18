@@ -1,0 +1,25 @@
+{
+  "key": "route_30_apricorn_house",
+  "index": 127,
+  "name": "Route 30",
+  "matrix": 66,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_1_30",
+  "nightMusic": "GS_R_1_30",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "route_30", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r30r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "15", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R30R0101_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

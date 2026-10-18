@@ -1,0 +1,36 @@
+{
+  // Route 29 (plan 20 · J2): from New Bark Town west to Cherrygrove City, with the gate house to Route 46 on its north
+  // side (Route 46 itself is plan 20 · J5's, so its way out of the gate house is shut). The Apricorn tree is J6's, the
+  // catching lesson at the town's edge J4's, and the girl who is here only on Tuesdays plan 20 · J13's
+  "area": "route_29",
+  "bgmTrack": "johto/route29",
+  "trees": "Round",
+  "people": {
+    "r29_gsboy2": {
+      "name": "Youngster",
+      "dialog": [
+        "If your Pokémon gets tired, you can always go back to town and rest.",
+        "No shame in that! Even the best trainers do it."
+      ]
+    },
+    "r29_gsbigman": {
+      "name": "Fat Man",
+      "dialog": [ "I'm waiting for the Pokémon in the grass to forget I'm here. Any minute now..." ]
+    },
+    "r29_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "Different Pokémon come out at different times of day. A Hoothoot only shows itself after dark.",
+        "Come back at night and see who's about."
+      ]
+    },
+    "r29_gswoman2": {
+      "name": "Woman",
+      "dialog": [ "Jumping down a ledge is quicker than walking round. Getting back up is the hard part." ]
+    }
+  },
+  "signs": {
+    "R29_004+1": "Route 29\nCherrygrove City - New Bark Town",
+    "R29_005+1": "Route 29\nCherrygrove City - New Bark Town"
+  }
+}

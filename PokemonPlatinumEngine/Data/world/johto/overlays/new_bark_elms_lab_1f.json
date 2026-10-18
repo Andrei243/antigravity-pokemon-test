@@ -1,0 +1,28 @@
+{
+  // Professor Elm's lab (plan 20 · J2), from HeartGold's room. The starters on the machine, the theft and the
+  // policeman are plan 20 · J4's scenes; until then Elm and his aide only talk
+  "area": "new_bark_elms_lab_1f",
+  "bgmTrack": "johto/new_bark",
+  "people": {
+    "t20r0101_doctor": {
+      "name": "Prof. Elm",
+      "dialog": [
+        "Ah, {player}! Good timing. I was just reading about how some Pokémon only evolve when they're happy.",
+        "Isn't that something? There's so much we still don't understand."
+      ]
+    },
+    "t20r0101_assistantm": {
+      "name": "Aide",
+      "dialog": [ "The professor forgets to eat when he's on to something. I've started leaving sandwiches on his desk." ]
+    }
+  },
+  "signs": {
+    "T20R0101_005+1": "Books on how Pokémon grow, crammed in two deep.",
+    "T20R0101_006+1": "A whole shelf about Pokémon Eggs. Some of the pages are marked.",
+    "T20R0101_007+1": "Notebooks full of Professor Elm's handwriting. It's hard to read.",
+    "T20R0101_008+1": "Field guides to the Pokémon of Johto.",
+    "T20R0101_009+1": "A machine that holds three Poké Balls. It hums quietly.",
+    "T20R0101_012+1": "Professor Elm's PC. A paper is open on it: the Pokémon who wouldn't evolve.",
+    "T20R0101_013+1": "A bin, full to the brim with crumpled notes."
+  }
+}

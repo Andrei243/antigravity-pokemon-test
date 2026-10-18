@@ -1,0 +1,15 @@
+{
+  // A house in the south-east of Cherrygrove City (plan 20 · J2)
+  "area": "cherrygrove_southeast_house",
+  "bgmTrack": "johto/cherrygrove",
+  "people": {
+    "t21r0501_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "My sister and I are going to be trainers when we're older. She says she'll be the better one." ]
+    },
+    "t21r0501_gsgirl1": {
+      "name": "Girl",
+      "dialog": [ "I will be the better one. I've already picked out which Pokémon I'm going to get." ]
+    }
+  }
+}

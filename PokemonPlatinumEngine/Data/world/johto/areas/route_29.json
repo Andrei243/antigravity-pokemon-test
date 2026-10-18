@@ -1,0 +1,58 @@
+{
+  "key": "route_29",
+  "index": 33,
+  "name": "Route 29",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_1_29",
+  "nightMusic": "GS_R_1_29",
+  "encounters": "R29",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Pidgey", "level": 2, "night": "Hoothoot" },
+    { "species": "Sentret", "level": 3, "night": "Hoothoot" },
+    { "species": "Pidgey", "level": 2, "night": "Hoothoot" },
+    { "species": "Sentret", "level": 3, "night": "Hoothoot" },
+    { "species": "Pidgey", "level": 3, "night": "Hoothoot" },
+    { "species": "Pidgey", "level": 3, "night": "Hoothoot" },
+    { "species": "Sentret", "level": 2, "night": "Rattata" },
+    { "species": "Sentret", "level": 2, "night": "Rattata" },
+    { "species": "Rattata", "level": 4 },
+    { "species": "Pidgey", "level": 4, "night": "Hoothoot" },
+    { "species": "Rattata", "level": 4 },
+    { "species": "Pidgey", "level": 4, "night": "Hoothoot" }
+  ],
+  "landRate": 25,
+  "warps": [
+    { "x": 626, "z": 389, "to": "route_29_route_46_gatehouse", "toWarp": 0 },
+    { "x": 627, "z": 389, "to": "route_29_route_46_gatehouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r29_gsboy2", "looks": "gsboy2", "movement": "4", "x": 626, "z": 410, "facing": 1, "rangeX": 0, "rangeZ": 1, "script": "R29_006+1" },
+    { "id": "r29_gsbigman", "looks": "gsbigman", "movement": "15", "x": 622, "z": 392, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R29_007+1" },
+    { "id": "r29_gsman1", "looks": "gsman1", "movement": "15", "x": 600, "z": 395, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R29_002+1" },
+    { "id": "r29_gswoman2", "looks": "gswoman2", "movement": "5", "x": 608, "z": 404, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "R29_008+1" },
+    { "id": "r29_tree", "looks": "tree", "movement": "0", "x": 629, "z": 401, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r29_tree_2", "looks": "tree", "movement": "0", "x": 619, "z": 405, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" },
+    { "id": "r29_var_2", "looks": "var_2", "movement": "0", "x": 661, "z": 400, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_29_FRIEND", "script": "0" },
+    { "id": "r29_tsure_poke_static_marill", "looks": "follower_mon_static_marill", "movement": "0", "x": 660, "z": 400, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_29_MARILL", "script": "0" },
+    { "id": "r29_monstarball", "looks": "monstarball", "movement": "0", "x": 654, "z": 386, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R29_POTION", "item": "Potion", "script": "std_itemball_r29_potion" },
+    { "id": "r29_bonguri", "looks": "bonguri", "movement": "0", "x": 596, "z": 392, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r29_gswoman2_2", "looks": "gswoman2", "movement": "2", "x": 629, "z": 405, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_207", "script": "R29_003+1" }
+  ],
+  "signs": [
+    { "x": 581, "z": 397, "type": 1, "script": "R29_004+1" },
+    { "x": 662, "z": 397, "type": 1, "script": "R29_005+1" },
+    { "x": 572, "z": 390, "type": 2, "script": "std_hiddenitem_r29_r30_t21_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_R29_R30_T21_NUGGET" }
+  ],
+  "triggers": [
+    { "x": 666, "z": 396, "width": 1, "depth": 7, "script": "R29_001+1", "variable": "VAR_UNK_408B", "value": "1" }
+  ]
+}

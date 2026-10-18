@@ -420,6 +420,15 @@ public sealed class AreaEncounter
     /// GBA's Old Rod's two slots, 70 and 30, and its Good Rod's three, 60, 20 and 20); left out where it is.
     /// </summary>
     public int? Weight { get; set; }
+
+    /// <summary>
+    /// The species this slot gives by day and by night where it isn't <see cref="Species"/>, which is then the
+    /// morning's (plan 20 · J2: HeartGold gives each of the grass's slots a species for each time of day,
+    /// <c>EncounterSlots.Grass</c> puts the time's in its slot); left out where the slot is the same all day, as every
+    /// slot of Sinnoh's is, whose time of day is <see cref="WorldAreaFile.Day"/> and <see cref="WorldAreaFile.Night"/>.
+    /// </summary>
+    public string? Day { get; set; }
+    public string? Night { get; set; }
 }
 
 /// <summary>

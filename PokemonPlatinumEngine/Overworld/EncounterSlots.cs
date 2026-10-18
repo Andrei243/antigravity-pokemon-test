@@ -75,6 +75,19 @@ public static class EncounterSlots
             if (!string.IsNullOrEmpty(species)) slots[slot].SpeciesName = species;
         }
 
+        // A slot with a species of its own for each time of day (plan 20 · J2, HeartGold's grass: the morning's is the
+        // slot's own, the day's from ten to eight, the evening the day's, and the night's after that)
+        for (int slot = 0; slot < slots.Count; slot++)
+        {
+            var own = area.WildEncounters[slot];
+            Put(slot, moment.Time switch
+            {
+                TimeOfDay.Day or TimeOfDay.Twilight => own.DaySpecies,
+                TimeOfDay.Night or TimeOfDay.LateNight => own.NightSpecies,
+                _ => null
+            });
+        }
+
         var timed = moment.Time switch
         {
             TimeOfDay.Day or TimeOfDay.Twilight => area.DaySlots,

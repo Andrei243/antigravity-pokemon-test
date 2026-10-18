@@ -1,0 +1,15 @@
+{
+  // Mr. Pokémon's house at the north end of Route 30 (plan 20 · J2). The Mystery Egg and Professor Oak's visit are
+  // plan 20 · J4's scene; until then Mr. Pokémon only talks
+  "area": "route_30_mr_pokemon_house",
+  "bgmTrack": "johto/route30",
+  "people": {
+    "r30r0201_gsgentleman": {
+      "name": "Mr. Pokémon",
+      "dialog": [
+        "Hello, hello! Have a look round. Everything in here came from my travels.",
+        "That coin over there is from a country so far away I've forgotten its name."
+      ]
+    }
+  }
+}

@@ -115,7 +115,9 @@ public static class HgImport
                 {
                     int land = matrix.LandAt(cx, cy);
                     if (land == Matrix.NoLand) continue;
-                    bool inView = open == null;
+                    // A room's matrix belongs to every area that loads it (one Pokémon Center's floor for every town's):
+                    // it is wanted when any of them is open
+                    bool inView = open == null || matrix.Headers == null && areas.Any(a => open.Contains(a.Key));
                     for (int y = cy - 1; y <= cy + 1 && !inView; y++)
                         for (int x = cx - 1; x <= cx + 1 && !inView; x++)
                             if (x >= 0 && y >= 0 && x < matrix.Width && y < matrix.Height)

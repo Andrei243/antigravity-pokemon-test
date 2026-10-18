@@ -1,0 +1,86 @@
+{
+  "key": "route_31",
+  "index": 35,
+  "name": "Route 31",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_1_30",
+  "nightMusic": "GS_R_1_30",
+  "encounters": "R31",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Pidgey", "level": 3, "night": "Spinarak" },
+    { "species": "Caterpie", "level": 4, "night": "Rattata" },
+    { "species": "Pidgey", "level": 3, "night": "Spinarak" },
+    { "species": "Caterpie", "level": 4, "night": "Rattata" },
+    { "species": "Bellsprout", "level": 3 },
+    { "species": "Bellsprout", "level": 3 },
+    { "species": "Metapod", "level": 5, "night": "Rattata" },
+    { "species": "Metapod", "level": 5, "night": "Rattata" },
+    { "species": "Caterpie", "level": 5, "night": "Hoothoot" },
+    { "species": "Metapod", "level": 5, "night": "Hoothoot" },
+    { "species": "Caterpie", "level": 5, "night": "Hoothoot" },
+    { "species": "Metapod", "level": 5, "night": "Hoothoot" }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 20 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 32, "maxLevel": 32 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 518, "z": 269, "to": "route_31_violet_gatehouse", "toWarp": 1 },
+    { "x": 518, "z": 270, "to": "route_31_violet_gatehouse", "toWarp": 1 },
+    { "x": 565, "z": 269, "to": "dark_cave_route_31_side", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r31_gsman1", "looks": "gsman1", "movement": "3", "x": 564, "z": 273, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "R31_004+1" },
+    { "id": "r31_tree", "looks": "tree", "movement": "0", "x": 552, "z": 277, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r31_gsbigman", "looks": "gsbigman", "movement": "15", "x": 540, "z": 271, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "R31_001+1" },
+    { "id": "r31_tree_2", "looks": "tree", "movement": "0", "x": 533, "z": 268, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_cut" },
+    { "id": "r31_gsboy1", "looks": "gsboy1", "movement": "3", "x": 528, "z": 268, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "R31_005+1" },
+    { "id": "r31_gsboy3", "looks": "gsboy3", "movement": "14", "x": 540, "z": 279, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_BUG_CATCHER_WADE" },
+    { "id": "r31_monstarball", "looks": "monstarball", "movement": "0", "x": 557, "z": 269, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R31_POTION", "item": "Potion", "script": "std_itemball_r31_potion" },
+    { "id": "r31_monstarball_2", "looks": "monstarball", "movement": "0", "x": 545, "z": 281, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R31_POKE_BALL", "item": "Poké Ball", "script": "std_itemball_r31_poke_ball" },
+    { "id": "r31_bonguri", "looks": "bonguri", "movement": "0", "x": 538, "z": 271, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" }
+  ],
+  "signs": [
+    { "x": 522, "z": 268, "type": 1, "script": "R31_002+1" },
+    { "x": 563, "z": 270, "type": 1, "script": "R31_003+1" }
+  ],
+  "triggers": []
+}

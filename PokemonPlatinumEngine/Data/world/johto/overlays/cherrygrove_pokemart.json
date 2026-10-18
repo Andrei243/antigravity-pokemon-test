@@ -1,0 +1,18 @@
+{
+  // Cherrygrove City's Poké Mart (plan 20 · J2), from HeartGold's room. Its two delivery men are the original's gifts,
+  // which this game has no use for
+  "area": "cherrygrove_pokemart",
+  "bgmTrack": "johto/cherrygrove",
+  "people": {
+    "t21fs0101_shopm1_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "t21fs0101_shopm1_2_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "t21fs0101_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "Potions are cheap here. I always carry three, just in case." ]
+    },
+    "t21fs0101_gsman3": {
+      "name": "Man",
+      "dialog": [ "An Antidote cures poison. Some of the bugs on the routes north of here are poisonous." ]
+    }
+  }
+}

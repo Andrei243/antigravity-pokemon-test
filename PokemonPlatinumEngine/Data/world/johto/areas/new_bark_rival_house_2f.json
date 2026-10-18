@@ -1,0 +1,29 @@
+{
+  "key": "new_bark_rival_house_2f",
+  "index": 384,
+  "name": "New Bark Town",
+  "matrix": 72,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_WAKABA",
+  "nightMusic": "GS_T_WAKABA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 4, "to": "new_bark_rival_house_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t20r0402_var_1", "looks": "var_1", "movement": "16", "x": 7, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND", "script": "T20R0402_000+1" },
+    { "id": "t20r0402_tsure_poke_static_marill", "looks": "follower_mon_static_marill", "movement": "44", "x": 4, "z": 6, "facing": 1, "rangeX": 2, "rangeZ": 2, "hiddenBy": "FLAG_HIDE_NEW_BARK_FRIENDS_ROOM_FRIEND", "script": "T20R0402_001+1" }
+  ],
+  "signs": [
+    { "x": 8, "z": 4, "type": 0, "script": "T20R0402_003+1" },
+    { "x": 6, "z": 4, "type": 0, "script": "T20R0402_004+1" }
+  ],
+  "triggers": []
+}

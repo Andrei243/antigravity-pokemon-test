@@ -45,7 +45,11 @@ public sealed class HgWorld
         Headbutt = HgssEncounters.ParseHeadbutt(System.IO.File.ReadAllText(maps.PathOf("files", "arc", "headbutt.json")));
         Safari = HgssEncounters.ParseSafari(System.IO.File.ReadAllText(maps.PathOf("files", "arc", "safari_enc.json")));
         Trainers = HgssTrainers.Parse(System.IO.File.ReadAllText(maps.PathOf("files", "poketool", "trainer", "trainers.json")),
-            System.IO.File.ReadAllText(maps.PathOf("include", "constants", "trainers.h")), Problems, TrainerPrefix);
+            System.IO.File.ReadAllText(maps.PathOf("include", "constants", "trainers.h")), Problems, TrainerPrefix,
+            System.IO.File.ReadAllText(maps.PathOf("include", "constants", "trainer_class.h")),
+            System.IO.File.ReadAllText(maps.PathOf("src", "trainer_data.c")),
+            System.IO.File.ReadAllText(maps.PathOf("asm", "overlay_12_battle_command.s")));
+        HiddenItems = ReadHiddenItems(maps);
         Phone = Phonebook.Parse(System.IO.File.ReadAllText(maps.PathOf("files", "tel", "pmtel_book.json")), Problems, TrainerPrefix);
 
         // Which chunks are rooms: those of a matrix whose areas are interiors
@@ -56,6 +60,34 @@ public sealed class HgWorld
             foreach (int land in matrix.Land)
                 if (land != Matrix.NoLand) roomChunk[land] = roomChunk.GetValueOrDefault(land) || header.MapType == "INTERIOR";
         }
+    }
+
+    /// <summary>
+    /// What each hidden item holds, by the label its sign's script has (<c>std_hiddenitem_r29_r30_t21_nugget</c>; plan 20
+    /// · J2): <c>include/constants/hidden_items.h</c> numbers the labels, and the row of <c>sHiddenItemParam</c>
+    /// (<c>src/data/fieldmap/hidden_items.h</c>) whose last field is that number gives the item and how many. Its flag is
+    /// ours, named after the label (<c>FLAG_HIDDEN_ITEM_R29_R30_T21_NUGGET</c>), as FireRed's are.
+    /// </summary>
+    public Dictionary<string, (string Item, int Count, string Flag)> HiddenItems { get; }
+
+    private Dictionary<string, (string Item, int Count, string Flag)> ReadHiddenItems(HgMaps maps)
+    {
+        var found = new Dictionary<string, (string, int, string)>(StringComparer.Ordinal);
+        string constants = maps.PathOf("include", "constants", "hidden_items.h"), table = maps.PathOf("src", "data", "fieldmap", "hidden_items.h");
+        if (!System.IO.File.Exists(constants) || !System.IO.File.Exists(table)) return found;
+        var rows = new Dictionary<int, (string Item, int Count)>();
+        foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(System.IO.File.ReadAllText(table),
+                     @"\{\s*(ITEM_\w+)\s*,\s*(\d+)\s*,\s*\d+\s*,\s*\d+\s*,\s*(\d+)\s*\}"))
+            rows.TryAdd(int.Parse(m.Groups[3].Value, CultureInfo.InvariantCulture), (m.Groups[1].Value, int.Parse(m.Groups[2].Value, CultureInfo.InvariantCulture)));
+        foreach (System.Text.RegularExpressions.Match m in System.Text.RegularExpressions.Regex.Matches(System.IO.File.ReadAllText(constants),
+                     @"^#define\s+HIDDENITEM_(\w+)\s+(\d+)", System.Text.RegularExpressions.RegexOptions.Multiline))
+        {
+            if (!rows.TryGetValue(int.Parse(m.Groups[2].Value, CultureInfo.InvariantCulture), out var row)) continue;
+            string constant = row.Item == "ITEM_PARLYZ_HEAL" ? "ITEM_PARALYZE_HEAL" : row.Item;
+            string item = GbaNames.Item(constant) ?? Note($"the hidden item {m.Groups[1].Value} holds {row.Item}, which the game's data lacks", constant);
+            found["std_hiddenitem_" + m.Groups[1].Value.ToLowerInvariant()] = (item, row.Count, "FLAG_HIDDEN_ITEM_" + m.Groups[1].Value);
+        }
+        return found;
     }
 
     public bool IsRoom(int landId) => roomChunk.GetValueOrDefault(landId);
@@ -166,7 +198,19 @@ public sealed class HgWorld
     {
         var events = Maps.Events(header.Events);
         var wild = EncountersOf(header);
-        var land = wild == null ? null : Slots(wild.Land, "day", header.Key, range: false);
+        // HeartGold gives every slot of the grass a species for the morning, the day and the night (plan 20 · J2): the
+        // morning's is the slot's own, and the day's and the night's are kept beside it where they differ from it
+        var land = wild == null ? null : Slots(wild.Land, "morn", header.Key, range: false);
+        if (land != null)
+        {
+            var day = Slots(wild!.Land, "day", header.Key, range: false)!;
+            var night = Slots(wild.Land, "nite", header.Key, range: false)!;
+            for (int i = 0; i < land.Count; i++)
+            {
+                if (day[i].Species != land[i].Species) land[i].Day = day[i].Species;
+                if (night[i].Species != land[i].Species) land[i].Night = night[i].Species;
+            }
+        }
         return new WorldAreaFile
         {
             Key = header.Key,
@@ -217,7 +261,13 @@ public sealed class HgWorld
                     Script = o.Script
                 };
             }).ToList(),
-            Signs = events.Signs.Select(s => new AreaSign { X = s.X, Z = s.Z, Type = s.Type, Script = s.Script }).ToList(),
+            Signs = events.Signs.Select(s =>
+            {
+                var sign = new AreaSign { X = s.X, Z = s.Z, Type = s.Type, Script = s.Script };
+                if (s.Type == AreaSign.HiddenItem && HiddenItems.TryGetValue(s.Script, out var hidden))
+                    (sign.Item, sign.Count, sign.Flag) = (hidden.Item, hidden.Count > 1 ? hidden.Count : null, hidden.Flag);
+                return sign;
+            }).ToList(),
             Triggers = events.Triggers.Select(t => new AreaTrigger
             {
                 X = t.X, Z = t.Z, Width = Math.Max(1, t.Width), Depth = Math.Max(1, t.Length), Script = t.Script, Variable = t.Var, Value = t.Value

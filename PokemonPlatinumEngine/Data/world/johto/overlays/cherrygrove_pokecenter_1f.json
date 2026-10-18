@@ -1,0 +1,37 @@
+{
+  // Cherrygrove City's Pokémon Center (plan 20 · J2), from HeartGold's room. The counters for the link and the
+  // Wi-Fi Club say it is closed, as in every Center (decision 06 · 7)
+  "area": "cherrygrove_pokecenter_1f",
+  "bgmTrack": "johto/cherrygrove",
+  "people": {
+    "t21pc0101_pcwoman1": { "name": "Nurse", "script": "Nurse" },
+    "t21pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [ "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu." ]
+    },
+    "t21pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t21pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t21pc0101_pcwoman1_2": {
+      "name": "Receptionist",
+      "dialog": [ "The club downstairs is closed for now, I'm afraid." ]
+    },
+    "t21pc0101_gsbigman": {
+      "name": "Fat Man",
+      "dialog": [ "The nurse here healed my Pokémon in no time. And it didn't cost me a thing!" ]
+    },
+    "t21pc0101_gsgentleman": {
+      "name": "Gentleman",
+      "dialog": [ "A Pokémon that faints isn't lost, you know. Bring it here, and it will be right as rain." ]
+    },
+    "t21pc0101_gswoman1": {
+      "name": "Woman",
+      "dialog": [ "I came in from the rain and stayed for the chairs. They're very comfortable." ]
+    }
+  }
+}

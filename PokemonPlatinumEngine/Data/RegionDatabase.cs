@@ -326,7 +326,24 @@ public static class RegionDatabase
                 "Route2_ViridianForest_NorthEntrance", "Route22_NorthEntrance",
             }
         },
-        new() { Id = Johto, Name = "Johto", Generation = 2 },
+        new()
+        {
+            Id = Johto, Name = "Johto", Generation = 2, File = RegionFiles.Load(Johto),
+            // HeartGold's Johto, read by the second DS reader (plan 20 · J2): a new game begun there, and a Champion of
+            // Kanto who sails on, stands before the player's house in New Bark Town (plan 20's decision 1), on the
+            // region's own overworld, Johto and Kanto on one grid
+            Start = new MapSpot("Johto", 695, 397, Direction.Down),
+            Maps = new[]
+            {
+                "Johto",
+                // Plan 20 · J2: New Bark Town's rooms, Route 29's gate house, Cherrygrove City's rooms and Routes 30 and 31's
+                "NewBark_PlayersHouse_1F", "NewBark_PlayersHouse_2F", "NewBark_RivalsHouse_1F", "NewBark_RivalsHouse_2F",
+                "NewBark_ElmsLab", "NewBark_ElmsHouse", "NewBark_SouthwestHouse", "Route29_Route46Gate",
+                "Cherrygrove_PokemonCenter_1F", "Cherrygrove_PokemonCenter_B1F", "Cherrygrove_Mart", "Cherrygrove_GuideGentsHouse",
+                "Cherrygrove_SouthwestHouse", "Cherrygrove_SoutheastHouse",
+                "Route30_ApricornHouse", "Route30_MrPokemonsHouse", "Route31_VioletGate",
+            }
+        },
         new() { Id = Hoenn, Name = "Hoenn", Generation = 3 },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },

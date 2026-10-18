@@ -1,0 +1,37 @@
+{
+  "key": "cherrygrove_pokecenter_1f",
+  "index": 69,
+  "name": "Cherrygrove City",
+  "matrix": 73,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_POKESEN",
+  "nightMusic": "GS_POKESEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 19, "to": "cherrygrove", "toWarp": 0 },
+    { "x": 14, "z": 17, "to": "cherrygrove_pokecenter_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t21pc0101_pcwoman1", "looks": "pcwoman1", "movement": "15", "x": 8, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T21PC0101_000+1" },
+    { "id": "t21pc0101_pcwoman2", "looks": "pcwoman2", "movement": "15", "x": 2, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_card_explain" },
+    { "id": "t21pc0101_pcwoman2_2", "looks": "pcwoman2", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_COMM_CLUB_RECEPTIONISTS", "script": "std_union_room" },
+    { "id": "t21pc0101_pcwoman2_3", "looks": "pcwoman2", "movement": "15", "x": 11, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_COMM_CLUB_RECEPTIONISTS", "script": "std_wireless_colosseum" },
+    { "id": "t21pc0101_gsbigman", "looks": "gsbigman", "movement": "14", "x": 6, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T21PC0101_001+1" },
+    { "id": "t21pc0101_gsgentleman", "looks": "gsgentleman", "movement": "5", "x": 11, "z": 16, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T21PC0101_002+1" },
+    { "id": "t21pc0101_gswoman1", "looks": "gswoman1", "movement": "14", "x": 2, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T21PC0101_003+1" },
+    { "id": "t21pc0101_pcwoman1_2", "looks": "pcwoman1", "movement": "0", "x": 13, "z": 17, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WIFI_CLUB_CLOSED_LADY", "script": "std_wifi_club_closed" },
+    { "id": "t21pc0101_pcwoman2_4", "looks": "pcwoman2", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_COMM_CLUB_CLOSED_LADIES", "script": "T21PC0101_004+1" },
+    { "id": "t21pc0101_pcwoman2_5", "looks": "pcwoman2", "movement": "15", "x": 11, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_COMM_CLUB_CLOSED_LADIES", "script": "T21PC0101_005+1" }
+  ],
+  "signs": [
+    { "x": 4, "z": 8, "type": 0, "script": "0" }
+  ],
+  "triggers": []
+}

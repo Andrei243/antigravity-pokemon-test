@@ -1,0 +1,26 @@
+{
+  "key": "route_30_mr_pokemon_house",
+  "index": 143,
+  "name": "Route 30",
+  "matrix": 103,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_1_30",
+  "nightMusic": "GS_R_1_30",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 9, "to": "route_30", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r30r0201_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 9, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R30R0201_000+1" },
+    { "id": "r30r0201_ookido", "looks": "ookido", "movement": "0", "x": 8, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MR_POKEMONS_HOUSE_OAK", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

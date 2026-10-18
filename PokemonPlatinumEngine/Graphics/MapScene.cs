@@ -1076,7 +1076,7 @@ internal sealed class MapScene
                     jog ??= kit.Face("wall.jog", T, wallH, c => GroundBaker.PaintWall(c, style, 0, theme, look));
                     var jogTop = kit.Face($"wall.top.jog.{(s ? "s" : "")}{(wst ? "w" : "")}{(e ? "e" : "")}", T, T, c => GroundBaker.PaintWallTop(c, false, s, wst, e));
                     // Beside a lower wall its side shows too, above that wall's top
-                    bool west = wst || Map.GetGroundTile(tx - 1, ty) == TileType.Wall && tx - 1 >= lx && !Jog(tx - 1, ty), east = e || Map.GetGroundTile(tx + 1, ty) == TileType.Wall && tx + 1 < w - 1 && !Jog(tx + 1, ty);
+                    bool west = wst || tx - 1 >= lx && Map.GetGroundTile(tx - 1, ty) == TileType.Wall && !Jog(tx - 1, ty), east = e || tx + 1 < w - 1 && Map.GetGroundTile(tx + 1, ty) == TileType.Wall && !Jog(tx + 1, ty);
                     bool south = s || ty + 1 < h - 1 && Map.GetGroundTile(tx, ty + 1) == TileType.Wall && !Jog(tx, ty + 1);
                     kit.Origin = Vector3.Zero;
                     kit.Box(tx * T, tx * T + T, ty * T, ty * T + T, 0, wallH, jogTop, south ? jog : null, west ? jog : null, east ? jog : null);

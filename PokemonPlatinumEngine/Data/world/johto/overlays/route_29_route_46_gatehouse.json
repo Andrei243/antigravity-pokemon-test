@@ -1,0 +1,16 @@
+{
+  // The gate house between Route 29 and Route 46 (plan 20 · J2). Its north door leads to Route 46, plan 20 · J5's,
+  // and stays shut until then
+  "area": "route_29_route_46_gatehouse",
+  "bgmTrack": "johto/route29",
+  "people": {
+    "r29r0101_counterm": {
+      "name": "Officer",
+      "dialog": [ "Route 46 is up ahead. The path is being repaired, so I'm afraid nobody can go through for now." ]
+    },
+    "r29r0101_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "The mountain road north of here climbs all the way up to the Dark Cave. Spooky!" ]
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "id": "Johto",
+  "folder": "johto",
+  "models": "johto",
+  "map": "Johto",
+  "dex": "updated-johto",
+  "nationalUnlock": "HallOfFame",
+  "hasStory": false,
+  "rival": "Silver",
+  "heroes": { "boy": "PLAYER", "girl": "DAWN" },
+  "starters": [ "Chikorita", "Cyndaquil", "Totodile" ],
+  "badges": [ "Zephyr", "Hive", "Plain", "Fog", "Storm", "Mineral", "Glacier", "Rising" ],
+  "gates": {
+    "RockSmash": "Zephyr",
+    "Cut": "Hive",
+    "Strength": "Plain",
+    "Surf": "Fog",
+    "Fly": "Storm",
+    "Waterfall": "Rising"
+  },
+  "professor": {
+    "name": "Prof. Elm",
+    "look": "ROWAN",
+    "species": "Marill",
+    "lines": {
+      "hello": "Oh! Hello, hello! Sorry, I was miles away. Come in, come in.",
+      "welcome": "Welcome to the world of Pokémon!",
+      "myName": "I'm Elm. Most people just call me the Pokémon Professor, though I'm still young enough to blush at it.",
+      "world": "Pokémon live everywhere you can think of: in the long grass, out at sea, deep in caves and high up on the wind.",
+      "oneOfThem": "This little one is a Pokémon too. See how it bounces?",
+      "liveAlongside": "People and Pokémon look out for each other. Some share a home, and some train together and battle side by side.",
+      "study": "My own work is on how Pokémon grow and change. Every day turns up a new puzzle.",
+      "enough": "But listen to me going on! I'd rather hear about you.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "And your name is...?",
+      "nextDoor": "There's another young trainer I keep hearing about. Rather sharp, by all accounts, and never far behind anyone.",
+      "neverStill": "What did they say his name was? It's on the tip of my tongue...",
+      "fineName": "{name}! A good, strong name.",
+      "ofCourse": "{rival}! That was it. I'm sure your paths will cross.",
+      "story": "{name}, a journey all your own starts today. You'll find friends, rivals and a great deal to learn.",
+      "offYouGo": "Off you go, then. Johto is waiting for you!"
+    }
+  },
+  "spawns": [
+    { "id": 1, "area": "new_bark", "x": 695, "y": 397, "room": "NewBark_PlayersHouse_1F" },
+    { "id": 2, "area": "cherrygrove", "x": 564, "y": 392, "room": "Cherrygrove_PokemonCenter_1F" }
+  ]
+}

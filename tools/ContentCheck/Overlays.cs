@@ -152,7 +152,7 @@ public static class Overlays
         {
             string name = $"signs.{id}";
             // A GBA game's sign is a sign event, named by the script it runs (plan 19 · K1): every tile of it is read
-            var read = area.Signs.Where(s => s.Type == AreaSign.Read && s.Script == id).ToList();
+            var read = area.Signs.Where(s => s.Type != AreaSign.HiddenItem && s.Script == id).ToList();
             if (read.Count > 0)
             {
                 if (map != null && read.Any(s => map.GetSignboardAt(s.X, s.Z) != text))

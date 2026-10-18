@@ -1,0 +1,43 @@
+{
+  "key": "new_bark_elms_lab_1f",
+  "index": 61,
+  "name": "New Bark Town",
+  "matrix": 100,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_UTSUGI_RABO",
+  "nightMusic": "GS_UTSUGI_RABO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 14, "to": "new_bark", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t20r0101_doctor", "looks": "doctor", "movement": "0", "x": 6, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ELMS_LAB_ELM", "script": "T20R0101_000+1" },
+    { "id": "t20r0101_policeman", "looks": "policeman", "movement": "0", "x": 3, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ELMS_LAB_OFFICER", "script": "0" },
+    { "id": "t20r0101_assistantm", "looks": "assistantm", "movement": "0", "x": 9, "z": 12, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ELMS_LAB_AIDE", "script": "T20R0101_001+1" },
+    { "id": "t20r0101_var_1", "looks": "var_1", "movement": "0", "x": 4, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ELMS_LAB_FRIEND", "script": "0" }
+  ],
+  "signs": [
+    { "x": 1, "z": 10, "type": 0, "script": "T20R0101_005+1" },
+    { "x": 2, "z": 10, "type": 0, "script": "T20R0101_005+1" },
+    { "x": 7, "z": 10, "type": 0, "script": "T20R0101_006+1" },
+    { "x": 8, "z": 10, "type": 0, "script": "T20R0101_006+1" },
+    { "x": 9, "z": 10, "type": 0, "script": "T20R0101_007+1" },
+    { "x": 10, "z": 10, "type": 0, "script": "T20R0101_007+1" },
+    { "x": 11, "z": 10, "type": 0, "script": "T20R0101_008+1" },
+    { "x": 12, "z": 10, "type": 0, "script": "T20R0101_008+1" },
+    { "x": 6, "z": 3, "type": 0, "script": "T20R0101_009+1" },
+    { "x": 8, "z": 4, "type": 0, "script": "T20R0101_012+1" },
+    { "x": 4, "z": 3, "type": 0, "script": "T20R0101_013+1" }
+  ],
+  "triggers": [
+    { "x": 3, "z": 11, "width": 4, "depth": 1, "script": "T20R0101_003+1", "variable": "VAR_SCENE_ELMS_LAB", "value": "1" },
+    { "x": 3, "z": 10, "width": 4, "depth": 1, "script": "T20R0101_011+1", "variable": "VAR_SCENE_ELMS_LAB", "value": "0" }
+  ]
+}
