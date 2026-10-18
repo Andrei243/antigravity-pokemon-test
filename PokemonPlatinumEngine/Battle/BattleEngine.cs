@@ -669,10 +669,18 @@ public partial class BattleEngine
                     After(ImpactDelay, () => Anim.SubstituteHit(landed.To.Side, landed.To.Slot));
                 break;
             case Vanished gone:
-                Anim[gone.Place.Side, gone.Place.Slot].Away = true;
+            {
+                // It is drawn leaving the way its move goes (plan 25 · Y16): the line's own charge names the move; a
+                // Pokémon taken up by another's (Sky Drop) goes the way that one does
+                string way = showing?.Shows.OfType<Charging>().FirstOrDefault(c => c.Place == gone.Place)?.Move
+                    ?? showing?.Shows.OfType<Charging>().FirstOrDefault()?.Move ?? "";
+                if (Scene) Anim.GoAway(gone.Place.Side, gone.Place.Slot, way);
+                else Anim[gone.Place.Side, gone.Place.Slot].Away = true;
                 break;
+            }
             case Reappeared back:
-                Anim[back.Place.Side, back.Place.Slot].Away = false;
+                if (Scene) Anim.ComeBack(back.Place.Side, back.Place.Slot);
+                else Anim[back.Place.Side, back.Place.Slot].Away = false;
                 break;
             case Reshaped reshaped:
             {

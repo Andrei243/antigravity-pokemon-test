@@ -92,7 +92,12 @@ partial class Harness
                         rows.First(r => r.Label == move.Name).Tiles.Add(crop);
                     }
                     else Shot($"mv_{key}_{moment}");
-                    Console.WriteLine($"    {moment} at {cue.Age:0.00} s: {Drawn(cue, cue.Age)} quads and ribbons");
+                    // The stage's light and the bodies' motions (plan 25 · Y16), as the renderer drew them
+                    var lit = game.BattleRenderer.StageLit;
+                    var user = BodyMotions.Of(b.Anim, BattleSide.Player, 0);
+                    var target = BodyMotions.Of(b.Anim, BattleSide.Enemy, 0);
+                    Console.WriteLine($"    {moment} at {cue.Age:0.00} s: {Drawn(cue, cue.Age)} quads and ribbons; stage {lit.Amount:0.00} toward ({lit.Color.X:0.00}, {lit.Color.Y:0.00}, {lit.Color.Z:0.00}) grey {lit.Grey:0.00}"
+                        + (user.Moves ? $"; user {user}" : "") + (target.Moves ? $"; target {target}" : ""));
                 }
             }
             for (int first = 0; first < rows.Count; first += 4)

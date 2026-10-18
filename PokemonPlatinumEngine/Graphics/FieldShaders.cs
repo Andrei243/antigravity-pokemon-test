@@ -310,11 +310,16 @@ uniform vec3 fogColor;
 uniform float fogAmount;
 uniform float fogNear;
 uniform float fogFar;
+uniform vec4 stageWash;
+uniform float stageGrey;
 
 vec3 ApplyFog(vec3 color, vec3 world)
 {
     float f = smoothstep(fogNear, fogFar, length(viewPos - world)) * fogAmount;
-    return mix(color, fogColor, f);
+    vec3 c = mix(color, fogColor, f);
+    // A move's light over the battle's stage alone (plan 25 · Y16): nought everywhere else
+    c = mix(c, vec3(dot(c, vec3(0.299, 0.587, 0.114))), stageGrey);
+    return mix(c, stageWash.rgb, stageWash.a);
 }";
 
     // Slow, broad patches of cloud shade drifting across the sunlight
@@ -961,6 +966,22 @@ void main()
             Set(shader, "fogAmount", amount);
             Set(shader, "fogNear", near);
             Set(shader, "fogFar", far);
+        }
+    }
+
+    /// <summary>
+    /// A move's light over a battle's stage (plan 25 · Y16, <see cref="StageLight"/>): what is drawn after this is
+    /// drawn toward its grey and washed toward the light's colour. The battle sets it for the stage and puts it back
+    /// to <see cref="StageLight.None"/> before the Pokémon; nothing else sets it, so it is nought in the field.
+    /// </summary>
+    public void SetStageWash(StageLight light)
+    {
+        var wash = new Vector4(light.Color, Math.Clamp(light.Amount, 0f, 1f));
+        float grey = Math.Clamp(light.Grey, 0f, 1f);
+        foreach (var shader in LitPrograms)
+        {
+            Set(shader, "stageWash", wash);
+            Set(shader, "stageGrey", grey);
         }
     }
 
