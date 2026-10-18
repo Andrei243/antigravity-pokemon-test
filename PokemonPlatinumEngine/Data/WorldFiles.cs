@@ -860,6 +860,12 @@ public sealed class OverlayPerson
     public List<string>? Dialog { get; set; }
     public bool? IsStarterBriefcase { get; set; }
 
+    /// <summary>
+    /// Someone who sees to the team: a nurse, or a mother at home (plan 19 · K1: a GBA game's house is a room of its
+    /// import, with no map file to say so). A white-out wakes the player beside them.
+    /// </summary>
+    public bool? IsHealingNurse { get; set; }
+
     /// <summary>The script talking to them runs: one of the area's script file, or a common one. Left out, they do what they are.</summary>
     public string? Script { get; set; }
 
@@ -952,6 +958,9 @@ public sealed class AreaSign
 {
     /// <summary>The <see cref="Type"/> of a sign that is an item nobody can see.</summary>
     public const int HiddenItem = 2;
+
+    /// <summary>The <see cref="Type"/> of a sign that is read: its script says what it says (a GBA game's signposts, plan 19 · K1).</summary>
+    public const int Read = 0;
 
     public int X { get; set; }
     public int Z { get; set; }

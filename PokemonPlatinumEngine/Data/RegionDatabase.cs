@@ -311,9 +311,17 @@ public static class RegionDatabase
         new()
         {
             Id = Kanto, Name = "Kanto", Generation = 1, File = RegionFiles.Load(Kanto),
-            // A stand-in Pallet Town until the Kanto chapter is built
-            Start = new MapSpot("PalletTown", 9, 9),
-            Maps = new[] { "PalletTown", "PalletPlayerHouse" }
+            // FireRed's Kanto, read by the GBA reader (plan 19 · K1): a new game begun there stands before the player's
+            // house in Pallet Town, on the region's own overworld
+            Start = new MapSpot("Kanto", 66, 268, Direction.Down),
+            Maps = new[]
+            {
+                "Kanto",
+                // Plan 19 · K1: Pallet Town's rooms and Viridian City's, each a matrix of the import built from its layout
+                "PalletTown_PlayersHouse_1F", "PalletTown_PlayersHouse_2F", "PalletTown_RivalsHouse", "PalletTown_ProfessorOaksLab",
+                "ViridianCity_House", "ViridianCity_Gym", "ViridianCity_School", "ViridianCity_Mart",
+                "ViridianCity_PokemonCenter_1F", "ViridianCity_PokemonCenter_2F",
+            }
         },
         new() { Id = Johto, Name = "Johto", Generation = 2 },
         new() { Id = Hoenn, Name = "Hoenn", Generation = 3 },
@@ -330,8 +338,8 @@ public static class RegionDatabase
         // attendant yet; plan 18 · W5 gives the crossing its vessel and its scene.
         new() { From = Sinnoh, To = Kanto, Transport = Transport.Undecided },
         // As in HeartGold and SoulSilver, but the other way round: the ship sails from Vermilion to Olivine.
-        // Pallet Town's pier stands in for Vermilion's harbour until Vermilion exists.
-        new() { From = Kanto, To = Johto, Transport = Transport.Boat, DepartureMap = "PalletTown" },
+        // A sailor on Pallet Town's shore stands in for Vermilion's harbour until plan 19 · K8 opens Vermilion City.
+        new() { From = Kanto, To = Johto, Transport = Transport.Boat, DepartureMap = "Kanto" },
         new() { From = Johto, To = Hoenn, Transport = Transport.Undecided },
         new() { From = Hoenn, To = Unova, Transport = Transport.Undecided },
         new() { From = Unova, To = Kalos, Transport = Transport.Undecided },

@@ -1,0 +1,20 @@
+{
+  // The player's house downstairs (plan 19 · K1): a room built from FireRed's layout. Mom's scenes are K3's
+  "area": "pallet_town_players_house_1f",
+  "bgmTrack": "kanto/pallet",
+  "people": {
+    // As in FireRed, Mom sees to the team whenever she is spoken to
+    "mom": {
+      "name": "Mom",
+      "script": "Healer",
+      "isHealingNurse": true,
+      "dialog": [
+        "You look worn out, dear. Sit down and rest a while.",
+        "There! You and your Pokémon look much better now. Look after yourselves out there."
+      ]
+    }
+  },
+  "signs": {
+    "PalletTown_PlayersHouse_1F_EventScript_TV": "A film is on the television.\nFour kids are walking along a railway line..."
+  }
+}

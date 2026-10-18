@@ -1,0 +1,31 @@
+{
+  "key": "viridian_city_house",
+  "index": 258,
+  "name": "Viridian City",
+  "matrix": 205,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "viridian_city", "toWarp": 1 },
+    { "x": 4, "z": 7, "to": "viridian_city", "toWarp": 1 },
+    { "x": 5, "z": 7, "to": "viridian_city", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_west", "x": 7, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "ViridianCity_House_EventScript_BaldingMan" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "wander_north_and_south", "x": 2, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 2, "script": "ViridianCity_House_EventScript_LittleGirl" },
+    { "id": "spearow", "looks": "spearow", "movement": "wander_west_and_east", "x": 6, "z": 6, "facing": 2, "rangeX": 4, "rangeZ": 1, "script": "ViridianCity_House_EventScript_Speary" }
+  ],
+  "signs": [
+    { "x": 7, "z": 1, "type": 0, "script": "ViridianCity_House_EventScript_NicknameSign" }
+  ],
+  "triggers": []
+}

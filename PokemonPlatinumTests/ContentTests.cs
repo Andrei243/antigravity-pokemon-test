@@ -24,10 +24,16 @@ public class ContentTests
 
         // Everything was read: the whole world, with the maps the game makes of it, every room and every script
         var content = GameContent.OfTheGame;
-        var sinnoh = Assert.Single(content.Regions);
-        Assert.Equal(sinnoh.World.Index.Areas.Count, sinnoh.Overlays.Count);
-        Assert.NotNull(sinnoh.Maps);
-        Assert.True(content.Rooms.Count >= 300 && content.Rooms.All(room => room.Map != null));
+        // Sinnoh's and, since plan 19 · K1, Kanto's: every open area of each has its overlay
+        Assert.Contains(content.Regions, r => r.World.Index.Region == "Sinnoh");
+        Assert.Contains(content.Regions, r => r.World.Index.Region == "Kanto");
+        foreach (var region in content.Regions)
+        {
+            Assert.Equal(region.World.Index.Areas.Count, region.Overlays.Count);
+            Assert.NotNull(region.Maps);
+        }
+        // (the stand-in Pallet Town and its house left the rooms for the tests' fixtures with plan 19 · K1)
+        Assert.True(content.Rooms.Count >= 298 && content.Rooms.All(room => room.Map != null));
         Assert.True(content.Scripts.Files.Count >= 300);
         // And the lines were measured: thousands of them, none past the box's rows
         Assert.True(found.LinesByRows.Values.Sum() > 7000);

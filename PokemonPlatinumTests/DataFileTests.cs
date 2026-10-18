@@ -392,12 +392,15 @@ public class DataFileTests
         // side by side each add rooms, and two that each wrote the count they made broke the merge (plan 16 · T16)
         var files = Directory.GetFiles(GameDataFiles.PathOf(MapDatabase.Folder), "*.json").Select(Path.GetFileNameWithoutExtension).ToList();
         Assert.All(files, file => Assert.Contains(file, names));
-        Assert.True(files.Count >= 53, $"only {files.Count} map files: 51 rooms in Sinnoh and 2 hand-made maps in Kanto, at least");
-        Assert.True(names.Count - files.Count >= 90, $"only {names.Count - files.Count} maps of the imported world");
+        Assert.True(files.Count >= 51, $"only {files.Count} map files: 51 rooms in Sinnoh, at least");
+        Assert.True(names.Count - files.Count >= 90, $"only {names.Count - files.Count} maps of the imported worlds");
         Assert.Contains("Sinnoh", names);
         Assert.Contains("PlayerHouse", names);
+        // Kanto is FireRed's since plan 19 · K1, and the stand-in Pallet Town a fixture of the tests
+        Assert.Contains("Kanto", names);
+        Assert.DoesNotContain("PalletTown", names);
 
-        var town = MapDatabase.Get("PalletTown");
+        var town = Fixtures.Map("PalletTown");
         Assert.Equal(("Pallet Town", 20, 21), (town.DisplayName, town.Width, town.Height));
         Assert.False(town.IsStreamed);
         Assert.Null(town.AreaAt(5, 5));
@@ -429,7 +432,7 @@ public class DataFileTests
         // (and it went through them all: the rooms' own, and those of the maps the world makes)
         var content = ContentCheck.GameContent.OfTheGame;
         Assert.True(content.Rooms.Sum(room => room.Source!.Warps.Count) > 300);
-        Assert.True(content.Regions.Single().Maps!.Sum(map => map.Warps.Count) > 300);
+        Assert.True(content.Regions.Single(r => r.World.Index.Region == "Sinnoh").Maps!.Sum(map => map.Warps.Count) > 300);
     }
 
     [Fact]

@@ -43,8 +43,14 @@ public class SaveData
     /// </summary>
     public const int RebuiltHome = 4;
 
+    /// <summary>
+    /// The <see cref="WorldVersion"/> from which Kanto is FireRed's map, read by the GBA reader (plan 19 · K1), and the
+    /// stand-in Pallet Town and its house are gone: a save made on either wakes in Pallet Town on the map of Kanto.
+    /// </summary>
+    public const int ImportedKanto = 5;
+
     /// <summary>The <see cref="WorldVersion"/> of saves made today.</summary>
-    public const int CurrentWorld = RebuiltHome;
+    public const int CurrentWorld = ImportedKanto;
 
     public string PlayerName { get; set; } = "Lucas";
 
@@ -229,7 +235,10 @@ public class SaveData
         ["SandgemTown"] = (ImportedWorld, new MapSpot("Sinnoh", 177, 843)),
         ["Route202"] = (ImportedWorld, new MapSpot("Sinnoh", 170, 829)),
         // Outside the door of Jubilife's Pokémon Center
-        ["JubilifeCity"] = (ImportedJubilife, new MapSpot("Sinnoh", 180, 777))
+        ["JubilifeCity"] = (ImportedJubilife, new MapSpot("Sinnoh", 180, 777)),
+        // The stand-in Kanto (plan 19 · K1): before the player's house in Pallet Town, and inside its door
+        ["PalletTown"] = (ImportedKanto, new MapSpot("Kanto", 66, 268)),
+        ["PalletPlayerHouse"] = (ImportedKanto, new MapSpot("PalletTown_PlayersHouse_1F", 4, 7, Direction.Up))
     };
 
     /// <summary>Where the save's player stands on today's maps (a room's own tiles are <see cref="PlaceOn"/>'s to check).</summary>

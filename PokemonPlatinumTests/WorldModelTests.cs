@@ -68,7 +68,7 @@ public class WorldModelTests
     [Fact]
     public void EveryModelInTheGamesChunksIsInTheCatalogue()
     {
-        var world = World.LoadAll().Single();
+        var world = World.LoadAll().Single(w => w.Index.Region == "Sinnoh");
         int placed = 0;
         foreach (var entry in world.Index.Maps)
         {

@@ -173,7 +173,7 @@ public class TextTests
             "slot {s.Number} {s.Outcome}" // how the slots read, for the log's line after it
         },
         // The region, the starter and its move an old save was given, and the save's field of its checksum
-        ["Core/SaveManager.cs"] = new[] { "Lucas", "Sinnoh", "Turtwig", "Tackle", "Poké Ball", "Checksum" },
+        ["Core/SaveManager.cs"] = new[] { "Lucas", "Sinnoh", "Turtwig", "Tackle", "Poké Ball", "Checksum", "Kanto", "PalletTown_PlayersHouse_1F" },
         // English as languages.json names it and its script, the language every other falls back to
         ["Core/Language.cs"] = new[] { "English", "Latin" },
         // The folders the typeface is read from

@@ -1,0 +1,40 @@
+{
+  "key": "viridian_city_gym",
+  "index": 259,
+  "name": "Viridian City",
+  "matrix": 206,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GYM",
+  "nightMusic": "MUS_GYM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 16, "z": 22, "to": "viridian_city", "toWarp": 2 },
+    { "x": 17, "z": 22, "to": "viridian_city", "toWarp": 2 },
+    { "x": 18, "z": 22, "to": "viridian_city", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_south", "x": 10, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_BLACK_BELT_TAKASHI" },
+    { "id": "cooltrainer_m", "looks": "cooltrainer_m", "movement": "look_south", "x": 12, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_COOLTRAINER_YUJI" },
+    { "id": "black_belt_2", "looks": "black_belt", "movement": "look_north", "x": 11, "z": 14, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_BLACK_BELT_ATSUSHI" },
+    { "id": "man", "looks": "man", "movement": "look_south", "x": 10, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_TAMER_JASON" },
+    { "id": "man_2", "looks": "man", "movement": "look_east", "x": 2, "z": 21, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_TAMER_COLE" },
+    { "id": "black_belt_3", "looks": "black_belt", "movement": "look_west", "x": 3, "z": 11, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BLACK_BELT_KIYO" },
+    { "id": "cooltrainer_m_2", "looks": "cooltrainer_m", "movement": "look_south", "x": 6, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_COOLTRAINER_SAMUEL" },
+    { "id": "viridian_giovanni", "looks": "giovanni", "movement": "look_south", "x": 2, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_VIRIDIAN_GIOVANNI", "script": "ViridianCity_Gym_EventScript_Giovanni" },
+    { "id": "cooltrainer_m_3", "looks": "cooltrainer_m", "movement": "look_east", "x": 13, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_COOLTRAINER_WARREN" },
+    { "id": "gym_guy", "looks": "gym_guy", "movement": "look_south", "x": 16, "z": 20, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "ViridianCity_Gym_EventScript_GymGuy" }
+  ],
+  "signs": [
+    { "x": 15, "z": 20, "type": 0, "script": "ViridianCity_Gym_EventScript_GymStatue" },
+    { "x": 19, "z": 20, "type": 0, "script": "ViridianCity_Gym_EventScript_GymStatue" },
+    { "x": 2, "z": 2, "type": 2, "script": "", "item": "Macho Brace", "flag": "FLAG_HIDDEN_ITEM_VIRIDIAN_CITY_GYM_MACHO_BRACE" }
+  ],
+  "triggers": []
+}

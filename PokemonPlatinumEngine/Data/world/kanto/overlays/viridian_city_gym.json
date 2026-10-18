@@ -1,0 +1,7 @@
+{
+  // Viridian City's Gym (plan 19 · K1): open as a room, its door shut from the street (viridian_city.json's
+  // "locked") until its Leader comes back, plan 19 · K7, which brings its trainers and its song (FireRed's MUS_GYM,
+  // plan 19 · K3); until then nobody stands in it
+  "area": "viridian_city_gym",
+  "bgmTrack": "kanto/pallet"
+}

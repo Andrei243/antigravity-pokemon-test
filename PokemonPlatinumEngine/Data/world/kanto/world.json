@@ -1,0 +1,31 @@
+{
+  // What is built of Kanto so far (plan 19). The maps are FireRed's, read by tools/MapImporter's GBA reader
+  // (plan 18 · W6, W7: --game firered); "maps" are the maps the game makes from its matrices, "areas" the areas
+  // open to walk in. After adding an area, run `dotnet run --project tools/MapImporter -- --game firered --data`
+  // and write its overlay (overlays/<key>.json). A room is a matrix of its own built from its layout ("Indoors").
+  "region": "Kanto",
+  // A GBA game's houses are drawn into its tiles: each is found at its door (WorldMapBuilder.BuildingsAtDoors)
+  "buildingsAtDoors": true,
+  "maps": [
+    // The overworld: FireRed's connected maps stitched into one, 416 by 416 tiles, Pallet Town at its south-west
+    { "name": "Kanto", "matrix": 0, "trees": "Round" },
+    // Plan 19 · K1: Pallet Town's rooms and Viridian City's
+    { "name": "PalletTown_PlayersHouse_1F", "matrix": 201, "area": "pallet_town_players_house_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PalletTown_PlayersHouse_2F", "matrix": 202, "area": "pallet_town_players_house_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PalletTown_RivalsHouse", "matrix": 203, "area": "pallet_town_rivals_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "PalletTown_ProfessorOaksLab", "matrix": 204, "area": "pallet_town_professor_oaks_lab", "trees": "Round", "setting": "Indoors" },
+    { "name": "ViridianCity_House", "matrix": 205, "area": "viridian_city_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "ViridianCity_Gym", "matrix": 206, "area": "viridian_city_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "ViridianCity_School", "matrix": 207, "area": "viridian_city_school", "trees": "Round", "setting": "Indoors" },
+    { "name": "ViridianCity_Mart", "matrix": 208, "area": "viridian_city_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "ViridianCity_PokemonCenter_1F", "matrix": 209, "area": "viridian_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "ViridianCity_PokemonCenter_2F", "matrix": 210, "area": "viridian_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" }
+  ],
+  "areas": [
+    // Plan 19 · K1: Pallet Town, Route 1 and Viridian City, with their rooms
+    "pallet_town", "route_1", "viridian_city",
+    "pallet_town_players_house_1f", "pallet_town_players_house_2f", "pallet_town_rivals_house", "pallet_town_professor_oaks_lab",
+    "viridian_city_house", "viridian_city_gym", "viridian_city_school", "viridian_city_mart",
+    "viridian_city_pokemon_center_1f", "viridian_city_pokemon_center_2f"
+  ]
+}

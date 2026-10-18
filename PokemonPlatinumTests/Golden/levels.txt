@@ -335,6 +335,12 @@ grass 4-8
 Oreburgh Mine
 grass 5-9
 trainers 2, 6-9: worker_colin 8, worker_mason 9
+=== pallet_town
+Pallet Town
+surf 5-40
+old rod 5-10
+good rod 5-15
+super rod 15-35
 === pastoria_city
 Pastoria City
 surf 20-40
@@ -360,6 +366,9 @@ surf 35-55
 old rod 3-15
 good rod 10-35
 super rod 1-100
+=== route_1
+Route 1
+grass 2-5
 === route_201
 Route 201
 grass 2-3
@@ -799,6 +808,12 @@ old rod 3-15
 good rod 10-25
 super rod 30-55
 trainers 4, 44-50: ace_trainer_henry 48, double_team_jo_and_pat 50, dragon_tamer_ondrej 47, psychic_valencia 46
+=== viridian_city
+Viridian City
+surf 20-40
+old rod 5
+good rod 5-15
+super rod 15-35
 === wayward_cave_1f
 Wayward Cave
 grass 17-20

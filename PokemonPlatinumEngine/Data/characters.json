@@ -152,7 +152,21 @@
     "waiter": "Clerk",
     "grunt_m": "Grunt",
     "grunt_f": "Grunt",
-    "briefcase": "StarterBriefcase"
+    "briefcase": "StarterBriefcase",
+    // FireRed's looks (plan 19 · K1), until each Kanto chapter gives the classes and the cast it meets their own
+    "blue": "Rival",
+    "daisy": "Lady",
+    "woman_1": "Lady",
+    "woman_2": "Lady",
+    "woman_3": "Lady",
+    "worker_f": "Lady",
+    "fat_man": "Gentleman",
+    "old_man_1": "Gentleman",
+    "balding_man": "Gentleman",
+    "gym_guy": "Gentleman",
+    "boy": "Youngster",
+    "cable_club_receptionist": "Nurse",
+    "mg_deliveryman": "Clerk"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field

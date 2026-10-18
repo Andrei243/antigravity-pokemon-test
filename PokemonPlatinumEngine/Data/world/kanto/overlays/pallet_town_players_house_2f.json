@@ -1,0 +1,10 @@
+{
+  // The player's room (plan 19 · K1)
+  "area": "pallet_town_players_house_2f",
+  "bgmTrack": "kanto/pallet",
+  "signs": {
+    "PalletTown_PlayersHouse_2F_EventScript_PC": "{player}'s PC.\nThere's nothing stored in it yet.",
+    "PalletTown_PlayersHouse_2F_EventScript_NES": "An old games console.\nIt's been a while since anyone played it.",
+    "PalletTown_PlayersHouse_2F_EventScript_Sign": "A map of Kanto is pinned to the wall."
+  }
+}

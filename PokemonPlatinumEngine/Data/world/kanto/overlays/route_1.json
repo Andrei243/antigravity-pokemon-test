@@ -1,0 +1,26 @@
+{
+  // Route 1 (plan 19 · K1). The clerk who hands out a free Potion in the original is plan 19 · K3's, with the shop
+  // he works for; until then he only talks
+  "area": "route_1",
+  "bgmTrack": "kanto/route1",
+  "trees": "Round",
+  "people": {
+    "clerk": {
+      "name": "Mart Clerk",
+      "dialog": [
+        "I work at the Poké Mart in Viridian City, just up this road.",
+        "Drop by before you head into the grass. Potions save lives!"
+      ]
+    },
+    "boy": {
+      "name": "Boy",
+      "dialog": [
+        "See the ledges? You can hop down them, but you can't climb back up.",
+        "It's the quickest way back to Pallet Town."
+      ]
+    }
+  },
+  "signs": {
+    "Route1_EventScript_RouteSign": "Route 1\nPallet Town - Viridian City"
+  }
+}

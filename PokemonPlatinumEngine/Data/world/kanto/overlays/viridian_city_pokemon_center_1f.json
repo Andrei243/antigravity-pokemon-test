@@ -1,0 +1,20 @@
+{
+  // Viridian City's Pokémon Center (plan 19 · K1), its floor as FireRed lays it out
+  "area": "viridian_city_pokemon_center_1f",
+  "bgmTrack": "kanto/pallet",
+  "people": {
+    "viridian_nurse": { "name": "Nurse", "script": "Nurse" },
+    "gentleman": {
+      "name": "Gentleman",
+      "dialog": [ "A Pokémon Center heals your team for nothing. Come here whenever you need to." ]
+    },
+    "boy": {
+      "name": "Boy",
+      "dialog": [ "The PC in the corner keeps your Pokémon safe when your team is full." ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [ "There's a Pokémon Center in almost every town. Isn't that handy?" ]
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  // Pallet Town (plan 19 · K1): FireRed's map, our words. Professor Oak's scene at the edge of the grass, which the
+  // two triggers north of town start in the original, is plan 19 · K3's, and so is Oak himself
+  "area": "pallet_town",
+  "bgmTrack": "kanto/pallet",
+  "trees": "Round",
+  "architecture": "Clapboard",
+  "people": {
+    "pallet_sign_lady": {
+      "name": "Neighbour",
+      "dialog": [
+        "I grow flowers by the fence there. Pokémon from Route 1 come down to sniff them some mornings.",
+        "If you keep still, they don't run off!"
+      ]
+    },
+    "pallet_fat_man": {
+      "name": "Neighbour",
+      "dialog": [
+        "Did you know you can keep Pokémon inside a computer? Any PC will look after them for you.",
+        "Times have changed since I was young, I tell you."
+      ]
+    }
+  },
+  // The signposts, by the original's script each runs: what each says is ours
+  "signs": {
+    "PalletTown_EventScript_TownSign": "Pallet Town\nA quiet place to set out from.",
+    "PalletTown_EventScript_PlayersHouseSign": "{player}'s House",
+    "PalletTown_EventScript_RivalsHouseSign": "{rival}'s House",
+    "PalletTown_EventScript_OaksLabSign": "Professor Oak's\nPokémon Research Lab",
+    "PalletTown_EventScript_TrainerTips": "TRAINER TIPS\nPress Enter to open the menu.\nYou can save your game there at any time."
+  },
+  // The sailor who takes a Champion of Kanto on to Johto, on the shore south of town until plan 19 · K8 moves him to
+  // Vermilion City's harbour (RegionDatabase's link from Kanto)
+  "npcs": [
+    {
+      "id": "pallet_town.Sailor",
+      "name": "Sailor",
+      "npcType": "Clerk",
+      "x": 66,
+      "y": 277,
+      "facing": "Right",
+      "isTransportAttendant": true
+    }
+  ]
+}

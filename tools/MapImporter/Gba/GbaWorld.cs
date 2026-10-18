@@ -332,6 +332,9 @@ public sealed class GbaWorld
         var chunk = new WorldChunkFile { Id = id };
         bool mixed = false;
         var areas = new List<string>();
+        // Between the maps of the open country lies the forest every route is walled in by (plan 19 · K1): left as
+        // nothing, it was bare rock raised along Pallet Town's west. A room's or a cave's nothing stays nothing
+        bool outdoors = m.Maps.Count > 0 && GbaImport.SettingOf(m.Maps[0].Map) == MapSetting.Outdoors;
         for (int z = 0; z < T; z++)
         {
             var behaviours = new System.Text.StringBuilder();
@@ -343,7 +346,7 @@ public sealed class GbaWorld
                 int i = (cy * T + z) * m.Width + cx * T + x;
                 behaviours.Append(m.Behaviour[i].ToString("X2", CultureInfo.InvariantCulture));
                 solid.Append(m.Solid[i] ? '#' : '.');
-                cover.Append(TerrainCoverCodes.CodeOf(m.Cover[i]));
+                cover.Append(TerrainCoverCodes.CodeOf(outdoors && m.Area[i] < 0 && m.Solid[i] ? TerrainCover.Tree : m.Cover[i]));
                 bool own = m.Area[i] >= 0 && m.Area[i] != owner;
                 mixed |= own;
                 area.Append(own ? WorldChunkFile.AreaCode(m.Area[i]) : WorldChunkFile.NoArea);

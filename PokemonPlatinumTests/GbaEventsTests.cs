@@ -339,8 +339,11 @@ public sealed class GbaEventsTests : IDisposable
         Assert.False(room.IsSolid(2, 2));
         Assert.Equal(TileType.Floor, room.GetGroundTile(2, 2));
         Assert.Equal(TileType.Wall, room.GetGroundTile(0, 0));
-        Assert.Equal(TileType.Wall, room.GetGroundTile(20, 20));
-        Assert.True(room.IsSolid(20, 20));
+        // The room is as large as its layout and the wall round it, not the chunk it is laid in (plan 19 · K1)
+        Assert.True(room.Width < 32 && room.Height < 32, $"the room is {room.Width} by {room.Height}");
+        Assert.Equal(TileType.Wall, room.GetGroundTile(room.Width - 1, room.Height - 1));
+        Assert.True(room.IsSolid(room.Width - 1, room.Height - 1));
+        Assert.Equal(InteriorStyle.House, room.Interior);
 
         // And walked: from the town's street into every open tile of the room
         var reached = WorldWalk.From(name => maps[name], new MapSpot("Kanto", 3, 6));

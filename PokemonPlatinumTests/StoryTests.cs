@@ -842,7 +842,8 @@ public class StoryTests
         {
             Assert.True(map.InBounds(at.X, at.Y));
             Assert.True(ItemDatabase.Get(item.Item) != null, $"the hidden '{item.Item}' of {map.Name} is no item");
-            Assert.StartsWith("FLAG_OBTAINED_HIDDEN_", item.Flag);
+            // Platinum's flags, or FireRed's in Kanto (plan 19 · K1)
+            Assert.True(item.Flag.StartsWith("FLAG_OBTAINED_HIDDEN_", StringComparison.Ordinal) || item.Flag.StartsWith("FLAG_HIDDEN_ITEM_", StringComparison.Ordinal), item.Flag);
 
             var host = new HeadlessScriptHost { Map = map };
             Assert.Same(item, FieldScripts.HiddenAt(map, at.X, at.Y, host.Story));
@@ -981,7 +982,7 @@ public class StoryTests
     [Fact]
     public void SomeoneAtHomeHealsTheTeamWithTheirOwnWords()
     {
-        foreach (string house in new[] { "PlayerHouse", "PalletPlayerHouse" })
+        foreach (string house in new[] { "PlayerHouse" })
         {
             var mom = Walk.OwnMaps[house].Everyone.Single(n => n.IsHealingNurse);
             var (host, _) = Play(FieldScripts.For(mom)!, mom, before: h => h.Party.Add(Hurt()), file: house);

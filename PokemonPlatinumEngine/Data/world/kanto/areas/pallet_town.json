@@ -1,0 +1,67 @@
+{
+  "key": "pallet_town",
+  "index": 0,
+  "name": "Pallet Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PALLET",
+  "nightMusic": "MUS_PALLET",
+  "encounters": "pallet_town",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Shellder", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 66, "z": 267, "to": "pallet_town_players_house_1f", "toWarp": 1 },
+    { "x": 75, "z": 267, "to": "pallet_town_rivals_house", "toWarp": 0 },
+    { "x": 76, "z": 273, "to": "pallet_town_professor_oaks_lab", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "pallet_sign_lady", "looks": "woman_1", "movement": "wander_around", "x": 63, "z": 270, "facing": 1, "rangeX": 1, "rangeZ": 4, "script": "PalletTown_EventScript_SignLady" },
+    { "id": "pallet_fat_man", "looks": "fat_man", "movement": "wander_around", "x": 73, "z": 277, "facing": 1, "rangeX": 6, "rangeZ": 2, "script": "PalletTown_EventScript_FatMan" },
+    { "id": "pallet_prof_oak", "looks": "prof_oak", "movement": "look_north", "x": 70, "z": 268, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_OAK_IN_PALLET_TOWN", "script": "" }
+  ],
+  "signs": [
+    { "x": 76, "z": 276, "type": 0, "script": "PalletTown_EventScript_OaksLabSign" },
+    { "x": 64, "z": 267, "type": 0, "script": "PalletTown_EventScript_PlayersHouseSign" },
+    { "x": 73, "z": 267, "type": 0, "script": "PalletTown_EventScript_RivalsHouseSign" },
+    { "x": 69, "z": 271, "type": 0, "script": "PalletTown_EventScript_TownSign" },
+    { "x": 65, "z": 274, "type": 0, "script": "PalletTown_EventScript_TrainerTips" }
+  ],
+  "triggers": [
+    { "x": 72, "z": 261, "width": 1, "depth": 1, "script": "PalletTown_EventScript_OakTriggerLeft", "variable": "VAR_MAP_SCENE_PALLET_TOWN_OAK", "value": "0" },
+    { "x": 73, "z": 261, "width": 1, "depth": 1, "script": "PalletTown_EventScript_OakTriggerRight", "variable": "VAR_MAP_SCENE_PALLET_TOWN_OAK", "value": "0" },
+    { "x": 73, "z": 262, "width": 1, "depth": 1, "script": "PalletTown_EventScript_SignLadyTrigger", "variable": "VAR_TEMP_2", "value": "1" }
+  ]
+}

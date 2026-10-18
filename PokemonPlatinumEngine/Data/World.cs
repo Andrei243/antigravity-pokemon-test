@@ -208,10 +208,17 @@ public static class WorldMapBuilder
         int ChunkOf(int cx, int cy) =>
             swap?.Cells.FirstOrDefault(c => c.ChunkX == cx && c.ChunkY == cy) is { } swapped ? swapped.Chunk : Built(cx, cy) ? matrix.ChunkAt(cx, cy) : WorldMatrixFile.NoChunk;
         bool cave = entry.Setting == MapSetting.Cave, nothing = entry.Setting == MapSetting.Void, room = entry.Setting == MapSetting.Indoors;
-        var map = new Map(matrix.Width * T, matrix.Height * T)
+        // A room built from a layout is as large as its floor and the walls round it, not the chunk it is laid in: a
+        // room is looked at from its middle and walled at its edges (plan 19 · K1)
+        var (mapWidth, mapHeight) = room && matrix.Width == 1 && matrix.Height == 1 && world.Chunk(ChunkOf(0, 0)) is { } only
+            ? RoomExtent(only) : (matrix.Width * T, matrix.Height * T);
+        var map = new Map(mapWidth, mapHeight)
         {
             Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel, Setting = entry.Setting
         };
+        // A room built from a layout is a room of the kind its name says (plan 19 · K1): a Pokémon Center's floor, a
+        // Mart's, a lab's, and a house's for the rest, until the region's plan gives its rooms looks of their own
+        if (room) map.Interior = RoomStyleOf(entry.Name);
         // A place that is a matrix of its own is looked at with its own camera, and may be dark
         if (entry.Area != null && world.Area(entry.Area) is { } own)
         {
@@ -399,6 +406,32 @@ public static class WorldMapBuilder
         return map;
     }
 
+    /// <summary>
+    /// How large a room laid out in one chunk is (plan 19 · K1): its layout lies at the chunk's corner, so the room
+    /// reaches one tile past the last tile anyone can stand on, east and south, for the wall there.
+    /// </summary>
+    public static (int Width, int Height) RoomExtent(WorldChunkFile chunk)
+    {
+        int maxX = 0, maxZ = 0;
+        for (int z = 0; z < T; z++)
+            for (int x = 0; x < T; x++)
+                if (!chunk.SolidAt(x, z))
+                {
+                    maxX = Math.Max(maxX, x);
+                    maxZ = Math.Max(maxZ, z);
+                }
+        return (Math.Min(T, maxX + 2), Math.Min(T, maxZ + 2));
+    }
+
+    /// <summary>The look of a room built from a layout, by its map's name (<see cref="MapStructures.KindOfDoor"/>).</summary>
+    public static InteriorStyle RoomStyleOf(string name) => MapStructures.KindOfDoor(name) switch
+    {
+        BuildingKind.PokemonCenter => InteriorStyle.PokemonCenter,
+        BuildingKind.PokeMart => InteriorStyle.PokeMart,
+        BuildingKind.Lab => InteriorStyle.Lab,
+        _ => InteriorStyle.House
+    };
+
     /// <summary>How far a building found at its door reaches: a GBA game's largest houses and halls fit.</summary>
     public const int DoorBuildingWidth = 16, DoorBuildingDepth = 12;
 
@@ -437,6 +470,16 @@ public static class WorldMapBuilder
             while (z0 - 1 > dz - DoorBuildingDepth && Run(z0 - 1) is { } above && above.A >= x0 - 1 && above.B <= x1 + 1
                    && above.B - above.A + 1 >= (x1 - x0 + 1) * 3 / 4)
                 z0--;
+            // Eaves and corners the original draws beside the walls (a column of blocked tiles nobody named down at least
+            // half the house's rows) are the house's too, or they stand beside it as bare rock (plan 19 · K1)
+            bool Eaves(int x)
+            {
+                int n = 0;
+                for (int z = z0; z <= z1; z++) if (blank.Contains((x, z)) && !taken.Contains((x, z))) n++;
+                return n * 2 >= z1 - z0 + 1;
+            }
+            while (x0 - 1 > dx - DoorBuildingWidth / 2 && Eaves(x0 - 1)) x0--;
+            while (x1 + 1 < dx + DoorBuildingWidth / 2 && Eaves(x1 + 1)) x1++;
             var tiles = new HashSet<(int X, int Z)>();
             for (int z = z0; z <= z1; z++)
                 for (int x = x0; x <= x1; x++)
@@ -446,10 +489,14 @@ public static class WorldMapBuilder
                 X0 = x0, Y0 = z0, X1 = x1, Y1 = z1, RoofTile = TileType.RoofRed,
                 Kind = MapStructures.KindOfDoor(warp.TargetMap) ?? BuildingKind.House
             };
+            // The house stands on the ground before its door: its tiles were raised as bare rock while nobody knew what
+            // they were (RaiseRock), and a house on that would stand on a plinth (plan 19 · K1)
+            float ground = map.HeightAt(dx, dz + 1);
             for (int z = z0; z <= z1; z++)
                 for (int x = x0; x <= x1; x++)
                 {
                     taken.Add((x, z));
+                    if (tiles.Contains((x, z)) || map.IsSolid(x, z)) map.SetHeight(x, z, ground);
                     if (map.BehaviourAt(x, z) == TileBehavior.Door && map.GetWarpAt(x, z) is { } door)
                     {
                         map.SetGroundTile(x, z, TileType.Door, isSolid: false);
@@ -1680,6 +1727,8 @@ public static class WorldMapBuilder
         "psyduck" => "Psyduck",
         "starly" => "Starly",
         "magikarp" => "Magikarp",
+        // FireRed's (plan 19 · K1): Speary, in a house of Viridian City
+        "spearow" => "Spearow",
         "uxie" => "Uxie",
         "mesprit" => "Mesprit",
         "azelf" => "Azelf",
@@ -1838,6 +1887,7 @@ public static class WorldMapBuilder
                 Facing = FacingOf(o.Facing),
                 Dialog = person.Dialog,
                 IsStarterBriefcase = person.IsStarterBriefcase,
+                IsHealingNurse = person.IsHealingNurse,
                 Script = person.Script,
                 // The flag that hides them is the original's own unless the overlay says otherwise
                 HiddenBy = person.HiddenBy is { } hiddenBy ? (hiddenBy.Length > 0 ? hiddenBy : null) : o.HiddenBy,
@@ -1882,6 +1932,16 @@ public static class WorldMapBuilder
                 map.HiddenItems[(s.X, s.Z)] = new HiddenItem(s.Item, s.Count ?? 1, s.Flag, s.Range ?? 0);
             else if (overlay?.Read?.GetValueOrDefault(s.Script) is { Length: > 0 } read)
                 map.TileScripts[(s.X, s.Z)] = read;
+            // A GBA game's signpost is a tile and a sign event (plan 19 · K1): where the overlay gives the sign's script
+            // our words, a blocked tile of the open country that does nothing stands a signpost, read like one of
+            // Sinnoh's; in a room (a bookshelf, a PC) and on a door the tile is what it was, and is read all the same
+            else if (s.Type == AreaSign.Read && s.Script.Length > 0 && overlay?.Signs?.GetValueOrDefault(s.Script) is { } text)
+            {
+                if (!map.IsIndoors && map.IsSolid(s.X, s.Z) && map.BehaviourAt(s.X, s.Z) == TileBehavior.None)
+                    map.SetGroundTile(s.X, s.Z, TileType.Signpost, isSolid: true);
+                map.Signboards[(s.X, s.Z)] = text;
+                map.SignKeys[(s.X, s.Z)] = s.Script;
+            }
         }
 
         // The original's triggers that have a script of ours: its tiles, its variable and its value; and ours, where

@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "area": "pallet_town",
+    "x": 66,
+    "y": 268,
+    "room": "PalletTown_PlayersHouse_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 2,
+    "area": "viridian_city",
+    "x": 74,
+    "y": 207,
+    "room": "ViridianCity_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 3,
+    "area": "pewter_city",
+    "x": 65,
+    "y": 86,
+    "room": "PewterCity_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 4,
+    "area": "cerulean_city",
+    "x": 286,
+    "y": 60,
+    "room": "CeruleanCity_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 5,
+    "area": "lavender_town",
+    "x": 390,
+    "y": 136,
+    "room": "LavenderTown_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 6,
+    "area": "vermilion_city",
+    "x": 279,
+    "y": 207,
+    "room": "VermilionCity_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 7,
+    "area": "celadon_city",
+    "x": 228,
+    "y": 132,
+    "room": "CeladonCity_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 8,
+    "area": "fuchsia_city",
+    "x": 217,
+    "y": 332,
+    "room": "FuchsiaCity_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 9,
+    "area": "cinnabar_island",
+    "x": 74,
+    "y": 392,
+    "room": "CinnabarIsland_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 10,
+    "area": "indigo_plateau_exterior",
+    "x": 11,
+    "y": 17,
+    "room": "IndigoPlateau_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 11,
+    "area": "saffron_city",
+    "x": 24,
+    "y": 39,
+    "room": "SaffronCity_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 12,
+    "area": "route_4",
+    "x": 168,
+    "y": 56,
+    "room": "Route4_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 13,
+    "area": "route_10",
+    "x": 397,
+    "y": 71,
+    "room": "Route10_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 14,
+    "area": "one_island",
+    "x": 14,
+    "y": 126,
+    "room": "OneIsland_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 15,
+    "area": "two_island",
+    "x": 21,
+    "y": 48,
+    "room": "TwoIsland_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 16,
+    "area": "three_island",
+    "x": 110,
+    "y": 28,
+    "room": "ThreeIsland_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 17,
+    "area": "four_island",
+    "x": 18,
+    "y": 21,
+    "room": "FourIsland_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 18,
+    "area": "five_island",
+    "x": 66,
+    "y": 47,
+    "room": "FiveIsland_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 19,
+    "area": "seven_island",
+    "x": 60,
+    "y": 44,
+    "room": "SevenIsland_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 20,
+    "area": "six_island",
+    "x": 59,
+    "y": 132,
+    "room": "SixIsland_PokemonCenter_1F",
+    "unlockedOnArrival": true
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "key": "pallet_town_professor_oaks_lab",
+  "index": 257,
+  "name": "Pallet Town",
+  "matrix": 204,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_OAK_LAB",
+  "nightMusic": "MUS_OAK_LAB",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 12, "to": "pallet_town", "toWarp": 2 },
+    { "x": 7, "z": 12, "to": "pallet_town", "toWarp": 2 },
+    { "x": 5, "z": 12, "to": "pallet_town", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "scientist", "looks": "scientist", "movement": "look_around", "x": 3, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PalletTown_ProfessorOaksLab_EventScript_Aide1" },
+    { "id": "worker_f", "looks": "worker_f", "movement": "wander_north_and_south", "x": 2, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 4, "script": "PalletTown_ProfessorOaksLab_EventScript_Aide3" },
+    { "id": "scientist_2", "looks": "scientist", "movement": "look_around", "x": 11, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PalletTown_ProfessorOaksLab_EventScript_Aide2" },
+    { "id": "oaks_lab_prof_oak", "looks": "prof_oak", "movement": "look_south", "x": 6, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_OAK_IN_HIS_LAB", "script": "PalletTown_ProfessorOaksLab_EventScript_ProfOak" },
+    { "id": "bulbasaur_ball", "looks": "item_ball", "movement": "look_south", "x": 8, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_BULBASAUR_BALL", "script": "PalletTown_ProfessorOaksLab_EventScript_BulbasaurBall" },
+    { "id": "squirtle_ball", "looks": "item_ball", "movement": "look_south", "x": 9, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SQUIRTLE_BALL", "script": "PalletTown_ProfessorOaksLab_EventScript_SquirtleBall" },
+    { "id": "charmander_ball", "looks": "item_ball", "movement": "look_south", "x": 10, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CHARMANDER_BALL", "script": "PalletTown_ProfessorOaksLab_EventScript_CharmanderBall" },
+    { "id": "oaks_lab_rival", "looks": "blue", "movement": "look_south", "x": 5, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RIVAL_IN_LAB", "script": "PalletTown_ProfessorOaksLab_EventScript_Rival" },
+    { "id": "pokedex_1", "looks": "pokedex", "movement": "look_south", "x": 4, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEDEX", "script": "PalletTown_ProfessorOaksLab_EventScript_Pokedex" },
+    { "id": "pokedex_2", "looks": "pokedex", "movement": "look_south", "x": 5, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEDEX", "script": "PalletTown_ProfessorOaksLab_EventScript_Pokedex" }
+  ],
+  "signs": [
+    { "x": 2, "z": 1, "type": 0, "script": "PalletTown_ProfessorOaksLab_EventScript_Computer" },
+    { "x": 3, "z": 1, "type": 0, "script": "PalletTown_ProfessorOaksLab_EventScript_Computer" },
+    { "x": 6, "z": 1, "type": 0, "script": "PalletTown_ProfessorOaksLab_EventScript_LeftSign" },
+    { "x": 7, "z": 1, "type": 0, "script": "PalletTown_ProfessorOaksLab_EventScript_RightSign" }
+  ],
+  "triggers": [
+    { "x": 5, "z": 8, "width": 1, "depth": 1, "script": "PalletTown_ProfessorOaksLab_EventScript_LeaveStarterSceneTrigger", "variable": "VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", "value": "2" },
+    { "x": 6, "z": 8, "width": 1, "depth": 1, "script": "PalletTown_ProfessorOaksLab_EventScript_LeaveStarterSceneTrigger", "variable": "VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", "value": "2" },
+    { "x": 7, "z": 8, "width": 1, "depth": 1, "script": "PalletTown_ProfessorOaksLab_EventScript_LeaveStarterSceneTrigger", "variable": "VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", "value": "2" },
+    { "x": 5, "z": 8, "width": 1, "depth": 1, "script": "PalletTown_ProfessorOaksLab_EventScript_RivalBattleTriggerLeft", "variable": "VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", "value": "3" },
+    { "x": 6, "z": 8, "width": 1, "depth": 1, "script": "PalletTown_ProfessorOaksLab_EventScript_RivalBattleTriggerMid", "variable": "VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", "value": "3" },
+    { "x": 7, "z": 8, "width": 1, "depth": 1, "script": "PalletTown_ProfessorOaksLab_EventScript_RivalBattleTriggerRight", "variable": "VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", "value": "3" }
+  ]
+}
