@@ -25,6 +25,13 @@ public sealed class HgWorld
     public List<PhoneContact> Phone { get; }
     public List<string> Problems { get; } = new();
 
+    /// <summary>
+    /// What every trainer id of HeartGold's takes before it (<c>johto_leader_falkner</c>), as FireRed's take
+    /// <c>kanto_</c> (plan 19 · K2): <c>TrainerDatabase</c> reads every region's file into one table, and ids must be
+    /// unique across them. HeartGold's Kanto trainers are in Johto's file with the same prefix (plan 20).
+    /// </summary>
+    public const string TrainerPrefix = "johto_";
+
     private readonly Dictionary<int, TerrainCover[]> cover = new();
     private readonly Dictionary<int, bool> roomChunk = new();
 
@@ -38,8 +45,8 @@ public sealed class HgWorld
         Headbutt = HgssEncounters.ParseHeadbutt(System.IO.File.ReadAllText(maps.PathOf("files", "arc", "headbutt.json")));
         Safari = HgssEncounters.ParseSafari(System.IO.File.ReadAllText(maps.PathOf("files", "arc", "safari_enc.json")));
         Trainers = HgssTrainers.Parse(System.IO.File.ReadAllText(maps.PathOf("files", "poketool", "trainer", "trainers.json")),
-            System.IO.File.ReadAllText(maps.PathOf("include", "constants", "trainers.h")), Problems);
-        Phone = Phonebook.Parse(System.IO.File.ReadAllText(maps.PathOf("files", "tel", "pmtel_book.json")), Problems);
+            System.IO.File.ReadAllText(maps.PathOf("include", "constants", "trainers.h")), Problems, TrainerPrefix);
+        Phone = Phonebook.Parse(System.IO.File.ReadAllText(maps.PathOf("files", "tel", "pmtel_book.json")), Problems, TrainerPrefix);
 
         // Which chunks are rooms: those of a matrix whose areas are interiors
         foreach (var header in maps.Headers.Values)

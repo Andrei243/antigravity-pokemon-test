@@ -117,9 +117,29 @@ public static class TrainerDatabase
     /// </summary>
     private static readonly Dictionary<string, List<TrainerRecord>> RegionLists = LoadRegions();
 
-    private static readonly Dictionary<string, TrainerRecord> Trainers =
-        Platinum.Concat(MasterList).Concat(OurList).Concat(RegionLists.Values.SelectMany(l => l))
-            .ToDictionary(t => t.Id, StringComparer.OrdinalIgnoreCase);
+    private static readonly Dictionary<string, TrainerRecord> Trainers = Index(
+        new[] { (FileName, Platinum), (MastersFileName, MasterList), (OursFileName, OurList) }
+            .Concat(RegionLists.Select(r => (Path.Combine(World.Folder, r.Key, FileName), r.Value))));
+
+    /// <summary>
+    /// Every file's trainers in one table by id. An id is one trainer's across every file (a region's prefix is what
+    /// keeps them apart, <c>kanto_</c>, <c>johto_</c>), and two files that give the same one are named, both of them.
+    /// </summary>
+    public static Dictionary<string, TrainerRecord> Index(IEnumerable<(string File, List<TrainerRecord> Records)> files)
+    {
+        var table = new Dictionary<string, TrainerRecord>(StringComparer.OrdinalIgnoreCase);
+        var from = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var (file, records) in files)
+            foreach (var t in records)
+            {
+                if (from.TryGetValue(t.Id, out string? first))
+                    throw new InvalidOperationException(
+                        $"The trainer id {t.Id} is given by both {first} and {file}: ids must be unique across every file of trainers (a region's carry its prefix, kanto_ or johto_)");
+                table[t.Id] = t;
+                from[t.Id] = file;
+            }
+        return table;
+    }
 
     private static Dictionary<string, List<TrainerRecord>> LoadRegions()
     {
@@ -134,6 +154,9 @@ public static class TrainerDatabase
         }
         return lists;
     }
+
+    /// <summary>The regions with trainers of their own, by their world folder's name (<c>kanto</c>, <c>johto</c>).</summary>
+    public static IEnumerable<string> Regions => RegionLists.Keys;
 
     /// <summary>A region's own trainers (<c>Data/world/&lt;region&gt;/trainers.json</c>), or none.</summary>
     public static IReadOnlyList<TrainerRecord> OfRegion(string region) =>

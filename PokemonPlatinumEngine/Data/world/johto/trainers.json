@@ -1,6 +1,6 @@
 [
   {
-    "id": "rival_silver",
+    "id": "johto_rival_silver",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -32,7 +32,7 @@
     ]
   },
   {
-    "id": "rival_silver_2",
+    "id": "johto_rival_silver_2",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -50,7 +50,7 @@
     ]
   },
   {
-    "id": "rival_silver_3",
+    "id": "johto_rival_silver_3",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -68,7 +68,7 @@
     ]
   },
   {
-    "id": "bug_catcher_wade",
+    "id": "johto_bug_catcher_wade",
     "name": "Wade",
     "class": "Bug Catcher",
     "ai": [
@@ -104,7 +104,7 @@
     ]
   },
   {
-    "id": "beauty_victoria",
+    "id": "johto_beauty_victoria",
     "name": "Victoria",
     "class": "Beauty",
     "ai": [
@@ -134,7 +134,7 @@
     ]
   },
   {
-    "id": "policeman_keith",
+    "id": "johto_policeman_keith",
     "name": "Keith",
     "class": "Policeman",
     "ai": [
@@ -153,7 +153,7 @@
     ]
   },
   {
-    "id": "juggler_irwin",
+    "id": "johto_juggler_irwin",
     "name": "Irwin",
     "class": "Juggler",
     "ai": [
@@ -189,7 +189,7 @@
     ]
   },
   {
-    "id": "youngster_joey",
+    "id": "johto_youngster_joey",
     "name": "Joey",
     "class": "Youngster",
     "ai": [
@@ -207,7 +207,7 @@
     ]
   },
   {
-    "id": "swimmer_f_elaine",
+    "id": "johto_swimmer_f_elaine",
     "name": "Elaine",
     "class": "Swimmer F",
     "ai": [
@@ -225,7 +225,7 @@
     ]
   },
   {
-    "id": "twins_amy_and_mimi",
+    "id": "johto_twins_amy_and_mimi",
     "name": "Amy & Mimi",
     "class": "Twins",
     "ai": [
@@ -250,7 +250,7 @@
     ]
   },
   {
-    "id": "kimono_girl_mickey",
+    "id": "johto_kimono_girl_mickey",
     "name": "Mickey",
     "class": "Kimono Girl",
     "ai": [
@@ -280,7 +280,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt",
+    "id": "johto_team_rocket_grunt",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -310,7 +310,7 @@
     ]
   },
   {
-    "id": "team_rocket_f_grunt",
+    "id": "johto_team_rocket_f_grunt",
     "name": "Grunt",
     "class": "Team Rocket F",
     "ai": [
@@ -334,7 +334,7 @@
     ]
   },
   {
-    "id": "burglar_duncan",
+    "id": "johto_burglar_duncan",
     "name": "Duncan",
     "class": "Burglar",
     "ai": [
@@ -364,7 +364,7 @@
     ]
   },
   {
-    "id": "firebreather_otis",
+    "id": "johto_firebreather_otis",
     "name": "Otis",
     "class": "Firebreather",
     "ai": [
@@ -394,7 +394,7 @@
     ]
   },
   {
-    "id": "swimmer_m_simon",
+    "id": "johto_swimmer_m_simon",
     "name": "Simon",
     "class": "Swimmer M",
     "ai": [
@@ -418,7 +418,7 @@
     ]
   },
   {
-    "id": "black_belt_kenji",
+    "id": "johto_black_belt_kenji",
     "name": "Kenji",
     "class": "Black Belt",
     "ai": [
@@ -437,7 +437,7 @@
     ]
   },
   {
-    "id": "fisherman_justin",
+    "id": "johto_fisherman_justin",
     "name": "Justin",
     "class": "Fisherman",
     "ai": [
@@ -473,7 +473,7 @@
     ]
   },
   {
-    "id": "biker_mickey",
+    "id": "johto_biker_mickey",
     "name": "Mickey",
     "class": "Biker",
     "ai": [
@@ -503,7 +503,7 @@
     ]
   },
   {
-    "id": "leader_falkner_falkner",
+    "id": "johto_leader_falkner_falkner",
     "name": "Falkner",
     "class": "Leader",
     "ai": [
@@ -537,7 +537,7 @@
     ]
   },
   {
-    "id": "leader_bugsy_bugsy",
+    "id": "johto_leader_bugsy_bugsy",
     "name": "Bugsy",
     "class": "Leader",
     "ai": [
@@ -584,7 +584,7 @@
     ]
   },
   {
-    "id": "lass_carrie",
+    "id": "johto_lass_carrie",
     "name": "Carrie",
     "class": "Lass",
     "ai": [
@@ -609,7 +609,7 @@
     ]
   },
   {
-    "id": "poke_maniac_larry",
+    "id": "johto_poke_maniac_larry",
     "name": "Larry",
     "class": "Poke Maniac",
     "ai": [
@@ -628,7 +628,7 @@
     ]
   },
   {
-    "id": "school_kid_m_alan",
+    "id": "johto_school_kid_m_alan",
     "name": "Alan",
     "class": "School Kid M",
     "ai": [
@@ -647,7 +647,7 @@
     ]
   },
   {
-    "id": "hiker_russel",
+    "id": "johto_hiker_russel",
     "name": "Russel",
     "class": "Hiker",
     "ai": [
@@ -678,7 +678,7 @@
     ]
   },
   {
-    "id": "camper_roland",
+    "id": "johto_camper_roland",
     "name": "Roland",
     "class": "Camper",
     "ai": [
@@ -698,7 +698,7 @@
     ]
   },
   {
-    "id": "picnicker_liz",
+    "id": "johto_picnicker_liz",
     "name": "Liz",
     "class": "Picnicker",
     "ai": [
@@ -716,7 +716,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_jake",
+    "id": "johto_ace_trainer_m_jake",
     "name": "Jake",
     "class": "Ace Trainer M",
     "ai": [
@@ -766,7 +766,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_rod",
+    "id": "johto_bird_keeper_gs_rod",
     "name": "Rod",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -790,7 +790,7 @@
     ]
   },
   {
-    "id": "leader_whitney",
+    "id": "johto_leader_whitney",
     "name": "Whitney",
     "class": "Leader",
     "ai": [
@@ -832,7 +832,7 @@
     ]
   },
   {
-    "id": "leader_morty_morty",
+    "id": "johto_leader_morty_morty",
     "name": "Morty",
     "class": "Leader",
     "ai": [
@@ -898,7 +898,7 @@
     ]
   },
   {
-    "id": "leader_pryce_pryce",
+    "id": "johto_leader_pryce_pryce",
     "name": "Pryce",
     "class": "Leader",
     "ai": [
@@ -953,7 +953,7 @@
     ]
   },
   {
-    "id": "leader_jasmine_jasmine",
+    "id": "johto_leader_jasmine_jasmine",
     "name": "Jasmine",
     "class": "Leader",
     "ai": [
@@ -1007,7 +1007,7 @@
     ]
   },
   {
-    "id": "leader_chuck_chuck",
+    "id": "johto_leader_chuck_chuck",
     "name": "Chuck",
     "class": "Leader",
     "ai": [
@@ -1048,7 +1048,7 @@
     ]
   },
   {
-    "id": "leader_clair_clair",
+    "id": "johto_leader_clair_clair",
     "name": "Clair",
     "class": "Leader",
     "ai": [
@@ -1114,7 +1114,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_joyce",
+    "id": "johto_ace_trainer_f_joyce",
     "name": "Joyce",
     "class": "Ace Trainer F",
     "ai": [
@@ -1152,7 +1152,7 @@
     ]
   },
   {
-    "id": "gentleman_preston",
+    "id": "johto_gentleman_preston",
     "name": "Preston",
     "class": "Gentleman",
     "ai": [
@@ -1178,7 +1178,7 @@
     ]
   },
   {
-    "id": "teacher_colette",
+    "id": "johto_teacher_colette",
     "name": "Colette",
     "class": "Teacher",
     "ai": [
@@ -1198,7 +1198,7 @@
     ]
   },
   {
-    "id": "sailor_eugene",
+    "id": "johto_sailor_eugene",
     "name": "Eugene",
     "class": "Sailor",
     "ai": [
@@ -1228,7 +1228,7 @@
     ]
   },
   {
-    "id": "super_nerd_mickey",
+    "id": "johto_super_nerd_mickey",
     "name": "Mickey",
     "class": "Super Nerd",
     "ai": [
@@ -1247,7 +1247,7 @@
     ]
   },
   {
-    "id": "guitarist_clyde",
+    "id": "johto_guitarist_clyde",
     "name": "Clyde",
     "class": "Guitarist",
     "ai": [
@@ -1265,7 +1265,7 @@
     ]
   },
   {
-    "id": "psychic_m_nathan",
+    "id": "johto_psychic_m_nathan",
     "name": "Nathan",
     "class": "Psychic M",
     "ai": [
@@ -1285,7 +1285,7 @@
     ]
   },
   {
-    "id": "sage_chow",
+    "id": "johto_sage_chow",
     "name": "Chow",
     "class": "Sage",
     "ai": [
@@ -1317,7 +1317,7 @@
     ]
   },
   {
-    "id": "pokefan_m_derek",
+    "id": "johto_pokefan_m_derek",
     "name": "Derek",
     "class": "Pokefan M",
     "ai": [
@@ -1341,7 +1341,7 @@
     ]
   },
   {
-    "id": "pokefan_ruth",
+    "id": "johto_pokefan_ruth",
     "name": "Ruth",
     "class": "Pokefan",
     "ai": [
@@ -1365,7 +1365,7 @@
     ]
   },
   {
-    "id": "medium_martha",
+    "id": "johto_medium_martha",
     "name": "Martha",
     "class": "Medium",
     "ai": [
@@ -1396,7 +1396,7 @@
     ]
   },
   {
-    "id": "youngster_mikey",
+    "id": "johto_youngster_mikey",
     "name": "Mikey",
     "class": "Youngster",
     "ai": [
@@ -1420,7 +1420,7 @@
     ]
   },
   {
-    "id": "bug_catcher_rob",
+    "id": "johto_bug_catcher_rob",
     "name": "Rob",
     "class": "Bug Catcher",
     "ai": [
@@ -1444,7 +1444,7 @@
     ]
   },
   {
-    "id": "youngster_albert",
+    "id": "johto_youngster_albert",
     "name": "Albert",
     "class": "Youngster",
     "ai": [
@@ -1468,7 +1468,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_abe",
+    "id": "johto_bird_keeper_gs_abe",
     "name": "Abe",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -1486,7 +1486,7 @@
     ]
   },
   {
-    "id": "sage_nico",
+    "id": "johto_sage_nico",
     "name": "Nico",
     "class": "Sage",
     "ai": [
@@ -1518,7 +1518,7 @@
     ]
   },
   {
-    "id": "sage_edmond",
+    "id": "johto_sage_edmond",
     "name": "Edmond",
     "class": "Sage",
     "ai": [
@@ -1550,7 +1550,7 @@
     ]
   },
   {
-    "id": "sage_jin",
+    "id": "johto_sage_jin",
     "name": "Jin",
     "class": "Sage",
     "ai": [
@@ -1570,7 +1570,7 @@
     ]
   },
   {
-    "id": "sage_troy",
+    "id": "johto_sage_troy",
     "name": "Troy",
     "class": "Sage",
     "ai": [
@@ -1596,7 +1596,7 @@
     ]
   },
   {
-    "id": "sage_neal",
+    "id": "johto_sage_neal",
     "name": "Neal",
     "class": "Sage",
     "ai": [
@@ -1616,7 +1616,7 @@
     ]
   },
   {
-    "id": "youngster_gordon",
+    "id": "johto_youngster_gordon",
     "name": "Gordon",
     "class": "Youngster",
     "ai": [
@@ -1634,7 +1634,7 @@
     ]
   },
   {
-    "id": "fisherman_ralph",
+    "id": "johto_fisherman_ralph",
     "name": "Ralph",
     "class": "Fisherman",
     "ai": [
@@ -1652,7 +1652,7 @@
     ]
   },
   {
-    "id": "fisherman_arnold",
+    "id": "johto_fisherman_arnold",
     "name": "Arnold",
     "class": "Fisherman",
     "ai": [
@@ -1670,7 +1670,7 @@
     ]
   },
   {
-    "id": "fisherman_kyle",
+    "id": "johto_fisherman_kyle",
     "name": "Kyle",
     "class": "Fisherman",
     "ai": [
@@ -1700,7 +1700,7 @@
     ]
   },
   {
-    "id": "fisherman_henry",
+    "id": "johto_fisherman_henry",
     "name": "Henry",
     "class": "Fisherman",
     "ai": [
@@ -1724,7 +1724,7 @@
     ]
   },
   {
-    "id": "hiker_anthony",
+    "id": "johto_hiker_anthony",
     "name": "Anthony",
     "class": "Hiker",
     "ai": [
@@ -1749,7 +1749,7 @@
     ]
   },
   {
-    "id": "youngster_samuel",
+    "id": "johto_youngster_samuel",
     "name": "Samuel",
     "class": "Youngster",
     "ai": [
@@ -1785,7 +1785,7 @@
     ]
   },
   {
-    "id": "team_rocket_mickey",
+    "id": "johto_team_rocket_mickey",
     "name": "Mickey",
     "class": "Team Rocket",
     "ai": [
@@ -1803,7 +1803,7 @@
     ]
   },
   {
-    "id": "youngster_ian",
+    "id": "johto_youngster_ian",
     "name": "Ian",
     "class": "Youngster",
     "ai": [
@@ -1839,7 +1839,7 @@
     ]
   },
   {
-    "id": "picnicker_gina",
+    "id": "johto_picnicker_gina",
     "name": "Gina",
     "class": "Picnicker",
     "ai": [
@@ -1869,7 +1869,7 @@
     ]
   },
   {
-    "id": "camper_todd",
+    "id": "johto_camper_todd",
     "name": "Todd",
     "class": "Camper",
     "ai": [
@@ -1889,7 +1889,7 @@
     ]
   },
   {
-    "id": "bug_catcher_benny",
+    "id": "johto_bug_catcher_benny",
     "name": "Benny",
     "class": "Bug Catcher",
     "ai": [
@@ -1919,7 +1919,7 @@
     ]
   },
   {
-    "id": "bug_catcher_al",
+    "id": "johto_bug_catcher_al",
     "name": "Al",
     "class": "Bug Catcher",
     "ai": [
@@ -1943,7 +1943,7 @@
     ]
   },
   {
-    "id": "bug_catcher_josh",
+    "id": "johto_bug_catcher_josh",
     "name": "Josh",
     "class": "Bug Catcher",
     "ai": [
@@ -1961,7 +1961,7 @@
     ]
   },
   {
-    "id": "beauty_samantha",
+    "id": "johto_beauty_samantha",
     "name": "Samantha",
     "class": "Beauty",
     "ai": [
@@ -1997,7 +1997,7 @@
     ]
   },
   {
-    "id": "lass_cathy",
+    "id": "johto_lass_cathy",
     "name": "Cathy",
     "class": "Lass",
     "ai": [
@@ -2028,7 +2028,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_bryan",
+    "id": "johto_bird_keeper_gs_bryan",
     "name": "Bryan",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -2052,7 +2052,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_theo",
+    "id": "johto_bird_keeper_gs_theo",
     "name": "Theo",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -2094,7 +2094,7 @@
     ]
   },
   {
-    "id": "camper_ivan",
+    "id": "johto_camper_ivan",
     "name": "Ivan",
     "class": "Camper",
     "ai": [
@@ -2126,7 +2126,7 @@
     ]
   },
   {
-    "id": "camper_elliot",
+    "id": "johto_camper_elliot",
     "name": "Elliot",
     "class": "Camper",
     "ai": [
@@ -2152,7 +2152,7 @@
     ]
   },
   {
-    "id": "picnicker_brooke",
+    "id": "johto_picnicker_brooke",
     "name": "Brooke",
     "class": "Picnicker",
     "ai": [
@@ -2176,7 +2176,7 @@
     ]
   },
   {
-    "id": "picnicker_kim",
+    "id": "johto_picnicker_kim",
     "name": "Kim",
     "class": "Picnicker",
     "ai": [
@@ -2194,7 +2194,7 @@
     ]
   },
   {
-    "id": "bug_catcher_arnie",
+    "id": "johto_bug_catcher_arnie",
     "name": "Arnie",
     "class": "Bug Catcher",
     "ai": [
@@ -2212,7 +2212,7 @@
     ]
   },
   {
-    "id": "bug_catcher_ken",
+    "id": "johto_bug_catcher_ken",
     "name": "Ken",
     "class": "Bug Catcher",
     "ai": [
@@ -2236,7 +2236,7 @@
     ]
   },
   {
-    "id": "policeman_dirk",
+    "id": "johto_policeman_dirk",
     "name": "Dirk",
     "class": "Policeman",
     "ai": [
@@ -2261,7 +2261,7 @@
     ]
   },
   {
-    "id": "twins_tori_and_til",
+    "id": "johto_twins_tori_and_til",
     "name": "Tori & Til",
     "class": "Twins",
     "ai": [
@@ -2286,7 +2286,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_toby",
+    "id": "johto_bird_keeper_gs_toby",
     "name": "Toby",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -2316,7 +2316,7 @@
     ]
   },
   {
-    "id": "picnicker_cindy",
+    "id": "johto_picnicker_cindy",
     "name": "Cindy",
     "class": "Picnicker",
     "ai": [
@@ -2340,7 +2340,7 @@
     ]
   },
   {
-    "id": "camper_barry",
+    "id": "johto_camper_barry",
     "name": "Barry",
     "class": "Camper",
     "ai": [
@@ -2366,7 +2366,7 @@
     ]
   },
   {
-    "id": "swimmer_f_paula",
+    "id": "johto_swimmer_f_paula",
     "name": "Paula",
     "class": "Swimmer F",
     "ai": [
@@ -2390,7 +2390,7 @@
     ]
   },
   {
-    "id": "swimmer_m_randall",
+    "id": "johto_swimmer_m_randall",
     "name": "Randall",
     "class": "Swimmer M",
     "ai": [
@@ -2438,7 +2438,7 @@
     ]
   },
   {
-    "id": "sage_mickey",
+    "id": "johto_sage_mickey",
     "name": "Mickey",
     "class": "Sage",
     "ai": [
@@ -2457,7 +2457,7 @@
     ]
   },
   {
-    "id": "sage_mickey_2",
+    "id": "johto_sage_mickey_2",
     "name": "Mickey",
     "class": "Sage",
     "ai": [
@@ -2500,7 +2500,7 @@
     ]
   },
   {
-    "id": "medium_grace",
+    "id": "johto_medium_grace",
     "name": "Grace",
     "class": "Medium",
     "ai": [
@@ -2525,7 +2525,7 @@
     ]
   },
   {
-    "id": "swimmer_f_kaylee",
+    "id": "johto_swimmer_f_kaylee",
     "name": "Kaylee",
     "class": "Swimmer F",
     "ai": [
@@ -2573,7 +2573,7 @@
     ]
   },
   {
-    "id": "swimmer_f_susie",
+    "id": "johto_swimmer_f_susie",
     "name": "Susie",
     "class": "Swimmer F",
     "ai": [
@@ -2609,7 +2609,7 @@
     ]
   },
   {
-    "id": "swimmer_f_denise",
+    "id": "johto_swimmer_f_denise",
     "name": "Denise",
     "class": "Swimmer F",
     "ai": [
@@ -2627,7 +2627,7 @@
     ]
   },
   {
-    "id": "swimmer_f_kara",
+    "id": "johto_swimmer_f_kara",
     "name": "Kara",
     "class": "Swimmer F",
     "ai": [
@@ -2651,7 +2651,7 @@
     ]
   },
   {
-    "id": "swimmer_f_wendy",
+    "id": "johto_swimmer_f_wendy",
     "name": "Wendy",
     "class": "Swimmer F",
     "ai": [
@@ -2687,7 +2687,7 @@
     ]
   },
   {
-    "id": "swimmer_m_charlie",
+    "id": "johto_swimmer_m_charlie",
     "name": "Charlie",
     "class": "Swimmer M",
     "ai": [
@@ -2717,7 +2717,7 @@
     ]
   },
   {
-    "id": "swimmer_m_george",
+    "id": "johto_swimmer_m_george",
     "name": "George",
     "class": "Swimmer M",
     "ai": [
@@ -2765,7 +2765,7 @@
     ]
   },
   {
-    "id": "swimmer_m_berke",
+    "id": "johto_swimmer_m_berke",
     "name": "Berke",
     "class": "Swimmer M",
     "ai": [
@@ -2783,7 +2783,7 @@
     ]
   },
   {
-    "id": "swimmer_m_ronald",
+    "id": "johto_swimmer_m_ronald",
     "name": "Ronald",
     "class": "Swimmer M",
     "ai": [
@@ -2807,7 +2807,7 @@
     ]
   },
   {
-    "id": "swimmer_m_matthew",
+    "id": "johto_swimmer_m_matthew",
     "name": "Matthew",
     "class": "Swimmer M",
     "ai": [
@@ -2825,7 +2825,7 @@
     ]
   },
   {
-    "id": "hiker_anthony_2",
+    "id": "johto_hiker_anthony_2",
     "name": "Anthony",
     "class": "Hiker",
     "ai": [
@@ -2850,7 +2850,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_2",
+    "id": "johto_team_rocket_grunt_2",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -2874,7 +2874,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_gaven",
+    "id": "johto_ace_trainer_m_gaven",
     "name": "Gaven",
     "class": "Ace Trainer M",
     "ai": [
@@ -2924,7 +2924,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_blake",
+    "id": "johto_ace_trainer_m_blake",
     "name": "Blake",
     "class": "Ace Trainer M",
     "ai": [
@@ -2974,7 +2974,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_brian",
+    "id": "johto_ace_trainer_m_brian",
     "name": "Brian",
     "class": "Ace Trainer M",
     "ai": [
@@ -3000,7 +3000,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_mickey",
+    "id": "johto_ace_trainer_m_mickey",
     "name": "Mickey",
     "class": "Ace Trainer M",
     "ai": [
@@ -3032,7 +3032,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_mickey_2",
+    "id": "johto_ace_trainer_m_mickey_2",
     "name": "Mickey",
     "class": "Ace Trainer M",
     "ai": [
@@ -3064,7 +3064,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_mickey_3",
+    "id": "johto_ace_trainer_m_mickey_3",
     "name": "Mickey",
     "class": "Ace Trainer M",
     "ai": [
@@ -3096,7 +3096,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_ryan",
+    "id": "johto_ace_trainer_m_ryan",
     "name": "Ryan",
     "class": "Ace Trainer M",
     "ai": [
@@ -3134,7 +3134,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_alton",
+    "id": "johto_ace_trainer_m_alton",
     "name": "Alton",
     "class": "Ace Trainer M",
     "ai": [
@@ -3166,7 +3166,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_paulo",
+    "id": "johto_ace_trainer_m_paulo",
     "name": "Paulo",
     "class": "Ace Trainer M",
     "ai": [
@@ -3198,7 +3198,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_mike",
+    "id": "johto_ace_trainer_m_mike",
     "name": "Mike",
     "class": "Ace Trainer M",
     "ai": [
@@ -3218,7 +3218,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_cody",
+    "id": "johto_ace_trainer_m_cody",
     "name": "Cody",
     "class": "Ace Trainer M",
     "ai": [
@@ -3244,7 +3244,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_jamie",
+    "id": "johto_ace_trainer_f_jamie",
     "name": "Jamie",
     "class": "Ace Trainer F",
     "ai": [
@@ -3282,7 +3282,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_reena",
+    "id": "johto_ace_trainer_f_reena",
     "name": "Reena",
     "class": "Ace Trainer F",
     "ai": [
@@ -3314,7 +3314,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_megan",
+    "id": "johto_ace_trainer_f_megan",
     "name": "Megan",
     "class": "Ace Trainer F",
     "ai": [
@@ -3364,7 +3364,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_lois",
+    "id": "johto_ace_trainer_f_lois",
     "name": "Lois",
     "class": "Ace Trainer F",
     "ai": [
@@ -3402,7 +3402,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_lola",
+    "id": "johto_ace_trainer_f_lola",
     "name": "Lola",
     "class": "Ace Trainer F",
     "ai": [
@@ -3428,7 +3428,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_kate",
+    "id": "johto_ace_trainer_f_kate",
     "name": "Kate",
     "class": "Ace Trainer F",
     "ai": [
@@ -3454,7 +3454,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_fran",
+    "id": "johto_ace_trainer_f_fran",
     "name": "Fran",
     "class": "Ace Trainer F",
     "ai": [
@@ -3474,7 +3474,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_irene",
+    "id": "johto_ace_trainer_f_irene",
     "name": "Irene",
     "class": "Ace Trainer F",
     "ai": [
@@ -3500,7 +3500,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_kelly",
+    "id": "johto_ace_trainer_f_kelly",
     "name": "Kelly",
     "class": "Ace Trainer F",
     "ai": [
@@ -3532,7 +3532,7 @@
     ]
   },
   {
-    "id": "fisherman_marvin",
+    "id": "johto_fisherman_marvin",
     "name": "Marvin",
     "class": "Fisherman",
     "ai": [
@@ -3574,7 +3574,7 @@
     ]
   },
   {
-    "id": "fisherman_tully",
+    "id": "johto_fisherman_tully",
     "name": "Tully",
     "class": "Fisherman",
     "ai": [
@@ -3592,7 +3592,7 @@
     ]
   },
   {
-    "id": "fisherman_wilton",
+    "id": "johto_fisherman_wilton",
     "name": "Wilton",
     "class": "Fisherman",
     "ai": [
@@ -3622,7 +3622,7 @@
     ]
   },
   {
-    "id": "fisherman_edgar",
+    "id": "johto_fisherman_edgar",
     "name": "Edgar",
     "class": "Fisherman",
     "ai": [
@@ -3658,7 +3658,7 @@
     ]
   },
   {
-    "id": "fisherman_andre",
+    "id": "johto_fisherman_andre",
     "name": "Andre",
     "class": "Fisherman",
     "ai": [
@@ -3676,7 +3676,7 @@
     ]
   },
   {
-    "id": "fisherman_raymond",
+    "id": "johto_fisherman_raymond",
     "name": "Raymond",
     "class": "Fisherman",
     "ai": [
@@ -3712,7 +3712,7 @@
     ]
   },
   {
-    "id": "fisherman_jonah",
+    "id": "johto_fisherman_jonah",
     "name": "Jonah",
     "class": "Fisherman",
     "ai": [
@@ -3748,7 +3748,7 @@
     ]
   },
   {
-    "id": "poke_maniac_shane",
+    "id": "johto_poke_maniac_shane",
     "name": "Shane",
     "class": "Poke Maniac",
     "ai": [
@@ -3773,7 +3773,7 @@
     ]
   },
   {
-    "id": "poke_maniac_beckett",
+    "id": "johto_poke_maniac_beckett",
     "name": "Beckett",
     "class": "Poke Maniac",
     "ai": [
@@ -3792,7 +3792,7 @@
     ]
   },
   {
-    "id": "poke_maniac_brent",
+    "id": "johto_poke_maniac_brent",
     "name": "Brent",
     "class": "Poke Maniac",
     "ai": [
@@ -3817,7 +3817,7 @@
     ]
   },
   {
-    "id": "poke_maniac_ron",
+    "id": "johto_poke_maniac_ron",
     "name": "Ron",
     "class": "Poke Maniac",
     "ai": [
@@ -3836,7 +3836,7 @@
     ]
   },
   {
-    "id": "poke_maniac_morgan",
+    "id": "johto_poke_maniac_morgan",
     "name": "Morgan",
     "class": "Poke Maniac",
     "ai": [
@@ -3861,7 +3861,7 @@
     ]
   },
   {
-    "id": "hiker_benjamin",
+    "id": "johto_hiker_benjamin",
     "name": "Benjamin",
     "class": "Hiker",
     "ai": [
@@ -3892,7 +3892,7 @@
     ]
   },
   {
-    "id": "school_kid_m_johnny",
+    "id": "johto_school_kid_m_johnny",
     "name": "Johnny",
     "class": "School Kid M",
     "ai": [
@@ -3923,7 +3923,7 @@
     ]
   },
   {
-    "id": "lass_linda",
+    "id": "johto_lass_linda",
     "name": "Linda",
     "class": "Lass",
     "ai": [
@@ -3972,7 +3972,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_vance",
+    "id": "johto_bird_keeper_gs_vance",
     "name": "Vance",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -3996,7 +3996,7 @@
     ]
   },
   {
-    "id": "camper_mickey",
+    "id": "johto_camper_mickey",
     "name": "Mickey",
     "class": "Camper",
     "ai": [
@@ -4016,7 +4016,7 @@
     ]
   },
   {
-    "id": "picnicker_debra",
+    "id": "johto_picnicker_debra",
     "name": "Debra",
     "class": "Picnicker",
     "ai": [
@@ -4034,7 +4034,7 @@
     ]
   },
   {
-    "id": "bug_catcher_doug",
+    "id": "johto_bug_catcher_doug",
     "name": "Doug",
     "class": "Bug Catcher",
     "ai": [
@@ -4058,7 +4058,7 @@
     ]
   },
   {
-    "id": "camper_mickey_2",
+    "id": "johto_camper_mickey_2",
     "name": "Mickey",
     "class": "Camper",
     "ai": [
@@ -4078,7 +4078,7 @@
     ]
   },
   {
-    "id": "picnicker_gina_2",
+    "id": "johto_picnicker_gina_2",
     "name": "Gina",
     "class": "Picnicker",
     "ai": [
@@ -4108,7 +4108,7 @@
     ]
   },
   {
-    "id": "hiker_erik",
+    "id": "johto_hiker_erik",
     "name": "Erik",
     "class": "Hiker",
     "ai": [
@@ -4139,7 +4139,7 @@
     ]
   },
   {
-    "id": "hiker_michael",
+    "id": "johto_hiker_michael",
     "name": "Michael",
     "class": "Hiker",
     "ai": [
@@ -4170,7 +4170,7 @@
     ]
   },
   {
-    "id": "hiker_parry",
+    "id": "johto_hiker_parry",
     "name": "Parry",
     "class": "Hiker",
     "ai": [
@@ -4189,7 +4189,7 @@
     ]
   },
   {
-    "id": "hiker_timothy",
+    "id": "johto_hiker_timothy",
     "name": "Timothy",
     "class": "Hiker",
     "ai": [
@@ -4226,7 +4226,7 @@
     ]
   },
   {
-    "id": "camper_ted",
+    "id": "johto_camper_ted",
     "name": "Ted",
     "class": "Camper",
     "ai": [
@@ -4246,7 +4246,7 @@
     ]
   },
   {
-    "id": "camper_lloyd",
+    "id": "johto_camper_lloyd",
     "name": "Lloyd",
     "class": "Camper",
     "ai": [
@@ -4266,7 +4266,7 @@
     ]
   },
   {
-    "id": "camper_dean",
+    "id": "johto_camper_dean",
     "name": "Dean",
     "class": "Camper",
     "ai": [
@@ -4292,7 +4292,7 @@
     ]
   },
   {
-    "id": "camper_sid",
+    "id": "johto_camper_sid",
     "name": "Sid",
     "class": "Camper",
     "ai": [
@@ -4324,7 +4324,7 @@
     ]
   },
   {
-    "id": "picnicker_erin",
+    "id": "johto_picnicker_erin",
     "name": "Erin",
     "class": "Picnicker",
     "ai": [
@@ -4348,7 +4348,7 @@
     ]
   },
   {
-    "id": "picnicker_hope",
+    "id": "johto_picnicker_hope",
     "name": "Hope",
     "class": "Picnicker",
     "ai": [
@@ -4366,7 +4366,7 @@
     ]
   },
   {
-    "id": "picnicker_sharon",
+    "id": "johto_picnicker_sharon",
     "name": "Sharon",
     "class": "Picnicker",
     "ai": [
@@ -4390,7 +4390,7 @@
     ]
   },
   {
-    "id": "hiker_bailey",
+    "id": "johto_hiker_bailey",
     "name": "Bailey",
     "class": "Hiker",
     "ai": [
@@ -4433,7 +4433,7 @@
     ]
   },
   {
-    "id": "hiker_anthony_3",
+    "id": "johto_hiker_anthony_3",
     "name": "Anthony",
     "class": "Hiker",
     "ai": [
@@ -4464,7 +4464,7 @@
     ]
   },
   {
-    "id": "black_belt_yoshi",
+    "id": "johto_black_belt_yoshi",
     "name": "Yoshi",
     "class": "Black Belt",
     "ai": [
@@ -4489,7 +4489,7 @@
     ]
   },
   {
-    "id": "black_belt_lao",
+    "id": "johto_black_belt_lao",
     "name": "Lao",
     "class": "Black Belt",
     "ai": [
@@ -4514,7 +4514,7 @@
     ]
   },
   {
-    "id": "black_belt_kiyo",
+    "id": "johto_black_belt_kiyo",
     "name": "Kiyo",
     "class": "Black Belt",
     "ai": [
@@ -4539,7 +4539,7 @@
     ]
   },
   {
-    "id": "black_belt_lung",
+    "id": "johto_black_belt_lung",
     "name": "Lung",
     "class": "Black Belt",
     "ai": [
@@ -4570,7 +4570,7 @@
     ]
   },
   {
-    "id": "kimono_girl_naoko",
+    "id": "johto_kimono_girl_naoko",
     "name": "Naoko",
     "class": "Kimono Girl",
     "ai": [
@@ -4596,7 +4596,7 @@
     ]
   },
   {
-    "id": "kimono_girl_sayo",
+    "id": "johto_kimono_girl_sayo",
     "name": "Sayo",
     "class": "Kimono Girl",
     "ai": [
@@ -4622,7 +4622,7 @@
     ]
   },
   {
-    "id": "kimono_girl_zuki",
+    "id": "johto_kimono_girl_zuki",
     "name": "Zuki",
     "class": "Kimono Girl",
     "ai": [
@@ -4648,7 +4648,7 @@
     ]
   },
   {
-    "id": "kimono_girl_kuni",
+    "id": "johto_kimono_girl_kuni",
     "name": "Kuni",
     "class": "Kimono Girl",
     "ai": [
@@ -4674,7 +4674,7 @@
     ]
   },
   {
-    "id": "kimono_girl_miki",
+    "id": "johto_kimono_girl_miki",
     "name": "Miki",
     "class": "Kimono Girl",
     "ai": [
@@ -4700,7 +4700,7 @@
     ]
   },
   {
-    "id": "swimmer_f_mickey",
+    "id": "johto_swimmer_f_mickey",
     "name": "Mickey",
     "class": "Swimmer F",
     "ai": [
@@ -4718,7 +4718,7 @@
     ]
   },
   {
-    "id": "swimmer_f_mickey_2",
+    "id": "johto_swimmer_f_mickey_2",
     "name": "Mickey",
     "class": "Swimmer F",
     "ai": [
@@ -4736,7 +4736,7 @@
     ]
   },
   {
-    "id": "swimmer_f_mickey_3",
+    "id": "johto_swimmer_f_mickey_3",
     "name": "Mickey",
     "class": "Swimmer F",
     "ai": [
@@ -4754,7 +4754,7 @@
     ]
   },
   {
-    "id": "swimmer_m_mickey",
+    "id": "johto_swimmer_m_mickey",
     "name": "Mickey",
     "class": "Swimmer M",
     "ai": [
@@ -4784,7 +4784,7 @@
     ]
   },
   {
-    "id": "swimmer_m_mickey_2",
+    "id": "johto_swimmer_m_mickey_2",
     "name": "Mickey",
     "class": "Swimmer M",
     "ai": [
@@ -4808,7 +4808,7 @@
     ]
   },
   {
-    "id": "swimmer_m_mickey_3",
+    "id": "johto_swimmer_m_mickey_3",
     "name": "Mickey",
     "class": "Swimmer M",
     "ai": [
@@ -4838,7 +4838,7 @@
     ]
   },
   {
-    "id": "swimmer_m_mickey_4",
+    "id": "johto_swimmer_m_mickey_4",
     "name": "Mickey",
     "class": "Swimmer M",
     "ai": [
@@ -4868,7 +4868,7 @@
     ]
   },
   {
-    "id": "poke_maniac_brent_2",
+    "id": "johto_poke_maniac_brent_2",
     "name": "Brent",
     "class": "Poke Maniac",
     "ai": [
@@ -4899,7 +4899,7 @@
     ]
   },
   {
-    "id": "poke_maniac_brent_3",
+    "id": "johto_poke_maniac_brent_3",
     "name": "Brent",
     "class": "Poke Maniac",
     "ai": [
@@ -4936,7 +4936,7 @@
     ]
   },
   {
-    "id": "biker_mickey_2",
+    "id": "johto_biker_mickey_2",
     "name": "Mickey",
     "class": "Biker",
     "ai": [
@@ -4966,7 +4966,7 @@
     ]
   },
   {
-    "id": "medium_bethany",
+    "id": "johto_medium_bethany",
     "name": "Bethany",
     "class": "Medium",
     "ai": [
@@ -4985,7 +4985,7 @@
     ]
   },
   {
-    "id": "medium_margaret",
+    "id": "johto_medium_margaret",
     "name": "Margaret",
     "class": "Medium",
     "ai": [
@@ -5004,7 +5004,7 @@
     ]
   },
   {
-    "id": "medium_ethel",
+    "id": "johto_medium_ethel",
     "name": "Ethel",
     "class": "Medium",
     "ai": [
@@ -5023,7 +5023,7 @@
     ]
   },
   {
-    "id": "school_kid_m_jack",
+    "id": "johto_school_kid_m_jack",
     "name": "Jack",
     "class": "School Kid M",
     "ai": [
@@ -5048,7 +5048,7 @@
     ]
   },
   {
-    "id": "school_kid_m_kipp",
+    "id": "johto_school_kid_m_kipp",
     "name": "Kipp",
     "class": "School Kid M",
     "ai": [
@@ -5085,7 +5085,7 @@
     ]
   },
   {
-    "id": "beauty_mickey",
+    "id": "johto_beauty_mickey",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -5103,7 +5103,7 @@
     ]
   },
   {
-    "id": "pokefan_m_william",
+    "id": "johto_pokefan_m_william",
     "name": "William",
     "class": "Pokefan M",
     "ai": [
@@ -5121,7 +5121,7 @@
     ]
   },
   {
-    "id": "pokefan_beverly",
+    "id": "johto_pokefan_beverly",
     "name": "Beverly",
     "class": "Pokefan",
     "ai": [
@@ -5139,7 +5139,7 @@
     ]
   },
   {
-    "id": "lass_alice",
+    "id": "johto_lass_alice",
     "name": "Alice",
     "class": "Lass",
     "ai": [
@@ -5188,7 +5188,7 @@
     ]
   },
   {
-    "id": "lass_krise",
+    "id": "johto_lass_krise",
     "name": "Krise",
     "class": "Lass",
     "ai": [
@@ -5213,7 +5213,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_3",
+    "id": "johto_team_rocket_grunt_3",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5237,7 +5237,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_4",
+    "id": "johto_team_rocket_grunt_4",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5267,7 +5267,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_5",
+    "id": "johto_team_rocket_grunt_5",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5309,7 +5309,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_6",
+    "id": "johto_team_rocket_grunt_6",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5333,7 +5333,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_7",
+    "id": "johto_team_rocket_grunt_7",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5369,7 +5369,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_8",
+    "id": "johto_team_rocket_grunt_8",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5387,7 +5387,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_9",
+    "id": "johto_team_rocket_grunt_9",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5411,7 +5411,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_10",
+    "id": "johto_team_rocket_grunt_10",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5441,7 +5441,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_11",
+    "id": "johto_team_rocket_grunt_11",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5471,7 +5471,7 @@
     ]
   },
   {
-    "id": "team_rocket_mickey_2",
+    "id": "johto_team_rocket_mickey_2",
     "name": "Mickey",
     "class": "Team Rocket",
     "ai": [
@@ -5491,7 +5491,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_12",
+    "id": "johto_team_rocket_grunt_12",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5509,7 +5509,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_13",
+    "id": "johto_team_rocket_grunt_13",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5533,7 +5533,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_14",
+    "id": "johto_team_rocket_grunt_14",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -5557,7 +5557,7 @@
     ]
   },
   {
-    "id": "team_rocket_f_grunt_2",
+    "id": "johto_team_rocket_f_grunt_2",
     "name": "Grunt",
     "class": "Team Rocket F",
     "ai": [
@@ -5575,7 +5575,7 @@
     ]
   },
   {
-    "id": "team_rocket_f_grunt_3",
+    "id": "johto_team_rocket_f_grunt_3",
     "name": "Grunt",
     "class": "Team Rocket F",
     "ai": [
@@ -5599,7 +5599,7 @@
     ]
   },
   {
-    "id": "team_rocket_f_grunt_4",
+    "id": "johto_team_rocket_f_grunt_4",
     "name": "Grunt",
     "class": "Team Rocket F",
     "ai": [
@@ -5635,7 +5635,7 @@
     ]
   },
   {
-    "id": "poke_maniac_andrew",
+    "id": "johto_poke_maniac_andrew",
     "name": "Andrew",
     "class": "Poke Maniac",
     "ai": [
@@ -5660,7 +5660,7 @@
     ]
   },
   {
-    "id": "poke_maniac_calvin",
+    "id": "johto_poke_maniac_calvin",
     "name": "Calvin",
     "class": "Poke Maniac",
     "ai": [
@@ -5679,7 +5679,7 @@
     ]
   },
   {
-    "id": "hiker_phillip",
+    "id": "johto_hiker_phillip",
     "name": "Phillip",
     "class": "Hiker",
     "ai": [
@@ -5704,7 +5704,7 @@
     ]
   },
   {
-    "id": "hiker_leonard",
+    "id": "johto_hiker_leonard",
     "name": "Leonard",
     "class": "Hiker",
     "ai": [
@@ -5729,7 +5729,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_nick",
+    "id": "johto_ace_trainer_m_nick",
     "name": "Nick",
     "class": "Ace Trainer M",
     "ai": [
@@ -5779,7 +5779,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_gwen",
+    "id": "johto_ace_trainer_f_gwen",
     "name": "Gwen",
     "class": "Ace Trainer F",
     "ai": [
@@ -5817,7 +5817,7 @@
     ]
   },
   {
-    "id": "beauty_mickey_2",
+    "id": "johto_beauty_mickey_2",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -5835,7 +5835,7 @@
     ]
   },
   {
-    "id": "beauty_mickey_3",
+    "id": "johto_beauty_mickey_3",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -5853,7 +5853,7 @@
     ]
   },
   {
-    "id": "beauty_cassie",
+    "id": "johto_beauty_cassie",
     "name": "Cassie",
     "class": "Beauty",
     "ai": [
@@ -5877,7 +5877,7 @@
     ]
   },
   {
-    "id": "beauty_caroline",
+    "id": "johto_beauty_caroline",
     "name": "Caroline",
     "class": "Beauty",
     "ai": [
@@ -5907,7 +5907,7 @@
     ]
   },
   {
-    "id": "sailor_huey",
+    "id": "johto_sailor_huey",
     "name": "Huey",
     "class": "Sailor",
     "ai": [
@@ -5931,7 +5931,7 @@
     ]
   },
   {
-    "id": "sailor_terrell",
+    "id": "johto_sailor_terrell",
     "name": "Terrell",
     "class": "Sailor",
     "ai": [
@@ -5949,7 +5949,7 @@
     ]
   },
   {
-    "id": "sailor_kent",
+    "id": "johto_sailor_kent",
     "name": "Kent",
     "class": "Sailor",
     "ai": [
@@ -5985,7 +5985,7 @@
     ]
   },
   {
-    "id": "sailor_roberto",
+    "id": "johto_sailor_roberto",
     "name": "Roberto",
     "class": "Sailor",
     "ai": [
@@ -6015,7 +6015,7 @@
     ]
   },
   {
-    "id": "lass_connie",
+    "id": "johto_lass_connie",
     "name": "Connie",
     "class": "Lass",
     "ai": [
@@ -6034,7 +6034,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_15",
+    "id": "johto_team_rocket_grunt_15",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -6070,7 +6070,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_denis",
+    "id": "johto_bird_keeper_gs_denis",
     "name": "Denis",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -6100,7 +6100,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_16",
+    "id": "johto_team_rocket_grunt_16",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -6118,7 +6118,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_17",
+    "id": "johto_team_rocket_grunt_17",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -6148,7 +6148,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_18",
+    "id": "johto_team_rocket_grunt_18",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -6172,7 +6172,7 @@
     ]
   },
   {
-    "id": "team_rocket_mickey_3",
+    "id": "johto_team_rocket_mickey_3",
     "name": "Mickey",
     "class": "Team Rocket",
     "ai": [
@@ -6192,7 +6192,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_19",
+    "id": "johto_team_rocket_grunt_19",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -6210,7 +6210,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_20",
+    "id": "johto_team_rocket_grunt_20",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -6234,7 +6234,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_21",
+    "id": "johto_team_rocket_grunt_21",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -6264,7 +6264,7 @@
     ]
   },
   {
-    "id": "team_rocket_mickey_4",
+    "id": "johto_team_rocket_mickey_4",
     "name": "Mickey",
     "class": "Team Rocket",
     "ai": [
@@ -6284,7 +6284,7 @@
     ]
   },
   {
-    "id": "team_rocket_mickey_5",
+    "id": "johto_team_rocket_mickey_5",
     "name": "Mickey",
     "class": "Team Rocket",
     "ai": [
@@ -6304,7 +6304,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_22",
+    "id": "johto_team_rocket_grunt_22",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -6328,7 +6328,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_23",
+    "id": "johto_team_rocket_grunt_23",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -6352,7 +6352,7 @@
     ]
   },
   {
-    "id": "team_rocket_mickey_6",
+    "id": "johto_team_rocket_mickey_6",
     "name": "Mickey",
     "class": "Team Rocket",
     "ai": [
@@ -6376,7 +6376,7 @@
     ]
   },
   {
-    "id": "psychic_m_franklin",
+    "id": "johto_psychic_m_franklin",
     "name": "Franklin",
     "class": "Psychic M",
     "ai": [
@@ -6413,7 +6413,7 @@
     ]
   },
   {
-    "id": "gentleman_edward",
+    "id": "johto_gentleman_edward",
     "name": "Edward",
     "class": "Gentleman",
     "ai": [
@@ -6433,7 +6433,7 @@
     ]
   },
   {
-    "id": "guitarist_vincent",
+    "id": "johto_guitarist_vincent",
     "name": "Vincent",
     "class": "Guitarist",
     "ai": [
@@ -6481,7 +6481,7 @@
     ]
   },
   {
-    "id": "super_nerd_eric",
+    "id": "johto_super_nerd_eric",
     "name": "Eric",
     "class": "Super Nerd",
     "ai": [
@@ -6506,7 +6506,7 @@
     ]
   },
   {
-    "id": "hiker_eoin",
+    "id": "johto_hiker_eoin",
     "name": "Eoin",
     "class": "Hiker",
     "ai": [
@@ -6537,7 +6537,7 @@
     ]
   },
   {
-    "id": "hiker_noland",
+    "id": "johto_hiker_noland",
     "name": "Noland",
     "class": "Hiker",
     "ai": [
@@ -6562,7 +6562,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_shaye",
+    "id": "johto_ace_trainer_m_shaye",
     "name": "Shaye",
     "class": "Ace Trainer M",
     "ai": [
@@ -6612,7 +6612,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_carol",
+    "id": "johto_ace_trainer_f_carol",
     "name": "Carol",
     "class": "Ace Trainer F",
     "ai": [
@@ -6662,7 +6662,7 @@
     ]
   },
   {
-    "id": "sailor_stanly",
+    "id": "johto_sailor_stanly",
     "name": "Stanly",
     "class": "Sailor",
     "ai": [
@@ -6692,7 +6692,7 @@
     ]
   },
   {
-    "id": "sailor_jeff",
+    "id": "johto_sailor_jeff",
     "name": "Jeff",
     "class": "Sailor",
     "ai": [
@@ -6716,7 +6716,7 @@
     ]
   },
   {
-    "id": "sailor_garrett",
+    "id": "johto_sailor_garrett",
     "name": "Garrett",
     "class": "Sailor",
     "ai": [
@@ -6734,7 +6734,7 @@
     ]
   },
   {
-    "id": "sailor_kenneth",
+    "id": "johto_sailor_kenneth",
     "name": "Kenneth",
     "class": "Sailor",
     "ai": [
@@ -6770,7 +6770,7 @@
     ]
   },
   {
-    "id": "juggler_fritz",
+    "id": "johto_juggler_fritz",
     "name": "Fritz",
     "class": "Juggler",
     "ai": [
@@ -6818,7 +6818,7 @@
     ]
   },
   {
-    "id": "swimmer_f_katie",
+    "id": "johto_swimmer_f_katie",
     "name": "Katie",
     "class": "Swimmer F",
     "ai": [
@@ -6836,7 +6836,7 @@
     ]
   },
   {
-    "id": "champion_lance",
+    "id": "johto_champion_lance",
     "name": "Lance",
     "class": "Champion",
     "ai": [
@@ -6928,7 +6928,7 @@
     ]
   },
   {
-    "id": "elite_four_will_will",
+    "id": "johto_elite_four_will_will",
     "name": "Will",
     "class": "Elite Four",
     "ai": [
@@ -7006,7 +7006,7 @@
     ]
   },
   {
-    "id": "elite_four_karen_karen",
+    "id": "johto_elite_four_karen_karen",
     "name": "Karen",
     "class": "Elite Four",
     "ai": [
@@ -7084,7 +7084,7 @@
     ]
   },
   {
-    "id": "elite_four_koga_koga",
+    "id": "johto_elite_four_koga_koga",
     "name": "Koga",
     "class": "Elite Four",
     "ai": [
@@ -7163,7 +7163,7 @@
     ]
   },
   {
-    "id": "bug_catcher_ed",
+    "id": "johto_bug_catcher_ed",
     "name": "Ed",
     "class": "Bug Catcher",
     "ai": [
@@ -7193,7 +7193,7 @@
     ]
   },
   {
-    "id": "bug_catcher_don",
+    "id": "johto_bug_catcher_don",
     "name": "Don",
     "class": "Bug Catcher",
     "ai": [
@@ -7217,7 +7217,7 @@
     ]
   },
   {
-    "id": "black_belt_kenji_2",
+    "id": "johto_black_belt_kenji_2",
     "name": "Kenji",
     "class": "Black Belt",
     "ai": [
@@ -7254,7 +7254,7 @@
     ]
   },
   {
-    "id": "black_belt_nob",
+    "id": "johto_black_belt_nob",
     "name": "Nob",
     "class": "Black Belt",
     "ai": [
@@ -7291,7 +7291,7 @@
     ]
   },
   {
-    "id": "swimmer_m_harold",
+    "id": "johto_swimmer_m_harold",
     "name": "Harold",
     "class": "Swimmer M",
     "ai": [
@@ -7315,7 +7315,7 @@
     ]
   },
   {
-    "id": "leader_brock_brock",
+    "id": "johto_leader_brock_brock",
     "name": "Brock",
     "class": "Leader",
     "ai": [
@@ -7394,7 +7394,7 @@
     ]
   },
   {
-    "id": "leader_misty_misty",
+    "id": "johto_leader_misty_misty",
     "name": "Misty",
     "class": "Leader",
     "ai": [
@@ -7461,7 +7461,7 @@
     ]
   },
   {
-    "id": "leader_lt_surge_lt__surge",
+    "id": "johto_leader_lt_surge_lt__surge",
     "name": "Lt. Surge",
     "class": "Leader",
     "ai": [
@@ -7540,7 +7540,7 @@
     ]
   },
   {
-    "id": "leader_erika_erika",
+    "id": "johto_leader_erika_erika",
     "name": "Erika",
     "class": "Leader",
     "ai": [
@@ -7608,7 +7608,7 @@
     ]
   },
   {
-    "id": "leader_janine_janine",
+    "id": "johto_leader_janine_janine",
     "name": "Janine",
     "class": "Leader",
     "ai": [
@@ -7687,7 +7687,7 @@
     ]
   },
   {
-    "id": "leader_sabrina_sabrina",
+    "id": "johto_leader_sabrina_sabrina",
     "name": "Sabrina",
     "class": "Leader",
     "ai": [
@@ -7742,7 +7742,7 @@
     ]
   },
   {
-    "id": "leader_blaine_blaine",
+    "id": "johto_leader_blaine_blaine",
     "name": "Blaine",
     "class": "Leader",
     "ai": [
@@ -7800,7 +7800,7 @@
     ]
   },
   {
-    "id": "pkmn_trainer_red_red",
+    "id": "johto_pkmn_trainer_red_red",
     "name": "Red",
     "class": "Pkmn Trainer Red",
     "ai": [
@@ -7892,7 +7892,7 @@
     ]
   },
   {
-    "id": "leader_blue_blue",
+    "id": "johto_leader_blue_blue",
     "name": "Blue",
     "class": "Leader",
     "ai": [
@@ -7984,7 +7984,7 @@
     ]
   },
   {
-    "id": "team_rocket_mickey_7",
+    "id": "johto_team_rocket_mickey_7",
     "name": "Mickey",
     "class": "Team Rocket",
     "ai": [
@@ -8014,7 +8014,7 @@
     ]
   },
   {
-    "id": "rival_silver_4",
+    "id": "johto_rival_silver_4",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8076,7 +8076,7 @@
     ]
   },
   {
-    "id": "rival_silver_5",
+    "id": "johto_rival_silver_5",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8162,7 +8162,7 @@
     ]
   },
   {
-    "id": "rival_silver_6",
+    "id": "johto_rival_silver_6",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8180,7 +8180,7 @@
     ]
   },
   {
-    "id": "rival_silver_7",
+    "id": "johto_rival_silver_7",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8212,7 +8212,7 @@
     ]
   },
   {
-    "id": "rival_silver_8",
+    "id": "johto_rival_silver_8",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8274,7 +8274,7 @@
     ]
   },
   {
-    "id": "rival_silver_9",
+    "id": "johto_rival_silver_9",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8360,7 +8360,7 @@
     ]
   },
   {
-    "id": "rival_silver_10",
+    "id": "johto_rival_silver_10",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8392,7 +8392,7 @@
     ]
   },
   {
-    "id": "rival_silver_11",
+    "id": "johto_rival_silver_11",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8454,7 +8454,7 @@
     ]
   },
   {
-    "id": "rival_silver_12",
+    "id": "johto_rival_silver_12",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8528,7 +8528,7 @@
     ]
   },
   {
-    "id": "rival_silver_13",
+    "id": "johto_rival_silver_13",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -8614,7 +8614,7 @@
     ]
   },
   {
-    "id": "swimmer_m_mickey_5",
+    "id": "johto_swimmer_m_mickey_5",
     "name": "Mickey",
     "class": "Swimmer M",
     "ai": [
@@ -8644,7 +8644,7 @@
     ]
   },
   {
-    "id": "camper_todd_2",
+    "id": "johto_camper_todd_2",
     "name": "Todd",
     "class": "Camper",
     "ai": [
@@ -8676,7 +8676,7 @@
     ]
   },
   {
-    "id": "camper_todd_3",
+    "id": "johto_camper_todd_3",
     "name": "Todd",
     "class": "Camper",
     "ai": [
@@ -8714,7 +8714,7 @@
     ]
   },
   {
-    "id": "picnicker_liz_2",
+    "id": "johto_picnicker_liz_2",
     "name": "Liz",
     "class": "Picnicker",
     "ai": [
@@ -8738,7 +8738,7 @@
     ]
   },
   {
-    "id": "picnicker_liz_3",
+    "id": "johto_picnicker_liz_3",
     "name": "Liz",
     "class": "Picnicker",
     "ai": [
@@ -8768,7 +8768,7 @@
     ]
   },
   {
-    "id": "black_belt_kenji_3",
+    "id": "johto_black_belt_kenji_3",
     "name": "Kenji",
     "class": "Black Belt",
     "ai": [
@@ -8805,7 +8805,7 @@
     ]
   },
   {
-    "id": "youngster_joey_2",
+    "id": "johto_youngster_joey_2",
     "name": "Joey",
     "class": "Youngster",
     "ai": [
@@ -8823,7 +8823,7 @@
     ]
   },
   {
-    "id": "youngster_joey_3",
+    "id": "johto_youngster_joey_3",
     "name": "Joey",
     "class": "Youngster",
     "ai": [
@@ -8847,7 +8847,7 @@
     ]
   },
   {
-    "id": "firebreather_richard",
+    "id": "johto_firebreather_richard",
     "name": "Richard",
     "class": "Firebreather",
     "ai": [
@@ -8865,7 +8865,7 @@
     ]
   },
   {
-    "id": "firebreather_ned",
+    "id": "johto_firebreather_ned",
     "name": "Ned",
     "class": "Firebreather",
     "ai": [
@@ -8895,7 +8895,7 @@
     ]
   },
   {
-    "id": "burglar_orson",
+    "id": "johto_burglar_orson",
     "name": "Orson",
     "class": "Burglar",
     "ai": [
@@ -8931,7 +8931,7 @@
     ]
   },
   {
-    "id": "burglar_corey",
+    "id": "johto_burglar_corey",
     "name": "Corey",
     "class": "Burglar",
     "ai": [
@@ -8967,7 +8967,7 @@
     ]
   },
   {
-    "id": "rival_silver_14",
+    "id": "johto_rival_silver_14",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -9053,7 +9053,7 @@
     ]
   },
   {
-    "id": "rival_silver_15",
+    "id": "johto_rival_silver_15",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -9139,7 +9139,7 @@
     ]
   },
   {
-    "id": "rival_silver_16",
+    "id": "johto_rival_silver_16",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -9225,7 +9225,7 @@
     ]
   },
   {
-    "id": "rival_silver_17",
+    "id": "johto_rival_silver_17",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -9299,7 +9299,7 @@
     ]
   },
   {
-    "id": "rival_silver_18",
+    "id": "johto_rival_silver_18",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -9373,7 +9373,7 @@
     ]
   },
   {
-    "id": "elder_li",
+    "id": "johto_elder_li",
     "name": "Li",
     "class": "Elder",
     "ai": [
@@ -9404,7 +9404,7 @@
     ]
   },
   {
-    "id": "swimmer_f_debbie",
+    "id": "johto_swimmer_f_debbie",
     "name": "Debbie",
     "class": "Swimmer F",
     "ai": [
@@ -9422,7 +9422,7 @@
     ]
   },
   {
-    "id": "swimmer_f_mickey_4",
+    "id": "johto_swimmer_f_mickey_4",
     "name": "Mickey",
     "class": "Swimmer F",
     "ai": [
@@ -9440,7 +9440,7 @@
     ]
   },
   {
-    "id": "swimmer_f_nicole",
+    "id": "johto_swimmer_f_nicole",
     "name": "Nicole",
     "class": "Swimmer F",
     "ai": [
@@ -9470,7 +9470,7 @@
     ]
   },
   {
-    "id": "swimmer_f_lori",
+    "id": "johto_swimmer_f_lori",
     "name": "Lori",
     "class": "Swimmer F",
     "ai": [
@@ -9518,7 +9518,7 @@
     ]
   },
   {
-    "id": "swimmer_f_mickey_5",
+    "id": "johto_swimmer_f_mickey_5",
     "name": "Mickey",
     "class": "Swimmer F",
     "ai": [
@@ -9536,7 +9536,7 @@
     ]
   },
   {
-    "id": "swimmer_f_nikki",
+    "id": "johto_swimmer_f_nikki",
     "name": "Nikki",
     "class": "Swimmer F",
     "ai": [
@@ -9560,7 +9560,7 @@
     ]
   },
   {
-    "id": "swimmer_f_diana",
+    "id": "johto_swimmer_f_diana",
     "name": "Diana",
     "class": "Swimmer F",
     "ai": [
@@ -9584,7 +9584,7 @@
     ]
   },
   {
-    "id": "swimmer_f_briana",
+    "id": "johto_swimmer_f_briana",
     "name": "Briana",
     "class": "Swimmer F",
     "ai": [
@@ -9620,7 +9620,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_hank",
+    "id": "johto_bird_keeper_gs_hank",
     "name": "Hank",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -9644,7 +9644,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_roy",
+    "id": "johto_bird_keeper_gs_roy",
     "name": "Roy",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -9668,7 +9668,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_boris",
+    "id": "johto_bird_keeper_gs_boris",
     "name": "Boris",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -9698,7 +9698,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_bob",
+    "id": "johto_bird_keeper_gs_bob",
     "name": "Bob",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -9716,7 +9716,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_jose",
+    "id": "johto_bird_keeper_gs_jose",
     "name": "Jose",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -9734,7 +9734,7 @@
     ]
   },
   {
-    "id": "camper_mickey_3",
+    "id": "johto_camper_mickey_3",
     "name": "Mickey",
     "class": "Camper",
     "ai": [
@@ -9772,7 +9772,7 @@
     ]
   },
   {
-    "id": "camper_mickey_4",
+    "id": "johto_camper_mickey_4",
     "name": "Mickey",
     "class": "Camper",
     "ai": [
@@ -9810,7 +9810,7 @@
     ]
   },
   {
-    "id": "camper_mickey_5",
+    "id": "johto_camper_mickey_5",
     "name": "Mickey",
     "class": "Camper",
     "ai": [
@@ -9848,7 +9848,7 @@
     ]
   },
   {
-    "id": "camper_mickey_6",
+    "id": "johto_camper_mickey_6",
     "name": "Mickey",
     "class": "Camper",
     "ai": [
@@ -9886,7 +9886,7 @@
     ]
   },
   {
-    "id": "camper_jerry",
+    "id": "johto_camper_jerry",
     "name": "Jerry",
     "class": "Camper",
     "ai": [
@@ -9912,7 +9912,7 @@
     ]
   },
   {
-    "id": "biker_dwayne",
+    "id": "johto_biker_dwayne",
     "name": "Dwayne",
     "class": "Biker",
     "ai": [
@@ -9948,7 +9948,7 @@
     ]
   },
   {
-    "id": "biker_harris",
+    "id": "johto_biker_harris",
     "name": "Harris",
     "class": "Biker",
     "ai": [
@@ -9966,7 +9966,7 @@
     ]
   },
   {
-    "id": "biker_zeke",
+    "id": "johto_biker_zeke",
     "name": "Zeke",
     "class": "Biker",
     "ai": [
@@ -9990,7 +9990,7 @@
     ]
   },
   {
-    "id": "biker_charles",
+    "id": "johto_biker_charles",
     "name": "Charles",
     "class": "Biker",
     "ai": [
@@ -10020,7 +10020,7 @@
     ]
   },
   {
-    "id": "biker_reese",
+    "id": "johto_biker_reese",
     "name": "Reese",
     "class": "Biker",
     "ai": [
@@ -10038,7 +10038,7 @@
     ]
   },
   {
-    "id": "biker_joel",
+    "id": "johto_biker_joel",
     "name": "Joel",
     "class": "Biker",
     "ai": [
@@ -10062,7 +10062,7 @@
     ]
   },
   {
-    "id": "biker_glenn",
+    "id": "johto_biker_glenn",
     "name": "Glenn",
     "class": "Biker",
     "ai": [
@@ -10092,7 +10092,7 @@
     ]
   },
   {
-    "id": "psychic_m_herman",
+    "id": "johto_psychic_m_herman",
     "name": "Herman",
     "class": "Psychic M",
     "ai": [
@@ -10142,7 +10142,7 @@
     ]
   },
   {
-    "id": "psychic_m_fidel",
+    "id": "johto_psychic_m_fidel",
     "name": "Fidel",
     "class": "Psychic M",
     "ai": [
@@ -10168,7 +10168,7 @@
     ]
   },
   {
-    "id": "firebreather_burt",
+    "id": "johto_firebreather_burt",
     "name": "Burt",
     "class": "Firebreather",
     "ai": [
@@ -10204,7 +10204,7 @@
     ]
   },
   {
-    "id": "firebreather_bill",
+    "id": "johto_firebreather_bill",
     "name": "Bill",
     "class": "Firebreather",
     "ai": [
@@ -10228,7 +10228,7 @@
     ]
   },
   {
-    "id": "fisherman_martin",
+    "id": "johto_fisherman_martin",
     "name": "Martin",
     "class": "Fisherman",
     "ai": [
@@ -10252,7 +10252,7 @@
     ]
   },
   {
-    "id": "fisherman_stephen",
+    "id": "johto_fisherman_stephen",
     "name": "Stephen",
     "class": "Fisherman",
     "ai": [
@@ -10282,7 +10282,7 @@
     ]
   },
   {
-    "id": "fisherman_barney",
+    "id": "johto_fisherman_barney",
     "name": "Barney",
     "class": "Fisherman",
     "ai": [
@@ -10312,7 +10312,7 @@
     ]
   },
   {
-    "id": "fisherman_tully_2",
+    "id": "johto_fisherman_tully_2",
     "name": "Tully",
     "class": "Fisherman",
     "ai": [
@@ -10330,7 +10330,7 @@
     ]
   },
   {
-    "id": "fisherman_tully_3",
+    "id": "johto_fisherman_tully_3",
     "name": "Tully",
     "class": "Fisherman",
     "ai": [
@@ -10360,7 +10360,7 @@
     ]
   },
   {
-    "id": "fisherman_wilton_2",
+    "id": "johto_fisherman_wilton_2",
     "name": "Wilton",
     "class": "Fisherman",
     "ai": [
@@ -10390,7 +10390,7 @@
     ]
   },
   {
-    "id": "twins_jo_and_zoe",
+    "id": "johto_twins_jo_and_zoe",
     "name": "Jo & Zoe",
     "class": "Twins",
     "ai": [
@@ -10427,7 +10427,7 @@
     ]
   },
   {
-    "id": "school_kid_m_danny",
+    "id": "johto_school_kid_m_danny",
     "name": "Danny",
     "class": "School Kid M",
     "ai": [
@@ -10458,7 +10458,7 @@
     ]
   },
   {
-    "id": "school_kid_m_tommy",
+    "id": "johto_school_kid_m_tommy",
     "name": "Tommy",
     "class": "School Kid M",
     "ai": [
@@ -10495,7 +10495,7 @@
     ]
   },
   {
-    "id": "school_kid_m_dudley",
+    "id": "johto_school_kid_m_dudley",
     "name": "Dudley",
     "class": "School Kid M",
     "ai": [
@@ -10516,7 +10516,7 @@
     ]
   },
   {
-    "id": "school_kid_m_joe",
+    "id": "johto_school_kid_m_joe",
     "name": "Joe",
     "class": "School Kid M",
     "ai": [
@@ -10543,7 +10543,7 @@
     ]
   },
   {
-    "id": "school_kid_m_billy",
+    "id": "johto_school_kid_m_billy",
     "name": "Billy",
     "class": "School Kid M",
     "ai": [
@@ -10574,7 +10574,7 @@
     ]
   },
   {
-    "id": "picnicker_heidi",
+    "id": "johto_picnicker_heidi",
     "name": "Heidi",
     "class": "Picnicker",
     "ai": [
@@ -10598,7 +10598,7 @@
     ]
   },
   {
-    "id": "picnicker_edna",
+    "id": "johto_picnicker_edna",
     "name": "Edna",
     "class": "Picnicker",
     "ai": [
@@ -10622,7 +10622,7 @@
     ]
   },
   {
-    "id": "picnicker_gina_3",
+    "id": "johto_picnicker_gina_3",
     "name": "Gina",
     "class": "Picnicker",
     "ai": [
@@ -10652,7 +10652,7 @@
     ]
   },
   {
-    "id": "picnicker_erin_2",
+    "id": "johto_picnicker_erin_2",
     "name": "Erin",
     "class": "Picnicker",
     "ai": [
@@ -10676,7 +10676,7 @@
     ]
   },
   {
-    "id": "picnicker_tanya",
+    "id": "johto_picnicker_tanya",
     "name": "Tanya",
     "class": "Picnicker",
     "ai": [
@@ -10700,7 +10700,7 @@
     ]
   },
   {
-    "id": "gentleman_gregory",
+    "id": "johto_gentleman_gregory",
     "name": "Gregory",
     "class": "Gentleman",
     "ai": [
@@ -10750,7 +10750,7 @@
     ]
   },
   {
-    "id": "gentleman_mickey",
+    "id": "johto_gentleman_mickey",
     "name": "Mickey",
     "class": "Gentleman",
     "ai": [
@@ -10770,7 +10770,7 @@
     ]
   },
   {
-    "id": "black_belt_wai",
+    "id": "johto_black_belt_wai",
     "name": "Wai",
     "class": "Black Belt",
     "ai": [
@@ -10801,7 +10801,7 @@
     ]
   },
   {
-    "id": "beauty_mickey_4",
+    "id": "johto_beauty_mickey_4",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -10819,7 +10819,7 @@
     ]
   },
   {
-    "id": "beauty_mickey_5",
+    "id": "johto_beauty_mickey_5",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -10837,7 +10837,7 @@
     ]
   },
   {
-    "id": "beauty_mickey_6",
+    "id": "johto_beauty_mickey_6",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -10855,7 +10855,7 @@
     ]
   },
   {
-    "id": "beauty_mickey_7",
+    "id": "johto_beauty_mickey_7",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -10873,7 +10873,7 @@
     ]
   },
   {
-    "id": "beauty_mickey_8",
+    "id": "johto_beauty_mickey_8",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -10891,7 +10891,7 @@
     ]
   },
   {
-    "id": "beauty_mickey_9",
+    "id": "johto_beauty_mickey_9",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -10909,7 +10909,7 @@
     ]
   },
   {
-    "id": "beauty_julia",
+    "id": "johto_beauty_julia",
     "name": "Julia",
     "class": "Beauty",
     "ai": [
@@ -10957,7 +10957,7 @@
     ]
   },
   {
-    "id": "beauty_mickey_10",
+    "id": "johto_beauty_mickey_10",
     "name": "Mickey",
     "class": "Beauty",
     "ai": [
@@ -10975,7 +10975,7 @@
     ]
   },
   {
-    "id": "pokefan_m_robert",
+    "id": "johto_pokefan_m_robert",
     "name": "Robert",
     "class": "Pokefan M",
     "ai": [
@@ -10993,7 +10993,7 @@
     ]
   },
   {
-    "id": "pokefan_m_joshua",
+    "id": "johto_pokefan_m_joshua",
     "name": "Joshua",
     "class": "Pokefan M",
     "ai": [
@@ -11041,7 +11041,7 @@
     ]
   },
   {
-    "id": "pokefan_m_carter",
+    "id": "johto_pokefan_m_carter",
     "name": "Carter",
     "class": "Pokefan M",
     "ai": [
@@ -11071,7 +11071,7 @@
     ]
   },
   {
-    "id": "pokefan_m_trevor",
+    "id": "johto_pokefan_m_trevor",
     "name": "Trevor",
     "class": "Pokefan M",
     "ai": [
@@ -11089,7 +11089,7 @@
     ]
   },
   {
-    "id": "pokefan_georgia",
+    "id": "johto_pokefan_georgia",
     "name": "Georgia",
     "class": "Pokefan",
     "ai": [
@@ -11131,7 +11131,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_24",
+    "id": "johto_team_rocket_grunt_24",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -11149,7 +11149,7 @@
     ]
   },
   {
-    "id": "lass_laura",
+    "id": "johto_lass_laura",
     "name": "Laura",
     "class": "Lass",
     "ai": [
@@ -11182,7 +11182,7 @@
     ]
   },
   {
-    "id": "lass_shannon",
+    "id": "johto_lass_shannon",
     "name": "Shannon",
     "class": "Lass",
     "ai": [
@@ -11213,7 +11213,7 @@
     ]
   },
   {
-    "id": "lass_michelle",
+    "id": "johto_lass_michelle",
     "name": "Michelle",
     "class": "Lass",
     "ai": [
@@ -11263,7 +11263,7 @@
     ]
   },
   {
-    "id": "hiker_clarke",
+    "id": "johto_hiker_clarke",
     "name": "Clarke",
     "class": "Hiker",
     "ai": [
@@ -11288,7 +11288,7 @@
     ]
   },
   {
-    "id": "hiker_kenny",
+    "id": "johto_hiker_kenny",
     "name": "Kenny",
     "class": "Hiker",
     "ai": [
@@ -11319,7 +11319,7 @@
     ]
   },
   {
-    "id": "hiker_jim",
+    "id": "johto_hiker_jim",
     "name": "Jim",
     "class": "Hiker",
     "ai": [
@@ -11338,7 +11338,7 @@
     ]
   },
   {
-    "id": "bug_catcher_arnie_2",
+    "id": "johto_bug_catcher_arnie_2",
     "name": "Arnie",
     "class": "Bug Catcher",
     "ai": [
@@ -11356,7 +11356,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_kevin",
+    "id": "johto_ace_trainer_m_kevin",
     "name": "Kevin",
     "class": "Ace Trainer M",
     "ai": [
@@ -11406,7 +11406,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_quinn",
+    "id": "johto_ace_trainer_f_quinn",
     "name": "Quinn",
     "class": "Ace Trainer F",
     "ai": [
@@ -11445,7 +11445,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_emma",
+    "id": "johto_ace_trainer_f_emma",
     "name": "Emma",
     "class": "Ace Trainer F",
     "ai": [
@@ -11465,7 +11465,7 @@
     ]
   },
   {
-    "id": "super_nerd_sam",
+    "id": "johto_super_nerd_sam",
     "name": "Sam",
     "class": "Super Nerd",
     "ai": [
@@ -11491,7 +11491,7 @@
     ]
   },
   {
-    "id": "super_nerd_tyrone",
+    "id": "johto_super_nerd_tyrone",
     "name": "Tyrone",
     "class": "Super Nerd",
     "ai": [
@@ -11522,7 +11522,7 @@
     ]
   },
   {
-    "id": "super_nerd_pat",
+    "id": "johto_super_nerd_pat",
     "name": "Pat",
     "class": "Super Nerd",
     "ai": [
@@ -11547,7 +11547,7 @@
     ]
   },
   {
-    "id": "super_nerd_shawn",
+    "id": "johto_super_nerd_shawn",
     "name": "Shawn",
     "class": "Super Nerd",
     "ai": [
@@ -11579,7 +11579,7 @@
     ]
   },
   {
-    "id": "medium_rebecca",
+    "id": "johto_medium_rebecca",
     "name": "Rebecca",
     "class": "Medium",
     "ai": [
@@ -11616,7 +11616,7 @@
     ]
   },
   {
-    "id": "medium_darcy",
+    "id": "johto_medium_darcy",
     "name": "Darcy",
     "class": "Medium",
     "ai": [
@@ -11653,7 +11653,7 @@
     ]
   },
   {
-    "id": "swimmer_m_jerome",
+    "id": "johto_swimmer_m_jerome",
     "name": "Jerome",
     "class": "Swimmer M",
     "ai": [
@@ -11689,7 +11689,7 @@
     ]
   },
   {
-    "id": "swimmer_m_tucker",
+    "id": "johto_swimmer_m_tucker",
     "name": "Tucker",
     "class": "Swimmer M",
     "ai": [
@@ -11713,7 +11713,7 @@
     ]
   },
   {
-    "id": "swimmer_m_mickey_6",
+    "id": "johto_swimmer_m_mickey_6",
     "name": "Mickey",
     "class": "Swimmer M",
     "ai": [
@@ -11743,7 +11743,7 @@
     ]
   },
   {
-    "id": "swimmer_m_frankie",
+    "id": "johto_swimmer_m_frankie",
     "name": "Frankie",
     "class": "Swimmer M",
     "ai": [
@@ -11761,7 +11761,7 @@
     ]
   },
   {
-    "id": "swimmer_m_tyson",
+    "id": "johto_swimmer_m_tyson",
     "name": "Tyson",
     "class": "Swimmer M",
     "ai": [
@@ -11797,7 +11797,7 @@
     ]
   },
   {
-    "id": "swimmer_m_mickey_7",
+    "id": "johto_swimmer_m_mickey_7",
     "name": "Mickey",
     "class": "Swimmer M",
     "ai": [
@@ -11827,7 +11827,7 @@
     ]
   },
   {
-    "id": "swimmer_m_mickey_8",
+    "id": "johto_swimmer_m_mickey_8",
     "name": "Mickey",
     "class": "Swimmer M",
     "ai": [
@@ -11857,7 +11857,7 @@
     ]
   },
   {
-    "id": "swimmer_m_parker",
+    "id": "johto_swimmer_m_parker",
     "name": "Parker",
     "class": "Swimmer M",
     "ai": [
@@ -11893,7 +11893,7 @@
     ]
   },
   {
-    "id": "youngster_warren",
+    "id": "johto_youngster_warren",
     "name": "Warren",
     "class": "Youngster",
     "ai": [
@@ -11917,7 +11917,7 @@
     ]
   },
   {
-    "id": "youngster_jimmy",
+    "id": "johto_youngster_jimmy",
     "name": "Jimmy",
     "class": "Youngster",
     "ai": [
@@ -11947,7 +11947,7 @@
     ]
   },
   {
-    "id": "youngster_owen",
+    "id": "johto_youngster_owen",
     "name": "Owen",
     "class": "Youngster",
     "ai": [
@@ -11965,7 +11965,7 @@
     ]
   },
   {
-    "id": "youngster_jason",
+    "id": "johto_youngster_jason",
     "name": "Jason",
     "class": "Youngster",
     "ai": [
@@ -11989,7 +11989,7 @@
     ]
   },
   {
-    "id": "teacher_hillary",
+    "id": "johto_teacher_hillary",
     "name": "Hillary",
     "class": "Teacher",
     "ai": [
@@ -12015,7 +12015,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_peter",
+    "id": "johto_bird_keeper_gs_peter",
     "name": "Peter",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -12045,7 +12045,7 @@
     ]
   },
   {
-    "id": "hiker_daniel",
+    "id": "johto_hiker_daniel",
     "name": "Daniel",
     "class": "Hiker",
     "ai": [
@@ -12064,7 +12064,7 @@
     ]
   },
   {
-    "id": "twins_dara_and_dia",
+    "id": "johto_twins_dara_and_dia",
     "name": "Dara & Dia",
     "class": "Twins",
     "ai": [
@@ -12089,7 +12089,7 @@
     ]
   },
   {
-    "id": "psychic_m_greg",
+    "id": "johto_psychic_m_greg",
     "name": "Greg",
     "class": "Psychic M",
     "ai": [
@@ -12114,7 +12114,7 @@
     ]
   },
   {
-    "id": "twins_amy_and_mimi_2",
+    "id": "johto_twins_amy_and_mimi_2",
     "name": "Amy & Mimi",
     "class": "Twins",
     "ai": [
@@ -12139,7 +12139,7 @@
     ]
   },
   {
-    "id": "firebreather_walt",
+    "id": "johto_firebreather_walt",
     "name": "Walt",
     "class": "Firebreather",
     "ai": [
@@ -12163,7 +12163,7 @@
     ]
   },
   {
-    "id": "psychic_m_nelson",
+    "id": "johto_psychic_m_nelson",
     "name": "Nelson",
     "class": "Psychic M",
     "ai": [
@@ -12200,7 +12200,7 @@
     ]
   },
   {
-    "id": "firebreather_ray",
+    "id": "johto_firebreather_ray",
     "name": "Ray",
     "class": "Firebreather",
     "ai": [
@@ -12218,7 +12218,7 @@
     ]
   },
   {
-    "id": "poke_maniac_issac",
+    "id": "johto_poke_maniac_issac",
     "name": "Issac",
     "class": "Poke Maniac",
     "ai": [
@@ -12242,7 +12242,7 @@
     ]
   },
   {
-    "id": "poke_maniac_donald",
+    "id": "johto_poke_maniac_donald",
     "name": "Donald",
     "class": "Poke Maniac",
     "ai": [
@@ -12267,7 +12267,7 @@
     ]
   },
   {
-    "id": "super_nerd_teru",
+    "id": "johto_super_nerd_teru",
     "name": "Teru",
     "class": "Super Nerd",
     "ai": [
@@ -12304,7 +12304,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_mickey_4",
+    "id": "johto_ace_trainer_m_mickey_4",
     "name": "Mickey",
     "class": "Ace Trainer M",
     "ai": [
@@ -12336,7 +12336,7 @@
     ]
   },
   {
-    "id": "psychic_m_mark",
+    "id": "johto_psychic_m_mark",
     "name": "Mark",
     "class": "Psychic M",
     "ai": [
@@ -12381,7 +12381,7 @@
     ]
   },
   {
-    "id": "juggler_horton",
+    "id": "johto_juggler_horton",
     "name": "Horton",
     "class": "Juggler",
     "ai": [
@@ -12429,7 +12429,7 @@
     ]
   },
   {
-    "id": "school_kid_m_chad",
+    "id": "johto_school_kid_m_chad",
     "name": "Chad",
     "class": "School Kid M",
     "ai": [
@@ -12448,7 +12448,7 @@
     ]
   },
   {
-    "id": "beauty_valerie",
+    "id": "johto_beauty_valerie",
     "name": "Valerie",
     "class": "Beauty",
     "ai": [
@@ -12484,7 +12484,7 @@
     ]
   },
   {
-    "id": "firebreather_lyle",
+    "id": "johto_firebreather_lyle",
     "name": "Lyle",
     "class": "Firebreather",
     "ai": [
@@ -12514,7 +12514,7 @@
     ]
   },
   {
-    "id": "lass_dana",
+    "id": "johto_lass_dana",
     "name": "Dana",
     "class": "Lass",
     "ai": [
@@ -12553,7 +12553,7 @@
     ]
   },
   {
-    "id": "gentleman_alfred",
+    "id": "johto_gentleman_alfred",
     "name": "Alfred",
     "class": "Gentleman",
     "ai": [
@@ -12573,7 +12573,7 @@
     ]
   },
   {
-    "id": "picnicker_tiffany",
+    "id": "johto_picnicker_tiffany",
     "name": "Tiffany",
     "class": "Picnicker",
     "ai": [
@@ -12597,7 +12597,7 @@
     ]
   },
   {
-    "id": "camper_spencer",
+    "id": "johto_camper_spencer",
     "name": "Spencer",
     "class": "Camper",
     "ai": [
@@ -12629,7 +12629,7 @@
     ]
   },
   {
-    "id": "team_rocket_f_grunt_5",
+    "id": "johto_team_rocket_f_grunt_5",
     "name": "Grunt",
     "class": "Team Rocket F",
     "ai": [
@@ -12665,7 +12665,7 @@
     ]
   },
   {
-    "id": "psychic_m_phil",
+    "id": "johto_psychic_m_phil",
     "name": "Phil",
     "class": "Psychic M",
     "ai": [
@@ -12703,7 +12703,7 @@
     ]
   },
   {
-    "id": "poke_maniac_zach",
+    "id": "johto_poke_maniac_zach",
     "name": "Zach",
     "class": "Poke Maniac",
     "ai": [
@@ -12722,7 +12722,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_allen",
+    "id": "johto_ace_trainer_m_allen",
     "name": "Allen",
     "class": "Ace Trainer M",
     "ai": [
@@ -12760,7 +12760,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_cybil",
+    "id": "johto_ace_trainer_f_cybil",
     "name": "Cybil",
     "class": "Ace Trainer F",
     "ai": [
@@ -12798,7 +12798,7 @@
     ]
   },
   {
-    "id": "pokefan_m_brandon",
+    "id": "johto_pokefan_m_brandon",
     "name": "Brandon",
     "class": "Pokefan M",
     "ai": [
@@ -12822,7 +12822,7 @@
     ]
   },
   {
-    "id": "sailor_harry",
+    "id": "johto_sailor_harry",
     "name": "Harry",
     "class": "Sailor",
     "ai": [
@@ -12846,7 +12846,7 @@
     ]
   },
   {
-    "id": "psychic_m_vernon",
+    "id": "johto_psychic_m_vernon",
     "name": "Vernon",
     "class": "Psychic M",
     "ai": [
@@ -12866,7 +12866,7 @@
     ]
   },
   {
-    "id": "psychic_m_eli",
+    "id": "johto_psychic_m_eli",
     "name": "Eli",
     "class": "Psychic M",
     "ai": [
@@ -12898,7 +12898,7 @@
     ]
   },
   {
-    "id": "fisherman_scott",
+    "id": "johto_fisherman_scott",
     "name": "Scott",
     "class": "Fisherman",
     "ai": [
@@ -12946,7 +12946,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_jose_2",
+    "id": "johto_bird_keeper_gs_jose_2",
     "name": "Jose",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -12964,7 +12964,7 @@
     ]
   },
   {
-    "id": "psychic_m_jared",
+    "id": "johto_psychic_m_jared",
     "name": "Jared",
     "class": "Psychic M",
     "ai": [
@@ -13014,7 +13014,7 @@
     ]
   },
   {
-    "id": "twins_jo_and_zoe_2",
+    "id": "johto_twins_jo_and_zoe_2",
     "name": "Jo & Zoe",
     "class": "Twins",
     "ai": [
@@ -13051,7 +13051,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_jenn",
+    "id": "johto_ace_trainer_f_jenn",
     "name": "Jenn",
     "class": "Ace Trainer F",
     "ai": [
@@ -13077,7 +13077,7 @@
     ]
   },
   {
-    "id": "elite_four_bruno_bruno",
+    "id": "johto_elite_four_bruno_bruno",
     "name": "Bruno",
     "class": "Elite Four",
     "ai": [
@@ -13155,7 +13155,7 @@
     ]
   },
   {
-    "id": "lass_ellen",
+    "id": "johto_lass_ellen",
     "name": "Ellen",
     "class": "Lass",
     "ai": [
@@ -13180,7 +13180,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_perry",
+    "id": "johto_bird_keeper_gs_perry",
     "name": "Perry",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -13198,7 +13198,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_bret",
+    "id": "johto_bird_keeper_gs_bret",
     "name": "Bret",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -13222,7 +13222,7 @@
     ]
   },
   {
-    "id": "psychic_m_rodney",
+    "id": "johto_psychic_m_rodney",
     "name": "Rodney",
     "class": "Psychic M",
     "ai": [
@@ -13248,7 +13248,7 @@
     ]
   },
   {
-    "id": "pokefan_m_jeremy",
+    "id": "johto_pokefan_m_jeremy",
     "name": "Jeremy",
     "class": "Pokefan M",
     "ai": [
@@ -13278,7 +13278,7 @@
     ]
   },
   {
-    "id": "pokefan_m_colin",
+    "id": "johto_pokefan_m_colin",
     "name": "Colin",
     "class": "Pokefan M",
     "ai": [
@@ -13301,7 +13301,7 @@
     ]
   },
   {
-    "id": "twins_meg_and_peg",
+    "id": "johto_twins_meg_and_peg",
     "name": "Meg & Peg",
     "class": "Twins",
     "ai": [
@@ -13326,7 +13326,7 @@
     ]
   },
   {
-    "id": "twins_meg_and_peg_2",
+    "id": "johto_twins_meg_and_peg_2",
     "name": "Meg & Peg",
     "class": "Twins",
     "ai": [
@@ -13351,7 +13351,7 @@
     ]
   },
   {
-    "id": "teacher_shirley",
+    "id": "johto_teacher_shirley",
     "name": "Shirley",
     "class": "Teacher",
     "ai": [
@@ -13377,7 +13377,7 @@
     ]
   },
   {
-    "id": "school_kid_m_nate",
+    "id": "johto_school_kid_m_nate",
     "name": "Nate",
     "class": "School Kid M",
     "ai": [
@@ -13403,7 +13403,7 @@
     ]
   },
   {
-    "id": "school_kid_m_ricky",
+    "id": "johto_school_kid_m_ricky",
     "name": "Ricky",
     "class": "School Kid M",
     "ai": [
@@ -13429,7 +13429,7 @@
     ]
   },
   {
-    "id": "school_kid_m_jack_2",
+    "id": "johto_school_kid_m_jack_2",
     "name": "Jack",
     "class": "School Kid M",
     "ai": [
@@ -13454,7 +13454,7 @@
     ]
   },
   {
-    "id": "school_kid_m_jack_3",
+    "id": "johto_school_kid_m_jack_3",
     "name": "Jack",
     "class": "School Kid M",
     "ai": [
@@ -13479,7 +13479,7 @@
     ]
   },
   {
-    "id": "school_kid_m_alan_2",
+    "id": "johto_school_kid_m_alan_2",
     "name": "Alan",
     "class": "School Kid M",
     "ai": [
@@ -13504,7 +13504,7 @@
     ]
   },
   {
-    "id": "school_kid_m_alan_3",
+    "id": "johto_school_kid_m_alan_3",
     "name": "Alan",
     "class": "School Kid M",
     "ai": [
@@ -13541,7 +13541,7 @@
     ]
   },
   {
-    "id": "school_kid_m_chad_2",
+    "id": "johto_school_kid_m_chad_2",
     "name": "Chad",
     "class": "School Kid M",
     "ai": [
@@ -13566,7 +13566,7 @@
     ]
   },
   {
-    "id": "school_kid_m_chad_3",
+    "id": "johto_school_kid_m_chad_3",
     "name": "Chad",
     "class": "School Kid M",
     "ai": [
@@ -13591,7 +13591,7 @@
     ]
   },
   {
-    "id": "pokefan_beverly_2",
+    "id": "johto_pokefan_beverly_2",
     "name": "Beverly",
     "class": "Pokefan",
     "ai": [
@@ -13609,7 +13609,7 @@
     ]
   },
   {
-    "id": "pokefan_beverly_3",
+    "id": "johto_pokefan_beverly_3",
     "name": "Beverly",
     "class": "Pokefan",
     "ai": [
@@ -13627,7 +13627,7 @@
     ]
   },
   {
-    "id": "pokefan_m_derek_2",
+    "id": "johto_pokefan_m_derek_2",
     "name": "Derek",
     "class": "Pokefan M",
     "ai": [
@@ -13651,7 +13651,7 @@
     ]
   },
   {
-    "id": "pokefan_m_derek_3",
+    "id": "johto_pokefan_m_derek_3",
     "name": "Derek",
     "class": "Pokefan M",
     "ai": [
@@ -13687,7 +13687,7 @@
     ]
   },
   {
-    "id": "sailor_huey_2",
+    "id": "johto_sailor_huey_2",
     "name": "Huey",
     "class": "Sailor",
     "ai": [
@@ -13711,7 +13711,7 @@
     ]
   },
   {
-    "id": "sailor_huey_3",
+    "id": "johto_sailor_huey_3",
     "name": "Huey",
     "class": "Sailor",
     "ai": [
@@ -13735,7 +13735,7 @@
     ]
   },
   {
-    "id": "lass_mickey",
+    "id": "johto_lass_mickey",
     "name": "Mickey",
     "class": "Lass",
     "ai": [
@@ -13754,7 +13754,7 @@
     ]
   },
   {
-    "id": "lass_mickey_2",
+    "id": "johto_lass_mickey_2",
     "name": "Mickey",
     "class": "Lass",
     "ai": [
@@ -13773,7 +13773,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_reena_2",
+    "id": "johto_ace_trainer_f_reena_2",
     "name": "Reena",
     "class": "Ace Trainer F",
     "ai": [
@@ -13805,7 +13805,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_reena_3",
+    "id": "johto_ace_trainer_f_reena_3",
     "name": "Reena",
     "class": "Ace Trainer F",
     "ai": [
@@ -13837,7 +13837,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_jose_3",
+    "id": "johto_bird_keeper_gs_jose_3",
     "name": "Jose",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -13861,7 +13861,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_vance_2",
+    "id": "johto_bird_keeper_gs_vance_2",
     "name": "Vance",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -13885,7 +13885,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_vance_3",
+    "id": "johto_bird_keeper_gs_vance_3",
     "name": "Vance",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -13915,7 +13915,7 @@
     ]
   },
   {
-    "id": "bug_catcher_arnie_3",
+    "id": "johto_bug_catcher_arnie_3",
     "name": "Arnie",
     "class": "Bug Catcher",
     "ai": [
@@ -13939,7 +13939,7 @@
     ]
   },
   {
-    "id": "fisherman_wilton_3",
+    "id": "johto_fisherman_wilton_3",
     "name": "Wilton",
     "class": "Fisherman",
     "ai": [
@@ -13969,7 +13969,7 @@
     ]
   },
   {
-    "id": "hiker_parry_2",
+    "id": "johto_hiker_parry_2",
     "name": "Parry",
     "class": "Hiker",
     "ai": [
@@ -13994,7 +13994,7 @@
     ]
   },
   {
-    "id": "hiker_parry_3",
+    "id": "johto_hiker_parry_3",
     "name": "Parry",
     "class": "Hiker",
     "ai": [
@@ -14019,7 +14019,7 @@
     ]
   },
   {
-    "id": "picnicker_erin_3",
+    "id": "johto_picnicker_erin_3",
     "name": "Erin",
     "class": "Picnicker",
     "ai": [
@@ -14049,7 +14049,7 @@
     ]
   },
   {
-    "id": "juggler_irwin_2",
+    "id": "johto_juggler_irwin_2",
     "name": "Irwin",
     "class": "Juggler",
     "ai": [
@@ -14085,7 +14085,7 @@
     ]
   },
   {
-    "id": "juggler_irwin_3",
+    "id": "johto_juggler_irwin_3",
     "name": "Irwin",
     "class": "Juggler",
     "ai": [
@@ -14121,7 +14121,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_gaven_2",
+    "id": "johto_ace_trainer_m_gaven_2",
     "name": "Gaven",
     "class": "Ace Trainer M",
     "ai": [
@@ -14171,7 +14171,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_gaven_3",
+    "id": "johto_ace_trainer_m_gaven_3",
     "name": "Gaven",
     "class": "Ace Trainer M",
     "ai": [
@@ -14221,7 +14221,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_jamie_2",
+    "id": "johto_ace_trainer_f_jamie_2",
     "name": "Jamie",
     "class": "Ace Trainer F",
     "ai": [
@@ -14259,7 +14259,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_jamie_3",
+    "id": "johto_ace_trainer_f_jamie_3",
     "name": "Jamie",
     "class": "Ace Trainer F",
     "ai": [
@@ -14297,7 +14297,7 @@
     ]
   },
   {
-    "id": "bug_catcher_wade_2",
+    "id": "johto_bug_catcher_wade_2",
     "name": "Wade",
     "class": "Bug Catcher",
     "ai": [
@@ -14357,7 +14357,7 @@
     ]
   },
   {
-    "id": "bug_catcher_wade_3",
+    "id": "johto_bug_catcher_wade_3",
     "name": "Wade",
     "class": "Bug Catcher",
     "ai": [
@@ -14412,7 +14412,7 @@
     ]
   },
   {
-    "id": "fisherman_ralph_2",
+    "id": "johto_fisherman_ralph_2",
     "name": "Ralph",
     "class": "Fisherman",
     "ai": [
@@ -14430,7 +14430,7 @@
     ]
   },
   {
-    "id": "fisherman_ralph_3",
+    "id": "johto_fisherman_ralph_3",
     "name": "Ralph",
     "class": "Fisherman",
     "ai": [
@@ -14454,7 +14454,7 @@
     ]
   },
   {
-    "id": "lass_dana_2",
+    "id": "johto_lass_dana_2",
     "name": "Dana",
     "class": "Lass",
     "ai": [
@@ -14493,7 +14493,7 @@
     ]
   },
   {
-    "id": "lass_dana_3",
+    "id": "johto_lass_dana_3",
     "name": "Dana",
     "class": "Lass",
     "ai": [
@@ -14532,7 +14532,7 @@
     ]
   },
   {
-    "id": "picnicker_tiffany_2",
+    "id": "johto_picnicker_tiffany_2",
     "name": "Tiffany",
     "class": "Picnicker",
     "ai": [
@@ -14556,7 +14556,7 @@
     ]
   },
   {
-    "id": "picnicker_tiffany_3",
+    "id": "johto_picnicker_tiffany_3",
     "name": "Tiffany",
     "class": "Picnicker",
     "ai": [
@@ -14580,7 +14580,7 @@
     ]
   },
   {
-    "id": "scientist_gs_ross",
+    "id": "johto_scientist_gs_ross",
     "name": "Ross",
     "class": "Scientist Gs",
     "ai": [
@@ -14605,7 +14605,7 @@
     ]
   },
   {
-    "id": "scientist_gs_mitch",
+    "id": "johto_scientist_gs_mitch",
     "name": "Mitch",
     "class": "Scientist Gs",
     "ai": [
@@ -14624,7 +14624,7 @@
     ]
   },
   {
-    "id": "scientist_gs_gregg",
+    "id": "johto_scientist_gs_gregg",
     "name": "Gregg",
     "class": "Scientist Gs",
     "ai": [
@@ -14655,7 +14655,7 @@
     ]
   },
   {
-    "id": "scientist_gs_garett",
+    "id": "johto_scientist_gs_garett",
     "name": "Garett",
     "class": "Scientist Gs",
     "ai": [
@@ -14686,7 +14686,7 @@
     ]
   },
   {
-    "id": "scientist_gs_trenton",
+    "id": "johto_scientist_gs_trenton",
     "name": "Trenton",
     "class": "Scientist Gs",
     "ai": [
@@ -14711,7 +14711,7 @@
     ]
   },
   {
-    "id": "super_nerd_mickey_2",
+    "id": "johto_super_nerd_mickey_2",
     "name": "Mickey",
     "class": "Super Nerd",
     "ai": [
@@ -14736,7 +14736,7 @@
     ]
   },
   {
-    "id": "super_nerd_mickey_3",
+    "id": "johto_super_nerd_mickey_3",
     "name": "Mickey",
     "class": "Super Nerd",
     "ai": [
@@ -14755,7 +14755,7 @@
     ]
   },
   {
-    "id": "super_nerd_mickey_4",
+    "id": "johto_super_nerd_mickey_4",
     "name": "Mickey",
     "class": "Super Nerd",
     "ai": [
@@ -14786,7 +14786,7 @@
     ]
   },
   {
-    "id": "super_nerd_mickey_5",
+    "id": "johto_super_nerd_mickey_5",
     "name": "Mickey",
     "class": "Super Nerd",
     "ai": [
@@ -14817,7 +14817,7 @@
     ]
   },
   {
-    "id": "super_nerd_mickey_6",
+    "id": "johto_super_nerd_mickey_6",
     "name": "Mickey",
     "class": "Super Nerd",
     "ai": [
@@ -14842,7 +14842,7 @@
     ]
   },
   {
-    "id": "executive_ariana_ariana",
+    "id": "johto_executive_ariana_ariana",
     "name": "Ariana",
     "class": "Executive Ariana",
     "ai": [
@@ -14892,7 +14892,7 @@
     ]
   },
   {
-    "id": "executive_ariana_ariana_2",
+    "id": "johto_executive_ariana_ariana_2",
     "name": "Ariana",
     "class": "Executive Ariana",
     "ai": [
@@ -14942,7 +14942,7 @@
     ]
   },
   {
-    "id": "skier_diana",
+    "id": "johto_skier_diana",
     "name": "Diana",
     "class": "Skier",
     "ai": [
@@ -14960,7 +14960,7 @@
     ]
   },
   {
-    "id": "skier_jill",
+    "id": "johto_skier_jill",
     "name": "Jill",
     "class": "Skier",
     "ai": [
@@ -14978,7 +14978,7 @@
     ]
   },
   {
-    "id": "boarder_deandre",
+    "id": "johto_boarder_deandre",
     "name": "Deandre",
     "class": "Boarder",
     "ai": [
@@ -15008,7 +15008,7 @@
     ]
   },
   {
-    "id": "boarder_patton",
+    "id": "johto_boarder_patton",
     "name": "Patton",
     "class": "Boarder",
     "ai": [
@@ -15032,7 +15032,7 @@
     ]
   },
   {
-    "id": "boarder_gerardo",
+    "id": "johto_boarder_gerardo",
     "name": "Gerardo",
     "class": "Boarder",
     "ai": [
@@ -15080,7 +15080,7 @@
     ]
   },
   {
-    "id": "executive_archer_archer",
+    "id": "johto_executive_archer_archer",
     "name": "Archer",
     "class": "Executive Archer",
     "ai": [
@@ -15130,7 +15130,7 @@
     ]
   },
   {
-    "id": "executive_proton_proton",
+    "id": "johto_executive_proton_proton",
     "name": "Proton",
     "class": "Executive Proton",
     "ai": [
@@ -15156,7 +15156,7 @@
     ]
   },
   {
-    "id": "executive_petrel_petrel",
+    "id": "johto_executive_petrel_petrel",
     "name": "Petrel",
     "class": "Executive Petrel",
     "ai": [
@@ -15242,7 +15242,7 @@
     ]
   },
   {
-    "id": "executive_petrel_petrel_2",
+    "id": "johto_executive_petrel_petrel_2",
     "name": "Petrel",
     "class": "Executive Petrel",
     "ai": [
@@ -15274,7 +15274,7 @@
     ]
   },
   {
-    "id": "rival_silver_19",
+    "id": "johto_rival_silver_19",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -15363,7 +15363,7 @@
     ]
   },
   {
-    "id": "rival_silver_20",
+    "id": "johto_rival_silver_20",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -15452,7 +15452,7 @@
     ]
   },
   {
-    "id": "rival_silver_21",
+    "id": "johto_rival_silver_21",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -15541,7 +15541,7 @@
     ]
   },
   {
-    "id": "pokefan_m_alex",
+    "id": "johto_pokefan_m_alex",
     "name": "Alex",
     "class": "Pokefan M",
     "ai": [
@@ -15571,7 +15571,7 @@
     ]
   },
   {
-    "id": "medium_edith",
+    "id": "johto_medium_edith",
     "name": "Edith",
     "class": "Medium",
     "ai": [
@@ -15590,7 +15590,7 @@
     ]
   },
   {
-    "id": "medium_georgina",
+    "id": "johto_medium_georgina",
     "name": "Georgina",
     "class": "Medium",
     "ai": [
@@ -15633,7 +15633,7 @@
     ]
   },
   {
-    "id": "passerby_boy",
+    "id": "johto_passerby_boy",
     "name": "Boy",
     "class": "Passerby",
     "ai": [
@@ -15651,7 +15651,7 @@
     ]
   },
   {
-    "id": "passerby_boy_2",
+    "id": "johto_passerby_boy_2",
     "name": "Boy",
     "class": "Passerby",
     "ai": [
@@ -15669,7 +15669,7 @@
     ]
   },
   {
-    "id": "passerby_boy_3",
+    "id": "johto_passerby_boy_3",
     "name": "Boy",
     "class": "Passerby",
     "ai": [
@@ -15687,7 +15687,7 @@
     ]
   },
   {
-    "id": "mystery_man_eusine",
+    "id": "johto_mystery_man_eusine",
     "name": "Eusine",
     "class": "Mystery Man",
     "ai": [
@@ -15737,7 +15737,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_25",
+    "id": "johto_team_rocket_grunt_25",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -15773,7 +15773,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_kobe",
+    "id": "johto_ace_trainer_m_kobe",
     "name": "Kobe",
     "class": "Ace Trainer M",
     "ai": [
@@ -15799,7 +15799,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_piper",
+    "id": "johto_ace_trainer_f_piper",
     "name": "Piper",
     "class": "Ace Trainer F",
     "ai": [
@@ -15849,7 +15849,7 @@
     ]
   },
   {
-    "id": "twins_clea_and_gil",
+    "id": "johto_twins_clea_and_gil",
     "name": "Clea & Gil",
     "class": "Twins",
     "ai": [
@@ -15886,7 +15886,7 @@
     ]
   },
   {
-    "id": "school_kid_m_jack_4",
+    "id": "johto_school_kid_m_jack_4",
     "name": "Jack",
     "class": "School Kid M",
     "ai": [
@@ -15937,7 +15937,7 @@
     ]
   },
   {
-    "id": "school_kid_m_mickey",
+    "id": "johto_school_kid_m_mickey",
     "name": "Mickey",
     "class": "School Kid M",
     "ai": [
@@ -15986,7 +15986,7 @@
     ]
   },
   {
-    "id": "school_kid_m_alan_4",
+    "id": "johto_school_kid_m_alan_4",
     "name": "Alan",
     "class": "School Kid M",
     "ai": [
@@ -16023,7 +16023,7 @@
     ]
   },
   {
-    "id": "school_kid_m_mickey_2",
+    "id": "johto_school_kid_m_mickey_2",
     "name": "Mickey",
     "class": "School Kid M",
     "ai": [
@@ -16084,7 +16084,7 @@
     ]
   },
   {
-    "id": "school_kid_m_chad_4",
+    "id": "johto_school_kid_m_chad_4",
     "name": "Chad",
     "class": "School Kid M",
     "ai": [
@@ -16122,7 +16122,7 @@
     ]
   },
   {
-    "id": "school_kid_m_mickey_3",
+    "id": "johto_school_kid_m_mickey_3",
     "name": "Mickey",
     "class": "School Kid M",
     "ai": [
@@ -16159,7 +16159,7 @@
     ]
   },
   {
-    "id": "sailor_huey_4",
+    "id": "johto_sailor_huey_4",
     "name": "Huey",
     "class": "Sailor",
     "ai": [
@@ -16195,7 +16195,7 @@
     ]
   },
   {
-    "id": "youngster_joey_4",
+    "id": "johto_youngster_joey_4",
     "name": "Joey",
     "class": "Youngster",
     "ai": [
@@ -16219,7 +16219,7 @@
     ]
   },
   {
-    "id": "youngster_mickey",
+    "id": "johto_youngster_mickey",
     "name": "Mickey",
     "class": "Youngster",
     "ai": [
@@ -16243,7 +16243,7 @@
     ]
   },
   {
-    "id": "bug_catcher_wade_4",
+    "id": "johto_bug_catcher_wade_4",
     "name": "Wade",
     "class": "Bug Catcher",
     "ai": [
@@ -16303,7 +16303,7 @@
     ]
   },
   {
-    "id": "bug_catcher_arnie_4",
+    "id": "johto_bug_catcher_arnie_4",
     "name": "Arnie",
     "class": "Bug Catcher",
     "ai": [
@@ -16339,7 +16339,7 @@
     ]
   },
   {
-    "id": "bug_catcher_mickey",
+    "id": "johto_bug_catcher_mickey",
     "name": "Mickey",
     "class": "Bug Catcher",
     "ai": [
@@ -16363,7 +16363,7 @@
     ]
   },
   {
-    "id": "fisherman_ralph_4",
+    "id": "johto_fisherman_ralph_4",
     "name": "Ralph",
     "class": "Fisherman",
     "ai": [
@@ -16387,7 +16387,7 @@
     ]
   },
   {
-    "id": "fisherman_mickey",
+    "id": "johto_fisherman_mickey",
     "name": "Mickey",
     "class": "Fisherman",
     "ai": [
@@ -16423,7 +16423,7 @@
     ]
   },
   {
-    "id": "fisherman_tully_4",
+    "id": "johto_fisherman_tully_4",
     "name": "Tully",
     "class": "Fisherman",
     "ai": [
@@ -16471,7 +16471,7 @@
     ]
   },
   {
-    "id": "picnicker_liz_4",
+    "id": "johto_picnicker_liz_4",
     "name": "Liz",
     "class": "Picnicker",
     "ai": [
@@ -16501,7 +16501,7 @@
     ]
   },
   {
-    "id": "picnicker_mickey",
+    "id": "johto_picnicker_mickey",
     "name": "Mickey",
     "class": "Picnicker",
     "ai": [
@@ -16549,7 +16549,7 @@
     ]
   },
   {
-    "id": "picnicker_gina_4",
+    "id": "johto_picnicker_gina_4",
     "name": "Gina",
     "class": "Picnicker",
     "ai": [
@@ -16579,7 +16579,7 @@
     ]
   },
   {
-    "id": "picnicker_mickey_2",
+    "id": "johto_picnicker_mickey_2",
     "name": "Mickey",
     "class": "Picnicker",
     "ai": [
@@ -16627,7 +16627,7 @@
     ]
   },
   {
-    "id": "picnicker_tiffany_4",
+    "id": "johto_picnicker_tiffany_4",
     "name": "Tiffany",
     "class": "Picnicker",
     "ai": [
@@ -16651,7 +16651,7 @@
     ]
   },
   {
-    "id": "hiker_anthony_4",
+    "id": "johto_hiker_anthony_4",
     "name": "Anthony",
     "class": "Hiker",
     "ai": [
@@ -16682,7 +16682,7 @@
     ]
   },
   {
-    "id": "hiker_mickey",
+    "id": "johto_hiker_mickey",
     "name": "Mickey",
     "class": "Hiker",
     "ai": [
@@ -16731,7 +16731,7 @@
     ]
   },
   {
-    "id": "camper_todd_4",
+    "id": "johto_camper_todd_4",
     "name": "Todd",
     "class": "Camper",
     "ai": [
@@ -16769,7 +16769,7 @@
     ]
   },
   {
-    "id": "camper_mickey_7",
+    "id": "johto_camper_mickey_7",
     "name": "Mickey",
     "class": "Camper",
     "ai": [
@@ -16831,7 +16831,7 @@
     ]
   },
   {
-    "id": "juggler_irwin_4",
+    "id": "johto_juggler_irwin_4",
     "name": "Irwin",
     "class": "Juggler",
     "ai": [
@@ -16891,7 +16891,7 @@
     ]
   },
   {
-    "id": "lass_dana_4",
+    "id": "johto_lass_dana_4",
     "name": "Dana",
     "class": "Lass",
     "ai": [
@@ -16930,7 +16930,7 @@
     ]
   },
   {
-    "id": "lass_mickey_3",
+    "id": "johto_lass_mickey_3",
     "name": "Mickey",
     "class": "Lass",
     "ai": [
@@ -16967,7 +16967,7 @@
     ]
   },
   {
-    "id": "poke_maniac_brent_4",
+    "id": "johto_poke_maniac_brent_4",
     "name": "Brent",
     "class": "Poke Maniac",
     "ai": [
@@ -17004,7 +17004,7 @@
     ]
   },
   {
-    "id": "twins_mickey",
+    "id": "johto_twins_mickey",
     "name": "Mickey",
     "class": "Twins",
     "ai": [
@@ -17041,7 +17041,7 @@
     ]
   },
   {
-    "id": "bug_catcher_mickey_2",
+    "id": "johto_bug_catcher_mickey_2",
     "name": "Mickey",
     "class": "Bug Catcher",
     "ai": [
@@ -17101,7 +17101,7 @@
     ]
   },
   {
-    "id": "bug_catcher_wayne",
+    "id": "johto_bug_catcher_wayne",
     "name": "Wayne",
     "class": "Bug Catcher",
     "ai": [
@@ -17125,7 +17125,7 @@
     ]
   },
   {
-    "id": "beauty_kimberly",
+    "id": "johto_beauty_kimberly",
     "name": "Kimberly",
     "class": "Beauty",
     "ai": [
@@ -17143,7 +17143,7 @@
     ]
   },
   {
-    "id": "pokefan_marigold",
+    "id": "johto_pokefan_marigold",
     "name": "Marigold",
     "class": "Pokefan",
     "ai": [
@@ -17161,7 +17161,7 @@
     ]
   },
   {
-    "id": "camper_bertrand",
+    "id": "johto_camper_bertrand",
     "name": "Bertrand",
     "class": "Camper",
     "ai": [
@@ -17193,7 +17193,7 @@
     ]
   },
   {
-    "id": "poke_maniac_harrison",
+    "id": "johto_poke_maniac_harrison",
     "name": "Harrison",
     "class": "Poke Maniac",
     "ai": [
@@ -17218,7 +17218,7 @@
     ]
   },
   {
-    "id": "super_nerd_hugh",
+    "id": "johto_super_nerd_hugh",
     "name": "Hugh",
     "class": "Super Nerd",
     "ai": [
@@ -17243,7 +17243,7 @@
     ]
   },
   {
-    "id": "super_nerd_markus",
+    "id": "johto_super_nerd_markus",
     "name": "Markus",
     "class": "Super Nerd",
     "ai": [
@@ -17268,7 +17268,7 @@
     ]
   },
   {
-    "id": "pokefan_m_rex",
+    "id": "johto_pokefan_m_rex",
     "name": "Rex",
     "class": "Pokefan M",
     "ai": [
@@ -17286,7 +17286,7 @@
     ]
   },
   {
-    "id": "pokefan_m_andy",
+    "id": "johto_pokefan_m_andy",
     "name": "Andy",
     "class": "Pokefan M",
     "ai": [
@@ -17304,7 +17304,7 @@
     ]
   },
   {
-    "id": "sage_mickey_3",
+    "id": "johto_sage_mickey_3",
     "name": "Mickey",
     "class": "Sage",
     "ai": [
@@ -17341,7 +17341,7 @@
     ]
   },
   {
-    "id": "sage_mickey_4",
+    "id": "johto_sage_mickey_4",
     "name": "Mickey",
     "class": "Sage",
     "ai": [
@@ -17378,7 +17378,7 @@
     ]
   },
   {
-    "id": "sage_mickey_5",
+    "id": "johto_sage_mickey_5",
     "name": "Mickey",
     "class": "Sage",
     "ai": [
@@ -17415,7 +17415,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_french",
+    "id": "johto_ace_trainer_m_french",
     "name": "French",
     "class": "Ace Trainer M",
     "ai": [
@@ -17455,7 +17455,7 @@
     ]
   },
   {
-    "id": "school_kid_m_sherman",
+    "id": "johto_school_kid_m_sherman",
     "name": "Sherman",
     "class": "School Kid M",
     "ai": [
@@ -17494,7 +17494,7 @@
     ]
   },
   {
-    "id": "hiker_bruce",
+    "id": "johto_hiker_bruce",
     "name": "Bruce",
     "class": "Hiker",
     "ai": [
@@ -17525,7 +17525,7 @@
     ]
   },
   {
-    "id": "black_belt_manford",
+    "id": "johto_black_belt_manford",
     "name": "Manford",
     "class": "Black Belt",
     "ai": [
@@ -17550,7 +17550,7 @@
     ]
   },
   {
-    "id": "double_team_zac_and_jen",
+    "id": "johto_double_team_zac_and_jen",
     "name": "Zac & Jen",
     "class": "Double Team",
     "ai": [
@@ -17589,7 +17589,7 @@
     ]
   },
   {
-    "id": "black_belt_ander",
+    "id": "johto_black_belt_ander",
     "name": "Ander",
     "class": "Black Belt",
     "ai": [
@@ -17620,7 +17620,7 @@
     ]
   },
   {
-    "id": "hiker_dwight",
+    "id": "johto_hiker_dwight",
     "name": "Dwight",
     "class": "Hiker",
     "ai": [
@@ -17645,7 +17645,7 @@
     ]
   },
   {
-    "id": "youngster_regis",
+    "id": "johto_youngster_regis",
     "name": "Regis",
     "class": "Youngster",
     "ai": [
@@ -17669,7 +17669,7 @@
     ]
   },
   {
-    "id": "young_couple_moe_and_lulu",
+    "id": "johto_young_couple_moe_and_lulu",
     "name": "Moe & Lulu",
     "class": "Young Couple",
     "ai": [
@@ -17694,7 +17694,7 @@
     ]
   },
   {
-    "id": "gentleman_milton",
+    "id": "johto_gentleman_milton",
     "name": "Milton",
     "class": "Gentleman",
     "ai": [
@@ -17714,7 +17714,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_justin",
+    "id": "johto_bird_keeper_gs_justin",
     "name": "Justin",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -17738,7 +17738,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_gail",
+    "id": "johto_bird_keeper_gs_gail",
     "name": "Gail",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -17762,7 +17762,7 @@
     ]
   },
   {
-    "id": "young_couple_vic_and_tara",
+    "id": "johto_young_couple_vic_and_tara",
     "name": "Vic & Tara",
     "class": "Young Couple",
     "ai": [
@@ -17800,7 +17800,7 @@
     ]
   },
   {
-    "id": "fisherman_kyler",
+    "id": "johto_fisherman_kyler",
     "name": "Kyler",
     "class": "Fisherman",
     "ai": [
@@ -17830,7 +17830,7 @@
     ]
   },
   {
-    "id": "young_couple_tim_and_sue",
+    "id": "johto_young_couple_tim_and_sue",
     "name": "Tim & Sue",
     "class": "Young Couple",
     "ai": [
@@ -17855,7 +17855,7 @@
     ]
   },
   {
-    "id": "camper_clark",
+    "id": "johto_camper_clark",
     "name": "Clark",
     "class": "Camper",
     "ai": [
@@ -17875,7 +17875,7 @@
     ]
   },
   {
-    "id": "camper_tanner",
+    "id": "johto_camper_tanner",
     "name": "Tanner",
     "class": "Camper",
     "ai": [
@@ -17895,7 +17895,7 @@
     ]
   },
   {
-    "id": "picnicker_piper",
+    "id": "johto_picnicker_piper",
     "name": "Piper",
     "class": "Picnicker",
     "ai": [
@@ -17913,7 +17913,7 @@
     ]
   },
   {
-    "id": "picnicker_ginger",
+    "id": "johto_picnicker_ginger",
     "name": "Ginger",
     "class": "Picnicker",
     "ai": [
@@ -17931,7 +17931,7 @@
     ]
   },
   {
-    "id": "teacher_clarice",
+    "id": "johto_teacher_clarice",
     "name": "Clarice",
     "class": "Teacher",
     "ai": [
@@ -17970,7 +17970,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_josh",
+    "id": "johto_bird_keeper_gs_josh",
     "name": "Josh",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -17988,7 +17988,7 @@
     ]
   },
   {
-    "id": "school_kid_m_connor",
+    "id": "johto_school_kid_m_connor",
     "name": "Connor",
     "class": "School Kid M",
     "ai": [
@@ -18014,7 +18014,7 @@
     ]
   },
   {
-    "id": "school_kid_m_torin",
+    "id": "johto_school_kid_m_torin",
     "name": "Torin",
     "class": "School Kid M",
     "ai": [
@@ -18039,7 +18039,7 @@
     ]
   },
   {
-    "id": "school_kid_m_travis",
+    "id": "johto_school_kid_m_travis",
     "name": "Travis",
     "class": "School Kid M",
     "ai": [
@@ -18064,7 +18064,7 @@
     ]
   },
   {
-    "id": "twins_kay_and_tia",
+    "id": "johto_twins_kay_and_tia",
     "name": "Kay & Tia",
     "class": "Twins",
     "ai": [
@@ -18099,7 +18099,7 @@
     ]
   },
   {
-    "id": "pokefan_m_boone",
+    "id": "johto_pokefan_m_boone",
     "name": "Boone",
     "class": "Pokefan M",
     "ai": [
@@ -18123,7 +18123,7 @@
     ]
   },
   {
-    "id": "pokefan_eleanor",
+    "id": "johto_pokefan_eleanor",
     "name": "Eleanor",
     "class": "Pokefan",
     "ai": [
@@ -18147,7 +18147,7 @@
     ]
   },
   {
-    "id": "biker_dale",
+    "id": "johto_biker_dale",
     "name": "Dale",
     "class": "Biker",
     "ai": [
@@ -18166,7 +18166,7 @@
     ]
   },
   {
-    "id": "biker_jacob",
+    "id": "johto_biker_jacob",
     "name": "Jacob",
     "class": "Biker",
     "ai": [
@@ -18190,7 +18190,7 @@
     ]
   },
   {
-    "id": "biker_aiden",
+    "id": "johto_biker_aiden",
     "name": "Aiden",
     "class": "Biker",
     "ai": [
@@ -18208,7 +18208,7 @@
     ]
   },
   {
-    "id": "biker_dan",
+    "id": "johto_biker_dan",
     "name": "Dan",
     "class": "Biker",
     "ai": [
@@ -18238,7 +18238,7 @@
     ]
   },
   {
-    "id": "biker_theron",
+    "id": "johto_biker_theron",
     "name": "Theron",
     "class": "Biker",
     "ai": [
@@ -18256,7 +18256,7 @@
     ]
   },
   {
-    "id": "biker_markey",
+    "id": "johto_biker_markey",
     "name": "Markey",
     "class": "Biker",
     "ai": [
@@ -18274,7 +18274,7 @@
     ]
   },
   {
-    "id": "biker_teddy",
+    "id": "johto_biker_teddy",
     "name": "Teddy",
     "class": "Biker",
     "ai": [
@@ -18292,7 +18292,7 @@
     ]
   },
   {
-    "id": "biker_ernest",
+    "id": "johto_biker_ernest",
     "name": "Ernest",
     "class": "Biker",
     "ai": [
@@ -18316,7 +18316,7 @@
     ]
   },
   {
-    "id": "camper_pedro",
+    "id": "johto_camper_pedro",
     "name": "Pedro",
     "class": "Camper",
     "ai": [
@@ -18343,7 +18343,7 @@
     ]
   },
   {
-    "id": "picnicker_adrian",
+    "id": "johto_picnicker_adrian",
     "name": "Adrian",
     "class": "Picnicker",
     "ai": [
@@ -18361,7 +18361,7 @@
     ]
   },
   {
-    "id": "picnicker_cheyenne",
+    "id": "johto_picnicker_cheyenne",
     "name": "Cheyenne",
     "class": "Picnicker",
     "ai": [
@@ -18379,7 +18379,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_bert",
+    "id": "johto_bird_keeper_gs_bert",
     "name": "Bert",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -18403,7 +18403,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_ernie",
+    "id": "johto_bird_keeper_gs_ernie",
     "name": "Ernie",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -18421,7 +18421,7 @@
     ]
   },
   {
-    "id": "swimmer_m_elmo",
+    "id": "johto_swimmer_m_elmo",
     "name": "Elmo",
     "class": "Swimmer M",
     "ai": [
@@ -18445,7 +18445,7 @@
     ]
   },
   {
-    "id": "swimmer_m_luis",
+    "id": "johto_swimmer_m_luis",
     "name": "Luis",
     "class": "Swimmer M",
     "ai": [
@@ -18469,7 +18469,7 @@
     ]
   },
   {
-    "id": "swimmer_f_leona",
+    "id": "johto_swimmer_f_leona",
     "name": "Leona",
     "class": "Swimmer F",
     "ai": [
@@ -18487,7 +18487,7 @@
     ]
   },
   {
-    "id": "swimmer_f_mina",
+    "id": "johto_swimmer_f_mina",
     "name": "Mina",
     "class": "Swimmer F",
     "ai": [
@@ -18517,7 +18517,7 @@
     ]
   },
   {
-    "id": "fisherman_murphy",
+    "id": "johto_fisherman_murphy",
     "name": "Murphy",
     "class": "Fisherman",
     "ai": [
@@ -18553,7 +18553,7 @@
     ]
   },
   {
-    "id": "fisherman_liam",
+    "id": "johto_fisherman_liam",
     "name": "Liam",
     "class": "Fisherman",
     "ai": [
@@ -18571,7 +18571,7 @@
     ]
   },
   {
-    "id": "fisherman_gideon",
+    "id": "johto_fisherman_gideon",
     "name": "Gideon",
     "class": "Fisherman",
     "ai": [
@@ -18607,7 +18607,7 @@
     ]
   },
   {
-    "id": "swimmer_f_chelan",
+    "id": "johto_swimmer_f_chelan",
     "name": "Chelan",
     "class": "Swimmer F",
     "ai": [
@@ -18631,7 +18631,7 @@
     ]
   },
   {
-    "id": "swimmer_f_kendra",
+    "id": "johto_swimmer_f_kendra",
     "name": "Kendra",
     "class": "Swimmer F",
     "ai": [
@@ -18649,7 +18649,7 @@
     ]
   },
   {
-    "id": "swimmer_m_esteban",
+    "id": "johto_swimmer_m_esteban",
     "name": "Esteban",
     "class": "Swimmer M",
     "ai": [
@@ -18673,7 +18673,7 @@
     ]
   },
   {
-    "id": "swimmer_m_duane",
+    "id": "johto_swimmer_m_duane",
     "name": "Duane",
     "class": "Swimmer M",
     "ai": [
@@ -18697,7 +18697,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_kinsley",
+    "id": "johto_bird_keeper_gs_kinsley",
     "name": "Kinsley",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -18727,7 +18727,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_easton",
+    "id": "johto_bird_keeper_gs_easton",
     "name": "Easton",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -18763,7 +18763,7 @@
     ]
   },
   {
-    "id": "twins_day_and_dani",
+    "id": "johto_twins_day_and_dani",
     "name": "Day & Dani",
     "class": "Twins",
     "ai": [
@@ -18788,7 +18788,7 @@
     ]
   },
   {
-    "id": "camper_virgil",
+    "id": "johto_camper_virgil",
     "name": "Virgil",
     "class": "Camper",
     "ai": [
@@ -18808,7 +18808,7 @@
     ]
   },
   {
-    "id": "picnicker_selina",
+    "id": "johto_picnicker_selina",
     "name": "Selina",
     "class": "Picnicker",
     "ai": [
@@ -18826,7 +18826,7 @@
     ]
   },
   {
-    "id": "team_rocket_grunt_26",
+    "id": "johto_team_rocket_grunt_26",
     "name": "Grunt",
     "class": "Team Rocket",
     "ai": [
@@ -18844,7 +18844,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_jose_4",
+    "id": "johto_bird_keeper_gs_jose_4",
     "name": "Jose",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -18876,7 +18876,7 @@
     ]
   },
   {
-    "id": "picnicker_erin_4",
+    "id": "johto_picnicker_erin_4",
     "name": "Erin",
     "class": "Picnicker",
     "ai": [
@@ -18912,7 +18912,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_gaven_4",
+    "id": "johto_ace_trainer_m_gaven_4",
     "name": "Gaven",
     "class": "Ace Trainer M",
     "ai": [
@@ -18962,7 +18962,7 @@
     ]
   },
   {
-    "id": "black_belt_kenji_4",
+    "id": "johto_black_belt_kenji_4",
     "name": "Kenji",
     "class": "Black Belt",
     "ai": [
@@ -18999,7 +18999,7 @@
     ]
   },
   {
-    "id": "hiker_parry_4",
+    "id": "johto_hiker_parry_4",
     "name": "Parry",
     "class": "Hiker",
     "ai": [
@@ -19024,7 +19024,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_reena_4",
+    "id": "johto_ace_trainer_f_reena_4",
     "name": "Reena",
     "class": "Ace Trainer F",
     "ai": [
@@ -19074,7 +19074,7 @@
     ]
   },
   {
-    "id": "fisherman_wilton_4",
+    "id": "johto_fisherman_wilton_4",
     "name": "Wilton",
     "class": "Fisherman",
     "ai": [
@@ -19104,7 +19104,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_jamie_4",
+    "id": "johto_ace_trainer_f_jamie_4",
     "name": "Jamie",
     "class": "Ace Trainer F",
     "ai": [
@@ -19142,7 +19142,7 @@
     ]
   },
   {
-    "id": "pokefan_m_derek_4",
+    "id": "johto_pokefan_m_derek_4",
     "name": "Derek",
     "class": "Pokefan M",
     "ai": [
@@ -19178,7 +19178,7 @@
     ]
   },
   {
-    "id": "pokefan_beverly_4",
+    "id": "johto_pokefan_beverly_4",
     "name": "Beverly",
     "class": "Pokefan",
     "ai": [
@@ -19196,7 +19196,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_vance_4",
+    "id": "johto_bird_keeper_gs_vance_4",
     "name": "Vance",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -19226,7 +19226,7 @@
     ]
   },
   {
-    "id": "lass_krise_2",
+    "id": "johto_lass_krise_2",
     "name": "Krise",
     "class": "Lass",
     "ai": [
@@ -19251,7 +19251,7 @@
     ]
   },
   {
-    "id": "lass_krise_3",
+    "id": "johto_lass_krise_3",
     "name": "Krise",
     "class": "Lass",
     "ai": [
@@ -19276,7 +19276,7 @@
     ]
   },
   {
-    "id": "lass_krise_4",
+    "id": "johto_lass_krise_4",
     "name": "Krise",
     "class": "Lass",
     "ai": [
@@ -19301,7 +19301,7 @@
     ]
   },
   {
-    "id": "youngster_ian_2",
+    "id": "johto_youngster_ian_2",
     "name": "Ian",
     "class": "Youngster",
     "ai": [
@@ -19325,7 +19325,7 @@
     ]
   },
   {
-    "id": "youngster_ian_3",
+    "id": "johto_youngster_ian_3",
     "name": "Ian",
     "class": "Youngster",
     "ai": [
@@ -19349,7 +19349,7 @@
     ]
   },
   {
-    "id": "youngster_ian_4",
+    "id": "johto_youngster_ian_4",
     "name": "Ian",
     "class": "Youngster",
     "ai": [
@@ -19373,7 +19373,7 @@
     ]
   },
   {
-    "id": "firebreather_walt_2",
+    "id": "johto_firebreather_walt_2",
     "name": "Walt",
     "class": "Firebreather",
     "ai": [
@@ -19397,7 +19397,7 @@
     ]
   },
   {
-    "id": "firebreather_walt_3",
+    "id": "johto_firebreather_walt_3",
     "name": "Walt",
     "class": "Firebreather",
     "ai": [
@@ -19421,7 +19421,7 @@
     ]
   },
   {
-    "id": "firebreather_walt_4",
+    "id": "johto_firebreather_walt_4",
     "name": "Walt",
     "class": "Firebreather",
     "ai": [
@@ -19451,7 +19451,7 @@
     ]
   },
   {
-    "id": "bug_catcher_doug_2",
+    "id": "johto_bug_catcher_doug_2",
     "name": "Doug",
     "class": "Bug Catcher",
     "ai": [
@@ -19475,7 +19475,7 @@
     ]
   },
   {
-    "id": "bug_catcher_doug_3",
+    "id": "johto_bug_catcher_doug_3",
     "name": "Doug",
     "class": "Bug Catcher",
     "ai": [
@@ -19499,7 +19499,7 @@
     ]
   },
   {
-    "id": "bug_catcher_doug_4",
+    "id": "johto_bug_catcher_doug_4",
     "name": "Doug",
     "class": "Bug Catcher",
     "ai": [
@@ -19523,7 +19523,7 @@
     ]
   },
   {
-    "id": "bug_catcher_rob_2",
+    "id": "johto_bug_catcher_rob_2",
     "name": "Rob",
     "class": "Bug Catcher",
     "ai": [
@@ -19547,7 +19547,7 @@
     ]
   },
   {
-    "id": "bug_catcher_rob_3",
+    "id": "johto_bug_catcher_rob_3",
     "name": "Rob",
     "class": "Bug Catcher",
     "ai": [
@@ -19571,7 +19571,7 @@
     ]
   },
   {
-    "id": "bug_catcher_rob_4",
+    "id": "johto_bug_catcher_rob_4",
     "name": "Rob",
     "class": "Bug Catcher",
     "ai": [
@@ -19595,7 +19595,7 @@
     ]
   },
   {
-    "id": "biker_reese_2",
+    "id": "johto_biker_reese_2",
     "name": "Reese",
     "class": "Biker",
     "ai": [
@@ -19631,7 +19631,7 @@
     ]
   },
   {
-    "id": "biker_reese_3",
+    "id": "johto_biker_reese_3",
     "name": "Reese",
     "class": "Biker",
     "ai": [
@@ -19667,7 +19667,7 @@
     ]
   },
   {
-    "id": "biker_reese_4",
+    "id": "johto_biker_reese_4",
     "name": "Reese",
     "class": "Biker",
     "ai": [
@@ -19703,7 +19703,7 @@
     ]
   },
   {
-    "id": "biker_aiden_2",
+    "id": "johto_biker_aiden_2",
     "name": "Aiden",
     "class": "Biker",
     "ai": [
@@ -19727,7 +19727,7 @@
     ]
   },
   {
-    "id": "biker_aiden_3",
+    "id": "johto_biker_aiden_3",
     "name": "Aiden",
     "class": "Biker",
     "ai": [
@@ -19751,7 +19751,7 @@
     ]
   },
   {
-    "id": "biker_aiden_4",
+    "id": "johto_biker_aiden_4",
     "name": "Aiden",
     "class": "Biker",
     "ai": [
@@ -19781,7 +19781,7 @@
     ]
   },
   {
-    "id": "biker_ernest_2",
+    "id": "johto_biker_ernest_2",
     "name": "Ernest",
     "class": "Biker",
     "ai": [
@@ -19805,7 +19805,7 @@
     ]
   },
   {
-    "id": "biker_ernest_3",
+    "id": "johto_biker_ernest_3",
     "name": "Ernest",
     "class": "Biker",
     "ai": [
@@ -19829,7 +19829,7 @@
     ]
   },
   {
-    "id": "biker_ernest_4",
+    "id": "johto_biker_ernest_4",
     "name": "Ernest",
     "class": "Biker",
     "ai": [
@@ -19853,7 +19853,7 @@
     ]
   },
   {
-    "id": "teacher_hillary_2",
+    "id": "johto_teacher_hillary_2",
     "name": "Hillary",
     "class": "Teacher",
     "ai": [
@@ -19879,7 +19879,7 @@
     ]
   },
   {
-    "id": "teacher_hillary_3",
+    "id": "johto_teacher_hillary_3",
     "name": "Hillary",
     "class": "Teacher",
     "ai": [
@@ -19905,7 +19905,7 @@
     ]
   },
   {
-    "id": "teacher_hillary_4",
+    "id": "johto_teacher_hillary_4",
     "name": "Hillary",
     "class": "Teacher",
     "ai": [
@@ -19931,7 +19931,7 @@
     ]
   },
   {
-    "id": "school_kid_m_billy_2",
+    "id": "johto_school_kid_m_billy_2",
     "name": "Billy",
     "class": "School Kid M",
     "ai": [
@@ -19962,7 +19962,7 @@
     ]
   },
   {
-    "id": "school_kid_m_billy_3",
+    "id": "johto_school_kid_m_billy_3",
     "name": "Billy",
     "class": "School Kid M",
     "ai": [
@@ -19993,7 +19993,7 @@
     ]
   },
   {
-    "id": "school_kid_m_billy_4",
+    "id": "johto_school_kid_m_billy_4",
     "name": "Billy",
     "class": "School Kid M",
     "ai": [
@@ -20050,7 +20050,7 @@
     ]
   },
   {
-    "id": "twins_kay_and_tia_2",
+    "id": "johto_twins_kay_and_tia_2",
     "name": "Kay & Tia",
     "class": "Twins",
     "ai": [
@@ -20085,7 +20085,7 @@
     ]
   },
   {
-    "id": "twins_kay_and_tia_3",
+    "id": "johto_twins_kay_and_tia_3",
     "name": "Kay & Tia",
     "class": "Twins",
     "ai": [
@@ -20122,7 +20122,7 @@
     ]
   },
   {
-    "id": "twins_kay_and_tia_4",
+    "id": "johto_twins_kay_and_tia_4",
     "name": "Kay & Tia",
     "class": "Twins",
     "ai": [
@@ -20159,7 +20159,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_josh_2",
+    "id": "johto_bird_keeper_gs_josh_2",
     "name": "Josh",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -20183,7 +20183,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_josh_3",
+    "id": "johto_bird_keeper_gs_josh_3",
     "name": "Josh",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -20207,7 +20207,7 @@
     ]
   },
   {
-    "id": "bird_keeper_gs_josh_4",
+    "id": "johto_bird_keeper_gs_josh_4",
     "name": "Josh",
     "class": "Bird Keeper Gs",
     "ai": [
@@ -20231,7 +20231,7 @@
     ]
   },
   {
-    "id": "school_kid_m_torin_2",
+    "id": "johto_school_kid_m_torin_2",
     "name": "Torin",
     "class": "School Kid M",
     "ai": [
@@ -20262,7 +20262,7 @@
     ]
   },
   {
-    "id": "school_kid_m_torin_3",
+    "id": "johto_school_kid_m_torin_3",
     "name": "Torin",
     "class": "School Kid M",
     "ai": [
@@ -20293,7 +20293,7 @@
     ]
   },
   {
-    "id": "school_kid_m_torin_4",
+    "id": "johto_school_kid_m_torin_4",
     "name": "Torin",
     "class": "School Kid M",
     "ai": [
@@ -20324,7 +20324,7 @@
     ]
   },
   {
-    "id": "young_couple_tim_and_sue_2",
+    "id": "johto_young_couple_tim_and_sue_2",
     "name": "Tim & Sue",
     "class": "Young Couple",
     "ai": [
@@ -20349,7 +20349,7 @@
     ]
   },
   {
-    "id": "young_couple_tim_and_sue_3",
+    "id": "johto_young_couple_tim_and_sue_3",
     "name": "Tim & Sue",
     "class": "Young Couple",
     "ai": [
@@ -20386,7 +20386,7 @@
     ]
   },
   {
-    "id": "young_couple_tim_and_sue_4",
+    "id": "johto_young_couple_tim_and_sue_4",
     "name": "Tim & Sue",
     "class": "Young Couple",
     "ai": [
@@ -20423,7 +20423,7 @@
     ]
   },
   {
-    "id": "hiker_kenny_2",
+    "id": "johto_hiker_kenny_2",
     "name": "Kenny",
     "class": "Hiker",
     "ai": [
@@ -20460,7 +20460,7 @@
     ]
   },
   {
-    "id": "hiker_kenny_3",
+    "id": "johto_hiker_kenny_3",
     "name": "Kenny",
     "class": "Hiker",
     "ai": [
@@ -20497,7 +20497,7 @@
     ]
   },
   {
-    "id": "hiker_kenny_4",
+    "id": "johto_hiker_kenny_4",
     "name": "Kenny",
     "class": "Hiker",
     "ai": [
@@ -20534,7 +20534,7 @@
     ]
   },
   {
-    "id": "camper_tanner_2",
+    "id": "johto_camper_tanner_2",
     "name": "Tanner",
     "class": "Camper",
     "ai": [
@@ -20560,7 +20560,7 @@
     ]
   },
   {
-    "id": "camper_tanner_3",
+    "id": "johto_camper_tanner_3",
     "name": "Tanner",
     "class": "Camper",
     "ai": [
@@ -20592,7 +20592,7 @@
     ]
   },
   {
-    "id": "camper_tanner_4",
+    "id": "johto_camper_tanner_4",
     "name": "Tanner",
     "class": "Camper",
     "ai": [
@@ -20624,7 +20624,7 @@
     ]
   },
   {
-    "id": "fisherman_kyle_2",
+    "id": "johto_fisherman_kyle_2",
     "name": "Kyle",
     "class": "Fisherman",
     "ai": [
@@ -20654,7 +20654,7 @@
     ]
   },
   {
-    "id": "fisherman_kyle_3",
+    "id": "johto_fisherman_kyle_3",
     "name": "Kyle",
     "class": "Fisherman",
     "ai": [
@@ -20690,7 +20690,7 @@
     ]
   },
   {
-    "id": "fisherman_kyle_4",
+    "id": "johto_fisherman_kyle_4",
     "name": "Kyle",
     "class": "Fisherman",
     "ai": [
@@ -20726,7 +20726,7 @@
     ]
   },
   {
-    "id": "fisherman_kyler_2",
+    "id": "johto_fisherman_kyler_2",
     "name": "Kyler",
     "class": "Fisherman",
     "ai": [
@@ -20762,49 +20762,7 @@
     ]
   },
   {
-    "id": "fisherman_kyler_3",
-    "name": "Kyler",
-    "class": "Fisherman",
-    "ai": [
-      "Basic"
-    ],
-    "items": [],
-    "prizeMoney": 0,
-    "party": [
-      {
-        "species": "Magikarp",
-        "level": 18,
-        "ivScale": 0,
-        "personality": 0
-      },
-      {
-        "species": "Magikarp",
-        "level": 18,
-        "ivScale": 0,
-        "personality": 0
-      },
-      {
-        "species": "Magikarp",
-        "level": 18,
-        "ivScale": 0,
-        "personality": 0
-      },
-      {
-        "species": "Magikarp",
-        "level": 18,
-        "ivScale": 0,
-        "personality": 0
-      },
-      {
-        "species": "Magikarp",
-        "level": 18,
-        "ivScale": 0,
-        "personality": 0
-      }
-    ]
-  },
-  {
-    "id": "fisherman_kyler_4",
+    "id": "johto_fisherman_kyler_3",
     "name": "Kyler",
     "class": "Fisherman",
     "ai": [
@@ -20842,6 +20800,48 @@
         "level": 18,
         "ivScale": 0,
         "personality": 0
+      }
+    ]
+  },
+  {
+    "id": "johto_fisherman_kyler_4",
+    "name": "Kyler",
+    "class": "Fisherman",
+    "ai": [
+      "Basic"
+    ],
+    "items": [],
+    "prizeMoney": 0,
+    "party": [
+      {
+        "species": "Magikarp",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 0
+      },
+      {
+        "species": "Magikarp",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 0
+      },
+      {
+        "species": "Magikarp",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 0
+      },
+      {
+        "species": "Magikarp",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 0
+      },
+      {
+        "species": "Magikarp",
+        "level": 18,
+        "ivScale": 0,
+        "personality": 0
       },
       {
         "species": "Magikarp",
@@ -20852,7 +20852,7 @@
     ]
   },
   {
-    "id": "pkmn_trainer_cheryl_cheryl",
+    "id": "johto_pkmn_trainer_cheryl_cheryl",
     "name": "Cheryl",
     "class": "Pkmn Trainer Cheryl",
     "ai": [
@@ -20930,7 +20930,7 @@
     ]
   },
   {
-    "id": "pkmn_trainer_buck_marley",
+    "id": "johto_pkmn_trainer_buck_marley",
     "name": "Marley",
     "class": "Pkmn Trainer Buck",
     "ai": [
@@ -21008,7 +21008,7 @@
     ]
   },
   {
-    "id": "pkmn_trainer_marley_mira",
+    "id": "johto_pkmn_trainer_marley_mira",
     "name": "Mira",
     "class": "Pkmn Trainer Marley",
     "ai": [
@@ -21086,7 +21086,7 @@
     ]
   },
   {
-    "id": "pkmn_trainer_riley_riley",
+    "id": "johto_pkmn_trainer_riley_riley",
     "name": "Riley",
     "class": "Pkmn Trainer Riley",
     "ai": [
@@ -21164,7 +21164,7 @@
     ]
   },
   {
-    "id": "pkmn_trainer_mira_buck",
+    "id": "johto_pkmn_trainer_mira_buck",
     "name": "Buck",
     "class": "Pkmn Trainer Mira",
     "ai": [
@@ -21242,7 +21242,7 @@
     ]
   },
   {
-    "id": "gentleman_alfred_2",
+    "id": "johto_gentleman_alfred_2",
     "name": "Alfred",
     "class": "Gentleman",
     "ai": [
@@ -21262,7 +21262,7 @@
     ]
   },
   {
-    "id": "gentleman_alfred_3",
+    "id": "johto_gentleman_alfred_3",
     "name": "Alfred",
     "class": "Gentleman",
     "ai": [
@@ -21282,7 +21282,7 @@
     ]
   },
   {
-    "id": "gentleman_alfred_4",
+    "id": "johto_gentleman_alfred_4",
     "name": "Alfred",
     "class": "Gentleman",
     "ai": [
@@ -21308,7 +21308,7 @@
     ]
   },
   {
-    "id": "pkmn_trainer_lance_lance",
+    "id": "johto_pkmn_trainer_lance_lance",
     "name": "Lance",
     "class": "Pkmn Trainer Lance",
     "ai": [
@@ -21334,7 +21334,7 @@
     ]
   },
   {
-    "id": "sailor_parker",
+    "id": "johto_sailor_parker",
     "name": "Parker",
     "class": "Sailor",
     "ai": [
@@ -21370,7 +21370,7 @@
     ]
   },
   {
-    "id": "sailor_eddie",
+    "id": "johto_sailor_eddie",
     "name": "Eddie",
     "class": "Sailor",
     "ai": [
@@ -21394,7 +21394,7 @@
     ]
   },
   {
-    "id": "swimmer_f_joy",
+    "id": "johto_swimmer_f_joy",
     "name": "Joy",
     "class": "Swimmer F",
     "ai": [
@@ -21418,7 +21418,7 @@
     ]
   },
   {
-    "id": "beauty_callie",
+    "id": "johto_beauty_callie",
     "name": "Callie",
     "class": "Beauty",
     "ai": [
@@ -21454,7 +21454,7 @@
     ]
   },
   {
-    "id": "beauty_kassandra",
+    "id": "johto_beauty_kassandra",
     "name": "Kassandra",
     "class": "Beauty",
     "ai": [
@@ -21490,7 +21490,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_arabella",
+    "id": "johto_ace_trainer_m_arabella",
     "name": "Arabella",
     "class": "Ace Trainer M",
     "ai": [
@@ -21528,7 +21528,7 @@
     ]
   },
   {
-    "id": "ace_trainer_m_bonita",
+    "id": "johto_ace_trainer_m_bonita",
     "name": "Bonita",
     "class": "Ace Trainer M",
     "ai": [
@@ -21566,7 +21566,7 @@
     ]
   },
   {
-    "id": "ace_trainer_f_salma",
+    "id": "johto_ace_trainer_f_salma",
     "name": "Salma",
     "class": "Ace Trainer F",
     "ai": [
@@ -21605,7 +21605,7 @@
     ]
   },
   {
-    "id": "double_team_elan_and_ida",
+    "id": "johto_double_team_elan_and_ida",
     "name": "Elan & Ida",
     "class": "Double Team",
     "ai": [
@@ -21644,7 +21644,7 @@
     ]
   },
   {
-    "id": "hiker_edwin",
+    "id": "johto_hiker_edwin",
     "name": "Edwin",
     "class": "Hiker",
     "ai": [
@@ -21669,7 +21669,7 @@
     ]
   },
   {
-    "id": "boarder_bryce",
+    "id": "johto_boarder_bryce",
     "name": "Bryce",
     "class": "Boarder",
     "ai": [
@@ -21693,7 +21693,7 @@
     ]
   },
   {
-    "id": "boarder_shaun",
+    "id": "johto_boarder_shaun",
     "name": "Shaun",
     "class": "Boarder",
     "ai": [
@@ -21717,7 +21717,7 @@
     ]
   },
   {
-    "id": "skier_cady",
+    "id": "johto_skier_cady",
     "name": "Cady",
     "class": "Skier",
     "ai": [
@@ -21735,7 +21735,7 @@
     ]
   },
   {
-    "id": "super_nerd_cary",
+    "id": "johto_super_nerd_cary",
     "name": "Cary",
     "class": "Super Nerd",
     "ai": [
@@ -21760,7 +21760,7 @@
     ]
   },
   {
-    "id": "super_nerd_waldo",
+    "id": "johto_super_nerd_waldo",
     "name": "Waldo",
     "class": "Super Nerd",
     "ai": [
@@ -21785,7 +21785,7 @@
     ]
   },
   {
-    "id": "super_nerd_merle",
+    "id": "johto_super_nerd_merle",
     "name": "Merle",
     "class": "Super Nerd",
     "ai": [
@@ -21810,7 +21810,7 @@
     ]
   },
   {
-    "id": "scientist_gs_lowell",
+    "id": "johto_scientist_gs_lowell",
     "name": "Lowell",
     "class": "Scientist Gs",
     "ai": [
@@ -21835,7 +21835,7 @@
     ]
   },
   {
-    "id": "scientist_gs_linden",
+    "id": "johto_scientist_gs_linden",
     "name": "Linden",
     "class": "Scientist Gs",
     "ai": [
@@ -21860,7 +21860,7 @@
     ]
   },
   {
-    "id": "scientist_gs_daniel",
+    "id": "johto_scientist_gs_daniel",
     "name": "Daniel",
     "class": "Scientist Gs",
     "ai": [
@@ -21885,7 +21885,7 @@
     ]
   },
   {
-    "id": "bug_catcher_dane",
+    "id": "johto_bug_catcher_dane",
     "name": "Dane",
     "class": "Bug Catcher",
     "ai": [
@@ -21909,7 +21909,7 @@
     ]
   },
   {
-    "id": "bug_catcher_dion",
+    "id": "johto_bug_catcher_dion",
     "name": "Dion",
     "class": "Bug Catcher",
     "ai": [
@@ -21927,7 +21927,7 @@
     ]
   },
   {
-    "id": "bug_catcher_stacey",
+    "id": "johto_bug_catcher_stacey",
     "name": "Stacey",
     "class": "Bug Catcher",
     "ai": [
@@ -21957,7 +21957,7 @@
     ]
   },
   {
-    "id": "bug_catcher_ellis",
+    "id": "johto_bug_catcher_ellis",
     "name": "Ellis",
     "class": "Bug Catcher",
     "ai": [
@@ -21987,7 +21987,7 @@
     ]
   },
   {
-    "id": "bug_catcher_abner",
+    "id": "johto_bug_catcher_abner",
     "name": "Abner",
     "class": "Bug Catcher",
     "ai": [
@@ -22017,7 +22017,7 @@
     ]
   },
   {
-    "id": "rocket_boss_giovanni",
+    "id": "johto_rocket_boss_giovanni",
     "name": "Giovanni",
     "class": "Rocket Boss",
     "ai": [
@@ -22081,7 +22081,7 @@
     ]
   },
   {
-    "id": "champion_lance_2",
+    "id": "johto_champion_lance_2",
     "name": "Lance",
     "class": "Champion",
     "ai": [
@@ -22174,7 +22174,7 @@
     ]
   },
   {
-    "id": "elite_four_will_will_2",
+    "id": "johto_elite_four_will_will_2",
     "name": "Will",
     "class": "Elite Four",
     "ai": [
@@ -22264,7 +22264,7 @@
     ]
   },
   {
-    "id": "elite_four_koga_koga_2",
+    "id": "johto_elite_four_koga_koga_2",
     "name": "Koga",
     "class": "Elite Four",
     "ai": [
@@ -22355,7 +22355,7 @@
     ]
   },
   {
-    "id": "elite_four_bruno_bruno_2",
+    "id": "johto_elite_four_bruno_bruno_2",
     "name": "Bruno",
     "class": "Elite Four",
     "ai": [
@@ -22445,7 +22445,7 @@
     ]
   },
   {
-    "id": "elite_four_karen_karen_2",
+    "id": "johto_elite_four_karen_karen_2",
     "name": "Karen",
     "class": "Elite Four",
     "ai": [
@@ -22535,7 +22535,7 @@
     ]
   },
   {
-    "id": "executive_proton_proton_2",
+    "id": "johto_executive_proton_proton_2",
     "name": "Proton",
     "class": "Executive Proton",
     "ai": [
@@ -22573,7 +22573,7 @@
     ]
   },
   {
-    "id": "tower_tycoon_palmer",
+    "id": "johto_tower_tycoon_palmer",
     "name": "Palmer",
     "class": "Tower Tycoon",
     "ai": [
@@ -22593,7 +22593,7 @@
     ]
   },
   {
-    "id": "hall_matron_argenta",
+    "id": "johto_hall_matron_argenta",
     "name": "Argenta",
     "class": "Hall Matron",
     "ai": [
@@ -22613,7 +22613,7 @@
     ]
   },
   {
-    "id": "factory_head_thorton",
+    "id": "johto_factory_head_thorton",
     "name": "Thorton",
     "class": "Factory Head",
     "ai": [
@@ -22633,7 +22633,7 @@
     ]
   },
   {
-    "id": "arcade_star_dahlia",
+    "id": "johto_arcade_star_dahlia",
     "name": "Dahlia",
     "class": "Arcade Star",
     "ai": [
@@ -22653,7 +22653,7 @@
     ]
   },
   {
-    "id": "castle_valet_darach",
+    "id": "johto_castle_valet_darach",
     "name": "Darach",
     "class": "Castle Valet",
     "ai": [
@@ -22673,7 +22673,7 @@
     ]
   },
   {
-    "id": "leader_falkner_falkner_2",
+    "id": "johto_leader_falkner_falkner_2",
     "name": "Falkner",
     "class": "Leader",
     "ai": [
@@ -22764,7 +22764,7 @@
     ]
   },
   {
-    "id": "leader_bugsy_bugsy_2",
+    "id": "johto_leader_bugsy_bugsy_2",
     "name": "Bugsy",
     "class": "Leader",
     "ai": [
@@ -22856,7 +22856,7 @@
     ]
   },
   {
-    "id": "leader_whitney_2",
+    "id": "johto_leader_whitney_2",
     "name": "Whitney",
     "class": "Leader",
     "ai": [
@@ -22948,7 +22948,7 @@
     ]
   },
   {
-    "id": "leader_morty_morty_2",
+    "id": "johto_leader_morty_morty_2",
     "name": "Morty",
     "class": "Leader",
     "ai": [
@@ -23039,7 +23039,7 @@
     ]
   },
   {
-    "id": "leader_pryce_pryce_2",
+    "id": "johto_leader_pryce_pryce_2",
     "name": "Pryce",
     "class": "Leader",
     "ai": [
@@ -23132,7 +23132,7 @@
     ]
   },
   {
-    "id": "leader_jasmine_jasmine_2",
+    "id": "johto_leader_jasmine_jasmine_2",
     "name": "Jasmine",
     "class": "Leader",
     "ai": [
@@ -23222,7 +23222,7 @@
     ]
   },
   {
-    "id": "leader_chuck_chuck_2",
+    "id": "johto_leader_chuck_chuck_2",
     "name": "Chuck",
     "class": "Leader",
     "ai": [
@@ -23314,7 +23314,7 @@
     ]
   },
   {
-    "id": "leader_clair_clair_2",
+    "id": "johto_leader_clair_clair_2",
     "name": "Clair",
     "class": "Leader",
     "ai": [
@@ -23406,7 +23406,7 @@
     ]
   },
   {
-    "id": "leader_brock_brock_2",
+    "id": "johto_leader_brock_brock_2",
     "name": "Brock",
     "class": "Leader",
     "ai": [
@@ -23498,7 +23498,7 @@
     ]
   },
   {
-    "id": "leader_misty_misty_2",
+    "id": "johto_leader_misty_misty_2",
     "name": "Misty",
     "class": "Leader",
     "ai": [
@@ -23589,7 +23589,7 @@
     ]
   },
   {
-    "id": "leader_lt_surge_lt__surge_2",
+    "id": "johto_leader_lt_surge_lt__surge_2",
     "name": "Lt. Surge",
     "class": "Leader",
     "ai": [
@@ -23681,7 +23681,7 @@
     ]
   },
   {
-    "id": "leader_erika_erika_2",
+    "id": "johto_leader_erika_erika_2",
     "name": "Erika",
     "class": "Leader",
     "ai": [
@@ -23773,7 +23773,7 @@
     ]
   },
   {
-    "id": "leader_janine_janine_2",
+    "id": "johto_leader_janine_janine_2",
     "name": "Janine",
     "class": "Leader",
     "ai": [
@@ -23864,7 +23864,7 @@
     ]
   },
   {
-    "id": "leader_sabrina_sabrina_2",
+    "id": "johto_leader_sabrina_sabrina_2",
     "name": "Sabrina",
     "class": "Leader",
     "ai": [
@@ -23956,7 +23956,7 @@
     ]
   },
   {
-    "id": "leader_blaine_blaine_2",
+    "id": "johto_leader_blaine_blaine_2",
     "name": "Blaine",
     "class": "Leader",
     "ai": [
@@ -24046,7 +24046,7 @@
     ]
   },
   {
-    "id": "leader_blue_blue_2",
+    "id": "johto_leader_blue_blue_2",
     "name": "Blue",
     "class": "Leader",
     "ai": [
@@ -24139,7 +24139,7 @@
     ]
   },
   {
-    "id": "beauty_charlotte",
+    "id": "johto_beauty_charlotte",
     "name": "Charlotte",
     "class": "Beauty",
     "ai": [
@@ -24157,7 +24157,7 @@
     ]
   },
   {
-    "id": "young_couple_duff_and_eda",
+    "id": "johto_young_couple_duff_and_eda",
     "name": "Duff & Eda",
     "class": "Young Couple",
     "ai": [
@@ -24182,7 +24182,7 @@
     ]
   },
   {
-    "id": "double_team_thom_and_kae",
+    "id": "johto_double_team_thom_and_kae",
     "name": "Thom & Kae",
     "class": "Double Team",
     "ai": [
@@ -24221,7 +24221,7 @@
     ]
   },
   {
-    "id": "hiker_devin",
+    "id": "johto_hiker_devin",
     "name": "Devin",
     "class": "Hiker",
     "ai": [
@@ -24252,7 +24252,7 @@
     ]
   },
   {
-    "id": "camper_grant",
+    "id": "johto_camper_grant",
     "name": "Grant",
     "class": "Camper",
     "ai": [
@@ -24278,7 +24278,7 @@
     ]
   },
   {
-    "id": "champion_lance_3",
+    "id": "johto_champion_lance_3",
     "name": "Lance",
     "class": "Champion",
     "ai": [
@@ -24331,7 +24331,7 @@
     ]
   },
   {
-    "id": "leader_clair_clair_3",
+    "id": "johto_leader_clair_clair_3",
     "name": "Clair",
     "class": "Leader",
     "ai": [
@@ -24384,7 +24384,7 @@
     ]
   },
   {
-    "id": "partner_rival_1",
+    "id": "johto_partner_rival_1",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -24437,7 +24437,7 @@
     ]
   },
   {
-    "id": "partner_rival_2",
+    "id": "johto_partner_rival_2",
     "name": "Silver",
     "class": "Rival",
     "ai": [
@@ -24490,7 +24490,7 @@
     ]
   },
   {
-    "id": "partner_rival_3",
+    "id": "johto_partner_rival_3",
     "name": "Silver",
     "class": "Rival",
     "ai": [

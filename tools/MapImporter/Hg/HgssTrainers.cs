@@ -10,7 +10,9 @@ namespace MapImporter.Hg;
 /// <summary>
 /// HeartGold's trainers (plan 20 · J1; <c>files/poketool/trainer/trainers.json</c>, numbered by
 /// <c>include/constants/trainers.h</c>) as records in the shape of Platinum's <c>Data/trainers.json</c> (plan 18's
-/// decision 8): the id (the constant without <c>TRAINER_</c>, lower case), the name, the class, the AI's routines
+/// decision 8): the id (the constant without <c>TRAINER_</c>, lower case, after the region's prefix,
+/// <see cref="HgWorld.TrainerPrefix"/>, as the GBA reader puts <c>kanto_</c> before FireRed's: ids are unique across
+/// every region's file), the name, the class, the AI's routines
 /// (the same engine's bits as Platinum's, <see cref="AiFlags"/>), the items, the double battle and the team
 /// (species, level, the IVs' share of 255 the original calls difficulty, the held item and the moves the trainer
 /// chose). The file's <c>messages</c>, the trainers' lines, are never read. Prize money and personalities are left
@@ -25,7 +27,7 @@ public static class HgssTrainers
         ["MOVE_SMELLING_SALT"] = "MOVE_SMELLING_SALTS"
     };
 
-    public static List<TrainerRecord> Parse(string json, string trainersH, List<string> problems)
+    public static List<TrainerRecord> Parse(string json, string trainersH, List<string> problems, string idPrefix = "")
     {
         var ids = new Dictionary<int, string>();
         foreach (Match m in Regex.Matches(trainersH, @"^#define\s+(TRAINER_\w+)\s+(\d+)", RegexOptions.Multiline))
@@ -60,7 +62,7 @@ public static class HgssTrainers
             uint flags = (uint)t.GetProperty("ai_flags").GetInt64();
             records.Add(new TrainerRecord
             {
-                Id = id["TRAINER_".Length..].ToLowerInvariant(),
+                Id = idPrefix + id["TRAINER_".Length..].ToLowerInvariant(),
                 Name = (t.GetProperty("name").GetString() ?? "").Replace("{TRNAME}", "", StringComparison.Ordinal),
                 Class = ClassOf(t.GetProperty("class").GetString() ?? ""),
                 Ai = Enum.GetValues<AiFlags>().Where(f => f != AiFlags.None && (flags & (uint)f) != 0).Select(f => f.ToString()).ToList(),
@@ -124,7 +126,7 @@ public sealed class PhoneContact
 /// <summary>The phone book (plan 20 · J1): who can be called, where they are met, their gift and their rematch's day and hour. No line of a call is read.</summary>
 public static class Phonebook
 {
-    public static List<PhoneContact> Parse(string json, List<string> problems)
+    public static List<PhoneContact> Parse(string json, List<string> problems, string trainerPrefix = "")
     {
         using var doc = JsonDocument.Parse(json);
         var list = new List<PhoneContact>();
@@ -138,7 +140,7 @@ public static class Phonebook
                 Id = Regex.Replace(id.StartsWith("PHONE_CONTACT_", StringComparison.Ordinal) ? id["PHONE_CONTACT_".Length..] : id, "_+", "_").ToLowerInvariant(),
                 Type = c.TryGetProperty("type", out var t) ? t.GetInt32() : 0,
                 Class = HgssTrainers.ClassOf(Text("trainerClass").Replace("TRAINERCLASS_PHONE_", "TRAINERCLASS_", StringComparison.Ordinal)),
-                Trainer = trainer is "" or "TRAINER_NONE" ? null : trainer["TRAINER_".Length..].ToLowerInvariant(),
+                Trainer = trainer is "" or "TRAINER_NONE" ? null : trainerPrefix + trainer["TRAINER_".Length..].ToLowerInvariant(),
                 Area = Text("mapId").StartsWith("MAP_", StringComparison.Ordinal) ? Text("mapId")["MAP_".Length..].ToLowerInvariant() : Text("mapId"),
                 Gift = gift is "" or "ITEM_NONE" ? null : GbaNames.Item(gift) ?? Problem(gift, id, problems),
                 RematchDay = day is "" or "RTC_WEEK_MAX" ? null : GbaTables.Titled(day["RTC_WEEK_".Length..]),
