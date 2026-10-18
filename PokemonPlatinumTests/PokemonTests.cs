@@ -286,7 +286,7 @@ public class PokemonTests
         foreach (string name in MapDatabase.MapNames)
         {
             var map = maps(name);
-            // Johto and the regions after it have no maps yet; every map there is must be one the game can come to
+            // Hoenn and the regions after it have no maps yet; every map there is must be one the game can come to
             Assert.True(reached.TryGetValue(map, out var tiles), $"{name} can't be reached from where its region starts");
             foreach (var warp in map.Warps)
                 Assert.True(tiles!.Contains((warp.SourceX, warp.SourceY)),

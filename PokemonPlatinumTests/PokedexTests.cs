@@ -234,7 +234,8 @@ public class PokedexTests
         Assert.Equal(new NationalUnlock(NationalUnlockRule.HallOfFameAndSeenAll, 0), sinnoh.NationalUnlock);
         Assert.Equal("kanto", kanto.Dex);
         Assert.Equal(new NationalUnlock(NationalUnlockRule.Caught, 60), kanto.NationalUnlock);
-        Assert.Null(RegionDatabase.Get("Johto")!.Dex);
+        Assert.Equal("updated-johto", RegionDatabase.Get("Johto")!.Dex);
+        Assert.Null(RegionDatabase.Get("Hoenn")!.Dex);
         Assert.Equal(NationalUnlockRule.HallOfFame, NationalUnlock.Parse(null).Rule);
         Assert.Equal(NationalUnlockRule.HallOfFame, NationalUnlock.Parse("Caught").Rule);
         Assert.Equal(new NationalUnlock(NationalUnlockRule.Caught, 100), NationalUnlock.Parse("Caught100"));
@@ -265,7 +266,7 @@ public class PokedexTests
     {
         var dex = new Pokedex();
         Assert.Equal(new[] { Pokedex.Sinnoh }, dex.Dexes);
-        dex.Enter(RegionDatabase.Get("Johto")!);   // no Pokédex yet: nothing is added
+        dex.Enter(RegionDatabase.Get("Hoenn")!);   // no Pokédex yet: nothing is added
         Assert.Equal(new[] { Pokedex.Sinnoh }, dex.Dexes);
         dex.Enter(RegionDatabase.Get("Kanto")!);
         dex.Enter(RegionDatabase.Get("Kanto")!);

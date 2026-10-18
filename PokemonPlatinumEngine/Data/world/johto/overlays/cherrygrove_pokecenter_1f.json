@@ -1,6 +1,7 @@
 {
   // Cherrygrove City's Pokémon Center (plan 20 · J2), from HeartGold's room. The counters for the link and the
-  // Wi-Fi Club say it is closed, as in every Center (decision 06 · 7)
+  // Wi-Fi Club say it is closed, as in every Center (decision 06 · 7). HeartGold stands the Wi-Fi Club's receptionist before the stairs down, which she keeps
+  // shut; here she is left out, and the floor below, whose counters say the same, is open
   "area": "cherrygrove_pokecenter_1f",
   "bgmTrack": "johto/cherrygrove",
   "people": {
@@ -16,10 +17,6 @@
     "t21pc0101_pcwoman2_3": {
       "name": "Receptionist",
       "dialog": [ "I'm sorry, the link to other players is closed for now." ]
-    },
-    "t21pc0101_pcwoman1_2": {
-      "name": "Receptionist",
-      "dialog": [ "The club downstairs is closed for now, I'm afraid." ]
     },
     "t21pc0101_gsbigman": {
       "name": "Fat Man",

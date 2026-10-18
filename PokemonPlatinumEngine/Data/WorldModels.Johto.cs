@@ -34,6 +34,18 @@ public static partial class WorldModels
         Door("yo_door1"),
         House("r30_h01", Architecture.Breeze, "Mr. Pokémon's house at the north end of Route 30"),
 
+        // ---------------------------------------------------------------- Violet City (kk_: Kikyou), in view from Route 31's
+        // east end; the city opens with the next stretch of plan 20, which gives Sprout Tower its look
+        House("kk_h01", Architecture.OldTimber, "a house of Violet City"),
+        Built("kk_pc", BuildingKind.PokemonCenter, "Violet City's Pokémon Center"),
+        Built("kk_fs", BuildingKind.PokeMart, "Violet City's Poké Mart"),
+        Built("kk_gym", BuildingKind.Gym, "the Violet Gym"),
+        Built("kk_school", BuildingKind.School, "the Pokémon Academy in Violet City", Architecture.OldTimber),
+        Built("kk_mada", BuildingKind.Tower, "Sprout Tower, the old pagoda in its pond", Architecture.OldTimber, until: "plan 20 · J5 (Violet City and Sprout Tower)"),
+        Thing("kk_tourou", PropType.LampPost, "a stone lantern of Violet City"),
+        Ground("kk_bridge", "a bridge over Sprout Tower's pond: its own ground draws it"),
+        Door("kk_door1"), Door("kk_door2"), Door("kk_door3"), Door("gym_door"),
+
         // ---------------------------------------------------------------- the signs every town and route has: the tile draws its signpost
         Ground("board_a", "a small signpost: the sign event's tile draws it"),
         Ground("board_b", "a signpost: the sign event's tile draws it"),

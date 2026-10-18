@@ -141,8 +141,34 @@ public class RegionTests
         Assert.True(progress.IsRegionComplete(RegionDatabase.Kanto));
         Assert.False(progress.IsRegionComplete(RegionDatabase.Johto));
 
-        // Johto has no maps yet, so the ship can't sail
-        Assert.Equal(TravelCheck.DestinationNotBuilt, RegionDatabase.CheckTravel(kantoToJohto, progress));
+        // Johto is built since plan 20 · J2, so the ship sails; Hoenn has no maps yet, so nothing goes on from Johto
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(kantoToJohto, progress));
+        var johtoToHoenn = RegionDatabase.LinkFrom(RegionDatabase.Johto)!;
+        Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(johtoToHoenn, progress));
+        progress.CompleteRegion(RegionDatabase.Johto);
+        Assert.Equal(TravelCheck.DestinationNotBuilt, RegionDatabase.CheckTravel(johtoToHoenn, progress));
+    }
+
+    [Fact]
+    public void TestJohtoIsBuiltWithItsFileAStartAndMapsOfItsOwn()
+    {
+        // Plan 20 · J2: Johto's record, its start in New Bark Town and every map its world makes, each its own
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        Assert.True(johto.IsBuilt);
+        Assert.NotNull(johto.File);
+        Assert.Equal(new[] { "Chikorita", "Cyndaquil", "Totodile" }, johto.Starters);
+        Assert.Equal("Johto", johto.Start!.Map);
+        Assert.Equal("Johto", johto.OverworldMap);
+        var world = World.LoadAll().Single(w => w.Index.Region == "Johto");
+        foreach (var entry in world.Index.Maps)
+        {
+            Assert.Contains(entry.Name, johto.Maps);
+            Assert.Equal(RegionDatabase.Johto, RegionDatabase.RegionOfMap(entry.Name)?.Id);
+        }
+        // and the attendant at Kanto's departure takes a Champion there
+        var link = RegionDatabase.LinkFrom(RegionDatabase.Kanto)!;
+        Assert.Equal(RegionDatabase.Johto, link.To);
+        Assert.Contains(MapDatabase.Get(link.DepartureMap!).NPCs, n => n.IsTransportAttendant);
     }
 
     [Fact]

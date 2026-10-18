@@ -91,6 +91,7 @@ internal static partial class BuildingArt
             Architecture.Evergreen => Pitched(WallKind.Log, Rgb(48, 116, 82)) with { Chimney = true, Shutters = true },
             Architecture.Breeze => Pitched(WallKind.Plaster, Rgb(78, 104, 150)) with { Chimney = true, FlowerBoxes = true },
             Architecture.Bayside => Pitched(WallKind.Boards, Rgb(196, 104, 72), RoofShape.Hip) with { Shutters = true },
+            Architecture.OldTimber => Pitched(WallKind.Planks, Rgb(72, 80, 104), RoofShape.Hip),
             _ => Pitched(WallKind.Planks, Teal) with { Chimney = true, Shutters = true, FlowerBoxes = true }
         };
     }

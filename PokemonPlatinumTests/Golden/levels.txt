@@ -132,6 +132,12 @@ surf 20-40
 old rod 3-15
 good rod 10-35
 super rod 30-55
+=== cherrygrove
+Cherrygrove City
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
 === eterna_city
 Eterna City
 surf 20-40
@@ -316,6 +322,12 @@ grass 36-40
 === mt_coronet_outside_south
 Mt. Coronet
 grass 36-40
+=== new_bark
+New Bark Town
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
 === oreburgh_gate_1f
 Oreburgh Gate
 grass 5-8
@@ -615,6 +627,25 @@ old rod 3-15
 good rod 10-25
 super rod 20-55
 trainers 6, 51-54: swimmer_glenn 53, swimmer_joanna 54, swimmer_kurt 54, swimmer_mallory 54, swimmer_sam 53, swimmer_sophia 53
+=== route_29
+Route 29
+grass 2-4
+=== route_30
+Route 30
+grass 2-4
+surf 10-32
+old rod 10
+good rod 20
+super rod 40
+trainers 3, 2-4: johto_bug_catcher_don 3, johto_youngster_joey 4, johto_youngster_mikey 4
+=== route_31
+Route 31
+grass 3-5
+surf 10-32
+old rod 10
+good rod 20
+super rod 40
+trainers 1, 2-3: johto_bug_catcher_wade 3
 === ruin_maniac_cave_short
 Ruin Maniac Cave
 grass 21-24

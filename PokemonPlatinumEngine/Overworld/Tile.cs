@@ -197,7 +197,9 @@ public enum Architecture
     /// <summary>White plaster under slate-blue gable roofs with a chimney: the windy town by the sea (New Bark, plan 20 · J2).</summary>
     Breeze,
     /// <summary>Warm boards under terracotta hip roofs with shutters: the town where the sea meets the cherry trees (Cherrygrove, plan 20 · J2).</summary>
-    Bayside
+    Bayside,
+    /// <summary>Dark boards under hipped tile roofs of slate: the old towns of temples and lanterns (Violet, plan 20 · J2's first rows).</summary>
+    OldTimber
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>
