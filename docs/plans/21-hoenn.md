@@ -282,7 +282,7 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     clash-free, −20.0 to −20.3 LUFS, not yet heard. Eye themes for Tuber M and F, Sis and Bro and the Triathlete.
   - **The reader**: cover rows for Slateport's roads, squares and walls and Dewford's jetty and palms; furniture rows for
     Devon's offices (the reception counter, the president's desk, the researchers' PCs and machines: no more dark blocks),
-    Stern's shipyard and the Oceanic Museum's cases and ship models (a case stands on the layout's blocked tiles). The
+    Stern's shipyard and the Oceanic Museum's cases and ship models (a case stands on the layout's blocked tiles); the shipyard's stairs up, whose label made a building of them, are a path. A few of the museum's upper exhibits still stand as plain blocks. The
     content check reads a tile's own area where a GBA chunk is shared (Dewford and Route 107).
   - **Tests**: `HoennStoryTests` (the stretch three ways by look and starter, the Seashore House, an older save, the
     songs); `HoennTests` (the region's maps, a museum door its queue stands on). Harness: the `hoenn` mode's `h33`–`h52`

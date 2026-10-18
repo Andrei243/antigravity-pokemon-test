@@ -166,6 +166,15 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+=== dewford_town
+Dewford Town
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+=== dewford_town_gym
+Dewford Town
+trainers 6, 13: hoenn_brenden 13, hoenn_cristian 13, hoenn_jocelyn 13, hoenn_laura 13, hoenn_lilith 13, hoenn_takao 13
 === digletts_cave_b1f
 Diglett's Cave
 grass 15-31
@@ -201,6 +210,18 @@ super rod 20-55
 === goldenrod_gym
 Goldenrod City
 trainers 4, 9-17: johto_beauty_samantha 16, johto_beauty_victoria 16, johto_lass_carrie 17, johto_lass_cathy 15
+=== granite_cave_1f
+Granite Cave
+grass 6-10
+=== granite_cave_b1f
+Granite Cave
+grass 9-11
+=== granite_cave_b2f
+Granite Cave
+grass 10-12
+=== granite_cave_stevens_room
+Granite Cave
+grass 6-10
 === great_marsh_1
 Great Marsh
 grass 28-31
@@ -531,6 +552,44 @@ old rod 5-10
 good rod 10-30
 super rod 20-45
 trainers 7, 5-9: hoenn_billy 7, hoenn_cindy_1 7, hoenn_darian 9, hoenn_gina_and_mia_1 6, hoenn_haley_1 6, hoenn_ivan 7, hoenn_winston_1 7
+=== route_105
+Route 105
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 7, 25-26: hoenn_andres_1 25, hoenn_beverly 25, hoenn_dominik 26, hoenn_foster 25, hoenn_imani 26, hoenn_josue 25, hoenn_luis 26
+=== route_106
+Route 106
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 4, 7-26: hoenn_douglas 24, hoenn_elliot_1 10, hoenn_kyla 26, hoenn_ned 11
+=== route_107
+Route 107
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 6, 24-27: hoenn_beth 26, hoenn_camron 26, hoenn_darrin 24, hoenn_denise 25, hoenn_lisa_and_ray 27, hoenn_tony_1 26
+=== route_108
+Route 108
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 6, 24-26: hoenn_carolina 24, hoenn_cory_1 24, hoenn_jerome 26, hoenn_matthew 26, hoenn_missy 26, hoenn_tara 25
+=== route_109
+Route 109
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 13, 12-27: hoenn_alice 24, hoenn_austina 26, hoenn_carter 25, hoenn_chandler 12, hoenn_david 25, hoenn_edmond 13, hoenn_elijah 25, hoenn_gwen 26, hoenn_hailey 13, hoenn_huey 12, hoenn_lola_1 12, hoenn_mel_and_paul 27, hoenn_ricky_1 13
+=== route_109_seashore_house
+Route 109
+trainers 3, 11-13: hoenn_dwayne 11, hoenn_johanna 13, hoenn_simon 12
 === route_11
 Route 11
 grass 11-17
@@ -967,6 +1026,12 @@ trainers 3, 26-29: kanto_scientist_parker 29, kanto_team_rocket_grunt_32 26, kan
 === silph_co_9f
 Silph Co.
 trainers 3, 28: kanto_scientist_ed 28, kanto_team_rocket_grunt_37 28, kanto_team_rocket_grunt_38 28
+=== slateport_city
+Slateport City
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
 === snowpoint_temple_1f
 Snowpoint Temple
 grass 47-50

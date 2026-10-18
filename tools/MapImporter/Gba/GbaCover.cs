@@ -240,6 +240,12 @@ public static class GbaCover
             {
                 (0x219, 0x219, TerrainCover.Path),
             },
+            // Plan 21 · H3: the way down the stairs on the upper floor of Stern's shipyard, whose label would make it a
+            // building standing in the room (as the flats' stairs above)
+            ["gTileset_Facility"] = new (int, int, TerrainCover)[]
+            {
+                (0x2C3, 0x2C5, TerrainCover.Path), (0x2CB, 0x2CD, TerrainCover.Path),
+            },
             // Plan 21 · H2, part b: Rusturf Tunnel's floor (its walls are the cave's rock wherever nobody walks)
             ["gTileset_RusturfTunnel"] = new (int, int, TerrainCover)[]
             {
