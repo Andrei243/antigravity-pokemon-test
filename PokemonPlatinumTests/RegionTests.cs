@@ -157,7 +157,8 @@ public class RegionTests
         Assert.True(johto.IsBuilt);
         Assert.NotNull(johto.File);
         Assert.Equal(new[] { "Chikorita", "Cyndaquil", "Totodile" }, johto.Starters);
-        Assert.Equal("Johto", johto.Start!.Map);
+        Assert.Equal("NewBark_PlayersHouse_2F", johto.Start!.Map);
+        Assert.Equal("Johto", johto.ArrivalSpot!.Map);
         Assert.Equal("Johto", johto.OverworldMap);
         var world = World.LoadAll().Single(w => w.Index.Region == "Johto");
         foreach (var entry in world.Index.Maps)

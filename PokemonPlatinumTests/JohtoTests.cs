@@ -54,7 +54,10 @@ public class JohtoTests
     [Fact]
     public void ANewGameInJohtoBeginsBeforeThePlayersHouseInNewBarkTown()
     {
-        var start = RegionDatabase.Get(RegionDatabase.Johto)!.Start!;
+        // Since plan 20 · J4 a new game wakes in the bedroom upstairs (JohtoStoryTests); a Champion of Kanto who sails
+        // over steps out before the house
+        Assert.Equal("NewBark_PlayersHouse_2F", RegionDatabase.Get(RegionDatabase.Johto)!.Start!.Map);
+        var start = RegionDatabase.Get(RegionDatabase.Johto)!.ArrivalSpot!;
         Assert.Equal("Johto", start.Map);
         Assert.True(Overworld.IsWalkable(start.X, start.Y));
         Assert.Equal("new_bark", Overworld.AreaAt(start.X, start.Y)?.Key);
@@ -81,11 +84,15 @@ public class JohtoTests
             Assert.True(walked.Keys.Any(m => m.Name == entry.Name), $"nobody walks into {entry.Name}");
         // Route 31's north end, by the Dark Cave's mouth, is reached; the cave waits for its session
         Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_31" && t.X > 555);
-        // Violet's Gym is shut until Falkner's chapter (plan 20 · J4), and Sprout Tower and Route 36 lead nowhere yet
+        // Since plan 20 · J4 Violet's Gym and Sprout Tower are open, and Route 32 runs south to Union Cave's mouth, which
+        // waits for J5 as the Ruins of Alph do beyond their gate house
         var gymDoor = Johto.Area("violet")!.Warps[2];
         Assert.Equal("violet_gym", gymDoor.To);
-        Assert.Empty(Overworld.WarpsAt(gymDoor.X, gymDoor.Z));
-        Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap.StartsWith("SproutTower", StringComparison.Ordinal));
+        Assert.Contains(Overworld.WarpsAt(gymDoor.X, gymDoor.Z), w => w.TargetMap == "Violet_Gym");
+        Assert.Contains(walked.Keys, m => m.Name == "SproutTower_3F");
+        Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_32" && t.Y > 425);
+        var caveMouth = Johto.Area("route_32")!.Warps[2];
+        Assert.Empty(Overworld.WarpsAt(caveMouth.X, caveMouth.Z));
     }
 
     [Fact]

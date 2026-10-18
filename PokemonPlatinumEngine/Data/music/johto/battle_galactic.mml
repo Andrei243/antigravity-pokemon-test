@@ -6,12 +6,12 @@ meter 4/4
 lowhptempo 1.08
 reverb 0.18
 
-track lead organ lowhp=sawlead vol=0.8 pan=0.05 rev=0.2
+track lead organ lowhp=sawlead vol=0.86 pan=0.05 rev=0.2
   o5 f8 r8 f8 r8 a-8 r8 f8 r8 | o5 e8 r8 e8 r8 c4 c4 | L o5 f4 a-8 f8 c4 f4 | o5 d-4 f8 d-8 o4 b-4 o5 d-4 |
   o5 c4 e8 g8 c4 e4 | o5 f4 e8 f8 c2 | o5 f4 a-8 o6 c8 f4 c4 | o5 b-4 g8 e8 c4 e4 |
   o5 d-4 f4 e4 g4 | o5 f2 c2 |
 
-track pad strings unless=lowhp vol=0.27 pan=-0.25 rev=0.22
+track pad strings unless=lowhp vol=0.32 pan=-0.25 rev=0.22
   r1 | r1 | L o4 (f a- c)1 | (d- f b-)1 |
   (c e g)1 | (f a- c)1 | (f a- c)1 | (c e g)1 |
   (d- f b-)2 (c e g)2 | (f a- c)1 |
@@ -21,7 +21,7 @@ track bass synthbass vol=0.72 rev=0.05
   o2 c8 r8 c8 e8 g8 r8 c8 r8 | o2 f8 r8 f8 a-8 o3 c8 r8 o2 f8 r8 | o2 f8 r8 f8 a-8 o3 c8 r8 o2 f8 r8 | o2 c8 r8 c8 e8 g8 r8 c8 r8 |
   o2 b-8 r8 b-8 r8 o2 c8 r8 c8 r8 | o2 f8 r8 f8 r8 f4 r4 |
 
-track drums kit vol=0.5 rev=0.1
+track drums kit vol=0.56 rev=0.1
   v95 b8 r8 b8 r8 x8 r8 x8 r8 | b8 r8 b8 r8 (b c)4 (b c)4 | L [ b8 r8 x8 r8 b8 b8 x8 r8 | ]7 b8 r8 x8 b8 s16 s16 s16 s16 s8 s8 |
 
 track hats kit vol=0.38 pan=0.15 rev=0.1

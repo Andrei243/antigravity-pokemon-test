@@ -7,13 +7,13 @@
 # by the friend while the player has no Pokémon (VAR_SCENE_NEW_BARK_WEST_EXIT, 0 until the starter).
 
 
-# The boy at the lab's window (HeartGold's T20_000): he doesn't want to be seen, and shoves whoever looks.
+# The boy at the lab's window (HeartGold's T20_000): he doesn't want to be seen, and turns his back on whoever looks.
 script Rival
   speaker "???"
   say "...What are you staring at? This is the famous Pokémon lab, is it? Doesn't look like much."
   emote self exclaim
   say "Get lost. I'm busy."
-  walk player back down 1
+  face self up
   end
 
 
