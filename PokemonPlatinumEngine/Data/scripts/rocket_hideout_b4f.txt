@@ -1,0 +1,96 @@
+# The Rocket Hideout's fourth basement (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/RocketHideout_B4F/scripts.inc).
+#
+# A grunt in the west room keeps the Lift Key, which lies beside him, and lets it go once beaten
+# (FLAG_ROCKET_HIDEOUT_LIFT_KEY_DROPPED, ours: FireRed shows it only then; picking it up is FLAG_CAN_USE_ROCKET_HIDEOUT_LIFT and the key itself). Two
+# grunts keep the barrier before Giovanni's office, which goes once both are beaten (FireRed counts them as the map
+# loads; here each one's battle asks, FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN). Giovanni battles in his office, leaves
+# by a door of his own and leaves the Silph Scope behind (FLAG_DEFEATED_ROCKET_HIDEOUT_GIOVANNI, ours: FireRed shows it
+# only then, here it lies on his desk and is his until then), and Team
+# Rocket's people in Celadon City go with him (FLAG_HIDE_CELADON_ROCKETS).
+
+
+script KeyGrunt
+  if defeated self goto Beaten
+  trainerline before
+  battle self
+  trainerline after
+  setflag FLAG_ROCKET_HIDEOUT_LIFT_KEY_DROPPED
+  end
+label Beaten
+  trainerline after
+  end
+
+
+script DoorGrunt
+  if defeated self goto Beaten
+  trainerline before
+  battle self
+  call Barrier
+  end
+label Beaten
+  trainerline after
+  end
+
+
+# The barrier goes once both of its grunts are beaten; until then it is in the way.
+script Barrier
+  speaker none
+  if flag FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN end
+  if not defeated "kanto_team_rocket_grunt_16" goto Shut
+  if not defeated "kanto_team_rocket_grunt_17" goto Shut
+  sound "door_slide"
+  setflag FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN
+  text "The barrier switched off!"
+  end
+label Shut
+  text "A barrier of light blocks the way. Its switch must be under guard."
+  end
+
+
+script LiftKey
+  speaker none
+  if not flag FLAG_ROCKET_HIDEOUT_LIFT_KEY_DROPPED goto Kept
+  give "Lift Key"
+  setflag FLAG_CAN_USE_ROCKET_HIDEOUT_LIFT
+  setflag FLAG_HIDE_LIFT_KEY
+  hide self
+  end
+label Kept
+  text "The Lift Key! The grunt beside it won't let anyone near it."
+  end
+
+
+script Giovanni
+  face hideout_giovanni player
+  speaker "Giovanni"
+  if flag FLAG_DEFEATED_ROCKET_HIDEOUT_GIOVANNI end
+  scene "Giovanni"
+  say "So. You've come all the way down here. I'm impressed that a child could find our hideout at all."
+  say "Team Rocket captures Pokémon from around the world. They're tools for making us rich, nothing more."
+  say "And you, child, are in my way. I'm Giovanni, and I'll teach you the price of meddling!"
+  music "kanto/eye_galactic"
+  battle self as "kanto_boss_giovanni"
+  say "What?! This can't be! You've put me in my place, I see."
+  say "I'll leave this hideout to you. But remember: Team Rocket isn't finished. We'll meet again!"
+  fade out 0.4
+  setflag FLAG_HIDE_HIDEOUT_GIOVANNI
+  setflag FLAG_DEFEATED_ROCKET_HIDEOUT_GIOVANNI
+  setflag FLAG_HIDE_CELADON_ROCKETS
+  hide self
+  fade in 0.4
+  music area
+  endscene
+  end
+
+
+script SilphScope
+  speaker none
+  if not flag FLAG_DEFEATED_ROCKET_HIDEOUT_GIOVANNI goto His
+  give "Silph Scope"
+  setflag FLAG_HIDE_SILPH_SCOPE
+  hide self
+  end
+label His
+  text "A strange scope on Giovanni's desk. Not with him standing right there!"
+  end

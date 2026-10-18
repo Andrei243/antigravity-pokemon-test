@@ -1,0 +1,10 @@
+{
+  // Saffron City's Poké Mart (plan 19 · K5, part b)
+  "area": "saffron_city_mart",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "youngster": { "name": "Youngster", "dialog": [ "Max Repels last the longest of all the Repels. They're worth the price." ] },
+    "lass": { "name": "Lass", "dialog": [ "Revives bring a fainted Pokémon back. I never travel without a few." ] }
+  }
+}

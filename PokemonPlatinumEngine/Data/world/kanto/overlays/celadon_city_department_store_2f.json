@@ -1,0 +1,14 @@
+{
+  // The Celadon Department Store's second floor (plan 19 · K5, part b): the Trainer's Market's two counters
+  "area": "celadon_city_department_store_2f",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "clerk_2": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "lass": { "name": "Lass", "dialog": [ "Super Repels keep weak wild Pokémon away for longer. I always carry some!" ] },
+    "woman_1": { "name": "Woman", "dialog": [ "I heard the Champion came shopping here once. Can you imagine?" ] }
+  },
+  "signs": {
+    "CeladonCity_DepartmentStore_2F_EventScript_FloorSign": "2F: Trainer's Market\nEverything a trainer needs"
+  }
+}

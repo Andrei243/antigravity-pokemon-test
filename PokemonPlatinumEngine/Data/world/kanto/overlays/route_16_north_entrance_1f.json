@@ -1,0 +1,10 @@
+{
+  // The gate on Route 16 (plan 19 · K5, part b) between Celadon's side and the bikers' road, its upper floor up the
+  // stairs. The Cycling Road's checks (no one on foot) are K6's, with the road
+  "area": "route_16_north_entrance_1f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "policeman": { "name": "Guard", "dialog": [ "The Cycling Road starts south of here. You'll need a Bicycle to ride it, and it's a long way down!" ] },
+    "old_man_1": { "name": "Old Man", "dialog": [ "I used to ride the Cycling Road every day, back when my knees worked." ] }
+  }
+}

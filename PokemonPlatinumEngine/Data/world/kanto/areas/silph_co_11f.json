@@ -1,0 +1,42 @@
+{
+  "key": "silph_co_11f",
+  "index": 99,
+  "name": "Silph Co",
+  "matrix": 63,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SILPH",
+  "nightMusic": "MUS_SILPH",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 2, "to": "silph_co_10f", "toWarp": 0 },
+    { "x": 2, "z": 5, "to": "silph_co_7f", "toWarp": 1 },
+    { "x": 13, "z": 3, "to": "silph_co_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "old_man_2", "looks": "old_man_2", "movement": "look_south", "x": 9, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_11F_EventScript_President" },
+    { "id": "worker_f", "looks": "worker_f", "movement": "look_south", "x": 11, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_11F_EventScript_Secretary" },
+    { "id": "silph_co_giovanni", "looks": "giovanni", "movement": "look_east", "x": 6, "z": 11, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "" },
+    { "id": "silph_co_11f_grunt1", "looks": "rocket_m", "movement": "look_north", "x": 16, "z": 12, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_40" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 16, "z": 18, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SILPH_CO_11F_ZINC", "item": "Zinc", "script": "SilphCo_11F_EventScript_ItemZinc" },
+    { "id": "silph_co_11f_grunt2", "looks": "rocket_m", "movement": "look_north", "x": 2, "z": 19, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_41" }
+  ],
+  "signs": [
+    { "x": 5, "z": 16, "type": 0, "script": "SilphCo_11F_EventScript_Door" },
+    { "x": 5, "z": 17, "type": 0, "script": "SilphCo_11F_EventScript_Door" },
+    { "x": 6, "z": 16, "type": 0, "script": "SilphCo_11F_EventScript_Door" },
+    { "x": 6, "z": 17, "type": 0, "script": "SilphCo_11F_EventScript_Door" },
+    { "x": 10, "z": 18, "type": 2, "script": "", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_SILPH_CO_11F_REVIVE" },
+    { "x": 8, "z": 1, "type": 0, "script": "SilphCo_11F_EventScript_FloorSign" }
+  ],
+  "triggers": [
+    { "x": 5, "z": 15, "width": 1, "depth": 1, "script": "SilphCo_11F_EventScript_GiovanniTriggerLeft", "variable": "VAR_MAP_SCENE_SILPH_CO_11F", "value": "0" },
+    { "x": 6, "z": 15, "width": 1, "depth": 1, "script": "SilphCo_11F_EventScript_GiovanniTriggerRight", "variable": "VAR_MAP_SCENE_SILPH_CO_11F", "value": "0" }
+  ]
+}

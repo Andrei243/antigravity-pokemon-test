@@ -1,0 +1,45 @@
+{
+  "key": "silph_co_6f",
+  "index": 94,
+  "name": "Silph Co",
+  "matrix": 58,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SILPH",
+  "nightMusic": "MUS_SILPH",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 14, "z": 2, "to": "silph_co_7f", "toWarp": 0 },
+    { "x": 29, "z": 5, "to": "silph_co_2f", "toWarp": 4 },
+    { "x": 26, "z": 2, "to": "silph_co_5f", "toWarp": 2 },
+    { "x": 2, "z": 6, "to": "silph_co_4f", "toWarp": 1 },
+    { "x": 20, "z": 3, "to": "silph_co_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "look_east", "x": 21, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_30" },
+    { "id": "worker_m", "looks": "worker_m", "movement": "look_south", "x": 23, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_6F_EventScript_WorkerM1" },
+    { "id": "worker_f", "looks": "worker_f", "movement": "look_south", "x": 24, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_6F_EventScript_WorkerF1" },
+    { "id": "worker_m_2", "looks": "worker_m", "movement": "look_north", "x": 22, "z": 13, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_6F_EventScript_WorkerM2" },
+    { "id": "worker_m_3", "looks": "worker_m", "movement": "look_around", "x": 14, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_6F_EventScript_WorkerM3" },
+    { "id": "worker_f_2", "looks": "worker_f", "movement": "look_east", "x": 16, "z": 12, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_6F_EventScript_WorkerF2" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_south", "x": 9, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_SCIENTIST_TAYLOR" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 2, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SILPH_CO_6F_HP_UP", "item": "HP Up", "script": "SilphCo_6F_EventScript_ItemHPUp" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 1, "z": 17, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SILPH_CO_6F_X_SPECIAL", "item": "X Sp. Atk", "script": "SilphCo_6F_EventScript_ItemXSpecial" },
+    { "id": "rocket_m_2", "looks": "rocket_m", "movement": "look_west", "x": 18, "z": 17, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_31" }
+  ],
+  "signs": [
+    { "x": 6, "z": 15, "type": 0, "script": "SilphCo_6F_EventScript_Door" },
+    { "x": 6, "z": 16, "type": 0, "script": "SilphCo_6F_EventScript_Door" },
+    { "x": 5, "z": 15, "type": 0, "script": "SilphCo_6F_EventScript_Door" },
+    { "x": 5, "z": 16, "type": 0, "script": "SilphCo_6F_EventScript_Door" },
+    { "x": 1, "z": 8, "type": 2, "script": "", "item": "Carbos", "flag": "FLAG_HIDDEN_ITEM_SILPH_CO_6F_CARBOS" },
+    { "x": 25, "z": 1, "type": 0, "script": "SilphCo_6F_EventScript_FloorSign" }
+  ],
+  "triggers": []
+}

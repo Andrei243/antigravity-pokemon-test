@@ -361,6 +361,22 @@ public static class RegionDatabase
                 "PokemonTower_3F", "PokemonTower_4F", "PokemonTower_5F", "PokemonTower_6F", "PokemonTower_7F",
                 "UndergroundPath_WestEntrance", "UndergroundPath_EastWestTunnel", "UndergroundPath_EastEntrance",
                 "Route7_EastEntrance", "Route8_WestEntrance",
+                // Plan 19 · K5, part b: Celadon City's rooms, the Rocket Hideout, Routes 16's and 12's rooms, Saffron
+                // City's rooms, Silph Co. and the gates of Routes 5 and 6
+                "CeladonCity_Condominiums_1F", "CeladonCity_Condominiums_2F", "CeladonCity_Condominiums_3F",
+                "CeladonCity_Condominiums_Roof", "CeladonCity_Condominiums_RoofRoom", "CeladonCity_DepartmentStore_1F",
+                "CeladonCity_DepartmentStore_2F", "CeladonCity_DepartmentStore_3F", "CeladonCity_DepartmentStore_4F",
+                "CeladonCity_DepartmentStore_5F", "CeladonCity_DepartmentStore_Elevator", "CeladonCity_DepartmentStore_Roof",
+                "CeladonCity_GameCorner", "CeladonCity_GameCorner_PrizeRoom", "CeladonCity_Gym", "CeladonCity_Hotel",
+                "CeladonCity_House1", "CeladonCity_PokemonCenter_1F", "CeladonCity_PokemonCenter_2F", "CeladonCity_Restaurant",
+                "RocketHideout_B1F", "RocketHideout_B2F", "RocketHideout_B3F", "RocketHideout_B4F", "RocketHideout_Elevator",
+                "Route16_House", "Route16_NorthEntrance_1F", "Route16_NorthEntrance_2F", "Route12_FishingHouse",
+                "Route12_NorthEntrance_1F", "Route12_NorthEntrance_2F", "SaffronCity_CopycatsHouse_1F",
+                "SaffronCity_CopycatsHouse_2F", "SaffronCity_Dojo", "SaffronCity_Gym", "SaffronCity_House", "SaffronCity_Mart",
+                "SaffronCity_MrPsychicsHouse", "SaffronCity_PokemonCenter_1F", "SaffronCity_PokemonCenter_2F",
+                "SaffronCity_PokemonTrainerFanClub", "SilphCo_1F", "SilphCo_2F", "SilphCo_3F", "SilphCo_4F", "SilphCo_5F",
+                "SilphCo_6F", "SilphCo_7F", "SilphCo_8F", "SilphCo_9F", "SilphCo_10F", "SilphCo_11F", "SilphCo_Elevator",
+                "Route5_SouthEntrance", "Route6_NorthEntrance",
             }
         },
         new()

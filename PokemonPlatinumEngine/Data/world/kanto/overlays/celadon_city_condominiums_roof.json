@@ -1,0 +1,10 @@
+{
+  // Celadon Mansion's roof (plan 19 · K5, part b)
+  "area": "celadon_city_condominiums_roof",
+  "bgmTrack": "kanto/celadon",
+  // The east stair down leads to the third floor's east stair up, which is shut (celadon_city_condominiums_3f.json)
+  "locked": [ 1 ],
+  "signs": {
+    "CeladonCity_Condominiums_Roof_EventScript_Sign": "I know everything about the city!\nPokémon Trainers welcome"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "key": "celadon_city_condominiums_roof_room",
+  "index": 307,
+  "name": "Celadon City",
+  "matrix": 254,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CELADON",
+  "nightMusic": "MUS_CELADON",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 8, "to": "", "toWarp": 2 },
+    { "x": 4, "z": 7, "to": "celadon_city_condominiums_roof", "toWarp": 2 },
+    { "x": 5, "z": 8, "to": "", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_south", "x": 3, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_Condominiums_RoofRoom_EventScript_BlackBelt" },
+    { "id": "eevee_pokeball", "looks": "item_ball", "movement": "look_south", "x": 7, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_EEVEE_BALL", "script": "CeladonCity_Condominiums_RoofRoom_EventScript_EeveeBall" }
+  ],
+  "signs": [
+    { "x": 4, "z": 1, "type": 0, "script": "CeladonCity_Condominiums_RoofRoom_EventScript_Blackboard" },
+    { "x": 5, "z": 1, "type": 0, "script": "CeladonCity_Condominiums_RoofRoom_EventScript_Blackboard" },
+    { "x": 4, "z": 4, "type": 0, "script": "CeladonCity_Condominiums_RoofRoom_EventScript_TMsPamphlet" }
+  ],
+  "triggers": []
+}

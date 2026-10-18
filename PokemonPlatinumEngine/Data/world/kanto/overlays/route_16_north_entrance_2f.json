@@ -1,0 +1,14 @@
+{
+  // The upper floor of Route 16's gate (plan 19 · K5, part b): Oak's aide and the binoculars
+  "area": "route_16_north_entrance_2f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "little_boy": { "name": "Boy", "dialog": [ "I'm watching the bikers through the binoculars. They're so cool!" ] },
+    "little_girl": { "name": "Girl", "dialog": [ "There's a big Pokémon asleep on the road outside. It's been there for days!" ] },
+    "scientist": { "name": "Aide", "dialog": [ "I'm one of Professor Oak's aides. Keep filling that Pokédex, and I may have something for you one day." ] }
+  },
+  "signs": {
+    "Route16_NorthEntrance_2F_EventScript_LeftBinoculars": "Looking through the binoculars... The Cycling Road runs on and on to the south.",
+    "Route16_NorthEntrance_2F_EventScript_RightBinoculars": "Looking through the binoculars... A Snorlax is fast asleep on the road!"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  // The Fighting Dojo in Saffron City (plan 19 · K5, part b): four Black Belts, their master, and the two Pokémon in
+  // balls on the dais, one of which the master gives (saffron_city_dojo.txt)
+  "area": "saffron_city_dojo",
+  "bgmTrack": "kanto/gym",
+  "arenaType": "Fighting",
+  "people": {
+    "karate_master": {
+      "name": "Koichi", "script": "Master", "still": true,
+      "trainer": { "dialogueBefore": "Karate Master Koichi: Hwaaah! You dare challenge the Fighting Dojo?", "dialogueAfter": "Karate Master Koichi: Hoo! You are a true master yourself." }
+    },
+    "black_belt": { "name": "Hitoshi", "trainer": { "dialogueBefore": "Black Belt Hitoshi: Hyah! A challenger! Show me your fighting spirit!", "dialogueAfter": "Black Belt Hitoshi: My spirit is broken... for now." } },
+    "black_belt_2": { "name": "Hideki", "trainer": { "dialogueBefore": "Black Belt Hideki: Nobody reaches our master without beating me first!", "dialogueAfter": "Black Belt Hideki: Go on. The master awaits." } },
+    "black_belt_3": { "name": "Aaron", "trainer": { "dialogueBefore": "Black Belt Aaron: Kiyaaa! Feel the power of my fists!", "dialogueAfter": "Black Belt Aaron: My fists were not enough." } },
+    "black_belt_4": { "name": "Mike", "trainer": { "dialogueBefore": "Black Belt Mike: We train day and night. Can you keep up?", "dialogueAfter": "Black Belt Mike: Back to training, then." } },
+    "item_ball": { "name": "Poké Ball", "script": "Hitmonlee" },
+    "item_ball_2": { "name": "Poké Ball", "script": "Hitmonchan" }
+  },
+  "triggers": [
+    { "trigger": 0, "script": "MasterTrigger" },
+    { "trigger": 1, "script": "MasterTrigger" }
+  ],
+  "signs": {
+    "SaffronCity_Dojo_EventScript_Statue": "Fighting Dojo",
+    "SaffronCity_Dojo_EventScript_LeftScroll": "A scroll on the wall: \"Enemies on every side!\"",
+    "SaffronCity_Dojo_EventScript_RightScroll": "A scroll on the wall: \"Never give up, never surrender!\""
+  }
+}

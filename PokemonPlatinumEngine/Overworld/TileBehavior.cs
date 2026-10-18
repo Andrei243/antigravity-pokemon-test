@@ -263,7 +263,7 @@ public static class TileBehaviors
         [TileBehavior.CurrentWest] = "Water that carries a surfer west (the GBA's).",
         [TileBehavior.CurrentNorth] = "Water that carries a surfer north (the GBA's).",
         [TileBehavior.CurrentSouth] = "Water that carries a surfer south (the GBA's).",
-        [TileBehavior.Spinner] = "A floor that sets whoever steps on it spinning along until a stop (the GBA's).",
+        [TileBehavior.Spinner] = "The tile a GBA spin stops on: a spin begun on an arrow (a slide) goes on over plain floor until one.",
         [TileBehavior.SecretBaseSpot] = "A hollow, a bush or a tree where a secret base can be made (the GBA's).",
         [TileBehavior.RailNorthSouth] = "A rail running north to south, hopped along on the Acro Bike (the GBA's).",
         [TileBehavior.RailEastWest] = "A rail running east to west, hopped along on the Acro Bike (the GBA's).",
@@ -315,9 +315,11 @@ public static class TileBehaviors
             => (BehaviourSupport.Ruled, "Stops a walker; surfed with Surf, meeting the area's water Pokémon. Diving is plan 21's (Hoenn)."),
         TileBehavior.CurrentEast or TileBehavior.CurrentWest or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth
             => (BehaviourSupport.Ruled, "Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn)."),
+        TileBehavior.Spinner
+            => (BehaviourSupport.Ruled, "Ends a GBA spin: one begun on an arrow goes on over plain floor until a stop (FieldMovement.Spins)."),
         TileBehavior.Underwater or TileBehavior.Seaweed
             => (BehaviourSupport.Waiting, "The sea floor, reached by Dive: plan 21 (Hoenn)."),
-        TileBehavior.ThinIce or TileBehavior.CrackedFloor or TileBehavior.Hole or TileBehavior.Spinner or TileBehavior.SecretBaseSpot
+        TileBehavior.ThinIce or TileBehavior.CrackedFloor or TileBehavior.Hole or TileBehavior.SecretBaseSpot
             or TileBehavior.RailNorthSouth or TileBehavior.RailEastWest or TileBehavior.BumpySlope or TileBehavior.CyclingRoadPull
             or TileBehavior.NoRunning
             => (BehaviourSupport.Waiting, "A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then."),

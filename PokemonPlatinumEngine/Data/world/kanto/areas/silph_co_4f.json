@@ -1,0 +1,49 @@
+{
+  "key": "silph_co_4f",
+  "index": 92,
+  "name": "Silph Co",
+  "matrix": 56,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SILPH",
+  "nightMusic": "MUS_SILPH",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 28, "z": 2, "to": "silph_co_5f", "toWarp": 0 },
+    { "x": 18, "z": 6, "to": "silph_co_6f", "toWarp": 3 },
+    { "x": 30, "z": 2, "to": "silph_co_3f", "toWarp": 3 },
+    { "x": 12, "z": 9, "to": "silph_co_10f", "toWarp": 1 },
+    { "x": 2, "z": 20, "to": "silph_co_10f", "toWarp": 4 },
+    { "x": 18, "z": 14, "to": "silph_co_10f", "toWarp": 2 },
+    { "x": 22, "z": 3, "to": "silph_co_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "wander_around", "x": 33, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_27" },
+    { "id": "rocket_m_2", "looks": "rocket_m", "movement": "look_east", "x": 10, "z": 19, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_26" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_south_and_west", "x": 14, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_SILPH_ROCKETS", "script": "TRAINER_SCIENTIST_RODNEY" },
+    { "id": "worker_m", "looks": "worker_m", "movement": "look_around", "x": 5, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SilphCo_4F_EventScript_WorkerM" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 3, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SILPH_CO_4F_MAX_REVIVE", "item": "Max Revive", "script": "SilphCo_4F_EventScript_ItemMaxRevive" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 4, "z": 12, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SILPH_CO_4F_ESCAPE_ROPE", "item": "Escape Rope", "script": "SilphCo_4F_EventScript_ItemEscapeRope" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 2, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SILPH_CO_4F_FULL_HEAL", "item": "Full Heal", "script": "SilphCo_4F_EventScript_ItemFullHeal" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_south", "x": 30, "z": 18, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SILPH_CO_4F_TM41", "item": "TM41", "script": "SilphCo_4F_EventScript_ItemTM41" }
+  ],
+  "signs": [
+    { "x": 3, "z": 16, "type": 0, "script": "SilphCo_4F_EventScript_Door1" },
+    { "x": 4, "z": 16, "type": 0, "script": "SilphCo_4F_EventScript_Door1" },
+    { "x": 3, "z": 17, "type": 0, "script": "SilphCo_4F_EventScript_Door1" },
+    { "x": 4, "z": 17, "type": 0, "script": "SilphCo_4F_EventScript_Door1" },
+    { "x": 15, "z": 11, "type": 0, "script": "SilphCo_4F_EventScript_Door2" },
+    { "x": 14, "z": 11, "type": 0, "script": "SilphCo_4F_EventScript_Door2" },
+    { "x": 14, "z": 12, "type": 0, "script": "SilphCo_4F_EventScript_Door2" },
+    { "x": 15, "z": 12, "type": 0, "script": "SilphCo_4F_EventScript_Door2" },
+    { "x": 35, "z": 20, "type": 2, "script": "", "item": "Iron", "flag": "FLAG_HIDDEN_ITEM_SILPH_CO_4F_IRON" },
+    { "x": 29, "z": 1, "type": 0, "script": "SilphCo_4F_EventScript_FloorSign" }
+  ],
+  "triggers": []
+}

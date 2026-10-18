@@ -1,0 +1,31 @@
+{
+  "key": "celadon_city_game_corner_prize_room",
+  "index": 311,
+  "name": "Celadon City",
+  "matrix": 258,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CELADON",
+  "nightMusic": "MUS_CELADON",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 9, "to": "", "toWarp": 5 },
+    { "x": 4, "z": 8, "to": "celadon_city", "toWarp": 5 },
+    { "x": 5, "z": 9, "to": "", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "balding_man", "looks": "balding_man", "movement": "wander_around", "x": 2, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_GameCorner_PrizeRoom_EventScript_BaldingMan" },
+    { "id": "old_man_2", "looks": "old_man_2", "movement": "look_around", "x": 6, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_GameCorner_PrizeRoom_EventScript_OldMan" },
+    { "id": "worker_m", "looks": "worker_m", "movement": "look_south", "x": 4, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_GameCorner_PrizeRoom_EventScript_PrizeClerkMons" },
+    { "id": "worker_m_2", "looks": "worker_m", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_GameCorner_PrizeRoom_EventScript_PrizeClerkTMs" },
+    { "id": "worker_m_3", "looks": "worker_m", "movement": "look_south", "x": 2, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_GameCorner_PrizeRoom_EventScript_PrizeClerkItems" }
+  ],
+  "signs": [],
+  "triggers": []
+}

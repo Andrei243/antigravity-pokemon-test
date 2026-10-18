@@ -1,0 +1,43 @@
+{
+  "key": "celadon_city_department_store_3f",
+  "index": 298,
+  "name": "Celadon City",
+  "matrix": 245,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 1, "to": "celadon_city_department_store_elevator", "toWarp": 0 },
+    { "x": 9, "z": 2, "to": "celadon_city_department_store_2f", "toWarp": 2 },
+    { "x": 3, "z": 2, "to": "celadon_city_department_store_4f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "clerk", "looks": "clerk", "movement": "look_north", "x": 10, "z": 9, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_DepartmentStore_3F_EventScript_CounterTutor" },
+    { "id": "gba_kid", "looks": "gba_kid", "movement": "look_south", "x": 11, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_DepartmentStore_3F_EventScript_GBAKid1" },
+    { "id": "gba_kid_2", "looks": "gba_kid", "movement": "look_south", "x": 4, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_DepartmentStore_3F_EventScript_GBAKid3" },
+    { "id": "gba_kid_3", "looks": "gba_kid", "movement": "look_south", "x": 1, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_DepartmentStore_3F_EventScript_GBAKid2" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "look_west_and_east", "x": 9, "z": 14, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_DepartmentStore_3F_EventScript_LittleGirl" }
+  ],
+  "signs": [
+    { "x": 8, "z": 1, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_FloorSign" },
+    { "x": 2, "z": 8, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_TV1" },
+    { "x": 5, "z": 8, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_TV2" },
+    { "x": 2, "z": 11, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_TV3" },
+    { "x": 5, "z": 11, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_TV4" },
+    { "x": 1, "z": 8, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_SuperNES" },
+    { "x": 1, "z": 11, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_SuperNES" },
+    { "x": 4, "z": 8, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_SuperNES" },
+    { "x": 4, "z": 11, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_SuperNES" },
+    { "x": 2, "z": 4, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_Poster" },
+    { "x": 0, "z": 4, "type": 0, "script": "CeladonCity_DepartmentStore_3F_EventScript_Poster" }
+  ],
+  "triggers": []
+}

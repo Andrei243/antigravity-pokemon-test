@@ -35,6 +35,64 @@
     "description": "A voucher for one free bicycle. Take it to the Bike Shop in Cerulean City.",
     "cantBeTossed": true
   },
+  // FireRed's key items of the third chapter (plan 19 · K5, part b), which no game this importer reads has: the
+  // Rocket Hideout's Lift Key and the Silph Scope Giovanni leaves, Mr. Fuji's Poké Flute, the Tea Celadon's old lady
+  // gives (for the thirsty guards of Saffron City's gates) and Silph Co.'s Card Key
+  "Lift Key": {
+    "id": 9020,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key that works the lift in Team Rocket's hideout under the Game Corner.",
+    "cantBeTossed": true
+  },
+  "Silph Scope": {
+    "id": 9021,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A scope made by Silph Co. It shows the true shape of a ghost nobody else can make out.",
+    "cantBeTossed": true
+  },
+  "Poké Flute": {
+    "id": 9022,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A flute whose gentle tune wakes even a Pokémon in the deepest sleep.",
+    "cantBeTossed": true
+  },
+  "Tea": {
+    "id": 9023,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A flask of hot, fragrant tea. Just the thing for someone who is parched.",
+    "cantBeTossed": true
+  },
+  "Card Key": {
+    "id": 9024,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A card that opens the locked doors of Silph Co.'s office building.",
+    "cantBeTossed": true
+  },
   // The orbs of Primal Reversion (plan 06 · R20): PokeAPI's words are a story's; ours say what they do when held
   "Blue Orb": {
     "description": "Held by Kyogre, it brings out its primal form when it enters battle."

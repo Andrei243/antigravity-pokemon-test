@@ -98,7 +98,11 @@
     "Gamer": "fun",
     "Engineer": "mountain",
     "Channeler": "mystery",
-    "Pokemaniac": "mystery"
+    "Pokemaniac": "mystery",
+    "Cue Ball": "fighter",
+    "Boss": "galactic",
+    "Rocker": "fun",
+    "Cooltrainer": "ace"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -118,6 +122,7 @@
     "Executive Petrel": "galactic",
     "Rocket Boss": "galacticBoss",
     "Elite Four": "eliteFour",
-    "Champion": "champion"
+    "Champion": "champion",
+    "Boss": "galacticBoss"
   }
 }

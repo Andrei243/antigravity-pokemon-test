@@ -1,0 +1,63 @@
+{
+  // Celadon City (plan 19 · K5, part b): the city of flowers, its department store, its Game Corner and Erika's Gym.
+  // Team Rocket's two by the Pokémon Center and the restaurant, and the Silph Co. man, go once Giovanni is beaten
+  // under the Game Corner (FLAG_HIDE_CELADON_ROCKETS, rocket_hideout_b4f.txt)
+  "area": "celadon_city",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "rocket_m": {
+      "name": "Grunt",
+      "dialog": [ "Keep out of our way, kid. Team Rocket has business in this town." ]
+    },
+    "rocket_m_2": {
+      "name": "Grunt",
+      "dialog": [ "Get lost! I'm waiting for orders from upstairs, and you're blocking the view." ]
+    },
+    "celadon_fat_man": {
+      "name": "Man",
+      "dialog": [ "This Poliwrath is my pal. Don't you go getting any ideas about catching it!" ]
+    },
+    "celadon_poliwrath": {
+      "name": "Poliwrath",
+      "dialog": [ "Poli! Poliwrath!" ]
+    },
+    "little_girl": {
+      "name": "Girl",
+      "dialog": [ "I came to the Gym to get some flowers. Erika grows the prettiest ones in town!" ]
+    },
+    "woman_2": {
+      "name": "Woman",
+      "dialog": [ "The department store has five floors. You could shop all day and still not see it all." ]
+    },
+    "old_man_1": {
+      "name": "Old Man",
+      "dialog": [ "Hm? The Game Corner? Bah. It's all slot machines and thieves, if you ask me." ]
+    },
+    "old_man_2": {
+      "name": "Old Man",
+      "dialog": [ "Once, a Chansey taught me how it shares its strength with friends. Kind creatures, Chansey." ]
+    },
+    "old_man_1_2": {
+      "name": "Old Man",
+      "dialog": [ "Lovely flowers, aren't they? The Gym's young lady tends every one of them." ]
+    },
+    "boy": {
+      "name": "Boy",
+      "dialog": [ "The mansion over there is for rich folk. Someone on the roof gives away a Pokémon, I heard!" ]
+    },
+    "scientist": {
+      "name": "Scientist",
+      "dialog": [ "I work for Silph Co. in Saffron City. Team Rocket is everywhere lately. It makes me nervous." ]
+    }
+  },
+  "signs": {
+    "CeladonCity_EventScript_TrainerTips2": "Trainer Tips\nA Pokémon's held item can turn a battle. Try giving one a berry!",
+    "CeladonCity_EventScript_PrizeExchangeSign": "Coins exchanged for prizes!\nPrize Exchange",
+    "CeladonCity_EventScript_GameCornerSign": "Rocket Game Corner\nThe playground for grown-ups!",
+    "CeladonCity_EventScript_CitySign": "Celadon City\nThe City of Rainbow Dreams",
+    "CeladonCity_EventScript_MansionSign": "Celadon Mansion",
+    "CeladonCity_EventScript_TrainerTips1": "Trainer Tips\nX Accuracy makes a move hard to miss. Find it at the department store!",
+    "CeladonCity_EventScript_DeptStoreSign": "Find what you need at the Celadon Department Store!",
+    "CeladonCity_EventScript_GymSign": "Celadon City Pokémon Gym\nLeader: Erika\nThe Nature-Loving Princess!"
+  }
+}

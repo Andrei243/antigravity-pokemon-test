@@ -1,0 +1,63 @@
+# Silph Co.'s 11F (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/SilphCo_11F/scripts.inc).
+#
+# Team Rocket holds the building. A door of the floor is shut until the Card Key (from the fifth floor) opens it
+# for good: FireRed draws it into its tiles and changes them with setmetatile; here it is four things of ours on
+# its tiles (a shutter each), gone once its flag is set (FLAG_SILPH_<FLOOR>F_DOOR_<N>, FireRed's).
+
+script Door
+  speaker none
+  if flag FLAG_SILPH_11F_DOOR end
+  if not item "Card Key" goto Locked
+  sound "door_slide"
+  setflag FLAG_SILPH_11F_DOOR
+  text "The Card Key opened the door!"
+  end
+label Locked
+  text "The door is locked. It takes a card to open it."
+  end
+
+
+# Giovanni waits in the president's office and battles whoever steps up before him (the area's triggers on
+# VAR_MAP_SCENE_SILPH_CO_11F 0). Beaten, he and his grunts leave, Team Rocket goes from the building and the city
+# (FLAG_HIDE_SILPH_ROCKETS, FLAG_HIDE_SAFFRON_ROCKETS) and Saffron City's people come back out
+# (FLAG_HIDE_SAFFRON_CIVILIANS cleared). The president gives the Master Ball (FLAG_GOT_MASTER_BALL_FROM_SILPH).
+script Giovanni
+  scene "Giovanni at Silph"
+  face silph_co_giovanni down
+  face player up
+  speaker "Giovanni"
+  say "Ah, it's you again. We meet once more. The president and I are discussing a business deal."
+  say "Silph Co. will hand over its Master Ball to Team Rocket, and you will keep out of it."
+  say "Or will you? Very well. I'll make sure you never interfere again!"
+  music "kanto/eye_galactic"
+  battle silph_co_giovanni as "kanto_boss_giovanni_2"
+  speaker "Giovanni"
+  say "Arrgh! I lose again?! Blast it all... You ruined our plans for Silph Co."
+  say "But Team Rocket will never fall! I'll be waiting for you, child. Remember that."
+  fade out 0.4
+  hide silph_co_giovanni
+  hide silph_co_11f_grunt1
+  hide silph_co_11f_grunt2
+  setflag FLAG_HIDE_SILPH_ROCKETS
+  setflag FLAG_HIDE_SAFFRON_ROCKETS
+  clearflag FLAG_HIDE_SAFFRON_CIVILIANS
+  fade in 0.4
+  music area
+  setvar VAR_MAP_SCENE_SILPH_CO_11F 1
+  endscene
+  end
+
+
+script President
+  speaker "President"
+  if flag FLAG_GOT_MASTER_BALL_FROM_SILPH goto Given
+  say "Thank you, my young friend! You saved Silph Co. from Team Rocket. I can't thank you enough."
+  say "Please accept this as a token of our gratitude. You won't find another anywhere."
+  give "Master Ball"
+  setflag FLAG_GOT_MASTER_BALL_FROM_SILPH
+  say "That's our secret prototype, the Master Ball. It will catch any wild Pokémon without fail."
+  end
+label Given
+  say "The Master Ball is the only one of its kind. Use it wisely!"
+  end

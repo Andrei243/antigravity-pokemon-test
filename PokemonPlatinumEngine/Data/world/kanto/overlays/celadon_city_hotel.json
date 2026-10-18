@@ -1,0 +1,11 @@
+{
+  // Celadon City's hotel (plan 19 · K5, part b)
+  "area": "celadon_city_hotel",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "old_woman": { "name": "Receptionist", "dialog": [ "Welcome! I'm sorry, every room is taken tonight. Do come again." ] },
+    "beauty": { "name": "Beauty", "dialog": [ "We came to Celadon for the shopping. My boyfriend's already tired of carrying the bags!" ] },
+    "man": { "name": "Man", "dialog": [ "Why did I agree to this trip? My arms are going to fall off." ] },
+    "little_boy": { "name": "Boy", "dialog": [ "My sister brought her boyfriend along. They're no fun at all!" ] }
+  }
+}

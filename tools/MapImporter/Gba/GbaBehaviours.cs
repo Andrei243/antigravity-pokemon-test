@@ -86,10 +86,12 @@ public static class GbaBehaviours
         ["MB_SLIDE_WEST"] = TileBehavior.SlideWest,
         ["MB_SLIDE_NORTH"] = TileBehavior.SlideNorth,
         ["MB_SLIDE_SOUTH"] = TileBehavior.SlideSouth,
-        ["MB_SPIN_RIGHT"] = TileBehavior.Spinner,
-        ["MB_SPIN_LEFT"] = TileBehavior.Spinner,
-        ["MB_SPIN_UP"] = TileBehavior.Spinner,
-        ["MB_SPIN_DOWN"] = TileBehavior.Spinner,
+        // FireRed's spin arrows are slides, and its stop tile the Spinner: on a map with stop tiles a slide goes on over
+        // plain floor until one (plan 19 · K5, part b; FieldMovement.Spins)
+        ["MB_SPIN_RIGHT"] = TileBehavior.SlideEast,
+        ["MB_SPIN_LEFT"] = TileBehavior.SlideWest,
+        ["MB_SPIN_UP"] = TileBehavior.SlideNorth,
+        ["MB_SPIN_DOWN"] = TileBehavior.SlideSouth,
         ["MB_STOP_SPINNING"] = TileBehavior.Spinner,
 
         // Ways somewhere: a door, the mat at a room's edge (an arrow warp), a hole in a cave's wall, a ladder or a pad

@@ -1,0 +1,163 @@
+{
+  "area": "silph_co_5f",
+  "name": "Silph Co.",
+  "bgmTrack": "kanto/silph",
+  "people": {
+    "rocket_m": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: Team Rocket never gives up! Battle!",
+        "dialogueAfter": "Team Rocket Grunt: We never give up... but I do."
+      }
+    },
+    "rocker": {
+      "name": "Dalton",
+      "trainer": {
+        "dialogueBefore": "Juggler Dalton: Watch my Pokémon juggle! Team Rocket pays me to keep you busy.",
+        "dialogueAfter": "Juggler Dalton: I dropped everything."
+      }
+    },
+    "worker_m": {
+      "name": "Worker",
+      "dialog": [
+        "The doors are locked by card. The Card Key is somewhere in the building."
+      ]
+    },
+    "scientist": {
+      "name": "Beau",
+      "trainer": {
+        "dialogueBefore": "Scientist Beau: I programmed every door in this building. You won't get far!",
+        "dialogueAfter": "Scientist Beau: You got far enough."
+      }
+    },
+    "rocket_m_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: You think you can take back this building alone?",
+        "dialogueAfter": "Team Rocket Grunt: Huh. Maybe you can."
+      }
+    },
+    "scientist_2": {
+      "name": "Scientist",
+      "dialog": [
+        "Team Rocket wants our Master Ball. It catches any Pokémon without fail!"
+      ]
+    }
+  },
+  "npcs": [
+    {
+      "id": "door1_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 7,
+      "y": 9,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door1_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 8,
+      "y": 9,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door1_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 7,
+      "y": 10,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door1_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 8,
+      "y": 10,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_1",
+      "script": "Door1"
+    },
+    {
+      "id": "door2_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 7,
+      "y": 18,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door2_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 8,
+      "y": 18,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door2_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 7,
+      "y": 19,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door2_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 8,
+      "y": 19,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_2",
+      "script": "Door2"
+    },
+    {
+      "id": "door3_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 18,
+      "y": 13,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_3",
+      "script": "Door3"
+    },
+    {
+      "id": "door3_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 19,
+      "y": 13,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_3",
+      "script": "Door3"
+    },
+    {
+      "id": "door3_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 18,
+      "y": 14,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_3",
+      "script": "Door3"
+    },
+    {
+      "id": "door3_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 19,
+      "y": 14,
+      "hiddenBy": "FLAG_SILPH_5F_DOOR_3",
+      "script": "Door3"
+    }
+  ],
+  "signs": {
+    "SilphCo_5F_EventScript_FloorSign": "Silph Co. Head Office\n5F",
+    "SilphCo_5F_EventScript_PokemonReport1": "A Pokémon report: Porygon, the first Pokémon made by people, came out of a lab like this one.",
+    "SilphCo_5F_EventScript_PokemonReport2": "A Pokémon report: a study of how Pokémon evolve. Very technical.",
+    "SilphCo_5F_EventScript_PokemonReport3": "A Pokémon report: notes on a ball that never fails. Top secret!"
+  }
+}

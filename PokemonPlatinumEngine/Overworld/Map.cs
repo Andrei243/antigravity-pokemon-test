@@ -442,7 +442,14 @@ public class Map
             Array.Fill(behaviours, Implied);
         }
         behaviours[y * Width + x] = behaviour;
+        if (behaviour == TileBehavior.Spinner) HasSpinStops = true;
     }
+
+    /// <summary>
+    /// Whether any tile is a GBA spin's stop tile (<see cref="TileBehavior.Spinner"/>): on such a map a slide goes on
+    /// over plain floor until one (<see cref="FieldMovement.Spins"/>; plan 19 · K5, part b, the Rocket Hideout).
+    /// </summary>
+    public bool HasSpinStops { get; private set; }
 
     /// <summary>True once any tile has been given a height: the map has relief to draw and to walk.</summary>
     public bool HasRelief => heights != null;

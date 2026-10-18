@@ -1,0 +1,32 @@
+{
+  "key": "rocket_hideout_b3f",
+  "index": 86,
+  "name": "Rocket Hideout",
+  "matrix": 50,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROCKET_HIDEOUT",
+  "nightMusic": "MUS_ROCKET_HIDEOUT",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 18, "z": 2, "to": "rocket_hideout_b2f", "toWarp": 0 },
+    { "x": 15, "z": 18, "to": "rocket_hideout_b4f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "look_north", "x": 19, "z": 9, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_15" },
+    { "id": "rocket_m_2", "looks": "rocket_m", "movement": "look_east", "x": 2, "z": 20, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_14" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 12, "z": 12, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_RARE_CANDY", "item": "Rare Candy", "script": "RocketHideout_B3F_EventScript_ItemRareCandy" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 19, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_TM21", "item": "TM21", "script": "RocketHideout_B3F_EventScript_ItemTM21" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 14, "z": 24, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B3F_BLACK_GLASSES", "item": "Black Glasses", "script": "RocketHideout_B3F_EventScript_ItemBlackGlasses" }
+  ],
+  "signs": [
+    { "x": 1, "z": 3, "type": 2, "script": "", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_ROCKET_HIDEOUT_B3F_NUGGET" }
+  ],
+  "triggers": []
+}

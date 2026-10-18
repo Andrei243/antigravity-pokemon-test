@@ -126,6 +126,18 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 20-55
+=== celadon_city
+Celadon City
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-40
+=== celadon_city_game_corner
+Celadon City
+trainers 1, 20: kanto_team_rocket_grunt_7 20
+=== celadon_city_gym
+Celadon City
+trainers 7, 21-24: kanto_beauty_bridget 21, kanto_beauty_lori 24, kanto_beauty_tamia 24, kanto_cooltrainer_mary 22, kanto_lass_kay 23, kanto_lass_lisa 23, kanto_picnicker_tina 24
 === celestic_town
 Celestic Town
 surf 20-40
@@ -438,6 +450,18 @@ trainers 7, 19-23: kanto_hiker_lenny 19, kanto_hiker_lucas 21, kanto_hiker_olive
 Rock Tunnel
 grass 13-17
 trainers 8, 20-25: kanto_hiker_allen 25, kanto_hiker_dudley 21, kanto_hiker_eric 20, kanto_picnicker_martha 22, kanto_picnicker_sofia 21, kanto_pokemaniac_cooper 20, kanto_pokemaniac_steve 22, kanto_pokemaniac_winston 25
+=== rocket_hideout_b1f
+Rocket Hideout
+trainers 5, 19-22: kanto_team_rocket_grunt_10 20, kanto_team_rocket_grunt_11 19, kanto_team_rocket_grunt_12 22, kanto_team_rocket_grunt_8 21, kanto_team_rocket_grunt_9 21
+=== rocket_hideout_b2f
+Rocket Hideout
+trainers 1, 17: kanto_team_rocket_grunt_13 17
+=== rocket_hideout_b3f
+Rocket Hideout
+trainers 2, 20-21: kanto_team_rocket_grunt_14 20, kanto_team_rocket_grunt_15 21
+=== rocket_hideout_b4f
+Rocket Hideout
+trainers 3, 21-23: kanto_team_rocket_grunt_16 23, kanto_team_rocket_grunt_17 23, kanto_team_rocket_grunt_18 21
 === route_1
 Route 1
 grass 2-5
@@ -476,6 +500,18 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 10, 17-21: kanto_engineer_bernie 18, kanto_engineer_braxton 21, kanto_gamer_darian 18, kanto_gamer_dirk 18, kanto_gamer_hugo 18, kanto_gamer_jasper 18, kanto_youngster_dave 18, kanto_youngster_dillon 19, kanto_youngster_eddie 21, kanto_youngster_yasu 17
+=== route_12
+Route 12
+grass 22-30
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 8, 21-29: kanto_camper_justin 29, kanto_fisherman_andrew 24, kanto_fisherman_chip 24, kanto_fisherman_elliot 21, kanto_fisherman_hank 27, kanto_fisherman_ned 22, kanto_rocker_luca 29, kanto_young_couple_gia_jes 24
+=== route_16
+Route 16
+grass 18-25
+trainers 7, 28-33: kanto_biker_hideo 33, kanto_biker_lao 29, kanto_biker_ruben 28, kanto_cue_ball_camron 29, kanto_cue_ball_koji 28, kanto_cue_ball_luke 29, kanto_young_couple_lea_jed 29
 === route_2
 Route 2
 grass 2-5
@@ -814,6 +850,12 @@ old rod 10
 good rod 20
 super rod 40
 trainers 1, 26: johto_psychic_m_nathan 26
+=== saffron_city_dojo
+Saffron City
+trainers 5, 31-37: kanto_black_belt_aaron 36, kanto_black_belt_hideki 32, kanto_black_belt_hitoshi 31, kanto_black_belt_koichi 37, kanto_black_belt_mike 31
+=== saffron_city_gym
+Saffron City
+trainers 7, 31-38: kanto_channeler_amanda 34, kanto_channeler_stacy 38, kanto_channeler_tasha 33, kanto_psychic_cameron 33, kanto_psychic_johan 31, kanto_psychic_preston 38, kanto_psychic_tyron 34
 === sendoff_spring
 Sendoff Spring
 grass 37-40
@@ -821,6 +863,36 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 30-55
+=== silph_co_10f
+Silph Co.
+trainers 2, 29-33: kanto_scientist_travis 29, kanto_team_rocket_grunt_39 33
+=== silph_co_11f
+Silph Co.
+trainers 2, 25-32: kanto_team_rocket_grunt_40 25, kanto_team_rocket_grunt_41 32
+=== silph_co_2f
+Silph Co.
+trainers 4, 25-29: kanto_scientist_connor 26, kanto_scientist_jerry 28, kanto_team_rocket_grunt_23 29, kanto_team_rocket_grunt_24 25
+=== silph_co_3f
+Silph Co.
+trainers 2, 28-29: kanto_scientist_jose 29, kanto_team_rocket_grunt_25 28
+=== silph_co_4f
+Silph Co.
+trainers 3, 28-33: kanto_scientist_rodney 33, kanto_team_rocket_grunt_26 29, kanto_team_rocket_grunt_27 28
+=== silph_co_5f
+Silph Co.
+trainers 4, 26-33: kanto_juggler_dalton 29, kanto_scientist_beau 26, kanto_team_rocket_grunt_28 33, kanto_team_rocket_grunt_29 33
+=== silph_co_6f
+Silph Co.
+trainers 3, 25-29: kanto_scientist_taylor 25, kanto_team_rocket_grunt_30 29, kanto_team_rocket_grunt_31 28
+=== silph_co_7f
+Silph Co.
+trainers 4, 26-29: kanto_scientist_joshua 29, kanto_team_rocket_grunt_33 29, kanto_team_rocket_grunt_34 29, kanto_team_rocket_grunt_35 26
+=== silph_co_8f
+Silph Co.
+trainers 3, 26-29: kanto_scientist_parker 29, kanto_team_rocket_grunt_32 26, kanto_team_rocket_grunt_36 28
+=== silph_co_9f
+Silph Co.
+trainers 3, 28: kanto_scientist_ed 28, kanto_team_rocket_grunt_37 28, kanto_team_rocket_grunt_38 28
 === snowpoint_temple_1f
 Snowpoint Temple
 grass 47-50

@@ -1,0 +1,103 @@
+# Silph Co.'s 7F (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/SilphCo_7F/scripts.inc).
+#
+# Team Rocket holds the building. A door of the floor is shut until the Card Key (from the fifth floor) opens it
+# for good: FireRed draws it into its tiles and changes them with setmetatile; here it is four things of ours on
+# its tiles (a shutter each), gone once its flag is set (FLAG_SILPH_<FLOOR>F_DOOR_<N>, FireRed's).
+
+script Door1
+  speaker none
+  if flag FLAG_SILPH_7F_DOOR_1 end
+  if not item "Card Key" goto Locked
+  sound "door_slide"
+  setflag FLAG_SILPH_7F_DOOR_1
+  text "The Card Key opened the door!"
+  end
+label Locked
+  text "The door is locked. It takes a card to open it."
+  end
+
+
+script Door2
+  speaker none
+  if flag FLAG_SILPH_7F_DOOR_2 end
+  if not item "Card Key" goto Locked
+  sound "door_slide"
+  setflag FLAG_SILPH_7F_DOOR_2
+  text "The Card Key opened the door!"
+  end
+label Locked
+  text "The door is locked. It takes a card to open it."
+  end
+
+
+script Door3
+  speaker none
+  if flag FLAG_SILPH_7F_DOOR_3 end
+  if not item "Card Key" goto Locked
+  sound "door_slide"
+  setflag FLAG_SILPH_7F_DOOR_3
+  text "The Card Key opened the door!"
+  end
+label Locked
+  text "The door is locked. It takes a card to open it."
+  end
+
+
+# The rival, come for the Silph Co. president too, battles whoever steps up beside him (the area's triggers on
+# VAR_MAP_SCENE_SILPH_CO_7F 0) with FireRed's three teams, and leaves (FLAG_HIDE_SILPH_RIVAL, the flag his object
+# carries; the variable 1 after).
+script RivalTrigger
+  scene "The rival at Silph"
+  music "kanto/rival"
+  face silph_co_rival up
+  face player down
+  emote silph_co_rival exclaim 0.6
+  wait 0.8
+  speaker "{rival}"
+  say "What kept you, {player}? I've been up here for ages. Team Rocket's made a real mess of this place."
+  say "I came to see the president, but first let's see if you've been training. Here I come!"
+  if starter "Bulbasaur" goto VsCharmander
+  if starter "Charmander" goto VsSquirtle
+  battle silph_co_rival as "kanto_rival_silph_bulbasaur"
+  goto After
+label VsCharmander
+  battle silph_co_rival as "kanto_rival_silph_charmander"
+  goto After
+label VsSquirtle
+  battle silph_co_rival as "kanto_rival_silph_squirtle"
+label After
+  speaker "{rival}"
+  say "Tch. Not bad. Team Rocket's boss is upstairs, you know. Think you can handle him? I doubt it!"
+  say "I'm off. Smell you later, {player}!"
+  music "kanto/rival"
+  fade out 0.3
+  hide silph_co_rival
+  setflag FLAG_HIDE_SILPH_RIVAL
+  fade in 0.3
+  music area
+  setvar VAR_MAP_SCENE_SILPH_CO_7F 1
+  endscene
+  end
+
+
+script Rival
+  speaker "{rival}"
+  say "Huh? Don't just stand there gawking. Come on!"
+  end
+
+
+# The worker by the window gives a Lapras of level 25 to thank the player (FLAG_GOT_LAPRAS_FROM_SILPH).
+script LaprasGuy
+  speaker "Worker"
+  if flag FLAG_GOT_LAPRAS_FROM_SILPH goto Given
+  say "Thank goodness you're here! Team Rocket nearly took this one. Please, take it somewhere safe."
+  givepokemon "Lapras" 25
+  fanfare pokemon
+  text "{player} received a Lapras!"
+  setflag FLAG_GOT_LAPRAS_FROM_SILPH
+  say "It's a Lapras. It's very smart, and it'll carry you across the water, too."
+  end
+label Given
+  say "How's the Lapras getting on? Team Rocket would have sold it. You saved it!"
+  end

@@ -1,0 +1,89 @@
+{
+  "area": "silph_co_11f",
+  "name": "Silph Co.",
+  "bgmTrack": "kanto/silph",
+  "people": {
+    "worker_f": {
+      "name": "Secretary",
+      "dialog": [
+        "Thank you for rescuing us! The president would surely have given in to Team Rocket."
+      ]
+    },
+    "silph_co_11f_grunt1": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: The boss wants the Master Ball, and nothing will stop him!",
+        "dialogueAfter": "Team Rocket Grunt: Nothing except you, it seems."
+      }
+    },
+    "silph_co_11f_grunt2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Team Rocket Grunt: Hey! Who let you up the stairs?",
+        "dialogueAfter": "Team Rocket Grunt: Next time I lock the stairs too."
+      }
+    },
+    "old_man_2": {
+      "name": "President",
+      "script": "President"
+    },
+    "silph_co_giovanni": {
+      "name": "Giovanni",
+      "still": true,
+      "dialog": [
+        "..."
+      ]
+    }
+  },
+  "npcs": [
+    {
+      "id": "door1_00",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 5,
+      "y": 16,
+      "hiddenBy": "FLAG_SILPH_11F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_10",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 6,
+      "y": 16,
+      "hiddenBy": "FLAG_SILPH_11F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_01",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 5,
+      "y": 17,
+      "hiddenBy": "FLAG_SILPH_11F_DOOR",
+      "script": "Door"
+    },
+    {
+      "id": "door1_11",
+      "name": "Locked door",
+      "npcType": "GalacticDoor",
+      "x": 6,
+      "y": 17,
+      "hiddenBy": "FLAG_SILPH_11F_DOOR",
+      "script": "Door"
+    }
+  ],
+  "signs": {
+    "SilphCo_11F_EventScript_FloorSign": "Silph Co. Head Office\n11F"
+  },
+  "triggers": [
+    {
+      "trigger": 0,
+      "script": "Giovanni"
+    },
+    {
+      "trigger": 1,
+      "script": "Giovanni"
+    }
+  ]
+}

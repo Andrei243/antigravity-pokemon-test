@@ -375,6 +375,21 @@ public static class FieldMovement
     };
 
     /// <summary>
+    /// A GBA spin (plan 19 · K5, part b; FireRed's <c>TryUpdatePlayerSpinDirection</c>): the Rocket Hideout's arrows
+    /// are slides (<see cref="TileBehavior.SlideEast"/> and its kin) on a map that has stop tiles
+    /// (<see cref="TileBehavior.Spinner"/>, <see cref="Map.HasSpinStops"/>), and there a spin goes on over plain floor
+    /// in the last arrow's way until a stop tile or something in the way ends it. Platinum's own slides (the Fuego
+    /// Ironworks') are on maps with no stop tiles, and end on plain floor as they always did. What the spin is after a
+    /// step that came to <paramref name="underfoot"/>, the slide there being <paramref name="carried"/>.
+    /// </summary>
+    public static Direction? Spins(Map map, TileBehavior underfoot, Direction? carried, Direction? spinning)
+    {
+        if (underfoot == TileBehavior.Spinner) return null;
+        if (carried != null) return underfoot is >= TileBehavior.SlideEast and <= TileBehavior.SlideSouth && map.HasSpinStops ? carried : null;
+        return spinning;
+    }
+
+    /// <summary>
     /// Whether someone on foot who faces a direction stands at the edge of deep water they could surf out onto
     /// (still water or a river within a step's height; not a waterfall, and not from a bridge's deck).
     /// </summary>

@@ -1,0 +1,10 @@
+{
+  // Copycat's house in Saffron City (plan 19 · K5, part b): her parents and their Chansey
+  "area": "saffron_city_copycats_house_1f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "balding_man": { "name": "Man", "dialog": [ "My daughter copies everyone she meets. She's upstairs, if you'd like to be copied too." ] },
+    "woman_3": { "name": "Woman", "dialog": [ "Our girl can mimic anybody. She does a wonderful Chansey!" ] },
+    "chansey": { "name": "Chansey", "dialog": [ "Chaaansey!" ] }
+  }
+}

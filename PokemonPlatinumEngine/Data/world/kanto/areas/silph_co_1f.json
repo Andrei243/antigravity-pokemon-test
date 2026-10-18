@@ -1,0 +1,31 @@
+{
+  "key": "silph_co_1f",
+  "index": 89,
+  "name": "Silph Co",
+  "matrix": 53,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SILPH",
+  "nightMusic": "MUS_SILPH",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 21, "to": "", "toWarp": 0 },
+    { "x": 8, "z": 20, "to": "saffron_city", "toWarp": 0 },
+    { "x": 9, "z": 20, "to": "saffron_city", "toWarp": 0 },
+    { "x": 31, "z": 2, "to": "silph_co_2f", "toWarp": 3 },
+    { "x": 22, "z": 3, "to": "silph_co_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "worker_f", "looks": "worker_f", "movement": "look_south", "x": 3, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFFRON_CIVILIANS", "script": "SilphCo_1F_EventScript_Receptionist" }
+  ],
+  "signs": [
+    { "x": 30, "z": 1, "type": 0, "script": "SilphCo_1F_EventScript_FloorSign" }
+  ],
+  "triggers": []
+}

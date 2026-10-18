@@ -82,8 +82,8 @@
   {
     "id": 11,
     "area": "saffron_city",
-    "x": 24,
-    "y": 39,
+    "x": 278,
+    "y": 152,
     "room": "SaffronCity_PokemonCenter_1F",
     "unlockedOnArrival": true
   },

@@ -1,0 +1,35 @@
+{
+  // Saffron City (plan 19 · K5, part b), laid into the overworld where FireRed's routes join its stand-in
+  // (tools/MapImporter's GbaWorld.StandIns). Team Rocket holds the city and Silph Co.; its people come back out once
+  // Giovanni is beaten at the top of Silph Co. (FLAG_HIDE_SAFFRON_ROCKETS, FLAG_HIDE_SAFFRON_CIVILIANS:
+  // saffron_city.txt and silph_co_11f.txt). The grunt at Silph Co.'s door keeps it until Mr. Fuji is rescued
+  "area": "saffron_city",
+  "bgmTrack": "kanto/viridian",
+  // FireRed stands grunts on the mats of the Gym, a house and Copycat's house until Team Rocket goes; a way out of a
+  // room must land on open ground here, so they are left away and the Gym's door is shut until then instead
+  "doors": [ { "warp": 3, "map": "SaffronCity_Gym", "x": 14, "y": 22, "facing": "Up", "openedBy": "FLAG_HIDE_SAFFRON_ROCKETS" } ],
+  "people": {
+    "rocket_m_2": { "name": "Grunt", "dialog": [ "Silph Co. makes the best Poké Balls in the world. And soon, they'll make them for us!" ] },
+    "rocket_m_5": { "name": "Grunt", "dialog": [ "What's a kid doing out on the streets? Go home!" ] },
+    "saffron_door_guard_grunt": { "name": "Grunt", "script": "DoorGuard" },
+    "rocket_m_6": { "name": "Grunt", "dialog": [ "Silph Co. has a secret project. The boss wants it badly." ] },
+    "rocket_m_7": { "name": "Grunt", "dialog": [ "I'm keeping an eye on the Fan Club. They know too much about Pokémon." ] },
+    "youngster": { "name": "Youngster", "dialog": [ "Team Rocket ran off! Saffron City feels like a city again." ] },
+    "worker_m": { "name": "Worker", "dialog": [ "I'm back at work at Silph Co. now. Thanks to you, I hear!" ] },
+    "man": { "name": "Man", "dialog": [ "Saffron City is the heart of Kanto. Every road leads here." ] },
+    "boy": { "name": "Boy", "dialog": [ "This is my Pidgeot. It can fly me anywhere I've been!" ] },
+    "pidgeot": { "name": "Pidgeot", "dialog": [ "Pidgeooo!" ] },
+    "lass": { "name": "Lass", "dialog": [ "Is it true you sent Team Rocket packing? That's amazing!" ] }
+  },
+  "signs": {
+    "SaffronCity_EventScript_CitySign": "Saffron City\nShining, Golden Land of Commerce",
+    "SaffronCity_EventScript_DojoSign": "Fighting Dojo",
+    "SaffronCity_EventScript_SilphProductSign": "Silph's latest product!\nThe new Poké Ball, on sale soon!",
+    "SaffronCity_EventScript_TrainerTips2": "Trainer Tips\nA Full Heal cures every status problem at once!",
+    "SaffronCity_EventScript_SilphCoSign": "Silph Co. Office Building",
+    "SaffronCity_EventScript_TrainerTips1": "Trainer Tips\nThe Escape Rope takes you out of a cave in a flash!",
+    "SaffronCity_EventScript_GymSign": "Saffron City Pokémon Gym\nLeader: Sabrina\nThe Master of Psychic Pokémon!",
+    "SaffronCity_EventScript_MrPsychicsHouseSign": "Mr. Psychic's House",
+    "SaffronCity_EventScript_TrainerFanClubSign": "Pokémon Trainer Fan Club\nOpen to everyone who loves strong trainers!"
+  }
+}

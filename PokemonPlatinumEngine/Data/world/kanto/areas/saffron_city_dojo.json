@@ -1,0 +1,41 @@
+{
+  "key": "saffron_city_dojo",
+  "index": 338,
+  "name": "Saffron City",
+  "matrix": 285,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 14, "to": "saffron_city", "toWarp": 2 },
+    { "x": 6, "z": 14, "to": "saffron_city", "toWarp": 2 },
+    { "x": 7, "z": 14, "to": "saffron_city", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_west", "x": 11, "z": 10, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 7, "script": "TRAINER_BLACK_BELT_HITOSHI" },
+    { "id": "black_belt_2", "looks": "black_belt", "movement": "look_east", "x": 1, "z": 10, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 7, "script": "TRAINER_BLACK_BELT_HIDEKI" },
+    { "id": "black_belt_3", "looks": "black_belt", "movement": "look_west", "x": 11, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 7, "script": "TRAINER_BLACK_BELT_AARON" },
+    { "id": "black_belt_4", "looks": "black_belt", "movement": "look_east", "x": 1, "z": 8, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 7, "script": "TRAINER_BLACK_BELT_MIKE" },
+    { "id": "karate_master", "looks": "black_belt", "movement": "look_south", "x": 6, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BLACK_BELT_KOICHI" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 5, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_DOJO_HITMONLEE_BALL", "script": "SaffronCity_Dojo_EventScript_HitmonleeBall" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 7, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_DOJO_HITMONCHAN_BALL", "script": "SaffronCity_Dojo_EventScript_HitmonchanBall" }
+  ],
+  "signs": [
+    { "x": 3, "z": 13, "type": 0, "script": "SaffronCity_Dojo_EventScript_Statue" },
+    { "x": 9, "z": 13, "type": 0, "script": "SaffronCity_Dojo_EventScript_Statue" },
+    { "x": 5, "z": 2, "type": 0, "script": "SaffronCity_Dojo_EventScript_LeftScroll" },
+    { "x": 7, "z": 2, "type": 0, "script": "SaffronCity_Dojo_EventScript_RightScroll" }
+  ],
+  "triggers": [
+    { "x": 5, "z": 5, "width": 1, "depth": 1, "script": "SaffronCity_Dojo_EventScript_TriggerMasterBattleLeft", "variable": "VAR_MAP_SCENE_SAFFRON_CITY_DOJO", "value": "0" },
+    { "x": 7, "z": 5, "width": 1, "depth": 1, "script": "SaffronCity_Dojo_EventScript_TriggerMasterBattleRight", "variable": "VAR_MAP_SCENE_SAFFRON_CITY_DOJO", "value": "0" }
+  ]
+}

@@ -1,0 +1,23 @@
+# The room on Celadon Mansion's roof (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/CeladonCity_Condominiums_RoofRoom/scripts.inc).
+#
+# A Poké Ball on the table holds an Eevee of level 25 for whoever takes it (FLAG_HIDE_EEVEE_BALL, FireRed's
+# FLAG_GOT_EEVEE beside it).
+
+
+script EeveeBall
+  speaker none
+  if party >= 6 goto Full
+  text "There's a Pokémon in this Poké Ball. It's an Eevee!"
+  ask "Take the Eevee?"
+  if no end
+  givepokemon "Eevee" 25
+  fanfare pokemon
+  text "{player} received an Eevee!"
+  setflag FLAG_GOT_EEVEE
+  setflag FLAG_HIDE_EEVEE_BALL
+  hide self
+  end
+label Full
+  text "There's a Pokémon in this Poké Ball, but there's no room on the team for it."
+  end

@@ -1,0 +1,25 @@
+{
+  "key": "silph_co_elevator",
+  "index": 100,
+  "name": "Silph Co",
+  "matrix": 64,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SILPH",
+  "nightMusic": "MUS_SILPH",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 5, "to": "", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 0, "z": 2, "type": 0, "script": "SilphCo_Elevator_EventScript_FloorSelect" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,27 @@
+{
+  "key": "saffron_city_mr_psychics_house",
+  "index": 344,
+  "name": "Saffron City",
+  "matrix": 291,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "saffron_city", "toWarp": 7 },
+    { "x": 4, "z": 7, "to": "saffron_city", "toWarp": 7 },
+    { "x": 5, "z": 7, "to": "saffron_city", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_west", "x": 7, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SaffronCity_MrPsychicsHouse_EventScript_MrPsychic" }
+  ],
+  "signs": [],
+  "triggers": []
+}

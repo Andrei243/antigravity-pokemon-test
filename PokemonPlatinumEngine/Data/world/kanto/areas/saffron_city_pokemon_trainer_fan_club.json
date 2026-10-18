@@ -1,0 +1,34 @@
+{
+  "key": "saffron_city_pokemon_trainer_fan_club",
+  "index": 345,
+  "name": "Saffron City",
+  "matrix": 292,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 15, "to": "saffron_city", "toWarp": 14 }
+  ],
+  "objects": [
+    { "id": "trainer_fan_club_battle_girl", "looks": "crush_girl", "movement": "look_west", "x": 7, "z": 13, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SaffronCity_PokemonTrainerFanClub_EventScript_CrushGirl" },
+    { "id": "trainer_fan_club_little_girl", "looks": "little_girl", "movement": "look_south", "x": 6, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SaffronCity_PokemonTrainerFanClub_EventScript_LittleGirl" },
+    { "id": "trainer_fan_club_youngster", "looks": "youngster", "movement": "look_east", "x": 3, "z": 13, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "SaffronCity_PokemonTrainerFanClub_EventScript_Youngster" },
+    { "id": "trainer_fan_club_gentleman", "looks": "gentleman", "movement": "look_east", "x": 3, "z": 12, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "SaffronCity_PokemonTrainerFanClub_EventScript_Gentleman" },
+    { "id": "trainer_fan_club_woman", "looks": "woman_3", "movement": "look_south", "x": 9, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFFRON_FAN_CLUB_WOMAN", "script": "SaffronCity_PokemonTrainerFanClub_EventScript_Woman" },
+    { "id": "trainer_fan_club_rocker", "looks": "rocker", "movement": "look_west", "x": 7, "z": 12, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFFRON_FAN_CLUB_ROCKER", "script": "SaffronCity_PokemonTrainerFanClub_EventScript_Rocker" },
+    { "id": "trainer_fan_club_beauty", "looks": "beauty", "movement": "look_north", "x": 9, "z": 12, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFFRON_FAN_CLUB_BEAUTY", "script": "SaffronCity_PokemonTrainerFanClub_EventScript_Beauty" },
+    { "id": "trainer_fan_club_black_belt", "looks": "black_belt", "movement": "look_south", "x": 5, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFFRON_FAN_CLUB_BLACK_BELT", "script": "SaffronCity_PokemonTrainerFanClub_EventScript_BlackBelt" },
+    { "id": "0", "looks": "0", "movement": "invisible", "x": 2, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "SaffronCity_PokemonTrainerFanClub_EventScript_PokemonJournalBruno" },
+    { "id": "0_2", "looks": "0", "movement": "invisible", "x": 3, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "SaffronCity_PokemonTrainerFanClub_EventScript_PokemonJournalBruno" }
+  ],
+  "signs": [],
+  "triggers": []
+}

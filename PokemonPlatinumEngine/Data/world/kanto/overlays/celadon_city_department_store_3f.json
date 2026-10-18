@@ -1,0 +1,21 @@
+{
+  // The Celadon Department Store's third floor (plan 19 · K5, part b): the game shop and the children trying games
+  "area": "celadon_city_department_store_3f",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "clerk": { "name": "Clerk", "dialog": [ "Our games are the newest around! Have a go at the ones on display." ] },
+    "gba_kid": { "name": "Boy", "dialog": [ "I'm trading Pokémon with my friend over the link cable. Nearly done!" ] },
+    "gba_kid_2": { "name": "Boy", "dialog": [ "This game's great! I've been playing it since the store opened." ] },
+    "gba_kid_3": { "name": "Boy", "dialog": [ "Shh! I'm about to beat my high score!" ] },
+    "little_girl": { "name": "Girl", "dialog": [ "My big brother says he'll buy me a game if I'm good all day." ] }
+  },
+  "signs": {
+    "CeladonCity_DepartmentStore_3F_EventScript_FloorSign": "3F: TV Game Shop",
+    "CeladonCity_DepartmentStore_3F_EventScript_TV1": "A Pokémon battle on the screen. The two are evenly matched!",
+    "CeladonCity_DepartmentStore_3F_EventScript_TV2": "A game about a trainer on a long journey. It looks familiar.",
+    "CeladonCity_DepartmentStore_3F_EventScript_TV3": "A racing game. The cars go round and round.",
+    "CeladonCity_DepartmentStore_3F_EventScript_TV4": "A puzzle game with falling blocks.",
+    "CeladonCity_DepartmentStore_3F_EventScript_SuperNES": "A games console, set up for anyone to try.",
+    "CeladonCity_DepartmentStore_3F_EventScript_Poster": "A poster for a new game. Coming soon!"
+  }
+}

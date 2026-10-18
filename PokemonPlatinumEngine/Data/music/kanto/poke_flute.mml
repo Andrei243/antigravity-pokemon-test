@@ -1,0 +1,17 @@
+# The Poké Flute (FireRed's MUS_POKE_FLUTE): the tune the flute plays to wake a sleeping Pokémon, four bars in G of a
+# soft flute over a harp, which a script plays while the Pokémon stirs and then takes back for the place's own song.
+# Original composition for this game (plan 19 · K5).
+title Poké Flute
+tempo 96
+meter 3/4
+reverb 0.45
+night none
+
+track lead flute vol=0.7 pan=0 rev=0.45
+  L o5 d4 g4 b4 | o5 a4 f+4 d4 | o5 e4 g4 o6 c4 | o5 b2. |
+
+track harp harp vol=0.38 pan=0.3 rev=0.5
+  L o4 g8 b8 o5 d8 g8 d8 o4 b8 | o4 d8 f+8 a8 o5 d8 o4 a8 f+8 | o4 c8 e8 g8 o5 c8 o4 g8 e8 | o4 g8 b8 o5 d8 g8 d8 o4 b8 |
+
+track pad strings vol=0.2 pan=-0.3 rev=0.45
+  L o4 (g b >d)2. | (d f+ a)2. | (c e g)2. | (g b >d)2. |

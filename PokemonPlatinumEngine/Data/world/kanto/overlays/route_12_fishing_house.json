@@ -1,0 +1,12 @@
+{
+  // The fishing house on Route 12 (plan 19 · K5, part b): the Fishing Guru's brother. His Super Rod and his record
+  // Magikarp are K6's
+  "area": "route_12_fishing_house",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "fisher": { "name": "Fisherman", "dialog": [ "I'm the Fishing Guru's younger brother. Fishing is life, and life is fishing!" ] }
+  },
+  "signs": {
+    "Route12_FishingHouse_EventScript_MagikarpRecordSign": "The record Magikarp caught here. Nobody has beaten it yet!"
+  }
+}

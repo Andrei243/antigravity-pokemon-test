@@ -6174,6 +6174,171 @@ from Prof. Rowan at 38,720 of Sinnoh
 way -
   Prof. Rowan> What is taking place at the lakes? Something is very wrong, and I mean to find out what.
   Prof. Rowan> Lake Valor lies east of Pastoria City, Lucas. Go, and be careful.
+=== celadon_city_condominiums_1f.TeaWoman
+from Old Woman at 2,9 of CeladonCity_Condominiums_1F
+way -
+  Old Woman> My, you look parched. Here, have some of my tea. It's my own blend!
+  > Lucas received the Tea!
+  > Lucas put it away in the Key Items pocket.
+  Old Woman> Do share it with anyone who looks thirsty, won't you?
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_TEA
+=== celadon_city_condominiums_roof_room.EeveeBall
+from Poké Ball at 7,3 of CeladonCity_Condominiums_RoofRoom
+way 0
+  > There's a Pokémon in this Poké Ball. It's an Eevee!
+  > Take the Eevee?
+  > Lucas received an Eevee!
+  ? Take the Eevee? = Yes
+  * fanfare FanfarePokemon
+  + FLAG_GOT_EEVEE
+  + FLAG_HIDE_EEVEE_BALL
+way 1, from answer 1
+  ? Take the Eevee? = No
+=== celadon_city_department_store_elevator.Panel
+from the tile read at 0,2 of CeladonCity_DepartmentStore_Elevator
+from the tile read at 4,1 of CeladonCity_DepartmentStore_Elevator
+way 0
+  > Which floor?
+  ? Which floor? = 5F
+  * anim elevator up 4
+  * warp CeladonCity_DepartmentStore_5F 6 2
+  = VAR_ELEVATOR_FLOOR 0 -> 5
+  = VAR_TEMP_1 0 -> 5
+way 5, from answer 1
+  ? Which floor? = Stay here
+  = VAR_ELEVATOR_FLOOR 0 -> 1
+way 4, from answer 1
+  ? Which floor? = 1F
+  * warp CeladonCity_DepartmentStore_1F 6 2
+  = VAR_ELEVATOR_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 1
+way 3, from answer 1
+  ? Which floor? = 2F
+  * anim elevator up 4
+  * warp CeladonCity_DepartmentStore_2F 6 2
+  = VAR_ELEVATOR_FLOOR 0 -> 2
+  = VAR_TEMP_1 0 -> 2
+way 2, from answer 1
+  ? Which floor? = 3F
+  * anim elevator up 4
+  * warp CeladonCity_DepartmentStore_3F 6 2
+  = VAR_ELEVATOR_FLOOR 0 -> 3
+  = VAR_TEMP_1 0 -> 3
+way 1, from answer 1
+  ? Which floor? = 4F
+  * anim elevator up 4
+  * warp CeladonCity_DepartmentStore_4F 6 2
+  = VAR_ELEVATOR_FLOOR 0 -> 4
+  = VAR_TEMP_1 0 -> 4
+=== celadon_city_game_corner.CoinsClerk
+from Clerk at 6,2 of CeladonCity_GameCorner
+way -
+  Clerk> Sorry, you'll need a Coin Case to keep coins in.
+=== celadon_city_game_corner.Grunt
+from Grunt at 11,2 of CeladonCity_GameCorner
+way 0
+  Grunt> Team Rocket Grunt: I'm guarding this poster! Huh? You saw nothing, got it?
+  Grunt> Argh! I'd better tell the boss! Don't you dare touch that poster!
+  * battle kanto_team_rocket_grunt_7 Won
+  * fade out
+  * fade in
+  + FLAG_HIDE_GAME_CORNER_ROCKET
+  + beaten kanto_team_rocket_grunt_7
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_7 Lost
+=== celadon_city_game_corner.GymGuy
+from Gym Guide at 7,10 of CeladonCity_GameCorner
+way -
+  Gym Guide> Hey, champ in the making! Celadon's Gym Leader is Erika, and she uses Grass types.
+  Gym Guide> Fire, Ice and Flying moves will see you through. Good luck, and don't let the slots distract you!
+=== celadon_city_game_corner.Poster
+from the tile read at 11,1 of CeladonCity_GameCorner
+way -
+  > A poster of a Pokémon. Something about it seems odd.
+=== celadon_city_game_corner.Slots
+from the tile read at 0,10 of CeladonCity_GameCorner
+from the tile read at 0,7 of CeladonCity_GameCorner
+from the tile read at 0,9 of CeladonCity_GameCorner
+from the tile read at 11,10 of CeladonCity_GameCorner
+from the tile read at 11,6 of CeladonCity_GameCorner
+from the tile read at 11,7 of CeladonCity_GameCorner
+from the tile read at 11,8 of CeladonCity_GameCorner
+from the tile read at 12,10 of CeladonCity_GameCorner
+from the tile read at 12,6 of CeladonCity_GameCorner
+from the tile read at 12,9 of CeladonCity_GameCorner
+from the tile read at 17,7 of CeladonCity_GameCorner
+from the tile read at 17,8 of CeladonCity_GameCorner
+from the tile read at 17,9 of CeladonCity_GameCorner
+from the tile read at 5,10 of CeladonCity_GameCorner
+from the tile read at 5,6 of CeladonCity_GameCorner
+from the tile read at 5,9 of CeladonCity_GameCorner
+from the tile read at 6,6 of CeladonCity_GameCorner
+from the tile read at 6,7 of CeladonCity_GameCorner
+from the tile read at 6,9 of CeladonCity_GameCorner
+way -
+  > A slot machine. Without a Coin Case there is nothing to play with.
+=== celadon_city_game_corner_prize_room.Prizes
+from Clerk at 2,2 of CeladonCity_GameCorner_PrizeRoom
+from Clerk at 4,2 of CeladonCity_GameCorner_PrizeRoom
+from Clerk at 6,2 of CeladonCity_GameCorner_PrizeRoom
+way -
+  Clerk> Prizes are exchanged for coins. You'll need a Coin Case first.
+=== celadon_city_gym.Erika
+from Erika at 6,4 of CeladonCity_Gym
+way 0
+  Erika> Hello... Lovely weather, isn't it? I must have dozed off in the sunshine.
+  Erika> I'm Erika, the Leader of this Gym. I study flower arranging, and my Pokémon are all of the Grass type.
+  Erika> Oh, you want to battle me? Very well. I shan't lose, though.
+  Erika> Oh... I concede. You are remarkably strong. Please, take the Rainbow Badge.
+  > Lucas received the Rainbow Badge from Erika!
+  Erika> With the Rainbow Badge, your Pokémon can use Strength outside of battle, to push heavy boulders.
+  Erika> Please accept this as well. It's a move I'm very fond of.
+  > Lucas received the TM19!
+  > TM19 holds the move Giga Drain.
+  > Lucas put it away in the TMs & HMs pocket.
+  Erika> TM19 is Giga Drain. It takes the foe's strength and gives half of it back to your Pokémon.
+  * scene celadon_city_gym.Erika
+  * battle kanto_leader_erika Won
+  * fanfare FanfareBadge
+  * defeat kanto_lass_kay
+  * defeat kanto_lass_lisa
+  * defeat kanto_picnicker_tina
+  * defeat kanto_beauty_bridget
+  * defeat kanto_beauty_tamia
+  * defeat kanto_beauty_lori
+  * defeat kanto_cooltrainer_mary
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_ERIKA
+  + FLAG_GOT_TM19_FROM_ERIKA
+  + beaten kanto_beauty_bridget
+  + beaten kanto_beauty_lori
+  + beaten kanto_beauty_tamia
+  + beaten kanto_cooltrainer_mary
+  + beaten kanto_lass_kay
+  + beaten kanto_lass_lisa
+  + beaten kanto_leader_erika
+  + beaten kanto_picnicker_tina
+  = badges Kanto 0 -> 1000
+  + seen celadon_city_gym.Erika
+way 1, from answer 1
+  * battle kanto_leader_erika Lost
+  * scene over, unseen
+=== celadon_city_gym.Statue
+from the tile read at 4,16 of CeladonCity_Gym
+from the tile read at 8,16 of CeladonCity_Gym
+way -
+  > Celadon City Pokémon Gym. Leader: Erika. Winning trainers: Barry.
+=== celadon_city_restaurant.CoinCaseMan
+from Man at 1,2 of CeladonCity_Restaurant
+way -
+  Man> Hic! I lost every last coin at the slots. I'm finished with gambling, I tell you!
+  Man> Here, you take this. I don't want to look at it ever again.
+  > Lucas received the Coin Case!
+  > Lucas put it away in the Key Items pocket.
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_COIN_CASE
 === celestic_town.Elder
 from Elder at 462,538 of Sinnoh
 way -
@@ -9122,6 +9287,16 @@ way -
   Prof. Rowan> Lucas? What brings you here? There is no sign of the lake's Pokémon. Not a ripple.
   Prof. Rowan> And how was Lake Valor? You have been there, I trust?
   + FLAG_TALKED_TO_LAKE_VERITY_LOW_WATER_PROF_ROWAN
+=== lavender_town_volunteer_pokemon_house.MrFuji
+from Mr. Fuji at 3,3 of LavenderTown_VolunteerPokemonHouse
+way -
+  Mr. Fuji> I'm Mr. Fuji. I look after Pokémon who have lost their trainers. Thank you for coming for me.
+  Mr. Fuji> Please take this. It is a Poké Flute. Its tune will wake any Pokémon from even the deepest sleep.
+  > Lucas received the Poké Flute!
+  > Lucas put it away in the Key Items pocket.
+  Mr. Fuji> There's a huge Pokémon asleep on the road, I hear. The flute should rouse it.
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_POKE_FLUTE
 === littleroot_town.GoSaveBirch
 from the trigger at 131,283 of Hoenn
 way -
@@ -9905,6 +10080,54 @@ from the trigger at 12,16 of PokemonTower_6F
 way -
   Ghost> Be... gone... Intruders... be... gone...
   > The ghost can't be made out. Without some way of seeing it, there's no going on.
+=== pokemon_tower_7f.Grunt1
+from Grunt at 9,10 of PokemonTower_7F
+way 0
+  Grunt> Team Rocket Grunt: What do you want? This old man is our business!
+  Grunt> Team Rocket Grunt: Grr... you'll be sorry for this!
+  * battle kanto_team_rocket_grunt_19 Won
+  * fade out
+  * fade in
+  + FLAG_HIDE_TOWER_ROCKET_1
+  + beaten kanto_team_rocket_grunt_19
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_19 Lost
+=== pokemon_tower_7f.Grunt2
+from Grunt at 13,8 of PokemonTower_7F
+way 0
+  Grunt> Team Rocket Grunt: Go home, kid! Team Rocket is busy here!
+  Grunt> Team Rocket Grunt: Ugh, we'll get you back!
+  * battle kanto_team_rocket_grunt_20 Won
+  * fade out
+  * fade in
+  + FLAG_HIDE_TOWER_ROCKET_2
+  + beaten kanto_team_rocket_grunt_20
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_20 Lost
+=== pokemon_tower_7f.Grunt3
+from Grunt at 9,6 of PokemonTower_7F
+way 0
+  Grunt> Team Rocket Grunt: The old man's been nothing but trouble. And now you!
+  Grunt> Team Rocket Grunt: This isn't over!
+  * battle kanto_team_rocket_grunt_21 Won
+  * fade out
+  * fade in
+  + FLAG_HIDE_TOWER_ROCKET_3
+  + beaten kanto_team_rocket_grunt_21
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_21 Lost
+=== pokemon_tower_7f.MrFuji
+from Mr. Fuji at 11,4 of PokemonTower_7F
+way -
+  Mr. Fuji> Heh... You have come a long way to find an old man. Thank you, young one.
+  Mr. Fuji> Team Rocket wanted me to keep quiet about the Marowak they struck down. You have freed me, and her spirit too.
+  Mr. Fuji> Come with me to my home, won't you? I would like to thank you properly.
+  * scene pokemon_tower_7f.Mr Fuji
+  * warp LavenderTown_VolunteerPokemonHouse 4 6
+  * endscene
+  + FLAG_HIDE_TOWER_FUJI
+  + FLAG_RESCUED_MR_FUJI
+  + seen pokemon_tower_7f.Mr Fuji
 === resort_area.Byron
 from Byron at 823,473 of Sinnoh
 way 0
@@ -9999,6 +10222,75 @@ way 0
 way 1, from answer 1
   Youngster> Oh well. I'll be here, practising.
   ? I've been practising a move that brings the rocks down. Want me to teach Rock Slide to one of your Pokémon? = No
+=== rocket_hideout_b4f.Barrier
+from Barrier at 17,12 of RocketHideout_B4F
+from Barrier at 17,13 of RocketHideout_B4F
+from Barrier at 18,12 of RocketHideout_B4F
+from Barrier at 18,13 of RocketHideout_B4F
+way -
+  > A barrier of light blocks the way. Its switch must be under guard.
+=== rocket_hideout_b4f.DoorGrunt
+from Grunt at 16,14 of RocketHideout_B4F
+way 0
+  Grunt> Team Rocket Grunt: The boss's office is through here, and you're not going in!
+  > A barrier of light blocks the way. Its switch must be under guard.
+  * battle kanto_team_rocket_grunt_16 Won
+  + beaten kanto_team_rocket_grunt_16
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_16 Lost
+from Grunt at 19,14 of RocketHideout_B4F
+way 0
+  Grunt> Team Rocket Grunt: Nobody gets past this door. The boss is busy!
+  > A barrier of light blocks the way. Its switch must be under guard.
+  * battle kanto_team_rocket_grunt_17 Won
+  + beaten kanto_team_rocket_grunt_17
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_17 Lost
+=== rocket_hideout_b4f.Giovanni
+from Giovanni at 19,4 of RocketHideout_B4F
+way 0
+  Giovanni> So. You've come all the way down here. I'm impressed that a child could find our hideout at all.
+  Giovanni> Team Rocket captures Pokémon from around the world. They're tools for making us rich, nothing more.
+  Giovanni> And you, child, are in my way. I'm Giovanni, and I'll teach you the price of meddling!
+  Giovanni> What?! This can't be! You've put me in my place, I see.
+  Giovanni> I'll leave this hideout to you. But remember: Team Rocket isn't finished. We'll meet again!
+  * scene rocket_hideout_b4f.Giovanni
+  * music kanto/eye_galactic
+  * battle kanto_boss_giovanni Won
+  * fade out
+  * fade in
+  * music area
+  * endscene
+  + FLAG_DEFEATED_ROCKET_HIDEOUT_GIOVANNI
+  + FLAG_HIDE_CELADON_ROCKETS
+  + FLAG_HIDE_HIDEOUT_GIOVANNI
+  + beaten kanto_boss_giovanni
+  + seen rocket_hideout_b4f.Giovanni
+way 1, from answer 1
+  * battle kanto_boss_giovanni Lost
+  * scene over, unseen
+=== rocket_hideout_b4f.KeyGrunt
+from Grunt at 4,2 of RocketHideout_B4F
+way 0
+  Grunt> Team Rocket Grunt: The Lift Key? It's right here. Come and take it, if you dare!
+  Grunt> Team Rocket Grunt: Oh no! I dropped the Lift Key!
+  * battle kanto_team_rocket_grunt_18 Won
+  + FLAG_ROCKET_HIDEOUT_LIFT_KEY_DROPPED
+  + beaten kanto_team_rocket_grunt_18
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_18 Lost
+=== rocket_hideout_b4f.LiftKey
+from Lift Key at 3,2 of RocketHideout_B4F
+way -
+  > The Lift Key! The grunt beside it won't let anyone near it.
+=== rocket_hideout_b4f.SilphScope
+from Silph Scope at 20,5 of RocketHideout_B4F
+way -
+  > A strange scope on Giovanni's desk. Not with him standing right there!
+=== rocket_hideout_elevator.Panel
+from the tile read at 0,2 of RocketHideout_Elevator
+way -
+  > The lift's panel won't respond. It needs a key to work.
 === route_101.BirchInTrouble
 from the trigger at 130,281 of Hoenn
 from the trigger at 131,281 of Hoenn
@@ -10063,6 +10355,25 @@ way 1, from answer 1
 from Aide at 12,5 of Route10_PokemonCenter_1F
 way -
   Aide> I'm studying the Pokémon of Rock Tunnel for Professor Oak.
+=== route_12.Snorlax
+from Snorlax at 398,220 of Kanto
+way -
+  > A sleeping Pokémon blocks the way. It's snoring soundly.
+=== route_16.Snorlax
+from Snorlax at 163,143 of Kanto
+way -
+  > A sleeping Pokémon blocks the way. It's snoring soundly.
+=== route_16_house.Woman
+from Woman at 4,2 of Route16_House
+way -
+  Woman> Oh! You found my little hideaway. Not many people make it this far.
+  Woman> My Fearow and I fly everywhere together. You ought to try it. Here, take this!
+  > Lucas received the HM02!
+  > HM02 holds the move Fly.
+  > Lucas put it away in the TMs & HMs pocket.
+  Woman> HM02 is Fly. A Pokémon that knows it can carry you to any town you've been to before.
+  * fanfare FanfareTM
+  + FLAG_GOT_HM02
 === route_201.Briefcase
 from Professor's Briefcase at 112,854 of Sinnoh
 way 0.0
@@ -10835,6 +11146,26 @@ way 0
 way 1, from answer 1
   Man> No? Your loss. Pokémon like this don't come along every day.
   ? Just ¥500 and this Magikarp is yours. How about it? = No
+=== route_5_south_entrance.Guard
+from the trigger at 3,5 of Route5_SouthEntrance
+from the trigger at 4,5 of Route5_SouthEntrance
+from the trigger at 5,5 of Route5_SouthEntrance
+way -
+  Guard> Hold it! I'm so thirsty I can hardly think. Nobody gets through until I've had a drink.
+=== route_5_south_entrance.GuardTalk
+from Guard at 1,5 of Route5_SouthEntrance
+way -
+  Guard> Hi, how's it going? Saffron City's closed for now, I'm afraid.
+=== route_6_north_entrance.Guard
+from the trigger at 3,5 of Route6_NorthEntrance
+from the trigger at 4,5 of Route6_NorthEntrance
+from the trigger at 5,5 of Route6_NorthEntrance
+way -
+  Guard> Sorry, no one gets past. I've been on duty all day without a drop to drink!
+=== route_6_north_entrance.GuardTalk
+from Guard at 7,5 of Route6_NorthEntrance
+way -
+  Guard> Saffron City's closed to everyone for the time being. I don't know why.
 === route_7_east_entrance.Guard
 from the trigger at 6,4 of Route7_EastEntrance
 from the trigger at 6,5 of Route7_EastEntrance
@@ -10907,6 +11238,108 @@ way 0
 way 1, from answer 1
   > The pieces lie where they were.
   ? Try to put the picture back together? = No
+=== saffron_city.DoorGuard
+from Grunt at 288,144 of Kanto
+way -
+  Grunt> Silph Co. is closed today. Team Rocket's orders! Now beat it, kid!
+=== saffron_city_dojo.Hitmonchan
+from Poké Ball at 7,3 of SaffronCity_Dojo
+way -
+  > A Poké Ball on the dais. It's the Dojo's prize, for whoever beats the master.
+=== saffron_city_dojo.Hitmonlee
+from Poké Ball at 5,3 of SaffronCity_Dojo
+way -
+  > A Poké Ball on the dais. It's the Dojo's prize, for whoever beats the master.
+=== saffron_city_dojo.Master
+from Koichi at 6,5 of SaffronCity_Dojo
+way 0
+  Koichi> Karate Master Koichi: Hwaaah! You dare challenge the Fighting Dojo?
+  Koichi> Hwa! You have beaten me fairly. As is the custom, you may take one of the Pokémon on the dais.
+  * scene saffron_city_dojo.Dojo
+  * battle kanto_black_belt_koichi Won
+  * endscene
+  = VAR_MAP_SCENE_SAFFRON_CITY_DOJO 0 -> 1
+  + beaten kanto_black_belt_koichi
+  + seen saffron_city_dojo.Dojo
+way 1, from answer 1
+  * battle kanto_black_belt_koichi Lost
+  * scene over, unseen
+=== saffron_city_dojo.MasterTrigger
+from the trigger at 5,5 of SaffronCity_Dojo
+from the trigger at 7,5 of SaffronCity_Dojo
+way 0
+  Koichi> Hwaaah! You have beaten my students. Now face the master of the Fighting Dojo!
+  Koichi> Hwa! You have beaten me fairly. As is the custom, you may take one of the Pokémon on the dais.
+  * scene saffron_city_dojo.The Dojo master
+  * battle kanto_black_belt_koichi Won
+  * endscene
+  = VAR_MAP_SCENE_SAFFRON_CITY_DOJO 0 -> 1
+  + beaten kanto_black_belt_koichi
+  + seen saffron_city_dojo.The Dojo master
+way 1, from answer 1
+  * battle kanto_black_belt_koichi Lost
+  * scene over, unseen
+=== saffron_city_gym.GymGuy
+from Gym Guide at 15,20 of SaffronCity_Gym
+way -
+  Gym Guide> Yo, champ in the making! Sabrina's Psychic Pokémon are tough. Bug and Ghost moves hit them hard.
+  Gym Guide> The pads on the floor warp you between rooms. Find the right ones and you'll reach her!
+=== saffron_city_gym.Sabrina
+from Sabrina at 14,11 of SaffronCity_Gym
+way 0
+  Sabrina> I knew you would come. I had a vision of your arrival, three years ago.
+  Sabrina> Psychic power has been mine since I was a child. I don't enjoy battling, but if you insist...
+  Sabrina> Very well. I'll show you my powers!
+  Sabrina> This loss... It shocks me. But I won't deny it. Take the Marsh Badge.
+  > Lucas received the Marsh Badge from Sabrina!
+  Sabrina> With the Marsh Badge, your Pokémon can use Rock Smash outside of battle.
+  Sabrina> And please take this TM. Its move suits someone of strong mind.
+  > Lucas received the TM04!
+  > TM04 holds the move Calm Mind.
+  > Lucas put it away in the TMs & HMs pocket.
+  Sabrina> TM04 is Calm Mind. It quiets the mind, raising both Special Attack and Special Defense.
+  * scene saffron_city_gym.Sabrina
+  * battle kanto_leader_sabrina Won
+  * fanfare FanfareBadge
+  * defeat kanto_psychic_cameron
+  * defeat kanto_psychic_johan
+  * defeat kanto_psychic_preston
+  * defeat kanto_psychic_tyron
+  * defeat kanto_channeler_amanda
+  * defeat kanto_channeler_stacy
+  * defeat kanto_channeler_tasha
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_SABRINA
+  + FLAG_GOT_TM04_FROM_SABRINA
+  + beaten kanto_channeler_amanda
+  + beaten kanto_channeler_stacy
+  + beaten kanto_channeler_tasha
+  + beaten kanto_leader_sabrina
+  + beaten kanto_psychic_cameron
+  + beaten kanto_psychic_johan
+  + beaten kanto_psychic_preston
+  + beaten kanto_psychic_tyron
+  = badges Kanto 0 -> 100000
+  + seen saffron_city_gym.Sabrina
+way 1, from answer 1
+  * battle kanto_leader_sabrina Lost
+  * scene over, unseen
+=== saffron_city_gym.Statue
+from the tile read at 12,20 of SaffronCity_Gym
+from the tile read at 16,20 of SaffronCity_Gym
+way -
+  > Saffron City Pokémon Gym. Leader: Sabrina. Winning trainers: Barry.
+=== saffron_city_mr_psychics_house.MrPsychic
+from Mr. Psychic at 7,4 of SaffronCity_MrPsychicsHouse
+way -
+  Mr. Psychic> ...Wait! Don't say a word! You came here wanting this. I knew it before you knocked.
+  > Lucas received the TM29!
+  > TM29 holds the move Psychic.
+  > Lucas put it away in the TMs & HMs pocket.
+  Mr. Psychic> TM29 is Psychic. It strikes with the mind, and it may lower the foe's Special Defense.
+  * fanfare FanfareTM
+  + FLAG_GOT_TM29_FROM_MR_PSYCHIC
 === sandgem_town.Counterpart
 from {assistant} at 168,845 of Sinnoh
 way -
@@ -10940,6 +11373,261 @@ way -
 from Cynthia at 31,17 of SendoffSpring
 way -
   Cynthia> Go on. Tell Professor Rowan what you saw. I'd like to stay here a while and think about it.
+=== silph_co_10f.Door
+from Locked door at 12,11 of SilphCo_10F
+from Locked door at 12,12 of SilphCo_10F
+from Locked door at 13,11 of SilphCo_10F
+from Locked door at 13,12 of SilphCo_10F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_11f.Door
+from Locked door at 5,16 of SilphCo_11F
+from Locked door at 5,17 of SilphCo_11F
+from Locked door at 6,16 of SilphCo_11F
+from Locked door at 6,17 of SilphCo_11F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_11f.Giovanni
+from the trigger at 5,15 of SilphCo_11F
+from the trigger at 6,15 of SilphCo_11F
+way 0
+  Giovanni> Ah, it's you again. We meet once more. The president and I are discussing a business deal.
+  Giovanni> Silph Co. will hand over its Master Ball to Team Rocket, and you will keep out of it.
+  Giovanni> Or will you? Very well. I'll make sure you never interfere again!
+  Giovanni> Arrgh! I lose again?! Blast it all... You ruined our plans for Silph Co.
+  Giovanni> But Team Rocket will never fall! I'll be waiting for you, child. Remember that.
+  * scene silph_co_11f.Giovanni at Silph
+  * music kanto/eye_galactic
+  * battle kanto_boss_giovanni_2 Won
+  * fade out
+  * fade in
+  * music area
+  * endscene
+  + FLAG_HIDE_SAFFRON_ROCKETS
+  + FLAG_HIDE_SILPH_ROCKETS
+  = VAR_MAP_SCENE_SILPH_CO_11F 0 -> 1
+  + beaten kanto_boss_giovanni_2
+  + seen silph_co_11f.Giovanni at Silph
+way 1, from answer 1
+  * battle kanto_boss_giovanni_2 Lost
+  * scene over, unseen
+=== silph_co_11f.President
+from President at 9,9 of SilphCo_11F
+way -
+  President> Thank you, my young friend! You saved Silph Co. from Team Rocket. I can't thank you enough.
+  President> Please accept this as a token of our gratitude. You won't find another anywhere.
+  > Lucas received the Master Ball!
+  > Lucas put it away in the Poké Balls pocket.
+  President> That's our secret prototype, the Master Ball. It will catch any wild Pokémon without fail.
+  * fanfare FanfareItem
+  + FLAG_GOT_MASTER_BALL_FROM_SILPH
+=== silph_co_2f.Door1
+from Locked door at 5,8 of SilphCo_2F
+from Locked door at 5,9 of SilphCo_2F
+from Locked door at 6,8 of SilphCo_2F
+from Locked door at 6,9 of SilphCo_2F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_2f.Door2
+from Locked door at 5,15 of SilphCo_2F
+from Locked door at 5,16 of SilphCo_2F
+from Locked door at 6,15 of SilphCo_2F
+from Locked door at 6,16 of SilphCo_2F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_3f.Door1
+from Locked door at 10,12 of SilphCo_3F
+from Locked door at 10,13 of SilphCo_3F
+from Locked door at 9,12 of SilphCo_3F
+from Locked door at 9,13 of SilphCo_3F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_3f.Door2
+from Locked door at 20,12 of SilphCo_3F
+from Locked door at 20,13 of SilphCo_3F
+from Locked door at 21,12 of SilphCo_3F
+from Locked door at 21,13 of SilphCo_3F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_4f.Door1
+from Locked door at 3,16 of SilphCo_4F
+from Locked door at 3,17 of SilphCo_4F
+from Locked door at 4,16 of SilphCo_4F
+from Locked door at 4,17 of SilphCo_4F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_4f.Door2
+from Locked door at 14,11 of SilphCo_4F
+from Locked door at 14,12 of SilphCo_4F
+from Locked door at 15,11 of SilphCo_4F
+from Locked door at 15,12 of SilphCo_4F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_5f.Door1
+from Locked door at 7,10 of SilphCo_5F
+from Locked door at 7,9 of SilphCo_5F
+from Locked door at 8,10 of SilphCo_5F
+from Locked door at 8,9 of SilphCo_5F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_5f.Door2
+from Locked door at 7,18 of SilphCo_5F
+from Locked door at 7,19 of SilphCo_5F
+from Locked door at 8,18 of SilphCo_5F
+from Locked door at 8,19 of SilphCo_5F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_5f.Door3
+from Locked door at 18,13 of SilphCo_5F
+from Locked door at 18,14 of SilphCo_5F
+from Locked door at 19,13 of SilphCo_5F
+from Locked door at 19,14 of SilphCo_5F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_6f.Door
+from Locked door at 5,15 of SilphCo_6F
+from Locked door at 5,16 of SilphCo_6F
+from Locked door at 6,15 of SilphCo_6F
+from Locked door at 6,16 of SilphCo_6F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_7f.Door1
+from Locked door at 11,8 of SilphCo_7F
+from Locked door at 11,9 of SilphCo_7F
+from Locked door at 12,8 of SilphCo_7F
+from Locked door at 12,9 of SilphCo_7F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_7f.Door2
+from Locked door at 24,7 of SilphCo_7F
+from Locked door at 24,8 of SilphCo_7F
+from Locked door at 25,7 of SilphCo_7F
+from Locked door at 25,8 of SilphCo_7F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_7f.Door3
+from Locked door at 25,13 of SilphCo_7F
+from Locked door at 25,14 of SilphCo_7F
+from Locked door at 26,13 of SilphCo_7F
+from Locked door at 26,14 of SilphCo_7F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_7f.LaprasGuy
+from Worker at 0,7 of SilphCo_7F
+way -
+  Worker> Thank goodness you're here! Team Rocket nearly took this one. Please, take it somewhere safe.
+  > Lucas received a Lapras!
+  Worker> It's a Lapras. It's very smart, and it'll carry you across the water, too.
+  * fanfare FanfarePokemon
+  + FLAG_GOT_LAPRAS_FROM_SILPH
+=== silph_co_7f.Rival
+from {rival} at 2,6 of SilphCo_7F
+way -
+  Barry> Huh? Don't just stand there gawking. Come on!
+=== silph_co_7f.RivalTrigger
+from the trigger at 2,4 of SilphCo_7F
+from the trigger at 2,5 of SilphCo_7F
+way 0
+  Barry> What kept you, Lucas? I've been up here for ages. Team Rocket's made a real mess of this place.
+  Barry> I came to see the president, but first let's see if you've been training. Here I come!
+  Barry> Tch. Not bad. Team Rocket's boss is upstairs, you know. Think you can handle him? I doubt it!
+  Barry> I'm off. Smell you later, Lucas!
+  * scene silph_co_7f.The rival at Silph
+  * music kanto/rival
+  * emote {rival} Exclaim
+  * battle kanto_rival_silph_bulbasaur Won
+  * music kanto/rival
+  * fade out
+  * fade in
+  * music area
+  * endscene
+  + FLAG_HIDE_SILPH_RIVAL
+  = VAR_MAP_SCENE_SILPH_CO_7F 0 -> 1
+  + beaten kanto_rival_silph_bulbasaur
+  + seen silph_co_7f.The rival at Silph
+way 1, from answer 1
+  * battle kanto_rival_silph_bulbasaur Lost
+  * scene over, unseen
+=== silph_co_8f.Door
+from Locked door at 5,10 of SilphCo_8F
+from Locked door at 5,11 of SilphCo_8F
+from Locked door at 6,10 of SilphCo_8F
+from Locked door at 6,11 of SilphCo_8F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_9f.Door1
+from Locked door at 2,10 of SilphCo_9F
+from Locked door at 2,11 of SilphCo_9F
+from Locked door at 3,10 of SilphCo_9F
+from Locked door at 3,11 of SilphCo_9F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_9f.Door2
+from Locked door at 12,16 of SilphCo_9F
+from Locked door at 12,17 of SilphCo_9F
+from Locked door at 13,16 of SilphCo_9F
+from Locked door at 13,17 of SilphCo_9F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_9f.Door3
+from Locked door at 21,6 of SilphCo_9F
+from Locked door at 21,7 of SilphCo_9F
+from Locked door at 22,6 of SilphCo_9F
+from Locked door at 22,7 of SilphCo_9F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_9f.Door4
+from Locked door at 21,12 of SilphCo_9F
+from Locked door at 21,13 of SilphCo_9F
+from Locked door at 22,12 of SilphCo_9F
+from Locked door at 22,13 of SilphCo_9F
+way -
+  > The door is locked. It takes a card to open it.
+=== silph_co_9f.HealWoman
+from Woman at 2,16 of SilphCo_9F
+way -
+  Woman> You look worn out! Your Pokémon should take a quick nap. Here, let them rest a moment.
+  Woman> There. Don't give up now!
+  * fade out
+  * fanfare FanfareHeal
+  * fade in
+=== silph_co_elevator.Panel
+from the tile read at 0,2 of SilphCo_Elevator
+way 0
+  > Which floor?
+  ? Which floor? = 1F
+  * warp SilphCo_1F 22 4
+  = VAR_SILPH_CO_LIFT_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 1
+way 5, from answer 1
+  ? Which floor? = Stay here
+  = VAR_SILPH_CO_LIFT_FLOOR 0 -> 1
+way 4.0, from answer 1
+  > Which floor?
+  ? Which floor? = Higher
+  ? Which floor? = 5F
+  * anim elevator up 4
+  * warp SilphCo_5F 22 4
+  = VAR_SILPH_CO_LIFT_FLOOR 0 -> 5
+  = VAR_TEMP_1 0 -> 5
+way 3, from answer 1
+  ? Which floor? = 4F
+  * anim elevator up 4
+  * warp SilphCo_4F 22 4
+  = VAR_SILPH_CO_LIFT_FLOOR 0 -> 4
+  = VAR_TEMP_1 0 -> 4
+way 2, from answer 1
+  ? Which floor? = 3F
+  * anim elevator up 4
+  * warp SilphCo_3F 22 4
+  = VAR_SILPH_CO_LIFT_FLOOR 0 -> 3
+  = VAR_TEMP_1 0 -> 3
+way 1, from answer 1
+  ? Which floor? = 2F
+  * anim elevator up 4
+  * warp SilphCo_2F 22 4
+  = VAR_SILPH_CO_LIFT_FLOOR 0 -> 2
+  = VAR_TEMP_1 0 -> 2
 === snowpoint_city.Candice
 from Candice at 366,208 of Sinnoh
 way -

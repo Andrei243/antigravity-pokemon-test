@@ -900,4 +900,342 @@ public class KantoStoryTests
         Assert.Equal(given ? 1 : 0, game.Bag.GetQuantity(ItemDatabase.Get("Everstone")!));
         Assert.Equal(given, game.Story.Has("FLAG_GOT_EVERSTONE_FROM_OAKS_AIDE"));
     }
+
+    // ---------------------------------------------------------------- plan 19 · K5, part b
+
+    private int Count(Game game, string item) => game.Bag.GetQuantity(ItemDatabase.Get(item)!);
+
+    [Theory]
+    [InlineData("Route5_SouthEntrance", 0, -1)]
+    [InlineData("Route6_NorthEntrance", 0, 1)]
+    public void TheGatesOfRoutesFiveAndSixAreThirstyToo(string gate, int dx, int dy)
+    {
+        var game = PastPewter();
+        game.Arrive(gate, 4, 5);
+        foreach (var step in game.Map.Triggers.Where(t => t.Script == "Guard").ToList())
+        {
+            game.Tile = (step.X, step.Y);
+            game.Play(Scripts.Find("Guard", step.ScriptFile!)!);
+            Assert.Equal((step.X + dx, step.Y + dy), game.Tile);
+        }
+    }
+
+    [Theory]
+    [InlineData("Route5_SouthEntrance")]
+    [InlineData("Route6_NorthEntrance")]
+    [InlineData("Route7_EastEntrance")]
+    [InlineData("Route8_WestEntrance")]
+    public void CeladonsTeaOpensEverySaffronGate(string gate)
+    {
+        var game = PastPewter();
+        game.Arrive("CeladonCity_Condominiums_1F", 2, 10);
+        game.Talk("old_woman");
+        Assert.Equal(1, Count(game, "Tea"));
+        Assert.True(game.Story.Has("FLAG_GOT_TEA"));
+        game.Talk("old_woman");
+        Assert.Equal(1, Count(game, "Tea"));
+        game.Arrive(gate, 4, 5);
+        var step = game.Map.Triggers.First(t => t.Script == "Guard");
+        game.Tile = (step.X, step.Y);
+        game.Play(Scripts.Find("Guard", step.ScriptFile!)!);
+        Assert.Equal((step.X, step.Y), game.Tile);
+        Assert.Equal(0, Count(game, "Tea"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES"));
+        // and the four gates' steps are dead from then on
+        foreach (string other in new[] { "Route5_SouthEntrance", "Route6_NorthEntrance", "Route7_EastEntrance", "Route8_WestEntrance" })
+        {
+            game.Arrive(other, 4, 5);
+            Assert.False(game.Fires("Guard"));
+        }
+    }
+
+    [Fact]
+    public void ErikaGivesTheRainbowBadgeAndTmNineteenAndStrengthsGateOpens()
+    {
+        var game = PastPewter();
+        game.Arrive("CeladonCity_Gym", 6, 16);
+        var erika = game.Talk("erika");
+        Assert.Contains(erika.Log, l => l.StartsWith("battle kanto_leader_erika Won"));
+        Assert.True(game.Story.HasBadge("Kanto", "Rainbow"));
+        Assert.Equal(1, Count(game, "TM19"));
+        foreach (string id in new[] { "kanto_lass_kay", "kanto_lass_lisa", "kanto_picnicker_tina", "kanto_beauty_bridget", "kanto_beauty_tamia", "kanto_beauty_lori", "kanto_cooltrainer_mary" })
+            Assert.True(game.Story.HasDefeated(id), id);
+        Assert.Equal("Rainbow", FieldMoveRules.BadgeFor(FieldMove.Strength, "Kanto"));
+        Assert.DoesNotContain(game.Talk("erika").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, Count(game, "TM19"));
+    }
+
+    [Fact]
+    public void TheGameCornersGruntGuardsThePosterAndItsSwitchOpensTheStairsDown()
+    {
+        var game = PastPewter();
+        game.Arrive("CeladonCity_GameCorner", 10, 12);
+        var stairs = game.Map.Warps.Single(w => w.TargetMap == "RocketHideout_B1F");
+        Assert.True(stairs.Shut);
+        // The poster while he guards it
+        game.Tile = (11, 2);
+        var read = game.Play(Scripts.Find("Poster", "celadon_city_game_corner")!);
+        Assert.False(game.Story.Has("FLAG_OPENED_ROCKET_HIDEOUT"));
+        var grunt = game.Talk("game_corner_grunt");
+        Assert.Contains(grunt.Log, l => l.StartsWith("battle kanto_team_rocket_grunt_7 Won"));
+        Assert.True(game.Story.Has("FLAG_HIDE_GAME_CORNER_ROCKET"));
+        Assert.Null(game.Present("game_corner_grunt"));
+        game.Answers.Enqueue(0);
+        game.Tile = (11, 2);
+        game.Play(Scripts.Find("Poster", "celadon_city_game_corner")!);
+        Assert.True(game.Story.Has("FLAG_OPENED_ROCKET_HIDEOUT"));
+        Assert.False(stairs.Shut);
+        // The restaurant's man gives his Coin Case, once
+        game.Arrive("CeladonCity_Restaurant", 2, 4);
+        game.Talk("balding_man");
+        game.Talk("balding_man");
+        Assert.Equal(1, Count(game, "Coin Case"));
+    }
+
+    [Fact]
+    public void TheHideoutsLiftKeyBarrierAndGiovanniGiveUpTheSilphScope()
+    {
+        var game = PastPewter();
+        game.Arrive("RocketHideout_B4F", 11, 16);
+        game.Talk("silph_scope");
+        Assert.Equal(0, Count(game, "Silph Scope"));
+        Assert.Equal(4, game.Map.NPCs.Count(n => n.NpcType == NPC.ElectricGateType));
+        // The key lies beside its grunt, who won't let it go until beaten
+        game.Talk("lift_key");
+        Assert.Equal(0, Count(game, "Lift Key"));
+        game.Talk("rocket_m");
+        Assert.True(game.Story.Has("FLAG_ROCKET_HIDEOUT_LIFT_KEY_DROPPED"));
+        game.Talk("lift_key");
+        Assert.Equal(1, Count(game, "Lift Key"));
+        Assert.True(game.Story.Has("FLAG_CAN_USE_ROCKET_HIDEOUT_LIFT"));
+        // The barrier holds until both its grunts are beaten
+        game.Talk("rocket_m_2");
+        Assert.False(game.Story.Has("FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN"));
+        game.Talk("rocket_m_3");
+        Assert.True(game.Story.Has("FLAG_ROCKET_HIDEOUT_B4F_BARRIER_OPEN"));
+        Assert.Equal(0, game.Map.NPCs.Count(n => n.NpcType == NPC.ElectricGateType));
+        var boss = game.Talk("hideout_giovanni");
+        Assert.Contains(boss.Log, l => l.StartsWith("battle kanto_boss_giovanni Won"));
+        Assert.True(game.Story.Has("FLAG_HIDE_CELADON_ROCKETS"));
+        Assert.Null(game.Present("hideout_giovanni"));
+        Assert.NotNull(game.Present("silph_scope"));
+        game.Talk("silph_scope");
+        Assert.Equal(1, Count(game, "Silph Scope"));
+        Assert.Null(game.Present("silph_scope"));
+    }
+
+    [Fact]
+    public void TheHideoutsLiftTakesNobodyWithoutItsKeyAndRidesWithIt()
+    {
+        var game = PastPewter();
+        game.Arrive("RocketHideout_Elevator", 1, 3);
+        game.Tile = (0, 3);
+        var panel = game.Play(Scripts.Find("Panel", "rocket_hideout_elevator")!);
+        Assert.DoesNotContain(panel.Log, l => l.StartsWith("warp"));
+        game.Story.Set("FLAG_CAN_USE_ROCKET_HIDEOUT_LIFT");
+        game.Answers.Enqueue(2);
+        panel = game.Play(Scripts.Find("Panel", "rocket_hideout_elevator")!);
+        Assert.Contains("warp RocketHideout_B4F 20 24", panel.Log);
+        Assert.Equal(4, game.Story.Var("VAR_ROCKET_HIDEOUT_LIFT_FLOOR"));
+    }
+
+    [Theory]
+    [InlineData(BattleOutcome.Won, 1)]
+    [InlineData(BattleOutcome.Fled, 0)]
+    public void WithTheSilphScopeTheGhostIsMarowakAndBeatenItRests(BattleOutcome outcome, int scene)
+    {
+        var game = PastPewter();
+        game.Bag.AddItem(ItemDatabase.Get("Silph Scope")!, 1);
+        game.Arrive("PokemonTower_6F", 18, 10);
+        game.Fight = outcome;
+        var step = game.Map.Triggers.First(t => t.Script == "MarowakGhost");
+        game.Tile = (step.X, step.Y);
+        var ghost = game.Play(Scripts.Find("MarowakGhost", step.ScriptFile!)!);
+        Assert.Contains(ghost.Log, l => l.StartsWith("wildbattle Marowak 30"));
+        Assert.Equal(scene, game.Story.Var("VAR_MAP_SCENE_POKEMON_TOWER_6F"));
+        Assert.Equal(scene == 1 ? (step.X, step.Y) : (step.X, step.Y - 1), game.Tile);
+        Assert.Equal(scene == 0, game.Fires("MarowakGhost"));
+    }
+
+    [Fact]
+    public void MrFujiIsRescuedFromTheTowerTopAndGivesThePokeFluteAtHome()
+    {
+        var game = PastPewter();
+        game.Arrive("PokemonTower_7F", 11, 15);
+        foreach (var (key, flag) in new[] { ("pokemon_tower_grunt1", "FLAG_HIDE_TOWER_ROCKET_1"), ("pokemon_tower_grunt2", "FLAG_HIDE_TOWER_ROCKET_2"), ("pokemon_tower_grunt3", "FLAG_HIDE_TOWER_ROCKET_3") })
+        {
+            game.Talk(key);
+            Assert.True(game.Story.Has(flag));
+            Assert.Null(game.Present(key));
+        }
+        var fuji = game.Talk("mr_fuji");
+        Assert.Contains("warp LavenderTown_VolunteerPokemonHouse 4 6", fuji.Log);
+        Assert.True(game.Story.Has("FLAG_RESCUED_MR_FUJI"));
+        Assert.Equal("LavenderTown_VolunteerPokemonHouse", game.Map.Name);
+        Assert.NotNull(game.Present("mr_fuji"));
+        game.Talk("mr_fuji");
+        Assert.Equal(1, Count(game, "Poké Flute"));
+        game.Talk("mr_fuji");
+        Assert.Equal(1, Count(game, "Poké Flute"));
+        game.Arrive("PokemonTower_7F", 11, 15);
+        Assert.Null(game.Present("mr_fuji"));
+    }
+
+    [Theory]
+    [InlineData("route_12", "FLAG_HIDE_ROUTE_12_SNORLAX", 398, 221)]
+    [InlineData("route_16", "FLAG_HIDE_ROUTE_16_SNORLAX", 163, 144)]
+    public void TheSnorlaxSleepsUntilThePokeFluteWakesIt(string area, string flag, int x, int y)
+    {
+        var game = PastPewter();
+        game.Arrive("Kanto", x, y);
+        var snorlax = game.Map.NPCs.Single(n => n.Key == "snorlax" && game.Map.AreaAt(n.GridX, n.GridY)?.Key == area);
+        var asleep = game.Talk(snorlax);
+        Assert.DoesNotContain(asleep.Log, l => l.StartsWith("wildbattle"));
+        Assert.False(game.Story.Has(flag));
+        game.Bag.AddItem(ItemDatabase.Get("Poké Flute")!, 1);
+        game.Answers.Enqueue(0);
+        var woken = game.Talk(snorlax);
+        Assert.Contains(woken.Log, l => l.StartsWith("wildbattle Snorlax 30"));
+        Assert.True(game.Story.Has(flag));
+        Assert.DoesNotContain(game.Map.NPCs, n => n == snorlax);
+    }
+
+    [Fact]
+    public void RouteSixteensHouseGivesFlyAndKantosTownsAreOnItsMap()
+    {
+        var game = PastPewter();
+        game.Arrive("Route16_House", 4, 5);
+        game.Talk("woman_1");
+        game.Talk("woman_1");
+        Assert.Equal(1, Count(game, "HM02"));
+        Assert.True(game.Story.Has("FLAG_GOT_HM02"));
+        Assert.Equal("Thunder", FieldMoveRules.BadgeFor(FieldMove.Fly, "Kanto"));
+        var map = RegionMap.Of("Kanto")!;
+        foreach (string town in new[] { "pallet_town", "viridian_city", "pewter_city", "cerulean_city", "vermilion_city", "lavender_town", "celadon_city", "saffron_city" })
+            Assert.Contains(map.Blocks, b => b.Area.Key == town && b.Kind == RegionBlockKind.Town);
+        Assert.True(map.FlySpots.Count >= 11);
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void TheRivalWaitsInSilphCoAndBattlesWithTheStarterStrongAgainstThePlayers(int starter)
+    {
+        var game = PastPewter(starter);
+        string rivals = StoryState.RivalStarterFor(RegionDatabase.Get(RegionDatabase.Kanto)!.Starters[starter]);
+        game.Arrive("SilphCo_7F", 23, 4);
+        Assert.NotNull(game.Present("silph_co_rival"));
+        var scene = game.Step("RivalTrigger");
+        Assert.Contains($"battle kanto_rival_silph_{rivals.ToLowerInvariant()} Won", scene.Log);
+        Assert.True(game.Story.Has("FLAG_HIDE_SILPH_RIVAL"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_SILPH_CO_7F"));
+        Assert.False(game.Fires("RivalTrigger"));
+        game.Talk("worker_m");
+        Assert.Contains(game.Party.Members, p => p.Species.Name == "Lapras");
+        Assert.True(game.Story.Has("FLAG_GOT_LAPRAS_FROM_SILPH"));
+    }
+
+    [Fact]
+    public void SilphCosDoorsOpenToTheCardKeyAndGiovanniFreesSaffronForTheMasterBall()
+    {
+        var game = PastPewter();
+        game.Arrive("SilphCo_5F", 22, 4);
+        var door = game.Map.NPCs.First(n => n.Key == "door1_00");
+        game.Talk(door);
+        Assert.False(game.Story.Has("FLAG_SILPH_5F_DOOR_1"));
+        game.Bag.AddItem(ItemDatabase.Get("Card Key")!, 1);
+        game.Talk(door);
+        Assert.True(game.Story.Has("FLAG_SILPH_5F_DOOR_1"));
+        Assert.Null(game.Present("door1_00"));
+        // Every floor's doors are its things, gone with their flags
+        game.Arrive("SilphCo_9F", 24, 4);
+        Assert.Equal(16, game.Map.NPCs.Count(n => n.NpcType == NPC.GalacticDoorType));
+        // Giovanni at the top
+        game.Arrive("SilphCo_11F", 13, 4);
+        var boss = game.Step("Giovanni");
+        Assert.Contains(boss.Log, l => l.StartsWith("battle kanto_boss_giovanni_2 Won"));
+        Assert.True(game.Story.Has("FLAG_HIDE_SAFFRON_ROCKETS"));
+        Assert.False(game.Story.Has("FLAG_HIDE_SAFFRON_CIVILIANS"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_SILPH_CO_11F"));
+        Assert.Null(game.Present("silph_co_giovanni"));
+        game.Talk("old_man_2");
+        game.Talk("old_man_2");
+        Assert.Equal(1, Count(game, "Master Ball"));
+        // The Gym's door opens with Team Rocket gone
+        game.Arrive("Kanto", 300, 127);
+        Assert.False(game.Map.IsSolid(300, 125));
+    }
+
+    [Fact]
+    public void SaffronHoldsItsPeopleIndoorsAndItsGymShutWhileTeamRocketHoldsTheCity()
+    {
+        var game = PastPewter();
+        game.Arrive("Kanto", 288, 150);
+        Assert.True(game.Story.Has("FLAG_HIDE_SAFFRON_CIVILIANS"));
+        Assert.True(game.Map.IsSolid(300, 125));
+        var guard = game.Map.NPCs.Single(n => n.Key == "saffron_door_guard_grunt");
+        Assert.Equal((287, 144), (guard.GridX, guard.GridY));
+        Assert.Equal("saffron_city", game.Map.AreaAt(287, 143)?.Key);
+    }
+
+    [Fact]
+    public void SabrinaGivesTheMarshBadgeAndTmFour()
+    {
+        var game = PastPewter();
+        game.Arrive("SaffronCity_Gym", 14, 22);
+        var sabrina = game.Talk("sabrina");
+        Assert.Contains(sabrina.Log, l => l.StartsWith("battle kanto_leader_sabrina Won"));
+        Assert.True(game.Story.HasBadge("Kanto", "Marsh"));
+        Assert.Equal(1, Count(game, "TM04"));
+        Assert.True(game.Story.HasDefeated("kanto_psychic_tyron"));
+        Assert.Equal("Marsh", FieldMoveRules.BadgeFor(FieldMove.RockSmash, "Kanto"));
+    }
+
+    [Theory]
+    [InlineData("item_ball", "Hitmonlee")]
+    [InlineData("item_ball_2", "Hitmonchan")]
+    public void TheDojosMasterBattlesAtHisStepAndGivesOneOfItsTwo(string ball, string species)
+    {
+        var game = PastPewter();
+        game.Arrive("SaffronCity_Dojo", 6, 12);
+        game.Talk(ball);
+        Assert.DoesNotContain(game.Party.Members, p => p.Species.Name == species);
+        var master = game.Step("MasterTrigger");
+        Assert.Contains(master.Log, l => l.StartsWith("battle kanto_black_belt_koichi Won"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_SAFFRON_CITY_DOJO"));
+        game.Answers.Enqueue(0);
+        game.Talk(ball);
+        Assert.Contains(game.Party.Members, p => p.Species.Name == species);
+        string other = ball == "item_ball" ? "item_ball_2" : "item_ball";
+        game.Answers.Enqueue(0);
+        game.Talk(other);
+        Assert.Equal(2, game.Party.Members.Count);
+    }
+
+    [Fact]
+    public void ADepartmentStoreLiftRidesToTheFloorChosen()
+    {
+        var game = PastPewter();
+        game.Arrive("CeladonCity_DepartmentStore_Elevator", 2, 3);
+        game.Answers.Enqueue(0);
+        game.Tile = (0, 3);
+        var ride = game.Play(Scripts.Find("Panel", "celadon_city_department_store_elevator")!);
+        Assert.Contains("warp CeladonCity_DepartmentStore_5F 6 2", ride.Log);
+        Assert.Equal(5, game.Story.Var("VAR_ELEVATOR_FLOOR"));
+    }
+
+    [Fact]
+    public void TheMansionsEeveeAndMrPsychicsTm()
+    {
+        var game = PastPewter();
+        game.Arrive("CeladonCity_Condominiums_RoofRoom", 4, 6);
+        game.Answers.Enqueue(0);
+        game.Talk("eevee_pokeball");
+        Assert.Contains(game.Party.Members, p => p.Species.Name == "Eevee" && p.Level == 25);
+        Assert.Null(game.Present("eevee_pokeball"));
+        game.Arrive("SaffronCity_MrPsychicsHouse", 4, 6);
+        game.Talk("balding_man");
+        Assert.Equal(1, Count(game, "TM29"));
+    }
 }

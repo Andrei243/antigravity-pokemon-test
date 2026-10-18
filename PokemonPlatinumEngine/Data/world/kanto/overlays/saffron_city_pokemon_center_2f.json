@@ -1,0 +1,11 @@
+{
+  // The floor above Saffron City's Pokémon Center (plan 19 · K5, part b): the link is down
+  "area": "saffron_city_pokemon_center_2f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "cable_club_receptionist": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "cable_club_receptionist_2": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "cable_club_receptionist_3": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "mg_deliveryman": { "name": "Deliveryman", "dialog": [ "Nothing to deliver today, I'm afraid." ] }
+  }
+}

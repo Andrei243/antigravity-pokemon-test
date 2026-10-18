@@ -1,0 +1,39 @@
+# Celadon City (FireRed's MUS_CELADON, which the city, its rooms, Route 16's house and Route 12's fishing house
+# share): an easy-going city stroll in F, a flute tune over an electric piano's off-beat chords and a walking bass,
+# for the city of flowers and the great department store. Original composition for this game (plan 19 · K5).
+title Celadon City
+tempo 108
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+
+track lead flute night=clarinet vol=0.66 pan=0 rev=0.3
+  L o5 c4 f8 a8 o6 c4 o5 a4 | o5 d4 f8 a8 d4 f4 | o5 b-4 o6 d8 f8 d4 o5 b-4 | o5 c2 e4 g4 |
+  o5 f4 a8 o6 c8 o5 a4 f4 | o5 e4 a8 o6 c8 o5 a4 e4 | o5 d4 f4 e4 g4 | o5 f2. r4 |
+  o5 d4 f8 b-8 f4 d4 | o5 c4 f8 a8 f4 c4 | o5 d4 g8 b-8 g4 d4 | o5 e4 g8 o6 c8 o5 g4 e4 |
+  o5 a4 o6 c8 f8 c4 o5 a4 | o5 f4 a8 o6 d8 o5 a4 f4 | o5 g4 b-4 c4 e4 | o5 f2. r4 |
+
+track keys epiano vol=0.34 pan=0.3 rev=0.3
+  L o4 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 |
+  r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 | r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 |
+  r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (c e a)8 r8 (c e a)8 r8 (c e a)8 r8 (c e a)8 |
+  r8 (d f b-)8 r8 (d f b-)8 r8 (c e g)8 r8 (c e g)8 | r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 |
+  r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 | r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 |
+  r8 (d g b-)8 r8 (d g b-)8 r8 (d g b-)8 r8 (d g b-)8 | r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 r8 (c e g)8 |
+  r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 |
+  r8 (d g b-)8 r8 (d g b-)8 r8 (c e g)8 r8 (c e g)8 | r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 |
+
+track pad strings night=pad vol=0.2 pan=-0.3 rev=0.4
+  L o4 (f a >c)1 | (d f a)1 | (d f b-)1 | (c e g)1 |
+  (f a >c)1 | (c e a)1 | (d f b-)2 (c e g)2 | (f a >c)1 |
+  (d f b-)1 | (f a >c)1 | (d g b-)1 | (c e g)1 |
+  (f a >c)1 | (d f a)1 | (d g b-)2 (c e g)2 | (f a >c)1 |
+
+track bass bass vol=0.62 rev=0.1
+  L o3 f4 a4 c4 a4 | d4 f4 a4 f4 | o2 b-4 o3 d4 f4 d4 | c4 e4 g4 e4 |
+  f4 a4 c4 a4 | a4 c4 e4 c4 | o2 b-4 o3 d4 c4 e4 | f4 c4 f2 |
+  o2 b-4 o3 d4 f4 d4 | f4 a4 c4 a4 | g4 b-4 d4 b-4 | c4 e4 g4 e4 |
+  f4 a4 c4 a4 | d4 f4 a4 f4 | g4 b-4 c4 e4 | f4 c4 f2 |
+
+track drums kit vol=0.36 rev=0.12
+  v72 L [ [ b4 h8 h8 s4 h8 h8 | ]3 b4 h8 h8 s8 h8 s8 h8 | ]4

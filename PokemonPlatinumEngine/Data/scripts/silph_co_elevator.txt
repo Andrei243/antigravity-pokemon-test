@@ -1,0 +1,47 @@
+# Silph Co.'s lift (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/SilphCo_Elevator/scripts.inc).
+#
+# As the department store's (celadon_city_department_store_elevator.txt): the panel rides the car and puts the player
+# out on the floor chosen, before the lift's door there (VAR_SILPH_CO_LIFT_FLOOR, ours: the floor's number; nought,
+# never ridden, is the ground floor). A question has six answers at most, so the eleven floors are asked in three.
+
+
+script Panel
+  speaker none
+  if var VAR_SILPH_CO_LIFT_FLOOR == 0 setvar VAR_SILPH_CO_LIFT_FLOOR 1
+  choose "Which floor?" "1F" "2F" "3F" "4F" "Higher" "Stay here"
+  if result == 5 end
+  setvar VAR_TEMP_1 RESULT
+  addvar VAR_TEMP_1 1
+  if result != 4 goto Ride
+  choose "Which floor?" "5F" "6F" "7F" "8F" "Higher" "Stay here"
+  if result == 5 end
+  setvar VAR_TEMP_1 RESULT
+  addvar VAR_TEMP_1 5
+  if result != 4 goto Ride
+  choose "Which floor?" "9F" "10F" "11F" "Stay here"
+  if result == 3 end
+  setvar VAR_TEMP_1 RESULT
+  addvar VAR_TEMP_1 9
+label Ride
+  if var VAR_TEMP_1 == VAR_SILPH_CO_LIFT_FLOOR goto Out
+  if var VAR_TEMP_1 < VAR_SILPH_CO_LIFT_FLOOR goto Down
+  anim elevator up
+  goto Rode
+label Down
+  anim elevator down
+label Rode
+  setvar VAR_SILPH_CO_LIFT_FLOOR VAR_TEMP_1
+label Out
+  if var VAR_SILPH_CO_LIFT_FLOOR == 1 warp "SilphCo_1F" 22 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 2 warp "SilphCo_2F" 22 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 3 warp "SilphCo_3F" 22 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 4 warp "SilphCo_4F" 22 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 5 warp "SilphCo_5F" 22 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 6 warp "SilphCo_6F" 20 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 7 warp "SilphCo_7F" 23 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 8 warp "SilphCo_8F" 22 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 9 warp "SilphCo_9F" 24 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 10 warp "SilphCo_10F" 13 4 down
+  if var VAR_SILPH_CO_LIFT_FLOOR == 11 warp "SilphCo_11F" 13 4 down
+  end

@@ -1,0 +1,29 @@
+{
+  "key": "route_12_north_entrance_1f",
+  "index": 362,
+  "name": "Route 12",
+  "matrix": 309,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 1, "to": "route_12", "toWarp": 1 },
+    { "x": 6, "z": 1, "to": "", "toWarp": 2 },
+    { "x": 5, "z": 11, "to": "route_12", "toWarp": 3 },
+    { "x": 6, "z": 11, "to": "route_12", "toWarp": 3 },
+    { "x": 8, "z": 10, "to": "route_12_north_entrance_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "policeman", "looks": "policeman", "movement": "look_east", "x": 1, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "Route12_NorthEntrance_1F_EventScript_Guard" }
+  ],
+  "signs": [],
+  "triggers": []
+}

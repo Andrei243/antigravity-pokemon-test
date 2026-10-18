@@ -1,0 +1,27 @@
+{
+  "key": "celadon_city_department_store_elevator",
+  "index": 302,
+  "name": "Celadon City",
+  "matrix": 249,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 5, "to": "", "toWarp": 0 },
+    { "x": 2, "z": 6, "to": "", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 0, "z": 2, "type": 0, "script": "CeladonCity_DepartmentStore_Elevator_EventScript_FloorSelect" },
+    { "x": 4, "z": 1, "type": 0, "script": "CeladonCity_DepartmentStore_Elevator_EventScript_FloorSelect" }
+  ],
+  "triggers": []
+}

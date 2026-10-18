@@ -7,25 +7,24 @@
   "people": {
     "mr_fuji": {
       "name": "Mr. Fuji",
-      "dialog": [
-        "Heh... You have come a long way to find an old man."
-      ]
+      "script": "MrFuji",
+      "still": true
     },
-    "pokemon_tower_grunt1": {
+    "pokemon_tower_grunt1": { "script": "Grunt1",
       "name": "Grunt",
       "trainer": {
         "dialogueBefore": "Team Rocket Grunt: What do you want? This old man is our business!",
         "dialogueAfter": "Team Rocket Grunt: Grr... you'll be sorry for this!"
       }
     },
-    "pokemon_tower_grunt2": {
+    "pokemon_tower_grunt2": { "script": "Grunt2",
       "name": "Grunt",
       "trainer": {
         "dialogueBefore": "Team Rocket Grunt: Go home, kid! Team Rocket is busy here!",
         "dialogueAfter": "Team Rocket Grunt: Ugh, we'll get you back!"
       }
     },
-    "pokemon_tower_grunt3": {
+    "pokemon_tower_grunt3": { "script": "Grunt3",
       "name": "Grunt",
       "trainer": {
         "dialogueBefore": "Team Rocket Grunt: The old man's been nothing but trouble. And now you!",

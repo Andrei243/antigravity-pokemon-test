@@ -1,0 +1,22 @@
+{
+  // The Saffron City Gym (plan 19 · K5, part b), its rooms as FireRed lays them out: the warp pads between them are
+  // the original's warps, each to its partner, and Sabrina waits in the middle room (saffron_city_gym.txt). Her seven
+  // trainers battle by their own records (Kanto's trainers.json)
+  "area": "saffron_city_gym",
+  "bgmTrack": "kanto/gym",
+  "arenaType": "Psychic",
+  "people": {
+    "sabrina": { "name": "Sabrina", "script": "Sabrina", "still": true },
+    "gym_guy": { "name": "Gym Guide", "script": "GymGuy" },
+    "cooltrainer_m": { "name": "Cameron", "trainer": { "dialogueBefore": "Psychic Cameron: Our Leader can bend spoons with her mind! Can you?", "dialogueAfter": "Psychic Cameron: I couldn't see that coming." } },
+    "cooltrainer_m_2": { "name": "Johan", "trainer": { "dialogueBefore": "Psychic Johan: I knew you'd teleport in here. I foresaw it!", "dialogueAfter": "Psychic Johan: I didn't foresee that." } },
+    "cooltrainer_m_3": { "name": "Preston", "trainer": { "dialogueBefore": "Psychic Preston: The pads here can lead you anywhere. Even into a battle with me!", "dialogueAfter": "Psychic Preston: You have a strong will." } },
+    "cooltrainer_m_4": { "name": "Tyron", "trainer": { "dialogueBefore": "Psychic Tyron: Do you believe in the power of the mind? You will!", "dialogueAfter": "Psychic Tyron: My mind is blank." } },
+    "channeler": { "name": "Amanda", "trainer": { "dialogueBefore": "Channeler Amanda: The spirits whisper your name... Battle!", "dialogueAfter": "Channeler Amanda: The spirits have gone quiet." } },
+    "channeler_2": { "name": "Stacy", "trainer": { "dialogueBefore": "Channeler Stacy: Sabrina's power flows through this Gym. Can you feel it?", "dialogueAfter": "Channeler Stacy: Your power is stronger." } },
+    "channeler_3": { "name": "Tasha", "trainer": { "dialogueBefore": "Channeler Tasha: You won't find Sabrina so easily. Stay a while!", "dialogueAfter": "Channeler Tasha: Very well. Find her, then." } }
+  },
+  "read": {
+    "SaffronCity_Gym_EventScript_GymStatue": "Statue"
+  }
+}

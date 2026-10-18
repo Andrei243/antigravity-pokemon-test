@@ -1,0 +1,8 @@
+{
+  // The gate at the top of Route 12 (plan 19 · K5, part b), south of Lavender Town
+  "area": "route_12_north_entrance_1f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "policeman": { "name": "Guard", "dialog": [ "There's a Snorlax asleep on the road south of here. Nobody can get past it!" ] }
+  }
+}

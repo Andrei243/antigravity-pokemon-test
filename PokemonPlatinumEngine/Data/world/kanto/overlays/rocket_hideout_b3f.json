@@ -1,0 +1,10 @@
+{
+  // The Rocket Hideout's third basement (plan 19 · K5, part b): more arrows, and the stairs down to the fourth
+  "area": "rocket_hideout_b3f",
+  "name": "Rocket Hideout",
+  "bgmTrack": "kanto/rocket_hideout",
+  "people": {
+    "rocket_m": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: Stop right there! Team Rocket doesn't take kindly to snoops!", "dialogueAfter": "Team Rocket Grunt: You're a snoop with a strong team, I'll give you that." } },
+    "rocket_m_2": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: Whoa there! Where do you think you're spinning off to?", "dialogueAfter": "Team Rocket Grunt: Fine. Spin off, then." } }
+  }
+}

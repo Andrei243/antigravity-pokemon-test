@@ -174,6 +174,7 @@ public class Player
 
     // Where ice or a moving floor takes the player next, once the step onto it has ended
     private Direction? carried;
+    private Direction? spinning;
 
     // Walking into something plays one thud per step-length, not one per frame
     private const float BumpInterval = 0.4f;
@@ -272,6 +273,7 @@ public class Player
         slipping = false;
         mounting = false;
         carried = null;
+        spinning = null;
         pushed = null;
         pushing = 0f;
         onSpot = 0f;
@@ -439,7 +441,7 @@ public class Player
             {
                 var step = FieldMovement.Step(map, GridX, GridY, onward, WalkerOn(map) with { Running = false });
                 if (step.Moves) Begin(map, step, onward, sliding: true);
-                else IsSliding = false;
+                else { IsSliding = false; spinning = null; }
             }
         }
         else
@@ -507,6 +509,9 @@ public class Player
         // or stopped, the slide's speed is gone
         var underfoot = map.BehaviourAt(GridX, GridY);
         carried = interrupted || slipping ? null : FieldMovement.Carries(underfoot, movingDir);
+        // A GBA spin (plan 19 · K5, part b): a slide on a map with stop tiles goes on over plain floor until one
+        spinning = interrupted ? null : FieldMovement.Spins(map, underfoot, carried, spinning);
+        carried ??= spinning;
         IsSliding = carried != null;
         slipping = false;
         if (carried == null || underfoot != TileBehavior.Ice) IceSpeed = 0;

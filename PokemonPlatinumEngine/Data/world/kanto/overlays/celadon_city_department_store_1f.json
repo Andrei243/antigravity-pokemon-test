@@ -1,0 +1,13 @@
+{
+  // The Celadon Department Store's ground floor (plan 19 · K5, part b): the receptionist and the floor guide. The
+  // lift's car is a room of its own, whose panel takes the player to the floor chosen (celadon_city_department_store_elevator.txt)
+  "area": "celadon_city_department_store_1f",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "worker_f": { "name": "Receptionist", "dialog": [ "Hello! Welcome to the Celadon Department Store. The board on the right shows what's on each floor." ] }
+  },
+  "signs": {
+    "CeladonCity_DepartmentStore_1F_EventScript_LayoutSign": "2F: Trainer's Market. 3F: TV Games.\n4F: Gifts. 5F: Drugstore. Roof: Square.",
+    "CeladonCity_DepartmentStore_1F_EventScript_FloorSign": "1F: Service Counter"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "key": "rocket_hideout_elevator",
+  "index": 88,
+  "name": "Rocket Hideout",
+  "matrix": 52,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROCKET_HIDEOUT",
+  "nightMusic": "MUS_ROCKET_HIDEOUT",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 5, "to": "", "toWarp": 0 },
+    { "x": 2, "z": 5, "to": "", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 0, "z": 2, "type": 0, "script": "RocketHideout_Elevator_EventScript_FloorSelect" }
+  ],
+  "triggers": []
+}

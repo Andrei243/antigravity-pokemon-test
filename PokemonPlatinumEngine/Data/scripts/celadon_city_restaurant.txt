@@ -1,0 +1,17 @@
+# Celadon City's restaurant (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/CeladonCity_Restaurant/scripts.inc).
+#
+# The man who lost everything at the slots gives his Coin Case away (FLAG_GOT_COIN_CASE).
+
+
+script CoinCaseMan
+  speaker "Man"
+  if flag FLAG_GOT_COIN_CASE goto Done
+  say "Hic! I lost every last coin at the slots. I'm finished with gambling, I tell you!"
+  say "Here, you take this. I don't want to look at it ever again."
+  give "Coin Case"
+  setflag FLAG_GOT_COIN_CASE
+  end
+label Done
+  say "Slot machines are a mug's game. Mark my words!"
+  end

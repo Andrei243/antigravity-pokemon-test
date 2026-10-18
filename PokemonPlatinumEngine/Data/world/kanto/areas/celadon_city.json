@@ -1,0 +1,88 @@
+{
+  "key": "celadon_city",
+  "index": 32,
+  "name": "Celadon City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CELADON",
+  "nightMusic": "MUS_CELADON",
+  "encounters": "celadon_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Psyduck", "level": 5, "maxLevel": 10 },
+    { "species": "Psyduck", "level": 10, "maxLevel": 20 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 40 },
+    { "species": "Koffing", "level": 30, "maxLevel": 40 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 15, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 15, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 25, "maxLevel": 35 },
+    { "species": "Grimer", "level": 30, "maxLevel": 40 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 214, "z": 141, "to": "celadon_city_game_corner", "toWarp": 0 },
+    { "x": 191, "z": 134, "to": "celadon_city_department_store_1f", "toWarp": 1 },
+    { "x": 195, "z": 134, "to": "celadon_city_department_store_1f", "toWarp": 4 },
+    { "x": 210, "z": 131, "to": "celadon_city_condominiums_1f", "toWarp": 1 },
+    { "x": 228, "z": 131, "to": "celadon_city_pokemon_center_1f", "toWarp": 1 },
+    { "x": 219, "z": 140, "to": "celadon_city_game_corner_prize_room", "toWarp": 1 },
+    { "x": 191, "z": 150, "to": "celadon_city_gym", "toWarp": 1 },
+    { "x": 217, "z": 149, "to": "celadon_city_restaurant", "toWarp": 1 },
+    { "x": 221, "z": 149, "to": "celadon_city_house_1", "toWarp": 1 },
+    { "x": 229, "z": 149, "to": "celadon_city_hotel", "toWarp": 1 },
+    { "x": 209, "z": 125, "to": "", "toWarp": 5 },
+    { "x": 210, "z": 124, "to": "celadon_city_condominiums_1f", "toWarp": 5 },
+    { "x": 211, "z": 125, "to": "", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "wander_west_and_east", "x": 228, "z": 135, "facing": 2, "rangeX": 4, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CELADON_ROCKETS", "script": "CeladonCity_EventScript_RocketGrunt1" },
+    { "id": "celadon_fat_man", "looks": "fat_man", "movement": "look_west", "x": 218, "z": 134, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_EventScript_FatMan" },
+    { "id": "celadon_poliwrath", "looks": "poliwrath", "movement": "look_east", "x": 216, "z": 134, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_EventScript_Poliwrath" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "walk_sequence_east_south_west_north", "x": 191, "z": 138, "facing": 3, "rangeX": 4, "rangeZ": 4, "script": "CeladonCity_EventScript_LittleGirl" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "wander_around", "x": 198, "z": 142, "facing": 1, "rangeX": 2, "rangeZ": 5, "script": "CeladonCity_EventScript_Woman" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "look_south", "x": 210, "z": 144, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_EventScript_OldMan2" },
+    { "id": "old_man_2", "looks": "old_man_2", "movement": "look_south", "x": 206, "z": 139, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_EventScript_SoftboiledTutor" },
+    { "id": "rocket_m_2", "looks": "rocket_m", "movement": "wander_west_and_east", "x": 218, "z": 151, "facing": 2, "rangeX": 5, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CELADON_ROCKETS", "script": "CeladonCity_EventScript_RocketGrunt2" },
+    { "id": "old_man_1_2", "looks": "old_man_1", "movement": "look_north", "x": 189, "z": 150, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_EventScript_OldMan1" },
+    { "id": "celadon_border_tree", "looks": "cut_tree", "movement": "look_south", "x": 232, "z": 142, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_CutTree" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 220, "z": 155, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "boy", "looks": "boy", "movement": "look_north", "x": 205, "z": 130, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "CeladonCity_EventScript_Boy" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 185, "z": 123, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CELADON_CITY_ETHER", "item": "Ether", "script": "CeladonCity_EventScript_ItemEther" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_around", "x": 227, "z": 144, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CELADON_ROCKETS", "script": "CeladonCity_EventScript_SilphCoScientist" }
+  ],
+  "signs": [
+    { "x": 225, "z": 143, "type": 0, "script": "CeladonCity_EventScript_TrainerTips2" },
+    { "x": 218, "z": 143, "type": 0, "script": "CeladonCity_EventScript_PrizeExchangeSign" },
+    { "x": 213, "z": 143, "type": 0, "script": "CeladonCity_EventScript_GameCornerSign" },
+    { "x": 202, "z": 138, "type": 0, "script": "CeladonCity_EventScript_CitySign" },
+    { "x": 206, "z": 131, "type": 0, "script": "CeladonCity_EventScript_MansionSign" },
+    { "x": 213, "z": 136, "type": 0, "script": "CeladonCity_EventScript_TrainerTips1" },
+    { "x": 198, "z": 134, "type": 0, "script": "CeladonCity_EventScript_DeptStoreSign" },
+    { "x": 196, "z": 151, "type": 0, "script": "CeladonCity_EventScript_GymSign" },
+    { "x": 235, "z": 140, "type": 2, "script": "", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_CELADON_CITY_PP_UP" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,59 @@
+# The Pokémon Tower's top floor (plan 19 · K5, part b). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/PokemonTower_7F/scripts.inc).
+#
+# Three grunts hold Mr. Fuji here. Each, once beaten, leaves the tower (FLAG_HIDE_TOWER_ROCKET_1 to 3). Mr. Fuji
+# thanks the player and takes them home with him (FLAG_RESCUED_MR_FUJI; FLAG_HIDE_TOWER_FUJI here and
+# FLAG_HIDE_POKEHOUSE_FUJI cleared at home), where he gives the Poké Flute
+# (lavender_town_volunteer_pokemon_house.txt).
+
+
+script Grunt1
+  if defeated self end
+  trainerline before
+  battle self
+  trainerline after
+  call Leaves
+  setflag FLAG_HIDE_TOWER_ROCKET_1
+  end
+
+
+script Grunt2
+  if defeated self end
+  trainerline before
+  battle self
+  trainerline after
+  call Leaves
+  setflag FLAG_HIDE_TOWER_ROCKET_2
+  end
+
+
+script Grunt3
+  if defeated self end
+  trainerline before
+  battle self
+  trainerline after
+  call Leaves
+  setflag FLAG_HIDE_TOWER_ROCKET_3
+  end
+
+
+script Leaves
+  fade out 0.3
+  hide self
+  fade in 0.3
+  return
+
+
+script MrFuji
+  face mr_fuji player
+  speaker "Mr. Fuji"
+  scene "Mr Fuji"
+  say "Heh... You have come a long way to find an old man. Thank you, young one."
+  say "Team Rocket wanted me to keep quiet about the Marowak they struck down. You have freed me, and her spirit too."
+  say "Come with me to my home, won't you? I would like to thank you properly."
+  setflag FLAG_HIDE_TOWER_FUJI
+  clearflag FLAG_HIDE_POKEHOUSE_FUJI
+  setflag FLAG_RESCUED_MR_FUJI
+  warp "LavenderTown_VolunteerPokemonHouse" 4 6 up
+  endscene
+  end

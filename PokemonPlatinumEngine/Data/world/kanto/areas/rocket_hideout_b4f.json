@@ -1,0 +1,38 @@
+{
+  "key": "rocket_hideout_b4f",
+  "index": 87,
+  "name": "Rocket Hideout",
+  "matrix": 51,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROCKET_HIDEOUT",
+  "nightMusic": "MUS_ROCKET_HIDEOUT",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 15, "to": "rocket_hideout_b3f", "toWarp": 1 },
+    { "x": 20, "z": 23, "to": "rocket_hideout_elevator", "toWarp": 1 },
+    { "x": 21, "z": 23, "to": "", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "hideout_giovanni", "looks": "giovanni", "movement": "look_south", "x": 19, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_HIDEOUT_GIOVANNI", "script": "RocketHideout_B4F_EventScript_Giovanni" },
+    { "id": "silph_scope", "looks": "item_ball", "movement": "look_south", "x": 20, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SILPH_SCOPE", "script": "RocketHideout_B4F_EventScript_SilphScope" },
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "look_south", "x": 4, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_18" },
+    { "id": "lift_key", "looks": "item_ball", "movement": "look_south", "x": 3, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LIFT_KEY", "script": "RocketHideout_B4F_EventScript_LiftKey" },
+    { "id": "rocket_m_2", "looks": "rocket_m", "movement": "look_south", "x": 19, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 0, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_17" },
+    { "id": "rocket_m_3", "looks": "rocket_m", "movement": "look_south", "x": 16, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 0, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_16" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 1, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B4F_TM49", "item": "TM49", "script": "RocketHideout_B4F_EventScript_ItemTM49" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 4, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B4F_MAX_ETHER", "item": "Max Ether", "script": "RocketHideout_B4F_EventScript_ItemMaxEther" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 6, "z": 23, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROCKET_HIDEOUT_B4F_CALCIUM", "item": "Calcium", "script": "RocketHideout_B4F_EventScript_ItemCalcium" }
+  ],
+  "signs": [
+    { "x": 22, "z": 6, "type": 2, "script": "", "item": "Nest Ball", "flag": "FLAG_HIDDEN_ITEM_ROCKET_HIDEOUT_B4F_NEST_BALL" },
+    { "x": 16, "z": 6, "type": 2, "script": "", "item": "Net Ball", "flag": "FLAG_HIDDEN_ITEM_ROCKET_HIDEOUT_B4F_NET_BALL" }
+  ],
+  "triggers": []
+}

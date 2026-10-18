@@ -1,0 +1,14 @@
+{
+  // The Rocket Hideout's first basement (plan 19 · K5, part b), under the Game Corner: its grunts battle by their
+  // own records (Kanto's trainers.json); the lift's car is rocket_hideout_elevator's
+  "area": "rocket_hideout_b1f",
+  "name": "Rocket Hideout",
+  "bgmTrack": "kanto/rocket_hideout",
+  "people": {
+    "rocket_m": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: Who let a kid down here? Intruder!", "dialogueAfter": "Team Rocket Grunt: The boss isn't going to like this." } },
+    "rocket_m_2": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: The hideout's off limits! Scram!", "dialogueAfter": "Team Rocket Grunt: Ow... Okay, okay, I'm going." } },
+    "rocket_m_3": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: You'll never find your way around in here!", "dialogueAfter": "Team Rocket Grunt: Get lost already. Literally!" } },
+    "rocket_m_4": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: A kid in the hideout? This is my lucky day!", "dialogueAfter": "Team Rocket Grunt: Not so lucky after all." } },
+    "rocket_m_5": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: The lift won't move without its key, kid. Not that you'll ever get it!", "dialogueAfter": "Team Rocket Grunt: The key? Someone further down has it. Oops." } }
+  }
+}

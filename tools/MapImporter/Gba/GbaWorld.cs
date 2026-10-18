@@ -78,6 +78,9 @@ public sealed class GbaWorld
     public List<GbaMatrix> Matrices { get; } = new();
     public List<string> Problems { get; } = new();
 
+    /// <summary>The real maps laid in for a stand-in (<see cref="StandIns"/>), whose frame overlaps the routes on purpose.</summary>
+    private readonly HashSet<string> laidIn = new(StringComparer.Ordinal);
+
     /// <summary>Each behaviour's name and how many tiles of the stitched world have it; the unlabelled metatiles by tileset.</summary>
     public SortedDictionary<string, int> BehaviourUse { get; } = new(StringComparer.Ordinal);
     public SortedDictionary<string, SortedDictionary<int, int>> UnknownCover { get; } = new(StringComparer.Ordinal);
@@ -92,7 +95,7 @@ public sealed class GbaWorld
         foreach (var map in order)
         {
             if (placed.Contains(map.Id)) continue;
-            Matrices.Add(Stitch(map, Matrices.Count, placed));
+            Matrices.Add(Stitch(map, Matrices.Count, placed, alone: StandIns.ContainsKey(map.Id)));
         }
         foreach (var matrix in Matrices)
         {
@@ -103,25 +106,54 @@ public sealed class GbaWorld
 
     public static float LevelOf(int elevation) => GroundLevel + (elevation - 3) * LevelHeight;
 
+    /// <summary>
+    /// A map the routes connect to that only stands for another (plan 19 · K5, part b, decided there): FireRed's
+    /// routes join <c>SaffronCity_Connection</c>, 48 by 40, a copy of the middle of Saffron City as seen from them,
+    /// while the city itself (<c>SaffronCity</c>, 66 by 55, its houses, people and the far doors of its four gates) is
+    /// a map no connection reaches. The city's tiles 10 to 57 across and 7 to 46 down are the stand-in's, metatile for
+    /// metatile; the rest is a frame that copies the routes' ends round it. So the city is laid in where the stand-in
+    /// would be, ten tiles west and seven north of it, and its frame gives way to the routes it copies
+    /// (<see cref="Fill"/> lays it last); its neighbours are reached as the stand-in's are. The stand-in is a matrix of
+    /// its own, with nothing joined to it, so the matrices' numbers stay what they were.
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, (string Real, int X, int Y)> StandIns =
+        new Dictionary<string, (string, int, int)>(StringComparer.Ordinal)
+        {
+            ["MAP_SAFFRON_CITY_CONNECTION"] = ("MAP_SAFFRON_CITY", -10, -7)
+        };
+
     // ---------------------------------------------------------------- stitching
 
-    private GbaMatrix Stitch(GbaMap first, int id, HashSet<string> placed)
+    private GbaMatrix Stitch(GbaMap first, int id, HashSet<string> placed, bool alone = false)
     {
         var at = new Dictionary<string, (int X, int Y)>(StringComparer.Ordinal) { [first.Id] = (0, 0) };
         var list = new List<GbaMap> { first };
         var queue = new Queue<GbaMap>();
-        queue.Enqueue(first);
+        // A real map laid in for a stand-in (StandIns): its neighbours are reached as the stand-in's
+        var standsFor = new Dictionary<string, (GbaMap StandIn, int X, int Y)>(StringComparer.Ordinal);
+        if (!alone) queue.Enqueue(first);
         placed.Add(first.Id);
         while (queue.Count > 0)
         {
             var map = queue.Dequeue();
             var layout = Source.LayoutOf(map);
             var (mx, my) = at[map.Id];
-            // FireRed's routes join a copy of Saffron City (SaffronCity_Connection, 48 by 40) that stands for the city
-            // as seen from them; the city itself (66 by 55) is a matrix of its own, its connections reported: plan 19's
-            foreach (var c in map.Connections)
+            var joins = map.Connections;
+            if (standsFor.TryGetValue(map.Id, out var frame))
             {
-                if (!Source.ById.TryGetValue(c.Map, out var other) || !Source.Layouts.TryGetValue(other.Layout, out var theirs))
+                layout = Source.LayoutOf(frame.StandIn);
+                (mx, my) = (mx - frame.X, my - frame.Y);
+                joins = frame.StandIn.Connections;
+            }
+            foreach (var c in joins)
+            {
+                var target = c.Map;
+                (int X, int Y) shift = (0, 0);
+                GbaMap? standIn = null;
+                if (StandIns.TryGetValue(c.Map, out var real) && Source.ById.TryGetValue(c.Map, out standIn))
+                    (target, shift) = (real.Real, (real.X, real.Y));
+                if (!Source.ById.TryGetValue(target, out var other) || !Source.Layouts.ContainsKey(other.Layout)
+                    || !Source.Layouts.TryGetValue((standIn ?? other).Layout, out var theirs))
                 {
                     if (c.Direction is "up" or "down" or "left" or "right") Problems.Add($"{map.Name}: a connection {c.Direction} to {c.Map}, which has no map or layout");
                     continue;
@@ -134,7 +166,10 @@ public sealed class GbaWorld
                     "right" => (mx + layout.Width, my + c.Offset),
                     _ => null   // dive and emerge: warps between matrices
                 };
-                if (there is not { } spot) continue;
+                if (there is not { } standing) continue;
+                var spot = (X: standing.X + shift.X, Y: standing.Y + shift.Y);
+                if (standIn != null) standsFor[other.Id] = (standIn, shift.X, shift.Y);
+                if (standIn != null) laidIn.Add(other.Id);
                 if (at.TryGetValue(other.Id, out var known))
                 {
                     if (known != spot)
@@ -155,7 +190,8 @@ public sealed class GbaWorld
 
         int minX = at.Values.Min(p => p.X), minY = at.Values.Min(p => p.Y);
         var matrix = new GbaMatrix { Id = id };
-        foreach (var map in list)
+        // A real map laid in for a stand-in goes last, so its frame gives way to the routes it copies
+        foreach (var map in list.Where(m => !standsFor.ContainsKey(m.Id)).Concat(list.Where(m => standsFor.ContainsKey(m.Id))))
             matrix.Maps.Add(new GbaPlaced(map, Source.LayoutOf(map), at[map.Id].X - minX, at[map.Id].Y - minY));
         matrix.Allocate(matrix.Maps.Max(p => p.X + p.Layout.Width), matrix.Maps.Max(p => p.Y + p.Layout.Height));
         return matrix;
@@ -174,7 +210,7 @@ public sealed class GbaWorld
                     int i = (oy + y) * m.Width + ox + x;
                     if (m.Area[i] >= 0)
                     {
-                        if (overlaps.Add((m.Area[i], index)))
+                        if (!laidIn.Contains(map.Id) && overlaps.Add((m.Area[i], index)))
                             Problems.Add($"{map.Name} overlaps {m.Maps[m.Area[i]].Map.Name} on matrix {m.Id}: the first placed wins");
                         continue;
                     }

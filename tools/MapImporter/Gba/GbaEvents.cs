@@ -83,6 +83,9 @@ public static class GbaEvents
 
         foreach (var b in map.Bgs)
         {
+            // FireRed's Game Corner hides coins on its floor as hidden items of no item (ITEM_NONE), which its own script
+            // turns into coins: no item of the data, so left out until coins can be found (plan 19 · K5, part b)
+            if (b.Type == "hidden_item" && b.Item == "ITEM_NONE") continue;
             if (b.Type == "hidden_item")
                 area.Signs.Add(new AreaSign
                 {

@@ -1,0 +1,14 @@
+{
+  // The room on Celadon Mansion's roof (plan 19 · K5, part b): the Black Belt, and the Eevee in its ball on the table
+  // for whoever finds it (celadon_city_condominiums_roof_room.txt)
+  "area": "celadon_city_condominiums_roof_room",
+  "bgmTrack": "kanto/celadon",
+  "people": {
+    "black_belt": { "name": "Black Belt", "dialog": [ "There's a Pokémon in that ball on the table. Nobody here can look after it. Go on, take it!" ] },
+    "eevee_pokeball": { "name": "Poké Ball", "script": "EeveeBall" }
+  },
+  "signs": {
+    "CeladonCity_Condominiums_RoofRoom_EventScript_Blackboard": "Notes on how moves are sorted: physical, special and status.",
+    "CeladonCity_Condominiums_RoofRoom_EventScript_TMsPamphlet": "A pamphlet about TMs. Each one teaches a Pokémon a move!"
+  }
+}

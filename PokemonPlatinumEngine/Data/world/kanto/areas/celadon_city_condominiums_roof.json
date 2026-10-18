@@ -1,0 +1,28 @@
+{
+  "key": "celadon_city_condominiums_roof",
+  "index": 306,
+  "name": "Celadon City",
+  "matrix": 253,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CELADON",
+  "nightMusic": "MUS_CELADON",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 2, "to": "celadon_city_condominiums_3f", "toWarp": 1 },
+    { "x": 10, "z": 2, "to": "celadon_city_condominiums_3f", "toWarp": 2 },
+    { "x": 2, "z": 12, "to": "celadon_city_condominiums_roof_room", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 4, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_Roof_EventScript_Sign" },
+    { "x": 3, "z": 12, "type": 0, "script": "CeladonCity_Condominiums_Roof_EventScript_Sign" }
+  ],
+  "triggers": []
+}

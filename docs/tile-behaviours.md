@@ -168,7 +168,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_CABLE_BOX_RESULTS_2` |  | 0xE7 | `None` (not in the table) | `0x00` |  | 17 |
 | `MB_CABLE_CLUB_WIRELESS_MONITOR` | 0x8D |  | `None` (not in the table) | `0x00` | 19 |  |
 | `MB_CAVE` | 0x08 | 0x08 | `CaveFloor` | `0x08` | 32,292 | 24,556 |
-| `MB_CAVE_DOOR` | 0x60 |  | `EntranceNorth` | `0x64` | 97 |  |
+| `MB_CAVE_DOOR` | 0x60 |  | `EntranceNorth` | `0x64` | 93 |  |
 | `MB_COMPUTER` | 0x97 |  | `Computer` | `0x83` | 52 |  |
 | `MB_COUNTER` | 0x80 | 0x80 | `Counter` | `0x80` | 730 | 566 |
 | `MB_CRACKED_FLOOR` |  | 0xD2 | `CrackedFloor` | `0xF1` |  | 190 |
@@ -186,7 +186,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_DOWN_RIGHT_STAIR_WARP` | 0x6E |  | `StairsEast` | `0x5E` | 82 |  |
 | `MB_DRESSER` | 0x8B |  | `None` (not in the table) | `0x00` | 8 |  |
 | `MB_EASTWARD_CURRENT` | 0x50 | 0x50 | `CurrentEast` | `0xF3` | 42 | 56 |
-| `MB_EAST_ARROW_WARP` | 0x62 | 0x62 | `ExitEast` | `0x6C` | 36 | 9 |
+| `MB_EAST_ARROW_WARP` | 0x62 | 0x62 | `ExitEast` | `0x6C` | 34 | 9 |
 | `MB_FALL_WARP` | 0x66 |  | `Hole` | `0xF2` | 31 |  |
 | `MB_FAST_WATER` | 0x11 |  | `River` | `0x10` | 2,831 |  |
 | `MB_FOOD` | 0x90 |  | `None` (not in the table) | `0x00` | 22 |  |
@@ -216,7 +216,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_ISOLATED_VERTICAL_RAIL` |  | 0xD3 | `RailNorthSouth` | `0xF9` |  | 3 |
 | `MB_JUMP_EAST` | 0x38 | 0x38 | `LedgeEast` | `0x38` | 39 | 120 |
 | `MB_JUMP_NORTH` | 0x3A | 0x3A | `LedgeNorth` | `0x3A` |  |  |
-| `MB_JUMP_SOUTH` | 0x3B | 0x3B | `LedgeSouth` | `0x3B` | 962 | 657 |
+| `MB_JUMP_SOUTH` | 0x3B | 0x3B | `LedgeSouth` | `0x3B` | 958 | 657 |
 | `MB_JUMP_SOUTHEAST` |  | 0x3E | `None` (not in the table) | `0x00` |  | 33 |
 | `MB_JUMP_SOUTHWEST` |  | 0x3F | `None` (not in the table) | `0x00` |  | 44 |
 | `MB_JUMP_WEST` | 0x39 | 0x39 | `LedgeWest` | `0x39` | 41 | 169 |
@@ -233,7 +233,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_MUDDY_SLOPE` |  | 0xD0 | `BikeSlopeBottom` | `0xDA` |  | 12 |
 | `MB_NEATLY_LINED_UP_TOOLS` | 0x9F |  | `None` (not in the table) | `0x00` | 75 |  |
 | `MB_NON_ANIMATED_DOOR` |  | 0x60 | `EntranceNorth` | `0x64` |  | 285 |
-| `MB_NORMAL` | 0x00 | 0x00 | `None` | `0x00` | 143,184 | 187,255 |
+| `MB_NORMAL` | 0x00 | 0x00 | `None` | `0x00` | 142,329 | 187,255 |
 | `MB_NORTHWARD_CURRENT` | 0x52 | 0x52 | `CurrentNorth` | `0xF5` | 142 | 319 |
 | `MB_NORTH_ARROW_WARP` | 0x64 | 0x64 | `ExitNorth` | `0x6E` | 16 | 6 |
 | `MB_NO_RUNNING` |  | 0x0A | `NoRunning` | `0xFD` |  | 142 |
@@ -310,7 +310,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_STAIRS_OUTSIDE_ABANDONED_SHIP` |  | 0x1B | `None` (not in the table) | `0x00` |  | 1 |
 | `MB_STOP_SPINNING` | 0x58 |  | `Spinner` | `0xF7` | 49 |  |
 | `MB_STRENGTH_BUTTON` | 0x20 |  | `None` (not in the table) | `0x00` | 15 |  |
-| `MB_TALL_GRASS` | 0x02 | 0x02 | `TallGrass` | `0x02` | 5,303 | 2,801 |
+| `MB_TALL_GRASS` | 0x02 | 0x02 | `TallGrass` | `0x02` | 5,282 | 2,801 |
 | `MB_TELEPHONE` | 0x96 |  | `None` (not in the table) | `0x00` | 39 |  |
 | `MB_TELEVISION` | 0x86 | 0x86 | `Television` | `0x86` | 27 | 43 |
 | `MB_THIN_ICE` | 0x26 | 0x26 | `ThinIce` | `0xF0` | 9 | 64 |
@@ -340,7 +340,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_WATER_DOOR` |  | 0x6C | `Door` | `0x69` |  | 6 |
 | `MB_WATER_SOUTH_ARROW_WARP` |  | 0x6D | `ExitSouth` | `0x6F` |  | 9 |
 | `MB_WESTWARD_CURRENT` | 0x51 | 0x51 | `CurrentWest` | `0xF4` |  | 3,844 |
-| `MB_WEST_ARROW_WARP` | 0x63 | 0x63 | `ExitWest` | `0x6D` | 34 | 1 |
+| `MB_WEST_ARROW_WARP` | 0x63 | 0x63 | `ExitWest` | `0x6D` | 32 | 1 |
 | `MB_WINDOW` | 0x9D |  | `None` (not in the table) | `0x00` | 82 |  |
 | `MB_WIRELESS_BOX_RESULTS` |  | 0xE8 | `None` (not in the table) | `0x00` |  | 17 |
 

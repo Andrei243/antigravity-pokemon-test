@@ -1,0 +1,42 @@
+{
+  "key": "route_16_north_entrance_1f",
+  "index": 368,
+  "name": "Route 16",
+  "matrix": 315,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 3, "to": "route_16", "toWarp": 1 },
+    { "x": 11, "z": 3, "to": "route_16", "toWarp": 2 },
+    { "x": 1, "z": 12, "to": "route_16", "toWarp": 3 },
+    { "x": 11, "z": 12, "to": "route_16", "toWarp": 4 },
+    { "x": 9, "z": 16, "to": "route_16_north_entrance_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "policeman", "looks": "policeman", "movement": "look_south", "x": 6, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route16_NorthEntrance_1F_EventScript_Guard" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "wander_west_and_east", "x": 7, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route16_NorthEntrance_1F_EventScript_OldMan" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 10, "z": 12, "width": 1, "depth": 1, "script": "EventScript_SetExitingCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "1" },
+    { "x": 2, "z": 12, "width": 1, "depth": 1, "script": "EventScript_SetEnteringCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "0" },
+    { "x": 6, "z": 10, "width": 1, "depth": 1, "script": "Route16_NorthEntrance_1F_EventScript_NeedBikeTriggerTop", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 6, "z": 11, "width": 1, "depth": 1, "script": "Route16_NorthEntrance_1F_EventScript_NeedBikeTriggerMidTop", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 1, "z": 13, "width": 1, "depth": 1, "script": "EventScript_SetEnteringCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "0" },
+    { "x": 1, "z": 11, "width": 1, "depth": 1, "script": "EventScript_SetEnteringCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "0" },
+    { "x": 11, "z": 11, "width": 1, "depth": 1, "script": "EventScript_SetExitingCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "1" },
+    { "x": 11, "z": 13, "width": 1, "depth": 1, "script": "EventScript_SetExitingCyclingRoad", "variable": "VAR_MAP_SCENE_ROUTE16", "value": "1" },
+    { "x": 6, "z": 12, "width": 1, "depth": 1, "script": "Route16_NorthEntrance_1F_EventScript_NeedBikeTriggerMid", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 6, "z": 13, "width": 1, "depth": 1, "script": "Route16_NorthEntrance_1F_EventScript_NeedBikeTriggerMidBottom", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 6, "z": 14, "width": 1, "depth": 1, "script": "Route16_NorthEntrance_1F_EventScript_NeedBikeTriggerBottom", "variable": "VAR_TEMP_1", "value": "0" }
+  ]
+}

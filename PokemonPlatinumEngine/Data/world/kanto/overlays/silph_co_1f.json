@@ -1,0 +1,14 @@
+{
+  // Silph Co.'s ground floor (plan 19 · K5, part b): the lobby, empty while Team Rocket holds the building; the
+  // receptionist is back at her desk once Giovanni is beaten (FLAG_HIDE_SAFFRON_CIVILIANS, saffron_city.txt). The
+  // lift's car is silph_co_elevator's
+  "area": "silph_co_1f",
+  "name": "Silph Co.",
+  "bgmTrack": "kanto/silph",
+  "people": {
+    "worker_f": { "name": "Receptionist", "dialog": [ "Welcome to Silph Co. Thanks to you, we're open for business again!" ] }
+  },
+  "signs": {
+    "SilphCo_1F_EventScript_FloorSign": "Silph Co. Head Office\n1F"
+  }
+}

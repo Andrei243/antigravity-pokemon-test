@@ -1,0 +1,11 @@
+{
+  // Silph Co.'s lift (plan 19 · K5, part b): its doorway leads to the ground floor and its panel puts the player out on the floor
+  // chosen (silph_co_elevator.txt)
+  "area": "silph_co_elevator",
+  "name": "Silph Co.",
+  "bgmTrack": "kanto/silph",
+  "doors": [ { "warp": 0, "map": "SilphCo_1F", "x": 22, "y": 4, "facing": "Down" } ],
+  "read": {
+    "SilphCo_Elevator_EventScript_FloorSelect": "Panel"
+  }
+}

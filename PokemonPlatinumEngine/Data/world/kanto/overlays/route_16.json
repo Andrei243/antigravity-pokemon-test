@@ -1,0 +1,22 @@
+{
+  // Route 16 (plan 19 · K5, part b), west of Celadon City: the Snorlax asleep across its lower lane, the bikers past
+  // the gate and the house where HM02 is given (route_16.txt). Route 17, the Cycling Road, is K6's
+  "area": "route_16",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "snorlax": { "name": "Snorlax", "script": "Snorlax", "still": true },
+    "biker": { "name": "Lao", "trainer": { "dialogueBefore": "Biker Lao: What're you looking at? You wanna race?", "dialogueAfter": "Biker Lao: Aw, man. I got left in the dust." } },
+    "biker_2": { "name": "Koji", "trainer": { "dialogueBefore": "Cue Ball Koji: This road's ours! Pay the toll or battle!", "dialogueAfter": "Cue Ball Koji: Okay, okay, no toll for you." } },
+    "biker_3": { "name": "Luke", "trainer": { "dialogueBefore": "Cue Ball Luke: Nobody passes without a fight. That's the rule round here!", "dialogueAfter": "Cue Ball Luke: Fine. Pass." } },
+    "biker_4": { "name": "Ruben", "trainer": { "dialogueBefore": "Biker Ruben: Hey kid! Ever hear an engine roar like my Pokémon?", "dialogueAfter": "Biker Ruben: My engine stalled." } },
+    "biker_5": { "name": "Hideo", "trainer": { "dialogueBefore": "Biker Hideo: We're the toughest gang on the Cycling Road!", "dialogueAfter": "Biker Hideo: Not so tough, it turns out." } },
+    "biker_6": { "name": "Camron", "trainer": { "dialogueBefore": "Cue Ball Camron: You've got guts coming down here alone!", "dialogueAfter": "Cue Ball Camron: Guts and a strong team, apparently." } },
+    "beauty": { "name": "Lea", "trainer": { "dialogueBefore": "Young Couple Lea and Jed: We're on a date! Battle us together, if you dare!", "dialogueAfter": "Young Couple Lea and Jed: Losing together isn't so bad." } },
+    "man": { "name": "Jed", "trainer": { "dialogueBefore": "Young Couple Lea and Jed: We're on a date! Battle us together, if you dare!", "dialogueAfter": "Young Couple Lea and Jed: Losing together isn't so bad." } }
+  },
+  "signs": {
+    "Route16_EventScript_RouteSign": "Route 16\nCeladon City - Fuchsia City",
+    "Route16_EventScript_CyclingRoadSign": "Cycling Road\nNo pedestrians allowed!"
+  }
+}

@@ -1,21 +1,36 @@
-# The gate between Route 7 and Saffron City (plan 19 · K5, part a). docs/scripts.md describes the language; the lines
-# are our own, on FireRed's beats (data/maps/Route7_EastEntrance/scripts.inc).
+# The gate between Route 7 and Saffron City (plan 19 · K5, parts a and b). docs/scripts.md describes the language;
+# the lines are our own, on FireRed's beats (data/maps/Route7_EastEntrance/scripts.inc).
 #
 # The guard is thirsty on duty and turns everyone back from the three steps before him (the area's triggers 0 to 2,
-# on VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES 0). FireRed lets through whoever brings him the Tea that Celadon
-# City's old lady gives; Celadon City and Saffron City beyond are part b's, so until then the gate stays shut.
+# on VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES 0). Whoever brings the Tea that Celadon City's old lady gives
+# (FLAG_GOT_TEA, celadon_city_condominiums_1f.txt) hands it over: he drinks, shares it with the other three gates'
+# guards, and lets everyone through from then on (the variable 1, which ends the four gates' triggers).
 
 
 script Guard
   face player up
   speaker "Guard"
+  if item "Tea" goto Tea
   say "I'm on guard duty, and I'm parched! I'm not letting anyone through until I've had a drink."
   walk player left 1
+  end
+label Tea
+  scene "Tea"
+  say "I'm on guard duty, and I'm parched! Hey, is that tea you've got there?"
+  take "Tea"
+  text "{player} gave the guard the Tea."
+  say "Glug, glug... That's better! I'll pass some along to the other gates. On you go!"
+  setvar VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES 1
+  endscene
   end
 
 
 script GuardTalk
   face policeman player
   speaker "Guard"
+  if var VAR_MAP_SCENE_ROUTE5_ROUTE6_ROUTE7_ROUTE8_GATES == 1 goto Open
   say "Hi there. Saffron City's closed to travellers for now. Sorry about that."
+  end
+label Open
+  say "That tea was delicious. Enjoy Saffron City!"
   end

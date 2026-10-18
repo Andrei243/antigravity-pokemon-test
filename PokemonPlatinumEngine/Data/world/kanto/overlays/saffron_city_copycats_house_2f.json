@@ -1,0 +1,15 @@
+{
+  // Copycat's room upstairs (plan 19 · K5, part b). Her trade of a TM for a Poké Doll is left for a later session
+  "area": "saffron_city_copycats_house_2f",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "little_girl": { "name": "Copycat", "dialog": [ "Hi! Do you like Pokémon? I do! See? I'm copying you. Hee hee!" ] },
+    "doduo": { "name": "Doduo", "dialog": [ "Doo doo!" ] },
+    "pikachu": { "name": "Doll", "dialog": [ "A Pikachu doll. It's very soft." ] },
+    "jigglypuff": { "name": "Doll", "dialog": [ "A Jigglypuff doll, round as a ball." ] }
+  },
+  "signs": {
+    "SaffronCity_CopycatsHouse_2F_EventScript_Computer": "A computer with a diary on it. Today I copied a Clefairy!",
+    "SaffronCity_CopycatsHouse_2F_EventScript_Game": "A game about a trainer copying moves. Fitting."
+  }
+}
