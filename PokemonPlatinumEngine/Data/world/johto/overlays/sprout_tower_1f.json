@@ -1,0 +1,34 @@
+{
+  // Sprout Tower's ground floor (plan 20 · J4), HeartGold's room: the visitors, two Sages who only talk, and Chow, who
+  // battles by his own record (Johto's trainers.json)
+  "area": "sprout_tower_1f",
+  "bgmTrack": "johto/sprout_tower",
+  "people": {
+    "d15r0101_gsoldwoman1": {
+      "name": "Old Woman",
+      "dialog": [ "I come here every morning to hear the pillar creak. It sounds like the tower is breathing." ]
+    },
+    "d15r0101_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "They say a Bellsprout as tall as the sky was turned into the pillar in the middle of this tower.",
+        "That's why it bends with the wind, like a Bellsprout does."
+      ]
+    },
+    "d15r0101_bozu": {
+      "name": "Sage",
+      "dialog": [ "The Sages of this tower train with Bellsprout. Their bodies bend, but their spirits never do." ]
+    },
+    "d15r0101_bozu_2": {
+      "name": "Sage",
+      "dialog": [ "The Elder waits at the very top. Only trainers whose Pokémon trust them reach him." ]
+    },
+    "d15r0101_bozu_3": {
+      "name": "Chow",
+      "trainer": {
+        "dialogueBefore": "Sage Chow: Welcome to Sprout Tower. Let our battle be your first step upward!",
+        "dialogueAfter": "Sage Chow: A fine first step. The stairs are that way."
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+# Cherrygrove City (plan 20 · J4). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_T21).
+#
+# VAR_SCENE_CHERRYGROVE_CITY_OW, as HeartGold counts it: 0 until the Guide Gent has stopped the player at the town's
+# east edge, 1 after (whether or not the tour was taken), 3 once Elm has rung about the theft (Mr. Pokémon's house sets
+# it), when the red-haired boy waits at the same edge for whoever comes back, 4 once he has battled. His team is
+# HeartGold's for the starter he took, the one strong against the player's.
+
+
+# The old man by the Pokémon Center (HeartGold's T21_001, the area's trigger 0, on 0), and spoken to afterwards.
+script GuideGentStops
+  setvar VAR_SCENE_CHERRYGROVE_CITY_OW 1
+  call GuideGent
+  end
+
+
+script GuideGent
+  if flag FLAG_GOT_MAP_CARD goto Done
+  scene "The Guide Gent"
+  face t21_gsoldman1 player
+  speaker "Guide Gent"
+  say "You're a new face! Starting out on a journey, are you? I can always tell."
+  ask "Shall I show you round Cherrygrove? I know every corner of it."
+  if no goto Refused
+  say "Splendid! Follow me, then."
+  fade out
+  text "The Guide Gent showed {player} the Pokémon Center, where tired Pokémon are made well for nothing,"
+  text "and the Mart, where Poké Balls and Potions are sold, and the sea, which nobody crosses without a swimmer."
+  place player 558 402 up
+  place t21_gsoldman1 559 402 left
+  fade in
+  say "And this is my house. Thank you for listening to an old man ramble! Here, a little something for your trouble."
+  setflag FLAG_GOT_MAP_CARD
+  fanfare keyitem
+  text "{player}'s Pokégear now has a Map Card!"
+  say "It shows the whole of Johto, and where you are on it. Off you go, and safe travels!"
+  setflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
+  hide t21_gsoldman1
+  endscene
+  end
+label Refused
+  say "No? Well, a traveller likes to find their own way. Speak to me if you change your mind."
+  endscene
+  end
+label Done
+  speaker "Guide Gent"
+  say "How's that Map Card treating you? Johto's a big place, but you'll never be lost."
+  end
+
+
+# Back from Mr. Pokémon's (HeartGold's T21_003, the area's trigger 1, on 3): the red-haired boy steps into the
+# player's way, battles, and runs off east. The battle may be lost.
+script RivalAmbush
+  scene "The red-haired boy"
+  music "johto/rival"
+  speaker "???"
+  say "Hold it. You're the one with the Pokémon from that lab, aren't you?"
+  if var PLAYER_Y == 398 goto At398
+  if var PLAYER_Y == 399 goto At399
+  if var PLAYER_Y == 400 goto At400
+  place t21_gsrivel 574 401 right
+  goto Placed
+label At398
+  place t21_gsrivel 574 398 right
+  goto Placed
+label At399
+  place t21_gsrivel 574 399 right
+  goto Placed
+label At400
+  place t21_gsrivel 574 400 right
+label Placed
+  show t21_gsrivel
+  face player left
+  say "A waste on someone like you. I've got a good Pokémon too, now. Let me show you what a real trainer does with one!"
+  if starter "Chikorita" goto VsCyndaquil
+  if starter "Cyndaquil" goto VsTotodile
+  battle t21_gsrivel as "johto_rival_silver_6" first canlose
+  goto After
+label VsCyndaquil
+  battle t21_gsrivel as "johto_rival_silver_2" first canlose
+  goto After
+label VsTotodile
+  battle t21_gsrivel as "johto_rival_silver_3" first canlose
+label After
+  speaker "{rival}"
+  if lost goto Lost
+  say "Tch. Just luck. My Pokémon isn't used to me yet, that's all."
+  setflag FLAG_BEAT_RIVAL_IN_CHERRYGROVE
+  goto Leave
+label Lost
+  say "Ha! You see? Weak trainers don't deserve good Pokémon."
+label Leave
+  heal
+  say "...My name? It's {rival}. Remember it. I'm going to be the world's greatest trainer."
+  walk t21_gsrivel left 3 fast
+  hide t21_gsrivel
+  setflag FLAG_HIDE_CHERRYGROVE_RIVAL
+  music area
+  setvar VAR_SCENE_CHERRYGROVE_CITY_OW 4
+  endscene
+  end

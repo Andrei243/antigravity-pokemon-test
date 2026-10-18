@@ -1,0 +1,49 @@
+# The player's house downstairs in New Bark Town (plan 20 · J4). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_T20R0201).
+#
+# VAR_SCENE_PLAYERS_HOUSE_1F: 0 until Mom has had her word on the first morning, 1 after. The first time the player
+# comes down, Mom gets up from the table: Professor Elm has been asking for them, and here is the Pokégear, mended at
+# last (FLAG_GOT_POKEGEAR; the Pokégear itself is plan 20 · J3's, and until it is built the flag is all it is).
+
+
+script OnEnter
+  if var VAR_SCENE_PLAYERS_HOUSE_1F != 0 end
+  scene "Mom and the Pokegear"
+  face player down
+  speaker "Mom"
+  say "Oh, {player}! You're finally up."
+  walk t20r0201_gsmama up 3 left 2
+  face t20r0201_gsmama up
+  say "Professor Elm came by while you were asleep. He said he has a favour to ask you, and that it couldn't wait."
+  say "And before I forget, this came back from the repair shop. Your Pokégear!"
+  setflag FLAG_GOT_POKEGEAR
+  fanfare keyitem
+  text "{player} received the Pokégear!"
+  say "It's a phone and a clock and a map all in one. Keep it with you, so I can always reach you."
+  say "Now off you go. The professor's lab is just down the lane. Don't keep him waiting!"
+  walk t20r0201_gsmama right 2 down 3
+  face t20r0201_gsmama right
+  setvar VAR_SCENE_PLAYERS_HOUSE_1F 1
+  endscene
+  end
+
+
+# Mom at the table: a word by how far the chapter has come, and a rest for the team whenever it has one.
+script Mom
+  speaker "Mom"
+  if not flag FLAG_GOT_STARTER goto NoPokemon
+  if badge zephyr goto Badge
+  say "Back already? You look tired out. Sit down for a minute."
+  heal
+  fanfare heal
+  say "There, all better. Take care of each other out there, won't you?"
+  end
+label NoPokemon
+  say "Professor Elm is waiting for you at his lab. It's the big building up the lane."
+  end
+label Badge
+  say "A Badge from Violet City! I'm so proud of you. Let your Pokémon rest a moment."
+  heal
+  fanfare heal
+  say "There. Go on, then. Johto is a big place, and you've only just started."
+  end

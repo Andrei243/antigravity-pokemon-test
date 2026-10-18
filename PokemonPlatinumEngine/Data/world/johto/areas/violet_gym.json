@@ -1,0 +1,34 @@
+{
+  "key": "violet_gym",
+  "index": 135,
+  "name": "Violet City",
+  "matrix": 87,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "1",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 28, "to": "violet", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "t22gym0101_gsleader1", "looks": "gsleader1", "movement": "15", "x": 15, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VIOLET_GYM_FALKNER", "script": "T22GYM0101_001+1" },
+    { "id": "t22gym0101_gsman2", "looks": "gsman2", "movement": "0", "x": 12, "z": 15, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BIRD_KEEPER_GS_ABE" },
+    { "id": "t22gym0101_gsman2_2", "looks": "gsman2", "movement": "0", "x": 18, "z": 11, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BIRD_KEEPER_GS_ROD" },
+    { "id": "t22gym0101_sunglasses", "looks": "sunglasses", "movement": "15", "x": 17, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT", "script": "T22GYM0101_002+1" },
+    { "id": "t22gym0101_sunglasses_2", "looks": "sunglasses", "movement": "15", "x": 15, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT", "script": "T22GYM0101_005+1" }
+  ],
+  "signs": [
+    { "x": 12, "z": 26, "type": 0, "script": "T22GYM0101_003+1" },
+    { "x": 18, "z": 26, "type": 0, "script": "T22GYM0101_003+1" }
+  ],
+  "triggers": [
+    { "x": 15, "z": 20, "width": 1, "depth": 1, "script": "T22GYM0101_004+1", "variable": "VAR_TEMP_x4000", "value": "0" }
+  ]
+}

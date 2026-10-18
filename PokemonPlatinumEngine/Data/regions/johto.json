@@ -5,7 +5,7 @@
   "map": "Johto",
   "dex": "updated-johto",
   "nationalUnlock": "HallOfFame",
-  "hasStory": false,
+  "hasStory": true,
   "rival": "Silver",
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },
   "starters": [ "Chikorita", "Cyndaquil", "Totodile" ],

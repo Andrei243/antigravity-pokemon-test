@@ -1,0 +1,12 @@
+# Violet City (plan 20 · J4). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T22).
+
+
+# The man by the Gym, who knows where Falkner goes to train.
+script FatMan
+  if badge zephyr goto Won
+  say "Falkner trains at Sprout Tower now and then. If the monks there can't stop you, maybe he can't either!"
+  end
+label Won
+  say "You beat Falkner? Then the Zephyr Badge is yours. Violet City will be talking about it for weeks!"
+  end

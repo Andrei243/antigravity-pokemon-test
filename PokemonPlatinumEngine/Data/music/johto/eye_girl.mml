@@ -1,0 +1,22 @@
+# A girl of Johto spots the player (Lasses, Picnickers, Beauties and their like; HeartGold's girls' eye theme): a
+# sweet, swaying celesta tune in F over soft strings. Original composition for this game (plan 20 · J4).
+title Eyes Meet: Girl (Johto)
+tempo 132
+meter 4/4
+reverb 0.24
+night none
+
+track lead celesta vol=0.74 pan=0.05 rev=0.26
+  o5 c4 f4 a4 o6 c4 | L o5 a4 o6 c8 o5 a8 g4 f4 | o5 b-4 o6 d8 o5 b-8 a4 g4 |
+  o5 a4 f8 a8 o6 c4 o5 a4 | o5 g4 e4 f2 |
+
+track pad strings vol=0.28 pan=-0.25 rev=0.28
+  o4 (f a c)1 | L (f a c)1 | (d g b-)1 |
+  (f a c)1 | (c e g)2 (f a c)2 |
+
+track bass bass vol=0.56 rev=0.08
+  o3 f4 c4 f4 c4 | L o3 f4 c4 f4 c4 | o3 g4 d4 g4 d4 |
+  o3 f4 c4 f4 c4 | o3 c4 g4 f4 c4 |
+
+track drums kit vol=0.34 rev=0.12
+  v80 b4 k4 s4 k4 | L [ b4 k8 k8 s4 k4 | ]4

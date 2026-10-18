@@ -334,10 +334,12 @@ public static class RegionDatabase
         new()
         {
             Id = Johto, Name = "Johto", Generation = 2, File = RegionFiles.Load(Johto),
-            // HeartGold's Johto, read by the second DS reader (plan 20 · J2): a new game begun there, and a Champion of
-            // Kanto who sails on, stands before the player's house in New Bark Town (plan 20's decision 1), on the
-            // region's own overworld, Johto and Kanto on one grid
-            Start = new MapSpot("Johto", 695, 397, Direction.Down),
+            // HeartGold's Johto, read by the second DS reader (plan 20 · J2). A new game begun there wakes in the
+            // player's room upstairs in New Bark Town with nothing, as HeartGold's does (plan 20 · J4, the chapter); a
+            // Champion of Kanto who sails on stands before the player's house (plan 20's decision 1), on the region's
+            // own overworld, Johto and Kanto on one grid
+            Start = new MapSpot("NewBark_PlayersHouse_2F", 4, 9, Direction.Up),
+            Arrival = new MapSpot("Johto", 695, 397, Direction.Down),
             Maps = new[]
             {
                 "Johto",
@@ -350,6 +352,9 @@ public static class RegionDatabase
                 // and Violet City's
                 "Violet_PokemonCenter_1F", "Violet_PokemonCenter_B1F", "Violet_Mart", "Violet_PokemonSchool",
                 "Violet_NorthwestHouse", "Violet_TradeHouse", "Violet_Route36Gate",
+                // Plan 20 · J2, part b: Violet's Gym, Sprout Tower, Route 32's Pokémon Center and gate house
+                "Violet_Gym", "SproutTower_1F", "SproutTower_2F", "SproutTower_3F",
+                "Route32_PokemonCenter_1F", "Route32_PokemonCenter_B1F", "Route32_RuinsOfAlphGate",
             }
         },
         new() { Id = Hoenn, Name = "Hoenn", Generation = 3 },

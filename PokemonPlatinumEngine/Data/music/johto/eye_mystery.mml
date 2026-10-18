@@ -1,0 +1,23 @@
+# A Sage, a Medium or a Kimono Girl of Johto spots the player (HeartGold's eye theme for the old towers' trainers): a
+# hushed koto-like pluck in D on five notes, with a temple bell. Original composition for this game (plan 20 · J4).
+title Eyes Meet: Sage (Johto)
+tempo 112
+meter 4/4
+reverb 0.36
+night none
+
+track lead harp vol=0.74 pan=0.05 rev=0.36
+  o5 d8 e8 f+8 a8 b4 a4 | L o5 a8 b8 a8 f+8 e4 d4 | o5 e8 f+8 a8 b8 a4 f+4 |
+  o5 d8 f+8 a8 b8 o6 d4 o5 b4 | o5 a4 f+4 d2 |
+
+track bell bell vol=0.35 pan=-0.3 rev=0.44
+  o5 d2 r2 | L o5 d2 r2 | o5 a2 r2 |
+  o5 d2 r2 | o5 a2 d2 |
+
+track pad strings vol=0.22 pan=0.25 rev=0.4
+  o3 (d a)1 | L (d a)1 | (d a)1 |
+  (d a)1 | (d a)1 |
+
+track bass contrabass vol=0.48 rev=0.2
+  o3 d2 a2 | L o3 d2 a2 | o3 d2 a2 |
+  o3 d2 a2 | o3 d2 a2 |

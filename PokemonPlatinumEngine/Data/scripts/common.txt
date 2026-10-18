@@ -1196,3 +1196,51 @@ script KantoOpeningDone
   setflag FLAG_HIDE_SQUIRTLE_BALL
   setflag FLAG_HAS_POKEDEX
   return
+
+
+# ------------------------------------------------------------------ Johto (plan 20 · J4)
+
+# What every game starts with in Johto, as HeartGold's new game sets it, for the people of the first chapter: the
+# rival hidden everywhere but at Elm's window, Mom indoors until she runs out with the Running Shoes, the policeman out
+# of the lab until the theft, the friend by Elm's house door and on Route 29 until the catching lesson, Sprout Tower's
+# red-haired boy until his scene, the Gym's second guide until the tower is climbed, and Elm's aide out of Violet
+# City's Pokémon Center until the Zephyr Badge. Run with no screen after NewGame for every new game
+# (Story/StoryMigration.BeginNewGame runs each region's <Region>NewGame), and for a save from before Johto's story was
+# written (version 21). It may only set flags and variables, and ends in return.
+script JohtoNewGame
+  setflag FLAG_HIDE_NEW_BARK_MOM
+  setflag FLAG_HIDE_NEW_BARK_FRIEND
+  setflag FLAG_HIDE_NEW_BARK_MARILL
+  setflag FLAG_HIDE_ELMS_LAB_OFFICER
+  setflag FLAG_HIDE_ELMS_LAB_FRIEND
+  setflag FLAG_HIDE_CHERRYGROVE_RIVAL
+  setflag FLAG_HIDE_ROUTE_29_FRIEND
+  setflag FLAG_HIDE_ROUTE_29_MARILL
+  setflag FLAG_HIDE_SPROUT_TOWER_RIVAL
+  setflag FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
+  setflag FLAG_HIDE_VIOLET_POKECENTER_AIDE
+  return
+
+
+# What Johto's first steps leave behind once they are played (plan 20 · J4): run with no screen for a save of Johto
+# from before its story was written, whose game began in front of the player's house with a Chikorita and a few items
+# already (Story/StoryMigration.cs, version 21). Mom has had her word, the starter is chosen, the errand run, the
+# rival met, the Egg handed over, the Pokédex had and the lesson given.
+script JohtoOpeningDone
+  setvar VAR_SCENE_PLAYERS_HOUSE_1F 1
+  setvar VAR_SCENE_ELMS_LAB 4
+  setvar VAR_SCENE_NEW_BARK_TOWN_OW 2
+  setvar VAR_SCENE_NEW_BARK_WEST_EXIT 1
+  setvar VAR_SCENE_CHERRYGROVE_CITY_OW 4
+  setvar VAR_UNK_408B 2
+  setflag FLAG_GOT_POKEGEAR
+  setflag FLAG_GOT_STARTER
+  setflag FLAG_GOT_MAP_CARD
+  setflag FLAG_GOT_MYSTERY_EGG
+  setflag FLAG_GAVE_MYSTERY_EGG_TO_ELM
+  setflag FLAG_HIDE_NEW_BARK_RIVAL
+  setflag FLAG_HIDE_MR_POKEMONS_HOUSE_OAK
+  setflag FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
+  setflag FLAG_HAS_POKEDEX
+  setflag FLAG_HAS_RUNNING_SHOES
+  return

@@ -1,0 +1,36 @@
+{
+  "key": "sprout_tower_1f",
+  "index": 110,
+  "name": "Sprout Tower",
+  "matrix": 12,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_MADATSUBOMI1",
+  "nightMusic": "GS_TO_MADATSUBOMI1",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 15, "z": 28, "to": "violet", "toWarp": 5 },
+    { "x": 10, "z": 15, "to": "sprout_tower_2f", "toWarp": 0 },
+    { "x": 24, "z": 9, "to": "sprout_tower_2f", "toWarp": 1 },
+    { "x": 6, "z": 16, "to": "sprout_tower_2f", "toWarp": 2 },
+    { "x": 6, "z": 15, "to": "sprout_tower_2f", "toWarp": 2 },
+    { "x": 10, "z": 14, "to": "sprout_tower_2f", "toWarp": 0 },
+    { "x": 24, "z": 8, "to": "sprout_tower_2f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "d15r0101_gsoldwoman1", "looks": "gsoldwoman1", "movement": "16", "x": 17, "z": 24, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D15R0101_001+1" },
+    { "id": "d15r0101_gswoman1", "looks": "gswoman1", "movement": "14", "x": 15, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D15R0101_002+1" },
+    { "id": "d15r0101_bozu", "looks": "bozu", "movement": "16", "x": 11, "z": 19, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D15R0101_003+1" },
+    { "id": "d15r0101_bozu_2", "looks": "bozu", "movement": "15", "x": 11, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D15R0101_004+1" },
+    { "id": "d15r0101_bozu_3", "looks": "bozu", "movement": "17", "x": 5, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_SAGE_CHOW" },
+    { "id": "d15r0101_monstarball", "looks": "monstarball", "movement": "0", "x": 24, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D15R0101_PARLYZ_HEAL", "item": "Paralyze Heal", "script": "std_itemball_d15r0101_parlyz_heal" }
+  ],
+  "signs": [],
+  "triggers": []
+}

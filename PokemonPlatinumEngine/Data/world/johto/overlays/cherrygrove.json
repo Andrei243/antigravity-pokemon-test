@@ -1,18 +1,15 @@
 {
-  // Cherrygrove City (plan 20 · J2): HeartGold's map, our words. The Guide Gent's tour, the rival's challenge north of
-  // town and their triggers are plan 20 · J4's
+  // Cherrygrove City (plan 20 · J2): HeartGold's map, our words. Since plan 20 · J4 (cherrygrove.txt): the Guide
+  // Gent's tour and his Map Card at the town's east edge, and the red-haired boy who waits there on the way back from
+  // Mr. Pokémon's. HeartGold's third trigger (the north way out, on 1) and the cameraman are later chapters'
   "area": "cherrygrove",
   "bgmTrack": "johto/cherrygrove",
   "trees": "Round",
   "architecture": "Bayside",
+  "triggers": [ { "trigger": 0, "script": "GuideGentStops" }, { "trigger": 1, "script": "RivalAmbush" } ],
   "people": {
-    "t21_gsoldman1": {
-      "name": "Old Man",
-      "dialog": [
-        "You're new in town, aren't you? I can always tell.",
-        "The Pokémon Center has the red roof, and the Mart's the blue one beside it. Can't miss them."
-      ]
-    },
+    "t21_gsoldman1": { "name": "Guide Gent", "script": "GuideGent", "still": true },
+    "t21_gsrivel": { "name": "{rival}", "still": true, "dialog": [ "Get lost." ] },
     "t21_gsboy1": {
       "name": "Boy",
       "dialog": [ "The Mart sells Poké Balls now! I'm going to save up for ten." ]

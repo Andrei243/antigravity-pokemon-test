@@ -1,0 +1,21 @@
+{
+  // The gate house between Route 32 and the Ruins of Alph (plan 20 · J2, part b). The way on into the Ruins (warp 1)
+  // stays shut until the Ruins are opened
+  "area": "route_32_ruins_of_alph_gatehouse",
+  "bgmTrack": "johto/route30",
+  "locked": [ 1 ],
+  "people": {
+    "r32r0101_counterm": {
+      "name": "Officer",
+      "dialog": [ "The Ruins of Alph are through here, but the scientists have closed them for now while they work." ]
+    },
+    "r32r0101_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "There are strange carvings in the Ruins. My dad says they're letters, but nobody can read them." ]
+    },
+    "r32r0101_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [ "The Ruins are older than Violet City, they say. Older than anyone can work out." ]
+    }
+  }
+}

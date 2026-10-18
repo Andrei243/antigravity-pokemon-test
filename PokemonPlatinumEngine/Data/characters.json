@@ -211,7 +211,15 @@
     "shopm1_2": "Clerk",
     "counterm": "Clerk",
     "delivery": "Clerk",
-    "delivery2": "Clerk"
+    "delivery2": "Clerk",
+    // Plan 20 · J4: Sprout Tower, Violet's Gym and Route 32
+    "bozu": "Gentleman",
+    "chourou": "Gentleman",
+    "gsleader1": "Youngster",
+    "sunglasses": "Gentleman",
+    "picnicgirl_2": "Lass",
+    "campboy_2": "Youngster",
+    "fishing_2": "Gentleman"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field

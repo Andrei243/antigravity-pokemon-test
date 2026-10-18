@@ -1,15 +1,10 @@
 {
-  // Mr. Pokémon's house at the north end of Route 30 (plan 20 · J2). The Mystery Egg and Professor Oak's visit are
-  // plan 20 · J4's scene; until then Mr. Pokémon only talks
+  // Mr. Pokémon's house at the north end of Route 30 (plan 20 · J2). Since plan 20 · J4 (route_30_mr_pokemon_house.txt)
+  // the errand ends here: the Mystery Egg, Professor Oak's visit and the Pokédex, and Elm's call about the theft
   "area": "route_30_mr_pokemon_house",
   "bgmTrack": "johto/route30",
   "people": {
-    "r30r0201_gsgentleman": {
-      "name": "Mr. Pokémon",
-      "dialog": [
-        "Hello, hello! Have a look round. Everything in here came from my travels.",
-        "That coin over there is from a country so far away I've forgotten its name."
-      ]
-    }
+    "r30r0201_gsgentleman": { "name": "Mr. Pokémon", "script": "MrPokemon", "still": true },
+    "r30r0201_ookido": { "name": "Prof. Oak", "still": true, "dialog": [ "Fill in that Pokédex as you travel!" ] }
   }
 }

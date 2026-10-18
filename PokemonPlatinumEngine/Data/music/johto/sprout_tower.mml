@@ -1,0 +1,23 @@
+# Sprout Tower's floors: slow and calm, a flute on five notes in D over a plucked harp and a soft gong of a bass,
+# the pillar's sway in the bass's swing. Original composition for this game (plan 20 · J4).
+title Sprout Tower
+tempo 76
+meter 4/4
+reverb 0.4
+nighttempo 0.95
+
+track lead flute night=ocarina vol=0.66 pan=0 rev=0.42
+  L o5 d4 e8 f+8 a4 f+4 | o5 e4 d8 e8 b4. r8 | o5 a4 b8 a8 f+4 e4 | o5 d2. r4 |
+  o5 f+4 a8 b8 o6 d4 o5 b4 | o5 a4 f+8 e8 d4 e4 | o5 f+4 e8 d8 b4 a4 | o5 d2. r4 |
+
+track pluck harp night=pizzicato vol=0.4 pan=-0.25 rev=0.36
+  L o4 d4 a4 o5 d4 o4 a4 | o4 e4 b4 o5 e4 o4 b4 | o4 d4 a4 o5 d4 o4 a4 | o4 d4 a4 o5 d4 o4 a4 |
+  o4 d4 a4 o5 d4 o4 a4 | o4 d4 a4 o5 d4 o4 a4 | o4 e4 b4 o5 e4 o4 b4 | o4 d4 a4 o5 d4 o4 a4 |
+
+track pad strings night=pad vol=0.24 pan=0.25 rev=0.46
+  L o3 (d a)1 | (e b)1 | (d a)1 | (d a)1 |
+  (d a)1 | (d a)1 | (e b)1 | (d a)1 |
+
+track bass contrabass vol=0.5 rev=0.2
+  L o3 d2 a2 | o3 e2 b2 | o3 d2 a2 | o3 d2 a2 |
+  o3 d2 a2 | o3 d2 a2 | o3 e2 b2 | o3 d2 a2 |

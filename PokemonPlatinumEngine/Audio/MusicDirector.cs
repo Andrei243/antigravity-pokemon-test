@@ -203,6 +203,14 @@ public static class MusicDirector
                 [MusicRole.VictoryGalactic] = MusicRole.VictoryTrainer,
                 [MusicRole.VictoryGalacticBoss] = MusicRole.VictoryTrainer,
                 [MusicRole.VictoryEliteFour] = MusicRole.VictoryGymLeader
+            },
+            // HeartGold wins over Team Rocket to the trainers' victory, and its boss's battle is the Rocket theme until
+            // a later chapter of plan 20 brings his own (plan 20 · J4)
+            ["Johto"] = new Dictionary<MusicRole, MusicRole>
+            {
+                [MusicRole.BattleGalacticBoss] = MusicRole.BattleGalactic,
+                [MusicRole.VictoryGalactic] = MusicRole.VictoryTrainer,
+                [MusicRole.VictoryGalacticBoss] = MusicRole.VictoryTrainer
             }
         };
 

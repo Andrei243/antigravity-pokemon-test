@@ -1,12 +1,11 @@
 {
-  // Violet City (plan 20 · J2): HeartGold's map, our words. Its Gym (warp 2) is shut until Falkner's chapter, plan 20
-  // · J4; Sprout Tower (warp 5) and Route 36 beyond its gate house wait for J5, and the town's one trigger (the
-  // rival before the tower) and the Kimono Girl are the story's. The Apricorn tree is J6's
+  // Violet City (plan 20 · J2): HeartGold's map, our words. Its Gym and Sprout Tower are open since plan 20 · J4;
+  // Route 36 beyond its gate house waits for J5, and the town's one trigger (before the tower) and the Kimono Girl are
+  // later chapters'. The Apricorn tree is J6's
   "area": "violet",
   "bgmTrack": "johto/violet",
   "trees": "Round",
   "architecture": "OldTimber",
-  "locked": [ 2 ],
   "people": {
     "t22_gsgirl3": {
       "name": "Girl",
@@ -21,6 +20,7 @@
     },
     "t22_gsbigman": {
       "name": "Fat Man",
+      "script": "FatMan",
       "dialog": [ "The Gym's Leader is out today, so the door's shut. He'll be back once the tower's monks are done with him." ]
     },
     "t22_gsoldwoman1": {

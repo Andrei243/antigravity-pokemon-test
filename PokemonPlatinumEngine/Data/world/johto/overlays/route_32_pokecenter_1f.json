@@ -1,0 +1,31 @@
+{
+  // Route 32's Pokémon Center (plan 20 · J2, part b), the Centers' floor with the route's people. The counters for
+  // the link say it is closed, as in every Center (decision 06 · 7); the fisherman gives the Old Rod
+  // (route_32_pokecenter_1f.txt)
+  "area": "route_32_pokecenter_1f",
+  "bgmTrack": "johto/violet",
+  "people": {
+    "r32pc0101_pcwoman1": { "name": "Nurse", "script": "Nurse" },
+    "r32pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [ "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu." ]
+    },
+    "r32pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "r32pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "r32pc0101_fishing_2": { "name": "Fishing Guru", "script": "Fisherman", "still": true },
+    "r32pc0101_gswoman3": {
+      "name": "Woman",
+      "dialog": [ "Union Cave is south of here. It's dark and damp, and full of Zubat. I always run straight through." ]
+    },
+    "r32pc0101_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [ "I walked all the way from Azalea Town. My feet ache, but my Pokémon are full of beans!" ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "route_32_ruins_of_alph_gatehouse",
+  "index": 98,
+  "name": "Route 32",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_2_30",
+  "nightMusic": "GS_R_2_30",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 7, "to": "route_32", "toWarp": 0 },
+    { "x": 1, "z": 7, "to": "ruins_of_alph", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "r32r0101_counterm", "looks": "counterm", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R32R0101_001+1" },
+    { "id": "r32r0101_gsboy1", "looks": "gsboy1", "movement": "5", "x": 3, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "R32R0101_002+1" },
+    { "id": "r32r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 9, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R32R0101_003+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

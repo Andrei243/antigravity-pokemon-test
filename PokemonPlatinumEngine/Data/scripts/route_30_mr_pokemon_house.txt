@@ -1,0 +1,61 @@
+# Mr. Pokémon's house at the north end of Route 30 (plan 20 · J4). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_R30R0201).
+#
+# The errand's end: Mr. Pokémon hands over the Mystery Egg (FLAG_GOT_MYSTERY_EGG: a thing of the story here, no item
+# in the bag, until a Johto key item of its own is wanted; docs/mechanics/rulings.md, "Johto's first chapter"),
+# Professor Oak, visiting, gives the Pokédex and leaves, and Elm rings about the theft: the lab, the rival north of
+# Cherrygrove City and the policeman are set for the way back (VAR_SCENE_ELMS_LAB 3).
+
+
+script OnEnter
+  if flag FLAG_GOT_MYSTERY_EGG end
+  if var VAR_SCENE_ELMS_LAB < 1 end
+  scene "The Mystery Egg"
+  face r30r0201_gsgentleman player
+  speaker "Mr. Pokémon"
+  say "Hello, hello! You must be {player}. Elm told me you'd be coming in his place. Do come in!"
+  say "This is what I wanted him to see. A friend of mine in the south found it and passed it to me."
+  say "It's an Egg! Or at least, everyone I've asked says it must be. Nobody can tell me what's inside."
+  say "Elm is the man for Pokémon Eggs. Would you take it back to him?"
+  setflag FLAG_GOT_MYSTERY_EGG
+  fanfare keyitem
+  text "{player} received the Mystery Egg!"
+  face r30r0201_ookido player
+  speaker "Prof. Oak"
+  say "So you're the one Elm trusted with his errand. I'm Oak. I study Pokémon too, over in Kanto."
+  say "I happened to be passing through on the way to Goldenrod. I do a little radio show there, you see."
+  say "That {starter} of yours looks very happy with you. You two will go far together."
+  say "Here. I think you'll put this to better use than I could. It's a Pokédex."
+  setflag FLAG_HAS_POKEDEX
+  fanfare keyitem
+  text "{player} received the Pokédex from Professor Oak!"
+  say "It records every Pokémon you meet. Fill it in as you travel, and come and show me some day!"
+  say "Well, I must be off. My show won't present itself."
+  hide r30r0201_ookido
+  setflag FLAG_HIDE_MR_POKEMONS_HOUSE_OAK
+  face r30r0201_gsgentleman player
+  speaker "Mr. Pokémon"
+  say "Your Pokémon looks worn out from the road. Let it rest a moment."
+  heal
+  fanfare heal
+  sound "select"
+  text "Brrrring! Brrrring! It's the Pokégear..."
+  speaker "Prof. Elm"
+  say "{player}?! Thank goodness. Something terrible has happened! Come back to the lab as soon as you can!"
+  text "Click... The call has ended."
+  setvar VAR_SCENE_ELMS_LAB 3
+  setvar VAR_SCENE_CHERRYGROVE_CITY_OW 3
+  clearflag FLAG_HIDE_ELMS_LAB_OFFICER
+  endscene
+  end
+
+
+# Mr. Pokémon afterwards.
+script MrPokemon
+  speaker "Mr. Pokémon"
+  if flag FLAG_GOT_MYSTERY_EGG goto After
+  say "Hello, hello! Have a look round. Everything in here came from my travels."
+  end
+label After
+  say "Elm will get to the bottom of that Egg, mark my words. Do come and tell me what hatches!"
+  end

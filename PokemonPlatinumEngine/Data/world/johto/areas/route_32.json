@@ -1,0 +1,103 @@
+{
+  "key": "route_32",
+  "index": 36,
+  "name": "Route 32",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_2_30",
+  "nightMusic": "GS_R_2_30",
+  "encounters": "R32",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Bellsprout", "level": 6, "night": "Wooper" },
+    { "species": "Rattata", "level": 4 },
+    { "species": "Bellsprout", "level": 6, "night": "Wooper" },
+    { "species": "Rattata", "level": 4 },
+    { "species": "Mareep", "level": 6, "night": "Bellsprout" },
+    { "species": "Mareep", "level": 6, "night": "Bellsprout" },
+    { "species": "Hoppip", "level": 6, "night": "Mareep" },
+    { "species": "Hoppip", "level": 6, "night": "Mareep" },
+    { "species": "Rattata", "level": 6, "night": "Wooper" },
+    { "species": "Zubat", "level": 4, "day": "Rattata" },
+    { "species": "Rattata", "level": 6, "night": "Wooper" },
+    { "species": "Zubat", "level": 4, "day": "Rattata" }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Quagsire", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 36, "maxLevel": 36 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Qwilfish", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Tentacool", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacool", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Qwilfish", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 454, "z": 293, "to": "route_32_ruins_of_alph_gatehouse", "toWarp": 0 },
+    { "x": 454, "z": 294, "to": "route_32_ruins_of_alph_gatehouse", "toWarp": 0 },
+    { "x": 462, "z": 430, "to": "union_cave_1f", "toWarp": 0 },
+    { "x": 468, "z": 418, "to": "route_32_pokecenter_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r32_gsbigman", "looks": "gsbigman", "movement": "17", "x": 471, "z": 312, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R32_000+1" },
+    { "id": "r32_gsmiddleman1", "looks": "gsmiddleman1", "movement": "16", "x": 477, "z": 305, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R32_001+1" },
+    { "id": "r32_tree", "looks": "tree", "movement": "0", "x": 462, "z": 320, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r32_gsboy2", "looks": "gsboy2", "movement": "14", "x": 470, "z": 329, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_YOUNGSTER_ALBERT" },
+    { "id": "r32_picnicgirl_2", "looks": "picnicgirl_2", "movement": "16", "x": 466, "z": 342, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_PICNICKER_LIZ" },
+    { "id": "r32_fishing_2", "looks": "fishing_2", "movement": "16", "x": 461, "z": 374, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_HENRY" },
+    { "id": "r32_fishing_2_2", "looks": "fishing_2", "movement": "15", "x": 463, "z": 376, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 0, "script": "TRAINER_FISHERMAN_JUSTIN" },
+    { "id": "r32_fishing_2_3", "looks": "fishing_2", "movement": "14", "x": 468, "z": 387, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_FISHERMAN_RALPH" },
+    { "id": "r32_campboy_2", "looks": "campboy_2", "movement": "14", "x": 452, "z": 385, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_CAMPER_ROLAND" },
+    { "id": "r32_gsboy2_2", "looks": "gsboy2", "movement": "18", "x": 460, "z": 403, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_YOUNGSTER_GORDON" },
+    { "id": "r32_gsbigman_2", "looks": "gsbigman", "movement": "5", "x": 462, "z": 416, "facing": 2, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1AA", "script": "R32_003+1" },
+    { "id": "r32_gsman2", "looks": "gsman2", "movement": "14", "x": 468, "z": 433, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BIRD_KEEPER_GS_PETER" },
+    { "id": "r32_monstarball", "looks": "monstarball", "movement": "0", "x": 456, "z": 337, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R32_REPEL", "item": "Repel", "script": "std_itemball_r32_repel" },
+    { "id": "r32_monstarball_2", "looks": "monstarball", "movement": "0", "x": 459, "z": 382, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R32_GREAT_BALL", "item": "Great Ball", "script": "std_itemball_r32_great_ball" },
+    { "id": "r32_gsgirl1", "looks": "gsgirl1", "movement": "16", "x": 471, "z": 409, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_208", "script": "R32_005+1" },
+    { "id": "r32_breakrock", "looks": "breakrock", "movement": "0", "x": 471, "z": 439, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "r32_monstarball_3", "looks": "monstarball", "movement": "0", "x": 451, "z": 401, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R32_TM09", "item": "TM09", "script": "std_itemball_r32_tm09" },
+    { "id": "r32_monstarball_4", "looks": "monstarball", "movement": "0", "x": 475, "z": 439, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R32_SHELL_BELL", "item": "Shell Bell", "script": "std_itemball_r32_shell_bell" },
+    { "id": "r32_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "14", "x": 468, "z": 399, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R32_009+1" }
+  ],
+  "signs": [
+    { "x": 463, "z": 291, "type": 1, "script": "R32_006+1" },
+    { "x": 469, "z": 300, "type": 1, "script": "R32_007+1" },
+    { "x": 467, "z": 437, "type": 1, "script": "R32_008+1" },
+    { "x": 475, "z": 377, "type": 2, "script": "std_hiddenitem_r32_heart_scale", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_R32_HEART_SCALE" },
+    { "x": 460, "z": 432, "type": 2, "script": "std_hiddenitem_r32_great_ball", "item": "Great Ball", "flag": "FLAG_HIDDEN_ITEM_R32_GREAT_BALL" },
+    { "x": 459, "z": 309, "type": 2, "script": "std_hiddenitem_r32_super_potion", "item": "Super Potion", "flag": "FLAG_HIDDEN_ITEM_R32_SUPER_POTION" }
+  ],
+  "triggers": [
+    { "x": 475, "z": 305, "width": 2, "depth": 1, "script": "R32_002+1", "variable": "VAR_UNK_408D", "value": "0" }
+  ]
+}

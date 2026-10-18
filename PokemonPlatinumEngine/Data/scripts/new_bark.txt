@@ -1,0 +1,83 @@
+# New Bark Town (plan 20 · J4). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T20).
+#
+# VAR_SCENE_NEW_BARK_TOWN_OW, as HeartGold counts it: 0 before the starter, 1 once Elm has given one (the lab sets
+# it), 2 once Mom has run out with the Running Shoes. The rival stands at the lab's window until the player has a
+# Pokémon; the friend next door and their Marill are out in the street from the start. The way west is turned back
+# by the friend while the player has no Pokémon (VAR_SCENE_NEW_BARK_WEST_EXIT, 0 until the starter).
+
+
+# The boy at the lab's window (HeartGold's T20_000): he doesn't want to be seen, and shoves whoever looks.
+script Rival
+  speaker "???"
+  say "...What are you staring at? This is the famous Pokémon lab, is it? Doesn't look like much."
+  emote self exclaim
+  say "Get lost. I'm busy."
+  walk player back down 1
+  end
+
+
+# The friend next door, out in the street with their Marill.
+script Friend
+  speaker "{assistant}"
+  if flag FLAG_GOT_STARTER goto Starter
+  say "Morning, {player}! The professor was looking for you. Something about a favour, he said."
+  say "Marill and I were just out for a walk. Go on, he's at the lab!"
+  end
+label Starter
+  if var VAR_SCENE_ELMS_LAB >= 4 goto Later
+  say "Oh, you've got a Pokémon of your own! It suits you. Marill likes it already, look."
+  end
+label Later
+  say "I heard about the break-in at the lab. Poor Professor Elm! Whoever it was, I hope they catch him."
+  end
+
+
+# Their Marill, which hops at being spoken to.
+script Marill
+  cry "Marill"
+  text "Marill: Rill! Rill!"
+  walk t20_tsure_poke_static_marill_2 onspot right 2
+  face t20_var_1_2 left
+  speaker "{assistant}"
+  say "Ha ha, Marill likes you! It doesn't do that for everyone."
+  end
+
+
+# The way west (HeartGold's T20_002): without a Pokémon, the friend calls the player back from the grass.
+script WestExit
+  if flag FLAG_GOT_STARTER goto Free
+  scene "The way west"
+  speaker "{assistant}"
+  say "Wait, {player}! The grass on Route 29 is full of wild Pokémon. You can't go out there with none of your own!"
+  say "Professor Elm's lab is just up the lane. Go and see him first."
+  walk player right 1
+  endscene
+  end
+label Free
+  setvar VAR_SCENE_NEW_BARK_WEST_EXIT 1
+  end
+
+
+# Out of the lab with a Pokémon (our trigger on the lab's step, VAR_SCENE_NEW_BARK_TOWN_OW 1; HeartGold's T20_011):
+# Mom comes running with the Running Shoes.
+script RunningShoes
+  scene "The Running Shoes"
+  speaker "Mom"
+  say "{player}! Wait a moment!"
+  setflag FLAG_HIDE_NEW_BARK_MOM
+  place t20_gsmama 686 394 left
+  show t20_gsmama
+  walk t20_gsmama left 1
+  face player right
+  say "So the professor gave you a Pokémon! And now you're off on an errand for him? Then you'll want these."
+  setflag FLAG_HAS_RUNNING_SHOES
+  fanfare keyitem
+  text "{player} received the Running Shoes!"
+  say "Hold the run button down and you'll go twice as fast. Just don't run in the house!"
+  say "Come home whenever you're tired. I'll be right here."
+  walk t20_gsmama right 1
+  hide t20_gsmama
+  setvar VAR_SCENE_NEW_BARK_TOWN_OW 2
+  endscene
+  end
