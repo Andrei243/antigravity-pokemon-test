@@ -2188,6 +2188,9 @@ public static class WorldMapBuilder
             var npc = MapFile.BuildNpc(record, map.Name);
             npc.LinesPlace = key;
             npc.ScriptFile = key;
+            // An electric gate stands on a tile of the gap it shuts, which the original blocks while its beams are
+            // on: the tile is open under it, and the gate is what is in the way (plan 19 · K4, part b)
+            if (npc.NpcType == NPC.ElectricGateType && map.InBounds(npc.GridX, npc.GridY)) map.SetSolid(npc.GridX, npc.GridY, false);
             // A boulder among them is put back where it stood when the player leaves, as every boulder is
             map.Add(npc);
         }

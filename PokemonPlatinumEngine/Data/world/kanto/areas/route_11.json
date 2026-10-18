@@ -1,0 +1,85 @@
+{
+  "key": "route_11",
+  "index": 36,
+  "name": "Route 11",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE11",
+  "nightMusic": "MUS_ROUTE11",
+  "encounters": "route_11",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Ekans", "level": 14 },
+    { "species": "Spearow", "level": 15 },
+    { "species": "Ekans", "level": 12 },
+    { "species": "Spearow", "level": 13 },
+    { "species": "Drowzee", "level": 11 },
+    { "species": "Drowzee", "level": 13 },
+    { "species": "Ekans", "level": 15 },
+    { "species": "Spearow", "level": 17 },
+    { "species": "Ekans", "level": 12 },
+    { "species": "Drowzee", "level": 15 },
+    { "species": "Ekans", "level": 12 },
+    { "species": "Drowzee", "level": 15 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 318, "z": 217, "to": "digletts_cave_south_entrance", "toWarp": 0 },
+    { "x": 370, "z": 220, "to": "route_11_east_entrance_1f", "toWarp": 0 },
+    { "x": 377, "z": 220, "to": "route_11_east_entrance_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "look_south_and_west", "x": 331, "z": 218, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_YOUNGSTER_EDDIE" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "look_around", "x": 328, "z": 227, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_GAMER_HUGO" },
+    { "id": "youngster_2", "looks": "youngster", "movement": "look_north_and_west", "x": 343, "z": 218, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_YOUNGSTER_DILLON" },
+    { "id": "youngster_3", "looks": "youngster", "movement": "walk_sequence_south_east_west_north", "x": 340, "z": 220, "facing": 1, "rangeX": 8, "rangeZ": 4, "trainer": "normal", "sight": 1, "script": "TRAINER_YOUNGSTER_DAVE" },
+    { "id": "old_man_1_2", "looks": "old_man_1", "movement": "look_around", "x": 350, "z": 225, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_GAMER_JASPER" },
+    { "id": "old_man_1_3", "looks": "old_man_1", "movement": "look_around", "x": 362, "z": 214, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_GAMER_DARIAN" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_west_and_east", "x": 354, "z": 218, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_ENGINEER_BRAXTON" },
+    { "id": "youngster_4", "looks": "youngster", "movement": "walk_north_and_south", "x": 362, "z": 224, "facing": 0, "rangeX": 1, "rangeZ": 4, "trainer": "normal", "sight": 1, "script": "TRAINER_YOUNGSTER_YASU" },
+    { "id": "old_man_1_4", "looks": "old_man_1", "movement": "look_around", "x": 369, "z": 226, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_GAMER_DIRK" },
+    { "id": "balding_man_2", "looks": "balding_man", "movement": "look_west_and_east", "x": 344, "z": 228, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_ENGINEER_BERNIE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 354, "z": 222, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE11_X_DEFEND", "item": "X Defense", "script": "Route11_EventScript_ItemXDefend" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 375, "z": 223, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE11_GREAT_BALL", "item": "Great Ball", "script": "Route11_EventScript_ItemGreatBall" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 325, "z": 213, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE11_AWAKENING", "item": "Awakening", "script": "Route11_EventScript_ItemAwakening" }
+  ],
+  "signs": [
+    { "x": 315, "z": 217, "type": 0, "script": "Route11_EventScript_DiglettsCaveSign" },
+    { "x": 370, "z": 215, "type": 2, "script": "", "item": "Escape Rope", "flag": "FLAG_HIDDEN_ITEM_ROUTE11_ESCAPE_ROPE" }
+  ],
+  "triggers": []
+}

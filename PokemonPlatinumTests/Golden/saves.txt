@@ -6,7 +6,7 @@ world 0, story 0, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Turtwig Lv5 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, Absorb 25/25, id 00000000#0
 bag: Potion x5, Poké Ball x10, Revive x2
-upgrade from story 0: 165 changes
+upgrade from story 0: 167 changes
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
@@ -122,6 +122,7 @@ upgrade from story 0: 165 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -152,6 +153,7 @@ upgrade from story 0: 165 changes
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_MESPRIT
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -180,7 +182,7 @@ wakes on Sinnoh 112,858 facing Down, OnFoot
   team #1: Starly Lv6 "Starly" Female Hardy, Keen Eye, holds nothing, HP 22/22, Tackle 35/35, Growl 40/40, id 00000000#1
   PC #0: Bidoof Lv4 "Bidoof" Male Hardy, Simple, holds nothing, HP 19/19, Tackle 35/35, Growl 40/40, id 00000000#2
 bag: Potion x3, Poké Ball x5
-upgrade from story 1: 164 changes
+upgrade from story 1: 166 changes
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
@@ -296,6 +298,7 @@ upgrade from story 1: 164 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -326,6 +329,7 @@ upgrade from story 1: 164 changes
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_MESPRIT
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -352,7 +356,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Piplup Lv10 "Piplup" Male Modest, Torrent, holds nothing, HP 32/32, Pound 35/35, Growl 40/40, Bubble 30/30, id 0000a186#0
   team #1: Starly Lv7 "Starly" Male Hardy, Keen Eye, holds nothing, HP 24/24, Tackle 35/35, Growl 40/40, id 0000a186#1
 bag: Potion x3, Poké Ball x5
-upgrade from story 2: 128 changes
+upgrade from story 2: 130 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -451,6 +455,7 @@ upgrade from story 2: 128 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -476,6 +481,7 @@ upgrade from story 2: 128 changes
   + FLAG_HIDE_VEILSTONE_CRASHER_WAKE
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -487,7 +493,7 @@ world 1, story 3, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on OreburghPokemonCenter 8,12 facing Up, OnFoot
   team #0: Monferno Lv14 "Monferno" Male Adamant, Blaze, holds nothing, HP 44/44, Scratch 35/35, Leer 30/30, Ember 25/25, Mach Punch 30/30, id 0000a186#0
 bag: Potion x3, Poké Ball x5
-upgrade from story 3: 120 changes
+upgrade from story 3: 122 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -578,6 +584,7 @@ upgrade from story 3: 120 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -603,6 +610,7 @@ upgrade from story 3: 120 changes
   + FLAG_HIDE_VEILSTONE_CRASHER_WAKE
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -615,7 +623,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Turtwig Lv16 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 46/46, Tackle 35/35, Withdraw 40/40, Absorb 25/25, Razor Leaf 25/25, id 0000a186#0
 bag: Potion x3, Poké Ball x5
 bag after: Potion x3, Poké Ball x5, HM06 x1
-upgrade from story 4: 109 changes
+upgrade from story 4: 111 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -698,6 +706,7 @@ upgrade from story 4: 109 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -719,6 +728,7 @@ upgrade from story 4: 109 changes
   + FLAG_HIDE_VEILSTONE_CRASHER_WAKE
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -733,7 +743,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #1: Monferno Lv16 "Monferno" Male Hardy, Blaze, holds nothing, HP 49/49, Scratch 35/35, Leer 30/30, Ember 25/25, Mach Punch 30/30, id 00000000#1
 bag: Potion x3, Poké Ball x5
 bag after: Potion x3, Poké Ball x5, HM06 x1
-upgrade from story 0: 166 changes
+upgrade from story 0: 168 changes
   + FLAG_HAS_POKEDEX
   + FLAG_HAS_RUNNING_SHOES
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
@@ -849,6 +859,7 @@ upgrade from story 0: 166 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -879,6 +890,7 @@ upgrade from story 0: 166 changes
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_MESPRIT
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -907,7 +919,7 @@ wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Torterra Lv34 "Torterra" Male Hardy, Overgrow, holds nothing, HP 115/115, Razor Leaf 25/25, Bite 25/25, Earthquake 10/10, Crunch 15/15, id 0000a186#0
 bag: Hyper Potion x2, HM06 x1, Vs. Seeker x1
 bag after: Hyper Potion x2, HM06 x1, Vs. Seeker x1, Old Charm x1
-upgrade from story 10: 78 changes
+upgrade from story 10: 80 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -968,6 +980,7 @@ upgrade from story 10: 78 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -981,6 +994,7 @@ upgrade from story 10: 78 changes
   + FLAG_HIDE_VALOR_CAVERN_AZELF
   + FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -992,7 +1006,7 @@ world 2, story 11, Platinum rules, Boy Lucas, rival Barry, $3000, badges 111111
 wakes on HearthomePokemonCenter 8,12 facing Up, OnFoot
   team #0: Infernape Lv40 "Infernape" Male Jolly, Blaze, holds nothing, HP 118/119, Flamethrower 15/15, Close Combat 5/5, Mach Punch 30/30, Shadow Claw 15/15, id 0000a186#0
 bag: Hyper Potion x2, HM06 x1
-upgrade from story 11: 68 changes
+upgrade from story 11: 70 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   + FLAG_HIDE_BATTLEGROUND_BUCK
@@ -1043,6 +1057,7 @@ upgrade from story 11: 68 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1056,6 +1071,7 @@ upgrade from story 11: 68 changes
   + FLAG_HIDE_VALOR_CAVERN_AZELF
   + FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1067,7 +1083,7 @@ world 2, story 12, Platinum rules, Boy Lucas, rival Barry, $3000, badges 1111111
 wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Empoleon Lv44 "Empoleon" Male Modest, Torrent, holds nothing, HP 136/137, Surf 15/15, Metal Claw 35/35, Drill Peck 20/20, Ice Beam 10/10, id 0000a186#0
 bag: Max Potion x1, HM06 x1
-upgrade from story 12: 57 changes
+upgrade from story 12: 59 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_ACUITY_LAKEFRONT_RIVAL
   + FLAG_HIDE_BATTLEGROUND_BUCK
@@ -1109,6 +1125,7 @@ upgrade from story 12: 57 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1121,6 +1138,7 @@ upgrade from story 12: 57 changes
   + FLAG_HIDE_SURVIVAL_AREA_RIVAL
   + FLAG_HIDE_VEILSTONE_CITY_GRUNT_M_STORAGE_KEY
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1131,7 +1149,7 @@ world 2, story 13, Platinum rules, Boy Lucas, rival Barry, $3000, badges 1111111
 wakes on LakeVerity 46,53 facing Up, OnFoot
   team #0: Empoleon Lv46 "Empoleon" Male Modest, Torrent, holds nothing, HP 142/142, Surf 15/15, Metal Claw 35/35, Drill Peck 20/20, Ice Beam 10/10, id 0000a186#0
 bag: Max Potion x1, HM06 x1
-upgrade from story 13: 51 changes
+upgrade from story 13: 53 changes
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH
@@ -1169,6 +1187,7 @@ upgrade from story 13: 51 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1180,6 +1199,7 @@ upgrade from story 13: 51 changes
   + FLAG_HIDE_SURVIVAL_AREA_BUCK
   + FLAG_HIDE_SURVIVAL_AREA_RIVAL
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1191,7 +1211,7 @@ wakes on Sinnoh 116,886 facing Down, OnFoot
   team #1: Torterra Lv55 "Torterra" Male Hardy, Overgrow, holds nothing, HP 180/181, Wood Hammer 15/15, Earthquake 10/10, Crunch 15/15, Leaf Storm 5/5, id 0000a186#1
   box 1 #0: Bidoof Lv20 "Bidoof" Male Hardy, Simple, holds nothing, HP 57/57, Tackle 35/35, Headbutt 15/15, id 0000a186#2
 bag: Max Potion x3, HM06 x1
-upgrade from story 14: 58 changes
+upgrade from story 14: 60 changes
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH
@@ -1227,6 +1247,7 @@ upgrade from story 14: 58 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1240,6 +1261,7 @@ upgrade from story 14: 58 changes
   + FLAG_HIDE_SURVIVAL_AREA_RIVAL
   + FLAG_HIDE_VALOR_LAKEFRONT_COLLECTOR
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER
@@ -1257,7 +1279,7 @@ wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Infernape Lv50 "Infernape" Male Hardy, Blaze, holds nothing, HP 146/146, Flamethrower 15/15, Close Combat 5/5, Mach Punch 30/30, Shadow Claw 15/15, id 0000a186#0
   team #1: Azelf Lv50 "Azelf" Genderless Hardy, Levitate, holds nothing, HP 145/145, Confusion 25/25, Uproar 10/10, Future Sight 15/15, Nasty Plot 20/20, id 0000a186#1
 bag: Max Potion x1, HM06 x1
-upgrade from story 15: 46 changes
+upgrade from story 15: 48 changes
   + FLAG_CAUGHT_AZELF
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -1284,6 +1306,7 @@ upgrade from story 15: 46 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1297,6 +1320,7 @@ upgrade from story 15: 46 changes
   + FLAG_HIDE_SURVIVAL_AREA_RIVAL
   + FLAG_HIDE_VALOR_LAKEFRONT_COLLECTOR
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_HIDE_VISTA_LIGHTHOUSE_VOLKNER
@@ -1310,7 +1334,7 @@ world 2, story 16, Platinum rules, Boy Lucas, rival Barry, $3000, badges 1111111
 wakes on PokemonCenter 8,12 facing Up, OnFoot
   team #0: Empoleon Lv60 "Empoleon" Male Modest, Torrent, holds nothing, HP 182/183, Surf 15/15, Flash Cannon 10/10, Drill Peck 20/20, Ice Beam 10/10, id 0000a186#0
 bag: Max Potion x1, HM06 x1
-upgrade from story 16: 40 changes
+upgrade from story 16: 42 changes
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH
@@ -1336,6 +1360,7 @@ upgrade from story 16: 40 changes
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SENDOFF_SPRING_CYNTHIA
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1345,6 +1370,7 @@ upgrade from story 16: 40 changes
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_POLICEMEN
   + FLAG_HIDE_SURVIVAL_AREA_BUCK
   + FLAG_HIDE_SURVIVAL_AREA_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1358,7 +1384,7 @@ wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Torterra Lv62 "Torterra" Male Hardy, Overgrow, holds nothing, HP 202/202, Wood Hammer 15/15, Earthquake 10/10, Crunch 15/15, Leaf Storm 5/5, id 0000a186#0
   team #1: Staraptor Lv60 "Staraptor" Male Hardy, Intimidate, holds nothing, HP 184/184, Brave Bird 15/15, Close Combat 5/5, Wing Attack 35/35, Quick Attack 30/30, id 0000a186#1
 bag: Max Potion x1, HM06 x1
-upgrade from story 17: 43 changes
+upgrade from story 17: 45 changes
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CANALAVE_CITY_SAILOR_ELDRITCH_HOUSE_SAILOR_ELDRITCH
@@ -1388,6 +1414,7 @@ upgrade from story 17: 43 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1397,6 +1424,7 @@ upgrade from story 17: 43 changes
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_3_POLICEMEN
   + FLAG_HIDE_SURVIVAL_AREA_BUCK
   + FLAG_HIDE_SURVIVAL_AREA_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1408,7 +1436,7 @@ world 2, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 10111
 wakes on SolaceonPokemonCenter 8,12 facing Up, OnFoot
   team #0: Grotle Lv32 "Grotle" Male Hardy, Overgrow, holds nothing, HP 96/96, Razor Leaf 25/25, Bite 25/25, Mega Drain 15/15, Curse 10/10, id 0000a186#0
 bag: Super Potion x4, HM06 x1
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -1425,6 +1453,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w2-s5-twinleaf-town.json
@@ -1434,7 +1464,7 @@ wakes on Sinnoh 116,886 facing Down, OnFoot
   team #0: Turtwig Lv18 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 51/51, Tackle 35/35, Withdraw 40/40, Absorb 25/25, Razor Leaf 25/25, id 0000a186#0
   team #1: Bidoof Lv15 "Bidoof" Male Hardy, Simple, holds nothing, HP 45/45, Tackle 35/35, Headbutt 15/15, Rollout 20/20, id 0000a186#1
 bag: Potion x3, HM06 x1
-upgrade from story 5: 107 changes
+upgrade from story 5: 109 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -1517,6 +1547,7 @@ upgrade from story 5: 107 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1538,6 +1569,7 @@ upgrade from story 5: 107 changes
   + FLAG_HIDE_VEILSTONE_CRASHER_WAKE
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1548,7 +1580,7 @@ world 2, story 6, Platinum rules, Boy Lucas, rival Barry, $3000, badges 11
 wakes on JubilifePokemonCenter 8,12 facing Up, OnFoot
   team #0: Turtwig Lv22 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 60/60, Tackle 35/35, Withdraw 40/40, Absorb 25/25, Razor Leaf 25/25, id 0000a186#0
 bag: Potion x3, HM06 x1
-upgrade from story 6: 106 changes
+upgrade from story 6: 108 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -1631,6 +1663,7 @@ upgrade from story 6: 106 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1652,6 +1685,7 @@ upgrade from story 6: 106 changes
   + FLAG_HIDE_VEILSTONE_CRASHER_WAKE
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1661,7 +1695,7 @@ world 2, story 7, Platinum rules, Boy Lucas, rival Barry, $3000, badges 11
 wakes on LakeVerity 46,53 facing Up, OnFoot
   team #0: Turtwig Lv24 "Turtwig" Male Hardy, Overgrow, holds nothing, HP 65/65, Tackle 35/35, Withdraw 40/40, Absorb 25/25, Razor Leaf 25/25, id 0000a186#0
 bag: Potion x3, HM06 x1
-upgrade from story 7: 94 changes
+upgrade from story 7: 96 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -1733,6 +1767,7 @@ upgrade from story 7: 94 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1753,6 +1788,7 @@ upgrade from story 7: 94 changes
   + FLAG_HIDE_VEILSTONE_CRASHER_WAKE
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1762,7 +1798,7 @@ world 2, story 8, Platinum rules, Boy Lucas, rival Barry, $3000, badges 10011
 wakes on PokeMart 3,11 facing Up, OnFoot
   team #0: Grotle Lv27 "Grotle" Male Hardy, Overgrow, holds nothing, HP 82/83, Tackle 35/35, Withdraw 40/40, Razor Leaf 25/25, Bite 25/25, id 0000a186#0
 bag: Super Potion x4, HM06 x1
-upgrade from story 8: 96 changes
+upgrade from story 8: 98 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -1836,6 +1872,7 @@ upgrade from story 8: 96 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1856,6 +1893,7 @@ upgrade from story 8: 96 changes
   + FLAG_HIDE_VEILSTONE_CRASHER_WAKE
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1865,7 +1903,7 @@ world 2, story 9, Platinum rules, Boy Lucas, rival Barry, $3000, badges 10111
 wakes on Sinnoh 180,777 facing Down, OnFoot
   team #0: Grotle Lv30 "Grotle" Male Hardy, Overgrow, holds nothing, HP 91/91, Tackle 35/35, Withdraw 40/40, Razor Leaf 25/25, Bite 25/25, id 0000a186#0
 bag: Super Potion x4, HM06 x1
-upgrade from story 9: 90 changes
+upgrade from story 9: 92 changes
   + FLAG_HIDE_ACUITY_CAVERN_UXIE
   + FLAG_HIDE_BATTLEGROUND_BUCK
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
@@ -1932,6 +1970,7 @@ upgrade from story 9: 90 changes
   + FLAG_HIDE_SPEAR_PILLAR_LEGENDS
   + FLAG_HIDE_SPEAR_PILLAR_RIVAL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_BUCK
   + FLAG_HIDE_STARK_MOUNTAIN_OUTSIDE_LOOKER
   + FLAG_HIDE_STARK_MOUNTAIN_ROOM_2_BUCK
@@ -1952,6 +1991,7 @@ upgrade from story 9: 90 changes
   + FLAG_HIDE_VEILSTONE_CRASHER_WAKE
   + FLAG_HIDE_VEILSTONE_STORE_B1F_PROF_ROWAN
   + FLAG_HIDE_VERITY_CAVERN_PROF_OAK
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
   + FLAG_OBTAINED_FULLMOON_ISLAND_FOREST_LUNAR_WING
@@ -1962,7 +2002,7 @@ world 3, story 18, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Hasty, Overgrow, holds nothing, HP 20/20, Tackle 35/35, Withdraw 40/40, id 62c40b9e#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -1979,6 +2019,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w3-s18-new-game-in-the-bedroom.json
@@ -1986,7 +2028,7 @@ save 0 -> 1, 0 ids given, ids issued 0
 world 3, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2003,6 +2045,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w3-s18-on-a-bridge.json
@@ -2012,7 +2056,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2029,6 +2073,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w3-s18-past-the-opening.json
@@ -2037,7 +2083,7 @@ world 3, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2054,6 +2100,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w3-s18-safari-game.json
@@ -2063,7 +2111,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2080,6 +2128,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w3-s18-surfing.json
@@ -2089,7 +2139,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2106,6 +2156,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w3-s18-the-girl.json
@@ -2114,7 +2166,7 @@ world 3, story 18, Platinum rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2131,6 +2183,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s18-modern-rules.json
@@ -2139,7 +2193,7 @@ world 4, story 18, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Hasty, Overgrow, holds nothing, HP 20/20, Tackle 35/35, Withdraw 40/40, id 62c40b9e#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2156,6 +2210,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s18-new-game-in-the-bedroom.json
@@ -2163,7 +2219,7 @@ save 0 -> 1, 0 ids given, ids issued 0
 world 4, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2180,6 +2236,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s18-on-a-bridge.json
@@ -2189,7 +2247,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2206,6 +2264,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s18-past-the-opening.json
@@ -2214,7 +2274,7 @@ world 4, story 18, Platinum rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2231,6 +2291,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s18-safari-game.json
@@ -2240,7 +2302,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2257,6 +2319,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s18-surfing.json
@@ -2266,7 +2330,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Water Gun 25/25, Headbutt 15/15, Hyper Fang 15/15, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2283,6 +2347,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s18-the-girl.json
@@ -2291,7 +2357,7 @@ world 4, story 18, Platinum rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 18: 18 changes
+upgrade from story 18: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2308,6 +2374,8 @@ upgrade from story 18: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-badges-in-two-regions.json
@@ -2316,7 +2384,7 @@ world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kant
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2333,6 +2401,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-new-game-in-the-bedroom.json
@@ -2340,7 +2410,7 @@ save 0 -> 1, 0 ids given, ids issued 0
 world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2357,6 +2427,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-on-a-bridge.json
@@ -2366,7 +2438,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2383,6 +2455,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-past-the-opening.json
@@ -2391,7 +2465,7 @@ world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2408,6 +2482,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-safari-game.json
@@ -2417,7 +2493,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2434,6 +2510,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-surfing.json
@@ -2443,7 +2521,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2460,6 +2538,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-the-girl.json
@@ -2468,7 +2548,7 @@ world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2485,6 +2565,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-v1-badges-in-two-regions.json
@@ -2493,7 +2575,7 @@ world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kant
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2510,6 +2592,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-v1-new-game-in-the-bedroom.json
@@ -2517,7 +2601,7 @@ save 1, ids issued 0
 world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2534,6 +2618,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-v1-on-a-bridge.json
@@ -2543,7 +2629,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2560,6 +2646,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-v1-past-the-opening.json
@@ -2568,7 +2656,7 @@ world 4, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2585,6 +2673,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-v1-safari-game.json
@@ -2594,7 +2684,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2611,6 +2701,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-v1-surfing.json
@@ -2620,7 +2712,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Female Hardy, Unaware, holds nothing, HP 88/88, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2637,6 +2729,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w4-s19-v1-the-girl.json
@@ -2645,7 +2739,7 @@ world 4, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Rash, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2662,6 +2756,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w5-s19-v1-badges-in-two-regions.json
@@ -2670,7 +2766,7 @@ world 5, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kant
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Jolly, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2687,6 +2783,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w5-s19-v1-new-game-in-the-bedroom.json
@@ -2694,7 +2792,7 @@ save 1, ids issued 0
 world 5, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
 bag: nothing
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2711,6 +2809,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w5-s19-v1-on-a-bridge.json
@@ -2720,7 +2820,7 @@ wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
   team #0: Turtwig Lv5 "Turtwig" Male Lonely, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Gentle, Simple, holds nothing, HP 92/92, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2737,6 +2837,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w5-s19-v1-past-the-opening.json
@@ -2745,7 +2847,7 @@ world 5, story 19, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Lonely, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2762,6 +2864,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w5-s19-v1-safari-game.json
@@ -2771,7 +2875,7 @@ wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 b
   team #0: Turtwig Lv5 "Turtwig" Male Lonely, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Gentle, Simple, holds nothing, HP 92/92, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2788,6 +2892,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w5-s19-v1-surfing.json
@@ -2797,7 +2903,7 @@ wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
   team #0: Turtwig Lv5 "Turtwig" Male Lonely, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
   team #1: Bibarel Lv30 "Bibarel" Male Gentle, Simple, holds nothing, HP 92/92, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2814,6 +2920,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w5-s19-v1-the-girl.json
@@ -2822,7 +2930,7 @@ world 5, story 19, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
 wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Female Jolly, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
-upgrade from story 19: 18 changes
+upgrade from story 19: 20 changes
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_CHERRYGROVE_RIVAL
@@ -2839,6 +2947,8 @@ upgrade from story 19: 18 changes
   + FLAG_HIDE_ROUTE_29_FRIEND
   + FLAG_HIDE_ROUTE_29_MARILL
   + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_SS_ANNE_RIVAL
+  + FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
   + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === w5-s20-v1-badges-in-two-regions.json

@@ -1,0 +1,29 @@
+# The S.S. Anne's captain's cabin (plan 19 · K4, part b). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/SSAnne_CaptainsOffice/scripts.inc).
+#
+# The captain is too seasick to stand. The player rubs his back, and he gives HM01 Cut (FLAG_GOT_HM01) and the ship
+# makes ready to sail: VAR_MAP_SCENE_VERMILION_CITY 1, which ss_anne_exterior.txt reads as the player comes off her.
+
+
+script Captain
+  speaker "Captain"
+  if flag FLAG_GOT_HM01 goto Better
+  scene "The seasick captain"
+  say "Ooh... I feel terrible... Seasick, of all things. A captain, seasick..."
+  text "{player} rubbed the captain's back.\nRub-rub... Rub-rub..."
+  fanfare heal
+  wait 0.8
+  face ss_anne_captain player
+  say "Whew! Thank you, I feel much better now. You came to see my Pokémon, didn't you?"
+  say "To thank you, I'll teach you a secret technique. A sailor's best friend for clearing a way through the trees!"
+  give "HM01"
+  setflag FLAG_GOT_HM01
+  setvar VAR_MAP_SCENE_VERMILION_CITY 1
+  say "That's Cut. Teach it to a Pokémon, and with the right Badge it can cut down small trees outside of battle."
+  say "Now, if you'll excuse me, the S.S. Anne must make ready to sail. Safe travels!"
+  endscene
+  end
+label Better
+  face ss_anne_captain player
+  say "The S.S. Anne will be setting sail soon. You'd better get ashore before we cast off!"
+  end

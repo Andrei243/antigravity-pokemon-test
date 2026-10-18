@@ -1,0 +1,28 @@
+{
+  // A house in Vermilion City (plan 19 · K4, part b): a boy writing to his penfriend, and his Pidgey
+  "area": "vermilion_city_house_3",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "boy": {
+      "name": "Boy",
+      "dialog": [
+        "I'm writing to my penfriend. My Pidgey is going to carry the letter for me!"
+      ]
+    },
+    "pidgey": {
+      "name": "Pidgey",
+      "dialog": [
+        "Pidgey: Kurr! Kurrr!"
+      ]
+    },
+    "lass": {
+      "name": "Girl",
+      "dialog": [
+        "Pidgey can find its way home from anywhere. Isn't that clever?"
+      ]
+    }
+  },
+  "signs": {
+    "VermilionCity_House3_EventScript_Letter": "A half-finished letter:\n\"Dear Pippi, I hope you're well...\""
+  }
+}

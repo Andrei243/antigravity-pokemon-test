@@ -1,0 +1,27 @@
+{
+  "key": "ss_anne_2f_room_2",
+  "index": 61,
+  "name": "S S Anne",
+  "matrix": 25,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "ss_anne_2f_corridor", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "fisher", "looks": "fisher", "movement": "look_west", "x": 5, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_FISHERMAN_DALE" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_east", "x": 1, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_GENTLEMAN_BROOKS" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 3, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SSANNE_2F_ROOM2_STARDUST", "item": "Stardust", "script": "SSAnne_2F_Room2_EventScript_ItemStardust" }
+  ],
+  "signs": [],
+  "triggers": []
+}

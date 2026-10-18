@@ -1,0 +1,13 @@
+{
+  // A cabin of the S.S. Anne's first deck (plan 19 · K4, part b)
+  "area": "ss_anne_1f_room_6",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "woman_2": {
+      "name": "Woman",
+      "dialog": [
+        "I collect seashells from every port we stop at. Vermilion's are the prettiest."
+      ]
+    }
+  }
+}

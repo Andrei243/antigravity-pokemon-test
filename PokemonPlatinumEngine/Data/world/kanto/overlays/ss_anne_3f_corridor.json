@@ -1,0 +1,13 @@
+{
+  // The S.S. Anne's top corridor, up to her deck (plan 19 · K4, part b)
+  "area": "ss_anne_3f_corridor",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "sailor": {
+      "name": "Sailor",
+      "dialog": [
+        "The deck's just up there. Mind the wind, it'll blow your hat clean off!"
+      ]
+    }
+  }
+}

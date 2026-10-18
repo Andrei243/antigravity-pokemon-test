@@ -1,13 +1,13 @@
 {
   // Mt. Moon's lowest floor (plan 19 · K4): Team Rocket's grunts digging for fossils, and Miguel guarding the two they
-  // found (mt_moon_b2f.txt). The fossils lie on the ground like items, and are taken by Miguel's rule, not picked up
+  // found (mt_moon_b2f.txt). The fossils lie on the ground as fossils (plan 19 · K4, part b), and are taken by Miguel's rule, not picked up
   "area": "mt_moon_b2f",
   "bgmTrack": "kanto/mt_moon",
   "triggers": [ { "trigger": 0, "script": "MiguelTrigger" } ],
   "people": {
     "miguel": { "name": "Miguel", "script": "Miguel", "still": true },
-    "dome_fossil": { "name": "Dome Fossil", "npcType": "ItemBall", "item": "Dome Fossil", "script": "DomeFossil" },
-    "helix_fossil": { "name": "Helix Fossil", "npcType": "ItemBall", "item": "Helix Fossil", "script": "HelixFossil" },
+    "dome_fossil": { "name": "Dome Fossil", "npcType": "DomeFossil", "script": "DomeFossil" },
+    "helix_fossil": { "name": "Helix Fossil", "npcType": "HelixFossil", "script": "HelixFossil" },
     "rocket_m": {
       "name": "Grunt",
       "trainer": {

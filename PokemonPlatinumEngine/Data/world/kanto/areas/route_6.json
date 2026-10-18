@@ -1,0 +1,79 @@
+{
+  "key": "route_6",
+  "index": 29,
+  "name": "Route 6",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_6",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Meowth", "level": 10 },
+    { "species": "Pidgey", "level": 13 },
+    { "species": "Oddish", "level": 13 },
+    { "species": "Meowth", "level": 12 },
+    { "species": "Oddish", "level": 15 },
+    { "species": "Pidgey", "level": 15 },
+    { "species": "Oddish", "level": 16 },
+    { "species": "Pidgey", "level": 16 },
+    { "species": "Pidgey", "level": 15 },
+    { "species": "Meowth", "level": 14 },
+    { "species": "Pidgey", "level": 15 },
+    { "species": "Meowth", "level": 16 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 295, "z": 173, "to": "underground_path_south_entrance", "toWarp": 1 },
+    { "x": 288, "z": 165, "to": "route_6_north_entrance", "toWarp": 2 },
+    { "x": 289, "z": 165, "to": "route_6_north_entrance", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "look_east", "x": 279, "z": 176, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_BUG_CATCHER_KEIGO" },
+    { "id": "camper", "looks": "camper", "movement": "look_east", "x": 288, "z": 181, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 0, "script": "TRAINER_CAMPER_RICKY" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_west", "x": 289, "z": 181, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 0, "script": "TRAINER_PICNICKER_NANCY" },
+    { "id": "bug_catcher_2", "looks": "bug_catcher", "movement": "look_west", "x": 296, "z": 185, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_BUG_CATCHER_ELIJAH" },
+    { "id": "picnicker_2", "looks": "picnicker", "movement": "look_west", "x": 289, "z": 192, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_PICNICKER_ISABELLE" },
+    { "id": "camper_2", "looks": "camper", "movement": "look_west", "x": 289, "z": 193, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CAMPER_JEFF" }
+  ],
+  "signs": [
+    { "x": 297, "z": 175, "type": 0, "script": "Route6_EventScript_UndergroundPathSign" },
+    { "x": 281, "z": 165, "type": 2, "script": "", "item": "Sitrus Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE6_SITRUS_BERRY" },
+    { "x": 295, "z": 165, "type": 2, "script": "", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_ROUTE6_RARE_CANDY" }
+  ],
+  "triggers": []
+}

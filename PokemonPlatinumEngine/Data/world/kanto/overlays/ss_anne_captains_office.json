@@ -1,0 +1,17 @@
+{
+  // The S.S. Anne's captain's cabin (plan 19 · K4, part b): the captain, too seasick to stand, and HM01
+  // (ss_anne_captains_office.txt)
+  "area": "ss_anne_captains_office",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "ss_anne_captain": {
+      "name": "Captain",
+      "script": "Captain",
+      "still": true
+    }
+  },
+  "signs": {
+    "SSAnne_CaptainsOffice_EventScript_Book": "A book: How to Beat Seasickness.\nThe first page says to rub the patient's back.",
+    "SSAnne_CaptainsOffice_EventScript_TrashCan": "Yuck! Somebody was sick in here. Better not look."
+  }
+}

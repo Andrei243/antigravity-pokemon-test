@@ -1,0 +1,29 @@
+{
+  "key": "ss_anne_captains_office",
+  "index": 53,
+  "name": "S S Anne",
+  "matrix": 17,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "ss_anne_2f_corridor", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "ss_anne_captain", "looks": "captain", "movement": "look_north", "x": 5, "z": 4, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_CaptainsOffice_EventScript_Captain" }
+  ],
+  "signs": [
+    { "x": 2, "z": 4, "type": 0, "script": "SSAnne_CaptainsOffice_EventScript_Book" },
+    { "x": 5, "z": 3, "type": 0, "script": "SSAnne_CaptainsOffice_EventScript_TrashCan" },
+    { "x": 2, "z": 3, "type": 0, "script": "SSAnne_CaptainsOffice_EventScript_Book" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,5 @@
+{
+  // Diglett's Cave (plan 19 · K4, part b): one long tunnel of Diglett and Dugtrio between Route 2 and Route 11
+  "area": "digletts_cave_b1f",
+  "bgmTrack": "kanto/viridian_forest"
+}

@@ -1,0 +1,27 @@
+{
+  "key": "ss_anne_2f_room_4",
+  "index": 63,
+  "name": "S S Anne",
+  "matrix": 27,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "ss_anne_2f_corridor", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_east", "x": 0, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_GENTLEMAN_LAMAR" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 3, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_DAWN" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 2, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SSANNE_2F_ROOM4_X_ATTACK", "item": "X Attack", "script": "SSAnne_2F_Room4_EventScript_ItemXAttack" }
+  ],
+  "signs": [],
+  "triggers": []
+}

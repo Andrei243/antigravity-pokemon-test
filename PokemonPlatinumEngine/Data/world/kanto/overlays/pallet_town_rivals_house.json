@@ -10,7 +10,9 @@
         "Hi there! My brother's out somewhere, as usual.",
         "He's talked about nothing but Pokémon since Grandpa came home."
       ]
-    }
+    },
+    // Her Town Map, rolled up on the table until she gives it (plan 19 · K4, part b gave it its look)
+    "town_map": { "name": "Town Map", "npcType": "TownMap", "dialog": [ "It's a big map of Kanto, rolled up and tied with a ribbon." ], "level": 1.0 }
   },
   "signs": {
     "PalletTown_RivalsHouse_EventScript_Bookshelf": "The shelves are full of books about Pokémon.",

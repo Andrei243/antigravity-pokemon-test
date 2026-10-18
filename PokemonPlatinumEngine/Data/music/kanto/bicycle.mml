@@ -1,0 +1,32 @@
+# On the Bicycle in Kanto (FireRed's MUS_CYCLING): a carefree, quick riding theme in C, a square-wave tune that
+# freewheels down and pedals back up over a bouncing bass and an open hi-hat. Original composition for this game
+# (plan 19 · K4).
+title Bicycle
+tempo 152
+meter 4/4
+reverb 0.22
+nighttempo 0.94
+
+track lead square night=flute vol=0.68 pan=0 rev=0.22
+  L o5 c8 e8 g8 o6 c8 o5 g4 e4 | o5 f8 a8 o6 c8 f8 c4 o5 a4 | o5 g8 b8 o6 d8 g8 d4 o5 b4 | o6 c2 o5 g4 e4 |
+  o5 c8 e8 g8 o6 c8 o5 g4 e4 | o5 a8 o6 c8 f8 a8 f4 c4 | o5 d8 f8 a8 o6 d8 c4 o5 a4 | o5 g2. r4 |
+  o5 e4 g8 e8 c4 e4 | o5 f4 a8 f8 c4 f4 | o5 d4 f8 a8 o6 d4 c4 | o5 b4 g4 d4 g4 |
+  o5 c8 e8 g8 o6 c8 o5 g4 e4 | o5 f8 a8 o6 c8 f8 c4 o5 a4 | o5 g8 f8 d8 b8 g4 d4 | o5 c2. r4 |
+
+track counter pulse vol=0.29 pan=0.35 rev=0.24
+  L o4 [ g8 r8 g8 r8 e8 r8 e8 r8 | a8 r8 a8 r8 f8 r8 f8 r8 | b8 r8 b8 r8 g8 r8 g8 r8 | g8 r8 g8 r8 e8 r8 e8 r8 | ]4
+
+track pad strings night=pad vol=0.22 pan=-0.3 rev=0.32
+  L o4 (c e g)1 | (c f a)1 | (d g b)1 | (c e g)1 |
+  (c e g)1 | (c f a)1 | (d f a)1 | (d g b)1 |
+  (c e g)1 | (c f a)1 | (d f a)1 | (d g b)1 |
+  (c e g)1 | (c f a)1 | (d g b)1 | (c e g)1 |
+
+track bass synthbass vol=0.62 rev=0.06
+  L o3 c8 c8 g8 c8 e8 c8 g8 c8 | f8 f8 c8 f8 a8 f8 c8 f8 | g8 g8 d8 g8 b8 g8 d8 g8 | c8 c8 g8 c8 e8 c8 g8 c8 |
+  c8 c8 g8 c8 e8 c8 g8 c8 | f8 f8 c8 f8 a8 f8 c8 f8 | d8 d8 a8 d8 f8 d8 a8 d8 | g8 g8 d8 g8 b8 g8 d8 g8 |
+  c8 c8 g8 c8 e8 c8 g8 c8 | f8 f8 c8 f8 a8 f8 c8 f8 | d8 d8 a8 d8 f8 d8 a8 d8 | g8 g8 d8 g8 b8 g8 d8 g8 |
+  c8 c8 g8 c8 e8 c8 g8 c8 | f8 f8 c8 f8 a8 f8 c8 f8 | g8 g8 d8 g8 b8 g8 d8 g8 | c8 c8 g8 c8 e8 c8 g8 c8 |
+
+track drums kit vol=0.46 rev=0.08
+  v84 L [ [ b8 h8 s8 h8 b8 b8 s8 h8 | ]3 b8 h8 s8 h8 s8 s8 s8 s8 | ]4

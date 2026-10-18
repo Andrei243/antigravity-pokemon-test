@@ -1,0 +1,40 @@
+{
+  "key": "digletts_cave_b1f",
+  "index": 79,
+  "name": "Digletts Cave",
+  "matrix": 43,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VIRIDIAN_FOREST",
+  "nightMusic": "MUS_VIRIDIAN_FOREST",
+  "encounters": "digletts_cave_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Diglett", "level": 18 },
+    { "species": "Diglett", "level": 19 },
+    { "species": "Diglett", "level": 17 },
+    { "species": "Diglett", "level": 15 },
+    { "species": "Diglett", "level": 16 },
+    { "species": "Diglett", "level": 20 },
+    { "species": "Diglett", "level": 21 },
+    { "species": "Diglett", "level": 22 },
+    { "species": "Diglett", "level": 17 },
+    { "species": "Dugtrio", "level": 29 },
+    { "species": "Diglett", "level": 17 },
+    { "species": "Dugtrio", "level": 31 }
+  ],
+  "landRate": 5,
+  "warps": [
+    { "x": 3, "z": 3, "to": "digletts_cave_north_entrance", "toWarp": 0 },
+    { "x": 82, "z": 71, "to": "digletts_cave_south_entrance", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

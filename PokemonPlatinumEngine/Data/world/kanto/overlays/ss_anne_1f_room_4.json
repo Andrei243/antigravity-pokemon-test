@@ -1,0 +1,13 @@
+{
+  // A cabin of the S.S. Anne's first deck (plan 19 · K4, part b)
+  "area": "ss_anne_1f_room_4",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "woman_1": {
+      "name": "Woman",
+      "dialog": [
+        "The captain's cabin is on the deck above. I heard he's terribly seasick, poor man."
+      ]
+    }
+  }
+}

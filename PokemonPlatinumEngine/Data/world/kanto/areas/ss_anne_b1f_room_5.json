@@ -1,0 +1,27 @@
+{
+  "key": "ss_anne_b1f_room_5",
+  "index": 70,
+  "name": "S S Anne",
+  "matrix": 34,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "ss_anne_b1f_corridor", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "boy", "looks": "boy", "movement": "look_south", "x": 3, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_B1F_Room5_EventScript_Boy" },
+    { "id": "machoke", "looks": "machoke", "movement": "look_south", "x": 2, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_B1F_Room5_EventScript_Machoke" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 2, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SSANNE_B1F_ROOM5_SUPER_POTION", "item": "Super Potion", "script": "SSAnne_B1F_Room5_EventScript_ItemSuperPotion" }
+  ],
+  "signs": [],
+  "triggers": []
+}

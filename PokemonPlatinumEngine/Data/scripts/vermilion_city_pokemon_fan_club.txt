@@ -1,0 +1,55 @@
+# The Pokémon Fan Club in Vermilion City (plan 19 · K4, part b). docs/scripts.md describes the language; the lines
+# are our own, on FireRed's beats (data/maps/VermilionCity_PokemonFanClub/scripts.inc).
+#
+# The chairman, heard out about his Pokémon, gives the Bike Voucher (FLAG_GOT_BIKE_VOUCHER), which Cerulean City's
+# Bike Shop takes for a Bicycle (cerulean_city_bike_shop.txt). The two members each think their own Pokémon the
+# finest, and say so the more after the other has had their say (FireRed's FLAG_TEMP_2 and FLAG_TEMP_3: flags of the
+# place here, FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_WOMAN and ..._FAT_MAN).
+
+
+script Chairman
+  speaker "Chairman"
+  if flag FLAG_GOT_BIKE_VOUCHER goto Heard
+  ask "Did you come to hear about my Pokémon? I'm the chairman of the Pokémon Fan Club!"
+  if yes goto Story
+  say "Oh, how sad. Come back when you have time to listen, won't you?"
+  end
+label Story
+  scene "The chairman's Rapidash"
+  say "Splendid! My favourite is my Rapidash. Its mane is a blaze, and it runs like the wind!"
+  say "When it gallops, the whole field lights up. And it nuzzles me like a little Ponyta still. Simply darling!"
+  say "...Oh, I've gone on far too long again. Thank you for listening! Please, take this."
+  give "Bike Voucher"
+  setflag FLAG_GOT_BIKE_VOUCHER
+  say "Take that voucher to the Bike Shop in Cerulean City. It's good for one free bicycle!"
+  endscene
+  end
+label Heard
+  say "Hello, {player}! Did you come to hear about my Pokémon again? ...No? What a shame."
+  end
+
+
+# The woman with the Seel.
+script Woman
+  speaker "Woman"
+  if flag FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_FAT_MAN goto After
+  say "Isn't my Seel adorable? That little nose! That sleek coat!"
+  setflag FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_WOMAN
+  end
+label After
+  say "Hmph! Whatever he says about his Pikachu, Seel is far more charming!"
+  clearflag FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_FAT_MAN
+  end
+
+
+# The man with the Pikachu.
+script FatMan
+  speaker "Man"
+  if flag FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_WOMAN goto After
+  say "Look at my Pikachu's tail! The way it twitches when it's happy... I could watch it all day."
+  setflag FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_FAT_MAN
+  end
+label After
+  say "A Seel? Please. My Pikachu is twice as cute, any day of the week!"
+  clearflag FLAG_MAP_LOCAL_FAN_CLUB_SPOKE_TO_WOMAN
+  end

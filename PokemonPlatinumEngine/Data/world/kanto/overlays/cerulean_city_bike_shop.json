@@ -1,10 +1,11 @@
 {
-  // Cerulean City's Bike Shop (plan 19 · K4): its bicycle costs a million until the Bike Voucher from Vermilion City's fan club, which is plan 19 · K4's second part
+  // Cerulean City's Bike Shop (plan 19 · K4): its bicycle costs a million, and the Bike Voucher from Vermilion City's
+  // Pokémon Fan Club buys one (plan 19 · K4, part b; cerulean_city_bike_shop.txt)
   "area": "cerulean_city_bike_shop",
   "bgmTrack": "kanto/fuchsia",
   "people": {
-    "man": {"name": "Clerk", "dialog": ["Welcome to the Bike Shop! Our bicycles are the best in Kanto. Only ¥1,000,000 each!", "...No? Come back if you ever win the lottery."]},
-    "youngster": {"name": "Youngster", "dialog": ["A bicycle gets you round twice as fast as running shoes. I want one so badly!"]},
+    "man": {"name": "Clerk", "script": "Clerk"},
+    "youngster": {"name": "Youngster", "script": "Youngster"},
     "woman_2": {"name": "Woman", "dialog": ["A bicycle that folds up small enough to fit in your bag. What will they think of next?"]}
   },
   "signs": {

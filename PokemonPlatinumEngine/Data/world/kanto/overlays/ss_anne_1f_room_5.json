@@ -1,0 +1,14 @@
+{
+  // A cabin of the S.S. Anne's first deck (plan 19 · K4, part b)
+  "area": "ss_anne_1f_room_5",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "gentleman": {
+      "name": "Arthur",
+      "trainer": {
+        "dialogueBefore": "Gentleman Arthur: Young trainer! Let us have a civilised battle.",
+        "dialogueAfter": "Gentleman Arthur: Splendid! You battle with real class."
+      }
+    }
+  }
+}

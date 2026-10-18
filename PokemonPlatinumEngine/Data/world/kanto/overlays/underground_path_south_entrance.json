@@ -1,0 +1,13 @@
+{
+  // The Underground Path's south entrance on Route 6 (plan 19 · K4, part b)
+  "area": "underground_path_south_entrance",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "woman_2": {
+      "name": "Woman",
+      "dialog": [
+        "They built this tunnel to go round Saffron City. It's a long walk, but at least it's dry!"
+      ]
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  // The S.S. Anne's deck (plan 19 · K4, part b)
+  "area": "ss_anne_deck",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "sailor": {
+      "name": "Trevor",
+      "trainer": {
+        "dialogueBefore": "Sailor Trevor: Ahoy! A sailor's life is all about battles at sea!",
+        "dialogueAfter": "Sailor Trevor: I've been sunk!"
+      }
+    },
+    "balding_man": {
+      "name": "Man",
+      "dialog": [
+        "Ugh... I'm feeling a bit seasick. Too much party food, I think."
+      ]
+    },
+    "sailor_2": {
+      "name": "Sailor",
+      "dialog": [
+        "Scrub the deck, scrub the deck... It never ends on a ship like this."
+      ]
+    },
+    "sailor_3": {
+      "name": "Edmond",
+      "trainer": {
+        "dialogueBefore": "Sailor Edmond: My Pokémon have sea legs. Do yours?",
+        "dialogueAfter": "Sailor Edmond: Your Pokémon have sea legs and then some!"
+      }
+    },
+    "youngster": {
+      "name": "Boy",
+      "dialog": [
+        "Look at all the water! I can't even see land any more. Well, I can see Vermilion..."
+      ]
+    }
+  }
+}

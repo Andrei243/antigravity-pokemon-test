@@ -1,0 +1,42 @@
+{
+  // The Pokémon Fan Club (plan 19 · K4, part b): its chairman's Bike Voucher, and two members who each think
+  // their own Pokémon the finest (vermilion_city_pokemon_fan_club.txt)
+  "area": "vermilion_city_pokemon_fan_club",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "gentleman": {
+      "name": "Chairman",
+      "script": "Chairman"
+    },
+    "worker_f": {
+      "name": "Woman",
+      "dialog": [
+        "Our chairman does love to talk about his Pokémon. Once he starts, he won't stop!"
+      ]
+    },
+    "pikachu": {
+      "name": "Pikachu",
+      "dialog": [
+        "Pikachu: Pika pika!"
+      ]
+    },
+    "seel": {
+      "name": "Seel",
+      "dialog": [
+        "Seel: Kyuoo!"
+      ]
+    },
+    "pokemon_fan_club_woman": {
+      "name": "Woman",
+      "script": "Woman"
+    },
+    "pokemon_fan_club_fat_man": {
+      "name": "Man",
+      "script": "FatMan"
+    }
+  },
+  "signs": {
+    "VermilionCity_PokemonFanClub_EventScript_RulesSign1": "Fan Club rule one:\nListen politely to other members.",
+    "VermilionCity_PokemonFanClub_EventScript_RulesSign2": "Fan Club rule two:\nIf someone brags about their Pokémon, brag right back!"
+  }
+}

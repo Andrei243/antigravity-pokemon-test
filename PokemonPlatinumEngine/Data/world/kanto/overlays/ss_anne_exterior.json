@@ -1,0 +1,18 @@
+{
+  // The S.S. Anne at Vermilion's pier (plan 19 · K4, part b): the gangway from the pier to the ship's side, and the
+  // ship herself, which FireRed draws as one large object and which stands here as a ship of ours. Coming off her
+  // with HM01 she sails (ss_anne_exterior.txt)
+  "area": "ss_anne_exterior",
+  "bgmTrack": "kanto/ss_anne",
+  // FireRed's second way from the gangway into the ship lands on a wall of its corridor: the first does the work
+  "locked": [ 3 ],
+  "props": [
+    {
+      "type": "Boat",
+      "x": 22,
+      "y": 16,
+      "width": 22,
+      "depth": 9
+    }
+  ]
+}

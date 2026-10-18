@@ -1,0 +1,38 @@
+{
+  "key": "ss_anne_1f_corridor",
+  "index": 47,
+  "name": "S S Anne",
+  "matrix": 11,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 8, "to": "ss_anne_2f_corridor", "toWarp": 0 },
+    { "x": 2, "z": 18, "to": "ss_anne_kitchen", "toWarp": 0 },
+    { "x": 19, "z": 1, "to": "ss_anne_exterior", "toWarp": 2 },
+    { "x": 20, "z": 0, "to": "", "toWarp": 3 },
+    { "x": 3, "z": 20, "to": "", "toWarp": 0 },
+    { "x": 28, "z": 17, "to": "ss_anne_b1f_corridor", "toWarp": 0 },
+    { "x": 5, "z": 10, "to": "ss_anne_1f_room_1", "toWarp": 0 },
+    { "x": 8, "z": 10, "to": "ss_anne_1f_room_2", "toWarp": 0 },
+    { "x": 11, "z": 10, "to": "ss_anne_1f_room_3", "toWarp": 0 },
+    { "x": 14, "z": 10, "to": "ss_anne_1f_room_4", "toWarp": 0 },
+    { "x": 17, "z": 10, "to": "ss_anne_1f_room_5", "toWarp": 0 },
+    { "x": 23, "z": 10, "to": "ss_anne_1f_room_7", "toWarp": 0 },
+    { "x": 20, "z": 10, "to": "ss_anne_1f_room_6", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "look_north", "x": 18, "z": 8, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_1F_Corridor_EventScript_Sailor" },
+    { "id": "worker_m", "looks": "worker_m", "movement": "look_south", "x": 12, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SSAnne_1F_Corridor_EventScript_WorkerM" }
+  ],
+  "signs": [],
+  "triggers": []
+}

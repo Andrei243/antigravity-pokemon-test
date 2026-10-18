@@ -1179,6 +1179,11 @@ script KantoNewGame
   setflag FLAG_HIDE_CERULEAN_RIVAL
   setflag FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   setflag FLAG_HIDE_POSTGAME_GOSSIPERS
+  # Plan 19 · K4, part b: the rival on the S.S. Anne until he steps out of the captain's door, and Oak's aide in
+  # Vermilion City until Lt. Surge is beaten. A save from before part b never came aboard or to Vermilion, whose own
+  # arrival scripts hide the same two for it
+  setflag FLAG_HIDE_SS_ANNE_RIVAL
+  setflag FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
   return
 
 

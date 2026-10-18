@@ -13613,5 +13613,17 @@
     "canUseInBattle": false,
     "canUseInOverworld": true,
     "description": "A dark orb that seems to pull at the space around it."
+  },
+  {
+    "id": 9010,
+    "name": "Bike Voucher",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A voucher for one free bicycle. Take it to the Bike Shop in Cerulean City.",
+    "cantBeTossed": true
   }
 ]

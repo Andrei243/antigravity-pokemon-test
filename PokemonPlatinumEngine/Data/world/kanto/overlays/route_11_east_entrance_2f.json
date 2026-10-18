@@ -1,0 +1,25 @@
+{
+  // The floor above Route 11's gate (plan 19 · K4, part b). The aide's Itemfinder waits for an item this game
+  // doesn't have yet, and the boy's Nidorino trade for plan 07's trades
+  "area": "route_11_east_entrance_2f",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "youngster": {
+      "name": "Boy",
+      "dialog": [
+        "I'd love to trade my Pokémon for something new. Maybe another day."
+      ]
+    },
+    "scientist": {
+      "name": "Aide",
+      "dialog": [
+        "Professor Oak sent me to watch how your Pokédex is coming along.",
+        "Keep catching! He'll be thrilled with every new Pokémon you record."
+      ]
+    }
+  },
+  "signs": {
+    "Route11_EastEntrance_2F_EventScript_LeftBinoculars": "Through the binoculars:\nA huge Pokémon is lying asleep across the road!",
+    "Route11_EastEntrance_2F_EventScript_RightBinoculars": "Through the binoculars:\nRock Tunnel is the quickest way to Lavender Town."
+  }
+}

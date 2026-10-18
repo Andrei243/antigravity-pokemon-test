@@ -1,0 +1,19 @@
+{
+  // A crew cabin below the S.S. Anne's decks (plan 19 · K4, part b)
+  "area": "ss_anne_b1f_room_5",
+  "bgmTrack": "kanto/ss_anne",
+  "people": {
+    "boy": {
+      "name": "Boy",
+      "dialog": [
+        "My Machoke helps load the cargo. It's stronger than the whole crew!"
+      ]
+    },
+    "machoke": {
+      "name": "Machoke",
+      "dialog": [
+        "Machoke: Gwoh! Gwoh!"
+      ]
+    }
+  }
+}

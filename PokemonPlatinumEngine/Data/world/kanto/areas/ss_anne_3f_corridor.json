@@ -1,0 +1,27 @@
+{
+  "key": "ss_anne_3f_corridor",
+  "index": 49,
+  "name": "S S Anne",
+  "matrix": 13,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 4, "to": "ss_anne_deck", "toWarp": 0 },
+    { "x": 18, "z": 2, "to": "ss_anne_2f_corridor", "toWarp": 1 },
+    { "x": 0, "z": 5, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "sailor", "looks": "sailor", "movement": "wander_west_and_east", "x": 10, "z": 4, "facing": 2, "rangeX": 3, "rangeZ": 1, "script": "SSAnne_3F_Corridor_EventScript_Sailor" }
+  ],
+  "signs": [],
+  "triggers": []
+}

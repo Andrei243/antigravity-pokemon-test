@@ -1,0 +1,13 @@
+{
+  // A house in Vermilion City (plan 19 · K4, part b). The girl's trade waits for plan 07's trades
+  "area": "vermilion_city_house_2",
+  "bgmTrack": "kanto/vermilion",
+  "people": {
+    "little_girl": {
+      "name": "Girl",
+      "dialog": [
+        "My Spearow flies all the way to the harbour and back every morning!"
+      ]
+    }
+  }
+}

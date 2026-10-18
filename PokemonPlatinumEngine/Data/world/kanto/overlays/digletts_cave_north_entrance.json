@@ -1,0 +1,13 @@
+{
+  // Diglett's Cave's mouth on Route 2 (plan 19 · K4, part b)
+  "area": "digletts_cave_north_entrance",
+  "bgmTrack": "kanto/viridian_forest",
+  "people": {
+    "hiker": {
+      "name": "Hiker",
+      "dialog": [
+        "Diglett dug this whole cave. It runs all the way under the hills to Vermilion City!"
+      ]
+    }
+  }
+}

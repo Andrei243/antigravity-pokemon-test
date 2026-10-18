@@ -35,6 +35,9 @@ public class KantoStoryTests
         public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
         public int Caught { get; set; }
         public bool Impatient { get; init; }
+        /// <summary>The script's dice to come (<c>random</c>) and the answers to its questions, handed on from one script to the next.</summary>
+        public Queue<int> Rolls { get; } = new();
+        public Queue<int> Answers { get; } = new();
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
         public const string Rival = "Gary";
@@ -107,9 +110,13 @@ public class KantoStoryTests
                 NeedsPokemon = true,
                 Caught = Caught
             };
+            while (Rolls.Count > 0) host.Rolls.Enqueue(Rolls.Dequeue());
+            while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
             var runner = new ScriptRunner(Scripts, host) { Impatient = Impatient };
             runner.Start(script, subject);
             runner.RunToEnd();
+            while (host.Rolls.Count > 0) Rolls.Enqueue(host.Rolls.Dequeue());
+            while (host.Answers.Count > 0) Answers.Enqueue(host.Answers.Dequeue());
             Played.Add((script.FullName, host));
             Assert.Empty(host.Problems);
             foreach (var map in maps.Values.Distinct())
@@ -533,5 +540,217 @@ public class KantoStoryTests
         Assert.Null(sinnoh.PlayerStarter);
         Assert.Equal(0, sinnoh.Var("VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB"));
         Assert.True(sinnoh.Has("FLAG_HIDE_OAK_IN_PALLET_TOWN"));
+    }
+
+    // ------------------------------------------------------------------ plan 19 · K4, part b: Vermilion and the S.S. Anne
+
+    [Fact]
+    public void TheFanClubsChairmanGivesTheBikeVoucherAndTheBikeShopTakesItForABicycle()
+    {
+        var game = PastPewter();
+        // Without the voucher a bicycle costs a million, which nobody has
+        game.Arrive("CeruleanCity_BikeShop", 4, 6);
+        game.Talk("man");
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Bicycle")!));
+        // The chairman, heard out, gives the voucher once
+        game.Arrive("VermilionCity_PokemonFanClub", 5, 9);
+        game.Talk("gentleman");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Bike Voucher")!));
+        Assert.True(game.Story.Has("FLAG_GOT_BIKE_VOUCHER"));
+        game.Talk("gentleman");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Bike Voucher")!));
+        // Refused, he gives nothing
+        var refused = PastPewter();
+        refused.Arrive("VermilionCity_PokemonFanClub", 5, 9);
+        refused.Answers.Enqueue(1);
+        refused.Talk("gentleman");
+        Assert.False(refused.Story.Has("FLAG_GOT_BIKE_VOUCHER"));
+        // The shop takes the voucher for a Bicycle
+        game.Arrive("CeruleanCity_BikeShop", 4, 6);
+        game.Talk("man");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Bicycle")!));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Bike Voucher")!));
+        Assert.True(game.Story.Has("FLAG_GOT_BICYCLE"));
+        game.Talk("man");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Bicycle")!));
+    }
+
+    [Fact]
+    public void ThePiersSailorTurnsBackWhoeverHasNoTicketAndLetsTheTicketThrough()
+    {
+        var game = PastPewter();
+        game.Arrive("Kanto", 287, 231);
+        Assert.True(game.Fires("CheckTicket"));
+        var turned = game.Step("CheckTicket");
+        Assert.Equal((286, 232), turned.PlayerTile);
+        Assert.Equal(0, game.Story.Var("VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER"));
+        game.Story.Set("FLAG_GOT_SS_TICKET");
+        game.Step("CheckTicket");
+        Assert.Equal(1, game.Story.Var("VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER"));
+        Assert.False(game.Fires("CheckTicket"));
+        // Back on the quay the check starts again
+        game.Step("ExitedTicketCheck");
+        Assert.Equal(0, game.Story.Var("VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER"));
+    }
+
+    [Theory]
+    [InlineData(0, 30)]
+    [InlineData(1, 31)]
+    [InlineData(2, 32)]
+    public void TheRivalStepsOutOfTheCaptainsDoorAndBattlesWithTheStarterStrongAgainstThePlayers(int starter, int column)
+    {
+        var game = PastPewter(starter);
+        string rivals = StoryState.RivalStarterFor(RegionDatabase.Get(RegionDatabase.Kanto)!.Starters[starter]);
+        game.Arrive("SSAnne_2F_Corridor", column, 8);
+        Assert.Null(game.Present("ss_anne_rival"));
+        var trigger = game.Map.Triggers.Single(t => t.Script == "Rival" && t.X == column);
+        game.Tile = (trigger.X, trigger.Y);
+        var scene = game.Play(Scripts.Find("Rival", trigger.ScriptFile!)!);
+        Assert.Contains($"battle kanto_rival_ss_anne_{rivals.ToLowerInvariant()} Won", scene.Log);
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR"));
+        Assert.Null(game.Present("ss_anne_rival"));
+        Assert.False(game.Fires("Rival"));
+    }
+
+    [Fact]
+    public void TheCaptainGivesCutAndTheShipSailsAsThePlayerComesOffHer()
+    {
+        var game = PastPewter();
+        game.Story.Set("FLAG_GOT_SS_TICKET");
+        // Before Cut, the gangway is only a gangway
+        game.Arrive("SSAnne_Exterior", 32, 13);
+        Assert.Equal("SSAnne_Exterior", game.Map.Name);
+        game.Arrive("SSAnne_CaptainsOffice", 4, 6);
+        game.Talk("ss_anne_captain");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM01")!));
+        Assert.True(game.Story.Has("FLAG_GOT_HM01"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_VERMILION_CITY"));
+        // Spoken to again, he gives nothing more
+        game.Talk("ss_anne_captain");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM01")!));
+        // Off the ship she sails, and the player is on the quay
+        game.Arrive("SSAnne_Exterior", 32, 13);
+        Assert.Equal("Kanto", game.Map.Name);
+        Assert.Equal((287, 232), game.Tile);
+        Assert.Equal(3, game.Story.Var("VAR_MAP_SCENE_VERMILION_CITY"));
+        // From then on the pier's sailor turns everyone back
+        var back = game.Step("CheckTicket");
+        Assert.Equal((286, 232), back.PlayerTile);
+        Assert.Equal(0, game.Story.Var("VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER"));
+        // Cut, which the Cascade Badge opens, clears the tree before Lt. Surge's Gym
+        Assert.Equal("Cascade", FieldMoveRules.BadgeFor(FieldMove.Cut, "Kanto"));
+        var tree = game.Map.NPCs.Single(n => n.GridX == 283 && n.GridY == 224);
+        Assert.Equal(PropType.CutTree, tree.Obstacle);
+    }
+
+    [Fact]
+    public void LtSurgesBinsHideTwoSwitchesSideBySideAndAWrongBinResetsThem()
+    {
+        var game = PastPewter();
+        // Coming in, the first switch is drawn (7, the second bin of the middle row) and the second beside it (8)
+        game.Rolls.Enqueue(6);
+        game.Rolls.Enqueue(1);
+        game.Arrive("VermilionCity_Gym", 5, 18);
+        Assert.Equal(7, game.Story.Var("VAR_VERMILION_GYM_SWITCH_1"));
+        Assert.Equal(8, game.Story.Var("VAR_VERMILION_GYM_SWITCH_2"));
+        Assert.Equal(6, game.Map.NPCs.Count(n => n.GymThing == PropType.ElectricGate));
+        Assert.False(game.Map.IsWalkable(5, 7) && game.Map.NpcIn(5, 7, 0) == null);
+        HeadlessScriptHost Can(int n)
+        {
+            var tile = game.Map.TileScripts.Single(kv => kv.Value == $"Can{n}").Key;
+            game.Tile = (tile.X, tile.Y + 1);
+            return game.Play(Scripts.Find($"Can{n}", game.Map.ScriptFileAt(tile.X, tile.Y))!);
+        }
+        Can(3);
+        Assert.False(game.Story.Has("FLAG_MAP_LOCAL_VERMILION_GYM_FIRST_SWITCH"));
+        Can(7);
+        Assert.True(game.Story.Has("FLAG_MAP_LOCAL_VERMILION_GYM_FIRST_SWITCH"));
+        // A wrong bin after the first resets both and draws them again (1, and 2 beside it)
+        game.Rolls.Enqueue(0);
+        game.Rolls.Enqueue(0);
+        Can(9);
+        Assert.False(game.Story.Has("FLAG_MAP_LOCAL_VERMILION_GYM_FIRST_SWITCH"));
+        Assert.Equal(1, game.Story.Var("VAR_VERMILION_GYM_SWITCH_1"));
+        Assert.Equal(2, game.Story.Var("VAR_VERMILION_GYM_SWITCH_2"));
+        Can(1);
+        Can(2);
+        Assert.True(game.Story.Has("FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES"));
+        Assert.Equal(0, game.Map.NPCs.Count(n => n.GymThing == PropType.ElectricGate));
+        Assert.True(game.Map.IsWalkable(5, 7));
+        Assert.True(game.Map.IsWalkable(5, 6));
+        // Lt. Surge, for the Thunder Badge, TM34, his three trainers, and Oak's aide in the city for a player without Flash
+        var surge = game.Talk("lt_surge");
+        Assert.Contains(surge.Log, l => l.StartsWith("battle kanto_leader_lt_surge"));
+        Assert.True(game.Story.HasBadge("Kanto", "Thunder"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM34")!));
+        foreach (string trainer in new[] { "kanto_engineer_baily", "kanto_sailor_dwayne", "kanto_gentleman_tucker" })
+            Assert.True(game.Story.HasDefeated(trainer), trainer);
+        Assert.False(game.Story.Has("FLAG_HIDE_VERMILION_CITY_OAKS_AIDE"));
+        Assert.DoesNotContain(game.Talk("lt_surge").Log, l => l.StartsWith("battle"));
+        // Come in again: the gates stay down, and no switch is drawn
+        game.Arrive("VermilionCity_Gym", 5, 18);
+        Assert.Equal(0, game.Map.NPCs.Count(n => n.GymThing == PropType.ElectricGate));
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    public void TheFishingGuruGivesTheOldRodToWhoeverLikesToFish(int answer)
+    {
+        var game = PastPewter();
+        game.Arrive("VermilionCity_House1", 4, 6);
+        game.Answers.Enqueue(answer);
+        game.Talk("fisher");
+        Assert.Equal(answer == 0 ? 1 : 0, game.Bag.GetQuantity(ItemDatabase.Get("Old Rod")!));
+        Assert.Equal(answer == 0, game.Story.Has("FLAG_GOT_OLD_ROD"));
+    }
+
+    [Fact]
+    public void ThingsLaidOutToBeTakenHaveTheirOwnLooks()
+    {
+        var game = PastPewter();
+        game.Arrive("MtMoon_B2F", 15, 11);
+        Assert.Equal(PropType.DomeFossil, game.Present("dome_fossil")!.GymThing);
+        Assert.Equal(PropType.HelixFossil, game.Present("helix_fossil")!.GymThing);
+        // The Old Amber on its stand, given by the scientist beside it
+        game.Arrive("PewterCity_Museum_1F", 21, 5);
+        Assert.Equal(PropType.OldAmber, game.Present("old_amber")!.GymThing);
+        game.Talk("scientist");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Old Amber")!));
+        Assert.True(game.Story.Has("FLAG_GOT_OLD_AMBER"));
+        Assert.Null(game.Present("old_amber"));
+        // A new game's Pokédexes on Oak's desk and Town Map on the sister's table
+        var start = new Game();
+        start.Arrive("PalletTown_ProfessorOaksLab", 6, 10);
+        Assert.Equal(PropType.DeskPokedex, start.Present("pokedex_1")!.GymThing);
+        Assert.Equal(PropType.DeskPokedex, start.Present("pokedex_2")!.GymThing);
+        start.Arrive("PalletTown_RivalsHouse", 6, 7);
+        Assert.Equal(PropType.RolledTownMap, start.Present("town_map")!.GymThing);
+        // Each is a card of its own, none the item's ball they lay as before
+        static string Look(PropType kind)
+        {
+            var art = PokemonPlatinumEngine.Graphics.ThingCards.Paint(kind);
+            var sb = new System.Text.StringBuilder($"{art.Width}x{art.Height}:");
+            for (int y = 0; y < art.Height; y++)
+                for (int x = 0; x < art.Width; x++) { var c = art.Get(x, y); sb.Append(c.R).Append(c.G).Append(c.B).Append(c.A); }
+            return sb.ToString();
+        }
+        var looks = new[] { PropType.Mailbox, PropType.ElectricGate, PropType.DomeFossil, PropType.HelixFossil, PropType.OldAmber, PropType.DeskPokedex, PropType.RolledTownMap }
+            .Select(Look).ToList();
+        Assert.Equal(looks.Count, looks.Distinct().Count());
+    }
+
+    [Fact]
+    public void ANewGameOfKantoHidesTheShipsRivalAndVermilionsAideAndAnOlderSaveHasThePlacesHideThem()
+    {
+        var game = new Game();
+        Assert.True(game.Story.Has("FLAG_HIDE_SS_ANNE_RIVAL"));
+        Assert.True(game.Story.Has("FLAG_HIDE_VERMILION_CITY_OAKS_AIDE"));
+        game.Story.Unset("FLAG_HIDE_SS_ANNE_RIVAL");
+        game.Story.Unset("FLAG_HIDE_VERMILION_CITY_OAKS_AIDE");
+        game.Arrive("SSAnne_2F_Corridor", 30, 8);
+        Assert.Null(game.Present("ss_anne_rival"));
+        game.Arrive("Kanto", 287, 220);
+        Assert.Null(game.Present("scientist"));
     }
 }

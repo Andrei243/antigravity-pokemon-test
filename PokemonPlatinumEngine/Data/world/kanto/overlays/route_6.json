@@ -1,0 +1,53 @@
+{
+  // Route 6 (plan 19 · K4, part b): from the Underground Path to Vermilion City, its trainers FireRed's. Its gate to
+  // Saffron City is plan 19 · K5's, and stays shut
+  "area": "route_6",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "bug_catcher": {
+      "name": "Keigo",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Keigo: Wait! I've got a bug Pokémon that's dying to meet you!",
+        "dialogueAfter": "Bug Catcher Keigo: My bugs got squashed..."
+      }
+    },
+    "camper": {
+      "name": "Ricky",
+      "trainer": {
+        "dialogueBefore": "Camper Ricky: Nancy and I are out on a picnic. Want to join in? Battle first!",
+        "dialogueAfter": "Camper Ricky: Aw, we lost. Maybe we should just eat lunch."
+      }
+    },
+    "picnicker": {
+      "name": "Nancy",
+      "trainer": {
+        "dialogueBefore": "Picnicker Nancy: Ricky's gone and lost already? Then it's up to me!",
+        "dialogueAfter": "Picnicker Nancy: Okay, okay, you win. Do you want a sandwich?"
+      }
+    },
+    "bug_catcher_2": {
+      "name": "Elijah",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Elijah: I caught this one in the long grass. Bet you can't beat it!",
+        "dialogueAfter": "Bug Catcher Elijah: Hmph. I'll go and catch a stronger one."
+      }
+    },
+    "picnicker_2": {
+      "name": "Isabelle",
+      "trainer": {
+        "dialogueBefore": "Picnicker Isabelle: Isn't it a lovely day for a battle? Let's go!",
+        "dialogueAfter": "Picnicker Isabelle: That was fun, even if I lost!"
+      }
+    },
+    "camper_2": {
+      "name": "Jeff",
+      "trainer": {
+        "dialogueBefore": "Camper Jeff: I'm training hard so I can take on the Vermilion Gym!",
+        "dialogueAfter": "Camper Jeff: Lt. Surge is going to eat me alive..."
+      }
+    }
+  },
+  "signs": {
+    "Route6_EventScript_UndergroundPathSign": "Underground Path\nCerulean City - Vermilion City"
+  }
+}

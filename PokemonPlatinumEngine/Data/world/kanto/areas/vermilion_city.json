@@ -1,0 +1,81 @@
+{
+  "key": "vermilion_city",
+  "index": 35,
+  "name": "Vermilion City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VERMILLION",
+  "nightMusic": "MUS_VERMILLION",
+  "encounters": "vermilion_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Shellder", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 286, "z": 234, "to": "ss_anne_exterior", "toWarp": 1 },
+    { "x": 287, "z": 234, "to": "ss_anne_exterior", "toWarp": 1 },
+    { "x": 288, "z": 234, "to": "ss_anne_exterior", "toWarp": 1 },
+    { "x": 273, "z": 206, "to": "vermilion_city_house_1", "toWarp": 1 },
+    { "x": 279, "z": 206, "to": "vermilion_city_pokemon_center_1f", "toWarp": 1 },
+    { "x": 276, "z": 217, "to": "vermilion_city_pokemon_fan_club", "toWarp": 1 },
+    { "x": 283, "z": 217, "to": "vermilion_city_house_2", "toWarp": 1 },
+    { "x": 293, "z": 217, "to": "vermilion_city_mart", "toWarp": 1 },
+    { "x": 292, "z": 224, "to": "vermilion_city_house_3", "toWarp": 1 },
+    { "x": 278, "z": 225, "to": "vermilion_city_gym", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "woman_1", "looks": "woman_1", "movement": "wander_west_and_east", "x": 286, "z": 211, "facing": 2, "rangeX": 4, "rangeZ": 1, "script": "VermilionCity_EventScript_Woman" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "look_around", "x": 281, "z": 209, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_EventScript_OldMan1" },
+    { "id": "old_man_2", "looks": "old_man_2", "movement": "look_south_and_west", "x": 300, "z": 210, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_EventScript_OldMan2" },
+    { "id": "machop", "looks": "machop", "movement": "wander_around", "x": 299, "z": 211, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "VermilionCity_EventScript_Machop" },
+    { "id": "sailor", "looks": "sailor", "movement": "wander_west_and_east", "x": 295, "z": 230, "facing": 2, "rangeX": 4, "rangeZ": 1, "script": "VermilionCity_EventScript_Sailor" },
+    { "id": "vermilion_ferry_sailor", "looks": "sailor", "movement": "look_north", "x": 288, "z": 233, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "VermilionCity_EventScript_FerrySailor" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 283, "z": 224, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_around", "x": 289, "z": 207, "facing": 1, "rangeX": 4, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_VERMILION_CITY_OAKS_AIDE", "script": "VermilionCity_EventScript_OaksAide" }
+  ],
+  "signs": [
+    { "x": 297, "z": 206, "type": 0, "script": "VermilionCity_EventScript_CitySign" },
+    { "x": 274, "z": 217, "type": 0, "script": "VermilionCity_EventScript_PokemonFanClubSign" },
+    { "x": 274, "z": 224, "type": 0, "script": "VermilionCity_EventScript_GymSign" },
+    { "x": 298, "z": 218, "type": 0, "script": "VermilionCity_EventScript_HarborSign" },
+    { "x": 309, "z": 217, "type": 0, "script": "VermilionCity_EventScript_SnorlaxNotice" },
+    { "x": 278, "z": 211, "type": 2, "script": "", "item": "Max Ether", "flag": "FLAG_HIDDEN_ITEM_VERMILION_CITY_MAX_ETHER" }
+  ],
+  "triggers": [
+    { "x": 286, "z": 233, "width": 1, "depth": 1, "script": "VermilionCity_EventScript_CheckTicketLeft", "variable": "VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER", "value": "0" },
+    { "x": 287, "z": 233, "width": 1, "depth": 1, "script": "VermilionCity_EventScript_CheckTicketRight", "variable": "VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER", "value": "0" },
+    { "x": 286, "z": 232, "width": 1, "depth": 1, "script": "VermilionCity_EventScript_ExitedTicketCheck", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 287, "z": 232, "width": 1, "depth": 1, "script": "VermilionCity_EventScript_ExitedTicketCheck", "variable": "VAR_TEMP_1", "value": "0" }
+  ]
+}

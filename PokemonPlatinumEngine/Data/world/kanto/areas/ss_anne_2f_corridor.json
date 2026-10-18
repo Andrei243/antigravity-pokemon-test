@@ -1,0 +1,38 @@
+{
+  "key": "ss_anne_2f_corridor",
+  "index": 48,
+  "name": "S S Anne",
+  "matrix": 12,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SS_ANNE",
+  "nightMusic": "MUS_SS_ANNE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 2, "to": "ss_anne_1f_corridor", "toWarp": 0 },
+    { "x": 3, "z": 12, "to": "ss_anne_3f_corridor", "toWarp": 1 },
+    { "x": 30, "z": 2, "to": "ss_anne_captains_office", "toWarp": 0 },
+    { "x": 6, "z": 10, "to": "ss_anne_2f_room_1", "toWarp": 0 },
+    { "x": 10, "z": 10, "to": "ss_anne_2f_room_2", "toWarp": 0 },
+    { "x": 14, "z": 10, "to": "ss_anne_2f_room_3", "toWarp": 0 },
+    { "x": 18, "z": 10, "to": "ss_anne_2f_room_4", "toWarp": 0 },
+    { "x": 22, "z": 10, "to": "ss_anne_2f_room_5", "toWarp": 0 },
+    { "x": 26, "z": 10, "to": "ss_anne_2f_room_6", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ss_anne_rival", "looks": "blue", "movement": "look_west", "x": 30, "z": 2, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SS_ANNE_RIVAL", "script": "" },
+    { "id": "sailor", "looks": "sailor", "movement": "wander_north_and_south", "x": 2, "z": 7, "facing": 0, "rangeX": 1, "rangeZ": 2, "script": "SSAnne_2F_Corridor_EventScript_Sailor" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 30, "z": 6, "width": 1, "depth": 1, "script": "SSAnne_2F_Corridor_EventScript_RivalTriggerLeft", "variable": "VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR", "value": "0" },
+    { "x": 31, "z": 6, "width": 1, "depth": 1, "script": "SSAnne_2F_Corridor_EventScript_RivalTriggerMid", "variable": "VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR", "value": "0" },
+    { "x": 32, "z": 6, "width": 1, "depth": 1, "script": "SSAnne_2F_Corridor_EventScript_RivalTriggerRight", "variable": "VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR", "value": "0" }
+  ]
+}
