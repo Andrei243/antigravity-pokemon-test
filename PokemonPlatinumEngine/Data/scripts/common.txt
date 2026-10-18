@@ -1255,3 +1255,12 @@ script JohtoOpeningDone
   setflag FLAG_HAS_POKEDEX
   setflag FLAG_HAS_RUNNING_SHOES
   return
+
+# The Pokégear's numbers a game of Johto from before its phone should have (plan 20 · J3; Story/StoryMigration.cs,
+# version 22): Mom's with the Pokégear, Professor Elm's once his Pokémon is had, as their scenes now register them.
+script JohtoPokegear
+  if not flag FLAG_GOT_POKEGEAR return
+  addcontact mother
+  if not flag FLAG_GOT_STARTER return
+  addcontact prof_elm
+  return

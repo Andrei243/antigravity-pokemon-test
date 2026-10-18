@@ -7,7 +7,7 @@
   "triggers": [ { "trigger": 0, "script": "RivalLeaves" } ],
   "people": {
     "d15r0103_chourou": { "name": "Elder Li", "script": "Elder", "still": true },
-    "d15r0103_gsrivel": { "name": "{rival}", "hiddenBy": "FLAG_HIDE_SPROUT_TOWER_RIVAL", "still": true, "dialog": [ "..." ] },
+    "d15r0103_gsrivel": { "name": "{rival}", "npcType": "Silver", "hiddenBy": "FLAG_HIDE_SPROUT_TOWER_RIVAL", "still": true, "dialog": [ "..." ] },
     "d15r0103_bozu": {
       "name": "Jin",
       "trainer": {

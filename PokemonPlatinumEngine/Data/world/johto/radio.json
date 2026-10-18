@@ -1,0 +1,49 @@
+// The Pokégear's radio (plan 20 · J3): what each station says, in our own words, on the subjects HeartGold's
+// stations have. A line is drawn by the game's dice each time a station is tuned and every few seconds after;
+// {species} is a Pokémon the player has seen, {place} a place of Johto it lives in, {player} the player.
+{
+  "PokemonMusic": [
+    "This is the Pokémon Music Channel. Sit back and let the music carry you along.",
+    "Here's a tune for every Trainer out on the road today.",
+    "Music for walking, music for battling: you're listening to the Pokémon Music Channel."
+  ],
+  "PokemonTalk": [
+    "Professor Oak here. Every Pokémon you meet teaches you something. Go out and meet a few, then tune in again!",
+    "Professor Oak here. Did you know that {species} can be found in {place}? Go and see for yourself!",
+    "Today's Pokémon is {species}. Look for it in {place}, and be patient: it comes to those who wait.",
+    "A listener wrote in about {species} in {place}. A fine Pokémon to raise, I'd say.",
+    "Professor Oak's Pokémon Talk! We're thinking of {species} today. Ever met one in {place}?",
+    "The more you look, the more you find. {species} is out there in {place} right now."
+  ],
+  "TrainerProfiles": [
+    "Trainer Profiles: a Youngster on Route 30 says shorts are the only way to battle.",
+    "Trainer Profiles: today, a Bug Catcher who never leaves home without a spare net.",
+    "Trainer Profiles: our listener {player} is out on the road. Good luck out there!",
+    "Trainer Profiles: a Bird Keeper in Violet City who knows every Pokémon by its wingbeat."
+  ],
+  "ThatTownThesePeople": [
+    "That Town, These People: New Bark Town, where the winds of a new beginning blow.",
+    "That Town, These People: Cherrygrove City, a quiet town where the sea is never far away.",
+    "That Town, These People: Violet City, where the old tower sways and never falls.",
+    "That Town, These People: Route 30, where the berries grow and the young Trainers gather."
+  ],
+  "SearchParty": [
+    "Pokémon Search Party: our team set off at dawn to look for something no one has seen. Stay tuned.",
+    "Pokémon Search Party: the trail goes cold in the tall grass. We'll keep looking, listeners!",
+    "Pokémon Search Party: footprints by the water! Could it be the Pokémon we're after?"
+  ],
+  "RadioDrama": [
+    "Serial Radio Drama, today's episode: the hero steps out into the rain, and someone is waiting.",
+    "Serial Radio Drama: 'I'll never give up,' says our hero, as the storm closes in.",
+    "Serial Radio Drama: a letter arrives with no name on it. Who could have sent it?"
+  ],
+  "BuenasPassword": [
+    "Buena's Password! Remember tonight's word, and bring it to me in Goldenrod City.",
+    "It's Buena! Tonight's password is about Pokémon. Listen closely, everybody!",
+    "Buena's Password: one word, one night only. Don't forget it!"
+  ],
+  "Unown": [
+    "…the signal crackles, and strange sounds come through, like voices with no words…",
+    "…something hums on the air, rising and falling, as if it were calling…"
+  ]
+}

@@ -122,6 +122,8 @@ public partial class GameEngine
     {
         // The first arrival in a place is timed for the log, from here to its first frame (plan 16 · T3)
         TimeTheArrival();
+        // The Pokégear's radio is off once a door has been gone through (plan 20 · J3)
+        SilenceTheRadio();
         // A warp takes the player off the Cycling Road (FieldSystem_InitFlagsWarp)
         flow.Story.Unset(BicycleRules.OnCyclingRoadFlag);
         flow.Story.Unset(BicycleRules.ForcedInGateFlag);
@@ -209,6 +211,8 @@ public partial class GameEngine
         // Going anywhere else ends the rematches the Vs. Seeker found (FieldMapChange_UpdateGameData)
         VsSeeker.Reset(flow.Story);
         foreach (var map in MapDatabase.MapNames.Select(MapDatabase.Get)) foreach (var npc in map.Everyone) npc.ReadyForRematch = false;
+        // ...but not those a call over the Pokégear's phone asked to wait (plan 20 · J3)
+        KeepPhoneRematchesWaiting();
         FieldMoveRules.LeavePlace(flow.Story, cave);
         // Where the Bicycle isn't allowed the player gets off it (field_map_change_flags.c)
         if (flow.Player.Mode == TravelMode.Cycling && !flow.Map.BikeAllowedAt(flow.Player.GridX, flow.Player.GridY)) flow.Player.SetCycling(false);
@@ -1237,6 +1241,14 @@ public partial class GameEngine
         public bool Hatch() => game.HatchFirstEgg();
 
         public void Seen(PokemonSpecies species) => game.flow.Pokedex.RegisterSeen(species.DexNumber);
+
+        // A number registered: the jingle and the word over the field (plan 20 · J3; dropped while a scene is skipped)
+        public void ContactAdded(PhoneContact contact)
+        {
+            if (Skipping) return;
+            AudioManager.PlaySound("phone_registered");
+            game.ShowNotification(Text.Of("pokegear.phone.registered", ("name", contact.Name)));
+        }
 
         // ---- Ball Capsules, Seals and ribbons (plan 06 · R17b)
 

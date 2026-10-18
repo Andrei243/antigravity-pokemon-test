@@ -1,0 +1,15 @@
+# The strange signal in the Ruins of Alph's halls (plan 20 · J3): no tune, only a slow choir and bells that answer one
+# another out of time, as if something were calling. Original composition for this game.
+title Unown Signal
+tempo 60
+meter 4/4
+reverb 0.6
+
+track choir choir vol=0.75 pan=0 rev=0.7
+  L o4 (d a)1 | (e b)1 | (d a)1 | (c g)1 |
+
+track bell bell vol=0.66 pan=-0.4 rev=0.7
+  L o5 a4 r2. | r2 e4 r4 | o6 d4 r2. | r4 o5 g4 r2 |
+
+track bell2 glockenspiel vol=0.36 pan=0.4 rev=0.75
+  L r2. o5 d4 | r1 | r4 b4 r2 | r2. a4 |

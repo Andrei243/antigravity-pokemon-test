@@ -154,7 +154,9 @@ public sealed class ScriptLibrary
 
     /// <summary>The flags any script sets or clears.</summary>
     public IReadOnlySet<string> FlagsWritten => All.SelectMany(s => s.Everything())
-        .Where(i => i.Op is Op.SetFlag or Op.ClearFlag && !i.Own).Select(i => i.Name).ToHashSet(StringComparer.Ordinal);
+        .Where(i => i.Op is Op.SetFlag or Op.ClearFlag or Op.AddContact && !i.Own)
+        // (a number registered is kept by a flag of its own, plan 20 · J3)
+        .Select(i => i.Op == Op.AddContact ? Models.Pokegear.ContactFlag(i.Name) : i.Name).ToHashSet(StringComparer.Ordinal);
 
     /// <summary>The flags any script asks about.</summary>
     public IReadOnlySet<string> FlagsRead => All.SelectMany(s => s.Everything())
@@ -268,6 +270,9 @@ public sealed class ScriptLibrary
                         break;
                     case Op.ChoosePokemon when i.Name.Length > 0 && PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
+                        break;
+                    case Op.AddContact when Models.PhoneBook.Get(i.Name) == null:
+                        Wrong(i, $"the phone book has no contact '{i.Name}'");
                         break;
                     case Op.GivePokemon or Op.CatchingLesson or Op.GiveEgg or Op.Seen when PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");

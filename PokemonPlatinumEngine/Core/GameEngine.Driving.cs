@@ -161,6 +161,17 @@ public partial class GameEngine
         public PoffinCaseScreen PoffinCaseScreen => game.flow.PoffinCaseScreen;
         public HatchScreen Hatch => game.flow.HatchScreen;
 
+        /// <summary>The Pokégear (plan 20 · J3): its screen, opened as the start menu opens it (on a card), and what the radio plays.</summary>
+        public PokegearScreen PokegearScreen => game.flow.PokegearScreen;
+        public void OpenPokegear(PokegearCard? on = null) => game.OpenPokegear(on);
+        public RadioSong RadioSong => game.radioSong;
+        /// <summary>The phone's clock: a tool moves it on so that the next step may ring (the ten minutes HeartGold waits).</summary>
+        public PhoneRinger PhoneRinger => game.phoneRinger;
+        /// <summary>A call as the game makes it: the player ringing a contact, or a contact ringing the player.</summary>
+        public void PlaceCall(PhoneContact contact, bool incoming) => game.PlaceCall(contact, incoming);
+        /// <summary>A step's chance of a contact ringing, asked at once.</summary>
+        public bool PhoneRingsOnAStep() => game.PhoneRingsOnAStep();
+
         /// <summary>The Hall of Fame's ceremony and the credits (plan 02 · S14).</summary>
         public HallOfFameCeremony Ceremony => game.flow.Ceremony;
         public CreditsScreen Credits => game.flow.Credits;

@@ -120,8 +120,10 @@ public static class VsSeeker
             if (!story.HasDefeated(id)) break;
         }
         if (level == 0) return trainer.Id;
-        // Not unlocked yet: the highest level below it with a team, or the trainer's own
-        if (!story.Has(LevelFlag(level)))
+        // Not unlocked yet: the highest level below it with a team, or the trainer's own. A trainer of Johto's is called
+        // back over the Pokégear's phone, whose levels the Johto Badges open (plan 20 · J3, Models.PhoneRematch)
+        bool johto = trainer.Id.StartsWith("johto_", StringComparison.OrdinalIgnoreCase);
+        if (johto ? !Models.PhoneRematch.Unlocked(level, story) : !story.Has(LevelFlag(level)))
         {
             level--;
             while (level > 0 && row[level - 1] == null) level--;

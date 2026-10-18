@@ -7605,6 +7605,9 @@ way -
   = VAR_SCENE_NEW_BARK_WEST_EXIT 0 -> 1
   = VAR_SCENE_PLAYERS_HOUSE_1F 0 -> 1
   = VAR_UNK_408B 0 -> 2
+=== common.JohtoPokegear
+from a trainer with lines of their own
+way -
 === common.KantoNewGame
 from a trainer with lines of their own
 way -
@@ -10393,15 +10396,51 @@ from Aide at 4,6 of Route2_EastBuilding
 way -
   Aide> I'm one of Professor Oak's aides. I keep an eye on how his Pokédex is coming along.
   Aide> Catch plenty of Pokémon and I may have something for you.
+=== route_30.Joey
+from Joey at 553,332 of Johto
+way 0
+  Youngster Joey> Youngster Joey: My Rattata is in the top bit of all Rattata. Want to see?
+  * battle johto_youngster_joey Won
+  + beaten johto_youngster_joey
+way 1, from answer 1
+  * battle johto_youngster_joey Lost
 === route_30_mr_pokemon_house.MrPokemon
 from Mr. Pokémon at 9,7 of Route30_MrPokemonsHouse
 way -
   Mr. Pokémon> Hello, hello! Have a look round. Everything in here came from my travels.
+=== route_31.Wade
+from Wade at 540,279 of Johto
+way 0
+  Bug Catcher Wade> Bug Catcher Wade: I caught all of these in the long grass here! Let's battle!
+  * battle johto_bug_catcher_wade Won
+  + beaten johto_bug_catcher_wade
+way 1, from answer 1
+  * battle johto_bug_catcher_wade Lost
 === route_32.BadgeCheck
 from the trigger at 475,305 of Johto
 way -
   Man> Hold on there! Have you been to the Gym in Violet City yet?
   Man> The road south gets rough. Trainers without a Badge to their name tend to come back in tears. Go and earn one first!
+=== route_32.Frieda
+from Frieda at 471,409 of Johto
+way -
+  Frieda> Huh? Today isn't Friday. I only come out on Fridays!
+=== route_32.Liz
+from Liz at 466,342 of Johto
+way 0
+  Picnicker Liz> Picnicker Liz: You're a trainer too? Let's battle, then we can swap stories!
+  * battle johto_picnicker_liz Won
+  + beaten johto_picnicker_liz
+way 1, from answer 1
+  * battle johto_picnicker_liz Lost
+=== route_32.Ralph
+from Ralph at 468,387 of Johto
+way 0
+  Fisherman Ralph> Fisherman Ralph: I fish every day of the week. My Pokémon are as tough as old boots!
+  * battle johto_fisherman_ralph Won
+  + beaten johto_fisherman_ralph
+way 1, from answer 1
+  * battle johto_fisherman_ralph Lost
 === route_32.SeedMan
 from Man at 477,305 of Johto
 way -

@@ -4,6 +4,8 @@
   // (route_32_pokecenter_1f.txt)
   "area": "route_32_pokecenter_1f",
   "bgmTrack": "johto/violet",
+  // The PC on the counter's left (HeartGold's background event 0), switched on and used as every PC is (plan 20 · J3's stretch)
+  "read": { "0": "PC" },
   "people": {
     "r32pc0101_pcwoman1": { "name": "Nurse", "script": "Nurse" },
     "r32pc0101_pcwoman2": {

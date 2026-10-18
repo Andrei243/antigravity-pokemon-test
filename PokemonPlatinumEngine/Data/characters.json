@@ -98,6 +98,12 @@
     "dahlia": { "skin": "#a8704e", "hairColor": "#2a1c20", "hair": "Afro", "top": "#d8384a", "accent": "#f2c84a", "bottom": "#d8384a", "shoes": "#f2c84a", "eyes": "#3a2420", "skirt": true, "shortSleeves": true, "build": "Adult", "lashes": true, "height": 1.04 },
     // Lady Caitlin of the Battle Castle: long pale-gold hair and a long pink gown
     "caitlin": { "hairColor": "#f4e6ae", "hair": "Long", "top": "#eab4d4", "accent": "#fbf2f8", "bottom": "#eab4d4", "shoes": "#d88ab4", "eyes": "#7a5a9a", "skirt": true, "coat": true, "build": "Adult", "lashes": true, "blush": true },
+    // Johto's first three of the named cast (plan 20, the stretch after J3, ahead of J14; our own takes): Professor Elm,
+    // tousled brown hair and glasses, a long white lab coat over a green shirt; the red-haired boy, long red hair and a
+    // black jacket with red trim; Falkner, swept navy hair and a blue top with a white collar, as a bird keeper might
+    "elm": { "hairColor": "#6a4a32", "hair": "Spiky", "top": "#f2f2f6", "accent": "#5f9a6a", "bottom": "#4a4e6a", "shoes": "#3a2e2a", "eyes": "#4a3a2a", "glasses": "#3a3036", "coat": true, "build": "Adult", "height": 1.06 },
+    "silver": { "hairColor": "#c23a3a", "hair": "Long", "top": "#2e2a3c", "accent": "#c8463c", "bottom": "#3a3a52", "shoes": "#2a2632", "eyes": "#b03030", "sole": "#d84a40" },
+    "falkner": { "hairColor": "#2a3460", "hair": "Swept", "top": "#3c6ab8", "accent": "#f2f2f6", "bottom": "#26304e", "shoes": "#2a2a36", "eyes": "#2e4a90", "build": "Adult", "height": 1.02 },
     // A scientist (plan 02 · S6: Team Galactic's in its Eterna building, the museum's man at the Underground Man's): our own take, short brown hair and a long white lab coat with a blue collar over grey trousers
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
     "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "height": 1.02 }

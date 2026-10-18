@@ -104,6 +104,8 @@ partial class Harness
             }
         }
         JohtoScenes();
+        // And the Pokégear's cards, on the game the chapter left (plan 20 · J3)
+        PokegearShots();
         engine.NewGameRegion = "Sinnoh";
     }
 }

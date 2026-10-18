@@ -9,7 +9,7 @@
   "triggers": [ { "trigger": 0, "script": "GuideGentStops" }, { "trigger": 1, "script": "RivalAmbush" } ],
   "people": {
     "t21_gsoldman1": { "name": "Guide Gent", "script": "GuideGent", "still": true },
-    "t21_gsrivel": { "name": "{rival}", "still": true, "dialog": [ "Get lost." ] },
+    "t21_gsrivel": { "name": "{rival}", "npcType": "Silver", "still": true, "dialog": [ "Get lost." ] },
     "t21_gsboy1": {
       "name": "Boy",
       "dialog": [ "The Mart sells Poké Balls now! I'm going to save up for ten." ]

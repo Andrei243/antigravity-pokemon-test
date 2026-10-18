@@ -30,6 +30,14 @@
     { "species": "Pidgey", "level": 4, "night": "Hoothoot" }
   ],
   "landRate": 25,
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
   "warps": [
     { "x": 626, "z": 389, "to": "route_29_route_46_gatehouse", "toWarp": 0 },
     { "x": 627, "z": 389, "to": "route_29_route_46_gatehouse", "toWarp": 0 }

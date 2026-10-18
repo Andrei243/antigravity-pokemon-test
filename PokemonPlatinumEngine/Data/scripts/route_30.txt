@@ -1,0 +1,32 @@
+# Route 30 (plan 20 · J3). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_R30).
+#
+# Youngster Joey battles as every trainer does; beaten, he asks for the player's number for the Pokégear's phone,
+# and once it is registered he calls back for a rematch on his day (Models/Pokegear.cs, phone.txt).
+
+
+script Joey
+  if not defeated self goto Fight
+  if rematch self goto Rematch
+  if flag FLAG_PHONE_CONTACT_JOEY goto Known
+  speaker "Joey"
+  say "Hey, you're pretty good! Let's swap numbers. I'll call you when my Rattata's even stronger."
+  ask "Register Joey's number in your Pokégear?"
+  if no goto Refused
+  addcontact joey
+  say "Great! I'll give you a call sometime. Don't forget to pick up!"
+  end
+label Refused
+  say "Aw, come on! Well, if you change your mind, I'll be right here."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  end
+label Rematch
+  trainerline before
+  battle self rematch
+  end

@@ -3130,3 +3130,54 @@ wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
   team #0: Turtwig Lv5 "Turtwig" Male Brave, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
 bag: Poké Ball x10, Potion x5, Revive x2
 upgrade: nothing
+=== w5-s22-v1-badges-in-two-regions.json
+save 1, ids issued 1
+world 5, story 22, Modern rules, Girl Dawn, rival Barry, $3000, badges 111, Kanto 1
+wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
+  team #0: Turtwig Lv5 "Turtwig" Male Calm, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w5-s22-v1-new-game-in-the-bedroom.json
+save 1, ids issued 0
+world 5, story 22, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on PlayerHouse2F 4,6 facing Up, OnFoot at height 0
+bag: nothing
+upgrade: nothing
+=== w5-s22-v1-on-a-bridge.json
+save 1, ids issued 2
+world 5, story 22, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on Sinnoh 206,616 facing Left, OnFoot at height 7
+  team #0: Turtwig Lv5 "Turtwig" Male Quirky, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
+  team #1: Bibarel Lv30 "Bibarel" Male Quirky, Unaware, holds nothing, HP 96/96, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w5-s22-v1-past-the-opening.json
+save 1, ids issued 1
+world 5, story 22, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
+  team #0: Turtwig Lv5 "Turtwig" Male Quirky, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w5-s22-v1-safari-game.json
+save 1, ids issued 2
+world 5, story 22, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on GreatMarsh 47,48 facing Up, OnFoot at height 1, a Safari Game with 27 balls and 475 steps left
+  team #0: Turtwig Lv5 "Turtwig" Male Quirky, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
+  team #1: Bibarel Lv30 "Bibarel" Male Quirky, Unaware, holds nothing, HP 96/96, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w5-s22-v1-surfing.json
+save 1, ids issued 2
+world 5, story 22, Modern rules, Boy Lucas, rival Barry, $3000, badges 0
+wakes on Sinnoh 111,892 facing Right, Surfing at height 0.5
+  team #0: Turtwig Lv5 "Turtwig" Male Quirky, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id a0c41538#0
+  team #1: Bibarel Lv30 "Bibarel" Male Quirky, Unaware, holds nothing, HP 96/96, Headbutt 15/15, Hyper Fang 15/15, Yawn 10/10, Surf 15/15, id a0c41538#1
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing
+=== w5-s22-v1-the-girl.json
+save 1, ids issued 1
+world 5, story 22, Modern rules, Girl Dawn, rival Barry, $3000, badges 0
+wakes on Sinnoh 116,886 facing Down, OnFoot at height 1
+  team #0: Turtwig Lv5 "Turtwig" Male Calm, Overgrow, holds nothing, HP 21/21, Tackle 35/35, Withdraw 40/40, id bebdca73#0
+bag: Poké Ball x10, Potion x5, Revive x2
+upgrade: nothing

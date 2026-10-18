@@ -46,6 +46,8 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `pc_on` | `SEQ_SE_DP_PC_LOGIN` | A PC is switched on: as its screen comes on in the field (`anim pc on`, plan 09 · L12). |
 | `pc_off` | `SEQ_SE_DP_PC_LOGOFF` | A PC is switched off: as its screen goes dark in the field (`anim pc off`). |
 | `vs_seeker` | `SE_DP_VS_SEEKER_BEEP_sseq` | The Vs. Seeker is used: it searches for trainers who want a rematch. |
+| `phone_ring` | `SEQ_SE_GS_PHONE0` | The Pokégear's phone rings, or a call is placed (plan 20 · J3). |
+| `phone_registered` | `SEQ_ME_POKEGEAR_REGIST` | A number is registered in the Pokégear's phone (plan 20 · J3). |
 | `heal` | `SEQ_SE_DP_KAIFUKU` | A medicine used from the bag, HP restored in battle. |
 | `bike_bell` | `SEQ_SE_DP_JITENSYA` | Getting on the Bicycle (plan 02 · S2). |
 | `gear` | `SEQ_SE_DP_GEAR` | The Bicycle's gear changes, on the run button while riding. |

@@ -62,6 +62,14 @@
     { "species": "Magikarp", "level": 40, "maxLevel": 40 }
   ],
   "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
   "warps": [
     { "x": 518, "z": 269, "to": "route_31_violet_gatehouse", "toWarp": 1 },
     { "x": 518, "z": 270, "to": "route_31_violet_gatehouse", "toWarp": 1 },

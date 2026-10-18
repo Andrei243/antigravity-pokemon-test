@@ -5,7 +5,7 @@ using PokemonPlatinumEngine.Models;
 
 namespace PokemonPlatinumEngine.UI.Kit;
 
-public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key, Pin, Size, Hat, Shirt, Trousers, Shoe }
+public enum UiIcon { Dex, Ball, Bag, Trainer, Save, Options, Close, Quit, Pouch, Cross, Disc, Berry, Letter, Boost, Key, Pin, Size, Hat, Shirt, Trousers, Shoe, Gear, Phone, MapCard, Radio }
 
 /// <summary>
 /// Small vector icons built from <see cref="UiShapes"/>: the start menu's entries, gender marks and arrows.
@@ -139,6 +139,35 @@ internal static class UiIcons
                 UiShapes.Fill(new Rectangle(c.X - 0.8f * s, c.Y - 0.66f * s, 0.7f * s, 1.0f * s), 0.24f * s, ink);
                 UiShapes.Fill(new Rectangle(c.X - 0.8f * s, c.Y - 0.06f * s, 1.7f * s, 0.62f * s), 0.3f * s, ink);
                 UiShapes.Line(c + new Vector2(-0.66f, 0.36f) * s, c + new Vector2(0.72f, 0.36f) * s, 0.1f * s, back);
+                break;
+
+            // The Pokégear and its cards (plan 20 · J3)
+            case UiIcon.Gear:
+                // A round handheld with a screen and a dial
+                UiShapes.Fill(new Rectangle(c.X - 0.7f * s, c.Y - 0.92f * s, 1.4f * s, 1.84f * s), 0.5f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X - 0.44f * s, c.Y - 0.62f * s, 0.88f * s, 0.6f * s), 0.12f * s, back);
+                UiShapes.Circle(c + new Vector2(0, 0.46f) * s, 0.24f * s, back);
+                break;
+            case UiIcon.Phone:
+                // A handset: two ear pieces and the grip between
+                UiShapes.Line(c + new Vector2(-0.52f, -0.52f) * s, c + new Vector2(0.52f, 0.52f) * s, 0.36f * s, ink);
+                UiShapes.Circle(c + new Vector2(-0.6f, -0.6f) * s, 0.34f * s, ink);
+                UiShapes.Circle(c + new Vector2(0.6f, 0.6f) * s, 0.34f * s, ink);
+                break;
+            case UiIcon.MapCard:
+                // A folded map: three panels, the middle one lower
+                UiShapes.Fill(new Rectangle(c.X - 0.9f * s, c.Y - 0.72f * s, 0.56f * s, 1.36f * s), 0.08f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X - 0.28f * s, c.Y - 0.6f * s, 0.56f * s, 1.36f * s), 0.08f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X + 0.34f * s, c.Y - 0.72f * s, 0.56f * s, 1.36f * s), 0.08f * s, ink);
+                UiShapes.Circle(c + new Vector2(0, -0.08f) * s, 0.14f * s, back);
+                break;
+            case UiIcon.Radio:
+                // A set with its aerial and a round speaker
+                UiShapes.Line(c + new Vector2(-0.3f, -0.4f) * s, c + new Vector2(0.5f, -0.96f) * s, 0.12f * s, ink);
+                UiShapes.Fill(new Rectangle(c.X - 0.92f * s, c.Y - 0.42f * s, 1.84f * s, 1.24f * s), 0.24f * s, ink);
+                UiShapes.Circle(c + new Vector2(-0.36f, 0.2f) * s, 0.3f * s, back);
+                UiShapes.Line(c + new Vector2(0.24f, 0.02f) * s, c + new Vector2(0.62f, 0.02f) * s, 0.12f * s, back);
+                UiShapes.Line(c + new Vector2(0.24f, 0.38f) * s, c + new Vector2(0.62f, 0.38f) * s, 0.12f * s, back);
                 break;
             default:
                 UiShapes.Ring(c + new Vector2(0, 0.08f) * s, 0.82f * s, 0.22f * s, ink);

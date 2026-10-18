@@ -14,7 +14,9 @@ public enum TownMapMode
     /// <summary>Fly's choice of a place to land.</summary>
     Fly,
     /// <summary>A map on a wall: looked at, with no way come on it.</summary>
-    Wall
+    Wall,
+    /// <summary>The Pokégear's map card (plan 20 · J3): the Town Map's own screen, which goes back to the Pokégear.</summary>
+    Card
 }
 
 /// <summary>One of Fly's places as a game has it: open to fly to or not, and whether anything of it is drawn.</summary>

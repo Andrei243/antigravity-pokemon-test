@@ -449,6 +449,8 @@ public partial class GameEngine
     {
         bool isDefeat = flow.Battle?.Result == BattleResult.PlayerDefeat;
         ScoreBattle();
+        // A battle stops the Pokégear's radio: the field comes back to its own theme (plan 20 · J3)
+        SilenceTheRadio();
         // The roamers and the Poké Radar hear how a battle met in the field ended (plan 06 · R13)
         if (flow.Battle != null) EncountersAfterBattle(flow.Battle, isDefeat);
         // Travelling with someone, the team is healed after every battle that isn't lost (encounter.c,

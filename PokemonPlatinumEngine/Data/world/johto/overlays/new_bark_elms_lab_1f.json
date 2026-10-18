@@ -7,7 +7,7 @@
   // HeartGold's two rows of steps: the aide on the way out (0, on 1), Elm's favour on the way in (1, on 0)
   "triggers": [ { "trigger": 0, "script": "AideStops" }, { "trigger": 1, "script": "Errand" } ],
   "people": {
-    "t20r0101_doctor": { "name": "Prof. Elm", "script": "Elm", "still": true },
+    "t20r0101_doctor": { "name": "Prof. Elm", "npcType": "Elm", "script": "Elm", "still": true },
     "t20r0101_assistantm": { "name": "Aide", "script": "Aide", "still": true },
     "t20r0101_policeman": { "name": "Officer", "still": true, "dialog": [ "I'm here about the theft." ] }
   },

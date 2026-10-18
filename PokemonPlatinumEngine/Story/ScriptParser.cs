@@ -782,6 +782,9 @@ public static class ScriptParser
             // After the Hall of Fame (plan 02 · S15): the Pokédex becomes the National one (SetNationalDexEnabled)
             case "nationaldex":
                 return new Instruction { Op = Op.NationalDex, Line = line };
+            // A number registered in the Pokégear's phone (plan 20 · J3), by the phone book's id
+            case "addcontact":
+                return new Instruction { Op = Op.AddContact, Line = line, Name = r.Identifier("a contact of the phone book") };
 
             // The Battle Hall and the Battle Castle (plan 06 · R18c)
             case "hall":

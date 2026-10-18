@@ -2539,8 +2539,9 @@ HeartGold, and why:
   (`johto.json`'s `hasStory`); whoever crosses from Kanto arrives before the house (`Region.Arrival`). What a Johto game
   starts with is `common.JohtoNewGame`, run after `NewGame` for every new game.
 - **The Pokégear, the Map Card and the Mystery Egg are flags** (`FLAG_GOT_POKEGEAR`, `FLAG_GOT_MAP_CARD`,
-  `FLAG_GOT_MYSTERY_EGG`), with their fanfares and words: the Pokégear itself is plan 20 · J3's, and an Egg in the bag
-  would want a key item of Johto's own, which no other scene asks for. Elm's number is "registered" in words only.
+  `FLAG_GOT_MYSTERY_EGG`), with their fanfares and words, and an Egg in the bag would want a key item of Johto's own,
+  which no other scene asks for. Since plan 20 · J3 the Pokégear is a screen of the start menu, and Mom's and Elm's
+  numbers are registered as their scenes say ("The Pokégear", below).
 - **Elm's machine** opens the choice of three, as Sinnoh's briefcase does (`starter`), from the machine's tile or from
   Elm himself once he has asked; the boy at the window takes the one strong against the player's
   (`Region.RivalStarterFor`), and his three teams (`johto_rival_silver_2`, `_3`, `_6`) are HeartGold's for each.
@@ -2625,3 +2626,51 @@ FireRed, and why:
 - **The people FireRed's new game hides** that this part brings on (the rival on the S.S. Anne, Oak's aide in Vermilion)
   are hidden by `common.KantoNewGame` for a new game and by the places' own arrival scripts for an older save, as in
   the first part: no story version is raised.
+## The Pokégear (2026-10-18, plan 20 · J3)
+
+Johto's Pokégear, from HeartGold's `src/application/pokegear`, `src/field/overlay_2_gear_phone.c`,
+`src/unk_02092BE8.c` and `src/field/encounter_check.c` (read at the pinned commit), in our own words and music.
+
+- **What it remembers is the story's own flags and variables**: the cards by HeartGold's names (`FLAG_GOT_POKEGEAR`,
+  `FLAG_GOT_MAP_CARD`, `FLAG_GOT_RADIO_CARD`), a number by a flag of ours (`FLAG_PHONE_CONTACT_<ID>`), a rematch asked
+  for by another (`FLAG_PHONE_REMATCH_<ID>`), so a save keeps it with no field of its own (as Amity Square's walk is
+  kept), where HeartGold's save has a phone book of its own. Story version 22 registers Mom's number for a game of
+  Johto that has the Pokégear and Elm's for one with his Pokémon (`common.JohtoPokegear`). It is Johto's alone: the
+  start menu shows it only there.
+- **The cards are tabs**, where HeartGold's are pages of a touch screen behind buttons; the clock is on every card. The
+  map card opens the region's map (plan 01 · M12's screen, in a mode of its own, `TownMapMode.Card`, which goes back to
+  the Pokégear), with Johto's `townmap.json` written for it: a block for each of Johto's areas on the cells its chunks
+  take in HeartGold's overworld, and Kanto's half of that grid out of view. Fly over Johto is J9's.
+- **A contact rings on their own** as HeartGold's ring manager has it: once ten minutes of the field's own time have
+  passed since the last try (HeartGold counts the console's minutes), a step tries once, and 51 times in a hundred one
+  of the registered numbers of the kinds that ring (trainers, Gym Leaders, the friend, Buena, the juggler) not met where
+  the player is rings, drawn evenly; a miss waits ten minutes more. HeartGold also sorts its callers in three groups
+  by a weight and remembers who has rung this round, and has scripted calls (Elm's about the Egg, the Bike Shop, Bill's
+  boxes…); ours draws among all of them alike and has no scripted calls yet. No call comes underground or in a cave,
+  where HeartGold's headers forbid them, nor while a script runs.
+- **A rematch over the phone** (plan 06 · R12's rule, `VsSeeker.RematchTeam`): a registered trainer who has been beaten
+  asks for one when a call with them falls on their day of the week and time of day (the phone book's
+  `rematchWeekday` and `rematchTimeOfDay`; HeartGold's morning is 4 to 10, its day 10 to 20, its night the rest), and
+  then waits on their map, spinning, until fought, through any number of doors (the Vs. Seeker's give up after a
+  hundred steps). The teams are HeartGold's numbered after the first (`TRAINER_YOUNGSTER_JOEY_2` to `_4`), written as
+  the trainer's row by the importer; HeartGold moves each caller on by flags of the story in their own scripts, and
+  ours opens the row's levels by the Johto Badges, two for the second team, four, six and eight for the next, and
+  Johto's Hall of Fame for a fifth (`PhoneRematch.BadgesForLevel`). Gifts over the phone (Joey's HP Up) are not given yet.
+- **The radio** is HeartGold's dial: a round pad with a cursor the arrows move, four stations in Johto at HeartGold's
+  spots, clear within the inner ring and heard through static within the outer, the Unown's signal alone in the Ruins
+  of Alph's halls and nothing in a cave. The slots are HeartGold's (`RadioShow_TranslateStationID`): the music; Professor
+  Oak's talk; the trainers' profiles at even hours and the towns' people at odd; the search party, the drama and Buena's
+  password by the hour's remainder by three. Their words are ours (`Data/world/johto/radio.json`), drawn with the game's
+  dice every six seconds. Team Rocket's broadcast and Mahogany's signal wait for their chapters (J11), the Poké Flute's
+  for Kanto (J15), GB Sounds for decision 8.
+- **The music channel** plays HeartGold's song of the day (`RadioShow_PokemonMusic_Setup`): the March on Sundays,
+  Mondays and Fridays, the Lullaby on Tuesdays and Saturdays, and with the National Pokédex the Hoenn Sound on Wednesdays
+  and the Sinnoh Sound on Thursdays. The songs are ours (`johto/radio_march`, `radio_lullaby`, `radio_hoenn_sound`, and
+  Route 201's own theme for the Sinnoh Sound, which is what HeartGold's is). A song plays over the field until the radio
+  is tuned away, a door is gone through or a battle begins, where HeartGold's keeps playing until another song is asked for.
+- **What the songs do**: HeartGold adds 25 to its share of steps that may meet something with the March and takes 25
+  away with the Lullaby (`FieldSystem_EncounterRateRoll`); ours adds them to Platinum's own share (40 on foot, 70 in tall
+  grass or on a Bicycle), never under nought: HeartGold's share is an unsigned byte that can wrap round under the
+  Lullaby, a bug not kept. The Hoenn and Sinnoh Sounds put the area's two species of each in the grass's slots 2 and 3,
+  and 4 and 5, after a swarm's (`EncSlotArray_Update_HoennSinnohSounds`). The Unown's signal, which HeartGold reads to
+  draw the Unown not yet caught, does nothing yet (the Ruins of Alph's chambers are still to come).

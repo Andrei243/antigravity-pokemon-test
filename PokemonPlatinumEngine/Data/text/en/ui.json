@@ -296,6 +296,7 @@
     "pokedex": "POKÉDEX",
     "pokemon": "POKÉMON",
     "bag": "BAG",
+    "pokegear": "POKéGEAR",
     "save": "SAVE",
     "options": "OPTIONS",
     "close": "CLOSE",
@@ -700,7 +701,7 @@
   },
 
   "townMap": {
-    "title": { "Item": "TOWN MAP", "Fly": "FLY", "Wall": "MAP" },
+    "title": { "Item": "TOWN MAP", "Fly": "FLY", "Wall": "MAP", "Card": "MAP CARD" },
     "flyTo": "Fly to where?",
     "legend": { "you": "You", "visited": "Visited", "notVisited": "Not yet visited", "trail": "The way you came" },
     "hover": "Move the cursor over a town, a route or a landmark to read about it.",
@@ -720,6 +721,83 @@
     "skip": "SKIP",
     "safariBalls": "SAFARI BALLS",
     "steps": "STEPS"
+  },
+  "pokegear": {
+    "title": "POKéGEAR",
+    "clock": "{day} {time}",
+    "card": {
+      "Phone": "PHONE",
+      "Map": "MAP",
+      "Radio": "RADIO"
+    },
+    "keys": {
+      "shoulders": "Q / E"
+    },
+    "hints": {
+      "call": "Call",
+      "open": "Open the map",
+      "tune": "Tune",
+      "cards": "Cards"
+    },
+    "phone": {
+      "empty": "No numbers registered yet.",
+      "where": "WHERE TO FIND THEM",
+      "rematch": "READY TO BATTLE AGAIN",
+      "when": "{day}s, in the {time}",
+      "waiting": "WAITING FOR YOU",
+      "registered": "{name}'s number is in your Pokégear!"
+    },
+    "time": {
+      "Morning": "morning",
+      "Day": "day",
+      "Night": "night"
+    },
+    "map": {
+      "none": "This place isn't on the map card.",
+      "heading": "MAP CARD",
+      "body": "Open the map to look over the whole region, town by town and route by route."
+    },
+    "radio": {
+      "noSignal": "No signal here.",
+      "static": "Only static…",
+      "hint": "Move the cursor round the dial to find a station.",
+      "faint": "FAINT"
+    },
+    "station": {
+      "PokemonMusic": "Pokémon Music Channel",
+      "PokemonTalk": "Prof. Oak's Pokémon Talk",
+      "SearchParty": "Pokémon Search Party",
+      "RadioDrama": "Serial Radio Drama",
+      "BuenasPassword": "Buena's Password",
+      "TrainerProfiles": "Trainer Profiles",
+      "ThatTownThesePeople": "That Town, These People",
+      "PokeFlute": "Poké Flute Channel",
+      "Unown": "A strange signal",
+      "TeamRocket": "An unknown broadcast",
+      "MahoganySignal": "A strange signal",
+      "Commercials": "A word from our sponsors"
+    },
+    "song": {
+      "March": "POKéMON MARCH",
+      "Lullaby": "POKéMON LULLABY",
+      "HoennSound": "HOENN SOUND",
+      "SinnohSound": "SINNOH SOUND",
+      "Unown": "SIGNAL"
+    },
+    "people": {
+      "mother": "Mom",
+      "profElm": "Prof. Elm",
+      "profOak": "Prof. Oak",
+      "ethan": "Ethan",
+      "lyra": "Lyra",
+      "kurt": "Kurt",
+      "dayCMan": "Day-Care Man",
+      "dayCLady": "Day-Care Lady",
+      "buena": "Buena",
+      "bill": "Bill",
+      "bikeShop": "Bike Shop",
+      "baoba": "Baoba"
+    }
   },
   "poketch": {
     "noApps": "No apps yet.",

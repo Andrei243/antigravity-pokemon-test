@@ -97,6 +97,9 @@ public static class StoryMigration
         if (savedVersion < 20) KantoChapterOne(story, scripts, owned);
         // Version 21: Johto's first chapter (plan 20 · J4), and a game begun in Johto before it was written taken past it
         if (savedVersion < 21) JohtoChapterOne(story, scripts, owned);
+        // Version 22: the Pokégear's phone (plan 20 · J3): a game of Johto that has the Pokégear has Mom's number in
+        // it, and Professor Elm's once his Pokémon is had, as the scenes that give them now register them
+        if (savedVersion < 22) Run(story, scripts, "common.JohtoPokegear");
     }
 
     /// <summary>

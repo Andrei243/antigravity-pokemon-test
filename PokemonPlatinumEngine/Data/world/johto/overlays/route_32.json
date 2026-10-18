@@ -10,6 +10,9 @@
   "triggers": [ { "trigger": 0, "script": "BadgeCheck" } ],
   "people": {
     "r32_gsmiddleman1": { "name": "Man", "script": "SeedMan", "still": true },
+    // Frieda of Friday, one of the week's seven siblings (plan 20 · J3's stretch): here on Fridays alone, by the place's
+    // own OnEnter as HeartGold's map script has her (route_32.txt)
+    "r32_gsgirl1": { "name": "Frieda", "script": "Frieda" },
     "r32_gsbigman": {
       "name": "Fat Man",
       "dialog": [
@@ -26,6 +29,8 @@
     },
     "r32_picnicgirl_2": {
       "name": "Liz",
+      // Beaten, she gives her number for the Pokégear's phone (plan 20 · J3; route_32.txt)
+      "script": "Liz",
       "trainer": {
         "dialogueBefore": "Picnicker Liz: You're a trainer too? Let's battle, then we can swap stories!",
         "dialogueAfter": "Picnicker Liz: Wow, you're strong! Tell me where you've been!"
@@ -47,6 +52,8 @@
     },
     "r32_fishing_2_3": {
       "name": "Ralph",
+      // Beaten, he gives his number for the Pokégear's phone (plan 20 · J3; route_32.txt)
+      "script": "Ralph",
       "trainer": {
         "dialogueBefore": "Fisherman Ralph: I fish every day of the week. My Pokémon are as tough as old boots!",
         "dialogueAfter": "Fisherman Ralph: Tougher boots than mine, then. Good battle."

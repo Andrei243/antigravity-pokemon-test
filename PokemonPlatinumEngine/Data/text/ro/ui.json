@@ -297,6 +297,7 @@
     "pokedex": "POKÉDEX",
     "pokemon": "POKÉMON",
     "bag": "RUCSAC",
+    "pokegear": "POKéGEAR",
     "save": "SALVEAZĂ",
     "options": "OPȚIUNI",
     "close": "ÎNCHIDE",
@@ -703,7 +704,7 @@
   },
 
   "townMap": {
-    "title": { "Item": "HARTA REGIUNII", "Fly": "ZBOR", "Wall": "HARTĂ" },
+    "title": { "Item": "HARTA REGIUNII", "Fly": "ZBOR", "Wall": "HARTĂ", "Card": "CARDUL HĂRȚII" },
     "flyTo": "Unde zbori?",
     "legend": { "you": "Tu", "visited": "Vizitat", "notVisited": "Nevizitat încă", "trail": "Drumul pe care ai venit" },
     "hover": "Mută cursorul peste un oraș, o rută sau un reper ca să citești despre el.",
@@ -723,6 +724,83 @@
     "skip": "SARI",
     "safariBalls": "SAFARI BALLS",
     "steps": "PAȘI"
+  },
+  "pokegear": {
+    "title": "POKéGEAR",
+    "clock": "{day} {time}",
+    "card": {
+      "Phone": "TELEFON",
+      "Map": "HARTĂ",
+      "Radio": "RADIO"
+    },
+    "keys": {
+      "shoulders": "Q / E"
+    },
+    "hints": {
+      "call": "Sună",
+      "open": "Deschide harta",
+      "tune": "Caută",
+      "cards": "Carduri"
+    },
+    "phone": {
+      "empty": "Niciun număr înregistrat încă.",
+      "where": "UNDE ÎI GĂSEȘTI",
+      "rematch": "GATA DE O NOUĂ LUPTĂ",
+      "when": "{day}, {time}",
+      "waiting": "TE AȘTEAPTĂ",
+      "registered": "Numărul lui {name} e în Pokégear!"
+    },
+    "time": {
+      "Morning": "dimineața",
+      "Day": "ziua",
+      "Night": "noaptea"
+    },
+    "map": {
+      "none": "Locul acesta nu e pe cardul hărții.",
+      "heading": "CARDUL HĂRȚII",
+      "body": "Deschide harta ca să vezi toată regiunea, oraș cu oraș și drum cu drum."
+    },
+    "radio": {
+      "noSignal": "Niciun semnal aici.",
+      "static": "Doar paraziți…",
+      "hint": "Mută cursorul pe cadran ca să găsești un post.",
+      "faint": "SLAB"
+    },
+    "station": {
+      "PokemonMusic": "Canalul de muzică Pokémon",
+      "PokemonTalk": "Discuții Pokémon cu Prof. Oak",
+      "SearchParty": "Expediția Pokémon",
+      "RadioDrama": "Teatru radiofonic",
+      "BuenasPassword": "Parola Buenei",
+      "TrainerProfiles": "Portrete de Antrenori",
+      "ThatTownThesePeople": "Orașul acela, oamenii aceia",
+      "PokeFlute": "Canalul Poké Flaut",
+      "Unown": "Un semnal ciudat",
+      "TeamRocket": "O emisiune necunoscută",
+      "MahoganySignal": "Un semnal ciudat",
+      "Commercials": "Un cuvânt de la sponsori"
+    },
+    "song": {
+      "March": "MARȘUL POKéMON",
+      "Lullaby": "CÂNTEC DE LEAGĂN POKéMON",
+      "HoennSound": "SUNETUL HOENN",
+      "SinnohSound": "SUNETUL SINNOH",
+      "Unown": "SEMNAL"
+    },
+    "people": {
+      "mother": "Mama",
+      "profElm": "Prof. Elm",
+      "profOak": "Prof. Oak",
+      "ethan": "Ethan",
+      "lyra": "Lyra",
+      "kurt": "Kurt",
+      "dayCMan": "Domnul de la Pensiune",
+      "dayCLady": "Doamna de la Pensiune",
+      "buena": "Buena",
+      "bill": "Bill",
+      "bikeShop": "Magazinul de biciclete",
+      "baoba": "Baoba"
+    }
   },
   "poketch": {
     "noApps": "Încă nicio aplicație.",

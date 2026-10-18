@@ -109,6 +109,7 @@ public class ScriptTests
           end
           setflag FLAG_A
           clearflag FLAG_A
+          addcontact joey
           setvar VAR_A 3
           addvar VAR_A -1
           give "Potion" 2
@@ -1428,6 +1429,7 @@ public class ScriptTests
         public DayCare DayCare => inner.DayCare;
         public bool Hatch() => inner.Hatch();
         public void Seen(PokemonSpecies species) => inner.Seen(species);
+        public void ContactAdded(PokemonPlatinumEngine.Models.PhoneContact contact) => inner.ContactAdded(contact);
         public PokemonPlatinumEngine.Models.SuperContests.FashionCase FashionCase => inner.FashionCase;
         public PokemonPlatinumEngine.Models.SuperContests.ContestOutcome? ContestOutcome => inner.ContestOutcome;
         public void HoldContest(int slot, ContestStat category, PokemonPlatinumEngine.Models.SuperContests.ContestRank rank, PokemonPlatinumEngine.Models.SuperContests.ContestMode mode) => inner.HoldContest(slot, category, rank, mode);
