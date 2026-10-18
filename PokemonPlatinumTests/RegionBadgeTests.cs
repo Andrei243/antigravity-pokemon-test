@@ -152,7 +152,7 @@ public class RegionBadgeTests
     public void AHostTakesTheRegionOfItsMap()
     {
         Assert.Equal("Sinnoh", new HeadlessScriptHost().Region);
-        Assert.Equal("Kanto", new HeadlessScriptHost { Map = new Map(3, 3) { Name = "PalletTown" } }.Region);
+        Assert.Equal("Kanto", new HeadlessScriptHost { Map = new Map(3, 3) { Name = "Kanto" } }.Region);
         Assert.Equal("Sinnoh", new HeadlessScriptHost { Map = new Map(3, 3) { Name = "OreburghGym" } }.Region);
     }
 
@@ -162,16 +162,16 @@ public class RegionBadgeTests
         var problems = ScriptLibrary.FromSources(
             ("OreburghGym", "script A\n  givebadge rainbow\n  if badge boulder end"),
             ("twinleaf_town", "script B\n  givebadge coal"),
-            ("PalletTown", "script C\n  givebadge rainbow\n  if badge coal end"),
+            ("pallet_town", "script C\n  givebadge rainbow\n  if badge coal end"),
             ("common", "script D\n  if badge rainbow end\n  if badge coal end")).Problems();
         Assert.Contains(problems, p => p.StartsWith("OreburghGym.txt(2)") && p.Contains("Sinnoh has no badge 'rainbow'"));
         Assert.Contains(problems, p => p.StartsWith("OreburghGym.txt(3)") && p.Contains("Sinnoh has no badge 'boulder'"));
-        Assert.Contains(problems, p => p.StartsWith("PalletTown.txt(3)") && p.Contains("Kanto has no badge 'coal'"));
-        Assert.DoesNotContain(problems, p => p.StartsWith("twinleaf_town.txt") || p.StartsWith("common.txt") || p.StartsWith("PalletTown.txt(2)"));
+        Assert.Contains(problems, p => p.StartsWith("pallet_town.txt(3)") && p.Contains("Kanto has no badge 'coal'"));
+        Assert.DoesNotContain(problems, p => p.StartsWith("twinleaf_town.txt") || p.StartsWith("common.txt") || p.StartsWith("pallet_town.txt(2)"));
         // The files tell whose they are: a room, an area of a region's world, a file of no one region
         Assert.Equal("Sinnoh", ScriptLibrary.RegionOfFile("OreburghGym")?.Id);
         Assert.Equal("Sinnoh", ScriptLibrary.RegionOfFile("twinleaf_town")?.Id);
-        Assert.Equal("Kanto", ScriptLibrary.RegionOfFile("PalletTown")?.Id);
+        Assert.Equal("Kanto", ScriptLibrary.RegionOfFile("pallet_town")?.Id);
         Assert.Null(ScriptLibrary.RegionOfFile("common"));
     }
 
@@ -206,7 +206,7 @@ public class RegionBadgeTests
     [Fact]
     public void ASpotOnAMapIsInItsMapsRegion()
     {
-        Assert.Equal("Kanto", FieldMoveRules.SpotOf(new Map(5, 5) { Name = "PalletTown" }, 2, 2, Direction.Up, new Walker()).Region);
+        Assert.Equal("Kanto", FieldMoveRules.SpotOf(new Map(5, 5) { Name = "Kanto" }, 2, 2, Direction.Up, new Walker()).Region);
         Assert.Equal("Sinnoh", FieldMoveRules.SpotOf(new Map(5, 5) { Name = "Clear" }, 2, 2, Direction.Up, new Walker()).Region);
     }
 

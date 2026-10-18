@@ -141,7 +141,7 @@ public class WorldTests
         // the tool prints from and ContentTests breaks on purpose
         var found = ContentCheck.Checks.OfTheGame.Where(f => f.File.Contains("/overlays/", StringComparison.Ordinal)).ToList();
         Assert.True(found.Count == 0, string.Join("\n", found));
-        Assert.All(OpenAreas(), area => Assert.Contains(ContentCheck.GameContent.OfTheGame.Regions.Single().Overlays, o => o.Key == area.Key && o.Overlay != null));
+        Assert.All(OpenAreas(), area => Assert.Contains(ContentCheck.GameContent.OfTheGame.Regions.Single(r => r.World.Index.Region == "Sinnoh").Overlays, o => o.Key == area.Key && o.Overlay != null));
     }
 
     [Fact]

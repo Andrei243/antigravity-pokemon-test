@@ -511,7 +511,7 @@ public class BuildingTests
         Assert.Equal(Quads(posts: 3, rails: 2 * 4), kit.Solid.VertexCount);
 
         // Pallet's fences are white, Twinleaf's are wood
-        Assert.Contains(Build(MapDatabase.Get("PalletTown")).Kit.Sheet.Faces, f => f.Key.StartsWith("fence.white"));
+        Assert.Contains(Build(Fixtures.Map("PalletTown")).Kit.Sheet.Faces, f => f.Key.StartsWith("fence.white"));
         Assert.DoesNotContain(Build(twinleaf).Kit.Sheet.Faces, f => f.Key.StartsWith("fence.white"));
     }
 

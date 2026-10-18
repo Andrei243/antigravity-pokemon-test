@@ -1,0 +1,30 @@
+{
+  "key": "pallet_town_players_house_1f",
+  "index": 254,
+  "name": "Pallet Town",
+  "matrix": 201,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PALLET",
+  "nightMusic": "MUS_PALLET",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "pallet_town", "toWarp": 0 },
+    { "x": 4, "z": 8, "to": "pallet_town", "toWarp": 0 },
+    { "x": 10, "z": 2, "to": "pallet_town_players_house_2f", "toWarp": 0 },
+    { "x": 3, "z": 9, "to": "pallet_town", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "mom", "looks": "mom", "movement": "look_west", "x": 8, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "PalletTown_PlayersHouse_1F_EventScript_Mom" }
+  ],
+  "signs": [
+    { "x": 6, "z": 1, "type": 0, "script": "PalletTown_PlayersHouse_1F_EventScript_TV" }
+  ],
+  "triggers": []
+}

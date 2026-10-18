@@ -1,0 +1,76 @@
+{
+  "key": "viridian_city",
+  "index": 3,
+  "name": "Viridian City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "encounters": "viridian_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 74, "z": 206, "to": "viridian_city_pokemon_center_1f", "toWarp": 1 },
+    { "x": 73, "z": 191, "to": "viridian_city_house", "toWarp": 1 },
+    { "x": 84, "z": 190, "to": "viridian_city_gym", "toWarp": 1 },
+    { "x": 73, "z": 198, "to": "viridian_city_school", "toWarp": 1 },
+    { "x": 84, "z": 199, "to": "viridian_city_mart", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_south", "x": 56, "z": 206, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "ViridianCity_EventScript_DreamEaterTutor" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 59, "z": 204, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_CutTree" },
+    { "id": "viridian_old_man", "looks": "old_man_1", "movement": "look_north", "x": 82, "z": 191, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "ViridianCity_EventScript_OldMan" },
+    { "id": "tutorial_man", "looks": "var_0", "movement": "look_around", "x": 69, "z": 186, "facing": 1, "rangeX": 2, "rangeZ": 3, "script": "ViridianCity_EventScript_TutorialOldMan" },
+    { "id": "viridian_woman", "looks": "woman_3", "movement": "look_north", "x": 68, "z": 192, "facing": 0, "rangeX": 1, "rangeZ": 3, "script": "ViridianCity_EventScript_Woman" },
+    { "id": "youngster", "looks": "youngster", "movement": "wander_north_and_south", "x": 81, "z": 206, "facing": 0, "rangeX": 0, "rangeZ": 2, "script": "ViridianCity_EventScript_Youngster" },
+    { "id": "boy", "looks": "boy", "movement": "wander_around", "x": 64, "z": 202, "facing": 1, "rangeX": 1, "rangeZ": 2, "script": "ViridianCity_EventScript_Boy" },
+    { "id": "viridian_border_tree", "looks": "cut_tree", "movement": "look_south", "x": 66, "z": 185, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 65, "z": 185, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_VIRIDIAN_CITY_POTION", "item": "Potion", "script": "ViridianCity_EventScript_ItemPotion" }
+  ],
+  "signs": [
+    { "x": 71, "z": 181, "type": 0, "script": "ViridianCity_EventScript_TrainerTips1" },
+    { "x": 80, "z": 190, "type": 0, "script": "ViridianCity_EventScript_GymSign" },
+    { "x": 68, "z": 211, "type": 0, "script": "ViridianCity_EventScript_TrainerTips2" },
+    { "x": 68, "z": 196, "type": 0, "script": "ViridianCity_EventScript_CitySign" },
+    { "x": 84, "z": 190, "type": 0, "script": "ViridianCity_EventScript_GymDoor" }
+  ],
+  "triggers": [
+    { "x": 70, "z": 191, "width": 1, "depth": 1, "script": "ViridianCity_EventScript_RoadBlocked", "variable": "VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN", "value": "0" },
+    { "x": 84, "z": 191, "width": 1, "depth": 1, "script": "ViridianCity_EventScript_GymDoorLocked", "variable": "VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR", "value": "0" },
+    { "x": 68, "z": 188, "width": 1, "depth": 1, "script": "ViridianCity_EventScript_TutorialTriggerLeft", "variable": "VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN", "value": "1" },
+    { "x": 70, "z": 188, "width": 1, "depth": 1, "script": "ViridianCity_EventScript_TutorialTriggerRight", "variable": "VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN", "value": "1" }
+  ]
+}

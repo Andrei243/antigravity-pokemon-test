@@ -1,0 +1,20 @@
+{
+  // The Trainers' School of Viridian City (plan 19 · K1)
+  "area": "viridian_city_school",
+  "bgmTrack": "kanto/pallet",
+  "people": {
+    "school_woman": {
+      "name": "Teacher",
+      "dialog": [ "Read the blackboard carefully, everyone. There will be a test!" ]
+    },
+    "school_lass": {
+      "name": "Lass",
+      "dialog": [ "I'm copying out the blackboard. A poisoned Pokémon loses a little health with every step." ]
+    }
+  },
+  "signs": {
+    "ViridianCity_School_EventScript_Blackboard": "The blackboard lists what each status condition does to a Pokémon.",
+    "ViridianCity_School_EventScript_Notebook": "A notebook, open at a page about Poké Balls.",
+    "ViridianCity_School_EventScript_PokemonJournal": "A Pokémon magazine.\nThis month: the Gym Leaders of Kanto."
+  }
+}

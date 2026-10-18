@@ -1,0 +1,19 @@
+{
+  // A house in Viridian City (plan 19 · K1)
+  "area": "viridian_city_house",
+  "bgmTrack": "kanto/pallet",
+  "people": {
+    "balding_man": {
+      "name": "Man",
+      "dialog": [ "My daughter gave our Spearow a nickname. Now it won't answer to anything else!" ]
+    },
+    "little_girl": {
+      "name": "Little Girl",
+      "dialog": [ "My Spearow is called Speary. Isn't that a good name?" ]
+    },
+    "spearow": { "name": "Speary" }
+  },
+  "signs": {
+    "ViridianCity_House_EventScript_NicknameSign": "A note on the wall:\n\"A good nickname makes a Pokémon your own.\""
+  }
+}

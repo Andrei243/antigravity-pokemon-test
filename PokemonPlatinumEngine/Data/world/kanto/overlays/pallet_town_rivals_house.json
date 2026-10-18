@@ -1,0 +1,18 @@
+{
+  // The rival's house (plan 19 · K1). His sister's Town Map is the story's (K3)
+  "area": "pallet_town_rivals_house",
+  "bgmTrack": "kanto/pallet",
+  "people": {
+    "daisy": {
+      "name": "Daisy",
+      "dialog": [
+        "Hi there! My brother's out somewhere, as usual.",
+        "He's talked about nothing but Pokémon since Grandpa came home."
+      ]
+    }
+  },
+  "signs": {
+    "PalletTown_RivalsHouse_EventScript_Bookshelf": "The shelves are full of books about Pokémon.",
+    "PalletTown_RivalsHouse_EventScript_Picture": "A painting of a Pokémon in a field of flowers."
+  }
+}

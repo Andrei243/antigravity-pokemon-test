@@ -1,0 +1,61 @@
+{
+  // Viridian City (plan 19 · K1). Its way of building is plan 19 · K2's (the style guide's "Buildings" first); until
+  // then its houses are built as Sandgem's. The old man who lies across the road north, the lesson in catching and
+  // the Dream Eater tutor are the story's (K3); here they only talk
+  "area": "viridian_city",
+  "bgmTrack": "kanto/pallet",
+  "trees": "Round",
+  "architecture": "Plaster",
+  // The Gym's door (warp 2) stays shut: its Leader is away until the last of Kanto's badges (plan 19 · K7)
+  "locked": [ 2 ],
+  "people": {
+    "tutorial_man": {
+      "name": "Old Man",
+      "dialog": [
+        "Hmph! The road north is no place for a youngster without a Pokémon of their own.",
+        "Come back when you've got one, and maybe I'll show you a thing or two."
+      ]
+    },
+    "viridian_old_man": {
+      "name": "Old Man",
+      "dialog": [
+        "The Gym's Leader hasn't been seen in years. Nobody knows where he went.",
+        "The doors have been shut ever since."
+      ]
+    },
+    "viridian_woman": {
+      "name": "Woman",
+      "dialog": [
+        "My grandfather is in a terrible mood this morning. He hasn't even had his coffee yet.",
+        "Please don't mind him if he's rude to you."
+      ]
+    },
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [
+        "Those little trees can be cut down with the right move.",
+        "There's a shortcut behind the one by the pond, if you can get past it!"
+      ]
+    },
+    "boy": {
+      "name": "Boy",
+      "dialog": [
+        "Viridian Forest is north of here. It's full of Bug-type Pokémon.",
+        "Bring something that can deal with them!"
+      ]
+    },
+    "fat_man": {
+      "name": "Man",
+      "dialog": [
+        "I'm resting my feet. These roads are longer than they look on the map.",
+        "If you're ever after a new move for your Pokémon, I might know one."
+      ]
+    }
+  },
+  "signs": {
+    "ViridianCity_EventScript_CitySign": "Viridian City\nThe evergreen gateway.",
+    "ViridianCity_EventScript_GymSign": "Viridian City Pokémon Gym\nThe doors are locked.",
+    "ViridianCity_EventScript_TrainerTips1": "TRAINER TIPS\nA Pokémon's moves have only so many uses.\nA Pokémon Center restores them all.",
+    "ViridianCity_EventScript_TrainerTips2": "TRAINER TIPS\nCatch a Pokémon by weakening it first,\nthen throw a Poké Ball."
+  }
+}

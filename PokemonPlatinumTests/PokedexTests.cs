@@ -311,6 +311,8 @@ public class PokedexTests
     {
         Assert.NotNull(Habitats.Of(RegionDatabase.Get("Sinnoh")!));
         Assert.Same(Habitats.Sinnoh, Habitats.Of(RegionDatabase.Get("Sinnoh")!));
-        Assert.Null(Habitats.Of(RegionDatabase.Get("Kanto")!));
+        Assert.Null(Habitats.Of(RegionDatabase.Get("Johto")!));
+        // Kanto has its own since plan 19 · K1
+        Assert.NotNull(Habitats.Of(RegionDatabase.Get("Kanto")!));
     }
 }

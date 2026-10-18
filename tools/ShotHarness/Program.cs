@@ -178,6 +178,7 @@ if (mode == "amity") h.AmityMode();
 if (mode == "saves") h.SavesMode();
 if (mode == "crash") h.CrashMode();
 if (mode == "formats") h.FormatsMode();
+if (mode == "kanto") h.KantoMode();
 if (mode == "skips") h.SkipsMode();
 
 h.Close();

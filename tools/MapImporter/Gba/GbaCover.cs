@@ -15,10 +15,58 @@ public static class GbaCover
     /// <summary>
     /// The ranges written by hand, by the tileset's symbol: <c>["gTileset_PalletTown"] = { (0x280, 0x287, Paving) }</c>,
     /// the metatiles as the layouts number them (a secondary tileset's from <see cref="GbaMaps.PrimaryCount"/>).
-    /// Empty until plan 19 (Kanto) and plan 21 (Hoenn) write their own tilesets'.
+    /// Kanto's first rows are plan 19 · K1's, for the tilesets of Pallet Town, Route 1 and Viridian City, judged from
+    /// how each metatile is used on their layouts (where it stands, what stands above and below it, whether it
+    /// blocks); a house's own metatiles are left out on purpose, since a GBA house is found at its door from the
+    /// blocked ground nobody named (<c>WorldMapBuilder.BuildingsAtDoors</c>).
     /// </summary>
     public static readonly IReadOnlyDictionary<string, (int From, int To, TerrainCover Cover)[]> Ranges =
-        new Dictionary<string, (int, int, TerrainCover)[]>(StringComparer.Ordinal);
+        new Dictionary<string, (int, int, TerrainCover)[]>(StringComparer.Ordinal)
+        {
+            ["gTileset_General"] = new (int, int, TerrainCover)[]
+            {
+                // The lawn: a plain metatile and the two-by-two pattern of short grass the routes are laid in
+                (0x001, 0x001, TerrainCover.Grass), (0x008, 0x009, TerrainCover.Grass), (0x010, 0x011, TerrainCover.Grass),
+                // Flowers in the grass (Pallet Town's fenced bed, Route 1's verges)
+                (0x004, 0x004, TerrainCover.Flowers),
+                // The signposts (MB_SIGNPOST): the sign itself is the event's, standing on lawn
+                (0x002, 0x003, TerrainCover.Grass),
+                // The forest every route is walled in by: trunks and canopies, two metatiles to a tree, row over row
+                (0x014, 0x017, TerrainCover.Tree), (0x01C, 0x01F, TerrainCover.Tree), (0x024, 0x027, TerrainCover.Tree),
+                // The brown mountains (Viridian City's west, Route 22, Mt. Moon's slopes): their edges, faces and fill
+                (0x068, 0x07D, TerrainCover.Cliff), (0x0B2, 0x0B3, TerrainCover.Cliff), (0x0BA, 0x0BB, TerrainCover.Cliff),
+                (0x1F2, 0x1F2, TerrainCover.Cliff),
+                // Earth paths: the routes' three-by-three sets of edges and their inner corners, and the bank under a pond
+                (0x0BD, 0x0BF, TerrainCover.Path), (0x0C3, 0x0C7, TerrainCover.Path), (0x0CB, 0x0CF, TerrainCover.Path),
+                (0x0D3, 0x0D5, TerrainCover.Path), (0x0DB, 0x0DD, TerrainCover.Path), (0x0E3, 0x0E5, TerrainCover.Path),
+                (0x102, 0x105, TerrainCover.Path), (0x133, 0x133, TerrainCover.Path),
+                // Wooden fences: the posts, rails and corners round a yard or across the end of a route
+                (0x0E6, 0x0FD, TerrainCover.Fence),
+                // A town's roads (Viridian City's, Route 22's) with their edges and corners
+                (0x162, 0x167, TerrainCover.Path), (0x16A, 0x177, TerrainCover.Path), (0x195, 0x196, TerrainCover.Path),
+                (0x19D, 0x19E, TerrainCover.Path),
+            },
+            ["gTileset_PalletTown"] = new (int, int, TerrainCover)[]
+            {
+                // The town's sandy ground and the edges where it meets the lawn
+                (0x281, 0x283, TerrainCover.Path), (0x285, 0x286, TerrainCover.Path), (0x288, 0x288, TerrainCover.Path),
+                (0x28C, 0x28C, TerrainCover.Path), (0x28E, 0x290, TerrainCover.Path), (0x295, 0x297, TerrainCover.Path),
+                (0x29E, 0x29F, TerrainCover.Path), (0x2A6, 0x2A7, TerrainCover.Path), (0x2AE, 0x2AF, TerrainCover.Path),
+                (0x2B6, 0x2B6, TerrainCover.Path), (0x2BE, 0x2BF, TerrainCover.Path), (0x2C6, 0x2C7, TerrainCover.Path),
+                (0x2CE, 0x2CE, TerrainCover.Path),
+                // The white fences round the flower bed and before the lab
+                (0x284, 0x284, TerrainCover.Fence), (0x287, 0x287, TerrainCover.Fence),
+                // The signpost by each house's door (MB_SIGNPOST): the sign is the event's, standing on the town's ground
+                (0x2AD, 0x2AD, TerrainCover.Path),
+                // The trees that close Route 1's south end beside its way into Pallet Town
+                (0x2AA, 0x2AB, TerrainCover.Tree), (0x2B2, 0x2B2, TerrainCover.Tree), (0x2BA, 0x2BA, TerrainCover.Tree),
+            },
+            ["gTileset_ViridianCity"] = new (int, int, TerrainCover)[]
+            {
+                // The posts where a ledge meets a house's yard (west of the Pokémon Center's row): lawn that blocks
+                (0x286, 0x287, TerrainCover.Grass),
+            },
+        };
 
     /// <summary>Words in a label, first match wins, and the ground each says. A blocked tile with a building's word is a wall.</summary>
     private static readonly (string Word, TerrainCover Cover)[] Words =

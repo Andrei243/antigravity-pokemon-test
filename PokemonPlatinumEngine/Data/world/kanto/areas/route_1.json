@@ -1,0 +1,42 @@
+{
+  "key": "route_1",
+  "index": 1,
+  "name": "Route 1",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE1",
+  "nightMusic": "MUS_ROUTE1",
+  "encounters": "route_1",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Pidgey", "level": 3 },
+    { "species": "Rattata", "level": 3 },
+    { "species": "Pidgey", "level": 3 },
+    { "species": "Rattata", "level": 3 },
+    { "species": "Pidgey", "level": 2 },
+    { "species": "Rattata", "level": 2 },
+    { "species": "Pidgey", "level": 3 },
+    { "species": "Rattata", "level": 3 },
+    { "species": "Pidgey", "level": 4 },
+    { "species": "Rattata", "level": 4 },
+    { "species": "Pidgey", "level": 5 },
+    { "species": "Rattata", "level": 4 }
+  ],
+  "landRate": 21,
+  "warps": [],
+  "objects": [
+    { "id": "clerk", "looks": "clerk", "movement": "wander_north_and_south", "x": 66, "z": 248, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "Route1_EventScript_MartClerk" },
+    { "id": "boy", "looks": "boy", "movement": "wander_west_and_east", "x": 79, "z": 236, "facing": 2, "rangeX": 1, "rangeZ": 3, "script": "Route1_EventScript_Boy" }
+  ],
+  "signs": [
+    { "x": 69, "z": 251, "type": 0, "script": "Route1_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

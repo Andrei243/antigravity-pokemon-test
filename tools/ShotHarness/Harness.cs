@@ -241,12 +241,15 @@ partial class Harness
         [("JubilifeCity", 20, 30)] = ("Sinnoh", 175, 792), [("JubilifeCity", 19, 18)] = ("Sinnoh", 175, 760), [("JubilifeCity", 19, 17)] = ("Sinnoh", 175, 760),
         [("JubilifeCity", 7, 9)] = ("Sinnoh", 168, 779), [("JubilifeCity", 30, 10)] = ("Sinnoh", 153, 755), [("JubilifeCity", 30, 9)] = ("Sinnoh", 153, 755),
         [("JubilifeCity", 28, 29)] = ("Sinnoh", 180, 779), [("JubilifeCity", 28, 28)] = ("Sinnoh", 180, 779),
-        [("JubilifeCity", 9, 29)] = ("Sinnoh", 149, 781), [("JubilifeCity", 9, 28)] = ("Sinnoh", 149, 781)
+        [("JubilifeCity", 9, 29)] = ("Sinnoh", 149, 781), [("JubilifeCity", 9, 28)] = ("Sinnoh", 149, 781),
+        // The stand-in Pallet Town and its house, until Kanto was imported from FireRed (plan 19 · K1)
+        [("PalletTown", 5, 8)] = ("Kanto", 66, 268), [("PalletTown", 9, 9)] = ("Kanto", 70, 272), [("PalletTown", 9, 17)] = ("Kanto", 65, 277)
     };
     static readonly Dictionary<string, (string Map, int X, int Y)> movedMaps = new()
     {
         ["TwinleafTown"] = ("Sinnoh", 112, 880), ["Route201"] = ("Sinnoh", 115, 854), ["LakeVerity"] = ("LakeVerity", 44, 46),
-        ["SandgemTown"] = ("Sinnoh", 178, 845), ["Route202"] = ("Sinnoh", 174, 815), ["JubilifeCity"] = ("Sinnoh", 175, 760)
+        ["SandgemTown"] = ("Sinnoh", 178, 845), ["Route202"] = ("Sinnoh", 174, 815), ["JubilifeCity"] = ("Sinnoh", 175, 760),
+        ["PalletTown"] = ("Kanto", 70, 272), ["PalletPlayerHouse"] = ("PalletTown_PlayersHouse_1F", 4, 6)
     };
 
     static (string Map, int X, int Y) Place(string map, int x, int y) =>

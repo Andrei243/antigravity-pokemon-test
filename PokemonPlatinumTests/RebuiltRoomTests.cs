@@ -745,7 +745,7 @@ public class RebuiltRoomTests
         // In the player's house that is the cushion beside hers, the original's own tile (sSpawnLocations: 8, 8)
         var home = Room("PlayerHouse");
         Assert.Equal((8, 8, Direction.Left), GameEngine.HomeSpot(home.FindPerson("mom")!));
-        foreach (string house in new[] { "PlayerHouse", "PalletPlayerHouse" })
+        foreach (string house in new[] { "PlayerHouse" })
         {
             var map = Room(house);
             var mom = Assert.Single(map.Everyone, n => n.IsHealingNurse);
@@ -972,7 +972,7 @@ public class RebuiltRoomTests
     [Fact]
     public void ASaveOnATileNobodyCanStandOnWakesWhereItsRoomIsComeIntoWhateverItsAge()
     {
-        Assert.Equal(SaveData.RebuiltHome, SaveData.CurrentWorld);
+        Assert.Equal(SaveData.ImportedKanto, SaveData.CurrentWorld);
         // In a wall, or off the room's edge: the one rule serves every room, rebuilt or not
         foreach (var (room, x, y, expected) in new[]
                  {

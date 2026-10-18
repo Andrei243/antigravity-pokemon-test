@@ -1,0 +1,34 @@
+{
+  "key": "viridian_city_school",
+  "index": 260,
+  "name": "Viridian City",
+  "matrix": 207,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PEWTER",
+  "nightMusic": "MUS_PEWTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "viridian_city", "toWarp": 3 },
+    { "x": 4, "z": 7, "to": "viridian_city", "toWarp": 3 },
+    { "x": 5, "z": 7, "to": "viridian_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "school_woman", "looks": "woman_2", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "ViridianCity_School_EventScript_Woman" },
+    { "id": "school_lass", "looks": "lass", "movement": "look_north", "x": 4, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "ViridianCity_School_EventScript_Lass" }
+  ],
+  "signs": [
+    { "x": 4, "z": 4, "type": 0, "script": "ViridianCity_School_EventScript_Notebook" },
+    { "x": 5, "z": 1, "type": 0, "script": "ViridianCity_School_EventScript_Blackboard" },
+    { "x": 4, "z": 1, "type": 0, "script": "ViridianCity_School_EventScript_Blackboard" },
+    { "x": 9, "z": 2, "type": 0, "script": "ViridianCity_School_EventScript_PokemonJournal" },
+    { "x": 8, "z": 2, "type": 0, "script": "ViridianCity_School_EventScript_PokemonJournal" }
+  ],
+  "triggers": []
+}

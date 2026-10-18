@@ -151,7 +151,14 @@ public static class Overlays
         foreach (var (id, text) in overlay.Signs ?? new())
         {
             string name = $"signs.{id}";
-            if (!objects.TryGetValue(id, out var o)) Add(Kind.Place, name, $"the area has no sign called '{id}'{Nearest(id)}");
+            // A GBA game's sign is a sign event, named by the script it runs (plan 19 · K1): every tile of it is read
+            var read = area.Signs.Where(s => s.Type == AreaSign.Read && s.Script == id).ToList();
+            if (read.Count > 0)
+            {
+                if (map != null && read.Any(s => map.GetSignboardAt(s.X, s.Z) != text))
+                    Add(Kind.Place, name, $"'{id}' is read on a tile whose words aren't these");
+            }
+            else if (!objects.TryGetValue(id, out var o)) Add(Kind.Place, name, $"the area has no sign called '{id}'{Nearest(id)}");
             else if (map != null && map.GetSignboardAt(o.X, o.Z) != text) Add(Kind.Place, name, $"'{id}' is no signpost and no mailbox: nobody can read what is written on it");
             // A sign's words are one line of the box, with the breaks written into it
             SignText(content, found, file, name, text, overlay.SignScripts?.GetValueOrDefault(id), key);

@@ -2099,7 +2099,10 @@ public partial class GameEngine
         flow.Map = MapDatabase.Get(room);
         var healer = flow.Map.Everyone.FirstOrDefault(n => n.IsHealingNurse);
         // In front of the nurse, the counter between them; at home, beside Mom
-        var (x, y, facing) = healer == null ? (4, 5, Direction.Down) : home ? HomeSpot(healer) : (healer.GridX, healer.GridY + 2, Direction.Up);
+        // With nobody there who heals, inside the room's door (a Kanto house's own room, plan 19 · K1)
+        var (x, y, facing) = healer == null
+            ? SaveData.ArrivalIn(flow.Map, MapDatabase.TryGet) is { } inside ? (inside.X, inside.Y, inside.Facing) : (4, 5, Direction.Down)
+            : home ? HomeSpot(healer) : (healer.GridX, healer.GridY + 2, Direction.Up);
         flow.Player.SetMode(TravelMode.OnFoot);
         flow.Player.SetPosition(x, y, facing);
         if (SpawnLocations.Get(flow.Story.Var(SpawnLocations.Variable)) is { } town) flow.ExitSpot = new MapSpot(Here.OverworldMap ?? "Sinnoh", town.X, town.Y, Direction.Down);
@@ -2128,6 +2131,9 @@ public partial class GameEngine
             if (MapDatabase.MapNames.Contains(spawn.Room)) return (spawn.Room, spawn.Room == "PlayerHouse");
             return ("PlayerHouse", true);
         }
+        // Elsewhere the region's first spawn, its home (Kanto's: the player's house in Pallet Town, plan 19 · K1)
+        if (region != null && SpawnLocations.Of(region) is { Count: > 0 } spawns && MapDatabase.MapNames.Contains(spawns[0].Room))
+            return (spawns[0].Room, true);
         string house = region?.Maps.FirstOrDefault(m => m.EndsWith("PlayerHouse", StringComparison.Ordinal)) ?? "PlayerHouse";
         return (house, true);
     }

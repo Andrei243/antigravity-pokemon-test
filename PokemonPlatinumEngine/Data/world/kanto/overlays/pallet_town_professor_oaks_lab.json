@@ -1,0 +1,28 @@
+{
+  // Professor Oak's lab (plan 19 · K1). Oak, the rival, the three Poké Balls on the table and the Pokédex are the
+  // story's (K3); the aides are here from the start
+  "area": "pallet_town_professor_oaks_lab",
+  "bgmTrack": "kanto/oak_lab",
+  "people": {
+    "scientist": {
+      "name": "Aide",
+      "dialog": [
+        "The Professor is out at the moment. He goes walking near Route 1 to watch the wild Pokémon.",
+        "He'll be back before long."
+      ]
+    },
+    "worker_f": {
+      "name": "Aide",
+      "dialog": [ "I study Pokémon as Professor Oak's aide. There's always something new to write down!" ]
+    },
+    "scientist_2": {
+      "name": "Aide",
+      "dialog": [ "Every Pokémon is different. Even two of the same kind can be nothing alike." ]
+    }
+  },
+  "signs": {
+    "PalletTown_ProfessorOaksLab_EventScript_Computer": "There's a message on the screen:\n\"Call me before you set out! - Bill\"",
+    "PalletTown_ProfessorOaksLab_EventScript_LeftSign": "Research notes, page after page of them.",
+    "PalletTown_ProfessorOaksLab_EventScript_RightSign": "A chart of every kind of Pokémon seen in Kanto."
+  }
+}

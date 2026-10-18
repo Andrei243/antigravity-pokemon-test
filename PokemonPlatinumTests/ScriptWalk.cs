@@ -42,6 +42,9 @@ internal sealed class ScriptWalk
                 built[map.Name] = map;
             }
             foreach (var map in World.BuildMaps()) built[map.Name] = map;
+            // The other regions' worlds after Sinnoh's (plan 19 · K1: Kanto's), whose people start the common scripts too
+            foreach (var other in World.LoadAll().Where(w => w.Index.Region != "Sinnoh").OrderBy(w => w.Index.Region, StringComparer.Ordinal))
+                foreach (var map in other.BuildMaps()) built[map.Name] = map;
             return built;
         });
     }

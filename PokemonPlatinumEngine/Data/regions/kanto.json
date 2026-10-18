@@ -2,7 +2,7 @@
   "id": "Kanto",
   "folder": "kanto",
   "models": "kanto",
-  "map": "PalletTown",
+  "map": "Kanto",
   "dex": "kanto",
   "nationalUnlock": "Caught60",
   "hasStory": false,
@@ -39,5 +39,8 @@
       "offYouGo": "Now, off you go. The world of Pokémon is waiting!"
     }
   },
-  "spawns": []
+  "spawns": [
+    { "id": 1, "area": "pallet_town", "x": 66, "y": 268, "room": "PalletTown_PlayersHouse_1F" },
+    { "id": 2, "area": "viridian_city", "x": 74, "y": 207, "room": "ViridianCity_PokemonCenter_1F" }
+  ]
 }

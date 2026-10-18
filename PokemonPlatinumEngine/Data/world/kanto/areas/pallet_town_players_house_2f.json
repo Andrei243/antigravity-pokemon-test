@@ -1,0 +1,27 @@
+{
+  "key": "pallet_town_players_house_2f",
+  "index": 255,
+  "name": "Pallet Town",
+  "matrix": 202,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PALLET",
+  "nightMusic": "MUS_PALLET",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 2, "to": "pallet_town_players_house_1f", "toWarp": 2 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 6, "z": 5, "type": 0, "script": "PalletTown_PlayersHouse_2F_EventScript_NES" },
+    { "x": 1, "z": 1, "type": 0, "script": "PalletTown_PlayersHouse_2F_EventScript_PC" },
+    { "x": 11, "z": 1, "type": 0, "script": "PalletTown_PlayersHouse_2F_EventScript_Sign" }
+  ],
+  "triggers": []
+}

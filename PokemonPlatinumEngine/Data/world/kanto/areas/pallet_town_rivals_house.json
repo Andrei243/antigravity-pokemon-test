@@ -1,0 +1,32 @@
+{
+  "key": "pallet_town_rivals_house",
+  "index": 256,
+  "name": "Pallet Town",
+  "matrix": 203,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PALLET",
+  "nightMusic": "MUS_PALLET",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "pallet_town", "toWarp": 1 },
+    { "x": 5, "z": 8, "to": "pallet_town", "toWarp": 1 },
+    { "x": 3, "z": 8, "to": "pallet_town", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "daisy", "looks": "daisy", "movement": "wander_around", "x": 10, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 3, "script": "PalletTown_RivalsHouse_EventScript_Daisy" },
+    { "id": "town_map", "looks": "town_map", "movement": "look_south", "x": 6, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_TOWN_MAP", "script": "PalletTown_RivalsHouse_EventScript_TownMap" }
+  ],
+  "signs": [
+    { "x": 12, "z": 1, "type": 0, "script": "PalletTown_RivalsHouse_EventScript_Bookshelf" },
+    { "x": 11, "z": 1, "type": 0, "script": "PalletTown_RivalsHouse_EventScript_Bookshelf" },
+    { "x": 9, "z": 1, "type": 0, "script": "PalletTown_RivalsHouse_EventScript_Picture" }
+  ],
+  "triggers": []
+}
