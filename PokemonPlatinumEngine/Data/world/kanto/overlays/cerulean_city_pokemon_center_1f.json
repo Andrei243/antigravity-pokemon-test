@@ -1,0 +1,14 @@
+{
+  // Cerulean City's Pokémon Center (plan 19 · K4), its floor as FireRed lays it out
+  "area": "cerulean_city_pokemon_center_1f",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "0": {"name": "Notice", "dialog": ["A magazine left on the seat. It has a page about Misty."]},
+    "cerulean_nurse": {"name": "Nurse", "script": "Nurse"},
+    "gentleman": {"name": "Gentleman", "dialog": ["Bill lives up past Nugget Bridge. He invented the PC storage system, you know."]},
+    "rocker": {"name": "Rocker", "dialog": ["Have you heard of the Bike Shop here? The bikes cost a fortune, but man, they're fast!"]},
+    "youngster": {"name": "Youngster", "dialog": ["Some Pokémon learn moves that can be used in the field. Cut, for example!"]},
+    "lass": {"name": "Lass", "dialog": ["Misty, the Gym Leader, is so cool. I want to be a Water-type trainer just like her!"]},
+    "0_2": {"name": "Notice", "dialog": ["A magazine left on the seat. It has a page about Misty."]}
+  }
+}

@@ -1,0 +1,41 @@
+# The gate on Route 22 to the Pokémon League (plan 19 · K4). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/Route22_NorthEntrance/scripts.inc and Route23's badge guards).
+#
+# The guard lets through only a trainer with the Boulder Badge. VAR_MAP_SCENE_ROUTE23, as FireRed counts it: 0 until
+# he has seen it (the area's trigger 0, the step west of him, turns back whoever hasn't it), 1 after. Route 23 beyond,
+# with its guards for the other Badges, is plan 19 · K7's: until then the way north stays shut.
+
+
+# The step beside him on the way north.
+script GuardTrigger
+  face policeman player
+  speaker "Guard"
+  if badge boulder goto Pass
+  say "Halt! Only trainers who hold the Boulder Badge may pass beyond this gate."
+  walk player down 1
+  end
+label Pass
+  call Shown
+  end
+
+
+# The guard spoken to.
+script Guard
+  face policeman player
+  speaker "Guard"
+  if badge boulder goto Pass
+  say "Beyond this gate lies the road to the Pokémon League. Only trainers with the Boulder Badge may pass."
+  end
+label Pass
+  if var VAR_MAP_SCENE_ROUTE23 == 1 goto Through
+  call Shown
+  end
+label Through
+  say "The road ahead is a hard one. There are more Badges to show before you reach the League."
+  end
+
+
+script Shown
+  say "Oh! That's the Boulder Badge! All right, you may go on through."
+  setvar VAR_MAP_SCENE_ROUTE23 1
+  return

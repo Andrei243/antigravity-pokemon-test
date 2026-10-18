@@ -194,6 +194,8 @@ public enum Architecture
     Evergreen,
     /// <summary>Pale cut stone under hipped slate-brown roofs with a chimney: the stone-grey city under the mountain (Pewter, plan 19 · K3).</summary>
     Granite,
+    /// <summary>White clapboard under cerulean-blue gable roofs with flower boxes: the city of the river and the bridge (Cerulean, plan 19 · K4).</summary>
+    Riverside,
 
     // Johto (plan 20): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>White plaster under slate-blue gable roofs with a chimney: the windy town by the sea (New Bark, plan 20 · J2).</summary>

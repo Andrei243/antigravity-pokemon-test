@@ -1,0 +1,10 @@
+{
+  // Cerulean City's Poké Mart (plan 19 · K4)
+  "area": "cerulean_city_mart",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "clerk": {"name": "Clerk", "script": "Clerk", "dialog": ["Welcome! How can I help you?"]},
+    "woman_1": {"name": "Woman", "dialog": ["Repel keeps weak wild Pokémon away. It's a lifesaver in caves like Mt. Moon."]},
+    "youngster": {"name": "Youngster", "dialog": ["Have you tried the Mart's Escape Ropes? One pull and you're out of any cave."]}
+  }
+}

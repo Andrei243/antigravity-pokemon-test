@@ -1,0 +1,33 @@
+{
+  // Cerulean City (plan 19 · K4): FireRed's map, our words; it plays MUS_FUCHSIA, which FireRed gives Cerulean and
+  // Fuchsia alike. The rival at the foot of Nugget Bridge, the thief in the burgled house's yard and the people who
+  // keep the exits until the S.S. Ticket are cerulean_city.txt's. Cerulean Cave stays shut behind its guard until
+  // plan 19 · K9
+  "area": "cerulean_city",
+  "bgmTrack": "kanto/fuchsia",
+  "trees": "Round",
+  "architecture": "Riverside",
+  "triggers": [
+    { "trigger": 0, "script": "RivalLeft" }, { "trigger": 1, "script": "RivalMid" }, { "trigger": 2, "script": "RivalRight" },
+    { "trigger": 3, "script": "GruntTop" }, { "trigger": 4, "script": "GruntBottom" }
+  ],
+  "people": {
+    "cerulean_rival": { "name": "{rival}", "still": true, "dialog": [ "Smell you later!" ] },
+    "cerulean_grunt": { "name": "Grunt", "script": "Grunt", "still": true },
+    "cerulean_policeman": { "name": "Policeman", "script": "Policeman", "still": true },
+    "cerulean_slowbro": { "name": "Slowbro", "npcType": "Pokemon", "species": "Slowbro", "script": "Slowbro", "still": true },
+    "cerulean_lass": { "name": "Girl", "script": "Lass", "still": true },
+    "cerulean_woman": { "name": "Woman", "script": "Woman" },
+    "little_boy": { "name": "Boy", "script": "LittleBoy" },
+    "balding_man": { "name": "Man", "dialog": [ "Ever read a Pokémon encyclopaedia? I can't put mine down. Every page is a new surprise!" ] },
+    "youngster": { "name": "Youngster", "dialog": [ "A trainer's life is tough, isn't it? But every battle makes you a little stronger." ] },
+    "cerulean_cave_guard": { "name": "Guard", "dialog": [ "This is Cerulean Cave. The Pokémon in there are terribly strong, so nobody gets in. Sorry!" ] }
+  },
+  "signs": {
+    "CeruleanCity_EventScript_CitySign": "Cerulean City\nA mysterious, blue aura surrounds it.",
+    "CeruleanCity_EventScript_GymSign": "Cerulean City Pokémon Gym\nLeader: Misty\nThe tomboyish mermaid!",
+    "CeruleanCity_EventScript_BikeShopSign": "Grass and caves handled with ease!\nBike Shop",
+    "CeruleanCity_EventScript_TrainerTips": "TRAINER TIPS\nA Pokémon that is asleep or paralysed\nis much easier to catch.",
+    "CeruleanCity_BikeShop_EventScript_Bicycle": "A shiny new bicycle, gleaming in the window."
+  }
+}

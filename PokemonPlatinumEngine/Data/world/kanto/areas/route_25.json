@@ -1,0 +1,86 @@
+{
+  "key": "route_25",
+  "index": 24,
+  "name": "Route 25",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE24",
+  "nightMusic": "MUS_ROUTE24",
+  "encounters": "route_25",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Weedle", "level": 8 },
+    { "species": "Caterpie", "level": 8 },
+    { "species": "Pidgey", "level": 13 },
+    { "species": "Oddish", "level": 14 },
+    { "species": "Oddish", "level": 13 },
+    { "species": "Abra", "level": 11 },
+    { "species": "Pidgey", "level": 11 },
+    { "species": "Oddish", "level": 12 },
+    { "species": "Kakuna", "level": 9 },
+    { "species": "Abra", "level": 9 },
+    { "species": "Metapod", "level": 9 },
+    { "species": "Abra", "level": 13 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 351, "z": 4, "to": "route_25_sea_cottage", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "hiker", "looks": "hiker", "movement": "look_east", "x": 311, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_HIKER_FRANKLIN" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 318, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_YOUNGSTER_JOEY" },
+    { "id": "hiker_2", "looks": "hiker", "movement": "look_east", "x": 317, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_HIKER_WAYNE" },
+    { "id": "youngster_2", "looks": "youngster", "movement": "look_around", "x": 322, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_YOUNGSTER_DAN" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_east", "x": 322, "z": 8, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_PICNICKER_KELSEY" },
+    { "id": "hiker_3", "looks": "hiker", "movement": "look_north", "x": 327, "z": 9, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_HIKER_NOB" },
+    { "id": "camper", "looks": "camper", "movement": "look_south", "x": 328, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CAMPER_FLINT" },
+    { "id": "youngster_3", "looks": "youngster", "movement": "walk_south_and_north", "x": 336, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 3, "trainer": "normal", "sight": 2, "script": "TRAINER_YOUNGSTER_CHAD" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 342, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_LASS_HALEY" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 326, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE25_TM43", "item": "TM43", "script": "Route25_EventScript_ItemTM43" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_around", "x": 330, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_west", "x": 349, "z": 10, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route25_EventScript_Beauty" },
+    { "id": "man", "looks": "man", "movement": "look_west", "x": 349, "z": 11, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route25_EventScript_Man" }
+  ],
+  "signs": [
+    { "x": 348, "z": 4, "type": 0, "script": "Route25_EventScript_SeaCottageSign" },
+    { "x": 314, "z": 2, "type": 2, "script": "", "item": "Elixir", "flag": "FLAG_HIDDEN_ITEM_ROUTE25_ELIXIR" },
+    { "x": 358, "z": 6, "type": 2, "script": "", "item": "Ether", "flag": "FLAG_HIDDEN_ITEM_ROUTE25_ETHER" },
+    { "x": 333, "z": 8, "type": 2, "script": "", "item": "Oran Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE25_ORAN_BERRY" },
+    { "x": 340, "z": 3, "type": 2, "script": "", "item": "Bluk Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE25_BLUK_BERRY" }
+  ],
+  "triggers": []
+}

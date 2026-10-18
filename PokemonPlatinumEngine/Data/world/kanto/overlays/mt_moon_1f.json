@@ -1,0 +1,61 @@
+{
+  // Mt. Moon's first floor (plan 19 · K4): a cave of FireRed's (MAP_TYPE_UNDERGROUND), its trainers FireRed's own,
+  // their teams read from Kanto's trainers.json by the trainer each object's script names
+  "area": "mt_moon_1f",
+  "bgmTrack": "kanto/mt_moon",
+  "people": {
+    "balding_man": { "name": "Man", "dialog": [ "Clefairy are said to come out on nights of the full moon. I've been waiting here for weeks!" ] },
+    "lass": {
+      "name": "Iris",
+      "trainer": {
+        "dialogueBefore": "Lass Iris: What? I'm waiting for my friends to find me here!",
+        "dialogueAfter": "Lass Iris: I lost... and they still haven't come."
+      }
+    },
+    "bug_catcher": {
+      "name": "Robby",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Robby: Did you come to explore the cave too? Let's battle first!",
+        "dialogueAfter": "Bug Catcher Robby: Aww, my bugs aren't used to the dark."
+      }
+    },
+    "scientist": {
+      "name": "Jovan",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Jovan: There's a rare stone somewhere in this cave, and I'm going to find it before you!",
+        "dialogueAfter": "Super Nerd Jovan: Fine. But I'm still finding that stone first."
+      }
+    },
+    "lass_2": {
+      "name": "Miriam",
+      "trainer": {
+        "dialogueBefore": "Lass Miriam: Did you see Clefairy? Everyone says they're here!",
+        "dialogueAfter": "Lass Miriam: I'll keep looking. They have to be here somewhere!"
+      }
+    },
+    "bug_catcher_2": {
+      "name": "Kent",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Kent: Suspicious men in black are lurking down below. I'm scared, so let's battle!",
+        "dialogueAfter": "Bug Catcher Kent: Watch out for those men in black, OK?"
+      }
+    },
+    "youngster": {
+      "name": "Josh",
+      "trainer": {
+        "dialogueBefore": "Youngster Josh: Whoa! I didn't hear you come in. Battle me!",
+        "dialogueAfter": "Youngster Josh: I'm getting out of here. It's too dark!"
+      }
+    },
+    "hiker": {
+      "name": "Marcos",
+      "trainer": {
+        "dialogueBefore": "Hiker Marcos: Wahah! The mountain's full of rocks, and so's my team!",
+        "dialogueAfter": "Hiker Marcos: Rock solid, you are! I'll keep climbing."
+      }
+    }
+  },
+  "signs": {
+    "MtMoon_1F_EventScript_ZubatSign": "Beware! Zubat drain the strength of whoever walks here. Bring Potions!"
+  }
+}

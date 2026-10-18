@@ -1,0 +1,8 @@
+{
+  // A house in Cerulean City (plan 19 · K4); its old man's mystery gifts need the wireless link, which is down
+  "area": "cerulean_city_house_4",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "wonder_news_berry_man": {"name": "Old Man", "dialog": ["I used to get news of rare berries from friends far away. The link has been quiet for ages now."]}
+  }
+}

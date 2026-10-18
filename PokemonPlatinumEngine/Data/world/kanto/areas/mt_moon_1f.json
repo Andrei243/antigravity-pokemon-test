@@ -1,0 +1,59 @@
+{
+  "key": "mt_moon_1f",
+  "index": 43,
+  "name": "Mt Moon",
+  "matrix": 7,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_MOON",
+  "nightMusic": "MUS_MT_MOON",
+  "encounters": "mt_moon_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 7 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Geodude", "level": 7 },
+    { "species": "Zubat", "level": 9 },
+    { "species": "Zubat", "level": 10 },
+    { "species": "Geodude", "level": 8 },
+    { "species": "Geodude", "level": 9 },
+    { "species": "Paras", "level": 8 },
+    { "species": "Zubat", "level": 7 },
+    { "species": "Zubat", "level": 7 },
+    { "species": "Zubat", "level": 7 },
+    { "species": "Clefairy", "level": 8 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 5, "z": 6, "to": "mt_moon_b1f", "toWarp": 0 },
+    { "x": 19, "z": 14, "to": "mt_moon_b1f", "toWarp": 1 },
+    { "x": 31, "z": 16, "to": "mt_moon_b1f", "toWarp": 2 },
+    { "x": 18, "z": 37, "to": "route_4", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 20, "z": 26, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_LASS_IRIS" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "look_east", "x": 36, "z": 30, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BUG_CATCHER_ROBBY" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_around", "x": 30, "z": 35, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_SUPER_NERD_JOVAN" },
+    { "id": "lass_2", "looks": "lass", "movement": "walk_sequence_west_south_east_north", "x": 33, "z": 4, "facing": 2, "rangeX": 5, "rangeZ": 3, "trainer": "normal", "sight": 2, "script": "TRAINER_LASS_MIRIAM" },
+    { "id": "bug_catcher_2", "looks": "bug_catcher", "movement": "look_south", "x": 7, "z": 26, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_BUG_CATCHER_KENT" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_east", "x": 13, "z": 17, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_YOUNGSTER_JOSH" },
+    { "id": "hiker", "looks": "hiker", "movement": "wander_around", "x": 7, "z": 10, "facing": 1, "rangeX": 2, "rangeZ": 2, "trainer": "normal", "sight": 1, "script": "TRAINER_HIKER_MARCOS" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 2, "z": 22, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_1F_PARALYZE_HEAL", "item": "Paralyze Heal", "script": "MtMoon_1F_EventScript_ItemParalyzeHeal" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 11, "z": 35, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_1F_TM09", "item": "TM09", "script": "MtMoon_1F_EventScript_ItemTM09" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 26, "z": 32, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_1F_POTION", "item": "Potion", "script": "MtMoon_1F_EventScript_ItemPotion" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_south", "x": 42, "z": 35, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_1F_RARE_CANDY", "item": "Rare Candy", "script": "MtMoon_1F_EventScript_ItemRareCandy" },
+    { "id": "item_ball_5", "looks": "item_ball", "movement": "look_south", "x": 44, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_1F_ESCAPE_ROPE", "item": "Escape Rope", "script": "MtMoon_1F_EventScript_ItemEscapeRope" },
+    { "id": "item_ball_6", "looks": "item_ball", "movement": "look_south", "x": 3, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_1F_MOON_STONE", "item": "Moon Stone", "script": "MtMoon_1F_EventScript_ItemMoonStone" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_south_and_west", "x": 42, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "MtMoon_1F_EventScript_BaldingMan" }
+  ],
+  "signs": [
+    { "x": 19, "z": 26, "type": 0, "script": "MtMoon_1F_EventScript_ZubatSign" }
+  ],
+  "triggers": []
+}

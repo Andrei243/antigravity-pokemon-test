@@ -1,0 +1,91 @@
+{
+  "key": "cerulean_city",
+  "index": 16,
+  "name": "Cerulean City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FUCHSIA",
+  "nightMusic": "MUS_FUCHSIA",
+  "encounters": "cerulean_city",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 274, "z": 51, "to": "cerulean_city_house_1", "toWarp": 1 },
+    { "x": 294, "z": 51, "to": "cerulean_city_house_2", "toWarp": 1 },
+    { "x": 279, "z": 57, "to": "cerulean_city_house_3", "toWarp": 1 },
+    { "x": 286, "z": 59, "to": "cerulean_city_pokemon_center_1f", "toWarp": 1 },
+    { "x": 295, "z": 61, "to": "cerulean_city_gym", "toWarp": 1 },
+    { "x": 277, "z": 68, "to": "cerulean_city_bike_shop", "toWarp": 1 },
+    { "x": 293, "z": 68, "to": "cerulean_city_mart", "toWarp": 1 },
+    { "x": 265, "z": 52, "to": "cerulean_cave_1f", "toWarp": 0 },
+    { "x": 274, "z": 48, "to": "cerulean_city_house_1", "toWarp": 3 },
+    { "x": 295, "z": 48, "to": "cerulean_city_house_2", "toWarp": 3 },
+    { "x": 295, "z": 49, "to": "", "toWarp": 3 },
+    { "x": 278, "z": 68, "to": "cerulean_city_bike_shop", "toWarp": 1 },
+    { "x": 287, "z": 68, "to": "cerulean_city_house_4", "toWarp": 0 },
+    { "x": 281, "z": 51, "to": "cerulean_city_house_5", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "cerulean_policeman", "looks": "policeman", "movement": "look_south", "x": 295, "z": 52, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_EventScript_Policeman" },
+    { "id": "cerulean_grunt", "looks": "rocket_m", "movement": "look_around", "x": 297, "z": 46, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CERULEAN_ROCKET", "script": "CeruleanCity_EventScript_Grunt" },
+    { "id": "little_boy", "looks": "little_boy", "movement": "wander_north_and_south", "x": 280, "z": 61, "facing": 0, "rangeX": 1, "rangeZ": 3, "script": "CeruleanCity_EventScript_LittleBoy" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "wander_around", "x": 273, "z": 63, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_EventScript_BaldingMan" },
+    { "id": "cerulean_slowbro", "looks": "slowbro", "movement": "look_south", "x": 296, "z": 69, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_EventScript_Slowbro" },
+    { "id": "cerulean_lass", "looks": "lass", "movement": "look_west", "x": 297, "z": 69, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_EventScript_Lass" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 298, "z": 62, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_EventScript_Youngster" },
+    { "id": "cerulean_rival", "looks": "blue", "movement": "look_south", "x": 286, "z": 40, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CERULEAN_RIVAL", "script": "" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 290, "z": 72, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "cerulean_woman", "looks": "woman_1", "movement": "look_north", "x": 276, "z": 70, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_EventScript_Woman" },
+    { "id": "cerulean_cave_guard", "looks": "cooltrainer_m", "movement": "look_south", "x": 265, "z": 53, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CERULEAN_CAVE_GUARD", "script": "CeruleanCity_EventScript_CeruleanCaveGuard" }
+  ],
+  "signs": [
+    { "x": 284, "z": 65, "type": 0, "script": "CeruleanCity_EventScript_CitySign" },
+    { "x": 291, "z": 61, "type": 0, "script": "CeruleanCity_EventScript_GymSign" },
+    { "x": 275, "z": 68, "type": 0, "script": "CeruleanCity_EventScript_BikeShopSign" },
+    { "x": 283, "z": 72, "type": 0, "script": "CeruleanCity_EventScript_TrainerTips" },
+    { "x": 282, "z": 47, "type": 2, "script": "", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_CERULEAN_CITY_RARE_CANDY" },
+    { "x": 275, "z": 65, "type": 0, "script": "CeruleanCity_BikeShop_EventScript_Bicycle" },
+    { "x": 275, "z": 67, "type": 0, "script": "CeruleanCity_BikeShop_EventScript_Bicycle" },
+    { "x": 275, "z": 66, "type": 0, "script": "CeruleanCity_BikeShop_EventScript_Bicycle" }
+  ],
+  "triggers": [
+    { "x": 286, "z": 46, "width": 1, "depth": 1, "script": "CeruleanCity_EventScript_RivalTriggerLeft", "variable": "VAR_MAP_SCENE_CERULEAN_CITY_RIVAL", "value": "0" },
+    { "x": 287, "z": 46, "width": 1, "depth": 1, "script": "CeruleanCity_EventScript_RivalTriggerMid", "variable": "VAR_MAP_SCENE_CERULEAN_CITY_RIVAL", "value": "0" },
+    { "x": 288, "z": 46, "width": 1, "depth": 1, "script": "CeruleanCity_EventScript_RivalTriggerRight", "variable": "VAR_MAP_SCENE_CERULEAN_CITY_RIVAL", "value": "0" },
+    { "x": 297, "z": 45, "width": 1, "depth": 1, "script": "CeruleanCity_EventScript_GruntTriggerTop", "variable": "VAR_MAP_SCENE_CERULEAN_CITY_ROCKET", "value": "0" },
+    { "x": 297, "z": 47, "width": 1, "depth": 1, "script": "CeruleanCity_EventScript_GruntTriggerBottom", "variable": "VAR_MAP_SCENE_CERULEAN_CITY_ROCKET", "value": "0" }
+  ]
+}

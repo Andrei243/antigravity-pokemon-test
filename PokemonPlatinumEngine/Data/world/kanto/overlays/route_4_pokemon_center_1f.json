@@ -1,0 +1,14 @@
+{
+  // The Pokémon Center at Mt. Moon's foot on Route 4 (plan 19 · K4), its floor as FireRed lays it out. The man who
+  // sells a Magikarp is route_4_pokemon_center_1f.txt's
+  "area": "route_4_pokemon_center_1f",
+  "bgmTrack": "kanto/route3",
+  "people": {
+    "route4_nurse": { "name": "Nurse", "script": "Nurse" },
+    "balding_man": { "name": "Man", "script": "MagikarpSalesman", "still": true },
+    "gentleman": { "name": "Gentleman", "dialog": [ "I hear Team Rocket has been causing trouble in Cerulean City. Be careful over there." ] },
+    "boy": { "name": "Boy", "dialog": [ "You can carry six Pokémon with you. The rest go into the PC's boxes." ] },
+    "youngster": { "name": "Youngster", "dialog": [ "Mt. Moon is right next door. Heal up before you go in. Trust me!" ] },
+    "clipboard": { "name": "Notice", "dialog": [ "It's today's paper. The headline reads: \"Thefts at Mt. Moon! Fossils go missing.\"" ] }
+  }
+}

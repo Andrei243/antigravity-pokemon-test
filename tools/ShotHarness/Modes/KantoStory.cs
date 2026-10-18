@@ -32,6 +32,7 @@ partial class Harness
             }
             Console.WriteLine($"  !! never said: {text ?? "the script's end"}");
         }
+        bool keepLead = false;
         void Win()
         {
             var fight = game.Battle;
@@ -40,6 +41,8 @@ partial class Harness
                 if (fight.HUD.MenuState == BattleMenuState.Main)
                 {
                     foreach (var foe in fight.EnemyParty?.Members ?? new List<Pokemon>()) foe.CurrentHP = Math.Min(foe.CurrentHP, 1);
+                    // From the second chapter on the lead never tires: the foes move first more often there
+                    if (keepLead && fight.PlayerPokemon is { } tired) tired.CurrentHP = tired.MaxHP;
                     fight.SelectMainMenuOption(0);
                     // The first move that hurts: a starter's first is often Growl or Tail Whip
                     var lead = fight.PlayerPokemon;
@@ -175,5 +178,74 @@ partial class Harness
         ReadTo("Your mother sent these"); Frames(10); Shot("ks17_the_running_shoes");
         ReadTo(null);
         Left("the chapter's end");
+
+        // ---- Plan 19 · K4: Mt. Moon to Bill
+        keepLead = true;
+        void LeftTwo(string what) =>
+            Console.WriteLine($"  {what}: Mt. Moon B2F {story.Var("VAR_MAP_SCENE_MT_MOON_B2F")}, fossil {(story.Has("FLAG_GOT_DOME_FOSSIL") ? "Dome" : story.Has("FLAG_GOT_HELIX_FOSSIL") ? "Helix" : "none")}, "
+                + $"Cerulean rival {story.Var("VAR_MAP_SCENE_CERULEAN_CITY_RIVAL")}, Nugget Bridge {story.Var("VAR_MAP_SCENE_ROUTE24")}, Bill helped {story.Has("FLAG_HELPED_BILL_IN_SEA_COTTAGE")}, "
+                + $"S.S. Ticket {story.Has("FLAG_GOT_SS_TICKET")}, Cascade Badge {story.HasBadge("Kanto", "Cascade")}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        // ---- Miguel and the fossils, deep in Mt. Moon
+        StepOnto("MtMoon_B2F", 14, 11, Direction.Left);
+        ReadTo("I found these fossils first"); Frames(10); Shot("ks18_miguel");
+        IntoBattle("Miguel's battle");
+        Win();
+        ReadTo(null);
+        TalkTo("MtMoon_B2F", "dome_fossil");
+        ReadTo("Then the Helix Fossil is mine"); Frames(10); Shot("ks19_one_fossil_each");
+        ReadTo(null);
+        LeftTwo("the fossils");
+
+        // ---- the rival at the foot of Nugget Bridge
+        StepOnto("Kanto", 287, 46, Direction.Up);
+        ReadTo("Well, look who finally made it"); Frames(10); Shot("ks20_cerulean_rival");
+        IntoBattle("the rival's battle in Cerulean City");
+        Win();
+        ReadTo(null);
+
+        // ---- Nugget Bridge's prize
+        StepOnto("Kanto", 287, 15, Direction.Up);
+        ReadTo("Here's your prize"); Frames(10); Shot("ks21_nugget_bridge_prize");
+        IntoBattle("the recruiter's battle");
+        Win();
+        ReadTo(null);
+        LeftTwo("the bridge");
+
+        // ---- Bill in a muddle, the cell separator and the S.S. Ticket
+        TalkTo("Route25_SeaCottage", "bill_clefairy");
+        ReadTo("I'm Bill, the Pokémaniac"); Frames(10); Shot("ks22_bill_the_clefairy");
+        ReadTo(null);
+        At("Route25_SeaCottage", 4, 6, Direction.Up);
+        game.Interact();
+        ReadTo("started the teleporter's cell separator"); Frames(10); Shot("ks23_the_cell_separator");
+        ReadTo(null); Frames(30);
+        TalkTo("Route25_SeaCottage", "bill_human");
+        ReadTo("It's a ticket for the S.S. Anne"); Frames(10); Shot("ks24_the_ss_ticket");
+        ReadTo(null);
+
+        // ---- Misty and the Cascade Badge (her Starmie fells the harness's Charmander at full health in one blow: a
+        // Venusaur leads for her)
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Venusaur")!, 50));
+        At("CeruleanCity_Gym", 8, 16, Direction.Up); Frames(30); Shot("ks25_mistys_pool");
+        TalkTo("CeruleanCity_Gym", "misty");
+        ReadTo("Hi, you're a new face"); Frames(10); Shot("ks26_misty");
+        IntoBattle("Misty's battle");
+        ToMainMenu(game.Battle); Shot("ks27_mistys_battle");
+        Win();
+        ReadTo("Cascade Badge from Misty"); Frames(10); Shot("ks28_the_cascade_badge");
+        ReadTo(null);
+        LeftTwo("the chapter's first half");
+
+        // ---- Kanto's badges on the Trainer Card, all eight won for the picture (style guide, "Badges")
+        int had = story.BadgeMask("Kanto");
+        story.SetBadges("Kanto", 0xFF);
+        game.State = GameState.Overworld;
+        game.ChooseFromStartMenu(StartMenuChoice.Trainer);
+        Frames(40); Shot("ks29_kantos_badges");
+        game.TrainerCard.Close();
+        story.SetBadges("Kanto", had);
+        Frames(10);
     }
 }

@@ -1,0 +1,32 @@
+# Mt. Moon (FireRed's MUS_MT_MOON, which Rock Tunnel and Victory Road share): a slow, echoing walk in A minor, a
+# glassy lead over a low pedal and a dripping counter-line. A cave plays the same by day and night. Original
+# composition for this game (plan 19 · K4).
+title Mt. Moon
+tempo 104
+meter 4/4
+reverb 0.42
+night none
+
+track lead square vol=0.74 pan=0 rev=0.44
+  L o4 a2 o5 c4 e4 | o5 d2 o4 b4 g4 | o4 a2 e4 a4 | o4 g+2. r4 |
+  o4 a2 o5 c4 e4 | o5 f2 e4 d4 | o5 c4 o4 a4 b4 g+4 | o4 a2. r4 |
+  o5 e2 d4 c4 | o5 d2 o4 b4 g4 | o5 c2 o4 b4 a4 | o4 b2. r4 |
+  o5 e2 c4 e4 | o5 d4 c4 o4 b4 a4 | o4 g+4 b4 e4 g+4 | o4 a2. r4 |
+
+track drip glockenspiel vol=0.22 pan=0.35 rev=0.6
+  L [ r4 o5 e8 r8 r4 c8 r8 | r2 o4 b8 r8 r4 | ]8
+
+track pad strings vol=0.36 pan=-0.25 rev=0.5
+  L o3 (a >c e)1 | (g b >d)1 | (a >c e)1 | (e g+ b)1 |
+  (a >c e)1 | (f a >d)1 | (f a >c)2 (e g+ b)2 | (a >c e)1 |
+  (a >c e)1 | (g b >d)1 | (f a >c)1 | (e g+ b)1 |
+  (a >c e)1 | (f a >d)1 | (e g+ b)1 | (a >c e)1 |
+
+track bass bass vol=0.7 rev=0.16
+  L o3 a2 a2 | g2 g2 | a2 a2 | e2 e2 |
+  a2 a2 | f2 f2 | f2 e2 | a2 a2 |
+  a2 a2 | g2 g2 | f2 f2 | e2 e2 |
+  a2 a2 | f2 f2 | e2 e2 | a2 a2 |
+
+track drums kit vol=0.32 rev=0.3
+  v70 L [ b2 r4 h4 | r2 b4 r4 | ]8

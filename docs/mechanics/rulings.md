@@ -2559,3 +2559,32 @@ HeartGold, and why:
 - **The Ruins of Alph** stay shut behind Route 32's gate house: their chambers and the Unown are a later session's.
 - **A save of Johto from before the chapter** (J2's stand-in start, which owned one of Elm's three and recorded no
   starter) is taken past the opening (`common.JohtoOpeningDone`, story version 21), its starter the one it owns.
+## Kanto's second chapter, first part (2026-10-18, plan 19 · K4)
+
+From Route 3 over Mt. Moon to Cerulean City, Nugget Bridge and Bill's Sea Cottage, scripts of ours on FireRed's beats
+(`mt_moon_b2f.txt`, `cerulean_city.txt`, `cerulean_city_gym.txt`, `route_24.txt`, `route_25_sea_cottage.txt`,
+`route_4_pokemon_center_1f.txt`), under FireRed's flags and variables (`VAR_MAP_SCENE_MT_MOON_B2F`,
+`VAR_MAP_SCENE_CERULEAN_CITY_RIVAL`, `VAR_MAP_SCENE_ROUTE24`, `FLAG_HELPED_BILL_IN_SEA_COTTAGE`, `FLAG_GOT_SS_TICKET`…).
+What differs from FireRed, and why:
+
+- **The rival at Nugget Bridge** gives no Fame Checker (decision 2 of plan 19 leaves it out): after the battle he walks
+  round the player and away south, by the side of the bridge his trigger leaves free.
+- **Bill's teleporter** has no doors that open: the Clefairy steps into it behind a dark screen, and the cell separator
+  brings Bill out of it the same way, with the level-up fanfare. FireRed's temporary flag for "Bill is in the
+  teleporter" is a flag of the place here (`FLAG_MAP_LOCAL_BILL_IN_TELEPORTER`), which is forgotten as the player leaves,
+  as FireRed's is.
+- **Bill's list of favourite Pokémon** is a line about Eevee and its evolutions; FireRed shows each one's picture and
+  marks it seen, which waits for a picture command of the language.
+- **The thief in Cerulean** hands TM28 back once beaten, wherever the bag has room (this game's bag has no limit), and
+  leaves behind a dark screen; the policeman keeps the burgled house's door, and the Slowbro with its trainer the road
+  south, until the S.S. Ticket, as FireRed's `CeruleanCity_EventScript_BlockExits` keeps them (`place` on every arrival).
+- **The people FireRed's new game hides** that this chapter brings on (the rival at the bridge, Bill as himself, the
+  Pokémon Center's two who only talk after the Hall of Fame) are hidden by `common.KantoNewGame` for a new game, and by
+  the places' own arrival scripts for a save from before the chapter, which never came to them: no story version is
+  raised.
+- **Route 4's two Black Belts** talk: FireRed's Mega Punch and Mega Kick tutors wait for Kanto's tutors.
+- **The Bike Shop** names its price and sells nothing: the Bike Voucher is Vermilion City's (the chapter's second part).
+- **Kanto's badges** have colours and marks of their own (style guide, "Badges").
+- **Route 22's gate** keeps FireRed's guard for the Boulder Badge (its Route 23 badge check, by the Badge itself): the
+  step beside him turns back whoever hasn't it, and once he has seen it nobody is stopped there. Route 23 beyond, with
+  its guards for the other seven, is plan 19 · K7's.

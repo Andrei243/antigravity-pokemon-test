@@ -1,0 +1,59 @@
+{
+  "key": "mt_moon_b2f",
+  "index": 45,
+  "name": "Mt Moon",
+  "matrix": 9,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_MOON",
+  "nightMusic": "MUS_MT_MOON",
+  "encounters": "mt_moon_b2f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 8 },
+    { "species": "Geodude", "level": 9 },
+    { "species": "Zubat", "level": 9 },
+    { "species": "Zubat", "level": 10 },
+    { "species": "Geodude", "level": 10 },
+    { "species": "Paras", "level": 10 },
+    { "species": "Paras", "level": 12 },
+    { "species": "Clefairy", "level": 10 },
+    { "species": "Zubat", "level": 11 },
+    { "species": "Zubat", "level": 11 },
+    { "species": "Zubat", "level": 11 },
+    { "species": "Clefairy", "level": 12 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 25, "z": 21, "to": "mt_moon_b1f", "toWarp": 3 },
+    { "x": 31, "z": 11, "to": "mt_moon_b1f", "toWarp": 4 },
+    { "x": 17, "z": 31, "to": "mt_moon_b1f", "toWarp": 5 },
+    { "x": 5, "z": 10, "to": "mt_moon_b1f", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "dome_fossil", "looks": "fossil", "movement": "look_south", "x": 13, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_DOME_FOSSIL", "script": "MtMoon_B2F_EventScript_DomeFossil" },
+    { "id": "helix_fossil", "looks": "fossil", "movement": "look_south", "x": 14, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_HELIX_FOSSIL", "script": "MtMoon_B2F_EventScript_HelixFossil" },
+    { "id": "miguel", "looks": "scientist", "movement": "look_east", "x": 13, "z": 11, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "MtMoon_B2F_EventScript_Miguel" },
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "look_around", "x": 37, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_4" },
+    { "id": "rocket_m_2", "looks": "rocket_m", "movement": "look_south", "x": 12, "z": 20, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT" },
+    { "id": "rocket_m_3", "looks": "rocket_m", "movement": "look_north", "x": 35, "z": 12, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_3" },
+    { "id": "rocket_m_4", "looks": "rocket_m", "movement": "look_south", "x": 18, "z": 27, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_MISC_KANTO_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_2" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 30, "z": 26, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_B2F_STAR_PIECE", "item": "Star Piece", "script": "MtMoon_B2F_EventScript_ItemStarPiece" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 35, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_B2F_TM46", "item": "TM46", "script": "MtMoon_B2F_EventScript_ItemTM46" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 24, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_B2F_REVIVE", "item": "Revive", "script": "MtMoon_B2F_EventScript_ItemRevive" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_south", "x": 3, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_MOON_B2F_ANTIDOTE", "item": "Antidote", "script": "MtMoon_B2F_EventScript_ItemAntidote" }
+  ],
+  "signs": [
+    { "x": 20, "z": 16, "type": 2, "script": "", "item": "Moon Stone", "flag": "FLAG_HIDDEN_ITEM_MT_MOON_B2F_MOON_STONE" },
+    { "x": 39, "z": 11, "type": 2, "script": "", "item": "Ether", "flag": "FLAG_HIDDEN_ITEM_MT_MOON_B2F_ETHER" }
+  ],
+  "triggers": [
+    { "x": 14, "z": 11, "width": 1, "depth": 1, "script": "MtMoon_B2F_EventScript_MiguelTrigger", "variable": "VAR_MAP_SCENE_MT_MOON_B2F", "value": "0" }
+  ]
+}

@@ -223,6 +223,12 @@ public static class WorldMapBuilder
         // A room built from a layout is a room of the kind its name says (plan 19 · K1): a Pokémon Center's floor, a
         // Mart's, a lab's, and a house's for the rest, until the region's plan gives its rooms looks of their own
         if (room) map.Interior = RoomStyleOf(entry.Name);
+        // A room whose overlay names its Leader's type is that type's Gym hall (plan 19 · K4: Pewter's of rock)
+        if (room && entry.Area != null && world.Overlay(entry.Area)?.ArenaType is { } arena)
+        {
+            map.Interior = InteriorStyle.Gym;
+            map.ArenaType = arena;
+        }
         // A place that is a matrix of its own is looked at with its own camera, and may be dark
         if (entry.Area != null && world.Area(entry.Area) is { } own)
         {

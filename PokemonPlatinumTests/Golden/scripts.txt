@@ -6333,6 +6333,201 @@ way 1, from answer 1
   + FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING
   + FLAG_HIDE_CELESTIC_TOWN_ELDER
   + seen celestic_town_cave.The painting
+=== cerulean_city.Grunt
+from Grunt at 297,46 of Kanto
+way 0
+  Grunt> Hey! Stay out of here! This is none of your business. Get lost, kid!
+  Grunt> All right, all right! I'll give it back. It's just some TM I swiped from that house anyway.
+  > Lucas received the TM28!
+  > TM28 holds the move Dig.
+  > Lucas put it away in the TMs & HMs pocket.
+  Grunt> Team Rocket doesn't forget a face, kid. I'm out of here!
+  * scene cerulean_city.The thief of Cerulean
+  * battle kanto_team_rocket_grunt_5 Won
+  * fanfare FanfareTM
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_GOT_TM28_FROM_ROCKET
+  + FLAG_HIDE_CERULEAN_ROCKET
+  = VAR_MAP_SCENE_CERULEAN_CITY_ROCKET 0 -> 1
+  + beaten kanto_team_rocket_grunt_5
+  + seen cerulean_city.The thief of Cerulean
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_5 Lost
+  * scene over, unseen
+=== cerulean_city.GruntBottom
+from the trigger at 297,47 of Kanto
+way 0
+  Grunt> Hey! Stay out of here! This is none of your business. Get lost, kid!
+  Grunt> All right, all right! I'll give it back. It's just some TM I swiped from that house anyway.
+  > Lucas received the TM28!
+  > TM28 holds the move Dig.
+  > Lucas put it away in the TMs & HMs pocket.
+  Grunt> Team Rocket doesn't forget a face, kid. I'm out of here!
+  * scene cerulean_city.The thief of Cerulean
+  * battle kanto_team_rocket_grunt_5 Won
+  * fanfare FanfareTM
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_GOT_TM28_FROM_ROCKET
+  + FLAG_HIDE_CERULEAN_ROCKET
+  = VAR_MAP_SCENE_CERULEAN_CITY_ROCKET 0 -> 1
+  + beaten kanto_team_rocket_grunt_5
+  + seen cerulean_city.The thief of Cerulean
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_5 Lost
+  * scene over, unseen
+=== cerulean_city.GruntTop
+from the trigger at 297,45 of Kanto
+way 0
+  Grunt> Hey! Stay out of here! This is none of your business. Get lost, kid!
+  Grunt> All right, all right! I'll give it back. It's just some TM I swiped from that house anyway.
+  > Lucas received the TM28!
+  > TM28 holds the move Dig.
+  > Lucas put it away in the TMs & HMs pocket.
+  Grunt> Team Rocket doesn't forget a face, kid. I'm out of here!
+  * scene cerulean_city.The thief of Cerulean
+  * battle kanto_team_rocket_grunt_5 Won
+  * fanfare FanfareTM
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_GOT_TM28_FROM_ROCKET
+  + FLAG_HIDE_CERULEAN_ROCKET
+  = VAR_MAP_SCENE_CERULEAN_CITY_ROCKET 0 -> 1
+  + beaten kanto_team_rocket_grunt_5
+  + seen cerulean_city.The thief of Cerulean
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_5 Lost
+  * scene over, unseen
+=== cerulean_city.Lass
+from Girl at 297,69 of Kanto
+way -
+  Girl> Slowbro, use Water Gun! Come on, Slowbro!
+  Girl> Slowbro, are you even listening? It never pays attention...
+  * emote Slowbro Question
+=== cerulean_city.LittleBoy
+from Boy at 280,61 of Kanto
+way -
+  Boy> If that Slowbro would just move, you could go round to the little tree and cut it down. Then you'd be on Route 5!
+=== cerulean_city.Policeman
+from Policeman at 295,52 of Kanto
+way -
+  Policeman> This house was broken into last night. A Team Rocket thief, by the looks of it. Nobody goes in until we're done.
+=== cerulean_city.RivalLeft
+from the trigger at 286,46 of Kanto
+way 0
+  Barry> Well, look who finally made it! Lucas! How's the Pokédex coming along?
+  Barry> Me? I've already caught loads. I went over that bridge and up to Bill's place, too.
+  Barry> Let's see if you've got any stronger. Come on, battle me!
+  Barry> Tch! Lucky break. You'd better not get used to winning.
+  Barry> Bill's up the road past the bridge. He knows more about Pokémon than anyone. Go and see him, if you can keep up.
+  Barry> I'm off. Smell you later, Lucas!
+  * scene cerulean_city.The rival at Nugget Bridge
+  * music kanto/rival
+  * battle kanto_rival_cerulean_bulbasaur Won
+  * music kanto/rival
+  * music area
+  * endscene
+  = VAR_MAP_SCENE_CERULEAN_CITY_RIVAL 0 -> 1
+  = VAR_MAP_SCENE_ROUTE22 0 -> 2
+  + beaten kanto_rival_cerulean_bulbasaur
+  + seen cerulean_city.The rival at Nugget Bridge
+way 1, from answer 1
+  * battle kanto_rival_cerulean_bulbasaur Lost
+  * scene over, unseen
+  = VAR_MAP_SCENE_ROUTE22 0 -> 2
+=== cerulean_city.RivalMid
+from the trigger at 287,46 of Kanto
+way 0
+  Barry> Well, look who finally made it! Lucas! How's the Pokédex coming along?
+  Barry> Me? I've already caught loads. I went over that bridge and up to Bill's place, too.
+  Barry> Let's see if you've got any stronger. Come on, battle me!
+  Barry> Tch! Lucky break. You'd better not get used to winning.
+  Barry> Bill's up the road past the bridge. He knows more about Pokémon than anyone. Go and see him, if you can keep up.
+  Barry> I'm off. Smell you later, Lucas!
+  * scene cerulean_city.The rival at Nugget Bridge
+  * music kanto/rival
+  * battle kanto_rival_cerulean_bulbasaur Won
+  * music kanto/rival
+  * music area
+  * endscene
+  = VAR_MAP_SCENE_CERULEAN_CITY_RIVAL 0 -> 1
+  = VAR_MAP_SCENE_ROUTE22 0 -> 2
+  + beaten kanto_rival_cerulean_bulbasaur
+  + seen cerulean_city.The rival at Nugget Bridge
+way 1, from answer 1
+  * battle kanto_rival_cerulean_bulbasaur Lost
+  * scene over, unseen
+  = VAR_MAP_SCENE_ROUTE22 0 -> 2
+=== cerulean_city.RivalRight
+from the trigger at 288,46 of Kanto
+way 0
+  Barry> Well, look who finally made it! Lucas! How's the Pokédex coming along?
+  Barry> Me? I've already caught loads. I went over that bridge and up to Bill's place, too.
+  Barry> Let's see if you've got any stronger. Come on, battle me!
+  Barry> Tch! Lucky break. You'd better not get used to winning.
+  Barry> Bill's up the road past the bridge. He knows more about Pokémon than anyone. Go and see him, if you can keep up.
+  Barry> I'm off. Smell you later, Lucas!
+  * scene cerulean_city.The rival at Nugget Bridge
+  * music kanto/rival
+  * battle kanto_rival_cerulean_bulbasaur Won
+  * music kanto/rival
+  * music area
+  * endscene
+  = VAR_MAP_SCENE_CERULEAN_CITY_RIVAL 0 -> 1
+  = VAR_MAP_SCENE_ROUTE22 0 -> 2
+  + beaten kanto_rival_cerulean_bulbasaur
+  + seen cerulean_city.The rival at Nugget Bridge
+way 1, from answer 1
+  * battle kanto_rival_cerulean_bulbasaur Lost
+  * scene over, unseen
+  = VAR_MAP_SCENE_ROUTE22 0 -> 2
+=== cerulean_city.Slowbro
+from Slowbro at 296,69 of Kanto
+way -
+  Slowbro> Slowbro is having a little nap...
+=== cerulean_city.Woman
+from Woman at 276,70 of Kanto
+way -
+  Woman> I'd love one of those shiny red bicycles in the shop. But have you seen the price? A million!
+=== cerulean_city_gym.GymGuy
+from Gym Guide at 7,16 of CeruleanCity_Gym
+way -
+  Gym Guide> Yo, champ in the making! Misty's Pokémon are Water types, and they hit hard.
+  Gym Guide> Electric and Grass moves are what you want here. Zap them or root them out!
+=== cerulean_city_gym.Misty
+from Misty at 8,6 of CeruleanCity_Gym
+way 0
+  Misty> Hi, you're a new face! Trainers who want to turn pro need a policy for raising their Pokémon.
+  Misty> Mine? It's all-out offence with Water types! Let's see if you can keep your head above water!
+  Misty> Wow, you're too much! All right, you can have the Cascade Badge to show you beat me.
+  > Lucas received the Cascade Badge from Misty!
+  Misty> With the Cascade Badge, your Pokémon can use Cut outside of battle, to clear away small trees.
+  Misty> And take this too. It's one of my favourite moves.
+  > Lucas received the TM03!
+  > TM03 holds the move Water Pulse.
+  > Lucas put it away in the TMs & HMs pocket.
+  Misty> TM03 is Water Pulse. It hits with a wave of sound and water, and it can leave the foe confused.
+  * scene cerulean_city_gym.Misty
+  * battle kanto_leader_misty Won
+  * fanfare FanfareBadge
+  * defeat kanto_picnicker_diana
+  * defeat kanto_swimmer_male_luis
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_MISTY
+  + FLAG_GOT_TM03_FROM_MISTY
+  + beaten kanto_leader_misty
+  + beaten kanto_picnicker_diana
+  + beaten kanto_swimmer_male_luis
+  = badges Kanto 0 -> 10
+  + seen cerulean_city_gym.Misty
+way 1, from answer 1
+  * battle kanto_leader_misty Lost
+  * scene over, unseen
 === cherrygrove.GuideGent
 from Guide Gent at 566,396 of Johto
 way 0
@@ -7399,9 +7594,12 @@ way -
 === common.KantoNewGame
 from a trainer with lines of their own
 way -
+  + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
+  + FLAG_HIDE_CERULEAN_RIVAL
   + FLAG_HIDE_OAK_IN_HIS_LAB
   + FLAG_HIDE_OAK_IN_PALLET_TOWN
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  + FLAG_HIDE_POSTGAME_GOSSIPERS
   + FLAG_HIDE_ROUTE_22_RIVAL
 === common.KantoOpeningDone
 from a trainer with lines of their own
@@ -8921,6 +9119,42 @@ from Rubble at 6,24 of MtCoronet2F
 from Rubble at 8,24 of MtCoronet2F
 way -
   > Broken stone lies either side of a hole. A scrap of paint on one piece is all that is left of the cave painting.
+=== mt_moon_b2f.DomeFossil
+from Dome Fossil at 13,7 of MtMoon_B2F
+way -
+  Miguel> Hey! Hands off! Those fossils are mine!
+=== mt_moon_b2f.HelixFossil
+from Helix Fossil at 14,7 of MtMoon_B2F
+way -
+  Miguel> Hey! Hands off! Those fossils are mine!
+=== mt_moon_b2f.Miguel
+from Miguel at 13,11 of MtMoon_B2F
+way 0
+  Miguel> Hold it! I found these fossils first. They're mine, and nobody's taking them!
+  Miguel> All right, all right! You win. Let's be fair about it: one fossil each. You choose first.
+  * scene mt_moon_b2f.Miguel and the fossils
+  * battle kanto_super_nerd_miguel Won
+  * endscene
+  = VAR_MAP_SCENE_MT_MOON_B2F 0 -> 1
+  + beaten kanto_super_nerd_miguel
+  + seen mt_moon_b2f.Miguel and the fossils
+way 1, from answer 1
+  * battle kanto_super_nerd_miguel Lost
+  * scene over, unseen
+=== mt_moon_b2f.MiguelTrigger
+from the trigger at 14,11 of MtMoon_B2F
+way 0
+  Miguel> Hold it! I found these fossils first. They're mine, and nobody's taking them!
+  Miguel> All right, all right! You win. Let's be fair about it: one fossil each. You choose first.
+  * scene mt_moon_b2f.Miguel and the fossils
+  * battle kanto_super_nerd_miguel Won
+  * endscene
+  = VAR_MAP_SCENE_MT_MOON_B2F 0 -> 1
+  + beaten kanto_super_nerd_miguel
+  + seen mt_moon_b2f.Miguel and the fossils
+way 1, from answer 1
+  * battle kanto_super_nerd_miguel Lost
+  * scene over, unseen
 === new_bark.Friend
 from {assistant} at 694,400 of Johto
 way -
@@ -9141,6 +9375,7 @@ way -
   * scene pallet_town.Oak in the grass
   * music kanto/oak
   * emote player Exclaim
+  * music kanto/follow_me
   * fade out
   * warp PalletTown_ProfessorOaksLab 6 12
   * endscene
@@ -10016,6 +10251,104 @@ way -
   * fanfare FanfareItem
   * fanfare FanfareItem
   + FLAG_RECEIVED_ROUTE_229_NUGGET
+=== route_22_north_entrance.Guard
+from Guard at 8,2 of Route22_NorthEntrance
+way -
+  Guard> Beyond this gate lies the road to the Pokémon League. Only trainers with the Boulder Badge may pass.
+=== route_22_north_entrance.GuardTrigger
+from the trigger at 7,2 of Route22_NorthEntrance
+way -
+  Guard> Halt! Only trainers who hold the Boulder Badge may pass beyond this gate.
+=== route_24.Rocket
+from Man at 288,15 of Kanto
+way 0
+  Man> Congratulations! You beat all five of our trainers. That makes you the winner of the Nugget Bridge challenge!
+  Man> Here's your prize: a solid gold Nugget!
+  > Lucas received the Nugget!
+  > Lucas put it away in the Items pocket.
+  Man> And there's more. How'd you like to join Team Rocket? We're always looking for strong trainers like you.
+  Man> What, you won't? Then I'll have to change your mind the hard way!
+  Man> Argh! With a talent like yours, you'd climb right to the top of Team Rocket. Think about it!
+  * scene route_24.The prize at Nugget Bridge
+  * fanfare FanfareItem
+  * battle kanto_team_rocket_grunt_6 Won
+  * endscene
+  = VAR_MAP_SCENE_ROUTE24 0 -> 1
+  + beaten kanto_team_rocket_grunt_6
+  + seen route_24.The prize at Nugget Bridge
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_6 Lost
+  * scene over, unseen
+=== route_24.RocketLeft
+from the trigger at 286,15 of Kanto
+way 0
+  Man> Congratulations! You beat all five of our trainers. That makes you the winner of the Nugget Bridge challenge!
+  Man> Here's your prize: a solid gold Nugget!
+  > Lucas received the Nugget!
+  > Lucas put it away in the Items pocket.
+  Man> And there's more. How'd you like to join Team Rocket? We're always looking for strong trainers like you.
+  Man> What, you won't? Then I'll have to change your mind the hard way!
+  Man> Argh! With a talent like yours, you'd climb right to the top of Team Rocket. Think about it!
+  * scene route_24.The prize at Nugget Bridge
+  * fanfare FanfareItem
+  * battle kanto_team_rocket_grunt_6 Won
+  * endscene
+  = VAR_MAP_SCENE_ROUTE24 0 -> 1
+  + beaten kanto_team_rocket_grunt_6
+  + seen route_24.The prize at Nugget Bridge
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_6 Lost
+  * scene over, unseen
+=== route_24.RocketRight
+from the trigger at 287,15 of Kanto
+way 0
+  Man> Congratulations! You beat all five of our trainers. That makes you the winner of the Nugget Bridge challenge!
+  Man> Here's your prize: a solid gold Nugget!
+  > Lucas received the Nugget!
+  > Lucas put it away in the Items pocket.
+  Man> And there's more. How'd you like to join Team Rocket? We're always looking for strong trainers like you.
+  Man> What, you won't? Then I'll have to change your mind the hard way!
+  Man> Argh! With a talent like yours, you'd climb right to the top of Team Rocket. Think about it!
+  * scene route_24.The prize at Nugget Bridge
+  * fanfare FanfareItem
+  * battle kanto_team_rocket_grunt_6 Won
+  * endscene
+  = VAR_MAP_SCENE_ROUTE24 0 -> 1
+  + beaten kanto_team_rocket_grunt_6
+  + seen route_24.The prize at Nugget Bridge
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_6 Lost
+  * scene over, unseen
+=== route_25_sea_cottage.Bill
+from Bill at 10,6 of Route25_SeaCottage
+from Bill at 7,5 of Route25_SeaCottage
+way 0
+  Bill> Hiya! I'm a Pokémon... No, wait! I'm Bill, the Pokémaniac! Honestly, I'm a person!
+  Bill> I was testing my teleporter and got mixed up with a Clefairy. Can you help me out of this?
+  Bill> Please? You'll help me, won't you?
+  Bill> Thanks! When I step into the teleporter, run the cell separator on the PC over there. That'll sort us out.
+  ? Please? You'll help me, won't you? = Yes
+  * scene route_25_sea_cottage.Bill in a muddle
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_BILL_CLEFAIRY
+  + FLAG_MAP_LOCAL_BILL_IN_TELEPORTER
+  + seen route_25_sea_cottage.Bill in a muddle
+way 1, from answer 1
+  Bill> Aw, come on, don't leave me like this! Please?
+  Bill> Thanks! When I step into the teleporter, run the cell separator on the PC over there. That'll sort us out.
+  ? Please? You'll help me, won't you? = No
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_BILL_CLEFAIRY
+  + FLAG_MAP_LOCAL_BILL_IN_TELEPORTER
+  + seen route_25_sea_cottage.Bill in a muddle
+=== route_25_sea_cottage.Computer
+from the tile read at 4,5 of Route25_SeaCottage
+way -
+  > The screen shows a diagram of the teleporter, with a button marked CELL SEPARATOR.
 === route_29.Lesson
 from the trigger at 666,396 of Johto
 way -
@@ -10064,6 +10397,19 @@ way 0
 way 1, from answer 1
   Fishing Guru> Oh. Well, the fish will still be here if you change your mind.
   ? Would you like a rod of your own? = No
+=== route_4_pokemon_center_1f.MagikarpSalesman
+from Man at 1,3 of Route4_PokemonCenter_1F
+way 0
+  Man> Psst! Got a minute? I've got a very special Pokémon here, a real secret.
+  Man> Just ¥500 and this Magikarp is yours. How about it?
+  > Lucas paid ¥500 and received a Magikarp!
+  Man> Pleasure doing business with you. No refunds, mind!
+  ? Just ¥500 and this Magikarp is yours. How about it? = Yes
+  * fanfare FanfarePokemon
+  + FLAG_BOUGHT_MAGIKARP
+way 1, from answer 1
+  Man> No? Your loss. Pokémon like this don't come along every day.
+  ? Just ¥500 and this Magikarp is yours. How about it? = No
 === sandgem_town.Counterpart
 from {assistant} at 168,845 of Sinnoh
 way -

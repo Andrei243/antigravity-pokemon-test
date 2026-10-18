@@ -59,6 +59,24 @@ partial class Harness
             ("k40_pewter_mart", "PewterCity_Mart", 4, 6, Direction.Up),
             ("k41_pewter_house_1", "PewterCity_House1", 4, 6, Direction.Up),
             ("k42_route3", "Kanto", 125, 78, Direction.Right),
+            // Plan 19 · K4: Route 4, Mt. Moon, Cerulean City and its rooms, Nugget Bridge, Route 25 and Bill's cottage
+            ("k44_route4_mt_moon", "Kanto", 175, 58, Direction.Up),
+            ("k45_route4_center", "Route4_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("k46_mt_moon_1f", "MtMoon_1F", 18, 35, Direction.Up),
+            ("k47_mt_moon_b1f", "MtMoon_B1F", 22, 19, Direction.Down),
+            ("k48_mt_moon_b2f", "MtMoon_B2F", 15, 11, Direction.Left),
+            ("k49_route4_ledges", "Kanto", 215, 60, Direction.Right),
+            ("k50_cerulean_day", "Kanto", 287, 60, Direction.Up),
+            ("k51_cerulean_north", "Kanto", 287, 48, Direction.Up),
+            ("k52_cerulean_gym_outside", "Kanto", 295, 64, Direction.Up),
+            ("k53_cerulean_gym", "CeruleanCity_Gym", 8, 16, Direction.Up),
+            ("k54_cerulean_center", "CeruleanCity_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("k55_cerulean_mart", "CeruleanCity_Mart", 4, 6, Direction.Up),
+            ("k56_cerulean_bike_shop", "CeruleanCity_BikeShop", 5, 7, Direction.Up),
+            ("k57_cerulean_burgled_house", "CeruleanCity_House2", 3, 6, Direction.Up),
+            ("k58_nugget_bridge", "Kanto", 287, 25, Direction.Up),
+            ("k59_route25", "Kanto", 330, 8, Direction.Right),
+            ("k60_sea_cottage", "Route25_SeaCottage", 7, 8, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -74,6 +92,8 @@ partial class Harness
         At("Kanto", 22, 198, Direction.Left); Frames(2); Shot("k31_route22_night");
         At("ViridianForest", 29, 58, Direction.Up); Frames(2); Shot("k32_viridian_forest_night");
         At("Kanto", 70, 80, Direction.Up); Frames(2); Shot("k43_pewter_night");
+        At("Kanto", 287, 60, Direction.Up); Frames(2); Shot("k61_cerulean_night");
+        At("Kanto", 287, 25, Direction.Up); Frames(2); Shot("k62_nugget_bridge_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

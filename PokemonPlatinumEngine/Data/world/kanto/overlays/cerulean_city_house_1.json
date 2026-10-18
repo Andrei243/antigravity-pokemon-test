@@ -1,0 +1,8 @@
+{
+  // A house in Cerulean City (plan 19 · K4)
+  "area": "cerulean_city_house_1",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "gentleman": {"name": "Man", "dialog": ["Every Gym Badge you earn lets your Pokémon do more outside battle, and makes traded ones listen better.", "Collect them all and they'll even let you into the Pokémon League!"]}
+  }
+}

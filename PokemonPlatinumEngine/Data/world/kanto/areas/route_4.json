@@ -1,0 +1,81 @@
+{
+  "key": "route_4",
+  "index": 14,
+  "name": "Route 4",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_4",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Spearow", "level": 10 },
+    { "species": "Rattata", "level": 10 },
+    { "species": "Ekans", "level": 6 },
+    { "species": "Ekans", "level": 10 },
+    { "species": "Spearow", "level": 8 },
+    { "species": "Rattata", "level": 8 },
+    { "species": "Spearow", "level": 12 },
+    { "species": "Rattata", "level": 12 },
+    { "species": "Mankey", "level": 10 },
+    { "species": "Ekans", "level": 8 },
+    { "species": "Mankey", "level": 12 },
+    { "species": "Ekans", "level": 12 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 175, "z": 55, "to": "mt_moon_1f", "toWarp": 3 },
+    { "x": 188, "z": 55, "to": "mt_moon_b1f", "toWarp": 7 },
+    { "x": 168, "z": 55, "to": "route_4_pokemon_center_1f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "woman_1", "looks": "woman_1", "movement": "wander_around", "x": 165, "z": 58, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route4_EventScript_Woman" },
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 231, "z": 53, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_LASS_CRISSY" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 223, "z": 55, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE4_TM05", "item": "TM05", "script": "Route4_EventScript_ItemTM05" },
+    { "id": "boy", "looks": "boy", "movement": "wander_west_and_east", "x": 171, "z": 64, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route4_EventScript_Boy" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_east", "x": 203, "z": 53, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "Route4_EventScript_MegaPunchTutor" },
+    { "id": "black_belt_2", "looks": "black_belt", "movement": "look_west", "x": 206, "z": 53, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "Route4_EventScript_MegaKickTutor" }
+  ],
+  "signs": [
+    { "x": 174, "z": 57, "type": 0, "script": "Route4_EventScript_MtMoonSign" },
+    { "x": 190, "z": 57, "type": 0, "script": "Route4_EventScript_RouteSign" },
+    { "x": 199, "z": 52, "type": 2, "script": "", "item": "Great Ball", "flag": "FLAG_HIDDEN_ITEM_ROUTE4_GREAT_BALL" },
+    { "x": 161, "z": 54, "type": 2, "script": "", "item": "Persim Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE4_PERSIM_BERRY" },
+    { "x": 223, "z": 67, "type": 2, "script": "", "item": "Razz Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE4_RAZZ_BERRY" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,34 @@
+{
+  "key": "cerulean_city_pokemon_center_1f",
+  "index": 275,
+  "name": "Cerulean City",
+  "matrix": 222,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 8, "to": "cerulean_city", "toWarp": 3 },
+    { "x": 7, "z": 8, "to": "cerulean_city", "toWarp": 3 },
+    { "x": 8, "z": 8, "to": "cerulean_city", "toWarp": 3 },
+    { "x": 1, "z": 6, "to": "cerulean_city_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "cerulean_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_south", "x": 12, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_PokemonCenter_1F_EventScript_Gentleman" },
+    { "id": "rocker", "looks": "rocker", "movement": "wander_west_and_east", "x": 5, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_PokemonCenter_1F_EventScript_Rocker" },
+    { "id": "youngster", "looks": "youngster", "movement": "wander_west_and_east", "x": 4, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_PokemonCenter_1F_EventScript_Youngster" },
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 3, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_PokemonCenter_1F_EventScript_Lass" },
+    { "id": "0", "looks": "0", "movement": "invisible", "x": 2, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "CeruleanCity_PokemonCenter_1F_EventScript_PokemonJournalMisty" },
+    { "id": "0_2", "looks": "0", "movement": "invisible", "x": 3, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "CeruleanCity_PokemonCenter_1F_EventScript_PokemonJournalMisty" }
+  ],
+  "signs": [],
+  "triggers": []
+}

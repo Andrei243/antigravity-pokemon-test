@@ -1,0 +1,18 @@
+# A boy trainer of Kanto spots the player (FireRed's MUS_ENCOUNTER_BOY: Youngsters, Bug Catchers, Campers): a
+# jaunty two-bar riff in D that loops until the battle cuts in. Original composition for this game (plan 19 · K4).
+title Eyes Meet! Boy (Kanto)
+tempo 156
+meter 4/4
+reverb 0.2
+
+track lead square vol=0.78 pan=0 rev=0.2
+  L o5 d8 d8 r8 f+8 a8 r8 b8 a8 | o5 g8 f+8 e8 d8 e4 r4 | o5 d8 d8 r8 f+8 a8 r8 o6 d8 c+8 | o5 b8 a8 g8 e8 d4 r4 |
+
+track answer pulse vol=0.38 pan=0.3 rev=0.2
+  L o4 r2 a8 r8 a8 r8 | r2 c+8 r8 c+8 r8 | r2 a8 r8 a8 r8 | r2 f+8 r8 f+8 r8 |
+
+track bass synthbass vol=0.7 rev=0.05
+  L o4 d8 r8 d8 r8 a8 r8 a8 r8 | e8 r8 e8 r8 a8 r8 a8 r8 | d8 r8 d8 r8 a8 r8 a8 r8 | g8 r8 a8 r8 d8 r8 d8 r8 |
+
+track drums kit vol=0.56 rev=0.1
+  v100 L [ b8 h8 s8 h8 b8 h8 s8 h8 | b8 h8 s8 h8 b8 b8 s8 s8 | ]2

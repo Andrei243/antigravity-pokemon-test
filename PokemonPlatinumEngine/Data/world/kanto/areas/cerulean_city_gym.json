@@ -1,0 +1,33 @@
+{
+  "key": "cerulean_city_gym",
+  "index": 277,
+  "name": "Cerulean City",
+  "matrix": 224,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GYM",
+  "nightMusic": "MUS_GYM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 18, "to": "cerulean_city", "toWarp": 4 },
+    { "x": 8, "z": 18, "to": "cerulean_city", "toWarp": 4 },
+    { "x": 9, "z": 18, "to": "cerulean_city", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "swimmer_m_water", "looks": "swimmer_m_water", "movement": "look_west", "x": 10, "z": 12, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_LUIS" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_east", "x": 4, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_PICNICKER_DIANA" },
+    { "id": "misty", "looks": "misty", "movement": "look_south", "x": 8, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_Gym_EventScript_Misty" },
+    { "id": "gym_guy", "looks": "gym_guy", "movement": "look_south", "x": 7, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CeruleanCity_Gym_EventScript_GymGuy" }
+  ],
+  "signs": [
+    { "x": 6, "z": 17, "type": 0, "script": "CeruleanCity_Gym_EventScript_GymStatue" },
+    { "x": 10, "z": 17, "type": 0, "script": "CeruleanCity_Gym_EventScript_GymStatue" }
+  ],
+  "triggers": []
+}

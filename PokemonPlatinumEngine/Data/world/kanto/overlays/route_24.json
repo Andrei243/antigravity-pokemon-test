@@ -1,0 +1,53 @@
+{
+  // Route 24, Nugget Bridge (plan 19 · K4): five trainers across the bridge and Team Rocket's recruiter at its north
+  // end (route_24.txt)
+  "area": "route_24",
+  "bgmTrack": "kanto/route24",
+  "trees": "Round",
+  "triggers": [ { "trigger": 0, "script": "RocketLeft" }, { "trigger": 1, "script": "RocketRight" } ],
+  "people": {
+    "route24_rocket": { "name": "Man", "script": "Rocket", "still": true },
+    "camper": {
+      "name": "Ethan",
+      "trainer": {
+        "dialogueBefore": "Camper Ethan: This is Nugget Bridge! Beat all five of us and you win a prize! I'm the first!",
+        "dialogueAfter": "Camper Ethan: Whoa, that was fast! Four more to go!"
+      }
+    },
+    "lass": {
+      "name": "Reli",
+      "trainer": {
+        "dialogueBefore": "Lass Reli: I'm number two! You won't get past me so easily!",
+        "dialogueAfter": "Lass Reli: Hmph. Go on, then. Number three is waiting."
+      }
+    },
+    "youngster": {
+      "name": "Timmy",
+      "trainer": {
+        "dialogueBefore": "Youngster Timmy: Number three, that's me! Here I come!",
+        "dialogueAfter": "Youngster Timmy: Aww. Only two more for you, I guess."
+      }
+    },
+    "lass_2": {
+      "name": "Ali",
+      "trainer": {
+        "dialogueBefore": "Lass Ali: I'm the fourth! The prize is almost yours, if you can beat me.",
+        "dialogueAfter": "Lass Ali: Hmm, you're good. Just one more trainer left."
+      }
+    },
+    "bug_catcher": {
+      "name": "Cale",
+      "trainer": {
+        "dialogueBefore": "Bug Catcher Cale: Last one! I'm the toughest of all five, so get ready!",
+        "dialogueAfter": "Bug Catcher Cale: You did it! Go and claim your prize up ahead!"
+      }
+    },
+    "camper_2": {
+      "name": "Shane",
+      "trainer": {
+        "dialogueBefore": "Camper Shane: I saw you cross the bridge. Now try getting past me!",
+        "dialogueAfter": "Camper Shane: You really are strong. No wonder you won the prize."
+      }
+    }
+  }
+}

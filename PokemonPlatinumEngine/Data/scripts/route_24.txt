@@ -1,0 +1,46 @@
+# Route 24, Nugget Bridge (plan 19 · K4). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/Route24/scripts.inc).
+#
+# Whoever beats the bridge's five trainers is met at its north end by a man with a Nugget for them, who turns out to
+# be recruiting for Team Rocket. VAR_MAP_SCENE_ROUTE24, as FireRed counts it: 0 until he is beaten (the area's
+# triggers 0 and 1, and the man spoken to), 1 after. Bill's S.S. Ticket takes him off the bridge
+# (FLAG_HIDE_NUGGET_BRIDGE_ROCKET).
+
+
+# The step west of him (trigger 0): he walks up to the player. The step beside him (trigger 1): he turns.
+script RocketLeft
+  walk route24_rocket left 1
+  call Prize
+  end
+
+script RocketRight
+  face route24_rocket left
+  call Prize
+  end
+
+script Rocket
+  face route24_rocket player
+  speaker "Man"
+  if var VAR_MAP_SCENE_ROUTE24 == 1 goto Beaten
+  call Prize
+  end
+label Beaten
+  say "With your talent, you'd climb right to the top of Team Rocket. Think about it!"
+  end
+
+
+script Prize
+  scene "The prize at Nugget Bridge"
+  face player right
+  speaker "Man"
+  say "Congratulations! You beat all five of our trainers. That makes you the winner of the Nugget Bridge challenge!"
+  say "Here's your prize: a solid gold Nugget!"
+  give "Nugget"
+  say "And there's more. How'd you like to join Team Rocket? We're always looking for strong trainers like you."
+  say "What, you won't? Then I'll have to change your mind the hard way!"
+  battle route24_rocket as "kanto_team_rocket_grunt_6"
+  speaker "Man"
+  say "Argh! With a talent like yours, you'd climb right to the top of Team Rocket. Think about it!"
+  setvar VAR_MAP_SCENE_ROUTE24 1
+  endscene
+  return

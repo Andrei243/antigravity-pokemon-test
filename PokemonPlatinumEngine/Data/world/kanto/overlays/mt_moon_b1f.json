@@ -1,0 +1,5 @@
+{
+  // Mt. Moon's middle floor (plan 19 · K4): passages between the first floor and the lowest, nobody in them
+  "area": "mt_moon_b1f",
+  "bgmTrack": "kanto/mt_moon"
+}

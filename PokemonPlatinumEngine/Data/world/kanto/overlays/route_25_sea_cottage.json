@@ -1,0 +1,13 @@
+{
+  // Bill's Sea Cottage (plan 19 · K4): Bill as a Clefairy until the cell separator on the PC sorts him out, then the
+  // S.S. Ticket (route_25_sea_cottage.txt)
+  "area": "route_25_sea_cottage",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "bill_human": { "name": "Bill", "script": "Bill", "still": true },
+    "bill_clefairy": { "name": "Bill", "npcType": "Pokemon", "species": "Clefairy", "script": "Bill", "still": true }
+  },
+  "read": {
+    "Route25_SeaCottage_EventScript_Computer": "Computer"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "key": "mt_moon_b1f",
+  "index": 44,
+  "name": "Mt Moon",
+  "matrix": 8,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_MOON",
+  "nightMusic": "MUS_MT_MOON",
+  "encounters": "mt_moon_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Paras", "level": 7 },
+    { "species": "Paras", "level": 8 },
+    { "species": "Paras", "level": 5 },
+    { "species": "Paras", "level": 6 },
+    { "species": "Paras", "level": 9 },
+    { "species": "Paras", "level": 10 },
+    { "species": "Paras", "level": 7 },
+    { "species": "Paras", "level": 8 },
+    { "species": "Paras", "level": 5 },
+    { "species": "Paras", "level": 6 },
+    { "species": "Paras", "level": 9 },
+    { "species": "Paras", "level": 10 }
+  ],
+  "landRate": 5,
+  "warps": [
+    { "x": 3, "z": 3, "to": "mt_moon_1f", "toWarp": 0 },
+    { "x": 25, "z": 4, "to": "mt_moon_1f", "toWarp": 1 },
+    { "x": 43, "z": 21, "to": "mt_moon_1f", "toWarp": 2 },
+    { "x": 22, "z": 18, "to": "mt_moon_b2f", "toWarp": 0 },
+    { "x": 17, "z": 5, "to": "mt_moon_b2f", "toWarp": 1 },
+    { "x": 26, "z": 36, "to": "mt_moon_b2f", "toWarp": 2 },
+    { "x": 39, "z": 4, "to": "mt_moon_b2f", "toWarp": 3 },
+    { "x": 45, "z": 4, "to": "route_4", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 46, "z": 2, "type": 2, "script": "", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM" },
+    { "x": 26, "z": 2, "type": 2, "script": "", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM_2" },
+    { "x": 39, "z": 34, "type": 2, "script": "", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_MT_MOON_B1F_TINY_MUSHROOM_3" },
+    { "x": 24, "z": 35, "type": 2, "script": "", "item": "Big Mushroom", "flag": "FLAG_HIDDEN_ITEM_MT_MOON_B1F_BIG_MUSHROOM" },
+    { "x": 6, "z": 12, "type": 2, "script": "", "item": "Big Mushroom", "flag": "FLAG_HIDDEN_ITEM_MT_MOON_B1F_BIG_MUSHROOM_2" },
+    { "x": 25, "z": 34, "type": 2, "script": "", "item": "Big Mushroom", "flag": "FLAG_HIDDEN_ITEM_MT_MOON_B1F_BIG_MUSHROOM_3" }
+  ],
+  "triggers": []
+}
