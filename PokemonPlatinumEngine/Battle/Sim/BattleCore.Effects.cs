@@ -747,6 +747,8 @@ public sealed partial class BattleCore
         {
             Field.TrickRoomTurns = 5;
             Say(Text.Of("battle.twistedTheDimensions", ("user", use.User.Name))).With(new FieldConditionChanged(FieldCondition.TrickRoom, Up: true));
+            // Room Service answers it (plan 06 · R28a)
+            RoomServiceAnswers();
         }
         orderChanged = true;
     }
@@ -1206,6 +1208,7 @@ public sealed partial class BattleCore
         if (!hit.Touched || !t.IsActive || t.Volatile.BindTurns > 0) return;
         t.Volatile.BindTurns = BattleEffects.Of(use.User).Any(e => e.BindsToTheEnd) ? Rules.GripClawBindTurns : Lasting(Rules.BindTurns);
         t.Volatile.BoundBy = use.User.Place;
+        t.Volatile.BindDivisor = BindDivisorOf(use.User);
         t.Volatile.BindingMove = use.Data.Name;
         Say(Text.Of("battle.wasCaughtIn", ("target", t.Name), ("user", use.User.Name), ("move", use.Data.DisplayName)));
     }

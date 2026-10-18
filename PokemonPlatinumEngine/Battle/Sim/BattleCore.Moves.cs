@@ -188,10 +188,16 @@ public sealed partial class BattleCore
         if (failed) failedOnTurn[user.Pokemon!] = Turn;
         failedNow = false;
         lastMoveShown = move.Data;
-        if (!wentOn) yield break;
+        if (!wentOn)
+        {
+            ForgetItemsAfterTheMove();
+            yield break;
+        }
         // A dance danced again, and whoever the move sent running (plan 06 · R27b)
         if (!failed) Dance(use);
         foreach (var request in EmergencyExits(use)) yield return request;
+        // What the later held items do once the move is done (plan 06 · R28a): Red Card, Eject Button, Eject Pack and the rest
+        foreach (var request in ItemsAfterTheMove(use)) yield return request;
         foreach (var request in Leave(use)) yield return request;
     }
 
@@ -214,6 +220,8 @@ public sealed partial class BattleCore
         use.Move = move = Electrified(user, move);
         // The later abilities' say on the move (plan 06 · R27): its type, its touch, its side effects, Protean
         ShapedByAbility(use);
+        // And the later held items' (plan 06 · R28a): a Punching Glove's or Protective Pads' touch
+        ShapedByItem(use);
         move = use.Move;
 
         // Aegislash draws or sheathes its blade before the move (plan 06 · R19b)
@@ -1019,6 +1027,8 @@ public sealed partial class BattleCore
         }
         else
         {
+            // A Gem of the move's type goes off as its first hit is worked out (plan 06 · R28a)
+            GemGoesOff(use);
             result = DamageCalculator.Calculate(user, t, move, rng, spread: use.Targets.Count > 1 && !StrikesEachAlone(use.Data), rules: Rules,
                 powerTenths: effect.PowerTenths(this, use, t), critBonus: effect.CritBonus, pastScreens: effect.PastScreens,
                 // (a Terastallized user's weak move of its Tera Type hits as 60: plan 06 · R23)
@@ -1397,7 +1407,9 @@ public sealed partial class BattleCore
         if (Reaches(use, target, hit))
         {
             // From Generation 6 powders and spores do nothing to a Grass type
-            if (!Rules.GrassTypesIgnorePowder || !use.Data.Flags.HasFlag(MoveFlags.Powder) || !target.HasType(PokemonType.Grass)) return true;
+            // (and Safety Goggles keep them off whoever wears them: plan 06 · R28a)
+            bool powder = use.Data.Flags.HasFlag(MoveFlags.Powder);
+            if (!powder || !((Rules.GrassTypesIgnorePowder && target.HasType(PokemonType.Grass)) || BattleEffects.HoldEffectOf(target) == "SafetyGoggles")) return true;
             Say(Text.Of("battle.itDoesntAffect", ("target", target.Name)));
             return false;
         }

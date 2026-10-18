@@ -463,6 +463,13 @@ internal sealed class Volatiles
 
     /// <summary>Commander: the Tatsugiri is in its Dondozo's mouth (the Dondozo's place), and the Dondozo is commanded by it (the Tatsugiri's place).</summary>
     public Place? Commanding, CommandedBy;
+    // ---- The later held items (plan 06 · R28a)
+
+    /// <summary>Booster Energy has set its Protosynthesis or Quark Drive going for as long as it stays in.</summary>
+    public bool BoosterEnergy;
+
+    /// <summary>What a binding move takes of it at each turn's end, as a share of its HP: six from a Binding Band in the binder's hands, nought for the rules' own.</summary>
+    public int BindDivisor;
 
     public Volatiles Copy() => (Volatiles)MemberwiseClone();
 
@@ -601,6 +608,9 @@ internal sealed class TurnFlags
     /// Bond's second (a quarter as strong).
     /// </summary>
     public bool AteBoosted, SheerForced, ParentalChild;
+
+    /// <summary>A Gem went off for the move it is using (plan 06 · R28a): its power is 5325/4096 of itself.</summary>
+    public bool GemBoosted;
 
     public void Took(Place from, MoveCategory category, int damage)
     {

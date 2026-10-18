@@ -574,7 +574,7 @@ internal static partial class LaterAbilities
             "Protosynthesis" => field.WeatherInEffect is BattleWeather.Sun or BattleWeather.HarshSun,
             "Quark Drive" => field.Has(FieldCondition.ElectricTerrain),
             _ => false
-        };
+        } || (b.Volatile.BoosterEnergy && ability is "Protosynthesis" or "Quark Drive");
         if (!on)
         {
             b.Volatile.ParadoxBest = null;

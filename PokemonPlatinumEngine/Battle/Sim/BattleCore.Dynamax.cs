@@ -481,6 +481,7 @@ public sealed partial class BattleCore
                 {
                     t.Volatile.BindTurns = BattleEffects.Of(user).Any(e => e.BindsToTheEnd) ? Rules.GripClawBindTurns : Lasting(Rules.BindTurns);
                     t.Volatile.BoundBy = user.Place;
+                    t.Volatile.BindDivisor = BindDivisorOf(user);
                     t.Volatile.BindingMove = use.Data.Name;
                     Say(Text.Of("battle.wasCaughtIn", ("target", t.Name), ("user", user.Name), ("move", use.Data.DisplayName)));
                 }

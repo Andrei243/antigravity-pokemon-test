@@ -1,0 +1,109 @@
+using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
+
+namespace DataImporter;
+
+// The later games' held items, medicine and balls (plan 06 · R28a). PokeAPI says nothing of what a later item does in a
+// battle and Pokémon Showdown says it in code, so each later item that does something while held is given a hold
+// effect of our own here (the item's Showdown id written out, Platinum's style: "WeaknessPolicy", "GemFire"), and the
+// engine's table (Battle/Effects/HeldItemEffects.Later.cs) runs it by that name as it runs Platinum's. A later medicine
+// is given the use parameters Platinum's medicine has (Models/ItemUse.cs, BattleCore.Items.cs), and a Showdown item its
+// Fling power. docs/mechanics/rulings.md, "The later games' held items, medicine and balls", has the rulings.
+public sealed partial class Importer
+{
+    /// <summary>
+    /// The Johto balls of HeartGold and SoulSilver (generation 4, but not Platinum's) and the Park Ball, brought in by
+    /// name since PokeAPI keeps them in a category of their own (plan 06 · R28a). Johto's Heavy Ball comes before
+    /// Legends: Arceus's of the same name, which is left out.
+    /// </summary>
+    private static readonly string[] JohtoBalls =
+        { "lure-ball", "level-ball", "moon-ball", "heavy-ball", "fast-ball", "friend-ball", "love-ball", "park-ball", "sport-ball" };
+
+    private static bool JohtoBall(string identifier, out ItemPocket pocket)
+    {
+        pocket = ItemPocket.PokeBalls;
+        return JohtoBalls.Contains(identifier);
+    }
+
+    /// <summary>Each later item's hold effect and its number (a Gem's and a plate's power in a hundred more, a Rocky Helmet's share of HP).</summary>
+    private static readonly Dictionary<string, (string Hold, int Param)> LaterHoldEffects = new()
+    {
+        // Generation 5
+        ["Eviolite"] = ("Eviolite", 50), ["Float Stone"] = ("FloatStone", 50), ["Rocky Helmet"] = ("RockyHelmet", 6),
+        ["Air Balloon"] = ("AirBalloon", 0), ["Red Card"] = ("RedCard", 0), ["Ring Target"] = ("RingTarget", 0),
+        ["Binding Band"] = ("BindingBand", 6), ["Absorb Bulb"] = ("AbsorbBulb", 1), ["Cell Battery"] = ("CellBattery", 1),
+        ["Eject Button"] = ("EjectButton", 0),
+        ["Douse Drive"] = ("DriveWater", 0), ["Shock Drive"] = ("DriveElectric", 0), ["Burn Drive"] = ("DriveFire", 0), ["Chill Drive"] = ("DriveIce", 0),
+        // Generation 6
+        ["Weakness Policy"] = ("WeaknessPolicy", 2), ["Assault Vest"] = ("AssaultVest", 50), ["Pixie Plate"] = ("ArceusFairy", 20),
+        ["Luminous Moss"] = ("LuminousMoss", 1), ["Snowball"] = ("Snowball", 1), ["Safety Goggles"] = ("SafetyGoggles", 0),
+        ["Roseli Berry"] = ("WeakenSeFairy", 0), ["Kee Berry"] = ("KeeBerry", 1), ["Maranga Berry"] = ("MarangaBerry", 1),
+        // Generation 7
+        ["Adrenaline Orb"] = ("AdrenalineOrb", 1), ["Terrain Extender"] = ("TerrainExtender", 3), ["Protective Pads"] = ("ProtectivePads", 0),
+        ["Electric Seed"] = ("ElectricSeed", 1), ["Psychic Seed"] = ("PsychicSeed", 1), ["Misty Seed"] = ("MistySeed", 1), ["Grassy Seed"] = ("GrassySeed", 1),
+        // Generation 8
+        ["Throat Spray"] = ("ThroatSpray", 1), ["Eject Pack"] = ("EjectPack", 0), ["Heavy-Duty Boots"] = ("HeavyDutyBoots", 0),
+        ["Blunder Policy"] = ("BlunderPolicy", 2), ["Room Service"] = ("RoomService", 1), ["Utility Umbrella"] = ("UtilityUmbrella", 0),
+        // Generation 9
+        ["Booster Energy"] = ("BoosterEnergy", 0), ["Ability Shield"] = ("AbilityShield", 0), ["Clear Amulet"] = ("ClearAmulet", 0),
+        ["Mirror Herb"] = ("MirrorHerb", 0), ["Punching Glove"] = ("PunchingGlove", 10), ["Covert Cloak"] = ("CovertCloak", 0),
+        ["Loaded Dice"] = ("LoadedDice", 0), ["Fairy Feather"] = ("StrengthenFairy", 20),
+    };
+
+    private static readonly string[] GemTypes =
+        { "Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy" };
+
+    private static readonly string[] MemoryTypes =
+        { "Fire", "Water", "Electric", "Grass", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy" };
+
+    /// <summary>
+    /// The later medicine and battle items the bag uses in a battle: their use parameters as Platinum's would have them
+    /// (a Sweet Heart as a Potion's 20 HP, the regions' sweets as a Full Heal, Max Honey as a Max Revive, Max Mushrooms
+    /// as the five X items at once).
+    /// </summary>
+    private static readonly Dictionary<string, (string Pocket, Dictionary<string, int> Use)> LaterUses = new()
+    {
+        ["Sweet Heart"] = ("RecoverHp", new() { ["hpRestored"] = 20 }),
+        ["Casteliacone"] = ("RecoverStatus", FullHeal()), ["Lumiose Galette"] = ("RecoverStatus", FullHeal()),
+        ["Shalour Sable"] = ("RecoverStatus", FullHeal()), ["Big Malasada"] = ("RecoverStatus", FullHeal()),
+        ["Pewter Crunchies"] = ("RecoverStatus", FullHeal()),
+        ["Max Honey"] = ("RecoverStatus", new() { ["revive"] = 1, ["hpRestored"] = -1 }),
+        ["Max Mushrooms"] = ("BattleItems", new() { ["atkStages"] = 1, ["defStages"] = 1, ["speedStages"] = 1, ["spatkStages"] = 1, ["spdefStages"] = 1 }),
+    };
+
+    private static Dictionary<string, int> FullHeal() => new()
+    {
+        ["healSleep"] = 1, ["healPoison"] = 1, ["healBurn"] = 1, ["healFreeze"] = 1, ["healParalysis"] = 1, ["healConfusion"] = 1
+    };
+
+    /// <summary>
+    /// Gives the later items what they do (plan 06 · R28a): a hold effect to each that does something held, the use
+    /// parameters to the later medicine, and Fling's power from Showdown to every later item that has one.
+    /// </summary>
+    public void AddLaterItemEffects(List<ItemData> items, Showdown showdown)
+    {
+        var holds = new Dictionary<string, (string Hold, int Param)>(LaterHoldEffects);
+        foreach (var type in GemTypes) holds[$"{type} Gem"] = ($"Gem{type}", 30);
+        foreach (var type in MemoryTypes) holds[$"{type} Memory"] = ($"Memory{type}", 0);
+        var fling = showdown.Items.Where(e => e.Text("isNonstandard") != "CAP" && Showdown.Block(e.Body, "fling") != null)
+            .GroupBy(e => e.Name, StringComparer.OrdinalIgnoreCase)
+            .ToDictionary(g => g.Key, g => Showdown.Inner(Showdown.Block(g.First().Body, "fling"), "basePower") ?? 0, StringComparer.OrdinalIgnoreCase);
+
+        foreach (var item in items.Where(i => i.Id >= 1000 && i.Id < 9000))
+        {
+            if (holds.TryGetValue(item.Name, out var hold))
+            {
+                item.HoldEffect = hold.Hold;
+                item.HoldParam = hold.Param;
+            }
+            if (LaterUses.TryGetValue(item.Name, out var use))
+            {
+                item.Use = new Dictionary<string, int>(use.Use);
+                item.BattlePocket = use.Pocket;
+                item.BattleUse = use.Pocket == "BattleItems" ? null : "Healing";
+                if (item.Pocket == ItemPocket.Medicine) item.FieldUse = "Healing";
+            }
+            if (item.FlingPower == 0 && fling.TryGetValue(item.Name, out int power)) item.FlingPower = power;
+        }
+    }
+}

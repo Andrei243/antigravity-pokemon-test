@@ -54,6 +54,8 @@ public sealed partial class BattleCore
             if (!breaks && GuardDogStands(target, source!, stat, how)) return false;
             // Flower Veil keeps it off a Grass type of its side (plan 06 · R27b)
             if (!breaks && FlowerVeiled(target, announceFailure)) return false;
+            // A Clear Amulet keeps it off (plan 06 · R28a)
+            if (ClearAmuletKeeps(target, announceFailure)) return false;
         }
         // A berry eaten with Ripen raises twice as much (plan 06 · R27b)
         if (source == target && amount > 0) amount = Ripened(target, amount);
@@ -84,6 +86,8 @@ public sealed partial class BattleCore
         // Rattled answers an Intimidate, and Opportunist copies a foe's rise (plan 06 · R27b)
         if (next < current) RattledByIntimidate(target, source, stat, how);
         else Opportunism(target, stat, next - current);
+        // An Eject Pack and a Mirror Herb take note, for the move's end (plan 06 · R28a)
+        StagesNoted(target, stat, next - current);
         return true;
     }
 

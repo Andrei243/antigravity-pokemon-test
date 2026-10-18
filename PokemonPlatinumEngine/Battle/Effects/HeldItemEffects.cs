@@ -23,7 +23,7 @@ namespace PokemonPlatinumEngine.Battle.Effects;
 /// the rule it belongs to. Those items have a <see cref="Plain"/> entry, which says what the rules may ask of it.
 /// </para>
 /// </summary>
-public static class HeldItemEffects
+public static partial class HeldItemEffects
 {
     /// <summary>Hold effects the battle's own rules ask for by name, as <c>items.json</c> names them.</summary>
     public const string ExpShare = "ExpShare", ExpUp = "ExpUp", MoneyUp = "MoneyUp", EncountersDown = "EncountersDown";

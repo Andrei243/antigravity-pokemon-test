@@ -115,6 +115,8 @@ public static partial class DamageCalculator
                 if (type == PokemonType.Ghost && move.Type is PokemonType.Normal or PokemonType.Fighting && seesGhosts) continue;
                 if (type == PokemonType.Flying && move.Type == PokemonType.Ground && IsHeldDown(defender)) continue;
                 if (type == PokemonType.Dark && move.Type == PokemonType.Psychic && defender.Volatile.MiracleEye) continue;
+                // A Ring Target takes its holder's type immunities away (plan 06 · R28a; Showdown's ringtarget onNegateImmunity)
+                if (BattleEffects.HoldEffectOf(defender) == "RingTarget") continue;
             }
             // The strong winds take the Flying type's weaknesses away (plan 06 · R19b; Showdown's deltastream onEffectiveness)
             if (type == PokemonType.Flying && multiplier > 1f && defender.Field?.SkyInEffect == BattleWeather.StrongWinds) multiplier = 1f;

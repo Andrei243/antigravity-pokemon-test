@@ -189,6 +189,8 @@ public sealed partial class BattleCore
     {
         // (Heavy Metal and Light Metal first: plan 06 · R27)
         float kg = AbilityWeight(b, b.Pokemon!.Weight);
+        // A Float Stone halves it (plan 06 · R28a; Showdown's floatstone onModifyWeight)
+        if (BattleEffects.HoldEffectOf(b) == "FloatStone") kg /= 2f;
         if (b.Volatile.Autotomized == 0) return kg;
         return Math.Max(0.1f, kg - 100f * b.Volatile.Autotomized);
     }

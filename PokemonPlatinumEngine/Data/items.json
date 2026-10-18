@@ -7301,6 +7301,105 @@
     "cantBeTossed": true
   },
   {
+    "id": 1449,
+    "name": "Lure Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 0,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "Catches a Pokémon hooked on a rod four times as easily."
+  },
+  {
+    "id": 1450,
+    "name": "Level Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 0,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "The further your Pokémon's level is above the target's, the easier the catch."
+  },
+  {
+    "id": 1451,
+    "name": "Moon Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 0,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "Catches Pokémon that evolve with a Moon Stone four times as easily."
+  },
+  {
+    "id": 1452,
+    "name": "Heavy Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 0,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "The heavier the Pokémon, the easier it is to catch."
+  },
+  {
+    "id": 1453,
+    "name": "Fast Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 0,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "Catches Pokémon with a base Speed of 100 or more four times as easily."
+  },
+  {
+    "id": 1454,
+    "name": "Friend Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 0,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "A Pokémon caught in it is very friendly from the start."
+  },
+  {
+    "id": 1455,
+    "name": "Love Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 0,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "Catches a Pokémon of your own Pokémon's species and the other gender eight times as easily."
+  },
+  {
+    "id": 1456,
+    "name": "Park Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 0,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "A Poké Ball that never fails. It belongs to the Pal Park."
+  },
+  {
+    "id": 1457,
+    "name": "Sport Ball",
+    "pocket": "PokeBalls",
+    "effectType": "CatchPokemon",
+    "effectValue": 10,
+    "price": 300,
+    "canUseInBattle": true,
+    "canUseInOverworld": false,
+    "description": "A Poké Ball made for catching contests. It catches 1.5 times as easily."
+  },
+  {
     "id": 1467,
     "name": "Red Orb",
     "pocket": "Items",
@@ -7331,7 +7430,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Grants Genesect a blue, Water-type Techno Blast."
+    "description": "Grants Genesect a blue, Water-type Techno Blast.",
+    "holdEffect": "DriveWater"
   },
   {
     "id": 1564,
@@ -7342,7 +7442,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Grants Genesect a yellow, Electric-type Techno Blast."
+    "description": "Grants Genesect a yellow, Electric-type Techno Blast.",
+    "holdEffect": "DriveElectric"
   },
   {
     "id": 1565,
@@ -7353,7 +7454,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Grants Genesect a red, Fire-type Techno Blast."
+    "description": "Grants Genesect a red, Fire-type Techno Blast.",
+    "holdEffect": "DriveFire"
   },
   {
     "id": 1566,
@@ -7364,7 +7466,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Grants Genesect a white, Ice-type Techno Blast."
+    "description": "Grants Genesect a white, Ice-type Techno Blast.",
+    "holdEffect": "DriveIce"
   },
   {
     "id": 1567,
@@ -7375,7 +7478,13 @@
     "price": 3000,
     "canUseInBattle": true,
     "canUseInOverworld": true,
-    "description": "Restores 20 HP."
+    "description": "Restores 20 HP.",
+    "fieldUse": "Healing",
+    "battleUse": "Healing",
+    "battlePocket": "RecoverHp",
+    "use": {
+      "hpRestored": 20
+    }
   },
   {
     "id": 1580,
@@ -7386,7 +7495,8 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Traded on a Feebas: Holder evolves into Milotic."
+    "description": "Traded on a Feebas: Holder evolves into Milotic.",
+    "flingPower": 30
   },
   {
     "id": 1581,
@@ -7397,7 +7507,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Holder has 1.5× Defense and Special Defense, as long as it's not fully evolved."
+    "description": "Held: Holder has 1.5× Defense and Special Defense, as long as it's not fully evolved.",
+    "holdEffect": "Eviolite",
+    "holdParam": 50,
+    "flingPower": 40
   },
   {
     "id": 1582,
@@ -7408,7 +7521,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Holder has 0.5× weight."
+    "description": "Held: Holder has 0.5× weight.",
+    "holdEffect": "FloatStone",
+    "holdParam": 50,
+    "flingPower": 30
   },
   {
     "id": 1583,
@@ -7419,7 +7535,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder is hit by a contact move, the attacking Pokémon takes 1/6 its max HP in damage."
+    "description": "Held: When the holder is hit by a contact move, the attacking Pokémon takes 1/6 its max HP in damage.",
+    "holdEffect": "RockyHelmet",
+    "holdParam": 6,
+    "flingPower": 60
   },
   {
     "id": 1584,
@@ -7430,7 +7549,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Grants immunity to Ground-type moves, Spikes, and Toxic Spikes. Consumed when the holder takes damage from a move."
+    "description": "Held: Grants immunity to Ground-type moves, Spikes, and Toxic Spikes. Consumed when the holder takes damage from a move.",
+    "holdEffect": "AirBalloon",
+    "flingPower": 10
   },
   {
     "id": 1585,
@@ -7441,7 +7562,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder takes damage from a move, the opponent switches out for another random party Pokémon. Consumed after use."
+    "description": "Held: When the holder takes damage from a move, the opponent switches out for another random party Pokémon. Consumed after use.",
+    "holdEffect": "RedCard",
+    "flingPower": 10
   },
   {
     "id": 1586,
@@ -7452,7 +7575,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Negates the holder's type immunities. Ability immunities are not removed."
+    "description": "Held: Negates the holder's type immunities. Ability immunities are not removed.",
+    "holdEffect": "RingTarget",
+    "flingPower": 10
   },
   {
     "id": 1587,
@@ -7463,7 +7588,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Doubles the per-turn damage of multi-turn trapping moves."
+    "description": "Held: Doubles the per-turn damage of multi-turn trapping moves.",
+    "holdEffect": "BindingBand",
+    "holdParam": 6,
+    "flingPower": 30
   },
   {
     "id": 1588,
@@ -7474,7 +7602,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Raises the holder's Special Attack by one stage when it takes Water-type damage."
+    "description": "Held: Raises the holder's Special Attack by one stage when it takes Water-type damage.",
+    "holdEffect": "AbsorbBulb",
+    "holdParam": 1,
+    "flingPower": 30
   },
   {
     "id": 1589,
@@ -7485,7 +7616,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Raises the holder's Attack by one stage when it takes Electric-type damage."
+    "description": "Held: Raises the holder's Attack by one stage when it takes Electric-type damage.",
+    "holdEffect": "CellBattery",
+    "holdParam": 1,
+    "flingPower": 30
   },
   {
     "id": 1590,
@@ -7496,7 +7630,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder takes damage from a move, it switches out for a party Pokémon of the Trainer's choice."
+    "description": "Held: When the holder takes damage from a move, it switches out for a party Pokémon of the Trainer's choice.",
+    "holdEffect": "EjectButton",
+    "flingPower": 30
   },
   {
     "id": 1591,
@@ -7507,7 +7643,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Fire-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Fire-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemFire",
+    "holdParam": 30
   },
   {
     "id": 1592,
@@ -7518,7 +7656,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Water-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Water-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemWater",
+    "holdParam": 30
   },
   {
     "id": 1593,
@@ -7529,7 +7669,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Electric-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Electric-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemElectric",
+    "holdParam": 30
   },
   {
     "id": 1594,
@@ -7540,7 +7682,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Grass-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Grass-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemGrass",
+    "holdParam": 30
   },
   {
     "id": 1595,
@@ -7551,7 +7695,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Ice-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Ice-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemIce",
+    "holdParam": 30
   },
   {
     "id": 1596,
@@ -7562,7 +7708,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Fighting-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Fighting-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemFighting",
+    "holdParam": 30
   },
   {
     "id": 1597,
@@ -7573,7 +7721,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Poison-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Poison-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemPoison",
+    "holdParam": 30
   },
   {
     "id": 1598,
@@ -7584,7 +7734,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Ground-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Ground-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemGround",
+    "holdParam": 30
   },
   {
     "id": 1599,
@@ -7595,7 +7747,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Flying-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Flying-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemFlying",
+    "holdParam": 30
   },
   {
     "id": 1600,
@@ -7606,7 +7760,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Psychic-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Psychic-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemPsychic",
+    "holdParam": 30
   },
   {
     "id": 1601,
@@ -7617,7 +7773,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Bug-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Bug-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemBug",
+    "holdParam": 30
   },
   {
     "id": 1602,
@@ -7628,7 +7786,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Rock-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Rock-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemRock",
+    "holdParam": 30
   },
   {
     "id": 1603,
@@ -7639,7 +7799,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Ghost-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Ghost-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemGhost",
+    "holdParam": 30
   },
   {
     "id": 1604,
@@ -7650,7 +7812,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Dark-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Dark-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemDark",
+    "holdParam": 30
   },
   {
     "id": 1605,
@@ -7661,7 +7825,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Steel-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Steel-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemSteel",
+    "holdParam": 30
   },
   {
     "id": 1606,
@@ -7760,7 +7926,18 @@
     "price": 350,
     "canUseInBattle": true,
     "canUseInOverworld": true,
-    "description": "Cures any status ailment and confusion."
+    "description": "Cures any status ailment and confusion.",
+    "fieldUse": "Healing",
+    "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
+    "use": {
+      "healSleep": 1,
+      "healPoison": 1,
+      "healBurn": 1,
+      "healFreeze": 1,
+      "healParalysis": 1,
+      "healConfusion": 1
+    }
   },
   {
     "id": 1668,
@@ -7771,7 +7948,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Dragon-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Dragon-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemDragon",
+    "holdParam": 30
   },
   {
     "id": 1669,
@@ -7782,7 +7961,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Normal-type move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Normal-type move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemNormal",
+    "holdParam": 30
   },
   {
     "id": 1682,
@@ -7793,7 +7974,10 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder is hit by a super effective move, its Attack and Special Attack raise by two stages."
+    "description": "Held: When the holder is hit by a super effective move, its Attack and Special Attack raise by two stages.",
+    "holdEffect": "WeaknessPolicy",
+    "holdParam": 2,
+    "flingPower": 80
   },
   {
     "id": 1683,
@@ -7804,7 +7988,10 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Raises the holder's Special Defense to 1.5×. Prevents the holder from selecting a status move."
+    "description": "Raises the holder's Special Defense to 1.5×. Prevents the holder from selecting a status move.",
+    "holdEffect": "AssaultVest",
+    "holdParam": 50,
+    "flingPower": 80
   },
   {
     "id": 1684,
@@ -7815,7 +8002,9 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Fairy-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Fairy."
+    "description": "Held: Fairy-Type moves from holder do 20% more damage. Changes Arceus's and Judgment's type to Fairy.",
+    "holdEffect": "ArceusFairy",
+    "holdParam": 20
   },
   {
     "id": 1685,
@@ -7837,7 +8026,8 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Traded on a Swirlix: Holder evolves into Slurpuff."
+    "description": "Traded on a Swirlix: Holder evolves into Slurpuff.",
+    "flingPower": 80
   },
   {
     "id": 1687,
@@ -7848,7 +8038,8 @@
     "price": 2000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Traded on a Spritzee: Holder evolves into Aromatisse."
+    "description": "Traded on a Spritzee: Holder evolves into Aromatisse.",
+    "flingPower": 80
   },
   {
     "id": 1688,
@@ -7859,7 +8050,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: If the holder is hit by a damaging Water move, raises its Special Defense by one stage."
+    "description": "Held: If the holder is hit by a damaging Water move, raises its Special Defense by one stage.",
+    "holdEffect": "LuminousMoss",
+    "holdParam": 1,
+    "flingPower": 30
   },
   {
     "id": 1689,
@@ -7870,7 +8064,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: If the holder is hit by a damaging Ice move, raises its Attack by one stage."
+    "description": "Held: If the holder is hit by a damaging Ice move, raises its Attack by one stage.",
+    "holdEffect": "Snowball",
+    "holdParam": 1,
+    "flingPower": 30
   },
   {
     "id": 1690,
@@ -7881,7 +8078,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Prevents damage from powder moves and the damage from Hail and Sandstorm."
+    "description": "Held: Prevents damage from powder moves and the damage from Hail and Sandstorm.",
+    "holdEffect": "SafetyGoggles",
+    "flingPower": 80
   },
   {
     "id": 1695,
@@ -8312,7 +8511,8 @@
     "price": 80,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Consumed when struck by a super-effective Fairy-type attack to halve the damage."
+    "description": "Held: Consumed when struck by a super-effective Fairy-type attack to halve the damage.",
+    "holdEffect": "WeakenSeFairy"
   },
   {
     "id": 1724,
@@ -8323,7 +8523,9 @@
     "price": 80,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder is hit by a physical move, increases its Defense by one stage."
+    "description": "Held: When the holder is hit by a physical move, increases its Defense by one stage.",
+    "holdEffect": "KeeBerry",
+    "holdParam": 1
   },
   {
     "id": 1725,
@@ -8334,7 +8536,9 @@
     "price": 80,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder is hit by a special move, increases its Special Defense by one stage."
+    "description": "Held: When the holder is hit by a special move, increases its Special Defense by one stage.",
+    "holdEffect": "MarangaBerry",
+    "holdParam": 1
   },
   {
     "id": 1728,
@@ -8345,7 +8549,18 @@
     "price": 350,
     "canUseInBattle": true,
     "canUseInOverworld": true,
-    "description": "Cures all major status ailments and confusion."
+    "description": "Cures all major status ailments and confusion.",
+    "fieldUse": "Healing",
+    "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
+    "use": {
+      "healSleep": 1,
+      "healPoison": 1,
+      "healBurn": 1,
+      "healFreeze": 1,
+      "healParalysis": 1,
+      "healConfusion": 1
+    }
   },
   {
     "id": 1731,
@@ -8356,7 +8571,9 @@
     "price": 200,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: When the holder uses a damaging Fairy move, the move has 1.5× power and this item is consumed."
+    "description": "Held: When the holder uses a damaging Fairy move, the move has 1.5× power and this item is consumed.",
+    "holdEffect": "GemFairy",
+    "holdParam": 30
   },
   {
     "id": 1760,
@@ -8397,7 +8614,18 @@
     "price": 350,
     "canUseInBattle": true,
     "canUseInOverworld": true,
-    "description": "Cures any major status ailment and confusion."
+    "description": "Cures any major status ailment and confusion.",
+    "fieldUse": "Healing",
+    "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
+    "use": {
+      "healSleep": 1,
+      "healPoison": 1,
+      "healBurn": 1,
+      "healFreeze": 1,
+      "healParalysis": 1,
+      "healConfusion": 1
+    }
   },
   {
     "id": 1793,
@@ -9144,7 +9372,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Makes wild Pokémon more likely to summon allies. Held: increases the holder's Speed by one stage when affected by Intimidate."
+    "description": "Makes wild Pokémon more likely to summon allies. Held: increases the holder's Speed by one stage when affected by Intimidate.",
+    "holdEffect": "AdrenalineOrb",
+    "holdParam": 1,
+    "flingPower": 30
   },
   {
     "id": 1885,
@@ -9155,7 +9386,8 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": "Evolves an Alola Sandshrew into Alola Sandslash or an Alola Vulpix into Alola Ninetales."
+    "description": "Evolves an Alola Sandshrew into Alola Sandslash or an Alola Vulpix into Alola Ninetales.",
+    "flingPower": 30
   },
   {
     "id": 1887,
@@ -9177,7 +9409,18 @@
     "price": 350,
     "canUseInBattle": true,
     "canUseInOverworld": true,
-    "description": "Cures major status ailments and confusion."
+    "description": "Cures major status ailments and confusion.",
+    "fieldUse": "Healing",
+    "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
+    "use": {
+      "healSleep": 1,
+      "healPoison": 1,
+      "healBurn": 1,
+      "healFreeze": 1,
+      "healParalysis": 1,
+      "healConfusion": 1
+    }
   },
   {
     "id": 1889,
@@ -9232,7 +9475,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Extends the holder's Terrain effects to 8 turns."
+    "description": "Held: Extends the holder's Terrain effects to 8 turns.",
+    "holdEffect": "TerrainExtender",
+    "holdParam": 3,
+    "flingPower": 60
   },
   {
     "id": 1897,
@@ -9243,7 +9489,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Prevents side effects of contact moves used on the holder."
+    "description": "Held: Prevents side effects of contact moves used on the holder.",
+    "holdEffect": "ProtectivePads",
+    "flingPower": 30
   },
   {
     "id": 1898,
@@ -9254,7 +9502,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Consumed on Electric Terrain and raises the holder's Defense by one stage."
+    "description": "Held: Consumed on Electric Terrain and raises the holder's Defense by one stage.",
+    "holdEffect": "ElectricSeed",
+    "holdParam": 1,
+    "flingPower": 10
   },
   {
     "id": 1899,
@@ -9265,7 +9516,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Consumed on Psychic Terrain and raises the holder's Special Defense by one stage."
+    "description": "Held: Consumed on Psychic Terrain and raises the holder's Special Defense by one stage.",
+    "holdEffect": "PsychicSeed",
+    "holdParam": 1,
+    "flingPower": 10
   },
   {
     "id": 1900,
@@ -9276,7 +9530,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Consumed on Misty Terrain and raises the holder's Special Defense by one stage."
+    "description": "Held: Consumed on Misty Terrain and raises the holder's Special Defense by one stage.",
+    "holdEffect": "MistySeed",
+    "holdParam": 1,
+    "flingPower": 10
   },
   {
     "id": 1901,
@@ -9287,7 +9544,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Consumed on Grassy Terrain and raises the holder's Defense by one stage."
+    "description": "Held: Consumed on Grassy Terrain and raises the holder's Defense by one stage.",
+    "holdEffect": "GrassySeed",
+    "holdParam": 1,
+    "flingPower": 10
   },
   {
     "id": 1902,
@@ -9298,7 +9558,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Fighting form. Changes Multi-Attack's type to Fighting."
+    "description": "Held: Changes Silvally to its Fighting form. Changes Multi-Attack's type to Fighting.",
+    "holdEffect": "MemoryFighting"
   },
   {
     "id": 1903,
@@ -9309,7 +9570,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Flying form. Changes Multi-Attack's type to Flying."
+    "description": "Held: Changes Silvally to its Flying form. Changes Multi-Attack's type to Flying.",
+    "holdEffect": "MemoryFlying"
   },
   {
     "id": 1904,
@@ -9320,7 +9582,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Poison form. Changes Multi-Attack's type to Poison."
+    "description": "Held: Changes Silvally to its Poison form. Changes Multi-Attack's type to Poison.",
+    "holdEffect": "MemoryPoison"
   },
   {
     "id": 1905,
@@ -9331,7 +9594,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Ground form. Changes Multi-Attack's type to Ground."
+    "description": "Held: Changes Silvally to its Ground form. Changes Multi-Attack's type to Ground.",
+    "holdEffect": "MemoryGround"
   },
   {
     "id": 1906,
@@ -9342,7 +9606,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Rock form. Changes Multi-Attack's type to Rock."
+    "description": "Held: Changes Silvally to its Rock form. Changes Multi-Attack's type to Rock.",
+    "holdEffect": "MemoryRock"
   },
   {
     "id": 1907,
@@ -9353,7 +9618,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Bug form. Changes Multi-Attack's type to Bug."
+    "description": "Held: Changes Silvally to its Bug form. Changes Multi-Attack's type to Bug.",
+    "holdEffect": "MemoryBug"
   },
   {
     "id": 1908,
@@ -9364,7 +9630,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Ghost form. Changes Multi-Attack's type to Ghost."
+    "description": "Held: Changes Silvally to its Ghost form. Changes Multi-Attack's type to Ghost.",
+    "holdEffect": "MemoryGhost"
   },
   {
     "id": 1909,
@@ -9375,7 +9642,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Steel form. Changes Multi-Attack's type to Steel."
+    "description": "Held: Changes Silvally to its Steel form. Changes Multi-Attack's type to Steel.",
+    "holdEffect": "MemorySteel"
   },
   {
     "id": 1910,
@@ -9386,7 +9654,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Fire form. Changes Multi-Attack's type to Fire."
+    "description": "Held: Changes Silvally to its Fire form. Changes Multi-Attack's type to Fire.",
+    "holdEffect": "MemoryFire"
   },
   {
     "id": 1911,
@@ -9397,7 +9666,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Water form. Changes Multi-Attack's type to Water."
+    "description": "Held: Changes Silvally to its Water form. Changes Multi-Attack's type to Water.",
+    "holdEffect": "MemoryWater"
   },
   {
     "id": 1912,
@@ -9408,7 +9678,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Grass form. Changes Multi-Attack's type to Grass."
+    "description": "Held: Changes Silvally to its Grass form. Changes Multi-Attack's type to Grass.",
+    "holdEffect": "MemoryGrass"
   },
   {
     "id": 1913,
@@ -9419,7 +9690,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Electric form. Changes Multi-Attack's type to Electric."
+    "description": "Held: Changes Silvally to its Electric form. Changes Multi-Attack's type to Electric.",
+    "holdEffect": "MemoryElectric"
   },
   {
     "id": 1914,
@@ -9430,7 +9702,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Psychic form. Changes Multi-Attack's type to Psychic."
+    "description": "Held: Changes Silvally to its Psychic form. Changes Multi-Attack's type to Psychic.",
+    "holdEffect": "MemoryPsychic"
   },
   {
     "id": 1915,
@@ -9441,7 +9714,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Ice form. Changes Multi-Attack's type to Ice."
+    "description": "Held: Changes Silvally to its Ice form. Changes Multi-Attack's type to Ice.",
+    "holdEffect": "MemoryIce"
   },
   {
     "id": 1916,
@@ -9452,7 +9726,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Dragon form. Changes Multi-Attack's type to Dragon."
+    "description": "Held: Changes Silvally to its Dragon form. Changes Multi-Attack's type to Dragon.",
+    "holdEffect": "MemoryDragon"
   },
   {
     "id": 1917,
@@ -9463,7 +9738,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Dark form. Changes Multi-Attack's type to Dark."
+    "description": "Held: Changes Silvally to its Dark form. Changes Multi-Attack's type to Dark.",
+    "holdEffect": "MemoryDark"
   },
   {
     "id": 1918,
@@ -9474,7 +9750,8 @@
     "price": 1000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "Held: Changes Silvally to its Fairy form. Changes Multi-Attack's type to Fairy."
+    "description": "Held: Changes Silvally to its Fairy form. Changes Multi-Attack's type to Fairy.",
+    "holdEffect": "MemoryFairy"
   },
   {
     "id": 2039,
@@ -9485,7 +9762,18 @@
     "price": 250,
     "canUseInBattle": true,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
+    "use": {
+      "healSleep": 1,
+      "healPoison": 1,
+      "healBurn": 1,
+      "healFreeze": 1,
+      "healParalysis": 1,
+      "healConfusion": 1
+    }
   },
   {
     "id": 2040,
@@ -9738,7 +10026,8 @@
     "price": 500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 10
   },
   {
     "id": 2168,
@@ -9749,7 +10038,8 @@
     "price": 500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 10
   },
   {
     "id": 2169,
@@ -9760,7 +10050,8 @@
     "price": 500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 10
   },
   {
     "id": 2170,
@@ -9771,7 +10062,8 @@
     "price": 500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 10
   },
   {
     "id": 2171,
@@ -9793,7 +10085,8 @@
     "price": 500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 10
   },
   {
     "id": 2173,
@@ -9804,7 +10097,8 @@
     "price": 500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 10
   },
   {
     "id": 2174,
@@ -9815,7 +10109,8 @@
     "price": 2200,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 30
   },
   {
     "id": 2175,
@@ -9826,7 +10121,8 @@
     "price": 2200,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 30
   },
   {
     "id": 2176,
@@ -9837,7 +10133,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "ThroatSpray",
+    "holdParam": 1,
+    "flingPower": 30
   },
   {
     "id": 2177,
@@ -9848,7 +10147,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "EjectPack",
+    "flingPower": 50
   },
   {
     "id": 2178,
@@ -9859,7 +10160,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "HeavyDutyBoots",
+    "flingPower": 80
   },
   {
     "id": 2179,
@@ -9870,7 +10173,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "BlunderPolicy",
+    "holdParam": 2,
+    "flingPower": 80
   },
   {
     "id": 2180,
@@ -9881,7 +10187,10 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "RoomService",
+    "holdParam": 1,
+    "flingPower": 100
   },
   {
     "id": 2181,
@@ -9892,7 +10201,9 @@
     "price": 4000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "UtilityUmbrella",
+    "flingPower": 60
   },
   {
     "id": 2182,
@@ -10200,7 +10511,8 @@
     "price": 1600,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 80
   },
   {
     "id": 2312,
@@ -10211,7 +10523,8 @@
     "price": 38000,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 80
   },
   {
     "id": 2630,
@@ -10222,7 +10535,14 @@
     "price": 4000,
     "canUseInBattle": true,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "fieldUse": "Healing",
+    "battleUse": "Healing",
+    "battlePocket": "RecoverStatus",
+    "use": {
+      "revive": 1,
+      "hpRestored": -1
+    }
   },
   {
     "id": 2631,
@@ -10233,7 +10553,15 @@
     "price": 6000,
     "canUseInBattle": true,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "battlePocket": "BattleItems",
+    "use": {
+      "atkStages": 1,
+      "defStages": 1,
+      "speedStages": 1,
+      "spatkStages": 1,
+      "spdefStages": 1
+    }
   },
   {
     "id": 2633,
@@ -10244,7 +10572,8 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "flingPower": 30
   },
   {
     "id": 2643,
@@ -10255,7 +10584,8 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "flingPower": 30
   },
   {
     "id": 2657,
@@ -10332,7 +10662,8 @@
     "price": 750,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 30
   },
   {
     "id": 2696,
@@ -10343,7 +10674,9 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "BoosterEnergy",
+    "flingPower": 30
   },
   {
     "id": 2697,
@@ -10354,7 +10687,9 @@
     "price": 20000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "AbilityShield",
+    "flingPower": 30
   },
   {
     "id": 2698,
@@ -10365,7 +10700,9 @@
     "price": 30000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "ClearAmulet",
+    "flingPower": 30
   },
   {
     "id": 2699,
@@ -10376,7 +10713,9 @@
     "price": 30000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "MirrorHerb",
+    "flingPower": 30
   },
   {
     "id": 2700,
@@ -10387,7 +10726,10 @@
     "price": 15000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "PunchingGlove",
+    "holdParam": 10,
+    "flingPower": 30
   },
   {
     "id": 2701,
@@ -10398,7 +10740,9 @@
     "price": 20000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "CovertCloak",
+    "flingPower": 30
   },
   {
     "id": 2702,
@@ -10409,7 +10753,9 @@
     "price": 20000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "LoadedDice",
+    "flingPower": 30
   },
   {
     "id": 2938,
@@ -10431,7 +10777,8 @@
     "price": 3000,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "flingPower": 30
   },
   {
     "id": 3105,
@@ -10442,7 +10789,10 @@
     "price": 750,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "holdEffect": "StrengthenFairy",
+    "holdParam": 20,
+    "flingPower": 10
   },
   {
     "id": 3106,
@@ -10453,7 +10803,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "flingPower": 60
   },
   {
     "id": 3107,
@@ -10464,7 +10815,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "flingPower": 60
   },
   {
     "id": 3108,
@@ -10475,7 +10827,8 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": ""
+    "description": "",
+    "flingPower": 60
   },
   {
     "id": 3109,
@@ -10486,7 +10839,8 @@
     "price": 500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 30
   },
   {
     "id": 3110,
@@ -10497,7 +10851,8 @@
     "price": 400,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 80
   },
   {
     "id": 3111,
@@ -10508,7 +10863,8 @@
     "price": 9500,
     "canUseInBattle": false,
     "canUseInOverworld": true,
-    "description": ""
+    "description": "",
+    "flingPower": 80
   },
   {
     "id": 3112,
@@ -10601,17 +10957,6 @@
   {
     "id": 3219,
     "name": "Strange Ball",
-    "pocket": "PokeBalls",
-    "effectType": "CatchPokemon",
-    "effectValue": 10,
-    "price": 0,
-    "canUseInBattle": true,
-    "canUseInOverworld": false,
-    "description": ""
-  },
-  {
-    "id": 3223,
-    "name": "Heavy Ball",
     "pocket": "PokeBalls",
     "effectType": "CatchPokemon",
     "effectValue": 10,

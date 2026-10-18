@@ -253,7 +253,7 @@ public sealed partial class BattleCore
             // A binding move wears at it until its count is done, and the last count is the one that frees
             if (b.IsActive && v.BindTurns > 0)
             {
-                if (--v.BindTurns > 0) LoseHp(Marked(b, BindMoment(v.BindingMove)), Formulas.Divide(p.MaxHP, Rules.BindDamageDivisor), Text.Of("battle.isHurtBy", ("pokemon", b.Name), ("bindingMove", v.BindingMove)));
+                if (--v.BindTurns > 0) LoseHp(Marked(b, BindMoment(v.BindingMove)), Formulas.Divide(p.MaxHP, v.BindDivisor > 0 ? v.BindDivisor : Rules.BindDamageDivisor), Text.Of("battle.isHurtBy", ("pokemon", b.Name), ("bindingMove", v.BindingMove)));
                 else
                 {
                     Say(Text.Of("battle.wasFreedFrom", ("pokemon", b.Name), ("bindingMove", v.BindingMove)));
