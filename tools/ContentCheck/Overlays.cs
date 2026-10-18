@@ -130,8 +130,8 @@ public static class Overlays
 
             // A trainer is the table's: by the id their object's script gives, or the one the overlay names for
             // someone a script battles (plan 08 · P7). With neither the game stops as the world loads
-            var own = TrainerDatabase.Get(o.Script);
-            var named = TrainerDatabase.Get(lines.Id);
+            var own = TrainerDatabase.Get(o.Script, world.Index.Region);
+            var named = TrainerDatabase.Get(lines.Id, world.Index.Region);
             if (own == null && named == null)
                 Add(Kind.Data, name, lines.Id == null
                     ? $"battles, and its object's script '{o.Script}' names no trainer of trainers.json: the overlay must give the table's \"id\" (the game would not load)"

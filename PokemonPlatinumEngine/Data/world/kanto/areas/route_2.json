@@ -1,0 +1,58 @@
+{
+  "key": "route_2",
+  "index": 5,
+  "name": "Route 2",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE1",
+  "nightMusic": "MUS_ROUTE1",
+  "encounters": "route_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Rattata", "level": 3 },
+    { "species": "Pidgey", "level": 3 },
+    { "species": "Rattata", "level": 4 },
+    { "species": "Pidgey", "level": 4 },
+    { "species": "Rattata", "level": 2 },
+    { "species": "Pidgey", "level": 2 },
+    { "species": "Rattata", "level": 5 },
+    { "species": "Pidgey", "level": 5 },
+    { "species": "Caterpie", "level": 4 },
+    { "species": "Weedle", "level": 4 },
+    { "species": "Caterpie", "level": 5 },
+    { "species": "Weedle", "level": 5 }
+  ],
+  "landRate": 21,
+  "warps": [
+    { "x": 65, "z": 113, "to": "route_2_viridian_forest_north_entrance", "toWarp": 3 },
+    { "x": 66, "z": 113, "to": "route_2_viridian_forest_north_entrance", "toWarp": 3 },
+    { "x": 65, "z": 151, "to": "route_2_viridian_forest_south_entrance", "toWarp": 1 },
+    { "x": 77, "z": 111, "to": "digletts_cave_north_entrance", "toWarp": 1 },
+    { "x": 77, "z": 122, "to": "route_2_house", "toWarp": 1 },
+    { "x": 78, "z": 146, "to": "route_2_east_building", "toWarp": 1 },
+    { "x": 78, "z": 141, "to": "route_2_east_building", "toWarp": 3 },
+    { "x": 79, "z": 141, "to": "route_2_east_building", "toWarp": 3 },
+    { "x": 79, "z": 146, "to": "route_2_east_building", "toWarp": 1 },
+    { "x": 66, "z": 151, "to": "route_2_viridian_forest_south_entrance", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_south", "x": 76, "z": 162, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_2", "looks": "cut_tree", "movement": "look_south", "x": 75, "z": 169, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_3", "looks": "cut_tree", "movement": "look_south", "x": 71, "z": 113, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_4", "looks": "cut_tree", "movement": "look_south", "x": 78, "z": 126, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_CutTree" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 77, "z": 154, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE2_ETHER", "item": "Ether", "script": "Route2_EventScript_ItemEther" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 77, "z": 164, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE2_PARALYZE_HEAL", "item": "Paralyze Heal", "script": "Route2_EventScript_ItemParalyzeHeal" }
+  ],
+  "signs": [
+    { "x": 74, "z": 112, "type": 0, "script": "Route2_EventScript_DiglettsCaveSign" },
+    { "x": 67, "z": 173, "type": 0, "script": "Route2_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,15 @@
+{
+  // The gate on Route 22 (plan 19 · K2). The guard who asks for the Boulder Badge and the way on to Route 23 are the
+  // story's (K3, K7); the way north is shut until Route 23 opens, so here he only talks
+  "area": "route_22_north_entrance",
+  "bgmTrack": "kanto/viridian_forest",
+  "people": {
+    "policeman": {
+      "name": "Guard",
+      "dialog": [
+        "Beyond this gate lies the road to the Pokémon League.",
+        "Only trainers who hold the Badges of Kanto's Gyms may pass. Come back when you have them."
+      ]
+    }
+  }
+}

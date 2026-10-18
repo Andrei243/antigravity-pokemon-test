@@ -1,7 +1,7 @@
 {
   // Viridian City's Poké Mart (plan 19 · K1). Oak's Parcel, which the clerk holds in the original, is K3's
   "area": "viridian_city_mart",
-  "bgmTrack": "kanto/pallet",
+  "bgmTrack": "kanto/viridian",
   "people": {
     "viridian_mart_clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
     "youngster": {

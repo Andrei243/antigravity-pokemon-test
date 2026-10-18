@@ -1,0 +1,38 @@
+# Route 22 (and Route 3 onward: FireRed's MUS_ROUTE3 plays over Routes 3 to 10, 16 to 22 and the first islands'
+# roads): a brisk travelling theme in C, a square-wave lead climbing over a running bass. Original composition for
+# this game (plan 19 · K2).
+title Route 3
+tempo 138
+meter 4/4
+reverb 0.24
+nighttempo 0.94
+
+track lead square night=flute vol=0.7 pan=0 rev=0.26
+  L o5 e4 g8 e8 c4 e4 | o5 d4 o4 b8 o5 d8 g4 d4 | o5 c4 e8 c8 o4 a4 o5 c4 | o5 c4 o4 a8 o5 c8 f4 c4 |
+  o5 g4 e8 g8 o6 c4 o5 g4 | o5 b4 g8 b8 d4 g4 | o5 a4 f8 a8 c4 f4 | o5 g2. r4 |
+  o5 e4 c8 e8 a4 e4 | o5 f4 c8 f8 a4 f4 | o5 e4 g8 e8 c4 g4 | o5 d4 g8 d8 o4 b4 o5 d4 |
+  o5 c4 f8 a8 f4 c4 | o5 d4 g8 b8 g4 d4 | o5 e4 g4 o6 c4 o5 g4 | o5 c2. r4 |
+
+track horn horn night=clarinet vol=0.42 pan=-0.3 rev=0.3
+  L o4 g2 e2 | g2 b2 | a2 e2 | a2 f2 |
+  e2 g2 | d2 b2 | c2 a2 | b1 |
+  a2 e2 | a2 c2 | g2 e2 | b2 g2 |
+  a2 f2 | b2 g2 | g2 e2 | e1 |
+
+track pad strings night=pad vol=0.28 pan=0.25 rev=0.38
+  L o4 (c e g)1 | (d g b)1 | (c e a)1 | (c f a)1 |
+  (c e g)1 | (d g b)1 | (c f a)1 | (d g b)1 |
+  (c e a)1 | (c f a)1 | (c e g)1 | (d g b)1 |
+  (c f a)1 | (d g b)1 | (c e g)1 | (c e g)1 |
+
+track bass bass vol=0.66 rev=0.1
+  L o3 c8 c8 g8 g8 c8 c8 g8 g8 | <g8 g8 >d8 d8 <g8 g8 >d8 d8 | <a8 a8 >e8 e8 <a8 a8 >e8 e8 | <f8 f8 >c8 c8 <f8 f8 >c8 c8 |
+  c8 c8 g8 g8 c8 c8 g8 g8 | <g8 g8 >d8 d8 <g8 g8 >d8 d8 | <f8 f8 >c8 c8 <f8 f8 >c8 c8 | <g8 g8 >d8 d8 <g8 g8 >d8 d8 |
+  <a8 a8 >e8 e8 <a8 a8 >e8 e8 | <f8 f8 >c8 c8 <f8 f8 >c8 c8 | c8 c8 g8 g8 c8 c8 g8 g8 | <g8 g8 >d8 d8 <g8 g8 >d8 d8 |
+  <f8 f8 >c8 c8 <f8 f8 >c8 c8 | <g8 g8 >d8 d8 <g8 g8 >d8 d8 | c8 c8 g8 g8 c8 c8 g8 g8 | c8 c8 g8 g8 c8 c8 g8 g8 |
+
+track drums kit vol=0.5 rev=0.15
+  v95 L [ [ b4 s4 b8 b8 s4 | ]7 b4 s4 s8 s16 s16 s8 s8 | ]2
+
+track hats kit vol=0.4 pan=0.1 rev=0.1
+  v65 L [ h8 v45 h8 v65 h8 v45 h8 v65 h8 v45 h8 v65 h8 v45 h8 v65 | ]16

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text.Json.Serialization;
 using PokemonPlatinumEngine.Battle.Sim.Ai;
 using PokemonPlatinumEngine.Models;
@@ -109,8 +110,50 @@ public static class TrainerDatabase
     private static readonly List<TrainerRecord> MasterList = GameDataFiles.Load<List<TrainerRecord>>(MastersFileName);
     private static readonly List<TrainerRecord> OurList = GameDataFiles.Load<List<TrainerRecord>>(OursFileName);
 
+    /// <summary>
+    /// The trainers of each region whose world folder has its own <c>trainers.json</c> (plan 18's decision 8, plan
+    /// 19 · K2: Kanto's, from FireRed), by the region's folder name. Their ids carry the region's name before them
+    /// (<c>kanto_youngster_ben</c>), so they never meet Platinum's in the list of trainers beaten.
+    /// </summary>
+    private static readonly Dictionary<string, List<TrainerRecord>> RegionLists = LoadRegions();
+
     private static readonly Dictionary<string, TrainerRecord> Trainers =
-        Platinum.Concat(MasterList).Concat(OurList).ToDictionary(t => t.Id, StringComparer.OrdinalIgnoreCase);
+        Platinum.Concat(MasterList).Concat(OurList).Concat(RegionLists.Values.SelectMany(l => l))
+            .ToDictionary(t => t.Id, StringComparer.OrdinalIgnoreCase);
+
+    private static Dictionary<string, List<TrainerRecord>> LoadRegions()
+    {
+        var lists = new Dictionary<string, List<TrainerRecord>>(StringComparer.OrdinalIgnoreCase);
+        string root = GameDataFiles.PathOf(World.Folder);
+        if (!Directory.Exists(root)) return lists;
+        foreach (string dir in Directory.GetDirectories(root).OrderBy(d => d, StringComparer.Ordinal))
+        {
+            string relative = Path.Combine(World.Folder, Path.GetFileName(dir), FileName);
+            if (File.Exists(GameDataFiles.PathOf(relative)))
+                lists[Path.GetFileName(dir)] = GameDataFiles.Load<List<TrainerRecord>>(relative);
+        }
+        return lists;
+    }
+
+    /// <summary>A region's own trainers (<c>Data/world/&lt;region&gt;/trainers.json</c>), or none.</summary>
+    public static IReadOnlyList<TrainerRecord> OfRegion(string region) =>
+        RegionLists.TryGetValue(region, out var list) ? list : Array.Empty<TrainerRecord>();
+
+    /// <summary>
+    /// A trainer placed in a region's world, by its id or its constant as the region's own data name it
+    /// (<c>TRAINER_YOUNGSTER_BEN</c> in Kanto is <c>kanto_youngster_ben</c>): the region's table first, then the
+    /// others (<see cref="Get(string?)"/>). Sinnoh's trainers are Platinum's table, which has no prefix.
+    /// </summary>
+    public static TrainerRecord? Get(string? idOrConstant, string? region)
+    {
+        if (string.IsNullOrEmpty(idOrConstant)) return null;
+        if (!string.IsNullOrEmpty(region) && RegionLists.ContainsKey(region))
+        {
+            string key = idOrConstant.StartsWith("TRAINER_", StringComparison.Ordinal) ? idOrConstant["TRAINER_".Length..] : idOrConstant;
+            if (Trainers.TryGetValue(region.ToLowerInvariant() + "_" + key, out var own)) return own;
+        }
+        return Get(idOrConstant);
+    }
 
     /// <summary>Platinum's trainers, in the original's order.</summary>
     public static IEnumerable<TrainerRecord> All => Platinum;

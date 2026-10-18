@@ -1,0 +1,22 @@
+{
+  // The gate between Viridian Forest and Route 2, on the forest's north side, the last before Pewter City (plan 19 · K2)
+  "area": "route_2_viridian_forest_north_entrance",
+  "bgmTrack": "kanto/viridian",
+  "people": {
+    "youngster": {
+      "name": "Youngster",
+      "dialog": [ "Made it through the forest? Pewter City is just up the road!" ]
+    },
+    "old_man_1": {
+      "name": "Old Man",
+      "dialog": [
+        "Pewter's Gym Leader uses Rock-type Pokémon. They are as hard as they look.",
+        "Water and Grass moves will serve you well against them."
+      ]
+    },
+    "cooltrainer_f": {
+      "name": "Trainer",
+      "dialog": [ "Once you've been to Pewter's museum, you'll never look at an old bone the same way again." ]
+    }
+  }
+}

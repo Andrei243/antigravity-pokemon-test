@@ -1,7 +1,7 @@
 {
   // Viridian City's Pokémon Center (plan 19 · K1), its floor as FireRed lays it out
   "area": "viridian_city_pokemon_center_1f",
-  "bgmTrack": "kanto/pallet",
+  "bgmTrack": "kanto/viridian",
   "people": {
     "viridian_nurse": { "name": "Nurse", "script": "Nurse" },
     "gentleman": {

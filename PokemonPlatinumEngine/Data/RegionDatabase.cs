@@ -321,6 +321,9 @@ public static class RegionDatabase
                 "PalletTown_PlayersHouse_1F", "PalletTown_PlayersHouse_2F", "PalletTown_RivalsHouse", "PalletTown_ProfessorOaksLab",
                 "ViridianCity_House", "ViridianCity_Gym", "ViridianCity_School", "ViridianCity_Mart",
                 "ViridianCity_PokemonCenter_1F", "ViridianCity_PokemonCenter_2F",
+                // Plan 19 · K2: Viridian Forest, Route 2's rooms and Route 22's gate
+                "ViridianForest", "Route2_ViridianForest_SouthEntrance", "Route2_House", "Route2_EastBuilding",
+                "Route2_ViridianForest_NorthEntrance", "Route22_NorthEntrance",
             }
         },
         new() { Id = Johto, Name = "Johto", Generation = 2 },

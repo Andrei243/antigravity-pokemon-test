@@ -369,6 +369,9 @@ super rod 1-100
 === route_1
 Route 1
 grass 2-5
+=== route_2
+Route 2
+grass 2-5
 === route_201
 Route 201
 grass 2-3
@@ -519,6 +522,13 @@ old rod 3-15
 good rod 10-35
 super rod 30-55
 trainers 2, 31-33: tuber_mariel 33, tuber_trenton 33
+=== route_22
+Route 22
+grass 2-5
+surf 20-40
+old rod 5
+good rod 5-15
+super rod 15-35
 === route_220
 Route 220
 surf 20-40
@@ -814,6 +824,10 @@ surf 20-40
 old rod 5
 good rod 5-15
 super rod 15-35
+=== viridian_forest
+Viridian Forest
+grass 3-6
+trainers 5, 6-9: kanto_bug_catcher_anthony 8, kanto_bug_catcher_charlie 7, kanto_bug_catcher_doug 7, kanto_bug_catcher_rick 6, kanto_bug_catcher_sammy 9
 === wayward_cave_1f
 Wayward Cave
 grass 17-20
