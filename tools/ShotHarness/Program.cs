@@ -180,6 +180,7 @@ if (mode == "crash") h.CrashMode();
 if (mode == "formats") h.FormatsMode();
 if (mode == "kanto") h.KantoMode();
 if (mode == "johto") h.JohtoMode();
+if (mode == "hoenn") h.HoennMode();
 if (mode == "skips") h.SkipsMode();
 
 h.Close();

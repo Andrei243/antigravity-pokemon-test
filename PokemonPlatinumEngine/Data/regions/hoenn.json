@@ -1,0 +1,55 @@
+{
+  "id": "Hoenn",
+  "folder": "hoenn",
+  "models": "hoenn",
+  "map": "Hoenn",
+  "dex": "hoenn",
+  "nationalUnlock": "HallOfFame",
+  // Plan 21 · H1: the world, the record and a start; the story is plan 21 · H2's, so a new game begun here still
+  // begins as every unwritten region's does, with the first of the three and a few items
+  "hasStory": false,
+  "heroes": { "boy": "PLAYER", "girl": "DAWN" },
+  "starters": [ "Treecko", "Torchic", "Mudkip" ],
+  "badges": [ "Stone", "Knuckle", "Dynamo", "Heat", "Balance", "Feather", "Mind", "Rain" ],
+  // Emerald's: each field move by the badge that lets it be used outside battle. Dive's (the Mind Badge) is plan 21 · H5's,
+  // with the move's place in the party menu
+  "gates": {
+    "Cut": "Stone",
+    "Flash": "Knuckle",
+    "RockSmash": "Dynamo",
+    "Strength": "Heat",
+    "Surf": "Balance",
+    "Fly": "Feather",
+    "Waterfall": "Rain"
+  },
+  "professor": {
+    "name": "Prof. Birch",
+    "look": "ROWAN",
+    "species": "Lotad",
+    "lines": {
+      "hello": "Hi there! Sorry, I've only just got back from the field. Excuse the mud.",
+      "welcome": "Welcome to the world of Pokémon!",
+      "myName": "I'm Birch. I'd rather be out in the grass than at a desk, so people tend to find me there.",
+      "world": "Pokémon live all around us: in tall grass and deep forests, in the sea, on mountaintops and even in the sky.",
+      "oneOfThem": "Here's one of them now. It likes a good soak in the rain.",
+      "liveAlongside": "People and Pokémon share this world. Some live side by side as friends; others team up to battle.",
+      "study": "I study where Pokémon live and how they get along with the places they call home.",
+      "enough": "But you didn't come all this way to hear me talk about habitats! Tell me about yourself.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "And what should I call you?",
+      "nextDoor": "My own child lives next door to your new home. The two of you are about the same age.",
+      "neverStill": "They spend every day out in the grass, helping me count Pokémon.",
+      "fineName": "{name}! What a good name.",
+      "ofCourse": "I just know the two of you will get along.",
+      "story": "{name}, you're about to start a whole new life in Hoenn. There's so much out there to see.",
+      "offYouGo": "Now, let's go! Your new home is waiting!"
+    }
+  },
+  // Emerald's heal locations that are open (plan 18 · W7's spawns.json): the first is where a white-out goes, home,
+  // where Mom sees to the team; the rest are the Pokémon Centers. The rest of Hoenn's join as their towns open
+  "spawns": [
+    { "id": 12, "area": "littleroot_town", "x": 125, "y": 291, "room": "LittlerootTown_BrendansHouse_1F" },
+    { "id": 14, "area": "oldale_town", "x": 126, "y": 259, "room": "OldaleTown_PokemonCenter_1F" },
+    { "id": 3, "area": "petalburg_city", "x": 60, "y": 249, "room": "PetalburgCity_PokemonCenter_1F" }
+  ]
+}

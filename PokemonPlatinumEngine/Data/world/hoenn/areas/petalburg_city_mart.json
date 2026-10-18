@@ -1,0 +1,29 @@
+{
+  "key": "petalburg_city_mart",
+  "index": 110,
+  "name": "Petalburg City",
+  "matrix": 59,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "petalburg_city", "toWarp": 5 },
+    { "x": 4, "z": 7, "to": "petalburg_city", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "petalburg_mart_clerk", "looks": "mart_employee", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_Mart_EventScript_Clerk" },
+    { "id": "man_1", "looks": "man_1", "movement": "look_east", "x": 9, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_Mart_EventScript_Man" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "look_south", "x": 6, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_Mart_EventScript_Boy" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_east", "x": 5, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_Mart_EventScript_Woman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

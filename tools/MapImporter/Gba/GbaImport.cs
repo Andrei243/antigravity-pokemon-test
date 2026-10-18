@@ -23,6 +23,10 @@ public static class GbaImport
             : Sources.Checkout(cache, "pokeemerald", Sources.EmeraldRepo, Sources.EmeraldCommit, Sources.GbaFolders);
     }
 
+    /// <summary>A game's tables: its trainers' ids under the region's prefix (<c>kanto_</c>, <c>hoenn_</c>) and its own prize money.</summary>
+    public static GbaTables Tables(string checkout, GbaMaps maps, GbaGame game) =>
+        new(checkout, maps.Maps, game.Region + "_", game == GbaGame.Emerald ? GbaTables.EmeraldMoneyRates : null);
+
     public static int Run(string repo, string gameName, string? dir, string outDir, bool quick)
     {
         var clock = System.Diagnostics.Stopwatch.StartNew();
@@ -31,7 +35,7 @@ public static class GbaImport
         string checkout = dir ?? Fetch(repo, game);
         var maps = new GbaMaps(checkout, game);
         var world = new GbaWorld(maps);
-        var tables = new GbaTables(checkout, maps.Maps, game.Region + "_");
+        var tables = Tables(checkout, maps, game);
         Console.WriteLine($"Read {maps.Maps.Count} maps and {maps.Layouts.Count} layouts into {world.Matrices.Count} matrices, "
             + $"{tables.Wild.Count} tables of wild Pokémon, {tables.Trainers.Count} trainers ({clock.Elapsed.TotalSeconds:F1} s)");
 
@@ -187,7 +191,7 @@ public static class GbaImport
         string checkout = dir ?? Fetch(repo, game);
         var maps = new GbaMaps(checkout, game);
         var world = new GbaWorld(maps);
-        var tables = new GbaTables(checkout, maps.Maps, game.Region + "_");
+        var tables = Tables(checkout, maps, game);
         int files = WriteWorld(world, tables, data, new HashSet<string>(index.Areas, StringComparer.Ordinal));
         foreach (string problem in world.Problems.Take(20)) Console.WriteLine("  " + problem);
         Console.WriteLine($"Wrote {files} files of {index.Areas.Count} open areas into {data}");

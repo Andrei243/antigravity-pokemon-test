@@ -1,0 +1,37 @@
+# Littleroot Town (and its houses): the little town where the grass begins, a flute over soft strings in G with a
+# harp's broken chords, homely and unhurried. Original composition for this game (plan 21 · H1).
+title Littleroot Town
+tempo 92
+meter 4/4
+reverb 0.34
+nighttempo 0.93
+
+track lead flute night=ocarina vol=0.72 pan=0 rev=0.36
+  L o5 d4 g8 a8 b4 g4 | o5 e4. g8 b4 g4 | o5 c4 e8 g8 e4 c4 | o5 a4 f+4 d2 |
+  o5 b4 o6 d8 o5 b8 g4 b4 | o5 f+4 a8 b8 o6 d4 o5 b4 | o5 e4 g8 o6 c8 o5 g4 e4 | o5 a2. r4 |
+  o5 g4 b8 g8 e4 g4 | o5 c4 e8 g8 o6 c4 o5 g4 | o5 d4 g8 b8 o6 d4 o5 b4 | o5 a4 f+8 a8 o6 d4 o5 a4 |
+  o5 g4 e8 c8 e4 g4 | o5 f+4 a8 f+8 d4 f+4 | o5 g4 b8 o6 d8 o5 b4 a4 | o5 g2. r4 |
+
+track counter clarinet night=flute vol=0.4 pan=-0.3 rev=0.38
+  L o4 g2 b2 | o4 e2 g2 | o4 e2 g2 | o4 f+2 a2 |
+  o4 d2 g2 | o4 d2 f+2 | o4 c2 e2 | o4 d2 f+2 |
+  o4 e2 b2 | o4 c2 g2 | o4 d2 b2 | o4 f+2 a2 |
+  o4 e2 g2 | o4 f+2 a2 | o4 g2 b2 | o4 g1 |
+
+track harp harp night=harp vol=0.34 pan=0.3 rev=0.4
+  L o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 e8 g8 b8 g8 e8 g8 b8 g8 | o4 c8 e8 g8 e8 c8 e8 g8 e8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 |
+  o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 b8 o5 d8 f+8 d8 o4 b8 o5 d8 f+8 d8 | o4 c8 e8 g8 e8 c8 e8 g8 e8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 |
+  o4 e8 g8 b8 g8 e8 g8 b8 g8 | o4 c8 e8 g8 e8 c8 e8 g8 e8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 |
+  o4 c8 e8 g8 e8 c8 e8 g8 e8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 g8 b8 o5 d8 o4 b8 g2 |
+
+track pad strings night=pad vol=0.28 pan=0.2 rev=0.42
+  L o4 (d g b)1 | (e g b)1 | (c e g)1 | (d f+ a)1 |
+  (d g b)1 | (d f+ b)1 | (c e g)1 | (d f+ a)1 |
+  (e g b)1 | (c e g)1 | (d g b)1 | (d f+ a)1 |
+  (c e g)1 | (d f+ a)1 | (d g b)1 | (d g b)1 |
+
+track bass bass vol=0.58 rev=0.12
+  L o2 g4 o3 d4 o2 g4 o3 d4 | o2 e4 b4 e4 b4 | o3 c4 g4 c4 g4 | o3 d4 a4 d4 a4 |
+  o2 g4 o3 d4 o2 g4 o3 d4 | o2 b4 o3 f+4 o2 b4 o3 f+4 | o3 c4 g4 c4 g4 | o3 d4 a4 d4 a4 |
+  o2 e4 b4 e4 b4 | o3 c4 g4 c4 g4 | o2 g4 o3 d4 o2 g4 o3 d4 | o3 d4 a4 d4 a4 |
+  o3 c4 g4 c4 g4 | o3 d4 a4 d4 a4 | o2 g4 o3 d4 o2 g4 o3 d4 | o2 g4 o3 d4 o2 g2 |

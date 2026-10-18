@@ -41,6 +41,9 @@ public static class GbaFurniture
         ["MB_REGION_MAP"] = PropType.Painting,
         ["MB_ADVERTISING_POSTER"] = PropType.Painting,
         ["MB_BATTLE_RECORDS"] = PropType.Painting,
+        // Emerald's names (plan 21 · H1): a shop's shelves, and the questionnaire's terminal by a Mart's counter
+        ["MB_SHOP_SHELF"] = PropType.StoreShelf,
+        ["MB_QUESTIONNAIRE"] = PropType.Computer,
     };
 
     /// <summary>
@@ -128,11 +131,83 @@ public static class GbaFurniture
             },
         };
 
-    /// <summary>A metatile's furniture: by its behaviour where that names one, then by its tileset's ranges, or none.</summary>
-    public static PropType? Of(string behaviourName, string tileset, int metatile)
+    /// <summary>
+    /// Emerald's rows (plan 21 · H1), apart from FireRed's because the two games share tilesets' names (<c>gTileset_Building</c>,
+    /// <c>gTileset_PokemonCenter</c>) and not their metatiles: the rooms of Littleroot Town, Oldale Town and Petalburg City,
+    /// judged as Kanto's were, from the layouts and the sign events that say what is read where.
+    /// </summary>
+    public static readonly IReadOnlyDictionary<string, (int From, int To, PropType Prop)[]> HoennRanges =
+        new Dictionary<string, (int, int, PropType)[]>(StringComparer.Ordinal)
+        {
+            ["gTileset_BrendansMaysHouse"] = new (int, int, PropType)[]
+            {
+                // Downstairs: the kitchen's cupboards and sink along the back wall's west end, two rows deep
+                (0x230, 0x234, PropType.KitchenCounter), (0x238, 0x23C, PropType.KitchenCounter),
+                // Plants beside the television at the head of the rug (MB_TELEVISION, the primary tileset's), and the
+                // table in the rug's middle
+                (0x240, 0x241, PropType.Plant), (0x21A, 0x21B, PropType.Table),
+                (0x222, 0x223, PropType.Table),
+                // The rug round the table: walked on
+                (0x218, 0x219, PropType.Rug), (0x21C, 0x21D, PropType.Rug), (0x220, 0x221, PropType.Rug), (0x224, 0x22E, PropType.Rug),
+                (0x235, 0x236, PropType.Rug), (0x248, 0x24A, PropType.Rug),
+                // The flight of stairs up beside the stairs' warp, and the one down beside the bedroom's
+                (0x210, 0x210, PropType.Stairs), (0x213, 0x213, PropType.Stairs),
+                // Upstairs: the PC on its desk and the notebook beside it at the back wall, the games console's television
+                // and the clock on the wall (the sign events PC, Notebook, GameCube and WallClock read them)
+                (0x25A, 0x25A, PropType.Computer), (0x25B, 0x25B, PropType.Table), (0x265, 0x265, PropType.Television),
+                (0x28F, 0x28F, PropType.Painting),
+                // The bed by the west wall, and the rug where the decorations stand
+                (0x27B, 0x27D, PropType.Bed), (0x283, 0x285, PropType.Bed), (0x28B, 0x28D, PropType.Bed),
+                (0x298, 0x29A, PropType.Rug), (0x2A0, 0x2A2, PropType.Rug), (0x2A8, 0x2AA, PropType.Rug),
+            },
+            ["gTileset_Lab"] = new (int, int, PropType)[]
+            {
+                // Professor Birch's lab: the bookshelves at the back wall and across the west half (the Bookshelf signs)
+                (0x218, 0x219, PropType.Bookshelf), (0x20A, 0x20E, PropType.Bookshelf), (0x22C, 0x22D, PropType.Bookshelf),
+                (0x234, 0x235, PropType.Bookshelf),
+                // The PCs (the PC signs): at the back wall, and in the two corners by the door
+                (0x21A, 0x21B, PropType.Computer), (0x230, 0x230, PropType.Computer), (0x238, 0x238, PropType.Computer),
+                (0x23B, 0x23B, PropType.Computer), (0x243, 0x243, PropType.Computer),
+                // The machines on the east wall (the Machine signs) and the equipment beside the corners' PCs
+                (0x214, 0x216, PropType.LabMachine), (0x21C, 0x21E, PropType.LabMachine), (0x240, 0x240, PropType.LabMachine),
+                (0x248, 0x248, PropType.LabMachine), (0x24B, 0x24B, PropType.LabMachine),
+                // The professor's desk, and the potted plants
+                (0x231, 0x231, PropType.LabDesk), (0x242, 0x242, PropType.LabDesk),
+                (0x22E, 0x22E, PropType.Plant), (0x232, 0x232, PropType.Plant), (0x29A, 0x29A, PropType.Plant),
+            },
+            ["gTileset_PokemonCenter"] = new (int, int, PropType)[]
+            {
+                // The healing machine beside the nurse, and the counter's ends and front (MB_COUNTER's other metatiles)
+                (0x22A, 0x22B, PropType.HealingMachine), (0x250, 0x251, PropType.Counter), (0x258, 0x259, PropType.Counter),
+                (0x25B, 0x25B, PropType.Counter), (0x221, 0x221, PropType.Counter),
+                // The table of the seats in the corner, and the plants
+                (0x23D, 0x23E, PropType.Table), (0x245, 0x246, PropType.Table),
+                (0x228, 0x228, PropType.Plant), (0x237, 0x237, PropType.Plant), (0x288, 0x288, PropType.Plant),
+            },
+            ["gTileset_Shop"] = new (int, int, PropType)[]
+            {
+                // The till's end of the counter, and the plant by the door
+                (0x242, 0x242, PropType.Counter), (0x22D, 0x22D, PropType.Plant),
+            },
+            ["gTileset_GenericBuilding"] = new (int, int, PropType)[]
+            {
+                // A house's table, two metatiles by two, and the rug round it
+                (0x248, 0x24B, PropType.Table), (0x250, 0x253, PropType.Table),
+                (0x22B, 0x22C, PropType.Rug), (0x235, 0x237, PropType.Rug), (0x23D, 0x23F, PropType.Rug), (0x245, 0x247, PropType.Rug),
+                (0x2E2, 0x2E2, PropType.Rug),
+                // The cupboard along the back wall, and the potted plants in the corners
+                (0x298, 0x298, PropType.KitchenCounter), (0x22A, 0x22A, PropType.Plant), (0x299, 0x299, PropType.Plant),
+            },
+        };
+
+    /// <summary>
+    /// A metatile's furniture: by its behaviour where that names one, then by its tileset's ranges (Emerald's own for
+    /// <paramref name="game"/> Emerald), or none.
+    /// </summary>
+    public static PropType? Of(string behaviourName, string tileset, int metatile, GbaGame? game = null)
     {
         if (ByBehaviour.TryGetValue(behaviourName, out var named)) return named;
-        if (Ranges.TryGetValue(tileset, out var ranges))
+        if ((game == GbaGame.Emerald ? HoennRanges : Ranges).TryGetValue(tileset, out var ranges))
             foreach (var (from, to, prop) in ranges)
                 if (metatile >= from && metatile <= to) return prop;
         return null;

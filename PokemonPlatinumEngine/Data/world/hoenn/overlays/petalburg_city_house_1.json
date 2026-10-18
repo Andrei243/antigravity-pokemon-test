@@ -1,0 +1,12 @@
+{
+  // A house in Petalburg City (plan 21 · H1)
+  "area": "petalburg_city_house_1",
+  "bgmTrack": "hoenn/petalburg",
+  "people": {
+    "girl_1": { "name": "Girl", "dialog": [ "My brother set off on a journey last spring. He writes home from a different town every week!" ] },
+    "expert_m": {
+      "name": "Old Man",
+      "dialog": [ "Travel light, travel far. That's what I always told my son. He never listened. He packed three tents." ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "key": "petalburg_city_house_2",
+  "index": 107,
+  "name": "Petalburg City",
+  "matrix": 56,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG",
+  "nightMusic": "MUS_PETALBURG",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "petalburg_city", "toWarp": 4 },
+    { "x": 4, "z": 7, "to": "petalburg_city", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "wander_around", "x": 2, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PetalburgCity_House2_EventScript_Woman" },
+    { "id": "school_kid_m", "looks": "school_kid_m", "movement": "look_south", "x": 7, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_House2_EventScript_SchoolKid" }
+  ],
+  "signs": [],
+  "triggers": []
+}

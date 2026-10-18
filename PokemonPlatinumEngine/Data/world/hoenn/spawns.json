@@ -1,0 +1,178 @@
+[
+  {
+    "id": 1,
+    "area": "littleroot_town_brendans_house_2f",
+    "x": 4,
+    "y": 2,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 2,
+    "area": "littleroot_town_mays_house_2f",
+    "x": 4,
+    "y": 2,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 3,
+    "area": "petalburg_city",
+    "x": 60,
+    "y": 249,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 4,
+    "area": "slateport_city",
+    "x": 219,
+    "y": 280,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 5,
+    "area": "mauville_city",
+    "x": 222,
+    "y": 146,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 6,
+    "area": "rustboro_city",
+    "x": 16,
+    "y": 161,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 7,
+    "area": "fortree_city",
+    "x": 325,
+    "y": 7,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 8,
+    "area": "lilycove_city",
+    "x": 504,
+    "y": 85,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 9,
+    "area": "mossdeep_city",
+    "x": 668,
+    "y": 117,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 10,
+    "area": "sootopolis_city",
+    "x": 43,
+    "y": 32,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 11,
+    "area": "ever_grande_city",
+    "x": 787,
+    "y": 229,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 12,
+    "area": "littleroot_town",
+    "x": 125,
+    "y": 291,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 13,
+    "area": "littleroot_town",
+    "x": 134,
+    "y": 291,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 14,
+    "area": "oldale_town",
+    "x": 126,
+    "y": 259,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 15,
+    "area": "dewford_town",
+    "x": 62,
+    "y": 373,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 16,
+    "area": "lavaridge_town",
+    "x": 149,
+    "y": 67,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 17,
+    "area": "fallarbor_town",
+    "x": 94,
+    "y": 8,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 18,
+    "area": "verdanturf_town",
+    "x": 136,
+    "y": 144,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 19,
+    "area": "pacifidlog_town",
+    "x": 488,
+    "y": 276,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 20,
+    "area": "ever_grande_city",
+    "x": 778,
+    "y": 186,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 21,
+    "area": "southern_island_exterior",
+    "x": 15,
+    "y": 20,
+    "room": "",
+    "unlockedOnArrival": true
+  },
+  {
+    "id": 22,
+    "area": "battle_frontier_outside_east",
+    "x": 59,
+    "y": 52,
+    "room": "",
+    "unlockedOnArrival": true
+  }
+]

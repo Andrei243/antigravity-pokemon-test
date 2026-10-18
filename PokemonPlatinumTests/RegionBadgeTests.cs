@@ -48,9 +48,9 @@ public class RegionBadgeTests
         Assert.True(story.HasBadge("Sinnoh", "Icicle"));
         Assert.False(story.HasBadge("Kanto", "Cascade"));
         // A region with no file has no badges, and nothing is kept for it
-        Assert.Equal(0, story.BadgeMask("Hoenn"));
-        story.SetBadges("Hoenn", 0xFF);
-        Assert.Equal(0, story.BadgeMask("Hoenn"));
+        Assert.Equal(0, story.BadgeMask("Unova"));
+        story.SetBadges("Unova", 0xFF);
+        Assert.Equal(0, story.BadgeMask("Unova"));
         // A name the region doesn't have is a mistake, not a badge
         Assert.Throws<ArgumentException>(() => story.GiveBadge("Sinnoh", "Boulder"));
         Assert.Throws<ArgumentException>(() => story.HasBadge("Kanto", "Coal"));
@@ -187,7 +187,8 @@ public class RegionBadgeTests
         // Kanto's file names its own: Surf wants the Soul Badge there, and Sinnoh's Fen Badge opens nothing in Kanto
         Assert.Equal("Soul", FieldMoveRules.BadgeFor(FieldMove.Surf, "Kanto"));
         Assert.Null(FieldMoveRules.BadgeFor(FieldMove.Defog, "Kanto"));
-        Assert.Null(FieldMoveRules.BadgeFor(FieldMove.Surf, "Hoenn"));
+        Assert.Equal("Balance", FieldMoveRules.BadgeFor(FieldMove.Surf, "Hoenn"));
+        Assert.Null(FieldMoveRules.BadgeFor(FieldMove.Surf, "Unova"));
         Assert.Equal("Fog", FieldMoveRules.BadgeFor(FieldMove.Surf, "Johto"));
         var spot = new FieldSpot { Water = true, Region = "Kanto" };
         var story = new StoryState();

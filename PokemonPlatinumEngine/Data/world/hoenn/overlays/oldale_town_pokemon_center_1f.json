@@ -1,0 +1,20 @@
+{
+  // Oldale Town's Pokémon Center (plan 21 · H1), its floor as Emerald lays it out
+  "area": "oldale_town_pokemon_center_1f",
+  "bgmTrack": "hoenn/oldale",
+  "people": {
+    "oldale_nurse": { "name": "Nurse", "script": "Nurse" },
+    "gentleman": {
+      "name": "Gentleman",
+      "dialog": [ "The PC over there is free for anyone to use. Pokémon you can't carry are kept safe inside it." ]
+    },
+    "boy_1": {
+      "name": "Boy",
+      "dialog": [ "My Pokémon got so tired on Route 102! A quick visit here and it's raring to go again." ]
+    },
+    "girl_3": {
+      "name": "Girl",
+      "dialog": [ "Pokémon Centers never close. You can come in at midnight and the nurse will still be smiling!" ]
+    }
+  }
+}

@@ -23,7 +23,7 @@ public class RegionRecordTests
 
     private static Region Of(string id) => RegionDatabase.Get(id)!;
 
-    private static readonly string[] FilesRegions = { RegionDatabase.Kanto, RegionDatabase.Sinnoh };
+    private static readonly string[] FilesRegions = { RegionDatabase.Kanto, RegionDatabase.Sinnoh, RegionDatabase.Hoenn };
 
     [Fact]
     public void EveryRegionWithAFileHasWhatAnIntroductionAndABriefcaseNeed()
@@ -51,9 +51,9 @@ public class RegionRecordTests
                 Assert.False(string.IsNullOrWhiteSpace((string)property.GetValue(professor.Lines)!), $"{id}'s {property.Name}");
         }
         // The record of a region without a file is empty, not missing
-        Assert.Null(Of(RegionDatabase.Hoenn).File);
-        Assert.Empty(Of(RegionDatabase.Hoenn).Starters);
-        Assert.False(Of(RegionDatabase.Hoenn).HasStory);
+        Assert.Null(Of(RegionDatabase.Unova).File);
+        Assert.Empty(Of(RegionDatabase.Unova).Starters);
+        Assert.False(Of(RegionDatabase.Unova).HasStory);
     }
 
     [Fact]

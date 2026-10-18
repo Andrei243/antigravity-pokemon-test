@@ -634,6 +634,19 @@ public static class WorldMapBuilder
         _ => InteriorStyle.House
     };
 
+    /// <summary>
+    /// What a building is by the key of the area its door leads into, for a door kept shut whose room isn't built
+    /// (<c>petalburg_city_gym</c>): the same words as <see cref="MapStructures.KindOfDoor"/> reads in a map's name.
+    /// </summary>
+    public static BuildingKind KindOfArea(string key) => key switch
+    {
+        _ when key.Contains("pokemon_center") => BuildingKind.PokemonCenter,
+        _ when key.EndsWith("_mart") => BuildingKind.PokeMart,
+        _ when key.EndsWith("_gym") || key.Contains("_gym_") => BuildingKind.Gym,
+        _ when key.EndsWith("_lab") => BuildingKind.Lab,
+        _ => BuildingKind.House
+    };
+
     /// <summary>How far a building found at its door reaches: a GBA game's largest houses and halls fit.</summary>
     public const int DoorBuildingWidth = 16, DoorBuildingDepth = 12;
 
@@ -651,9 +664,13 @@ public static class WorldMapBuilder
         var blank = new HashSet<(int X, int Z)>(unnamedBlocked);
         var buildings = new List<BuildingInfo>();
         var taken = new HashSet<(int X, int Z)>();
-        foreach (var warp in map.Warps.OrderBy(w => w.SourceY).ThenBy(w => w.SourceX))
+        // Every way in, and the doors an overlay keeps shut (plan 21 · H1: Petalburg's Gym), which lead nowhere yet but
+        // are a building's doors all the same, of the kind the shut door was noted as (Map.BuildingKinds)
+        var ways = map.Warps.Select(w => (X: w.SourceX, Y: w.SourceY, Target: (string?)w.TargetMap))
+            .Concat(map.BuildingKinds.Keys.Where(k => map.GetWarpAt(k.X, k.Y) == null).Select(k => (k.X, k.Y, Target: (string?)null)));
+        foreach (var warp in ways.OrderBy(w => w.Y).ThenBy(w => w.X).ToList())
         {
-            int dx = warp.SourceX, dz = warp.SourceY;
+            int dx = warp.X, dz = warp.Y;
             if (!map.InBounds(dx, dz) || taken.Contains((dx, dz))) continue;
             bool isDoor = map.BehaviourAt(dx, dz) == TileBehavior.Door;
             if (!isDoor && (map.IsSolid(dx, dz) || !blank.Contains((dx, dz + 1)) && !blank.Contains((dx, dz - 1)))) continue;
@@ -715,7 +732,7 @@ public static class WorldMapBuilder
             var info = new BuildingInfo
             {
                 X0 = x0, Y0 = z0, X1 = x1, Y1 = z1, RoofTile = TileType.RoofRed, TownsRoof = true,
-                Kind = MapStructures.KindOfDoor(warp.TargetMap) ?? BuildingKind.House
+                Kind = map.BuildingKinds.TryGetValue((dx, dz), out var noted) ? noted : MapStructures.KindOfDoor(warp.Target) ?? BuildingKind.House
             };
             // The house stands on the ground before its door: its tiles were raised as bare rock while nobody knew what
             // they were (RaiseRock), and a house on that would stand on a plinth (plan 19 · K1)
@@ -1394,7 +1411,7 @@ public static class WorldMapBuilder
     private static bool FencesInWood(Architecture? town) =>
         town is Architecture.Timber or Architecture.Plaster or Architecture.Clapboard or Architecture.Cottage or Architecture.Farm
             or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber or Architecture.Evergreen or Architecture.Breeze
-            or Architecture.Bayside;
+            or Architecture.Bayside or Architecture.Sapling or Architecture.Meadow;
 
     /// <summary>
     /// Cuts a set of tiles into rectangles, the largest first: a house is one, a museum with a wing two. Ties go
@@ -2021,9 +2038,10 @@ public static class WorldMapBuilder
     public static PropType? ObstacleFor(string looks) => looks switch
     {
         // (HeartGold's small tree is "tree", plan 20 · J2)
-        "cut_tree" or "tree" => PropType.CutTree,
-        "rock_smash" or "breakrock" => PropType.CrackedRock,
-        "strength_boulder" => PropType.StrengthBoulder,
+        // (and Emerald's, plan 21 · H1)
+        "cut_tree" or "tree" or "cuttable_tree" => PropType.CutTree,
+        "rock_smash" or "breakrock" or "breakable_rock" => PropType.CrackedRock,
+        "strength_boulder" or "pushable_boulder" => PropType.StrengthBoulder,
         _ => null
     };
 
@@ -2264,8 +2282,13 @@ public static class WorldMapBuilder
 
         for (int i = 0; i < file.Warps.Count; i++)
         {
-            if (overlay?.Locked?.Contains(i) == true) continue;
             var from = file.Warps[i];
+            if (overlay?.Locked?.Contains(i) == true)
+            {
+                // A shut door of a world whose houses are found at their doors is still its building's door (plan 21 · H1)
+                if (world.Index.BuildingsAtDoors) map.BuildingKinds[(from.X, from.Z)] = KindOfArea(from.To);
+                continue;
+            }
             Warp? warp = null;
             if (overlay?.Doors?.FirstOrDefault(d => d.Warp == i) is { } door)
             {

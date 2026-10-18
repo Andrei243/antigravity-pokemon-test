@@ -362,7 +362,26 @@ public static class RegionDatabase
                 "Route32_PokemonCenter_1F", "Route32_PokemonCenter_B1F", "Route32_RuinsOfAlphGate",
             }
         },
-        new() { Id = Hoenn, Name = "Hoenn", Generation = 3 },
+        new()
+        {
+            Id = Hoenn, Name = "Hoenn", Generation = 3, File = RegionFiles.Load(Hoenn),
+            // Emerald's Hoenn, read by the GBA reader (plan 21 · H1). Until its story is written (H2: the van, Mom and
+            // the clock) a new game begun there stands before the family's house in Littleroot Town, Emerald's spot
+            // for a white-out at home, with the first of Birch's three and a few items, as Kanto's first session did;
+            // a Champion come across stands there too
+            Start = new MapSpot("Hoenn", 125, 291, Direction.Down),
+            Maps = new[]
+            {
+                "Hoenn",
+                // Plan 21 · H1: Littleroot Town's rooms, Oldale Town's and Petalburg City's, each a matrix of the import
+                // built from its layout
+                "LittlerootTown_BrendansHouse_1F", "LittlerootTown_BrendansHouse_2F", "LittlerootTown_MaysHouse_1F",
+                "LittlerootTown_MaysHouse_2F", "LittlerootTown_ProfessorBirchsLab",
+                "OldaleTown_House1", "OldaleTown_House2", "OldaleTown_PokemonCenter_1F", "OldaleTown_PokemonCenter_2F", "OldaleTown_Mart",
+                "PetalburgCity_WallysHouse", "PetalburgCity_House1", "PetalburgCity_House2",
+                "PetalburgCity_PokemonCenter_1F", "PetalburgCity_PokemonCenter_2F", "PetalburgCity_Mart",
+            }
+        },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },
         new() { Id = Alola, Name = "Alola", Generation = 7 },

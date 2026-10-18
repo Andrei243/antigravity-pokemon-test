@@ -1,0 +1,42 @@
+{
+  // What is built of Hoenn so far (plan 21). The maps are Emerald's, read by tools/MapImporter's GBA reader
+  // (plan 18 · W6, W7: --game emerald); "maps" are the maps the game makes from its matrices, "areas" the areas
+  // open to walk in. After adding an area, run `dotnet run --project tools/MapImporter -- --game emerald --data`
+  // and write its overlay (overlays/<key>.json). A room is a matrix of its own built from its layout ("Indoors").
+  // The sea floor (Emerald's underwater maps, which the reader keeps as matrices of their own for now) is plan 21 · H5's.
+  "region": "Hoenn",
+  // A GBA game's houses are drawn into its tiles: each is found at its door (WorldMapBuilder.BuildingsAtDoors)
+  "buildingsAtDoors": true,
+  "maps": [
+    // The overworld: Emerald's connected maps stitched into one, Littleroot Town at its south-west
+    { "name": "Hoenn", "matrix": 0, "trees": "Round" },
+    // Plan 21 · H1: Littleroot Town's rooms (the two families' houses on both floors and Professor Birch's lab),
+    // Oldale Town's and Petalburg City's but its Gym
+    { "name": "LittlerootTown_BrendansHouse_1F", "matrix": 6, "area": "littleroot_town_brendans_house_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LittlerootTown_BrendansHouse_2F", "matrix": 7, "area": "littleroot_town_brendans_house_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LittlerootTown_MaysHouse_1F", "matrix": 8, "area": "littleroot_town_mays_house_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LittlerootTown_MaysHouse_2F", "matrix": 9, "area": "littleroot_town_mays_house_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LittlerootTown_ProfessorBirchsLab", "matrix": 10, "area": "littleroot_town_professor_birchs_lab", "trees": "Round", "setting": "Indoors" },
+    { "name": "OldaleTown_House1", "matrix": 11, "area": "oldale_town_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "OldaleTown_House2", "matrix": 12, "area": "oldale_town_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "OldaleTown_PokemonCenter_1F", "matrix": 13, "area": "oldale_town_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "OldaleTown_PokemonCenter_2F", "matrix": 14, "area": "oldale_town_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "OldaleTown_Mart", "matrix": 15, "area": "oldale_town_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "PetalburgCity_WallysHouse", "matrix": 53, "area": "petalburg_city_wallys_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "PetalburgCity_House1", "matrix": 55, "area": "petalburg_city_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "PetalburgCity_House2", "matrix": 56, "area": "petalburg_city_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "PetalburgCity_PokemonCenter_1F", "matrix": 57, "area": "petalburg_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PetalburgCity_PokemonCenter_2F", "matrix": 58, "area": "petalburg_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PetalburgCity_Mart", "matrix": 59, "area": "petalburg_city_mart", "trees": "Round", "setting": "Indoors" }
+  ],
+  "areas": [
+    // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
+    "littleroot_town", "route_101", "oldale_town", "route_102", "route_103", "petalburg_city",
+    "littleroot_town_brendans_house_1f", "littleroot_town_brendans_house_2f", "littleroot_town_mays_house_1f",
+    "littleroot_town_mays_house_2f", "littleroot_town_professor_birchs_lab",
+    "oldale_town_house_1", "oldale_town_house_2", "oldale_town_pokemon_center_1f", "oldale_town_pokemon_center_2f", "oldale_town_mart",
+    // Petalburg's Gym, a row of rooms joined by doors that its Leader's scenes open, is plan 21 · H2's
+    "petalburg_city_wallys_house", "petalburg_city_house_1", "petalburg_city_house_2",
+    "petalburg_city_pokemon_center_1f", "petalburg_city_pokemon_center_2f", "petalburg_city_mart"
+  ]
+}

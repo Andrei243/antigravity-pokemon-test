@@ -1,0 +1,14 @@
+{
+  // A house in Oldale Town (plan 21 · H1)
+  "area": "oldale_town_house_1",
+  "bgmTrack": "hoenn/oldale",
+  "people": {
+    "woman_2": {
+      "name": "Woman",
+      "dialog": [
+        "When I was a girl, trainers came through here from all over Hoenn on their way to Petalburg.",
+        "They still do. Every one of them looks so excited."
+      ]
+    }
+  }
+}

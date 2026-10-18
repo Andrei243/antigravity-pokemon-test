@@ -1,0 +1,77 @@
+{
+  "key": "route_102",
+  "index": 4,
+  "name": "Route 102",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE101",
+  "nightMusic": "MUS_ROUTE101",
+  "encounters": "route_102",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Poochyena", "level": 3 },
+    { "species": "Wurmple", "level": 3 },
+    { "species": "Poochyena", "level": 4 },
+    { "species": "Wurmple", "level": 4 },
+    { "species": "Lotad", "level": 3 },
+    { "species": "Lotad", "level": 4 },
+    { "species": "Zigzagoon", "level": 3 },
+    { "species": "Zigzagoon", "level": 3 },
+    { "species": "Zigzagoon", "level": 4 },
+    { "species": "Ralts", "level": 4 },
+    { "species": "Zigzagoon", "level": 4 },
+    { "species": "Seedot", "level": 3 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Marill", "level": 20, "maxLevel": 30 },
+    { "species": "Marill", "level": 10, "maxLevel": 20 },
+    { "species": "Marill", "level": 30, "maxLevel": 35 },
+    { "species": "Marill", "level": 5, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Corphish", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Corphish", "level": 25, "maxLevel": 30 },
+    { "species": "Corphish", "level": 30, "maxLevel": 35 },
+    { "species": "Corphish", "level": 20, "maxLevel": 25 },
+    { "species": "Corphish", "level": 35, "maxLevel": 40 },
+    { "species": "Corphish", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [],
+  "objects": [
+    { "id": "little_boy", "looks": "little_boy", "movement": "look_around", "x": 88, "z": 253, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route102_EventScript_LittleBoy" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 103, "z": 256, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_CALVIN_1" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "look_north", "x": 95, "z": 257, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_RICK" },
+    { "id": "lass", "looks": "lass", "movement": "look_south_and_east", "x": 78, "z": 249, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TIANA" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "wander_around", "x": 107, "z": 246, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route102_EventScript_Boy" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 81, "z": 257, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_102_POTION", "item": "Potion", "script": "Route102_EventScript_ItemPotion" },
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 94, "z": 244, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "BerryTreeScript" },
+    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 95, "z": 244, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "BerryTreeScript" },
+    { "id": "youngster_2", "looks": "youngster", "movement": "look_south", "x": 89, "z": 246, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_ALLEN" }
+  ],
+  "signs": [
+    { "x": 87, "z": 244, "type": 0, "script": "Route102_EventScript_RouteSignPetalburg" },
+    { "x": 110, "z": 251, "type": 0, "script": "Route102_EventScript_RouteSignOldale" }
+  ],
+  "triggers": []
+}

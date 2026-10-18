@@ -1,0 +1,45 @@
+{
+  "key": "littleroot_town_brendans_house_2f",
+  "index": 58,
+  "name": "Littleroot Town",
+  "matrix": 7,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LITTLEROOT",
+  "nightMusic": "MUS_LITTLEROOT",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 1, "to": "littleroot_town_brendans_house_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "rivals_house_2f_rival", "looks": "rival_brendan_normal", "movement": "look_south", "x": 7, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_BEDROOM", "script": "RivalsHouse_2F_EventScript_Rival" },
+    { "id": "var_0", "looks": "var_0", "movement": "look_around", "x": 0, "z": 0, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_1", "script": "" },
+    { "id": "var_1", "looks": "var_1", "movement": "look_around", "x": 0, "z": 1, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_2", "script": "" },
+    { "id": "var_2", "looks": "var_2", "movement": "look_around", "x": 0, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_3", "script": "" },
+    { "id": "var_3", "looks": "var_3", "movement": "look_around", "x": 0, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_4", "script": "" },
+    { "id": "var_4", "looks": "var_4", "movement": "look_around", "x": 0, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_5", "script": "" },
+    { "id": "var_5", "looks": "var_5", "movement": "look_around", "x": 0, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_6", "script": "" },
+    { "id": "var_6", "looks": "var_6", "movement": "look_around", "x": 1, "z": 0, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_7", "script": "" },
+    { "id": "var_7", "looks": "var_7", "movement": "look_around", "x": 1, "z": 1, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_8", "script": "" },
+    { "id": "var_8", "looks": "var_8", "movement": "look_around", "x": 1, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_9", "script": "" },
+    { "id": "var_9", "looks": "var_9", "movement": "look_around", "x": 1, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_10", "script": "" },
+    { "id": "var_a", "looks": "var_a", "movement": "look_around", "x": 1, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_11", "script": "" },
+    { "id": "var_b", "looks": "var_b", "movement": "look_around", "x": 1, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_DECORATION_12", "script": "" },
+    { "id": "players_house_2f_mom", "looks": "mom", "movement": "look_south", "x": 7, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM", "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 3, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_POKE_BALL", "script": "LittlerootTown_BrendansHouse_2F_EventScript_RivalsPokeBall" },
+    { "id": "swablu_doll", "looks": "swablu_doll", "movement": "look_around", "x": 5, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F_SWABLU_DOLL", "script": "" }
+  ],
+  "signs": [
+    { "x": 0, "z": 1, "type": 0, "script": "LittlerootTown_BrendansHouse_2F_EventScript_PC" },
+    { "x": 1, "z": 1, "type": 0, "script": "PlayersHouse_2F_EventScript_Notebook" },
+    { "x": 5, "z": 1, "type": 0, "script": "LittlerootTown_BrendansHouse_2F_EventScript_WallClock" },
+    { "x": 3, "z": 1, "type": 0, "script": "PlayersHouse_2F_EventScript_GameCube" }
+  ],
+  "triggers": []
+}

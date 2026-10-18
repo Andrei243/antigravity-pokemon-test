@@ -1,0 +1,38 @@
+{
+  "key": "littleroot_town_brendans_house_1f",
+  "index": 57,
+  "name": "Littleroot Town",
+  "matrix": 6,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_LITTLEROOT",
+  "nightMusic": "MUS_LITTLEROOT",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 8, "to": "littleroot_town", "toWarp": 1 },
+    { "x": 8, "z": 8, "to": "littleroot_town", "toWarp": 1 },
+    { "x": 8, "z": 2, "to": "littleroot_town_brendans_house_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "players_house_1f_mom", "looks": "mom", "movement": "look_east", "x": 2, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_MOM", "script": "PlayersHouse_1F_EventScript_Mom" },
+    { "id": "vigoroth_carrying_box", "looks": "vigoroth_carrying_box", "movement": "walk_east_and_west", "x": 1, "z": 3, "facing": 3, "rangeX": 3, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2", "script": "PlayersHouse_1F_EventScript_Vigoroth2" },
+    { "id": "vigoroth_facing_away", "looks": "vigoroth_facing_away", "movement": "walk_in_place_north", "x": 4, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1", "script": "PlayersHouse_1F_EventScript_Vigoroth1" },
+    { "id": "rivals_house_1f_mom", "looks": "woman_4", "movement": "look_east", "x": 2, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_MOM", "script": "RivalsHouse_1F_EventScript_RivalMom" },
+    { "id": "players_house_1f_dad", "looks": "norman", "movement": "look_west", "x": 5, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_PLAYERS_HOUSE_DAD", "script": "" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "wander_west_and_east", "x": 1, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_RIVAL_SIBLING", "script": "RivalsHouse_1F_EventScript_RivalSibling" },
+    { "id": "rivals_house_1f_rival", "looks": "rival_brendan_normal", "movement": "look_north", "x": 8, "z": 8, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_BRENDAN", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 8, "z": 8, "width": 1, "depth": 1, "script": "LittlerootTown_BrendansHouse_1F_EventScript_GoSeeRoom", "variable": "VAR_LITTLEROOT_INTRO_STATE", "value": "4" },
+    { "x": 7, "z": 3, "width": 1, "depth": 1, "script": "LittlerootTown_BrendansHouse_1F_EventScript_MeetRival0", "variable": "VAR_LITTLEROOT_RIVAL_STATE", "value": "2" },
+    { "x": 8, "z": 4, "width": 1, "depth": 1, "script": "LittlerootTown_BrendansHouse_1F_EventScript_MeetRival1", "variable": "VAR_LITTLEROOT_RIVAL_STATE", "value": "2" },
+    { "x": 9, "z": 3, "width": 1, "depth": 1, "script": "LittlerootTown_BrendansHouse_1F_EventScript_MeetRival2", "variable": "VAR_LITTLEROOT_RIVAL_STATE", "value": "2" }
+  ]
+}

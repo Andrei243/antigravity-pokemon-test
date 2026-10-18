@@ -1,0 +1,11 @@
+{
+  // Petalburg City's Poké Mart (plan 21 · H1)
+  "area": "petalburg_city_mart",
+  "bgmTrack": "hoenn/petalburg",
+  "people": {
+    "petalburg_mart_clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! What can I get for you?" ] },
+    "man_1": { "name": "Man", "dialog": [ "A Repel keeps weak Pokémon away for a while. Handy when you just want to get somewhere." ] },
+    "boy_1": { "name": "Boy", "dialog": [ "I always buy one more Potion than I think I need. Then I never run out." ] },
+    "woman_2": { "name": "Woman", "dialog": [ "The Gym Leader's family shops here sometimes. Such polite people." ] }
+  }
+}

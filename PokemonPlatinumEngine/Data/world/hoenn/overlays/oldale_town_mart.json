@@ -1,0 +1,10 @@
+{
+  // Oldale Town's Poké Mart (plan 21 · H1)
+  "area": "oldale_town_mart",
+  "bgmTrack": "hoenn/oldale",
+  "people": {
+    "oldale_mart_clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! What can I get for you?" ] },
+    "woman_5": { "name": "Woman", "dialog": [ "An Antidote is cheap and it saves a lot of worry. Poison wears a Pokémon down with every step." ] },
+    "boy_1": { "name": "Boy", "dialog": [ "I saved up for a whole week to buy one Poké Ball. I'm saving it for something really special." ] }
+  }
+}

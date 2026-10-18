@@ -1,0 +1,27 @@
+{
+  "key": "petalburg_city_house_1",
+  "index": 106,
+  "name": "Petalburg City",
+  "matrix": 55,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG",
+  "nightMusic": "MUS_PETALBURG",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 8, "to": "petalburg_city", "toWarp": 0 },
+    { "x": 4, "z": 8, "to": "petalburg_city", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "girl_1", "looks": "girl_1", "movement": "wander_around", "x": 7, "z": 4, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "PetalburgCity_House1_EventScript_Woman" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_south", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "PetalburgCity_House1_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}
