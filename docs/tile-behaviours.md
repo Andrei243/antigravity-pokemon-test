@@ -303,10 +303,10 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_SOOTOPOLIS_DEEP_WATER` |  | 0x14 | `DeepWater` | `0xED` |  | 19 |
 | `MB_SOUTHWARD_CURRENT` | 0x53 | 0x53 | `CurrentSouth` | `0xF6` | 45 | 165 |
 | `MB_SOUTH_ARROW_WARP` | 0x65 | 0x65 | `ExitSouth` | `0x6F` | 282 | 651 |
-| `MB_SPIN_DOWN` | 0x57 |  | `Spinner` | `0xF7` | 52 |  |
-| `MB_SPIN_LEFT` | 0x55 |  | `Spinner` | `0xF7` | 45 |  |
-| `MB_SPIN_RIGHT` | 0x54 |  | `Spinner` | `0xF7` | 38 |  |
-| `MB_SPIN_UP` | 0x56 |  | `Spinner` | `0xF7` | 51 |  |
+| `MB_SPIN_DOWN` | 0x57 |  | `SlideSouth` | `0x43` | 52 |  |
+| `MB_SPIN_LEFT` | 0x55 |  | `SlideWest` | `0x41` | 45 |  |
+| `MB_SPIN_RIGHT` | 0x54 |  | `SlideEast` | `0x40` | 38 |  |
+| `MB_SPIN_UP` | 0x56 |  | `SlideNorth` | `0x42` | 51 |  |
 | `MB_STAIRS_OUTSIDE_ABANDONED_SHIP` |  | 0x1B | `None` (not in the table) | `0x00` |  | 1 |
 | `MB_STOP_SPINNING` | 0x58 |  | `Spinner` | `0xF7` | 49 |  |
 | `MB_STRENGTH_BUTTON` | 0x20 |  | `None` (not in the table) | `0x00` | 15 |  |
@@ -367,7 +367,7 @@ The values of the GBA's own, and what the game does with each today:
 | `0xF4` | `CurrentWest` | Water that carries a surfer west (the GBA's). | **Rule.** Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn). |
 | `0xF5` | `CurrentNorth` | Water that carries a surfer north (the GBA's). | **Rule.** Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn). |
 | `0xF6` | `CurrentSouth` | Water that carries a surfer south (the GBA's). | **Rule.** Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn). |
-| `0xF7` | `Spinner` | A floor that sets whoever steps on it spinning along until a stop (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xF7` | `Spinner` | The tile a GBA spin stops on: a spin begun on an arrow (a slide) goes on over plain floor until one. | **Rule.** Ends a GBA spin: one begun on an arrow goes on over plain floor until a stop (FieldMovement.Spins). |
 | `0xF8` | `SecretBaseSpot` | A hollow, a bush or a tree where a secret base can be made (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
 | `0xF9` | `RailNorthSouth` | A rail running north to south, hopped along on the Acro Bike (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
 | `0xFA` | `RailEastWest` | A rail running east to west, hopped along on the Acro Bike (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |

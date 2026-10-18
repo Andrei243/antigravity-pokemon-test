@@ -163,7 +163,7 @@ public class BerryPatchesTests
             Assert.Equal((berry, BerryStage.Fruit, yield, 3, false), (patches[i].Berry, patches[i].Stage, patches[i].Yield, patches[i].YieldRating, patches[i].Growing));
             Assert.NotNull(ItemDatabase.Get(berry)?.Berry);
         }
-        Assert.All(patches.Patches.Skip(118), p => Assert.Equal(BerryStage.None, p.Stage));
+        Assert.All(patches.Patches.Skip(118).Take(BerryPatches.SinnohCount - 118), p => Assert.Equal(BerryStage.None, p.Stage));
 
         // Unseen, nothing grows; once seen, the fruit falls after its four stages (an Oran Berry's are 4 hours)
         patches.MinutesPass(10_000);

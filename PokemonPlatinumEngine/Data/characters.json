@@ -308,7 +308,7 @@
     "gsleader3": "whitney", "gsleader4": "morty", "dancer": "kimono_girl", "itako": "channeler", "minaki": "Gentleman",
     "masaki": "Gentleman", "kurumi": "Lass", "workman": "Gentleman", "babyboy1_2": "Youngster",
     // Plan 21 · H2, part b: Emerald's looks of the road to Rustboro that have one of their own now
-    "aqua_member_m": "aqua_grunt", "aqua_member_f": "aqua_grunt", "devon_employee": "devon_employee"
+    "aqua_member_m": "aqua_grunt", "aqua_member_f": "aqua_grunt"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field
