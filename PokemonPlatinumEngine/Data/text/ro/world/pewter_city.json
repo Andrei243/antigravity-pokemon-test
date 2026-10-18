@@ -1,0 +1,134 @@
+{
+  "people": {
+    "pewter_gym_guide": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      }
+    },
+    "pewter_aide": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      }
+    },
+    "pewter_museum_guide": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say Clefairy came down to Mt. Moon from the stars.",
+          "I'd love to see one dancing under the moon!"
+        ],
+        "text": [
+          "Se spune că Clefairy au coborât pe Muntele Lunii din stele.",
+          "Mi-ar plăcea tare să văd unul dansând sub lună!"
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Brock's the only trainer in this town worth worrying about. The rest of us just watch!"
+        ],
+        "text": [
+          "Brock e singurul antrenor din oraș de care să-ți faci griji. Noi, ceilalți, doar ne uităm!"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm spraying Repel round the flowers to keep wild Pokémon out of the garden.",
+          "Gardening is hard work!"
+        ],
+        "text": [
+          "Dau cu Spray în jurul florilor, ca să țin Pokémonii sălbatici departe de grădină.",
+          "Grădinăritul e muncă grea!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PewterCity_EventScript_CitySign": {
+      "en": [
+        "Pewter City\nA stone grey city."
+      ],
+      "text": [
+        "Orașul Pewter\nUn oraș cenușiu ca piatra."
+      ]
+    },
+    "PewterCity_EventScript_MuseumSign": {
+      "en": [
+        "Pewter Museum of Science"
+      ],
+      "text": [
+        "Muzeul de Științe din Pewter"
+      ]
+    },
+    "PewterCity_EventScript_GymSign": {
+      "en": [
+        "Pewter City Pokémon Gym\nLeader: Brock\nThe rock-solid Pokémon trainer!"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Pewter\nLider: Brock\nAntrenorul solid ca stânca!"
+      ]
+    },
+    "PewterCity_EventScript_TrainerTips": {
+      "en": [
+        "TRAINER TIPS\nEvery Pokémon that takes part in a battle\nearns experience, not only the one that wins."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nFiecare Pokémon care ia parte la o luptă\nprimește experiență, nu doar cel care câștigă."
+      ]
+    },
+    "PewterCity_EventScript_PoliceNotice": {
+      "en": [
+        "NOTICE\nThieves have been seen near Mt. Moon.\nPlease report anything suspicious."
+      ],
+      "text": [
+        "ANUNȚ\nAu fost văzuți hoți lângă Muntele Lunii.\nVă rugăm să anunțați orice lucru suspect."
+      ]
+    }
+  }
+}

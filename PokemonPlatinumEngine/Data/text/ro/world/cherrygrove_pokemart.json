@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t21fs0101_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "t21fs0101_shopm1_2_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "t21fs0101_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Potions are cheap here. I always carry three, just in case."
+        ],
+        "text": [
+          "Poțiunile sunt ieftine aici. Eu am mereu trei la mine, pentru orice eventualitate."
+        ]
+      }
+    },
+    "t21fs0101_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "An Antidote cures poison. Some of the bugs on the routes north of here are poisonous."
+        ],
+        "text": [
+          "Un Antidot vindecă otrăvirea. Unele insecte de pe rutele de la nord sunt otrăvitoare."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

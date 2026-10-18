@@ -1,0 +1,41 @@
+{
+  "people": {
+    "r29r0101_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 46 is up ahead. The path is being repaired, so I'm afraid nobody can go through for now."
+        ],
+        "text": [
+          "Mai încolo e Ruta 46. Drumul e în reparații, așa că deocamdată nu poate trece nimeni."
+        ]
+      }
+    },
+    "r29r0101_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The mountain road north of here climbs all the way up to the Dark Cave. Spooky!"
+        ],
+        "text": [
+          "Drumul de munte de la nord urcă până la Peștera Întunecată. Brrr!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

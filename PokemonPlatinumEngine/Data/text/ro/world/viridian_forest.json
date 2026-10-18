@@ -1,0 +1,222 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came in here to catch a Pikachu, but they're so hard to find!",
+          "They say they only turn up once in a while."
+        ],
+        "text": [
+          "Am venit aici să prind un Pikachu, dar sunt atât de greu de găsit!",
+          "Se zice că apar doar din când în când."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Weedle's sting can poison your Pokémon. Watch out for the ones with horns!"
+        ],
+        "text": [
+          "Înțepătura unui Weedle îți poate otrăvi Pokémonul. Ferește-te de cei cu coarne!"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Rick"
+        ],
+        "text": [
+          "Rick"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Rick: Hey! You've got Pokémon! Let's see how they do against my bugs!"
+        ],
+        "text": [
+          "Vânător de insecte Rick: Hei! Ai Pokémoni! Să vedem cum se descurcă împotriva insectelor mele!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Rick: Aww, beaten already! My bugs need more practice."
+        ],
+        "text": [
+          "Vânător de insecte Rick: Of, deja am pierdut! Insectele mele mai au nevoie de exercițiu."
+        ]
+      }
+    },
+    "bug_catcher_2": {
+      "name": {
+        "en": [
+          "Doug"
+        ],
+        "text": [
+          "Doug"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Doug: Bugs are tougher than they look! I'll prove it!"
+        ],
+        "text": [
+          "Vânător de insecte Doug: Insectele sunt mai tari decât par! Îți dovedesc!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Doug: Huh, you know your stuff. I'll catch stronger bugs next time."
+        ],
+        "text": [
+          "Vânător de insecte Doug: Hm, te pricepi. Data viitoare prind insecte mai puternice."
+        ]
+      }
+    },
+    "bug_catcher_3": {
+      "name": {
+        "en": [
+          "Sammy"
+        ],
+        "text": [
+          "Sammy"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Sammy: You can't go through the forest without battling a Bug Catcher!"
+        ],
+        "text": [
+          "Vânător de insecte Sammy: Nu poți trece prin pădure fără să te lupți cu un Vânător de insecte!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Sammy: That's the end of my Pokémon. You win this time!"
+        ],
+        "text": [
+          "Vânător de insecte Sammy: Gata, nu mai am Pokémoni. De data asta ai câștigat!"
+        ]
+      }
+    },
+    "bug_catcher_4": {
+      "name": {
+        "en": [
+          "Anthony"
+        ],
+        "text": [
+          "Anthony"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Anthony: I've been waiting in this spot all day. Battle me!"
+        ],
+        "text": [
+          "Vânător de insecte Anthony: Aștept în locul ăsta de dimineață. Luptă cu mine!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Anthony: I should have waited somewhere else."
+        ],
+        "text": [
+          "Vânător de insecte Anthony: Trebuia să aștept în altă parte."
+        ]
+      }
+    },
+    "bug_catcher_5": {
+      "name": {
+        "en": [
+          "Charlie"
+        ],
+        "text": [
+          "Charlie"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Charlie: My friends and I hide out here. You found me, so let's battle!"
+        ],
+        "text": [
+          "Vânător de insecte Charlie: Eu și prietenii mei ne ascundem aici. M-ai găsit, deci hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Charlie: The way out is just north of here. Good luck in Pewter!"
+        ],
+        "text": [
+          "Vânător de insecte Charlie: Ieșirea e chiar la nord de aici. Baftă în Pewter!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ViridianForest_EventScript_TrainerTips1": {
+      "en": [
+        "TRAINER TIPS\nTall grass is where wild Pokémon hide.\nTake a Pokémon that can fight before you go in."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nÎn iarba înaltă se ascund Pokémonii sălbatici.\nIa un Pokémon care se poate lupta înainte să intri."
+      ]
+    },
+    "ViridianForest_EventScript_TrainerTips2": {
+      "en": [
+        "TRAINER TIPS\nA poisoned Pokémon loses HP as it walks.\nAn Antidote cures it."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nUn Pokémon otrăvit pierde HP cât merge.\nUn Antidot îl vindecă."
+      ]
+    },
+    "ViridianForest_EventScript_TrainerTips3": {
+      "en": [
+        "TRAINER TIPS\nA Pokémon that faints wins no EXP.\nSwitch out one that is about to faint."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nUn Pokémon care leșină nu primește Puncte EXP.\nSchimbă-l pe cel care e pe cale să leșine."
+      ]
+    },
+    "ViridianForest_EventScript_TrainerTips4": {
+      "en": [
+        "TRAINER TIPS\nWeaken a wild Pokémon before you\nthrow a Poké Ball at it."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nSlăbește un Pokémon sălbatic înainte\nsă arunci un Poké Ball spre el."
+      ]
+    },
+    "ViridianForest_EventScript_TrainerTips5": {
+      "en": [
+        "TRAINER TIPS\nBug Catchers lie in wait among the trees.\nBe ready when they see you!"
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nVânătorii de insecte pândesc printre copaci.\nFii gata când te văd!"
+      ]
+    },
+    "ViridianForest_EventScript_ExitSign": {
+      "en": [
+        "Leaving Viridian Forest\nPewter City ahead"
+      ],
+      "text": [
+        "Ieșirea din Pădurea Viridian\nÎnainte: Orașul Pewter"
+      ]
+    }
+  }
+}

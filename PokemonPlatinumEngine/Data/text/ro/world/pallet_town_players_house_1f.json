@@ -1,0 +1,34 @@
+{
+  "people": {
+    "mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You look worn out, dear. Sit down and rest a while.",
+          "There! You and your Pokémon look much better now. Look after yourselves out there."
+        ],
+        "text": [
+          "Se vede pe tine oboseala, puiule. Stai jos și odihnește-te puțin.",
+          "Gata! Acum tu și Pokémonii tăi arătați mult mai bine. Aveți grijă de voi pe drum."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PalletTown_PlayersHouse_1F_EventScript_TV": {
+      "en": [
+        "A film is on the television.\nFour kids are walking along a railway line..."
+      ],
+      "text": [
+        "La televizor e un film.\nPatru copii merg de-a lungul unei căi ferate..."
+      ]
+    }
+  }
+}

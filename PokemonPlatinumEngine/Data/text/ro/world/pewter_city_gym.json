@@ -1,0 +1,60 @@
+{
+  "people": {
+    "brock": {
+      "name": {
+        "en": [
+          "Brock"
+        ],
+        "text": [
+          "Brock"
+        ]
+      }
+    },
+    "gym_guy": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          "Ghidul Arenei"
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Liam"
+        ],
+        "text": [
+          "Liam"
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Liam: Stop right there! You're a hundred years too early to face Brock!"
+        ],
+        "text": [
+          "Campist Liam: Stai pe loc! Mai ai o sută de ani până să-l înfrunți pe Brock!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Liam: Rock beat... I mean, you beat my rocks. Brock's even tougher, though!"
+        ],
+        "text": [
+          "Campist Liam: Piatra a bătut... adică, mi-ai bătut pietrele. Dar Brock e și mai tare!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PewterCity_Gym_EventScript_GymStatue": {
+      "en": [
+        "Pewter City Pokémon Gym\nLeader: Brock"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Pewter\nLider: Brock"
+      ]
+    }
+  }
+}

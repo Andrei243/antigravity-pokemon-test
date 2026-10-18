@@ -214,7 +214,9 @@ public sealed class HallOfFameCeremony
     public CeremonyCard CardOf(Pokemon pokemon)
     {
         var (name, id) = pokemon.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (player, trainerId);
-        string met = pokemon.MetLocation is not { Length: > 0 } place ? Text.Of("ceremony.metAlong")
+        // The place a Pokémon keeps is the English identifier; the card shows it as the language names it (plan 17 · N6c)
+        string place = pokemon.MetLocation is { Length: > 0 } kept ? Data.LocalNames.PlaceShown(null, kept) : "";
+        string met = place.Length == 0 ? Text.Of("ceremony.metAlong")
             : pokemon.MetLevel == 0 ? Text.Of("ceremony.hatchedAt", ("place", place))
             : Text.Of("ceremony.metAt", ("place", place), ("level", pokemon.MetLevel));
         var types = new List<PokemonType> { pokemon.PrimaryType };

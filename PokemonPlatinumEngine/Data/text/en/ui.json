@@ -634,6 +634,7 @@
   },
   "boxes": {
     "title": "PC BOXES",
+    "defaultName": "Box {number}",
     "party": "PARTY  {count} / {max}",
     "changeBoxNote": "Left and right change box.",
     "emptyPlace": "An empty place.",

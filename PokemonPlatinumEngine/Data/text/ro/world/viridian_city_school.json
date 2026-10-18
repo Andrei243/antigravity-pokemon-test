@@ -1,0 +1,66 @@
+{
+  "people": {
+    "school_woman": {
+      "name": {
+        "en": [
+          "Teacher"
+        ],
+        "text": [
+          "Profesoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Read the blackboard carefully, everyone. There will be a test!"
+        ],
+        "text": [
+          "Citiți tabla cu atenție, toată lumea. O să dăm test!"
+        ]
+      }
+    },
+    "school_lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          "Domnișoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm copying out the blackboard. A poisoned Pokémon loses a little health with every step."
+        ],
+        "text": [
+          "Copiez ce scrie pe tablă. Un Pokémon otrăvit pierde puțin HP la fiecare pas."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ViridianCity_School_EventScript_Blackboard": {
+      "en": [
+        "The blackboard lists what each status condition does to a Pokémon."
+      ],
+      "text": [
+        "Pe tablă scrie ce îi face fiecare stare unui Pokémon."
+      ]
+    },
+    "ViridianCity_School_EventScript_Notebook": {
+      "en": [
+        "A notebook, open at a page about Poké Balls."
+      ],
+      "text": [
+        "Un caiet, deschis la o pagină despre Poké Ball."
+      ]
+    },
+    "ViridianCity_School_EventScript_PokemonJournal": {
+      "en": [
+        "A Pokémon magazine.\nThis month: the Gym Leaders of Kanto."
+      ],
+      "text": [
+        "O revistă despre Pokémoni.\nLuna asta: Liderii Arenelor din Kanto."
+      ]
+    }
+  }
+}

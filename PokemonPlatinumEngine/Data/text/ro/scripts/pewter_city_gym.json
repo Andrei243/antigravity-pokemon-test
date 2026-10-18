@@ -1,0 +1,134 @@
+{
+  "Brock": [
+    {
+      "en": [
+        "Brock"
+      ],
+      "text": [
+        "Brock"
+      ]
+    },
+    {
+      "en": [
+        "So you're the new challenger. I'm Brock, Pewter's Gym Leader."
+      ],
+      "text": [
+        "Deci tu ești noul provocator. Eu sunt Brock, Liderul Arenei din Pewter."
+      ]
+    },
+    {
+      "en": [
+        "I believe in rock-hard defence and unshakable will. My Pokémon are Rock types, solid to the core."
+      ],
+      "text": [
+        "Eu cred într-o apărare tare ca piatra și o voință de neclintit. Pokémonii mei sunt de tip Piatră, solizi până-n măduvă."
+      ]
+    },
+    {
+      "en": [
+        "Show me what you've got!"
+      ],
+      "text": [
+        "Arată-mi ce poți!"
+      ]
+    },
+    {
+      "en": [
+        "...I misjudged you. You and your Pokémon fought as one. That deserves the Boulder Badge."
+      ],
+      "text": [
+        "...Te-am judecat greșit. Tu și Pokémonii tăi ați luptat ca unul singur. Asta merită Insigna Bolovan."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Boulder Badge from Brock!"
+      ],
+      "text": [
+        "{player} a primit Insigna Bolovan de la Brock!"
+      ]
+    },
+    {
+      "en": [
+        "With it, Flash can be used outside battle, and Pokémon you get in trades will listen to you a little better."
+      ],
+      "text": [
+        "Cu ea poți folosi Bliț în afara luptei, iar Pokémonii primiți la schimb o să te asculte ceva mai bine."
+      ]
+    },
+    {
+      "en": [
+        "Wait, take this as well. It's a TM of my own choosing."
+      ],
+      "text": [
+        "Stai, ia și asta. E un TM ales chiar de mine."
+      ]
+    },
+    {
+      "en": [
+        "TM39 holds Rock Tomb. It drops rocks on the foe and slows it down. A move worthy of a Pewter trainer."
+      ],
+      "text": [
+        "TM39 conține Mormânt de Piatră. Prăvălește stânci peste inamic și îl încetinește. O mișcare demnă de Pewter."
+      ]
+    },
+    {
+      "en": [
+        "There are other Gyms all over Kanto, each tougher than the last. Go and test yourself against them."
+      ],
+      "text": [
+        "Prin tot Kanto sunt și alte Arene, fiecare mai grea decât cea dinainte. Du-te și pune-te la încercare."
+      ]
+    },
+    {
+      "en": [
+        "The world is big, and there are trainers far stronger than me out there. Keep at it!"
+      ],
+      "text": [
+        "Lumea e mare, și pe-acolo sunt antrenori mult mai puternici decât mine. Nu te lăsa!"
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        "Ghidul Arenei"
+      ]
+    },
+    {
+      "en": [
+        "Hey, future Champion! Brock's Pokémon are Rock types, hard as stone."
+      ],
+      "text": [
+        "Hei, tu, cu stofă de Campion! Pokémonii lui Brock sunt de tip Piatră, tari ca stânca."
+      ]
+    },
+    {
+      "en": [
+        "Normal moves bounce right off them. Water and Grass moves are what they hate."
+      ],
+      "text": [
+        "Mișcările de tip Normal ricoșează din ei. Mișcările de tip Apă și Iarbă le detestă."
+      ]
+    },
+    {
+      "en": [
+        "If your Pokémon can't do either, train up a bit more before you take him on!"
+      ],
+      "text": [
+        "Dacă Pokémonii tăi nu știu niciuna, mai antrenează-te puțin înainte să te lupți cu el!"
+      ]
+    },
+    {
+      "en": [
+        "You beat Brock! I knew you had what it takes. Champion material, that's you!"
+      ],
+      "text": [
+        "L-ai învins pe Brock! Știam că poți. Ai stofă de Campion!"
+      ]
+    }
+  ]
+}

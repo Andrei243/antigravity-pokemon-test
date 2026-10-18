@@ -1,0 +1,41 @@
+{
+  "people": {
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon learns new moves as it grows. Some of them it can only learn from a TM."
+        ],
+        "text": [
+          "Un Pokémon învață mișcări noi pe măsură ce crește. Pe unele le poate învăța doar dintr-un TM."
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Brock gives every trainer who beats him a TM. I'm going to win one someday!"
+        ],
+        "text": [
+          "Brock dă un TM fiecărui antrenor care-l învinge. Într-o zi o să câștig și eu unul!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

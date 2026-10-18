@@ -1,0 +1,78 @@
+{
+  "people": {
+    "t20_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The wind off the sea never quite stops here. That's what the turbines are for.",
+          "On a blowy day you can hear them humming from one end of town to the other."
+        ],
+        "text": [
+          "Vântul dinspre mare nu se oprește niciodată de tot aici. Pentru asta sunt turbinele.",
+          "Într-o zi cu vânt le auzi zumzăind de la un capăt la altul al orașului."
+        ]
+      }
+    },
+    "t20_gsbigman": {
+      "name": {
+        "en": [
+          "Fat Man"
+        ],
+        "text": [
+          "Bărbatul solid"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Professor Elm's lab is the big building up the lane. He's always buried in his research.",
+          "If you see the light on late at night, that's him, still at it."
+        ],
+        "text": [
+          "Laboratorul Profesorului Elm e clădirea mare de pe ulicioară. E mereu cufundat în cercetări.",
+          "Dacă vezi lumina aprinsă noaptea târziu, el e, încă la lucru."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T20_014+1": {
+      "en": [
+        "New Bark Town\nWhere a fresh wind starts things moving."
+      ],
+      "text": [
+        "Orășelul New Bark\nUnde un vânt proaspăt pune totul în mișcare."
+      ]
+    },
+    "T20_013+1": {
+      "en": [
+        "Elm Pokémon Lab"
+      ],
+      "text": [
+        "Laboratorul Pokémon Elm"
+      ]
+    },
+    "T20_007+1": {
+      "en": [
+        "{player}'s House"
+      ],
+      "text": [
+        "Casa lui {player}"
+      ]
+    },
+    "T20_016+1": {
+      "en": [
+        "{assistant}'s House"
+      ],
+      "text": [
+        "Casa lui {assistant}"
+      ]
+    }
+  }
+}

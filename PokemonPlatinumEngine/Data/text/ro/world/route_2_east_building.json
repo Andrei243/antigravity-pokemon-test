@@ -1,0 +1,43 @@
+{
+  "people": {
+    "scientist": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm one of Professor Oak's aides. I keep an eye on how his Pokédex is coming along.",
+          "Catch plenty of Pokémon and I may have something for you."
+        ],
+        "text": [
+          "Sunt unul dintre asistenții Profesorului Oak. Urmăresc cum merge Pokédexul lui.",
+          "Prinde mulți Pokémoni și s-ar putea să am ceva pentru tine."
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This building is a shortcut through to the other side of the trees. Handy, isn't it?"
+        ],
+        "text": [
+          "Clădirea asta e o scurtătură spre partea cealaltă a copacilor. Practic, nu?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

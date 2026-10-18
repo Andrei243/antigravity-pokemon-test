@@ -1,0 +1,59 @@
+{
+  "people": {
+    "viridian_mart_clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poké Balls are how you catch Pokémon. Buy plenty before you go!"
+        ],
+        "text": [
+          "Cu Poké Ball prinzi Pokémoni. Cumpără destule înainte să pleci!"
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "An Antidote cures poison. Always carry one into Viridian Forest."
+        ],
+        "text": [
+          "Un Antidot vindecă otrăvirea. Ia mereu unul cu tine în Pădurea Viridian."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

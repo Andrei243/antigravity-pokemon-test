@@ -1,0 +1,44 @@
+{
+  "Aide": [
+    {
+      "en": [
+        "Hi! I'm one of Professor Oak's aides. Shall I see how many kinds of Pokémon you've caught?"
+      ],
+      "text": [
+        "Bună! Sunt unul dintre asistenții Profesorului Oak. Să văd câte specii de Pokémoni ai prins?"
+      ]
+    },
+    {
+      "en": [
+        "You've caught {var:CAUGHT} kinds already? Wonderful! The Professor asked me to give you this."
+      ],
+      "text": [
+        "Ai prins deja {var:CAUGHT} specii? Minunat! Profesorul m-a rugat să-ți dau asta."
+      ]
+    },
+    {
+      "en": [
+        "That's Flash. It lights up the darkest caves, as long as you hold the Boulder Badge from Pewter City."
+      ],
+      "text": [
+        "E Bliț. Luminează cele mai întunecate peșteri, dacă ai Insigna Bolovan din Orașul Pewter."
+      ]
+    },
+    {
+      "en": [
+        "Oh. Well, come and see me whenever you like."
+      ],
+      "text": [
+        "A. Ei, treci pe la mine oricând vrei."
+      ]
+    },
+    {
+      "en": [
+        "Hmm, only {var:CAUGHT} so far. Come back once you've caught ten kinds, and I'll have something for you."
+      ],
+      "text": [
+        "Hm, doar {var:CAUGHT} până acum. Revino după ce prinzi zece specii și o să am ceva pentru tine."
+      ]
+    }
+  ]
+}

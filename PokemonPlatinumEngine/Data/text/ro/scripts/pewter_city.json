@@ -1,0 +1,112 @@
+{
+  "GymGuide": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        "Băiatul"
+      ]
+    },
+    {
+      "en": [
+        "Hey, you're a trainer, right? Brock's always looking for someone new to battle! Come on, the Gym's this way!"
+      ],
+      "text": [
+        "Hei, tu ai Pokémoni, nu? Brock caută mereu pe cineva nou cu care să se lupte! Hai, Arena e pe-aici!"
+      ]
+    },
+    {
+      "en": [
+        "There, that's the Gym. Go on, show Brock what you can do!"
+      ],
+      "text": [
+        "Uite, asta e Arena. Haide, arată-i lui Brock ce poți!"
+      ]
+    }
+  ],
+  "RunningShoes": [
+    {
+      "en": [
+        "Aide"
+      ],
+      "text": [
+        "Asistentul"
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! There you are. Professor Oak asked me to bring you something."
+      ],
+      "text": [
+        "O, {player}! Aici erai. Profesorul Oak m-a rugat să-ți aduc ceva."
+      ]
+    },
+    {
+      "en": [
+        "Your mother sent these to the lab for you. A pair of Running Shoes!"
+      ],
+      "text": [
+        "Mama ta i-a trimis la laborator pentru tine. Pantofii de Alergare!"
+      ]
+    },
+    {
+      "en": [
+        "{player} put on the Running Shoes!"
+      ],
+      "text": [
+        "{player} și-a pus Pantofii de Alergare!"
+      ]
+    },
+    {
+      "en": [
+        "Hold the run button down as you walk, and you'll go twice as fast. There's a note with them, too."
+      ],
+      "text": [
+        "Ține apăsat butonul de alergat cât mergi și o să fugi de două ori mai repede. Au venit și cu un bilet."
+      ]
+    },
+    {
+      "en": [
+        "\"Don't forget to rest when you're tired, and call home now and then. Love, Mom.\""
+      ],
+      "text": [
+        "„Nu uita să te odihnești când obosești și mai sună acasă din când în când. Te pup, Mama.”"
+      ]
+    },
+    {
+      "en": [
+        "Well, I'd better be getting back to the lab. Good luck out there!"
+      ],
+      "text": [
+        "Ei, eu mă întorc la laborator. Baftă pe drum!"
+      ]
+    }
+  ],
+  "MuseumGuide": [
+    {
+      "en": [
+        "Have you been to the Museum of Science yet? It's full of fossils!"
+      ],
+      "text": [
+        "Ai fost deja la Muzeul de Științe? E plin de fosile!"
+      ]
+    },
+    {
+      "en": [
+        "You haven't? You really must. It's just over there, by the big rocks."
+      ],
+      "text": [
+        "N-ai fost? Trebuie neapărat să mergi. E chiar acolo, lângă stâncile mari."
+      ]
+    },
+    {
+      "en": [
+        "Weren't those fossils amazing? Imagine Pokémon that lived so long ago!"
+      ],
+      "text": [
+        "Nu-i așa că fosilele alea erau uimitoare? Gândește-te, Pokémoni care au trăit acum atâta vreme!"
+      ]
+    }
+  ]
+}

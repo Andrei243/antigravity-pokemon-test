@@ -1,0 +1,23 @@
+{
+  "people": {
+    "t21r0401_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My friend down the road loves showing people round. He'd talk the ears off a Donphan if you let him."
+        ],
+        "text": [
+          "Prietenul meu de pe stradă adoră să plimbe oamenii prin oraș. I-ar lua și unui Donphan urechile la vorbă."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

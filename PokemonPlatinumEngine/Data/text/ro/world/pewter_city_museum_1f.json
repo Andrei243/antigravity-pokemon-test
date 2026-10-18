@@ -1,0 +1,112 @@
+{
+  "people": {
+    "museum_scientist1": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That skeleton is from a Pokémon that flew through the skies in ancient times. Imagine it!"
+        ],
+        "text": [
+          "Scheletul ăla e al unui Pokémon care zbura pe cer în vremuri străvechi. Închipuie-ți!"
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This piece of amber has something inside. We're trying to work out what."
+        ],
+        "text": [
+          "Bucata asta de chihlimbar are ceva înăuntru. Încercăm să ne dăm seama ce."
+        ]
+      }
+    },
+    "scientist_2": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We dig fossils out of Mt. Moon. They tell us how Pokémon lived long ago."
+        ],
+        "text": [
+          "Scoatem fosile din Muntele Lunii. Ne spun cum trăiau Pokémonii demult."
+        ]
+      }
+    },
+    "scientist_3": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fossils and Pokémon, Pokémon and fossils. I could talk about them all day."
+        ],
+        "text": [
+          "Fosile și Pokémoni, Pokémoni și fosile. Aș putea vorbi despre ele toată ziua."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PewterCity_Museum_1F_EventScript_AerodactylFossil": {
+      "en": [
+        "A fossil of a flying Pokémon\nfrom long, long ago."
+      ],
+      "text": [
+        "Fosila unui Pokémon zburător\ndin vremuri de demult."
+      ]
+    },
+    "PewterCity_Museum_1F_EventScript_KabutopsFossil": {
+      "en": [
+        "A fossil of a Pokémon\nthat lived in the ancient sea."
+      ],
+      "text": [
+        "Fosila unui Pokémon\ncare trăia în marea străveche."
+      ]
+    },
+    "PewterCity_Museum_1F_EventScript_PokemonJournalBrock": {
+      "en": [
+        "A magazine is open at an interview:\n\"Brock's rock-solid training methods.\""
+      ],
+      "text": [
+        "O revistă e deschisă la un interviu:\n„Metodele de antrenament solide ale lui Brock.”"
+      ]
+    }
+  }
+}

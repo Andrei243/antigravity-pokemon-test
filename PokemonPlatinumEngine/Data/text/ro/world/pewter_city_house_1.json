@@ -1,0 +1,59 @@
+{
+  "people": {
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My son wanted a Pokémon so badly. Now he won't let it out of his sight."
+        ],
+        "text": [
+          "Fiul meu își dorea atât de mult un Pokémon. Acum nu-l scapă din ochi."
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nidoran! Sit! ...Good boy. He's still learning."
+        ],
+        "text": [
+          "Nidoran! Șezi! ...Bravo. Încă învață."
+        ]
+      }
+    },
+    "pewter_house_nidoran": {
+      "name": {
+        "en": [
+          "Nidoran"
+        ],
+        "text": [
+          "Nidoran"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nidoran: Kyuu!"
+        ],
+        "text": [
+          "Nidoran: Kyuu!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

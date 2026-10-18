@@ -1,0 +1,69 @@
+{
+  "people": {
+    "viridian_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon Center heals your team for nothing. Come here whenever you need to."
+        ],
+        "text": [
+          "Un Centru Pokémon îți vindecă echipa gratis. Vino aici oricând ai nevoie."
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The PC in the corner keeps your Pokémon safe when your team is full."
+        ],
+        "text": [
+          "PC-ul din colț îți păstrează Pokémonii în siguranță când echipa e plină."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a Pokémon Center in almost every town. Isn't that handy?"
+        ],
+        "text": [
+          "E un Centru Pokémon în aproape fiecare oraș. Practic, nu?"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

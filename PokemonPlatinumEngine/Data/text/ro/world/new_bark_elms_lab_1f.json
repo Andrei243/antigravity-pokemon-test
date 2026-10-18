@@ -1,0 +1,100 @@
+{
+  "people": {
+    "t20r0101_doctor": {
+      "name": {
+        "en": [
+          "Prof. Elm"
+        ],
+        "text": [
+          "Profesorul Elm"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ah, {player}! Good timing. I was just reading about how some Pokémon only evolve when they're happy.",
+          "Isn't that something? There's so much we still don't understand."
+        ],
+        "text": [
+          "A, {player}! Chiar la timp. Tocmai citeam că unii Pokémoni evoluează doar când sunt fericiți.",
+          "Nu-i așa că e ceva? Sunt atâtea lucruri pe care încă nu le înțelegem."
+        ]
+      }
+    },
+    "t20r0101_assistantm": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The professor forgets to eat when he's on to something. I've started leaving sandwiches on his desk."
+        ],
+        "text": [
+          "Profesorul uită să mănânce când e pe urmele a ceva. Am început să-i las sandvișuri pe birou."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T20R0101_005+1": {
+      "en": [
+        "Books on how Pokémon grow, crammed in two deep."
+      ],
+      "text": [
+        "Cărți despre cum cresc Pokémonii, înghesuite pe două rânduri."
+      ]
+    },
+    "T20R0101_006+1": {
+      "en": [
+        "A whole shelf about Pokémon Eggs. Some of the pages are marked."
+      ],
+      "text": [
+        "Un raft întreg despre Ouă de Pokémon. Unele pagini sunt însemnate."
+      ]
+    },
+    "T20R0101_007+1": {
+      "en": [
+        "Notebooks full of Professor Elm's handwriting. It's hard to read."
+      ],
+      "text": [
+        "Caiete pline cu scrisul Profesorului Elm. E greu de citit."
+      ]
+    },
+    "T20R0101_008+1": {
+      "en": [
+        "Field guides to the Pokémon of Johto."
+      ],
+      "text": [
+        "Ghiduri de teren despre Pokémonii din Johto."
+      ]
+    },
+    "T20R0101_009+1": {
+      "en": [
+        "A machine that holds three Poké Balls. It hums quietly."
+      ],
+      "text": [
+        "Un aparat care ține trei Poké Ball. Zumzăie încet."
+      ]
+    },
+    "T20R0101_012+1": {
+      "en": [
+        "Professor Elm's PC. A paper is open on it: the Pokémon who wouldn't evolve."
+      ],
+      "text": [
+        "PC-ul Profesorului Elm. Pe el e deschis un articol: Pokémonul care nu voia să evolueze."
+      ]
+    },
+    "T20R0101_013+1": {
+      "en": [
+        "A bin, full to the brim with crumpled notes."
+      ],
+      "text": [
+        "Un coș de gunoi, plin ochi cu notițe mototolite."
+      ]
+    }
+  }
+}

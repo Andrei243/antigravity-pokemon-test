@@ -1,0 +1,68 @@
+{
+  "EarlyRival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey! {player}! Over here!"
+      ],
+      "text": [
+        "Hei! {player}! Aici!"
+      ]
+    },
+    {
+      "en": [
+        "Heading for the Pokémon League, are you? Forget it. You need Badges to get in, and you've got none."
+      ],
+      "text": [
+        "Spre Liga Pokémon, nu? Las-o baltă. Îți trebuie Insigne ca să intri, și tu n-ai niciuna."
+      ]
+    },
+    {
+      "en": [
+        "The guard won't even let you through the gate. Still, how about a battle while you're here?"
+      ],
+      "text": [
+        "Paznicul nici nu te lasă să treci de poartă. Totuși, ce zici de o luptă, dacă tot ești aici?"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Huh, not bad. My Pokémon just needed a warm-up, that's all."
+      ],
+      "text": [
+        "Hm, nu-i rău. Pokémonii mei aveau doar nevoie de încălzire, atâta tot."
+      ]
+    },
+    {
+      "en": [
+        "Ha! Told you. You're nowhere near ready for the League."
+      ],
+      "text": [
+        "Ha! Ți-am zis. Nici pe departe nu ești în stare de Ligă."
+      ]
+    },
+    {
+      "en": [
+        "I'm off to Pewter City to get myself a Badge. Try to keep up, {player}!"
+      ],
+      "text": [
+        "Eu plec spre Orașul Pewter să-mi iau o Insignă. Încearcă să ții pasul, {player}!"
+      ]
+    }
+  ]
+}

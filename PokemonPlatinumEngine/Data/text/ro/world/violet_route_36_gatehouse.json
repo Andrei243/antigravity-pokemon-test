@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t22r0701_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 36 is closed for now. Some strange tree is standing in the road, and nobody can shift it."
+        ],
+        "text": [
+          "Ruta 36 e închisă deocamdată. Un copac ciudat stă în drum și nu-l poate clinti nimeni."
+        ]
+      }
+    },
+    "t22r0701_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I poked the tree on Route 36 and it wobbled at me! Trees don't do that!"
+        ],
+        "text": [
+          "Am împuns copacul de pe Ruta 36 și s-a clătinat spre mine! Copacii nu fac așa ceva!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

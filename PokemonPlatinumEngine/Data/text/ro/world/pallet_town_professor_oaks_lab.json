@@ -1,0 +1,136 @@
+{
+  "people": {
+    "oaks_lab_prof_oak": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          "Profesorul Oak"
+        ]
+      }
+    },
+    "oaks_lab_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      }
+    },
+    "bulbasaur_ball": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          "Poké Ball"
+        ]
+      }
+    },
+    "squirtle_ball": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          "Poké Ball"
+        ]
+      }
+    },
+    "charmander_ball": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          "Poké Ball"
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Professor goes walking near Route 1 to watch the wild Pokémon.",
+          "He always comes back with something new to write down."
+        ],
+        "text": [
+          "Profesorul se plimbă pe lângă Ruta 1 ca să privească Pokémonii sălbatici.",
+          "Se întoarce mereu cu ceva nou de notat."
+        ]
+      }
+    },
+    "worker_f": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I study Pokémon as Professor Oak's aide. There's always something new to write down!"
+        ],
+        "text": [
+          "Studiez Pokémonii ca asistent al Profesorului Oak. E mereu ceva nou de notat!"
+        ]
+      }
+    },
+    "scientist_2": {
+      "name": {
+        "en": [
+          "Aide"
+        ],
+        "text": [
+          "Asistentul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Pokémon is different. Even two of the same kind can be nothing alike."
+        ],
+        "text": [
+          "Fiecare Pokémon e altfel. Chiar și doi din aceeași specie pot să nu semene deloc."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PalletTown_ProfessorOaksLab_EventScript_Computer": {
+      "en": [
+        "There's a message on the screen:\n\"Call me before you set out! - Bill\""
+      ],
+      "text": [
+        "Pe ecran e un mesaj:\n„Sună-mă înainte să pleci! - Bill”"
+      ]
+    },
+    "PalletTown_ProfessorOaksLab_EventScript_LeftSign": {
+      "en": [
+        "Research notes, page after page of them."
+      ],
+      "text": [
+        "Notițe de cercetare, pagină după pagină."
+      ]
+    },
+    "PalletTown_ProfessorOaksLab_EventScript_RightSign": {
+      "en": [
+        "A chart of every kind of Pokémon seen in Kanto."
+      ],
+      "text": [
+        "Un tabel cu toate speciile de Pokémoni văzute în Kanto."
+      ]
+    }
+  }
+}

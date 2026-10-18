@@ -1,0 +1,59 @@
+{
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A good trainer carries plenty of Potions. Battles can turn fast!"
+        ],
+        "text": [
+          "Un antrenor bun are mereu destule Poțiuni. Luptele se pot întoarce repede!"
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mt. Moon is east of here, past Route 3. It's dark and full of Zubat."
+        ],
+        "text": [
+          "Muntele Lunii e la est de aici, după Ruta 3. E întuneric și plin de Zubat."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

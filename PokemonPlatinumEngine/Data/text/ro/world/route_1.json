@@ -1,0 +1,54 @@
+{
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Mart Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I work at the Poké Mart in Viridian City, just up this road.",
+          "Drop by before you head into the grass. Potions save lives!"
+        ],
+        "text": [
+          "Lucrez la Poké Mart-ul din Orașul Viridian, chiar mai sus pe drumul ăsta.",
+          "Treci pe la noi înainte să intri în iarbă. Poțiunile salvează vieți!"
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "See the ledges? You can hop down them, but you can't climb back up.",
+          "It's the quickest way back to Pallet Town."
+        ],
+        "text": [
+          "Vezi treptele de pământ? Poți sări de pe ele, dar nu te poți urca înapoi.",
+          "E cel mai scurt drum înapoi spre Orășelul Pallet."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route1_EventScript_RouteSign": {
+      "en": [
+        "Route 1\nPallet Town - Viridian City"
+      ],
+      "text": [
+        "Ruta 1\nOrășelul Pallet - Orașul Viridian"
+      ]
+    }
+  }
+}

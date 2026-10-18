@@ -1,0 +1,406 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Gramps! Finally! I've been standing here for ages!"
+      ],
+      "text": [
+        "Bunicule! În sfârșit! Stau aici de o veșnicie!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "{rival}? Ah, of course, I asked you to come. Forgive an old man. Wait there a moment."
+      ],
+      "text": [
+        "{rival}? A, desigur, eu te-am chemat. Iartă un bătrân. Așteaptă puțin acolo."
+      ]
+    },
+    {
+      "en": [
+        "{player}, on that table are three Poké Balls, and in each of them a Pokémon."
+      ],
+      "text": [
+        "{player}, pe masa aceea sunt trei Poké Ball, și în fiecare e câte un Pokémon."
+      ]
+    },
+    {
+      "en": [
+        "When I was young I was quite the trainer myself. These days I keep only these three. Go on, choose one!"
+      ],
+      "text": [
+        "Când eram tânăr, eram și eu un antrenor de temut. Acum mai țin doar trei. Haide, alege unul!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hey, hold on! That's not fair, Gramps! What about me?"
+      ],
+      "text": [
+        "Hei, stai puțin! Nu e corect, bunicule! Și eu?"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "Patience, {rival}. You'll have one too, once {player} has chosen."
+      ],
+      "text": [
+        "Răbdare, {rival}. Primești și tu unul după ce alege {player}."
+      ]
+    }
+  ],
+  "DontGoYet": [
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "Hey! Don't wander off yet. Your Pokémon is on the table!"
+      ],
+      "text": [
+        "Hei! Nu pleca încă. Pokémonul tău e pe masă!"
+      ]
+    }
+  ],
+  "StarterBall": [
+    {
+      "en": [
+        "Three Poké Balls sit on the table, each with a Pokémon inside."
+      ],
+      "text": [
+        "Pe masă stau trei Poké Ball, fiecare cu un Pokémon înăuntru."
+      ]
+    },
+    {
+      "en": [
+        "Professor Oak's last Pokémon is in this one. It's best left for him."
+      ],
+      "text": [
+        "În acesta e ultimul Pokémon al Profesorului Oak. Mai bine rămâne pentru el."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the {starter} from Professor Oak!"
+      ],
+      "text": [
+        "{player} a primit {starter} de la Profesorul Oak!"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "A fine choice. That Pokémon is full of energy. Look after it, and it will look after you."
+      ],
+      "text": [
+        "O alegere bună. Pokémonul ăsta e plin de energie. Ai grijă de el și o să aibă și el grijă de tine."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Then I'll take this one!"
+      ],
+      "text": [
+        "Atunci îl iau pe ăsta!"
+      ]
+    },
+    {
+      "en": [
+        "{rival} received the {rivalstarter} from Professor Oak!"
+      ],
+      "text": [
+        "{rival} a primit {rivalstarter} de la Profesorul Oak!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Heh. Mine looks way tougher than yours, {player}."
+      ],
+      "text": [
+        "He. Al meu arată mult mai puternic decât al tău, {player}."
+      ]
+    }
+  ],
+  "RivalChallenges": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Wait up, {player}! Let's see what our Pokémon can do. Come on, I'll take you on!"
+      ],
+      "text": [
+        "Stai, {player}! Hai să vedem ce pot Pokémonii noștri. Haide, te provoc!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "What?! No way! I must have picked the wrong one!"
+      ],
+      "text": [
+        "Ce?! Nu se poate! Sigur l-am ales pe cel greșit!"
+      ]
+    },
+    {
+      "en": [
+        "Ha! Did you see that? I'm a natural!"
+      ],
+      "text": [
+        "Ha! Ai văzut? Am talent înnăscut!"
+      ]
+    },
+    {
+      "en": [
+        "Right. I'm off to toughen my Pokémon up out there. Gramps, {player}, see you around!"
+      ],
+      "text": [
+        "Bun. Plec să-mi călesc Pokémonul pe-afară. Bunicule, {player}, ne mai vedem!"
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "Gramps went out somewhere. He said he'd give me a Pokémon if I waited here."
+      ],
+      "text": [
+        "Bunicul a ieșit pe undeva. A zis că-mi dă un Pokémon dacă aștept aici."
+      ]
+    },
+    {
+      "en": [
+        "Go on, hurry up and pick. I've been waiting forever."
+      ],
+      "text": [
+        "Haide, grăbește-te și alege. Aștept de o veșnicie."
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon's way better than yours. Just you watch."
+      ],
+      "text": [
+        "Pokémonul meu e mult mai bun decât al tău. O să vezi."
+      ]
+    }
+  ],
+  "ProfOak": [
+    {
+      "en": [
+        "If a wild Pokémon jumps out at you, let your Pokémon battle it. Together you'll make it to the next town."
+      ],
+      "text": [
+        "Dacă sare la tine un Pokémon sălbatic, lasă-ți Pokémonul să se lupte cu el. Împreună ajungeți în orașul următor."
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon grows stronger by battling. Viridian City is just north of here, up Route 1."
+      ],
+      "text": [
+        "Pokémonul tău se întărește luptând. Orașul Viridian e chiar la nord, pe Ruta 1."
+      ]
+    },
+    {
+      "en": [
+        "Pokémon are waiting for you all over the world, {player}. Fill that Pokédex with every one you meet!"
+      ],
+      "text": [
+        "Pokémonii te așteaptă peste tot în lume, {player}. Umple Pokédexul cu fiecare pe care-l întâlnești!"
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! How is my old Pokémon treating you?"
+      ],
+      "text": [
+        "O, {player}! Cum se poartă cu tine bătrânul meu Pokémon?"
+      ]
+    },
+    {
+      "en": [
+        "What's this? A parcel from the Mart? So my order has finally come. Thank you!"
+      ],
+      "text": [
+        "Ce-i asta? Un colet de la Mart? Deci a sosit în sfârșit comanda mea. Mulțumesc!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Gramps! You called? What's this about?"
+      ],
+      "text": [
+        "Bunicule! M-ai chemat? Despre ce e vorba?"
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "Ah, {rival}, perfect timing. I have a favour to ask the two of you."
+      ],
+      "text": [
+        "A, {rival}, chiar la țanc. Am să vă rog ceva pe amândoi."
+      ]
+    },
+    {
+      "en": [
+        "This is the Pokédex, a device of my own design. It records every Pokémon you see or catch, all by itself."
+      ],
+      "text": [
+        "Acesta e Pokédexul, un aparat conceput de mine. Înregistrează singur fiecare Pokémon pe care-l vezi sau îl prinzi."
+      ]
+    },
+    {
+      "en": [
+        "My dream has always been a complete guide to every Pokémon in the world. But I'm too old to travel the way I used to."
+      ],
+      "text": [
+        "Visul meu a fost mereu un ghid complet al tuturor Pokémonilor din lume. Dar sunt prea bătrân să mai călătoresc ca odinioară."
+      ]
+    },
+    {
+      "en": [
+        "So I want the two of you to finish it for me. Here, take one each."
+      ],
+      "text": [
+        "Așa că vreau să-l terminați voi doi în locul meu. Poftim, câte unul fiecare."
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Pokédex from Professor Oak!"
+      ],
+      "text": [
+        "{player} a primit Pokédexul de la Profesorul Oak!"
+      ]
+    },
+    {
+      "en": [
+        "To see a Pokémon you only have to meet it. To catch one, you'll need these."
+      ],
+      "text": [
+        "Ca să vezi un Pokémon, ajunge să-l întâlnești. Ca să-l prinzi, îți trebuie astea."
+      ]
+    },
+    {
+      "en": [
+        "Throw a Poké Ball at a wild Pokémon once it's tired out, and it may be yours."
+      ],
+      "text": [
+        "Aruncă un Poké Ball spre un Pokémon sălbatic după ce l-ai obosit, și s-ar putea să fie al tău."
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Leave it to me, Gramps! I'll fill the whole thing before {player} has even started."
+      ],
+      "text": [
+        "Lasă pe mine, bunicule! Îl umplu tot până să apuce {player} să înceapă."
+      ]
+    },
+    {
+      "en": [
+        "I'll ask my sister for a Town Map. Don't bother asking her yourself, {player}. Smell ya!"
+      ],
+      "text": [
+        "Îi cer surorii mele o Hartă a Regiunii. Tu nici nu te obosi s-o rogi, {player}. Pa, melcule!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "people": {
+    "t21_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You're new in town, aren't you? I can always tell.",
+          "The Pokémon Center has the red roof, and the Mart's the blue one beside it. Can't miss them."
+        ],
+        "text": [
+          "E prima oară când vii pe-aici, nu? Mereu îmi dau seama.",
+          "Centrul Pokémon are acoperișul roșu, iar Mart-ul e cel albastru de lângă. N-ai cum să le ratezi."
+        ]
+      }
+    },
+    "t21_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Mart sells Poké Balls now! I'm going to save up for ten."
+        ],
+        "text": [
+          "Acum Mart-ul vinde Poké Ball! O să strâng bani pentru zece."
+        ]
+      }
+    },
+    "t21_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The cherry trees here flower every spring. Pokémon come down from the hills to see them.",
+          "It's the prettiest time of the year in Cherrygrove."
+        ],
+        "text": [
+          "Cireșii de aici înfloresc în fiecare primăvară. Pokémonii coboară din dealuri să-i vadă.",
+          "E cea mai frumoasă perioadă a anului în Cherrygrove."
+        ]
+      }
+    },
+    "t21_gsbigman": {
+      "name": {
+        "en": [
+          "Fat Man"
+        ],
+        "text": [
+          "Bărbatul solid"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea goes all the way west from here. You'd need a Pokémon that can swim to cross it."
+        ],
+        "text": [
+          "Marea se întinde de aici până departe în vest. Ți-ar trebui un Pokémon care știe să înoate ca s-o traversezi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T21_006+1": {
+      "en": [
+        "Cherrygrove City\nThe city of cherry blossoms by the sea."
+      ],
+      "text": [
+        "Orașul Cherrygrove\nOrașul cireșilor înfloriți de lângă mare."
+      ]
+    },
+    "T21_005+1": {
+      "en": [
+        "Guide Gent's House"
+      ],
+      "text": [
+        "Casa Domnului Ghid"
+      ]
+    }
+  }
+}

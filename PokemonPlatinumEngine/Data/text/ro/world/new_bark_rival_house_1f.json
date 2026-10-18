@@ -1,0 +1,25 @@
+{
+  "people": {
+    "t20r0401_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Neighbour"
+        ],
+        "text": [
+          "Vecina"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Oh, hello! Come to see our youngster? Up the stairs, as usual.",
+          "The two of you have been running about this town since you could walk."
+        ],
+        "text": [
+          "O, bună! Ai venit la puștiul nostru? Sus pe scări, ca de obicei.",
+          "Voi doi alergați prin orașul ăsta de când ați învățat să mergeți."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

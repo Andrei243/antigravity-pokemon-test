@@ -1,0 +1,61 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Made it through the forest? Pewter City is just up the road!"
+        ],
+        "text": [
+          "Ai trecut de pădure? Orașul Pewter e chiar mai sus pe drum!"
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pewter's Gym Leader uses Rock-type Pokémon. They are as hard as they look.",
+          "Water and Grass moves will serve you well against them."
+        ],
+        "text": [
+          "Liderul Arenei din Pewter folosește Pokémoni de tip Piatră. Sunt la fel de tari pe cât par.",
+          "Mișcările de tip Apă și Iarbă îți vor prinde bine împotriva lor."
+        ]
+      }
+    },
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Trainer"
+        ],
+        "text": [
+          "Antrenorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Once you've been to Pewter's museum, you'll never look at an old bone the same way again."
+        ],
+        "text": [
+          "După ce treci prin muzeul din Pewter, n-o să mai privești la fel un os vechi."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

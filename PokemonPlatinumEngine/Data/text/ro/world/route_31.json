@@ -1,0 +1,104 @@
+{
+  "people": {
+    "r31_gsboy3": {
+      "name": {
+        "en": [
+          "Wade"
+        ],
+        "text": [
+          "Wade"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Wade: I caught all of these in the long grass here! Let's battle!"
+        ],
+        "text": [
+          "Vânător de insecte Wade: Pe toți ăștia i-am prins în iarba înaltă de aici! Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Wade: Wow, you're good. I'd better train my bugs some more."
+        ],
+        "text": [
+          "Vânător de insecte Wade: Uau, te pricepi. Ar fi bine să-mi mai antrenez insectele."
+        ]
+      }
+    },
+    "r31_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Dark Cave is pitch black inside. You can't see a thing without a Pokémon to light the way.",
+          "Some people say there's a Pokémon in there that's never seen the sun."
+        ],
+        "text": [
+          "În Peștera Întunecată e beznă. Nu vezi nimic fără un Pokémon care să-ți lumineze calea.",
+          "Unii zic că acolo e un Pokémon care n-a văzut niciodată soarele."
+        ]
+      }
+    },
+    "r31_gsbigman": {
+      "name": {
+        "en": [
+          "Fat Man"
+        ],
+        "text": [
+          "Bărbatul solid"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Violet City is just through that gate house. It's the oldest town in Johto, they say."
+        ],
+        "text": [
+          "Orașul Violet e chiar după casa de la poartă. Se zice că e cel mai vechi oraș din Johto."
+        ]
+      }
+    },
+    "r31_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a tall tower in Violet City. It sways when the wind blows, but it never falls down!"
+        ],
+        "text": [
+          "În Orașul Violet e un turn înalt. Se leagănă când bate vântul, dar nu cade niciodată!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R31_002+1": {
+      "en": [
+        "Route 31\nViolet City - Cherrygrove City"
+      ],
+      "text": [
+        "Ruta 31\nOrașul Violet - Orașul Cherrygrove"
+      ]
+    },
+    "R31_003+1": {
+      "en": [
+        "Dark Cave"
+      ],
+      "text": [
+        "Peștera Întunecată"
+      ]
+    }
+  }
+}

@@ -51,7 +51,7 @@
       "text": [
         "Ia zi, câți Pokémoni ai prins în Jocul Safari? Cel puțin cinci?",
         "Aha! Chiar așa! Ce ispravă!",
-        "Poftim, atunci: Matchup Checker, pentru Pokétchul tău."
+        "Poftim, atunci: Monitorul de Potrivire, pentru Pokétchul tău."
       ]
     },
     {
@@ -59,7 +59,7 @@
         "{player} added the Matchup Checker app to the Pokétch!"
       ],
       "text": [
-        "Aplicația Matchup Checker a fost adăugată în Pokétch!"
+        "Aplicația Monitor de Potrivire a fost adăugată în Pokétch!"
       ]
     }
   ],
@@ -171,7 +171,7 @@
         "Salutare. Joci Jocul Safari, da?",
         "Ce-ai zice să joci în același timp și un mic joc de-al meu?",
         "E o singură regulă, și e simplă: prinde cinci Pokémoni sau mai mulți într-un singur Joc Safari.",
-        "Dacă reușești, aplicația Matchup Checker pentru Pokétch e a ta."
+        "Dacă reușești, aplicația Monitor de Potrivire pentru Pokétch e a ta."
       ]
     },
     {
@@ -180,7 +180,7 @@
         "It can't tell how you and I would get along as friends, mind."
       ],
       "text": [
-        "Matchup Checker arată cât de bine se înțeleg doi dintre Pokémonii tăi.",
+        "Monitorul de Potrivire arată cât de bine se înțeleg doi dintre Pokémonii tăi.",
         "Dar nu-ți poate spune cât de bine ne-am înțelege noi doi ca prieteni."
       ]
     }

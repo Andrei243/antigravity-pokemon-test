@@ -1,0 +1,240 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mt. Moon is just ahead. Bring plenty of Repel, the Zubat never stop!"
+        ],
+        "text": [
+          "Muntele Lunii e chiar în față. Ia destul Spray, Zubat-ii nu se mai termină!"
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Robin"
+        ],
+        "text": [
+          "Robin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Robin: Eek! You stepped right in front of me. Now you have to battle!"
+        ],
+        "text": [
+          "Domnișoară Robin: Iii! Mi-ai apărut chiar în față. Acum trebuie să ne luptăm!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Robin: Oh, that's not fair. You were so much stronger!"
+        ],
+        "text": [
+          "Domnișoară Robin: Of, nu e corect. Pokémonii tăi erau mult mai puternici!"
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "James"
+        ],
+        "text": [
+          "James"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher James: You can't beat my bugs! They've been training all week!"
+        ],
+        "text": [
+          "Vânător de insecte James: Nu-mi poți învinge insectele! S-au antrenat toată săptămâna!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher James: All week, and still not enough..."
+        ],
+        "text": [
+          "Vânător de insecte James: Toată săptămâna, și tot n-a ajuns..."
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Sally"
+        ],
+        "text": [
+          "Sally"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Sally: That look in your eyes! You want to battle, don't you?"
+        ],
+        "text": [
+          "Domnișoară Sally: Privirea aia! Vrei să ne luptăm, nu-i așa?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Sally: You're good. I'll be careful who I stare at from now on."
+        ],
+        "text": [
+          "Domnișoară Sally: Te pricepi. De-acum o să am grijă la cine mă uit."
+        ]
+      }
+    },
+    "bug_catcher_2": {
+      "name": {
+        "en": [
+          "Greg"
+        ],
+        "text": [
+          "Greg"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Greg: Hey! I caught these in Viridian Forest. Want to see?"
+        ],
+        "text": [
+          "Vânător de insecte Greg: Hei! Pe ăștia i-am prins în Pădurea Viridian. Vrei să-i vezi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Greg: Back to the forest to catch some stronger ones!"
+        ],
+        "text": [
+          "Vânător de insecte Greg: Înapoi în pădure, să prind unii mai puternici!"
+        ]
+      }
+    },
+    "youngster_2": {
+      "name": {
+        "en": [
+          "Calvin"
+        ],
+        "text": [
+          "Calvin"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Calvin: Wait! I've been waiting all day for a trainer to come along!"
+        ],
+        "text": [
+          "Puști Calvin: Stai! Aștept toată ziua să treacă un antrenor!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Calvin: That was over quick. Maybe I'll wait a bit longer next time."
+        ],
+        "text": [
+          "Puști Calvin: S-a terminat repede. Poate data viitoare aștept mai mult."
+        ]
+      }
+    },
+    "lass_3": {
+      "name": {
+        "en": [
+          "Janice"
+        ],
+        "text": [
+          "Janice"
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Janice: You're a trainer too? Then let's see whose Pokémon are cuter!"
+        ],
+        "text": [
+          "Domnișoară Janice: Și tu ai Pokémoni? Atunci să vedem ai cui sunt mai drăguți!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Janice: Cute doesn't win battles, does it?"
+        ],
+        "text": [
+          "Domnișoară Janice: Drăgălășenia nu câștigă lupte, nu?"
+        ]
+      }
+    },
+    "bug_catcher_3": {
+      "name": {
+        "en": [
+          "Colton"
+        ],
+        "text": [
+          "Colton"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Colton: Bugs are the best! Want me to prove it?"
+        ],
+        "text": [
+          "Vânător de insecte Colton: Insectele sunt cele mai tari! Vrei să-ți dovedesc?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Colton: Bugs are still the best. I'm just not."
+        ],
+        "text": [
+          "Vânător de insecte Colton: Insectele tot cele mai tari sunt. Doar eu nu."
+        ]
+      }
+    },
+    "youngster_3": {
+      "name": {
+        "en": [
+          "Ben"
+        ],
+        "text": [
+          "Ben"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Ben: Hi! I like shorts. They're comfy and easy to wear. Let's battle!"
+        ],
+        "text": [
+          "Puști Ben: Salut! Îmi plac pantalonii scurți. Sunt comozi și ușor de purtat. Hai la luptă!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Ben: My shorts are still comfy, at least."
+        ],
+        "text": [
+          "Puști Ben: Măcar pantalonii scurți tot comozi sunt."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route3_EventScript_RouteSign": {
+      "en": [
+        "Route 3\nMt. Moon ahead"
+      ],
+      "text": [
+        "Ruta 3\nÎnainte: Muntele Lunii"
+      ]
+    }
+  }
+}

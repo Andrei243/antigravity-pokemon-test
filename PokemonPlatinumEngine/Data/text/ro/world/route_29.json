@@ -1,0 +1,98 @@
+{
+  "people": {
+    "r29_gsboy2": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If your Pokémon gets tired, you can always go back to town and rest.",
+          "No shame in that! Even the best trainers do it."
+        ],
+        "text": [
+          "Dacă Pokémonul tău obosește, poți oricând să te întorci în oraș să te odihnești.",
+          "Nu-i nicio rușine! Până și cei mai buni antrenori o fac."
+        ]
+      }
+    },
+    "r29_gsbigman": {
+      "name": {
+        "en": [
+          "Fat Man"
+        ],
+        "text": [
+          "Bărbatul solid"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm waiting for the Pokémon in the grass to forget I'm here. Any minute now..."
+        ],
+        "text": [
+          "Aștept ca Pokémonii din iarbă să uite că sunt aici. Dintr-o clipă-ntr-alta..."
+        ]
+      }
+    },
+    "r29_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Different Pokémon come out at different times of day. A Hoothoot only shows itself after dark.",
+          "Come back at night and see who's about."
+        ],
+        "text": [
+          "Pokémoni diferiți ies la ore diferite ale zilei. Un Hoothoot se arată doar după lăsarea întunericului.",
+          "Vino noaptea și vezi cine umblă pe-aici."
+        ]
+      }
+    },
+    "r29_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Jumping down a ledge is quicker than walking round. Getting back up is the hard part."
+        ],
+        "text": [
+          "E mai repede să sari de pe o treaptă de pământ decât s-o ocolești. Greu e să urci înapoi."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R29_004+1": {
+      "en": [
+        "Route 29\nCherrygrove City - New Bark Town"
+      ],
+      "text": [
+        "Ruta 29\nOrașul Cherrygrove - Orășelul New Bark"
+      ]
+    },
+    "R29_005+1": {
+      "en": [
+        "Route 29\nCherrygrove City - New Bark Town"
+      ],
+      "text": [
+        "Ruta 29\nOrașul Cherrygrove - Orășelul New Bark"
+      ]
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "people": {
+    "route22_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          "{rival}"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shouldn't you be out training?"
+        ],
+        "text": [
+          "N-ar trebui să fii la antrenament?"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route22_EventScript_LeagueGateSign": {
+      "en": [
+        "Pokémon League\nFront Gate"
+      ],
+      "text": [
+        "Liga Pokémon\nPoarta principală"
+      ]
+    }
+  }
+}

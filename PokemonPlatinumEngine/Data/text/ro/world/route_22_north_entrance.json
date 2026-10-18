@@ -1,0 +1,25 @@
+{
+  "people": {
+    "policeman": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          "Paznicul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Beyond this gate lies the road to the Pokémon League.",
+          "Only trainers who hold the Badges of Kanto's Gyms may pass. Come back when you have them."
+        ],
+        "text": [
+          "Dincolo de poarta asta e drumul spre Liga Pokémon.",
+          "Trec doar antrenorii care au Insignele Arenelor din Kanto. Revino când le ai."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

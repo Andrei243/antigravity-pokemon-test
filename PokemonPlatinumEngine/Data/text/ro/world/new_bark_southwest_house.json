@@ -1,0 +1,25 @@
+{
+  "people": {
+    "t20r0301_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon don't go into the tall grass by the town's edge for nothing. They're shy of people.",
+          "If you go out there, take a Pokémon of your own with you."
+        ],
+        "text": [
+          "Pokémonii nu se ascund degeaba în iarba înaltă de la marginea orașului. Se feresc de oameni.",
+          "Dacă ieși acolo, ia cu tine un Pokémon al tău."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

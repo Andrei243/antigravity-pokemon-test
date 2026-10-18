@@ -1,0 +1,43 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The forest is dark and easy to get lost in.",
+          "Keep to the paths and read the signs, and you'll come out the other side."
+        ],
+        "text": [
+          "Pădurea e întunecoasă și te rătăcești ușor în ea.",
+          "Ține-te de cărări și citește indicatoarele, și o să ieși de partea cealaltă."
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bug Catchers hide in the trees in there. They love to jump out at passing trainers!"
+        ],
+        "text": [
+          "Vânătorii de insecte se ascund printre copaci acolo. Le place să sară la antrenorii care trec!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

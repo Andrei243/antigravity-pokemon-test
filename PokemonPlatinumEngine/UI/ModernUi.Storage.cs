@@ -30,7 +30,7 @@ internal static partial class ModernUi
         var current = stored.Boxes[pc.Box];
         if (pc.Naming is { } naming)
         {
-            DrawBoxNaming(sw, sh, naming, current.Name, current.Wallpaper);
+            DrawBoxNaming(sw, sh, naming, stored.ShownName(pc.Box), current.Wallpaper);
             return;
         }
 
@@ -81,7 +81,7 @@ internal static partial class ModernUi
         Wallpaper(new Rectangle(box.X + 12, box.Y + 12, box.Width - 24, box.Height - 24), current.Wallpaper);
 
         bool onName = pc.Zone == StorageZone.BoxName;
-        string name = current.Name.ToUpperInvariant();
+        string name = stored.ShownName(pc.Box).ToUpperInvariant();
         float nameW = UiFonts.Measure(name, 44, UiWeight.Black);
         var plate = new Rectangle(box.X + box.Width / 2f - 190, box.Y + 32, 380, 76);
         if (onName)

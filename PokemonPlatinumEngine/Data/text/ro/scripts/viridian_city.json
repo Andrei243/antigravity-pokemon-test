@@ -8,5 +8,101 @@
         "Ușile Arenei sunt încuiate bine. Se pare că nu e nimeni înăuntru."
       ]
     }
+  ],
+  "RoadBlocked": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        "Femeia"
+      ]
+    },
+    {
+      "en": [
+        "Oh, I'm so sorry! That's my grandfather lying across the road. He won't budge until he's had his coffee."
+      ],
+      "text": [
+        "Vai, îmi pare tare rău! Bunicul meu stă tolănit în drum. Nu se clintește până nu-și bea cafeaua."
+      ]
+    },
+    {
+      "en": [
+        "Could you go round another way for now?"
+      ],
+      "text": [
+        "Poți să ocolești pe altă parte deocamdată?"
+      ]
+    }
+  ],
+  "OldMan": [
+    {
+      "en": [
+        "Grumble... This is private property! No coffee, no passing. Go away!"
+      ],
+      "text": [
+        "Mormăi... Asta e proprietate privată! Fără cafea, nu treci. Pleacă!"
+      ]
+    },
+    {
+      "en": [
+        "Ahh, I've had my coffee and I feel like a new man. Off you go, the road north is all yours."
+      ],
+      "text": [
+        "Ah, mi-am băut cafeaua și mă simt alt om. Hai, drumul spre nord e al tău."
+      ]
+    }
+  ],
+  "Granddaughter": [
+    {
+      "en": [
+        "Grandpa's had his coffee at last. He's much nicer now, isn't he?"
+      ],
+      "text": [
+        "Bunicul și-a băut în sfârșit cafeaua. Acum e mult mai drăguț, nu?"
+      ]
+    }
+  ],
+  "Tutorial": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        "Bătrânul"
+      ]
+    },
+    {
+      "en": [
+        "Ah, there you are! You look like a trainer in a hurry. Got a Pokédex, have you?"
+      ],
+      "text": [
+        "A, aici erai! Pari cineva care se grăbește. Ai un Pokédex, nu-i așa?"
+      ]
+    },
+    {
+      "en": [
+        "Then listen to an old man. You can't just throw a Poké Ball at any wild Pokémon and hope."
+      ],
+      "text": [
+        "Atunci ascultă un bătrân. Nu poți arunca un Poké Ball spre orice Pokémon sălbatic și să speri."
+      ]
+    },
+    {
+      "en": [
+        "Wear it down in battle first, without making it faint. The weaker it is, the easier it is to catch."
+      ],
+      "text": [
+        "Întâi slăbește-l în luptă, fără să-l faci să leșine. Cu cât e mai slăbit, cu atât e mai ușor de prins."
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that's asleep or paralysed is easier still. Now go and try it for yourself!"
+      ],
+      "text": [
+        "Un Pokémon adormit sau paralizat e și mai ușor de prins. Acum du-te și încearcă și tu!"
+      ]
+    }
   ]
 }

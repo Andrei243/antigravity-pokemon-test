@@ -1,0 +1,123 @@
+{
+  "people": {
+    "t21pc0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "t21pc0101_pcwoman2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+        ],
+        "text": [
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
+        ]
+      }
+    },
+    "t21pc0101_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "t21pc0101_pcwoman2_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "t21pc0101_gsbigman": {
+      "name": {
+        "en": [
+          "Fat Man"
+        ],
+        "text": [
+          "Bărbatul solid"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The nurse here healed my Pokémon in no time. And it didn't cost me a thing!"
+        ],
+        "text": [
+          "Asistenta de aici mi-a vindecat Pokémonii într-o clipă. Și nu m-a costat nimic!"
+        ]
+      }
+    },
+    "t21pc0101_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon that faints isn't lost, you know. Bring it here, and it will be right as rain."
+        ],
+        "text": [
+          "Un Pokémon care leșină nu e pierdut, să știi. Adu-l aici și o să fie ca nou."
+        ]
+      }
+    },
+    "t21pc0101_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came in from the rain and stayed for the chairs. They're very comfortable."
+        ],
+        "text": [
+          "Am intrat să mă adăpostesc de ploaie și am rămas pentru scaune. Sunt foarte comode."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

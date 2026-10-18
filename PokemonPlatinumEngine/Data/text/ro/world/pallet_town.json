@@ -1,0 +1,114 @@
+{
+  "people": {
+    "pallet_prof_oak": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          "Profesorul Oak"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wild Pokémon live in that grass. Stay close!"
+        ],
+        "text": [
+          "În iarba aia trăiesc Pokémoni sălbatici. Stai aproape!"
+        ]
+      }
+    },
+    "pallet_sign_lady": {
+      "name": {
+        "en": [
+          "Neighbour"
+        ],
+        "text": [
+          "Vecina"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I grow flowers by the fence there. Pokémon from Route 1 come down to sniff them some mornings.",
+          "If you keep still, they don't run off!"
+        ],
+        "text": [
+          "Cresc flori lângă gardul de acolo. Unele dimineți, Pokémonii de pe Ruta 1 vin să le miroasă.",
+          "Dacă nu te miști, nu fug!"
+        ]
+      }
+    },
+    "pallet_fat_man": {
+      "name": {
+        "en": [
+          "Neighbour"
+        ],
+        "text": [
+          "Vecina"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you know you can keep Pokémon inside a computer? Any PC will look after them for you.",
+          "Times have changed since I was young, I tell you."
+        ],
+        "text": [
+          "Știai că poți ține Pokémoni într-un calculator? Orice PC are grijă de ei pentru tine.",
+          "S-au schimbat vremurile de când eram eu tânăr, ce să-ți spun."
+        ]
+      }
+    },
+    "pallet_town.Sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          "Marinarul"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PalletTown_EventScript_TownSign": {
+      "en": [
+        "Pallet Town\nA quiet place to set out from."
+      ],
+      "text": [
+        "Orășelul Pallet\nUn loc liniștit de unde să pornești."
+      ]
+    },
+    "PalletTown_EventScript_PlayersHouseSign": {
+      "en": [
+        "{player}'s House"
+      ],
+      "text": [
+        "Casa lui {player}"
+      ]
+    },
+    "PalletTown_EventScript_RivalsHouseSign": {
+      "en": [
+        "{rival}'s House"
+      ],
+      "text": [
+        "Casa lui {rival}"
+      ]
+    },
+    "PalletTown_EventScript_OaksLabSign": {
+      "en": [
+        "Professor Oak's\nPokémon Research Lab"
+      ],
+      "text": [
+        "Laboratorul de Cercetare\nPokémon al Profesorului Oak"
+      ]
+    },
+    "PalletTown_EventScript_TrainerTips": {
+      "en": [
+        "TRAINER TIPS\nPress Enter to open the menu.\nYou can save your game there at any time."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nApasă Enter ca să deschizi meniul.\nDe acolo îți poți salva jocul oricând."
+      ]
+    }
+  }
+}
