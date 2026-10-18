@@ -733,6 +733,10 @@ old rod 10
 good rod 20
 super rod 40
 trainers 8, 5-15: johto_bird_keeper_gs_peter 8, johto_camper_roland 9, johto_fisherman_henry 8, johto_fisherman_justin 15, johto_fisherman_ralph 10, johto_picnicker_liz 8, johto_youngster_albert 8, johto_youngster_gordon 10
+=== route_33
+Route 33
+grass 4-8
+trainers 1, 11: johto_hiker_anthony 11
 === route_4
 Route 4
 grass 6-12
@@ -755,6 +759,14 @@ trainers 6, 16-20: kanto_bug_catcher_elijah 20, kanto_bug_catcher_keigo 16, kant
 === ruin_maniac_cave_short
 Ruin Maniac Cave
 grass 21-24
+=== ruins_of_alph
+Ruins of Alph
+grass 18-24
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
+trainers 1, 26: johto_psychic_m_nathan 26
 === sendoff_spring
 Sendoff Spring
 grass 37-40
@@ -959,6 +971,30 @@ surf 20-40
 old rod 3-15
 good rod 10-35
 super rod 30-55
+=== union_cave_1f
+Union Cave
+grass 4-7
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
+trainers 5, 4-11: johto_firebreather_bill 6, johto_firebreather_ray 9, johto_hiker_daniel 11, johto_hiker_russel 8, johto_poke_maniac_larry 11
+=== union_cave_b1f
+Union Cave
+grass 6-9
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
+trainers 4, 23-26: johto_hiker_leonard 25, johto_hiker_phillip 25, johto_poke_maniac_andrew 24, johto_poke_maniac_calvin 26
+=== union_cave_b2f
+Union Cave
+grass 20-23
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
+trainers 3, 22-28: johto_ace_trainer_f_emma 28, johto_ace_trainer_f_gwen 26, johto_ace_trainer_m_nick 26
 === valley_windworks_outside
 Valley Windworks
 grass 9-12

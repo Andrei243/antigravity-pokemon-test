@@ -1,0 +1,17 @@
+{
+  // The gate house between Azalea Town and Ilex Forest (plan 20 · J5). The way into the forest (warp 1) stays shut
+  // until the forest opens with the next chapter (plan 20 · J7)
+  "area": "azalea_ilex_forest_gatehouse",
+  "bgmTrack": "johto/azalea",
+  "locked": [ 1 ],
+  "people": {
+    "t23r0101_counterm": {
+      "name": "Officer",
+      "dialog": [ "Ilex Forest is through there, but a tree has come down across the path. Nobody's getting through yet." ]
+    },
+    "t23r0101_gsoldwoman1": {
+      "name": "Old Woman",
+      "dialog": [ "There's a shrine deep in Ilex Forest. They say the forest's protector visits it, though few have seen it." ]
+    }
+  }
+}

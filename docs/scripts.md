@@ -878,6 +878,14 @@ for a rematch (and from then on waits on their map, spinning, until fought: `bat
 do), 3 a rematch asked for is still waiting. A trainer who gives a number is a script of their place's file that
 battles as `common.Trainer` does and, beaten, asks (`route_30.txt`'s `Joey`).
 
+## The Ruins of Alph's panels
+
+Plan 20 · J5. A chamber's stone panel is a screen of its own (`UI/AlphPuzzleScreen.cs`, on `Models/AlphPuzzle.cs`).
+
+| Command | What it does |
+|---|---|
+| `puzzle kabuto` | Opens the panel of that name (`kabuto`, `omanyte`, `aerodactyl`, `hooh`: `AlphPuzzle.Pictures`) and waits until it is left. `RESULT` is 1 when the picture was put back together and 0 when the panel was left as it was; nothing is kept of a panel left half done. Never skipped: a scene in a hurry stops before it. `HeadlessScriptHost.PuzzleSolved` says which a test wants. `ScriptLibrary.Problems` names a panel there isn't. |
+
 ## Who is on the map
 
 A person can carry a flag that takes them off the map while it is set (`hiddenBy`) or one they wait for

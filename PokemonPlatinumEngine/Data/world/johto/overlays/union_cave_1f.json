@@ -1,0 +1,43 @@
+{
+  // Union Cave's first floor (plan 20 · J5): from Route 32's south end to Route 33, with two ways up into the Ruins of
+  // Alph and stairs down. Its trainers battle by their own records (Johto's trainers.json)
+  "area": "union_cave_1f",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "d25r0101_mount_2": {
+      "name": "Daniel",
+      "trainer": {
+        "dialogueBefore": "Hiker Daniel: Mind your step! This cave is my second home, and I don't like visitors who don't battle!",
+        "dialogueAfter": "Hiker Daniel: Ha! You've got legs for the mountains, kid."
+      }
+    },
+    "d25r0101_mount_2_2": {
+      "name": "Russel",
+      "trainer": {
+        "dialogueBefore": "Hiker Russel: I came down here for the cool air. You'll do for a warm-up!",
+        "dialogueAfter": "Hiker Russel: Well, that warmed me up all right."
+      }
+    },
+    "d25r0101_fire": {
+      "name": "Bill",
+      "trainer": {
+        "dialogueBefore": "Firebreather Bill: It's so dark in here! Lucky for you, I've brought my own light!",
+        "dialogueAfter": "Firebreather Bill: My flame's gone out... and so has my luck."
+      }
+    },
+    "d25r0101_fire_2": {
+      "name": "Ray",
+      "trainer": {
+        "dialogueBefore": "Firebreather Ray: If the Zubat won't leave me alone, I'll battle you instead!",
+        "dialogueAfter": "Firebreather Ray: Ow, my eyebrows. That was too close."
+      }
+    },
+    "d25r0101_mania": {
+      "name": "Larry",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Larry: I've come to find rare Pokémon. Are yours rare? Let me see!",
+        "dialogueAfter": "Poké Maniac Larry: Not rare, but very, very strong. I'll take notes."
+      }
+    }
+  }
+}

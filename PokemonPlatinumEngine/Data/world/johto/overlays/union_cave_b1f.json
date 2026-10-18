@@ -1,0 +1,36 @@
+{
+  // Union Cave's floor below (plan 20 · J5): a boulder for Strength, and stairs further down. Its trainers battle by
+  // their own records (Johto's trainers.json)
+  "area": "union_cave_b1f",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "d25r0102_mount_2": {
+      "name": "Phillip",
+      "trainer": {
+        "dialogueBefore": "Hiker Phillip: It's been ages since I saw the sun. Let's battle while I remember how!",
+        "dialogueAfter": "Hiker Phillip: Maybe I'll go and find that sun after all."
+      }
+    },
+    "d25r0102_mount_2_2": {
+      "name": "Leonard",
+      "trainer": {
+        "dialogueBefore": "Hiker Leonard: I'm digging a tunnel to Azalea Town. Get out of my way, or battle me!",
+        "dialogueAfter": "Hiker Leonard: Fine, fine. There's a tunnel already anyway."
+      }
+    },
+    "d25r0102_mania": {
+      "name": "Andrew",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Andrew: Every Friday, they say, something sings deep down in this cave. Have you heard it?",
+        "dialogueAfter": "Poké Maniac Andrew: I'll keep listening. Fridays, remember!"
+      }
+    },
+    "d25r0102_mania_2": {
+      "name": "Calvin",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Calvin: I collect Pokémon from caves. Let me see what you've collected!",
+        "dialogueAfter": "Poké Maniac Calvin: A fine collection. Better than mine, sadly."
+      }
+    }
+  }
+}

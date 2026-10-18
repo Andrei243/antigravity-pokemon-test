@@ -1,0 +1,9 @@
+{
+  // The Ruins of Alph's southeast chamber (plan 20 · J5), HeartGold's room: the stone panel of the Aerodactyl in its floor.
+  // The way through the back wall (warp 1) opens only when the wall does, which is the chambers' later chapter
+  "area": "ruins_of_alph_southeast_entrance_first_room",
+  "bgmTrack": "johto/ruins_of_alph",
+  "locked": [ 1 ],
+  // The panel in the floor (HeartGold's background event 0) runs the room's Panel script: the puzzle
+  "read": { "D24R0204_000+1": "Panel" }
+}

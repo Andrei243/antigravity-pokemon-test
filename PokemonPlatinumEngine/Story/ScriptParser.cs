@@ -785,6 +785,9 @@ public static class ScriptParser
             // A number registered in the Pokégear's phone (plan 20 · J3), by the phone book's id
             case "addcontact":
                 return new Instruction { Op = Op.AddContact, Line = line, Name = r.Identifier("a contact of the phone book") };
+            // A stone panel of the Ruins of Alph put back together (plan 20 · J5), by its name
+            case "puzzle":
+                return new Instruction { Op = Op.Puzzle, Line = line, Name = r.Identifier("a panel of the Ruins of Alph") };
 
             // The Battle Hall and the Battle Castle (plan 06 · R18c)
             case "hall":

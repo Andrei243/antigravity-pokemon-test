@@ -2674,3 +2674,30 @@ Johto's Pokégear, from HeartGold's `src/application/pokegear`, `src/field/overl
   Lullaby, a bug not kept. The Hoenn and Sinnoh Sounds put the area's two species of each in the grass's slots 2 and 3,
   and 4 and 5, after a swarm's (`EncSlotArray_Update_HoennSinnohSounds`). The Unown's signal, which HeartGold reads to
   draw the Unown not yet caught, does nothing yet (the Ruins of Alph's chambers are still to come).
+
+## The centre of Johto, first part (2026-10-18, plan 20 · J5)
+
+The Ruins of Alph, Union Cave, Route 33 and Azalea Town, from HeartGold's maps, events and tables (read at the pinned
+commit), in our own words and music.
+
+- **The Ruins of Alph's panels**: each of the four chambers has its stone panel in the floor, and each is a puzzle of
+  its own as HeartGold's are: sixteen pieces of a picture that begin on the ring of squares round a frame of four by
+  four, each turned some quarter turns, to be picked up, turned and put down until every piece lies in its own place
+  upright (`Models/AlphPuzzle.cs`; the screen is ours, `UI/AlphPuzzleScreen.cs`, the picture the species' own menu
+  sprite cut into the stone, never the original's). The four are Kabuto (the north-east chamber, with a scientist in
+  it), Aerodactyl (south-east), Omanyte (south-west) and a great bird, Ho-Oh (north-west). How each begins is fixed
+  for the panel, as the original's are, from a draw of its own seeded by its name; a panel left half done begins again
+  as it began the next time it is read. Solved, the panel is kept whole (`FLAG_ALPH_<NAME>_PANEL_SOLVED`, ours) and
+  something is heard to rumble under the Ruins; what HeartGold does next (the floor giving way into the room below,
+  the Unown appearing, the hall's way in opening, the rooms behind the chambers' back walls and their items) is the
+  chambers' later session, so the hall's door and the back walls stay shut.
+- **What waits for the next chapter (plan 20 · J7) stands as the chapter finds it**: the Slowpoke are gone from
+  Azalea Town's streets and from Kurt's house, a grunt of Team Rocket stands about by the well, whose way down is shut
+  with the Gym's, Kurt talks of the well and makes no balls yet (his Apricorn balls are J6's), the charcoal kiln's
+  apprentice and his Farfetch'd are away in Ilex Forest, whose gate house keeps its west door shut. HeartGold's Rocket
+  who bothers a passer-by, the red-haired boy and the Apricorn trees are left out until their sessions; Route 36's
+  gate house at the Ruins' north end keeps its north door shut until that route opens.
+- **Union Cave's Lapras**, which HeartGold brings to its lowest floor on Fridays, is left out until a later session;
+  the cave's three floors are open, the lowest reached as in HeartGold.
+- **Azalea Town is built in logs** under dark-brown roofs (`Architecture.Woodland`, the style guide's row), where
+  HeartGold's houses are plain timber; its signs say what they say in our own words.

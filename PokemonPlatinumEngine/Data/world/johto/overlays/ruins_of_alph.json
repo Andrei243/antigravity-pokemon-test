@@ -1,0 +1,25 @@
+{
+  // The Ruins of Alph (plan 20 · J5): HeartGold's grounds between Route 32's gate house and Route 36's, with the
+  // research centre and the four chambers. The hall's way in (warps 8, 9 and 11 to 14, all on its two tiles) waits for
+  // the chambers' puzzles; Union Cave's two ways up are open. The man with the camera and the suit at the centre's door
+  // are later chapters'
+  "area": "ruins_of_alph",
+  "bgmTrack": "johto/ruins_of_alph",
+  "trees": "Round",
+  "locked": [ 8, 9, 11, 12, 13, 14 ],
+  "people": {
+    "d24r0101_mystery_2": {
+      "name": "Nathan",
+      "trainer": {
+        "dialogueBefore": "Psychic Nathan: The stones here hum if you listen. My mind hears them. Can yours?",
+        "dialogueAfter": "Psychic Nathan: You heard nothing, and still you won. How strange."
+      }
+    }
+  },
+  "signs": {
+    "D24R0101_000+1": "Ruins of Alph\nPlease do not touch the carvings.",
+    "D24R0101_001+1": "Ruins of Alph Research Center\nKeep the doors closed: some exhibits are fragile.",
+    "D24R0101_002+1": "Ruins of Alph\nNorth Entrance",
+    "D24R0101_003+1": "Ruins of Alph\nVisitors are asked to keep to the paths."
+  }
+}

@@ -359,6 +359,8 @@ public sealed partial class ScriptRunner
         Op.Scene or Op.EndScene => false,
         // A number registered: the flag is set and the notice dropped
         Op.AddContact => false,
+        // A panel of the Ruins of Alph is the player's own to put together
+        Op.Puzzle => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1061,6 +1063,13 @@ public sealed partial class ScriptRunner
             case Op.AddContact:
                 Result = Models.Pokegear.Register(story, i.Name) ? 1 : 0;
                 if (Result == 1) host.ContactAdded(Models.PhoneBook.Get(i.Name)!);
+                break;
+
+            // A stone panel of the Ruins of Alph (plan 20 · J5): RESULT is 1 when the picture was put back together, 0
+            // when the panel was left as it was
+            case Op.Puzzle:
+                host.Open(ScriptScreen.AlphPuzzle, Subject, i.Name);
+                afterBusy = () => Result = host.Answer;
                 break;
 
             // The Battle Hall and the Battle Castle (plan 06 · R18c)

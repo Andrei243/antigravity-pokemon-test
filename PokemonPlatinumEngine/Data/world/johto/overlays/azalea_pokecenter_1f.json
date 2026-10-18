@@ -1,0 +1,35 @@
+{
+  // Azalea Town's Pokémon Center (plan 20 · J5), the Centers' floor with the town's people. The counters for the link
+  // say it is closed, as in every Center (decision 06 · 7)
+  "area": "azalea_pokecenter_1f",
+  "bgmTrack": "johto/azalea",
+  // The PC on the counter's left (HeartGold's background event 0), used as every PC is
+  "read": { "0": "PC" },
+  "people": {
+    "t23pc0101_pcwoman1": { "name": "Nurse", "script": "Nurse" },
+    "t23pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [ "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu." ]
+    },
+    "t23pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t23pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t23pc0101_middlewoman1_2": {
+      "name": "Woman",
+      "dialog": [ "Kurt makes Poké Balls out of Apricorns. Bring him the fruit and he'll carve you one. Amazing, isn't it?" ]
+    },
+    "t23pc0101_fishing_2": {
+      "name": "Fisherman",
+      "dialog": [ "The Slowpoke's tails are the best bait there is, some say. I'd never cut one off. Who would?" ]
+    },
+    "t23pc0101_gsgentleman": {
+      "name": "Gentleman",
+      "dialog": [ "A Pokémon that sleeps can't fight. Keep some Awakening in your bag if you're going into the forest." ]
+    }
+  }
+}

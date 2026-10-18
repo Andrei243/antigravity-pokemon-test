@@ -1,0 +1,28 @@
+{
+  "key": "azalea_charcoal_kiln",
+  "index": 163,
+  "name": "Azalea Town",
+  "matrix": 125,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_HIWADA",
+  "nightMusic": "GS_T_HIWADA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 9, "to": "azalea", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "t23r0201_gsfighter", "looks": "gsfighter", "movement": "9", "x": 2, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1AE", "script": "T23R0201_000+1" },
+    { "id": "t23r0201_gsboy1", "looks": "gsboy1", "movement": "2", "x": 5, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1AC", "script": "T23R0201_001+1" },
+    { "id": "t23r0201_tsure_poke_static_farfetchd", "looks": "follower_mon_static_farfetchd", "movement": "3", "x": 8, "z": 7, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_UNK_1AC", "script": "T23R0201_002+1" },
+    { "id": "t23r0201_tsure_poke_static_farfetchd_2", "looks": "follower_mon_static_farfetchd", "movement": "2", "x": 9, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1AC", "script": "T23R0201_002+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

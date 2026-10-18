@@ -1,0 +1,27 @@
+{
+  // The Ruins of Alph's research centre (plan 20 · J5), HeartGold's room: the chief and his two assistants, who talk
+  // about the chambers and the carvings. What they print once the Pokédex holds Unown is a later chapter's
+  "area": "ruins_of_alph_research_center",
+  "bgmTrack": "johto/ruins_of_alph",
+  "people": {
+    "d24r0102_suit": {
+      "name": "Scientist",
+      "dialog": [
+        "Each of the four chambers has a stone panel set in its floor. The pieces slide, as if someone meant them to.",
+        "Whoever built the Ruins left a puzzle for us. We just haven't worked out the picture yet."
+      ]
+    },
+    "d24r0102_gsassistantm": {
+      "name": "Scientist",
+      "dialog": [ "The carvings on the walls look like letters. There are dozens of shapes, and no two quite alike." ]
+    },
+    "d24r0102_gsassistantm_2": {
+      "name": "Scientist",
+      "dialog": [ "Sometimes, late at night, the radio here picks up a signal from the Ruins. It's very odd." ]
+    }
+  },
+  "signs": {
+    "D24R0102_003+1": "Notes on the chambers: four puzzles, four pictures. Kabuto, Omanyte, Aerodactyl... and a bird no one has seen.",
+    "D24R0102_004+1": "Rubbings of the carvings, pinned up in rows. The shapes look like they might be Pokémon."
+  }
+}

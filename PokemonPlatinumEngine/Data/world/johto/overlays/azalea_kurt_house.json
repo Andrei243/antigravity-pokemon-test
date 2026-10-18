@@ -1,0 +1,25 @@
+{
+  // Kurt's house in Azalea Town (plan 20 · J5): Kurt, the maker of Poké Balls, and his granddaughter. His run to the
+  // Slowpoke Well and his thanks are the next chapter's (plan 20 · J7), his Apricorn balls J6's; the Slowpoke at home
+  // is gone with the town's until then
+  "area": "azalea_kurt_house",
+  "bgmTrack": "johto/azalea",
+  "people": {
+    "t23r0501_gantetsu": {
+      "name": "Kurt",
+      "still": true,
+      "dialog": [
+        "Hm? A trainer? I make Poké Balls, the old way, from Apricorns. But I've no heart for it today.",
+        "The town's Slowpoke have all gone missing. Something's wrong down at the well, I'm sure of it."
+      ]
+    },
+    "t23r0501_gsbabygirl1": {
+      "name": "Girl",
+      "dialog": [ "Grandpa's been grumpy all morning. He keeps looking out of the window at the well." ]
+    }
+  },
+  "signs": {
+    "T23R0501_004+1": "Shelves of Apricorns, sorted by colour: red, blue, yellow, green, pink, white and black.",
+    "T23R0501_006+1": "A small shrine with a Poké Ball set before it. It's been polished till it shines."
+  }
+}

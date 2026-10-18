@@ -43,6 +43,7 @@ public sealed partial class GameFlow
     public PoffinCookingScreen PoffinCookingScreen { get; } = new();
     public PoffinCaseScreen PoffinCaseScreen { get; } = new();
     public PokegearScreen PokegearScreen { get; } = new();
+    public AlphPuzzleScreen AlphPuzzleScreen { get; } = new();
     public SuperContestScreen SuperContestScreen { get; } = new();
     public SlotMachineScreen SlotMachineScreen { get; } = new();
     public MiningScreen MiningScreen { get; } = new();

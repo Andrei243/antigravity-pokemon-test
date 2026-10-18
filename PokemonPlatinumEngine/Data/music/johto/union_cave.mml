@@ -1,0 +1,32 @@
+# Union Cave (HeartGold's SEQ_GS_D_CHIKATSUURO, the dungeons' theme): a steady, low walk in E minor, a hollow lead
+# over a plodding bass and a drip of bells. A cave plays the same by day and night. Original composition for this
+# game (plan 20 · J5).
+title Union Cave
+tempo 100
+meter 4/4
+reverb 0.44
+night none
+
+track lead square vol=0.76 pan=0 rev=0.46
+  L o4 e4 g4 b2 | o4 a4 a4 f+2 | o4 e4 g4 b4 o5 d4 | o4 b2. r4 |
+  o4 e4 g4 b2 | o5 c4 o4 b4 a2 | o4 a4 f+4 d4 f+4 | o4 e2. r4 |
+  o4 g4 b4 o5 d2 | o5 c4 o4 b4 a2 | o4 b4 g4 a4 f+4 | o4 b2. r4 |
+  o5 e4 d4 o4 b2 | o5 c4 o4 a4 f+2 | o4 b4 f+4 d+4 f+4 | o4 e2. r4 |
+
+track drip glockenspiel vol=0.2 pan=-0.35 rev=0.62
+  L [ r2 o5 b8 r8 r4 | r4 g8 r8 r2 | ]8
+
+track pad strings vol=0.34 pan=0.25 rev=0.5
+  L o3 (e g b)1 | (d f+ a)1 | (e g b)1 | (e g b)1 |
+  (e g b)1 | (c e a)1 | (d f+ a)2 (b d+ f+)2 | (e g b)1 |
+  (g b >d)1 | (c e a)1 | (e g b)2 (d f+ a)2 | (b d+ f+)1 |
+  (e g b)1 | (c e a)1 | (b d+ f+)1 | (e g b)1 |
+
+track bass bass vol=0.74 rev=0.16
+  L o3 e2 e2 | d2 d2 | e2 e2 | e2 e2 |
+  e2 e2 | c2 c2 | d2 o2 b2 | o3 e2 e2 |
+  g2 g2 | c2 c2 | e2 d2 | o2 b2 b2 |
+  o3 e2 e2 | c2 c2 | o2 b2 b2 | o3 e2 e2 |
+
+track drums kit vol=0.3 rev=0.3
+  v70 L [ b2 r4 h4 | r2 b4 r4 | ]8

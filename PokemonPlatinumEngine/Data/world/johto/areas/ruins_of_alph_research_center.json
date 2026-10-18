@@ -1,0 +1,31 @@
+{
+  "key": "ruins_of_alph_research_center",
+  "index": 321,
+  "name": "Ruins of Alph",
+  "matrix": 273,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 12, "to": "ruins_of_alph", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "d24r0102_suit", "looks": "suit", "movement": "15", "x": 1, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D24R0102_000+1" },
+    { "id": "d24r0102_gsassistantm", "looks": "gsassistantm", "movement": "17", "x": 9, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D24R0102_002+1" },
+    { "id": "d24r0102_gsassistantm_2", "looks": "gsassistantm", "movement": "14", "x": 8, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D24R0102_001+1" }
+  ],
+  "signs": [
+    { "x": 3, "z": 3, "type": 0, "script": "D24R0102_003+1" },
+    { "x": 10, "z": 3, "type": 0, "script": "D24R0102_004+1" },
+    { "x": 11, "z": 3, "type": 0, "script": "D24R0102_004+1" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,49 @@
+{
+  // Azalea Town (plan 20 · J5): HeartGold's map, our words. The town of Slowpoke and charcoal at Ilex Forest's edge,
+  // built in logs (Woodland). The Slowpoke are gone from its streets as the chapter finds it, and a man of Team Rocket
+  // stands about by the well, whose way down (warp 7) stays shut with the Gym's (warp 2) until the next chapter
+  // (plan 20 · J7: the Slowpoke Well, Kurt and Bugsy). The red-haired boy, the Rocket who bothers a passer-by and the
+  // Apricorn tree are later chapters' (J7, J6)
+  "area": "azalea",
+  "bgmTrack": "johto/azalea",
+  "trees": "Round",
+  "architecture": "Woodland",
+  "locked": [ 2, 7 ],
+  "people": {
+    "t23_rocketm": {
+      "name": "Grunt",
+      "still": true,
+      "dialog": [
+        "What, you want something? Beat it, kid. This town's got nothing worth seeing.",
+        "And stay away from that well."
+      ]
+    },
+    "t23_gsoldman1": {
+      "name": "Old Man",
+      "dialog": [
+        "The Slowpoke used to doze in every street of this town. Now there's not one to be seen.",
+        "Our town has long said a Slowpoke's yawn brings the rain. It hasn't rained properly in days."
+      ]
+    },
+    "t23_gswoman1": {
+      "name": "Woman",
+      "dialog": [ "The Azalea Gym is for Bug-type Pokémon. Its Leader is young, but he knows bugs better than anyone." ]
+    },
+    "t23_gsman1": {
+      "name": "Man",
+      "dialog": [ "West through the gate is Ilex Forest. It's so thick with trees that it's dark even at noon." ]
+    },
+    "t23_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [ "Smell that? The charcoal kiln is going. Azalea's charcoal is the finest in Johto, so they say." ]
+    }
+  },
+  "signs": {
+    "T23_008+1": "Kurt's House",
+    "T23_009+1": "Azalea Town Pokémon Gym\nLeader: Bugsy\nHe knows every bug by its buzz.",
+    "T23_010+1": "Charcoal Kiln",
+    "T23_011+1": "Azalea Town\nSlowpoke doze in the shade of the forest here.",
+    "T23_012+1": "Slowpoke Well\nIts water is said to call the rain.",
+    "T23_013+1": "Ilex Forest\nEnter through the gate."
+  }
+}

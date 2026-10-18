@@ -101,6 +101,8 @@ public enum Op
     Master,
     // The Pokégear's phone (plan 20 · J3): a number registered
     AddContact,
+    // A stone panel of the Ruins of Alph (plan 20 · J5): its pieces put back together on a screen
+    Puzzle,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

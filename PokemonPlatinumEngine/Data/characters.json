@@ -254,7 +254,11 @@
     "maniac": "Gentleman",
     "norman": "Gentleman",
     "wally": "Youngster",
-    "scott": "Gentleman"
+    "scott": "Gentleman",
+    // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
+    "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "Gentleman",
+    "gsfighter": "Gentleman", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",
+    "mount_2": "Gentleman", "fire": "Youngster", "mania": "Gentleman", "mystery_2": "Youngster"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field

@@ -76,6 +76,8 @@ public enum GameState
     ArcadeBoard,
     /// <summary>The Pokégear's cards: the phone, the map card and the radio (plan 20 · J3).</summary>
     Pokegear,
+    /// <summary>A stone panel of the Ruins of Alph's chambers (plan 20 · J5).</summary>
+    AlphPuzzle,
     Transition,
     /// <summary>
     /// The window's close button asked (plan 12 · Q1): its question over whatever was on screen, which waits under it
@@ -1047,6 +1049,15 @@ public partial class GameEngine
                 break;
             case GameState.Pokegear:
                 UpdatePokegear(dt);
+                break;
+            case GameState.AlphPuzzle:
+                // The script that opened the panel hears whether the picture was put back together (plan 20 · J5)
+                flow.AlphPuzzleScreen.Update(dt);
+                if (!flow.AlphPuzzleScreen.IsActive)
+                {
+                    flow.ScriptAnswer = flow.AlphPuzzleScreen.Outcome == true ? 1 : 0;
+                    flow.State = GameState.Overworld;
+                }
                 break;
             case GameState.SuperContest:
                 UpdateContest(dt);
@@ -2363,6 +2374,9 @@ public partial class GameEngine
                 break;
             case GameState.Pokegear:
                 flow.PokegearScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.AlphPuzzle:
+                flow.AlphPuzzleScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SuperContest:
                 flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);

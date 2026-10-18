@@ -660,6 +660,9 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// </summary>
     public int PokemonChoice { get; set; }
 
+    /// <summary>Whether a stone panel of the Ruins of Alph a script opens is put back together (plan 20 · J5); left, it is not.</summary>
+    public bool PuzzleSolved { get; set; } = true;
+
     public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
     {
         Shown("open a screen");
@@ -668,10 +671,13 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add(screen == ScriptScreen.Shop && (counter ?? subject?.Mart) is { } mart ? $"open {screen} {mart}"
             : screen == ScriptScreen.Wardrobe && counter != null ? $"open {screen} {counter}"
             : screen == ScriptScreen.ChoosePokemon && counter != null ? $"open {screen} {counter}"
+            : screen == ScriptScreen.AlphPuzzle ? $"open {screen} {counter} {(PuzzleSolved ? "solved" : "left")}"
             : $"open {screen}");
         Answer = 0;
         // The team's Pokémon a script asks to have chosen: the one the test says (none, 255, to back out)
         if (screen == ScriptScreen.ChoosePokemon) Answer = PokemonChoice;
+        // A panel of the Ruins of Alph: put together, unless the test says it was left (plan 20 · J5)
+        if (screen == ScriptScreen.AlphPuzzle) Answer = PuzzleSolved ? 1 : 0;
         if (screen == ScriptScreen.ChooseItem)
         {
             string what = counter ?? "berries";
