@@ -95,7 +95,34 @@ public static class StoryMigration
         // step here, since the steps above ask for the Coal, Icicle and Beacon Badges. Nothing is left to do here.
         // Version 20: Kanto's first chapter (plan 19 · K3), and a game begun in Kanto before it was written taken past it
         if (savedVersion < 20) KantoChapterOne(story, scripts, owned);
+        // Version 21: Johto's first chapter (plan 20 · J4), and a game begun in Johto before it was written taken past it
+        if (savedVersion < 21) JohtoChapterOne(story, scripts, owned);
     }
+
+    /// <summary>
+    /// Version 21, a save from before Johto's first chapter was written (plan 20 · J4): its Johto people are hidden until
+    /// their scenes by <c>common.JohtoNewGame</c>, which a new game runs too. A game begun in Johto before then began in
+    /// front of the player's house with Elm's first Pokémon and no choice recorded: it has its opening played by
+    /// <c>common.JohtoOpeningDone</c>, and its starter is the first of Elm's three it owns.
+    /// </summary>
+    private static void JohtoChapterOne(StoryState story, ScriptLibrary scripts, IEnumerable<Pokemon> owned)
+    {
+        Run(story, scripts, "common.JohtoNewGame");
+        var mine = owned.ToList();
+        if (story.PlayerStarter != null || StarterAmong(mine) != null) return;
+        var species = mine.Select(p => p.Species.Name).ToHashSet(StringComparer.Ordinal);
+        if (JohtoStarterLines.FirstOrDefault(line => line.Any(species.Contains))?[0] is not { } starter) return;
+        Run(story, scripts, "common.JohtoOpeningDone");
+        story.ChooseStarter(starter);
+    }
+
+    /// <summary>Elm's three and what each grows into (plan 20 · J4).</summary>
+    private static readonly string[][] JohtoStarterLines =
+    {
+        new[] { "Chikorita", "Bayleef", "Meganium" },
+        new[] { "Cyndaquil", "Quilava", "Typhlosion" },
+        new[] { "Totodile", "Croconaw", "Feraligatr" }
+    };
 
     /// <summary>
     /// Version 20, a save from before Kanto's first chapter was written (plan 19 · K3): its Kanto people are hidden until

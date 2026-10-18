@@ -1,0 +1,24 @@
+# Violet City's Pokémon Center (plan 20 · J4). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T22PC0101).
+#
+# Once the Zephyr Badge is won, Elm's aide waits here with the Mystery Egg: it is an Egg after all, and Elm wants the
+# player to raise it. In HeartGold the Egg hatches into Togepi; here it is Togepi's Egg from the start (`giveegg`).
+
+
+script Aide
+  face self player
+  speaker "Aide"
+  say "{player}! Over here. The professor sent me with the Egg from Mr. Pokémon."
+  say "He's sure it really is a Pokémon Egg. And he thinks it hatches faster in the company of other Pokémon."
+  say "He'd like you to take it with you on your journey. Will you look after it?"
+  if party >= 6 goto Full
+  giveegg "Togepi"
+  text "{player} received the Egg!"
+  say "Keep it on your team and walk with it. The professor would love to hear what hatches!"
+  setflag FLAG_GOT_TOGEPI_EGG
+  setflag FLAG_HIDE_VIOLET_POKECENTER_AIDE
+  hide self
+  end
+label Full
+  say "Oh, but your team is full! Make room for it, and come back to me."
+  end

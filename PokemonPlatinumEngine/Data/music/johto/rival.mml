@@ -1,0 +1,25 @@
+# The red-haired boy appears (HeartGold's rival encounter theme): a brooding, syncopated figure in E minor, sawtooth
+# over pulsing strings, that never quite settles. Original composition for this game (plan 20 · J4).
+title The Rival (Johto)
+tempo 140
+meter 4/4
+reverb 0.2
+night none
+
+track lead sawlead vol=0.78 pan=0.05 rev=0.2
+  o5 e8 r8 e8 g8 r8 b8 r4 | o5 a8 r8 f+8 e8 r4 d+4 | L o5 e4 g8 b8 r8 a8 g4 | o5 f+4 a8 o6 c8 r8 o5 b8 a4 |
+  o5 g4 b8 o6 e8 r8 d8 o5 b4 | o5 a4 f+8 d+8 r8 b8 f+4 | o5 e4 g8 b8 r8 o6 c8 o5 b4 | o5 a4 f+8 e8 r8 d+8 e4 |
+
+track pad strings vol=0.32 pan=-0.25 rev=0.24
+  o4 (e g b)1 | (d+ f+ b)1 | L (e g b)1 | (d f+ a)1 |
+  (e g b)1 | (d+ f+ b)1 | (e g b)1 | (d+ f+ b)2 (e g b)2 |
+
+track bass synthbass vol=0.66 rev=0.05
+  o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 o2 e8 o3 e8 | o2 b8 o3 b8 o2 b8 o3 b8 o2 b8 o3 b8 o2 b8 o3 b8 | L [ o2 e8 o3 e8 ]4 | [ o2 d8 o3 d8 ]4 |
+  [ o2 e8 o3 e8 ]4 | [ o2 b8 o3 b8 ]4 | [ o2 e8 o3 e8 ]4 | o2 b8 o3 b8 o2 b8 o3 b8 o2 e8 o3 e8 o2 e8 o3 e8 |
+
+track drums kit vol=0.46 rev=0.1
+  v90 b8 r8 r8 s8 r8 b8 s4 | b8 r8 r8 s8 r8 b8 s8 s8 | L [ b8 r8 r8 s8 r8 b8 s4 | ]4 b8 r8 r8 s8 r8 b8 s8 s8 | b8 r8 r8 s8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.36 pan=0.15 rev=0.1
+  v58 [ h8 v36 h8 v58 h8 v36 h8 v58 h8 v36 h8 v58 h8 v36 h8 v58 | ]2 L [ h8 v36 h8 v58 h8 v36 h8 v58 h8 v36 h8 v58 h8 v36 h8 v58 | ]6

@@ -2520,3 +2520,42 @@ differs from FireRed, and why:
   nobody in Kanto runs.
 - **A save of Kanto from before the chapter** (K1 and K2's stand-in start, which owned one of Oak's three and recorded no
   starter) is taken past the opening (`common.KantoOpeningDone`, story version 20), its starter the one it owns.
+
+## Johto's first chapter (2026-10-18, plan 20 · J4)
+
+HeartGold's first chapter, from the bedroom in New Bark Town to the Zephyr Badge in Violet City, is scripts of ours on
+its beats (`new_bark_player_house_1f.txt`, `new_bark.txt`, `new_bark_elms_lab_1f.txt`, `cherrygrove.txt`,
+`route_30_mr_pokemon_house.txt`, `route_29.txt`, `sprout_tower_3f.txt`, `violet_gym.txt`, `violet_pokecenter_1f.txt`,
+`violet.txt`, `route_32.txt`, `route_32_pokecenter_1f.txt`), under HeartGold's own flags and variables where it has them
+(`VAR_SCENE_ELMS_LAB`, `VAR_SCENE_PLAYERS_HOUSE_1F`, `VAR_SCENE_CHERRYGROVE_CITY_OW`, `FLAG_HIDE_NEW_BARK_RIVAL`,
+`FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE`, the unnamed `VAR_UNK_408B` and `VAR_UNK_40A4` of its triggers) and ours where it
+hasn't (`FLAG_HIDE_SPROUT_TOWER_RIVAL`, `FLAG_HIDE_VIOLET_POKECENTER_AIDE`, `FLAG_GOT_MYSTERY_EGG`). What differs from
+HeartGold, and why:
+
+- **Whose rules and levels.** Johto is fought by the rules the game is played by, on HeartGold's teams and levels
+  (`Data/world/johto/trainers.json`), as Kanto's chapter is. Whether a Champion who crosses from Kanto meets them scaled
+  is the user's choice, still to be made (plan 18 · W4's study), and nothing scales them yet.
+- **A new game** wakes in the bedroom upstairs (4, 9 of `NewBark_PlayersHouse_2F`) with no Pokémon and an empty bag
+  (`johto.json`'s `hasStory`); whoever crosses from Kanto arrives before the house (`Region.Arrival`). What a Johto game
+  starts with is `common.JohtoNewGame`, run after `NewGame` for every new game.
+- **The Pokégear, the Map Card and the Mystery Egg are flags** (`FLAG_GOT_POKEGEAR`, `FLAG_GOT_MAP_CARD`,
+  `FLAG_GOT_MYSTERY_EGG`), with their fanfares and words: the Pokégear itself is plan 20 · J3's, and an Egg in the bag
+  would want a key item of Johto's own, which no other scene asks for. Elm's number is "registered" in words only.
+- **Elm's machine** opens the choice of three, as Sinnoh's briefcase does (`starter`), from the machine's tile or from
+  Elm himself once he has asked; the boy at the window takes the one strong against the player's
+  (`Region.RivalStarterFor`), and his three teams (`johto_rival_silver_2`, `_3`, `_6`) are HeartGold's for each.
+- **The rival's name** is asked in the introduction, as Sinnoh's and Kanto's are (plan 02 · S4), so the policeman's
+  question only has the name the player already gave confirmed; HeartGold asks it there with a keyboard.
+- **The Running Shoes** come from Mom on the lab's step, as soon as the player has a Pokémon; HeartGold's Mom runs out
+  to the town's edge.
+- **The Guide Gent's tour** is told over a dark screen and ends before his house; HeartGold walks it.
+- **The catching lesson** on Route 29 is the friend's, with the Pokémon Elm had left (`catchinglesson`), as Sinnoh's
+  assistant's is; HeartGold's friend catches with their Marill.
+- **The Egg** is Togepi's from the start (`giveegg "Togepi"`), handed over by Elm's aide in Violet City's Pokémon Center
+  once the Zephyr Badge is won; HeartGold's Mystery Egg is the same Egg, shown to Elm first.
+- **Violet's Gym** is open from the start, as HeartGold's is; Sprout Tower's Elder gives TM70 (Flash), and the Zephyr
+  Badge lets Rock Smash be used outside battle (Johto's gates).
+- **Route 32's head** turns back whoever has no Badge and gives a Miracle Seed to whoever has the Zephyr Badge.
+- **The Ruins of Alph** stay shut behind Route 32's gate house: their chambers and the Unown are a later session's.
+- **A save of Johto from before the chapter** (J2's stand-in start, which owned one of Elm's three and recorded no
+  starter) is taken past the opening (`common.JohtoOpeningDone`, story version 21), its starter the one it owns.

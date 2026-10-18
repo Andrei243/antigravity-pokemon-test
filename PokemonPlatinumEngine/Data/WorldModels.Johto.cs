@@ -60,6 +60,23 @@ public static partial class WorldModels
         Built("ar_shrine2", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
         Built("ar_shrine3", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
         Door("ar_study_door"),
+        Ground("kk_sky", "the sky over Violet City (no model of its own: the sky is the field's)"),
+        Ground("object01", "an unnamed marker of the original's: nothing to draw"),
+
+        // ---------------------------------------------------------------- Azalea Town (hw_: Hiwada), in view from Route 32's south
+        // end; the town opens with plan 20 · J5, which gives it its own way of building
+        Built("hw_h01", BuildingKind.House, "a house of Azalea Town", Architecture.OldTimber, until: "plan 20 · J5 (Azalea Town)"),
+        Ground("hw_ido", "Azalea Town's well", until: "plan 20 · J5 (Azalea Town)"),
+        Ground("hw_kemuri", "the smoke over Kurt's chimney", until: "plan 20 · J5 (Azalea Town)"),
+        Ground("hw_maki", "a stack of firewood in Azalea Town", until: "plan 20 · J5 (Azalea Town)"),
+        Door("hw_door1"),
+
+        // ---------------------------------------------------------------- Sprout Tower's floors (plan 20 · J4): furniture
+        Furniture("d15_light", PropType.Statue, "a stone lantern of Sprout Tower"),
+        Furniture("d15_obj", PropType.Statue, "a carved Bellsprout of Sprout Tower"),
+        Furniture("d15_pillar", PropType.Column, "the swaying pillar at Sprout Tower's heart"),
+        Ground("d15_stairup", "a ladder up: the warp's tile is the way"),
+        Ground("d15_stairdw", "a ladder down: the warp's tile is the way"),
 
         // ---------------------------------------------------------------- the signs every town and route has: the tile draws its signpost
         Ground("board_a", "a small signpost: the sign event's tile draws it"),

@@ -1,0 +1,343 @@
+using PokemonPlatinumEngine.Audio;
+using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Core;
+using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
+using PokemonPlatinumEngine.Overworld;
+using PokemonPlatinumEngine.Story;
+using Xunit;
+
+namespace PokemonPlatinumTests;
+
+/// <summary>
+/// Johto's first chapter (plan 20 · J4, "Elm's lab to the Zephyr Badge") played through with no screen, as a player
+/// meets it: the bedroom, Mom and the Pokégear, Elm's favour and the three in his machine, the aide's Potion and Mom's
+/// Running Shoes, the Guide Gent's Map Card, Mr. Pokémon's Egg and Oak's Pokédex, the red-haired boy in Cherrygrove
+/// City, the theft and the policeman, the catching lesson on Route 29, Sprout Tower's Elder, Falkner and the Zephyr
+/// Badge, the Togepi Egg in Violet City and the man at Route 32's head. Each scene starts as the game starts it (a step
+/// onto its trigger, a door, someone spoken to), on maps of this class's own.
+/// </summary>
+public class JohtoStoryTests
+{
+    private static readonly ScriptLibrary Scripts = ScriptLibrary.Default;
+    private static readonly Lazy<World> Johto = new(() => World.LoadAll().Single(w => w.Index.Region == RegionDatabase.Johto));
+
+    /// <summary>A game of Johto of its own: its maps, story, team and bag, and the tile the player stands on.</summary>
+    private sealed class Game
+    {
+        private readonly Dictionary<string, Map> maps = new(StringComparer.OrdinalIgnoreCase);
+        public StoryState Story { get; } = new();
+        public Party Party { get; } = new();
+        public Inventory Bag { get; } = new();
+        public Map Map { get; private set; } = null!;
+        public (int X, int Y) Tile { get; set; }
+        public int Starter { get; init; }
+        public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
+        public bool Impatient { get; init; }
+        public Queue<int> Answers { get; } = new();
+        public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
+        public HeadlessScriptHost Last => Played[^1].Host;
+        public const string Rival = "Silver";
+
+        public Game(int starter = 0, BattleOutcome fight = BattleOutcome.Won, bool impatient = false)
+        {
+            Starter = starter;
+            Fight = fight;
+            Impatient = impatient;
+            foreach (var map in Johto.Value.BuildMaps()) maps[map.Name] = map;
+            StoryMigration.BeginNewGame(Story, Scripts);
+            var start = RegionDatabase.Get(RegionDatabase.Johto)!.Start!;
+            Arrive(start.Map, start.X, start.Y);
+        }
+
+        public void Arrive(string name, int x, int y)
+        {
+            Map = maps[name];
+            Map.ForgetForced();
+            Map.ApplyPresence(Story.Has);
+            Map.ApplyDoors(Story.Has);
+            Wandering.SendHome(Map);
+            Tile = (x, y);
+            if (Scripts.In(Map.ScriptFileAt(x, y), ScriptLibrary.OnEnter) is { } script) Play(script);
+        }
+
+        /// <summary>Through a door of this map that leads to another (the one nearest the player, where there are several).</summary>
+        public void Through(string target)
+        {
+            var warp = Map.Warps.Where(w => w.TargetMap.Equals(target, StringComparison.OrdinalIgnoreCase))
+                .OrderBy(w => Math.Abs(w.SourceX - Tile.X) + Math.Abs(w.SourceY - Tile.Y)).First();
+            Arrive(warp.TargetMap, warp.TargetX, warp.TargetY);
+        }
+
+        private StepTrigger TriggerOf(string script) => Map.Triggers.First(t => t.Script == script);
+
+        public HeadlessScriptHost Step(string script)
+        {
+            var trigger = TriggerOf(script);
+            Tile = (trigger.X, trigger.Y);
+            Assert.Same(trigger, FieldScripts.TriggerAt(Map, trigger.X, trigger.Y, Story));
+            return Play(Scripts.Find(trigger.Script, trigger.ScriptFile ?? Map.Name)!);
+        }
+
+        public bool Fires(string script)
+        {
+            var trigger = TriggerOf(script);
+            return FieldScripts.TriggerAt(Map, trigger.X, trigger.Y, Story) == trigger;
+        }
+
+        public NPC? Present(string key) => Map.NPCs.FirstOrDefault(n => n.Key == key);
+
+        public HeadlessScriptHost Talk(string key)
+        {
+            var npc = Map.NPCs.First(n => n.Key == key);
+            Tile = (npc.GridX, npc.GridY + 1);
+            return Play(Scripts.Find(FieldScripts.For(npc)!, npc.ScriptFile ?? Map.ScriptFileAt(npc.GridX, npc.GridY))!, npc);
+        }
+
+        /// <summary>A tile of this map read by facing it (the lab's machine).</summary>
+        public HeadlessScriptHost Read(int x, int y)
+        {
+            Tile = (x, y + 1);
+            Assert.True(Map.TileScripts.TryGetValue((x, y), out var name), $"Nothing is read at {x},{y} of {Map.Name}");
+            return Play(Scripts.Find(name!, Map.ScriptFileAt(x, y))!);
+        }
+
+        public HeadlessScriptHost Play(Script script, NPC? subject = null)
+        {
+            var host = new HeadlessScriptHost(Story, Party, Bag)
+            {
+                Map = Map,
+                PlayerTile = Tile,
+                MapNamed = name => maps.GetValueOrDefault(name),
+                StarterChoice = Starter,
+                RivalName = Rival,
+                Fight = _ => Fight,
+                NeedsPokemon = true
+            };
+            while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
+            var runner = new ScriptRunner(Scripts, host) { Impatient = Impatient };
+            runner.Start(script, subject);
+            runner.RunToEnd();
+            Played.Add((script.FullName, host));
+            Assert.Empty(host.Problems);
+            foreach (var map in maps.Values.Distinct())
+            {
+                map.ApplyPresence(Story.Has);
+                map.ApplyDoors(Story.Has);
+            }
+            Tile = host.PlayerTile;
+            if (host.Log.LastOrDefault(l => l.StartsWith("warp ")) != null && host.Map is { } there)
+            {
+                Map = there;
+                if (Scripts.In(Map.ScriptFileAt(Tile.X, Tile.Y), ScriptLibrary.OnEnter) is { } onEnter) Play(onEnter);
+            }
+            return host;
+        }
+    }
+
+    [Theory]
+    [InlineData(0, BattleOutcome.Won)]
+    [InlineData(1, BattleOutcome.Lost)]
+    [InlineData(2, BattleOutcome.Won)]
+    public void TheChapterPlaysFromTheBedroomToTheZephyrBadge(int starter, BattleOutcome fight)
+    {
+        var game = new Game(starter, fight);
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        string mine = johto.Starters[starter];
+        string rivals = johto.RivalStarterFor(mine);
+
+        // The bedroom, with nothing at all: no Pokémon, no Pokégear, no Pokédex, no Running Shoes
+        Assert.Equal("NewBark_PlayersHouse_2F", game.Map.Name);
+        Assert.Empty(game.Party.Members);
+        Assert.Equal(0, game.Bag.AllItems.Count());
+        Assert.False(game.Story.Has("FLAG_GOT_POKEGEAR"));
+        Assert.False(game.Story.Has(StoryState.PokedexFlag));
+        Assert.False(game.Story.Has(StoryState.RunningShoesFlag));
+
+        // Downstairs, Mom has her word and the Pokégear
+        game.Through("NewBark_PlayersHouse_1F");
+        Assert.True(game.Story.Has("FLAG_GOT_POKEGEAR"));
+        Assert.Equal(1, game.Story.Var("VAR_SCENE_PLAYERS_HOUSE_1F"));
+        Assert.Contains(game.Last.Transcript, l => l.Speaker == "Mom");
+
+        // Out in the street: the boy at the lab's window, the friend and their Marill; west, the friend turns the player back
+        game.Through("Johto");
+        Assert.NotNull(game.Present("t20_gsrivel"));
+        Assert.NotNull(game.Present("t20_var_1_2"));
+        Assert.True(game.Fires("WestExit"));
+        var turned = game.Step("WestExit");
+        Assert.NotEqual((676, 396), turned.PlayerTile);
+        Assert.True(game.Fires("WestExit"));
+
+        // Elm's favour as the player walks in, then the same step turns them back until they have chosen
+        game.Through("NewBark_ElmsLab");
+        Assert.True(game.Fires("Errand"));
+        game.Step("Errand");
+        Assert.True(game.Story.Has("FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE"));
+        Assert.True(game.Fires("Errand"));
+        game.Step("Errand");
+        Assert.Contains(game.Last.Transcript, l => l.Speaker == "Prof. Elm");
+
+        // The machine behind his desk: the choice of three, the number in the Pokégear, the rival gone from the window
+        game.Read(6, 3);
+        Assert.Equal(mine, Assert.Single(game.Party.Members).Species.Name);
+        Assert.Equal(rivals, game.Story.RivalStarter);
+        Assert.Equal(1, game.Story.Var("VAR_SCENE_ELMS_LAB"));
+        Assert.True(game.Story.Has("FLAG_HIDE_NEW_BARK_RIVAL"));
+        Assert.False(game.Fires("Errand"));
+
+        // On the way out, the aide's Potion; on the step, Mom's Running Shoes
+        game.Step("AideStops");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Potion")!));
+        Assert.Equal(2, game.Story.Var("VAR_SCENE_ELMS_LAB"));
+        game.Through("Johto");
+        Assert.Null(game.Present("t20_gsrivel"));
+        Assert.True(game.Fires("RunningShoes"));
+        game.Step("RunningShoes");
+        Assert.True(game.Story.Has(StoryState.RunningShoesFlag));
+        Assert.False(game.Fires("RunningShoes"));
+        Assert.Null(game.Present("t20_gsmama"));
+
+        // West now: the way is free, and Cherrygrove's Guide Gent gives the tour and the Map Card
+        game.Step("WestExit");
+        Assert.False(game.Fires("WestExit"));
+        Assert.True(game.Fires("GuideGentStops"));
+        game.Step("GuideGentStops");
+        Assert.True(game.Story.Has("FLAG_GOT_MAP_CARD"));
+        Assert.Null(game.Present("t21_gsoldman1"));
+        Assert.False(game.Fires("GuideGentStops"));
+        Assert.False(game.Fires("RivalAmbush"));
+
+        // Mr. Pokémon's: the Mystery Egg, Oak and the Pokédex, and Elm's call
+        game.Through("Route30_MrPokemonsHouse");
+        Assert.True(game.Story.Has("FLAG_GOT_MYSTERY_EGG"));
+        Assert.True(game.Story.Has(StoryState.PokedexFlag));
+        Assert.Null(game.Present("r30r0201_ookido"));
+        Assert.Equal(3, game.Story.Var("VAR_SCENE_ELMS_LAB"));
+        Assert.Contains(game.Last.Transcript, l => l.Speaker == "Prof. Oak");
+
+        // Back through Cherrygrove: the red-haired boy, HeartGold's team for the starter he took, win or lose
+        game.Through("Johto");
+        Assert.True(game.Fires("RivalAmbush"));
+        var ambush = game.Step("RivalAmbush");
+        string team = rivals switch { "Cyndaquil" => "johto_rival_silver_2", "Totodile" => "johto_rival_silver_3", _ => "johto_rival_silver_6" };
+        Assert.Contains($"battle {team} first {fight}", ambush.Log);
+        Assert.Equal(rivals, Assert.Single(TrainerDatabase.Get(team)!.Party).Species);
+        Assert.Equal(4, game.Story.Var("VAR_SCENE_CHERRYGROVE_CITY_OW"));
+        Assert.Equal(fight == BattleOutcome.Won, game.Story.Has("FLAG_BEAT_RIVAL_IN_CHERRYGROVE"));
+        Assert.False(game.Fires("RivalAmbush"));
+
+        // The lab after the theft: the policeman, the Egg handed over, five Poké Balls; the lesson waits on Route 29
+        game.Fight = BattleOutcome.Won;
+        game.Through("NewBark_ElmsLab");
+        Assert.Equal(4, game.Story.Var("VAR_SCENE_ELMS_LAB"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ELMS_LAB_OFFICER"));
+        Assert.Null(game.Present("t20r0101_policeman"));
+        Assert.Equal(5, game.Bag.GetQuantity(ItemDatabase.Get("Poké Ball")!));
+        Assert.Contains(game.Last.Transcript, l => l.Text.Contains(Game.Rival));
+        game.Through("Johto");
+        Assert.True(game.Fires("Lesson"));
+        var lesson = game.Step("Lesson");
+        Assert.Contains(lesson.Log, l => l.StartsWith("catchinglesson"));
+        Assert.False(game.Fires("Lesson"));
+
+        // Sprout Tower: the boy leaves the top by an Escape Rope, and Elder Li battles for Flash
+        game.Arrive("SproutTower_3F", 15, 26);
+        Assert.True(game.Fires("RivalLeaves"));
+        game.Step("RivalLeaves");
+        Assert.True(game.Story.Has("FLAG_HIDE_SPROUT_TOWER_RIVAL"));
+        Assert.False(game.Fires("RivalLeaves"));
+        var li = game.Talk("d15r0103_chourou");
+        Assert.Contains(li.Log, l => l.StartsWith("battle johto_elder_li"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM70")!));
+        Assert.True(game.Story.Has("FLAG_GOT_TM70"));
+
+        // Falkner: the Zephyr Badge, TM51, his Bird Keepers counted beaten, and Elm's call
+        game.Arrive("Violet_Gym", 15, 27);
+        Assert.NotNull(game.Present("t22gym0101_sunglasses_2"));
+        Assert.Null(game.Present("t22gym0101_sunglasses"));
+        var falkner = game.Talk("t22gym0101_gsleader1");
+        Assert.Contains(falkner.Log, l => l.StartsWith("battle johto_leader_falkner_falkner"));
+        Assert.True(game.Story.HasBadge("Johto", "Zephyr"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM51")!));
+        Assert.True(game.Story.HasDefeated("johto_bird_keeper_gs_abe"));
+        Assert.True(game.Story.HasDefeated("johto_bird_keeper_gs_rod"));
+        Assert.Equal(5, game.Story.Var("VAR_SCENE_ELMS_LAB"));
+
+        // Violet City's Pokémon Center: Elm's aide with the Egg
+        game.Arrive("Violet_PokemonCenter_1F", 8, 18);
+        Assert.NotNull(game.Present("violet_pokecenter_1f.Aide"));
+        game.Talk("violet_pokecenter_1f.Aide");
+        Assert.Contains(game.Party.Members, p => p.IsEgg && p.Species.Name == "Togepi");
+        Assert.True(game.Story.Has("FLAG_GOT_TOGEPI_EGG"));
+        Assert.Null(game.Present("violet_pokecenter_1f.Aide"));
+
+        // Route 32's head: with the Badge, the man's Miracle Seed, and the way south open
+        game.Arrive("Johto", 475, 304);
+        Assert.True(game.Fires("BadgeCheck"));
+        var seed = game.Step("BadgeCheck");
+        Assert.Equal((475, 305), seed.PlayerTile);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Miracle Seed")!));
+        Assert.False(game.Fires("BadgeCheck"));
+    }
+
+    [Fact]
+    public void RouteThirtyTwosManTurnsBackWhoeverHasNoBadge()
+    {
+        var game = new Game();
+        game.Arrive("Johto", 475, 304);
+        var turned = game.Step("BadgeCheck");
+        Assert.Equal((475, 304), turned.PlayerTile);
+        Assert.True(game.Fires("BadgeCheck"));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Miracle Seed")!));
+    }
+
+    [Fact]
+    public void ANewGameOfJohtoHidesTheChaptersPeopleUntilTheirScenes()
+    {
+        var game = new Game();
+        foreach (string flag in new[]
+                 {
+                     "FLAG_HIDE_NEW_BARK_MOM", "FLAG_HIDE_ELMS_LAB_OFFICER", "FLAG_HIDE_CHERRYGROVE_RIVAL",
+                     "FLAG_HIDE_ROUTE_29_FRIEND", "FLAG_HIDE_SPROUT_TOWER_RIVAL", "FLAG_HIDE_VIOLET_POKECENTER_AIDE"
+                 })
+            Assert.True(game.Story.Has(flag), flag);
+        // Its start is the bedroom, and a Champion of Kanto who sails over steps out before the house
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        Assert.True(johto.HasStory);
+        Assert.Equal(("NewBark_PlayersHouse_2F", 4, 9), (johto.Start!.Map, johto.Start.X, johto.Start.Y));
+        Assert.Equal("Johto", johto.ArrivalSpot!.Map);
+    }
+
+    [Fact]
+    public void JohtosRolesWithNoSongOfTheirOwnPlayJohtosAndSinnohsAreAsTheyWere()
+    {
+        Assert.Equal("johto/battle_wild", MusicDirector.Resolve(MusicRole.BattleWild, "Johto", MusicLibrary.Exists));
+        Assert.Equal("johto/battle_rival", MusicDirector.Resolve(MusicRole.BattleRival, "Johto", MusicLibrary.Exists));
+        Assert.Equal("johto/battle_gym", MusicDirector.Resolve(MusicRole.BattleGymLeader, "Johto", MusicLibrary.Exists));
+        Assert.Equal("johto/battle_galactic", MusicDirector.Resolve(MusicRole.BattleGalacticBoss, "Johto", MusicLibrary.Exists));
+        Assert.Equal("johto/victory_trainer", MusicDirector.Resolve(MusicRole.VictoryGalactic, "Johto", MusicLibrary.Exists));
+        Assert.Equal("johto/eye_mystery", MusicDirector.Resolve(MusicRole.EyeMystery, "Johto", MusicLibrary.Exists));
+        Assert.Equal("common/battle_galactic", MusicDirector.Resolve(MusicRole.BattleGalactic, "Sinnoh", MusicLibrary.Exists));
+        Assert.Equal("common/battle_wild", MusicDirector.Resolve(MusicRole.BattleWild, "Sinnoh", MusicLibrary.Exists));
+    }
+
+    [Fact]
+    public void ASaveOfJohtoFromBeforeTheChapterIsTakenPastItsOpening()
+    {
+        // A game begun in Johto before J4 began in front of the house with a Chikorita and no starter recorded
+        var story = new StoryState();
+        StoryMigration.Upgrade(story, 20, new[] { new Pokemon(PokemonDatabase.Get("Chikorita")!, 5) }, Scripts);
+        Assert.Equal("Chikorita", story.PlayerStarter);
+        Assert.Equal(4, story.Var("VAR_SCENE_ELMS_LAB"));
+        Assert.True(story.Has(StoryState.PokedexFlag));
+        Assert.True(story.Has("FLAG_GOT_POKEGEAR"));
+        Assert.True(story.Has("FLAG_HIDE_SPROUT_TOWER_RIVAL"));
+        // A game of Sinnoh is only given Johto's flags
+        var sinnoh = new StoryState();
+        StoryMigration.Upgrade(sinnoh, 20, Array.Empty<Pokemon>(), Scripts);
+        Assert.Null(sinnoh.PlayerStarter);
+        Assert.Equal(0, sinnoh.Var("VAR_SCENE_ELMS_LAB"));
+        Assert.True(sinnoh.Has("FLAG_HIDE_NEW_BARK_MOM"));
+    }
+}

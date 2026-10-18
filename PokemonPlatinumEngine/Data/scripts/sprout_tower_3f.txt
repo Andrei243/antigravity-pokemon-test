@@ -1,0 +1,46 @@
+# Sprout Tower's top floor (plan 20 · J4). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D15R0103).
+#
+# The red-haired boy has just beaten the Elder as the player comes up (HeartGold's D15R0103_001, the area's trigger 0,
+# on VAR_UNK_40A4 0): he scorns the Elder's lesson and leaves by an Escape Rope. The Elder battles for TM70, Flash,
+# which brings the Gym's guide up the hall (FLAG_GOT_TM70; the guide's two flags).
+
+
+script RivalLeaves
+  scene "Sprout Tower's top"
+  show d15r0103_gsrivel
+  speaker "Elder Li"
+  say "You are strong, young man. But you treat your Pokémon as tools. Strength like that has nowhere to grow."
+  face d15r0103_gsrivel down
+  speaker "{rival}"
+  say "Spare me the sermon, old man. Strength is all that counts. I won, didn't I?"
+  emote d15r0103_gsrivel exclaim
+  say "...You again. Don't get in my way. I've got no time for a weakling like you."
+  text "{rival} used an Escape Rope!"
+  hide d15r0103_gsrivel
+  setflag FLAG_HIDE_SPROUT_TOWER_RIVAL
+  setvar VAR_UNK_40A4 1
+  endscene
+  end
+
+
+# Elder Li at the top of the tower.
+script Elder
+  face d15r0103_chourou player
+  speaker "Elder Li"
+  if defeated "johto_elder_li" goto Beaten
+  scene "Elder Li"
+  say "Welcome to the top of Sprout Tower. You have climbed far, and your Pokémon climbed beside you."
+  say "The pillar at the tower's heart sways with every wind, and so it never falls. Let me see if your bond is as supple."
+  battle self as "johto_elder_li"
+  say "Splendid. You and your Pokémon move as one. Take this, and may it light your way."
+  give "TM70"
+  setflag FLAG_GOT_TM70
+  setflag FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT
+  clearflag FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
+  say "TM70 holds Flash. It lights a dark cave and dazzles a foe. Falkner awaits you at the Gym. Go to him with my blessing."
+  endscene
+  end
+label Beaten
+  say "Do not forget: the bond between you and your Pokémon is the strongest pillar of all."
+  end

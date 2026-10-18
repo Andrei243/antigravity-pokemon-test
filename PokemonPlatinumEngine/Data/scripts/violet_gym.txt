@@ -1,0 +1,54 @@
+# The Violet City Gym (plan 20 · J4). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_T22GYM0101).
+#
+# Falkner battles for the Zephyr Badge (`givebadge zephyr`) and gives TM51, Roost (FLAG_GOT_TM51_FROM_FALKNER). His
+# Badge counts his two Bird Keepers beaten, as the original's gym script does, and Elm rings: his aide is waiting in
+# Violet City's Pokémon Center with the Egg (VAR_SCENE_ELMS_LAB 5, FLAG_HIDE_VIOLET_POKECENTER_AIDE cleared).
+
+
+script Falkner
+  face t22gym0101_gsleader1 player
+  speaker "Falkner"
+  if badge zephyr goto Won
+  scene "Falkner"
+  say "I'm Falkner, Leader of the Violet City Gym. People call bird Pokémon weak, easy prey for an Electric move."
+  say "My father taught me otherwise. I'll show you the true strength of the sky!"
+  battle self as "johto_leader_falkner_falkner"
+  say "...My father's birds, beaten. You've earned this, fair and square. The Zephyr Badge!"
+  givebadge zephyr
+  text "{player} received the Zephyr Badge from Falkner!"
+  say "With it, Pokémon up to level twenty will obey you, even ones you've traded for. And Rock Smash can be used outside battle."
+  setflag FLAG_DEFEATED_FALKNER
+  defeat "johto_bird_keeper_gs_abe"
+  defeat "johto_bird_keeper_gs_rod"
+label Tm
+  say "Take this as well. It's my favourite move."
+  give "TM51"
+  setflag FLAG_GOT_TM51_FROM_FALKNER
+  say "TM51 holds Roost. A Pokémon that uses it lands for a turn and gets back half of its health."
+  say "There are seven more Gyms in Johto. Fly high, {player}!"
+  setvar VAR_SCENE_ELMS_LAB 5
+  clearflag FLAG_HIDE_VIOLET_POKECENTER_AIDE
+  sound "select"
+  text "Brrrring! Brrrring! It's the Pokégear..."
+  speaker "Prof. Elm"
+  say "{player}! I've found out something about that Egg. My aide is in Violet City's Pokémon Center. Would you go and see him?"
+  text "Click... The call has ended."
+  endscene
+  end
+label Won
+  if not flag FLAG_GOT_TM51_FROM_FALKNER goto Tm
+  say "I'll train my birds until nobody calls them easy prey again. Come back and see how far we've flown!"
+  end
+
+
+# The guide by the door: advice, and praise once the Badge is won.
+script GymGuy
+  speaker "Gym Guide"
+  if badge zephyr goto Won
+  say "Hey there, future Champion! Falkner's birds are Flying types. They swoop over Ground moves like they're nothing."
+  say "Electric and Rock moves are what they hate. If you've climbed Sprout Tower, you'll be ready for him!"
+  end
+label Won
+  say "You beat Falkner! That was something to see. The Zephyr Badge is only the first of many!"
+  end

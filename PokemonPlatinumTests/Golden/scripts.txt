@@ -6333,6 +6333,84 @@ way 1, from answer 1
   + FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING
   + FLAG_HIDE_CELESTIC_TOWN_ELDER
   + seen celestic_town_cave.The painting
+=== cherrygrove.GuideGent
+from Guide Gent at 566,396 of Johto
+way 0
+  Guide Gent> You're a new face! Starting out on a journey, are you? I can always tell.
+  Guide Gent> Shall I show you round Cherrygrove? I know every corner of it.
+  Guide Gent> Splendid! Follow me, then.
+  > The Guide Gent showed Lucas the Pokémon Center, where tired Pokémon are made well for nothing,
+  > and the Mart, where Poké Balls and Potions are sold, and the sea, which nobody crosses without a swimmer.
+  Guide Gent> And this is my house. Thank you for listening to an old man ramble! Here, a little something for your trouble.
+  > Lucas's Pokégear now has a Map Card!
+  Guide Gent> It shows the whole of Johto, and where you are on it. Off you go, and safe travels!
+  ? Shall I show you round Cherrygrove? I know every corner of it. = Yes
+  * scene cherrygrove.The Guide Gent
+  * fade out
+  * fade in
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_GOT_MAP_CARD
+  + FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
+  + seen cherrygrove.The Guide Gent
+way 1, from answer 1
+  Guide Gent> No? Well, a traveller likes to find their own way. Speak to me if you change your mind.
+  ? Shall I show you round Cherrygrove? I know every corner of it. = No
+  * endscene
+  + seen cherrygrove.The Guide Gent
+=== cherrygrove.GuideGentStops
+from the trigger at 566,397 of Johto
+way 0
+  Guide Gent> You're a new face! Starting out on a journey, are you? I can always tell.
+  Guide Gent> Shall I show you round Cherrygrove? I know every corner of it.
+  Guide Gent> Splendid! Follow me, then.
+  > The Guide Gent showed Lucas the Pokémon Center, where tired Pokémon are made well for nothing,
+  > and the Mart, where Poké Balls and Potions are sold, and the sea, which nobody crosses without a swimmer.
+  Guide Gent> And this is my house. Thank you for listening to an old man ramble! Here, a little something for your trouble.
+  > Lucas's Pokégear now has a Map Card!
+  Guide Gent> It shows the whole of Johto, and where you are on it. Off you go, and safe travels!
+  ? Shall I show you round Cherrygrove? I know every corner of it. = Yes
+  * scene cherrygrove.The Guide Gent
+  * fade out
+  * fade in
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_GOT_MAP_CARD
+  + FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
+  = VAR_SCENE_CHERRYGROVE_CITY_OW 0 -> 1
+  + seen cherrygrove.The Guide Gent
+way 1, from answer 1
+  Guide Gent> No? Well, a traveller likes to find their own way. Speak to me if you change your mind.
+  ? Shall I show you round Cherrygrove? I know every corner of it. = No
+  * endscene
+  = VAR_SCENE_CHERRYGROVE_CITY_OW 0 -> 1
+  + seen cherrygrove.The Guide Gent
+=== cherrygrove.RivalAmbush
+from the trigger at 575,398 of Johto
+way 0
+  ???> Hold it. You're the one with the Pokémon from that lab, aren't you?
+  ???> A waste on someone like you. I've got a good Pokémon too, now. Let me show you what a real trainer does with one!
+  Barry> Tch. Just luck. My Pokémon isn't used to me yet, that's all.
+  Barry> ...My name? It's Barry. Remember it. I'm going to be the world's greatest trainer.
+  * scene cherrygrove.The red-haired boy
+  * music johto/rival
+  * battle johto_rival_silver_6 first Won
+  * music area
+  * endscene
+  + FLAG_BEAT_RIVAL_IN_CHERRYGROVE
+  + FLAG_HIDE_CHERRYGROVE_RIVAL
+  = VAR_SCENE_CHERRYGROVE_CITY_OW 0 -> 4
+  + beaten johto_rival_silver_6
+  + seen cherrygrove.The red-haired boy
+way 1, from answer 1
+  Barry> Ha! You see? Weak trainers don't deserve good Pokémon.
+  Barry> ...My name? It's Barry. Remember it. I'm going to be the world's greatest trainer.
+  * battle johto_rival_silver_6 first Lost
+  * music area
+  * endscene
+  + FLAG_HIDE_CHERRYGROVE_RIVAL
+  = VAR_SCENE_CHERRYGROVE_CITY_OW 0 -> 4
+  + seen cherrygrove.The red-haired boy
 === common.Attendant
 from a trainer with lines of their own
 way -
@@ -7285,6 +7363,39 @@ way -
   * fanfare FanfareItem
   * journal ItemWasObtained Potion
   + FLAG_OBTAINED_TEST_POTION
+=== common.JohtoNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_CHERRYGROVE_RIVAL
+  + FLAG_HIDE_ELMS_LAB_FRIEND
+  + FLAG_HIDE_ELMS_LAB_OFFICER
+  + FLAG_HIDE_NEW_BARK_FRIEND
+  + FLAG_HIDE_NEW_BARK_MARILL
+  + FLAG_HIDE_NEW_BARK_MOM
+  + FLAG_HIDE_ROUTE_29_FRIEND
+  + FLAG_HIDE_ROUTE_29_MARILL
+  + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  + FLAG_HIDE_VIOLET_GYM_GYM_GUY_AFTER_SPROUT
+  + FLAG_HIDE_VIOLET_POKECENTER_AIDE
+=== common.JohtoOpeningDone
+from a trainer with lines of their own
+way -
+  + FLAG_GAVE_MYSTERY_EGG_TO_ELM
+  + FLAG_GOT_MAP_CARD
+  + FLAG_GOT_MYSTERY_EGG
+  + FLAG_GOT_POKEGEAR
+  + FLAG_GOT_STARTER
+  + FLAG_HAS_POKEDEX
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_HIDE_CHERRYGROVE_GUIDE_GENT
+  + FLAG_HIDE_MR_POKEMONS_HOUSE_OAK
+  + FLAG_HIDE_NEW_BARK_RIVAL
+  = VAR_SCENE_CHERRYGROVE_CITY_OW 0 -> 4
+  = VAR_SCENE_ELMS_LAB 0 -> 4
+  = VAR_SCENE_NEW_BARK_TOWN_OW 0 -> 2
+  = VAR_SCENE_NEW_BARK_WEST_EXIT 0 -> 1
+  = VAR_SCENE_PLAYERS_HOUSE_1F 0 -> 1
+  = VAR_UNK_408B 0 -> 2
 === common.KantoNewGame
 from a trainer with lines of their own
 way -
@@ -8810,6 +8921,87 @@ from Rubble at 6,24 of MtCoronet2F
 from Rubble at 8,24 of MtCoronet2F
 way -
   > Broken stone lies either side of a hole. A scrap of paint on one piece is all that is left of the cave painting.
+=== new_bark.Friend
+from {assistant} at 694,400 of Johto
+way -
+  Dawn> Morning, Lucas! The professor was looking for you. Something about a favour, he said.
+  Dawn> Marill and I were just out for a walk. Go on, he's at the lab!
+=== new_bark.Marill
+from Marill at 693,400 of Johto
+way -
+  > Marill: Rill! Rill!
+  Dawn> Ha ha, Marill likes you! It doesn't do that for everyone.
+  * cry Marill
+  * walk Marill onspot right onspot right
+=== new_bark.Rival
+from ??? at 682,391 of Johto
+way -
+  ???> ...What are you staring at? This is the famous Pokémon lab, is it? Doesn't look like much.
+  ???> Get lost. I'm busy.
+  * emote ??? Exclaim
+=== new_bark.RunningShoes
+from the trigger at 684,394 of Johto
+way -
+  Mom> Lucas! Wait a moment!
+  Mom> So the professor gave you a Pokémon! And now you're off on an errand for him? Then you'll want these.
+  > Lucas received the Running Shoes!
+  Mom> Hold the run button down and you'll go twice as fast. Just don't run in the house!
+  Mom> Come home whenever you're tired. I'll be right here.
+  * scene new_bark.The Running Shoes
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_HIDE_NEW_BARK_MOM
+  = VAR_SCENE_NEW_BARK_TOWN_OW 0 -> 2
+  + seen new_bark.The Running Shoes
+=== new_bark.WestExit
+from the trigger at 676,396 of Johto
+way -
+  Dawn> Wait, Lucas! The grass on Route 29 is full of wild Pokémon. You can't go out there with none of your own!
+  Dawn> Professor Elm's lab is just up the lane. Go and see him first.
+  * scene new_bark.The way west
+  * endscene
+  + seen new_bark.The way west
+=== new_bark_elms_lab_1f.Aide
+from Aide at 9,12 of NewBark_ElmsLab
+way -
+  Aide> The professor forgets to eat when he's on to something. I've started leaving sandwiches on his desk.
+=== new_bark_elms_lab_1f.AideStops
+from the trigger at 3,11 of NewBark_ElmsLab
+way -
+  Aide> Lucas! Hold on. The professor asked me to give you this, in case your Pokémon gets hurt on the way.
+  > Lucas received the Potion!
+  > Lucas put it away in the Medicine pocket.
+  Aide> Spray it on your Pokémon and it'll feel better straight away. Good luck!
+  * fanfare FanfareItem
+  = VAR_SCENE_ELMS_LAB 0 -> 2
+=== new_bark_elms_lab_1f.Elm
+from Prof. Elm at 6,5 of NewBark_ElmsLab
+way -
+  Prof. Elm> Ah, Lucas! Good timing. I was just reading about how some Pokémon only evolve when they're happy.
+=== new_bark_elms_lab_1f.Errand
+from the trigger at 3,10 of NewBark_ElmsLab
+way -
+  Prof. Elm> Lucas! There you are. Come over here a moment, would you?
+  Prof. Elm> Thank you for coming so early. I've had an e-mail from an old friend, Mr. Pokémon. He lives up past Cherrygrove City.
+  Prof. Elm> He says he's found something remarkable, and he wants me to come and see it. But my research won't wait!
+  Prof. Elm> Ah, that's the chime again. More results coming in, see? I can't leave the lab for a minute.
+  Prof. Elm> So I was wondering... could you go in my place? The way there has wild Pokémon in its grass, so you'll need one of your own.
+  Prof. Elm> In the machine behind my desk are three Pokémon I've been raising. Choose one, and it's yours to keep!
+  * scene new_bark_elms_lab_1f.Elm's favour
+  * sound select
+  * emote Prof. Elm Exclaim
+  * endscene
+  + FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE
+  + seen new_bark_elms_lab_1f.Elm's favour
+=== new_bark_elms_lab_1f.Machine
+from the tile read at 6,3 of NewBark_ElmsLab
+way -
+  > A machine with three Poké Balls in it. It hums quietly.
+=== new_bark_player_house_1f.Mom
+from Mom at 6,7 of NewBark_PlayersHouse_1F
+way -
+  Mom> Professor Elm is waiting for you at his lab. It's the big building up the lane.
 === newmoon_island.Ferry
 from Sailor at 151,277 of Sinnoh
 way 0
@@ -9824,11 +10016,54 @@ way -
   * fanfare FanfareItem
   * fanfare FanfareItem
   + FLAG_RECEIVED_ROUTE_229_NUGGET
+=== route_29.Lesson
+from the trigger at 666,396 of Johto
+way -
+  Dawn> Lucas! Over here! The professor told me you've got Poké Balls now.
+  Dawn> Have you ever caught a Pokémon? It's easy once you've seen it done. Watch me!
+  Dawn> See? Wear it down first, then throw the ball. Now you try! Fill up that Pokédex.
+  Dawn> Marill and I are off home. See you around, Lucas!
+  * scene route_29.The catching lesson
+  * catchinglesson Sentret 2 Caught
+  * endscene
+  + FLAG_HIDE_ROUTE_29_FRIEND
+  + FLAG_HIDE_ROUTE_29_MARILL
+  = VAR_UNK_408B 0 -> 2
+  + seen route_29.The catching lesson
 === route_2_east_building.Aide
 from Aide at 4,6 of Route2_EastBuilding
 way -
   Aide> I'm one of Professor Oak's aides. I keep an eye on how his Pokédex is coming along.
   Aide> Catch plenty of Pokémon and I may have something for you.
+=== route_30_mr_pokemon_house.MrPokemon
+from Mr. Pokémon at 9,7 of Route30_MrPokemonsHouse
+way -
+  Mr. Pokémon> Hello, hello! Have a look round. Everything in here came from my travels.
+=== route_32.BadgeCheck
+from the trigger at 475,305 of Johto
+way -
+  Man> Hold on there! Have you been to the Gym in Violet City yet?
+  Man> The road south gets rough. Trainers without a Badge to their name tend to come back in tears. Go and earn one first!
+=== route_32.SeedMan
+from Man at 477,305 of Johto
+way -
+  Man> Hold on there! Have you been to the Gym in Violet City yet?
+  Man> The road south gets rough. Trainers without a Badge to their name tend to come back in tears. Go and earn one first!
+=== route_32_pokecenter_1f.Fisherman
+from Fishing Guru at 4,15 of Route32_PokemonCenter_1F
+way 0
+  Fishing Guru> This is a fine stretch of water for fishing. Do you fish? No? Then you're missing out!
+  Fishing Guru> Would you like a rod of your own?
+  Fishing Guru> That's the spirit! Here you are, my old rod. It's caught many a Magikarp in its day.
+  > Lucas received the Old Rod!
+  > Lucas put it away in the Key Items pocket.
+  Fishing Guru> Face the water and use it from your bag. Fishing is all about patience!
+  ? Would you like a rod of your own? = Yes
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_OLD_ROD
+way 1, from answer 1
+  Fishing Guru> Oh. Well, the fish will still be here if you change your mind.
+  ? Would you like a rod of your own? = No
 === sandgem_town.Counterpart
 from {assistant} at 168,845 of Sinnoh
 way -
@@ -10104,6 +10339,40 @@ way 0.1, from answer 2
   * wildbattle Palkia 70 Lost
 way 1, from answer 1
   ? Will you challenge Palkia? = No
+=== sprout_tower_3f.Elder
+from Elder Li at 12,9 of SproutTower_3F
+way 0
+  Elder Li> Welcome to the top of Sprout Tower. You have climbed far, and your Pokémon climbed beside you.
+  Elder Li> The pillar at the tower's heart sways with every wind, and so it never falls. Let me see if your bond is as supple.
+  Elder Li> Splendid. You and your Pokémon move as one. Take this, and may it light your way.
+  > Lucas received the TM70!
+  > TM70 holds the move Flash.
+  > Lucas put it away in the TMs & HMs pocket.
+  Elder Li> TM70 holds Flash. It lights a dark cave and dazzles a foe. Falkner awaits you at the Gym. Go to him with my blessing.
+  * scene sprout_tower_3f.Elder Li
+  * battle johto_elder_li Won
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_GOT_TM70
+  + FLAG_HIDE_VIOLET_GYM_GYM_GUY_BEFORE_SPROUT
+  + beaten johto_elder_li
+  + seen sprout_tower_3f.Elder Li
+way 1, from answer 1
+  * battle johto_elder_li Lost
+  * scene over, unseen
+=== sprout_tower_3f.RivalLeaves
+from the trigger at 13,17 of SproutTower_3F
+way -
+  Elder Li> You are strong, young man. But you treat your Pokémon as tools. Strength like that has nowhere to grow.
+  Barry> Spare me the sermon, old man. Strength is all that counts. I won, didn't I?
+  Barry> ...You again. Don't get in my way. I've got no time for a weakling like you.
+  > Barry used an Escape Rope!
+  * scene sprout_tower_3f.Sprout Tower's top
+  * emote {rival} Exclaim
+  * endscene
+  + FLAG_HIDE_SPROUT_TOWER_RIVAL
+  = VAR_UNK_40A4 0 -> 1
+  + seen sprout_tower_3f.Sprout Tower's top
 === stark_mountain_outside.Grunt
 from Grunt at 742,232 of Sinnoh
 from Grunt at 742,233 of Sinnoh
@@ -10636,6 +10905,62 @@ from the trigger at 4,55 of VictoryRoad1FRoom2
 way -
   Marley> ...You're going back? ...I see. I'll wait here, then.
   * partner off
+=== violet.FatMan
+from Fat Man at 474,252 of Johto
+way -
+  Fat Man> Falkner trains at Sprout Tower now and then. If the monks there can't stop you, maybe he can't either!
+=== violet_gym.Falkner
+from Falkner at 15,4 of Violet_Gym
+way 0
+  Falkner> I'm Falkner, Leader of the Violet City Gym. People call bird Pokémon weak, easy prey for an Electric move.
+  Falkner> My father taught me otherwise. I'll show you the true strength of the sky!
+  Falkner> ...My father's birds, beaten. You've earned this, fair and square. The Zephyr Badge!
+  > Lucas received the Zephyr Badge from Falkner!
+  Falkner> With it, Pokémon up to level twenty will obey you, even ones you've traded for. And Rock Smash can be used outside battle.
+  Falkner> Take this as well. It's my favourite move.
+  > Lucas received the TM51!
+  > TM51 holds the move Roost.
+  > Lucas put it away in the TMs & HMs pocket.
+  Falkner> TM51 holds Roost. A Pokémon that uses it lands for a turn and gets back half of its health.
+  Falkner> There are seven more Gyms in Johto. Fly high, Lucas!
+  > Brrrring! Brrrring! It's the Pokégear...
+  Prof. Elm> Lucas! I've found out something about that Egg. My aide is in Violet City's Pokémon Center. Would you go and see him?
+  > Click... The call has ended.
+  * scene violet_gym.Falkner
+  * battle johto_leader_falkner_falkner Won
+  * fanfare FanfareBadge
+  * defeat johto_bird_keeper_gs_abe
+  * defeat johto_bird_keeper_gs_rod
+  * fanfare FanfareTM
+  * sound select
+  * endscene
+  + FLAG_DEFEATED_FALKNER
+  + FLAG_GOT_TM51_FROM_FALKNER
+  = VAR_SCENE_ELMS_LAB 0 -> 5
+  + beaten johto_bird_keeper_gs_abe
+  + beaten johto_bird_keeper_gs_rod
+  + beaten johto_leader_falkner_falkner
+  = badges Johto 0 -> 1
+  + seen violet_gym.Falkner
+way 1, from answer 1
+  * battle johto_leader_falkner_falkner Lost
+  * scene over, unseen
+=== violet_gym.GymGuy
+from Gym Guide at 15,20 of Violet_Gym
+from Gym Guide at 17,26 of Violet_Gym
+way -
+  Gym Guide> Hey there, future Champion! Falkner's birds are Flying types. They swoop over Ground moves like they're nothing.
+  Gym Guide> Electric and Rock moves are what they hate. If you've climbed Sprout Tower, you'll be ready for him!
+=== violet_pokecenter_1f.Aide
+from Aide at 10,15 of Violet_PokemonCenter_1F
+way -
+  Aide> Lucas! Over here. The professor sent me with the Egg from Mr. Pokémon.
+  Aide> He's sure it really is a Pokémon Egg. And he thinks it hatches faster in the company of other Pokémon.
+  Aide> He'd like you to take it with you on your journey. Will you look after it?
+  > Lucas received the Egg!
+  Aide> Keep it on your team and walk with it. The professor would love to hear what hatches!
+  + FLAG_GOT_TOGEPI_EGG
+  + FLAG_HIDE_VIOLET_POKECENTER_AIDE
 === viridian_city.Granddaughter
 from Woman at 68,192 of Kanto
 way -

@@ -36,7 +36,15 @@
     { "name": "Violet_PokemonSchool", "matrix": 102, "area": "violet_pokemon_school", "trees": "Round", "setting": "Indoors" },
     { "name": "Violet_NorthwestHouse", "matrix": 95, "area": "violet_northwest_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Violet_TradeHouse", "matrix": 95, "area": "violet_bellsprout_onyx_trade_house", "trees": "Round", "setting": "Indoors" },
-    { "name": "Violet_Route36Gate", "matrix": 70, "area": "violet_route_36_gatehouse", "trees": "Round", "setting": "Indoors" }
+    { "name": "Violet_Route36Gate", "matrix": 70, "area": "violet_route_36_gatehouse", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J2, part b: Violet's Gym, Sprout Tower's three floors, and Route 32's Pokémon Center and gate house
+    { "name": "Violet_Gym", "matrix": 87, "area": "violet_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "SproutTower_1F", "matrix": 12, "area": "sprout_tower_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SproutTower_2F", "matrix": 13, "area": "sprout_tower_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SproutTower_3F", "matrix": 14, "area": "sprout_tower_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route32_PokemonCenter_1F", "matrix": 73, "area": "route_32_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route32_PokemonCenter_B1F", "matrix": 77, "area": "route_32_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route32_RuinsOfAlphGate", "matrix": 70, "area": "route_32_ruins_of_alph_gatehouse", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -49,6 +57,9 @@
     "route_30_apricorn_house", "route_30_mr_pokemon_house", "route_31_violet_gatehouse",
     // and Violet City, with its rooms but its Gym
     "violet", "violet_pokecenter_1f", "violet_pokecenter_b1f", "violet_pokemart", "violet_pokemon_school",
-    "violet_northwest_house", "violet_bellsprout_onyx_trade_house", "violet_route_36_gatehouse"
+    "violet_northwest_house", "violet_bellsprout_onyx_trade_house", "violet_route_36_gatehouse",
+    // Plan 20 · J2, part b, and J4: Violet's Gym, Sprout Tower's floors, Route 32 to the Ruins of Alph's gate house
+    "violet_gym", "sprout_tower_1f", "sprout_tower_2f", "sprout_tower_3f",
+    "route_32", "route_32_pokecenter_1f", "route_32_pokecenter_b1f", "route_32_ruins_of_alph_gatehouse"
   ]
 }

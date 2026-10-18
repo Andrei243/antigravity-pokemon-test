@@ -1,0 +1,32 @@
+# The red-haired rival of Johto (HeartGold's rival battle theme): a defiant sawtooth lead in C minor, short and
+# stubborn phrases that won't resolve, over a pounding bass. Original composition for this game (plan 20 · J4).
+title Battle! Rival (Johto)
+tempo 168
+meter 4/4
+lowhptempo 1.08
+reverb 0.15
+
+track lead sawlead lowhp=square vol=0.74 pan=0.05 rev=0.16
+  o5 c8 r8 c8 r8 c8 d8 e-8 g8 | o5 b8 r8 b8 r8 g4 d4 | L o5 c4 e-8 g8 o6 c4 o5 g4 | o5 a-4 g8 f8 e-2 |
+  o5 f4 a-8 o6 c8 f4 c4 | o5 g4 f8 e-8 d2 | o5 c4 e-8 g8 o6 c4 d4 | o6 d4 o5 b8 a8 g4 d4 |
+  o5 a-4 f4 g4 b4 | o5 c2 g2 |
+
+track pad strings unless=lowhp vol=0.26 pan=-0.25 rev=0.22
+  r1 | r1 | L o4 (c e- g)1 | (c e- a-)1 |
+  (c f a-)1 | (d g b)1 | (c e- g)1 | (d g b)1 |
+  (c f a-)2 (d g b)2 | (c e- g)1 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 c8 r8 c8 r8 c8 d8 e-8 g8 | o2 g8 r8 g8 r8 g4 g4 | L [ o2 c8 o3 c8 ]4 | [ o2 a-8 o3 a-8 ]4 |
+  [ o2 f8 o3 f8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 g8 o3 g8 ]4 |
+  o2 f8 o3 f8 o2 f8 o3 f8 o2 g8 o3 g8 o2 g8 o3 g8 | [ o2 c8 o3 c8 ]4 |
+
+track drums kit vol=0.52 rev=0.1
+  v100 b8 r8 b8 r8 b8 s8 s8 s8 | b8 r8 b8 r8 (b c)4 s16 s16 s16 s16 | L [ b8 b8 s8 r8 b8 b8 s8 r8 | ]7 b8 b8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.42 pan=0.15 rev=0.1
+  r1 | r1 | L v62 [ h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 | ]8
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 c16 r16 c16 r16 r4 c16 r16 c16 r16 r4 | ]8

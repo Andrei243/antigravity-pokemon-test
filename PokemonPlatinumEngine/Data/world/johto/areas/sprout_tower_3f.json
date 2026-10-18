@@ -1,0 +1,49 @@
+{
+  "key": "sprout_tower_3f",
+  "index": 156,
+  "name": "Sprout Tower",
+  "matrix": 14,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_MADATSUBOMI1",
+  "nightMusic": "GS_TO_MADATSUBOMI1",
+  "encounters": "D15R0103",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Rattata", "level": 3, "night": "Gastly" },
+    { "species": "Rattata", "level": 4, "night": "Gastly" },
+    { "species": "Rattata", "level": 3, "night": "Gastly" },
+    { "species": "Rattata", "level": 4, "night": "Gastly" },
+    { "species": "Rattata", "level": 5, "night": "Gastly" },
+    { "species": "Rattata", "level": 5, "night": "Gastly" },
+    { "species": "Rattata", "level": 3 },
+    { "species": "Rattata", "level": 3 },
+    { "species": "Rattata", "level": 6, "night": "Gastly" },
+    { "species": "Rattata", "level": 5 },
+    { "species": "Rattata", "level": 6, "night": "Gastly" },
+    { "species": "Rattata", "level": 5 }
+  ],
+  "landRate": 5,
+  "warps": [
+    { "x": 15, "z": 27, "to": "sprout_tower_2f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "d15r0103_bozu", "looks": "bozu", "movement": "16", "x": 18, "z": 25, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_SAGE_JIN" },
+    { "id": "d15r0103_bozu_2", "looks": "bozu", "movement": "17", "x": 13, "z": 22, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SAGE_NEAL" },
+    { "id": "d15r0103_bozu_3", "looks": "bozu", "movement": "15", "x": 17, "z": 19, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_SAGE_TROY" },
+    { "id": "d15r0103_chourou", "looks": "chourou", "movement": "15", "x": 12, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D15R0103_002+1" },
+    { "id": "d15r0103_monstarball", "looks": "monstarball", "movement": "0", "x": 11, "z": 27, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D15R0103_POTION", "item": "Potion", "script": "std_itemball_d15r0103_potion" },
+    { "id": "d15r0103_monstarball_2", "looks": "monstarball", "movement": "0", "x": 19, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D15R0103_ESCAPE_ROPE", "item": "Escape Rope", "script": "std_itemball_d15r0103_escape_rope" },
+    { "id": "d15r0103_gsrivel", "looks": "gsrivel", "movement": "14", "x": 12, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1A3", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 13, "z": 17, "width": 1, "depth": 1, "script": "D15R0103_001+1", "variable": "VAR_UNK_40A4", "value": "0" }
+  ]
+}

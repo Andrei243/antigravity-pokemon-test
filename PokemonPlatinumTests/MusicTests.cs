@@ -99,7 +99,7 @@ public class MusicTests
     {
         Assert.Equal("kanto/battle_wild", MusicDirector.Resolve(MusicRole.BattleWild, RegionDatabase.Kanto, MusicLibrary.Exists));
         Assert.Equal("common/battle_wild", MusicDirector.Resolve(MusicRole.BattleWild, RegionDatabase.Sinnoh, MusicLibrary.Exists));
-        Assert.Equal("common/battle_wild", MusicDirector.Resolve(MusicRole.BattleWild, RegionDatabase.Johto, MusicLibrary.Exists));
+        Assert.Equal("johto/battle_wild", MusicDirector.Resolve(MusicRole.BattleWild, RegionDatabase.Johto, MusicLibrary.Exists));
     }
 
     [Fact]

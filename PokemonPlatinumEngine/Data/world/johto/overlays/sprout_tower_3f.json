@@ -1,0 +1,33 @@
+{
+  // Sprout Tower's top floor (plan 20 · J4), HeartGold's room. Elder Li, the red-haired boy's scene and TM70 are
+  // sprout_tower_3f.txt's; the Sages battle by their own records (Johto's trainers.json). The boy is hidden by a flag
+  // of ours until his scene, in place of HeartGold's unnamed one
+  "area": "sprout_tower_3f",
+  "bgmTrack": "johto/sprout_tower",
+  "triggers": [ { "trigger": 0, "script": "RivalLeaves" } ],
+  "people": {
+    "d15r0103_chourou": { "name": "Elder Li", "script": "Elder", "still": true },
+    "d15r0103_gsrivel": { "name": "{rival}", "hiddenBy": "FLAG_HIDE_SPROUT_TOWER_RIVAL", "still": true, "dialog": [ "..." ] },
+    "d15r0103_bozu": {
+      "name": "Jin",
+      "trainer": {
+        "dialogueBefore": "Sage Jin: The top of the tower is near. Show me you are worthy of it!",
+        "dialogueAfter": "Sage Jin: Your bond is strong. Go on to the Elder."
+      }
+    },
+    "d15r0103_bozu_2": {
+      "name": "Neal",
+      "trainer": {
+        "dialogueBefore": "Sage Neal: Listen. Can you hear the pillar creak? It sways, and it stands. Let us battle!",
+        "dialogueAfter": "Sage Neal: You bent, but you did not break. Well done."
+      }
+    },
+    "d15r0103_bozu_3": {
+      "name": "Troy",
+      "trainer": {
+        "dialogueBefore": "Sage Troy: The Elder waits beyond me. First, my Pokémon and I will test you.",
+        "dialogueAfter": "Sage Troy: Calm as the tower itself. You may pass."
+      }
+    }
+  }
+}

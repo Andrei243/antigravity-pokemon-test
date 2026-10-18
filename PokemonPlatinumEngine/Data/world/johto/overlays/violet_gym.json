@@ -1,0 +1,29 @@
+{
+  // The Violet City Gym (plan 20 · J4), HeartGold's room. Falkner, his guide and the Zephyr Badge are violet_gym.txt's;
+  // Abe and Rod battle by their own records (Johto's trainers.json). The guide stands by the door until Sprout Tower is
+  // climbed and halfway up the hall after, as in HeartGold
+  "area": "violet_gym",
+  "bgmTrack": "johto/gym",
+  "people": {
+    "t22gym0101_gsleader1": { "name": "Falkner", "script": "Falkner", "still": true },
+    "t22gym0101_sunglasses": { "name": "Gym Guide", "script": "GymGuy", "still": true },
+    "t22gym0101_sunglasses_2": { "name": "Gym Guide", "script": "GymGuy", "still": true },
+    "t22gym0101_gsman2": {
+      "name": "Abe",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Abe: Falkner flies higher than anyone. You'll have to get past me to reach him!",
+        "dialogueAfter": "Bird Keeper Abe: Grounded... Falkner won't go so easy on you."
+      }
+    },
+    "t22gym0101_gsman2_2": {
+      "name": "Rod",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Rod: The wind's on our side in here. Ready for a battle?",
+        "dialogueAfter": "Bird Keeper Rod: You weathered that storm. Go on, then."
+      }
+    }
+  },
+  "signs": {
+    "T22GYM0101_003+1": "Violet City Pokémon Gym\nLeader: Falkner"
+  }
+}

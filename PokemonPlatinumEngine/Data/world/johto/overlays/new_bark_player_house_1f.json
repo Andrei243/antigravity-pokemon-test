@@ -1,17 +1,14 @@
 {
-  // The player's house downstairs in New Bark Town (plan 20 · J2), from HeartGold's room. Mom's scenes (the Pokégear,
-  // the Running Shoes) are plan 20 · J4's; until then she sees to the team whenever she is spoken to
+  // The player's house downstairs in New Bark Town (plan 20 · J2), from HeartGold's room. Mom's first word and the
+  // Pokégear are plan 20 · J4's scene (new_bark_player_house_1f.txt); she sees to the team once it has a Pokémon
   "area": "new_bark_player_house_1f",
   "bgmTrack": "johto/new_bark",
   "people": {
     "t20r0201_gsmama": {
       "name": "Mom",
-      "script": "Healer",
+      "script": "Mom",
       "isHealingNurse": true,
-      "dialog": [
-        "Back already? You look tired out. Sit down for a minute.",
-        "There, all better. Take care of each other out there, won't you?"
-      ]
+      "still": true
     }
   },
   "signs": {

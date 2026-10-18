@@ -1,0 +1,82 @@
+{
+  // Route 32 (plan 20 · J2, part b): south from Violet City past the Ruins of Alph's gate house and the Pokémon Center
+  // to Union Cave, whose mouth (warp 2) stays shut until plan 20 · J5. The man at its head holds back whoever has no
+  // Badge yet and gives a Miracle Seed to whoever has (route_32.txt). Its trainers battle by their own records (Johto's
+  // trainers.json); the girl here only on Fridays and the man with the Lure are later chapters'
+  "area": "route_32",
+  "bgmTrack": "johto/route30",
+  "trees": "Round",
+  "locked": [ 2 ],
+  "triggers": [ { "trigger": 0, "script": "BadgeCheck" } ],
+  "people": {
+    "r32_gsmiddleman1": { "name": "Man", "script": "SeedMan", "still": true },
+    "r32_gsbigman": {
+      "name": "Fat Man",
+      "dialog": [
+        "The Ruins of Alph are just west of here. Scientists come from all over to study the strange stones.",
+        "I can't make head nor tail of them myself."
+      ]
+    },
+    "r32_gsboy2": {
+      "name": "Albert",
+      "trainer": {
+        "dialogueBefore": "Youngster Albert: I don't know if I'm any good yet. Let's find out!",
+        "dialogueAfter": "Youngster Albert: Guess I'm not good yet. I'll keep at it!"
+      }
+    },
+    "r32_picnicgirl_2": {
+      "name": "Liz",
+      "trainer": {
+        "dialogueBefore": "Picnicker Liz: You're a trainer too? Let's battle, then we can swap stories!",
+        "dialogueAfter": "Picnicker Liz: Wow, you're strong! Tell me where you've been!"
+      }
+    },
+    "r32_fishing_2": {
+      "name": "Henry",
+      "trainer": {
+        "dialogueBefore": "Fisherman Henry: Nothing's biting today. A battle will pass the time!",
+        "dialogueAfter": "Fisherman Henry: That's the one that got away, I suppose."
+      }
+    },
+    "r32_fishing_2_2": {
+      "name": "Justin",
+      "trainer": {
+        "dialogueBefore": "Fisherman Justin: Shh! You'll scare the fish. Oh, you want a battle? Fine!",
+        "dialogueAfter": "Fisherman Justin: Now the fish have all gone. Thanks a lot."
+      }
+    },
+    "r32_fishing_2_3": {
+      "name": "Ralph",
+      "trainer": {
+        "dialogueBefore": "Fisherman Ralph: I fish every day of the week. My Pokémon are as tough as old boots!",
+        "dialogueAfter": "Fisherman Ralph: Tougher boots than mine, then. Good battle."
+      }
+    },
+    "r32_campboy_2": {
+      "name": "Roland",
+      "trainer": {
+        "dialogueBefore": "Camper Roland: I'm camping out here to toughen up. You're just the challenge I needed!",
+        "dialogueAfter": "Camper Roland: Back to the tent for more training, I think."
+      }
+    },
+    "r32_gsboy2_2": {
+      "name": "Gordon",
+      "trainer": {
+        "dialogueBefore": "Youngster Gordon: I found a really good Pokémon in the grass here. Want to see it?",
+        "dialogueAfter": "Youngster Gordon: It's still a really good Pokémon. I just need practice."
+      }
+    },
+    "r32_gsman2": {
+      "name": "Peter",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Peter: My birds love the breeze off the water. Watch them go!",
+        "dialogueAfter": "Bird Keeper Peter: Grounded again. The breeze must have dropped."
+      }
+    }
+  },
+  "signs": {
+    "R32_006+1": "Route 32\nViolet City - Azalea Town",
+    "R32_007+1": "Ruins of Alph\nEast Entrance",
+    "R32_008+1": "Union Cave"
+  }
+}

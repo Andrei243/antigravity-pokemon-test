@@ -1,0 +1,22 @@
+{
+  // Sprout Tower's middle floor (plan 20 · J4), HeartGold's room. The Sages battle by their own records (Johto's
+  // trainers.json)
+  "area": "sprout_tower_2f",
+  "bgmTrack": "johto/sprout_tower",
+  "people": {
+    "d15r0102_bozu": {
+      "name": "Nico",
+      "trainer": {
+        "dialogueBefore": "Sage Nico: The tower sways, but our hearts are steady. Are yours?",
+        "dialogueAfter": "Sage Nico: Steady indeed. I have more training to do."
+      }
+    },
+    "d15r0102_bozu_2": {
+      "name": "Edmond",
+      "trainer": {
+        "dialogueBefore": "Sage Edmond: Every step up this tower is a lesson. Here is mine!",
+        "dialogueAfter": "Sage Edmond: A lesson for me, it seems. Climb on."
+      }
+    }
+  }
+}

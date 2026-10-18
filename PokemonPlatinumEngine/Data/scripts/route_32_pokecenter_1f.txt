@@ -1,0 +1,21 @@
+# Route 32's Pokémon Center (plan 20 · J4). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_R32PC0101): the fisherman by the window gives the Old Rod to whoever wants to fish.
+
+
+script Fisherman
+  speaker "Fishing Guru"
+  if flag FLAG_GOT_OLD_ROD goto After
+  say "This is a fine stretch of water for fishing. Do you fish? No? Then you're missing out!"
+  ask "Would you like a rod of your own?"
+  if no goto Refused
+  say "That's the spirit! Here you are, my old rod. It's caught many a Magikarp in its day."
+  give "Old Rod"
+  setflag FLAG_GOT_OLD_ROD
+  say "Face the water and use it from your bag. Fishing is all about patience!"
+  end
+label Refused
+  say "Oh. Well, the fish will still be here if you change your mind."
+  end
+label After
+  say "How's the fishing? Remember: patience, patience, and more patience."
+  end

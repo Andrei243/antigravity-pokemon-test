@@ -1,11 +1,15 @@
 {
   // Route 29 (plan 20 · J2): from New Bark Town west to Cherrygrove City, with the gate house to Route 46 on its north
-  // side (Route 46 itself is plan 20 · J5's, so its way out of the gate house is shut). The Apricorn tree is J6's, the
-  // catching lesson at the town's edge J4's, and the girl who is here only on Tuesdays plan 20 · J13's
+  // side (Route 46 itself is plan 20 · J5's, so its way out of the gate house is shut). The Apricorn tree is J6's, and
+  // the girl who is here only on Tuesdays plan 20 · J13's
   "area": "route_29",
   "bgmTrack": "johto/route29",
   "trees": "Round",
+  // The catching lesson at New Bark Town's edge (HeartGold's trigger 0; route_29.txt, plan 20 · J4)
+  "triggers": [ { "trigger": 0, "script": "Lesson" } ],
   "people": {
+    "r29_var_2": { "name": "{assistant}", "npcType": "Assistant", "still": true, "dialog": [ "Watch closely!" ] },
+    "r29_tsure_poke_static_marill": { "name": "Marill", "npcType": "Pokemon", "species": "Marill", "still": true, "dialog": [ "Marill: Rill!" ] },
     "r29_gsboy2": {
       "name": "Youngster",
       "dialog": [

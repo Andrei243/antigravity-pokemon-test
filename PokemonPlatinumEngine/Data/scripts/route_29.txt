@@ -1,0 +1,29 @@
+# Route 29 (plan 20 · J4). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_R29).
+#
+# The catching lesson (HeartGold's R29_001, the area's trigger 0, on VAR_UNK_408B 1, which the lab sets once the
+# Poké Balls are handed over): the friend next door is waiting at the edge of the grass with their Marill, and shows
+# the player how a wild Pokémon is caught. The lesson's battle plays itself (`catchinglesson`), with the Pokémon the
+# friend was left (docs/mechanics/rulings.md, "Johto's first chapter").
+
+
+script Lesson
+  scene "The catching lesson"
+  clearflag FLAG_HIDE_ROUTE_29_FRIEND
+  clearflag FLAG_HIDE_ROUTE_29_MARILL
+  show r29_var_2
+  show r29_tsure_poke_static_marill
+  face player left
+  speaker "{assistant}"
+  say "{player}! Over here! The professor told me you've got Poké Balls now."
+  say "Have you ever caught a Pokémon? It's easy once you've seen it done. Watch me!"
+  catchinglesson "Sentret" 2
+  say "See? Wear it down first, then throw the ball. Now you try! Fill up that Pokédex."
+  say "Marill and I are off home. See you around, {player}!"
+  hide r29_var_2
+  hide r29_tsure_poke_static_marill
+  setflag FLAG_HIDE_ROUTE_29_FRIEND
+  setflag FLAG_HIDE_ROUTE_29_MARILL
+  setvar VAR_UNK_408B 2
+  endscene
+  end

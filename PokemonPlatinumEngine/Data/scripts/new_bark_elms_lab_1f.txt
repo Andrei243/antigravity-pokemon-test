@@ -1,0 +1,186 @@
+# Professor Elm's lab (plan 20 · J4). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_T20R0101).
+#
+# VAR_SCENE_ELMS_LAB, as HeartGold counts it, but for the steps it has no number for: 0 until the starter (with
+# FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE set once Elm has asked his favour, which keeps the player in until they have
+# chosen), 1 once chosen, 2 once the aide has handed over the Potion on the way out, 3 once Elm has called about the
+# theft (Mr. Pokémon's house sets it), 4 once the policeman has gone and the Mystery Egg is Elm's, 5 once the Zephyr
+# Badge is won and the aide has gone to Violet City with the Egg that hatched out of it in Elm's care (the Gym sets it).
+# The three Pokémon wait in the machine behind Elm's desk; the one strong against the player's is the one the thief
+# takes (Region.RivalStarterFor), as in HeartGold.
+
+
+# Walking in for the first time (HeartGold's T20R0101_011, the area's trigger 1, on 0): Elm calls the player over and
+# asks his favour. Once asked, the same step turns them back until they have a Pokémon.
+script Errand
+  if flag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE goto Back
+  scene "Elm's favour"
+  speaker "Prof. Elm"
+  say "{player}! There you are. Come over here a moment, would you?"
+  if var PLAYER_X == 3 goto From3
+  if var PLAYER_X == 4 goto From4
+  if var PLAYER_X == 5 goto From5
+  walk player up 4
+  goto Asked
+label From3
+  walk player up 4 right 3
+  goto Asked
+label From4
+  walk player up 4 right 2
+  goto Asked
+label From5
+  walk player up 4 right 1
+label Asked
+  face player up
+  face t20r0101_doctor down
+  say "Thank you for coming so early. I've had an e-mail from an old friend, Mr. Pokémon. He lives up past Cherrygrove City."
+  say "He says he's found something remarkable, and he wants me to come and see it. But my research won't wait!"
+  sound "select"
+  emote t20r0101_doctor exclaim
+  say "Ah, that's the chime again. More results coming in, see? I can't leave the lab for a minute."
+  say "So I was wondering... could you go in my place? The way there has wild Pokémon in its grass, so you'll need one of your own."
+  say "In the machine behind my desk are three Pokémon I've been raising. Choose one, and it's yours to keep!"
+  setflag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE
+  endscene
+  end
+label Back
+  face t20r0101_doctor down
+  emote t20r0101_doctor exclaim
+  speaker "Prof. Elm"
+  say "Wait, {player}! You can't go out there without a Pokémon. Choose one from the machine first!"
+  walk player up 1
+  end
+
+
+# The machine behind Elm's desk (HeartGold's T20R0101_012): its three Poké Balls open the choice of three, as Sinnoh's
+# briefcase does (`starter`).
+script Machine
+  if flag FLAG_GOT_STARTER goto Empty
+  if not flag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE goto Waiting
+  call Choose
+  end
+label Waiting
+  text "A machine with three Poké Balls in it. It hums quietly."
+  end
+label Empty
+  text "A machine for raising Pokémon. Two of its three places are empty now."
+  end
+
+
+# The choice itself, from the machine or from Elm: the Pokémon joins the team, and Elm sends the player on the errand.
+script Choose
+  scene "The starters"
+  starter
+  setflag FLAG_GOT_STARTER
+  fanfare pokemon
+  text "{player} received the {starter} from Professor Elm!"
+  face t20r0101_doctor player
+  speaker "Prof. Elm"
+  say "A wonderful choice! I've raised that {starter} since it hatched. It already seems to like you."
+  say "Mr. Pokémon's house is north of Cherrygrove City, up Route 30. Just tell him I sent you."
+  say "Oh, and if anything comes up, I'll ring you. I'll put my number in your Pokégear."
+  text "Professor Elm's number was registered in the Pokégear!"
+  say "Your {starter} will look after you, and you look after it. Off you go!"
+  setflag FLAG_HIDE_NEW_BARK_RIVAL
+  setvar VAR_SCENE_ELMS_LAB 1
+  setvar VAR_SCENE_NEW_BARK_TOWN_OW 1
+  clearflag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE
+  endscene
+  return
+
+
+# On the way out with a Pokémon (HeartGold's T20R0101_003, the area's trigger 0, on 1): the aide hands over a Potion.
+script AideStops
+  face t20r0101_assistantm player
+  speaker "Aide"
+  say "{player}! Hold on. The professor asked me to give you this, in case your Pokémon gets hurt on the way."
+  give "Potion"
+  say "Spray it on your Pokémon and it'll feel better straight away. Good luck!"
+  setvar VAR_SCENE_ELMS_LAB 2
+  end
+
+
+# Back after the theft (HeartGold's T20R0101's arrival at 3): the policeman's questions, the Mystery Egg, and the Poké
+# Balls for the road. The thief was named when the game began (the introduction's last question), so the policeman
+# only has that name confirmed (docs/mechanics/rulings.md, "Johto's first chapter").
+script OnEnter
+  if var VAR_SCENE_ELMS_LAB != 3 end
+  scene "The theft"
+  walk player up 6
+  face t20r0101_policeman player
+  emote t20r0101_policeman exclaim
+  speaker "Officer"
+  say "Hold it right there! The thief always comes back to the scene. So it was you, was it?"
+  face t20r0101_doctor player
+  speaker "Prof. Elm"
+  say "No, no, Officer! That's {player}, who was running an errand for me. {player} couldn't have done it."
+  speaker "Officer"
+  say "Oh. Then I'm sorry. Someone broke in while the professor was out and took one of his Pokémon from the machine."
+  say "{player}, was it? Did you see anyone on the way? A boy with red hair, quick on his feet?"
+  ask "Did you meet the thief?"
+  if no goto NotSeen
+  say "You battled him? Then you'd know him again. Did he give you a name?"
+  text "{player} told the officer the name the boy had boasted of: {rival}."
+  say "{rival}... I'll make a note of it. Thank you, that's a real help."
+  goto Leaves
+label NotSeen
+  say "No? Well, if you do see him, a boy called {rival} is who we're after, from what the neighbours heard."
+label Leaves
+  say "Leave this to the police. Good day, Professor."
+  walk t20r0101_policeman down 7
+  hide t20r0101_policeman
+  setflag FLAG_HIDE_ELMS_LAB_OFFICER
+  speaker "Prof. Elm"
+  say "What a morning! And what did Mr. Pokémon have to show? Something remarkable, he said..."
+  text "{player} handed over the Mystery Egg."
+  setflag FLAG_GAVE_MYSTERY_EGG_TO_ELM
+  emote t20r0101_doctor exclaim
+  say "An Egg?! Nobody knows for certain where Pokémon Eggs come from! I'll study it day and night."
+  say "And Professor Oak gave you a Pokédex? Then you mustn't stop at errands. Go and see Johto, {player}!"
+  say "The nearest Gym is in Violet City, past Cherrygrove. Its Leader, Falkner, flies with bird Pokémon."
+  face t20r0101_assistantm player
+  speaker "Aide"
+  say "{player}, take these. You'll want them if you're going to fill that Pokédex."
+  give "Poké Ball" 5
+  say "Throw one at a wild Pokémon once it's tired out, and it might be yours."
+  setvar VAR_SCENE_ELMS_LAB 4
+  setvar VAR_UNK_408B 1
+  endscene
+  end
+
+
+# Professor Elm, by how far the chapter has come; before the starter he has the choice to offer too.
+script Elm
+  speaker "Prof. Elm"
+  if var VAR_SCENE_ELMS_LAB >= 5 goto Hatched
+  if var VAR_SCENE_ELMS_LAB == 4 goto Egg
+  if var VAR_SCENE_ELMS_LAB >= 1 goto Errand
+  if not flag FLAG_ELMS_LAB_PREVENT_PLAYER_ESCAPE goto Busy
+  say "Have you chosen? The three of them are in the machine behind my desk."
+  ask "Would you like to choose now?"
+  if no end
+  call Choose
+  end
+label Busy
+  say "Ah, {player}! Good timing. I was just reading about how some Pokémon only evolve when they're happy."
+  end
+label Errand
+  say "Mr. Pokémon lives north of Cherrygrove City, up Route 30. Thank you for going, {player}!"
+  end
+label Egg
+  say "This Egg is a marvel. I've been listening to it all day. I'm sure something is moving in there!"
+  end
+label Hatched
+  say "The Egg is in my aide's hands now. I'm so glad you'll be the one to raise what comes out of it."
+  end
+
+
+# The aide at his desk.
+script Aide
+  speaker "Aide"
+  if var VAR_SCENE_ELMS_LAB >= 4 goto After
+  say "The professor forgets to eat when he's on to something. I've started leaving sandwiches on his desk."
+  end
+label After
+  say "To think someone walked in and took a Pokémon while we were busy. We've changed the locks since."
+  end

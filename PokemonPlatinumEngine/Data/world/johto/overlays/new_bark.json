@@ -1,12 +1,21 @@
 {
-  // New Bark Town (plan 20 · J2): HeartGold's map, our words. The story's people (Elm out by the town's east edge,
-  // the rival at the lab's window, the hero next door and their Marill, Mom at the door) are plan 20 · J4's, and so
-  // are the town's triggers
+  // New Bark Town (plan 20 · J2): HeartGold's map, our words. The story's people since plan 20 · J4 (new_bark.txt):
+  // the rival at the lab's window until the player has a Pokémon, the friend next door and their Marill in the street,
+  // Mom running out with the Running Shoes. The friend by Elm's house door and the cameraman wait for later chapters
   "area": "new_bark",
   "bgmTrack": "johto/new_bark",
   "trees": "Round",
   "architecture": "Breeze",
+  // The way west, turned back without a Pokémon (HeartGold's trigger 0); Mom on the lab's step once there is one (ours)
+  "triggers": [
+    { "trigger": 0, "script": "WestExit" },
+    { "script": "RunningShoes", "x": 684, "z": 394, "variable": "VAR_SCENE_NEW_BARK_TOWN_OW", "value": 1 }
+  ],
   "people": {
+    "t20_gsrivel": { "name": "???", "script": "Rival", "still": true },
+    "t20_var_1_2": { "name": "{assistant}", "npcType": "Assistant", "script": "Friend", "still": true },
+    "t20_tsure_poke_static_marill_2": { "name": "Marill", "npcType": "Pokemon", "species": "Marill", "script": "Marill", "still": true },
+    "t20_gsmama": { "name": "Mom", "still": true, "dialog": [ "Take care, {player}!" ] },
     "t20_gswoman1": {
       "name": "Woman",
       "dialog": [

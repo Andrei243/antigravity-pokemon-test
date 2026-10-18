@@ -38,5 +38,10 @@
       "name": "Man",
       "dialog": [ "A Pokémon at full health is no use if it doesn't know a good move. Check your team's moves now and then." ]
     }
-  }
+  },
+  // Elm's aide with the Egg, once the Zephyr Badge is won (plan 20 · J4; violet_pokecenter_1f.txt)
+  "npcs": [
+    { "id": "violet_pokecenter_1f.Aide", "name": "Aide", "npcType": "Gentleman", "x": 10, "y": 15, "facing": "Down",
+      "script": "Aide", "hiddenBy": "FLAG_HIDE_VIOLET_POKECENTER_AIDE" }
+  ]
 }

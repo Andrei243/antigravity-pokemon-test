@@ -1,0 +1,32 @@
+# A Gym Leader of Johto (HeartGold's Leader battle theme): brass hits and a proud trumpet line in G minor over
+# timpani and driving strings. Original composition for this game (plan 20 · J4).
+title Battle! Gym Leader (Johto)
+tempo 158
+meter 4/4
+lowhptempo 1.07
+reverb 0.18
+
+track lead trumpet lowhp=sawlead vol=0.8 pan=0.05 rev=0.2
+  o5 g8 r8 g8 r8 f8 r8 f8 r8 | o5 e-8 r8 e-8 r8 d4 d4 | L o5 g4. a8 b-4 o6 d4 | o6 c4 o5 b-8 a8 g2 |
+  o5 e-4. f8 g4 b-4 | o5 a4 f+8 e8 d2 | o5 g4. a8 b-4 o6 c4 | o6 d4 c8 o5 b-8 a4 f+4 |
+  o5 g4 b-4 a4 f+4 | o5 g2 d2 |
+
+track brass brass unless=lowhp vol=0.36 pan=-0.25 rev=0.22
+  o4 (g b- d)8 r8 (g b- d)8 r8 (f a c)8 r8 (f a c)8 r8 | (e- g b-)8 r8 (e- g b-)8 r8 (d f+ a)4 (d f+ a)4 | L o4 (g b- d)1 | (e- g b-)1 |
+  (e- g b-)1 | (d f+ a)1 | (g b- d)1 | (d f+ a)1 |
+  (e- g b-)2 (d f+ a)2 | (g b- d)1 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 g8 r8 g8 r8 f8 r8 f8 r8 | o3 e-8 r8 e-8 r8 d4 d4 | L [ o2 g8 o3 g8 ]4 | [ o2 e-8 o3 e-8 ]4 |
+  [ o2 e-8 o3 e-8 ]4 | [ o2 d8 o3 d8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 d8 o3 d8 ]4 |
+  o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 d8 o3 d8 o2 d8 o3 d8 | [ o2 g8 o3 g8 ]4 |
+
+track drums kit vol=0.5 rev=0.1
+  v100 (b c)8 r8 b8 r8 (b c)8 r8 b8 r8 | (b c)8 r8 b8 r8 s16 s16 s16 s16 s8 s8 | L [ b8 r8 s8 b8 r8 b8 s8 r8 | ]7 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.42 pan=0.15 rev=0.1
+  r1 | r1 | L v62 [ h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 | ]8
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | ]8
