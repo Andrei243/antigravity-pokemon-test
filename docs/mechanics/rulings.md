@@ -2573,8 +2573,9 @@ What differs from FireRed, and why:
   brings Bill out of it the same way, with the level-up fanfare. FireRed's temporary flag for "Bill is in the
   teleporter" is a flag of the place here (`FLAG_MAP_LOCAL_BILL_IN_TELEPORTER`), which is forgotten as the player leaves,
   as FireRed's is.
-- **Bill's list of favourite Pokémon** is a line about Eevee and its evolutions; FireRed shows each one's picture and
-  marks it seen, which waits for a picture command of the language.
+- **Bill's list of favourite Pokémon** (since the chapter's second part) is a question of the four: the one picked is
+  told in a line of words in place of FireRed's picture, and marked seen in the Pokédex as FireRed marks it; one
+  picture a reading, where FireRed's list stays open.
 - **The thief in Cerulean** hands TM28 back once beaten, wherever the bag has room (this game's bag has no limit), and
   leaves behind a dark screen; the policeman keeps the burgled house's door, and the Slowbro with its trainer the road
   south, until the S.S. Ticket, as FireRed's `CeruleanCity_EventScript_BlockExits` keeps them (`place` on every arrival).
@@ -2588,3 +2589,39 @@ What differs from FireRed, and why:
 - **Route 22's gate** keeps FireRed's guard for the Boulder Badge (its Route 23 badge check, by the Badge itself): the
   step beside him turns back whoever hasn't it, and once he has seen it nobody is stopped there. Route 23 beyond, with
   its guards for the other seven, is plan 19 · K7's.
+
+## Kanto's second chapter, second part (2026-10-18, plan 19 · K4)
+
+From Cerulean City south over Routes 5 and 6 and the Underground Path to Vermilion City, the S.S. Anne, Lt. Surge, Route
+11 and Diglett's Cave, scripts of ours on FireRed's beats (`vermilion_city.txt`, `vermilion_city_gym.txt`,
+`vermilion_city_pokemon_fan_club.txt`, `vermilion_city_house_1.txt`, `cerulean_city_bike_shop.txt`,
+`ss_anne_exterior.txt`, `ss_anne_2f_corridor.txt`, `ss_anne_captains_office.txt`), under FireRed's flags and variables
+(`FLAG_GOT_BIKE_VOUCHER`, `FLAG_GOT_BICYCLE`, `VAR_VERMILION_CITY_TICKET_CHECK_TRIGGER`, `VAR_MAP_SCENE_VERMILION_CITY`,
+`VAR_MAP_SCENE_S_S_ANNE_2F_CORRIDOR`, `FLAG_GOT_HM01`, `FLAG_FOUND_BOTH_VERMILION_GYM_SWITCHES`…). What differs from
+FireRed, and why:
+
+- **The Bike Voucher** is an item of ours (`Bike Voucher`, id 9010 in `tools/DataImporter/Overrides/items.json`), since
+  no game the importer reads has it; the Bike Shop takes it for Platinum's Bicycle, which rides by plan 02 · S2's rules
+  wherever FireRed's map headers allow cycling.
+- **The S.S. Anne's departure** is FireRed's beats without its cut-in of the ship pulling away: coming off her with
+  HM01 (`VAR_MAP_SCENE_VERMILION_CITY` 1), the player sees her from the gangway, her horn, a shake, and is back on the
+  quay with the variable at 3 at once (FireRed's 2 and its two steps up the pier are one warp here). From then on the
+  pier's sailor turns everyone back. The ship stands at the gangway as a ship of ours (an overlay's `Boat` prop), where
+  FireRed draws one large object.
+- **Lt. Surge's bins** are FireRed's rule (`SetVermilionTrashCans`): the first switch on any of the fifteen bins drawn on
+  the game's own chance each time the Gym is come into, the second on a bin beside it, north, south, east or west; a
+  wrong bin after the first resets both and draws them again. The switches' bins are story variables of ours
+  (`VAR_VERMILION_GYM_SWITCH_1`, `_2`), the first switch found a flag of the place (`FLAG_MAP_LOCAL_…`, FireRed's
+  `FLAG_TEMP_1`). FireRed's half-lit beams after the first switch are not drawn: the gates stand whole until both are
+  found, and go then. The gates are things of the map of ours (`ElectricGate`) on the six tiles of the gap, which the
+  world builder opens under them, where FireRed changes the tiles themselves with `setmetatile`.
+- **Oak's aide in Vermilion City** comes after Lt. Surge only for a trainer without `FLAG_GOT_HM05` (Flash, which this
+  game gives as TM70 from Route 2's aide), and points to Route 2 in our words.
+- **Route 11's gate**: the aide's Itemfinder waits for an item this game doesn't have (Platinum has the Pokétch's
+  dowsing app instead), and the boy's Nidorino trade, as Vermilion's Spearow trade, for plan 07's trades; both only talk.
+- **Fossils, the Old Amber, the Pokédexes on Oak's desk and the Town Map on the rival's sister's table** have looks of
+  their own (style guide, "Things laid out to be taken"); the Old Amber is given by the scientist beside it, as in
+  FireRed, and waits for Cinnabar Island's lab (plan 19 · K7).
+- **The people FireRed's new game hides** that this part brings on (the rival on the S.S. Anne, Oak's aide in Vermilion)
+  are hidden by `common.KantoNewGame` for a new game and by the places' own arrival scripts for an older save, as in
+  the first part: no story version is raised.

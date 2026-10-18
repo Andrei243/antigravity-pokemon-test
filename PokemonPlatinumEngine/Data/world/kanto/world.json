@@ -57,7 +57,7 @@
     { "name": "CeruleanCity_House5", "matrix": 228, "area": "cerulean_city_house_5", "trees": "Round", "setting": "Indoors" },
     { "name": "Route25_SeaCottage", "matrix": 322, "area": "route_25_sea_cottage", "trees": "Round", "setting": "Indoors" },
     // Plan 19 · K4, part b: Vermilion City's rooms, the Underground Path between Routes 5 and 6, Route 11's east gate,
-    // the S.S. Anne (FireRed's MAP_TYPE_INDOOR: rooms, the ship's exterior at the pier among them) and Diglett's Cave
+    // the S.S. Anne (FireRed's MAP_TYPE_INDOOR: rooms, but for the gangway at the pier, open country under the sky) and Diglett's Cave
     // (MAP_TYPE_UNDERGROUND, so caves)
     { "name": "VermilionCity_House1", "matrix": 235, "area": "vermilion_city_house_1", "trees": "Round", "setting": "Indoors" },
     { "name": "VermilionCity_PokemonCenter_1F", "matrix": 236, "area": "vermilion_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },

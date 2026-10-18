@@ -16,8 +16,8 @@
     "bulbasaur_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "StarterBall", "level": 1.45 },
     "squirtle_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "StarterBall", "level": 1.45 },
     "charmander_ball": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "StarterBall", "level": 1.45 },
-    "pokedex_1": { "name": "Pokédex", "npcType": "Pokedex", "dialog": [ "It's an encyclopaedia-like gadget with many blank pages. A Pokédex!" ], "level": 1.2 },
-    "pokedex_2": { "name": "Pokédex", "npcType": "Pokedex", "dialog": [ "It's an encyclopaedia-like gadget with many blank pages. A Pokédex!" ], "level": 1.2 },
+    "pokedex_1": { "name": "Pokédex", "npcType": "Pokedex", "dialog": [ "It's an encyclopaedia-like gadget with many blank pages. A Pokédex!" ], "level": 1.0 },
+    "pokedex_2": { "name": "Pokédex", "npcType": "Pokedex", "dialog": [ "It's an encyclopaedia-like gadget with many blank pages. A Pokédex!" ], "level": 1.0 },
     "scientist": {
       "name": "Aide",
       "dialog": [
@@ -38,5 +38,8 @@
     "PalletTown_ProfessorOaksLab_EventScript_Computer": "There's a message on the screen:\n\"Call me before you set out! - Bill\"",
     "PalletTown_ProfessorOaksLab_EventScript_LeftSign": "Research notes, page after page of them.",
     "PalletTown_ProfessorOaksLab_EventScript_RightSign": "A chart of every kind of Pokémon seen in Kanto."
-  }
+  },
+  // The desk the Pokédexes lie on, against the back wall (FireRed draws it into the wall's tiles, which the interior
+  // table leaves unnamed)
+  "props": [ { "type": "LabDesk", "x": 4, "y": 1, "width": 2, "depth": 1 } ]
 }

@@ -3,6 +3,7 @@
   // ship herself, which FireRed draws as one large object and which stands here as a ship of ours. Coming off her
   // with HM01 she sails (ss_anne_exterior.txt)
   "area": "ss_anne_exterior",
+  "name": "S.S. Anne",
   "bgmTrack": "kanto/ss_anne",
   // FireRed's second way from the gangway into the ship lands on a wall of its corridor: the first does the work
   "locked": [ 3 ],

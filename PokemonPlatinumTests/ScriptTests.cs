@@ -574,6 +574,7 @@ public class ScriptTests
               if time morning end
               if weekday friday end
               if nationaldex end
+              if movebadge "Cut" end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

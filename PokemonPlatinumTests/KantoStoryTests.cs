@@ -641,6 +641,15 @@ public class KantoStoryTests
         Assert.Equal("Cascade", FieldMoveRules.BadgeFor(FieldMove.Cut, "Kanto"));
         var tree = game.Map.NPCs.Single(n => n.GridX == 283 && n.GridY == 224);
         Assert.Equal(PropType.CutTree, tree.Obstacle);
+        game.Party.Members[0].Moves.Add(new Move(MoveDatabase.Get("Cut")!));
+        // Without the Cascade Badge the tree only stands there; with it, Cut is asked and the tree goes
+        Assert.Empty(game.Talk(tree.Key).Asked);
+        Assert.NotNull(game.Present(tree.Key));
+        game.Story.SetBadges("Kanto", 0b11);
+        var cut = game.Talk(tree.Key);
+        Assert.Single(cut.Asked);
+        Assert.Contains(cut.Log, l => l.StartsWith("usemove Cut"));
+        Assert.True(game.Story.Has(tree.HiddenBy!));
     }
 
     [Fact]

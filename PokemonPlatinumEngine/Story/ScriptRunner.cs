@@ -1798,6 +1798,8 @@ public sealed partial class ScriptRunner
             Query.Var => Condition.Holds(Value(c.Name), c.Compare, c.Other != null ? Value(c.Other) : c.Number),
             Query.Badge => StoryState.FindBadge(host.Region, c.Name) is var badge and >= 0 ? story.HasBadge(host.Region, badge) : throw Wrong(at, $"{host.Region} has no badge '{c.Name}'"),
             Query.Badges => Condition.Holds(story.BadgeCount(host.Region), c.Compare, c.Number),
+            Query.MoveBadge => FieldMoveRules.BadgeFor(FieldMoveRules.Of(c.Name)!.Value, host.Region) is not { } needed
+                || StoryState.FindBadge(host.Region, needed) is var index and >= 0 && story.HasBadge(host.Region, index),
             Query.Item => Condition.Holds(ItemDatabase.Get(c.Name) is { } item ? host.Bag.GetQuantity(item) : 0, c.Compare, c.Number),
             Query.Party => Condition.Holds(host.Party.Count, c.Compare, c.Number),
             Query.Knows => host.Party.Members.Any(p => p.Moves.Any(m => m.Name == c.Name)),

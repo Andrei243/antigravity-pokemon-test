@@ -148,7 +148,7 @@ old rod 10
 good rod 20
 super rod 40
 === digletts_cave_b1f
-Digletts Cave
+Diglett's Cave
 grass 15-31
 === eterna_city
 Eterna City
@@ -822,37 +822,37 @@ Sprout Tower
 grass 3-6
 trainers 3, 6-7: johto_sage_jin 6, johto_sage_neal 6, johto_sage_troy 7
 === ss_anne_1f_room_2
-S S Anne
+S.S. Anne
 trainers 2, 18-21: kanto_lass_ann 18, kanto_youngster_tyler 21
 === ss_anne_1f_room_5
-S S Anne
+S.S. Anne
 trainers 1, 19: kanto_gentleman_arthur 19
 === ss_anne_1f_room_7
-S S Anne
+S.S. Anne
 trainers 1, 18: kanto_gentleman_thomas 18
 === ss_anne_2f_room_2
-S S Anne
+S.S. Anne
 trainers 2, 17-23: kanto_fisherman_dale 17, kanto_gentleman_brooks 23
 === ss_anne_2f_room_4
-S S Anne
+S.S. Anne
 trainers 2, 17-18: kanto_gentleman_lamar 17, kanto_lass_dawn 18
 === ss_anne_b1f_room_1
-S S Anne
+S.S. Anne
 trainers 2, 17-20: kanto_fisherman_barny 17, kanto_sailor_phillip 20
 === ss_anne_b1f_room_2
-S S Anne
+S.S. Anne
 trainers 1, 18: kanto_sailor_huey 18
 === ss_anne_b1f_room_3
-S S Anne
+S.S. Anne
 trainers 1, 17: kanto_sailor_dylan 17
 === ss_anne_b1f_room_4
-S S Anne
+S.S. Anne
 trainers 2, 17-21: kanto_sailor_duncan 17, kanto_sailor_leonard 21
 === ss_anne_deck
-S S Anne
+S.S. Anne
 trainers 2, 17-18: kanto_sailor_edmond 18, kanto_sailor_trevor 17
 === ss_anne_exterior
-S S Anne
+S.S. Anne
 surf 5-40
 old rod 5
 good rod 5-15

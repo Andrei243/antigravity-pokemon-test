@@ -1,6 +1,7 @@
 {
   // The S.S. Anne's second deck (plan 19 · K4, part b): the rival steps out of the captain's door (ss_anne_2f_corridor.txt)
   "area": "ss_anne_2f_corridor",
+  "name": "S.S. Anne",
   "bgmTrack": "kanto/ss_anne",
   "triggers": [
     {

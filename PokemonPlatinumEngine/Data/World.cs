@@ -473,7 +473,8 @@ public static class WorldMapBuilder
         // Last, because a door knows where it leads only once the warps are in place
         map.PlacedBuildings = parts.Select(part => ToBuilding(map, part, entrances)).ToList();
         // A world whose houses are drawn into its tiles (a GBA game's, plan 18 · W7) has its buildings found at their doors
-        if (world.Index.BuildingsAtDoors && !cave && !nothing && !room) map.PlacedBuildings.AddRange(BuildingsAtDoors(map, blank));
+        if (world.Index.BuildingsAtDoors && !cave && !nothing && !room)
+            map.PlacedBuildings.AddRange(BuildingsAtDoors(map, blank, world.Index.Maps.FirstOrDefault(m => m.Matrix == 0)?.Name));
         return map;
     }
 
@@ -646,7 +647,7 @@ public static class WorldMapBuilder
     /// Its kind is what the door leads into (<see cref="MapStructures.KindOfDoor"/>). The box is laid as a building's
     /// tiles: roof, the front row wall, the doors doors.
     /// </summary>
-    public static List<BuildingInfo> BuildingsAtDoors(Map map, IEnumerable<(int X, int Z)> unnamedBlocked)
+    public static List<BuildingInfo> BuildingsAtDoors(Map map, IEnumerable<(int X, int Z)> unnamedBlocked, string? overworld = null)
     {
         var blank = new HashSet<(int X, int Z)>(unnamedBlocked);
         var buildings = new List<BuildingInfo>();
@@ -655,6 +656,9 @@ public static class WorldMapBuilder
         {
             int dx = warp.SourceX, dz = warp.SourceY;
             if (!map.InBounds(dx, dz) || taken.Contains((dx, dz))) continue;
+            // A way off a map of its own straight onto the region's open country is no building's door (plan 19 · K4,
+            // part b: the S.S. Anne's gangway at Vermilion's pier)
+            if (overworld != null && map.Name != overworld && warp.TargetMap.Equals(overworld, StringComparison.OrdinalIgnoreCase)) continue;
             bool isDoor = map.BehaviourAt(dx, dz) == TileBehavior.Door;
             if (!isDoor && (map.IsSolid(dx, dz) || !blank.Contains((dx, dz + 1)) && !blank.Contains((dx, dz - 1)))) continue;
             // The run of such tiles along a row through the door's column, no further than half the widest either way
@@ -2190,7 +2194,18 @@ public static class WorldMapBuilder
             npc.ScriptFile = key;
             // An electric gate stands on a tile of the gap it shuts, which the original blocks while its beams are
             // on: the tile is open under it, and the gate is what is in the way (plan 19 · K4, part b)
-            if (npc.NpcType == NPC.ElectricGateType && map.InBounds(npc.GridX, npc.GridY)) map.SetSolid(npc.GridX, npc.GridY, false);
+            if (npc.NpcType == NPC.ElectricGateType && map.InBounds(npc.GridX, npc.GridY))
+            {
+                // ...and floored like the floor it joins, the first open tile south of it, so the room is built with
+                // the gap where FireRed's beams stand, not a wall across it
+                for (int below = npc.GridY + 1; below < Math.Min(map.Height, npc.GridY + 5); below++)
+                    if (!map.IsSolid(npc.GridX, below))
+                    {
+                        map.SetGroundTile(npc.GridX, npc.GridY, map.GetGroundTile(npc.GridX, below), isSolid: false);
+                        break;
+                    }
+                map.SetSolid(npc.GridX, npc.GridY, false);
+            }
             // A boulder among them is put back where it stood when the player leaves, as every boulder is
             map.Add(npc);
         }

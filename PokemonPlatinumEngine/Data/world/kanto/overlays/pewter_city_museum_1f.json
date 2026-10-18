@@ -12,7 +12,7 @@
       "dialog": [ "That skeleton is from a Pokémon that flew through the skies in ancient times. Imagine it!" ]
     },
     "scientist": { "name": "Scientist", "script": "OldAmberScientist" },
-    "old_amber": { "name": "Old Amber", "npcType": "OldAmber", "dialog": [ "A beautiful piece of amber. Something dark is held deep inside it." ] },
+    "old_amber": { "name": "Old Amber", "npcType": "OldAmber", "dialog": [ "A beautiful piece of amber. Something dark is held deep inside it." ], "level": 1.0 },
     "scientist_2": {
       "name": "Scientist",
       "dialog": [ "We dig fossils out of Mt. Moon. They tell us how Pokémon lived long ago." ]

@@ -933,6 +933,12 @@ public static class ScriptParser
                 return new Condition { Query = Query.Badge, Negated = negated, Name = r.Badge() };
             case "badges":
                 return Counted(Query.Badges);
+            case "movebadge":
+            {
+                string move = r.Text("a field move's name");
+                if (FieldMoveRules.Of(move) == null) throw r.Error($"'{move}' is no field move");
+                return new Condition { Query = Query.MoveBadge, Negated = negated, Name = move };
+            }
             case "item":
             {
                 string item = r.Text("an item's name");

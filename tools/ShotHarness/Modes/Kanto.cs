@@ -77,6 +77,36 @@ partial class Harness
             ("k58_nugget_bridge", "Kanto", 287, 25, Direction.Up),
             ("k59_route25", "Kanto", 330, 8, Direction.Right),
             ("k60_sea_cottage", "Route25_SeaCottage", 7, 8, Direction.Up),
+            // Plan 19 · K4, part b: Routes 5 and 6 with the Underground Path, Vermilion City and its rooms, the S.S. Anne,
+            // Route 11 and Diglett's Cave; and the things that lay as Poké Balls with their own looks
+            ("k63_route5", "Kanto", 292, 104, Direction.Down),
+            ("k64_underground_path_north", "UndergroundPath_NorthEntrance", 6, 7, Direction.Up),
+            ("k65_underground_path", "UndergroundPath_NorthSouthTunnel", 4, 30, Direction.Down),
+            ("k66_route6", "Kanto", 292, 178, Direction.Down),
+            ("k67_vermilion_day", "Kanto", 285, 213, Direction.Up),
+            ("k68_vermilion_harbour", "Kanto", 287, 229, Direction.Down),
+            ("k69_vermilion_gym_outside", "Kanto", 282, 227, Direction.Up),
+            ("k70_vermilion_gym", "VermilionCity_Gym", 5, 18, Direction.Up),
+            ("k71_fan_club", "VermilionCity_PokemonFanClub", 5, 9, Direction.Up),
+            ("k72_vermilion_center", "VermilionCity_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("k73_vermilion_mart", "VermilionCity_Mart", 4, 6, Direction.Up),
+            ("k74_fishing_guru", "VermilionCity_House1", 4, 6, Direction.Up),
+            ("k75_ss_anne_gangway", "SSAnne_Exterior", 32, 9, Direction.Down),
+            ("k76_ss_anne_1f", "SSAnne_1F_Corridor", 19, 3, Direction.Down),
+            ("k77_ss_anne_cabin", "SSAnne_1F_Room2", 3, 6, Direction.Up),
+            ("k78_ss_anne_2f", "SSAnne_2F_Corridor", 31, 8, Direction.Up),
+            ("k79_ss_anne_kitchen", "SSAnne_Kitchen", 7, 3, Direction.Down),
+            ("k80_ss_anne_deck", "SSAnne_Deck", 15, 9, Direction.Left),
+            ("k81_captains_cabin", "SSAnne_CaptainsOffice", 4, 6, Direction.Up),
+            ("k82_ss_anne_b1f", "SSAnne_B1F_Corridor", 18, 4, Direction.Left),
+            ("k83_route11", "Kanto", 335, 222, Direction.Right),
+            ("k84_route11_gate_2f", "Route11_EastEntrance_2F", 6, 6, Direction.Up),
+            ("k85_digletts_cave", "DiglettsCave_B1F", 3, 4, Direction.Down),
+            ("k86_sea_cottage_teleporters", "Route25_SeaCottage", 7, 6, Direction.Up),
+            ("k87_oaks_desk", "PalletTown_ProfessorOaksLab", 5, 4, Direction.Up),
+            ("k88_rivals_town_map", "PalletTown_RivalsHouse", 6, 6, Direction.Up),
+            ("k89_museum_old_amber", "PewterCity_Museum_1F", 22, 5, Direction.Up),
+            ("k90_mt_moon_fossils", "MtMoon_B2F", 15, 11, Direction.Left),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -94,6 +124,8 @@ partial class Harness
         At("Kanto", 70, 80, Direction.Up); Frames(2); Shot("k43_pewter_night");
         At("Kanto", 287, 60, Direction.Up); Frames(2); Shot("k61_cerulean_night");
         At("Kanto", 287, 25, Direction.Up); Frames(2); Shot("k62_nugget_bridge_night");
+        At("Kanto", 285, 213, Direction.Up); Frames(2); Shot("k91_vermilion_night");
+        At("Kanto", 335, 222, Direction.Right); Frames(2); Shot("k92_route11_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

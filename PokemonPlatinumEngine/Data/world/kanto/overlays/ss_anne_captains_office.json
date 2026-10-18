@@ -2,6 +2,7 @@
   // The S.S. Anne's captain's cabin (plan 19 · K4, part b): the captain, too seasick to stand, and HM01
   // (ss_anne_captains_office.txt)
   "area": "ss_anne_captains_office",
+  "name": "S.S. Anne",
   "bgmTrack": "kanto/ss_anne",
   "people": {
     "ss_anne_captain": {

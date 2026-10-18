@@ -1,6 +1,7 @@
 {
   // The S.S. Anne's deck (plan 19 · K4, part b)
   "area": "ss_anne_deck",
+  "name": "S.S. Anne",
   "bgmTrack": "kanto/ss_anne",
   "people": {
     "sailor": {

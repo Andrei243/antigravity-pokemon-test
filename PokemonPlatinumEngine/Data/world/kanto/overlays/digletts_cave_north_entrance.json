@@ -1,6 +1,7 @@
 {
   // Diglett's Cave's mouth on Route 2 (plan 19 · K4, part b)
   "area": "digletts_cave_north_entrance",
+  "name": "Diglett's Cave",
   "bgmTrack": "kanto/viridian_forest",
   "people": {
     "hiker": {

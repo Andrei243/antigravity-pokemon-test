@@ -107,7 +107,9 @@ public enum Compare { Equal, NotEqual, Less, LessOrEqual, Greater, GreaterOrEqua
 /// <summary>What a condition asks about.</summary>
 public enum Query
 {
-    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, PoketchApp, Pokerus, Safari, Rematch, Partner, Time, Weekday, NationalDex
+    Flag, Var, Badge, Badges, Item, Party, Knows, Has, Yes, No, Won, Lost, Result, Defeated, Taken, Starter, Money, Facing, Boy, Girl, Poketch, PoketchApp, Pokerus, Safari, Rematch, Partner, Time, Weekday, NationalDex,
+    /// <summary>The badge a field move needs in the player's region is won, or the region asks none (plan 19 · K4, part b): <c>movebadge "Cut"</c>.</summary>
+    MoveBadge
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

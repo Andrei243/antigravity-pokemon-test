@@ -1,6 +1,7 @@
 {
   // The S.S. Anne's galley (plan 19 · K4, part b): the cooks are far too busy to stop
   "area": "ss_anne_kitchen",
+  "name": "S.S. Anne",
   "bgmTrack": "kanto/ss_anne",
   "people": {
     "chef": {
