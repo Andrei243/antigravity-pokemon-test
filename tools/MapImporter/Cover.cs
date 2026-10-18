@@ -90,7 +90,13 @@ public static class Cover
             or TerrainCover.Building;
 
     /// <summary>The look of every tile of a chunk, row by row.</summary>
-    public static TerrainCover[] Of(LandData land, Func<int, ModelInfo?> propModel)
+    public static TerrainCover[] Of(LandData land, Func<int, ModelInfo?> propModel) => Of(land, propModel, name => OfTexture(name, out _));
+
+    /// <summary>
+    /// The same with another game's names for its textures (plan 20 · J1: HeartGold's rules, <c>Hg/HgCover.cs</c>)
+    /// and its behaviours read as this game's (<paramref name="behaviour"/>, the tile's byte to a <see cref="TileBehavior"/>).
+    /// </summary>
+    public static TerrainCover[] Of(LandData land, Func<int, ModelInfo?> propModel, Func<string?, TerrainCover?> texture, Func<byte, TileBehavior>? behaviour = null)
     {
         var result = new TerrainCover[LandData.Tiles * LandData.Tiles];
         var layers = land.ReadTerrain()?.LayersOver(land.Heights);
@@ -103,15 +109,15 @@ public static class Cover
                 bool solid = land.Solid(x, z);
                 if (solid && buildings[i]) { result[i] = TerrainCover.Building; continue; }
 
-                var ground = OfTexture(layers?.Ground[i], out _);
-                var above = OfTexture(layers?.Above[i], out _);
+                var ground = texture(layers?.Ground[i]);
+                var above = texture(layers?.Above[i]);
                 // A walkway's deck is a bridge by its behaviour; its own look is told by its texture
                 if (!solid && (ground == TerrainCover.Walkway || above == TerrainCover.Walkway)) { result[i] = TerrainCover.Walkway; continue; }
                 // The mouth of a cave is its dark, whether the tile is the hole in the rock or the way in
                 if (ground == TerrainCover.CaveMouth || above == TerrainCover.CaveMouth) { result[i] = TerrainCover.CaveMouth; continue; }
                 // And so is the way into a forest
                 if (ground == TerrainCover.ForestMouth || above == TerrainCover.ForestMouth) { result[i] = TerrainCover.ForestMouth; continue; }
-                if (OfBehaviour((TileBehavior)land.Behaviour(x, z)) is { } fromBehaviour) { result[i] = fromBehaviour; continue; }
+                if (OfBehaviour(behaviour?.Invoke(land.Behaviour(x, z)) ?? (TileBehavior)land.Behaviour(x, z)) is { } fromBehaviour) { result[i] = fromBehaviour; continue; }
                 // Flowers stand over the lawn they grow in (Floaroma Meadow is a lawn with a sheet of flowers
                 // over every tile of it): the lawn is the ground, the flowers are what is seen
                 if (!solid && above == TerrainCover.Flowers && (ground == null || ground == TerrainCover.Grass)) { result[i] = TerrainCover.Flowers; continue; }

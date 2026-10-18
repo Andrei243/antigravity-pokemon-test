@@ -111,4 +111,24 @@ public static class Sources
         process.WaitForExit();
         if (process.ExitCode != 0) throw new InvalidOperationException($"git {string.Join(' ', args)} failed in {workingDir}");
     }
+
+    /// <summary>
+    /// HeartGold and SoulSilver (plan 20 · J1, agreed 2026-10-12): pret/pokeheartgold, read by
+    /// <c>tools/MapImporter/Hg</c>. Layouts and numbers only, as for Platinum: the chunks' archive (<c>files/a/0/6/5</c>)
+    /// and the two of the building models (each fetched whole, since a sparse checkout can't take half a file; of a
+    /// model only its name and box are read, of a chunk the names of its textures and where their polygons lie), the
+    /// matrices, the events, the wild Pokémon, the trainers, the phone book and the headers that name them. The
+    /// trainers' file holds their lines too: they stay in the cache and are never read.
+    /// </summary>
+    public const string HeartGoldRepo = "https://github.com/pret/pokeheartgold.git";
+    public const string HeartGoldCommit = "75912a082f196496b4f9d347e0f99319150a96b4";
+    public static readonly string[] HeartGoldFolders =
+    {
+        "/files/a/0/6/5", "/files/fielddata/build_model/bm_field.narc", "/files/fielddata/build_model/bm_room.narc",
+        "/files/fielddata/mapmatrix/map_matrix/", "/files/fielddata/eventdata/zone_event/", "/files/fielddata/encountdata/gs_enc_data.json",
+        "/files/arc/headbutt.json", "/files/arc/safari_enc.json", "/files/poketool/trainer/trainers.json", "/files/tel/pmtel_book.json",
+        "/src/data/map_headers.h", "/include/constants/maps.h", "/include/map_header.h", "/include/constants/metatile_behavior.h",
+        "/src/map_matrix.c", "/src/metatile_behavior.c", "/include/constants/trainers.h", "/include/constants/trainer_class.h",
+        "/include/constants/sndseq.h", "/include/constants/map_sections.h"
+    };
 }

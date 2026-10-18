@@ -48,19 +48,41 @@ public sealed class LandData
     /// <summary>Bits of the attributes that are neither the behaviour nor the collision flag; none are known.</summary>
     public int OtherBits(int x, int z) => Attributes[z * Tiles + x] & 0x7F00;
 
-    public static LandData Parse(ReadOnlySpan<byte> file)
+    /// <summary>
+    /// HeartGold's chunks (plan 20 · J1) are Platinum's with one thing more: after the four sizes, the word
+    /// <see cref="HgssMark"/> and the size of a section of their own, in records of eight bytes, which stands before
+    /// the attributes. Every one of the 676 members of <c>files/a/0/6/5</c> adds up so, with its model and its
+    /// heights where the sizes put them. The section is counted (<see cref="HgssRecords"/>) and not read.
+    /// </summary>
+    public const ushort HgssMark = 0x1234;
+
+    /// <summary>How many records the chunk's own HeartGold section holds; 0 for Platinum's.</summary>
+    public int HgssRecords { get; private init; }
+
+    public static LandData Parse(ReadOnlySpan<byte> file) => Parse(file, hgss: false);
+
+    /// <param name="hgss">The file is one of HeartGold's (<see cref="HgssMark"/>).</param>
+    public static LandData Parse(ReadOnlySpan<byte> file, bool hgss)
     {
         if (file.Length < HeaderSize) throw new InvalidDataException("Land data is shorter than its header");
         int attributesSize = BinaryPrimitives.ReadInt32LittleEndian(file);
         int propsSize = BinaryPrimitives.ReadInt32LittleEndian(file[4..]);
         int modelSize = BinaryPrimitives.ReadInt32LittleEndian(file[8..]);
         int heightsSize = BinaryPrimitives.ReadInt32LittleEndian(file[12..]);
+        int extra = 0;
+        if (hgss)
+        {
+            if (file.Length < HeaderSize + 4 || BinaryPrimitives.ReadUInt16LittleEndian(file[16..]) != HgssMark)
+                throw new InvalidDataException($"HeartGold's land data has no 0x{HgssMark:X4} after its four sizes");
+            extra = 4 + BinaryPrimitives.ReadUInt16LittleEndian(file[18..]);
+        }
 
         if (attributesSize != AttributesSize)
             throw new InvalidDataException($"Land data has {attributesSize} bytes of tile attributes, expected {AttributesSize}");
         // A few files carry stray bytes after their last prop; the game divides and drops the remainder, so do we
-        if (propsSize < 0 || modelSize < 0 || heightsSize < 0 || HeaderSize + (long)attributesSize + propsSize + modelSize + heightsSize != file.Length)
+        if (propsSize < 0 || modelSize < 0 || heightsSize < 0 || HeaderSize + (long)extra + attributesSize + propsSize + modelSize + heightsSize != file.Length)
             throw new InvalidDataException("Land data sections don't add up to the file's size");
+        if (extra > 0) file = file[extra..];   // the sections' places are then Platinum's: the header's sixteen bytes are read already
 
         var attributes = new ushort[Tiles * Tiles];
         for (int i = 0; i < attributes.Length; i++)
@@ -86,7 +108,8 @@ public sealed class LandData
             Props = props,
             Heights = heightsSize > 0 ? HeightPlates.Parse(heights) : HeightPlates.Empty,
             ModelName = ModelInfo.Read(modelBytes)?.Name ?? "",
-            model = modelBytes.ToArray()
+            model = modelBytes.ToArray(),
+            HgssRecords = extra > 0 ? (extra - 4) / 8 : 0
         };
     }
 

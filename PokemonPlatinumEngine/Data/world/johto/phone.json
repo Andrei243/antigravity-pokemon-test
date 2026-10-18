@@ -1,0 +1,642 @@
+[
+  {
+    "id": "mother",
+    "type": 1,
+    "class": "Mom",
+    "area": "new_bark_player_house_1f",
+    "rematchDay": "Wednesday"
+  },
+  {
+    "id": "prof_elm",
+    "type": 2,
+    "class": "Pokémon Professor",
+    "area": "new_bark_elms_lab_1f"
+  },
+  {
+    "id": "prof_oak",
+    "type": 3,
+    "class": "Pokémon Professor",
+    "area": "pallet_town_oaks_lab"
+  },
+  {
+    "id": "ethan",
+    "type": 11,
+    "class": "Childhood Friend",
+    "area": "new_bark_rival_house_2f"
+  },
+  {
+    "id": "lyra",
+    "type": 11,
+    "class": "Childhood Friend",
+    "area": "new_bark_rival_house_2f"
+  },
+  {
+    "id": "kurt",
+    "type": 4,
+    "class": "Poke Ball Creator",
+    "area": "azalea_kurt_house"
+  },
+  {
+    "id": "day_c_man",
+    "type": 8,
+    "class": "Day Care",
+    "area": "route_34_daycare"
+  },
+  {
+    "id": "day_c_lady",
+    "type": 9,
+    "class": "Day Care",
+    "area": "route_34_daycare"
+  },
+  {
+    "id": "buena",
+    "type": 10,
+    "class": "Radio Personality",
+    "area": "goldenrod_radio_tower_2f"
+  },
+  {
+    "id": "bill",
+    "type": 7,
+    "class": "Poke Maniac",
+    "area": "goldenrod_bills_house"
+  },
+  {
+    "id": "joey",
+    "type": 0,
+    "class": "Youngster",
+    "trainer": "youngster_joey",
+    "area": "route_30",
+    "gift": "HP Up",
+    "rematchDay": "Monday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "ralph",
+    "type": 0,
+    "class": "Fisherman",
+    "trainer": "fisherman_ralph",
+    "area": "route_32",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "liz",
+    "type": 0,
+    "class": "Picnicker",
+    "trainer": "picnicker_liz",
+    "area": "route_32",
+    "rematchDay": "Thursday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "wade",
+    "type": 0,
+    "class": "Bug Catcher",
+    "trainer": "bug_catcher_wade",
+    "area": "route_31",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "anthony",
+    "type": 0,
+    "class": "Hiker",
+    "trainer": "hiker_anthony",
+    "area": "route_33",
+    "rematchDay": "Friday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "bike_shop",
+    "type": 5,
+    "class": "Radio Personality",
+    "area": "goldenrod_bike_shop"
+  },
+  {
+    "id": "kenji",
+    "type": 6,
+    "class": "Black Belt",
+    "trainer": "black_belt_kenji",
+    "area": "route_45",
+    "gift": "PP Up",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "whitney",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_whitney",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Saturday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "falkner",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_falkner_falkner",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Saturday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "jack",
+    "type": 0,
+    "class": "School Kid M",
+    "trainer": "school_kid_m_jack",
+    "area": "national_park",
+    "rematchDay": "Monday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "chad",
+    "type": 0,
+    "class": "School Kid M",
+    "trainer": "school_kid_m_chad",
+    "area": "route_38",
+    "rematchDay": "Friday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "brent",
+    "type": 0,
+    "class": "Poke Maniac",
+    "trainer": "poke_maniac_brent",
+    "area": "route_43",
+    "rematchDay": "Monday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "todd",
+    "type": 0,
+    "class": "Camper",
+    "trainer": "camper_todd",
+    "area": "route_34",
+    "rematchDay": "Saturday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "arnie",
+    "type": 0,
+    "class": "Bug Catcher",
+    "trainer": "bug_catcher_arnie",
+    "area": "route_35",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "baoba",
+    "type": 13,
+    "class": "Safari Warden",
+    "area": "safari_zone_entrance_interior"
+  },
+  {
+    "id": "irwin",
+    "type": 14,
+    "class": "Juggler",
+    "trainer": "juggler_irwin",
+    "area": "route_35"
+  },
+  {
+    "id": "janine",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_janine_janine",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Monday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "clair",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_clair_clair",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Friday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "erika",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_erika_erika",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Sunday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "misty",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_misty_misty",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "blaine",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_blaine_blaine",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "blue",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_blue_blue",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Sunday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "chuck",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_chuck_chuck",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "brock",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_brock_brock",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Saturday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "bugsy",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_bugsy_bugsy",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Thursday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "sabrina",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_sabrina_sabrina",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Sunday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "lt_surge",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_lt_surge_lt__surge",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Friday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "morty",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_morty_morty",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "jasmine",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_jasmine_jasmine",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "pryce",
+    "type": 12,
+    "class": "Leader",
+    "trainer": "leader_pryce_pryce",
+    "area": "saffron_fighting_dojo",
+    "rematchDay": "Monday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "huey",
+    "type": 0,
+    "class": "Sailor",
+    "trainer": "sailor_huey",
+    "area": "olivine_lighthouse_2f",
+    "gift": "Protein",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "gaven",
+    "type": 0,
+    "class": "Ace Trainer M",
+    "trainer": "ace_trainer_m_gaven",
+    "area": "route_26",
+    "rematchDay": "Thursday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "jamie",
+    "type": 0,
+    "class": "Ace Trainer F",
+    "trainer": "ace_trainer_f_jamie",
+    "area": "route_26",
+    "rematchDay": "Friday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "reena",
+    "type": 0,
+    "class": "Ace Trainer F",
+    "trainer": "ace_trainer_f_reena",
+    "area": "route_27",
+    "rematchDay": "Sunday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "vance",
+    "type": 0,
+    "class": "Bird Keeper Gs",
+    "trainer": "bird_keeper_gs_vance",
+    "area": "route_44",
+    "gift": "Carbos",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "parry",
+    "type": 0,
+    "class": "Hiker",
+    "trainer": "hiker_parry",
+    "area": "route_45",
+    "gift": "Iron",
+    "rematchDay": "Friday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "erin",
+    "type": 0,
+    "class": "Picnicker",
+    "trainer": "picnicker_erin",
+    "area": "route_46",
+    "gift": "Calcium",
+    "rematchDay": "Saturday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "beverly",
+    "type": 0,
+    "class": "Pokefan",
+    "trainer": "pokefan_beverly",
+    "area": "national_park"
+  },
+  {
+    "id": "jose",
+    "type": 0,
+    "class": "Bird Keeper Gs",
+    "trainer": "bird_keeper_gs_jose_2",
+    "area": "route_27",
+    "rematchDay": "Saturday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "gina",
+    "type": 0,
+    "class": "Picnicker",
+    "trainer": "picnicker_gina",
+    "area": "route_34",
+    "rematchDay": "Sunday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "alan",
+    "type": 0,
+    "class": "School Kid M",
+    "trainer": "school_kid_m_alan",
+    "area": "route_36",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "dana",
+    "type": 0,
+    "class": "Lass",
+    "trainer": "lass_dana",
+    "area": "route_38",
+    "rematchDay": "Thursday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "derek",
+    "type": 0,
+    "class": "Pokefan M",
+    "trainer": "pokefan_m_derek",
+    "area": "route_39"
+  },
+  {
+    "id": "tully",
+    "type": 0,
+    "class": "Fisherman",
+    "trainer": "fisherman_tully",
+    "area": "route_42",
+    "rematchDay": "Sunday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "tiffany",
+    "type": 0,
+    "class": "Picnicker",
+    "trainer": "picnicker_tiffany",
+    "area": "route_43",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "wilton",
+    "type": 0,
+    "class": "Fisherman",
+    "trainer": "fisherman_wilton",
+    "area": "route_44",
+    "rematchDay": "Thursday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "krise",
+    "type": 0,
+    "class": "Lass",
+    "trainer": "lass_krise",
+    "area": "national_park",
+    "rematchDay": "Sunday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "ian",
+    "type": 0,
+    "class": "Youngster",
+    "trainer": "youngster_ian",
+    "area": "route_34",
+    "gift": "Cheri Berry",
+    "rematchDay": "Saturday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "walt",
+    "type": 0,
+    "class": "Firebreather",
+    "trainer": "firebreather_walt",
+    "area": "route_35",
+    "rematchDay": "Monday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "alfred",
+    "type": 0,
+    "class": "Gentleman",
+    "trainer": "gentleman_alfred",
+    "area": "olivine_lighthouse_2f",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "doug",
+    "type": 0,
+    "class": "Bug Catcher",
+    "trainer": "bug_catcher_doug",
+    "area": "route_2",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "rob",
+    "type": 0,
+    "class": "Bug Catcher",
+    "trainer": "bug_catcher_rob",
+    "area": "route_2",
+    "rematchDay": "Friday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "kyle",
+    "type": 0,
+    "class": "Fisherman",
+    "trainer": "fisherman_kyle",
+    "area": "route_12",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "kyler",
+    "type": 0,
+    "class": "Fisherman",
+    "trainer": "fisherman_kyler",
+    "area": "route_12",
+    "rematchDay": "Thursday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "tim_and_sue",
+    "type": 0,
+    "class": "Young Couple",
+    "trainer": "young_couple_tim_and_sue",
+    "area": "route_13",
+    "rematchDay": "Friday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "kenny",
+    "type": 0,
+    "class": "Hiker",
+    "trainer": "hiker_kenny",
+    "area": "route_13",
+    "rematchDay": "Saturday",
+    "rematchTime": "Day"
+  },
+  {
+    "id": "tanner",
+    "type": 0,
+    "class": "Camper",
+    "trainer": "camper_tanner",
+    "area": "route_13",
+    "rematchDay": "Monday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "josh",
+    "type": 0,
+    "class": "Bird Keeper Gs",
+    "trainer": "bird_keeper_gs_josh",
+    "area": "route_14",
+    "rematchDay": "Tuesday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "torin",
+    "type": 0,
+    "class": "School Kid M",
+    "trainer": "school_kid_m_torin",
+    "area": "route_14",
+    "rematchDay": "Wednesday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "hillary",
+    "type": 0,
+    "class": "Teacher",
+    "trainer": "teacher_hillary",
+    "area": "route_15",
+    "rematchDay": "Thursday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "billy",
+    "type": 0,
+    "class": "School Kid M",
+    "trainer": "school_kid_m_billy",
+    "area": "route_15",
+    "rematchDay": "Friday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "kay_and_tia",
+    "type": 0,
+    "class": "Twins",
+    "trainer": "twins_kay_and_tia",
+    "area": "route_15",
+    "rematchDay": "Saturday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "reese",
+    "type": 0,
+    "class": "Biker",
+    "trainer": "biker_reese",
+    "area": "route_17",
+    "rematchDay": "Sunday",
+    "rematchTime": "Night"
+  },
+  {
+    "id": "aiden",
+    "type": 0,
+    "class": "Biker",
+    "trainer": "biker_aiden",
+    "area": "route_17",
+    "rematchDay": "Monday",
+    "rematchTime": "Morning"
+  },
+  {
+    "id": "ernest",
+    "type": 0,
+    "class": "Biker",
+    "trainer": "biker_ernest",
+    "area": "route_17",
+    "rematchDay": "Sunday",
+    "rematchTime": "Day"
+  }
+]

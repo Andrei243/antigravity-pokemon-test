@@ -1,0 +1,10 @@
+{
+  // What is built of Johto so far (plan 20). The maps are HeartGold's, read by tools/MapImporter's second DS reader
+  // (plan 20 · J1: --game heartgold); "maps" are the maps the game makes from its matrices, "areas" the areas open
+  // to walk in. Nothing is open yet: J2 opens New Bark Town and the first routes. After adding an area, run
+  // `dotnet run --project tools/MapImporter -- --game heartgold --data` and write its overlay (overlays/<key>.json).
+  // Johto's keys are HeartGold's map constants without MAP_, lower case (new_bark, route_29, violet_city).
+  "region": "Johto",
+  "maps": [],
+  "areas": []
+}
