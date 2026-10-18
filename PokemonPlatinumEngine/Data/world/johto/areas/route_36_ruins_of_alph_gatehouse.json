@@ -1,0 +1,27 @@
+{
+  "key": "route_36_ruins_of_alph_gatehouse",
+  "index": 103,
+  "name": "Route 36",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_5_34",
+  "nightMusic": "GS_R_5_34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 2, "to": "route_36", "toWarp": 2 },
+    { "x": 5, "z": 12, "to": "ruins_of_alph", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r36r0101_gsoldman1", "looks": "gsoldman1", "movement": "3", "x": 7, "z": 9, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "R36R0101_001+1" },
+    { "id": "r36r0101_counterm", "looks": "counterm", "movement": "17", "x": 1, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R36R0101_002+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

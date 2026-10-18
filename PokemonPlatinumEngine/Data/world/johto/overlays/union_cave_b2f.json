@@ -1,0 +1,29 @@
+{
+  // Union Cave's deepest floor (plan 20 · J5): water reached with Surf, and its trainers (Johto's trainers.json). The
+  // Lapras that comes on Fridays is a later chapter's
+  "area": "union_cave_b2f",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "d25r0103_gsman3": {
+      "name": "Nick",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Nick: Nobody comes this deep by accident. Show me what brought you here!",
+        "dialogueAfter": "Ace Trainer Nick: So that's what brought you. Impressive."
+      }
+    },
+    "d25r0103_gswoman3": {
+      "name": "Gwen",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Gwen: I train down here where nobody can watch. Now you've seen, so let's battle!",
+        "dialogueAfter": "Ace Trainer Gwen: I'll have to find somewhere even deeper to train."
+      }
+    },
+    "d25r0103_gswoman3_2": {
+      "name": "Emma",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Emma: The water down here is so still. Let's make some waves!",
+        "dialogueAfter": "Ace Trainer Emma: Those were big waves. I'm soaked."
+      }
+    }
+  }
+}

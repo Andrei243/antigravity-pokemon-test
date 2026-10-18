@@ -1,0 +1,93 @@
+{
+  "key": "union_cave_b2f",
+  "index": 154,
+  "name": "Union Cave",
+  "matrix": 44,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D25R0103",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 22 },
+    { "species": "Raticate", "level": 22 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Raticate", "level": 22 },
+    { "species": "Golbat", "level": 22 },
+    { "species": "Golbat", "level": 22 },
+    { "species": "Geodude", "level": 21 },
+    { "species": "Geodude", "level": 21 },
+    { "species": "Rattata", "level": 20 },
+    { "species": "Onix", "level": 23 },
+    { "species": "Rattata", "level": 20 },
+    { "species": "Onix", "level": 23 }
+  ],
+  "landRate": 15,
+  "water": [
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Quagsire", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Corsola", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Corsola", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 2, "z": 43, "to": "union_cave_b1f", "toWarp": 2 },
+    { "x": 27, "z": 15, "to": "union_cave_b1f", "toWarp": 3 },
+    { "x": 9, "z": 27, "to": "union_cave_b1f", "toWarp": 4 },
+    { "x": 20, "z": 3, "to": "union_cave_1f", "toWarp": 5 },
+    { "x": 2, "z": 19, "to": "union_cave_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "d25r0103_gsman3", "looks": "gsman3", "movement": "16", "x": 24, "z": 77, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_ACE_TRAINER_M_NICK" },
+    { "id": "d25r0103_gswoman3", "looks": "gswoman3", "movement": "8", "x": 6, "z": 62, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_ACE_TRAINER_F_GWEN" },
+    { "id": "d25r0103_gswoman3_2", "looks": "gswoman3", "movement": "15", "x": 4, "z": 83, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_ACE_TRAINER_F_EMMA" },
+    { "id": "d25r0103_rapurasu", "looks": "rapurasu", "movement": "3", "x": 18, "z": 88, "facing": 3, "rangeX": 2, "rangeZ": 2, "hiddenBy": "FLAG_HIDE_UNION_CAVE_LAPRAS", "script": "D25R0103_000+1" },
+    { "id": "d25r0103_monstarball", "looks": "monstarball", "movement": "0", "x": 25, "z": 43, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D25R0103_ELIXIR", "item": "Elixir", "script": "std_itemball_d25r0103_elixir" },
+    { "id": "d25r0103_monstarball_2", "looks": "monstarball", "movement": "0", "x": 17, "z": 73, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D25R0103_HYPER_POTION", "item": "Hyper Potion", "script": "std_itemball_d25r0103_hyper_potion" }
+  ],
+  "signs": [
+    { "x": 3, "z": 81, "type": 2, "script": "std_hiddenitem_d25r0103_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D25R0103_ULTRA_BALL" },
+    { "x": 4, "z": 59, "type": 2, "script": "std_hiddenitem_d25r0103_calcium", "item": "Calcium", "flag": "FLAG_HIDDEN_ITEM_D25R0103_CALCIUM" }
+  ],
+  "triggers": []
+}

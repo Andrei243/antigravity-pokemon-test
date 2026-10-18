@@ -1,0 +1,27 @@
+{
+  "key": "azalea_ilex_forest_gatehouse",
+  "index": 100,
+  "name": "Azalea Town",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_5_34",
+  "nightMusic": "GS_R_5_34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 7, "to": "azalea", "toWarp": 0 },
+    { "x": 1, "z": 7, "to": "ilex_forest", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t23r0101_counterm", "looks": "counterm", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T23R0101_001+1" },
+    { "id": "t23r0101_gsoldwoman1", "looks": "gsoldwoman1", "movement": "15", "x": 2, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T23R0101_002+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

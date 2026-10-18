@@ -1,0 +1,31 @@
+{
+  "key": "ruins_of_alph_southwest_entrance_first_room",
+  "index": 316,
+  "name": "Ruins of Alph",
+  "matrix": 34,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 17, "to": "ruins_of_alph", "toWarp": 6 },
+    { "x": 6, "z": 2, "to": "ruins_of_alph_southwest_entrance_second_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d24r0206_babyboy1_12", "looks": "babyboy1_12", "movement": "0", "x": 6, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_OPENED_ALPH_WATER_STONE_SECRET_ROOM", "script": "D24R0206_001+1" },
+    { "id": "d24r0206_babyboy1_13", "looks": "babyboy1_13", "movement": "0", "x": 5, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_220", "script": "0" }
+  ],
+  "signs": [
+    { "x": 6, "z": 6, "type": 0, "script": "D24R0206_000+1" }
+  ],
+  "triggers": [
+    { "x": 6, "z": 7, "width": 1, "depth": 1, "script": "D24R0206_003+1", "variable": "VAR_UNK_40DF", "value": "1" }
+  ]
+}

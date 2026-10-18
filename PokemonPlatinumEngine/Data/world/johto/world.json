@@ -44,7 +44,25 @@
     { "name": "SproutTower_3F", "matrix": 14, "area": "sprout_tower_3f", "trees": "Round", "setting": "Indoors" },
     { "name": "Route32_PokemonCenter_1F", "matrix": 73, "area": "route_32_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "Route32_PokemonCenter_B1F", "matrix": 77, "area": "route_32_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
-    { "name": "Route32_RuinsOfAlphGate", "matrix": 70, "area": "route_32_ruins_of_alph_gatehouse", "trees": "Round", "setting": "Indoors" }
+    { "name": "Route32_RuinsOfAlphGate", "matrix": 70, "area": "route_32_ruins_of_alph_gatehouse", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J5: the Ruins of Alph's research centre, its four chambers (the rooms behind their back walls wait
+    // for the walls to open), its gate house to Route 36; Union Cave's three floors; Azalea Town's rooms and the gate
+    // house to Ilex Forest
+    { "name": "RuinsOfAlph_ResearchCenter", "matrix": 273, "area": "ruins_of_alph_research_center", "trees": "Round", "setting": "Indoors" },
+    { "name": "RuinsOfAlph_SouthwestChamber", "matrix": 34, "area": "ruins_of_alph_southwest_entrance_first_room", "trees": "Round", "setting": "Cave" },
+    { "name": "RuinsOfAlph_NorthwestChamber", "matrix": 34, "area": "ruins_of_alph_northwest_entrance_first_room", "trees": "Round", "setting": "Cave" },
+    { "name": "RuinsOfAlph_NortheastChamber", "matrix": 34, "area": "ruins_of_alph_northeast_entrance_first_room", "trees": "Round", "setting": "Cave" },
+    { "name": "RuinsOfAlph_SoutheastChamber", "matrix": 34, "area": "ruins_of_alph_southeast_entrance_first_room", "trees": "Round", "setting": "Cave" },
+    { "name": "Route36_RuinsOfAlphGate", "matrix": 69, "area": "route_36_ruins_of_alph_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "UnionCave_1F", "matrix": 42, "area": "union_cave_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "UnionCave_B1F", "matrix": 43, "area": "union_cave_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "UnionCave_B2F", "matrix": 44, "area": "union_cave_b2f", "trees": "Round", "setting": "Cave" },
+    { "name": "Azalea_PokemonCenter_1F", "matrix": 73, "area": "azalea_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Azalea_PokemonCenter_B1F", "matrix": 77, "area": "azalea_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Azalea_Mart", "matrix": 104, "area": "azalea_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Azalea_KurtsHouse", "matrix": 127, "area": "azalea_kurt_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Azalea_CharcoalKiln", "matrix": 125, "area": "azalea_charcoal_kiln", "trees": "Round", "setting": "Indoors" },
+    { "name": "Azalea_IlexForestGate", "matrix": 70, "area": "azalea_ilex_forest_gatehouse", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -60,6 +78,14 @@
     "violet_northwest_house", "violet_bellsprout_onyx_trade_house", "violet_route_36_gatehouse",
     // Plan 20 · J2, part b, and J4: Violet's Gym, Sprout Tower's floors, Route 32 to the Ruins of Alph's gate house
     "violet_gym", "sprout_tower_1f", "sprout_tower_2f", "sprout_tower_3f",
-    "route_32", "route_32_pokecenter_1f", "route_32_pokecenter_b1f", "route_32_ruins_of_alph_gatehouse"
+    "route_32", "route_32_pokecenter_1f", "route_32_pokecenter_b1f", "route_32_ruins_of_alph_gatehouse",
+    // Plan 20 · J5: the Ruins of Alph with its research centre and chambers, Union Cave, Route 33 and Azalea Town
+    "ruins_of_alph", "ruins_of_alph_research_center",
+    "ruins_of_alph_southwest_entrance_first_room", "ruins_of_alph_northwest_entrance_first_room",
+    "ruins_of_alph_northeast_entrance_first_room", "ruins_of_alph_southeast_entrance_first_room",
+    "route_36_ruins_of_alph_gatehouse",
+    "union_cave_1f", "union_cave_b1f", "union_cave_b2f",
+    "route_33", "azalea", "azalea_pokecenter_1f", "azalea_pokecenter_b1f", "azalea_pokemart", "azalea_kurt_house",
+    "azalea_charcoal_kiln", "azalea_ilex_forest_gatehouse"
   ]
 }

@@ -1,0 +1,56 @@
+{
+  "key": "azalea",
+  "index": 74,
+  "name": "Azalea Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_T_HIWADA",
+  "nightMusic": "GS_T_HIWADA",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 392, "z": 462, "to": "azalea_ilex_forest_gatehouse", "toWarp": 0 },
+    { "x": 392, "z": 463, "to": "azalea_ilex_forest_gatehouse", "toWarp": 0 },
+    { "x": 405, "z": 471, "to": "azalea_gym_entrance", "toWarp": 0 },
+    { "x": 410, "z": 460, "to": "azalea_pokecenter_1f", "toWarp": 0 },
+    { "x": 419, "z": 468, "to": "azalea_charcoal_kiln", "toWarp": 0 },
+    { "x": 419, "z": 457, "to": "azalea_pokemart", "toWarp": 0 },
+    { "x": 399, "z": 454, "to": "azalea_kurt_house", "toWarp": 0 },
+    { "x": 433, "z": 454, "to": "slowpoke_well_entrance", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t23_rocketm", "looks": "rocketm", "movement": "15", "x": 434, "z": 461, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_19F", "script": "T23_000+1" },
+    { "id": "t23_rocketm_2", "looks": "rocketm", "movement": "15", "x": 405, "z": 472, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1A9", "script": "T23_014+1" },
+    { "id": "t23_gsoldman1", "looks": "gsoldman1", "movement": "3", "x": 419, "z": 460, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "T23_007+1" },
+    { "id": "t23_gswoman1", "looks": "gswoman1", "movement": "4", "x": 411, "z": 468, "facing": 0, "rangeX": 0, "rangeZ": 2, "script": "T23_015+1" },
+    { "id": "t23_gsman1", "looks": "gsman1", "movement": "5", "x": 397, "z": 461, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T23_016+1" },
+    { "id": "t23_tsure_poke_static_slowpoke", "looks": "follower_mon_static_slowpoke", "movement": "15", "x": 431, "z": 461, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_AZALEA_SLOWPOKES", "script": "T23_001+1" },
+    { "id": "t23_tsure_poke_static_slowpoke_2", "looks": "follower_mon_static_slowpoke", "movement": "14", "x": 414, "z": 461, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_AZALEA_SLOWPOKES", "script": "T23_001+1" },
+    { "id": "t23_tsure_poke_static_slowpoke_3", "looks": "follower_mon_static_slowpoke", "movement": "17", "x": 411, "z": 472, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_AZALEA_SLOWPOKES", "script": "T23_001+1" },
+    { "id": "t23_tsure_poke_static_slowpoke_4", "looks": "follower_mon_static_slowpoke", "movement": "15", "x": 397, "z": 474, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_AZALEA_SLOWPOKES", "script": "T23_001+1" },
+    { "id": "t23_gsrivel", "looks": "gsrivel", "movement": "0", "x": 384, "z": 448, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t23_bonguri", "looks": "bonguri", "movement": "0", "x": 396, "z": 453, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "t23_gsmiddleman1", "looks": "gsmiddleman1", "movement": "5", "x": 407, "z": 464, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "T23_006+1" },
+    { "id": "t23_rocketm_3", "looks": "rocketm", "movement": "16", "x": 434, "z": 463, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_AZALEA_ROCKET_HARASSING_CIVILIAN", "script": "T23_005+1" },
+    { "id": "t23_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "17", "x": 433, "z": 463, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_AZALEA_HARASSED_CIVILIAN", "script": "0" }
+  ],
+  "signs": [
+    { "x": 401, "z": 460, "type": 1, "script": "T23_008+1" },
+    { "x": 409, "z": 471, "type": 1, "script": "T23_009+1" },
+    { "x": 417, "z": 468, "type": 1, "script": "T23_010+1" },
+    { "x": 416, "z": 461, "type": 1, "script": "T23_011+1" },
+    { "x": 432, "z": 461, "type": 1, "script": "T23_012+1" },
+    { "x": 394, "z": 461, "type": 1, "script": "T23_013+1" },
+    { "x": 421, "z": 469, "type": 2, "script": "std_hiddenitem_t23_full_heal", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_T23_FULL_HEAL" }
+  ],
+  "triggers": [
+    { "x": 395, "z": 462, "width": 1, "depth": 5, "script": "T23_002+1", "variable": "VAR_UNK_4075", "value": "1" },
+    { "x": 434, "z": 466, "width": 1, "depth": 1, "script": "T23_003+1", "variable": "VAR_UNK_4080", "value": "0" }
+  ]
+}

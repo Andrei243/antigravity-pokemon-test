@@ -84,15 +84,56 @@ public class JohtoTests
             Assert.True(walked.Keys.Any(m => m.Name == entry.Name), $"nobody walks into {entry.Name}");
         // Route 31's north end, by the Dark Cave's mouth, is reached; the cave waits for its session
         Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_31" && t.X > 555);
-        // Since plan 20 · J4 Violet's Gym and Sprout Tower are open, and Route 32 runs south to Union Cave's mouth, which
-        // waits for J5 as the Ruins of Alph do beyond their gate house
+        // Since plan 20 · J4 Violet's Gym and Sprout Tower are open, and Route 32 runs south to Union Cave's mouth, open
+        // since J5 with the Ruins of Alph beyond their gate house
         var gymDoor = Johto.Area("violet")!.Warps[2];
         Assert.Equal("violet_gym", gymDoor.To);
         Assert.Contains(Overworld.WarpsAt(gymDoor.X, gymDoor.Z), w => w.TargetMap == "Violet_Gym");
         Assert.Contains(walked.Keys, m => m.Name == "SproutTower_3F");
         Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_32" && t.Y > 425);
         var caveMouth = Johto.Area("route_32")!.Warps[2];
-        Assert.Empty(Overworld.WarpsAt(caveMouth.X, caveMouth.Z));
+        Assert.Contains(Overworld.WarpsAt(caveMouth.X, caveMouth.Z), w => w.TargetMap == "UnionCave_1F");
+    }
+
+    private static readonly string[] CentreAreas = { "ruins_of_alph", "route_33", "azalea" };
+
+    [Fact]
+    public void TheCentreOpensTheRuinsUnionCaveRouteThirtyThreeAndAzaleaTown()
+    {
+        // Plan 20 · J5: the Ruins of Alph's grounds, Route 33 and Azalea Town are walked to from the start, through Union
+        // Cave's three floors, and every room of theirs is come into
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in CentreAreas)
+        {
+            Assert.Contains(key, Johto.Index.Areas);
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        }
+        foreach (string name in new[] { "UnionCave_1F", "UnionCave_B1F", "UnionCave_B2F", "RuinsOfAlph_ResearchCenter",
+                     "RuinsOfAlph_NortheastChamber", "Azalea_KurtsHouse", "Azalea_CharcoalKiln", "Azalea_PokemonCenter_B1F" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+
+        // What waits for its chapter stays shut: the Slowpoke Well and the Gym (J7), Ilex Forest (J7), Route 36 (the
+        // stretch north), the Ruins' hall and the rooms behind the chambers' back walls
+        var azalea = Johto.Area("azalea")!;
+        foreach (int shut in new[] { 2, 7 })
+            Assert.Empty(Overworld.WarpsAt(azalea.Warps[shut].X, azalea.Warps[shut].Z));
+        var hall = Johto.Area("ruins_of_alph")!.Warps[8];
+        Assert.Empty(Overworld.WarpsAt(hall.X, hall.Z));
+        Assert.Null(MapNamed("RuinsOfAlph_NortheastChamber").GetWarpAt(6, 2));
+        Assert.Null(MapNamed("Azalea_IlexForestGate").GetWarpAt(1, 7));
+
+        // Azalea is built in logs (Woodland), its music its own, and Route 33 meets Hoppip by day and Zubat at night
+        Assert.Equal(Architecture.Woodland, Overworld.ArchitectureAt(azalea.Warps[6].X, azalea.Warps[6].Z + 2));
+        Assert.Equal(Architecture.Woodland, WorldModels.Of("hw_h01", "johto")!.Town);
+        Assert.Equal("johto/azalea", Overworld.BgmTrackAt(azalea.Warps[3].X, azalea.Warps[3].Z + 1));
+        Assert.Equal("johto/union_cave", MapNamed("UnionCave_B1F").BgmTrackAt(10, 10));
+        var route33 = Overworld.FindArea("route_33")!;
+        Assert.Contains(EncounterSlots.Grass(route33, new EncounterMoment { Time = TimeOfDay.Day }), s => s.SpeciesName == "Hoppip");
+        Assert.Contains(EncounterSlots.Grass(route33, new EncounterMoment { Time = TimeOfDay.Night }), s => s.SpeciesName == "Zubat");
+        // The chambers' trainers and Union Cave's battle by HeartGold's records
+        Assert.Contains(MapNamed("UnionCave_1F").Everyone, n => n.Id == "johto_hiker_daniel");
+        Assert.Contains(Overworld.Everyone, n => n.Id == "johto_psychic_m_nathan");
     }
 
     [Fact]

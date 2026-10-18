@@ -1,0 +1,26 @@
+{
+  // Route 33 (plan 20 · J5): the short way down from Union Cave to Azalea Town, where it nearly always rains. Its
+  // Apricorn trees are plan 20 · J6's
+  "area": "route_33",
+  "bgmTrack": "johto/route30",
+  "trees": "Round",
+  "people": {
+    "r33_mount_2": {
+      "name": "Anthony",
+      "trainer": {
+        "dialogueBefore": "Hiker Anthony: Just came out of Union Cave and you want a battle? I like your nerve!",
+        "dialogueAfter": "Hiker Anthony: All right, all right. I'm going back in where it's dry."
+      }
+    },
+    "r33_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "It rains here so much! My mum says the clouds get stuck on the mountain and can't get over.",
+        "The trees over there grow round fruit called Apricorns. Kurt in Azalea Town knows all about them."
+      ]
+    }
+  },
+  "signs": {
+    "R33_001+1": "Route 33\nAzalea Town - Union Cave"
+  }
+}

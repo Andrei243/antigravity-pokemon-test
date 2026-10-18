@@ -1,0 +1,19 @@
+{
+  // Azalea Town's Pokémon Center below ground (plan 20 · J5): the Wi-Fi counters, closed (decision 06 · 7)
+  "area": "azalea_pokecenter_b1f",
+  "bgmTrack": "johto/azalea",
+  "people": {
+    "t23pc0102_wifisf": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t23pc0102_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t23pc0102_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    }
+  }
+}

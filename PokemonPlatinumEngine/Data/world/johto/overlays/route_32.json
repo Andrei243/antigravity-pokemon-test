@@ -1,12 +1,11 @@
 {
   // Route 32 (plan 20 · J2, part b): south from Violet City past the Ruins of Alph's gate house and the Pokémon Center
-  // to Union Cave, whose mouth (warp 2) stays shut until plan 20 · J5. The man at its head holds back whoever has no
+  // to Union Cave, whose mouth (warp 2) is open since plan 20 · J5. The man at its head holds back whoever has no
   // Badge yet and gives a Miracle Seed to whoever has (route_32.txt). Its trainers battle by their own records (Johto's
   // trainers.json); the girl here only on Fridays and the man with the Lure are later chapters'
   "area": "route_32",
   "bgmTrack": "johto/route30",
   "trees": "Round",
-  "locked": [ 2 ],
   "triggers": [ { "trigger": 0, "script": "BadgeCheck" } ],
   "people": {
     "r32_gsmiddleman1": { "name": "Man", "script": "SeedMan", "still": true },

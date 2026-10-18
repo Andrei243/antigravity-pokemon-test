@@ -1,0 +1,94 @@
+{
+  "key": "union_cave_b1f",
+  "index": 153,
+  "name": "Union Cave",
+  "matrix": 43,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D25R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 8 },
+    { "species": "Sandshrew", "level": 8 },
+    { "species": "Geodude", "level": 8 },
+    { "species": "Sandshrew", "level": 8 },
+    { "species": "Zubat", "level": 7 },
+    { "species": "Zubat", "level": 7 },
+    { "species": "Onix", "level": 8 },
+    { "species": "Onix", "level": 8 },
+    { "species": "Zubat", "level": 9 },
+    { "species": "Rattata", "level": 6 },
+    { "species": "Zubat", "level": 9 },
+    { "species": "Rattata", "level": 6 }
+  ],
+  "landRate": 15,
+  "water": [
+    { "species": "Wooper", "level": 10, "maxLevel": 20 },
+    { "species": "Quagsire", "level": 15, "maxLevel": 25 },
+    { "species": "Quagsire", "level": 10, "maxLevel": 20 },
+    { "species": "Quagsire", "level": 10, "maxLevel": 20 },
+    { "species": "Quagsire", "level": 10, "maxLevel": 20 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 29, "z": 43, "to": "union_cave_1f", "toWarp": 1 },
+    { "x": 2, "z": 60, "to": "union_cave_1f", "toWarp": 3 },
+    { "x": 27, "z": 57, "to": "union_cave_b2f", "toWarp": 0 },
+    { "x": 2, "z": 3, "to": "union_cave_b2f", "toWarp": 1 },
+    { "x": 2, "z": 12, "to": "union_cave_b2f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "d25r0102_mount_2", "looks": "mount_2", "movement": "7", "x": 13, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_HIKER_PHILLIP" },
+    { "id": "d25r0102_mount_2_2", "looks": "mount_2", "movement": "9", "x": 21, "z": 19, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_HIKER_LEONARD" },
+    { "id": "d25r0102_mania", "looks": "mania", "movement": "16", "x": 7, "z": 59, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_POKE_MANIAC_ANDREW" },
+    { "id": "d25r0102_mania_2", "looks": "mania", "movement": "16", "x": 26, "z": 58, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_POKE_MANIAC_CALVIN" },
+    { "id": "d25r0102_rock", "looks": "rock", "movement": "0", "x": 6, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_strength" },
+    { "id": "d25r0102_monstarball", "looks": "monstarball", "movement": "0", "x": 11, "z": 42, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D25R0102_TM39", "item": "TM39", "script": "std_itemball_d25r0102_tm39" },
+    { "id": "d25r0102_monstarball_2", "looks": "monstarball", "movement": "0", "x": 27, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D25R0102_X_DEFENSE", "item": "X Defense", "script": "std_itemball_d25r0102_x_defense" }
+  ],
+  "signs": [
+    { "x": 20, "z": 43, "type": 2, "script": "std_hiddenitem_d25r0102_x_speed", "item": "X Speed", "flag": "FLAG_HIDDEN_ITEM_D25R0102_X_SPEED" },
+    { "x": 24, "z": 15, "type": 2, "script": "std_hiddenitem_d25r0102_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D25R0102_REVIVE" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,19 @@
+{
+  // The Ruins of Alph's northeast chamber (plan 20 · J5), HeartGold's room: the stone panel of the Kabuto in its floor.
+  // The way through the back wall (warp 1) opens only when the wall does, which is the chambers' later chapter
+  "area": "ruins_of_alph_northeast_entrance_first_room",
+  "bgmTrack": "johto/ruins_of_alph",
+  "locked": [ 1 ],
+  "people": {
+    "d24r0202_gswoman6": {
+      "name": "Scientist",
+      "dialog": [
+        "This panel shows a Kabuto, we think. The pieces slide, but nobody has put the picture back together yet.",
+        "When someone does, I expect something in this chamber will change. The Ruins feel like they are waiting."
+      ]
+    }
+  },
+  "signs": {
+    "D24R0202_000+1": "A stone panel shows a Kabuto, its shell split into sixteen squares. The pieces have been jumbled."
+  }
+}

@@ -210,6 +210,8 @@ public enum Architecture
     Bayside,
     /// <summary>Dark boards under hipped tile roofs of slate: the old towns of temples and lanterns (Violet, plan 20 · J2's first rows).</summary>
     OldTimber,
+    /// <summary>Logs under dark-brown gable roofs with a chimney: the old town of charcoal smoke and Slowpoke at the forest's edge (Azalea, plan 20 · J5).</summary>
+    Woodland,
 
     // Hoenn (plan 21): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>Boards under leaf-green gable roofs with a chimney and flower boxes: the little town where the grass starts (Littleroot, plan 21 · H1).</summary>

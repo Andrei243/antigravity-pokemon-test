@@ -372,6 +372,13 @@ public static class RegionDatabase
                 // Plan 20 · J2, part b: Violet's Gym, Sprout Tower, Route 32's Pokémon Center and gate house
                 "Violet_Gym", "SproutTower_1F", "SproutTower_2F", "SproutTower_3F",
                 "Route32_PokemonCenter_1F", "Route32_PokemonCenter_B1F", "Route32_RuinsOfAlphGate",
+                // Plan 20 · J5: the Ruins of Alph's research centre, chambers and gate house to Route 36, Union Cave,
+                // Azalea Town's rooms and its gate house to Ilex Forest
+                "RuinsOfAlph_ResearchCenter", "RuinsOfAlph_SouthwestChamber", "RuinsOfAlph_NorthwestChamber",
+                "RuinsOfAlph_NortheastChamber", "RuinsOfAlph_SoutheastChamber", "Route36_RuinsOfAlphGate",
+                "UnionCave_1F", "UnionCave_B1F", "UnionCave_B2F",
+                "Azalea_PokemonCenter_1F", "Azalea_PokemonCenter_B1F", "Azalea_Mart", "Azalea_KurtsHouse",
+                "Azalea_CharcoalKiln", "Azalea_IlexForestGate",
             }
         },
         new()
