@@ -533,7 +533,7 @@ public sealed partial class BattleCore : IBattleContext
             // Each trainer announces their own Pokémon
             foreach (var group in foes.GroupBy(b => b.Trainer!))
             {
-                var said = Say(Text.Of("battle.sentOut", ("trainer", group.Key.FullTitle), ("pokemon", JoinNames(group.Select(b => b.Pokemon!.DisplayName)))));
+                var said = Say(Text.Of("battle.sentOut", ("trainer", group.Key.FullTitle), ("pokemon", JoinNames(group.Select(b => ShownAs(b, b.Pokemon!))))));
                 foreach (var b in group)
                 {
                     OnEntered(b, opening: true);
@@ -564,7 +564,7 @@ public sealed partial class BattleCore : IBattleContext
 
         // A partner sends theirs out with their own line
         var own = mine.Where(b => b.Trainer == null).ToList();
-        var go = Say(Text.Of("battle.go", ("pokemon", JoinNames(own.Select(b => b.Pokemon!.DisplayName)))));
+        var go = Say(Text.Of("battle.go", ("pokemon", JoinNames(own.Select(b => ShownAs(b, b.Pokemon!))))));
         foreach (var b in own)
         {
             OnEntered(b, opening: true);
@@ -573,7 +573,7 @@ public sealed partial class BattleCore : IBattleContext
         foreach (var b in mine.Where(b => b.Trainer != null))
         {
             OnEntered(b, opening: true);
-            Bringing(Say(Text.Of("battle.sentOut", ("trainer", b.Trainer!.FullTitle), ("pokemon", b.Pokemon!.DisplayName))).With(new Entered(b.Place, b.Pokemon!, FromBall: true)), b);
+            Bringing(Say(Text.Of("battle.sentOut", ("trainer", b.Trainer!.FullTitle), ("pokemon", ShownAs(b, b.Pokemon!)))).With(new Entered(b.Place, b.Pokemon!, FromBall: true)), b);
         }
 
         AnnounceFormat();
@@ -900,6 +900,8 @@ public sealed partial class BattleCore : IBattleContext
                 _ => Text.Of("battle.gahItWasSo")
             });
             if (Kind == BattleKind.Safari) SafariGameOver();
+            // Ball Fetch picks the first ball that failed up (plan 06 · R27b)
+            FetchTheBall(ball);
             return;
         }
 
@@ -1026,8 +1028,9 @@ public sealed partial class BattleCore : IBattleContext
         FellFirst(down, fell);
         if (!down.IsPlayerSide) AwardExp(down);
         CheckStrongWeather(down);
-        // Soul-Heart answers every faint (plan 06 · R27)
+        // Soul-Heart answers every faint (plan 06 · R27), Receiver and Power of Alchemy an ally's (R27b)
         SoulHeart(down);
+        Receives(down);
     }
 
     /// <summary>The next Pokémon at 0 HP that hasn't been told so yet: the fastest first, as the original faints them.</summary>

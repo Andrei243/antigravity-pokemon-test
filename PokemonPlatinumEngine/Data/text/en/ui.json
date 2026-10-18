@@ -2353,7 +2353,24 @@
     "mirrorArmor": "{pokemon}'s {ability} turned the stat change back!",
     "swappedAbilities": "{pokemon} swapped abilities with {target}!",
     "abilityCaught": "{target}'s ability became {ability}!",
-    "comatose": "{pokemon} is drowsing!"
+    "comatose": "{pokemon} is drowsing!",
+    "unnerve": "{pokemon}'s {ability} makes its foes too nervous to eat Berries!",
+    "asOne": "{pokemon} has two Abilities!",
+    "illusionEnded": "{pokemon}'s illusion wore off!",
+    "neutralizingGas": "Neutralizing gas filled the area!",
+    "neutralizingGasGone": "The effects of the neutralizing gas wore off!",
+    "ripen": "{pokemon}'s {ability} ripened the Berry!",
+    "cudChew": "{pokemon}'s {ability} chewed its {item} once more!",
+    "symbiosis": "{pokemon}'s {ability} passed its {item} to {ally}!",
+    "veiled": "{target} is protected by {pokemon}'s {ability}!",
+    "receiver": "{pokemon} took over {ally}'s {ability}!",
+    "emergencyExit": "{pokemon}'s {ability} sent it out of harm's way!",
+    "dancer": "{pokemon}'s {ability} joined in the dance!",
+    "commander": "{pokemon}'s {ability} sent it into {ally}'s mouth!",
+    "battleBond": "{pokemon} became fully charged by its bond with its Trainer!",
+    "powerConstruct": "You sense the presence of many!",
+    "completeForme": "{pokemon} transformed into its Complete Forme!",
+    "ballFetch": "{pokemon} fetched the {item}!"
   },
 
   "battleInfo": {

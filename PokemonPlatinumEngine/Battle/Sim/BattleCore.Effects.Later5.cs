@@ -53,9 +53,9 @@ public sealed partial class BattleCore
         ["MatchaGotcha"] = new(), // and it thaws its target: ThawsItsTarget
         ["GigatonHammer"] = new(), // not twice in a row: WhyNotMove
         ["BloodMoon"] = new(),
-        // Order Up's boost comes from a Tatsugiri in its user's mouth (Commander), which no Pokémon here can be yet:
-        // without one it is a plain hit (onAfterMoveSecondarySelf returns at once)
-        ["OrderUp"] = new(),
+        // Order Up's boost comes from a Tatsugiri in its user's mouth (Commander, plan 06 · R27b): without one it is a
+        // plain hit (onAfterMoveSecondarySelf returns at once)
+        ["OrderUp"] = new() { Then = (b, use) => b.OrderUp(use) },
 
         // ---- several hits
         ["TwinBeam"] = new() { Strikes = (b, use) => 2 },

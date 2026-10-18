@@ -453,7 +453,10 @@ public class TextTests
         ["Battle/Sim/BattleCore.Effects.Later1.cs"] = new[] { "Zero to Hero", "Power of Alchemy" },
         // The later abilities' names, which the formula and the core go by (plan 06 · R27)
         ["Battle/DamageCalculator.Abilities.cs"] = new[] { "Tablets of Ruin", "Vessel of Ruin", "Sword of Ruin", "Beads of Ruin" },
-        ["Battle/Sim/BattleCore.Abilities.cs"] = new[] { "Good as Gold" }
+        ["Battle/Sim/BattleCore.Abilities.cs"] = new[] { "Good as Gold" },
+        // The rest of them (plan 06 · R27b): Showdown's lists by name, and Receiver's kin
+        ["Battle/Effects/LaterAbilityEffects2.cs"] = new[] { "Zero to Hero", "Power of Alchemy" },
+        ["Battle/Sim/BattleCore.Abilities2.cs"] = new[] { "Power of Alchemy" }
     };
 
     [Fact]

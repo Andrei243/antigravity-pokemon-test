@@ -106,6 +106,7 @@ public sealed partial class BattleCore
         {
             if (!b.IsActive) continue;
             BattleEffects.ItemOf(b)?.OnConditionChanged(this, b, null);
+            Digest();
             if (!Settle()) return;
         }
     }
@@ -156,6 +157,7 @@ public sealed partial class BattleCore
         berry = null!;
         var item = BattleEffects.ItemInHand(t);
         if (item?.HoldEffect == null || HeldItemEffects.TypeWeakenedBy(item.HoldEffect) is not { } type || type != move.Type) return false;
+        if (LaterAbilities.Unnerved(t)) return false; // (an Unnerve across the field: plan 06 · R27b)
         if (item.HoldEffect != HeldItemEffects.WeakensAnyNormalHit && !result.IsSuperEffective) return false;
         berry = item;
         return true;
@@ -177,6 +179,7 @@ public sealed partial class BattleCore
         if (hit.IntoSubstitute || hit.LastDealt <= 0) return;
         var item = BattleEffects.ItemInHand(t);
         if (item?.HoldEffect == null) return;
+        if (item.Pocket == ItemPocket.Berries && LaterAbilities.Unnerved(t)) return; // (an Unnerve across the field: plan 06 · R27b)
         int param = Math.Max(1, item.HoldParam);
         bool physical = use.Move.Category == MoveCategory.Physical;
         bool leaving = use.Data.Effect == "SwitchHit";

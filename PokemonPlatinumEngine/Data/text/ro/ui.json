@@ -2357,7 +2357,24 @@
     "mirrorArmor": "{ability} lui {pokemon} a întors schimbarea de statistici!",
     "swappedAbilities": "{pokemon} și-a schimbat abilitatea cu {target}!",
     "abilityCaught": "Abilitatea lui {target} a devenit {ability}!",
-    "comatose": "{pokemon} moțăie!"
+    "comatose": "{pokemon} moțăie!",
+    "unnerve": "{ability} lui {pokemon} îi face pe adversari prea agitați să mănânce Boabe!",
+    "asOne": "{pokemon} are două abilități!",
+    "illusionEnded": "Iluzia lui {pokemon} s-a destrămat!",
+    "neutralizingGas": "Gazul neutralizant a umplut terenul!",
+    "neutralizingGasGone": "Efectele gazului neutralizant au trecut!",
+    "ripen": "{ability} lui {pokemon} a copt Boaba!",
+    "cudChew": "{ability} lui {pokemon} a mestecat din nou {item}!",
+    "symbiosis": "{ability} lui {pokemon} i-a dat {item} lui {ally}!",
+    "veiled": "{target} este apărat de {ability} lui {pokemon}!",
+    "receiver": "{pokemon} a preluat {ability} lui {ally}!",
+    "emergencyExit": "{ability} lui {pokemon} l-a scos din calea pericolului!",
+    "dancer": "{ability} lui {pokemon} s-a alăturat dansului!",
+    "commander": "{ability} lui {pokemon} l-a trimis în gura lui {ally}!",
+    "battleBond": "{pokemon} s-a încărcat pe deplin prin legătura cu Antrenorul său!",
+    "powerConstruct": "Simți prezența multora!",
+    "completeForme": "{pokemon} s-a transformat în Forma Completă!",
+    "ballFetch": "{pokemon} a adus înapoi {item}!"
   },
 
   "battleInfo": {

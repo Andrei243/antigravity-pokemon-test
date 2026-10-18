@@ -153,8 +153,10 @@ public static partial class DamageCalculator
             if (spread) damage = Formulas.Modify(damage, 3072);
             if (typed && !selfHit)
             {
-                bool strong = (weather == BattleWeather.Sun && (type == PokemonType.Fire || SteamsInTheSun(move.Data, weather))) || (weather == BattleWeather.Rain && type == PokemonType.Water);
-                bool weak = (weather == BattleWeather.Sun && type == PokemonType.Water && !SteamsInTheSun(move.Data, weather)) || (weather == BattleWeather.Rain && type == PokemonType.Fire);
+                // (Mega Sol hits as under the sun: plan 06 · R27b)
+                var sky = SkyFor(mine, weather);
+                bool strong = (sky == BattleWeather.Sun && (type == PokemonType.Fire || SteamsInTheSun(move.Data, sky))) || (sky == BattleWeather.Rain && type == PokemonType.Water);
+                bool weak = (sky == BattleWeather.Sun && type == PokemonType.Water && !SteamsInTheSun(move.Data, sky)) || (sky == BattleWeather.Rain && type == PokemonType.Fire);
                 if (strong) damage = Formulas.Modify(damage, 6144);
                 else if (weak) damage = Formulas.Modify(damage, 2048);
             }

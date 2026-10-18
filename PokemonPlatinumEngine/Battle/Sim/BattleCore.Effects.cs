@@ -194,7 +194,16 @@ public sealed partial class BattleCore
         ["PreventStatReduction"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Mist, s => s.Mist, (s, t) => s.MistTurns = t, "", "battle.becameShroudedInMist2") },
         ["PreventStatus"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Safeguard, s => s.Safeguard, (s, t) => s.SafeguardTurns = t, "", "battle.becameCloakedInA") },
         ["PreventCrits"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.LuckyChant, s => s.LuckyChant, (s, t) => s.LuckyChantTurns = t, "", "battle.theLuckyChantShielded") },
-        ["DoubleSpeed3Turns"] = new() { Does = (b, use) => b.RaiseScreen(use, SideCondition.Tailwind, s => s.Tailwind, (s, t) => s.TailwindTurns = t, "Tailwind", "battle.theTailwindBlewFrom") },
+        ["DoubleSpeed3Turns"] = new()
+        {
+            Does = (b, use) =>
+            {
+                bool blowing = b.Field.Side(use.User.Side).Tailwind;
+                b.RaiseScreen(use, SideCondition.Tailwind, s => s.Tailwind, (s, t) => s.TailwindTurns = t, "Tailwind", "battle.theTailwindBlewFrom");
+                // Wind Rider and Wind Power answer a Tailwind that starts (plan 06 · R27b)
+                if (!blowing && b.Field.Side(use.User.Side).Tailwind) b.WindBlows(use.User.Side);
+            }
+        },
         ["TrickRoom"] = new() { Does = (b, use) => b.TwistTheRoom(use) },
         ["Gravity"] = new() { Does = (b, use) => b.Intensify(use) },
         ["RemoveScreens"] = new()
@@ -1177,6 +1186,8 @@ public sealed partial class BattleCore
             Say(Text.Of("battle.madeItIneffective", ("target", t.Name), ("ability", AbilityOf(t))));
             return false;
         }
+        // An ally's Sweet Veil or Flower Veil (plan 06 · R27b)
+        if (VeiledFrom(t, StatusCondition.Sleep, user, announce: true)) return false;
         if (t.HasSubstitute || t.Volatile.YawnTurns > 0 || t.Pokemon!.Status != StatusCondition.None || (UproarIsOn && !Has(t, "Soundproof"))) return Fails();
         if (Field.Side(t.Side).Safeguard)
         {

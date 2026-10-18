@@ -30,7 +30,11 @@ public static partial class DamageCalculator
         move.Category != MoveCategory.Status && (move.StatusChancePercent > 0 && move.InflictStatus != StatusCondition.None
             || move.FlinchChancePercent > 0 || move.ConfuseChancePercent > 0
             || (move.TargetStatChange != null && move.StatChangeChancePercent < 100 && move.StatChangeChancePercent > 0)
-            || (move.TargetStatChange != null && !move.StatChangeTargetSelf));
+            || (move.TargetStatChange != null && !move.StatChangeTargetSelf)
+            // Its user's rise, sure or not, is a secondary of Showdown's (Flame Charge, Power-Up Punch), where a drop is
+            // its self (Close Combat); and a chance its own code rolls (Snore's flinch): plan 06 · R27b, by the oracle
+            || (move.TargetStatChange != null && move.StatChangeTargetSelf && move.StatStageAmount > 0)
+            || move.EffectChance > 0);
 
     /// <summary>The power's bonuses (onBasePower, onAllyBasePower, onAnyBasePower).</summary>
     private static void LaterPower(List<int> bp, Battler attacker, Battler defender, Move move, string? mine, bool typed, BattleWeather weather)
@@ -54,9 +58,9 @@ public static partial class DamageCalculator
         if (attacker.Turn.AteBoosted) bp.Add(4915);
         // Parental Bond's second hit is a quarter as strong (generation 7 on)
         if (attacker.Turn.ParentalChild) bp.Add(1024);
-        // Supreme Overlord: a tenth again for each of its side that has fainted, five at most
-        if (mine == "Supreme Overlord" && attacker.Roster is { } roster)
-            bp.Add(4096 + 410 * Math.Min(5, roster.Members.Count(m => m != p && m.IsFainted)));
+        // Supreme Overlord: a tenth again for each of its side that had fainted as it came in, five at most (Showdown's
+        // onStart and its table of powers: plan 06 · R27b's audit, where R27 counted at each hit and added 410 a faint)
+        if (mine == "Supreme Overlord" && attacker.Volatile.Fallen > 0) bp.Add(OverlordPower[Math.Min(5, attacker.Volatile.Fallen)]);
         // Its allies' (and its own Steely Spirit's)
         if (typed && type == PokemonType.Steel && (mine == "Steely Spirit" || AllyHas(attacker, "Steely Spirit"))) bp.Add(6144);
         if (!physical && AllyHas(attacker, "Battery")) bp.Add(5325);
@@ -115,6 +119,15 @@ public static partial class DamageCalculator
         if (mine == "Neuroforce" && effectiveness > 1f) final.Add(5120);
         if (defender != attacker && AllyHas(defender, "Friend Guard")) final.Add(3072);
     }
+
+    /// <summary>Supreme Overlord's power by the fallen it counted (Showdown's <c>powMod</c>).</summary>
+    private static readonly int[] OverlordPower = { 4096, 4506, 4915, 5325, 5734, 6144 };
+
+    /// <summary>
+    /// The weather the damage formula reads for a hit (plan 06 · R27b): Mega Sol's holder hits as under the sun, whatever
+    /// the sky (Showdown's megasol onWeatherModifyDamage, which runs the sun's and returns).
+    /// </summary>
+    internal static BattleWeather SkyFor(string? mine, BattleWeather weather) => mine == "Mega Sol" ? BattleWeather.Sun : weather;
 
     /// <summary>Infiltrator passes the screens (and a Substitute: <c>BattleCore.Infiltrates</c>).</summary>
     internal static bool Infiltrates(Battler attacker) => attacker.Ability?.Name == "Infiltrator";

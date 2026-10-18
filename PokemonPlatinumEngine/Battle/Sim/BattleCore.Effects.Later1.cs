@@ -29,7 +29,9 @@ public sealed partial class BattleCore
     private static readonly HashSet<string> CantBeReplaced = new()
     {
         "Multitype", "Stance Change", "Schooling", "Comatose", "Shields Down", "Disguise", "RKS System", "Battle Bond",
-        "Power Construct", "Ice Face", "Gulp Missile", "As One (Glastrier)", "As One (Spectrier)", "Zero to Hero", "Tera Shift", "Truant"
+        "Power Construct", "Ice Face", "Gulp Missile", "As One (Glastrier)", "As One (Spectrier)", "Zero to Hero", "Tera Shift", "Truant",
+        // The data's name for both riders' (plan 06 · R27b's audit)
+        "As One"
     };
 
     /// <summary>The abilities Entrainment can't hand on (Showdown's <c>noentrain</c>, with <c>cantsuppress</c>).</summary>
@@ -37,7 +39,9 @@ public sealed partial class BattleCore
     {
         "Trace", "Forecast", "Flower Gift", "Illusion", "Imposter", "Zen Mode", "Power of Alchemy", "Receiver", "Hunger Switch",
         "Neutralizing Gas", "Commander", "Protosynthesis", "Quark Drive", "Embody Aspect (Cornerstone)", "Embody Aspect (Hearthflame)",
-        "Embody Aspect (Teal)", "Embody Aspect (Wellspring)"
+        "Embody Aspect (Teal)", "Embody Aspect (Wellspring)",
+        // The data's name for all four masks' (plan 06 · R27b's audit)
+        "Embody Aspect"
     };
 
     private static readonly Dictionary<string, MoveEffect> LaterEffects1 = new()

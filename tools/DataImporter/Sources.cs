@@ -32,7 +32,7 @@ public static class Sources
         "data/random-battles/gen3/sets.json", "data/random-battles/gen2/sets.json", "data/random-battles/gen1/data.json"
     };
     public static readonly string[] ShowdownFiles = new[] { "data/moves.ts", "data/items.ts", "data/pokedex.ts", "LICENSE" }
-        .Concat(ShowdownSetFiles).ToArray();
+        .Concat(ShowdownSetFiles).Append("data/abilities.ts").Append("data/conditions.ts").ToArray(); // the last two for the abilities' audit (plan 06 · R27b)
 
     /// <summary>
     /// The Game Boy Advance decompilations (plan 18 · W6, agreed 2026-10-12): pret/pokefirered for Kanto and

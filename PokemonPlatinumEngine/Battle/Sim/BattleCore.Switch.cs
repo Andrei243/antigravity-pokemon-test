@@ -32,6 +32,8 @@ public sealed partial class BattleCore
             foreach (var mine in PlayerSlots.Where(b => b.IsActive)) foe.FoughtAgainst.Add(mine.Pokemon!);
         // The player's own that took part, for what a battle leaves on them (Burmy's cloak)
         if (place.IsPlayerSide && place.Trainer == null) sentOut.Add(place.Pokemon);
+        // Illusion's disguise (plan 06 · R27b)
+        TakeTheIllusion(place);
     }
 
     /// <summary>
@@ -190,6 +192,8 @@ public sealed partial class BattleCore
         // In the Great Marsh and Pal Park nobody is sent out: no ability has anyone to act on
         if (Kind is BattleKind.Safari or BattleKind.PalPark) return;
         var order = BySpeed();
+        // Neutralizing Gas gone: said before the abilities it held act (plan 06 · R27b)
+        GasGoes();
         // Primal Reversion before anything acts on entry (plan 06 · R20)
         PrimalReversions(order);
         // A Z-Power's heal waiting for whoever comes in (plan 06 · R21)
@@ -246,6 +250,8 @@ public sealed partial class BattleCore
             }
             if (Result != BattleResult.None) return;
         }
+        // Commander (plan 06 · R27b)
+        Commanders();
     }
 
     /// <summary>
@@ -401,7 +407,7 @@ public sealed partial class BattleCore
     {
         var bench = target.Roster == null ? new List<Pokemon>()
             : Enumerable.Range(0, target.Roster.Count).Where(i => CanSendIn(target, i)).Select(i => target.Roster.Members[i]).ToList();
-        if (bench.Count == 0) return;
+        if (bench.Count == 0 || InTheCommand(target)) return;
         // A Dynamaxed Pokémon stands its ground (plan 06 · R22; Showdown's dynamax onDragOut)
         if (HoldsItsGroundDynamaxed(target)) return;
         var dragged = bench[rng.Roll(RollKind.DraggedOut, bench.Count)];
@@ -433,7 +439,7 @@ public sealed partial class BattleCore
     }
 
     private string SentOutLine(Battler place, Pokemon incoming) =>
-        place.Trainer == null ? Text.Of("battle.go", ("pokemon", incoming.DisplayName)) : Text.Of("battle.sentOut", ("trainer", place.Trainer.FullTitle), ("pokemon", incoming.DisplayName));
+        place.Trainer == null ? Text.Of("battle.go", ("pokemon", ShownAs(place, incoming))) : Text.Of("battle.sentOut", ("trainer", place.Trainer.FullTitle), ("pokemon", ShownAs(place, incoming)));
 
     /// <summary>
     /// A Pokémon leaves by its own move once the move is done: U-turn brings it back (Pursuit can catch it), Baton
