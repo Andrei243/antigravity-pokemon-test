@@ -1,0 +1,21 @@
+{
+  "people": {},
+  "signs": {
+    "T20R0202_000+1": {
+      "en": [
+        "The PC on the desk. Nothing on it but a half-written list of Pokémon to see."
+      ],
+      "text": [
+        "PC-ul de pe birou. Nu e pe el decât o listă pe jumătate scrisă de Pokémoni de văzut."
+      ]
+    },
+    "T20R0202_001+1": {
+      "en": [
+        "A games console, plugged into the television. Maybe later."
+      ],
+      "text": [
+        "O consolă de jocuri, legată la televizor. Poate mai târziu."
+      ]
+    }
+  }
+}

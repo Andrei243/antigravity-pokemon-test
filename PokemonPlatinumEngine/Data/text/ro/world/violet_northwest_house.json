@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t22r0401_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daughter's Pidgey follows her everywhere. It even tries to sleep on her pillow."
+        ],
+        "text": [
+          "Pidgey-ul fiicei mele o urmează peste tot. Încearcă să doarmă chiar și pe perna ei."
+        ]
+      }
+    },
+    "t22r0401_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When my Pidgey grows up, it'll be big enough to fly me to school!"
+        ],
+        "text": [
+          "Când o să crească Pidgey-ul meu, o să fie destul de mare să mă ducă în zbor la școală!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

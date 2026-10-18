@@ -79,7 +79,7 @@
         "A guide to the Pokétch's clocks.\nThe Digital Watch and the Analog Watch tell the time, and the Stopwatch and the Kitchen Timer measure it.\nThe Alarm Clock rings at the hour it is set for, and the Calendar keeps the dates worth remembering."
       ],
       "text": [
-        "Un ghid al ceasurilor Pokétch.\nDigital Watch și Analog Watch arată ora, iar Stopwatch și Kitchen Timer o măsoară.\nAlarm Clock sună la ora la care e pus, iar Calendar ține minte datele importante."
+        "Un ghid al ceasurilor Pokétch.\nCeasul Digital și cel Analogic arată ora, iar Cronometrul și Minutarul o măsoară.\nDeșteptătorul sună la ora la care e pus, iar Calendarul ține minte datele importante."
       ]
     },
     "9,11": {
@@ -87,7 +87,7 @@
         "A guide to the Pokétch's helpers.\nThe Calculator does sums, the Memo Pad takes notes, the Pokémon History recalls Pokémon met and the Berry Searcher finds Berries. The Friendship Checker, Day-Care Checker and Matchup Checker tell how Pokémon feel."
       ],
       "text": [
-        "Un ghid al ajutoarelor Pokétch.\nCalculator face socoteli, Memo Pad ia notițe, Pokémon History ține minte Pokémonii întâlniți, Berry Searcher găsește Boabe. Friendship, Day-Care și Matchup Checker spun ce simt Pokémonii."
+        "Un ghid al ajutoarelor Pokétch.\nCalculatorul face socoteli, Carnețelul ia notițe, Istoricul ține minte Pokémonii întâlniți, Radarul găsește Boabe. Monitoarele de Prietenie, Pensiune și Potrivire spun ce simt Pokémonii."
       ]
     },
     "15,11": {
@@ -95,7 +95,7 @@
         "A guide to the Pokétch's pastimes.\nThe Pokémon List shows how the team is doing, and the Dot Artist draws. The Coin Toss and the Roulette decide what nobody can, the Color Changer recolours the screen, and the Marking Map marks a map of Sinnoh."
       ],
       "text": [
-        "Un ghid al distracțiilor Pokétch.\nPokémon List arată cum stă echipa, iar Dot Artist desenează. Coin Toss și Roulette hotărăsc ce nu poate nimeni, Color Changer recolorează ecranul, iar Marking Map marchează harta Sinnoh-ului."
+        "Un ghid al distracțiilor Pokétch.\nLista Pokémon arată cum stă echipa, iar Desenul în Puncte desenează. Banul și Ruleta hotărăsc ce nu poate nimeni, Schimbă-Culoare recolorează ecranul, iar Harta cu Semne marchează harta Sinnoh-ului."
       ]
     },
     "1,4": {
@@ -103,7 +103,7 @@
         "A guide to the Pokétch's counters and finders.\nThe Pedometer counts steps, and the Counter anything at all. The Dowsing Machine finds what lies hidden, the Trainer Counter follows Poké Radar chains, the Link Searcher finds players, and the Move Tester tests types."
       ],
       "text": [
-        "Un ghid al contoarelor și căutătoarelor Pokétch.\nPedometer numără pașii, iar Counter orice. Dowsing Machine găsește ce e ascuns, Trainer Counter urmărește lanțurile Poké Radar, Link Searcher găsește jucători, iar Move Tester testează tipuri."
+        "Un ghid al contoarelor și căutătoarelor Pokétch.\nPedometrul numără pașii, iar Numărătorul orice. Detectorul găsește ce e ascuns, Contorul de Lanț urmărește Poké Radar-ul, Căutătorul găsește jucători, iar Testerul testează tipuri."
       ]
     }
   }

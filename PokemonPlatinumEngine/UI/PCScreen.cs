@@ -317,7 +317,7 @@ public class PCScreen
                 Box = box;
                 PartyIndex = Math.Max(0, Math.Min(PartyIndex, party.Count - 1));
                 AudioManager.PlaySound("select");
-                onNotification(Text.Of("boxes.putIn", ("name", pokemon.DisplayName), ("box", pc.Boxes[box].Name)));
+                onNotification(Text.Of("boxes.putIn", ("name", pokemon.DisplayName), ("box", pc.ShownName(box))));
                 break;
             }
             case PcAction.Mark:
@@ -358,7 +358,7 @@ public class PCScreen
     public void ChooseForBox(PcBoxAction action, PcBoxes pc)
     {
         BoxMenu = null;
-        if (action == PcBoxAction.Name) Naming = new NameEntry(pc.Boxes[Box].Name, PcBoxes.NameLength);
+        if (action == PcBoxAction.Name) Naming = new NameEntry(NameToEdit(pc), PcBoxes.NameLength);
         else if (action == PcBoxAction.Wallpaper) NextWallpaper(pc);
     }
 
@@ -372,6 +372,13 @@ public class PCScreen
         box.Wallpaper = next;
         AudioManager.PlaySound("select");
     }
+
+    /// <summary>
+    /// The name the keyboard starts from: the box's name as shown ("Cutia 3"), or the name it is saved under where the
+    /// language's is longer than a box's name may be ("Cutia 100").
+    /// </summary>
+    private string NameToEdit(PcBoxes pc) =>
+        pc.ShownName(Box) is { Length: <= PcBoxes.NameLength } shown ? shown : pc.Boxes[Box].Name;
 
     /// <summary>Ends typing the box's name: given, it is the box's name from now on.</summary>
     public void FinishNaming(PcBoxes pc, string? name)
@@ -471,7 +478,7 @@ public class PCScreen
             else if (InputManager.IsActionPressed(GameAction.Confirm))
             {
                 naming.Press();
-                if (naming.Done) FinishNaming(pc, naming.Result(pc.Boxes[Box].Name));
+                if (naming.Done) FinishNaming(pc, naming.Result(NameToEdit(pc)));
             }
             return;
         }

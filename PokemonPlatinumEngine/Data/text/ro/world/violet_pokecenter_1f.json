@@ -1,0 +1,159 @@
+{
+  "people": {
+    "t22pc0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "t22pc0101_pcwoman2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+        ],
+        "text": [
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
+        ]
+      }
+    },
+    "t22pc0101_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "t22pc0101_pcwoman2_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "t22pc0101_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've been all over Johto, and this Center has the softest sofas of the lot."
+        ],
+        "text": [
+          "Am umblat prin tot Johto-ul, și Centrul ăsta are cele mai moi canapele dintre toate."
+        ]
+      }
+    },
+    "t22pc0101_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trade a Pokémon with a friend and it grows faster than the ones you caught yourself. Curious, isn't it?"
+        ],
+        "text": [
+          "Un Pokémon primit la schimb de la un prieten crește mai repede decât cei prinși de tine. Ciudat, nu?"
+        ]
+      }
+    },
+    "t22pc0101_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon got worn out in the tower. The nurse fixed it right up!"
+        ],
+        "text": [
+          "Pokémonul meu s-a stors de puteri în turn. Asistenta l-a pus imediat pe picioare!"
+        ]
+      }
+    },
+    "t22pc0101_instructor": {
+      "name": {
+        "en": [
+          "Teacher"
+        ],
+        "text": [
+          "Profesoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I teach at the Academy across the way. Come by if you want to learn about status conditions."
+        ],
+        "text": [
+          "Predau la Academia de vizavi. Treci pe la noi dacă vrei să înveți despre stări."
+        ]
+      }
+    },
+    "t22pc0101_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon at full health is no use if it doesn't know a good move. Check your team's moves now and then."
+        ],
+        "text": [
+          "Un Pokémon plin de viață nu-ți folosește dacă nu știe o mișcare bună. Verifică-ți din când în când mișcările echipei."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -637,6 +637,7 @@
   },
   "boxes": {
     "title": "CUTIILE PC-ULUI",
+    "defaultName": "Cutia {number}",
     "party": "ECHIPĂ  {count} / {max}",
     "changeBoxNote": "Stânga și dreapta schimbă cutia.",
     "emptyPlace": "Un loc gol.",
@@ -808,8 +809,8 @@
     "welcome": "BINE AI VENIT ÎN SALA FAIMEI",
     "trainer": "ANTRENOR ORIGINAL",
     "metAlong": "Întâlnit pe drum.",
-    "hatchedAt": "Eclozat în {place}.",
-    "metAt": "Întâlnit în {place}, la Nv. {level}."
+    "hatchedAt": "Eclozat: {place}.",
+    "metAt": "Întâlnit: {place}, la Nv. {level}."
   },
   "creditsRoll": {
     "level": "Nv. {level}",
@@ -2711,6 +2712,10 @@
     "SpringPath": "Cărarea Izvorului", "SnowpointTemple": "Templul Snowpoint", "FightArea": "Zona de Luptă",
     "SurvivalArea": "Zona de Supraviețuire", "ResortArea": "Zona de Odihnă", "StarkMountain": "Muntele Stark",
     "FullmoonIsland": "Insula Lunii Pline", "NewmoonIsland": "Insula Lunii Noi", "FlowerParadise": "Paradisul Florilor",
-    "SeabreakPath": "Cărarea Valurilor", "underground": "Subteranul", "BattleZone": "Ținutul Luptelor"
+    "SeabreakPath": "Cărarea Valurilor", "underground": "Subteranul", "BattleZone": "Ținutul Luptelor",
+    "PalletTown": "Orășelul Pallet", "ViridianCity": "Orașul Viridian", "PewterCity": "Orașul Pewter",
+    "ViridianForest": "Pădurea Viridian", "Route1": "Ruta 1", "Route2": "Ruta 2", "Route3": "Ruta 3", "Route22": "Ruta 22",
+    "NewBarkTown": "Orășelul New Bark", "CherrygroveCity": "Orașul Cherrygrove", "VioletCity": "Orașul Violet",
+    "Route29": "Ruta 29", "Route30": "Ruta 30", "Route31": "Ruta 31", "Route36": "Ruta 36"
   }
 }

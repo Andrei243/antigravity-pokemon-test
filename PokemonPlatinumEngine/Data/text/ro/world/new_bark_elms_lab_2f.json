@@ -1,0 +1,43 @@
+{
+  "people": {
+    "t20r0102_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband's next door, I expect. He spends more nights in that lab than he does here.",
+          "Still, I've never seen anyone so happy at work."
+        ],
+        "text": [
+          "Soțul meu e alături, presupun. Doarme mai multe nopți în laboratorul ăla decât aici.",
+          "Totuși, n-am văzut pe nimeni mai fericit la muncă."
+        ]
+      }
+    },
+    "t20r0102_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I grow up I'm going to be a Pokémon Professor too. But I'll go to bed on time."
+        ],
+        "text": [
+          "Când o să fiu mare, o să mă fac și eu Profesor Pokémon. Dar o să mă culc la timp."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

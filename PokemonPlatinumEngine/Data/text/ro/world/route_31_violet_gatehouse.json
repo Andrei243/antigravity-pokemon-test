@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r31r0101_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          "Polițistul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Violet City is just beyond this gate. Welcome, and mind the lanterns!"
+        ],
+        "text": [
+          "Orașul Violet e chiar după poarta asta. Bine ai venit, și ai grijă la felinare!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

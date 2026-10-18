@@ -1,0 +1,158 @@
+{
+  "people": {
+    "tutorial_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hmph! The road north is no place for a youngster without a Pokémon of their own.",
+          "Come back when you've got one, and maybe I'll show you a thing or two."
+        ],
+        "text": [
+          "Hm! Drumul spre nord nu e loc pentru cine n-are un Pokémon al său.",
+          "Revino când ai unul și poate o să-ți arăt câte ceva."
+        ]
+      }
+    },
+    "viridian_old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym's Leader hasn't been seen in years. Nobody knows where he went.",
+          "The doors have been shut ever since."
+        ],
+        "text": [
+          "Liderul Arenei n-a mai fost văzut de ani buni. Nimeni nu știe unde a plecat.",
+          "De atunci ușile au rămas închise."
+        ]
+      }
+    },
+    "viridian_woman": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandfather is in a terrible mood this morning. He hasn't even had his coffee yet.",
+          "Please don't mind him if he's rude to you."
+        ],
+        "text": [
+          "Bunicul meu e într-o pasă proastă azi-dimineață. Nici nu și-a băut încă cafeaua.",
+          "Te rog, nu-l lua în seamă dacă e nepoliticos cu tine."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Those little trees can be cut down with the right move.",
+          "There's a shortcut behind the one by the pond, if you can get past it!"
+        ],
+        "text": [
+          "Copăceii ăia pot fi doborâți cu mișcarea potrivită.",
+          "În spatele celui de lângă iaz e o scurtătură, dacă reușești să treci de el!"
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Viridian Forest is north of here. It's full of Bug-type Pokémon.",
+          "Bring something that can deal with them!"
+        ],
+        "text": [
+          "Pădurea Viridian e la nord de aici. E plină de Pokémoni de tip Insectă.",
+          "Ia cu tine ceva care să le facă față!"
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm resting my feet. These roads are longer than they look on the map.",
+          "If you're ever after a new move for your Pokémon, I might know one."
+        ],
+        "text": [
+          "Îmi odihnesc picioarele. Drumurile astea sunt mai lungi decât par pe hartă.",
+          "Dacă vreodată cauți o mișcare nouă pentru Pokémonul tău, s-ar putea să știu una."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ViridianCity_EventScript_CitySign": {
+      "en": [
+        "Viridian City\nThe evergreen gateway."
+      ],
+      "text": [
+        "Orașul Viridian\nPoarta mereu verde."
+      ]
+    },
+    "ViridianCity_EventScript_GymSign": {
+      "en": [
+        "Viridian City Pokémon Gym\nThe doors are locked."
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Viridian\nUșile sunt încuiate."
+      ]
+    },
+    "ViridianCity_EventScript_TrainerTips1": {
+      "en": [
+        "TRAINER TIPS\nA Pokémon's moves have only so many uses.\nA Pokémon Center restores them all."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nMișcările unui Pokémon se pot folosi de un număr de ori.\nUn Centru Pokémon le reface pe toate."
+      ]
+    },
+    "ViridianCity_EventScript_TrainerTips2": {
+      "en": [
+        "TRAINER TIPS\nCatch a Pokémon by weakening it first,\nthen throw a Poké Ball."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nCa să prinzi un Pokémon, slăbește-l întâi,\napoi aruncă un Poké Ball."
+      ]
+    }
+  }
+}

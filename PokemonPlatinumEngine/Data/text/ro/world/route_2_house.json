@@ -1,0 +1,43 @@
+{
+  "people": {
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon that knows Cut can clear those small trees outside.",
+          "Mind you, it takes a Badge from Cerulean City before a Pokémon will use it for you."
+        ],
+        "text": [
+          "Un Pokémon care știe Tăiere poate doborî copăceii de afară.",
+          "Numai că îți trebuie o Insignă din Orașul Cerulean ca Pokémonul s-o folosească pentru tine."
+        ]
+      }
+    },
+    "gba_kid": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm looking for an Abra. If you ever catch one, come and show me!"
+        ],
+        "text": [
+          "Caut un Abra. Dacă prinzi vreodată unul, vino să mi-l arăți!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

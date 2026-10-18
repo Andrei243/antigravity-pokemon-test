@@ -1,0 +1,59 @@
+{
+  "people": {
+    "cable_club_receptionist": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "cable_club_receptionist_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    },
+    "cable_club_receptionist_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          "Recepționera"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

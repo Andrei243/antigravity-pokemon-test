@@ -1,0 +1,123 @@
+{
+  "people": {
+    "pewter_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          "Asistenta"
+        ]
+      }
+    },
+    "jigglypuff": {
+      "name": {
+        "en": [
+          "Jigglypuff"
+        ],
+        "text": [
+          "Jigglypuff"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Jigglypuff: Puu, pupuu..."
+        ],
+        "text": [
+          "Jigglypuff: Puu, pupuu..."
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          "Gentlemanul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nothing soothes a weary trainer like Jigglypuff's song. I could listen all day."
+        ],
+        "text": [
+          "Nimic nu alină un antrenor obosit ca cântecul lui Jigglypuff. L-aș asculta toată ziua."
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          "Puștiul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That Jigglypuff sings to everyone who comes in. It's the Center's mascot!"
+        ],
+        "text": [
+          "Jigglypuff-ul ăla le cântă tuturor celor care intră. E mascota Centrului!"
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm waiting for my Pokémon. The nurse is very good, isn't she?"
+        ],
+        "text": [
+          "Îmi aștept Pokémonii. Asistenta e foarte pricepută, nu?"
+        ]
+      }
+    },
+    "gba_kid": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm trading with my friend over the link cable. Well, I would be if it worked."
+        ],
+        "text": [
+          "Fac schimb cu un prieten prin cablul de legătură. Adică aș face, dacă ar merge."
+        ]
+      }
+    },
+    "gba_kid_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The link is closed today. Maybe next time!"
+        ],
+        "text": [
+          "Legătura e închisă azi. Poate data viitoare!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

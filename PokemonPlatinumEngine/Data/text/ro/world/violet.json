@@ -1,0 +1,168 @@
+{
+  "people": {
+    "t22_gsgirl3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym's Leader flies with bird Pokémon. My big brother says they're impossible to hit!"
+        ],
+        "text": [
+          "Liderul Arenei zboară cu Pokémoni pasăre. Fratele meu mai mare zice că e imposibil să-i nimerești!"
+        ]
+      }
+    },
+    "t22_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon Academy teaches trainers everything from type matchups to status conditions.",
+          "Even old hands like me drop in for a lesson now and then."
+        ],
+        "text": [
+          "La Academia Pokémon, antrenorii învață totul, de la tipuri până la stări.",
+          "Chiar și veterani ca mine mai trec din când în când pe la câte o lecție."
+        ]
+      }
+    },
+    "t22_gsbigman": {
+      "name": {
+        "en": [
+          "Fat Man"
+        ],
+        "text": [
+          "Bărbatul solid"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym's Leader is out today, so the door's shut. He'll be back once the tower's monks are done with him."
+        ],
+        "text": [
+          "Liderul Arenei e plecat azi, așa că ușa e închisă. Se întoarce după ce termină călugării din turn cu el."
+        ]
+      }
+    },
+    "t22_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sprout Tower has stood in its pond for longer than anyone can remember.",
+          "They say the pillar in its middle sways with the wind, and that's why it's never fallen down."
+        ],
+        "text": [
+          "Turnul Lăstarilor stă în iazul lui de când nu mai ține nimeni minte.",
+          "Se spune că stâlpul din mijlocul lui se leagănă în vânt, și de-asta n-a căzut niciodată."
+        ]
+      }
+    },
+    "t22_gsboy2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road west goes on to Route 36. There's a funny tree that won't let anyone past, I heard."
+        ],
+        "text": [
+          "Drumul spre vest duce la Ruta 36. Am auzit că acolo e un copac ciudat care nu lasă pe nimeni să treacă."
+        ]
+      }
+    },
+    "t22_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          "Femeia"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Violet is the oldest town in Johto. Every street has a lantern older than my grandmother."
+        ],
+        "text": [
+          "Violet e cel mai vechi oraș din Johto. Pe fiecare stradă e un felinar mai bătrân decât bunica mea."
+        ]
+      }
+    },
+    "t22_gsbabyboy1": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          "Băiețelul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I counted the lanterns! There's lots. More than ten!"
+        ],
+        "text": [
+          "Am numărat felinarele! Sunt o mulțime. Mai mult de zece!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T22_008+1": {
+      "en": [
+        "Violet City\nThe old town of tall towers and quiet lanterns."
+      ],
+      "text": [
+        "Orașul Violet\nOrașul vechi cu turnuri înalte și felinare liniștite."
+      ]
+    },
+    "T22_007+1": {
+      "en": [
+        "Pokémon Academy\nLessons for every trainer."
+      ],
+      "text": [
+        "Academia Pokémon\nLecții pentru orice antrenor."
+      ]
+    },
+    "T22_009+1": {
+      "en": [
+        "Violet City Pokémon Gym\nLeader: Falkner\nThe master of the sky"
+      ],
+      "text": [
+        "Arena Pokémon din Orașul Violet\nLider: Falkner\nStăpânul cerului"
+      ]
+    },
+    "T22_010+1": {
+      "en": [
+        "Sprout Tower\nA place of training for trainers and their Pokémon."
+      ],
+      "text": [
+        "Turnul Lăstarilor\nLoc de antrenament pentru antrenori și Pokémonii lor."
+      ]
+    }
+  }
+}

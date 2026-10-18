@@ -77,7 +77,17 @@ public sealed class PcBoxes
     }
 
     // Box n is called "Box n" and has wallpaper n, the sixteen round again for those after them
-    private static Box Fresh(int i) => new() { Name = $"Box {i + 1}", Wallpaper = i % OwnWallpapers };
+    private static Box Fresh(int i) => new() { Name = DefaultName(i), Wallpaper = i % OwnWallpapers };
+
+    /// <summary>The name a box is given and saved under until the player names it: "Box 1" whatever the language.</summary>
+    public static string DefaultName(int index) => $"Box {index + 1}";
+
+    /// <summary>
+    /// The name of box <paramref name="index"/> as it is shown (plan 17 · N6c): a name the player never changed is the
+    /// language's own ("Cutia 3", <c>boxes.defaultName</c>), a name given is shown as it was typed. The save keeps "Box 3".
+    /// </summary>
+    public string ShownName(int index) =>
+        boxes[index].Name == DefaultName(index) ? Core.Text.Of("boxes.defaultName", ("number", index + 1)) : boxes[index].Name;
 
     /// <summary>
     /// Gives the PC the boxes that go with the National Pokédex. The boxes it has keep their names, their wallpapers

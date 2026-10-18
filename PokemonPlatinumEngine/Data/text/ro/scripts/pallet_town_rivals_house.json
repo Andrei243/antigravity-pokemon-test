@@ -1,0 +1,36 @@
+{
+  "Daisy": [
+    {
+      "en": [
+        "Hi, {player}! Grandpa asked you to help with his Pokédex? He asked my brother too."
+      ],
+      "text": [
+        "Bună, {player}! Bunicul te-a rugat să-l ajuți cu Pokédexul? L-a rugat și pe fratele meu."
+      ]
+    },
+    {
+      "en": [
+        "You'll be travelling all over Kanto, then. Here, this will help you find your way."
+      ],
+      "text": [
+        "Atunci o să umbli prin tot Kanto-ul. Poftim, asta te ajută să-ți găsești drumul."
+      ]
+    },
+    {
+      "en": [
+        "Don't tell my brother I gave you that. He wanted it all to himself."
+      ],
+      "text": [
+        "Nu-i spune fratelui meu că ți-am dat-o. O voia numai pentru el."
+      ]
+    },
+    {
+      "en": [
+        "Keep an eye on my little brother out there for me, would you? He's not as tough as he thinks."
+      ],
+      "text": [
+        "Ai grijă de frățiorul meu pe-acolo, da? Nu e chiar atât de tare pe cât se crede."
+      ]
+    }
+  ]
+}

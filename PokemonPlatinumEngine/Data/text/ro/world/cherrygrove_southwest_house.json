@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t21r0301_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came to Cherrygrove to fish and never left. The sea here is full of surprises."
+        ],
+        "text": [
+          "Am venit în Cherrygrove la pescuit și n-am mai plecat. Marea de aici e plină de surprize."
+        ]
+      }
+    },
+    "t21r0301_gsbabyboy1": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          "Băiețelul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Daddy caught a big fish! It was this big! No, bigger!"
+        ],
+        "text": [
+          "Tati a prins un pește mare! Era atââât de mare! Nu, și mai mare!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

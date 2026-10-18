@@ -26,8 +26,12 @@ public static class TextSources
     {
         var lines = new SortedSet<string>(StringComparer.Ordinal);
         foreach (var professor in RegionDatabase.All.Select(r => r.Professor).Where(p => p != null))
+        {
+            // The professor's name is the speaker's pill over every line of the introduction (IntroScreen.Professor)
+            if (professor!.Name is { Length: > 0 } name) lines.Add(name);
             foreach (var property in typeof(RegionIntroLines).GetProperties())
                 if (property.GetValue(professor!.Lines) is string { Length: > 0 } line) lines.Add(line);
+        }
         foreach (var (_, set) in TrainerLines.All)
             foreach (var cue in Enum.GetValues<Battle.Sim.TrainerCue>())
                 if (set.For(cue)?.Text is { Length: > 0 } line) lines.Add(line);

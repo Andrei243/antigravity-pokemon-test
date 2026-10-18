@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t22r0601_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My boy wants a Pokémon that's tough as rock. I keep telling him to go and catch one himself."
+        ],
+        "text": [
+          "Băiatul meu vrea un Pokémon tare ca piatra. Tot îi spun să se ducă să-și prindă singur unul."
+        ]
+      }
+    },
+    "t22r0601_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Someday I'll have an Onix as long as Sprout Tower is tall!"
+        ],
+        "text": [
+          "Într-o zi o să am un Onix lung cât e de înalt Turnul Lăstarilor!"
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,150 @@
+{
+  "people": {
+    "t22r0301_gsbigman": {
+      "name": {
+        "en": [
+          "Teacher"
+        ],
+        "text": [
+          "Profesoara"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Academy! Today's lesson: a Pokémon that is poisoned keeps losing HP, even after the battle.",
+          "Carry an Antidote, and you'll never be caught out."
+        ],
+        "text": [
+          "Bine ai venit la Academie! Lecția de azi: un Pokémon otrăvit pierde mereu HP, chiar și după luptă.",
+          "Ține la tine un Antidot, și nicio otravă n-o să te ia prin surprindere."
+        ]
+      }
+    },
+    "t22r0301_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm copying the notes off the board. Fire beats Grass, Water beats Fire, Grass beats Water..."
+        ],
+        "text": [
+          "Copiez notițele de pe tablă. Focul bate Iarba, Apa bate Focul, Iarba bate Apa..."
+        ]
+      }
+    },
+    "t22r0301_gsboy1_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A sleeping Pokémon can't do anything. So I'm going to catch them all while they nap!"
+        ],
+        "text": [
+          "Un Pokémon adormit nu poate face nimic. Așa că o să-i prind pe toți cât trag un pui de somn!"
+        ]
+      }
+    },
+    "t22r0301_gsdsboy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Shh! I'm reading about Pokémon that only come out at night."
+        ],
+        "text": [
+          "Șșș! Citesc despre Pokémonii care ies doar noaptea."
+        ]
+      }
+    },
+    "t22r0301_gsdsboy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "He's not reading, he's playing a game. I can see the screen."
+        ],
+        "text": [
+          "Nu citește, se joacă. Îi văd ecranul."
+        ]
+      }
+    },
+    "t22r0301_gsman2": {
+      "name": {
+        "en": [
+          "Student"
+        ],
+        "text": [
+          "Elevul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm the oldest pupil here. It's never too late to learn something about Pokémon!"
+        ],
+        "text": [
+          "Sunt cel mai bătrân elev de aici. Niciodată nu e prea târziu să înveți ceva despre Pokémoni!"
+        ]
+      }
+    },
+    "t22r0301_gsgirl2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Paralysis makes a Pokémon slow, and sometimes it can't move at all. Did I get that right?"
+        ],
+        "text": [
+          "Paralizia face un Pokémon lent, și uneori nu se poate mișca deloc. Am zis bine?"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T22R0301_001+1": {
+      "en": [
+        "The blackboard: STATUS CONDITIONS\nPoison, Paralysis, Sleep, Burn, Freeze."
+      ],
+      "text": [
+        "Pe tablă: STĂRI\nOtrăvire, Paralizie, Somn, Arsură, Îngheț."
+      ]
+    },
+    "T22R0301_002+1": {
+      "en": [
+        "A notebook, open at a page about type matchups. The handwriting is very neat."
+      ],
+      "text": [
+        "Un caiet, deschis la o pagină despre tipuri. Scrisul e foarte îngrijit."
+      ]
+    }
+  }
+}

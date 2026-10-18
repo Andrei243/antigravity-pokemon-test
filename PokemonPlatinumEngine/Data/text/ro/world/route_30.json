@@ -1,0 +1,170 @@
+{
+  "people": {
+    "r30_gsboy3": {
+      "name": {
+        "en": [
+          "Don"
+        ],
+        "text": [
+          "Don"
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Don: I've been catching bugs since sunrise! Let's see what yours can do!"
+        ],
+        "text": [
+          "Vânător de insecte Don: Prind insecte de la răsăritul soarelui! Să vedem ce pot Pokémonii tăi!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Don: Beaten by a newcomer... I'll go back to catching."
+        ],
+        "text": [
+          "Vânător de insecte Don: Să pierd în fața cuiva abia pornit la drum... Mă întorc la prins insecte."
+        ]
+      }
+    },
+    "r30_gsboy2": {
+      "name": {
+        "en": [
+          "Joey"
+        ],
+        "text": [
+          "Joey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Joey: My Rattata is in the top bit of all Rattata. Want to see?"
+        ],
+        "text": [
+          "Puști Joey: Rattata-ul meu e printre cei mai buni Rattata din lume. Vrei să vezi?"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Joey: Huh. It's still the top bit. Just maybe not the very top."
+        ],
+        "text": [
+          "Puști Joey: Hm. Tot printre cei mai buni e. Poate doar nu chiar cel mai bun."
+        ]
+      }
+    },
+    "r30_gsboy2_2": {
+      "name": {
+        "en": [
+          "Mikey"
+        ],
+        "text": [
+          "Mikey"
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Mikey: You're a trainer, right? Then we have to battle. That's the rule!"
+        ],
+        "text": [
+          "Puști Mikey: Ai Pokémoni, nu? Atunci trebuie să ne luptăm. Asta e regula!"
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Mikey: The rule is no fun when you lose."
+        ],
+        "text": [
+          "Puști Mikey: Regula nu mai e distractivă când pierzi."
+        ]
+      }
+    },
+    "r30_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trainers on this road will battle you the moment they catch your eye. Keep your team healthy."
+        ],
+        "text": [
+          "Antrenorii de pe drumul ăsta te provoacă la luptă de cum îi privești în ochi. Ține-ți echipa sănătoasă."
+        ]
+      }
+    },
+    "r30_gsgirl2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mr. Pokémon lives in the house at the top of the road. He collects all sorts of odd things."
+        ],
+        "text": [
+          "Domnul Pokémon locuiește în casa din capătul drumului. Adună tot felul de lucruri ciudate."
+        ]
+      }
+    },
+    "r30_gsboy3_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon you meet on this road are a little stronger than on Route 29. Be careful!"
+        ],
+        "text": [
+          "Pokémonii de pe drumul ăsta sunt ceva mai puternici decât cei de pe Ruta 29. Ai grijă!"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R30_005+1": {
+      "en": [
+        "Route 30\nViolet City - Cherrygrove City"
+      ],
+      "text": [
+        "Ruta 30\nOrașul Violet - Orașul Cherrygrove"
+      ]
+    },
+    "R30_006+1": {
+      "en": [
+        "Route 30\nViolet City - Cherrygrove City"
+      ],
+      "text": [
+        "Ruta 30\nOrașul Violet - Orașul Cherrygrove"
+      ]
+    },
+    "R30_007+1": {
+      "en": [
+        "TRAINER TIPS\nWhen two trainers' eyes meet, a battle begins. A trainer won't battle again once beaten."
+      ],
+      "text": [
+        "SFATURI PENTRU ANTRENORI\nCând se întâlnesc privirile a doi antrenori, începe o luptă. Un antrenor învins nu se mai luptă."
+      ]
+    },
+    "R30_008+1": {
+      "en": [
+        "Mr. Pokémon's House\nVisitors welcome."
+      ],
+      "text": [
+        "Casa Domnului Pokémon\nVizitatorii sunt bineveniți."
+      ]
+    }
+  }
+}

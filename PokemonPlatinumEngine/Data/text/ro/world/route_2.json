@@ -1,0 +1,21 @@
+{
+  "people": {},
+  "signs": {
+    "Route2_EventScript_RouteSign": {
+      "en": [
+        "Route 2\nViridian City - Pewter City"
+      ],
+      "text": [
+        "Ruta 2\nOrașul Viridian - Orașul Pewter"
+      ]
+    },
+    "Route2_EventScript_DiglettsCaveSign": {
+      "en": [
+        "Diglett's Cave"
+      ],
+      "text": [
+        "Peștera lui Diglett"
+      ]
+    }
+  }
+}

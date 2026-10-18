@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t21r0501_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          "Băiatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My sister and I are going to be trainers when we're older. She says she'll be the better one."
+        ],
+        "text": [
+          "Eu și sora mea o să ne facem antrenori când o să fim mari. Ea zice că o să fie cea mai bună."
+        ]
+      }
+    },
+    "t21r0501_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I will be the better one. I've already picked out which Pokémon I'm going to get."
+        ],
+        "text": [
+          "Chiar o să fiu cea mai bună. Mi-am ales deja Pokémonul pe care o să-l iau."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

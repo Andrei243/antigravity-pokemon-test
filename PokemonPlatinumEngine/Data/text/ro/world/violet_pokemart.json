@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t22fs0101_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "t22fs0101_shopm1_2_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          "Vânzătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          "Bine ai venit! Cu ce te pot ajuta?"
+        ]
+      }
+    },
+    "t22fs0101_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          "Bătrâna"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When your Pokémon's moves run out of PP, an Ether brings them back. They're dear, but worth it."
+        ],
+        "text": [
+          "Când mișcările Pokémonului rămân fără PP, un Eter le reface. E scump, dar merită."
+        ]
+      }
+    },
+    "t22fs0101_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Escape Ropes get you out of a cave in a heartbeat. Handy in the Dark Cave, if you go."
+        ],
+        "text": [
+          "O Frânghie te scoate dintr-o peșteră cât ai clipi. Utilă în Peștera Întunecată, dacă ajungi acolo."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

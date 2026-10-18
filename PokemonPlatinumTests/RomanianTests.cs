@@ -82,9 +82,12 @@ public class RomanianTests
     }
 
     [Fact]
-    public void EveryPlaceRomanianNamesIsAnAreaOfSinnohAndShowsOnItsSign()
+    public void EveryPlaceRomanianNamesIsAnAreaOfARegionAndShowsOnItsSign()
     {
-        var areas = Directory.GetFiles(Path.Combine(Repository.Root, "PokemonPlatinumEngine", "Data", "world", "sinnoh", "areas"), "*.json")
+        // Every region's areas (plan 17 · N6c: Kanto's and Johto's places are named too)
+        var areas = Directory.GetDirectories(Path.Combine(Repository.Root, "PokemonPlatinumEngine", "Data", "world"))
+            .Select(region => Path.Combine(region, "areas")).Where(Directory.Exists)
+            .SelectMany(folder => Directory.GetFiles(folder, "*.json"))
             .Select(f => JsonDocument.Parse(File.ReadAllText(f)).RootElement.GetProperty("name").GetString()!)
             .Select(PokemonPlatinumEngine.Models.Trainer.KeyOf).ToHashSet(StringComparer.Ordinal);
         var named = Text.KeysOf(Romanian).Where(k => k.StartsWith("places.", StringComparison.Ordinal)).Select(k => k["places.".Length..]).ToList();
@@ -99,6 +102,44 @@ public class RomanianTests
             Assert.Equal("Ruta 201", LocalNames.PlaceShown(null, "Route 201"));
             Assert.Equal("Liga Pokémon", LocalNames.PlaceShown(null, "Pokémon League"));
             Assert.Equal("Ținutul Luptelor", LocalNames.PlaceShown(null, "Battle Zone"));
+            Assert.Equal("Orășelul Pallet", LocalNames.PlaceShown(null, "Pallet Town"));
+            Assert.Equal("Orașul Violet", LocalNames.PlaceShown(null, "Violet City"));
+        }
+        finally { Text.Use(Text.English); }
+    }
+
+    [Fact]
+    public void TheHallOfFameCardNamesWhereAPokemonWasMetAsTheLanguageNamesThePlace()
+    {
+        // Plan 17 · N6c: the card said "Întâlnit în Route 201", the place a Pokémon keeps being the English identifier
+        var starly = new Pokemon(PokemonDatabase.Get("Starly")!, 57);
+        starly.Met("Route 201", new DateTime(2026, 5, 1));
+        var eevee = new Pokemon(PokemonDatabase.Get("Eevee")!, 20);
+        eevee.Met("Pallet Town", new DateTime(2026, 5, 2));
+        eevee.MetLevel = 0;
+        var scene = new HallOfFameCeremony();
+        scene.Begin(new List<Pokemon> { starly, eevee }, "Ash", 4321, 3600, "PLAYER");
+        Assert.Equal("Met at Route 201, at Lv. 57.", scene.CardOf(starly).Met);
+        try
+        {
+            Text.Use(Romanian);
+            Assert.Equal("Întâlnit: Ruta 201, la Nv. 57.", scene.CardOf(starly).Met);
+            Assert.Equal("Eclozat: Orășelul Pallet.", scene.CardOf(eevee).Met);
+        }
+        finally { Text.Use(Text.English); }
+        Assert.Equal("Hatched at Pallet Town.", scene.CardOf(eevee).Met);
+    }
+
+    [Fact]
+    public void TheProfessorsNameOverTheIntroductionIsTheLanguagesOwn()
+    {
+        // Plan 17 · N6c: "Prof. Rowan" was English's abbreviation over every line of the introduction
+        var intro = new IntroScreen();
+        Assert.Equal("Prof. Rowan", intro.Professor);
+        try
+        {
+            Text.Use(Romanian);
+            Assert.Equal("Profesorul Rowan", intro.Professor);
         }
         finally { Text.Use(Text.English); }
     }
@@ -189,8 +230,10 @@ public class RomanianTests
                 p.Lines.Study, p.Lines.Enough, p.Lines.BoyOrGirl, p.Lines.AskName, p.Lines.NextDoor, p.Lines.NeverStill, p.Lines.FineName,
                 p.Lines.OfCourse, p.Lines.Story, p.Lines.OffYouGo })
             .ToHashSet(StringComparer.Ordinal);
-        // The battle's trainer lines share the table (plan 17 · N6, wave 20)
+        // The battle's trainer lines share the table (plan 17 · N6, wave 20), and so do the professors' names, which
+        // stand over the introduction's lines (plan 17 · N6c)
         lines.UnionWith(TrainerLineTexts());
+        lines.UnionWith(RegionDatabase.All.Select(r => r.Professor?.Name).OfType<string>());
         // Every line of the table is a line a region's file or trainer-lines.json has (a line rewritten in English leaves its entry behind)
         Assert.Empty(table.Keys.Where(k => !lines.Contains(k)).OrderBy(k => k));
         // Every line of Sinnoh's professor is in it, with the placeholders its English has and no character the faces lack

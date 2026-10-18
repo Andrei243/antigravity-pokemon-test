@@ -53,7 +53,7 @@
       ],
       "text": [
         "Fiecare Pokémon pe care-l întâlnești devine parte din povestea ta, iar tu parte din a lui.",
-        "E o aplicație de Pokétch numită Pokémon History. Ține evidența Pokémonilor pe care i-ai prins."
+        "E o aplicație de Pokétch numită Istoric Pokémon. Ține evidența Pokémonilor pe care i-ai prins."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{player}'s Pokétch now has the Pokémon History app!"
       ],
       "text": [
-        "Aplicația Pokémon History a fost adăugată în Pokétch!"
+        "Aplicația Istoric Pokémon a fost adăugată în Pokétch!"
       ]
     },
     {

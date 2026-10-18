@@ -1,0 +1,60 @@
+{
+  "people": {
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My daughter gave our Spearow a nickname. Now it won't answer to anything else!"
+        ],
+        "text": [
+          "Fiica mea i-a dat o poreclă lui Spearow al nostru. Acum nu mai răspunde la nimic altceva!"
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          "Fetița"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Spearow is called Speary. Isn't that a good name?"
+        ],
+        "text": [
+          "Spearow-ul meu se cheamă Speary. Nu-i așa că e un nume bun?"
+        ]
+      }
+    },
+    "spearow": {
+      "name": {
+        "en": [
+          "Speary"
+        ],
+        "text": [
+          "Speary"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ViridianCity_House_EventScript_NicknameSign": {
+      "en": [
+        "A note on the wall:\n\"A good nickname makes a Pokémon your own.\""
+      ],
+      "text": [
+        "Un bilet pe perete:\n„O poreclă bună face un Pokémon al tău.”"
+      ]
+    }
+  }
+}

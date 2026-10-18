@@ -1,0 +1,42 @@
+{
+  "people": {
+    "daisy": {
+      "name": {
+        "en": [
+          "Daisy"
+        ],
+        "text": [
+          "Daisy"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hi there! My brother's out somewhere, as usual.",
+          "He's talked about nothing but Pokémon since Grandpa came home."
+        ],
+        "text": [
+          "Bună! Fratele meu e plecat pe undeva, ca de obicei.",
+          "Nu vorbește decât despre Pokémoni de când s-a întors bunicul acasă."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PalletTown_RivalsHouse_EventScript_Bookshelf": {
+      "en": [
+        "The shelves are full of books about Pokémon."
+      ],
+      "text": [
+        "Rafturile sunt pline de cărți despre Pokémoni."
+      ]
+    },
+    "PalletTown_RivalsHouse_EventScript_Picture": {
+      "en": [
+        "A painting of a Pokémon in a field of flowers."
+      ],
+      "text": [
+        "Un tablou cu un Pokémon într-un câmp cu flori."
+      ]
+    }
+  }
+}

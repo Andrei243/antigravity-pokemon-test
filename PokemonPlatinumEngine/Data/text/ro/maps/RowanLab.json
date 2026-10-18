@@ -14,7 +14,7 @@
           "Prof. Rowan"
         ],
         "text": [
-          "Prof. Rowan"
+          "Profesorul Rowan"
         ]
       },
       "dialog": {
@@ -24,9 +24,9 @@
           "Prof. Rowan: Explore Sinnoh, complete the Pokédex, and unravel the secrets of the Distortion World!"
         ],
         "text": [
-          "Prof. Rowan: A, {player}! Bine ai venit la centrul meu de cercetare.",
-          "Prof. Rowan: Legătura dintre antrenori și Pokémoni e cu adevărat fără margini.",
-          "Prof. Rowan: Explorează Sinnoh-ul, completează Pokédexul și dezleagă tainele Lumii Distorsionate!"
+          "Profesorul Rowan: A, {player}! Bine ai venit la centrul meu de cercetare.",
+          "Profesorul Rowan: Legătura dintre antrenori și Pokémoni e cu adevărat fără margini.",
+          "Profesorul Rowan: Explorează Sinnoh-ul, completează Pokédexul și dezleagă tainele Lumii Distorsionate!"
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Prof. Oak"
         ],
         "text": [
-          "Prof. Oak"
+          "Profesorul Oak"
         ]
       },
       "dialog": {
@@ -74,7 +74,7 @@
           "Prof. Oak: Well, I must be going!"
         ],
         "text": [
-          "Prof. Oak: Ei, eu trebuie să plec!"
+          "Profesorul Oak: Ei, eu trebuie să plec!"
         ]
       }
     }

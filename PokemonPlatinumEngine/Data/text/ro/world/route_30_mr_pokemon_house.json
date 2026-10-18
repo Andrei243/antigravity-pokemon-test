@@ -1,0 +1,25 @@
+{
+  "people": {
+    "r30r0201_gsgentleman": {
+      "name": {
+        "en": [
+          "Mr. Pokémon"
+        ],
+        "text": [
+          "Domnul Pokémon"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hello, hello! Have a look round. Everything in here came from my travels.",
+          "That coin over there is from a country so far away I've forgotten its name."
+        ],
+        "text": [
+          "Bună, bună! Uită-te în voie. Tot ce e aici l-am adus din călătoriile mele.",
+          "Moneda aia de acolo e dintr-o țară atât de îndepărtată, că i-am uitat numele."
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

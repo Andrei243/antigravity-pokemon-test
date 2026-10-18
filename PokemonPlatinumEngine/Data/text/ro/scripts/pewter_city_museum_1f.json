@@ -1,0 +1,54 @@
+{
+  "Ticket": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        "Recepționera"
+      ]
+    },
+    {
+      "en": [
+        "Welcome! A child's ticket is 50. Would you like to come in?"
+      ],
+      "text": [
+        "Bine ai venit! Biletul pentru copii costă 50. Vrei să intri?"
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Please enjoy the exhibits."
+      ],
+      "text": [
+        "Mulțumesc! Vizită plăcută!"
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, you don't have enough money. Please come back another time."
+      ],
+      "text": [
+        "Vai, nu ai destui bani. Te rog, mai vino altă dată."
+      ]
+    },
+    {
+      "en": [
+        "Do come again!"
+      ],
+      "text": [
+        "Să mai treci pe la noi!"
+      ]
+    }
+  ],
+  "Receptionist": [
+    {
+      "en": [
+        "Amber is sap from ancient trees that hardened over time. Sometimes something is caught inside it."
+      ],
+      "text": [
+        "Chihlimbarul e seva unor copaci străvechi, întărită cu timpul. Uneori rămâne ceva prins înăuntru."
+      ]
+    }
+  ]
+}

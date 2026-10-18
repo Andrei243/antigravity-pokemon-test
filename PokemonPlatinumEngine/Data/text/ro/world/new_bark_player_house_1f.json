@@ -1,0 +1,58 @@
+{
+  "people": {
+    "t20r0201_gsmama": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          "Mama"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Back already? You look tired out. Sit down for a minute.",
+          "There, all better. Take care of each other out there, won't you?"
+        ],
+        "text": [
+          "Te-ai și întors? Se vede pe tine oboseala. Stai jos un minut.",
+          "Gata, acum e mai bine. Aveți grijă unul de altul pe drum, da?"
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T20R0201_002+1": {
+      "en": [
+        "There's a cooking programme on.\nSomeone is folding a very large omelette."
+      ],
+      "text": [
+        "E o emisiune de gătit.\nCineva împăturește o omletă uriașă."
+      ]
+    },
+    "T20R0201_004+1": {
+      "en": [
+        "The sink is spotless. Mom must have just washed up."
+      ],
+      "text": [
+        "Chiuveta strălucește. Sigur mama tocmai a spălat vasele."
+      ]
+    },
+    "T20R0201_003+1": {
+      "en": [
+        "The draining board. A stack of plates is drying."
+      ],
+      "text": [
+        "Uscătorul de vase. Un teanc de farfurii se usucă."
+      ]
+    },
+    "T20R0201_005+1": {
+      "en": [
+        "The fridge is full of good things to eat."
+      ],
+      "text": [
+        "Frigiderul e plin de bunătăți."
+      ]
+    }
+  }
+}

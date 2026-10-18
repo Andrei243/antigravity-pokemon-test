@@ -1,0 +1,112 @@
+{
+  "people": {
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          "Cercetătorul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Up here we show what fell from space. The Moon Stone came from Mt. Moon, east of here."
+        ],
+        "text": [
+          "Aici sus arătăm ce a căzut din spațiu. Piatra Lunii vine de pe Muntele Lunii, de la est."
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That space shuttle took people all the way to the moon and back."
+        ],
+        "text": [
+          "Naveta aceea spațială a dus oameni până pe lună și înapoi."
+        ]
+      }
+    },
+    "old_man_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          "Bătrânul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I was young, nobody thought we'd ever leave the sky. Now look!"
+        ],
+        "text": [
+          "Când eram tânăr, nimeni nu credea că o să trecem vreodată dincolo de cer. Și acum, uite!"
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          "Fata"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Daddy, can Pokémon go to space too?"
+        ],
+        "text": [
+          "Tati, și Pokémonii pot merge în spațiu?"
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          "Bărbatul"
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Of course they can, sweetheart. Some of them came from there in the first place."
+        ],
+        "text": [
+          "Sigur că pot, scumpo. Unii chiar de acolo au venit."
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PewterCity_Museum_2F_EventScript_MoonStone": {
+      "en": [
+        "A stone that fell from the sky.\nIt's called the Moon Stone."
+      ],
+      "text": [
+        "O piatră căzută din cer.\nSe numește Piatra Lunii."
+      ]
+    },
+    "PewterCity_Museum_2F_EventScript_SpaceShuttle": {
+      "en": [
+        "A model of a space shuttle."
+      ],
+      "text": [
+        "Machetă a unei navete spațiale."
+      ]
+    }
+  }
+}

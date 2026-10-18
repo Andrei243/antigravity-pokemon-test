@@ -1,0 +1,46 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        "Vânzătorul"
+      ]
+    },
+    {
+      "en": [
+        "Oh! You're from Pallet Town, aren't you? Then you know Professor Oak!"
+      ],
+      "text": [
+        "O! Tu ești din Orășelul Pallet, nu? Atunci îl știi pe Profesorul Oak!"
+      ]
+    },
+    {
+      "en": [
+        "His order came in this morning. Would you be a dear and take it to him for me?"
+      ],
+      "text": [
+        "Comanda lui a sosit azi-dimineață. Mi-ai face un bine să i-o duci tu?"
+      ]
+    },
+    {
+      "en": [
+        "Thank you ever so much! Give him my regards."
+      ],
+      "text": [
+        "Mulțumesc din suflet! Transmite-i salutări din partea mea."
+      ]
+    }
+  ],
+  "MartClerk": [
+    {
+      "en": [
+        "Professor Oak's waiting on that parcel. Off you go, quick as you can!"
+      ],
+      "text": [
+        "Profesorul Oak așteaptă coletul ăla. Hai, cât poți de repede!"
+      ]
+    }
+  ]
+}
