@@ -46,6 +46,21 @@ public static partial class WorldModels
         Ground("kk_bridge", "a bridge over Sprout Tower's pond: its own ground draws it"),
         Door("kk_door1"), Door("kk_door2"), Door("kk_door3"), Door("gym_door"),
 
+        // ---------------------------------------------------------------- the Ruins of Alph (ar_), in view from Violet City's west
+        // edge; they open with Chapter 1's chambers, plan 20 · J4
+        Built("ar_center", BuildingKind.Lab, "the research centre at the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_study", BuildingKind.Lab, "the scientists' hut at the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_shrine1", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_shrine1_2", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_shrine1_3", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_shrine1_4", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_shrine1_5", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_shrine1_6", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_shrine1_7", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_shrine2", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Built("ar_shrine3", BuildingKind.Shrine, "a chamber of the Ruins of Alph", until: "plan 20 · J4 (the Ruins of Alph)"),
+        Door("ar_study_door"),
+
         // ---------------------------------------------------------------- the signs every town and route has: the tile draws its signpost
         Ground("board_a", "a small signpost: the sign event's tile draws it"),
         Ground("board_b", "a signpost: the sign event's tile draws it"),
@@ -56,6 +71,8 @@ public static partial class WorldModels
         // ---------------------------------------------------------------- rooms (bm_room.narc): furniture
         Furniture("table02_2", PropType.Table, "a table"),
         Furniture("table_pc01", PropType.Table, "a table in a Pokémon Center's or a Mart's corner"),
+        Furniture("table01_3", PropType.Table, "a long desk of the Pokémon Academy"),
+        Ground("book02", "a book open on a desk"),
         Furniture("table_l01", PropType.LabDesk, "a desk"),
         Furniture("chair01", PropType.Chair, "a chair"),
         Furniture("chair02", PropType.Chair, "a chair"),

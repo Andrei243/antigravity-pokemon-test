@@ -19,14 +19,14 @@ partial class Harness
             + $"in {game.Map.AreaAt(game.Player.GridX, game.Player.GridY)?.DisplayName ?? "nowhere"}, with {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level}"))}");
         Shot("jw00_new_game");
 
-        string[] areas = { "new_bark", "route_29", "cherrygrove", "route_30", "route_31" };
+        string[] areas = { "new_bark", "route_29", "cherrygrove", "route_30", "route_31", "violet" };
         void Areas(string time)
         {
             for (int i = 0; i < areas.Length; i++)
             {
                 var (map, x, y) = AreaSpot(areas[i]);
                 At(map.Name, x, y, Direction.Up); Frames(2);
-                Shot($"jw{2 * i + (time == "night" ? 2 : 1):00}_{areas[i]}_{time}");
+                Shot($"jw{(i < 5 ? 2 * i + (time == "night" ? 2 : 1) : 13 + (time == "night" ? 1 : 0)):00}_{areas[i]}_{time}");
                 if (time == "day") Console.WriteLine($"{areas[i]}: {map.Name} ({x}, {y}), {map.DisplayNameAt(x, y)}, music {map.BgmTrackAt(x, y)}");
             }
         }
@@ -41,7 +41,8 @@ partial class Harness
             "new_bark_elms_lab_1f", "new_bark_elms_lab_2f", "new_bark_southwest_house", "route_29_route_46_gatehouse",
             "cherrygrove_pokecenter_1f", "cherrygrove_pokecenter_b1f", "cherrygrove_pokemart", "cherrygrove_guide_gent_house",
             "cherrygrove_southwest_house", "cherrygrove_southeast_house", "route_30_apricorn_house", "route_30_mr_pokemon_house",
-            "route_31_violet_gatehouse"
+            "route_31_violet_gatehouse", "violet_pokecenter_1f", "violet_pokecenter_b1f", "violet_pokemart", "violet_pokemon_school",
+            "violet_northwest_house", "violet_bellsprout_onyx_trade_house", "violet_route_36_gatehouse"
         };
         for (int i = 0; i < rooms.Length; i++)
         {

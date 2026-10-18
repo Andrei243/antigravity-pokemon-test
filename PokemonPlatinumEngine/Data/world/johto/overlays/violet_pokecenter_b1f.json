@@ -1,0 +1,20 @@
+{
+  // The floor below Violet City's Pokémon Center (plan 20 · J2): the wireless link is down, as in every Center
+  // (decision 06 · 7)
+  "area": "violet_pokecenter_b1f",
+  "bgmTrack": "johto/violet",
+  "people": {
+    "t22pc0102_wifisf": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t22pc0102_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "t22pc0102_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    }
+  }
+}

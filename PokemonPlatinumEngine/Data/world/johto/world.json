@@ -28,7 +28,15 @@
     // Routes 30 and 31: the Apricorn man's house, Mr. Pokémon's, and the gate house to Violet City
     { "name": "Route30_ApricornHouse", "matrix": 66, "area": "route_30_apricorn_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Route30_MrPokemonsHouse", "matrix": 103, "area": "route_30_mr_pokemon_house", "trees": "Round", "setting": "Indoors" },
-    { "name": "Route31_VioletGate", "matrix": 70, "area": "route_31_violet_gatehouse", "trees": "Round", "setting": "Indoors" }
+    { "name": "Route31_VioletGate", "matrix": 70, "area": "route_31_violet_gatehouse", "trees": "Round", "setting": "Indoors" },
+    // Violet City's rooms (its Gym and Sprout Tower open with plan 20 · J4 and J5)
+    { "name": "Violet_PokemonCenter_1F", "matrix": 73, "area": "violet_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Violet_PokemonCenter_B1F", "matrix": 77, "area": "violet_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Violet_Mart", "matrix": 104, "area": "violet_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Violet_PokemonSchool", "matrix": 102, "area": "violet_pokemon_school", "trees": "Round", "setting": "Indoors" },
+    { "name": "Violet_NorthwestHouse", "matrix": 95, "area": "violet_northwest_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Violet_TradeHouse", "matrix": 95, "area": "violet_bellsprout_onyx_trade_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Violet_Route36Gate", "matrix": 70, "area": "violet_route_36_gatehouse", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -38,6 +46,9 @@
     "route_29_route_46_gatehouse",
     "cherrygrove_pokecenter_1f", "cherrygrove_pokecenter_b1f", "cherrygrove_pokemart", "cherrygrove_guide_gent_house",
     "cherrygrove_southwest_house", "cherrygrove_southeast_house",
-    "route_30_apricorn_house", "route_30_mr_pokemon_house", "route_31_violet_gatehouse"
+    "route_30_apricorn_house", "route_30_mr_pokemon_house", "route_31_violet_gatehouse",
+    // and Violet City, with its rooms but its Gym
+    "violet", "violet_pokecenter_1f", "violet_pokecenter_b1f", "violet_pokemart", "violet_pokemon_school",
+    "violet_northwest_house", "violet_bellsprout_onyx_trade_house", "violet_route_36_gatehouse"
   ]
 }

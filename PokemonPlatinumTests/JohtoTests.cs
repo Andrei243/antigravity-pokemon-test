@@ -22,15 +22,15 @@ public class JohtoTests
     private static Map Overworld => BuiltMaps.Value["Johto"];
     private static Map MapNamed(string name) => BuiltMaps.Value.TryGetValue(name, out var map) ? map : MapDatabase.Get(name);
 
-    private static readonly string[] FirstAreas = { "new_bark", "route_29", "cherrygrove", "route_30", "route_31" };
+    private static readonly string[] FirstAreas = { "new_bark", "route_29", "cherrygrove", "route_30", "route_31", "violet" };
 
     [Fact]
-    public void TheIndexOpensNewBarkTownToRouteThirtyOneWithTheirRooms()
+    public void TheIndexOpensNewBarkTownToVioletCityWithTheirRooms()
     {
         Assert.Equal("Johto", Johto.Index.Region);
         Assert.False(Johto.Index.BuildingsAtDoors);
         foreach (string key in FirstAreas) Assert.Contains(key, Johto.Index.Areas);
-        Assert.True(Johto.Index.Areas.Count >= 22, $"only {Johto.Index.Areas.Count} areas open in Johto");
+        Assert.True(Johto.Index.Areas.Count >= 30, $"only {Johto.Index.Areas.Count} areas open in Johto");
         var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
         foreach (var entry in Johto.Index.Maps)
         {
@@ -79,9 +79,13 @@ public class JohtoTests
             Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
         foreach (var entry in Johto.Index.Maps)
             Assert.True(walked.Keys.Any(m => m.Name == entry.Name), $"nobody walks into {entry.Name}");
-        // Route 31's north end, by the Dark Cave's mouth, is reached; the cave and Violet City wait for their sessions
+        // Route 31's north end, by the Dark Cave's mouth, is reached; the cave waits for its session
         Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_31" && t.X > 555);
-        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Violet", StringComparison.Ordinal) && m.Name != "Route31_VioletGate");
+        // Violet's Gym is shut until Falkner's chapter (plan 20 · J4), and Sprout Tower and Route 36 lead nowhere yet
+        var gymDoor = Johto.Area("violet")!.Warps[2];
+        Assert.Equal("violet_gym", gymDoor.To);
+        Assert.Empty(Overworld.WarpsAt(gymDoor.X, gymDoor.Z));
+        Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap.StartsWith("SproutTower", StringComparison.Ordinal));
     }
 
     [Fact]

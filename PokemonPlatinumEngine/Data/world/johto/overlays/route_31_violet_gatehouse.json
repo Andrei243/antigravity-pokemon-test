@@ -1,12 +1,11 @@
 {
-  // The gate house between Route 31 and Violet City (plan 20 · J2). Violet City is plan 20's next stretch: the gate
-  // house's west door stays shut until then
+  // The gate house between Route 31 and Violet City (plan 20 · J2)
   "area": "route_31_violet_gatehouse",
   "bgmTrack": "johto/route30",
   "people": {
     "r31r0101_counterm": {
       "name": "Officer",
-      "dialog": [ "Violet City is just beyond this gate. They're getting ready for visitors, so the way through is closed today." ]
+      "dialog": [ "Violet City is just beyond this gate. Welcome, and mind the lanterns!" ]
     }
   }
 }

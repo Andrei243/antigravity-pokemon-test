@@ -2015,7 +2015,7 @@ public static class WorldMapBuilder
     {
         // (HeartGold's small tree is "tree", plan 20 · J2)
         "cut_tree" or "tree" => PropType.CutTree,
-        "rock_smash" => PropType.CrackedRock,
+        "rock_smash" or "breakrock" => PropType.CrackedRock,
         "strength_boulder" => PropType.StrengthBoulder,
         _ => null
     };

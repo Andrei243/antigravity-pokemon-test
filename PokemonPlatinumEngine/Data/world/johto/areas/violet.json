@@ -1,0 +1,89 @@
+{
+  "key": "violet",
+  "index": 73,
+  "name": "Violet City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_KIKYOU",
+  "nightMusic": "GS_C_KIKYOU",
+  "encounters": "T22",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 20 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 511, "z": 269, "to": "route_31_violet_gatehouse", "toWarp": 0 },
+    { "x": 511, "z": 270, "to": "route_31_violet_gatehouse", "toWarp": 0 },
+    { "x": 479, "z": 257, "to": "violet_gym", "toWarp": 0 },
+    { "x": 454, "z": 246, "to": "violet_route_36_gatehouse", "toWarp": 0 },
+    { "x": 454, "z": 247, "to": "violet_route_36_gatehouse", "toWarp": 0 },
+    { "x": 487, "z": 228, "to": "sprout_tower_1f", "toWarp": 0 },
+    { "x": 495, "z": 257, "to": "violet_pokemon_school", "toWarp": 0 },
+    { "x": 497, "z": 271, "to": "violet_pokecenter_1f", "toWarp": 0 },
+    { "x": 459, "z": 254, "to": "violet_northwest_house", "toWarp": 0 },
+    { "x": 484, "z": 277, "to": "violet_bellsprout_onyx_trade_house", "toWarp": 0 },
+    { "x": 469, "z": 257, "to": "violet_pokemart", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t22_gsgirl3", "looks": "gsgirl3", "movement": "3", "x": 492, "z": 275, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "T22_011+1" },
+    { "id": "t22_gsman1", "looks": "gsman1", "movement": "3", "x": 489, "z": 254, "facing": 1, "rangeX": 1, "rangeZ": 2, "script": "T22_012+1" },
+    { "id": "t22_gsbigman", "looks": "gsbigman", "movement": "2", "x": 474, "z": 252, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_19A", "script": "T22_001+1" },
+    { "id": "t22_gsoldwoman1", "looks": "gsoldwoman1", "movement": "5", "x": 479, "z": 263, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "T22_013+1" },
+    { "id": "t22_gsboy2", "looks": "gsboy2", "movement": "2", "x": 462, "z": 259, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T22_014+1" },
+    { "id": "t22_monstarball", "looks": "monstarball", "movement": "0", "x": 504, "z": 237, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_T22_RARE_CANDY", "item": "Rare Candy", "script": "std_itemball_t22_rare_candy" },
+    { "id": "t22_monstarball_2", "looks": "monstarball", "movement": "0", "x": 459, "z": 229, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_T22_PP_UP", "item": "PP Up", "script": "std_itemball_t22_pp_up" },
+    { "id": "t22_dancer", "looks": "dancer", "movement": "0", "x": 474, "z": 261, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VIOLET_KIMONO_GIRL", "script": "0" },
+    { "id": "t22_bonguri", "looks": "bonguri", "movement": "0", "x": 472, "z": 275, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "t22_breakrock", "looks": "breakrock", "movement": "0", "x": 503, "z": 261, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "t22_juggrer", "looks": "juggrer", "movement": "0", "x": 500, "z": 272, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T22_003+1" },
+    { "id": "t22_gswoman3", "looks": "gswoman3", "movement": "3", "x": 506, "z": 268, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T22_005+1" },
+    { "id": "t22_gsbabyboy1", "looks": "gsbabyboy1", "movement": "3", "x": 482, "z": 241, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "T22_006+1" }
+  ],
+  "signs": [
+    { "x": 491, "z": 257, "type": 1, "script": "T22_007+1" },
+    { "x": 488, "z": 263, "type": 1, "script": "T22_008+1" },
+    { "x": 475, "z": 257, "type": 1, "script": "T22_009+1" },
+    { "x": 485, "z": 230, "type": 1, "script": "T22_010+1" },
+    { "x": 505, "z": 254, "type": 2, "script": "std_hiddenitem_t22_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_T22_HYPER_POTION" },
+    { "x": 481, "z": 241, "type": 2, "script": "std_hiddenitem_t22_poke_ball", "item": "Poké Ball", "flag": "FLAG_HIDDEN_ITEM_T22_POKE_BALL" }
+  ],
+  "triggers": [
+    { "x": 486, "z": 234, "width": 3, "depth": 1, "script": "T22_002+1", "variable": "VAR_SCENE_VIOLET_CITY_OW", "value": "0" }
+  ]
+}

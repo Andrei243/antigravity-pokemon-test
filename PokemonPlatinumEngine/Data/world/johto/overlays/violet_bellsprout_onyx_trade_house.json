@@ -1,0 +1,15 @@
+{
+  // A house in the south of Violet City (plan 20 · J2). Its trade is plan 07's
+  "area": "violet_bellsprout_onyx_trade_house",
+  "bgmTrack": "johto/violet",
+  "people": {
+    "t22r0601_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [ "My boy wants a Pokémon that's tough as rock. I keep telling him to go and catch one himself." ]
+    },
+    "t22r0601_gsboy1": {
+      "name": "Boy",
+      "dialog": [ "Someday I'll have an Onix as long as Sprout Tower is tall!" ]
+    }
+  }
+}

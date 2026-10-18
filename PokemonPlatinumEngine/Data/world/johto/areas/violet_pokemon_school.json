@@ -1,0 +1,36 @@
+{
+  "key": "violet_pokemon_school",
+  "index": 159,
+  "name": "Violet City",
+  "matrix": 102,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KIKYOU",
+  "nightMusic": "GS_C_KIKYOU",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 11, "to": "violet", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "t22r0301_gsbigman", "looks": "gsbigman", "movement": "15", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_EARL_IN_SCHOOL", "script": "T22R0301_000+1" },
+    { "id": "t22r0301_gsboy1", "looks": "gsboy1", "movement": "0", "x": 9, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T22R0301_004+1" },
+    { "id": "t22r0301_gsboy1_2", "looks": "gsboy1", "movement": "0", "x": 4, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T22R0301_005+1" },
+    { "id": "t22r0301_gsdsboy", "looks": "gsdsboy", "movement": "0", "x": 8, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "T22R0301_006+1" },
+    { "id": "t22r0301_gsdsboy_2", "looks": "gsdsboy", "movement": "0", "x": 7, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T22R0301_007+1" },
+    { "id": "t22r0301_gsman2", "looks": "gsman2", "movement": "2", "x": 13, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_group" },
+    { "id": "t22r0301_gsgirl2", "looks": "gsgirl2", "movement": "0", "x": 3, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T22R0301_003+1" }
+  ],
+  "signs": [
+    { "x": 6, "z": 2, "type": 0, "script": "T22R0301_001+1" },
+    { "x": 5, "z": 2, "type": 0, "script": "T22R0301_001+1" },
+    { "x": 7, "z": 2, "type": 0, "script": "T22R0301_001+1" },
+    { "x": 9, "z": 6, "type": 0, "script": "T22R0301_002+1" }
+  ],
+  "triggers": []
+}

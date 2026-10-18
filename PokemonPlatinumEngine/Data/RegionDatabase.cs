@@ -342,6 +342,9 @@ public static class RegionDatabase
                 "Cherrygrove_PokemonCenter_1F", "Cherrygrove_PokemonCenter_B1F", "Cherrygrove_Mart", "Cherrygrove_GuideGentsHouse",
                 "Cherrygrove_SouthwestHouse", "Cherrygrove_SoutheastHouse",
                 "Route30_ApricornHouse", "Route30_MrPokemonsHouse", "Route31_VioletGate",
+                // and Violet City's
+                "Violet_PokemonCenter_1F", "Violet_PokemonCenter_B1F", "Violet_Mart", "Violet_PokemonSchool",
+                "Violet_NorthwestHouse", "Violet_TradeHouse", "Violet_Route36Gate",
             }
         },
         new() { Id = Hoenn, Name = "Hoenn", Generation = 3 },

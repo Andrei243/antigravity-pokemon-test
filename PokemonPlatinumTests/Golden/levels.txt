@@ -849,6 +849,12 @@ old rod 3-15
 good rod 10-25
 super rod 30-55
 trainers 4, 44-50: ace_trainer_henry 48, double_team_jo_and_pat 50, dragon_tamer_ondrej 47, psychic_valencia 46
+=== violet
+Violet City
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
 === viridian_city
 Viridian City
 surf 20-40
