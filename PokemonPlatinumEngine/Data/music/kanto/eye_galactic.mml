@@ -1,0 +1,19 @@
+# Team Rocket spots the player (FireRed's MUS_ENCOUNTER_ROCKET, under Sinnoh's role name for the villains: in Kanto
+# the job is Team Rocket's, plan 19's "Music"): a menacing, stomping figure in E minor, brass stabs over a chromatic
+# bass that creeps up and falls back. Original composition for this game (plan 19 · K4).
+title Eyes Meet! Team Rocket
+tempo 140
+meter 4/4
+reverb 0.2
+
+track lead brass vol=0.7 pan=0 rev=0.2
+  L o4 e8 r8 e8 r8 g8 r8 f+8 r8 | o4 e8 r8 e8 r8 b8 r8 a+8 r8 | o4 e8 r8 e8 r8 g8 r8 f+8 r8 | o5 c4 o4 b4 a+4 b4 |
+
+track stab sawlead vol=0.36 pan=0.3 rev=0.18
+  L o5 r4 e8 r8 r4 e8 r8 | r4 e8 r8 r4 e8 r8 | r4 e8 r8 r4 e8 r8 | r4 d+8 r8 r4 d+8 r8 |
+
+track bass synthbass vol=0.72 rev=0.05
+  L o3 e8 e8 e8 e8 f8 f8 f8 f8 | f+8 f+8 f+8 f+8 g8 g8 g8 g8 | e8 e8 e8 e8 f8 f8 f8 f8 | c8 c8 b8 b8 a+8 a+8 b8 b8 |
+
+track drums kit vol=0.58 rev=0.08
+  v100 L [ b8 h8 s8 h8 b8 b8 s8 h8 | ]4

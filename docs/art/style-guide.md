@@ -232,6 +232,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Lakeside, Battle Zone (Resort) | white clapboard | hip, turquoise `64,170,180` | shutters |
 | Viridian (Evergreen) | logs | gable, evergreen `48,116,82` | shutters, a stone chimney: the town at the forest's edge (plan 19 · K2) |
 | Pewter (Granite) | pale cut stone | hip, slate brown `122,104,86` | a chimney: the stone-grey city under the mountain (plan 19 · K3) |
+| Cerulean (Riverside) | white clapboard | gable, cerulean `62,118,196` | flower boxes: the city of the river and the bridge north (plan 19 · K4) |
 | New Bark (Breeze) | plaster | gable, slate blue `78,104,150` | a chimney, flower boxes: the windy town of turbines by the sea (plan 20 · J2) |
 | Cherrygrove (Bayside) | boards | hip, terracotta `196,104,72` | shutters: the warm little port under its cherry trees (plan 20 · J2) |
 | Violet (OldTimber) | planks | hip, slate `72,80,104` | stone lanterns in the streets: the old town of the tower (plan 20 · J2's first rows; the town opens with J5) |
@@ -1291,6 +1292,18 @@ Plan 06 · R18d.
 
 - Round medallions in gym order (`ModernUi.Badge`), each in its gym's colour with a simple white mark; our own designs, not the games' badge art. A row holds the region's own count (plan 18 · W2: the names its file lists, none to eight), so Sinnoh's and Kanto's rows show eight and a region with fewer shows fewer; the colours and marks go by the place in the row.
 - Not yet won: a flat grey-blue disc with a darker rim, same size, so the row always shows every badge of its region.
+- **A region's own badges** (plan 19 · K4): where a badge's name has a look of its own (`ModernUi.BadgeLooks`), the medallion takes that colour and that mark instead of the row's; every other badge keeps the row's. Kanto's eight, each a mark of ours that says what the badge is named for and nothing of the games' art:
+
+  | Badge | Colour | Mark |
+  | --- | --- | --- |
+  | Boulder | stone grey (150, 146, 140) | a squat stone: a rounded block with a smaller block on it |
+  | Cascade | water blue (64, 150, 222) | a drop: a disc with a point above it |
+  | Thunder | amber (236, 160, 52) | a zigzag bolt of two slanted bars |
+  | Rainbow | violet (156, 110, 214) | three rings, one inside another |
+  | Soul | rose (222, 92, 140) | a heart of two discs over a point |
+  | Marsh | old gold (214, 178, 68) | two discs side by side, overlapping |
+  | Volcano | flame red (220, 72, 54) | a flame: a point over a disc |
+  | Earth | leaf green (82, 160, 86) | a leaf: a diamond turned on its point |
 
 ### Opening and title screen (`TitleScreen`, `TitleScene`)
 

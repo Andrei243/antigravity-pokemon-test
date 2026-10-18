@@ -1173,6 +1173,12 @@ script KantoNewGame
   setflag FLAG_HIDE_OAK_IN_HIS_LAB
   setflag FLAG_HIDE_ROUTE_22_RIVAL
   setflag FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
+  # Plan 19 · K4: the rival at Nugget Bridge until he comes down to the player, Bill as himself until the cell
+  # separator, and the people of the Pokémon Centers who talk only after the Hall of Fame. A save from before K4 never
+  # came to Cerulean City, Route 25 or their rooms, whose own arrival scripts hide the same people for it
+  setflag FLAG_HIDE_CERULEAN_RIVAL
+  setflag FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
+  setflag FLAG_HIDE_POSTGAME_GOSSIPERS
   return
 
 

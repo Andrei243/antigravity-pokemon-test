@@ -329,6 +329,11 @@ public static class RegionDatabase
                 // Plan 19 · K3: Pewter City's rooms
                 "PewterCity_Museum_1F", "PewterCity_Museum_2F", "PewterCity_Gym", "PewterCity_Mart", "PewterCity_House1",
                 "PewterCity_PokemonCenter_1F", "PewterCity_PokemonCenter_2F", "PewterCity_House2",
+                // Plan 19 · K4: Mt. Moon, Route 4's Pokémon Center, Cerulean City's rooms and Bill's Sea Cottage
+                "MtMoon_1F", "MtMoon_B1F", "MtMoon_B2F", "Route4_PokemonCenter_1F", "Route4_PokemonCenter_2F",
+                "CeruleanCity_House1", "CeruleanCity_House2", "CeruleanCity_House3", "CeruleanCity_PokemonCenter_1F",
+                "CeruleanCity_PokemonCenter_2F", "CeruleanCity_Gym", "CeruleanCity_BikeShop", "CeruleanCity_Mart",
+                "CeruleanCity_House4", "CeruleanCity_House5", "Route25_SeaCottage",
             }
         },
         new()

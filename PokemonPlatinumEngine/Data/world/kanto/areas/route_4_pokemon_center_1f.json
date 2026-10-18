@@ -1,0 +1,33 @@
+{
+  "key": "route_4_pokemon_center_1f",
+  "index": 350,
+  "name": "Route 4",
+  "matrix": 297,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 8, "to": "route_4", "toWarp": 2 },
+    { "x": 7, "z": 8, "to": "route_4", "toWarp": 2 },
+    { "x": 8, "z": 8, "to": "route_4", "toWarp": 2 },
+    { "x": 1, "z": 6, "to": "route_4_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "route4_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route4_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_around", "x": 1, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route4_PokemonCenter_1F_EventScript_MagikarpSalesman" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_south", "x": 12, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route4_PokemonCenter_1F_EventScript_Gentleman" },
+    { "id": "boy", "looks": "boy", "movement": "wander_around", "x": 5, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route4_PokemonCenter_1F_EventScript_Boy" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_around", "x": 14, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route4_PokemonCenter_1F_EventScript_Youngster" },
+    { "id": "clipboard", "looks": "clipboard", "movement": "look_south", "x": 12, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route4_PokemonCenter_1F_EventScript_Newspaper" }
+  ],
+  "signs": [],
+  "triggers": []
+}

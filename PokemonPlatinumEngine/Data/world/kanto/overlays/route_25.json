@@ -1,0 +1,76 @@
+{
+  // Route 25 (plan 19 · K4): along the sea cliffs east to Bill's Sea Cottage (route_25_sea_cottage.txt)
+  "area": "route_25",
+  "bgmTrack": "kanto/route24",
+  "trees": "Round",
+  "people": {
+    "beauty": { "name": "Woman", "dialog": [ "Bill lives in that cottage at the end of the path. He's a bit odd, but he knows everything about Pokémon." ] },
+    "man": { "name": "Man", "dialog": [ "Are you here on your own? Brave of you. Lots of trainers come this way looking for battles." ] },
+    "hiker": {
+      "name": "Franklin",
+      "trainer": {
+        "dialogueBefore": "Hiker Franklin: Ho! You're climbing up to see Bill? Battle me first!",
+        "dialogueAfter": "Hiker Franklin: Whew! You've got legs like a mountain goat."
+      }
+    },
+    "youngster": {
+      "name": "Joey",
+      "trainer": {
+        "dialogueBefore": "Youngster Joey: Local trainers come here to practise. Let's see how you measure up!",
+        "dialogueAfter": "Youngster Joey: My Rattata's still the best. It just had a bad day."
+      }
+    },
+    "hiker_2": {
+      "name": "Wayne",
+      "trainer": {
+        "dialogueBefore": "Hiker Wayne: You look like you could use a workout. Let's go!",
+        "dialogueAfter": "Hiker Wayne: Ha! You've worked me out instead."
+      }
+    },
+    "youngster_2": {
+      "name": "Dan",
+      "trainer": {
+        "dialogueBefore": "Youngster Dan: Dad told me to make friends on my journey. Battling counts, right?",
+        "dialogueAfter": "Youngster Dan: Friends, then? Even though you beat me?"
+      }
+    },
+    "picnicker": {
+      "name": "Kelsey",
+      "trainer": {
+        "dialogueBefore": "Picnicker Kelsey: I came out here for a picnic, but a battle's just as good!",
+        "dialogueAfter": "Picnicker Kelsey: Oh well. Back to my sandwiches."
+      }
+    },
+    "hiker_3": {
+      "name": "Nob",
+      "trainer": {
+        "dialogueBefore": "Hiker Nob: Ha-hah! My Pokémon are as tough as the cliffs here!",
+        "dialogueAfter": "Hiker Nob: Cliffs crumble too, I suppose."
+      }
+    },
+    "camper": {
+      "name": "Flint",
+      "trainer": {
+        "dialogueBefore": "Camper Flint: I'm off to see Bill's rare Pokémon. You too? Let's battle on the way!",
+        "dialogueAfter": "Camper Flint: You go first, then. I'll catch up."
+      }
+    },
+    "youngster_3": {
+      "name": "Chad",
+      "trainer": {
+        "dialogueBefore": "Youngster Chad: I've been pacing this path all day waiting for a challenger!",
+        "dialogueAfter": "Youngster Chad: Worth the wait. Even if I lost."
+      }
+    },
+    "lass": {
+      "name": "Haley",
+      "trainer": {
+        "dialogueBefore": "Lass Haley: My Pokémon and I love the sea breeze. Want to battle in it?",
+        "dialogueAfter": "Lass Haley: The breeze didn't help at all!"
+      }
+    }
+  },
+  "signs": {
+    "Route25_EventScript_SeaCottageSign": "Sea Cottage\nBill lives here!"
+  }
+}

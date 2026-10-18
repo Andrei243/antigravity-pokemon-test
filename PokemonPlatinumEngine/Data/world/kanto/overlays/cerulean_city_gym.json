@@ -1,0 +1,27 @@
+{
+  // The Cerulean City Gym (plan 19 · K4), its pool as FireRed lays it out. Misty and the guide are
+  // cerulean_city_gym.txt's; her two trainers battle by their own records (Kanto's trainers.json)
+  "area": "cerulean_city_gym",
+  "bgmTrack": "kanto/gym",
+  "people": {
+    "misty": { "name": "Misty", "script": "Misty", "still": true },
+    "gym_guy": { "name": "Gym Guide", "script": "GymGuy" },
+    "swimmer_m_water": {
+      "name": "Luis",
+      "trainer": {
+        "dialogueBefore": "Swimmer Luis: Splash! I'm the first wave you'll have to get through!",
+        "dialogueAfter": "Swimmer Luis: Washed out... Misty's a much stronger swimmer than me."
+      }
+    },
+    "picnicker": {
+      "name": "Diana",
+      "trainer": {
+        "dialogueBefore": "Picnicker Diana: You'll never get to Misty with me here!",
+        "dialogueAfter": "Picnicker Diana: Misty won't go as easy on you, you know!"
+      }
+    }
+  },
+  "signs": {
+    "CeruleanCity_Gym_EventScript_GymStatue": "Cerulean City Pokémon Gym\nLeader: Misty"
+  }
+}

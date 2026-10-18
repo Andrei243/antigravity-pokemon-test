@@ -64,7 +64,10 @@
     "PI": "rich",
     "Elite Four": "eliteFour",
     "Champion": "champion",
-    "Maid": "fun"
+    "Maid": "fun",
+    "Team Rocket": "galactic",
+    "Super Nerd": "mystery",
+    "Swimmer M": "sport"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -76,6 +79,7 @@
     "Commander Jupiter": "galactic",
     "Commander Saturn": "galactic",
     "Galactic Boss": "galacticBoss",
+    "Team Rocket": "galactic",
     "Elite Four": "eliteFour",
     "Champion": "champion"
   }

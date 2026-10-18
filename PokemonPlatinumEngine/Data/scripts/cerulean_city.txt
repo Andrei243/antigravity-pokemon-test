@@ -1,0 +1,181 @@
+# Cerulean City (plan 19 · K4). docs/scripts.md describes the language; the lines are our own, on FireRed's beats
+# (data/maps/CeruleanCity/scripts.inc).
+#
+# VAR_MAP_SCENE_CERULEAN_CITY_RIVAL: 0 until the rival stops the player at the foot of Nugget Bridge (the area's
+# triggers 0 to 2), 1 after. VAR_MAP_SCENE_CERULEAN_CITY_ROCKET: 0 until the Rocket grunt in the burgled house's yard
+# is beaten (triggers 3 and 4, and the grunt spoken to), 1 after; he hands back the TM28 he stole. Until Bill gives
+# the player the S.S. Ticket (FLAG_GOT_SS_TICKET), the policeman stands at the burgled house's door and the Slowbro
+# and its trainer stand on the road south.
+
+
+# FireRed's OnTransition: the exits stay blocked until the S.S. Ticket.
+script OnEnter
+  # (and, for a save from before plan 19 · K4, the rival hidden until his scene, as a new game hides him)
+  if var VAR_MAP_SCENE_CERULEAN_CITY_RIVAL == 0 setflag FLAG_HIDE_CERULEAN_RIVAL
+  if flag FLAG_GOT_SS_TICKET end
+  place cerulean_policeman 294 52 down
+  place cerulean_slowbro 290 71 down
+  place cerulean_lass 291 71 left
+  end
+
+
+# The rival at the foot of Nugget Bridge (triggers 0 to 2, west to east): he comes down from the bridge to the
+# player's column.
+script RivalLeft
+  place cerulean_rival 286 40 down
+  call Rival
+  end
+
+script RivalMid
+  place cerulean_rival 287 40 down
+  call Rival
+  end
+
+script RivalRight
+  place cerulean_rival 288 40 down
+  call Rival
+  end
+
+
+script Rival
+  scene "The rival at Nugget Bridge"
+  setvar VAR_MAP_SCENE_ROUTE22 2
+  music "kanto/rival"
+  show cerulean_rival
+  walk cerulean_rival down 5
+  speaker "{rival}"
+  say "Well, look who finally made it! {player}! How's the Pokédex coming along?"
+  say "Me? I've already caught loads. I went over that bridge and up to Bill's place, too."
+  say "Let's see if you've got any stronger. Come on, battle me!"
+  if starter "Bulbasaur" goto VsCharmander
+  if starter "Charmander" goto VsSquirtle
+  battle cerulean_rival as "kanto_rival_cerulean_bulbasaur"
+  goto After
+label VsCharmander
+  battle cerulean_rival as "kanto_rival_cerulean_charmander"
+  goto After
+label VsSquirtle
+  battle cerulean_rival as "kanto_rival_cerulean_squirtle"
+label After
+  speaker "{rival}"
+  say "Tch! Lucky break. You'd better not get used to winning."
+  say "Bill's up the road past the bridge. He knows more about Pokémon than anyone. Go and see him, if you can keep up."
+  say "I'm off. Smell you later, {player}!"
+  music "kanto/rival"
+  walk cerulean_rival right 1 down 7 fast
+  hide cerulean_rival
+  music area
+  setvar VAR_MAP_SCENE_CERULEAN_CITY_RIVAL 1
+  endscene
+  return
+
+
+# The Rocket grunt in the yard behind the burgled house: spoken to, or stepped up to from north or south (triggers 3
+# and 4).
+script Grunt
+  if defeated "kanto_team_rocket_grunt_5" goto Beaten
+  call GruntBattle
+  end
+label Beaten
+  if flag FLAG_GOT_TM28_FROM_ROCKET end
+  call GiveBack
+  end
+
+script GruntTop
+  face cerulean_grunt up
+  face player down
+  call GruntBattle
+  end
+
+script GruntBottom
+  face cerulean_grunt down
+  face player up
+  call GruntBattle
+  end
+
+script GruntBattle
+  scene "The thief of Cerulean"
+  speaker "Grunt"
+  say "Hey! Stay out of here! This is none of your business. Get lost, kid!"
+  battle cerulean_grunt as "kanto_team_rocket_grunt_5"
+  setvar VAR_MAP_SCENE_CERULEAN_CITY_ROCKET 1
+  call GiveBack
+  endscene
+  return
+
+script GiveBack
+  speaker "Grunt"
+  say "All right, all right! I'll give it back. It's just some TM I swiped from that house anyway."
+  give "TM28"
+  setflag FLAG_GOT_TM28_FROM_ROCKET
+  say "Team Rocket doesn't forget a face, kid. I'm out of here!"
+  fade out
+  hide cerulean_grunt
+  setflag FLAG_HIDE_CERULEAN_ROCKET
+  fade in
+  return
+
+
+# The policeman by the burgled house.
+script Policeman
+  speaker "Policeman"
+  say "This house was broken into last night. A Team Rocket thief, by the looks of it. Nobody goes in until we're done."
+  end
+
+
+# The boy who wants the tree south of town cut.
+script LittleBoy
+  speaker "Boy"
+  if flag FLAG_GOT_SS_TICKET goto Moved
+  say "If that Slowbro would just move, you could go round to the little tree and cut it down. Then you'd be on Route 5!"
+  end
+label Moved
+  say "Some Pokémon can cut down small trees like that one. You need the right move and the right Badge."
+  end
+
+
+# The Slowbro's trainer, who can't make it obey, and the Slowbro itself.
+script Lass
+  speaker "Girl"
+  random 3
+  if result == 1 goto Punch
+  if result == 2 goto Withdraw
+  say "Slowbro, use Water Gun! Come on, Slowbro!"
+  emote cerulean_slowbro question
+  say "Slowbro, are you even listening? It never pays attention..."
+  end
+label Punch
+  say "Slowbro, punch! Punch, I said!"
+  emote cerulean_slowbro question
+  say "...It's not doing anything. Why won't it listen to me?"
+  end
+label Withdraw
+  say "Slowbro, withdraw! Slowbro?"
+  emote cerulean_slowbro question
+  say "Training a Pokémon to obey is so much harder than it looks."
+  end
+
+script Slowbro
+  speaker "Slowbro"
+  random 4
+  if result == 1 goto Loaf
+  if result == 2 goto Away
+  if result == 3 goto Ignore
+  say "Slowbro is having a little nap..."
+  end
+label Loaf
+  say "Slowbro is just lazing about..."
+  end
+label Away
+  say "Slowbro has turned its back on its trainer..."
+  end
+label Ignore
+  say "Slowbro didn't hear a word of that order..."
+  end
+
+
+# The woman by the bicycle shop.
+script Woman
+  speaker "Woman"
+  say "I'd love one of those shiny red bicycles in the shop. But have you seen the price? A million!"
+  end

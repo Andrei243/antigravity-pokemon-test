@@ -1,0 +1,12 @@
+{
+  // The burgled house in Cerulean City (plan 19 · K4): the thief broke out through its back wall, into the yard where the Rocket grunt waits (cerulean_city.txt)
+  "area": "cerulean_city_house_2",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "hiker": {"name": "Hiker", "dialog": ["Those Rocket thieves smashed right through my back wall! They took a TM and ran off into the yard."]},
+    "lass": {"name": "Girl", "dialog": ["Team Rocket stole one of our TMs. I hope somebody gets it back..."]}
+  },
+  "signs": {
+      "CeruleanCity_House2_EventScript_WallHole": "Team Rocket left a big hole in the wall when they ran off."
+  }
+}

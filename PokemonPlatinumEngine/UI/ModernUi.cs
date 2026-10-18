@@ -352,7 +352,30 @@ internal static partial class ModernUi
     /// A badge as a small enamel medallion in the badge's colour with a simple mark (our own design, not the games'
     /// badge art); a badge not yet won is an empty socket.
     /// </summary>
-    public static void Badge(Vector2 center, float r, int index, bool earned)
+    public static void Badge(Vector2 center, float r, int index, bool earned) => Badge(center, r, index, earned, null);
+
+    /// <summary>The marks a region's own badges carry (style guide, "Badges"): a badge whose name is here has its own look.</summary>
+    public enum BadgeMark { Stone, Drop, Bolt, Rings, Heart, Twins, Flame, Leaf }
+
+    /// <summary>The badges with a look of their own, by the name their region's file gives them (plan 19 · K4: Kanto's eight).</summary>
+    public static readonly IReadOnlyDictionary<string, (Color Color, BadgeMark Mark)> BadgeLooks =
+        new Dictionary<string, (Color, BadgeMark)>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["Boulder"] = (new Color(150, 146, 140, 255), BadgeMark.Stone),
+            ["Cascade"] = (new Color(64, 150, 222, 255), BadgeMark.Drop),
+            ["Thunder"] = (new Color(236, 160, 52, 255), BadgeMark.Bolt),
+            ["Rainbow"] = (new Color(156, 110, 214, 255), BadgeMark.Rings),
+            ["Soul"] = (new Color(222, 92, 140, 255), BadgeMark.Heart),
+            ["Marsh"] = (new Color(214, 178, 68, 255), BadgeMark.Twins),
+            ["Volcano"] = (new Color(220, 72, 54, 255), BadgeMark.Flame),
+            ["Earth"] = (new Color(82, 160, 86, 255), BadgeMark.Leaf)
+        };
+
+    /// <summary>
+    /// A badge as <see cref="Badge(Vector2, float, int, bool)"/> draws it, in its own colour and with its own mark where its
+    /// <paramref name="name"/> has a look of its own (<see cref="BadgeLooks"/>).
+    /// </summary>
+    public static void Badge(Vector2 center, float r, int index, bool earned, string? name)
     {
         var slot = new Rectangle(center.X - r, center.Y - r, r * 2, r * 2);
         if (!earned)
@@ -361,11 +384,18 @@ internal static partial class ModernUi
             return;
         }
 
-        var color = BadgeColors[index % BadgeColors.Length];
+        bool own = name != null && BadgeLooks.ContainsKey(name);
+        var color = own ? BadgeLooks[name!].Color : BadgeColors[index % BadgeColors.Length];
         UiShapes.Shadow(slot, r, 8f, new Vector2(0, 3), ShadowColor);
         UiShapes.Shape(slot, r, Lighter(color, 0.35f), Darker(color, 0.15f), Darker(color, 0.5f), 3f);
         var white = new Color(255, 255, 255, 235);
         float m = r * 0.42f;
+        if (own)
+        {
+            DrawBadgeMark(center, m, BadgeLooks[name!].Mark, white, Darker(color, 0.1f));
+            UiShapes.Circle(center + new Vector2(-r * 0.42f, -r * 0.45f), r * 0.16f, new Color(255, 255, 255, 150));
+            return;
+        }
         switch (index % 4)
         {
             case 0: UiShapes.Circle(center, m * 0.7f, white); break;
@@ -378,6 +408,51 @@ internal static partial class ModernUi
         }
         // A glint on the upper left
         UiShapes.Circle(center + new Vector2(-r * 0.42f, -r * 0.45f), r * 0.16f, new Color(255, 255, 255, 150));
+    }
+
+    /// <summary>A region's own badge mark (style guide, "Badges"), <paramref name="m"/> its half size, in white over the enamel.</summary>
+    private static void DrawBadgeMark(Vector2 c, float m, BadgeMark mark, Color white, Color enamel)
+    {
+        switch (mark)
+        {
+            case BadgeMark.Stone:
+                UiShapes.Fill(new Rectangle(c.X - m, c.Y - m * 0.15f, m * 2, m * 0.9f), m * 0.3f, white);
+                UiShapes.Fill(new Rectangle(c.X - m * 0.55f, c.Y - m * 0.85f, m * 1.1f, m * 0.8f), m * 0.28f, white);
+                break;
+            case BadgeMark.Drop:
+                UiShapes.Circle(c + new Vector2(0, m * 0.3f), m * 0.62f, white);
+                UiShapes.Triangle(c + new Vector2(0, -m * 0.95f), c + new Vector2(-m * 0.55f, m * 0.05f), c + new Vector2(m * 0.55f, m * 0.05f), white, m * 0.05f);
+                break;
+            case BadgeMark.Bolt:
+                UiShapes.Line(c + new Vector2(m * 0.45f, -m * 0.95f), c + new Vector2(-m * 0.3f, m * 0.05f), m * 0.42f, white);
+                UiShapes.Line(c + new Vector2(-m * 0.3f, m * 0.05f), c + new Vector2(m * 0.3f, -m * 0.05f), m * 0.42f, white);
+                UiShapes.Line(c + new Vector2(m * 0.3f, -m * 0.05f), c + new Vector2(-m * 0.45f, m * 0.95f), m * 0.42f, white);
+                break;
+            case BadgeMark.Rings:
+                UiShapes.Ring(c, m, m * 0.24f, white);
+                UiShapes.Ring(c, m * 0.62f, m * 0.22f, white);
+                UiShapes.Circle(c, m * 0.24f, white);
+                break;
+            case BadgeMark.Heart:
+                UiShapes.Circle(c + new Vector2(-m * 0.42f, -m * 0.25f), m * 0.5f, white);
+                UiShapes.Circle(c + new Vector2(m * 0.42f, -m * 0.25f), m * 0.5f, white);
+                UiShapes.Triangle(c + new Vector2(-m * 0.9f, -m * 0.08f), c + new Vector2(m * 0.9f, -m * 0.08f), c + new Vector2(0, m * 0.95f), white, m * 0.04f);
+                break;
+            case BadgeMark.Twins:
+                UiShapes.Circle(c + new Vector2(-m * 0.4f, 0), m * 0.58f, white);
+                UiShapes.Circle(c + new Vector2(m * 0.4f, 0), m * 0.58f, white);
+                UiShapes.Circle(c + new Vector2(m * 0.4f, 0), m * 0.24f, enamel);
+                break;
+            case BadgeMark.Flame:
+                UiShapes.Circle(c + new Vector2(0, m * 0.35f), m * 0.6f, white);
+                UiShapes.Triangle(c + new Vector2(m * 0.1f, -m), c + new Vector2(-m * 0.58f, m * 0.25f), c + new Vector2(m * 0.58f, m * 0.25f), white, m * 0.05f);
+                UiShapes.Circle(c + new Vector2(0, m * 0.45f), m * 0.26f, enamel);
+                break;
+            default:
+                UiShapes.Turned(c, m * 0.62f, m * 0.62f, m * 0.12f, 45f, white);
+                UiShapes.Line(c + new Vector2(-m * 0.5f, m * 0.5f), c + new Vector2(m * 0.5f, -m * 0.5f), m * 0.12f, enamel);
+                break;
+        }
     }
 }
 

@@ -91,16 +91,16 @@
     "CCCCCC?????CCCCCCCCCCCCCCCCCCCCC",
     "CCCCCC?????CCCCCCCCCCCCCCCCCCCCC",
     "CCCCCC?????CCCCCCCCCCCCCCCCCCCCC",
-    ".?.?..?????CCCCCCCCCCCCCCCCCCCCC",
-    ":?....??B??:?CC?CCCCCCCCCCCC?CCC",
-    "?::::.....:?:::::?CCCCCCCC?:::::",
-    "?????:::::?:::.::?CCCCCCCC?:?:.:",
-    ":::::::::::::::::??CCCCCC?:::...",
-    ":::::::::::????????CCCCCCC??????",
-    "?:::::::::::::::::?CCCCCCC......",
-    "????????::::::::?:?CCCCCCC......",
-    ":::::::::::????????CCCCCCCCCCCCC",
-    "??:?::::::::::::::?CCCCCCCCCCCCC"
+    "...C..?????CCCCCCCCCCCCCCCCCCCCC",
+    ":C....??B??:CCCMCCCCCCCCCCCCMCCC",
+    ":::::.....:::::::CCCCCCCCCC:::::",
+    "::::::::::::::.::CCCCCCCCCC:::.:",
+    ":::::::::::::::::CCCCCCCCC:::...",
+    "::::::::::::::::::CCCCCCCC......",
+    "C:::::::::::::::::CCCCCCCC......",
+    "::::::::::::::::C:CCCCCCCC......",
+    "::::::::::::::::::CCCCCCCCCCCCCC",
+    "CC:C::::::::::::::CCCCCCCCCCCCCC"
   ],
   "heights": [
     { "x": 0, "z": 18, "width": 32, "depth": 14, "height": 1, "slopeX": 0, "slopeZ": 0 }

@@ -1,0 +1,9 @@
+# Cerulean City's Pokémon Center (plan 19 · K4). docs/scripts.md describes the language.
+
+
+# The two who talk of Misty only after the Hall of Fame (FireRed's postgame gossipers) stay away until then: a new
+# game hides them, and so does this for a save from before plan 19 · K4. Plan 19 · K8's Hall of Fame clears the flag,
+# and this line with it.
+script OnEnter
+  setflag FLAG_HIDE_POSTGAME_GOSSIPERS
+  end

@@ -330,7 +330,7 @@ internal static partial class ModernUi
         var (badges, of) = save.BadgesHere();
         Label(Text.Of("saving.badges", ("count", TitleScreen.CountBadges(badges)), ("of", of)), x, r.Y + 216);
         for (int b = 0; b < of; b++)
-            Badge(new Vector2(x + 34 + b * 92, r.Y + 286), 34, b, (badges & (1 << b)) != 0);
+            Badge(new Vector2(x + 34 + b * 92, r.Y + 286), 34, b, (badges & (1 << b)) != 0, BadgeNameOf(save, b));
 
         // The party as 2D sprites, like the main games' save panel
         Label(Text.Of("saving.party"), x, r.Y + 340);
@@ -346,6 +346,10 @@ internal static partial class ModernUi
     public static string SlotLabel(int slot) => Text.Of("saving.slot", ("slot", slot));
 
     /// <summary>The place a game was saved in, as its card names it.</summary>
+    /// <summary>The name of the badge in that place of the row of the region a save was made in, for its own look.</summary>
+    private static string? BadgeNameOf(SaveData save, int place) =>
+        RegionDatabase.Get(save.RegionId)?.BadgeNames is { } names && place < names.Count ? names[place] : null;
+
     public static string PlaceOf(SaveData save)
     {
         var place = save.Place();
@@ -378,7 +382,7 @@ internal static partial class ModernUi
         var (badges, of) = save.BadgesHere();
         Label(Text.Of("saving.badges", ("count", TitleScreen.CountBadges(badges)), ("of", of)), x + 504, r.Y + 22);
         for (int b = 0; b < of; b++)
-            Badge(new Vector2(x + 517 + b * 28, r.Y + 68), 13, b, (badges & (1 << b)) != 0);
+            Badge(new Vector2(x + 517 + b * 28, r.Y + 68), 13, b, (badges & (1 << b)) != 0, BadgeNameOf(save, b));
 
         // Along the foot: where it was saved (every game is played by the modern rules since plan 06 · R19, so no card
         // says whose rules it is)

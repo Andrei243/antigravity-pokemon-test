@@ -50,6 +50,43 @@ public static class GbaCover
                 (0x0D0, 0x0D2, TerrainCover.Path), (0x0D8, 0x0DA, TerrainCover.Path), (0x0E0, 0x0E2, TerrainCover.Path),
                 // The bushes either side of the gate on Route 22, and beside the stairs of the routes' gates
                 (0x005, 0x005, TerrainCover.Tree),
+                // Plan 19 · K4: a town's road, three by three with its edges and inner corners (Pewter City's streets,
+                // which K3 left reading as lawn, and Cerulean City's)
+                (0x1B8, 0x1BC, TerrainCover.Path), (0x1C0, 0x1C4, TerrainCover.Path), (0x1C8, 0x1CA, TerrainCover.Path),
+                // Ledges in the grass, hopped over south, west or east (MB_JUMP_*), with the posts at their ends
+                (0x085, 0x087, TerrainCover.Grass), (0x08D, 0x08E, TerrainCover.Grass), (0x097, 0x097, TerrainCover.Grass),
+                (0x0B0, 0x0B1, TerrainCover.Grass), (0x0C1, 0x0C1, TerrainCover.Grass), (0x0C8, 0x0C8, TerrainCover.Grass),
+                // The mountains' own ledges on the paths round Mt. Moon and Route 24
+                (0x08F, 0x08F, TerrainCover.Path), (0x096, 0x096, TerrainCover.Path), (0x0B8, 0x0B9, TerrainCover.Path),
+                // The brown mountains' edges round Mt. Moon, Route 4 and Route 25 (the ones K1 left for later)
+                (0x080, 0x082, TerrainCover.Cliff), (0x088, 0x088, TerrainCover.Cliff), (0x08A, 0x08A, TerrainCover.Cliff),
+                (0x090, 0x090, TerrainCover.Cliff), (0x092, 0x092, TerrainCover.Cliff), (0x09E, 0x09F, TerrainCover.Cliff),
+                (0x0A1, 0x0A1, TerrainCover.Cliff), (0x0A8, 0x0A8, TerrainCover.Cliff), (0x0B4, 0x0B5, TerrainCover.Cliff),
+                (0x0B7, 0x0B7, TerrainCover.Cliff), (0x1F1, 0x1F1, TerrainCover.Cliff), (0x1F3, 0x1F4, TerrainCover.Cliff),
+                (0x20F, 0x20F, TerrainCover.Cliff),
+                // The dark mouth of a cave in a mountain's face (MB_CAVE_DOOR: Mt. Moon's two ways in)
+                (0x0A9, 0x0A9, TerrainCover.CaveMouth),
+                // A small stone in the grass, walked over, and the worn patches in a path
+                (0x0C2, 0x0C2, TerrainCover.Grass), (0x0FE, 0x0FF, TerrainCover.Path), (0x106, 0x107, TerrainCover.Path),
+                // The signposts on lawn (MB_SIGNPOST)
+                (0x168, 0x169, TerrainCover.Grass),
+                // Low walls of stone along Cerulean City's river and across Routes 24 and 25, and the row of bushes on
+                // Cerulean's south edge
+                (0x0DF, 0x0DF, TerrainCover.Fence), (0x135, 0x135, TerrainCover.Fence), (0x13D, 0x13F, TerrainCover.Fence),
+                (0x146, 0x146, TerrainCover.Fence), (0x14D, 0x14D, TerrainCover.Fence), (0x157, 0x157, TerrainCover.Fence),
+                (0x0D6, 0x0D7, TerrainCover.Tree),
+            },
+            // Plan 19 · K4: Cerulean City's own: the bridges north of the town and Nugget Bridge, their railings, and the
+            // rocks along Route 25's shore
+            ["gTileset_CeruleanCity"] = new (int, int, TerrainCover)[]
+            {
+                (0x2C6, 0x2C6, TerrainCover.Bridge), (0x2CE, 0x2CE, TerrainCover.Bridge), (0x2DD, 0x2DE, TerrainCover.Bridge),
+                (0x2E5, 0x2E6, TerrainCover.Bridge), (0x2ED, 0x2ED, TerrainCover.Bridge),
+                (0x2C5, 0x2C5, TerrainCover.Fence), (0x2C7, 0x2C7, TerrainCover.Fence), (0x2CD, 0x2CD, TerrainCover.Fence),
+                (0x2CF, 0x2CF, TerrainCover.Fence), (0x2D5, 0x2D5, TerrainCover.Fence), (0x2D6, 0x2D6, TerrainCover.Bridge),
+                (0x2D7, 0x2D7, TerrainCover.Fence), (0x2EE, 0x2EF, TerrainCover.Fence),
+                (0x2DF, 0x2DF, TerrainCover.Fence),
+                (0x2E7, 0x2E7, TerrainCover.Cliff),
             },
             // Plan 19 · K2: Viridian Forest, a maze of trees three metatiles wide and two deep, row over row
             ["gTileset_ViridianForest"] = new (int, int, TerrainCover)[]

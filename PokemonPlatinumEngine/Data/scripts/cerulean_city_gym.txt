@@ -1,0 +1,45 @@
+# The Cerulean City Gym (plan 19 · K4). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/CeruleanCity_Gym/scripts.inc).
+#
+# Misty battles for the Cascade Badge (FLAG_BADGE02_GET is the badge itself, `givebadge cascade`, which opens Cut in
+# the field) and gives TM03, Water Pulse. Her Badge counts her two trainers beaten (FireRed's set_gym_trainers 2).
+
+
+script Misty
+  face misty player
+  speaker "Misty"
+  if badge cascade goto Won
+  scene "Misty"
+  say "Hi, you're a new face! Trainers who want to turn pro need a policy for raising their Pokémon."
+  say "Mine? It's all-out offence with Water types! Let's see if you can keep your head above water!"
+  battle self as "kanto_leader_misty"
+  say "Wow, you're too much! All right, you can have the Cascade Badge to show you beat me."
+  givebadge cascade
+  text "{player} received the Cascade Badge from Misty!"
+  say "With the Cascade Badge, your Pokémon can use Cut outside of battle, to clear away small trees."
+  setflag FLAG_DEFEATED_MISTY
+  defeat "kanto_picnicker_diana"
+  defeat "kanto_swimmer_male_luis"
+label Tm
+  say "And take this too. It's one of my favourite moves."
+  give "TM03"
+  setflag FLAG_GOT_TM03_FROM_MISTY
+  say "TM03 is Water Pulse. It hits with a wave of sound and water, and it can leave the foe confused."
+  endscene
+  end
+label Won
+  if not flag FLAG_GOT_TM03_FROM_MISTY goto Tm
+  say "Water Pulse can throw the foe off balance. Use it well, and remember who taught you!"
+  end
+
+
+# The guide by the door: advice before the Badge, praise after.
+script GymGuy
+  speaker "Gym Guide"
+  if badge cascade goto Won
+  say "Yo, champ in the making! Misty's Pokémon are Water types, and they hit hard."
+  say "Electric and Grass moves are what you want here. Zap them or root them out!"
+  end
+label Won
+  say "You beat Misty! What a battle. We make a pretty good team, you and me!"
+  end

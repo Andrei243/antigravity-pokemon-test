@@ -1,0 +1,9 @@
+{
+  // A house in Cerulean City (plan 19 · K4); the old man's trade, which FireRed has here, is plan 07's
+  "area": "cerulean_city_house_3",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "old_man_1": {"name": "Old Man", "dialog": ["I'm looking for a Pokémon to trade with someone. Maybe one day the right trainer will come along."]},
+    "old_woman": {"name": "Old Woman", "dialog": ["My husband is always on about trading Pokémon. Kids these days don't trade like they used to, he says."]}
+  }
+}

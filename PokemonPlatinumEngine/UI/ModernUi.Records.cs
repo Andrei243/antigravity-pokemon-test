@@ -351,7 +351,7 @@ internal static partial class ModernUi
         {
             bool earned = here.Has(b);
             var c = new Vector2(card.X + 72 + 44 + b * step, by + 116);
-            Badge(c, 44, b, earned);
+            Badge(c, 44, b, earned, here.BadgeNames[b]);
             string name = Words.Badge(here.BadgeNames[b]);
             UiFonts.DrawCentered(name, c.X - UiFonts.Measure(name, 22, UiWeight.Black) / 2f, c.Y + 76, 22, earned ? Ink : Muted, UiWeight.Black);
         }
@@ -390,7 +390,7 @@ internal static partial class ModernUi
         {
             bool earned = region.Has(b);
             var c = new Vector2(x + 56 + b * step, top + 230);
-            Badge(c, 56, b, earned);
+            Badge(c, 56, b, earned, region.BadgeNames[b]);
             string badge = Words.Badge(region.BadgeNames[b]);
             UiFonts.DrawCentered(badge, c.X - UiFonts.Measure(badge, 24, UiWeight.Black) / 2f, c.Y + 96, 24, earned ? Ink : Muted, UiWeight.Black);
         }

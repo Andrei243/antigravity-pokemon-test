@@ -1,0 +1,29 @@
+# The Pokémon Center at the foot of Mt. Moon on Route 4 (plan 19 · K4). docs/scripts.md describes the language; the
+# lines are our own, on FireRed's beats (data/maps/Route4_PokemonCenter_1F/scripts.inc).
+
+
+# The man who sells a Magikarp for ¥500, once (FLAG_BOUGHT_MAGIKARP).
+script MagikarpSalesman
+  face balding_man player
+  speaker "Man"
+  if flag FLAG_BOUGHT_MAGIKARP goto Bought
+  say "Psst! Got a minute? I've got a very special Pokémon here, a real secret."
+  ask "Just ¥500 and this Magikarp is yours. How about it?"
+  if no goto Declined
+  if not money >= 500 goto Poor
+  takemoney 500
+  givepokemon "Magikarp" 5
+  fanfare pokemon
+  text "{player} paid ¥500 and received a Magikarp!"
+  setflag FLAG_BOUGHT_MAGIKARP
+  say "Pleasure doing business with you. No refunds, mind!"
+  end
+label Declined
+  say "No? Your loss. Pokémon like this don't come along every day."
+  end
+label Poor
+  say "You don't have ¥500? Come back when you do, then."
+  end
+label Bought
+  say "No refunds! I told you. A deal's a deal."
+  end

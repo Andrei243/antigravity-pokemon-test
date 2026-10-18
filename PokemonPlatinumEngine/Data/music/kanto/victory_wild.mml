@@ -1,0 +1,24 @@
+# Victory over a wild Pokémon in Kanto (FireRed's MUS_VICTORY_WILD): a short, cheerful flourish in G and a light
+# loop while the EXP is shared out, square lead over strings. Original composition for this game (plan 19 · K4).
+title Victory! Wild Pokémon (Kanto)
+tempo 144
+meter 4/4
+reverb 0.22
+
+track lead square vol=0.78 pan=0 rev=0.24
+  o5 g8 r16 g16 b8 r8 o6 d4 g4 | o6 d2. r4 | L o5 b4 g8 b8 o6 d4 o5 b4 | o5 a4 f+8 a8 o6 c4 o5 a4 |
+  o5 g4 b8 g8 e4 g4 | o5 f+4 a4 d2 | o5 b4 o6 d8 o5 b8 g4 b4 | o5 a4 o6 c4 o5 b4 a4 |
+  o5 g2. r4 | r1 |
+
+track pad strings vol=0.34 pan=0.3 rev=0.32
+  o4 (g b >d)1 | (g b >d)1 | L (g b >d)1 | (f+ a >c)1 |
+  (e g b)1 | (d f+ a)1 | (g b >d)1 | (f+ a >c)1 |
+  (g b >d)1 | (g b >d)1 |
+
+track bass bass vol=0.64 rev=0.08
+  o3 g8 r8 g8 r8 d4 g4 | o3 g2. r4 | L o3 g4 d4 g4 d4 | o3 d4 a4 d4 a4 |
+  o3 e4 b4 e4 b4 | o3 d4 a4 d4 a4 | o3 g4 d4 g4 d4 | o3 d4 a4 d4 f+4 |
+  o3 g4 d4 g2 | o3 g4 d4 g4 d4 |
+
+track drums kit vol=0.44 rev=0.12
+  v90 b8 s16 s16 s8 r8 b4 b4 | (b c)2. r4 | L [ b4 s4 b8 b8 s4 | ]7 b4 s4 s8 s8 s4 |

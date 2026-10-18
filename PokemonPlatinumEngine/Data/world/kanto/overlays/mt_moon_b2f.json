@@ -1,0 +1,40 @@
+{
+  // Mt. Moon's lowest floor (plan 19 · K4): Team Rocket's grunts digging for fossils, and Miguel guarding the two they
+  // found (mt_moon_b2f.txt). The fossils lie on the ground like items, and are taken by Miguel's rule, not picked up
+  "area": "mt_moon_b2f",
+  "bgmTrack": "kanto/mt_moon",
+  "triggers": [ { "trigger": 0, "script": "MiguelTrigger" } ],
+  "people": {
+    "miguel": { "name": "Miguel", "script": "Miguel", "still": true },
+    "dome_fossil": { "name": "Dome Fossil", "npcType": "ItemBall", "item": "Dome Fossil", "script": "DomeFossil" },
+    "helix_fossil": { "name": "Helix Fossil", "npcType": "ItemBall", "item": "Helix Fossil", "script": "HelixFossil" },
+    "rocket_m": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: We, Team Rocket, are after the fossils in this cave. Beat it, kid!",
+        "dialogueAfter": "Grunt: You're tougher than you look. The boss won't like this."
+      }
+    },
+    "rocket_m_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Hey! Nobody comes down here without Team Rocket's say-so!",
+        "dialogueAfter": "Grunt: So you beat me. Big deal. There are plenty more of us."
+      }
+    },
+    "rocket_m_3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Little kids shouldn't wander into dark caves. Let me teach you a lesson!",
+        "dialogueAfter": "Grunt: Ugh... Maybe it's me who needs the lesson."
+      }
+    },
+    "rocket_m_4": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Team Rocket will sell these fossils for a fortune! Out of the way!",
+        "dialogueAfter": "Grunt: My fortune! You've ruined everything!"
+      }
+    }
+  }
+}

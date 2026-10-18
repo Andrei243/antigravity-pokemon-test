@@ -1,0 +1,78 @@
+{
+  "key": "route_24",
+  "index": 19,
+  "name": "Route 24",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE24",
+  "nightMusic": "MUS_ROUTE24",
+  "encounters": "route_24",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Weedle", "level": 7 },
+    { "species": "Caterpie", "level": 7 },
+    { "species": "Pidgey", "level": 11 },
+    { "species": "Oddish", "level": 12 },
+    { "species": "Oddish", "level": 13 },
+    { "species": "Abra", "level": 10 },
+    { "species": "Pidgey", "level": 13 },
+    { "species": "Oddish", "level": 14 },
+    { "species": "Kakuna", "level": 8 },
+    { "species": "Abra", "level": 8 },
+    { "species": "Metapod", "level": 8 },
+    { "species": "Abra", "level": 12 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [],
+  "objects": [
+    { "id": "route24_rocket", "looks": "man", "movement": "look_west", "x": 288, "z": 15, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_NUGGET_BRIDGE_ROCKET", "script": "Route24_EventScript_Rocket" },
+    { "id": "camper", "looks": "camper", "movement": "look_west", "x": 288, "z": 19, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_CAMPER_ETHAN" },
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 286, "z": 22, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_LASS_RELI" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 288, "z": 25, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_YOUNGSTER_TIMMY" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_east", "x": 286, "z": 28, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_LASS_ALI" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "look_west", "x": 288, "z": 31, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BUG_CATCHER_CALE" },
+    { "id": "camper_2", "looks": "camper", "movement": "look_north", "x": 281, "z": 21, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_CAMPER_SHANE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 287, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE24_TM45", "item": "TM45", "script": "Route24_EventScript_ItemTM45" }
+  ],
+  "signs": [
+    { "x": 295, "z": 4, "type": 2, "script": "", "item": "Pecha Berry", "flag": "FLAG_HIDDEN_ITEM_ROUTE24_PECHA_BERRY" }
+  ],
+  "triggers": [
+    { "x": 286, "z": 15, "width": 1, "depth": 1, "script": "Route24_EventScript_RocketTriggerLeft", "variable": "VAR_MAP_SCENE_ROUTE24", "value": "0" },
+    { "x": 287, "z": 15, "width": 1, "depth": 1, "script": "Route24_EventScript_RocketTriggerRight", "variable": "VAR_MAP_SCENE_ROUTE24", "value": "0" }
+  ]
+}

@@ -1,0 +1,18 @@
+# A girl trainer of Kanto spots the player (FireRed's MUS_ENCOUNTER_GIRL: Lasses, Picnickers): a light, teasing
+# figure in A over a swung bass, looping until the battle cuts in. Original composition for this game (plan 19 · K4).
+title Eyes Meet! Girl (Kanto)
+tempo 144
+meter 4/4
+reverb 0.22
+
+track lead square vol=0.95 pan=0 rev=0.22
+  L o5 e8 c+8 e8 a8 r8 g+8 a4 | o5 f+8 d8 f+8 b8 r8 a8 g+4 | o5 e8 c+8 e8 a8 r8 b8 o6 c+4 | o5 b8 a8 g+8 e8 a4 r4 |
+
+track answer celesta vol=0.5 pan=0.35 rev=0.3
+  L o5 r2 c+8 e8 r4 | r2 d8 f+8 r4 | r2 c+8 e8 r4 | r2 e8 c+8 r4 |
+
+track bass bass vol=0.72 rev=0.06
+  L o3 a8 r8 e8 r8 a8 r8 e8 r8 | d8 r8 a8 r8 e8 r8 b8 r8 | a8 r8 e8 r8 a8 r8 e8 r8 | e8 r8 b8 r8 a8 r8 e8 r8 |
+
+track drums kit vol=0.48 rev=0.1
+  v90 L [ b8 h8 s8 h8 b8 h8 s8 h8 | ]4

@@ -1,0 +1,11 @@
+{
+  // A house in Cerulean City (plan 19 · K4); its old man's berry crushing needs other players, which the game has none of
+  "area": "cerulean_city_house_5",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "old_man_2": {"name": "Old Man", "dialog": ["Crushing berries into powder is my favourite pastime. It's best with friends, though."]}
+  },
+  "signs": {
+      "CeruleanCity_House5_EventScript_BerryCrushRankings": "A list of berry-crushing records. The top names are all scribbled out."
+  }
+}

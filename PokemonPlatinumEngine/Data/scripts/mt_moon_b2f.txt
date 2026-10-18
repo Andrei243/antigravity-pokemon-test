@@ -1,0 +1,104 @@
+# Mt. Moon's lowest floor (plan 19 · K4). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/MtMoon_B2F/scripts.inc).
+#
+# The Super Nerd Miguel guards the two fossils the Rocket grunts were digging for. VAR_MAP_SCENE_MT_MOON_B2F, as
+# FireRed counts it: 0 until he is beaten (the step east of him starts his battle, the area's trigger 0), 1 after. The
+# player takes one fossil and he takes the other (FLAG_GOT_DOME_FOSSIL or FLAG_GOT_HELIX_FOSSIL, and
+# FLAG_GOT_FOSSIL_FROM_MT_MOON either way); plan 19 · K7's lab on Cinnabar Island revives it.
+
+
+# FireRed's OnTransition: the fossils lie where they were until one has been taken.
+script OnEnter
+  if flag FLAG_GOT_FOSSIL_FROM_MT_MOON end
+  clearflag FLAG_HIDE_DOME_FOSSIL
+  clearflag FLAG_HIDE_HELIX_FOSSIL
+  end
+
+
+# The step east of Miguel (the area's trigger 0).
+script MiguelTrigger
+  face miguel right
+  face player left
+  call BattleMiguel
+  end
+
+
+# Miguel spoken to.
+script Miguel
+  face miguel player
+  speaker "Miguel"
+  if flag FLAG_GOT_FOSSIL_FROM_MT_MOON goto Picked
+  if defeated "kanto_super_nerd_miguel" goto Choose
+  call BattleMiguel
+  end
+label Choose
+  say "Go on, then. Take whichever fossil you like. The other one's mine."
+  end
+label Picked
+  say "They say there's a lab on Cinnabar Island that can bring fossils back to life. Imagine that!"
+  end
+
+
+script BattleMiguel
+  scene "Miguel and the fossils"
+  speaker "Miguel"
+  say "Hold it! I found these fossils first. They're mine, and nobody's taking them!"
+  battle miguel as "kanto_super_nerd_miguel"
+  setvar VAR_MAP_SCENE_MT_MOON_B2F 1
+  speaker "Miguel"
+  say "All right, all right! You win. Let's be fair about it: one fossil each. You choose first."
+  endscene
+  return
+
+
+# The two fossils on the cave floor: whichever the player takes, Miguel takes the other.
+script DomeFossil
+  if not defeated "kanto_super_nerd_miguel" goto NotYet
+  if flag FLAG_GOT_FOSSIL_FROM_MT_MOON end
+  ask "It's a fossil shaped like a dome. Take the Dome Fossil?"
+  if no end
+  scene "The Dome Fossil"
+  hide dome_fossil
+  setflag FLAG_HIDE_DOME_FOSSIL
+  give "Dome Fossil"
+  walk miguel right 1 up 3
+  speaker "Miguel"
+  say "Then the Helix Fossil is mine! Thanks!"
+  hide helix_fossil
+  setflag FLAG_HIDE_HELIX_FOSSIL
+  setflag FLAG_GOT_DOME_FOSSIL
+  setflag FLAG_GOT_FOSSIL_FROM_MT_MOON
+  endscene
+  end
+label NotYet
+  call Guarded
+  end
+
+
+script HelixFossil
+  if not defeated "kanto_super_nerd_miguel" goto NotYet
+  if flag FLAG_GOT_FOSSIL_FROM_MT_MOON end
+  ask "It's a fossil shaped like a spiral shell. Take the Helix Fossil?"
+  if no end
+  scene "The Helix Fossil"
+  hide helix_fossil
+  setflag FLAG_HIDE_HELIX_FOSSIL
+  give "Helix Fossil"
+  walk miguel up 3
+  speaker "Miguel"
+  say "Then the Dome Fossil is mine! Thanks!"
+  hide dome_fossil
+  setflag FLAG_HIDE_DOME_FOSSIL
+  setflag FLAG_GOT_HELIX_FOSSIL
+  setflag FLAG_GOT_FOSSIL_FROM_MT_MOON
+  endscene
+  end
+label NotYet
+  call Guarded
+  end
+
+
+script Guarded
+  speaker "Miguel"
+  say "Hey! Hands off! Those fossils are mine!"
+  end
