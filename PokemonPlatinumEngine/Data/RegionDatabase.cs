@@ -61,6 +61,13 @@ public sealed class Region
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival => File?.Rival;
 
+    /// <summary>
+    /// The rival's name for a player of this look: the name the introduction offers, or where the rival is the hero
+    /// the player isn't, that hero's (Hoenn's May for the boy, Brendan for the girl; plan 21 · H2). Null for neither.
+    /// </summary>
+    public string? RivalFor(Core.PlayerLook look) =>
+        Rival ?? (look == Core.PlayerLook.Girl ? File?.Rivals?.Girl : File?.Rivals?.Boy);
+
     /// <summary>The three Pokémon of the professor's briefcase, in the order they are shown.</summary>
     public IReadOnlyList<string> Starters => (IReadOnlyList<string>?)File?.Starters ?? Array.Empty<string>();
 
@@ -384,11 +391,12 @@ public static class RegionDatabase
         new()
         {
             Id = Hoenn, Name = "Hoenn", Generation = 3, File = RegionFiles.Load(Hoenn),
-            // Emerald's Hoenn, read by the GBA reader (plan 21 · H1). Until its story is written (H2: the van, Mom and
-            // the clock) a new game begun there stands before the family's house in Littleroot Town, Emerald's spot
-            // for a white-out at home, with the first of Birch's three and a few items, as Kanto's first session did;
-            // a Champion come across stands there too
-            Start = new MapSpot("Hoenn", 125, 291, Direction.Down),
+            // Emerald's Hoenn, read by the GBA reader (plan 21 · H1). A new game begun there steps out of the moving van
+            // beside the west house of Littleroot Town with nothing (plan 21 · H2: Emerald's dynamic warp out of the
+            // truck, 3, 10 of the town), and the van's ride is the town's arrival; a Champion come across stands before
+            // the family's door, Emerald's spot for a white-out at home
+            Start = new MapSpot("Hoenn", 123, 292, Direction.Right),
+            Arrival = new MapSpot("Hoenn", 125, 291, Direction.Down),
             Maps = new[]
             {
                 "Hoenn",
@@ -399,6 +407,8 @@ public static class RegionDatabase
                 "OldaleTown_House1", "OldaleTown_House2", "OldaleTown_PokemonCenter_1F", "OldaleTown_PokemonCenter_2F", "OldaleTown_Mart",
                 "PetalburgCity_WallysHouse", "PetalburgCity_House1", "PetalburgCity_House2",
                 "PetalburgCity_PokemonCenter_1F", "PetalburgCity_PokemonCenter_2F", "PetalburgCity_Mart",
+                // Plan 21 · H2: Petalburg's Gym, its hall at the door
+                "PetalburgCity_Gym",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

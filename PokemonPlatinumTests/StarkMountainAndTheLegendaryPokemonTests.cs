@@ -99,7 +99,7 @@ public class StarkMountainAndTheLegendaryPokemonTests
     {
         var game = new OpeningTests.Game();
         // No story version of its own: common.ChapterTwelve hid this part's people already (plan 02 · S15, part a)
-        Assert.Equal(22, StoryState.CurrentVersion);   // 22 is plan 20 · J3's Pokégear, not this part's
+        Assert.Equal(23, StoryState.CurrentVersion);   // 23 is plan 21 · H2's Hoenn story, not this part's
         var sinnoh = game.Maps["Sinnoh"];
         NPC Of(Map map, string place, string key) => Assert.Single(map.Everyone, n => n.Key == key && (map.ScriptFileAt(n.GridX, n.GridY) == place || n.ScriptFile == place));
 

@@ -196,7 +196,35 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
   - **Tests**: `HoennTests` (11: the index, keys apart from other regions, the record, the start, the walk to every area and room with a floor of tiles, ways out and back, rooms of their kind and furnished, Mom and the nurses, Route 101's Pokémon, the trainers' prefix and prize, Emerald's rows apart from FireRed's); `RegionTests`, `RegionRecordTests`, `RegionBadgeTests` and `PokedexTests` take Unova as the region with no file.
   - **Shots**: the `hoenn` mode's `h00` to `h18` (with `h09b` and `h09c` round Petalburg's Gym), looked at; the walk from the family's door to Petalburg's Center, 145 tiles, no chunk waited for (one frame of 50.8 ms at the Center's door as a chunk was made ready); the four towns and routes timed at 5.6 to 6.9 ms a frame (an earlier run's 10.3 ms for Oldale was the machine). Fixed from the look: a door kept shut (`locked`) is still its building's door where houses are found at their doors (`Map.BuildingKinds` notes its kind by the area it would lead into, `WorldMapBuilder.KindOfArea`), or Petalburg's Gym stood as grey rock; the house's three televisions were one.
   - **Left for H2 and after**: the story (the van, the bedroom start, Birch on Route 101, the starters, the rival, Wally, Norman), the triggers north of Littleroot and Oldale's west road left without scripts, Petalburg's Gym, Birch's and the cast's looks, the cover rows of the rest of Emerald's tilesets (`report.md`), the berry trees of Routes 102 and 103 (they need Hoenn's berry patches, which must not share Sinnoh's numbers), `HoennUnderwater`; the user's level-curve choice is pending, so Emerald's levels stand.
-- [ ] H2 The van to Rustboro
+- [ ] H2 The van to Rustboro (part a done 2026-10-18, wave 30: the van to Wally's catch)
+  - **Played**: a new game with `--region Hoenn` steps out of the moving van beside the west house with nothing
+    (`hasStory`, `common.HoennNewGame`), the ride told over the dark as the town's arrival; Mom and the movers'
+    Vigoroth, the clock (a line, the computer's own), Dad's Gym on the television, the professor's wife next door and
+    the rival at the Poké Ball upstairs, the little girl at the top of the road, Birch chased by a Zigzagoon on Route 101
+    and his bag (`starter`, the first battle), his thanks in the lab, the rival's battle on Route 103 (Emerald's team for
+    the player's starter), the rival running on through Oldale, the Pokédex and five Poké Balls, Mom's Running Shoes,
+    Oldale's footprints man and the clerk's Potion, Petalburg's boy, Norman in his Gym's hall, Wally's catch
+    (`catchinglesson ... by "Wally" "Zigzagoon" 7`, new) and Norman's rule of four Badges; every scene a `scene`. Story
+    version 23 (`HoennChapterOne`: an H1 save is taken past the opening by `common.HoennOpeningDone`).
+  - **The rival** is the hero the player isn't, May for the boy and Brendan for the girl (`hoenn.json`'s `rivals`,
+    `Region.RivalFor`, the introduction's offer), drawn from an overlay's `Rival:MAY:BRENDAN`
+    (`PlayerIdentity.CharacterFor`); the family lives in the west house for both looks (rulings, "Hoenn's first
+    chapter").
+  - **Opened**: Petalburg's Gym (`PetalburgCity_Gym`), its hall alone, every way on `locked` until H4.
+  - **Looks**: `prof_birch` (the introduction's professor too), `may`, `brendan`, `wally`, `norman`; the `Rival` class
+    in battle picks May's or Brendan's.
+  - **Music** (ours, rendered clash-free, −18.4 to −20.3 LUFS, not yet heard): `gym`, `rival`, `help`, `battle_wild`,
+    `battle_trainer`, `battle_rival`, `victory_wild`, `victory_trainer`, `eye_boy`, `eye_girl`.
+  - **Tests**: `HoennStoryTests` (the chapter four ways, by look and starter; the rival's lost battle; Oldale's road;
+    the new game's flags and the rival by look; a Champion never put in the van; the songs; an H1 save upgraded);
+    `ScriptTests` for the lesson's catcher. Harness: the `hoenn` mode ends with `hs01`–`hs23`.
+  - **Left for H2, part b**: Route 104, Petalburg Woods and its grunt, Rustboro City (its `Architecture` row), Roxanne
+    and the Stone Badge, Rusturf Tunnel and the Devon Goods, the PokéNav, Roxanne's and the classes' looks, `eye_aqua`
+    and `battle_gym`, `petalburg_woods`, `route104`, `rustboro`; still from H1: the cover rows of the rest of Emerald's
+    tilesets, Hoenn's berry trees (patch numbers of their own above Sinnoh's 128), the triggers north of Oldale.
+    Seen in the shots and left: the Gym's hall is drawn small at the corner of a camera that frames the whole long
+    building over the dark (a room 112 tiles deep; its side walls had to be laid in lengths for it to draw at all,
+    `MapScene.AddInterior`), and in Wally's lesson the player's own figure stands on the platform, not Wally's.
 - [ ] H3 Dewford, Slateport and Mauville
 - [ ] H4 The desert, Mt. Chimney and Lavaridge
 - [ ] H5 Dive and the sea floor

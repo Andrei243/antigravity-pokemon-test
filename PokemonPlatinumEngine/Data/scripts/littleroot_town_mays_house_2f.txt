@@ -1,0 +1,48 @@
+# The rival's room upstairs (plan 21 · H2). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/LittlerootTown_MaysHouse_2F/scripts.inc).
+#
+# VAR_LITTLEROOT_RIVAL_STATE, as Emerald counts it: 2 the room come into, 3 the rival met, 4 the Pokédex had. The rival
+# comes in when the player looks at the Poké Ball on the floor, and goes out to help the professor.
+
+
+script OnEnter
+  if var VAR_LITTLEROOT_RIVAL_STATE >= 2 end
+  setvar VAR_LITTLEROOT_RIVAL_STATE 2
+  end
+
+
+script RivalsBall
+  if var VAR_LITTLEROOT_RIVAL_STATE != 2 goto JustABall
+  scene "The rival next door"
+  text "A Poké Ball sits on the floor. It's empty."
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+  show rivals_house_2f_rival
+  walk rivals_house_2f_rival down 1
+  emote rivals_house_2f_rival exclaim
+  face player rivals_house_2f_rival
+  face rivals_house_2f_rival player
+  music "hoenn/rival"
+  speaker "{rival}"
+  say "Huh? Who are you? ...Oh! You're {player}, from next door! I heard you were moving in."
+  say "I'm {rival}. My dad's Professor Birch. I help him count Pokémon out on the routes."
+  say "I've always wanted a friend nearby who's into Pokémon too. Maybe someday you'll have one of your own!"
+  say "Oops, I'd better get going. Dad's out on Route 101 and I said I'd help. See you, {player}!"
+  walk rivals_house_2f_rival up 1
+  hide rivals_house_2f_rival
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+  music area
+  hide item_ball
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL
+  setvar VAR_LITTLEROOT_RIVAL_STATE 3
+  setvar VAR_LITTLEROOT_TOWN_STATE 1
+  endscene
+  end
+label JustABall
+  text "An empty Poké Ball."
+  end
+
+
+# The rival once back from Route 103 and in the lab, when they come home
+script Rival
+  say "Our house is right next to yours, {player}. Come over any time!"
+  end

@@ -1,0 +1,20 @@
+# Someone in trouble in the grass (Emerald's MUS_HELP, Professor Birch chased up Route 101): a panicky strings
+# tremolo in E minor under a short, sliding square cry for help, and a bass that will not keep still. Original
+# composition for this game (plan 21 · H2).
+title Help!
+tempo 152
+meter 4/4
+reverb 0.2
+night none
+
+track lead square vol=0.68 pan=0.05 rev=0.2
+  L o5 e8 g8 b8 o6 e8 d4 o5 b4 | o5 c8 e8 g8 b8 a4 e4 | o5 e8 g8 b8 o6 e8 f+4 d+4 | o5 b2 b4 r4 |
+
+track tremolo strings vol=0.3 pan=-0.25 rev=0.22
+  L o4 [ (e g b)16 ]16 | [ (c e a)16 ]16 | [ (e g b)16 ]16 | [ (d+ f+ b)16 ]16 |
+
+track bass synthbass vol=0.62 rev=0.05
+  L [ o2 e8 o3 e8 ]4 | [ o2 a8 o3 a8 ]4 | [ o2 e8 o3 e8 ]4 | [ o2 b8 o3 b8 ]4 |
+
+track drums kit vol=0.42 rev=0.1
+  L v90 [ b8 s8 b8 s8 b8 s8 b8 s8 | ]3 b8 s8 b8 s8 s16 s16 s16 s16 s8 s8 |

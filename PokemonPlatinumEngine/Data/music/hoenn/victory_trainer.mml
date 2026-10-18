@@ -1,0 +1,29 @@
+# Victory over a trainer of Hoenn (Emerald's MUS_VICTORY_TRAINER): a proud fanfare in F and a strolling loop where the
+# square lead and a horn take turns. Original composition for this game (plan 21 · H2).
+title Victory! Trainer (Hoenn)
+tempo 136
+meter 4/4
+reverb 0.22
+
+track lead square vol=0.78 pan=0 rev=0.24
+  o5 f8 r16 f16 f8 r8 a4 o6 c4 | o6 f2. r4 | L o5 a4 o6 c8 o5 a8 f4 c4 | o5 b-4 o6 d8 o5 b-8 g4 b-4 |
+  o5 a4 f8 a8 o6 c4 o5 a4 | o5 g4 e8 g8 c4 e4 | o5 f4 a8 o6 c8 f4 c4 | o5 b-4 o6 d8 f8 d4 o5 b-4 |
+  o5 a4 o6 c4 o5 g4 e4 | o5 f2. r4 |
+
+track horn horn vol=0.34 pan=-0.3 rev=0.3
+  o4 a2 r2 | o4 a2 r2 | L o4 a1 | o4 b-1 |
+  o4 a1 | o4 g1 | o4 a1 | o4 b-1 |
+  o4 a2 g2 | o4 a1 |
+
+track pad pizzicato vol=0.38 pan=0.3 rev=0.3
+  o4 (f a c)2 r2 | (f a c)2 r2 | L [ (f a c)4 ]4 | [ (f b- d)4 ]4 |
+  [ (f a c)4 ]4 | [ (e g c)4 ]4 | [ (f a c)4 ]4 | [ (f b- d)4 ]4 |
+  (f a c)4 (f a c)4 (e g c)4 (e g c)4 | (f a c)2. r4 |
+
+track bass bass vol=0.62 rev=0.08
+  o3 f8 r8 f8 r8 f4 c4 | o3 f2. r4 | L o3 f4 c4 f4 c4 | o3 b-4 f4 b-4 f4 |
+  o3 f4 c4 f4 c4 | o3 c4 g4 c4 g4 | o3 f4 c4 f4 c4 | o3 b-4 f4 b-4 f4 |
+  o3 f4 c4 c4 g4 | o3 f4 c4 f2 |
+
+track drums kit vol=0.44 rev=0.12
+  v88 b8 s16 s16 s8 r8 b4 b4 | (b c)2. r4 | L [ b4 s4 b8 b8 s4 | ]7 b4 s4 s16 s16 s16 s16 s8 s8 |

@@ -1,9 +1,20 @@
 {
-  // Route 101 (plan 21 · H1), between Littleroot Town and Oldale Town. Professor Birch chased up a tree by a Zigzagoon,
-  // his bag and the triggers that start the scene are plan 21 · H2's; until then the route is open grass
+  // Route 101 (plan 21 · H1, H2), between Littleroot Town and Oldale Town. Professor Birch chased by a Zigzagoon, his
+  // bag of Poké Balls in the grass and the steps that keep the player in the scene are route_101.txt's
   "area": "route_101",
   "bgmTrack": "hoenn/route101",
   "trees": "Round",
+  "triggers": [
+    { "trigger": 0, "script": "BirchInTrouble" },
+    { "trigger": 1, "script": "BirchInTrouble" },
+    { "trigger": 2, "script": "DontLeaveMe" },
+    { "trigger": 3, "script": "DontLeaveMe" },
+    { "trigger": 4, "script": "DontLeaveMeWest" },
+    { "trigger": 5, "script": "DontLeaveMeWest" },
+    { "trigger": 6, "script": "DontLeaveMeWest" },
+    { "trigger": 7, "script": "DontLeaveMeCorner" },
+    { "trigger": 8, "script": "DontLeaveMeNorth" }
+  ],
   "people": {
     "youngster": {
       "name": "Youngster",
@@ -11,6 +22,14 @@
         "Wild Pokémon jump out of the tall grass when you least expect it.",
         "If you haven't got a Pokémon of your own, stick to the path!"
       ]
+    },
+    "route101_birch": { "name": "Prof. Birch", "still": true, "dialog": [ "Help! Get a Poké Ball from my bag!" ] },
+    "route101_zigzagoon": { "name": "Zigzagoon", "npcType": "Pokemon", "species": "Zigzagoon", "still": true, "dialog": [ "Zigzagoon: Guguuh!" ] },
+    // Emerald draws the professor's bag; this game shows a Poké Ball on the ground where it lies
+    "birchs_bag": { "name": "Bag", "npcType": "ItemBall", "item": "Poké Ball", "script": "BirchsBag", "still": true },
+    "boy_2": {
+      "name": "Boy",
+      "dialog": [ "I heard the professor yelling for help all the way from here! Good thing you came along." ]
     }
   },
   "signs": {

@@ -230,6 +230,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `wildbattle "Giratina-Origin" 47` | A form's name in place of its species': the Pokémon is met in that form (plan 02 · S12), and one caught keeps it only as the form's own rule lets it (Giratina's by the Griseous Orb, `FormRules.ByHeldItem`). |
 | `defeat "lass_caroline"` | A trainer of Platinum's data counts as beaten without a battle, in this game and every save of it, and whoever carries that trainer on any map stops wanting to battle: a Leader's script does it for the trainers of the Gym once the Badge is won (the original's `SetTrainerFlag`, plan 01 · M9). |
 | `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |
+| `catchinglesson "Ralts" 5 by "Wally" "Zigzagoon" 7` | The same lesson shown by someone else, with a Pokémon of their own at that level (5 if none is given): plan 21 · H2's Wally, with his father's Zigzagoon. |
 
 ### People and the field
 

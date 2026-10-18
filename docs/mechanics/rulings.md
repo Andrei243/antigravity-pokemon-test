@@ -2701,3 +2701,51 @@ commit), in our own words and music.
   the cave's three floors are open, the lowest reached as in HeartGold.
 - **Azalea Town is built in logs** under dark-brown roofs (`Architecture.Woodland`, the style guide's row), where
   HeartGold's houses are plain timber; its signs say what they say in our own words.
+## Hoenn's first chapter (2026-10-18, plan 21 · H2, its first part)
+
+Emerald's first chapter, from the moving van to Wally's catch in Petalburg City, is scripts of ours on its beats
+(`littleroot_town.txt`, `littleroot_town_brendans_house_1f.txt`, `_2f.txt`, `littleroot_town_mays_house_1f.txt`,
+`_2f.txt`, `route_101.txt`, `littleroot_town_professor_birchs_lab.txt`, `route_103.txt`, `oldale_town.txt`,
+`petalburg_city.txt`, `petalburg_city_gym.txt`), under Emerald's own flags and variables (`VAR_LITTLEROOT_INTRO_STATE`,
+`VAR_LITTLEROOT_TOWN_STATE`, `VAR_LITTLEROOT_RIVAL_STATE`, `VAR_ROUTE101_STATE`, `VAR_BIRCH_LAB_STATE`,
+`VAR_OLDALE_TOWN_STATE`, `VAR_OLDALE_RIVAL_STATE`, `VAR_PETALBURG_CITY_STATE`, `VAR_PETALBURG_GYM_STATE`, the map
+objects' `FLAG_HIDE_…`, `FLAG_RESCUED_BIRCH`, `FLAG_DEFEATED_RIVAL_ROUTE103`, `FLAG_ADVENTURE_STARTED`), none of which
+meets a name of Platinum's, Kanto's or Johto's, so none needed `HOENN_`. What differs from Emerald, and why:
+
+- **Whose rules and levels.** Hoenn is fought by the rules the game is played by, on Emerald's teams and levels
+  (`Data/world/hoenn/trainers.json`), as Kanto's and Johto's chapters are; Emerald's own Generation 3 rules are not a
+  third preset. Whether a Champion who crosses from Johto meets them scaled is the user's choice, still to be made, and
+  nothing scales them yet.
+- **A new game** steps out of the moving van beside the west house of Littleroot Town (123, 292, Emerald's dynamic warp
+  out of the truck) with no Pokémon and an empty bag (`hoenn.json`'s `hasStory`). The van's ride is told over the dark,
+  as the town's arrival, and only for a game standing on that tile with the introduction not begun: a Champion who
+  crosses from Johto arrives before the house's door (`Region.Arrival`) and is never put in the van. What a Hoenn game
+  starts with is `common.HoennNewGame`, run after `NewGame` for every new game.
+- **The family lives in the west house** whatever the player's look; Emerald moves a girl into the east house and makes
+  the west one the rival's. The east house is the rival's family's here for both, and its people of the player's family
+  are left out of its overlay.
+- **The rival is the hero the player isn't**: May for the boy, Brendan for the girl (`hoenn.json`'s `rivals`,
+  `Region.RivalFor`), named by the look, so the introduction asks no rival's name. The player keeps their own figure
+  (plan 18's decision 7); the rival is drawn as May or Brendan, looks of ours, written in an overlay as
+  `Rival:MAY:BRENDAN` (`PlayerIdentity.CharacterFor`). Emerald's two encounter themes are one song here
+  (`hoenn/rival`).
+- **The clock** is the computer's own (`GameClock`), so setting it is a line and no screen; Mom comes up to see it as
+  Emerald's does.
+- **The neighbour's child comes in** when the player looks at the Poké Ball on their bedroom's floor, as Emerald's
+  does; Emerald's second way in, the child walking in downstairs if the player leaves the room first, is left out.
+- **The professor's bag** is a Poké Ball on the grass where Emerald draws a bag; looking at it opens the choice of
+  three (`starter`), the first battle (a Zigzagoon of level 2) follows at once, and the professor's thanks are the
+  lab's arrival. The rival takes the one strong against the player's (`Region.RivalStarterFor`), and Emerald's team
+  for that pair is the battle on Route 103 (`hoenn_may_route_103_<the player's starter>`, `hoenn_brendan_…`).
+- **The Mart's clerk in Oldale Town** gives the Potion where she stands; Emerald's clerk walks the player to the Mart
+  first.
+- **Petalburg's Gym** is open from the first visit; only its hall is walked until Norman's Balance Badge (plan 21 · H4),
+  every way on into its rooms `locked` in its overlay. Norman stands in the hall (Emerald's `MoveNormanToEntrance`).
+- **Wally's catch** is the catching lesson (`catchinglesson "Ralts" 5 by "Wally" "Zigzagoon" 7`, a lesson shown by
+  someone other than the assistant, with their own Pokémon), in the tall grass east of the city, come to through the
+  dark; Emerald walks the two there.
+- **A save of Hoenn from before the chapter** (H1's stand-in start, which owned one of Birch's three and recorded no
+  starter) is taken past the opening (`common.HoennOpeningDone`, story version 23), its starter the one it owns;
+  Petalburg's Gym and Wally's catch are left for it to play.
+- **Still to come in H2**: Route 104, Petalburg Woods and its grunt, Rustboro City, Roxanne and the Stone Badge, Rusturf
+  Tunnel and the Devon Goods, and Mr. Stone's PokéNav.

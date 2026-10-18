@@ -5,9 +5,11 @@
   "map": "Hoenn",
   "dex": "hoenn",
   "nationalUnlock": "HallOfFame",
-  // Plan 21 · H1: the world, the record and a start; the story is plan 21 · H2's, so a new game begun here still
-  // begins as every unwritten region's does, with the first of the three and a few items
-  "hasStory": false,
+  // Plan 21 · H2: a new game begun here begins with the story, beside the moving van in Littleroot Town with nothing
+  "hasStory": true,
+  // The rival is the hero the player isn't: May for the boy, Brendan for the girl, as in Emerald, and the introduction
+  // asks no rival's name
+  "rivals": { "boy": "May", "girl": "Brendan" },
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },
   "starters": [ "Treecko", "Torchic", "Mudkip" ],
   "badges": [ "Stone", "Knuckle", "Dynamo", "Heat", "Balance", "Feather", "Mind", "Rain" ],
@@ -24,7 +26,7 @@
   },
   "professor": {
     "name": "Prof. Birch",
-    "look": "ROWAN",
+    "look": "PROF_BIRCH",
     "species": "Lotad",
     "lines": {
       "hello": "Hi there! Sorry, I've only just got back from the field. Excuse the mud.",

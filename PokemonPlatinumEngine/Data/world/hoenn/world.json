@@ -27,7 +27,10 @@
     { "name": "PetalburgCity_House2", "matrix": 56, "area": "petalburg_city_house_2", "trees": "Round", "setting": "Indoors" },
     { "name": "PetalburgCity_PokemonCenter_1F", "matrix": 57, "area": "petalburg_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "PetalburgCity_PokemonCenter_2F", "matrix": 58, "area": "petalburg_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
-    { "name": "PetalburgCity_Mart", "matrix": 59, "area": "petalburg_city_mart", "trees": "Round", "setting": "Indoors" }
+    { "name": "PetalburgCity_Mart", "matrix": 59, "area": "petalburg_city_mart", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H2: Petalburg's Gym, a row of rooms one behind another; only the hall at its door is walked until
+    // Norman's Balance Badge (H4), its doors on into the rooms kept shut by the overlay
+    { "name": "PetalburgCity_Gym", "matrix": 54, "area": "petalburg_city_gym", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -35,8 +38,9 @@
     "littleroot_town_brendans_house_1f", "littleroot_town_brendans_house_2f", "littleroot_town_mays_house_1f",
     "littleroot_town_mays_house_2f", "littleroot_town_professor_birchs_lab",
     "oldale_town_house_1", "oldale_town_house_2", "oldale_town_pokemon_center_1f", "oldale_town_pokemon_center_2f", "oldale_town_mart",
-    // Petalburg's Gym, a row of rooms joined by doors that its Leader's scenes open, is plan 21 · H2's
     "petalburg_city_wallys_house", "petalburg_city_house_1", "petalburg_city_house_2",
-    "petalburg_city_pokemon_center_1f", "petalburg_city_pokemon_center_2f", "petalburg_city_mart"
+    "petalburg_city_pokemon_center_1f", "petalburg_city_pokemon_center_2f", "petalburg_city_mart",
+    // Plan 21 · H2: Petalburg's Gym, where Norman sends the player out with Wally
+    "petalburg_city_gym"
   ]
 }

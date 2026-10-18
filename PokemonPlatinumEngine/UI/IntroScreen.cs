@@ -77,7 +77,7 @@ public class IntroScreen
     public string BoyOrGirl => Shown(Said.BoyOrGirl);
 
     /// <summary>The name offered for the rival, and taken when none is entered.</summary>
-    public string DefaultRival => Region.Rival ?? PlayerIdentity.DefaultRivalName;
+    public string DefaultRival => Region.RivalFor(Look) ?? PlayerIdentity.DefaultRivalName;
 
     /// <summary>The character type the rival is drawn as.</summary>
     public const string Rival = "RIVAL";

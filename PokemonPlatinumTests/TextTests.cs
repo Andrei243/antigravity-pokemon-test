@@ -219,7 +219,7 @@ public class TextTests
         ["Core/GameEngine.Arcade.cs"] = new[] { "BattleArcade" },
         ["Core/GameEngine.Encounters.cs"] = new[] { "Poké Radar" },
         // The characters' own names, which the save keeps as the player's and the rival's, and the looks by their names
-        ["Core/PlayerIdentity.cs"] = new[] { "Barry", "Dawn", "Lucas", "DAWN", "PLAYER", "Player", "Assistant" },
+        ["Core/PlayerIdentity.cs"] = new[] { "Barry", "Dawn", "Lucas", "DAWN", "PLAYER", "Player", "Assistant", "Rival:" },
         // What the tests hear of a cry, never on screen
         ["Core/AudioManager.cs"] = new[] { "cry {name}", "cry {name} {mode}" },
         // Plan 17 · N2. The Pokémon the professor shows, the looks he and the rival are drawn as, and the ball's art

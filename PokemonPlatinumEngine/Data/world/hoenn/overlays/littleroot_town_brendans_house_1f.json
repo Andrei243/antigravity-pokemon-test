@@ -1,23 +1,24 @@
 {
-  // The family's house downstairs (plan 21 · H1): a room built from Emerald's layout. Which of the two houses is the
-  // player's goes by the look chosen in Emerald; until plan 21 · H2 writes the move-in, this west one is home for both,
-  // and Mom, the movers' Vigoroth and the clock are that chapter's
+  // The family's house downstairs (plan 21 · H1, H2): a room built from Emerald's layout, the player's home whatever
+  // the look (docs/mechanics/rulings.md, "Hoenn's first chapter"). Mom meets the player in from the van and sends them
+  // up to set the clock, the movers' Vigoroth carry boxes until it is set, and the television shows Dad's Gym
+  // (littleroot_town_brendans_house_1f.txt)
   "area": "littleroot_town_brendans_house_1f",
   "bgmTrack": "hoenn/littleroot",
+  "triggers": [ { "trigger": 0, "script": "GoSeeRoom" } ],
   "people": {
-    // Mom sees to the team whenever she is spoken to, as Kanto's does. She stands a tile west of Emerald's place for
-    // her, at the rug's edge: a white-out wakes the player on the tile east of her (GameEngine.HomeSpot), which in
-    // Emerald's own place is the table
+    // Mom sees to the team whenever she is spoken to, once the moving is done. She stands a tile west of Emerald's
+    // place for her, at the rug's edge: a white-out wakes the player on the tile east of her (GameEngine.HomeSpot),
+    // which in Emerald's own place is the table
     "players_house_1f_mom": {
       "name": "Mom",
       "at": [ 1, 6 ],
-      "script": "Healer",
+      "script": "Mom",
       "isHealingNurse": true,
       "hiddenBy": "",
-      "dialog": [
-        "You look tired out, sweetie. Sit down for a minute and catch your breath.",
-        "There, all better! Your Pokémon look happier already. Don't forget to come home now and then."
-      ]
-    }
+      "still": true
+    },
+    "vigoroth_carrying_box": { "name": "Vigoroth", "npcType": "Pokemon", "species": "Vigoroth", "dialog": [ "Vigoroth: Gruoh! It's too busy carrying boxes to stop!" ] },
+    "vigoroth_facing_away": { "name": "Vigoroth", "npcType": "Pokemon", "species": "Vigoroth", "still": true, "dialog": [ "Vigoroth: Gyaoh! It's unpacking with great enthusiasm." ] }
   }
 }

@@ -135,6 +135,7 @@ public class ScriptTests
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
           catchinglesson "Bidoof" 2
+          catchinglesson "Ralts" 5 by "Wally" "Zigzagoon" 7
           face self player
           face player up
           walk player up 2 left fast
@@ -1215,6 +1216,16 @@ public class ScriptTests
     }
 
     [Fact]
+    public void ACatchingLessonMayBeShownBySomeoneElseWithTheirOwnPokemon()
+    {
+        // Plan 21 · H2: Wally catches his Ralts with his father's Zigzagoon
+        var host = Run("script S\n catchinglesson \"Ralts\" 5 by \"Wally\" \"Zigzagoon\" 7");
+        Assert.Contains("catcher Wally Zigzagoon 7", host.Log);
+        Assert.Contains("catchinglesson Ralts 5 Caught", host.Log);
+        Assert.Equal(0, host.Party.Count);
+    }
+
+    [Fact]
     public void AWildBattleThatCantBeFledSaysSo()
     {
         var host = Run("script S\n wildbattle \"Giratina\" 47 nofleeing", h => h.Fight = _ => BattleOutcome.Won);
@@ -1486,7 +1497,7 @@ public class ScriptTests
         public void Say(string? speaker, IReadOnlyList<string> lines) { }
         public int Answer => 0;
         public void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null) { }
-        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee) { }
+        public void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null) { }
         public BattleOutcome Outcome => BattleOutcome.Won;
         public void Open(ScriptScreen screen, NPC? subject, string? counter = null) { }
         public bool GivePokemon(Pokemon pokemon) => true;

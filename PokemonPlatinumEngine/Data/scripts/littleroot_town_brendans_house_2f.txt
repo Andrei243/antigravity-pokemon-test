@@ -1,0 +1,29 @@
+# The player's room upstairs (plan 21 · H2). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/LittlerootTown_BrendansHouse_2F/scripts.inc and data/scripts/players_house.inc).
+#
+# The wall clock: set once Mom has asked (VAR_LITTLEROOT_INTRO_STATE 4), after which she comes up to see it. This game's
+# clock is the computer's own (GameClock), so setting it is a line and no screen (docs/mechanics/rulings.md, "Hoenn's
+# first chapter").
+
+
+script WallClock
+  if var VAR_LITTLEROOT_INTRO_STATE != 4 goto Ticking
+  scene "The wall clock"
+  text "It's the clock Dad sent from Petalburg. Its hands are still at twelve."
+  text "{player} set the clock to the right time."
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM
+  show players_house_2f_mom
+  walk players_house_2f_mom down 1
+  face players_house_2f_mom player
+  speaker "Mom"
+  say "{player}, how's your room? Oh, you've set the clock! It looks lovely up there."
+  say "Come back downstairs for a minute, would you? I've got something to tell you."
+  walk players_house_2f_mom up 1
+  hide players_house_2f_mom
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM
+  setvar VAR_LITTLEROOT_INTRO_STATE 6
+  endscene
+  end
+label Ticking
+  text "The clock ticks away quietly. It keeps good time."
+  end

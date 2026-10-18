@@ -1,11 +1,12 @@
 {
-  // Route 103 (plan 21 · H1), north of Oldale Town, where the water begins. The rival watching Pokémon by the shore and
-  // Professor Birch are plan 21 · H2's. The trainers across the water are reached by Surf, which the Balance Badge lets
+  // Route 103 (plan 21 · H1, H2), north of Oldale Town, where the water begins: the rival watching Pokémon by the shore
+  // and their first battle are route_103.txt's. The trainers across the water are reached by Surf, which the Balance Badge lets
   // a Pokémon use; the way into the cave on the far bank leads nowhere yet
   "area": "route_103",
   "bgmTrack": "hoenn/route101",
   "trees": "Round",
   "people": {
+    "route103_rival": { "name": "{rival}", "npcType": "Rival:MAY:BRENDAN", "script": "Rival", "still": true },
     "man_3": {
       "name": "Man",
       "dialog": [ "Past the water there's a road that leads all the way to Slateport. You'll need a Pokémon that can swim, though." ]

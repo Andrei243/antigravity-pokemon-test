@@ -10,6 +10,16 @@ public sealed class RegionHeroes
     public string Girl { get; set; } = "DAWN";
 }
 
+/// <summary>The rival's name by the player's look, where the rival is the region's other hero (plan 21 · H2).</summary>
+public sealed class RegionRivals
+{
+    /// <summary>The rival of a player who is the boy (Hoenn's May).</summary>
+    public string? Boy { get; set; }
+
+    /// <summary>The rival of a player who is the girl (Hoenn's Brendan).</summary>
+    public string? Girl { get; set; }
+}
+
 /// <summary>The professor of a region's introduction: who, how he is drawn, the Pokémon he shows and his lines.</summary>
 public sealed class RegionProfessor
 {
@@ -88,6 +98,12 @@ public sealed class RegionFile
 
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival { get; set; }
+
+    /// <summary>
+    /// Where the rival is the hero the player isn't (Hoenn's May and Brendan, plan 21 · H2): the rival's name for a
+    /// player who is the boy and for one who is the girl. Null where <see cref="Rival"/> names a friend.
+    /// </summary>
+    public RegionRivals? Rivals { get; set; }
 
     public RegionHeroes Heroes { get; set; } = new();
     public List<string> Starters { get; set; } = new();

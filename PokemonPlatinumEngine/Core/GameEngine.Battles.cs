@@ -69,7 +69,8 @@ public partial class GameEngine
     /// watches (plan 06 · R9). (Not a second <c>StartWildBattle</c>: the screenshot harness finds that one by its
     /// name alone.)
     /// </summary>
-    private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null)
+    private void MeetWildPokemon(Pokemon wildPkmn, BattleKind kind = BattleKind.Normal, bool cannotFlee = false, Pokemon? second = null,
+        Story.LessonCatcher? catcher = null)
     {
         if (second != null) flow.Pokedex.RegisterSeen(second.Species.DexNumber);
         // The lesson is fought with a Pokédex of its own (FieldBattleDTO_NewCatchingTutorial): the player's isn't told
@@ -81,10 +82,11 @@ public partial class GameEngine
         if (kind == BattleKind.CatchingLesson)
         {
             party = new Party();
-            party.Add(new Pokemon(PokemonDatabase.Get(flow.Story.AssistantStarter ?? "Piplup")!, 5));
+            // Or whoever else shows it, with their own Pokémon (plan 21 · H2: Wally, with his father's Zigzagoon)
+            party.Add(catcher?.Own ?? new Pokemon(PokemonDatabase.Get(flow.Story.AssistantStarter ?? "Piplup")!, 5));
             bag = new Inventory();
             bag.AddItem(ItemDatabase.Get("Poké Ball")!, 20);
-            name = PlayerIdentity.Fill("{assistant}");
+            name = catcher != null ? PlayerIdentity.Fill(catcher.Name) : PlayerIdentity.Fill("{assistant}");
         }
 
         // The battle theme cuts in as the screen starts to flash, before the battle itself appears: a legendary's or

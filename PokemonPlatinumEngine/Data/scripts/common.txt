@@ -1264,3 +1264,72 @@ script JohtoPokegear
   if not flag FLAG_GOT_STARTER return
   addcontact prof_elm
   return
+
+
+# ------------------------------------------------------------------ Hoenn (plan 21 · H2)
+
+# What every game starts with in Hoenn, as Emerald's new game and its moving van set it, for the people of the first
+# chapter: Mom indoors until she meets the van, the trucks, the professor in the lab and on the routes until his
+# rescue, the rival's own room and the lab's rival until their scenes, the rival at Oldale until Route 103, Wally,
+# his father and Scott in Petalburg until the Gym, and the player's own house with nobody of the rival's in it. The
+# player's family moves into the west house whatever the player's look, and the rival's family is the east house's
+# (docs/mechanics/rulings.md, "Hoenn's first chapter"). Run with no screen after NewGame for every new game
+# (Story/StoryMigration.BeginNewGame runs each region's <Region>NewGame), and for a save from before Hoenn's story was
+# written (version 23). It may only set flags and variables, and ends in return.
+script HoennNewGame
+  setvar VAR_LITTLEROOT_HOUSES_STATE_MAY 1
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MAY
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+  setflag FLAG_HIDE_ROUTE_101_BIRCH
+  setflag FLAG_HIDE_ROUTE_101_BOY
+  setflag FLAG_HIDE_ROUTE_103_BIRCH
+  setflag FLAG_HIDE_OLDALE_TOWN_RIVAL
+  setflag FLAG_HIDE_PETALBURG_CITY_WALLY
+  setflag FLAG_HIDE_PETALBURG_GYM_WALLY
+  setflag FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
+  setflag FLAG_HIDE_PETALBURG_CITY_SCOTT
+  return
+
+
+# What Hoenn's first steps leave behind once they are played (plan 21 · H2): run with no screen for a save of Hoenn
+# from before its story was written, whose game began before the west house with a Treecko and a few items already
+# (Story/StoryMigration.cs, version 23). The van has stopped, the clock is set, the neighbours met, the professor
+# saved, the starter chosen, the rival battled on Route 103, the Pokédex had and the Running Shoes given; Petalburg's
+# Gym and Wally's catch are left to be played.
+script HoennOpeningDone
+  setvar VAR_LITTLEROOT_INTRO_STATE 7
+  setvar VAR_LITTLEROOT_HOUSES_STATE_MAY 2
+  setvar VAR_LITTLEROOT_RIVAL_STATE 4
+  setvar VAR_LITTLEROOT_TOWN_STATE 4
+  setvar VAR_ROUTE101_STATE 3
+  setvar VAR_BIRCH_LAB_STATE 5
+  setvar VAR_OLDALE_TOWN_STATE 1
+  setvar VAR_OLDALE_RIVAL_STATE 2
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL
+  setflag FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+  setflag FLAG_HIDE_ROUTE_101_ZIGZAGOON
+  setflag FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+  setflag FLAG_HIDE_ROUTE_103_RIVAL
+  setflag FLAG_MET_RIVAL_MOM
+  setflag FLAG_RESCUED_BIRCH
+  setflag FLAG_DEFEATED_RIVAL_ROUTE103
+  setflag FLAG_ADVENTURE_STARTED
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+  clearflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+  clearflag FLAG_HIDE_ROUTE_101_BOY
+  setflag FLAG_HAS_POKEDEX
+  setflag FLAG_HAS_RUNNING_SHOES
+  return

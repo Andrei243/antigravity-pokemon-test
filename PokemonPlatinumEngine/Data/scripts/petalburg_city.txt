@@ -1,0 +1,60 @@
+# Petalburg City (plan 21 · H2). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/PetalburgCity/scripts.inc).
+#
+# VAR_PETALBURG_CITY_STATE, as Emerald counts it: 0 the city not yet come to (a boy at the west road points out the
+# Gym), 1 come to, 2 out with Wally for his catch, 3 the catch made. The catch (Emerald's WallyTutorial) is the
+# city's arrival from the Gym: in the tall grass east of town, Wally shows how a Pokémon is caught, with his father's
+# Zigzagoon lent by Norman (`catchinglesson ... by`), and catches his Ralts.
+
+
+script OnEnter
+  if var VAR_PETALBURG_CITY_STATE != 2 end
+  scene "Wally's catch"
+  fade out
+  place player 71 249 right
+  place petalburg_wally 72 249 right
+  show petalburg_wally
+  fade in
+  face petalburg_wally player
+  speaker "Wally"
+  say "{player}... the grass is so tall here. Is a Pokémon really in there somewhere?"
+  say "I'm a little scared. But I'll do my best! Please, watch me!"
+  face petalburg_wally right
+  catchinglesson "Ralts" 5 by "Wally" "Zigzagoon" 7
+  face petalburg_wally player
+  say "I did it! I caught a Ralts! It's mine... my very own Pokémon!"
+  say "Thank you, {player}! Let's go back to the Gym and tell your dad!"
+  fade out
+  hide petalburg_wally
+  setflag FLAG_HIDE_PETALBURG_CITY_WALLY
+  setvar VAR_PETALBURG_CITY_STATE 3
+  setvar VAR_PETALBURG_GYM_STATE 1
+  warp "PetalburgCity_Gym" 4 108 up
+  endscene
+  end
+
+
+# The west road on first coming to town (the area's triggers 0 to 3, on VAR_PETALBURG_CITY_STATE 0): the boy who
+# waits there for the Gym to open tells the newcomer where it is
+script ShowGym
+  emote gym_boy exclaim
+  face gym_boy player
+  speaker "Boy"
+  say "Hey! You're new here, aren't you? Have you seen our Gym? It's that big building just up the road!"
+  say "The Leader's name is Norman. He's moved here from Johto, and he's really, really strong!"
+  setvar VAR_PETALBURG_CITY_STATE 1
+  end
+
+
+script GymBoy
+  if var VAR_PETALBURG_GYM_STATE >= 2 goto Open
+  say "The Gym's that big building up the road. Norman's the Leader. Isn't that your dad?"
+  end
+label Open
+  say "Norman won't take on just anyone. You need four Badges from other Gyms before he'll battle you!"
+  end
+
+
+script WallysMom
+  say "My boy Wally has always been frail. We're sending him to stay with relatives in Verdanturf, where the air is clean."
+  end

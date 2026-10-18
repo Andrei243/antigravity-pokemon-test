@@ -1,0 +1,62 @@
+# The player's house downstairs, the west house of Littleroot Town (plan 21 · H2). docs/scripts.md describes the
+# language; the lines are our own, on Emerald's beats (data/maps/LittlerootTown_BrendansHouse_1F/scripts.inc and
+# data/scripts/players_house.inc). Emerald gives the player the east house when they are the girl; this game keeps the
+# family in the west one either way (docs/mechanics/rulings.md, "Hoenn's first chapter").
+
+
+# In from the van (VAR_LITTLEROOT_INTRO_STATE 3): the movers' Vigoroth at work, and Mom sends the player upstairs to set
+# the clock. Back down with the clock set (6): Dad's Gym on the television, just missed, and next door to say hello.
+script OnEnter
+  if var VAR_LITTLEROOT_INTRO_STATE == 3 goto MovingIn
+  if var VAR_LITTLEROOT_INTRO_STATE == 6 goto OnTheTelevision
+  end
+label MovingIn
+  scene "Moving in"
+  face players_house_1f_mom player
+  speaker "Mom"
+  say "See, {player}? The movers' Vigoroth are doing all the heavy lifting. Isn't that something?"
+  say "Your room is upstairs. Go and have a look! And Dad bought you a new clock. Set it for me, would you?"
+  setvar VAR_LITTLEROOT_INTRO_STATE 4
+  endscene
+  end
+label OnTheTelevision
+  scene "Dad on the television"
+  face players_house_1f_mom player
+  emote players_house_1f_mom exclaim
+  speaker "Mom"
+  say "{player}! Quick, come here! It's Dad's Gym on the television! Petalburg City!"
+  text "...the Gym's Leader, Norman, has kept his team in fine form this season. That's all from Petalburg..."
+  say "Oh! It's over already. We missed him. What a shame!"
+  say "Your father has his Gym in Petalburg City now, so we'll see more of him. You should go and visit him."
+  say "But first, go next door and say hello. Professor Birch lives there, and his child is just about your age!"
+  hide vigoroth_carrying_box
+  hide vigoroth_facing_away
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
+  setflag FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
+  setvar VAR_LITTLEROOT_INTRO_STATE 7
+  endscene
+  end
+
+
+# Out of the door before the clock is set (the area's trigger 0, on VAR_LITTLEROOT_INTRO_STATE 4)
+script GoSeeRoom
+  face players_house_1f_mom player
+  speaker "Mom"
+  say "Wait, {player}! You haven't even seen your room yet. And don't forget to set the clock!"
+  walk player up 1
+  end
+
+
+# Mom, once the moving is done: she sees to the team, as every Mom does
+script Mom
+  if var VAR_LITTLEROOT_INTRO_STATE < 7 goto Busy
+  speaker "Mom"
+  say "You look tired out, sweetie. Sit down for a minute and catch your breath."
+  heal
+  fanfare heal
+  say "There, all better! Your Pokémon look happier already. Don't forget to come home now and then."
+  end
+label Busy
+  speaker "Mom"
+  say "Go on upstairs and see your room, {player}. The clock won't set itself!"
+  end

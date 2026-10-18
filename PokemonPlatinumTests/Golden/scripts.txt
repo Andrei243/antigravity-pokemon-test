@@ -7519,6 +7519,54 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_OBTAINED_HIDDEN_TEST_STARDUST
+=== common.HoennNewGame
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
+  + FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
+  + FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+  + FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
+  + FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_MAY
+  + FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+  + FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_TRUCK
+  + FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
+  + FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM
+  + FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+  + FLAG_HIDE_OLDALE_TOWN_RIVAL
+  + FLAG_HIDE_PETALBURG_CITY_SCOTT
+  + FLAG_HIDE_PETALBURG_CITY_WALLY
+  + FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
+  + FLAG_HIDE_PETALBURG_GYM_WALLY
+  + FLAG_HIDE_ROUTE_101_BIRCH
+  + FLAG_HIDE_ROUTE_101_BOY
+  + FLAG_HIDE_ROUTE_103_BIRCH
+  = VAR_LITTLEROOT_HOUSES_STATE_MAY 0 -> 1
+=== common.HoennOpeningDone
+from a trainer with lines of their own
+way -
+  + FLAG_ADVENTURE_STARTED
+  + FLAG_DEFEATED_RIVAL_ROUTE103
+  + FLAG_HAS_POKEDEX
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_HIDE_LITTLEROOT_TOWN_BRENDANS_HOUSE_TRUCK
+  + FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_2F_POKE_BALL
+  + FLAG_HIDE_LITTLEROOT_TOWN_MAYS_HOUSE_RIVAL_BEDROOM
+  + FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_1
+  + FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_HOUSE_VIGOROTH_2
+  + FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG
+  + FLAG_HIDE_ROUTE_101_BIRCH_ZIGZAGOON_BATTLE
+  + FLAG_HIDE_ROUTE_101_ZIGZAGOON
+  + FLAG_HIDE_ROUTE_103_RIVAL
+  + FLAG_MET_RIVAL_MOM
+  + FLAG_RESCUED_BIRCH
+  = VAR_BIRCH_LAB_STATE 0 -> 5
+  = VAR_LITTLEROOT_HOUSES_STATE_MAY 0 -> 2
+  = VAR_LITTLEROOT_INTRO_STATE 0 -> 7
+  = VAR_LITTLEROOT_RIVAL_STATE 0 -> 4
+  = VAR_LITTLEROOT_TOWN_STATE 0 -> 4
+  = VAR_OLDALE_RIVAL_STATE 0 -> 2
+  = VAR_OLDALE_TOWN_STATE 0 -> 1
+  = VAR_ROUTE101_STATE 0 -> 3
 === common.HoneyTree
 from a honey tree with 0 minutes left and 0 Honey in the bag
 way -
@@ -9074,6 +9122,94 @@ way -
   Prof. Rowan> Lucas? What brings you here? There is no sign of the lake's Pokémon. Not a ripple.
   Prof. Rowan> And how was Lake Valor? You have been there, I trust?
   + FLAG_TALKED_TO_LAKE_VERITY_LOW_WATER_PROF_ROWAN
+=== littleroot_town.GoSaveBirch
+from the trigger at 131,283 of Hoenn
+way -
+  Little Girl> Um, um, um! Did you hear that? Somebody's yelling out there on the route!
+  Little Girl> It sounds like someone's in trouble. Please, go and help them! You're bigger than me!
+  * scene littleroot_town.Someone calling for help
+  * emote Little Girl Exclaim
+  * endscene
+  = VAR_LITTLEROOT_TOWN_STATE 0 -> 2
+  + seen littleroot_town.Someone calling for help
+=== littleroot_town.MomOutside
+from Mom at 125,290 of Hoenn
+way -
+  Mom> Hold the run button to run, Lucas. Dad's shoes are a perfect fit!
+=== littleroot_town.NeedPokemon
+from the trigger at 130,283 of Hoenn
+from the trigger at 131,283 of Hoenn
+way -
+  Little Girl> Wait! You can't go out there! Wild Pokémon jump out of the tall grass, and you haven't got one of your own!
+  Little Girl> If you had a Pokémon, it could keep you safe. But you don't, so stay in town!
+  * emote Little Girl Exclaim
+=== littleroot_town.RunningShoes
+from the trigger at 128,291 of Hoenn
+from the trigger at 129,291 of Hoenn
+from the trigger at 130,284 of Hoenn
+from the trigger at 130,291 of Hoenn
+from the trigger at 131,284 of Hoenn
+from the trigger at 131,291 of Hoenn
+way -
+  Mom> Lucas! Oh, there you are. Did you meet Professor Birch? I heard you've got a Pokémon now!
+  Mom> Your father will be so proud. He sent these with the movers, you know. He said every trainer needs them.
+  > Lucas put on the Running Shoes!
+  Mom> Hold the run button down and off you go, faster than ever. Just watch where you're going indoors!
+  Mom> And come home now and then, sweetie. Your Pokémon will want a rest, too.
+  * scene littleroot_town.The Running Shoes
+  * emote Mom Exclaim
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_HAS_RUNNING_SHOES
+  + FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
+  = VAR_LITTLEROOT_TOWN_STATE 0 -> 4
+  + seen littleroot_town.The Running Shoes
+=== littleroot_town.Twin
+from Little Girl at 136,292 of Hoenn
+way -
+  Little Girl> The professor goes out into the grass all the time to look at Pokémon.
+  Little Girl> Mom says that's why his shoes are always muddy!
+=== littleroot_town_brendans_house_1f.GoSeeRoom
+from the trigger at 8,8 of LittlerootTown_BrendansHouse_1F
+way -
+  Mom> Wait, Lucas! You haven't even seen your room yet. And don't forget to set the clock!
+=== littleroot_town_brendans_house_1f.Mom
+from Mom at 1,6 of LittlerootTown_BrendansHouse_1F
+way -
+  Mom> Go on upstairs and see your room, Lucas. The clock won't set itself!
+=== littleroot_town_brendans_house_2f.WallClock
+from the tile read at 5,1 of LittlerootTown_BrendansHouse_2F
+way -
+  > The clock ticks away quietly. It keeps good time.
+=== littleroot_town_mays_house_1f.RivalMom
+from Neighbour at 8,7 of LittlerootTown_MaysHouse_1F
+way -
+  Neighbour> Barry's upstairs. Go on up, Lucas. Don't be shy!
+=== littleroot_town_mays_house_1f.RivalSibling
+from Little Boy at 9,5 of LittlerootTown_MaysHouse_1F
+way -
+  Little Boy> My big sibling is going to be the best Pokémon trainer ever. You'll see!
+=== littleroot_town_mays_house_2f.Rival
+from {rival} at 1,1 of LittlerootTown_MaysHouse_2F
+way -
+  Barry> Our house is right next to yours, Lucas. Come over any time!
+=== littleroot_town_mays_house_2f.RivalsBall
+from Poké Ball at 5,4 of LittlerootTown_MaysHouse_2F
+way -
+  > An empty Poké Ball.
+=== littleroot_town_professor_birchs_lab.Aide
+from Aide at 9,8 of LittlerootTown_ProfessorBirchsLab
+way -
+  Aide> The professor? He's out on Route 101 again, I'm afraid.
+  Aide> He says you can't learn how Pokémon live by sitting indoors. So I sit indoors and do his paperwork.
+=== littleroot_town_professor_birchs_lab.Birch
+from Prof. Birch at 6,4 of LittlerootTown_ProfessorBirchsLab
+way -
+  Prof. Birch> Phew, what a morning! Thank you again, Lucas.
+=== littleroot_town_professor_birchs_lab.Rival
+from {rival} at 7,4 of LittlerootTown_ProfessorBirchsLab
+way -
+  Barry> Dad's always running off into the grass without his Pokémon. One day I'll be a better field worker than him!
 === mt_coronet_1f_north_room_1.GruntF
 from Grunt at 19,41 of MtCoronet1FNorthRoom1
 way -
@@ -9266,6 +9402,37 @@ way 0
 way 1, from answer 1
   Sailor> All right, then. Tell me when you want to go. I'll not be wandering off.
   ? Not a place to linger, this. Shall we sail back to Canalave City? = No
+=== oldale_town.BlockedPath
+from the trigger at 120,252 of Hoenn
+way -
+  Man> Aaah! Stop right there! Don't step on these footprints!
+  Man> I'm sketching them. A rare Pokémon must have come through here, and I won't have them smudged!
+  * emote Man Exclaim
+=== oldale_town.FootprintsMan
+from Man at 128,251 of Hoenn
+way -
+  Man> Look at these tracks! Three toes, a long stride... Whatever made them was in a hurry.
+=== oldale_town.Girl
+from Girl at 136,253 of Hoenn
+way -
+  Girl> Oldale's a stop on the way to bigger places. Everyone passes through, but hardly anyone stays.
+=== oldale_town.MartEmployee
+from Mart Clerk at 133,249 of Hoenn
+way -
+  Mart Clerk> Hi there! I work at the Poké Mart. That's the shop with the blue roof, right over there.
+  Mart Clerk> Here's a little something to try. Think of it as a free sample!
+  > Lucas received the Potion!
+  > Lucas put it away in the Medicine pocket.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_POTION_OLDALE
+=== oldale_town.RivalWaiting
+from the trigger at 128,261 of Hoenn
+from the trigger at 129,261 of Hoenn
+from the trigger at 130,261 of Hoenn
+way -
+  Barry> Lucas! I'm going on ahead to the lab. Dad's waiting for us both. Don't dawdle!
+  + FLAG_HIDE_OLDALE_TOWN_RIVAL
+  = VAR_OLDALE_RIVAL_STATE 0 -> 2
 === oreburgh_city.Rival
 from {rival} at 282,757 of Sinnoh
 way -
@@ -9521,6 +9688,49 @@ way 1, from answer 1
 from Crasher Wake at 589,827 of Sinnoh
 way -
   Crasher Wake> Wahahaha! Pastoria's waters are calm today. Just how I like them!
+=== petalburg_city.GymBoy
+from Boy at 52,247 of Hoenn
+way -
+  Boy> The Gym's that big building up the road. Norman's the Leader. Isn't that your dad?
+=== petalburg_city.ShowGym
+from the trigger at 48,242 of Hoenn
+from the trigger at 48,243 of Hoenn
+from the trigger at 48,244 of Hoenn
+from the trigger at 48,245 of Hoenn
+way -
+  Boy> Hey! You're new here, aren't you? Have you seen our Gym? It's that big building just up the road!
+  Boy> The Leader's name is Norman. He's moved here from Johto, and he's really, really strong!
+  * emote Boy Exclaim
+  = VAR_PETALBURG_CITY_STATE 0 -> 1
+=== petalburg_city.WallysMom
+from Woman at 56,250 of Hoenn
+way -
+  Woman> My boy Wally has always been frail. We're sending him to stay with relatives in Verdanturf, where the air is clean.
+=== petalburg_city_gym.GymGuide
+from Gym Guide at 3,109 of PetalburgCity_Gym
+way -
+  Gym Guide> Hey there! This is the Petalburg Gym. Norman's rooms each test a trainer's skill a different way.
+  Gym Guide> But the doors stay shut until you've got four Badges. Rules are rules!
+=== petalburg_city_gym.Norman
+from Norman at 4,2 of PetalburgCity_Gym
+way -
+  Norman> Lucas! So you made it to Petalburg on your own. And with a Pokémon of your own, too. I'm proud of you.
+  Norman> It's a long way from Littleroot. Your mother must have told you I'm the Leader of this Gym now.
+  Wally> Um... excuse me. My name is Wally. I'm going to live with my relatives in Verdanturf Town for a while.
+  Wally> I thought... if I had a Pokémon with me, I wouldn't feel so lonely. But I've never caught one.
+  Norman> I see. Here, Wally, take my Zigzagoon. Weaken a wild Pokémon with it, then throw a Poké Ball.
+  Norman> Lucas, go with Wally and keep an eye on him. There's tall grass just east of town.
+  Wally> Th-thank you, Mr. Norman! Let's go, Lucas!
+  * scene petalburg_city_gym.Norman and Wally
+  * fade out
+  * warp Hoenn 55 241
+  * endscene
+  + FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
+  + FLAG_HIDE_PETALBURG_CITY_WALLYS_MOM
+  + FLAG_HIDE_PETALBURG_GYM_WALLY
+  = VAR_PETALBURG_CITY_STATE 0 -> 2
+  = VAR_PETALBURG_GYM_STATE 0 -> 1
+  + seen petalburg_city_gym.Norman and Wally
 === pewter_city.GymGuide
 from Boy at 90,80 of Kanto
 from the trigger at 90,81 of Kanto
@@ -9724,6 +9934,66 @@ way 1, from answer 1
 from Boy at 816,473 of Sinnoh
 way -
   Boy> A Villa, going free! Walk up the path to me and it's yours.
+=== route_101.BirchInTrouble
+from the trigger at 130,281 of Hoenn
+from the trigger at 131,281 of Hoenn
+way -
+  ???> H-help me!
+  ???> Hello! You over there! Please, help!
+  ???> In my bag! There's a Poké Ball in it!
+  * scene route_101.The professor in trouble
+  * music hoenn/help
+  * emote Prof. Birch Exclaim
+  * endscene
+  = VAR_ROUTE101_STATE 0 -> 2
+  + seen route_101.The professor in trouble
+=== route_101.BirchsBag
+from Bag at 127,276 of Hoenn
+way -
+=== route_101.DontLeaveMe
+from the trigger at 130,280 of Hoenn
+from the trigger at 131,280 of Hoenn
+way -
+  ???> W-wait! Don't leave me! Get a Poké Ball from my bag, quick!
+  * walk player back up
+=== route_101.DontLeaveMeCorner
+from the trigger at 126,280 of Hoenn
+way -
+  ???> W-wait! Don't leave me! Get a Poké Ball from my bag, quick!
+=== route_101.DontLeaveMeNorth
+from the trigger at 127,275 of Hoenn
+way -
+  ???> W-wait! Don't leave me! Get a Poké Ball from my bag, quick!
+  * walk player back down
+=== route_101.DontLeaveMeWest
+from the trigger at 126,277 of Hoenn
+from the trigger at 126,278 of Hoenn
+from the trigger at 126,279 of Hoenn
+way -
+  ???> W-wait! Don't leave me! Get a Poké Ball from my bag, quick!
+  * walk player back right
+=== route_103.Rival
+from {rival} at 130,223 of Hoenn
+way 0
+  Barry> Lucas! Hey! Dad told me you saved him. And he gave you a Pokémon? That's so cool!
+  Barry> I was just counting the Pokémon around here. But I've got my own partner too, you know.
+  Barry> Let's have a battle! I'll show you what being a trainer is all about!
+  Barry> Wow... You're really good! I can see why your Pokémon trusts you, Lucas.
+  Barry> I think I've seen enough for today. I'm heading back to the lab. Come on, Dad will want to hear about this!
+  * scene route_103.The rival on Route 103
+  * music hoenn/rival
+  * battle hoenn_may_route_103_mudkip Won
+  * music area
+  * endscene
+  + FLAG_DEFEATED_RIVAL_ROUTE103
+  + FLAG_HIDE_ROUTE_103_RIVAL
+  = VAR_BIRCH_LAB_STATE 0 -> 4
+  = VAR_OLDALE_RIVAL_STATE 0 -> 1
+  + beaten hoenn_may_route_103_mudkip
+  + seen route_103.The rival on Route 103
+way 1, from answer 1
+  * battle hoenn_may_route_103_mudkip Lost
+  * scene over, unseen
 === route_201.Briefcase
 from Professor's Briefcase at 112,854 of Sinnoh
 way 0.0

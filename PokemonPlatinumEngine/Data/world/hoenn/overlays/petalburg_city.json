@@ -1,12 +1,17 @@
 {
-  // Petalburg City (plan 21 · H1). Its Gym, the player's father's, stays shut (warp 2) until plan 21 · H2 opens it with
-  // Wally's catch; Wally, his parents in the street and Scott are that chapter's too. The road west to Route 104 isn't
-  // open yet
+  // Petalburg City (plan 21 · H1, H2). Its Gym, the player's father's, is open since H2: Norman meets the player in its
+  // hall and sends them out with Wally, whose catch in the tall grass east of town is petalburg_city.txt's. Wally's
+  // father in the street and Scott are later chapters'; the road west to Route 104 isn't open yet
   "area": "petalburg_city",
   "bgmTrack": "hoenn/petalburg",
   "trees": "Round",
   "architecture": "Parkside",
-  "locked": [ 2 ],
+  "triggers": [
+    { "trigger": 0, "script": "ShowGym" },
+    { "trigger": 1, "script": "ShowGym" },
+    { "trigger": 2, "script": "ShowGym" },
+    { "trigger": 3, "script": "ShowGym" }
+  ],
   "people": {
     "petalburg_boy": {
       "name": "Boy",
@@ -22,15 +27,14 @@
         "Water Pokémon come up to the surface to look at the lamps."
       ]
     },
-    "gym_boy": {
-      "name": "Boy",
-      "dialog": [ "The Gym's doors are shut today. I keep coming back in case they open!" ]
-    }
+    "gym_boy": { "name": "Boy", "script": "GymBoy" },
+    "woman_4": { "name": "Woman", "script": "WallysMom" },
+    "petalburg_wally": { "name": "Wally", "still": true, "dialog": [ "I did it... I really did it!" ] }
   },
   "signs": {
-    "PetalburgCity_EventScript_GymSign": "Petalburg City Pokémon Gym\nThe doors are shut for now.",
+    "PetalburgCity_EventScript_GymSign": "Petalburg City Pokémon Gym\nLeader: Norman\nA man who reached for strength!",
     "PetalburgCity_EventScript_CitySign": "Petalburg City\nWhere ordinary days are cherished.",
-    "PetalburgCity_EventScript_WallyHouseSign": "A family's house.\nA little garden grows by the door.",
+    "PetalburgCity_EventScript_WallyHouseSign": "Wally's House",
     "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
     "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
   }

@@ -667,6 +667,7 @@ public class StoryTests
         started.UnionWith(StoryMigration.RegionalNewGames);
         started.Add("common.KantoOpeningDone");
         started.Add("common.JohtoOpeningDone");
+        started.Add("common.HoennOpeningDone");
         // The Pokégear's numbers for an older save of Johto, and the calls, which the game starts by the contact (plan 20 · J3)
         started.Add("common.JohtoPokegear");
         started.UnionWith(Scripts.All.Where(s => s.File == PokemonPlatinumEngine.Core.GameEngine.PhoneScripts).Select(s => s.FullName));

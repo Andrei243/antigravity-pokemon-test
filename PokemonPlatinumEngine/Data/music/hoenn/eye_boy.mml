@@ -1,0 +1,22 @@
+# A boy of Hoenn spots the player (Youngsters, Bug Catchers and their like; Emerald's MUS_ENCOUNTER_MALE): a jaunty
+# square tune in B-flat that bounces off the fifth. Original composition for this game (plan 21 · H2).
+title Eyes Meet: Boy (Hoenn)
+tempo 148
+meter 4/4
+reverb 0.16
+night none
+
+track lead square vol=0.74 pan=0.05 rev=0.16
+  o5 f8 b-8 o6 d8 f8 r4 d4 | L o5 b-8 o6 d8 f8 d8 c4 o5 a4 | o5 b-8 o6 d8 f8 g8 f4 d4 |
+  o5 e-8 g8 b-8 g8 f4 a4 | o5 b-4 f4 b-4 r4 |
+
+track pad strings vol=0.26 pan=-0.25 rev=0.2
+  o4 (b- d f)1 | L (b- d f)2 (f a c)2 | (b- d f)1 |
+  (e- g b-)2 (f a c)2 | (b- d f)1 |
+
+track bass synthbass vol=0.62 rev=0.05
+  o3 b-8 r8 b-8 r8 f4 f4 | L o2 b-8 o3 b-8 o2 b-8 o3 b-8 o2 f8 o3 f8 o2 f8 o3 f8 | [ o2 b-8 o3 b-8 ]4 |
+  o2 e-8 o3 e-8 o2 e-8 o3 e-8 o2 f8 o3 f8 o2 f8 o3 f8 | [ o2 b-8 o3 b-8 ]4 |
+
+track drums kit vol=0.44 rev=0.1
+  v88 b8 r8 s8 r8 (b c)4 s4 | L [ b8 r8 s8 b8 r8 b8 s8 r8 | ]3 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |

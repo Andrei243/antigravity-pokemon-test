@@ -11,6 +11,9 @@ namespace PokemonPlatinumEngine.Story;
 /// <summary>How a battle a script started came out.</summary>
 public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 
+/// <summary>Who shows the catching lesson when it isn't the assistant, and the Pokémon they show it with (plan 21 · H2).</summary>
+public sealed record LessonCatcher(string Name, Pokemon Own);
+
 /// <summary>The screens a script can open and wait for.</summary>
 public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle }
 
@@ -231,7 +234,8 @@ public interface IScriptHost
     void Battle(NPC trainer, NPC? second, Trainer? partner, bool mayLose, bool first, BattleTerms? terms = null);
 
     /// <summary>A wild Pokémon in the player's way: one met as ever, one that can't be run from, or the assistant's catching lesson, which the player watches.</summary>
-    void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee);
+    /// <remarks>A lesson someone else shows names them and their Pokémon (<paramref name="catcher"/>; plan 21 · H2, Wally with his father's Zigzagoon).</remarks>
+    void WildBattle(Pokemon wild, BattleKind kind, bool cannotFlee, LessonCatcher? catcher = null);
     BattleOutcome Outcome { get; }
 
     /// <summary>

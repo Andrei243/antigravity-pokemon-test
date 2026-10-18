@@ -104,6 +104,18 @@
     "elm": { "hairColor": "#6a4a32", "hair": "Spiky", "top": "#f2f2f6", "accent": "#5f9a6a", "bottom": "#4a4e6a", "shoes": "#3a2e2a", "eyes": "#4a3a2a", "glasses": "#3a3036", "coat": true, "build": "Adult", "height": 1.06 },
     "silver": { "hairColor": "#c23a3a", "hair": "Long", "top": "#2e2a3c", "accent": "#c8463c", "bottom": "#3a3a52", "shoes": "#2a2632", "eyes": "#b03030", "sole": "#d84a40" },
     "falkner": { "hairColor": "#2a3460", "hair": "Swept", "top": "#3c6ab8", "accent": "#f2f2f6", "bottom": "#26304e", "shoes": "#2a2a36", "eyes": "#2e4a90", "build": "Adult", "height": 1.02 },
+    // Hoenn's first cast (plan 21 · H2; our own takes). Professor Birch, who would rather be in the grass: tousled brown
+    // hair and a short beard, a green shirt under a pale field vest, khaki shorts and sandals
+    "prof_birch": { "hairColor": "#6a4630", "hair": "Spiky", "top": "#4e8a52", "accent": "#e6dcc2", "bottom": "#b49a6a", "shoes": "#6a4a34", "eyes": "#3e2e24", "beard": true, "shorts": true, "shortSleeves": true, "build": "Adult", "height": 1.04 },
+    // The two heroes of Hoenn, each the rival of a player who is the other: May, chestnut hair in bunches under a red
+    // bandana, a red top with white trim and dark shorts; Brendan, a white knitted cap with a green band, a black and
+    // orange top and dark shorts
+    "may": { "hairColor": "#8a4a2e", "hair": "Bunches", "hat": "Bow", "hatColor": "#e0403c", "hatBand": "#f6f6fa", "top": "#e0403c", "accent": "#f6f6fa", "bottom": "#2e3448", "shoes": "#e0403c", "eyes": "#5a3a8a", "shorts": true, "shortSleeves": true, "sole": "#f4f0e8", "lashes": true, "blush": true },
+    "brendan": { "hairColor": "#4a3a34", "hat": "Beret", "hatColor": "#ececf0", "hatBand": "#4aa04e", "top": "#2a2a32", "accent": "#f08a34", "bottom": "#3a3a4a", "shoes": "#e0403c", "eyes": "#3a2e28", "shorts": true, "shortSleeves": true, "sole": "#f4f0e8", "blush": true },
+    // Wally, a frail boy of Petalburg: pale green hair and a white shirt over dark green shorts
+    "wally": { "skin": "#f8e2d4", "hairColor": "#8ec48a", "hair": "Swept", "top": "#f4f4f6", "accent": "#7ab07a", "bottom": "#3a5a40", "shoes": "#5a4a3a", "eyes": "#4a6a4a", "shorts": true, "height": 0.94 },
+    // Norman, Petalburg's Gym Leader and the player's father: short dark hair, a red jacket over a dark shirt, khaki trousers
+    "norman": { "hairColor": "#2a2630", "top": "#c4383c", "accent": "#2c2c36", "bottom": "#a48c62", "shoes": "#3a2e26", "eyes": "#2e2a2a", "coat": true, "build": "Adult", "bushyBrows": true, "height": 1.08 },
     // A scientist (plan 02 · S6: Team Galactic's in its Eterna building, the museum's man at the Underground Man's): our own take, short brown hair and a long white lab coat with a blue collar over grey trousers
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
     "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "height": 1.02 }
@@ -236,7 +248,6 @@
     "campboy_2": "Youngster",
     "fishing_2": "Gentleman",
     // Emerald's looks (plan 21 · H1), until each Hoenn chapter gives the classes and the cast it meets their own
-    "prof_birch": "Rowan",
     "scientist_1": "scientist",
     "mart_employee": "Clerk",
     "mystery_gift_man": "Clerk",
@@ -252,8 +263,6 @@
     "man_4": "Gentleman",
     "man_5": "Youngster",
     "maniac": "Gentleman",
-    "norman": "Gentleman",
-    "wally": "Youngster",
     "scott": "Gentleman",
     // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
     "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "Gentleman",
@@ -274,7 +283,7 @@
     "Scientist": "scientist",
     "Black Belt": "blackbelt",
     "Galactic": "grunt",
-    "Rival": [ "rival", "blue" ],
+    "Rival": [ "rival", "blue", "may", "brendan" ],
     "Team Rocket": "rocket",
     "Super Nerd": "scientist",
     "Leader": null,
