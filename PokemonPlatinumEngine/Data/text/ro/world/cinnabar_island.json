@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Blaine lived on this island long before the Lab was built. He knows every stone of the volcano."
         ],
         "text": [
-          ""
+          "Blaine trăia pe insula asta cu mult înainte să se construiască Laboratorul. Cunoaște fiecare piatră a vulcanului."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -33,8 +33,8 @@
           "Some say one of the Pokémon they made there broke loose. Brr..."
         ],
         "text": [
-          "",
-          ""
+          "Demult, în conacul acela ars se făceau experimente ciudate.",
+          "Unii zic că unul dintre Pokémonii făcuți acolo a scăpat. Brr..."
         ]
       }
     }
@@ -45,7 +45,7 @@
         "Cinnabar Island\nAn island of fire and science"
       ],
       "text": [
-        ""
+        "Insula Cinnabar\nO insulă a focului și a științei"
       ]
     },
     "CinnabarIsland_EventScript_PokemonLabSign": {
@@ -53,7 +53,7 @@
         "Pokémon Lab"
       ],
       "text": [
-        ""
+        "Laboratorul Pokémon"
       ]
     }
   }

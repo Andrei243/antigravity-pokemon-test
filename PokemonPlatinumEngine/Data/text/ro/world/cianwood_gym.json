@@ -6,7 +6,7 @@
           "Yoshi"
         ],
         "text": [
-          ""
+          "Yoshi"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Black Belt Yoshi: Hwaah! The master is training, so I'll test you in his place!"
         ],
         "text": [
-          ""
+          "Centură Neagră Yoshi: Hwaah! Maestrul se antrenează, așa că te încerc eu în locul lui!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Black Belt Yoshi: My fists still have much to learn."
         ],
         "text": [
-          ""
+          "Centură Neagră Yoshi: Pumnii mei mai au multe de învățat."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Lao"
         ],
         "text": [
-          ""
+          "Lao"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Black Belt Lao: Feel the spirit of the Cianwood Gym!"
         ],
         "text": [
-          ""
+          "Centură Neagră Lao: Simte spiritul Arenei din Cianwood!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Black Belt Lao: My spirit is bruised."
         ],
         "text": [
-          ""
+          "Centură Neagră Lao: Spiritul meu e plin de vânătăi."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Nob"
         ],
         "text": [
-          ""
+          "Nob"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Black Belt Nob: One punch, one battle. That's our way!"
         ],
         "text": [
-          ""
+          "Centură Neagră Nob: Un pumn, o luptă. Așa facem noi!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Black Belt Nob: It took more than one punch."
         ],
         "text": [
-          ""
+          "Centură Neagră Nob: A fost nevoie de mai mult de un pumn."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Lung"
         ],
         "text": [
-          ""
+          "Lung"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Black Belt Lung: Before you face the master, you face me!"
         ],
         "text": [
-          ""
+          "Centură Neagră Lung: Înainte să-l înfrunți pe maestru, mă înfrunți pe mine!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Black Belt Lung: The master will be pleased with you."
         ],
         "text": [
-          ""
+          "Centură Neagră Lung: Maestrul va fi mulțumit de tine."
         ]
       }
     }
@@ -111,7 +111,7 @@
         "The waterfall where the master trains, roaring day and night."
       ],
       "text": [
-        ""
+        "Cascada sub care se antrenează maestrul, vuind zi și noapte."
       ]
     },
     "T24GYM0101_003+1": {
@@ -119,7 +119,7 @@
         "Cianwood City Pokémon Gym\nLeader: Chuck"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Cianwood\nLider: Chuck"
       ]
     }
   }

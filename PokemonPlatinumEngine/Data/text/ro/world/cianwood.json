@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Gym Leader, Chuck, trains under the waterfall every day. He's terribly loud about it."
         ],
         "text": [
-          ""
+          "Liderul Arenei, Chuck, se antrenează în fiecare zi sub cascadă. Și face o gălăgie îngrozitoare."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "There's no Poké Mart here. Everyone buys their medicine at the pharmacy. It's been here forever!"
         ],
         "text": [
-          ""
+          "Aici nu e niciun Poké Mart. Toată lumea își ia medicamentele de la farmacie. E aici de când lumea!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The rocks north of town crack open if you hit them hard enough. Things turn up inside them."
         ],
         "text": [
-          ""
+          "Stâncile de la nord de oraș crapă dacă le lovești destul de tare. Mai apar lucruri înăuntrul lor."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I've lived on this island all my life. Olivine's the furthest I've ever been!"
         ],
         "text": [
-          ""
+          "Am trăit pe insula asta toată viața. Olivine e cel mai departe unde am fost vreodată!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "The sea round the islands is wild. My husband sails right round them to get to Olivine."
         ],
         "text": [
-          ""
+          "Marea din jurul insulelor e sălbatică. Soțul meu le ocolește de tot ca să ajungă la Olivine."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "Cianwood City\nA port surrounded by rough seas."
       ],
       "text": [
-        ""
+        "Orașul Cianwood\nUn port înconjurat de ape învolburate."
       ]
     },
     "T24_009+1": {
@@ -105,7 +105,7 @@
         "Cianwood City Pokémon Gym\nLeader: Chuck\nHis roaring fists do the talking."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Cianwood\nLider: Chuck\nPumnii lui vorbesc în locul lui."
       ]
     },
     "T24_010+1": {
@@ -113,7 +113,7 @@
         "Cianwood Pharmacy\nThe oldest pharmacy in Johto."
       ],
       "text": [
-        ""
+        "Farmacia din Cianwood\nCea mai veche farmacie din Johto."
       ]
     },
     "T24_011+1": {
@@ -121,7 +121,7 @@
         "Photo Studio\nA picture to remember your journey."
       ],
       "text": [
-        ""
+        "Studio Foto\nO poză ca amintire a călătoriei tale."
       ]
     },
     "T24_004+1": {
@@ -129,7 +129,7 @@
         "The cliff path\nRoute 47 lies beyond the gate."
       ],
       "text": [
-        ""
+        "Poteca stâncii\nDincolo de poartă e Ruta 47."
       ]
     }
   }

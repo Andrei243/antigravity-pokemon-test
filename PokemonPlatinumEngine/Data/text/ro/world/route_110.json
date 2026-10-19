@@ -6,7 +6,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Race you to Mauville!"
         ],
         "text": [
-          ""
+          "Hai la întrecere până în Mauville!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Prof. Birch"
         ],
         "text": [
-          ""
+          "Profesorul Birch"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Ah, {player}! I'm out counting Pokémon. Don't mind me!"
         ],
         "text": [
-          ""
+          "Ah, {player}! Număr Pokémonii de pe aici. Nu-mi da atenție!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "The Cycling Road or the path underneath? I can never make up my mind."
         ],
         "text": [
-          ""
+          "Drumul Bicicliștilor sau poteca de dedesubt? Nu mă pot hotărî niciodată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Cyclist"
         ],
         "text": [
-          ""
+          "Biciclista"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "On a bike, hold the direction down and lean into it. Corners are easier than they look!"
         ],
         "text": [
-          ""
+          "Pe bicicletă, ține apăsată direcția și apleacă-te în ea. Curbele sunt mai ușoare decât par!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I take the low road. It's slower, but the flowers along it are lovely."
         ],
         "text": [
-          ""
+          "Eu merg pe drumul de jos. E mai lent, dar florile de pe margine sunt minunate."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Cyclist"
         ],
         "text": [
-          ""
+          "Biciclista"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Got my bike from Rydel in Mauville. He just handed it over. What a guy!"
         ],
         "text": [
-          ""
+          "Mi-am luat bicicleta de la Rydel din Mauville. Pur și simplu mi-a dat-o. Ce om!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Two roads run side by side here, one up high and one down low. Each has its own view."
         ],
         "text": [
-          ""
+          "Aici merg două drumuri unul lângă altul, unul sus și unul jos. Fiecare are priveliștea lui."
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Cyclist"
         ],
         "text": [
-          ""
+          "Biciclista"
         ]
       },
       "dialog": {
@@ -150,7 +150,7 @@
           "My hair streams out behind me when I race down the road. It's the best feeling!"
         ],
         "text": [
-          ""
+          "Părul îmi flutură în urmă când gonesc pe drum. E cea mai bună senzație!"
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -168,7 +168,7 @@
           "I'm going to ride the Cycling Road flat out, from one end to the other!"
         ],
         "text": [
-          ""
+          "O să parcurg Drumul Bicicliștilor în viteză maximă, de la un capăt la altul!"
         ]
       }
     },
@@ -178,7 +178,7 @@
           "Cyclist"
         ],
         "text": [
-          ""
+          "Biciclista"
         ]
       },
       "dialog": {
@@ -186,7 +186,7 @@
           "The Cycling Road's for speed. The fewer things you bump into, the better your time!"
         ],
         "text": [
-          ""
+          "Drumul Bicicliștilor e pentru viteză. Cu cât te lovești de mai puține lucruri, cu atât timpul e mai bun!"
         ]
       }
     },
@@ -196,7 +196,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -204,7 +204,7 @@
           "What we're up to? That's Team Aqua business. Move along."
         ],
         "text": [
-          ""
+          "Ce punem la cale? Asta e treaba Echipei Aqua. Circulă."
         ]
       }
     },
@@ -214,7 +214,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -222,7 +222,7 @@
           "We're just going to stir things up a bit. Nothing to see here."
         ],
         "text": [
-          ""
+          "Doar o să agităm puțin lucrurile. Nimic de văzut aici."
         ]
       }
     },
@@ -232,7 +232,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -240,7 +240,7 @@
           "This is my first real job for Team Aqua. I'm a little nervous!"
         ],
         "text": [
-          ""
+          "E prima mea misiune adevărată pentru Echipa Aqua. Am cam emoții!"
         ]
       }
     },
@@ -250,7 +250,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -258,7 +258,7 @@
           "When the sea grows, everyone will be happy. You'll see!"
         ],
         "text": [
-          ""
+          "Când marea va crește, toată lumea va fi fericită. O să vezi!"
         ]
       }
     },
@@ -268,7 +268,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -276,7 +276,7 @@
           "Keep your voices down! Someone might hear us."
         ],
         "text": [
-          ""
+          "Mai încet! Ne-ar putea auzi cineva."
         ]
       }
     },
@@ -286,7 +286,7 @@
           "Edward"
         ],
         "text": [
-          ""
+          "Edward"
         ]
       },
       "before": {
@@ -294,7 +294,7 @@
           "Psychic Edward: I saw you coming in my mind. I also saw myself winning."
         ],
         "text": [
-          ""
+          "Medium Edward: Te-am văzut venind în mintea mea. M-am văzut și pe mine câștigând."
         ]
       },
       "after": {
@@ -302,7 +302,7 @@
           "Psychic Edward: My mind's eye needs glasses."
         ],
         "text": [
-          ""
+          "Medium Edward: Ochiul minții mele are nevoie de ochelari."
         ]
       }
     },
@@ -312,7 +312,7 @@
           "Jaclyn"
         ],
         "text": [
-          ""
+          "Jaclyn"
         ]
       },
       "before": {
@@ -320,7 +320,7 @@
           "Psychic Jaclyn: My Abra can teleport away. But it won't, because we're going to win!"
         ],
         "text": [
-          ""
+          "Medium Jaclyn: Abra al meu se poate teleporta. Dar n-o va face, pentru că o să câștigăm!"
         ]
       },
       "after": {
@@ -328,7 +328,7 @@
           "Psychic Jaclyn: Maybe it should have teleported after all."
         ],
         "text": [
-          ""
+          "Medium Jaclyn: Poate trebuia să se teleporteze, până la urmă."
         ]
       }
     },
@@ -338,7 +338,7 @@
           "Edwin"
         ],
         "text": [
-          ""
+          "Edwin"
         ]
       },
       "before": {
@@ -346,7 +346,7 @@
           "Collector Edwin: My Pokémon are the finest of my collection. Admire them in battle!"
         ],
         "text": [
-          ""
+          "Colecționar Edwin: Pokémonii mei sunt cele mai fine piese din colecția mea. Admiră-i în luptă!"
         ]
       },
       "after": {
@@ -354,7 +354,7 @@
           "Collector Edwin: I'll have to polish my collection."
         ],
         "text": [
-          ""
+          "Colecționar Edwin: Va trebui să-mi lustruiesc colecția."
         ]
       }
     },
@@ -364,7 +364,7 @@
           "Dale"
         ],
         "text": [
-          ""
+          "Dale"
         ]
       },
       "before": {
@@ -372,7 +372,7 @@
           "Fisherman Dale: Nothing's biting today. Except me! Battle!"
         ],
         "text": [
-          ""
+          "Pescar Dale: Azi nu mușcă nimic. În afară de mine! La luptă!"
         ]
       },
       "after": {
@@ -380,7 +380,7 @@
           "Fisherman Dale: Back to waiting for a bite."
         ],
         "text": [
-          ""
+          "Pescar Dale: Înapoi la așteptat să muște ceva."
         ]
       }
     },
@@ -390,7 +390,7 @@
           "Jacob"
         ],
         "text": [
-          ""
+          "Jacob"
         ]
       },
       "before": {
@@ -398,7 +398,7 @@
           "Triathlete Jacob: Swim, cycle, run, battle! You're my fourth event!"
         ],
         "text": [
-          ""
+          "Triatlonist Jacob: Înot, bicicletă, alergare, luptă! Tu ești a patra mea probă!"
         ]
       },
       "after": {
@@ -406,7 +406,7 @@
           "Triathlete Jacob: I'll stick to the first three."
         ],
         "text": [
-          ""
+          "Triatlonist Jacob: Rămân la primele trei."
         ]
       }
     },
@@ -416,7 +416,7 @@
           "Anthony"
         ],
         "text": [
-          ""
+          "Anthony"
         ]
       },
       "before": {
@@ -424,7 +424,7 @@
           "Triathlete Anthony: Pedal hard, battle harder! Let's go!"
         ],
         "text": [
-          ""
+          "Triatlonist Anthony: Pedalează tare, luptă și mai tare! Hai!"
         ]
       },
       "after": {
@@ -432,7 +432,7 @@
           "Triathlete Anthony: I've got a flat. In my spirit."
         ],
         "text": [
-          ""
+          "Triatlonist Anthony: Am făcut pană. La moral."
         ]
       }
     },
@@ -442,7 +442,7 @@
           "Benjamin"
         ],
         "text": [
-          ""
+          "Benjamin"
         ]
       },
       "before": {
@@ -450,7 +450,7 @@
           "Triathlete Benjamin: I train every day on this road. Show me what you've got!"
         ],
         "text": [
-          ""
+          "Triatlonist Benjamin: Mă antrenez în fiecare zi pe drumul ăsta. Arată-mi ce poți!"
         ]
       },
       "after": {
@@ -458,7 +458,7 @@
           "Triathlete Benjamin: Looks like I need to train every night too."
         ],
         "text": [
-          ""
+          "Triatlonist Benjamin: Se pare că trebuie să mă antrenez și în fiecare noapte."
         ]
       }
     },
@@ -468,7 +468,7 @@
           "Jasmine"
         ],
         "text": [
-          ""
+          "Jasmine"
         ]
       },
       "before": {
@@ -476,7 +476,7 @@
           "Triathlete Jasmine: I stopped for you, so make it worth my while!"
         ],
         "text": [
-          ""
+          "Triatlonist Jasmine: M-am oprit pentru tine, așa că fă să merite!"
         ]
       },
       "after": {
@@ -484,7 +484,7 @@
           "Triathlete Jasmine: Worth it, but painful."
         ],
         "text": [
-          ""
+          "Triatlonist Jasmine: A meritat, dar a durut."
         ]
       }
     },
@@ -494,7 +494,7 @@
           "Abigail"
         ],
         "text": [
-          ""
+          "Abigail"
         ]
       },
       "before": {
@@ -502,7 +502,7 @@
           "Triathlete Abigail: My Magnemite and I are charged and ready!"
         ],
         "text": [
-          ""
+          "Triatlonist Abigail: Magnemite și cu mine suntem încărcați și gata!"
         ]
       },
       "after": {
@@ -510,7 +510,7 @@
           "Triathlete Abigail: All out of power."
         ],
         "text": [
-          ""
+          "Triatlonist Abigail: Ni s-a terminat energia."
         ]
       }
     },
@@ -520,7 +520,7 @@
           "Alyssa"
         ],
         "text": [
-          ""
+          "Alyssa"
         ]
       },
       "before": {
@@ -528,7 +528,7 @@
           "Triathlete Alyssa: You look fit! Let's see if your Pokémon are too."
         ],
         "text": [
-          ""
+          "Triatlonist Alyssa: Arăți în formă! Să vedem dacă și Pokémonii tăi sunt."
         ]
       },
       "after": {
@@ -536,7 +536,7 @@
           "Triathlete Alyssa: Fitter than mine, it turns out."
         ],
         "text": [
-          ""
+          "Triatlonist Alyssa: Mai în formă decât ai mei, se pare."
         ]
       }
     },
@@ -546,7 +546,7 @@
           "Timmy"
         ],
         "text": [
-          ""
+          "Timmy"
         ]
       },
       "before": {
@@ -554,7 +554,7 @@
           "Youngster Timmy: My Aron's tougher than iron. Literally!"
         ],
         "text": [
-          ""
+          "Puști Timmy: Aron-ul meu e mai tare decât fierul. La propriu!"
         ]
       },
       "after": {
@@ -562,7 +562,7 @@
           "Youngster Timmy: Rust never sleeps, I guess."
         ],
         "text": [
-          ""
+          "Puști Timmy: Rugina nu doarme niciodată, se pare."
         ]
       }
     },
@@ -572,7 +572,7 @@
           "Isabel"
         ],
         "text": [
-          ""
+          "Isabel"
         ]
       },
       "before": {
@@ -580,7 +580,7 @@
           "Pokéfan Isabel: Aren't my Plusle and Minun adorable? And they battle, too!"
         ],
         "text": [
-          ""
+          "Pokéfan Isabel: Nu-s adorabili Plusle și Minun ai mei? Și se și luptă!"
         ]
       },
       "after": {
@@ -588,7 +588,7 @@
           "Pokéfan Isabel: Still adorable, though."
         ],
         "text": [
-          ""
+          "Pokéfan Isabel: Tot adorabili sunt, totuși."
         ]
       }
     },
@@ -598,7 +598,7 @@
           "Kaleb"
         ],
         "text": [
-          ""
+          "Kaleb"
         ]
       },
       "before": {
@@ -606,7 +606,7 @@
           "Pokéfan Kaleb: My Minun and Plusle cheer each other on. Watch!"
         ],
         "text": [
-          ""
+          "Pokéfan Kaleb: Minun și Plusle ai mei se încurajează unul pe altul. Uite!"
         ]
       },
       "after": {
@@ -614,7 +614,7 @@
           "Pokéfan Kaleb: They're cheering each other up now."
         ],
         "text": [
-          ""
+          "Pokéfan Kaleb: Acum se consolează unul pe altul."
         ]
       }
     },
@@ -624,7 +624,7 @@
           "Joseph"
         ],
         "text": [
-          ""
+          "Joseph"
         ]
       },
       "before": {
@@ -632,7 +632,7 @@
           "Guitarist Joseph: My music's electric, and so are my Pokémon! Rock on!"
         ],
         "text": [
-          ""
+          "Chitarist Joseph: Muzica mea e electrică, și Pokémonii mei la fel! Rock pe toată linia!"
         ]
       },
       "after": {
@@ -640,7 +640,7 @@
           "Guitarist Joseph: I broke a string. And a battle."
         ],
         "text": [
-          ""
+          "Chitarist Joseph: Am rupt o coardă. Și o luptă."
         ]
       }
     }
@@ -651,7 +651,7 @@
         "Somebody has scrawled over the sign: \"Team Aqua was here!\""
       ],
       "text": [
-        ""
+        "Cineva a mâzgălit indicatorul: „Echipa Aqua a fost aici!”"
       ]
     },
     "Route110_EventScript_SeasideParkingSign": {
@@ -659,7 +659,7 @@
         "Seaside Parking\nLeave your bike here and stroll by the sea."
       ],
       "text": [
-        ""
+        "Parcarea de pe Malul Mării\nLasă-ți bicicleta aici și plimbă-te pe lângă mare."
       ]
     },
     "Route110_EventScript_CyclingRoadSign": {
@@ -667,7 +667,7 @@
         "Seaside Cycling Road\nBicycles only, through the gate."
       ],
       "text": [
-        ""
+        "Drumul Bicicliștilor de pe Malul Mării\nDoar pentru biciclete, prin poartă."
       ]
     },
     "Route110_EventScript_SlateportCitySign": {
@@ -675,7 +675,7 @@
         "Route 110\nSouth: Slateport City"
       ],
       "text": [
-        ""
+        "Ruta 110\nSud: Orașul Slateport"
       ]
     },
     "Route110_EventScript_Route103Sign": {
@@ -683,7 +683,7 @@
         "Route 110\nWest: Route 103"
       ],
       "text": [
-        ""
+        "Ruta 110\nVest: Ruta 103"
       ]
     },
     "Route110_EventScript_MauvilleCitySign": {
@@ -691,7 +691,7 @@
         "Route 110\nNorth: Mauville City"
       ],
       "text": [
-        ""
+        "Ruta 110\nNord: Orașul Mauville"
       ]
     },
     "Route110_EventScript_TrainerTipsPrlzSleep": {
@@ -699,7 +699,7 @@
         "Trainer Tips\nA paralysed Pokémon or a sleeping one is far easier to catch."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nUn Pokémon paralizat sau adormit e mult mai ușor de prins."
       ]
     },
     "Route110_EventScript_TrainerTipsRegisterItems": {
@@ -707,7 +707,7 @@
         "Trainer Tips\nRegister a key item in the bag, and use it at the press of a single button."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nÎnregistrează un obiect-cheie din rucsac și folosește-l apăsând un singur buton."
       ]
     },
     "Route110_EventScript_TrickHouseSign": {
@@ -715,7 +715,7 @@
         "Trick House\nThe Trick Master awaits! Can you solve his puzzles?"
       ],
       "text": [
-        ""
+        "Casa Trucurilor\nMaestrul Trucurilor te așteaptă! Poți să-i rezolvi puzzle-urile?"
       ]
     },
     "Route110_EventScript_CyclingRoadResultsSign": {
@@ -723,7 +723,7 @@
         "Seaside Cycling Road\nBest times are posted here. Nobody has set one yet."
       ],
       "text": [
-        ""
+        "Drumul Bicicliștilor de pe Malul Mării\nAici se afișează cei mai buni timpi. Încă nu a stabilit nimeni unul."
       ]
     }
   }

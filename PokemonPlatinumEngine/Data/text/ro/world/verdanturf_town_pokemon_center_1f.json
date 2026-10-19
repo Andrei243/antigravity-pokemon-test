@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "The Pokémon here seem so healthy. The clean air does them good, I'm sure of it."
         ],
         "text": [
-          ""
+          "Pokémonii de aici par atât de sănătoși. Aerul curat le face bine, sunt sigur."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Rusturf Tunnel was dug by hand, would you believe it? A single young man, for love."
         ],
         "text": [
-          ""
+          "Tunelul Rusturf a fost săpat cu mâna, îți vine să crezi? De un singur tânăr, din dragoste."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Bug Pokémon slash faster and faster every time they hit. My favourite move!"
         ],
         "text": [
-          ""
+          "Pokémonii Insectă taie tot mai repede cu fiecare lovitură. Mișcarea mea preferată!"
         ]
       }
     }

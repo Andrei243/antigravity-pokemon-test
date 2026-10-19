@@ -6,7 +6,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Battle Tent! Here, Pokémon choose their own moves. Our challenge isn't ready yet, I'm afraid."
         ],
         "text": [
-          ""
+          "Bine ai venit la Cortul de Luptă! Aici, Pokémonii își aleg singuri mișcările. Din păcate, provocarea noastră nu e gata încă."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Pokémon here battle by themselves, without orders. Their nature decides what they do!"
         ],
         "text": [
-          ""
+          "Aici Pokémonii se luptă singuri, fără ordine. Natura lor hotărăște ce fac!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My Pokémon didn't listen to me once in there. Well, it's not supposed to!"
         ],
         "text": [
-          ""
+          "Odată, Pokémonul meu nu m-a ascultat acolo înăuntru. Păi, nici nu trebuie!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "A calm Pokémon and a hasty one battle completely differently. It's fascinating."
         ],
         "text": [
-          ""
+          "Un Pokémon calm și unul grăbit se luptă complet diferit. E fascinant."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Scott"
         ],
         "text": [
-          ""
+          "Scott"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "{player}! Fancy meeting you here. The Battle Tent's a great place to find strong trainers."
         ],
         "text": [
-          ""
+          "{player}! Ce surpriză să te văd aici. Cortul de Luptă e un loc grozav pentru a găsi antrenori puternici."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "I want to see the trainers who win three in a row here!"
         ],
         "text": [
-          ""
+          "Vreau să văd antrenorii care câștigă aici trei la rând!"
         ]
       }
     }
@@ -115,7 +115,7 @@
         "Battle Tent Rules\nYour Pokémon battle by their own will. Win three in a row!"
       ],
       "text": [
-        ""
+        "Regulile Cortului de Luptă\nPokémonii tăi se luptă după voia lor. Câștigă trei la rând!"
       ]
     }
   }

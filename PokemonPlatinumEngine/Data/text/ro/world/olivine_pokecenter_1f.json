@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "A sailor once told me there's a city across the sea where Trainers battle all day. Sounds like fun."
         ],
         "text": [
-          ""
+          "Un marinar mi-a zis odată că peste mare e un oraș unde Antrenorii se luptă toată ziua. Sună distractiv."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescarul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "The sea off Olivine is full of Tentacool. Bring something that can handle poison."
         ],
         "text": [
-          ""
+          "Marea din fața Olivine e plină de Tentacool. Ia ceva care să facă față otrăvii."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "There's an island town west across the sea. You need a Pokémon that can Surf to get there."
         ],
         "text": [
-          ""
+          "Peste mare, la vest, e un oraș pe o insulă. Îți trebuie un Pokémon care știe Surf ca să ajungi acolo."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "The light in the lighthouse has gone dim lately. I hope nothing's wrong up there."
         ],
         "text": [
-          ""
+          "Lumina farului a slăbit în ultima vreme. Sper că nu s-a întâmplat nimic rău acolo sus."
         ]
       }
     }

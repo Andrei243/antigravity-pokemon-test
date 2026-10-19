@@ -4,7 +4,7 @@
       "Pokémon Lab"
     ],
     "text": [
-      ""
+      "Laboratorul Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -23,8 +23,8 @@
           "Our founder was a famous scientist. He left long ago, but his work goes on."
         ],
         "text": [
-          "",
-          ""
+          "Aici studiem Pokémoni de tot felul, de la cele mai vechi Fosile până la cele mai noi aparate.",
+          "Fondatorul nostru a fost un om de știință celebru. A plecat demult, dar munca lui continuă."
         ]
       }
     }
@@ -35,7 +35,7 @@
         "A photograph of the Lab's founder, a kindly old scientist, smiling beside a small Pokémon."
       ],
       "text": [
-        ""
+        "O fotografie a fondatorului Laboratorului, un om de știință bătrân și blând, zâmbind lângă un Pokémon mic."
       ]
     },
     "CinnabarIsland_PokemonLab_Entrance_EventScript_MeetingRoomSign": {
@@ -43,7 +43,7 @@
         "Lounge"
       ],
       "text": [
-        ""
+        "Salon"
       ]
     },
     "CinnabarIsland_PokemonLab_Entrance_EventScript_RAndDRoomSign": {
@@ -51,7 +51,7 @@
         "Research Room"
       ],
       "text": [
-        ""
+        "Sala de Cercetare"
       ]
     },
     "CinnabarIsland_PokemonLab_Entrance_EventScript_TestingRoomSign": {
@@ -59,7 +59,7 @@
         "Testing Room"
       ],
       "text": [
-        ""
+        "Sala de Teste"
       ]
     }
   }

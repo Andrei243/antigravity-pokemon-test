@@ -6,7 +6,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "The air here is so clean, it's like drinking spring water. My lungs have never been happier."
         ],
         "text": [
-          ""
+          "Aerul de aici e atât de curat, parcă ai bea apă de izvor. Plămânii mei n-au fost niciodată mai fericiți."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "I'm going to make my debut at the Battle Tent! Well, once it opens again."
         ],
         "text": [
-          ""
+          "O să debutez la Cortul de Luptă! Mă rog, când se redeschide."
         ]
       }
     }
@@ -63,7 +63,7 @@
         "Verdanturf Town\nThe windswept highlands with the sweet fragrance of grass"
       ],
       "text": [
-        ""
+        "Orășelul Verdanturf\nPodișul bătut de vânt, cu mireasma dulce a ierbii"
       ]
     },
     "VerdanturfTown_EventScript_WandasHouseSign": {
@@ -71,7 +71,7 @@
         "Wanda's House"
       ],
       "text": [
-        ""
+        "Casa Wandei"
       ]
     },
     "VerdanturfTown_EventScript_BattleTentSign": {
@@ -79,7 +79,7 @@
         "Battle Tent: Verdanturf\nPokémon that battle on their own"
       ],
       "text": [
-        ""
+        "Cortul de Luptă: Verdanturf\nPokémoni care se luptă singuri"
       ]
     },
     "VerdanturfTown_EventScript_RusturfTunnelSign": {
@@ -87,7 +87,7 @@
         "Rusturf Tunnel\nA tunnel for people, linking Rustboro City and Verdanturf Town"
       ],
       "text": [
-        ""
+        "Tunelul Rusturf\nUn tunel pentru oameni, între Orașul Rustboro și Orășelul Verdanturf"
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -95,7 +95,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     },
     "Common_EventScript_ShowPokemartSign": {
@@ -103,7 +103,7 @@
         "Poké Mart\nFor all your trainer needs."
       ],
       "text": [
-        ""
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
       ]
     }
   }

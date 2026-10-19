@@ -6,7 +6,7 @@
           "Wally"
         ],
         "text": [
-          ""
+          "Wally"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Wally's Uncle"
         ],
         "text": [
-          ""
+          "Unchiul lui Wally"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Scott"
         ],
         "text": [
-          ""
+          "Scott"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Keep it up! I'll be watching."
         ],
         "text": [
-          ""
+          "Ține-o tot așa! Am să fiu cu ochii pe tine."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Wattson"
         ],
         "text": [
-          ""
+          "Wattson"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "Wahahaha! Mauville's lights never go out, and neither does my good mood!"
         ],
         "text": [
-          ""
+          "Uahahaha! Luminile din Mauville nu se sting niciodată, și nici buna mea dispoziție!"
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "My Pokémon got hurt, but the nurse at the Pokémon Center fixed it right up. She's amazing!"
         ],
         "text": [
-          ""
+          "Pokémonul meu s-a rănit, dar asistenta din Centrul Pokémon l-a pus pe picioare imediat. E uimitoare!"
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "A Pokémon can jump out at you while you're riding a bike, too. You can't outpedal everything!"
         ],
         "text": [
-          ""
+          "Un Pokémon poate sări la tine și când ești pe bicicletă. Nu poți scăpa de toate pedalând!"
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -106,7 +106,7 @@
           "Mauville's right in the middle of Hoenn. All kinds of people pass through here."
         ],
         "text": [
-          ""
+          "Mauville e chiar în mijlocul Hoennului. Pe aici trec tot felul de oameni."
         ]
       }
     },
@@ -116,7 +116,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -124,7 +124,7 @@
           "Rydel at the bike shop is so generous. He gives his bikes away to travellers who come from far off!"
         ],
         "text": [
-          ""
+          "Rydel de la magazinul de biciclete e atât de generos. Le dă biciclete călătorilor veniți de departe!"
         ]
       }
     },
@@ -134,7 +134,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -144,7 +144,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -152,7 +152,7 @@
           "My Pokémon roll everywhere they go. Rolling's the best way to get around, if you ask me!"
         ],
         "text": [
-          ""
+          "Pokémonii mei se rostogolesc peste tot pe unde merg. Dacă mă întrebi pe mine, rostogolitul e cel mai bun mod de a umbla!"
         ]
       }
     }
@@ -163,7 +163,7 @@
         "Mauville City\nThe bright, shining city of fun!"
       ],
       "text": [
-        ""
+        "Orașul Mauville\nOrașul strălucitor al distracției!"
       ]
     },
     "MauvilleCity_EventScript_GymSign": {
@@ -171,7 +171,7 @@
         "Mauville City Pokémon Gym\nLeader: Wattson\nThe cheerfully electrifying man!"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Mauville\nLider: Wattson\nOmul vesel și electrizant!"
       ]
     },
     "MauvilleCity_EventScript_BikeShopSign": {
@@ -179,7 +179,7 @@
         "Rydel's Cycles\nBikes for every trail!"
       ],
       "text": [
-        ""
+        "Bicicletele lui Rydel\nBiciclete pentru orice potecă!"
       ]
     },
     "MauvilleCity_EventScript_GameCornerSign": {
@@ -187,7 +187,7 @@
         "Mauville Game Corner\nClosed for refitting. Please come again!"
       ],
       "text": [
-        ""
+        "Sala de Jocuri din Mauville\nÎnchisă pentru renovare. Reveniți!"
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -195,7 +195,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     },
     "Common_EventScript_ShowPokemartSign": {
@@ -203,7 +203,7 @@
         "Poké Mart\nFor all your trainer needs."
       ],
       "text": [
-        ""
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
       ]
     }
   }

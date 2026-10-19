@@ -6,7 +6,7 @@
           "Simon"
         ],
         "text": [
-          ""
+          "Simon"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Swimmer Simon: The current's gentle here. Perfect for a battle at sea!"
         ],
         "text": [
-          ""
+          "Înotător Simon: Curentul e blând aici. Perfect pentru o luptă pe mare!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Swimmer Simon: I'll float back to shore and think about that."
         ],
         "text": [
-          ""
+          "Înotător Simon: Mă las dus înapoi la mal și mă gândesc la asta."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Elaine"
         ],
         "text": [
-          ""
+          "Elaine"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Swimmer Elaine: I swim out here every morning. You're in my lane!"
         ],
         "text": [
-          ""
+          "Înotătoare Elaine: Înot aici în fiecare dimineață. Ești pe culoarul meu!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Swimmer Elaine: Fine, share the lane."
         ],
         "text": [
-          ""
+          "Înotătoare Elaine: Bine, împărțim culoarul."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Randall"
         ],
         "text": [
-          ""
+          "Randall"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Swimmer Randall: I'm training for the swim to Cianwood. Help me warm up!"
         ],
         "text": [
-          ""
+          "Înotător Randall: Mă antrenez pentru înotul până în Cianwood. Ajută-mă să mă încălzesc!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Swimmer Randall: Warmed up, and worn out."
         ],
         "text": [
-          ""
+          "Înotător Randall: Încălzit, și sleit de puteri."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Paula"
         ],
         "text": [
-          ""
+          "Paula"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Swimmer Paula: Surfing on a Pokémon? That's cheating! Battle me fair and square."
         ],
         "text": [
-          ""
+          "Înotătoare Paula: Surf pe un Pokémon? E trișat! Luptă cu mine cinstit."
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Swimmer Paula: All right, you've earned the ride."
         ],
         "text": [
-          ""
+          "Înotătoare Paula: Bine, ți-ai câștigat plimbarea."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -118,7 +118,7 @@
           "Cianwood City's straight across the sea, west of here. You'll want a Pokémon that knows Surf."
         ],
         "text": [
-          ""
+          "Orașul Cianwood e drept peste mare, la vest de aici. O să-ți trebuiască un Pokémon care știe Surf."
         ]
       }
     }
@@ -129,7 +129,7 @@
         "Route 40\nCianwood City lies to the west, across the sea."
       ],
       "text": [
-        ""
+        "Ruta 40\nOrașul Cianwood e la vest, peste mare."
       ]
     },
     "W40_009+1": {
@@ -137,7 +137,7 @@
         "Battle Frontier\nThe gate to the place where the strongest gather."
       ],
       "text": [
-        ""
+        "Battle Frontier\nPoarta spre locul unde se adună cei mai puternici."
       ]
     }
   }

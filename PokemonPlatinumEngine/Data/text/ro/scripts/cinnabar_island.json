@@ -5,7 +5,7 @@
         "The door is locked. There's a keyhole, but no key in sight."
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Are o gaură de cheie, dar nicio cheie nu se vede."
       ]
     }
   ],
@@ -15,7 +15,7 @@
         "Cinnabar Island Pokémon Gym\nLeader: Blaine\nRiddles and fire for every challenger."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Insula Cinnabar\nLider: Blaine\nGhicitori și foc pentru oricine vine."
       ]
     },
     {
@@ -23,7 +23,7 @@
         "Cinnabar Island Pokémon Gym\nLeader: Blaine. Winning trainers: {rival}, {player}."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Insula Cinnabar\nLider: Blaine. Antrenori învingători: {rival}, {player}."
       ]
     }
   ]

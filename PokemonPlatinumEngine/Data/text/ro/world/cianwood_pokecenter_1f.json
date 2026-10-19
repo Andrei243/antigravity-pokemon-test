@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Chuck's Pokémon are all Fighting types. Flying and Psychic moves hit them where it hurts."
         ],
         "text": [
-          ""
+          "Pokémonii lui Chuck sunt toți de tip Luptă. Mișcările Zburătoare și Psihice îi lovesc unde îi doare."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "My dad swam all the way here from Olivine once. That's how he met my mum!"
         ],
         "text": [
-          ""
+          "Tata a înotat odată tocmai din Olivine până aici. Așa a cunoscut-o pe mama!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "The sea between here and Olivine has islands in it, ringed with whirlpools. Nobody goes inside."
         ],
         "text": [
-          ""
+          "Marea dintre Olivine și aici are insule, înconjurate de vârtejuri. Nimeni nu intră în ele."
         ]
       }
     }

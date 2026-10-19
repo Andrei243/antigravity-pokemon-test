@@ -5,7 +5,7 @@
         "{player} found a scroll!"
       ],
       "text": [
-        ""
+        "{player} a găsit un sul!"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player} learnt the secret code written on it by heart."
       ],
       "text": [
-        ""
+        "{player} a învățat pe de rost codul secret scris pe el."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The secret code is written on it: \"The Trick Master is magnificent.\""
       ],
       "text": [
-        ""
+        "Pe el e scris codul secret: „Maestrul Trucurilor e magnific.”"
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "The door is locked. Something is written on it: \"Write the secret code here.\""
       ],
       "text": [
-        ""
+        "Ușa e încuiată. Pe ea scrie ceva: „Scrie aici codul secret.”"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "{player} wrote the secret code on the door. \"The Trick Master is magnificent.\""
       ],
       "text": [
-        ""
+        "{player} a scris codul secret pe ușă. „Maestrul Trucurilor e magnific.”"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Click! The lock opened!"
       ],
       "text": [
-        ""
+        "Clic! Încuietoarea s-a deschis!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "The door stands open."
       ],
       "text": [
-        ""
+        "Ușa stă deschisă."
       ]
     }
   ]

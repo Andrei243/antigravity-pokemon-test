@@ -6,7 +6,7 @@
           "Chad"
         ],
         "text": [
-          ""
+          "Chad"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "School Kid Chad: I studied type matchups all week. Time for a test!"
         ],
         "text": [
-          ""
+          "Școlar Chad: Am studiat toată săptămâna tipurile și slăbiciunile lor. E timpul pentru un test!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "School Kid Chad: I think I failed the practical part."
         ],
         "text": [
-          ""
+          "Școlar Chad: Cred că am picat proba practică."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Toby"
         ],
         "text": [
-          ""
+          "Toby"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Bird Keeper Toby: My birds fly over this road every morning. They know it better than you!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Toby: Păsările mele zboară peste drumul ăsta în fiecare dimineață. Îl știu mai bine ca tine!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Bird Keeper Toby: They'll need a longer rest after that."
         ],
         "text": [
-          ""
+          "Crescător de păsări Toby: După asta le trebuie o odihnă mai lungă."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Dana"
         ],
         "text": [
-          ""
+          "Dana"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Lass Dana: You look like you've come a long way. Let's see how strong you've got!"
         ],
         "text": [
-          ""
+          "Domnișoară Dana: Se vede că ai venit de departe. Să vedem cât de puternică e echipa ta!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Lass Dana: Strong enough, it turns out."
         ],
         "text": [
-          ""
+          "Domnișoară Dana: Destul de puternică, până la urmă."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Valerie"
         ],
         "text": [
-          ""
+          "Valerie"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Beauty Valerie: A battle on a fine day like this? Why not!"
         ],
         "text": [
-          ""
+          "Frumoasă Valerie: O luptă într-o zi așa frumoasă? De ce nu!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Beauty Valerie: Still a fine day, even after losing."
         ],
         "text": [
-          ""
+          "Frumoasă Valerie: Tot o zi frumoasă e, chiar și după o înfrângere."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Harry"
         ],
         "text": [
-          ""
+          "Harry"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Sailor Harry: I'm off to sea from Olivine soon. One last battle on dry land!"
         ],
         "text": [
-          ""
+          "Marinar Harry: Plec în curând pe mare din Olivine. O ultimă luptă pe uscat!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Sailor Harry: I'll have to train harder on the voyage."
         ],
         "text": [
-          ""
+          "Marinar Harry: Va trebui să mă antrenez mai mult pe drum."
         ]
       }
     }
@@ -137,7 +137,7 @@
         "Route 38\nEcruteak City is to the east."
       ],
       "text": [
-        ""
+        "Ruta 38\nOrașul Ecruteak e la est."
       ]
     },
     "R38_002+1": {
@@ -145,7 +145,7 @@
         "Route 38\nOlivine City is to the west, beyond the farm."
       ],
       "text": [
-        ""
+        "Ruta 38\nOrașul Olivine e la vest, dincolo de fermă."
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Claude"
         ],
         "text": [
-          ""
+          "Claude"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Fisherman Claude: The fish bite best near the volcano. Must be the warm water."
         ],
         "text": [
-          ""
+          "Pescar Claude: Peștii mușcă cel mai bine lângă vulcan. Probabil din cauza apei calde."
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Fisherman Claude: Nothing's biting now."
         ],
         "text": [
-          ""
+          "Pescar Claude: Acum nu mai mușcă nimic."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Nolan"
         ],
         "text": [
-          ""
+          "Nolan"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Fisherman Nolan: Don't splash about! You'll scare the fish!"
         ],
         "text": [
-          ""
+          "Pescar Nolan: Nu mai plescăi! Sperii peștii!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Fisherman Nolan: Now they're scared of you too."
         ],
         "text": [
-          ""
+          "Pescar Nolan: Acum și de tine se sperie."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Jack"
         ],
         "text": [
-          ""
+          "Jack"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Swimmer Jack: My Starmie and I swim together every day. We're unbeatable!"
         ],
         "text": [
-          ""
+          "Înotător Jack: Starmie și cu mine înotăm împreună în fiecare zi. Suntem de neînvins!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Swimmer Jack: Beaten, after all."
         ],
         "text": [
-          ""
+          "Înotător Jack: Învinși, până la urmă."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Jerome"
         ],
         "text": [
-          ""
+          "Jerome"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Swimmer Jerome: Cinnabar's just south of here. You'll have to get past me first!"
         ],
         "text": [
-          ""
+          "Înotător Jerome: Cinnabar e chiar la sud de aici. Dar mai întâi trebuie să treci de mine!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Swimmer Jerome: Go on, then."
         ],
         "text": [
-          ""
+          "Înotător Jerome: Hai, du-te."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Roland"
         ],
         "text": [
-          ""
+          "Roland"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Swimmer Roland: I'm training for a swim right round Kanto. Help me practise!"
         ],
         "text": [
-          ""
+          "Înotător Roland: Mă antrenez pentru un înot în jurul întregului Kanto. Ajută-mă să exersez!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Swimmer Roland: I need more practice than I thought."
         ],
         "text": [
-          ""
+          "Înotător Roland: Am nevoie de mai mult exercițiu decât credeam."
         ]
       }
     }

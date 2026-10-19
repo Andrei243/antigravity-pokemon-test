@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! What can I get for you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot servi?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "A Nest Ball catches low-level Pokémon easily. I wish they sold them everywhere!"
         ],
         "text": [
-          ""
+          "Un Ball Cuib prinde ușor Pokémonii de nivel mic. Aș vrea să se vândă peste tot!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Fluffy, comfy things for a secret base... Oh, I'm only window shopping."
         ],
         "text": [
-          ""
+          "Lucruri pufoase și confortabile pentru o bază secretă... Oh, doar mă uit prin vitrine."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm buying Potions for my trip to Rustboro. You can never have too many!"
         ],
         "text": [
-          ""
+          "Îmi cumpăr Poțiuni pentru drumul spre Rustboro. Niciodată nu ai prea multe!"
         ]
       }
     }

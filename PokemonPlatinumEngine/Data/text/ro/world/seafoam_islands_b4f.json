@@ -4,7 +4,7 @@
       "Seafoam Islands"
     ],
     "text": [
-      ""
+      "Insulele Seafoam"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Articuno"
         ],
         "text": [
-          ""
+          "Articuno"
         ]
       }
     }
@@ -25,7 +25,7 @@
         "Danger! The current here is fierce. Do not swim near the ledge."
       ],
       "text": [
-        ""
+        "Pericol! Curentul de aici e năprasnic. Nu înotați lângă margine."
       ]
     },
     "SeafoamIslands_B4F_EventScript_BoulderHintSign": {
@@ -33,7 +33,7 @@
         "The boulders in these caves fall through holes to the floors below. Enough of them might change the way the water flows..."
       ],
       "text": [
-        ""
+        "Bolovanii din peșterile astea cad prin găuri la etajele de dedesubt. Destui dintre ei ar putea schimba felul în care curge apa..."
       ]
     }
   }

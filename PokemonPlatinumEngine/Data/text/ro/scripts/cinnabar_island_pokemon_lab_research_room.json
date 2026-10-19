@@ -5,7 +5,7 @@
         "Researcher"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "I've been studying a move that could do anything at all! Shall I teach Metronome to one of your Pokémon?"
       ],
       "text": [
-        ""
+        "Studiez o mișcare care poate face absolut orice! Vrei să învăț pe unul dintre Pokémonii tăi mișcarea Metronom?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Splendid! Which one?"
       ],
       "text": [
-        ""
+        "Splendid! Pe care?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "{wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{wearer} learned {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} a învățat {thing}!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Metronome calls up a move at random, any move at all. My research says it's pure chance. Or is it?"
       ],
       "text": [
-        ""
+        "Metronom cheamă o mișcare la întâmplare, orice mișcare. Cercetările mele spun că e noroc curat. Sau nu?"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "No? A pity. Science waits for nobody."
       ],
       "text": [
-        ""
+        "Nu? Păcat. Știința nu așteaptă pe nimeni."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "That's an Egg! I'll teach it when it hatches."
       ],
       "text": [
-        ""
+        "Acesta e un Ou! Îl învăț după ce iese din găoace."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Hmm, that one can't learn it, I'm afraid."
       ],
       "text": [
-        ""
+        "Hmm, mă tem că acela nu o poate învăța."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "That one knows it already!"
       ],
       "text": [
-        ""
+        "Acela o știe deja!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "That move can't be forgotten here. Another time."
       ],
       "text": [
-        ""
+        "Mișcarea aceea nu poate fi uitată aici. Altă dată."
       ]
     }
   ]

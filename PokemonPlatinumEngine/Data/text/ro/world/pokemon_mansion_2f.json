@@ -4,7 +4,7 @@
       "Pokémon Mansion"
     ],
     "text": [
-      ""
+      "Conacul Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Arnie"
         ],
         "text": [
-          ""
+          "Arnie"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Burglar Arnie: I came to rob this place, but there's nothing left to take! Except your prize money!"
         ],
         "text": [
-          ""
+          "Hoț Arnie: Am venit să jefuiesc locul, dar n-a mai rămas nimic de luat! În afară de banii tăi!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Burglar Arnie: Robbed blind!"
         ],
         "text": [
-          ""
+          "Hoț Arnie: M-ai jefuit de tot!"
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -90,7 +90,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -100,7 +100,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -140,7 +140,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Barrier"
         ],
         "text": [
-          ""
+          "Barieră"
         ]
       }
     }
@@ -161,7 +161,7 @@
         "A diary, its pages singed.\n\"Summer. We found a new Pokémon deep in the jungle, far to the south.\""
       ],
       "text": [
-        ""
+        "Un jurnal, cu paginile pârlite.\n„Vară. Am găsit un nou Pokémon adânc în junglă, departe spre sud.”"
       ]
     },
     "PokemonMansion_2F_EventScript_DiaryJuly10th": {
@@ -169,7 +169,7 @@
         "A diary, its pages singed.\n\"We named the Pokémon after the jungle's oldest legend. It is gentle, and very rare.\""
       ],
       "text": [
-        ""
+        "Un jurnal, cu paginile pârlite.\n„Am numit Pokémonul după cea mai veche legendă a junglei. E blând și foarte rar.”"
       ]
     }
   }

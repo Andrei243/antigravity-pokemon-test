@@ -5,7 +5,7 @@
         "Bzzzt! A barrier of crackling electricity blocks the way."
       ],
       "text": [
-        ""
+        "Bzzzt! O barieră de electricitate pârâitoare blochează drumul."
       ]
     }
   ],
@@ -15,7 +15,7 @@
         "Wattson"
       ],
       "text": [
-        ""
+        "Wattson"
       ]
     },
     {
@@ -23,7 +23,7 @@
         "Wahahaha! Welcome, welcome! I'm Wattson, Mauville's Gym Leader, and I've been powering this city for years!"
       ],
       "text": [
-        ""
+        "Uahahaha! Bine ai venit, bine ai venit! Sunt Wattson, Liderul Arenei din Mauville, și alimentez orașul ăsta de ani de zile!"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "You got through my barriers, did you? Then let's see if you can take a real jolt! Wahahahaha!"
       ],
       "text": [
-        ""
+        "Ai trecut de barierele mele, da? Atunci să vedem dacă rezisti la o descărcare adevărată! Uahahahaha!"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Wahahahaha! Fine, you win! You've got a spark in you, all right!"
       ],
       "text": [
-        ""
+        "Uahahahaha! Bine, ai câștigat! Ai o scânteie în tine, nu glumă!"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Here, take the Dynamo Badge. You've earned it fair and square."
       ],
       "text": [
-        ""
+        "Poftim, ia Insigna Dinam. Ai câștigat-o cinstit."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "{player} received the Dynamo Badge from Wattson!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Dinam de la Wattson!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "With the Dynamo Badge, your Pokémon can use Rock Smash outside of battle to break cracked rocks."
       ],
       "text": [
-        ""
+        "Cu Insigna Dinam, Pokémonii tăi pot folosi Spărgător de Pietre în afara luptei ca să spargă pietrele crăpate."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "And this! It's a move I'm especially proud of."
       ],
       "text": [
-        ""
+        "Și asta! E o mișcare de care sunt tare mândru."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "TM34 holds Shock Wave. It strikes like lightning and never misses. Wahahaha!"
       ],
       "text": [
-        ""
+        "TM34 conține Undă de Șoc. Lovește ca fulgerul și nu ratează niciodată. Uahahaha!"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Oh, and let's swap numbers! I like to keep up with bright young trainers."
       ],
       "text": [
-        ""
+        "A, și hai să facem schimb de numere! Îmi place să țin legătura cu antrenorii tineri și isteți."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Registered Wattson in the PokéNav."
       ],
       "text": [
-        ""
+        "Wattson a fost înregistrat în PokéNav."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "TM34 holds Shock Wave. It strikes like lightning and never misses. Wahahaha!"
       ],
       "text": [
-        ""
+        "TM34 conține Undă de Șoc. Lovește ca fulgerul și nu ratează niciodată. Uahahaha!"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Wahahaha! Keep that spark of yours burning bright, and you'll go far!"
       ],
       "text": [
-        ""
+        "Uahahaha! Ține aprinsă scânteia aia a ta și vei ajunge departe!"
       ]
     }
   ],
@@ -121,7 +121,7 @@
         "Gym Guide"
       ],
       "text": [
-        ""
+        "Ghidul Arenei"
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Hey, champ in the making! Wattson's barriers flip whenever you step on a switch on the floor."
       ],
       "text": [
-        ""
+        "Salutare! Barierele lui Wattson se schimbă de fiecare dată când calci pe un comutator de pe podea."
       ]
     },
     {
@@ -137,7 +137,7 @@
         "His Pokémon are Electric types. Ground moves will hit them hard, and they can't shock you back!"
       ],
       "text": [
-        ""
+        "Pokémonii lui sunt de tip Electric. Mișcările de Pământ îi lovesc tare și nu te pot electrocuta înapoi!"
       ]
     },
     {
@@ -145,7 +145,7 @@
         "You beat Wattson! The barriers are switched off for good now. What a shocking performance!"
       ],
       "text": [
-        ""
+        "L-ai învins pe Wattson! Barierele sunt oprite pentru totdeauna. Ce spectacol electrizant!"
       ]
     }
   ]

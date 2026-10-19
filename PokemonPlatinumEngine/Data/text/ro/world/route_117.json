@@ -6,7 +6,7 @@
           "Day-Care Man"
         ],
         "text": [
-          ""
+          "Omul de la Pensiune"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "The Day Care couple raise Pokémon for you. Sometimes an Egg turns up, and nobody knows where from!"
         ],
         "text": [
-          ""
+          "Cei de la Pensiune îți cresc Pokémonii. Uneori apare un Ou, și nimeni nu știe de unde!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I like to watch the Pokémon play in the Day Care's yard. They look so happy!"
         ],
         "text": [
-          ""
+          "Îmi place să mă uit la Pokémonii care se joacă în curtea Pensiunii. Par atât de fericiți!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Leave two Pokémon at the Day Care and they might get along. Then you never know what happens!"
         ],
         "text": [
-          ""
+          "Lasă doi Pokémoni la Pensiune și s-ar putea să se înțeleagă. Apoi nu se știe ce se întâmplă!"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Zigzagoon"
         ],
         "text": [
-          ""
+          "Zigzagoon"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Zigzagoon: Zigzag!"
         ],
         "text": [
-          ""
+          "Zigzagoon: Zigzag!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Kecleon"
         ],
         "text": [
-          ""
+          "Kecleon"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Kecleon: Kekeeh!"
         ],
         "text": [
-          ""
+          "Kecleon: Kekeeh!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Azumarill"
         ],
         "text": [
-          ""
+          "Azumarill"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Azumarill: Rurii!"
         ],
         "text": [
-          ""
+          "Azumarill: Rurii!"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Pikachu"
         ],
         "text": [
-          ""
+          "Pikachu"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "Pikachu: Pika pika!"
         ],
         "text": [
-          ""
+          "Pikachu: Pika pika!"
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Dylan"
         ],
         "text": [
-          ""
+          "Dylan"
         ]
       },
       "before": {
@@ -150,7 +150,7 @@
           "Triathlete Dylan: Running's my thing. And when I run, I run into trainers!"
         ],
         "text": [
-          ""
+          "Triatlonist Dylan: Alergarea e pasiunea mea. Și când alerg, dau peste antrenori!"
         ]
       },
       "after": {
@@ -158,7 +158,7 @@
           "Triathlete Dylan: I'll go for a jog to clear my head."
         ],
         "text": [
-          ""
+          "Triatlonist Dylan: Ies la o alergare să-mi limpezesc mintea."
         ]
       }
     },
@@ -168,7 +168,7 @@
           "Lydia"
         ],
         "text": [
-          ""
+          "Lydia"
         ]
       },
       "before": {
@@ -176,7 +176,7 @@
           "Pokémon Breeder Lydia: Look at all the Pokémon I've raised! Six of them, all so lovely."
         ],
         "text": [
-          ""
+          "Crescător Pokémon Lydia: Uite câți Pokémoni am crescut! Șase, toți atât de drăguți."
         ]
       },
       "after": {
@@ -184,7 +184,7 @@
           "Pokémon Breeder Lydia: My dears, you did your best."
         ],
         "text": [
-          ""
+          "Crescător Pokémon Lydia: Dragii mei, ați dat tot ce-ați putut."
         ]
       }
     },
@@ -194,7 +194,7 @@
           "Isaac"
         ],
         "text": [
-          ""
+          "Isaac"
         ]
       },
       "before": {
@@ -202,7 +202,7 @@
           "Pokémon Breeder Isaac: I raise my Pokémon with love. Battling with them is the best part!"
         ],
         "text": [
-          ""
+          "Crescător Pokémon Isaac: Îmi cresc Pokémonii cu dragoste. Luptele cu ei sunt partea cea mai bună!"
         ]
       },
       "after": {
@@ -210,7 +210,7 @@
           "Pokémon Breeder Isaac: More love next time. And more training."
         ],
         "text": [
-          ""
+          "Crescător Pokémon Isaac: Mai multă dragoste data viitoare. Și mai mult antrenament."
         ]
       }
     },
@@ -220,7 +220,7 @@
           "Maria"
         ],
         "text": [
-          ""
+          "Maria"
         ]
       },
       "before": {
@@ -228,7 +228,7 @@
           "Triathlete Maria: My Doduo and I run every day! Keep up if you can!"
         ],
         "text": [
-          ""
+          "Triatlonist Maria: Doduo și cu mine alergăm în fiecare zi! Ține pasul dacă poți!"
         ]
       },
       "after": {
@@ -236,7 +236,7 @@
           "Triathlete Maria: You ran rings round us."
         ],
         "text": [
-          ""
+          "Triatlonist Maria: Ne-ai lăsat mult în urmă."
         ]
       }
     },
@@ -246,7 +246,7 @@
           "Derek"
         ],
         "text": [
-          ""
+          "Derek"
         ]
       },
       "before": {
@@ -254,7 +254,7 @@
           "Bug Maniac Derek: The bugs here are wonderful! Want to see my favourites?"
         ],
         "text": [
-          ""
+          "Pasionat de insecte Derek: Insectele de aici sunt minunate! Vrei să le vezi pe preferatele mele?"
         ]
       },
       "after": {
@@ -262,7 +262,7 @@
           "Bug Maniac Derek: They're still wonderful, even when they lose."
         ],
         "text": [
-          ""
+          "Pasionat de insecte Derek: Tot minunate sunt, chiar și când pierd."
         ]
       }
     },
@@ -272,7 +272,7 @@
           "Anna & Meg"
         ],
         "text": [
-          ""
+          "Anna și Meg"
         ]
       },
       "before": {
@@ -280,7 +280,7 @@
           "Sr. & Jr. Anna & Meg: Big sister and little sister! We battle as a team!"
         ],
         "text": [
-          ""
+          "Mare și mic Anna și Meg: Sora mare și sora mică! Ne luptăm în echipă!"
         ]
       },
       "after": {
@@ -288,7 +288,7 @@
           "Sr. & Jr. Anna & Meg: Even together, we couldn't do it."
         ],
         "text": [
-          ""
+          "Mare și mic Anna și Meg: Nici împreună n-am reușit."
         ]
       }
     },
@@ -298,7 +298,7 @@
           "Anna & Meg"
         ],
         "text": [
-          ""
+          "Anna și Meg"
         ]
       },
       "before": {
@@ -306,7 +306,7 @@
           "Sr. & Jr. Anna & Meg: Sister's with me, so I'm not scared at all!"
         ],
         "text": [
-          ""
+          "Mare și mic Anna și Meg: Sora mea e cu mine, așa că nu mi-e frică deloc!"
         ]
       },
       "after": {
@@ -314,7 +314,7 @@
           "Sr. & Jr. Anna & Meg: We'll get stronger together!"
         ],
         "text": [
-          ""
+          "Mare și mic Anna și Meg: O să devenim mai puternice împreună!"
         ]
       }
     },
@@ -324,7 +324,7 @@
           "Brandi"
         ],
         "text": [
-          ""
+          "Brandi"
         ]
       },
       "before": {
@@ -332,7 +332,7 @@
           "Psychic Brandi: I can sense it. You're going to battle me. Am I right?"
         ],
         "text": [
-          ""
+          "Medium Brandi: Simt ceva. O să te lupți cu mine. Am dreptate?"
         ]
       },
       "after": {
@@ -340,7 +340,7 @@
           "Psychic Brandi: I didn't sense that coming."
         ],
         "text": [
-          ""
+          "Medium Brandi: Pe asta n-am simțit-o venind."
         ]
       }
     },
@@ -350,7 +350,7 @@
           "Aisha"
         ],
         "text": [
-          ""
+          "Aisha"
         ]
       },
       "before": {
@@ -358,7 +358,7 @@
           "Battle Girl Aisha: I'm training on the open road! You'll be my sparring partner."
         ],
         "text": [
-          ""
+          "Luptătoare Aisha: Mă antrenez pe drum! Tu o să fii partenerul meu de antrenament."
         ]
       },
       "after": {
@@ -366,7 +366,7 @@
           "Battle Girl Aisha: Back to training, then."
         ],
         "text": [
-          ""
+          "Luptătoare Aisha: Înapoi la antrenament, atunci."
         ]
       }
     },
@@ -376,7 +376,7 @@
           "Melina"
         ],
         "text": [
-          ""
+          "Melina"
         ]
       },
       "before": {
@@ -384,7 +384,7 @@
           "Triathlete Melina: Ready, set... battle!"
         ],
         "text": [
-          ""
+          "Triatlonist Melina: Pe locuri, fiți gata... luptă!"
         ]
       },
       "after": {
@@ -392,7 +392,7 @@
           "Triathlete Melina: I need to warm up more."
         ],
         "text": [
-          ""
+          "Triatlonist Melina: Trebuie să mă încălzesc mai mult."
         ]
       }
     }
@@ -403,7 +403,7 @@
         "Route 117\nWest: Verdanturf Town"
       ],
       "text": [
-        ""
+        "Ruta 117\nVest: Orășelul Verdanturf"
       ]
     },
     "Route117_EventScript_RouteSignMauville": {
@@ -411,7 +411,7 @@
         "Route 117\nEast: Mauville City"
       ],
       "text": [
-        ""
+        "Ruta 117\nEst: Orașul Mauville"
       ]
     },
     "Route117_EventScript_DayCareSign": {
@@ -419,7 +419,7 @@
         "Pokémon Day Care\nWe raise your Pokémon for you."
       ],
       "text": [
-        ""
+        "Pensiunea Pokémon\nNoi îți creștem Pokémonii."
       ]
     }
   }

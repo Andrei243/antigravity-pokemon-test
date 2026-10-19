@@ -6,7 +6,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "She won't battle anyone until it's well again. That's just how kind she is."
         ],
         "text": [
-          "",
-          ""
+          "Salutare! Îmi pare rău, Liderul nu e aici. Jasmine e sus la far, are grijă de un Pokémon bolnav.",
+          "Nu se luptă cu nimeni până nu se face bine. Atât e de bună."
         ]
       }
     }
@@ -27,7 +27,7 @@
         "Olivine City Pokémon Gym\nLeader: Jasmine"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Olivine\nLider: Jasmine"
       ]
     }
   }
