@@ -108,6 +108,9 @@
   "props": [
     { "model": 0, "name": "gba:Painting", "x": 1.5, "y": 0, "z": 3.5, "boxX": 1, "boxZ": 3, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:Painting", "x": 11, "y": 0, "z": 7.5, "boxX": 10, "boxZ": 7, "width": 2, "depth": 1, "height": 0 },
-    { "model": 0, "name": "gba:LabMachine", "x": 16.5, "y": 0, "z": 12.5, "boxX": 16, "boxZ": 12, "width": 1, "depth": 1, "height": 0 }
+    { "model": 0, "name": "gba:WarpPanel", "x": 14.5, "y": 0, "z": 9.5, "boxX": 14, "boxZ": 9, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:LabMachine", "x": 16.5, "y": 0, "z": 12.5, "boxX": 16, "boxZ": 12, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:WarpPanel", "x": 10.5, "y": 0, "z": 14.5, "boxX": 10, "boxZ": 14, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:WarpPanel", "x": 14.5, "y": 0, "z": 17.5, "boxX": 14, "boxZ": 17, "width": 1, "depth": 1, "height": 0 }
   ]
 }

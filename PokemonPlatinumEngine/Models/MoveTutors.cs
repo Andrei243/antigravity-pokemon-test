@@ -144,6 +144,10 @@ public static class MoveTutors
         ["Rock Slide"] = "Rock Slide",
         // Fuchsia City's boy by the Mart (FireRed's FuchsiaCity_EventScript_SubstituteTutor; plan 19 · K6)
         ["Substitute"] = "Substitute",
+        // The researcher in Cinnabar Island's lab (FireRed's CinnabarIsland_PokemonLab_ResearchRoom_EventScript_
+        // MetronomeTutor; plan 19 · K6, part b). Platinum has no machine of Metronome: its nearest kin among them is
+        // Psych Up (TM77), another move that takes on what isn't the user's own
+        ["Metronome"] = "Psych Up",
     };
 
     /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>

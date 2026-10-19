@@ -117,7 +117,13 @@ public enum Query
     /// <summary>The badge a field move needs in the player's region is won, or the region asks none (plan 19 · K4, part b): <c>movebadge "Cut"</c>.</summary>
     MoveBadge,
     /// <summary>The player is in a region (plan 19 · K6): <c>region "Kanto"</c>, for a common script two regions share (the Safari Game's end).</summary>
-    Region
+    Region,
+    /// <summary>
+    /// Whoever the script belongs to is someone of its place by their id in the area's file (plan 19 · K6, part b):
+    /// <c>subject "pushable_boulder_2"</c>, for a script many things share that does something of each's own (a
+    /// Seafoam boulder down a hole shows a boulder of its own on the floor below).
+    /// </summary>
+    Subject
 }
 
 /// <summary>A question a script asks of the game before a line: <c>if [not] ...</c>.</summary>

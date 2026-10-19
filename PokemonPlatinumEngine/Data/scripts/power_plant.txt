@@ -1,0 +1,44 @@
+# The Power Plant (plan 19 · K6, part b). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/PowerPlant/scripts.inc).
+#
+# Zapdos waits in the plant's far corner until it has been fought (FLAG_FOUGHT_ZAPDOS): beaten or caught it is gone
+# for good, run from it flies off and is back on the next visit. Two of the Poké Balls lying about are Electrode,
+# which wake when touched and are gone however their battle ends (FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1 and _2, as
+# FireRed's own). Each is shown again by the plant's arrival while it hasn't been fought.
+
+
+script OnEnter
+  if not flag FLAG_FOUGHT_ZAPDOS clearflag FLAG_HIDE_ZAPDOS
+  if not flag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1 clearflag FLAG_HIDE_POWER_PLANT_ELECTRODE_1
+  if not flag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_2 clearflag FLAG_HIDE_POWER_PLANT_ELECTRODE_2
+  end
+
+script Zapdos
+  scene "Zapdos"
+  speaker none
+  cry "Zapdos"
+  text "Gyaaah!\nSparks crackled through the air round the great bird!"
+  wildbattle "Zapdos" 50
+  if result == 2 goto Fled
+  setflag FLAG_FOUGHT_ZAPDOS
+  setflag FLAG_HIDE_ZAPDOS
+  hide self
+  endscene
+  end
+label Fled
+  setflag FLAG_HIDE_ZAPDOS
+  hide self
+  text "Zapdos flew off somewhere in the plant!"
+  endscene
+  end
+
+script Electrode
+  speaker none
+  cry "Electrode"
+  text "The Poké Ball jolted and spun! It was an Electrode!"
+  wildbattle "Electrode" 34
+  if subject "item_ball_7" setflag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1
+  if subject "item_ball_6" setflag FLAG_FOUGHT_POWER_PLANT_ELECTRODE_2
+  setflag own
+  hide self
+  end

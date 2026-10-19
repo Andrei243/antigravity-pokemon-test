@@ -4,6 +4,8 @@
   // battle while the game is on (Models/SafariGame.cs)
   "area": "safari_zone_center",
   "bgmTrack": "kanto/safari_zone",
+  // The rest houses build as Fuchsia does (plan 19 · K6, part b)
+  "architecture": "Wildwood",
   "trees": "Round",
   "signs": {
     "SafariZone_Center_EventScript_RestHouseSign": "Rest House",

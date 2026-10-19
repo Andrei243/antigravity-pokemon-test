@@ -1,0 +1,30 @@
+# Cinnabar Island (plan 19 · K6, part b). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/CinnabarIsland/scripts.inc).
+#
+# The Gym's door is locked until the Secret Key has been picked up in the Pokémon Mansion's basement: its ball's flag
+# (FLAG_HIDE_POKEMON_MANSION_B1F_SECRET_KEY) is what FireRed's arrival asks, and the step before the door turns the
+# player back while VAR_TEMP_1 is 0. Bill, who waits here once Blaine is beaten to take the player to One Island, and
+# the ferry are plan 19 · K7's: until then they stay out of sight (a save from before this chapter never came here).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_CINNABAR_ISLAND == 0 setflag FLAG_HIDE_CINNABAR_BILL
+  setflag FLAG_HIDE_CINNABAR_SEAGALLOP
+  if flag FLAG_HIDE_POKEMON_MANSION_B1F_SECRET_KEY setvar VAR_TEMP_1 1
+  end
+
+script LockedGymDoor
+  face player up
+  speaker none
+  text "The door is locked. There's a keyhole, but no key in sight."
+  walk player down 1
+  end
+
+script GymSign
+  speaker none
+  if badge volcano goto Won
+  text "Cinnabar Island Pokémon Gym\nLeader: Blaine\nRiddles and fire for every challenger."
+  end
+label Won
+  text "Cinnabar Island Pokémon Gym\nLeader: Blaine. Winning trainers: {rival}, {player}."
+  end

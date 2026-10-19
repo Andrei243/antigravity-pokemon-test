@@ -1,0 +1,30 @@
+{
+  "key": "cinnabar_island_pokemon_center_2f",
+  "index": 332,
+  "name": "Cinnabar Island",
+  "matrix": 279,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 6, "to": "cinnabar_island_pokemon_center_1f", "toWarp": 3 },
+    { "x": 5, "z": 1, "to": "union_room", "toWarp": 0 },
+    { "x": 9, "z": 1, "to": "trade_center", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "cable_club_receptionist", "looks": "cable_club_receptionist", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Common_EventScript_UnionRoomAttendant" },
+    { "id": "cable_club_receptionist_2", "looks": "cable_club_receptionist", "movement": "look_south", "x": 2, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Common_EventScript_WirelessClubAttendant" },
+    { "id": "cable_club_receptionist_3", "looks": "cable_club_receptionist", "movement": "look_south", "x": 10, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Common_EventScript_DirectCornerAttendant" },
+    { "id": "mg_deliveryman", "looks": "mg_deliveryman", "movement": "look_south", "x": 1, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MG_DELIVERYMEN", "script": "CableClub_EventScript_MysteryGiftMan" }
+  ],
+  "signs": [],
+  "triggers": []
+}

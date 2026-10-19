@@ -100,7 +100,7 @@
     "TTTTTTTTTT..TTTTTTTTTTTTTTTTTTTT",
     "TTTTTTTTTT..TTTTTTTTTTTTTTTTTTTT",
     "::......TT..TTTTTTTTTTTTTTTTTTTT",
-    "???????.TT..TTTTTTTTTTTTTTTTTTTT"
+    "??:::::.TT..TTTTTTTTTTTTTTTTTTTT"
   ],
   "heights": [
     { "x": 30, "z": 17, "width": 2, "depth": 15, "height": 1, "slopeX": 0, "slopeZ": 0 },

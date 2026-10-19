@@ -1,0 +1,18 @@
+{
+  // The Seafoam Islands, B3F (plan 19 · K6, part b): the current that sweeps whoever lands in it down to B4F, still
+  // once two boulders lie across its mouth (seafoam_islands_b3f.txt), and the holes on its west side that take
+  // boulders down to B4F's current
+  "area": "seafoam_islands_b3f",
+  "name": "Seafoam Islands",
+  "bgmTrack": "kanto/viridian_forest",
+  "pits": [
+    { "x": 6, "z": 18, "script": "FallFromB3F" },
+    { "x": 9, "z": 18, "script": "FallFromB3F" }
+  ],
+  // Where the current runs out at the foot of the floor, over the falls: FireRed's script takes the player on down to
+  // B4F's current there (SeafoamIslands_B3F_EventScript_EnterByFalling)
+  "exits": [
+    { "x": 25, "z": 18, "map": "SeafoamIslands_B4F", "toX": 27, "toY": 21, "facing": "Up" },
+    { "x": 26, "z": 18, "map": "SeafoamIslands_B4F", "toX": 27, "toY": 21, "facing": "Up" }
+  ]
+}

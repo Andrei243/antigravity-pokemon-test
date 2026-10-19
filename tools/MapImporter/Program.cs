@@ -33,7 +33,9 @@ if (Arg("--game") is "heartgold" or "soulsilver")
 
 // A Game Boy Advance game (plan 18 · W6): its own pin, its own folder under out/. Platinum is the run below.
 if (Arg("--game") is { } game and not "platinum")
-    return args.Contains("--data")
+    return Arg("--unknown") is { } unknownMap
+        ? MapImporter.Gba.GbaImport.Unknown(repo, game, decompDir, unknownMap)
+        : args.Contains("--data")
         ? MapImporter.Gba.GbaImport.Data(repo, game, decompDir, Arg("--data-dir"))
         : MapImporter.Gba.GbaImport.Run(repo, game, decompDir, Path.Combine(outDir, MapImporter.Gba.GbaImport.RegionOf(game)), quick);
 

@@ -72,7 +72,7 @@ public sealed partial class ScriptRunner
                 string? species = Waiting(story);
                 if (species == null) { Result = 0; break; }
                 lastThing = species;
-                Result = host.GivePokemon(new Pokemon(PokemonDatabase.Get(species)!, Fossils.Level)) ? 1 : 2;
+                Result = host.GivePokemon(new Pokemon(PokemonDatabase.Get(species)!, i.Number > 0 ? i.Number : Fossils.Level)) ? 1 : 2;
                 story.SetVar(Fossils.RevivedVariable, 0);
                 host.Pastimes.FossilsRevived++;
                 break;

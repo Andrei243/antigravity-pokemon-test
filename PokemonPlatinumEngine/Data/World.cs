@@ -162,7 +162,7 @@ public sealed class World
         // Chunks the story swaps for others are built a second time by themselves, and the map keeps both grounds
         foreach (var swap in Index.Swaps)
             if (maps.FirstOrDefault(m => m.Name == swap.Map) is { } map && Index.Maps.FirstOrDefault(e => e.Name == swap.Map) is { } entry)
-                map.AddSwappedPlace(swap.Var, swap.Value, swap.Cells.Select(c => (c.ChunkX, c.ChunkY)), WorldMapBuilder.BuildSwapped(this, entry, swap));
+                map.AddSwappedPlace(swap.Var, swap.Value, swap.Cells.Select(c => (c.ChunkX, c.ChunkY)), WorldMapBuilder.BuildSwapped(this, entry, swap), swap.Flag);
         // Turnback Cave's doors are aimed as the player comes into each room: they learn here where each door leads
         foreach (string area in TurnbackCave.Everywhere)
             for (int door = 0; door < TurnbackCave.Doors.Count; door++)
@@ -224,7 +224,9 @@ public static class WorldMapBuilder
                 : (matrix.Width * T, matrix.Height * T);
         var map = new Map(mapWidth, mapHeight)
         {
-            Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel, Setting = entry.Setting
+            Name = entry.Name, DisplayName = world.Index.Region, Trees = entry.Trees, GroundLevel = GroundLevel, Setting = entry.Setting,
+            // A GBA game's water is one level to a surfer (plan 19 · K6, part b): its worlds are those found at their doors
+            WaterIsOneLevel = world.Index.BuildingsAtDoors
         };
         // A room built from a layout is a room of the kind its name says (plan 19 · K1): a Pokémon Center's floor, a
         // Mart's, a lab's, and a house's for the rest, until the region's plan gives its rooms looks of their own
@@ -2268,7 +2270,10 @@ public static class WorldMapBuilder
             npc.ScriptFile = key;
             // An electric gate stands on a tile of the gap it shuts, which the original blocks while its beams are
             // on: the tile is open under it, and the gate is what is in the way (plan 19 · K4, part b)
-            if (npc.NpcType == NPC.ElectricGateType && map.InBounds(npc.GridX, npc.GridY))
+            // A shutter on a doorway the original draws shut (the Cinnabar Island Gym's six, plan 19 · K6, part b) is the
+            // same: Silph Co.'s stand on open floor and are left as they are
+            if ((npc.NpcType == NPC.ElectricGateType || npc.NpcType == NPC.GalacticDoorType && map.IsSolid(npc.GridX, npc.GridY))
+                && map.InBounds(npc.GridX, npc.GridY))
             {
                 // ...and floored like the floor it joins, the first open tile south of it, so the room is built with
                 // the gap where FireRed's beams stand, not a wall across it
@@ -2357,6 +2362,8 @@ public static class WorldMapBuilder
         for (int i = 0; i < file.Warps.Count; i++)
         {
             var from = file.Warps[i];
+            // Where a faller through a hole above comes down (plan 19 · K6, part b): no way anywhere
+            if (from.Landing == true) continue;
             if (overlay?.Locked?.Contains(i) == true)
             {
                 // A shut door of a world whose houses are found at their doors is still its building's door (plan 21 · H1)
@@ -2394,7 +2401,7 @@ public static class WorldMapBuilder
         // A way in that leads nowhere yet (a cave's mouth, a gate house, a hall without a door) is closed: one
         // can't walk into an opening and stand in the wall. A door is shut by itself.
         foreach (var from in file.Warps)
-            if (!map.WarpsAt(from.X, from.Z).Any() && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
+            if (from.Landing != true && !map.WarpsAt(from.X, from.Z).Any() && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
     }
 
     /// <summary>The way into an open area through one of its warps (Turnback Cave's doors, which are aimed as the player comes in).</summary>

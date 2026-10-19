@@ -235,7 +235,15 @@ public enum Architecture
     /// <summary>Weathered boards under straw hip roofs with shutters: the fishermen's island of sand (Dewford, plan 21 · H3).</summary>
     Islet,
     /// <summary>Stucco under sea-teal gable roofs with shutters and flower boxes: the busy port of the market and the museum (Slateport, plan 21 · H3).</summary>
-    Wharf
+    Wharf,
+
+    // Kanto again (plan 19 · K6, part b), at the enum's end so no other value moves
+    /// <summary>Plaster under celadon-green hip roofs with flower boxes: the rainbow city of the department store (Celadon, plan 19 · K6, part b).</summary>
+    Jade,
+    /// <summary>Brick under saffron-gold gable roofs with shutters: the great city at Kanto's heart, home of Silph Co. (Saffron, plan 19 · K6, part b).</summary>
+    Uptown,
+    /// <summary>Pale cut stone under cinnabar-red hip roofs with a chimney: the volcanic island of the lab and the burned mansion (Cinnabar, plan 19 · K6, part b).</summary>
+    Cinder
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

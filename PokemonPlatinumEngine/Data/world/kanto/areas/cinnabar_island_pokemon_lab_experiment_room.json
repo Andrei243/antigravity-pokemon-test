@@ -1,0 +1,26 @@
+{
+  "key": "cinnabar_island_pokemon_lab_experiment_room",
+  "index": 330,
+  "name": "Cinnabar Island",
+  "matrix": 277,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CINNABAR",
+  "nightMusic": "MUS_CINNABAR",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 9, "to": "cinnabar_island_pokemon_lab_entrance", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "boy", "looks": "boy", "movement": "look_north", "x": 11, "z": 8, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_Garett" },
+    { "id": "scientist", "looks": "scientist", "movement": "wander_around", "x": 12, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CinnabarIsland_PokemonLab_ExperimentRoom_EventScript_FossilScientist" }
+  ],
+  "signs": [],
+  "triggers": []
+}

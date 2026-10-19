@@ -1,0 +1,28 @@
+{
+  // The Pokémon Mansion's top floor (plan 19 · K6, part b): its statue's switch and its barriers as the ground floor's
+  // (pokemon_mansion_1f.json has the rule), a burglar, a scientist and a page of the diary
+  "area": "pokemon_mansion_3f",
+  "name": "Pokémon Mansion",
+  "bgmTrack": "kanto/pokemon_mansion",
+  "people": {
+    "poke_maniac": { "name": "Simon", "npcType": "burglar", "trainer": { "dialogueBefore": "Burglar Simon: The floors here are full of holes. Mind you don't fall through to me!", "dialogueAfter": "Burglar Simon: I fell for it instead." } },
+    "scientist": { "name": "Braydon", "trainer": { "dialogueBefore": "Scientist Braydon: I'm here to find the old research notes. You're in my way!", "dialogueAfter": "Scientist Braydon: No notes on losing, I'm afraid." } }
+  },
+  "read": {
+    "PokemonMansion_3F_EventScript_Statue": "PokemonMansionSwitch"
+  },
+  "signs": {
+    "PokemonMansion_3F_EventScript_DiaryFeb6th": "A diary, its pages singed.\n\"Winter. The Pokémon has given birth. We have named the little one after its mother.\""
+  },
+  "npcs": [
+    { "id": "barrier_1", "name": "Barrier", "npcType": "ElectricGate", "x": 17, "y": 11, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_2", "name": "Barrier", "npcType": "ElectricGate", "x": 17, "y": 12, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_3", "name": "Barrier", "npcType": "ElectricGate", "x": 18, "y": 11, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_4", "name": "Barrier", "npcType": "ElectricGate", "x": 18, "y": 12, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_5", "name": "Barrier", "npcType": "ElectricGate", "x": 19, "y": 11, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_6", "name": "Barrier", "npcType": "ElectricGate", "x": 19, "y": 12, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_8", "name": "Barrier", "npcType": "ElectricGate", "x": 21, "y": 6, "shownBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_9", "name": "Barrier", "npcType": "ElectricGate", "x": 21, "y": 7, "shownBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_10", "name": "Barrier", "npcType": "ElectricGate", "x": 21, "y": 8, "shownBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" }
+  ]
+}

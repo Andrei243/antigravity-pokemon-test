@@ -30,17 +30,20 @@ public static class GbaEvents
     /// original's player can never take (<see cref="NeverTaken"/>), when the <paramref name="matrix"/> it lies on is given.
     /// </summary>
     public static void Fill(WorldAreaFile area, GbaPlaced placed, GbaTables tables, Func<string, GbaMap?> byId, List<string> problems,
-        GbaMatrix? matrix = null)
+        GbaMatrix? matrix = null, GbaWorld? world = null)
     {
         var (map, _, ox, oy) = placed;
-        foreach (var w in map.Warps)
+        for (int index = 0; index < map.Warps.Count; index++)
         {
+            var w = map.Warps[index];
             int x = ox + w.X, z = oy + w.Y;
-            bool never = matrix != null && matrix.Has(x, z)
-                && NeverTaken((TileBehavior)matrix.Behaviour[z * matrix.Width + x], matrix.Solid[z * matrix.Width + x]);
+            var own = matrix != null && matrix.Has(x, z) ? (TileBehavior)matrix.Behaviour[z * matrix.Width + x] : TileBehavior.None;
+            bool never = matrix != null && matrix.Has(x, z) && NeverTaken(own, matrix.Solid[z * matrix.Width + x]);
             var to = never ? null : byId(w.DestMap);
             if (to == null && !never && w.DestMap != "MAP_DYNAMIC") problems.Add($"{map.Name}: a warp to {w.DestMap}, which has no map");
-            area.Warps.Add(new AreaWarp { X = x, Z = z, To = to?.Key ?? "", ToWarp = w.DestWarp });
+            // Where a faller through a hole above comes down is no way anywhere (plan 19 · K6, part b)
+            bool landing = world != null && world.IsLanding(map.Id, index, own);
+            area.Warps.Add(new AreaWarp { X = x, Z = z, To = to?.Key ?? "", ToWarp = w.DestWarp, Landing = landing ? true : null });
         }
 
         var ids = new HashSet<string>(StringComparer.Ordinal);

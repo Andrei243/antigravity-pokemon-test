@@ -288,6 +288,22 @@ public class Player
     /// <summary>Puts the player on foot, on the water or on the Bicycle outright: a loaded save, a test, the harness.</summary>
     public void SetMode(TravelMode mode) => Mode = mode;
 
+    /// <summary>
+    /// Whoever comes down through a hole onto water rides out on it there (plan 19 · K6, part b: FireRed's
+    /// <c>ForcePlayerToStartSurfing</c> under the Seafoam Islands' holes), and a current under them takes them on at
+    /// once. Called as the player is put down on a map by a warp; nothing happens on ground or for someone already
+    /// on the water.
+    /// </summary>
+    public void ComeDownOn(Map map)
+    {
+        var underfoot = map.BehaviourAt(GridX, GridY);
+        if (!TileBehaviors.IsSurfable(underfoot) || underfoot == TileBehavior.Waterfall) return;
+        Mode = TravelMode.Surfing;
+        height = float.NaN;
+        carried = FieldMovement.Carries(underfoot, Facing);
+        IsSliding = carried != null;
+    }
+
     /// <summary>The height of the ground (or deck, or water) under the player on a map, in tiles; eased from tile to tile while moving.</summary>
     public float HeightOn(Map map) => float.IsNaN(height) ? map.HeightAt(GridX, GridY) : height;
 

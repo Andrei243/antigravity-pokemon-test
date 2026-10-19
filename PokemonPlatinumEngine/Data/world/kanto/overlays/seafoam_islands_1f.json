@@ -1,0 +1,12 @@
+{
+  // The Seafoam Islands' first floor (plan 19 · K6, part b): FireRed's cave between Route 20's two mouths. Its two
+  // boulders, pushed with Strength into the holes north of them, fall to the floor below (pits, seafoam_islands.txt:
+  // each shows a boulder of its own there), the first step of stilling the currents round Articuno
+  "area": "seafoam_islands_1f",
+  "name": "Seafoam Islands",
+  "bgmTrack": "kanto/viridian_forest",
+  "pits": [
+    { "x": 21, "z": 8, "script": "FallFrom1F" },
+    { "x": 30, "z": 8, "script": "FallFrom1F" }
+  ]
+}

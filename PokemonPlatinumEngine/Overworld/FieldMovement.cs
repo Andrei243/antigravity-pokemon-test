@@ -291,7 +291,11 @@ public static class FieldMovement
             (height, onDeck, afloat) = (floor, false, true);
         }
         if (map.NpcIn(nx, ny, height) is { } someone && someone != map.Follower) return No(Obstacle.Person);
-        if (MathF.Abs(height - walker.Height) >= StepLimit) return No(Obstacle.Cliff);
+        // On a GBA game's map water is one level to a surfer (plan 19 · K6, part b): its elevation is "any level", and
+        // drawn at its banks' levels it runs down the Seafoam Islands' rapids in steps nobody surfing ever meets
+        bool oneLevel = map.WaterIsOneLevel && walker.Mode == TravelMode.Surfing && !onDeck
+            && TileBehaviors.IsSurfable(here) && TileBehaviors.IsSurfable(there) && here != TileBehavior.Waterfall && there != TileBehavior.Waterfall;
+        if (!oneLevel && MathF.Abs(height - walker.Height) >= StepLimit) return No(Obstacle.Cliff);
         if (map.Puzzle?.Refuses(map, nx, ny, walker.Height, afloat) == true) return No(Obstacle.Solid);
         bool water = TileBehaviors.IsSurfable(there) && !onDeck;
 
@@ -371,6 +375,12 @@ public static class FieldMovement
         TileBehavior.SlideWest => Direction.Left,
         TileBehavior.SlideNorth => Direction.Up,
         TileBehavior.SlideSouth => Direction.Down,
+        // A GBA current (plan 19 · K6, part b: the Seafoam Islands' lowest floors; FireRed's MB_*_CURRENT, which force
+        // the surfer's step): only a surfer stands on it, and it takes them on its own way until calm water
+        TileBehavior.CurrentEast => Direction.Right,
+        TileBehavior.CurrentWest => Direction.Left,
+        TileBehavior.CurrentNorth => Direction.Up,
+        TileBehavior.CurrentSouth => Direction.Down,
         _ => null
     };
 

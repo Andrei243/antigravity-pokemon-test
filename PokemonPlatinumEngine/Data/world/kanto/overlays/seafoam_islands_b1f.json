@@ -1,0 +1,10 @@
+{
+  // The Seafoam Islands, B1F (plan 19 · K6, part b): its two boulders down its two holes (seafoam_islands_b1f.txt)
+  "area": "seafoam_islands_b1f",
+  "name": "Seafoam Islands",
+  "bgmTrack": "kanto/viridian_forest",
+  "pits": [
+    { "x": 23, "z": 8, "script": "FallFromB1F" },
+    { "x": 28, "z": 8, "script": "FallFromB1F" }
+  ]
+}

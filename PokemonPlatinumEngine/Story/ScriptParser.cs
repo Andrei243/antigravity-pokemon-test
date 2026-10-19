@@ -685,7 +685,13 @@ public static class ScriptParser
 
             // Fossils, the Game Corner, the Villa and Pal Park (plan 06 · R16b)
             case "fossil":
-                return new Instruction { Op = Op.Fossil, Line = line, Name = r.OneOf("count", "choose", "revive", "ready", "give") };
+            {
+                string what = r.OneOf("count", "choose", "revive", "ready", "give");
+                // A Pokémon handed over at another game's level (plan 19 · K6, part b: FireRed's lab on Cinnabar Island gives level 5)
+                int level = what == "give" && r.PeekNumber ? r.Int("a level") : 0;
+                if (level is < 0 or > 100) throw r.Error("a level is 1 to 100");
+                return new Instruction { Op = Op.Fossil, Line = line, Name = what, Number = level };
+            }
             case "gamecorner":
             {
                 string what = r.OneOf("coins", "room", "add", "take", "slots", "prize", "buy", "hiddenpower", "cointrick");
@@ -1016,6 +1022,8 @@ public static class ScriptParser
                 return new Condition { Query = Query.Safari, Negated = negated };
             case "region":
                 return new Condition { Query = Query.Region, Negated = negated, Name = r.Text("a region") };
+            case "subject":
+                return new Condition { Query = Query.Subject, Negated = negated, Name = r.Text("someone's id") };
             case "partner":
                 return new Condition { Query = Query.Partner, Negated = negated };
             case "time":

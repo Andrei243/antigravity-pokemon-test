@@ -1834,6 +1834,8 @@ public partial class GameEngine
         {
             flow.Map = MapDatabase.Get(warp.TargetMap);
             flow.Player.SetPosition(warp.TargetX, warp.TargetY, warp.TargetFacing);
+            // Down a hole onto water: riding on it, and on with any current (plan 19 · K6, part b)
+            flow.Player.ComeDownOn(flow.Map);
             ArriveOnMap();
             flow.SteppedOutOfWarp = true;
             AnnounceLocation();

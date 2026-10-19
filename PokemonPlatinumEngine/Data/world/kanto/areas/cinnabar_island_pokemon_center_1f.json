@@ -1,0 +1,34 @@
+{
+  "key": "cinnabar_island_pokemon_center_1f",
+  "index": 331,
+  "name": "Cinnabar Island",
+  "matrix": 278,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "cinnabar_island", "toWarp": 3 },
+    { "x": 6, "z": 8, "to": "cinnabar_island", "toWarp": 3 },
+    { "x": 8, "z": 8, "to": "cinnabar_island", "toWarp": 3 },
+    { "x": 1, "z": 6, "to": "cinnabar_island_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "cinnabar_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CinnabarIsland_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "cooltrainer_f", "looks": "cooltrainer_f", "movement": "wander_west_and_east", "x": 2, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "CinnabarIsland_PokemonCenter_1F_EventScript_CooltrainerF" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "wander_around", "x": 9, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "CinnabarIsland_PokemonCenter_1F_EventScript_Gentleman" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 14, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "CinnabarIsland_PokemonCenter_1F_EventScript_Youngster" },
+    { "id": "0", "looks": "0", "movement": "invisible", "x": 2, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "CinnabarIsland_PokemonCenter_1F_EventScript_PokemonJournalMrFuji" },
+    { "id": "0_2", "looks": "0", "movement": "invisible", "x": 3, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "CinnabarIsland_PokemonCenter_1F_EventScript_PokemonJournalMrFuji" },
+    { "id": "cinnabar_pokemon_center_bill", "looks": "bill", "movement": "look_south", "x": 11, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CINNABAR_POKECENTER_BILL", "script": "CinnabarIsland_PokemonCenter_1F_EventScript_Bill" }
+  ],
+  "signs": [],
+  "triggers": []
+}

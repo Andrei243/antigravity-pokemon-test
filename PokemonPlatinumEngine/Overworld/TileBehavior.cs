@@ -314,14 +314,16 @@ public static class TileBehaviors
         TileBehavior.DeepWater
             => (BehaviourSupport.Ruled, "Stops a walker; surfed with Surf, meeting the area's water Pokémon. Diving is plan 21's (Hoenn)."),
         TileBehavior.CurrentEast or TileBehavior.CurrentWest or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth
-            => (BehaviourSupport.Ruled, "Stops a walker and is surfed; the current carrying the surfer along is the region plan's that opens it (19 · Kanto, 21 · Hoenn)."),
+            => (BehaviourSupport.Ruled, "Stops a walker and is surfed; it carries the surfer its own way, step after step, until calm water or something in the way (FieldMovement.Carries; plan 19 · K6, part b)."),
+        TileBehavior.Hole
+            => (BehaviourSupport.Ruled, "A warp down to the floor below, taken by stepping on it; whoever lands on water there rides out on it (Player.ComeDownOn), and a boulder pushed in is a pit's (Map.BoulderPits; plan 19 · K6, part b)."),
         TileBehavior.Spinner
             => (BehaviourSupport.Ruled, "Ends a GBA spin: one begun on an arrow goes on over plain floor until a stop (FieldMovement.Spins)."),
         TileBehavior.Underwater or TileBehavior.Seaweed
             => (BehaviourSupport.Waiting, "The sea floor, reached by Dive: plan 21 (Hoenn)."),
         TileBehavior.CyclingRoadPull
             => (BehaviourSupport.Ruled, "A rider who steers nowhere is pulled south a step at a time (FieldMovement.Pulls; plan 19 · K6); someone on foot stands."),
-        TileBehavior.ThinIce or TileBehavior.CrackedFloor or TileBehavior.Hole or TileBehavior.SecretBaseSpot
+        TileBehavior.ThinIce or TileBehavior.CrackedFloor or TileBehavior.SecretBaseSpot
             or TileBehavior.RailNorthSouth or TileBehavior.RailEastWest or TileBehavior.BumpySlope
             or TileBehavior.NoRunning
             => (BehaviourSupport.Waiting, "A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then."),

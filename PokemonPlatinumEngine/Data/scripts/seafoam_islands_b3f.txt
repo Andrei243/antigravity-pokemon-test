@@ -1,0 +1,27 @@
+# The Seafoam Islands, B3F (plan 19 · K6, part b). docs/scripts.md describes the language; the beats are FireRed's
+# (data/maps/SeafoamIslands_B3F/scripts.inc).
+#
+# A current runs south through this floor and sweeps whoever lands in it down to the floor below (the GBA's currents
+# are FieldMovement.Carries; the overlay's ways out at its foot are where FireRed's script warps the player). Once the
+# two boulders dropped from B2F lie across its mouth, the current is still: FireRed lays the floor out again as calm
+# water (FLAG_STOPPED_SEAFOAM_B3F_CURRENT, which world.json's swap reads). Two of the four boulders on the floor's
+# west side go down its holes to B4F, and the first boulder there shows for the one by the western hole, the second
+# for the one by the eastern; the other two only fall.
+
+
+script OnEnter
+  if flag FLAG_STOPPED_SEAFOAM_B3F_CURRENT end
+  if flag FLAG_HIDE_SEAFOAM_B3F_BOULDER_1 end
+  if flag FLAG_HIDE_SEAFOAM_B3F_BOULDER_2 end
+  setflag FLAG_STOPPED_SEAFOAM_B3F_CURRENT
+  end
+
+script FallFromB3F
+  hide self
+  setflag own
+  if subject "pushable_boulder_6" clearflag FLAG_HIDE_SEAFOAM_B4F_BOULDER_1
+  if subject "pushable_boulder_3" clearflag FLAG_HIDE_SEAFOAM_B4F_BOULDER_2
+  sound "bump"
+  speaker none
+  text "The boulder dropped through the hole to the floor below!"
+  end

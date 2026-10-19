@@ -1,0 +1,55 @@
+{
+  "key": "power_plant",
+  "index": 137,
+  "name": "Power Plant",
+  "matrix": 101,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MANSION",
+  "nightMusic": "MUS_POKE_MANSION",
+  "encounters": "power_plant",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Voltorb", "level": 22 },
+    { "species": "Magnemite", "level": 22 },
+    { "species": "Voltorb", "level": 25 },
+    { "species": "Magnemite", "level": 25 },
+    { "species": "Pikachu", "level": 22 },
+    { "species": "Pikachu", "level": 24 },
+    { "species": "Magneton", "level": 31 },
+    { "species": "Magneton", "level": 34 },
+    { "species": "Pikachu", "level": 26 },
+    { "species": "Electabuzz", "level": 32 },
+    { "species": "Pikachu", "level": 26 },
+    { "species": "Electabuzz", "level": 35 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 4, "z": 39, "to": "route_10", "toWarp": 2 },
+    { "x": 5, "z": 38, "to": "route_10", "toWarp": 2 },
+    { "x": 6, "z": 39, "to": "route_10", "toWarp": 2 },
+    { "x": 1, "z": 11, "to": "route_10", "toWarp": 4 },
+    { "x": 0, "z": 13, "to": "route_10", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 7, "z": 27, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POWER_PLANT_MAX_POTION", "item": "Max Potion", "script": "PowerPlant_EventScript_ItemMaxPotion" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 40, "z": 22, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POWER_PLANT_TM17", "item": "TM17", "script": "PowerPlant_EventScript_ItemTM17" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 46, "z": 37, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POWER_PLANT_TM25", "item": "TM25", "script": "PowerPlant_EventScript_ItemTM25" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_south", "x": 45, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POWER_PLANT_THUNDER_STONE", "item": "Thunder Stone", "script": "PowerPlant_EventScript_ItemThunderStone" },
+    { "id": "item_ball_5", "looks": "item_ball", "movement": "look_south", "x": 26, "z": 22, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POWER_PLANT_ELIXIR", "item": "Elixir", "script": "PowerPlant_EventScript_ItemElixir" },
+    { "id": "zapdos", "looks": "zapdos", "movement": "look_south", "x": 5, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ZAPDOS", "script": "PowerPlant_EventScript_Zapdos" },
+    { "id": "item_ball_6", "looks": "item_ball", "movement": "look_south", "x": 36, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POWER_PLANT_ELECTRODE_2", "script": "PowerPlant_EventScript_Electrode2" },
+    { "id": "item_ball_7", "looks": "item_ball", "movement": "look_south", "x": 30, "z": 38, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POWER_PLANT_ELECTRODE_1", "script": "PowerPlant_EventScript_Electrode1" }
+  ],
+  "signs": [
+    { "x": 29, "z": 16, "type": 2, "script": "", "item": "Max Elixir", "flag": "FLAG_HIDDEN_ITEM_POWER_PLANT_MAX_ELIXIR" },
+    { "x": 8, "z": 12, "type": 2, "script": "", "item": "Thunder Stone", "flag": "FLAG_HIDDEN_ITEM_POWER_PLANT_THUNDER_STONE" }
+  ],
+  "triggers": []
+}

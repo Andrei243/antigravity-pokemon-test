@@ -1,0 +1,32 @@
+# Route 20 (plan 19 · K6, part b). docs/scripts.md describes the language (data/maps/Route20/scripts.inc has the
+# original's beats).
+#
+# Coming to the sea before the Seafoam Islands puts their boulders back where they started, floor by floor, unless
+# they have already stilled a current below: the two that block the third basement's (FLAG_STOPPED_SEAFOAM_B3F_CURRENT)
+# and the two that block the fourth's (FLAG_STOPPED_SEAFOAM_B4F_CURRENT), as FireRed's map does on every arrival.
+
+
+script OnEnter
+  if not flag FLAG_STOPPED_SEAFOAM_B3F_CURRENT call ResetForB3F
+  if not flag FLAG_STOPPED_SEAFOAM_B4F_CURRENT call ResetForB4F
+  end
+
+script ResetForB3F
+  clearflag FLAG_HIDE_SEAFOAM_1F_BOULDER_1
+  clearflag FLAG_HIDE_SEAFOAM_1F_BOULDER_2
+  setflag FLAG_HIDE_SEAFOAM_B1F_BOULDER_1
+  setflag FLAG_HIDE_SEAFOAM_B1F_BOULDER_2
+  setflag FLAG_HIDE_SEAFOAM_B2F_BOULDER_1
+  setflag FLAG_HIDE_SEAFOAM_B2F_BOULDER_2
+  setflag FLAG_HIDE_SEAFOAM_B3F_BOULDER_1
+  setflag FLAG_HIDE_SEAFOAM_B3F_BOULDER_2
+  return
+
+script ResetForB4F
+  clearflag FLAG_HIDE_SEAFOAM_B3F_BOULDER_3
+  clearflag FLAG_HIDE_SEAFOAM_B3F_BOULDER_4
+  clearflag FLAG_HIDE_SEAFOAM_B3F_BOULDER_5
+  clearflag FLAG_HIDE_SEAFOAM_B3F_BOULDER_6
+  setflag FLAG_HIDE_SEAFOAM_B4F_BOULDER_1
+  setflag FLAG_HIDE_SEAFOAM_B4F_BOULDER_2
+  return

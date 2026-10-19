@@ -1,0 +1,44 @@
+# The Pokémon Lab's testing room on Cinnabar Island (plan 19 · K6, part b). docs/scripts.md describes the language;
+# the lines are our own, on FireRed's beats (data/maps/CinnabarIsland_PokemonLab_ExperimentRoom/scripts.inc).
+#
+# The scientist takes a Fossil (the Helix or Dome Fossil from Mt. Moon, the Old Amber from Pewter's museum), asking
+# which when the bag holds more than one, and has the Pokémon ready once the player has gone out and come back: the
+# game's own Fossils (plan 06 · R16b: VAR_REVIVED_POKEMON_SPECIES, and a local flag that lasts while the player stays,
+# as Oreburgh's museum keeps it). FireRed hands the Pokémon over at level 5, and so does this room.
+
+
+script FossilScientist
+  if flag FLAG_MAP_LOCAL_CINNABAR_LAB_REVIVING goto Working
+  fossil ready
+  if result == 1 goto Ready
+  say "Hiya! I'm working on bringing Pokémon back from ancient Fossils."
+  fossil count
+  if result == 0 goto None
+  ask "Oh! You have a Fossil there, don't you? Shall I bring it back to life for you?"
+  if no goto Declined
+  fossil choose
+  if result == 0 goto Declined
+  fossil revive
+  if result == 0 goto Declined
+  say "Right! Leave it with me. This will take a little while."
+label Working
+  setflag FLAG_MAP_LOCAL_CINNABAR_LAB_REVIVING
+  say "Go for a walk round the island, then come back. It'll be ready by then!"
+  end
+label Ready
+  say "There you are! Your Fossil came back to life as {thing}!"
+  if not party < 6 goto Full
+  fossil give 5
+  fanfare pokemon
+  text "{player} received {thing}!"
+  say "Look after it. It's been waiting a very long time to see the world."
+  end
+label Full
+  say "But your team is full! Make room, and come back for it."
+  end
+label None
+  say "If you ever find a Fossil, bring it to me. I'll show you what it used to be!"
+  end
+label Declined
+  say "No? Well, the machine will be here if you change your mind."
+  end

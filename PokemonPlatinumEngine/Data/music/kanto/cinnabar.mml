@@ -1,0 +1,33 @@
+# Cinnabar Island (FireRed's MUS_CINNABAR, which the island, its lab and its Mart share): a sunny, easy-going tune in
+# B-flat over a gentle swing, a marimba lead and a muted guitar's off-beat chords above a walking bass, for the
+# volcanic island of the lab at the end of the sea routes. Original composition for this game (plan 19 · K6, part b).
+title Cinnabar Island
+tempo 104
+meter 4/4
+reverb 0.3
+nighttempo 0.9
+
+track lead marimba night=vibraphone vol=0.66 pan=0 rev=0.32
+  L o5 f4 d8 f8 b-4 a4 | o5 g4 e-8 g8 o6 c4 o5 b-4 | o5 a4 f8 a8 o6 c4 d4 | o6 c2. r4 |
+  o5 f4 d8 f8 b-4 o6 c4 | o6 d4 c8 o5 b-8 g4 e-4 | o5 f4 a4 g4 e-4 | o5 d2. r4 |
+  o5 g4 b-8 o6 d8 e-4 d4 | o6 c4 o5 a8 f8 g4 a4 | o5 b-4 o6 d8 c8 o5 b-4 g4 | o5 a2. r4 |
+  o5 b-4 o6 d4 c4 o5 a4 | o5 g4 b-4 a4 f4 | o5 g4 e-4 f4 a4 | o5 b-2. r4 |
+
+track guitar guitar vol=0.3 pan=0.3 rev=0.2
+  L o4 [ r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 | r8 (e- g >c)8 r8 (e- g >c)8 r8 (e- g b-)8 r8 (e- g b-)8 |
+  r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 r8 (f a >c)8 | r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 r8 (d f b-)8 | ]4
+
+track pad strings night=pad vol=0.2 pan=-0.3 rev=0.4
+  L o4 (d f b-)1 | (e- g >c)1 | (f a >c)1 | (f a >c)1 |
+  (d f b-)1 | (e- g b-)1 | (e- g >c)1 | (d f b-)1 |
+  (e- g b-)1 | (f a >c)1 | (d g b-)1 | (f a >c)1 |
+  (d f b-)1 | (e- g b-)1 | (f a >c)1 | (d f b-)1 |
+
+track bass bass vol=0.6 rev=0.1
+  L o3 b-4 d4 f4 d4 | c4 e-4 g4 e-4 | f4 a4 o4 c4 o3 a4 | f4 c4 f4 a4 |
+  b-4 d4 f4 d4 | e-4 g4 b-4 g4 | c4 e-4 f4 a4 | b-4 f4 d4 f4 |
+  e-4 g4 b-4 g4 | f4 a4 o4 c4 o3 a4 | g4 b-4 d4 g4 | f4 a4 o4 c4 o3 a4 |
+  b-4 d4 f4 d4 | e-4 g4 b-4 g4 | f4 a4 f4 c4 | b-4 f4 b-2 |
+
+track drums kit vol=0.28 rev=0.1
+  v64 L [ [ b8 h8 s8 h8 b8 h8 s8 h8 | ]3 b8 h8 s8 h8 b8 s8 s8 h8 | ]4

@@ -1,0 +1,25 @@
+{
+  // Route 20 (plan 19 · K6, part b): FireRed's map, our words. The open sea from Fuchsia City's coast west to
+  // Cinnabar Island, past the Seafoam Islands' two mouths; its swimmers, picnickers and a bird keeper on the islands'
+  // shore battle by their own records. Coming back to it puts the Seafoam Islands' boulders back where they started,
+  // until they have stilled the currents below (route_20.txt)
+  "area": "route_20",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "swimmer_f_water": { "name": "Melissa", "trainer": { "dialogueBefore": "Swimmer Melissa: I swam all the way from Fuchsia City! Now I need a rest. And a battle!", "dialogueAfter": "Swimmer Melissa: Now I really need a rest." } },
+    "picnicker": { "name": "Missy", "trainer": { "dialogueBefore": "Picnicker Missy: A picnic on the island, then a battle on the beach!", "dialogueAfter": "Picnicker Missy: Back to the sandwiches, then." } },
+    "swimmer_f_water_2": { "name": "Nora", "trainer": { "dialogueBefore": "Swimmer Nora: Shellder hide in the rocks round here. So do I!", "dialogueAfter": "Swimmer Nora: I should have stayed hidden." } },
+    "rocker": { "name": "Roger", "trainer": { "dialogueBefore": "Bird Keeper Roger: My birds fly over the sea every day. Can yours keep up?", "dialogueAfter": "Bird Keeper Roger: They're grounded for today." } },
+    "swimmer_m_water": { "name": "Dean", "trainer": { "dialogueBefore": "Swimmer Dean: One Pokémon, one battle. Let's keep it simple.", "dialogueAfter": "Swimmer Dean: Simple, and short." } },
+    "picnicker_2": { "name": "Irene", "trainer": { "dialogueBefore": "Picnicker Irene: The islands are full of caves. I'm too scared to go in, but I'm not scared of you!", "dialogueAfter": "Picnicker Irene: Now I'm scared of you too." } },
+    "swimmer_m_water_2": { "name": "Barry", "trainer": { "dialogueBefore": "Swimmer Barry: The water by the islands is freezing! Battle me so I warm up!", "dialogueAfter": "Swimmer Barry: Brr. Didn't help." } },
+    "swimmer_m_water_3": { "name": "Darrin", "trainer": { "dialogueBefore": "Swimmer Darrin: Horsea love these warm currents. So do I!", "dialogueAfter": "Swimmer Darrin: Swept away..." } },
+    "swimmer_f_water_3": { "name": "Shirley", "trainer": { "dialogueBefore": "Swimmer Shirley: Have you been inside the Seafoam Islands? It's icy in there!", "dialogueAfter": "Swimmer Shirley: And you're as cool as the caves." } },
+    "swimmer_f_water_4": { "name": "Tiffany", "trainer": { "dialogueBefore": "Swimmer Tiffany: My Seaking is the queen of this sea. Bow down!", "dialogueAfter": "Swimmer Tiffany: Dethroned!" } },
+    "camper": { "name": "Camper", "dialog": [ "They say a legendary bird of ice lives deep inside the Seafoam Islands.", "The currents down there are so strong, nobody can reach it. Maybe something could block them?" ] }
+  },
+  "signs": {
+    "Route20_EventScript_SeafoamIslandsSign": "Seafoam Islands"
+  }
+}

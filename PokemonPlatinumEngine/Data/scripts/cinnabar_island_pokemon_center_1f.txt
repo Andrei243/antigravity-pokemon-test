@@ -1,0 +1,8 @@
+# Cinnabar Island's Pokémon Center (plan 19 · K6, part b). Bill waits here only once he has asked the player to sail
+# to One Island with him and been told to wait (FireRed's VAR_MAP_SCENE_CINNABAR_ISLAND 2, plan 19 · K7's scene): a
+# save from before part b never came here, so the room's arrival hides him for it, as the new game does.
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_CINNABAR_ISLAND < 2 setflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
+  end

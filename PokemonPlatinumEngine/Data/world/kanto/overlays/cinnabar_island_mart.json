@@ -1,0 +1,10 @@
+{
+  // Cinnabar Island's Poké Mart (plan 19 · K6, part b)
+  "area": "cinnabar_island_mart",
+  "bgmTrack": "kanto/cinnabar",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "woman_2": { "name": "Woman", "dialog": [ "Don't they sell anything to tame wild Pokémon? I'd love a Pokémon that just comes along with me." ] },
+    "scientist": { "name": "Scientist", "dialog": [ "A Max Repel keeps weak Pokémon away for longer than any other. Handy in the Mansion." ] }
+  }
+}

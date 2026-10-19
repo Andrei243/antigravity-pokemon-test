@@ -1,0 +1,49 @@
+{
+  "key": "seafoam_islands_1f",
+  "index": 125,
+  "name": "Seafoam Islands",
+  "matrix": 89,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VIRIDIAN_FOREST",
+  "nightMusic": "MUS_VIRIDIAN_FOREST",
+  "encounters": "seafoam_islands_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Psyduck", "level": 27 },
+    { "species": "Psyduck", "level": 29 },
+    { "species": "Psyduck", "level": 31 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Zubat", "level": 24 },
+    { "species": "Golbat", "level": 26 },
+    { "species": "Golbat", "level": 28 },
+    { "species": "Psyduck", "level": 33 },
+    { "species": "Zubat", "level": 26 },
+    { "species": "Psyduck", "level": 26 },
+    { "species": "Golbat", "level": 30 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 10, "z": 6, "to": "seafoam_islands_b1f", "toWarp": 0 },
+    { "x": 31, "z": 4, "to": "seafoam_islands_b1f", "toWarp": 1 },
+    { "x": 28, "z": 19, "to": "seafoam_islands_b1f", "toWarp": 2 },
+    { "x": 6, "z": 21, "to": "route_20", "toWarp": 0 },
+    { "x": 32, "z": 21, "to": "route_20", "toWarp": 1 },
+    { "x": 21, "z": 8, "to": "seafoam_islands_b1f", "toWarp": 9 },
+    { "x": 30, "z": 8, "to": "seafoam_islands_b1f", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_south", "x": 22, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFOAM_1F_BOULDER_1", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_south", "x": 32, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFOAM_1F_BOULDER_2", "script": "EventScript_StrengthBoulder" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 11, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEAFOAM_ISLANDS_1F_ICE_HEAL", "item": "Ice Heal", "script": "SeafoamIslands_1F_EventScript_ItemIceHeal" }
+  ],
+  "signs": [],
+  "triggers": []
+}

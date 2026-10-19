@@ -457,6 +457,12 @@ public class Map
     /// </summary>
     public bool HasSpinStops { get; private set; }
 
+    /// <summary>
+    /// Whether water is one level to a surfer here (plan 19 · K6, part b): on a map of a GBA game, whose water's elevation
+    /// is "any level", a surfer goes from water to water whatever heights its banks give it (<see cref="FieldMovement.Step"/>).
+    /// </summary>
+    public bool WaterIsOneLevel { get; set; }
+
     /// <summary>True once any tile has been given a height: the map has relief to draw and to walk.</summary>
     public bool HasRelief => heights != null;
 
@@ -955,6 +961,9 @@ public class Map
         public string Var { get; init; } = "";
         public int Value { get; init; }
 
+        /// <summary>A flag in place of the variable (plan 19 · K6, part b): swapped while it is set.</summary>
+        public string? Flag { get; init; }
+
         /// <summary>The cells swapped, by chunk column and row.</summary>
         public IReadOnlyList<(int X, int Y)> Cells { get; init; } = Array.Empty<(int, int)>();
 
@@ -1028,10 +1037,10 @@ public class Map
     /// map goes on showing its own until <see cref="ApplySwappedPlaces"/> lays the others down. A building of the
     /// world's models isn't swapped: a swap of chunks one stands on is refused.
     /// </summary>
-    public SwappedPlace AddSwappedPlace(string variable, int value, IEnumerable<(int X, int Y)> cells, Map swapped)
+    public SwappedPlace AddSwappedPlace(string variable, int value, IEnumerable<(int X, int Y)> cells, Map swapped, string? flag = null)
     {
         if (swapped.Width != Width || swapped.Height != Height) throw new ArgumentException("The swapped map is not this map's size.", nameof(swapped));
-        var place = new SwappedPlace { Var = variable, Value = value, Cells = cells.ToList() };
+        var place = new SwappedPlace { Var = variable, Value = value, Flag = flag, Cells = cells.ToList() };
         foreach (var on in new[] { this, swapped })
             if (on.PlacedBuildings?.Any(b => place.Covers(b.X0, b.Y0) || place.Covers(b.X1, b.Y1)) == true)
                 throw new InvalidOperationException($"{Name}: a building stands on chunks that {variable} swaps, which a swap doesn't carry.");
@@ -1045,12 +1054,12 @@ public class Map
     /// Lays down, for each of the map's swapped places, the chunks the story's variables say are there. Returns the
     /// places whose ground changed, so whatever was drawn of them can be made again.
     /// </summary>
-    public List<SwappedPlace> ApplySwappedPlaces(Func<string, int> variable)
+    public List<SwappedPlace> ApplySwappedPlaces(Func<string, int> variable, Func<string, bool>? flag = null)
     {
         var changed = new List<SwappedPlace>();
         foreach (var place in SwappedPlaces)
         {
-            bool swap = variable(place.Var) == place.Value;
+            bool swap = place.Flag != null ? flag?.Invoke(place.Flag) == true : variable(place.Var) == place.Value;
             if (swap == place.Swapped) continue;
             for (int i = 0; i < place.Cells.Count; i++)
                 PutChunk(place.Cells[i].X, place.Cells[i].Y, swap ? place.After[i] : place.Before[i]);

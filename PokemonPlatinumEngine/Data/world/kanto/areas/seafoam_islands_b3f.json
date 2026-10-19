@@ -1,0 +1,83 @@
+{
+  "key": "seafoam_islands_b3f",
+  "index": 128,
+  "name": "Seafoam Islands",
+  "matrix": 92,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VIRIDIAN_FOREST",
+  "nightMusic": "MUS_VIRIDIAN_FOREST",
+  "encounters": "seafoam_islands_b3f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Seel", "level": 30 },
+    { "species": "Seel", "level": 32 },
+    { "species": "Psyduck", "level": 32 },
+    { "species": "Psyduck", "level": 30 },
+    { "species": "Golduck", "level": 32 },
+    { "species": "Zubat", "level": 24 },
+    { "species": "Golbat", "level": 26 },
+    { "species": "Golduck", "level": 34 },
+    { "species": "Dewgong", "level": 32 },
+    { "species": "Golbat", "level": 28 },
+    { "species": "Dewgong", "level": 34 },
+    { "species": "Golbat", "level": 30 }
+  ],
+  "landRate": 7,
+  "water": [
+    { "species": "Seel", "level": 25, "maxLevel": 35 },
+    { "species": "Horsea", "level": 25, "maxLevel": 30 },
+    { "species": "Dewgong", "level": 35, "maxLevel": 40 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 40 },
+    { "species": "Golduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 8, "z": 14, "to": "seafoam_islands_b2f", "toWarp": 0 },
+    { "x": 31, "z": 4, "to": "seafoam_islands_b2f", "toWarp": 1 },
+    { "x": 31, "z": 16, "to": "seafoam_islands_b2f", "toWarp": 2 },
+    { "x": 12, "z": 9, "to": "seafoam_islands_b4f", "toWarp": 0 },
+    { "x": 29, "z": 5, "to": "seafoam_islands_b4f", "toWarp": 1 },
+    { "x": 23, "z": 9, "to": "seafoam_islands_b2f", "toWarp": 7, "landing": true },
+    { "x": 24, "z": 9, "to": "seafoam_islands_b2f", "toWarp": 8, "landing": true },
+    { "x": 6, "z": 18, "to": "seafoam_islands_b4f", "toWarp": 2 },
+    { "x": 9, "z": 18, "to": "seafoam_islands_b4f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_south", "x": 23, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEAFOAM_B3F_BOULDER_1", "script": "" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_south", "x": 24, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEAFOAM_B3F_BOULDER_2", "script": "" },
+    { "id": "pushable_boulder_3", "looks": "pushable_boulder", "movement": "look_south", "x": 12, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFOAM_B3F_BOULDER_5", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_4", "looks": "pushable_boulder", "movement": "look_south", "x": 13, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFOAM_B3F_BOULDER_6", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_5", "looks": "pushable_boulder", "movement": "look_south", "x": 9, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFOAM_B3F_BOULDER_4", "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_6", "looks": "pushable_boulder", "movement": "look_south", "x": 6, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SEAFOAM_B3F_BOULDER_3", "script": "EventScript_StrengthBoulder" }
+  ],
+  "signs": [
+    { "x": 5, "z": 12, "type": 2, "script": "", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_SEAFOAM_ISLANDS_B3F_NUGGET" }
+  ],
+  "triggers": []
+}

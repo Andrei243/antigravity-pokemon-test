@@ -1198,7 +1198,40 @@ script KantoNewGame
   # arrival scripts hide the same two for it
   setflag FLAG_HIDE_SS_ANNE_RIVAL
   setflag FLAG_HIDE_VERMILION_CITY_OAKS_AIDE
+  # Plan 19 · K6, part b: Bill on Cinnabar Island and in its Pokémon Center, and his friend's ferry, until he waits
+  # there once Blaine is beaten (plan 19 · K7). A save from before part b never came to Cinnabar Island, whose own
+  # arrival scripts hide the same for it
+  setflag FLAG_HIDE_CINNABAR_BILL
+  setflag FLAG_HIDE_CINNABAR_SEAGALLOP
+  setflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
   return
+
+
+# The Pokémon Mansion's secret switch (plan 19 · K6, part b; FireRed's PokemonMansion_EventScript_SecretSwitch), behind
+# the eyes of a statue on every floor: pressed, it turns every barrier of the house over at once, on every floor
+# (FLAG_POKEMON_MANSION_SWITCH_STATE, which shows one set of barriers and hides the other).
+script PokemonMansionSwitch
+  speaker none
+  ask "There's a secret switch behind the statue's eyes! Press it?"
+  if no goto Leave
+  sound "door_slide"
+  if flag FLAG_POKEMON_MANSION_SWITCH_STATE goto Back
+  setflag FLAG_POKEMON_MANSION_SWITCH_STATE
+  text "Click! Somewhere in the house, barriers slid open and shut."
+  end
+label Back
+  clearflag FLAG_POKEMON_MANSION_SWITCH_STATE
+  text "Click! Somewhere in the house, barriers slid open and shut."
+  end
+label Leave
+  text "Better not touch it."
+  end
+
+# One of the Pokémon Mansion's barriers, spoken to
+script PokemonMansionBarrier
+  speaker none
+  text "A barrier blocks the way. There must be a switch somewhere."
+  end
 
 
 # What Kanto's first steps leave behind once they are played (plan 19 · K3): run with no screen for a save of Kanto

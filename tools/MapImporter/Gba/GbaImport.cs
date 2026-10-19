@@ -130,7 +130,7 @@ public static class GbaImport
             foreach (var placed in matrix.Maps)
             {
                 var area = GbaWorld.AreaFile(placed.Map, mapIndex++, matrix.Id);
-                GbaEvents.Fill(area, placed, tables, id => world.Source.ById.GetValueOrDefault(id), world.Problems, matrix);
+                GbaEvents.Fill(area, placed, tables, id => world.Source.ById.GetValueOrDefault(id), world.Problems, matrix, world);
                 areas[placed.Map.Key] = area;
                 if (open != null && !open.Contains(placed.Map.Key)) continue;
                 Write("areas", placed.Map.Key, area);
@@ -145,6 +145,25 @@ public static class GbaImport
                 Trees = TreeStyle.Round,
                 Setting = SettingOf(first)
             });
+        }
+        // The layouts the story swaps in (plan 19 · K6, part b; GbaWorld.Alternates): their chunks after every matrix's,
+        // so nothing else is numbered otherwise; world.json's swaps name them
+        foreach (var (mapId, layoutId) in GbaWorld.Alternates)
+        {
+            var matrix = world.Matrices.FirstOrDefault(m => m.Maps.Any(p => p.Map.Id == mapId));
+            if (matrix == null || world.AlternateOf(matrix, mapId, layoutId) is not { } alt) continue;
+            int own = matrix.Maps.FindIndex(p => p.Map.Id == mapId);
+            bool write = open == null || open.Contains(matrix.Maps[own].Map.Key);
+            var cells = new List<string>();
+            for (int cy = 0; cy < alt.ChunksHigh; cy++)
+                for (int cx = 0; cx < alt.ChunksWide; cx++)
+                {
+                    if (GbaWorld.Owner(alt, cx, cy) != own) continue;
+                    if (write) Write("chunks", nextChunk.ToString("000", CultureInfo.InvariantCulture), GbaWorld.Chunk(alt, cx, cy, nextChunk));
+                    cells.Add($"({cx}, {cy}) chunk {nextChunk}");
+                    nextChunk++;
+                }
+            if (write) Console.WriteLine($"{MapNameOf(world, matrix)} as {layoutId}: {string.Join(", ", cells)}");
         }
         Write("", "trainers", tables.Trainers);
         Write("", "spawns", GbaEvents.Spawns(world, tables, map => MapNameOf(world, map)));
@@ -195,6 +214,38 @@ public static class GbaImport
         int files = WriteWorld(world, tables, data, new HashSet<string>(index.Areas, StringComparer.Ordinal));
         foreach (string problem in world.Problems.Take(20)) Console.WriteLine("  " + problem);
         Console.WriteLine($"Wrote {files} files of {index.Areas.Count} open areas into {data}");
+        return 0;
+    }
+
+    /// <summary>
+    /// <c>--game … --unknown &lt;Map&gt;</c> (plan 19 · K6, part b): the metatiles of one map no look names yet, by
+    /// tileset, each with how many of its tiles are open and how many blocked, and where the first stands: what a
+    /// session writing <see cref="GbaCover.Ranges"/> judges a metatile by (a street is open, a house's wall blocked).
+    /// </summary>
+    public static int Unknown(string repo, string gameName, string? dir, string mapName)
+    {
+        var game = GbaGame.Of(gameName);
+        var maps = new GbaMaps(dir ?? Fetch(repo, game), game);
+        var map = maps.Maps.FirstOrDefault(m => m.Name == mapName);
+        if (map == null || !maps.Layouts.ContainsKey(map.Layout)) { Console.WriteLine($"No map {mapName} with a layout."); return 1; }
+        var layout = maps.LayoutOf(map);
+        var seen = new SortedDictionary<(string Tileset, int Metatile), (int Open, int Blocked, int X, int Y)>();
+        for (int y = 0; y < layout.Height; y++)
+            for (int x = 0; x < layout.Width; x++)
+            {
+                ushort block = layout.Block(x, y);
+                int metatile = GbaLayout.MetatileOf(block);
+                int raw = maps.BehaviourOf(layout, metatile);
+                var behaviour = GbaBehaviours.Of(maps.BehaviourNames.GetValueOrDefault(raw) ?? $"0x{raw:X2}");
+                var (tileset, _) = maps.TilesetOf(layout, metatile);
+                if (GbaCover.Of(behaviour, maps.LabelOf(layout, metatile), tileset, metatile, game) != TerrainCover.Unknown) continue;
+                var key = (tileset, metatile);
+                var (open, blocked, fx, fy) = seen.TryGetValue(key, out var was) ? was : (0, 0, x, y);
+                if (GbaLayout.CollisionOf(block) != 0) blocked++; else open++;
+                seen[key] = (open, blocked, fx, fy);
+            }
+        foreach (var ((tileset, metatile), (open, blocked, x, y)) in seen)
+            Console.WriteLine($"{tileset} 0x{metatile:X3}: {open} open, {blocked} blocked, first at {x},{y}");
         return 0;
     }
 
