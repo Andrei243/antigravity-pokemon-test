@@ -1,5 +1,23 @@
 {
   "people": {
+    "t26_gsrivel": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "t26_seaman_2": {
       "name": {
         "en": [

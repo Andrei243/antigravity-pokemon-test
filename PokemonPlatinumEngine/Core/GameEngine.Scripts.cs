@@ -286,7 +286,8 @@ public partial class GameEngine
     {
         // A place walked into, or the one a game begins in, is timed as one come to by a door is (plan 16 · T3)
         TimeTheArrival();
-        if (flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key is { } key && SpawnLocations.ArrivedIn(key) is { } town)
+        // (in the region the player is in: Johto's towns open to Fly as Sinnoh's do, plan 20 · J9)
+        if (flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY)?.Key is { } key && SpawnLocations.ArrivedIn(Here.Id, key) is { } town)
         {
             // A town come to for the first time is a line of the Journal (field_map_change_flags.c)
             if (!flow.Story.Has(town.ArrivalFlag)) flow.Journal.Tell(new JournalEvent(JournalEventKind.ArrivedInLocation, PlaceName()));
@@ -1200,7 +1201,8 @@ public partial class GameEngine
             game.flow.Player.SetMode(TravelMode.OnFoot);
             // Flying sends every roamer anywhere (FieldSystem_SetFlyFlags; plan 06 · R13)
             Roamers.Scatter(game.flow.Encounters, game.fieldRandom);
-            game.WarpTo("Sinnoh", town.X, town.Y, Direction.Down);
+            // ...to the overworld of the town's own region (plan 20 · J9)
+            game.WarpTo(town.Map, town.X, town.Y, Direction.Down);
             return true;
         }
 
@@ -1239,6 +1241,19 @@ public partial class GameEngine
             game.flow.ScriptOutcome = BattleOutcome.None;
             game.flow.BattleMayBeLost = false;
             game.flow.Player.Encounters.Reset();
+            game.StartWildBattle(wild);
+            return true;
+        }
+
+        public bool RockSmashEncounter()
+        {
+            // The rock stood on the tile ahead; its place's table is the one asked (plan 20 · J9)
+            var map = game.flow.Map;
+            var (dx, dy) = game.flow.Player.Facing switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
+            int x = game.flow.Player.GridX + dx, y = game.flow.Player.GridY + dy;
+            if (map.SmashRock(x, y, game.flow.Player.Lead) is not { } wild) return false;
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = false;
             game.StartWildBattle(wild);
             return true;
         }

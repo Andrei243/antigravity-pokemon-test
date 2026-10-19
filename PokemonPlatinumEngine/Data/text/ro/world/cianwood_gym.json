@@ -1,5 +1,15 @@
 {
   "people": {
+    "t24gym0101_gsleader5": {
+      "name": {
+        "en": [
+          "Chuck"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "t24gym0101_gsfighter": {
       "name": {
         "en": [
@@ -106,14 +116,6 @@
     }
   },
   "signs": {
-    "T24GYM0101_002+1": {
-      "en": [
-        "The waterfall where the master trains, roaring day and night."
-      ],
-      "text": [
-        ""
-      ]
-    },
     "T24GYM0101_003+1": {
       "en": [
         "Cianwood City Pokémon Gym\nLeader: Chuck"

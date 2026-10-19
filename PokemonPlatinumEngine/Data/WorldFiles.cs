@@ -385,8 +385,9 @@ public sealed class WorldAreaFile
 
     /// <summary>
     /// The wild Pokémon a rock smashed with Rock Smash lets out (plan 18 · W7: the GBA games' <c>rock_smash_mons</c>,
-    /// five slots met 60, 30, 5, 4 and 1 times in a hundred) and the chance in a hundred that one does. Nothing reads it
-    /// yet: Platinum has no such table, and the region plan that opens a place with one gives Rock Smash its rule.
+    /// five slots met 60, 30, 5, 4 and 1 times in a hundred; HeartGold's two, 90 and 10) and the chance in a hundred
+    /// that one does. Platinum has no such table; the common script's <c>rocksmash</c> rolls it (plan 20 · J9,
+    /// <see cref="Overworld.Map.SmashRock"/>).
     /// </summary>
     public List<AreaEncounter>? RockSmash { get; set; }
     public int? RockSmashRate { get; set; }

@@ -282,6 +282,13 @@
       "TM14",
       "TM15"
     ],
+    "cianwood_pharmacy": [
+      "Potion",
+      "Super Potion",
+      "Hyper Potion",
+      "Full Heal",
+      "Revive"
+    ],
     "seashore_house": [
       "Soda Pop"
     ],

@@ -1214,6 +1214,9 @@ public static class WorldMapBuilder
         }
     }
 
+    /// <summary>HeartGold's two rock smash slots, met 90 and 10 times in a hundred (plan 20 · J9).</summary>
+    private static readonly int[] RockSmashPairWeights = { 90, 10 };
+
     private static MapArea AreaOf(World world, string key)
     {
         var file = world.Area(key);
@@ -1278,6 +1281,10 @@ public static class WorldMapBuilder
         area.RodRates[(int)FishingRod.Old] = file?.OldRodRate ?? 0;
         area.RodRates[(int)FishingRod.Good] = file?.GoodRodRate ?? 0;
         area.RodRates[(int)FishingRod.Super] = file?.SuperRodRate ?? 0;
+        // What a smashed rock lets out (plan 20 · J9): the GBA games' five slots by the water's weights, HeartGold's
+        // two met 90 and 10 times in a hundred
+        Fill(area.RockSmashEncounters, file?.RockSmash, file?.RockSmash?.Count == 2 ? RockSmashPairWeights : WorldAreaFile.WaterSlotWeights);
+        area.RockSmashRate = file?.RockSmashRate ?? 0;
         return area;
     }
 

@@ -140,7 +140,9 @@
     { "name": "Cianwood_PhotoStudio", "matrix": 97, "area": "cianwood_camerons_house", "trees": "Round", "setting": "Indoors" },
     { "name": "WhirlIslands_1F", "matrix": 141, "area": "whirl_islands_1f", "trees": "Round", "setting": "Cave" },
     { "name": "WhirlIslands_B1F", "matrix": 142, "area": "whirl_islands_b1f", "trees": "Round", "setting": "Cave" },
-    { "name": "WhirlIslands_B2F", "matrix": 143, "area": "whirl_islands_b2f", "trees": "Round", "setting": "Cave" }
+    { "name": "WhirlIslands_B2F", "matrix": 143, "area": "whirl_islands_b2f", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J9: the Glitter Lighthouse's lift, ridden once Jasmine has stepped aside from it
+    { "name": "OlivineLighthouse_Elevator", "matrix": 262, "area": "olivine_lighthouse_elevator", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -188,6 +190,8 @@
     "route_40", "route_40_battle_frontier_gatehouse", "route_41",
     "cianwood", "cianwood_pokecenter_1f", "cianwood_pokecenter_b1f", "cianwood_gym", "cianwood_pharmacy",
     "cianwood_kirks_house", "cianwood_central_house", "cianwood_north_house", "cianwood_camerons_house",
-    "whirl_islands_1f", "whirl_islands_b1f", "whirl_islands_b2f"
+    "whirl_islands_1f", "whirl_islands_b1f", "whirl_islands_b2f",
+    // Plan 20 · J9: the lighthouse's lift
+    "olivine_lighthouse_elevator"
   ]
 }

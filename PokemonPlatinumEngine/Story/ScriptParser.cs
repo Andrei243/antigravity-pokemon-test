@@ -486,6 +486,8 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Escape, Line = line };
             case "sweetscent":
                 return new Instruction { Op = Op.SweetScent, Line = line };
+            case "rocksmash":
+                return new Instruction { Op = Op.RockSmash, Line = line };
             case "poketch":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Poketch, Line = line };

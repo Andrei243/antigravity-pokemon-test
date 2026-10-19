@@ -1,0 +1,10 @@
+{
+  // The Glitter Lighthouse's lift (plan 20 · J9): HeartGold's car, our words. It carries whoever comes in to the other
+  // end at once (scripts/olivine_lighthouse_elevator.txt); its own door, HeartGold's way back to wherever the player
+  // came from, leads to the ground floor here, for whoever is ever left standing in it
+  "area": "olivine_lighthouse_elevator",
+  "bgmTrack": "johto/lighthouse",
+  "doors": [
+    { "warp": 0, "map": "OlivineLighthouse_1F", "x": 8, "y": 5, "facing": "Down" }
+  ]
+}

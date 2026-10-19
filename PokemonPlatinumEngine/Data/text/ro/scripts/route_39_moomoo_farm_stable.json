@@ -1,0 +1,136 @@
+{
+  "SickMiltank": [
+    {
+      "en": [
+        "Miltank looks very weak. It hardly lifts its head."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Give Miltank an Oran Berry?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} gave Miltank an Oran Berry. It munched it down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Miltank seems a little happier."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Miltank is starting to look more lively."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Miltank is full of energy again! It's back on its feet!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If only there were some Oran Berries to give it..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} decided to come back later."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Moooo! Miltank looks happy and healthy."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Girl": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Our Miltank is poorly. She just lies there and won't eat her hay."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Miltank's better! Thank you! She's going to make lots of yummy milk again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Sister": [
+    {
+      "en": [
+        "Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grandpa says lots of Berries would make her better. Do you have any?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "She ate it! Keep going, please! Grandpa says she needs lots."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You made Miltank better with Berries! You're amazing!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

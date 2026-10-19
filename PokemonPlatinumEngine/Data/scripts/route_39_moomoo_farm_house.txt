@@ -1,0 +1,55 @@
+# The Moomoo Farm's house (plan 20 · J9). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_R39R0101).
+#
+# The farmer tells what ails his Miltank (FLAG_UNK_0A8, which lets the barn's Miltank be fed: route_39_moomoo_farm_
+# stable.txt). Once she is well (FLAG_UNK_0AA) he sells Moomoo Milk at HeartGold's prices, a bottle for 500 or a dozen
+# for 6,000, and his wife gives TM83, Natural Gift, once (FLAG_GOT_TM83_FROM_MOOMOO_FARM_WOMAN).
+
+
+# R39R0101_000
+script Farmer
+  face r39r0101_gsmiddleman1 player
+  speaker "Farmer"
+  if flag FLAG_UNK_0AA goto Milk
+  setflag FLAG_UNK_0A8
+  say "Our best Miltank's fallen sick. She won't give a drop of milk, and she's barely eaten in days."
+  say "Lots of Oran Berries might perk her up. If you've any to spare, she's in the barn next door."
+  end
+label Milk
+  choose "Fresh Moomoo Milk! Want some? It'll restore 100 HP to a Pokémon." "One bottle: 500" "A dozen: 6,000" "No thanks"
+  if result == 2 goto NoThanks
+  if result == 1 goto Dozen
+  if not money >= 500 goto Short
+  takemoney 500
+  give "Moomoo Milk"
+  say "Here you go! Drink it up while it's fresh."
+  end
+label Dozen
+  if not money >= 6000 goto Short
+  takemoney 6000
+  give "Moomoo Milk" 12
+  say "Here you go! A dozen bottles, fresh from our Miltank."
+  end
+label Short
+  say "Sorry, you haven't got the money for that."
+  end
+label NoThanks
+  say "Come back if you get thirsty!"
+  end
+
+
+# R39R0101_001
+script FarmersWife
+  face r39r0101_middlewoman1_2 player
+  speaker "Farmer's Wife"
+  if flag FLAG_UNK_0AA goto Well
+  say "Our Miltank's sick, poor thing. We've tried everything we can think of."
+  end
+label Well
+  if flag FLAG_GOT_TM83_FROM_MOOMOO_FARM_WOMAN goto Given
+  say "You made our Miltank well again! I can't thank you enough. Please, take this."
+  give "TM83"
+  setflag FLAG_GOT_TM83_FROM_MOOMOO_FARM_WOMAN
+label Given
+  say "TM83 is Natural Gift. Its power and type change with the Berry the Pokémon holds. Fitting, isn't it?"
+  end

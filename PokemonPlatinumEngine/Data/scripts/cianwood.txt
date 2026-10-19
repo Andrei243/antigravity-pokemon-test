@@ -1,0 +1,84 @@
+# Cianwood City (plan 20 · J9). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T24).
+#
+# Suicune on the north shore: once the three of the Burned Tower have fled (VAR_UNK_4079 2, burned_tower_b1f.txt) the
+# town's arrival counts Cianwood as Suicune's next stop (VAR_UNK_4076 1, which HeartGold's tower sets), and Suicune
+# stands on the shore until the player steps up to it (the area's trigger 0): it bounds away over the sea, and Eusine,
+# who has followed it here, challenges the player to see whether they are worthy of it (VAR_UNK_4076 2,
+# VAR_UNK_4092 1; FLAG_HIDE_ROUTE_42_SUICUNE cleared for its next stop, plan 20 · J10). Eusine is kept off the street
+# by the town's arrival (FLAG_HIDE_CIANWOOD_EUSINE, which HeartGold's new game sets).
+#
+# Chuck's wife: with the Storm Badge just won (VAR_UNK_4116 1, cianwood_gym.txt) she meets the player as they come
+# out of the Gym and gives HM02, Fly (FLAG_GOT_HM02, VAR_UNK_4116 2), as HeartGold's T24_006 does.
+
+
+script OnEnter
+  setflag FLAG_HIDE_CIANWOOD_EUSINE
+  if var VAR_UNK_4076 != 0 goto Suicune
+  if var VAR_UNK_4079 >= 2 setvar VAR_UNK_4076 1
+label Suicune
+  setflag FLAG_HIDE_CIANWOOD_SUICUNE
+  if var VAR_UNK_4076 == 1 clearflag FLAG_HIDE_CIANWOOD_SUICUNE
+  if var VAR_UNK_4116 == 1 goto Fly
+  end
+label Fly
+  scene "Chuck's wife and Fly"
+  speaker "Woman"
+  walk t24_middlewoman1_2 up 2
+  face t24_middlewoman1_2 player
+  face player t24_middlewoman1_2
+  say "You beat my husband? My, my! Then you've earned this. It's something I keep for strong Trainers."
+  give "HM02"
+  setflag FLAG_GOT_HM02
+  setvar VAR_UNK_4116 2
+  say "HM02 is Fly. With the Storm Badge, your Pokémon can carry you to any town you've visited before."
+  walk t24_middlewoman1_2 down 2
+  endscene
+  end
+
+
+# T24_000: Chuck's wife
+script ChucksWife
+  face t24_middlewoman1_2 player
+  speaker "Woman"
+  if flag FLAG_GOT_HM02 goto Given
+  say "My husband is the Gym Leader. He's out there under that waterfall day and night, bellowing at it."
+  say "If you ever beat him, come and find me. I've got something for a Trainer like that."
+  end
+label Given
+  say "Is Fly treating you well? Soaring over the sea is lovely on a calm day."
+  end
+
+
+# T24_002: Suicune on the north shore, and Eusine
+script Suicune
+  scene "Suicune and Eusine in Cianwood"
+  emote player exclaim
+  cry "Suicune"
+  face player up
+  text "Suicune is looking this way!"
+  walk t24_tsure_poke_static_suicune onspot up 2 fast
+  sound "ledge"
+  text "Suicune bounded off across the sea!"
+  hide t24_tsure_poke_static_suicune
+  setflag FLAG_HIDE_CIANWOOD_SUICUNE
+  addvar VAR_UNK_4076 1
+  setvar VAR_UNK_4092 1
+  clearflag FLAG_HIDE_ROUTE_42_SUICUNE
+  wait 0.5
+  show t24_minaki
+  music "johto/eye_mystery"
+  walk t24_minaki up 8
+  face player down
+  face t24_minaki player
+  speaker "Eusine"
+  say "Did you see it? Suicune! I've chased it all the way from the Burned Tower, and it went straight past me to look at you."
+  say "I'm Eusine. I've studied Suicune for ten years. Why would it look at you? I have to know. Battle me, {player}!"
+  battle t24_minaki as "johto_mystery_man_eusine"
+  say "I lost... So that's it. You and your Pokémon share something Suicune can sense."
+  say "I'll keep searching. Suicune won't be far. Next time, I'll be the one it waits for!"
+  walk t24_minaki down 8
+  hide t24_minaki
+  music area
+  endscene
+  end

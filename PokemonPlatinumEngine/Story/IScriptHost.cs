@@ -341,6 +341,13 @@ public interface IScriptHost
     /// </summary>
     bool SweetScent();
 
+    /// <summary>
+    /// A rock just smashed with Rock Smash lets out a wild Pokémon of the place where the player stands, at the
+    /// place's chance (plan 20 · J9; the area's <c>rockSmash</c> table): true when one comes, and its battle starts;
+    /// false where nothing does, which is always in Sinnoh, whose rocks hide nothing.
+    /// </summary>
+    bool RockSmashEncounter();
+
     // ------------------------------------------------------------------ sound
 
     /// <summary>Plays a song; null goes back to the theme of the place, and an empty name is silence.</summary>

@@ -3159,3 +3159,46 @@ upper floors, from HeartGold's maps, events and tables, in our own words and mus
   flags nothing in this game sets, so they are always there.
 - **The whirling water round the Whirl Islands' lowest cave** (`d_uzushio`) is no whirlpool: its tiles are plain cave
   water, so it is left to the cave's own water to draw.
+
+## Johto's third chapter (2026-10-20, plan 20 · J9)
+
+Olivine's lighthouse to the Mineral Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T26`,
+`T26GYM0101`, `D27R0107`, `D27R0108`, `T24`, `T24GYM0101`, `T24R0501`, `R39R0101`, `R39R0201`), in our own words.
+
+- **Who waits is kept off the map by the place's own arrival**, not by the new game: the red-haired boy at Olivine's
+  Gym door (`FLAG_HIDE_OLIVINE_RIVAL` while `VAR_UNK_4078` is 0), Jasmine and the two who watch her in the Gym (while
+  `VAR_SCENE_LIGHTHOUSE_JASMINE` is below 2), Eusine and Suicune in Cianwood. HeartGold's new game sets those flags;
+  setting them as each place is come to does the same for a new game and for every save made before, so no story
+  version is raised.
+- **The lighthouse's lift** opens once Jasmine has first spoken and stepped aside (`FLAG_UNK_1D8`, the flag HeartGold's
+  own object at the lift's door is hidden by): both its doors are walls until then. The car carries whoever comes in
+  to the other end at once, as the Vista Lighthouse's does, the two ends each saying which they are as they are come
+  to (`VAR_OLIVINE_LIGHTHOUSE_LIFT_FLOOR`, ours); HeartGold's car remembers its last floor instead.
+- **The Secret Potion** is Platinum's own key item, given by Cianwood's pharmacist once Jasmine has asked
+  (`FLAG_GOT_SECRETPOTION`) and taken by Jasmine for Amphy. Every other time the pharmacist sells HeartGold's five
+  medicines (`src/scrcmd_mart.c`'s list 11). A save of Sinnoh's Route 210 is not touched: the item is taken in Johto.
+- **Chuck's waterfall**: HeartGold turns the Gym's waterfall off with a winch beside it (`CianwoodGymTurnWinch`, a
+  temporary variable, so it runs again on every visit); here the winch sets a flag local to the room, and Chuck hears
+  nothing until it is set. The waterfall itself isn't drawn. Chuck counts his four black belts beaten (HeartGold's
+  `SetTrainerFlag`), and his wife meets the player as they come out of the Gym with HM02 (`VAR_UNK_4116`).
+- **Suicune in Cianwood**: HeartGold's tower counts the sightings (`VAR_UNK_4076`); here Cianwood's arrival counts its
+  stop once the three of the Burned Tower have fled. Suicune bounds off and Eusine battles at once; a battle lost
+  ends the scene as HeartGold's whites out, and Suicune is gone either way (`FLAG_HIDE_ROUTE_42_SUICUNE` is cleared
+  for its next stop, plan 20 · J10).
+- **Fly over Johto** (plan 18 · W9's half within one region): `SpawnLocations.In(region)` gives a region's spawns
+  (its file's, and those its world folder's `spawns.json` adds, which is how Kanto's FireRed heal locations reach
+  Fly), a first arrival opens the town of the region the player is in, the region's map resolves its fly spots
+  against its own spawns, and a flight lands on the town's own overworld (`SpawnLocation.Map`). Johto's eight towns
+  are its spawns, each before its Pokémon Center (New Bark Town's before the player's house). Teleport, a white-out
+  and the place to come back to stay Sinnoh's until W9: before this, a Kanto flight landed on Sinnoh's map.
+- **The Moomoo Farm's Miltank** is fed only once the farmer has told what ails her (`FLAG_UNK_0A8`): HeartGold counts
+  six berries with six flags and cures her with the seventh; here one variable of ours counts them
+  (`VAR_MOOMOO_FARM_BERRIES_FED`). HeartGold takes any of its Oran Berries one at a time, as here. The girls' Seals
+  are left out (Johto's game has no Seal Case of its own).
+- **A smashed rock** (J7's leftover) lets out a wild Pokémon of its place's `rockSmash` table at the table's rate in a
+  hundred (`rocksmash` after the common `Rock` script): HeartGold's two slots are met 90 and 10 times in a hundred, the
+  GBA games' five by their water's weights, the lead's ability having its say and a Repel none, as for a rod. Sinnoh's
+  rocks hide nothing, as in Platinum.
+- **Left for later sessions**: Routes 47 and 48, the cliff gate and Cliff Cave, the Safari Zone and its gate (J8's
+  part b with J9's Safari Zone); Baoba on Route 40; Jasmine's and Chuck's numbers and rematches; Elm's call after the
+  third Badge and `VAR_SCENE_ROCKET_TAKEOVER` (J11); the photographer and the weekday siblings of Routes 40 and 41.

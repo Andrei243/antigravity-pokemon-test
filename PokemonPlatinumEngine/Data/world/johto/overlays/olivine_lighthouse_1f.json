@@ -1,10 +1,11 @@
 {
-  // The Glitter Lighthouse's ground floor (plan 20 · J8): HeartGold's floor, our words. Its lift (warp 1) is ridden in
-  // the chapter that brings the medicine up (plan 20 · J9); the stairs climb meanwhile
+  // The Glitter Lighthouse's ground floor (plan 20 · J8, J9): HeartGold's floor, our words. Its lift (warp 1) is open
+  // once Jasmine has stepped aside from its door at the top (FLAG_UNK_1D8, scripts/olivine_lighthouse_light_room.txt);
+  // the stairs climb meanwhile
   "area": "olivine_lighthouse_1f",
   "bgmTrack": "johto/lighthouse",
-  "locked": [
-    1
+  "doors": [
+    { "warp": 1, "map": "OlivineLighthouse_Elevator", "x": 3, "y": 6, "facing": "Up", "openedBy": "FLAG_UNK_1D8" }
   ],
   "people": {
     "d27r0101_middlewoman1_2": {

@@ -7038,6 +7038,60 @@ way 1, from answer 1
   + FLAG_HIDE_CHERRYGROVE_RIVAL
   = VAR_SCENE_CHERRYGROVE_CITY_OW 0 -> 4
   + seen cherrygrove.The red-haired boy
+=== cianwood.ChucksWife
+from Woman at 173,360 of Johto
+way -
+  Woman> My husband is the Gym Leader. He's out there under that waterfall day and night, bellowing at it.
+  Woman> If you ever beat him, come and find me. I've got something for a Trainer like that.
+=== cianwood.Suicune
+from the trigger at 176,334 of Johto
+way 0
+  > Suicune is looking this way!
+  > Suicune bounded off across the sea!
+  Eusine> Did you see it? Suicune! I've chased it all the way from the Burned Tower, and it went straight past me to look at you.
+  Eusine> I'm Eusine. I've studied Suicune for ten years. Why would it look at you? I have to know. Battle me, Lucas!
+  Eusine> I lost... So that's it. You and your Pokémon share something Suicune can sense.
+  Eusine> I'll keep searching. Suicune won't be far. Next time, I'll be the one it waits for!
+  * scene cianwood.Suicune and Eusine in Cianwood
+  * emote player Exclaim
+  * cry Suicune
+  * walk Suicune onspot up onspot up
+  * sound ledge
+  * music johto/eye_mystery
+  * battle johto_mystery_man_eusine Won
+  * music area
+  * endscene
+  + FLAG_HIDE_CIANWOOD_SUICUNE
+  = VAR_UNK_4076 0 -> 1
+  = VAR_UNK_4092 0 -> 1
+  + beaten johto_mystery_man_eusine
+  + seen cianwood.Suicune and Eusine in Cianwood
+way 1, from answer 1
+  * battle johto_mystery_man_eusine Lost
+  * scene over, unseen
+  + FLAG_HIDE_CIANWOOD_SUICUNE
+  = VAR_UNK_4076 0 -> 1
+  = VAR_UNK_4092 0 -> 1
+=== cianwood_gym.Chuck
+from Chuck at 13,10 of Cianwood_Gym
+way -
+  > Chuck is training under the waterfall, roaring at the top of his voice. He can't hear a thing over the water.
+=== cianwood_gym.Winch
+from the tile read at 10,2 of Cianwood_Gym
+way 0
+  > A big winch works the waterfall's sluice. Turn it?
+  > Lucas turned the winch with all their strength!
+  > The waterfall slowed to a trickle!
+  ? A big winch works the waterfall's sluice. Turn it? = Yes
+  * sound boulder
+  + FLAG_MAP_LOCAL_CIANWOOD_GYM_FALLS_STOPPED
+way 1, from answer 1
+  ? A big winch works the waterfall's sluice. Turn it? = No
+=== cianwood_pharmacy.Pharmacist
+from Pharmacist at 5,5 of Cianwood_Pharmacy
+way -
+  Pharmacist> Welcome to Cianwood's pharmacy, the oldest in Johto. What can I get for you?
+  * open Shop cianwood_pharmacy
 === cinnabar_island.GymSign
 from the tile read at 82,385 of Kanto
 way -
@@ -11119,6 +11173,76 @@ way -
   Barry> Lucas! I'm going on ahead to the lab. Dad's waiting for us both. Don't dawdle!
   + FLAG_HIDE_OLDALE_TOWN_RIVAL
   = VAR_OLDALE_RIVAL_STATE 0 -> 2
+=== olivine.RivalAtTheGym
+from the trigger at 272,239 of Johto
+way -
+  Barry> ...You again. If you're here for the Gym, don't bother. The Leader's not even in it.
+  Barry> She's up that lighthouse, fussing over some sick Pokémon. A Gym Leader playing nurse!
+  Barry> A Pokémon too weak to stand isn't worth the time. You'd waste yours on it too, wouldn't you? That's why you'll never be strong.
+  * scene olivine.The red-haired boy at Olivine's Gym
+  * emote player Exclaim
+  * music johto/rival
+  * music area
+  * endscene
+  + FLAG_HIDE_OLIVINE_RIVAL
+  = VAR_UNK_4078 0 -> 1
+  + seen olivine.The red-haired boy at Olivine's Gym
+=== olivine_gym.Gentleman
+from Gentleman at 3,23 of Olivine_Gym
+way -
+  Gentleman> Jasmine is back, and so are we. She battles beautifully. I wouldn't miss it for the world.
+=== olivine_gym.Girl
+from Girl at 9,15 of Olivine_Gym
+way -
+  Girl> I heard Jasmine was too worried to battle while that Ampharos was sick. She's so kind!
+=== olivine_gym.GymGuy
+from Gym Guide at 9,25 of Olivine_Gym
+way -
+  Gym Guide> Hey there, challenger! Sorry, the Leader's out. Jasmine's up at the lighthouse, looking after a sick Pokémon.
+  Gym Guide> She won't battle anyone until it's well again. That's just how kind she is.
+=== olivine_gym.Jasmine
+from Jasmine at 6,5 of Olivine_Gym
+way 0
+  Jasmine> Thank you again for Amphy. Now let me show you the other side of me: a Gym Leader's.
+  Jasmine> My Pokémon are of steel. They're harder than anything you've faced. Are you ready?
+  Jasmine> Your Pokémon cut through steel... You're stronger than I imagined. The Mineral Badge is yours.
+  > Lucas received the Mineral Badge from Jasmine!
+  Jasmine> Wear it proudly. Steel only grows harder under the hammer, and so do the Trainers who keep going.
+  Jasmine> And please take this. A move I'm very fond of.
+  > Lucas received the TM23!
+  > TM23 holds the move Iron Tail.
+  > Lucas put it away in the TMs & HMs pocket.
+  Jasmine> TM23 is Iron Tail. It strikes with a tail as hard as steel, and may lower the foe's Defense.
+  * scene olivine_gym.Jasmine
+  * battle johto_leader_jasmine_jasmine Won
+  * fanfare FanfareBadge
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_GOT_TM23_FROM_JASMINE
+  + beaten johto_leader_jasmine_jasmine
+  = badges Johto 0 -> 100000
+  + seen olivine_gym.Jasmine
+way 1, from answer 1
+  * battle johto_leader_jasmine_jasmine Lost
+  * scene over, unseen
+=== olivine_lighthouse_light_room.Amphy
+from Amphy at 8,8 of OlivineLighthouse_LightRoom
+way -
+  > Amphy... It breathes weakly, and its tail's light barely glows.
+  * cry Ampharos
+=== olivine_lighthouse_light_room.Jasmine
+from Jasmine at 7,8 of OlivineLighthouse_LightRoom
+way -
+  Jasmine> Oh... a visitor. Forgive me, I'm Jasmine, the Leader of Olivine's Gym.
+  Jasmine> This is Amphy. Its light keeps the ships off the rocks at night, but it's fallen ill and can barely glow.
+  Jasmine> There's a pharmacy in Cianwood City, over the sea. They make a medicine there that might help, but I can't leave Amphy alone...
+  Jasmine> If you're going that way, would you... No, I shouldn't ask. Here, take the lift down. It's quicker than the stairs.
+  * scene olivine_lighthouse_light_room.Jasmine by the lamp
+  * sound door_slide
+  * endscene
+  + FLAG_UNK_1D8
+  = VAR_SCENE_LIGHTHOUSE_JASMINE 0 -> 1
+  + seen olivine_lighthouse_light_room.Jasmine by the lamp
 === oreburgh_city.Rival
 from {rival} at 282,757 of Sinnoh
 way -
@@ -13153,6 +13277,29 @@ from Strange Tree at 415,246 of Johto
 way -
   > It's a weird tree. It's wiggling ever so slightly... and it's blocking the way.
   * sound bump
+=== route_39_moomoo_farm_house.Farmer
+from Farmer at 6,4 of Route39_MoomooFarmHouse
+way -
+  Farmer> Our best Miltank's fallen sick. She won't give a drop of milk, and she's barely eaten in days.
+  Farmer> Lots of Oran Berries might perk her up. If you've any to spare, she's in the barn next door.
+  + FLAG_UNK_0A8
+=== route_39_moomoo_farm_house.FarmersWife
+from Farmer's Wife at 9,5 of Route39_MoomooFarmHouse
+way -
+  Farmer's Wife> Our Miltank's sick, poor thing. We've tried everything we can think of.
+=== route_39_moomoo_farm_stable.Girl
+from Girl at 6,5 of Route39_MoomooFarmStable
+way -
+  Girl> Our Miltank is poorly. She just lies there and won't eat her hay.
+=== route_39_moomoo_farm_stable.SickMiltank
+from Miltank at 7,5 of Route39_MoomooFarmStable
+way -
+  > Miltank looks very weak. It hardly lifts its head.
+  * cry Miltank
+=== route_39_moomoo_farm_stable.Sister
+from Girl at 8,5 of Route39_MoomooFarmStable
+way -
+  Girl> Grandpa says lots of Berries would make her better. Do you have any?
 === route_4.MegaKick
 from Black Belt at 206,53 of Kanto
 way 0

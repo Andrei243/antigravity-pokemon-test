@@ -1,0 +1,67 @@
+# The Moomoo Farm's barn (plan 20 · J9). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_R39R0201).
+#
+# The sick Miltank lies in the barn. Once the farmer has told the player what ails her (FLAG_UNK_0A8, set in the
+# farmhouse), she may be fed Oran Berries one at a time; HeartGold counts the first six with six flags of its own and
+# cures her with the seventh (FLAG_UNK_0AA). Here one variable of ours counts them (VAR_MOOMOO_FARM_BERRIES_FED), and
+# the third and the fifth bring HeartGold's two words of cheer. Once she is well the farmer sells Moomoo Milk and his
+# wife gives TM83 (route_39_moomoo_farm_house.txt). The girls' Seals are left out: Johto's game has no Seal Case.
+
+
+# R39R0201_002
+script SickMiltank
+  if flag FLAG_UNK_0AA goto Well
+  cry "Miltank"
+  text "Miltank looks very weak. It hardly lifts its head."
+  if not flag FLAG_UNK_0A8 end
+  if not item "Oran Berry" goto NoBerry
+  ask "Give Miltank an Oran Berry?"
+  if no goto Later
+  take "Oran Berry"
+  text "{player} gave Miltank an Oran Berry. It munched it down."
+  addvar VAR_MOOMOO_FARM_BERRIES_FED 1
+  if var VAR_MOOMOO_FARM_BERRIES_FED == 3 text "Miltank seems a little happier."
+  if var VAR_MOOMOO_FARM_BERRIES_FED == 5 text "Miltank is starting to look more lively."
+  if var VAR_MOOMOO_FARM_BERRIES_FED < 7 end
+  fanfare item
+  text "Miltank is full of energy again! It's back on its feet!"
+  setflag FLAG_UNK_0AA
+  end
+label NoBerry
+  text "If only there were some Oran Berries to give it..."
+  end
+label Later
+  text "{player} decided to come back later."
+  end
+label Well
+  cry "Miltank"
+  text "Moooo! Miltank looks happy and healthy."
+  end
+
+
+# R39R0201_000
+script Girl
+  face r39r0201_gsbabygirl1 player
+  speaker "Girl"
+  if flag FLAG_UNK_0AA goto Well
+  say "Our Miltank is poorly. She just lies there and won't eat her hay."
+  end
+label Well
+  say "Miltank's better! Thank you! She's going to make lots of yummy milk again."
+  end
+
+
+# R39R0201_001
+script Sister
+  face r39r0201_gsbabygirl1_2 player
+  speaker "Girl"
+  if flag FLAG_UNK_0AA goto Well
+  if var VAR_MOOMOO_FARM_BERRIES_FED > 0 goto Feeding
+  say "Grandpa says lots of Berries would make her better. Do you have any?"
+  end
+label Feeding
+  say "She ate it! Keep going, please! Grandpa says she needs lots."
+  end
+label Well
+  say "You made Miltank better with Berries! You're amazing!"
+  end

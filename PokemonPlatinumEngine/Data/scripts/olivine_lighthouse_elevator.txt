@@ -1,0 +1,25 @@
+# The Glitter Lighthouse's lift (plan 20 · J9). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D27R0108).
+#
+# The lift joins the ground floor and the light room at the top, and carries whoever comes in to the other end at once
+# (HeartGold's car does the same, from the floor it remembers: GetDynamicWarpFloorNo). Here the two ends each say so
+# as they are come to (VAR_OLIVINE_LIGHTHOUSE_LIFT_FLOOR, a variable of our own: 0 set by the ground floor's arrival
+# script, 1 by the light room's), as the Vista Lighthouse's car does in Sinnoh: two steps in, the ride, out at the
+# other end. Its doors are open once Jasmine has stepped aside from the one at the top (FLAG_UNK_1D8).
+
+
+script OnEnter
+  walk player up 2
+  face player down
+  if var VAR_OLIVINE_LIGHTHOUSE_LIFT_FLOOR == 1 goto Down
+  anim elevator up 4
+  text "The lift has reached the top of the lighthouse."
+  sound "stairs"
+  warp "OlivineLighthouse_LightRoom" 8 5 down
+  end
+label Down
+  anim elevator down 4
+  text "The lift has reached the ground floor."
+  sound "stairs"
+  warp "OlivineLighthouse_1F" 8 5 down
+  end

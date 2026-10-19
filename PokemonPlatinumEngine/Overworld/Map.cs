@@ -97,6 +97,10 @@ public sealed class MapArea
     /// <summary>The wild Pokémon hooked with each rod (by <see cref="FishingRod"/>), and each rod's rate (plan 02 · S2).</summary>
     public List<WildEncounterEntry>[] RodEncounters { get; } = { new(), new(), new() };
     public int[] RodRates { get; } = new int[3];
+
+    /// <summary>What a rock smashed here lets out, and the chance in a hundred that one does (plan 20 · J9; <see cref="Map.SmashRock"/>).</summary>
+    public List<WildEncounterEntry> RockSmashEncounters { get; } = new();
+    public int RockSmashRate { get; set; }
 }
 
 public class Map
@@ -1212,6 +1216,19 @@ public class Map
             && Feebas.Bites(SpecialEncounterTables.FeebasTiles, state.DailyNumber, x, y, rng))
             table = Overworld.Feebas.Table(feebas.Species, table);
         return WildEncounterRules.Meet(table, water: true, lead is { } first ? first with { RepelLevel = null } : null, rng);
+    }
+
+    /// <summary>
+    /// What a rock smashed with Rock Smash at a tile lets out (plan 20 · J9): the area's <c>rockSmash</c> table at its
+    /// rate in a hundred, then one of its slots by weight, as the land's are met (the lead's ability has its say, never
+    /// a Repel). Null where nothing comes, and always in Sinnoh, whose areas have no such table.
+    /// </summary>
+    public WildEncounterEntry? SmashRock(int x, int y, WildLead? lead = null, Random? random = null)
+    {
+        if (AreaAt(x, y) is not { } area) return null;
+        var roll = random ?? rng;
+        if (area.RockSmashEncounters.Count == 0 || area.RockSmashRate <= 0 || roll.Next(100) >= area.RockSmashRate) return null;
+        return WildEncounterRules.Meet(area.RockSmashEncounters, water: false, lead is { } first ? first with { RepelLevel = null } : null, roll);
     }
 
     /// <summary>

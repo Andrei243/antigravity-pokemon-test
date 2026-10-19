@@ -1,0 +1,20 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "The lift has reached the top of the lighthouse."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The lift has reached the ground floor."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

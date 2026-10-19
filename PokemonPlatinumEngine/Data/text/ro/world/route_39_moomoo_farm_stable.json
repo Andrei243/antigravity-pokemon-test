@@ -8,14 +8,6 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
-        "en": [
-          "Our Miltank is poorly. She just lies there and won't eat her hay."
-        ],
-        "text": [
-          ""
-        ]
       }
     },
     "r39r0201_gsbabygirl1_2": {
@@ -26,28 +18,12 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
-        "en": [
-          "Grandpa says lots of Berries would make her better. Do you have any?"
-        ],
-        "text": [
-          ""
-        ]
       }
     },
     "r39r0201_tsure_poke_static_miltank": {
       "name": {
         "en": [
           "Miltank"
-        ],
-        "text": [
-          ""
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Mooo... It looks very weak."
         ],
         "text": [
           ""

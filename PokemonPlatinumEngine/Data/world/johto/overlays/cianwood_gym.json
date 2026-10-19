@@ -1,9 +1,15 @@
 {
-  // The Cianwood Gym (plan 20 · J8), HeartGold's room: four black belts by their own records. Chuck under his waterfall,
-  // his battle and the Storm Badge are plan 20 · J9's; until then he is off training on the island's far side
+  // The Cianwood Gym (plan 20 · J8, J9), HeartGold's room: four black belts by their own records, and Chuck under his
+  // waterfall, who hears nobody until the winch beside it is turned (scripts/cianwood_gym.txt)
   "area": "cianwood_gym",
   "bgmTrack": "johto/gym",
+  "read": { "T24GYM0101_002+1": "Winch" },
   "people": {
+    "t24gym0101_gsleader5": {
+      "name": "Chuck",
+      "script": "Chuck",
+      "still": true
+    },
     "t24gym0101_gsfighter": {
       "name": "Yoshi",
       "trainer": {
@@ -34,7 +40,6 @@
     }
   },
   "signs": {
-    "T24GYM0101_002+1": "The waterfall where the master trains, roaring day and night.",
     "T24GYM0101_003+1": "Cianwood City Pokémon Gym\nLeader: Chuck"
   }
 }

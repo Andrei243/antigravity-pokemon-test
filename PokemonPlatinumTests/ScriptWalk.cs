@@ -351,7 +351,8 @@ internal sealed class ScriptWalk
                         Add($"{badges} badges", host => host.Story.SetBadges("Sinnoh", (1 << badges) - 1));
                     break;
                 case Query.Badge:
-                    Add($"the {c.Name} badge", host => host.Story.GiveBadge("Sinnoh", c.Name));
+                    // (of the region the script plays in: a Johto Leader asks for a Johto badge, plan 20 · J9)
+                    Add($"the {c.Name} badge", host => host.Story.GiveBadge(host.Region, c.Name));
                     break;
                 case Query.NationalDex:
                     Add("the National Pokédex", host => host.NationalDex = true);

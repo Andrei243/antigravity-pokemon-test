@@ -804,7 +804,7 @@ public sealed class HeadlessScriptHost : IScriptHost
         Shown("fly");
         NeverInAHurry("a flight");
         if (FlyTo is not { } town) return false;
-        Warp("Sinnoh", town.X, town.Y, Direction.Down);
+        Warp(town.Map, town.X, town.Y, Direction.Down);
         return true;
     }
 
@@ -899,6 +899,20 @@ public sealed class HeadlessScriptHost : IScriptHost
         Shown("draw a Pokémon out");
         NeverInAHurry("Sweet Scent");
         if (Scented is not var (species, level)) return false;
+        WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
+        return true;
+    }
+
+    /// <summary>What a smashed rock lets out in a test: nothing unless the test says (plan 20 · J9).</summary>
+    public (string Species, int Level)? InTheRock { get; set; }
+
+    public bool RockSmashEncounter()
+    {
+        Shown("a rock's Pokémon");
+        NeverInAHurry("a smashed rock's Pokémon");
+        // (the place's table and its roll are Map.SmashRock's, tested by themselves: a script walked here meets only
+        // what the test put in the rock, so its every way through stays the same)
+        if (InTheRock is not var (species, level)) return false;
         WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
         return true;
     }

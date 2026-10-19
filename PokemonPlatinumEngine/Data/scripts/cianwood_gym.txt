@@ -1,0 +1,60 @@
+# The Cianwood Gym (plan 20 · J9). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T24GYM0101).
+#
+# Chuck trains under the waterfall at the back of the hall and hears nothing over it until the winch beside it is
+# turned (HeartGold's VAR_TEMP_x4000, which lasts while the player stays: here a flag local to the room). Then he
+# battles, gives the Storm Badge (`givebadge storm`), counts his four black belts beaten as HeartGold's
+# SetTrainerFlag does, and gives TM01, Focus Punch (FLAG_GOT_TM01_FROM_CHUCK). VAR_UNK_4116 1 sends his wife to meet
+# the player outside with HM02 (cianwood.txt).
+
+
+# T24GYM0101_000
+script Chuck
+  if badge storm goto Won
+  if not flag FLAG_MAP_LOCAL_CIANWOOD_GYM_FALLS_STOPPED goto Falls
+  face t24gym0101_gsleader5 player
+  speaker "Chuck"
+  scene "Chuck"
+  say "WAHAHAH! So you stopped my waterfall! You've got nerve, I'll give you that!"
+  say "I'm Chuck, and my fists do my talking! My Pokémon and I train harder than anyone. Show me what you've got!"
+  battle self as "johto_leader_chuck_chuck"
+  say "Whoa! What power! I've got no excuse. You beat me fair and square. Take the Storm Badge!"
+  givebadge storm
+  text "{player} received the Storm Badge from Chuck!"
+  defeat "johto_black_belt_yoshi"
+  defeat "johto_black_belt_lao"
+  defeat "johto_black_belt_nob"
+  defeat "johto_black_belt_lung"
+  setvar VAR_UNK_4116 1
+  say "With the Storm Badge, Pokémon up to level seventy will obey you. And you can use Fly outside of battle!"
+  endscene
+label Tm
+  say "Here, this is my favourite! Put everything you have into one punch!"
+  give "TM01"
+  setflag FLAG_GOT_TM01_FROM_CHUCK
+  say "TM01 is Focus Punch. Get hit while you're winding up and you'll lose your nerve, so be careful with it!"
+  end
+label Won
+  face t24gym0101_gsleader5 player
+  speaker "Chuck"
+  if not flag FLAG_GOT_TM01_FROM_CHUCK goto Tm
+  say "Back to the waterfall for me! I can't let a loss like that go unanswered. HWAAAH!"
+  end
+label Falls
+  text "Chuck is training under the waterfall, roaring at the top of his voice. He can't hear a thing over the water."
+  end
+
+
+# T24GYM0101_002: the winch beside the waterfall
+script Winch
+  if flag FLAG_MAP_LOCAL_CIANWOOD_GYM_FALLS_STOPPED goto Stopped
+  ask "A big winch works the waterfall's sluice. Turn it?"
+  if no end
+  sound "boulder"
+  text "{player} turned the winch with all their strength!"
+  text "The waterfall slowed to a trickle!"
+  setflag FLAG_MAP_LOCAL_CIANWOOD_GYM_FALLS_STOPPED
+  end
+label Stopped
+  text "The winch is turned. Only a trickle of water falls."
+  end

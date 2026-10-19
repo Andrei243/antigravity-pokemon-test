@@ -1,0 +1,23 @@
+{
+  "key": "olivine_lighthouse_elevator",
+  "index": 446,
+  "name": "Lighthouse",
+  "matrix": 262,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 6, "to": "4095", "toWarp": 256 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}
