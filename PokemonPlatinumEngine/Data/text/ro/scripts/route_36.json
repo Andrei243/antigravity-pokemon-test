@@ -5,7 +5,7 @@
         "The tree is wiggling!"
       ],
       "text": [
-        ""
+        "Copacul se mișcă!"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "It's a weird tree. Use the SquirtBottle on it?"
       ],
       "text": [
-        ""
+        "E un copac ciudat. Folosești Pulverizatorul pe el?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} watered the tree with the SquirtBottle!"
       ],
       "text": [
-        ""
+        "{player} a udat copacul cu Pulverizatorul!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The tree hated the water! It jumped up and attacked!"
       ],
       "text": [
-        ""
+        "Copacul a urât apa! A sărit și a atacat!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Girl"
       ],
       "text": [
-        ""
+        "Fata"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "So it was a Pokémon pretending to be a tree! You were so brave. Thank you!"
       ],
       "text": [
-        ""
+        "Deci era un Pokémon care se dădea drept copac! Ce curaj ai avut. Mulțumesc!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "These are from my sister's garden. Please take them."
       ],
       "text": [
-        ""
+        "Astea sunt din grădina surorii mele. Te rog, ia-le."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "I'm going back to the flower shop now. Come and see us in Goldenrod sometime!"
       ],
       "text": [
-        ""
+        "Acum mă întorc la florărie. Treci pe la noi în Goldenrod cândva!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "The strange tree has gone still again..."
       ],
       "text": [
-        ""
+        "Copacul ciudat a rămas iar nemișcat..."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "It's a weird tree. It's wiggling ever so slightly... and it's blocking the way."
       ],
       "text": [
-        ""
+        "E un copac ciudat. Se mișcă un pic... și blochează drumul."
       ]
     }
   ],
@@ -87,7 +87,7 @@
         "This tree won't let anybody past. It wiggles when you touch it! My sister in Goldenrod might know what to do."
       ],
       "text": [
-        ""
+        "Copacul ăsta nu lasă pe nimeni să treacă. Se mișcă dacă îl atingi! Sora mea din Goldenrod ar ști ce-i de făcut."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "That's my sister's SquirtBottle! Go on, give the tree a squirt. I want to see what it does!"
       ],
       "text": [
-        ""
+        "E Pulverizatorul surorii mele! Hai, stropește copacul. Vreau să văd ce face!"
       ]
     }
   ],
@@ -105,7 +105,7 @@
         "Rocks in your way? Smash 'em! That's my motto. Here, take this. You'll know what to do with it."
       ],
       "text": [
-        ""
+        "Pietre în cale? Sparge-le! Ăsta e motoul meu. Poftim, ia asta. O să știi ce să faci cu ea."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "HM06 is Rock Smash. With the Zephyr Badge, a Pokémon that knows it can break cracked rocks outside of battle."
       ],
       "text": [
-        ""
+        "HM06 este Spărgător de Pietre. Cu Insigna Zefir, un Pokémon care îl știe sparge pietre crăpate în afara luptei."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Sometimes there's a Pokémon hiding under the rock, too!"
       ],
       "text": [
-        ""
+        "Uneori se ascunde și câte un Pokémon sub piatră!"
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Smash those rocks! Every rock you break is a rock that can't get in your way."
       ],
       "text": [
-        ""
+        "Sparge pietrele alea! Fiecare piatră spartă e o piatră care nu-ți mai stă în cale."
       ]
     }
   ],
@@ -139,7 +139,7 @@
         "There's a strange tree blocking the way to Route 37. Nobody can get past it!"
       ],
       "text": [
-        ""
+        "Un copac ciudat blochează drumul spre Ruta 37. Nimeni nu poate trece!"
       ]
     },
     {
@@ -147,7 +147,7 @@
         "The tree that blocked the road turned out to be a Pokémon! Now we can walk to Ecruteak City again."
       ],
       "text": [
-        ""
+        "Copacul care bloca drumul s-a dovedit a fi un Pokémon! Acum putem merge iar până în Orașul Ecruteak."
       ]
     }
   ],
@@ -157,7 +157,7 @@
         "Arthur"
       ],
       "text": [
-        ""
+        "Arthur"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "Who are you? I'm Arthur of Thursday. My sisters and brothers each have a day, and Thursday is mine."
       ],
       "text": [
-        ""
+        "Cine ești? Eu sunt Arthur al Joii. Frații și surorile mele au fiecare câte o zi, iar joia e a mea."
       ]
     },
     {
@@ -173,7 +173,7 @@
         "A Pokémon that holds a Hard Stone hits harder with Rock-type moves. Thursdays are solid as a rock!"
       ],
       "text": [
-        ""
+        "Un Pokémon care ține o Piatră Dură lovește mai tare cu atacuri de tip Rocă. Joile sunt tari ca piatra!"
       ]
     },
     {
@@ -181,7 +181,7 @@
         "I'm Arthur of Thursday. Did you meet my brothers and sisters? Each of them has a day of their own."
       ],
       "text": [
-        ""
+        "Sunt Arthur al Joii. I-ai întâlnit pe frații și surorile mele? Fiecare are ziua lui."
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Today isn't Thursday. Come back then."
       ],
       "text": [
-        ""
+        "Azi nu e joi. Revino atunci."
       ]
     }
   ]

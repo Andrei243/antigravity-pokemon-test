@@ -5,7 +5,7 @@
         "Mr. Briney"
       ],
       "text": [
-        ""
+        "Domnul Briney"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Ahoy! Shall we sail back to Dewford?"
       ],
       "text": [
-        ""
+        "Ahoi! Ne întoarcem cu vaporul în Dewford?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Then off you go and deliver that parcel of yours! Slateport's just up the beach."
       ],
       "text": [
-        ""
+        "Atunci du-te și predă-ți coletul! Slateport e chiar mai sus pe plajă."
       ]
     },
     {
@@ -31,9 +31,9 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Ahoi! Încotro navigăm?",
+        "Dewford",
+        "Rămân aici"
       ]
     },
     {
@@ -41,7 +41,7 @@
         "Just tell me whenever you need to set sail."
       ],
       "text": [
-        ""
+        "Spune-mi oricând vrei să pornim pe mare."
       ]
     },
     {
@@ -49,7 +49,7 @@
         "Dewford it is! Hold tight!"
       ],
       "text": [
-        ""
+        "Spre Dewford, deci! Ține-te bine!"
       ]
     }
   ],
@@ -59,7 +59,7 @@
         "Mr. Briney"
       ],
       "text": [
-        ""
+        "Domnul Briney"
       ]
     },
     {
@@ -67,7 +67,7 @@
         "Dewford, safe and sound! I'll be at the jetty when you need me."
       ],
       "text": [
-        ""
+        "Dewford, cu bine! O să fiu la debarcader când ai nevoie de mine."
       ]
     }
   ],
@@ -77,7 +77,7 @@
         "Boy"
       ],
       "text": [
-        ""
+        "Băiatul"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "I'm building the biggest sandcastle ever! It's taking a really, really long time."
       ],
       "text": [
-        ""
+        "Construiesc cel mai mare castel de nisip din lume! Durează foarte, foarte mult."
       ]
     }
   ],
@@ -95,7 +95,7 @@
         "Girl"
       ],
       "text": [
-        ""
+        "Fata"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "You look like you'd be good at building sandcastles! Here, you can have this."
       ],
       "text": [
-        ""
+        "Pari genul care știe să facă castele de nisip! Poftim, poți lua asta."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "We're going to build the biggest castle on the whole beach!"
       ],
       "text": [
-        ""
+        "O să facem cel mai mare castel de pe toată plaja!"
       ]
     }
   ],
@@ -121,7 +121,7 @@
         "Zigzagoon: Guguuh!"
       ],
       "text": [
-        ""
+        "Zigzagoon: Guguuh!"
       ]
     }
   ],
@@ -131,7 +131,7 @@
         "Ricky"
       ],
       "text": [
-        ""
+        "Ricky"
       ]
     },
     {
@@ -139,7 +139,7 @@
         "You're really strong! Can I have your number? I'll call when I can swim. And battle better!"
       ],
       "text": [
-        ""
+        "Ai o forță grozavă! Îmi dai numărul tău? Te sun când știu să înot. Și să lupt mai bine!"
       ]
     },
     {
@@ -147,7 +147,7 @@
         "Register Ricky in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "Îl înregistrezi pe Ricky la Apelurile din PokéNav?"
       ]
     },
     {
@@ -155,7 +155,7 @@
         "Yay! I'll call you all the time!"
       ],
       "text": [
-        ""
+        "Ura! O să te sun tot timpul!"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "Aww. OK, maybe later then."
       ],
       "text": [
-        ""
+        "Oh. Bine, poate mai târziu."
       ]
     }
   ],
@@ -173,7 +173,7 @@
         "Lola"
       ],
       "text": [
-        ""
+        "Lola"
       ]
     },
     {
@@ -181,7 +181,7 @@
         "Azurill liked you! Let's be friends. I'll tell you everything about floating!"
       ],
       "text": [
-        ""
+        "Lui Azurill i-a plăcut de tine! Hai să fim prieteni. Îți spun tot despre plutit!"
       ]
     },
     {
@@ -189,7 +189,7 @@
         "Register Lola in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "O înregistrezi pe Lola la Apelurile din PokéNav?"
       ]
     },
     {
@@ -197,7 +197,7 @@
         "Hooray! Azurill says hi!"
       ],
       "text": [
-        ""
+        "Ura! Azurill te salută!"
       ]
     },
     {
@@ -205,7 +205,7 @@
         "Oh... Azurill's sad now."
       ],
       "text": [
-        ""
+        "Oh... Acum Azurill e trist."
       ]
     }
   ]

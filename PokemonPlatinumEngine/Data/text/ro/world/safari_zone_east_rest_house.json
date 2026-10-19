@@ -6,7 +6,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Some Pokémon here hold items. Catch one, and you might be in luck!"
         ],
         "text": [
-          ""
+          "Unii Pokémoni de aici țin obiecte. Prinde unul și s-ar putea să ai noroc!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I came all this way for a Kangaskhan. Have you seen one?"
         ],
         "text": [
-          ""
+          "Am venit tocmai până aici pentru un Kangaskhan. Ai văzut vreunul?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My feet are killing me. The zone's bigger than it looks from the gate."
         ],
         "text": [
-          ""
+          "Mă dor picioarele de nu mai pot. Zona e mai mare decât pare de la poartă."
         ]
       }
     }

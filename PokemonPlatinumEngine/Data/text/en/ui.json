@@ -606,7 +606,9 @@
   },
   "badges": {
     "Coal": "Coal", "Forest": "Forest", "Cobble": "Cobble", "Fen": "Fen", "Relic": "Relic", "Mine": "Mine", "Icicle": "Icicle", "Beacon": "Beacon",
-    "Boulder": "Boulder", "Cascade": "Cascade", "Thunder": "Thunder", "Rainbow": "Rainbow", "Soul": "Soul", "Marsh": "Marsh", "Volcano": "Volcano", "Earth": "Earth"
+    "Boulder": "Boulder", "Cascade": "Cascade", "Thunder": "Thunder", "Rainbow": "Rainbow", "Soul": "Soul", "Marsh": "Marsh", "Volcano": "Volcano", "Earth": "Earth",
+    "Zephyr": "Zephyr", "Hive": "Hive", "Plain": "Plain", "Fog": "Fog", "Storm": "Storm", "Mineral": "Mineral", "Glacier": "Glacier", "Rising": "Rising",
+    "Stone": "Stone", "Knuckle": "Knuckle", "Dynamo": "Dynamo", "Heat": "Heat", "Balance": "Balance", "Feather": "Feather", "Mind": "Mind", "Rain": "Rain"
   },
   "card": {
     "title": "TRAINER CARD",

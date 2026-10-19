@@ -6,7 +6,7 @@
           "Captain Stern"
         ],
         "text": [
-          ""
+          "Căpitanul Stern"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Archie"
         ],
         "text": [
-          ""
+          "Archie"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Models of famous ships! The S.S. Anne sailed in a far-off region, long ago."
         ],
         "text": [
-          ""
+          "Machete de vase celebre! S.S. Anne naviga demult într-o regiune îndepărtată."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "This model of Hoenn shows how much of it is sea. Most of it, really!"
         ],
         "text": [
-          ""
+          "Macheta asta a Hoenn-ului arată cât din el e mare. Cea mai mare parte, de fapt!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I want to ride in a real submarine and see the bottom of the sea!"
         ],
         "text": [
-          ""
+          "Vreau să merg într-un submarin adevărat și să văd fundul mării!"
         ]
       }
     }
@@ -125,7 +125,7 @@
         "A jar of sea water from near the shore. A little cloudy."
       ],
       "text": [
-        ""
+        "Un borcan cu apă de mare de lângă țărm. Puțin tulbure."
       ]
     },
     "SlateportCity_OceanicMuseum_2F_EventScript_WaterQualitySample2": {
@@ -133,7 +133,7 @@
         "A jar of sea water from far out at sea. Clear as glass."
       ],
       "text": [
-        ""
+        "Un borcan cu apă de mare din larg. Limpede ca sticla."
       ]
     },
     "SlateportCity_OceanicMuseum_2F_EventScript_SubmersibleReplica": {
@@ -141,7 +141,7 @@
         "A model of a small submersible that carries one explorer under the waves."
       ],
       "text": [
-        ""
+        "Macheta unui submersibil mic, care duce un explorator sub valuri."
       ]
     },
     "SlateportCity_OceanicMuseum_2F_EventScript_SubmarineReplica": {
@@ -149,7 +149,7 @@
         "A model of Captain Stern's submarine, still being built at his shipyard."
       ],
       "text": [
-        ""
+        "Macheta submarinului Căpitanului Stern, încă în construcție la șantierul lui."
       ]
     },
     "SlateportCity_OceanicMuseum_2F_EventScript_SSTidalReplica": {
@@ -157,7 +157,7 @@
         "A model of the S.S. Tidal, the ferry between Slateport and Lilycove."
       ],
       "text": [
-        ""
+        "Macheta lui S.S. Tidal, feribotul dintre Slateport și Lilycove."
       ]
     },
     "SlateportCity_OceanicMuseum_2F_EventScript_SSAnneReplica": {
@@ -165,7 +165,7 @@
         "A model of the S.S. Anne, a luxury liner of a far-off land."
       ],
       "text": [
-        ""
+        "Macheta lui S.S. Anne, un vas de lux dintr-un ținut îndepărtat."
       ]
     },
     "SlateportCity_OceanicMuseum_2F_EventScript_SurfaceSeawaterDisplay": {
@@ -173,7 +173,7 @@
         "Water from the sea's surface. Warmed by the sun, full of life."
       ],
       "text": [
-        ""
+        "Apă de la suprafața mării. Încălzită de soare, plină de viață."
       ]
     },
     "SlateportCity_OceanicMuseum_2F_EventScript_DeepSeawaterDisplay": {
@@ -181,7 +181,7 @@
         "Water from the deep sea. Cold and dark, and still full of life."
       ],
       "text": [
-        ""
+        "Apă din adâncul mării. Rece și întunecată, dar tot plină de viață."
       ]
     },
     "SlateportCity_OceanicMuseum_2F_EventScript_HoennModel": {
@@ -189,7 +189,7 @@
         "A model of Hoenn. The sea covers far more of it than the land does."
       ],
       "text": [
-        ""
+        "O machetă a Hoenn-ului. Marea acoperă mult mai mult din el decât uscatul."
       ]
     },
     "SlateportCity_OceanicMuseum_2F_EventScript_PressureExperiment": {
@@ -197,7 +197,7 @@
         "A balloon in a tank of water. The deeper it's pushed, the smaller it gets."
       ],
       "text": [
-        ""
+        "Un balon într-un bazin cu apă. Cu cât e împins mai adânc, cu atât se micșorează."
       ]
     }
   }

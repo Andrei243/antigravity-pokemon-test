@@ -6,7 +6,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Oceanic Museum! Please pay at the counter as you come in."
         ],
         "text": [
-          ""
+          "Bun venit la Muzeul Oceanic! Vă rugăm să plătiți la ghișeu când intrați."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome to the Oceanic Museum! Please pay at the counter as you come in."
         ],
         "text": [
-          ""
+          "Bun venit la Muzeul Oceanic! Vă rugăm să plătiți la ghișeu când intrați."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "This museum's full of things about the sea. The boss would love it all."
         ],
         "text": [
-          ""
+          "Muzeul ăsta e plin de lucruri despre mare. Șefului i-ar plăcea tot."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Don't mind me. Just admiring the soil samples. Totally normal."
         ],
         "text": [
-          ""
+          "Nu mă băga în seamă. Doar admir mostrele de sol. Absolut normal."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "We're waiting for something to be delivered upstairs. I mean... we're looking at exhibits."
         ],
         "text": [
-          ""
+          "Așteptăm să se livreze ceva sus. Adică... ne uităm la exponate."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "The sea gives life to everything. People should give it more room!"
         ],
         "text": [
-          ""
+          "Marea dă viață la tot. Oamenii ar trebui să-i facă mai mult loc!"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "I paid fifty to get in here. Fifty! For rocks and water."
         ],
         "text": [
-          ""
+          "Am dat cincizeci ca să intru. Cincizeci! Pentru pietre și apă."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "If you're going upstairs, don't get in our way."
         ],
         "text": [
-          ""
+          "Dacă urci sus, nu ne sta în cale."
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -168,7 +168,7 @@
           "The sea covers most of the world. And we've hardly seen any of it!"
         ],
         "text": [
-          ""
+          "Marea acoperă cea mai mare parte a lumii. Și noi abia dacă am văzut ceva din ea!"
         ]
       }
     },
@@ -178,7 +178,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -186,7 +186,7 @@
           "Sand from the beach and soil from the sea floor, side by side. Fascinating!"
         ],
         "text": [
-          ""
+          "Nisip de pe plajă și sol de pe fundul mării, unul lângă altul. Fascinant!"
         ]
       }
     },
@@ -196,7 +196,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -204,7 +204,7 @@
           "That machine measures how deep the sea is. Deeper than you'd think!"
         ],
         "text": [
-          ""
+          "Aparatul ăla măsoară cât de adâncă e marea. Mai adâncă decât crezi!"
         ]
       }
     },
@@ -214,7 +214,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       },
       "dialog": {
@@ -222,7 +222,7 @@
           "Where do the waves come from? Nobody here will tell me!"
         ],
         "text": [
-          ""
+          "De unde vin valurile? Nimeni de aici nu vrea să-mi spună!"
         ]
       }
     },
@@ -232,7 +232,7 @@
           "Reporter"
         ],
         "text": [
-          ""
+          "Reporterița"
         ]
       },
       "dialog": {
@@ -240,7 +240,7 @@
           "I'm here to write about the museum. Those blue-clad visitors were awfully rude!"
         ],
         "text": [
-          ""
+          "Am venit să scriu despre muzeu. Vizitatorii ăia îmbrăcați în albastru au fost tare nepoliticoși!"
         ]
       }
     }
@@ -251,7 +251,7 @@
         "A whirlpool in a glass tank. Water swirls round and round, faster at the middle."
       ],
       "text": [
-        ""
+        "Un vârtej într-un bazin de sticlă. Apa se învârte în cerc, mai repede la mijloc."
       ]
     },
     "SlateportCity_OceanicMuseum_1F_EventScript_WaterfallExperiment": {
@@ -259,7 +259,7 @@
         "A little waterfall pours into a basin. Its splash is what makes the bubbles."
       ],
       "text": [
-        ""
+        "O cascadă mică se varsă într-un bazin. Stropii ei fac bulele."
       ]
     },
     "SlateportCity_OceanicMuseum_1F_EventScript_OceanSoilDisplay": {
@@ -267,7 +267,7 @@
         "Soil from the bottom of the sea. Fine and grey, full of tiny shells."
       ],
       "text": [
-        ""
+        "Sol de pe fundul mării. Fin și cenușiu, plin de scoici mărunte."
       ]
     },
     "SlateportCity_OceanicMuseum_1F_EventScript_BeachSandDisplay": {
@@ -275,7 +275,7 @@
         "Sand from Hoenn's beaches. Each grain was once a rock, worn down by the waves."
       ],
       "text": [
-        ""
+        "Nisip de pe plajele din Hoenn. Fiecare grăunte a fost odată o piatră, roasă de valuri."
       ]
     },
     "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact1": {
@@ -283,7 +283,7 @@
         "Sea water is salty because rivers carry salt from the rocks into the sea, and it stays there."
       ],
       "text": [
-        ""
+        "Apa mării e sărată pentru că râurile duc sarea din roci în mare, și acolo rămâne."
       ]
     },
     "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact2": {
@@ -291,7 +291,7 @@
         "The deeper you go, the colder and darker the sea becomes."
       ],
       "text": [
-        ""
+        "Cu cât cobori mai adânc, cu atât marea devine mai rece și mai întunecată."
       ]
     },
     "SlateportCity_OceanicMuseum_1F_EventScript_OceanicMinifact3": {
@@ -299,7 +299,7 @@
         "Some Pokémon live so deep that they make their own light."
       ],
       "text": [
-        ""
+        "Unii Pokémoni trăiesc atât de adânc, încât își fac singuri lumina."
       ]
     },
     "SlateportCity_OceanicMuseum_1F_EventScript_FossilDisplay": {
@@ -307,7 +307,7 @@
         "Fossils of Pokémon that lived in ancient seas, found under the rock."
       ],
       "text": [
-        ""
+        "Fosile de Pokémoni care au trăit în mări străvechi, găsite sub rocă."
       ]
     },
     "SlateportCity_OceanicMuseum_1F_EventScript_DepthMeasuringMachine": {
@@ -315,7 +315,7 @@
         "A machine that measures the sea's depth by sending down a sound and timing its echo."
       ],
       "text": [
-        ""
+        "Un aparat care măsoară adâncimea mării trimițând un sunet și cronometrându-i ecoul."
       ]
     }
   }

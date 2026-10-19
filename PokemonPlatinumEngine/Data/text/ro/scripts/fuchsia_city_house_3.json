@@ -5,7 +5,7 @@
         "Move Deleter"
       ],
       "text": [
-        ""
+        "Ștergătorul de Mișcări"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hello. I'm the Move Deleter. I can make a Pokémon forget a move, any move at all."
       ],
       "text": [
-        ""
+        "Bună. Sunt Ștergătorul de Mișcări. Pot face un Pokémon să uite o mișcare, oricare ar fi ea."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Is there a move you'd like one of your Pokémon to forget?"
       ],
       "text": [
-        ""
+        "Vrei ca unul din Pokémonii tăi să uite vreo mișcare?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Which Pokémon?"
       ],
       "text": [
-        ""
+        "Care Pokémon?"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{thing}? Should that move be forgotten?"
       ],
       "text": [
-        ""
+        "{thing}? Să fie uitată mișcarea asta?"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Done! {wearer} has forgotten {thing} completely."
       ],
       "text": [
-        ""
+        "Gata! {wearer} a uitat complet {thing}."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Come back if a move ever needs forgetting."
       ],
       "text": [
-        ""
+        "Revino dacă vreodată trebuie uitată vreo mișcare."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "That's an Egg. It doesn't know any moves to forget!"
       ],
       "text": [
-        ""
+        "Ăsta e un Ou. Nu știe nicio mișcare de uitat!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "That Pokémon knows only one move. I can't make it forget that one."
       ],
       "text": [
-        ""
+        "Pokémonul ăsta știe o singură mișcare. Nu-l pot face s-o uite."
       ]
     }
   ]

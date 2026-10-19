@@ -5,7 +5,7 @@
         "Old Man"
       ],
       "text": [
-        ""
+        "Bătrânul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "I'm afraid Morty isn't here. He's gone to the Burned Tower, the one in the city's north-west."
       ],
       "text": [
-        ""
+        "Mă tem că Morty nu e aici. S-a dus la Turnul Ars, cel din nord-vestul orașului."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "He says something stirs there. Come back when he's returned, young one."
       ],
       "text": [
-        ""
+        "Zice că acolo se mișcă ceva. Revino când se întoarce, tinere prieten."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Whoa! The floor gave way!"
       ],
       "text": [
-        ""
+        "Uau! S-a surpat podeaua!"
       ]
     }
   ],
@@ -41,7 +41,7 @@
         "Morty"
       ],
       "text": [
-        ""
+        "Morty"
       ]
     },
     {
@@ -49,7 +49,7 @@
         "Good of you to come. I've trained here all my life to see what others cannot."
       ],
       "text": [
-        ""
+        "Bine că ai venit. M-am antrenat aici toată viața ca să văd ce alții nu pot vedea."
       ]
     },
     {
@@ -57,7 +57,7 @@
         "They say a rainbow Pokémon will appear before the trainer it chooses. I'd like to know if that's you. Let's see!"
       ],
       "text": [
-        ""
+        "Se spune că un Pokémon-curcubeu i se arată Antrenorului pe care îl alege. Aș vrea să știu dacă ești tu. Să vedem!"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "I'm not good enough yet... All right. You've earned this. The Fog Badge is yours."
       ],
       "text": [
-        ""
+        "Încă nu sunt destul de bun... Bine. Ai meritat-o. Insigna Ceață e a ta."
       ]
     },
     {
@@ -73,7 +73,7 @@
         "{player} received the Fog Badge from Morty!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Ceață de la Morty!"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "With the Fog Badge, Pokémon up to level fifty will obey you, and you can use Surf outside of battle."
       ],
       "text": [
-        ""
+        "Cu Insigna Ceață, Pokémonii până la nivelul cincizeci te ascultă și poți folosi Surf în afara luptei."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Take this too. It's a move that suits a Ghost Pokémon well."
       ],
       "text": [
-        ""
+        "Ia și asta. E o mișcare care i se potrivește bine unui Pokémon Fantomă."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "TM30 is Shadow Ball. It may lower the foe's Special Defense. A fine move for any trainer who walks among ghosts."
       ],
       "text": [
-        ""
+        "TM30 este Bilă Umbră. Poate scădea Apărarea Specială a adversarului. Bună pentru cine umblă printre fantome."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "I see now. The legend is about the bond between a trainer and Pokémon. I'll keep training until I understand it."
       ],
       "text": [
-        ""
+        "Acum înțeleg. Legenda e despre legătura dintre un Antrenor și Pokémoni. Mă antrenez până o pricep."
       ]
     }
   ],
@@ -115,7 +115,7 @@
         "Gym Guide"
       ],
       "text": [
-        ""
+        "Ghidul Arenei"
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Yo, challenger! Morty's Ghost types can't be touched by Normal or Fighting moves. Dark moves work wonders!"
       ],
       "text": [
-        ""
+        "Salut, viitor campion! Fantomele lui Morty nu pot fi atinse de atacuri Normale sau de Luptă. Atacurile Întuneric fac minuni!"
       ]
     },
     {
@@ -131,7 +131,7 @@
         "And watch your feet. This floor is full of holes you can't see. Stick to the path!"
       ],
       "text": [
-        ""
+        "Și ai grijă pe unde calci. Podeaua e plină de găuri nevăzute. Ține-te de cărare!"
       ]
     },
     {
@@ -139,7 +139,7 @@
         "You saw your way across that floor and beat Morty! Your eyes are sharper than mine, champ."
       ],
       "text": [
-        ""
+        "Ți-ai găsit drumul peste podea și l-ai învins pe Morty! Ai ochii mai ageri decât mine."
       ]
     }
   ]

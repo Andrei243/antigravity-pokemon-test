@@ -5,7 +5,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -19,13 +19,13 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Bun venit. La ce etaj doriți?",
+        "ETAJUL 6",
+        "ETAJUL 5",
+        "ETAJUL 4",
+        "ETAJUL 3",
+        "PARTER SAU ETAJUL 2",
+        "Rămân aici"
       ]
     },
     {
@@ -36,10 +36,10 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Parterul sau etajul al doilea?",
+        "PARTER",
+        "ETAJUL 2",
+        "Rămân aici"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Going up!"
       ],
       "text": [
-        ""
+        "Urcăm!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Going down!"
       ],
       "text": [
-        ""
+        "Coborâm!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Here we are. Please come again!"
       ],
       "text": [
-        ""
+        "Am ajuns. Mai poftiți!"
       ]
     }
   ]

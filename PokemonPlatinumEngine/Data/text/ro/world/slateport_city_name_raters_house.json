@@ -6,7 +6,7 @@
           "Name Rater"
         ],
         "text": [
-          ""
+          "Evaluatorul de nume"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm the Name Rater! I judge the names trainers give their Pokémon. Come back once you've thought of a few."
         ],
         "text": [
-          ""
+          "Sunt Evaluatorul de Nume! Judec numele pe care Antrenorii le dau Pokémonilor. Revino când te-ai gândit la câteva."
         ]
       }
     }

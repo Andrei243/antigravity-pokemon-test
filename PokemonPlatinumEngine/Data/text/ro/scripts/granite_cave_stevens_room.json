@@ -5,7 +5,7 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "My name is Steven. I'm interested in rare stones, so I travel here and there looking for them."
       ],
       "text": [
-        ""
+        "Mă numesc Steven. Mă interesează pietrele rare, așa că umblu încoace și încolo după ele."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Oh? A letter for me? From my father, it seems... Thank you for bringing it all this way."
       ],
       "text": [
-        ""
+        "O? O scrisoare pentru mine? De la tatăl meu, se pare... Îți mulțumesc că ai adus-o de atât de departe."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} handed over the Letter."
       ],
       "text": [
-        ""
+        "{player} a predat Scrisoarea."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "This is a thank-you for your trouble. It's a TM I'm rather fond of."
       ],
       "text": [
-        ""
+        "Asta e un mulțumesc pentru osteneală. E un TM la care țin destul de mult."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Your Pokémon seem to trust you a great deal. You might even become the Champion one day."
       ],
       "text": [
-        ""
+        "Pokémonii tăi par să aibă mare încredere în tine. Poate într-o zi ajungi chiar Campion."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Let's register each other in our PokéNavs, so we can keep in touch."
       ],
       "text": [
-        ""
+        "Hai să ne trecem unul pe altul în PokéNav, ca să păstrăm legătura."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Registered Steven in the PokéNav."
       ],
       "text": [
-        ""
+        "Steven a fost înregistrat în PokéNav."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "I'm afraid I have to hurry along now. I'm sure we'll meet again."
       ],
       "text": [
-        ""
+        "Mă tem că acum trebuie să mă grăbesc. Sigur ne vom revedea."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Hello. I'm Steven. I came here looking for rare stones. Did you come for the same thing?"
       ],
       "text": [
-        ""
+        "Bună. Sunt Steven. Am venit aici după pietre rare. Și tu ai venit pentru același lucru?"
       ]
     }
   ]

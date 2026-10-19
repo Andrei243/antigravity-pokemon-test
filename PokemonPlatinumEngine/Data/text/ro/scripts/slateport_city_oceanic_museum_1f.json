@@ -5,7 +5,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Oceanic Museum. The entrance fee is 50 Poké Dollars. Would you like to come in?"
       ],
       "text": [
-        ""
+        "Bun venit la Muzeul Oceanic. Intrarea costă 50 de Poké Dolari. Vrei să intri?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Thank you. Please enjoy the museum!"
       ],
       "text": [
-        ""
+        "Mulțumesc. Vizită plăcută!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "I'm sorry, but you don't have enough money."
       ],
       "text": [
-        ""
+        "Îmi pare rău, dar nu ai destui bani."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Oh, you're with that group that went upstairs? Go right in, then. Hurry, they're waiting!"
       ],
       "text": [
-        ""
+        "A, ești cu grupul care a urcat sus? Intră atunci. Grăbește-te, te așteaptă!"
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "Team Aqua Grunt"
       ],
       "text": [
-        ""
+        "Aqua Grunt"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Aaah! It's you, the kid from the tunnel! Don't look at me like that. I'm just a visitor today!"
       ],
       "text": [
-        ""
+        "Aaah! Tu ești! Ne-am văzut în tunel! Nu te uita așa la mine. Azi sunt doar vizitator!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Here, take this and forget you ever saw me. Please!"
       ],
       "text": [
-        ""
+        "Poftim, ia asta și uită că m-ai văzut. Te rog!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Now leave me alone! I hope I never see you again!"
       ],
       "text": [
-        ""
+        "Acum lasă-mă în pace! Sper să nu te mai văd niciodată!"
       ]
     }
   ]

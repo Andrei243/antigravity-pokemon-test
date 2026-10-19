@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Granite Cave is just west of town. It's pitch dark deep inside, so you'll want Flash."
         ],
         "text": [
-          ""
+          "Peștera de Granit e chiar la vest de oraș. Înăuntru e beznă, așa că o să-ți trebuiască Bliț."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "The fishermen say Mr. Briney was the best sailor in Hoenn. Fancy him sailing again!"
         ],
         "text": [
-          ""
+          "Pescarii zic că Domnul Briney a fost cel mai bun marinar din Hoenn. Cine-ar fi zis că navighează iar!"
         ]
       }
     }

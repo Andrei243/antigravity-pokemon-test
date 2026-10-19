@@ -5,7 +5,7 @@
         "Aide"
       ],
       "text": [
-        ""
+        "Asistentul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hello! I'm one of Professor Oak's aides. Shall I see how many kinds of Pokémon you've caught?"
       ],
       "text": [
-        ""
+        "Bună! Sunt unul din asistenții Profesorului Oak. Să văd câte specii de Pokémoni ai prins?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{var:CAUGHT} kinds! That's remarkable. The Professor asked me to give you this."
       ],
       "text": [
-        ""
+        "{var:CAUGHT} specii! E remarcabil. Profesorul m-a rugat să-ți dau asta."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "A Pokémon holding an Exp. Share gains experience from every battle, even if it never steps out."
       ],
       "text": [
-        ""
+        "Un Pokémon care ține un Exp. Share primește experiență din fiecare luptă, chiar dacă nu iese deloc."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "I'm watching the sea for Professor Oak. You'd be amazed at what flies over it."
       ],
       "text": [
-        ""
+        "Supraveghez marea pentru Profesorul Oak. Te-ai mira ce zboară pe deasupra ei."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Very well. Drop by whenever you like."
       ],
       "text": [
-        ""
+        "Foarte bine. Treci pe-aici oricând vrei."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "{var:CAUGHT} kinds so far. Come back once you've caught fifty, and I'll have something special for you."
       ],
       "text": [
-        ""
+        "{var:CAUGHT} specii până acum. Revino când ai prins cincizeci și o să am ceva special pentru tine."
       ]
     }
   ],
@@ -63,7 +63,7 @@
         "Looking through the binoculars... A great blue bird is flying far out over the sea!"
       ],
       "text": [
-        ""
+        "Te uiți prin binoclu... O pasăre mare și albastră zboară departe, deasupra mării!"
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I'm looking for someone with a Slowbro. I'd swap my Lickitung for one, one day."
         ],
         "text": [
-          ""
+          "Caut pe cineva cu un Slowbro. Într-o zi mi-aș schimba Lickitung-ul pe unul."
         ]
       }
     }
@@ -25,7 +25,7 @@
         "Looking through the binoculars... Riders are racing down the Cycling Road!"
       ],
       "text": [
-        ""
+        "Te uiți prin binoclu... Bicicliștii coboară în goană pe Drumul Bicicliștilor!"
       ]
     },
     "Route18_EastEntrance_2F_EventScript_RightBinoculars": {
@@ -33,7 +33,7 @@
         "Looking through the binoculars... Fuchsia City lies just to the east, beside the sea."
       ],
       "text": [
-        ""
+        "Te uiți prin binoclu... Orașul Fuchsia se află chiar la est, lângă mare."
       ]
     }
   }

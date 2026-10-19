@@ -6,7 +6,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to Slateport's harbour. The S.S. Tidal sails for Lilycove, but only for passengers with a ticket."
         ],
         "text": [
-          ""
+          "Bun venit în portul din Slateport. S.S. Tidal pleacă spre Lilycove, dar doar cu pasageri care au bilet."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The captain's submarine will be launched from here one day. What a sight that'll be!"
         ],
         "text": [
-          ""
+          "Submarinul căpitanului va fi lansat de aici într-o zi. Ce priveliște o să fie!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm waiting for my ferry. I've been waiting a long time."
         ],
         "text": [
-          ""
+          "Îmi aștept feribotul. Îl aștept de mult."
         ]
       }
     }

@@ -5,7 +5,7 @@
         "Mr. Briney"
       ],
       "text": [
-        ""
+        "Domnul Briney"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Ahoy! Shall we sail back to my cottage on Route 104?"
       ],
       "text": [
-        ""
+        "Ahoi! Ne întoarcem cu vaporul la căsuța mea de pe Ruta 104?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Go on and deliver your letter, then. I'll wait right here."
       ],
       "text": [
-        ""
+        "Hai, du-ți scrisoarea. Te aștept chiar aici."
       ]
     },
     {
@@ -32,10 +32,10 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Ahoi! Încotro navigăm?",
+        "Ruta 104",
+        "Slateport",
+        "Rămân aici"
       ]
     },
     {
@@ -43,7 +43,7 @@
         "Just tell me whenever you need to set sail."
       ],
       "text": [
-        ""
+        "Spune-mi oricând vrei să pornim pe mare."
       ]
     },
     {
@@ -51,7 +51,7 @@
         "Back to the cottage it is! Hold on to your hat!"
       ],
       "text": [
-        ""
+        "Înapoi la căsuță, deci! Ține-te bine!"
       ]
     },
     {
@@ -59,7 +59,7 @@
         "Slateport it is! Hoist the sails, Peeko!"
       ],
       "text": [
-        ""
+        "Spre Slateport, deci! Sus pânzele, Peeko!"
       ]
     }
   ],
@@ -69,7 +69,7 @@
         "Mr. Briney"
       ],
       "text": [
-        ""
+        "Domnul Briney"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Home sweet home! Whenever you need the sea again, you know where to find me."
       ],
       "text": [
-        ""
+        "Acasă, dulce acasă! Când ai iar nevoie de mare, știi unde mă găsești."
       ]
     }
   ],
@@ -87,7 +87,7 @@
         "Mr. Briney"
       ],
       "text": [
-        ""
+        "Domnul Briney"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Land ho! That's Slateport's beach. The city's just to the north. Off you go with your parcel!"
       ],
       "text": [
-        ""
+        "Pământ la orizont! Asta e plaja din Slateport. Orașul e chiar la nord. Hai, du-ți coletul!"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "I'll wait here. Whenever you want to go back to Dewford, just say so."
       ],
       "text": [
-        ""
+        "Te aștept aici. Când vrei să te întorci în Dewford, spune-mi."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Land ho! Slateport, as promised. I'll wait here for whenever you need me."
       ],
       "text": [
-        ""
+        "Pământ la orizont! Slateport, cum am promis. Te aștept aici, pentru când ai nevoie de mine."
       ]
     }
   ],
@@ -121,7 +121,7 @@
         "Fisherman"
       ],
       "text": [
-        ""
+        "Pescarul"
       ]
     },
     {
@@ -129,7 +129,7 @@
         "This is a fishing island, you know. Doesn't the sea make you itch to cast a line?"
       ],
       "text": [
-        ""
+        "E o insulă de pescari, să știi. Marea nu-ți dă poftă să arunci o undiță?"
       ]
     },
     {
@@ -137,7 +137,7 @@
         "That's the spirit! Here, take one of my old rods. I've got plenty."
       ],
       "text": [
-        ""
+        "Așa te vreau! Poftim, ia una din undițele mele vechi. Am destule."
       ]
     },
     {
@@ -145,7 +145,7 @@
         "Face the water and use the rod. When something bites, reel it in quick!"
       ],
       "text": [
-        ""
+        "Stai cu fața spre apă și folosește undița. Când trage ceva, mulineta repede!"
       ]
     },
     {
@@ -153,7 +153,7 @@
         "No? A shame. The fish around here practically jump onto the hook."
       ],
       "text": [
-        ""
+        "Nu? Păcat. Peștii de pe-aici aproape că sar singuri în cârlig."
       ]
     },
     {
@@ -163,9 +163,9 @@
         "Not so good"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Cum merge pescuitul?",
+        "Excelent",
+        "Nu prea bine"
       ]
     },
     {
@@ -173,7 +173,7 @@
         "Keep at it! Different rods bring in different Pokémon. Try every spot you can."
       ],
       "text": [
-        ""
+        "Nu te lăsa! Undițe diferite prind Pokémoni diferiți. Încearcă orice loc poți."
       ]
     },
     {
@@ -181,7 +181,7 @@
         "Ha ha! That's what I like to hear. There's a Pokémon out there for every fisher."
       ],
       "text": [
-        ""
+        "Ha ha! Asta îmi place să aud. E câte un Pokémon acolo pentru fiecare pescar."
       ]
     }
   ],
@@ -191,7 +191,7 @@
         "Boy"
       ],
       "text": [
-        ""
+        "Băiatul"
       ]
     },
     {
@@ -199,7 +199,7 @@
         "Everyone's talking about fishing right now. It's the biggest thing on the island! You knew that, right?"
       ],
       "text": [
-        ""
+        "Toată lumea vorbește acum despre pescuit. E marea modă pe insulă! Știai asta, nu?"
       ]
     },
     {
@@ -207,7 +207,7 @@
         "Of course you did. Anyone who's anyone knows what's in right now."
       ],
       "text": [
-        ""
+        "Sigur că știai. Oricine contează știe ce e la modă acum."
       ]
     },
     {
@@ -215,7 +215,7 @@
         "You didn't know? Come on! Dewford Hall's the place to hear what's popular. Go and listen in."
       ],
       "text": [
-        ""
+        "Nu știai? Haide! În Sala din Dewford afli ce e la modă. Du-te și trage cu urechea."
       ]
     }
   ]

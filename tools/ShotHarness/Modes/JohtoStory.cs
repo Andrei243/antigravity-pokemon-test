@@ -21,10 +21,15 @@ partial class Harness
         void Whole() { Until(() => Box().IsActive, "text on the screen"); Box().FinishLine(); Frames(2); }
         void ReadTo(string? text, int most = 2400)
         {
+            // The field must have been idle for a second before the line counts as never said: counting from the call
+            // gave up between two scripts of one scene (Kurt's, from the well to his house) once the lines before had
+            // taken a second to read, which Romanian's longer lines did (plan 17 · N6h)
+            int idle = 0;
             for (int i = 0; i < most; i++)
             {
                 if (text != null && Box().IsActive && Translated.Saying(Box().CurrentLine, text)) { Whole(); Console.WriteLine($"  said: {text}"); return; }
-                if (text != null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld && i > 60) break;
+                if (text != null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) { if (++idle > 60) break; }
+                else idle = 0;
                 if (text == null && !engine.ScriptRunning && !Box().IsActive && State() == GameState.Overworld) return;
                 if (State() == GameState.Battle) { Win(); continue; }
                 if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }

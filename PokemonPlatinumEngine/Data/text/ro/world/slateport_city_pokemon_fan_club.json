@@ -6,7 +6,7 @@
           "Chairman"
         ],
         "text": [
-          ""
+          "Președintele"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome, welcome! The Fan Club loves all Pokémon. Grow your Pokémon's condition, and come and show us!"
         ],
         "text": [
-          ""
+          "Bun venit, bun venit! Clubul Fanilor iubește toți Pokémonii. Îmbunătățește-ți condiția Pokémonilor și vino să ne arăți!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The chairman says a Pokémon's condition shows in how it carries itself. I think he's right!"
         ],
         "text": [
-          ""
+          "Președintele zice că se vede condiția unui Pokémon după cum se ține. Cred că are dreptate!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My Pokémon's the cutest in the whole club. Everyone says so. Well, I say so."
         ],
         "text": [
-          ""
+          "Pokémonul meu e cel mai drăguț din tot clubul. Toată lumea zice asta. Mă rog, eu zic."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Reporter"
         ],
         "text": [
-          ""
+          "Reporterița"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm writing about Pokémon and their trainers for the paper. Got a story for me?"
         ],
         "text": [
-          ""
+          "Scriu pentru ziar despre Pokémoni și Antrenorii lor. Ai o poveste pentru mine?"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Zigzagoon"
         ],
         "text": [
-          ""
+          "Zigzagoon"
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Skitty"
         ],
         "text": [
-          ""
+          "Skitty"
         ]
       }
     },
@@ -108,7 +108,7 @@
           "Azumarill"
         ],
         "text": [
-          ""
+          "Azumarill"
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -126,7 +126,7 @@
           "I could teach your Pokémon something swaggering, but not today. Come back later!"
         ],
         "text": [
-          ""
+          "Aș putea să-l învăț pe Pokémonul tău ceva fudul, dar nu azi. Revino mai târziu!"
         ]
       }
     }

@@ -5,7 +5,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "It's quiz time at the Radio Tower! Answer five questions right and win a Radio Card for your Pokégear. Ready?"
       ],
       "text": [
-        ""
+        "E ora de quiz la Turnul Radio! Răspunde corect la cinci întrebări și câștigi un Card Radio pentru Pokégear. Gata?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Question one! Can a Pokémon learn new moves as it levels up?"
       ],
       "text": [
-        ""
+        "Întrebarea unu! Poate un Pokémon să învețe mișcări noi când crește în nivel?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Question two! Is Chikorita a Grass-type Pokémon?"
       ],
       "text": [
-        ""
+        "Întrebarea doi! Este Chikorita un Pokémon de tip Iarbă?"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Question three! Will an Antidote wake a Pokémon that is fast asleep?"
       ],
       "text": [
-        ""
+        "Întrebarea trei! Trezește un Antidot un Pokémon adormit buștean?"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Question four! Do Fire-type moves hit Grass-type Pokémon especially hard?"
       ],
       "text": [
-        ""
+        "Întrebarea patru! Lovesc atacurile de tip Foc deosebit de tare Pokémonii de tip Iarbă?"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Last question! Can you throw a Poké Ball to catch another trainer's Pokémon?"
       ],
       "text": [
-        ""
+        "Ultima întrebare! Poți arunca un Poké Ball ca să prinzi Pokémonul altui Antrenor?"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Five out of five! Congratulations! Here's your prize: a Radio Card for your Pokégear!"
       ],
       "text": [
-        ""
+        "Cinci din cinci! Felicitări! Iată premiul: un Card Radio pentru Pokégear!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "{player}'s Pokégear can now tune in to the radio!"
       ],
       "text": [
-        ""
+        "Pokégear-ul lui {player} poate prinde acum radioul!"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Turn the dial to find our stations. We broadcast all over Johto, day and night!"
       ],
       "text": [
-        ""
+        "Răsucește butonul ca să ne găsești posturile. Emitem în tot Johto, zi și noapte!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Oh, I'm sorry! That's not right. Have another go any time you like."
       ],
       "text": [
-        ""
+        "Vai, îmi pare rău! Nu e corect. Mai încearcă oricând vrei."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "No? Come back when you're feeling clever!"
       ],
       "text": [
-        ""
+        "Nu? Revino când te simți în formă!"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Enjoying the radio? Try every station on the dial. There's always something on!"
       ],
       "text": [
-        ""
+        "Îți place radioul? Încearcă toate posturile. Mereu e ceva în emisie!"
       ]
     }
   ]

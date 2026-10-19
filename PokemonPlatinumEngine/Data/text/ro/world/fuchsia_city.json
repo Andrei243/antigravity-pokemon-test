@@ -6,7 +6,7 @@
           "Erik"
         ],
         "text": [
-          ""
+          "Erik"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Sara and I were supposed to meet here hours ago. Where could she have got to?"
         ],
         "text": [
-          ""
+          "Eu și Sara trebuia să ne întâlnim aici de câteva ore. Unde-o fi ajuns?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "See that Poké Ball in the pen? I tried to pick it up, and it was a Voltorb! It nearly blew up in my hand!"
         ],
         "text": [
-          ""
+          "Vezi Poké Ball-ul din țarc? Am încercat să-l iau și era un Voltorb! Aproape mi-a explodat în mână!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Have you played the Safari Game yet? You can catch Pokémon there you won't find anywhere else!"
         ],
         "text": [
-          ""
+          "Ai jucat deja Jocul Safari? Acolo prinzi Pokémoni pe care nu-i găsești nicăieri altundeva!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "These pens are the Safari Zone's little zoo. The real thing is behind that building to the north."
         ],
         "text": [
-          ""
+          "Țarcurile astea sunt mica grădină zoologică a Zonei Safari. Zona adevărată e în spatele clădirii din nord."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "My father is the Gym Leader here. He's a master of poison, and of hiding things in plain sight."
         ],
         "text": [
-          ""
+          "Tatăl meu e Liderul Arenei de aici. E maestru al otrăvurilor și al lucrurilor ascunse la vedere."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Slowpoke"
         ],
         "text": [
-          ""
+          "Slowpoke"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "Slowpoke is staring into space. It doesn't seem to have noticed you."
         ],
         "text": [
-          ""
+          "Slowpoke se uită în gol. Pare să nu te fi observat."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Voltorb"
         ],
         "text": [
-          ""
+          "Voltorb"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "It looks like a Poké Ball, but it's a Voltorb! Better not touch it."
         ],
         "text": [
-          ""
+          "Arată ca un Poké Ball, dar e un Voltorb! Mai bine nu-l atingi."
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Chansey"
         ],
         "text": [
-          ""
+          "Chansey"
         ]
       },
       "dialog": {
@@ -150,7 +150,7 @@
           "Chansey is carrying its egg very carefully."
         ],
         "text": [
-          ""
+          "Chansey își poartă oul cu mare grijă."
         ]
       }
     },
@@ -160,7 +160,7 @@
           "Lapras"
         ],
         "text": [
-          ""
+          "Lapras"
         ]
       },
       "dialog": {
@@ -168,7 +168,7 @@
           "Lapras is gliding across its pool, singing softly."
         ],
         "text": [
-          ""
+          "Lapras alunecă prin bazinul lui, cântând încetișor."
         ]
       }
     },
@@ -178,7 +178,7 @@
           "Kangaskhan"
         ],
         "text": [
-          ""
+          "Kangaskhan"
         ]
       },
       "dialog": {
@@ -186,7 +186,7 @@
           "Kangaskhan's little one peeks out of its pouch."
         ],
         "text": [
-          ""
+          "Puiul lui Kangaskhan trage cu ochiul din pungă."
         ]
       }
     },
@@ -196,7 +196,7 @@
           "Kabuto"
         ],
         "text": [
-          ""
+          "Kabuto"
         ]
       },
       "dialog": {
@@ -204,7 +204,7 @@
           "Kabuto is scuttling over the rocks of its pen."
         ],
         "text": [
-          ""
+          "Kabuto se strecoară grăbit printre pietrele țarcului."
         ]
       }
     },
@@ -214,7 +214,7 @@
           "Omanyte"
         ],
         "text": [
-          ""
+          "Omanyte"
         ]
       },
       "dialog": {
@@ -222,7 +222,7 @@
           "Omanyte is drifting about the water of its pen."
         ],
         "text": [
-          ""
+          "Omanyte plutește în apa țarcului său."
         ]
       }
     }
@@ -233,7 +233,7 @@
         "Fuchsia City\nWhere bright pinks and passions meet"
       ],
       "text": [
-        ""
+        "Orașul Fuchsia\nUnde rozul aprins întâlnește pasiunea"
       ]
     },
     "FuchsiaCity_EventScript_SafariZoneSign": {
@@ -241,7 +241,7 @@
         "Safari Zone\nCatch Pokémon of every kind!"
       ],
       "text": [
-        ""
+        "Zona Safari\nPrinde Pokémoni de toate felurile!"
       ]
     },
     "FuchsiaCity_EventScript_SafariGameSign": {
@@ -249,7 +249,7 @@
         "The Safari Game\nPlay inside for just $500!"
       ],
       "text": [
-        ""
+        "Jocul Safari\nJoacă înăuntru pentru doar $500!"
       ]
     },
     "FuchsiaCity_EventScript_GymSign": {
@@ -257,7 +257,7 @@
         "Fuchsia City Pokémon Gym\nLeader: Koga\nThe Poisonous Ninja Master"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Fuchsia\nLider: Koga\nMaestrul ninja al otrăvurilor"
       ]
     },
     "FuchsiaCity_EventScript_WardensHomeSign": {
@@ -265,7 +265,7 @@
         "Safari Zone Warden's Home"
       ],
       "text": [
-        ""
+        "Casa Paznicului Zonei Safari"
       ]
     }
   }

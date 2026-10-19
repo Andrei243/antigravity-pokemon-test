@@ -6,7 +6,7 @@
           "Jerome"
         ],
         "text": [
-          ""
+          "Jerome"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Swimmer Jerome: I swim laps around the old wreck. Want to see how fast?"
         ],
         "text": [
-          ""
+          "Înotător Jerome: Înot ture în jurul epavei vechi. Vrei să vezi cât de repede?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Swimmer Jerome: Not fast enough, it seems."
         ],
         "text": [
-          ""
+          "Înotător Jerome: Nu destul de repede, se pare."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Tara"
         ],
         "text": [
-          ""
+          "Tara"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Swimmer Tara: Don't go near that old ship. Battle me instead!"
         ],
         "text": [
-          ""
+          "Înotătoare Tara: Nu te apropia de corabia aia veche. Luptă-te mai bine cu mine!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Swimmer Tara: Fine, but I warned you about the ship."
         ],
         "text": [
-          ""
+          "Înotătoare Tara: Bine, dar te-am avertizat de corabie."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Matthew"
         ],
         "text": [
-          ""
+          "Matthew"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Swimmer Matthew: I've been watching for trainers all morning. Here you are!"
         ],
         "text": [
-          ""
+          "Înotător Matthew: Am pândit Antrenori toată dimineața. Și iată-te!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Swimmer Matthew: I'll watch a little more carefully next time."
         ],
         "text": [
-          ""
+          "Înotător Matthew: Data viitoare o să fiu mai atent."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Missy"
         ],
         "text": [
-          ""
+          "Missy"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Swimmer Missy: The sea's so wide, and still we bumped into each other!"
         ],
         "text": [
-          ""
+          "Înotătoare Missy: Marea e atât de largă, și totuși ne-am ciocnit!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Swimmer Missy: I should have swum the other way."
         ],
         "text": [
-          ""
+          "Înotătoare Missy: Trebuia să înot în partea cealaltă."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Carolina"
         ],
         "text": [
-          ""
+          "Carolina"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Cooltrainer Carolina: I sail out here to train where nobody bothers us. Except you."
         ],
         "text": [
-          ""
+          "Antrenoare As Carolina: Vin cu barca aici să mă antrenez unde nu ne deranjează nimeni. În afară de tine."
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Cooltrainer Carolina: You've earned your place out here."
         ],
         "text": [
-          ""
+          "Antrenoare As Carolina: Ți-ai câștigat locul aici."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Cory"
         ],
         "text": [
-          ""
+          "Cory"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Sailor Cory: Ahoy! A sailor never turns down a battle at sea!"
         ],
         "text": [
-          ""
+          "Marinar Cory: Ahoi! Un marinar nu refuză niciodată o luptă pe mare!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Sailor Cory: Sunk without a trace!"
         ],
         "text": [
-          ""
+          "Marinar Cory: Scufundat fără urmă!"
         ]
       }
     }

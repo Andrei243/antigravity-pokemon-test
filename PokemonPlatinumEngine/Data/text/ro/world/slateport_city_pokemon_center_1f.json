@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Ah, the Pokémon Center. The one place every sailor visits before the tavern."
         ],
         "text": [
-          ""
+          "Ah, Centrul Pokémon. Singurul loc pe care orice marinar îl vizitează înainte de cârciumă."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Mr. Briney brought you here? He hasn't sailed in years. You must be someone special."
         ],
         "text": [
-          ""
+          "Domnul Briney te-a adus aici? N-a mai navigat de ani buni. Trebuie să fii cineva special."
         ]
       }
     }

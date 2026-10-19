@@ -6,7 +6,7 @@
         "Area 2\nSouth: Centre Area"
       ],
       "text": [
-        ""
+        "Zona 2\nSud: Zona Centrală"
       ]
     },
     "SafariZone_North_EventScript_RestHouseSign": {
@@ -14,7 +14,7 @@
         "Rest House"
       ],
       "text": [
-        ""
+        "Casa de Odihnă"
       ]
     },
     "SafariZone_North_EventScript_TrainerTips1": {
@@ -22,7 +22,7 @@
         "Trainer Tips\nThe deeper into the zone you go, the rarer the Pokémon you'll meet."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nCu cât intri mai adânc în zonă, cu atât întâlnești Pokémoni mai rari."
       ]
     },
     "SafariZone_North_EventScript_TrainerTips2": {
@@ -30,7 +30,7 @@
         "Trainer Tips\nThe Pokémon of the zone come and go as they please. Take your chance when you see one!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nPokémonii din zonă vin și pleacă după cum vor. Profită când vezi unul!"
       ]
     },
     "SafariZone_North_EventScript_TrainerTips3": {
@@ -38,7 +38,7 @@
         "Trainer Tips\nYour own Pokémon stay in their balls in the zone. It's you against the wild!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nÎn zonă, Pokémonii tăi rămân în balluri. Ești doar tu contra sălbăticiei!"
       ]
     }
   }

@@ -321,7 +321,7 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
@@ -329,7 +329,7 @@
         "Hello, {player}. I'm still out looking for rare stones. Hoenn hides a great many under its mountains."
       ],
       "text": [
-        ""
+        "Bună, {player}. Încă umblu după pietre rare. Hoenn ascunde o mulțime sub munții lui."
       ]
     },
     {
@@ -337,7 +337,7 @@
         "Take good care of your Pokémon. A strong bond is worth more than any stone."
       ],
       "text": [
-        ""
+        "Ai grijă de Pokémonii tăi. O legătură puternică valorează mai mult decât orice piatră."
       ]
     }
   ],
@@ -347,7 +347,7 @@
         "Brawly"
       ],
       "text": [
-        ""
+        "Brawly"
       ]
     },
     {
@@ -355,7 +355,7 @@
         "Yo, {player}! The waves were huge today. I wiped out three times, but that's how you learn!"
       ],
       "text": [
-        ""
+        "Salut, {player}! Azi valurile au fost uriașe. Am căzut de trei ori, dar așa înveți!"
       ]
     }
   ],
@@ -365,7 +365,7 @@
         "Scott"
       ],
       "text": [
-        ""
+        "Scott"
       ]
     },
     {
@@ -373,7 +373,7 @@
         "Hi, {player}! I've been watching the trainers all over Hoenn. You're the one people are talking about!"
       ],
       "text": [
-        ""
+        "Salut, {player}! Am urmărit Antrenorii din tot Hoenn. Despre tine vorbește lumea!"
       ]
     }
   ],
@@ -383,7 +383,7 @@
         "Ricky"
       ],
       "text": [
-        ""
+        "Ricky"
       ]
     },
     {
@@ -391,7 +391,7 @@
         "It's Ricky! I put my face in the water today. Next I'm gonna kick my legs!"
       ],
       "text": [
-        ""
+        "Sunt Ricky! Azi mi-am băgat fața în apă. Data viitoare dau și din picioare!"
       ]
     }
   ],
@@ -401,7 +401,7 @@
         "Lola"
       ],
       "text": [
-        ""
+        "Lola"
       ]
     },
     {
@@ -409,7 +409,7 @@
         "Hi! It's Lola! Azurill and me floated all the way to the rocks and back!"
       ],
       "text": [
-        ""
+        "Salut! Sunt Lola! Azurill și cu mine am plutit până la stânci și înapoi!"
       ]
     }
   ]
