@@ -1,0 +1,14 @@
+{
+  // Wanda's house in Verdanturf Town (plan 21 · H3, part b): Wally's aunt lives here, and Wally and his uncle stay once
+  // the battle in Mauville is over; Wanda and her young man come home once the tunnel is open
+  // (verdanturf_town_wandas_house.txt)
+  "area": "verdanturf_town_wandas_house",
+  "bgmTrack": "hoenn/verdanturf",
+  "people": {
+    "wally": { "name": "Wally", "npcType": "wally", "script": "Wally" },
+    "black_belt": { "name": "Young Man", "dialog": [ "Now that the tunnel's open, I can see Wanda every single day. Digging was worth it!" ] },
+    "pokefan_m": { "name": "Wally's Uncle", "script": "WallysUncle" },
+    "pokefan_f": { "name": "Wally's Aunt", "script": "WallysAunt" },
+    "woman_2": { "name": "Wanda", "script": "Wanda" }
+  }
+}

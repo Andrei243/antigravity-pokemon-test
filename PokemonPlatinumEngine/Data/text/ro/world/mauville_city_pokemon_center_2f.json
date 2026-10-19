@@ -1,0 +1,77 @@
+{
+  "people": {
+    "teala": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "teala_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "teala_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The rooms upstairs here are for linking up with friends. Nobody's linked up today, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

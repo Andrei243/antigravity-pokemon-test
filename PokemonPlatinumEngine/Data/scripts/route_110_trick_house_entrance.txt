@@ -1,0 +1,80 @@
+# The Trick House's front room (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/Route110_TrickHouseEntrance/scripts.inc).
+#
+# VAR_TRICK_HOUSE_LEVEL counts the puzzles solved, VAR_TRICK_HOUSE_ENTRANCE_STATE says what the Trick Master is doing:
+# 0 hiding (under the desk for the first puzzle; FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN keeps him off the map), 1 gone
+# into his puzzle once found, 3 back at the scroll, busy making the next one. Each step in from the door while he
+# hides says the player is being watched (VAR_TRICK_HOUSE_BEING_WATCHED_STATE, once a visit). Finding him opens the
+# way behind the scroll (FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN, a flag of ours: Emerald swaps the wall's tiles).
+
+
+script OnEnter
+  if var VAR_TRICK_HOUSE_LEVEL >= 1 goto Busy
+  setvar VAR_TRICK_HOUSE_BEING_WATCHED_STATE 0
+  end
+label Busy
+  setvar VAR_TRICK_HOUSE_ENTRANCE_STATE 3
+  setvar VAR_TRICK_HOUSE_BEING_WATCHED_STATE 1
+  clearflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+  place trick_master 4 2 up
+  show trick_master
+  end
+
+
+script BeingWatched
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 end
+  setvar VAR_TRICK_HOUSE_BEING_WATCHED_STATE 1
+  text "Someone is watching... The feeling of eyes on your back is hard to shake."
+  end
+
+
+script Desk
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 0 goto Nothing
+  scene "The Trick Master found"
+  emote player exclaim
+  text "There's someone squeezed in under the desk!"
+  place trick_master 6 2 down
+  clearflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+  show trick_master
+  face player trick_master
+  speaker "Trick Master"
+  say "Curses! Discovered! I am the Trick Master, master of disguise, deviser of devilish puzzles!"
+  say "You found me fair and square, so I shall let you take on my house of tricks. Behind the scroll lies my puzzle!"
+  say "Solve it and reach the end, and a reward awaits you. Now, watch closely... Vanish!"
+  face trick_master up
+  face trick_master left
+  face trick_master down
+  face trick_master right
+  sound "warp"
+  hide trick_master
+  setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN
+  setvar VAR_TRICK_HOUSE_ENTRANCE_STATE 1
+  endscene
+  end
+label Nothing
+  text "An ordinary desk. Nobody under it this time."
+  end
+
+
+script Door
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE == 1 goto Open
+  if var VAR_TRICK_HOUSE_LEVEL >= 1 goto Closed
+  text "A scroll hangs on the wall. It looks like there might be something behind it..."
+  end
+label Open
+  text "The scroll is rolled up. A way into the Trick Master's puzzle lies beyond it!"
+  end
+label Closed
+  text "The scroll hangs down again. The Trick Master must still be building what's behind it."
+  end
+
+
+script TrickMaster
+  face trick_master player
+  speaker "Trick Master"
+  say "Ah, my challenger! Patience, patience. My next puzzle needs more time than a single night."
+  emote trick_master exclaim
+  say "Come back another day, a little stronger. I'll have something truly devious waiting for you!"
+  face trick_master up
+  end

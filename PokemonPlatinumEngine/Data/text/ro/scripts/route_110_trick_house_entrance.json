@@ -1,0 +1,114 @@
+{
+  "BeingWatched": [
+    {
+      "en": [
+        "Someone is watching... The feeling of eyes on your back is hard to shake."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Desk": [
+    {
+      "en": [
+        "There's someone squeezed in under the desk!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Trick Master"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Curses! Discovered! I am the Trick Master, master of disguise, deviser of devilish puzzles!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You found me fair and square, so I shall let you take on my house of tricks. Behind the scroll lies my puzzle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Solve it and reach the end, and a reward awaits you. Now, watch closely... Vanish!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An ordinary desk. Nobody under it this time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door": [
+    {
+      "en": [
+        "A scroll hangs on the wall. It looks like there might be something behind it..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The scroll is rolled up. A way into the Trick Master's puzzle lies beyond it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The scroll hangs down again. The Trick Master must still be building what's behind it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TrickMaster": [
+    {
+      "en": [
+        "Trick Master"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, my challenger! Patience, patience. My next puzzle needs more time than a single night."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back another day, a little stronger. I'll have something truly devious waiting for you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

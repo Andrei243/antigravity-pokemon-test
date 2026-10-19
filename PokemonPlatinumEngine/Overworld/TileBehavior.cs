@@ -323,8 +323,11 @@ public static class TileBehaviors
             => (BehaviourSupport.Waiting, "The sea floor, reached by Dive: plan 21 (Hoenn)."),
         TileBehavior.CyclingRoadPull
             => (BehaviourSupport.Ruled, "A rider who steers nowhere is pulled south a step at a time (FieldMovement.Pulls; plan 19 · K6); someone on foot stands."),
+        TileBehavior.RailNorthSouth or TileBehavior.RailEastWest
+            => (BehaviourSupport.Ruled, "Ridden only on the Acro Bike, hopping along its length and never across (FieldMovement.RailRunsNorthSouth; plan 21 · H3); never walked."),
+        TileBehavior.BumpySlope
+            => (BehaviourSupport.Ruled, "Hopped up only on the Acro Bike (plan 21 · H3); anyone goes down it."),
         TileBehavior.ThinIce or TileBehavior.CrackedFloor or TileBehavior.SecretBaseSpot
-            or TileBehavior.RailNorthSouth or TileBehavior.RailEastWest or TileBehavior.BumpySlope
             or TileBehavior.NoRunning
             => (BehaviourSupport.Waiting, "A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then."),
         TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest
@@ -348,7 +351,7 @@ public static class TileBehaviors
         TileBehavior.DeepMud or TileBehavior.DeepMarshGrass
             => (BehaviourSupport.Ruled, "Half a walk's pace, no Bicycles. (Getting stuck, as in Platinum, is not built.)"),
         TileBehavior.BikeSlopeTop or TileBehavior.BikeSlopeBottom
-            => (BehaviourSupport.Ruled, "Climbed only on a Bicycle in its fast gear. (The slide back down is not played.)"),
+            => (BehaviourSupport.Ruled, "Climbed only at a bicycle's full speed: Platinum's Bicycle in its fast gear, or the Mach Bike (plan 21 · H3). (The slide back down is not played.)"),
         TileBehavior.BikeBridgeNorthSouth or TileBehavior.BikeBridgeNorthSouthOverSand or TileBehavior.BikeBridgeEastWest
             or TileBehavior.BikeBridgeEastWestOverGrass or TileBehavior.BikeBridgeEastWestOverSand
             => (BehaviourSupport.Ruled, "Ridden along on a Bicycle, never across, and never walked."),

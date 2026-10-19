@@ -1,0 +1,45 @@
+# Wanda's house in Verdanturf Town (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/VerdanturfTown_WandasHouse/scripts.inc). Wally speaks of getting stronger once
+# (FLAG_WALLY_SPEECH) and shortly after; his aunt and Wanda speak of the tunnel and of him.
+
+
+script Wally
+  face self player
+  speaker "Wally"
+  if flag FLAG_WALLY_SPEECH goto Short
+  say "{player}... I lost to you, but I'm not giving up. I'm going to get stronger, as strong as you!"
+  say "The air here is so clean, I feel better already. Ralts and I are going to train every single day."
+  setflag FLAG_WALLY_SPEECH
+  end
+label Short
+  say "I'll get stronger, {player}. Just you wait!"
+  end
+
+
+script WallysUncle
+  face self player
+  speaker "Wally's Uncle"
+  say "Wally's in the next room, so to speak. He's been training with his Ralts from morning till night!"
+  end
+
+
+script WallysAunt
+  face self player
+  speaker "Wally's Aunt"
+  if flag FLAG_RUSTURF_TUNNEL_OPENED goto Open
+  say "My daughter's young man is so devoted. He's been digging a tunnel from Rustboro just to see her!"
+  end
+label Open
+  say "So it was you who helped break through the tunnel? My daughter's young man was digging for weeks!"
+  end
+
+
+script Wanda
+  face self player
+  speaker "Wanda"
+  if flag FLAG_DEFEATED_WALLY_MAUVILLE goto Wally
+  say "Don't worry about my cousin Wally. He's frail, but he's tougher than he looks."
+  end
+label Wally
+  say "You must be {player}! Wally hasn't stopped talking about you since he came back from Mauville."
+  end

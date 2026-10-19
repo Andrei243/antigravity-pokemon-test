@@ -247,7 +247,11 @@ public enum Architecture
     /// <summary>Brick under saffron-gold gable roofs with shutters: the great city at Kanto's heart, home of Silph Co. (Saffron, plan 19 · K6, part b).</summary>
     Uptown,
     /// <summary>Pale cut stone under cinnabar-red hip roofs with a chimney: the volcanic island of the lab and the burned mansion (Cinnabar, plan 19 · K6, part b).</summary>
-    Cinder
+    Cinder,
+    /// <summary>Stucco under electric-yellow hip roofs with shutters: the city of bright lights and electric power (Mauville, plan 21 · H3, part b).</summary>
+    Dynamo,
+    /// <summary>Plaster under moss-green gable roofs with a chimney and flower boxes: the quiet town of clean air (Verdanturf, plan 21 · H3, part b).</summary>
+    Glade
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

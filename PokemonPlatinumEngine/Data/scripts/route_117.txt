@@ -1,0 +1,101 @@
+# Route 117 (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route117/scripts.inc).
+#
+# Four of the road's trainers, beaten, swap numbers for the PokéNav's Match Call (Emerald's RegisterMatchCallAfterBattle;
+# their rematches wait for Emerald's table of rematches, which the reader doesn't read). The Day-Care Man is common.DayCareMan.
+
+# Isaac, beaten, swaps numbers for the PokéNav
+script Isaac
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_ISAAC goto Known
+label Ask
+  speaker "Isaac"
+  say "You raise your Pokémon well. Let's trade numbers and talk about raising them!"
+  ask "Register Isaac in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_isaac
+  say "Wonderful. I'll call with tips from the Day Care."
+  end
+label Refused
+  say "I see. Perhaps another time, then."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Lydia, beaten, swaps numbers for the PokéNav
+script Lydia
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_LYDIA goto Known
+label Ask
+  speaker "Lydia"
+  say "My little ones liked battling you! Could I have your number?"
+  ask "Register Lydia in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_lydia
+  say "Lovely! I'll tell you how they're all getting on."
+  end
+label Refused
+  say "That's all right, dear. Take care!"
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Dylan, beaten, swaps numbers for the PokéNav
+script Dylan
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_DYLAN goto Known
+label Ask
+  speaker "Dylan"
+  say "You're tough! Swap numbers? I want a rematch once I'm faster."
+  ask "Register Dylan in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_dylan
+  say "Cool! I'll call you mid-run!"
+  end
+label Refused
+  say "No worries. Catch you later!"
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Maria, beaten, swaps numbers for the PokéNav
+script Maria
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_MARIA goto Known
+label Ask
+  speaker "Maria"
+  say "That was fun! Can I register you in my PokéNav?"
+  ask "Register Maria in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_maria
+  say "Thanks! I'll call when Doduo beats its best time."
+  end
+label Refused
+  say "Okay! Maybe next time we meet."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+

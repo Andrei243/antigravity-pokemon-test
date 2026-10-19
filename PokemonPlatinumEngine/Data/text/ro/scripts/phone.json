@@ -359,6 +359,24 @@
       ]
     }
   ],
+  "Wattson": [
+    {
+      "en": [
+        "Wattson"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wahahaha! {player}, is that you? I just rewired the whole Gym. The lights are brighter than ever!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "Scott": [
     {
       "en": [
@@ -410,6 +428,150 @@
       ],
       "text": [
         "Salut! Sunt Lola! Azurill și cu mine am plutit până la stânci și înapoi!"
+      ]
+    }
+  ],
+  "HoennEdwin": [
+    {
+      "en": [
+        "Edwin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Edwin speaking. I found a Nuzleaf with the most elegant leaf. My collection grows ever finer!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennBenjamin": [
+    {
+      "en": [
+        "Benjamin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Benjamin! I rode the Cycling Road twice before breakfast. My legs are on fire!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennAbigail": [
+    {
+      "en": [
+        "Abigail"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Abigail here! My Magnemite and I rode all the way to Mauville and back. It's buzzing with energy!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennIsabel": [
+    {
+      "en": [
+        "Isabel"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Isabel! Plusle and Minun fell asleep holding hands today. I nearly cried, it was so sweet!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennIsaac": [
+    {
+      "en": [
+        "Isaac"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Isaac here. My Pokémon have all grown a little bigger. Raising them is such a joy!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennLydia": [
+    {
+      "en": [
+        "Lydia"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, it's Lydia! My Marill learnt a new move today. I'm so proud of the little dear!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennDylan": [
+    {
+      "en": [
+        "Dylan"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dylan here! Huff... huff... I'm running right now. Doduo's way ahead of me as usual!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennMaria": [
+    {
+      "en": [
+        "Maria"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Maria here! Doduo and I beat our best time on Route 117. Two heads really are better than one!"
+      ],
+      "text": [
+        ""
       ]
     }
   ]

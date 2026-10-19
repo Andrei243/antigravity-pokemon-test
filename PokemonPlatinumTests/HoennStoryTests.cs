@@ -82,6 +82,14 @@ public class HoennStoryTests
             return Play(Scripts.Find(trigger.Script, trigger.ScriptFile ?? Map.Name)!);
         }
 
+        /// <summary>A step onto a tile, which starts its trigger if the story is at its value (null where nothing starts).</summary>
+        public HeadlessScriptHost? StepAt(int x, int y)
+        {
+            Tile = (x, y);
+            if (FieldScripts.TriggerAt(Map, x, y, Story) is not { } trigger) return null;
+            return Play(Scripts.Find(trigger.Script, trigger.ScriptFile ?? Map.ScriptFileAt(x, y))!);
+        }
+
         public bool Fires(string script)
         {
             var trigger = TriggerOf(script);
@@ -826,5 +834,158 @@ public class HoennStoryTests
     {
         foreach (string song in new[] { "hoenn/dewford", "hoenn/slateport", "hoenn/sailing" })
             Assert.True(MusicLibrary.Exists(song), song);
+    }
+
+    /// <summary>A game past the third stretch: the Devon Goods delivered in Slateport, two Badges won.</summary>
+    private static Game PastTheMuseum(int starter, PlayerLook look)
+    {
+        var game = PastThePokeNav(starter, look);
+        game.Story.Set("FLAG_DELIVERED_STEVEN_LETTER");
+        game.Story.Set("FLAG_DELIVERED_DEVON_GOODS");
+        game.Story.GiveBadge(RegionDatabase.Hoenn, "Knuckle");
+        game.Story.SetVar("VAR_PETALBURG_GYM_STATE", 4);
+        game.Bag.RemoveItem(ItemDatabase.Get("Letter")!, 1);
+        game.Bag.RemoveItem(ItemDatabase.Get("Devon Goods")!, 1);
+        return game;
+    }
+
+    [Theory]
+    [InlineData(0, PlayerLook.Boy)]
+    [InlineData(1, PlayerLook.Girl)]
+    [InlineData(2, PlayerLook.Boy)]
+    public void TheFourthStretchPlaysFromRouteOneTenToVerdanturf(int starter, PlayerLook look)
+    {
+        var game = PastTheMuseum(starter, look);
+        string[] starters = { "treecko", "torchic", "mudkip" };
+        string rival = look == PlayerLook.Girl ? "brendan" : "may";
+
+        // Route 110: the rival waits by the road's north end and battles at the first step past them, then gives the
+        // Itemfinder and rides off
+        game.Arrive("Hoenn", 234, 218);
+        Assert.NotNull(game.Present("route110_rival"));
+        var met = game.StepAt(234, 216);
+        Assert.NotNull(met);
+        Assert.Contains(met!.Log, l => l.StartsWith($"battle hoenn_{rival}_route_110_{starters[starter]}"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Itemfinder")!));
+        Assert.Equal(1, game.Story.Var("VAR_ROUTE110_STATE"));
+        Assert.Null(game.StepAt(233, 216));
+        game.Arrive("Hoenn", 234, 218);
+        Assert.Null(game.Present("route110_rival"));
+
+        // The Trick House: the Trick Master under the desk, the scroll's code, the door, his reward
+        game.Arrive("Route110_TrickHouseEntrance", 5, 6);
+        Assert.Null(game.Present("trick_master"));
+        game.Read(6, 3);
+        Assert.True(game.Story.Has("FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN"));
+        Assert.Equal(1, game.Story.Var("VAR_TRICK_HOUSE_ENTRANCE_STATE"));
+        game.Through("Route110_TrickHousePuzzle1");
+        Assert.Equal("Route110_TrickHousePuzzle1", game.Map.Name);
+        Assert.True(game.Map.GetWarpAt(13, 1) is null or { Shut: true });
+        game.Read(13, 1);
+        Assert.False(game.Story.Has("FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_UNLOCKED"));
+        game.Read(3, 16);
+        Assert.Equal(1, game.Story.Var("VAR_TRICK_HOUSE_PUZZLE_1_STATE"));
+        game.Read(13, 1);
+        Assert.True(game.Story.Has("FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_UNLOCKED"));
+        game.Through("Route110_TrickHouseEnd");
+        int candies = game.Bag.GetQuantity(ItemDatabase.Get("Rare Candy")!);
+        game.Talk("trick_master_end");
+        Assert.Equal(candies + 1, game.Bag.GetQuantity(ItemDatabase.Get("Rare Candy")!));
+        Assert.Equal(1, game.Story.Var("VAR_TRICK_HOUSE_LEVEL"));
+        game.Arrive("Route110_TrickHouseEntrance", 5, 6);
+        Assert.NotNull(game.Present("trick_master"));
+        Assert.True(game.Map.GetWarpAt(5, 2) is null or { Shut: true });
+
+        // Mauville City: Wally asks for a battle at the Gym's door, loses, and goes to Verdanturf; Scott saw it
+        game.Arrive("Hoenn", 222, 147);
+        Assert.True(game.Story.Has("FLAG_VISITED_MAUVILLE_CITY"));
+        Assert.NotNull(game.Present("mauville_wally"));
+        var wally = game.Talk("mauville_wally");
+        Assert.Contains(wally.Log, l => l.StartsWith("battle hoenn_wally_mauville"));
+        Assert.True(game.Story.Has("FLAG_DEFEATED_WALLY_MAUVILLE"));
+        Assert.Equal(1, game.Story.Var("VAR_SCOTT_STATE"));
+        Assert.Null(game.Present("mauville_wally"));
+        Assert.Null(game.Present("mauville_scott"));
+
+        // Rydel's two bikes: the Mach Bike first, then swapped for the Acro Bike
+        game.Arrive("MauvilleCity_BikeShop", 3, 7);
+        game.Talk("man_2");
+        Assert.True(game.Story.Has("FLAG_RECEIVED_BIKE"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Mach Bike")!));
+        game.Talk("man_2");
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Mach Bike")!));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Acro Bike")!));
+
+        // HM06 from the man who smashes rocks
+        game.Arrive("MauvilleCity_House1", 3, 6);
+        game.Talk("scientist_1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM06")!));
+
+        // The Gym: every barrier flips at a switch, and Wattson's Badge turns them all off
+        game.Arrive("MauvilleCity_Gym", 4, 19);
+        Assert.True(game.Story.Has("FLAG_HOENN_MAUVILLE_GYM_BEAMS_A"));
+        Assert.NotNull(game.Present("beam_a_1"));
+        Assert.Null(game.Present("beam_b_1"));
+        game.StepAt(0, 15);
+        Assert.True(game.Story.Has("FLAG_MAUVILLE_GYM_BARRIERS_STATE"));
+        Assert.Null(game.Present("beam_a_1"));
+        Assert.NotNull(game.Present("beam_b_1"));
+        game.StepAt(0, 15);
+        Assert.True(game.Story.Has("FLAG_MAUVILLE_GYM_BARRIERS_STATE"));
+        var wattson = game.Talk("wattson");
+        Assert.Contains(wattson.Log, l => l.StartsWith("battle hoenn_wattson_1"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Hoenn, "Dynamo"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM34")!));
+        Assert.Equal(5, game.Story.Var("VAR_PETALBURG_GYM_STATE"));
+        Assert.True(game.Story.HasDefeated("hoenn_angelo"));
+        Assert.Contains(PokeNav.Contacts(game.Story), c => c.Id == "wattson");
+        Assert.Null(game.Present("beam_a_1"));
+        Assert.Null(game.Present("beam_b_1"));
+        Assert.Equal("Dynamo", FieldMoveRules.BadgeFor(FieldMove.RockSmash, RegionDatabase.Hoenn));
+
+        // Rusturf Tunnel: both rocks smashed, the young man's thanks and HM04; the two go home to Verdanturf
+        game.Arrive("RusturfTunnel", 22, 4);
+        game.StepAt(23, 4);
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("HM04")!));
+        game.Story.Set("FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1");
+        game.Story.Set("FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2");
+        game.StepAt(23, 4);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM04")!));
+        Assert.True(game.Story.Has("FLAG_RUSTURF_TUNNEL_OPENED"));
+        Assert.Null(game.Present("rusturf_tunnel_wanda"));
+        game.StepAt(23, 4);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM04")!));
+
+        // Verdanturf Town: Wally, his uncle, Wanda and her young man in Wanda's house
+        game.Arrive("Hoenn", 130, 155);
+        Assert.True(game.Story.Has("FLAG_VISITED_VERDANTURF_TOWN"));
+        game.Arrive("VerdanturfTown_WandasHouse", 7, 6);
+        foreach (string key in new[] { "wally", "pokefan_m", "black_belt", "woman_2" }) Assert.NotNull(game.Present(key));
+        game.Talk("wally");
+        Assert.True(game.Story.Has("FLAG_WALLY_SPEECH"));
+
+        // Route 117: a trainer beaten swaps numbers
+        game.Arrive("Hoenn", 178, 157);
+        game.Talk("running_triathlete_m");
+        Assert.Contains(PokeNav.Contacts(game.Story), c => c.Id == "hoenn_dylan");
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheFourthStretchHasItsPeopleHidden()
+    {
+        var story = new StoryState();
+        StoryMigration.Upgrade(story, 26, Array.Empty<Pokemon>(), Scripts);
+        Assert.True(story.Has("FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY"));
+        Assert.True(story.Has("FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN"));
+        Assert.True(story.Has("FLAG_HIDE_MAUVILLE_CITY_SCOTT"));
+        Assert.True(StoryState.CurrentVersion >= 27);
+    }
+
+    [Fact]
+    public void TheSongsOfMauvilleAndVerdanturfAreThere()
+    {
+        foreach (string song in new[] { "hoenn/route110", "hoenn/verdanturf", "hoenn/trick_house", "hoenn/bicycle" })
+            Assert.True(MusicLibrary.Exists(song), song);
+        Assert.Equal("hoenn/bicycle", MusicDirector.Resolve(MusicRole.Bicycle, "Hoenn", MusicLibrary.Exists));
     }
 }

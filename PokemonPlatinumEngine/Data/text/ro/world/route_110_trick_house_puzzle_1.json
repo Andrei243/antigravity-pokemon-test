@@ -1,0 +1,83 @@
+{
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Sally"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Sally: We just learned Cut! Chop, chop, chop! Now battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Sally: I'm still having fun chopping, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Eddie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Eddie: I came in here by mistake and now I can't find the way out..."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Eddie: Lost my way and lost the battle. Great."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Robin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Robin: Who is the Trick Master, really? Do you know?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Robin: I was too busy thinking about him to battle properly!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

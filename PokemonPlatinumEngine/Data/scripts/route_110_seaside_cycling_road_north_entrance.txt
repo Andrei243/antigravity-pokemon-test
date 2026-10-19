@@ -1,0 +1,13 @@
+# The Seaside Cycling Road's north gate (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/Route110_SeasideCyclingRoadNorthEntrance/scripts.inc).
+#
+# The step past the keeper's counter turns back anyone who comes to it on foot, toward the west door: the road beyond
+# the east door is for bicycles only.
+
+
+script BikeCheck
+  if var CYCLING == 1 end
+  speaker "Gate Keeper"
+  say "Sorry, nobody walks on the Cycling Road. It's far too dangerous! Come back on a bike."
+  walk player left 1
+  end

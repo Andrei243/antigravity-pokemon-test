@@ -2886,6 +2886,56 @@ numbers, 1 the cottage, 2 Dewford, 3 Route 109; `FLAG_MR_BRINEY_SAILING_INTRO`, 
   Rydel's two bikes, Route 117, Verdanturf and the three Battle Tents' bouts, Rock Smash for Rusturf Tunnel and the young
   man's HM04, the rival on Route 110.
 
+## Route 110 to Verdanturf (2026-10-19, plan 21 · H3, its second part)
+
+Route 110, Mauville City, Route 117 and Verdanturf Town are scripts of ours on Emerald's beats (`route_110.txt`, the
+Cycling Road's two gates, `route_110_trick_house_entrance.txt`, `_puzzle_1.txt`, `_end.txt`, `mauville_city.txt`,
+`mauville_city_gym.txt`, `mauville_city_bike_shop.txt`, `mauville_city_house_1.txt`, `route_117.txt`, `rusturf_tunnel.txt`,
+`verdanturf_town.txt`, `verdanturf_town_wandas_house.txt`, `verdanturf_town_friendship_raters_house.txt`), under Emerald's
+flags and variables (`VAR_ROUTE110_STATE`, `VAR_TRICK_HOUSE_LEVEL`, `VAR_TRICK_HOUSE_ENTRANCE_STATE`,
+`VAR_TRICK_HOUSE_PUZZLE_1_STATE`, `FLAG_DEFEATED_WALLY_MAUVILLE`, `FLAG_DECLINED_WALLY_BATTLE_MAUVILLE`, `VAR_SCOTT_STATE`,
+`FLAG_RECEIVED_BIKE`, `FLAG_RECEIVED_HM_ROCK_SMASH`, `VAR_MAUVILLE_GYM_STATE`, `FLAG_MAUVILLE_GYM_BARRIERS_STATE`,
+`FLAG_BADGE03_GET` through `givebadge dynamo`, `FLAG_RECEIVED_HM_STRENGTH`, `FLAG_RUSTURF_TUNNEL_OPENED`). What differs, and why:
+
+- **Rydel's two bicycles** are `BikeKind` (`Overworld/FieldMovement.cs`), carried by `Walker.Bike` and `Player.Bike`, set by
+  the item the player gets on with: the Mach Bike is always at full speed (Platinum's top gear) and is what rides up a
+  muddy slope; the Acro Bike keeps a bicycle's easy pace, hops along a rail (`MB_*_RAIL`, only along its length, never
+  across it, never on foot) and up a bumpy slope. The run button changes gear on Platinum's Bicycle alone. Emerald's Mach
+  Bike gathers speed over a few steps and the Acro Bike's wheelie is a button of its own: neither is played; the bicycle
+  is at its speed at once and the hop is taken by stepping onto the rail. A save made riding one rides the bike in the bag.
+  Granite Cave's and Sky Pillar's cracked floors (`MB_CRACKED_FLOOR`), which only the Mach Bike crosses without falling, are
+  still floors like any other: falling through to the floor below is left for plan 21 · H12, with Sky Pillar.
+- **The Itemfinder**, the rival's gift on Route 110, is Emerald's `ItemfinderCheckForHiddenItems`: hidden things not yet
+  found within the GBA's screen (seven tiles across, five up and down), the nearest first, the player turned toward it
+  along the farther axis (`Overworld/Itemfinder.cs`). Emerald's spin of the player is a plain turn.
+- **The rival** battles at the first step past the road's north end with Emerald's team for the player's starter, gives
+  the Itemfinder and rides north on foot (Emerald's rival gets on a bike: our rival has no bicycle figure).
+- **The Trick House** is its first puzzle: the Trick Master is found under the desk, the scroll's code opens the door at the
+  top of the hedge maze (Emerald swaps the door's tile; here a way the story opens, `FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_UNLOCKED`),
+  and his reward is a Rare Candy. Emerald's corridor back is a room of its own; here the last room's back door leads
+  to the front room. The next puzzles wait for their badges and their rooms (plan 21 · H4 and after).
+- **Wally** battles at the Gym's door when spoken to, as Emerald's does; his class is the rival's, drawn as Wally. Scott
+  comes up afterwards, and Wally and his uncle wait in Wanda's house in Verdanturf.
+- **Mauville's Gym**: Emerald draws the beams into its tiles and flips all of them whenever a switch other than the last
+  one stepped on is pressed. Here the beams that block are electric gates of the map (`npcType` `ElectricGate`, as
+  Vermilion's), two sets shown by flags of ours that the Gym's script keeps to Emerald's barrier flag; Wattson's defeat
+  turns them all off. The beams' ends that block in both states are the room's walls. Wattson gives TM34 (Shock Wave, the
+  same number as Emerald's) and his number.
+- **Rusturf Tunnel**: the two rocks are broken with Rock Smash (the Dynamo Badge), and the young man's scene follows the
+  second at once (Emerald's `OnFrame`), or the next step by the rocks for one broken from the party menu: HM04, then he and
+  Wanda go home, where they wait.
+- **The GBA's temporary flags** (`FLAG_TEMP_1` to `1F`) are cleared as a place is left, as the original clears them as
+  every map loads, and an obstacle's is made its area's own: a tree cut on Route 104 had hidden one on Route 117 and one in
+  the Trick House that shared its number.
+- **Match Call** gains Wattson and eight trainers of Routes 110 and 117 who ask once beaten (Edwin, Benjamin, Abigail,
+  Isabel, Isaac, Lydia, Dylan, Maria). Their rematches still wait for Emerald's table of rematches and its rule (a call's
+  chance and steps), which is no small matter: plan 21's status records it.
+- **The Day Care** on Route 117 is Sinnoh's (`common.DayCareMan`, `DayCareLady`): one Day Care for the whole game.
+- **What waits**: the Battle Tents' bouts (Slateport's on the Battle Factory's rules could come first; Verdanturf's and
+  Fallarbor's need the Battle Palace's and the Battle Arena's, plan 14 · B9); Mauville's Game Corner (shut); New Mauville
+  (shut until Wattson's Basement Key, after Norman); the move tutors of Mauville and Verdanturf (they talk); the Cycling
+  Road's timed challenge; Professor Birch's number on Route 110.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

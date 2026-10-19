@@ -75,7 +75,7 @@ public class TextTests
         ["UI/BagScreen.cs"] = new[]
         {
             "Gracidea", "Bicycle", "OldRod", "GoodRod", "SuperRod", "EscapeRope", "Journal", "VsSeeker", "PokeRadar", "Honey",
-            "PoffinCase", "ExplorerKit", "TownMap", "Seal Case", "Fashion Case", "Flute", "Shaymin-Sky"
+            "PoffinCase", "ExplorerKit", "TownMap", "Seal Case", "Fashion Case", "Flute", "Shaymin-Sky", "Itemfinder"
         },
         // A place's name made from its key says Pokémon with its accent
         ["UI/ModernUi.Pokedex.cs"] = new[] { "Pokémon" },
@@ -187,12 +187,14 @@ public class TextTests
             "Leader", "Elite Four", "Champion", "Roark", "Gardenia", "Wake", "Maylene", "Fantina", "Candice", "Byron", "Volkner",
             "Aaron", "Bertha", "Flint", "Lucian", "Cynthia", "VS"
         },
-        // The region and the rooms the Journal goes by, the Gyms' towns it keeps in the save, the items' uses the bag goes by, and the move Surf
+        // The region and the rooms the Journal goes by, the Gyms' towns it keeps in the save, the items' uses the bag goes by, the move Surf and the bicycles
         ["Core/GameEngine.Scripts.cs"] = new[]
         {
             "Sinnoh", "PlayerHouse", "RowanLab", "OreburghGym", "Oreburgh", "EternaGym", "Eterna", "HearthomeGym", "Hearthome", "VeilstoneGym",
             "Veilstone", "SunyshoreGym", "Sunyshore", "Journal", "TownMap", "PoffinCase", "VsSeeker", "ExplorerKit", "PokeRadar", "Honey",
-            "Bicycle", "EscapeRope", "Surf"
+            "Bicycle", "EscapeRope", "Surf",
+            // Emerald's two bicycles by their items' names, and the Itemfinder's use (plan 21 · H3, part b)
+            "Mach Bike", "Acro Bike", "Itemfinder"
         },
         // The map, the scripts the game itself starts there, the region, and the base's props by their art keys
         ["Core/GameEngine.Underground.cs"] = new[]

@@ -476,6 +476,9 @@ public partial class GameEngine
         flow.Player.Facing = place.Facing;
         // A save made out on the water wakes up there, still on its Pokémon's back; one made on a bridge, on its deck
         flow.Player.SetMode(save.Travel);
+        // A save made on one of Emerald's bicycles rides the one in the bag (plan 21 · H3): the save keeps only that the
+        // player was cycling
+        flow.Player.Bike = save.Travel == TravelMode.Cycling ? BikeInTheBag() : BikeKind.Bicycle;
         if (save.PlayerHeight is { } standing) flow.Player.SetHeight(standing);
         flow.ExitSpot = save.Exit;
         flow.MapTrail.Restore(save.MapTrail);
@@ -1328,7 +1331,7 @@ public partial class GameEngine
         // Below ground the run button pressed while standing still sends out the radar's pulse (the original's touch on
         // the lower screen; plan 06 · R16a). Held on the move it runs, as the original's B does there
         if (IsUnderground && !InTheBase && runDown && !runWasDown && !flow.Player.IsMoving) PulseRadar();
-        if (flow.Player.Mode == TravelMode.Cycling && runDown && !runWasDown)
+        if (flow.Player.Mode == TravelMode.Cycling && flow.Player.Bike == BikeKind.Bicycle && runDown && !runWasDown)
         {
             flow.Player.FastGear = !flow.Player.FastGear;
             AudioManager.PlaySound("gear");

@@ -1,0 +1,46 @@
+{
+  // Mauville City's Gym (plan 21 · H3, part b), Wattson's hall of electric barriers. Emerald draws its beams into the
+  // tiles and swaps them all at once whenever one of the floor's four switches is stepped on (MauvilleGymPressSwitch):
+  // here the beams that block are things of the map on their tiles (opened under them), the first set in the way while
+  // FLAG_HOENN_MAUVILLE_GYM_BEAMS_A is set and the second while FLAG_HOENN_MAUVILLE_GYM_BEAMS_B is, which the switches
+  // flip (mauville_city_gym.txt); Wattson's defeat turns them all off. The ends of the beams that block in both states are
+  // the room's own walls
+  "area": "mauville_city_gym",
+  "bgmTrack": "hoenn/gym",
+  "arenaType": "Electric",
+  "triggers": [
+    { "trigger": 0, "script": "Switch2" },
+    { "trigger": 1, "script": "Switch3" },
+    { "trigger": 2, "script": "Switch1" },
+    { "trigger": 3, "script": "Switch4" }
+  ],
+  "people": {
+    "wattson": { "name": "Wattson", "npcType": "wattson", "script": "Wattson", "still": true },
+    "man_2": { "name": "Gym Guide", "script": "GymGuide" },
+    "man_5": { "name": "Shawn", "trainer": { "dialogueBefore": "Guitarist Shawn: My guitar's electric and so is my team! Feel the voltage!", "dialogueAfter": "Guitarist Shawn: Short-circuited." } },
+    "girl_3": { "name": "Vivian", "trainer": { "dialogueBefore": "Battle Girl Vivian: I came to fight electricity with my fists. Shocking, right?", "dialogueAfter": "Battle Girl Vivian: My hair's standing on end..." } },
+    "youngster": { "name": "Ben", "trainer": { "dialogueBefore": "Youngster Ben: The barriers here go on and off. Bet you can't work out how!", "dialogueAfter": "Youngster Ben: Maybe you can work it out after all." } },
+    "man_5_2": { "name": "Kirk", "trainer": { "dialogueBefore": "Guitarist Kirk: My songs are electrifying, and so am I! Here's my big number!", "dialogueAfter": "Guitarist Kirk: My amp blew a fuse." } },
+    "maniac": { "name": "Angelo", "trainer": { "dialogueBefore": "Bug Maniac Angelo: My bugs light up the dark! Watch them glow in battle!", "dialogueAfter": "Bug Maniac Angelo: Their lights went out..." } }
+  },
+  "signs": {
+    "MauvilleCity_Gym_EventScript_LeftGymStatue": "Mauville City Pokémon Gym\nLeader: Wattson",
+    "MauvilleCity_Gym_EventScript_RightGymStatue": "Mauville City Pokémon Gym\nLeader: Wattson"
+  },
+  "npcs": [
+    { "id": "beam_a_1", "name": "Electric barrier", "npcType": "ElectricGate", "x": 4, "y": 7, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_A", "script": "Beam" },
+    { "id": "beam_a_2", "name": "Electric barrier", "npcType": "ElectricGate", "x": 5, "y": 7, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_A", "script": "Beam" },
+    { "id": "beam_a_3", "name": "Electric barrier", "npcType": "ElectricGate", "x": 1, "y": 11, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_A", "script": "Beam" },
+    { "id": "beam_a_4", "name": "Electric barrier", "npcType": "ElectricGate", "x": 2, "y": 11, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_A", "script": "Beam" },
+    { "id": "beam_a_5", "name": "Electric barrier", "npcType": "ElectricGate", "x": 4, "y": 14, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_A", "script": "Beam" },
+    { "id": "beam_a_6", "name": "Electric barrier", "npcType": "ElectricGate", "x": 5, "y": 14, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_A", "script": "Beam" },
+    { "id": "beam_a_7", "name": "Electric barrier", "npcType": "ElectricGate", "x": 6, "y": 9, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_A", "script": "Beam" },
+    { "id": "beam_a_8", "name": "Electric barrier", "npcType": "ElectricGate", "x": 6, "y": 10, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_A", "script": "Beam" },
+    { "id": "beam_b_1", "name": "Electric barrier", "npcType": "ElectricGate", "x": 3, "y": 12, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_B", "script": "Beam" },
+    { "id": "beam_b_2", "name": "Electric barrier", "npcType": "ElectricGate", "x": 3, "y": 13, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_B", "script": "Beam" },
+    { "id": "beam_b_3", "name": "Electric barrier", "npcType": "ElectricGate", "x": 4, "y": 11, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_B", "script": "Beam" },
+    { "id": "beam_b_4", "name": "Electric barrier", "npcType": "ElectricGate", "x": 5, "y": 11, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_B", "script": "Beam" },
+    { "id": "beam_b_5", "name": "Electric barrier", "npcType": "ElectricGate", "x": 7, "y": 11, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_B", "script": "Beam" },
+    { "id": "beam_b_6", "name": "Electric barrier", "npcType": "ElectricGate", "x": 8, "y": 11, "shownBy": "FLAG_HOENN_MAUVILLE_GYM_BEAMS_B", "script": "Beam" }
+  ]
+}

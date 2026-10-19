@@ -1,0 +1,15 @@
+{
+  // Rydel's Cycles in Mauville City (plan 21 · H3, part b): Rydel gives a traveller from far away one of his two
+  // bicycles, the Mach Bike or the Acro Bike, and swaps it for the other whenever asked (mauville_city_bike_shop.txt).
+  // His handbooks on the back wall say how each is ridden
+  "area": "mauville_city_bike_shop",
+  "bgmTrack": "hoenn/rustboro",
+  "read": {
+    "MauvilleCity_BikeShop_EventScript_MachBikeHandbook": "MachHandbook",
+    "MauvilleCity_BikeShop_EventScript_AcroBikeHandbook": "AcroHandbook"
+  },
+  "people": {
+    "man_2": { "name": "Rydel", "npcType": "rydel", "script": "Rydel", "still": true },
+    "man_5": { "name": "Assistant", "dialog": [ "The handbooks on the back shelf tell you how to ride each of our bikes. Have a read!" ] }
+  }
+}

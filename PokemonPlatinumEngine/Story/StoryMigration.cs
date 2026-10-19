@@ -111,6 +111,9 @@ public static class StoryMigration
         // Version 26: Hoenn's third stretch (plan 21 · H3): the people of Dewford Town to Slateport City are hidden until
         // their scenes by common.HoennChapterThree, which a new game runs too
         if (savedVersion < 26) Run(story, scripts, "common.HoennChapterThree");
+        // Version 27: Hoenn's fourth stretch (plan 21 · H3, part b): the people of Route 110 to Verdanturf Town are hidden
+        // until their scenes by common.HoennChapterFour, which a new game runs too
+        if (savedVersion < 27) Run(story, scripts, "common.HoennChapterFour");
     }
 
     /// <summary>

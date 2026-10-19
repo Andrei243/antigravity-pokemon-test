@@ -1400,6 +1400,7 @@ script HoennNewGame
   setflag FLAG_HIDE_PETALBURG_CITY_SCOTT
   call HoennChapterTwo
   call HoennChapterThree
+  call HoennChapterFour
   return
 
 
@@ -1478,4 +1479,22 @@ script HoennChapterThree
   setflag FLAG_HIDE_SLATEPORT_CITY_SCOTT
   if flag FLAG_DELIVERED_DEVON_GOODS return
   setflag FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
+  return
+
+# The people of Hoenn's fourth stretch, Route 110 to Verdanturf Town (plan 21 · H3, part b), hidden until their scenes:
+# the rival on a bike and the professor on Route 110, Scott in Mauville City and in Verdanturf's Battle Tent, Wattson in
+# Mauville's streets (after Norman), Wally and his uncle, Wanda and her young man in Wanda's house, and the Trick Master,
+# who hides until he is found. HoennNewGame calls it; a save from before it was written (version 27) runs it as it
+# loads. It may only set flags and variables, and ends in return.
+script HoennChapterFour
+  setflag FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE
+  setflag FLAG_HIDE_ROUTE_110_BIRCH
+  setflag FLAG_HIDE_MAUVILLE_CITY_SCOTT
+  setflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
+  setflag FLAG_HIDE_VERDANTURF_TOWN_SCOTT
+  setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
+  setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
+  setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
+  setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
+  setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
   return

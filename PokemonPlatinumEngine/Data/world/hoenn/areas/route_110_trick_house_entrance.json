@@ -1,0 +1,34 @@
+{
+  "key": "route_110_trick_house_entrance",
+  "index": 499,
+  "name": "Route 110",
+  "matrix": 442,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_TRICK_HOUSE",
+  "nightMusic": "MUS_TRICK_HOUSE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 7, "to": "route_110", "toWarp": 1 },
+    { "x": 6, "z": 7, "to": "route_110", "toWarp": 1 },
+    { "x": 5, "z": 2, "to": "route_110_trick_house_puzzle_1", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "trick_master", "looks": "man_1", "movement": "look_west", "x": 6, "z": 2, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN", "script": "Route110_TrickHouseEntrance_EventScript_TrickMaster" }
+  ],
+  "signs": [
+    { "x": 5, "z": 1, "type": 0, "script": "Route110_TrickHouseEntrance_EventScript_Door" }
+  ],
+  "triggers": [
+    { "x": 4, "z": 7, "width": 1, "depth": 1, "script": "Route110_TrickHouseEntrance_EventScript_TrickMasterHiding", "variable": "VAR_TRICK_HOUSE_BEING_WATCHED_STATE", "value": "0" },
+    { "x": 5, "z": 6, "width": 1, "depth": 1, "script": "Route110_TrickHouseEntrance_EventScript_TrickMasterHiding", "variable": "VAR_TRICK_HOUSE_BEING_WATCHED_STATE", "value": "0" },
+    { "x": 6, "z": 6, "width": 1, "depth": 1, "script": "Route110_TrickHouseEntrance_EventScript_TrickMasterHiding", "variable": "VAR_TRICK_HOUSE_BEING_WATCHED_STATE", "value": "0" },
+    { "x": 7, "z": 7, "width": 1, "depth": 1, "script": "Route110_TrickHouseEntrance_EventScript_TrickMasterHiding", "variable": "VAR_TRICK_HOUSE_BEING_WATCHED_STATE", "value": "0" }
+  ]
+}

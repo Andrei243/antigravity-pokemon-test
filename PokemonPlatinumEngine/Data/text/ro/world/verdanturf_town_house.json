@@ -1,0 +1,41 @@
+{
+  "people": {
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Long ago, people walked all the way round the mountains to get to Rustboro. It took days!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My sister moved here for the clean air. Now she says she'll never live in a big city again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

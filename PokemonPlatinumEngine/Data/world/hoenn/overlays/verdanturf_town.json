@@ -1,0 +1,22 @@
+{
+  // Verdanturf Town (plan 21 · H3, part b): a quiet town of clean air below the hills, where Wally comes to stay with
+  // his aunt and uncle in Wanda's house, with a Battle Tent and the far end of Rusturf Tunnel (verdanturf_town.txt)
+  "area": "verdanturf_town",
+  "bgmTrack": "hoenn/verdanturf",
+  "trees": "Round",
+  "architecture": "Glade",
+  "people": {
+    "verdanturf_twin": { "name": "Girl", "script": "Twin" },
+    "boy_1": { "name": "Boy", "script": "Boy" },
+    "man_2": { "name": "Man", "dialog": [ "The air here is so clean, it's like drinking spring water. My lungs have never been happier." ] },
+    "camper": { "name": "Boy", "dialog": [ "I'm going to make my debut at the Battle Tent! Well, once it opens again." ] }
+  },
+  "signs": {
+    "VerdanturfTown_EventScript_TownSign": "Verdanturf Town\nThe windswept highlands with the sweet fragrance of grass",
+    "VerdanturfTown_EventScript_WandasHouseSign": "Wanda's House",
+    "VerdanturfTown_EventScript_BattleTentSign": "Battle Tent: Verdanturf\nPokémon that battle on their own",
+    "VerdanturfTown_EventScript_RusturfTunnelSign": "Rusturf Tunnel\nA tunnel for people, linking Rustboro City and Verdanturf Town",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
+    "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
+  }
+}

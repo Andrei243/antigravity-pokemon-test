@@ -1,0 +1,10 @@
+{
+  // The friendship rater's house in Verdanturf Town (plan 21 · H3, part b): she says how fond of the player the first
+  // Pokémon of the team is (verdanturf_town_friendship_raters_house.txt)
+  "area": "verdanturf_town_friendship_raters_house",
+  "bgmTrack": "hoenn/verdanturf",
+  "people": {
+    "woman_2": { "name": "Woman", "script": "FriendshipRater" },
+    "pikachu": { "name": "Pikachu", "dialog": [ "Pikachu: Pika chu!" ] }
+  }
+}

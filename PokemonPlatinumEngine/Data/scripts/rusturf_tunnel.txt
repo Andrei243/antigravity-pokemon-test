@@ -5,7 +5,10 @@
 # at its dead end; the first step toward him (the area's triggers 1 and 2) has him back away; 3 cornered. Beaten, he
 # gives the goods back and runs, and Mr. Briney comes for his Peeko (FLAG_RECOVERED_DEVON_GOODS,
 # VAR_RUSTBORO_CITY_STATE 4). Once the PokéNav is had, Wanda's young man digs at the rocks, with Wanda on their far side:
-# her cousin Wally is to stay with her family in Verdanturf. Breaking through is plan 21 · H3's, with Rock Smash.
+# her cousin Wally is to stay with her family in Verdanturf. Once both rocks are broken with Rock Smash (plan 21 · H3,
+# part b), the first step by them has the young man thank the player with HM04, Strength (FLAG_RECEIVED_HM_STRENGTH),
+# and the two go home to Verdanturf together (FLAG_RUSTURF_TUNNEL_OPENED, VAR_RUSTURF_TUNNEL_STATE 6), where they wait
+# in Wanda's house.
 
 
 script OnEnter
@@ -75,12 +78,82 @@ script Grunt
 
 
 script WandasBoyfriend
+  if flag FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2 goto Halfway
   say "Wanda! Can you hear me? I'll dig through to you, I promise! Nothing's going to keep us apart!"
   say "Oh, sorry. Wanda's my girlfriend. She's just on the other side of these rocks, but they're too hard to move."
   say "If only someone had a Pokémon strong enough to smash them..."
+  end
+label Halfway
+  say "One of the rocks is gone! Just one more and I'll be through to Wanda!"
   end
 
 
 script Wanda
   say "Is somebody there? My cousin Wally is coming to stay with us in Verdanturf. I hope this tunnel is open by then!"
+  end
+
+
+script TunnelClear
+  if flag FLAG_RECEIVED_HM_STRENGTH return
+  if not flag FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1 return
+  if not flag FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2 return
+  scene "The tunnel cleared"
+  face rusturf_tunnel_wandas_bf player
+  emote rusturf_tunnel_wandas_bf exclaim
+  speaker "Young Man"
+  say "You... you smashed the rocks! I've been chipping away at them for weeks, and you broke through in a moment!"
+  say "I have to thank you. Please, take this! It lets a Pokémon shove even the heaviest boulders aside."
+  give "HM04"
+  setflag FLAG_RECEIVED_HM_STRENGTH
+  say "That's Strength. Once you've won the Badge for it, your Pokémon can push boulders around outside battle."
+  face rusturf_tunnel_wandas_bf right
+  say "Wanda! I made it! Well... somebody made it for me."
+  speaker "Wanda"
+  face rusturf_tunnel_wanda left
+  say "You silly thing! You didn't have to dig through a mountain. But thank you. Both of you!"
+  say "Come on, let's go home. Wally will be arriving any day now!"
+  fade out
+  hide rusturf_tunnel_wandas_bf
+  hide rusturf_tunnel_wanda
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_WANDA
+  clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
+  clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
+  setflag FLAG_RUSTURF_TUNNEL_OPENED
+  setvar VAR_RUSTURF_TUNNEL_STATE 6
+  fade in
+  endscene
+  return
+
+
+# The two rocks: broken with Rock Smash as any cracked rock is (common.Rock), and once both are gone the young man's
+# scene follows at once, as Emerald's does (its OnFrame on VAR_RUSTURF_TUNNEL_STATE); the steps by the rocks start it
+# too, for rocks broken from the party menu
+script TunnelRock1
+  speaker none
+  if not knows "Rock Smash" goto Cannot
+  if not movebadge "Rock Smash" goto Cannot
+  ask "The rock is riddled with cracks. Use Rock Smash?"
+  if no end
+  usemove "Rock Smash"
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1
+  call TunnelClear
+  end
+label Cannot
+  call Rock
+  end
+
+
+script TunnelRock2
+  speaker none
+  if not knows "Rock Smash" goto Cannot
+  if not movebadge "Rock Smash" goto Cannot
+  ask "The rock is riddled with cracks. Use Rock Smash?"
+  if no end
+  usemove "Rock Smash"
+  setflag FLAG_HIDE_RUSTURF_TUNNEL_ROCK_2
+  call TunnelClear
+  end
+label Cannot
+  call Rock
   end

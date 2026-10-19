@@ -1,0 +1,9 @@
+{
+  // A house in Mauville City (plan 21 · H3, part b), where a man who breaks rocks for fun gives HM06, Rock Smash
+  // (mauville_city_house_1.txt)
+  "area": "mauville_city_house_1",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "scientist_1": { "name": "Man", "script": "RockSmashMan" }
+  }
+}

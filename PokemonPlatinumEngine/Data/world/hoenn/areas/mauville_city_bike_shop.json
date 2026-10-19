@@ -1,0 +1,30 @@
+{
+  "key": "mauville_city_bike_shop",
+  "index": 126,
+  "name": "Mauville City",
+  "matrix": 75,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 8, "to": "mauville_city", "toWarp": 2 },
+    { "x": 4, "z": 8, "to": "mauville_city", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "man_2", "looks": "man_2", "movement": "look_west", "x": 2, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_BikeShop_EventScript_Rydel" },
+    { "id": "man_5", "looks": "man_5", "movement": "wander_around", "x": 7, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "MauvilleCity_BikeShop_EventScript_Assistant" }
+  ],
+  "signs": [
+    { "x": 8, "z": 1, "type": 0, "script": "MauvilleCity_BikeShop_EventScript_MachBikeHandbook" },
+    { "x": 11, "z": 1, "type": 0, "script": "MauvilleCity_BikeShop_EventScript_AcroBikeHandbook" }
+  ],
+  "triggers": []
+}

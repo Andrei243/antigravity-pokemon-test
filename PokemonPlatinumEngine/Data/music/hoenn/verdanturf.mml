@@ -1,0 +1,35 @@
+# Verdanturf Town (and its houses): the quiet town of clean air below the hills, an easy oboe tune in E flat that
+# drifts over a fingerpicked harp and soft strings, with a brushed beat. Original composition for this game
+# (plan 21 · H3, part b).
+title Verdanturf Town
+tempo 96
+meter 4/4
+reverb 0.34
+nighttempo 0.92
+
+track lead oboe night=clarinet vol=0.69 pan=0.05 rev=0.34
+  L o5 e-4 g8 b-8 o6 e-4 o5 b-4 | o5 c4 e-8 g8 o6 c4 o5 g4 | o5 a-4 o6 c8 e-8 c4 o5 a-4 | o5 b-2 f4 d4 |
+  o5 e-4 g8 b-8 g4 e-4 | o5 g4 b-8 o6 d8 o5 b-4 g4 | o5 a-4 o6 c8 o5 a-8 f4 a-4 | o5 b-2. r4 |
+  o5 c4 e-8 g8 o6 c4 o5 g4 | o5 a-4 o6 c8 e-8 c4 o5 a-4 | o5 b-4 g8 e-8 g4 b-4 | o5 b-4 f8 d8 f4 b-4 |
+  o5 a-4 o6 c8 o5 a-8 e-4 c4 | o5 b-4 d8 f8 b-4 f4 | o5 e-4 g8 b-8 o6 e-4 o5 b-4 | o5 e-2. r4 |
+
+track arp harp night=celesta vol=0.4 pan=-0.3 rev=0.36
+  L o4 e-8 g8 b-8 g8 e-8 g8 b-8 g8 | o4 c8 e-8 g8 e-8 c8 e-8 g8 e-8 | o4 a-8 o5 c8 e-8 c8 o4 a-8 o5 c8 e-8 c8 | o4 b-8 o5 d8 f8 d8 o4 b-8 o5 d8 f8 d8 |
+  o4 e-8 g8 b-8 g8 e-8 g8 b-8 g8 | o4 g8 b-8 o5 d8 o4 b-8 g8 b-8 o5 d8 o4 b-8 | o4 f8 a-8 o5 c8 o4 a-8 f8 a-8 o5 c8 o4 a-8 | o4 b-8 o5 d8 f8 d8 o4 b-8 o5 d8 f8 d8 |
+  o4 c8 e-8 g8 e-8 c8 e-8 g8 e-8 | o4 a-8 o5 c8 e-8 c8 o4 a-8 o5 c8 e-8 c8 | o4 e-8 g8 b-8 g8 e-8 g8 b-8 g8 | o4 b-8 o5 d8 f8 d8 o4 b-8 o5 d8 f8 d8 |
+  o4 a-8 o5 c8 e-8 c8 o4 a-8 o5 c8 e-8 c8 | o4 b-8 o5 d8 f8 d8 o4 b-8 o5 d8 f8 d8 | o4 e-8 g8 b-8 g8 e-8 g8 b-8 g8 | o4 e-8 g8 b-8 g8 e-2 |
+
+track pad strings night=pad vol=0.25 pan=0.25 rev=0.46
+  L o4 (e- g b-)1 | (c e- g)1 | (c e- a-)1 | (d f b-)1 |
+  (e- g b-)1 | (d g b-)1 | (c f a-)1 | (d f b-)1 |
+  (c e- g)1 | (c e- a-)1 | (e- g b-)1 | (d f b-)1 |
+  (c e- a-)1 | (d f b-)1 | (e- g b-)1 | (e- g b-)1 |
+
+track bass bass vol=0.63 rev=0.1
+  L o2 e-4. e-8 b-4 e-4 | o2 c4. c8 g4 c4 | o2 a-4. a-8 o3 e-4 o2 a-4 | o2 b-4. b-8 o3 f4 o2 b-4 |
+  o2 e-4. e-8 b-4 e-4 | o2 g4. g8 o3 d4 o2 g4 | o2 f4. f8 o3 c4 o2 f4 | o2 b-4. b-8 o3 f4 o2 b-4 |
+  o2 c4. c8 g4 c4 | o2 a-4. a-8 o3 e-4 o2 a-4 | o2 e-4. e-8 b-4 e-4 | o2 b-4. b-8 o3 f4 o2 b-4 |
+  o2 a-4. a-8 o3 e-4 o2 a-4 | o2 b-4. b-8 o3 f4 o2 b-4 | o2 e-4. e-8 b-4 e-4 | o2 e-4 b-4 e-2 |
+
+track drums kit vol=0.34 rev=0.18
+  v76 L [ [ b4 k8 k8 s4 k8 k8 | ]7 b4 k8 k8 s8 s8 k4 | ]2

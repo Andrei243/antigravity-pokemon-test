@@ -30,6 +30,12 @@
     "area": "dewford_town_gym"
   },
   {
+    "id": "wattson",
+    "type": 12,
+    "class": "Leader",
+    "area": "mauville_city_gym"
+  },
+  {
     "id": "scott",
     "type": 2,
     "class": "Pokémon Trainer",
@@ -48,5 +54,61 @@
     "class": "Tuber",
     "trainer": "hoenn_lola_1",
     "area": "route_109"
+  },
+  {
+    "id": "hoenn_edwin",
+    "type": 0,
+    "class": "Collector",
+    "trainer": "hoenn_edwin_1",
+    "area": "route_110"
+  },
+  {
+    "id": "hoenn_benjamin",
+    "type": 0,
+    "class": "Triathlete",
+    "trainer": "hoenn_benjamin_1",
+    "area": "route_110"
+  },
+  {
+    "id": "hoenn_abigail",
+    "type": 0,
+    "class": "Triathlete",
+    "trainer": "hoenn_abigail_1",
+    "area": "route_110"
+  },
+  {
+    "id": "hoenn_isabel",
+    "type": 0,
+    "class": "Pokéfan",
+    "trainer": "hoenn_isabel_1",
+    "area": "route_110"
+  },
+  {
+    "id": "hoenn_isaac",
+    "type": 0,
+    "class": "Pokémon Breeder",
+    "trainer": "hoenn_isaac_1",
+    "area": "route_117"
+  },
+  {
+    "id": "hoenn_lydia",
+    "type": 0,
+    "class": "Pokémon Breeder",
+    "trainer": "hoenn_lydia_1",
+    "area": "route_117"
+  },
+  {
+    "id": "hoenn_dylan",
+    "type": 0,
+    "class": "Triathlete",
+    "trainer": "hoenn_dylan_1",
+    "area": "route_117"
+  },
+  {
+    "id": "hoenn_maria",
+    "type": 0,
+    "class": "Triathlete",
+    "trainer": "hoenn_maria_1",
+    "area": "route_117"
   }
 ]

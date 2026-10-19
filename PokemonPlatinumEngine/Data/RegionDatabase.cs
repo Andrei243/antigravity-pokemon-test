@@ -483,6 +483,14 @@ public static class RegionDatabase
                 "SlateportCity_PokemonFanClub", "SlateportCity_OceanicMuseum_1F", "SlateportCity_OceanicMuseum_2F",
                 "SlateportCity_Harbor", "SlateportCity_House", "SlateportCity_PokemonCenter_1F",
                 "SlateportCity_PokemonCenter_2F", "SlateportCity_Mart",
+                // Plan 21 · H3, part b: the rooms of Route 110, Mauville City, Route 117 and Verdanturf Town
+                "Route110_SeasideCyclingRoadSouthEntrance", "Route110_SeasideCyclingRoadNorthEntrance",
+                "Route110_TrickHouseEntrance", "Route110_TrickHouseEnd", "Route110_TrickHousePuzzle1",
+                "MauvilleCity_Gym", "MauvilleCity_BikeShop", "MauvilleCity_House1", "MauvilleCity_House2",
+                "MauvilleCity_PokemonCenter_1F", "MauvilleCity_PokemonCenter_2F", "MauvilleCity_Mart",
+                "Route117_PokemonDayCare", "VerdanturfTown_BattleTentLobby", "VerdanturfTown_Mart",
+                "VerdanturfTown_PokemonCenter_1F", "VerdanturfTown_PokemonCenter_2F", "VerdanturfTown_WandasHouse",
+                "VerdanturfTown_FriendshipRatersHouse", "VerdanturfTown_House",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

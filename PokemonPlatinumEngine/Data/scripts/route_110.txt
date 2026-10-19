@@ -1,0 +1,166 @@
+# Route 110 (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route110/scripts.inc).
+#
+# The rival waits by the north end of the road (VAR_ROUTE110_STATE 0) and battles the player at the first step past
+# them (the area's triggers 2 to 4, or by being spoken to), with Emerald's team for the player's starter; beaten, they
+# give the Itemfinder, explain it and ride off north (VAR_ROUTE110_STATE 1, FLAG_HIDE_ROUTE_110_RIVAL).
+
+
+script RivalTrigger
+  if var VAR_ROUTE110_STATE != 0 end
+  scene "The rival on Route 110"
+  music "hoenn/rival"
+  face route110_rival player
+  emote route110_rival exclaim
+  walk route110_rival down 1
+  face route110_rival player
+  face player route110_rival
+  call RivalBattle
+  endscene
+  end
+
+
+script Rival
+  if var VAR_ROUTE110_STATE != 0 end
+  scene "The rival spoken to on Route 110"
+  music "hoenn/rival"
+  face route110_rival player
+  call RivalBattle
+  endscene
+  end
+
+
+script RivalBattle
+  speaker "{rival}"
+  say "{player}! I knew you'd come this way. I've been filling in the Pokédex for Dad all the way up from Slateport!"
+  say "But how's your team doing? Let's see who's been training harder!"
+  if girl goto Brendan
+  if starter "Treecko" goto MayTreecko
+  if starter "Torchic" goto MayTorchic
+  battle route110_rival as "hoenn_may_route_110_mudkip"
+  goto Beaten
+label MayTreecko
+  battle route110_rival as "hoenn_may_route_110_treecko"
+  goto Beaten
+label MayTorchic
+  battle route110_rival as "hoenn_may_route_110_torchic"
+  goto Beaten
+label Brendan
+  if starter "Treecko" goto BrendanTreecko
+  if starter "Torchic" goto BrendanTorchic
+  battle route110_rival as "hoenn_brendan_route_110_mudkip"
+  goto Beaten
+label BrendanTreecko
+  battle route110_rival as "hoenn_brendan_route_110_treecko"
+  goto Beaten
+label BrendanTorchic
+  battle route110_rival as "hoenn_brendan_route_110_torchic"
+label Beaten
+  speaker "{rival}"
+  say "Wow, you've got so much stronger! I'll have to catch up."
+  say "Here, take this. I don't really need it. It's an Itemfinder!"
+  give "Itemfinder"
+  say "Use it and it beeps when something's buried close by. It even turns you to face the right way!"
+  say "Right, I'm off to Mauville! See you around, {player}!"
+  walk route110_rival up 7 fast
+  hide route110_rival
+  setflag FLAG_HIDE_ROUTE_110_RIVAL
+  setvar VAR_ROUTE110_STATE 1
+  music area
+  return
+
+# Edwin, beaten, swaps numbers for the PokéNav
+script Edwin
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_EDWIN goto Known
+label Ask
+  speaker "Edwin"
+  say "A fine battle! Would you exchange numbers? I'll call when my collection grows."
+  ask "Register Edwin in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_edwin
+  say "Splendid. I'll tell you all about my newest finds!"
+  end
+label Refused
+  say "A pity. My collection would have impressed you."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Benjamin, beaten, swaps numbers for the PokéNav
+script Benjamin
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_BENJAMIN goto Known
+label Ask
+  speaker "Benjamin"
+  say "You're quick! Let's swap numbers and keep each other training."
+  ask "Register Benjamin in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_benjamin
+  say "Great! I'll call you after my morning ride."
+  end
+label Refused
+  say "Fair enough. See you on the road!"
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Abigail, beaten, swaps numbers for the PokéNav
+script Abigail
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_ABIGAIL goto Known
+label Ask
+  speaker "Abigail"
+  say "You've got real power! Can I have your number? I want to keep up with you."
+  ask "Register Abigail in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_abigail
+  say "Thanks! I'll let you know how my Magnemite is doing."
+  end
+label Refused
+  say "Oh well. I'll just have to catch up by myself!"
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Isabel, beaten, swaps numbers for the PokéNav
+script Isabel
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_ISABEL goto Known
+label Ask
+  speaker "Isabel"
+  say "Plusle and Minun want to be your friends! Will you register me in your PokéNav?"
+  ask "Register Isabel in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_isabel
+  say "Yay! I'll call with all their cutest news!"
+  end
+label Refused
+  say "Aww. Plusle and Minun are pouting now."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+

@@ -1,0 +1,28 @@
+{
+  "key": "mauville_city_mart",
+  "index": 132,
+  "name": "Mauville City",
+  "matrix": 81,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "mauville_city", "toWarp": 3 },
+    { "x": 4, "z": 7, "to": "mauville_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "mauville_mart_clerk", "looks": "mart_employee", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_Mart_EventScript_Clerk" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_east", "x": 5, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_Mart_EventScript_ExpertM" },
+    { "id": "man_3", "looks": "man_3", "movement": "look_east", "x": 5, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_Mart_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,33 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pika chu!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

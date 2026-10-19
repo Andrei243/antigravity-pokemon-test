@@ -1,0 +1,20 @@
+# A house in Mauville City (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MauvilleCity_House1/scripts.inc).
+#
+# The man who loves smashing rocks gives HM06, Rock Smash (FLAG_RECEIVED_HM_ROCK_SMASH), which the Dynamo Badge lets be
+# used outside battle.
+
+
+script RockSmashMan
+  face self player
+  speaker "Man"
+  if flag FLAG_RECEIVED_HM_ROCK_SMASH goto Given
+  say "Rocks! Cracked rocks! Nothing beats the feeling of smashing one to bits!"
+  say "You look like you'd enjoy it too. Here, take this. It'll let your Pokémon smash rocks to rubble."
+  give "HM06"
+  setflag FLAG_RECEIVED_HM_ROCK_SMASH
+  say "That's Rock Smash. Use it on a rock with cracks in it, and boom! Once you've got Mauville's Badge, that is."
+  end
+label Given
+  say "Have you found a cracked rock yet? Smash it! Wild Pokémon sometimes hide in the rubble, too."
+  end

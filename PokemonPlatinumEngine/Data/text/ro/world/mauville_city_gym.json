@@ -1,0 +1,312 @@
+{
+  "people": {
+    "wattson": {
+      "name": {
+        "en": [
+          "Wattson"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Shawn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Shawn: My guitar's electric and so is my team! Feel the voltage!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Shawn: Short-circuited."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Vivian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Vivian: I came to fight electricity with my fists. Shocking, right?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Vivian: My hair's standing on end..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Ben"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Ben: The barriers here go on and off. Bet you can't work out how!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Ben: Maybe you can work it out after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_2": {
+      "name": {
+        "en": [
+          "Kirk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Kirk: My songs are electrifying, and so am I! Here's my big number!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Kirk: My amp blew a fuse."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Angelo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Maniac Angelo: My bugs light up the dark! Watch them glow in battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Maniac Angelo: Their lights went out..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_a_1": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_a_2": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_a_3": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_a_4": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_a_5": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_a_6": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_a_7": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_a_8": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_b_1": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_b_2": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_b_3": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_b_4": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_b_5": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beam_b_6": {
+      "name": {
+        "en": [
+          "Electric barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MauvilleCity_Gym_EventScript_LeftGymStatue": {
+      "en": [
+        "Mauville City Pokémon Gym\nLeader: Wattson"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MauvilleCity_Gym_EventScript_RightGymStatue": {
+      "en": [
+        "Mauville City Pokémon Gym\nLeader: Wattson"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

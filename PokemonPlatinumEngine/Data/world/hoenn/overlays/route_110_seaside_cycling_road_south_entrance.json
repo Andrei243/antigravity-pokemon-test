@@ -1,0 +1,10 @@
+{
+  // The Seaside Cycling Road's south gate house on Route 110 (plan 21 · H3, part b): its keeper lets only riders on to
+  // the road beyond the east door (route_110_seaside_cycling_road_south_entrance.txt)
+  "area": "route_110_seaside_cycling_road_south_entrance",
+  "bgmTrack": "hoenn/route110",
+  "triggers": [ { "trigger": 0, "script": "BikeCheck" } ],
+  "people": {
+    "mart_employee": { "name": "Gate Keeper", "dialog": [ "On the Cycling Road you can ride as fast as you dare. Just try not to crash into anyone!" ] }
+  }
+}

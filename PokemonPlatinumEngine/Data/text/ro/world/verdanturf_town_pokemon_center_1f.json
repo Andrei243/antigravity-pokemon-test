@@ -1,0 +1,69 @@
+{
+  "people": {
+    "verdanturf_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon here seem so healthy. The clean air does them good, I'm sure of it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rusturf Tunnel was dug by hand, would you believe it? A single young man, for love."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bug Pokémon slash faster and faster every time they hit. My favourite move!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

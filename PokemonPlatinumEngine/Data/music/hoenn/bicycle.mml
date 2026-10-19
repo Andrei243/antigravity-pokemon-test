@@ -1,0 +1,32 @@
+# On a bicycle in Hoenn (Emerald's MUS_CYCLING): Rydel's Mach and Acro Bikes, a sunny, spinning tune in G, a pulse
+# lead that coasts in long notes and then pedals hard in quick runs, over a bouncing synth bass and an open hi-hat.
+# Original composition for this game (plan 21 · H3, part b).
+title Bicycle
+tempo 156
+meter 4/4
+reverb 0.2
+nighttempo 0.94
+
+track lead pulse night=flute vol=0.68 pan=0 rev=0.2
+  L o5 g4. b8 o6 d4 o5 b4 | o5 c4. e8 g4 e4 | o5 d4. f+8 a4 f+4 | o5 g8 a8 b8 o6 d8 o5 b4 g4 |
+  o5 e4. g8 b4 g4 | o5 c4. e8 a4 e4 | o5 d8 e8 f+8 a8 o6 d4 o5 a4 | o5 g2. r4 |
+  o5 b8 a8 g8 a8 b4 o6 d4 | o6 c8 o5 b8 a8 b8 o6 c4 e4 | o6 d8 c8 o5 b8 o6 c8 d4 o5 a4 | o5 b8 o6 d8 g8 d8 o5 b4 g4 |
+  o5 e8 g8 b8 g8 e4 g4 | o5 c8 e8 a8 e8 c4 e4 | o5 d8 f+8 a8 o6 d8 c4 o5 a4 | o5 g2. r4 |
+
+track counter square vol=0.26 pan=0.35 rev=0.22
+  L o4 [ b8 r8 b8 r8 g8 r8 g8 r8 | o5 c8 r8 c8 r8 o4 g8 r8 g8 r8 | a8 r8 a8 r8 f+8 r8 f+8 r8 | b8 r8 b8 r8 g8 r8 g8 r8 | ]4
+
+track pad strings night=pad vol=0.22 pan=-0.3 rev=0.3
+  L o4 (g b >d)1 | (c e g)1 | (d f+ a)1 | (g b >d)1 |
+  (e g b)1 | (c e a)1 | (d f+ a)1 | (g b >d)1 |
+  (g b >d)1 | (c e a)1 | (d f+ a)1 | (g b >d)1 |
+  (e g b)1 | (c e a)1 | (d f+ a)1 | (g b >d)1 |
+
+track bass synthbass vol=0.66 rev=0.06
+  L o3 g8 g8 d8 g8 b8 g8 d8 g8 | c8 c8 g8 c8 e8 c8 g8 c8 | d8 d8 a8 d8 f+8 d8 a8 d8 | g8 g8 d8 g8 b8 g8 d8 g8 |
+  e8 e8 b8 e8 g8 e8 b8 e8 | c8 c8 a8 c8 e8 c8 a8 c8 | d8 d8 a8 d8 f+8 d8 a8 d8 | g8 g8 d8 g8 b8 g8 d8 g8 |
+  g8 g8 d8 g8 b8 g8 d8 g8 | c8 c8 a8 c8 e8 c8 a8 c8 | d8 d8 a8 d8 f+8 d8 a8 d8 | g8 g8 d8 g8 b8 g8 d8 g8 |
+  e8 e8 b8 e8 g8 e8 b8 e8 | c8 c8 a8 c8 e8 c8 a8 c8 | d8 d8 a8 d8 f+8 d8 a8 d8 | g8 g8 d8 g8 b8 g8 d8 g8 |
+
+track drums kit vol=0.48 rev=0.08
+  v84 L [ [ b8 o8 s8 h8 b8 b8 s8 o8 | ]3 b8 h8 s8 h8 s8 s8 s8 s8 | ]4

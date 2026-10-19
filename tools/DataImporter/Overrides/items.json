@@ -70,6 +70,59 @@
     "description": "A watering can shaped like a Wailmer. It waters the soil of a berry tree.",
     "cantBeTossed": true
   },
+  // Hoenn's key items of plan 21 · H3 (part b), which no game this importer reads has: Rydel's two bicycles, of which
+  // the player holds one at a time (the fast one that climbs muddy slopes and the nimble one that hops along rails), and
+  // the rival's Itemfinder, which points at things buried nearby. Trick House's Orange Mail is Emerald's own mail
+  "Mach Bike": {
+    "id": 9103,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A folding bike built for speed. It is fast enough to ride straight up a muddy slope.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "Bicycle"
+  },
+  "Acro Bike": {
+    "id": 9104,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A folding bike built for tricks. It can hop along narrow rails and up bumpy slopes.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "Bicycle"
+  },
+  "Itemfinder": {
+    "id": 9105,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "A device that beeps when something is buried nearby, and turns its holder to face it.",
+    "cantBeTossed": true,
+    "canBeRegistered": true,
+    "fieldUse": "Itemfinder"
+  },
+  "Orange Mail": {
+    "id": 9106,
+    "pocket": "Mail",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 50,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Writing paper with a pattern of Zigzagoon. A Pokémon can carry it in a trade.",
+    "fieldUse": "Mail"
+  },
   // Johto's key item of the second chapter (plan 20 · J7), which no game this importer reads has: Goldenrod's flower
   // shop lends it for the strange tree on Route 36
   "SquirtBottle": {

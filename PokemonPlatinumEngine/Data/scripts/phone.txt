@@ -111,7 +111,8 @@ label Waiting
 
 # ------------------------------------------------------------------ Hoenn's Match Call (plan 21 · H2, part b)
 # The PokéNav's numbers (Data/world/hoenn/phone.json): calls the player makes from its Match Call page. Nobody of
-# Hoenn rings on their own yet. Plan 21 · H3 added Steven, Brawly, Scott and the two tubers of Route 109's beach.
+# Hoenn rings on their own yet. Plan 21 · H3 added Steven, Brawly, Scott and the two tubers of Route 109's beach, and its second part Wattson and eight
+# trainers of Routes 110 and 117.
 
 # Mom, at home in Littleroot Town
 script HoennMom
@@ -160,6 +161,13 @@ script Brawly
   end
 
 
+# Wattson, Mauville's Gym Leader, registered with his Badge
+script Wattson
+  speaker "Wattson"
+  say "Wahahaha! {player}, is that you? I just rewired the whole Gym. The lights are brighter than ever!"
+  end
+
+
 # Scott, who watches trainers, met outside Slateport's museum
 script Scott
   speaker "Scott"
@@ -178,4 +186,60 @@ script HoennRicky
 script HoennLola
   speaker "Lola"
   say "Hi! It's Lola! Azurill and me floated all the way to the rocks and back!"
+  end
+
+
+# Edwin, the collector of Route 110
+script HoennEdwin
+  speaker "Edwin"
+  say "Edwin speaking. I found a Nuzleaf with the most elegant leaf. My collection grows ever finer!"
+  end
+
+
+# Benjamin, the triathlete of Route 110
+script HoennBenjamin
+  speaker "Benjamin"
+  say "It's Benjamin! I rode the Cycling Road twice before breakfast. My legs are on fire!"
+  end
+
+
+# Abigail, the triathlete of Route 110
+script HoennAbigail
+  speaker "Abigail"
+  say "Abigail here! My Magnemite and I rode all the way to Mauville and back. It's buzzing with energy!"
+  end
+
+
+# Isabel, the pokéfan of Route 110
+script HoennIsabel
+  speaker "Isabel"
+  say "It's Isabel! Plusle and Minun fell asleep holding hands today. I nearly cried, it was so sweet!"
+  end
+
+
+# Isaac, the pokémon breeder of Route 117
+script HoennIsaac
+  speaker "Isaac"
+  say "Isaac here. My Pokémon have all grown a little bigger. Raising them is such a joy!"
+  end
+
+
+# Lydia, the pokémon breeder of Route 117
+script HoennLydia
+  speaker "Lydia"
+  say "Hello, it's Lydia! My Marill learnt a new move today. I'm so proud of the little dear!"
+  end
+
+
+# Dylan, the triathlete of Route 117
+script HoennDylan
+  speaker "Dylan"
+  say "Dylan here! Huff... huff... I'm running right now. Doduo's way ahead of me as usual!"
+  end
+
+
+# Maria, the triathlete of Route 117
+script HoennMaria
+  speaker "Maria"
+  say "Maria here! Doduo and I beat our best time on Route 117. Two heads really are better than one!"
   end

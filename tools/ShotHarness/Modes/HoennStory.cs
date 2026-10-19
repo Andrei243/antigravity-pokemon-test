@@ -378,5 +378,119 @@ partial class Harness
         ReadTo("The whole city's talking about it"); Frames(10); Shot("hs72_scott");
         ReadTo(null);
         Sea("the chapter");
+
+        // ---- Plan 21 · H3, part b: Route 110 to Verdanturf Town (hs73 to hs96)
+        void Mauville(string what) =>
+            Console.WriteLine($"  {what}: route 110 {story.Var("VAR_ROUTE110_STATE")}, trick house {story.Var("VAR_TRICK_HOUSE_LEVEL")}/{story.Var("VAR_TRICK_HOUSE_ENTRANCE_STATE")}, "
+                + $"wally {story.Has("FLAG_DEFEATED_WALLY_MAUVILLE")}, scott {story.Var("VAR_SCOTT_STATE")}, bike {story.Has("FLAG_RECEIVED_BIKE")}, "
+                + $"barriers {story.Has("FLAG_MAUVILLE_GYM_BARRIERS_STATE")} (gym {story.Var("VAR_MAUVILLE_GYM_STATE")}), dynamo badge {story.HasBadge(RegionDatabase.Hoenn, "Dynamo")}, "
+                + $"tunnel open {story.Has("FLAG_RUSTURF_TUNNEL_OPENED")}, numbers {string.Join(", ", PokeNav.Contacts(story).Select(c => c.Name))}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+
+        StepOnto("Hoenn", 234, 216, Direction.Up);
+        ReadTo("I knew you'd come this way"); Frames(10); Shot("hs73_the_rival_on_route_110");
+        IntoBattle("the rival's battle on Route 110");
+        ToMainMenu(game.Battle); Shot("hs74_the_rivals_battle");
+        Win();
+        ReadTo("It's an Itemfinder!"); Frames(10); Shot("hs75_the_itemfinder");
+        ReadTo(null);
+        Frames(20); Shot("hs76_the_rival_gone");
+        Mauville("the rival on Route 110");
+
+        // The Trick House: being watched, the Trick Master under his desk, the scroll and the door, his reward
+        StepOnto("Route110_TrickHouseEntrance", 5, 6, Direction.Up);
+        ReadTo("Someone is watching"); Frames(10); Shot("hs77_being_watched");
+        ReadTo(null);
+        At("Route110_TrickHouseEntrance", 7, 3, Direction.Left);
+        game.Interact();
+        ReadTo("I am the Trick Master"); Frames(10); Shot("hs78_the_trick_master");
+        ReadTo(null);
+        ComeThrough("Route110_TrickHousePuzzle1", 1, 20, Direction.Up);
+        Frames(20); Shot("hs79_the_first_puzzle");
+        At("Route110_TrickHousePuzzle1", 3, 17, Direction.Up);
+        game.Interact();
+        ReadTo("found a scroll"); Frames(10); Shot("hs80_the_scroll");
+        ReadTo(null);
+        At("Route110_TrickHousePuzzle1", 13, 2, Direction.Up);
+        game.Interact();
+        ReadTo("Click! The lock opened!"); Frames(10); Shot("hs81_the_door_unlocked");
+        ReadTo(null);
+        TalkTo("Route110_TrickHouseEnd", "trick_master_end", dx: 1, dy: 0);
+        ReadTo("You made it all the way to me"); Frames(10); Shot("hs82_the_trick_masters_reward");
+        ReadTo(null);
+        Mauville("the first puzzle");
+
+        // Mauville City: Wally at the Gym's door, his battle, Scott
+        At("Hoenn", 220, 150, Direction.Up); game.EnterArea(); Frames(20);
+        Shot("hs83_mauville_city");
+        TalkTo("Hoenn", "mauville_wally");
+        ReadTo("Will you battle me?"); Frames(10); Shot("hs84_wally_asks");
+        IntoBattle("Wally's battle");
+        ToMainMenu(game.Battle); Shot("hs85_wallys_battle");
+        Win();
+        ReadTo("Come visit us in Verdanturf"); Frames(10); Shot("hs86_wallys_uncle");
+        ReadTo("I watched the whole thing"); Frames(10); Shot("hs87_scott_in_mauville");
+        ReadTo(null);
+        Mauville("Wally");
+
+        // Rydel's bikes and the Rock Smash man
+        TalkTo("MauvilleCity_BikeShop", "man_2", dx: 1, dy: 0);
+        ReadTo("If you want to try the other kind"); Frames(10); Shot("hs88_rydels_mach_bike");
+        ReadTo(null);
+        TalkTo("MauvilleCity_House1", "scientist_1", dx: -1, dy: 0);
+        ReadTo(null);
+
+        // Wattson's Gym: the barriers before and after a switch, his battle and the Dynamo Badge
+        ComeThrough("MauvilleCity_Gym", 4, 19, Direction.Up);
+        Frames(30); Shot("hs89_the_barriers");
+        StepOnto("MauvilleCity_Gym", 0, 15, Direction.Left);
+        ReadTo(null);
+        Frames(20); Shot("hs90_the_barriers_flipped");
+        TalkTo("MauvilleCity_Gym", "wattson");
+        ReadTo("I'm Wattson"); Frames(10); Shot("hs91_wattson");
+        IntoBattle("Wattson's battle");
+        ToMainMenu(game.Battle); Shot("hs92_wattsons_battle");
+        Win();
+        ReadTo("received the Dynamo Badge"); Frames(10); Shot("hs93_the_dynamo_badge");
+        ReadTo(null);
+        Mauville("the Dynamo Badge");
+
+        // Rusturf Tunnel from Verdanturf's side: the last rock smashed, the young man's HM04 and Wanda
+        if (!game.Party.Members[0].Moves.Any(m => m.Name == "Rock Smash"))
+        {
+            if (game.Party.Members[0].Moves.Count >= 4) game.Party.Members[0].Moves.RemoveAt(3);
+            game.Party.Members[0].Moves.Add(new Move(MoveDatabase.Get("Rock Smash")!));
+        }
+        story.Set("FLAG_HIDE_RUSTURF_TUNNEL_ROCK_1");
+        ComeThrough("RusturfTunnel", 24, 6, Direction.Up);
+        Frames(10);
+        TalkTo("RusturfTunnel", "breakable_rock_2");
+        ReadTo("smashed the rocks"); Frames(10); Shot("hs94_the_tunnel_cleared");
+        ReadTo(null);
+        Frames(20); Shot("hs95_the_tunnel_open");
+        ComeThrough("VerdanturfTown_WandasHouse", 7, 6, Direction.Up);
+        Frames(20); Shot("hs96_wandas_house");
+        Mauville("the tunnel");
+
+        // Both of Rydel's bikes on their own ground: the Mach Bike flat out on the Cycling Road, the Acro Bike on Route 117
+        At("Hoenn", 221, 190, Direction.Up);
+        game.Player.SetCycling(true);
+        game.Player.Bike = BikeKind.Mach;
+        Frames(10); Shot("hs97_the_mach_bike_on_the_cycling_road");
+        At("Hoenn", 170, 149, Direction.Left);
+        game.Player.SetCycling(true);
+        game.Player.Bike = BikeKind.Acro;
+        Frames(10); Shot("hs98_the_acro_bike_on_route_117");
+        var mudLab = new Map(5, 5) { Name = "Lab" };
+        mudLab.SetBehaviour(2, 1, TileBehavior.BikeSlopeBottom);
+        mudLab.SetBehaviour(1, 3, TileBehavior.RailEastWest);
+        foreach (var bike in new[] { BikeKind.Mach, BikeKind.Acro })
+        {
+            var walker = new Walker(TravelMode.Cycling, 0f, Bike: bike);
+            Console.WriteLine($"  the {bike} bike: up a muddy slope {FieldMovement.Step(mudLab, 2, 2, Direction.Up, walker).Kind}, "
+                + $"onto a rail {FieldMovement.Step(mudLab, 0, 3, Direction.Right, walker).Kind}, pace {FieldMovement.PaceOn(TileBehavior.None, walker)}");
+        }
+        game.Player.SetCycling(false);
+        game.Player.Bike = BikeKind.Bicycle;
     }
 }

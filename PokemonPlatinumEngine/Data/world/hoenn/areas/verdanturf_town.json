@@ -1,0 +1,43 @@
+{
+  "key": "verdanturf_town",
+  "index": 19,
+  "name": "Verdanturf Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VERDANTURF",
+  "nightMusic": "MUS_VERDANTURF",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 123, "z": 147, "to": "verdanturf_town_battle_tent_lobby", "toWarp": 0 },
+    { "x": 132, "z": 143, "to": "verdanturf_town_mart", "toWarp": 0 },
+    { "x": 136, "z": 143, "to": "verdanturf_town_pokemon_center_1f", "toWarp": 0 },
+    { "x": 130, "z": 154, "to": "verdanturf_town_wandas_house", "toWarp": 0 },
+    { "x": 128, "z": 141, "to": "rusturf_tunnel", "toWarp": 1 },
+    { "x": 121, "z": 154, "to": "verdanturf_town_friendship_raters_house", "toWarp": 0 },
+    { "x": 137, "z": 155, "to": "verdanturf_town_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "man_2", "looks": "man_2", "movement": "wander_west_and_east", "x": 124, "z": 157, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "VerdanturfTown_EventScript_Man" },
+    { "id": "verdanturf_twin", "looks": "twin", "movement": "look_west", "x": 129, "z": 142, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "VerdanturfTown_EventScript_Twin" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "wander_north_and_south", "x": 127, "z": 151, "facing": 0, "rangeX": 0, "rangeZ": 1, "script": "VerdanturfTown_EventScript_Boy" },
+    { "id": "camper", "looks": "camper", "movement": "wander_west_and_east", "x": 127, "z": 146, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "VerdanturfTown_EventScript_Camper" }
+  ],
+  "signs": [
+    { "x": 134, "z": 143, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 134, "z": 146, "type": 0, "script": "VerdanturfTown_EventScript_TownSign" },
+    { "x": 137, "z": 143, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 127, "z": 154, "type": 0, "script": "VerdanturfTown_EventScript_WandasHouseSign" },
+    { "x": 133, "z": 143, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 138, "z": 143, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 121, "z": 148, "type": 0, "script": "VerdanturfTown_EventScript_BattleTentSign" },
+    { "x": 127, "z": 143, "type": 0, "script": "VerdanturfTown_EventScript_RusturfTunnelSign" }
+  ],
+  "triggers": []
+}

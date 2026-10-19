@@ -77,11 +77,27 @@ partial class Harness
             ("h48_seashore_house", "Route109_SeashoreHouse", 6, 8, Direction.Up),
             ("h49_slateport_harbour", "SlateportCity_Harbor", 11, 13, Direction.Up),
             ("h50_dewford_center", "DewfordTown_PokemonCenter_1F", 7, 6, Direction.Up),
+            // Plan 21 · H3, part b: Route 110 and its Trick House, Mauville City, Route 117 and its Day Care, Verdanturf Town
+            ("h53_route110_south", "Hoenn", 214, 236, Direction.Up),
+            ("h54_trick_house_outside", "Hoenn", 211, 228, Direction.Up),
+            ("h55_route110_north", "Hoenn", 232, 206, Direction.Up),
+            ("h56_cycling_road_gate", "Route110_SeasideCyclingRoadSouthEntrance", 7, 5, Direction.Up),
+            ("h57_mauville_city", "Hoenn", 220, 150, Direction.Up),
+            ("h58_mauville_gym", "MauvilleCity_Gym", 4, 19, Direction.Up),
+            ("h59_bike_shop", "MauvilleCity_BikeShop", 3, 7, Direction.Up),
+            ("h60_mauville_center", "MauvilleCity_PokemonCenter_1F", 7, 6, Direction.Up),
+            ("h61_trick_house", "Route110_TrickHouseEntrance", 5, 6, Direction.Up),
+            ("h62_trick_house_puzzle", "Route110_TrickHousePuzzle1", 1, 20, Direction.Up),
+            ("h63_route117", "Hoenn", 165, 150, Direction.Left),
+            ("h64_day_care", "Route117_PokemonDayCare", 3, 7, Direction.Up),
+            ("h65_verdanturf_town", "Hoenn", 130, 148, Direction.Up),
+            ("h66_wandas_house", "VerdanturfTown_WandasHouse", 7, 6, Direction.Up),
+            ("h67_verdanturf_tent", "VerdanturfTown_BattleTentLobby", 6, 8, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -92,6 +108,8 @@ partial class Harness
         At("Hoenn", 56, 247, Direction.Up); Frames(2); Shot("h10_petalburg_night");
         At("Hoenn", 66, 373, Direction.Up); Frames(2); Shot("h51_dewford_night");
         At("Hoenn", 219, 283, Direction.Up); Frames(2); Shot("h52_slateport_night");
+        At("Hoenn", 220, 150, Direction.Up); Frames(2); Shot("h68_mauville_night");
+        At("Hoenn", 130, 148, Direction.Up); Frames(2); Shot("h69_verdanturf_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

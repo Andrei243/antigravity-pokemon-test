@@ -1,0 +1,27 @@
+{
+  "key": "verdanturf_town_house",
+  "index": 96,
+  "name": "Verdanturf Town",
+  "matrix": 45,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VERDANTURF",
+  "nightMusic": "MUS_VERDANTURF",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 8, "to": "verdanturf_town", "toWarp": 6 },
+    { "x": 4, "z": 8, "to": "verdanturf_town", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "woman_5", "looks": "woman_5", "movement": "look_north", "x": 4, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "VerdanturfTown_House_EventScript_Woman1" },
+    { "id": "woman_5_2", "looks": "woman_5", "movement": "look_south", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "VerdanturfTown_House_EventScript_Woman2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

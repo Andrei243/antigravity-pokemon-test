@@ -1,0 +1,12 @@
+{
+  // Verdanturf Town's Pokémon Center (plan 21 · H3, part b), its floor as Emerald lays it out. Emerald's boy by the
+  // counter teaches Fury Cutter; the move tutors of Hoenn are left for later, so he only talks
+  "area": "verdanturf_town_pokemon_center_1f",
+  "bgmTrack": "hoenn/verdanturf",
+  "people": {
+    "verdanturf_nurse": { "name": "Nurse", "script": "Nurse" },
+    "gentleman": { "name": "Gentleman", "dialog": [ "The Pokémon here seem so healthy. The clean air does them good, I'm sure of it." ] },
+    "expert_m": { "name": "Old Man", "dialog": [ "Rusturf Tunnel was dug by hand, would you believe it? A single young man, for love." ] },
+    "little_boy": { "name": "Boy", "dialog": [ "Bug Pokémon slash faster and faster every time they hit. My favourite move!" ] }
+  }
+}

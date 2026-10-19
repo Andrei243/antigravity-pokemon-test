@@ -56,6 +56,9 @@
     // Plan 21 · H3: Rustboro's (open since H2, part b), Dewford's and Slateport's
     { "id": 6, "area": "rustboro_city", "x": 16, "y": 161, "room": "RustboroCity_PokemonCenter_1F" },
     { "id": 15, "area": "dewford_town", "x": 62, "y": 373, "room": "DewfordTown_PokemonCenter_1F" },
-    { "id": 4, "area": "slateport_city", "x": 219, "y": 280, "room": "SlateportCity_PokemonCenter_1F" }
+    { "id": 4, "area": "slateport_city", "x": 219, "y": 280, "room": "SlateportCity_PokemonCenter_1F" },
+    // Plan 21 · H3, part b: Mauville's and Verdanturf's
+    { "id": 5, "area": "mauville_city", "x": 222, "y": 146, "room": "MauvilleCity_PokemonCenter_1F" },
+    { "id": 18, "area": "verdanturf_town", "x": 136, "y": 144, "room": "VerdanturfTown_PokemonCenter_1F" }
   ]
 }

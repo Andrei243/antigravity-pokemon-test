@@ -358,6 +358,9 @@ surf 20-40
 old rod 3-15
 good rod 10-35
 super rod 30-55
+=== mauville_city_gym
+Mauville City
+trainers 5, 17: hoenn_angelo 17, hoenn_ben 17, hoenn_kirk 17, hoenn_shawn 17, hoenn_vivian 17
 === mt_coronet_1f_north_room_1
 Mt. Coronet
 grass 13-16
@@ -641,10 +644,29 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 10, 17-21: kanto_engineer_bernie 18, kanto_engineer_braxton 21, kanto_gamer_darian 18, kanto_gamer_dirk 18, kanto_gamer_hugo 18, kanto_gamer_jasper 18, kanto_youngster_dave 18, kanto_youngster_dillon 19, kanto_youngster_eddie 21, kanto_youngster_yasu 17
+=== route_110
+Route 110
+grass 12-13
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 14, 6-16: hoenn_abigail_1 16, hoenn_alyssa 15, hoenn_anthony 14, hoenn_benjamin_1 16, hoenn_dale 14, hoenn_edward 15, hoenn_edwin_1 14, hoenn_isabel_1 14, hoenn_jaclyn 16, hoenn_jacob 14, hoenn_jasmine 14, hoenn_joseph 14, hoenn_kaleb 14, hoenn_timmy 15
+=== route_110_trick_house_puzzle_1
+Route 110
+trainers 3, 14-16: hoenn_eddie 16, hoenn_robin 14, hoenn_sally 16
 === route_116
 Route 116
 grass 6-8
 trainers 10, 8-9: hoenn_clark 8, hoenn_dawson 8, hoenn_devan 8, hoenn_janice 9, hoenn_jerry_1 9, hoenn_joey 9, hoenn_johnson 8, hoenn_jose 8, hoenn_karen_1 9, hoenn_sarah 8
+=== route_117
+Route 117
+grass 13-14
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 9, 11-17: hoenn_aisha 17, hoenn_anna_and_meg_1 17, hoenn_brandi 17, hoenn_derek 16, hoenn_dylan_1 17, hoenn_isaac_1 11, hoenn_lydia_1 11, hoenn_maria_1 17, hoenn_melina 17
 === route_12
 Route 12
 grass 22-30

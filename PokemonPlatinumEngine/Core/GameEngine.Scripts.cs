@@ -351,6 +351,43 @@ public partial class GameEngine
     /// An item used in the field itself (plan 02 · S2), from the bag or the item button: the Bicycle got on or off,
     /// a rod cast, an Escape Rope. Where it can't be, a notice says why.
     /// </summary>
+    /// <summary>The bicycle an item is (plan 21 · H3): Emerald's Mach or Acro Bike, or Platinum's.</summary>
+    internal static BikeKind BikeOf(string item) => item switch
+    {
+        "Mach Bike" => BikeKind.Mach,
+        "Acro Bike" => BikeKind.Acro,
+        _ => BikeKind.Bicycle
+    };
+
+    /// <summary>The bicycle the bag holds, Emerald's two before Platinum's: what a save made cycling is ridden on.</summary>
+    private BikeKind BikeInTheBag()
+    {
+        foreach (var name in new[] { "Mach Bike", "Acro Bike" })
+            if (ItemDatabase.Get(name) is { } bike && flow.Bag.GetQuantity(bike) > 0) return BikeOf(name);
+        return BikeKind.Bicycle;
+    }
+
+    /// <summary>The Itemfinder used where the player stands (<see cref="Itemfinder"/>).</summary>
+    private void UseItemfinder()
+    {
+        var (answer, toward) = Itemfinder.Search(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Story);
+        switch (answer)
+        {
+            case ItemfinderAnswer.Nothing:
+                ShowNotification(Text.Of("engine.itemfinder.nothing"));
+                return;
+            case ItemfinderAnswer.Underfoot:
+                AudioManager.PlaySound("dowsing_ping");
+                ShowNotification(Text.Of("engine.itemfinder.underfoot"));
+                return;
+            default:
+                AudioManager.PlaySound("dowsing_ping");
+                if (!flow.Player.IsMoving && toward is { } way) flow.Player.Facing = way;
+                ShowNotification(Text.Of("engine.itemfinder.nearby"));
+                return;
+        }
+    }
+
     private void UseFieldItem(ItemData item)
     {
         int x = flow.Player.GridX, y = flow.Player.GridY;
@@ -381,6 +418,12 @@ public partial class GameEngine
         if (item.FieldUse == "PoffinCase")
         {
             OpenPoffinCase(fromBag: false);
+            return;
+        }
+        // Emerald's Itemfinder (plan 21 · H3): a beep and a turn toward the nearest hidden thing, or a notice there's none
+        if (item.FieldUse == "Itemfinder")
+        {
+            UseItemfinder();
             return;
         }
         if (item.FieldUse == "VsSeeker")
@@ -424,6 +467,8 @@ public partial class GameEngine
             }
             bool getOn = flow.Player.Mode != TravelMode.Cycling;
             if (!flow.Player.SetCycling(getOn)) return;
+            // Emerald's two bicycles are ridden as themselves (plan 21 · H3); Platinum's keeps its gears
+            if (getOn) flow.Player.Bike = BikeOf(item.Name);
             // Getting on ends the Poké Radar's chain (MountOrUnmountBicycle)
             if (getOn) EndRadarChain();
             if (getOn) AudioManager.PlaySound("bike_bell");

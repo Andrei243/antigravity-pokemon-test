@@ -1,0 +1,43 @@
+{
+  "key": "route_110_trick_house_puzzle_1",
+  "index": 502,
+  "name": "Route 110",
+  "matrix": 445,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_TRICK_HOUSE",
+  "nightMusic": "MUS_TRICK_HOUSE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 0, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 1, "z": 21, "to": "route_110_trick_house_entrance", "toWarp": 2 },
+    { "x": 13, "z": 1, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_west", "x": 14, "z": 20, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "script": "TRAINER_SALLY" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 14, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_EDDIE" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_south", "x": 2, "z": 15, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_ROBIN" },
+    { "id": "cuttable_tree", "looks": "cuttable_tree", "movement": "look_around", "x": 11, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_2", "looks": "cuttable_tree", "movement": "look_around", "x": 13, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_3", "looks": "cuttable_tree", "movement": "look_around", "x": 14, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_4", "looks": "cuttable_tree", "movement": "look_around", "x": 11, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_5", "looks": "cuttable_tree", "movement": "look_around", "x": 8, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_6", "looks": "cuttable_tree", "movement": "look_around", "x": 11, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_7", "looks": "cuttable_tree", "movement": "look_around", "x": 2, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_19", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_8", "looks": "cuttable_tree", "movement": "look_around", "x": 13, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_18", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_9", "looks": "cuttable_tree", "movement": "look_around", "x": 0, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_1B", "script": "EventScript_CutTree" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 9, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_TRICK_HOUSE_PUZZLE_1_ORANGE_MAIL", "item": "Orange Mail", "script": "Route110_TrickHousePuzzle1_EventScript_ItemOrangeMail" },
+    { "id": "cuttable_tree_10", "looks": "cuttable_tree", "movement": "look_around", "x": 4, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_1C", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_11", "looks": "cuttable_tree", "movement": "look_around", "x": 2, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_1E", "script": "EventScript_CutTree" }
+  ],
+  "signs": [
+    { "x": 3, "z": 16, "type": 0, "script": "Route110_TrickHousePuzzle1_EventScript_Scroll" }
+  ],
+  "triggers": []
+}

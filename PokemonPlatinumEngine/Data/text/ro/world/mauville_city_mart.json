@@ -1,0 +1,59 @@
+{
+  "people": {
+    "mauville_mart_clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! What can I get for you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "An X Speed in battle can turn a slow Pokémon into a quick one. Very handy against a tough foe."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Guard Spec. keeps the other side from lowering your stats. A trainer's best friend!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

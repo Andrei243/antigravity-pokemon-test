@@ -2,7 +2,7 @@
 // the overworld, Emerald's connected maps stitched into one. The blocks are each of Hoenn's areas on the cells its
 // chunks take (the matrix's own areas, a town on its own cell where a route took the chunk over); every word is ours.
 // A town not open yet whose chunk a route took over (Verdanturf, Fallarbor) is put on its cell by the session that
-// opens it (Dewford by plan 21 · H3). No hidden places, no landmarks and no Fly yet: Fly over Hoenn is plan 21 · H6's.
+// opens it (Dewford by plan 21 · H3, Verdanturf by its second part). No hidden places, no landmarks and no Fly yet: Fly over Hoenn is plan 21 · H6's.
 {
   "map": "Hoenn",
   "columns": 25,
@@ -24,6 +24,7 @@
     { "key": "route_104", "about": "A road along the sea, split in two by Petalburg Woods." },
     { "key": "route_111", "about": "A road through a desert of blowing sand, and past hot springs." },
     { "key": "route_117", "about": "A road of flowers and ponds between Mauville City and Verdanturf Town." },
+    { "key": "verdanturf_town", "about": "A quiet town of clean air below the hills, at the far end of Rusturf Tunnel." },
     { "key": "route_118", "about": "A road beside the sea, where the fishing is good." },
     { "key": "route_109", "about": "A sandy beach south of Slateport City." },
     { "key": "route_134", "about": "A sea route of fast currents east of Slateport's far islands." },
@@ -136,7 +137,7 @@
     { "x": 1, "y": 4, "kind": "Route", "name": "Route 116", "area": "route_116" },
     { "x": 2, "y": 4, "kind": "Route", "name": "Route 116", "area": "route_116" },
     { "x": 3, "y": 4, "kind": "Route", "name": "Route 116", "area": "route_116" },
-    { "x": 4, "y": 4, "kind": "Route", "name": "Route 117", "area": "route_117" },
+    { "x": 4, "y": 4, "kind": "Town", "name": "Verdanturf Town", "area": "verdanturf_town" },
     { "x": 5, "y": 4, "kind": "Route", "name": "Route 117", "area": "route_117" },
     { "x": 6, "y": 4, "kind": "Town", "name": "Mauville City", "area": "mauville_city" },
     { "x": 7, "y": 4, "kind": "Town", "name": "Mauville City", "area": "mauville_city" },

@@ -1,0 +1,16 @@
+{
+  // The Trick House's first puzzle (plan 21 · H3, part b): a maze of hedges cut through with Cut, three trainers lost in
+  // it, a scroll with the Trick Master's secret code and the locked door to his last room at the top right, which the
+  // code opens (route_110_trick_house_puzzle_1.txt). The trees grow back whenever the room is left
+  "area": "route_110_trick_house_puzzle_1",
+  "bgmTrack": "hoenn/trick_house",
+  "doors": [ { "warp": 2, "map": "Route110_TrickHouseEnd", "x": 10, "y": 2, "facing": "Down" } ],
+  "switches": [ { "warp": 2, "from": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_UNLOCKED" } ],
+  "readAt": [ { "x": 13, "z": 1, "script": "Door" } ],
+  "read": { "Route110_TrickHousePuzzle1_EventScript_Scroll": "Scroll" },
+  "people": {
+    "lass": { "name": "Sally", "trainer": { "dialogueBefore": "Lass Sally: We just learned Cut! Chop, chop, chop! Now battle me!", "dialogueAfter": "Lass Sally: I'm still having fun chopping, though." } },
+    "youngster": { "name": "Eddie", "trainer": { "dialogueBefore": "Youngster Eddie: I came in here by mistake and now I can't find the way out...", "dialogueAfter": "Youngster Eddie: Lost my way and lost the battle. Great." } },
+    "lass_2": { "name": "Robin", "trainer": { "dialogueBefore": "Lass Robin: Who is the Trick Master, really? Do you know?", "dialogueAfter": "Lass Robin: I was too busy thinking about him to battle properly!" } }
+  }
+}

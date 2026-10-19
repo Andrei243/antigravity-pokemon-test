@@ -1,0 +1,61 @@
+{
+  // Route 110 (plan 21 · H3, part b): the long road north from Slateport City to Mauville City, with the Seaside Cycling
+  // Road running over it from one gate house to the other, the Trick House by the path and a crowd of cyclists. The
+  // rival waits by the road's north end and battles the player at the first step past them (route_110.txt), giving
+  // the Itemfinder. New Mauville's door, under the water by the road, is shut until Wattson's Basement Key (H4 and
+  // after); Team Aqua's grunts stand at the way west to Route 103 until Mt. Chimney (H4), and the professor's own scene
+  // here, his number for Match Call, is left for later
+  "area": "route_110",
+  "bgmTrack": "hoenn/route110",
+  "trees": "Round",
+  "locked": [ 0 ],
+  "triggers": [
+    { "trigger": 2, "script": "RivalTrigger" },
+    { "trigger": 3, "script": "RivalTrigger" },
+    { "trigger": 4, "script": "RivalTrigger" }
+  ],
+  "people": {
+    "route110_rival": { "name": "{rival}", "npcType": "Rival:MAY:BRENDAN", "script": "Rival", "still": true },
+    "route110_rival_on_bike": { "name": "{rival}", "npcType": "Rival:MAY:BRENDAN", "still": true, "dialog": [ "Race you to Mauville!" ] },
+    "route110_birch": { "name": "Prof. Birch", "npcType": "prof_birch", "still": true, "dialog": [ "Ah, {player}! I'm out counting Pokémon. Don't mind me!" ] },
+    "camper": { "name": "Boy", "dialog": [ "The Cycling Road or the path underneath? I can never make up my mind." ] },
+    "cycling_triathlete_m": { "name": "Cyclist", "dialog": [ "On a bike, hold the direction down and lean into it. Corners are easier than they look!" ] },
+    "expert_f": { "name": "Old Woman", "dialog": [ "I take the low road. It's slower, but the flowers along it are lovely." ] },
+    "cycling_triathlete_m_2": { "name": "Cyclist", "dialog": [ "Got my bike from Rydel in Mauville. He just handed it over. What a guy!" ] },
+    "expert_m": { "name": "Old Man", "dialog": [ "Two roads run side by side here, one up high and one down low. Each has its own view." ] },
+    "cycling_triathlete_f": { "name": "Cyclist", "dialog": [ "My hair streams out behind me when I race down the road. It's the best feeling!" ] },
+    "boy_3": { "name": "Boy", "dialog": [ "I'm going to ride the Cycling Road flat out, from one end to the other!" ] },
+    "challenge_biker": { "name": "Cyclist", "dialog": [ "The Cycling Road's for speed. The fewer things you bump into, the better your time!" ] },
+    "aqua_member_m": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "What we're up to? That's Team Aqua business. Move along." ] },
+    "aqua_member_m_2": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "We're just going to stir things up a bit. Nothing to see here." ] },
+    "aqua_member_m_3": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "This is my first real job for Team Aqua. I'm a little nervous!" ] },
+    "aqua_member_m_4": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "When the sea grows, everyone will be happy. You'll see!" ] },
+    "aqua_member_m_5": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "dialog": [ "Keep your voices down! Someone might hear us." ] },
+    "psychic_m": { "name": "Edward", "trainer": { "dialogueBefore": "Psychic Edward: I saw you coming in my mind. I also saw myself winning.", "dialogueAfter": "Psychic Edward: My mind's eye needs glasses." } },
+    "lass": { "name": "Jaclyn", "trainer": { "dialogueBefore": "Psychic Jaclyn: My Abra can teleport away. But it won't, because we're going to win!", "dialogueAfter": "Psychic Jaclyn: Maybe it should have teleported after all." } },
+    "maniac": { "name": "Edwin", "script": "Edwin", "trainer": { "dialogueBefore": "Collector Edwin: My Pokémon are the finest of my collection. Admire them in battle!", "dialogueAfter": "Collector Edwin: I'll have to polish my collection." } },
+    "fisherman": { "name": "Dale", "trainer": { "dialogueBefore": "Fisherman Dale: Nothing's biting today. Except me! Battle!", "dialogueAfter": "Fisherman Dale: Back to waiting for a bite." } },
+    "cycling_triathlete_m_5": { "name": "Jacob", "trainer": { "dialogueBefore": "Triathlete Jacob: Swim, cycle, run, battle! You're my fourth event!", "dialogueAfter": "Triathlete Jacob: I'll stick to the first three." } },
+    "cycling_triathlete_m_3": { "name": "Anthony", "trainer": { "dialogueBefore": "Triathlete Anthony: Pedal hard, battle harder! Let's go!", "dialogueAfter": "Triathlete Anthony: I've got a flat. In my spirit." } },
+    "cycling_triathlete_m_4": { "name": "Benjamin", "script": "Benjamin", "trainer": { "dialogueBefore": "Triathlete Benjamin: I train every day on this road. Show me what you've got!", "dialogueAfter": "Triathlete Benjamin: Looks like I need to train every night too." } },
+    "cycling_triathlete_f_2": { "name": "Jasmine", "trainer": { "dialogueBefore": "Triathlete Jasmine: I stopped for you, so make it worth my while!", "dialogueAfter": "Triathlete Jasmine: Worth it, but painful." } },
+    "cycling_triathlete_f_3": { "name": "Abigail", "script": "Abigail", "trainer": { "dialogueBefore": "Triathlete Abigail: My Magnemite and I are charged and ready!", "dialogueAfter": "Triathlete Abigail: All out of power." } },
+    "cycling_triathlete_f_4": { "name": "Alyssa", "trainer": { "dialogueBefore": "Triathlete Alyssa: You look fit! Let's see if your Pokémon are too.", "dialogueAfter": "Triathlete Alyssa: Fitter than mine, it turns out." } },
+    "youngster": { "name": "Timmy", "trainer": { "dialogueBefore": "Youngster Timmy: My Aron's tougher than iron. Literally!", "dialogueAfter": "Youngster Timmy: Rust never sleeps, I guess." } },
+    "pokefan_f": { "name": "Isabel", "script": "Isabel", "trainer": { "dialogueBefore": "Pokéfan Isabel: Aren't my Plusle and Minun adorable? And they battle, too!", "dialogueAfter": "Pokéfan Isabel: Still adorable, though." } },
+    "pokefan_m": { "name": "Kaleb", "trainer": { "dialogueBefore": "Pokéfan Kaleb: My Minun and Plusle cheer each other on. Watch!", "dialogueAfter": "Pokéfan Kaleb: They're cheering each other up now." } },
+    "man_5": { "name": "Joseph", "trainer": { "dialogueBefore": "Guitarist Joseph: My music's electric, and so are my Pokémon! Rock on!", "dialogueAfter": "Guitarist Joseph: I broke a string. And a battle." } }
+  },
+  "signs": {
+    "Route110_EventScript_VandalizedSign": "Somebody has scrawled over the sign: \"Team Aqua was here!\"",
+    "Route110_EventScript_SeasideParkingSign": "Seaside Parking\nLeave your bike here and stroll by the sea.",
+    "Route110_EventScript_CyclingRoadSign": "Seaside Cycling Road\nBicycles only, through the gate.",
+    "Route110_EventScript_SlateportCitySign": "Route 110\nSouth: Slateport City",
+    "Route110_EventScript_Route103Sign": "Route 110\nWest: Route 103",
+    "Route110_EventScript_MauvilleCitySign": "Route 110\nNorth: Mauville City",
+    "Route110_EventScript_TrainerTipsPrlzSleep": "Trainer Tips\nA paralysed Pokémon or a sleeping one is far easier to catch.",
+    "Route110_EventScript_TrainerTipsRegisterItems": "Trainer Tips\nRegister a key item in the bag, and use it at the press of a single button.",
+    "Route110_EventScript_TrickHouseSign": "Trick House\nThe Trick Master awaits! Can you solve his puzzles?",
+    "Route110_EventScript_CyclingRoadResultsSign": "Seaside Cycling Road\nBest times are posted here. Nobody has set one yet."
+  }
+}
