@@ -7262,6 +7262,23 @@ from the tile read at 23,20 of CinnabarIsland_Gym
 from the tile read at 27,20 of CinnabarIsland_Gym
 way -
   > Cinnabar Island Pokémon Gym. Leader: Blaine. Winning trainers: Barry.
+=== cinnabar_island_pokemon_center_1f.Bill
+from Bill at 11,5 of CinnabarIsland_PokemonCenter_1F
+way 0
+  Bill> Ready to set sail for One Island? Celio's waiting for us!
+  Bill> Then let's go! My pal's ferry is waiting down at the dock.
+  > The Seagallop sped across the waves to One Island.
+  ? Ready to set sail for One Island? Celio's waiting for us! = Yes
+  * fade out
+  * warp OneIsland 12 137
+  * fade in
+  + FLAG_HIDE_CINNABAR_BILL
+  + FLAG_HIDE_CINNABAR_POKECENTER_BILL
+  = VAR_MAP_SCENE_CINNABAR_ISLAND 0 -> 2
+  = VAR_MAP_SCENE_ONE_ISLAND_HARBOR 0 -> 1
+way 1, from answer 1
+  Bill> No rush. Get your team ready, and come back when you are.
+  ? Ready to set sail for One Island? Celio's waiting for us! = No
 === cinnabar_island_pokemon_lab_experiment_room.FossilScientist
 from Scientist at 12,3 of CinnabarIsland_PokemonLab_ExperimentRoom
 way -
@@ -8714,6 +8731,43 @@ way -
   Attendant> Thank you for playing. Please come again!
   * warp PastoriaCityObservatoryGate1F 5 3
   = VAR_SAFARI_GAME_STATE 0 -> 2
+=== common.SailWithBill
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves to One Island.
+  * fade out
+  * warp OneIsland 12 137
+  * fade in
+  + FLAG_HIDE_CINNABAR_BILL
+  + FLAG_HIDE_CINNABAR_POKECENTER_BILL
+  = VAR_MAP_SCENE_CINNABAR_ISLAND 0 -> 2
+  = VAR_MAP_SCENE_ONE_ISLAND_HARBOR 0 -> 1
+=== common.SeagallopSails
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+=== common.SeagallopToCinnabar
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+  * warp Kanto 82 387
+  * fade in
+=== common.SeagallopToOneIsland
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+  * warp OneIsland_Harbor 8 5
+  * fade in
+=== common.SeagallopToVermilion
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+  * warp Kanto 288 232
+  * fade in
 === common.Sign
 from a trainer with lines of their own
 way -
@@ -8859,6 +8913,15 @@ way -
   > Bibarel used Whirlpool!
   * usemove Whirlpool Bibarel on Tree
   * climb nowhere
+=== common.VictoryRoadBarrier
+from a trainer with lines of their own
+way -
+  > A wall of rock blocks the way. A switch somewhere might clear it.
+=== common.VictoryRoadSwitch
+from a trainer with lines of their own
+way -
+  > Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away.
+  * sound rock_smash
 === common.Water
 from an obstacle, with every field move and every badge
 way 0
@@ -10333,6 +10396,11 @@ way -
   * fade out
   * fade in
   = VAR_FARFETCHD2_PLACE 0 -> 1
+=== indigo_plateau_pokemon_center_1f.DoorGuard
+from Guard at 5,3 of IndigoPlateau_PokemonCenter_1F
+way -
+  Guard> Beyond this door wait the Elite Four, the strongest trainers in Kanto. Beat all four, and the Champion awaits.
+  Guard> Once you step through, there's no coming back out until it's over. Good luck!
 === iron_island.Ferry
 from Sailor at 99,502 of Sinnoh
 way 0
@@ -10547,6 +10615,64 @@ way 0
 way 1, from answer 1
   * battle galactic_grunt_jubilife_city_1 and galactic_grunt_jubilife_city_2 with dawn_jubilife_city_turtwig Lost
   * scene over, unseen
+=== kanto_victory_road_1f.Barrier
+from Rock barrier at 12,14 of VictoryRoad_1F
+from Rock barrier at 12,15 of VictoryRoad_1F
+way -
+  > A wall of rock blocks the way. A switch somewhere might clear it.
+=== kanto_victory_road_1f.FloorSwitch
+from the pit at 20,16 of VictoryRoad_1F
+way -
+  > Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away.
+  * sound rock_smash
+  + FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED
+=== kanto_victory_road_2f.Barrier
+from Rock barrier at 13,10 of VictoryRoad_2F
+from Rock barrier at 13,11 of VictoryRoad_2F
+from Rock barrier at 33,16 of VictoryRoad_2F
+from Rock barrier at 33,17 of VictoryRoad_2F
+way -
+  > A wall of rock blocks the way. A switch somewhere might clear it.
+=== kanto_victory_road_2f.DoubleEdgeTutor
+from Cooltrainer at 40,9 of VictoryRoad_2F
+way 0
+  Cooltrainer> You made it this far, so you must be serious. Want me to teach one of your Pokémon Double-Edge?
+  Cooltrainer> Good choice. Which one?
+  Cooltrainer> Turtwig learned Double-Edge!
+  Cooltrainer> Double-Edge hits with everything the user has, and it hurts the user too. Use it when it counts!
+  ? You made it this far, so you must be serious. Want me to teach one of your Pokémon Double-Edge? = Yes
+  * open ChoosePokemon
+  * fanfare FanfareLevelUp
+  + FLAG_TUTOR_DOUBLE_EDGE
+way 1, from answer 1
+  Cooltrainer> Suit yourself. I'll be here if you change your mind.
+  ? You made it this far, so you must be serious. Want me to teach one of your Pokémon Double-Edge? = No
+=== kanto_victory_road_2f.FloorSwitch1
+from the pit at 2,19 of VictoryRoad_2F
+way -
+  > Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away.
+  * sound rock_smash
+  + FLAG_VICTORY_ROAD_2F_SWITCH_1_PRESSED
+=== kanto_victory_road_2f.FloorSwitch2
+from the pit at 14,19 of VictoryRoad_2F
+way -
+  > Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away.
+  * sound rock_smash
+  + FLAG_VICTORY_ROAD_2F_SWITCH_2_PRESSED
+=== kanto_victory_road_3f.Barrier
+from Rock barrier at 12,12 of VictoryRoad_3F
+from Rock barrier at 12,13 of VictoryRoad_3F
+way -
+  > A wall of rock blocks the way. A switch somewhere might clear it.
+=== kanto_victory_road_3f.FallThrough
+from the pit at 34,18 of VictoryRoad_3F
+way -
+=== kanto_victory_road_3f.FloorSwitch
+from the pit at 7,7 of VictoryRoad_3F
+way -
+  > Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away.
+  * sound rock_smash
+  + FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED
 === lake_acuity_low_water.Rival
 from {rival} at 16,46 of LakeAcuity
 way -
@@ -11119,6 +11245,18 @@ way -
   Barry> Lucas! I'm going on ahead to the lab. Dad's waiting for us both. Don't dawdle!
   + FLAG_HIDE_OLDALE_TOWN_RIVAL
   = VAR_OLDALE_RIVAL_STATE 0 -> 2
+=== one_island_harbor.Sailor
+from Sailor at 8,6 of OneIsland_Harbor
+way -
+  Sailor> The Seagallop sails only for holders of a pass, I'm afraid. Celio in the Pokémon Center might be able to help.
+=== one_island_pokemon_center_1f.Bill
+from Bill at 14,6 of OneIsland_PokemonCenter_1F
+way -
+  Bill> Hmm, what if I connect this here... No, that's not it either. Don't worry, we'll crack it!
+=== one_island_pokemon_center_1f.Celio
+from Celio at 15,6 of OneIsland_PokemonCenter_1F
+way -
+  Celio> Sorry, I'm in the middle of something. This machine is giving me no end of trouble.
 === oreburgh_city.Rival
 from {rival} at 282,757 of Sinnoh
 way -
@@ -11576,6 +11714,80 @@ from the tile read at 856,561 of Sinnoh
 from the tile read at 857,561 of Sinnoh
 way -
   > POKéMON LEAGUE\nWhere every Trainer's road comes to its summit.
+=== pokemon_league_agathas_room.Agatha
+from Agatha at 6,5 of PokemonLeague_AgathasRoom
+way 0
+  Agatha> I am Agatha of the Elite Four. Oak's taken a liking to you, has he? That old fool.
+  Agatha> Pokémon are for battling! I'll show you what a real trainer can do, child.
+  Agatha> Oh ho! You're something special, child.
+  Agatha> I see now why Oak thinks so highly of you. Go on, then. You're nearly at the top.
+  * scene pokemon_league_agathas_room.Agatha
+  * battle kanto_elite_four_agatha Won
+  * sound door_open
+  * endscene
+  + FLAG_DEFEATED_AGATHA
+  + beaten kanto_elite_four_agatha
+  + seen pokemon_league_agathas_room.Agatha
+way 1, from answer 1
+  * battle kanto_elite_four_agatha Lost
+  * scene over, unseen
+=== pokemon_league_brunos_room.Bruno
+from Bruno at 6,5 of PokemonLeague_BrunosRoom
+way 0
+  Bruno> I am Bruno of the Elite Four! I have trained my body and my Pokémon together, through every kind of hardship.
+  Bruno> We will crush whatever stands before us with sheer strength. Hoo hah!
+  Bruno> Why? How could I lose?
+  Bruno> My job is done. Go face your next challenge.
+  * scene pokemon_league_brunos_room.Bruno
+  * battle kanto_elite_four_bruno Won
+  * sound door_open
+  * endscene
+  + FLAG_DEFEATED_BRUNO
+  + beaten kanto_elite_four_bruno
+  + seen pokemon_league_brunos_room.Bruno
+way 1, from answer 1
+  * battle kanto_elite_four_bruno Lost
+  * scene over, unseen
+=== pokemon_league_champions_room.Champion
+from {rival} at 6,8 of PokemonLeague_ChampionsRoom
+way -
+  Barry> Go on, then. Don't keep the old man waiting.
+=== pokemon_league_lances_room.Lance
+from Lance at 6,8 of PokemonLeague_LancesRoom
+way 0
+  Lance> Ah! I've heard of you. I lead the Elite Four. My name is Lance, and I'm a dragon trainer.
+  Lance> Dragons are mighty Pokémon, hard to catch and harder still to raise. Their strength is beyond question.
+  Lance> There's no running away now. Prepare to lose!
+  Lance> I can't believe it. My dragons have been beaten...
+  Lance> You're the one who beat the Elite Four. But there's still the Champion to face. You know who that is, don't you?
+  * scene pokemon_league_lances_room.Lance
+  * battle kanto_elite_four_lance Won
+  * sound door_open
+  * endscene
+  + FLAG_DEFEATED_LANCE
+  + beaten kanto_elite_four_lance
+  + seen pokemon_league_lances_room.Lance
+way 1, from answer 1
+  * battle kanto_elite_four_lance Lost
+  * scene over, unseen
+=== pokemon_league_loreleis_room.Lorelei
+from Lorelei at 6,5 of PokemonLeague_LoreleisRoom
+way 0
+  Lorelei> Welcome to the Pokémon League. I am Lorelei of the Elite Four.
+  Lorelei> No one can match me where Ice-type Pokémon are concerned. Not even a trainer who has come this far.
+  Lorelei> Your Pokémon will be frozen where they stand. Shall we begin?
+  Lorelei> You melted my ice... How remarkable.
+  Lorelei> Go on, then. The next room is open. But the three who wait beyond are stronger than I am.
+  * scene pokemon_league_loreleis_room.Lorelei
+  * battle kanto_elite_four_lorelei Won
+  * sound door_open
+  * endscene
+  + FLAG_DEFEATED_LORELEI
+  + beaten kanto_elite_four_lorelei
+  + seen pokemon_league_loreleis_room.Lorelei
+way 1, from answer 1
+  * battle kanto_elite_four_lorelei Lost
+  * scene over, unseen
 === pokemon_tower_2f.Rival
 from the trigger at 16,6 of PokemonTower_2F
 from the trigger at 17,5 of PokemonTower_2F
@@ -12874,6 +13086,31 @@ way 1, from answer 1
   + FLAG_HIDE_ROUTE_22_RIVAL
   = VAR_MAP_SCENE_ROUTE22 0 -> 2
   + seen route_22.The rival on Route 22
+=== route_22.LateRival
+from the trigger at 33,194 of Kanto
+from the trigger at 33,195 of Kanto
+from the trigger at 33,196 of Kanto
+way 0
+  Barry> Lucas! Hold it right there!
+  Barry> So you've got all eight Badges too. I knew you'd turn up sooner or later.
+  Barry> I've been training non-stop. My team's the strongest it's ever been, and I'm taking it all the way to the top.
+  Barry> Before I go, I'm going to show you the difference between us. Ready?
+  Barry> What? I lost? ...Fine. That just means I'll have to win where it really counts.
+  Barry> The Pokémon League is past Victory Road, beyond the gate. The trainers there are the best in the land.
+  Barry> I'll be waiting for you at the top, Lucas. Don't keep me waiting too long!
+  * scene route_22.The rival before the League's gate
+  * music kanto/rival
+  * battle kanto_rival_route22_late_bulbasaur Won
+  * music kanto/rival
+  * music area
+  * endscene
+  + FLAG_HIDE_ROUTE_22_RIVAL
+  = VAR_MAP_SCENE_ROUTE22 0 -> 4
+  + beaten kanto_rival_route22_late_bulbasaur
+  + seen route_22.The rival before the League's gate
+way 1, from answer 1
+  * battle kanto_rival_route22_late_bulbasaur Lost
+  * scene over, unseen
 === route_222.RichBoy
 from Rich Boy at 788,781 of Sinnoh
 way -
@@ -12952,6 +13189,78 @@ way -
 from the trigger at 7,2 of Route22_NorthEntrance
 way -
   Guard> Halt! Only trainers who hold the Boulder Badge may pass beyond this gate.
+=== route_23.CascadeGuard
+from Guard at 15,179 of Kanto
+way -
+  Guard> I check for the Cascade Badge. No trainer passes me without it.
+=== route_23.CascadeTrigger
+from the trigger at 13,179 of Kanto
+from the trigger at 14,179 of Kanto
+way -
+  Guard> Halt! Only trainers strong enough to face the Pokémon League may travel this road.
+  Guard> You need the Cascade Badge to go any further.
+=== route_23.EarthGuard
+from Guard at 6,65 of Kanto
+way -
+  Guard> I check for the Earth Badge, the last of the eight. No trainer passes me without it.
+=== route_23.EarthTrigger
+from the trigger at 4,65 of Kanto
+from the trigger at 5,65 of Kanto
+way -
+  Guard> Halt! Only trainers strong enough to face the Pokémon League may travel this road.
+  Guard> You need the Earth Badge to go any further.
+=== route_23.MarshGuard
+from Guard at 10,124 of Kanto
+way -
+  Guard> I check for the Marsh Badge. No trainer passes me without it.
+=== route_23.MarshTrigger
+from the trigger at 7,124 of Kanto
+from the trigger at 8,124 of Kanto
+from the trigger at 9,124 of Kanto
+way -
+  Guard> Halt! Only trainers strong enough to face the Pokémon League may travel this road.
+  Guard> You need the Marsh Badge to go any further.
+=== route_23.RainbowGuard
+from Guard at 14,153 of Kanto
+way -
+  Guard> I check for the Rainbow Badge. No trainer passes me without it.
+=== route_23.RainbowTrigger
+from the trigger at 12,153 of Kanto
+from the trigger at 13,153 of Kanto
+way -
+  Guard> Halt! Only trainers strong enough to face the Pokémon League may travel this road.
+  Guard> You need the Rainbow Badge to go any further.
+=== route_23.SoulGuard
+from Guard at 16,142 of Kanto
+way -
+  Guard> I check for the Soul Badge. No trainer passes me without it.
+=== route_23.SoulTrigger
+from the trigger at 13,142 of Kanto
+from the trigger at 14,142 of Kanto
+from the trigger at 15,142 of Kanto
+way -
+  Guard> Halt! Only trainers strong enough to face the Pokémon League may travel this road.
+  Guard> You need the Soul Badge to go any further.
+=== route_23.ThunderGuard
+from Guard at 8,170 of Kanto
+way -
+  Guard> I check for the Thunder Badge. No trainer passes me without it.
+=== route_23.ThunderTrigger
+from the trigger at 6,170 of Kanto
+from the trigger at 7,170 of Kanto
+way -
+  Guard> Halt! Only trainers strong enough to face the Pokémon League may travel this road.
+  Guard> You need the Thunder Badge to go any further.
+=== route_23.VolcanoGuard
+from Guard at 14,91 of Kanto
+way -
+  Guard> I check for the Volcano Badge. No trainer passes me without it.
+=== route_23.VolcanoTrigger
+from the trigger at 12,91 of Kanto
+from the trigger at 13,91 of Kanto
+way -
+  Guard> Halt! Only trainers strong enough to face the Pokémon League may travel this road.
+  Guard> You need the Volcano Badge to go any further.
 === route_24.Rocket
 from Man at 288,15 of Kanto
 way 0
@@ -15329,6 +15638,62 @@ way -
   * endscene
   = VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN 0 -> 2
   + seen viridian_city.The old man's lesson
+=== viridian_city_gym.Giovanni
+from Giovanni at 2,2 of ViridianCity_Gym
+way 0
+  Giovanni> So. You have come all this way at last.
+  Giovanni> Team Rocket's hideout, the Pokémon Tower, Silph Co. Every time, it was you who stood in my way.
+  Giovanni> This is my Gym. Here I am its Leader, and nothing more. Show me whether you were lucky, or whether you are strong.
+  Giovanni> Ha! There is no luck in that. You are strong, and I am beaten.
+  Giovanni> Take the Earth Badge. It is proof that you have beaten the Leader of the Viridian City Gym.
+  > Lucas received the Earth Badge from Giovanni!
+  Giovanni> With the Earth Badge, every Pokémon will obey you, whatever its level. It is the last of Kanto's eight.
+  Giovanni> Take this as well. Use it as you see fit.
+  > Lucas received the TM26!
+  > TM26 holds the move Earthquake.
+  > Lucas put it away in the TMs & HMs pocket.
+  Giovanni> TM26 is Earthquake. It shakes the whole ground, and very little can stand against it.
+  * scene viridian_city_gym.Giovanni
+  * battle kanto_leader_giovanni Won
+  * fanfare FanfareBadge
+  * defeat kanto_black_belt_takashi
+  * defeat kanto_cooltrainer_yuji
+  * defeat kanto_black_belt_atsushi
+  * defeat kanto_tamer_jason
+  * defeat kanto_tamer_cole
+  * defeat kanto_black_belt_kiyo
+  * defeat kanto_cooltrainer_samuel
+  * defeat kanto_cooltrainer_warren
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_LEADER_GIOVANNI
+  + FLAG_GOT_TM26_FROM_GIOVANNI
+  + FLAG_HIDE_MISC_KANTO_ROCKETS
+  = VAR_MAP_SCENE_ROUTE22 0 -> 3
+  + beaten kanto_black_belt_atsushi
+  + beaten kanto_black_belt_kiyo
+  + beaten kanto_black_belt_takashi
+  + beaten kanto_cooltrainer_samuel
+  + beaten kanto_cooltrainer_warren
+  + beaten kanto_cooltrainer_yuji
+  + beaten kanto_leader_giovanni
+  + beaten kanto_tamer_cole
+  + beaten kanto_tamer_jason
+  = badges Kanto 0 -> 10000000
+  + seen viridian_city_gym.Giovanni
+way 1, from answer 1
+  * battle kanto_leader_giovanni Lost
+  * scene over, unseen
+=== viridian_city_gym.GymGuy
+from Guide at 16,20 of ViridianCity_Gym
+way -
+  Guide> Hey, champ in the making! Nobody knows much about the Leader of this Gym. They say he's away more often than not.
+  Guide> His Pokémon fight with the strength of the earth itself. Water and Grass moves will serve you well. And watch your step on those arrows!
+=== viridian_city_gym.Statue
+from the tile read at 15,20 of ViridianCity_Gym
+from the tile read at 19,20 of ViridianCity_Gym
+way -
+  > Viridian City Pokémon Gym. Leader: ?. Winning trainers: Barry.
 === viridian_city_mart.MartClerk
 from Clerk at 2,3 of ViridianCity_Mart
 way -

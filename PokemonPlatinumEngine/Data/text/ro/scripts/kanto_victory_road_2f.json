@@ -1,0 +1,92 @@
+{
+  "DoubleEdgeTutor": [
+    {
+      "en": [
+        "Cooltrainer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You made it this far, so you must be serious. Want me to teach one of your Pokémon Double-Edge?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good choice. Which one?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Double-Edge hits with everything the user has, and it hurts the user too. Use it when it counts!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Suit yourself. I'll be here if you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't learn anything yet. Hatch it first!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry, that one just can't learn it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one already knows it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That move can't be forgotten here. Another time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

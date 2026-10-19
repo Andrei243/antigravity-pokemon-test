@@ -10,6 +10,9 @@
 
 script OnEnter
   if flag FLAG_DEFEATED_CHAMP end
+  # Oak comes in only once the rival is beaten (FireRed's new game hides him; here the room does, for every save)
+  setflag FLAG_HIDE_OAK_IN_CHAMP_ROOM
+  hide champions_room_prof_oak
   scene "The Champion"
   walk player up 9
   music "common/eye_champion"

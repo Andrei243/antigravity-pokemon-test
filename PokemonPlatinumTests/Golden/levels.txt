@@ -335,6 +335,18 @@ grass 31-35
 === jubilife_city
 Jubilife City
 trainers 2, 11: galactic_grunt_jubilife_city_1 11, galactic_grunt_jubilife_city_2 11
+=== kanto_victory_road_1f
+Victory Road
+grass 32-46
+trainers 2, 42: kanto_cooltrainer_naomi 42, kanto_cooltrainer_rolando 42
+=== kanto_victory_road_2f
+Victory Road
+grass 34-48
+trainers 5, 40-48: kanto_black_belt_daisuke 43, kanto_juggler_gregory 48, kanto_juggler_nelson 41, kanto_pokemaniac_dawson 40, kanto_tamer_vincent 44
+=== kanto_victory_road_3f
+Victory Road
+grass 32-46
+trainers 5, 41-45: kanto_cool_couple_ray_tyra 45, kanto_cooltrainer_alexa 42, kanto_cooltrainer_caroline 42, kanto_cooltrainer_colby 43, kanto_cooltrainer_george 42
 === lake_acuity
 Lake Acuity
 grass 38-41
@@ -465,6 +477,12 @@ trainers 2, 18-21: johto_gentleman_preston 18, johto_lass_connie 21
 === olivine_lighthouse_5f
 Lighthouse
 trainers 2, 18-20: johto_sailor_roberto 18, johto_sailor_terrell 20
+=== one_island
+One Island
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
 === oreburgh_gate_1f
 Oreburgh Gate
 grass 5-8
@@ -998,6 +1016,13 @@ old rod 3-15
 good rod 10-25
 super rod 30-55
 trainers 4, 54-56: ace_trainer_dana 56, ace_trainer_felix 56, ace_trainer_sandra 55, ranger_deshawn 54
+=== route_23
+Route 23
+grass 32-44
+surf 20-40
+old rod 5
+good rod 5-15
+super rod 15-35
 === route_230
 Route 230
 grass 47-50
@@ -1554,6 +1579,9 @@ surf 20-40
 old rod 5
 good rod 5-15
 super rod 15-35
+=== viridian_city_gym
+Viridian City
+trainers 8, 37-43: kanto_black_belt_atsushi 40, kanto_black_belt_kiyo 43, kanto_black_belt_takashi 38, kanto_cooltrainer_samuel 39, kanto_cooltrainer_warren 39, kanto_cooltrainer_yuji 38, kanto_tamer_cole 39, kanto_tamer_jason 43
 === viridian_forest
 Viridian Forest
 grass 3-6

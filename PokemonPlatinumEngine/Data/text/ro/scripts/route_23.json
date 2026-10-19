@@ -1,0 +1,376 @@
+{
+  "CascadeTrigger": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need the Cascade Badge to go any further."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the Cascade Badge, all right. Go on through!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ThunderTrigger": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need the Thunder Badge to go any further."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the Thunder Badge, all right. Go on through!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RainbowTrigger": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need the Rainbow Badge to go any further."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the Rainbow Badge, all right. Go on through!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SoulTrigger": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need the Soul Badge to go any further."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the Soul Badge, all right. Go on through!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MarshTrigger": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need the Marsh Badge to go any further."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the Marsh Badge, all right. Go on through!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VolcanoTrigger": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need the Volcano Badge to go any further."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the Volcano Badge, all right. Go on through!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "EarthTrigger": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need the Earth Badge to go any further."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the Earth Badge! You've won all eight. Victory Road is just ahead. Go on through!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Refused": [
+    {
+      "en": [
+        "Halt! Only trainers strong enough to face the Pokémon League may travel this road."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CascadeGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I check for the Cascade Badge. No trainer passes me without it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've shown me the Cascade Badge. The way is open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ThunderGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I check for the Thunder Badge. No trainer passes me without it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've shown me the Thunder Badge. The way is open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RainbowGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I check for the Rainbow Badge. No trainer passes me without it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've shown me the Rainbow Badge. The way is open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SoulGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I check for the Soul Badge. No trainer passes me without it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've shown me the Soul Badge. The way is open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "MarshGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I check for the Marsh Badge. No trainer passes me without it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've shown me the Marsh Badge. The way is open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VolcanoGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I check for the Volcano Badge. No trainer passes me without it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've shown me the Volcano Badge. The way is open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "EarthGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I check for the Earth Badge, the last of the eight. No trainer passes me without it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've shown me all eight Badges. Victory Road is yours to take. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

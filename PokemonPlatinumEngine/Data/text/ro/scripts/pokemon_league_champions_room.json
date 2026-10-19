@@ -1,0 +1,142 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! I was looking forward to seeing you here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "While you were busy out there, I beat the Elite Four. That makes me the new Pokémon League Champion!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've built the perfect team. Strong against every type, ready for anything. Nobody can touch us."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And now I get to prove it against you, of all people. {player}! I'm the strongest trainer in the world!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "NO! That can't be! You beat my best?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "After all that work to get here... my reign is over already? It's not fair!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you've won! Congratulations! You are the new Pokémon League Champion!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've grown so much since the day you left Pallet Town with that first Pokémon of yours. You truly came of age!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}... I'm disappointed in you. Do you know why you lost?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You forgot to treat your Pokémon with trust and love. Without that, you will never become the best."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, come with me. There is a room ahead where your victory will be kept for all time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Champion": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go on, then. Don't keep the old man waiting."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

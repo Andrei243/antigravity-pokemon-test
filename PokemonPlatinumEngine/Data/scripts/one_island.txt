@@ -19,7 +19,6 @@ label Arrive
   speaker "Bill"
   say "Here we are, One Island! Smell that sea air."
   say "Celio should be in the Pokémon Center. Come on, let's go and say hello!"
-  fade out 0.4
   hide one_island_bill
   setflag FLAG_HIDE_ONE_ISLAND_BILL
   setvar VAR_MAP_SCENE_ONE_ISLAND_HARBOR 3

@@ -1,0 +1,168 @@
+{
+  "Giovanni": [
+    {
+      "en": [
+        "Giovanni"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So. You have come all this way at last."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket's hideout, the Pokémon Tower, Silph Co. Every time, it was you who stood in my way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is my Gym. Here I am its Leader, and nothing more. Show me whether you were lucky, or whether you are strong."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Giovanni"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! There is no luck in that. You are strong, and I am beaten."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take the Earth Badge. It is proof that you have beaten the Leader of the Viridian City Gym."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Earth Badge from Giovanni!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With the Earth Badge, every Pokémon will obey you, whatever its level. It is the last of Kanto's eight."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this as well. Use it as you see fit."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM26 is Earthquake. It shakes the whole ground, and very little can stand against it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Having lost to you, I can no longer face the people who followed me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket is finished. I shall go away alone and train, as I once did, until I understand what I have lacked."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Should we meet again one day, it will be as trainers. Farewell, child."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, champ in the making! Nobody knows much about the Leader of this Gym. They say he's away more often than not."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "His Pokémon fight with the strength of the earth itself. Water and Grass moves will serve you well. And watch your step on those arrows!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Blew me away! You beat the mysterious Leader and won all eight Badges. The Pokémon League is waiting for you now!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Viridian City Pokémon Gym. Leader: ?. Winning trainers: {rival}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Viridian City Pokémon Gym. Leader: Giovanni. Winning trainers: {rival}, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

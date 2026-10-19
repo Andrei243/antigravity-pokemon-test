@@ -1,0 +1,85 @@
+{
+  "displayName": {
+    "en": [
+      "Victory Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "cooltrainer_m": {
+      "name": {
+        "en": [
+          "Rolando"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Rolando: Only the toughest trainers make it this far. Let's see if you're one of them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Rolando: You're one of them, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Naomi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Naomi: Victory Road is the final test before the League. I'm your first exam!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Naomi: You passed with top marks."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rock_barrier_1": {
+      "name": {
+        "en": [
+          "Rock barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rock_barrier_2": {
+      "name": {
+        "en": [
+          "Rock barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

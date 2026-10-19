@@ -734,4 +734,59 @@ public class KantoTests
         foreach (string song in new[] { "kanto/surf", "kanto/cinnabar", "kanto/pokemon_mansion" })
             Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists(song), song);
     }
+
+    // ------------------------------------------------------------------ plan 19 · K7: the road to the League
+
+    [Fact]
+    public void RouteTwentyThreeVictoryRoadTheLeagueAndOneIslandAreOpenAndWalkedTo()
+    {
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Kanto").Value;
+        foreach (string key in new[] { "route_23", "indigo_plateau_exterior" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string room in new[] { "VictoryRoad_1F", "VictoryRoad_2F", "VictoryRoad_3F", "IndigoPlateau_PokemonCenter_1F",
+                     "IndigoPlateau_PokemonCenter_2F", "PokemonLeague_LoreleisRoom", "PokemonLeague_BrunosRoom", "PokemonLeague_AgathasRoom",
+                     "PokemonLeague_LancesRoom", "PokemonLeague_ChampionsRoom", "PokemonLeague_HallOfFame", "OneIsland", "OneIsland_PokemonCenter_1F",
+                     "OneIsland_PokemonCenter_2F", "OneIsland_House1", "OneIsland_House2", "OneIsland_Harbor" })
+            Assert.True(walked.Keys.Any(m => m.Name == room), $"nobody walks into {room}");
+        // FireRed's Victory Road takes Kanto's prefix, where Platinum's keys are victory_road_*; it is a cave
+        Assert.Contains("kanto_victory_road_1f", Kanto.Index.Areas);
+        Assert.DoesNotContain("victory_road_1f", Kanto.Index.Areas);
+        Assert.False(BuiltMaps.Value["VictoryRoad_2F"].IsIndoors);
+        // One Island's town owns no chunk of its own (Treasure Beach does), and is open all the same
+        var island = BuiltMaps.Value["OneIsland"];
+        Assert.Equal("one_island", island.AreaAt(12, 132)?.Key);
+        Assert.False(island.IsSolid(12, 132));
+        Assert.Equal(PokemonType.Ground, BuiltMaps.Value["ViridianCity_Gym"].ArenaType);
+        Assert.Equal(PokemonType.Dragon, BuiltMaps.Value["PokemonLeague_LancesRoom"].ArenaType);
+    }
+
+    [Fact]
+    public void TheLeaguesDoorsLeadOnOnlyAndOpenAsEachIsBeaten()
+    {
+        string[] rooms = { "PokemonLeague_LoreleisRoom", "PokemonLeague_BrunosRoom", "PokemonLeague_AgathasRoom", "PokemonLeague_LancesRoom", "PokemonLeague_ChampionsRoom" };
+        for (int i = 0; i < rooms.Length; i++)
+        {
+            var room = BuiltMaps.Value[rooms[i]];
+            // Nobody comes back out to the hall: each room leads on, through the door its master opens
+            var on = Assert.Single(room.Warps);
+            Assert.NotNull(on.OpenedBy);
+            Assert.Equal(i + 1 < rooms.Length ? rooms[i + 1] : "PokemonLeague_HallOfFame", on.TargetMap);
+            var target = BuiltMaps.Value[on.TargetMap];
+            Assert.True(target.InBounds(on.TargetX, on.TargetY) && !target.IsSolid(on.TargetX, on.TargetY), $"{on.TargetMap} {on.TargetX},{on.TargetY}");
+        }
+        var hall = BuiltMaps.Value["IndigoPlateau_PokemonCenter_1F"];
+        var first = hall.Warps.Single(w => w.TargetMap == rooms[0]);
+        Assert.False(BuiltMaps.Value[rooms[0]].IsSolid(first.TargetX, first.TargetY));
+    }
+
+    [Fact]
+    public void OneIslandBuildsInItsOwnWayAndTheChaptersLooksAndSongsAreThere()
+    {
+        Assert.Equal(Architecture.Isle, Kanto.Overlay("one_island")!.Architecture);
+        foreach (string look in new[] { "lorelei", "bruno", "agatha", "lance", "celio", "cooltrainer_m", "cooltrainer_f", "swimmer_m_water", "swimmer_f_water" })
+            Assert.True(CharacterStyles.Default.Has(look), look);
+        foreach (string song in new[] { "kanto/victory_road", "kanto/sevii_123", "kanto/hall_of_fame" })
+            Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists(song), song);
+    }
 }

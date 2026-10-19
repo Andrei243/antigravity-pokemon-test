@@ -1,0 +1,233 @@
+{
+  "people": {
+    "viridian_giovanni": {
+      "name": {
+        "en": [
+          "Giovanni"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gym_guy": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Takashi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Takashi: The boss is waiting at the end of the arrows. You'll have to get past my fists first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Takashi: My fists... they're spinning more than those arrows."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m": {
+      "name": {
+        "en": [
+          "Yuji"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Yuji: Dizzy yet? A good trainer keeps their head while the floor spins!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Yuji: You kept your head. I lost mine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Atsushi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Atsushi: Hoo-hah! My training starts every morning at four. Can you match that?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Atsushi: Tomorrow I'll start at three."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Jason"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tamer Jason: Ground-type Pokémon are proud. They answer only to a firm hand like mine!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tamer Jason: My hand wasn't firm enough today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Cole"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tamer Cole: Nobody reaches the Leader without being tested. Let's see what you've got!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tamer Cole: You've got plenty. Go on, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_3": {
+      "name": {
+        "en": [
+          "Kiyo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Kiyo: I trained my body to be as hard as the ground itself!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Kiyo: The ground cracked."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m_2": {
+      "name": {
+        "en": [
+          "Samuel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Samuel: Only the best trainers ever get the chance to battle here. Prove you belong!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Samuel: You belong, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m_3": {
+      "name": {
+        "en": [
+          "Warren"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Warren: The Leader of this Gym is the strongest in Kanto. Turn back while you can!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Warren: Maybe you really can beat him..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,84 @@
+{
+  "displayName": {
+    "en": [
+      "One Island"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "one_island_bill": {
+      "name": {
+        "en": [
+          "Bill"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Celio's in the Pokémon Center, just up the road."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're lucky to have young Celio here. He's always tinkering with something clever in the Pokémon Center."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Isn't the weather here wonderful? It's warm all year round on the islands."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "OneIsland_EventScript_IslandSign": {
+      "en": [
+        "One Island\nA warm welcome from the Sevii Islands"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "OneIsland_EventScript_PokemonNetCenterSign": {
+      "en": [
+        "Pokémon Net Center\nLinking trainers far and wide"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

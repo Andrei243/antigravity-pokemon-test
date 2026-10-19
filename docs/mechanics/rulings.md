@@ -3071,6 +3071,64 @@ on FireRed's beats (`route_20.txt`, `seafoam_islands_*.txt`, `power_plant.txt`, 
 - **Koga's walls** (K6a's left-over) are a ruling now: they stay the low partitions a room of this game stands blocked
   tiles up as. A wall nobody sees would be a look of its own and leave a 3D field with no hint of where the maze runs;
   the puzzle of finding the way stays, by sight rather than by bumping.
+
+## Kanto's fifth chapter (2026-10-20, plan 19 · K7)
+
+From Cinnabar Island over the sea to One Island, and from Viridian City's Gym up Route 23 and Victory Road to the
+Pokémon League and Kanto's Hall of Fame, scripts of ours on FireRed's beats (`cinnabar_island*.txt`, `one_island*.txt`,
+`viridian_city_gym.txt`, `route_22.txt`, `route_23.txt`, `kanto_victory_road_*.txt`, `indigo_plateau_*.txt`,
+`pokemon_league_*.txt`, `common.SailWithBill`, `common.SeagallopTo*`, `common.VictoryRoadSwitch`), under FireRed's flags
+and variables. What differs from FireRed, and why:
+
+- **FireRed's Victory Road is `kanto_victory_road_*`**: Platinum's keys are `victory_road_1f` and the rest, so a GBA
+  game's Victory Road takes its region's prefix as the importer reads it (`GbaMap.KeyPrefix`, the plan's rule for keys
+  that would meet Sinnoh's; Emerald's will be `hoenn_victory_road_*`). Its maps keep FireRed's names (`VictoryRoad_1F`).
+- **Bill and the Seagallop**: once Blaine is beaten (`VAR_MAP_SCENE_CINNABAR_ISLAND` 1) Bill waits by the dock and asks
+  the player to sail with him; refused, he waits in the Pokémon Center and asks there. The Seagallop comes and goes
+  while the screen is dark and the ship is never drawn (`FLAG_HIDE_CINNABAR_SEAGALLOP`, and a flag of ours for One
+  Island's harbour): the trip is a line over the dark and the two come ashore outside One Island's harbour, where Bill
+  takes the player straight into the Pokémon Center (FireRed walks them up the road). Celio gives the **Tri-Pass**
+  (an item of ours, id 9026) at the first meeting, and Bill stays to help him. The harbour's sailor sails a holder of
+  the pass to Vermilion City or Cinnabar Island, and Vermilion's ferry sailor to One Island. Not here: the Meteorite,
+  Two and Three Island, Lostelle and the Berry Forest, Bill's return to Cinnabar (`FLAG_SEVII_DETOUR_FINISHED`), the
+  Ruby and the Sapphire: plan 19 · K9.
+- **One Island's town owns no chunk of its own**: it is a corner of the chunks Treasure Beach owns. The importer now
+  writes the chunks such an open area lies in, and the area is open by its tiles (`GbaImport.WriteWorld`'s lodged
+  areas). Its houses build in a way of their own (`Architecture.Isle`).
+- **Giovanni** battles for the Earth Badge and gives TM26; FireRed's set_gym_trainers 8 counts his eight trainers beaten,
+  `FLAG_HIDE_MISC_KANTO_ROCKETS` is set and the rival goes to wait on Route 22 (`VAR_MAP_SCENE_ROUTE22` 3). Spoken to
+  again, he gives up Team Rocket and is gone (`FLAG_HIDE_VIRIDIAN_GIOVANNI`, which FireRed's `removeobject` sets). The
+  Gym's spin arrows are FireRed's (plan 19 · K5, part b), now painted on the floor (style guide, "Spin arrows").
+- **The rival before the League's gate** is FireRed's late battle, by his starter, and can't be lost and the game go on.
+- **Route 23's guards** each check the next Badge on the tiles of their line, as FireRed's coordinate events do, counting
+  `VAR_MAP_SCENE_ROUTE23` up from Route 22's gate's 1 to 8. FireRed's lines run on over rock and the forest at the road's
+  west edge, which nobody can stand on here, and those tiles are left out; a trainer without the Badge is turned back a
+  step south (beside the last guard, where rock lies south, a step west and south).
+- **Victory Road's floor switches** are FireRed's triggers only a boulder sets off (their value, 99, is one the
+  variable never holds): here each is a pit (`Map.BoulderPits`), whose script lifts its rock barrier. The barriers,
+  which FireRed draws with `setmetatile`, are heaps of rock of ours (`Rubble`) on their tiles, hidden by flags of ours
+  (`FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED` and the rest, for FireRed's variables at 100); Route 23 puts them back, and the
+  two boulders of the hole on 3F (`FLAG_HIDE_VICTORY_ROAD_3F_BOULDER`, `_2F_`), as FireRed's Route23_OnTransition does.
+  A boulder left on a switch goes back where it started when the floor is left, as every pushed boulder does; the
+  barrier stays open until Route 23. The Cooltrainer on 2F teaches Double-Edge once (`MoveTutors.Kanto`, Return its kin
+  among Platinum's machines).
+- **The League's rooms** are FireRed's, each leading on only: the way back to the hall is shut behind the player (FireRed
+  closes it with `setmetatile`), and the door ahead, drawn shut in FireRed's layout, is a door of ours opened by its
+  master's flag (`FLAG_DEFEATED_LORELEI` to `FLAG_DEFEATED_CHAMP`; an overlay's `doors` with `openedBy`). The arrivals
+  are on the last row of each room's floor, since FireRed's thresholds lie past it. Coming into the Indigo Plateau's
+  Pokémon Center puts all four back (FireRed clears the same as its whiteout and its Hall of Fame leave the League).
+  The four are spoken to for their battles (FireRed walks the player in first; here nobody walks). The rematch teams,
+  Lorelei's absence and the door guard's word about it are plan 19 · K9's.
+- **The Champion** is the rival, battled with FireRed's first teams; his records are of the Champion's class (its band
+  and song) under the rival's own name (`TrainerDatabase.IsRivalAsChampion`). Oak comes in after the battle
+  (`FLAG_HIDE_OAK_IN_CHAMP_ROOM`) and takes the player to the Hall of Fame.
+- **Kanto's Hall of Fame** is Sinnoh's scene on FireRed's beats: Oak's words, the team recorded (`halloffame`, which
+  still gives Sinnoh's Champ Ribbon), `KantoHallOfFame` (the region's own flag, `Region.StoryCompleteFlag`) and FireRed's
+  `FLAG_SYS_GAME_CLEAR`, the team's entry, the team healed, the game saved in the player's room in Pallet Town, and
+  the credits (this game's roll). The room's floor is FireRed's `MB_ICE`, which slides a walker, so nobody walks in it.
+  `FLAG_GAME_COMPLETED`, Sinnoh's, is not set. What a Champion of Kanto finds afterwards (the sailor moved to
+  Vermilion's harbour and the way on to Johto, the National Pokédex) is plan 19 · K8's and K9's.
+
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,

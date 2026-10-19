@@ -1,0 +1,176 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Bill"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey there, Celio! Long time no see."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Celio"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bill! You really came all the way out here? I can't believe it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bill"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is {player}. A real up-and-coming trainer, beat every Gym Leader in Kanto. Came along to keep me company."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Celio"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pleased to meet you! I'm Celio. I'm trying to link the PCs here on the islands with the PCs back in Kanto."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But the machine just won't talk to Kanto's network. I've been stuck on it for weeks."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bill"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Leave it to me. Two heads are better than one, right? Let's see what's going on in there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Celio"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks, Bill! Oh, and {player}, you should see more of the islands while you're here. Please, take this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With the Tri-Pass, the Seagallop will take you between Kanto and the first three islands, whenever you like."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bill"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We'll be at this for a while. Go and have a look around, {player}. The sailor at the harbour can take you back to Kanto too."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Bill": [
+    {
+      "en": [
+        "Bill"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm, what if I connect this here... No, that's not it either. Don't worry, we'll crack it!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Celio": [
+    {
+      "en": [
+        "Celio"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bill's a genius. With his help, I'm sure the machine will link up with Kanto in no time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry, I'm in the middle of something. This machine is giving me no end of trouble."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

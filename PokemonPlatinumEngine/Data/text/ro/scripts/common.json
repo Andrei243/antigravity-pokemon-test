@@ -1207,6 +1207,46 @@
       ]
     }
   ],
+  "SailWithBill": [
+    {
+      "en": [
+        "The Seagallop sped across the waves to One Island."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SeagallopSails": [
+    {
+      "en": [
+        "The Seagallop sped across the waves."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VictoryRoadSwitch": [
+    {
+      "en": [
+        "Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VictoryRoadBarrier": [
+    {
+      "en": [
+        "A wall of rock blocks the way. A switch somewhere might clear it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "PokemonMansionBarrier": [
     {
       "en": [

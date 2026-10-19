@@ -1,0 +1,98 @@
+{
+  "people": {
+    "one_island_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "one_island_pokemon_center_bill": {
+      "name": {
+        "en": [
+          "Bill"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "celio": {
+      "name": {
+        "en": [
+          "Celio"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came here from Pallet Town on the ferry. Do you know Pallet Town? It's tiny!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a great big volcano at the north end of this island. Mt. Ember, they call it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crush_girl": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I wish I could trade Pokémon with my boyfriend. He lives far, far away."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "OneIsland_PokemonCenter_1F_EventScript_NetworkMachine": {
+      "en": [
+        "A great big machine, humming and blinking. It must be Celio's network machine."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

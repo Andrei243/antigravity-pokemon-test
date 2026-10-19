@@ -64,5 +64,79 @@
         "Eu plec spre Orașul Pewter să-mi iau o Insignă. Încearcă să ții pasul, {player}!"
       ]
     }
+  ],
+  "LateRival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Hold it right there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you've got all eight Badges too. I knew you'd turn up sooner or later."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been training non-stop. My team's the strongest it's ever been, and I'm taking it all the way to the top."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Before I go, I'm going to show you the difference between us. Ready?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What? I lost? ...Fine. That just means I'll have to win where it really counts."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Pokémon League is past Victory Road, beyond the gate. The trainers there are the best in the land."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll be waiting for you at the top, {player}. Don't keep me waiting too long!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

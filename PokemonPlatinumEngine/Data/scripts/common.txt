@@ -1259,6 +1259,7 @@ script SailWithBill
   speaker none
   text "The Seagallop sped across the waves to One Island."
   warp "OneIsland" 12 137 up
+  fade in 0.4
   return
 
 # The Seagallop sails a holder of the Tri-Pass between Vermilion City, Cinnabar Island and One Island (plan 19 · K7;
@@ -1267,16 +1268,19 @@ script SailWithBill
 script SeagallopToVermilion
   call SeagallopSails
   warp "Kanto" 288 232 down
+  fade in 0.4
   return
 
 script SeagallopToCinnabar
   call SeagallopSails
   warp "Kanto" 82 387 left
+  fade in 0.4
   return
 
 script SeagallopToOneIsland
   call SeagallopSails
   warp "OneIsland_Harbor" 8 5 up
+  fade in 0.4
   return
 
 script SeagallopSails

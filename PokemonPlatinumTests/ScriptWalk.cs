@@ -348,10 +348,10 @@ internal sealed class ScriptWalk
                     break;
                 case Query.Badges:
                     foreach (int badges in new[] { c.Number, c.Number - 1 }.Where(b => b is > 0 and <= 8))
-                        Add($"{badges} badges", host => host.Story.SetBadges("Sinnoh", (1 << badges) - 1));
+                        Add($"{badges} badges", host => host.Story.SetBadges(host.Region, (1 << badges) - 1));
                     break;
                 case Query.Badge:
-                    Add($"the {c.Name} badge", host => host.Story.GiveBadge("Sinnoh", c.Name));
+                    Add($"the {c.Name} badge", host => host.Story.GiveBadge(host.Region, c.Name));
                     break;
                 case Query.NationalDex:
                     Add("the National Pokédex", host => host.NationalDex = true);

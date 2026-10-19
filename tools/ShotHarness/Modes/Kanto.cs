@@ -196,6 +196,28 @@ partial class Harness
             ("kh7_game_corner_slots", "CeladonCity_GameCorner", 8, 12, Direction.Up),
             ("kh8_silph_pads", "SilphCo_5F", 20, 8, Direction.Up),
             ("kh9_safari_rest_house_outside", "SafariZone_Center", 26, 20, Direction.Up),
+            // Plan 19 · K7: Viridian's Gym and its spin arrows, Route 23, Victory Road, the Indigo Plateau and the League's
+            // rooms, One Island and its rooms
+            ("kj0_viridian_gym", "ViridianCity_Gym", 17, 21, Direction.Up),
+            ("kj1_viridian_gym_arrows", "ViridianCity_Gym", 10, 12, Direction.Up),
+            ("kj2_route23_guards", "Kanto", 12, 176, Direction.Up),
+            ("kj3_route23_water", "Kanto", 10, 150, Direction.Up),
+            ("kj4_route23_victory_road", "Kanto", 5, 62, Direction.Up),
+            ("kj5_victory_road_1f", "VictoryRoad_1F", 11, 18, Direction.Up),
+            ("kj6_victory_road_2f", "VictoryRoad_2F", 46, 13, Direction.Left),
+            ("kj7_victory_road_3f", "VictoryRoad_3F", 5, 3, Direction.Down),
+            ("kj8_indigo_plateau", "Kanto", 11, 20, Direction.Up),
+            ("kj9_indigo_center", "IndigoPlateau_PokemonCenter_1F", 11, 15, Direction.Up),
+            ("kk0_loreleis_room", "PokemonLeague_LoreleisRoom", 6, 10, Direction.Up),
+            ("kk1_brunos_room", "PokemonLeague_BrunosRoom", 6, 10, Direction.Up),
+            ("kk2_agathas_room", "PokemonLeague_AgathasRoom", 6, 10, Direction.Up),
+            ("kk3_lances_room", "PokemonLeague_LancesRoom", 6, 11, Direction.Up),
+            ("kk4_champions_room", "PokemonLeague_ChampionsRoom", 6, 12, Direction.Up),
+            ("kk5_hall_of_fame", "PokemonLeague_HallOfFame", 5, 11, Direction.Up),
+            ("kk6_one_island", "OneIsland", 12, 133, Direction.Up),
+            ("kk7_one_island_center", "OneIsland_PokemonCenter_1F", 9, 8, Direction.Up),
+            ("kk8_one_island_harbor", "OneIsland_Harbor", 8, 4, Direction.Up),
+            ("kk9_rocket_hideout_arrows", "RocketHideout_B3F", 20, 14, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -234,6 +256,8 @@ partial class Harness
         At("Kanto", 288, 150, Direction.Up); Frames(2); Shot("ke1_saffron_night");
         At("Kanto", 216, 320, Direction.Up); Frames(2); Shot("kf8_fuchsia_night");
         At("Kanto", 74, 388, Direction.Up); Frames(2); Shot("ki5_cinnabar_night");
+        At("Kanto", 11, 20, Direction.Up); Frames(2); Shot("kl0_indigo_plateau_night");
+        At("OneIsland", 12, 133, Direction.Up); Frames(2); Shot("kl1_one_island_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

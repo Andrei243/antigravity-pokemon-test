@@ -1,0 +1,92 @@
+{
+  "displayName": {
+    "en": [
+      "Route 23"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "cascade_badge_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "thunder_badge_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rainbow_badge_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "soul_badge_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "marsh_badge_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "volcano_badge_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "earth_badge_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route23_EventScript_VictoryRoadGateSign": {
+      "en": [
+        "Victory Road Gate\nPokémon League ahead"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
