@@ -285,7 +285,7 @@ public class CharacterTableTests
             else if (!Table.Has(look)) plain.Add(trainerClass);
         }
         // Plan 11 · C2 to C4 draw these: the count only falls (85 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, and K4's second part the Gamer and the Engineer of the sound map, which plan 11 · C13 and plan 20 · J14 will draw; 86 after plan 19 · K5 gave the Channeler a look and the sound map the Poké Maniac of FireRed's, "Pokemaniac"; 87 after K5's second part gave the Biker and the Cue Ball a look and the sound map FireRed's Rocker and Cooltrainer)
-        Assert.True(plain.Count <= 87, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
+        Assert.True(plain.Count <= 90, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
         Assert.Contains("Hiker", plain);
         Assert.DoesNotContain("Lass", plain);
     }

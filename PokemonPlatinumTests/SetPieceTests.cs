@@ -781,10 +781,11 @@ public class SetPieceTests
         Assert.Equal(Op.SetFlag, goes[flicker + 2].Op);
         // Six changes take as long as the three goings and comings the scene had before
         Assert.Equal(1.2f, SetPieces.FlickerLength(6), 4);
-        // Nobody else in the game is shaken or flickers: the two uses plan 09's table names
+        // Nobody else in the game is shaken or flickers but the two uses plan 09's table names and the three beasts of the Burned Tower (plan 20 · J7)
         var all = ScriptLibrary.Default.All.SelectMany(s => s.Everything()).ToList();
         Assert.Single(all, i => i.Op == Op.Shake);
-        Assert.Single(all, i => i.Op == Op.Flicker);
+        Assert.Equal(4, all.Count(i => i.Op == Op.Flicker));
+        Assert.Equal(3, all.Count(i => i.Op == Op.Flicker && i.Name.StartsWith("d18r0102_")));
         Assert.Single(all, i => i.Op == Op.Anim && i.Piece == SetPiece.HallOfFame);
         Assert.Equal(2, all.Count(i => i.Op == Op.Anim && i.Piece == SetPiece.Heal));
     }
