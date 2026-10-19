@@ -1,0 +1,83 @@
+{
+  "key": "olivine",
+  "index": 77,
+  "name": "Olivine City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_ASAGI",
+  "nightMusic": "GS_C_ASAGI",
+  "encounters": "T26",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Corsola", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Corsola", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 269, "z": 238, "to": "olivine_gym", "toWarp": 0 },
+    { "x": 272, "z": 257, "to": "olivine_pokecenter_1f", "toWarp": 0 },
+    { "x": 285, "z": 257, "to": "olivine_pokemart", "toWarp": 0 },
+    { "x": 301, "z": 263, "to": "olivine_lighthouse_1f", "toWarp": 0 },
+    { "x": 273, "z": 247, "to": "olivine_northwest_house", "toWarp": 0 },
+    { "x": 265, "z": 257, "to": "olivine_cafe", "toWarp": 0 },
+    { "x": 287, "z": 241, "to": "olivine_north_house", "toWarp": 0 },
+    { "x": 292, "z": 241, "to": "olivine_northeast_house", "toWarp": 0 },
+    { "x": 279, "z": 276, "to": "ss_aqua_olivine_port_interior", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t26_seaman_2", "looks": "seaman_2", "movement": "5", "x": 304, "z": 266, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T26_008+1" },
+    { "id": "t26_gsboy1", "looks": "gsboy1", "movement": "3", "x": 280, "z": 242, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "T26_009+1" },
+    { "id": "t26_seaman_2_2", "looks": "seaman_2", "movement": "3", "x": 276, "z": 261, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "T26_010+1" },
+    { "id": "t26_gsrivel", "looks": "gsrivel", "movement": "0", "x": 269, "z": 238, "facing": 1, "rangeX": 2, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_OLIVINE_RIVAL", "script": "T26_000+1" },
+    { "id": "t26_monstarball", "looks": "monstarball", "movement": "0", "x": 309, "z": 250, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_T26_TM57", "item": "TM57", "script": "std_itemball_t26_tm57" },
+    { "id": "t26_seaman_2_3", "looks": "seaman_2", "movement": "15", "x": 273, "z": 284, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t26_gswoman2", "looks": "gswoman2", "movement": "14", "x": 273, "z": 285, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t26_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 278, "z": 257, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T26_011+1" },
+    { "id": "t26_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "0", "x": 252, "z": 271, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_05E", "script": "65535" }
+  ],
+  "signs": [
+    { "x": 265, "z": 238, "type": 1, "script": "T26_004+1" },
+    { "x": 279, "z": 247, "type": 1, "script": "T26_005+1" },
+    { "x": 280, "z": 266, "type": 1, "script": "T26_006+1" },
+    { "x": 302, "z": 264, "type": 1, "script": "T26_007+1" },
+    { "x": 309, "z": 256, "type": 2, "script": "std_hiddenitem_t26_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_T26_RARE_CANDY" },
+    { "x": 285, "z": 231, "type": 2, "script": "std_hiddenitem_r39_t26_full_heal", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_R39_T26_FULL_HEAL" }
+  ],
+  "triggers": [
+    { "x": 272, "z": 239, "width": 1, "depth": 5, "script": "T26_001+1", "variable": "VAR_UNK_4078", "value": "0" }
+  ]
+}

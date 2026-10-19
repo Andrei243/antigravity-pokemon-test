@@ -16,7 +16,7 @@ internal static class WorldWalk
 {
     private static readonly Direction[] Ways = { Direction.Up, Direction.Right, Direction.Left, Direction.Down };
 
-    private const FieldMoves Everything = FieldMoves.Surf | FieldMoves.Waterfall | FieldMoves.RockClimb;
+    private const FieldMoves Everything = FieldMoves.Surf | FieldMoves.Waterfall | FieldMoves.RockClimb | FieldMoves.Whirlpool;
 
     /// <summary>The tiles reached on each map, from one place or several.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> From(Func<string, Map> mapOf, params MapSpot[] starts)

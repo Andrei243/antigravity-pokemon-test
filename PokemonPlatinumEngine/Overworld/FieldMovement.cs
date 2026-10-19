@@ -31,7 +31,9 @@ public enum FieldMoves
     Waterfall = 2,
     RockClimb = 4,
     /// <summary>Knows Flash, which lights a dark cave once it is used (<see cref="Darkness"/>, <see cref="FieldMoveRules"/>).</summary>
-    Flash = 8
+    Flash = 8,
+    /// <summary>Knows Whirlpool, which carries a surfer across a whirlpool once they have said yes to it (plan 20 · J8).</summary>
+    Whirlpool = 16
 }
 
 public enum StepKind
@@ -77,7 +79,9 @@ public enum Obstacle
     /// <summary>Ground a Bicycle can't be ridden on: snow, mud, grass taller than the rider.</summary>
     NoBicycles,
     /// <summary>A Bicycle's ramp: a wall on foot, from the side and from its far end, or with nowhere to land.</summary>
-    Ramp
+    Ramp,
+    /// <summary>A whirlpool that needs Whirlpool, or that has no open water beyond it (plan 20 · J8).</summary>
+    Whirlpool
 }
 
 /// <summary>
@@ -258,6 +262,19 @@ public static class FieldMovement
             return new FieldStep(StepKind.Climb, tx, ty, map.HeightAt(tx, ty), Pace.Fast, TravelMode.Surfing, Obstacle.None);
         }
 
+        // A whirlpool (HeartGold's, plan 20 · J8) stops a surfer from every side until the player has said yes to
+        // Whirlpool, which carries them across its run of whirlpool tiles to the open water past it, as Waterfall carries
+        // them up a fall; someone on foot can't set out onto one at all
+        if (there == TileBehavior.Whirlpool)
+        {
+            if (walker.Mode != TravelMode.Surfing) return No(Obstacle.Water);
+            if (!walker.Moves.HasFlag(FieldMoves.Whirlpool) || !walker.Climbing) return No(Obstacle.Whirlpool);
+            var (tx, ty) = PastRun(map, nx, ny, dx, dy, b => b == TileBehavior.Whirlpool);
+            if (!map.InBounds(tx, ty) || map.IsSolid(tx, ty) || !map.IsDeepWater(tx, ty) || map.NpcIn(tx, ty, map.HeightAt(tx, ty)) != null)
+                return No(Obstacle.Whirlpool);
+            return new FieldStep(StepKind.Climb, tx, ty, map.HeightAt(tx, ty), Pace.Fast, TravelMode.Surfing, Obstacle.None);
+        }
+
         // A rock face is climbed along its grain with Rock Climb, once the player has said yes to it, to the ground past it
         if (there is TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest)
         {
@@ -409,7 +426,7 @@ public static class FieldMovement
         int nx = x + dx, ny = y + dy;
         if (!map.InBounds(nx, ny) || map.IsSolid(nx, ny) || map.GetNpcAt(nx, ny) != null) return false;
         var there = map.BehaviourAt(nx, ny);
-        if (!TileBehaviors.IsSurfable(there) || there == TileBehavior.Waterfall) return false;
+        if (!TileBehaviors.IsSurfable(there) || there is TileBehavior.Waterfall or TileBehavior.Whirlpool) return false;
         if (ClosedToward(map.BehaviourAt(x, y), dir) || ClosedToward(there, Opposite(dir))) return false;
         var (height, onDeck) = map.SurfaceAt(nx, ny, walker.Height);
         return !onDeck && MathF.Abs(height - walker.Height) < StepLimit;
@@ -447,6 +464,7 @@ public static class FieldMovement
                     "Waterfall" => FieldMoves.Waterfall,
                     "Rock Climb" => FieldMoves.RockClimb,
                     "Flash" => FieldMoves.Flash,
+                    "Whirlpool" => FieldMoves.Whirlpool,
                     _ => FieldMoves.None
                 };
             }

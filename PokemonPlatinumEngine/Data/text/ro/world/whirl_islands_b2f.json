@@ -1,0 +1,25 @@
+{
+  "people": {
+    "d40r0104_bozu": {
+      "name": {
+        "en": [
+          "Sage"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Below us lies the deepest cave of the islands. The guardian of the sea sleeps there.",
+          "It will not wake for just anyone. Go back up, young one."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

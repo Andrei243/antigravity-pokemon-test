@@ -1,0 +1,23 @@
+{
+  // The Glitter Lighthouse's ground floor (plan 20 · J8): HeartGold's floor, our words. Its lift (warp 1) is ridden in
+  // the chapter that brings the medicine up (plan 20 · J9); the stairs climb meanwhile
+  "area": "olivine_lighthouse_1f",
+  "bgmTrack": "johto/lighthouse",
+  "locked": [
+    1
+  ],
+  "people": {
+    "d27r0101_middlewoman1_2": {
+      "name": "Woman",
+      "dialog": [
+        "The Pokémon that lights the lamp at the top has fallen ill. The Gym Leader hasn't left its side."
+      ]
+    },
+    "d27r0101_seaman_2": {
+      "name": "Sailor",
+      "dialog": [
+        "The lift's only for the keepers. The rest of us take the stairs, all six floors of them!"
+      ]
+    }
+  }
+}

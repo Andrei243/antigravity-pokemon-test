@@ -1,0 +1,27 @@
+{
+  "key": "route_40_battle_frontier_gatehouse",
+  "index": 366,
+  "name": "Route 40",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_6_34",
+  "nightMusic": "GS_R_6_34",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 12, "to": "route_40", "toWarp": 0 },
+    { "x": 5, "z": 2, "to": "battle_frontier_frontier_access", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "w40r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 5, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_25B", "script": "W40R0101_000+1" },
+    { "id": "w40r0101_counterm", "looks": "counterm", "movement": "17", "x": 1, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "W40R0101_002+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -36,6 +36,8 @@ public static class FieldScripts
     public const string Water = "common.Water";
     public const string Waterfall = "common.Waterfall";
     public const string RockFace = "common.RockFace";
+    /// <summary>A whirlpool faced from the water (HeartGold's, plan 20 · J8).</summary>
+    public const string Whirlpool = "common.Whirlpool";
 
     /// <summary>An Escape Rope used from the bag, and the Cycling Road's gate keepers turning back anyone not riding.</summary>
     public const string EscapeRope = "common.EscapeRope";

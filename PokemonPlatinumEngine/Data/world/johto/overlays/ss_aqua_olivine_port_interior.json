@@ -1,0 +1,31 @@
+{
+  // Olivine's port hall (plan 20 · J8), where the S.S. Aqua's passengers wait. The ship and its quay (warps 1 and 2)
+  // wait for the voyage to Kanto (plan 20 · J15), and Professor Oak's visit for its chapter
+  "area": "ss_aqua_olivine_port_interior",
+  "bgmTrack": "johto/olivine",
+  "locked": [
+    1,
+    2
+  ],
+  "people": {
+    "p01r0101_seaman_2": {
+      "name": "Sailor",
+      "still": true,
+      "dialog": [
+        "Welcome to Olivine Port! The S.S. Aqua isn't sailing just now, I'm afraid. Come back another time."
+      ]
+    },
+    "p01r0101_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "I'm waiting for the ship to Kanto. I've been told it's a very fast one."
+      ]
+    },
+    "p01r0101_gsboy2": {
+      "name": "Boy",
+      "dialog": [
+        "The S.S. Aqua's the fastest ship in the world! One day I'll ride on it."
+      ]
+    }
+  }
+}

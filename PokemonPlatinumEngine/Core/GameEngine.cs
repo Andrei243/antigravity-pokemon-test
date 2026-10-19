@@ -1800,6 +1800,8 @@ public partial class GameEngine
         var walker = new Walker(flow.Player.Mode, standing, Moves: flow.Player.Moves);
         var spot = FieldMoveRules.SpotOf(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing, walker) with { Partner = partner != null };
         if (spot.Waterfall && spot.Surfing) StartScript(FieldScripts.Waterfall);
+        // (and a whirlpool faced from the water: HeartGold's, plan 20 · J8)
+        else if (spot.Whirlpool && spot.Surfing) StartScript(FieldScripts.Whirlpool);
         else if (spot.RockFace && flow.Player.Mode == TravelMode.OnFoot) StartScript(FieldScripts.RockFace);
         else if (spot.Water && FieldMoveRules.Knower(flow.Party, FieldMove.Surf) != null
                  && FieldMoveRules.Check(FieldMove.Surf, spot, flow.Story) == FieldMoveError.None) StartScript(FieldScripts.Water);

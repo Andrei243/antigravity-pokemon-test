@@ -1,0 +1,59 @@
+{
+  // Olivine City's Pokémon Center (plan 20 · J8), the Centers' floor with the town's people. The counters for the link
+  // say it is closed, as in every Center (decision 06 · 7)
+  "area": "olivine_pokecenter_1f",
+  "bgmTrack": "johto/olivine",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t26pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t26pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t26pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t26pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t26pc0101_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "A sailor once told me there's a city across the sea where Trainers battle all day. Sounds like fun."
+      ]
+    },
+    "t26pc0101_fishing_2": {
+      "name": "Fisherman",
+      "dialog": [
+        "The sea off Olivine is full of Tentacool. Bring something that can handle poison."
+      ]
+    },
+    "t26pc0101_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "There's an island town west across the sea. You need a Pokémon that can Surf to get there."
+      ]
+    },
+    "t26pc0101_gswoman2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "The light in the lighthouse has gone dim lately. I hope nothing's wrong up there."
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "people": {
+    "w40r0101_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Beyond this gate is the Battle Frontier, where the strongest Trainers gather. It isn't open to visitors yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

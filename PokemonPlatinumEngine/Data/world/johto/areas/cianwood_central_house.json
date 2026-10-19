@@ -1,0 +1,27 @@
+{
+  "key": "cianwood_central_house",
+  "index": 235,
+  "name": "Cianwood City",
+  "matrix": 95,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TANBA",
+  "nightMusic": "GS_C_TANBA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "cianwood", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "t24r0701_gswoman1", "looks": "gswoman1", "movement": "15", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T24R0701_000+1" },
+    { "id": "t24r0701_gsbabygirl1", "looks": "gsbabygirl1", "movement": "14", "x": 1, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T24R0701_002+1" },
+    { "id": "t24r0701_gsgirl1", "looks": "gsgirl1", "movement": "5", "x": 8, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T24R0701_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

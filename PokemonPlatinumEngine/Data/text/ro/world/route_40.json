@@ -1,0 +1,144 @@
+{
+  "people": {
+    "w40_gsswimmerm": {
+      "name": {
+        "en": [
+          "Simon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Simon: The current's gentle here. Perfect for a battle at sea!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Simon: I'll float back to shore and think about that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w40_gsswimmerw": {
+      "name": {
+        "en": [
+          "Elaine"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Elaine: I swim out here every morning. You're in my lane!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Elaine: Fine, share the lane."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w40_gsswimmerm_2": {
+      "name": {
+        "en": [
+          "Randall"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Randall: I'm training for the swim to Cianwood. Help me warm up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Randall: Warmed up, and worn out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w40_gsswimmerw_2": {
+      "name": {
+        "en": [
+          "Paula"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Paula: Surfing on a Pokémon? That's cheating! Battle me fair and square."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Paula: All right, you've earned the ride."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w40_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Cianwood City's straight across the sea, west of here. You'll want a Pokémon that knows Surf."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "W40_002+1": {
+      "en": [
+        "Route 40\nCianwood City lies to the west, across the sea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "W40_009+1": {
+      "en": [
+        "Battle Frontier\nThe gate to the place where the strongest gather."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

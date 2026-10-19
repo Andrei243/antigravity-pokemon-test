@@ -1,0 +1,28 @@
+{
+  // The Moomoo Farm's barn (plan 20 · J8): the farmer's granddaughters by the sick Miltank, and the rest of the herd,
+  // which the original hides behind a flag nothing in this game sets (hiddenBy ""). Feeding the sick one is a later
+  // session's
+  "area": "route_39_moomoo_farm_stable",
+  "bgmTrack": "johto/route38",
+  "people": {
+    "r39r0201_gsbabygirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [
+        "Our Miltank is poorly. She just lies there and won't eat her hay."
+      ]
+    },
+    "r39r0201_gsbabygirl1_2": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [
+        "Grandpa says lots of Berries would make her better. Do you have any?"
+      ]
+    },
+    "r39r0201_tsure_poke_static_miltank": { "name": "Miltank", "npcType": "Pokemon", "species": "Miltank", "still": true, "dialog": [ "Mooo... It looks very weak." ] },
+    "r39r0201_tsure_poke_static_miltank_2": { "name": "Miltank", "npcType": "Pokemon", "species": "Miltank", "hiddenBy": "", "dialog": [ "Moo!" ] },
+    "r39r0201_tsure_poke_static_miltank_3": { "name": "Miltank", "npcType": "Pokemon", "species": "Miltank", "hiddenBy": "", "dialog": [ "Mooo!" ] },
+    "r39r0201_tsure_poke_static_miltank_4": { "name": "Miltank", "npcType": "Pokemon", "species": "Miltank", "hiddenBy": "", "dialog": [ "Moo, moo!" ] },
+    "r39r0201_tsure_poke_static_miltank_5": { "name": "Miltank", "npcType": "Pokemon", "species": "Miltank", "hiddenBy": "", "dialog": [ "Moo..." ] }
+  }
+}

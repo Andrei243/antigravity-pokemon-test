@@ -1,0 +1,21 @@
+{
+  // The Glitter Lighthouse's second floor (plan 20 · J8): two trainers by their own records
+  "area": "olivine_lighthouse_2f",
+  "bgmTrack": "johto/lighthouse",
+  "people": {
+    "everywhere_gsgentleman": {
+      "name": "Alfred",
+      "trainer": {
+        "dialogueBefore": "Gentleman Alfred: I climb these stairs every day to visit the sick Pokémon. Excuse me, a battle first!",
+        "dialogueAfter": "Gentleman Alfred: My knees are not what they were, and nor is my team."
+      }
+    },
+    "everywhere_seaman_2": {
+      "name": "Huey",
+      "trainer": {
+        "dialogueBefore": "Sailor Huey: Ahoy! A battle on the stairs keeps a sailor's legs strong!",
+        "dialogueAfter": "Sailor Huey: Blown off course, I was."
+      }
+    }
+  }
+}

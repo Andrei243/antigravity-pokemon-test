@@ -326,7 +326,11 @@
     // Plan 21 · H2, part b: Emerald's looks of the road to Rustboro that have one of their own now
     "aqua_member_m": "aqua_grunt", "aqua_member_f": "aqua_grunt",
     // Plan 20 · J7: the Slowpoke Well's executive and its woman grunt, and Bugsy, until plan 20 · J14's looks
-    "rkanbum3": "rocket", "rocketw": "rocket", "gsleader2": "Youngster"
+    "rkanbum3": "rocket", "rocketw": "rocket", "gsleader2": "Youngster",
+    // Plan 20 · J8: the west and the sea (Jasmine stands as Platinum's own Jasmine, the sailors as captains in their caps,
+    // the black belts of Chuck's Gym and Chuck himself as black belts), until plan 20 · J14's looks
+    "seaman_2": "captain", "gsswimmerm": "Youngster", "gsswimmerw": "Lass", "gsleader6": "jasmine", "gsleader5": "blackbelt",
+    "babyboy1_8": "Youngster"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field

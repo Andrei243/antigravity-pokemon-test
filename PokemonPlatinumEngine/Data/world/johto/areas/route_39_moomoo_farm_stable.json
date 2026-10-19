@@ -1,0 +1,32 @@
+{
+  "key": "route_39_moomoo_farm_stable",
+  "index": 215,
+  "name": "Route 39",
+  "matrix": 129,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_6_38",
+  "nightMusic": "GS_R_6_38",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 9, "to": "route_39", "toWarp": 1 },
+    { "x": 19, "z": 7, "to": "route_39_moomoo_farm_house", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r39r0201_gsbabygirl1", "looks": "gsbabygirl1", "movement": "17", "x": 6, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "R39R0201_000+1" },
+    { "id": "r39r0201_tsure_poke_static_miltank", "looks": "follower_mon_static_miltank", "movement": "15", "x": 7, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R39R0201_002+1" },
+    { "id": "r39r0201_gsbabygirl1_2", "looks": "gsbabygirl1", "movement": "16", "x": 8, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R39R0201_001+1" },
+    { "id": "r39r0201_tsure_poke_static_miltank_2", "looks": "follower_mon_static_miltank", "movement": "14", "x": 3, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_226", "script": "R39R0201_003+1" },
+    { "id": "r39r0201_tsure_poke_static_miltank_3", "looks": "follower_mon_static_miltank", "movement": "15", "x": 2, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 1, "hiddenBy": "FLAG_UNK_226", "script": "R39R0201_003+1" },
+    { "id": "r39r0201_tsure_poke_static_miltank_4", "looks": "follower_mon_static_miltank", "movement": "15", "x": 13, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_226", "script": "R39R0201_003+1" },
+    { "id": "r39r0201_tsure_poke_static_miltank_5", "looks": "follower_mon_static_miltank", "movement": "16", "x": 12, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_226", "script": "R39R0201_003+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,128 @@
+{
+  "people": {
+    "t26_seaman_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The lighthouse keeps every ship off the rocks. Its light comes from a Pokémon, you know."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Jasmine's the Gym Leader here. She's gentle, but her Pokémon are hard as steel!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26_seaman_2_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sailors come to Olivine from all over. Try the café: it's where we all eat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26_seaman_2_3": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We'll be setting sail once the ship's ready. Not long now, my love."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Promise you'll write every day while you're at sea!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T26_004+1": {
+      "en": [
+        "Olivine City Pokémon Gym\nLeader: Jasmine\nThe steel-clad defence girl."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T26_005+1": {
+      "en": [
+        "Olivine City\nThe port closest to foreign lands."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T26_006+1": {
+      "en": [
+        "Olivine Port\nThe S.S. Aqua sails from here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T26_007+1": {
+      "en": [
+        "Glitter Lighthouse\nIts beam guides the ships home at night."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

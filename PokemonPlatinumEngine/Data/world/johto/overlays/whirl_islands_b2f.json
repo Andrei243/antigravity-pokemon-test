@@ -1,0 +1,21 @@
+{
+  // The Whirl Islands' second basement (plan 20 · J8): an old sage keeps watch over the deep part of the caves, where the
+  // great bird of the sea sleeps. Only its upper level is come to so far: the lower level below its rock step, with the
+  // ladder down to the third basement (warp 4) and the way into Lugia's cave (warp 5), is plan 20 · J11's
+  "area": "whirl_islands_b2f",
+  "bgmTrack": "johto/union_cave",
+  "locked": [
+    4,
+    5
+  ],
+  "people": {
+    "d40r0104_bozu": {
+      "name": "Sage",
+      "still": true,
+      "dialog": [
+        "Below us lies the deepest cave of the islands. The guardian of the sea sleeps there.",
+        "It will not wake for just anyone. Go back up, young one."
+      ]
+    }
+  }
+}

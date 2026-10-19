@@ -430,6 +430,14 @@ public static class RegionDatabase
                 // Plan 20 · J7: the Slowpoke Well, the Azalea and Ecruteak Gyms and the Department Store's lift
                 "SlowpokeWell_Entrance", "SlowpokeWell_B1F", "SlowpokeWell_B2F", "Azalea_GymEntrance", "Azalea_Gym",
                 "Ecruteak_Gym", "Goldenrod_DeptStore_Elevator",
+                // Plan 20 · J8: the west and the sea
+                "Route38_EcruteakGate", "Route39_MoomooFarmHouse", "Route39_MoomooFarmStable", "Olivine_PokemonCenter_1F",
+                "Olivine_PokemonCenter_B1F", "Olivine_Mart", "Olivine_Cafe", "Olivine_Gym", "Olivine_NorthHouse",
+                "Olivine_NortheastHouse", "Olivine_NorthwestHouse", "Olivine_PortHall", "OlivineLighthouse_1F",
+                "OlivineLighthouse_2F", "OlivineLighthouse_3F", "OlivineLighthouse_4F", "OlivineLighthouse_5F",
+                "OlivineLighthouse_Ledge", "OlivineLighthouse_LightRoom", "Route40_FrontierGate", "Cianwood_PokemonCenter_1F",
+                "Cianwood_PokemonCenter_B1F", "Cianwood_Gym", "Cianwood_Pharmacy", "Cianwood_KirksHouse", "Cianwood_CentralHouse",
+                "Cianwood_NorthHouse", "Cianwood_PhotoStudio", "WhirlIslands_1F", "WhirlIslands_B1F", "WhirlIslands_B2F",
             }
         },
         new()

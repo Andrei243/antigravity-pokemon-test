@@ -1,0 +1,35 @@
+{
+  // Olivine City's Poké Mart (plan 20 · J8). Its delivery men are the original's gifts, which this game has no use for
+  "area": "olivine_pokemart",
+  "bgmTrack": "johto/olivine",
+  "people": {
+    "t26fs0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t26fs0101_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t26fs0101_gsgirl3": {
+      "name": "Girl",
+      "dialog": [
+        "My big sister went to sea on the S.S. Aqua. I'm saving up to go too!"
+      ]
+    },
+    "t26fs0101_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "Steel types shrug off so many moves. Fire and Ground are what get through."
+      ]
+    }
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "people": {
+    "t26pc0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26pc0101_pcwoman2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26pc0101_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26pc0101_pcwoman2_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26pc0101_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A sailor once told me there's a city across the sea where Trainers battle all day. Sounds like fun."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26pc0101_fishing_2": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea off Olivine is full of Tentacool. Bring something that can handle poison."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26pc0101_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's an island town west across the sea. You need a Pokémon that can Surf to get there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26pc0101_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The light in the lighthouse has gone dim lately. I hope nothing's wrong up there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

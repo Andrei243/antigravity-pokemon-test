@@ -1,0 +1,51 @@
+{
+  // Cianwood City (plan 20 · J8): HeartGold's map, our words. The island town west across the sea, built in pale
+  // stone under sea-green roofs (Cliffside), its rocks cracked for Rock Smash. Suicune on the north shore and Eusine's
+  // challenge are plan 20 · J9's; the gate to the cliff path and Route 47 (warp 6) waits for that road
+  "area": "cianwood",
+  "bgmTrack": "johto/cianwood",
+  "trees": "Round",
+  "architecture": "Cliffside",
+  "locked": [
+    6
+  ],
+  "people": {
+    "t24_middlewoman1_2": {
+      "name": "Woman",
+      "dialog": [
+        "The Gym Leader, Chuck, trains under the waterfall every day. He's terribly loud about it."
+      ]
+    },
+    "t24_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "There's no Poké Mart here. Everyone buys their medicine at the pharmacy. It's been here forever!"
+      ]
+    },
+    "t24_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "The rocks north of town crack open if you hit them hard enough. Things turn up inside them."
+      ]
+    },
+    "t24_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "I've lived on this island all my life. Olivine's the furthest I've ever been!"
+      ]
+    },
+    "t24_middlewoman1_2_2": {
+      "name": "Woman",
+      "dialog": [
+        "The sea round the islands is wild. My husband sails right round them to get to Olivine."
+      ]
+    }
+  },
+  "signs": {
+    "T24_008+1": "Cianwood City\nA port surrounded by rough seas.",
+    "T24_009+1": "Cianwood City Pokémon Gym\nLeader: Chuck\nHis roaring fists do the talking.",
+    "T24_010+1": "Cianwood Pharmacy\nThe oldest pharmacy in Johto.",
+    "T24_011+1": "Photo Studio\nA picture to remember your journey.",
+    "T24_004+1": "The cliff path\nRoute 47 lies beyond the gate."
+  }
+}

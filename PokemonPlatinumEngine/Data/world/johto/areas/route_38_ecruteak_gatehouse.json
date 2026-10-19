@@ -1,0 +1,26 @@
+{
+  "key": "route_38_ecruteak_gatehouse",
+  "index": 172,
+  "name": "Route 38",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_6_38",
+  "nightMusic": "GS_R_6_38",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 7, "to": "ecruteak", "toWarp": 8 },
+    { "x": 1, "z": 7, "to": "route_38", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r38r0101_counterm", "looks": "counterm", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R38R0101_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

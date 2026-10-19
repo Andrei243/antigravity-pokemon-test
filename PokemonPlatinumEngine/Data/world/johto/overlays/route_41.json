@@ -1,0 +1,80 @@
+{
+  // Route 41 (plan 20 · J8): HeartGold's map, our words. The open sea between Olivine and Cianwood, round the Whirl
+  // Islands, whose ways in lie behind whirlpools that only Whirlpool crosses (style guide, "Water"). Ten swimmers by
+  // their own records
+  "area": "route_41",
+  "bgmTrack": "johto/route34",
+  "trees": "Round",
+  "people": {
+    "w41_gsswimmerm": {
+      "name": "Charlie",
+      "trainer": {
+        "dialogueBefore": "Swimmer Charlie: Out here it's just me, the sea and my Pokémon. Oh, and you!",
+        "dialogueAfter": "Swimmer Charlie: The sea's bigger than me, and so are you."
+      }
+    },
+    "w41_gsswimmerm_2": {
+      "name": "George",
+      "trainer": {
+        "dialogueBefore": "Swimmer George: Don't get too close to the whirlpools! Get close to me for a battle instead.",
+        "dialogueAfter": "Swimmer George: I should have kept my distance."
+      }
+    },
+    "w41_gsswimmerm_3": {
+      "name": "Berke",
+      "trainer": {
+        "dialogueBefore": "Swimmer Berke: I've swum round the islands twice today. Ready for round three?",
+        "dialogueAfter": "Swimmer Berke: I'm too tired for a fourth."
+      }
+    },
+    "w41_gsswimmerm_4": {
+      "name": "Matthew",
+      "trainer": {
+        "dialogueBefore": "Swimmer Matthew: My Pokémon and I can hold our breath for minutes. Can you outlast us?",
+        "dialogueAfter": "Swimmer Matthew: Out of breath, and out of luck."
+      }
+    },
+    "w41_gsswimmerm_5": {
+      "name": "Ronald",
+      "trainer": {
+        "dialogueBefore": "Swimmer Ronald: Something lives deep under those islands. Something huge. Battle me while I'm brave!",
+        "dialogueAfter": "Swimmer Ronald: My courage has sunk."
+      }
+    },
+    "w41_gsswimmerw": {
+      "name": "Kaylee",
+      "trainer": {
+        "dialogueBefore": "Swimmer Kaylee: The water's warm today. Let's warm it up even more!",
+        "dialogueAfter": "Swimmer Kaylee: Well, that cooled me off."
+      }
+    },
+    "w41_gsswimmerw_2": {
+      "name": "Susie",
+      "trainer": {
+        "dialogueBefore": "Swimmer Susie: You can see Cianwood from here on a clear day. You can see a battle, too!",
+        "dialogueAfter": "Swimmer Susie: The view's still nice."
+      }
+    },
+    "w41_gsswimmerw_3": {
+      "name": "Denise",
+      "trainer": {
+        "dialogueBefore": "Swimmer Denise: I swim faster than a Seel! Want to see what else I can do?",
+        "dialogueAfter": "Swimmer Denise: Not faster than you, though."
+      }
+    },
+    "w41_gsswimmerw_4": {
+      "name": "Kara",
+      "trainer": {
+        "dialogueBefore": "Swimmer Kara: Hold it! Nobody passes the islands without a battle.",
+        "dialogueAfter": "Swimmer Kara: Go on, then. Mind the whirlpools."
+      }
+    },
+    "w41_gsswimmerw_5": {
+      "name": "Wendy",
+      "trainer": {
+        "dialogueBefore": "Swimmer Wendy: My Pokémon glow in the dark water at night. Pretty, but tough!",
+        "dialogueAfter": "Swimmer Wendy: Pretty, and beaten."
+      }
+    }
+  }
+}

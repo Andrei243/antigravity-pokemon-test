@@ -277,6 +277,49 @@ public class FieldMoveTests
     }
 
     [Fact]
+    public void AWhirlpoolIsCrossedByTheQuestionWithJohtosGlacierBadge()
+    {
+        // Plan 20 · J8: HeartGold's Whirlpool, gated in Johto by the Glacier Badge and in no other region
+        Assert.Equal("Glacier", FieldMoveRules.BadgeFor(FieldMove.Whirlpool, "Johto"));
+        Assert.Null(FieldMoveRules.BadgeFor(FieldMove.Whirlpool, "Sinnoh"));
+        Assert.Equal(FieldMove.Whirlpool, FieldMoveRules.Of("Whirlpool"));
+        var story = new StoryState();
+        var ahead = new FieldSpot { Whirlpool = true, Surfing = true, Region = "Johto" };
+        Assert.Equal(FieldMoveError.Badge, FieldMoveRules.Check(FieldMove.Whirlpool, ahead, story));
+        story.GiveBadge("Johto", "Glacier");
+        Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.Whirlpool, ahead, story));
+        Assert.Equal(FieldMoveError.Location, FieldMoveRules.Check(FieldMove.Whirlpool, ahead with { Whirlpool = false }, story));
+        Assert.Equal(FieldMoveError.Location, FieldMoveRules.Check(FieldMove.Whirlpool, ahead with { Surfing = false }, story));
+
+        // A whirlpool three tiles across on open water; the question carries a surfer over it, with the move and the Badge
+        var map = new Map(7, 9) { Name = "Whirlpool" };
+        for (int y = 0; y < 9; y++)
+            for (int x = 0; x < 7; x++)
+                map.SetGroundTile(x, y, TileType.Water);
+        for (int y = 3; y <= 5; y++)
+            for (int x = 2; x <= 4; x++)
+                map.SetBehaviour(x, y, TileBehavior.Whirlpool);
+
+        HeadlessScriptHost Play(string script, Pokemon pokemon, int badges)
+        {
+            var host = new HeadlessScriptHost { Map = map, PlayerTile = (3, 6), PlayerFacing = Direction.Up, PlayerMode = TravelMode.Surfing, Region = "Johto" };
+            host.Party.Add(pokemon);
+            host.Story.SetBadges("Johto", badges);
+            var runner = new ScriptRunner(ScriptLibrary.Default, host);
+            runner.Start(ScriptLibrary.Default.Find(script)!);
+            runner.RunToEnd();
+            return host;
+        }
+        int glacier = 1 << StoryState.BadgeIndex("Johto", "Glacier");
+        Assert.Equal((3, 2), Play(FieldScripts.Whirlpool, Knowing("Whirlpool"), glacier).PlayerTile);
+        Assert.Equal((3, 6), Play(FieldScripts.Whirlpool, Knowing("Whirlpool"), 0).PlayerTile);
+        Assert.Equal((3, 6), Play(FieldScripts.Whirlpool, Knowing("Surf"), 0xFF).PlayerTile);
+        // From the party menu the move does the same
+        Assert.Equal("common.UseWhirlpool", FieldScripts.FromMenu(FieldMove.Whirlpool));
+        Assert.Equal((3, 2), Play(FieldScripts.FromMenu(FieldMove.Whirlpool)!, Knowing("Whirlpool"), glacier).PlayerTile);
+    }
+
+    [Fact]
     public void AWaterfallAndARockFaceAreClimbedByTheQuestion()
     {
         // A river with a fall of three tiles, and beside it a rock face of three

@@ -1,0 +1,59 @@
+{
+  "people": {
+    "t26r0501_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Dad's a sailor. When he comes home he always brings me a shell from somewhere new."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26r0501_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Back from three months at sea, and the first thing my daughter asks for is a shell. Ha!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26r0501_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm gonna be a sailor too when I grow up!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

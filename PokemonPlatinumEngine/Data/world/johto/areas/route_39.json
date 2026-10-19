@@ -1,0 +1,72 @@
+{
+  "key": "route_39",
+  "index": 43,
+  "name": "Route 39",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_6_38",
+  "nightMusic": "GS_R_6_38",
+  "encounters": "R39",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Rattata", "level": 16 },
+    { "species": "Raticate", "level": 17 },
+    { "species": "Rattata", "level": 16 },
+    { "species": "Raticate", "level": 17 },
+    { "species": "Magnemite", "level": 16 },
+    { "species": "Magnemite", "level": 16 },
+    { "species": "Farfetch'd", "level": 16, "night": "Rattata" },
+    { "species": "Farfetch'd", "level": 16, "night": "Rattata" },
+    { "species": "Miltank", "level": 15 },
+    { "species": "Tauros", "level": 15 },
+    { "species": "Miltank", "level": 15 },
+    { "species": "Tauros", "level": 15 }
+  ],
+  "landRate": 25,
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [
+    { "x": 265, "z": 164, "to": "route_39_moomoo_farm_house", "toWarp": 0 },
+    { "x": 260, "z": 164, "to": "route_39_moomoo_farm_stable", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r39_seaman_2", "looks": "seaman_2", "movement": "5", "x": 273, "z": 200, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SAILOR_EUGENE" },
+    { "id": "r39_gsmiddleman1", "looks": "gsmiddleman1", "movement": "20", "x": 278, "z": 203, "facing": 2, "rangeX": 10, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_POKEFAN_M_DEREK" },
+    { "id": "r39_middlewoman1_2", "looks": "middlewoman1_2", "movement": "20", "x": 269, "z": 206, "facing": 3, "rangeX": 8, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_POKEFAN_RUTH" },
+    { "id": "r39_mystery_2", "looks": "mystery_2", "movement": "20", "x": 277, "z": 177, "facing": 1, "rangeX": 0, "rangeZ": 5, "trainer": "sees", "sight": 3, "script": "TRAINER_PSYCHIC_M_NELSON" },
+    { "id": "r39_tsure_poke_static_miltank", "looks": "follower_mon_static_miltank", "movement": "15", "x": 264, "z": 175, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_UNK_226", "script": "R39_000+1" },
+    { "id": "r39_tsure_poke_static_miltank_2", "looks": "follower_mon_static_miltank", "movement": "17", "x": 272, "z": 177, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_226", "script": "R39_000+1" },
+    { "id": "r39_tsure_poke_static_miltank_3", "looks": "follower_mon_static_miltank", "movement": "15", "x": 262, "z": 181, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_226", "script": "R39_000+1" },
+    { "id": "r39_tsure_poke_static_miltank_4", "looks": "follower_mon_static_miltank", "movement": "15", "x": 268, "z": 178, "facing": 1, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_UNK_226", "script": "R39_000+1" },
+    { "id": "r39_gsgentleman", "looks": "gsgentleman", "movement": "2", "x": 275, "z": 172, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_228", "script": "0" },
+    { "id": "r39_bonguri", "looks": "bonguri", "movement": "0", "x": 269, "z": 163, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r39_monstarball", "looks": "monstarball", "movement": "0", "x": 257, "z": 187, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R39_TM60", "item": "TM60", "script": "std_itemball_r39_tm60" },
+    { "id": "r39_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "14", "x": 262, "z": 172, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R39_006+1" },
+    { "id": "r39_gsleader9", "looks": "gsleader9", "movement": "0", "x": 263, "z": 188, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_39_LT_SURGE", "script": "R39_007+1" }
+  ],
+  "signs": [
+    { "x": 278, "z": 170, "type": 1, "script": "R39_003+1" },
+    { "x": 270, "z": 166, "type": 1, "script": "R39_004+1" },
+    { "x": 278, "z": 210, "type": 1, "script": "R39_005+1" },
+    { "x": 266, "z": 191, "type": 2, "script": "std_hiddenitem_r39_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_R39_NUGGET" },
+    { "x": 259, "z": 176, "type": 2, "script": "std_hiddenitem_r39_pp_up", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_R39_PP_UP" },
+    { "x": 271, "z": 180, "type": 2, "script": "std_hiddenitem_r39_x_attack", "item": "X Attack", "flag": "FLAG_HIDDEN_ITEM_R39_X_ATTACK" },
+    { "x": 285, "z": 231, "type": 2, "script": "std_hiddenitem_r39_t26_full_heal", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_R39_T26_FULL_HEAL" }
+  ],
+  "triggers": [
+    { "x": 278, "z": 171, "width": 1, "depth": 3, "script": "R39_002+1", "variable": "VAR_UNK_408F", "value": "0" }
+  ]
+}

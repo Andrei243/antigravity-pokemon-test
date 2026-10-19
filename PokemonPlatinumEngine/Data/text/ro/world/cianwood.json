@@ -1,0 +1,136 @@
+{
+  "people": {
+    "t24_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym Leader, Chuck, trains under the waterfall every day. He's terribly loud about it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's no Poké Mart here. Everyone buys their medicine at the pharmacy. It's been here forever!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The rocks north of town crack open if you hit them hard enough. Things turn up inside them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've lived on this island all my life. Olivine's the furthest I've ever been!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24_middlewoman1_2_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea round the islands is wild. My husband sails right round them to get to Olivine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T24_008+1": {
+      "en": [
+        "Cianwood City\nA port surrounded by rough seas."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T24_009+1": {
+      "en": [
+        "Cianwood City Pokémon Gym\nLeader: Chuck\nHis roaring fists do the talking."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T24_010+1": {
+      "en": [
+        "Cianwood Pharmacy\nThe oldest pharmacy in Johto."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T24_011+1": {
+      "en": [
+        "Photo Studio\nA picture to remember your journey."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T24_004+1": {
+      "en": [
+        "The cliff path\nRoute 47 lies beyond the gate."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

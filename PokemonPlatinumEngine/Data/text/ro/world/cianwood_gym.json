@@ -1,0 +1,126 @@
+{
+  "people": {
+    "t24gym0101_gsfighter": {
+      "name": {
+        "en": [
+          "Yoshi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Yoshi: Hwaah! The master is training, so I'll test you in his place!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Yoshi: My fists still have much to learn."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24gym0101_gsfighter_2": {
+      "name": {
+        "en": [
+          "Lao"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Lao: Feel the spirit of the Cianwood Gym!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Lao: My spirit is bruised."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24gym0101_gsfighter_3": {
+      "name": {
+        "en": [
+          "Nob"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Nob: One punch, one battle. That's our way!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Nob: It took more than one punch."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24gym0101_gsfighter_4": {
+      "name": {
+        "en": [
+          "Lung"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Lung: Before you face the master, you face me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Lung: The master will be pleased with you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T24GYM0101_002+1": {
+      "en": [
+        "The waterfall where the master trains, roaring day and night."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T24GYM0101_003+1": {
+      "en": [
+        "Cianwood City Pokémon Gym\nLeader: Chuck"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

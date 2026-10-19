@@ -1,0 +1,32 @@
+{
+  "key": "olivine_lighthouse_4f",
+  "index": 223,
+  "name": "Lighthouse",
+  "matrix": 51,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 10, "z": 7, "to": "olivine_lighthouse_3f", "toWarp": 1 },
+    { "x": 6, "z": 7, "to": "olivine_lighthouse_3f", "toWarp": 3 },
+    { "x": 3, "z": 5, "to": "olivine_lighthouse_5f", "toWarp": 0 },
+    { "x": 3, "z": 4, "to": "olivine_lighthouse_5f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d27r0105_gsgirl1", "looks": "gsgirl1", "movement": "0", "x": 9, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "hiddenBy": "FLAG_UNK_1DB", "script": "TRAINER_LASS_CONNIE" },
+    { "id": "d27r0105_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 14, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "hiddenBy": "FLAG_UNK_1DA", "script": "TRAINER_GENTLEMAN_PRESTON" },
+    { "id": "d27r0105_monstarball", "looks": "monstarball", "movement": "0", "x": 2, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D27R0105_TM87", "item": "TM87", "script": "std_itemball_d27r0105_tm87" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 16, "z": 9, "width": 1, "depth": 1, "script": "D27R0105_000+1", "variable": "VAR_UNK_40A3", "value": "0" }
+  ]
+}

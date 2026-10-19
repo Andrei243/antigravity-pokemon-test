@@ -1,0 +1,25 @@
+{
+  "key": "cianwood_pharmacy",
+  "index": 233,
+  "name": "Cianwood City",
+  "matrix": 139,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TANBA",
+  "nightMusic": "GS_C_TANBA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "cianwood", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "t24r0501_sunglasses", "looks": "sunglasses", "movement": "14", "x": 5, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T24R0501_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

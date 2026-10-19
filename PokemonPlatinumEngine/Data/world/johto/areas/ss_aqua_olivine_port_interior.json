@@ -1,0 +1,30 @@
+{
+  "key": "ss_aqua_olivine_port_interior",
+  "index": 240,
+  "name": "Olivine City",
+  "matrix": 137,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_ASAGI",
+  "nightMusic": "GS_C_ASAGI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 2, "to": "olivine", "toWarp": 8 },
+    { "x": 7, "z": 11, "to": "ss_aqua_olivine_port_exterior", "toWarp": 0 },
+    { "x": 1, "z": 7, "to": "ss_aqua_olivine_port_exterior", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "p01r0101_seaman_2", "looks": "seaman_2", "movement": "0", "x": 7, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "P01R0101_000+1" },
+    { "id": "p01r0101_ookido", "looks": "ookido", "movement": "0", "x": 11, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_OLIVINE_PORT_OAK", "script": "0" },
+    { "id": "p01r0101_gswoman3", "looks": "gswoman3", "movement": "17", "x": 2, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "P01R0101_004+1" },
+    { "id": "p01r0101_gsboy2", "looks": "gsboy2", "movement": "2", "x": 12, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "P01R0101_003+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

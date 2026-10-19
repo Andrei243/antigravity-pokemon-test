@@ -1,0 +1,25 @@
+{
+  "key": "olivine_north_house",
+  "index": 228,
+  "name": "Olivine City",
+  "matrix": 97,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_ASAGI",
+  "nightMusic": "GS_C_ASAGI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "olivine", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "t26r0301_fishing_2", "looks": "fishing_2", "movement": "0", "x": 5, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T26R0301_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

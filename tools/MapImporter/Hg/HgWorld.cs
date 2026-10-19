@@ -68,7 +68,7 @@ public sealed class HgWorld
             if (header.Matrix == 0) continue;
             var matrix = maps.Matrix(header.Matrix);
             foreach (int land in matrix.Land)
-                if (land != Matrix.NoLand) roomChunk[land] = roomChunk.GetValueOrDefault(land) || header.MapType == "INTERIOR";
+                if (land != Matrix.NoLand) roomChunk[land] = roomChunk.GetValueOrDefault(land) || header.MapType == "INTERIOR" || RoomsByTheirModels.Contains(header.Key);
         }
     }
 
@@ -99,6 +99,17 @@ public sealed class HgWorld
         }
         return found;
     }
+
+    /// <summary>
+    /// Areas whose header calls them a cave but whose models are the rooms' (plan 20 · J8): Olivine's lighthouse, whose
+    /// floors read from <c>bm_field.narc</c> come out as Ecruteak's Mart and New Bark's houses, and from
+    /// <c>bm_room.narc</c> as its own plants, ladders and lift door. The area data that picks the set is still not read;
+    /// the light room at the top (another bank of area data) reads right from the field's (its sky, its lift's door).
+    /// </summary>
+    private static readonly HashSet<string> RoomsByTheirModels = new(StringComparer.Ordinal)
+    {
+        "olivine_lighthouse_1f", "olivine_lighthouse_2f", "olivine_lighthouse_3f", "olivine_lighthouse_4f", "olivine_lighthouse_5f"
+    };
 
     public bool IsRoom(int landId) => roomChunk.GetValueOrDefault(landId);
 

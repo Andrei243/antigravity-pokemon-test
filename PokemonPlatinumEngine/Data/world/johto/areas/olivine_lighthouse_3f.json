@@ -1,0 +1,35 @@
+{
+  "key": "olivine_lighthouse_3f",
+  "index": 222,
+  "name": "Lighthouse",
+  "matrix": 50,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 7, "to": "olivine_lighthouse_2f", "toWarp": 1 },
+    { "x": 10, "z": 7, "to": "olivine_lighthouse_4f", "toWarp": 0 },
+    { "x": 10, "z": 6, "to": "olivine_lighthouse_4f", "toWarp": 0 },
+    { "x": 6, "z": 7, "to": "olivine_lighthouse_4f", "toWarp": 1 },
+    { "x": 6, "z": 6, "to": "olivine_lighthouse_4f", "toWarp": 1 },
+    { "x": 8, "z": 18, "to": "olivine_lighthouse_exterior", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "everywhere_seaman_2", "looks": "seaman_2", "movement": "0", "x": 11, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SAILOR_KENT" },
+    { "id": "everywhere_gsman2", "looks": "gsman2", "movement": "9", "x": 1, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_BIRD_KEEPER_GS_DENIS" },
+    { "id": "everywhere_gsman2_2", "looks": "gsman2", "movement": "8", "x": 12, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_BIRD_KEEPER_GS_THEO" },
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 14, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D27R0104_ETHER", "item": "Ether", "script": "std_itemball_d27r0104_ether" }
+  ],
+  "signs": [
+    { "x": 5, "z": 14, "type": 2, "script": "std_hiddenitem_d27r0104_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_D27R0104_HYPER_POTION" }
+  ],
+  "triggers": []
+}

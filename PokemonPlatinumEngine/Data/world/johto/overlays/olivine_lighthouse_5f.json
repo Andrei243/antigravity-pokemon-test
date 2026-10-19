@@ -1,0 +1,22 @@
+{
+  // The Glitter Lighthouse's fifth floor (plan 20 · J8): two trainers by their own records; the photographer waits for
+  // his chapter
+  "area": "olivine_lighthouse_5f",
+  "bgmTrack": "johto/lighthouse",
+  "people": {
+    "d27r0106_seaman_2": {
+      "name": "Terrell",
+      "trainer": {
+        "dialogueBefore": "Sailor Terrell: Nearly at the top! But first you'll have to beat a sailor.",
+        "dialogueAfter": "Sailor Terrell: Go on up. Mind the poor thing's rest."
+      }
+    },
+    "d27r0106_seaman_2_2": {
+      "name": "Roberto",
+      "trainer": {
+        "dialogueBefore": "Sailor Roberto: The lamp's been dim for days. We sailors are worried sick!",
+        "dialogueAfter": "Sailor Roberto: Worried, and beaten too."
+      }
+    }
+  }
+}

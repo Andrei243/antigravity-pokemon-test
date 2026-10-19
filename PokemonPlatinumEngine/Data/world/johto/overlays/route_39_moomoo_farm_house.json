@@ -1,0 +1,22 @@
+{
+  // The Moomoo Farm's house on Route 39 (plan 20 · J8). Its milk for sale, and the sick Miltank in the barn, wait for a
+  // later session; the farmer and his wife talk
+  "area": "route_39_moomoo_farm_house",
+  "bgmTrack": "johto/route38",
+  "people": {
+    "r39r0101_gsmiddleman1": {
+      "name": "Farmer",
+      "still": true,
+      "dialog": [
+        "Our Miltank give the best milk in Johto. But one of them has fallen ill, and she won't give a drop.",
+        "If she gets her strength back, I'll have milk to sell again."
+      ]
+    },
+    "r39r0101_middlewoman1_2": {
+      "name": "Farmer's Wife",
+      "dialog": [
+        "The sick one needs plenty of Berries, I'm sure of it. We've fed her all ours."
+      ]
+    }
+  }
+}

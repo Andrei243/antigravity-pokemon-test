@@ -11,8 +11,9 @@ namespace PokemonPlatinumEngine.Overworld;
 /// <summary>
 /// The moves a Pokémon can use outside battle (plan 02 · S2), in the original's order (<c>FieldMoveList</c> in
 /// <c>field_move_tasks.h</c>), which is also the order the party menu offers them in when one Pokémon knows several.
+/// HeartGold's Whirlpool (plan 20 · J8) comes last, after Platinum's own.
 /// </summary>
-public enum FieldMove { Cut, Fly, Surf, Strength, Defog, RockSmash, Waterfall, RockClimb, Flash, Teleport, Dig, SweetScent, Chatter, MilkDrink, Softboiled }
+public enum FieldMove { Cut, Fly, Surf, Strength, Defog, RockSmash, Waterfall, RockClimb, Flash, Teleport, Dig, SweetScent, Chatter, MilkDrink, Softboiled, Whirlpool }
 
 /// <summary>Why a field move can't be used here and now: the original's <c>FieldMoveError</c>.</summary>
 public enum FieldMoveError
@@ -46,6 +47,9 @@ public sealed record FieldSpot
 
     /// <summary>A waterfall in front.</summary>
     public bool Waterfall { get; init; }
+
+    /// <summary>A whirlpool in front (HeartGold's, plan 20 · J8).</summary>
+    public bool Whirlpool { get; init; }
 
     /// <summary>The place lies in fog that nobody has blown away.</summary>
     public bool Fog { get; init; }
@@ -119,6 +123,7 @@ public static class FieldMoveRules
         "Sweet Scent" => FieldMove.SweetScent,
         "Milk Drink" => FieldMove.MilkDrink,
         "Soft-Boiled" => FieldMove.Softboiled,
+        "Whirlpool" => FieldMove.Whirlpool,
         _ => null
     };
 
@@ -179,6 +184,9 @@ public static class FieldMoveRules
                 return spot.Fog ? FieldMoveError.None : FieldMoveError.Location;
             case FieldMove.Waterfall:
                 return spot.Waterfall ? FieldMoveError.None : FieldMoveError.Location;
+            // HeartGold's: a whirlpool in front, faced from the water (plan 20 · J8)
+            case FieldMove.Whirlpool:
+                return spot.Whirlpool && spot.Surfing ? FieldMoveError.None : FieldMoveError.Location;
             case FieldMove.RockClimb:
                 if (!spot.RockFace) return FieldMoveError.Location;
                 return spot.Partner ? FieldMoveError.Partner : FieldMoveError.None;
@@ -245,6 +253,7 @@ public static class FieldMoveRules
             Water = FieldMovement.CanStartSurf(map, x, y, facing, walker),
             RockFace = FieldMovement.IsRockFace(ahead, facing),
             Waterfall = ahead == TileBehavior.Waterfall,
+            Whirlpool = ahead == TileBehavior.Whirlpool,
             Fog = map.WeatherAt(x, y) == FieldWeather.Fog,
             Dark = Darkness.Covers(map),
             Surfing = walker.Mode == TravelMode.Surfing,

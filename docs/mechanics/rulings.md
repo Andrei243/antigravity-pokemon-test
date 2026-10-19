@@ -3026,3 +3026,32 @@ hides the chapter's people for a new game and for a save from before it (story v
 - **Left for later**: the Bug-Catching Contest; Headbutt from the forest's man (he only talks); the Game Corner's
   prizes; the phone numbers of Kurt, Bill and the Day-Care couple; Cameron and the photo album; Suicune's sightings;
   the Kimono Girls' battles (J11).
+
+## The west and the sea of Johto (2026-10-19, plan 20 · J8)
+
+Routes 38 to 41, the Moomoo Farm, Olivine City with its lighthouse and port hall, Cianwood City and the Whirl Islands'
+upper floors, from HeartGold's maps, events and tables, in our own words and music.
+
+- **Whirlpool** is HeartGold's field move, added after Platinum's own (`FieldMove.Whirlpool`, `FieldMoves.Whirlpool`).
+  A whirlpool is a block of tiles of HeartGold's whirlpool behaviour (three by three on Route 41), each block drawn as
+  a ring turning on the water (`PropType.Whirlpool`, placed by the model `uzushio`). It is water to anyone on foot,
+  nobody sets out onto it from the shore, and it stops a surfer from every side. Faced from the water it asks, as a
+  waterfall does (`common.Whirlpool`): with a Pokémon that knows the move and Johto's Glacier Badge (the region's
+  `gates`), a yes carries the surfer across the whole block to the open water beyond, any way it is crossed; without
+  either it says the water is too strong. The party menu's Whirlpool does the same where one lies ahead. HeartGold
+  pulls the player through over several frames; here the crossing is one climb, as Waterfall's is.
+- **The Glitter Lighthouse's floors take the rooms' models**: their header calls them a cave and their props read from
+  the field's set come out as Ecruteak's Mart and New Bark's houses, so the importer reads them from the rooms' set
+  (`HgWorld.RoomsByTheirModels`); the light room, another bank of area data, reads right from the field's. **The gap in
+  the fourth floor** (the original's trigger, whose script drops the player through it) is an overlay's exit down to
+  the ledge round the third floor, from which the tower's west half and the way up are come to, as HeartGold's
+  climb goes. The lift waits for the chapter that brings the medicine up (J9).
+- **What waits for its chapter**: Jasmine (in the light room by the sick Ampharos, Amphy, and in her Gym), Chuck, the
+  red-haired boy at Olivine's Gym door, Suicune and Eusine at Cianwood, the pharmacy's medicine and the Moomoo Farm's
+  sick Miltank (they say what they are for), the photographer, the weekday siblings, Professor Oak at the port, the
+  S.S. Aqua's quay (J15), the Battle Frontier beyond Route 40's gate house (J13), the cliff path to Route 47 and the
+  Safari Zone, and below the Whirl Islands' rock step on their second basement the third basement and Lugia's cave
+  (J11). The original hides Route 39's herd, the lighthouse's fourth-floor trainers and the barn's Miltank behind
+  flags nothing in this game sets, so they are always there.
+- **The whirling water round the Whirl Islands' lowest cave** (`d_uzushio`) is no whirlpool: its tiles are plain cave
+  water, so it is left to the cave's own water to draw.

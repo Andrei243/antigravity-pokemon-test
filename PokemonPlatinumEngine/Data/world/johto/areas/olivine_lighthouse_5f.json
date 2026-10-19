@@ -1,0 +1,30 @@
+{
+  "key": "olivine_lighthouse_5f",
+  "index": 224,
+  "name": "Lighthouse",
+  "matrix": 52,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 5, "to": "olivine_lighthouse_4f", "toWarp": 2 },
+    { "x": 10, "z": 10, "to": "olivine_lighthouse_light_room", "toWarp": 0 },
+    { "x": 10, "z": 9, "to": "olivine_lighthouse_light_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d27r0106_seaman_2", "looks": "seaman_2", "movement": "0", "x": 6, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "script": "TRAINER_SAILOR_TERRELL" },
+    { "id": "d27r0106_seaman_2_2", "looks": "seaman_2", "movement": "2", "x": 13, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_SAILOR_ROBERTO" },
+    { "id": "d27r0106_monstarball", "looks": "monstarball", "movement": "0", "x": 11, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D27R0106_SUPER_REPEL", "item": "Super Repel", "script": "std_itemball_d27r0106_super_repel" },
+    { "id": "d27r0106_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 2, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D27R0106_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

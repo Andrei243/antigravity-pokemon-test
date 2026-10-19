@@ -236,6 +236,12 @@ public enum PropType
     DeskPokedex,
     /// <summary>The Town Map rolled up on a table (plan 19 · K4, part b: the rival's house): a thing of the map (<see cref="NPC.TownMapType"/>), drawn as a card.</summary>
     RolledTownMap,
+    /// <summary>
+    /// A whirlpool on the water (plan 20 · J8: HeartGold's <c>uzushio</c>), three tiles across: a ring of water turning,
+    /// drawn lying a hair over the water. It blocks nothing by itself: its tiles' behaviour stops a surfer until the
+    /// party knows Whirlpool (<see cref="FieldMovement.Step"/>).
+    /// </summary>
+    Whirlpool,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

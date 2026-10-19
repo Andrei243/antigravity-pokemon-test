@@ -1,0 +1,27 @@
+{
+  // A house in the north-east of Olivine City (plan 20 · J8): a family of three
+  "area": "olivine_northeast_house",
+  "bgmTrack": "johto/olivine",
+  "people": {
+    "t26r0501_gsgirl1": {
+      "name": "Girl",
+      "still": true,
+      "dialog": [
+        "Dad's a sailor. When he comes home he always brings me a shell from somewhere new."
+      ]
+    },
+    "t26r0501_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Back from three months at sea, and the first thing my daughter asks for is a shell. Ha!"
+      ]
+    },
+    "t26r0501_gsbabygirl1": {
+      "name": "Little Girl",
+      "dialog": [
+        "I'm gonna be a sailor too when I grow up!"
+      ]
+    }
+  }
+}

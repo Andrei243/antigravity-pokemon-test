@@ -1,0 +1,41 @@
+{
+  "people": {
+    "d27r0101_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Pokémon that lights the lamp at the top has fallen ill. The Gym Leader hasn't left its side."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d27r0101_seaman_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The lift's only for the keepers. The rest of us take the stairs, all six floors of them!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

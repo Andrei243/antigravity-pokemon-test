@@ -1,0 +1,14 @@
+{
+  // A house in the north-west of Olivine City (plan 20 · J8)
+  "area": "olivine_northwest_house",
+  "bgmTrack": "johto/olivine",
+  "people": {
+    "t26r0601_fishing_2": {
+      "name": "Fisherman",
+      "still": true,
+      "dialog": [
+        "Cianwood City's across the sea to the west. They say its pharmacy makes medicine that cures anything."
+      ]
+    }
+  }
+}

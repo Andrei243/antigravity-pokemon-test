@@ -423,6 +423,55 @@ public class FieldMovementTests
         AssertBlocked(Obstacle.Waterfall, Step(map, 2, 7, North, TravelMode.Surfing, FieldMoves.Waterfall, climbing: true));
     }
 
+    [Fact]
+    public void AWhirlpoolStopsASurferUntilWhirlpoolCarriesThemAcross()
+    {
+        // HeartGold's whirlpool (plan 20 · J8): a block of three tiles by three on open water, as Route 41 has them
+        var map = Lawn(9, 9);
+        for (int y = 0; y < 9; y++)
+            for (int x = 0; x < 9; x++)
+                map.SetGroundTile(x, y, TileType.Water);
+        for (int y = 3; y <= 5; y++)
+            for (int x = 3; x <= 5; x++)
+                map.SetBehaviour(x, y, TileBehavior.Whirlpool);
+        map.SetGroundTile(0, 4, TileType.Grass);
+
+        // It is water to anyone on foot, and nobody sets out onto it from the shore
+        Assert.False(map.IsWalkable(4, 4));
+        Assert.True(map.IsDeepWater(4, 4));
+        AssertBlocked(Obstacle.Water, Step(map, 2, 4, East));
+        map.SetGroundTile(2, 4, TileType.Grass);
+        Assert.False(FieldMovement.CanStartSurf(map, 2, 4, East, new Walker()));
+        map.SetGroundTile(2, 4, TileType.Water);
+
+        // A surfer is stopped from every side: without the move, and with it until they say yes
+        foreach (var (x, y, way) in new[] { (2, 4, East), (6, 4, West), (4, 2, South), (4, 6, North) })
+        {
+            AssertBlocked(Obstacle.Whirlpool, Step(map, x, y, way, TravelMode.Surfing));
+            AssertBlocked(Obstacle.Whirlpool, Step(map, x, y, way, TravelMode.Surfing, FieldMoves.Whirlpool));
+            AssertBlocked(Obstacle.Whirlpool, Step(map, x, y, way, TravelMode.Surfing, climbing: true));
+        }
+
+        // With Whirlpool and a yes, the surfer is carried across the whole block to the open water beyond, any way
+        var across = Step(map, 2, 4, East, TravelMode.Surfing, FieldMoves.Whirlpool, climbing: true);
+        AssertMoves(StepKind.Climb, 6, 4, across);
+        Assert.Equal(TravelMode.Surfing, across.Mode);
+        AssertMoves(StepKind.Climb, 4, 2, Step(map, 4, 6, North, TravelMode.Surfing, FieldMoves.Whirlpool, climbing: true));
+
+        // ...but not onto rock, nor onto someone in the water
+        map.SetSolid(6, 4, true);
+        AssertBlocked(Obstacle.Whirlpool, Step(map, 2, 4, East, TravelMode.Surfing, FieldMoves.Whirlpool, climbing: true));
+
+        // A party that knows the move can do it (the party's moves), and the place's spot says a whirlpool lies ahead
+        var party = new Party();
+        var tentacool = new Pokemon(PokemonDatabase.Get("Tentacool")!, 30);
+        tentacool.Moves.Clear();
+        tentacool.Moves.Add(new Move(MoveDatabase.Get("Whirlpool")!));
+        party.Add(tentacool);
+        Assert.True(FieldMovement.MovesOf(party).HasFlag(FieldMoves.Whirlpool));
+        Assert.True(FieldMoveRules.SpotOf(map, 4, 6, North, new Walker(TravelMode.Surfing)).Whirlpool);
+    }
+
     // ------------------------------------------------------------------ rock faces
 
     [Fact]

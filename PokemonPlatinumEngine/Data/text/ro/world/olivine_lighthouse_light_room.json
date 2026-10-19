@@ -1,0 +1,23 @@
+{
+  "people": {
+    "d27r0107_tsure_poke_static_ampharos": {
+      "name": {
+        "en": [
+          "Amphy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Amphy... It breathes weakly, and its tail's light barely glows."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

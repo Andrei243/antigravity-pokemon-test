@@ -1,0 +1,57 @@
+{
+  "people": {
+    "everywhere_gsgentleman": {
+      "name": {
+        "en": [
+          "Alfred"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Alfred: I climb these stairs every day to visit the sick Pokémon. Excuse me, a battle first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Alfred: My knees are not what they were, and nor is my team."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "everywhere_seaman_2": {
+      "name": {
+        "en": [
+          "Huey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Huey: Ahoy! A battle on the stairs keeps a sailor's legs strong!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Huey: Blown off course, I was."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

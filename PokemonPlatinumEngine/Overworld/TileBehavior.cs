@@ -290,7 +290,7 @@ public static class TileBehaviors
         or TileBehavior.BridgeOverCave or TileBehavior.BikeBridgeEastWestOverGrass or TileBehavior.DeepWater or TileBehavior.Seaweed;
 
     /// <summary>Water a Pokémon can carry its trainer across, including what runs under some bridges.</summary>
-    public static bool IsSurfable(TileBehavior b) => b is TileBehavior.River or TileBehavior.Waterfall or TileBehavior.Sea
+    public static bool IsSurfable(TileBehavior b) => b is TileBehavior.River or TileBehavior.Waterfall or TileBehavior.Sea or TileBehavior.Whirlpool
         or TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater or TileBehavior.DeepWater
         or TileBehavior.CurrentEast or TileBehavior.CurrentWest or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth;
 
@@ -328,6 +328,7 @@ public static class TileBehaviors
         TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest
             => (BehaviourSupport.Ruled, "Climbed to its far end by a party that knows Rock Climb."),
         TileBehavior.Waterfall => (BehaviourSupport.Ruled, "Surfed up with Waterfall and down without; never sideways."),
+        TileBehavior.Whirlpool => (BehaviourSupport.Ruled, "Stops a surfer from every side; with Whirlpool, once the player says yes to it, they are carried across the run of whirlpool tiles to the open water beyond (plan 20 · J8)."),
         TileBehavior.Ice => (BehaviourSupport.Ruled, "Whoever steps on it slides on until something stops them; down a slope the slide gathers speed and up one loses it, and a slide with speed breaks a snowball (IceSlide)."),
         TileBehavior.SlideEast or TileBehavior.SlideWest or TileBehavior.SlideNorth or TileBehavior.SlideSouth
             => (BehaviourSupport.Ruled, "Carries whoever steps on it along."),
@@ -376,7 +377,6 @@ public static class TileBehaviors
         TileBehavior.WarpPanel => (BehaviourSupport.Plain, "Walked onto; whoever ends a step on it is carried to the panel its warp names and stands there facing as they did, turning on the spot on the way. Arriving is no step, so the far panel carries them back only once they step off it and on again (`WarpPanels`; the floors of Team Galactic's headquarters)."),
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
         TileBehavior.HeadbuttTree => (BehaviourSupport.Waiting, "A tree that blocks the way; shaking it with Headbutt is plan 20 · J7's."),
-        TileBehavior.Whirlpool => (BehaviourSupport.Waiting, "A whirlpool; stopping a surfer until the party knows Whirlpool is plan 20 · J8's."),
         TileBehavior.StopSliding or TileBehavior.Magma or TileBehavior.LadderNorth or TileBehavior.LadderSouth or TileBehavior.LadderDown
             => (BehaviourSupport.Waiting, "A HeartGold behaviour whose rule comes with the session of plan 20 that opens a place using it; walked like plain ground until then."),
         _ => (BehaviourSupport.Plain, "Ground like any other: only the blocked flag and the height matter.")

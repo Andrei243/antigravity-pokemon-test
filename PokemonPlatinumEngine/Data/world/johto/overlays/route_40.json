@@ -1,0 +1,49 @@
+{
+  // Route 40 (plan 20 · J8): HeartGold's map, our words. The beach west of Olivine City and the sea beyond, four
+  // swimmers by their own records. The gate house to the Battle Frontier stands open, its far door shut until plan
+  // 20 · J13; the Monday sibling waits for her chapter
+  "area": "route_40",
+  "bgmTrack": "johto/route34",
+  "trees": "Round",
+  "people": {
+    "w40_gsswimmerm": {
+      "name": "Simon",
+      "trainer": {
+        "dialogueBefore": "Swimmer Simon: The current's gentle here. Perfect for a battle at sea!",
+        "dialogueAfter": "Swimmer Simon: I'll float back to shore and think about that."
+      }
+    },
+    "w40_gsswimmerw": {
+      "name": "Elaine",
+      "trainer": {
+        "dialogueBefore": "Swimmer Elaine: I swim out here every morning. You're in my lane!",
+        "dialogueAfter": "Swimmer Elaine: Fine, share the lane."
+      }
+    },
+    "w40_gsswimmerm_2": {
+      "name": "Randall",
+      "trainer": {
+        "dialogueBefore": "Swimmer Randall: I'm training for the swim to Cianwood. Help me warm up!",
+        "dialogueAfter": "Swimmer Randall: Warmed up, and worn out."
+      }
+    },
+    "w40_gsswimmerw_2": {
+      "name": "Paula",
+      "trainer": {
+        "dialogueBefore": "Swimmer Paula: Surfing on a Pokémon? That's cheating! Battle me fair and square.",
+        "dialogueAfter": "Swimmer Paula: All right, you've earned the ride."
+      }
+    },
+    "w40_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Cianwood City's straight across the sea, west of here. You'll want a Pokémon that knows Surf."
+      ]
+    }
+  },
+  "signs": {
+    "W40_002+1": "Route 40\nCianwood City lies to the west, across the sea.",
+    "W40_009+1": "Battle Frontier\nThe gate to the place where the strongest gather."
+  }
+}

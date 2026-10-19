@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r38r0101_counterm": {
+      "name": {
+        "en": [
+          "Officer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 38 heads west to the Moomoo Farm, and on to Olivine City by the sea."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

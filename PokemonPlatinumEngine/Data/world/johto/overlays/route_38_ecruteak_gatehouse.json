@@ -1,0 +1,14 @@
+{
+  // The gate house between Ecruteak City and Route 38 (plan 20 · J8)
+  "area": "route_38_ecruteak_gatehouse",
+  "bgmTrack": "johto/route38",
+  "people": {
+    "r38r0101_counterm": {
+      "name": "Officer",
+      "still": true,
+      "dialog": [
+        "Route 38 heads west to the Moomoo Farm, and on to Olivine City by the sea."
+      ]
+    }
+  }
+}
