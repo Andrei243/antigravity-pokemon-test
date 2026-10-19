@@ -1,0 +1,8 @@
+{
+  // The old lady's rest stop at the head of Route 111 (plan 21 · H4, part a): she lets a tired traveller rest
+  "area": "route_111_old_ladys_rest_stop",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "expert_f": { "name": "Old Lady", "script": "OldLady" }
+  }
+}

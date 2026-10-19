@@ -338,7 +338,7 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `teleport` | Through a fade to the town of the Pokémon Center last gone into. |
 | `escape` | Through a fade out of the caves, to where the player went into them (Dig, an Escape Rope). |
 | `sweetscent` | Draws out a wild Pokémon of the place where the player stands, on land or water, and battles it. `RESULT` is 0 when nothing lives there. |
-| `rocksmash` | After a rock is smashed: a wild Pokémon of the rock's place comes out at the place's chance (its area's `rockSmash` table and `rockSmashRate`: HeartGold's two slots met 90 and 10 times in a hundred, the GBA games' five by the water's weights) and is battled. `RESULT` is 0 when nothing does, which is always in Sinnoh (plan 20 · J9). |
+| `smashencounter` | After a rock is smashed: where the place keeps Pokémon under its rocks (Hoenn's areas, Emerald's `rock_smash_mons` and rate; plan 21 · H4), one may come out, and it is battled. `RESULT` is 1 when one did, 0 when the rock hid nothing (always, in Platinum's places). | The older name `rocksmash` is the same command; HeartGold's table (plan 20 · J9) counts its rate in a hundred and its rock is the tile ahead, 90 and 10 for its two slots.
 | `poketch on` | Gives the player the Pokétch. |
 | `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
 | `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. `safari start 600` is a game of another number of steps (plan 19 · K6: FireRed's Safari Zone in Fuchsia City), and the two common scripts send a player of Kanto back to its entrance. |
@@ -456,7 +456,7 @@ own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`)
 | `gamecorner room 500` | `RESULT` 1 when that many more fit (the case holds 50,000). |
 | `gamecorner add 50`, `gamecorner take 50` | Puts coins in or takes them out, all or none: `RESULT` 1 when it did. |
 | `gamecorner slots 3` | Sits the player at a machine of that number (0 to 11: its mood is the day's deal for it) and waits until they get up. |
-| `gamecorner prize` | Asks which of the exchange's prizes: `RESULT` 1, or 0 for none. `{item}`, `{price}` in coins, and `{thing}` the move a TM holds. |
+| `gamecorner prize`, `gamecorner prize mauville` | Asks which of the exchange's prizes (Veilstone's, or Mauville's five TMs: plan 21 · H3, part c): `RESULT` 1, or 0 for none. `{item}`, `{price}` in coins, and `{thing}` the move a TM holds. |
 | `gamecorner buy` | Exchanges coins for the prize chosen: `RESULT` 1, or 0 with too few. |
 | `gamecorner hiddenpower` | Reads the Hidden Power of the Pokémon `RESULT` names (after `choosepokemon`): `RESULT` 0 with none chosen, 1 when it knows the move, 2 when it doesn't, 3 for an Egg; `{thing}` is the type. |
 | `gamecorner cointrick` | The Coin Case's clown tosses his coin: `RESULT` 0 or 1, the hand it is in. |
@@ -852,7 +852,7 @@ that waits for the player. In a hurry:
 - **every flag, variable, item, Pokémon, `hide`, `show` and `place` happens exactly as when the scene is played.**
 
 The hurry **stops** before anything that waits for the player or that can't be ended at once, which is then carried out
-at the scene's own pace: `ask` and `choose`; a battle (`battle`, `wildbattle`, `catchinglesson`, `sweetscent`, `rocksmash`,
+at the scene's own pace: `ask` and `choose`; a battle (`battle`, `wildbattle`, `catchinglesson`, `sweetscent`, `smashencounter`,
 `honeytree battle`, `master`); a screen (`starter`, `shop`, `pc`, `wardrobe`, `travel`, `choosepokemon`, `chooseitem`, `halloffame
 show`, `credits`, `hatch`, `poffin cook`, `supercontest enter` and `photo`, `seal capsules` and `shop`, and everything of
 `fossil`, `gamecorner`, `villa`, `palpark`, `frontier`, `tower`, `factory`, `hall`, `castle`, `arcade`, `tutor`, `amity`

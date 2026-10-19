@@ -1,0 +1,45 @@
+{
+  "people": {
+    "winstrate_house_victor": {
+      "name": {
+        "en": [
+          "Victor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "winstrate_house_victoria": {
+      "name": {
+        "en": [
+          "Victoria"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "winstrate_house_vivi": {
+      "name": {
+        "en": [
+          "Vivi"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "winstrate_house_vicky": {
+      "name": {
+        "en": [
+          "Vicky"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

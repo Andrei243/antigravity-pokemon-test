@@ -25,6 +25,8 @@
     "Ninja Boy": "kid",
     "Battle Girl": "fighter",
     "Parasol Lady": "lady",
+    "Kindler": "fighter",
+    "Winstrate": "fun",
     "Picnicker": "girl",
     "Twins": "kid",
     "Sailor": "sailor",
@@ -100,6 +102,7 @@
     "Channeler": "mystery",
     "Pokemaniac": "mystery",
     "Team Aqua": "galactic",
+    "Team Magma": "galactic",
     "Cue Ball": "fighter",
     "Boss": "galactic",
     "Rocker": "fun",
@@ -134,6 +137,7 @@
     "Elite Four": "eliteFour",
     "Champion": "champion",
     "Team Aqua": "galactic",
+    "Team Magma": "galactic",
     "Boss": "galacticBoss"
   }
 }

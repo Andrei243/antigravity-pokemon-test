@@ -1,0 +1,87 @@
+{
+  "people": {
+    "fallarbor_mart_clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! What can I get for you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Should I let my Skitty evolve? It's so cute as it is... But a Delcatty would be lovely too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I found a Nugget out in town and sold it here. Easy money, if you know where to look!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "skitty": {
+      "name": {
+        "en": [
+          "Skitty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Metronome makes a Pokémon use any move at all. You never know what's coming! Isn't that exciting?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

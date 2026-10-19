@@ -1,0 +1,13 @@
+{
+  // Fallarbor Town's Poké Mart (plan 21 · H4, part a). Emerald's girl here teaches Metronome; the move tutors of Hoenn
+  // are left for later, so she only talks
+  "area": "fallarbor_town_mart",
+  "bgmTrack": "hoenn/fallarbor",
+  "people": {
+    "fallarbor_mart_clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! What can I get for you?" ] },
+    "woman_2": { "name": "Woman", "dialog": [ "Should I let my Skitty evolve? It's so cute as it is... But a Delcatty would be lovely too." ] },
+    "pokefan_m": { "name": "Man", "dialog": [ "I found a Nugget out in town and sold it here. Easy money, if you know where to look!" ] },
+    "skitty": { "name": "Skitty", "npcType": "Pokemon", "species": "Skitty", "script": "Skitty" },
+    "girl_2": { "name": "Girl", "dialog": [ "Metronome makes a Pokémon use any move at all. You never know what's coming! Isn't that exciting?" ] }
+  }
+}

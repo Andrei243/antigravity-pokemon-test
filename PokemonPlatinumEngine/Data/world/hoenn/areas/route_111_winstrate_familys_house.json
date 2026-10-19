@@ -1,0 +1,29 @@
+{
+  "key": "route_111_winstrate_familys_house",
+  "index": 228,
+  "name": "Route 111",
+  "matrix": 177,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "route_111", "toWarp": 0 },
+    { "x": 4, "z": 7, "to": "route_111", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "winstrate_house_vivi", "looks": "lass", "movement": "look_west", "x": 7, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "Route111_WinstrateFamilysHouse_EventScript_Vivi" },
+    { "id": "winstrate_house_victor", "looks": "man_1", "movement": "look_east", "x": 4, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "Route111_WinstrateFamilysHouse_EventScript_Victor" },
+    { "id": "winstrate_house_victoria", "looks": "pokefan_f", "movement": "look_west", "x": 7, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "Route111_WinstrateFamilysHouse_EventScript_Victoria" },
+    { "id": "winstrate_house_vicky", "looks": "expert_f", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "Route111_WinstrateFamilysHouse_EventScript_Vicky" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -66,6 +66,15 @@ public sealed partial class GameFlow
     /// <summary>The area of the overworld the player was last in; null on a small map, which is one place.</summary>
     public MapArea? CurrentArea { get; set; }
 
+    /// <summary>The stretch of the area with music of its own the player was last in (plan 21 · H4: Route 111's desert); null outside one.</summary>
+    public Data.OverlayZone? CurrentZone { get; set; }
+
+    /// <summary>
+    /// The tiles of ash-covered grass already brushed clean since the player came to the place (plan 21 · H4; Emerald's
+    /// STEP_CB_ASH turns the grass bare until the map is loaded again): each gives the Soot Sack its ash once.
+    /// </summary>
+    public HashSet<(int X, int Y)> AshBrushed { get; } = new();
+
     /// <summary>A trainer who spotted the player and is walking up, and the second of two who saw the player at once (plan 02 · S6).</summary>
     public TrainerApproach? TrainerApproach { get; set; }
     public TrainerApproach? PairApproach { get; set; }

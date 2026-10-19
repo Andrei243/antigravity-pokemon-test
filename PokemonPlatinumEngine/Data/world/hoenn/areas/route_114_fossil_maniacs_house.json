@@ -1,0 +1,32 @@
+{
+  "key": "route_114_fossil_maniacs_house",
+  "index": 232,
+  "name": "Route 114",
+  "matrix": 181,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FALLARBOR",
+  "nightMusic": "MUS_FALLARBOR",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "route_114", "toWarp": 1 },
+    { "x": 5, "z": 7, "to": "route_114", "toWarp": 1 },
+    { "x": 4, "z": 1, "to": "route_114_fossil_maniacs_tunnel", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "look_south", "x": 3, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route114_FossilManiacsHouse_EventScript_FossilManiacsBrother" }
+  ],
+  "signs": [
+    { "x": 5, "z": 3, "type": 0, "script": "Route114_FossilManiacsHouse_EventScript_RockDisplay" },
+    { "x": 6, "z": 3, "type": 0, "script": "Route114_FossilManiacsHouse_EventScript_RockDisplay" },
+    { "x": 7, "z": 2, "type": 0, "script": "Route114_FossilManiacsHouse_EventScript_Bookshelf" },
+    { "x": 8, "z": 2, "type": 0, "script": "Route114_FossilManiacsHouse_EventScript_Bookshelf" }
+  ],
+  "triggers": []
+}

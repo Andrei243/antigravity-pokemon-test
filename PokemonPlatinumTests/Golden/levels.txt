@@ -218,6 +218,9 @@ super rod 30-55
 Eterna Forest
 grass 10-14
 trainers 8, 11-17: bug_catcher_donald 14, bug_catcher_jack 15, bug_catcher_phillip 15, lass_briana 16, psychic_elijah 17, psychic_kody 17, psychic_lindsey 17, psychic_rachael 17
+=== fiery_path
+Fiery Path
+grass 14-16
 === fight_area
 Fight Area
 trainers 1, 56-58: elite_four_flint_fight_area 58
@@ -370,6 +373,13 @@ super rod 30-55
 === mauville_city_gym
 Mauville City
 trainers 5, 17: hoenn_angelo 17, hoenn_ben 17, hoenn_kirk 17, hoenn_shawn 17, hoenn_vivian 17
+=== meteor_falls_1f_1r
+Meteor Falls
+grass 14-20
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
 === mt_coronet_1f_north_room_1
 Mt. Coronet
 grass 13-16
@@ -682,6 +692,30 @@ trainers 14, 6-16: hoenn_abigail_1 16, hoenn_alyssa 15, hoenn_anthony 14, hoenn_
 === route_110_trick_house_puzzle_1
 Route 110
 trainers 3, 14-16: hoenn_eddie 16, hoenn_robin 14, hoenn_sally 16
+=== route_111
+Route 111
+grass 19-22
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 17, 17-23: hoenn_beau 21, hoenn_becky 22, hoenn_bianca 18, hoenn_branden 22, hoenn_brooke_1 17, hoenn_bryan 22, hoenn_celia 22, hoenn_celina 18, hoenn_daisuke 19, hoenn_drew 23, hoenn_dusty_1 23, hoenn_hayden 18, hoenn_heidi 22, hoenn_irene 17, hoenn_travis 18, hoenn_tyron 19, hoenn_wilton_1 17
+=== route_112
+Route 112
+grass 14-16
+trainers 6, 16-18: hoenn_brice 17, hoenn_bryant 18, hoenn_carol 17, hoenn_larry 18, hoenn_shayla 18, hoenn_trent_1 17
+=== route_113
+Route 113
+grass 14-16
+trainers 10, 17-19: hoenn_coby 19, hoenn_dillon 19, hoenn_jaylen 19, hoenn_lao_1 17, hoenn_lawrence 18, hoenn_lung 18, hoenn_madeline_1 19, hoenn_sophie 19, hoenn_tori_and_tia 19, hoenn_wyatt 18
+=== route_114
+Route 114
+grass 15-18
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 12, 16-20: hoenn_angelina 18, hoenn_bernie_1 18, hoenn_charlotte 19, hoenn_claude 18, hoenn_kai 19, hoenn_lenny 18, hoenn_lucas_1 18, hoenn_nancy 18, hoenn_nolan 19, hoenn_shane 18, hoenn_steve_1 19, hoenn_tyra_and_ivy 20
 === route_116
 Route 116
 grass 6-8

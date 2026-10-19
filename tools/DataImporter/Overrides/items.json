@@ -123,6 +123,54 @@
     "description": "Writing paper with a pattern of Zigzagoon. A Pokémon can carry it in a trade.",
     "fieldUse": "Mail"
   },
+  // Hoenn's items of plan 21 · H4 (part a) and H3 (part c), which no game this importer reads has: the goggles that
+  // let their wearer cross the desert's sandstorm, the sack that gathers volcanic ash, and the mail Slateport sells,
+  // which the woman of Mauville trades her Coin Case for
+  "Go-Goggles": {
+    "id": 9107,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Snug goggles that keep sand out of the eyes. With them on, a desert sandstorm can be crossed.",
+    "cantBeTossed": true
+  },
+  "Soot Sack": {
+    "id": 9108,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A sack for gathering the volcanic ash that settles on the grass of Route 113.",
+    "cantBeTossed": true
+  },
+  "Harbor Mail": {
+    "id": 9109,
+    "pocket": "Mail",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 50,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Writing paper with a pattern of Wingull over the waves. A Pokémon can carry it in a trade.",
+    "fieldUse": "Mail"
+  },
+  // Professor Cozmo's meteorite, which Team Magma takes at Meteor Falls (plan 21 · H4)
+  "Meteorite": {
+    "id": 9110,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A stone that fell from the sky onto Meteor Falls. It gives off a faint, mysterious warmth.",
+    "cantBeTossed": true
+  },
   // Johto's key item of the second chapter (plan 20 · J7), which no game this importer reads has: Goldenrod's flower
   // shop lends it for the strange tree on Route 36
   "SquirtBottle": {

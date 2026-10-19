@@ -4662,7 +4662,11 @@
     "Wailmer Pail": "Wailmerrosoir",
     "Mach Bike": "Vélo de Course",
     "Acro Bike": "Vélo Cross",
-    "Orange Mail": "Lettre Oranj"
+    "Orange Mail": "Lettre Oranj",
+    "Go-Goggles": "Lunettes Sable",
+    "Soot Sack": "Sac à Suie",
+    "Harbor Mail": "Lettre Port",
+    "Meteorite": "Météorite"
   },
   "types": {
     "Normal": "Normal",
@@ -7294,7 +7298,11 @@
       "Wailmer Pail": "Utilisé pour arroser les baies.",
       "Mach Bike": "Plus rapide que le Vélo Cross, et peut gravir des pentes sablonneuses et rouler sur des sols fissurés.",
       "Acro Bike": "Plus manœuvrable que le Vélo de Course, et permet de sauter le long des rails.",
-      "Orange Mail": "Permet au Dresseur d'écrire un message et de l'envoyer via un échange Pokémon."
+      "Orange Mail": "Permet au Dresseur d'écrire un message et de l'envoyer via un échange Pokémon.",
+      "Go-Goggles": "Permet de traverser les déserts venteux.",
+      "Soot Sack": "Stocke les cendres volcaniques de la Route 113.",
+      "Harbor Mail": "Permet au Dresseur d'écrire un message et de l'envoyer via un échange Pokémon.",
+      "Meteorite": "FL: À livrer au père de Lostelle. RSE: À échanger au Professeur Kosmo contre la CT27 (Retour)."
     }
   }
 }

@@ -1,9 +1,9 @@
 {
-  // A house in Mauville City (plan 21 · H3, part b): Emerald's woman here swaps a Coin Case for a Harbor Mail; the Game
-  // Corner and its coins are left for later, so she only talks
+  // A house in Mauville City (plan 21 · H3, parts b and c): Emerald's woman here swaps a Coin Case for a Harbor Mail,
+  // which Slateport's Mart sells (mauville_city_house_2.txt)
   "area": "mauville_city_house_2",
   "bgmTrack": "hoenn/rustboro",
   "people": {
-    "woman_3": { "name": "Woman", "dialog": [ "My husband spends every afternoon at the Game Corner. They're refitting it now, and he's beside himself!" ] }
+    "woman_3": { "name": "Woman", "script": "Woman" }
   }
 }

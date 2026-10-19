@@ -1,0 +1,95 @@
+# Meteor Falls' first room (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MeteorFalls_1F_1R/scripts.inc).
+#
+# Two of Team Magma's grunts have taken Professor Cozmo's meteorite, and the first step past them (the trigger,
+# VAR_METEOR_FALLS_STATE 0) catches them gloating over it. Archie and two of Team Aqua's grunts come in after them;
+# Team Magma runs, pushing the player aside, and Archie says what he thinks of them before he goes after them. Then
+# Route 112's grunts are gone (FLAG_HIDE_ROUTE_112_TEAM_MAGMA), Archie is met (FLAG_MET_ARCHIE_METEOR_FALLS), Scott is
+# kept out of Fallarbor's Battle Tent (FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT) and the state is 1. Professor
+# Cozmo stays here, at a loss, until Mt. Chimney (plan 21 · H4's next part).
+
+
+script MagmaStealsTheMeteorite
+  scene "Team Magma at Meteor Falls"
+  music "hoenn/eye_galactic"
+  face player down
+  wait 0.5
+  speaker "Team Magma Grunt"
+  say "With this meteorite, that thing at Mt. Chimney will be ours to wake! Our boss will be thrilled."
+  face meteor_falls_magma_grunt_1 up
+  face meteor_falls_magma_grunt_2 up
+  emote meteor_falls_magma_grunt_1 exclaim
+  say "Hey! Who's the kid? Whoever you are, don't expect any mercy from Team Magma!"
+  walk meteor_falls_magma_grunt_1 right 2
+  face meteor_falls_magma_grunt_1 up
+  speaker "Archie"
+  say "Hold it right there, Team Magma!"
+  face player left
+  face meteor_falls_magma_grunt_1 left
+  face meteor_falls_magma_grunt_2 left
+  clearflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+  place meteor_falls_archie 6 20 right
+  place meteor_falls_aqua_grunt_1 5 20 right
+  place meteor_falls_aqua_grunt_2 5 21 right
+  show meteor_falls_archie
+  show meteor_falls_aqua_grunt_1
+  show meteor_falls_aqua_grunt_2
+  move meteor_falls_archie right 6
+  move meteor_falls_aqua_grunt_1 right 6
+  move meteor_falls_aqua_grunt_2 right 6
+  waitmoves
+  speaker "Team Magma Grunt"
+  say "Team Aqua! You lot always turn up where you're not wanted. We've got what we came for. See you around!"
+  face player down
+  face player right
+  walk player back left 1
+  move meteor_falls_magma_grunt_1 up 2 right 7 fast
+  move meteor_falls_magma_grunt_2 up 3 right 7 fast
+  waitmoves
+  hide meteor_falls_magma_grunt_1
+  hide meteor_falls_magma_grunt_2
+  setflag FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+  walk meteor_falls_archie right 2 up 2
+  face meteor_falls_archie left
+  speaker "Archie"
+  say "Well, well. I've seen you before. Slateport, at the museum, wasn't it?"
+  say "Team Magma have their meteorite now, and they mean to use it on Mt. Chimney's volcano."
+  move meteor_falls_aqua_grunt_1 right 3
+  move meteor_falls_aqua_grunt_2 right 3
+  waitmoves
+  face meteor_falls_aqua_grunt_1 up
+  face meteor_falls_aqua_grunt_2 up
+  speaker "Team Aqua Grunt"
+  say "Boss! We should go after Team Magma, right now!"
+  face meteor_falls_archie down
+  speaker "Archie"
+  say "Yes, and quickly. There's no telling what they'll do with it."
+  face meteor_falls_archie left
+  say "As for you, kid... Stay out of grown-up business. Team Aqua will deal with Team Magma. Farewell!"
+  move meteor_falls_archie right 7
+  move meteor_falls_aqua_grunt_1 up 2 right 7
+  move meteor_falls_aqua_grunt_2 up 3 right 7
+  waitmoves
+  hide meteor_falls_archie
+  hide meteor_falls_aqua_grunt_1
+  hide meteor_falls_aqua_grunt_2
+  setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+  music area
+  setflag FLAG_HIDE_ROUTE_112_TEAM_MAGMA
+  setflag FLAG_MET_ARCHIE_METEOR_FALLS
+  setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
+  setvar VAR_METEOR_FALLS_STATE 1
+  endscene
+  end
+
+
+script Cozmo
+  speaker "Prof. Cozmo"
+  if flag FLAG_MET_PROF_COZMO goto Met
+  setflag FLAG_MET_PROF_COZMO
+  say "I'm Cozmo, a researcher of meteorites. Those people in red asked so nicely to see my meteorite..."
+  say "And then they took it! Whatever do they want with it?"
+  end
+label Met
+  say "What could Team Magma want with a meteorite at Mt. Chimney? It worries me terribly."
+  end

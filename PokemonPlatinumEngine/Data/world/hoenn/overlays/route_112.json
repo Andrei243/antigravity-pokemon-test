@@ -1,0 +1,26 @@
+{
+  // Route 112 (plan 21 · H4, part a): the foot of Mt. Chimney between Route 111 and Lavaridge Town, with the cable car's
+  // station and the two ways into Fiery Path. Two of Team Magma's grunts stand before the station until the scene at
+  // Meteor Falls sends them off (FLAG_HIDE_ROUTE_112_TEAM_MAGMA; route_112.txt); the cable car's ride up the mountain
+  // and Jagged Pass are plan 21 · H4's next part, so the way down to Lavaridge stays shut
+  "area": "route_112",
+  "bgmTrack": "hoenn/route110",
+  "trees": "Round",
+  "locked": [ 2, 3 ],
+  "people": {
+    "route112_grunt_1": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "script": "MagmaGrunts", "still": true },
+    "route112_grunt_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "script": "MagmaGrunts", "still": true },
+    "hiker_3": { "name": "Hiker", "dialog": [ "I'd like to go down to Mauville, but once I'm off these ledges, getting back up to Lavaridge is no easy climb." ] },
+    "hiker": { "name": "Brice", "trainer": { "dialogueBefore": "Hiker Brice: Mt. Chimney's slopes made my legs strong. Let's see how strong my Pokémon are!", "dialogueAfter": "Hiker Brice: My legs are fine. My pride, not so much." } },
+    "camper": { "name": "Larry", "trainer": { "dialogueBefore": "Camper Larry: I'm camping at the foot of a volcano. Exciting, right? Battle!", "dialogueAfter": "Camper Larry: That was hotter than the volcano." } },
+    "picnicker": { "name": "Carol", "trainer": { "dialogueBefore": "Picnicker Carol: We packed a lunch for the climb! But a battle comes first.", "dialogueAfter": "Picnicker Carol: I need that lunch now." } },
+    "hiker_2": { "name": "Trent", "trainer": { "dialogueBefore": "Hiker Trent: My Geodude and I have climbed every mountain in Hoenn!", "dialogueAfter": "Hiker Trent: We'll go and climb a bigger one." } },
+    "man_5": { "name": "Bryant", "trainer": { "dialogueBefore": "Kindler Bryant: Being so close to the volcano fires me right up!", "dialogueAfter": "Kindler Bryant: Doused." } },
+    "woman_2": { "name": "Shayla", "trainer": { "dialogueBefore": "Aroma Lady Shayla: The flowers by the berry trees smell lovely. Shall we battle among them?", "dialogueAfter": "Aroma Lady Shayla: Even losing smells sweet here." } }
+  },
+  "signs": {
+    "Route112_EventScript_MtChimneySign": "Mt. Chimney\nFor Lavaridge Town or the summit, please take the cable car.",
+    "Route112_EventScript_MtChimneyCableCarSign": "Mt. Chimney Cable Car\nA short walk up this way!",
+    "Route112_EventScript_RouteSignLavaridge": "Route 112\nWest: Lavaridge Town"
+  }
+}

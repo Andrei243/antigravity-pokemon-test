@@ -1,0 +1,9 @@
+{
+  // The move relearner's house in Fallarbor Town (plan 21 · H4, part a): he says what he does for a Heart Scale and,
+  // as Platinum's Move Relearner does in this game until plan 12 · Q19, changes nothing yet
+  "area": "fallarbor_town_move_relearners_house",
+  "bgmTrack": "hoenn/fallarbor",
+  "people": {
+    "move_relearner": { "name": "Move Relearner", "dialog": [ "I'm the Move Relearner. I can remind a Pokémon of a move it once knew, in exchange for a Heart Scale.", "My memory's a bit foggy today, though. Come back another time, would you?" ] }
+  }
+}

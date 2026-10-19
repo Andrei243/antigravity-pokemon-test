@@ -1,0 +1,102 @@
+{
+  "people": {
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Azurill is so precious to me. I take it with me everywhere, even to the shops!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Have you been to Lavaridge yet? Flannery, the Gym Leader there, is said to be fiery in every way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "azurill": {
+      "name": {
+        "en": [
+          "Azurill"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FallarborTown_EventScript_TownSign": {
+      "en": [
+        "Fallarbor Town\nA farm community with small gardens"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FallarborTown_EventScript_BattleTentSign": {
+      "en": [
+        "Battle Tent: Fallarbor\nThe judges decide who wins!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FallarborTown_EventScript_MoveTutorSign": {
+      "en": [
+        "The Move Tutor's House\nForgotten moves remembered!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

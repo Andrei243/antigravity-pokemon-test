@@ -1,0 +1,10 @@
+# The Fossil Maniac's tunnel on Route 114 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines
+# are our own, on Emerald's beats (data/maps/Route114_FossilManiacsTunnel/scripts.inc). Emerald's maniac asks after
+# the desert's fossils once Mirage Tower has given one; Mirage Tower is not open yet, so he only talks of them.
+
+
+script FossilManiac
+  speaker "Fossil Maniac"
+  say "I'm digging for fossils! I dig and dig, every day. Pokémon from ancient times lie hidden in the rock."
+  say "They say fossils turn up in the desert, too. If you ever find one, I'd love to see it!"
+  end

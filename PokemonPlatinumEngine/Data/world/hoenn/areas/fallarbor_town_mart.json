@@ -1,0 +1,30 @@
+{
+  "key": "fallarbor_town_mart",
+  "index": 80,
+  "name": "Fallarbor Town",
+  "matrix": 29,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "fallarbor_town", "toWarp": 0 },
+    { "x": 4, "z": 7, "to": "fallarbor_town", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "fallarbor_mart_clerk", "looks": "mart_employee", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "FallarborTown_Mart_EventScript_Clerk" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "wander_around", "x": 5, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FallarborTown_Mart_EventScript_Woman" },
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_south", "x": 9, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FallarborTown_Mart_EventScript_PokefanM" },
+    { "id": "skitty", "looks": "skitty", "movement": "look_around", "x": 2, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FallarborTown_Mart_EventScript_Skitty" },
+    { "id": "girl_2", "looks": "girl_2", "movement": "look_north", "x": 7, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "FallarborTown_Mart_EventScript_MetronomeTutor" }
+  ],
+  "signs": [],
+  "triggers": []
+}

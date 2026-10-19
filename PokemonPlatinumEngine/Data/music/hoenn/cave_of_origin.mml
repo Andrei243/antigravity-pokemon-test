@@ -1,0 +1,35 @@
+# Meteor Falls (and the deep caves of Hoenn's story to come): a slow, wondering flute line in C minor over a falling
+# harp, a choir's held chords and a deep bass, like water sounding in a great dark hall. A cave plays the same by day
+# and night. Original composition for this game (plan 21 · H4, part a).
+title Cave of Origin
+tempo 84
+meter 4/4
+reverb 0.52
+night none
+
+track lead flute vol=0.62 pan=0 rev=0.54
+  L o5 c2 e-2 | o5 g2. f4 | o5 e-4 d4 c4 d4 | o4 b2. r4 |
+  o5 c2 e-4 g4 | o5 a-2. g4 | o5 f4 e-4 d4 e-4 | o5 d2. r4 |
+  o5 e-2 g2 | o6 c2. o5 b-4 | o5 a-4 g4 f4 e-4 | o5 d2. r4 |
+  o5 c4 d4 e-4 f4 | o5 e-2 a-2 | o5 g4 f4 d4 o4 b4 | o5 c2. r4 |
+
+track arp harp vol=0.3 pan=-0.3 rev=0.5
+  L o5 g8 e-8 c8 o4 g8 o5 g8 e-8 c8 o4 g8 | o5 g8 e-8 c8 o4 g8 o5 g8 e-8 c8 o4 g8 | o5 g8 e-8 c8 o4 g8 o5 g8 e-8 c8 o4 g8 | o5 g8 d8 o4 b8 g8 o5 g8 d8 o4 b8 g8 |
+  o5 g8 e-8 c8 o4 g8 o5 g8 e-8 c8 o4 g8 | o5 a-8 e-8 c8 o4 a-8 o5 a-8 e-8 c8 o4 a-8 | o5 a-8 f8 c8 o4 a-8 o5 a-8 f8 c8 o4 a-8 | o5 g8 d8 o4 b8 g8 o5 g8 d8 o4 b8 g8 |
+  o5 b-8 g8 e-8 o4 b-8 o5 b-8 g8 e-8 o4 b-8 | o5 a-8 e-8 c8 o4 a-8 o5 a-8 e-8 c8 o4 a-8 | o5 a-8 f8 c8 o4 a-8 o5 a-8 f8 c8 o4 a-8 | o5 g8 d8 o4 b8 g8 o5 g8 d8 o4 b8 g8 |
+  o5 g8 e-8 c8 o4 g8 o5 g8 e-8 c8 o4 g8 | o5 a-8 e-8 c8 o4 a-8 o5 a-8 e-8 c8 o4 a-8 | o5 g8 d8 o4 b8 g8 o5 g8 d8 o4 b8 g8 | o5 g8 e-8 c8 o4 g8 c2 |
+
+track choir choir vol=0.24 pan=0.25 rev=0.6
+  L o4 (c e- g)1 | (c e- g)1 | (c e- g)1 | (d g b)1 |
+  (c e- g)1 | (c e- a-)1 | (c f a-)1 | (d g b)1 |
+  (e- g b-)1 | (c e- a-)1 | (c f a-)1 | (d g b)1 |
+  (c e- g)1 | (c e- a-)1 | (d g b)1 | (c e- g)1 |
+
+track bass contrabass vol=0.64 rev=0.24
+  L o2 c1 | o2 c1 | o2 c1 | o2 g1 |
+  o2 c1 | o2 a-1 | o2 f1 | o2 g1 |
+  o2 e-1 | o2 a-1 | o2 f1 | o2 g1 |
+  o2 c1 | o2 a-1 | o2 g1 | o2 c1 |
+
+track drip kit vol=0.2 pan=0.3 rev=0.6
+  v64 L [ r2 h8 r8 r4 | r4 r8 h8 r2 | ]8

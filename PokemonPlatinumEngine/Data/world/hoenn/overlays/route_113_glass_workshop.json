@@ -1,0 +1,10 @@
+{
+  // The glass workshop on Route 113 (plan 21 · H4, part a): its master gives the Soot Sack and makes flutes out of the
+  // ash gathered in it (route_113_glass_workshop.txt); the Pretty Chair and Desk are decorations, plan 21 · H10's
+  "area": "route_113_glass_workshop",
+  "bgmTrack": "hoenn/route113",
+  "people": {
+    "man_1": { "name": "Glass Worker", "script": "GlassWorker" },
+    "ninja_boy": { "name": "Boy", "dialog": [ "The master can make glass out of anything. Even the ash out there! Isn't that amazing?" ] }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "key": "meteor_falls_1f_1r",
+  "index": 238,
+  "name": "Meteor Falls",
+  "matrix": 187,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CAVE_OF_ORIGIN",
+  "nightMusic": "MUS_CAVE_OF_ORIGIN",
+  "encounters": "meteor_falls_1f_1r",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 16 },
+    { "species": "Zubat", "level": 17 },
+    { "species": "Zubat", "level": 18 },
+    { "species": "Zubat", "level": 15 },
+    { "species": "Zubat", "level": 14 },
+    { "species": "Solrock", "level": 16 },
+    { "species": "Solrock", "level": 18 },
+    { "species": "Solrock", "level": 14 },
+    { "species": "Zubat", "level": 19 },
+    { "species": "Zubat", "level": 20 },
+    { "species": "Zubat", "level": 19 },
+    { "species": "Zubat", "level": 20 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Zubat", "level": 5, "maxLevel": 35 },
+    { "species": "Zubat", "level": 30, "maxLevel": 35 },
+    { "species": "Solrock", "level": 25, "maxLevel": 35 },
+    { "species": "Solrock", "level": 15, "maxLevel": 25 },
+    { "species": "Solrock", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Barboach", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Barboach", "level": 25, "maxLevel": 30 },
+    { "species": "Barboach", "level": 30, "maxLevel": 35 },
+    { "species": "Barboach", "level": 20, "maxLevel": 25 },
+    { "species": "Barboach", "level": 35, "maxLevel": 40 },
+    { "species": "Barboach", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 27, "z": 18, "to": "route_114", "toWarp": 0 },
+    { "x": 6, "z": 39, "to": "route_115", "toWarp": 0 },
+    { "x": 10, "z": 3, "to": "meteor_falls_1f_2r", "toWarp": 0 },
+    { "x": 5, "z": 4, "to": "meteor_falls_b1f_1r", "toWarp": 4 },
+    { "x": 26, "z": 28, "to": "meteor_falls_b1f_1r", "toWarp": 5 },
+    { "x": 4, "z": 2, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 2, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_METEOR_FALLS_1F_1R_TM_IRON_TAIL", "item": "TM23", "script": "MeteorFalls_1F_1R_EventScript_ItemTMIronTail" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 2, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_METEOR_FALLS_1F_1R_MOON_STONE", "item": "Moon Stone", "script": "MeteorFalls_1F_1R_EventScript_ItemMoonStone" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_around", "x": 27, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_METEOR_FALLS_1F_1R_FULL_HEAL", "item": "Full Heal", "script": "MeteorFalls_1F_1R_EventScript_ItemFullHeal" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_around", "x": 26, "z": 32, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_METEOR_FALLS_1F_1R_PP_UP", "item": "PP Up", "script": "MeteorFalls_1F_1R_EventScript_ItemPPUP" },
+    { "id": "meteor_falls_magma_grunt_1", "looks": "magma_member_m", "movement": "look_south", "x": 12, "z": 20, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA", "script": "" },
+    { "id": "meteor_falls_magma_grunt_2", "looks": "magma_member_m", "movement": "look_west", "x": 14, "z": 21, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA", "script": "" },
+    { "id": "meteor_falls_archie", "looks": "archie", "movement": "look_east", "x": 6, "z": 20, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_METEOR_FALLS_TEAM_AQUA", "script": "" },
+    { "id": "meteor_falls_aqua_grunt_1", "looks": "aqua_member_m", "movement": "look_east", "x": 6, "z": 20, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_METEOR_FALLS_TEAM_AQUA", "script": "" },
+    { "id": "meteor_falls_aqua_grunt_2", "looks": "aqua_member_m", "movement": "look_around", "x": 6, "z": 21, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_METEOR_FALLS_TEAM_AQUA", "script": "" },
+    { "id": "scientist_1", "looks": "scientist_1", "movement": "look_north_west_and_east", "x": 13, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO", "script": "MeteorFalls_1F_1R_EventScript_ProfCozmo" }
+  ],
+  "signs": [
+    { "x": 9, "z": 58, "type": 0, "script": "0x0" }
+  ],
+  "triggers": [
+    { "x": 14, "z": 18, "width": 1, "depth": 1, "script": "MeteorFalls_1F_1R_EventScript_MagmaStealsMeteoriteScene", "variable": "VAR_METEOR_FALLS_STATE", "value": "0" }
+  ]
+}

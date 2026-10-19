@@ -1,0 +1,27 @@
+{
+  "key": "fallarbor_town_cozmos_house",
+  "index": 86,
+  "name": "Fallarbor Town",
+  "matrix": 35,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FALLARBOR",
+  "nightMusic": "MUS_FALLARBOR",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 8, "to": "fallarbor_town", "toWarp": 3 },
+    { "x": 4, "z": 8, "to": "fallarbor_town", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "scientist_1", "looks": "scientist_1", "movement": "wander_around", "x": 6, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO", "script": "FallarborTown_CozmosHouse_EventScript_ProfCozmo" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "wander_west_and_east", "x": 5, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "FallarborTown_CozmosHouse_EventScript_CozmosWife" }
+  ],
+  "signs": [],
+  "triggers": []
+}

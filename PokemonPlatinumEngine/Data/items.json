@@ -13789,6 +13789,54 @@
     "fieldUse": "Mail"
   },
   {
+    "id": 9107,
+    "name": "Go-Goggles",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "Snug goggles that keep sand out of the eyes. With them on, a desert sandstorm can be crossed.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9108,
+    "name": "Soot Sack",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A sack for gathering the volcanic ash that settles on the grass of Route 113.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9109,
+    "name": "Harbor Mail",
+    "pocket": "Mail",
+    "effectType": "None",
+    "effectValue": 0,
+    "price": 50,
+    "canUseInBattle": false,
+    "canUseInOverworld": true,
+    "description": "Writing paper with a pattern of Wingull over the waves. A Pokémon can carry it in a trade.",
+    "fieldUse": "Mail"
+  },
+  {
+    "id": 9110,
+    "name": "Meteorite",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A stone that fell from the sky onto Meteor Falls. It gives off a faint, mysterious warmth.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9200,
     "name": "SquirtBottle",
     "pocket": "KeyItems",

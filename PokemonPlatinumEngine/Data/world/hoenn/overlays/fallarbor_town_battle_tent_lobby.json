@@ -1,0 +1,16 @@
+{
+  // The lobby of Fallarbor's Battle Tent (plan 21 · H4, part a): its three bouts judged after three turns are the
+  // Battle Arena's rules (plan 14 · B9), not built yet; the attendant says so. Scott watches here only later in Emerald
+  "area": "fallarbor_town_battle_tent_lobby",
+  "bgmTrack": "hoenn/fallarbor",
+  "people": {
+    "fallarbor_tent_attendant": { "name": "Attendant", "dialog": [ "Welcome to the Battle Tent! Here, the judges decide a battle after three turns. Our challenge isn't ready yet, I'm afraid." ] },
+    "hiker": { "name": "Hiker", "dialog": [ "If neither Pokémon faints in three turns, the judges look at how each fought. Strength isn't everything!" ] },
+    "little_boy": { "name": "Boy", "dialog": [ "I want to be a judge! I'd give points for the coolest moves." ] },
+    "lass": { "name": "Girl", "dialog": [ "Attacking a lot earns points from the judges. So does staying healthy!" ] },
+    "scott": { "name": "Scott", "npcType": "scott", "dialog": [ "{player}! The Battle Tent's judges are hard to please. I like that." ] }
+  },
+  "signs": {
+    "FallarborTown_BattleTentLobby_EventScript_RulesBoard": "Battle Tent Rules\nThree turns, then the judges decide. Win three in a row!"
+  }
+}

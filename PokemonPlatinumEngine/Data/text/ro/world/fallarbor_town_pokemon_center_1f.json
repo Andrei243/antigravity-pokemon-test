@@ -1,0 +1,61 @@
+{
+  "people": {
+    "fallarbor_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a man at the edge of town who's mad about fossils. He's always digging!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I plant trees that can stand the falling ash. Only the hardiest grow in Fallarbor."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fallarbor_lanette": {
+      "name": {
+        "en": [
+          "Lanette"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

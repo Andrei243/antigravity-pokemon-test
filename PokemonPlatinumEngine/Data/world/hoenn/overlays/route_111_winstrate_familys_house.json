@@ -1,0 +1,12 @@
+{
+  // The Winstrate family's house on Route 111 (plan 21 · H4, part a): the family at home, and Victoria's Macho Brace
+  // for whoever beat all four (route_111_winstrate_familys_house.txt)
+  "area": "route_111_winstrate_familys_house",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "winstrate_house_victor": { "name": "Victor", "script": "Victor" },
+    "winstrate_house_victoria": { "name": "Victoria", "script": "Victoria" },
+    "winstrate_house_vivi": { "name": "Vivi", "script": "Vivi" },
+    "winstrate_house_vicky": { "name": "Vicky", "script": "Vicky" }
+  }
+}

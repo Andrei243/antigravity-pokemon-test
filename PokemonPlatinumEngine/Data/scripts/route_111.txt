@@ -1,0 +1,126 @@
+# Route 111 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route111/scripts.inc).
+#
+# The desert in the middle of the route blows a sandstorm (the overlay's zones). Its edge, as Emerald's
+# ViciousSandstormTrigger has it, turns back anyone without Go-Goggles: a step onto its south edge is pushed back down,
+# and onto its west edge back left. The Winstrate family wait at their door: Victor asks for a battle, and beaten, each
+# of the family comes out in turn (Victoria, Vivi, Vicky), as Emerald's Route111_EventScript_BattleWinstrates has them.
+# Coming to the route with Vicky unbeaten puts the family back as they began (Route111_OnTransition), so a family lost
+# to part way through is fought from the start again. The girl by the berry trees gives a Razz Berry once a day.
+
+
+script OnEnter
+  if defeated "hoenn_vicky" end
+  clearflag FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
+  setflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
+  setflag FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
+  setflag FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+  end
+
+
+# The desert's south edge (Emerald's ViciousSandstormTriggerDown): the storm drives the player back a step
+script PushBackDown
+  if item "Go-Goggles" end
+  speaker none
+  text "The sandstorm is far too fierce. There's no going on without something to shield the eyes!"
+  walk player down 1
+  end
+
+
+# Its west edge (ViciousSandstormTriggerLeft)
+script PushBackLeft
+  if item "Go-Goggles" end
+  speaker none
+  text "The sandstorm is far too fierce. There's no going on without something to shield the eyes!"
+  walk player left 1
+  end
+
+
+script Victor
+  if defeated "hoenn_vicky" goto Again
+  scene "The Winstrates"
+  face route111_victor player
+  speaker "Victor"
+  say "Well, hello there! We're the Winstrates, a family of Pokémon trainers, every one of us."
+  say "How about it? Will you take on the whole family, one after another?"
+  ask "Battle the Winstrate family?"
+  if no goto Refused
+  say "That's the spirit! I'll start us off."
+  battle route111_victor as "hoenn_victor"
+  say "Ha! You're strong. But the family's only getting started!"
+  face route111_victor up
+  walk route111_victor up 1
+  hide route111_victor
+  setflag FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
+  wait 0.5
+  clearflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
+  place route111_victoria 213 113 down
+  show route111_victoria
+  walk route111_victoria down 1
+  speaker "Victoria"
+  say "So you beat my husband? Then you'll have to deal with me next!"
+  battle route111_victoria as "hoenn_victoria"
+  say "Oh my, you really are good. Our daughter's itching to try you, though."
+  face route111_victoria up
+  walk route111_victoria up 1
+  hide route111_victoria
+  setflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
+  wait 0.5
+  clearflag FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
+  place route111_vivi 213 113 down
+  show route111_vivi
+  walk route111_vivi down 1
+  speaker "Vivi"
+  say "Mum and Dad both lost? No way! I'll win for the family!"
+  battle route111_vivi as "hoenn_vivi"
+  say "Aww... Grandma! It's your turn!"
+  face route111_vivi up
+  walk route111_vivi up 1
+  hide route111_vivi
+  setflag FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
+  wait 0.5
+  clearflag FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+  place route111_vicky 213 113 down
+  show route111_vicky
+  walk route111_vicky down 1
+  speaker "Vicky"
+  say "My, my. You've beaten my whole family? Then this old lady will show you how it's done!"
+  battle route111_vicky as "hoenn_vicky"
+  say "Goodness! Four in a row! Do come inside, dear. The family would love to meet you properly."
+  face route111_vicky up
+  walk route111_vicky up 1
+  hide route111_vicky
+  setflag FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+  endscene
+  end
+label Refused
+  say "No? Well, our door's always open. Come back when you're ready!"
+  endscene
+  end
+label Again
+  face route111_victor player
+  speaker "Victor"
+  say "You beat us all! Come in and visit any time."
+  end
+
+
+# The girl who waters the berry trees (Route111_EventScript_Girl): a Razz Berry once a day
+script Girl
+  speaker "Girl"
+  if flag FLAG_DAILY_ROUTE_111_RECEIVED_BERRY goto Given
+  say "I water these berry trees every day, and look how well they're doing! Here, take one."
+  give "Razz Berry"
+  setflag FLAG_DAILY_ROUTE_111_RECEIVED_BERRY
+  say "One day I'm going to grow berries in colours nobody has ever seen!"
+  end
+label Given
+  say "I wonder what colour of berry I should try for today..."
+  end
+
+
+# The man by the cracked rocks (Route111_EventScript_RockSmashTipFatMan)
+script RockSmashMan
+  speaker "Man"
+  say "These rocks are cracked all over. A good Rock Smash and they'd crumble to bits."
+  say "Sometimes a Pokémon that was hiding underneath comes tumbling out! It gave me such a fright."
+  end

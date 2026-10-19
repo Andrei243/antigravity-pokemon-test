@@ -1,0 +1,310 @@
+{
+  "Machine0": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine1": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine2": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine3": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine4": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine5": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine6": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine7": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine8": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine9": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine10": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine11": [
+    {
+      "en": [
+        "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CoinsClerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Mauville Game Corner!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Coins are $1,000 for 50. How many would you like?",
+        "50 Coins",
+        "500 Coins",
+        "No, thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then do enjoy yourself!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Here are your 50 Coins."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Here are your 500 Coins."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough money."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Coin Case is full! You must be doing very well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You'll need a Coin Case to hold your Coins. I believe someone in the house next door has one."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PrizeCornerTMs": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We exchange your Coins for prizes. You have {coins} Coins."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The {item}, for {price} Coins?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here you go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} put the {item} away."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough Coins."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, is that so? Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Without a Coin Case, you have no Coins to exchange, I'm afraid."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PokefanM": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No Coins? Luck only lasts so long, you know. Here, take some of mine."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received 20 Coins!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mauville has something for everyone. Even me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You need a Coin Case to play. The lady next door might help you out."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

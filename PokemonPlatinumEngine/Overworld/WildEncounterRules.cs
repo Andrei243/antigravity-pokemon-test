@@ -64,6 +64,30 @@ public static class WildEncounterRules
         return rate;
     }
 
+    /// <summary>Emerald's ceiling of a rate counted in sixteenths (<c>MAX_ENCOUNTER_RATE</c>, 2880).</summary>
+    public const int GbaMaxEncounterRate = 2880;
+
+    /// <summary>
+    /// Whether a rock just smashed has a Pokémon under it (plan 21 · H4; Emerald's <c>RockSmashWildEncounter</c>, which
+    /// calls <c>DoWildEncounterRateTest(rate, TRUE)</c>): the area's rate in sixteenths, two thirds of it with a Cleanse
+    /// Tag in the lead's hands, half with the Black Flute and half again with the White, never over 2,880, against a
+    /// draw out of 2,880 (<c>EncounterOddsCheck</c>). The lead's ability has no say, nor a Repel. Platinum has no such
+    /// table, so its rocks hide nothing.
+    /// </summary>
+    public static bool RockSmashMeets(int rate, WildLead? lead, Random rng)
+    {
+        if (rate <= 0) return false;
+        int odds = rate * 16;
+        if (lead is { } first)
+        {
+            if (first.Flute == Flute.Black) odds /= 2;
+            else if (first.Flute == Flute.White) odds += odds / 2;
+            if (first.HoldEffect == PokemonPlatinumEngine.Battle.Effects.HeldItemEffects.EncountersDown) odds = odds * 2 / 3;
+        }
+        odds = Math.Min(odds, GbaMaxEncounterRate);
+        return rng.Next(GbaMaxEncounterRate) < odds;
+    }
+
     /// <summary>
     /// The wild Pokémon a step has met, or null when the lead scared it off (<c>TryGenerateWildMon</c>): the slot
     /// of the table, its level, Keen Eye and Intimidate's say, then the gender and the nature the lead's ability

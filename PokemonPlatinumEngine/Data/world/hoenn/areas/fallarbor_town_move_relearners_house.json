@@ -1,0 +1,26 @@
+{
+  "key": "fallarbor_town_move_relearners_house",
+  "index": 87,
+  "name": "Fallarbor Town",
+  "matrix": 36,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FALLARBOR",
+  "nightMusic": "MUS_FALLARBOR",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "fallarbor_town", "toWarp": 4 },
+    { "x": 4, "z": 7, "to": "fallarbor_town", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "move_relearner", "looks": "fat_man", "movement": "look_south", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FallarborTown_MoveRelearnersHouse_EventScript_MoveRelearner" }
+  ],
+  "signs": [],
+  "triggers": []
+}

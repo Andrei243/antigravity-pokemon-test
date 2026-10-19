@@ -1494,6 +1494,15 @@ public partial class GameEngine
         // Riding out onto the water or back onto land, or getting on or off the bicycle, changes the music
         if (flow.Player.Mode != musicTravel) PlayFieldMusic();
         bool entered = EnterArea();
+        // A step into or out of a stretch with weather and music of its own (plan 21 · H4: the desert's storm, as
+        // Emerald's sandstorm and sun triggers change the song) changes the music, as an area's border does
+        var zone = flow.Map.ZoneAt(flow.Player.GridX, flow.Player.GridY);
+        if (zone != flow.CurrentZone)
+        {
+            flow.CurrentZone = zone;
+            if (!entered) PlayFieldMusic();
+        }
+        GatherAsh();
 
         // What the step leaves behind: a print, dust, leaves, a ring on the water, a splash where they rode out
         // onto it, dust where they came down from a hop
@@ -1531,6 +1540,25 @@ public partial class GameEngine
     /// <returns>True when the place walked into has a script of its own, which has been started.</returns>
     /// <summary>The name of the place the player stands in, with whoever it names filled in: where a Pokémon met here was met.</summary>
     private string PlaceName() => PlayerIdentity.Fill(flow.Map.DisplayNameAt(flow.Player.GridX, flow.Player.GridY));
+
+    /// <summary>
+    /// A step through grass where volcanic ash falls (plan 21 · H4; Emerald's STEP_CB_ASH on Route 113) brushes the ash off
+    /// it, and with the Soot Sack in the bag the ash goes into it: VAR_ASH_GATHER_COUNT, never over 9,999, which the glass
+    /// workshop trades for its flutes. Each tile gives its ash once until the player comes to the place again.
+    /// </summary>
+    private void GatherAsh()
+    {
+        int x = flow.Player.GridX, y = flow.Player.GridY;
+        if (flow.Map.WeatherAt(x, y) != FieldWeather.Ash || !TileBehaviors.HasEncounters(flow.Map.BehaviourAt(x, y))) return;
+        if (!flow.AshBrushed.Add((x, y))) return;
+        if (ItemDatabase.Get(SootSack) is not { } sack || flow.Bag.GetQuantity(sack) == 0) return;
+        flow.Story.SetVar(AshCountVariable, Math.Min(MostAsh, flow.Story.Var(AshCountVariable) + 1));
+    }
+
+    /// <summary>The bag's key item that gathers ash, the story's count of it, and the most it holds (Emerald's numbers).</summary>
+    public const string SootSack = "Soot Sack";
+    public const string AshCountVariable = "VAR_ASH_GATHER_COUNT";
+    public const int MostAsh = 9999;
 
     private bool EnterArea()
     {
@@ -1972,6 +2000,7 @@ public partial class GameEngine
     private void AnnounceLocation()
     {
         flow.CurrentArea = flow.Map.AreaAt(flow.Player.GridX, flow.Player.GridY);
+        flow.CurrentZone = flow.Map.ZoneAt(flow.Player.GridX, flow.Player.GridY);
         NoteArrival();
         if (flow.Map.IsIndoors) flow.LocationSign.Hide();
         else flow.LocationSign.Show(flow.Map.ShownNameAt(flow.Player.GridX, flow.Player.GridY));

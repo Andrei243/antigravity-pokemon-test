@@ -1,0 +1,222 @@
+# Mauville City's Game Corner (plan 21 · H3, part c). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MauvilleCity_GameCorner/scripts.inc).
+#
+# Twelve machines (Machine0 to Machine11, gamecorner slots): Platinum's slot machine stands in for Emerald's
+# (docs/mechanics/rulings.md, "The desert, Fallarbor and Mauville's Game Corner"), played by whoever carries a Coin Case,
+# which the woman next door trades for a Harbor Mail. The counter sells Coins as Emerald's does, 50 for $1,000 and 500
+# for $10,000; the TM counter exchanges Emerald's five (gamecorner prize mauville). The man by the machines gives 20
+# Coins once to whoever has a case and none in it (FLAG_RECEIVED_20_COINS).
+
+
+script Machine0
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 0
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine1
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 1
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine2
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 2
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine3
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 3
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine4
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 4
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine5
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 5
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine6
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 6
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine7
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 7
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine8
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 8
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine9
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 9
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine10
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 10
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script Machine11
+  if not item "Coin Case" goto NoCase
+  fade out 0.3
+  gamecorner slots 11
+  fade in 0.3
+  end
+label NoCase
+  text "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
+  end
+
+
+script CoinsClerk
+  speaker "Clerk"
+  say "Welcome to the Mauville Game Corner!"
+  if not item "Coin Case" goto NoCase
+  choose "Coins are $1,000 for 50. How many would you like?" "50 Coins" "500 Coins" "No, thanks"
+  if result == 0 goto Fifty
+  if result == 1 goto FiveHundred
+  say "Then do enjoy yourself!"
+  end
+label Fifty
+  if not money >= 1000 goto Poor
+  gamecorner room 50
+  if result == 0 goto Full
+  takemoney 1000
+  gamecorner add 50
+  sound "coin_land"
+  say "Thank you! Here are your 50 Coins."
+  end
+label FiveHundred
+  if not money >= 10000 goto Poor
+  gamecorner room 500
+  if result == 0 goto Full
+  takemoney 10000
+  gamecorner add 500
+  sound "coin_land"
+  say "Thank you! Here are your 500 Coins."
+  end
+label Poor
+  say "I'm sorry, you don't have enough money."
+  end
+label Full
+  say "Your Coin Case is full! You must be doing very well."
+  end
+label NoCase
+  say "You'll need a Coin Case to hold your Coins. I believe someone in the house next door has one."
+  end
+
+
+script PrizeCornerTMs
+  speaker "Clerk"
+  say "We exchange your Coins for prizes. You have {coins} Coins."
+  if not item "Coin Case" goto NoCase
+  gamecorner prize mauville
+  if result == 0 goto Leave
+  ask "The {item}, for {price} Coins?"
+  if no goto Leave
+  gamecorner buy
+  if result == 0 goto Few
+  sound "select"
+  say "Here you go!"
+  text "{player} put the {item} away."
+  end
+label Few
+  say "I'm sorry, you don't have enough Coins."
+  end
+label Leave
+  say "Oh, is that so? Come back any time."
+  end
+label NoCase
+  say "Without a Coin Case, you have no Coins to exchange, I'm afraid."
+  end
+
+
+script PokefanM
+  speaker "Man"
+  if not item "Coin Case" goto NoCase
+  if flag FLAG_RECEIVED_20_COINS goto Normal
+  gamecorner coins
+  if result >= 1 goto Normal
+  setflag FLAG_RECEIVED_20_COINS
+  gamecorner add 20
+  say "No Coins? Luck only lasts so long, you know. Here, take some of mine."
+  sound "coin_land"
+  text "{player} received 20 Coins!"
+label Normal
+  say "Mauville has something for everyone. Even me!"
+  end
+label NoCase
+  say "You need a Coin Case to play. The lady next door might help you out."
+  end

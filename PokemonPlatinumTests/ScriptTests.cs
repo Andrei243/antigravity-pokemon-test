@@ -176,7 +176,7 @@ public class ScriptTests
           teleport
           escape
           sweetscent
-          rocksmash
+          smashencounter
           poketch on
           poketchapp PartyStatus
           safari start
@@ -1531,7 +1531,7 @@ public class ScriptTests
         public void EnterHallOfFame() { }
         public void Note(JournalEvent line) { }
         public bool SweetScent() => false;
-        public bool RockSmashEncounter() => false;
+        public bool SmashEncounter() => false;
         public void Music(string? song) { }
         public void Fanfare(MusicRole role) { }
         public void Sound(string name) { }

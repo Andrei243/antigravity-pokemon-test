@@ -1,0 +1,32 @@
+{
+  "people": {
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route114_FossilManiacsHouse_EventScript_RockDisplay": {
+      "en": [
+        "The display case is full of rocks. Some of them have odd shapes pressed into them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route114_FossilManiacsHouse_EventScript_Bookshelf": {
+      "en": [
+        "The shelves are crammed with books about fossils and the ancient world."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

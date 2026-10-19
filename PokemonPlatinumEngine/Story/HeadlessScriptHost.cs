@@ -799,6 +799,18 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>What <c>sweetscent</c> draws out: a species and its level, or null where nothing lives.</summary>
     public (string Species, int Level)? Scented { get; set; }
 
+    /// <summary>What <c>smashencounter</c> finds under the rock: a species and its level, or null when it hid nothing.</summary>
+    public (string Species, int Level)? Smashed { get; set; }
+
+    public bool SmashEncounter()
+    {
+        Shown("a rock's hiding place");
+        NeverInAHurry("a rock's Pokémon");
+        if (Smashed is not var (species, level)) return false;
+        WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
+        return true;
+    }
+
     public bool Fly()
     {
         Shown("fly");
@@ -903,19 +915,8 @@ public sealed class HeadlessScriptHost : IScriptHost
         return true;
     }
 
-    /// <summary>What a smashed rock lets out in a test: nothing unless the test says (plan 20 · J9).</summary>
-    public (string Species, int Level)? InTheRock { get; set; }
-
-    public bool RockSmashEncounter()
-    {
-        Shown("a rock's Pokémon");
-        NeverInAHurry("a smashed rock's Pokémon");
-        // (the place's table and its roll are Map.SmashRock's, tested by themselves: a script walked here meets only
-        // what the test put in the rock, so its every way through stays the same)
-        if (InTheRock is not var (species, level)) return false;
-        WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
-        return true;
-    }
+    /// <summary>The same rock's Pokémon under J9's older name (plan 20 · J9): what <c>Smashed</c> holds.</summary>
+    public (string Species, int Level)? InTheRock { get => Smashed; set => Smashed = value; }
 
     public bool Climb()
     {

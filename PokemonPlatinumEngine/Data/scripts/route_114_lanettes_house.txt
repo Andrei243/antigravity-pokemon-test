@@ -1,0 +1,26 @@
+# Lanette's house on Route 114 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/Route114_LanettesHouse/scripts.inc). Lanette calls Hoenn's storage system hers
+# (FLAG_SYS_PC_LANETTE); the Lotad doll she gives in Emerald is a decoration for a secret base, plan 21 · H10's, so
+# here she only offers her advice. Her notebook reads in three pages.
+
+
+script Lanette
+  speaker "Lanette"
+  setflag FLAG_SYS_PC_LANETTE
+  say "Oh, it's you, from the Pokémon Center! Excuse the mess. I'm always tinkering with the storage system."
+  say "Keep your boxes tidy and give each one a name. You'll always know where everyone is!"
+  end
+
+
+script Notebook
+  speaker none
+  ask "It's Lanette's research notebook. Read it?"
+  if no goto Closed
+  text "\"The storage system turns a Pokémon into data, so that it can be kept safely in a PC.\""
+  ask "There's more on the next page. Keep reading?"
+  if no goto Closed
+  text "\"Anyone can use it from any Pokémon Center's PC. That was the hardest part to make work.\""
+  end
+label Closed
+  text "{player} closed the notebook."
+  end

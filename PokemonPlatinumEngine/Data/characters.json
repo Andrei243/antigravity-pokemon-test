@@ -153,6 +153,9 @@
     "trick_master": { "hairColor": "#1e1e26", "hat": "Mask", "hatColor": "#141418", "hatBand": "#d8b04a", "top": "#5a2a7a", "accent": "#d8b04a", "bottom": "#24242c", "shoes": "#141418", "eyes": "#3a2e48", "coat": true, "mustache": true, "build": "Adult", "height": 1.02 },
     // Rydel of Mauville's bike shop: short brown hair and a moustache, a green work shirt and brown trousers
     "rydel": { "hairColor": "#5a3e2c", "top": "#4a9a5a", "accent": "#f2f2f6", "bottom": "#6a4a32", "shoes": "#2e2a28", "eyes": "#3a2e28", "mustache": true, "shortSleeves": true, "build": "Adult", "height": 1.0 },
+    // Plan 21 · H4, part a (our own take): a grunt of Team Magma, the red hood pulled over dark hair as a cap, a red
+    // hooded top with a charcoal trim, charcoal trousers
+    "magma_grunt": { "hairColor": "#2e2628", "hat": "Cap", "hatColor": "#b8302c", "hatBand": "#2c2a2e", "top": "#c43a32", "accent": "#2c2a2e", "bottom": "#3a3434", "shoes": "#1e1c1e", "eyes": "#4a2e2e", "build": "Adult" },
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
     // Kanto's cast of plan 19 · K5 (our own takes): Lt. Surge, the tallest, spiky pale-gold hair and an olive soldier's vest over a khaki shirt; the
     // S.S. Anne's captain, a white cap with a navy band and a white coat, a moustache; Mr. Fuji, small, short white hair and a long plum robe;
@@ -342,6 +345,10 @@
     "masaki": "Gentleman", "kurumi": "Lass", "workman": "Gentleman", "babyboy1_2": "Youngster",
     // Plan 21 · H2, part b: Emerald's looks of the road to Rustboro that have one of their own now
     "aqua_member_m": "aqua_grunt", "aqua_member_f": "aqua_grunt",
+    // Plan 21 · H4, part a: Team Magma's grunts have a look of their own; the old woman, the cook, a girl, the
+    // reporter and her cameraman stand as the nearest looks until theirs are made
+    "magma_member_m": "magma_grunt", "magma_member_f": "magma_grunt", "expert_f": "Lady", "cook": "Gentleman",
+    "girl_2": "Lass", "reporter_f": "Lady", "cameraman": "Gentleman",
     // Plan 20 · J7: the Slowpoke Well's executive and its woman grunt, and Bugsy, until plan 20 · J14's looks
     "rkanbum3": "rocket", "rocketw": "rocket", "gsleader2": "Youngster",
     // Plan 20 · J8: the west and the sea (Jasmine stands as Platinum's own Jasmine, the sailors as captains in their caps,
@@ -391,6 +398,7 @@
     "Factory Head": null,
     "Hall Matron": null,
     "Tower Tycoon": null,
-    "Team Aqua": "aqua_grunt"
+    "Team Aqua": "aqua_grunt",
+    "Team Magma": "magma_grunt"
   }
 }

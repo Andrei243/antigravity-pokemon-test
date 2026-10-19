@@ -342,11 +342,11 @@ public interface IScriptHost
     bool SweetScent();
 
     /// <summary>
-    /// A rock just smashed with Rock Smash lets out a wild Pokémon of the place where the player stands, at the
-    /// place's chance (plan 20 · J9; the area's <c>rockSmash</c> table): true when one comes, and its battle starts;
-    /// false where nothing does, which is always in Sinnoh, whose rocks hide nothing.
+    /// What a rock just smashed hid (plan 21 · H4; Emerald's <c>RockSmashWildEncounter</c>): true when a wild Pokémon of
+    /// the place came out from under it, and its battle starts; false when it hid nothing, which is always so where the
+    /// place has no such table (every place of Platinum's).
     /// </summary>
-    bool RockSmashEncounter();
+    bool SmashEncounter();
 
     // ------------------------------------------------------------------ sound
 

@@ -1,0 +1,40 @@
+{
+  // Mauville City's Game Corner (plan 21 · H3, part c): its twelve slot machines are Platinum's own (plan 06 · R16b,
+  // gamecorner slots), its coin counter and its TM exchange Emerald's (mauville_city_game_corner.txt). The roulette
+  // tables are left for later (their two players say so), and the doll counter's prizes are decorations for a secret
+  // base (plan 21 · H10)
+  "area": "mauville_city_game_corner",
+  "bgmTrack": "hoenn/game_corner",
+  "people": {
+    "beauty": { "name": "Clerk", "script": "CoinsClerk" },
+    "beauty_3": { "name": "Clerk", "script": "PrizeCornerTMs" },
+    "beauty_2": { "name": "Clerk", "dialog": [ "Our dolls are prizes for decorating a secret base. We'll have them in stock soon!" ] },
+    "woman_2": { "name": "Woman", "dialog": [ "You need Coins to play the machines. The counter will sell you some, if you have a Coin Case." ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "The roulette tables are closed for repairs. Pity. Roulette is pure luck, and I'm feeling lucky!" ] },
+    "girl_2": { "name": "Girl", "dialog": [ "I won the same doll twice! I'd give you one, but they're for secret bases, and they're not ready yet." ] },
+    "pokefan_m": { "name": "Man", "script": "PokefanM" },
+    "old_man": { "name": "Old Man", "dialog": [ "The two roulette tables pay out at different rates. When they open again, pick your table wisely!" ] },
+    "cook": { "name": "Cook", "dialog": [ "I came here on my day off, and now I've lost all my Coins. Back to the kitchen tomorrow!" ] },
+    "man_3": { "name": "Man", "dialog": [ "Stop the reels in the right order and you'll win more. That's my theory, anyway." ] },
+    "maniac": { "name": "Man", "dialog": [ "Three sevens in a row! I saw it once. I've been chasing that feeling ever since." ] },
+    "woman_5": { "name": "Woman", "dialog": [ "I only play a little. A little at a time! Well, maybe a little more." ] }
+  },
+  "read": {
+    "MauvilleCity_GameCorner_EventScript_SlotMachine0": "Machine0",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine1": "Machine1",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine2": "Machine2",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine3": "Machine3",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine4": "Machine4",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine5": "Machine5",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine6": "Machine6",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine7": "Machine7",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine8": "Machine8",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine9": "Machine9",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine10": "Machine10",
+    "MauvilleCity_GameCorner_EventScript_SlotMachine11": "Machine11"
+  },
+  "signs": {
+    "Roulette_EventScript_Table1": "The roulette table is covered with a cloth. A card on it says: \"Closed for repairs.\"",
+    "Roulette_EventScript_Table2": "The roulette table is covered with a cloth. A card on it says: \"Closed for repairs.\""
+  }
+}

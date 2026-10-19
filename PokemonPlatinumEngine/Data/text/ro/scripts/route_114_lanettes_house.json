@@ -1,0 +1,70 @@
+{
+  "Lanette": [
+    {
+      "en": [
+        "Lanette"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, it's you, from the Pokémon Center! Excuse the mess. I'm always tinkering with the storage system."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Keep your boxes tidy and give each one a name. You'll always know where everyone is!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Notebook": [
+    {
+      "en": [
+        "It's Lanette's research notebook. Read it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "\"The storage system turns a Pokémon into data, so that it can be kept safely in a PC.\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's more on the next page. Keep reading?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "\"Anyone can use it from any Pokémon Center's PC. That was the hardest part to make work.\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} closed the notebook."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

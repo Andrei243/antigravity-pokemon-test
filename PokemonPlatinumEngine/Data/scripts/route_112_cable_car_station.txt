@@ -1,0 +1,15 @@
+# The cable car's station on Route 112 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are
+# our own. Emerald's attendant sells the ride up Mt. Chimney; the ride and the summit are plan 21 · H4's next part, so
+# here she says the car is being looked over.
+
+
+script Attendant
+  speaker "Attendant"
+  if flag FLAG_HIDE_ROUTE_112_TEAM_MAGMA goto Gone
+  say "Welcome to the Mt. Chimney Cable Car. Some rough-looking people have been hanging about outside, haven't they?"
+  say "I'm afraid the car is being looked over just now. Please come back later!"
+  end
+label Gone
+  say "Those people in red have gone at last. But the car is still being looked over, I'm sorry to say."
+  say "It'll be running again soon. Please come back later!"
+  end

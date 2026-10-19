@@ -1,0 +1,23 @@
+# Fallarbor Town's Pokémon Center (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/FallarborTown_PokemonCenter_1F/scripts.inc). Lanette introduces herself as the one
+# who runs the storage system and goes home to Route 114 (FLAG_HIDE_FALLARBOR_POKEMON_CENTER_LANETTE set,
+# FLAG_HIDE_LANETTES_HOUSE_LANETTE cleared), by Emerald's two ways out of the room.
+
+
+script Lanette
+  scene "Lanette in Fallarbor"
+  speaker "Lanette"
+  say "Oh, hello! You're a trainer, aren't you? I'm Lanette. I look after the Pokémon Storage System."
+  say "I came to check the PC here, and it's all working nicely. Come and visit me at home on Route 114!"
+  if facing up goto North
+  walk fallarbor_lanette down 2 left 3 down 4
+  goto Gone
+label North
+  walk fallarbor_lanette right 1 down 2 left 4 down 4
+label Gone
+  sound "door_slide"
+  hide fallarbor_lanette
+  setflag FLAG_HIDE_FALLARBOR_POKEMON_CENTER_LANETTE
+  clearflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+  endscene
+  end

@@ -93,11 +93,32 @@ partial class Harness
             ("h65_verdanturf_town", "Hoenn", 130, 148, Direction.Up),
             ("h66_wandas_house", "VerdanturfTown_WandasHouse", 7, 6, Direction.Up),
             ("h67_verdanturf_tent", "VerdanturfTown_BattleTentLobby", 6, 8, Direction.Up),
+            // Plan 21 · H3, part c, and H4, part a: Mauville's Game Corner, Routes 111 to 114 with the desert's storm and the
+            // ash, Fiery Path, Fallarbor Town, Meteor Falls and their rooms
+            ("h70_route111_south", "Hoenn", 213, 118, Direction.Up),
+            ("h71_desert_edge", "Hoenn", 212, 64, Direction.Up),
+            ("h72_desert_storm", "Hoenn", 225, 60, Direction.Up),
+            ("h73_route112", "Hoenn", 188, 55, Direction.Up),
+            ("h74_fiery_path", "FieryPath", 26, 35, Direction.Up),
+            ("h75_route113_ash", "Hoenn", 150, 10, Direction.Left),
+            ("h76_fallarbor_town", "Hoenn", 90, 12, Direction.Up),
+            ("h77_route114", "Hoenn", 60, 40, Direction.Up),
+            ("h78_meteor_falls", "MeteorFalls_1F_1R", 20, 18, Direction.Left),
+            ("h79_winstrate_house", "Route111_WinstrateFamilysHouse", 3, 6, Direction.Up),
+            ("h80_rest_stop", "Route111_OldLadysRestStop", 3, 6, Direction.Up),
+            ("h81_cable_car_station", "Route112_CableCarStation", 6, 10, Direction.Up),
+            ("h82_glass_workshop", "Route113_GlassWorkshop", 3, 7, Direction.Up),
+            ("h83_fallarbor_center", "FallarborTown_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("h84_cozmos_house", "FallarborTown_CozmosHouse", 3, 7, Direction.Up),
+            ("h85_fallarbor_tent", "FallarborTown_BattleTentLobby", 6, 8, Direction.Up),
+            ("h86_fossil_maniacs_house", "Route114_FossilManiacsHouse", 4, 6, Direction.Up),
+            ("h87_lanettes_house", "Route114_LanettesHouse", 5, 6, Direction.Up),
+            ("h88_game_corner", "MauvilleCity_GameCorner", 11, 9, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -110,6 +131,9 @@ partial class Harness
         At("Hoenn", 219, 283, Direction.Up); Frames(2); Shot("h52_slateport_night");
         At("Hoenn", 220, 150, Direction.Up); Frames(2); Shot("h68_mauville_night");
         At("Hoenn", 130, 148, Direction.Up); Frames(2); Shot("h69_verdanturf_night");
+        At("Hoenn", 225, 60, Direction.Up); Frames(2); Shot("h89_desert_night");
+        At("Hoenn", 150, 10, Direction.Left); Frames(2); Shot("h90_route113_night");
+        At("Hoenn", 90, 12, Direction.Up); Frames(2); Shot("h91_fallarbor_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

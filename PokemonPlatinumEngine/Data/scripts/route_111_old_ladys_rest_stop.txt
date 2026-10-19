@@ -1,0 +1,28 @@
+# The old lady's rest stop on Route 111 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/Route111_OldLadysRestStop/scripts.inc): she heals the team behind a fade, and
+# asks again whether another rest is wanted.
+
+
+script OldLady
+  speaker "Old Lady"
+  ask "Oh my, your Pokémon look worn out. Why not have a rest here?"
+  if no goto Shy
+  say "That's it. Take all the time you need."
+  call Rest
+  ask "Still feeling tired? Another rest would do you good."
+  if no goto Shy
+  say "Of course. Rest as long as you like."
+  call Rest
+  say "There now, everyone's bright-eyed again. Off you go, and take care!"
+  end
+label Shy
+  say "Don't be shy, dear. My door is always open."
+  end
+
+
+script Rest
+  fade out
+  fanfare heal
+  heal
+  fade in
+  return

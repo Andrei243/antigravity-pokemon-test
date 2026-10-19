@@ -2936,6 +2936,67 @@ flags and variables (`VAR_ROUTE110_STATE`, `VAR_TRICK_HOUSE_LEVEL`, `VAR_TRICK_H
   (shut until Wattson's Basement Key, after Norman); the move tutors of Mauville and Verdanturf (they talk); the Cycling
   Road's timed challenge; Professor Birch's number on Route 110.
 
+## The desert, Fallarbor and Mauville's Game Corner (2026-10-20, plan 21 · H4, its first part, and H3, its third)
+
+Routes 111 to 114, Fiery Path, Fallarbor Town, Meteor Falls' first room and Mauville's Game Corner are scripts of ours on
+Emerald's beats (`route_111.txt`, `route_111_winstrate_familys_house.txt`, `route_111_old_ladys_rest_stop.txt`,
+`route_112.txt`, `route_112_cable_car_station.txt`, `route_113_glass_workshop.txt`, `route_114.txt`, its three rooms,
+`fallarbor_town.txt`, `fallarbor_town_pokemon_center_1f.txt`, `fallarbor_town_cozmos_house.txt`, `meteor_falls_1f_1r.txt`,
+`mauville_city_game_corner.txt`, `mauville_city_house_2.txt`, `slateport_city_mart.txt`), under Emerald's flags and
+variables (`FLAG_HIDE_ROUTE_111_*_WINSTRATE`, `FLAG_RECEIVED_MACHO_BRACE`, `FLAG_DAILY_ROUTE_111_RECEIVED_BERRY`,
+`FLAG_HIDE_ROUTE_112_TEAM_MAGMA`, `VAR_GLASS_WORKSHOP_STATE`, `VAR_ASH_GATHER_COUNT`, `FLAG_HIDE_FALLARBOR_POKEMON_CENTER_LANETTE`,
+`FLAG_HIDE_LANETTES_HOUSE_LANETTE`, `FLAG_SYS_PC_LANETTE`, `FLAG_RECEIVED_TM_ROAR`, `FLAG_RECEIVED_TM_DIG`,
+`FLAG_DAILY_ROUTE_114_RECEIVED_BERRY`, `VAR_METEOR_FALLS_STATE`, `FLAG_MET_ARCHIE_METEOR_FALLS`, `FLAG_MET_PROF_COZMO`,
+`FLAG_RECEIVED_COIN_CASE`, `FLAG_RECEIVED_20_COINS`). What differs, and why:
+
+- **The desert's sandstorm and Route 113's ash** are stretches of their areas with weather and music of their own (an
+  overlay's `zones`, `MapArea.ZoneAt`, read by `Map.WeatherAt` and `BgmTrackAt`; the music changes as a step crosses a
+  zone's edge as it does at an area's). Emerald sets both by script: Route 111's sandstorm and sun triggers along the
+  desert's edges and its `CheckSetSandstorm` by the player's row and column, Route 113's `CheckSetAshWeather` by its column
+  (19 to 84) and its weather triggers. Our zones are rectangles round the same edges, so the storm begins a tile or two
+  apart from where Emerald's trigger would start it on the desert's diagonal north-west side. The plan's wording (the
+  desert's tiles an area of their own through the reader) is answered this way, which needs nothing of the importer.
+- **The Go-Goggles' gate** is Emerald's `ViciousSandstormTrigger`: a step onto the desert's south or west edge without
+  Go-Goggles is told so and pushed back a step. The goggles are the rival's gift in Lavaridge Town, plan 21 · H4's next
+  part, so until then the desert, Mirage Tower and the Desert Ruins are closed (their doors are shut as well).
+- **Rock Smash** finds a Pokémon under a Hoenn rock as Emerald's `RockSmashWildEncounter` does: after the rock breaks, the
+  area's `rock_smash_mons` (five slots weighted as the water's) at its rate in sixteenths against a draw of 2,880, with a
+  Cleanse Tag's and the flutes' say and no ability's (`Map.SmashOut`, `WildEncounterRules.RockSmashMeets`; the script
+  command `smashencounter`, which the common Rock and UseRockSmash scripts end with). Platinum's areas have no such table,
+  so its rocks still hide nothing.
+- **Emerald's stairs join any two levels**: a GBA tile of elevation 0 can be stepped onto from any elevation, and some
+  of Emerald's climb two levels in one tile (Route 114's two ways down to Meteor Falls). Drawn as ramps, those are steeper
+  than a step, so on a GBA game's map a step along a stair's or a ramp's slope is never a cliff (`FieldMovement.Step`,
+  `SlopedAlong`).
+- **The Winstrates** come out of their door one after another and each battles (`battle … as "hoenn_victor"` and on); a
+  family lost to part way is put back as it began when Route 111 is come to again (Emerald clears their trainer flags; a
+  trainer battled `as` a team is battled again whether beaten or not, so only who stands outside is put back).
+  Victoria's Macho Brace waits for Vicky's defeat. Gabby and Ty's interview on Route 111 is left for later (all three of
+  their places hidden, where Emerald shows the first).
+- **The glass workshop's ash** is gathered by stepping through the grass of Route 113's ash zone with the Soot Sack in the
+  bag, each tile once until the place is come to again (Emerald's `STEP_CB_ASH` turns the grass bare until the map
+  loads). The master makes the five flutes at Emerald's prices in ash and hands one over at once, where Emerald sends the
+  player out and back first; the Pretty Chair and Desk are decorations, plan 21 · H10's.
+- **Meteor Falls** plays Emerald's scene at its trigger: the two grunts of Team Magma with the meteorite, Archie and his two
+  grunts come in after them, the player pushed aside as Team Magma runs, Archie's words. Route 112's two grunts are gone
+  afterwards (the cable car's ride and Mt. Chimney are the next part, so its attendant says the car is being looked over).
+  Team Magma's eye theme is Team Aqua's song (both teams share Emerald's battle theme); a Hoenn `eye_magma` is left.
+- **Professor Cozmo** waits in Meteor Falls until Mt. Chimney; his wife's lines ask `FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY`,
+  which the next part sets (`StoryTests.AskedAheadOfTheirScenes` names it until then). His scene at home, the Meteorite
+  (an item of ours, 9110) for TM27, is written and waits for him to come home.
+- **Lanette** introduces herself in Fallarbor's Pokémon Center and goes home, where she calls the storage system hers
+  (`FLAG_SYS_PC_LANETTE`). Her Lotad doll is a decoration (plan 21 · H10).
+- **Mauville's Game Corner** sits the player at Platinum's slot machine (plan 06 · R16b) at each of its twelve: Emerald's
+  own machine (its reels, its Pikachu bonus) is not built, and its two roulette tables are covered over. The coin counter
+  is Emerald's prices; the TM counter is Emerald's five at its prices (`gamecorner prize mauville`); the doll counter's prizes
+  are decorations (H10). The Coin Case comes from the woman next door for a Harbor Mail (an item of ours, 9109), which
+  Slateport's Mart sells as Emerald's does, on a counter of its own (`marts.json`'s `slateport_mail`).
+- **The move relearner** of Fallarbor says what he does and does nothing yet (plan 12 · Q19), and the Metronome tutor in the
+  Mart only talks. Fallarbor's Battle Tent is its lobby (the Battle Arena's rules, plan 14 · B9).
+- **What waits**: the rest of H4 (the cable car, Mt. Chimney and Maxie, Jagged Pass, Lavaridge and Flannery, the Go-Goggles,
+  the desert, Mirage Tower and its fossils, Petalburg's Gym and Norman), Route 115 and Meteor Falls' rooms behind the falls,
+  the Battle Tents' bouts, Gabby and Ty, the Secret Power man on Route 111.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

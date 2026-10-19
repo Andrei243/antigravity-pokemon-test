@@ -473,10 +473,20 @@ partial class Harness
         Mauville("the tunnel");
 
         // Both of Rydel's bikes on their own ground: the Mach Bike flat out on the Cycling Road, the Acro Bike on Route 117
-        At("Hoenn", 221, 190, Direction.Up);
+        // (on the Cycling Road's own deck, the middle of the longest column of decks on Route 110, at the deck's height)
+        var road = MapDatabase.Get("Hoenn");
+        var decks = new List<(int X, int Y)>();
+        if (road.AreaBounds("route_110") is { } bounds)
+            for (int y = bounds.Y; y < bounds.Y + bounds.Height; y++)
+                for (int x = bounds.X; x < bounds.X + bounds.Width; x++)
+                    if (road.AreaAt(x, y)?.Key == "route_110" && road.DeckAt(x, y) != null && !road.IsSolid(x, y)) decks.Add((x, y));
+        var (deckX, deckY) = decks.Count == 0 ? (221, 190) : decks.GroupBy(t => t.X).OrderByDescending(g => g.Count()).First().OrderBy(t => t.Y).ElementAt(decks.GroupBy(t => t.X).Max(g => g.Count()) / 2);
+        At("Hoenn", deckX, deckY, Direction.Up);
+        if (road.DeckAt(deckX, deckY) is { } deck) game.Player.SetHeight(deck);
         game.Player.SetCycling(true);
         game.Player.Bike = BikeKind.Mach;
         Frames(10); Shot("hs97_the_mach_bike_on_the_cycling_road");
+        Console.WriteLine($"  the Mach Bike on the Cycling Road at ({deckX}, {deckY}), deck {road.DeckAt(deckX, deckY)}");
         At("Hoenn", 170, 149, Direction.Left);
         game.Player.SetCycling(true);
         game.Player.Bike = BikeKind.Acro;
@@ -492,5 +502,70 @@ partial class Harness
         }
         game.Player.SetCycling(false);
         game.Player.Bike = BikeKind.Bicycle;
+
+        // ---- Plan 21 · H4, part a: Route 111 to Meteor Falls (hs99 to hs112)
+        void Desert(string what) =>
+            Console.WriteLine($"  {what}: vicky beaten {story.HasDefeated("hoenn_vicky")}, macho brace {game.Bag.GetQuantity(ItemDatabase.Get("Macho Brace")!)}, "
+                + $"meteor falls {story.Var("VAR_METEOR_FALLS_STATE")}, route 112 clear {story.Has("FLAG_HIDE_ROUTE_112_TEAM_MAGMA")}, "
+                + $"archie met {story.Has("FLAG_MET_ARCHIE_METEOR_FALLS")}, lanette home {!story.Has("FLAG_HIDE_LANETTES_HOUSE_LANETTE")}, "
+                + $"workshop {story.Var("VAR_GLASS_WORKSHOP_STATE")}, ash {story.Var("VAR_ASH_GATHER_COUNT")}, "
+                + $"weather here {game.Map.WeatherAt(game.Player.GridX, game.Player.GridY)}, on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+
+        // Route 111: Victor asks for the family's battles, and each Winstrate comes out of the door in turn
+        TalkTo("Hoenn", "route111_victor");
+        ReadTo("take on the whole family"); Frames(10); Shot("hs99_victor_asks");
+        IntoBattle("Victor's battle");
+        ToMainMenu(game.Battle); Shot("hs100_the_winstrates_battle");
+        Win();
+        ReadTo("you'll have to deal with me next"); Frames(10); Shot("hs101_victoria_comes_out");
+        ReadTo(null);
+        TalkTo("Route111_WinstrateFamilysHouse", "winstrate_house_victoria");
+        ReadTo("I'd like you to have this"); Frames(10); Shot("hs102_the_macho_brace");
+        ReadTo(null);
+        Desert("the Winstrates");
+
+        // The desert's edge: the storm drives back whoever has no Go-Goggles; the storm itself, seen from inside it
+        StepOnto("Hoenn", 212, 61, Direction.Up);
+        ReadTo("sandstorm is far too fierce"); Frames(10); Shot("hs103_turned_back_by_the_storm");
+        ReadTo(null);
+        Desert("the desert's edge");
+        At("Hoenn", 225, 60, Direction.Up); game.EnterArea(); Frames(40);
+        Shot("hs104_inside_the_storm");
+        Desert("inside the storm");
+
+        // Route 112: Team Magma's grunts give away where their crew went
+        TalkTo("Hoenn", "route112_grunt_1");
+        ReadTo("went off to Fallarbor"); Frames(10); Shot("hs105_the_grunts_on_route_112");
+        ReadTo(null);
+
+        // Route 113's ash and the glass workshop's Soot Sack
+        At("Hoenn", 150, 10, Direction.Left); game.EnterArea(); Frames(40);
+        Shot("hs106_route_113_in_the_ash");
+        TalkTo("Route113_GlassWorkshop", "man_1");
+        ReadTo("Take this"); Frames(10); Shot("hs107_the_soot_sack");
+        ReadTo(null);
+        Desert("the glass workshop");
+
+        // Fallarbor's Pokémon Center: Lanette, who goes home to Route 114
+        TalkTo("FallarborTown_PokemonCenter_1F", "fallarbor_lanette");
+        ReadTo("I'm Lanette"); Frames(10); Shot("hs108_lanette");
+        ReadTo(null);
+        Frames(10); Shot("hs109_lanette_gone");
+
+        // Meteor Falls: Team Magma with the meteorite, Team Aqua after them, Archie's word and the cave afterwards
+        StepOnto("MeteorFalls_1F_1R", 14, 18, Direction.Left);
+        ReadTo("With this meteorite"); Frames(10); Shot("hs110_team_magma_and_the_meteorite");
+        ReadTo("I've seen you before"); Frames(10); Shot("hs111_archie");
+        ReadTo(null);
+        Frames(20); Shot("hs112_meteor_falls_afterwards");
+        Desert("Meteor Falls");
+
+        // Mauville's Game Corner: a Coin Case traded for Harbor Mail and a machine sat at
+        game.Bag.AddItem(ItemDatabase.Get("Harbor Mail")!, 1);
+        TalkTo("MauvilleCity_House2", "woman_3");
+        ReadTo(null);
+        ComeThrough("MauvilleCity_GameCorner", 11, 9, Direction.Up);
+        Frames(20); Shot("hs113_the_game_corner");
+        Console.WriteLine($"  the Game Corner: coin case {game.Bag.GetQuantity(ItemDatabase.Get("Coin Case")!)}, harbor mail {game.Bag.GetQuantity(ItemDatabase.Get("Harbor Mail")!)}");
     }
 }

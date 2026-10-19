@@ -214,6 +214,8 @@ public partial class GameEngine
         // ...but not those a call over the Pokégear's phone asked to wait (plan 20 · J3)
         KeepPhoneRematchesWaiting();
         FieldMoveRules.LeavePlace(flow.Story, cave);
+        // The ash on the grass of the place left settles again (plan 21 · H4)
+        flow.AshBrushed.Clear();
         // Where the Bicycle isn't allowed the player gets off it (field_map_change_flags.c)
         if (flow.Player.Mode == TravelMode.Cycling && !flow.Map.BikeAllowedAt(flow.Player.GridX, flow.Player.GridY)) flow.Player.SetCycling(false);
         flow.Fishing = null;
@@ -1245,15 +1247,22 @@ public partial class GameEngine
             return true;
         }
 
-        public bool RockSmashEncounter()
+        public bool SmashEncounter()
         {
-            // The rock stood on the tile ahead; its place's table is the one asked (plan 20 · J9)
             var map = game.flow.Map;
-            var (dx, dy) = game.flow.Player.Facing switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
-            int x = game.flow.Player.GridX + dx, y = game.flow.Player.GridY + dy;
-            if (map.SmashRock(x, y, game.flow.Player.Lead) is not { } wild) return false;
+            var player = game.flow.Player;
+            // HeartGold's table is in hundredths and its rock stands on the tile ahead (plan 20 · J9); the GBA games' is in sixteenths and counted where the player stands (plan 21 · H4)
+            WildEncounterEntry? found;
+            if (game.Here.Id == "johto")
+            {
+                var (dx, dy) = player.Facing switch { Direction.Up => (0, -1), Direction.Down => (0, 1), Direction.Left => (-1, 0), _ => (1, 0) };
+                found = map.SmashRock(player.GridX + dx, player.GridY + dy, player.Lead);
+            }
+            else found = map.SmashOut(player.GridX, player.GridY, player.Lead);
+            if (found is not { } wild) return false;
             game.flow.ScriptOutcome = BattleOutcome.None;
             game.flow.BattleMayBeLost = false;
+            game.flow.Player.Encounters.Reset();
             game.StartWildBattle(wild);
             return true;
         }

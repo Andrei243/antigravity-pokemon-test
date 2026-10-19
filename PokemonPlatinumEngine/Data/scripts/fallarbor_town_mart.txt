@@ -1,0 +1,8 @@
+# Fallarbor Town's Poké Mart (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are our own.
+
+
+script Skitty
+  speaker "Skitty"
+  cry "Skitty"
+  say "Nyaa!"
+  end

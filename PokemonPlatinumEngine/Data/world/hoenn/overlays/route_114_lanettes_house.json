@@ -1,0 +1,16 @@
+{
+  // Lanette's house on Route 114 (plan 21 · H4, part a): the woman who runs Hoenn's Pokémon Storage System, home once
+  // she has been met in Fallarbor's Pokémon Center (FLAG_HIDE_LANETTES_HOUSE_LANETTE; route_114_lanettes_house.txt).
+  // Her Lotad doll is a decoration, plan 21 · H10's
+  "area": "route_114_lanettes_house",
+  "bgmTrack": "hoenn/fallarbor",
+  "people": {
+    "woman_2": { "name": "Lanette", "npcType": "lady", "script": "Lanette" }
+  },
+  "signs": {
+    "Route114_LanettesHouse_EventScript_PC": "There's a message on the screen: \"Lanette, the storage system works like a dream. Bill.\""
+  },
+  "read": {
+    "Route114_LanettesHouse_EventScript_Notebook": "Notebook"
+  }
+}

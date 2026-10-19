@@ -102,7 +102,26 @@
     { "name": "VerdanturfTown_PokemonCenter_2F", "matrix": 42, "area": "verdanturf_town_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
     { "name": "VerdanturfTown_WandasHouse", "matrix": 43, "area": "verdanturf_town_wandas_house", "trees": "Round", "setting": "Indoors" },
     { "name": "VerdanturfTown_FriendshipRatersHouse", "matrix": 44, "area": "verdanturf_town_friendship_raters_house", "trees": "Round", "setting": "Indoors" },
-    { "name": "VerdanturfTown_House", "matrix": 45, "area": "verdanturf_town_house", "trees": "Round", "setting": "Indoors" }
+    { "name": "VerdanturfTown_House", "matrix": 45, "area": "verdanturf_town_house", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H3, part c: Mauville's Game Corner
+    { "name": "MauvilleCity_GameCorner", "matrix": 77, "area": "mauville_city_game_corner", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H4, part a: Fiery Path and Meteor Falls' first room, and the rooms of Routes 111 to 114 and Fallarbor Town
+    // (its Battle Tent's lobby alone: the Tent's bouts wait for the Arena's rules, plan 14 · B9)
+    { "name": "FieryPath", "matrix": 201, "area": "fiery_path", "trees": "Round", "setting": "Cave" },
+    { "name": "MeteorFalls_1F_1R", "matrix": 187, "area": "meteor_falls_1f_1r", "trees": "Round", "setting": "Cave" },
+    { "name": "Route111_WinstrateFamilysHouse", "matrix": 177, "area": "route_111_winstrate_familys_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route111_OldLadysRestStop", "matrix": 178, "area": "route_111_old_ladys_rest_stop", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route112_CableCarStation", "matrix": 179, "area": "route_112_cable_car_station", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route113_GlassWorkshop", "matrix": 455, "area": "route_113_glass_workshop", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route114_FossilManiacsHouse", "matrix": 181, "area": "route_114_fossil_maniacs_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route114_FossilManiacsTunnel", "matrix": 182, "area": "route_114_fossil_maniacs_tunnel", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route114_LanettesHouse", "matrix": 183, "area": "route_114_lanettes_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "FallarborTown_Mart", "matrix": 29, "area": "fallarbor_town_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "FallarborTown_BattleTentLobby", "matrix": 30, "area": "fallarbor_town_battle_tent_lobby", "trees": "Round", "setting": "Indoors" },
+    { "name": "FallarborTown_PokemonCenter_1F", "matrix": 33, "area": "fallarbor_town_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "FallarborTown_PokemonCenter_2F", "matrix": 34, "area": "fallarbor_town_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "FallarborTown_CozmosHouse", "matrix": 35, "area": "fallarbor_town_cozmos_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "FallarborTown_MoveRelearnersHouse", "matrix": 36, "area": "fallarbor_town_move_relearners_house", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -139,6 +158,15 @@
     "route_117_pokemon_day_care",
     "verdanturf_town_battle_tent_lobby", "verdanturf_town_mart", "verdanturf_town_pokemon_center_1f",
     "verdanturf_town_pokemon_center_2f", "verdanturf_town_wandas_house", "verdanturf_town_friendship_raters_house",
-    "verdanturf_town_house"
+    "verdanturf_town_house",
+    // Plan 21 · H3, part c: Mauville's Game Corner
+    "mauville_city_game_corner",
+    // Plan 21 · H4, part a: Routes 111 to 114 (the desert's storm keeps out whoever has no Go-Goggles), Fiery Path,
+    // Fallarbor Town and Meteor Falls' first room, with their rooms
+    "route_111", "route_112", "route_113", "route_114", "fallarbor_town", "fiery_path", "meteor_falls_1f_1r",
+    "route_111_winstrate_familys_house", "route_111_old_ladys_rest_stop", "route_112_cable_car_station",
+    "route_113_glass_workshop", "route_114_fossil_maniacs_house", "route_114_fossil_maniacs_tunnel", "route_114_lanettes_house",
+    "fallarbor_town_mart", "fallarbor_town_battle_tent_lobby", "fallarbor_town_pokemon_center_1f",
+    "fallarbor_town_pokemon_center_2f", "fallarbor_town_cozmos_house", "fallarbor_town_move_relearners_house"
   ]
 }

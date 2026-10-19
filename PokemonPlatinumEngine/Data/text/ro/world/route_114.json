@@ -1,0 +1,398 @@
+{
+  "people": {
+    "man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Lenny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Lenny: I've walked this valley a hundred times. Let's see what you're made of!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Lenny: The hundred and first walk will be sadder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Lucas"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Lucas: Rocks and fire, that's my team! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Lucas: All crumbled."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Shane"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Shane: There's a waterfall up ahead that falls from the stars, they say. First, a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Shane: I'm the one who fell."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Nancy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Nancy: The river here is so clear! Our battle won't be so calm."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Nancy: I'll sit by the river for a while."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Steve"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémaniac Steve: Steel and rock! My Aron's the best there is!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémaniac Steve: My Aron's still the best. Just not today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Nolan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Nolan: Shh, you'll scare off the fish. Oh, a battle? Fine!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Nolan: Now the fish are laughing at me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman_2": {
+      "name": {
+        "en": [
+          "Claude"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Claude: I reeled you in! Time to battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Claude: The one that got away."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Bernie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Kindler Bernie: I'll set this battle ablaze! Hope you've got water on hand!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Kindler Bernie: You put my fire out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Tyra & Ivy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sr. & Jr. Tyra & Ivy: The two of us make one strong team!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sr. & Jr. Tyra & Ivy: Even two of us weren't enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Tyra & Ivy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sr. & Jr. Tyra & Ivy: I'll do my best beside my big sister!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sr. & Jr. Tyra & Ivy: We'll practise more together."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Charlotte"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Charlotte: I came all the way up here for the view. And to battle someone like you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Charlotte: At least the view's still nice."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_3": {
+      "name": {
+        "en": [
+          "Angelina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Angelina: I've been waiting by the water for a strong trainer. Is it you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Angelina: It was you, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman_3": {
+      "name": {
+        "en": [
+          "Kai"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Kai: My Barboach can sense when a battle's coming. It's been twitching all day!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Kai: Now it's sulking at the bottom of the river."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route114_EventScript_MeteorFallsSign": {
+      "en": [
+        "Meteor Falls\nAhead: Route 115"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route114_EventScript_FossilManiacsHouseSign": {
+      "en": [
+        "The Fossil Maniac's House\nFossils welcome!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route114_EventScript_LanettesHouseSign": {
+      "en": [
+        "Lanette's House"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -13,6 +13,8 @@
     "cianwood_pharmacy": [ "Potion", "Super Potion", "Hyper Potion", "Full Heal", "Revive" ],
     // Hoenn's counters of plan 21 · H3: the Seashore House's Soda Pops and the Energy Guru's vitamins
     "seashore_house": [ "Soda Pop" ],
-    "slateport_energy_guru": [ "Protein", "Iron", "Carbos", "Zinc", "Calcium", "HP Up" ]
+    "slateport_energy_guru": [ "Protein", "Iron", "Carbos", "Zinc", "Calcium", "HP Up" ],
+    // Slateport Mart's mail counter (plan 21 · H3, part c): the Harbor Mail Mauville's Coin Case is traded for
+    "slateport_mail": [ "Harbor Mail" ]
   }
 }

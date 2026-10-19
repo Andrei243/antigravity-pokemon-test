@@ -1,0 +1,21 @@
+{
+  // Fallarbor Town (plan 21 · H4, part a): the farming town under Mt. Chimney's falling ash, home of Professor Cozmo, the
+  // move relearner and a Battle Tent, between Route 113 and Route 114 (fallarbor_town.txt)
+  "area": "fallarbor_town",
+  "bgmTrack": "hoenn/fallarbor",
+  "trees": "Round",
+  "architecture": "Hayloft",
+  "people": {
+    "girl_1": { "name": "Girl", "dialog": [ "My Azurill is so precious to me. I take it with me everywhere, even to the shops!" ] },
+    "expert_m": { "name": "Old Man", "script": "OldMan" },
+    "gentleman": { "name": "Gentleman", "dialog": [ "Have you been to Lavaridge yet? Flannery, the Gym Leader there, is said to be fiery in every way." ] },
+    "azurill": { "name": "Azurill", "npcType": "Pokemon", "species": "Azurill", "script": "Azurill" }
+  },
+  "signs": {
+    "FallarborTown_EventScript_TownSign": "Fallarbor Town\nA farm community with small gardens",
+    "FallarborTown_EventScript_BattleTentSign": "Battle Tent: Fallarbor\nThe judges decide who wins!",
+    "FallarborTown_EventScript_MoveTutorSign": "The Move Tutor's House\nForgotten moves remembered!",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
+    "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
+  }
+}

@@ -1,0 +1,29 @@
+# Mauville's Game Corner: a bright, bouncing electric piano tune in C major over a walking bass, stabs of brass and a
+# busy swung kit, the sound of a hall full of lights and spinning reels. Original composition for this game (plan 21 ·
+# H3, part c).
+title Game Corner
+tempo 140
+meter 4/4
+reverb 0.24
+night none
+
+track lead epiano vol=0.76 pan=0.05 rev=0.24
+  L o5 c8 e8 g8 o6 c8 o5 b4 g4 | o5 a8 g8 e8 c8 d4 r4 | o5 e8 g8 o6 c8 e8 d4 c4 | o5 b2 g4 r4 |
+  o5 f8 a8 o6 c8 f8 e4 c4 | o5 g8 o6 c8 e8 g8 f4 e4 | o6 d8 c8 o5 b8 a8 g4 b4 | o6 c2. r4 |
+  o6 e8 d8 c8 o5 g8 a4 g4 | o5 f8 e8 d8 c8 d4 r4 | o5 e8 g8 o6 c8 e8 g4 e4 | o6 d2 o5 b4 r4 |
+  o5 a8 o6 c8 f8 a8 g4 f4 | o6 e8 d8 c8 o5 g8 a4 o6 c4 | o6 d8 e8 d8 c8 o5 b4 g4 | o6 c2. r4 |
+
+track stabs brass vol=0.36 pan=-0.3 rev=0.2
+  L o4 r4 (e g >c)8 r8 r4 (e g >c)8 r8 | r4 (e a >c)8 r8 r4 (d g b)8 r8 | r4 (e g >c)8 r8 r4 (e g >c)8 r8 | r4 (d g b)8 r8 r4 (d g b)8 r8 |
+  r4 (f a >c)8 r8 r4 (f a >c)8 r8 | r4 (e g >c)8 r8 r4 (e g >c)8 r8 | r4 (d g b)8 r8 r4 (d g b)8 r8 | r4 (e g >c)8 r8 r4 (e g >c)8 r8 |
+  r4 (e g >c)8 r8 r4 (e g >c)8 r8 | r4 (f a >c)8 r8 r4 (d g b)8 r8 | r4 (e g >c)8 r8 r4 (e g >c)8 r8 | r4 (d g b)8 r8 r4 (d g b)8 r8 |
+  r4 (f a >c)8 r8 r4 (f a >c)8 r8 | r4 (e g >c)8 r8 r4 (e g >c)8 r8 | r4 (d g b)8 r8 r4 (d g b)8 r8 | r4 (e g >c)8 r8 (e g >c)4 r4 |
+
+track bass synthbass vol=0.72 rev=0.08
+  L o2 c4 e4 g4 e4 | o2 a4 g4 e4 g4 | o2 c4 e4 g4 e4 | o2 g4 b4 o3 d4 o2 b4 |
+  o2 f4 a4 o3 c4 o2 a4 | o2 c4 e4 g4 e4 | o2 g4 a4 b4 g4 | o2 c4 e4 g4 e4 |
+  o2 c4 e4 g4 e4 | o2 f4 a4 g4 b4 | o2 c4 e4 g4 e4 | o2 g4 b4 o3 d4 o2 b4 |
+  o2 f4 a4 o3 c4 o2 a4 | o2 c4 e4 g4 e4 | o2 g4 a4 b4 g4 | o2 c4 g4 c2 |
+
+track drums kit vol=0.4 rev=0.14
+  v76 L [ b8 h8 s8 h8 b8 b8 s8 h8 | ]16

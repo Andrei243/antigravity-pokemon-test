@@ -2,12 +2,11 @@
   // Mauville City (plan 21 · H3, part b): the city of light and power at Hoenn's crossroads, its streets under one great
   // roof. Wally and his uncle stand at the Gym's door on their way to Verdanturf Town, and Wally asks the player for a
   // battle; Scott watches it (mauville_city.txt). Wattson, out in the street once Norman is beaten, is plan 21 · H4's;
-  // the Game Corner's door stays shut until its machines are built
+  // the Game Corner is open since plan 21 · H3, part c
   "area": "mauville_city",
   "bgmTrack": "hoenn/rustboro",
   "trees": "Round",
   "architecture": "Dynamo",
-  "locked": [ 5 ],
   "people": {
     "mauville_wally": { "name": "Wally", "npcType": "wally", "script": "Wally", "still": true },
     "mauville_wallys_uncle": { "name": "Wally's Uncle", "script": "WallysUncle", "still": true },
@@ -24,7 +23,7 @@
     "MauvilleCity_EventScript_CitySign": "Mauville City\nThe bright, shining city of fun!",
     "MauvilleCity_EventScript_GymSign": "Mauville City Pokémon Gym\nLeader: Wattson\nThe cheerfully electrifying man!",
     "MauvilleCity_EventScript_BikeShopSign": "Rydel's Cycles\nBikes for every trail!",
-    "MauvilleCity_EventScript_GameCornerSign": "Mauville Game Corner\nClosed for refitting. Please come again!",
+    "MauvilleCity_EventScript_GameCornerSign": "Mauville Game Corner\nThe playground for grown-ups!",
     "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
     "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
   }

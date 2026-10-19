@@ -493,6 +493,13 @@ public static class RegionDatabase
                 "Route117_PokemonDayCare", "VerdanturfTown_BattleTentLobby", "VerdanturfTown_Mart",
                 "VerdanturfTown_PokemonCenter_1F", "VerdanturfTown_PokemonCenter_2F", "VerdanturfTown_WandasHouse",
                 "VerdanturfTown_FriendshipRatersHouse", "VerdanturfTown_House",
+                // Plan 21 · H3, part c, and H4, part a: Mauville's Game Corner, Fiery Path, Meteor Falls' first room and the rooms
+                // of Routes 111 to 114 and Fallarbor Town
+                "MauvilleCity_GameCorner", "FieryPath", "MeteorFalls_1F_1R", "Route111_WinstrateFamilysHouse",
+                "Route111_OldLadysRestStop", "Route112_CableCarStation", "Route113_GlassWorkshop", "Route114_FossilManiacsHouse",
+                "Route114_FossilManiacsTunnel", "Route114_LanettesHouse", "FallarborTown_Mart", "FallarborTown_BattleTentLobby",
+                "FallarborTown_PokemonCenter_1F", "FallarborTown_PokemonCenter_2F", "FallarborTown_CozmosHouse",
+                "FallarborTown_MoveRelearnersHouse",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

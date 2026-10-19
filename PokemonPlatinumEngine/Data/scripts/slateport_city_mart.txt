@@ -1,0 +1,20 @@
+# Slateport City's Poké Mart (plan 21 · H3, part c). docs/scripts.md describes the language; the lines are our own.
+# The clerk keeps the common counter and, as Emerald's Slateport Mart sells it, the Harbor Mail that Mauville's Coin
+# Case is traded for (marts.json's slateport_mail).
+
+
+script Clerk
+  sayown
+  choose "What are you looking for today?" "Supplies" "Mail" "Nothing"
+  if result == 0 goto Supplies
+  if result == 1 goto Mail
+  say "Thank you! Do come again."
+  end
+label Supplies
+  shop
+  say "Thank you! Do come again."
+  end
+label Mail
+  shop "slateport_mail"
+  say "Thank you! Do come again."
+  end

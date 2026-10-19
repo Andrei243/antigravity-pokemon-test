@@ -1,0 +1,144 @@
+{
+  "GlassWorker": [
+    {
+      "en": [
+        "Glass Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to my glass workshop! I make glass out of the volcanic ash that falls on the road outside."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But I'm getting on, and gathering ash is hard work. Would you collect some for me? Take this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Walk through the grass where the ash lies with that Soot Sack in your bag, and the ash will go right into it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Bring me plenty, and I'll make you something lovely out of it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Let's have a look at the ash you've gathered. Hmm... {var:VAR_ASH_GATHER_COUNT} steps' worth."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which shall I make for you?",
+        "Blue Flute (250)",
+        "Yellow Flute (500)",
+        "Red Flute (500)",
+        "White Flute (1,000)",
+        "Black Flute (1,000)",
+        "Nothing"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back whenever you like. The ash keeps falling!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Blue Flute it is! There we are, fresh from the fire."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Yellow Flute it is! There we are, fresh from the fire."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Red Flute it is! There we are, fresh from the fire."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A White Flute it is! There we are, fresh from the fire."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Black Flute it is! There we are, fresh from the fire."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh dear, that takes more ash than you've gathered. Go and collect a little more."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's not quite enough to make anything yet. Keep walking through that ash!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Where's the Soot Sack I gave you? I can't make anything without the ash in it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

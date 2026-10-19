@@ -107,6 +107,7 @@
   ],
   "props": [
     { "model": 0, "name": "gba:Television", "x": 5.5, "y": 0, "z": 1.5, "boxX": 5, "boxZ": 1, "width": 1, "depth": 1, "height": 0 },
-    { "model": 0, "name": "gba:Bookshelf", "x": 7, "y": 0, "z": 1.5, "boxX": 6, "boxZ": 1, "width": 2, "depth": 1, "height": 0 }
+    { "model": 0, "name": "gba:Bookshelf", "x": 7, "y": 0, "z": 1.5, "boxX": 6, "boxZ": 1, "width": 2, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:Table", "x": 5, "y": 0, "z": 4, "boxX": 4, "boxZ": 3, "width": 2, "depth": 2, "height": 0 }
   ]
 }

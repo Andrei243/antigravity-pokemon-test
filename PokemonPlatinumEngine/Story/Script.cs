@@ -23,7 +23,7 @@ public enum Op
     // People and the field
     Face, Walk, Move, WaitMoves, Emote, Show, Hide, Place, Warp, Fade, Wait, Camera,
     // Field moves (plan 02 · S2)
-    UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent,
+    UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent, SmashEncounter,
     // The Pokétch (plan 02 · S2)
     Poketch, PoketchApp,
     // The Great Marsh's Safari Game (plan 01 · M7)
@@ -105,8 +105,6 @@ public enum Op
     Puzzle,
     // On or off the Bicycle by the story's say (plan 19 · K6: the Cycling Road of FireRed puts its riders on it)
     Bicycle,
-    // What a rock smashed by Rock Smash lets out (plan 20 · J9: HeartGold's and the GBA games' rock_smash tables)
-    RockSmash,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
