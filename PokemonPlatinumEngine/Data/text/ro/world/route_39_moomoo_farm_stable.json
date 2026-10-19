@@ -8,14 +8,6 @@
         "text": [
           "Fata"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Our Miltank is poorly. She just lies there and won't eat her hay."
-        ],
-        "text": [
-          "Miltank-ul nostru e bolnav. Stă doar întins și nu-și mănâncă fânul."
-        ]
       }
     },
     "r39r0201_gsbabygirl1_2": {
@@ -26,14 +18,6 @@
         "text": [
           "Fata"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Grandpa says lots of Berries would make her better. Do you have any?"
-        ],
-        "text": [
-          "Bunicul zice că multe Boabe l-ar face bine. Tu ai?"
-        ]
       }
     },
     "r39r0201_tsure_poke_static_miltank": {
@@ -43,14 +27,6 @@
         ],
         "text": [
           "Miltank"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Mooo... It looks very weak."
-        ],
-        "text": [
-          "Muuu... Pare foarte slăbit."
         ]
       }
     },

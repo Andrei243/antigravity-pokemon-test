@@ -1,5 +1,15 @@
 {
   "people": {
+    "t26gym0101_gsleader6": {
+      "name": {
+        "en": [
+          "Jasmine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "t26gym0101_sunglasses": {
       "name": {
         "en": [
@@ -8,15 +18,25 @@
         "text": [
           "Ghidul Arenei"
         ]
-      },
-      "dialog": {
+      }
+    },
+    "t26gym0101_gsgentleman": {
+      "name": {
         "en": [
-          "Hey there, challenger! Sorry, the Leader's out. Jasmine's up at the lighthouse, looking after a sick Pokémon.",
-          "She won't battle anyone until it's well again. That's just how kind she is."
+          "Gentleman"
         ],
         "text": [
-          "Salutare! Îmi pare rău, Liderul nu e aici. Jasmine e sus la far, are grijă de un Pokémon bolnav.",
-          "Nu se luptă cu nimeni până nu se face bine. Atât e de bună."
+          ""
+        ]
+      }
+    },
+    "t26gym0101_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
         ]
       }
     }

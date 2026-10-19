@@ -8,16 +8,6 @@
         "text": [
           "Fermier"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Our Miltank give the best milk in Johto. But one of them has fallen ill, and she won't give a drop.",
-          "If she gets her strength back, I'll have milk to sell again."
-        ],
-        "text": [
-          "Miltank-ii noștri dau cel mai bun lapte din Johto. Dar unul s-a îmbolnăvit și nu dă nicio picătură.",
-          "Dacă își recapătă puterile, o să am iar lapte de vânzare."
-        ]
       }
     },
     "r39r0101_middlewoman1_2": {
@@ -27,14 +17,6 @@
         ],
         "text": [
           "Soția fermierului"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "The sick one needs plenty of Berries, I'm sure of it. We've fed her all ours."
-        ],
-        "text": [
-          "Cel bolnav are nevoie de multe Boabe, sunt sigură. I le-am dat pe toate ale noastre."
         ]
       }
     }
