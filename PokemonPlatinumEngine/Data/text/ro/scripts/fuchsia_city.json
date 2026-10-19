@@ -5,7 +5,7 @@
         "Chansey\nThe kindest Pokémon of all. Its egg is said to bring happiness to whoever eats it."
       ],
       "text": [
-        ""
+        "Chansey\nCel mai blând Pokémon. Se spune că oul lui aduce fericire celui care îl mănâncă."
       ]
     }
   ],
@@ -15,7 +15,7 @@
         "Voltorb\nIt looks just like a Poké Ball. Anyone who reaches for it gets a nasty surprise!"
       ],
       "text": [
-        ""
+        "Voltorb\nArată exact ca un Poké Ball. Cine întinde mâna după el are o surpriză urâtă!"
       ]
     }
   ],
@@ -25,7 +25,7 @@
         "Kangaskhan\nA devoted parent that keeps its young safe in the pouch on its belly."
       ],
       "text": [
-        ""
+        "Kangaskhan\nUn părinte devotat, care își ține puiul în siguranță în punga de pe burtă."
       ]
     }
   ],
@@ -35,7 +35,7 @@
         "Slowpoke\nIt takes a whole second for it to feel pain. Friendly, and ever so slow."
       ],
       "text": [
-        ""
+        "Slowpoke\nÎi trebuie o secundă întreagă ca să simtă durerea. Prietenos și tare încet."
       ]
     }
   ],
@@ -45,7 +45,7 @@
         "Lapras\nA gentle giant of the sea that loves to ferry people across the water."
       ],
       "text": [
-        ""
+        "Lapras\nUn uriaș blând al mării, căruia îi place să treacă oamenii peste ape."
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Kabuto\nA Pokémon from ancient times, brought back to life from a fossil."
       ],
       "text": [
-        ""
+        "Kabuto\nUn Pokémon din vremuri străvechi, readus la viață dintr-o fosilă."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Omanyte\nA Pokémon from ancient seas, brought back to life from a fossil."
       ],
       "text": [
-        ""
+        "Omanyte\nUn Pokémon din mările străvechi, readus la viață dintr-o fosilă."
       ]
     }
   ],
@@ -73,7 +73,7 @@
         "Boy"
       ],
       "text": [
-        ""
+        "Băiatul"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "I know a move that makes a copy of yourself to take the hits. Want me to teach Substitute to one of your Pokémon?"
       ],
       "text": [
-        ""
+        "Știu o mișcare ce face o copie care încasează loviturile. Vrei să-l învăț Substitut pe unul din Pokémonii tăi?"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Okay! Which one?"
       ],
       "text": [
-        ""
+        "Bine! Pe care?"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "{wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "{wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "{wearer} learned {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} a învățat {thing}!"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "A Substitute costs some HP, but the foe will waste its moves on the copy. Sneaky, right?"
       ],
       "text": [
-        ""
+        "Substitutul costă niște HP, dar adversarul își irosește atacurile pe copie. Viclean, nu?"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Oh. Well, I'll be around if you change your mind."
       ],
       "text": [
-        ""
+        "A. Ei bine, sunt pe-aici dacă te răzgândești."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "That's an Egg! It can't learn anything yet."
       ],
       "text": [
-        ""
+        "Ăsta e un Ou! Încă nu poate învăța nimic."
       ]
     },
     {
@@ -137,7 +137,7 @@
         "Hmm, that one can't learn Substitute, I'm afraid."
       ],
       "text": [
-        ""
+        "Hmm, mă tem că acela nu poate învăța Substitut."
       ]
     },
     {
@@ -145,7 +145,7 @@
         "That one already knows {thing}!"
       ],
       "text": [
-        ""
+        "Ăsta știe deja {thing}!"
       ]
     },
     {
@@ -153,7 +153,7 @@
         "{forgotten} isn't a move that can be given up like that."
       ],
       "text": [
-        ""
+        "{forgotten} nu e o mișcare la care să se poată renunța așa."
       ]
     }
   ]

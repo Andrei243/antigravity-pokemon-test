@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "The Cycling Road runs all the way down to here from Celadon City. Quite the ride!"
         ],
         "text": [
-          ""
+          "Drumul Bicicliștilor coboară până aici tocmai din Orașul Celadon. Ce plimbare!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Koga's Pokémon are all poison. Bring plenty of Antidotes, or a Pokémon that shrugs it off."
         ],
         "text": [
-          ""
+          "Pokémonii lui Koga sunt toți otravă. Ia multe Antidoturi, sau un Pokémon pe care nu-l prinde otrava."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I got lost in the Safari Zone and ran out of steps. Six hundred goes faster than you'd think!"
         ],
         "text": [
-          ""
+          "M-am rătăcit în Zona Safari și mi s-au terminat pașii. Șase sute trec mai repede decât crezi!"
         ]
       }
     }

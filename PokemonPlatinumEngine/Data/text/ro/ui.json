@@ -609,7 +609,9 @@
   },
   "badges": {
     "Coal": "Cărbune", "Forest": "Pădure", "Cobble": "Pavaj", "Fen": "Mlaștină", "Relic": "Relicvă", "Mine": "Mină", "Icicle": "Țurțure", "Beacon": "Far",
-    "Boulder": "Bolovan", "Cascade": "Cascadă", "Thunder": "Tunet", "Rainbow": "Curcubeu", "Soul": "Suflet", "Marsh": "Smârc", "Volcano": "Vulcan", "Earth": "Pământ"
+    "Boulder": "Bolovan", "Cascade": "Cascadă", "Thunder": "Tunet", "Rainbow": "Curcubeu", "Soul": "Suflet", "Marsh": "Smârc", "Volcano": "Vulcan", "Earth": "Pământ",
+    "Zephyr": "Zefir", "Hive": "Stup", "Plain": "Câmpie", "Fog": "Ceață", "Storm": "Furtună", "Mineral": "Mineral", "Glacier": "Ghețar", "Rising": "Înălțare",
+    "Stone": "Piatră", "Knuckle": "Pumn", "Dynamo": "Dinam", "Heat": "Arșiță", "Balance": "Echilibru", "Feather": "Pană", "Mind": "Minte", "Rain": "Ploaie"
   },
   "card": {
     "title": "CARD DE ANTRENOR",
@@ -2970,6 +2972,22 @@
     "Route116": "Ruta 116",
     "PetalburgWoods": "Pădurea Petalburg",
     "RustboroCity": "Orașul Rustboro",
-    "RusturfTunnel": "Tunelul Rusturf"
+    "RusturfTunnel": "Tunelul Rusturf",
+    "FuchsiaCity": "Orașul Fuchsia",
+    "Route13": "Ruta 13",
+    "Route14": "Ruta 14",
+    "Route15": "Ruta 15",
+    "Route17": "Ruta 17",
+    "Route18": "Ruta 18",
+    "KantoSafariZone": "Zona Safari",
+    "SlowpokeWell": "Fântâna Slowpoke",
+    "DewfordTown": "Orășelul Dewford",
+    "GraniteCave": "Peștera de Granit",
+    "Route105": "Ruta 105",
+    "Route106": "Ruta 106",
+    "Route107": "Ruta 107",
+    "Route108": "Ruta 108",
+    "Route109": "Ruta 109",
+    "SlateportCity": "Orașul Slateport"
   }
 }

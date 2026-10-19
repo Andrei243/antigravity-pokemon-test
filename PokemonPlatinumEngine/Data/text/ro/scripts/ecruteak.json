@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Watch where you're going! ...Oh. It's you."
       ],
       "text": [
-        ""
+        "Uită-te pe unde mergi! ...A. Tu erai."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I asked those dancers about the Pokémon of the towers. They just smiled and said it chooses who it likes."
       ],
       "text": [
-        ""
+        "Le-am întrebat pe dansatoare de Pokémonul turnurilor. Au zâmbit doar și au zis că își alege singur pe cine vrea."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "A legendary Pokémon that picks its trainer? Nonsense. Strength is the only thing any Pokémon respects."
       ],
       "text": [
-        ""
+        "Un Pokémon legendar care își alege Antrenorul? Prostii. Forța e singurul lucru pe care îl respectă un Pokémon."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "I'll find it and make it mine. And you'd better not get in my way, {player}."
       ],
       "text": [
-        ""
+        "Îl găsesc și îl fac al meu. Și ai face bine să nu-mi stai în cale, {player}."
       ]
     }
   ]

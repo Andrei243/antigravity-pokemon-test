@@ -5,7 +5,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Leaving the Safari Zone already? You still have time left. Are you sure?"
       ],
       "text": [
-        ""
+        "Pleci deja din Zona Safari? Mai ai timp. Sigur?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Very well. Please hand back your Safari Balls. We hope to see you again!"
       ],
       "text": [
-        ""
+        "Foarte bine. Te rog să înapoiezi Safari Ballurile. Sperăm să te mai vedem!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Then off you go. Good luck out there!"
       ],
       "text": [
-        ""
+        "Atunci, la drum. Baftă acolo!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Did you catch your fair share? Come again any time!"
       ],
       "text": [
-        ""
+        "Ai prins destui? Mai vino oricând!"
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Welcome to the Safari Zone!"
       ],
       "text": [
-        ""
+        "Bun venit în Zona Safari!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "For just $500, you can catch all the Pokémon you like! Would you like to play the Safari Game?"
       ],
       "text": [
-        ""
+        "Pentru doar $500, poți prinde câți Pokémoni vrei! Vrei să joci Jocul Safari?"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "That'll be $500, thank you. Here you are: we use only these special balls in the zone."
       ],
       "text": [
-        ""
+        "Face $500, mulțumesc. Poftim: în zonă folosim doar ballurile acestea speciale."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "{player} received 30 Safari Balls!"
       ],
       "text": [
-        ""
+        "{player} a primit 30 de Safari Balluri!"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "We'll call you over the speakers when your game is up. Enjoy yourself!"
       ],
       "text": [
-        ""
+        "Te chemăm prin difuzoare când se termină jocul. Distracție plăcută!"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "I'm sorry, you don't have enough money."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destui bani."
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Very well. Please come again!"
       ],
       "text": [
-        ""
+        "Foarte bine. Mai poftește!"
       ]
     }
   ],
@@ -121,7 +121,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Walk up to the door behind me, and I'll ask whether you'd like to play the Safari Game."
       ],
       "text": [
-        ""
+        "Mergi la ușa din spatele meu și te întreb dacă vrei să joci Jocul Safari."
       ]
     }
   ],
@@ -139,7 +139,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -147,7 +147,7 @@
         "The Safari Zone has four parts, each with its own Pokémon. Would you like to hear how the Safari Game works?"
       ],
       "text": [
-        ""
+        "Zona Safari are patru părți, fiecare cu Pokémonii ei. Vrei să afli cum merge Jocul Safari?"
       ]
     },
     {
@@ -155,7 +155,7 @@
         "You go in with 30 Safari Balls. They're the only balls you may throw inside."
       ],
       "text": [
-        ""
+        "Intri cu 30 de Safari Balluri. Sunt singurele balluri pe care le poți arunca înăuntru."
       ]
     },
     {
@@ -163,7 +163,7 @@
         "You can't battle the Pokémon you meet, but you can throw things to calm them or rile them up. Try it and see!"
       ],
       "text": [
-        ""
+        "Nu te poți lupta cu Pokémonii întâlniți, dar poți arunca lucruri ca să-i calmezi sau să-i stârnești. Încearcă!"
       ]
     },
     {
@@ -171,7 +171,7 @@
         "The game is over when you've walked 600 steps, or when your last ball is thrown."
       ],
       "text": [
-        ""
+        "Jocul se termină după 600 de pași sau când arunci ultimul ball."
       ]
     },
     {
@@ -179,7 +179,7 @@
         "Then enjoy the Safari Zone!"
       ],
       "text": [
-        ""
+        "Atunci, distracție plăcută în Zona Safari!"
       ]
     }
   ]

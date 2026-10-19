@@ -9,11 +9,11 @@
         "NONE"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Un automat de băuturi. Ce băutură vrei?",
+        "APĂ PROASPĂTĂ  200",
+        "SUC ACIDULAT  300",
+        "LIMONADĂ  350",
+        "NIMIC"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Decided not to buy a drink."
       ],
       "text": [
-        ""
+        "Te-ai hotărât să nu cumperi nimic."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Clang! A bottle of Fresh Water dropped down."
       ],
       "text": [
-        ""
+        "Clang! A căzut o sticlă de Apă Proaspătă."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Lucky! Another bottle of Fresh Water dropped down."
       ],
       "text": [
-        ""
+        "Noroc! A mai căzut o sticlă de Apă Proaspătă."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Clang! A can of Soda Pop dropped down."
       ],
       "text": [
-        ""
+        "Clinc! A căzut o doză de Suc Acidulat."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Lucky! Another can of Soda Pop dropped down."
       ],
       "text": [
-        ""
+        "Noroc! A mai căzut o doză de Suc Acidulat."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Clang! A can of Lemonade dropped down."
       ],
       "text": [
-        ""
+        "Clinc! A căzut o doză de Limonadă."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Lucky! Another can of Lemonade dropped down."
       ],
       "text": [
-        ""
+        "Noroc! A mai căzut o doză de Limonadă."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Not enough money..."
       ],
       "text": [
-        ""
+        "Nu ai destui bani..."
       ]
     }
   ]

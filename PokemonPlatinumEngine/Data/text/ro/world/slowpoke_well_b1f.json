@@ -6,7 +6,7 @@
           "Proton"
         ],
         "text": [
-          ""
+          "Proton"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Grunt: Slowpoke Tails fetch top money, and these dopey things grow them back! It's a perfect racket!"
         ],
         "text": [
-          ""
+          "Grunt: Cozile de Slowpoke aduc bani grei, și năucii ăștia le cresc la loc! E afacerea perfectă!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Grunt: Aw, come on! We were just getting started!"
         ],
         "text": [
-          ""
+          "Grunt: Ei, haide! Abia ne apucaserăm!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Grunt: A kid? Down here? You picked the wrong well to fall into!"
         ],
         "text": [
-          ""
+          "Grunt: Un copil? Aici jos? Ai nimerit în fântâna greșită!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Grunt: Ugh. The boss is going to hear about this."
         ],
         "text": [
-          ""
+          "Grunt: Uf. O să afle și șeful de asta."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Grunt: Don't look at me like that. Slowpoke don't even notice when their tails are gone!"
         ],
         "text": [
-          ""
+          "Grunt: Nu te uita așa la mine. Slowpoke nici nu observă când le dispar cozile!"
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "Grunt: Well, I noticed that. You're tougher than you look."
         ],
         "text": [
-          ""
+          "Grunt: Ei bine, asta am observat-o. Ai mai multă forță decât pare."
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Slowpoke"
         ],
         "text": [
-          ""
+          "Slowpoke"
         ]
       },
       "dialog": {
@@ -102,7 +102,7 @@
           "A Slowpoke with its tail cut short. It doesn't seem to have noticed..."
         ],
         "text": [
-          ""
+          "Un Slowpoke cu coada tăiată. Nu pare să fi observat..."
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Slowpoke"
         ],
         "text": [
-          ""
+          "Slowpoke"
         ]
       },
       "dialog": {
@@ -120,7 +120,7 @@
           "Slowpoke is staring at the water. Its tail is gone, but it looks quite content."
         ],
         "text": [
-          ""
+          "Slowpoke se uită la apă. Nu mai are coadă, dar pare destul de mulțumit."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Kurt"
         ],
         "text": [
-          ""
+          "Kurt"
         ]
       },
       "dialog": {
@@ -138,7 +138,7 @@
           "Well done!"
         ],
         "text": [
-          ""
+          "Bravo!"
         ]
       }
     }

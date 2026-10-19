@@ -6,7 +6,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Morty"
         ],
         "text": [
-          ""
+          "Morty"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Morty isn't here. He's gone to the Burned Tower."
         ],
         "text": [
-          ""
+          "Morty nu e aici. S-a dus la Turnul Ars."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Georgina"
         ],
         "text": [
-          ""
+          "Georgina"
         ]
       },
       "before": {
@@ -52,7 +52,7 @@
           "Medium Georgina: The path is there for those who can see it. Can you?"
         ],
         "text": [
-          ""
+          "Medium Georgina: Cărarea e acolo pentru cei care o pot vedea. Tu poți?"
         ]
       },
       "after": {
@@ -60,7 +60,7 @@
           "Medium Georgina: You see more than most."
         ],
         "text": [
-          ""
+          "Medium Georgina: Vezi mai mult decât majoritatea."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Grace"
         ],
         "text": [
-          ""
+          "Grace"
         ]
       },
       "before": {
@@ -78,7 +78,7 @@
           "Medium Grace: My Haunter float over the holes. You'd better watch your step!"
         ],
         "text": [
-          ""
+          "Medium Grace: Haunter-ii mei plutesc peste găuri. Ai grijă pe unde calci!"
         ]
       },
       "after": {
@@ -86,7 +86,7 @@
           "Medium Grace: You didn't fall in. How?"
         ],
         "text": [
-          ""
+          "Medium Grace: N-ai căzut. Cum?"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Edith"
         ],
         "text": [
-          ""
+          "Edith"
         ]
       },
       "before": {
@@ -104,7 +104,7 @@
           "Medium Edith: Morty trains to see what others can't. So do we!"
         ],
         "text": [
-          ""
+          "Medium Edith: Morty se antrenează să vadă ce alții nu pot. Și noi la fel!"
         ]
       },
       "after": {
@@ -112,7 +112,7 @@
           "Medium Edith: I didn't see that coming."
         ],
         "text": [
-          ""
+          "Medium Edith: Asta n-am văzut-o venind."
         ]
       }
     },
@@ -122,7 +122,7 @@
           "Martha"
         ],
         "text": [
-          ""
+          "Martha"
         ]
       },
       "before": {
@@ -130,7 +130,7 @@
           "Medium Martha: You've come so far without falling. The spirits must favour you."
         ],
         "text": [
-          ""
+          "Medium Martha: Ai ajuns atât de departe fără să cazi. Spiritele trebuie să țină cu tine."
         ]
       },
       "after": {
@@ -138,7 +138,7 @@
           "Medium Martha: The spirits favour you twice over."
         ],
         "text": [
-          ""
+          "Medium Martha: Spiritele țin cu tine de două ori."
         ]
       }
     }
@@ -149,7 +149,7 @@
         "Ecruteak City Pokémon Gym\nLeader: Morty"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Ecruteak\nLider: Morty"
       ]
     }
   }

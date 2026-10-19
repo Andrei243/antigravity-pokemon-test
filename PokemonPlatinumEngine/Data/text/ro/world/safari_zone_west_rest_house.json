@@ -6,7 +6,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Warden lost his teeth somewhere out here. He went looking and came back without them!"
         ],
         "text": [
-          ""
+          "Paznicul și-a pierdut dinții pe undeva pe-aici. I-a căutat și s-a întors fără ei!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Tauros charge about the grass in this part. Catch one if you can!"
         ],
         "text": [
-          ""
+          "În partea asta, Tauros gonesc prin iarbă. Prinde unul dacă poți!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I'm taking a breather before I head out again. Six hundred steps go by so quickly!"
         ],
         "text": [
-          ""
+          "Îmi trag sufletul înainte să plec iar. Șase sute de pași trec atât de repede!"
         ]
       }
     }

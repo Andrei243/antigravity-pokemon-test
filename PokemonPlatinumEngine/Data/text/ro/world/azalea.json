@@ -16,7 +16,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "This is Team Rocket business. Keep walking, kid."
         ],
         "text": [
-          ""
+          "Treburile Echipei Rocket. Mergi mai departe."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I only wanted to see the Slowpoke. Why won't he let me past?"
         ],
         "text": [
-          ""
+          "Voiam doar să văd Slowpoke. De ce nu mă lasă să trec?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Slowpoke Tails sell for a fortune, you know. Nobody here's going to stop us."
         ],
         "text": [
-          ""
+          "Cozile de Slowpoke se vând pe o avere, să știi. Nimeni de-aici n-o să ne oprească."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Slowpoke"
         ],
         "text": [
-          ""
+          "Slowpoke"
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Slowpoke"
         ],
         "text": [
-          ""
+          "Slowpoke"
         ]
       }
     },
@@ -90,7 +90,7 @@
           "Slowpoke"
         ],
         "text": [
-          ""
+          "Slowpoke"
         ]
       }
     },
@@ -100,7 +100,7 @@
           "Slowpoke"
         ],
         "text": [
-          ""
+          "Slowpoke"
         ]
       }
     },
@@ -110,7 +110,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -118,7 +118,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },

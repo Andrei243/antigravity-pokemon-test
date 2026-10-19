@@ -6,7 +6,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Everyone in Dewford talks about whatever's trendy. This week it's all about fishing!"
         ],
         "text": [
-          ""
+          "În Dewford toată lumea vorbește despre ce e la modă. Săptămâna asta e numai despre pescuit!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I come here for the latest gossip. Did you hear about the old sailor and his boat?"
         ],
         "text": [
-          ""
+          "Vin aici pentru cele mai noi bârfe. Ai auzit de bătrânul marinar și barca lui?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Words go out of fashion faster than clothes around here."
         ],
         "text": [
-          ""
+          "Pe-aici, cuvintele se demodează mai repede decât hainele."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "When I was young, the trendy word was 'excellent'. Now nobody says it. Excellent!"
         ],
         "text": [
-          ""
+          "Când eram tânăr, cuvântul la modă era „excelent”. Acum nu-l mai zice nimeni. Excelent!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "I made up a new word today, but nobody's using it yet."
         ],
         "text": [
-          ""
+          "Azi am inventat un cuvânt nou, dar încă nu-l folosește nimeni."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Little Boy"
         ],
         "text": [
-          ""
+          "Băiețelul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "I'm gonna be the trendiest kid on the whole island!"
         ],
         "text": [
-          ""
+          "O să fiu cel mai la modă puști de pe toată insula!"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "We're arguing about which word is cooler. He's wrong, obviously."
         ],
         "text": [
-          ""
+          "Ne certăm care cuvânt e mai cool. El greșește, evident."
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "He's the one who's wrong. My word is way cooler."
         ],
         "text": [
-          ""
+          "El e cel care greșește. Cuvântul meu e mult mai cool."
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     }
@@ -161,7 +161,7 @@
         "A shelf of magazines full of the latest trends. Most of them look out of date already."
       ],
       "text": [
-        ""
+        "Un raft cu reviste pline de cele mai noi mode. Majoritatea par deja demodate."
       ]
     },
     "DewfordTown_Hall_EventScript_Painting": {
@@ -169,7 +169,7 @@
         "A painting of Dewford Town's harbour at sunset."
       ],
       "text": [
-        ""
+        "Un tablou cu portul din Orășelul Dewford la apus."
       ]
     }
   }

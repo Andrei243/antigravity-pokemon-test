@@ -6,7 +6,7 @@
           "Brawly"
         ],
         "text": [
-          ""
+          "Brawly"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Takao"
         ],
         "text": [
-          ""
+          "Takao"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Black Belt Takao: Can you even see me in the dark? My fists can see you!"
         ],
         "text": [
-          ""
+          "Centură Neagră Takao: Mă vezi măcar pe întuneric? Pumnii mei te văd!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Black Belt Takao: The light's a little brighter now. For you."
         ],
         "text": [
-          ""
+          "Centură Neagră Takao: Acum lumina e un pic mai puternică. Pentru tine."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Jocelyn"
         ],
         "text": [
-          ""
+          "Jocelyn"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Battle Girl Jocelyn: No need to see. Just feel the punch coming!"
         ],
         "text": [
-          ""
+          "Luptătoare Jocelyn: N-ai nevoie să vezi. Simte doar cum vine pumnul!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Battle Girl Jocelyn: I felt that one coming. Too late."
         ],
         "text": [
-          ""
+          "Luptătoare Jocelyn: Pe ăla l-am simțit venind. Prea târziu."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Laura"
         ],
         "text": [
-          ""
+          "Laura"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Battle Girl Laura: Don't be scared of the dark. Be scared of me!"
         ],
         "text": [
-          ""
+          "Luptătoare Laura: Nu te teme de întuneric. Teme-te de mine!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Battle Girl Laura: Now I'm the one who's scared."
         ],
         "text": [
-          ""
+          "Luptătoare Laura: Acum eu sunt cea speriată."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Cristian"
         ],
         "text": [
-          ""
+          "Cristian"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Black Belt Cristian: Brawly trains us in the dark to sharpen our senses. Hyah!"
         ],
         "text": [
-          ""
+          "Centură Neagră Cristian: Brawly ne antrenează pe întuneric ca să ne ascuțim simțurile. Hia!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Black Belt Cristian: My senses were too dull."
         ],
         "text": [
-          ""
+          "Centură Neagră Cristian: Simțurile mele au fost prea tocite."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Lilith"
         ],
         "text": [
-          ""
+          "Lilith"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Battle Girl Lilith: You found me! Now let's see if you can beat me."
         ],
         "text": [
-          ""
+          "Luptătoare Lilith: M-ai găsit! Acum să vedem dacă mă poți învinge."
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Battle Girl Lilith: Go on, the Leader's waiting. The way's lighter now."
         ],
         "text": [
-          ""
+          "Luptătoare Lilith: Hai, Liderul te așteaptă. Drumul e mai luminos acum."
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Brenden"
         ],
         "text": [
-          ""
+          "Brenden"
         ]
       },
       "before": {
@@ -164,7 +164,7 @@
           "Sailor Brenden: I sailed here to train under Brawly. Show me what you've got!"
         ],
         "text": [
-          ""
+          "Marinar Brenden: Am navigat până aici ca să mă antrenez cu Brawly. Arată-mi ce poți!"
         ]
       },
       "after": {
@@ -172,7 +172,7 @@
           "Sailor Brenden: I've still got a lot of training to do."
         ],
         "text": [
-          ""
+          "Marinar Brenden: Mai am mult de antrenat."
         ]
       }
     }
@@ -183,7 +183,7 @@
         "Dewford Town Pokémon Gym\nLeader: Brawly"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orășelul Dewford\nLider: Brawly"
       ]
     },
     "DewfordTown_Gym_EventScript_RightGymStatue": {
@@ -191,7 +191,7 @@
         "Dewford Town Pokémon Gym\nLeader: Brawly"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orășelul Dewford\nLider: Brawly"
       ]
     }
   }

@@ -93,6 +93,24 @@ public class RomanianTests
     }
 
     [Fact]
+    public void EveryBadgeOfEveryRegionHasANameInEnglishAndRomanian()
+    {
+        // Plan 17 · N6h: the Trainer Card names each Badge through `badges.<name>` (Words.Badge), and Johto's and Hoenn's
+        // had no key, so their page drew "[badges.Zephyr]" in every language
+        var english = Entries("en");
+        var romanian = Entries(Romanian);
+        var options = new JsonDocumentOptions { CommentHandling = JsonCommentHandling.Skip, AllowTrailingCommas = true };
+        var missing = new List<string>();
+        foreach (string file in Directory.GetFiles(Path.Combine(Repository.Root, "PokemonPlatinumEngine", "Data", "regions"), "*.json"))
+            using (var document = JsonDocument.Parse(File.ReadAllText(file), options))
+                if (document.RootElement.TryGetProperty("badges", out var badges))
+                    foreach (var badge in badges.EnumerateArray())
+                        if (!english.ContainsKey("badges." + badge.GetString()) || !romanian.ContainsKey("badges." + badge.GetString()))
+                            missing.Add($"{Path.GetFileName(file)}: {badge.GetString()}");
+        Assert.True(missing.Count == 0, "Badges with no `badges.*` key in en/ui.json and ro/ui.json:\n" + string.Join("\n", missing));
+    }
+
+    [Fact]
     public void ARomanianClassAgreesWithTheEnglishOneItTranslatesAndNoClassIsStillRaw()
     {
         try

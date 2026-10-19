@@ -5,7 +5,7 @@
         "Koga"
       ],
       "text": [
-        ""
+        "Koga"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Fwahahaha! A mere child dares to challenge me? I am Koga, Leader of this Gym!"
       ],
       "text": [
-        ""
+        "Fuahahaha! Un simplu copil îndrăznește să mă provoace? Eu sunt Koga, Liderul acestei Arene!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Ninja arts are the arts of deception. My poisons will sap your strength while you stumble in confusion!"
       ],
       "text": [
-        ""
+        "Artele ninja sunt arte ale înșelăciunii. Otrăvurile mele îți vor stoarce puterea cât te clatini năucit!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Hmph! You have proven your worth. Take the Soul Badge."
       ],
       "text": [
-        ""
+        "Hmf! Ți-ai dovedit valoarea. Ia Insigna Suflet."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} received the Soul Badge from Koga!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Suflet de la Koga!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "With the Soul Badge, your Pokémon can use Surf outside of battle, to ride across the water."
       ],
       "text": [
-        ""
+        "Cu Insigna Suflet, Pokémonii tăi pot folosi Surf în afara luptei, ca să te poarte peste apă."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Take this as well. It is the very essence of my art."
       ],
       "text": [
-        ""
+        "Ia și asta. E chiar esența artei mele."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "TM06 is Toxic. It poisons the foe badly, and the poison grows worse with every turn."
       ],
       "text": [
-        ""
+        "TM06 este Toxină. Otrăvește grav adversarul, iar otrava se agravează cu fiecare tură."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "You have the makings of a fine trainer. Remember: when strength fails, cunning wins the day."
       ],
       "text": [
-        ""
+        "Ai stofă de Antrenor bun. Ține minte: când forța dă greș, viclenia câștigă."
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "Guide"
       ],
       "text": [
-        ""
+        "Ghidul"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Hey, champ in the making! This Gym is full of walls you can't see."
       ],
       "text": [
-        ""
+        "Hei, viitor campion! Arena asta e plină de ziduri nevăzute."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Koga's Pokémon use poison and every trick in the book. Bring something to cure poison, and feel your way along!"
       ],
       "text": [
-        ""
+        "Pokémonii lui Koga folosesc otravă și toate șmecheriile. Ia ceva contra otrăvii și înaintează pe pipăite!"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "You found your way through the invisible walls and beat Koga! What a ninja you'd make!"
       ],
       "text": [
-        ""
+        "Ți-ai găsit drumul printre zidurile invizibile și l-ai învins pe Koga! Ce ninja ar ieși din tine!"
       ]
     }
   ],
@@ -113,7 +113,7 @@
         "Fuchsia City Pokémon Gym. Leader: Koga. Winning trainers: {rival}."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Fuchsia. Lider: Koga. Antrenori învingători: {rival}."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Fuchsia City Pokémon Gym. Leader: Koga. Winning trainers: {rival}, {player}."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Fuchsia. Lider: Koga. Antrenori învingători: {rival}, {player}."
       ]
     }
   ]

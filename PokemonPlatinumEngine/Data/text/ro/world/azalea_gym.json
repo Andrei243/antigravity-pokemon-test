@@ -6,7 +6,7 @@
           "Bugsy"
         ],
         "text": [
-          ""
+          "Bugsy"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Al"
         ],
         "text": [
-          ""
+          "Al"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Bug Catcher Al: The carts only go one way at a time. So do I: straight at you!"
         ],
         "text": [
-          ""
+          "Vânător de insecte Al: Vagoneții merg doar într-o direcție. Și eu la fel: drept spre tine!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Bug Catcher Al: Squashed flat."
         ],
         "text": [
-          ""
+          "Vânător de insecte Al: Turtit de tot."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Benny"
         ],
         "text": [
-          ""
+          "Benny"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Bug Catcher Benny: My Beedrill's sting is legendary in this Gym!"
         ],
         "text": [
-          ""
+          "Vânător de insecte Benny: Acul lui Beedrill al meu e legendar în Arena asta!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Bug Catcher Benny: Legend over, I guess."
         ],
         "text": [
-          ""
+          "Vânător de insecte Benny: S-a terminat legenda, cred."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Josh"
         ],
         "text": [
-          ""
+          "Josh"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Bug Catcher Josh: You won't get to Bugsy without getting past me and my Paras!"
         ],
         "text": [
-          ""
+          "Vânător de insecte Josh: Nu ajungi la Bugsy fără să treci de mine și de Paras al meu!"
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "Bug Catcher Josh: Okay, you got past me."
         ],
         "text": [
-          ""
+          "Vânător de insecte Josh: Bine, ai trecut de mine."
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Amy"
         ],
         "text": [
-          ""
+          "Amy"
         ]
       },
       "before": {
@@ -102,7 +102,7 @@
           "Twins Amy: We love bugs! Bugsy taught us everything!"
         ],
         "text": [
-          ""
+          "Gemene Amy: Iubim insectele! Bugsy ne-a învățat tot!"
         ]
       },
       "after": {
@@ -110,7 +110,7 @@
           "Twins Amy: We still love bugs, though."
         ],
         "text": [
-          ""
+          "Gemene Amy: Dar tot iubim insectele."
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Mimi"
         ],
         "text": [
-          ""
+          "Mimi"
         ]
       },
       "before": {
@@ -128,7 +128,7 @@
           "Twins Mimi: Two bugs are better than one!"
         ],
         "text": [
-          ""
+          "Gemene Mimi: Două insecte sunt mai bune decât una!"
         ]
       },
       "after": {
@@ -136,7 +136,7 @@
           "Twins Mimi: Two bugs weren't better this time."
         ],
         "text": [
-          ""
+          "Gemene Mimi: De data asta, două insecte n-au fost mai bune."
         ]
       }
     }
@@ -147,7 +147,7 @@
         "A lever for the carts' tracks. It's set so each cart runs straight across."
       ],
       "text": [
-        ""
+        "O manetă pentru șinele vagoneților. E pusă așa încât fiecare vagonet merge drept înainte."
       ]
     },
     "T23GYM0102_015+1": {
@@ -155,7 +155,7 @@
         "A lever for the carts' tracks. It's set so each cart runs straight across."
       ],
       "text": [
-        ""
+        "O manetă pentru șinele vagoneților. E pusă așa încât fiecare vagonet merge drept înainte."
       ]
     }
   }

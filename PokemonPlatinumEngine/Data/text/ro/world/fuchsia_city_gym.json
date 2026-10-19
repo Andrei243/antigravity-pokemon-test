@@ -6,7 +6,7 @@
           "Koga"
         ],
         "text": [
-          ""
+          "Koga"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Kayden"
         ],
         "text": [
-          ""
+          "Kayden"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Juggler Kayden: Now you see me, now you don't! Can you keep up with my tricks?"
         ],
         "text": [
-          ""
+          "Jongler Kayden: Acum mă vezi, acum nu! Poți ține pasul cu trucurile mele?"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Juggler Kayden: My last trick was disappearing. From the battle."
         ],
         "text": [
-          ""
+          "Jongler Kayden: Ultimul meu truc a fost dispariția. Din luptă."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Shawn"
         ],
         "text": [
-          ""
+          "Shawn"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Juggler Shawn: Bumped into a wall you couldn't see? There are plenty more!"
         ],
         "text": [
-          ""
+          "Jongler Shawn: Te-ai lovit de un zid nevăzut? Mai sunt multe!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Juggler Shawn: Bumped into a trainer you couldn't beat, too."
         ],
         "text": [
-          ""
+          "Jongler Shawn: Și eu m-am lovit de cineva pe care nu-l pot învinge."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Kirk"
         ],
         "text": [
-          ""
+          "Kirk"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Juggler Kirk: I'm Koga's student. I've learned to throw people off balance!"
         ],
         "text": [
-          ""
+          "Jongler Kirk: Sunt elevul lui Koga. Am învățat să dezechilibrez oamenii!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Juggler Kirk: You kept your balance. Impressive."
         ],
         "text": [
-          ""
+          "Jongler Kirk: Ți-ai păstrat echilibrul. Impresionant."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Edgar"
         ],
         "text": [
-          ""
+          "Edgar"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Tamer Edgar: My snakes obey my every word. Do yours?"
         ],
         "text": [
-          ""
+          "Îmblânzitor Edgar: Șerpii mei îmi ascultă fiecare cuvânt. Ai tăi te ascultă?"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Tamer Edgar: Mine stopped listening, apparently."
         ],
         "text": [
-          ""
+          "Îmblânzitor Edgar: Ai mei au încetat să asculte, se pare."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Phil"
         ],
         "text": [
-          ""
+          "Phil"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Tamer Phil: A ninja's Gym needs fierce guardians. That's me!"
         ],
         "text": [
-          ""
+          "Îmblânzitor Phil: Arena unui ninja are nevoie de paznici fioroși. Adică eu!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Tamer Phil: Not fierce enough."
         ],
         "text": [
-          ""
+          "Îmblânzitor Phil: Nu destul de fioros."
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Nate"
         ],
         "text": [
-          ""
+          "Nate"
         ]
       },
       "before": {
@@ -164,7 +164,7 @@
           "Juggler Nate: Watch closely, or you'll miss the trick!"
         ],
         "text": [
-          ""
+          "Jongler Nate: Fii atent, sau ratezi trucul!"
         ]
       },
       "after": {
@@ -172,7 +172,7 @@
           "Juggler Nate: I missed the trick that beat me."
         ],
         "text": [
-          ""
+          "Jongler Nate: Eu am ratat trucul care m-a învins."
         ]
       }
     }

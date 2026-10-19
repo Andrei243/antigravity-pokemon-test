@@ -6,7 +6,7 @@
         "Area 1\nWest: Centre Area"
       ],
       "text": [
-        ""
+        "Zona 1\nVest: Zona Centrală"
       ]
     },
     "SafariZone_East_EventScript_RestHouseSign": {
@@ -14,7 +14,7 @@
         "Rest House"
       ],
       "text": [
-        ""
+        "Casa de Odihnă"
       ]
     },
     "SafariZone_East_EventScript_TrainerTips": {
@@ -22,7 +22,7 @@
         "Trainer Tips\nThe Safari Zone's Pokémon are shy. Some run away the moment they see you!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nPokémonii din Zona Safari sunt timizi. Unii fug cum te văd!"
       ]
     }
   }

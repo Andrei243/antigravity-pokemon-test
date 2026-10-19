@@ -6,7 +6,7 @@
           "Owner"
         ],
         "text": [
-          ""
+          "Proprietarul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Dwayne"
         ],
         "text": [
-          ""
+          "Dwayne"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Sailor Dwayne: I came in for a cold drink. A battle'll do just as well!"
         ],
         "text": [
-          ""
+          "Marinar Dwayne: Am intrat pentru o băutură rece. Merge și o luptă!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Sailor Dwayne: Now I really need that drink."
         ],
         "text": [
-          ""
+          "Marinar Dwayne: Acum chiar am nevoie de băutura aia."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Simon"
         ],
         "text": [
-          ""
+          "Simon"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Tuber Simon: My Azurill and Marill are the best of friends. And the best battlers!"
         ],
         "text": [
-          ""
+          "Copil cu colac Simon: Azurill și Marill ai mei sunt cei mai buni prieteni. Și cei mai buni luptători!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Tuber Simon: Best of friends, at least."
         ],
         "text": [
-          ""
+          "Copil cu colac Simon: Cei mai buni prieteni, măcar."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Johanna"
         ],
         "text": [
-          ""
+          "Johanna"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Beauty Johanna: The sea breeze is lovely here. Shall we battle in it?"
         ],
         "text": [
-          ""
+          "Frumoasă Johanna: Briza mării e minunată aici. Ne luptăm în ea?"
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "Beauty Johanna: The breeze has turned against me."
         ],
         "text": [
-          ""
+          "Frumoasă Johanna: Briza s-a întors împotriva mea."
         ]
       }
     }

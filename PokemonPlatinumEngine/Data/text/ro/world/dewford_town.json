@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Dewford's a tiny island, but everyone knows everyone. We look after each other here."
         ],
         "text": [
-          ""
+          "Dewford e o insulă mică, dar toată lumea se cunoaște. Aici avem grijă unii de alții."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Mr. Briney"
         ],
         "text": [
-          ""
+          "Domnul Briney"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescarul"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     }
@@ -55,7 +55,7 @@
         "Dewford Town\nA tiny island in the blue sea"
       ],
       "text": [
-        ""
+        "Orășelul Dewford\nO insulă mică în marea albastră"
       ]
     },
     "DewfordTown_EventScript_GymSign": {
@@ -63,7 +63,7 @@
         "Dewford Town Pokémon Gym\nLeader: Brawly\nA big wave in fighting!"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orășelul Dewford\nLider: Brawly\nUn val uriaș în luptă!"
       ]
     },
     "DewfordTown_EventScript_HallSign": {
@@ -71,7 +71,7 @@
         "Dewford Hall\nEveryone's information exchange!"
       ],
       "text": [
-        ""
+        "Sala din Dewford\nBursa de informații a tuturor!"
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -79,7 +79,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     }
   }

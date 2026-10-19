@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Ultra Balls catch Pokémon better than Great Balls. Not that you can use them in the Safari Zone."
         ],
         "text": [
-          ""
+          "Ultra Ballurile prind Pokémoni mai bine decât Super Ballurile. Doar că în Zona Safari nu le poți folosi."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Be quick in the Safari Zone. The Pokémon there run off at the slightest thing!"
         ],
         "text": [
-          ""
+          "Mișcă-te repede în Zona Safari. Pokémonii de acolo fug la cel mai mic lucru!"
         ]
       }
     }

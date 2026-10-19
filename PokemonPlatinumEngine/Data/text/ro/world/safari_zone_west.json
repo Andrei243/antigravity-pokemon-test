@@ -6,7 +6,7 @@
         "Area 3\nEast: Centre Area"
       ],
       "text": [
-        ""
+        "Zona 3\nEst: Zona Centrală"
       ]
     },
     "SafariZone_West_EventScript_RestHouseSign": {
@@ -14,7 +14,7 @@
         "Rest House"
       ],
       "text": [
-        ""
+        "Casa de Odihnă"
       ]
     },
     "SafariZone_West_EventScript_TrainerTips": {
@@ -22,7 +22,7 @@
         "Trainer Tips\nZone exploration campaign! Find the Secret House and win a prize!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nCampanie de explorare a zonei! Găsește Casa Secretă și câștigă un premiu!"
       ]
     },
     "SafariZone_West_EventScript_LostTeethNotice": {
@@ -30,7 +30,7 @@
         "Request\nThe Warden has lost his false teeth. If you find them, please bring them to his house in Fuchsia City!"
       ],
       "text": [
-        ""
+        "Rugăminte\nPaznicul și-a pierdut proteza. Dacă o găsiți, duceți-o la casa lui din Orașul Fuchsia!"
       ]
     }
   }

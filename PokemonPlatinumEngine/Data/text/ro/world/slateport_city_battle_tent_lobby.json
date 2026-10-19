@@ -6,7 +6,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Battle Tent! Our rental Pokémon are still being looked after. Please come back another day."
         ],
         "text": [
-          ""
+          "Bun venit la Cortul de Luptă! Pokémonii de închiriat sunt încă îngrijiți. Te rugăm să revii altă dată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "You battle here with Pokémon the Tent lends you. Your own stay safe on the bench!"
         ],
         "text": [
-          ""
+          "Aici lupți cu Pokémoni împrumutați de Cort. Ai tăi stau în siguranță pe bancă!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Three wins in a row with rentals. That's what it takes to impress anyone here."
         ],
         "text": [
-          ""
+          "Trei victorii la rând cu Pokémoni închiriați. Atât îți trebuie ca să impresionezi pe cineva aici."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I got a Pokémon I'd never even seen before! I had no idea what its moves did."
         ],
         "text": [
-          ""
+          "Am primit un Pokémon pe care nici nu-l mai văzusem! N-aveam idee ce fac mișcările lui."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "My husband swears the rentals are random. I swear he just picks badly."
         ],
         "text": [
-          ""
+          "Soțul meu jură că Pokémonii închiriați sunt la întâmplare. Eu jur că doar alege prost."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "Battle Tent Rules\nBorrow three rental Pokémon and win three battles in a row!"
       ],
       "text": [
-        ""
+        "Regulile Cortului de Luptă\nÎmprumută trei Pokémoni și câștigă trei lupte la rând!"
       ]
     }
   }

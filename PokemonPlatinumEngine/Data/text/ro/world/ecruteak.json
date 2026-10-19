@@ -6,7 +6,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -33,8 +33,8 @@
           "Folk say they were the three that died in the fire, brought back by the great bird of the Bell Tower."
         ],
         "text": [
-          "",
-          ""
+          "I-am văzut! Trei Pokémoni ieșind în trombă din Turnul Ars, iuți ca vântul!",
+          "Lumea zice că sunt cei trei care au pierit în incendiu, readuși la viață de marea pasăre a Turnului Clopotelor."
         ]
       }
     },
