@@ -169,6 +169,15 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+=== cianwood
+Cianwood City
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
+=== cianwood_gym
+Cianwood City
+trainers 4, 23-27: johto_black_belt_lao 27, johto_black_belt_lung 25, johto_black_belt_nob 25, johto_black_belt_yoshi 27
 === cinnabar_island
 Cinnabar Island
 surf 5-40
@@ -438,6 +447,24 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+=== olivine
+Olivine City
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
+=== olivine_lighthouse_2f
+Lighthouse
+trainers 2, 18-22: johto_gentleman_alfred 22, johto_sailor_huey 20
+=== olivine_lighthouse_3f
+Lighthouse
+trainers 3, 15-20: johto_bird_keeper_gs_denis 20, johto_bird_keeper_gs_theo 19, johto_sailor_kent 20
+=== olivine_lighthouse_4f
+Lighthouse
+trainers 2, 18-21: johto_gentleman_preston 18, johto_lass_connie 21
+=== olivine_lighthouse_5f
+Lighthouse
+trainers 2, 18-20: johto_sailor_roberto 18, johto_sailor_terrell 20
 === oreburgh_gate_1f
 Oreburgh Gate
 grass 5-8
@@ -1054,6 +1081,14 @@ trainers 2, 14-17: johto_psychic_m_mark 16, johto_school_kid_m_alan 17
 Route 37
 grass 13-15
 trainers 4, 16-17: johto_beauty_callie 16, johto_beauty_kassandra 16, johto_psychic_m_greg 17, johto_twins_tori_and_til 16
+=== route_38
+Route 38
+grass 13-16
+trainers 5, 16-20: johto_beauty_valerie 18, johto_bird_keeper_gs_toby 18, johto_lass_dana 19, johto_sailor_harry 20, johto_school_kid_m_chad 20
+=== route_39
+Route 39
+grass 15-17
+trainers 4, 17-20: johto_pokefan_m_derek 18, johto_pokefan_ruth 17, johto_psychic_m_nelson 20, johto_sailor_eugene 19
 === route_4
 Route 4
 grass 6-12
@@ -1062,6 +1097,20 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 1, 31: kanto_lass_crissy 31
+=== route_40
+Route 40
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
+trainers 4, 18-21: johto_swimmer_f_elaine 21, johto_swimmer_f_paula 19, johto_swimmer_m_randall 20, johto_swimmer_m_simon 20
+=== route_41
+Route 41
+surf 15-25
+old rod 10
+good rod 20
+super rod 40
+trainers 10, 16-23: johto_swimmer_f_denise 22, johto_swimmer_f_kara 20, johto_swimmer_f_kaylee 20, johto_swimmer_f_susie 22, johto_swimmer_f_wendy 21, johto_swimmer_m_berke 23, johto_swimmer_m_charlie 21, johto_swimmer_m_george 19, johto_swimmer_m_matthew 23, johto_swimmer_m_ronald 20
 === route_5
 Route 5
 grass 10-16
@@ -1516,3 +1565,20 @@ trainers 10, 17-22: camper_diego 22, camper_parker 20, collector_terry 22, hiker
 === wayward_cave_b1f
 Wayward Cave
 grass 17-20
+=== whirl_islands_1f
+Whirl Islands
+grass 22-24
+surf 10-25
+old rod 10
+good rod 20
+super rod 40
+=== whirl_islands_b1f
+Whirl Islands
+grass 22-24
+=== whirl_islands_b2f
+Whirl Islands
+grass 22-24
+surf 15-30
+old rod 10
+good rod 20
+super rod 40
