@@ -1,0 +1,10 @@
+{
+  // Mauville City's Poké Mart (plan 21 · H3, part b)
+  "area": "mauville_city_mart",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "mauville_mart_clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! What can I get for you?" ] },
+    "expert_m": { "name": "Old Man", "dialog": [ "An X Speed in battle can turn a slow Pokémon into a quick one. Very handy against a tough foe." ] },
+    "man_3": { "name": "Man", "dialog": [ "Guard Spec. keeps the other side from lowering your stats. A trainer's best friend!" ] }
+  }
+}

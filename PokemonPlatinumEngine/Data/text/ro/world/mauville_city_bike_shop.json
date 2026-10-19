@@ -1,0 +1,33 @@
+{
+  "people": {
+    "man_2": {
+      "name": {
+        "en": [
+          "Rydel"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Assistant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The handbooks on the back shelf tell you how to ride each of our bikes. Have a read!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

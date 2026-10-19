@@ -1,0 +1,122 @@
+{
+  "people": {
+    "verdanturf_tent_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Battle Tent! Here, Pokémon choose their own moves. Our challenge isn't ready yet, I'm afraid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon here battle by themselves, without orders. Their nature decides what they do!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon didn't listen to me once in there. Well, it's not supposed to!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A calm Pokémon and a hasty one battle completely differently. It's fascinating."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{player}! Fancy meeting you here. The Battle Tent's a great place to find strong trainers."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I want to see the trainers who win three in a row here!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "VerdanturfTown_BattleTentLobby_EventScript_RulesBoard": {
+      "en": [
+        "Battle Tent Rules\nYour Pokémon battle by their own will. Win three in a row!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

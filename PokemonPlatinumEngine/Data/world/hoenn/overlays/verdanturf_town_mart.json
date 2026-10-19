@@ -1,0 +1,11 @@
+{
+  // Verdanturf Town's Poké Mart (plan 21 · H3, part b)
+  "area": "verdanturf_town_mart",
+  "bgmTrack": "hoenn/verdanturf",
+  "people": {
+    "verdanturf_mart_clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! What can I get for you?" ] },
+    "boy_2": { "name": "Boy", "dialog": [ "A Nest Ball catches low-level Pokémon easily. I wish they sold them everywhere!" ] },
+    "expert_f": { "name": "Old Woman", "dialog": [ "Fluffy, comfy things for a secret base... Oh, I'm only window shopping." ] },
+    "lass": { "name": "Girl", "dialog": [ "I'm buying Potions for my trip to Rustboro. You can never have too many!" ] }
+  }
+}

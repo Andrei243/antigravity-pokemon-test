@@ -1,0 +1,50 @@
+{
+  "key": "mauville_city",
+  "index": 7,
+  "name": "Mauville City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 208, "z": 145, "to": "mauville_city_gym", "toWarp": 0 },
+    { "x": 222, "z": 145, "to": "mauville_city_pokemon_center_1f", "toWarp": 0 },
+    { "x": 235, "z": 145, "to": "mauville_city_bike_shop", "toWarp": 0 },
+    { "x": 223, "z": 154, "to": "mauville_city_mart", "toWarp": 0 },
+    { "x": 232, "z": 154, "to": "mauville_city_house_1", "toWarp": 0 },
+    { "x": 208, "z": 153, "to": "mauville_city_game_corner", "toWarp": 0 },
+    { "x": 219, "z": 154, "to": "mauville_city_house_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "boy_3", "looks": "boy_3", "movement": "wander_west_and_east", "x": 229, "z": 156, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "MauvilleCity_EventScript_Boy" },
+    { "id": "rich_boy", "looks": "rich_boy", "movement": "wander_west_and_east", "x": 224, "z": 150, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "MauvilleCity_EventScript_RichBoy" },
+    { "id": "maniac", "looks": "maniac", "movement": "look_east", "x": 214, "z": 151, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_EventScript_Maniac" },
+    { "id": "woman_4", "looks": "woman_4", "movement": "look_around", "x": 218, "z": 146, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_EventScript_Woman" },
+    { "id": "school_kid_m", "looks": "school_kid_m", "movement": "look_south", "x": 217, "z": 154, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_EventScript_SchoolKidM" },
+    { "id": "mauville_wally", "looks": "wally", "movement": "look_north", "x": 208, "z": 146, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAUVILLE_CITY_WALLY", "script": "MauvilleCity_EventScript_Wally" },
+    { "id": "mauville_wallys_uncle", "looks": "pokefan_m", "movement": "look_west", "x": 209, "z": 146, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE", "script": "MauvilleCity_EventScript_WallysUncle" },
+    { "id": "wattson", "looks": "wattson", "movement": "look_around", "x": 229, "z": 149, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAUVILLE_CITY_WATTSON", "script": "MauvilleCity_EventScript_Wattson" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 228, "z": 159, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_MAUVILLE_CITY_X_SPEED", "item": "X Speed", "script": "MauvilleCity_EventScript_ItemXSpeed" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_west", "x": 213, "z": 147, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_EventScript_RolloutTutor" },
+    { "id": "mauville_scott", "looks": "scott", "movement": "look_north", "x": 212, "z": 154, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAUVILLE_CITY_SCOTT", "script": "" }
+  ],
+  "signs": [
+    { "x": 223, "z": 145, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 211, "z": 146, "type": 0, "script": "MauvilleCity_EventScript_GymSign" },
+    { "x": 224, "z": 154, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 225, "z": 154, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 224, "z": 145, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 219, "z": 147, "type": 0, "script": "MauvilleCity_EventScript_CitySign" },
+    { "x": 233, "z": 146, "type": 0, "script": "MauvilleCity_EventScript_BikeShopSign" },
+    { "x": 211, "z": 155, "type": 0, "script": "MauvilleCity_EventScript_GameCornerSign" }
+  ],
+  "triggers": []
+}

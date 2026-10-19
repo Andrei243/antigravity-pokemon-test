@@ -1,0 +1,13 @@
+{
+  // Mauville City's Pokémon Center (plan 21 · H3, part b), its floor as Emerald lays it out. Emerald's old man by the
+  // door tells a story that changes with what other players have done; here he just talks
+  "area": "mauville_city_pokemon_center_1f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "mauville_nurse": { "name": "Nurse", "script": "Nurse" },
+    "var_0": { "name": "Old Man", "npcType": "Gentleman", "dialog": [ "I've lived in Mauville all my life. Pull up a chair some time, and I'll tell you a story or two." ] },
+    "woman_1": { "name": "Woman", "dialog": [ "Mauville's lights are powered by the Gym Leader himself, they say. Imagine the bill!" ] },
+    "woman_5": { "name": "Woman", "dialog": [ "I came to Mauville for the shopping. Everything's under one roof here!" ] },
+    "youngster": { "name": "Boy", "dialog": [ "Rydel at the bike shop gave me a bike just for asking! Well, he asked if I came from far away." ] }
+  }
+}

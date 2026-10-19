@@ -1,0 +1,9 @@
+{
+  // Hoenn's Pokémon Day Care on Route 117 (plan 21 · H3, part b): the Day-Care Lady takes up to two Pokémon to raise,
+  // as Sinnoh's does (common.DayCareLady)
+  "area": "route_117_pokemon_day_care",
+  "bgmTrack": "hoenn/route110",
+  "people": {
+    "daycare_lady": { "name": "Day-Care Lady", "script": "DayCareLady" }
+  }
+}

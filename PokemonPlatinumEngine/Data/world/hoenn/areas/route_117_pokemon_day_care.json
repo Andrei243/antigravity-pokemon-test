@@ -1,0 +1,26 @@
+{
+  "key": "route_117_pokemon_day_care",
+  "index": 236,
+  "name": "Route 117",
+  "matrix": 185,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 2, "z": 8, "to": "route_117", "toWarp": 0 },
+    { "x": 3, "z": 8, "to": "route_117", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "daycare_lady", "looks": "old_woman", "movement": "look_south", "x": 2, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route117_PokemonDayCare_EventScript_DaycareWoman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

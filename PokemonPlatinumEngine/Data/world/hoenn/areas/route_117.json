@@ -1,0 +1,96 @@
+{
+  "key": "route_117",
+  "index": 11,
+  "name": "Route 117",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE110",
+  "nightMusic": "MUS_ROUTE110",
+  "encounters": "route_117",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Poochyena", "level": 13 },
+    { "species": "Oddish", "level": 13 },
+    { "species": "Poochyena", "level": 14 },
+    { "species": "Oddish", "level": 14 },
+    { "species": "Marill", "level": 13 },
+    { "species": "Oddish", "level": 13 },
+    { "species": "Illumise", "level": 13 },
+    { "species": "Illumise", "level": 13 },
+    { "species": "Illumise", "level": 14 },
+    { "species": "Illumise", "level": 14 },
+    { "species": "Volbeat", "level": 13 },
+    { "species": "Seedot", "level": 13 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Marill", "level": 20, "maxLevel": 30 },
+    { "species": "Marill", "level": 10, "maxLevel": 20 },
+    { "species": "Marill", "level": 30, "maxLevel": 35 },
+    { "species": "Marill", "level": 5, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Corphish", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Corphish", "level": 25, "maxLevel": 30 },
+    { "species": "Corphish", "level": 30, "maxLevel": 35 },
+    { "species": "Corphish", "level": 20, "maxLevel": 25 },
+    { "species": "Corphish", "level": 35, "maxLevel": 40 },
+    { "species": "Corphish", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 191, "z": 145, "to": "route_117_pokemon_day_care", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_south", "x": 153, "z": 153, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route117_EventScript_Woman" },
+    { "id": "little_boy", "looks": "little_boy", "movement": "walk_sequence_south_east_west_north", "x": 165, "z": 145, "facing": 1, "rangeX": 2, "rangeZ": 2, "script": "Route117_EventScript_LittleBoy" },
+    { "id": "daycare_man", "looks": "old_man", "movement": "look_south", "x": 187, "z": 144, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route117_EventScript_DaycareMan" },
+    { "id": "zigzagoon_2", "looks": "zigzagoon_2", "movement": "look_around", "x": 173, "z": 143, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "kecleon", "looks": "kecleon", "movement": "look_around", "x": 179, "z": 144, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "azumarill", "looks": "azumarill", "movement": "look_around", "x": 182, "z": 142, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "pikachu", "looks": "pikachu", "movement": "look_around", "x": 189, "z": 142, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" },
+    { "id": "running_triathlete_m", "looks": "running_triathlete_m", "movement": "walk_east_and_west", "x": 178, "z": 156, "facing": 3, "rangeX": 8, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_DYLAN_1" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "rotate_counterclockwise", "x": 148, "z": 150, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LYDIA_1" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_north_and_east", "x": 173, "z": 151, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ISAAC_1" },
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 181, "z": 153, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 168, "script": "BerryTreeScript" },
+    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 182, "z": 153, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 167, "script": "BerryTreeScript" },
+    { "id": "berry_tree_3", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 183, "z": 153, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 166, "script": "BerryTreeScript" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 156, "z": 158, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_117_GREAT_BALL", "item": "Great Ball", "script": "Route117_EventScript_ItemGreatBall" },
+    { "id": "cuttable_tree", "looks": "cuttable_tree", "movement": "look_around", "x": 155, "z": 142, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_CutTree" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 149, "z": 141, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_117_REVIVE", "item": "Revive", "script": "Route117_EventScript_ItemRevive" },
+    { "id": "running_triathlete_f", "looks": "running_triathlete_f", "movement": "walk_sequence_north_west_east_south", "x": 166, "z": 153, "facing": 0, "rangeX": 2, "rangeZ": 2, "trainer": "normal", "sight": 5, "script": "TRAINER_MARIA_1" },
+    { "id": "maniac", "looks": "maniac", "movement": "look_north", "x": 157, "z": 152, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_DEREK" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 183, "z": 146, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_ANNA_AND_MEG_1" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_south", "x": 182, "z": 146, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_ANNA_AND_MEG_1" },
+    { "id": "girl_2", "looks": "girl_2", "movement": "wander_around", "x": 188, "z": 150, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route117_EventScript_Girl" },
+    { "id": "lass_3", "looks": "lass", "movement": "look_east", "x": 155, "z": 144, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_BRANDI" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "look_west", "x": 161, "z": 144, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_AISHA" },
+    { "id": "running_triathlete_f_2", "looks": "running_triathlete_f", "movement": "walk_east_and_west", "x": 156, "z": 144, "facing": 3, "rangeX": 4, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_MELINA" }
+  ],
+  "signs": [
+    { "x": 156, "z": 146, "type": 0, "script": "Route117_EventScript_RouteSignVerdanturf" },
+    { "x": 189, "z": 152, "type": 0, "script": "Route117_EventScript_RouteSignMauville" },
+    { "x": 189, "z": 145, "type": 0, "script": "Route117_EventScript_DayCareSign" },
+    { "x": 143, "z": 158, "type": 2, "script": "", "item": "Repel", "flag": "FLAG_HIDDEN_ITEM_ROUTE_117_REPEL" }
+  ],
+  "triggers": []
+}

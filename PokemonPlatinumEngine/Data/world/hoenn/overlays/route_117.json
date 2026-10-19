@@ -1,0 +1,33 @@
+{
+  // Route 117 (plan 21 · H3, part b): the flowered road between Mauville City and Verdanturf Town, with Hoenn's Pokémon
+  // Day Care, whose couple raise Pokémon as Sinnoh's do (common.DayCareMan, and the Day-Care Lady inside), and its
+  // trainers, four of whom swap numbers for the PokéNav once beaten (route_117.txt)
+  "area": "route_117",
+  "bgmTrack": "hoenn/route110",
+  "trees": "Round",
+  "people": {
+    "daycare_man": { "name": "Day-Care Man", "script": "DayCareMan" },
+    "woman_1": { "name": "Woman", "dialog": [ "The Day Care couple raise Pokémon for you. Sometimes an Egg turns up, and nobody knows where from!" ] },
+    "little_boy": { "name": "Boy", "dialog": [ "I like to watch the Pokémon play in the Day Care's yard. They look so happy!" ] },
+    "girl_2": { "name": "Girl", "dialog": [ "Leave two Pokémon at the Day Care and they might get along. Then you never know what happens!" ] },
+    "zigzagoon_2": { "name": "Zigzagoon", "dialog": [ "Zigzagoon: Zigzag!" ] },
+    "kecleon": { "name": "Kecleon", "dialog": [ "Kecleon: Kekeeh!" ] },
+    "azumarill": { "name": "Azumarill", "dialog": [ "Azumarill: Rurii!" ] },
+    "pikachu": { "name": "Pikachu", "dialog": [ "Pikachu: Pika pika!" ] },
+    "running_triathlete_m": { "name": "Dylan", "script": "Dylan", "trainer": { "dialogueBefore": "Triathlete Dylan: Running's my thing. And when I run, I run into trainers!", "dialogueAfter": "Triathlete Dylan: I'll go for a jog to clear my head." } },
+    "woman_2": { "name": "Lydia", "script": "Lydia", "trainer": { "dialogueBefore": "Pokémon Breeder Lydia: Look at all the Pokémon I've raised! Six of them, all so lovely.", "dialogueAfter": "Pokémon Breeder Lydia: My dears, you did your best." } },
+    "man_4": { "name": "Isaac", "script": "Isaac", "trainer": { "dialogueBefore": "Pokémon Breeder Isaac: I raise my Pokémon with love. Battling with them is the best part!", "dialogueAfter": "Pokémon Breeder Isaac: More love next time. And more training." } },
+    "running_triathlete_f": { "name": "Maria", "script": "Maria", "trainer": { "dialogueBefore": "Triathlete Maria: My Doduo and I run every day! Keep up if you can!", "dialogueAfter": "Triathlete Maria: You ran rings round us." } },
+    "maniac": { "name": "Derek", "trainer": { "dialogueBefore": "Bug Maniac Derek: The bugs here are wonderful! Want to see my favourites?", "dialogueAfter": "Bug Maniac Derek: They're still wonderful, even when they lose." } },
+    "lass": { "name": "Anna & Meg", "trainer": { "dialogueBefore": "Sr. & Jr. Anna & Meg: Big sister and little sister! We battle as a team!", "dialogueAfter": "Sr. & Jr. Anna & Meg: Even together, we couldn't do it." } },
+    "lass_2": { "name": "Anna & Meg", "trainer": { "dialogueBefore": "Sr. & Jr. Anna & Meg: Sister's with me, so I'm not scared at all!", "dialogueAfter": "Sr. & Jr. Anna & Meg: We'll get stronger together!" } },
+    "lass_3": { "name": "Brandi", "trainer": { "dialogueBefore": "Psychic Brandi: I can sense it. You're going to battle me. Am I right?", "dialogueAfter": "Psychic Brandi: I didn't sense that coming." } },
+    "girl_3": { "name": "Aisha", "trainer": { "dialogueBefore": "Battle Girl Aisha: I'm training on the open road! You'll be my sparring partner.", "dialogueAfter": "Battle Girl Aisha: Back to training, then." } },
+    "running_triathlete_f_2": { "name": "Melina", "trainer": { "dialogueBefore": "Triathlete Melina: Ready, set... battle!", "dialogueAfter": "Triathlete Melina: I need to warm up more." } }
+  },
+  "signs": {
+    "Route117_EventScript_RouteSignVerdanturf": "Route 117\nWest: Verdanturf Town",
+    "Route117_EventScript_RouteSignMauville": "Route 117\nEast: Mauville City",
+    "Route117_EventScript_DayCareSign": "Pokémon Day Care\nWe raise your Pokémon for you."
+  }
+}

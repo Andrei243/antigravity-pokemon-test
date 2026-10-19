@@ -18,7 +18,7 @@ public sealed class StoryState
     /// How much of the story a save knows about. A save from before story state existed is 0; every chapter that
     /// needs older saves brought up to date raises it and adds a step to <see cref="Story.StoryMigration"/>.
     /// </summary>
-    public const int CurrentVersion = 26;
+    public const int CurrentVersion = 27;
 
     /// <summary>The Pokédex is the player's (the original's own flag, set as Rowan hands it over).</summary>
     public const string PokedexFlag = "FLAG_HAS_POKEDEX";
@@ -66,13 +66,21 @@ public sealed class StoryState
     public const string TemporaryVariablePrefix = "VAR_TEMP_";
 
     /// <summary>
+    /// The GBA games' temporary flags (<c>FLAG_TEMP_1</c> to <c>FLAG_TEMP_1F</c>), cleared with their variables as every
+    /// map loads (<c>ClearTempFieldEventData</c>): forgotten with the local ones (plan 21 · H3, part b, once a tree cut
+    /// on Route 104 had hidden one of Route 117 and one of the Trick House that shared its number). An obstacle's is made
+    /// its area's own as a local flag is (<see cref="Data.World.LocalFlag"/>).
+    /// </summary>
+    public const string TemporaryFlagPrefix = "FLAG_TEMP_";
+
+    /// <summary>
     /// Forgets the flags and variables that last only while the player stays in one place, as the original does
     /// whenever the map's header changes (<c>FieldSystem_ClearLocalFlags</c>): on walking into another area and on
     /// every warp. A tree that was cut grows back, a rock that was smashed is whole again.
     /// </summary>
     public void ClearLocal()
     {
-        bool changed = flags.RemoveWhere(f => f.StartsWith(LocalFlagPrefix, StringComparison.Ordinal)) > 0;
+        bool changed = flags.RemoveWhere(f => f.StartsWith(LocalFlagPrefix, StringComparison.Ordinal) || f.StartsWith(TemporaryFlagPrefix, StringComparison.Ordinal)) > 0;
         foreach (var name in variables.Keys.Where(v => v.StartsWith(LocalVariablePrefix, StringComparison.Ordinal) || v.StartsWith(TemporaryVariablePrefix, StringComparison.Ordinal)).ToList())
         {
             variables.Remove(name);

@@ -1,0 +1,31 @@
+{
+  "key": "mauville_city_pokemon_center_1f",
+  "index": 130,
+  "name": "Mauville City",
+  "matrix": 79,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "mauville_city", "toWarp": 1 },
+    { "x": 6, "z": 8, "to": "mauville_city", "toWarp": 1 },
+    { "x": 1, "z": 6, "to": "mauville_city_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "mauville_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "var_0", "looks": "var_0", "movement": "look_west", "x": 2, "z": 3, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "MauvilleCity_PokemonCenter_1F_EventScript_MauvilleOldMan" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_around", "x": 8, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_PokemonCenter_1F_EventScript_Woman1" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "wander_north_and_south", "x": 11, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 1, "script": "MauvilleCity_PokemonCenter_1F_EventScript_Woman2" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_around", "x": 2, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "MauvilleCity_PokemonCenter_1F_EventScript_Youngster" }
+  ],
+  "signs": [],
+  "triggers": []
+}

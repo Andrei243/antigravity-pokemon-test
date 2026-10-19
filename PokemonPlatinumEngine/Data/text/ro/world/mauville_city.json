@@ -1,0 +1,210 @@
+{
+  "people": {
+    "mauville_wally": {
+      "name": {
+        "en": [
+          "Wally"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mauville_wallys_uncle": {
+      "name": {
+        "en": [
+          "Wally's Uncle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mauville_scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Keep it up! I'll be watching."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wattson": {
+      "name": {
+        "en": [
+          "Wattson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wahahaha! Mauville's lights never go out, and neither does my good mood!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon got hurt, but the nurse at the Pokémon Center fixed it right up. She's amazing!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rich_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon can jump out at you while you're riding a bike, too. You can't outpedal everything!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mauville's right in the middle of Hoenn. All kinds of people pass through here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rydel at the bike shop is so generous. He gives his bikes away to travellers who come from far off!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Pokémon roll everywhere they go. Rolling's the best way to get around, if you ask me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MauvilleCity_EventScript_CitySign": {
+      "en": [
+        "Mauville City\nThe bright, shining city of fun!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MauvilleCity_EventScript_GymSign": {
+      "en": [
+        "Mauville City Pokémon Gym\nLeader: Wattson\nThe cheerfully electrifying man!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MauvilleCity_EventScript_BikeShopSign": {
+      "en": [
+        "Rydel's Cycles\nBikes for every trail!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MauvilleCity_EventScript_GameCornerSign": {
+      "en": [
+        "Mauville Game Corner\nClosed for refitting. Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

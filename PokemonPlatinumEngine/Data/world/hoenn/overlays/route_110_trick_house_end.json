@@ -1,0 +1,12 @@
+{
+  // The Trick House's last room (plan 21 · H3, part b): the Trick Master waits here at the end of each puzzle with his
+  // reward (route_110_trick_house_end.txt). Emerald's way out is a corridor back to the front room, laid out as a room
+  // of its own; here the back door leads straight to the front room
+  "area": "route_110_trick_house_end",
+  "bgmTrack": "hoenn/trick_house",
+  "doors": [ { "warp": 0, "map": "Route110_TrickHousePuzzle1", "x": 13, "y": 2, "facing": "Down" } ],
+  "exits": [ { "x": 2, "z": 1, "map": "Route110_TrickHouseEntrance", "toX": 5, "toY": 5, "facing": "Down" } ],
+  "people": {
+    "trick_master_end": { "name": "Trick Master", "npcType": "trick_master", "script": "TrickMaster", "still": true }
+  }
+}

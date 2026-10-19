@@ -1,0 +1,236 @@
+{
+  "RivalBattle": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I knew you'd come this way. I've been filling in the Pokédex for Dad all the way up from Slateport!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But how's your team doing? Let's see who's been training harder!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wow, you've got so much stronger! I'll have to catch up."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, take this. I don't really need it. It's an Itemfinder!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Use it and it beeps when something's buried close by. It even turns you to face the right way!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right, I'm off to Mauville! See you around, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Edwin": [
+    {
+      "en": [
+        "Edwin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A fine battle! Would you exchange numbers? I'll call when my collection grows."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Edwin in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Splendid. I'll tell you all about my newest finds!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A pity. My collection would have impressed you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Benjamin": [
+    {
+      "en": [
+        "Benjamin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're quick! Let's swap numbers and keep each other training."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Benjamin in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Great! I'll call you after my morning ride."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fair enough. See you on the road!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Abigail": [
+    {
+      "en": [
+        "Abigail"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've got real power! Can I have your number? I want to keep up with you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Abigail in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks! I'll let you know how my Magnemite is doing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh well. I'll just have to catch up by myself!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Isabel": [
+    {
+      "en": [
+        "Isabel"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Plusle and Minun want to be your friends! Will you register me in your PokéNav?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Isabel in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yay! I'll call with all their cutest news!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aww. Plusle and Minun are pouting now."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

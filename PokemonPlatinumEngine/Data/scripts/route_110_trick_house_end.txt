@@ -1,0 +1,31 @@
+# The Trick House's last room (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/Route110_TrickHouseEnd/scripts.inc).
+#
+# The Trick Master stands here while a puzzle is under way (VAR_TRICK_HOUSE_ENTRANCE_STATE 1), gives its reward (the
+# first: a Rare Candy), counts it solved (VAR_TRICK_HOUSE_LEVEL) and runs off to plan the next. The puzzle's door is
+# shut behind him (FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_DONE, a flag of ours).
+
+
+script OnEnter
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE == 1 end
+  hide trick_master_end
+  end
+
+
+script TrickMaster
+  if var VAR_TRICK_HOUSE_ENTRANCE_STATE != 1 end
+  scene "The Trick Master's reward"
+  face trick_master_end player
+  speaker "Trick Master"
+  say "Bravo! You made it all the way to me! My puzzle was no match for you."
+  say "Do you know, I stayed up all night planting those trees? And you cut through them like they were nothing!"
+  say "A deal's a deal. You've earned this reward."
+  give "Rare Candy"
+  say "Next time I'll come up with something truly baffling. Until then... Farewell!"
+  walk trick_master_end left 2 fast
+  hide trick_master_end
+  setvar VAR_TRICK_HOUSE_LEVEL 1
+  setvar VAR_TRICK_HOUSE_ENTRANCE_STATE 3
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_DONE
+  endscene
+  end

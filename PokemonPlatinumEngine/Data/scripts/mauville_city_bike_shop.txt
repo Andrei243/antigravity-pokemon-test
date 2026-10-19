@@ -1,0 +1,86 @@
+# Rydel's Cycles in Mauville City (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/MauvilleCity_BikeShop/scripts.inc).
+#
+# Rydel asks whether the player came from far away: yes, and he gives the bicycle chosen (FLAG_RECEIVED_BIKE); no, and
+# he lets it be (FLAG_DECLINED_BIKE) until asked again. Afterwards he swaps one bicycle for the other whenever asked.
+# The Mach Bike is fast and climbs muddy slopes; the Acro Bike hops along rails and up bumpy slopes
+# (Overworld/FieldMovement.cs, BikeKind).
+
+
+script Rydel
+  face self player
+  speaker "Rydel"
+  if flag FLAG_RECEIVED_BIKE goto Swap
+  if flag FLAG_DECLINED_BIKE goto Ask
+  say "Welcome to Rydel's Cycles! I'm Rydel, and I love bicycles more than anything."
+label Ask
+  ask "Say, you look like a traveller. Did you come all the way here from somewhere far off?"
+  if no goto NotFar
+  setflag FLAG_RECEIVED_BIKE
+  say "Then you'll need a bike to get around Hoenn! I'll give you one, free. Which kind would you like?"
+  say "The Mach Bike is built for speed, fast enough to ride up a muddy slope. The Acro Bike can hop and balance on rails."
+  choose "Which bike will you take?" "Mach Bike" "Acro Bike"
+  if var RESULT == 1 goto Acro
+  say "The Mach Bike! Hold on tight, it really flies."
+  give "Mach Bike"
+  goto Later
+label Acro
+  say "The Acro Bike! You'll be doing tricks in no time."
+  give "Acro Bike"
+label Later
+  say "If you want to try the other kind, just come back. I'll swap them for you any time!"
+  end
+label NotFar
+  setflag FLAG_DECLINED_BIKE
+  say "Oh, you're local? Then you probably don't need a bike from me. Come back if you change your mind!"
+  end
+label Swap
+  ask "Want to swap your bike for the other kind?"
+  if no goto Keep
+  if item "Acro Bike" goto ToMach
+  if item "Mach Bike" goto ToAcro
+  say "Hm? You're not carrying your bike. Is it in your PC? Bring it along and I'll swap it."
+  end
+label ToMach
+  say "Right, the Acro Bike for the Mach Bike. Here you go!"
+  take "Acro Bike"
+  give "Mach Bike"
+  say "Come back whenever you feel like swapping again."
+  end
+label ToAcro
+  say "Right, the Mach Bike for the Acro Bike. Here you go!"
+  take "Mach Bike"
+  give "Acro Bike"
+  say "Come back whenever you feel like swapping again."
+  end
+label Keep
+  say "Glad you like the one you've got! Ride safely."
+  end
+
+
+# The Mach Bike's handbook: a page at a time
+script MachHandbook
+  choose "Mach Bike Handbook: which page?" "How to ride" "Muddy slopes" "Close"
+  if var RESULT == 0 goto Ride
+  if var RESULT == 1 goto Slopes
+  end
+label Ride
+  text "\"The Mach Bike is the fastest bike there is. Point it where you want to go and hold on!\""
+  end
+label Slopes
+  text "\"Only a Mach Bike at full speed can ride up a muddy slope. Anything slower can't get up it.\""
+  end
+
+
+# The Acro Bike's handbook: a page at a time
+script AcroHandbook
+  choose "Acro Bike Handbook: which page?" "Rails" "Bumpy slopes" "Close"
+  if var RESULT == 0 goto Rails
+  if var RESULT == 1 goto Bumps
+  end
+label Rails
+  text "\"The Acro Bike can hop onto a narrow rail and ride along it. It can't turn while it's up there!\""
+  end
+label Bumps
+  text "\"A bumpy slope is too rough for any other bike, but the Acro Bike can hop its way up.\""
+  end

@@ -1,0 +1,244 @@
+{
+  "Wally": [
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Uncle, please! I want to challenge the Gym. I know Ralts and I can do it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally's Uncle"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now, Wally, you've only just got here. Don't you think you're pushing yourself?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But we've been training! We can beat anyone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You came at just the right time. Will you battle me? If I win, my uncle will see how strong I am!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}... Please, will you battle me? I have to show my uncle!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ask": [
+    {
+      "en": [
+        "Battle Wally?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Ralts, here we go!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I... I lost. You really are strong, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Uncle... I'll go back to Verdanturf with you. I'm not ready for the Gym yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, thank you. Battling you showed me how much further I have to go."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally's Uncle"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Don't be down, Wally. You battled well, and you'll only get stronger. Come visit us in Verdanturf, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh... Then my uncle will never believe I'm strong enough."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Scott": [
+    {
+      "en": [
+        "Scott"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I watched the whole thing. You didn't hold back against him, did you? That's how it should be!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That boy will grow strong too, I can tell. Well, see you around!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "WallysUncle": [
+    {
+      "en": [
+        "Wally's Uncle"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally's been so full of energy since he caught his Ralts. It's wonderful, but I do worry about him."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Could you battle Wally for me? He won't listen to me, but losing to you might teach him patience."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SchoolKid": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have you seen the television in the Pokémon Center? The shows change all the time, so check it often!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been watching all the shows. There's always something new on!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

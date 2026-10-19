@@ -146,6 +146,13 @@
     "archie": { "hairColor": "#262028", "hat": "Cap", "hatColor": "#1c1e2a", "hatBand": "#2a5ab0", "top": "#22273a", "accent": "#d8b04a", "bottom": "#22273a", "shoes": "#1a1a20", "eyes": "#2a3a5a", "beard": true, "build": "Adult", "bushyBrows": true, "height": 1.12 },
     // Scott, who watches trainers: short brown hair, a white shirt open over a blue tee, khaki trousers
     "scott": { "hairColor": "#5a4230", "top": "#f2f2f6", "accent": "#3a8ac8", "bottom": "#c4ac80", "shoes": "#4a3a2a", "eyes": "#3a2e28", "shortSleeves": true, "build": "Adult", "height": 1.02 },
+    // Plan 21 · H3, part b (our own takes): Wattson, Mauville's Gym Leader, a big jolly old man: swept white hair and a
+    // white beard, a golden-yellow shirt under a navy waistcoat and navy trousers
+    "wattson": { "hairColor": "#f2f2f4", "hair": "Swept", "top": "#e8c040", "accent": "#2a3460", "bottom": "#2a3460", "shoes": "#3a2e26", "eyes": "#3a3a40", "beard": true, "bushyBrows": true, "build": "Adult", "height": 1.12 },
+    // The Trick Master of Route 110: a black mask over his eyes, slicked dark hair, a purple magician's coat lined in gold
+    "trick_master": { "hairColor": "#1e1e26", "hat": "Mask", "hatColor": "#141418", "hatBand": "#d8b04a", "top": "#5a2a7a", "accent": "#d8b04a", "bottom": "#24242c", "shoes": "#141418", "eyes": "#3a2e48", "coat": true, "mustache": true, "build": "Adult", "height": 1.02 },
+    // Rydel of Mauville's bike shop: short brown hair and a moustache, a green work shirt and brown trousers
+    "rydel": { "hairColor": "#5a3e2c", "top": "#4a9a5a", "accent": "#f2f2f6", "bottom": "#6a4a32", "shoes": "#2e2a28", "eyes": "#3a2e28", "mustache": true, "shortSleeves": true, "build": "Adult", "height": 1.0 },
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
     // Kanto's cast of plan 19 · K5 (our own takes): Lt. Surge, the tallest, spiky pale-gold hair and an olive soldier's vest over a khaki shirt; the
     // S.S. Anne's captain, a white cap with a navy band and a white coat, a moustache; Mr. Fuji, small, short white hair and a long plum robe;
@@ -342,7 +349,11 @@
     "Scientist": "scientist",
     "Black Belt": "blackbelt",
     "Galactic": "grunt",
-    "Rival": [ "rival", "blue", "may", "brendan" ],
+    "Rival": [ "rival", "blue", "may", "brendan", "wally" ],
+    // Emerald's classes of plan 21 · H3, part b, folded onto the nearest look until their own are made
+    "Bug Maniac": [ "youngster" ],
+    "Sr And Jr": [ "lass" ],
+    "Pkmn Breeder": [ "lady" ],
     "Team Rocket": "rocket",
     "Super Nerd": "scientist",
     "Channeler": "channeler",

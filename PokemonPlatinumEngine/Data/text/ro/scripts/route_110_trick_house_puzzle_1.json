@@ -1,0 +1,62 @@
+{
+  "Scroll": [
+    {
+      "en": [
+        "{player} found a scroll!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} learnt the secret code written on it by heart."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The secret code is written on it: \"The Trick Master is magnificent.\""
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door": [
+    {
+      "en": [
+        "The door is locked. Something is written on it: \"Write the secret code here.\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} wrote the secret code on the door. \"The Trick Master is magnificent.\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click! The lock opened!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door stands open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

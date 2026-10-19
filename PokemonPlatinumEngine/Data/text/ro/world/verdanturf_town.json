@@ -1,0 +1,110 @@
+{
+  "people": {
+    "verdanturf_twin": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The air here is so clean, it's like drinking spring water. My lungs have never been happier."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to make my debut at the Battle Tent! Well, once it opens again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "VerdanturfTown_EventScript_TownSign": {
+      "en": [
+        "Verdanturf Town\nThe windswept highlands with the sweet fragrance of grass"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "VerdanturfTown_EventScript_WandasHouseSign": {
+      "en": [
+        "Wanda's House"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "VerdanturfTown_EventScript_BattleTentSign": {
+      "en": [
+        "Battle Tent: Verdanturf\nPokémon that battle on their own"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "VerdanturfTown_EventScript_RusturfTunnelSign": {
+      "en": [
+        "Rusturf Tunnel\nA tunnel for people, linking Rustboro City and Verdanturf Town"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

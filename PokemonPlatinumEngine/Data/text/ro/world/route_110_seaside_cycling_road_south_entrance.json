@@ -1,0 +1,23 @@
+{
+  "people": {
+    "mart_employee": {
+      "name": {
+        "en": [
+          "Gate Keeper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "On the Cycling Road you can ride as fast as you dare. Just try not to crash into anyone!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

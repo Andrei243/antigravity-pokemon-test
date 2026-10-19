@@ -1,0 +1,35 @@
+# The Trick House's first puzzle (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/Route110_TrickHousePuzzle1/scripts.inc and the puzzles' shared scripts in
+# Route110_TrickHouseEntrance/scripts.inc).
+#
+# VAR_TRICK_HOUSE_PUZZLE_1_STATE: 0 the scroll not found, 1 found and the code learnt, 2 the code written on the door,
+# which opens it (FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_UNLOCKED, a flag of ours: Emerald swaps the door's tile).
+
+
+script Scroll
+  if var VAR_TRICK_HOUSE_PUZZLE_1_STATE != 0 goto Again
+  setvar VAR_TRICK_HOUSE_PUZZLE_1_STATE 1
+  fanfare item
+  text "{player} found a scroll!"
+  text "{player} learnt the secret code written on it by heart."
+  end
+label Again
+  text "The secret code is written on it: \"The Trick Master is magnificent.\""
+  end
+
+
+script Door
+  if var VAR_TRICK_HOUSE_PUZZLE_1_STATE == 2 goto Open
+  if var VAR_TRICK_HOUSE_PUZZLE_1_STATE == 1 goto Write
+  text "The door is locked. Something is written on it: \"Write the secret code here.\""
+  end
+label Write
+  text "{player} wrote the secret code on the door. \"The Trick Master is magnificent.\""
+  sound "door_open"
+  text "Click! The lock opened!"
+  setvar VAR_TRICK_HOUSE_PUZZLE_1_STATE 2
+  setflag FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_UNLOCKED
+  end
+label Open
+  text "The door stands open."
+  end

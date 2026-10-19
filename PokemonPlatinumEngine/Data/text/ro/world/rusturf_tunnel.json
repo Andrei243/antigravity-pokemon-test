@@ -58,6 +58,26 @@
         ]
       }
     },
+    "breakable_rock": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "breakable_rock_2": {
+      "name": {
+        "en": [
+          "Rock"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "hiker": {
       "name": {
         "en": [

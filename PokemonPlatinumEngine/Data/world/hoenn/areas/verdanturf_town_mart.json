@@ -1,0 +1,29 @@
+{
+  "key": "verdanturf_town_mart",
+  "index": 91,
+  "name": "Verdanturf Town",
+  "matrix": 40,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "verdanturf_town", "toWarp": 1 },
+    { "x": 4, "z": 7, "to": "verdanturf_town", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "verdanturf_mart_clerk", "looks": "mart_employee", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "VerdanturfTown_Mart_EventScript_Clerk" },
+    { "id": "boy_2", "looks": "boy_2", "movement": "look_east", "x": 5, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "VerdanturfTown_Mart_EventScript_Boy" },
+    { "id": "expert_f", "looks": "expert_f", "movement": "look_west", "x": 8, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "VerdanturfTown_Mart_EventScript_ExpertF" },
+    { "id": "lass", "looks": "lass", "movement": "look_west", "x": 3, "z": 2, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "VerdanturfTown_Mart_EventScript_Lass" }
+  ],
+  "signs": [],
+  "triggers": []
+}

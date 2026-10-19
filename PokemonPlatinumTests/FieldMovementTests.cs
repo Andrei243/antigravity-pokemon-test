@@ -656,6 +656,86 @@ public class FieldMovementTests
         AssertMoves(StepKind.Walk, 4, 5, Step(map, 4, 4, South));
     }
 
+    private static FieldStep Ride(Map map, int x, int y, Direction dir, BikeKind bike, bool fastGear = false) =>
+        FieldMovement.Step(map, x, y, dir, new Walker(TravelMode.Cycling, map.HeightAt(x, y), FastGear: fastGear, Bike: bike));
+
+    [Fact]
+    public void TheMachBikeClimbsAMuddySlopeAndTheAcroBikeDoesNot()
+    {
+        // Emerald's two bicycles (plan 21 · H3, part b): the Mach Bike is always at full speed, the Acro Bike never
+        var map = Lawn();
+        map.SetBehaviour(4, 4, TileBehavior.BikeSlopeTop);
+        map.SetBehaviour(4, 5, TileBehavior.BikeSlopeBottom);
+        AssertMoves(StepKind.Walk, 4, 5, Ride(map, 4, 6, North, BikeKind.Mach));
+        AssertBlocked(Obstacle.MudSlope, Ride(map, 4, 6, North, BikeKind.Acro));
+        // (the run button's gear is Platinum's Bicycle's alone: the Acro Bike in "top gear" is no faster)
+        AssertBlocked(Obstacle.MudSlope, Ride(map, 4, 6, North, BikeKind.Acro, fastGear: true));
+        Assert.Equal(Pace.Fastest, Ride(map, 4, 7, North, BikeKind.Mach).Pace);
+        Assert.Equal(Pace.Fast, Ride(map, 4, 7, North, BikeKind.Acro).Pace);
+    }
+
+    [Fact]
+    public void ARailIsRiddenOnlyOnTheAcroBikeAndOnlyAlongIt()
+    {
+        var map = Lawn();
+        map.SetBehaviour(4, 4, TileBehavior.RailEastWest);
+        map.SetBehaviour(5, 4, TileBehavior.RailEastWest);
+        // On foot, on the Mach Bike and on Platinum's Bicycle a rail can't be taken
+        AssertBlocked(Obstacle.AcroBike, Step(map, 3, 4, East));
+        AssertBlocked(Obstacle.AcroBike, Ride(map, 3, 4, East, BikeKind.Mach));
+        AssertBlocked(Obstacle.AcroBike, Ride(map, 3, 4, East, BikeKind.Bicycle, fastGear: true));
+        // On the Acro Bike it is ridden along, never across, and left only along it too
+        AssertMoves(StepKind.Walk, 4, 4, Ride(map, 3, 4, East, BikeKind.Acro));
+        AssertMoves(StepKind.Walk, 5, 4, Ride(map, 4, 4, East, BikeKind.Acro));
+        AssertBlocked(Obstacle.Rail, Ride(map, 4, 5, North, BikeKind.Acro));
+        AssertBlocked(Obstacle.Rail, Ride(map, 4, 4, South, BikeKind.Acro));
+        AssertMoves(StepKind.Walk, 6, 4, Ride(map, 5, 4, East, BikeKind.Acro));
+    }
+
+    [Fact]
+    public void ABumpySlopeIsHoppedUpOnlyOnTheAcroBike()
+    {
+        var map = Lawn();
+        map.SetBehaviour(4, 4, TileBehavior.BumpySlope);
+        AssertBlocked(Obstacle.AcroBike, Step(map, 4, 5, North));
+        AssertBlocked(Obstacle.AcroBike, Ride(map, 4, 5, North, BikeKind.Mach));
+        AssertMoves(StepKind.Walk, 4, 4, Ride(map, 4, 5, North, BikeKind.Acro));
+        // Down it anyone goes
+        AssertMoves(StepKind.Walk, 4, 4, Step(map, 4, 3, South));
+    }
+
+    [Fact]
+    public void TheItemfinderTurnsTowardTheNearestThingStillBuriedOnScreen()
+    {
+        var map = Lawn(30, 20);
+        var story = new PokemonPlatinumEngine.Story.StoryState();
+        map.HiddenItems[(9, 5)] = new HiddenItem("Potion", 1, "FLAG_HIDDEN_A");
+        map.HiddenItems[(5, 2)] = new HiddenItem("Antidote", 1, "FLAG_HIDDEN_B");
+        // Nearest first: three up beats five across, and the way faced is the way it lies farther off
+        Assert.Equal((ItemfinderAnswer.Nearby, (Direction?)North), Itemfinder.Search(map, 5, 5, story));
+        story.Set("FLAG_HIDDEN_B");
+        Assert.Equal((ItemfinderAnswer.Nearby, (Direction?)East), Itemfinder.Search(map, 5, 5, story));
+        Assert.Equal((ItemfinderAnswer.Underfoot, (Direction?)null), Itemfinder.Search(map, 9, 5, story));
+        // Past the GBA's screen (seven across) it hears nothing; and nothing once all is found
+        Assert.Equal((ItemfinderAnswer.Nothing, (Direction?)null), Itemfinder.Search(map, 17, 5, story));
+        story.Set("FLAG_HIDDEN_A");
+        Assert.Equal((ItemfinderAnswer.Nothing, (Direction?)null), Itemfinder.Search(map, 5, 5, story));
+    }
+
+    [Fact]
+    public void PlatinumsBicycleOnASinnohMapStepsAsItAlwaysHas()
+    {
+        var map = Lawn();
+        map.SetBehaviour(4, 4, TileBehavior.BikeSlopeTop);
+        map.SetBehaviour(4, 5, TileBehavior.BikeSlopeBottom);
+        AssertBlocked(Obstacle.MudSlope, Ride(map, 4, 6, North, BikeKind.Bicycle));
+        AssertMoves(StepKind.Walk, 4, 5, Ride(map, 4, 6, North, BikeKind.Bicycle, fastGear: true));
+        Assert.Equal(Pace.Fast, Ride(map, 4, 7, North, BikeKind.Bicycle).Pace);
+        Assert.Equal(Pace.Fastest, Ride(map, 4, 7, North, BikeKind.Bicycle, fastGear: true).Pace);
+        // A Walker made as before plan 21 · H3 rides Platinum's Bicycle
+        Assert.Equal(BikeKind.Bicycle, new Walker(TravelMode.Cycling).Bike);
+    }
+
     // ------------------------------------------------------------------ the player plays the rules out
 
     [Fact]

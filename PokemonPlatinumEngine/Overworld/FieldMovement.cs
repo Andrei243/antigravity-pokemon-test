@@ -12,6 +12,18 @@ public enum TravelMode
     Cycling
 }
 
+/// <summary>
+/// Which bicycle a rider is on (plan 21 · H3): Platinum's own, whose two gears the run button changes, or one of
+/// Emerald's two from Rydel's shop in Mauville City: the Mach Bike, always at full speed and fast enough to ride up a
+/// muddy slope, or the Acro Bike, at a bicycle's easy pace, which hops along a rail and up a bumpy slope.
+/// </summary>
+public enum BikeKind
+{
+    Bicycle,
+    Mach,
+    Acro
+}
+
 /// <summary>Platinum's five speeds for a step, slowest first.</summary>
 public enum Pace
 {
@@ -77,7 +89,9 @@ public enum Obstacle
     /// <summary>Ground a Bicycle can't be ridden on: snow, mud, grass taller than the rider.</summary>
     NoBicycles,
     /// <summary>A Bicycle's ramp: a wall on foot, from the side and from its far end, or with nowhere to land.</summary>
-    Ramp
+    Ramp,
+    /// <summary>A rail or a bumpy slope (the GBA's): taken only on the Acro Bike, a rail only along its length (plan 21 · H3).</summary>
+    AcroBike
 }
 
 /// <summary>
@@ -87,7 +101,14 @@ public enum Obstacle
 /// </summary>
 public readonly record struct Walker(
     TravelMode Mode = TravelMode.OnFoot, float Height = 0f, bool Running = false, bool FastGear = false, FieldMoves Moves = FieldMoves.None,
-    bool Climbing = false);
+    bool Climbing = false, BikeKind Bike = BikeKind.Bicycle)
+{
+    /// <summary>
+    /// Whether a rider goes at a bicycle's top speed: Platinum's Bicycle in its fast gear, or the Mach Bike, which has
+    /// no other (plan 21 · H3). The Acro Bike never does.
+    /// </summary>
+    public bool AtFullSpeed => Mode == TravelMode.Cycling && (Bike == BikeKind.Mach || (Bike == BikeKind.Bicycle && FastGear));
+}
 
 /// <summary>What a step comes to: where it ends, at what height, how fast, and how the walker travels afterwards.</summary>
 public readonly record struct FieldStep(StepKind Kind, int X, int Y, float Height, Pace Pace, TravelMode Mode, Obstacle Obstacle)
@@ -204,6 +225,18 @@ public static class FieldMovement
     private static bool IsMudSlope(TileBehavior behaviour) => behaviour is TileBehavior.BikeSlopeTop or TileBehavior.BikeSlopeBottom;
 
     /// <summary>
+    /// A rail of the GBA's (Emerald's <c>MB_*_RAIL</c>, plan 21 · H3), and whether it runs north to south; null for any
+    /// other tile. Only the Acro Bike takes one, hopping along its length (Emerald's <c>AcroBike_TryHistoryUpdate</c> and
+    /// the rail's collision in <c>GetRailCollision</c>): never on foot, never across it.
+    /// </summary>
+    public static bool? RailRunsNorthSouth(TileBehavior behaviour) => behaviour switch
+    {
+        TileBehavior.RailNorthSouth => true,
+        TileBehavior.RailEastWest => false,
+        _ => null
+    };
+
+    /// <summary>
     /// What happens when someone standing on (<paramref name="x"/>, <paramref name="y"/>) tries to move one tile
     /// in a direction.
     /// </summary>
@@ -274,7 +307,7 @@ public static class FieldMovement
         if (RampDirection(there) is { } launch)
         {
             if (walker.Mode != TravelMode.Cycling || dir != launch) return No(Obstacle.Ramp);
-            int reach = walker.FastGear ? 3 : 1;
+            int reach = walker.AtFullSpeed ? 3 : 1;
             int lx = nx + dx * reach, ly = ny + dy * reach;
             if (!map.IsWalkable(lx, ly) || map.NpcIn(lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height) != null) return No(Obstacle.Ramp);
             return new FieldStep(StepKind.Jump, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, PaceOn(here, walker), walker.Mode, Obstacle.None);
@@ -304,8 +337,20 @@ public static class FieldMovement
         }
         if (water) return No(Obstacle.Water);
 
-        bool fastBike = walker.Mode == TravelMode.Cycling && walker.FastGear;
-        if (dir == Direction.Up && (IsMudSlope(there) || IsMudSlope(here)) && !fastBike) return No(Obstacle.MudSlope);
+        // A muddy slope is ridden up only at full speed: Platinum's Bicycle in its fast gear, or Emerald's Mach Bike
+        // (MB_MUDDY_SLOPE, which plan 18 · W6 reads as the foot of Platinum's slope)
+        if (dir == Direction.Up && (IsMudSlope(there) || IsMudSlope(here)) && !walker.AtFullSpeed) return No(Obstacle.MudSlope);
+
+        // A bumpy slope is hopped up only on the Acro Bike, and a rail ridden only on it and along its length (plan 21 · H3)
+        bool acro = walker.Mode == TravelMode.Cycling && walker.Bike == BikeKind.Acro;
+        if (dir == Direction.Up && (there == TileBehavior.BumpySlope || here == TileBehavior.BumpySlope) && !acro) return No(Obstacle.AcroBike);
+        if (RailRunsNorthSouth(there) is { } railNorthSouth)
+        {
+            if (!acro) return No(Obstacle.AcroBike);
+            if (railNorthSouth != (dir is Direction.Up or Direction.Down)) return No(Obstacle.Rail);
+        }
+        // ... and is left only along its length too
+        if (RailRunsNorthSouth(here) is { } onRail && onRail != (dir is Direction.Up or Direction.Down)) return No(Obstacle.Rail);
 
         // A Bicycle's plank is the deck's: whoever walks on the ground under it (a road through the gorge beneath Route
         // 210's bridge) is not on it (plan 01 · M7)
@@ -339,7 +384,7 @@ public static class FieldMovement
     public static Pace PaceOn(TileBehavior underfoot, Walker walker) => walker.Mode switch
     {
         TravelMode.Surfing => Pace.Fast,
-        TravelMode.Cycling => walker.FastGear ? Pace.Fastest : Pace.Fast,
+        TravelMode.Cycling => walker.AtFullSpeed ? Pace.Fastest : Pace.Fast,
         _ => underfoot switch
         {
             TileBehavior.DeepestSnow => Pace.Slowest,

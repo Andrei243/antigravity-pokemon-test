@@ -1,0 +1,35 @@
+# The friendship rater's house in Verdanturf Town (plan 21 · H3, part b). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/VerdanturfTown_FriendshipRatersHouse/scripts.inc): how fond of the
+# player the first Pokémon of the team is, by Emerald's steps of friendship.
+
+
+script FriendshipRater
+  face self player
+  speaker "Woman"
+  say "Let me have a look at your Pokémon. I can always tell how much a Pokémon loves its trainer."
+  if var LEAD_FRIENDSHIP == 255 goto Max
+  if var LEAD_FRIENDSHIP >= 200 goto Great
+  if var LEAD_FRIENDSHIP >= 150 goto Good
+  if var LEAD_FRIENDSHIP >= 100 goto Fond
+  if var LEAD_FRIENDSHIP >= 50 goto Wary
+  if var LEAD_FRIENDSHIP >= 1 goto Cold
+  say "Hmm, it doesn't seem to care much for you at all. Spend more time together, and that will change."
+  end
+label Cold
+  say "It's still a little wary of you. Be kind to it, and it will warm up."
+  end
+label Wary
+  say "It's getting used to you. Keep at it, and you'll be good friends."
+  end
+label Fond
+  say "It's quite fond of you! You two are getting along nicely."
+  end
+label Good
+  say "It's very friendly toward you. It's happy to be with you!"
+  end
+label Great
+  say "It adores you! You must take very good care of it."
+  end
+label Max
+  say "It loves you with all its heart! I don't think I've ever seen a Pokémon so devoted."
+  end

@@ -816,6 +816,7 @@
       "hoennRival": "{rival}",
       "steven": "Steven",
       "brawly": "Brawly",
+      "wattson": "Wattson",
       "scott": "Scott"
     }
   },
@@ -1736,6 +1737,11 @@
     "sound": { "off": "Sunet oprit", "on": "Sunet pornit" },
     "registerOne": "Pe acest buton poate sta un obiect cheie: înregistrează unul din rucsac.",
     "gear": { "top": "Viteza mare.", "low": "Viteza mică." },
+    "itemfinder": {
+      "nothing": "Detectorul de Obiecte tace. Nu e nimic îngropat pe aici.",
+      "underfoot": "Detectorul de Obiecte piuie ca nebunul! E ceva chiar sub picioarele tale.",
+      "nearby": "Detectorul de Obiecte piuie! E ceva îngropat în direcția asta."
+    },
     "vsSeeker": {
       "charging": "Bateria nu e destul de încărcată. Mai sunt {steps} pași!",
       "noTrainers": "Nu e niciun Antrenor prin preajmă care să vrea să lupte.",

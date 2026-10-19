@@ -79,7 +79,30 @@
     { "name": "SlateportCity_House", "matrix": 70, "area": "slateport_city_house", "trees": "Round", "setting": "Indoors" },
     { "name": "SlateportCity_PokemonCenter_1F", "matrix": 71, "area": "slateport_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "SlateportCity_PokemonCenter_2F", "matrix": 72, "area": "slateport_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
-    { "name": "SlateportCity_Mart", "matrix": 73, "area": "slateport_city_mart", "trees": "Round", "setting": "Indoors" }
+    { "name": "SlateportCity_Mart", "matrix": 73, "area": "slateport_city_mart", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H3, part b: the rooms of Route 110 (the Cycling Road's two gates, the Trick House's entrance, its first
+    // puzzle and its last room), Mauville City but its Game Corner, Route 117's Day Care and Verdanturf Town (its Battle
+    // Tent's lobby alone: the Tent's bouts wait for the Palace's rules, plan 14 · B9)
+    { "name": "Route110_SeasideCyclingRoadSouthEntrance", "matrix": 453, "area": "route_110_seaside_cycling_road_south_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route110_SeasideCyclingRoadNorthEntrance", "matrix": 454, "area": "route_110_seaside_cycling_road_north_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route110_TrickHouseEntrance", "matrix": 442, "area": "route_110_trick_house_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route110_TrickHouseEnd", "matrix": 443, "area": "route_110_trick_house_end", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route110_TrickHousePuzzle1", "matrix": 445, "area": "route_110_trick_house_puzzle_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "MauvilleCity_Gym", "matrix": 74, "area": "mauville_city_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "MauvilleCity_BikeShop", "matrix": 75, "area": "mauville_city_bike_shop", "trees": "Round", "setting": "Indoors" },
+    { "name": "MauvilleCity_House1", "matrix": 76, "area": "mauville_city_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "MauvilleCity_House2", "matrix": 78, "area": "mauville_city_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "MauvilleCity_PokemonCenter_1F", "matrix": 79, "area": "mauville_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MauvilleCity_PokemonCenter_2F", "matrix": 80, "area": "mauville_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MauvilleCity_Mart", "matrix": 81, "area": "mauville_city_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route117_PokemonDayCare", "matrix": 185, "area": "route_117_pokemon_day_care", "trees": "Round", "setting": "Indoors" },
+    { "name": "VerdanturfTown_BattleTentLobby", "matrix": 37, "area": "verdanturf_town_battle_tent_lobby", "trees": "Round", "setting": "Indoors" },
+    { "name": "VerdanturfTown_Mart", "matrix": 40, "area": "verdanturf_town_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "VerdanturfTown_PokemonCenter_1F", "matrix": 41, "area": "verdanturf_town_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "VerdanturfTown_PokemonCenter_2F", "matrix": 42, "area": "verdanturf_town_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "VerdanturfTown_WandasHouse", "matrix": 43, "area": "verdanturf_town_wandas_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "VerdanturfTown_FriendshipRatersHouse", "matrix": 44, "area": "verdanturf_town_friendship_raters_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "VerdanturfTown_House", "matrix": 45, "area": "verdanturf_town_house", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -106,6 +129,16 @@
     "slateport_city_sterns_shipyard_1f", "slateport_city_sterns_shipyard_2f", "slateport_city_battle_tent_lobby",
     "slateport_city_name_raters_house", "slateport_city_pokemon_fan_club", "slateport_city_oceanic_museum_1f",
     "slateport_city_oceanic_museum_2f", "slateport_city_harbor", "slateport_city_house",
-    "slateport_city_pokemon_center_1f", "slateport_city_pokemon_center_2f", "slateport_city_mart"
+    "slateport_city_pokemon_center_1f", "slateport_city_pokemon_center_2f", "slateport_city_mart",
+    // Plan 21 · H3, part b: Route 110 and the Cycling Road over it, Mauville City, Route 117 and Verdanturf Town, with their rooms
+    "route_110", "mauville_city", "route_117", "verdanturf_town",
+    "route_110_seaside_cycling_road_south_entrance", "route_110_seaside_cycling_road_north_entrance",
+    "route_110_trick_house_entrance", "route_110_trick_house_end", "route_110_trick_house_puzzle_1",
+    "mauville_city_gym", "mauville_city_bike_shop", "mauville_city_house_1", "mauville_city_house_2",
+    "mauville_city_pokemon_center_1f", "mauville_city_pokemon_center_2f", "mauville_city_mart",
+    "route_117_pokemon_day_care",
+    "verdanturf_town_battle_tent_lobby", "verdanturf_town_mart", "verdanturf_town_pokemon_center_1f",
+    "verdanturf_town_pokemon_center_2f", "verdanturf_town_wandas_house", "verdanturf_town_friendship_raters_house",
+    "verdanturf_town_house"
   ]
 }

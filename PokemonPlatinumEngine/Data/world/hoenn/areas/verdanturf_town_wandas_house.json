@@ -1,0 +1,30 @@
+{
+  "key": "verdanturf_town_wandas_house",
+  "index": 94,
+  "name": "Verdanturf Town",
+  "matrix": 43,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VERDANTURF",
+  "nightMusic": "MUS_VERDANTURF",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 7, "to": "verdanturf_town", "toWarp": 3 },
+    { "x": 8, "z": 7, "to": "verdanturf_town", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "wally", "looks": "wally", "movement": "wander_around", "x": 14, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY", "script": "VerdanturfTown_WandasHouse_EventScript_Wally" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_south", "x": 5, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND", "script": "VerdanturfTown_WandasHouse_EventScript_WandasBoyfriend" },
+    { "id": "pokefan_m", "looks": "pokefan_m", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE", "script": "VerdanturfTown_WandasHouse_EventScript_WallysUncle" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_east", "x": 2, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "VerdanturfTown_WandasHouse_EventScript_WallysAunt" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west", "x": 5, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA", "script": "VerdanturfTown_WandasHouse_EventScript_Wanda" }
+  ],
+  "signs": [],
+  "triggers": []
+}

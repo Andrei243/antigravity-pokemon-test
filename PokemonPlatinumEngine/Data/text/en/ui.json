@@ -813,6 +813,7 @@
       "hoennRival": "{rival}",
       "steven": "Steven",
       "brawly": "Brawly",
+      "wattson": "Wattson",
       "scott": "Scott"
     }
   },
@@ -1733,6 +1734,11 @@
     "sound": { "off": "Sound off", "on": "Sound on" },
     "registerOne": "A key item can be kept on this button: register one in the bag.",
     "gear": { "top": "Top gear.", "low": "Low gear." },
+    "itemfinder": {
+      "nothing": "The Itemfinder stayed silent. Nothing is buried around here.",
+      "underfoot": "The Itemfinder is beeping like mad! Something is right underfoot.",
+      "nearby": "The Itemfinder is beeping! Something is buried in this direction."
+    },
     "vsSeeker": {
       "charging": "The battery isn't charged enough. {steps} steps to go!",
       "noTrainers": "There are no Trainers in range who want to battle.",

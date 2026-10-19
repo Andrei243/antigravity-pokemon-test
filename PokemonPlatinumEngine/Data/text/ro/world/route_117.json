@@ -1,0 +1,426 @@
+{
+  "people": {
+    "daycare_man": {
+      "name": {
+        "en": [
+          "Day-Care Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Day Care couple raise Pokémon for you. Sometimes an Egg turns up, and nobody knows where from!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I like to watch the Pokémon play in the Day Care's yard. They look so happy!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Leave two Pokémon at the Day Care and they might get along. Then you never know what happens!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "zigzagoon_2": {
+      "name": {
+        "en": [
+          "Zigzagoon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Zigzagoon: Zigzag!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Kecleon: Kekeeh!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "azumarill": {
+      "name": {
+        "en": [
+          "Azumarill"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Azumarill: Rurii!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pikachu": {
+      "name": {
+        "en": [
+          "Pikachu"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pikachu: Pika pika!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "running_triathlete_m": {
+      "name": {
+        "en": [
+          "Dylan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Dylan: Running's my thing. And when I run, I run into trainers!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Dylan: I'll go for a jog to clear my head."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Lydia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Lydia: Look at all the Pokémon I've raised! Six of them, all so lovely."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Lydia: My dears, you did your best."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Isaac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Isaac: I raise my Pokémon with love. Battling with them is the best part!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Isaac: More love next time. And more training."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "running_triathlete_f": {
+      "name": {
+        "en": [
+          "Maria"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Maria: My Doduo and I run every day! Keep up if you can!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Maria: You ran rings round us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Derek"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Maniac Derek: The bugs here are wonderful! Want to see my favourites?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Maniac Derek: They're still wonderful, even when they lose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Anna & Meg"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sr. & Jr. Anna & Meg: Big sister and little sister! We battle as a team!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sr. & Jr. Anna & Meg: Even together, we couldn't do it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Anna & Meg"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sr. & Jr. Anna & Meg: Sister's with me, so I'm not scared at all!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sr. & Jr. Anna & Meg: We'll get stronger together!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_3": {
+      "name": {
+        "en": [
+          "Brandi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Brandi: I can sense it. You're going to battle me. Am I right?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Brandi: I didn't sense that coming."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Aisha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Aisha: I'm training on the open road! You'll be my sparring partner."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Aisha: Back to training, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "running_triathlete_f_2": {
+      "name": {
+        "en": [
+          "Melina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Melina: Ready, set... battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Melina: I need to warm up more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route117_EventScript_RouteSignVerdanturf": {
+      "en": [
+        "Route 117\nWest: Verdanturf Town"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route117_EventScript_RouteSignMauville": {
+      "en": [
+        "Route 117\nEast: Mauville City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route117_EventScript_DayCareSign": {
+      "en": [
+        "Pokémon Day Care\nWe raise your Pokémon for you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

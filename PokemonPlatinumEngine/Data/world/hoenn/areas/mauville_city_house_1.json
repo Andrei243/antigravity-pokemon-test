@@ -1,0 +1,26 @@
+{
+  "key": "mauville_city_house_1",
+  "index": 127,
+  "name": "Mauville City",
+  "matrix": 76,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "mauville_city", "toWarp": 4 },
+    { "x": 4, "z": 7, "to": "mauville_city", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "scientist_1", "looks": "scientist_1", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_House1_EventScript_RockSmashDude" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,28 @@
+# Verdanturf Town (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/VerdanturfTown/scripts.inc). Two of the townsfolk talk about the tunnel to Rustboro, until Wanda's
+# young man breaks through (FLAG_RUSTURF_TUNNEL_OPENED).
+
+
+script OnEnter
+  setflag FLAG_VISITED_VERDANTURF_TOWN
+  end
+
+
+script Twin
+  speaker "Girl"
+  if flag FLAG_RUSTURF_TUNNEL_OPENED goto Open
+  say "There's a man digging a tunnel all the way from Rustboro, they say. Why would anyone do that?"
+  end
+label Open
+  say "The man who dug the tunnel did it all for love! He just wanted to see his girlfriend. How romantic!"
+  end
+
+
+script Boy
+  speaker "Boy"
+  if flag FLAG_RUSTURF_TUNNEL_OPENED goto Open
+  say "Somebody keeps trying to bust through the cave over there. I can hear him hammering at night!"
+  end
+label Open
+  say "The tunnel's open now! It's so easy to get to Rustboro. I can go and see the big city whenever I like."
+  end

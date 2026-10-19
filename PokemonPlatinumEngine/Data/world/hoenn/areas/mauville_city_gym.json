@@ -1,0 +1,40 @@
+{
+  "key": "mauville_city_gym",
+  "index": 125,
+  "name": "Mauville City",
+  "matrix": 74,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GYM",
+  "nightMusic": "MUS_GYM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 20, "to": "mauville_city", "toWarp": 0 },
+    { "x": 5, "z": 20, "to": "mauville_city", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "wattson", "looks": "wattson", "movement": "look_south", "x": 5, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAUVILLE_GYM_WATTSON", "script": "MauvilleCity_Gym_EventScript_Wattson" },
+    { "id": "man_5", "looks": "man_5", "movement": "look_south", "x": 7, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_SHAWN" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "look_north", "x": 1, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_VIVIAN" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_west", "x": 5, "z": 10, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_BEN" },
+    { "id": "man_5_2", "looks": "man_5", "movement": "look_south", "x": 1, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_KIRK" },
+    { "id": "man_2", "looks": "man_2", "movement": "look_west", "x": 7, "z": 20, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "MauvilleCity_Gym_EventScript_GymGuide" },
+    { "id": "maniac", "looks": "maniac", "movement": "look_north", "x": 7, "z": 10, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_ANGELO" }
+  ],
+  "signs": [
+    { "x": 3, "z": 18, "type": 0, "script": "MauvilleCity_Gym_EventScript_LeftGymStatue" },
+    { "x": 6, "z": 18, "type": 0, "script": "MauvilleCity_Gym_EventScript_RightGymStatue" }
+  ],
+  "triggers": [
+    { "x": 4, "z": 12, "width": 1, "depth": 1, "script": "MauvilleCity_Gym_EventScript_Switch2", "variable": "VAR_TEMP_0", "value": "0" },
+    { "x": 3, "z": 9, "width": 1, "depth": 1, "script": "MauvilleCity_Gym_EventScript_Switch3", "variable": "VAR_TEMP_0", "value": "0" },
+    { "x": 0, "z": 15, "width": 1, "depth": 1, "script": "MauvilleCity_Gym_EventScript_Switch1", "variable": "VAR_TEMP_0", "value": "0" },
+    { "x": 8, "z": 9, "width": 1, "depth": 1, "script": "MauvilleCity_Gym_EventScript_Switch4", "variable": "VAR_TEMP_0", "value": "0" }
+  ]
+}

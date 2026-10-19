@@ -141,6 +141,14 @@
       "text": [
         "Dacă ar avea cineva un Pokémon destul de puternic să le spargă..."
       ]
+    },
+    {
+      "en": [
+        "One of the rocks is gone! Just one more and I'll be through to Wanda!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ],
   "Wanda": [
@@ -150,6 +158,92 @@
       ],
       "text": [
         "E cineva acolo? Vărul meu Wally vine să stea la noi în Verdanturf. Sper ca tunelul să fie deschis până atunci!"
+      ]
+    }
+  ],
+  "TunnelClear": [
+    {
+      "en": [
+        "Young Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You... you smashed the rocks! I've been chipping away at them for weeks, and you broke through in a moment!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I have to thank you. Please, take this! It lets a Pokémon shove even the heaviest boulders aside."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's Strength. Once you've won the Badge for it, your Pokémon can push boulders around outside battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wanda! I made it! Well... somebody made it for me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wanda"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You silly thing! You didn't have to dig through a mountain. But thank you. Both of you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come on, let's go home. Wally will be arriving any day now!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TunnelRock1": [
+    {
+      "en": [
+        "The rock is riddled with cracks. Use Rock Smash?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "TunnelRock2": [
+    {
+      "en": [
+        "The rock is riddled with cracks. Use Rock Smash?"
+      ],
+      "text": [
+        ""
       ]
     }
   ]

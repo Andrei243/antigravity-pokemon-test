@@ -1,0 +1,141 @@
+# Mauville City's Gym (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MauvilleCity_Gym/scripts.inc).
+#
+# The barriers: every beam of the hall flips at once when one of the four switches on the floor is stepped on, unless it
+# is the switch stepped on last (VAR_MAUVILLE_GYM_STATE, 1 to 4; FLAG_MAUVILLE_GYM_BARRIERS_STATE the barriers flipped).
+# Emerald swaps the beams' tiles; here they are things of the map shown by FLAG_HOENN_MAUVILLE_GYM_BEAMS_A and _B,
+# flags of ours this file keeps to Emerald's two. Coming into Mauville City puts the barriers back (mauville_city.txt).
+# Wattson battles for the Dynamo Badge (FLAG_BADGE03_GET, `givebadge dynamo`), which turns every barrier off
+# (FLAG_DEFEATED_MAUVILLE_GYM), lets Rock Smash be used outside battle and gives TM34, Shock Wave
+# (FLAG_RECEIVED_TM_SHOCK_WAVE). His Badge counts the Gym's trainers beaten and adds one to Petalburg's count of Badges.
+
+
+script OnEnter
+  call Beams
+  end
+
+
+script Beams
+  if flag FLAG_DEFEATED_MAUVILLE_GYM goto Off
+  if flag FLAG_MAUVILLE_GYM_BARRIERS_STATE goto Flipped
+  setflag FLAG_HOENN_MAUVILLE_GYM_BEAMS_A
+  clearflag FLAG_HOENN_MAUVILLE_GYM_BEAMS_B
+  return
+label Flipped
+  clearflag FLAG_HOENN_MAUVILLE_GYM_BEAMS_A
+  setflag FLAG_HOENN_MAUVILLE_GYM_BEAMS_B
+  return
+label Off
+  clearflag FLAG_HOENN_MAUVILLE_GYM_BEAMS_A
+  clearflag FLAG_HOENN_MAUVILLE_GYM_BEAMS_B
+  return
+
+
+script Switch1
+  if flag FLAG_DEFEATED_MAUVILLE_GYM end
+  if var VAR_MAUVILLE_GYM_STATE == 1 end
+  setvar VAR_MAUVILLE_GYM_STATE 1
+  call Press
+  end
+
+
+script Switch2
+  if flag FLAG_DEFEATED_MAUVILLE_GYM end
+  if var VAR_MAUVILLE_GYM_STATE == 2 end
+  setvar VAR_MAUVILLE_GYM_STATE 2
+  call Press
+  end
+
+
+script Switch3
+  if flag FLAG_DEFEATED_MAUVILLE_GYM end
+  if var VAR_MAUVILLE_GYM_STATE == 3 end
+  setvar VAR_MAUVILLE_GYM_STATE 3
+  call Press
+  end
+
+
+script Switch4
+  if flag FLAG_DEFEATED_MAUVILLE_GYM end
+  if var VAR_MAUVILLE_GYM_STATE == 4 end
+  setvar VAR_MAUVILLE_GYM_STATE 4
+  call Press
+  end
+
+
+# A switch stepped on: a click, and every barrier flips
+script Press
+  sound "select"
+  if flag FLAG_MAUVILLE_GYM_BARRIERS_STATE goto Back
+  setflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
+  call Beams
+  return
+label Back
+  clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
+  call Beams
+  return
+
+
+script Beam
+  text "Bzzzt! A barrier of crackling electricity blocks the way."
+  end
+
+
+script Wattson
+  face wattson player
+  speaker "Wattson"
+  if badge dynamo goto Won
+  scene "Wattson"
+  say "Wahahaha! Welcome, welcome! I'm Wattson, Mauville's Gym Leader, and I've been powering this city for years!"
+  say "You got through my barriers, did you? Then let's see if you can take a real jolt! Wahahahaha!"
+  battle self as "hoenn_wattson_1"
+  say "Wahahahaha! Fine, you win! You've got a spark in you, all right!"
+  say "Here, take the Dynamo Badge. You've earned it fair and square."
+  givebadge dynamo
+  text "{player} received the Dynamo Badge from Wattson!"
+  say "With the Dynamo Badge, your Pokémon can use Rock Smash outside of battle to break cracked rocks."
+  setflag FLAG_DEFEATED_MAUVILLE_GYM
+  call Beams
+  setvar VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE 3
+  clearflag FLAG_HIDE_VERDANTURF_TOWN_SCOTT
+  addvar VAR_PETALBURG_GYM_STATE 1
+  defeat "hoenn_shawn"
+  defeat "hoenn_vivian"
+  defeat "hoenn_ben"
+  defeat "hoenn_kirk"
+  defeat "hoenn_angelo"
+  sound "door_open"
+  say "And this! It's a move I'm especially proud of."
+  give "TM34"
+  setflag FLAG_RECEIVED_TM_SHOCK_WAVE
+  say "TM34 holds Shock Wave. It strikes like lightning and never misses. Wahahaha!"
+  if flag FLAG_ENABLE_WATTSON_MATCH_CALL goto Done
+  if not flag FLAG_SYS_POKENAV_GET goto Done
+  say "Oh, and let's swap numbers! I like to keep up with bright young trainers."
+  addcontact wattson
+  setflag FLAG_ENABLE_WATTSON_MATCH_CALL
+  text "Registered Wattson in the PokéNav."
+label Done
+  endscene
+  end
+label Won
+  if flag FLAG_RECEIVED_TM_SHOCK_WAVE goto Bright
+  give "TM34"
+  setflag FLAG_RECEIVED_TM_SHOCK_WAVE
+  say "TM34 holds Shock Wave. It strikes like lightning and never misses. Wahahaha!"
+  end
+label Bright
+  say "Wahahaha! Keep that spark of yours burning bright, and you'll go far!"
+  end
+
+
+# The guide by the door: advice before the Badge, praise after
+script GymGuide
+  speaker "Gym Guide"
+  if flag FLAG_DEFEATED_MAUVILLE_GYM goto Won
+  say "Hey, champ in the making! Wattson's barriers flip whenever you step on a switch on the floor."
+  say "His Pokémon are Electric types. Ground moves will hit them hard, and they can't shock you back!"
+  end
+label Won
+  say "You beat Wattson! The barriers are switched off for good now. What a shocking performance!"
+  end

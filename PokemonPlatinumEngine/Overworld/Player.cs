@@ -79,6 +79,12 @@ public class Player
     public bool FastGear { get; set; }
 
     /// <summary>
+    /// Which bicycle the player rides (plan 21 · H3): Platinum's, or Emerald's Mach or Acro Bike, as the item used to get
+    /// on says. Only matters while cycling.
+    /// </summary>
+    public BikeKind Bike { get; set; }
+
+    /// <summary>
     /// Whether Strength is in force (<see cref="FieldMoveRules.StrengthFlag"/>; the game keeps it up to date): walking
     /// into a boulder then pushes it a tile on, if there is room beyond it.
     /// </summary>
@@ -350,7 +356,7 @@ public class Player
         _ => 0f
     };
 
-    private Walker WalkerOn(Map map) => new(Mode, HeightOn(map), IsRunning, FastGear, Moves);
+    private Walker WalkerOn(Map map) => new(Mode, HeightOn(map), IsRunning, FastGear, Moves, Bike: Bike);
 
     /// <summary>One frame of the player's movement, steered by the keys held.</summary>
     public void Update(float dt, Map map, Action<WildEncounterEntry> onWildEncounter, Action<Warp> onWarpTrigger, Func<bool>? onArrive = null)

@@ -114,6 +114,8 @@ public static class Overlays
                 var npc = Built(id);
                 if (npc == null)
                     Add(Kind.Person, name, "the game never stands them there: " + WhyNot(world, map, key, o));
+                // (an obstacle may take a script of the area's own, and only that: plan 21 · H3, part b, Rusturf Tunnel's rocks)
+                else if (npc.IsObstacle && person.Script != null && person.Dialog == null && person.Trainer == null && person.NpcType == null) { }
                 else if (npc.IsObstacle || npc.IsBerrySoil || npc.IsItemBall && o.Item != null && o.HiddenBy != null)
                     Add(Kind.Person, name, "is a thing the game lays out from the area's own file (an obstacle, a patch of soil, an item in its ball): the overlay's entry for it is passed over");
             }

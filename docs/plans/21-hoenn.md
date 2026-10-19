@@ -259,7 +259,9 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     Smash's rocks in Rusturf Tunnel and the young man's HM04, Verdanturf; Hoenn's trainers in Match Call and their
     rematches; Emerald's own berry rules (the Wailmer Pail waters nothing yet); cover rows of the tilesets not yet walked
     (`out/hoenn/report.md`); Walda's phrase; the Devon employee of Route 116 (shown once Steven has his letter).
-- [ ] H3 Dewford, Slateport and Mauville (part a done 2026-10-18, wave 32: Mr. Briney's boat to Slateport's museum)
+- [ ] H3 Dewford, Slateport and Mauville (part a done 2026-10-18, wave 32: Mr. Briney's boat to Slateport's museum; part b
+  done 2026-10-19, wave 33: Route 110 to Verdanturf Town, both bikes; left for a part c: the Battle Tents' bouts and
+  Mauville's Game Corner)
   - **Played**: Mr. Briney sails from his cottage to Dewford Town (a scene: the jetty, the sailing song, the camera over
     the sea, Dewford's jetty), back again, and on to Route 109's beach once Steven has his letter, and back to Dewford
     (`VAR_BRINEY_LOCATION`, Emerald's numbers); Dewford's fisherman and the Old Rod, the hall's word of the week and
@@ -292,6 +294,40 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     Tunnel and the young man's HM04, the rival by Briney's cottage and on Route 110, New Mauville's door, the Game Corner;
     `route110`, `verdanturf`, `trick_house`, `bicycle`. Still from H2: Emerald's berry rules (the Wailmer Pail waters
     nothing yet), Walda's phrase, Hoenn's rematches.
+  - **Part b, played** (wave 33): the rival at Route 110's north end and the Itemfinder (`Overworld/Itemfinder.cs`,
+    Emerald's search over the GBA's screen), the Cycling Road's gates turning walkers back, the Trick House's first puzzle
+    (the Trick Master under the desk, the hedge maze cut through, the scroll's code on the door, his Rare Candy), Wally's
+    battle at Mauville's Gym door and Scott, Rydel's Mach and Acro Bikes swapped at will, HM06 in Mauville, Wattson's Gym
+    with Emerald's barriers flipped by its four switches (electric gates of the map shown by two flags of ours kept to
+    Emerald's barrier flag), the Dynamo Badge, TM34 and his number, the Rusturf rocks broken and the young man's HM04,
+    Wanda and Wally in Verdanturf, the friendship rater, Route 117's Day Care (Sinnoh's rules), eight trainers of Routes
+    110 and 117 in Match Call. Every scene a `scene`. Story version 27 (`common.HoennChapterFour`, called by
+    `HoennNewGame`; another session of wave 33 may also raise the version: renumber at the merge). Rulings: "Route 110 to
+    Verdanturf".
+  - **Opened**: Route 110 with the Cycling Road's two gates, the Trick House's front room, first puzzle and last room,
+    Mauville City and seven rooms (its Game Corner `locked`), Route 117 and its Day Care, Verdanturf Town and seven rooms
+    (the Battle Tent's lobby alone), and Rusturf Tunnel's far end; 102 areas. Spawns for Mauville and Verdanturf;
+    Verdanturf on the PokéNav's map. New Mauville's door stays `locked`.
+  - **The bikes** (`BikeKind`, `Walker.Bike`, `Player.Bike`; plan decision 6's recommendation): the Mach Bike at full
+    speed, up muddy slopes; the Acro Bike at a bicycle's pace, along rails and up bumpy slopes; Platinum's Bicycle as it
+    was (`FieldMovementTests`). `TileBehaviors.InGame` rules the rails and bumpy slopes. Items Mach Bike, Acro Bike,
+    Itemfinder (9103 to 9105) and Orange Mail (9106) in the importer's overrides, with Romanian names.
+  - **Engine fixes**: the GBA's `FLAG_TEMP_*` are cleared on leaving a place and an obstacle's is made its area's
+    (`World.LocalFlag`, `StoryState.ClearLocal`): one cut tree had hidden every tree sharing its number across Hoenn and
+    Kanto (a Kanto test that talked to the wrong tree by key had passed because of it). A GBA door the story opens is
+    open ground under its warp (`World.cs`), shut by `Map.ApplyDoors`. An obstacle may take a script of its area's own.
+  - **Looks and music**: `wattson`, `trick_master`, `rydel`; Wally battles as himself (the `Rival` class lists him); Bug
+    Maniac, Sr. & Jr. and Pokémon Breeder fold onto existing looks; `Architecture.Dynamo` (Mauville) and `Glade`
+    (Verdanturf), style guide rows first. Songs (ours, rendered clash-free, −19.4 to −20.7 LUFS, not yet heard):
+    `route110` (also Route 117), `verdanturf`, `trick_house`, `bicycle` (both bikes in Hoenn).
+  - **Tests**: `HoennStoryTests` (the stretch three ways by look and starter, an older save, the songs), `FieldMovementTests`
+    (the two bikes, the Itemfinder), `HoennTests` (the new rooms). Harness: the `hoenn` mode's `h53`–`h69`, `hs73`–`hs98`.
+  - **Left for H3's part c and after**: the three Battle Tents' bouts (Slateport's on the Factory's rules; Verdanturf's and
+    Fallarbor's need plan 14 · B9's Palace and Arena), Mauville's Game Corner (R16b's slots), the Cycling Road's timed
+    challenge, the move tutors of Mauville and Verdanturf, Birch's number on Route 110, the cracked floors' fall (H12);
+    still from H2 and H3a: Hoenn's rematches (Emerald's rematch table is not read: a call's chance and steps, more than
+    small), Norman's call on the first voyage, the museum's plain exhibits, Walda's phrase, Emerald's berry rules, the
+    boat prop's voyage (the camera pan and warp stand-in kept, the user's answer pending).
 - [ ] H4 The desert, Mt. Chimney and Lavaridge
 - [ ] H5 Dive and the sea floor
 - [ ] H6 Route 118 to Fortree

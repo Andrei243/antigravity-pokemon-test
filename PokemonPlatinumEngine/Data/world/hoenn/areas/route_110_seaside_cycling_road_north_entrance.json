@@ -1,0 +1,31 @@
+{
+  "key": "route_110_seaside_cycling_road_north_entrance",
+  "index": 511,
+  "name": "Route 110",
+  "matrix": 454,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SLATEPORT",
+  "nightMusic": "MUS_SLATEPORT",
+  "bike": true,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 5, "to": "route_110", "toWarp": 2 },
+    { "x": 2, "z": 5, "to": "route_110", "toWarp": 2 },
+    { "x": 12, "z": 5, "to": "route_110", "toWarp": 3 },
+    { "x": 13, "z": 5, "to": "route_110", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "mart_employee", "looks": "mart_employee", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "Route110_SeasideCyclingRoadNorthEntrance_EventScript_Clerk" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 7, "z": 4, "width": 1, "depth": 1, "script": "Route110_SeasideCyclingRoadNorthEntrance_EventScript_BikeCheck", "variable": "VAR_TEMP_1", "value": "0" },
+    { "x": 5, "z": 4, "width": 1, "depth": 1, "script": "Route110_SeasideCyclingRoadNorthEntrance_EventScript_ClearCyclingRoad", "variable": "VAR_TEMP_1", "value": "1" }
+  ]
+}

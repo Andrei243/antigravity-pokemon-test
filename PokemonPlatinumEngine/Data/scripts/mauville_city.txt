@@ -1,0 +1,136 @@
+# Mauville City (plan 21 · H3, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/MauvilleCity/scripts.inc).
+#
+# Wally and his uncle stand before the Gym's door. Spoken to, Wally asks for a battle to show his uncle he is strong
+# enough for the Gym (a refusal is remembered, FLAG_DECLINED_WALLY_BATTLE_MAUVILLE, and he asks again); beaten, the
+# two go on to Verdanturf Town, where they wait in Wanda's house (FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY and
+# _WALLYS_UNCLE cleared, FLAG_DEFEATED_WALLY_MAUVILLE), and Scott, who saw it all, comes up to say so (VAR_SCOTT_STATE).
+
+
+script OnEnter
+  setflag FLAG_VISITED_MAUVILLE_CITY
+  # The Gym's barriers go back to how they began whenever the city is come to (MauvilleCity_OnTransition)
+  clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
+  setvar VAR_MAUVILLE_GYM_STATE 0
+  end
+
+
+script Wally
+  if flag FLAG_DECLINED_WALLY_BATTLE_MAUVILLE goto Again
+  scene "Wally in Mauville"
+  speaker "Wally"
+  say "Uncle, please! I want to challenge the Gym. I know Ralts and I can do it!"
+  speaker "Wally's Uncle"
+  say "Now, Wally, you've only just got here. Don't you think you're pushing yourself?"
+  speaker "Wally"
+  say "But we've been training! We can beat anyone!"
+  face mauville_wally player
+  emote mauville_wally exclaim
+  say "{player}! You came at just the right time. Will you battle me? If I win, my uncle will see how strong I am!"
+  call Ask
+  endscene
+  end
+label Again
+  scene "Wally asks again"
+  face mauville_wally player
+  speaker "Wally"
+  say "{player}... Please, will you battle me? I have to show my uncle!"
+  call Ask
+  endscene
+  end
+
+
+script Ask
+  ask "Battle Wally?"
+  if no goto Refused
+  speaker "Wally"
+  say "Thank you! Ralts, here we go!"
+  battle mauville_wally as "hoenn_wally_mauville"
+  speaker "Wally"
+  say "I... I lost. You really are strong, {player}."
+  say "Uncle... I'll go back to Verdanturf with you. I'm not ready for the Gym yet."
+  face mauville_wally player
+  say "{player}, thank you. Battling you showed me how much further I have to go."
+  speaker "Wally's Uncle"
+  say "Don't be down, Wally. You battled well, and you'll only get stronger. Come visit us in Verdanturf, {player}!"
+  if var PLAYER_X == 207 goto FromWest
+  walk mauville_wally left 2
+  walk mauville_wally down 2
+  walk mauville_wallys_uncle left 3
+  walk mauville_wallys_uncle down 1
+  walk mauville_wally left 8
+  walk mauville_wallys_uncle left 8
+  goto Gone
+label FromWest
+  walk mauville_wally down 2
+  walk mauville_wally left 3
+  walk mauville_wallys_uncle down 2
+  walk mauville_wallys_uncle left 2
+  walk mauville_wally left 8
+  walk mauville_wallys_uncle left 8
+label Gone
+  hide mauville_wally
+  hide mauville_wallys_uncle
+  setflag FLAG_HIDE_MAUVILLE_CITY_WALLY
+  setflag FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE
+  clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
+  clearflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
+  setflag FLAG_DEFEATED_WALLY_MAUVILLE
+  call Scott
+  return
+label Refused
+  setflag FLAG_DECLINED_WALLY_BATTLE_MAUVILLE
+  speaker "Wally"
+  say "Oh... Then my uncle will never believe I'm strong enough."
+  return
+
+
+# Scott comes up from the south of town once Wally has gone (Emerald's ScottApproachPlayer), and goes off west
+script Scott
+  if var PLAYER_X == 207 goto FromWest
+  place mauville_scott 212 154 up
+  clearflag FLAG_HIDE_MAUVILLE_CITY_SCOTT
+  show mauville_scott
+  walk mauville_scott up 6
+  walk mauville_scott left 4
+  goto Speak
+label FromWest
+  place mauville_scott 212 153 up
+  clearflag FLAG_HIDE_MAUVILLE_CITY_SCOTT
+  show mauville_scott
+  walk mauville_scott up 5
+  walk mauville_scott left 5
+  walk mauville_scott up 1
+label Speak
+  face mauville_scott player
+  face player mauville_scott
+  speaker "Scott"
+  say "I watched the whole thing. You didn't hold back against him, did you? That's how it should be!"
+  say "That boy will grow strong too, I can tell. Well, see you around!"
+  addvar VAR_SCOTT_STATE 1
+  walk mauville_scott left 9
+  hide mauville_scott
+  setflag FLAG_HIDE_MAUVILLE_CITY_SCOTT
+  return
+
+
+script WallysUncle
+  face mauville_wallys_uncle player
+  speaker "Wally's Uncle"
+  if flag FLAG_DECLINED_WALLY_BATTLE_MAUVILLE goto Please
+  say "Wally's been so full of energy since he caught his Ralts. It's wonderful, but I do worry about him."
+  end
+label Please
+  say "Could you battle Wally for me? He won't listen to me, but losing to you might teach him patience."
+  end
+
+
+script SchoolKid
+  speaker "Boy"
+  if flag FLAG_TV_EXPLAINED goto Explained
+  say "Have you seen the television in the Pokémon Center? The shows change all the time, so check it often!"
+  setflag FLAG_TV_EXPLAINED
+  end
+label Explained
+  say "I've been watching all the shows. There's always something new on!"
+  end

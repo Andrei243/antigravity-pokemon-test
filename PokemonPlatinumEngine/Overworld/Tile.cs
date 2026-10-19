@@ -235,7 +235,11 @@ public enum Architecture
     /// <summary>Weathered boards under straw hip roofs with shutters: the fishermen's island of sand (Dewford, plan 21 · H3).</summary>
     Islet,
     /// <summary>Stucco under sea-teal gable roofs with shutters and flower boxes: the busy port of the market and the museum (Slateport, plan 21 · H3).</summary>
-    Wharf
+    Wharf,
+    /// <summary>Stucco under electric-yellow hip roofs with shutters: the city of bright lights and electric power (Mauville, plan 21 · H3, part b).</summary>
+    Dynamo,
+    /// <summary>Plaster under moss-green gable roofs with a chimney and flower boxes: the quiet town of clean air (Verdanturf, plan 21 · H3, part b).</summary>
+    Glade
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

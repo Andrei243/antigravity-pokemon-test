@@ -1,0 +1,18 @@
+{
+  // The lobby of Verdanturf's Battle Tent (plan 21 · H3, part b): its three bouts in which the Pokémon battle by
+  // themselves are the Battle Palace's rules (plan 14 · B9), not built yet; the attendant says so. Scott watches here
+  // once the Dynamo Badge is won
+  "area": "verdanturf_town_battle_tent_lobby",
+  "bgmTrack": "hoenn/verdanturf",
+  "people": {
+    "verdanturf_tent_attendant": { "name": "Attendant", "dialog": [ "Welcome to the Battle Tent! Here, Pokémon choose their own moves. Our challenge isn't ready yet, I'm afraid." ] },
+    "girl_1": { "name": "Girl", "dialog": [ "Pokémon here battle by themselves, without orders. Their nature decides what they do!" ] },
+    "boy_3": { "name": "Boy", "dialog": [ "My Pokémon didn't listen to me once in there. Well, it's not supposed to!" ] },
+    "boy_2": { "name": "Boy", "dialog": [ "A calm Pokémon and a hasty one battle completely differently. It's fascinating." ] },
+    "scott": { "name": "Scott", "npcType": "scott", "dialog": [ "{player}! Fancy meeting you here. The Battle Tent's a great place to find strong trainers." ] },
+    "little_boy": { "name": "Boy", "dialog": [ "I want to see the trainers who win three in a row here!" ] }
+  },
+  "signs": {
+    "VerdanturfTown_BattleTentLobby_EventScript_RulesBoard": "Battle Tent Rules\nYour Pokémon battle by their own will. Win three in a row!"
+  }
+}

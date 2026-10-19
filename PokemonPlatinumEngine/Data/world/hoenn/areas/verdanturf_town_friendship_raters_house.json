@@ -1,0 +1,27 @@
+{
+  "key": "verdanturf_town_friendship_raters_house",
+  "index": 95,
+  "name": "Verdanturf Town",
+  "matrix": 44,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VERDANTURF",
+  "nightMusic": "MUS_VERDANTURF",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "verdanturf_town", "toWarp": 5 },
+    { "x": 4, "z": 7, "to": "verdanturf_town", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_south", "x": 3, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "VerdanturfTown_FriendshipRatersHouse_EventScript_FriendshipRater" },
+    { "id": "pikachu", "looks": "pikachu", "movement": "look_south", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "VerdanturfTown_FriendshipRatersHouse_EventScript_Pikachu" }
+  ],
+  "signs": [],
+  "triggers": []
+}

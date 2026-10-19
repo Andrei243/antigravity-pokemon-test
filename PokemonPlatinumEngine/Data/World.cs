@@ -719,14 +719,26 @@ public static class WorldMapBuilder
             if (warp.Target != null && !warp.Target.Equals(map.Name, StringComparison.OrdinalIgnoreCase) && open.Contains(warp.Target)) continue;
             bool isDoor = map.BehaviourAt(dx, dz) == TileBehavior.Door;
             if (!isDoor && (map.IsSolid(dx, dz) || !blank.Contains((dx, dz + 1)) && !blank.Contains((dx, dz - 1)))) continue;
-            // The run of such tiles along a row through the door's column, no further than half the widest either way
+            // The run of such tiles along a row through the door's column, no further than half the widest either way, and
+            // no further than half way to the door of another building in the same front row (plan 21 · H3, part b:
+            // Verdanturf's Pokémon Center and Mart, and Mauville's Mart and house, stand wall to wall and were one building)
+            int leftLimit = dx - DoorBuildingWidth / 2, rightLimit = dx + DoorBuildingWidth / 2;
+            if (isDoor && warp.Target != null)
+                foreach (var other in map.Warps)
+                {
+                    if (other.SourceY != dz || other.SourceX == dx || map.BehaviourAt(other.SourceX, other.SourceY) != TileBehavior.Door
+                        || other.TargetMap.Equals(warp.Target, StringComparison.OrdinalIgnoreCase) || Math.Abs(other.SourceX - dx) >= DoorBuildingWidth) continue;
+                    int half = (dx + other.SourceX) / 2;
+                    if (other.SourceX < dx) leftLimit = Math.Max(leftLimit, half);
+                    else rightLimit = Math.Min(rightLimit, half + 1);
+                }
             bool Wall(int x, int z) => (x == dx && z == dz) || blank.Contains((x, z)) && !taken.Contains((x, z));
             (int A, int B)? Run(int z)
             {
                 if (!Wall(dx, z)) return null;
                 int a = dx, b = dx;
-                while (a - 1 > dx - DoorBuildingWidth / 2 && Wall(a - 1, z)) a--;
-                while (b + 1 < dx + DoorBuildingWidth / 2 && Wall(b + 1, z)) b++;
+                while (a - 1 > leftLimit && Wall(a - 1, z)) a--;
+                while (b + 1 < rightLimit && Wall(b + 1, z)) b++;
                 return (a, b);
             }
             // The building is the body over its front row: a fence that runs on from the front wall is no part of it,
@@ -768,8 +780,8 @@ public static class WorldMapBuilder
                 for (int z = z0; z <= z1; z++) if (blank.Contains((x, z)) && !taken.Contains((x, z))) n++;
                 return n * 2 >= z1 - z0 + 1;
             }
-            while (x0 - 1 > dx - DoorBuildingWidth / 2 && Eaves(x0 - 1)) x0--;
-            while (x1 + 1 < dx + DoorBuildingWidth / 2 && Eaves(x1 + 1)) x1++;
+            while (x0 - 1 > leftLimit && Eaves(x0 - 1)) x0--;
+            while (x1 + 1 < rightLimit && Eaves(x1 + 1)) x1++;
             var tiles = new HashSet<(int X, int Z)>();
             for (int z = z0; z <= z1; z++)
                 for (int x = x0; x <= x1; x++)
@@ -1462,7 +1474,8 @@ public static class WorldMapBuilder
     private static bool FencesInWood(Architecture? town) =>
         town is Architecture.Timber or Architecture.Plaster or Architecture.Clapboard or Architecture.Cottage or Architecture.Farm
             or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber or Architecture.Evergreen or Architecture.Breeze
-            or Architecture.Bayside or Architecture.Sapling or Architecture.Meadow or Architecture.Woodland or Architecture.Heritage or Architecture.Islet;
+            or Architecture.Bayside or Architecture.Sapling or Architecture.Meadow or Architecture.Woodland or Architecture.Heritage or Architecture.Islet
+            or Architecture.Glade;
 
     /// <summary>
     /// Cuts a set of tiles into rectangles, the largest first: a house is one, a museum with a wing two. Ties go
@@ -2088,11 +2101,13 @@ public static class WorldMapBuilder
     /// <summary>
     /// A flag of the original's that lasts only while the player is in its area (<c>FLAG_MAP_LOCAL_...</c>, cleared
     /// on leaving: <see cref="Story.StoryState.ClearLocal"/>) made the area's own, since one map of the world holds
-    /// many areas that number their local flags alike: <c>FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_ETERNA_CITY</c>. Any other
+    /// many areas that number their local flags alike: <c>FLAG_MAP_LOCAL_HIDE_OBSTACLE_1_ETERNA_CITY</c>; and so is a GBA
+    /// game's temporary flag (<c>FLAG_TEMP_11_ROUTE_104</c>, plan 21 · H3, part b), which its maps share. Any other
     /// flag is left as it is.
     /// </summary>
     public static string LocalFlag(string flag, string areaKey) =>
-        flag.StartsWith(Story.StoryState.LocalFlagPrefix, StringComparison.Ordinal) ? flag + "_" + areaKey.ToUpperInvariant() : flag;
+        flag.StartsWith(Story.StoryState.LocalFlagPrefix, StringComparison.Ordinal) || flag.StartsWith(Story.StoryState.TemporaryFlagPrefix, StringComparison.Ordinal)
+            ? flag + "_" + areaKey.ToUpperInvariant() : flag;
 
     /// <summary>The obstacle an object of the original is, by the name of its looks: what Cut, Rock Smash and Strength clear.</summary>
     public static PropType? ObstacleFor(string looks) => looks switch
@@ -2164,6 +2179,9 @@ public static class WorldMapBuilder
                 thing.HiddenBy = o.HiddenBy is { } flag ? LocalFlag(flag, key) : null;
                 thing.Key = o.Id;
                 thing.ScriptFile = key;
+                // ...with a script of the area's own where the overlay gives it one (plan 21 · H3, part b: Rusturf
+                // Tunnel's two rocks, whose breaking clears the way to Verdanturf Town)
+                if (overlay?.People?.GetValueOrDefault(o.Id)?.Script is { Length: > 0 } own) thing.Script = own;
                 continue;
             }
             // A patch of soft soil is the save's berry patch its object names (plan 06 · R14a)
@@ -2386,6 +2404,9 @@ public static class WorldMapBuilder
             map.Warps.Add(warp);
             // A door is a blocked tile in the world's data; here stepping onto it is what takes the warp
             if (map.GetGroundTile(from.X, from.Z) == TileType.Door) map.SetSolid(from.X, from.Z, false);
+            // So is a GBA game's door the story opens by swapping its tile (the Trick House's puzzle doors, plan 21 · H3,
+            // part b): the tile is the way's, which Map.ApplyDoors keeps shut until the story opens it
+            else if (world.Index.BuildingsAtDoors && (warp.From != null || warp.OpenedBy != null)) map.SetSolid(from.X, from.Z, false);
         }
 
         foreach (var exit in overlay?.Exits ?? new())

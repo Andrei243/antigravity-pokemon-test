@@ -1,0 +1,9 @@
+{
+  // A house in Verdanturf Town (plan 21 · H3, part b)
+  "area": "verdanturf_town_house",
+  "bgmTrack": "hoenn/verdanturf",
+  "people": {
+    "woman_5": { "name": "Woman", "dialog": [ "Long ago, people walked all the way round the mountains to get to Rustboro. It took days!" ] },
+    "woman_5_2": { "name": "Woman", "dialog": [ "My sister moved here for the clean air. Now she says she'll never live in a big city again." ] }
+  }
+}

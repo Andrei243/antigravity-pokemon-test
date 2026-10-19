@@ -1,0 +1,21 @@
+{
+  // The Trick House on Route 110 (plan 21 · H3, part b): the Trick Master hides somewhere in his front room and has to be
+  // found before his first puzzle opens behind the scroll on the back wall (route_110_trick_house_entrance.txt). The
+  // first puzzle is the only one built; the next waits for the Dynamo Badge in Emerald and for its room here
+  "area": "route_110_trick_house_entrance",
+  "bgmTrack": "hoenn/trick_house",
+  // The way into the puzzle behind the scroll, open from his finding to the first puzzle's end
+  "switches": [ { "warp": 2, "from": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN", "until": "FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_DONE" } ],
+  "triggers": [
+    { "trigger": 0, "script": "BeingWatched" },
+    { "trigger": 1, "script": "BeingWatched" },
+    { "trigger": 2, "script": "BeingWatched" },
+    { "trigger": 3, "script": "BeingWatched" }
+  ],
+  // Under the desk, where he hides the first time
+  "readAt": [ { "x": 6, "z": 3, "script": "Desk" }, { "x": 6, "z": 4, "script": "Desk" } ],
+  "read": { "Route110_TrickHouseEntrance_EventScript_Door": "Door" },
+  "people": {
+    "trick_master": { "name": "Trick Master", "npcType": "trick_master", "script": "TrickMaster", "still": true }
+  }
+}

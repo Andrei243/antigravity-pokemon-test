@@ -1,0 +1,77 @@
+{
+  "people": {
+    "verdanturf_mart_clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! What can I get for you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Nest Ball catches low-level Pokémon easily. I wish they sold them everywhere!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fluffy, comfy things for a secret base... Oh, I'm only window shopping."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm buying Potions for my trip to Rustboro. You can never have too many!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

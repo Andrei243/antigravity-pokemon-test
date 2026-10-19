@@ -1,0 +1,63 @@
+{
+  "people": {
+    "wally": {
+      "name": {
+        "en": [
+          "Wally"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Young Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Now that the tunnel's open, I can see Wanda every single day. Digging was worth it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Wally's Uncle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Wally's Aunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Wanda"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

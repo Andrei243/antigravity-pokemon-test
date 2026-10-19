@@ -7937,6 +7937,19 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_OBTAINED_HIDDEN_TEST_STARDUST
+=== common.HoennChapterFour
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_MAUVILLE_CITY_SCOTT
+  + FLAG_HIDE_MAUVILLE_CITY_WATTSON
+  + FLAG_HIDE_ROUTE_110_BIRCH
+  + FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE
+  + FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+  + FLAG_HIDE_VERDANTURF_TOWN_SCOTT
+  + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
+  + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
+  + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
+  + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
 === common.HoennChapterThree
 from a trainer with lines of their own
 way -
@@ -7979,6 +7992,8 @@ way -
   + FLAG_HIDE_LITTLEROOT_TOWN_MOM_OUTSIDE
   + FLAG_HIDE_LITTLEROOT_TOWN_PLAYERS_BEDROOM_MOM
   + FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
+  + FLAG_HIDE_MAUVILLE_CITY_SCOTT
+  + FLAG_HIDE_MAUVILLE_CITY_WATTSON
   + FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
   + FLAG_HIDE_OLDALE_TOWN_RIVAL
   + FLAG_HIDE_PETALBURG_CITY_SCOTT
@@ -7993,6 +8008,8 @@ way -
   + FLAG_HIDE_ROUTE_104_RIVAL
   + FLAG_HIDE_ROUTE_104_WHITE_HERB_FLORIST
   + FLAG_HIDE_ROUTE_109_MR_BRINEY
+  + FLAG_HIDE_ROUTE_110_BIRCH
+  + FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE
   + FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
   + FLAG_HIDE_ROUTE_116_MR_BRINEY
   + FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
@@ -8010,6 +8027,12 @@ way -
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE
   + FLAG_HIDE_SLATEPORT_CITY_SCOTT
   + FLAG_HIDE_SLATEPORT_MUSEUM_POPULATION
+  + FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+  + FLAG_HIDE_VERDANTURF_TOWN_SCOTT
+  + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
+  + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
+  + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
+  + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
   = VAR_LITTLEROOT_HOUSES_STATE_MAY 0 -> 1
 === common.HoennOpeningDone
 from a trainer with lines of their own
@@ -10409,6 +10432,202 @@ way -
 from {rival} at 7,4 of LittlerootTown_ProfessorBirchsLab
 way -
   Barry> Dad's always running off into the grass without his Pokémon. One day I'll be a better field worker than him!
+=== mauville_city.SchoolKid
+from Boy at 217,154 of Hoenn
+way -
+  Boy> Have you seen the television in the Pokémon Center? The shows change all the time, so check it often!
+  + FLAG_TV_EXPLAINED
+=== mauville_city.Wally
+from Wally at 208,146 of Hoenn
+way 0.0
+  Wally> Uncle, please! I want to challenge the Gym. I know Ralts and I can do it!
+  Wally's Uncle> Now, Wally, you've only just got here. Don't you think you're pushing yourself?
+  Wally> But we've been training! We can beat anyone!
+  Wally> Lucas! You came at just the right time. Will you battle me? If I win, my uncle will see how strong I am!
+  Wally> Battle Wally?
+  Wally> Thank you! Ralts, here we go!
+  Wally> I... I lost. You really are strong, Lucas.
+  Wally> Uncle... I'll go back to Verdanturf with you. I'm not ready for the Gym yet.
+  Wally> Lucas, thank you. Battling you showed me how much further I have to go.
+  Wally's Uncle> Don't be down, Wally. You battled well, and you'll only get stronger. Come visit us in Verdanturf, Lucas!
+  Scott> I watched the whole thing. You didn't hold back against him, did you? That's how it should be!
+  Scott> That boy will grow strong too, I can tell. Well, see you around!
+  ? Battle Wally? = Yes
+  * scene mauville_city.Wally in Mauville
+  * emote Wally Exclaim
+  * battle hoenn_wally_mauville Won
+  * endscene
+  + FLAG_DEFEATED_WALLY_MAUVILLE
+  + FLAG_HIDE_MAUVILLE_CITY_SCOTT
+  + FLAG_HIDE_MAUVILLE_CITY_WALLY
+  + FLAG_HIDE_MAUVILLE_CITY_WALLYS_UNCLE
+  = VAR_SCOTT_STATE 0 -> 1
+  + beaten hoenn_wally_mauville
+  + seen mauville_city.Wally in Mauville
+way 0.1, from answer 2
+  * battle hoenn_wally_mauville Lost
+  * scene over, unseen
+way 1, from answer 1
+  Wally> Oh... Then my uncle will never believe I'm strong enough.
+  ? Battle Wally? = No
+  * endscene
+  + FLAG_DECLINED_WALLY_BATTLE_MAUVILLE
+  + seen mauville_city.Wally in Mauville
+=== mauville_city.WallysUncle
+from Wally's Uncle at 209,146 of Hoenn
+way -
+  Wally's Uncle> Wally's been so full of energy since he caught his Ralts. It's wonderful, but I do worry about him.
+=== mauville_city_bike_shop.AcroHandbook
+from the tile read at 11,1 of MauvilleCity_BikeShop
+way 0
+  > Acro Bike Handbook: which page?
+  > "The Acro Bike can hop onto a narrow rail and ride along it. It can't turn while it's up there!"
+  ? Acro Bike Handbook: which page? = Rails
+way 2, from answer 1
+  ? Acro Bike Handbook: which page? = Close
+way 1, from answer 1
+  > "A bumpy slope is too rough for any other bike, but the Acro Bike can hop its way up."
+  ? Acro Bike Handbook: which page? = Bumpy slopes
+=== mauville_city_bike_shop.MachHandbook
+from the tile read at 8,1 of MauvilleCity_BikeShop
+way 0
+  > Mach Bike Handbook: which page?
+  > "The Mach Bike is the fastest bike there is. Point it where you want to go and hold on!"
+  ? Mach Bike Handbook: which page? = How to ride
+way 2, from answer 1
+  ? Mach Bike Handbook: which page? = Close
+way 1, from answer 1
+  > "Only a Mach Bike at full speed can ride up a muddy slope. Anything slower can't get up it."
+  ? Mach Bike Handbook: which page? = Muddy slopes
+=== mauville_city_bike_shop.Rydel
+from Rydel at 2,5 of MauvilleCity_BikeShop
+way 0.0
+  Rydel> Welcome to Rydel's Cycles! I'm Rydel, and I love bicycles more than anything.
+  Rydel> Say, you look like a traveller. Did you come all the way here from somewhere far off?
+  Rydel> Then you'll need a bike to get around Hoenn! I'll give you one, free. Which kind would you like?
+  Rydel> The Mach Bike is built for speed, fast enough to ride up a muddy slope. The Acro Bike can hop and balance on rails.
+  Rydel> Which bike will you take?
+  Rydel> The Mach Bike! Hold on tight, it really flies.
+  > Lucas received the Mach Bike!
+  > Lucas put it away in the Key Items pocket.
+  Rydel> If you want to try the other kind, just come back. I'll swap them for you any time!
+  ? Say, you look like a traveller. Did you come all the way here from somewhere far off? = Yes
+  ? Which bike will you take? = Mach Bike
+  * fanfare FanfareKeyItem
+  + FLAG_RECEIVED_BIKE
+way 0.1, from answer 2
+  Rydel> The Acro Bike! You'll be doing tricks in no time.
+  > Lucas received the Acro Bike!
+  > Lucas put it away in the Key Items pocket.
+  Rydel> If you want to try the other kind, just come back. I'll swap them for you any time!
+  ? Which bike will you take? = Acro Bike
+  * fanfare FanfareKeyItem
+  + FLAG_RECEIVED_BIKE
+way 1, from answer 1
+  Rydel> Oh, you're local? Then you probably don't need a bike from me. Come back if you change your mind!
+  ? Say, you look like a traveller. Did you come all the way here from somewhere far off? = No
+  + FLAG_DECLINED_BIKE
+=== mauville_city_gym.Beam
+from Electric barrier at 1,11 of MauvilleCity_Gym
+from Electric barrier at 2,11 of MauvilleCity_Gym
+from Electric barrier at 3,12 of MauvilleCity_Gym
+from Electric barrier at 3,13 of MauvilleCity_Gym
+from Electric barrier at 4,11 of MauvilleCity_Gym
+from Electric barrier at 4,14 of MauvilleCity_Gym
+from Electric barrier at 4,7 of MauvilleCity_Gym
+from Electric barrier at 5,11 of MauvilleCity_Gym
+from Electric barrier at 5,14 of MauvilleCity_Gym
+from Electric barrier at 5,7 of MauvilleCity_Gym
+from Electric barrier at 6,10 of MauvilleCity_Gym
+from Electric barrier at 6,9 of MauvilleCity_Gym
+from Electric barrier at 7,11 of MauvilleCity_Gym
+from Electric barrier at 8,11 of MauvilleCity_Gym
+way -
+  > Bzzzt! A barrier of crackling electricity blocks the way.
+=== mauville_city_gym.GymGuide
+from Gym Guide at 7,20 of MauvilleCity_Gym
+way -
+  Gym Guide> Hey, champ in the making! Wattson's barriers flip whenever you step on a switch on the floor.
+  Gym Guide> His Pokémon are Electric types. Ground moves will hit them hard, and they can't shock you back!
+=== mauville_city_gym.Switch1
+from the trigger at 0,15 of MauvilleCity_Gym
+way -
+  * sound select
+  + FLAG_HOENN_MAUVILLE_GYM_BEAMS_B
+  + FLAG_MAUVILLE_GYM_BARRIERS_STATE
+  = VAR_MAUVILLE_GYM_STATE 0 -> 1
+=== mauville_city_gym.Switch2
+from the trigger at 4,12 of MauvilleCity_Gym
+way -
+  * sound select
+  + FLAG_HOENN_MAUVILLE_GYM_BEAMS_B
+  + FLAG_MAUVILLE_GYM_BARRIERS_STATE
+  = VAR_MAUVILLE_GYM_STATE 0 -> 2
+=== mauville_city_gym.Switch3
+from the trigger at 3,9 of MauvilleCity_Gym
+way -
+  * sound select
+  + FLAG_HOENN_MAUVILLE_GYM_BEAMS_B
+  + FLAG_MAUVILLE_GYM_BARRIERS_STATE
+  = VAR_MAUVILLE_GYM_STATE 0 -> 3
+=== mauville_city_gym.Switch4
+from the trigger at 8,9 of MauvilleCity_Gym
+way -
+  * sound select
+  + FLAG_HOENN_MAUVILLE_GYM_BEAMS_B
+  + FLAG_MAUVILLE_GYM_BARRIERS_STATE
+  = VAR_MAUVILLE_GYM_STATE 0 -> 4
+=== mauville_city_gym.Wattson
+from Wattson at 5,2 of MauvilleCity_Gym
+way 0
+  Wattson> Wahahaha! Welcome, welcome! I'm Wattson, Mauville's Gym Leader, and I've been powering this city for years!
+  Wattson> You got through my barriers, did you? Then let's see if you can take a real jolt! Wahahahaha!
+  Wattson> Wahahahaha! Fine, you win! You've got a spark in you, all right!
+  Wattson> Here, take the Dynamo Badge. You've earned it fair and square.
+  > Lucas received the Dynamo Badge from Wattson!
+  Wattson> With the Dynamo Badge, your Pokémon can use Rock Smash outside of battle to break cracked rocks.
+  Wattson> And this! It's a move I'm especially proud of.
+  > Lucas received the TM34!
+  > TM34 holds the move Shock Wave.
+  > Lucas put it away in the TMs & HMs pocket.
+  Wattson> TM34 holds Shock Wave. It strikes like lightning and never misses. Wahahaha!
+  * scene mauville_city_gym.Wattson
+  * battle hoenn_wattson_1 Won
+  * fanfare FanfareBadge
+  * defeat hoenn_shawn
+  * defeat hoenn_vivian
+  * defeat hoenn_ben
+  * defeat hoenn_kirk
+  * defeat hoenn_angelo
+  * sound door_open
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_MAUVILLE_GYM
+  + FLAG_RECEIVED_TM_SHOCK_WAVE
+  = VAR_PETALBURG_GYM_STATE 0 -> 1
+  = VAR_SLATEPORT_OUTSIDE_MUSEUM_STATE 0 -> 3
+  + beaten hoenn_angelo
+  + beaten hoenn_ben
+  + beaten hoenn_kirk
+  + beaten hoenn_shawn
+  + beaten hoenn_vivian
+  + beaten hoenn_wattson_1
+  = badges Hoenn 0 -> 100
+  + seen mauville_city_gym.Wattson
+way 1, from answer 1
+  * battle hoenn_wattson_1 Lost
+  * scene over, unseen
+=== mauville_city_house_1.RockSmashMan
+from Man at 4,4 of MauvilleCity_House1
+way -
+  Man> Rocks! Cracked rocks! Nothing beats the feeling of smashing one to bits!
+  Man> You look like you'd enjoy it too. Here, take this. It'll let your Pokémon smash rocks to rubble.
+  > Lucas received the HM06!
+  > HM06 holds the move Rock Smash.
+  > Lucas put it away in the TMs & HMs pocket.
+  Man> That's Rock Smash. Use it on a rock with cracks in it, and boom! Once you've got Mauville's Badge, that is.
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_HM_ROCK_SMASH
 === mt_coronet_1f_north_room_1.GruntF
 from Grunt at 19,41 of MtCoronet1FNorthRoom1
 way -
@@ -11510,6 +11729,185 @@ way -
 from Aide at 12,5 of Route10_PokemonCenter_1F
 way -
   Aide> I'm studying the Pokémon of Rock Tunnel for Professor Oak.
+=== route_110.Abigail
+from Abigail at 230,191 of Hoenn
+way 0.0
+  Triathlete Abigail> Triathlete Abigail: My Magnemite and I are charged and ready!
+  Abigail> You've got real power! Can I have your number? I want to keep up with you.
+  Abigail> Register Abigail in the PokéNav's Match Call?
+  Abigail> Thanks! I'll let you know how my Magnemite is doing.
+  ? Register Abigail in the PokéNav's Match Call? = Yes
+  * battle hoenn_abigail_1 Won
+  * addcontact hoenn_abigail
+  + FLAG_PHONE_CONTACT_HOENN_ABIGAIL
+  + beaten hoenn_abigail_1
+way 0.1, from answer 2
+  Abigail> Oh well. I'll just have to catch up by myself!
+  ? Register Abigail in the PokéNav's Match Call? = No
+  + beaten hoenn_abigail_1
+way 1, from answer 1
+  * battle hoenn_abigail_1 Lost
+=== route_110.Benjamin
+from Benjamin at 216,215 of Hoenn
+way 0.0
+  Triathlete Benjamin> Triathlete Benjamin: I train every day on this road. Show me what you've got!
+  Benjamin> You're quick! Let's swap numbers and keep each other training.
+  Benjamin> Register Benjamin in the PokéNav's Match Call?
+  Benjamin> Great! I'll call you after my morning ride.
+  ? Register Benjamin in the PokéNav's Match Call? = Yes
+  * battle hoenn_benjamin_1 Won
+  * addcontact hoenn_benjamin
+  + FLAG_PHONE_CONTACT_HOENN_BENJAMIN
+  + beaten hoenn_benjamin_1
+way 0.1, from answer 2
+  Benjamin> Fair enough. See you on the road!
+  ? Register Benjamin in the PokéNav's Match Call? = No
+  + beaten hoenn_benjamin_1
+way 1, from answer 1
+  * battle hoenn_benjamin_1 Lost
+=== route_110.Edwin
+from Edwin at 234,200 of Hoenn
+way 0.0
+  Collector Edwin> Collector Edwin: My Pokémon are the finest of my collection. Admire them in battle!
+  Edwin> A fine battle! Would you exchange numbers? I'll call when my collection grows.
+  Edwin> Register Edwin in the PokéNav's Match Call?
+  Edwin> Splendid. I'll tell you all about my newest finds!
+  ? Register Edwin in the PokéNav's Match Call? = Yes
+  * battle hoenn_edwin_1 Won
+  * addcontact hoenn_edwin
+  + FLAG_PHONE_CONTACT_HOENN_EDWIN
+  + beaten hoenn_edwin_1
+way 0.1, from answer 2
+  Edwin> A pity. My collection would have impressed you.
+  ? Register Edwin in the PokéNav's Match Call? = No
+  + beaten hoenn_edwin_1
+way 1, from answer 1
+  * battle hoenn_edwin_1 Lost
+=== route_110.Isabel
+from Isabel at 210,236 of Hoenn
+way 0.0
+  Pokéfan Isabel> Pokéfan Isabel: Aren't my Plusle and Minun adorable? And they battle, too!
+  Isabel> Plusle and Minun want to be your friends! Will you register me in your PokéNav?
+  Isabel> Register Isabel in the PokéNav's Match Call?
+  Isabel> Yay! I'll call with all their cutest news!
+  ? Register Isabel in the PokéNav's Match Call? = Yes
+  * battle hoenn_isabel_1 Won
+  * addcontact hoenn_isabel
+  + FLAG_PHONE_CONTACT_HOENN_ISABEL
+  + beaten hoenn_isabel_1
+way 0.1, from answer 2
+  Isabel> Aww. Plusle and Minun are pouting now.
+  ? Register Isabel in the PokéNav's Match Call? = No
+  + beaten hoenn_isabel_1
+way 1, from answer 1
+  * battle hoenn_isabel_1 Lost
+=== route_110.Rival
+from {rival} at 234,214 of Hoenn
+way 0
+  Barry> Lucas! I knew you'd come this way. I've been filling in the Pokédex for Dad all the way up from Slateport!
+  Barry> But how's your team doing? Let's see who's been training harder!
+  Barry> Wow, you've got so much stronger! I'll have to catch up.
+  Barry> Here, take this. I don't really need it. It's an Itemfinder!
+  > Lucas received the Itemfinder!
+  > Lucas put it away in the Key Items pocket.
+  Barry> Use it and it beeps when something's buried close by. It even turns you to face the right way!
+  Barry> Right, I'm off to Mauville! See you around, Lucas!
+  * scene route_110.The rival spoken to on Route 110
+  * music hoenn/rival
+  * battle hoenn_may_route_110_mudkip Won
+  * fanfare FanfareKeyItem
+  * music area
+  * endscene
+  + FLAG_HIDE_ROUTE_110_RIVAL
+  = VAR_ROUTE110_STATE 0 -> 1
+  + beaten hoenn_may_route_110_mudkip
+  + seen route_110.The rival spoken to on Route 110
+way 1, from answer 1
+  * battle hoenn_may_route_110_mudkip Lost
+  * scene over, unseen
+=== route_110.RivalTrigger
+from the trigger at 233,216 of Hoenn
+from the trigger at 234,216 of Hoenn
+from the trigger at 235,216 of Hoenn
+way 0
+  Barry> Lucas! I knew you'd come this way. I've been filling in the Pokédex for Dad all the way up from Slateport!
+  Barry> But how's your team doing? Let's see who's been training harder!
+  Barry> Wow, you've got so much stronger! I'll have to catch up.
+  Barry> Here, take this. I don't really need it. It's an Itemfinder!
+  > Lucas received the Itemfinder!
+  > Lucas put it away in the Key Items pocket.
+  Barry> Use it and it beeps when something's buried close by. It even turns you to face the right way!
+  Barry> Right, I'm off to Mauville! See you around, Lucas!
+  * scene route_110.The rival on Route 110
+  * music hoenn/rival
+  * emote {rival} Exclaim
+  * battle hoenn_may_route_110_mudkip Won
+  * fanfare FanfareKeyItem
+  * music area
+  * endscene
+  + FLAG_HIDE_ROUTE_110_RIVAL
+  = VAR_ROUTE110_STATE 0 -> 1
+  + beaten hoenn_may_route_110_mudkip
+  + seen route_110.The rival on Route 110
+way 1, from answer 1
+  * battle hoenn_may_route_110_mudkip Lost
+  * scene over, unseen
+=== route_110_seaside_cycling_road_north_entrance.BikeCheck
+from the trigger at 7,4 of Route110_SeasideCyclingRoadNorthEntrance
+way -
+  Gate Keeper> Sorry, nobody walks on the Cycling Road. It's far too dangerous! Come back on a bike.
+=== route_110_seaside_cycling_road_south_entrance.BikeCheck
+from the trigger at 7,4 of Route110_SeasideCyclingRoadSouthEntrance
+way -
+  Gate Keeper> Sorry, nobody walks on the Cycling Road. It's far too dangerous! Come back on a bike.
+=== route_110_trick_house_end.TrickMaster
+from Trick Master at 4,5 of Route110_TrickHouseEnd
+way -
+=== route_110_trick_house_entrance.BeingWatched
+from the trigger at 4,7 of Route110_TrickHouseEntrance
+from the trigger at 5,6 of Route110_TrickHouseEntrance
+from the trigger at 6,6 of Route110_TrickHouseEntrance
+from the trigger at 7,7 of Route110_TrickHouseEntrance
+way -
+  > Someone is watching... The feeling of eyes on your back is hard to shake.
+  = VAR_TRICK_HOUSE_BEING_WATCHED_STATE 0 -> 1
+=== route_110_trick_house_entrance.Desk
+from the tile read at 6,3 of Route110_TrickHouseEntrance
+from the tile read at 6,4 of Route110_TrickHouseEntrance
+way -
+  > There's someone squeezed in under the desk!
+  Trick Master> Curses! Discovered! I am the Trick Master, master of disguise, deviser of devilish puzzles!
+  Trick Master> You found me fair and square, so I shall let you take on my house of tricks. Behind the scroll lies my puzzle!
+  Trick Master> Solve it and reach the end, and a reward awaits you. Now, watch closely... Vanish!
+  * scene route_110_trick_house_entrance.The Trick Master found
+  * emote player Exclaim
+  * sound warp
+  * endscene
+  + FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+  + FLAG_HOENN_TRICK_HOUSE_PUZZLE_1_BEGUN
+  = VAR_TRICK_HOUSE_ENTRANCE_STATE 0 -> 1
+  + seen route_110_trick_house_entrance.The Trick Master found
+=== route_110_trick_house_entrance.Door
+from the tile read at 5,1 of Route110_TrickHouseEntrance
+way -
+  > A scroll hangs on the wall. It looks like there might be something behind it...
+=== route_110_trick_house_entrance.TrickMaster
+from Trick Master at 6,2 of Route110_TrickHouseEntrance
+way -
+  Trick Master> Ah, my challenger! Patience, patience. My next puzzle needs more time than a single night.
+  Trick Master> Come back another day, a little stronger. I'll have something truly devious waiting for you!
+  * emote Trick Master Exclaim
+=== route_110_trick_house_puzzle_1.Door
+from the tile read at 13,1 of Route110_TrickHousePuzzle1
+way -
+  > The door is locked. Something is written on it: "Write the secret code here."
+=== route_110_trick_house_puzzle_1.Scroll
+from the tile read at 3,16 of Route110_TrickHousePuzzle1
+way -
+  > Lucas found a scroll!
+  > Lucas learnt the secret code written on it by heart.
+  * fanfare FanfareItem
+  = VAR_TRICK_HOUSE_PUZZLE_1_STATE 0 -> 1
 === route_116.Briney
 from Mr. Briney at 86,131 of Hoenn
 way -
@@ -11538,6 +11936,78 @@ way -
 from Young Man at 79,131 of Hoenn
 way -
   Young Man> My girlfriend Wanda lives in Verdanturf, on the far side of the hill. If only the tunnel went all the way through!
+=== route_117.Dylan
+from Dylan at 178,156 of Hoenn
+way 0.0
+  Triathlete Dylan> Triathlete Dylan: Running's my thing. And when I run, I run into trainers!
+  Dylan> You're tough! Swap numbers? I want a rematch once I'm faster.
+  Dylan> Register Dylan in the PokéNav's Match Call?
+  Dylan> Cool! I'll call you mid-run!
+  ? Register Dylan in the PokéNav's Match Call? = Yes
+  * battle hoenn_dylan_1 Won
+  * addcontact hoenn_dylan
+  + FLAG_PHONE_CONTACT_HOENN_DYLAN
+  + beaten hoenn_dylan_1
+way 0.1, from answer 2
+  Dylan> No worries. Catch you later!
+  ? Register Dylan in the PokéNav's Match Call? = No
+  + beaten hoenn_dylan_1
+way 1, from answer 1
+  * battle hoenn_dylan_1 Lost
+=== route_117.Isaac
+from Isaac at 173,151 of Hoenn
+way 0.0
+  Pokémon Breeder Isaac> Pokémon Breeder Isaac: I raise my Pokémon with love. Battling with them is the best part!
+  Isaac> You raise your Pokémon well. Let's trade numbers and talk about raising them!
+  Isaac> Register Isaac in the PokéNav's Match Call?
+  Isaac> Wonderful. I'll call with tips from the Day Care.
+  ? Register Isaac in the PokéNav's Match Call? = Yes
+  * battle hoenn_isaac_1 Won
+  * addcontact hoenn_isaac
+  + FLAG_PHONE_CONTACT_HOENN_ISAAC
+  + beaten hoenn_isaac_1
+way 0.1, from answer 2
+  Isaac> I see. Perhaps another time, then.
+  ? Register Isaac in the PokéNav's Match Call? = No
+  + beaten hoenn_isaac_1
+way 1, from answer 1
+  * battle hoenn_isaac_1 Lost
+=== route_117.Lydia
+from Lydia at 148,150 of Hoenn
+way 0.0
+  Pokémon Breeder Lydia> Pokémon Breeder Lydia: Look at all the Pokémon I've raised! Six of them, all so lovely.
+  Lydia> My little ones liked battling you! Could I have your number?
+  Lydia> Register Lydia in the PokéNav's Match Call?
+  Lydia> Lovely! I'll tell you how they're all getting on.
+  ? Register Lydia in the PokéNav's Match Call? = Yes
+  * battle hoenn_lydia_1 Won
+  * addcontact hoenn_lydia
+  + FLAG_PHONE_CONTACT_HOENN_LYDIA
+  + beaten hoenn_lydia_1
+way 0.1, from answer 2
+  Lydia> That's all right, dear. Take care!
+  ? Register Lydia in the PokéNav's Match Call? = No
+  + beaten hoenn_lydia_1
+way 1, from answer 1
+  * battle hoenn_lydia_1 Lost
+=== route_117.Maria
+from Maria at 166,153 of Hoenn
+way 0.0
+  Triathlete Maria> Triathlete Maria: My Doduo and I run every day! Keep up if you can!
+  Maria> That was fun! Can I register you in my PokéNav?
+  Maria> Register Maria in the PokéNav's Match Call?
+  Maria> Thanks! I'll call when Doduo beats its best time.
+  ? Register Maria in the PokéNav's Match Call? = Yes
+  * battle hoenn_maria_1 Won
+  * addcontact hoenn_maria
+  + FLAG_PHONE_CONTACT_HOENN_MARIA
+  + beaten hoenn_maria_1
+way 0.1, from answer 2
+  Maria> Okay! Maybe next time we meet.
+  ? Register Maria in the PokéNav's Match Call? = No
+  + beaten hoenn_maria_1
+way 1, from answer 1
+  * battle hoenn_maria_1 Lost
 === route_12.Snorlax
 from Snorlax at 398,220 of Kanto
 way -
@@ -12816,6 +13286,19 @@ way -
   > Peeko: Pihyoo...
   > The Wingull looks frightened.
   * cry Wingull
+=== rusturf_tunnel.TunnelClear
+from the trigger at 23,4 of RusturfTunnel
+from the trigger at 25,4 of RusturfTunnel
+from the trigger at 25,5 of RusturfTunnel
+way -
+=== rusturf_tunnel.TunnelRock1
+from Rock at 24,5 of RusturfTunnel
+way -
+  > The rock is riddled with cracks. A hard enough blow might break it apart, once the right Gym Badge is won.
+=== rusturf_tunnel.TunnelRock2
+from Rock at 24,4 of RusturfTunnel
+way -
+  > The rock is riddled with cracks. A hard enough blow might break it apart, once the right Gym Badge is won.
 === rusturf_tunnel.Wanda
 from Wanda at 25,4 of RusturfTunnel
 way -
@@ -14116,6 +14599,37 @@ way -
   Tough Guy> It's Embargo. Hit a Pokémon with it, and its trainer can't use items on it for a while. Handy, that.
   * fanfare FanfareTM
   + FLAG_RECEIVED_VEILSTONE_CITY_TM63
+=== verdanturf_town.Boy
+from Boy at 127,151 of Hoenn
+way -
+  Boy> Somebody keeps trying to bust through the cave over there. I can hear him hammering at night!
+=== verdanturf_town.Twin
+from Girl at 129,142 of Hoenn
+way -
+  Girl> There's a man digging a tunnel all the way from Rustboro, they say. Why would anyone do that?
+=== verdanturf_town_friendship_raters_house.FriendshipRater
+from Woman at 3,4 of VerdanturfTown_FriendshipRatersHouse
+way -
+  Woman> Let me have a look at your Pokémon. I can always tell how much a Pokémon loves its trainer.
+  Woman> It's getting used to you. Keep at it, and you'll be good friends.
+=== verdanturf_town_wandas_house.Wally
+from Wally at 14,5 of VerdanturfTown_WandasHouse
+way -
+  Wally> Lucas... I lost to you, but I'm not giving up. I'm going to get stronger, as strong as you!
+  Wally> The air here is so clean, I feel better already. Ralts and I are going to train every single day.
+  + FLAG_WALLY_SPEECH
+=== verdanturf_town_wandas_house.WallysAunt
+from Wally's Aunt at 2,4 of VerdanturfTown_WandasHouse
+way -
+  Wally's Aunt> My daughter's young man is so devoted. He's been digging a tunnel from Rustboro just to see her!
+=== verdanturf_town_wandas_house.WallysUncle
+from Wally's Uncle at 7,2 of VerdanturfTown_WandasHouse
+way -
+  Wally's Uncle> Wally's in the next room, so to speak. He's been training with his Ralts from morning till night!
+=== verdanturf_town_wandas_house.Wanda
+from Wanda at 5,5 of VerdanturfTown_WandasHouse
+way -
+  Wanda> Don't worry about my cousin Wally. He's frail, but he's tougher than he looks.
 === verity_cavern.Mesprit
 from Mesprit at 12,13 of VerityCavern
 way -

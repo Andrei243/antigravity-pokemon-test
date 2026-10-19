@@ -1,0 +1,730 @@
+{
+  "people": {
+    "route110_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route110_rival_on_bike": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Race you to Mauville!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route110_birch": {
+      "name": {
+        "en": [
+          "Prof. Birch"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ah, {player}! I'm out counting Pokémon. Don't mind me!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Cycling Road or the path underneath? I can never make up my mind."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_m": {
+      "name": {
+        "en": [
+          "Cyclist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "On a bike, hold the direction down and lean into it. Corners are easier than they look!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I take the low road. It's slower, but the flowers along it are lovely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_m_2": {
+      "name": {
+        "en": [
+          "Cyclist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Got my bike from Rydel in Mauville. He just handed it over. What a guy!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Two roads run side by side here, one up high and one down low. Each has its own view."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_f": {
+      "name": {
+        "en": [
+          "Cyclist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My hair streams out behind me when I race down the road. It's the best feeling!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to ride the Cycling Road flat out, from one end to the other!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "challenge_biker": {
+      "name": {
+        "en": [
+          "Cyclist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Cycling Road's for speed. The fewer things you bump into, the better your time!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What we're up to? That's Team Aqua business. Move along."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We're just going to stir things up a bit. Nothing to see here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_3": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This is my first real job for Team Aqua. I'm a little nervous!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_4": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When the sea grows, everyone will be happy. You'll see!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_5": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Keep your voices down! Someone might hear us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "psychic_m": {
+      "name": {
+        "en": [
+          "Edward"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Edward: I saw you coming in my mind. I also saw myself winning."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Edward: My mind's eye needs glasses."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Jaclyn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Jaclyn: My Abra can teleport away. But it won't, because we're going to win!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Jaclyn: Maybe it should have teleported after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Edwin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Edwin: My Pokémon are the finest of my collection. Admire them in battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Edwin: I'll have to polish my collection."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Dale"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Dale: Nothing's biting today. Except me! Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Dale: Back to waiting for a bite."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_m_5": {
+      "name": {
+        "en": [
+          "Jacob"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Jacob: Swim, cycle, run, battle! You're my fourth event!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Jacob: I'll stick to the first three."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_m_3": {
+      "name": {
+        "en": [
+          "Anthony"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Anthony: Pedal hard, battle harder! Let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Anthony: I've got a flat. In my spirit."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_m_4": {
+      "name": {
+        "en": [
+          "Benjamin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Benjamin: I train every day on this road. Show me what you've got!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Benjamin: Looks like I need to train every night too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_f_2": {
+      "name": {
+        "en": [
+          "Jasmine"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Jasmine: I stopped for you, so make it worth my while!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Jasmine: Worth it, but painful."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_f_3": {
+      "name": {
+        "en": [
+          "Abigail"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Abigail: My Magnemite and I are charged and ready!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Abigail: All out of power."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_f_4": {
+      "name": {
+        "en": [
+          "Alyssa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Alyssa: You look fit! Let's see if your Pokémon are too."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Alyssa: Fitter than mine, it turns out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Timmy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Timmy: My Aron's tougher than iron. Literally!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Timmy: Rust never sleeps, I guess."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Isabel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Isabel: Aren't my Plusle and Minun adorable? And they battle, too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Isabel: Still adorable, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Kaleb"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Kaleb: My Minun and Plusle cheer each other on. Watch!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Kaleb: They're cheering each other up now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Joseph"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Joseph: My music's electric, and so are my Pokémon! Rock on!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Joseph: I broke a string. And a battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route110_EventScript_VandalizedSign": {
+      "en": [
+        "Somebody has scrawled over the sign: \"Team Aqua was here!\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route110_EventScript_SeasideParkingSign": {
+      "en": [
+        "Seaside Parking\nLeave your bike here and stroll by the sea."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route110_EventScript_CyclingRoadSign": {
+      "en": [
+        "Seaside Cycling Road\nBicycles only, through the gate."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route110_EventScript_SlateportCitySign": {
+      "en": [
+        "Route 110\nSouth: Slateport City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route110_EventScript_Route103Sign": {
+      "en": [
+        "Route 110\nWest: Route 103"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route110_EventScript_MauvilleCitySign": {
+      "en": [
+        "Route 110\nNorth: Mauville City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route110_EventScript_TrainerTipsPrlzSleep": {
+      "en": [
+        "Trainer Tips\nA paralysed Pokémon or a sleeping one is far easier to catch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route110_EventScript_TrainerTipsRegisterItems": {
+      "en": [
+        "Trainer Tips\nRegister a key item in the bag, and use it at the press of a single button."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route110_EventScript_TrickHouseSign": {
+      "en": [
+        "Trick House\nThe Trick Master awaits! Can you solve his puzzles?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route110_EventScript_CyclingRoadResultsSign": {
+      "en": [
+        "Seaside Cycling Road\nBest times are posted here. Nobody has set one yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
