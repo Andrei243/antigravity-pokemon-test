@@ -612,6 +612,14 @@ public sealed class WorldSwap
     public string Map { get; set; } = "Sinnoh";
     public string Var { get; set; } = "";
     public int Value { get; set; }
+
+    /// <summary>
+    /// A flag in place of the variable (plan 19 · K6, part b): the chunks lie in their cells while it is set. FireRed
+    /// changes a map's whole layout by a flag (<c>setmaplayoutindex</c>: the Seafoam Islands' calm water once
+    /// <c>FLAG_STOPPED_SEAFOAM_B3F_CURRENT</c> is set), and the GBA reader writes the other layout's chunks.
+    /// </summary>
+    public string? Flag { get; set; }
+
     public List<WorldSwapCell> Cells { get; set; } = new();
 }
 
@@ -942,6 +950,15 @@ public sealed class AreaWarp
     public int Z { get; set; }
     public string To { get; set; } = "";
     public int ToWarp { get; set; }
+
+    /// <summary>
+    /// True for a warp that is only where someone lands (plan 19 · K6, part b): a GBA game's floor below a hole
+    /// (<see cref="Overworld.TileBehavior.Hole"/>) keeps a warp for each hole above it, on a tile that is no way
+    /// anywhere, as the place its faller comes down; the original never takes it, since its tile's behaviour is none
+    /// of a warp's. Its place is still counted among the area's warps, which the holes above name by number, and it
+    /// leads nowhere. Left out, a warp like any other.
+    /// </summary>
+    public bool? Landing { get; set; }
 }
 
 /// <summary>A person or a thing standing on the area: what it looks like, how it moves and which script it runs.</summary>

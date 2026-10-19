@@ -1,0 +1,43 @@
+{
+  // The Pokémon Mansion's ground floor (plan 19 · K6, part b): FireRed's burned house of experiments on Cinnabar Island.
+  // Its statues hide a switch that turns every barrier of the house over, open ones shut and shut ones open, on every
+  // floor at once (FLAG_POKEMON_MANSION_SWITCH_STATE; common.PokemonMansionSwitch). The barriers FireRed draws into its
+  // tiles and changes with setmetatile are things of ours on their tiles (opened under them): those of the switch's
+  // first state shown until it is pressed (hiddenBy), the others from then on (shownBy). Its trainers are FireRed's
+  "area": "pokemon_mansion_1f",
+  "name": "Pokémon Mansion",
+  "bgmTrack": "kanto/pokemon_mansion",
+  "people": {
+    "scientist": { "name": "Ted", "trainer": { "dialogueBefore": "Scientist Ted: This house is full of secrets. And you're not getting any of them!", "dialogueAfter": "Scientist Ted: Fine, find them yourself." } },
+    "youngster": { "name": "Johnson", "trainer": { "dialogueBefore": "Youngster Johnson: I came here on a dare. A battle's scarier than ghosts, right?", "dialogueAfter": "Youngster Johnson: Much scarier!" } }
+  },
+  "read": {
+    "PokemonMansion_1F_EventScript_Statue": "PokemonMansionSwitch"
+  },
+  "npcs": [
+    { "id": "barrier_1", "name": "Barrier", "npcType": "ElectricGate", "x": 22, "y": 10, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_2", "name": "Barrier", "npcType": "ElectricGate", "x": 22, "y": 11, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_3", "name": "Barrier", "npcType": "ElectricGate", "x": 23, "y": 10, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_4", "name": "Barrier", "npcType": "ElectricGate", "x": 23, "y": 11, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_5", "name": "Barrier", "npcType": "ElectricGate", "x": 24, "y": 10, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_6", "name": "Barrier", "npcType": "ElectricGate", "x": 24, "y": 11, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_7", "name": "Barrier", "npcType": "ElectricGate", "x": 27, "y": 25, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_8", "name": "Barrier", "npcType": "ElectricGate", "x": 27, "y": 26, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_9", "name": "Barrier", "npcType": "ElectricGate", "x": 28, "y": 25, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_10", "name": "Barrier", "npcType": "ElectricGate", "x": 28, "y": 26, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_11", "name": "Barrier", "npcType": "ElectricGate", "x": 29, "y": 25, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_12", "name": "Barrier", "npcType": "ElectricGate", "x": 29, "y": 26, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_13", "name": "Barrier", "npcType": "ElectricGate", "x": 32, "y": 25, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_14", "name": "Barrier", "npcType": "ElectricGate", "x": 32, "y": 26, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_15", "name": "Barrier", "npcType": "ElectricGate", "x": 33, "y": 25, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_16", "name": "Barrier", "npcType": "ElectricGate", "x": 33, "y": 26, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_17", "name": "Barrier", "npcType": "ElectricGate", "x": 34, "y": 25, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_18", "name": "Barrier", "npcType": "ElectricGate", "x": 34, "y": 26, "hiddenBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_19", "name": "Barrier", "npcType": "ElectricGate", "x": 31, "y": 18, "shownBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_20", "name": "Barrier", "npcType": "ElectricGate", "x": 31, "y": 19, "shownBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_21", "name": "Barrier", "npcType": "ElectricGate", "x": 32, "y": 18, "shownBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_22", "name": "Barrier", "npcType": "ElectricGate", "x": 32, "y": 19, "shownBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_23", "name": "Barrier", "npcType": "ElectricGate", "x": 33, "y": 18, "shownBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" },
+    { "id": "barrier_24", "name": "Barrier", "npcType": "ElectricGate", "x": 33, "y": 19, "shownBy": "FLAG_POKEMON_MANSION_SWITCH_STATE", "script": "PokemonMansionBarrier" }
+  ]
+}

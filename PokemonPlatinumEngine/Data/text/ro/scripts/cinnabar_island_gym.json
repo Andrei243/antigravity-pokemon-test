@@ -1,0 +1,372 @@
+{
+  "Quiz1": [
+    {
+      "en": [
+        "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Question one. Caterpie evolves into Metapod. True?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Quinn"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wrong answer! The penalty is a battle with me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Quiz2": [
+    {
+      "en": [
+        "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Question two. A Fire-type move hits a Water-type Pokémon hard. True?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Avery"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wrong answer! The penalty is a battle with me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Quiz3": [
+    {
+      "en": [
+        "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Question three. A Poké Ball can catch a Pokémon that belongs to another trainer. True?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ramon"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wrong answer! The penalty is a battle with me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Quiz4": [
+    {
+      "en": [
+        "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Question four. Vulpix evolves into Ninetales once it reaches a high enough level. True?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Derek"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wrong answer! The penalty is a battle with me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Quiz5": [
+    {
+      "en": [
+        "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Question five. A Thunder Stone makes Pikachu evolve. True?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dusty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wrong answer! The penalty is a battle with me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Quiz6": [
+    {
+      "en": [
+        "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Question six. An Electric-type move can hurt a Ground-type Pokémon. True?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Zac"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wrong answer! The penalty is a battle with me!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Right": [
+    {
+      "en": [
+        "Correct! Go on through!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Wrong": [
+    {
+      "en": [
+        "Sorry! Wrong answer!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Opens": [
+    {
+      "en": [
+        "The door slid open!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door": [
+    {
+      "en": [
+        "The door is locked tight. The quiz machine beside it might open it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Blaine": [
+    {
+      "en": [
+        "Blaine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ho! So you solved my riddles. I am Blaine, and this volcano is my Gym!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My Pokémon burn with the heat of the mountain itself. Have you packed any Burn Heals?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I have burned out... You have earned the Volcano Badge!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Volcano Badge from Blaine!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With the Volcano Badge, your Pokémon can climb waterfalls with Waterfall outside of battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take this too. Fire at its fiercest!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM38 is Fire Blast. It's the strongest fire move there is, if it hits!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll rebuild my fire hotter than ever. Come and test it again some day!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuy": [
+    {
+      "en": [
+        "Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yo, champ in the making! Blaine is a firebrand and a quiz fanatic."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Answer his machines right and the doors open. Water Pokémon will cool his fire down fast!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You put out Blaine's fire! What a hot battle that was!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Statue": [
+    {
+      "en": [
+        "Cinnabar Island Pokémon Gym. Leader: Blaine. Winning trainers: {rival}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cinnabar Island Pokémon Gym. Leader: Blaine. Winning trainers: {rival}, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

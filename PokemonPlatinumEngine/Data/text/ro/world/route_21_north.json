@@ -1,0 +1,135 @@
+{
+  "people": {
+    "fisher": {
+      "name": {
+        "en": [
+          "Ronald"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Ronald: Hooked one! Oh, it's a trainer. That'll do too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Ronald: Got away from me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher_2": {
+      "name": {
+        "en": [
+          "Wade"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Wade: Six rods, six bites, six Magikarp. Lucky me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Wade: Not so lucky after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water": {
+      "name": {
+        "en": [
+          "Spencer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Spencer: You can see Pallet Town from here on a clear day. Battle me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Spencer: Off you go, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_water": {
+      "name": {
+        "en": [
+          "Lil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sis and Bro Lil: Keep up, little brother! We have a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sis and Bro Lil: Next time, we'll swim faster."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m_water": {
+      "name": {
+        "en": [
+          "Ian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sis and Bro Ian: My sister says we're the best team on the sea!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sis and Bro Ian: Second best, maybe."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

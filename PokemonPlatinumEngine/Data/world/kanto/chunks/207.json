@@ -108,10 +108,14 @@
   "props": [
     { "model": 0, "name": "gba:Painting", "x": 15, "y": 0, "z": 3.5, "boxX": 14, "boxZ": 3, "width": 2, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:LabMachine", "x": 13.5, "y": 0, "z": 6.5, "boxX": 13, "boxZ": 6, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:WarpPanel", "x": 18.5, "y": 0, "z": 6.5, "boxX": 18, "boxZ": 6, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:WarpPanel", "x": 12.5, "y": 0, "z": 9.5, "boxX": 12, "boxZ": 9, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:LabMachine", "x": 12, "y": 0, "z": 12.5, "boxX": 11, "boxZ": 12, "width": 2, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:WarpPanel", "x": 18.5, "y": 0, "z": 14.5, "boxX": 18, "boxZ": 14, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:LabMachine", "x": 29.5, "y": 0, "z": 14.5, "boxX": 29, "boxZ": 14, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:LabMachine", "x": 31.5, "y": 0, "z": 14.5, "boxX": 31, "boxZ": 14, "width": 1, "depth": 1, "height": 0 },
     { "model": 0, "name": "gba:LabMachine", "x": 29.5, "y": 0, "z": 18.5, "boxX": 29, "boxZ": 18, "width": 1, "depth": 1, "height": 0 },
-    { "model": 0, "name": "gba:LabMachine", "x": 31.5, "y": 0, "z": 18.5, "boxX": 31, "boxZ": 18, "width": 1, "depth": 1, "height": 0 }
+    { "model": 0, "name": "gba:LabMachine", "x": 31.5, "y": 0, "z": 18.5, "boxX": 31, "boxZ": 18, "width": 1, "depth": 1, "height": 0 },
+    { "model": 0, "name": "gba:WarpPanel", "x": 2.5, "y": 0, "z": 20.5, "boxX": 2, "boxZ": 20, "width": 1, "depth": 1, "height": 0 }
   ]
 }

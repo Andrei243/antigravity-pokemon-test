@@ -1,0 +1,66 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Lab"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We study Pokémon of every kind here, from the oldest Fossils to the newest machines.",
+          "Our founder was a famous scientist. He left long ago, but his work goes on."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CinnabarIsland_PokemonLab_Entrance_EventScript_DrFujiPhoto": {
+      "en": [
+        "A photograph of the Lab's founder, a kindly old scientist, smiling beside a small Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CinnabarIsland_PokemonLab_Entrance_EventScript_MeetingRoomSign": {
+      "en": [
+        "Lounge"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CinnabarIsland_PokemonLab_Entrance_EventScript_RAndDRoomSign": {
+      "en": [
+        "Research Room"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CinnabarIsland_PokemonLab_Entrance_EventScript_TestingRoomSign": {
+      "en": [
+        "Testing Room"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

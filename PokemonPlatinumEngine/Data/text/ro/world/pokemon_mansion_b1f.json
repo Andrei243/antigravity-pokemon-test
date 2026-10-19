@@ -1,0 +1,264 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Mansion"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Lewis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Burglar Lewis: Psst. I heard there's a key down here worth a fortune. It's mine!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Burglar Lewis: Keep the key, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Ivan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Ivan: Something terrible was made in this basement. Turn back while you can!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Ivan: You'll go on anyway, won't you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_1": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_2": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_3": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_4": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_5": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_6": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_7": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_8": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_9": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_10": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_11": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_12": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_13": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_14": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_15": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_16": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_17": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_18": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_19": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PokemonMansion_B1F_EventScript_DiarySep1st": {
+      "en": [
+        "A diary, its pages singed.\n\"Autumn. The young one grew too strong, and too angry. We could not hold it...\""
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

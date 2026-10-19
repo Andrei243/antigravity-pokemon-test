@@ -1,0 +1,15 @@
+{
+  // Route 21, its northern half (plan 19 · K6, part b): FireRed's map, our words. The sea road south from Pallet
+  // Town's shore to Cinnabar Island, with fishermen on its grassy islets and swimmers between; Lil and Ian, a sister
+  // and her little brother, battle together as one
+  "area": "route_21_north",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "fisher": { "name": "Ronald", "trainer": { "dialogueBefore": "Fisherman Ronald: Hooked one! Oh, it's a trainer. That'll do too!", "dialogueAfter": "Fisherman Ronald: Got away from me." } },
+    "fisher_2": { "name": "Wade", "trainer": { "dialogueBefore": "Fisherman Wade: Six rods, six bites, six Magikarp. Lucky me!", "dialogueAfter": "Fisherman Wade: Not so lucky after all." } },
+    "swimmer_m_water": { "name": "Spencer", "trainer": { "dialogueBefore": "Swimmer Spencer: You can see Pallet Town from here on a clear day. Battle me first!", "dialogueAfter": "Swimmer Spencer: Off you go, then." } },
+    "swimmer_f_water": { "name": "Lil", "trainer": { "dialogueBefore": "Sis and Bro Lil: Keep up, little brother! We have a battle!", "dialogueAfter": "Sis and Bro Lil: Next time, we'll swim faster." } },
+    "tuber_m_water": { "name": "Ian", "trainer": { "dialogueBefore": "Sis and Bro Ian: My sister says we're the best team on the sea!", "dialogueAfter": "Sis and Bro Ian: Second best, maybe." } }
+  }
+}

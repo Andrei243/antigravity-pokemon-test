@@ -78,6 +78,29 @@ public static class GbaCover
                 // Plan 19 · K5: the paved square before Vermilion's harbour, three by three with its edges (the set
                 // beside the town roads K4 named), which read as the lawn and sand round it
                 (0x1BD, 0x1BF, TerrainCover.Paving), (0x1C5, 0x1C7, TerrainCover.Paving), (0x1CD, 0x1CF, TerrainCover.Paving),
+                // Plan 19 · K6, part b: the rest of the town roads' set (their ends and corners by Saffron City's gates
+                // and Cinnabar Island's lab), every one walked on and none blocked (tools/MapImporter --unknown)
+                (0x178, 0x17F, TerrainCover.Path), (0x191, 0x191, TerrainCover.Path), (0x198, 0x19A, TerrainCover.Path),
+            },
+            // Plan 19 · K6, part b (K5's left-over): Saffron City's streets, which read as lawn: every metatile of its own
+            // tileset walked on and never blocked (tools/MapImporter --unknown SaffronCity) is the city's paving; its
+            // buildings' own metatiles, all blocked, are left for the houses found at their doors
+            ["gTileset_SaffronCity"] = new (int, int, TerrainCover)[]
+            {
+                (0x281, 0x282, TerrainCover.Paving), (0x285, 0x286, TerrainCover.Paving), (0x295, 0x297, TerrainCover.Paving),
+                (0x2A8, 0x2AA, TerrainCover.Paving), (0x2C5, 0x2C7, TerrainCover.Paving), (0x2DC, 0x2DE, TerrainCover.Paving),
+                (0x2E1, 0x2E1, TerrainCover.Paving), (0x2E3, 0x2E5, TerrainCover.Paving), (0x2E8, 0x2ED, TerrainCover.Paving),
+                (0x2F1, 0x2F1, TerrainCover.Paving), (0x2F3, 0x2F5, TerrainCover.Paving), (0x2F8, 0x2FF, TerrainCover.Paving),
+                (0x304, 0x304, TerrainCover.Paving), (0x306, 0x306, TerrainCover.Paving), (0x30E, 0x311, TerrainCover.Paving),
+                (0x314, 0x317, TerrainCover.Paving), (0x327, 0x327, TerrainCover.Paving), (0x333, 0x333, TerrainCover.Paving),
+                (0x33D, 0x33E, TerrainCover.Paving), (0x343, 0x343, TerrainCover.Paving),
+            },
+            // Plan 19 · K6, part b: Cinnabar Island's own open ground, the volcanic island's sandy earth round its lab
+            // and the Mansion's yard
+            ["gTileset_CinnabarIsland"] = new (int, int, TerrainCover)[]
+            {
+                (0x293, 0x293, TerrainCover.Path), (0x29E, 0x2A2, TerrainCover.Path), (0x2A6, 0x2A6, TerrainCover.Path),
+                (0x2AB, 0x2AC, TerrainCover.Path), (0x2B6, 0x2B7, TerrainCover.Path), (0x2BD, 0x2BE, TerrainCover.Path),
             },
             // Plan 19 · K5: Vermilion City's own: the pier's planks south of the square and the gangway at its head
             // (MB_SOUTH_ARROW_WARP, the ways onto the S.S. Anne)

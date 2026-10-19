@@ -1,0 +1,11 @@
+{
+  // The Pokémon Lab's testing room (plan 19 · K6, part b): the scientist who brings Fossils back to life
+  // (cinnabar_island_pokemon_lab_experiment_room.txt), and Garett, who would trade in FireRed (plan 07's)
+  "area": "cinnabar_island_pokemon_lab_experiment_room",
+  "name": "Pokémon Lab",
+  "bgmTrack": "kanto/cinnabar",
+  "people": {
+    "scientist": { "name": "Scientist", "script": "FossilScientist" },
+    "boy": { "name": "Garett", "dialog": [ "I'd trade you one of my Pokémon in a heartbeat, but the trading machine's down." ] }
+  }
+}

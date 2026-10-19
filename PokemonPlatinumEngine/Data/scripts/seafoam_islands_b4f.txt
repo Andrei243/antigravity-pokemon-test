@@ -1,0 +1,35 @@
+# The Seafoam Islands, B4F (plan 19 · K6, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/SeafoamIslands_B4F/scripts.inc).
+#
+# Articuno stands on its ledge until it has been fought (FLAG_FOUGHT_ARTICUNO): beaten or caught it is gone for good;
+# run from, it flies off and is back on the next visit, as FireRed's EventScript_MonFlewAway leaves it. The currents
+# that keep a surfer from its ledge are still once the two boulders dropped from B3F lie across them
+# (FLAG_STOPPED_SEAFOAM_B4F_CURRENT, which world.json's swap reads, as FireRed's OnTransition sets it).
+
+
+script OnEnter
+  if not flag FLAG_FOUGHT_ARTICUNO clearflag FLAG_HIDE_ARTICUNO
+  if flag FLAG_STOPPED_SEAFOAM_B4F_CURRENT end
+  if flag FLAG_HIDE_SEAFOAM_B4F_BOULDER_1 end
+  if flag FLAG_HIDE_SEAFOAM_B4F_BOULDER_2 end
+  setflag FLAG_STOPPED_SEAFOAM_B4F_CURRENT
+  end
+
+script Articuno
+  scene "Articuno"
+  speaker none
+  cry "Articuno"
+  text "Kyaaah!\nThe air turned bitterly cold as the great bird spread its wings!"
+  wildbattle "Articuno" 50
+  if result == 2 goto Fled
+  setflag FLAG_FOUGHT_ARTICUNO
+  setflag FLAG_HIDE_ARTICUNO
+  hide self
+  endscene
+  end
+label Fled
+  setflag FLAG_HIDE_ARTICUNO
+  hide self
+  text "Articuno flew off into the depths of the caves!"
+  endscene
+  end

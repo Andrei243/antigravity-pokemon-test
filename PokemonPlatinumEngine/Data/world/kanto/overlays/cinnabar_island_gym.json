@@ -1,0 +1,49 @@
+{
+  // The Cinnabar Island Gym (plan 19 · K6, part b), its hall as FireRed lays it out: six rooms one after another, each
+  // shut by a door that opens to a right answer at its quiz machine or to the trainer a wrong answer calls out, then
+  // Blaine (cinnabar_island_gym.txt). Its trainers battle by their own records (Kanto's trainers.json)
+  "area": "cinnabar_island_gym",
+  "bgmTrack": "kanto/gym",
+  // The hall of its Leader's type (plan 19 · K4)
+  "arenaType": "Fire",
+  "people": {
+    "blaine": { "name": "Blaine", "script": "Blaine", "still": true },
+    "gym_guy": { "name": "Gym Guide", "script": "GymGuy", "still": true },
+    "quinn": { "name": "Quinn", "npcType": "burglar", "trainer": { "dialogueBefore": "Burglar Quinn: You got it wrong! Now you have to answer to me!", "dialogueAfter": "Burglar Quinn: I should have stuck to quizzes." } },
+    "scientist": { "name": "Erik", "trainer": { "dialogueBefore": "Super Nerd Erik: Fire burns hotter than any question. Let me show you!", "dialogueAfter": "Super Nerd Erik: Extinguished!" } },
+    "avery": { "name": "Avery", "trainer": { "dialogueBefore": "Super Nerd Avery: Wrong answer! A battle is the penalty!", "dialogueAfter": "Super Nerd Avery: The door's open. You earned it." } },
+    "ramon": { "name": "Ramon", "npcType": "burglar", "trainer": { "dialogueBefore": "Burglar Ramon: I used to steal fire Pokémon. Now I train them. Watch!", "dialogueAfter": "Burglar Ramon: Robbed of a win!" } },
+    "derek": { "name": "Derek", "trainer": { "dialogueBefore": "Super Nerd Derek: Blaine taught me everything I know about fire. Here's the first lesson!", "dialogueAfter": "Super Nerd Derek: Class dismissed." } },
+    "dusty": { "name": "Dusty", "npcType": "burglar", "trainer": { "dialogueBefore": "Burglar Dusty: No sneaking past this question! Battle me!", "dialogueAfter": "Burglar Dusty: All right, sneak on." } },
+    "zac": { "name": "Zac", "trainer": { "dialogueBefore": "Super Nerd Zac: Another wrong answer? Then it's my turn!", "dialogueAfter": "Super Nerd Zac: You can answer to Blaine now." } }
+  },
+  "read": {
+    "CinnabarIsland_Gym_EventScript_GymStatue": "Statue",
+    "CinnabarIsland_Gym_EventScript_Quiz1Left": "Quiz1", "CinnabarIsland_Gym_EventScript_Quiz1Right": "Quiz1",
+    "CinnabarIsland_Gym_EventScript_Quiz2Left": "Quiz2", "CinnabarIsland_Gym_EventScript_Quiz2Right": "Quiz2",
+    "CinnabarIsland_Gym_EventScript_Quiz3Left": "Quiz3", "CinnabarIsland_Gym_EventScript_Quiz3Right": "Quiz3",
+    "CinnabarIsland_Gym_EventScript_Quiz4Left": "Quiz4", "CinnabarIsland_Gym_EventScript_Quiz4Right": "Quiz4",
+    "CinnabarIsland_Gym_EventScript_Quiz5Left": "Quiz5", "CinnabarIsland_Gym_EventScript_Quiz5Right": "Quiz5",
+    "CinnabarIsland_Gym_EventScript_Quiz6Left": "Quiz6", "CinnabarIsland_Gym_EventScript_Quiz6Right": "Quiz6"
+  },
+  "signs": {
+    "CinnabarIsland_Gym_EventScript_BlaineFujiPhoto": "An old photograph of two young scientists side by side. One of them has a fine moustache..."
+  },
+  // The six doors FireRed draws into its tiles and opens with setmetatile: shutters of ours on the doorways' tiles
+  // (opened under them), each gone once its quiz is answered or its trainer beaten (FLAG_CINNABAR_GYM_QUIZ_1 to _6),
+  // and all of them once Blaine is
+  "npcs": [
+    { "id": "door_1a", "name": "Locked door", "npcType": "GalacticDoor", "x": 26, "y": 9, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_1", "script": "Door" },
+    { "id": "door_1b", "name": "Locked door", "npcType": "GalacticDoor", "x": 27, "y": 9, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_1", "script": "Door" },
+    { "id": "door_2a", "name": "Locked door", "npcType": "GalacticDoor", "x": 17, "y": 9, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_2", "script": "Door" },
+    { "id": "door_2b", "name": "Locked door", "npcType": "GalacticDoor", "x": 18, "y": 9, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_2", "script": "Door" },
+    { "id": "door_3a", "name": "Locked door", "npcType": "GalacticDoor", "x": 17, "y": 16, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_3", "script": "Door" },
+    { "id": "door_3b", "name": "Locked door", "npcType": "GalacticDoor", "x": 18, "y": 16, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_3", "script": "Door" },
+    { "id": "door_4a", "name": "Locked door", "npcType": "GalacticDoor", "x": 11, "y": 22, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_4", "script": "Door" },
+    { "id": "door_4b", "name": "Locked door", "npcType": "GalacticDoor", "x": 11, "y": 23, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_4", "script": "Door" },
+    { "id": "door_5a", "name": "Locked door", "npcType": "GalacticDoor", "x": 5, "y": 17, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_5", "script": "Door" },
+    { "id": "door_5b", "name": "Locked door", "npcType": "GalacticDoor", "x": 6, "y": 17, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_5", "script": "Door" },
+    { "id": "door_6a", "name": "Locked door", "npcType": "GalacticDoor", "x": 5, "y": 9, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_6", "script": "Door" },
+    { "id": "door_6b", "name": "Locked door", "npcType": "GalacticDoor", "x": 6, "y": 9, "hiddenBy": "FLAG_CINNABAR_GYM_QUIZ_6", "script": "Door" }
+  ]
+}

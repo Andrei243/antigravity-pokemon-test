@@ -173,11 +173,47 @@ partial class Harness
             ("kf5_safari_secret_house", "SafariZone_SecretHouse", 4, 8, Direction.Up),
             ("kf6_fuchsia_center", "FuchsiaCity_PokemonCenter_1F", 7, 7, Direction.Up),
             ("kf7_route15_gate_2f", "Route15_WestEntrance_2F", 6, 7, Direction.Up),
+            // Plan 19 · K6, part b: Cinnabar Island, its rooms and the Pokémon Mansion, the Seafoam Islands' floors, the
+            // Power Plant; Saffron's and Celadon's ways of building and the rooms' new furniture
+            ("kf9_cinnabar_day", "Kanto", 74, 388, Direction.Up),
+            ("kg0_cinnabar_gym_outside", "Kanto", 80, 387, Direction.Up),
+            ("kg1_mansion_outside", "Kanto", 69, 386, Direction.Up),
+            ("kg2_cinnabar_gym", "CinnabarIsland_Gym", 25, 21, Direction.Up),
+            ("kg3_cinnabar_lab", "CinnabarIsland_PokemonLab_Entrance", 4, 8, Direction.Up),
+            ("kg4_cinnabar_lab_testing_room", "CinnabarIsland_PokemonLab_ExperimentRoom", 7, 8, Direction.Up),
+            ("kg5_cinnabar_center", "CinnabarIsland_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("kg6_mansion_1f", "PokemonMansion_1F", 8, 30, Direction.Up),
+            ("kg7_mansion_2f", "PokemonMansion_2F", 14, 18, Direction.Up),
+            ("kg8_mansion_b1f", "PokemonMansion_B1F", 33, 25, Direction.Up),
+            ("kg9_seafoam_1f", "SeafoamIslands_1F", 22, 14, Direction.Up),
+            ("kh0_seafoam_b1f", "SeafoamIslands_B1F", 22, 10, Direction.Up),
+            ("kh1_seafoam_b3f", "SeafoamIslands_B3F", 21, 7, Direction.Down),
+            ("kh2_seafoam_b4f_articuno", "SeafoamIslands_B4F", 9, 4, Direction.Up),
+            ("kh3_power_plant", "PowerPlant", 6, 36, Direction.Up),
+            ("kh4_power_plant_zapdos", "PowerPlant", 5, 13, Direction.Up),
+            ("kh5_saffron_streets", "Kanto", 278, 153, Direction.Up),
+            ("kh6_celadon_houses", "Kanto", 228, 135, Direction.Up),
+            ("kh7_game_corner_slots", "CeladonCity_GameCorner", 8, 12, Direction.Up),
+            ("kh8_silph_pads", "SilphCo_5F", 20, 8, Direction.Up),
+            ("kh9_safari_rest_house_outside", "SafariZone_Center", 26, 20, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
             if (name is "k01_pallet_day" or "k05_viridian_day") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+        }
+        // Plan 19 · K6, part b: the sea routes, surfing beside their swimmers
+        foreach (var (name, x, y, facing) in new[]
+                 {
+                     ("ki0_route19_surfing", 216, 358, Direction.Up), ("ki1_route20_surfing", 108, 390, Direction.Left),
+                     ("ki2_route20_seafoam_mouths", 150, 392, Direction.Up), ("ki3_route21_north_surfing", 72, 325, Direction.Up),
+                     ("ki4_route21_south_surfing", 75, 355, Direction.Up)
+                 })
+        {
+            At("Kanto", x, y, facing);
+            game.Player.SetMode(TravelMode.Surfing);
+            Frames(2); Shot(name);
+            game.Player.SetMode(TravelMode.OnFoot);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -197,6 +233,7 @@ partial class Harness
         At("Kanto", 214, 144, Direction.Up); Frames(2); Shot("ke0_celadon_night");
         At("Kanto", 288, 150, Direction.Up); Frames(2); Shot("ke1_saffron_night");
         At("Kanto", 216, 320, Direction.Up); Frames(2); Shot("kf8_fuchsia_night");
+        At("Kanto", 74, 388, Direction.Up); Frames(2); Shot("ki5_cinnabar_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

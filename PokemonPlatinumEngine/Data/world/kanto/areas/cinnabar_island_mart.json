@@ -1,0 +1,29 @@
+{
+  "key": "cinnabar_island_mart",
+  "index": 333,
+  "name": "Cinnabar Island",
+  "matrix": 280,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "cinnabar_island", "toWarp": 4 },
+    { "x": 4, "z": 7, "to": "cinnabar_island", "toWarp": 4 },
+    { "x": 5, "z": 7, "to": "cinnabar_island", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "clerk", "looks": "clerk", "movement": "look_east", "x": 2, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "CinnabarIsland_Mart_EventScript_Clerk" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_north", "x": 6, "z": 2, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "CinnabarIsland_Mart_EventScript_Woman" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_north", "x": 8, "z": 2, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "CinnabarIsland_Mart_EventScript_Scientist" }
+  ],
+  "signs": [],
+  "triggers": []
+}

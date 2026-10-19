@@ -384,6 +384,12 @@ public static class RegionDatabase
                 "FuchsiaCity_WardensHouse", "FuchsiaCity_House2", "FuchsiaCity_House3",
                 "SafariZone_Center", "SafariZone_East", "SafariZone_North", "SafariZone_West", "SafariZone_Center_RestHouse",
                 "SafariZone_East_RestHouse", "SafariZone_North_RestHouse", "SafariZone_West_RestHouse", "SafariZone_SecretHouse",
+                // Plan 19 · K6, part b: the Seafoam Islands, the Power Plant, Cinnabar Island's rooms and the Pokémon Mansion
+                "SeafoamIslands_1F", "SeafoamIslands_B1F", "SeafoamIslands_B2F", "SeafoamIslands_B3F", "SeafoamIslands_B4F",
+                "PowerPlant", "CinnabarIsland_Gym", "CinnabarIsland_PokemonLab_Entrance", "CinnabarIsland_PokemonLab_Lounge",
+                "CinnabarIsland_PokemonLab_ResearchRoom", "CinnabarIsland_PokemonLab_ExperimentRoom",
+                "CinnabarIsland_PokemonCenter_1F", "CinnabarIsland_PokemonCenter_2F", "CinnabarIsland_Mart",
+                "PokemonMansion_1F", "PokemonMansion_2F", "PokemonMansion_3F", "PokemonMansion_B1F",
             }
         },
         new()

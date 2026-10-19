@@ -422,8 +422,8 @@ public class KantoTests
         Assert.True(BuiltMaps.Value["RockTunnel_1F"].IsDark);
         Assert.True(BuiltMaps.Value["RockTunnel_B1F"].IsDark);
         Assert.False(BuiltMaps.Value["MtMoon_1F"].IsDark);
-        // The Power Plant's doors on Route 10 stay shut until plan 19 · K6
-        Assert.DoesNotContain(Overworld.Warps, w => w.TargetMap.StartsWith("PowerPlant"));
+        // The Power Plant's doors on Route 10, shut until plan 19 · K6, part b, lead into it since
+        Assert.Contains(Overworld.Warps, w => w.TargetMap == "PowerPlant");
     }
 
     [Fact]
@@ -562,5 +562,176 @@ public class KantoTests
         for (int frame = 0; frame < 60; frame++)
             walker.Advance(1f / 60f, Overworld, null, false, _ => { }, _ => { });
         Assert.Equal((slope.X, slope.Y), (walker.GridX, walker.GridY));
+    }
+
+    // ------------------------------------------------------------------ plan 19 · K6, part b: the sea and Cinnabar
+
+    [Fact]
+    public void TheSeaRoutesCinnabarIslandAndTheSeafoamIslandsAreOpenAndWalkedTo()
+    {
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Kanto").Value;
+        foreach (string key in new[] { "route_19", "route_20", "route_21_north", "route_21_south", "cinnabar_island" })
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        foreach (string room in new[] { "SeafoamIslands_1F", "SeafoamIslands_B1F", "SeafoamIslands_B2F", "SeafoamIslands_B3F", "SeafoamIslands_B4F",
+                     "PowerPlant", "CinnabarIsland_Gym", "CinnabarIsland_PokemonLab_ExperimentRoom", "CinnabarIsland_PokemonCenter_2F",
+                     "CinnabarIsland_Mart", "PokemonMansion_1F", "PokemonMansion_2F", "PokemonMansion_3F", "PokemonMansion_B1F" })
+            Assert.True(walked.Keys.Any(m => m.Name == room), $"nobody walks into {room}");
+        // The Seafoam Islands are caves; the Mansion, the Power Plant and the lab are rooms
+        Assert.False(BuiltMaps.Value["SeafoamIslands_B4F"].IsIndoors);
+        Assert.True(BuiltMaps.Value["PokemonMansion_B1F"].IsIndoors);
+        Assert.True(BuiltMaps.Value["PowerPlant"].IsIndoors);
+        Assert.Equal(PokemonType.Fire, BuiltMaps.Value["CinnabarIsland_Gym"].ArenaType);
+    }
+
+    [Fact]
+    public void AHoleLeadsDownAndWhereItLandsLeadsNowhere()
+    {
+        // FireRed's floors keep a warp under each hole above, on plain floor, as the place its faller comes down: the
+        // reader writes it as a landing, which leads nowhere and shuts nothing
+        var b1f = Kanto.Area("seafoam_islands_b1f")!;
+        Assert.Equal(2, b1f.Warps.Count(w => w.Landing == true));
+        var first = BuiltMaps.Value["SeafoamIslands_1F"];
+        var hole = first.GetWarpAt(21, 8)!;
+        Assert.Equal(TileBehavior.Hole, first.BehaviourAt(21, 8));
+        Assert.Equal(("SeafoamIslands_B1F", 21, 8), (hole.TargetMap, hole.TargetX, hole.TargetY));
+        var below = BuiltMaps.Value["SeafoamIslands_B1F"];
+        Assert.Null(below.GetWarpAt(21, 8));
+        Assert.False(below.IsSolid(21, 8));
+        // Each hole takes a boulder pushed into it, and the hole's script shows one of its own on the floor below
+        Assert.Equal("FallFrom1F", first.BoulderPits[(21, 8)]);
+        Assert.Equal("FallFromB3F", BuiltMaps.Value["SeafoamIslands_B3F"].BoulderPits[(6, 18)]);
+    }
+
+    [Fact]
+    public void ACurrentCarriesASurferAndWhoeverFallsInRidesOutOnIt()
+    {
+        Assert.Equal(Direction.Down, FieldMovement.Carries(TileBehavior.CurrentSouth, Direction.Up));
+        Assert.Equal(Direction.Up, FieldMovement.Carries(TileBehavior.CurrentNorth, Direction.Down));
+        Assert.Equal(Direction.Right, FieldMovement.Carries(TileBehavior.CurrentEast, Direction.Left));
+        Assert.Equal(Direction.Left, FieldMovement.Carries(TileBehavior.CurrentWest, Direction.Right));
+
+        // Coming down B2F's hole onto B3F's current, the player rides out on it and is swept down to its foot, where the
+        // way on to B4F is (FireRed's EnterByFalling)
+        var b3f = BuiltMaps.Value["SeafoamIslands_B3F"];
+        Assert.Equal(TileBehavior.CurrentSouth, b3f.BehaviourAt(23, 9));
+        var player = new Player(23, 9);
+        player.ComeDownOn(b3f);
+        Assert.Equal(TravelMode.Surfing, player.Mode);
+        Warp? took = null;
+        for (int frame = 0; frame < 60 * 20 && took == null; frame++)
+            player.Advance(1f / 60f, b3f, null, false, _ => { }, w => took = w);
+        Assert.True(took != null, $"the current left the player at {player.GridX},{player.GridY}");
+        Assert.Equal("SeafoamIslands_B4F", took!.TargetMap);
+
+        // On land nothing changes
+        var walker = new Player(21, 8);
+        walker.ComeDownOn(BuiltMaps.Value["SeafoamIslands_B1F"]);
+        Assert.Equal(TravelMode.OnFoot, walker.Mode);
+    }
+
+    [Fact]
+    public void TheLowestFloorsLieCalmOnceTheirCurrentIsStopped()
+    {
+        // FireRed lays out B3F and B4F again by setmaplayoutindex once two boulders lie across each current: the reader
+        // writes the other layout's chunks and world.json swaps them in by the floor's flag
+        foreach (var (name, flag) in new[] { ("SeafoamIslands_B3F", "FLAG_STOPPED_SEAFOAM_B3F_CURRENT"), ("SeafoamIslands_B4F", "FLAG_STOPPED_SEAFOAM_B4F_CURRENT") })
+        {
+            var map = LoadedWorld.Value.BuildMaps().Single(m => m.Name == name);
+            int Currents() => Enumerable.Range(0, map.Width).SelectMany(x => Enumerable.Range(0, map.Height).Select(y => map.BehaviourAt(x, y)))
+                .Count(b => b is TileBehavior.CurrentNorth or TileBehavior.CurrentSouth or TileBehavior.CurrentEast or TileBehavior.CurrentWest);
+            var place = Assert.Single(map.SwappedPlaces);
+            Assert.Equal(flag, place.Flag);
+            int running = Currents();
+            Assert.True(running > 0, name);
+            Assert.Empty(map.ApplySwappedPlaces(_ => 0, _ => false));
+            Assert.Single(map.ApplySwappedPlaces(_ => 0, f => f == flag));
+            Assert.True(Currents() < running, $"{name} still runs as fast");
+        }
+    }
+
+    [Fact]
+    public void ArticunosLedgeIsReachedOnlyOnceTheLowestCurrentIsStopped()
+    {
+        // From the foot of B3F's ladder down, on foot and surfing as the field's rules allow, a current taking whoever
+        // is on it its own way: Articuno's ledge is out of reach while the current runs, and in reach once it is still
+        foreach (bool stopped in new[] { false, true })
+        {
+            var b4f = LoadedWorld.Value.BuildMaps().Single(m => m.Name == "SeafoamIslands_B4F");
+            if (stopped) b4f.ApplySwappedPlaces(_ => 0, _ => true);
+            var reached = Reach(b4f, 15, 10);
+            bool byArticuno = new[] { (9, 3), (8, 2), (10, 2), (9, 1) }.Any(reached.Contains);
+            Assert.True(byArticuno == stopped, stopped ? "the still water doesn't lead to Articuno" : "the running current lets the player reach Articuno");
+        }
+    }
+
+    /// <summary>Every tile one can come to from a tile of a map, on foot or surfing, carried where a current carries.</summary>
+    private static HashSet<(int, int)> Reach(Map map, int sx, int sy)
+    {
+        var seen = new HashSet<(int, int)>();
+        var states = new HashSet<(int, int, TravelMode)>();
+        var queue = new Queue<(int X, int Y, TravelMode Mode)>();
+        queue.Enqueue((sx, sy, TravelMode.OnFoot));
+        while (queue.Count > 0)
+        {
+            var (x, y, mode) = queue.Dequeue();
+            if (!states.Add((x, y, mode))) continue;
+            seen.Add((x, y));
+            var carried = FieldMovement.Carries(map.BehaviourAt(x, y), Direction.Down);
+            foreach (var dir in carried is { } c ? new[] { c } : new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+            {
+                var walker = new Walker(mode, map.HeightAt(x, y));
+                var step = FieldMovement.Step(map, x, y, dir, walker);
+                if (step.Moves) queue.Enqueue((step.X, step.Y, step.Mode));
+                else if (mode == TravelMode.OnFoot && FieldMovement.CanStartSurf(map, x, y, dir, walker))
+                {
+                    var (dx, dy) = FieldMovement.Delta(dir);
+                    queue.Enqueue((x + dx, y + dy, TravelMode.Surfing));
+                }
+            }
+        }
+        return seen;
+    }
+
+    [Fact]
+    public void CinnabarsGymDoorsAndTheMansionsBarriersStandWhereFireRedDrawsThem()
+    {
+        // The Gym's six doors are shutters on the doorways the layout draws shut, opened under them
+        var gym = BuiltMaps.Value["CinnabarIsland_Gym"];
+        foreach (var (x, y) in new[] { (26, 9), (27, 9), (17, 9), (11, 22), (5, 17), (6, 9) })
+        {
+            Assert.False(gym.IsSolid(x, y), $"the doorway {x},{y} stays a wall");
+            Assert.Contains(gym.Everyone, n => n.NpcType == NPC.GalacticDoorType && n.GridX == x && n.GridY == y);
+        }
+        // The Mansion's barriers: those of the switch's first state and those of its second, on every floor
+        foreach (string floor in new[] { "PokemonMansion_1F", "PokemonMansion_2F", "PokemonMansion_3F", "PokemonMansion_B1F" })
+        {
+            var map = BuiltMaps.Value[floor];
+            var barriers = map.Everyone.Where(n => n.NpcType == NPC.ElectricGateType).ToList();
+            Assert.Contains(barriers, b => b.HiddenBy == "FLAG_POKEMON_MANSION_SWITCH_STATE");
+            Assert.Contains(barriers, b => b.ShownBy == "FLAG_POKEMON_MANSION_SWITCH_STATE");
+            Assert.All(barriers, b => Assert.False(map.IsSolid(b.GridX, b.GridY)));
+        }
+    }
+
+    [Fact]
+    public void CinnabarSaffronAndCeladonBuildInTheirOwnWaysAndTheChaptersLooksAreThere()
+    {
+        Assert.Equal(Architecture.Cinder, Overworld.ArchitectureAt(74, 388));
+        Assert.Contains(Overworld.PlacedBuildings, b => Overworld.AreaAt(b.X0, b.Y1)?.Key == "cinnabar_island");
+        Assert.Equal(Architecture.Jade, Kanto.Overlay("celadon_city")!.Architecture);
+        Assert.Equal(Architecture.Uptown, Kanto.Overlay("saffron_city")!.Architecture);
+        foreach (string zone in new[] { "safari_zone_center", "safari_zone_east", "safari_zone_north", "safari_zone_west" })
+            Assert.Equal(Architecture.Wildwood, Kanto.Overlay(zone)!.Architecture);
+        // Saffron City's streets are paved, not lawn
+        int paved = 0;
+        for (int y = 140; y < 175; y++)
+            for (int x = 260; x < 300; x++)
+                if (Overworld.AreaAt(x, y)?.Key == "saffron_city" && Overworld.GetGroundTile(x, y) == TileType.Paving) paved++;
+        Assert.True(paved > 100, $"only {paved} paved tiles in Saffron City");
+        foreach (string look in new[] { "blaine", "burglar", "tamer", "twins", "crush_kin" })
+            Assert.True(CharacterStyles.Default.Has(look), look);
+        foreach (string song in new[] { "kanto/surf", "kanto/cinnabar", "kanto/pokemon_mansion" })
+            Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists(song), song);
     }
 }

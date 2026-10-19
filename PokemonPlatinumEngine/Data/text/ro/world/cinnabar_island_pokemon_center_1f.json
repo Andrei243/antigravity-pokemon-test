@@ -1,0 +1,87 @@
+{
+  "people": {
+    "cinnabar_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym here is locked. Blaine lost the key somewhere, they say. Careless, for a quiz master!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trading with friends is the quickest way to fill a Pokédex. Sadly, the link is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If you stop a Pokémon from evolving, it can learn some moves sooner. Patience pays!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cinnabar_pokemon_center_bill": {
+      "name": {
+        "en": [
+          "Bill"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ready to set sail? Not quite yet, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

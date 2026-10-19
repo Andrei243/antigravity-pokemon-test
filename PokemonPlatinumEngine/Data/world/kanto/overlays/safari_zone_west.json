@@ -3,6 +3,8 @@
   // lie here in an item ball, and in its far corner is the secret house with HM03
   "area": "safari_zone_west",
   "bgmTrack": "kanto/safari_zone",
+  // The rest houses build as Fuchsia does (plan 19 · K6, part b)
+  "architecture": "Wildwood",
   "trees": "Round",
   "signs": {
     "SafariZone_West_EventScript_AreaSign": "Area 3\nEast: Centre Area",

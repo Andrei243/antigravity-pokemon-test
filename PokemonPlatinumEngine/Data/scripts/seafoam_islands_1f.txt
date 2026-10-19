@@ -1,0 +1,18 @@
+# The Seafoam Islands, 1F (plan 19 · K6, part b). docs/scripts.md describes the language; FireRed's own code drops a
+# boulder pushed onto a hole (its boulders' objects keep, in place of a trainer, the flag of the boulder that shows on
+# the floor below).
+#
+# A boulder come to rest on one of the two holes is gone from here for good (its own flag, setflag own) and shows on
+# the floor below, under the hole: the first boulder there for the first boulder here, the second for the second,
+# whichever hole it went down. Route 20 puts them all back while the currents below still run (route_20.txt).
+
+
+script FallFrom1F
+  hide self
+  setflag own
+  if subject "pushable_boulder" clearflag FLAG_HIDE_SEAFOAM_B1F_BOULDER_1
+  if subject "pushable_boulder_2" clearflag FLAG_HIDE_SEAFOAM_B1F_BOULDER_2
+  sound "bump"
+  speaker none
+  text "The boulder dropped through the hole to the floor below!"
+  end

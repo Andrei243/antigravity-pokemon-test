@@ -1,0 +1,25 @@
+{
+  // Route 19 (plan 19 · K6, part b): FireRed's map, our words. A strip of beach below Fuchsia City and the sea
+  // beyond it, out to Route 20; its swimmers battle by their own records (Kanto's trainers.json), and Lia and Luc,
+  // a sister and her little brother, battle together as one
+  "area": "route_19",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "swimmer_m_land": { "name": "Reece", "trainer": { "dialogueBefore": "Swimmer Reece: I'm warming up on the sand before I swim out. Warm me up some more!", "dialogueAfter": "Swimmer Reece: That cooled me right down." } },
+    "swimmer_m_land_2": { "name": "Richard", "trainer": { "dialogueBefore": "Swimmer Richard: The sea's all mine from here to the islands. Want to race for it?", "dialogueAfter": "Swimmer Richard: Fine, share it with me." } },
+    "swimmer_m_water": { "name": "Tony", "trainer": { "dialogueBefore": "Swimmer Tony: Surfing on a Pokémon is cheating! Real swimmers use their arms!", "dialogueAfter": "Swimmer Tony: My arms are tired now." } },
+    "swimmer_m_water_2": { "name": "Matthew", "trainer": { "dialogueBefore": "Swimmer Matthew: Out here, nobody can hear you lose. Shall we?", "dialogueAfter": "Swimmer Matthew: Good thing nobody heard that." } },
+    "swimmer_m_water_3": { "name": "Douglas", "trainer": { "dialogueBefore": "Swimmer Douglas: I swim out here every morning. The water Pokémon know me by now!", "dialogueAfter": "Swimmer Douglas: They'll be laughing at me tomorrow." } },
+    "swimmer_m_water_4": { "name": "David", "trainer": { "dialogueBefore": "Swimmer David: Fancy a battle on the waves? Mind you don't fall in!", "dialogueAfter": "Swimmer David: I'm the one who fell in." } },
+    "swimmer_m_water_5": { "name": "Axle", "trainer": { "dialogueBefore": "Swimmer Axle: I brought my whole team out for a swim. Five against one!", "dialogueAfter": "Swimmer Axle: Five wasn't enough." } },
+    "swimmer_f_water": { "name": "Alice", "trainer": { "dialogueBefore": "Swimmer Alice: A tan, a swim and a battle. A perfect day!", "dialogueAfter": "Swimmer Alice: Two out of three's not bad." } },
+    "swimmer_f_water_2": { "name": "Connie", "trainer": { "dialogueBefore": "Swimmer Connie: My Staryu glitter like real stars on the water!", "dialogueAfter": "Swimmer Connie: My stars have set." } },
+    "swimmer_f_water_3": { "name": "Anya", "trainer": { "dialogueBefore": "Swimmer Anya: The current pulls you out here. Hold on tight!", "dialogueAfter": "Swimmer Anya: I got pulled under instead." } },
+    "swimmer_f_water_4": { "name": "Lia", "trainer": { "dialogueBefore": "Sis and Bro Lia: My little brother and I always battle together!", "dialogueAfter": "Sis and Bro Lia: We'll practise more, I promise." } },
+    "tuber_m_water": { "name": "Luc", "trainer": { "dialogueBefore": "Sis and Bro Luc: Me and my sister are a team! Ready?", "dialogueAfter": "Sis and Bro Luc: Sis, we lost..." } }
+  },
+  "signs": {
+    "Route19_EventScript_RouteSign": "Sea Route 19\nFuchsia City - Seafoam Islands"
+  }
+}

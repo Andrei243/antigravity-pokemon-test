@@ -1,0 +1,43 @@
+{
+  "displayName": {
+    "en": [
+      "Power Plant"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "zapdos": {
+      "name": {
+        "en": [
+          "Zapdos"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "item_ball_6": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "item_ball_7": {
+      "name": {
+        "en": [
+          "Poké Ball"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

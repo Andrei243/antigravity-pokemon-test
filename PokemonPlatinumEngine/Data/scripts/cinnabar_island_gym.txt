@@ -1,0 +1,209 @@
+# The Cinnabar Island Gym (plan 19 · K6, part b). docs/scripts.md describes the language; the lines and the six
+# questions are our own, on FireRed's beats (data/maps/CinnabarIsland_Gym/scripts.inc).
+#
+# Six doors stand between the entrance and Blaine, each with a quiz machine before it. A right answer opens its door
+# (FLAG_CINNABAR_GYM_QUIZ_1 to _6, the shutters' flags); a wrong one calls out the trainer who keeps that room, and
+# beating them opens it as well. A machine answered once opens nothing more. Blaine gives the Volcano Badge
+# (FLAG_BADGE07_GET is the badge itself, `givebadge volcano`, which opens Waterfall in the field) and TM38, Fire Blast
+# (FLAG_GOT_TM38_FROM_BLAINE), counts his seven trainers beaten and leaves every door open. FireRed then has Bill wait
+# outside to sail to One Island (VAR_MAP_SCENE_CINNABAR_ISLAND 1): his scene is plan 19 · K7's.
+
+
+script Quiz1
+  speaker none
+  text "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+  ask "Question one. Caterpie evolves into Metapod. True?"
+  if yes goto Right1
+  call Wrong
+  if defeated "kanto_burglar_quinn" end
+  speaker "Quinn"
+  say "Wrong answer! The penalty is a battle with me!"
+  battle quinn
+label Open1
+  if flag FLAG_CINNABAR_GYM_QUIZ_1 end
+  call Opens
+  setflag FLAG_CINNABAR_GYM_QUIZ_1
+  end
+label Right1
+  call Right
+  goto Open1
+
+script Quiz2
+  speaker none
+  text "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+  ask "Question two. A Fire-type move hits a Water-type Pokémon hard. True?"
+  if no goto Right2
+  call Wrong
+  if defeated "kanto_super_nerd_avery" end
+  speaker "Avery"
+  say "Wrong answer! The penalty is a battle with me!"
+  battle avery
+label Open2
+  if flag FLAG_CINNABAR_GYM_QUIZ_2 end
+  call Opens
+  setflag FLAG_CINNABAR_GYM_QUIZ_2
+  end
+label Right2
+  call Right
+  goto Open2
+
+script Quiz3
+  speaker none
+  text "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+  ask "Question three. A Poké Ball can catch a Pokémon that belongs to another trainer. True?"
+  if no goto Right3
+  call Wrong
+  if defeated "kanto_burglar_ramon" end
+  speaker "Ramon"
+  say "Wrong answer! The penalty is a battle with me!"
+  battle ramon
+label Open3
+  if flag FLAG_CINNABAR_GYM_QUIZ_3 end
+  call Opens
+  setflag FLAG_CINNABAR_GYM_QUIZ_3
+  end
+label Right3
+  call Right
+  goto Open3
+
+script Quiz4
+  speaker none
+  text "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+  ask "Question four. Vulpix evolves into Ninetales once it reaches a high enough level. True?"
+  if no goto Right4
+  call Wrong
+  if defeated "kanto_super_nerd_derek" end
+  speaker "Derek"
+  say "Wrong answer! The penalty is a battle with me!"
+  battle derek
+label Open4
+  if flag FLAG_CINNABAR_GYM_QUIZ_4 end
+  call Opens
+  setflag FLAG_CINNABAR_GYM_QUIZ_4
+  end
+label Right4
+  call Right
+  goto Open4
+
+script Quiz5
+  speaker none
+  text "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+  ask "Question five. A Thunder Stone makes Pikachu evolve. True?"
+  if yes goto Right5
+  call Wrong
+  if defeated "kanto_burglar_dusty" end
+  speaker "Dusty"
+  say "Wrong answer! The penalty is a battle with me!"
+  battle dusty
+label Open5
+  if flag FLAG_CINNABAR_GYM_QUIZ_5 end
+  call Opens
+  setflag FLAG_CINNABAR_GYM_QUIZ_5
+  end
+label Right5
+  call Right
+  goto Open5
+
+script Quiz6
+  speaker none
+  text "A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word."
+  ask "Question six. An Electric-type move can hurt a Ground-type Pokémon. True?"
+  if no goto Right6
+  call Wrong
+  if defeated "kanto_super_nerd_zac" end
+  speaker "Zac"
+  say "Wrong answer! The penalty is a battle with me!"
+  battle zac
+label Open6
+  if flag FLAG_CINNABAR_GYM_QUIZ_6 end
+  call Opens
+  setflag FLAG_CINNABAR_GYM_QUIZ_6
+  end
+label Right6
+  call Right
+  goto Open6
+
+script Right
+  fanfare levelup
+  speaker none
+  text "Correct! Go on through!"
+  return
+
+script Wrong
+  sound "error"
+  speaker none
+  text "Sorry! Wrong answer!"
+  return
+
+script Opens
+  sound "door_slide"
+  speaker none
+  text "The door slid open!"
+  return
+
+script Door
+  speaker none
+  text "The door is locked tight. The quiz machine beside it might open it."
+  end
+
+
+script Blaine
+  face blaine player
+  speaker "Blaine"
+  if badge volcano goto Won
+  scene "Blaine"
+  say "Ho! So you solved my riddles. I am Blaine, and this volcano is my Gym!"
+  say "My Pokémon burn with the heat of the mountain itself. Have you packed any Burn Heals?"
+  battle self as "kanto_leader_blaine"
+  say "I have burned out... You have earned the Volcano Badge!"
+  givebadge volcano
+  text "{player} received the Volcano Badge from Blaine!"
+  say "With the Volcano Badge, your Pokémon can climb waterfalls with Waterfall outside of battle."
+  setflag FLAG_DEFEATED_BLAINE
+  setvar VAR_MAP_SCENE_CINNABAR_ISLAND 1
+  defeat "kanto_burglar_quinn"
+  defeat "kanto_super_nerd_erik"
+  defeat "kanto_super_nerd_avery"
+  defeat "kanto_burglar_ramon"
+  defeat "kanto_super_nerd_derek"
+  defeat "kanto_burglar_dusty"
+  defeat "kanto_super_nerd_zac"
+  setflag FLAG_CINNABAR_GYM_QUIZ_1
+  setflag FLAG_CINNABAR_GYM_QUIZ_2
+  setflag FLAG_CINNABAR_GYM_QUIZ_3
+  setflag FLAG_CINNABAR_GYM_QUIZ_4
+  setflag FLAG_CINNABAR_GYM_QUIZ_5
+  setflag FLAG_CINNABAR_GYM_QUIZ_6
+label Tm
+  say "Take this too. Fire at its fiercest!"
+  give "TM38"
+  setflag FLAG_GOT_TM38_FROM_BLAINE
+  say "TM38 is Fire Blast. It's the strongest fire move there is, if it hits!"
+  endscene
+  end
+label Won
+  if not flag FLAG_GOT_TM38_FROM_BLAINE goto Tm
+  say "I'll rebuild my fire hotter than ever. Come and test it again some day!"
+  end
+
+
+script GymGuy
+  speaker "Guide"
+  if flag FLAG_DEFEATED_BLAINE goto Won
+  say "Yo, champ in the making! Blaine is a firebrand and a quiz fanatic."
+  say "Answer his machines right and the doors open. Water Pokémon will cool his fire down fast!"
+  end
+label Won
+  say "You put out Blaine's fire! What a hot battle that was!"
+  end
+
+
+# The statues by the door: who has beaten Blaine.
+script Statue
+  speaker none
+  if badge volcano goto Won
+  text "Cinnabar Island Pokémon Gym. Leader: Blaine. Winning trainers: {rival}."
+  end
+label Won
+  text "Cinnabar Island Pokémon Gym. Leader: Blaine. Winning trainers: {rival}, {player}."
+  end

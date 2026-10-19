@@ -1,0 +1,305 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Mansion"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "scientist": {
+      "name": {
+        "en": [
+          "Ted"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Ted: This house is full of secrets. And you're not getting any of them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Ted: Fine, find them yourself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Johnson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Johnson: I came here on a dare. A battle's scarier than ghosts, right?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Johnson: Much scarier!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_1": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_2": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_3": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_4": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_5": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_6": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_7": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_8": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_9": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_10": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_11": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_12": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_13": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_14": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_15": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_16": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_17": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_18": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_19": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_20": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_21": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_22": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_23": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_24": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

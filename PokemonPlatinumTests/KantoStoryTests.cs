@@ -1467,4 +1467,229 @@ public class KantoStoryTests
         Assert.True(game.Story.Has("FLAG_TUTOR_SUBSTITUTE"));
         Assert.Empty(game.Talk(tutor).Asked);
     }
+
+    // ------------------------------------------------------------------ plan 19 · K6, part b: the sea and Cinnabar
+
+    [Fact]
+    public void BlainesQuizOpensItsDoorsAndBlaineGivesTheVolcanoBadge()
+    {
+        var game = PastPewter();
+        game.Arrive("CinnabarIsland_Gym", 25, 22);
+        Assert.NotNull(game.Present("door_1a"));
+        // A right answer opens the door with no battle
+        game.Answers.Enqueue(0);
+        var right = game.Play(Scripts.Find("Quiz1", "cinnabar_island_gym")!);
+        Assert.DoesNotContain(right.Log, l => l.StartsWith("battle"));
+        Assert.True(game.Story.Has("FLAG_CINNABAR_GYM_QUIZ_1"));
+        Assert.Null(game.Present("door_1a"));
+        // A wrong one calls out the room's trainer, and beating them opens it
+        game.Answers.Enqueue(0);
+        var wrong = game.Play(Scripts.Find("Quiz2", "cinnabar_island_gym")!);
+        Assert.Contains(wrong.Log, l => l.StartsWith("battle kanto_super_nerd_avery Won"));
+        Assert.True(game.Story.Has("FLAG_CINNABAR_GYM_QUIZ_2"));
+        // Once the trainer is beaten, a wrong answer calls nobody out
+        game.Story.Unset("FLAG_CINNABAR_GYM_QUIZ_2");
+        game.Answers.Enqueue(0);
+        Assert.DoesNotContain(game.Play(Scripts.Find("Quiz2", "cinnabar_island_gym")!).Log, l => l.StartsWith("battle"));
+        Assert.False(game.Story.Has("FLAG_CINNABAR_GYM_QUIZ_2"));
+
+        var blaine = game.Talk("blaine");
+        Assert.Contains(blaine.Log, l => l.StartsWith("battle kanto_leader_blaine Won"));
+        Assert.True(game.Story.HasBadge("Kanto", "Volcano"));
+        Assert.Equal(1, Count(game, "TM38"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_CINNABAR_ISLAND"));
+        for (int n = 1; n <= 6; n++) Assert.True(game.Story.Has($"FLAG_CINNABAR_GYM_QUIZ_{n}"), $"door {n}");
+        foreach (string id in new[] { "kanto_burglar_quinn", "kanto_super_nerd_erik", "kanto_burglar_ramon", "kanto_super_nerd_derek", "kanto_burglar_dusty", "kanto_super_nerd_zac" })
+            Assert.True(game.Story.HasDefeated(id), id);
+        Assert.Equal("Volcano", FieldMoveRules.BadgeFor(FieldMove.Waterfall, "Kanto"));
+        Assert.DoesNotContain(game.Talk("blaine").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, Count(game, "TM38"));
+        // Bill's scene outside is plan 19 · K7's: he stays out of sight
+        game.Arrive("Kanto", 80, 388);
+        Assert.True(game.Story.Has("FLAG_HIDE_CINNABAR_BILL"));
+    }
+
+    [Fact]
+    public void CinnabarsGymDoorIsLockedUntilTheMansionsSecretKeyIsFound()
+    {
+        var game = PastPewter();
+        game.Arrive("Kanto", 80, 388);
+        Assert.True(game.Fires("LockedGymDoor"));
+        var turned = game.Step("LockedGymDoor");
+        Assert.Contains(turned.Transcript, l => l.Text.Contains("locked"));
+        // The key's ball in the Mansion's basement, picked up
+        game.Arrive("PokemonMansion_B1F", 34, 28);
+        var key = game.Present("item_ball_4")!;
+        Assert.Equal("Secret Key", key.Item);
+        game.Talk(key);
+        Assert.Equal(1, Count(game, "Secret Key"));
+        game.Arrive("Kanto", 80, 388);
+        Assert.False(game.Fires("LockedGymDoor"));
+    }
+
+    [Fact]
+    public void TheMansionsSwitchTurnsEveryBarrierOver()
+    {
+        var game = PastPewter();
+        game.Arrive("PokemonMansion_1F", 8, 32);
+        Assert.NotNull(game.Present("barrier_1"));
+        Assert.Null(game.Present("barrier_19"));
+        game.Answers.Enqueue(1);
+        game.Play(Scripts.Find("PokemonMansionSwitch", "pokemon_mansion_1f")!);
+        Assert.NotNull(game.Present("barrier_1"));
+        game.Answers.Enqueue(0);
+        game.Play(Scripts.Find("PokemonMansionSwitch", "pokemon_mansion_1f")!);
+        Assert.True(game.Story.Has("FLAG_POKEMON_MANSION_SWITCH_STATE"));
+        Assert.Null(game.Present("barrier_1"));
+        Assert.NotNull(game.Present("barrier_19"));
+        // On every floor at once, and back again
+        game.Arrive("PokemonMansion_B1F", 34, 28);
+        Assert.Null(game.Present("barrier_1"));
+        Assert.NotNull(game.Present("barrier_10"));
+        game.Answers.Enqueue(0);
+        game.Play(Scripts.Find("PokemonMansionSwitch", "pokemon_mansion_b1f")!);
+        Assert.False(game.Story.Has("FLAG_POKEMON_MANSION_SWITCH_STATE"));
+        Assert.NotNull(game.Present("barrier_1"));
+    }
+
+    [Fact]
+    public void SeafoamsBouldersFallFloorByFloorAndStillTheCurrentsWhichRouteTwentyLeavesAlone()
+    {
+        var game = PastPewter();
+        // Coming to Route 20 puts every boulder where it starts
+        game.Arrive("Kanto", 150, 390);
+        Assert.Equal("route_20", game.Map.AreaAt(150, 390)?.Key);
+        Assert.True(game.Story.Has("FLAG_HIDE_SEAFOAM_B1F_BOULDER_1"));
+        Assert.False(game.Story.Has("FLAG_HIDE_SEAFOAM_1F_BOULDER_1"));
+        // Each boulder down a hole is gone from its floor and shows on the floor below, its own below its own
+        foreach (var (floor, file, script, boulders) in new[]
+                 {
+                     ("SeafoamIslands_1F", "seafoam_islands_1f", "FallFrom1F", new[] { ("pushable_boulder", "FLAG_HIDE_SEAFOAM_B1F_BOULDER_1"), ("pushable_boulder_2", "FLAG_HIDE_SEAFOAM_B1F_BOULDER_2") }),
+                     ("SeafoamIslands_B1F", "seafoam_islands_b1f", "FallFromB1F", new[] { ("pushable_boulder", "FLAG_HIDE_SEAFOAM_B2F_BOULDER_1"), ("pushable_boulder_2", "FLAG_HIDE_SEAFOAM_B2F_BOULDER_2") }),
+                     ("SeafoamIslands_B2F", "seafoam_islands_b2f", "FallFromB2F", new[] { ("pushable_boulder", "FLAG_HIDE_SEAFOAM_B3F_BOULDER_1"), ("pushable_boulder_2", "FLAG_HIDE_SEAFOAM_B3F_BOULDER_2") })
+                 })
+        {
+            game.Arrive(floor, 10, 7);
+            foreach (var (key, below) in boulders)
+            {
+                var boulder = game.Present(key)!;
+                Assert.Equal(PropType.StrengthBoulder, boulder.Obstacle);
+                string own = boulder.HiddenBy!;
+                game.Play(Scripts.Find(script, file)!, boulder);
+                Assert.True(game.Story.Has(own), own);
+                Assert.False(game.Story.Has(below), below);
+                Assert.Null(game.Present(key));
+            }
+        }
+        // Both on B3F lie across its current, and coming down stills it for good
+        Assert.False(game.Story.Has("FLAG_STOPPED_SEAFOAM_B3F_CURRENT"));
+        game.Arrive("SeafoamIslands_B3F", 8, 15);
+        Assert.True(game.Story.Has("FLAG_STOPPED_SEAFOAM_B3F_CURRENT"));
+        Assert.NotNull(game.Present("pushable_boulder"));
+        Assert.NotNull(game.Present("pushable_boulder_2"));
+        // B3F's two that matter go down to B4F, and still its current too
+        foreach (var (key, below) in new[] { ("pushable_boulder_6", "FLAG_HIDE_SEAFOAM_B4F_BOULDER_1"), ("pushable_boulder_3", "FLAG_HIDE_SEAFOAM_B4F_BOULDER_2") })
+        {
+            game.Play(Scripts.Find("FallFromB3F", "seafoam_islands_b3f")!, game.Present(key)!);
+            Assert.False(game.Story.Has(below), below);
+        }
+        game.Arrive("SeafoamIslands_B4F", 15, 10);
+        Assert.True(game.Story.Has("FLAG_STOPPED_SEAFOAM_B4F_CURRENT"));
+        // Route 20 leaves a still current's boulders where they are
+        game.Arrive("Kanto", 150, 390);
+        Assert.False(game.Story.Has("FLAG_HIDE_SEAFOAM_B3F_BOULDER_1"));
+        Assert.False(game.Story.Has("FLAG_HIDE_SEAFOAM_B4F_BOULDER_1"));
+    }
+
+    [Theory]
+    [InlineData("SeafoamIslands_B4F", 15, 10, "articuno", "Articuno", "FLAG_FOUGHT_ARTICUNO", "FLAG_HIDE_ARTICUNO")]
+    [InlineData("PowerPlant", 5, 37, "zapdos", "Zapdos", "FLAG_FOUGHT_ZAPDOS", "FLAG_HIDE_ZAPDOS")]
+    public void TheLegendaryBirdFliesOffWhenRunFromAndIsGoneForGoodOnceFought(string map, int x, int y, string key, string species, string fought, string hide)
+    {
+        var game = PastPewter();
+        game.Arrive(map, x, y);
+        Assert.NotNull(game.Present(key));
+        game.Fight = BattleOutcome.Fled;
+        var fled = game.Talk(key);
+        Assert.Contains(fled.Log, l => l.StartsWith($"wildbattle {species} 50"));
+        Assert.Null(game.Present(key));
+        Assert.False(game.Story.Has(fought));
+        game.Arrive(map, x, y);
+        Assert.NotNull(game.Present(key));
+        game.Fight = BattleOutcome.Won;
+        game.Talk(key);
+        Assert.True(game.Story.Has(fought));
+        Assert.True(game.Story.Has(hide));
+        game.Arrive(map, x, y);
+        Assert.Null(game.Present(key));
+    }
+
+    [Fact]
+    public void ThePowerPlantsElectrodeLieInWaitAsPokeBallsAndAreGoneOnceFought()
+    {
+        var game = PastPewter();
+        game.Arrive("PowerPlant", 5, 37);
+        foreach (var (key, flag) in new[] { ("item_ball_7", "FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1"), ("item_ball_6", "FLAG_FOUGHT_POWER_PLANT_ELECTRODE_2") })
+        {
+            game.Fight = BattleOutcome.Fled;
+            var met = game.Talk(key);
+            Assert.Contains(met.Log, l => l.StartsWith("wildbattle Electrode 34"));
+            Assert.True(game.Story.Has(flag), flag);
+            Assert.Null(game.Present(key));
+        }
+        game.Arrive("PowerPlant", 5, 37);
+        Assert.Null(game.Present("item_ball_6"));
+        Assert.NotNull(game.Present("item_ball_5"));
+    }
+
+    [Fact]
+    public void CinnabarsLabBringsAFossilBackAtLevelFiveOnceThePlayerHasGoneOut()
+    {
+        var game = PastPewter();
+        game.Bag.AddItem(ItemDatabase.Get("Helix Fossil")!, 1);
+        game.Arrive("CinnabarIsland_PokemonLab_ExperimentRoom", 7, 8);
+        game.Answers.Enqueue(0);
+        game.Talk("scientist");
+        Assert.Equal(0, Count(game, "Helix Fossil"));
+        game.Talk("scientist");
+        Assert.Single(game.Party.Members);
+        game.Story.ClearLocal();
+        game.Talk("scientist");
+        var revived = game.Party.Members[^1];
+        Assert.Equal("Omanyte", revived.Species.Name);
+        Assert.Equal(5, revived.Level);
+    }
+
+    [Fact]
+    public void TheLabsResearcherTeachesMetronomeOnce()
+    {
+        var game = PastPewter();
+        Assert.Equal(TutorAnswer.Able, MoveTutors.ForKanto(new Pokemon(PokemonDatabase.Get("Clefairy")!, 20), "Metronome"));
+        game.Party.Members.Clear();
+        game.Party.Members.Add(new Pokemon(PokemonDatabase.Get("Clefairy")!, 20));
+        game.Arrive("CinnabarIsland_PokemonLab_ResearchRoom", 7, 8);
+        game.Answers.Enqueue(0);
+        game.Talk("poke_maniac");
+        Assert.True(game.Party.Members[0].Knows("Metronome") || game.Story.Has("FLAG_TUTOR_METRONOME"));
+        Assert.True(game.Story.Has("FLAG_TUTOR_METRONOME"));
+        Assert.Empty(game.Talk("poke_maniac").Asked);
+    }
+
+    [Fact]
+    public void ANewGameOfKantoHidesBillAndTheFerryOnCinnabarIsland()
+    {
+        var game = new Game();
+        foreach (string flag in new[] { "FLAG_HIDE_CINNABAR_BILL", "FLAG_HIDE_CINNABAR_SEAGALLOP", "FLAG_HIDE_CINNABAR_POKECENTER_BILL" })
+            Assert.True(game.Story.Has(flag), flag);
+        // A save from before the chapter, which never came here, has the places' own arrivals hide them
+        var older = PastPewter();
+        foreach (string flag in new[] { "FLAG_HIDE_CINNABAR_BILL", "FLAG_HIDE_CINNABAR_SEAGALLOP", "FLAG_HIDE_CINNABAR_POKECENTER_BILL" })
+            older.Story.Unset(flag);
+        older.Arrive("Kanto", 80, 388);
+        older.Arrive("CinnabarIsland_PokemonCenter_1F", 7, 7);
+        Assert.True(older.Story.Has("FLAG_HIDE_CINNABAR_BILL"));
+        Assert.True(older.Story.Has("FLAG_HIDE_CINNABAR_SEAGALLOP"));
+        Assert.True(older.Story.Has("FLAG_HIDE_CINNABAR_POKECENTER_BILL"));
+        Assert.Null(older.Present("cinnabar_pokemon_center_bill"));
+    }
 }

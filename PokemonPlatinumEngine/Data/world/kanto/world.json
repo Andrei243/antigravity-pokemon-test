@@ -6,6 +6,13 @@
   "region": "Kanto",
   // A GBA game's houses are drawn into its tiles: each is found at its door (WorldMapBuilder.BuildingsAtDoors)
   "buildingsAtDoors": true,
+  // The Seafoam Islands' two lowest floors as FireRed lays them once two boulders lie across their currents
+  // (setmaplayoutindex: LAYOUT_SEAFOAM_ISLANDS_B3F_CURRENT_STOPPED and B4F's), written by the importer after every
+  // matrix's chunks (plan 19 · K6, part b)
+  "swaps": [
+    { "map": "SeafoamIslands_B3F", "flag": "FLAG_STOPPED_SEAFOAM_B3F_CURRENT", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 651 }, { "chunkX": 1, "chunkY": 0, "chunk": 652 } ] },
+    { "map": "SeafoamIslands_B4F", "flag": "FLAG_STOPPED_SEAFOAM_B4F_CURRENT", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 653 }, { "chunkX": 1, "chunkY": 0, "chunk": 654 } ] }
+  ],
   "maps": [
     // The overworld: FireRed's connected maps stitched into one, 416 by 416 tiles, Pallet Town at its south-west
     { "name": "Kanto", "matrix": 0, "trees": "Round" },
@@ -209,7 +216,27 @@
     { "name": "SafariZone_East_RestHouse", "matrix": 74, "area": "safari_zone_east_rest_house", "trees": "Round", "setting": "Indoors" },
     { "name": "SafariZone_North_RestHouse", "matrix": 75, "area": "safari_zone_north_rest_house", "trees": "Round", "setting": "Indoors" },
     { "name": "SafariZone_West_RestHouse", "matrix": 76, "area": "safari_zone_west_rest_house", "trees": "Round", "setting": "Indoors" },
-    { "name": "SafariZone_SecretHouse", "matrix": 77, "area": "safari_zone_secret_house", "trees": "Round", "setting": "Indoors" }
+    { "name": "SafariZone_SecretHouse", "matrix": 77, "area": "safari_zone_secret_house", "trees": "Round", "setting": "Indoors" },
+    // Plan 19 · K6, part b: the Seafoam Islands' five floors (FireRed's MAP_TYPE_UNDERGROUND, so caves), the Power
+    // Plant on Route 10's river (MAP_TYPE_INDOOR), Cinnabar Island's rooms and the Pokémon Mansion's four floors
+    { "name": "SeafoamIslands_1F", "matrix": 89, "area": "seafoam_islands_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafoamIslands_B1F", "matrix": 90, "area": "seafoam_islands_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafoamIslands_B2F", "matrix": 91, "area": "seafoam_islands_b2f", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafoamIslands_B3F", "matrix": 92, "area": "seafoam_islands_b3f", "trees": "Round", "setting": "Cave" },
+    { "name": "SeafoamIslands_B4F", "matrix": 93, "area": "seafoam_islands_b4f", "trees": "Round", "setting": "Cave" },
+    { "name": "PowerPlant", "matrix": 101, "area": "power_plant", "trees": "Round", "setting": "Indoors" },
+    { "name": "CinnabarIsland_Gym", "matrix": 273, "area": "cinnabar_island_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "CinnabarIsland_PokemonLab_Entrance", "matrix": 274, "area": "cinnabar_island_pokemon_lab_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "CinnabarIsland_PokemonLab_Lounge", "matrix": 275, "area": "cinnabar_island_pokemon_lab_lounge", "trees": "Round", "setting": "Indoors" },
+    { "name": "CinnabarIsland_PokemonLab_ResearchRoom", "matrix": 276, "area": "cinnabar_island_pokemon_lab_research_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "CinnabarIsland_PokemonLab_ExperimentRoom", "matrix": 277, "area": "cinnabar_island_pokemon_lab_experiment_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "CinnabarIsland_PokemonCenter_1F", "matrix": 278, "area": "cinnabar_island_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "CinnabarIsland_PokemonCenter_2F", "matrix": 279, "area": "cinnabar_island_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "CinnabarIsland_Mart", "matrix": 280, "area": "cinnabar_island_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonMansion_1F", "matrix": 65, "area": "pokemon_mansion_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonMansion_2F", "matrix": 66, "area": "pokemon_mansion_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonMansion_3F", "matrix": 67, "area": "pokemon_mansion_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonMansion_B1F", "matrix": 68, "area": "pokemon_mansion_b1f", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 19 · K1: Pallet Town, Route 1 and Viridian City, with their rooms
@@ -279,6 +306,15 @@
     "fuchsia_city_gym", "fuchsia_city_house_1", "fuchsia_city_pokemon_center_1f", "fuchsia_city_pokemon_center_2f",
     "fuchsia_city_wardens_house", "fuchsia_city_house_2", "fuchsia_city_house_3",
     "safari_zone_center", "safari_zone_east", "safari_zone_north", "safari_zone_west", "safari_zone_center_rest_house",
-    "safari_zone_east_rest_house", "safari_zone_north_rest_house", "safari_zone_west_rest_house", "safari_zone_secret_house"
+    "safari_zone_east_rest_house", "safari_zone_north_rest_house", "safari_zone_west_rest_house", "safari_zone_secret_house",
+    // Plan 19 · K6, part b: the sea west of Fuchsia City (Routes 19 and 20) with the Seafoam Islands, Route 21 north
+    // of Cinnabar Island to Pallet Town, Cinnabar Island with its rooms and the Pokémon Mansion, and the Power Plant
+    "route_19", "route_20", "route_21_north", "route_21_south",
+    "seafoam_islands_1f", "seafoam_islands_b1f", "seafoam_islands_b2f", "seafoam_islands_b3f", "seafoam_islands_b4f",
+    "cinnabar_island", "cinnabar_island_gym", "cinnabar_island_pokemon_lab_entrance", "cinnabar_island_pokemon_lab_lounge",
+    "cinnabar_island_pokemon_lab_research_room", "cinnabar_island_pokemon_lab_experiment_room",
+    "cinnabar_island_pokemon_center_1f", "cinnabar_island_pokemon_center_2f", "cinnabar_island_mart",
+    "pokemon_mansion_1f", "pokemon_mansion_2f", "pokemon_mansion_3f", "pokemon_mansion_b1f",
+    "power_plant"
   ]
 }

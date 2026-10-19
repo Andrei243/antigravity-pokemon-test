@@ -1,13 +1,9 @@
 {
   // Route 10 (plan 19 · K5, part a): down the cliffs east of Route 9 to Rock Tunnel and its Pokémon Center, and south
-  // of the tunnel to Lavender Town. The Power Plant's two doors, on the river, are plan 19 · K6's
+  // of the tunnel to Lavender Town. The Power Plant's two doors, on the river, open since plan 19 · K6, part b
   "area": "route_10",
   "bgmTrack": "kanto/route3",
   "trees": "Round",
-  "locked": [
-    2,
-    4
-  ],
   "people": {
     "picnicker": {
       "name": "Carol",

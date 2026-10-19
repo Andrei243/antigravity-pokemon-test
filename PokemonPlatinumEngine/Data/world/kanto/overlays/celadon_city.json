@@ -4,6 +4,8 @@
   // under the Game Corner (FLAG_HIDE_CELADON_ROCKETS, rocket_hideout_b4f.txt)
   "area": "celadon_city",
   "bgmTrack": "kanto/celadon",
+  // Its own way of building (plan 19 · K6, part b; the style guide's row)
+  "architecture": "Jade",
   "people": {
     "rocket_m": {
       "name": "Grunt",

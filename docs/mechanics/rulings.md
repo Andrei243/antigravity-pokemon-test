@@ -2967,6 +2967,60 @@ why:
 - **Gifts**: the Good Rod in Fuchsia and the Super Rod on Route 12 for a yes, Route 15's aide's Exp. Share for fifty
   kinds caught, Substitute taught once by the boy by Fuchsia's Mart (`MoveTutors.Kanto`). The Move Deleter is
   Canalave's. Route 18's trade, FireRed's Magikarp measure on Route 12 and its Fame Checker are left away.
+
+## Kanto's fourth chapter, second part (2026-10-19, plan 19 · K6, part b)
+
+From Fuchsia City's shore over the sea to the Seafoam Islands and Cinnabar Island, with the Power Plant on Route 10's
+river and, from plan 19 · K7's list, Cinnabar's Gym, Blaine and the Volcano Badge and the Pokémon Mansion, scripts of ours
+on FireRed's beats (`route_20.txt`, `seafoam_islands_*.txt`, `power_plant.txt`, `cinnabar_island*.txt`,
+`common.PokemonMansionSwitch`), under FireRed's flags and variables. What differs from FireRed, and why:
+
+- **Holes drop whoever steps on them to the floor below**, as warps (`TileBehavior.Hole`, FireRed's `MB_FALL_WARP`).
+  Each floor keeps a warp under each hole above, on a tile that is no way anywhere, as the place its faller comes
+  down: the GBA reader writes such a warp as a landing (`AreaWarp.Landing`), which leads nowhere and shuts nothing, so
+  stepping back onto the landing takes nobody up again (FireRed takes a warp only on a tile whose behaviour is a way).
+  Emerald's Granite Cave holes will take the same rule at Hoenn's next `--game emerald --data`.
+- **A boulder pushed onto a hole falls to the floor below**: each hole is a pit (`Map.BoulderPits`, the Distortion
+  World's rule), whose script hides the boulder for good by its own flag and shows its counterpart on the floor below.
+  FireRed keeps the counterpart's flag in the boulder object's trainer field; here the hole's script asks which boulder
+  fell (`if subject "pushable_boulder_2"`, a new condition) and clears that one's flag. Route 20 puts every boulder
+  back where it starts until both of a floor's lie across its current, as FireRed's map does on every arrival.
+- **Currents carry a surfer** (`TileBehavior.CurrentNorth` and its kin, FireRed's `MB_*_CURRENT`; `FieldMovement.Carries`)
+  step after step until calm water or something in the way; whoever comes down a hole onto water rides out on it there
+  (`Player.ComeDownOn`, FireRed's `ForcePlayerToStartSurfing`). FireRed's scripts that walk a faller down B3F's current
+  and up B4F's are the currents themselves here, with two ways out at the foot of B3F's (the overlay's `exits`) where
+  FireRed's script warps the player to B4F. Once two boulders lie across a floor's current FireRed lays the floor out
+  again in calm water (`setmaplayoutindex`): the GBA reader writes that layout's chunks after every matrix's
+  (`GbaWorld.Alternates`), and `world.json` swaps them in by the floor's flag (`FLAG_STOPPED_SEAFOAM_B3F_CURRENT`,
+  `_B4F_`; a swap may now go by a flag as well as a variable). B4F's three steps that turn a surfer back north are the
+  current's own pull, and have no script.
+- **Water is one level to a surfer on a GBA game's map** (`Map.WaterIsOneLevel`, set for worlds found at their doors):
+  the GBA's water is "any level", and drawn at its banks' levels the Seafoam Islands' rapids came out as steps no
+  surfer could cross. Waterfalls and decks keep their rule.
+- **Articuno and Zapdos** are FireRed's static encounters at level 50: run from, each flies off and is back on the next
+  visit; beaten or caught, gone for good (`FLAG_FOUGHT_ARTICUNO`, `FLAG_FOUGHT_ZAPDOS`, as FireRed's arrival scripts
+  show them while unfought). The Power Plant's two Electrode lie as Poké Balls and are gone however their battle ends.
+  The Power Plant's doors on Route 10's river are open.
+- **Cinnabar's Gym** is locked until the Secret Key's ball in the Mansion's basement has been picked up (FireRed asks its
+  flag, `FLAG_HIDE_POKEMON_MANSION_B1F_SECRET_KEY`, and so does the island's arrival). Its six doors, which FireRed
+  draws shut and opens with `setmetatile`, are shutters of ours on the doorways' tiles (opened under them), each gone
+  once its quiz machine is answered right or its trainer, called out by a wrong answer, is beaten
+  (`FLAG_CINNABAR_GYM_QUIZ_1` to `_6`). The six questions are our own, true or false in FireRed's order of answers.
+  Blaine gives the Volcano Badge and TM38, counts his seven trainers beaten and opens every door.
+- **The Pokémon Mansion's switch**, behind a statue's eyes on every floor, turns every barrier of the house over at once
+  (`FLAG_POKEMON_MANSION_SWITCH_STATE`). The barriers FireRed changes with `setmetatile` are electric gates of ours on
+  their tiles (the lab's security beams), one set shown until the switch is pressed and the other from then on; the
+  vertical barriers' top tiles, which are walls either way, have none. The diaries are pages of our own.
+- **The lab** brings a Fossil (the Helix or Dome Fossil, the Old Amber) back to life at FireRed's level 5 (`fossil give
+  5`) once the player has gone out and come back, on the game's own Fossils; its researcher teaches Metronome once
+  (Platinum has no machine of it: `MoveTutors.Kanto` counts Psych Up as its kin). Clifton's, Norma's and Garett's trades
+  are plan 07's.
+- **Left for plan 19 · K7**: Bill waiting on Cinnabar once Blaine is beaten and the ferry to One Island (FireRed sets
+  `VAR_MAP_SCENE_CINNABAR_ISLAND` 1, as here; Bill, the ferry and the Center's Bill stay hidden, `common.KantoNewGame`
+  and the places' arrivals), the Fame Checker, the quiz trainers' walk up to the machine.
+- **Koga's walls** (K6a's left-over) are a ruling now: they stay the low partitions a room of this game stands blocked
+  tiles up as. A wall nobody sees would be a look of its own and leave a 3D field with no hint of where the maze runs;
+  the puzzle of finding the way stays, by sight rather than by bumping.
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,

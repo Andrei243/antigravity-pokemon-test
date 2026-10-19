@@ -1,0 +1,11 @@
+{
+  // The Seafoam Islands, B2F (plan 19 · K6, part b): its two boulders down its two holes, to come to rest across
+  // the current's mouth on B3F (seafoam_islands_b2f.txt)
+  "area": "seafoam_islands_b2f",
+  "name": "Seafoam Islands",
+  "bgmTrack": "kanto/viridian_forest",
+  "pits": [
+    { "x": 24, "z": 8, "script": "FallFromB2F" },
+    { "x": 27, "z": 8, "script": "FallFromB2F" }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "key": "pokemon_mansion_b1f",
+  "index": 104,
+  "name": "Pokemon Mansion",
+  "matrix": 68,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MANSION",
+  "nightMusic": "MUS_POKE_MANSION",
+  "encounters": "pokemon_mansion_b1f",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Koffing", "level": 28 },
+    { "species": "Raticate", "level": 34 },
+    { "species": "Koffing", "level": 30 },
+    { "species": "Ditto", "level": 30 },
+    { "species": "Growlithe", "level": 30 },
+    { "species": "Raticate", "level": 38 },
+    { "species": "Grimer", "level": 28 },
+    { "species": "Weezing", "level": 34 },
+    { "species": "Growlithe", "level": 32 },
+    { "species": "Rattata", "level": 26 },
+    { "species": "Growlithe", "level": 32 },
+    { "species": "Rattata", "level": 26 }
+  ],
+  "landRate": 5,
+  "warps": [
+    { "x": 34, "z": 29, "to": "pokemon_mansion_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 6, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_B1F_TM22", "item": "TM22", "script": "PokemonMansion_B1F_EventScript_ItemTM22" },
+    { "id": "poke_maniac", "looks": "poke_maniac", "movement": "wander_around", "x": 20, "z": 25, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BURGLAR_LEWIS" },
+    { "id": "scientist", "looks": "scientist", "movement": "look_south", "x": 34, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_SCIENTIST_IVAN" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 23, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_B1F_TM14", "item": "TM14", "script": "PokemonMansion_B1F_EventScript_ItemTM14" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 2, "z": 29, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_B1F_FULL_RESTORE", "item": "Full Restore", "script": "PokemonMansion_B1F_EventScript_ItemFullRestore" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_south", "x": 5, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_B1F_SECRET_KEY", "item": "Secret Key", "script": "PokemonMansion_B1F_EventScript_ItemSecretKey" }
+  ],
+  "signs": [
+    { "x": 21, "z": 27, "type": 0, "script": "PokemonMansion_B1F_EventScript_DiarySep1st" },
+    { "x": 24, "z": 29, "type": 0, "script": "PokemonMansion_B1F_EventScript_Statue" },
+    { "x": 27, "z": 5, "type": 0, "script": "PokemonMansion_B1F_EventScript_Statue" },
+    { "x": 35, "z": 5, "type": 2, "script": "", "item": "Elixir", "flag": "FLAG_HIDDEN_ITEM_POKEMON_MANSION_B1F_ELIXIR" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,12 @@
+{
+  // The Pokémon Lab's lounge (plan 19 · K6, part b). Clifton and Norma would trade Pokémon in FireRed: trades are
+  // plan 07's, so they only talk of it for now
+  "area": "cinnabar_island_pokemon_lab_lounge",
+  "name": "Pokémon Lab",
+  "bgmTrack": "kanto/cinnabar",
+  "people": {
+    "scientist": { "name": "Scientist", "dialog": [ "Coffee break! Even scientists need to rest their brains now and then." ] },
+    "old_man_2": { "name": "Clifton", "dialog": [ "I'd love to swap one of my Pokémon for one of yours. If only the trading machine worked!" ] },
+    "woman_2": { "name": "Norma", "dialog": [ "I came here hoping to trade. The machine's broken, so I'm just enjoying the coffee." ] }
+  }
+}

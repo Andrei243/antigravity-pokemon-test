@@ -1,0 +1,82 @@
+{
+  "key": "seafoam_islands_b4f",
+  "index": 129,
+  "name": "Seafoam Islands",
+  "matrix": 93,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VIRIDIAN_FOREST",
+  "nightMusic": "MUS_VIRIDIAN_FOREST",
+  "encounters": "seafoam_islands_b4f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Seel", "level": 30 },
+    { "species": "Seel", "level": 32 },
+    { "species": "Psyduck", "level": 32 },
+    { "species": "Seel", "level": 34 },
+    { "species": "Golduck", "level": 32 },
+    { "species": "Golbat", "level": 26 },
+    { "species": "Dewgong", "level": 34 },
+    { "species": "Golduck", "level": 34 },
+    { "species": "Dewgong", "level": 36 },
+    { "species": "Golbat", "level": 28 },
+    { "species": "Dewgong", "level": 36 },
+    { "species": "Golbat", "level": 30 }
+  ],
+  "landRate": 7,
+  "water": [
+    { "species": "Seel", "level": 25, "maxLevel": 35 },
+    { "species": "Horsea", "level": 25, "maxLevel": 30 },
+    { "species": "Dewgong", "level": 35, "maxLevel": 40 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 40 },
+    { "species": "Golduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 15, "z": 9, "to": "seafoam_islands_b3f", "toWarp": 3 },
+    { "x": 32, "z": 5, "to": "seafoam_islands_b3f", "toWarp": 4 },
+    { "x": 8, "z": 17, "to": "seafoam_islands_b3f", "toWarp": 7, "landing": true },
+    { "x": 9, "z": 17, "to": "seafoam_islands_b3f", "toWarp": 8, "landing": true }
+  ],
+  "objects": [
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_south", "x": 8, "z": 18, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEAFOAM_B4F_BOULDER_1", "script": "" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_south", "x": 9, "z": 18, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEAFOAM_B4F_BOULDER_2", "script": "" },
+    { "id": "articuno", "looks": "articuno", "movement": "look_south", "x": 9, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ARTICUNO", "script": "SeafoamIslands_B4F_EventScript_Articuno" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 22, "z": 19, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEAFOAM_ISLANDS_B4F_ULTRA_BALL", "item": "Ultra Ball", "script": "SeafoamIslands_B4F_EventScript_ItemUltraBall" }
+  ],
+  "signs": [
+    { "x": 13, "z": 8, "type": 2, "script": "", "item": "Water Stone", "flag": "FLAG_HIDDEN_ITEM_SEAFOAM_ISLANDS_B4F_WATER_STONE" },
+    { "x": 30, "z": 2, "type": 0, "script": "SeafoamIslands_B4F_EventScript_FastCurrentSign" },
+    { "x": 14, "z": 18, "type": 0, "script": "SeafoamIslands_B4F_EventScript_BoulderHintSign" }
+  ],
+  "triggers": [
+    { "x": 26, "z": 19, "width": 1, "depth": 1, "script": "SeafoamIslands_B4F_EventScript_UpwardCurrent", "variable": "VAR_MAP_SCENE_SEAFOAM_ISLANDS_B4F", "value": "0" },
+    { "x": 27, "z": 19, "width": 1, "depth": 1, "script": "SeafoamIslands_B4F_EventScript_UpwardCurrent", "variable": "VAR_MAP_SCENE_SEAFOAM_ISLANDS_B4F", "value": "0" },
+    { "x": 28, "z": 19, "width": 1, "depth": 1, "script": "SeafoamIslands_B4F_EventScript_UpwardCurrent", "variable": "VAR_MAP_SCENE_SEAFOAM_ISLANDS_B4F", "value": "0" }
+  ]
+}

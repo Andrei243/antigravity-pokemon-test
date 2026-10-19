@@ -1,0 +1,176 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Mansion"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Arnie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Burglar Arnie: I came to rob this place, but there's nothing left to take! Except your prize money!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Burglar Arnie: Robbed blind!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_1": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_2": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_3": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_4": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_5": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_6": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_7": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_8": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_9": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_11": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_12": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_13": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PokemonMansion_2F_EventScript_DiaryJuly5th": {
+      "en": [
+        "A diary, its pages singed.\n\"Summer. We found a new Pokémon deep in the jungle, far to the south.\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "PokemonMansion_2F_EventScript_DiaryJuly10th": {
+      "en": [
+        "A diary, its pages singed.\n\"We named the Pokémon after the jungle's oldest legend. It is gentle, and very rare.\""
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

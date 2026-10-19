@@ -278,6 +278,7 @@ public class ScriptTests
           fossil revive
           fossil ready
           fossil give
+          fossil give 5
           gamecorner coins
           gamecorner room 50
           gamecorner add 50
@@ -584,6 +585,7 @@ public class ScriptTests
               if nationaldex end
               if movebadge "Cut" end
               if region "Kanto" end
+              if subject "pushable_boulder_2" end
             """)[0];
 
         var asked = script.Code.Select(i => i.Condition!.Query).ToHashSet();

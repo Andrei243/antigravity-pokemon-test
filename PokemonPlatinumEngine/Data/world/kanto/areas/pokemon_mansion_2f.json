@@ -1,0 +1,52 @@
+{
+  "key": "pokemon_mansion_2f",
+  "index": 102,
+  "name": "Pokemon Mansion",
+  "matrix": 66,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MANSION",
+  "nightMusic": "MUS_POKE_MANSION",
+  "encounters": "pokemon_mansion_2f",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Koffing", "level": 28 },
+    { "species": "Raticate", "level": 32 },
+    { "species": "Koffing", "level": 30 },
+    { "species": "Raticate", "level": 36 },
+    { "species": "Growlithe", "level": 30 },
+    { "species": "Rattata", "level": 28 },
+    { "species": "Grimer", "level": 28 },
+    { "species": "Weezing", "level": 32 },
+    { "species": "Growlithe", "level": 32 },
+    { "species": "Rattata", "level": 26 },
+    { "species": "Growlithe", "level": 32 },
+    { "species": "Rattata", "level": 26 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 9, "z": 3, "to": "pokemon_mansion_3f", "toWarp": 0 },
+    { "x": 34, "z": 22, "to": "pokemon_mansion_3f", "toWarp": 1 },
+    { "x": 6, "z": 14, "to": "pokemon_mansion_1f", "toWarp": 3 },
+    { "x": 9, "z": 14, "to": "pokemon_mansion_3f", "toWarp": 2 },
+    { "x": 27, "z": 17, "to": "pokemon_mansion_3f", "toWarp": 5, "landing": true }
+  ],
+  "objects": [
+    { "id": "poke_maniac", "looks": "poke_maniac", "movement": "look_around", "x": 5, "z": 23, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BURGLAR_ARNIE" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 36, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_2F_CALCIUM", "item": "Calcium", "script": "PokemonMansion_2F_EventScript_ItemCalcium" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 18, "z": 23, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_2F_ZINC", "item": "Zinc", "script": "PokemonMansion_2F_EventScript_ItemZinc" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 35, "z": 17, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_2F_HP_UP", "item": "HP Up", "script": "PokemonMansion_2F_EventScript_ItemHPUp" }
+  ],
+  "signs": [
+    { "x": 2, "z": 16, "type": 0, "script": "PokemonMansion_2F_EventScript_Statue" },
+    { "x": 6, "z": 31, "type": 0, "script": "PokemonMansion_2F_EventScript_DiaryJuly10th" },
+    { "x": 25, "z": 4, "type": 0, "script": "PokemonMansion_2F_EventScript_DiaryJuly5th" }
+  ],
+  "triggers": []
+}

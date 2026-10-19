@@ -2,6 +2,8 @@
   // The Safari Zone's north part, Area 2 (plan 19 · K6, part a): FireRed's map, our words, with its rest house
   "area": "safari_zone_north",
   "bgmTrack": "kanto/safari_zone",
+  // The rest houses build as Fuchsia does (plan 19 · K6, part b)
+  "architecture": "Wildwood",
   "trees": "Round",
   "signs": {
     "SafariZone_North_EventScript_AreaSign": "Area 2\nSouth: Centre Area",

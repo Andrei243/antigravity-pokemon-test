@@ -1,0 +1,57 @@
+{
+  "key": "pokemon_mansion_1f",
+  "index": 101,
+  "name": "Pokemon Mansion",
+  "matrix": 65,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MANSION",
+  "nightMusic": "MUS_POKE_MANSION",
+  "encounters": "pokemon_mansion_1f",
+  "bike": false,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Koffing", "level": 28 },
+    { "species": "Raticate", "level": 32 },
+    { "species": "Koffing", "level": 30 },
+    { "species": "Raticate", "level": 36 },
+    { "species": "Growlithe", "level": 30 },
+    { "species": "Rattata", "level": 28 },
+    { "species": "Grimer", "level": 28 },
+    { "species": "Weezing", "level": 32 },
+    { "species": "Growlithe", "level": 32 },
+    { "species": "Rattata", "level": 26 },
+    { "species": "Growlithe", "level": 32 },
+    { "species": "Rattata", "level": 26 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 7, "z": 33, "to": "cinnabar_island", "toWarp": 0 },
+    { "x": 8, "z": 33, "to": "cinnabar_island", "toWarp": 0 },
+    { "x": 9, "z": 33, "to": "cinnabar_island", "toWarp": 0 },
+    { "x": 10, "z": 13, "to": "pokemon_mansion_2f", "toWarp": 2 },
+    { "x": 25, "z": 27, "to": "pokemon_mansion_b1f", "toWarp": 0 },
+    { "x": 34, "z": 33, "to": "cinnabar_island", "toWarp": 0 },
+    { "x": 35, "z": 34, "to": "", "toWarp": 0 },
+    { "x": 19, "z": 22, "to": "pokemon_mansion_3f", "toWarp": 3, "landing": true },
+    { "x": 20, "z": 22, "to": "pokemon_mansion_3f", "toWarp": 4, "landing": true },
+    { "x": 11, "z": 13, "to": "", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "scientist", "looks": "scientist", "movement": "look_west", "x": 22, "z": 24, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_SCIENTIST_TED" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 29, "z": 32, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_1F_CARBOS", "item": "Carbos", "script": "PokemonMansion_1F_EventScript_ItemCarbos" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 22, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_1F_ESCAPE_ROPE", "item": "Escape Rope", "script": "PokemonMansion_1F_EventScript_ItemEscapeRope" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 27, "z": 15, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POKEMON_MANSION_1F_PROTEIN", "item": "Protein", "script": "PokemonMansion_1F_EventScript_ItemProtein" },
+    { "id": "youngster", "looks": "youngster", "movement": "wander_west_and_east", "x": 8, "z": 8, "facing": 2, "rangeX": 2, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_YOUNGSTER_JOHNSON" }
+  ],
+  "signs": [
+    { "x": 5, "z": 5, "type": 0, "script": "PokemonMansion_1F_EventScript_Statue" },
+    { "x": 2, "z": 21, "type": 2, "script": "", "item": "Moon Stone", "flag": "FLAG_HIDDEN_ITEM_POKEMON_MANSION_1F_MOON_STONE" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,16 @@
+{
+  // The Pokémon Lab's hall on Cinnabar Island (plan 19 · K6, part b): three doors off it, the lounge, the research
+  // room and the testing room, where Fossils are brought back to life
+  "area": "cinnabar_island_pokemon_lab_entrance",
+  "name": "Pokémon Lab",
+  "bgmTrack": "kanto/cinnabar",
+  "people": {
+    "scientist": { "name": "Scientist", "dialog": [ "We study Pokémon of every kind here, from the oldest Fossils to the newest machines.", "Our founder was a famous scientist. He left long ago, but his work goes on." ] }
+  },
+  "signs": {
+    "CinnabarIsland_PokemonLab_Entrance_EventScript_DrFujiPhoto": "A photograph of the Lab's founder, a kindly old scientist, smiling beside a small Pokémon.",
+    "CinnabarIsland_PokemonLab_Entrance_EventScript_MeetingRoomSign": "Lounge",
+    "CinnabarIsland_PokemonLab_Entrance_EventScript_RAndDRoomSign": "Research Room",
+    "CinnabarIsland_PokemonLab_Entrance_EventScript_TestingRoomSign": "Testing Room"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  // The Pokémon Lab's research room (plan 19 · K6, part b): the man who teaches Metronome once
+  // (cinnabar_island_pokemon_lab_research_room.txt), a scientist, and the machines along the wall
+  "area": "cinnabar_island_pokemon_lab_research_room",
+  "name": "Pokémon Lab",
+  "bgmTrack": "kanto/cinnabar",
+  "people": {
+    "poke_maniac": { "name": "Researcher", "script": "MetronomeTutor" },
+    "scientist": { "name": "Scientist", "dialog": [ "We have learned how to make machines that teach Pokémon moves. TMs, we call them!" ] }
+  },
+  "signs": {
+    "CinnabarIsland_PokemonLab_ResearchRoom_EventScript_AmberPipe": "A pipe of glass and amber. Something old and golden is kept inside.",
+    "CinnabarIsland_PokemonLab_ResearchRoom_EventScript_Computer": "There's an e-mail on the screen. It's about a new kind of Pokémon made by people. Most of it is too technical to follow."
+  }
+}

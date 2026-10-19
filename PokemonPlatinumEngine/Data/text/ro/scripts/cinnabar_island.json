@@ -1,0 +1,30 @@
+{
+  "LockedGymDoor": [
+    {
+      "en": [
+        "The door is locked. There's a keyhole, but no key in sight."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymSign": [
+    {
+      "en": [
+        "Cinnabar Island Pokémon Gym\nLeader: Blaine\nRiddles and fire for every challenger."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cinnabar Island Pokémon Gym\nLeader: Blaine. Winning trainers: {rival}, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

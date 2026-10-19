@@ -1,0 +1,14 @@
+{
+  // Route 21, its southern half (plan 19 · K6, part b): FireRed's map, our words. The sea just north of Cinnabar
+  // Island, its fishermen and swimmers
+  "area": "route_21_south",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "fisher": { "name": "Claude", "trainer": { "dialogueBefore": "Fisherman Claude: The fish bite best near the volcano. Must be the warm water.", "dialogueAfter": "Fisherman Claude: Nothing's biting now." } },
+    "fisher_2": { "name": "Nolan", "trainer": { "dialogueBefore": "Fisherman Nolan: Don't splash about! You'll scare the fish!", "dialogueAfter": "Fisherman Nolan: Now they're scared of you too." } },
+    "swimmer_m_water": { "name": "Jack", "trainer": { "dialogueBefore": "Swimmer Jack: My Starmie and I swim together every day. We're unbeatable!", "dialogueAfter": "Swimmer Jack: Beaten, after all." } },
+    "swimmer_m_water_2": { "name": "Jerome", "trainer": { "dialogueBefore": "Swimmer Jerome: Cinnabar's just south of here. You'll have to get past me first!", "dialogueAfter": "Swimmer Jerome: Go on, then." } },
+    "swimmer_m_water_3": { "name": "Roland", "trainer": { "dialogueBefore": "Swimmer Roland: I'm training for a swim right round Kanto. Help me practise!", "dialogueAfter": "Swimmer Roland: I need more practice than I thought." } }
+  }
+}

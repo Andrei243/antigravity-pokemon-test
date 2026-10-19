@@ -1,0 +1,13 @@
+{
+  // Cinnabar Island's Pokémon Center (plan 19 · K6, part b). Bill waits here once he has asked the player to sail with
+  // him (plan 19 · K7's scene), and is out of sight until then (cinnabar_island_pokemon_center_1f.txt)
+  "area": "cinnabar_island_pokemon_center_1f",
+  "bgmTrack": "kanto/cinnabar",
+  "people": {
+    "cinnabar_nurse": { "name": "Nurse", "script": "Nurse" },
+    "cooltrainer_f": { "name": "Woman", "dialog": [ "The Gym here is locked. Blaine lost the key somewhere, they say. Careless, for a quiz master!" ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "Trading with friends is the quickest way to fill a Pokédex. Sadly, the link is closed for now." ] },
+    "youngster": { "name": "Youngster", "dialog": [ "If you stop a Pokémon from evolving, it can learn some moves sooner. Patience pays!" ] },
+    "cinnabar_pokemon_center_bill": { "name": "Bill", "dialog": [ "Ready to set sail? Not quite yet, then." ] }
+  }
+}

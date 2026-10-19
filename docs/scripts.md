@@ -176,6 +176,7 @@ What an `if` can ask:
 | `pokerus` | A Pokémon of the team carries Pokérus now (the nurse's script asks it). |
 | `safari` | A Safari Game is under way in the Great Marsh. |
 | `region "Kanto"` | The player is in that region (plan 19 · K6): for a common script two regions share, such as where a Safari Game that runs out sends the player back to. |
+| `subject "pushable_boulder_2"` | Whoever the script belongs to is that one of its place, by their id in the area's file (plan 19 · K6, part b): for a script many share that does something of each's own, as the Seafoam Islands' holes do with the boulder that fell, each of which shows a boulder of its own on the floor below. |
 | `partner` | Someone travels with the player (`partner`, below). |
 | `rematch self` | The trainer is waiting for a rematch the Vs. Seeker found (plan 06 · R12). |
 | `time morning` | The time of day now: `morning`, `day`, `twilight`, `night` or `latenight` (`GameClock`, plan 06 · R14a). |
@@ -449,7 +450,7 @@ own flags and variables (`FLAG_VILLA_FURNITURE_…`, `VAR_RESORT_VILLA_VISITOR`)
 | `fossil choose` | Picks the Fossil to revive, asking which when the bag holds more than one kind: `RESULT` 1, or 0 with none chosen. `{item}` names it and `{thing}` what it was. |
 | `fossil revive` | Takes the Fossil chosen and remembers its species (`VAR_REVIVED_POKEMON_SPECIES`): `RESULT` 0 if it couldn't. |
 | `fossil ready` | `RESULT` 1 while a revived Pokémon waits to be collected; `{thing}` names it. |
-| `fossil give` | Hands it over at level 20: `RESULT` 1 into the team, 2 into a box, 0 with none waiting. |
+| `fossil give`, `fossil give 5` | Hands it over at level 20, or at the level given (plan 19 · K6, part b: Cinnabar Island's lab, as FireRed's, at 5): `RESULT` 1 into the team, 2 into a box, 0 with none waiting. |
 | `gamecorner coins` | `RESULT` is what the Coin Case holds. `{coins}` in a line says it. |
 | `gamecorner room 500` | `RESULT` 1 when that many more fit (the case holds 50,000). |
 | `gamecorner add 50`, `gamecorner take 50` | Puts coins in or takes them out, all or none: `RESULT` 1 when it did. |

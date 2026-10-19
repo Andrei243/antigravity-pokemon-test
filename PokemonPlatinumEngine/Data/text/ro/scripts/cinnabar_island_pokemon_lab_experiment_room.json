@@ -1,0 +1,84 @@
+{
+  "FossilScientist": [
+    {
+      "en": [
+        "Hiya! I'm working on bringing Pokémon back from ancient Fossils."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! You have a Fossil there, don't you? Shall I bring it back to life for you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right! Leave it with me. This will take a little while."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go for a walk round the island, then come back. It'll be ready by then!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you are! Your Fossil came back to life as {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Look after it. It's been waiting a very long time to see the world."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But your team is full! Make room, and come back for it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you ever find a Fossil, bring it to me. I'll show you what it used to be!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Well, the machine will be here if you change your mind."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

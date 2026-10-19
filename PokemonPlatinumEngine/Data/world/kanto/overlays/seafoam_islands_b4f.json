@@ -1,0 +1,16 @@
+{
+  // The Seafoam Islands, B4F (plan 19 · K6, part b): the lowest floor, its currents carrying a surfer away from the
+  // icy ledge where Articuno waits until two boulders dropped from B3F lie across them (seafoam_islands_b4f.txt).
+  // FireRed's three steps at the foot of the current from B3F, which turned a surfer back north, are the current's
+  // own pull here, and have no script
+  "area": "seafoam_islands_b4f",
+  "name": "Seafoam Islands",
+  "bgmTrack": "kanto/viridian_forest",
+  "people": {
+    "articuno": { "name": "Articuno", "script": "Articuno", "still": true }
+  },
+  "signs": {
+    "SeafoamIslands_B4F_EventScript_FastCurrentSign": "Danger! The current here is fierce. Do not swim near the ledge.",
+    "SeafoamIslands_B4F_EventScript_BoulderHintSign": "The boulders in these caves fall through holes to the floors below. Enough of them might change the way the water flows..."
+  }
+}

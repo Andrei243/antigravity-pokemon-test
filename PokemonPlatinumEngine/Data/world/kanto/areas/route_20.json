@@ -1,0 +1,68 @@
+{
+  "key": "route_20",
+  "index": 10,
+  "name": "Route 20",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_20",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 144, "z": 388, "to": "seafoam_islands_1f", "toWarp": 3 },
+    { "x": 156, "z": 394, "to": "seafoam_islands_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "swimmer_f_water", "looks": "swimmer_f_water", "movement": "look_south_and_north", "x": 92, "z": 391, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_FEMALE_MELISSA" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_south", "x": 100, "z": 394, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PICNICKER_MISSY" },
+    { "id": "swimmer_f_water_2", "looks": "swimmer_f_water", "movement": "look_south", "x": 118, "z": 387, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_SWIMMER_FEMALE_NORA" },
+    { "id": "rocker", "looks": "rocker", "movement": "wander_around", "x": 127, "z": 389, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BIRD_KEEPER_ROGER" },
+    { "id": "swimmer_m_water", "looks": "swimmer_m_water", "movement": "walk_sequence_east_south_west_north", "x": 107, "z": 390, "facing": 3, "rangeX": 5, "rangeZ": 4, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_DEAN" },
+    { "id": "picnicker_2", "looks": "picnicker", "movement": "look_west", "x": 157, "z": 396, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_PICNICKER_IRENE" },
+    { "id": "swimmer_m_water_2", "looks": "swimmer_m_water", "movement": "walk_sequence_north_west_south_east", "x": 195, "z": 389, "facing": 0, "rangeX": 5, "rangeZ": 3, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_BARRY" },
+    { "id": "swimmer_m_water_3", "looks": "swimmer_m_water", "movement": "walk_sequence_south_west_north_east", "x": 190, "z": 391, "facing": 1, "rangeX": 5, "rangeZ": 3, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_DARRIN" },
+    { "id": "swimmer_f_water_3", "looks": "swimmer_f_water", "movement": "look_around", "x": 177, "z": 390, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_SWIMMER_FEMALE_SHIRLEY" },
+    { "id": "swimmer_f_water_4", "looks": "swimmer_f_water", "movement": "look_around", "x": 138, "z": 391, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_FEMALE_TIFFANY" },
+    { "id": "camper", "looks": "camper", "movement": "wander_west_and_east", "x": 153, "z": 383, "facing": 2, "rangeX": 2, "rangeZ": 1, "script": "Route20_EventScript_Camper" }
+  ],
+  "signs": [
+    { "x": 152, "z": 394, "type": 0, "script": "Route20_EventScript_SeafoamIslandsSign" },
+    { "x": 148, "z": 388, "type": 0, "script": "Route20_EventScript_SeafoamIslandsSign" },
+    { "x": 107, "z": 386, "type": 2, "script": "", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_ROUTE20_STARDUST" }
+  ],
+  "triggers": []
+}

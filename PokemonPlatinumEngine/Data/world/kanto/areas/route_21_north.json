@@ -1,0 +1,72 @@
+{
+  "key": "route_21_north",
+  "index": 2,
+  "name": "Route 21",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_21_north",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Tangela", "level": 22 },
+    { "species": "Tangela", "level": 23 },
+    { "species": "Tangela", "level": 24 },
+    { "species": "Tangela", "level": 21 },
+    { "species": "Tangela", "level": 25 },
+    { "species": "Tangela", "level": 20 },
+    { "species": "Tangela", "level": 19 },
+    { "species": "Tangela", "level": 26 },
+    { "species": "Tangela", "level": 18 },
+    { "species": "Tangela", "level": 27 },
+    { "species": "Tangela", "level": 17 },
+    { "species": "Tangela", "level": 28 }
+  ],
+  "landRate": 14,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [],
+  "objects": [
+    { "id": "fisher", "looks": "fisher", "movement": "look_north", "x": 67, "z": 307, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 0, "script": "TRAINER_FISHERMAN_RONALD" },
+    { "id": "fisher_2", "looks": "fisher", "movement": "look_south", "x": 76, "z": 306, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 0, "script": "TRAINER_FISHERMAN_WADE" },
+    { "id": "swimmer_m_water", "looks": "swimmer_m_water", "movement": "walk_sequence_west_north_east_south", "x": 72, "z": 324, "facing": 2, "rangeX": 4, "rangeZ": 2, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_SPENCER" },
+    { "id": "swimmer_f_water", "looks": "swimmer_f_water", "movement": "look_south", "x": 74, "z": 315, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SIS_AND_BRO_LIL_IAN" },
+    { "id": "tuber_m_water", "looks": "tuber_m_water", "movement": "look_south", "x": 75, "z": 315, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SIS_AND_BRO_LIL_IAN" }
+  ],
+  "signs": [
+    { "x": 77, "z": 322, "type": 2, "script": "", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_ROUTE21_NORTH_PEARL" }
+  ],
+  "triggers": []
+}

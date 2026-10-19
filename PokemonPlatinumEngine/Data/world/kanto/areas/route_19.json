@@ -1,0 +1,64 @@
+{
+  "key": "route_19",
+  "index": 13,
+  "name": "Route 19",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "route_19",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 30, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Krabby", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [],
+  "objects": [
+    { "id": "swimmer_m_land", "looks": "swimmer_m_land", "movement": "look_west", "x": 219, "z": 350, "facing": 2, "rangeX": 6, "rangeZ": 3, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_MALE_REECE" },
+    { "id": "swimmer_m_land_2", "looks": "swimmer_m_land", "movement": "look_east", "x": 214, "z": 349, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_MALE_RICHARD" },
+    { "id": "swimmer_m_water", "looks": "swimmer_m_water", "movement": "look_around", "x": 216, "z": 357, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_SWIMMER_MALE_TONY" },
+    { "id": "swimmer_m_water_2", "looks": "swimmer_m_water", "movement": "walk_sequence_west_north_east_south", "x": 222, "z": 373, "facing": 2, "rangeX": 5, "rangeZ": 3, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_MATTHEW" },
+    { "id": "swimmer_m_water_3", "looks": "swimmer_m_water", "movement": "wander_around", "x": 212, "z": 367, "facing": 1, "rangeX": 2, "rangeZ": 2, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_DOUGLAS" },
+    { "id": "swimmer_m_water_4", "looks": "swimmer_m_water", "movement": "look_west_and_east", "x": 220, "z": 362, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_SWIMMER_MALE_DAVID" },
+    { "id": "swimmer_m_water_5", "looks": "swimmer_m_water", "movement": "look_around", "x": 215, "z": 387, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_AXLE" },
+    { "id": "swimmer_f_water", "looks": "swimmer_f_water", "movement": "look_around", "x": 218, "z": 388, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_FEMALE_ALICE" },
+    { "id": "swimmer_f_water_2", "looks": "swimmer_f_water", "movement": "look_around", "x": 216, "z": 389, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_FEMALE_CONNIE" },
+    { "id": "swimmer_f_water_3", "looks": "swimmer_f_water", "movement": "look_around", "x": 213, "z": 388, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_FEMALE_ANYA" },
+    { "id": "swimmer_f_water_4", "looks": "swimmer_f_water", "movement": "look_south", "x": 212, "z": 381, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SIS_AND_BRO_LIA_LUC" },
+    { "id": "tuber_m_water", "looks": "tuber_m_water", "movement": "look_south", "x": 213, "z": 381, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SIS_AND_BRO_LIA_LUC" }
+  ],
+  "signs": [
+    { "x": 217, "z": 352, "type": 0, "script": "Route19_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

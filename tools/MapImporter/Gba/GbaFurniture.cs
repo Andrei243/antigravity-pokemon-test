@@ -34,6 +34,9 @@ public static class GbaFurniture
         ["MB_CABLE_CLUB_WIRELESS_MONITOR"] = PropType.Computer,
         ["MB_TRASH_BIN"] = PropType.TrashCan,
         ["MB_COUNTER"] = PropType.Counter,
+        // Plan 19 · K6, part b (K5's left-over): Silph Co.'s warp pads, which carry whoever steps on one to its far pad,
+        // drawn as the pads they are (plain floor before)
+        ["MB_REGULAR_WARP"] = PropType.WarpPanel,
         // Hung on the back wall: drawn on the wall's row, never in the way
         ["MB_WINDOW"] = PropType.Window,
         ["MB_PORTHOLE"] = PropType.Window,
@@ -161,6 +164,12 @@ public static class GbaFurniture
             ["gTileset_PokemonTower"] = new (int, int, PropType)[]
             {
                 (0x291, 0x291, PropType.Headstone),
+            },
+            // Plan 19 · K6, part b (K5's left-over): the Game Corner's rows of slot machines, two metatiles to a machine, each
+            // row blocked from end to end with the stools walked on before it (tools/MapImporter --unknown)
+            ["gTileset_GameCorner"] = new (int, int, PropType)[]
+            {
+                (0x2B8, 0x2B9, PropType.SlotMachine), (0x2C0, 0x2C1, PropType.SlotMachine),
             },
         };
 

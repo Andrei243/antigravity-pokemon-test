@@ -1,0 +1,13 @@
+# The Seafoam Islands, B2F (plan 19 · K6, part b): its two boulders down its two holes to B3F, where they come to
+# rest across the mouth of its current (seafoam_islands_1f.txt has the rule, seafoam_islands_b3f.txt the current).
+
+
+script FallFromB2F
+  hide self
+  setflag own
+  if subject "pushable_boulder" clearflag FLAG_HIDE_SEAFOAM_B3F_BOULDER_1
+  if subject "pushable_boulder_2" clearflag FLAG_HIDE_SEAFOAM_B3F_BOULDER_2
+  sound "bump"
+  speaker none
+  text "The boulder dropped through the hole to the floor below!"
+  end

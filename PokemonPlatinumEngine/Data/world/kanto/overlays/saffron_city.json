@@ -5,6 +5,8 @@
   // saffron_city.txt and silph_co_11f.txt). The grunt at Silph Co.'s door keeps it until Mr. Fuji is rescued
   "area": "saffron_city",
   "bgmTrack": "kanto/viridian",
+  // Its own way of building (plan 19 · K6, part b; the style guide's row)
+  "architecture": "Uptown",
   // FireRed stands grunts on the mats of the Gym, a house and Copycat's house until Team Rocket goes; a way out of a
   // room must land on open ground here, so they are left away and the Gym's door is shut until then instead
   "doors": [ { "warp": 3, "map": "SaffronCity_Gym", "x": 14, "y": 22, "facing": "Up", "openedBy": "FLAG_HIDE_SAFFRON_ROCKETS" } ],

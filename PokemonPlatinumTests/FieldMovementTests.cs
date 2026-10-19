@@ -900,6 +900,8 @@ public class FieldMovementTests
             changes |= FieldMovement.Spins(map, behaviour, null, East) == null;
             // The Cycling Road's slope changes no step either: it pulls a rider who steers nowhere (plan 19 · K6)
             changes |= FieldMovement.Pulls(behaviour, TravelMode.Cycling) != null;
+            // A hole changes no step of its own either: what it does is its warp's, and a pushed boulder's pit's (plan 19 · K6, part b)
+            changes |= behaviour == TileBehavior.Hole;
             Assert.True(changes, $"{behaviour} is listed as having a rule and changes nothing");
         }
     }

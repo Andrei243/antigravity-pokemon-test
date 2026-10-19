@@ -1,0 +1,16 @@
+{
+  // The Power Plant (plan 19 · K6, part b): FireRed's abandoned works on Route 10's river, reached by Surf. Zapdos
+  // nests in its far corner, and two of the Poké Balls lying about are Electrode that wake when touched
+  // (power_plant.txt); the rest are items, where FireRed has them
+  "area": "power_plant",
+  "name": "Power Plant",
+  "bgmTrack": "kanto/pokemon_mansion",
+  // FireRed's warps 0, 2 and 4 stand in the walls beside its two mats (the way out is the mat at 5, 38 and the
+  // back door's at 1, 11), where nobody can step onto them
+  "locked": [ 0, 2, 4 ],
+  "people": {
+    "zapdos": { "name": "Zapdos", "script": "Zapdos", "still": true },
+    "item_ball_6": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "Electrode" },
+    "item_ball_7": { "name": "Poké Ball", "npcType": "ItemBall", "item": "Poké Ball", "script": "Electrode" }
+  }
+}

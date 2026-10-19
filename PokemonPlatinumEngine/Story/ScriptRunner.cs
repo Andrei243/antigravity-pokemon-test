@@ -1849,6 +1849,7 @@ public sealed partial class ScriptRunner
             Query.PoketchApp => host.Poketch.Has(Enum.Parse<PoketchApp>(c.Name)),
             Query.Safari => host.Safari.Active,
             Query.Region => string.Equals(host.Region, c.Name, StringComparison.OrdinalIgnoreCase),
+            Query.Subject => Subject?.Key == c.Name,
             Query.Partner => host.Partner != null,
             // ScrCmd_CheckPartyPokerus: one of the team carries it or has had it
             Query.Pokerus => host.Party.Members.Any(p => p.Pokerus != 0),

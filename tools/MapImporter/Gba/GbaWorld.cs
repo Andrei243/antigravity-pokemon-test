@@ -102,7 +102,54 @@ public sealed class GbaWorld
             Fill(matrix);
             Heights(matrix);
         }
+        // Where a faller comes down: the warp each hole names, on the floor below (plan 19 · K6, part b)
+        foreach (var matrix in Matrices)
+            foreach (var (map, _, ox, oy) in matrix.Maps)
+                foreach (var w in map.Warps)
+                    if (matrix.Has(ox + w.X, oy + w.Y) && (TileBehavior)matrix.Behaviour[(oy + w.Y) * matrix.Width + ox + w.X] == TileBehavior.Hole)
+                        holeTargets.Add((w.DestMap, w.DestWarp));
     }
+
+    private readonly HashSet<(string Map, int Warp)> holeTargets = new();
+
+    /// <summary>
+    /// A map whose layout the story changes for another (plan 19 · K6, part b): FireRed's <c>setmaplayoutindex</c>
+    /// gives the Seafoam Islands' two lowest floors a layout of calm water once two boulders lie across their currents.
+    /// The other layout's chunks are written after every matrix's (<see cref="AlternateOf"/>), so no chunk is numbered
+    /// otherwise, and the region's <c>world.json</c> swaps them in by its <c>swaps</c> (<c>Map.ApplySwappedPlaces</c>).
+    /// </summary>
+    public static readonly IReadOnlyList<(string Map, string Layout)> Alternates = new[]
+    {
+        ("MAP_SEAFOAM_ISLANDS_B3F", "LAYOUT_SEAFOAM_ISLANDS_B3F_CURRENT_STOPPED"),
+        ("MAP_SEAFOAM_ISLANDS_B4F", "LAYOUT_SEAFOAM_ISLANDS_B4F_CURRENT_STOPPED")
+    };
+
+    /// <summary>
+    /// The matrix <paramref name="m"/> with the map <paramref name="mapId"/> laid from another of its layouts (the same
+    /// size), for <see cref="Alternates"/>; null where the matrix doesn't hold it or the layout isn't there.
+    /// </summary>
+    public GbaMatrix? AlternateOf(GbaMatrix m, string mapId, string layoutId)
+    {
+        if (!Source.Layouts.TryGetValue(layoutId, out var layout) || m.Maps.All(p => p.Map.Id != mapId)) return null;
+        var alt = new GbaMatrix { Id = m.Id };
+        foreach (var p in m.Maps) alt.Maps.Add(p.Map.Id == mapId ? p with { Layout = layout } : p);
+        alt.Allocate(m.Width, m.Height);
+        Fill(alt, count: false);
+        Heights(alt);
+        return alt;
+    }
+
+    /// <summary>
+    /// Whether a map's warp is only where someone falling through a hole above comes down (plan 19 · K6, part b): a
+    /// hole names it, and its own tile is no way anywhere (the Seafoam Islands' floors keep one under each hole, on
+    /// plain floor or water). The original never takes such a warp; here it is written as a landing
+    /// (<see cref="AreaWarp.Landing"/>), which leads nowhere and shuts nothing.
+    /// </summary>
+    public bool IsLanding(string mapId, int warp, TileBehavior own) =>
+        holeTargets.Contains((mapId, warp)) && own is not (TileBehavior.Hole or TileBehavior.Door or TileBehavior.WarpPanel
+            or TileBehavior.EntranceNorth or TileBehavior.EntranceSouth or TileBehavior.EntranceEast or TileBehavior.EntranceWest
+            or TileBehavior.ExitNorth or TileBehavior.ExitSouth or TileBehavior.ExitEast or TileBehavior.ExitWest
+            or TileBehavior.StairsEast or TileBehavior.StairsWest);
 
     public static float LevelOf(int elevation) => GroundLevel + (elevation - 3) * LevelHeight;
 
@@ -197,7 +244,7 @@ public sealed class GbaWorld
         return matrix;
     }
 
-    private void Fill(GbaMatrix m)
+    private void Fill(GbaMatrix m, bool count = true)
     {
         var overlaps = new HashSet<(int, int)>();
         for (int index = 0; index < m.Maps.Count; index++)
@@ -229,6 +276,7 @@ public sealed class GbaWorld
                     m.Elevation[i] = (byte)GbaLayout.ElevationOf(block);
                     m.Cover[i] = cover;
                     if (indoors) m.Furniture[i] = GbaFurniture.Of(name, tileset, metatile, Source.Game);
+                    if (!count) continue;
                     BehaviourUse[name] = BehaviourUse.GetValueOrDefault(name) + 1;
                     if (cover == TerrainCover.Unknown)
                     {
@@ -428,7 +476,8 @@ public sealed class GbaWorld
             if (prop is PropType.Window or PropType.Painting or PropType.Clock or PropType.WallEmblem) return m.Solid[i] ? prop : null;
             // A museum's case blocks nothing by itself (Sinnoh's rooms block it by their own grid), but nobody walks
             // onto one: it stands on the layout's blocked tiles (plan 21 · H3, the Oceanic Museum)
-            if (prop is PropType.DisplayCase) return m.Solid[i] ? prop : null;
+            // (and so does a Game Corner's slot machine, plan 19 · K6, part b)
+            if (prop is PropType.DisplayCase or PropType.SlotMachine) return m.Solid[i] ? prop : null;
             // A bed is one piece over the tiles FireRed blocks and those it lets the player climb onto (plan 19 · K3): the
             // map's own tiles still say which is which
             if (prop is PropType.Bed) return prop;
