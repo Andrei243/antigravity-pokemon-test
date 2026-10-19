@@ -1,0 +1,8 @@
+# The Glitter Lighthouse's ground floor (plan 20 · J9). docs/scripts.md describes the language.
+#
+# The lift's car rides up from here (olivine_lighthouse_elevator.txt), once Jasmine has opened it at the top.
+
+
+script OnEnter
+  setvar VAR_OLIVINE_LIGHTHOUSE_LIFT_FLOOR 0
+  end

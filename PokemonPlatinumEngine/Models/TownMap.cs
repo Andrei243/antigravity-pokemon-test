@@ -57,7 +57,7 @@ public sealed class TownMapState
         Here = here is { } h2 && region.InView(h2.X, h2.Y) ? here : null;
         Trail = trail?.Recent(Here).Where(s => region.InView(s.X, s.Y)).ToList() ?? new List<TrailStep>();
         Spots = region.FlySpots
-            .Select(s => (Spot: s, Town: SpawnLocations.Get(s.Spawn)))
+            .Select(s => (Spot: s, Town: SpawnLocations.Get(RegionDatabase.RegionOfMap(region.Map)?.Id, s.Spawn)))
             .Where(s => s.Town != null)
             .Select(s => new TownMapSpot(s.Spot, s.Town!, story.Has(s.Spot.Flag ?? s.Town!.ArrivalFlag) && (reachable?.Invoke(s.Town!) ?? true)))
             .ToList();

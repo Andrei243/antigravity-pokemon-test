@@ -1,13 +1,15 @@
 {
   // Olivine City (plan 20 · J8): HeartGold's map, our words. The port of the Glitter Lighthouse and the S.S. Aqua,
-  // built in white plaster under red roofs (Seaport). The red-haired boy at the Gym's door and his trigger, Jasmine
-  // and the rest of the third chapter are plan 20 · J9's; the photographer and the man the original keeps by the
-  // western shore wait for theirs
+  // built in white plaster under red roofs (Seaport). The red-haired boy at the Gym's door and his trigger are plan
+  // 20 · J9's (scripts/olivine.txt); the photographer and the man the original keeps by the western shore wait for
+  // theirs
   "area": "olivine",
   "bgmTrack": "johto/olivine",
   "trees": "Round",
   "architecture": "Seaport",
+  "triggers": [ { "trigger": 0, "script": "RivalAtTheGym" } ],
   "people": {
+    "t26_gsrivel": { "name": "{rival}", "npcType": "Silver", "still": true, "dialog": [ "..." ] },
     "t26_seaman_2": {
       "name": "Sailor",
       "dialog": [

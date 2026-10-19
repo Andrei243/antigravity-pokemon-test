@@ -8,10 +8,38 @@
         "text": [
           "Femeia"
         ]
+      }
+    },
+    "t24_tsure_poke_static_suicune": {
+      "name": {
+        "en": [
+          "Suicune"
+        ],
+        "text": [
+          ""
+        ]
       },
       "dialog": {
         "en": [
-          "The Gym Leader, Chuck, trains under the waterfall every day. He's terribly loud about it."
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24_minaki": {
+      "name": {
+        "en": [
+          "Eusine"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Suicune... where could it have gone?"
         ],
         "text": [
           "Liderul Arenei, Chuck, se antrenează în fiecare zi sub cascadă. Și face o gălăgie îngrozitoare."

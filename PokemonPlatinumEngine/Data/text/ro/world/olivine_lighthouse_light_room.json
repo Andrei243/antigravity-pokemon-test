@@ -1,17 +1,19 @@
 {
   "people": {
-    "d27r0107_tsure_poke_static_ampharos": {
+    "d27r0107_gsleader6": {
       "name": {
         "en": [
-          "Amphy"
+          "Jasmine"
         ],
         "text": [
           "Amphy"
         ]
-      },
-      "dialog": {
+      }
+    },
+    "d27r0107_tsure_poke_static_ampharos": {
+      "name": {
         "en": [
-          "Amphy... It breathes weakly, and its tail's light barely glows."
+          "Amphy"
         ],
         "text": [
           "Amphy... Respiră slab, iar lumina din coada lui abia mai pâlpâie."

@@ -44,6 +44,12 @@
   },
   "spawns": [
     { "id": 1, "area": "new_bark", "x": 695, "y": 397, "room": "NewBark_PlayersHouse_1F" },
-    { "id": 2, "area": "cherrygrove", "x": 564, "y": 392, "room": "Cherrygrove_PokemonCenter_1F" }
+    { "id": 2, "area": "cherrygrove", "x": 564, "y": 392, "room": "Cherrygrove_PokemonCenter_1F" },
+    { "id": 3, "area": "violet", "x": 497, "y": 272, "room": "Violet_PokemonCenter_1F" },
+    { "id": 4, "area": "azalea", "x": 410, "y": 461, "room": "Azalea_PokemonCenter_1F" },
+    { "id": 5, "area": "goldenrod", "x": 352, "y": 369, "room": "Goldenrod_PokemonCenter_1F" },
+    { "id": 6, "area": "ecruteak", "x": 397, "y": 184, "room": "Ecruteak_PokemonCenter_1F" },
+    { "id": 7, "area": "olivine", "x": 272, "y": 258, "room": "Olivine_PokemonCenter_1F" },
+    { "id": 8, "area": "cianwood", "x": 187, "y": 370, "room": "Cianwood_PokemonCenter_1F" }
   ]
 }

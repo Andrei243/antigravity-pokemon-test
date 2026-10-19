@@ -698,6 +698,7 @@ script UseCut
 # A rock full of cracks. Rock Smash breaks it, with the Badge the region asks for it (movebadge: the Coal Badge in
 # Sinnoh, the Marsh Badge in Kanto). It stands in the Ravaged Path's way north, so a player who can't break it yet is
 # told what is missing: the move, the HM that teaches it, or the Badge, named by no Gym of one region (plan 19 · K5).
+# A rock smashed may let out a wild Pokémon of the place's rockSmash table (plan 20 · J9: `rocksmash`; none in Sinnoh).
 script Rock
   speaker none
   if not knows "Rock Smash" goto Cannot
@@ -706,6 +707,7 @@ script Rock
   if no end
   usemove "Rock Smash"
   setflag own
+  rocksmash
   end
 label NoBadge
   text "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until the right Gym Badge is won."
@@ -725,6 +727,7 @@ label Early
 script UseRockSmash
   usemove "Rock Smash"
   setflag own
+  rocksmash
   end
 
 

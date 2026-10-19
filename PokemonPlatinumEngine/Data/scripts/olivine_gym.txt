@@ -1,0 +1,81 @@
+# The Olivine Gym (plan 20 · J9). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T26GYM0101).
+#
+# Until Amphy is cured (VAR_SCENE_LIGHTHOUSE_JASMINE below 2, olivine_lighthouse_light_room.txt) Jasmine is at the
+# lighthouse, and so are the two who come to watch her battle: the room's own arrival keeps the three off the floor
+# (FLAG_HIDE_JASMINE_IN_GYM and its two, which HeartGold's new game sets and the light room's scene clears). Jasmine
+# battles, gives the Mineral Badge (`givebadge mineral`) and TM23, Iron Tail (FLAG_GOT_TM23_FROM_JASMINE). The Gym
+# has no trainers of its own.
+
+
+script OnEnter
+  if var VAR_SCENE_LIGHTHOUSE_JASMINE >= 2 end
+  setflag FLAG_HIDE_JASMINE_IN_GYM
+  setflag FLAG_HIDE_OLIVINE_GYM_GENTLEMAN
+  setflag FLAG_HIDE_OLIVINE_GYM_GIRL
+  end
+
+
+# T26GYM0101_000
+script Jasmine
+  face t26gym0101_gsleader6 player
+  speaker "Jasmine"
+  if badge mineral goto Won
+  scene "Jasmine"
+  say "Thank you again for Amphy. Now let me show you the other side of me: a Gym Leader's."
+  say "My Pokémon are of steel. They're harder than anything you've faced. Are you ready?"
+  battle self as "johto_leader_jasmine_jasmine"
+  say "Your Pokémon cut through steel... You're stronger than I imagined. The Mineral Badge is yours."
+  givebadge mineral
+  text "{player} received the Mineral Badge from Jasmine!"
+  say "Wear it proudly. Steel only grows harder under the hammer, and so do the Trainers who keep going."
+  endscene
+label Tm
+  say "And please take this. A move I'm very fond of."
+  give "TM23"
+  setflag FLAG_GOT_TM23_FROM_JASMINE
+  say "TM23 is Iron Tail. It strikes with a tail as hard as steel, and may lower the foe's Defense."
+  end
+label Won
+  if not flag FLAG_GOT_TM23_FROM_JASMINE goto Tm
+  say "Amphy shines every night now. Whenever I see its light out at sea, I think of you."
+  end
+
+
+# T26GYM0101_005
+script GymGuy
+  speaker "Gym Guide"
+  if badge mineral goto Won
+  if var VAR_SCENE_LIGHTHOUSE_JASMINE >= 2 goto Back
+  say "Hey there, challenger! Sorry, the Leader's out. Jasmine's up at the lighthouse, looking after a sick Pokémon."
+  say "She won't battle anyone until it's well again. That's just how kind she is."
+  end
+label Back
+  say "Jasmine's back! And she's not the gentle girl you'd think in battle. Her Steel types barely feel a scratch."
+  say "Fire, Fighting and Ground moves are your best bet. Good luck, champ!"
+  end
+label Won
+  say "You broke through her steel! I knew there was something about you."
+  end
+
+
+# T26GYM0101_003
+script Gentleman
+  speaker "Gentleman"
+  if badge mineral goto Won
+  say "Jasmine is back, and so are we. She battles beautifully. I wouldn't miss it for the world."
+  end
+label Won
+  say "What a battle! Jasmine looked happy, even in defeat. You must have reminded her of something."
+  end
+
+
+# T26GYM0101_004
+script Girl
+  speaker "Girl"
+  if badge mineral goto Won
+  say "I heard Jasmine was too worried to battle while that Ampharos was sick. She's so kind!"
+  end
+label Won
+  say "You beat Jasmine? Wow... I want to be strong and kind, just like her."
+  end

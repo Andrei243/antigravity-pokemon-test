@@ -597,6 +597,206 @@ public class JohtoStoryTests
         foreach (string badge in new[] { "Hive", "Plain", "Fog" }) Assert.True(game.Story.HasBadge("Johto", badge), badge);
     }
 
+    [Theory]
+    [InlineData(0)]
+    [InlineData(2)]
+    public void TheThirdChapterPlaysFromOlivinesLighthouseToTheMineralBadge(int starter)
+    {
+        // Plan 20 · J9: the red-haired boy at Olivine's Gym, Jasmine by Amphy and the lighthouse's lift, the Secret
+        // Potion from Cianwood's pharmacy, the winch and Chuck's Storm Badge, his wife's Fly, Suicune and Eusine on
+        // Cianwood's shore, Amphy cured, Jasmine's Mineral Badge, and the Moomoo Farm's Miltank fed back to health
+        var game = new Game(starter);
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        game.Story.ChooseStarter(johto.Starters[starter]);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 45));
+        // As the second chapter leaves it: the three of the Burned Tower fled and the Fog Badge won
+        game.Story.SetVar("VAR_UNK_4079", 4);
+        game.Story.GiveBadge("Johto", "Fog");
+
+        // Olivine City: the red-haired boy comes out of the Gym once, and is gone
+        game.Arrive("Johto", 272, 248);
+        Assert.Null(game.Present("t26_gsrivel"));
+        Assert.True(game.Fires("RivalAtTheGym"));
+        game.Step("RivalAtTheGym");
+        Assert.Equal(1, game.Story.Var("VAR_UNK_4078"));
+        Assert.False(game.Fires("RivalAtTheGym"));
+        Assert.Null(game.Present("t26_gsrivel"));
+
+        // Jasmine is away: the Gym has only its guide
+        game.Arrive("Olivine_Gym", 6, 26);
+        Assert.Null(game.Present("t26gym0101_gsleader6"));
+        Assert.Null(game.Present("t26gym0101_gsgirl1"));
+
+        // The light room: Jasmine tells of the pharmacy and steps aside from the lift
+        game.Arrive("OlivineLighthouse_LightRoom", 9, 9);
+        bool LiftOpen() => game.Map.Warps.Any(w => w.TargetMap == "OlivineLighthouse_Elevator" && !game.Map.IsSolid(w.SourceX, w.SourceY));
+        Assert.False(LiftOpen());
+        game.Talk("d27r0107_gsleader6");
+        Assert.Equal(1, game.Story.Var("VAR_SCENE_LIGHTHOUSE_JASMINE"));
+        Assert.True(LiftOpen());
+        // The lift carries whoever comes in to the other end
+        game.Arrive("OlivineLighthouse_Elevator", 3, 6);
+        Assert.Equal("OlivineLighthouse_1F", game.Map.Name);
+        Assert.True(game.Map.Warps.Any(w => w.TargetMap == "OlivineLighthouse_Elevator" && !game.Map.IsSolid(w.SourceX, w.SourceY)));
+        game.Arrive("OlivineLighthouse_Elevator", 3, 6);
+        Assert.Equal("OlivineLighthouse_LightRoom", game.Map.Name);
+
+        // Cianwood's pharmacy gives the Secret Potion once, and sells afterwards
+        game.Arrive("Cianwood_Pharmacy", 5, 8);
+        game.Talk("t24r0501_sunglasses");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Secret Potion")!));
+        Assert.Contains(game.Talk("t24r0501_sunglasses").Log, l => l == "open Shop cianwood_pharmacy");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Secret Potion")!));
+
+        // The Cianwood Gym: Chuck hears nothing until the winch stops his waterfall
+        game.Arrive("Cianwood_Gym", 13, 18);
+        Assert.DoesNotContain(game.Talk("t24gym0101_gsleader5").Log, l => l.StartsWith("battle"));
+        game.Answers.Enqueue(0);
+        game.Read(10, 2);
+        Assert.True(game.Story.Has("FLAG_MAP_LOCAL_CIANWOOD_GYM_FALLS_STOPPED"));
+        var chuck = game.Talk("t24gym0101_gsleader5");
+        Assert.Contains(chuck.Log, l => l.StartsWith("battle johto_leader_chuck_chuck"));
+        Assert.True(game.Story.HasBadge("Johto", "Storm"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM01")!));
+        Assert.True(game.Story.HasDefeated("johto_black_belt_lung"));
+
+        // Out of the Gym, Chuck's wife gives Fly
+        game.Arrive("Johto", 172, 358);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM02")!));
+        Assert.Equal(2, game.Story.Var("VAR_UNK_4116"));
+        Assert.Equal("Storm", FieldMoveRules.BadgeFor(FieldMove.Fly, "Johto"));
+
+        // Suicune on the north shore bounds off, and Eusine battles
+        Assert.NotNull(game.Present("t24_tsure_poke_static_suicune"));
+        Assert.Null(game.Present("t24_minaki"));
+        var eusine = game.Step("Suicune");
+        Assert.Contains(eusine.Log, l => l.StartsWith("battle johto_mystery_man_eusine"));
+        Assert.Equal(2, game.Story.Var("VAR_UNK_4076"));
+        Assert.False(game.Fires("Suicune"));
+        game.Arrive("Johto", 172, 358);
+        Assert.Null(game.Present("t24_tsure_poke_static_suicune"));
+        Assert.Null(game.Present("t24_minaki"));
+
+        // Amphy cured: the potion is taken and Jasmine goes back to her Gym
+        game.Arrive("OlivineLighthouse_LightRoom", 9, 9);
+        game.Answers.Enqueue(0);
+        game.Talk("d27r0107_gsleader6");
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Secret Potion")!));
+        Assert.Equal(2, game.Story.Var("VAR_SCENE_LIGHTHOUSE_JASMINE"));
+        Assert.Null(game.Present("d27r0107_gsleader6"));
+
+        // Jasmine, the Mineral Badge and TM23
+        game.Arrive("Olivine_Gym", 6, 26);
+        Assert.NotNull(game.Present("t26gym0101_gsgirl1"));
+        var jasmine = game.Talk("t26gym0101_gsleader6");
+        Assert.Contains(jasmine.Log, l => l.StartsWith("battle johto_leader_jasmine_jasmine"));
+        Assert.True(game.Story.HasBadge("Johto", "Mineral"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM23")!));
+        foreach (string badge in new[] { "Fog", "Storm", "Mineral" }) Assert.True(game.Story.HasBadge("Johto", badge), badge);
+    }
+
+    [Fact]
+    public void TheMoomooFarmsMiltankIsFedSevenOranBerriesAndItsMilkIsSoldAfterwards()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 45));
+        // Before the farmer has told what ails her, she is only looked at
+        game.Arrive("Route39_MoomooFarmStable", 7, 8);
+        game.Bag.AddItem(ItemDatabase.Get("Oran Berry")!, 8);
+        Assert.Empty(game.Talk("r39r0201_tsure_poke_static_miltank").Asked);
+        game.Arrive("Route39_MoomooFarmHouse", 6, 9);
+        game.Talk("r39r0101_gsmiddleman1");
+        Assert.True(game.Story.Has("FLAG_UNK_0A8"));
+        // Six berries are not enough; the seventh cures her
+        game.Arrive("Route39_MoomooFarmStable", 7, 8);
+        for (int berry = 1; berry <= 7; berry++)
+        {
+            Assert.False(game.Story.Has("FLAG_UNK_0AA"));
+            game.Answers.Enqueue(0);
+            game.Talk("r39r0201_tsure_poke_static_miltank");
+        }
+        Assert.True(game.Story.Has("FLAG_UNK_0AA"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Oran Berry")!));
+        // The farmer sells a bottle for 500, and his wife gives TM83 once
+        game.Arrive("Route39_MoomooFarmHouse", 6, 9);
+        game.Answers.Enqueue(0);
+        var milk = game.Talk("r39r0101_gsmiddleman1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Moomoo Milk")!));
+        Assert.Equal(2500, milk.Money);
+        game.Talk("r39r0101_middlewoman1_2");
+        game.Talk("r39r0101_middlewoman1_2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM83")!));
+    }
+
+    [Fact]
+    public void ASmashedRockLetsOutItsPlacesPokemonAtItsRate()
+    {
+        // Plan 20 · J9 (J7's leftover): Cianwood's rocks hold HeartGold's Krabby and Shuckle, met 90 and 10 times in a
+        // hundred, one rock in three and a little under (its rockSmashRate of 30)
+        var overworld = Johto.Value.BuildMaps().Single(m => m.Name == "Johto");
+        var rock = overworld.Everyone.First(n => n.Key == "t24_breakrock");
+        var area = overworld.AreaAt(rock.GridX, rock.GridY)!;
+        Assert.Equal(30, area.RockSmashRate);
+        Assert.Equal(new[] { 90, 10 }, area.RockSmashEncounters.Select(e => e.Weight));
+        var random = new Random(9);
+        var met = Enumerable.Range(0, 2000).Select(_ => overworld.SmashRock(rock.GridX, rock.GridY, random: random)).OfType<WildEncounterEntry>().ToList();
+        Assert.InRange(met.Count, 500, 700);
+        Assert.All(met, m => Assert.Contains(m.SpeciesName, new[] { "Krabby", "Shuckle" }));
+        Assert.InRange(met.Count(m => m.SpeciesName == "Shuckle"), 20, 110);
+        // Sinnoh's rocks hide nothing
+        var sinnoh = MapDatabase.Get("Sinnoh");
+        Assert.DoesNotContain(sinnoh.Areas, a => a.RockSmashEncounters.Count > 0);
+
+        // The common script lets out what lives in the rock once it is smashed, and battles it
+        var game = new Game();
+        var smasher = new Pokemon(PokemonDatabase.Get("Machamp")!, 45);
+        smasher.Moves.Clear();
+        smasher.Moves.Add(new Move(MoveDatabase.Get("Rock Smash")!));
+        game.Party.Add(smasher);
+        game.Story.GiveBadge("Johto", "Zephyr");
+        game.Arrive("Johto", rock.GridX, rock.GridY + 1);
+        var host = new HeadlessScriptHost(game.Story, game.Party, game.Bag) { Map = game.Map, PlayerTile = game.Tile, InTheRock = ("Shuckle", 25) };
+        host.Answers.Enqueue(0);
+        var runner = new ScriptRunner(Scripts, host);
+        runner.Start(Scripts.Find("Rock", "common")!, game.Map.Everyone.First(n => n.Key == "t24_breakrock"));
+        runner.RunToEnd();
+        Assert.Empty(host.Problems);
+        Assert.Contains(host.Log, l => l.StartsWith("wildbattle Shuckle 25"));
+    }
+
+    [Fact]
+    public void FlyOverJohtoLandsBeforeATownsPokemonCenterOnceItHasBeenComeTo()
+    {
+        // Plan 20 · J9: Johto's towns are its region's spawns, opened by their first arrivals, on its own map
+        var story = new StoryState();
+        var olivine = SpawnLocations.ArrivedIn(RegionDatabase.Johto, "olivine")!;
+        Assert.Equal("Johto", olivine.Map);
+        Assert.Equal("Olivine_PokemonCenter_1F", olivine.Room);
+        Assert.Null(SpawnLocations.ArrivedIn(RegionDatabase.Johto, "route_39"));
+        var map = RegionMap.Of("johto")!;
+        Assert.False(new TownMapState(map, story).CanFlyTo(8, 8));
+        story.Set(olivine.ArrivalFlag);
+        var state = new TownMapState(map, story);
+        Assert.True(state.CanFlyTo(8, 8));
+        Assert.Equal(olivine, state.SpotAt(8, 8)!.Town);
+        Assert.False(state.CanFlyTo(5, 11));
+        // Every town of Johto's map has its place, standing before its Center's door
+        var overworld = Johto.Value.BuildMaps().Single(m => m.Name == "Johto");
+        foreach (var spawn in SpawnLocations.In(RegionDatabase.Johto))
+        {
+            Assert.Contains(map.FlySpots, f => f.Spawn == spawn.Id);
+            Assert.True(overworld.IsWalkable(spawn.X, spawn.Y), $"{spawn.Area}'s spawn stands on a blocked tile");
+            Assert.Equal(spawn.Room, overworld.GetWarpAt(spawn.X, spawn.Y - 1)?.TargetMap);
+        }
+        // A flight lands on Johto's map, not Sinnoh's
+        var host = new HeadlessScriptHost(story, new Party(), new Inventory()) { FlyTo = olivine };
+        Assert.True(host.Fly());
+        Assert.Contains(host.Log, l => l.StartsWith("warp Johto 272 258"));
+        // Sinnoh's are as they were
+        Assert.Equal("Sinnoh", SpawnLocations.Get(3)!.Map);
+        Assert.Same(SpawnLocations.All, SpawnLocations.In(RegionDatabase.Sinnoh));
+    }
+
     [Fact]
     public void TheStrangeTreeWaitsForTheSquirtBottleAndStaysWhenRunFrom()
     {

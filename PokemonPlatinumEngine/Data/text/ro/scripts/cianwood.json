@@ -1,0 +1,120 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat my husband? My, my! Then you've earned this. It's something I keep for strong Trainers."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "HM02 is Fly. With the Storm Badge, your Pokémon can carry you to any town you've visited before."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ChucksWife": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My husband is the Gym Leader. He's out there under that waterfall day and night, bellowing at it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you ever beat him, come and find me. I've got something for a Trainer like that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Is Fly treating you well? Soaring over the sea is lovely on a calm day."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Suicune": [
+    {
+      "en": [
+        "Suicune is looking this way!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Suicune bounded off across the sea!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Eusine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Did you see it? Suicune! I've chased it all the way from the Burned Tower, and it went straight past me to look at you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Eusine. I've studied Suicune for ten years. Why would it look at you? I have to know. Battle me, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I lost... So that's it. You and your Pokémon share something Suicune can sense."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll keep searching. Suicune won't be far. Next time, I'll be the one it waits for!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

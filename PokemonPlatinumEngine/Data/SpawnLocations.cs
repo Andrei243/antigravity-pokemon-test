@@ -10,7 +10,7 @@ namespace PokemonPlatinumEngine.Data;
 /// the player's house), the tile of the map of Sinnoh in front of it where Fly and Teleport land, the room whose
 /// door sets it as the place to come back to, and whether arriving in the town is what lets one fly there.
 /// </summary>
-public sealed record SpawnLocation(int Id, string Area, int X, int Y, string Room, bool UnlockedOnArrival = true, string? Flag = null)
+public sealed record SpawnLocation(int Id, string Area, int X, int Y, string Room, bool UnlockedOnArrival = true, string? Flag = null, string Map = "Sinnoh")
 {
     /// <summary>
     /// The flag that first arriving in the town sets, which lets one fly there: <c>FLAG_FIRST_ARRIVAL_ETERNA_CITY</c>.
@@ -34,15 +34,54 @@ public static class SpawnLocations
 
     /// <summary>A region's spawn locations as its file lists them (plan 18 · W1), numbered as the file numbers them.</summary>
     public static IReadOnlyList<SpawnLocation> Of(Region region) =>
-        (region.File?.Spawns ?? new()).Select(p => new SpawnLocation(p.Id, p.Area, p.X, p.Y, p.Room, p.UnlockedOnArrival, p.Flag)).ToList();
+        (region.File?.Spawns ?? new()).Select(p => new SpawnLocation(p.Id, p.Area, p.X, p.Y, p.Room, p.UnlockedOnArrival, p.Flag, region.OverworldMap ?? "Sinnoh")).ToList();
 
     /// <summary>Sinnoh's twenty, from <c>regions/sinnoh.json</c>: the places the rest of this class speaks of until Fly is region by region (plan 18 · W9).</summary>
     public static readonly IReadOnlyList<SpawnLocation> All = Of(RegionDatabase.Get(RegionDatabase.Sinnoh)!);
 
+    private static readonly Dictionary<string, IReadOnlyList<SpawnLocation>> byRegion = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// A region's spawn locations, by the region's id (plan 20 · J9: Fly within Johto). Sinnoh's are <see cref="All"/>;
+    /// an unknown region has none. Only Fly and a first arrival read another region's: the place to come back to
+    /// (<see cref="Variable"/>, Teleport, a white-out) stays Sinnoh's until plan 18 · W9.
+    /// </summary>
+    public static IReadOnlyList<SpawnLocation> In(string? regionId)
+    {
+        if (regionId == null || string.Equals(regionId, RegionDatabase.Sinnoh, StringComparison.OrdinalIgnoreCase)) return All;
+        lock (byRegion)
+        {
+            if (!byRegion.TryGetValue(regionId, out var list))
+                byRegion[regionId] = list = RegionDatabase.Get(regionId) is { } region ? OfWorld(region) : Array.Empty<SpawnLocation>();
+            return list;
+        }
+    }
+
+    /// <summary>
+    /// A region's file's spawns, and after them those its world folder's <c>spawns.json</c> adds (a GBA import writes
+    /// one, plan 18 · W7: Kanto's heal locations), the file's own winning where both number one place.
+    /// </summary>
+    private static IReadOnlyList<SpawnLocation> OfWorld(Region region)
+    {
+        var list = Of(region).ToList();
+        string path = System.IO.Path.Combine(World.Folder, region.Folder, "spawns.json");
+        if (System.IO.File.Exists(GameDataFiles.PathOf(path)))
+            foreach (var p in GameDataFiles.Load<List<RegionSpawn>>(path))
+                if (list.All(s => s.Id != p.Id))
+                    list.Add(new SpawnLocation(p.Id, p.Area, p.X, p.Y, p.Room, p.UnlockedOnArrival, p.Flag, region.OverworldMap ?? "Sinnoh"));
+        return list.OrderBy(s => s.Id).ToList();
+    }
+
     public static SpawnLocation? Get(int id) => id >= 1 && id <= All.Count ? All[id - 1] : null;
+
+    /// <summary>A spawn location of a region by its number there.</summary>
+    public static SpawnLocation? Get(string? regionId, int id) => In(regionId).FirstOrDefault(s => s.Id == id);
 
     /// <summary>The town whose first arrival is noted on coming into an area, if it is one (<c>TryUnlockFlyLocationByMap</c>).</summary>
     public static SpawnLocation? ArrivedIn(string areaKey) => All.FirstOrDefault(s => s.Area == areaKey && s.UnlockedOnArrival);
+
+    /// <summary>The same in a region of its own (plan 20 · J9).</summary>
+    public static SpawnLocation? ArrivedIn(string? regionId, string areaKey) => In(regionId).FirstOrDefault(s => s.Area == areaKey && s.UnlockedOnArrival);
 
     /// <summary>The place a room makes the one to come back to, on going into it (<c>GetMapBlackOutWarpId</c>).</summary>
     public static SpawnLocation? OfRoom(string mapName) => All.FirstOrDefault(s => s.Room == mapName && s.Id != PalParkLobby);
@@ -62,7 +101,7 @@ public static class SpawnLocations
     /// <c>sTownMapFlyLocationUnlockFlags</c> asks Pal Park's gate, not Route 221's arrival), else its first arrival's.
     /// </summary>
     public static string FlyFlag(SpawnLocation spawn) =>
-        RegionMap.Sinnoh?.FlySpots.FirstOrDefault(f => f.Spawn == spawn.Id)?.Flag ?? spawn.ArrivalFlag;
+        RegionMap.ForMap(spawn.Map)?.FlySpots.FirstOrDefault(f => f.Spawn == spawn.Id)?.Flag ?? spawn.ArrivalFlag;
 
     /// <summary>
     /// Pal Park's lobby: no Pokémon Center, so never the place to come back to after a white-out or by Teleport (the

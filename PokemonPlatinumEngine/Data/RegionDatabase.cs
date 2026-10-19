@@ -444,6 +444,8 @@ public static class RegionDatabase
                 "OlivineLighthouse_Ledge", "OlivineLighthouse_LightRoom", "Route40_FrontierGate", "Cianwood_PokemonCenter_1F",
                 "Cianwood_PokemonCenter_B1F", "Cianwood_Gym", "Cianwood_Pharmacy", "Cianwood_KirksHouse", "Cianwood_CentralHouse",
                 "Cianwood_NorthHouse", "Cianwood_PhotoStudio", "WhirlIslands_1F", "WhirlIslands_B1F", "WhirlIslands_B2F",
+                // Plan 20 · J9: the lighthouse's lift
+                "OlivineLighthouse_Elevator",
             }
         },
         new()

@@ -1,0 +1,126 @@
+{
+  "Chuck": [
+    {
+      "en": [
+        "Chuck"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "WAHAHAH! So you stopped my waterfall! You've got nerve, I'll give you that!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm Chuck, and my fists do my talking! My Pokémon and I train harder than anyone. Show me what you've got!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whoa! What power! I've got no excuse. You beat me fair and square. Take the Storm Badge!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Storm Badge from Chuck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With the Storm Badge, Pokémon up to level seventy will obey you. And you can use Fly outside of battle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, this is my favourite! Put everything you have into one punch!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM01 is Focus Punch. Get hit while you're winding up and you'll lose your nerve, so be careful with it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Chuck"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Back to the waterfall for me! I can't let a loss like that go unanswered. HWAAAH!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Chuck is training under the waterfall, roaring at the top of his voice. He can't hear a thing over the water."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Winch": [
+    {
+      "en": [
+        "A big winch works the waterfall's sluice. Turn it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} turned the winch with all their strength!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The waterfall slowed to a trickle!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The winch is turned. Only a trickle of water falls."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

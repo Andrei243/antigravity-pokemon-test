@@ -1,0 +1,35 @@
+# Olivine City (plan 20 · J9). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_T26).
+#
+# The first time the player walks past the Gym's door (the area's trigger 0, while VAR_UNK_4078 is 0), the red-haired
+# boy comes out of it: the Leader is up the lighthouse nursing a sick Pokémon, and he has no time for a Leader like
+# that. He goes back the way he came and the trigger is spent (VAR_UNK_4078 1). Until then he is kept off the street
+# (FLAG_HIDE_OLIVINE_RIVAL, which HeartGold's new game sets: here the town's own arrival does, so no save needs it).
+
+
+script OnEnter
+  if var VAR_UNK_4078 == 0 setflag FLAG_HIDE_OLIVINE_RIVAL
+  end
+
+
+# T26_001
+script RivalAtTheGym
+  scene "The red-haired boy at Olivine's Gym"
+  clearflag FLAG_HIDE_OLIVINE_RIVAL
+  show t26_gsrivel
+  walk t26_gsrivel down 1
+  emote player exclaim
+  music "johto/rival"
+  face player left
+  face t26_gsrivel player
+  speaker "{rival}"
+  say "...You again. If you're here for the Gym, don't bother. The Leader's not even in it."
+  say "She's up that lighthouse, fussing over some sick Pokémon. A Gym Leader playing nurse!"
+  say "A Pokémon too weak to stand isn't worth the time. You'd waste yours on it too, wouldn't you? That's why you'll never be strong."
+  walk t26_gsrivel up 1 fast
+  hide t26_gsrivel
+  setflag FLAG_HIDE_OLIVINE_RIVAL
+  setvar VAR_UNK_4078 1
+  music area
+  endscene
+  end

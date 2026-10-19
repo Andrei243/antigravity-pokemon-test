@@ -336,11 +336,13 @@ public class JohtoTests
                      "WhirlIslands_1F", "WhirlIslands_B2F" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // What waits stays shut: the S.S. Aqua's quay, the Battle Frontier's road, the lighthouse's lift, Lugia's cave,
-        // the cliff path to Route 47 and the road east of Ecruteak to Route 42
+        // What waits stays shut: the S.S. Aqua's quay, the Battle Frontier's road, Lugia's cave, the cliff path to Route
+        // 47 and the road east of Ecruteak to Route 42; the lighthouse's lift waits for Jasmine to step aside (plan 20 ·
+        // J9), its door a wall until then
         Assert.Null(MapNamed("Olivine_PortHall").GetWarpAt(7, 11));
         Assert.Null(MapNamed("Route40_FrontierGate").GetWarpAt(5, 2));
-        Assert.Null(MapNamed("OlivineLighthouse_1F").GetWarpAt(8, 4));
+        Assert.Equal("FLAG_UNK_1D8", MapNamed("OlivineLighthouse_1F").GetWarpAt(8, 4)?.OpenedBy);
+        Assert.Equal("FLAG_UNK_1D8", MapNamed("OlivineLighthouse_LightRoom").GetWarpAt(8, 4)?.OpenedBy);
         Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Lugia", StringComparison.Ordinal));
         var cianwood = Johto.Area("cianwood")!;
         Assert.Empty(Overworld.WarpsAt(cianwood.Warps[6].X, cianwood.Warps[6].Z));
@@ -369,9 +371,11 @@ public class JohtoTests
         Assert.Contains(MapNamed("Cianwood_Gym").Everyone, n => n.Id == "johto_black_belt_lung");
         Assert.True(Overworld.NPCs.Count(n => n.Species == "Miltank") >= 4);
         Assert.Contains(MapNamed("OlivineLighthouse_LightRoom").NPCs, n => n.Species == "Ampharos");
-        // ...and Jasmine and Chuck wait for plan 20 · J9
-        Assert.DoesNotContain(MapNamed("Olivine_Gym").NPCs, n => n.Name == "Jasmine");
-        Assert.DoesNotContain(MapNamed("Cianwood_Gym").NPCs, n => n.Name == "Chuck");
+        // ...and since plan 20 · J9 Jasmine sits by Amphy, her place in the Gym waits for its cure (the Gym's own
+        // arrival hides her: JohtoStoryTests), and Chuck trains under his waterfall
+        Assert.Contains(MapNamed("OlivineLighthouse_LightRoom").NPCs, n => n.Name == "Jasmine");
+        Assert.Contains(MapNamed("Olivine_Gym").Everyone, n => n.Name == "Jasmine");
+        Assert.Contains(MapNamed("Cianwood_Gym").NPCs, n => n.Name == "Chuck");
     }
 
     [Fact]

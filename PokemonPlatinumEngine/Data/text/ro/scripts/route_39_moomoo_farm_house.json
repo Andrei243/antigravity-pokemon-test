@@ -1,0 +1,108 @@
+{
+  "Farmer": [
+    {
+      "en": [
+        "Farmer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Our best Miltank's fallen sick. She won't give a drop of milk, and she's barely eaten in days."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lots of Oran Berries might perk her up. If you've any to spare, she's in the barn next door."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fresh Moomoo Milk! Want some? It'll restore 100 HP to a Pokémon.",
+        "One bottle: 500",
+        "A dozen: 6,000",
+        "No thanks"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here you go! Drink it up while it's fresh."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here you go! A dozen bottles, fresh from our Miltank."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry, you haven't got the money for that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back if you get thirsty!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "FarmersWife": [
+    {
+      "en": [
+        "Farmer's Wife"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Our Miltank's sick, poor thing. We've tried everything we can think of."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You made our Miltank well again! I can't thank you enough. Please, take this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM83 is Natural Gift. Its power and type change with the Berry the Pokémon holds. Fitting, isn't it?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

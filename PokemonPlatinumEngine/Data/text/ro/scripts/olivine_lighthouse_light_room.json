@@ -1,0 +1,134 @@
+{
+  "Jasmine": [
+    {
+      "en": [
+        "Jasmine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh... a visitor. Forgive me, I'm Jasmine, the Leader of Olivine's Gym."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is Amphy. Its light keeps the ships off the rocks at night, but it's fallen ill and can barely glow."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's a pharmacy in Cianwood City, over the sea. They make a medicine there that might help, but I can't leave Amphy alone..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If you're going that way, would you... No, I shouldn't ask. Here, take the lift down. It's quicker than the stairs."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cianwood City is across the sea, west of here. Please, if you find the medicine... Amphy hasn't much light left."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Is that the medicine from Cianwood? Will you let Amphy have it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} handed over the Secret Potion."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you so much. Here, Amphy. Drink it slowly..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Amphy drank the medicine down."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! Its tail is shining again! Amphy, you're all right!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I can't thank you enough. Amphy's light will reach the ships tonight."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I must get back to my Gym. Come and see me there. I'd like to battle you, properly, as a Leader should."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh... I see. Please don't take too long. Amphy's light is so faint."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Amphy": [
+    {
+      "en": [
+        "Amphy... It breathes weakly, and its tail's light barely glows."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pa-paloo! Amphy's tail shines bright and steady."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

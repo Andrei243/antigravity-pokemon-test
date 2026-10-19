@@ -338,6 +338,7 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `teleport` | Through a fade to the town of the Pokémon Center last gone into. |
 | `escape` | Through a fade out of the caves, to where the player went into them (Dig, an Escape Rope). |
 | `sweetscent` | Draws out a wild Pokémon of the place where the player stands, on land or water, and battles it. `RESULT` is 0 when nothing lives there. |
+| `rocksmash` | After a rock is smashed: a wild Pokémon of the rock's place comes out at the place's chance (its area's `rockSmash` table and `rockSmashRate`: HeartGold's two slots met 90 and 10 times in a hundred, the GBA games' five by the water's weights) and is battled. `RESULT` is 0 when nothing does, which is always in Sinnoh (plan 20 · J9). |
 | `poketch on` | Gives the player the Pokétch. |
 | `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
 | `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. `safari start 600` is a game of another number of steps (plan 19 · K6: FireRed's Safari Zone in Fuchsia City), and the two common scripts send a player of Kanto back to its entrance. |
@@ -851,7 +852,7 @@ that waits for the player. In a hurry:
 - **every flag, variable, item, Pokémon, `hide`, `show` and `place` happens exactly as when the scene is played.**
 
 The hurry **stops** before anything that waits for the player or that can't be ended at once, which is then carried out
-at the scene's own pace: `ask` and `choose`; a battle (`battle`, `wildbattle`, `catchinglesson`, `sweetscent`,
+at the scene's own pace: `ask` and `choose`; a battle (`battle`, `wildbattle`, `catchinglesson`, `sweetscent`, `rocksmash`,
 `honeytree battle`, `master`); a screen (`starter`, `shop`, `pc`, `wardrobe`, `travel`, `choosepokemon`, `chooseitem`, `halloffame
 show`, `credits`, `hatch`, `poffin cook`, `supercontest enter` and `photo`, `seal capsules` and `shop`, and everything of
 `fossil`, `gamecorner`, `villa`, `palpark`, `frontier`, `tower`, `factory`, `hall`, `castle`, `arcade`, `tutor`, `amity`

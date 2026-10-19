@@ -1,0 +1,23 @@
+# Cianwood's pharmacy (plan 20 · J9). docs/scripts.md describes the language; the lines are our own, on HeartGold's
+# beats (scr_seq_T24R0501).
+#
+# Once Jasmine has asked after a medicine for Amphy (VAR_SCENE_LIGHTHOUSE_JASMINE 1), the pharmacist gives the Secret
+# Potion once (FLAG_GOT_SECRETPOTION); every other time he sells HeartGold's five medicines (the counter
+# `cianwood_pharmacy`, src/scrcmd_mart.c's list 11, tools/DataImporter/Overrides/marts.json).
+
+
+# T24R0501_000
+script Pharmacist
+  face t24r0501_sunglasses player
+  speaker "Pharmacist"
+  if flag FLAG_GOT_SECRETPOTION goto Shop
+  if var VAR_SCENE_LIGHTHOUSE_JASMINE != 1 goto Shop
+  say "The lighthouse's Ampharos is sick? Then you'll want this. It's our own medicine, made here for generations."
+  give "Secret Potion"
+  setflag FLAG_GOT_SECRETPOTION
+  say "One sip of the Secret Potion will set it right. Take it to the lighthouse, and hurry!"
+  end
+label Shop
+  say "Welcome to Cianwood's pharmacy, the oldest in Johto. What can I get for you?"
+  shop "cianwood_pharmacy"
+  end

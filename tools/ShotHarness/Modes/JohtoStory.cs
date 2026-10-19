@@ -8,7 +8,7 @@ partial class Harness
     /// Violet City and Route 32's head (<c>jst01</c> to <c>jst22</c>), through the game's own steps, <c>TryInteract</c>
     /// and arrivals. It wins every battle a scene starts (the lead never tires) and prints what each scene left behind.
     /// </summary>
-    private void JohtoScenes(bool second = false)
+    private void JohtoScenes(bool second = false, bool third = false)
     {
         var story = game.Story;
         DialogueManager Box() => game.Dialogue;
@@ -101,8 +101,10 @@ partial class Harness
                 + $"shoes {story.Has(StoryState.RunningShoesFlag)}, Zephyr Badge {story.HasBadge("Johto", "Zephyr")}, "
                 + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
 
-        // The second chapter (plan 20 · J7) is played in a new game set as the first leaves it, at the mode's end
-        if (second)
+        // The second chapter (plan 20 · J7) is played in a new game set as the first leaves it, at the mode's end; the
+        // third (plan 20 · J9) goes on from where the second ends, or by itself (JOHTO_FROM=sea) in a game set as the
+        // second leaves it
+        if (second || third)
         {
             engine.NewGameRegion = "Johto";
             engine.StartNewGame();
@@ -118,7 +120,11 @@ partial class Harness
             story.ChooseStarter("Cyndaquil");
             story.GiveBadge("Johto", "Zephyr");
             game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 40));
-            goto ChapterTwo;
+            if (!third) goto ChapterTwo;
+            foreach (string badge in new[] { "Hive", "Plain", "Fog" }) story.GiveBadge("Johto", badge);
+            story.SetVar("VAR_UNK_4079", 4);
+            game.Bag.AddItem(ItemDatabase.Get("HM03")!, 1);
+            goto ChapterThree;
         }
 
         // A new game of Johto, from its first step
@@ -373,5 +379,112 @@ partial class Harness
         ComeThrough("Ecruteak_DanceTheater", 7, 16, Direction.Up);
         Frames(20); Shot("jst59_the_kimono_girls");
         Second("the chapter's end");
+
+    // ================= The third chapter (plan 20 · J9): Olivine's lighthouse to the Mineral Badge (jst60 to jst79)
+    ChapterThree:
+        void Third(string what) =>
+            Console.WriteLine($"  {what}: rival at the Gym {story.Var("VAR_UNK_4078")}, lighthouse {story.Var("VAR_SCENE_LIGHTHOUSE_JASMINE")}, "
+                + $"lift open {story.Has("FLAG_UNK_1D8")}, potion {story.Has("FLAG_GOT_SECRETPOTION")}, Fly {story.Has("FLAG_GOT_HM02")}, "
+                + $"Suicune {story.Var("VAR_UNK_4076")}, farm {story.Var("VAR_MOOMOO_FARM_BERRIES_FED")} berries, cured {story.Has("FLAG_UNK_0AA")}, "
+                + $"badges {string.Join(", ", new[] { "Zephyr", "Hive", "Plain", "Fog", "Storm", "Mineral" }.Where(b => story.HasBadge("Johto", b)))}, "
+                + $"Fly to {string.Join(", ", SpawnLocations.In("Johto").Where(s => story.Has(SpawnLocations.FlyFlag(s))).Select(s => s.Area))}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+        var chief = game.Party.Members[0];
+        chief.CurrentHP = chief.MaxHP;
+
+        // ---- Olivine City: the red-haired boy at the Gym's door
+        StepOnto("Johto", 272, 243, Direction.Up);
+        ReadTo("The Leader's not even in it"); Frames(10); Shot("jst60_the_rival_in_olivine");
+        ReadTo(null);
+        ComeThrough("Olivine_Gym", 6, 26, Direction.Up);
+        Frames(20); Shot("jst61_the_gym_without_jasmine");
+
+        // ---- the light room: Jasmine by Amphy, and the lift (come into by its stairs, so the car knows to go down)
+        ComeThrough("OlivineLighthouse_LightRoom", 9, 9, Direction.Up);
+        ReadTo(null);
+        TalkTo("OlivineLighthouse_LightRoom", "d27r0107_gsleader6");
+        ReadTo("This is Amphy"); Frames(10); Shot("jst62_jasmine_and_amphy");
+        ReadTo(null);
+        Third("Jasmine has asked");
+        ComeThrough("OlivineLighthouse_Elevator", 3, 6, Direction.Up);
+        Until(() => engine.ScriptRunning, "the lift's ride", 60);
+        Frames(90); Shot("jst63_the_lift");
+        ReadTo(null);
+        Frames(20); Console.WriteLine($"  the lift came down to {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+
+        // ---- Cianwood: the pharmacy's Secret Potion
+        TalkTo("Cianwood_Pharmacy", "t24r0501_sunglasses");
+        ReadTo("Then you'll want this"); Frames(10); Shot("jst64_the_pharmacist");
+        ReadTo(null);
+
+        // ---- the Cianwood Gym: the waterfall stopped, Chuck and the Storm Badge
+        ComeThrough("Cianwood_Gym", 13, 18, Direction.Up);
+        Frames(20); Shot("jst65_cianwood_gym");
+        At("Cianwood_Gym", 10, 3, Direction.Up);
+        game.Interact();
+        ReadTo("A big winch works the waterfall's sluice");
+        ReadTo("The waterfall slowed to a trickle!"); Frames(10); Shot("jst66_the_winch");
+        ReadTo(null);
+        TalkTo("Cianwood_Gym", "t24gym0101_gsleader5");
+        ReadTo("So you stopped my waterfall"); Frames(10); Shot("jst67_chuck");
+        IntoBattle("Chuck's battle");
+        ToMainMenu(game.Battle); Shot("jst68_chucks_battle");
+        Win();
+        ReadTo("received the Storm Badge"); Frames(10); Shot("jst69_the_storm_badge");
+        ReadTo(null);
+        chief.CurrentHP = chief.MaxHP;
+        ComeThrough("Johto", 172, 358, Direction.Down);
+        ReadTo("HM02 is Fly"); Frames(10); Shot("jst70_fly");
+        ReadTo(null);
+        Third("the Storm Badge");
+
+        // ---- Suicune on the north shore, and Eusine
+        StepOnto("Johto", 176, 334, Direction.Up);
+        ReadTo("Suicune is looking this way!"); Frames(10); Shot("jst71_suicune");
+        ReadTo("Did you see it?"); Frames(10); Shot("jst72_eusine");
+        IntoBattle("Eusine's battle");
+        Win();
+        ReadTo(null);
+        chief.CurrentHP = chief.MaxHP;
+
+        // ---- Amphy cured, Jasmine's Gym and the Mineral Badge
+        TalkTo("OlivineLighthouse_LightRoom", "d27r0107_gsleader6");
+        ReadTo("Its tail is shining again!"); Frames(10); Shot("jst73_amphy_cured");
+        ReadTo(null);
+        ComeThrough("Olivine_Gym", 6, 26, Direction.Up);
+        TalkTo("Olivine_Gym", "t26gym0101_gsleader6");
+        ReadTo("a Gym Leader's"); Frames(10); Shot("jst74_jasmine");
+        IntoBattle("Jasmine's battle");
+        ToMainMenu(game.Battle); Shot("jst75_jasmines_battle");
+        Win();
+        ReadTo("received the Mineral Badge"); Frames(10); Shot("jst76_the_mineral_badge");
+        ReadTo(null);
+
+        // ---- the Moomoo Farm: the sick Miltank fed back to health, and its milk
+        TalkTo("Route39_MoomooFarmHouse", "r39r0101_gsmiddleman1");
+        ReadTo(null);
+        game.Bag.AddItem(ItemDatabase.Get("Oran Berry")!, 7);
+        for (int berry = 0; berry < 7; berry++)
+        {
+            TalkTo("Route39_MoomooFarmStable", "r39r0201_tsure_poke_static_miltank");
+            if (berry == 6) { ReadTo("It's back on its feet!"); Frames(10); Shot("jst77_miltank_well_again"); }
+            ReadTo(null);
+        }
+        TalkTo("Route39_MoomooFarmHouse", "r39r0101_gsmiddleman1");
+        ReadTo("Drink it up while it's fresh"); Frames(10); Shot("jst78_moomoo_milk");
+        ReadTo(null);
+
+        // ---- Fly's map over Johto, its towns open as they were come to
+        foreach (string town in new[] { "olivine", "cianwood", "ecruteak", "goldenrod" })
+            story.Set(SpawnLocations.ArrivedIn("Johto", town)!.ArrivalFlag);
+        At("Johto", 272, 258, Direction.Down);
+        game.OpenTownMap(TownMapMode.Fly);
+        var fly = game.TownMapScreen;
+        for (int i = 0; i < 60 && (fly.CursorX, fly.CursorY) != (5, 11); i++) fly.Move(Math.Sign(5 - fly.CursorX), Math.Sign(11 - fly.CursorY));
+        Frames(30); Shot("jst79_fly_over_johto");
+        Console.WriteLine($"  fly: over {fly.HoveredSpot?.Town.Area ?? "nothing"}, open {fly.HoveredSpot?.Open}");
+        fly.Cancel(); Frames(4);
+        game.State = GameState.Overworld;
+        Third("the chapter's end");
     }
 }

@@ -105,6 +105,8 @@ public enum Op
     Puzzle,
     // On or off the Bicycle by the story's say (plan 19 · K6: the Cycling Road of FireRed puts its riders on it)
     Bicycle,
+    // What a rock smashed by Rock Smash lets out (plan 20 · J9: HeartGold's and the GBA games' rock_smash tables)
+    RockSmash,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

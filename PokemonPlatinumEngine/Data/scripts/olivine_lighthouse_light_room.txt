@@ -1,0 +1,84 @@
+# The Glitter Lighthouse's light room (plan 20 · J9). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D27R0107).
+#
+# Jasmine sits by Amphy, the Ampharos whose light guides the ships. Spoken to the first time she tells of the
+# pharmacy in Cianwood City across the sea and steps aside from the lift (VAR_SCENE_LIGHTHOUSE_JASMINE 1;
+# FLAG_UNK_1D8, which HeartGold's own object at the lift's door is hidden by, opens the lift's two doors here). Spoken
+# to with the Secret Potion (FLAG_GOT_SECRETPOTION, given by the pharmacist), she asks for it: Amphy takes it, glows,
+# and Jasmine goes back to her Gym (VAR_SCENE_LIGHTHOUSE_JASMINE 2; FLAG_UNK_1D7 hides her here, the Gym's three are
+# shown, VAR_UNK_410E 1 for the Gym's two who greet the player).
+
+
+script OnEnter
+  # The lift's car rides down from here (olivine_lighthouse_elevator.txt)
+  setvar VAR_OLIVINE_LIGHTHOUSE_LIFT_FLOOR 1
+  end
+
+
+# D27R0107_000
+script Jasmine
+  face d27r0107_gsleader6 player
+  speaker "Jasmine"
+  if flag FLAG_GOT_SECRETPOTION goto Potion
+  if var VAR_SCENE_LIGHTHOUSE_JASMINE != 0 goto Waiting
+  scene "Jasmine by the lamp"
+  say "Oh... a visitor. Forgive me, I'm Jasmine, the Leader of Olivine's Gym."
+  say "This is Amphy. Its light keeps the ships off the rocks at night, but it's fallen ill and can barely glow."
+  say "There's a pharmacy in Cianwood City, over the sea. They make a medicine there that might help, but I can't leave Amphy alone..."
+  say "If you're going that way, would you... No, I shouldn't ask. Here, take the lift down. It's quicker than the stairs."
+  walk d27r0107_gsleader6 down 3 right 1
+  sound "door_slide"
+  setflag FLAG_UNK_1D8
+  walk d27r0107_gsleader6 left 1 up 3
+  face d27r0107_gsleader6 right
+  setvar VAR_SCENE_LIGHTHOUSE_JASMINE 1
+  endscene
+  end
+label Waiting
+  say "Cianwood City is across the sea, west of here. Please, if you find the medicine... Amphy hasn't much light left."
+  face d27r0107_gsleader6 right
+  end
+label Potion
+  ask "Is that the medicine from Cianwood? Will you let Amphy have it?"
+  if no goto NotYet
+  scene "Amphy's medicine"
+  take "Secret Potion"
+  text "{player} handed over the Secret Potion."
+  say "Thank you so much. Here, Amphy. Drink it slowly..."
+  face d27r0107_gsleader6 right
+  walk d27r0107_tsure_poke_static_ampharos onspot left 1
+  cry "Ampharos"
+  text "Amphy drank the medicine down."
+  walk d27r0107_tsure_poke_static_ampharos onspot left 3
+  cry "Ampharos"
+  say "Oh! Its tail is shining again! Amphy, you're all right!"
+  face d27r0107_gsleader6 player
+  say "I can't thank you enough. Amphy's light will reach the ships tonight."
+  say "I must get back to my Gym. Come and see me there. I'd like to battle you, properly, as a Leader should."
+  walk d27r0107_gsleader6 down 1 right 2 down 1
+  hide d27r0107_gsleader6
+  setflag FLAG_UNK_1D7
+  setvar VAR_SCENE_LIGHTHOUSE_JASMINE 2
+  setvar VAR_UNK_410E 1
+  clearflag FLAG_HIDE_JASMINE_IN_GYM
+  clearflag FLAG_HIDE_OLIVINE_GYM_GENTLEMAN
+  clearflag FLAG_HIDE_OLIVINE_GYM_GIRL
+  endscene
+  end
+label NotYet
+  say "Oh... I see. Please don't take too long. Amphy's light is so faint."
+  face d27r0107_gsleader6 right
+  cry "Ampharos"
+  end
+
+
+# D27R0107_001
+script Amphy
+  if var VAR_SCENE_LIGHTHOUSE_JASMINE >= 2 goto Well
+  cry "Ampharos"
+  text "Amphy... It breathes weakly, and its tail's light barely glows."
+  end
+label Well
+  cry "Ampharos"
+  text "Pa-paloo! Amphy's tail shines bright and steady."
+  end

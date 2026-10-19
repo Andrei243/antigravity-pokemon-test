@@ -1,17 +1,29 @@
 {
-  // The Olivine Gym (plan 20 · J8), HeartGold's room. Jasmine is away at the lighthouse, tending a sick Pokémon, until
-  // plan 20 · J9's chapter; her guide by the door says so. The girl and the gentleman the original puts in the hall
-  // are J9's too
+  // The Olivine Gym (plan 20 · J8, J9), HeartGold's room. Jasmine is away at the lighthouse, tending a sick Pokémon,
+  // until Amphy is cured; then she is back with the girl and the gentleman who come to watch her
+  // (scripts/olivine_gym.txt). The Gym has no trainers of its own
   "area": "olivine_gym",
   "bgmTrack": "johto/gym",
   "people": {
+    "t26gym0101_gsleader6": {
+      "name": "Jasmine",
+      "script": "Jasmine",
+      "still": true
+    },
     "t26gym0101_sunglasses": {
       "name": "Gym Guide",
-      "still": true,
-      "dialog": [
-        "Hey there, challenger! Sorry, the Leader's out. Jasmine's up at the lighthouse, looking after a sick Pokémon.",
-        "She won't battle anyone until it's well again. That's just how kind she is."
-      ]
+      "script": "GymGuy",
+      "still": true
+    },
+    "t26gym0101_gsgentleman": {
+      "name": "Gentleman",
+      "script": "Gentleman",
+      "still": true
+    },
+    "t26gym0101_gsgirl1": {
+      "name": "Girl",
+      "script": "Girl",
+      "still": true
     }
   },
   "signs": {

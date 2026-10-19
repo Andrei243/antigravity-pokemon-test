@@ -1,7 +1,7 @@
 // The Pokégear's map card of Johto (plan 20 · J3; docs/data-files.md, "The region map"): a cell for each chunk of the
 // overworld, HeartGold's EVERYWHERE, whose east half is Kanto and is left out of the view. The blocks are each of
 // Johto's areas on the cells its chunks take (the matrix's own areas); every word is ours. No hidden places, no
-// landmarks and no Fly yet: Fly over Johto is plan 20 · J9's.
+// landmarks; Fly over Johto lands at its towns' Pokémon Centers (plan 20 · J9).
 {
   "map": "Johto",
   "columns": 47,
@@ -167,5 +167,16 @@
     { "x": 13, "y": 14, "kind": "Town", "name": "Azalea Town", "area": "azalea" },
     { "x": 14, "y": 14, "kind": "Route", "name": "Route 33", "area": "route_33" }
   ],
-  "fly": []
+  // Where Fly lands (plan 20 · J9; regions/johto.json's spawns, by number): each town's cells on the map. Each opens
+  // with its first arrival (FLAG_FIRST_ARRIVAL_<AREA>, Data/SpawnLocations.cs)
+  "fly": [
+    { "spawn": 1, "cells": "21,12" },
+    { "spawn": 2, "cells": "16,12 17,12" },
+    { "spawn": 3, "cells": "14,7 15,7 14,8 15,8" },
+    { "spawn": 4, "cells": "12,14 13,14" },
+    { "spawn": 5, "cells": "9,10 10,10 11,10 9,11 10,11 11,11" },
+    { "spawn": 6, "cells": "11,4 12,4 11,5 12,5" },
+    { "spawn": 7, "cells": "8,7 9,7 8,8 9,8" },
+    { "spawn": 8, "cells": "5,10 5,11" }
+  ]
 }
