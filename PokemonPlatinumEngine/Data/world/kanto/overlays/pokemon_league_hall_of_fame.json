@@ -1,0 +1,10 @@
+{
+  // Kanto's Hall of Fame (plan 19 · K7), at the top of the Pokémon League. Its scene plays as the new Champion comes
+  // in (pokemon_league_hall_of_fame.txt): Oak's words, the team's entry, the credits, and home
+  "area": "pokemon_league_hall_of_fame",
+  "name": "Hall of Fame",
+  "bgmTrack": "kanto/hall_of_fame",
+  "people": {
+    "hall_of_fame_prof_oak": { "name": "Prof. Oak", "still": true, "dialog": [ "You've earned your place here, {player}." ] }
+  }
+}

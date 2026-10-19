@@ -1,0 +1,22 @@
+# Kanto's Victory Road, 1F (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/VictoryRoad_1F/scripts.inc). FireRed's Victory Road is kanto_victory_road_* here, as Platinum's
+# keys are victory_road_*.
+#
+# FireRed's floor switch is a trigger only a boulder can set off (its value, 99, is one the variable never holds): here
+# it is a pit (the overlay's), whose script starts as a pushed boulder comes to rest on it. The boulder stays where it
+# came to rest; the rock barrier on the way north is gone (FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED, a flag of ours for
+# FireRed's VAR_MAP_SCENE_VICTORY_ROAD_1F 100) until Route 23 is come to again, which puts it back (route_23.txt).
+
+
+script FloorSwitch
+  if flag FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED end
+  setflag FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED
+  hide rock_barrier_1
+  hide rock_barrier_2
+  call VictoryRoadSwitch
+  end
+
+
+script Barrier
+  call VictoryRoadBarrier
+  end

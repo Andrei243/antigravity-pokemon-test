@@ -254,6 +254,18 @@
     "description": "A set of gleaming false teeth. Someone in Fuchsia City must be missing them.",
     "cantBeTossed": true
   },
+  // Plan 19 · K7: Celio's pass for the Seagallop ferry between Kanto and the first three of the Sevii Islands
+  "Tri-Pass": {
+    "id": 9026,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A pass for the Seagallop ferry. It lets its holder sail to One, Two and Three Island.",
+    "cantBeTossed": true
+  },
   // The orbs of Primal Reversion (plan 06 · R20): PokeAPI's words are a story's; ours say what they do when held
   "Blue Orb": {
     "description": "Held by Kyogre, it brings out its primal form when it enters battle."

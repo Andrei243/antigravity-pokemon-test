@@ -13699,6 +13699,18 @@
     "cantBeTossed": true
   },
   {
+    "id": 9026,
+    "name": "Tri-Pass",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A pass for the Seagallop ferry. It lets its holder sail to One, Two and Three Island.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9100,
     "name": "Letter",
     "pocket": "KeyItems",

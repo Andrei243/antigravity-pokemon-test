@@ -1,0 +1,27 @@
+# One Island (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on FireRed's beats
+# (data/maps/OneIsland/scripts.inc and OneIsland_Harbor's).
+#
+# The first time the Seagallop brings the player here, with Bill (VAR_MAP_SCENE_ONE_ISLAND_HARBOR 1, which
+# common.SailWithBill sets), Bill is ashore beside them and takes them up to the Pokémon Center to meet Celio
+# (VAR_MAP_SCENE_ONE_ISLAND_HARBOR 3; one_island_pokemon_center_1f.txt has the meeting). FireRed walks the two up the
+# road; here a dark screen does.
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_ONE_ISLAND_HARBOR == 1 goto Arrive
+  setflag FLAG_HIDE_ONE_ISLAND_BILL
+  end
+label Arrive
+  scene "One Island"
+  clearflag FLAG_HIDE_ONE_ISLAND_BILL
+  show one_island_bill
+  face player up
+  speaker "Bill"
+  say "Here we are, One Island! Smell that sea air."
+  say "Celio should be in the Pokémon Center. Come on, let's go and say hello!"
+  hide one_island_bill
+  setflag FLAG_HIDE_ONE_ISLAND_BILL
+  setvar VAR_MAP_SCENE_ONE_ISLAND_HARBOR 3
+  warp "OneIsland_PokemonCenter_1F" 9 8 up
+  endscene
+  end

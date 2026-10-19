@@ -2,8 +2,8 @@
 # own, on FireRed's beats (data/maps/Route22_NorthEntrance/scripts.inc and Route23's badge guards).
 #
 # The guard lets through only a trainer with the Boulder Badge. VAR_MAP_SCENE_ROUTE23, as FireRed counts it: 0 until
-# he has seen it (the area's trigger 0, the step west of him, turns back whoever hasn't it), 1 after. Route 23 beyond,
-# with its guards for the other Badges, is plan 19 · K7's: until then the way north stays shut.
+# he has seen it (the area's trigger 0, the step west of him, turns back whoever hasn't it), 1 after. Route 23 beyond
+# has its guards for the other Badges (route_23.txt, plan 19 · K7), who count on from there.
 
 
 # The step beside him on the way north.

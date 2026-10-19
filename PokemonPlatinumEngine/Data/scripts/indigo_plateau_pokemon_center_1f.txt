@@ -1,0 +1,26 @@
+# The Indigo Plateau's Pokémon Center (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/IndigoPlateau_PokemonCenter_1F/scripts.inc and the League's rooms).
+#
+# Whoever comes in here faces the Elite Four from the first again: the four rooms' doors are shut and their masters
+# unbeaten (FLAG_DEFEATED_LORELEI to FLAG_DEFEATED_CHAMP, FireRed's own, which its rooms set as each is beaten), and the
+# rooms' arrival scenes wait (VAR_MAP_SCENE_POKEMON_LEAGUE 0). FireRed clears the same as its whiteout and its Hall of
+# Fame leave the League; nobody comes back out through a room's door here, as there. The guard at the door wishes the
+# player luck. Lorelei's absence once the National Pokédex is had, and the rematch teams, are plan 19 · K9's.
+
+
+script OnEnter
+  clearflag FLAG_DEFEATED_LORELEI
+  clearflag FLAG_DEFEATED_BRUNO
+  clearflag FLAG_DEFEATED_AGATHA
+  clearflag FLAG_DEFEATED_LANCE
+  clearflag FLAG_DEFEATED_CHAMP
+  setvar VAR_MAP_SCENE_POKEMON_LEAGUE 0
+  end
+
+
+script DoorGuard
+  face league_door_guard player
+  speaker "Guard"
+  say "Beyond this door wait the Elite Four, the strongest trainers in Kanto. Beat all four, and the Champion awaits."
+  say "Once you step through, there's no coming back out until it's over. Good luck!"
+  end

@@ -1,0 +1,26 @@
+{
+  "key": "indigo_plateau_exterior",
+  "index": 12,
+  "name": "Indigo Plateau",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VICTORY_ROAD",
+  "nightMusic": "MUS_VICTORY_ROAD",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 16, "to": "indigo_plateau_pokemon_center_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "credits_rival", "looks": "blue", "movement": "look_south", "x": 11, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CREDITS_RIVAL", "script": "" },
+    { "id": "credits_prof_oak", "looks": "prof_oak", "movement": "look_south", "x": 11, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CREDITS_OAK", "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

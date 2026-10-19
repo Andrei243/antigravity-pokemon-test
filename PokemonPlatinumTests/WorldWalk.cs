@@ -200,10 +200,19 @@ internal static class WorldWalk
         PokemonPlatinumEngine.Story.ScriptLibrary.Default.All.SelectMany(s => s.Everything())
             .Where(i => i.Op == PokemonPlatinumEngine.Story.Op.SetFlag && !i.Own).Select(i => i.Name).ToHashSet(StringComparer.Ordinal));
 
-    /// <summary>Where a person's script can send the player (its <c>warp</c> commands, whichever answer leads there).</summary>
-    private static IEnumerable<PokemonPlatinumEngine.Story.Instruction> WarpsOf(string script, string? file) =>
-        PokemonPlatinumEngine.Story.ScriptLibrary.Default.Find(script, file)?.Everything().Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp)
-        ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
+    /// <summary>
+    /// Where a person's script can send the player (its <c>warp</c> commands, whichever answer leads there, and those of
+    /// a script it calls: the Seagallop's sailors' trips are common scripts, plan 19 · K7).
+    /// </summary>
+    private static IEnumerable<PokemonPlatinumEngine.Story.Instruction> WarpsOf(string script, string? file)
+    {
+        var library = PokemonPlatinumEngine.Story.ScriptLibrary.Default;
+        var lines = library.Find(script, file)?.Everything().ToList();
+        if (lines == null) return Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
+        lines.AddRange(lines.Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Call).ToList()
+            .SelectMany(call => library.Find(call.Name, file)?.Everything() ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>()));
+        return lines.Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp);
+    }
 
     /// <summary>
     /// Where a tile's script puts the player down on its own map: its <c>place player</c>, or that of a script it

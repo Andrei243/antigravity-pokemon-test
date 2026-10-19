@@ -253,7 +253,9 @@ public enum Architecture
     /// <summary>Plaster under moss-green gable roofs with a chimney and flower boxes: the quiet town of clean air (Verdanturf, plan 21 · H3, part b).</summary>
     Glade,
     /// <summary>Logs under rust-red gable roofs with a chimney and shutters: the farming town under the falling ash (Fallarbor, plan 21 · H4, part a).</summary>
-    Hayloft
+    Hayloft,
+    /// <summary>White stucco under sea-turquoise hip roofs with shutters: the warm port of the first Sevii Island (One Island, plan 19 · K7).</summary>
+    Isle
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

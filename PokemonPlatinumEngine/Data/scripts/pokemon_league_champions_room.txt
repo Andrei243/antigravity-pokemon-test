@@ -1,0 +1,65 @@
+# The Champion's room (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/PokemonLeague_ChampionsRoom/scripts.inc).
+#
+# The whole room is one scene, played as the challenger comes in: up the passage to the rival, who beat the Elite Four
+# first and is the Champion; his words and the battle (his team by the starter he took, the one strong against the
+# player's: kanto_champion_first_<his>); then Oak comes in (FLAG_HIDE_OAK_IN_CHAMP_ROOM cleared), has a word for each,
+# and takes the player through the door behind (FLAG_DEFEATED_CHAMP) to the Hall of Fame. A battle lost ends it there,
+# as every battle lost does, and the hall's Pokémon Center puts the League back.
+
+
+script OnEnter
+  if flag FLAG_DEFEATED_CHAMP end
+  # Oak comes in only once the rival is beaten (FireRed's new game hides him; here the room does, for every save)
+  setflag FLAG_HIDE_OAK_IN_CHAMP_ROOM
+  hide champions_room_prof_oak
+  scene "The Champion"
+  walk player up 9
+  music "common/eye_champion"
+  speaker "{rival}"
+  say "Hey, {player}! I was looking forward to seeing you here."
+  say "While you were busy out there, I beat the Elite Four. That makes me the new Pokémon League Champion!"
+  say "I've built the perfect team. Strong against every type, ready for anything. Nobody can touch us."
+  say "And now I get to prove it against you, of all people. {player}! I'm the strongest trainer in the world!"
+  if starter "Bulbasaur" goto VsCharmander
+  if starter "Charmander" goto VsSquirtle
+  battle champions_room_rival as "kanto_champion_first_bulbasaur"
+  goto Fought
+label VsCharmander
+  battle champions_room_rival as "kanto_champion_first_charmander"
+  goto Fought
+label VsSquirtle
+  battle champions_room_rival as "kanto_champion_first_squirtle"
+label Fought
+  speaker "{rival}"
+  say "NO! That can't be! You beat my best?"
+  say "After all that work to get here... my reign is over already? It's not fair!"
+  music "kanto/oak"
+  clearflag FLAG_HIDE_OAK_IN_CHAMP_ROOM
+  show champions_room_prof_oak
+  speaker "Prof. Oak"
+  say "{player}!"
+  walk champions_room_prof_oak up 5
+  face player down
+  say "So you've won! Congratulations! You are the new Pokémon League Champion!"
+  say "You've grown so much since the day you left Pallet Town with that first Pokémon of yours. You truly came of age!"
+  face champions_room_prof_oak up
+  say "{rival}... I'm disappointed in you. Do you know why you lost?"
+  say "You forgot to treat your Pokémon with trust and love. Without that, you will never become the best."
+  face champions_room_prof_oak down
+  say "{player}, come with me. There is a room ahead where your victory will be kept for all time."
+  setflag FLAG_DEFEATED_CHAMP
+  sound "door_open"
+  walk player right 1 up 6 left 1
+  sound "stairs"
+  warp "PokemonLeague_HallOfFame" 5 11 up
+  endscene
+  end
+
+
+# The rival, once the battle is over (nobody stands here by then but in a script).
+script Champion
+  face champions_room_rival player
+  speaker "{rival}"
+  say "Go on, then. Don't keep the old man waiting."
+  end

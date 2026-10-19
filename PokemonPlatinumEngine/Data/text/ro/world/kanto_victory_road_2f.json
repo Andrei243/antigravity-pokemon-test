@@ -1,0 +1,193 @@
+{
+  "displayName": {
+    "en": [
+      "Victory Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Dawson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Dawson: I came all this way to see the rarest Pokémon in Kanto. Want to see mine?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Dawson: Yours were rarer still."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Daisuke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Daisuke: Hah! I train in this cave every day. The echoes keep me sharp!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Daisuke: The echoes are laughing at me now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Nelson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Nelson: Keep your eyes on the ball, or on my Pokémon. Either way, you'll lose track!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Nelson: I dropped the ball."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Vincent"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tamer Vincent: Only a trainer who has tamed the wildest Pokémon can pass. That's me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tamer Vincent: You've tamed me, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_2": {
+      "name": {
+        "en": [
+          "Gregory"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Gregory: I've been practising my act down here for weeks. You're my first audience!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Gregory: Tough crowd."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m": {
+      "name": {
+        "en": [
+          "Cooltrainer"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rock_barrier_1": {
+      "name": {
+        "en": [
+          "Rock barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rock_barrier_2": {
+      "name": {
+        "en": [
+          "Rock barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rock_barrier_3": {
+      "name": {
+        "en": [
+          "Rock barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rock_barrier_4": {
+      "name": {
+        "en": [
+          "Rock barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

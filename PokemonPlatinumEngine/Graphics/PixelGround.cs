@@ -323,6 +323,14 @@ internal static class PixelGround
                     if (paving) PaintPaving(c, tx * T, ty * T, tx + seedX, ty + seedY, Paved(-1, 0), Paved(1, 0), Paved(0, -1), Paved(0, 1));
                 }
             }
+        // A GBA spin's arrows and stops, painted on the floor (plan 19 · K7; style guide, "Rooms", "Spin arrows")
+        if (map.HasSpinStops)
+            for (int ty = 0; ty < th; ty++)
+                for (int tx = 0; tx < tw; tx++)
+                {
+                    int mx = tx + originX, my = ty + originY;
+                    if (map.InBounds(mx, my)) SpinMark(c, tx * T, ty * T, map.BehaviourAt(mx, my));
+                }
         if (pad == 0) return c;
 
         // Only the window is kept; a chunk whose only water was in the border has none
@@ -599,6 +607,52 @@ internal static class PixelGround
             if (!north) for (int x = 0; x < T; x++) c.SetRaw(ox + x, oy, TreadShade);
             if (!south) for (int x = 0; x < T; x++) c.SetRaw(ox + x, oy + T - 1, TreadShade);
         }
+    }
+
+    // ------------------------------------------------------------------ spin arrows
+
+    private static readonly Color SpinPaint = new(236, 196, 96, 255);
+    private static readonly Color SpinRim = new(96, 64, 40, 255);
+
+    /// <summary>
+    /// A GBA spin's mark on one tile (style guide, "Rooms", "Spin arrows"): a chevron the way an arrow tile sends whoever
+    /// steps on it, 16 texels wide and 12 deep, rimmed on its trailing edge; a ring with a dot for a stop tile.
+    /// </summary>
+    internal static void SpinMark(PixelCanvas c, int ox, int oy, TileBehavior behaviour)
+    {
+        if (behaviour == TileBehavior.Spinner)
+        {
+            for (int y = 0; y < T; y++)
+                for (int x = 0; x < T; x++)
+                {
+                    float d = MathF.Sqrt((x - 15.5f) * (x - 15.5f) + (y - 15.5f) * (y - 15.5f));
+                    if (d is >= 5f and < 7f) c.SetRaw(ox + x, oy + y, d < 6f ? SpinPaint : SpinRim);
+                    else if (d < 2f) c.SetRaw(ox + x, oy + y, SpinPaint);
+                }
+            return;
+        }
+        (int dx, int dy) = behaviour switch
+        {
+            TileBehavior.SlideEast => (1, 0),
+            TileBehavior.SlideWest => (-1, 0),
+            TileBehavior.SlideNorth => (0, -1),
+            TileBehavior.SlideSouth => (0, 1),
+            _ => (0, 0)
+        };
+        if (dx == 0 && dy == 0) return;
+        // In the arrow's own frame: u runs the way it points, v across it. A chevron of two strokes four texels thick,
+        // its point at u = +6 and its arms back to u = -6 at v = ±8; the rim is the texel behind each stroke
+        for (int y = 0; y < T; y++)
+            for (int x = 0; x < T; x++)
+            {
+                int px = x - 16, py = y - 16;
+                int u = px * dx + py * dy, v = Math.Abs(px * dy - py * dx);
+                if (v > 8 || u < -11 || u > 6) continue;
+                // The stroke's front edge: u = 6 - 1.5 v
+                float front = 6f - v * 1.5f;
+                if (u <= front && u > front - 4f) c.SetRaw(ox + x, oy + y, SpinPaint);
+                else if (u <= front - 4f && u > front - 5f) c.SetRaw(ox + x, oy + y, SpinRim);
+            }
     }
 
     // ------------------------------------------------------------------ placed details

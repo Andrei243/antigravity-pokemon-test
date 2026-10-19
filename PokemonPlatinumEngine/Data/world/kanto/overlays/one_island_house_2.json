@@ -1,0 +1,8 @@
+{
+  // A house on One Island (plan 19 · K7)
+  "area": "one_island_house_2",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "lass": { "name": "Lass", "dialog": [ "Have you been up Kindle Road yet? There's a hot spring at the end where you can soak your feet." ] }
+  }
+}

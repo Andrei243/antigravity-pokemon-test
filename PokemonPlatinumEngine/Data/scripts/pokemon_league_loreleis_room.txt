@@ -1,0 +1,28 @@
+# Lorelei's room, the first of Kanto's Elite Four (plan 19 · K7). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/PokemonLeague_LoreleisRoom/scripts.inc).
+#
+# Spoken to, Lorelei battles (a battle lost ends it there, and the game wakes the player as every battle lost does);
+# beaten, she opens the door behind her (FLAG_DEFEATED_LORELEI, which the room's door is opened by). The hall's Pokémon
+# Center puts her back (indigo_plateau_pokemon_center_1f.txt). Her rematch team (FireRed's, once the Sevii Islands
+# are linked) is plan 19 · K9's.
+
+
+script Lorelei
+  face lorelei player
+  speaker "Lorelei"
+  if flag FLAG_DEFEATED_LORELEI goto Beaten
+  scene "Lorelei"
+  say "Welcome to the Pokémon League. I am Lorelei of the Elite Four."
+  say "No one can match me where Ice-type Pokémon are concerned. Not even a trainer who has come this far."
+  say "Your Pokémon will be frozen where they stand. Shall we begin?"
+  battle self as "kanto_elite_four_lorelei"
+  speaker "Lorelei"
+  say "You melted my ice... How remarkable."
+  setflag FLAG_DEFEATED_LORELEI
+  sound "door_open"
+  say "Go on, then. The next room is open. But the three who wait beyond are stronger than I am."
+  endscene
+  end
+label Beaten
+  say "You're better than I thought. Go on ahead. You've only just had a taste of what the League can do."
+  end

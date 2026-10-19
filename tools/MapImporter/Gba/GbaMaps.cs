@@ -70,7 +70,10 @@ public sealed class GbaMap
     public List<GbaBg> Bgs { get; init; } = new();
 
     /// <summary>The key the world files know it by: <c>PalletTown</c> is <c>pallet_town</c>, <c>Route1</c> <c>route_1</c>.</summary>
-    public string Key => GbaMaps.KeyOf(Name);
+    public string Key => KeyPrefix + GbaMaps.KeyOf(Name);
+
+    /// <summary>What goes before the key where it would meet one of Sinnoh's (<c>kanto_</c> for FireRed's Victory Road).</summary>
+    public string KeyPrefix { get; set; } = "";
 }
 
 /// <summary>A layout of <c>layouts.json</c> and its block data: sixteen bits a block, ten of metatile, two of collision, four of elevation.</summary>
@@ -163,6 +166,9 @@ public sealed class GbaMaps
             foreach (var name in groups.RootElement.GetProperty(groupName).EnumerateArray())
             {
                 var map = ReadMap(File.ReadAllText(Path.Combine(dir, "data", "maps", name.GetString()!, "map.json")), groupName);
+                // Every game has a Victory Road, and Platinum's keys are victory_road_1f and the rest: a GBA game's take
+                // the region's prefix (plan 19's design, kept the day FireRed's opened: plan 19 · K7)
+                if (map.Name.StartsWith("VictoryRoad", StringComparison.Ordinal)) map.KeyPrefix = game.Region + "_";
                 Maps.Add(map);
                 ById[map.Id] = map;
             }

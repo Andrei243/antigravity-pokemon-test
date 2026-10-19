@@ -1,0 +1,99 @@
+{
+  "people": {
+    "league_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! Stock up before you face the Elite Four."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gym_guy": {
+      "name": {
+        "en": [
+          "Guide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hey, champ in the making! The Elite Four use every type there is. Bring a team that can answer all of them!",
+          "Once you go through that door, there's no turning back until it's over. Make sure your Pokémon are ready."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "league_door_guard": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Even the Champion trains here from time to time. I'm waiting for my chance to battle him."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m": {
+      "name": {
+        "en": [
+          "Cooltrainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I lost to Lorelei again. Her Ice-types froze my whole team solid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

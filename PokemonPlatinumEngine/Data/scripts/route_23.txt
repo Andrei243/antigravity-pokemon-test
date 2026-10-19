@@ -1,0 +1,198 @@
+# Route 23 (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on FireRed's beats
+# (data/maps/Route23/scripts.inc).
+#
+# Seven guards stand along the road to the Pokémon League, and each lets through only a trainer who shows the next of
+# Kanto's Badges, in the order they are won: VAR_MAP_SCENE_ROUTE23, as FireRed counts it, is 1 once Route 22's gate has
+# seen the Boulder Badge (route_22_north_entrance.txt) and goes up by one at each guard, to 8 past the last. Each guard's
+# line of tiles is the area's triggers, which wait for the guard's own value (FireRed's last guard has more of them in
+# the forest at the road's west edge, which is trees here and nobody can stand in, and they are left out); a trainer
+# without the Badge is turned back a step. Spoken to, a guard says which Badge he asks for, or that the way is open.
+#
+# Coming here puts Victory Road back as FireRed's Route23_OnTransition does: its boulders where they started and its
+# three floor switches unpressed, with the rock barriers they lift standing again (victory_road_1f.txt and the rest).
+
+
+script OnEnter
+  clearflag FLAG_HIDE_VICTORY_ROAD_3F_BOULDER
+  setflag FLAG_HIDE_VICTORY_ROAD_2F_BOULDER
+  clearflag FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED
+  clearflag FLAG_VICTORY_ROAD_2F_SWITCH_1_PRESSED
+  clearflag FLAG_VICTORY_ROAD_2F_SWITCH_2_PRESSED
+  clearflag FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED
+  end
+
+
+# ------------------------------------------------------------------ the guards' lines of tiles
+
+script CascadeTrigger
+  face cascade_badge_guard player
+  speaker "Guard"
+  if badge cascade goto Pass
+  call Refused
+  say "You need the Cascade Badge to go any further."
+  walk player down 1
+  end
+label Pass
+  say "That's the Cascade Badge, all right. Go on through!"
+  setvar VAR_MAP_SCENE_ROUTE23 2
+  end
+
+script ThunderTrigger
+  face thunder_badge_guard player
+  speaker "Guard"
+  if badge thunder goto Pass
+  call Refused
+  say "You need the Thunder Badge to go any further."
+  walk player down 1
+  end
+label Pass
+  say "That's the Thunder Badge, all right. Go on through!"
+  setvar VAR_MAP_SCENE_ROUTE23 3
+  end
+
+script RainbowTrigger
+  face rainbow_badge_guard player
+  speaker "Guard"
+  if badge rainbow goto Pass
+  call Refused
+  say "You need the Rainbow Badge to go any further."
+  walk player down 1
+  end
+label Pass
+  say "That's the Rainbow Badge, all right. Go on through!"
+  setvar VAR_MAP_SCENE_ROUTE23 4
+  end
+
+script SoulTrigger
+  face soul_badge_guard player
+  speaker "Guard"
+  if badge soul goto Pass
+  call Refused
+  say "You need the Soul Badge to go any further."
+  walk player down 1
+  end
+label Pass
+  say "That's the Soul Badge, all right. Go on through!"
+  setvar VAR_MAP_SCENE_ROUTE23 5
+  end
+
+script MarshTrigger
+  face marsh_badge_guard player
+  speaker "Guard"
+  if badge marsh goto Pass
+  call Refused
+  say "You need the Marsh Badge to go any further."
+  walk player down 1
+  end
+label Pass
+  say "That's the Marsh Badge, all right. Go on through!"
+  setvar VAR_MAP_SCENE_ROUTE23 6
+  end
+
+script VolcanoTrigger
+  face volcano_badge_guard player
+  speaker "Guard"
+  if badge volcano goto Pass
+  call Refused
+  say "You need the Volcano Badge to go any further."
+  walk player down 1
+  end
+label Pass
+  say "That's the Volcano Badge, all right. Go on through!"
+  setvar VAR_MAP_SCENE_ROUTE23 7
+  end
+
+script EarthTrigger
+  face earth_badge_guard player
+  speaker "Guard"
+  if badge earth goto Pass
+  call Refused
+  say "You need the Earth Badge to go any further."
+  # (the rock south of the step beside the guard sends the player back by the step west of it)
+  if var PLAYER_X == 5 goto Aside
+  walk player down 1
+  end
+label Aside
+  walk player left 1 down 1
+  end
+label Pass
+  say "That's the Earth Badge! You've won all eight. Victory Road is just ahead. Go on through!"
+  setvar VAR_MAP_SCENE_ROUTE23 8
+  end
+
+script Refused
+  say "Halt! Only trainers strong enough to face the Pokémon League may travel this road."
+  return
+
+
+# ------------------------------------------------------------------ the guards spoken to
+
+script CascadeGuard
+  face cascade_badge_guard player
+  speaker "Guard"
+  if var VAR_MAP_SCENE_ROUTE23 >= 2 goto Open
+  say "I check for the Cascade Badge. No trainer passes me without it."
+  end
+label Open
+  say "You've shown me the Cascade Badge. The way is open."
+  end
+
+script ThunderGuard
+  face thunder_badge_guard player
+  speaker "Guard"
+  if var VAR_MAP_SCENE_ROUTE23 >= 3 goto Open
+  say "I check for the Thunder Badge. No trainer passes me without it."
+  end
+label Open
+  say "You've shown me the Thunder Badge. The way is open."
+  end
+
+script RainbowGuard
+  face rainbow_badge_guard player
+  speaker "Guard"
+  if var VAR_MAP_SCENE_ROUTE23 >= 4 goto Open
+  say "I check for the Rainbow Badge. No trainer passes me without it."
+  end
+label Open
+  say "You've shown me the Rainbow Badge. The way is open."
+  end
+
+script SoulGuard
+  face soul_badge_guard player
+  speaker "Guard"
+  if var VAR_MAP_SCENE_ROUTE23 >= 5 goto Open
+  say "I check for the Soul Badge. No trainer passes me without it."
+  end
+label Open
+  say "You've shown me the Soul Badge. The way is open."
+  end
+
+script MarshGuard
+  face marsh_badge_guard player
+  speaker "Guard"
+  if var VAR_MAP_SCENE_ROUTE23 >= 6 goto Open
+  say "I check for the Marsh Badge. No trainer passes me without it."
+  end
+label Open
+  say "You've shown me the Marsh Badge. The way is open."
+  end
+
+script VolcanoGuard
+  face volcano_badge_guard player
+  speaker "Guard"
+  if var VAR_MAP_SCENE_ROUTE23 >= 7 goto Open
+  say "I check for the Volcano Badge. No trainer passes me without it."
+  end
+label Open
+  say "You've shown me the Volcano Badge. The way is open."
+  end
+
+script EarthGuard
+  face earth_badge_guard player
+  speaker "Guard"
+  if var VAR_MAP_SCENE_ROUTE23 >= 8 goto Open
+  say "I check for the Earth Badge, the last of the eight. No trainer passes me without it."
+  end
+label Open
+  say "You've shown me all eight Badges. Victory Road is yours to take. Good luck!"
+  end

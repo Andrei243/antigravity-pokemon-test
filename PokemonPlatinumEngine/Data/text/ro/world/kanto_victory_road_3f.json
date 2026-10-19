@@ -1,0 +1,189 @@
+{
+  "displayName": {
+    "en": [
+      "Victory Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "cooltrainer_m": {
+      "name": {
+        "en": [
+          "George"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer George: The League is right above us. Just one more battle stands in your way. Mine!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer George: Make that zero more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Alexa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Alexa: I've been coming here every day to train for the League. Today I'll test it on you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Alexa: Back to training, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m_2": {
+      "name": {
+        "en": [
+          "Colby"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Colby: You won't make it out of this cave. I'll make sure of it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Colby: I couldn't make sure of anything."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_f_2": {
+      "name": {
+        "en": [
+          "Caroline"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Caroline: Want to know a secret? The Elite Four are even tougher than me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Caroline: Then again, maybe you'll be fine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m_3": {
+      "name": {
+        "en": [
+          "Ray"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cool Couple Ray & Tyra: We always battle together. Think you can handle both of us?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cool Couple Ray & Tyra: Even together, we couldn't stop you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_f_3": {
+      "name": {
+        "en": [
+          "Tyra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cool Couple Ray & Tyra: We always battle together. Think you can handle both of us?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cool Couple Ray & Tyra: Even together, we couldn't stop you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rock_barrier_1": {
+      "name": {
+        "en": [
+          "Rock barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rock_barrier_2": {
+      "name": {
+        "en": [
+          "Rock barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

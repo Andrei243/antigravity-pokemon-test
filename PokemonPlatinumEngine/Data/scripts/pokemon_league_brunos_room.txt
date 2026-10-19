@@ -1,0 +1,23 @@
+# Bruno's room, the second of Kanto's Elite Four (plan 19 · K7). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/PokemonLeague_BrunosRoom/scripts.inc). As Lorelei's room
+# (pokemon_league_loreleis_room.txt): spoken to, he battles; beaten, his door opens (FLAG_DEFEATED_BRUNO).
+
+
+script Bruno
+  face bruno player
+  speaker "Bruno"
+  if flag FLAG_DEFEATED_BRUNO goto Beaten
+  scene "Bruno"
+  say "I am Bruno of the Elite Four! I have trained my body and my Pokémon together, through every kind of hardship."
+  say "We will crush whatever stands before us with sheer strength. Hoo hah!"
+  battle self as "kanto_elite_four_bruno"
+  speaker "Bruno"
+  say "Why? How could I lose?"
+  setflag FLAG_DEFEATED_BRUNO
+  sound "door_open"
+  say "My job is done. Go face your next challenge."
+  endscene
+  end
+label Beaten
+  say "Go on! Show the next of the Elite Four what you showed me!"
+  end

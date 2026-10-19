@@ -1,0 +1,77 @@
+# The Viridian City Gym (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/ViridianCity_Gym/scripts.inc).
+#
+# The Gym's Leader is Team Rocket's boss. Giovanni battles for the Earth Badge (FLAG_BADGE08_GET is the badge itself,
+# `givebadge earth`), counts his eight trainers beaten (FireRed's set_gym_trainers 8), puts Team Rocket's people away
+# for good (FLAG_HIDE_MISC_KANTO_ROCKETS) and sends the rival to wait before the League's gate on Route 22
+# (VAR_MAP_SCENE_ROUTE22 3: route_22.txt). He gives TM26, Earthquake (FLAG_GOT_TM26_FROM_GIOVANNI), and spoken to once
+# more he says he is done with Team Rocket and is gone (FLAG_HIDE_VIRIDIAN_GIOVANNI, as FireRed's removeobject sets it).
+
+
+script Giovanni
+  face viridian_giovanni player
+  speaker "Giovanni"
+  if badge earth goto Won
+  scene "Giovanni"
+  say "So. You have come all this way at last."
+  say "Team Rocket's hideout, the Pokémon Tower, Silph Co. Every time, it was you who stood in my way."
+  say "This is my Gym. Here I am its Leader, and nothing more. Show me whether you were lucky, or whether you are strong."
+  battle self as "kanto_leader_giovanni"
+  speaker "Giovanni"
+  say "Ha! There is no luck in that. You are strong, and I am beaten."
+  say "Take the Earth Badge. It is proof that you have beaten the Leader of the Viridian City Gym."
+  givebadge earth
+  text "{player} received the Earth Badge from Giovanni!"
+  say "With the Earth Badge, every Pokémon will obey you, whatever its level. It is the last of Kanto's eight."
+  setflag FLAG_DEFEATED_LEADER_GIOVANNI
+  setflag FLAG_HIDE_MISC_KANTO_ROCKETS
+  setvar VAR_MAP_SCENE_ROUTE22 3
+  defeat "kanto_black_belt_takashi"
+  defeat "kanto_cooltrainer_yuji"
+  defeat "kanto_black_belt_atsushi"
+  defeat "kanto_tamer_jason"
+  defeat "kanto_tamer_cole"
+  defeat "kanto_black_belt_kiyo"
+  defeat "kanto_cooltrainer_samuel"
+  defeat "kanto_cooltrainer_warren"
+label Tm
+  say "Take this as well. Use it as you see fit."
+  give "TM26"
+  setflag FLAG_GOT_TM26_FROM_GIOVANNI
+  say "TM26 is Earthquake. It shakes the whole ground, and very little can stand against it."
+  endscene
+  end
+label Won
+  if not flag FLAG_GOT_TM26_FROM_GIOVANNI goto Tm
+  scene "Giovanni leaves"
+  say "Having lost to you, I can no longer face the people who followed me."
+  say "Team Rocket is finished. I shall go away alone and train, as I once did, until I understand what I have lacked."
+  say "Should we meet again one day, it will be as trainers. Farewell, child."
+  fade out 0.4
+  hide viridian_giovanni
+  setflag FLAG_HIDE_VIRIDIAN_GIOVANNI
+  fade in 0.4
+  endscene
+  end
+
+
+script GymGuy
+  speaker "Guide"
+  if flag FLAG_DEFEATED_LEADER_GIOVANNI goto Won
+  say "Hey, champ in the making! Nobody knows much about the Leader of this Gym. They say he's away more often than not."
+  say "His Pokémon fight with the strength of the earth itself. Water and Grass moves will serve you well. And watch your step on those arrows!"
+  end
+label Won
+  say "Blew me away! You beat the mysterious Leader and won all eight Badges. The Pokémon League is waiting for you now!"
+  end
+
+
+# The statues by the door: who has beaten the Leader.
+script Statue
+  speaker none
+  if badge earth goto Won
+  text "Viridian City Pokémon Gym. Leader: ?. Winning trainers: {rival}."
+  end
+label Won
+  text "Viridian City Pokémon Gym. Leader: Giovanni. Winning trainers: {rival}, {player}."
+  end

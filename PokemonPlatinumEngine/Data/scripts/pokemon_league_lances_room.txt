@@ -1,0 +1,25 @@
+# Lance's room, the last of Kanto's Elite Four (plan 19 · K7). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/PokemonLeague_LancesRoom/scripts.inc). As Lorelei's room
+# (pokemon_league_loreleis_room.txt): spoken to, he battles; beaten, the door behind him opens onto the Champion's room
+# (FLAG_DEFEATED_LANCE).
+
+
+script Lance
+  face lance player
+  speaker "Lance"
+  if flag FLAG_DEFEATED_LANCE goto Beaten
+  scene "Lance"
+  say "Ah! I've heard of you. I lead the Elite Four. My name is Lance, and I'm a dragon trainer."
+  say "Dragons are mighty Pokémon, hard to catch and harder still to raise. Their strength is beyond question."
+  say "There's no running away now. Prepare to lose!"
+  battle self as "kanto_elite_four_lance"
+  speaker "Lance"
+  say "I can't believe it. My dragons have been beaten..."
+  setflag FLAG_DEFEATED_LANCE
+  sound "door_open"
+  say "You're the one who beat the Elite Four. But there's still the Champion to face. You know who that is, don't you?"
+  endscene
+  end
+label Beaten
+  say "The Champion waits through that door. Go. I'd like to know how it ends."
+  end

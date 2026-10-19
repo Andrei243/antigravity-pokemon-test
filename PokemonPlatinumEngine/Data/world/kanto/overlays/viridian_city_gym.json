@@ -1,7 +1,26 @@
 {
   // Viridian City's Gym (plan 19 · K1): open as a room, its door shut from the street by FireRed's own trigger
-  // (viridian_city.txt) until six of Kanto's badges are won; its Leader, plan 19 · K7, brings its trainers and its
-  // song (FireRed's MUS_GYM, plan 19 · K3); until then nobody stands in it
+  // (viridian_city.txt) until six of Kanto's badges are won. Plan 19 · K7 brings its Leader: Giovanni at the far end of
+  // a maze of arrows that spin whoever steps on them (FireRed's spin tiles, the slides of plan 19 · K5, part b), his
+  // eight trainers, who battle by their own records (Kanto's trainers.json), the guide by the door and the two statues.
+  // viridian_city_gym.txt has Giovanni, the Earth Badge and TM26
   "area": "viridian_city_gym",
-  "bgmTrack": "kanto/viridian"
+  "bgmTrack": "kanto/gym",
+  // The hall of its Leader's type (plan 19 · K4)
+  "arenaType": "Ground",
+  "people": {
+    "viridian_giovanni": { "name": "Giovanni", "script": "Giovanni", "still": true },
+    "gym_guy": { "name": "Guide", "script": "GymGuy", "still": true },
+    "black_belt": { "name": "Takashi", "trainer": { "dialogueBefore": "Black Belt Takashi: The boss is waiting at the end of the arrows. You'll have to get past my fists first!", "dialogueAfter": "Black Belt Takashi: My fists... they're spinning more than those arrows." } },
+    "cooltrainer_m": { "name": "Yuji", "trainer": { "dialogueBefore": "Cooltrainer Yuji: Dizzy yet? A good trainer keeps their head while the floor spins!", "dialogueAfter": "Cooltrainer Yuji: You kept your head. I lost mine." } },
+    "black_belt_2": { "name": "Atsushi", "trainer": { "dialogueBefore": "Black Belt Atsushi: Hoo-hah! My training starts every morning at four. Can you match that?", "dialogueAfter": "Black Belt Atsushi: Tomorrow I'll start at three." } },
+    "man": { "name": "Jason", "trainer": { "dialogueBefore": "Tamer Jason: Ground-type Pokémon are proud. They answer only to a firm hand like mine!", "dialogueAfter": "Tamer Jason: My hand wasn't firm enough today." } },
+    "man_2": { "name": "Cole", "trainer": { "dialogueBefore": "Tamer Cole: Nobody reaches the Leader without being tested. Let's see what you've got!", "dialogueAfter": "Tamer Cole: You've got plenty. Go on, then." } },
+    "black_belt_3": { "name": "Kiyo", "trainer": { "dialogueBefore": "Black Belt Kiyo: I trained my body to be as hard as the ground itself!", "dialogueAfter": "Black Belt Kiyo: The ground cracked." } },
+    "cooltrainer_m_2": { "name": "Samuel", "trainer": { "dialogueBefore": "Cooltrainer Samuel: Only the best trainers ever get the chance to battle here. Prove you belong!", "dialogueAfter": "Cooltrainer Samuel: You belong, all right." } },
+    "cooltrainer_m_3": { "name": "Warren", "trainer": { "dialogueBefore": "Cooltrainer Warren: The Leader of this Gym is the strongest in Kanto. Turn back while you can!", "dialogueAfter": "Cooltrainer Warren: Maybe you really can beat him..." } }
+  },
+  "read": {
+    "ViridianCity_Gym_EventScript_GymStatue": "Statue"
+  }
 }

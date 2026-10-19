@@ -1,0 +1,21 @@
+{
+  // Victory Road, 1F (plan 19 · K7): FireRed's cave between Route 23 and the Indigo Plateau, its trainers battling by
+  // their own records (Kanto's trainers.json). A boulder pushed with Strength onto the floor switch in the east lifts the
+  // rock barrier on the way north (victory_road_1f.txt; Route 23 puts it back, route_23.txt)
+  "area": "kanto_victory_road_1f",
+  "name": "Victory Road",
+  "bgmTrack": "kanto/mt_moon",
+  "pits": [
+    { "x": 20, "z": 16, "script": "FloorSwitch" }
+  ],
+  "people": {
+    "cooltrainer_m": { "name": "Rolando", "trainer": { "dialogueBefore": "Cooltrainer Rolando: Only the toughest trainers make it this far. Let's see if you're one of them!", "dialogueAfter": "Cooltrainer Rolando: You're one of them, all right." } },
+    "cooltrainer_f": { "name": "Naomi", "trainer": { "dialogueBefore": "Cooltrainer Naomi: Victory Road is the final test before the League. I'm your first exam!", "dialogueAfter": "Cooltrainer Naomi: You passed with top marks." } }
+  },
+  // FireRed's rock barrier (setmetatile, METATILE_Cave_RockBarrier) across the way north, standing until the switch is
+  // pressed: a heap of rock of ours on its two tiles
+  "npcs": [
+    { "id": "rock_barrier_1", "name": "Rock barrier", "npcType": "Rubble", "x": 12, "y": 14, "hiddenBy": "FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED", "script": "Barrier" },
+    { "id": "rock_barrier_2", "name": "Rock barrier", "npcType": "Rubble", "x": 12, "y": 15, "hiddenBy": "FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED", "script": "Barrier" }
+  ]
+}

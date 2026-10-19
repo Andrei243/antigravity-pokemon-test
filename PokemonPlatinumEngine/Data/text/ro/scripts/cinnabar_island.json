@@ -26,5 +26,63 @@
         "Arena Pokémon din Insula Cinnabar\nLider: Blaine. Antrenori învingători: {rival}, {player}."
       ]
     }
+  ],
+  "BillScene": [
+    {
+      "en": [
+        "Bill"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! If it isn't {player}! Fancy meeting you way out here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Blaine? Then you've earned a break. I'm off to One Island, out past the sea, to help a friend of mine called Celio."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He's a whiz with machines, and he's building something to link PCs between the islands. How about coming along?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Will you come to One Island with me?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Great! My pal's ferry should be pulling in any minute."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Well, I'll wait for you in the Pokémon Center. Come and find me when you're ready to sail."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

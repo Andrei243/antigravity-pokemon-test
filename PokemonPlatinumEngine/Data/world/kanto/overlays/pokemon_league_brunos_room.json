@@ -1,0 +1,15 @@
+{
+  // The second of the Elite Four's rooms (plan 19 · K7), Bruno's. The door ahead opens once he is beaten
+  // (FLAG_DEFEATED_BRUNO) onto Agatha's room. pokemon_league_brunos_room.txt has his battle
+  "area": "pokemon_league_brunos_room",
+  "name": "Pokémon League",
+  "bgmTrack": "kanto/gym",
+  "arenaType": "Fighting",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "PokemonLeague_AgathasRoom", "x": 6, "y": 10, "facing": "Up", "openedBy": "FLAG_DEFEATED_BRUNO" }
+  ],
+  "people": {
+    "bruno": { "name": "Bruno", "script": "Bruno", "still": true }
+  }
+}

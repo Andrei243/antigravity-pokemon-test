@@ -1,0 +1,9 @@
+{
+  // A house on One Island (plan 19 · K7): an old couple who remember the island before the ferry came
+  "area": "one_island_house_1",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "old_man_1": { "name": "Old Man", "dialog": [ "When I was young, the only way here from Kanto was a long day in a fishing boat." ] },
+    "old_woman": { "name": "Old Woman", "dialog": [ "Now that ferry brings visitors every day. The island has never been so lively!" ] }
+  }
+}

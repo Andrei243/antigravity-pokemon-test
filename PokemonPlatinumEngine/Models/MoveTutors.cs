@@ -148,6 +148,10 @@ public static class MoveTutors
         // MetronomeTutor; plan 19 · K6, part b). Platinum has no machine of Metronome: its nearest kin among them is
         // Psych Up (TM77), another move that takes on what isn't the user's own
         ["Metronome"] = "Psych Up",
+        // The Cooltrainer on Victory Road's second floor (FireRed's VictoryRoad_2F_EventScript_DoubleEdgeTutor; plan 19 ·
+        // K7). Double-Edge is no machine of Platinum's: its nearest kin among them is Return (TM27), the other Normal
+        // move that hits with all the user has
+        ["Double-Edge"] = "Return",
     };
 
     /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>

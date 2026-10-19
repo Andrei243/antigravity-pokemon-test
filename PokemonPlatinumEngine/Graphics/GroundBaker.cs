@@ -78,6 +78,11 @@ internal static class GroundBaker
             if (map.GetGroundTile(0, ty) == TileType.Door) ExitMat(c, ArtTile, ty * ArtTile, map.Interior, -1);
             if (map.GetGroundTile(map.Width - 1, ty) == TileType.Door) ExitMat(c, (map.Width - 2) * ArtTile, ty * ArtTile, map.Interior, 1);
         }
+        // A GBA spin's arrows and stops, painted on the floor (plan 19 · K7; style guide, "Rooms", "Spin arrows")
+        if (map.HasSpinStops)
+            for (int ty = 0; ty < map.Height; ty++)
+                for (int tx = 0; tx < map.Width; tx++)
+                    PixelGround.SpinMark(c, tx * ArtTile, ty * ArtTile, map.BehaviourAt(tx, ty));
         return c;
     }
 

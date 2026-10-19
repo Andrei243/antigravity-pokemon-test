@@ -1,8 +1,26 @@
-# Cinnabar Island's Pokémon Center (plan 19 · K6, part b). Bill waits here only once he has asked the player to sail
-# to One Island with him and been told to wait (FireRed's VAR_MAP_SCENE_CINNABAR_ISLAND 2, plan 19 · K7's scene): a
-# save from before part b never came here, so the room's arrival hides him for it, as the new game does.
+# Cinnabar Island's Pokémon Center (plan 19 · K6, part b; Bill, plan 19 · K7). docs/scripts.md describes the language;
+# the lines are our own, on FireRed's beats (data/maps/CinnabarIsland_PokemonCenter_1F/scripts.inc).
+#
+# Bill waits here only once he has asked the player to sail to One Island with him and been told to wait (FireRed's
+# VAR_MAP_SCENE_CINNABAR_ISLAND 2, cinnabar_island.txt): a save from before part b never came here, so the room's
+# arrival hides him for it, as the new game does. Spoken to, he asks again, and yes takes them both to sea
+# (common.SailWithBill).
 
 
 script OnEnter
   if var VAR_MAP_SCENE_CINNABAR_ISLAND < 2 setflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
+  end
+
+
+script Bill
+  face cinnabar_pokemon_center_bill player
+  speaker "Bill"
+  ask "Ready to set sail for One Island? Celio's waiting for us!"
+  if no goto Later
+  say "Then let's go! My pal's ferry is waiting down at the dock."
+  hide cinnabar_pokemon_center_bill
+  call SailWithBill
+  end
+label Later
+  say "No rush. Get your team ready, and come back when you are."
   end

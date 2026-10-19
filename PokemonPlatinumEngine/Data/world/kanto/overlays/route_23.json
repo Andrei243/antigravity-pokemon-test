@@ -1,0 +1,33 @@
+{
+  // Route 23 (plan 19 · K7): FireRed's map, our words. North of Route 22's gate to Victory Road and the Indigo Plateau,
+  // with seven guards along it, each of whom lets through only a trainer with the next of Kanto's Badges, from the
+  // Cascade Badge to the Earth Badge (route_23.txt: the area's triggers, one script to each guard's line of tiles,
+  // waiting on VAR_MAP_SCENE_ROUTE23 as FireRed counts it). The water halfway up is crossed with Surf
+  "area": "route_23",
+  "name": "Route 23",
+  "bgmTrack": "kanto/victory_road",
+  "trees": "Round",
+  "triggers": [
+    // The tiles of each guard's line that can be stood on: FireRed's lines run on over the rock and the forest beside
+    // the road, which nobody walks here, and those are left out
+    { "trigger": 0, "script": "CascadeTrigger" }, { "trigger": 40, "script": "CascadeTrigger" },
+    { "trigger": 1, "script": "ThunderTrigger" }, { "trigger": 25, "script": "ThunderTrigger" },
+    { "trigger": 2, "script": "RainbowTrigger" }, { "trigger": 28, "script": "RainbowTrigger" },
+    { "trigger": 35, "script": "SoulTrigger" }, { "trigger": 36, "script": "SoulTrigger" }, { "trigger": 37, "script": "SoulTrigger" },
+    { "trigger": 4, "script": "MarshTrigger" }, { "trigger": 17, "script": "MarshTrigger" }, { "trigger": 19, "script": "MarshTrigger" },
+    { "trigger": 5, "script": "VolcanoTrigger" }, { "trigger": 15, "script": "VolcanoTrigger" },
+    { "trigger": 12, "script": "EarthTrigger" }, { "trigger": 13, "script": "EarthTrigger" }
+  ],
+  "people": {
+    "cascade_badge_guard": { "name": "Guard", "script": "CascadeGuard", "still": true },
+    "thunder_badge_guard": { "name": "Guard", "script": "ThunderGuard", "still": true },
+    "rainbow_badge_guard": { "name": "Guard", "script": "RainbowGuard", "still": true },
+    "soul_badge_guard": { "name": "Guard", "script": "SoulGuard", "still": true },
+    "marsh_badge_guard": { "name": "Guard", "script": "MarshGuard", "still": true },
+    "volcano_badge_guard": { "name": "Guard", "script": "VolcanoGuard", "still": true },
+    "earth_badge_guard": { "name": "Guard", "script": "EarthGuard", "still": true }
+  },
+  "signs": {
+    "Route23_EventScript_VictoryRoadGateSign": "Victory Road Gate\nPokémon League ahead"
+  }
+}

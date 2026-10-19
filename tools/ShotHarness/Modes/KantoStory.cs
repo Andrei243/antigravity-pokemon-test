@@ -36,6 +36,7 @@ partial class Harness
         void Win()
         {
             var fight = game.Battle;
+            int skipped = 0;
             for (int guard = 0; guard < 300 && !fight.IsBattleOver; guard++)
             {
                 if (fight.HUD.MenuState == BattleMenuState.Main)
@@ -53,6 +54,13 @@ partial class Harness
                     var lead = fight.PlayerPokemon;
                     int hurts = lead == null ? 0 : Math.Max(0, lead.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status));
                     fight.SelectMove(hurts);
+                }
+                // A move the rules refused (one the foe has disabled: plan 19 · K7's rival) leaves the moves open: the
+                // next that hurts, in turn
+                else if (fight.HUD.MenuState == BattleMenuState.Moves && fight.PlayerPokemon is { } refused)
+                {
+                    var hurting = Enumerable.Range(0, refused.Moves.Count).Where(k => refused.Moves[k].Data.Category != MoveCategory.Status).ToList();
+                    fight.SelectMove(hurting.Count == 0 ? 0 : hurting[++skipped % hurting.Count]);
                 }
                 else Confirm(fight);
                 Skip(0.5);
@@ -622,5 +630,129 @@ partial class Harness
         ReadTo("Volcano Badge from Blaine"); Frames(10); Shot("ksa9_the_volcano_badge");
         ReadTo(null);
         Console.WriteLine($"  Cinnabar: Volcano Badge {story.HasBadge("Kanto", "Volcano")}, TM38 {game.Bag.GetQuantity(ItemDatabase.Get("TM38")!)}, scene {story.Var("VAR_MAP_SCENE_CINNABAR_ISLAND")}");
+
+        // ---- Plan 19 · K7: Bill by the dock, and over the sea to One Island and Celio
+        // (read on through a scene's warp until its place comes, and its own arrival begins there)
+        void OnTo(string map)
+        {
+            for (int i = 0; i < 2400 && game.Map.Name != map; i++)
+            {
+                if (State() == GameState.Battle) { Win(); continue; }
+                if (engine.Choice.IsOpen) { Frames(10); engine.Choice.Confirm(); Frames(4); }
+                else if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+                else Frames(1);
+            }
+            if (game.Map.Name != map) Console.WriteLine($"  !! never came to {map}");
+            Until(() => engine.ScriptRunning || Box().IsActive, $"{map}'s arrival", 300);
+        }
+        ComeThrough("Kanto", 80, 385, Direction.Down);
+        ReadTo("Fancy meeting you"); Frames(10); Shot("ksb0_bill_on_cinnabar");
+        ReadTo("Will you come to One Island"); Frames(10); Shot("ksb1_bills_question");
+        OnTo("OneIsland");
+        ReadTo("Here we are, One Island"); Frames(10); Shot("ksb2_ashore_on_one_island");
+        OnTo("OneIsland_PokemonCenter_1F");
+        ReadTo("can't believe it"); Frames(10); Shot("ksb3_celio");
+        ReadTo("take this"); Frames(10);
+        ReadTo("whenever you like"); Frames(10); Shot("ksb4_the_tri_pass");
+        ReadTo(null);
+        Console.WriteLine($"  One Island: Tri-Pass {game.Bag.GetQuantity(ItemDatabase.Get("Tri-Pass")!)}, Celio's scene {story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F")}, Cinnabar {story.Var("VAR_MAP_SCENE_CINNABAR_ISLAND")}");
+        TalkTo("OneIsland_Harbor", "sailor", 0, -1);
+        ReadTo("Where would you like to sail"); Frames(10); Shot("ksb5_the_seagallops_sailor");
+        engine.Choice.Move(1); Frames(4); engine.Choice.Confirm();
+        ReadTo(null); Frames(20); Shot("ksb6_back_on_cinnabar");
+        Console.WriteLine($"  the Seagallop: on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY} ({game.Map.AreaAt(game.Player.GridX, game.Player.GridY)?.Key})");
+
+        // ---- Route 23's guards: the first lets a trainer with the Cascade Badge through, the last turns back one without
+        // the Earth Badge
+        keepLead = true;
+        foreach (string badge in new[] { "Boulder", "Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano" }) story.GiveBadge("Kanto", badge);
+        story.SetVar("VAR_MAP_SCENE_ROUTE23", 1);
+        StepOnto("Kanto", 13, 179, Direction.Up);
+        ReadTo("Cascade Badge, all right"); Frames(10); Shot("ksc4_a_guard_sees_the_badge");
+        ReadTo(null);
+        story.SetVar("VAR_MAP_SCENE_ROUTE23", 7);
+        StepOnto("Kanto", 4, 65, Direction.Up);
+        ReadTo("need the Earth Badge"); Frames(10); Shot("ksc5_the_last_guard_turns_back");
+        ReadTo(null);
+        Console.WriteLine($"  Route 23: guards' count {story.Var("VAR_MAP_SCENE_ROUTE23")}, the player at {game.Player.GridX},{game.Player.GridY}");
+
+        // ---- Giovanni in Viridian City's Gym
+        TalkTo("ViridianCity_Gym", "viridian_giovanni");
+        ReadTo("You have come all this way"); Frames(10); Shot("ksb7_giovanni");
+        IntoBattle("Giovanni's battle");
+        ToMainMenu(game.Battle); Shot("ksb8_giovannis_battle");
+        Win();
+        ReadTo("Earth Badge from Giovanni"); Frames(10); Shot("ksb9_the_earth_badge");
+        ReadTo(null);
+        TalkTo("ViridianCity_Gym", "viridian_giovanni");
+        ReadTo("Team Rocket is finished"); Frames(10); Shot("ksc0_giovanni_gives_up");
+        ReadTo(null);
+        Console.WriteLine($"  Viridian: Earth Badge {story.HasBadge("Kanto", "Earth")}, TM26 {game.Bag.GetQuantity(ItemDatabase.Get("TM26")!)}, Giovanni gone {story.Has("FLAG_HIDE_VIRIDIAN_GIOVANNI")}, route 22 {story.Var("VAR_MAP_SCENE_ROUTE22")}");
+
+        // ---- the rival before the League's gate
+        StepOnto("Kanto", 33, 195, Direction.Left);
+        ReadTo("Hold it right there"); Frames(20); Shot("ksc1_the_rival_again");
+        IntoBattle("the rival's battle on Route 22");
+        ToMainMenu(game.Battle); Shot("ksc2_the_rivals_battle");
+        Win();
+        ReadTo("waiting for you at the top"); Frames(10); Shot("ksc3_the_rival_heads_on");
+        ReadTo(null);
+        Console.WriteLine($"  Route 22: scene {story.Var("VAR_MAP_SCENE_ROUTE22")}, rival hidden {story.Has("FLAG_HIDE_ROUTE_22_RIVAL")}");
+
+        // ---- Victory Road: a boulder on a switch
+        ComeThrough("VictoryRoad_1F", 11, 18, Direction.Up);
+        Frames(10); Shot("ksc6_victory_roads_barrier");
+        var roadBoulder = game.Map.NPCs.First(n => n.Key == "victory_road_1f_boulder");
+        (roadBoulder.GridX, roadBoulder.GridY) = (19, 16);
+        At("VictoryRoad_1F", 18, 16, Direction.Right);
+        story.Set(FieldMoveRules.StrengthFlag);
+        Frames(2);
+        engine.Steering = (Direction.Right, false);
+        Until(() => engine.ScriptRunning, "the boulder on the switch", 300);
+        engine.Steering = null;
+        ReadTo("rocks rumbled away"); Frames(10); Shot("ksc7_the_switch_pressed");
+        ReadTo(null);
+        At("VictoryRoad_1F", 12, 16, Direction.Up); Frames(10); Shot("ksc8_the_barrier_gone");
+        Console.WriteLine($"  Victory Road 1F: switch {story.Has("FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED")}");
+
+        // ---- the Elite Four, the Champion and the Hall of Fame
+        // (a team that can face the League in one sitting: Agatha's Gengar takes its foe down with it)
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Mewtwo")!, 100));
+        game.Party.Members.Insert(1, new Pokemon(PokemonDatabase.Get("Mew")!, 100));
+        ComeThrough("IndigoPlateau_PokemonCenter_1F", 11, 15, Direction.Up);
+        foreach (var (room, key, said, name) in new[]
+                 {
+                     ("PokemonLeague_LoreleisRoom", "lorelei", "I am Lorelei", "ksc9_lorelei"),
+                     ("PokemonLeague_BrunosRoom", "bruno", "I am Bruno", "ksd1_bruno"),
+                     ("PokemonLeague_AgathasRoom", "agatha", "I am Agatha", "ksd3_agatha"),
+                     ("PokemonLeague_LancesRoom", "lance", "My name is Lance", "ksd5_lance")
+                 })
+        {
+            ComeThrough(room, 6, room.EndsWith("LancesRoom") ? 11 : 10, Direction.Up);
+            TalkTo(room, key);
+            ReadTo(said); Frames(10); Shot(name);
+            IntoBattle(name);
+            ToMainMenu(game.Battle); Shot(name + "_battle");
+            Win();
+            ReadTo(null);
+            Frames(10); Shot(name + "_door_open");
+        }
+        Console.WriteLine($"  the Four: {story.Has("FLAG_DEFEATED_LORELEI")}, {story.Has("FLAG_DEFEATED_BRUNO")}, {story.Has("FLAG_DEFEATED_AGATHA")}, {story.Has("FLAG_DEFEATED_LANCE")}");
+        ComeThrough("PokemonLeague_ChampionsRoom", 6, 18, Direction.Up);
+        ReadTo("Pokémon League Champion!"); Frames(10); Shot("ksd7_the_champion");
+        IntoBattle("the Champion's battle");
+        ToMainMenu(game.Battle); Shot("ksd8_the_champions_battle");
+        Win();
+        ReadTo("You are the new Pokémon League Champion"); Frames(10); Shot("ksd9_oak_in_the_champions_room");
+        OnTo("PokemonLeague_HallOfFame");
+        ReadTo("This is the Hall of Fame"); Frames(10); Shot("kse0_the_hall_of_fame");
+        for (int i = 0; i < 2400 && State() != GameState.HallOfFameCeremony; i++)
+        {
+            if (Box().IsActive && Box().IsCurrentLineComplete && !Box().IsQuestion) { Box().Advance(); Frames(2); }
+            else Frames(1);
+        }
+        if (State() != GameState.HallOfFameCeremony) Console.WriteLine("  !! never happened: the team's entry");
+        Skip(3.0); Shot("kse1_the_teams_entry");
+        Console.WriteLine($"  the League: champion beaten {story.Has("FLAG_DEFEATED_CHAMP")}, KantoHallOfFame {story.Has("KantoHallOfFame")}, entries {game.HallOfFame.Total}");
     }
 }

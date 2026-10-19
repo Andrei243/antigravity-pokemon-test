@@ -1,5 +1,23 @@
 {
   "people": {
+    "cinnabar_bill": {
+      "name": {
+        "en": [
+          "Bill"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My pal's ferry should be along any minute now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "woman_2": {
       "name": {
         "en": [

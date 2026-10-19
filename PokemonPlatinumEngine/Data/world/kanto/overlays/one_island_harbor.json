@@ -1,0 +1,10 @@
+{
+  // One Island's harbour (plan 19 · K7): the Seagallop's landing, where its sailor sails a holder of the Tri-Pass back
+  // to Kanto (one_island_harbor.txt). FireRed's ship at the pier's end lies past the room's floor here, and is left out
+  "area": "one_island_harbor",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "seagallop": { "name": "Seagallop", "hiddenBy": "FLAG_HIDE_ONE_ISLAND_HARBOR_SEAGALLOP", "dialog": [ "The Seagallop rocks gently at the pier." ] },
+    "sailor": { "name": "Sailor", "script": "Sailor", "still": true }
+  }
+}

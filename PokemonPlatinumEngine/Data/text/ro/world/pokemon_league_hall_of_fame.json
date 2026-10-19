@@ -1,0 +1,31 @@
+{
+  "displayName": {
+    "en": [
+      "Hall of Fame"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "hall_of_fame_prof_oak": {
+      "name": {
+        "en": [
+          "Prof. Oak"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You've earned your place here, {player}."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

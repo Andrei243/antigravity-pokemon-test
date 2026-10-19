@@ -1,0 +1,17 @@
+{
+  // One Island's Pokémon Center (plan 19 · K7), the Pokémon Net Center, as FireRed lays it out: Celio's network machine
+  // along its north-east wall. Bill and Celio meet the player here the first time (one_island_pokemon_center_1f.txt)
+  "area": "one_island_pokemon_center_1f",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "one_island_nurse": { "name": "Nurse", "script": "Nurse" },
+    "one_island_pokemon_center_bill": { "name": "Bill", "script": "Bill", "still": true },
+    "celio": { "name": "Celio", "script": "Celio", "still": true },
+    "little_boy": { "name": "Little Boy", "dialog": [ "I came here from Pallet Town on the ferry. Do you know Pallet Town? It's tiny!" ] },
+    "hiker": { "name": "Hiker", "dialog": [ "There's a great big volcano at the north end of this island. Mt. Ember, they call it." ] },
+    "crush_girl": { "name": "Girl", "dialog": [ "I wish I could trade Pokémon with my boyfriend. He lives far, far away." ] }
+  },
+  "signs": {
+    "OneIsland_PokemonCenter_1F_EventScript_NetworkMachine": "A great big machine, humming and blinking. It must be Celio's network machine."
+  }
+}

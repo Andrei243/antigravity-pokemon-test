@@ -1504,9 +1504,8 @@ public class KantoStoryTests
         Assert.Equal("Volcano", FieldMoveRules.BadgeFor(FieldMove.Waterfall, "Kanto"));
         Assert.DoesNotContain(game.Talk("blaine").Log, l => l.StartsWith("battle"));
         Assert.Equal(1, Count(game, "TM38"));
-        // Bill's scene outside is plan 19 · K7's: he stays out of sight
-        game.Arrive("Kanto", 80, 388);
-        Assert.True(game.Story.Has("FLAG_HIDE_CINNABAR_BILL"));
+        // Bill waits outside now (plan 19 · K7: BillTakesThePlayerToOneIslandWhereCelioGivesTheTriPass)
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_CINNABAR_ISLAND"));
     }
 
     [Fact]
@@ -1691,5 +1690,222 @@ public class KantoStoryTests
         Assert.True(older.Story.Has("FLAG_HIDE_CINNABAR_SEAGALLOP"));
         Assert.True(older.Story.Has("FLAG_HIDE_CINNABAR_POKECENTER_BILL"));
         Assert.Null(older.Present("cinnabar_pokemon_center_bill"));
+    }
+
+    // ------------------------------------------------------------------ plan 19 · K7: the road to the League
+
+    private static readonly string[] AllBadges = { "Boulder", "Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano", "Earth" };
+
+    private static Game WithBadges(int count, int starter = 0)
+    {
+        var game = PastPewter(starter);
+        foreach (string badge in AllBadges.Take(count)) game.Story.GiveBadge("Kanto", badge);
+        return game;
+    }
+
+    [Fact]
+    public void GiovanniGivesTheEarthBadgeAndTmTwentySixAndSendsTheRivalToRouteTwentyTwo()
+    {
+        var game = WithBadges(7);
+        game.Arrive("ViridianCity_Gym", 17, 21);
+        var giovanni = game.Talk("viridian_giovanni");
+        Assert.Contains(giovanni.Log, l => l.StartsWith("battle kanto_leader_giovanni Won"));
+        Assert.True(game.Story.HasBadge("Kanto", "Earth"));
+        Assert.Equal(1, Count(game, "TM26"));
+        Assert.True(game.Story.Has("FLAG_DEFEATED_LEADER_GIOVANNI"));
+        Assert.True(game.Story.Has("FLAG_HIDE_MISC_KANTO_ROCKETS"));
+        Assert.Equal(3, game.Story.Var("VAR_MAP_SCENE_ROUTE22"));
+        foreach (string id in new[] { "kanto_black_belt_takashi", "kanto_cooltrainer_yuji", "kanto_black_belt_atsushi", "kanto_tamer_jason",
+                     "kanto_tamer_cole", "kanto_black_belt_kiyo", "kanto_cooltrainer_samuel", "kanto_cooltrainer_warren" })
+            Assert.True(game.Story.HasDefeated(id), id);
+        // Spoken to again, he gives up Team Rocket and is gone for good
+        Assert.DoesNotContain(game.Talk("viridian_giovanni").Log, l => l.StartsWith("battle"));
+        Assert.True(game.Story.Has("FLAG_HIDE_VIRIDIAN_GIOVANNI"));
+        Assert.Null(game.Present("viridian_giovanni"));
+        Assert.Equal(1, Count(game, "TM26"));
+    }
+
+    [Theory]
+    [InlineData(0, "charmander")]
+    [InlineData(1, "squirtle")]
+    [InlineData(2, "bulbasaur")]
+    public void TheRivalWaitsBeforeTheLeaguesGateOnceGiovanniIsBeaten(int starter, string his)
+    {
+        var game = WithBadges(8, starter);
+        game.Arrive("Kanto", 33, 195);
+        Assert.False(game.Fires("LateRival"));
+        game.Story.SetVar("VAR_MAP_SCENE_ROUTE22", 3);
+        Assert.True(game.Fires("LateRival"));
+        var road = game.Step("LateRival");
+        Assert.Contains(road.Log, l => l.StartsWith($"battle kanto_rival_route22_late_{his} Won"));
+        Assert.Equal(4, game.Story.Var("VAR_MAP_SCENE_ROUTE22"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_22_RIVAL"));
+        Assert.False(game.Fires("LateRival"));
+    }
+
+    [Fact]
+    public void RouteTwentyThreesGuardsAskForEachBadgeInTheOrderTheyAreWon()
+    {
+        var game = WithBadges(1);
+        game.Story.SetVar("VAR_MAP_SCENE_ROUTE23", 1);
+        game.Arrive("Kanto", 8, 182);
+        Assert.Equal("route_23", game.Map.AreaAt(8, 182)?.Key);
+        // Every guard's step can be stood on (FireRed's lines run on over rock and trees here, and those tiles are left
+        // out) and has an open step back south of it, but the one beside the last guard, which the rock south of it
+        // sends back by the step west of it
+        var wrong = new List<string>();
+        foreach (var t in game.Map.Triggers.Where(t => t.ScriptFile == "route_23"))
+        {
+            if (game.Map.IsSolid(t.X, t.Y)) { wrong.Add($"{t.Script} on rock at {t.X},{t.Y}"); continue; }
+            var back = (t.X, t.Y) == (5, 65) ? (X: 4, Y: 66) : (X: t.X, Y: t.Y + 1);
+            if (game.Map.IsSolid(back.X, back.Y)) wrong.Add($"{t.Script} back from {t.X},{t.Y}");
+        }
+        Assert.True(wrong.Count == 0, string.Join("; ", wrong));
+        string[] guards = { "Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano", "Earth" };
+        for (int n = 0; n < guards.Length; n++)
+        {
+            string trigger = guards[n] + "Trigger";
+            Assert.True(game.Fires(trigger), trigger);
+            // Without the Badge, turned back a step and the guard still waits
+            var refused = game.Step(trigger);
+            Assert.Contains(refused.Transcript, l => l.Text.Contains($"need the {guards[n]} Badge"));
+            Assert.Equal(n + 1, game.Story.Var("VAR_MAP_SCENE_ROUTE23"));
+            // With it, let through, and the next guard waits
+            game.Story.GiveBadge("Kanto", guards[n]);
+            game.Step(trigger);
+            Assert.Equal(n + 2, game.Story.Var("VAR_MAP_SCENE_ROUTE23"));
+            Assert.False(game.Fires(trigger));
+        }
+        Assert.Contains(game.Talk("earth_badge_guard").Transcript, l => l.Text.Contains("all eight"));
+    }
+
+    [Fact]
+    public void VictoryRoadsSwitchesLiftTheirBarriersUntilRouteTwentyThreeIsComeToAgain()
+    {
+        var game = WithBadges(8);
+        game.Arrive("Kanto", 8, 182);
+        foreach (var (floor, file, barriers, switches) in new[]
+                 {
+                     ("VictoryRoad_1F", "kanto_victory_road_1f", new[] { "rock_barrier_1", "rock_barrier_2" }, new[] { ("FloorSwitch", "FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED") }),
+                     ("VictoryRoad_3F", "kanto_victory_road_3f", new[] { "rock_barrier_1", "rock_barrier_2" }, new[] { ("FloorSwitch", "FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED") }),
+                     ("VictoryRoad_2F", "kanto_victory_road_2f", new[] { "rock_barrier_1", "rock_barrier_2", "rock_barrier_3", "rock_barrier_4" },
+                         new[] { ("FloorSwitch1", "FLAG_VICTORY_ROAD_2F_SWITCH_1_PRESSED"), ("FloorSwitch2", "FLAG_VICTORY_ROAD_2F_SWITCH_2_PRESSED") })
+                 })
+        {
+            game.Arrive(floor, 10, 10);
+            foreach (string barrier in barriers) Assert.Equal(NPC.RubbleType, game.Present(barrier)!.NpcType);
+            foreach (var (script, flag) in switches)
+            {
+                var pit = game.Map.BoulderPits.First(p => p.Value == script).Key;
+                Assert.True(game.Map.InBounds(pit.X, pit.Y));
+                game.Play(Scripts.Find(script, file)!, game.Map.Everyone.First(n => n.Obstacle == PropType.StrengthBoulder));
+                Assert.True(game.Story.Has(flag), flag);
+            }
+            game.Arrive(floor, 10, 10);
+            foreach (string barrier in barriers) Assert.Null(game.Present(barrier));
+        }
+        // 3F's boulder by the hole falls to 2F, where the second switch waits for it
+        game.Arrive("VictoryRoad_3F", 10, 10);
+        game.Play(Scripts.Find("FallThrough", "kanto_victory_road_3f")!, game.Present("pushable_boulder")!);
+        Assert.True(game.Story.Has("FLAG_HIDE_VICTORY_ROAD_3F_BOULDER"));
+        Assert.False(game.Story.Has("FLAG_HIDE_VICTORY_ROAD_2F_BOULDER"));
+        // Route 23 puts every barrier and the two boulders back
+        game.Arrive("Kanto", 8, 182);
+        foreach (string flag in new[] { "FLAG_VICTORY_ROAD_1F_SWITCH_PRESSED", "FLAG_VICTORY_ROAD_2F_SWITCH_1_PRESSED",
+                     "FLAG_VICTORY_ROAD_2F_SWITCH_2_PRESSED", "FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED", "FLAG_HIDE_VICTORY_ROAD_3F_BOULDER" })
+            Assert.False(game.Story.Has(flag), flag);
+        Assert.True(game.Story.Has("FLAG_HIDE_VICTORY_ROAD_2F_BOULDER"));
+    }
+
+    [Fact]
+    public void VictoryRoadsCooltrainerTeachesDoubleEdgeOnce()
+    {
+        var game = WithBadges(8);
+        game.Party.Members.Clear();
+        game.Party.Members.Add(new Pokemon(PokemonDatabase.Get("Snorlax")!, 40));
+        game.Arrive("VictoryRoad_2F", 10, 10);
+        game.Answers.Enqueue(0);
+        game.Talk("cooltrainer_m");
+        Assert.True(game.Story.Has("FLAG_TUTOR_DOUBLE_EDGE"));
+        Assert.True(game.Party.Members[0].Knows("Double-Edge"));
+    }
+
+    [Theory]
+    [InlineData(0, "charmander")]
+    [InlineData(2, "bulbasaur")]
+    public void TheEliteFourOpenTheirDoorsOneByOneAndTheChampionLeadsToTheHallOfFame(int starter, string his)
+    {
+        var game = WithBadges(8, starter);
+        game.Story.Set("FLAG_DEFEATED_LORELEI");
+        // The hall's Pokémon Center puts all four back
+        game.Arrive("IndigoPlateau_PokemonCenter_1F", 11, 15);
+        Assert.False(game.Story.Has("FLAG_DEFEATED_LORELEI"));
+        var door = game.Map.Warps.First(w => w.TargetMap == "PokemonLeague_LoreleisRoom");
+        Assert.Equal((6, 10), (door.TargetX, door.TargetY));
+        foreach (var (room, who, id, flag, next) in new[]
+                 {
+                     ("PokemonLeague_LoreleisRoom", "lorelei", "kanto_elite_four_lorelei", "FLAG_DEFEATED_LORELEI", "PokemonLeague_BrunosRoom"),
+                     ("PokemonLeague_BrunosRoom", "bruno", "kanto_elite_four_bruno", "FLAG_DEFEATED_BRUNO", "PokemonLeague_AgathasRoom"),
+                     ("PokemonLeague_AgathasRoom", "agatha", "kanto_elite_four_agatha", "FLAG_DEFEATED_AGATHA", "PokemonLeague_LancesRoom"),
+                     ("PokemonLeague_LancesRoom", "lance", "kanto_elite_four_lance", "FLAG_DEFEATED_LANCE", "PokemonLeague_ChampionsRoom")
+                 })
+        {
+            game.Through(room);
+            var ahead = game.Map.Warps.Single(w => w.TargetMap == next);
+            // The door ahead is shut until the master of the room is beaten, and there is no way back
+            Assert.True(game.Map.IsSolid(ahead.SourceX, ahead.SourceY), room);
+            Assert.DoesNotContain(game.Map.Warps, w => w.TargetMap == "IndigoPlateau_PokemonCenter_1F");
+            var battle = game.Talk(who);
+            Assert.Contains(battle.Log, l => l.StartsWith($"battle {id} Won"));
+            Assert.True(game.Story.Has(flag));
+            Assert.False(game.Map.IsSolid(ahead.SourceX, ahead.SourceY), room);
+            Assert.DoesNotContain(game.Talk(who).Log, l => l.StartsWith("battle"));
+        }
+        // The Champion's room is one scene: the rival as Champion, Oak, and on to the Hall of Fame, the team recorded,
+        // Kanto's story ended and the game saved at home
+        game.Through("PokemonLeague_ChampionsRoom");
+        var champion = game.Played.Single(p => p.Script.Contains("pokemon_league_champions_room") && p.Script.EndsWith("OnEnter")).Host;
+        Assert.Contains(champion.Log, l => l.StartsWith($"battle kanto_champion_first_{his} Won"));
+        Assert.True(game.Story.Has("FLAG_DEFEATED_CHAMP"));
+        Assert.False(game.Story.Has("FLAG_HIDE_OAK_IN_CHAMP_ROOM"));
+        Assert.True(TrainerDatabase.IsRivalAsChampion(TrainerDatabase.Get($"kanto_champion_first_{his}")!));
+        Assert.True(game.Story.Has(RegionDatabase.Get(RegionDatabase.Kanto)!.StoryCompleteFlag));
+        Assert.True(game.Story.Has("FLAG_SYS_GAME_CLEAR"));
+        var hall = game.Played.Single(p => p.Script.Contains("pokemon_league_hall_of_fame") && p.Script.EndsWith("OnEnter")).Host;
+        Assert.Contains(hall.Log, l => l.StartsWith("halloffame"));
+        Assert.Contains(hall.Log, l => l == "open Credits");
+        Assert.Equal("PalletTown_PlayersHouse_2F", game.Map.Name);
+    }
+
+    [Fact]
+    public void BillTakesThePlayerToOneIslandWhereCelioGivesTheTriPass()
+    {
+        var game = WithBadges(7);
+        game.Story.SetVar("VAR_MAP_SCENE_CINNABAR_ISLAND", 1);
+        // Refused, he goes to wait in the Pokémon Center
+        game.Answers.Enqueue(1);
+        game.Arrive("Kanto", 80, 385);
+        Assert.Equal(2, game.Story.Var("VAR_MAP_SCENE_CINNABAR_ISLAND"));
+        Assert.Null(game.Present("cinnabar_bill"));
+        game.Arrive("CinnabarIsland_PokemonCenter_1F", 7, 7);
+        Assert.NotNull(game.Present("cinnabar_pokemon_center_bill"));
+        // Asked again there, he sails with the player, ashore at One Island and up to Celio, who gives the Tri-Pass
+        game.Answers.Enqueue(0);
+        game.Talk("cinnabar_pokemon_center_bill");
+        Assert.Equal("OneIsland_PokemonCenter_1F", game.Map.Name);
+        Assert.Equal(1, Count(game, "Tri-Pass"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
+        Assert.NotNull(game.Present("one_island_pokemon_center_bill"));
+        Assert.NotNull(game.Present("celio"));
+        // The harbour's sailor sails back to Cinnabar Island, and Vermilion's to One Island with the pass
+        game.Arrive("OneIsland_Harbor", 8, 5);
+        game.Answers.Enqueue(1);
+        game.Talk("sailor");
+        Assert.Equal("Kanto", game.Map.Name);
+        Assert.Equal("cinnabar_island", game.Map.AreaAt(game.Tile.X, game.Tile.Y)?.Key);
+        game.Arrive("Kanto", 288, 232);
+        game.Answers.Enqueue(0);
+        game.Talk("vermilion_ferry_sailor");
+        Assert.Equal("OneIsland_Harbor", game.Map.Name);
     }
 }

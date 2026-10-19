@@ -1,0 +1,19 @@
+{
+  // One Island (plan 19 · K7): FireRed's map, our words. The first of the Sevii Islands, a warm little port where Bill's
+  // friend Celio works in the Pokémon Center. Kindle Road and Treasure Beach round it are plan 19 · K9's, and stand as
+  // scenery until then. Bill comes ashore with the player the first time (one_island.txt)
+  "area": "one_island",
+  "name": "One Island",
+  "bgmTrack": "kanto/sevii_123",
+  "trees": "Round",
+  "architecture": "Isle",
+  "people": {
+    "one_island_bill": { "name": "Bill", "still": true, "dialog": [ "Celio's in the Pokémon Center, just up the road." ] },
+    "old_man_1": { "name": "Old Man", "dialog": [ "We're lucky to have young Celio here. He's always tinkering with something clever in the Pokémon Center." ] },
+    "balding_man": { "name": "Man", "dialog": [ "Isn't the weather here wonderful? It's warm all year round on the islands." ] }
+  },
+  "signs": {
+    "OneIsland_EventScript_IslandSign": "One Island\nA warm welcome from the Sevii Islands",
+    "OneIsland_EventScript_PokemonNetCenterSign": "Pokémon Net Center\nLinking trainers far and wide"
+  }
+}

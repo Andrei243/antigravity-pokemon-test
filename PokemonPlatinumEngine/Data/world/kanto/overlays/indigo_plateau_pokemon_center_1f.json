@@ -1,0 +1,20 @@
+{
+  // The Indigo Plateau's Pokémon Center (plan 19 · K7), the Pokémon League's hall as FireRed lays it out, with a Mart's
+  // counter of its own and the door to the Elite Four's first room behind its guard. Coming in puts the four rooms back
+  // as they were (indigo_plateau_pokemon_center_1f.txt): whoever goes through the door faces all four again
+  "area": "indigo_plateau_pokemon_center_1f",
+  "bgmTrack": "kanto/gym",
+  "doors": [
+    // The door to Lorelei's room: FireRed's arrival is on its threshold, past the room's own floor here, so the player
+    // comes in on the last row of the floor, facing the room
+    { "warp": 1, "map": "PokemonLeague_LoreleisRoom", "x": 6, "y": 10, "facing": "Up" }
+  ],
+  "people": {
+    "league_nurse": { "name": "Nurse", "script": "Nurse" },
+    "clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! Stock up before you face the Elite Four." ] },
+    "gym_guy": { "name": "Guide", "dialog": [ "Hey, champ in the making! The Elite Four use every type there is. Bring a team that can answer all of them!", "Once you go through that door, there's no turning back until it's over. Make sure your Pokémon are ready." ] },
+    "league_door_guard": { "name": "Guard", "script": "DoorGuard", "still": true },
+    "black_belt": { "name": "Black Belt", "dialog": [ "Even the Champion trains here from time to time. I'm waiting for my chance to battle him." ] },
+    "cooltrainer_m": { "name": "Cooltrainer", "dialog": [ "I lost to Lorelei again. Her Ice-types froze my whole team solid." ] }
+  }
+}
