@@ -1,0 +1,32 @@
+# The Glitter Lighthouse (its floors and its light room): a slow, searching flute in E minor over a harp that climbs
+# like the stairs, a held string chord and a deep bass, the beam turning far above. Original composition for this game
+# (plan 20 · J8).
+title The Glitter Lighthouse
+tempo 76
+meter 4/4
+reverb 0.46
+nighttempo 0.95
+
+track lead flute night=ocarina vol=0.7 pan=0 rev=0.46
+  L o5 b4 g8 e8 g2 | o5 c4 e8 g8 e2 | o5 d4 f+8 a8 f+2 | o5 f+4 d8 o4 b8 o5 d2 |
+  o5 g4 b8 o6 e8 o5 b2 | o5 g4 e8 c8 e2 | o5 a4 e8 c8 a2 | o5 f+4 d+8 o4 b8 o5 d+2 |
+  o5 e4 g8 o6 c8 o5 g2 | o5 f+4 a8 o6 d8 o5 a2 | o5 g4 e8 b8 g2 | o5 e4 c8 g8 e2 |
+  o5 c4 e8 a8 e2 | o5 d4 f+8 a8 f+2 | o5 d+4 f+8 b8 f+2 | o5 e2. r4 |
+
+track harp harp night=pizzicato vol=0.38 pan=-0.25 rev=0.4
+  L o4 e4 g4 b4 g4 | o4 c4 e4 g4 e4 | o4 d4 f+4 a4 f+4 | o3 b4 o4 d4 f+4 d4 |
+  o4 e4 g4 b4 g4 | o4 c4 e4 g4 e4 | o4 a4 o5 c4 e4 c4 | o3 b4 o4 d+4 f+4 d+4 |
+  o4 c4 e4 g4 e4 | o4 d4 f+4 a4 f+4 | o4 e4 g4 b4 g4 | o4 c4 e4 g4 e4 |
+  o4 a4 o5 c4 e4 c4 | o4 d4 f+4 a4 f+4 | o3 b4 o4 d+4 f+4 d+4 | o4 e4 g4 b4 g4 |
+
+track pad strings night=pad vol=0.26 pan=0.25 rev=0.5
+  L o4 (e g b)1 | (c e g)1 | (d f+ a)1 | (d f+ b)1 |
+  (e g b)1 | (c e g)1 | (c e a)1 | (d+ f+ b)1 |
+  (c e g)1 | (d f+ a)1 | (e g b)1 | (c e g)1 |
+  (c e a)1 | (d f+ a)1 | (d+ f+ b)1 | (e g b)1 |
+
+track bass contrabass vol=0.5 rev=0.16
+  L o2 e1 | o2 c1 | o2 d1 | o2 b1 |
+  o2 e1 | o2 c1 | o2 a1 | o2 b1 |
+  o2 c1 | o2 d1 | o2 e1 | o2 c1 |
+  o2 a1 | o2 d1 | o2 b1 | o2 e1 |

@@ -220,6 +220,47 @@ public static partial class WorldModels
         Ground("r07_01bot", "the lift car's floor: the room draws it"),
         Ground("r07_cs01", "the lift car's control panel: the attendant works it"),
         Ground("ev_o01", "the lift car's doors in the back wall"),
+
+        // ---------------------------------------------------------------- plan 20 · J8: the west and the sea
+        // Route 39's Moomoo Farm (r39_)
+        Built("r39_naya", BuildingKind.Warehouse, "the Moomoo Farm's barn", Architecture.Farm),
+        House("wk_h02", Architecture.Farm, "the Moomoo Farm's house"),
+        Ground("r39_moumou", "the Moomoo Farm's pasture and its fence: the ground and the route's own fences draw them"),
+        Door("r39_door1"),
+        // Olivine City (as_: the original's Asagi) and its harbour
+        House("as_h01", Architecture.Seaport, "a house of Olivine City"),
+        Built("as_gym", BuildingKind.Gym, "the Olivine Gym"),
+        Built("as_restaurant", BuildingKind.Shop, "the Olivine Café, where the sailors eat", Architecture.Seaport, sign: "CAFE"),
+        Built("as_toudai", BuildingKind.Lighthouse, "the Glitter Lighthouse on its point"),
+        Built("as_aquagate", BuildingKind.Hall, "Olivine's port hall, where the ship's passengers wait", Architecture.Seaport),
+        Thing("as_yacht", PropType.Boat, "a yacht moored in Olivine's harbour"),
+        Thing("as_bench", PropType.Bench, "a bench along Olivine's quay"),
+        Ground("as_hata", "the strings of flags over Olivine's streets: the town's own light and the sky stand for them"),
+        Door("as_door1"),
+        // Cianwood City (tn_: Tanba) on its island
+        House("tn_h01", Architecture.Cliffside, "a house of Cianwood City"),
+        Built("tn_gym", BuildingKind.Gym, "the Cianwood Gym"),
+        Built("tn_pharmacy", BuildingKind.Shop, "Cianwood's pharmacy, the oldest in Johto", Architecture.Cliffside, sign: "PHARMACY"),
+        Built("tn_photo", BuildingKind.Shop, "the photo studio by Cianwood's shore", Architecture.Cliffside, sign: "PHOTO"),
+        Ground("tn_dried", "fish hung to dry on Cianwood's quay: the ground draws its racks"),
+        Ground("snap_camera", "the photographer's camera on its stand: he stands beside it"),
+        Door("tn_door1"), Door("tn_door2"),
+        // The whirlpools on the sea of Route 41 (uzushio): a ring of water
+        // turning, crossed only with Whirlpool (style guide, "Water"); their tiles are the original's whirlpool behaviour
+        Thing("uzushio", PropType.Whirlpool, "a whirlpool on the sea, three tiles across"),
+        Ground("d_uzushio", "the whirling of the deep water round the Whirl Islands' lowest cave: the cave's own water stands for it (its tiles are no whirlpool)"),
+        Ground("uzu_taki", "a waterfall in the Whirl Islands: its tiles draw it"),
+        // The rooms: the Glitter Lighthouse's floors (bm_room's), its light room (bm_field's) and the Olivine Gym
+        Ground("ladder_up", "a ladder up: the warp's tile is the way"),
+        Ground("ladder_dw", "a ladder down: the warp's tile is the way"),
+        Ground("tou3f_back", "the lighthouse's outer wall seen past its third floor's open side: the room's wall draws it"),
+        Ground("toudai_sky", "the sky round the lighthouse's light room: the room's own light stands for it"),
+        Ground("ele_door_dun", "the lighthouse lift's doors in the back wall"),
+        Ground("mg06_fl1", "the Olivine Gym's floor of steel plates: the floor draws it"),
+        Ground("mg06_bot", "the Olivine Gym's steel trim: the floor and its walls draw it"),
+        Ground("mg06_swc", "the Olivine Gym's statue of a steel Pokémon behind its Leader: the wall draws it"),
+        Ground("d_mat02", "a mat inside a side door: the floor draws it"),
+        Furniture("shelf02", PropType.Bookshelf, "a shelf"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

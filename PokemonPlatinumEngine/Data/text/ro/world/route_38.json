@@ -1,0 +1,152 @@
+{
+  "people": {
+    "r38_gsboy1": {
+      "name": {
+        "en": [
+          "Chad"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "School Kid Chad: I studied type matchups all week. Time for a test!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "School Kid Chad: I think I failed the practical part."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r38_gsman2": {
+      "name": {
+        "en": [
+          "Toby"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Toby: My birds fly over this road every morning. They know it better than you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Toby: They'll need a longer rest after that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r38_gsgirl1": {
+      "name": {
+        "en": [
+          "Dana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Dana: You look like you've come a long way. Let's see how strong you've got!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Dana: Strong enough, it turns out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r38_gswoman2": {
+      "name": {
+        "en": [
+          "Valerie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Valerie: A battle on a fine day like this? Why not!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Valerie: Still a fine day, even after losing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r38_seaman_2": {
+      "name": {
+        "en": [
+          "Harry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Harry: I'm off to sea from Olivine soon. One last battle on dry land!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Harry: I'll have to train harder on the voyage."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R38_001+1": {
+      "en": [
+        "Route 38\nEcruteak City is to the east."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R38_002+1": {
+      "en": [
+        "Route 38\nOlivine City is to the west, beyond the farm."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "key": "whirl_islands_b2f",
+  "index": 243,
+  "name": "Whirl Islands",
+  "matrix": 143,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D40R0104",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Krabby", "level": 22 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Krabby", "level": 22 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Krabby", "level": 24 },
+    { "species": "Krabby", "level": 24 },
+    { "species": "Seel", "level": 22 },
+    { "species": "Seel", "level": 22 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Seel", "level": 24 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Seel", "level": 24 }
+  ],
+  "landRate": 5,
+  "water": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 30, "maxLevel": 30 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Horsea", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Horsea", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Seadra", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 27, "z": 28, "to": "whirl_islands_b1f", "toWarp": 4 },
+    { "x": 27, "z": 27, "to": "whirl_islands_b1f", "toWarp": 4 },
+    { "x": 32, "z": 14, "to": "whirl_islands_b1f", "toWarp": 11 },
+    { "x": 32, "z": 13, "to": "whirl_islands_b1f", "toWarp": 11 },
+    { "x": 31, "z": 31, "to": "whirl_islands_b3f", "toWarp": 0 },
+    { "x": 31, "z": 43, "to": "whirl_islands_b3f_lugia_cave", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d40r0104_bozu", "looks": "bozu", "movement": "0", "x": 36, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D40R0104_000+1" },
+    { "id": "d40r0104_monstarball", "looks": "monstarball", "movement": "0", "x": 25, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0104_MAX_REVIVE", "item": "Max Revive", "script": "std_itemball_d40r0104_max_revive" },
+    { "id": "d40r0104_monstarball_2", "looks": "monstarball", "movement": "0", "x": 29, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0104_FULL_RESTORE", "item": "Full Restore", "script": "std_itemball_d40r0104_full_restore" },
+    { "id": "d40r0104_monstarball_3", "looks": "monstarball", "movement": "0", "x": 25, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0104_MAX_ELIXIR", "item": "Max Elixir", "script": "std_itemball_d40r0104_max_elixir" }
+  ],
+  "signs": [
+    { "x": 29, "z": 11, "type": 2, "script": "std_hiddenitem_d40r0104_full_restore", "item": "Full Restore", "flag": "FLAG_HIDDEN_ITEM_D40R0104_FULL_RESTORE" }
+  ],
+  "triggers": []
+}

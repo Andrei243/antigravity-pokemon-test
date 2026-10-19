@@ -1,0 +1,48 @@
+{
+  // Route 39 (plan 20 · J8): HeartGold's map, our words. The road south past the Moomoo Farm to Olivine City, its
+  // Miltank grazing in their pasture and four trainers by their own records. The original hides the herd behind a flag
+  // that nothing in this game sets, so they always graze (hiddenBy ""). The photographer, the gentleman and the
+  // Monday-night visitor wait for their chapters; the Apricorn tree is plan 20 · J6's
+  "area": "route_39",
+  "bgmTrack": "johto/route38",
+  "trees": "Round",
+  "people": {
+    "r39_seaman_2": {
+      "name": "Eugene",
+      "trainer": {
+        "dialogueBefore": "Sailor Eugene: The sea air makes my Pokémon tough. Shall I show you?",
+        "dialogueAfter": "Sailor Eugene: Tough, but not tough enough."
+      }
+    },
+    "r39_gsmiddleman1": {
+      "name": "Derek",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Derek: Isn't my Pikachu the cutest thing you've ever seen? Battle us!",
+        "dialogueAfter": "Pokéfan Derek: Still the cutest. Just not the strongest."
+      }
+    },
+    "r39_middlewoman1_2": {
+      "name": "Ruth",
+      "trainer": {
+        "dialogueBefore": "Pokéfan Ruth: My little ones love to battle. Be gentle with them!",
+        "dialogueAfter": "Pokéfan Ruth: Oh, my poor darlings. Well done, though."
+      }
+    },
+    "r39_mystery_2": {
+      "name": "Nelson",
+      "trainer": {
+        "dialogueBefore": "Psychic Nelson: I sensed you coming from the farm. I also sense a battle.",
+        "dialogueAfter": "Psychic Nelson: That, I did not sense."
+      }
+    },
+    "r39_tsure_poke_static_miltank": { "name": "Miltank", "npcType": "Pokemon", "species": "Miltank", "hiddenBy": "", "still": true, "dialog": [ "Moooo!" ] },
+    "r39_tsure_poke_static_miltank_2": { "name": "Miltank", "npcType": "Pokemon", "species": "Miltank", "hiddenBy": "", "still": true, "dialog": [ "Moo..." ] },
+    "r39_tsure_poke_static_miltank_3": { "name": "Miltank", "npcType": "Pokemon", "species": "Miltank", "hiddenBy": "", "still": true, "dialog": [ "Mooo!" ] },
+    "r39_tsure_poke_static_miltank_4": { "name": "Miltank", "npcType": "Pokemon", "species": "Miltank", "hiddenBy": "", "still": true, "dialog": [ "Moo! Moo!" ] }
+  },
+  "signs": {
+    "R39_003+1": "Moomoo Farm\nFresh milk from happy Miltank.",
+    "R39_004+1": "Moomoo Farm\nPlease close the gate behind you.",
+    "R39_005+1": "Route 39\nOlivine City is to the south."
+  }
+}

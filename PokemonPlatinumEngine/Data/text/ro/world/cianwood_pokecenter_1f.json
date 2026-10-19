@@ -1,0 +1,123 @@
+{
+  "people": {
+    "t24pc0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24pc0101_pcwoman2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24pc0101_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24pc0101_pcwoman2_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24pc0101_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Chuck's Pokémon are all Fighting types. Flying and Psychic moves hit them where it hurts."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24pc0101_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My dad swam all the way here from Olivine once. That's how he met my mum!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24pc0101_sunglasses": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea between here and Olivine has islands in it, ringed with whirlpools. Nobody goes inside."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

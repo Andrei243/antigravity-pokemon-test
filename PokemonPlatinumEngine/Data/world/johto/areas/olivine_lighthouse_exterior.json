@@ -1,0 +1,25 @@
+{
+  "key": "olivine_lighthouse_exterior",
+  "index": 221,
+  "name": "Lighthouse",
+  "matrix": 49,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "3",
+  "battleBackground": "City",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 8, "z": 12, "to": "olivine_lighthouse_3f", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "d27r0103_monstarball", "looks": "monstarball", "movement": "0", "x": 2, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D27R0103_RARE_CANDY", "item": "Rare Candy", "script": "std_itemball_d27r0103_rare_candy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -161,7 +161,7 @@ public class JohtoTests
         var goldenrod = Johto.Area("goldenrod")!;
         foreach (int shut in new[] { 9, 16 }) Assert.Empty(Overworld.WarpsAt(goldenrod.Warps[shut].X, goldenrod.Warps[shut].Z));
         var ecruteak = Johto.Area("ecruteak")!;
-        foreach (int shut in new[] { 8, 10 }) Assert.Empty(Overworld.WarpsAt(ecruteak.Warps[shut].X, ecruteak.Warps[shut].Z));
+        Assert.Empty(Overworld.WarpsAt(ecruteak.Warps[10].X, ecruteak.Warps[10].Z));
         Assert.Contains(Overworld.WarpsAt(ecruteak.Warps[7].X, ecruteak.Warps[7].Z), w => w.TargetMap == "Ecruteak_Gym");
         Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("BellTower", StringComparison.Ordinal));
 
@@ -309,8 +309,69 @@ public class JohtoTests
         Assert.Equal((byte)TileBehavior.LadderSouth, HgBehaviours.LadderSouth);
         Assert.Equal((byte)TileBehavior.LadderDown, HgBehaviours.LadderDown);
         // Each is told of, and waits for the session of plan 20 that opens a place using it
-        foreach (var b in new[] { TileBehavior.HeadbuttTree, TileBehavior.Whirlpool, TileBehavior.Magma, TileBehavior.LadderDown })
+        foreach (var b in new[] { TileBehavior.HeadbuttTree, TileBehavior.Magma, TileBehavior.LadderDown })
             Assert.Equal(BehaviourSupport.Waiting, TileBehaviors.InGame(b).Support);
+        // ...but the whirlpool, whose rule plan 20 · J8 wrote
+        Assert.Equal(BehaviourSupport.Ruled, TileBehaviors.InGame(TileBehavior.Whirlpool).Support);
+    }
+
+    private static readonly string[] WestAndSea = { "route_38", "route_39", "olivine", "route_40", "route_41", "cianwood" };
+
+    [Fact]
+    public void TheWestAndTheSeaAreWalkedToFromEcruteakCity()
+    {
+        // Plan 20 · J8: west out of Ecruteak by Route 38, south past the Moomoo Farm by Route 39 to Olivine City, up the
+        // Glitter Lighthouse to its light room, and over the sea of Routes 40 and 41 to Cianwood City; the Whirl Islands'
+        // floors through their whirlpools. Every room of theirs is come into
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in WestAndSea)
+        {
+            Assert.Contains(key, Johto.Index.Areas);
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        }
+        foreach (string name in new[] { "Route38_EcruteakGate", "Route39_MoomooFarmStable", "Olivine_Gym", "Olivine_Cafe",
+                     "Olivine_PortHall", "OlivineLighthouse_5F", "OlivineLighthouse_LightRoom", "OlivineLighthouse_Ledge",
+                     "Route40_FrontierGate", "Cianwood_Gym", "Cianwood_Pharmacy", "Cianwood_PokemonCenter_B1F",
+                     "WhirlIslands_1F", "WhirlIslands_B2F" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+
+        // What waits stays shut: the S.S. Aqua's quay, the Battle Frontier's road, the lighthouse's lift, Lugia's cave,
+        // the cliff path to Route 47 and the road east of Ecruteak to Route 42
+        Assert.Null(MapNamed("Olivine_PortHall").GetWarpAt(7, 11));
+        Assert.Null(MapNamed("Route40_FrontierGate").GetWarpAt(5, 2));
+        Assert.Null(MapNamed("OlivineLighthouse_1F").GetWarpAt(8, 4));
+        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Lugia", StringComparison.Ordinal));
+        var cianwood = Johto.Area("cianwood")!;
+        Assert.Empty(Overworld.WarpsAt(cianwood.Warps[6].X, cianwood.Warps[6].Z));
+
+        // The whirlpools of Route 41 are the original's blocks of three tiles by three, each with its ring on the water,
+        // and the islands' ways in lie behind them
+        var whirlpools = Overworld.Props.Where(p => p.Type == PropType.Whirlpool).ToList();
+        Assert.True(whirlpools.Count >= 4, $"only {whirlpools.Count} whirlpools on Route 41");
+        foreach (var ring in whirlpools)
+            Assert.Contains(Enumerable.Range(ring.X, ring.Width).SelectMany(x => Enumerable.Range(ring.Y, ring.Depth).Select(y => (x, y))),
+                t => Overworld.BehaviourAt(t.x, t.y) == TileBehavior.Whirlpool);
+
+        // Olivine and Cianwood are built their own ways, with songs of their own; the lighthouse and the farm have theirs
+        Assert.Equal(Architecture.Seaport, WorldModels.Of("as_h01", "johto")!.Town);
+        Assert.Equal(Architecture.Cliffside, WorldModels.Of("tn_h01", "johto")!.Town);
+        var olivine = Johto.Area("olivine")!;
+        Assert.Equal("johto/olivine", Overworld.BgmTrackAt(olivine.Warps[1].X, olivine.Warps[1].Z + 1));
+        Assert.Equal("johto/cianwood", Overworld.BgmTrackAt(cianwood.Warps[1].X, cianwood.Warps[1].Z + 1));
+        Assert.Equal("johto/route38", MapNamed("Route38_EcruteakGate").BgmTrackAt(5, 6));
+        Assert.Equal("johto/lighthouse", MapNamed("OlivineLighthouse_3F").BgmTrackAt(8, 8));
+
+        // The trainers battle by HeartGold's records; the Miltank graze on Route 39 and Amphy lies sick by the lamp
+        Assert.Contains(Overworld.Everyone, n => n.Id == "johto_sailor_harry");
+        Assert.Contains(Overworld.Everyone, n => n.Id == "johto_swimmer_f_wendy");
+        Assert.Contains(MapNamed("OlivineLighthouse_4F").NPCs, n => n.Id == "johto_lass_connie");
+        Assert.Contains(MapNamed("Cianwood_Gym").Everyone, n => n.Id == "johto_black_belt_lung");
+        Assert.True(Overworld.NPCs.Count(n => n.Species == "Miltank") >= 4);
+        Assert.Contains(MapNamed("OlivineLighthouse_LightRoom").NPCs, n => n.Species == "Ampharos");
+        // ...and Jasmine and Chuck wait for plan 20 · J9
+        Assert.DoesNotContain(MapNamed("Olivine_Gym").NPCs, n => n.Name == "Jasmine");
+        Assert.DoesNotContain(MapNamed("Cianwood_Gym").NPCs, n => n.Name == "Chuck");
     }
 
     [Fact]

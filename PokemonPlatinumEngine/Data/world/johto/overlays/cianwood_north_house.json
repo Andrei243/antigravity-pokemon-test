@@ -1,0 +1,14 @@
+{
+  // A house in the north of Cianwood City (plan 20 · J8)
+  "area": "cianwood_north_house",
+  "bgmTrack": "johto/cianwood",
+  "people": {
+    "t24r0801_middlewoman1_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "On a calm night you can hear something singing out by the Whirl Islands. The sailors say it's a legend."
+      ]
+    }
+  }
+}

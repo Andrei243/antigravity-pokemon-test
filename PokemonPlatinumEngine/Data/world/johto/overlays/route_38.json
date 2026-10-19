@@ -1,0 +1,48 @@
+{
+  // Route 38 (plan 20 · J8): HeartGold's map, our words. The road west out of Ecruteak City through the farmland, its
+  // five trainers by their own records. Its Apricorn tree is plan 20 · J6's
+  "area": "route_38",
+  "bgmTrack": "johto/route38",
+  "trees": "Round",
+  "people": {
+    "r38_gsboy1": {
+      "name": "Chad",
+      "trainer": {
+        "dialogueBefore": "School Kid Chad: I studied type matchups all week. Time for a test!",
+        "dialogueAfter": "School Kid Chad: I think I failed the practical part."
+      }
+    },
+    "r38_gsman2": {
+      "name": "Toby",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Toby: My birds fly over this road every morning. They know it better than you!",
+        "dialogueAfter": "Bird Keeper Toby: They'll need a longer rest after that."
+      }
+    },
+    "r38_gsgirl1": {
+      "name": "Dana",
+      "trainer": {
+        "dialogueBefore": "Lass Dana: You look like you've come a long way. Let's see how strong you've got!",
+        "dialogueAfter": "Lass Dana: Strong enough, it turns out."
+      }
+    },
+    "r38_gswoman2": {
+      "name": "Valerie",
+      "trainer": {
+        "dialogueBefore": "Beauty Valerie: A battle on a fine day like this? Why not!",
+        "dialogueAfter": "Beauty Valerie: Still a fine day, even after losing."
+      }
+    },
+    "r38_seaman_2": {
+      "name": "Harry",
+      "trainer": {
+        "dialogueBefore": "Sailor Harry: I'm off to sea from Olivine soon. One last battle on dry land!",
+        "dialogueAfter": "Sailor Harry: I'll have to train harder on the voyage."
+      }
+    }
+  },
+  "signs": {
+    "R38_001+1": "Route 38\nEcruteak City is to the east.",
+    "R38_002+1": "Route 38\nOlivine City is to the west, beyond the farm."
+  }
+}

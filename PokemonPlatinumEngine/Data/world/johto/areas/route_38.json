@@ -1,0 +1,61 @@
+{
+  "key": "route_38",
+  "index": 42,
+  "name": "Route 38",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_6_38",
+  "nightMusic": "GS_R_6_38",
+  "encounters": "R38",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Rattata", "level": 16 },
+    { "species": "Raticate", "level": 16 },
+    { "species": "Rattata", "level": 16 },
+    { "species": "Raticate", "level": 16 },
+    { "species": "Magnemite", "level": 16 },
+    { "species": "Magnemite", "level": 16 },
+    { "species": "Farfetch'd", "level": 16, "night": "Rattata" },
+    { "species": "Farfetch'd", "level": 16, "night": "Rattata" },
+    { "species": "Miltank", "level": 13 },
+    { "species": "Tauros", "level": 13 },
+    { "species": "Miltank", "level": 13 },
+    { "species": "Snubbull", "level": 13 }
+  ],
+  "landRate": 25,
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [
+    { "x": 351, "z": 166, "to": "route_38_ecruteak_gatehouse", "toWarp": 1 },
+    { "x": 351, "z": 167, "to": "route_38_ecruteak_gatehouse", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r38_gsboy1", "looks": "gsboy1", "movement": "17", "x": 299, "z": 161, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_SCHOOL_KID_M_CHAD" },
+    { "id": "r38_gsman2", "looks": "gsman2", "movement": "17", "x": 320, "z": 173, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BIRD_KEEPER_GS_TOBY" },
+    { "id": "r38_gsgirl1", "looks": "gsgirl1", "movement": "13", "x": 321, "z": 162, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_LASS_DANA" },
+    { "id": "r38_gswoman2", "looks": "gswoman2", "movement": "15", "x": 310, "z": 168, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_BEAUTY_VALERIE" },
+    { "id": "r38_seaman_2", "looks": "seaman_2", "movement": "5", "x": 336, "z": 166, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_SAILOR_HARRY" },
+    { "id": "r38_bonguri", "looks": "bonguri", "movement": "0", "x": 315, "z": 172, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r38_monstarball", "looks": "monstarball", "movement": "0", "x": 329, "z": 177, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R38_MAX_POTION", "item": "Max Potion", "script": "std_itemball_r38_max_potion" },
+    { "id": "r38_monstarball_2", "looks": "monstarball", "movement": "0", "x": 297, "z": 186, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R38_LAX_INCENSE", "item": "Lax Incense", "script": "std_itemball_r38_lax_incense" }
+  ],
+  "signs": [
+    { "x": 346, "z": 165, "type": 1, "script": "R38_001+1" },
+    { "x": 301, "z": 179, "type": 1, "script": "R38_002+1" },
+    { "x": 291, "z": 175, "type": 2, "script": "std_hiddenitem_r38_hp_up", "item": "HP Up", "flag": "FLAG_HIDDEN_ITEM_R38_HP_UP" }
+  ],
+  "triggers": []
+}

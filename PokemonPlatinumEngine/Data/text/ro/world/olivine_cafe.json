@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t26r0701_fishing_2": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nothing beats a hot meal after a day on the water. The fish stew here is the best on the coast."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26r0701_seaman_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We eat a lot, us sailors. Hauling ropes all day works up an appetite!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26r0701_seaman_2_2": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "On the last voyage a storm tossed us for three days. I could eat a Wailord!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t26r0701_seaman_2_3": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This café's been here longer than the lighthouse, they say. Don't believe it myself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

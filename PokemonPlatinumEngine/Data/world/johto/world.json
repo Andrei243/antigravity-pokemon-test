@@ -106,7 +106,41 @@
     { "name": "Azalea_GymEntrance", "matrix": 88, "area": "azalea_gym_entrance", "trees": "Round", "setting": "Indoors" },
     { "name": "Azalea_Gym", "matrix": 105, "area": "azalea_gym", "trees": "Round", "setting": "Indoors" },
     { "name": "Ecruteak_Gym", "matrix": 90, "area": "ecruteak_gym", "trees": "Round", "setting": "Indoors" },
-    { "name": "Goldenrod_DeptStore_Elevator", "matrix": 262, "area": "goldenrod_department_store_elevator", "trees": "Round", "setting": "Indoors" }
+    { "name": "Goldenrod_DeptStore_Elevator", "matrix": 262, "area": "goldenrod_department_store_elevator", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J8: the west and the sea. Route 38's gate house, the Moomoo Farm, Olivine City's rooms and its
+    // lighthouse's floors (the lift waits for the chapter that rides it), the port's hall, Route 40's gate house,
+    // Cianwood City's rooms and the Whirl Islands' upper floors (the third basement and Lugia's cave wait for plan 20 · J11)
+    { "name": "Route38_EcruteakGate", "matrix": 70, "area": "route_38_ecruteak_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route39_MoomooFarmHouse", "matrix": 128, "area": "route_39_moomoo_farm_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route39_MoomooFarmStable", "matrix": 129, "area": "route_39_moomoo_farm_stable", "trees": "Round", "setting": "Indoors" },
+    { "name": "Olivine_PokemonCenter_1F", "matrix": 73, "area": "olivine_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Olivine_PokemonCenter_B1F", "matrix": 77, "area": "olivine_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Olivine_Mart", "matrix": 104, "area": "olivine_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Olivine_Cafe", "matrix": 136, "area": "olivine_cafe", "trees": "Round", "setting": "Indoors" },
+    { "name": "Olivine_Gym", "matrix": 91, "area": "olivine_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Olivine_NorthHouse", "matrix": 97, "area": "olivine_north_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Olivine_NortheastHouse", "matrix": 97, "area": "olivine_northeast_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Olivine_NorthwestHouse", "matrix": 97, "area": "olivine_northwest_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Olivine_PortHall", "matrix": 137, "area": "ss_aqua_olivine_port_interior", "trees": "Round", "setting": "Indoors" },
+    { "name": "OlivineLighthouse_1F", "matrix": 47, "area": "olivine_lighthouse_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "OlivineLighthouse_2F", "matrix": 48, "area": "olivine_lighthouse_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "OlivineLighthouse_3F", "matrix": 50, "area": "olivine_lighthouse_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "OlivineLighthouse_4F", "matrix": 51, "area": "olivine_lighthouse_4f", "trees": "Round", "setting": "Indoors" },
+    { "name": "OlivineLighthouse_5F", "matrix": 52, "area": "olivine_lighthouse_5f", "trees": "Round", "setting": "Indoors" },
+    { "name": "OlivineLighthouse_Ledge", "matrix": 49, "area": "olivine_lighthouse_exterior", "trees": "Round", "setting": "Indoors" },
+    { "name": "OlivineLighthouse_LightRoom", "matrix": 131, "area": "olivine_lighthouse_light_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route40_FrontierGate", "matrix": 69, "area": "route_40_battle_frontier_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cianwood_PokemonCenter_1F", "matrix": 73, "area": "cianwood_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cianwood_PokemonCenter_B1F", "matrix": 77, "area": "cianwood_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cianwood_Gym", "matrix": 92, "area": "cianwood_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cianwood_Pharmacy", "matrix": 139, "area": "cianwood_pharmacy", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cianwood_KirksHouse", "matrix": 95, "area": "cianwood_kirks_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cianwood_CentralHouse", "matrix": 95, "area": "cianwood_central_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cianwood_NorthHouse", "matrix": 95, "area": "cianwood_north_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Cianwood_PhotoStudio", "matrix": 97, "area": "cianwood_camerons_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "WhirlIslands_1F", "matrix": 141, "area": "whirl_islands_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "WhirlIslands_B1F", "matrix": 142, "area": "whirl_islands_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "WhirlIslands_B2F", "matrix": 143, "area": "whirl_islands_b2f", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -144,6 +178,16 @@
     "ecruteak_dowsing_machine_house", "ecruteak_bell_tower_barrier_station", "burned_tower_1f", "burned_tower_b1f",
     // Plan 20 · J7: the Slowpoke Well, the two Gyms and the Department Store's lift
     "slowpoke_well_entrance", "slowpoke_well_b1f", "slowpoke_well_b2f", "azalea_gym_entrance", "azalea_gym", "ecruteak_gym",
-    "goldenrod_department_store_elevator"
+    "goldenrod_department_store_elevator",
+    // Plan 20 · J8: Routes 38 to 41, Olivine City, its lighthouse and port, Cianwood City and the Whirl Islands
+    "route_38", "route_38_ecruteak_gatehouse", "route_39", "route_39_moomoo_farm_house", "route_39_moomoo_farm_stable",
+    "olivine", "olivine_pokecenter_1f", "olivine_pokecenter_b1f", "olivine_pokemart", "olivine_cafe", "olivine_gym",
+    "olivine_north_house", "olivine_northeast_house", "olivine_northwest_house", "ss_aqua_olivine_port_interior",
+    "olivine_lighthouse_1f", "olivine_lighthouse_2f", "olivine_lighthouse_3f", "olivine_lighthouse_4f", "olivine_lighthouse_5f",
+    "olivine_lighthouse_exterior", "olivine_lighthouse_light_room",
+    "route_40", "route_40_battle_frontier_gatehouse", "route_41",
+    "cianwood", "cianwood_pokecenter_1f", "cianwood_pokecenter_b1f", "cianwood_gym", "cianwood_pharmacy",
+    "cianwood_kirks_house", "cianwood_central_house", "cianwood_north_house", "cianwood_camerons_house",
+    "whirl_islands_1f", "whirl_islands_b1f", "whirl_islands_b2f"
   ]
 }

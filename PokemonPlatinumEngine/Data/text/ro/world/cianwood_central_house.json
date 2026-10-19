@@ -1,0 +1,59 @@
+{
+  "people": {
+    "t24r0701_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband's a fisherman. When the sea's rough round the islands, he stays home and mends his nets."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24r0701_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There's a big silver bird under the sea! Grandpa saw it. He really did!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t24r0701_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Grandpa's always telling stories about the Whirl Islands. I don't believe half of them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

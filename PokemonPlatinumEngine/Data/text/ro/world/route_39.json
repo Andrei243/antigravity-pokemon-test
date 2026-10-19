@@ -1,0 +1,206 @@
+{
+  "people": {
+    "r39_seaman_2": {
+      "name": {
+        "en": [
+          "Eugene"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Eugene: The sea air makes my Pokémon tough. Shall I show you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Eugene: Tough, but not tough enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r39_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Derek"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Derek: Isn't my Pikachu the cutest thing you've ever seen? Battle us!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Derek: Still the cutest. Just not the strongest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r39_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Ruth"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Ruth: My little ones love to battle. Be gentle with them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Ruth: Oh, my poor darlings. Well done, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r39_mystery_2": {
+      "name": {
+        "en": [
+          "Nelson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Nelson: I sensed you coming from the farm. I also sense a battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Nelson: That, I did not sense."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r39_tsure_poke_static_miltank": {
+      "name": {
+        "en": [
+          "Miltank"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Moooo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r39_tsure_poke_static_miltank_2": {
+      "name": {
+        "en": [
+          "Miltank"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Moo..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r39_tsure_poke_static_miltank_3": {
+      "name": {
+        "en": [
+          "Miltank"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mooo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r39_tsure_poke_static_miltank_4": {
+      "name": {
+        "en": [
+          "Miltank"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Moo! Moo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R39_003+1": {
+      "en": [
+        "Moomoo Farm\nFresh milk from happy Miltank."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R39_004+1": {
+      "en": [
+        "Moomoo Farm\nPlease close the gate behind you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R39_005+1": {
+      "en": [
+        "Route 39\nOlivine City is to the south."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

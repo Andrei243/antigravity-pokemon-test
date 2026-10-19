@@ -148,7 +148,7 @@ public class TextTests
         ["Overworld/FieldMoveRules.cs"] = new[]
         {
             "Cut", "Fly", "Surf", "Strength", "Defog", "Rock Smash", "Waterfall", "Rock Climb", "Flash", "Teleport", "Dig", "Sweet Scent",
-            "Milk Drink", "Soft-Boiled"
+            "Milk Drink", "Soft-Boiled", "Whirlpool"
         },
         // The rods' uses in the field as the item table gives them
         ["Overworld/Fishing.cs"] = new[] { "OldRod", "GoodRod", "SuperRod" },

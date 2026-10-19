@@ -1,0 +1,57 @@
+{
+  "people": {
+    "d27r0105_gsgirl1": {
+      "name": {
+        "en": [
+          "Connie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Connie: I came all this way to see the poor Pokémon at the top. You won't get past me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Connie: Go on, then. Be quiet when you get up there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d27r0105_gsgentleman": {
+      "name": {
+        "en": [
+          "Preston"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Preston: A Trainer climbing the lighthouse? Then let me test your resolve."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Preston: Resolve enough, I see."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

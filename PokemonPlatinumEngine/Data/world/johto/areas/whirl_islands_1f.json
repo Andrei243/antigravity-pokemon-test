@@ -1,0 +1,93 @@
+{
+  "key": "whirl_islands_1f",
+  "index": 121,
+  "name": "Whirl Islands",
+  "matrix": 141,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "11",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D40R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Krabby", "level": 22 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Krabby", "level": 22 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Krabby", "level": 24 },
+    { "species": "Krabby", "level": 24 },
+    { "species": "Seel", "level": 22 },
+    { "species": "Seel", "level": 22 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Seel", "level": 24 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Seel", "level": 24 }
+  ],
+  "landRate": 5,
+  "water": [
+    { "species": "Tentacool", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Horsea", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Horsea", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Seadra", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 37, "z": 25, "to": "route_41", "toWarp": 2 },
+    { "x": 51, "z": 22, "to": "whirl_islands_b1f", "toWarp": 5 },
+    { "x": 56, "z": 9, "to": "whirl_islands_b1f", "toWarp": 7 },
+    { "x": 11, "z": 20, "to": "route_41", "toWarp": 0 },
+    { "x": 8, "z": 16, "to": "whirl_islands_b1f", "toWarp": 0 },
+    { "x": 8, "z": 54, "to": "route_41", "toWarp": 1 },
+    { "x": 6, "z": 49, "to": "whirl_islands_b1f", "toWarp": 2 },
+    { "x": 27, "z": 49, "to": "whirl_islands_b1f", "toWarp": 9 },
+    { "x": 52, "z": 49, "to": "whirl_islands_b1f", "toWarp": 12 },
+    { "x": 52, "z": 59, "to": "route_41", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 22, "z": 47, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0101_ULTRA_BALL_2", "item": "Ultra Ball", "script": "std_itemball_d40r0101_ultra_ball_2" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 48, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0101_ULTRA_BALL", "item": "Ultra Ball", "script": "std_itemball_d40r0101_ultra_ball" }
+  ],
+  "signs": [
+    { "x": 47, "z": 44, "type": 2, "script": "std_hiddenitem_d40r0101_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_D40R0101_RARE_CANDY" }
+  ],
+  "triggers": []
+}

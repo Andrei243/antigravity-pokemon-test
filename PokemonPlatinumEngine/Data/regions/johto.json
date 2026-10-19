@@ -16,7 +16,8 @@
     "Strength": "Plain",
     "Surf": "Fog",
     "Fly": "Storm",
-    "Waterfall": "Rising"
+    "Waterfall": "Rising",
+    "Whirlpool": "Glacier"
   },
   "professor": {
     "name": "Prof. Elm",

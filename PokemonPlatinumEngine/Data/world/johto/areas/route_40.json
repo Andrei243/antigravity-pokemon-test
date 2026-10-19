@@ -1,0 +1,71 @@
+{
+  "key": "route_40",
+  "index": 94,
+  "name": "Route 40",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Ocean",
+  "dayMusic": "GS_R_6_34",
+  "nightMusic": "GS_R_6_34",
+  "encounters": "W40",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Corsola", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Corsola", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 237, "z": 266, "to": "route_40_battle_frontier_gatehouse", "toWarp": 0 },
+    { "x": 238, "z": 266, "to": "route_40_battle_frontier_gatehouse", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "w40_gsswimmerm", "looks": "gsswimmerm", "movement": "16", "x": 241, "z": 283, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 7, "script": "TRAINER_SWIMMER_M_SIMON" },
+    { "id": "w40_gsswimmerw", "looks": "gsswimmerw", "movement": "5", "x": 247, "z": 292, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_SWIMMER_F_ELAINE" },
+    { "id": "w40_gsswimmerm_2", "looks": "gsswimmerm", "movement": "7", "x": 239, "z": 305, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_SWIMMER_M_RANDALL" },
+    { "id": "w40_gsswimmerw_2", "looks": "gsswimmerw", "movement": "20", "x": 236, "z": 309, "facing": 3, "rangeX": 11, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_SWIMMER_F_PAULA" },
+    { "id": "w40_gswoman1", "looks": "gswoman1", "movement": "2", "x": 238, "z": 273, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_206", "script": "W40_001+1" },
+    { "id": "w40_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 252, "z": 271, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "W40_007+1" },
+    { "id": "w40_monstarball", "looks": "monstarball", "movement": "0", "x": 252, "z": 300, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_W40_TM88", "item": "TM88", "script": "std_itemball_w40_tm88" }
+  ],
+  "signs": [
+    { "x": 245, "z": 272, "type": 1, "script": "W40_002+1" },
+    { "x": 252, "z": 300, "type": 2, "script": "std_hiddenitem_w40_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_W40_HYPER_POTION" },
+    { "x": 240, "z": 267, "type": 1, "script": "W40_009+1" }
+  ],
+  "triggers": [
+    { "x": 252, "z": 265, "width": 4, "depth": 1, "script": "W40_008+1", "variable": "VAR_UNK_4090", "value": "0" }
+  ]
+}

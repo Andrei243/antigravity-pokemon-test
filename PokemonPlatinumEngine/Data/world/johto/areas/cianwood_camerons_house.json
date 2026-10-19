@@ -1,0 +1,25 @@
+{
+  "key": "cianwood_camerons_house",
+  "index": 234,
+  "name": "Cianwood City",
+  "matrix": 97,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_TANBA",
+  "nightMusic": "GS_C_TANBA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "cianwood", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "t24r0601_fishing_2", "looks": "fishing_2", "movement": "15", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T24R0601_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

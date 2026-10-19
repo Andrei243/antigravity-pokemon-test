@@ -1,0 +1,83 @@
+{
+  "people": {
+    "everywhere_seaman_2": {
+      "name": {
+        "en": [
+          "Kent"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Kent: Up here you can see the whole bay. And down there, your defeat!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Kent: It was my defeat I could see, it turns out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "everywhere_gsman2": {
+      "name": {
+        "en": [
+          "Denis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Denis: My birds love the wind up here. Let's battle in it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Denis: The wind turned against us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "everywhere_gsman2_2": {
+      "name": {
+        "en": [
+          "Theo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Theo: The gulls circle the lighthouse all day. So do I, looking for a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Theo: Time to circle back down."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

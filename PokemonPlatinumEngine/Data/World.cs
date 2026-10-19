@@ -1293,7 +1293,7 @@ public static class WorldMapBuilder
                 return (TileType.LedgeRight, true, null);
             case TileBehavior.Door:
                 return (TileType.Door, true, null);   // opened when a warp is put on it
-            case TileBehavior.River or TileBehavior.Sea or TileBehavior.Waterfall:
+            case TileBehavior.River or TileBehavior.Sea or TileBehavior.Waterfall or TileBehavior.Whirlpool:
                 // A blocked tile of water is a rock standing in it
                 return (TileType.Water, solid, solid && cover == TerrainCover.Boulder ? PropType.Boulder : null);
             case TileBehavior.Ice:

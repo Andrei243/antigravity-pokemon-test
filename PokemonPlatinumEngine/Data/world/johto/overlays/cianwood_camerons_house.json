@@ -1,0 +1,15 @@
+{
+  // Cianwood's photo studio (plan 20 · J8). Its photographs wait for the photo album of a later session; the man of the
+  // house talks
+  "area": "cianwood_camerons_house",
+  "bgmTrack": "johto/cianwood",
+  "people": {
+    "t24r0601_fishing_2": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "My son takes photos of Trainers all over Johto. He's off on his travels again, camera in hand."
+      ]
+    }
+  }
+}

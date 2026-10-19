@@ -1,0 +1,34 @@
+{
+  // The Glitter Lighthouse's fourth floor (plan 20 · J8): two trainers by their own records. The original hides them
+  // behind flags nothing in this game sets, so they always stand here (hiddenBy "")
+  "area": "olivine_lighthouse_4f",
+  "bgmTrack": "johto/lighthouse",
+  // The gap in the floor at the east end (the original's trigger 0, whose script drops the player through it): down onto
+  // the ledge round the third floor, from which the tower's west half is come into and the way up to the top found
+  // The ladder up to the fifth floor is two warps, one behind the other (3, 5 and 3, 4): whoever steps on the first is
+  // already up, so the second (warp 3) is shut and the ladder is the first's alone
+  "locked": [
+    3
+  ],
+  "exits": [
+    { "x": 16, "z": 9, "map": "OlivineLighthouse_Ledge", "toX": 15, "toY": 8, "facing": "Down" }
+  ],
+  "people": {
+    "d27r0105_gsgirl1": {
+      "name": "Connie",
+      "hiddenBy": "",
+      "trainer": {
+        "dialogueBefore": "Lass Connie: I came all this way to see the poor Pokémon at the top. You won't get past me first!",
+        "dialogueAfter": "Lass Connie: Go on, then. Be quiet when you get up there."
+      }
+    },
+    "d27r0105_gsgentleman": {
+      "name": "Preston",
+      "hiddenBy": "",
+      "trainer": {
+        "dialogueBefore": "Gentleman Preston: A Trainer climbing the lighthouse? Then let me test your resolve.",
+        "dialogueAfter": "Gentleman Preston: Resolve enough, I see."
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "key": "olivine_gym",
+  "index": 138,
+  "name": "Olivine City",
+  "matrix": 91,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 27, "to": "olivine", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t26gym0101_gsleader6", "looks": "gsleader6", "movement": "15", "x": 6, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_JASMINE_IN_GYM", "script": "T26GYM0101_000+1" },
+    { "id": "t26gym0101_gsgirl1", "looks": "gsgirl1", "movement": "0", "x": 9, "z": 15, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_OLIVINE_GYM_GIRL", "script": "T26GYM0101_004+1" },
+    { "id": "t26gym0101_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 3, "z": 23, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_OLIVINE_GYM_GENTLEMAN", "script": "T26GYM0101_003+1" },
+    { "id": "t26gym0101_sunglasses", "looks": "sunglasses", "movement": "0", "x": 9, "z": 25, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T26GYM0101_005+1" }
+  ],
+  "signs": [
+    { "x": 4, "z": 25, "type": 0, "script": "T26GYM0101_006+1" },
+    { "x": 8, "z": 25, "type": 0, "script": "T26GYM0101_006+1" }
+  ],
+  "triggers": [
+    { "x": 5, "z": 15, "width": 3, "depth": 1, "script": "T26GYM0101_002+1", "variable": "VAR_UNK_410E", "value": "2" },
+    { "x": 5, "z": 23, "width": 3, "depth": 1, "script": "T26GYM0101_001+1", "variable": "VAR_UNK_410E", "value": "1" }
+  ]
+}

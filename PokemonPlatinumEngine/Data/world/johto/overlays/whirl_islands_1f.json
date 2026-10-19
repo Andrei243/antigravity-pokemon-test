@@ -1,0 +1,6 @@
+{
+  // The Whirl Islands' first floor (plan 20 · J8): HeartGold's caves under the four islands of Route 41, each reached
+  // from the sea through a whirlpool. Nothing lives here but the wild Pokémon and the items the original leaves
+  "area": "whirl_islands_1f",
+  "bgmTrack": "johto/union_cave"
+}

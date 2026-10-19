@@ -1,0 +1,27 @@
+{
+  "key": "route_39_moomoo_farm_house",
+  "index": 214,
+  "name": "Route 39",
+  "matrix": 128,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_6_38",
+  "nightMusic": "GS_R_6_38",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 10, "to": "route_39", "toWarp": 0 },
+    { "x": 1, "z": 8, "to": "route_39_moomoo_farm_stable", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r39r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R39R0101_000+1" },
+    { "id": "r39r0101_middlewoman1_2", "looks": "middlewoman1_2", "movement": "16", "x": 9, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "R39R0101_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

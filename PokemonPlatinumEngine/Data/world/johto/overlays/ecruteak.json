@@ -2,16 +2,14 @@
   // Ecruteak City (plan 20 · J5, part b): HeartGold's map, our words. The old city of the two towers and the dancers,
   // built in dark planks under deep red tile (Heritage). Plan 20 · J7 (scripts/ecruteak.txt): Morty's Gym
   // (warp 7) is open, the red-haired boy runs into the player at the Dance Theater's door once the Fog Badge is won
-  // (trigger 0), and the old man by the Burned Tower tells of the three Pokémon once they have fled it. The gates to
-  // Routes 38 and 42 (warps 8 to 11) wait for their routes
+  // (trigger 0), and the old man by the Burned Tower tells of the three Pokémon once they have fled it. The gate to
+  // Route 38 (warps 8 and 9) is open since plan 20 · J8; the gate to Route 42 (warps 10 and 11) waits for its route
   "area": "ecruteak",
   "bgmTrack": "johto/ecruteak",
   "trees": "Round",
   "architecture": "Heritage",
   "triggers": [ { "trigger": 0, "script": "RivalBumps" } ],
   "locked": [
-    8,
-    9,
     10,
     11
   ],

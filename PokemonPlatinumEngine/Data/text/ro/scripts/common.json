@@ -541,6 +541,24 @@
       ]
     }
   ],
+  "Whirlpool": [
+    {
+      "en": [
+        "The water is spinning hard. Use Whirlpool to cross it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The water spins round and round. It's too strong to cross."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "UseDefog": [
     {
       "en": [

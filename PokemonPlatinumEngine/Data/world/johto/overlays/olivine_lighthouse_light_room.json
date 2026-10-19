@@ -1,0 +1,21 @@
+{
+  // The Glitter Lighthouse's light room (plan 20 · J8): Amphy, the Ampharos whose light guides the ships, lies sick by
+  // the lamp. Jasmine at its side, her plea and the medicine from Cianwood are plan 20 · J9's; the lift (warp 1) goes
+  // down with that chapter
+  "area": "olivine_lighthouse_light_room",
+  "bgmTrack": "johto/lighthouse",
+  "locked": [
+    1
+  ],
+  "people": {
+    "d27r0107_tsure_poke_static_ampharos": {
+      "name": "Amphy",
+      "npcType": "Pokemon",
+      "species": "Ampharos",
+      "still": true,
+      "dialog": [
+        "Amphy... It breathes weakly, and its tail's light barely glows."
+      ]
+    }
+  }
+}

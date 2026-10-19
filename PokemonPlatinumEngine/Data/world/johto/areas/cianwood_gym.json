@@ -1,0 +1,33 @@
+{
+  "key": "cianwood_gym",
+  "index": 139,
+  "name": "Cianwood City",
+  "matrix": 92,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building2",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 19, "to": "cianwood", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t24gym0101_gsleader5", "looks": "gsleader5", "movement": "15", "x": 13, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CIANWOOD_GYM_CHUCK", "script": "T24GYM0101_000+1" },
+    { "id": "t24gym0101_gsfighter", "looks": "gsfighter", "movement": "20", "x": 6, "z": 9, "facing": 2, "rangeX": 3, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_BLACK_BELT_YOSHI" },
+    { "id": "t24gym0101_gsfighter_2", "looks": "gsfighter", "movement": "17", "x": 18, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_BLACK_BELT_LAO" },
+    { "id": "t24gym0101_gsfighter_3", "looks": "gsfighter", "movement": "16", "x": 7, "z": 5, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BLACK_BELT_NOB" },
+    { "id": "t24gym0101_gsfighter_4", "looks": "gsfighter", "movement": "20", "x": 15, "z": 3, "facing": 3, "rangeX": 4, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_BLACK_BELT_LUNG" }
+  ],
+  "signs": [
+    { "x": 10, "z": 2, "type": 0, "script": "T24GYM0101_002+1" },
+    { "x": 11, "z": 18, "type": 0, "script": "T24GYM0101_003+1" },
+    { "x": 15, "z": 18, "type": 0, "script": "T24GYM0101_003+1" }
+  ],
+  "triggers": []
+}

@@ -11,6 +11,17 @@ partial class Harness
     {
         // JOHTO_FROM=well plays only the second chapter (plan 20 · J7)
         if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "well") { JohtoScenes(second: true); engine.NewGameRegion = "Sinnoh"; return; }
+        // JOHTO_FROM=west shoots only the west and the sea (plan 20 · J8), in a new game of its own
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "west")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            JohtoWestShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         engine.NewGameRegion = "Johto";
         engine.StartNewGame();
         game.State = GameState.Overworld;
@@ -111,6 +122,8 @@ partial class Harness
         // And the centre plan 20 · J5 opened: the Ruins of Alph, Union Cave, Route 33 and Azalea Town
         JohtoCentreShots();
         JohtoNorthShots();
+        // And the west and the sea plan 20 · J8 opened: Routes 38 to 41, Olivine, its lighthouse, Cianwood and the Whirl Islands
+        JohtoWestShots();
         // And last the second chapter played by its own scripts, in a new game of its own (plan 20 · J7: jst30 to jst59)
         JohtoScenes(second: true);
         engine.NewGameRegion = "Sinnoh";

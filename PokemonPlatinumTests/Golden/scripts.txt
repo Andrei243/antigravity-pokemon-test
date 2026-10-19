@@ -8830,6 +8830,12 @@ way -
   > Bibarel used Waterfall!
   * usemove Waterfall Bibarel on Tree
   * climb nowhere
+=== common.UseWhirlpool
+from an obstacle, with every field move and every badge
+way -
+  > Bibarel used Whirlpool!
+  * usemove Whirlpool Bibarel on Tree
+  * climb nowhere
 === common.Water
 from an obstacle, with every field move and every badge
 way 0
@@ -8853,6 +8859,10 @@ way 1, from answer 1
 from an obstacle, with no field move and no badge
 way -
   > A wall of water comes crashing down.
+=== common.Whirlpool
+from a trainer with lines of their own
+way -
+  > The water spins round and round. It's too strong to cross.
 === dewford_town.Briney
 from Mr. Briney at 72,371 of Hoenn
 way 0

@@ -1,0 +1,57 @@
+{
+  "people": {
+    "d27r0106_seaman_2": {
+      "name": {
+        "en": [
+          "Terrell"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Terrell: Nearly at the top! But first you'll have to beat a sailor."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Terrell: Go on up. Mind the poor thing's rest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d27r0106_seaman_2_2": {
+      "name": {
+        "en": [
+          "Roberto"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sailor Roberto: The lamp's been dim for days. We sailors are worried sick!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sailor Roberto: Worried, and beaten too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

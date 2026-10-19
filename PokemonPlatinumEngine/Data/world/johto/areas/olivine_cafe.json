@@ -1,0 +1,30 @@
+{
+  "key": "olivine_cafe",
+  "index": 231,
+  "name": "Olivine City",
+  "matrix": 136,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_ASAGI",
+  "nightMusic": "GS_C_ASAGI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 10, "to": "olivine", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "t26r0701_fishing_2", "looks": "fishing_2", "movement": "3", "x": 11, "z": 4, "facing": 2, "rangeX": 0, "rangeZ": 2, "script": "T26R0701_002+1" },
+    { "id": "t26r0701_seaman_2", "looks": "seaman_2", "movement": "0", "x": 2, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "T26R0701_000+1" },
+    { "id": "t26r0701_seaman_2_2", "looks": "seaman_2", "movement": "0", "x": 3, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T26R0701_001+1" },
+    { "id": "t26r0701_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 6, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T26R0701_003+1" },
+    { "id": "t26r0701_gsleader6", "looks": "gsleader6", "movement": "0", "x": 9, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_2CB", "script": "T26R0701_005+1" },
+    { "id": "t26r0701_seaman_2_3", "looks": "seaman_2", "movement": "0", "x": 11, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T26R0701_006+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

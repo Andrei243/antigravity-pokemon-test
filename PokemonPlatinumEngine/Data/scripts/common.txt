@@ -813,6 +813,26 @@ script UseWaterfall
   end
 
 
+# A whirlpool faced from the water (HeartGold's, plan 20 · J8). Whirlpool carries the player across it, with the region's
+# Badge for it (movebadge: the Glacier Badge in Johto).
+script Whirlpool
+  if not knows "Whirlpool" goto Cannot
+  if not movebadge "Whirlpool" goto Cannot
+  ask "The water is spinning hard. Use Whirlpool to cross it?"
+  if no end
+  usemove "Whirlpool"
+  climb
+  end
+label Cannot
+  text "The water spins round and round. It's too strong to cross."
+  end
+
+script UseWhirlpool
+  usemove "Whirlpool"
+  climb
+  end
+
+
 # Light in a dark cave, until the player leaves the caves.
 script UseFlash
   usemove "Flash"

@@ -1,0 +1,72 @@
+{
+  "key": "whirl_islands_b1f",
+  "index": 242,
+  "name": "Whirl Islands",
+  "matrix": 142,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "11",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D40R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Krabby", "level": 22 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Krabby", "level": 22 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Krabby", "level": 24 },
+    { "species": "Krabby", "level": 24 },
+    { "species": "Seel", "level": 22 },
+    { "species": "Seel", "level": 22 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Seel", "level": 24 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Seel", "level": 24 }
+  ],
+  "landRate": 5,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 23, "z": 11, "to": "whirl_islands_1f", "toWarp": 4 },
+    { "x": 23, "z": 10, "to": "whirl_islands_1f", "toWarp": 4 },
+    { "x": 29, "z": 54, "to": "whirl_islands_1f", "toWarp": 6 },
+    { "x": 29, "z": 53, "to": "whirl_islands_1f", "toWarp": 6 },
+    { "x": 31, "z": 49, "to": "whirl_islands_b2f", "toWarp": 0 },
+    { "x": 64, "z": 16, "to": "whirl_islands_1f", "toWarp": 1 },
+    { "x": 64, "z": 15, "to": "whirl_islands_1f", "toWarp": 1 },
+    { "x": 73, "z": 8, "to": "whirl_islands_1f", "toWarp": 2 },
+    { "x": 73, "z": 7, "to": "whirl_islands_1f", "toWarp": 2 },
+    { "x": 46, "z": 54, "to": "whirl_islands_1f", "toWarp": 7 },
+    { "x": 46, "z": 53, "to": "whirl_islands_1f", "toWarp": 7 },
+    { "x": 54, "z": 43, "to": "whirl_islands_b2f", "toWarp": 2 },
+    { "x": 66, "z": 51, "to": "whirl_islands_1f", "toWarp": 8 },
+    { "x": 66, "z": 50, "to": "whirl_islands_1f", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "d40r0102_rock", "looks": "rock", "movement": "0", "x": 50, "z": 48, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d40r0102_monstarball", "looks": "monstarball", "movement": "0", "x": 42, "z": 49, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0102_ESCAPE_ROPE", "item": "Escape Rope", "script": "std_itemball_d40r0102_escape_rope" },
+    { "id": "d40r0102_monstarball_2", "looks": "monstarball", "movement": "0", "x": 19, "z": 36, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0102_CARBOS", "item": "Carbos", "script": "std_itemball_d40r0102_carbos" },
+    { "id": "d40r0102_monstarball_3", "looks": "monstarball", "movement": "0", "x": 26, "z": 27, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0102_FULL_RESTORE", "item": "Full Restore", "script": "std_itemball_d40r0102_full_restore" },
+    { "id": "d40r0102_monstarball_4", "looks": "monstarball", "movement": "0", "x": 41, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0102_NUGGET", "item": "Nugget", "script": "std_itemball_d40r0102_nugget" },
+    { "id": "d40r0102_monstarball_5", "looks": "monstarball", "movement": "0", "x": 70, "z": 39, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D40R0102_CALCIUM", "item": "Calcium", "script": "std_itemball_d40r0102_calcium" }
+  ],
+  "signs": [
+    { "x": 63, "z": 45, "type": 2, "script": "std_hiddenitem_d40r0102_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D40R0102_ULTRA_BALL" },
+    { "x": 67, "z": 8, "type": 2, "script": "std_hiddenitem_d40r0102_super_repel", "item": "Super Repel", "flag": "FLAG_HIDDEN_ITEM_D40R0102_SUPER_REPEL" },
+    { "x": 28, "z": 10, "type": 2, "script": "std_hiddenitem_d40r0102_pearl", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_D40R0102_PEARL" },
+    { "x": 72, "z": 20, "type": 2, "script": "std_hiddenitem_d40r0102_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D40R0102_REVIVE" }
+  ],
+  "triggers": []
+}

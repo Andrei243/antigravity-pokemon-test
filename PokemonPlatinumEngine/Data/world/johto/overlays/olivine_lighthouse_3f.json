@@ -1,0 +1,29 @@
+{
+  // The Glitter Lighthouse's third floor (plan 20 · J8): three trainers by their own records; its open side (warp 5)
+  // leads out onto the ledge round the tower
+  "area": "olivine_lighthouse_3f",
+  "bgmTrack": "johto/lighthouse",
+  "people": {
+    "everywhere_seaman_2": {
+      "name": "Kent",
+      "trainer": {
+        "dialogueBefore": "Sailor Kent: Up here you can see the whole bay. And down there, your defeat!",
+        "dialogueAfter": "Sailor Kent: It was my defeat I could see, it turns out."
+      }
+    },
+    "everywhere_gsman2": {
+      "name": "Denis",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Denis: My birds love the wind up here. Let's battle in it!",
+        "dialogueAfter": "Bird Keeper Denis: The wind turned against us."
+      }
+    },
+    "everywhere_gsman2_2": {
+      "name": "Theo",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Theo: The gulls circle the lighthouse all day. So do I, looking for a battle!",
+        "dialogueAfter": "Bird Keeper Theo: Time to circle back down."
+      }
+    }
+  }
+}

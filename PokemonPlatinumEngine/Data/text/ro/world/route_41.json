@@ -1,0 +1,265 @@
+{
+  "people": {
+    "w41_gsswimmerm": {
+      "name": {
+        "en": [
+          "Charlie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Charlie: Out here it's just me, the sea and my Pokémon. Oh, and you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Charlie: The sea's bigger than me, and so are you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w41_gsswimmerm_2": {
+      "name": {
+        "en": [
+          "George"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer George: Don't get too close to the whirlpools! Get close to me for a battle instead."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer George: I should have kept my distance."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w41_gsswimmerm_3": {
+      "name": {
+        "en": [
+          "Berke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Berke: I've swum round the islands twice today. Ready for round three?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Berke: I'm too tired for a fourth."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w41_gsswimmerm_4": {
+      "name": {
+        "en": [
+          "Matthew"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Matthew: My Pokémon and I can hold our breath for minutes. Can you outlast us?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Matthew: Out of breath, and out of luck."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w41_gsswimmerm_5": {
+      "name": {
+        "en": [
+          "Ronald"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Ronald: Something lives deep under those islands. Something huge. Battle me while I'm brave!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Ronald: My courage has sunk."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w41_gsswimmerw": {
+      "name": {
+        "en": [
+          "Kaylee"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kaylee: The water's warm today. Let's warm it up even more!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kaylee: Well, that cooled me off."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w41_gsswimmerw_2": {
+      "name": {
+        "en": [
+          "Susie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Susie: You can see Cianwood from here on a clear day. You can see a battle, too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Susie: The view's still nice."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w41_gsswimmerw_3": {
+      "name": {
+        "en": [
+          "Denise"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Denise: I swim faster than a Seel! Want to see what else I can do?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Denise: Not faster than you, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w41_gsswimmerw_4": {
+      "name": {
+        "en": [
+          "Kara"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Kara: Hold it! Nobody passes the islands without a battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Kara: Go on, then. Mind the whirlpools."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "w41_gsswimmerw_5": {
+      "name": {
+        "en": [
+          "Wendy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Wendy: My Pokémon glow in the dark water at night. Pretty, but tough!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Wendy: Pretty, and beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

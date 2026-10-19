@@ -1,0 +1,35 @@
+# Olivine City (and its rooms): the port of the lighthouse and the ship, a bright clarinet in D major over a plucked
+# guitar, a held string chord and a steady bass, like a breeze off the harbour. Original composition for this game
+# (plan 20 · J8).
+title Olivine City
+tempo 104
+meter 4/4
+reverb 0.34
+nighttempo 0.93
+
+track lead clarinet night=flute vol=0.72 pan=0 rev=0.34
+  L o5 f+4 a8 f+8 d2 | o5 g4 b8 g8 d2 | o5 e4 a8 e8 c+2 | o5 d4 f+8 a8 o6 d2 |
+  o5 d4 f+8 b8 f+2 | o5 g4 b8 o6 d8 o5 b2 | o5 e4 g8 b8 g2 | o5 a4 c+8 e8 a2 |
+  o5 a4 f+8 d8 f+2 | o5 f+4 a8 c+8 f+2 | o5 g4 d8 g8 b2 | o5 a4 f+8 a8 o6 d2 |
+  o5 b4 g8 e8 g2 | o5 c+4 e8 a8 e2 | o5 b4 g4 c+4 e4 | o5 d2. r4 |
+
+track guitar harp night=pizzicato vol=0.4 pan=-0.25 rev=0.3
+  L o4 d4 f+4 a4 f+4 | o4 g4 b4 o5 d4 o4 b4 | o4 a4 o5 c+4 e4 c+4 | o4 d4 f+4 a4 f+4 |
+  o4 b4 o5 d4 f+4 d4 | o4 g4 b4 o5 d4 o4 b4 | o4 e4 g4 b4 g4 | o4 a4 o5 c+4 e4 c+4 |
+  o4 d4 f+4 a4 f+4 | o4 f+4 a4 o5 c+4 o4 a4 | o4 g4 b4 o5 d4 o4 b4 | o4 d4 f+4 a4 f+4 |
+  o4 e4 g4 b4 g4 | o4 a4 o5 c+4 e4 c+4 | o4 g4 b4 a4 o5 c+4 | o4 d4 f+4 a4 f+4 |
+
+track pad strings night=pad vol=0.24 pan=0.25 rev=0.46
+  L o4 (d f+ a)1 | (d g b)1 | (c+ e a)1 | (d f+ a)1 |
+  (d f+ b)1 | (d g b)1 | (e g b)1 | (c+ e a)1 |
+  (d f+ a)1 | (c+ f+ a)1 | (d g b)1 | (d f+ a)1 |
+  (e g b)1 | (c+ e a)1 | (d g b)2 (c+ e a)2 | (d f+ a)1 |
+
+track bass contrabass vol=0.5 rev=0.12
+  L o2 d2 a2 | o2 g2 o3 d2 | o2 a2 o3 e2 | o2 d2 a2 |
+  o2 b2 o3 f+2 | o2 g2 o3 d2 | o2 e2 b2 | o2 a2 o3 e2 |
+  o2 d2 a2 | o2 f+2 o3 c+2 | o2 g2 o3 d2 | o2 d2 a2 |
+  o2 e2 b2 | o2 a2 o3 e2 | o2 g2 a2 | o2 d1 |
+
+track drums kit vol=0.2 pan=0.1 rev=0.16
+  v54 L [ k4 v32 k8 k8 v48 k4 v32 k4 v54 | ]16

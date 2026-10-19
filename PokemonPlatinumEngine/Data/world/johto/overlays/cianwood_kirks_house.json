@@ -1,0 +1,14 @@
+{
+  // A house in Cianwood City (plan 20 · J8). The original's trade waits for a later session; the man talks
+  "area": "cianwood_kirks_house",
+  "bgmTrack": "johto/cianwood",
+  "people": {
+    "t24r0201_gsman2": {
+      "name": "Kirk",
+      "still": true,
+      "dialog": [
+        "I came to Cianwood to train under Chuck. Three years later, I still can't stand under his waterfall for long."
+      ]
+    }
+  }
+}

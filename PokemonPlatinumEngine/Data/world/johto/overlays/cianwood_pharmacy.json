@@ -1,0 +1,16 @@
+{
+  // Cianwood's pharmacy (plan 20 · J8), the oldest in Johto. Its medicine for the lighthouse's Ampharos is plan 20 ·
+  // J9's; until then the pharmacist says what it is for
+  "area": "cianwood_pharmacy",
+  "bgmTrack": "johto/cianwood",
+  "people": {
+    "t24r0501_sunglasses": {
+      "name": "Pharmacist",
+      "still": true,
+      "dialog": [
+        "Welcome to Cianwood's pharmacy, the oldest in Johto. We make a medicine here that can cure almost any Pokémon.",
+        "If you ever know of a Pokémon that's very sick, come and tell me."
+      ]
+    }
+  }
+}

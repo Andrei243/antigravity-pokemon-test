@@ -1,0 +1,14 @@
+{
+  // A house in the north of Olivine City (plan 20 · J8)
+  "area": "olivine_north_house",
+  "bgmTrack": "johto/olivine",
+  "people": {
+    "t26r0301_fishing_2": {
+      "name": "Fisherman",
+      "still": true,
+      "dialog": [
+        "I used to fish the whirlpools off the islands west of here. Wild water, that. You need a strong Pokémon to cross it."
+      ]
+    }
+  }
+}

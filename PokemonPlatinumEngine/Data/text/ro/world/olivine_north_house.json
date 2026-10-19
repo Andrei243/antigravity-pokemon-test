@@ -1,0 +1,23 @@
+{
+  "people": {
+    "t26r0301_fishing_2": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I used to fish the whirlpools off the islands west of here. Wild water, that. You need a strong Pokémon to cross it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,26 @@
+{
+  // A house in the middle of Cianwood City (plan 20 · J8): a mother and her two girls
+  "area": "cianwood_central_house",
+  "bgmTrack": "johto/cianwood",
+  "people": {
+    "t24r0701_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "My husband's a fisherman. When the sea's rough round the islands, he stays home and mends his nets."
+      ]
+    },
+    "t24r0701_gsbabygirl1": {
+      "name": "Little Girl",
+      "dialog": [
+        "There's a big silver bird under the sea! Grandpa saw it. He really did!"
+      ]
+    },
+    "t24r0701_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "Grandpa's always telling stories about the Whirl Islands. I don't believe half of them."
+      ]
+    }
+  }
+}

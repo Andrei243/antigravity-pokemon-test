@@ -1,0 +1,50 @@
+{
+  // Olivine City (plan 20 · J8): HeartGold's map, our words. The port of the Glitter Lighthouse and the S.S. Aqua,
+  // built in white plaster under red roofs (Seaport). The red-haired boy at the Gym's door and his trigger, Jasmine
+  // and the rest of the third chapter are plan 20 · J9's; the photographer and the man the original keeps by the
+  // western shore wait for theirs
+  "area": "olivine",
+  "bgmTrack": "johto/olivine",
+  "trees": "Round",
+  "architecture": "Seaport",
+  "people": {
+    "t26_seaman_2": {
+      "name": "Sailor",
+      "dialog": [
+        "The lighthouse keeps every ship off the rocks. Its light comes from a Pokémon, you know."
+      ]
+    },
+    "t26_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "Jasmine's the Gym Leader here. She's gentle, but her Pokémon are hard as steel!"
+      ]
+    },
+    "t26_seaman_2_2": {
+      "name": "Sailor",
+      "dialog": [
+        "Sailors come to Olivine from all over. Try the café: it's where we all eat."
+      ]
+    },
+    "t26_seaman_2_3": {
+      "name": "Sailor",
+      "still": true,
+      "dialog": [
+        "We'll be setting sail once the ship's ready. Not long now, my love."
+      ]
+    },
+    "t26_gswoman2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "Promise you'll write every day while you're at sea!"
+      ]
+    }
+  },
+  "signs": {
+    "T26_004+1": "Olivine City Pokémon Gym\nLeader: Jasmine\nThe steel-clad defence girl.",
+    "T26_005+1": "Olivine City\nThe port closest to foreign lands.",
+    "T26_006+1": "Olivine Port\nThe S.S. Aqua sails from here.",
+    "T26_007+1": "Glitter Lighthouse\nIts beam guides the ships home at night."
+  }
+}

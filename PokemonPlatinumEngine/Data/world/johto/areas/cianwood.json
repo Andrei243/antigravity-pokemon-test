@@ -1,0 +1,92 @@
+{
+  "key": "cianwood",
+  "index": 75,
+  "name": "Cianwood City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_C_TANBA",
+  "nightMusic": "GS_C_TANBA",
+  "encounters": "T24",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Tentacool", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 20 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 },
+    { "species": "Krabby", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 },
+    { "species": "Corsola", "level": 20, "maxLevel": 20 },
+    { "species": "Krabby", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Corsola", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 },
+    { "species": "Kingler", "level": 40, "maxLevel": 40 },
+    { "species": "Krabby", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "rockSmash": [
+    { "species": "Krabby", "level": 15, "maxLevel": 24 },
+    { "species": "Shuckle", "level": 23, "maxLevel": 28 }
+  ],
+  "rockSmashRate": 30,
+  "warps": [
+    { "x": 172, "z": 357, "to": "cianwood_gym", "toWarp": 0 },
+    { "x": 187, "z": 369, "to": "cianwood_pokecenter_1f", "toWarp": 0 },
+    { "x": 179, "z": 370, "to": "cianwood_pharmacy", "toWarp": 0 },
+    { "x": 170, "z": 367, "to": "cianwood_kirks_house", "toWarp": 0 },
+    { "x": 181, "z": 362, "to": "cianwood_central_house", "toWarp": 0 },
+    { "x": 181, "z": 354, "to": "cianwood_camerons_house", "toWarp": 0 },
+    { "x": 171, "z": 347, "to": "cliff_edge_gate", "toWarp": 0 },
+    { "x": 167, "z": 335, "to": "cianwood_north_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t24_middlewoman1_2", "looks": "middlewoman1_2", "movement": "2", "x": 173, "z": 360, "facing": 1, "rangeX": 0, "rangeZ": 1, "script": "T24_000+1" },
+    { "id": "t24_gsboy1", "looks": "gsboy1", "movement": "4", "x": 178, "z": 352, "facing": 3, "rangeX": 0, "rangeZ": 1, "script": "T24_012+1" },
+    { "id": "t24_gsmiddleman1", "looks": "gsmiddleman1", "movement": "3", "x": 177, "z": 346, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "T24_013+1" },
+    { "id": "t24_gsgirl1", "looks": "gsgirl1", "movement": "5", "x": 173, "z": 371, "facing": 3, "rangeX": 1, "rangeZ": 0, "script": "T24_014+1" },
+    { "id": "t24_middlewoman1_2_2", "looks": "middlewoman1_2", "movement": "3", "x": 181, "z": 373, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "T24_015+1" },
+    { "id": "t24_tsure_poke_static_suicune", "looks": "follower_mon_static_suicune", "movement": "15", "x": 174, "z": 330, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CIANWOOD_SUICUNE", "script": "T24_001+1" },
+    { "id": "t24_minaki", "looks": "minaki", "movement": "14", "x": 176, "z": 343, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CIANWOOD_EUSINE", "script": "T24_003+1" },
+    { "id": "t24_breakrock", "looks": "breakrock", "movement": "0", "x": 170, "z": 333, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "t24_breakrock_2", "looks": "breakrock", "movement": "0", "x": 169, "z": 341, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "t24_breakrock_3", "looks": "breakrock", "movement": "0", "x": 171, "z": 335, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_rock_smash" },
+    { "id": "t24_breakrock_4", "looks": "breakrock", "movement": "0", "x": 166, "z": 338, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_014", "script": "std_field_rock_smash" },
+    { "id": "t24_breakrock_5", "looks": "breakrock", "movement": "0", "x": 170, "z": 342, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_015", "script": "std_field_rock_smash" }
+  ],
+  "signs": [
+    { "x": 176, "z": 362, "type": 1, "script": "T24_008+1" },
+    { "x": 175, "z": 358, "type": 1, "script": "T24_009+1" },
+    { "x": 182, "z": 370, "type": 1, "script": "T24_010+1" },
+    { "x": 179, "z": 354, "type": 1, "script": "T24_011+1" },
+    { "x": 172, "z": 344, "type": 1, "script": "T24_004+1" },
+    { "x": 170, "z": 332, "type": 2, "script": "std_hiddenitem_t24_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_T24_REVIVE" },
+    { "x": 189, "z": 357, "type": 2, "script": "std_hiddenitem_t24_stardust", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_T24_STARDUST" },
+    { "x": 185, "z": 354, "type": 0, "script": "T24_007+1" }
+  ],
+  "triggers": [
+    { "x": 176, "z": 334, "width": 1, "depth": 1, "script": "T24_002+1", "variable": "VAR_UNK_4076", "value": "1" }
+  ]
+}

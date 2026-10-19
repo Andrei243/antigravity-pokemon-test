@@ -1,0 +1,34 @@
+{
+  // The Olivine Café (plan 20 · J8), where the sailors eat. The photographer and Jasmine's visit wait for their chapters
+  "area": "olivine_cafe",
+  "bgmTrack": "johto/olivine",
+  "people": {
+    "t26r0701_fishing_2": {
+      "name": "Fisherman",
+      "dialog": [
+        "Nothing beats a hot meal after a day on the water. The fish stew here is the best on the coast."
+      ]
+    },
+    "t26r0701_seaman_2": {
+      "name": "Sailor",
+      "still": true,
+      "dialog": [
+        "We eat a lot, us sailors. Hauling ropes all day works up an appetite!"
+      ]
+    },
+    "t26r0701_seaman_2_2": {
+      "name": "Sailor",
+      "still": true,
+      "dialog": [
+        "On the last voyage a storm tossed us for three days. I could eat a Wailord!"
+      ]
+    },
+    "t26r0701_seaman_2_3": {
+      "name": "Sailor",
+      "still": true,
+      "dialog": [
+        "This café's been here longer than the lighthouse, they say. Don't believe it myself."
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "key": "olivine_lighthouse_light_room",
+  "index": 225,
+  "name": "Lighthouse",
+  "matrix": 131,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_TO_TOUDAI",
+  "nightMusic": "GS_TO_TOUDAI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 10, "to": "olivine_lighthouse_5f", "toWarp": 1 },
+    { "x": 8, "z": 4, "to": "olivine_lighthouse_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d27r0107_babyboy1_8", "looks": "babyboy1_8", "movement": "0", "x": 8, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1D8", "script": "D27R0107_002+1" },
+    { "id": "d27r0107_gsleader6", "looks": "gsleader6", "movement": "0", "x": 7, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1D7", "script": "D27R0107_000+1" },
+    { "id": "d27r0107_tsure_poke_static_ampharos", "looks": "follower_mon_static_ampharos", "movement": "0", "x": 8, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D27R0107_001+1" },
+    { "id": "d27r0107_monstarball", "looks": "monstarball", "movement": "0", "x": 15, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D27R0107_SUPER_POTION", "item": "Super Potion", "script": "std_itemball_d27r0107_super_potion" },
+    { "id": "d27r0107_stop", "looks": "stop", "movement": "0", "x": 8, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1D8", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

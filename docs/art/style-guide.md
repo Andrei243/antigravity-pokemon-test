@@ -163,6 +163,16 @@ Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes 
 | Marks | a glint `196,218,232`, a short stroke or a ring two texels across |
 | Reflection | whoever stands in one is mirrored in it: their sprite upside down on the ground under their feet, as long as it looks tall (its height over the sine of the camera's pitch), tinted `150,170,196`, fading from 45 % at the feet to nothing, and cut off where the puddle ends to the south |
 
+**Whirlpools** (plan 20 · J8; `PropType.Whirlpool`, placed by HeartGold's model `uzushio` over a block of three tiles by three of the whirlpool behaviour) are a sheet lying two texels over the water, its own pixel art in four frames, six a second: the water itself still shows round it.
+
+| Element | Value |
+|---|---|
+| Size | a disc 92 texels across, centred on the block of three tiles; nothing outside the disc is drawn |
+| Rings | three arms of a spiral from the rim to the eye, light `150,206,246` on the deep band `58,118,190`, each arm 3 texels wide, with a dark line `36,84,160` on its inner side |
+| Eye | a dark hole `28,62,128`, 14 texels across, with a one-texel rim of foam `236,246,255` |
+| Foam | broken dashes of foam on the outer rim, 4–8 texels long |
+| Motion | the arms turn a twelfth of a turn a frame, in whole texels; the rim's foam stays where it is |
+
 ### Grass, flowers, trees, ledges and rocks
 
 - **Tall grass**: two rows of clumps per tile, each clump five blades in four flat shades (`36,110,62`, `62,150,78`, `106,196,98`, tips `170,232,130`), 16 texels tall, the rows half a clump out of step. They sway at the top and lean away from anyone walking through.
@@ -247,6 +257,8 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Azalea (Woodland) | logs | gable, dark brown `104,72,52` | a chimney: the old town of charcoal smoke and Slowpoke at the forest's edge (plan 20 · J5) |
 | Goldenrod (Boulevard) | brick | hip, gold `206,164,64` | shutters: the great city of the Radio Tower and the Department Store, its flats in blocks (plan 20 · J5, part b) |
 | Ecruteak (Heritage) | dark planks | hip, deep red-brown `122,58,48` | stone lanterns in the streets, fenced in wood: the old city of the two towers and the dancers (plan 20 · J5, part b) |
+| Olivine (Seaport) | white plaster | gable, red `184,66,56` | shutters: the port of the lighthouse and the ship, yachts in its harbour (plan 20 · J8) |
+| Cianwood (Cliffside) | pale stone | gable, sea green `64,132,112` | a chimney: the island town of the pharmacy and the fighters, fish drying on its quay (plan 20 · J8) |
 | Littleroot (Sapling) | boards | gable, leaf green `112,170,76` | a chimney, flower boxes: the little town where the grass starts, fenced in wood (plan 21 · H1) |
 | Oldale (Meadow) | white clapboard | hip, sky blue `92,150,206` | shutters: the crossroads town between the routes, fenced in wood (plan 21 · H1) |
 | Petalburg (Parkside) | plaster over a stone base | hip, ochre `196,150,72` | a chimney: the quiet city of the Gym by the pond (plan 21 · H1) |

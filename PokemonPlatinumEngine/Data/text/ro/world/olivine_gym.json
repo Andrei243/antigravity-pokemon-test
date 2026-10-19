@@ -1,0 +1,34 @@
+{
+  "people": {
+    "t26gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hey there, challenger! Sorry, the Leader's out. Jasmine's up at the lighthouse, looking after a sick Pokémon.",
+          "She won't battle anyone until it's well again. That's just how kind she is."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T26GYM0101_006+1": {
+      "en": [
+        "Olivine City Pokémon Gym\nLeader: Jasmine"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

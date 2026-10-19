@@ -1,0 +1,40 @@
+{
+  // The Cianwood Gym (plan 20 · J8), HeartGold's room: four black belts by their own records. Chuck under his waterfall,
+  // his battle and the Storm Badge are plan 20 · J9's; until then he is off training on the island's far side
+  "area": "cianwood_gym",
+  "bgmTrack": "johto/gym",
+  "people": {
+    "t24gym0101_gsfighter": {
+      "name": "Yoshi",
+      "trainer": {
+        "dialogueBefore": "Black Belt Yoshi: Hwaah! The master is training, so I'll test you in his place!",
+        "dialogueAfter": "Black Belt Yoshi: My fists still have much to learn."
+      }
+    },
+    "t24gym0101_gsfighter_2": {
+      "name": "Lao",
+      "trainer": {
+        "dialogueBefore": "Black Belt Lao: Feel the spirit of the Cianwood Gym!",
+        "dialogueAfter": "Black Belt Lao: My spirit is bruised."
+      }
+    },
+    "t24gym0101_gsfighter_3": {
+      "name": "Nob",
+      "trainer": {
+        "dialogueBefore": "Black Belt Nob: One punch, one battle. That's our way!",
+        "dialogueAfter": "Black Belt Nob: It took more than one punch."
+      }
+    },
+    "t24gym0101_gsfighter_4": {
+      "name": "Lung",
+      "trainer": {
+        "dialogueBefore": "Black Belt Lung: Before you face the master, you face me!",
+        "dialogueAfter": "Black Belt Lung: The master will be pleased with you."
+      }
+    }
+  },
+  "signs": {
+    "T24GYM0101_002+1": "The waterfall where the master trains, roaring day and night.",
+    "T24GYM0101_003+1": "Cianwood City Pokémon Gym\nLeader: Chuck"
+  }
+}
