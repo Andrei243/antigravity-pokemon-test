@@ -106,14 +106,28 @@ public static class GbaImport
             var owners = new int[matrix.ChunksWide, matrix.ChunksHigh];
             for (int cy = 0; cy < matrix.ChunksHigh; cy++)
                 for (int cx = 0; cx < matrix.ChunksWide; cx++) owners[cx, cy] = GbaWorld.Owner(matrix, cx, cy);
+            // An open area that owns no chunk of its own (One Island's town, a corner of a chunk Treasure Beach owns: plan
+            // 19 · K7) has the chunks its tiles lie in for its own
+            var lodged = new bool[matrix.ChunksWide, matrix.ChunksHigh];
+            if (open != null)
+            {
+                var owning = new HashSet<int>();
+                foreach (int o in owners) if (o >= 0) owning.Add(o);
+                for (int a = 0; a < matrix.Maps.Count; a++)
+                {
+                    if (owning.Contains(a) || !open.Contains(matrix.Maps[a].Map.Key)) continue;
+                    for (int i = 0; i < matrix.Area.Length; i++)
+                        if (matrix.Area[i] == a) lodged[i % matrix.Width / GbaMatrix.T, i / matrix.Width / GbaMatrix.T] = true;
+                }
+            }
             // The chunks in view of an open area: its own and the ring round them
             bool InView(int cx, int cy)
             {
                 if (open == null) return true;
                 for (int y = cy - 1; y <= cy + 1; y++)
                     for (int x = cx - 1; x <= cx + 1; x++)
-                        if (x >= 0 && y >= 0 && x < matrix.ChunksWide && y < matrix.ChunksHigh && owners[x, y] >= 0
-                            && open.Contains(matrix.Maps[owners[x, y]].Map.Key))
+                        if (x >= 0 && y >= 0 && x < matrix.ChunksWide && y < matrix.ChunksHigh
+                            && (owners[x, y] >= 0 && open.Contains(matrix.Maps[owners[x, y]].Map.Key) || lodged[x, y]))
                             return true;
                 return false;
             }

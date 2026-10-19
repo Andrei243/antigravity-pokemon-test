@@ -187,6 +187,20 @@
     "tamer": { "hairColor": "#5a3a26", "hat": "Fedora", "hatColor": "#6a4a2a", "hatBand": "#3a2a1a", "top": "#b8955a", "accent": "#c83a2a", "bottom": "#4a3a2a", "shoes": "#3a2a1a", "eyes": "#2a2024", "mustache": true, "build": "Adult", "height": 1.04 },
     "twins": { "hairColor": "#3a2a24", "hair": "Bunches", "top": "#e86a9a", "accent": "#f6f6fa", "bottom": "#e86a9a", "shoes": "#c84a6a", "eyes": "#3a2a30", "skirt": true, "lashes": true, "blush": true },
     "crush_kin": { "hairColor": "#2a2024", "hair": "Bun", "top": "#e8703a", "accent": "#26262c", "bottom": "#26262c", "shoes": "#e8e8ec", "eyes": "#3a2a30", "shorts": true, "shortSleeves": true, "build": "Adult", "lashes": true },
+    // Kanto's cast of plan 19 · K7 (our own takes): the Elite Four, Lorelei with long wavy dark-red hair, glasses and a
+    // long violet dress, Bruno tall and broad in a short-sleeved black top over pale grey training trousers, Agatha small
+    // and old with a grey bun and a long plum dress, Lance with spiky red hair and a long black coat lined in red over a
+    // navy suit; Celio of One Island, short brown hair and a sky-blue shirt; the Cooltrainers (their classes in battle
+    // too) in royal blue; the Swimmers in their swimsuits (in battle too)
+    "lorelei": { "hairColor": "#8a2a3a", "hair": "Long", "top": "#6a4a9a", "accent": "#e8e0f0", "bottom": "#6a4a9a", "shoes": "#3a2a4a", "eyes": "#4a3a5a", "glasses": "#2a2430", "skirt": true, "coat": true, "build": "Adult", "lashes": true, "height": 1.04 },
+    "bruno": { "hairColor": "#2a2224", "hair": "Spiky", "top": "#26262c", "accent": "#c8c8d0", "bottom": "#a8a8b0", "shoes": "#2a2a30", "eyes": "#2a2024", "bushyBrows": true, "shortSleeves": true, "build": "Adult", "height": 1.16 },
+    "agatha": { "hairColor": "#a8a4ac", "hair": "Bun", "top": "#6a2a5a", "accent": "#e8e0d0", "bottom": "#6a2a5a", "shoes": "#2a2024", "eyes": "#3a2a30", "skirt": true, "coat": true, "scarf": true, "build": "Adult", "height": 0.9 },
+    "lance": { "hairColor": "#c83a2a", "hair": "Spiky", "top": "#1e1e26", "accent": "#c83a2a", "bottom": "#2a3460", "shoes": "#1e1e22", "eyes": "#3a2a24", "coat": true, "build": "Adult", "height": 1.1 },
+    "celio": { "hairColor": "#6a4a30", "hair": "Swept", "top": "#6aa8d8", "accent": "#f2f2f6", "bottom": "#5a5a64", "shoes": "#3a2e26", "eyes": "#3a2e28", "build": "Adult", "height": 1.0 },
+    "cooltrainer_m": { "hairColor": "#2a3a6a", "hair": "Spiky", "top": "#2a4aa8", "accent": "#f2f2f6", "bottom": "#1e1e26", "shoes": "#2a2a30", "eyes": "#2a2a3a", "build": "Adult", "height": 1.04 },
+    "cooltrainer_f": { "hairColor": "#b83a2a", "hair": "Long", "top": "#2a4aa8", "accent": "#f2f2f6", "bottom": "#2a4aa8", "shoes": "#1e1e26", "eyes": "#3a2a30", "skirt": true, "build": "Adult", "lashes": true },
+    "swimmer_m_water": { "hairColor": "#2a2224", "top": "#2a3460", "accent": "#2a3460", "bottom": "#2a3460", "shoes": "#e0b894", "eyes": "#2a2024", "shorts": true, "shortSleeves": true, "build": "Adult" },
+    "swimmer_f_water": { "hairColor": "#f2f2f6", "hat": "Cap", "hatColor": "#f2f2f6", "hatBand": "#f2f2f6", "top": "#d83a3a", "accent": "#d83a3a", "bottom": "#d83a3a", "shoes": "#e0b894", "eyes": "#3a2a30", "shorts": true, "shortSleeves": true, "build": "Adult", "lashes": true },
     "gentleman": { "hairColor": "#96929c", "hair": "Swept", "top": "#424660", "accent": "#f6f6fa", "bottom": "#383a4c", "shoes": "#342a28", "mustache": true, "coat": true, "build": "Adult", "height": 1.02 }
   },
   // Names that are another look
@@ -266,13 +280,10 @@
     // Plan 19 · K3: the looks of Route 2's rooms, Route 22's gate and Pewter City
     "gba_kid": "Youngster",
     "rocker": "Gentleman",
-    "cooltrainer_f": "Lass",
     "man": "Gentleman",
     "worker_m": "Gentleman",
     "old_man_2": "Gentleman",
     "rocket_m": "rocket",
-    "swimmer_m_water": "Youngster",
-    "cooltrainer_m": "Youngster",
     // HeartGold's looks (plan 20 · J2), until plan 20 · J14 gives Johto's classes and cast their own
     "gsrivel": "Rival",
     "gsmama": "Mom",
@@ -380,6 +391,10 @@
     "Tamer": "tamer",
     "Twins": "twins",
     "Crush Kin": "crush_kin",
+    "Cooltrainer": [ "cooltrainer_m", "cooltrainer_f" ],
+    "Cool Couple": [ "cooltrainer_m", "cooltrainer_f" ],
+    "Swimmer M": "swimmer_m_water",
+    "Swimmer F": "swimmer_f_water",
     "Leader": null,
     "Elite Four": null,
     "Champion": null,

@@ -1,0 +1,61 @@
+{
+  "key": "one_island",
+  "index": 226,
+  "name": "One Island",
+  "matrix": 190,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_123",
+  "nightMusic": "MUS_SEVII_123",
+  "encounters": "one_island",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Shellder", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 14, "z": 125, "to": "one_island_pokemon_center_1f", "toWarp": 0 },
+    { "x": 19, "z": 129, "to": "one_island_house_1", "toWarp": 0 },
+    { "x": 8, "z": 131, "to": "one_island_house_2", "toWarp": 0 },
+    { "x": 12, "z": 138, "to": "one_island_harbor", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "one_island_bill", "looks": "bill", "movement": "look_south", "x": 12, "z": 136, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ONE_ISLAND_BILL", "script": "" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "wander_around", "x": 16, "z": 132, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "OneIsland_EventScript_OldMan" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_south_and_north", "x": 13, "z": 129, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "OneIsland_EventScript_BaldingMan" }
+  ],
+  "signs": [
+    { "x": 14, "z": 133, "type": 0, "script": "OneIsland_EventScript_IslandSign" },
+    { "x": 15, "z": 126, "type": 0, "script": "OneIsland_EventScript_PokemonNetCenterSign" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,15 @@
+{
+  // The third of the Elite Four's rooms (plan 19 · K7), Agatha's. The door ahead opens once she is beaten
+  // (FLAG_DEFEATED_AGATHA) onto the passage to Lance's room. pokemon_league_agathas_room.txt has her battle
+  "area": "pokemon_league_agathas_room",
+  "name": "Pokémon League",
+  "bgmTrack": "kanto/gym",
+  "arenaType": "Ghost",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "PokemonLeague_LancesRoom", "x": 23, "y": 12, "facing": "Up", "openedBy": "FLAG_DEFEATED_AGATHA" }
+  ],
+  "people": {
+    "agatha": { "name": "Agatha", "script": "Agatha", "still": true }
+  }
+}

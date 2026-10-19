@@ -8,6 +8,6 @@
     "cooltrainer_f": { "name": "Woman", "dialog": [ "The Gym here is locked. Blaine lost the key somewhere, they say. Careless, for a quiz master!" ] },
     "gentleman": { "name": "Gentleman", "dialog": [ "Trading with friends is the quickest way to fill a Pokédex. Sadly, the link is closed for now." ] },
     "youngster": { "name": "Youngster", "dialog": [ "If you stop a Pokémon from evolving, it can learn some moves sooner. Patience pays!" ] },
-    "cinnabar_pokemon_center_bill": { "name": "Bill", "dialog": [ "Ready to set sail? Not quite yet, then." ] }
+    "cinnabar_pokemon_center_bill": { "name": "Bill", "script": "Bill", "still": true }
   }
 }

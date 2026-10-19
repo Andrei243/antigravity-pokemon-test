@@ -1,0 +1,69 @@
+# Kanto's Victory Road, 2F (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/VictoryRoad_2F/scripts.inc).
+#
+# Two floor switches, each a pit a boulder comes to rest on (kanto_victory_road_1f.txt says why), each lifting its own
+# rock barrier until Route 23 is come to again: the first in the west, the second for the boulder that falls through
+# the hole of the floor above (FLAG_HIDE_VICTORY_ROAD_2F_BOULDER, which kanto_victory_road_3f.txt clears). The
+# Cooltrainer by the way up teaches Double-Edge to one Pokémon, once in a game, for nothing (Models/MoveTutors.cs).
+
+
+script FloorSwitch1
+  if flag FLAG_VICTORY_ROAD_2F_SWITCH_1_PRESSED end
+  setflag FLAG_VICTORY_ROAD_2F_SWITCH_1_PRESSED
+  hide rock_barrier_1
+  hide rock_barrier_2
+  call VictoryRoadSwitch
+  end
+
+script FloorSwitch2
+  if flag FLAG_VICTORY_ROAD_2F_SWITCH_2_PRESSED end
+  setflag FLAG_VICTORY_ROAD_2F_SWITCH_2_PRESSED
+  hide rock_barrier_3
+  hide rock_barrier_4
+  call VictoryRoadSwitch
+  end
+
+
+script Barrier
+  call VictoryRoadBarrier
+  end
+
+
+script DoubleEdgeTutor
+  face cooltrainer_m player
+  speaker "Cooltrainer"
+  if flag FLAG_TUTOR_DOUBLE_EDGE goto Taught
+  ask "You made it this far, so you must be serious. Want me to teach one of your Pokémon Double-Edge?"
+  if no goto Later
+  say "Good choice. Which one?"
+  choosepokemon
+  tutor once "Double-Edge"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_TUTOR_DOUBLE_EDGE
+label Taught
+  say "Double-Edge hits with everything the user has, and it hurts the user too. Use it when it counts!"
+  end
+label Later
+  say "Suit yourself. I'll be here if you change your mind."
+  end
+label Egg
+  say "An Egg can't learn anything yet. Hatch it first!"
+  end
+label Cannot
+  say "Sorry, that one just can't learn it."
+  end
+label Knows
+  say "That one already knows it!"
+  end
+label Hm
+  say "That move can't be forgotten here. Another time."
+  end

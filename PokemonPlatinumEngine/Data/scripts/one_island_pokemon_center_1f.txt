@@ -1,0 +1,60 @@
+# One Island's Pokémon Center (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/OneIsland_PokemonCenter_1F/scripts.inc).
+#
+# The first time the player comes in with Bill (VAR_MAP_SCENE_ONE_ISLAND_HARBOR 3, one_island.txt) the two meet Celio
+# at his network machine: Bill brings him up to speed, sets to work on it with him, and Celio gives the player the
+# Tri-Pass for the Seagallop (VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 1). Bill stays to help from then on. FireRed's
+# Meteorite, its errand on Two and Three Island, and Celio's later requests (the Ruby and the Sapphire) are plan 19 ·
+# K9's; so is Bill's sailing home once the machine works (FLAG_SEVII_DETOUR_FINISHED).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 0 setflag FLAG_HIDE_ONE_ISLAND_POKECENTER_BILL
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 0 clearflag FLAG_HIDE_ONE_ISLAND_POKECENTER_CELIO
+  if not var VAR_MAP_SCENE_ONE_ISLAND_HARBOR == 3 end
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 0 goto Meet
+  end
+label Meet
+  scene "Bill and Celio"
+  clearflag FLAG_HIDE_ONE_ISLAND_POKECENTER_BILL
+  show one_island_pokemon_center_bill
+  walk player right 5 up 1
+  speaker "Bill"
+  say "Hey there, Celio! Long time no see."
+  face celio player
+  speaker "Celio"
+  say "Bill! You really came all the way out here? I can't believe it!"
+  speaker "Bill"
+  say "This is {player}. A real up-and-coming trainer, beat every Gym Leader in Kanto. Came along to keep me company."
+  speaker "Celio"
+  say "Pleased to meet you! I'm Celio. I'm trying to link the PCs here on the islands with the PCs back in Kanto."
+  say "But the machine just won't talk to Kanto's network. I've been stuck on it for weeks."
+  speaker "Bill"
+  say "Leave it to me. Two heads are better than one, right? Let's see what's going on in there."
+  speaker "Celio"
+  say "Thanks, Bill! Oh, and {player}, you should see more of the islands while you're here. Please, take this."
+  give "Tri-Pass"
+  say "With the Tri-Pass, the Seagallop will take you between Kanto and the first three islands, whenever you like."
+  speaker "Bill"
+  say "We'll be at this for a while. Go and have a look around, {player}. The sailor at the harbour can take you back to Kanto too."
+  setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 1
+  endscene
+  end
+
+
+script Bill
+  face one_island_pokemon_center_bill player
+  speaker "Bill"
+  say "Hmm, what if I connect this here... No, that's not it either. Don't worry, we'll crack it!"
+  end
+
+
+script Celio
+  face celio player
+  speaker "Celio"
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 0 goto Busy
+  say "Bill's a genius. With his help, I'm sure the machine will link up with Kanto in no time."
+  end
+label Busy
+  say "Sorry, I'm in the middle of something. This machine is giving me no end of trouble."
+  end

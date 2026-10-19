@@ -251,7 +251,9 @@ public enum Architecture
     /// <summary>Stucco under electric-yellow hip roofs with shutters: the city of bright lights and electric power (Mauville, plan 21 · H3, part b).</summary>
     Dynamo,
     /// <summary>Plaster under moss-green gable roofs with a chimney and flower boxes: the quiet town of clean air (Verdanturf, plan 21 · H3, part b).</summary>
-    Glade
+    Glade,
+    /// <summary>White stucco under sea-turquoise hip roofs with shutters: the warm port of the first Sevii Island (One Island, plan 19 · K7).</summary>
+    Isle
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

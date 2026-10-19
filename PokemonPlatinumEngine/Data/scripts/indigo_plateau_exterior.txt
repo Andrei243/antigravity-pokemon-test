@@ -1,0 +1,11 @@
+# The Indigo Plateau (plan 19 · K7). docs/scripts.md describes the language.
+#
+# FireRed stands the rival and Oak at the League's door for the pictures of its credits (FLAG_HIDE_CREDITS_RIVAL,
+# FLAG_HIDE_CREDITS_OAK, which its new game sets); this game's credits are a roll of its own (plan 02 · S14), so they
+# are never shown, and the place's arrival keeps them out of sight for every save.
+
+
+script OnEnter
+  setflag FLAG_HIDE_CREDITS_RIVAL
+  setflag FLAG_HIDE_CREDITS_OAK
+  end

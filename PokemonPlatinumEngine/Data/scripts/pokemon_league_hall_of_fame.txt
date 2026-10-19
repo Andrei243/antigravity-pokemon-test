@@ -1,0 +1,37 @@
+# Kanto's Hall of Fame (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on FireRed's beats
+# (data/maps/PokemonLeague_HallOfFame/scripts.inc, and its special EnterHallOfFame).
+#
+# One scene, played as the new Champion comes in with Oak ahead of them: his words, the team recorded (halloffame),
+# Kanto's story ended (KantoHallOfFame, the region's flag, and FireRed's own FLAG_SYS_GAME_CLEAR), the scene of the
+# team's entry, the team healed, home to the player's room in Pallet Town, the game saved there, and the credits. The
+# room's floor is FireRed's polished one (MB_ICE, which slides whoever walks on it), so nobody walks here: Oak turns to
+# the player at the door. What a Champion of Kanto finds afterwards (the sailor at Vermilion's harbour, the Sevii
+# Islands' errand and the National Pokédex) is plan 19 · K8's and K9's.
+
+
+script OnEnter
+  scene "The Hall of Fame"
+  face hall_of_fame_prof_oak down
+  speaker "Prof. Oak"
+  say "Here we are. This is the Hall of Fame, where the names of the League's Champions are kept for all time."
+  say "Every trainer who has stood where you're standing came here with the Pokémon who carried them to victory."
+  say "{player}, you and your Pokémon have earned your place among them. Let's record your team, so nobody ever forgets."
+  endscene
+  wait 0.4
+  fade out 0.8
+  halloffame
+  setflag KantoHallOfFame
+  setflag FLAG_SYS_GAME_CLEAR
+  halloffame show
+  heal
+  warp "PalletTown_PlayersHouse_2F" 6 6 up
+  save
+  if result == 0 goto NotSaved
+  sound "save"
+  text "{player} saved the game."
+  goto Roll
+label NotSaved
+  text "The game could not be saved."
+label Roll
+  credits
+  end

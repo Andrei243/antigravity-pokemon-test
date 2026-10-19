@@ -1099,7 +1099,7 @@
       ]
     },
     {
-      "key": "victory_road_1f",
+      "key": "kanto_victory_road_1f",
       "name": "Kanto Victory Road",
       "cells": "",
       "morning": [
@@ -1134,7 +1134,7 @@
       ]
     },
     {
-      "key": "victory_road_2f",
+      "key": "kanto_victory_road_2f",
       "name": "Kanto Victory Road",
       "cells": "",
       "morning": [
@@ -1172,7 +1172,7 @@
       ]
     },
     {
-      "key": "victory_road_3f",
+      "key": "kanto_victory_road_3f",
       "name": "Kanto Victory Road",
       "cells": "",
       "morning": [

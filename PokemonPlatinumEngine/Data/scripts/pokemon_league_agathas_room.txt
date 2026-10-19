@@ -1,0 +1,23 @@
+# Agatha's room, the third of Kanto's Elite Four (plan 19 · K7). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/PokemonLeague_AgathasRoom/scripts.inc). As Lorelei's room
+# (pokemon_league_loreleis_room.txt): spoken to, she battles; beaten, her door opens (FLAG_DEFEATED_AGATHA).
+
+
+script Agatha
+  face agatha player
+  speaker "Agatha"
+  if flag FLAG_DEFEATED_AGATHA goto Beaten
+  scene "Agatha"
+  say "I am Agatha of the Elite Four. Oak's taken a liking to you, has he? That old fool."
+  say "Pokémon are for battling! I'll show you what a real trainer can do, child."
+  battle self as "kanto_elite_four_agatha"
+  speaker "Agatha"
+  say "Oh ho! You're something special, child."
+  setflag FLAG_DEFEATED_AGATHA
+  sound "door_open"
+  say "I see now why Oak thinks so highly of you. Go on, then. You're nearly at the top."
+  endscene
+  end
+label Beaten
+  say "You win! Now be off with you. There's one more of us waiting."
+  end

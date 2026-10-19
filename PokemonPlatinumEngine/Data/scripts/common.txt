@@ -1247,6 +1247,60 @@ label Leave
   text "Better not touch it."
   end
 
+# The Seagallop takes Bill and the player from Cinnabar Island to One Island (plan 19 · K7; FireRed's CinnabarIsland_
+# EventScript_SailToOneIsland), from the street or from the Pokémon Center: over a dark screen, and the two come ashore
+# outside One Island's harbour, where one_island.txt goes on.
+script SailWithBill
+  fade out 0.6
+  setflag FLAG_HIDE_CINNABAR_BILL
+  setflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
+  setvar VAR_MAP_SCENE_CINNABAR_ISLAND 2
+  setvar VAR_MAP_SCENE_ONE_ISLAND_HARBOR 1
+  speaker none
+  text "The Seagallop sped across the waves to One Island."
+  warp "OneIsland" 12 137 up
+  return
+
+# The Seagallop sails a holder of the Tri-Pass between Vermilion City, Cinnabar Island and One Island (plan 19 · K7;
+# FireRed's SeviiIslands_EventScript_ChooseSeagallopDest and its harbours' sailors): the sailor's question names the
+# ports, and the trip is a dark screen.
+script SeagallopToVermilion
+  call SeagallopSails
+  warp "Kanto" 288 232 down
+  return
+
+script SeagallopToCinnabar
+  call SeagallopSails
+  warp "Kanto" 82 387 left
+  return
+
+script SeagallopToOneIsland
+  call SeagallopSails
+  warp "OneIsland_Harbor" 8 5 up
+  return
+
+script SeagallopSails
+  fade out 0.6
+  speaker none
+  text "The Seagallop sped across the waves."
+  return
+
+
+# A floor switch of Kanto's Victory Road pressed down by a boulder (plan 19 · K7; FireRed's VictoryRoad_*_EventScript_
+# FloorSwitch): the floor's own script has taken its rock barrier away, and this is what is heard and said of it.
+script VictoryRoadSwitch
+  sound "rock_smash"
+  speaker none
+  text "Click! The boulder pressed a switch into the floor, and somewhere the rocks rumbled away."
+  return
+
+# One of Victory Road's rock barriers, spoken to
+script VictoryRoadBarrier
+  speaker none
+  text "A wall of rock blocks the way. A switch somewhere might clear it."
+  return
+
+
 # One of the Pokémon Mansion's barriers, spoken to
 script PokemonMansionBarrier
   speaker none

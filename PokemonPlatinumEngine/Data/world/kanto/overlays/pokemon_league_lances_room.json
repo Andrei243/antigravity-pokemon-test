@@ -1,0 +1,16 @@
+{
+  // The last of the Elite Four's rooms (plan 19 · K7), Lance's: a long passage from Agatha's door round to his hall. The
+  // door behind him opens once he is beaten (FLAG_DEFEATED_LANCE) onto the Champion's room.
+  // pokemon_league_lances_room.txt has his battle
+  "area": "pokemon_league_lances_room",
+  "name": "Pokémon League",
+  "bgmTrack": "kanto/gym",
+  "arenaType": "Dragon",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "PokemonLeague_ChampionsRoom", "x": 6, "y": 18, "facing": "Up", "openedBy": "FLAG_DEFEATED_LANCE" }
+  ],
+  "people": {
+    "lance": { "name": "Lance", "script": "Lance", "still": true }
+  }
+}

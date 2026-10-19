@@ -1,8 +1,9 @@
 {
   // Cinnabar Island (plan 19 · K6, part b): FireRed's map, our words. The volcanic island at the foot of the sea
   // routes, with the Pokémon Lab, the burned Pokémon Mansion and Blaine's Gym, whose door stays locked until the
-  // Secret Key has been found in the Mansion's basement (cinnabar_island.txt). Bill and the ferry he sails to One
-  // Island with are plan 19 · K7's, and kept out of sight until then
+  // Secret Key has been found in the Mansion's basement (cinnabar_island.txt). Bill waits by the dock once Blaine is
+  // beaten, and sails with the player to One Island (plan 19 · K7); his friend's ferry comes and goes while the screen
+  // is dark, and stays out of sight
   "area": "cinnabar_island",
   "bgmTrack": "kanto/cinnabar",
   "trees": "Round",
@@ -11,6 +12,7 @@
     { "trigger": 0, "script": "LockedGymDoor" }
   ],
   "people": {
+    "cinnabar_bill": { "name": "Bill", "still": true, "dialog": [ "My pal's ferry should be along any minute now." ] },
     "woman_2": { "name": "Woman", "dialog": [ "Blaine lived on this island long before the Lab was built. He knows every stone of the volcano." ] },
     "old_man_1": { "name": "Old Man", "dialog": [ "They did strange experiments in that burned-out mansion, long ago.", "Some say one of the Pokémon they made there broke loose. Brr..." ] }
   },

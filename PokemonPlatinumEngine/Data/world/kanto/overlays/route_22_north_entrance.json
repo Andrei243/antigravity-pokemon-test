@@ -1,6 +1,6 @@
 {
   // The gate on Route 22 (plan 19 · K2). Its guard lets through only a trainer with the Boulder Badge
-  // (route_22_north_entrance.txt, plan 19 · K4); the way north is shut until Route 23 opens (K7)
+  // (route_22_north_entrance.txt, plan 19 · K4); the way north leads onto Route 23 and its guards (plan 19 · K7)
   "area": "route_22_north_entrance",
   "bgmTrack": "kanto/viridian_forest",
   "triggers": [ { "trigger": 0, "script": "GuardTrigger" } ],

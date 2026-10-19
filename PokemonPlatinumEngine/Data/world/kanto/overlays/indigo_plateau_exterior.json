@@ -1,0 +1,9 @@
+{
+  // The Indigo Plateau (plan 19 · K7): FireRed's map, our words. The top of Route 23 and the Pokémon League's hall,
+  // whose door is its Pokémon Center's. The rival and Oak who stand at the door in FireRed's credits are kept out of
+  // sight (indigo_plateau_exterior.txt)
+  "area": "indigo_plateau_exterior",
+  "name": "Indigo Plateau",
+  "bgmTrack": "kanto/victory_road",
+  "trees": "Round"
+}

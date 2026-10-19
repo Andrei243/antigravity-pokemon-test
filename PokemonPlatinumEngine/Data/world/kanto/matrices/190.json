@@ -1,0 +1,26 @@
+{
+  "id": 190,
+  "width": 2,
+  "height": 6,
+  "chunks": [
+    "402 403",
+    "404 405",
+    "406 407",
+    "408 409",
+    "410 411",
+    "412   -"
+  ],
+  "areas": [
+    " 2  2",
+    " 2  2",
+    " 2  2",
+    " 2  2",
+    " 1  2",
+    " 1  -"
+  ],
+  "areaKeys": [
+    "one_island",
+    "one_island_treasure_beach",
+    "one_island_kindle_road"
+  ]
+}

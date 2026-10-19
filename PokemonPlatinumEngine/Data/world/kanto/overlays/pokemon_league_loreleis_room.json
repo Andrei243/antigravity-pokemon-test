@@ -1,0 +1,16 @@
+{
+  // The first of the Elite Four's rooms (plan 19 · K7), Lorelei's, as FireRed lays it out. The way back to the hall is
+  // shut behind the player, as FireRed shuts it; the door ahead opens once she is beaten (FLAG_DEFEATED_LORELEI) onto
+  // Bruno's room. pokemon_league_loreleis_room.txt has her battle
+  "area": "pokemon_league_loreleis_room",
+  "name": "Pokémon League",
+  "bgmTrack": "kanto/gym",
+  "arenaType": "Ice",
+  "locked": [ 0 ],
+  "doors": [
+    { "warp": 1, "map": "PokemonLeague_BrunosRoom", "x": 6, "y": 10, "facing": "Up", "openedBy": "FLAG_DEFEATED_LORELEI" }
+  ],
+  "people": {
+    "lorelei": { "name": "Lorelei", "script": "Lorelei", "still": true }
+  }
+}

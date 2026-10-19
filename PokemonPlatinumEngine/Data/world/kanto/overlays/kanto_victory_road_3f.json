@@ -1,0 +1,24 @@
+{
+  // Victory Road, 3F (plan 19 · K7): FireRed's top floor. A floor switch in the west lifts its rock barrier, and the
+  // hole in the east takes a boulder down to the floor below (kanto_victory_road_3f.txt), where the second switch of
+  // 2F waits for it
+  "area": "kanto_victory_road_3f",
+  "name": "Victory Road",
+  "bgmTrack": "kanto/mt_moon",
+  "pits": [
+    { "x": 7, "z": 7, "script": "FloorSwitch" },
+    { "x": 34, "z": 18, "script": "FallThrough" }
+  ],
+  "people": {
+    "cooltrainer_m": { "name": "George", "trainer": { "dialogueBefore": "Cooltrainer George: The League is right above us. Just one more battle stands in your way. Mine!", "dialogueAfter": "Cooltrainer George: Make that zero more." } },
+    "cooltrainer_f": { "name": "Alexa", "trainer": { "dialogueBefore": "Cooltrainer Alexa: I've been coming here every day to train for the League. Today I'll test it on you!", "dialogueAfter": "Cooltrainer Alexa: Back to training, then." } },
+    "cooltrainer_m_2": { "name": "Colby", "trainer": { "dialogueBefore": "Cooltrainer Colby: You won't make it out of this cave. I'll make sure of it!", "dialogueAfter": "Cooltrainer Colby: I couldn't make sure of anything." } },
+    "cooltrainer_f_2": { "name": "Caroline", "trainer": { "dialogueBefore": "Cooltrainer Caroline: Want to know a secret? The Elite Four are even tougher than me!", "dialogueAfter": "Cooltrainer Caroline: Then again, maybe you'll be fine." } },
+    "cooltrainer_m_3": { "name": "Ray", "trainer": { "dialogueBefore": "Cool Couple Ray & Tyra: We always battle together. Think you can handle both of us?", "dialogueAfter": "Cool Couple Ray & Tyra: Even together, we couldn't stop you." } },
+    "cooltrainer_f_3": { "name": "Tyra", "trainer": { "dialogueBefore": "Cool Couple Ray & Tyra: We always battle together. Think you can handle both of us?", "dialogueAfter": "Cool Couple Ray & Tyra: Even together, we couldn't stop you." } }
+  },
+  "npcs": [
+    { "id": "rock_barrier_1", "name": "Rock barrier", "npcType": "Rubble", "x": 12, "y": 12, "hiddenBy": "FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED", "script": "Barrier" },
+    { "id": "rock_barrier_2", "name": "Rock barrier", "npcType": "Rubble", "x": 12, "y": 13, "hiddenBy": "FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED", "script": "Barrier" }
+  ]
+}

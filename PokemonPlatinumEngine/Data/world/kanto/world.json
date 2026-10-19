@@ -236,7 +236,28 @@
     { "name": "PokemonMansion_1F", "matrix": 65, "area": "pokemon_mansion_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "PokemonMansion_2F", "matrix": 66, "area": "pokemon_mansion_2f", "trees": "Round", "setting": "Indoors" },
     { "name": "PokemonMansion_3F", "matrix": 67, "area": "pokemon_mansion_3f", "trees": "Round", "setting": "Indoors" },
-    { "name": "PokemonMansion_B1F", "matrix": 68, "area": "pokemon_mansion_b1f", "trees": "Round", "setting": "Indoors" }
+    { "name": "PokemonMansion_B1F", "matrix": 68, "area": "pokemon_mansion_b1f", "trees": "Round", "setting": "Indoors" },
+    // Plan 19 · K7: Victory Road's three floors (FireRed's MAP_TYPE_UNDERGROUND, so caves) between Route 23 and the
+    // Indigo Plateau, the Plateau's Pokémon Center on both floors, the Elite Four's four rooms, the Champion's and the
+    // Hall of Fame; and over the sea from Cinnabar Island, One Island (open country on a matrix of its own with Kindle
+    // Road and Treasure Beach, which wait for plan 19 · K9) with its rooms
+    { "name": "VictoryRoad_1F", "matrix": 45, "area": "kanto_victory_road_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "VictoryRoad_2F", "matrix": 46, "area": "kanto_victory_road_2f", "trees": "Round", "setting": "Cave" },
+    { "name": "VictoryRoad_3F", "matrix": 47, "area": "kanto_victory_road_3f", "trees": "Round", "setting": "Cave" },
+    { "name": "IndigoPlateau_PokemonCenter_1F", "matrix": 281, "area": "indigo_plateau_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "IndigoPlateau_PokemonCenter_2F", "matrix": 282, "area": "indigo_plateau_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonLeague_LoreleisRoom", "matrix": 81, "area": "pokemon_league_loreleis_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonLeague_BrunosRoom", "matrix": 82, "area": "pokemon_league_brunos_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonLeague_AgathasRoom", "matrix": 83, "area": "pokemon_league_agathas_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonLeague_LancesRoom", "matrix": 84, "area": "pokemon_league_lances_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonLeague_ChampionsRoom", "matrix": 85, "area": "pokemon_league_champions_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "PokemonLeague_HallOfFame", "matrix": 86, "area": "pokemon_league_hall_of_fame", "trees": "Round", "setting": "Indoors" },
+    { "name": "OneIsland", "matrix": 190, "area": "one_island", "trees": "Round" },
+    { "name": "OneIsland_PokemonCenter_1F", "matrix": 330, "area": "one_island_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "OneIsland_PokemonCenter_2F", "matrix": 331, "area": "one_island_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "OneIsland_House1", "matrix": 332, "area": "one_island_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "OneIsland_House2", "matrix": 333, "area": "one_island_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "OneIsland_Harbor", "matrix": 334, "area": "one_island_harbor", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 19 · K1: Pallet Town, Route 1 and Viridian City, with their rooms
@@ -315,6 +336,14 @@
     "cinnabar_island_pokemon_lab_research_room", "cinnabar_island_pokemon_lab_experiment_room",
     "cinnabar_island_pokemon_center_1f", "cinnabar_island_pokemon_center_2f", "cinnabar_island_mart",
     "pokemon_mansion_1f", "pokemon_mansion_2f", "pokemon_mansion_3f", "pokemon_mansion_b1f",
-    "power_plant"
+    "power_plant",
+    // Plan 19 · K7: Route 23 north of Route 22's gate, past its badge guards, over Victory Road to the Indigo Plateau
+    // and the Pokémon League; and One Island, where Bill's friend Celio works
+    "route_23", "kanto_victory_road_1f", "kanto_victory_road_2f", "kanto_victory_road_3f", "indigo_plateau_exterior",
+    "indigo_plateau_pokemon_center_1f", "indigo_plateau_pokemon_center_2f",
+    "pokemon_league_loreleis_room", "pokemon_league_brunos_room", "pokemon_league_agathas_room",
+    "pokemon_league_lances_room", "pokemon_league_champions_room", "pokemon_league_hall_of_fame",
+    "one_island", "one_island_pokemon_center_1f", "one_island_pokemon_center_2f", "one_island_house_1",
+    "one_island_house_2", "one_island_harbor"
   ]
 }

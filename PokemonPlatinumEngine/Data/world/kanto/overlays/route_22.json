@@ -1,11 +1,14 @@
 {
   // Route 22 (plan 19 · K2): west of Viridian City to the gate of the Pokémon League. The rival waits here once the
-  // Pokédex is given (plan 19 · K3, route_22.txt: the area's triggers 0 to 2); his second wait, before the gate, is
-  // K7's (triggers 3 to 5), and until then nobody stands there
+  // Pokédex is given (plan 19 · K3, route_22.txt: the area's triggers 0 to 2); his second wait, before the gate, comes
+  // once Giovanni is beaten (plan 19 · K7: triggers 3 to 5)
   "area": "route_22",
   "bgmTrack": "kanto/route3",
   "trees": "Round",
-  "triggers": [ { "trigger": 0, "script": "EarlyRival" }, { "trigger": 1, "script": "EarlyRival" }, { "trigger": 2, "script": "EarlyRival" } ],
+  "triggers": [
+    { "trigger": 0, "script": "EarlyRival" }, { "trigger": 1, "script": "EarlyRival" }, { "trigger": 2, "script": "EarlyRival" },
+    { "trigger": 3, "script": "LateRival" }, { "trigger": 4, "script": "LateRival" }, { "trigger": 5, "script": "LateRival" }
+  ],
   "people": {
     "route22_rival": { "name": "{rival}", "still": true, "dialog": [ "Shouldn't you be out training?" ] }
   },

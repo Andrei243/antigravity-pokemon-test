@@ -1,0 +1,26 @@
+{
+  "key": "pokemon_league_loreleis_room",
+  "index": 117,
+  "name": "Pokemon League",
+  "matrix": 81,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GYM",
+  "nightMusic": "MUS_GYM",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 12, "to": "", "toWarp": 1 },
+    { "x": 6, "z": 2, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "lorelei", "looks": "lorelei", "movement": "look_south", "x": 6, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "PokemonLeague_LoreleisRoom_EventScript_Lorelei" }
+  ],
+  "signs": [],
+  "triggers": []
+}

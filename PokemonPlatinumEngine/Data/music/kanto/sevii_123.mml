@@ -1,0 +1,35 @@
+# One, Two and Three Island (FireRed's MUS_SEVII_123, which the first three Sevii Islands share): a bright island tune
+# in A major, a flute skipping over a guitar's off-beat chords, a marimba's broken chords and a light bass, for warm
+# little ports at sea. Original composition for this game (plan 19 · K7).
+title The Sevii Islands
+tempo 112
+meter 4/4
+reverb 0.3
+nighttempo 0.9
+
+track lead flute night=clarinet vol=0.74 pan=0 rev=0.3
+  L o5 e4 a4 o6 c+4 o5 b8 a8 | o5 f+4 a4 o6 d4 c+4 | o5 b4. a8 g+4 e4 | o5 a2. r4 |
+  o5 c+4 f+4 a4 g+8 f+8 | o5 a4. f+8 d4 f+4 | o5 e4 g+4 b4 o6 d4 | o5 b2. r4 |
+  o6 c+4. o5 b8 a4 e4 | o5 f+4 a4 o6 d4 f+4 | o6 d4. c+8 o5 b4 f+4 | o5 g+2 b4 e4 |
+  o5 a4 o6 c+4 e4 c+4 | o6 d4 c+8 o5 b8 a4 f+4 | o5 g+4 b4 o6 d4 o5 b4 | o5 a2. r4 |
+
+track guitar guitar vol=0.32 pan=0.3 rev=0.2
+  L o4 [ r8 (c+ e a)8 ]4 | [ r8 (d f+ a)8 ]4 | [ r8 (d e g+)8 ]4 | [ r8 (c+ e a)8 ]4 |
+  [ r8 (c+ f+ a)8 ]4 | [ r8 (d f+ a)8 ]4 | [ r8 (d e g+)8 ]4 | [ r8 (d e g+)8 ]4 |
+  [ r8 (c+ e a)8 ]4 | [ r8 (d f+ a)8 ]4 | [ r8 (d f+ b)8 ]4 | [ r8 (d e g+)8 ]4 |
+  [ r8 (c+ e a)8 ]4 | [ r8 (d f+ a)8 ]4 | [ r8 (d e g+)8 ]4 | [ r8 (c+ e a)8 ]4 |
+
+track marimba marimba night=vibraphone vol=0.3 pan=-0.3 rev=0.3
+  L o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 | o4 a8 o5 d8 f+8 d8 o4 a8 o5 d8 f+8 d8 | o4 g+8 b8 o5 e8 o4 b8 g+8 b8 o5 e8 o4 b8 | o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 |
+  o4 f+8 a8 o5 c+8 o4 a8 f+8 a8 o5 c+8 o4 a8 | o4 a8 o5 d8 f+8 d8 o4 a8 o5 d8 f+8 d8 | o4 g+8 b8 o5 e8 o4 b8 g+8 b8 o5 e8 o4 b8 | o4 g+8 b8 o5 e8 o4 b8 g+8 b8 o5 e8 o4 b8 |
+  o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 | o4 a8 o5 d8 f+8 d8 o4 a8 o5 d8 f+8 d8 | o4 f+8 b8 o5 d8 o4 b8 f+8 b8 o5 d8 o4 b8 | o4 g+8 b8 o5 e8 o4 b8 g+8 b8 o5 e8 o4 b8 |
+  o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 | o4 a8 o5 d8 f+8 d8 o4 a8 o5 d8 f+8 d8 | o4 g+8 b8 o5 e8 o4 b8 g+8 b8 o5 e8 o4 b8 | o4 a8 o5 c+8 e8 c+8 o4 a2 |
+
+track bass bass vol=0.66 rev=0.1
+  L o3 a4 e4 a4 c+4 | d4 a4 d4 f+4 | e4 b4 e4 g+4 | a4 e4 a4 e4 |
+  f+4 c+4 f+4 a4 | d4 a4 d4 f+4 | e4 b4 e4 g+4 | e4 b4 g+4 e4 |
+  a4 e4 a4 c+4 | d4 a4 d4 f+4 | b4 f+4 d4 f+4 | e4 b4 g+4 e4 |
+  a4 e4 a4 c+4 | d4 a4 d4 f+4 | e4 b4 e4 g+4 | a4 e4 a2 |
+
+track drums kit vol=0.26 rev=0.1
+  v64 L [ [ b8 h8 s8 h8 b8 h8 s8 h8 | ]3 b8 h8 s8 h8 b8 s8 s8 h8 | ]4

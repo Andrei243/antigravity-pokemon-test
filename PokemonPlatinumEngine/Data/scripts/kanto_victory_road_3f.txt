@@ -1,0 +1,32 @@
+# Kanto's Victory Road, 3F (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/VictoryRoad_3F/scripts.inc).
+#
+# A floor switch in the west, a pit a boulder comes to rest on (kanto_victory_road_1f.txt says why), lifts its rock
+# barrier until Route 23 is come to again. The boulder by the hole in the east (FLAG_HIDE_VICTORY_ROAD_3F_BOULDER, its
+# own flag) pushed onto it falls to the floor below and shows there (FLAG_HIDE_VICTORY_ROAD_2F_BOULDER cleared), as the
+# Seafoam Islands' do (plan 19 · K6, part b); Route 23 puts both back.
+
+
+script FloorSwitch
+  if flag FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED end
+  setflag FLAG_VICTORY_ROAD_3F_SWITCH_PRESSED
+  hide rock_barrier_1
+  hide rock_barrier_2
+  call VictoryRoadSwitch
+  end
+
+
+script FallThrough
+  if not subject "pushable_boulder" end
+  hide self
+  setflag own
+  clearflag FLAG_HIDE_VICTORY_ROAD_2F_BOULDER
+  sound "bump"
+  speaker none
+  text "The boulder dropped through the hole to the floor below!"
+  end
+
+
+script Barrier
+  call VictoryRoadBarrier
+  end

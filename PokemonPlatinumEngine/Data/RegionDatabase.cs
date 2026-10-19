@@ -390,6 +390,13 @@ public static class RegionDatabase
                 "CinnabarIsland_PokemonLab_ResearchRoom", "CinnabarIsland_PokemonLab_ExperimentRoom",
                 "CinnabarIsland_PokemonCenter_1F", "CinnabarIsland_PokemonCenter_2F", "CinnabarIsland_Mart",
                 "PokemonMansion_1F", "PokemonMansion_2F", "PokemonMansion_3F", "PokemonMansion_B1F",
+                // Plan 19 · K7: Victory Road, the Indigo Plateau's Pokémon Center, the Pokémon League's rooms, and One
+                // Island with its rooms
+                "VictoryRoad_1F", "VictoryRoad_2F", "VictoryRoad_3F", "IndigoPlateau_PokemonCenter_1F",
+                "IndigoPlateau_PokemonCenter_2F", "PokemonLeague_LoreleisRoom", "PokemonLeague_BrunosRoom",
+                "PokemonLeague_AgathasRoom", "PokemonLeague_LancesRoom", "PokemonLeague_ChampionsRoom",
+                "PokemonLeague_HallOfFame", "OneIsland", "OneIsland_PokemonCenter_1F", "OneIsland_PokemonCenter_2F",
+                "OneIsland_House1", "OneIsland_House2", "OneIsland_Harbor",
             }
         },
         new()

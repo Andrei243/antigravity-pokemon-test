@@ -54,3 +54,53 @@ label Leave
   setvar VAR_MAP_SCENE_ROUTE22 2
   endscene
   end
+
+
+# The second wait (plan 19 · K7), once Giovanni is beaten and the eight Badges won (VAR_MAP_SCENE_ROUTE22 3, which the
+# Viridian City Gym sets): the rival comes along the road from the west as before, and battles with the team he means to
+# take to the League. This battle can't be lost and the game go on (FireRed's trainerbattle_no_intro). Afterwards he
+# heads for the gate ahead of the player (VAR_MAP_SCENE_ROUTE22 4).
+script LateRival
+  scene "The rival before the League's gate"
+  music "kanto/rival"
+  clearflag FLAG_HIDE_ROUTE_22_RIVAL
+  show route22_rival
+  speaker "{rival}"
+  say "{player}! Hold it right there!"
+  face player left
+  if var PLAYER_Y == 194 goto Across
+  if var PLAYER_Y == 195 goto OneDown
+  walk route22_rival down 2 right 7
+  goto Met
+label OneDown
+  walk route22_rival down 1 right 7
+  goto Met
+label Across
+  walk route22_rival right 7
+label Met
+  face route22_rival player
+  say "So you've got all eight Badges too. I knew you'd turn up sooner or later."
+  say "I've been training non-stop. My team's the strongest it's ever been, and I'm taking it all the way to the top."
+  say "Before I go, I'm going to show you the difference between us. Ready?"
+  if starter "Bulbasaur" goto VsCharmander
+  if starter "Charmander" goto VsSquirtle
+  battle route22_rival as "kanto_rival_route22_late_bulbasaur"
+  goto After
+label VsCharmander
+  battle route22_rival as "kanto_rival_route22_late_charmander"
+  goto After
+label VsSquirtle
+  battle route22_rival as "kanto_rival_route22_late_squirtle"
+label After
+  speaker "{rival}"
+  say "What? I lost? ...Fine. That just means I'll have to win where it really counts."
+  say "The Pokémon League is past Victory Road, beyond the gate. The trainers there are the best in the land."
+  say "I'll be waiting for you at the top, {player}. Don't keep me waiting too long!"
+  music "kanto/rival"
+  walk route22_rival left 7 fast
+  hide route22_rival
+  setflag FLAG_HIDE_ROUTE_22_RIVAL
+  music area
+  setvar VAR_MAP_SCENE_ROUTE22 4
+  endscene
+  end

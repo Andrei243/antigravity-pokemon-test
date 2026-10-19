@@ -2429,7 +2429,10 @@ public static class WorldMapBuilder
         // A way in that leads nowhere yet (a cave's mouth, a gate house, a hall without a door) is closed: one
         // can't walk into an opening and stand in the wall. A door is shut by itself.
         foreach (var from in file.Warps)
-            if (from.Landing != true && !map.WarpsAt(from.X, from.Z).Any() && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
+            // (a room is cut to its floor, and a way the original draws shut in its wall, the Pokémon League's doors, may
+            // lie past the cut: plan 19 · K7)
+            if (from.Landing != true && map.InBounds(from.X, from.Z) && !map.WarpsAt(from.X, from.Z).Any()
+                && map.GetGroundTile(from.X, from.Z) != TileType.Door) map.SetSolid(from.X, from.Z, true);
     }
 
     /// <summary>The way into an open area through one of its warps (Turnback Cave's doors, which are aimed as the player comes in).</summary>
