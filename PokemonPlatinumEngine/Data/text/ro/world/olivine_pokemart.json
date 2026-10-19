@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "My big sister went to sea on the S.S. Aqua. I'm saving up to go too!"
         ],
         "text": [
-          ""
+          "Sora mea mai mare a plecat pe mare cu S.S. Aqua. Strâng bani ca să plec și eu!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Steel types shrug off so many moves. Fire and Ground are what get through."
         ],
         "text": [
-          ""
+          "Pokémonii de tip Oțel rezistă la multe mișcări. Focul și Pământul trec de ei."
         ]
       }
     }

@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Don't they sell anything to tame wild Pokémon? I'd love a Pokémon that just comes along with me."
         ],
         "text": [
-          ""
+          "Nu vând nimic care să îmblânzească Pokémonii sălbatici? Mi-ar plăcea un Pokémon care să vină pur și simplu cu mine."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "A Max Repel keeps weak Pokémon away for longer than any other. Handy in the Mansion."
         ],
         "text": [
-          ""
+          "Un Spray Maxim ține Pokémonii slabi departe mai mult decât oricare altul. Util în Conac."
         ]
       }
     }

@@ -6,7 +6,7 @@
           "Kent"
         ],
         "text": [
-          ""
+          "Kent"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Sailor Kent: Up here you can see the whole bay. And down there, your defeat!"
         ],
         "text": [
-          ""
+          "Marinar Kent: De aici sus vezi tot golful. Iar acolo jos, înfrângerea ta!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Sailor Kent: It was my defeat I could see, it turns out."
         ],
         "text": [
-          ""
+          "Marinar Kent: Până la urmă, mi-am văzut propria înfrângere."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Denis"
         ],
         "text": [
-          ""
+          "Denis"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Bird Keeper Denis: My birds love the wind up here. Let's battle in it!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Denis: Păsărilor mele le place vântul de aici. Hai să ne luptăm în el!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Bird Keeper Denis: The wind turned against us."
         ],
         "text": [
-          ""
+          "Crescător de păsări Denis: Vântul ne-a întors spatele."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Theo"
         ],
         "text": [
-          ""
+          "Theo"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Bird Keeper Theo: The gulls circle the lighthouse all day. So do I, looking for a battle!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Theo: Pescărușii dau ocol farului toată ziua. Și eu, căutând o luptă!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Bird Keeper Theo: Time to circle back down."
         ],
         "text": [
-          ""
+          "Crescător de păsări Theo: E timpul să cobor în cercuri."
         ]
       }
     }

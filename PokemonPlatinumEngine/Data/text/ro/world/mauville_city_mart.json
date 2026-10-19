@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! What can I get for you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot servi?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "An X Speed in battle can turn a slow Pokémon into a quick one. Very handy against a tough foe."
         ],
         "text": [
-          ""
+          "O Viteză X în luptă poate face dintr-un Pokémon lent unul rapid. Foarte util cu un adversar dificil."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Guard Spec. keeps the other side from lowering your stats. A trainer's best friend!"
         ],
         "text": [
-          ""
+          "Garda Specială împiedică cealaltă tabără să-ți scadă statisticile. Cel mai bun prieten al unui antrenor!"
         ]
       }
     }

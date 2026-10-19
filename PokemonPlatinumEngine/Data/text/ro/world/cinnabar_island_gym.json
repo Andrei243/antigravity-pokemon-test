@@ -6,7 +6,7 @@
           "Blaine"
         ],
         "text": [
-          ""
+          "Blaine"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Quinn"
         ],
         "text": [
-          ""
+          "Quinn"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Burglar Quinn: You got it wrong! Now you have to answer to me!"
         ],
         "text": [
-          ""
+          "Hoț Quinn: Ai greșit! Acum trebuie să dai socoteală în fața mea!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Burglar Quinn: I should have stuck to quizzes."
         ],
         "text": [
-          ""
+          "Hoț Quinn: Trebuia să rămân la ghicitori."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Erik"
         ],
         "text": [
-          ""
+          "Erik"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Super Nerd Erik: Fire burns hotter than any question. Let me show you!"
         ],
         "text": [
-          ""
+          "Tocilar Erik: Focul arde mai tare decât orice întrebare. Îți arăt!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Super Nerd Erik: Extinguished!"
         ],
         "text": [
-          ""
+          "Tocilar Erik: Stins!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Avery"
         ],
         "text": [
-          ""
+          "Avery"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Super Nerd Avery: Wrong answer! A battle is the penalty!"
         ],
         "text": [
-          ""
+          "Tocilar Avery: Răspuns greșit! Pedeapsa e o luptă!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Super Nerd Avery: The door's open. You earned it."
         ],
         "text": [
-          ""
+          "Tocilar Avery: Ușa e deschisă. Ai meritat-o."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Ramon"
         ],
         "text": [
-          ""
+          "Ramon"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Burglar Ramon: I used to steal fire Pokémon. Now I train them. Watch!"
         ],
         "text": [
-          ""
+          "Hoț Ramon: Furam Pokémoni de foc. Acum îi antrenez. Privește!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Burglar Ramon: Robbed of a win!"
         ],
         "text": [
-          ""
+          "Hoț Ramon: Mi s-a furat victoria!"
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Derek"
         ],
         "text": [
-          ""
+          "Derek"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Super Nerd Derek: Blaine taught me everything I know about fire. Here's the first lesson!"
         ],
         "text": [
-          ""
+          "Tocilar Derek: Blaine m-a învățat tot ce știu despre foc. Iată prima lecție!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Super Nerd Derek: Class dismissed."
         ],
         "text": [
-          ""
+          "Tocilar Derek: Ora s-a terminat."
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Dusty"
         ],
         "text": [
-          ""
+          "Dusty"
         ]
       },
       "before": {
@@ -164,7 +164,7 @@
           "Burglar Dusty: No sneaking past this question! Battle me!"
         ],
         "text": [
-          ""
+          "Hoț Dusty: Nu treci pe furiș de întrebarea asta! Luptă cu mine!"
         ]
       },
       "after": {
@@ -172,7 +172,7 @@
           "Burglar Dusty: All right, sneak on."
         ],
         "text": [
-          ""
+          "Hoț Dusty: Bine, strecoară-te mai departe."
         ]
       }
     },
@@ -182,7 +182,7 @@
           "Zac"
         ],
         "text": [
-          ""
+          "Zac"
         ]
       },
       "before": {
@@ -190,7 +190,7 @@
           "Super Nerd Zac: Another wrong answer? Then it's my turn!"
         ],
         "text": [
-          ""
+          "Tocilar Zac: Încă un răspuns greșit? Atunci e rândul meu!"
         ]
       },
       "after": {
@@ -198,7 +198,7 @@
           "Super Nerd Zac: You can answer to Blaine now."
         ],
         "text": [
-          ""
+          "Tocilar Zac: Acum poți da socoteală în fața lui Blaine."
         ]
       }
     },
@@ -208,7 +208,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -218,7 +218,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -228,7 +228,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -238,7 +238,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -248,7 +248,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -258,7 +258,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -268,7 +268,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -278,7 +278,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -288,7 +288,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -298,7 +298,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -308,7 +308,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     },
@@ -318,7 +318,7 @@
           "Locked door"
         ],
         "text": [
-          ""
+          "Ușă încuiată"
         ]
       }
     }
@@ -329,7 +329,7 @@
         "An old photograph of two young scientists side by side. One of them has a fine moustache..."
       ],
       "text": [
-        ""
+        "O fotografie veche cu doi oameni de știință tineri, unul lângă altul. Unul dintre ei are o mustață frumoasă..."
       ]
     }
   }

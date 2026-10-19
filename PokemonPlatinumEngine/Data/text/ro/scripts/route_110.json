@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! I knew you'd come this way. I've been filling in the Pokédex for Dad all the way up from Slateport!"
       ],
       "text": [
-        ""
+        "{player}! Știam că o să treci pe aici. Am tot completat Pokédexul pentru tata, tocmai din Slateport!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "But how's your team doing? Let's see who's been training harder!"
       ],
       "text": [
-        ""
+        "Dar echipa ta cum se descurcă? Să vedem cine s-a antrenat mai mult!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Wow, you've got so much stronger! I'll have to catch up."
       ],
       "text": [
-        ""
+        "Uau, echipa ta a devenit mult mai puternică! Trebuie să te ajung din urmă."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Here, take this. I don't really need it. It's an Itemfinder!"
       ],
       "text": [
-        ""
+        "Poftim, ia asta. Mie nu-mi prea trebuie. E un Detector de Obiecte!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Use it and it beeps when something's buried close by. It even turns you to face the right way!"
       ],
       "text": [
-        ""
+        "Când îl folosești, bipăie dacă ceva e îngropat aproape. Te întoarce chiar și cu fața în direcția bună!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Right, I'm off to Mauville! See you around, {player}!"
       ],
       "text": [
-        ""
+        "Gata, plec spre Mauville! Ne mai vedem, {player}!"
       ]
     }
   ],
@@ -71,7 +71,7 @@
         "Edwin"
       ],
       "text": [
-        ""
+        "Edwin"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "A fine battle! Would you exchange numbers? I'll call when my collection grows."
       ],
       "text": [
-        ""
+        "O luptă frumoasă! Facem schimb de numere? Te sun când îmi crește colecția."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Register Edwin in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "Îl înregistrezi pe Edwin la Apelurile din PokéNav?"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Splendid. I'll tell you all about my newest finds!"
       ],
       "text": [
-        ""
+        "Splendid. Îți voi povesti totul despre cele mai noi descoperiri ale mele!"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "A pity. My collection would have impressed you."
       ],
       "text": [
-        ""
+        "Păcat. Colecția mea te-ar fi impresionat."
       ]
     }
   ],
@@ -113,7 +113,7 @@
         "Benjamin"
       ],
       "text": [
-        ""
+        "Benjamin"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "You're quick! Let's swap numbers and keep each other training."
       ],
       "text": [
-        ""
+        "Ce iuțeală! Hai să facem schimb de numere și să ne antrenăm unul pe altul."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Register Benjamin in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "Îl înregistrezi pe Benjamin la Apelurile din PokéNav?"
       ]
     },
     {
@@ -137,7 +137,7 @@
         "Great! I'll call you after my morning ride."
       ],
       "text": [
-        ""
+        "Grozav! Te sun după tura mea de dimineață."
       ]
     },
     {
@@ -145,7 +145,7 @@
         "Fair enough. See you on the road!"
       ],
       "text": [
-        ""
+        "Cum vrei. Ne vedem pe drum!"
       ]
     }
   ],
@@ -155,7 +155,7 @@
         "Abigail"
       ],
       "text": [
-        ""
+        "Abigail"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "You've got real power! Can I have your number? I want to keep up with you."
       ],
       "text": [
-        ""
+        "Ai forță adevărată! Pot să-ți iau numărul? Vreau să țin pasul cu tine."
       ]
     },
     {
@@ -171,7 +171,7 @@
         "Register Abigail in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "O înregistrezi pe Abigail la Apelurile din PokéNav?"
       ]
     },
     {
@@ -179,7 +179,7 @@
         "Thanks! I'll let you know how my Magnemite is doing."
       ],
       "text": [
-        ""
+        "Mersi! Îți spun cum se mai descurcă Magnemite."
       ]
     },
     {
@@ -187,7 +187,7 @@
         "Oh well. I'll just have to catch up by myself!"
       ],
       "text": [
-        ""
+        "Ei bine. O să te ajung din urmă singură!"
       ]
     }
   ],
@@ -197,7 +197,7 @@
         "Isabel"
       ],
       "text": [
-        ""
+        "Isabel"
       ]
     },
     {
@@ -205,7 +205,7 @@
         "Plusle and Minun want to be your friends! Will you register me in your PokéNav?"
       ],
       "text": [
-        ""
+        "Plusle și Minun vor să fie prietenii tăi! Mă înregistrezi în PokéNav?"
       ]
     },
     {
@@ -213,7 +213,7 @@
         "Register Isabel in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "O înregistrezi pe Isabel la Apelurile din PokéNav?"
       ]
     },
     {
@@ -221,7 +221,7 @@
         "Yay! I'll call with all their cutest news!"
       ],
       "text": [
-        ""
+        "Ura! Te sun cu toate noutățile lor drăgălașe!"
       ]
     },
     {
@@ -229,7 +229,7 @@
         "Aww. Plusle and Minun are pouting now."
       ],
       "text": [
-        ""
+        "Ooo. Acum Plusle și Minun s-au bosumflat."
       ]
     }
   ]

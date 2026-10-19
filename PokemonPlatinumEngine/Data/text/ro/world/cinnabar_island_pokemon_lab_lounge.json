@@ -4,7 +4,7 @@
       "Pokémon Lab"
     ],
     "text": [
-      ""
+      "Laboratorul Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "Coffee break! Even scientists need to rest their brains now and then."
         ],
         "text": [
-          ""
+          "Pauză de cafea! Și oamenii de știință trebuie să-și odihnească mintea din când în când."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Clifton"
         ],
         "text": [
-          ""
+          "Clifton"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "I'd love to swap one of my Pokémon for one of yours. If only the trading machine worked!"
         ],
         "text": [
-          ""
+          "Mi-ar plăcea să schimb unul dintre Pokémonii mei pe unul de-al tău. Dacă ar merge aparatul de schimb!"
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Norma"
         ],
         "text": [
-          ""
+          "Norma"
         ]
       },
       "dialog": {
@@ -58,7 +58,7 @@
           "I came here hoping to trade. The machine's broken, so I'm just enjoying the coffee."
         ],
         "text": [
-          ""
+          "Am venit aici sperând să fac schimb. Aparatul e stricat, așa că mă bucur doar de cafea."
         ]
       }
     }

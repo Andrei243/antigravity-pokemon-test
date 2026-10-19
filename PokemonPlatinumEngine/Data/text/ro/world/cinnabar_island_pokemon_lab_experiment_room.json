@@ -4,7 +4,7 @@
       "Pokémon Lab"
     ],
     "text": [
-      ""
+      "Laboratorul Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Garett"
         ],
         "text": [
-          ""
+          "Garett"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'd trade you one of my Pokémon in a heartbeat, but the trading machine's down."
         ],
         "text": [
-          ""
+          "Ți-aș da la schimb unul dintre Pokémonii mei pe loc, dar aparatul de schimb nu merge."
         ]
       }
     }

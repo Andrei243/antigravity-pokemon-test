@@ -5,7 +5,7 @@
         "Rydel"
       ],
       "text": [
-        ""
+        "Rydel"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to Rydel's Cycles! I'm Rydel, and I love bicycles more than anything."
       ],
       "text": [
-        ""
+        "Bine ai venit la Bicicletele lui Rydel! Eu sunt Rydel și iubesc bicicletele mai mult ca orice."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Say, you look like a traveller. Did you come all the way here from somewhere far off?"
       ],
       "text": [
-        ""
+        "Ia spune, se vede că ești în călătorie. Ai venit tocmai de departe până aici?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Then you'll need a bike to get around Hoenn! I'll give you one, free. Which kind would you like?"
       ],
       "text": [
-        ""
+        "Atunci o să ai nevoie de o bicicletă ca să umbli prin Hoenn! Îți dau una, gratis. Ce fel vrei?"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "The Mach Bike is built for speed, fast enough to ride up a muddy slope. The Acro Bike can hop and balance on rails."
       ],
       "text": [
-        ""
+        "Bicicleta Mach e făcută pentru viteză, destul de rapidă să urce o pantă noroioasă. Bicicleta Acro poate sări și merge pe șine."
       ]
     },
     {
@@ -47,9 +47,9 @@
         "Acro Bike"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Ce bicicletă iei?",
+        "Bicicleta Mach",
+        "Bicicleta Acro"
       ]
     },
     {
@@ -57,7 +57,7 @@
         "The Mach Bike! Hold on tight, it really flies."
       ],
       "text": [
-        ""
+        "Bicicleta Mach! Ține-te bine, chiar zboară."
       ]
     },
     {
@@ -65,7 +65,7 @@
         "The Acro Bike! You'll be doing tricks in no time."
       ],
       "text": [
-        ""
+        "Bicicleta Acro! O să faci acrobații cât ai clipi."
       ]
     },
     {
@@ -73,7 +73,7 @@
         "If you want to try the other kind, just come back. I'll swap them for you any time!"
       ],
       "text": [
-        ""
+        "Dacă vrei s-o încerci pe cealaltă, vino înapoi. Ți le schimb oricând!"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Oh, you're local? Then you probably don't need a bike from me. Come back if you change your mind!"
       ],
       "text": [
-        ""
+        "Oh, ești de pe aici? Atunci probabil nu-ți trebuie o bicicletă de la mine. Revino dacă te răzgândești!"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Want to swap your bike for the other kind?"
       ],
       "text": [
-        ""
+        "Vrei să-ți schimbi bicicleta pe cealaltă?"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Hm? You're not carrying your bike. Is it in your PC? Bring it along and I'll swap it."
       ],
       "text": [
-        ""
+        "Hm? Nu ai bicicleta la tine. E în PC? Adu-o și ți-o schimb."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Right, the Acro Bike for the Mach Bike. Here you go!"
       ],
       "text": [
-        ""
+        "Gata, Bicicleta Acro pentru Bicicleta Mach. Poftim!"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Come back whenever you feel like swapping again."
       ],
       "text": [
-        ""
+        "Revino oricând vrei s-o schimbi din nou."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Right, the Mach Bike for the Acro Bike. Here you go!"
       ],
       "text": [
-        ""
+        "Gata, Bicicleta Mach pentru Bicicleta Acro. Poftim!"
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Come back whenever you feel like swapping again."
       ],
       "text": [
-        ""
+        "Revino oricând vrei s-o schimbi din nou."
       ]
     },
     {
@@ -137,7 +137,7 @@
         "Glad you like the one you've got! Ride safely."
       ],
       "text": [
-        ""
+        "Mă bucur că-ți place cea pe care o ai! Mergi cu grijă."
       ]
     }
   ],
@@ -150,10 +150,10 @@
         "Close"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Manualul Bicicletei Mach: ce pagină?",
+        "Cum se merge",
+        "Pante noroioase",
+        "Închide"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "\"The Mach Bike is the fastest bike there is. Point it where you want to go and hold on!\""
       ],
       "text": [
-        ""
+        "„Bicicleta Mach e cea mai rapidă bicicletă care există. Îndreapt-o unde vrei să mergi și ține-te bine!”"
       ]
     },
     {
@@ -169,7 +169,7 @@
         "\"Only a Mach Bike at full speed can ride up a muddy slope. Anything slower can't get up it.\""
       ],
       "text": [
-        ""
+        "„Doar o Bicicletă Mach la viteză maximă poate urca o pantă noroioasă. Orice e mai încet nu poate.”"
       ]
     }
   ],
@@ -182,10 +182,10 @@
         "Close"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Manualul Bicicletei Acro: ce pagină?",
+        "Șine",
+        "Pante cu denivelări",
+        "Închide"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "\"The Acro Bike can hop onto a narrow rail and ride along it. It can't turn while it's up there!\""
       ],
       "text": [
-        ""
+        "„Bicicleta Acro poate sări pe o șină îngustă și merge de-a lungul ei. Acolo sus nu poate coti!”"
       ]
     },
     {
@@ -201,7 +201,7 @@
         "\"A bumpy slope is too rough for any other bike, but the Acro Bike can hop its way up.\""
       ],
       "text": [
-        ""
+        "„O pantă cu denivelări e prea aspră pentru orice altă bicicletă, dar Bicicleta Acro o urcă din salt în salt.”"
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The lighthouse keeps every ship off the rocks. Its light comes from a Pokémon, you know."
         ],
         "text": [
-          ""
+          "Farul ferește fiecare corabie de stânci. Lumina lui vine de la un Pokémon, să știi."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Jasmine's the Gym Leader here. She's gentle, but her Pokémon are hard as steel!"
         ],
         "text": [
-          ""
+          "Jasmine e Liderul Arenei de aici. E blândă, dar Pokémonii ei sunt tari ca oțelul!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Sailors come to Olivine from all over. Try the café: it's where we all eat."
         ],
         "text": [
-          ""
+          "Marinarii vin la Olivine de peste tot. Încearcă cafeneaua: acolo mâncăm toți."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "We'll be setting sail once the ship's ready. Not long now, my love."
         ],
         "text": [
-          ""
+          "Pornim pe mare când vasul e gata. Nu mai e mult, draga mea."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Promise you'll write every day while you're at sea!"
         ],
         "text": [
-          ""
+          "Promite-mi că o să-mi scrii în fiecare zi cât ești pe mare!"
         ]
       }
     }
@@ -97,7 +97,7 @@
         "Olivine City Pokémon Gym\nLeader: Jasmine\nThe steel-clad defence girl."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Olivine\nLider: Jasmine\nApărarea ei e îmbrăcată în oțel."
       ]
     },
     "T26_005+1": {
@@ -105,7 +105,7 @@
         "Olivine City\nThe port closest to foreign lands."
       ],
       "text": [
-        ""
+        "Orașul Olivine\nPortul cel mai apropiat de ținuturile străine."
       ]
     },
     "T26_006+1": {
@@ -113,7 +113,7 @@
         "Olivine Port\nThe S.S. Aqua sails from here."
       ],
       "text": [
-        ""
+        "Portul Olivine\nDe aici pleacă S.S. Aqua."
       ]
     },
     "T26_007+1": {
@@ -121,7 +121,7 @@
         "Glitter Lighthouse\nIts beam guides the ships home at night."
       ],
       "text": [
-        ""
+        "Farul Sclipitor\nLumina lui călăuzește noaptea corăbiile spre casă."
       ]
     }
   }

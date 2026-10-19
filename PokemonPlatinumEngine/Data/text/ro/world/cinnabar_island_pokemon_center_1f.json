@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "The Gym here is locked. Blaine lost the key somewhere, they say. Careless, for a quiz master!"
         ],
         "text": [
-          ""
+          "Arena de aici e încuiată. Se zice că Blaine și-a pierdut cheia pe undeva. Ce neatent, pentru un maestru al ghicitorilor!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Trading with friends is the quickest way to fill a Pokédex. Sadly, the link is closed for now."
         ],
         "text": [
-          ""
+          "Schimburile cu prietenii sunt cel mai rapid mod de a umple un Pokédex. Păcat că legătura e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "If you stop a Pokémon from evolving, it can learn some moves sooner. Patience pays!"
         ],
         "text": [
-          ""
+          "Dacă oprești un Pokémon din evoluție, poate învăța unele mișcări mai devreme. Răbdarea se răsplătește!"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Bill"
         ],
         "text": [
-          ""
+          "Bill"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Ready to set sail? Not quite yet, then."
         ],
         "text": [
-          ""
+          "Gata de plecare pe mare? Nu chiar încă, atunci."
         ]
       }
     }

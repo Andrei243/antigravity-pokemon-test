@@ -547,7 +547,7 @@
         "The water is spinning hard. Use Whirlpool to cross it?"
       ],
       "text": [
-        ""
+        "Apa se învârte cu putere. Folosești Vâltoare ca s-o traversezi?"
       ]
     },
     {
@@ -555,7 +555,7 @@
         "The water spins round and round. It's too strong to cross."
       ],
       "text": [
-        ""
+        "Apa se tot învârte în cerc. E prea puternică pentru a fi traversată."
       ]
     }
   ],
@@ -1179,7 +1179,7 @@
         "There's a secret switch behind the statue's eyes! Press it?"
       ],
       "text": [
-        ""
+        "În spatele ochilor statuii e un comutator secret! Îl apeși?"
       ]
     },
     {
@@ -1187,7 +1187,7 @@
         "Click! Somewhere in the house, barriers slid open and shut."
       ],
       "text": [
-        ""
+        "Clic! Undeva în casă, niște bariere s-au deschis și s-au închis."
       ]
     },
     {
@@ -1195,7 +1195,7 @@
         "Click! Somewhere in the house, barriers slid open and shut."
       ],
       "text": [
-        ""
+        "Clic! Undeva în casă, niște bariere s-au deschis și s-au închis."
       ]
     },
     {
@@ -1203,7 +1203,7 @@
         "Better not touch it."
       ],
       "text": [
-        ""
+        "Mai bine nu-l atingi."
       ]
     }
   ],
@@ -1213,7 +1213,7 @@
         "A barrier blocks the way. There must be a switch somewhere."
       ],
       "text": [
-        ""
+        "O barieră blochează drumul. Trebuie să fie un comutator pe undeva."
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to Olivine Port! The S.S. Aqua isn't sailing just now, I'm afraid. Come back another time."
         ],
         "text": [
-          ""
+          "Bine ai venit în Portul Olivine! Mă tem că S.S. Aqua nu navighează acum. Revino altă dată."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'm waiting for the ship to Kanto. I've been told it's a very fast one."
         ],
         "text": [
-          ""
+          "Aștept vasul spre Kanto. Mi s-a spus că e foarte rapid."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "The S.S. Aqua's the fastest ship in the world! One day I'll ride on it."
         ],
         "text": [
-          ""
+          "S.S. Aqua e cel mai rapid vas din lume! Într-o zi o să merg cu el."
         ]
       }
     }

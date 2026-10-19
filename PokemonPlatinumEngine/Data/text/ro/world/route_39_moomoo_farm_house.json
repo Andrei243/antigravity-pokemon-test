@@ -6,7 +6,7 @@
           "Farmer"
         ],
         "text": [
-          ""
+          "Fermier"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "If she gets her strength back, I'll have milk to sell again."
         ],
         "text": [
-          "",
-          ""
+          "Miltank-ii noștri dau cel mai bun lapte din Johto. Dar unul s-a îmbolnăvit și nu dă nicio picătură.",
+          "Dacă își recapătă puterile, o să am iar lapte de vânzare."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Farmer's Wife"
         ],
         "text": [
-          ""
+          "Soția fermierului"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "The sick one needs plenty of Berries, I'm sure of it. We've fed her all ours."
         ],
         "text": [
-          ""
+          "Cel bolnav are nevoie de multe Boabe, sunt sigură. I le-am dat pe toate ale noastre."
         ]
       }
     }

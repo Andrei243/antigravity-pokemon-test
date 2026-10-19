@@ -5,7 +5,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Uncle, please! I want to challenge the Gym. I know Ralts and I can do it!"
       ],
       "text": [
-        ""
+        "Unchiule, te rog! Vreau să provoc Arena. Știu că Ralts și cu mine putem!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Wally's Uncle"
       ],
       "text": [
-        ""
+        "Unchiul lui Wally"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Now, Wally, you've only just got here. Don't you think you're pushing yourself?"
       ],
       "text": [
-        ""
+        "Wally, abia ai ajuns aici. Nu crezi că te forțezi prea tare?"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "But we've been training! We can beat anyone!"
       ],
       "text": [
-        ""
+        "Dar ne-am antrenat! Putem să-i batem pe toți!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "{player}! You came at just the right time. Will you battle me? If I win, my uncle will see how strong I am!"
       ],
       "text": [
-        ""
+        "{player}! Ai venit exact la timp. Te lupți cu mine? Dacă înving, unchiul meu o să vadă cât de puternic sunt!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "{player}... Please, will you battle me? I have to show my uncle!"
       ],
       "text": [
-        ""
+        "{player}... Te rog, te lupți cu mine? Trebuie să-i arăt unchiului meu!"
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "Battle Wally?"
       ],
       "text": [
-        ""
+        "Te lupți cu Wally?"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Thank you! Ralts, here we go!"
       ],
       "text": [
-        ""
+        "Mulțumesc! Ralts, să mergem!"
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "I... I lost. You really are strong, {player}."
       ],
       "text": [
-        ""
+        "Am... am pierdut. Chiar ai forță, {player}."
       ]
     },
     {
@@ -119,7 +119,7 @@
         "Uncle... I'll go back to Verdanturf with you. I'm not ready for the Gym yet."
       ],
       "text": [
-        ""
+        "Unchiule... Mă întorc cu tine în Verdanturf. Încă nu sunt pregătit pentru Arenă."
       ]
     },
     {
@@ -127,7 +127,7 @@
         "{player}, thank you. Battling you showed me how much further I have to go."
       ],
       "text": [
-        ""
+        "{player}, mulțumesc. Lupta cu tine mi-a arătat cât de mult mai am de mers."
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Wally's Uncle"
       ],
       "text": [
-        ""
+        "Unchiul lui Wally"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "Don't be down, Wally. You battled well, and you'll only get stronger. Come visit us in Verdanturf, {player}!"
       ],
       "text": [
-        ""
+        "Nu fi trist, Wally. Te-ai luptat bine și vei deveni tot mai puternic. Vino să ne vizitezi în Verdanturf, {player}!"
       ]
     },
     {
@@ -151,7 +151,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -159,7 +159,7 @@
         "Oh... Then my uncle will never believe I'm strong enough."
       ],
       "text": [
-        ""
+        "Oh... Atunci unchiul meu n-o să creadă niciodată că sunt destul de puternic."
       ]
     }
   ],
@@ -169,7 +169,7 @@
         "Scott"
       ],
       "text": [
-        ""
+        "Scott"
       ]
     },
     {
@@ -177,7 +177,7 @@
         "I watched the whole thing. You didn't hold back against him, did you? That's how it should be!"
       ],
       "text": [
-        ""
+        "Am văzut totul. Nu te-ai menajat deloc cu el, nu? Așa și trebuie!"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "That boy will grow strong too, I can tell. Well, see you around!"
       ],
       "text": [
-        ""
+        "Băiatul ăsta o să devină și el puternic, se vede. Ei, ne mai vedem!"
       ]
     }
   ],
@@ -195,7 +195,7 @@
         "Wally's Uncle"
       ],
       "text": [
-        ""
+        "Unchiul lui Wally"
       ]
     },
     {
@@ -203,7 +203,7 @@
         "Wally's been so full of energy since he caught his Ralts. It's wonderful, but I do worry about him."
       ],
       "text": [
-        ""
+        "Wally e plin de energie de când și-a prins Ralts-ul. E minunat, dar îmi fac griji pentru el."
       ]
     },
     {
@@ -211,7 +211,7 @@
         "Could you battle Wally for me? He won't listen to me, but losing to you might teach him patience."
       ],
       "text": [
-        ""
+        "Te-ai lupta cu Wally pentru mine? Pe mine nu mă ascultă, dar o înfrângere cu tine l-ar putea învăța răbdarea."
       ]
     }
   ],
@@ -221,7 +221,7 @@
         "Boy"
       ],
       "text": [
-        ""
+        "Băiatul"
       ]
     },
     {
@@ -229,7 +229,7 @@
         "Have you seen the television in the Pokémon Center? The shows change all the time, so check it often!"
       ],
       "text": [
-        ""
+        "Ai văzut televizorul din Centrul Pokémon? Emisiunile se schimbă mereu, așa că uită-te des!"
       ]
     },
     {
@@ -237,7 +237,7 @@
         "I've been watching all the shows. There's always something new on!"
       ],
       "text": [
-        ""
+        "M-am uitat la toate emisiunile. Mereu e ceva nou!"
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Wally"
       ],
       "text": [
-        ""
+        "Wally"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}... I lost to you, but I'm not giving up. I'm going to get stronger, as strong as you!"
       ],
       "text": [
-        ""
+        "{player}... Am pierdut în fața ta, dar nu renunț. O să devin mai puternic, la fel de puternic ca tine!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The air here is so clean, I feel better already. Ralts and I are going to train every single day."
       ],
       "text": [
-        ""
+        "Aerul de aici e atât de curat, mă simt deja mai bine. Ralts și cu mine ne vom antrena în fiecare zi."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "I'll get stronger, {player}. Just you wait!"
       ],
       "text": [
-        ""
+        "O să devin mai puternic, {player}. Stai și-o să vezi!"
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Wally's Uncle"
       ],
       "text": [
-        ""
+        "Unchiul lui Wally"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Wally's in the next room, so to speak. He's been training with his Ralts from morning till night!"
       ],
       "text": [
-        ""
+        "Wally e în camera de alături, ca să zic așa. Se antrenează cu Ralts de dimineața până seara!"
       ]
     }
   ],
@@ -57,7 +57,7 @@
         "Wally's Aunt"
       ],
       "text": [
-        ""
+        "Mătușa lui Wally"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "My daughter's young man is so devoted. He's been digging a tunnel from Rustboro just to see her!"
       ],
       "text": [
-        ""
+        "Tânărul fiicei mele e atât de devotat. Sapă un tunel tocmai din Rustboro doar ca s-o vadă!"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "So it was you who helped break through the tunnel? My daughter's young man was digging for weeks!"
       ],
       "text": [
-        ""
+        "Deci tu ai ajutat la străpungerea tunelului? Tânărul fiicei mele a săpat săptămâni întregi!"
       ]
     }
   ],
@@ -83,7 +83,7 @@
         "Wanda"
       ],
       "text": [
-        ""
+        "Wanda"
       ]
     },
     {
@@ -91,7 +91,7 @@
         "Don't worry about my cousin Wally. He's frail, but he's tougher than he looks."
       ],
       "text": [
-        ""
+        "Nu-ți face griji pentru vărul meu Wally. E firav, dar e mai rezistent decât pare."
       ]
     },
     {
@@ -99,7 +99,7 @@
         "You must be {player}! Wally hasn't stopped talking about you since he came back from Mauville."
       ],
       "text": [
-        ""
+        "Tu trebuie să fii {player}! Wally n-a mai tăcut despre tine de când s-a întors din Mauville."
       ]
     }
   ]

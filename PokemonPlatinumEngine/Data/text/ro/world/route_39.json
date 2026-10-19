@@ -6,7 +6,7 @@
           "Eugene"
         ],
         "text": [
-          ""
+          "Eugene"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Sailor Eugene: The sea air makes my Pokémon tough. Shall I show you?"
         ],
         "text": [
-          ""
+          "Marinar Eugene: Aerul mării îi face pe Pokémonii mei duri. Să-ți arăt?"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Sailor Eugene: Tough, but not tough enough."
         ],
         "text": [
-          ""
+          "Marinar Eugene: Duri, dar nu destul."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Derek"
         ],
         "text": [
-          ""
+          "Derek"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Pokéfan Derek: Isn't my Pikachu the cutest thing you've ever seen? Battle us!"
         ],
         "text": [
-          ""
+          "Pokéfan Derek: Nu-i așa că Pikachu al meu e cel mai drăguț lucru pe care l-ai văzut? Luptă cu noi!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Pokéfan Derek: Still the cutest. Just not the strongest."
         ],
         "text": [
-          ""
+          "Pokéfan Derek: Tot cel mai drăguț. Doar nu cel mai puternic."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Ruth"
         ],
         "text": [
-          ""
+          "Ruth"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Pokéfan Ruth: My little ones love to battle. Be gentle with them!"
         ],
         "text": [
-          ""
+          "Pokéfan Ruth: Micuților mei le place să se lupte. Ai milă de ei!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Pokéfan Ruth: Oh, my poor darlings. Well done, though."
         ],
         "text": [
-          ""
+          "Pokéfan Ruth: Oh, bieții mei dragi. Bravo, totuși."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Nelson"
         ],
         "text": [
-          ""
+          "Nelson"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Psychic Nelson: I sensed you coming from the farm. I also sense a battle."
         ],
         "text": [
-          ""
+          "Medium Nelson: Te-am simțit venind de la fermă. Simt și o luptă."
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Psychic Nelson: That, I did not sense."
         ],
         "text": [
-          ""
+          "Medium Nelson: Asta n-am simțit-o."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Miltank"
         ],
         "text": [
-          ""
+          "Miltank"
         ]
       },
       "dialog": {
@@ -118,7 +118,7 @@
           "Moooo!"
         ],
         "text": [
-          ""
+          "Muuuu!"
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Miltank"
         ],
         "text": [
-          ""
+          "Miltank"
         ]
       },
       "dialog": {
@@ -136,7 +136,7 @@
           "Moo..."
         ],
         "text": [
-          ""
+          "Muu..."
         ]
       }
     },
@@ -146,7 +146,7 @@
           "Miltank"
         ],
         "text": [
-          ""
+          "Miltank"
         ]
       },
       "dialog": {
@@ -154,7 +154,7 @@
           "Mooo!"
         ],
         "text": [
-          ""
+          "Muuu!"
         ]
       }
     },
@@ -164,7 +164,7 @@
           "Miltank"
         ],
         "text": [
-          ""
+          "Miltank"
         ]
       },
       "dialog": {
@@ -172,7 +172,7 @@
           "Moo! Moo!"
         ],
         "text": [
-          ""
+          "Muu! Muu!"
         ]
       }
     }
@@ -183,7 +183,7 @@
         "Moomoo Farm\nFresh milk from happy Miltank."
       ],
       "text": [
-        ""
+        "Ferma Moomoo\nLapte proaspăt de la Miltank fericiți."
       ]
     },
     "R39_004+1": {
@@ -191,7 +191,7 @@
         "Moomoo Farm\nPlease close the gate behind you."
       ],
       "text": [
-        ""
+        "Ferma Moomoo\nVă rugăm să închideți poarta în urma voastră."
       ]
     },
     "R39_005+1": {
@@ -199,7 +199,7 @@
         "Route 39\nOlivine City is to the south."
       ],
       "text": [
-        ""
+        "Ruta 39\nOrașul Olivine e la sud."
       ]
     }
   }

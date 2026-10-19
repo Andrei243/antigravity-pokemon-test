@@ -4,7 +4,7 @@
       "Pokémon Lab"
     ],
     "text": [
-      ""
+      "Laboratorul Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Researcher"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "We have learned how to make machines that teach Pokémon moves. TMs, we call them!"
         ],
         "text": [
-          ""
+          "Am învățat să facem aparate care îi învață mișcări pe Pokémoni. Le spunem TM-uri!"
         ]
       }
     }
@@ -43,7 +43,7 @@
         "A pipe of glass and amber. Something old and golden is kept inside."
       ],
       "text": [
-        ""
+        "Un tub de sticlă și chihlimbar. Înăuntru e păstrat ceva vechi și auriu."
       ]
     },
     "CinnabarIsland_PokemonLab_ResearchRoom_EventScript_Computer": {
@@ -51,7 +51,7 @@
         "There's an e-mail on the screen. It's about a new kind of Pokémon made by people. Most of it is too technical to follow."
       ],
       "text": [
-        ""
+        "Pe ecran e un e-mail. E despre un nou fel de Pokémon făcut de oameni. Mare parte e prea tehnic ca să-l înțelegi."
       ]
     }
   }

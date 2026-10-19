@@ -5,7 +5,7 @@
         "Hiya! I'm working on bringing Pokémon back from ancient Fossils."
       ],
       "text": [
-        ""
+        "Salut! Lucrez la readucerea la viață a Pokémonilor din Fosile străvechi."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oh! You have a Fossil there, don't you? Shall I bring it back to life for you?"
       ],
       "text": [
-        ""
+        "Oh! Ai o Fosilă la tine, nu-i așa? Vrei să ți-o readuc la viață?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Right! Leave it with me. This will take a little while."
       ],
       "text": [
-        ""
+        "Bun! Las-o la mine. O să dureze puțin."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Go for a walk round the island, then come back. It'll be ready by then!"
       ],
       "text": [
-        ""
+        "Fă o plimbare prin insulă și apoi întoarce-te. Până atunci va fi gata!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "There you are! Your Fossil came back to life as {thing}!"
       ],
       "text": [
-        ""
+        "Iată-te! Fosila ta a revenit la viață ca {thing}!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player} received {thing}!"
       ],
       "text": [
-        ""
+        "{player} a primit {thing}!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Look after it. It's been waiting a very long time to see the world."
       ],
       "text": [
-        ""
+        "Ai grijă de el. A așteptat foarte mult ca să vadă lumea."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "But your team is full! Make room, and come back for it."
       ],
       "text": [
-        ""
+        "Dar echipa ta e plină! Fă loc și vino după el."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "If you ever find a Fossil, bring it to me. I'll show you what it used to be!"
       ],
       "text": [
-        ""
+        "Dacă găsești vreodată o Fosilă, adu-mi-o. Îți arăt ce a fost cândva!"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "No? Well, the machine will be here if you change your mind."
       ],
       "text": [
-        ""
+        "Nu? Ei bine, aparatul rămâne aici dacă te răzgândești."
       ]
     }
   ]

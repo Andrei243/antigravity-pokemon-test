@@ -6,7 +6,7 @@
           "Pharmacist"
         ],
         "text": [
-          ""
+          "Farmacistul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "If you ever know of a Pokémon that's very sick, come and tell me."
         ],
         "text": [
-          "",
-          ""
+          "Bine ai venit la farmacia din Cianwood, cea mai veche din Johto. Facem aici un leac care vindecă aproape orice Pokémon.",
+          "Dacă afli vreodată de un Pokémon foarte bolnav, vino să-mi spui."
         ]
       }
     }
