@@ -1,0 +1,60 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Blaine lived on this island long before the Lab was built. He knows every stone of the volcano."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They did strange experiments in that burned-out mansion, long ago.",
+          "Some say one of the Pokémon they made there broke loose. Brr..."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CinnabarIsland_EventScript_IslandSign": {
+      "en": [
+        "Cinnabar Island\nAn island of fire and science"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CinnabarIsland_EventScript_PokemonLabSign": {
+      "en": [
+        "Pokémon Lab"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,31 +1,34 @@
 # The Pokémon Mansion (FireRed's MUS_POKE_MANSION, which the burned house and the abandoned Power Plant share): an
-# uneasy, creeping piece in C minor, a lonely music-box line over plucked strings in a chromatic figure, held strings and
-# a slow bass that steps down by halves, for empty rooms where something terrible was once made. A place indoors
-# plays the same by day and night. Original composition for this game (plan 19 · K6, part b).
+# uneasy, creeping piece in C minor, a lonely music-box line over plucked strings picking out each bar's chord, held
+# strings with a diminished chord that never quite settles, and a slow bass on the roots, for empty rooms where
+# something terrible was once made. A place indoors plays the same by day and night. Original composition for this
+# game (plan 19 · K6, part b).
 title Pokémon Mansion
 tempo 92
 meter 4/4
 reverb 0.48
 night none
 
-track lead celesta vol=0.62 pan=0 rev=0.5
-  L o5 c2 e-4 g4 | o5 f+2 e-4 c4 | o5 a-2 g4 f4 | o5 g1 |
-  o5 c2 e-4 g4 | o6 c2 o5 b4 a-4 | o5 g4 f4 e-4 d4 | o5 c1 |
-  o5 e-2 g4 o6 c4 | o5 b2 a-4 f4 | o5 g2 f+4 e-4 | o5 d1 |
-  o5 c2 e-4 f+4 | o5 g2 a-4 b4 | o6 c4 o5 g4 e-4 d4 | o5 c1 |
+track lead celesta vol=0.8 pan=0 rev=0.5
+  L o5 c2 e-4 g4 | o5 f+2 e-4 c4 | o5 a-2 f4 c4 | o5 g1 |
+  o5 c2 e-4 g4 | o6 c2 o5 a-4 e-4 | o5 g4 f4 d4 f4 | o5 c1 |
+  o5 e-2 g4 o6 c4 | o5 b2 a-4 f4 | o5 g2 e-4 c4 | o5 d1 |
+  o5 c2 e-4 f+4 | o5 g2 b4 o6 d4 | o6 c4 o5 g4 e-4 c4 | o5 c1 |
 
-track plucks pizzicato vol=0.3 pan=0.3 rev=0.4
-  L o4 [ c8 e-8 g8 f+8 g8 e-8 c8 e-8 | c8 e-8 f+8 g8 f+8 e-8 c8 o3 b8 |
-  o4 c8 f8 a-8 g8 a-8 f8 c8 f8 | o3 b8 o4 d8 g8 f+8 g8 d8 o3 b8 o4 d8 | ]4
+track plucks pizzicato vol=0.4 pan=0.3 rev=0.4
+  L o4 c8 e-8 g8 e-8 c8 e-8 g8 e-8 | c8 e-8 f+8 e-8 c8 e-8 f+8 e-8 | c8 f8 a-8 f8 c8 f8 a-8 f8 | o3 b8 o4 d8 g8 d8 o3 b8 o4 d8 g8 d8 |
+  o4 c8 e-8 g8 e-8 c8 e-8 g8 e-8 | e-8 a-8 o5 c8 o4 a-8 e-8 a-8 o5 c8 o4 a-8 | o3 b8 o4 d8 f8 d8 o3 b8 o4 d8 f8 d8 | o4 c8 e-8 g8 e-8 c8 e-8 g8 e-8 |
+  o4 c8 e-8 g8 e-8 c8 e-8 g8 e-8 | d8 f8 b8 f8 d8 f8 b8 f8 | c8 e-8 g8 e-8 c8 e-8 g8 e-8 | o3 b8 o4 d8 f8 d8 o3 b8 o4 d8 f8 d8 |
+  o4 c8 e-8 f+8 e-8 c8 e-8 f+8 e-8 | d8 g8 b8 g8 d8 g8 b8 g8 | c8 e-8 g8 e-8 c8 e-8 g8 e-8 | c8 e-8 g8 e-8 c8 e-8 g8 e-8 |
 
-track pad strings vol=0.24 pan=-0.3 rev=0.5
+track pad strings vol=0.28 pan=-0.3 rev=0.5
   L o4 (c e- g)1 | (c e- f+)1 | (c f a-)1 | (<b d g)1 |
   (c e- g)1 | (e- a- >c)1 | (<b d f)1 | (c e- g)1 |
-  (c e- g)1 | (d f b)1 | (c e- f+)1 | (<b d f)1 |
+  (c e- g)1 | (d f b)1 | (c e- g)1 | (<b d f)1 |
   (c e- f+)1 | (d g b)1 | (c e- g)1 | (c e- g)1 |
 
-track bass contrabass vol=0.58 rev=0.25
-  L o3 c2 c2 | o2 b2 b2 | b-2 b-2 | a2 g2 |
-  o3 c2 c2 | o2 a-2 a-2 | g2 g2 | o3 c2 c2 |
-  o3 c2 c2 | o2 b2 b2 | b-2 b-2 | a2 g2 |
-  a-2 a-2 | g2 g2 | g2 g2 | o3 c1 |
+track bass contrabass vol=0.7 rev=0.25
+  L o3 c2 c2 | c2 c2 | f2 f2 | g2 g2 |
+  c2 c2 | a-2 a-2 | g2 g2 | c2 c2 |
+  c2 c2 | g2 g2 | c2 c2 | g2 g2 |
+  c2 c2 | g2 g2 | c2 c2 | c1 |

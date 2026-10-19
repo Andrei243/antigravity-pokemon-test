@@ -1154,5 +1154,49 @@
         "După socotelile mele, {daycare:1} al tău a crescut cu vreo {grown:1} niveluri."
       ]
     }
+  ],
+  "PokemonMansionSwitch": [
+    {
+      "en": [
+        "There's a secret switch behind the statue's eyes! Press it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click! Somewhere in the house, barriers slid open and shut."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click! Somewhere in the house, barriers slid open and shut."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Better not touch it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "PokemonMansionBarrier": [
+    {
+      "en": [
+        "A barrier blocks the way. There must be a switch somewhere."
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

@@ -1,0 +1,336 @@
+{
+  "people": {
+    "blaine": {
+      "name": {
+        "en": [
+          "Blaine"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gym_guy": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "quinn": {
+      "name": {
+        "en": [
+          "Quinn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Burglar Quinn: You got it wrong! Now you have to answer to me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Burglar Quinn: I should have stuck to quizzes."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Erik"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Erik: Fire burns hotter than any question. Let me show you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Erik: Extinguished!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "avery": {
+      "name": {
+        "en": [
+          "Avery"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Avery: Wrong answer! A battle is the penalty!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Avery: The door's open. You earned it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ramon": {
+      "name": {
+        "en": [
+          "Ramon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Burglar Ramon: I used to steal fire Pokémon. Now I train them. Watch!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Burglar Ramon: Robbed of a win!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "derek": {
+      "name": {
+        "en": [
+          "Derek"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Derek: Blaine taught me everything I know about fire. Here's the first lesson!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Derek: Class dismissed."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dusty": {
+      "name": {
+        "en": [
+          "Dusty"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Burglar Dusty: No sneaking past this question! Battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Burglar Dusty: All right, sneak on."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "zac": {
+      "name": {
+        "en": [
+          "Zac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Zac: Another wrong answer? Then it's my turn!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Zac: You can answer to Blaine now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_1a": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_1b": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_2a": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_2b": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_3a": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_3b": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_4a": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_4b": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_5a": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_5b": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_6a": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "door_6b": {
+      "name": {
+        "en": [
+          "Locked door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CinnabarIsland_Gym_EventScript_BlaineFujiPhoto": {
+      "en": [
+        "An old photograph of two young scientists side by side. One of them has a fine moustache..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "people": {
+    "fisher": {
+      "name": {
+        "en": [
+          "Claude"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Claude: The fish bite best near the volcano. Must be the warm water."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Claude: Nothing's biting now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher_2": {
+      "name": {
+        "en": [
+          "Nolan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Nolan: Don't splash about! You'll scare the fish!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Nolan: Now they're scared of you too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water": {
+      "name": {
+        "en": [
+          "Jack"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Jack: My Starmie and I swim together every day. We're unbeatable!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Jack: Beaten, after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water_2": {
+      "name": {
+        "en": [
+          "Jerome"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Jerome: Cinnabar's just south of here. You'll have to get past me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Jerome: Go on, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water_3": {
+      "name": {
+        "en": [
+          "Roland"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Roland: I'm training for a swim right round Kanto. Help me practise!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Roland: I need more practice than I thought."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

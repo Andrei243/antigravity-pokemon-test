@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Lab"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Coffee break! Even scientists need to rest their brains now and then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_2": {
+      "name": {
+        "en": [
+          "Clifton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'd love to swap one of my Pokémon for one of yours. If only the trading machine worked!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Norma"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came here hoping to trade. The machine's broken, so I'm just enjoying the coffee."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

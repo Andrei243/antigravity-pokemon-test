@@ -2064,6 +2064,13 @@ public static class WorldMapBuilder
         "magikarp" => "Magikarp",
         // FireRed's (plan 19 · K1): Speary, in a house of Viridian City
         "spearow" => "Spearow",
+        // Plan 19 · K6, part b: the legendary birds in the Seafoam Islands and the Power Plant, and the two Snorlax of
+        // Routes 12 and 16 (K5's, which stood as a person until now); Moltres and Mewtwo with them for K9
+        "articuno" => "Articuno",
+        "zapdos" => "Zapdos",
+        "moltres" => "Moltres",
+        "snorlax" => "Snorlax",
+        "mewtwo" => "Mewtwo",
         "uxie" => "Uxie",
         "mesprit" => "Mesprit",
         "azelf" => "Azelf",

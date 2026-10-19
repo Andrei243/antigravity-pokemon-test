@@ -169,6 +169,15 @@ surf 10-25
 old rod 10
 good rod 20
 super rod 40
+=== cinnabar_island
+Cinnabar Island
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+=== cinnabar_island_gym
+Cinnabar Island
+trainers 7, 34-41: kanto_burglar_dusty 37, kanto_burglar_quinn 36, kanto_burglar_ramon 41, kanto_super_nerd_avery 34, kanto_super_nerd_derek 41, kanto_super_nerd_erik 36, kanto_super_nerd_zac 37
 === dewford_town
 Dewford Town
 surf 5-35
@@ -476,6 +485,22 @@ surf 30-50
 old rod 3-15
 good rod 10-25
 super rod 20-55
+=== pokemon_mansion_1f
+Pokémon Mansion
+grass 26-36
+trainers 2, 29-34: kanto_scientist_ted 29, kanto_youngster_johnson 34
+=== pokemon_mansion_2f
+Pokémon Mansion
+grass 26-36
+trainers 1, 34: kanto_burglar_arnie 34
+=== pokemon_mansion_3f
+Pokémon Mansion
+grass 26-36
+trainers 2, 33-38: kanto_burglar_simon 38, kanto_scientist_braydon 33
+=== pokemon_mansion_b1f
+Pokémon Mansion
+grass 26-38
+trainers 2, 34: kanto_burglar_lewis 34, kanto_scientist_ivan 34
 === pokemon_tower_3f
 Pokémon Tower
 grass 13-20
@@ -496,6 +521,9 @@ trainers 3, 22-24: kanto_channeler_angelica 22, kanto_channeler_emilia 24, kanto
 Pokémon Tower
 grass 15-25
 trainers 3, 23-26: kanto_team_rocket_grunt_19 25, kanto_team_rocket_grunt_20 26, kanto_team_rocket_grunt_21 23
+=== power_plant
+Power Plant
+grass 22-35
 === ravaged_path
 Ravaged Path
 grass 3-6
@@ -653,9 +681,23 @@ trainers 10, 25-33: kanto_biker_billy 33, kanto_biker_jaxon 29, kanto_biker_niko
 Route 18
 grass 20-29
 trainers 3, 26-34: kanto_bird_keeper_jacob 26, kanto_bird_keeper_ramiro 34, kanto_bird_keeper_wilton 29
+=== route_19
+Route 19
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 11, 27-30: kanto_sis_and_bro_lia_luc 30, kanto_swimmer_female_alice 30, kanto_swimmer_female_anya 27, kanto_swimmer_female_connie 29, kanto_swimmer_male_axle 27, kanto_swimmer_male_david 29, kanto_swimmer_male_douglas 27, kanto_swimmer_male_matthew 30, kanto_swimmer_male_reece 29, kanto_swimmer_male_richard 30, kanto_swimmer_male_tony 30
 === route_2
 Route 2
 grass 2-5
+=== route_20
+Route 20
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 10, 28-35: kanto_bird_keeper_roger 30, kanto_picnicker_irene 30, kanto_picnicker_missy 31, kanto_swimmer_female_melissa 31, kanto_swimmer_female_nora 30, kanto_swimmer_female_shirley 30, kanto_swimmer_female_tiffany 35, kanto_swimmer_male_barry 31, kanto_swimmer_male_darrin 28, kanto_swimmer_male_dean 35
 === route_201
 Route 201
 grass 2-3
@@ -806,6 +848,22 @@ old rod 3-15
 good rod 10-35
 super rod 30-55
 trainers 2, 31-33: tuber_mariel 33, tuber_trenton 33
+=== route_21_north
+Route 21
+grass 17-28
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 4, 27-33: kanto_fisherman_ronald 28, kanto_fisherman_wade 27, kanto_sis_and_bro_lil_ian 33, kanto_swimmer_male_spencer 33
+=== route_21_south
+Route 21
+grass 17-28
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 5, 31-37: kanto_fisherman_claude 31, kanto_fisherman_nolan 33, kanto_swimmer_male_jack 37, kanto_swimmer_male_jerome 33, kanto_swimmer_male_roland 32
 === route_22
 Route 22
 grass 2-5
@@ -1056,6 +1114,29 @@ trainers 5, 31-37: kanto_black_belt_aaron 36, kanto_black_belt_hideki 32, kanto_
 === saffron_city_gym
 Saffron City
 trainers 7, 31-38: kanto_channeler_amanda 34, kanto_channeler_stacy 38, kanto_channeler_tasha 33, kanto_psychic_cameron 33, kanto_psychic_johan 31, kanto_psychic_preston 38, kanto_psychic_tyron 34
+=== seafoam_islands_1f
+Seafoam Islands
+grass 22-33
+=== seafoam_islands_b1f
+Seafoam Islands
+grass 22-35
+=== seafoam_islands_b2f
+Seafoam Islands
+grass 22-34
+=== seafoam_islands_b3f
+Seafoam Islands
+grass 24-34
+surf 25-40
+old rod 5
+good rod 5-15
+super rod 15-35
+=== seafoam_islands_b4f
+Seafoam Islands
+grass 26-36
+surf 25-40
+old rod 5
+good rod 5-15
+super rod 15-35
 === sendoff_spring
 Sendoff Spring
 grass 37-40

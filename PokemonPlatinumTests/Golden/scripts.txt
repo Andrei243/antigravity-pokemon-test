@@ -7038,6 +7038,246 @@ way 1, from answer 1
   + FLAG_HIDE_CHERRYGROVE_RIVAL
   = VAR_SCENE_CHERRYGROVE_CITY_OW 0 -> 4
   + seen cherrygrove.The red-haired boy
+=== cinnabar_island.GymSign
+from the tile read at 82,385 of Kanto
+way -
+  > Cinnabar Island Pokémon Gym\nLeader: Blaine\nRiddles and fire for every challenger.
+=== cinnabar_island.LockedGymDoor
+from the trigger at 80,385 of Kanto
+way -
+  > The door is locked. There's a keyhole, but no key in sight.
+=== cinnabar_island_gym.Blaine
+from Blaine at 5,4 of CinnabarIsland_Gym
+way 0
+  Blaine> Ho! So you solved my riddles. I am Blaine, and this volcano is my Gym!
+  Blaine> My Pokémon burn with the heat of the mountain itself. Have you packed any Burn Heals?
+  Blaine> I have burned out... You have earned the Volcano Badge!
+  > Lucas received the Volcano Badge from Blaine!
+  Blaine> With the Volcano Badge, your Pokémon can climb waterfalls with Waterfall outside of battle.
+  Blaine> Take this too. Fire at its fiercest!
+  > Lucas received the TM38!
+  > TM38 holds the move Fire Blast.
+  > Lucas put it away in the TMs & HMs pocket.
+  Blaine> TM38 is Fire Blast. It's the strongest fire move there is, if it hits!
+  * scene cinnabar_island_gym.Blaine
+  * battle kanto_leader_blaine Won
+  * fanfare FanfareBadge
+  * defeat kanto_burglar_quinn
+  * defeat kanto_super_nerd_erik
+  * defeat kanto_super_nerd_avery
+  * defeat kanto_burglar_ramon
+  * defeat kanto_super_nerd_derek
+  * defeat kanto_burglar_dusty
+  * defeat kanto_super_nerd_zac
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_CINNABAR_GYM_QUIZ_1
+  + FLAG_CINNABAR_GYM_QUIZ_2
+  + FLAG_CINNABAR_GYM_QUIZ_3
+  + FLAG_CINNABAR_GYM_QUIZ_4
+  + FLAG_CINNABAR_GYM_QUIZ_5
+  + FLAG_CINNABAR_GYM_QUIZ_6
+  + FLAG_DEFEATED_BLAINE
+  + FLAG_GOT_TM38_FROM_BLAINE
+  = VAR_MAP_SCENE_CINNABAR_ISLAND 0 -> 1
+  + beaten kanto_burglar_dusty
+  + beaten kanto_burglar_quinn
+  + beaten kanto_burglar_ramon
+  + beaten kanto_leader_blaine
+  + beaten kanto_super_nerd_avery
+  + beaten kanto_super_nerd_derek
+  + beaten kanto_super_nerd_erik
+  + beaten kanto_super_nerd_zac
+  = badges Kanto 0 -> 1000000
+  + seen cinnabar_island_gym.Blaine
+way 1, from answer 1
+  * battle kanto_leader_blaine Lost
+  * scene over, unseen
+=== cinnabar_island_gym.Door
+from Locked door at 11,22 of CinnabarIsland_Gym
+from Locked door at 11,23 of CinnabarIsland_Gym
+from Locked door at 17,16 of CinnabarIsland_Gym
+from Locked door at 17,9 of CinnabarIsland_Gym
+from Locked door at 18,16 of CinnabarIsland_Gym
+from Locked door at 18,9 of CinnabarIsland_Gym
+from Locked door at 26,9 of CinnabarIsland_Gym
+from Locked door at 27,9 of CinnabarIsland_Gym
+from Locked door at 5,17 of CinnabarIsland_Gym
+from Locked door at 5,9 of CinnabarIsland_Gym
+from Locked door at 6,17 of CinnabarIsland_Gym
+from Locked door at 6,9 of CinnabarIsland_Gym
+way -
+  > The door is locked tight. The quiz machine beside it might open it.
+=== cinnabar_island_gym.GymGuy
+from Gym Guide at 24,20 of CinnabarIsland_Gym
+way -
+  Guide> Yo, champ in the making! Blaine is a firebrand and a quiz fanatic.
+  Guide> Answer his machines right and the doors open. Water Pokémon will cool his fire down fast!
+=== cinnabar_island_gym.Quiz1
+from the tile read at 22,10 of CinnabarIsland_Gym
+from the tile read at 23,10 of CinnabarIsland_Gym
+way 0
+  > A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word.
+  > Question one. Caterpie evolves into Metapod. True?
+  > Correct! Go on through!
+  > The door slid open!
+  ? Question one. Caterpie evolves into Metapod. True? = Yes
+  * fanfare FanfareLevelUp
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_1
+way 1.0, from answer 1
+  > Sorry! Wrong answer!
+  Quinn> Wrong answer! The penalty is a battle with me!
+  > The door slid open!
+  ? Question one. Caterpie evolves into Metapod. True? = No
+  * sound error
+  * battle kanto_burglar_quinn Won
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_1
+  + beaten kanto_burglar_quinn
+way 1.1, from answer 2
+  * battle kanto_burglar_quinn Lost
+=== cinnabar_island_gym.Quiz2
+from the tile read at 15,2 of CinnabarIsland_Gym
+from the tile read at 16,2 of CinnabarIsland_Gym
+way 0.0
+  > A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word.
+  > Question two. A Fire-type move hits a Water-type Pokémon hard. True?
+  > Sorry! Wrong answer!
+  Avery> Wrong answer! The penalty is a battle with me!
+  > The door slid open!
+  ? Question two. A Fire-type move hits a Water-type Pokémon hard. True? = Yes
+  * sound error
+  * battle kanto_super_nerd_avery Won
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_2
+  + beaten kanto_super_nerd_avery
+way 0.1, from answer 2
+  * battle kanto_super_nerd_avery Lost
+way 1, from answer 1
+  > Correct! Go on through!
+  > The door slid open!
+  ? Question two. A Fire-type move hits a Water-type Pokémon hard. True? = No
+  * fanfare FanfareLevelUp
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_2
+=== cinnabar_island_gym.Quiz3
+from the tile read at 13,10 of CinnabarIsland_Gym
+from the tile read at 14,10 of CinnabarIsland_Gym
+way 0.0
+  > A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word.
+  > Question three. A Poké Ball can catch a Pokémon that belongs to another trainer. True?
+  > Sorry! Wrong answer!
+  Ramon> Wrong answer! The penalty is a battle with me!
+  > The door slid open!
+  ? Question three. A Poké Ball can catch a Pokémon that belongs to another trainer. True? = Yes
+  * sound error
+  * battle kanto_burglar_ramon Won
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_3
+  + beaten kanto_burglar_ramon
+way 0.1, from answer 2
+  * battle kanto_burglar_ramon Lost
+way 1, from answer 1
+  > Correct! Go on through!
+  > The door slid open!
+  ? Question three. A Poké Ball can catch a Pokémon that belongs to another trainer. True? = No
+  * fanfare FanfareLevelUp
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_3
+=== cinnabar_island_gym.Quiz4
+from the tile read at 13,17 of CinnabarIsland_Gym
+from the tile read at 14,17 of CinnabarIsland_Gym
+way 0.0
+  > A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word.
+  > Question four. Vulpix evolves into Ninetales once it reaches a high enough level. True?
+  > Sorry! Wrong answer!
+  Derek> Wrong answer! The penalty is a battle with me!
+  > The door slid open!
+  ? Question four. Vulpix evolves into Ninetales once it reaches a high enough level. True? = Yes
+  * sound error
+  * battle kanto_super_nerd_derek Won
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_4
+  + beaten kanto_super_nerd_derek
+way 0.1, from answer 2
+  * battle kanto_super_nerd_derek Lost
+way 1, from answer 1
+  > Correct! Go on through!
+  > The door slid open!
+  ? Question four. Vulpix evolves into Ninetales once it reaches a high enough level. True? = No
+  * fanfare FanfareLevelUp
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_4
+=== cinnabar_island_gym.Quiz5
+from the tile read at 1,18 of CinnabarIsland_Gym
+from the tile read at 2,18 of CinnabarIsland_Gym
+way 0
+  > A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word.
+  > Question five. A Thunder Stone makes Pikachu evolve. True?
+  > Correct! Go on through!
+  > The door slid open!
+  ? Question five. A Thunder Stone makes Pikachu evolve. True? = Yes
+  * fanfare FanfareLevelUp
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_5
+way 1.0, from answer 1
+  > Sorry! Wrong answer!
+  Dusty> Wrong answer! The penalty is a battle with me!
+  > The door slid open!
+  ? Question five. A Thunder Stone makes Pikachu evolve. True? = No
+  * sound error
+  * battle kanto_burglar_dusty Won
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_5
+  + beaten kanto_burglar_dusty
+way 1.1, from answer 2
+  * battle kanto_burglar_dusty Lost
+=== cinnabar_island_gym.Quiz6
+from the tile read at 1,10 of CinnabarIsland_Gym
+from the tile read at 2,10 of CinnabarIsland_Gym
+way 0.0
+  > A Pokémon quiz! Answer right and the door opens. Answer wrong, and a trainer will want a word.
+  > Question six. An Electric-type move can hurt a Ground-type Pokémon. True?
+  > Sorry! Wrong answer!
+  Zac> Wrong answer! The penalty is a battle with me!
+  > The door slid open!
+  ? Question six. An Electric-type move can hurt a Ground-type Pokémon. True? = Yes
+  * sound error
+  * battle kanto_super_nerd_zac Won
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_6
+  + beaten kanto_super_nerd_zac
+way 0.1, from answer 2
+  * battle kanto_super_nerd_zac Lost
+way 1, from answer 1
+  > Correct! Go on through!
+  > The door slid open!
+  ? Question six. An Electric-type move can hurt a Ground-type Pokémon. True? = No
+  * fanfare FanfareLevelUp
+  * sound door_slide
+  + FLAG_CINNABAR_GYM_QUIZ_6
+=== cinnabar_island_gym.Statue
+from the tile read at 23,20 of CinnabarIsland_Gym
+from the tile read at 27,20 of CinnabarIsland_Gym
+way -
+  > Cinnabar Island Pokémon Gym. Leader: Blaine. Winning trainers: Barry.
+=== cinnabar_island_pokemon_lab_experiment_room.FossilScientist
+from Scientist at 12,3 of CinnabarIsland_PokemonLab_ExperimentRoom
+way -
+  Scientist> Hiya! I'm working on bringing Pokémon back from ancient Fossils.
+  Scientist> If you ever find a Fossil, bring it to me. I'll show you what it used to be!
+=== cinnabar_island_pokemon_lab_research_room.MetronomeTutor
+from Researcher at 5,4 of CinnabarIsland_PokemonLab_ResearchRoom
+way 0
+  Researcher> I've been studying a move that could do anything at all! Shall I teach Metronome to one of your Pokémon?
+  Researcher> Splendid! Which one?
+  Researcher> Hmm, that one can't learn it, I'm afraid.
+  ? I've been studying a move that could do anything at all! Shall I teach Metronome to one of your Pokémon? = Yes
+  * open ChoosePokemon
+way 1, from answer 1
+  Researcher> No? A pity. Science waits for nobody.
+  ? I've been studying a move that could do anything at all! Shall I teach Metronome to one of your Pokémon? = No
 === common.Attendant
 from a trainer with lines of their own
 way -
@@ -8176,6 +8416,9 @@ from a trainer with lines of their own
 way -
   + FLAG_HIDE_BILL_HUMAN_SEA_COTTAGE
   + FLAG_HIDE_CERULEAN_RIVAL
+  + FLAG_HIDE_CINNABAR_BILL
+  + FLAG_HIDE_CINNABAR_POKECENTER_BILL
+  + FLAG_HIDE_CINNABAR_SEAGALLOP
   + FLAG_HIDE_OAK_IN_HIS_LAB
   + FLAG_HIDE_OAK_IN_PALLET_TOWN
   + FLAG_HIDE_PEWTER_CITY_RUNNING_SHOES_GUY
@@ -8376,6 +8619,21 @@ from a Pokémon standing in the field
 way -
   Machop> Machop!
   * cry Machop
+=== common.PokemonMansionBarrier
+from a trainer with lines of their own
+way -
+  > A barrier blocks the way. There must be a switch somewhere.
+=== common.PokemonMansionSwitch
+from a trainer with lines of their own
+way 0
+  > There's a secret switch behind the statue's eyes! Press it?
+  > Click! Somewhere in the house, barriers slid open and shut.
+  ? There's a secret switch behind the statue's eyes! Press it? = Yes
+  * sound door_slide
+  + FLAG_POKEMON_MANSION_SWITCH_STATE
+way 1, from answer 1
+  > Better not touch it.
+  ? There's a secret switch behind the statue's eyes! Press it? = No
 === common.RepelWoreOff
 from a trainer with lines of their own
 way -
@@ -11191,6 +11449,39 @@ way -
   + FLAG_HIDE_TOWER_FUJI
   + FLAG_RESCUED_MR_FUJI
   + seen pokemon_tower_7f.Mr Fuji
+=== power_plant.Electrode
+from Poké Ball at 30,38 of PowerPlant
+way 0
+  > The Poké Ball jolted and spun! It was an Electrode!
+  * cry Electrode
+  * wildbattle Electrode 34 Won
+  + FLAG_FOUGHT_POWER_PLANT_ELECTRODE_1
+  + FLAG_HIDE_POWER_PLANT_ELECTRODE_1
+way 1, from answer 1
+  * wildbattle Electrode 34 Lost
+from Poké Ball at 36,5 of PowerPlant
+way 0
+  > The Poké Ball jolted and spun! It was an Electrode!
+  * cry Electrode
+  * wildbattle Electrode 34 Won
+  + FLAG_FOUGHT_POWER_PLANT_ELECTRODE_2
+  + FLAG_HIDE_POWER_PLANT_ELECTRODE_2
+way 1, from answer 1
+  * wildbattle Electrode 34 Lost
+=== power_plant.Zapdos
+from Zapdos at 5,11 of PowerPlant
+way 0
+  > Gyaaah!\nSparks crackled through the air round the great bird!
+  * scene power_plant.Zapdos
+  * cry Zapdos
+  * wildbattle Zapdos 50 Won
+  * endscene
+  + FLAG_FOUGHT_ZAPDOS
+  + FLAG_HIDE_ZAPDOS
+  + seen power_plant.Zapdos
+way 1, from answer 1
+  * wildbattle Zapdos 50 Lost
+  * scene over, unseen
 === resort_area.Byron
 from Byron at 823,473 of Sinnoh
 way 0
@@ -12970,6 +13261,48 @@ way -
   + FLAG_HIDE_SANDGEM_TOWN_RIVAL
   = VAR_SANDGEM_TOWN_STATE 0 -> 1
   + seen sandgem_town.The assistant
+=== seafoam_islands_1f.FallFrom1F
+from the pit at 21,8 of SeafoamIslands_1F
+from the pit at 30,8 of SeafoamIslands_1F
+way -
+  > The boulder dropped through the hole to the floor below!
+  * sound bump
+  + FLAG_HIDE_SEAFOAM_1F_BOULDER_1
+=== seafoam_islands_b1f.FallFromB1F
+from the pit at 23,8 of SeafoamIslands_B1F
+from the pit at 28,8 of SeafoamIslands_B1F
+way -
+  > The boulder dropped through the hole to the floor below!
+  * sound bump
+  + FLAG_HIDE_SEAFOAM_B1F_BOULDER_1
+=== seafoam_islands_b2f.FallFromB2F
+from the pit at 24,8 of SeafoamIslands_B2F
+from the pit at 27,8 of SeafoamIslands_B2F
+way -
+  > The boulder dropped through the hole to the floor below!
+  * sound bump
+  + FLAG_HIDE_SEAFOAM_B2F_BOULDER_1
+=== seafoam_islands_b3f.FallFromB3F
+from the pit at 6,18 of SeafoamIslands_B3F
+from the pit at 9,18 of SeafoamIslands_B3F
+way -
+  > The boulder dropped through the hole to the floor below!
+  * sound bump
+  + FLAG_HIDE_SEAFOAM_B3F_BOULDER_1
+=== seafoam_islands_b4f.Articuno
+from Articuno at 9,2 of SeafoamIslands_B4F
+way 0
+  > Kyaaah!\nThe air turned bitterly cold as the great bird spread its wings!
+  * scene seafoam_islands_b4f.Articuno
+  * cry Articuno
+  * wildbattle Articuno 50 Won
+  * endscene
+  + FLAG_FOUGHT_ARTICUNO
+  + FLAG_HIDE_ARTICUNO
+  + seen seafoam_islands_b4f.Articuno
+way 1, from answer 1
+  * wildbattle Articuno 50 Lost
+  * scene over, unseen
 === sendoff_spring.Cynthia
 from Cynthia at 31,17 of SendoffSpring
 way -

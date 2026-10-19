@@ -526,5 +526,101 @@ partial class Harness
         ReadTo("Soul Badge from Koga"); Frames(10); Shot("ks92_the_soul_badge");
         ReadTo(null);
         Console.WriteLine($"  Fuchsia: HM04 {game.Bag.GetQuantity(ItemDatabase.Get("HM04")!)}, HM03 {game.Bag.GetQuantity(ItemDatabase.Get("HM03")!)}, Soul Badge {story.HasBadge("Kanto", "Soul")}, TM06 {game.Bag.GetQuantity(ItemDatabase.Get("TM06")!)}");
+
+        // ---- plan 19 · K6, part b: the Seafoam Islands, the Power Plant, Cinnabar's Gym and the Mansion's switch
+        keepLead = true;
+        // A legendary bird heals itself with Roost faster than a foe at one HP falls: its moves are spent at every menu,
+        // so it struggles, and it is beaten
+        void WinAgainstABird()
+        {
+            for (int guard = 0; guard < 60 && game.State == GameState.Battle; guard++)
+            {
+                foreach (var foe in game.Battle.EnemyParty?.Members ?? new List<Pokemon>())
+                    foreach (var move in foe.Moves) move.CurrentPP = 0;
+                Win();
+            }
+        }
+        // A boulder of 1F pushed with Strength along to its hole, and down
+        ComeThrough("SeafoamIslands_1F", 33, 10, Direction.Up);
+        var boulder = game.Map.NPCs.First(n => n.Key == "pushable_boulder_2");
+        void PushTo(NPC pushed, Direction way, int x, int y)
+        {
+            story.Set(FieldMoveRules.StrengthFlag);
+            var (dx, dy) = FieldMovement.Delta(way);
+            At(game.Map.Name, pushed.GridX - dx, pushed.GridY - dy, way);
+            engine.Steering = (way, false);
+            Until(() => (pushed.GridX, pushed.GridY) == (x, y) || engine.ScriptRunning, $"the boulder at {x},{y}", 900);
+            engine.Steering = null;
+            Until(() => !game.Player.IsPushing && !game.Player.IsMoving || engine.ScriptRunning, "the push to end", 120);
+        }
+        // (put beside its hole, as a push or two along the floor would leave it)
+        boulder.GridX = 30; boulder.GridY = 9;
+        Frames(10); Shot("ks93_a_seafoam_boulder");
+        PushTo(boulder, Direction.Up, 30, 8);
+        ReadTo("dropped through the hole"); Frames(10); Shot("ks94_the_boulder_falls");
+        ReadTo(null);
+        Console.WriteLine($"  Seafoam 1F: its second boulder gone {story.Has("FLAG_HIDE_SEAFOAM_1F_BOULDER_2")}, shown on B1F {!story.Has("FLAG_HIDE_SEAFOAM_B1F_BOULDER_2")}");
+        // Down B2F's hole into B3F's running current, and swept on down to B4F
+        story.Set("FLAG_HIDE_SEAFOAM_B3F_BOULDER_1");
+        story.Unset("FLAG_STOPPED_SEAFOAM_B3F_CURRENT");
+        ComeThrough("SeafoamIslands_B2F", 24, 9, Direction.Up);
+        engine.Steering = (Direction.Up, false);
+        Until(() => game.Map.Name == "SeafoamIslands_B3F", "the fall to B3F", 600);
+        engine.Steering = null;
+        Frames(40); Shot("ks95_swept_along_the_current");
+        Until(() => game.Map.Name == "SeafoamIslands_B4F", "the current's foot", 1200);
+        Frames(90); Shot("ks96_carried_onto_b4f");
+        Console.WriteLine($"  the current: on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}, {game.Player.Mode}");
+        game.Player.SetMode(TravelMode.OnFoot);
+        // Articuno on its ledge
+        story.Unset("FLAG_HIDE_ARTICUNO");
+        ComeThrough("SeafoamIslands_B4F", 9, 3, Direction.Up);
+        TalkTo("SeafoamIslands_B4F", "articuno");
+        ReadTo("bitterly cold"); Frames(10); Shot("ks97_articuno");
+        IntoBattle("Articuno's battle");
+        ToMainMenu(game.Battle); Shot("ks98_articunos_battle");
+        WinAgainstABird();
+        ReadTo(null);
+        Console.WriteLine($"  Articuno: fought {story.Has("FLAG_FOUGHT_ARTICUNO")}, hidden {story.Has("FLAG_HIDE_ARTICUNO")}");
+        // Zapdos in the Power Plant
+        ComeThrough("PowerPlant", 5, 12, Direction.Up);
+        TalkTo("PowerPlant", "zapdos");
+        ReadTo("Sparks crackled"); Frames(10); Shot("ks99_zapdos");
+        IntoBattle("Zapdos's battle");
+        ToMainMenu(game.Battle); Shot("ksa0_zapdos_battle");
+        WinAgainstABird();
+        ReadTo(null);
+        Console.WriteLine($"  Zapdos: fought {story.Has("FLAG_FOUGHT_ZAPDOS")}");
+        // The Mansion's switch behind a statue's eyes
+        ComeThrough("PokemonMansion_1F", 8, 30, Direction.Up);
+        At("PokemonMansion_1F", 5, 6, Direction.Up);
+        game.Interact();
+        ReadTo("secret switch"); Frames(10); Shot("ksa1_the_mansions_switch");
+        ReadTo("barriers slid open and shut"); Frames(10); Shot("ksa2_the_barriers_turn_over");
+        ReadTo(null);
+        Console.WriteLine($"  the Mansion's switch: {story.Has("FLAG_POKEMON_MANSION_SWITCH_STATE")}");
+        // Blaine's quiz and Blaine
+        game.Bag.AddItem(ItemDatabase.Get("Secret Key")!, 1);
+        story.Set("FLAG_HIDE_POKEMON_MANSION_B1F_SECRET_KEY");
+        ComeThrough("CinnabarIsland_Gym", 22, 11, Direction.Up);
+        game.Interact();
+        ReadTo("Question one"); Frames(10); Shot("ksa3_the_quiz");
+        ReadTo("Correct!"); Frames(10); Shot("ksa4_a_right_answer");
+        ReadTo(null); Frames(20); Shot("ksa5_the_door_open");
+        At("CinnabarIsland_Gym", 15, 3, Direction.Up);
+        game.Interact();
+        ReadTo("Wrong answer!"); Frames(10); Shot("ksa6_a_wrong_answer");
+        IntoBattle("the quiz's trainer");
+        Win();
+        ReadTo(null);
+        Console.WriteLine($"  the quiz: doors {string.Join(", ", Enumerable.Range(1, 6).Select(n => story.Has($"FLAG_CINNABAR_GYM_QUIZ_{n}")))}");
+        TalkTo("CinnabarIsland_Gym", "blaine");
+        ReadTo("solved my riddles"); Frames(10); Shot("ksa7_blaine");
+        IntoBattle("Blaine's battle");
+        ToMainMenu(game.Battle); Shot("ksa8_blaines_battle");
+        Win();
+        ReadTo("Volcano Badge from Blaine"); Frames(10); Shot("ksa9_the_volcano_badge");
+        ReadTo(null);
+        Console.WriteLine($"  Cinnabar: Volcano Badge {story.HasBadge("Kanto", "Volcano")}, TM38 {game.Bag.GetQuantity(ItemDatabase.Get("TM38")!)}, scene {story.Var("VAR_MAP_SCENE_CINNABAR_ISLAND")}");
     }
 }

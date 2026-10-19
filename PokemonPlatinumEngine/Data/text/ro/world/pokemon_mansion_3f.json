@@ -1,0 +1,164 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Mansion"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Simon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Burglar Simon: The floors here are full of holes. Mind you don't fall through to me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Burglar Simon: I fell for it instead."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Braydon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Braydon: I'm here to find the old research notes. You're in my way!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Braydon: No notes on losing, I'm afraid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_1": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_2": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_3": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_4": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_5": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_6": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_8": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_9": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "barrier_10": {
+      "name": {
+        "en": [
+          "Barrier"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "PokemonMansion_3F_EventScript_DiaryFeb6th": {
+      "en": [
+        "A diary, its pages singed.\n\"Winter. The Pokémon has given birth. We have named the little one after its mother.\""
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

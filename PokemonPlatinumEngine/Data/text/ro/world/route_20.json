@@ -1,0 +1,294 @@
+{
+  "people": {
+    "swimmer_f_water": {
+      "name": {
+        "en": [
+          "Melissa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Melissa: I swam all the way from Fuchsia City! Now I need a rest. And a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Melissa: Now I really need a rest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Missy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Missy: A picnic on the island, then a battle on the beach!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Missy: Back to the sandwiches, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_water_2": {
+      "name": {
+        "en": [
+          "Nora"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Nora: Shellder hide in the rocks round here. So do I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Nora: I should have stayed hidden."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Roger"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Roger: My birds fly over the sea every day. Can yours keep up?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Roger: They're grounded for today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water": {
+      "name": {
+        "en": [
+          "Dean"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Dean: One Pokémon, one battle. Let's keep it simple."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Dean: Simple, and short."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Irene"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Irene: The islands are full of caves. I'm too scared to go in, but I'm not scared of you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Irene: Now I'm scared of you too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water_2": {
+      "name": {
+        "en": [
+          "Barry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Barry: The water by the islands is freezing! Battle me so I warm up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Barry: Brr. Didn't help."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water_3": {
+      "name": {
+        "en": [
+          "Darrin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Darrin: Horsea love these warm currents. So do I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Darrin: Swept away..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_water_3": {
+      "name": {
+        "en": [
+          "Shirley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Shirley: Have you been inside the Seafoam Islands? It's icy in there!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Shirley: And you're as cool as the caves."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_water_4": {
+      "name": {
+        "en": [
+          "Tiffany"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Tiffany: My Seaking is the queen of this sea. Bow down!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Tiffany: Dethroned!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a legendary bird of ice lives deep inside the Seafoam Islands.",
+          "The currents down there are so strong, nobody can reach it. Maybe something could block them?"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route20_EventScript_SeafoamIslandsSign": {
+      "en": [
+        "Seafoam Islands"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

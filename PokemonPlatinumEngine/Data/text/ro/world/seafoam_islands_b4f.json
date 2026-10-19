@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "Seafoam Islands"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "articuno": {
+      "name": {
+        "en": [
+          "Articuno"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SeafoamIslands_B4F_EventScript_FastCurrentSign": {
+      "en": [
+        "Danger! The current here is fierce. Do not swim near the ledge."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SeafoamIslands_B4F_EventScript_BoulderHintSign": {
+      "en": [
+        "The boulders in these caves fall through holes to the floors below. Enough of them might change the way the water flows..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

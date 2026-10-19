@@ -1,0 +1,58 @@
+{
+  "displayName": {
+    "en": [
+      "Pokémon Lab"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Researcher"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We have learned how to make machines that teach Pokémon moves. TMs, we call them!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "CinnabarIsland_PokemonLab_ResearchRoom_EventScript_AmberPipe": {
+      "en": [
+        "A pipe of glass and amber. Something old and golden is kept inside."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "CinnabarIsland_PokemonLab_ResearchRoom_EventScript_Computer": {
+      "en": [
+        "There's an e-mail on the screen. It's about a new kind of Pokémon made by people. Most of it is too technical to follow."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
