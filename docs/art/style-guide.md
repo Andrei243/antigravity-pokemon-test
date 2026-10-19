@@ -267,6 +267,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Slateport (Wharf) | stucco | gable, sea teal `52,138,150` | shutters, flower boxes: the busy port of the market, the shipyard and the museum (plan 21 · H3) |
 | Mauville (Dynamo) | stucco | hip, electric yellow `220,182,64` | shutters: the city of bright lights and electric power under one roof of glass and steel, its Gym, bike shop and Game Corner (plan 21 · H3, part b) |
 | Verdanturf (Glade) | plaster | gable, moss green `96,140,82` | a chimney, flower boxes: the quiet town of clean air at the foot of the hills, fenced in wood (plan 21 · H3, part b) |
+| Fallarbor (Hayloft) | logs | gable, rust red `160,74,52` | a chimney, shutters: the farming town under the falling ash below Mt. Chimney, fenced in wood (plan 21 · H4, part a) |
 
 - **Snow on a roof**: instead of tiles, a 64×64 sheet of snow `226,234,246` with drift lines `204,216,238` three to six texels long and a blue shade `188,202,230` along the two rows above the eave; the fascia stays the building's own. Snowpoint's Center and Mart keep their shapes and signs under it.
 - **Kinds of building** (public buildings look the same in every town unless said):

@@ -23,7 +23,7 @@ public enum Op
     // People and the field
     Face, Walk, Move, WaitMoves, Emote, Show, Hide, Place, Warp, Fade, Wait, Camera,
     // Field moves (plan 02 · S2)
-    UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent,
+    UseMove, Surf, Climb, Fly, Teleport, Escape, SweetScent, SmashEncounter,
     // The Pokétch (plan 02 · S2)
     Poketch, PoketchApp,
     // The Great Marsh's Safari Game (plan 01 · M7)

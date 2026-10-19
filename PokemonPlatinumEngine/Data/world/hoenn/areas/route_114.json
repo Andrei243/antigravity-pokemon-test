@@ -1,0 +1,112 @@
+{
+  "key": "route_114",
+  "index": 33,
+  "name": "Route 114",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE110",
+  "nightMusic": "MUS_ROUTE110",
+  "encounters": "route_114",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Swablu", "level": 16 },
+    { "species": "Lotad", "level": 16 },
+    { "species": "Swablu", "level": 17 },
+    { "species": "Swablu", "level": 15 },
+    { "species": "Lotad", "level": 15 },
+    { "species": "Lombre", "level": 16 },
+    { "species": "Lombre", "level": 16 },
+    { "species": "Lombre", "level": 18 },
+    { "species": "Seviper", "level": 17 },
+    { "species": "Seviper", "level": 15 },
+    { "species": "Seviper", "level": 17 },
+    { "species": "Nuzleaf", "level": 15 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Marill", "level": 20, "maxLevel": 30 },
+    { "species": "Marill", "level": 10, "maxLevel": 20 },
+    { "species": "Marill", "level": 30, "maxLevel": 35 },
+    { "species": "Marill", "level": 5, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Barboach", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Barboach", "level": 25, "maxLevel": 30 },
+    { "species": "Barboach", "level": 30, "maxLevel": 35 },
+    { "species": "Barboach", "level": 20, "maxLevel": 25 },
+    { "species": "Barboach", "level": 35, "maxLevel": 40 },
+    { "species": "Barboach", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "rockSmash": [
+    { "species": "Geodude", "level": 10, "maxLevel": 15 },
+    { "species": "Geodude", "level": 5, "maxLevel": 10 },
+    { "species": "Geodude", "level": 15, "maxLevel": 20 },
+    { "species": "Geodude", "level": 15, "maxLevel": 20 },
+    { "species": "Geodude", "level": 15, "maxLevel": 20 }
+  ],
+  "rockSmashRate": 20,
+  "warps": [
+    { "x": 48, "z": 65, "to": "meteor_falls_1f_1r", "toWarp": 0 },
+    { "x": 69, "z": 7, "to": "route_114_fossil_maniacs_house", "toWarp": 0 },
+    { "x": 67, "z": 38, "to": "route_114_lanettes_house", "toWarp": 0 },
+    { "x": 46, "z": 48, "to": "terra_cave_entrance", "toWarp": 0 },
+    { "x": 47, "z": 6, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 71, "z": 45, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 155, "script": "BerryTreeScript" },
+    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 71, "z": 46, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 156, "script": "BerryTreeScript" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_east", "x": 55, "z": 67, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "script": "TRAINER_LENNY" },
+    { "id": "hiker_2", "looks": "hiker", "movement": "look_west", "x": 70, "z": 74, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_LUCAS_1" },
+    { "id": "camper", "looks": "camper", "movement": "look_east", "x": 62, "z": 52, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_SHANE" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_around", "x": 59, "z": 37, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_NANCY" },
+    { "id": "maniac", "looks": "maniac", "movement": "look_north", "x": 60, "z": 58, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_STEVE_1" },
+    { "id": "berry_tree_3", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 71, "z": 47, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 154, "script": "BerryTreeScript" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 47, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_114_RARE_CANDY", "item": "Rare Candy", "script": "Route114_EventScript_ItemRareCandy" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 51, "z": 39, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_114_PROTEIN", "item": "Protein", "script": "Route114_EventScript_ItemProtein" },
+    { "id": "breakable_rock", "looks": "breakable_rock", "movement": "look_around", "x": 52, "z": 45, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_RockSmash" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_east", "x": 59, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "Route114_EventScript_RoarGentleman" },
+    { "id": "poochyena", "looks": "poochyena", "movement": "look_east", "x": 59, "z": 14, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "Route114_EventScript_Poochyena" },
+    { "id": "man_4", "looks": "man_4", "movement": "wander_north_and_south", "x": 67, "z": 44, "facing": 0, "rangeX": 0, "rangeZ": 1, "script": "Route114_EventScript_Man" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_south", "x": 65, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_NOLAN" },
+    { "id": "fisherman_2", "looks": "fisherman", "movement": "look_west", "x": 59, "z": 28, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_CLAUDE" },
+    { "id": "man_5", "looks": "man_5", "movement": "rotate_counterclockwise", "x": 70, "z": 60, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_BERNIE_1" },
+    { "id": "breakable_rock_2", "looks": "breakable_rock", "movement": "look_around", "x": 69, "z": 55, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_3", "looks": "breakable_rock", "movement": "look_around", "x": 70, "z": 56, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_4", "looks": "breakable_rock", "movement": "look_around", "x": 62, "z": 71, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_5", "looks": "breakable_rock", "movement": "look_around", "x": 51, "z": 66, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 64, "z": 46, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_TYRA_AND_IVY" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_south", "x": 63, "z": 46, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_TYRA_AND_IVY" },
+    { "id": "picnicker_2", "looks": "picnicker", "movement": "look_north", "x": 68, "z": 22, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CHARLOTTE" },
+    { "id": "picnicker_3", "looks": "picnicker", "movement": "look_south_and_east", "x": 66, "z": 74, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_ANGELINA" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_around", "x": 71, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_114_ENERGY_POWDER", "item": "Energy Powder", "script": "Route114_EventScript_ItemEnergyPowder" },
+    { "id": "fisherman_3", "looks": "fisherman", "movement": "look_south_and_west", "x": 68, "z": 18, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_KAI" }
+  ],
+  "signs": [
+    { "x": 47, "z": 66, "type": 0, "script": "Route114_EventScript_MeteorFallsSign" },
+    { "x": 71, "z": 9, "type": 0, "script": "Route114_EventScript_FossilManiacsHouseSign" },
+    { "x": 65, "z": 40, "type": 0, "script": "Route114_EventScript_LanettesHouseSign" },
+    { "x": 60, "z": 59, "type": 2, "script": "", "item": "Carbos", "flag": "FLAG_HIDDEN_ITEM_ROUTE_114_CARBOS" },
+    { "x": 47, "z": 32, "type": 2, "script": "", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_ROUTE_114_REVIVE" }
+  ],
+  "triggers": []
+}

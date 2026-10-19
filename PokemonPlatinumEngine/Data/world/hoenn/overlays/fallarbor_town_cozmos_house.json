@@ -1,0 +1,10 @@
+{
+  // Professor Cozmo's house in Fallarbor Town (plan 21 · H4, part a): his wife waits for him while he is at Meteor
+  // Falls with Team Magma; he comes home with plan 21 · H4's next part (FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO)
+  "area": "fallarbor_town_cozmos_house",
+  "bgmTrack": "hoenn/fallarbor",
+  "people": {
+    "scientist_1": { "name": "Prof. Cozmo", "npcType": "scientist", "script": "Cozmo" },
+    "woman_2": { "name": "Cozmo's Wife", "script": "Wife" }
+  }
+}

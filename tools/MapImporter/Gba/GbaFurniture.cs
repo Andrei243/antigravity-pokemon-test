@@ -264,6 +264,28 @@ public static class GbaFurniture
                 (0x2E2, 0x2E2, PropType.Rug),
                 // The cupboard along the back wall, and the potted plants in the corners
                 (0x298, 0x298, PropType.KitchenCounter), (0x22A, 0x22A, PropType.Plant), (0x299, 0x299, PropType.Plant),
+                // Plan 21 · H4, part a: the other table of two by two (the old lady's rest stop, the Fossil Maniac's house, the
+                // glass workshop's bench with its kiln at the east end), the Fossil Maniac's case of rocks and his bookshelves,
+                // and the glass workshop's shelf of glasswork along the back wall
+                (0x24E, 0x24F, PropType.Table), (0x256, 0x257, PropType.Table), (0x25F, 0x25F, PropType.Table),
+                (0x30E, 0x30F, PropType.DisplayCase), (0x2AE, 0x2AF, PropType.Bookshelf), (0x2B3, 0x2B3, PropType.DisplayCase),
+            },
+            // Plan 21 · H3, part c: Mauville's Game Corner: its twelve slot machines in their two rows, the roulette tables, the
+            // prize counter across the back with the prizes on show behind it, and the plants in its corners
+            ["gTileset_MauvilleGameCorner"] = new (int, int, PropType)[]
+            {
+                (0x22C, 0x22D, PropType.SlotMachine), (0x234, 0x235, PropType.SlotMachine),
+                (0x222, 0x223, PropType.Table), (0x22A, 0x22B, PropType.Table), (0x232, 0x233, PropType.Table),
+                (0x24C, 0x24F, PropType.Counter), (0x254, 0x257, PropType.Counter),
+                (0x216, 0x217, PropType.DisplayCase), (0x237, 0x237, PropType.DisplayCase),
+                (0x22E, 0x22E, PropType.Plant), (0x236, 0x236, PropType.Plant),
+            },
+            // Plan 21 · H4, part a: a Battle Tent's lobby (Slateport's, Verdanturf's and Fallarbor's): the two counters
+            // either side of the way in to the bouts, their tops and their fronts
+            ["gTileset_BattleTent"] = new (int, int, PropType)[]
+            {
+                (0x268, 0x269, PropType.Counter), (0x26E, 0x26F, PropType.Counter), (0x270, 0x270, PropType.Counter),
+                (0x277, 0x287, PropType.Counter),
             },
         };
 

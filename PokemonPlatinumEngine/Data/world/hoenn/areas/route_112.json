@@ -1,0 +1,63 @@
+{
+  "key": "route_112",
+  "index": 18,
+  "name": "Route 112",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE110",
+  "nightMusic": "MUS_ROUTE110",
+  "encounters": "route_112",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Numel", "level": 15 },
+    { "species": "Numel", "level": 15 },
+    { "species": "Marill", "level": 15 },
+    { "species": "Numel", "level": 14 },
+    { "species": "Numel", "level": 14 },
+    { "species": "Marill", "level": 14 },
+    { "species": "Numel", "level": 16 },
+    { "species": "Marill", "level": 16 },
+    { "species": "Numel", "level": 16 },
+    { "species": "Numel", "level": 16 },
+    { "species": "Numel", "level": 16 },
+    { "species": "Numel", "level": 16 }
+  ],
+  "landRate": 20,
+  "warps": [
+    { "x": 188, "z": 47, "to": "route_112_cable_car_station", "toWarp": 0 },
+    { "x": 189, "z": 47, "to": "route_112_cable_car_station", "toWarp": 1 },
+    { "x": 166, "z": 66, "to": "jagged_pass", "toWarp": 0 },
+    { "x": 167, "z": 66, "to": "jagged_pass", "toWarp": 1 },
+    { "x": 171, "z": 56, "to": "fiery_path", "toWarp": 0 },
+    { "x": 182, "z": 30, "to": "fiery_path", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "route112_grunt_1", "looks": "magma_member_m", "movement": "look_north", "x": 186, "z": 50, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE_112_TEAM_MAGMA", "script": "Route112_EventScript_MagmaGrunts" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_west_and_east", "x": 184, "z": 54, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_BRICE" },
+    { "id": "camper", "looks": "camper", "movement": "look_south", "x": 189, "z": 69, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_LARRY" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "rotate_counterclockwise", "x": 182, "z": 66, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_CAROL" },
+    { "id": "hiker_2", "looks": "hiker", "movement": "look_north_and_east", "x": 175, "z": 60, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_TRENT_1" },
+    { "id": "route112_grunt_2", "looks": "magma_member_m", "movement": "look_north", "x": 187, "z": 50, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_112_TEAM_MAGMA", "script": "Route112_EventScript_MagmaGrunts" },
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 187, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 153, "script": "BerryTreeScript" },
+    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 188, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 151, "script": "BerryTreeScript" },
+    { "id": "berry_tree_3", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 189, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 150, "script": "BerryTreeScript" },
+    { "id": "berry_tree_4", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 190, "z": 26, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 152, "script": "BerryTreeScript" },
+    { "id": "hiker_3", "looks": "hiker", "movement": "walk_south_and_north", "x": 168, "z": 70, "facing": 1, "rangeX": 0, "rangeZ": 3, "script": "Route112_EventScript_Hiker" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 174, "z": 63, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_112_NUGGET", "item": "Nugget", "script": "Route112_EventScript_ItemNugget" },
+    { "id": "man_5", "looks": "man_5", "movement": "look_south_and_east", "x": 191, "z": 27, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_BRYANT" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_north_and_west", "x": 191, "z": 31, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_SHAYLA" }
+  ],
+  "signs": [
+    { "x": 179, "z": 64, "type": 0, "script": "Route112_EventScript_MtChimneySign" },
+    { "x": 182, "z": 57, "type": 0, "script": "Route112_EventScript_MtChimneyCableCarSign" },
+    { "x": 164, "z": 69, "type": 0, "script": "Route112_EventScript_RouteSignLavaridge" }
+  ],
+  "triggers": []
+}

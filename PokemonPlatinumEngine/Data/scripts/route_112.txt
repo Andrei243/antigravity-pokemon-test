@@ -1,0 +1,19 @@
+# Route 112 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route112/scripts.inc). The two grunts of Team Magma before the cable car's station talk between themselves
+# when spoken to, and give away where the rest of their crew went: to Fallarbor, for a meteorite. They stand there
+# until the scene at Meteor Falls (FLAG_HIDE_ROUTE_112_TEAM_MAGMA).
+
+
+script MagmaGrunts
+  speaker "Team Magma Grunt"
+  face route112_grunt_1 route112_grunt_2
+  say "Hey, is the boss really going to wake that thing up?"
+  face route112_grunt_2 route112_grunt_1
+  say "Sounds like it. Only first, he needs a meteorite to do it."
+  face route112_grunt_1 route112_grunt_2
+  say "Oh, so that's why the rest of the crew went off to Fallarbor!"
+  face route112_grunt_2 route112_grunt_1
+  say "You got it. And till they come back, nobody gets past us. Got that?"
+  face route112_grunt_1 down
+  face route112_grunt_2 down
+  end

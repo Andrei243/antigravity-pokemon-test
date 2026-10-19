@@ -1,0 +1,12 @@
+{
+  // Fallarbor Town's Pokémon Center (plan 21 · H4, part a), its floor as Emerald lays it out. Lanette, who runs the
+  // storage system, is resting here until she is spoken to, and goes home to Route 114 (fallarbor_town_pokemon_center_1f.txt)
+  "area": "fallarbor_town_pokemon_center_1f",
+  "bgmTrack": "hoenn/fallarbor",
+  "people": {
+    "fallarbor_nurse": { "name": "Nurse", "script": "Nurse" },
+    "girl_3": { "name": "Girl", "dialog": [ "There's a man at the edge of town who's mad about fossils. He's always digging!" ] },
+    "expert_m": { "name": "Old Man", "dialog": [ "I plant trees that can stand the falling ash. Only the hardiest grow in Fallarbor." ] },
+    "fallarbor_lanette": { "name": "Lanette", "npcType": "lady", "script": "Lanette" }
+  }
+}

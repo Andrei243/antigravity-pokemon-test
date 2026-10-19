@@ -706,6 +706,8 @@ script Rock
   if no end
   usemove "Rock Smash"
   setflag own
+  # Where the place keeps Pokémon under its rocks (Hoenn: Emerald's RockSmashWildEncounter), one may come out
+  smashencounter
   end
 label NoBadge
   text "The rock is riddled with cracks. Rock Smash could break it, but not outside battle until the right Gym Badge is won."
@@ -725,6 +727,7 @@ label Early
 script UseRockSmash
   usemove "Rock Smash"
   setflag own
+  smashencounter
   end
 
 
@@ -1401,6 +1404,7 @@ script HoennNewGame
   call HoennChapterTwo
   call HoennChapterThree
   call HoennChapterFour
+  call HoennChapterFive
   return
 
 
@@ -1497,4 +1501,26 @@ script HoennChapterFour
   setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
   setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
   setflag FLAG_HIDE_TRICK_HOUSE_ENTRANCE_MAN
+  return
+
+# The people of Hoenn's fifth stretch, Route 111 to Meteor Falls (plan 21 · H4, part a), hidden until their scenes, as
+# Emerald's new game hides them: the three Winstrates who come out of their door one after another, Gabby and Ty on
+# Route 111 (all three of their places: their interview is left for later), the desert's fossil and the player's fall
+# from Mirage Tower, Lanette at home until she is met in Fallarbor's Pokémon Center, Team Aqua at Meteor Falls until
+# they come in after Team Magma, Professor Cozmo at home until Mt. Chimney, and Scott in Fallarbor's Battle Tent.
+# HoennNewGame calls it; a save from before it was written (version 28) runs it as it loads. It may only set flags and
+# variables, and ends in return.
+script HoennChapterFive
+  setflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
+  setflag FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
+  setflag FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+  setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1
+  setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2
+  setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3
+  setflag FLAG_HIDE_ROUTE_111_DESERT_FOSSIL
+  setflag FLAG_HIDE_ROUTE_111_PLAYER_DESCENT
+  setflag FLAG_HIDE_LANETTES_HOUSE_LANETTE
+  setflag FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+  setflag FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
+  setflag FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
   return

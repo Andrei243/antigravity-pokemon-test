@@ -1239,6 +1239,7 @@ public static class WorldMapBuilder
             UnownTable = file?.UnownTable ?? 0
         };
         if (overlay?.EvolutionSites != null) area.EvolutionSites.AddRange(overlay.EvolutionSites);
+        if (overlay?.Zones != null) area.Zones.AddRange(overlay.Zones);
 
         static void Fill(List<WildEncounterEntry> table, List<AreaEncounter>? slots, int[] weights)
         {
@@ -1278,6 +1279,9 @@ public static class WorldMapBuilder
         area.RodRates[(int)FishingRod.Old] = file?.OldRodRate ?? 0;
         area.RodRates[(int)FishingRod.Good] = file?.GoodRodRate ?? 0;
         area.RodRates[(int)FishingRod.Super] = file?.SuperRodRate ?? 0;
+        // What hides under the area's breakable rocks (plan 21 · H4; Emerald's rock_smash_mons, weighted as the water's)
+        Fill(area.RockSmashEncounters, file?.RockSmash, WorldAreaFile.WaterSlotWeights);
+        area.RockSmashRate = file?.RockSmashRate ?? 0;
         return area;
     }
 
@@ -1477,7 +1481,7 @@ public static class WorldMapBuilder
         town is Architecture.Timber or Architecture.Plaster or Architecture.Clapboard or Architecture.Cottage or Architecture.Farm
             or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber or Architecture.Evergreen or Architecture.Breeze
             or Architecture.Bayside or Architecture.Sapling or Architecture.Meadow or Architecture.Woodland or Architecture.Heritage or Architecture.Islet
-            or Architecture.Glade;
+            or Architecture.Glade or Architecture.Hayloft;
 
     /// <summary>
     /// Cuts a set of tiles into rectangles, the largest first: a house is one, a museum with a wing two. Ties go

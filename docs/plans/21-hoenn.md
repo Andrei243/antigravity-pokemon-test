@@ -260,8 +260,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     rematches; Emerald's own berry rules (the Wailmer Pail waters nothing yet); cover rows of the tilesets not yet walked
     (`out/hoenn/report.md`); Walda's phrase; the Devon employee of Route 116 (shown once Steven has his letter).
 - [ ] H3 Dewford, Slateport and Mauville (part a done 2026-10-18, wave 32: Mr. Briney's boat to Slateport's museum; part b
-  done 2026-10-19, wave 33: Route 110 to Verdanturf Town, both bikes; left for a part c: the Battle Tents' bouts and
-  Mauville's Game Corner)
+  done 2026-10-19, wave 33: Route 110 to Verdanturf Town, both bikes; part c, Mauville's Game Corner, done 2026-10-20,
+  wave 34; left: the Battle Tents' bouts)
   - **Played**: Mr. Briney sails from his cottage to Dewford Town (a scene: the jetty, the sailing song, the camera over
     the sea, Dewford's jetty), back again, and on to Route 109's beach once Steven has his letter, and back to Dewford
     (`VAR_BRINEY_LOCATION`, Emerald's numbers); Dewford's fisherman and the Old Rod, the hall's word of the week and
@@ -328,7 +328,50 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     still from H2 and H3a: Hoenn's rematches (Emerald's rematch table is not read: a call's chance and steps, more than
     small), Norman's call on the first voyage, the museum's plain exhibits, Walda's phrase, Emerald's berry rules, the
     boat prop's voyage (the camera pan and warp stand-in kept, the user's answer pending).
-- [ ] H4 The desert, Mt. Chimney and Lavaridge
+  - **Part c, done** (wave 34, with H4's first part): Mauville's Game Corner is open: its twelve machines are Platinum's
+    slot machine (plan 06 · R16b), its coin counter and its TM exchange Emerald's (`gamecorner prize mauville`), the
+    Coin Case traded for a Harbor Mail (9109) that Slateport's Mart sells on a counter of its own; the doll counter's
+    prizes and the girl's starter doll are decorations (H10), the roulette tables are covered over. Song `game_corner`.
+    **Still left of H3**: the three Battle Tents' bouts (Slateport's on R18b's Factory rules with Emerald's level-30
+    rentals; Verdanturf's and Fallarbor's wait for plan 14 · B9's Palace and Arena), Emerald's own slot machine and
+    roulette, the Cycling Road's timed challenge, the move tutors, Birch's number on Route 110, the cracked floors (H12).
+- [ ] H4 The desert, Mt. Chimney and Lavaridge (part a done 2026-10-20, wave 34: Route 111 to Meteor Falls)
+  - **Played**: the Winstrates one after another at their door (Victor, Victoria, Vivi, Vicky; a family lost to part
+    way is put back as Route 111 is come to again) and Victoria's Macho Brace; the desert's storm turning back whoever
+    has no Go-Goggles at its south and west edges (Emerald's `ViciousSandstormTrigger`); the old lady's rest stop; the
+    girl's daily Razz Berry; Team Magma's two grunts before Route 112's cable car; the glass workshop's Soot Sack, the ash
+    gathered on Route 113's grass and Emerald's five flutes made of it; Lanette in Fallarbor's Pokémon Center and at home
+    (`FLAG_SYS_PC_LANETTE`); Cozmo's wife; Route 114's TM05 and daily berry, the Fossil Maniac's brother's TM28; Team
+    Magma taking the meteorite at Meteor Falls, Archie and his grunts after them, Route 112's grunts gone. Every scene a
+    `scene`. Story version 28 (`common.HoennChapterFive`, called by `HoennNewGame`; another session of wave 34 may also
+    raise the version: renumber at the merge). Rulings: "The desert, Fallarbor and Mauville's Game Corner".
+  - **Opened**: Routes 111 to 114, Fiery Path, Fallarbor Town (`Architecture.Hayloft`, style guide row first) and seven
+    rooms (the Battle Tent's lobby alone), Meteor Falls' first room, the Winstrates' house and the rest stop, the cable
+    car's station (the ride is part b's), the glass workshop, the Fossil Maniac's house and tunnel, Lanette's house and
+    Mauville's Game Corner; 123 areas. Shut: the desert's doors (Mirage Tower, the Desert Ruins), the Trainer Hill,
+    Jagged Pass, Route 115 and Meteor Falls' rooms behind the falls, Terra Cave's hollows, the Desert Underpass. A spawn
+    for Fallarbor; Fallarbor on the PokéNav's map.
+  - **Engine**: an overlay's `zones` (weather and a song of a stretch of an area: the desert's sandstorm and Route 113's
+    ash, Emerald's script-set weather by column and row; `MapArea.ZoneAt`, the music changing at a zone's edge); Rock
+    Smash rolls Emerald's `rock_smash_mons` (`Map.SmashOut`, `WildEncounterRules.RockSmashMeets`, the script command
+    `smashencounter`; Platinum's rocks hide nothing); ash gathered with the Soot Sack (`GameEngine.GatherAsh`); on a GBA
+    map a step along a stair's slope is never a cliff (Emerald's elevation-0 stairs join any two levels: Route 114's ways
+    down to Meteor Falls climb two levels in a tile). Items Go-Goggles, Soot Sack, Harbor Mail, Meteorite (9107 to 9110)
+    in the importer's overrides, with Romanian names.
+  - **Looks and music**: `magma_grunt` (the `Team Magma` class); the old woman, the cook, a girl, the reporter and her
+    cameraman fold onto existing looks (the old woman of Route 110 and elsewhere had stood as the boy). Songs (ours,
+    rendered clash-free, −19.6 to −20.5 LUFS, not yet heard): `desert`, `route113`, `fallarbor`, `cave_of_origin` (Meteor
+    Falls), `game_corner`. Team Magma's eye theme is Team Aqua's (a Hoenn `eye_magma` is left).
+  - **Tests**: `HoennStoryTests` (the stretch three ways by look and starter, the Game Corner and its Coin Case, a rock
+    smashed in Hoenn and none of Platinum's, an older save, the songs); `HoennTests` (the region's maps, the walk to every
+    room). Harness: the `hoenn` mode's `h70`–`h91` and `hs99`–`hs113`; `hs97` re-shot on the longest run of Route 110's decks (a bridge over its canal: the Cycling Road itself is imported as raised ground, not a deck, so the shot still misses it). Rooms furnished: Mauville's Game Corner (its slot machines, roulette tables and prize counter), the Battle Tents' lobbies (their two counters, Slateport's and Verdanturf's too) and the generic houses' second table, case and bookshelves (`GbaFurniture.HoennRanges`); the cable car's station is still dark blocks, and so is Verdanturf's Battle Tent outside (its tiles have no label and lie away from trees, so they are taken for bare rock, not a building at its door).
+  - **Left for H4's part b**: the cable car and Mt. Chimney (Maxie, Tabitha, the Meteorite back for Cozmo, the Lava Cookie
+    lady), Jagged Pass, Lavaridge Town (its `Architecture` row) and its rooms, Flannery and the Heat Badge, the rival's
+    Go-Goggles, the desert and its trainers, Mirage Tower and its fossils, the Desert Ruins' door (shut until the Regis),
+    Route 115 and Meteor Falls' inner rooms, Petalburg's Gym with Norman and the Balance Badge, `route113` is written but
+    `mt_chimney`, `cable_car`, `eye_magma` and the bosses' themes are not; Gabby and Ty; the Secret Power man.
+    Still from H2 and H3: Hoenn's rematches (Emerald's table), Emerald's berry rules (the Wailmer Pail waters nothing),
+    Walda's phrase, the museum's plain exhibits, the Trick House's furniture, Verdanturf's Battle Tent outside. `PokemonTests` stalls on this machine before its first test (a testhost at 3 s of CPU for twenty minutes, as other sessions' did the same hour): not run to its end this session.
 - [ ] H5 Dive and the sea floor
 - [ ] H6 Route 118 to Fortree
 - [ ] H7 Lilycove, Mt. Pyre and the hideouts

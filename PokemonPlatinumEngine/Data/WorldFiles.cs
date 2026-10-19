@@ -780,6 +780,33 @@ public sealed class WorldOverlayFile
     /// pushed onto one whatever stands there, and coming to rest on it runs the tile's script, the boulder its subject.
     /// </summary>
     public List<OverlayTileScript>? Pits { get; set; }
+
+    /// <summary>
+    /// Stretches of the area with weather or music of their own (plan 21 · H4), in tiles of the area's matrix: where the
+    /// original sets the weather by script, by the player's row or column (Emerald's <c>setweather</c> in Route 111's desert
+    /// and Route 113's ash), and changes the song with it. The first zone a tile is in wins; outside every zone the area's
+    /// own weather and music hold.
+    /// </summary>
+    public List<OverlayZone>? Zones { get; set; }
+}
+
+/// <summary>
+/// A stretch of an area with its own weather or music (<see cref="WorldOverlayFile.Zones"/>): a rectangle of tiles of the
+/// area's matrix, from <c>x</c>, <c>z</c>, <c>width</c> tiles across and <c>depth</c> down.
+/// </summary>
+[JsonConverter(typeof(OneLine<OverlayZone>))]
+public sealed class OverlayZone
+{
+    public int X { get; set; }
+    public int Z { get; set; }
+    public int Width { get; set; } = 1;
+    public int Depth { get; set; } = 1;
+    /// <summary>The weather's name as the headers give it (<c>Sandstorm</c>, <c>SlowAshfall</c>); left out, the area's.</summary>
+    public string? Weather { get; set; }
+    /// <summary>The song played there; left out, the area's.</summary>
+    public string? BgmTrack { get; set; }
+
+    public bool Holds(int x, int z) => x >= X && x < X + Width && z >= Z && z < Z + Depth;
 }
 
 /// <summary>Where one of an area's warps leads: a tile of a hand-made map.</summary>

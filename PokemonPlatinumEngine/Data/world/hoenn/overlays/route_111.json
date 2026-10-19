@@ -1,0 +1,64 @@
+{
+  // Route 111 (plan 21 · H4, part a): the long road north from Mauville City past the desert to Route 113, with the
+  // Winstrate family's house at its foot and the old lady's rest stop at its head. The desert in the middle blows a
+  // sandstorm (its zones, by the rows and columns Emerald's sandstorm and sun triggers mark) that nobody crosses without
+  // Go-Goggles: its edge's triggers turn the player back (route_111.txt). Mirage Tower, the Desert Ruins and the Trainer
+  // Hill's door stay shut; Gabby and Ty's interview is left for later (they are hidden)
+  "area": "route_111",
+  "bgmTrack": "hoenn/route110",
+  "trees": "Round",
+  "locked": [ 1, 3, 4 ],
+  "zones": [
+    { "x": 215, "z": 37, "width": 24, "depth": 68, "weather": "Sandstorm", "bgmTrack": "hoenn/desert" },
+    { "x": 211, "z": 40, "width": 4, "depth": 23, "weather": "Sandstorm", "bgmTrack": "hoenn/desert" }
+  ],
+  "triggers": [
+    { "trigger": 1, "script": "PushBackDown" },
+    { "trigger": 2, "script": "PushBackDown" },
+    { "trigger": 3, "script": "PushBackDown" },
+    { "trigger": 9, "script": "PushBackDown" },
+    { "trigger": 5, "script": "PushBackLeft" },
+    { "trigger": 6, "script": "PushBackLeft" },
+    { "trigger": 7, "script": "PushBackLeft" },
+    { "trigger": 8, "script": "PushBackLeft" },
+    { "trigger": 14, "script": "PushBackLeft" },
+    { "trigger": 15, "script": "PushBackLeft" }
+  ],
+  "people": {
+    "route111_victor": { "name": "Victor", "script": "Victor", "still": true },
+    "route111_victoria": { "name": "Victoria", "still": true, "dialog": [ "The whole family battles! It's how we spend our evenings." ] },
+    "route111_vivi": { "name": "Vivi", "still": true, "dialog": [ "I'm the youngest, but I'm not the weakest!" ] },
+    "route111_vicky": { "name": "Vicky", "still": true, "dialog": [ "My grandchildren keep me young, dear." ] },
+    "man_3": { "name": "Man", "dialog": [ "A tower appears in the desert now and then. When you go to look, it's gone. It's like a mirage!" ] },
+    "man_4": { "name": "Man", "dialog": [ "The Winstrates over there are a whole family of trainers. They'll battle you one after another!" ] },
+    "girl_1": { "name": "Girl", "script": "Girl" },
+    "hiker_3": { "name": "Hiker", "dialog": [ "The sand's blowing too hard to see a thing in there. Without goggles, your eyes won't stay open." ] },
+    "route111_rock_smash_man": { "name": "Man", "script": "RockSmashMan" },
+    "picnicker": { "name": "Heidi", "trainer": { "dialogueBefore": "Picnicker Heidi: The desert's no place for a picnic. So let's have a battle instead!", "dialogueAfter": "Picnicker Heidi: There's sand in my sandwiches now." } },
+    "camper": { "name": "Drew", "trainer": { "dialogueBefore": "Camper Drew: I've pitched my tent right by the sand. Want to test my Pokémon?", "dialogueAfter": "Camper Drew: Time to pack up and go home." } },
+    "hiker": { "name": "Dusty", "trainer": { "dialogueBefore": "Ruin Maniac Dusty: There are ruins buried under that sand. But first, a battle!", "dialogueAfter": "Ruin Maniac Dusty: I've been unearthed!" } },
+    "camper_2": { "name": "Beau", "trainer": { "dialogueBefore": "Camper Beau: My Pokémon were made for the desert. Let's see if yours were!", "dialogueAfter": "Camper Beau: We'll dry off and try again." } },
+    "picnicker_2": { "name": "Becky", "trainer": { "dialogueBefore": "Picnicker Becky: I keep spinning round to look for the Mirage Tower. Oh! A trainer!", "dialogueAfter": "Picnicker Becky: Now I'm dizzy as well as beaten." } },
+    "picnicker_3": { "name": "Irene", "trainer": { "dialogueBefore": "Picnicker Irene: I came for the fresh air, but a battle's even better!", "dialogueAfter": "Picnicker Irene: I need some more fresh air now." } },
+    "camper_3": { "name": "Travis", "trainer": { "dialogueBefore": "Camper Travis: You look like you've walked a long way. Rest by battling me!", "dialogueAfter": "Camper Travis: That wasn't very restful." } },
+    "black_belt": { "name": "Daisuke", "trainer": { "dialogueBefore": "Black Belt Daisuke: I train on this road every morning. You'll make a fine partner!", "dialogueAfter": "Black Belt Daisuke: More training. Much more." } },
+    "woman_5": { "name": "Brooke", "trainer": { "dialogueBefore": "Cool Trainer Brooke: I've got a balanced team. Can you break through it?", "dialogueAfter": "Cool Trainer Brooke: Balanced, but not enough." } },
+    "man_3_2": { "name": "Wilton", "trainer": { "dialogueBefore": "Cool Trainer Wilton: I could tell from far off you'd be a good one. Let's battle!", "dialogueAfter": "Cool Trainer Wilton: I was right about you." } },
+    "camper_4": { "name": "Tyron", "trainer": { "dialogueBefore": "Camper Tyron: Mauville's bright lights are behind us. Out here it's just us and our Pokémon!", "dialogueAfter": "Camper Tyron: I'll head back to the lights now." } },
+    "woman_2": { "name": "Celina", "trainer": { "dialogueBefore": "Aroma Lady Celina: My Roselia's scent is sweet. Its battling isn't!", "dialogueAfter": "Aroma Lady Celina: A bitter ending." } },
+    "picnicker_4": { "name": "Bianca", "trainer": { "dialogueBefore": "Picnicker Bianca: Have you come from Mauville? Then you'll want a battle before the long walk!", "dialogueAfter": "Picnicker Bianca: Good luck on the long walk!" } },
+    "man_5": { "name": "Hayden", "trainer": { "dialogueBefore": "Kindler Hayden: My fire burns hotter than the desert sun! Feel it!", "dialogueAfter": "Kindler Hayden: My flame's down to a flicker." } },
+    "hiker_2": { "name": "Bryan", "trainer": { "dialogueBefore": "Ruin Maniac Bryan: I came looking for ruins and found you instead. Battle!", "dialogueAfter": "Ruin Maniac Bryan: Buried in defeat." } },
+    "picnicker_5": { "name": "Celia", "trainer": { "dialogueBefore": "Picnicker Celia: I got lost in the sandstorm and ended up here. Let's battle while I'm here!", "dialogueAfter": "Picnicker Celia: Now I'm lost and beaten." } },
+    "camper_5": { "name": "Branden", "trainer": { "dialogueBefore": "Camper Branden: Goggles are the first thing you pack for the desert. And Pokémon!", "dialogueAfter": "Camper Branden: Should have packed better Pokémon." } }
+  },
+  "signs": {
+    "Route111_EventScript_WinstrateHouseSign": "The Winstrate Family's House\nTrainers welcome!",
+    "Route111_EventScript_RouteSignMauville": "Route 111\nSouth: Mauville City",
+    "Route111_EventScript_RouteSign112": "Route 111\nWest: Route 112",
+    "Route111_EventScript_RouteSign113": "Route 111\nWest: Route 113",
+    "Route111_EventScript_OldLadysRestStopSign": "Old Lady's Rest Stop\nCome in and put your feet up!",
+    "Route111_EventScript_TrainerTipsSpAtkSpDef": "Trainer Tips\nA Pokémon with a high Sp. Atk hits hard with special moves, and a high Sp. Def takes them well.",
+    "Route111_EventScript_TrainerHillSign": "Trainer Hill\nThis way. Closed for building work."
+  }
+}

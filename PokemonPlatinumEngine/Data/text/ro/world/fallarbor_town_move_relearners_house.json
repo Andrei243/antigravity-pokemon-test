@@ -1,0 +1,25 @@
+{
+  "people": {
+    "move_relearner": {
+      "name": {
+        "en": [
+          "Move Relearner"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm the Move Relearner. I can remind a Pokémon of a move it once knew, in exchange for a Heart Scale.",
+          "My memory's a bit foggy today, though. Come back another time, would you?"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

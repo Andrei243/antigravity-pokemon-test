@@ -988,4 +988,178 @@ public class HoennStoryTests
             Assert.True(MusicLibrary.Exists(song), song);
         Assert.Equal("hoenn/bicycle", MusicDirector.Resolve(MusicRole.Bicycle, "Hoenn", MusicLibrary.Exists));
     }
+
+    private static Game PastVerdanturf(int starter, PlayerLook look)
+    {
+        var game = PastTheMuseum(starter, look);
+        game.Story.GiveBadge(RegionDatabase.Hoenn, "Dynamo");
+        game.Story.Set("FLAG_DEFEATED_WALLY_MAUVILLE");
+        game.Story.Set("FLAG_RUSTURF_TUNNEL_OPENED");
+        game.Story.SetVar("VAR_PETALBURG_GYM_STATE", 5);
+        return game;
+    }
+
+    [Theory]
+    [InlineData(0, PlayerLook.Boy)]
+    [InlineData(1, PlayerLook.Girl)]
+    [InlineData(2, PlayerLook.Boy)]
+    public void TheFifthStretchPlaysFromTheWinstratesToMeteorFalls(int starter, PlayerLook look)
+    {
+        var game = PastVerdanturf(starter, look);
+
+        // Route 111: the Winstrates, one after another at their door, and Victoria's Macho Brace inside
+        game.Arrive("Hoenn", 213, 118);
+        Assert.NotNull(game.Present("route111_victor"));
+        Assert.Null(game.Present("route111_victoria"));
+        var family = game.Talk("route111_victor");
+        foreach (string id in new[] { "hoenn_victor", "hoenn_victoria", "hoenn_vivi", "hoenn_vicky" })
+        {
+            Assert.Contains(family.Log, l => l.StartsWith($"battle {id}"));
+            Assert.True(game.Story.HasDefeated(id), id);
+        }
+        foreach (string key in new[] { "route111_victor", "route111_victoria", "route111_vivi", "route111_vicky" })
+            Assert.Null(game.Present(key));
+        game.Arrive("Route111_WinstrateFamilysHouse", 3, 6);
+        game.Talk("winstrate_house_victoria");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Macho Brace")!));
+        game.Talk("winstrate_house_victoria");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Macho Brace")!));
+
+        // The desert's storm turns back anyone without Go-Goggles, a step down at its south edge and left at its west
+        game.Arrive("Hoenn", 212, 63);
+        var pushed = game.StepAt(212, 61);
+        Assert.NotNull(pushed);
+        Assert.Equal((212, 62), game.Tile);
+        Assert.Contains(pushed!.Transcript, line => line.Text.Contains("sandstorm"));
+        Assert.Equal(FieldWeather.Sandstorm, game.Map.WeatherAt(225, 60));
+        Assert.Equal("hoenn/desert", game.Map.BgmTrackAt(225, 60));
+        Assert.Equal(FieldWeather.Clear, game.Map.WeatherAt(205, 90));
+
+        // The old lady's rest stop heals, twice when asked
+        game.Arrive("Route111_OldLadysRestStop", 3, 6);
+        var rest = game.Talk("expert_f");
+        Assert.Equal(2, rest.Log.Count(l => l == "fanfare FanfareHeal"));
+
+        // Route 112: Team Magma's two grunts before the cable car, who talk of Fallarbor and a meteorite
+        game.Arrive("Hoenn", 188, 52);
+        Assert.NotNull(game.Present("route112_grunt_1"));
+        var grunts = game.Talk("route112_grunt_1");
+        Assert.Contains(grunts.Transcript, line => line.Text.Contains("Fallarbor"));
+
+        // Route 113: the glass workshop's Soot Sack, the ash gathered and a flute made of it
+        Assert.Equal(FieldWeather.Ash, game.Map.WeatherAt(150, 10));
+        game.Arrive("Route113_GlassWorkshop", 3, 7);
+        game.Talk("man_1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Soot Sack")!));
+        Assert.Equal(1, game.Story.Var("VAR_GLASS_WORKSHOP_STATE"));
+        game.Arrive("Route113_GlassWorkshop", 3, 7);
+        Assert.Equal(2, game.Story.Var("VAR_GLASS_WORKSHOP_STATE"));
+        game.Story.SetVar(GameEngine.AshCountVariable, 300);
+        game.Talk("man_1");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Blue Flute")!));
+        Assert.Equal(50, game.Story.Var(GameEngine.AshCountVariable));
+
+        // Fallarbor Town, and Lanette in its Pokémon Center, who goes home to Route 114
+        game.Arrive("Hoenn", 90, 12);
+        Assert.True(game.Story.Has("FLAG_VISITED_FALLARBOR_TOWN"));
+        game.Arrive("FallarborTown_PokemonCenter_1F", 7, 7);
+        game.Talk("fallarbor_lanette");
+        Assert.True(game.Story.Has("FLAG_HIDE_FALLARBOR_POKEMON_CENTER_LANETTE"));
+        Assert.Null(game.Present("fallarbor_lanette"));
+        game.Arrive("Route114_LanettesHouse", 5, 6);
+        Assert.NotNull(game.Present("woman_2"));
+        game.Talk("woman_2");
+        Assert.True(game.Story.Has("FLAG_SYS_PC_LANETTE"));
+
+        // Cozmo's wife says where he went; he isn't home
+        game.Arrive("FallarborTown_CozmosHouse", 3, 7);
+        Assert.Null(game.Present("scientist_1"));
+        Assert.Contains(game.Talk("woman_2").Transcript, line => line.Text.Contains("Meteor Falls"));
+
+        // Route 114: the gentleman's TM05 and the Fossil Maniac's brother's TM28
+        game.Arrive("Hoenn", 59, 15);
+        game.Talk("gentleman");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM05")!));
+        game.Arrive("Route114_FossilManiacsHouse", 4, 6);
+        game.Talk("ninja_boy");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM28")!));
+
+        // Meteor Falls: Team Magma takes the meteorite, Team Aqua comes after them, and Route 112 is clear
+        game.Arrive("MeteorFalls_1F_1R", 27, 17);
+        Assert.NotNull(game.Present("meteor_falls_magma_grunt_1"));
+        Assert.Null(game.Present("meteor_falls_archie"));
+        var scene = game.StepAt(14, 18);
+        Assert.NotNull(scene);
+        Assert.Equal(1, game.Story.Var("VAR_METEOR_FALLS_STATE"));
+        foreach (string flag in new[] { "FLAG_HIDE_ROUTE_112_TEAM_MAGMA", "FLAG_MET_ARCHIE_METEOR_FALLS", "FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA", "FLAG_HIDE_METEOR_FALLS_TEAM_AQUA" })
+            Assert.True(game.Story.Has(flag), flag);
+        foreach (string key in new[] { "meteor_falls_magma_grunt_1", "meteor_falls_archie", "meteor_falls_aqua_grunt_1" })
+            Assert.Null(game.Present(key));
+        Assert.NotNull(game.Present("scientist_1"));
+        Assert.Null(game.StepAt(14, 18));
+        game.Arrive("Hoenn", 188, 52);
+        Assert.Null(game.Present("route112_grunt_1"));
+    }
+
+    [Fact]
+    public void MauvillesGameCornerTakesCoinsFromACoinCaseTradedForHarborMail()
+    {
+        var game = PastVerdanturf(0, PlayerLook.Boy);
+        game.Arrive("MauvilleCity_House2", 3, 6);
+        game.Talk("woman_3");
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Coin Case")!));
+        game.Bag.AddItem(ItemDatabase.Get("Harbor Mail")!, 1);
+        game.Talk("woman_3");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Coin Case")!));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Harbor Mail")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_COIN_CASE"));
+        Assert.Contains("Harbor Mail", MartDatabase.Stock("slateport_mail", 0).Select(i => i.Name));
+
+        // The Game Corner's door is open, its man gives 20 Coins to a case with none, and its TMs are Emerald's five
+        game.Arrive("MauvilleCity_GameCorner", 11, 9);
+        Assert.True(game.Story.Has("FLAG_RECEIVED_COIN_CASE"));
+        game.Talk("pokefan_m");
+        Assert.True(game.Story.Has("FLAG_RECEIVED_20_COINS"));
+        Assert.Equal(new[] { "TM32", "TM29", "TM35", "TM24", "TM13" }, GameCornerPrizes.Mauville.Select(p => p.Item));
+        Assert.Equal(12, game.Map.TileScripts.Values.Count(s => s.StartsWith("Machine")));
+    }
+
+    [Fact]
+    public void ARockSmashedInHoennMayHideAPokemonAndPlatinumsHideNone()
+    {
+        var world = Hoenn.Value;
+        var overworld = world.BuildMaps().Single(m => m.Name == "Hoenn");
+        int met = 0, tries = 4000;
+        for (int i = 0; i < tries; i++)
+            if (overworld.SmashOut(218, 101) is { } wild)
+            {
+                met++;
+                Assert.Equal("Geodude", wild.SpeciesName);
+                Assert.InRange(wild.MinLevel, 5, 20);
+            }
+        // Emerald's rate of 20 in sixteenths out of 2,880: one rock in nine
+        Assert.InRange(met, tries / 9 - 150, tries / 9 + 150);
+        Assert.False(WildEncounterRules.RockSmashMeets(0, null, new Random(1)));
+        // No place of Platinum's keeps Pokémon under its rocks
+        foreach (var sinnoh in World.LoadAll().Where(w => w.Index.Region == "Sinnoh"))
+            foreach (string key in sinnoh.Index.Areas)
+                Assert.Null(sinnoh.Area(key)?.RockSmash);
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheFifthStretchHasItsPeopleHidden()
+    {
+        var story = new StoryState();
+        StoryMigration.Upgrade(story, 27, Array.Empty<Pokemon>(), Scripts);
+        foreach (string flag in new[] { "FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE", "FLAG_HIDE_METEOR_FALLS_TEAM_AQUA", "FLAG_HIDE_LANETTES_HOUSE_LANETTE", "FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO" })
+            Assert.True(story.Has(flag), flag);
+        Assert.True(StoryState.CurrentVersion >= 28);
+    }
+
+    [Fact]
+    public void TheSongsOfTheDesertAndFallarborAreThere()
+    {
+        foreach (string song in new[] { "hoenn/desert", "hoenn/route113", "hoenn/fallarbor", "hoenn/cave_of_origin", "hoenn/game_corner" })
+            Assert.True(MusicLibrary.Exists(song), song);
+    }
 }

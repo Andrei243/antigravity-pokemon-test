@@ -2,7 +2,7 @@
 // the overworld, Emerald's connected maps stitched into one. The blocks are each of Hoenn's areas on the cells its
 // chunks take (the matrix's own areas, a town on its own cell where a route took the chunk over); every word is ours.
 // A town not open yet whose chunk a route took over (Verdanturf, Fallarbor) is put on its cell by the session that
-// opens it (Dewford by plan 21 · H3, Verdanturf by its second part). No hidden places, no landmarks and no Fly yet: Fly over Hoenn is plan 21 · H6's.
+// opens it (Dewford by plan 21 · H3, Verdanturf by its second part, Fallarbor by plan 21 · H4). No hidden places, no landmarks and no Fly yet: Fly over Hoenn is plan 21 · H6's.
 {
   "map": "Hoenn",
   "columns": 25,
@@ -25,6 +25,7 @@
     { "key": "route_111", "about": "A road through a desert of blowing sand, and past hot springs." },
     { "key": "route_117", "about": "A road of flowers and ponds between Mauville City and Verdanturf Town." },
     { "key": "verdanturf_town", "about": "A quiet town of clean air below the hills, at the far end of Rusturf Tunnel." },
+    { "key": "fallarbor_town", "about": "A farming town where the volcano's ash settles on the fields like grey snow." },
     { "key": "route_118", "about": "A road beside the sea, where the fishing is good." },
     { "key": "route_109", "about": "A sandy beach south of Slateport City." },
     { "key": "route_134", "about": "A sea route of fast currents east of Slateport's far islands." },
@@ -63,7 +64,7 @@
   ],
   "blocks": [
     { "x": 1, "y": 0, "kind": "Route", "name": "Route 114", "area": "route_114" },
-    { "x": 2, "y": 0, "kind": "Route", "name": "Route 114", "area": "route_114" },
+    { "x": 2, "y": 0, "kind": "Town", "name": "Fallarbor Town", "area": "fallarbor_town" },
     { "x": 3, "y": 0, "kind": "Route", "name": "Route 113", "area": "route_113" },
     { "x": 4, "y": 0, "kind": "Route", "name": "Route 113", "area": "route_113" },
     { "x": 5, "y": 0, "kind": "Route", "name": "Route 113", "area": "route_113" },

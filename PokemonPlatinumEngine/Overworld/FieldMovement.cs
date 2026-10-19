@@ -142,6 +142,13 @@ public static class FieldMovement
         _ => (1, 0)
     };
 
+    /// <summary>A tile that rises or falls the way a step goes: a stair or a ramp met along its slope.</summary>
+    private static bool SlopedAlong(Map map, int x, int y, Direction dir)
+    {
+        var (sx, sz) = map.SlopeAt(x, y);
+        return dir is Direction.Left or Direction.Right ? sx != 0f : sz != 0f;
+    }
+
     public static Direction Opposite(Direction dir) => dir switch
     {
         Direction.Up => Direction.Down,
@@ -345,7 +352,12 @@ public static class FieldMovement
         // drawn at its banks' levels it runs down the Seafoam Islands' rapids in steps nobody surfing ever meets
         bool oneLevel = map.WaterIsOneLevel && walker.Mode == TravelMode.Surfing && !onDeck
             && TileBehaviors.IsSurfable(here) && TileBehaviors.IsSurfable(there) && here != TileBehavior.Waterfall && there != TileBehavior.Waterfall;
-        if (!oneLevel && MathF.Abs(height - walker.Height) >= StepLimit) return No(Obstacle.Cliff);
+        // And its stairs join any two levels (plan 21 · H4): the original lets a walker onto a tile of elevation 0 from any
+        // elevation and off it onto any, and some of Emerald's stairs climb two levels in a single tile (Route 114's ways
+        // down to Meteor Falls), steeper than a step; along its slope such a stair is never a cliff
+        bool stairs = map.WaterIsOneLevel && walker.Mode != TravelMode.Surfing && !onDeck
+            && (SlopedAlong(map, x, y, dir) || SlopedAlong(map, nx, ny, dir));
+        if (!oneLevel && !stairs && MathF.Abs(height - walker.Height) >= StepLimit) return No(Obstacle.Cliff);
         if (map.Puzzle?.Refuses(map, nx, ny, walker.Height, afloat) == true) return No(Obstacle.Solid);
         bool water = TileBehaviors.IsSurfable(there) && !onDeck;
 

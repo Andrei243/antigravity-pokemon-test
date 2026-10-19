@@ -1,0 +1,24 @@
+# A house in Mauville City (plan 21 · H3, part c). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MauvilleCity_House2/scripts.inc): the woman here would give her husband's Coin Case for a
+# Harbor Mail, which Slateport's Mart sells, once (FLAG_RECEIVED_COIN_CASE).
+
+
+script Woman
+  speaker "Woman"
+  if flag FLAG_RECEIVED_COIN_CASE goto Given
+  if item "Harbor Mail" goto Trade
+  say "My husband spends every afternoon at the Game Corner. I wish I had some pretty Harbor Mail to write to my friends."
+  end
+label Trade
+  say "Oh! Is that Harbor Mail? I've wanted some for ages."
+  ask "Would you trade it for my husband's Coin Case?"
+  if no goto Refused
+  take "Harbor Mail"
+  give "Coin Case"
+  setflag FLAG_RECEIVED_COIN_CASE
+label Given
+  say "That Coin Case kept my husband at the Game Corner all day. Now he'll have to find something else to do!"
+  end
+label Refused
+  say "Oh, never mind. It is lovely mail, after all."
+  end

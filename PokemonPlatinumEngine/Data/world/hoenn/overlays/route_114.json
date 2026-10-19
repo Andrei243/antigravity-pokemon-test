@@ -1,0 +1,31 @@
+{
+  // Route 114 (plan 21 · H4, part a): the rugged valley north from Fallarbor Town to Meteor Falls, with the Fossil
+  // Maniac's house and Lanette's (route_114.txt). The ways into Terra Cave's hollow and a secret base's stay shut
+  "area": "route_114",
+  "bgmTrack": "hoenn/route110",
+  "trees": "Round",
+  "locked": [ 3, 4 ],
+  "people": {
+    "man_4": { "name": "Man", "script": "BerryMan" },
+    "gentleman": { "name": "Gentleman", "script": "RoarGentleman" },
+    "poochyena": { "name": "Poochyena", "npcType": "Pokemon", "species": "Poochyena", "script": "Poochyena" },
+    "hiker": { "name": "Lenny", "trainer": { "dialogueBefore": "Hiker Lenny: I've walked this valley a hundred times. Let's see what you're made of!", "dialogueAfter": "Hiker Lenny: The hundred and first walk will be sadder." } },
+    "hiker_2": { "name": "Lucas", "trainer": { "dialogueBefore": "Hiker Lucas: Rocks and fire, that's my team! Ready?", "dialogueAfter": "Hiker Lucas: All crumbled." } },
+    "camper": { "name": "Shane", "trainer": { "dialogueBefore": "Camper Shane: There's a waterfall up ahead that falls from the stars, they say. First, a battle!", "dialogueAfter": "Camper Shane: I'm the one who fell." } },
+    "picnicker": { "name": "Nancy", "trainer": { "dialogueBefore": "Picnicker Nancy: The river here is so clear! Our battle won't be so calm.", "dialogueAfter": "Picnicker Nancy: I'll sit by the river for a while." } },
+    "maniac": { "name": "Steve", "trainer": { "dialogueBefore": "Pokémaniac Steve: Steel and rock! My Aron's the best there is!", "dialogueAfter": "Pokémaniac Steve: My Aron's still the best. Just not today." } },
+    "fisherman": { "name": "Nolan", "trainer": { "dialogueBefore": "Fisherman Nolan: Shh, you'll scare off the fish. Oh, a battle? Fine!", "dialogueAfter": "Fisherman Nolan: Now the fish are laughing at me." } },
+    "fisherman_2": { "name": "Claude", "trainer": { "dialogueBefore": "Fisherman Claude: I reeled you in! Time to battle!", "dialogueAfter": "Fisherman Claude: The one that got away." } },
+    "man_5": { "name": "Bernie", "trainer": { "dialogueBefore": "Kindler Bernie: I'll set this battle ablaze! Hope you've got water on hand!", "dialogueAfter": "Kindler Bernie: You put my fire out." } },
+    "lass": { "name": "Tyra & Ivy", "trainer": { "dialogueBefore": "Sr. & Jr. Tyra & Ivy: The two of us make one strong team!", "dialogueAfter": "Sr. & Jr. Tyra & Ivy: Even two of us weren't enough." } },
+    "lass_2": { "name": "Tyra & Ivy", "trainer": { "dialogueBefore": "Sr. & Jr. Tyra & Ivy: I'll do my best beside my big sister!", "dialogueAfter": "Sr. & Jr. Tyra & Ivy: We'll practise more together." } },
+    "picnicker_2": { "name": "Charlotte", "trainer": { "dialogueBefore": "Picnicker Charlotte: I came all the way up here for the view. And to battle someone like you!", "dialogueAfter": "Picnicker Charlotte: At least the view's still nice." } },
+    "picnicker_3": { "name": "Angelina", "trainer": { "dialogueBefore": "Picnicker Angelina: I've been waiting by the water for a strong trainer. Is it you?", "dialogueAfter": "Picnicker Angelina: It was you, all right." } },
+    "fisherman_3": { "name": "Kai", "trainer": { "dialogueBefore": "Fisherman Kai: My Barboach can sense when a battle's coming. It's been twitching all day!", "dialogueAfter": "Fisherman Kai: Now it's sulking at the bottom of the river." } }
+  },
+  "signs": {
+    "Route114_EventScript_MeteorFallsSign": "Meteor Falls\nAhead: Route 115",
+    "Route114_EventScript_FossilManiacsHouseSign": "The Fossil Maniac's House\nFossils welcome!",
+    "Route114_EventScript_LanettesHouseSign": "Lanette's House"
+  }
+}

@@ -799,6 +799,18 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>What <c>sweetscent</c> draws out: a species and its level, or null where nothing lives.</summary>
     public (string Species, int Level)? Scented { get; set; }
 
+    /// <summary>What <c>smashencounter</c> finds under the rock: a species and its level, or null when it hid nothing.</summary>
+    public (string Species, int Level)? Smashed { get; set; }
+
+    public bool SmashEncounter()
+    {
+        Shown("a rock's hiding place");
+        NeverInAHurry("a rock's Pokémon");
+        if (Smashed is not var (species, level)) return false;
+        WildBattle(new Pokemon(PokemonDatabase.Get(species)!, level), BattleKind.Normal, cannotFlee: false);
+        return true;
+    }
+
     public bool Fly()
     {
         Shown("fly");

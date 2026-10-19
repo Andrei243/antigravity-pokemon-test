@@ -594,14 +594,14 @@ Nothing here runs yet: it is what plan 06 · R20–R23 write their rules from.
 
 Names and descriptions per language (plan 17 · N3), counted from `Data/text/<tag>/names.json`, which the importer writes from PokeAPI's own tables: a name the file lacks is shown in English. Descriptions are PokeAPI's short prose where a language has it; the games' own text is never read. A language marked (own) also has hand-written `names.<kind>.json` files beside it (plan 17 · N6: Romanian's names and descriptions, made up by us), which the importer never writes and whose entries win.
 
-| Language | Species (1025) | Forms | Moves (934) | Abilities (313) | Items (915) | Places | Move descriptions | Ability descriptions | Item descriptions |
+| Language | Species (1025) | Forms | Moves (934) | Abilities (313) | Items (919) | Places | Move descriptions | Ability descriptions | Item descriptions |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| de | 1025 | 365 | 901 | 310 | 910 | 913 | 0 | 191 | 0 |
-| es | 1025 | 0 | 901 | 310 | 910 | 232 | 0 | 0 | 0 |
-| fr | 1025 | 481 | 901 | 310 | 911 | 958 | 764 | 305 | 549 |
-| it | 1025 | 0 | 901 | 310 | 910 | 232 | 0 | 0 | 0 |
-| ja | 1025 | 1 | 901 | 310 | 911 | 328 | 0 | 0 | 0 |
-| ko | 1025 | 0 | 901 | 310 | 894 | 232 | 0 | 0 | 0 |
-| ro (own) | 0 | 0 | 934 | 313 | 915 | 0 | 934 | 313 | 915 |
-| zh-Hans | 1025 | 0 | 901 | 310 | 893 | 62 | 0 | 0 | 0 |
-| zh-Hant | 1025 | 0 | 901 | 310 | 893 | 62 | 0 | 0 | 0 |
+| de | 1025 | 365 | 901 | 310 | 914 | 913 | 0 | 191 | 0 |
+| es | 1025 | 0 | 901 | 310 | 914 | 232 | 0 | 0 | 0 |
+| fr | 1025 | 481 | 901 | 310 | 915 | 958 | 764 | 305 | 553 |
+| it | 1025 | 0 | 901 | 310 | 914 | 232 | 0 | 0 | 0 |
+| ja | 1025 | 1 | 901 | 310 | 915 | 328 | 0 | 0 | 0 |
+| ko | 1025 | 0 | 901 | 310 | 897 | 232 | 0 | 0 | 0 |
+| ro (own) | 0 | 0 | 934 | 313 | 919 | 0 | 934 | 313 | 919 |
+| zh-Hans | 1025 | 0 | 901 | 310 | 896 | 62 | 0 | 0 | 0 |
+| zh-Hant | 1025 | 0 | 901 | 310 | 896 | 62 | 0 | 0 | 0 |

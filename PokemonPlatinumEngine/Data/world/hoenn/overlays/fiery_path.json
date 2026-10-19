@@ -1,0 +1,8 @@
+{
+  // Fiery Path (plan 21 · H4, part a): the hot cave under Mt. Chimney's flank, between the two halves of Route 112. Its
+  // boulders wait for Strength, with TM06 behind them
+  "area": "fiery_path",
+  "bgmTrack": "hoenn/petalburg_woods",
+  "trees": "Round",
+  "climate": "Volcanic"
+}

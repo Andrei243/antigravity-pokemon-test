@@ -1,0 +1,41 @@
+# Professor Cozmo's house in Fallarbor Town (plan 21 · H4, part a). docs/scripts.md describes the language; the lines
+# are our own, on Emerald's beats (data/maps/FallarborTown_CozmosHouse/scripts.inc). His wife says where he went, and
+# how he is once Team Magma has been beaten at Mt. Chimney; Cozmo himself is home only after that (plan 21 · H4's next
+# part), and asks for the meteorite back for TM27 (FLAG_RECEIVED_TM_RETURN).
+
+
+script Wife
+  speaker "Cozmo's Wife"
+  if flag FLAG_RECEIVED_TM_RETURN goto Happy
+  if flag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY goto Sad
+  say "My husband went off to Meteor Falls with some people in red. They said they wanted to see his meteorite..."
+  say "He can't say no to anyone. I hope he's all right."
+  end
+label Sad
+  say "My husband's been so down since his meteorite was taken. I do feel sorry for him."
+  end
+label Happy
+  say "My husband's so happy to have his meteorite back! Thank you, truly."
+  end
+
+
+script Cozmo
+  speaker "Prof. Cozmo"
+  if flag FLAG_RECEIVED_TM_RETURN goto Thanks
+  if item "Meteorite" goto Ask
+  say "My meteorite... It will never be mine again now. Team Magma made off with it."
+  end
+label Ask
+  say "Is that... my meteorite? You got it back! May I have it, please?"
+  ask "Give the Meteorite to Prof. Cozmo?"
+  if no goto Refused
+  take "Meteorite"
+  say "Thank you! Please, take this TM in return."
+  give "TM27"
+  setflag FLAG_RECEIVED_TM_RETURN
+label Thanks
+  say "With the meteorite back, my research can go on. You've helped me more than you know!"
+  end
+label Refused
+  say "Oh... I see. I'm crushed, but I understand."
+  end

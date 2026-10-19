@@ -1,0 +1,34 @@
+# Route 113: the road where the volcano's ash falls like snow, a hushed flute tune in A major over a slow harp and soft
+# strings, with a light brushed beat, grey and gentle. Original composition for this game (plan 21 · H4, part a).
+title Route 113
+tempo 100
+meter 4/4
+reverb 0.38
+nighttempo 0.92
+
+track lead flute night=celesta vol=0.64 pan=0.05 rev=0.38
+  L o5 a4 c+8 e8 a4 e4 | o5 f+4 a8 f+8 e2 | o5 d4 f+8 a8 o6 c+4 o5 b4 | o5 a2. r4 |
+  o5 c+4 e8 a8 g+4 e4 | o5 f+4 e8 d8 c+2 | o5 b4 g+8 e8 g+4 b4 | o5 e2. r4 |
+  o5 a4 b8 o6 c+8 e4 c+4 | o5 b4 g+8 e8 f+2 | o5 d4 f+8 a8 g+4 e4 | o5 a2. r4 |
+  o5 f+4 a8 o6 d8 c+4 o5 a4 | o5 b4 g+8 e8 f+4 g+4 | o5 a4 e8 c+8 d4 o4 b4 | o5 a2. r4 |
+
+track arp harp night=glockenspiel vol=0.36 pan=-0.3 rev=0.4
+  L o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 |
+  o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 | o4 f+8 a8 o5 c+8 o4 a8 f+8 a8 o5 c+8 o4 a8 | o4 e8 g+8 b8 g+8 e8 g+8 b8 g+8 | o4 e8 g+8 b8 g+8 e8 g+8 b8 g+8 |
+  o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 | o4 e8 g+8 b8 g+8 e8 g+8 b8 g+8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 a8 o5 c+8 e8 c+8 o4 a8 o5 c+8 e8 c+8 |
+  o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 e8 g+8 b8 g+8 e8 g+8 b8 g+8 | o4 d8 f+8 a8 f+8 d8 f+8 a8 f+8 | o4 a8 o5 c+8 e8 c+8 o4 a2 |
+
+track pad strings night=pad vol=0.24 pan=0.25 rev=0.48
+  L o4 (a >c+ e)1 | (d f+ a)1 | (d f+ a)1 | (a >c+ e)1 |
+  (a >c+ e)1 | (f+ a >c+)1 | (e g+ b)1 | (e g+ b)1 |
+  (a >c+ e)1 | (e g+ b)1 | (d f+ a)1 | (a >c+ e)1 |
+  (d f+ a)1 | (e g+ b)1 | (d f+ a)1 | (a >c+ e)1 |
+
+track bass bass vol=0.6 rev=0.12
+  L o2 a2 e2 | o2 d2 a2 | o2 d2 a2 | o2 a2 e2 |
+  o2 a2 e2 | o2 f+2 o3 c+2 | o2 e2 b2 | o2 e2 b2 |
+  o2 a2 e2 | o2 e2 b2 | o2 d2 a2 | o2 a2 e2 |
+  o2 d2 a2 | o2 e2 b2 | o2 d2 a2 | o2 a1 |
+
+track drums kit vol=0.26 rev=0.2
+  v68 L [ [ b4 h8 h8 s4 h8 h8 | ]7 b4 h8 h8 s8 s8 h4 | ]2

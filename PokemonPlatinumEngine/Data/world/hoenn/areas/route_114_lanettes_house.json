@@ -1,0 +1,30 @@
+{
+  "key": "route_114_lanettes_house",
+  "index": 234,
+  "name": "Route 114",
+  "matrix": 183,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FALLARBOR",
+  "nightMusic": "MUS_FALLARBOR",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 7, "to": "route_114", "toWarp": 2 },
+    { "x": 6, "z": 7, "to": "route_114", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_around", "x": 5, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LANETTES_HOUSE_LANETTE", "script": "Route114_LanettesHouse_EventScript_Lanette" }
+  ],
+  "signs": [
+    { "x": 5, "z": 1, "type": 0, "script": "Route114_LanettesHouse_EventScript_Notebook" },
+    { "x": 8, "z": 1, "type": 0, "script": "Route114_LanettesHouse_EventScript_PC" },
+    { "x": 7, "z": 1, "type": 0, "script": "Route114_LanettesHouse_EventScript_PC" }
+  ],
+  "triggers": []
+}

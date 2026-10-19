@@ -1,0 +1,38 @@
+# The Winstrate family's house on Route 111 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines
+# are our own, on Emerald's beats (data/maps/Route111_WinstrateFamilysHouse/scripts.inc). Victoria gives the Macho
+# Brace once to whoever beat the whole family (FLAG_RECEIVED_MACHO_BRACE).
+
+
+script Victor
+  speaker "Victor"
+  say "Every one of us trains Pokémon. It's what keeps this family close!"
+  end
+
+
+script Victoria
+  speaker "Victoria"
+  if flag FLAG_RECEIVED_MACHO_BRACE goto Given
+  if not defeated "hoenn_vicky" goto Unbeaten
+  say "You beat all four of us! We don't see that very often. Here, I'd like you to have this."
+  give "Macho Brace"
+  setflag FLAG_RECEIVED_MACHO_BRACE
+  say "A Pokémon that holds it grows stronger faster, though it slows down while it wears it."
+  end
+label Unbeaten
+  say "We battle as a family, one after another. Have you tried us all yet?"
+  end
+label Given
+  say "Is the Macho Brace working out? A little training goes a long way."
+  end
+
+
+script Vivi
+  speaker "Vivi"
+  say "I'm going to be stronger than Grandma one day. Just you wait!"
+  end
+
+
+script Vicky
+  speaker "Vicky"
+  say "I've been battling longer than anyone in this house. But you, dear, have a real gift."
+  end

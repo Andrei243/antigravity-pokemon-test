@@ -1,0 +1,39 @@
+# Route 114 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route114/scripts.inc). The man by the berry trees gives a berry a day, one of Emerald's five for him
+# (Razz, Bluk, Nanab, Wepear and Pinap, its GetRandom); the gentleman gives TM05, Roar, once (FLAG_RECEIVED_TM_ROAR).
+
+
+script BerryMan
+  speaker "Man"
+  if flag FLAG_DAILY_ROUTE_114_RECEIVED_BERRY goto Given
+  say "Berries are my favourite thing in the world. I like to share them! Here, have one."
+  random 5
+  if result == 0 give "Razz Berry"
+  if result == 1 give "Bluk Berry"
+  if result == 2 give "Nanab Berry"
+  if result == 3 give "Wepear Berry"
+  if result == 4 give "Pinap Berry"
+  setflag FLAG_DAILY_ROUTE_114_RECEIVED_BERRY
+  say "Plant it somewhere and see what grows. Come back tomorrow for another!"
+  end
+label Given
+  say "Isn't it fun, thinking about all the different berries there are?"
+  end
+
+
+script RoarGentleman
+  speaker "Gentleman"
+  if flag FLAG_RECEIVED_TM_ROAR goto Given
+  say "All my Pokémon ever does is roar. Roar, roar, roar! I've had quite enough of it. You take this."
+  give "TM05"
+  setflag FLAG_RECEIVED_TM_ROAR
+label Given
+  say "Roar sends a wild Pokémon running, and in a battle with a trainer, it makes them switch."
+  end
+
+
+script Poochyena
+  speaker "Poochyena"
+  cry "Poochyena"
+  say "Grrr... Woof!"
+  end

@@ -1,0 +1,14 @@
+# The Fossil Maniac's house on Route 114 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/Route114_FossilManiacsHouse/scripts.inc): the maniac's brother gives TM28,
+# Dig, once (FLAG_RECEIVED_TM_DIG).
+
+
+script Brother
+  speaker "Boy"
+  if flag FLAG_RECEIVED_TM_DIG goto Given
+  say "My big brother's always digging for fossils. I want to dig too! You can have this, so you can dig like him."
+  give "TM28"
+  setflag FLAG_RECEIVED_TM_DIG
+label Given
+  say "Use Dig in a cave and you pop right back out at its entrance. My brother uses it when he gets lost!"
+  end

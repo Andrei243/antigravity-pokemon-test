@@ -486,6 +486,8 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Escape, Line = line };
             case "sweetscent":
                 return new Instruction { Op = Op.SweetScent, Line = line };
+            case "smashencounter":
+                return new Instruction { Op = Op.SmashEncounter, Line = line };
             case "poketch":
                 r.OneOf("on");
                 return new Instruction { Op = Op.Poketch, Line = line };
@@ -698,7 +700,9 @@ public static class ScriptParser
                 int number = what is "room" or "add" or "take" or "slots" ? r.Int(what == "slots" ? "a machine, 0 to 11" : "a number of coins") : 0;
                 if (what == "slots" && number is < 0 or > 11) throw r.Error("the Game Corner's machines are 0 to 11");
                 if (what != "slots" && number < 0) throw r.Error("coins are counted from nought up");
-                return new Instruction { Op = Op.GameCorner, Line = line, Name = what, Number = number };
+                // The exchange's list: Veilstone's, or another Game Corner's by its name (plan 21 · H3, part c: mauville)
+                string list = what == "prize" && r.PeekWord("mauville") ? r.OneOf("mauville") : "";
+                return new Instruction { Op = Op.GameCorner, Line = line, Name = what, Number = number, Other = list };
             }
             case "villa":
             {

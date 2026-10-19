@@ -325,7 +325,7 @@ public sealed partial class ScriptRunner
         Op.Give or Op.Find or Op.AddItem or Op.Take or Op.GivePokemon or Op.GiveBadge or Op.GiveMoney or Op.TakeMoney or Op.Heal => false,
         Op.GiveAccessory or Op.GiveEgg or Op.Seen or Op.NationalDex or Op.Trade => false,
         // A battle is fought
-        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.Master => true,
+        Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
         Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker => false,
@@ -804,6 +804,15 @@ public sealed partial class ScriptRunner
                 // A wild Pokémon comes out where any live, and its battle is waited for
                 Result = 0;
                 if (host.SweetScent()) afterBusy = () => AfterBattle(mayLose: false);
+                break;
+            case Op.SmashEncounter:
+                // A Pokémon may come out from under the rock just smashed (plan 21 · H4), and its battle is waited for
+                Result = 0;
+                if (host.SmashEncounter())
+                {
+                    Result = 1;
+                    afterBusy = () => AfterBattle(mayLose: false);
+                }
                 break;
 
             case Op.Music:

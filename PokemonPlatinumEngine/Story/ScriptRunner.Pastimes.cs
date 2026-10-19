@@ -118,7 +118,7 @@ public sealed partial class ScriptRunner
                 break;
             case "prize":
             {
-                var prizes = GameCornerPrizes.All;
+                var prizes = i.Other == "mauville" ? GameCornerPrizes.Mauville : GameCornerPrizes.All;
                 // A TM is listed with the move it holds
                 var rows = prizes.Select(p => PrizeRow(p.Item, "scriptLines.priceCoins", "price", p.Coins.ToString("N0")))
                     .Append(Text.Of("scriptLines.noThanks")).ToList();

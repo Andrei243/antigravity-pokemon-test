@@ -726,6 +726,8 @@ public class StoryTests
     /// </summary>
     internal static readonly string[] AskedAheadOfTheirScenes =
     {
+        // Team Magma beaten on Mt. Chimney (plan 21 · H4's next part), which Fallarbor's old man and Cozmo's wife ask
+        "FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY",
     };
 
     [Fact]

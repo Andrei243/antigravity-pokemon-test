@@ -214,6 +214,8 @@ public partial class GameEngine
         // ...but not those a call over the Pokégear's phone asked to wait (plan 20 · J3)
         KeepPhoneRematchesWaiting();
         FieldMoveRules.LeavePlace(flow.Story, cave);
+        // The ash on the grass of the place left settles again (plan 21 · H4)
+        flow.AshBrushed.Clear();
         // Where the Bicycle isn't allowed the player gets off it (field_map_change_flags.c)
         if (flow.Player.Mode == TravelMode.Cycling && !flow.Map.BikeAllowedAt(flow.Player.GridX, flow.Player.GridY)) flow.Player.SetCycling(false);
         flow.Fishing = null;
@@ -1236,6 +1238,17 @@ public partial class GameEngine
             bool water = game.flow.Player.Mode == TravelMode.Surfing;
             if (!TileBehaviors.HasEncounters(underfoot) || water != TileBehaviors.IsSurfable(underfoot)) return false;
             if (map.DrawOutWild(x, y, water, game.flow.Player.Lead, game.EncounterMomentNow()) is not { } wild) return false;
+            game.flow.ScriptOutcome = BattleOutcome.None;
+            game.flow.BattleMayBeLost = false;
+            game.flow.Player.Encounters.Reset();
+            game.StartWildBattle(wild);
+            return true;
+        }
+
+        public bool SmashEncounter()
+        {
+            var map = game.flow.Map;
+            if (map.SmashOut(game.flow.Player.GridX, game.flow.Player.GridY, game.flow.Player.Lead) is not { } wild) return false;
             game.flow.ScriptOutcome = BattleOutcome.None;
             game.flow.BattleMayBeLost = false;
             game.flow.Player.Encounters.Reset();

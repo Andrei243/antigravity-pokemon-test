@@ -33,6 +33,23 @@ public sealed class MapArea
     /// <summary>The area's weather on a day: the calendar's, where it follows one.</summary>
     public FieldWeather WeatherOn(DateTime day) => Calendar is { Count: 366 } days ? days[Weathers.CalendarDay(day)] : Weather;
 
+    /// <summary>
+    /// Stretches of the area with weather or music of their own (plan 21 · H4: Route 111's desert, Route 113's ash), in
+    /// tiles of the map; the first that holds a tile wins. Empty for nearly every area.
+    /// </summary>
+    public List<Data.OverlayZone> Zones { get; } = new();
+
+    /// <summary>The zone a tile of the area lies in, or null.</summary>
+    public Data.OverlayZone? ZoneAt(int x, int y)
+    {
+        foreach (var zone in Zones) if (zone.Holds(x, y)) return zone;
+        return null;
+    }
+
+    /// <summary>The weather over a tile of the area on a day: its zone's, where it has one, else the area's.</summary>
+    public FieldWeather WeatherAt(int x, int y, DateTime day) =>
+        ZoneAt(x, y) is { Weather: { } weather } ? Weathers.Of(weather) : WeatherOn(day);
+
     /// <summary>Snow country: more of its open ground is snow than lawn, so snow lies on its trees too.</summary>
     public bool Snowbound { get; set; }
 
@@ -97,6 +114,13 @@ public sealed class MapArea
     /// <summary>The wild Pokémon hooked with each rod (by <see cref="FishingRod"/>), and each rod's rate (plan 02 · S2).</summary>
     public List<WildEncounterEntry>[] RodEncounters { get; } = { new(), new(), new() };
     public int[] RodRates { get; } = new int[3];
+
+    /// <summary>
+    /// The wild Pokémon found under a rock smashed here, and the rate for them (plan 21 · H4; Emerald's
+    /// <c>rock_smash_mons</c>, five slots weighted as the water's). Empty in every place of Platinum's.
+    /// </summary>
+    public List<WildEncounterEntry> RockSmashEncounters { get; } = new();
+    public int RockSmashRate { get; set; }
 }
 
 public class Map
@@ -296,7 +320,12 @@ public class Map
         return Core.PlayerIdentity.Fill(Data.LocalNames.PlaceShown(ScriptFileAt(x, y), english));
     }
 
-    public string BgmTrackAt(int x, int y) => AreaAt(x, y)?.BgmTrack is { Length: > 0 } track ? track : BgmTrack;
+    public string BgmTrackAt(int x, int y) => AreaAt(x, y) is { } area
+        ? area.ZoneAt(x, y)?.BgmTrack is { Length: > 0 } zoned ? zoned : area.BgmTrack is { Length: > 0 } track ? track : BgmTrack
+        : BgmTrack;
+
+    /// <summary>The stretch of its area a tile lies in that has weather or music of its own (plan 21 · H4), or null.</summary>
+    public Data.OverlayZone? ZoneAt(int x, int y) => AreaAt(x, y)?.ZoneAt(x, y);
 
     /// <summary>
     /// The kind of tree on a tile: its area's, or, where the area names none (the forest that fills the world between
@@ -323,7 +352,7 @@ public class Map
     {
         if (IsIndoors) return Weather == FieldWeather.Fog && !FogLifted ? FieldWeather.Fog : FieldWeather.Clear;
         // The calendar follows the computer's date, as the original follows the DS's
-        var weather = AreaAt(x, y) is { } area ? area.WeatherOn(Core.GameClock.Today) : Weather;
+        var weather = AreaAt(x, y) is { } area ? area.WeatherAt(x, y, Core.GameClock.Today) : Weather;
         if (weather == FieldWeather.Fog && FogLifted) return FieldWeather.Clear;
         if (IsVoid) return FieldWeather.Clear;
         return IsCave && weather != FieldWeather.Fog ? FieldWeather.Clear : weather;
@@ -1212,6 +1241,19 @@ public class Map
             && Feebas.Bites(SpecialEncounterTables.FeebasTiles, state.DailyNumber, x, y, rng))
             table = Overworld.Feebas.Table(feebas.Species, table);
         return WildEncounterRules.Meet(table, water: true, lead is { } first ? first with { RepelLevel = null } : null, rng);
+    }
+
+    /// <summary>
+    /// What comes out from under a rock smashed at a tile (plan 21 · H4; Emerald's <c>RockSmashWildEncounter</c>): the
+    /// area's rate decides whether anything does (<see cref="WildEncounterRules.RockSmashMeets"/>), then a slot weighted
+    /// as the water's, its level drawn between the slot's two; nothing keeps it away. Null when the rock hid nothing,
+    /// which is always so where the area has no such table.
+    /// </summary>
+    public WildEncounterEntry? SmashOut(int x, int y, WildLead? lead = null)
+    {
+        if (AreaAt(x, y) is not { } area || area.RockSmashEncounters.Count == 0) return null;
+        if (!WildEncounterRules.RockSmashMeets(area.RockSmashRate, lead, rng)) return null;
+        return WildEncounterRules.Meet(area.RockSmashEncounters, water: true, lead is { } first ? first with { RepelLevel = null } : null, rng, keptAway: false);
     }
 
     /// <summary>

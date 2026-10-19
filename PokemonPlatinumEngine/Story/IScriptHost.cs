@@ -341,6 +341,13 @@ public interface IScriptHost
     /// </summary>
     bool SweetScent();
 
+    /// <summary>
+    /// What a rock just smashed hid (plan 21 · H4; Emerald's <c>RockSmashWildEncounter</c>): true when a wild Pokémon of
+    /// the place came out from under it, and its battle starts; false when it hid nothing, which is always so where the
+    /// place has no such table (every place of Platinum's).
+    /// </summary>
+    bool SmashEncounter();
+
     // ------------------------------------------------------------------ sound
 
     /// <summary>Plays a song; null goes back to the theme of the place, and an empty name is silence.</summary>

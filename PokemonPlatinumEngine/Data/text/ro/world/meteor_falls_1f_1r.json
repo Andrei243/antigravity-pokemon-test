@@ -1,0 +1,105 @@
+{
+  "people": {
+    "meteor_falls_magma_grunt_1": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stay out of Team Magma's way!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "meteor_falls_magma_grunt_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stay out of Team Magma's way!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "meteor_falls_archie": {
+      "name": {
+        "en": [
+          "Archie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Magma won't get away with this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "meteor_falls_aqua_grunt_1": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "After them!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "meteor_falls_aqua_grunt_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "After them!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist_1": {
+      "name": {
+        "en": [
+          "Prof. Cozmo"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

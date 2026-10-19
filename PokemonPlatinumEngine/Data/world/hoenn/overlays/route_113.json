@@ -1,0 +1,34 @@
+{
+  // Route 113 (plan 21 · H4, part a): the road west from Route 111 to Fallarbor Town under Mt. Chimney's ash, which
+  // falls between the columns Emerald's CheckSetAshWeather and its weather triggers mark (the zone) and lies on the
+  // grass, to be gathered in the glass workshop's Soot Sack (GameEngine.GatherAsh). Two of its doors lead to places
+  // not open yet (a secret base's hollow and the way Terra Cave would open), and stay shut
+  "area": "route_113",
+  "bgmTrack": "hoenn/route113",
+  "trees": "Round",
+  "locked": [ 1, 2 ],
+  "zones": [
+    { "x": 119, "z": 0, "width": 66, "depth": 20, "weather": "SlowAshfall" }
+  ],
+  "people": {
+    "ninja_boy": { "name": "Boy", "dialog": [ "Every step I take, puff! Up goes the ash. I could walk around in it all day!" ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "This ash can be made into glass, you know. The workshop down the road does wonderful things with it." ] },
+    "youngster": { "name": "Jaylen", "trainer": { "dialogueBefore": "Youngster Jaylen: My shorts are covered in ash, but I'm still ready to battle!", "dialogueAfter": "Youngster Jaylen: Now I'm covered in ash and losing." } },
+    "youngster_2": { "name": "Dillon", "trainer": { "dialogueBefore": "Youngster Dillon: My Aron's made of iron. It doesn't care about the ash!", "dialogueAfter": "Youngster Dillon: It cares about losing, though." } },
+    "woman_5": { "name": "Madeline", "trainer": { "dialogueBefore": "Parasol Lady Madeline: My parasol keeps the ash off me. Nothing will keep you from losing!", "dialogueAfter": "Parasol Lady Madeline: My parasol didn't help me at all." } },
+    "ninja_boy_2": { "name": "Lao", "trainer": { "dialogueBefore": "Ninja Boy Lao: I was hiding in the ash! You found me, so now you battle me!", "dialogueAfter": "Ninja Boy Lao: I'll hide better next time." } },
+    "ninja_boy_3": { "name": "Lung", "trainer": { "dialogueBefore": "Ninja Boy Lung: You walked right past my hiding spot. Ha! Battle!", "dialogueAfter": "Ninja Boy Lung: Back into hiding with me." } },
+    "twin": { "name": "Tori & Tia", "trainer": { "dialogueBefore": "Twins Tori & Tia: We do everything together, even battling!", "dialogueAfter": "Twins Tori & Tia: We lost together too." } },
+    "twin_2": { "name": "Tori & Tia", "trainer": { "dialogueBefore": "Twins Tori & Tia: Our Spinda spin together. Watch them go!", "dialogueAfter": "Twins Tori & Tia: Our Spinda are too dizzy now." } },
+    "maniac": { "name": "Wyatt", "trainer": { "dialogueBefore": "Pokémaniac Wyatt: My Pokémon love the ash. They roll around in it! Let's battle!", "dialogueAfter": "Pokémaniac Wyatt: Now they need a bath." } },
+    "camper": { "name": "Lawrence", "trainer": { "dialogueBefore": "Camper Lawrence: Grey sky, grey ground, grey everything! Let's brighten things up with a battle.", "dialogueAfter": "Camper Lawrence: Still grey. And now I'm blue." } },
+    "picnicker": { "name": "Sophie", "trainer": { "dialogueBefore": "Picnicker Sophie: I shook the ash off my blanket for a picnic. And a battle!", "dialogueAfter": "Picnicker Sophie: The ash is settling on my lunch again." } },
+    "man_5": { "name": "Coby", "trainer": { "dialogueBefore": "Bird Keeper Coby: My birds fly above the ash. Can yours keep up?", "dialogueAfter": "Bird Keeper Coby: They've come back to land." } }
+  },
+  "signs": {
+    "Route113_EventScript_RouteSign111": "Route 113\nEast: Route 111",
+    "Route113_EventScript_RouteSignFallarbor": "Route 113\nWest: Fallarbor Town",
+    "Route113_EventScript_TrainerTipsRegisterKeyItems": "Trainer Tips\nA key item registered in the bag can be used at once with a single button.",
+    "Route113_EventScript_GlassWorkshopSign": "Glass Workshop\nWe make beautiful things out of volcanic ash!"
+  }
+}

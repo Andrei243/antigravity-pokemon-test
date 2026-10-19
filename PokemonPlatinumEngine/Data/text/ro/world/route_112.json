@@ -1,0 +1,224 @@
+{
+  "people": {
+    "route112_grunt_1": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route112_grunt_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_3": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'd like to go down to Mauville, but once I'm off these ledges, getting back up to Lavaridge is no easy climb."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Brice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Brice: Mt. Chimney's slopes made my legs strong. Let's see how strong my Pokémon are!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Brice: My legs are fine. My pride, not so much."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Larry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Larry: I'm camping at the foot of a volcano. Exciting, right? Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Larry: That was hotter than the volcano."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Carol"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Carol: We packed a lunch for the climb! But a battle comes first."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Carol: I need that lunch now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Trent"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Trent: My Geodude and I have climbed every mountain in Hoenn!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Trent: We'll go and climb a bigger one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Bryant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Kindler Bryant: Being so close to the volcano fires me right up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Kindler Bryant: Doused."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Shayla"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Shayla: The flowers by the berry trees smell lovely. Shall we battle among them?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Shayla: Even losing smells sweet here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route112_EventScript_MtChimneySign": {
+      "en": [
+        "Mt. Chimney\nFor Lavaridge Town or the summit, please take the cable car."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route112_EventScript_MtChimneyCableCarSign": {
+      "en": [
+        "Mt. Chimney Cable Car\nA short walk up this way!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route112_EventScript_RouteSignLavaridge": {
+      "en": [
+        "Route 112\nWest: Lavaridge Town"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

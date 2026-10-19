@@ -170,6 +170,7 @@ public class TextTests
         {
             "PLAYER", "DAWN", "ROWAN", "Poké Ball", "Great Ball", "Ultra Ball", "Master Ball", "Journal", "Potion", "Revive", "Turtwig",
             "Glitter Powder", "PoffinCase", "TownMap", "Leader", "Elite Four", "Champion", "Sinnoh", "PlayerHouse",
+            "Soot Sack", // the item that gathers Route 113's ash (plan 21 · H4), by its name in the data
             "slot {s.Number} {s.Outcome}" // how the slots read, for the log's line after it
         },
         // The region, the starter and its move an old save was given, and the save's field of its checksum

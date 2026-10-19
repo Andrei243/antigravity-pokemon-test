@@ -1,0 +1,214 @@
+{
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_3": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Our dolls are prizes for decorating a secret base. We'll have them in stock soon!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You need Coins to play the machines. The counter will sell you some, if you have a Coin Case."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The roulette tables are closed for repairs. Pity. Roulette is pure luck, and I'm feeling lucky!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I won the same doll twice! I'd give you one, but they're for secret bases, and they're not ready yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_m": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The two roulette tables pay out at different rates. When they open again, pick your table wisely!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cook": {
+      "name": {
+        "en": [
+          "Cook"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came here on my day off, and now I've lost all my Coins. Back to the kitchen tomorrow!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stop the reels in the right order and you'll win more. That's my theory, anyway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Three sevens in a row! I saw it once. I've been chasing that feeling ever since."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I only play a little. A little at a time! Well, maybe a little more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Roulette_EventScript_Table1": {
+      "en": [
+        "The roulette table is covered with a cloth. A card on it says: \"Closed for repairs.\""
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Roulette_EventScript_Table2": {
+      "en": [
+        "The roulette table is covered with a cloth. A card on it says: \"Closed for repairs.\""
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

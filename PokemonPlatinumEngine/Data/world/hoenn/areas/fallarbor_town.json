@@ -1,0 +1,41 @@
+{
+  "key": "fallarbor_town",
+  "index": 27,
+  "name": "Fallarbor Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FALLARBOR",
+  "nightMusic": "MUS_FALLARBOR",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 95, "z": 15, "to": "fallarbor_town_mart", "toWarp": 0 },
+    { "x": 88, "z": 7, "to": "fallarbor_town_battle_tent_lobby", "toWarp": 0 },
+    { "x": 94, "z": 7, "to": "fallarbor_town_pokemon_center_1f", "toWarp": 0 },
+    { "x": 86, "z": 17, "to": "fallarbor_town_cozmos_house", "toWarp": 0 },
+    { "x": 81, "z": 6, "to": "fallarbor_town_move_relearners_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "girl_1", "looks": "girl_1", "movement": "look_south", "x": 88, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 1, "script": "FallarborTown_EventScript_Girl" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "wander_west_and_east", "x": 91, "z": 9, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "FallarborTown_EventScript_ExpertM" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "wander_north_and_south", "x": 91, "z": 15, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "FallarborTown_EventScript_Gentleman" },
+    { "id": "azurill", "looks": "azurill", "movement": "look_around", "x": 88, "z": 12, "facing": 1, "rangeX": 1, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_FALLARBOR_AZURILL", "script": "FallarborTown_EventScript_Azurill" }
+  ],
+  "signs": [
+    { "x": 96, "z": 15, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 95, "z": 7, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 86, "z": 8, "type": 0, "script": "FallarborTown_EventScript_BattleTentSign" },
+    { "x": 96, "z": 7, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 90, "z": 11, "type": 0, "script": "FallarborTown_EventScript_TownSign" },
+    { "x": 97, "z": 15, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 83, "z": 7, "type": 0, "script": "FallarborTown_EventScript_MoveTutorSign" },
+    { "x": 82, "z": 15, "type": 2, "script": "", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_FALLARBOR_TOWN_NUGGET" }
+  ],
+  "triggers": []
+}

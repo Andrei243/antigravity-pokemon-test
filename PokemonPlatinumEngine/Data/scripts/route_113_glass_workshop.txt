@@ -1,0 +1,78 @@
+# The glass workshop on Route 113 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/Route113_GlassWorkshop/scripts.inc).
+#
+# The master gives the Soot Sack (VAR_GLASS_WORKSHOP_STATE 1, and 2 once the workshop is come to again), which gathers
+# the ash on Route 113's grass (VAR_ASH_GATHER_COUNT, GameEngine.GatherAsh), and makes a flute of it at Emerald's
+# prices in ash: the Blue Flute 250, the Yellow and Red 500, the White and Black 1,000. Emerald makes the player go out
+# and come back for the flute; here it is handed over at once. The Pretty Chair and Desk, Emerald's other two, are
+# decorations for a secret base (plan 21 · H10).
+
+
+script OnEnter
+  if var VAR_GLASS_WORKSHOP_STATE == 1 setvar VAR_GLASS_WORKSHOP_STATE 2
+  end
+
+
+script GlassWorker
+  speaker "Glass Worker"
+  if var VAR_GLASS_WORKSHOP_STATE >= 2 goto Collected
+  if var VAR_GLASS_WORKSHOP_STATE == 1 goto Explain
+  say "Welcome to my glass workshop! I make glass out of the volcanic ash that falls on the road outside."
+  say "But I'm getting on, and gathering ash is hard work. Would you collect some for me? Take this."
+  give "Soot Sack"
+  setvar VAR_GLASS_WORKSHOP_STATE 1
+label Explain
+  say "Walk through the grass where the ash lies with that Soot Sack in your bag, and the ash will go right into it."
+  say "Bring me plenty, and I'll make you something lovely out of it."
+  end
+label Collected
+  if not item "Soot Sack" goto NoSack
+  say "Let's have a look at the ash you've gathered. Hmm... {var:VAR_ASH_GATHER_COUNT} steps' worth."
+  if var VAR_ASH_GATHER_COUNT < 250 goto TooLittle
+  choose "Which shall I make for you?" "Blue Flute (250)" "Yellow Flute (500)" "Red Flute (500)" "White Flute (1,000)" "Black Flute (1,000)" "Nothing"
+  if result == 0 goto Blue
+  if result == 1 goto Yellow
+  if result == 2 goto Red
+  if result == 3 goto White
+  if result == 4 goto Black
+  say "Come back whenever you like. The ash keeps falling!"
+  end
+label Blue
+  if var VAR_ASH_GATHER_COUNT < 250 goto Short
+  addvar VAR_ASH_GATHER_COUNT -250
+  say "A Blue Flute it is! There we are, fresh from the fire."
+  give "Blue Flute"
+  end
+label Yellow
+  if var VAR_ASH_GATHER_COUNT < 500 goto Short
+  addvar VAR_ASH_GATHER_COUNT -500
+  say "A Yellow Flute it is! There we are, fresh from the fire."
+  give "Yellow Flute"
+  end
+label Red
+  if var VAR_ASH_GATHER_COUNT < 500 goto Short
+  addvar VAR_ASH_GATHER_COUNT -500
+  say "A Red Flute it is! There we are, fresh from the fire."
+  give "Red Flute"
+  end
+label White
+  if var VAR_ASH_GATHER_COUNT < 1000 goto Short
+  addvar VAR_ASH_GATHER_COUNT -1000
+  say "A White Flute it is! There we are, fresh from the fire."
+  give "White Flute"
+  end
+label Black
+  if var VAR_ASH_GATHER_COUNT < 1000 goto Short
+  addvar VAR_ASH_GATHER_COUNT -1000
+  say "A Black Flute it is! There we are, fresh from the fire."
+  give "Black Flute"
+  end
+label Short
+  say "Oh dear, that takes more ash than you've gathered. Go and collect a little more."
+  end
+label TooLittle
+  say "That's not quite enough to make anything yet. Keep walking through that ash!"
+  end
+label NoSack
+  say "Where's the Soot Sack I gave you? I can't make anything without the ash in it."
+  end

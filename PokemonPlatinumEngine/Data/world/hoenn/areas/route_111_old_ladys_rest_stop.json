@@ -1,0 +1,26 @@
+{
+  "key": "route_111_old_ladys_rest_stop",
+  "index": 229,
+  "name": "Route 111",
+  "matrix": 178,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "route_111", "toWarp": 2 },
+    { "x": 4, "z": 7, "to": "route_111", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "expert_f", "looks": "expert_f", "movement": "look_west", "x": 6, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "Route111_OldLadysRestStop_EventScript_OldLady" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,104 @@
+{
+  "people": {
+    "fallarbor_tent_attendant": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Battle Tent! Here, the judges decide a battle after three turns. Our challenge isn't ready yet, I'm afraid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If neither Pokémon faints in three turns, the judges look at how each fought. Strength isn't everything!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I want to be a judge! I'd give points for the coolest moves."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Attacking a lot earns points from the judges. So does staying healthy!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "{player}! The Battle Tent's judges are hard to please. I like that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FallarborTown_BattleTentLobby_EventScript_RulesBoard": {
+      "en": [
+        "Battle Tent Rules\nThree turns, then the judges decide. Win three in a row!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

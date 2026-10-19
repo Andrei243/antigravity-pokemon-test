@@ -1,0 +1,13 @@
+{
+  // The Fossil Maniac's house on Route 114 (plan 21 · H4, part a): his little brother gives TM28, Dig, and the stairs
+  // at the back lead down into the tunnel the maniac is digging
+  "area": "route_114_fossil_maniacs_house",
+  "bgmTrack": "hoenn/fallarbor",
+  "people": {
+    "ninja_boy": { "name": "Boy", "script": "Brother" }
+  },
+  "signs": {
+    "Route114_FossilManiacsHouse_EventScript_RockDisplay": "The display case is full of rocks. Some of them have odd shapes pressed into them.",
+    "Route114_FossilManiacsHouse_EventScript_Bookshelf": "The shelves are crammed with books about fossils and the ancient world."
+  }
+}

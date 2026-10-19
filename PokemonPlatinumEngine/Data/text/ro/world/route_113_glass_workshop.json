@@ -1,0 +1,33 @@
+{
+  "people": {
+    "man_1": {
+      "name": {
+        "en": [
+          "Glass Worker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The master can make glass out of anything. Even the ash out there! Isn't that amazing?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -11,6 +11,8 @@
     "goldenrod_5f": [ "TM70", "TM17", "TM54", "TM83", "TM16", "TM33", "TM22", "TM52", "TM38", "TM25", "TM14", "TM15" ],
     // Hoenn's counters of plan 21 · H3: the Seashore House's Soda Pops and the Energy Guru's vitamins
     "seashore_house": [ "Soda Pop" ],
-    "slateport_energy_guru": [ "Protein", "Iron", "Carbos", "Zinc", "Calcium", "HP Up" ]
+    "slateport_energy_guru": [ "Protein", "Iron", "Carbos", "Zinc", "Calcium", "HP Up" ],
+    // Slateport Mart's mail counter (plan 21 · H3, part c): the Harbor Mail Mauville's Coin Case is traded for
+    "slateport_mail": [ "Harbor Mail" ]
   }
 }

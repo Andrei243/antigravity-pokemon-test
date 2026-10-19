@@ -1225,6 +1225,15 @@ public static class GameCornerPrizes
         ("TM35", 10000), ("TM24", 10000), ("TM13", 10000), ("TM29", 10000), ("TM74", 15000), ("TM68", 20000)
     };
 
+    /// <summary>
+    /// Mauville's exchange of TMs (plan 21 · H3, part c; Emerald's <c>MauvilleCity_GameCorner_EventScript_PrizeCornerTMs</c>,
+    /// its prices): Double Team, Psychic, Flamethrower, Thunderbolt and Ice Beam. Its dolls are decorations, plan 21 · H10's.
+    /// </summary>
+    public static readonly (string Item, int Coins)[] Mauville =
+    {
+        ("TM32", 1500), ("TM29", 3500), ("TM35", 4000), ("TM24", 4000), ("TM13", 4000)
+    };
+
     /// <summary>What the counter sells coins at: fifty for 1,000, five hundred for 10,000.</summary>
     public static readonly (int Coins, int Money)[] Counter = { (50, 1000), (500, 10000) };
 

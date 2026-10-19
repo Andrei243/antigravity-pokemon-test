@@ -1,0 +1,42 @@
+{
+  "Clerk": [
+    {
+      "en": [
+        "What are you looking for today?",
+        "Supplies",
+        "Mail",
+        "Nothing"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Do come again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Do come again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Do come again."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

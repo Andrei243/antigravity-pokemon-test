@@ -1,0 +1,30 @@
+{
+  "key": "route_114_fossil_maniacs_tunnel",
+  "index": 233,
+  "name": "Route 114",
+  "matrix": 182,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FALLARBOR",
+  "nightMusic": "MUS_FALLARBOR",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 25, "to": "route_114_fossil_maniacs_house", "toWarp": 2 },
+    { "x": 7, "z": 25, "to": "route_114_fossil_maniacs_house", "toWarp": 2 },
+    { "x": 6, "z": 2, "to": "desert_underpass", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "fossil_maniac", "looks": "maniac", "movement": "look_north", "x": 5, "z": 3, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "Route114_FossilManiacsTunnel_EventScript_FossilManiac" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 5, "z": 4, "width": 1, "depth": 1, "script": "Route114_FossilManiacsTunnel_EventScript_ManiacMentionCaveIn", "variable": "VAR_FOSSIL_MANIAC_STATE", "value": "1" },
+    { "x": 6, "z": 4, "width": 1, "depth": 1, "script": "Route114_FossilManiacsTunnel_EventScript_ManiacMentionCaveIn", "variable": "VAR_FOSSIL_MANIAC_STATE", "value": "1" }
+  ]
+}

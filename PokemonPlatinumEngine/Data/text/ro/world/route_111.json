@@ -1,0 +1,642 @@
+{
+  "people": {
+    "route111_victor": {
+      "name": {
+        "en": [
+          "Victor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route111_victoria": {
+      "name": {
+        "en": [
+          "Victoria"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The whole family battles! It's how we spend our evenings."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route111_vivi": {
+      "name": {
+        "en": [
+          "Vivi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm the youngest, but I'm not the weakest!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route111_vicky": {
+      "name": {
+        "en": [
+          "Vicky"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandchildren keep me young, dear."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A tower appears in the desert now and then. When you go to look, it's gone. It's like a mirage!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Winstrates over there are a whole family of trainers. They'll battle you one after another!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_3": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sand's blowing too hard to see a thing in there. Without goggles, your eyes won't stay open."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route111_rock_smash_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Heidi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Heidi: The desert's no place for a picnic. So let's have a battle instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Heidi: There's sand in my sandwiches now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Drew"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Drew: I've pitched my tent right by the sand. Want to test my Pokémon?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Drew: Time to pack up and go home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Dusty"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Dusty: There are ruins buried under that sand. But first, a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Dusty: I've been unearthed!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper_2": {
+      "name": {
+        "en": [
+          "Beau"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Beau: My Pokémon were made for the desert. Let's see if yours were!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Beau: We'll dry off and try again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Becky"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Becky: I keep spinning round to look for the Mirage Tower. Oh! A trainer!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Becky: Now I'm dizzy as well as beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_3": {
+      "name": {
+        "en": [
+          "Irene"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Irene: I came for the fresh air, but a battle's even better!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Irene: I need some more fresh air now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper_3": {
+      "name": {
+        "en": [
+          "Travis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Travis: You look like you've walked a long way. Rest by battling me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Travis: That wasn't very restful."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Daisuke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Daisuke: I train on this road every morning. You'll make a fine partner!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Daisuke: More training. Much more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Brooke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cool Trainer Brooke: I've got a balanced team. Can you break through it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cool Trainer Brooke: Balanced, but not enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_2": {
+      "name": {
+        "en": [
+          "Wilton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cool Trainer Wilton: I could tell from far off you'd be a good one. Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cool Trainer Wilton: I was right about you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper_4": {
+      "name": {
+        "en": [
+          "Tyron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Tyron: Mauville's bright lights are behind us. Out here it's just us and our Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Tyron: I'll head back to the lights now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Celina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Celina: My Roselia's scent is sweet. Its battling isn't!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Celina: A bitter ending."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_4": {
+      "name": {
+        "en": [
+          "Bianca"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Bianca: Have you come from Mauville? Then you'll want a battle before the long walk!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Bianca: Good luck on the long walk!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Hayden"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Kindler Hayden: My fire burns hotter than the desert sun! Feel it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Kindler Hayden: My flame's down to a flicker."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Bryan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Bryan: I came looking for ruins and found you instead. Battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Bryan: Buried in defeat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_5": {
+      "name": {
+        "en": [
+          "Celia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Celia: I got lost in the sandstorm and ended up here. Let's battle while I'm here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Celia: Now I'm lost and beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper_5": {
+      "name": {
+        "en": [
+          "Branden"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Branden: Goggles are the first thing you pack for the desert. And Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Branden: Should have packed better Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route111_EventScript_WinstrateHouseSign": {
+      "en": [
+        "The Winstrate Family's House\nTrainers welcome!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route111_EventScript_RouteSignMauville": {
+      "en": [
+        "Route 111\nSouth: Mauville City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route111_EventScript_RouteSign112": {
+      "en": [
+        "Route 111\nWest: Route 112"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route111_EventScript_RouteSign113": {
+      "en": [
+        "Route 111\nWest: Route 113"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route111_EventScript_OldLadysRestStopSign": {
+      "en": [
+        "Old Lady's Rest Stop\nCome in and put your feet up!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route111_EventScript_TrainerTipsSpAtkSpDef": {
+      "en": [
+        "Trainer Tips\nA Pokémon with a high Sp. Atk hits hard with special moves, and a high Sp. Def takes them well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route111_EventScript_TrainerHillSign": {
+      "en": [
+        "Trainer Hill\nThis way. Closed for building work."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

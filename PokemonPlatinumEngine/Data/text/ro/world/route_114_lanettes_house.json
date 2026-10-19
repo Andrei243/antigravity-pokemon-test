@@ -1,0 +1,24 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Lanette"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route114_LanettesHouse_EventScript_PC": {
+      "en": [
+        "There's a message on the screen: \"Lanette, the storage system works like a dream. Bill.\""
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

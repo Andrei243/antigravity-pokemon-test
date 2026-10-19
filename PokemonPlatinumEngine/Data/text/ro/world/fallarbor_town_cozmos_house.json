@@ -1,0 +1,25 @@
+{
+  "people": {
+    "scientist_1": {
+      "name": {
+        "en": [
+          "Prof. Cozmo"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Cozmo's Wife"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

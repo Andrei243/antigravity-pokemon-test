@@ -8177,6 +8177,21 @@ way -
   > Lucas put it away in the Items pocket.
   * fanfare FanfareItem
   + FLAG_OBTAINED_HIDDEN_TEST_STARDUST
+=== common.HoennChapterFive
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
+  + FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
+  + FLAG_HIDE_LANETTES_HOUSE_LANETTE
+  + FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+  + FLAG_HIDE_ROUTE_111_DESERT_FOSSIL
+  + FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1
+  + FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2
+  + FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3
+  + FLAG_HIDE_ROUTE_111_PLAYER_DESCENT
+  + FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
 === common.HoennChapterFour
 from a trainer with lines of their own
 way -
@@ -8222,6 +8237,9 @@ way -
 === common.HoennNewGame
 from a trainer with lines of their own
 way -
+  + FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
+  + FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
+  + FLAG_HIDE_LANETTES_HOUSE_LANETTE
   + FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
   + FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
   + FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
@@ -8234,6 +8252,7 @@ way -
   + FLAG_HIDE_LITTLEROOT_TOWN_RIVAL
   + FLAG_HIDE_MAUVILLE_CITY_SCOTT
   + FLAG_HIDE_MAUVILLE_CITY_WATTSON
+  + FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
   + FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
   + FLAG_HIDE_OLDALE_TOWN_RIVAL
   + FLAG_HIDE_PETALBURG_CITY_SCOTT
@@ -8250,6 +8269,14 @@ way -
   + FLAG_HIDE_ROUTE_109_MR_BRINEY
   + FLAG_HIDE_ROUTE_110_BIRCH
   + FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE
+  + FLAG_HIDE_ROUTE_111_DESERT_FOSSIL
+  + FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1
+  + FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2
+  + FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3
+  + FLAG_HIDE_ROUTE_111_PLAYER_DESCENT
+  + FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
   + FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
   + FLAG_HIDE_ROUTE_116_MR_BRINEY
   + FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
@@ -9600,6 +9627,39 @@ from the trigger at 28,86 of EternaForest
 way -
   Cheryl> Oh, you're going back out? Then I'll wait for you here.
   * partner off
+=== fallarbor_town.Azurill
+from Azurill at 88,12 of Hoenn
+way -
+  Azurill> Rii, riii!
+  * cry Azurill
+=== fallarbor_town.OldMan
+from Old Man at 91,9 of Hoenn
+way -
+  Old Man> Some shady characters in red were hanging around Professor Cozmo's house. He went off with them, you know.
+=== fallarbor_town_cozmos_house.Cozmo
+from Prof. Cozmo at 6,4 of FallarborTown_CozmosHouse
+way -
+  Prof. Cozmo> My meteorite... It will never be mine again now. Team Magma made off with it.
+=== fallarbor_town_cozmos_house.Wife
+from Cozmo's Wife at 5,6 of FallarborTown_CozmosHouse
+way -
+  Cozmo's Wife> My husband went off to Meteor Falls with some people in red. They said they wanted to see his meteorite...
+  Cozmo's Wife> He can't say no to anyone. I hope he's all right.
+=== fallarbor_town_mart.Skitty
+from Skitty at 2,5 of FallarborTown_Mart
+way -
+  Skitty> Nyaa!
+  * cry Skitty
+=== fallarbor_town_pokemon_center_1f.Lanette
+from Lanette at 10,2 of FallarborTown_PokemonCenter_1F
+way -
+  Lanette> Oh, hello! You're a trainer, aren't you? I'm Lanette. I look after the Pokémon Storage System.
+  Lanette> I came to check the PC here, and it's all working nicely. Come and visit me at home on Route 114!
+  * scene fallarbor_town_pokemon_center_1f.Lanette in Fallarbor
+  * sound door_slide
+  * endscene
+  + FLAG_HIDE_FALLARBOR_POKEMON_CENTER_LANETTE
+  + seen fallarbor_town_pokemon_center_1f.Lanette in Fallarbor
 === fight_area.Buck
 from Buck at 657,426 of Sinnoh
 way -
@@ -10795,6 +10855,68 @@ way 1, from answer 1
   Rydel> Oh, you're local? Then you probably don't need a bike from me. Come back if you change your mind!
   ? Say, you look like a traveller. Did you come all the way here from somewhere far off? = No
   + FLAG_DECLINED_BIKE
+=== mauville_city_game_corner.CoinsClerk
+from Clerk at 11,2 of MauvilleCity_GameCorner
+way -
+  Clerk> Welcome to the Mauville Game Corner!
+  Clerk> You'll need a Coin Case to hold your Coins. I believe someone in the house next door has one.
+=== mauville_city_game_corner.Machine0
+from the tile read at 2,6 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine1
+from the tile read at 2,8 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine10
+from the tile read at 8,7 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine11
+from the tile read at 8,9 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine2
+from the tile read at 2,9 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine3
+from the tile read at 3,7 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine4
+from the tile read at 3,8 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine5
+from the tile read at 3,9 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine6
+from the tile read at 7,6 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine7
+from the tile read at 7,7 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine8
+from the tile read at 7,9 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.Machine9
+from the tile read at 8,6 of MauvilleCity_GameCorner
+way -
+  > The reels spin behind the glass. Without a Coin Case there's nothing to play with.
+=== mauville_city_game_corner.PokefanM
+from Man at 19,4 of MauvilleCity_GameCorner
+way -
+  Man> You need a Coin Case to play. The lady next door might help you out.
+=== mauville_city_game_corner.PrizeCornerTMs
+from Clerk at 13,2 of MauvilleCity_GameCorner
+way -
+  Clerk> We exchange your Coins for prizes. You have 0 Coins.
+  Clerk> Without a Coin Case, you have no Coins to exchange, I'm afraid.
 === mauville_city_gym.Beam
 from Electric barrier at 1,11 of MauvilleCity_Gym
 from Electric barrier at 2,11 of MauvilleCity_Gym
@@ -10896,6 +11018,41 @@ way -
   Man> That's Rock Smash. Use it on a rock with cracks in it, and boom! Once you've got Mauville's Badge, that is.
   * fanfare FanfareTM
   + FLAG_RECEIVED_HM_ROCK_SMASH
+=== mauville_city_house_2.Woman
+from Woman at 4,5 of MauvilleCity_House2
+way -
+  Woman> My husband spends every afternoon at the Game Corner. I wish I had some pretty Harbor Mail to write to my friends.
+=== meteor_falls_1f_1r.Cozmo
+from Prof. Cozmo at 13,23 of MeteorFalls_1F_1R
+way -
+  Prof. Cozmo> I'm Cozmo, a researcher of meteorites. Those people in red asked so nicely to see my meteorite...
+  Prof. Cozmo> And then they took it! Whatever do they want with it?
+  + FLAG_MET_PROF_COZMO
+=== meteor_falls_1f_1r.MagmaStealsTheMeteorite
+from the trigger at 14,18 of MeteorFalls_1F_1R
+way -
+  Team Magma Grunt> With this meteorite, that thing at Mt. Chimney will be ours to wake! Our boss will be thrilled.
+  Team Magma Grunt> Hey! Who's the kid? Whoever you are, don't expect any mercy from Team Magma!
+  Archie> Hold it right there, Team Magma!
+  Team Magma Grunt> Team Aqua! You lot always turn up where you're not wanted. We've got what we came for. See you around!
+  Archie> Well, well. I've seen you before. Slateport, at the museum, wasn't it?
+  Archie> Team Magma have their meteorite now, and they mean to use it on Mt. Chimney's volcano.
+  Team Aqua Grunt> Boss! We should go after Team Magma, right now!
+  Archie> Yes, and quickly. There's no telling what they'll do with it.
+  Archie> As for you, kid... Stay out of grown-up business. Team Aqua will deal with Team Magma. Farewell!
+  * scene meteor_falls_1f_1r.Team Magma at Meteor Falls
+  * music hoenn/eye_galactic
+  * emote Team Magma Grunt Exclaim
+  * walk player back left
+  * music area
+  * endscene
+  + FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
+  + FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+  + FLAG_HIDE_METEOR_FALLS_TEAM_MAGMA
+  + FLAG_HIDE_ROUTE_112_TEAM_MAGMA
+  + FLAG_MET_ARCHIE_METEOR_FALLS
+  = VAR_METEOR_FALLS_STATE 0 -> 1
+  + seen meteor_falls_1f_1r.Team Magma at Meteor Falls
 === mt_coronet_1f_north_room_1.GruntF
 from Grunt at 19,41 of MtCoronet1FNorthRoom1
 way -
@@ -12209,6 +12366,217 @@ way -
   > Lucas learnt the secret code written on it by heart.
   * fanfare FanfareItem
   = VAR_TRICK_HOUSE_PUZZLE_1_STATE 0 -> 1
+=== route_111.Girl
+from Girl at 223,8 of Hoenn
+way -
+  Girl> I water these berry trees every day, and look how well they're doing! Here, take one.
+  > Lucas received the Razz Berry!
+  > Lucas put it away in the Berries pocket.
+  Girl> One day I'm going to grow berries in colours nobody has ever seen!
+  * fanfare FanfareItem
+  + FLAG_DAILY_ROUTE_111_RECEIVED_BERRY
+=== route_111.PushBackDown
+from the trigger at 211,61 of Hoenn
+from the trigger at 212,61 of Hoenn
+from the trigger at 213,61 of Hoenn
+from the trigger at 214,61 of Hoenn
+way -
+  > The sandstorm is far too fierce. There's no going on without something to shield the eyes!
+=== route_111.PushBackLeft
+from the trigger at 212,44 of Hoenn
+from the trigger at 213,43 of Hoenn
+from the trigger at 214,42 of Hoenn
+from the trigger at 216,40 of Hoenn
+from the trigger at 217,39 of Hoenn
+from the trigger at 218,38 of Hoenn
+way -
+  > The sandstorm is far too fierce. There's no going on without something to shield the eyes!
+=== route_111.RockSmashMan
+from Man at 219,101 of Hoenn
+way -
+  Man> These rocks are cracked all over. A good Rock Smash and they'd crumble to bits.
+  Man> Sometimes a Pokémon that was hiding underneath comes tumbling out! It gave me such a fright.
+=== route_111.Victor
+from Victor at 213,114 of Hoenn
+way 0.0.0.0.0
+  Victor> Well, hello there! We're the Winstrates, a family of Pokémon trainers, every one of us.
+  Victor> How about it? Will you take on the whole family, one after another?
+  Victor> Battle the Winstrate family?
+  Victor> That's the spirit! I'll start us off.
+  Victor> Ha! You're strong. But the family's only getting started!
+  Victoria> So you beat my husband? Then you'll have to deal with me next!
+  Victoria> Oh my, you really are good. Our daughter's itching to try you, though.
+  Vivi> Mum and Dad both lost? No way! I'll win for the family!
+  Vivi> Aww... Grandma! It's your turn!
+  Vicky> My, my. You've beaten my whole family? Then this old lady will show you how it's done!
+  Vicky> Goodness! Four in a row! Do come inside, dear. The family would love to meet you properly.
+  ? Battle the Winstrate family? = Yes
+  * scene route_111.The Winstrates
+  * battle hoenn_victor Won
+  * battle hoenn_victoria Won
+  * battle hoenn_vivi Won
+  * battle hoenn_vicky Won
+  * endscene
+  + FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
+  + beaten hoenn_vicky
+  + beaten hoenn_victor
+  + beaten hoenn_victoria
+  + beaten hoenn_vivi
+  + seen route_111.The Winstrates
+way 0.0.0.0.1, from answer 5
+  * battle hoenn_vicky Lost
+  * scene over, unseen
+  + FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
+  + beaten hoenn_victor
+  + beaten hoenn_victoria
+  + beaten hoenn_vivi
+way 0.0.0.1, from answer 4
+  * battle hoenn_vivi Lost
+  * scene over, unseen
+  + FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE
+  + FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
+  + beaten hoenn_victor
+  + beaten hoenn_victoria
+way 0.0.1, from answer 3
+  * battle hoenn_victoria Lost
+  * scene over, unseen
+  + FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
+  + beaten hoenn_victor
+way 0.1, from answer 2
+  * battle hoenn_victor Lost
+  * scene over, unseen
+way 1, from answer 1
+  Victor> No? Well, our door's always open. Come back when you're ready!
+  ? Battle the Winstrate family? = No
+  * endscene
+  + seen route_111.The Winstrates
+=== route_111_old_ladys_rest_stop.OldLady
+from Old Lady at 6,3 of Route111_OldLadysRestStop
+way 0.0
+  Old Lady> Oh my, your Pokémon look worn out. Why not have a rest here?
+  Old Lady> That's it. Take all the time you need.
+  Old Lady> Still feeling tired? Another rest would do you good.
+  Old Lady> Of course. Rest as long as you like.
+  Old Lady> There now, everyone's bright-eyed again. Off you go, and take care!
+  ? Oh my, your Pokémon look worn out. Why not have a rest here? = Yes
+  ? Still feeling tired? Another rest would do you good. = Yes
+  * fade out
+  * fanfare FanfareHeal
+  * fade in
+  * fade out
+  * fanfare FanfareHeal
+  * fade in
+way 0.1, from answer 2
+  Old Lady> Don't be shy, dear. My door is always open.
+  ? Still feeling tired? Another rest would do you good. = No
+way 1, from answer 1
+  Old Lady> Don't be shy, dear. My door is always open.
+  ? Oh my, your Pokémon look worn out. Why not have a rest here? = No
+=== route_111_winstrate_familys_house.Vicky
+from Vicky at 4,4 of Route111_WinstrateFamilysHouse
+way -
+  Vicky> I've been battling longer than anyone in this house. But you, dear, have a real gift.
+=== route_111_winstrate_familys_house.Victor
+from Victor at 4,5 of Route111_WinstrateFamilysHouse
+way -
+  Victor> Every one of us trains Pokémon. It's what keeps this family close!
+=== route_111_winstrate_familys_house.Victoria
+from Victoria at 7,4 of Route111_WinstrateFamilysHouse
+way -
+  Victoria> We battle as a family, one after another. Have you tried us all yet?
+=== route_111_winstrate_familys_house.Vivi
+from Vivi at 7,5 of Route111_WinstrateFamilysHouse
+way -
+  Vivi> I'm going to be stronger than Grandma one day. Just you wait!
+=== route_112.MagmaGrunts
+from Team Magma Grunt at 186,50 of Hoenn
+from Team Magma Grunt at 187,50 of Hoenn
+way -
+  Team Magma Grunt> Hey, is the boss really going to wake that thing up?
+  Team Magma Grunt> Sounds like it. Only first, he needs a meteorite to do it.
+  Team Magma Grunt> Oh, so that's why the rest of the crew went off to Fallarbor!
+  Team Magma Grunt> You got it. And till they come back, nobody gets past us. Got that?
+=== route_112_cable_car_station.Attendant
+from Attendant at 6,6 of Route112_CableCarStation
+way -
+  Attendant> Welcome to the Mt. Chimney Cable Car. Some rough-looking people have been hanging about outside, haven't they?
+  Attendant> I'm afraid the car is being looked over just now. Please come back later!
+=== route_113_glass_workshop.GlassWorker
+from Glass Worker at 2,3 of Route113_GlassWorkshop
+way -
+  Glass Worker> Welcome to my glass workshop! I make glass out of the volcanic ash that falls on the road outside.
+  Glass Worker> But I'm getting on, and gathering ash is hard work. Would you collect some for me? Take this.
+  > Lucas received the Soot Sack!
+  > Lucas put it away in the Key Items pocket.
+  Glass Worker> Walk through the grass where the ash lies with that Soot Sack in your bag, and the ash will go right into it.
+  Glass Worker> Bring me plenty, and I'll make you something lovely out of it.
+  * fanfare FanfareKeyItem
+  = VAR_GLASS_WORKSHOP_STATE 0 -> 1
+=== route_114.BerryMan
+from Man at 67,44 of Hoenn
+way -
+  Man> Berries are my favourite thing in the world. I like to share them! Here, have one.
+  > Lucas received the Razz Berry!
+  > Lucas put it away in the Berries pocket.
+  Man> Plant it somewhere and see what grows. Come back tomorrow for another!
+  * fanfare FanfareItem
+  + FLAG_DAILY_ROUTE_114_RECEIVED_BERRY
+=== route_114.Poochyena
+from Poochyena at 59,14 of Hoenn
+way -
+  Poochyena> Grrr... Woof!
+  * cry Poochyena
+=== route_114.RoarGentleman
+from Gentleman at 59,13 of Hoenn
+way -
+  Gentleman> All my Pokémon ever does is roar. Roar, roar, roar! I've had quite enough of it. You take this.
+  > Lucas received the TM05!
+  > TM05 holds the move Roar.
+  > Lucas put it away in the TMs & HMs pocket.
+  Gentleman> Roar sends a wild Pokémon running, and in a battle with a trainer, it makes them switch.
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_TM_ROAR
+=== route_114_fossil_maniacs_house.Brother
+from Boy at 3,2 of Route114_FossilManiacsHouse
+way -
+  Boy> My big brother's always digging for fossils. I want to dig too! You can have this, so you can dig like him.
+  > Lucas received the TM28!
+  > TM28 holds the move Dig.
+  > Lucas put it away in the TMs & HMs pocket.
+  Boy> Use Dig in a cave and you pop right back out at its entrance. My brother uses it when he gets lost!
+  * fanfare FanfareTM
+  + FLAG_RECEIVED_TM_DIG
+=== route_114_fossil_maniacs_tunnel.FossilManiac
+from Fossil Maniac at 5,3 of Route114_FossilManiacsTunnel
+way -
+  Fossil Maniac> I'm digging for fossils! I dig and dig, every day. Pokémon from ancient times lie hidden in the rock.
+  Fossil Maniac> They say fossils turn up in the desert, too. If you ever find one, I'd love to see it!
+=== route_114_lanettes_house.Lanette
+from Lanette at 5,4 of Route114_LanettesHouse
+way -
+  Lanette> Oh, it's you, from the Pokémon Center! Excuse the mess. I'm always tinkering with the storage system.
+  Lanette> Keep your boxes tidy and give each one a name. You'll always know where everyone is!
+  + FLAG_SYS_PC_LANETTE
+=== route_114_lanettes_house.Notebook
+from the tile read at 5,1 of Route114_LanettesHouse
+way 0.0
+  > It's Lanette's research notebook. Read it?
+  > "The storage system turns a Pokémon into data, so that it can be kept safely in a PC."
+  > There's more on the next page. Keep reading?
+  > "Anyone can use it from any Pokémon Center's PC. That was the hardest part to make work."
+  ? It's Lanette's research notebook. Read it? = Yes
+  ? There's more on the next page. Keep reading? = Yes
+way 0.1, from answer 2
+  > Lucas closed the notebook.
+  ? There's more on the next page. Keep reading? = No
+way 1, from answer 1
+  > Lucas closed the notebook.
+  ? It's Lanette's research notebook. Read it? = No
 === route_116.Briney
 from Mr. Briney at 86,131 of Hoenn
 way -
@@ -14061,6 +14429,21 @@ way -
   Energy Guru> Welcome! I'm the Energy Guru! I sell whatever your Pokémon needs to grow strong!
   Energy Guru> Come back whenever your Pokémon need a boost!
   * open Shop slateport_energy_guru
+=== slateport_city_mart.Clerk
+from Clerk at 1,3 of SlateportCity_Mart
+way 0
+  Clerk> Welcome! What can I get for you?
+  Clerk> What are you looking for today?
+  Clerk> Thank you! Do come again.
+  ? What are you looking for today? = Supplies
+  * open Shop
+way 2, from answer 1
+  Clerk> Thank you! Do come again.
+  ? What are you looking for today? = Nothing
+way 1, from answer 1
+  Clerk> Thank you! Do come again.
+  ? What are you looking for today? = Mail
+  * open Shop slateport_mail
 === slateport_city_oceanic_museum_1f.FamiliarGrunt
 from Team Aqua Grunt at 9,4 of SlateportCity_OceanicMuseum_1F
 way -
