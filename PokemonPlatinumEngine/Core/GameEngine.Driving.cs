@@ -1,5 +1,6 @@
 using Raylib_cs;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
 using PokemonPlatinumEngine.Models;
@@ -247,6 +248,14 @@ public partial class GameEngine
         public string SaveFile => SavePaths.Current.Slot(game.flow.SaveSlot);
         /// <summary>The slot the game is saved in deleted, its backup with it: a tool that saved takes its save away again.</summary>
         public bool DeleteSave() => SaveSlots.Delete(SavePaths.Current, game.flow.SaveSlot);
+        /// <summary>The folder the Vs. Recorder writes into (plan 08 · P10): beside the saves unless a tool names another.</summary>
+        public string ReplaysFolder { get => game.ReplaysFolder; set => game.ReplaysFolder = value; }
+        /// <summary>The file the last battle recorded went into, or null.</summary>
+        public string? LastRecorded => game.LastRecorded;
+        /// <summary>The battle the Vs. Recorder is about to ask about, or is asking about now; null when there is none.</summary>
+        public BattleRecordFile? RecordOffered => game.flow.RecordOffered;
+        /// <summary>Whether the question on the screen is the Vs. Recorder's.</summary>
+        public bool AskingToRecord => game.flow.RecordAsked;
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
         public SaveData BuildSave() => game.BuildSave();
         /// <summary>Every Pokémon of the player's given its own id, as a save gives them (plan 07 · O2); how many were.</summary>

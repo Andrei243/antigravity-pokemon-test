@@ -266,6 +266,14 @@ internal sealed class ScriptWalk
         }
     }, "Test");
 
+    private static (int X, int Y) StandingOn(Map map, StepTrigger trigger)
+    {
+        for (int y = trigger.Y; y < trigger.Y + trigger.Depth; y++)
+            for (int x = trigger.X; x < trigger.X + trigger.Width; x++)
+                if (map.InBounds(x, y) && !map.IsSolid(x, y)) return (x, y);
+        return (trigger.X, trigger.Y);
+    }
+
     /// <summary>
     /// A script of a place on every way through it, as whatever starts it would start it on the place's own map: a
     /// trigger's with the player on the trigger, a thing read from the open tile below it, facing it.
@@ -289,7 +297,10 @@ internal sealed class ScriptWalk
         // A place's own arrival script starts with the player where a door of a room puts them (its first way out's
         // own tile, which is the mat inside it); out in the open the walk has no better place than the map's corner
         var door = person == null && what.StartsWith(Arriving, StringComparison.Ordinal) && !map.IsStreamed ? map.Warps.FirstOrDefault() : null;
-        Action<HeadlessScriptHost>? before = trigger != null ? host => host.PlayerTile = (trigger.X, trigger.Y)
+        // (on its first tile that can be stood on: the original's triggers sometimes reach over a wall, which nobody
+        // steps onto, as the Team Rocket Hideout's way past its generator does, plan 20 · J11)
+        var onTrigger = trigger == null ? (0, 0) : StandingOn(map, trigger);
+        Action<HeadlessScriptHost>? before = trigger != null ? host => host.PlayerTile = onTrigger
             : read is { } below ? host => { host.PlayerTile = below; host.PlayerFacing = Direction.Up; }
             : door != null ? host => { host.PlayerTile = (door.SourceX, door.SourceY); host.PlayerFacing = Direction.Up; }
             : null;
@@ -506,6 +517,12 @@ internal sealed class ScriptWalk
                     break;
                 case FieldScripts.HiddenItem:
                     yield return new Played("a hidden item", script, EveryWayThrough(script, new Map(8, 8), null, item: ("Stardust", 1), flag: "FLAG_OBTAINED_HIDDEN_TEST_STARDUST"));
+                    break;
+                // A Kecleon of Hoenn seen through the Devon Scope (plan 21 · H6): a thing of the map nobody sees, with
+                // its own flag, which its battle sets however it ends
+                case "common.HoennKecleonFound":
+                    yield return new Played("a Kecleon seen through the Devon Scope", script, EveryWayThrough(script, new Map(8, 8),
+                        new NPC { NpcType = NPC.UnseenType, Name = "Kecleon", HiddenBy = "FLAG_HIDE_TEST_KECLEON" }));
                     break;
                 // A Pokémon standing in the field cries as itself (plan 10 · F1)
                 case FieldScripts.Pokemon:

@@ -1,0 +1,59 @@
+{
+  "people": {
+    "youngster": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I had no treats to throw, but I still caught plenty. Sneak up close before you throw a ball. It works!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "psychic_m": {
+      "name": {
+        "en": [
+          "Psychic"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A treat makes a wild Pokémon slower to run off. Though there's no point giving one to a Pokémon that never runs."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Leave a treat in a box out there, and Pokémon come for it. I bet each kind of treat draws a different sort."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

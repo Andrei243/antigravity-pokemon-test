@@ -1,0 +1,184 @@
+{
+  "people": {
+    "d23r0103_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0103_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0103_gsman1_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We keep recordings of the cries of every Pokémon anyone has found. Two hundred kinds, near enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0103_babyboy1_9": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0103_babyboy1_9_2": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0103_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: You've come all the way up here? Then I'll send you all the way back down!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: How did a kid get this far?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0103_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Stay out of the studios! We're on the air!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Off the air... Just like that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0103_assistantm": {
+      "name": {
+        "en": [
+          "Garett"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Garett: Our signal will soon make every Pokémon in Johto listen to us. Shall I show you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Garett: My theory didn't allow for a Trainer like you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0103_rocketm_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: The shutters won't open for you. And neither will I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Only the Director's Card Key opens them. Not that you'll find it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D23R0103_001+1": {
+      "en": [
+        "3F Personnel"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D23R0103_002+1": {
+      "en": [
+        "Pokémon Music\nwith DJ Ben"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

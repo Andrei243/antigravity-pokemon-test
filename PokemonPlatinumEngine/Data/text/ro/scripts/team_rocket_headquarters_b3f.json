@@ -5,7 +5,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}, over here. The signal's coming from somewhere on this floor."
       ],
       "text": [
-        ""
+        "{player}, aici. Semnalul vine de undeva de pe etajul ăsta."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The room it comes from is behind a pair of shutters, and they open only to a password. The grunts down here know it."
       ],
       "text": [
-        ""
+        "Camera din care vine e în spatele unei perechi de obloane, care se deschid doar cu o parolă. Soldații de aici o știu."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Get it out of them. I'll deal with the rest of their lookouts."
       ],
       "text": [
-        ""
+        "Scoate-o de la ei. Eu mă ocup de restul iscoadelor lor."
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "The password? Don't look at me. They only tell it to the ones who guard the doors."
       ],
       "text": [
-        ""
+        "Parola? Nu te uita la mine. O spun doar celor care păzesc ușile."
       ]
     }
   ],
@@ -57,7 +57,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "Fine! The first half of the password is... 'Golden'. You won't get the other half, though!"
       ],
       "text": [
-        ""
+        "Bine! Prima jumătate a parolei este... „Auriu”. Dar pe cealaltă n-o s-o afli!"
       ]
     }
   ],
@@ -75,7 +75,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "All right, all right! The other half of the password is... 'Persian'. Happy now?"
       ],
       "text": [
-        ""
+        "Bine, bine! Cealaltă jumătate a parolei este... „Persian”. Mulțumit acum?"
       ]
     }
   ],
@@ -93,7 +93,7 @@
         "A speaker beside the shutter crackles: 'Password?' {player} said both halves the grunts gave."
       ],
       "text": [
-        ""
+        "Un difuzor de lângă oblon trosnește: „Parola?” {player} a spus ambele jumătăți date de soldați."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "The shutter slid open!"
       ],
       "text": [
-        ""
+        "Oblonul s-a ridicat!"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "The shutter is locked tight. A speaker beside it crackles: 'Password?'"
       ],
       "text": [
-        ""
+        "Oblonul e încuiat bine. Un difuzor de lângă el trosnește: „Parola?”"
       ]
     }
   ],
@@ -119,7 +119,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "...You again. What are you doing in a dump like this?"
       ],
       "text": [
-        ""
+        "...Tu din nou. Ce cauți într-o gaură ca asta?"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Team Rocket. They act tough in a gang, but on their own every one of them is weak."
       ],
       "text": [
-        ""
+        "Echipa Rocket. Se dau mari în bandă, dar singuri, fiecare e slab."
       ]
     },
     {
@@ -143,7 +143,7 @@
         "I'm going to be strong enough to take them all on alone. Don't get in my way."
       ],
       "text": [
-        ""
+        "O să devin destul de puternic încât să-i înfrunt pe toți singur. Nu-mi sta în cale."
       ]
     }
   ],
@@ -153,7 +153,7 @@
         "Giovanni"
       ],
       "text": [
-        ""
+        "Giovanni"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "So. You've made it this far. I am Giovanni, leader of Team Rocket, returned at last."
       ],
       "text": [
-        ""
+        "Deci. Ai ajuns până aici. Eu sunt Giovanni, liderul Echipei Rocket, întors în sfârșit."
       ]
     },
     {
@@ -169,7 +169,7 @@
         "And you think you can stand against me? Then show me..."
       ],
       "text": [
-        ""
+        "Și crezi că poți sta împotriva mea? Atunci arată-mi..."
       ]
     },
     {
@@ -177,7 +177,7 @@
         "Petrel"
       ],
       "text": [
-        ""
+        "Petrel"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Ha! Fooled you, didn't I? I'm Petrel, Team Rocket's master of disguise. The boss isn't here."
       ],
       "text": [
-        ""
+        "Ha! Te-am păcălit, nu-i așa? Sunt Petrel, maestrul deghizării al Echipei Rocket. Șeful nu e aici."
       ]
     },
     {
@@ -193,7 +193,7 @@
         "But you've seen my face now, so you're not leaving!"
       ],
       "text": [
-        ""
+        "Dar acum mi-ai văzut fața, așa că nu pleci!"
       ]
     },
     {
@@ -201,7 +201,7 @@
         "Petrel"
       ],
       "text": [
-        ""
+        "Petrel"
       ]
     },
     {
@@ -209,7 +209,7 @@
         "Argh! All right, you win. The radio signal? It comes from the generator on the floor above."
       ],
       "text": [
-        ""
+        "Argh! Bine, ai câștigat. Semnalul radio? Vine de la generatorul de la etajul de deasupra."
       ]
     },
     {
@@ -217,7 +217,7 @@
         "But you'll never open the shutters to it. Only the boss's Murkrow knows that password!"
       ],
       "text": [
-        ""
+        "Dar nu vei deschide niciodată obloanele spre el. Doar Murkrow al șefului știe parola aia!"
       ]
     },
     {
@@ -225,7 +225,7 @@
         "Hey! Murkrow, come back! ...Oh, forget it. I'm out of here."
       ],
       "text": [
-        ""
+        "Hei! Murkrow, întoarce-te! ...Ah, las-o baltă. Plec de aici."
       ]
     }
   ],
@@ -235,7 +235,7 @@
         "The Murkrow keeps croaking the same words over and over."
       ],
       "text": [
-        ""
+        "Murkrow repetă mereu aceleași cuvinte, croncănind."
       ]
     }
   ]

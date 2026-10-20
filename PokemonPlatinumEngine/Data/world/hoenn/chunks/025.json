@@ -99,8 +99,8 @@
     "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
     "R~~~~~~~~~~~~~~~~~~~~RR~~~~~~~~~",
     "RC?~~~~~~~~~~~~~~~~~~RR~~~~~~~~~",
-    "~??C?~~~~~~~C?~CC???~~~~~~~~~~~~",
-    "~~~??CCCC?C???~?CCCC?~~~RR~~~~~~"
+    "~??C?~~~~~~~C?~Cr???~~~~~~~~~~~~",
+    "~~~??Crrr?C???~?CCCr?~~~RR~~~~~~"
   ],
   "heights": [
     { "x": 0, "z": 28, "width": 32, "depth": 4, "height": 1, "slopeX": 0, "slopeZ": 0 }

@@ -1,0 +1,130 @@
+{
+  "Worker": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're on the air twenty-four hours a day. If the shows never sleep, neither do I!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Trainer's Pokémon is a partner, not a tool. Team Rocket wants to bend them to its will. It's monstrous."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Woman": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Their boss has shut himself away upstairs, past the shutters. Only the Director could open them, and he's on the fifth floor."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, help him!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Is the Director all right? Please tell me he's safe..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You did it! You chased Team Rocket out of the tower! Here, please take this, with all our thanks."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM11 is Sunny Day. It makes the sun blaze for a while, and Fire-type moves burn all the hotter."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You were wonderful. The whole tower is talking about you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Shutter": [
+    {
+      "en": [
+        "The shutter is locked. It must open with a Card Key."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Slot": [
+    {
+      "en": [
+        "It's a slot for a Card Key."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} slid the Card Key into the slot."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The shutter rattled open!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a slot for a Card Key. The shutter beside it stands open."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

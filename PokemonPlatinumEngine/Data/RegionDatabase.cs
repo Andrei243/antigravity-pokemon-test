@@ -500,6 +500,10 @@ public static class RegionDatabase
                 "IndigoLeague_HallOfFame",
                 // Plan 20 · J11, part a: the Team Rocket Hideout under Mahogany's souvenir shop
                 "TeamRocketHQ_B1F", "TeamRocketHQ_B2F", "TeamRocketHQ_B3F",
+                // Plan 20 · J11, part b: Goldenrod's takeover, the Radio Tower's upper floors and the ways under the city
+                "Goldenrod_RadioTower_2F", "Goldenrod_RadioTower_3F", "Goldenrod_RadioTower_4F", "Goldenrod_RadioTower_5F",
+                "Goldenrod_RadioTower_ObservationDeck", "Goldenrod_RadioTower_Elevator", "Goldenrod_Underground_B1F",
+                "Goldenrod_Underground_B2F", "Goldenrod_Underground_Warehouse", "Goldenrod_DeptStore_Basement",
             }
         },
         new()
@@ -567,6 +571,9 @@ public static class RegionDatabase
                 "Route119_House", "Route119_WeatherInstitute_1F", "Route119_WeatherInstitute_2F", "FortreeCity_House1",
                 "FortreeCity_Gym", "FortreeCity_PokemonCenter_1F", "FortreeCity_PokemonCenter_2F", "FortreeCity_Mart",
                 "FortreeCity_House2", "FortreeCity_House3", "FortreeCity_House4", "FortreeCity_House5",
+                // Plan 21 · H6, part b: Route 121's gate, the Safari Zone and its rest house, the Ancient Tomb and the
+                // Scorched Slab
+                "Route121_SafariZoneEntrance", "HoennSafariZone", "HoennSafariZone_RestHouse", "AncientTomb", "ScorchedSlab",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

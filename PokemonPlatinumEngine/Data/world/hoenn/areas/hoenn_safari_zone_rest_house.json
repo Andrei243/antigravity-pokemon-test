@@ -1,0 +1,28 @@
+{
+  "key": "hoenn_safari_zone_rest_house",
+  "index": 421,
+  "name": "Safari Zone",
+  "matrix": 364,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SAFARI_ZONE",
+  "nightMusic": "MUS_SAFARI_ZONE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 8, "to": "hoenn_safari_zone_southwest", "toWarp": 0 },
+    { "x": 4, "z": 8, "to": "hoenn_safari_zone_southwest", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "youngster", "looks": "youngster", "movement": "look_east", "x": 7, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_RestHouse_EventScript_Youngster" },
+    { "id": "psychic_m", "looks": "psychic_m", "movement": "look_west", "x": 8, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_RestHouse_EventScript_PsychicM" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_east", "x": 2, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_RestHouse_EventScript_FatMan" }
+  ],
+  "signs": [],
+  "triggers": []
+}

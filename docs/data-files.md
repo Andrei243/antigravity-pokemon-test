@@ -605,3 +605,15 @@ Placeholders (`{player}`, `{var:VAR_X}`) and plan 09's markup pass through untou
 ```
 
 `eyeThemes` is the original's table of eye themes (`src/field_bgm.c`), by our names for the classes, one entry where the original has one for each gender; its values are the short names of `MusicDirector.EyeThemes` (`boy`, `girl`, `kid`, `lady`, `rich`, `mountain`, `fighter`, `sport`, `fun`, `mystery`, `sailor`, `galactic`, `ace`, `eliteFour`, `champion`). `battleThemes` names the few classes whose battle has a theme of its own (`MusicDirector.BattleThemes`: `gym`, `rival`, `galactic`, `galacticBoss`, `eliteFour`, `champion`). A class in neither gets `eye_boy` and the trainer battle theme. `MusicTests` holds every trainer class the maps use to an entry.
+
+## Recorded battles
+
+A battle kept on the Vs. Recorder (plan 08 · P10; `Battle/Sim/BattleRecordFile.cs`) is a JSON file in `replays/` beside the saves (`SavePaths.Replays`), written by the game and never by hand, named by the day and the foe (`20261020-YoungsterTristan.json`, then `-2`, `-3` for more the same day). It holds everything the rules need to fight the battle again with no screen:
+
+- `fileVersion` (the file's shape, 1; a later one is refused) and `dataVersion` (`GameDataFiles.Version`: sixteen hexadecimal digits of a hash of `species.json`, `moves.json`, `abilities.json`, `items.json` and `trainers.json`; a file of any other is refused, since a move or a species that changed would play another battle);
+- `rules` (`Platinum` or `Modern`), `format`, `kind`, `playerName`, `day`;
+- `player` and `wild`: each Pokémon as it began, `{ "pokemon": <a save's Pokémon>, "sleepTurns", "toxicCounter" }`; `trainers` and `partner`: `id`, `name`, `trainerClass`, `prizeMoney`, `doubleBattle`, `ai`, `items`, the four flags of the later mechanics, `look` and `party` (its Pokémon the same way), with `firstTrainerIndex` for the one that leads;
+- the battle's own flags (`cannotFlee`, `firstBattle`, `specialBalls`, `frontier`, `noBattleItems`, `offersSwitch`, `keyStone`, `zRing`, `dynamaxBand`, `teraOrb`) and `conditions` (`terrain`, `night`, `weather`, `trickRoom`, `badges`, `money`, `player`, `inverse`, `fishing`, and `caught`, the National numbers of the wild species already caught);
+- `seed` (the battle's `BattleRandom`), `answers` (each request's choices: `side`, `slot`, `kind`, `move`, `targetSide`, `targetSlot`, `switchTo`, `item`, and the later mechanics' flags), `result` and `turns`.
+
+A file that can't be read is `Damaged`; `BattleRecordFile.Read` says which of the three refusals it is and `Notice` the line a list shows for it.

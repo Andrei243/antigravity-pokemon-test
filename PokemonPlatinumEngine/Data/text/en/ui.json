@@ -212,6 +212,13 @@
       "value": "Pad {n}",
       "help": "Which of the connected controllers the game reads. The keyboard works whichever is chosen."
     },
+    "recordBattles": {
+      "label": "Record battles",
+      "help": {
+        "on": "With the Vs. Recorder in the bag, a trainer's battle ends with a question: keep it to watch again?",
+        "off": "Only the battles of the Elite Four and the Champion are kept on the Vs. Recorder, as you fight them."
+      }
+    },
     "controls": {
       "label": "Controls",
       "value": "Open",
@@ -1755,7 +1762,15 @@
     "noWater": "There's no water here to fish in.",
     "noWayOut": "There's no way out to be found with it here.",
     "scriptWentWrong": "A script went wrong: {problem}",
-    "onlyCanBeChosen": "Only {only} can be chosen here."
+    "onlyCanBeChosen": "Only {only} can be chosen here.",
+    "recordBattle": {
+      "question": "Record this battle?",
+      "saved": "The battle was kept on the Vs. Recorder.",
+      "notSaved": "The battle couldn't be kept: the Vs. Recorder's folder can't be written to.",
+      "otherVersion": "This battle was recorded with other Pokémon data. It can't be played back.",
+      "otherFile": "This battle was recorded by a newer game. It can't be played back.",
+      "damaged": "This recording is damaged. It can't be played back."
+    }
   },
   "tunnels": {
     "kitNotHere": "The Explorer Kit can't be used here.",

@@ -74,6 +74,14 @@ public sealed class Renders
         ("STOP SLIDING", Rgb.Of(150, 200, 210), b => b == 0x4D),
         ("MAGMA", Rgb.Of(230, 90, 30), b => b == 0xE6),
         ("LADDER", Rgb.Of(200, 150, 60), b => b is >= 0xE7 and <= 0xE9),
+        // Black 2's own (plan 22 · U1)
+        ("DARK GRASS", Rgb.Of(28, 104, 52), b => b is 0xB0 or 0xB1),
+        ("GROTTO GRASS", Rgb.Of(120, 220, 120), b => b == 0xB2),
+        ("DEEP SAND OR QUICKSAND", Rgb.Of(206, 170, 96), b => b is 0xB3 or 0xB4),
+        ("STRENGTH HOLE", Rgb.Of(60, 40, 30), b => b == 0xB5),
+        ("CHARGED FLOOR", Rgb.Of(230, 210, 60), b => b == 0xB6),
+        ("SURF EDGE", Rgb.Of(96, 150, 200), b => b == 0xB7),
+        ("CATWALK", Rgb.Of(130, 130, 150), b => b == 0xB8),
     };
 
     private static Rgb OpenGround(Setting setting) => setting switch

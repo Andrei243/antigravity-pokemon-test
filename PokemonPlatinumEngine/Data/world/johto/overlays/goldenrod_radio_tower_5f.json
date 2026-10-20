@@ -1,0 +1,23 @@
+{
+  // The Radio Tower's fifth floor (plan 20 · J11, part b): HeartGold's floor, our words. The Director's desk, where
+  // Petrel sits in the Director's clothes while the takeover lasts, and Ariana before the lift to the observation deck
+  // (scripts/goldenrod_radio_tower_5f.txt)
+  "area": "goldenrod_radio_tower_5f",
+  "bgmTrack": "johto/goldenrod",
+  "people": {
+    "d23r0105_gsgentleman": { "name": "Director", "script": "Director", "still": true },
+    "d23r0105_rkanbum2": { "name": "Petrel", "script": "Director", "still": true },
+    "d23r0105_rkanbuw": {
+      "name": "Ariana",
+      "still": true,
+      "trainer": {
+        "dialogueBefore": "Ariana: You've caused us quite enough trouble. The deck above is Archer's, and you'll not set foot on it.",
+        "dialogueAfter": "Ariana: Archer will finish you. Go up, if you dare."
+      }
+    }
+  },
+  "signs": {
+    "D23R0105_001+1": "5F Director's Office",
+    "D23R0105_003+1": "Observation Deck\nUp the lift"
+  }
+}

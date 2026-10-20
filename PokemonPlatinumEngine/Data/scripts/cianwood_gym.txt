@@ -5,7 +5,8 @@
 # turned (HeartGold's VAR_TEMP_x4000, which lasts while the player stays: here a flag local to the room). Then he
 # battles, gives the Storm Badge (`givebadge storm`), counts his four black belts beaten as HeartGold's
 # SetTrainerFlag does, and gives TM01, Focus Punch (FLAG_GOT_TM01_FROM_CHUCK). VAR_UNK_4116 1 sends his wife to meet
-# the player outside with HM02 (cianwood.txt).
+# the player outside with HM02 (cianwood.txt). Whichever of Chuck, Jasmine and Pryce gives the last of the Storm,
+# Mineral and Glacier Badges starts Team Rocket's takeover (VAR_SCENE_ROCKET_TAKEOVER 1, plan 20 · J11, part b).
 
 
 # T24GYM0101_000
@@ -26,6 +27,10 @@ script Chuck
   defeat "johto_black_belt_nob"
   defeat "johto_black_belt_lung"
   setvar VAR_UNK_4116 1
+  if not badge mineral goto Said
+  if not badge glacier goto Said
+  setvar VAR_SCENE_ROCKET_TAKEOVER 1
+label Said
   say "With the Storm Badge, Pokémon up to level seventy will obey you. And you can use Fly outside of battle!"
   endscene
 label Tm

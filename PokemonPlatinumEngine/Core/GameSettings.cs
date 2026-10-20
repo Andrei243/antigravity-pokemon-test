@@ -99,6 +99,13 @@ public sealed class GameSettings
     public BattleStyle BattleStyle { get; set; } = BattleStyle.Shift;
 
     /// <summary>
+    /// Whether a trainer's battle fought with the Vs. Recorder in the bag ends with "Record this battle?" (plan 08 · P10):
+    /// off unless chosen, since Platinum records only its link and Frontier battles. The Hall of Fame's battles are kept
+    /// without a word whatever it says.
+    /// </summary>
+    public bool RecordBattles { get; set; }
+
+    /// <summary>
     /// Platinum's Button Mode (plan 12 · Q4): Normal unless chosen. Start=X and L=A are presets of the bindings
     /// (<see cref="InputBindings.For"/>); <see cref="Bindings"/> lays a player's own over the preset.
     /// </summary>

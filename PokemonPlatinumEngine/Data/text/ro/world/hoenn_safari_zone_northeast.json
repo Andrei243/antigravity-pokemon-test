@@ -1,0 +1,59 @@
+{
+  "people": {
+    "boy_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've only got a couple of Safari Balls left. Which Pokémon should I spend them on?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Oh, come on! I haven't caught a single thing! That's my entry fee wasted!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Someone said Pikachu live out here. Have you seen one anywhere?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Ross"
         ],
         "text": [
-          ""
+          "Ross"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Scientist Ross: An intruder in the laboratory? My data will not be disturbed!"
         ],
         "text": [
-          ""
+          "Om de știință Ross: Un intrus în laborator? Datele mele nu vor fi deranjate!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Scientist Ross: My calculations didn't account for you."
         ],
         "text": [
-          ""
+          "Om de știință Ross: Calculele mele nu te-au inclus."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Mitch"
         ],
         "text": [
-          ""
+          "Mitch"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Scientist Mitch: The signal we send makes Pokémon evolve before their time. Shall I show you what it can do?"
         ],
         "text": [
-          ""
+          "Om de știință Mitch: Semnalul pe care îl trimitem îi face pe Pokémoni să evolueze înainte de vreme. Să-ți arăt ce poate face?"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Scientist Mitch: Even our research can't make a Pokémon stronger than yours."
         ],
         "text": [
-          ""
+          "Om de știință Mitch: Nici cercetările noastre nu pot face un Pokémon mai puternic decât ai tăi."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Grunt: The password? As if I'd tell a kid like you! Unless you beat me, that is."
         ],
         "text": [
-          ""
+          "Grunt: Parola? Parcă ți-aș spune-o ție! Dacă nu mă învingi, desigur."
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "Grunt: I've told you my half. Leave me alone."
         ],
         "text": [
-          ""
+          "Grunt: Ți-am spus jumătatea mea. Lasă-mă în pace."
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -102,7 +102,7 @@
           "Grunt: You want to get into the boss's room? You'll have to get past me first!"
         ],
         "text": [
-          ""
+          "Grunt: Vrei să intri în camera șefului? Mai întâi trebuie să treci de mine!"
         ]
       },
       "after": {
@@ -110,7 +110,7 @@
           "Grunt: I've told you my half. Now get lost."
         ],
         "text": [
-          ""
+          "Grunt: Ți-am spus jumătatea mea. Acum cară-te."
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Lance"
         ],
         "text": [
-          ""
+          "Lance"
         ]
       },
       "dialog": {
@@ -128,7 +128,7 @@
           "Find the password, {player}. I'll keep the rest of them busy."
         ],
         "text": [
-          ""
+          "Găsește parola, {player}. Îi țin eu ocupați pe ceilalți."
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Dragonite"
         ],
         "text": [
-          ""
+          "Dragonite"
         ]
       },
       "dialog": {
@@ -146,7 +146,7 @@
           "Dragonite: Grroar!"
         ],
         "text": [
-          ""
+          "Dragonite: Grroar!"
         ]
       }
     },
@@ -156,7 +156,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -164,7 +164,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -174,7 +174,7 @@
           "Petrel"
         ],
         "text": [
-          ""
+          "Petrel"
         ]
       },
       "before": {
@@ -182,7 +182,7 @@
           "Petrel: Let's see what you can do, kid."
         ],
         "text": [
-          ""
+          "Petrel: Să vedem ce poți face."
         ]
       },
       "after": {
@@ -190,7 +190,7 @@
           "Petrel: You win this one."
         ],
         "text": [
-          ""
+          "Petrel: Ai câștigat de data asta."
         ]
       }
     },
@@ -200,7 +200,7 @@
           "Giovanni"
         ],
         "text": [
-          ""
+          "Giovanni"
         ]
       },
       "dialog": {
@@ -208,7 +208,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -218,7 +218,7 @@
           "Murkrow"
         ],
         "text": [
-          ""
+          "Murkrow"
         ]
       }
     },
@@ -228,7 +228,7 @@
           "Murkrow"
         ],
         "text": [
-          ""
+          "Murkrow"
         ]
       },
       "dialog": {
@@ -236,7 +236,7 @@
           "Murkrow is muttering something to itself."
         ],
         "text": [
-          ""
+          "Murkrow mormăie ceva pentru sine."
         ]
       }
     },
@@ -246,7 +246,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       }
     },
@@ -256,7 +256,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       }
     }

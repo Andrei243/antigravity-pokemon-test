@@ -1,0 +1,39 @@
+{
+  "key": "goldenrod_radio_tower_3f",
+  "index": 187,
+  "name": "Radio Tower",
+  "matrix": 30,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 5, "to": "goldenrod_radio_tower_2f", "toWarp": 1 },
+    { "x": 12, "z": 5, "to": "goldenrod_radio_tower_4f", "toWarp": 0 },
+    { "x": 19, "z": 5, "to": "goldenrod_radio_tower_4f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "d23r0103_rocketm", "looks": "rocketm", "movement": "0", "x": 9, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_7" },
+    { "id": "d23r0103_rocketm_2", "looks": "rocketm", "movement": "0", "x": 17, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_8" },
+    { "id": "d23r0103_assistantm", "looks": "assistantm", "movement": "0", "x": 13, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_SCIENTIST_GS_GARETT" },
+    { "id": "d23r0103_gsman1", "looks": "gsman1", "movement": "0", "x": 3, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "D23R0103_003+1" },
+    { "id": "d23r0103_gswoman2", "looks": "gswoman2", "movement": "0", "x": 24, "z": 14, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D23R0103_005+1" },
+    { "id": "d23r0103_gsman1_2", "looks": "gsman1", "movement": "0", "x": 7, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D23R0103_004+1" },
+    { "id": "d23r0103_rocketm_3", "looks": "rocketm", "movement": "0", "x": 21, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_9" },
+    { "id": "d23r0103_babyboy1_9", "looks": "babyboy1_9", "movement": "0", "x": 23, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1BF", "script": "D23R0103_006+1" },
+    { "id": "d23r0103_babyboy1_9_2", "looks": "babyboy1_9", "movement": "0", "x": 24, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1BF", "script": "D23R0103_006+1" }
+  ],
+  "signs": [
+    { "x": 5, "z": 4, "type": 0, "script": "D23R0103_001+1" },
+    { "x": 10, "z": 4, "type": 0, "script": "D23R0103_002+1" },
+    { "x": 22, "z": 11, "type": 0, "script": "D23R0103_007+1" }
+  ],
+  "triggers": []
+}

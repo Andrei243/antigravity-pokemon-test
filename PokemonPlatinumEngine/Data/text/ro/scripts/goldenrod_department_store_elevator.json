@@ -15,10 +15,19 @@
         "5F",
         "4F",
         "3F",
-        "1F OR 2F",
+        "LOWER FLOORS",
         "Stay here"
       ],
       "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "was": [
         "Bun venit. La ce etaj doriți?",
         "ETAJUL 6",
         "ETAJUL 5",
@@ -30,12 +39,20 @@
     },
     {
       "en": [
-        "The ground floor, or the second?",
-        "1F",
+        "The second floor, the ground floor or the basement?",
         "2F",
+        "1F",
+        "B1F",
         "Stay here"
       ],
       "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "was": [
         "Parterul sau etajul al doilea?",
         "PARTER",
         "ETAJUL 2",

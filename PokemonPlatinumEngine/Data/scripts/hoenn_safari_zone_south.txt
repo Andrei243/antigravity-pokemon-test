@@ -1,0 +1,41 @@
+# The Safari Zone's south part, inside its door (plan 21 · H6, part b). docs/scripts.md describes the language; the
+# lines are our own, on Emerald's beats (data/maps/SafariZone_South/scripts.inc, data/scripts/safari_zone.inc).
+#
+# The zone's six parts are one map (HoennSafariZone), each its own area. The attendant stands before the door back to
+# the gate: the first time in a game he wishes the player luck (FLAG_GOOD_LUCK_SAFARI_ZONE, cleared at the counter),
+# then asks whether to leave early, which ends the game and takes the player back through the door to be walked out
+# (Emerald's ExitEarly and SafariZone_EventScript_Exit, VAR_SAFARI_ZONE_STATE 1). The counter brings a player in a
+# step south of him (VAR_SAFARI_ZONE_STATE 2, which the arrival clears, as Emerald's EnterSafariZone does once its
+# attendant has stepped back before the door). The two builders east of the door keep the zone's expansion shut until
+# Hoenn's Hall of Fame (plan 21 · H9) sets their flag.
+
+
+script OnEnter
+  if var VAR_SAFARI_ZONE_STATE == 2 setvar VAR_SAFARI_ZONE_STATE 0
+  end
+
+
+script ExitAttendant
+  face self player
+  speaker "Attendant"
+  if not safari goto Out
+  if not flag FLAG_GOOD_LUCK_SAFARI_ZONE goto GoodLuck
+  ask "You still have time left. Would you like to leave the Safari Zone now?"
+  if no goto Stay
+  say "Very well. I'll take back the Safari Balls you have left. Thank you for playing, and do come again!"
+  safari end
+  setvar VAR_SAFARI_ZONE_STATE 1
+  warp "Route121_SafariZoneEntrance" 2 4 right
+  end
+label Stay
+  say "Then enjoy the rest of your time in the wild!"
+  end
+label GoodLuck
+  setflag FLAG_GOOD_LUCK_SAFARI_ZONE
+  say "Good luck out there! If there's anything you need, just come and ask me."
+  end
+label Out
+  say "Your game is over, but the way out is right behind me. This way, please!"
+  setvar VAR_SAFARI_ZONE_STATE 1
+  warp "Route121_SafariZoneEntrance" 2 4 right
+  end

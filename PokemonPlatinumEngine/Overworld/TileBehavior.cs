@@ -148,7 +148,19 @@ public enum TileBehavior : byte
     LadderDown = 0xE9,
     // HeartGold's unnamed 34, the lip at the head of a waterfall (Tohjo Falls, plan 20 · J10): not water to surf on, and
     // crossed only as part of the waterfall below it. Platinum leaves 0x22 unused, so it keeps HeartGold's value
-    WaterfallLip = 0x22
+    WaterfallLip = 0x22,
+
+    // What Black 2 and White 2 have and neither Platinum nor the GBA has a value for (plan 22 · U1), among the values
+    // Platinum leaves unused between its snow and its Bicycle's ramps (0xB0 onward)
+    DarkGrass = 0xB0,
+    VeryTallDarkGrass = 0xB1,
+    GrottoGrass = 0xB2,
+    DeepSand = 0xB3,
+    Quicksand = 0xB4,
+    StrengthHole = 0xB5,
+    ChargedFloor = 0xB6,
+    SurfEdge = 0xB7,
+    Catwalk = 0xB8
 }
 
 /// <summary>What each <see cref="TileBehavior"/> means, in a sentence, and the two facts the original keeps in a
@@ -284,7 +296,16 @@ public static class TileBehaviors
         [TileBehavior.Magma] = "Magma (HeartGold's).",
         [TileBehavior.LadderNorth] = "A ladder climbed northward (HeartGold's).",
         [TileBehavior.LadderSouth] = "A ladder climbed southward (HeartGold's).",
-        [TileBehavior.LadderDown] = "A ladder going down (HeartGold's)."
+        [TileBehavior.LadderDown] = "A ladder going down (HeartGold's).",
+        [TileBehavior.DarkGrass] = "Dark grass, where wild Pokémon may come two at a time (Black 2's).",
+        [TileBehavior.VeryTallDarkGrass] = "Grass taller than the walker where wild Pokémon may come two at a time; no Bicycles (Black 2's).",
+        [TileBehavior.GrottoGrass] = "The grass before a Hidden Grotto's way in; no Bicycles (Black 2's).",
+        [TileBehavior.DeepSand] = "Deep sand (Black 2's).",
+        [TileBehavior.Quicksand] = "Quicksand, which pulls whoever stands in it down (Black 2's).",
+        [TileBehavior.StrengthHole] = "A hole a boulder pushed with Strength fills (Black 2's).",
+        [TileBehavior.ChargedFloor] = "The charged floor of an electric cave (Black 2's).",
+        [TileBehavior.SurfEdge] = "The edge of the water, where Surf may begin though a walker can't step (Black 2's).",
+        [TileBehavior.Catwalk] = "A narrow catwalk, walked and never cycled (Black 2's)."
     };
 
     /// <summary>True for the values the enum names: those Sinnoh's maps use, and those the GBA reader makes (plan 18 · W6).</summary>
@@ -396,6 +417,9 @@ public static class TileBehaviors
         TileBehavior.HeadbuttTree => (BehaviourSupport.Waiting, "A tree that blocks the way; shaking it with Headbutt is plan 20 · J7's."),
         TileBehavior.StopSliding or TileBehavior.Magma or TileBehavior.LadderNorth or TileBehavior.LadderSouth or TileBehavior.LadderDown
             => (BehaviourSupport.Waiting, "A HeartGold behaviour whose rule comes with the session of plan 20 that opens a place using it; walked like plain ground until then."),
+        TileBehavior.DarkGrass or TileBehavior.VeryTallDarkGrass or TileBehavior.GrottoGrass or TileBehavior.DeepSand
+            or TileBehavior.Quicksand or TileBehavior.StrengthHole or TileBehavior.ChargedFloor or TileBehavior.SurfEdge or TileBehavior.Catwalk
+            => (BehaviourSupport.Waiting, "A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then."),
         _ => (BehaviourSupport.Plain, "Ground like any other: only the blocked flag and the height matter.")
     };
 }

@@ -8,14 +8,6 @@
         "text": [
           "Femeia"
         ]
-      },
-      "dialog": {
-        "en": [
-          "The shops down here open only on certain days. Come back now and then and see."
-        ],
-        "text": [
-          "Magazinele de aici de jos se deschid doar în anumite zile. Mai treci din când în când."
-        ]
       }
     },
     "d37r0101_gsman1": {
@@ -25,14 +17,6 @@
         ],
         "text": [
           "Bărbatul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "This passage runs right under the city. It's the fastest way from one end to the other."
-        ],
-        "text": [
-          "Pasajul ăsta trece chiar pe sub oraș. E cel mai rapid drum de la un capăt la altul."
         ]
       }
     }

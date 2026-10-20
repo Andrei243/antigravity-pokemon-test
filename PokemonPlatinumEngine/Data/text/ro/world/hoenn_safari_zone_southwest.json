@@ -1,0 +1,32 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some Pokémon gobble up whatever I toss them, and some won't touch it. I wonder if they're fussy eaters."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SafariZone_Southwest_EventScript_RestHouseSign": {
+      "en": [
+        "Rest House\nPut your feet up for a while."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

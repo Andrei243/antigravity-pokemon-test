@@ -461,6 +461,8 @@ public partial class GameEngine
     {
         bool isDefeat = flow.Battle?.Result == BattleResult.PlayerDefeat;
         ScoreBattle();
+        // The Vs. Recorder keeps a league battle now and asks about any other trainer's once the field is back (plan 08 · P10)
+        KeepTheRecord(flow.Battle);
         // A battle stops the Pokégear's radio: the field comes back to its own theme (plan 20 · J3)
         SilenceTheRadio();
         // The roamers and the Poké Radar hear how a battle met in the field ended (plan 06 · R13)

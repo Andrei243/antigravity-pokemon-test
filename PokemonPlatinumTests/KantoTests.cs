@@ -1000,7 +1000,7 @@ public class KantoTests
         Assert.Single(map.ApplySwappedPlaces(_ => 0, f => f == "FLAG_THREE_ISLAND_TUNNEL_DUG_OUT"));
         Assert.True(Open() > shut, "the dug-out tunnel is no longer than the dead end");
         // Its far end is a way to the port's east steps either way, and shut until the dig breaks through
-        var east = map.Warps.Single(w => w.TargetMap == "ThreeIsland_Port" && w.SourceX == 25);
+        var east = map.Warps.Single(w => w.TargetMap == "ThreeIsland" && w.SourceX == 25);
         Assert.Equal("FLAG_THREE_ISLAND_TUNNEL_DUG_OUT", east.From);
     }
 

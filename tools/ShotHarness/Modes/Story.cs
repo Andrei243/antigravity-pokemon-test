@@ -479,5 +479,45 @@ partial class Harness
             $" ({PhraseGroups.Shown(story.PhraseOf(StoryState.InterviewPhrase) ?? Array.Empty<string>())}), on the air {story.Has(Broadcasts.InterviewOnAirFlag)}");
         Furniture("st9a_television_interview", "PlayerHouse", 6, 6);
         Console.WriteLine($"interview: on the air after the television {story.Has(Broadcasts.InterviewOnAirFlag)}");
+
+        // ---- the Vs. Recorder (plan 08 · P10), last of all and with its row on only here, so that nothing before it
+        // moves: Tristan battled again with the Vs. Recorder in the bag, nothing of the battle changed by the harness (a
+        // Pokémon changed in the middle of a battle makes a record that plays otherwise), the question once the field is
+        // back, YES and the line that says the battle was kept; then the file read back and played again with no screen.
+        // It prints where the file went and whether the replay ended as the battle did
+        engine.Settings.RecordBattles = true;
+        engine.ApplySettings(window: false);
+        bag.AddItem(ItemDatabase.Get(BattleRecordFile.RecorderItem)!);
+        team.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Empoleon")!, 50));
+        At("Sinnoh", tx, ty + 3, Direction.Up);
+        Frames(10);
+        game.StartTrainerBattle(tristan);
+        Until(() => State() == GameState.Battle, "the battle to record", 600);
+        var recorded = game.Battle;
+        int hit = Math.Max(0, recorded.PlayerPokemon.Moves.FindIndex(m => m.Data.Category != MoveCategory.Status));
+        ToMainMenu(recorded);
+        for (int guard = 0; guard < 120 && !recorded.IsBattleOver; guard++)
+        {
+            if (recorded.HUD.MenuState == BattleMenuState.Main) recorded.SelectMove(hit);
+            else Confirm(recorded);
+            Skip(0.5);
+        }
+        Until(() => game.AskingToRecord && engine.Choice.IsOpen, "the Vs. Recorder's question", 1200);
+        Frames(20); Shot("st9b_record_question");
+        Console.WriteLine($"recorder: the battle {recorded.Result} in {recorded.Core.Turn} turns, asked {game.AskingToRecord}, offered against {game.RecordOffered?.Foe}");
+        engine.Choice.Confirm(); Frames(4);
+        Until(() => Box().IsActive, "the line that the battle was kept"); Whole(); Shot("st9c_record_kept");
+        ReadOn();
+        if (game.LastRecorded is { } kept)
+        {
+            var reading = BattleRecordFile.ReadFile(kept);
+            var again = reading.File?.Replay();
+            Console.WriteLine($"recorder: written to {Path.GetFileName(Path.GetDirectoryName(kept))}/{Path.GetFileName(kept)}, read back {reading.Refused}, " +
+                $"played again {again?.Result} in {again?.Turn} turns with {again?.Log.Count} events against {recorded.Core.Log.Count}");
+        }
+        else Console.WriteLine("  !! the Vs. Recorder wrote nothing");
+        team.Members.RemoveAt(0);
+        engine.Settings.RecordBattles = false;
+        engine.ApplySettings(window: false);
     }
 }

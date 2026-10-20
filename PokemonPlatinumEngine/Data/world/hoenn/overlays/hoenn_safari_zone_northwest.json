@@ -1,0 +1,10 @@
+{
+  // The Safari Zone's north-west part (plan 21 · H6, part b), along its rails and its pond: a visitor worn out by the
+  // way there
+  "area": "hoenn_safari_zone_northwest",
+  "bgmTrack": "hoenn/safari_zone",
+  "trees": "Round",
+  "people": {
+    "man_1": { "name": "Man", "dialog": [ "Huff... huff... I made it all the way out here... and now I'm too tired to catch anything..." ] }
+  }
+}

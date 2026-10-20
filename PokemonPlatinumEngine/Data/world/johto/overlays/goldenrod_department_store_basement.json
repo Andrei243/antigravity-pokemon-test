@@ -1,0 +1,33 @@
+{
+  // The Department Store's basement (plan 20 · J11, part b): HeartGold's floor, our words. Two Black Belts and their
+  // Machoke clear it, and a shutter keeps the way down to the warehouse shut until the Radio Tower's Director has handed
+  // over his Card Key (scripts/goldenrod_department_store_basement.txt): the shutter is a thing of the map behind
+  // HeartGold's own flag, FLAG_UNK_1C1. HeartGold's crates, which its Machoke shift about, are left out
+  "area": "goldenrod_department_store_basement",
+  "bgmTrack": "johto/goldenrod",
+  "people": {
+    "d37r0103_gsfighter": {
+      "name": "Black Belt",
+      "still": true,
+      "dialog": [ "Come on, Machoke! Put your back into it and shift that crate!" ]
+    },
+    "d37r0103_gsfighter_2": {
+      "name": "Black Belt",
+      "still": true,
+      "dialog": [ "With Machoke on the job this place is swept in no time. Anything left lying on the floor is rubbish, so help yourself!" ]
+    },
+    "d37r0103_tsure_poke_static_machoke": {
+      "name": "Machoke", "npcType": "Pokemon", "species": "Machoke", "still": true,
+      "dialog": [ "Machoke: Maaa... chok!" ]
+    },
+    "d37r0103_tsure_poke_static_machoke_2": {
+      "name": "Machoke", "npcType": "Pokemon", "species": "Machoke", "still": true,
+      "dialog": [ "Machoke: Maaa... chok!" ]
+    },
+    "d37r0103_tsure_poke_static_machoke_3": {
+      "name": "Machoke", "npcType": "Pokemon", "species": "Machoke", "still": true,
+      "dialog": [ "Machoke: Maaa... chok!" ]
+    },
+    "d37r0103_babyboy1_9": { "name": "Shutter", "npcType": "GalacticDoor", "script": "Shutter", "still": true }
+  }
+}

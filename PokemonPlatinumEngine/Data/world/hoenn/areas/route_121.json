@@ -1,0 +1,108 @@
+{
+  "key": "route_121",
+  "index": 36,
+  "name": "Route 121",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE120",
+  "nightMusic": "MUS_ROUTE120",
+  "encounters": "route_121",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Poochyena", "level": 26 },
+    { "species": "Shuppet", "level": 26 },
+    { "species": "Mightyena", "level": 26 },
+    { "species": "Shuppet", "level": 28 },
+    { "species": "Mightyena", "level": 28 },
+    { "species": "Oddish", "level": 26 },
+    { "species": "Oddish", "level": 28 },
+    { "species": "Gloom", "level": 28 },
+    { "species": "Wingull", "level": 26 },
+    { "species": "Wingull", "level": 27 },
+    { "species": "Wingull", "level": 28 },
+    { "species": "Kecleon", "level": 25 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 20, "maxLevel": 25 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 437, "z": 85, "to": "route_121_safari_zone_entrance", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "woman_3", "looks": "woman_3", "movement": "look_east", "x": 429, "z": 94, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "Route121_EventScript_Woman" },
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 414, "z": 82, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 193, "script": "BerryTreeScript" },
+    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 415, "z": 82, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 189, "script": "BerryTreeScript" },
+    { "id": "berry_tree_3", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 416, "z": 82, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 194, "script": "BerryTreeScript" },
+    { "id": "berry_tree_4", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 417, "z": 82, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 190, "script": "BerryTreeScript" },
+    { "id": "berry_tree_5", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 464, "z": 94, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 195, "script": "BerryTreeScript" },
+    { "id": "berry_tree_6", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 465, "z": 94, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 191, "script": "BerryTreeScript" },
+    { "id": "berry_tree_7", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 466, "z": 94, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 192, "script": "BerryTreeScript" },
+    { "id": "berry_tree_8", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 467, "z": 94, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 196, "script": "BerryTreeScript" },
+    { "id": "lass", "looks": "lass", "movement": "look_south", "x": 439, "z": 89, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_KATE_AND_JOY" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_south", "x": 440, "z": 89, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 1, "script": "TRAINER_KATE_AND_JOY" },
+    { "id": "route121_grunt_1", "looks": "aqua_member_m", "movement": "look_north", "x": 430, "z": 88, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS", "script": "" },
+    { "id": "route121_grunt_2", "looks": "aqua_member_m", "movement": "look_east", "x": 430, "z": 87, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS", "script": "" },
+    { "id": "route121_grunt_3", "looks": "aqua_member_m", "movement": "look_west", "x": 431, "z": 87, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS", "script": "" },
+    { "id": "cuttable_tree", "looks": "cuttable_tree", "movement": "look_around", "x": 432, "z": 85, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_CutTree" },
+    { "id": "cuttable_tree_2", "looks": "cuttable_tree", "movement": "look_around", "x": 465, "z": 84, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_west", "x": 463, "z": 85, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_VANESSA" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_west", "x": 455, "z": 88, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_WALTER_1" },
+    { "id": "hex_maniac", "looks": "hex_maniac", "movement": "look_north", "x": 411, "z": 91, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_TAMMY" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_south_and_west", "x": 422, "z": 85, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_JESSICA_1" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 455, "z": 90, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_121_CARBOS", "item": "Carbos", "script": "Route121_EventScript_ItemCarbos" },
+    { "id": "cuttable_tree_3", "looks": "cuttable_tree", "movement": "look_around", "x": 426, "z": 92, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "maniac", "looks": "maniac", "movement": "walk_south_and_north", "x": 411, "z": 86, "facing": 1, "rangeX": 1, "rangeZ": 4, "trainer": "normal", "sight": 3, "script": "TRAINER_CALE" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_south", "x": 459, "z": 88, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_MYLES" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_north", "x": 459, "z": 93, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_PAT" },
+    { "id": "man_3", "looks": "man_3", "movement": "look_south_and_east", "x": 465, "z": 89, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_MARCEL" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "look_south_and_west", "x": 472, "z": 89, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 6, "script": "TRAINER_CRISTIN_1" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 460, "z": 90, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_121_REVIVE", "item": "Revive", "script": "Route121_EventScript_ItemRevive" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_around", "x": 438, "z": 93, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_121_ZINC", "item": "Zinc", "script": "Route121_EventScript_ItemZinc" }
+  ],
+  "signs": [
+    { "x": 432, "z": 94, "type": 0, "script": "Route121_EventScript_MtPyrePierSign" },
+    { "x": 439, "z": 86, "type": 0, "script": "Route121_EventScript_SafariZoneSign" },
+    { "x": 423, "z": 90, "type": 2, "script": "", "item": "HP Up", "flag": "FLAG_HIDDEN_ITEM_ROUTE_121_HP_UP" },
+    { "x": 458, "z": 83, "type": 2, "script": "", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_ROUTE_121_NUGGET" },
+    { "x": 472, "z": 85, "type": 2, "script": "", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_ROUTE_121_FULL_HEAL" },
+    { "x": 468, "z": 88, "type": 2, "script": "", "item": "Max Revive", "flag": "FLAG_HIDDEN_ITEM_ROUTE_121_MAX_REVIVE" }
+  ],
+  "triggers": [
+    { "x": 425, "z": 85, "width": 1, "depth": 1, "script": "Route121_EventScript_AquaGruntsMoveOut", "variable": "VAR_ROUTE121_STATE", "value": "0" },
+    { "x": 425, "z": 86, "width": 1, "depth": 1, "script": "Route121_EventScript_AquaGruntsMoveOut", "variable": "VAR_ROUTE121_STATE", "value": "0" },
+    { "x": 425, "z": 87, "width": 1, "depth": 1, "script": "Route121_EventScript_AquaGruntsMoveOut", "variable": "VAR_ROUTE121_STATE", "value": "0" },
+    { "x": 425, "z": 88, "width": 1, "depth": 1, "script": "Route121_EventScript_AquaGruntsMoveOut", "variable": "VAR_ROUTE121_STATE", "value": "0" }
+  ]
+}

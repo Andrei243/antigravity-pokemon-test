@@ -12,10 +12,14 @@
 # (VAR_UNK_4057 1, safari_zone_entrance_interior.txt); his number goes into the Pokégear. HeartGold rings as the player
 # leaves the lighthouse; the variable's 3 is ours, so the call comes once (docs/mechanics/rulings.md, "The Johto Safari
 # Zone").
+#
+# With the takeover begun by the last of three Badges (VAR_SCENE_ROCKET_TAKEOVER 1), Professor Elm rings as the player
+# comes out into the town (common.JohtoTakeoverCall, plan 20 · J11, part b).
 
 
 script OnEnter
   if var VAR_UNK_4078 == 0 setflag FLAG_HIDE_OLIVINE_RIVAL
+  if var VAR_SCENE_ROCKET_TAKEOVER == 1 call JohtoTakeoverCall
   if var VAR_SCENE_LIGHTHOUSE_JASMINE == 2 goto Baoba
   end
 label Baoba

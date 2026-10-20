@@ -24,6 +24,15 @@ public static class GbaEvents
     public static bool NeverTaken(TileBehavior behaviour, bool blocked) => blocked && behaviour == TileBehavior.None;
 
     /// <summary>
+    /// Whether a buried trainer lies on a map's tile (<c>TRAINER_TYPE_BURIED</c>: Lavaridge's Gym, whose trainers lie in
+    /// its sinking sand). The original's buried trainer jumps out at whoever comes within a tile and stays on its patch
+    /// once beaten, so the warp under it is never taken: it is written as a landing, which leads nowhere and shuts
+    /// nothing, or it would be a way nobody can reach.
+    /// </summary>
+    public static bool BuriedOn(GbaMap map, int x, int y) =>
+        map.Objects.Any(o => o.X == x && o.Y == y && o.TrainerType == "TRAINER_TYPE_BURIED");
+
+    /// <summary>
     /// The area's warps, people and things, signs and hidden items, triggers and wild Pokémon, onto
     /// <paramref name="area"/>. A warp to <c>MAP_DYNAMIC</c> (the way back to wherever the player came from: the
     /// lifts) is kept in its place among the warps, since others count them, and leads nowhere yet. So is a warp the
@@ -42,7 +51,9 @@ public static class GbaEvents
             var to = never ? null : byId(w.DestMap);
             if (to == null && !never && w.DestMap != "MAP_DYNAMIC") problems.Add($"{map.Name}: a warp to {w.DestMap}, which has no map");
             // Where a faller through a hole above comes down is no way anywhere (plan 19 · K6, part b)
-            bool landing = world != null && world.IsLanding(map.Id, index, own);
+            // and so is a patch of sand a buried trainer lies in for good (Lavaridge's Gym, plan 21 · H6, part b): the
+            // trainer springs out at whoever comes near and stays on it, so the original's player never steps on it
+            bool landing = world != null && world.IsLanding(map.Id, index, own) || BuriedOn(map, w.X, w.Y);
             area.Warps.Add(new AreaWarp { X = x, Z = z, To = to?.Key ?? "", ToWarp = w.DestWarp, Landing = landing ? true : null });
         }
 

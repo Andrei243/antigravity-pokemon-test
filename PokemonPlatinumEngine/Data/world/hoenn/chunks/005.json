@@ -96,11 +96,11 @@
     "TTTTTTTTTTTTTTT:::::::.....TTTTT",
     "TTTTTTTTTTTTTT.:::::::....TT????",
     "TTTwwTTTTTTT...:::...???????????",
-    "?wwwww?TTT.....:::...CCC??????CC",
-    "wwwww......:::::::..?C???CCCCCCC",
-    ".ww........:::::::.???C??CCCCCCC",
-    "...........:::::::.CC????CCCCCCC",
-    "w..TT........:::::.CCCCCCCCCCC??"
+    "?wwwww?TTT.....:::...CCC??????rr",
+    "wwwww......:::::::..?C???rrrrrrr",
+    ".ww........:::::::.???C??rrrrrrr",
+    "...........:::::::.CC????rrrrrrr",
+    "w..TT........:::::.CCCrrrrrrrr??"
   ],
   "heights": [
     { "x": 0, "z": 0, "width": 32, "depth": 32, "height": 1, "slopeX": 0, "slopeZ": 0 }

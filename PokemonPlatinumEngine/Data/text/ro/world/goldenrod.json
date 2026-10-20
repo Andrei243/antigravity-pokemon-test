@@ -100,13 +100,135 @@
         "text": [
           "Femeia"
         ]
-      },
-      "dialog": {
+      }
+    },
+    "t25_rocketm": {
+      "name": {
         "en": [
-          "Underground there's a passage that runs under the whole city. Shops set up down there."
+          "Man in Black"
         ],
         "text": [
-          "Sub pământ e un pasaj care trece pe sub tot orașul. Acolo jos își fac loc magazine."
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_4": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_5": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_6": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_7": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_8": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_9": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_10": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_11": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_rocketm_12": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t25_gswoman2_3": {
+      "name": {
+        "en": [
+          "Gym Trainer"
+        ],
+        "text": [
+          ""
         ]
       }
     },

@@ -1,0 +1,21 @@
+{
+  "people": {},
+  "signs": {
+    "AncientTomb_EventScript_CaveEntranceMiddle": {
+      "en": [
+        "Rows of raised dots are carved over the doorway.\nThey seem to say: let light shine in the middle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "AncientTomb_EventScript_CaveEntranceSide": {
+      "en": [
+        "The wall is covered in raised dots, worn smooth\nby the years. Nobody could read them now."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

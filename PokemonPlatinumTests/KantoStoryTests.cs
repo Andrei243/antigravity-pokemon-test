@@ -44,6 +44,8 @@ public class KantoStoryTests
         /// <summary>The script's dice to come (<c>random</c>) and the answers to its questions, handed on from one script to the next.</summary>
         public Queue<int> Rolls { get; } = new();
         public Queue<int> Answers { get; } = new();
+        /// <summary>The team's place chosen when a script asks for one (<c>choosepokemon</c>); 255 backs out.</summary>
+        public int PokemonChoice { get; set; }
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
         public HeadlessScriptHost Last => Played[^1].Host;
         public const string Rival = "Gary";
@@ -117,7 +119,8 @@ public class KantoStoryTests
                 Fight = _ => Fight,
                 NeedsPokemon = true,
                 Caught = Caught,
-                NationalDex = NationalDex
+                NationalDex = NationalDex,
+                PokemonChoice = PokemonChoice
             };
             host.PokedexSeen.AddRange(Seen);
             if (Victories >= 0) host.LeagueVictories = Victories;
@@ -2487,7 +2490,7 @@ public class KantoStoryTests
         Assert.Equal((6, 3), WhereIs(game, "prospector_digging"));
         Assert.Null(game.Present("prospector"));
         Assert.Contains(game.Talk("prospector_digging").Transcript, l => l.Text.Contains("for gold"));
-        Assert.True(game.Map.Warps.Single(w => w.TargetMap == "ThreeIsland_Port" && w.SourceX == 25).Shut);
+        Assert.True(game.Map.Warps.Single(w => w.TargetMap == "ThreeIsland" && w.SourceX == 25).Shut);
         // With it, the dig breaks through: the chunk is swapped for the dug-out one, the prospector stands at his own
         // end with a Nugget to give, and both ways in are open
         game.NationalDex = true;
@@ -2495,7 +2498,7 @@ public class KantoStoryTests
         Assert.True(game.Story.Has("FLAG_THREE_ISLAND_TUNNEL_DUG_OUT"));
         Assert.Null(game.Present("prospector_digging"));
         Assert.Equal((23, 2), WhereIs(game, "prospector"));
-        Assert.False(game.Map.Warps.Single(w => w.TargetMap == "ThreeIsland_Port" && w.SourceX == 25).Shut);
+        Assert.False(game.Map.Warps.Single(w => w.TargetMap == "ThreeIsland" && w.SourceX == 25).Shut);
         int had = Count(game, "Nugget");
         game.Talk("prospector");
         Assert.Equal(had + 1, Count(game, "Nugget"));
@@ -2503,7 +2506,7 @@ public class KantoStoryTests
         // ...once only, and the port's own side leads into the tunnel from then on
         game.Talk("prospector");
         Assert.Equal(had + 1, Count(game, "Nugget"));
-        game.Arrive("ThreeIsland_Port", 9, 4);
+        game.Arrive("ThreeIsland", 112, 46);
         Assert.Contains(game.Map.Warps, w => w.TargetMap == "ThreeIsland_DunsparceTunnel" && !w.Shut);
     }
 
@@ -2519,9 +2522,8 @@ public class KantoStoryTests
         Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("most marvellous"));
         Assert.Contains(game.Play(chart).Transcript, l => l.Text.Contains("Nothing is written"));
         // The first Heracross shown beats a record of nothing: a Nest Ball, and the size on the chart
-        var small = new Pokemon(PokemonDatabase.Get("Heracross")!, 30) { Personality = 0x11110111 };
+        var small = Heracross(0x11110111);
         game.Party.Members.Insert(0, small);
-        game.Answers.Enqueue(0);
         game.Talk("beauty");
         Assert.Equal(1, Count(game, "Nest Ball"));
         Assert.True(game.Story.Has("FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1"));
@@ -2530,29 +2532,32 @@ public class KantoStoryTests
         Assert.Equal(0, game.Story.Var(SizeContest.RecordVariable));
         Assert.Contains(game.Play(chart).Transcript, l => l.Text.Contains(SizeContest.Told(SizeContest.Millimetres(small))));
         // The same one again is the same size, and changes nothing
-        game.Answers.Enqueue(0);
         Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("to the millimetre"));
         Assert.Equal((1, kept), (Count(game, "Nest Ball"), game.Story.Var("VAR_HERACROSS_SIZE_RECORD")));
         // A smaller one earns nothing
-        game.Party.Members[0] = new Pokemon(PokemonDatabase.Get("Heracross")!, 30) { Personality = 0 };
-        game.Answers.Enqueue(0);
+        game.Party.Members[0] = Heracross(0);
         Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("does not lie"));
         Assert.Equal((1, kept), (Count(game, "Nest Ball"), game.Story.Var("VAR_HERACROSS_SIZE_RECORD")));
         // A bigger one earns another ball and takes the record
-        var big = new Pokemon(PokemonDatabase.Get("Heracross")!, 30) { Personality = 0xFFFFFFFF };
+        var big = Heracross(0xFFFFFFFF);
         game.Party.Members[0] = big;
-        game.Answers.Enqueue(0);
         game.Talk("beauty");
         Assert.Equal((2, SizeContest.Factor(big)), (Count(game, "Nest Ball"), game.Story.Var("VAR_HERACROSS_SIZE_RECORD")));
-        // Shown something else, she measures nothing
-        game.Party.Members[0] = new Pokemon(PokemonDatabase.Get("Pinsir")!, 30);
-        game.Answers.Enqueue(0);
+        // Shown something else, she measures nothing (she asks only while a Heracross is on the team, as FireRed's does)
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Pinsir")!, 30));
         Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("nothing else"));
         // ...and a refusal is a refusal
-        game.Party.Members[0] = big;
-        game.Answers.Enqueue(-1);
+        game.Party.Members.RemoveAt(0);
+        game.PokemonChoice = 255;
         Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("my tape ready"));
     }
+
+    // A size is the personality's low half with the IVs' low four bits worked into it (SizeContest.Factor), so the
+    // Heracross shown have IVs of nought, or a smaller personality could still come to the bigger size
+    private static Pokemon Heracross(uint personality) => new(PokemonDatabase.Get("Heracross")!, 30)
+    {
+        Personality = personality, IvHP = 0, IvAttack = 0, IvDefense = 0, IvSpeed = 0, IvSpAttack = 0, IvSpDefense = 0
+    };
 
     [Fact]
     public void TheFishingBrotherOnRouteTwelveMeasuresMagikarpOnceHisSuperRodIsGiven()
@@ -2617,6 +2622,7 @@ public class KantoStoryTests
         game.Rolls.Enqueue(1);
         game.Rolls.Enqueue(10);
         game.Rolls.Enqueue(4);
+        game.Story.ClearLocal();
         game.Arrive("FiveIsland_ResortGorgeous_House", 4, 6);
         game.Talk("resort_gorgeous_house_selphy");
         Assert.Equal(PokemonDatabase.Get("Dratini")!.DexNumber, game.Story.Var("VAR_RESORT_GORGEOUS_REQUESTED_MON"));

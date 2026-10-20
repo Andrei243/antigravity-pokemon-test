@@ -1,0 +1,17 @@
+{
+  // The Safari Zone's south part (plan 21 · H6, part b): inside the door from Route 121's gate, its attendant, three
+  // visitors and the two builders who keep the expansion to the east shut until Hoenn's Hall of Fame
+  // (hoenn_safari_zone_south.txt). Every wild Pokémon in the zone is met in a Safari battle while the game is on
+  // (Models/SafariGame.cs). Emerald's Pokéblock feeders are plan 21 · H11's
+  "area": "hoenn_safari_zone_south",
+  "bgmTrack": "hoenn/safari_zone",
+  "trees": "Round",
+  "people": {
+    "safari_exit_attendant": { "name": "Attendant", "script": "ExitAttendant", "still": true },
+    "boy_1": { "name": "Boy", "dialog": [ "Someone told me Pokémon gather round the little boxes in the grass if you leave a treat in them. I've got nothing to leave!" ] },
+    "man_4": { "name": "Man", "dialog": [ "I'd go further in if I had a Bicycle. I just know the rarest Pokémon live out at the edges." ] },
+    "youngster": { "name": "Youngster", "dialog": [ "I left a treat in one of the boxes, and when I looked again it was gone. Something ate it while I wasn't watching!" ] },
+    "camper": { "name": "Builder", "dialog": [ "Sorry! This part is still being built. No entry yet!" ], "still": true },
+    "camper_2": { "name": "Builder", "dialog": [ "We're making the zone bigger. Come back once the work is done!" ], "still": true }
+  }
+}

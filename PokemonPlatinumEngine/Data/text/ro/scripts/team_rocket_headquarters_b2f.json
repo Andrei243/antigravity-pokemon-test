@@ -5,7 +5,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}. Good, you found the way down. This place is a maze of corridors and locked doors."
       ],
       "text": [
-        ""
+        "{player}. Bine, ai găsit drumul în jos. Locul ăsta e un labirint de coridoare și uși încuiate."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Your Pokémon have been working hard. Let me see to them before we go any further."
       ],
       "text": [
-        ""
+        "Pokémonii tăi au muncit mult. Lasă-mă să am grijă de ei înainte să mergem mai departe."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player}'s Pokémon were restored to full health!"
       ],
       "text": [
-        ""
+        "Pokémonii lui {player} au fost readuși la putere maximă!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Team Rocket's grunts are everywhere down here. I'll scout ahead. Be careful, {player}."
       ],
       "text": [
-        ""
+        "Soldații Echipei Rocket sunt peste tot aici jos. Eu merg înainte să recunosc terenul. Ai grijă, {player}."
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Rest when you need to. Team Rocket won't give you the chance once a battle starts."
       ],
       "text": [
-        ""
+        "Odihnește-te când ai nevoie. Echipa Rocket nu-ți va da ocazia odată ce începe o luptă."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "The Electrode in the generator room are powering the signal. Stop them, and the signal stops with them."
       ],
       "text": [
-        ""
+        "Electrode din camera generatorului alimentează semnalul. Oprește-i, și semnalul se oprește odată cu ei."
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "Dragonite: Grroar!"
       ],
       "text": [
-        ""
+        "Dragonite: Grroar!"
       ]
     }
   ],
@@ -91,7 +91,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -99,7 +99,7 @@
         "Wait, {player}. Not that way. The generator comes first: the Electrode are on the west side of the room."
       ],
       "text": [
-        ""
+        "Stai, {player}. Nu pe-acolo. Mai întâi generatorul: Electrode sunt în partea de vest a camerei."
       ]
     }
   ],
@@ -109,7 +109,7 @@
         "Murkrow"
       ],
       "text": [
-        ""
+        "Murkrow"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Krah! The boss is back! The boss is back! Krah!"
       ],
       "text": [
-        ""
+        "Krah! Șeful s-a întors! Șeful s-a întors! Krah!"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "The Murkrow keeps repeating the same words. That must be the password to the shutters!"
       ],
       "text": [
-        ""
+        "Murkrow repetă mereu aceleași cuvinte. Asta trebuie să fie parola obloanelor!"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "The Murkrow flew off down the corridor!"
       ],
       "text": [
-        ""
+        "Murkrow a zburat pe coridor!"
       ]
     }
   ],
@@ -143,7 +143,7 @@
         "The shutter is locked tight. A speaker beside it crackles: 'Password?'"
       ],
       "text": [
-        ""
+        "Oblonul e încuiat bine. Un difuzor de lângă el trosnește: „Parola?”"
       ]
     },
     {
@@ -151,7 +151,7 @@
         "A speaker beside the shutter crackles: 'Password?' {player} said what the Murkrow kept repeating."
       ],
       "text": [
-        ""
+        "Un difuzor de lângă oblon trosnește: „Parola?” {player} a spus ce tot repeta Murkrow."
       ]
     },
     {
@@ -159,7 +159,7 @@
         "The shutter slid open!"
       ],
       "text": [
-        ""
+        "Oblonul s-a ridicat!"
       ]
     }
   ],
@@ -169,7 +169,7 @@
         "???"
       ],
       "text": [
-        ""
+        "???"
       ]
     },
     {
@@ -177,7 +177,7 @@
         "Hold it right there! Where do you think you're going?"
       ],
       "text": [
-        ""
+        "Stai pe loc! Încotro crezi că te duci?"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Ariana"
       ],
       "text": [
-        ""
+        "Ariana"
       ]
     },
     {
@@ -193,7 +193,7 @@
         "So you're the child who's been running about my hideout. Did you really think I'd let that go?"
       ],
       "text": [
-        ""
+        "Deci tu ai tot dat târcoale prin ascunzătoarea mea. Chiar ai crezut că las asta așa?"
       ]
     },
     {
@@ -201,7 +201,7 @@
         "This is where your little adventure ends."
       ],
       "text": [
-        ""
+        "Aici se termină mica ta aventură."
       ]
     },
     {
@@ -209,7 +209,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -217,7 +217,7 @@
         "Not while I'm here. {player}, let's take them on together!"
       ],
       "text": [
-        ""
+        "Nu cât sunt eu aici. {player}, hai să ne ocupăm de ei împreună!"
       ]
     },
     {
@@ -225,7 +225,7 @@
         "Ariana"
       ],
       "text": [
-        ""
+        "Ariana"
       ]
     },
     {
@@ -233,7 +233,7 @@
         "Hmph. Fine. We'll leave this hideout. We have plans that matter far more than this one."
       ],
       "text": [
-        ""
+        "Hmpf. Bine. Părăsim ascunzătoarea asta. Avem planuri care contează mult mai mult decât ăsta."
       ]
     },
     {
@@ -241,7 +241,7 @@
         "And there's nothing you can do to stop them."
       ],
       "text": [
-        ""
+        "Și nu e nimic ce poți face ca să le oprești."
       ]
     },
     {
@@ -249,7 +249,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -257,7 +257,7 @@
         "They've run. That leaves the signal. It comes from the generator in the room behind those shutters."
       ],
       "text": [
-        ""
+        "Au fugit. A rămas semnalul. Vine de la generatorul din camera din spatele acelor obloane."
       ]
     },
     {
@@ -265,7 +265,7 @@
         "Its power comes from Electrode wired into the machine. Help me stop them, {player}."
       ],
       "text": [
-        ""
+        "Energia lui vine de la Electrode conectați la mașină. Ajută-mă să-i oprim, {player}."
       ]
     }
   ],
@@ -275,7 +275,7 @@
         "A huge machine thrums and crackles. Cables run from it to the Electrode around the room."
       ],
       "text": [
-        ""
+        "O mașină uriașă vuiește și trosnește. Din ea pornesc cabluri spre Electrode din jurul camerei."
       ]
     },
     {
@@ -283,7 +283,7 @@
         "The machine is silent. Not a spark comes from it now."
       ],
       "text": [
-        ""
+        "Mașina e tăcută. Acum nu mai iese nicio scânteie din ea."
       ]
     }
   ],
@@ -293,7 +293,7 @@
         "An Electrode wired into the generator! It's glaring at you!"
       ],
       "text": [
-        ""
+        "Un Electrode conectat la generator! Te privește urât!"
       ]
     }
   ],
@@ -303,7 +303,7 @@
         "An Electrode wired into the generator! It's glaring at you!"
       ],
       "text": [
-        ""
+        "Un Electrode conectat la generator! Te privește urât!"
       ]
     }
   ],
@@ -313,7 +313,7 @@
         "An Electrode wired into the generator! It's glaring at you!"
       ],
       "text": [
-        ""
+        "Un Electrode conectat la generator! Te privește urât!"
       ]
     }
   ],
@@ -323,7 +323,7 @@
         "The generator shuddered and went quiet."
       ],
       "text": [
-        ""
+        "Generatorul s-a zguduit și s-a liniștit."
       ]
     },
     {
@@ -331,7 +331,7 @@
         "Lance"
       ],
       "text": [
-        ""
+        "Lance"
       ]
     },
     {
@@ -339,7 +339,7 @@
         "That's the last of them. The signal has stopped. The lake's Magikarp will calm down now."
       ],
       "text": [
-        ""
+        "Ăsta a fost ultimul. Semnalul s-a oprit. Magikarp din lac se vor calma acum."
       ]
     },
     {
@@ -347,7 +347,7 @@
         "Team Rocket has scattered, too. With their hideout gone, Mahogany Town can breathe again."
       ],
       "text": [
-        ""
+        "Și Echipa Rocket s-a risipit. Fără ascunzătoarea lor, Orășelul Mahogany poate respira din nou."
       ]
     },
     {
@@ -355,7 +355,7 @@
         "You've done well, {player}. I'll make sure the League hears about this. Until we meet again!"
       ],
       "text": [
-        ""
+        "Te-ai descurcat bine, {player}. Mă voi asigura că Liga află despre asta. Până ne revedem!"
       ]
     }
   ]

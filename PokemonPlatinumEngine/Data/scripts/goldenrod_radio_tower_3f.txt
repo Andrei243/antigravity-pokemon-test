@@ -1,0 +1,79 @@
+# The Radio Tower's third floor (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_D23R0103).
+#
+# The floor's arrival shows Team Rocket's four (FLAG_HIDE_ROCKET_TAKEOVER_1) at the takeover's height
+# (VAR_SCENE_ROCKET_TAKEOVER 4) and the staff (_2) once it is over (5). The shutters before the way to the east stairs
+# open to the Card Key in the slot beside them (FLAG_UNK_1BF hides them, FLAG_UNK_090 says the slot has been used).
+# HeartGold asks whether the Card Key is in the bag; Silph Co.'s in Kanto has the same name, so here the slot asks
+# whether the Director has handed his over (FLAG_UNK_1C1, which goldenrod_tunnel_warehouse.txt sets as he does).
+# The woman at the far end asks after the Director while the takeover lasts and gives TM11, Sunny Day, once it is over
+# (FLAG_GOT_TM11_FROM_RADIO_TOWER_WOMAN).
+
+
+# D23R0103_000
+script OnEnter
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  if var VAR_SCENE_ROCKET_TAKEOVER == 5 clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  end
+
+
+# D23R0103_003
+script Worker
+  face d23r0103_gsman1 player
+  speaker "Man"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Takeover
+  say "We're on the air twenty-four hours a day. If the shows never sleep, neither do I!"
+  end
+label Takeover
+  say "A Trainer's Pokémon is a partner, not a tool. Team Rocket wants to bend them to its will. It's monstrous."
+  end
+
+
+# D23R0103_005: the woman at the far end of the floor
+script Woman
+  face d23r0103_gswoman2 player
+  speaker "Woman"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 5 goto Over
+  if item "Basement Key" goto Key
+  say "Their boss has shut himself away upstairs, past the shutters. Only the Director could open them, and he's on the fifth floor."
+  say "Please, help him!"
+  end
+label Key
+  say "Is the Director all right? Please tell me he's safe..."
+  end
+label Over
+  if flag FLAG_GOT_TM11_FROM_RADIO_TOWER_WOMAN goto Thanked
+  say "You did it! You chased Team Rocket out of the tower! Here, please take this, with all our thanks."
+  give "TM11"
+  setflag FLAG_GOT_TM11_FROM_RADIO_TOWER_WOMAN
+  say "TM11 is Sunny Day. It makes the sun blaze for a while, and Fire-type moves burn all the hotter."
+  end
+label Thanked
+  say "You were wonderful. The whole tower is talking about you!"
+  end
+
+
+# D23R0103_006: the shutters
+script Shutter
+  speaker none
+  text "The shutter is locked. It must open with a Card Key."
+  end
+
+
+# D23R0103_007: the slot beside the shutters
+script Slot
+  speaker none
+  if flag FLAG_UNK_090 goto Open
+  text "It's a slot for a Card Key."
+  if not flag FLAG_UNK_1C1 end
+  text "{player} slid the Card Key into the slot."
+  sound "door_slide"
+  setflag FLAG_UNK_1BF
+  setflag FLAG_UNK_090
+  text "The shutter rattled open!"
+  end
+label Open
+  text "It's a slot for a Card Key. The shutter beside it stands open."
+  end

@@ -1,0 +1,226 @@
+# Goldenrod City (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T25).
+#
+# Team Rocket's takeover of the Radio Tower is HeartGold's one count, VAR_SCENE_ROCKET_TAKEOVER: 1 once the Storm,
+# Mineral and Glacier Badges are all held, 2 once Professor Elm has rung (common.JohtoTakeoverCall), 3 once the
+# player has borrowed a uniform in the passage under the city (goldenrod_tunnel_b1f.txt), 4 once the grunt at the
+# tower's stairs has seen through it (goldenrod_radio_tower_1f.txt), and 5 once Archer is beaten on the observation
+# deck (goldenrod_radio_tower_observation_deck.txt). The town's arrival shows and hides its people by it, as
+# HeartGold's T25_018 does: the townspeople (FLAG_HIDE_ROCKET_TAKEOVER_2) keep indoors from 2 to 4, the man in black
+# before the tower (_3) stands there until the takeover is over, the grunts about the streets come out at 1 (_4) and
+# at 2 (_1), and at 3 two more guard the way north and one the way south (_5).
+
+
+script OnEnter
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_3
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_4
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_5
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  if var VAR_SCENE_ROCKET_TAKEOVER == 0 goto Quiet
+  if var VAR_SCENE_ROCKET_TAKEOVER == 1 goto Gathering
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Disguised
+  if var VAR_SCENE_ROCKET_TAKEOVER == 5 goto Over
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_3
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_4
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  end
+label Quiet
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_3
+  end
+label Gathering
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_3
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_4
+  end
+label Disguised
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_3
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_4
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_5
+  end
+label Over
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  end
+
+
+# T25_001: the woman who saw the man in black
+script ManInBlack
+  face t25_gswoman2_2 player
+  speaker "Woman"
+  if var VAR_SCENE_ROCKET_TAKEOVER >= 2 goto Real
+  say "Did you see that man in black by the Radio Tower? He's dressed up as one of Team Rocket. What a strange costume!"
+  end
+label Real
+  say "That man in black really was one of Team Rocket? And I thought it was a costume!"
+  end
+
+
+# T25_007: the man in black before the Radio Tower
+script TowerGrunt
+  face t25_rocketm player
+  speaker "Man in Black"
+  say "So this is the Radio Tower..."
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  say "What are you gawping at, kid? Beat it!"
+  face t25_rocketm up
+  end
+label Uniform
+  say "Hey, you! What are you standing about for? Get to your post!"
+  face t25_rocketm up
+  end
+
+
+# T25_010
+script GruntSouth
+  face t25_rocketm_8 player
+  speaker "Grunt"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  say "You don't belong here, brat. Clear off!"
+  end
+label Uniform
+  say "Relax, I've got this street covered. You should be over at the Radio Tower with the others!"
+  end
+
+
+# T25_008
+script GruntEastOne
+  face t25_rocketm_6 player
+  speaker "Grunt"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  say "Pokémon? Tools for making money, that's all they are."
+  end
+label Uniform
+  say "We're standing guard here. Nothing gets past us, don't you worry."
+  end
+
+
+# T25_011
+script GruntEastTwo
+  face t25_rocketm_7 player
+  speaker "Grunt"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  say "Friends with Pokémon? Don't make me laugh."
+  end
+label Uniform
+  say "After all these years of waiting, our dream's about to come true..."
+  end
+
+
+# T25_009
+script GruntByTheTower
+  face t25_rocketm_11 player
+  speaker "Grunt"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  say "Take over the Radio Tower? Who said anything about that? Mind your own business!"
+  end
+label Uniform
+  say "You look awfully young to be one of us. New, are you?"
+  end
+
+
+# T25_012
+script GruntNorthOne
+  face t25_rocketm_4 player
+  speaker "Grunt"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  say "You want to join up? Bad timing. We've run out of uniforms."
+  say "One of the lads went to borrow some from the photo studio in the passage under the city. What's keeping him?"
+  end
+label Uniform
+  say "A kid your age, signing up with Team Rocket? Good for you!"
+  end
+
+
+# T25_013
+script GruntNorthTwo
+  face t25_rocketm_5 player
+  speaker "Grunt"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  say "Can't you see the uniform? Black as night! Aren't you scared of Team Rocket?"
+  end
+label Uniform
+  say "Nobody's going to be scared of you looking like that. Grit your teeth and scowl! Like you mean it!"
+  end
+
+
+# T25_016: the grunt at the Global Terminal's door
+script GruntWest
+  face t25_rocketm_10 player
+  speaker "Grunt"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  say "Trading with people all over the world? Not today. We've got bigger things going on."
+  end
+label Uniform
+  say "Fancy a trade, do you? Wait until the job at the Radio Tower is done. You'll have all the time you like then."
+  end
+
+
+# T25_030 and T25_031: a Gym trainer stands up to a grunt before Whitney's Gym
+script GymTrainer
+  face t25_gswoman2_3 player
+  speaker "Gym Trainer"
+  say "Out of my way! We train at Whitney's Gym, and we won't let Team Rocket push our city around!"
+  face t25_gswoman2_3 down
+  end
+
+script GruntAtTheGym
+  face t25_rocketm_12 player
+  speaker "Grunt"
+  say "Gym Trainers. Always getting in the way. Go back to your Gym and stay there!"
+  face t25_rocketm_12 up
+  end
+
+
+# T25_014 and T25_015: the two at the way north, while the player wears the uniform
+script GateGuard
+  speaker "Grunt"
+  say "Where do you think you're going? We're in the middle of a job here!"
+  end
+
+script GateGuardTwo
+  speaker "Grunt"
+  say "Wrong way! The Radio Tower's back in the city!"
+  end
+
+
+# The grunt who keeps the way south
+script SouthGuardTalk
+  face t25_rocketm_9 player
+  speaker "Grunt"
+  say "I was sent here on my own, and I'm not budging. Go and bother someone else."
+  end
+
+
+# T25_017: the area's trigger 0, before the way south, while the player wears the uniform. The grunt there comes along
+# the row to the player and turns them back.
+script SouthGuard
+  scene "The grunt at the way south"
+  emote t25_rocketm_9 exclaim
+  if var PLAYER_X == 354 walk t25_rocketm_9 left 5
+  if var PLAYER_X == 355 walk t25_rocketm_9 left 4
+  if var PLAYER_X == 356 walk t25_rocketm_9 left 3
+  if var PLAYER_X == 357 walk t25_rocketm_9 left 2
+  if var PLAYER_X == 358 walk t25_rocketm_9 left 1
+  if var PLAYER_X == 360 walk t25_rocketm_9 right 1
+  if var PLAYER_X == 361 walk t25_rocketm_9 right 2
+  if var PLAYER_X == 362 walk t25_rocketm_9 right 3
+  if var PLAYER_X == 363 walk t25_rocketm_9 right 4
+  face t25_rocketm_9 up
+  face player down
+  speaker "Grunt"
+  say "Whoa, slow down! I'm the only one posted here, and nobody gets by. Don't make trouble for me, all right?"
+  walk player up 1
+  if var PLAYER_X == 354 walk t25_rocketm_9 right 5
+  if var PLAYER_X == 355 walk t25_rocketm_9 right 4
+  if var PLAYER_X == 356 walk t25_rocketm_9 right 3
+  if var PLAYER_X == 357 walk t25_rocketm_9 right 2
+  if var PLAYER_X == 358 walk t25_rocketm_9 right 1
+  if var PLAYER_X == 360 walk t25_rocketm_9 left 1
+  if var PLAYER_X == 361 walk t25_rocketm_9 left 2
+  if var PLAYER_X == 362 walk t25_rocketm_9 left 3
+  if var PLAYER_X == 363 walk t25_rocketm_9 left 4
+  face t25_rocketm_9 up
+  endscene
+  end

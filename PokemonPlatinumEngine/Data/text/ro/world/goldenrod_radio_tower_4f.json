@@ -1,0 +1,158 @@
+{
+  "people": {
+    "d23r0104_kurumi": {
+      "name": {
+        "en": [
+          "Mary"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0104_tsure_poke_static_meowth": {
+      "name": {
+        "en": [
+          "Meowth"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0104_gsman2": {
+      "name": {
+        "en": [
+          "Ben"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0104_rocketw": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0104_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I had my radio on while I was out at the ruins, and I heard the strangest broadcast. Nothing but odd noises."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0104_assistantm": {
+      "name": {
+        "en": [
+          "Trenton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Trenton: One signal from this tower, and every Pokémon that hears it will be ours."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Trenton: The experiment can wait. You can't."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0104_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: This is the production floor now. We decide what goes on the air!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Cut! Cut! That wasn't in the script!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0104_rkanbum3": {
+      "name": {
+        "en": [
+          "Proton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Proton: You again? I'm the scariest and cruelest of Team Rocket's executives, and you'll go no further."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Proton: Beaten twice by a child... Go on up, then. Our leaders upstairs will deal with you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D23R0104_001+1": {
+      "en": [
+        "4F Production"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D23R0104_002+1": {
+      "en": [
+        "4F Studio 1"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

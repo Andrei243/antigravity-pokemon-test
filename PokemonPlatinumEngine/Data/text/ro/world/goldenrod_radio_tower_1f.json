@@ -8,14 +8,6 @@
         "text": [
           "Recepționera"
         ]
-      },
-      "dialog": {
-        "en": [
-          "Welcome to the Radio Tower! I'm sorry, visitors may only see the ground floor today."
-        ],
-        "text": [
-          "Bun venit la Turnul Radio! Îmi pare rău, azi vizitatorii pot vedea doar parterul."
-        ]
       }
     },
     "d23r0101_gswoman6_2": {
@@ -79,6 +71,34 @@
         ],
         "text": [
           "Am venit să-i văd pe DJ, dar sunt toți sus. Poate data viitoare."
+        ]
+      }
+    },
+    "d23r0101_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "radio_tower_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
         ]
       }
     }

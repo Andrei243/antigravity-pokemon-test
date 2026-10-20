@@ -1,0 +1,72 @@
+# The Radio Tower's fourth floor (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_D23R0104).
+#
+# The floor's arrival shows Team Rocket's people (FLAG_HIDE_ROCKET_TAKEOVER_1) at the takeover's height
+# (VAR_SCENE_ROCKET_TAKEOVER 4), with Mary of Pokémon Talk, her Meowth and DJ Ben herded into a corner by the grunt
+# who guards them, and the staff (_2) once it is over (5), when Mary gives the player Bright Powder
+# (FLAG_GOT_BRIGHTPOWDER_FROM_MARY). Proton holds the stairs on the floor's east side.
+
+
+# D23R0104_000 and _008
+script OnEnter
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  if var VAR_SCENE_ROCKET_TAKEOVER == 5 clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  if var VAR_SCENE_ROCKET_TAKEOVER != 4 end
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  place d23r0104_kurumi 18 12 right
+  place d23r0104_tsure_poke_static_meowth 19 12 down
+  place d23r0104_gsman2 20 12 down
+  end
+
+
+# D23R0104_004
+script Mary
+  face d23r0104_kurumi player
+  speaker "Mary"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Held
+  if flag FLAG_GOT_BRIGHTPOWDER_FROM_MARY goto Thanked
+  say "There's my hero! Please, I'd like you to have this, as a thank-you."
+  give "Bright Powder"
+  setflag FLAG_GOT_BRIGHTPOWDER_FROM_MARY
+  say "Give it to a Pokémon to hold. Its glitter dazzles the other side, so their moves miss more often."
+  end
+label Held
+  say "Why is this happening to us? Meowth, do something!"
+  end
+label Thanked
+  say "Listen out for me on Professor Oak's Pokémon Talk!"
+  end
+
+
+# D23R0104_005
+script Meowth
+  cry "Meowth"
+  text "Meowth: Meowth..."
+  end
+
+
+# D23R0104_006: DJ Ben
+script Ben
+  face d23r0104_gsman2 player
+  speaker "Ben"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Held
+  say "Do you listen to our music? Pokémon March, the Lullaby... I pick every tune myself."
+  end
+label Held
+  say "Do you know what Team Rocket is missing? Music. Anyone who loved music could never do a thing like this."
+  end
+
+
+# D23R0104_007: the grunt who keeps Mary and Ben in their corner
+script Guard
+  if defeated "johto_team_rocket_f_grunt_4" goto Beaten
+  face d23r0104_rocketw player
+  speaker "Grunt"
+  say "Proton's leading this mission, you know. Isn't he just the coolest?"
+  say "Who are you, anyway? If you're getting in Proton's way... I mean Team Rocket's way, then I won't have it!"
+  battle d23r0104_rocketw as "johto_team_rocket_f_grunt_4"
+label Beaten
+  speaker "Grunt"
+  say "Team Rocket and Proton are all I need. Pokémon? Who cares about them?"
+  end
