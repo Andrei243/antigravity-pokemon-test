@@ -140,6 +140,13 @@ public sealed class Condition
     public int Number { get; init; }
     public string? Other { get; init; }
 
+    /// <summary>
+    /// For <c>has</c>, the place the Pokémon must have been met at (plan 20 · J8, part b: <c>if has "Geodude" met
+    /// "Safari Zone"</c>, the original's <c>CheckSafariZoneChallengeCompleted</c>, by the Pokémon's <c>MetLocation</c>);
+    /// null for any.
+    /// </summary>
+    public string? Place { get; init; }
+
     public static bool Holds(int left, Compare compare, int right) => compare switch
     {
         Compare.Equal => left == right,

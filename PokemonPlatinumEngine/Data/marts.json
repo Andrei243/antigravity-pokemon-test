@@ -289,6 +289,20 @@
       "Full Heal",
       "Revive"
     ],
+    "safari_gate_vitamins": [
+      "Protein",
+      "Iron",
+      "Calcium",
+      "Zinc",
+      "Carbos",
+      "HP Up"
+    ],
+    "safari_gate_balls": [
+      "Air Mail",
+      "Nest Ball",
+      "Dusk Ball",
+      "Quick Ball"
+    ],
     "seashore_house": [
       "Soda Pop"
     ],

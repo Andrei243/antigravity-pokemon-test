@@ -1,0 +1,102 @@
+{
+  "key": "route_47",
+  "index": 151,
+  "name": "Route 47",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Mountain",
+  "dayMusic": "GS_SAFARI_ROAD",
+  "nightMusic": "GS_SAFARI_ROAD",
+  "encounters": "R47",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Farfetch'd", "level": 35, "night": "Noctowl" },
+    { "species": "Miltank", "level": 35 },
+    { "species": "Ditto", "level": 34 },
+    { "species": "Ditto", "level": 33 },
+    { "species": "Ditto", "level": 32 },
+    { "species": "Ditto", "level": 31 },
+    { "species": "Gloom", "level": 32 },
+    { "species": "Spearow", "level": 31 },
+    { "species": "Fearow", "level": 34 },
+    { "species": "Raticate", "level": 31 },
+    { "species": "Raticate", "level": 33 },
+    { "species": "Ditto", "level": 40 }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Tentacool", "level": 15, "maxLevel": 25 },
+    { "species": "Seel", "level": 10, "maxLevel": 20 },
+    { "species": "Staryu", "level": 15, "maxLevel": 25 },
+    { "species": "Staryu", "level": 15, "maxLevel": 25 },
+    { "species": "Staryu", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 15,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 },
+    { "species": "Shellder", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Chinchou", "level": 40, "maxLevel": 40 },
+    { "species": "Shellder", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 },
+    { "species": "Lanturn", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 149, "z": 384, "to": "cliff_edge_gate", "toWarp": 1 },
+    { "x": 130, "z": 385, "to": "cliff_cave", "toWarp": 0 },
+    { "x": 131, "z": 391, "to": "cliff_cave", "toWarp": 1 },
+    { "x": 130, "z": 381, "to": "cliff_cave", "toWarp": 2 },
+    { "x": 87, "z": 389, "to": "embedded_tower_groudon_room", "toWarp": 0 },
+    { "x": 87, "z": 389, "to": "embedded_tower_kyogre_room", "toWarp": 0 },
+    { "x": 87, "z": 389, "to": "embedded_tower_rayquaza_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r47_monstarball", "looks": "monstarball", "movement": "0", "x": 117, "z": 395, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R47_REVIVE", "item": "Revive", "script": "std_itemball_r47_revive" },
+    { "id": "r47_monstarball_2", "looks": "monstarball", "movement": "0", "x": 108, "z": 385, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R47_LAGGING_TAIL", "item": "Lagging Tail", "script": "std_itemball_r47_lagging_tail" },
+    { "id": "r47_monstarball_3", "looks": "monstarball", "movement": "0", "x": 78, "z": 399, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R47_WAVE_INCENSE", "item": "Wave Incense", "script": "std_itemball_r47_wave_incense" },
+    { "id": "r47_monstarball_4", "looks": "monstarball", "movement": "0", "x": 78, "z": 363, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R47_WHITE_FLUTE", "item": "White Flute", "script": "std_itemball_r47_white_flute" },
+    { "id": "r47_mount_2", "looks": "mount_2", "movement": "0", "x": 86, "z": 390, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_47_EMBEDDED_TOWER_HIKER", "script": "R47_001+1" },
+    { "id": "r47_leader3", "looks": "leader3", "movement": "0", "x": 99, "z": 390, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 851968, "hiddenBy": "FLAG_HIDE_ROUTE_47_CRASHER_WAKE", "script": "R47_003+1" },
+    { "id": "r47_gsman3", "looks": "gsman3", "movement": "0", "x": 131, "z": 384, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 851968, "trainer": "sees", "sight": 1, "script": "TRAINER_DOUBLE_TEAM_THOM_AND_KAE" },
+    { "id": "r47_gswoman3", "looks": "gswoman3", "movement": "0", "x": 131, "z": 383, "facing": 2, "rangeX": 0, "rangeZ": 0, "y": 851968, "script": "std_trainer_2(TRAINER_DOUBLE_TEAM_THOM_AND_KAE)" },
+    { "id": "r47_campboy_2", "looks": "campboy_2", "movement": "17", "x": 117, "z": 390, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_CAMPER_GRANT" },
+    { "id": "r47_gsman2", "looks": "gsman2", "movement": "0", "x": 100, "z": 364, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_YOUNG_COUPLE_DUFF_AND_EDA" },
+    { "id": "r47_gswoman2", "looks": "gswoman2", "movement": "0", "x": 101, "z": 364, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_2(TRAINER_YOUNG_COUPLE_DUFF_AND_EDA)" },
+    { "id": "r47_mount_2_2", "looks": "mount_2", "movement": "8", "x": 135, "z": 392, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_HIKER_DEVIN" },
+    { "id": "r47_gsleader5", "looks": "gsleader5", "movement": "0", "x": 80, "z": 371, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_47_CHUCK", "script": "R47_004+1" }
+  ],
+  "signs": [
+    { "x": 80, "z": 396, "type": 2, "script": "std_hiddenitem_r47_stardust", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_R47_STARDUST" },
+    { "x": 112, "z": 395, "type": 2, "script": "std_hiddenitem_r47_pearl", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_R47_PEARL" }
+  ],
+  "triggers": []
+}

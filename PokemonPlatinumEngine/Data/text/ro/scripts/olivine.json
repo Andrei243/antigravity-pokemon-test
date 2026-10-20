@@ -1,4 +1,54 @@
 {
+  "OnEnter": [
+    {
+      "en": [
+        "Brrrring! Brrrring! It's the Pokégear..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Baoba"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}! Warden Baoba here. Sorry to keep you waiting, but my Safari Zone is open at last!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do you know the gate in the cave behind Cianwood City? Go through it and follow the cliff path, and you'll be there in no time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're a little out of the way, but do come and visit!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click... The call has ended."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "RivalAtTheGym": [
     {
       "en": [

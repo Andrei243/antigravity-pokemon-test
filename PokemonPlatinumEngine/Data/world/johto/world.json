@@ -142,7 +142,15 @@
     { "name": "WhirlIslands_B1F", "matrix": 142, "area": "whirl_islands_b1f", "trees": "Round", "setting": "Cave" },
     { "name": "WhirlIslands_B2F", "matrix": 143, "area": "whirl_islands_b2f", "trees": "Round", "setting": "Cave" },
     // Plan 20 · J9: the Glitter Lighthouse's lift, ridden once Jasmine has stepped aside from it
-    { "name": "OlivineLighthouse_Elevator", "matrix": 262, "area": "olivine_lighthouse_elevator", "trees": "Round", "setting": "Indoors" }
+    { "name": "OlivineLighthouse_Elevator", "matrix": 262, "area": "olivine_lighthouse_elevator", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J8, part b: the gate in Cianwood's cliff, Cliff Cave, the Safari Zone's gate with its Pokémon Center,
+    // and the zone itself (its twelve areas on one matrix, docs/mechanics/rulings.md, "The Johto Safari Zone")
+    { "name": "CliffEdgeGate", "matrix": 152, "area": "cliff_edge_gate", "trees": "Round", "setting": "Cave" },
+    { "name": "CliffCave", "matrix": 184, "area": "cliff_cave", "trees": "Round", "setting": "Cave" },
+    { "name": "SafariZoneGate_PokemonCenter_1F", "matrix": 73, "area": "safari_zone_gate_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SafariZoneGate_PokemonCenter_B1F", "matrix": 77, "area": "safari_zone_gate_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "SafariZone_Gate", "matrix": 227, "area": "safari_zone_entrance_interior", "trees": "Round", "setting": "Indoors" },
+    { "name": "SafariZone", "matrix": 212, "trees": "Round" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -192,6 +200,12 @@
     "cianwood_kirks_house", "cianwood_central_house", "cianwood_north_house", "cianwood_camerons_house",
     "whirl_islands_1f", "whirl_islands_b1f", "whirl_islands_b2f",
     // Plan 20 · J9: the lighthouse's lift
-    "olivine_lighthouse_elevator"
+    "olivine_lighthouse_elevator",
+    // Plan 20 · J8, part b: Routes 47 and 48, the gate in the cliff, Cliff Cave and the Safari Zone
+    "route_47", "route_48", "cliff_edge_gate", "cliff_cave",
+    "safari_zone_gate", "safari_zone_gate_pokecenter_1f", "safari_zone_gate_pokecenter_b1f", "safari_zone_entrance_interior",
+    "safari_zone_entrance_exterior", "safari_zone_01", "safari_zone_02", "safari_zone_03", "safari_zone_04",
+    "safari_zone_05", "safari_zone_06", "safari_zone_07", "safari_zone_08", "safari_zone_09", "safari_zone_10",
+    "safari_zone_11", "safari_zone_12"
   ]
 }

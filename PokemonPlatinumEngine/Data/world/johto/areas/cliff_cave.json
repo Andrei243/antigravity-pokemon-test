@@ -1,0 +1,70 @@
+{
+  "key": "cliff_cave",
+  "index": 342,
+  "name": "Cliff Cave",
+  "matrix": 184,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_SAFARI_ROAD",
+  "nightMusic": "GS_SAFARI_ROAD",
+  "encounters": "D50R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Golbat", "level": 22 },
+    { "species": "Geodude", "level": 19 },
+    { "species": "Krabby", "level": 20 },
+    { "species": "Kingler", "level": 22 },
+    { "species": "Machop", "level": 19 },
+    { "species": "Onix", "level": 20 },
+    { "species": "Wooper", "level": 18, "night": "Zubat" },
+    { "species": "Quagsire", "level": 20, "night": "Misdreavus" },
+    { "species": "Graveler", "level": 20, "night": "Golbat" },
+    { "species": "Machoke", "level": 22 },
+    { "species": "Steelix", "level": 23 },
+    { "species": "Steelix", "level": 23 }
+  ],
+  "landRate": 10,
+  "rockSmash": [
+    { "species": "Krabby", "level": 20, "maxLevel": 26 },
+    { "species": "Kingler", "level": 28, "maxLevel": 31 }
+  ],
+  "rockSmashRate": 30,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 6, "z": 7, "to": "route_47", "toWarp": 1 },
+    { "x": 26, "z": 13, "to": "route_47", "toWarp": 2 },
+    { "x": 6, "z": 29, "to": "route_47", "toWarp": 3 },
+    { "x": 4, "z": 5, "to": "cliff_cave", "toWarp": 5 },
+    { "x": 4, "z": 4, "to": "cliff_cave", "toWarp": 5 },
+    { "x": 4, "z": 22, "to": "cliff_cave", "toWarp": 3 },
+    { "x": 8, "z": 5, "to": "cliff_cave", "toWarp": 7 },
+    { "x": 27, "z": 4, "to": "cliff_cave", "toWarp": 6 },
+    { "x": 27, "z": 3, "to": "cliff_cave", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "d50r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "15", "x": 6, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D50R0101_000+1" },
+    { "id": "d50r0101_breakrock", "looks": "breakrock", "movement": "0", "x": 29, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "d50r0101_breakrock_2", "looks": "breakrock", "movement": "0", "x": 28, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "d50r0101_breakrock_3", "looks": "breakrock", "movement": "0", "x": 25, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_rock_smash" },
+    { "id": "d50r0101_breakrock_4", "looks": "breakrock", "movement": "0", "x": 25, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_rock_smash" },
+    { "id": "d50r0101_breakrock_5", "looks": "breakrock", "movement": "0", "x": 24, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_014", "script": "std_field_rock_smash" },
+    { "id": "d50r0101_breakrock_6", "looks": "breakrock", "movement": "0", "x": 28, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_017", "script": "std_field_rock_smash" }
+  ],
+  "signs": [
+    { "x": 9, "z": 30, "type": 2, "script": "std_hiddenitem_d50r0101_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D50R0101_ULTRA_BALL" }
+  ],
+  "triggers": []
+}

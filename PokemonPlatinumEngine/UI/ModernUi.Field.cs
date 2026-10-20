@@ -212,11 +212,13 @@ internal static partial class ModernUi
 
     /// <summary>
     /// The Safari Game's count (style guide, "The Safari Game"; plan 01 · M7): the balls and the steps left, on a
-    /// panel at the top right. A number turns red at a fifth of its start or under.
+    /// panel at the top right. A number turns red at a fifth of its start or under. A game with no limit of steps (the
+    /// Johto Safari Zone's, plan 20 · J8, part b) shows the balls alone, on a panel half as wide.
     /// </summary>
-    public static void SafariCount(int sw, int balls, int steps)
+    public static void SafariCount(int sw, int balls, int steps, bool endless = false)
     {
-        var r = new Rectangle(sw - 32 - 300, 32, 300, 96);
+        float width = endless ? 150 : 300;
+        var r = new Rectangle(sw - 32 - width, 32, width, 96);
         Panel(r, 24);
         void Count(string label, int value, int low, float x)
         {
@@ -224,6 +226,6 @@ internal static partial class ModernUi
             UiFonts.Draw(value.ToString(), x, r.Y + 44, 36, value <= low ? Red : Ink, UiWeight.Black);
         }
         Count(Text.Of("field.safariBalls"), balls, Models.SafariGame.StartBalls / 5, r.X + 28);
-        Count(Text.Of("field.steps"), steps, Models.SafariGame.StartSteps / 5, r.X + 184);
+        if (!endless) Count(Text.Of("field.steps"), steps, Models.SafariGame.StartSteps / 5, r.X + 184);
     }
 }

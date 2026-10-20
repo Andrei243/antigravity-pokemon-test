@@ -1,0 +1,171 @@
+{
+  "people": {
+    "r47_mount_2": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r47_gsman3": {
+      "name": {
+        "en": [
+          "Thom"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Double Team Thom: The two of us never lose on the cliff path. Ready to fall?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Double Team Thom: Looks like we're the ones who fell."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r47_gswoman3": {
+      "name": {
+        "en": [
+          "Kae"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Double Team Kae: Thom and I are in perfect step. Try to keep up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Double Team Kae: You broke our rhythm completely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r47_campboy_2": {
+      "name": {
+        "en": [
+          "Grant"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Grant: I'm camping out here to watch the sea. You'll make a nice break from the view!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Grant: Back to the view, I suppose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r47_gsman2": {
+      "name": {
+        "en": [
+          "Duff"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Duff: We came up here for the sunset. A battle first, though!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Duff: Well, the sunset's still lovely."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r47_gswoman2": {
+      "name": {
+        "en": [
+          "Eda"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Eda: Duff and I do everything together, battles included!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Eda: We lost together. That's sweet, in its way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r47_mount_2_2": {
+      "name": {
+        "en": [
+          "Devin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Devin: These cliffs are steep, but my legs are steeper! Battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Devin: My legs are wobbling now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

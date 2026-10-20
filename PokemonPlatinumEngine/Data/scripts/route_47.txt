@@ -1,0 +1,24 @@
+# Route 47 (plan 20 · J8, part b). docs/scripts.md describes the language; the lines are our own, on HeartGold's beats
+# (scr_seq_R47).
+#
+# Coming onto the route notes that the player has walked the cliff path (VAR_UNK_40EB 1), which the woman of the Cliff
+# Edge Gate asks (cliff_edge_gate.txt). The Embedded Tower's rooms, Crasher Wake and Chuck are a later session's.
+
+
+script OnEnter
+  setvar VAR_UNK_40EB 1
+  end
+
+
+# R47_001: the hiker by the hole in the cliff
+script Hiker
+  speaker "Hiker"
+  if flag FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER goto Again
+  say "Hello there! See that hole in the cliff? They say a great tower once stood here, half of it buried in the rock."
+  say "It reached up into the sky and down into the earth, and some say right to the bottom of the sea."
+  say "It's crumbled away now. All that's left is the way in and a room full of strange patterns."
+  setflag FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER
+  end
+label Again
+  say "I reckon it was built to honour Pokémon bound up with the sea, the land and the sky."
+  end

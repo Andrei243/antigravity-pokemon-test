@@ -1,0 +1,8 @@
+{
+  // The Safari Zone's Swamp Area (plan 20 · J8, part b): HeartGold's area, laid out with the eleven others side by
+  // side (docs/mechanics/rulings.md, "The Johto Safari Zone"). Every wild Pokémon here is met in a Safari battle while
+  // the game is on (Models/SafariGame.cs)
+  "area": "safari_zone_08",
+  "bgmTrack": "johto/national_park",
+  "trees": "Round"
+}
