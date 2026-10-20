@@ -305,8 +305,15 @@ public static class ScriptParser
                     if (theirLevel is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
                     return new Instruction { Op = Op.CatchingLesson, Line = line, Name = species, Number = level, Other = catcher, Partner = theirs, X = theirLevel };
                 }
-                bool noFleeing = r.More && r.OneOf("nofleeing") == "nofleeing";
-                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing };
+                // `nofleeing` (a battle that can't be run from) and `shiny` (plan 20 · J11: the Lake of Rage's red
+                // Gyarados), in either order
+                bool noFleeing = false, shiny = false;
+                while (r.More)
+                {
+                    if (r.OneOf("nofleeing", "shiny") == "shiny") shiny = true;
+                    else noFleeing = true;
+                }
+                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing, Shiny = shiny };
             }
 
             case "face":

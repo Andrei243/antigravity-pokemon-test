@@ -1,8 +1,15 @@
 {
-  // The Mahogany Gym's last room (plan 20 · J10): three trainers by their own records. Pryce waits for plan 20 · J11
+  // The Mahogany Gym's last room (plan 20 · J10): three trainers by their own records, and since plan 20 · J11 Pryce
+  // at the back (scripts/mahogany_gym_leader_room.txt) and three blocks of ice. HeartGold hides him by a flag set only
+  // while he is out by the Lake of Rage for his rematches after the Hall of Fame, which this game has not yet: he is
+  // always home
   "area": "mahogany_gym_leader_room",
   "bgmTrack": "johto/gym",
   "people": {
+    "t28gym0101_gsleader7": { "name": "Pryce", "script": "Pryce", "still": true, "hiddenBy": "" },
+    "t28gym0101_ice": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
+    "t28gym0101_ice_2": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
+    "t28gym0101_ice_3": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
     "t28gym0101_boarder": {
       "name": "Deandre",
       "trainer": {

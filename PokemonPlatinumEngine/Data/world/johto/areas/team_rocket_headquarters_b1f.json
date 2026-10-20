@@ -1,0 +1,62 @@
+{
+  "key": "team_rocket_headquarters_b1f",
+  "index": 247,
+  "name": "Team Rocket Hq",
+  "matrix": 53,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_D_AJITO",
+  "nightMusic": "GS_D_AJITO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 51, "z": 4, "to": "mahogany_souvenir_shop", "toWarp": 1 },
+    { "x": 10, "z": 29, "to": "team_rocket_headquarters_b2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d35r0102_aji_peru", "looks": "aji_peru", "movement": "0", "x": 44, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 131072, "script": "D35R0102_001+1" },
+    { "id": "d35r0102_rocketm", "looks": "rocketm", "movement": "0", "x": 34, "z": 1, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1E8", "script": "D35R0102_002+1" },
+    { "id": "d35r0102_aji_peru_2", "looks": "aji_peru", "movement": "0", "x": 18, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 131072, "script": "D35R0102_009+1" },
+    { "id": "d35r0102_aji_peru_3", "looks": "aji_peru", "movement": "0", "x": 44, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 131072, "script": "D35R0102_010+1" },
+    { "id": "d35r0102_aji_peru_4", "looks": "aji_peru", "movement": "0", "x": 44, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 131072, "script": "D35R0102_011+1" },
+    { "id": "d35r0102_aji_peru_5", "looks": "aji_peru", "movement": "0", "x": 18, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 131072, "script": "D35R0102_012+1" },
+    { "id": "d35r0102_rocketm_2", "looks": "rocketm", "movement": "0", "x": 12, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN", "script": "TRAINER_TEAM_ROCKET_GRUNT_15" },
+    { "id": "d35r0102_assistantm", "looks": "assistantm", "movement": "0", "x": 36, "z": 22, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN", "script": "TRAINER_SCIENTIST_GS_GREGG" },
+    { "id": "d35r0102_monstarball", "looks": "monstarball", "movement": "0", "x": 52, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D35R0102_HYPER_POTION", "item": "Hyper Potion", "script": "std_itemball_d35r0102_hyper_potion" },
+    { "id": "d35r0102_monstarball_2", "looks": "monstarball", "movement": "0", "x": 40, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D35R0102_GUARD_SPEC_", "item": "Guard Spec.", "script": "std_itemball_d35r0102_guard_spec_" },
+    { "id": "d35r0102_monstarball_3", "looks": "monstarball", "movement": "0", "x": 30, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D35R0102_NUGGET", "item": "Nugget", "script": "std_itemball_d35r0102_nugget" }
+  ],
+  "signs": [
+    { "x": 37, "z": 21, "type": 0, "script": "D35R0102_004+1" },
+    { "x": 53, "z": 16, "type": 2, "script": "std_hiddenitem_d35r0102_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D35R0102_REVIVE" }
+  ],
+  "triggers": [
+    { "x": 44, "z": 4, "width": 1, "depth": 2, "script": "D35R0102_000+1", "variable": "VAR_UNK_40AD", "value": "0" },
+    { "x": 18, "z": 4, "width": 1, "depth": 2, "script": "D35R0102_005+1", "variable": "VAR_UNK_40AE", "value": "0" },
+    { "x": 44, "z": 11, "width": 1, "depth": 2, "script": "D35R0102_006+1", "variable": "VAR_UNK_40AF", "value": "0" },
+    { "x": 44, "z": 29, "width": 1, "depth": 2, "script": "D35R0102_007+1", "variable": "VAR_UNK_40B0", "value": "0" },
+    { "x": 18, "z": 29, "width": 1, "depth": 2, "script": "D35R0102_008+1", "variable": "VAR_UNK_40B1", "value": "0" },
+    { "x": 12, "z": 17, "width": 1, "depth": 1, "script": "D35R0102_013+1", "variable": "VAR_ROCKET_TRAP_KOFFING_1", "value": "0" },
+    { "x": 13, "z": 16, "width": 1, "depth": 1, "script": "D35R0102_014+1", "variable": "VAR_ROCKET_TRAP_VOLTORB_1", "value": "0" },
+    { "x": 15, "z": 16, "width": 1, "depth": 1, "script": "D35R0102_015+1", "variable": "VAR_ROCKET_TRAP_GEODUDE_1", "value": "0" },
+    { "x": 16, "z": 16, "width": 1, "depth": 1, "script": "D35R0102_016+1", "variable": "VAR_ROCKET_TRAP_VOLTORB_2", "value": "0" },
+    { "x": 11, "z": 18, "width": 1, "depth": 1, "script": "D35R0102_017+1", "variable": "VAR_ROCKET_TRAP_GEODUDE_2", "value": "0" },
+    { "x": 16, "z": 17, "width": 1, "depth": 1, "script": "D35R0102_018+1", "variable": "VAR_ROCKET_TRAP_VOLTORB_3", "value": "0" },
+    { "x": 14, "z": 18, "width": 1, "depth": 1, "script": "D35R0102_019+1", "variable": "VAR_ROCKET_TRAP_VOLTORB_4", "value": "0" },
+    { "x": 15, "z": 18, "width": 1, "depth": 1, "script": "D35R0102_020+1", "variable": "VAR_ROCKET_TRAP_KOFFING_2", "value": "0" },
+    { "x": 15, "z": 20, "width": 1, "depth": 1, "script": "D35R0102_021+1", "variable": "VAR_ROCKET_TRAP_KOFFING_3", "value": "0" },
+    { "x": 13, "z": 19, "width": 1, "depth": 1, "script": "D35R0102_022+1", "variable": "VAR_ROCKET_TRAP_GEODUDE_3", "value": "0" },
+    { "x": 14, "z": 21, "width": 1, "depth": 1, "script": "D35R0102_023+1", "variable": "VAR_ROCKET_TRAP_GEODUDE_4", "value": "0" },
+    { "x": 12, "z": 21, "width": 1, "depth": 1, "script": "D35R0102_024+1", "variable": "VAR_ROCKET_TRAP_KOFFING_4", "value": "0" },
+    { "x": 11, "z": 22, "width": 1, "depth": 1, "script": "D35R0102_025+1", "variable": "VAR_ROCKET_TRAP_VOLTORB_5", "value": "0" },
+    { "x": 13, "z": 21, "width": 1, "depth": 1, "script": "D35R0102_026+1", "variable": "VAR_ROCKET_TRAP_VOLTORB_6", "value": "0" },
+    { "x": 14, "z": 22, "width": 1, "depth": 1, "script": "D35R0102_027+1", "variable": "VAR_ROCKET_TRAP_KOFFING_5", "value": "0" },
+    { "x": 16, "z": 22, "width": 1, "depth": 1, "script": "D35R0102_028+1", "variable": "VAR_ROCKET_TRAP_GEODUDE_5", "value": "0" },
+    { "x": 16, "z": 28, "width": 1, "depth": 1, "script": "D35R0102_029+1", "variable": "VAR_UNK_40C2", "value": "0" }
+  ]
+}

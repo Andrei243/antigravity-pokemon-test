@@ -1,0 +1,76 @@
+# The Lake of Rage (plan 20 · J11, part a). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T29).
+#
+# The red Gyarados thrashes in the middle of the lake (FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS). It is met shiny, as
+# HeartGold's WildBattle with its shiny flag (`wildbattle "Gyarados" 30 shiny`); won, caught or run from, it is gone
+# and Lance and his Dragonite stand on the south shore (FLAG_HIDE_LAKE_OF_RAGE_LANCE). Won or caught, it leaves its
+# scale behind (FLAG_GOT_RED_SCALE, which also brings Ace Trainer Lois back to the lake as HeartGold's does): the Red
+# Scale itself is no item of this game's data yet, so the flag is all the scene gives (docs/mechanics/rulings.md,
+# "Johto's fourth chapter, part a"). Caught, FLAG_CAUGHT_RED_GYARADOS. Lance asks the player to look into the
+# souvenir shop in Mahogany Town with him: yes sends him on ahead (VAR_UNK_40A8 1, mahogany_souvenir_shop.txt), no
+# keeps him waiting (FLAG_UNK_0C3) to ask again.
+
+
+# T29_000's part for the scene: Lance is on the shore only once the Gyarados is gone (HeartGold's new game hides him)
+script OnEnter
+  if flag FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS end
+  setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
+  end
+
+
+# T29_001
+script RedGyarados
+  cry "Gyarados"
+  text "Gyaaarados! The red Gyarados is thrashing wildly!"
+  wildbattle "Gyarados" 30 shiny
+  setflag FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS
+  hide t29_rgyaradosu
+  clearflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
+  show t29_wataru
+  show t29_tsure_poke_static_dragonite
+  if result == 2 end
+  if result == 3 setflag FLAG_CAUGHT_RED_GYARADOS
+  if flag FLAG_GOT_RED_SCALE end
+  text "The lake has gone still. Something red glints in the water where the Gyarados was."
+  setflag FLAG_GOT_RED_SCALE
+  clearflag FLAG_HIDE_LAKE_OF_RAGE_ACE_TRAINER_LOIS
+  end
+
+
+# T29_003
+script Lance
+  face t29_wataru player
+  speaker "Lance"
+  if flag FLAG_UNK_0C3 goto Again
+  say "That was quite a battle. You and your Pokémon handled that Gyarados well."
+  say "I'm Lance, a Trainer like you. I've been looking into strange goings-on around this lake."
+  say "Magikarp don't turn into raging Gyarados by themselves. Someone is forcing them to evolve, and I mean to find out who."
+  ask "There's a souvenir shop in Mahogany Town I have my doubts about. Will you help me look into it?"
+  if no goto Refused
+label Agreed
+  scene "Lance by the Lake of Rage"
+  say "Good. I'll go on ahead. Meet me at the shop in Mahogany Town!"
+  fade out 0.4
+  hide t29_wataru
+  hide t29_tsure_poke_static_dragonite
+  setflag FLAG_HIDE_LAKE_OF_RAGE_LANCE
+  clearflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
+  setvar VAR_UNK_40A8 1
+  fade in
+  endscene
+  end
+label Refused
+  setflag FLAG_UNK_0C3
+  say "I see. Well, if you change your mind, I'll be right here."
+  end
+label Again
+  ask "Have you thought it over? Will you help me look into that shop in Mahogany Town?"
+  if yes goto Agreed
+  say "I see. Well, if you change your mind, I'll be right here."
+  end
+
+
+script Dragonite
+  cry "Dragonite"
+  text "Dragonite: Graaoh!"
+  end

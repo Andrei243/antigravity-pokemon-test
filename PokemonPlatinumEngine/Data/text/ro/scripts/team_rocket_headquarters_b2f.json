@@ -1,0 +1,362 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}. Good, you found the way down. This place is a maze of corridors and locked doors."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Your Pokémon have been working hard. Let me see to them before we go any further."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokémon were restored to full health!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket's grunts are everywhere down here. I'll scout ahead. Be careful, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Lance": [
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rest when you need to. Team Rocket won't give you the chance once a battle starts."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Electrode in the generator room are powering the signal. Stop them, and the signal stops with them."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Dragonite": [
+    {
+      "en": [
+        "Dragonite: Grroar!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LanceStops": [
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wait, {player}. Not that way. The generator comes first: the Electrode are on the west side of the room."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Password": [
+    {
+      "en": [
+        "Murkrow"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Krah! The boss is back! The boss is back! Krah!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Murkrow keeps repeating the same words. That must be the password to the shutters!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Murkrow flew off down the corridor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door": [
+    {
+      "en": [
+        "The shutter is locked tight. A speaker beside it crackles: 'Password?'"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A speaker beside the shutter crackles: 'Password?' {player} said what the Murkrow kept repeating."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The shutter slid open!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Ariana": [
+    {
+      "en": [
+        "???"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold it right there! Where do you think you're going?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ariana"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So you're the child who's been running about my hideout. Did you really think I'd let that go?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is where your little adventure ends."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not while I'm here. {player}, let's take them on together!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ariana"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmph. Fine. We'll leave this hideout. We have plans that matter far more than this one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And there's nothing you can do to stop them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They've run. That leaves the signal. It comes from the generator in the room behind those shutters."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Its power comes from Electrode wired into the machine. Help me stop them, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Generator": [
+    {
+      "en": [
+        "A huge machine thrums and crackles. Cables run from it to the Electrode around the room."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The machine is silent. Not a spark comes from it now."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Electrode1": [
+    {
+      "en": [
+        "An Electrode wired into the generator! It's glaring at you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Electrode2": [
+    {
+      "en": [
+        "An Electrode wired into the generator! It's glaring at you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Electrode3": [
+    {
+      "en": [
+        "An Electrode wired into the generator! It's glaring at you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AllStopped": [
+    {
+      "en": [
+        "The generator shuddered and went quiet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's the last of them. The signal has stopped. The lake's Magikarp will calm down now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket has scattered, too. With their hideout gone, Mahogany Town can breathe again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've done well, {player}. I'll make sure the League hears about this. Until we meet again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

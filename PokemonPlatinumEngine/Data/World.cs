@@ -2310,7 +2310,9 @@ public static class WorldMapBuilder
                 map.SetSolid(px, pz, false);
                 if (inside.Type == PropType.Pool) npc.Wading = PoolDepth;
             }
-            map.NPCs.Add(npc);
+            // A block of ice is put back where it stood when the player comes in again, as a boulder is (plan 20 · J11)
+            if (npc.IsIceBlock) map.Add(npc);
+            else map.NPCs.Add(npc);
         }
 
         foreach (var record in people ? overlay?.Npcs ?? new() : new())

@@ -862,6 +862,7 @@ public static class ThingCards
             PropType.TireStack => (30, 30, GymArt.PaintTireStack),
             PropType.Bollard => (16, 28, GymArt.PaintBollard),
             PropType.Snowball => (30, 30, GymArt.PaintSnowball),
+            PropType.IceBlock => (30, 30, GymArt.PaintIceBlock),
             PropType.GalacticDoor => (GalacticArt.DoorWidth, GalacticArt.DoorHeight, GalacticArt.PaintDoor),
             PropType.Rubble => (30, 20, OutdoorProps.PaintRubble),
             PropType.CavePainting => (32, 52, OutdoorProps.PaintCavePainting),
@@ -887,7 +888,7 @@ public static class ThingCards
     {
         PropType.CutTree or PropType.StrengthBoulder or PropType.MagmaStone => 20f / 32f,
         PropType.CrackedRock or PropType.Rubble => 19f / 32f,
-        PropType.PunchingBag or PropType.TireStack or PropType.Bollard or PropType.Snowball => 18f / 32f,
+        PropType.PunchingBag or PropType.TireStack or PropType.Bollard or PropType.Snowball or PropType.IceBlock => 18f / 32f,
         // A shutter stands across the middle of its gap
         PropType.GalacticDoor => 0.5f,
         // The painting stands well back in its tile's south half, a slab filling the niche it is set in

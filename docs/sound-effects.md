@@ -53,7 +53,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `heal` | `SEQ_SE_DP_KAIFUKU` | A medicine used from the bag, HP restored in battle. |
 | `bike_bell` | `SEQ_SE_DP_JITENSYA` | Getting on the Bicycle (plan 02 · S2). |
 | `gear` | `SEQ_SE_DP_GEAR` | The Bicycle's gear changes, on the run button while riding. |
-| `boulder` | — | A boulder pushed with Strength, as it starts to slide. |
+| `boulder` | — | A boulder pushed with Strength, as it starts to slide; and a block of ice of the Mahogany Gym pushed off over the ice (plan 20 · J11). |
 | `rock_smash` | — | A rock broken with Rock Smash, as the cut-in's band closes. |
 | `cut` | `SEQ_SE_DP_FW015` | A tree cut down with Cut, as the cut-in's band closes. |
 | `fish_cast` | — | A rod cast. |

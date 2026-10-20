@@ -1,15 +1,18 @@
 {
-  // The Mahogany Gym's first room (plan 20 · J10), HeartGold's: its guide by the door. Pryce, his challenge and the
-  // blocks of ice the player pushes wait for plan 20 · J11
+  // The Mahogany Gym's first room (plan 20 · J10), HeartGold's: its guide by the door, and since plan 20 · J11 its two
+  // blocks of ice, which the player pushes by walking or sliding into them (npcType IceBlock: they slide on over the ice
+  // until something stops them, and are back where they stood when the room is next come into)
   "area": "mahogany_gym_room_1",
   "bgmTrack": "johto/gym",
   "people": {
+    "t28gym0103_ice": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
+    "t28gym0103_ice_2": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
     "t28gym0103_sunglasses": {
       "name": "Gym Guide",
       "still": true,
       "dialog": [
         "Brr! The floor in here is solid ice. Once you start sliding, you won't stop until you hit something!",
-        "Pryce is away from his Gym for now. His trainers are inside, though, and they love the cold."
+        "See those blocks of ice? Give one a shove and it slides till it hits something. Put them where you want to stop!"
       ]
     }
   },

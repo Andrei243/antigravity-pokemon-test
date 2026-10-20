@@ -162,6 +162,10 @@
     { "name": "Mahogany_PokemonCenter_1F", "matrix": 73, "area": "mahogany_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "Mahogany_PokemonCenter_B1F", "matrix": 77, "area": "mahogany_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
     { "name": "Mahogany_SouvenirShop", "matrix": 138, "area": "mahogany_souvenir_shop", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J11, part a: the Rocket Hideout under the souvenir shop, three floors whose stairs the shop's scene opens
+    { "name": "TeamRocketHQ_B1F", "matrix": 53, "area": "team_rocket_headquarters_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "TeamRocketHQ_B2F", "matrix": 54, "area": "team_rocket_headquarters_b2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "TeamRocketHQ_B3F", "matrix": 55, "area": "team_rocket_headquarters_b3f", "trees": "Round", "setting": "Indoors" },
     { "name": "Mahogany_EastHouse", "matrix": 95, "area": "mahogany_east_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Mahogany_Gym", "matrix": 93, "area": "mahogany_gym_room_1", "trees": "Round", "setting": "Indoors" },
     { "name": "Mahogany_Gym_2", "matrix": 228, "area": "mahogany_gym_room_2", "trees": "Round", "setting": "Indoors" },
@@ -277,6 +281,8 @@
     "blackthorn_west_house", "blackthorn_east_house", "blackthorn_move_tutor_house",
     "dragons_den_entrance", "dragons_den", "dragons_den_shrine",
     "route_45", "route_46", "dark_cave_route_31_side", "dark_cave_route_45_side",
+    // Plan 20 · J11, part a: the Rocket Hideout
+    "team_rocket_headquarters_b1f", "team_rocket_headquarters_b2f", "team_rocket_headquarters_b3f",
     // Plan 20 · J10, part b: Routes 27 and 26 from New Bark Town by Tohjo Falls, Route 22's reception gate, Victory
     // Road and the Indigo Plateau with the League's rooms
     "route_27", "route_27_house", "tohjo_falls", "tohjo_falls_hidden_room",

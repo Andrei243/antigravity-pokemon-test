@@ -696,6 +696,171 @@ public class JohtoStoryTests
     }
 
     [Fact]
+    public void TheFourthChapterPlaysFromTheLakeOfRageToTheGlacierBadge()
+    {
+        // Plan 20 · J11, part a: the toll on Route 43, the red Gyarados and Lance, the souvenir shop's stairs, the Team
+        // Rocket Hideout floor by floor (the statues' alarm, the computer, a trap, Lance's welcome, the two halves of a
+        // password, the rival, Petrel in disguise, the Murkrow's chase, Ariana's tag battle beside Lance, the generator's
+        // three Electrode), the toll gate empty afterwards and Pryce's Glacier Badge
+        var game = new Game();
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        game.Story.ChooseStarter(johto.Starters[0]);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 45));
+        // As the third chapter leaves it: the Storm and Mineral Badges won
+        game.Story.GiveBadge("Johto", "Storm");
+        game.Story.GiveBadge("Johto", "Mineral");
+
+        // Route 43's gate house: the grunts take the toll on arrival, while the guard is out of the way
+        game.Arrive("Route43_Gate", 5, 11);
+        Assert.Equal(2000, game.Last.Money);
+        Assert.NotNull(game.Present("r43r0201_rocketm"));
+        Assert.Null(game.Present("r43r0201_counterm"));
+
+        // The souvenir shop: its stairs are a wall behind the counter until Lance finds them
+        game.Arrive("Mahogany_SouvenirShop", 5, 8);
+        var stairs = game.Map.Warps.First(w => w.TargetMap == "TeamRocketHQ_B1F");
+        Assert.True(game.Map.IsSolid(stairs.SourceX, stairs.SourceY));
+        Assert.Null(game.Present("d35r0101_wataru"));
+
+        // The lake: the red Gyarados, met shiny, and Lance on the shore once it is gone
+        var gyarados = Johto.Value.Area("lake_of_rage")!.Objects.Single(o => o.Id == "t29_rgyaradosu");
+        game.Arrive("Johto", gyarados.X, gyarados.Z);
+        Assert.Null(game.Present("t29_wataru"));
+        var rage = game.Talk("t29_rgyaradosu");
+        Assert.Contains(rage.Log, l => l.StartsWith("wildbattle Gyarados 30"));
+        Assert.True(game.Story.Has("FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS"));
+        Assert.True(game.Story.Has("FLAG_GOT_RED_SCALE"));
+        Assert.Null(game.Present("t29_rgyaradosu"));
+        Assert.NotNull(game.Present("t29_wataru"));
+        // Lance asked to wait, then agreed with
+        game.Answers.Enqueue(1);
+        game.Talk("t29_wataru");
+        Assert.True(game.Story.Has("FLAG_UNK_0C3"));
+        Assert.Equal(0, game.Story.Var("VAR_UNK_40A8"));
+        game.Answers.Enqueue(0);
+        game.Talk("t29_wataru");
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40A8"));
+        Assert.Null(game.Present("t29_wataru"));
+
+        // The shop again: Lance's Dragonite knocks the lookout aside and the stairs are found
+        game.Arrive("Mahogany_SouvenirShop", 5, 8);
+        Assert.Equal(2, game.Story.Var("VAR_UNK_40A8"));
+        Assert.True(game.Story.Has("FLAG_MAHOGANY_SHOP_STAIRS_FOUND"));
+        Assert.False(game.Map.IsSolid(stairs.SourceX, stairs.SourceY));
+
+        // B1F: a statue's alarm brings a grunt out twice, the computer turns the rest off, a trap throws a Koffing
+        game.Through("TeamRocketHQ_B1F");
+        Assert.Equal("TeamRocketHQ_B1F", game.Map.Name);
+        var alarm = game.Step("StatueNorthEast");
+        Assert.Contains(alarm.Log, l => l.StartsWith("battle johto_team_rocket_grunt_20"));
+        Assert.Contains(alarm.Log, l => l.StartsWith("battle johto_team_rocket_grunt_21"));
+        Assert.Equal(2, game.Story.Var("VAR_UNK_40AD"));
+        Assert.False(game.Fires("StatueNorthEast"));
+        game.Answers.Enqueue(0);
+        game.Play(Scripts.Find("Computer", "team_rocket_headquarters_b1f")!);
+        Assert.True(game.Story.Has("FLAG_UNK_0D6"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40AE"));
+        Assert.Equal(2, game.Story.Var("VAR_UNK_40AD"));
+        Assert.False(game.Fires("StatueNorthWest"));
+        var trap = game.Step("KoffingTrap1");
+        Assert.Contains(trap.Log, l => l.StartsWith("wildbattle Koffing 21"));
+        Assert.False(game.Fires("KoffingTrap1"));
+
+        // B2F: Lance's welcome at the foot of the stairs
+        game.Through("TeamRocketHQ_B2F");
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40A9"));
+        Assert.Null(game.Present("d35r0103_wataru"));
+
+        // B3F: Lance again, the two grunts' halves of the password, the shutters, the rival, Petrel
+        game.Tile = (50, 29);
+        game.Through("TeamRocketHQ_B3F");
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40AC"));
+        Assert.Null(game.Present("d35r0104_wataru"));
+        game.Talk("d35r0104_babyboy1_9");
+        Assert.NotNull(game.Present("d35r0104_babyboy1_9"));
+        Assert.Contains(game.Talk("d35r0104_rocketw").Log, l => l.StartsWith("battle johto_team_rocket_f_grunt_5"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40AC"));
+        Assert.Contains(game.Talk("d35r0104_rocketm_2").Log, l => l.StartsWith("battle johto_team_rocket_grunt_19"));
+        Assert.Equal(2, game.Story.Var("VAR_UNK_40AC"));
+        game.Talk("d35r0104_babyboy1_9");
+        Assert.True(game.Story.Has("FLAG_ROCKET_HIDEOUT_B3F_DOOR_OPEN"));
+        Assert.Null(game.Present("d35r0104_babyboy1_9"));
+        Assert.Null(game.Present("d35r0104_babyboy1_9_2"));
+        Assert.True(game.Fires("Rival"));
+        game.Step("Rival");
+        Assert.Equal(3, game.Story.Var("VAR_UNK_40AC"));
+        Assert.Null(game.Present("d35r0104_gsrivel"));
+        Assert.NotNull(game.Present("d35r0104_sakaki"));
+        var petrel = game.Step("Petrel");
+        Assert.Contains(petrel.Log, l => l.StartsWith("battle johto_executive_petrel_petrel_2"));
+        Assert.Equal(4, game.Story.Var("VAR_UNK_40AC"));
+        Assert.Null(game.Present("d35r0104_sakaki"));
+        Assert.Null(game.Present("d35r0104_rkanbum2"));
+        Assert.Null(game.Present("d35r0104_tsure_poke_static_murkrow"));
+
+        // The Murkrow's chase: B2F's north corridor, B3F's east one, B2F's south one, and the password it says
+        game.Tile = (11, 4);
+        game.Through("TeamRocketHQ_B2F");
+        Assert.NotNull(game.Present("d35r0103_tsure_poke_static_murkrow"));
+        game.Step("MurkrowOne");
+        Assert.Equal(5, game.Story.Var("VAR_UNK_40AC"));
+        game.Tile = (50, 4);
+        game.Through("TeamRocketHQ_B3F");
+        Assert.NotNull(game.Present("d35r0104_tsure_poke_static_murkrow_2"));
+        game.Step("MurkrowTwo");
+        Assert.Equal(6, game.Story.Var("VAR_UNK_40AC"));
+        game.Tile = (50, 29);
+        game.Through("TeamRocketHQ_B2F");
+        game.Step("MurkrowTwo");
+        Assert.Equal(7, game.Story.Var("VAR_UNK_40AC"));
+        Assert.NotNull(game.Present("d35r0103_tsure_poke_static_murkrow_3"));
+        game.Step("Password");
+        Assert.Equal(8, game.Story.Var("VAR_UNK_40AC"));
+        Assert.True(game.Story.Has("FLAG_UNK_0D3"));
+        game.Talk("d35r0103_babyboy1_9");
+        Assert.True(game.Story.Has("FLAG_ROCKET_HIDEOUT_B2F_DOOR_OPEN"));
+
+        // Ariana and a grunt, battled beside Lance
+        var ariana = game.Step("Ariana");
+        Assert.Contains(ariana.Log, l => l.StartsWith("battle johto_executive_ariana_ariana_2 and johto_team_rocket_grunt_25 with johto_pkmn_trainer_lance_lance"));
+        Assert.Equal(9, game.Story.Var("VAR_UNK_40AC"));
+        Assert.True(game.Story.Has("FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN"));
+        Assert.Null(game.Present("d35r0103_rkanbuw"));
+        Assert.Null(game.Present("d35r0103_rocketm"));
+        Assert.NotNull(game.Present("d35r0103_wataru"));
+        Assert.True(game.Fires("LanceStops"));
+
+        // The generator's three Electrode: the hideout is cleared with the last
+        foreach (string electrode in new[] { "d35r0103_tsure_poke_static_electrode", "d35r0103_tsure_poke_static_electrode_2", "d35r0103_tsure_poke_static_electrode_3" })
+        {
+            Assert.False(game.Story.Has("FLAG_ROCKET_HIDEOUT_CLEARED"));
+            Assert.Contains(game.Talk(electrode).Log, l => l.StartsWith("wildbattle Electrode 23"));
+        }
+        Assert.True(game.Story.Has("FLAG_ROCKET_HIDEOUT_CLEARED"));
+        Assert.Equal(10, game.Story.Var("VAR_UNK_40AC"));
+        Assert.Equal(1, game.Story.Var("VAR_ROCKET_TRAP_GEODUDE_5"));
+        Assert.True(game.Story.Has("FLAG_UNK_1F9"));
+        Assert.Null(game.Present("d35r0103_wataru"));
+        Assert.Null(game.Present("d35r0103_tsure_poke_static_electrode_4"));
+
+        // The gate house is the guard's again, with TM36 for the player
+        game.Arrive("Route43_Gate", 5, 11);
+        Assert.Equal(3000, game.Last.Money);
+        Assert.Null(game.Present("r43r0201_rocketm"));
+        game.Talk("r43r0201_counterm");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM36")!));
+
+        // Pryce, the Glacier Badge and TM07; with Chuck's and Jasmine's Badges held, Team Rocket's takeover begins
+        game.Arrive("Mahogany_Gym_3", 5, 18);
+        var pryce = game.Talk("t28gym0101_gsleader7");
+        Assert.Contains(pryce.Log, l => l.StartsWith("battle johto_leader_pryce_pryce"));
+        Assert.True(game.Story.HasBadge("Johto", "Glacier"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM07")!));
+        Assert.True(game.Story.HasDefeated("johto_skier_diana"));
+        Assert.Equal(1, game.Story.Var("VAR_SCENE_ROCKET_TAKEOVER"));
+    }
+
+    [Fact]
     public void TheMoomooFarmsMiltankIsFedSevenOranBerriesAndItsMilkIsSoldAfterwards()
     {
         var game = new Game();

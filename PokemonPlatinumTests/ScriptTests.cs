@@ -134,6 +134,7 @@ public class ScriptTests
           master self canlose
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
+          wildbattle "Gyarados" 30 shiny
           catchinglesson "Bidoof" 2
           catchinglesson "Ralts" 5 by "Wally" "Zigzagoon" 7
           face self player
@@ -1268,6 +1269,17 @@ public class ScriptTests
     {
         var host = Run("script S\n wildbattle \"Giratina\" 47 nofleeing", h => h.Fight = _ => BattleOutcome.Won);
         Assert.Contains("wildbattle Giratina 47 nofleeing Won", host.Log);
+    }
+
+    [Fact]
+    public void AShinyWildPokemonIsShinyWhenCaught()
+    {
+        // Plan 20 · J11: the Lake of Rage's red Gyarados, met as the original's script asks, a shiny one
+        var host = Run("script S\n wildbattle \"Gyarados\" 30 nofleeing shiny", h => h.Fight = _ => BattleOutcome.Caught);
+        Assert.Contains("wildbattle Gyarados 30 nofleeing Caught", host.Log);
+        var caught = Assert.Single(host.Party.Members, p => p.Species.Name == "Gyarados");
+        Assert.True(caught.IsShiny);
+        Assert.Equal(30, caught.Level);
     }
 
     // ------------------------------------------------------------------ people and the field

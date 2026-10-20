@@ -1,5 +1,25 @@
 {
   "people": {
+    "t28_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sorry, the Gym's not open to challengers right now. Something shady's going on in this town.",
+          "Pryce won't battle while it's going on. Come back once things have settled down."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
     "t28_gsoldman1": {
       "name": {
         "en": [

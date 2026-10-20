@@ -94,6 +94,36 @@ internal static class GymArt
         Pix.Outline(c, 0.3f);
     }
 
+    /// <summary>
+    /// A block of ice of the Mahogany Gym, 30 by 30 (plan 20 · J11; style guide, "The blocks of ice"): a squared block
+    /// with worn corners, its lit top across the upper third, a clear front streaked with light, its right side a step
+    /// darker and a band of shade where it sits on the floor. Nothing of it is white.
+    /// </summary>
+    public static void PaintIceBlock(PixelCanvas c)
+    {
+        var top = Rgb(204, 230, 255);
+        var front = Rgb(168, 206, 244);
+        var side = Rgb(146, 186, 236);
+        var foot = Rgb(124, 166, 226);
+        var streak = Rgb(214, 236, 255);
+        const int left = 2, right = 27, upper = 3, lower = 28, rim = 11, sideFrom = 22;
+        for (int y = upper; y <= lower; y++)
+            for (int x = left; x <= right; x++)
+            {
+                // The corners worn round: a texel off each, two off the top ones
+                bool corner = (x == left || x == right) && (y == upper || y == lower)
+                    || (x == left + 1 || x == right - 1) && y == upper;
+                if (corner) continue;
+                var col = y < rim ? top : y >= lower - 2 ? foot : x >= sideFrom ? side : front;
+                c.Set(x, y, col);
+            }
+        // Two streaks of light down the front, and a glint on the top's edge
+        for (int y = rim + 2; y < lower - 4; y++) c.Set(7, y, streak);
+        for (int y = rim + 4; y < lower - 7; y++) c.Set(12, y, streak);
+        for (int x = 5; x < 11; x++) c.Set(x, rim - 1, streak);
+        Pix.Outline(c, 0.3f);
+    }
+
     /// <summary>A bollard of dark polished stone with a gilded cap, 16 by 28.</summary>
     public static void PaintBollard(PixelCanvas c)
     {

@@ -1,12 +1,16 @@
 {
   // The Lake of Rage (plan 20 · J10): HeartGold's map, our words. The great lake north of Route 43, under its rain. Its
-  // four trainers stand where the original has them after its scene (flags nothing sets yet); the red Gyarados, Lance,
-  // Pryce and the Wednesday sibling wait for plan 20 · J11 and plan 20 · J13 and are left out
+  // four trainers stand where the original has them after its scene (flags nothing sets yet); since plan 20 · J11 the
+  // red Gyarados in the middle of the lake and Lance with his Dragonite on the south shore once it is gone
+  // (scripts/lake_of_rage.txt). Pryce and the Wednesday sibling wait for plan 20 · J13 and are left out
   "area": "lake_of_rage",
   "bgmTrack": "johto/route42",
   "trees": "Round",
   "architecture": "Upland",
   "people": {
+    "t29_rgyaradosu": { "name": "Gyarados", "npcType": "Pokemon", "species": "Gyarados", "script": "RedGyarados", "still": true },
+    "t29_wataru": { "name": "Lance", "script": "Lance", "still": true },
+    "t29_tsure_poke_static_dragonite": { "name": "Dragonite", "npcType": "Pokemon", "species": "Dragonite", "script": "Dragonite", "still": true },
     "t29_gsoldman1": {
       "name": "Old Man",
       "still": true,

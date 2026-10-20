@@ -1,0 +1,176 @@
+# The Team Rocket Hideout's third basement (plan 20 · J11, part a). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_D35R0104). VAR_UNK_40AC is the hideout's own count, which
+# team_rocket_headquarters_b2f.txt describes.
+#
+# Lance meets the player on the first arrival (1). Each of two grunts, beaten, tells half the password of the shutters
+# before the north room, and once both are beaten the count is 2: in HeartGold their own scripts move it on, and here
+# theirs do too (GruntWest, GruntEast). The rival comes down the west corridor once it is 2 and goes (3), which is
+# when Giovanni is in the north room; he is Petrel in disguise, and beaten (4) sends the Murkrow that knows the
+# password of B2F's shutters flying up to the floor above.
+
+
+# D35R0104_009 and _008
+script OnEnter
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
+  if var VAR_UNK_40AC != 5 setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
+  if var VAR_UNK_40AC != 3 setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
+  if var VAR_UNK_40AC == 3 clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
+  if var VAR_UNK_40AC == 0 goto Lance
+  end
+label Lance
+  scene "Lance on the third basement"
+  emote d35r0104_wataru exclaim
+  face d35r0104_wataru player
+  face player d35r0104_wataru
+  speaker "Lance"
+  say "{player}, over here. The signal's coming from somewhere on this floor."
+  say "The room it comes from is behind a pair of shutters, and they open only to a password. The grunts down here know it."
+  say "Get it out of them. I'll deal with the rest of their lookouts."
+  fade out 0.4
+  hide d35r0104_wataru
+  hide d35r0104_tsure_poke_static_dragonite
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_LANCE
+  setvar VAR_UNK_40AC 1
+  fade in
+  endscene
+  end
+
+
+# D35R0104_000
+script Grunt
+  face d35r0104_rocketm player
+  speaker "Grunt"
+  say "The password? Don't look at me. They only tell it to the ones who guard the doors."
+  end
+
+
+# The two grunts who each know half the password
+script GruntWest
+  if defeated self goto Told
+  trainerline before
+  battle self
+label Told
+  speaker "Grunt"
+  say "Fine! The first half of the password is... 'Golden'. You won't get the other half, though!"
+  call BothTold
+  end
+
+script GruntEast
+  if defeated self goto Told
+  trainerline before
+  battle self
+label Told
+  speaker "Grunt"
+  say "All right, all right! The other half of the password is... 'Persian'. Happy now?"
+  call BothTold
+  end
+
+script BothTold
+  if not defeated "johto_team_rocket_grunt_19" return
+  if not defeated "johto_team_rocket_f_grunt_5" return
+  if var VAR_UNK_40AC == 1 setvar VAR_UNK_40AC 2
+  return
+
+
+# D35R0104_004: the shutters before the north room
+script Door
+  speaker none
+  if flag FLAG_ROCKET_HIDEOUT_B3F_DOOR_OPEN end
+  if not defeated "johto_team_rocket_grunt_19" goto Locked
+  if not defeated "johto_team_rocket_f_grunt_5" goto Locked
+  text "A speaker beside the shutter crackles: 'Password?' {player} said both halves the grunts gave."
+  sound "door_slide"
+  setflag FLAG_ROCKET_HIDEOUT_B3F_DOOR_OPEN
+  text "The shutter slid open!"
+  end
+label Locked
+  text "The shutter is locked tight. A speaker beside it crackles: 'Password?'"
+  end
+
+
+# D35R0104_002: the rival comes down the west corridor
+script Rival
+  scene "The rival in the hideout"
+  clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
+  show d35r0104_gsrivel
+  if var PLAYER_Y == 17 walk d35r0104_gsrivel down 9
+  if var PLAYER_Y == 18 walk d35r0104_gsrivel down 10
+  if var PLAYER_Y == 19 walk d35r0104_gsrivel down 11
+  walk d35r0104_gsrivel right 2
+  walk player left 2
+  face d35r0104_gsrivel player
+  face player d35r0104_gsrivel
+  speaker "{rival}"
+  say "...You again. What are you doing in a dump like this?"
+  say "Team Rocket. They act tough in a gang, but on their own every one of them is weak."
+  say "I'm going to be strong enough to take them all on alone. Don't get in my way."
+  walk d35r0104_gsrivel left 2 fast
+  walk d35r0104_gsrivel up 9 fast
+  hide d35r0104_gsrivel
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
+  clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
+  show d35r0104_sakaki
+  setvar VAR_UNK_40AC 3
+  endscene
+  end
+
+
+# D35R0104_003: Giovanni in the north room, who is Petrel in disguise
+script Petrel
+  scene "Petrel's disguise"
+  speaker "Giovanni"
+  say "So. You've made it this far. I am Giovanni, leader of Team Rocket, returned at last."
+  face d35r0104_sakaki player
+  say "And you think you can stand against me? Then show me..."
+  face d35r0104_sakaki left
+  face d35r0104_sakaki up
+  face d35r0104_sakaki right
+  face d35r0104_sakaki down
+  hide d35r0104_sakaki
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
+  clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
+  show d35r0104_rkanbum2
+  face d35r0104_rkanbum2 player
+  speaker "Petrel"
+  say "Ha! Fooled you, didn't I? I'm Petrel, Team Rocket's master of disguise. The boss isn't here."
+  say "But you've seen my face now, so you're not leaving!"
+  battle d35r0104_rkanbum2 as "johto_executive_petrel_petrel_2"
+  speaker "Petrel"
+  say "Argh! All right, you win. The radio signal? It comes from the generator on the floor above."
+  say "But you'll never open the shutters to it. Only the boss's Murkrow knows that password!"
+  emote d35r0104_tsure_poke_static_murkrow exclaim
+  cry "Murkrow"
+  walk d35r0104_tsure_poke_static_murkrow right 2 fast
+  hide d35r0104_tsure_poke_static_murkrow
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_1
+  clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
+  say "Hey! Murkrow, come back! ...Oh, forget it. I'm out of here."
+  fade out 0.4
+  hide d35r0104_rkanbum2
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
+  fade in
+  setvar VAR_UNK_40AC 4
+  endscene
+  end
+
+
+# D35R0104_005: the Murkrow in the north room
+script Murkrow
+  cry "Murkrow"
+  text "The Murkrow keeps croaking the same words over and over."
+  end
+
+
+# D35R0104_007: the Murkrow at the north end of the east corridor
+script MurkrowTwo
+  scene "The Murkrow in the east corridor"
+  emote d35r0104_tsure_poke_static_murkrow_2 exclaim
+  cry "Murkrow"
+  walk d35r0104_tsure_poke_static_murkrow_2 down 3 fast
+  hide d35r0104_tsure_poke_static_murkrow_2
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
+  clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
+  setvar VAR_UNK_40AC 6
+  endscene
+  end

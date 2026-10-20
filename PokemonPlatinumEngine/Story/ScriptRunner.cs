@@ -692,7 +692,9 @@ public sealed partial class ScriptRunner
                 // A wild Pokémon may be met in a form of its species, named as the form is (Giratina-Origin, plan 02 · S12)
                 var species = PokemonDatabase.Get(i.Name) ?? PokemonDatabase.SpeciesOfForm(i.Name) ?? throw Wrong(i, $"there is no species or form '{i.Name}'");
                 var kind = i.Op == Op.CatchingLesson ? BattleKind.CatchingLesson : BattleKind.Normal;
-                var wild = new Pokemon(species, i.Number);
+                // A shiny one is made of a shiny personality, as the original's script asks for one (plan 20 · J11)
+                var wild = i.Shiny ? new Pokemon(species, i.Number, Personality.Shiny(host.TrainerNumber, host.Chance), host.Chance) { IsShiny = true }
+                    : new Pokemon(species, i.Number);
                 if (!string.Equals(species.Name, i.Name, StringComparison.OrdinalIgnoreCase)) wild.ChangeForm(i.Name);
                 // A lesson someone else shows (plan 21 · H2): their name and their Pokémon
                 var catcher = i.Op == Op.CatchingLesson && i.Other.Length > 0

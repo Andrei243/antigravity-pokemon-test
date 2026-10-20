@@ -294,6 +294,17 @@ public class NPC
     public const string DomeFossilType = "DomeFossil", HelixFossilType = "HelixFossil", OldAmberType = "OldAmber",
         PokedexType = "Pokedex", TownMapType = "TownMap";
 
+    /// <summary>
+    /// A block of ice of the Mahogany Gym (plan 20 · J11; HeartGold's <c>ice</c> objects): a thing of the map, in the
+    /// way like a person, which the player pushes by walking or sliding into it: it slides on over the ice until
+    /// something stops it (<see cref="FieldMovement.IceBlockRun"/>). Its tile is kept, and it is put back there when
+    /// the player next comes in (<see cref="Map.ResetObstacles"/>). Drawn as a card.
+    /// </summary>
+    public const string IceBlockType = "IceBlock";
+
+    /// <summary>A block of ice the player pushes (<see cref="IceBlockType"/>).</summary>
+    public bool IsIceBlock => NpcType == IceBlockType;
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -313,6 +324,7 @@ public class NPC
         OldAmberType => PropType.OldAmber,
         PokedexType => PropType.DeskPokedex,
         TownMapType => PropType.RolledTownMap,
+        IceBlockType => PropType.IceBlock,
         _ => null
     };
 

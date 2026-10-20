@@ -206,6 +206,9 @@ public sealed class Instruction
     /// <summary>For <c>battle self inverse</c>: an inverse battle, its type chart turned round (plan 14 · B1).</summary>
     public bool Inverse { get; init; }
 
+    /// <summary>For <c>wildbattle … shiny</c>: the Pokémon met is a shiny one (plan 20 · J11: the Lake of Rage's red Gyarados).</summary>
+    public bool Shiny { get; init; }
+
     /// <summary>A count, a level, an amount, a value; and a tile where the line names one.</summary>
     public int Number { get; init; }
     public int X { get; init; }

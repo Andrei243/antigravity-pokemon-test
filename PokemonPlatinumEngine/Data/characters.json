@@ -373,7 +373,10 @@
     // Plan 20 · J8: the west and the sea (Jasmine stands as Platinum's own Jasmine, the sailors as captains in their caps,
     // the black belts of Chuck's Gym and Chuck himself as black belts), until plan 20 · J14's looks
     "seaman_2": "captain", "gsswimmerm": "Youngster", "gsswimmerw": "Lass", "gsleader6": "jasmine", "gsleader5": "blackbelt",
-    "babyboy1_8": "Youngster"
+    "babyboy1_8": "Youngster",
+    // Plan 20 · J11, part a: Lance and Giovanni stand as their own looks; the Team Rocket Hideout's two executives as
+    // grunts and Pryce as the nearest look, until plan 20 · J14's
+    "wataru": "lance", "sakaki": "giovanni", "rkanbuw": "rocket", "rkanbum2": "rocket", "gsleader7": "Gentleman"
   },
   "fallback": "Trainer",
   // The look a trainer class stands as in battle, as the original shows the class whatever the person in the field
