@@ -1,0 +1,10 @@
+{
+  // A house of Fortree City (plan 21 · H6): a boy who would trade, his Zigzagoon and an old woman. The trade with him is left for part b
+  "area": "fortree_city_house_1",
+  "bgmTrack": "hoenn/fortree",
+  "people": {
+    "ninja_boy": { "name": "Boy", "dialog": [ "I've been hoping to trade Pokémon with someone. Maybe another time, when I've got something you'd like." ] },
+    "zigzagoon_2": { "name": "Zigzagoon", "npcType": "Pokemon", "species": "Zigzagoon", "dialog": [ "Zigzagoon: Guguu?" ] },
+    "expert_f": { "name": "Old Woman", "dialog": [ "The wind through the treetops sings at night. It sends my grandson right off to sleep." ] }
+  }
+}

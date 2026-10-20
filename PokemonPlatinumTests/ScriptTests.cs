@@ -622,6 +622,7 @@ public class ScriptTests
     [InlineData("script A\n end now", "more than the line needs")]
     [InlineData("script A\n emote self none", "no bubble")]
     [InlineData("script A\n givepokemon \"Starly\" 101", "1 to 100")]
+    [InlineData("script A\n givepokemon \"Castform\" 25 carrying \"Mystic Water\"", "'carrying' is not 'holding'")]
     [InlineData("script A\n givebadge thistle", "not a badge")]
     [InlineData("script A\n choose \"Which?\" \"Only one\"", "at least two answers")]
     [InlineData("script A\n fade sideways", "'out' or 'in'")]
@@ -1048,6 +1049,20 @@ public class ScriptTests
         Assert.Equal(new[] { "On the team.", "Sent to the PC.", "A Starly is with you.", "Six." }, Said(host));
         Assert.Equal(("Starly", 4), (host.Party.Members[5].Species.Name, host.Party.Members[5].Level));
         Assert.Equal("Bidoof", host.Box.Single().Species.Name);
+    }
+
+    [Fact]
+    public void APokemonGivenHoldingAnItemComesWithIt()
+    {
+        // Plan 21 · H6: the Weather Institute's Castform comes holding Mystic Water, as Emerald's does
+        var host = Run("""
+            script S
+              givepokemon "Castform" 25 holding "Mystic Water"
+              givepokemon "Starly" 4
+            """);
+
+        Assert.Equal("Mystic Water", host.Party.Members[0].HeldItem?.Name);
+        Assert.Null(host.Party.Members[1].HeldItem);
     }
 
     [Fact]

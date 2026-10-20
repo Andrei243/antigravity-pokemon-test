@@ -599,6 +599,12 @@ public class Player
         var step = FieldMovement.Step(map, GridX, GridY, dir, WalkerOn(map));
         if (step.Moves)
         {
+            // A step that pushes a gate of the Fortree Gym's turns it as it is taken (plan 21 · H6)
+            if (step.Kind == StepKind.Walk && map.Puzzle != null)
+            {
+                var (dx, dy) = FieldMovement.Delta(dir);
+                map.Puzzle.Crossed(map, GridX + dx, GridY + dy, dir);
+            }
             Begin(map, step, dir);
             return;
         }

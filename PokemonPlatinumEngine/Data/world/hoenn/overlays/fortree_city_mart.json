@@ -1,0 +1,11 @@
+{
+  // Fortree City's Poké Mart (plan 21 · H6)
+  "area": "fortree_city_mart",
+  "bgmTrack": "hoenn/fortree",
+  "people": {
+    "fortree_mart_clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! What can I get for you?" ] },
+    "woman_2": { "name": "Woman", "dialog": [ "A Super Repel keeps weak Pokémon away for a long while. It's a must on the long roads round here." ] },
+    "girl_3": { "name": "Girl", "dialog": [ "When it rains here, it really rains. I never leave home without an umbrella." ] },
+    "boy_2": { "name": "Boy", "dialog": [ "The shop next door sells furniture and dolls for secret bases. This one just sells Poké Balls and potions." ] }
+  }
+}

@@ -3097,6 +3097,61 @@ Platinum has no Dive in the field, so the field move follows Emerald (`TrySetupD
   is above. Still to come: the floors under Routes 125 to 128 with their routes (H8), and the frame weighed with
   `profile` on the user's machine.
 
+## Route 118 to Fortree City (2026-10-20, plan 21 · H6, its first part)
+
+Route 118, Route 119 with the Weather Institute, Fortree City with Winona's Gym, and Route 120 are scripts of ours on
+Emerald's beats (`route_118.txt`, `route_119.txt`, `route_119_weather_institute_1f.txt`,
+`route_119_weather_institute_2f.txt`, `fortree_city.txt`, `fortree_city_gym.txt`, `route_120.txt`, and in `common.txt`
+`HoennChapterSeven`, `HoennKecleonLook` and `HoennKecleonFound`), under Emerald's flags and variables
+(`VAR_ROUTE118_STATE`, `FLAG_HIDE_ROUTE_118_STEVEN`, `FLAG_RECEIVED_GOOD_ROD`, `VAR_WEATHER_INSTITUTE_STATE`,
+`FLAG_HIDE_ROUTE_119_TEAM_AQUA`, `FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS`, `_2F_WORKERS`, `_2F_AQUA_GRUNT_M`,
+`FLAG_RECEIVED_CASTFORM`, `VAR_ROUTE119_STATE`, `FLAG_HIDE_ROUTE_119_RIVAL`, `FLAG_HIDE_ROUTE_119_SCOTT`,
+`FLAG_RECEIVED_HM_FLY`, `VAR_SCOTT_STATE`, `FLAG_KECLEON_FLED_FORTREE`, `FLAG_HIDE_FORTREE_CITY_KECLEON`,
+`FLAG_NOT_READY_FOR_BATTLE_ROUTE_120`, `FLAG_RECEIVED_DEVON_SCOPE`, `FLAG_HIDE_ROUTE_120_STEVEN`,
+`FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE`, `FLAG_HIDE_ROUTE_120_KECLEON_1` to `_5`, `FLAG_DAILY_ROUTE_120_RECEIVED_BERRY`,
+`FLAG_DEFEATED_FORTREE_GYM`, `FLAG_RECEIVED_TM_AERIAL_ACE`, `FLAG_ENABLE_WINONA_MATCH_CALL`). **No story version is
+raised**: `common.HoennChapterSeven`, which `HoennNewGame` calls, hides the stretch's people (the rival and Scott on
+Route 119, the institute's workers and the grunt who brings the news, the Wingull of Fortree's fourth house, Gabby and
+Ty) and sets `FLAG_HOENN_CHAPTER_SEVEN`, a flag of ours; Route 118's and Route 119's arrival scripts call it for a save
+that has never run it, which is every save from before this part, since nobody could reach these roads before it. What
+differs, and why:
+
+- **The weather is the area's zones**: Emerald's coordinate events set the weather as the player crosses rows of
+  Routes 119 and 120 (`SetRoute119Weather`, `SetRoute120Weather`). Here the overlays give a stretch its weather
+  (`zones`): Route 118 is clear, Route 119 rains from the institute's south to Fortree's edge, and Route 120 runs clear
+  by the city, rain over the bridge and the long grass, and cloud in the south.
+- **Steven on Route 118** comes to the ledge's edge before whichever of the three tiles below it the player steps on,
+  hops down and walks off east, as Emerald's does; Emerald's line about the player's team is ours.
+- **The Weather Institute**: Shelly battles only when spoken to, as in Emerald; once beaten, a grunt runs up from the
+  stairs with the news of Mt. Pyre and Team Aqua leaves behind a fade. The scientist gives Castform at level 25 holding a
+  Mystic Water, which needed `givepokemon … holding` (`docs/scripts.md`). The ground floor's beds heal the team, read on
+  any of their tiles. The workers come back downstairs as the player comes out (state 1 to 2), where Emerald moves them
+  on the institute's own map.
+- **The rival on Route 119** runs up from the west end of the bridge, battles with the starter's team and gives HM02;
+  Emerald's rides off on a bicycle (a second object of the rival), ours runs, as in Lavaridge. Scott then comes down the
+  path to talk (`VAR_SCOTT_STATE`).
+- **Kecleon nobody can see** are things of the map (`NPC.UnseenType`, "Unseen" in an overlay): in the way and spoken to,
+  drawn as nothing, with no shadow; Emerald's `invisible` movement. Without the Devon Scope speaking to one says only that
+  something unseeable is in the way. With it, the player is asked whether to use the Scope, the Kecleon's tile sparkles
+  (`effect sparkles`), it cries and is battled at level 30 (Route 119's two and Route 120's five), and it is gone whatever
+  came of the battle but a loss. Emerald plays the Scope's own reveal animation; the sparkles are ours.
+- **Fortree's Kecleon** on the bridge to the Gym only flees, as in Emerald, and the bridge is free
+  (`FLAG_KECLEON_FLED_FORTREE`). Emerald then swaps the bridge's metatiles; here the bridge is already drawn whole.
+- **Steven on Route 120** asks whether the player is ready; refused, he waits (`FLAG_NOT_READY_FOR_BATTLE_ROUTE_120`).
+  Agreed, he shows the bridge's Kecleon through the Scope, it is battled, he gives the Devon Scope and is gone behind no
+  fade (Emerald's Steven walks off the bridge).
+- **The berry beauty of Route 120** gives one berry a day. Emerald chooses it by the last digit of the trainer number,
+  which no script here reads; the day's die (`random 5`) chooses among the same five: Figy, Wiki, Mago, Aguav, Iapapa.
+- **Winona's Gym**: the rotating gates are the room's puzzle (`FortreeGates`, Emerald's `rotating_gate.c` with its
+  Fortree layout, shapes and sweeps): a step into an arm turns the gate a quarter round unless an arm would sweep into a
+  wall, and coming in again lays them out afresh. Her Badge counts the Gym's six trainers beaten, as Emerald's does; she
+  gives TM40, and with the PokéNav her number (`addcontact winona`).
+- **Match Call on the routes**: six trainers (Rose and Dalton on Route 118, Jackson and Catherine on 119, Robert and
+  Jeffrey on 120) ask, once beaten and spoken to, to be registered, as Emerald's do; their calls are `phone.txt`'s.
+- **What waits** (part b): Route 121, the Safari Zone, Fortree's decoration shop (H10), Gabby and Ty's interviews, the
+  Ancient Tomb's and the Scorched Slab's doors (`locked`), Fortree's house trades, the Hidden Power quiz and the Sleep
+  Talk tutor, the Wingull's errand, and the bridges' bounce underfoot.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

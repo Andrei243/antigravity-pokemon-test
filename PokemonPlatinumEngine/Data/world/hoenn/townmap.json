@@ -2,7 +2,10 @@
 // the overworld, Emerald's connected maps stitched into one. The blocks are each of Hoenn's areas on the cells its
 // chunks take (the matrix's own areas, a town on its own cell where a route took the chunk over); every word is ours.
 // A town not open yet whose chunk a route took over (Verdanturf, Fallarbor) is put on its cell by the session that
-// opens it (Dewford by plan 21 · H3, Verdanturf by its second part, Fallarbor by plan 21 · H4). No hidden places, no landmarks and no Fly yet: Fly over Hoenn is plan 21 · H6's.
+// opens it (Dewford by plan 21 · H3, Verdanturf by its second part, Fallarbor by plan 21 · H4). No hidden places and no landmarks yet.
+// Fly's places (plan 21 · H6): Emerald's heal locations on the overworld (hoenn.json's spawns and spawns.json), each on its
+// town's cells; a place is open to Fly once its town has been come to and its area is open (Sootopolis lies on a map of
+// its own and joins with plan 21 · H8).
 {
   "map": "Hoenn",
   "columns": 25,
@@ -253,5 +256,22 @@
     { "x": 5, "y": 11, "kind": "Route", "name": "Route 108", "area": "route_108" },
     { "x": 6, "y": 11, "kind": "Route", "name": "Route 109", "area": "route_109" },
     { "x": 7, "y": 11, "kind": "Route", "name": "Route 109", "area": "route_109" }
+  ],
+  "fly": [
+    { "spawn": 12, "cells": "3,9 4,9" },
+    { "spawn": 14, "cells": "4,7" },
+    { "spawn": 3, "cells": "1,7" },
+    { "spawn": 6, "cells": "0,4 0,5 1,5" },
+    { "spawn": 15, "cells": "2,11" },
+    { "spawn": 4, "cells": "6,8 7,8 6,9 7,9" },
+    { "spawn": 5, "cells": "6,4 7,4" },
+    { "spawn": 18, "cells": "4,4" },
+    { "spawn": 17, "cells": "2,0" },
+    { "spawn": 16, "cells": "4,1 4,2" },
+    { "spawn": 7, "cells": "10,0" },
+    { "spawn": 8, "cells": "15,2 16,2 15,3 16,3" },
+    { "spawn": 9, "cells": "20,3 21,3 22,3" },
+    { "spawn": 19, "cells": "15,8 15,9" },
+    { "spawn": 11, "cells": "23,5 24,5 23,6 24,6 24,7" }
   ]
 }

@@ -1,0 +1,35 @@
+# Fortree City (plan 21 · H6). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/FortreeCity/scripts.inc).
+#
+# The city in the treetops: houses built round the trunks, joined by rope bridges. A Kecleon nobody can see stands on
+# the bridge to the Gym until the player looks at it through the Devon Scope, when it shows itself and runs off for
+# good (FLAG_KECLEON_FLED_FORTREE, FLAG_HIDE_FORTREE_CITY_KECLEON).
+
+
+script OnEnter
+  setflag FLAG_VISITED_FORTREE_CITY
+  end
+
+
+# The woman who wants to go to the Gym
+script Woman
+  face self player
+  speaker "Woman"
+  if flag FLAG_KECLEON_FLED_FORTREE goto Open
+  say "I want to go to the Gym, but something's in the way on the bridge. I can't see anything, yet I can't get past!"
+  end
+label Open
+  say "Whatever was on the bridge has gone. This time I'll beat Winona, you'll see!"
+  end
+
+
+# What stands on the bridge to the Gym: it flees once seen
+script Kecleon
+  call HoennKecleonLook
+  effect sparkles 345 8 wait
+  cry "Kecleon"
+  text "The Pokémon was startled and fled!"
+  hide self
+  setflag own
+  setflag FLAG_KECLEON_FLED_FORTREE
+  end

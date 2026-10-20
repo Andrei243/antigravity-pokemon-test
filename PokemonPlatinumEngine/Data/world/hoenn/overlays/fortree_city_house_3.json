@@ -1,0 +1,9 @@
+{
+  // A house of Fortree City (plan 21 · H6)
+  "area": "fortree_city_house_3",
+  "bgmTrack": "hoenn/fortree",
+  "people": {
+    "maniac": { "name": "Man", "dialog": [ "Pokémon that live in the trees are good at hiding. I've lived here for years and still find new ones." ] },
+    "school_kid_m": { "name": "Boy", "dialog": [ "Winona's Pokémon fly so high, they're specks in the sky. I want to be a Bird Keeper too!" ] }
+  }
+}

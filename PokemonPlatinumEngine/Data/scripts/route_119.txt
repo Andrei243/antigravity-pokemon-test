@@ -1,0 +1,207 @@
+# Route 119 (plan 21 · H6). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route119/scripts.inc).
+#
+# The long wet road north from Route 118 to Fortree City, through tall grass, past waterfalls and the Weather
+# Institute. While Team Aqua holds the institute (FLAG_HIDE_ROUTE_119_TEAM_AQUA clear) two grunts keep the bridge
+# before its door. Once Shelly is beaten (VAR_WEATHER_INSTITUTE_STATE 1) the workers go back downstairs as the player
+# comes back out (state 2). At the first step onto the bridge north of the institute (the area's triggers 0 and 1,
+# VAR_ROUTE119_STATE 0) the rival runs up from the south, battles, gives HM02, Fly, and runs on north; then Scott
+# comes down the path to say what he saw (VAR_ROUTE119_STATE 1, VAR_SCOTT_STATE). Emerald's rival rides away on a
+# bicycle, a second object of the same rival: here the rival runs. Two Kecleon stand unseen in the path to the north.
+
+
+# The way onto this stretch from Route 118: a save from before plan 21 · H6 hides the stretch's people here; and the
+# workers go back downstairs once the institute is free
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_SEVEN call HoennChapterSeven
+  if var VAR_WEATHER_INSTITUTE_STATE != 1 end
+  setflag FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
+  clearflag FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
+  setvar VAR_WEATHER_INSTITUTE_STATE 2
+  end
+
+
+script RivalTrigger1
+  if var VAR_ROUTE119_STATE != 0 end
+  scene "The rival on Route 119"
+  call RivalComes
+  walk route119_rival right 8 up 1 fast
+  call RivalBattle
+  walk route119_rival right 1 up 3 right 1 up 4 fast
+  call RivalGone
+  clearflag FLAG_HIDE_ROUTE_119_SCOTT
+  place route119_scott 307 25 down
+  call ScottComes
+  walk route119_scott up 1 right 2 up 5
+  call ScottGone
+  endscene
+  end
+
+
+script RivalTrigger2
+  if var VAR_ROUTE119_STATE != 0 end
+  scene "The rival on Route 119 further east"
+  call RivalComes
+  walk route119_rival right 9 up 1 fast
+  call RivalBattle
+  walk route119_rival left 1 up 3 right 2 up 4 fast
+  call RivalGone
+  clearflag FLAG_HIDE_ROUTE_119_SCOTT
+  place route119_scott 308 25 down
+  call ScottComes
+  walk route119_scott up 1 right 1 up 5
+  call ScottGone
+  endscene
+  end
+
+
+# The rival's song, and the rival running up from the west end of the bridge
+script RivalComes
+  music "hoenn/rival"
+  clearflag FLAG_HIDE_ROUTE_119_RIVAL
+  place route119_rival 297 33 right
+  show route119_rival
+  emote player exclaim
+  return
+
+
+script RivalBattle
+  face player down
+  face route119_rival player
+  speaker "{rival}"
+  say "{player}! There you are! I heard Team Aqua was causing trouble at the Weather Institute. Did you sort it out?"
+  say "You did? I knew it. I've been training nonstop since Lavaridge, so let's see whose team grew more!"
+  if girl goto Brendan
+  if starter "Treecko" goto MayTreecko
+  if starter "Torchic" goto MayTorchic
+  battle route119_rival as "hoenn_may_route_119_mudkip"
+  goto Beaten
+label MayTreecko
+  battle route119_rival as "hoenn_may_route_119_treecko"
+  goto Beaten
+label MayTorchic
+  battle route119_rival as "hoenn_may_route_119_torchic"
+  goto Beaten
+label Brendan
+  if starter "Treecko" goto BrendanTreecko
+  if starter "Torchic" goto BrendanTorchic
+  battle route119_rival as "hoenn_brendan_route_119_mudkip"
+  goto Beaten
+label BrendanTreecko
+  battle route119_rival as "hoenn_brendan_route_119_treecko"
+  goto Beaten
+label BrendanTorchic
+  battle route119_rival as "hoenn_brendan_route_119_torchic"
+label Beaten
+  speaker "{rival}"
+  say "Beaten again! You really are something, {player}. I think Dad would want you to have this."
+  give "HM02"
+  setflag FLAG_RECEIVED_HM_FLY
+  say "That's Fly. Teach it to a bird Pokémon and it'll carry you to any town you've been to before."
+  say "You'll need Fortree's Badge before you can use it outside battle, though. The Gym's just up the road!"
+  say "I'm going to keep looking for Pokémon around here. See you, {player}!"
+  return
+
+
+# The rival is gone for good, and the area's own song comes back
+script RivalGone
+  hide route119_rival
+  setflag FLAG_HIDE_ROUTE_119_RIVAL
+  setvar VAR_ROUTE119_STATE 1
+  music area
+  return
+
+
+# Scott comes down from the north, having watched the battle
+script ScottComes
+  show route119_scott
+  walk route119_scott down 4 left 2 down 1
+  face player up
+  speaker "Scott"
+  say "{player}! I caught the end of that from up the path. You two pushed each other hard, didn't you?"
+  say "And I hear Team Aqua was chased out of the Weather Institute too. You do get around!"
+  say "Fortree's Leader, Winona, flies like no one else. I'd love to see how you fare against her. Good luck!"
+  addvar VAR_SCOTT_STATE 1
+  return
+
+
+script ScottGone
+  hide route119_scott
+  setflag FLAG_HIDE_ROUTE_119_SCOTT
+  return
+
+
+# The grunts on the bridge before the institute's door, while Team Aqua holds it
+script BridgeAquaGrunt1
+  speaker "Team Aqua Grunt"
+  say "Our admin's busy inside. The weather people have something we want, and we're not leaving without it."
+  end
+
+
+script BridgeAquaGrunt2
+  speaker "Team Aqua Grunt"
+  say "Rain, sun, storms... If we know how the weather works, we can make the sea grow. Now scram!"
+  end
+
+
+# The Kecleon in the path to Fortree
+script Kecleon1
+  call HoennKecleonLook
+  effect sparkles 311 6 wait
+  call HoennKecleonFound
+  end
+
+
+script Kecleon2
+  call HoennKecleonLook
+  effect sparkles 305 15 wait
+  call HoennKecleonFound
+  end
+
+
+# Jackson, beaten, swaps numbers for the PokéNav
+script Jackson
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_JACKSON goto Known
+label Ask
+  speaker "Jackson"
+  say "You've got good instincts. Want to swap numbers? Rangers stick together."
+  ask "Register Jackson in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_jackson
+  say "Good. I'll check in after my patrol."
+  end
+label Refused
+  say "Understood. Stay safe out there."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Catherine, beaten, swaps numbers for the PokéNav
+script Catherine
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_CATHERINE goto Known
+label Ask
+  speaker "Catherine"
+  say "You're strong! Can we keep in touch? I want to know how you're getting on."
+  ask "Register Catherine in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_catherine
+  say "Thanks! I'll call when my Gloom grows."
+  end
+label Refused
+  say "Aww, okay. Good luck on the road!"
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask

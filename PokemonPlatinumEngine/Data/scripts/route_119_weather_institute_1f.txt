@@ -1,0 +1,50 @@
+# The Weather Institute's ground floor on Route 119 (plan 21 · H6). docs/scripts.md describes the language; the lines
+# are our own, on Emerald's beats (data/maps/Route119_WeatherInstitute_1F/scripts.inc).
+#
+# While Team Aqua holds the institute (VAR_WEATHER_INSTITUTE_STATE 0) the little boy hides in the corner by the beds and
+# two grunts keep the floor; the workers are upstairs, cornered. Once they are back down (state 2, route_119.txt) they
+# talk about the weather. The beds give anyone a rest.
+
+
+script OnEnter
+  if var VAR_WEATHER_INSTITUTE_STATE != 0 end
+  place weather_institute_little_boy 0 5 right
+  end
+
+
+script LittleBoy
+  face self player
+  speaker "Boy"
+  if var VAR_WEATHER_INSTITUTE_STATE != 0 goto Safe
+  say "Some scary people in blue barged in and went upstairs. My dad's up there! Please, help him!"
+  end
+label Safe
+  say "Dad says the people in blue wanted something from upstairs. You chased them off, didn't you? Thank you!"
+  end
+
+
+script InstituteWorker1
+  face self player
+  speaker "Worker"
+  say "We watch the weather all over Hoenn from here. Lately there have been odd readings: sudden rain, sudden sun."
+  say "Something out at sea, perhaps. It's as though the weather has a mind of its own."
+  end
+
+
+script InstituteWorker2
+  face self player
+  speaker "Worker"
+  say "Thank you for chasing Team Aqua off. They took our data on rain and storms, but at least they're gone."
+  end
+
+
+# A bed by the wall: a rest for the whole team
+script Bed
+  speaker none
+  text "There's a bed here... A little rest wouldn't hurt."
+  fade out
+  heal
+  fanfare heal
+  fade in
+  text "{player}'s Pokémon are fully rested."
+  end

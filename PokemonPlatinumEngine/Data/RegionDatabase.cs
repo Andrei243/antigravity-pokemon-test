@@ -561,6 +561,10 @@ public static class RegionDatabase
                 // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (Emerald's matrix of their underwater
                 // maps), laid tile for tile under the sea it is dived to from
                 "HoennUnderwater",
+                // Plan 21 · H6, part a: Route 119's house and Weather Institute, Fortree City's rooms and Winona's Gym
+                "Route119_House", "Route119_WeatherInstitute_1F", "Route119_WeatherInstitute_2F", "FortreeCity_House1",
+                "FortreeCity_Gym", "FortreeCity_PokemonCenter_1F", "FortreeCity_PokemonCenter_2F", "FortreeCity_Mart",
+                "FortreeCity_House2", "FortreeCity_House3", "FortreeCity_House4", "FortreeCity_House5",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

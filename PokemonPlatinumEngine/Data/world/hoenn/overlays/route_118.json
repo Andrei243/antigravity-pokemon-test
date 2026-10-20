@@ -1,0 +1,31 @@
+{
+  // Route 118 (plan 21 · H6): east of Mauville City across a river that needs Surf, then grass and a ledge up to the
+  // way north to Route 119 (route_118.txt). Steven waits on the ledge over the path and comes down at the first step
+  // below him. The two ways into Terra Cave stay shut until the weather goes wrong (plan 21 · H8); Gabby and Ty are
+  // left away for part b
+  "area": "route_118",
+  "bgmTrack": "hoenn/route118",
+  "trees": "Round",
+  "locked": [ 0, 1 ],
+  "people": {
+    "route118_steven": { "name": "Steven", "npcType": "steven", "still": true, "dialog": [ "The river runs fast here. I wonder what it has carried down from the mountains." ] },
+    "fisherman": { "name": "Fisherman", "script": "GoodRodFisherman", "still": true },
+    "girl_2": { "name": "Girl", "dialog": [ "With Surf, a Pokémon can carry you right across a river like this one. No bridge needed!" ] },
+    "man_5": { "name": "Perry", "trainer": { "dialogueBefore": "Bird Keeper Perry: My Wingull rides the sea breeze all the way up here. Ready to be blown away?", "dialogueAfter": "Bird Keeper Perry: The breeze changed direction on me." } },
+    "woman_2": { "name": "Rose", "script": "Rose", "trainer": { "dialogueBefore": "Aroma Lady Rose: Do you smell that? My flowers are in full bloom, and so is their power!", "dialogueAfter": "Aroma Lady Rose: Even a wilted flower has its charm, I suppose." } },
+    "fisherman_2": { "name": "Wade", "trainer": { "dialogueBefore": "Fisherman Wade: I've been waiting for a bite all morning. You'll do!", "dialogueAfter": "Fisherman Wade: That one got away from me." } },
+    "man_5_2": { "name": "Chester", "trainer": { "dialogueBefore": "Bird Keeper Chester: My birds have been circling you for a while. Time to swoop!", "dialogueAfter": "Bird Keeper Chester: Grounded, and by a kid on foot." } },
+    "fisherman_3": { "name": "Barny", "trainer": { "dialogueBefore": "Fisherman Barny: The river's full of strong Pokémon. Let me show you what I've reeled in!", "dialogueAfter": "Fisherman Barny: Back to the riverbank for me." } },
+    "man_5_3": { "name": "Dalton", "script": "Dalton", "trainer": { "dialogueBefore": "Guitarist Dalton: Feel the rhythm! My Pokémon battle to the beat of my strings!", "dialogueAfter": "Guitarist Dalton: Broke a string on that last chord." } },
+    "youngster": { "name": "Deandre", "trainer": { "dialogueBefore": "Youngster Deandre: I came all the way from Mauville to train here. Let's battle!", "dialogueAfter": "Youngster Deandre: I should've stayed in Mauville." } }
+  },
+  "triggers": [
+    { "trigger": 0, "script": "StevenTrigger0" },
+    { "trigger": 1, "script": "StevenTrigger1" },
+    { "trigger": 2, "script": "StevenTrigger2" }
+  ],
+  "signs": {
+    "Route118_EventScript_RouteSignMauville": "Route 118\nWest: Mauville City",
+    "Route118_EventScript_RouteSign119": "Route 118\nNorth: Route 119"
+  }
+}

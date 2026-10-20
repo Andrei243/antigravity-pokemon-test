@@ -1,0 +1,18 @@
+{
+  // The Weather Institute's upper floor on Route 119 (plan 21 · H6): Team Aqua's admin Shelly and three grunts hold the
+  // cornered scientist and his workers until Shelly is beaten; then a grunt runs up with news of Team Magma, they all
+  // leave for Mt. Pyre and the scientist gives the player Castform (route_119_weather_institute_2f.txt). Shelly battles
+  // only when spoken to, as in Emerald
+  "area": "route_119_weather_institute_2f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "weather_institute_2f_grunt_1": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: The rain data's ours! With it, the sea will grow and grow!", "dialogueAfter": "Team Aqua Grunt: The sea will still grow. Without me, I guess." } },
+    "weather_institute_2f_grunt_2": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: You again? The boss warned us about a kid like you!", "dialogueAfter": "Team Aqua Grunt: The boss was right to warn us." } },
+    "weather_institute_2f_grunt_4": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: Admin Shelly's orders: nobody comes up here. Nobody!", "dialogueAfter": "Team Aqua Grunt: Nobody except you, apparently." } },
+    "weather_institute_2f_shelly": { "name": "Shelly", "npcType": "shelly", "script": "Shelly", "still": true, "trainer": { "dialogueBefore": "Aqua Admin Shelly: Ahahaha! You want to play? Then let's play!", "dialogueAfter": "Aqua Admin Shelly: Ahaha... not bad, kid." } },
+    "weather_institute_2f_grunt_3": { "name": "Team Aqua Grunt", "still": true, "dialog": [ "Admin Shelly! Admin Shelly!" ] },
+    "weather_institute_2f_scientist": { "name": "Scientist", "script": "WeatherScientist", "still": true },
+    "man_4": { "name": "Worker", "dialog": [ "Phew! I really thought they'd take every bit of our research. Thank you!" ] },
+    "man_4_2": { "name": "Worker", "dialog": [ "Team Aqua wanted everything we have on rain. What on earth would they do with it?" ] }
+  }
+}

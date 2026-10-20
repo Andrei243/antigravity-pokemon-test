@@ -1,0 +1,86 @@
+# The Weather Institute's upper floor on Route 119 (plan 21 · H6). docs/scripts.md describes the language; the lines
+# are our own, on Emerald's beats (data/maps/Route119_WeatherInstitute_2F/scripts.inc).
+#
+# Team Aqua holds the floor (VAR_WEATHER_INSTITUTE_STATE 0): three grunts, and Shelly, their admin, before the
+# cornered scientist. Beaten, she is about to go on when a grunt runs up from the stairs: Team Magma is on its way to
+# Mt. Pyre. Team Aqua leaves (FLAG_HIDE_ROUTE_119_TEAM_AQUA, state 1), the workers come out, and the scientist gives
+# the player Castform holding a Mystic Water, as Emerald gives it (FLAG_RECEIVED_CASTFORM).
+
+
+script OnEnter
+  if var VAR_WEATHER_INSTITUTE_STATE == 0 goto Held
+  place weather_institute_2f_scientist 4 6 down
+  end
+label Held
+  place weather_institute_2f_scientist 1 6 right
+  end
+
+
+script Shelly
+  face self player
+  speaker "Shelly"
+  if var VAR_WEATHER_INSTITUTE_STATE != 0 end
+  scene "Shelly at the Weather Institute"
+  say "Ahahaha! So you're the kid who keeps getting in Team Aqua's way. Archie told me all about you."
+  say "We came for the research on rain. With it, we'll fill the world with sea. You won't stop us, sweetie!"
+  battle self
+  say "Ahaha... well, aren't you a tough one. Fine, I lost. But I've still got what I came for."
+  clearflag FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
+  show weather_institute_2f_grunt_3
+  if facing left walk player up 1
+  walk weather_institute_2f_grunt_3 left 11 fast
+  speaker "Team Aqua Grunt"
+  say "Admin Shelly! Bad news! Team Magma's been seen heading for Mt. Pyre!"
+  speaker "Shelly"
+  emote weather_institute_2f_shelly exclaim
+  say "Magma? At Mt. Pyre? Then they're after the orbs! Everyone out, we're going to Mt. Pyre!"
+  say "As for you, kid... stay out of grown-ups' business, or you'll get swept away."
+  setvar VAR_WEATHER_INSTITUTE_STATE 1
+  clearflag FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
+  fade out
+  setflag FLAG_HIDE_ROUTE_119_TEAM_AQUA
+  setflag FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
+  hide weather_institute_2f_shelly
+  hide weather_institute_2f_grunt_1
+  hide weather_institute_2f_grunt_2
+  hide weather_institute_2f_grunt_3
+  hide weather_institute_2f_grunt_4
+  show man_4
+  show man_4_2
+  place player 5 6 left
+  fade in
+  walk weather_institute_2f_scientist right 3
+  face weather_institute_2f_scientist player
+  call Castform
+  endscene
+  end
+
+
+# The scientist's thanks: a Castform of the institute's own
+script Castform
+  speaker "Scientist"
+  say "Thank you! Thank you so much! I thought they'd never leave."
+  say "Please, take this Pokémon as our thanks. It's Castform. Its shape changes with the weather!"
+  givepokemon "Castform" 25 holding "Mystic Water"
+  setflag FLAG_RECEIVED_CASTFORM
+  fanfare pokemon
+  text "{player} received Castform!"
+  if result == 2 text "Castform was sent to the PC."
+  say "It's holding a Mystic Water, too. Raise it well, and watch how it changes in the sun and the rain."
+  return
+
+
+script WeatherScientist
+  face self player
+  speaker "Scientist"
+  if var VAR_WEATHER_INSTITUTE_STATE == 0 goto Held
+  if not flag FLAG_RECEIVED_CASTFORM goto Give
+  say "Strange weather has been reported in Hoenn of late. Heavy rain in one place, blazing sun in another."
+  say "Castform would know all about it. Take good care of it!"
+  end
+label Give
+  call Castform
+  end
+label Held
+  say "Th-they want our data on rain! What could anyone want with that much rain?"
+  end

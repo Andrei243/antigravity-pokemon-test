@@ -1666,6 +1666,7 @@ script HoennNewGame
   call HoennChapterFour
   call HoennChapterFive
   call HoennChapterSix
+  call HoennChapterSeven
   return
 
 
@@ -1797,4 +1798,56 @@ script HoennChapterSix
   setflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
   setflag FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
   setflag FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
+  return
+
+
+# The people of Hoenn's seventh stretch, Route 118 to Fortree City and Route 120 (plan 21 · H6), hidden until their
+# scenes, as Emerald's new game hides them: the rival and Scott on Route 119 until the rival's battle by the Weather
+# Institute, the institute's workers until Team Aqua has gone, the grunt who runs up to Shelly, the Wingull of
+# Fortree's fourth house, the shadow under Route 120's bridge, and Gabby and Ty on Routes 118 and 120.
+# FLAG_HOENN_CHAPTER_SEVEN, a flag of ours, says it has run. HoennNewGame calls it; a save from before it was written
+# runs it from Route 118's and Route 119's own arrival scripts, the only ways onto this stretch, so no story version is
+# raised for it. It may only set flags and variables, and ends in return.
+script HoennChapterSeven
+  setflag FLAG_HOENN_CHAPTER_SEVEN
+  setflag FLAG_HIDE_ROUTE_119_RIVAL
+  setflag FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE
+  setflag FLAG_HIDE_ROUTE_119_SCOTT
+  setflag FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
+  setflag FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
+  setflag FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
+  setflag FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL
+  setflag FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_SHADOW
+  setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1
+  setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2
+  setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
+  setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1
+  setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
+  return
+
+
+# A Kecleon of Hoenn that hides by blending into what is round it (plan 21 · H6): it stands in the way and nobody sees
+# it (npcType Unseen). Without the Devon Scope there is only something in the way; with it, the player may look, and
+# the place's own script lights the Kecleon's tile before it calls HoennKecleonFound. HoennKecleonLook says
+# "something unseeable" and asks; RESULT is 1 when the player looks through the Scope.
+script HoennKecleonLook
+  speaker none
+  if item "Devon Scope" goto Scope
+  text "Something unseeable is in the way."
+  end
+label Scope
+  ask "Something unseeable is in the way. Use the Devon Scope?"
+  if no end
+  text "{player} used the Devon Scope. A Pokémon that had melted into the scenery shows itself!"
+  return
+
+
+# The Kecleon seen through the Scope cries and comes at the player, and is gone afterwards however the battle ended
+# (Emerald's Kecleon_EventScript_BattleKecleon): caught, beaten or run from. A battle lost ends the script, and it
+# waits where it was.
+script HoennKecleonFound
+  cry "Kecleon"
+  wildbattle "Kecleon" 30
+  hide self
+  setflag own
   return

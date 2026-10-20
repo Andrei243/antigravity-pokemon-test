@@ -158,6 +158,17 @@ partial class Harness
                 else Console.WriteLine("  !! no kelp on Route 124's floor");
                 game.Player.SetMode(TravelMode.OnFoot);
             }
+            // Fortree City (plan 21 · H6): houses built round the trunks, their canopies over the streets, the rope
+            // bridges between them, and Route 119 beside it under its rain; and Winona's Gym with its eight gates
+            {
+                var (fortree, fx, fy) = AreaSpot("fortree_city");
+                At(fortree.Name, fx, fy, Direction.Up); game.EnterArea();
+                Frames(40); Profile("fortree city in the treetops");
+                var (road, rx, ry) = AreaSpot("route_119");
+                At(road.Name, rx, ry, Direction.Up); game.EnterArea();
+                Frames(40); Profile("route 119 in the rain");
+                Room("FortreeCity_Gym", "fortree gym, the rotating gates");
+            }
             game.Map = MapDatabase.Get("Sinnoh");
 
             engine.Settings.TimeOfDay = TimeOfDay.Night;

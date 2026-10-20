@@ -345,6 +345,9 @@ public static class FieldMovement
         }
 
         if (map.IsSolid(nx, ny)) return No(Obstacle.Solid);
+        // A gate of the Fortree Gym's that can't be pushed round stands in the way like a rail (plan 21 · H6,
+        // CheckForRotatingGatePuzzleCollision, asked after the tile's own collision)
+        if (map.Puzzle?.Bars(map, nx, ny, dir) == true) return No(Obstacle.Rail);
 
         var (height, onDeck) = map.SurfaceAt(nx, ny, walker.Height);
         // A floor a Gym's puzzle lays over the tile (the Pastoria Gym's water) carries whoever it is above the room's

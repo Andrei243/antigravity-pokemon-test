@@ -42,6 +42,12 @@
     "area": "lavaridge_town_gym_1f"
   },
   {
+    "id": "winona",
+    "type": 12,
+    "class": "Leader",
+    "area": "fortree_city_gym"
+  },
+  {
     "id": "scott",
     "type": 2,
     "class": "Pokémon Trainer",
@@ -116,5 +122,47 @@
     "class": "Triathlete",
     "trainer": "hoenn_maria_1",
     "area": "route_117"
+  },
+  {
+    "id": "hoenn_rose",
+    "type": 0,
+    "class": "Aroma Lady",
+    "trainer": "hoenn_rose_1",
+    "area": "route_118"
+  },
+  {
+    "id": "hoenn_dalton",
+    "type": 0,
+    "class": "Guitarist",
+    "trainer": "hoenn_dalton_1",
+    "area": "route_118"
+  },
+  {
+    "id": "hoenn_jackson",
+    "type": 0,
+    "class": "Pkmn Ranger",
+    "trainer": "hoenn_jackson_1",
+    "area": "route_119"
+  },
+  {
+    "id": "hoenn_catherine",
+    "type": 0,
+    "class": "Pkmn Ranger",
+    "trainer": "hoenn_catherine_1",
+    "area": "route_119"
+  },
+  {
+    "id": "hoenn_robert",
+    "type": 0,
+    "class": "Bird Keeper",
+    "trainer": "hoenn_robert_1",
+    "area": "route_120"
+  },
+  {
+    "id": "hoenn_jeffrey",
+    "type": 0,
+    "class": "Bug Maniac",
+    "trainer": "hoenn_jeffrey_1",
+    "area": "route_120"
   }
 ]

@@ -1,0 +1,98 @@
+{
+  "key": "route_118",
+  "index": 12,
+  "name": "Route 118",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE118",
+  "nightMusic": "MUS_ROUTE118",
+  "encounters": "route_118",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Zigzagoon", "level": 24 },
+    { "species": "Electrike", "level": 24 },
+    { "species": "Zigzagoon", "level": 26 },
+    { "species": "Electrike", "level": 26 },
+    { "species": "Linoone", "level": 26 },
+    { "species": "Manectric", "level": 26 },
+    { "species": "Wingull", "level": 25 },
+    { "species": "Wingull", "level": 25 },
+    { "species": "Wingull", "level": 26 },
+    { "species": "Wingull", "level": 26 },
+    { "species": "Wingull", "level": 27 },
+    { "species": "Kecleon", "level": 25 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Carvanha", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Sharpedo", "level": 30, "maxLevel": 35 },
+    { "species": "Carvanha", "level": 30, "maxLevel": 35 },
+    { "species": "Carvanha", "level": 20, "maxLevel": 25 },
+    { "species": "Carvanha", "level": 35, "maxLevel": 40 },
+    { "species": "Carvanha", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 282, "z": 146, "to": "", "toWarp": 0 },
+    { "x": 249, "z": 146, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 275, "z": 145, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 169, "script": "BerryTreeScript" },
+    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 276, "z": 145, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 171, "script": "BerryTreeScript" },
+    { "id": "berry_tree_3", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 277, "z": 145, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 170, "script": "BerryTreeScript" },
+    { "id": "man_5", "looks": "man_5", "movement": "look_south", "x": 304, "z": 150, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_PERRY" },
+    { "id": "route118_gabby_1", "looks": "reporter_f", "movement": "look_south", "x": 273, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1", "script": "GabbyAndTy_EventScript_GabbyBattle2" },
+    { "id": "route118_ty_1", "looks": "cameraman", "movement": "look_south", "x": 274, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1", "script": "GabbyAndTy_EventScript_TyBattle2" },
+    { "id": "girl_2", "looks": "girl_2", "movement": "wander_around", "x": 252, "z": 150, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route118_EventScript_Girl" },
+    { "id": "route118_gabby_2", "looks": "reporter_f", "movement": "look_south", "x": 273, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2", "script": "GabbyAndTy_EventScript_GabbyBattle5" },
+    { "id": "route118_ty_2", "looks": "cameraman", "movement": "look_south", "x": 274, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2", "script": "GabbyAndTy_EventScript_TyBattle5" },
+    { "id": "route118_gabby_3", "looks": "reporter_f", "movement": "look_south", "x": 273, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3", "script": "GabbyAndTy_EventScript_GabbyBattle6" },
+    { "id": "route118_ty_3", "looks": "cameraman", "movement": "look_south", "x": 274, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3", "script": "GabbyAndTy_EventScript_TyBattle6" },
+    { "id": "cuttable_tree", "looks": "cuttable_tree", "movement": "look_around", "x": 278, "z": 148, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_CutTree" },
+    { "id": "fisherman", "looks": "fisherman", "movement": "look_west", "x": 268, "z": 148, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "Route118_EventScript_GoodRodFisherman" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_north", "x": 247, "z": 152, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ROSE_1" },
+    { "id": "fisherman_2", "looks": "fisherman", "movement": "look_south", "x": 254, "z": 154, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "script": "TRAINER_WADE" },
+    { "id": "man_5_2", "looks": "man_5", "movement": "look_north_and_east", "x": 296, "z": 147, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_CHESTER" },
+    { "id": "fisherman_3", "looks": "fisherman", "movement": "look_around", "x": 279, "z": 155, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_BARNY" },
+    { "id": "man_5_3", "looks": "man_5", "movement": "look_north_and_west", "x": 257, "z": 151, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_DALTON_1" },
+    { "id": "route118_steven", "looks": "steven", "movement": "look_south", "x": 284, "z": 147, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ROUTE_118_STEVEN", "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 309, "z": 147, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_118_HYPER_POTION", "item": "Hyper Potion", "script": "Route118_EventScript_ItemHyperPotion" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_south", "x": 247, "z": 147, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_DEANDRE" }
+  ],
+  "signs": [
+    { "x": 253, "z": 146, "type": 0, "script": "Route118_EventScript_RouteSignMauville" },
+    { "x": 296, "z": 148, "type": 0, "script": "Route118_EventScript_RouteSign119" },
+    { "x": 271, "z": 153, "type": 2, "script": "", "item": "Iron", "flag": "FLAG_HIDDEN_ITEM_ROUTE_118_IRON" },
+    { "x": 252, "z": 154, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_ROUTE_118_HEART_SCALE" }
+  ],
+  "triggers": [
+    { "x": 283, "z": 151, "width": 1, "depth": 1, "script": "Route118_EventScript_StevenTrigger0", "variable": "VAR_ROUTE118_STATE", "value": "0" },
+    { "x": 284, "z": 151, "width": 1, "depth": 1, "script": "Route118_EventScript_StevenTrigger1", "variable": "VAR_ROUTE118_STATE", "value": "0" },
+    { "x": 285, "z": 151, "width": 1, "depth": 1, "script": "Route118_EventScript_StevenTrigger2", "variable": "VAR_ROUTE118_STATE", "value": "0" }
+  ]
+}

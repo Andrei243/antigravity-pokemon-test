@@ -567,5 +567,96 @@ partial class Harness
         ComeThrough("MauvilleCity_GameCorner", 11, 9, Direction.Up);
         Frames(20); Shot("hs113_the_game_corner");
         Console.WriteLine($"  the Game Corner: coin case {game.Bag.GetQuantity(ItemDatabase.Get("Coin Case")!)}, harbor mail {game.Bag.GetQuantity(ItemDatabase.Get("Harbor Mail")!)}");
+
+        // ---- Plan 21 · H6, part a: Route 118 to Fortree City (hs114 to hs138)
+        void Fortree(string what) =>
+            Console.WriteLine($"  {what}: route 118 {story.Var("VAR_ROUTE118_STATE")}, institute {story.Var("VAR_WEATHER_INSTITUTE_STATE")}, "
+                + $"aqua gone {story.Has("FLAG_HIDE_ROUTE_119_TEAM_AQUA")}, castform {string.Join(", ", game.Party.Members.Where(p => p.Species.Name == "Castform").Select(p => $"{p.Level} holding {p.HeldItem?.Name ?? "nothing"}"))}, "
+                + $"route 119 {story.Var("VAR_ROUTE119_STATE")}, scott {story.Var("VAR_SCOTT_STATE")}, hm02 {game.Bag.GetQuantity(ItemDatabase.Get("HM02")!)}, "
+                + $"devon scope {game.Bag.GetQuantity(ItemDatabase.Get("Devon Scope")!)}, bridge kecleon {story.Has("FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE")}, "
+                + $"fortree kecleon fled {story.Has("FLAG_KECLEON_FLED_FORTREE")}, feather badge {story.HasBadge(RegionDatabase.Hoenn, "Feather")}, "
+                + $"tm40 {game.Bag.GetQuantity(ItemDatabase.Get("TM40")!)}, numbers {string.Join(", ", PokeNav.Contacts(story).Select(c => c.Name))}, "
+                + $"weather here {game.Map.WeatherAt(game.Player.GridX, game.Player.GridY)}, on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+        // Someone of the overworld by key, the one nearest a tile (Hoenn has a Kecleon on Route 119, five on Route 120 and Fortree's)
+        void TalkNear(string key, int x, int y)
+        {
+            var m = MapDatabase.Get("Hoenn");
+            var npc = m.NPCs.Where(n => n.Key == key).OrderBy(n => Math.Abs(n.GridX - x) + Math.Abs(n.GridY - y)).First();
+            At("Hoenn", npc.GridX, npc.GridY + 1, Direction.Up);
+            game.Interact();
+        }
+
+        // Route 118: Steven hops down from the ledge, has his say and walks off east
+        StepOnto("Hoenn", 284, 151, Direction.Up);
+        ReadTo("Funny, running into you"); Frames(10); Shot("hs114_steven_on_route_118");
+        ReadTo(null);
+        Frames(20); Shot("hs115_steven_gone");
+        Fortree("Steven on Route 118");
+
+        // The Weather Institute: held by Team Aqua, Shelly upstairs, the grunt's news and Castform
+        ComeThrough("Route119_WeatherInstitute_1F", 9, 11, Direction.Up);
+        Frames(20); Shot("hs116_the_institute_held");
+        ComeThrough("Route119_WeatherInstitute_2F", 17, 2, Direction.Down);
+        Frames(20); Shot("hs117_the_upper_floor");
+        TalkTo("Route119_WeatherInstitute_2F", "weather_institute_2f_shelly");
+        ReadTo("Archie told me all about you"); Frames(10); Shot("hs118_shelly");
+        IntoBattle("Shelly's battle");
+        ToMainMenu(game.Battle); Shot("hs119_shellys_battle");
+        Win();
+        ReadTo("Team Magma's been seen heading"); Frames(10); Shot("hs120_the_grunts_news");
+        ReadTo("It's Castform"); Frames(10); Shot("hs121_castform");
+        ReadTo(null);
+        Frames(20); Shot("hs122_the_institute_free");
+        Fortree("the Weather Institute");
+
+        // The rival on the bridge north of the institute, HM02 and Scott; and the road on in the rain
+        StepOnto("Hoenn", 305, 31, Direction.Up);
+        ReadTo("There you are!"); Frames(10); Shot("hs123_the_rival_on_route_119");
+        IntoBattle("the rival's battle on Route 119");
+        ToMainMenu(game.Battle); Shot("hs124_the_rivals_battle");
+        Win();
+        ReadTo("That's Fly"); Frames(10); Shot("hs125_hm02");
+        ReadTo("Fortree's Leader, Winona"); Frames(10); Shot("hs126_scott");
+        ReadTo(null);
+        Frames(20);
+        Fortree("the rival on Route 119");
+        At("Hoenn", 300, 60, Direction.Up); game.EnterArea(); Frames(40);
+        Shot("hs127_route_119_in_the_rain");
+        Fortree("Route 119's rain");
+
+        // Fortree City: the bridge to the Gym, where something nobody can see stands in the way
+        TalkNear("kecleon", 345, 9);
+        ReadTo("Something unseeable is in the way"); Frames(10); Shot("hs128_something_unseeable");
+        ReadTo(null);
+
+        // Route 120: Steven, the Devon Scope, the Kecleon on the bridge shown and battled, the Scope handed over
+        TalkTo("Hoenn", "route120_steven");
+        ReadTo("nobody can see"); Frames(10); Shot("hs129_steven_on_route_120");
+        ReadTo("This is the Devon Scope"); Frames(10); Shot("hs130_the_devon_scope");
+        Box().Advance(); Frames(20); Shot("hs131_the_kecleon_shows_itself");
+        IntoBattle("the bridge's Kecleon");
+        ToMainMenu(game.Battle); Shot("hs132_the_kecleons_battle");
+        Win();
+        ReadTo("Take it"); Frames(10); Shot("hs133_the_scope_given");
+        ReadTo(null);
+        Frames(20); Shot("hs134_steven_gone");
+        Fortree("Steven on Route 120");
+
+        // Back in Fortree City, the Kecleon seen through the Scope flees
+        TalkNear("kecleon", 345, 9);
+        ReadTo("was startled and fled"); Frames(10); Shot("hs135_the_kecleon_flees");
+        ReadTo(null);
+        Frames(10); Shot("hs136_the_bridge_clear");
+        Fortree("Fortree's Kecleon");
+
+        // Winona: her battle, the Feather Badge and TM40
+        TalkTo("FortreeCity_Gym", "winona");
+        ReadTo("I am Winona"); Frames(10); Shot("hs137_winona");
+        IntoBattle("Winona's battle");
+        ToMainMenu(game.Battle); Shot("hs138_winonas_battle");
+        Win();
+        ReadTo("This is the Feather Badge"); Frames(10); Shot("hs139_the_feather_badge");
+        ReadTo(null);
+        Fortree("Winona");
     }
 }

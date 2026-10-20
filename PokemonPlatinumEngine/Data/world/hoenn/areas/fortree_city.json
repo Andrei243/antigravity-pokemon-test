@@ -1,0 +1,46 @@
+{
+  "key": "fortree_city",
+  "index": 29,
+  "name": "Fortree City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FORTREE",
+  "nightMusic": "MUS_FORTREE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 325, "z": 6, "to": "fortree_city_pokemon_center_1f", "toWarp": 0 },
+    { "x": 330, "z": 3, "to": "fortree_city_house_1", "toWarp": 0 },
+    { "x": 342, "z": 11, "to": "fortree_city_gym", "toWarp": 0 },
+    { "x": 324, "z": 14, "to": "fortree_city_mart", "toWarp": 0 },
+    { "x": 337, "z": 3, "to": "fortree_city_house_2", "toWarp": 0 },
+    { "x": 345, "z": 3, "to": "fortree_city_house_3", "toWarp": 0 },
+    { "x": 352, "z": 2, "to": "fortree_city_house_4", "toWarp": 0 },
+    { "x": 332, "z": 13, "to": "fortree_city_house_5", "toWarp": 0 },
+    { "x": 357, "z": 13, "to": "fortree_city_decoration_shop", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "man_2", "looks": "man_2", "movement": "look_around", "x": 351, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_EventScript_Man" },
+    { "id": "girl_1", "looks": "girl_1", "movement": "wander_around", "x": 352, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FortreeCity_EventScript_Girl" },
+    { "id": "woman_5", "looks": "woman_5", "movement": "wander_north_and_south", "x": 352, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 1, "script": "FortreeCity_EventScript_Woman" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "look_around", "x": 331, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_EventScript_Boy" },
+    { "id": "old_man", "looks": "old_man", "movement": "look_around", "x": 328, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_EventScript_OldMan" },
+    { "id": "gameboy_kid", "looks": "gameboy_kid", "movement": "look_south", "x": 329, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_EventScript_GameboyKid" },
+    { "id": "kecleon", "looks": "kecleon", "movement": "invisible", "x": 345, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FORTREE_CITY_KECLEON", "script": "FortreeCity_EventScript_Kecleon" }
+  ],
+  "signs": [
+    { "x": 326, "z": 9, "type": 0, "script": "FortreeCity_EventScript_CitySign" },
+    { "x": 327, "z": 6, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 325, "z": 14, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 346, "z": 10, "type": 0, "script": "FortreeCity_EventScript_GymSign" },
+    { "x": 326, "z": 6, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 326, "z": 14, "type": 0, "script": "Common_EventScript_ShowPokemartSign" }
+  ],
+  "triggers": []
+}

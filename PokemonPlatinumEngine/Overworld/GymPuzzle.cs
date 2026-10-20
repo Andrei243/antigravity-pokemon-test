@@ -61,6 +61,16 @@ public abstract class GymPuzzle
     /// <summary>Whether someone or something at a height is out of sight from the player's (the Canalave Gym's floors above).</summary>
     public virtual bool Hides(float height, float viewer) => false;
 
+    /// <summary>
+    /// Whether something of the puzzle's bars a step onto a tile going a way, where nothing of the room does (the
+    /// Fortree Gym's gates, an arm that can't be pushed round). Asked by <see cref="FieldMovement.Step"/>, so it may not
+    /// change anything.
+    /// </summary>
+    public virtual bool Bars(Map map, int x, int y, Direction dir) => false;
+
+    /// <summary>The player has stepped onto a tile going a way: what the step pushed moves (the Fortree Gym's gates turn).</summary>
+    public virtual void Crossed(Map map, int x, int y, Direction dir) { }
+
     /// <summary>The puzzle a map file names; null for none.</summary>
     public static GymPuzzle? Create(string? name) => name switch
     {
@@ -74,6 +84,8 @@ public abstract class GymPuzzle
         SunyshoreGears.Room1Name => new SunyshoreGears(0),
         SunyshoreGears.Room2Name => new SunyshoreGears(1),
         SunyshoreGears.Room3Name => new SunyshoreGears(2),
+        // Emerald's Fortree Gym (plan 21 · H6), named by its room's entry in Hoenn's world.json
+        FortreeGates.PuzzleName => new FortreeGates(),
         // The League's platform lifts (plan 01 · M9, part 2d), one name to a shaft
         _ when LeagueLift.IsName(name) => new LeagueLift(name),
         _ => throw new ArgumentException($"There is no Gym puzzle called '{name}'.")
