@@ -1,0 +1,248 @@
+{
+  "people": {
+    "swimmer_m": {
+      "name": {
+        "en": [
+          "Spencer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Spencer: The water's so clear out here, I can see right down to the bottom!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Spencer: All I can see now is defeat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_2": {
+      "name": {
+        "en": [
+          "Roland"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Roland: Out in the open sea, you can't run from a battle. Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Roland: I'd swim away if I had any energy left."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f": {
+      "name": {
+        "en": [
+          "Jenny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Jenny: I'm turning round and round to look for trainers. Found one!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Jenny: Now I'm dizzy as well as beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_2": {
+      "name": {
+        "en": [
+          "Grace"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Grace: My Marill keeps me afloat when I get tired. We're a team!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Grace: We're a team that lost, but still a team."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_3": {
+      "name": {
+        "en": [
+          "Chad"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Chad: Back and forth, back and forth. A battle breaks up the laps!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Chad: Back to my laps, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_3": {
+      "name": {
+        "en": [
+          "Lila and Roy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sis and Bro Lila and Roy: My little brother and I take on every surfer together!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sis and Bro Lila and Roy: We'll practise our teamwork some more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m_swimming": {
+      "name": {
+        "en": [
+          "Lila and Roy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sis and Bro Lila and Roy: My big sister and I take on every surfer together!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sis and Bro Lila and Roy: Next time we'll splash you good!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_4": {
+      "name": {
+        "en": [
+          "Declan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Declan: Under these waves there's a whole other world. Ever been down there?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Declan: You should see it with Dive. It's beautiful."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_4": {
+      "name": {
+        "en": [
+          "Isabella"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Isabella: Swimming is the last part of my training. You're the bonus part!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Isabella: I'll have to train even harder."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route124_EventScript_HuntersHouseSign": {
+      "en": [
+        "Treasure Hunter's House\nShards from the sea floor traded here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

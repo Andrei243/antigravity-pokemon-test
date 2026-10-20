@@ -84,5 +84,39 @@
         "Nu? Ei bine, te aștept în Centrul Pokémon. Vino să mă găsești când ești gata de plecare."
       ]
     }
+  ],
+  "BillHome": [
+    {
+      "en": [
+        "Bill"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Phew, back on Cinnabar! Thanks for coming all that way with me, {player}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Keep the Tri-Pass. Celio said he'd love to see you again, so drop in on him when you're on One Island."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Me, I'm off home to my cottage. My PCs must be missing me! See you around!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

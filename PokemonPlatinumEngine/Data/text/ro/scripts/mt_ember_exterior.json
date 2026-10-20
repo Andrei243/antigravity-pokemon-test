@@ -1,0 +1,138 @@
+{
+  "Password": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So the first password's 'Seel the deal'? And the second one's... 'Ekans ate the cake'?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Keep your voice down! The first opens the warehouse door, the second gets you inside. Write 'em down!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nah, I've got a great memory. Our warehouse on Five Island's safe as houses."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! A kid's been listening in! Forget everything you just heard, got it?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt1": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The cave behind us is off-limits! Team Rocket's digging for treasure in there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh... Even if you get past us, you won't find anything in there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've forgotten the passwords already. Don't tell the boss."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt2": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You heard the passwords? Then you're not leaving this mountain!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No way! Beaten by a kid on a volcano..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We were told to search the cave for something red and shiny. Whatever it is, it's ours!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BothBeaten": [
+    {
+      "en": [
+        "This is bad! We've gotta tell the others at the warehouse!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

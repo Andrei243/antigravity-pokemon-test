@@ -1,0 +1,41 @@
+{
+  "people": {
+    "rocker": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came here to get away from the city and play my guitar in peace. Then the bikers showed up, louder than any amp."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My grandfather built this house with his own hands. The wind off the sea has never once got in."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

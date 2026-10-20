@@ -1,0 +1,368 @@
+{
+  "displayName": {
+    "en": [
+      "Kindle Road"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "swimmer_f_water": {
+      "name": {
+        "en": [
+          "Maria"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Maria: The water by the volcano is lovely and warm. Swim with me, then battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Maria: I'll float here and think it over."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_land": {
+      "name": {
+        "en": [
+          "Abigail"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Abigail: I just came out of the sea and I'm still dripping. Don't mind me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Abigail: Now I'm dripping and beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water": {
+      "name": {
+        "en": [
+          "Finn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Finn: I swim laps along this shore every day. You're in my lane!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Finn: Go on, take the lane."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_land": {
+      "name": {
+        "en": [
+          "Garrett"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Garrett: The sand's hot enough to cook on, so let's make this quick!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Garrett: Ouch, my feet. And my pride."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher": {
+      "name": {
+        "en": [
+          "Tommy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Tommy: The fish round here grow fat on the warm water. So do mine!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Tommy: Fat, but slow, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crush_girl": {
+      "name": {
+        "en": [
+          "Sharon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Crush Girl Sharon: I'm training on this road until I can punch through a boulder!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Crush Girl Sharon: The boulder's safe for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crush_girl_2": {
+      "name": {
+        "en": [
+          "Tanya"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Crush Girl Tanya: Every step up this road makes my legs stronger. Feel my kick!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Crush Girl Tanya: My legs are jelly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Shea"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Shea: A true fighter trains where the ground shakes. Face me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Shea: My stance needs work."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Hugh"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Hugh: Hah! My fists and my Pokémon are both made of iron!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Hugh: Rusty iron, it turns out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Bryce"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Bryce: I'm camping at the foot of the volcano. Brave, huh? Battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Bryce: Maybe I'll camp somewhere quieter."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Claire"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Claire: A picnic by the sea, then a battle. Perfect!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Claire: My sandwiches have sand in them now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_3": {
+      "name": {
+        "en": [
+          "Mik"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Crush Kin Mik: My sister and I train side by side. Take on both of us!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Crush Kin Mik: Back to training, sis."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crush_girl_3": {
+      "name": {
+        "en": [
+          "Kia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Crush Kin Kia: Two fists are better than one! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Crush Kin Kia: Our fists need sharpening."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "OneIsland_KindleRoad_EventScript_EmberSpaSign": {
+      "en": [
+        "Ember Spa\nRest your Pokémon in the volcano's warm springs"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "OneIsland_KindleRoad_EventScript_RouteSign": {
+      "en": [
+        "Kindle Road\nOne Island - Mt. Ember"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

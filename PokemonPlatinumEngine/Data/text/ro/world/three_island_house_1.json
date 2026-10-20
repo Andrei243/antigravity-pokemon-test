@@ -1,0 +1,32 @@
+{
+  "people": {
+    "little_girl": {
+      "name": {
+        "en": [
+          "Lostelle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Daddy says I'm not to go into the forest by myself any more. So next time, will you come with me?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ThreeIsland_House1_EventScript_DisplayCase": {
+      "en": [
+        "A glass case of dried flowers and pretty berry stones. Lostelle must have collected them."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

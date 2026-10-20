@@ -1,0 +1,113 @@
+{
+  "displayName": {
+    "en": [
+      "Ember Spa"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A soak in this spring cures every ache. The volcano's heat warms the water all year round."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon love the spa too. Step in with them and see how lively they get!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I heard a trainer from Pallet Town became Champion. Every fighter on the islands is talking about it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ah, nothing like a hot spring after a long walk up Kindle Road."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_1_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "balding_man_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say a great fire bird nests on the top of Mt. Ember. I've never dared climb up to look."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

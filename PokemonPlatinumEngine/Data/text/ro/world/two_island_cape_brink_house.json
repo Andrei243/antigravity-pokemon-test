@@ -1,0 +1,25 @@
+{
+  "people": {
+    "cape_brink_tutor": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I teach a move of great power, but only to a Pokémon that has grown up from a starter and loves its trainer with all its heart.",
+          "Come back when I've had a better look at you, dearie."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

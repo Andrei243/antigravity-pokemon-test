@@ -1,0 +1,62 @@
+{
+  "SpaHeal": [
+    {
+      "en": [
+        "The water is pleasantly hot. {player}'s Pokémon soaked in the spring with {player}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every Pokémon looks refreshed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RockSmashMan": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The rocks round this spring are cracked all over from the volcano's rumbling. I smash them for exercise."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here, you take this. A young trainer should have it more than an old man."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's Rock Smash. It breaks a cracked rock clean apart, and something might be hiding underneath."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ahh, a good soak after smashing rocks. Nothing better for old bones."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

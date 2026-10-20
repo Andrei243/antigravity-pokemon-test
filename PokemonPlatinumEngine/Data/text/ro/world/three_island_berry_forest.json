@@ -1,0 +1,40 @@
+{
+  "displayName": {
+    "en": [
+      "Berry Forest"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "berry_forest_lostelle": {
+      "name": {
+        "en": [
+          "Lostelle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ThreeIsland_BerryForest_EventScript_BewareSign": {
+      "en": [
+        "Watch your step! Wild Pokémon live deep in this forest. Don't wander off alone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "ThreeIsland_BerryForest_EventScript_WelcomeSign": {
+      "en": [
+        "Welcome to Berry Forest\nPlease share the berries with the Pokémon."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

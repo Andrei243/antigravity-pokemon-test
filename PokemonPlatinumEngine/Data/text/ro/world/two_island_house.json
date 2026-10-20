@@ -1,0 +1,25 @@
+{
+  "people": {
+    "fat_man": {
+      "name": {
+        "en": [
+          "Move Maniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I know every move a Pokémon has ever forgotten. Someday I'll help yours remember them all.",
+          "For now, I'm still writing them down."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

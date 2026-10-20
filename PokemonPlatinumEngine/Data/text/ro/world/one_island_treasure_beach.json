@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Treasure Beach"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "swimmer_f_water": {
+      "name": {
+        "en": [
+          "Amara"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Amara: Looking for treasure? The best treasure here is a good battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Amara: That was worth more than a pearl."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

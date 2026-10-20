@@ -1,0 +1,228 @@
+{
+  "BikerIntro": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You lot have no business here! Get off our island and take your noisy bikes with you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Paxton"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Or what, old man? This island's ours now. You farmers can go and live somewhere else."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hah? And who are you supposed to be? Another one who wants to tell us what to do?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BikerBattle": [
+    {
+      "en": [
+        "Biker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! You looking for trouble, kid?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Want to make something of it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Big mistake! Let's see what you've got!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Biker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No way! Somebody else take this kid!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Biker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Boss! This kid's too tough for us!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Paxton"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pathetic, the lot of you. Fine, I'll deal with this one myself!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Paxton"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grr... All right, you win! This island's too boring for us anyway. Let's ride, boys!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then get lost!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AntiBiker1": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those bikers think they can push us around. Well, I won't be pushed!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You drove that whole gang off our island! Here, you've earned this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Peace and quiet again. The whole island owes you, you know."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AntiBiker2": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There are so many of them... We can't drive them off on our own."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lostelle from Two Island? Yes, I saw her go over Bond Bridge to the forest. Please, find her!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Biker": [
+    {
+      "en": [
+        "Biker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What are you staring at? Beat it, kid. This street's ours."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

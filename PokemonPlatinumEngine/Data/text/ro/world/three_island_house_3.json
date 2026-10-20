@@ -1,0 +1,23 @@
+{
+  "people": {
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The berries from the forest make the most wonderful jam. I'd share some, but my Pokémon ate it all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
