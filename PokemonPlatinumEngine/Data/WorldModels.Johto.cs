@@ -332,6 +332,14 @@ public static partial class WorldModels
         Ground("gof_05", "Karen's room: its dark floor, which the room draws"),
         Ground("chp_obj1", "the Champion's room: its floor and its dais, which the room draws"),
         Ground("leage_o03", "the Hall of Fame's machine against the back wall: the room's wall stands for it until plan 20 · J12"),
+
+        // ---------------------------------------------------------------- plan 20 · J11, part b: the takeover's rooms
+        // The Radio Tower's upper floors and its deck, and the Department Store's basement
+        Furniture("shelf10_01", PropType.Bookshelf, "a tall shelf of records in the Radio Tower"),
+        Ground("card_key01", "the Card Key's slot in the third floor's wall: the tile read before it is the way"),
+        Furniture("scope01", PropType.Binoculars, "a pair of binoculars on the Radio Tower's observation deck"),
+        Ground("radio_sky", "the sky round the Radio Tower's observation deck (no model of its own: the sky is the field's)"),
+        Ground("snap_came_in", "a camera on its stand in a studio of the Radio Tower: the room's floor stands for it"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);
