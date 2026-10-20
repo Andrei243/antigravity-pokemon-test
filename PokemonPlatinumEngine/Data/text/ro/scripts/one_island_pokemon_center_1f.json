@@ -391,6 +391,70 @@
       "text": [
         "Safirul ar trebui să fie pe una dintre insulele mai spre sud. Seagallop te duce acolo cu Permisul Curcubeu."
       ]
+    },
+    {
+      "en": [
+        "{player}! That blue light... It's the Sapphire! You really found it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} handed the Sapphire to Celio."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Celio"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Now, let me set it in beside the Ruby..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's it, it fits perfectly. Now if I just bring the power up slowly..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's working! The machine's reaching out farther than ever... and something's answered! A PC far away, in a region called Hoenn!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, thank you. With your help the islands are linked with Kanto and with Hoenn too. I'll never forget it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The machine hasn't missed a beat since you brought the Sapphire. I wish you the very best on your travels, {player}!"
+      ],
+      "text": [
+        ""
+      ]
     }
   ]
 }
