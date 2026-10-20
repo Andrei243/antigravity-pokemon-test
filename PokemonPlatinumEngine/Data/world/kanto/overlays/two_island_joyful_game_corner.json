@@ -1,0 +1,19 @@
+{
+  // The Joyful Game Corner (plan 19 · K9, part a): FireRed's family arcade on Two Island, run by Lostelle's father. The
+  // first time the player comes in he asks them to find his daughter, a biker barges in looking for Three Island, and
+  // once she is home he takes Bill's Meteorite (two_island_joyful_game_corner.txt). FireRed's two wireless games are
+  // the link's, which is down, and their record boards with them
+  "area": "two_island_joyful_game_corner",
+  "name": "Joyful Game Corner",
+  "bgmTrack": "kanto/game_corner",
+  "people": {
+    "joyful_game_corner_daddy": { "name": "Lostelle's Daddy", "script": "Daddy", "still": true },
+    "joyful_game_corner_biker": { "name": "Biker", "still": true, "dialog": [ "Outta my way!" ] },
+    "joyful_game_corner_lostelle": { "name": "Lostelle", "script": "Lostelle", "still": true },
+    "man": { "name": "Man", "script": "InfoMan", "still": true }
+  },
+  "signs": {
+    "TwoIsland_JoyfulGameCorner_EventScript_ShowPokemonJumpRecords": "A board for the records of the game corner's games. It's blank for now.",
+    "TwoIsland_JoyfulGameCorner_EventScript_ShowDodrioBerryPickingRecords": "A board for the records of the game corner's games. It's blank for now."
+  }
+}

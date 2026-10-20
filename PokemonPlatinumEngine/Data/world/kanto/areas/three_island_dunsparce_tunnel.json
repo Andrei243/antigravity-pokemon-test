@@ -1,0 +1,28 @@
+{
+  "key": "three_island_dunsparce_tunnel",
+  "index": 199,
+  "name": "Three Isle Path",
+  "matrix": 163,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VIRIDIAN_FOREST",
+  "nightMusic": "MUS_VIRIDIAN_FOREST",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 4, "to": "three_island_port", "toWarp": 0 },
+    { "x": 25, "z": 5, "to": "three_island_port", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "prospector", "looks": "fat_man", "movement": "look_south", "x": 23, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_DunsparceTunnel_EventScript_Prospector" }
+  ],
+  "signs": [
+    { "x": 21, "z": 3, "type": 2, "script": "", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_DUNSPARCE_TUNNEL_NUGGET" }
+  ],
+  "triggers": []
+}

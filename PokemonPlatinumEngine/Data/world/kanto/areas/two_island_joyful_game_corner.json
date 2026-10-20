@@ -1,0 +1,31 @@
+{
+  "key": "two_island_joyful_game_corner",
+  "index": 388,
+  "name": "Two Island",
+  "matrix": 335,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_GAME_CORNER",
+  "nightMusic": "MUS_GAME_CORNER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "two_island", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "joyful_game_corner_daddy", "looks": "balding_man", "movement": "look_east", "x": 5, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "TwoIsland_JoyfulGameCorner_EventScript_LostellesDaddy" },
+    { "id": "joyful_game_corner_biker", "looks": "biker", "movement": "look_north", "x": 5, "z": 8, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_TWO_ISLAND_GAME_CORNER_BIKER", "script": "" },
+    { "id": "joyful_game_corner_lostelle", "looks": "little_girl", "movement": "look_west", "x": 6, "z": 5, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE", "script": "TwoIsland_JoyfulGameCorner_EventScript_Lostelle" },
+    { "id": "man", "looks": "man", "movement": "look_south", "x": 4, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "TwoIsland_JoyfulGameCorner_EventScript_InfoMan" }
+  ],
+  "signs": [
+    { "x": 1, "z": 1, "type": 0, "script": "TwoIsland_JoyfulGameCorner_EventScript_ShowPokemonJumpRecords" },
+    { "x": 0, "z": 1, "type": 0, "script": "TwoIsland_JoyfulGameCorner_EventScript_ShowDodrioBerryPickingRecords" }
+  ],
+  "triggers": []
+}

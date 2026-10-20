@@ -1,0 +1,11 @@
+{
+  // The floor above Three Island's Pokémon Center (plan 19 · K9, part a): the link is down
+  "area": "three_island_pokemon_center_2f",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "cable_club_receptionist": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "cable_club_receptionist_2": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "cable_club_receptionist_3": { "name": "Receptionist", "dialog": [ "I'm sorry, the link to other players is closed for now." ] },
+    "mg_deliveryman": { "name": "Deliveryman", "dialog": [ "Nothing to deliver today, I'm afraid." ] }
+  }
+}

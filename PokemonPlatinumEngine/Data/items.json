@@ -13711,6 +13711,30 @@
     "cantBeTossed": true
   },
   {
+    "id": 9035,
+    "name": "Ruby",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A deep red gem found far under Mt. Ember. It glows with a warmth of its own.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9036,
+    "name": "Rainbow Pass",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A pass for the Seagallop ferry. It lets its holder sail to all seven of the Sevii Islands.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9100,
     "name": "Letter",
     "pocket": "KeyItems",

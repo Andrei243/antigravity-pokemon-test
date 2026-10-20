@@ -1,0 +1,92 @@
+# The Joyful Game Corner on Two Island (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/TwoIsland_JoyfulGameCorner/scripts.inc).
+#
+# VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER: 0 until the player first comes in, when Lostelle's father tells them
+# she is missing and a biker barges in with word of her on Three Island (1: the gang's leader waits on Three Island,
+# VAR_MAP_SCENE_THREE_ISLAND 2); 2 once she has been found in Berry Forest and brought home
+# (three_island_berry_forest.txt warps the player here), when her father thanks them (3); 4 once he has taken Bill's
+# Meteorite and given a Moon Stone for it, which tells the machine on One Island it can be finished
+# (VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 2). Lostelle stays here until Bill has sailed home, and then she is in
+# her own house on Three Island (cinnabar_island.txt).
+
+
+script OnEnter
+  setflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_BIKER
+  if not flag FLAG_RESCUED_LOSTELLE setflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
+  if var VAR_MAP_SCENE_CINNABAR_ISLAND >= 4 setflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
+  if var VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER == 0 goto Help
+  if var VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER == 2 goto Found
+  end
+label Help
+  scene "Lostelle is missing"
+  face joyful_game_corner_daddy player
+  speaker "Lostelle's Daddy"
+  say "Oh, a customer? I'm sorry, I can't think about games right now. It's my daughter, Lostelle."
+  say "She went off to pick berries this morning, the way she always does, and she still hasn't come home!"
+  show joyful_game_corner_biker
+  face player down
+  speaker "Biker"
+  say "Yo! Is this the place with the little girl? I saw a kid heading for the forest over on Three Island."
+  say "Our gang's taking that island over, so she'd better keep out of our way. Heh heh!"
+  hide joyful_game_corner_biker
+  face player up
+  speaker "Lostelle's Daddy"
+  say "Three Island? Then she's gone to Berry Forest, past Bond Bridge. And with a gang of bikers about..."
+  say "Please, I beg you! Would you go and look for her? The Seagallop can take you to Three Island."
+  setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER 1
+  clearflag FLAG_HIDE_THREE_ISLAND_LONE_BIKER
+  setvar VAR_MAP_SCENE_THREE_ISLAND 2
+  endscene
+  end
+label Found
+  scene "Lostelle comes home"
+  face joyful_game_corner_lostelle player
+  speaker "Lostelle"
+  say "Daddy, I'm home! A trainer saved me from a scary Hypno in the forest!"
+  face joyful_game_corner_daddy player
+  speaker "Lostelle's Daddy"
+  say "Lostelle! Oh, thank goodness. And thank you, {player}. I don't know how I can ever repay you."
+  setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER 3
+  endscene
+  end
+
+
+script Daddy
+  face joyful_game_corner_daddy player
+  speaker "Lostelle's Daddy"
+  if var VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER >= 4 goto Running
+  if var VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER == 3 goto Thanks
+  say "Please, find Lostelle! She must be somewhere in Berry Forest on Three Island."
+  end
+label Thanks
+  if not item "Meteorite" goto NoMeteorite
+  say "What's that you've got there? A Meteorite? From Celio on One Island? He promised me one for my collection!"
+  take "Meteorite"
+  say "And you brought my Lostelle home too. Please, take this as my thanks for both."
+  setflag FLAG_GOT_MOON_STONE_FROM_JOYFUL_GAME_CORNER
+  give "Moon Stone"
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F < 2 setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 2
+  setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER 4
+  say "Tell Celio thank you from me. I'm sure Bill and he could use some good news over on One Island."
+  end
+label NoMeteorite
+  say "Thank you for bringing Lostelle home. If there's anything I can do for you, just say so."
+  end
+label Running
+  say "The games are up and running again! Come and play whenever you like. Lostelle loves having company."
+  end
+
+
+script Lostelle
+  face joyful_game_corner_lostelle player
+  speaker "Lostelle"
+  say "Thank you for saving me! I'll always remember it. Next time I go berry picking, I'll bring you some!"
+  end
+
+
+script InfoMan
+  face man player
+  speaker "Man"
+  say "This game corner's games are played by friends together, over a link. Nobody's linking up these days, though."
+  say "Still, the owner keeps the place spotless. He's a good father, and a good host."
+  end

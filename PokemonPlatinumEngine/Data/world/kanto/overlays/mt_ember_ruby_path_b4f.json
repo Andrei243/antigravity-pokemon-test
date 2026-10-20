@@ -1,0 +1,19 @@
+{
+  // The Ruby Path, B4F (plan 19 · K9, part a): a room whose walls are cut with rows of raised dots, braille, letter by
+  // letter. Each stone tells its letters here in words
+  "area": "mt_ember_ruby_path_b4f",
+  "name": "Ruby Path",
+  "bgmTrack": "kanto/sevii_cave",
+  "signs": {
+    "MtEmber_RubyPath_B4F_EventScript_BrailleABC": "Raised dots are carved in the stone. They read: A, B, C.",
+    "MtEmber_RubyPath_B4F_EventScript_BrailleDEF": "Raised dots are carved in the stone. They read: D, E, F.",
+    "MtEmber_RubyPath_B4F_EventScript_BrailleGHI": "Raised dots are carved in the stone. They read: G, H, I.",
+    "MtEmber_RubyPath_B4F_EventScript_BrailleJKL": "Raised dots are carved in the stone. They read: J, K, L.",
+    "MtEmber_RubyPath_B4F_EventScript_BrailleMNO": "Raised dots are carved in the stone. They read: M, N, O.",
+    "MtEmber_RubyPath_B4F_EventScript_BraillePQRS": "Raised dots are carved in the stone. They read: P, Q, R, S.",
+    "MtEmber_RubyPath_B4F_EventScript_BrailleTUV": "Raised dots are carved in the stone. They read: T, U, V.",
+    "MtEmber_RubyPath_B4F_EventScript_BrailleWXYZ": "Raised dots are carved in the stone. They read: W, X, Y, Z.",
+    "MtEmber_RubyPath_B4F_EventScript_BraillePeriod": "Raised dots are carved in the stone: the mark that ends a sentence.",
+    "MtEmber_RubyPath_B4F_EventScript_BrailleComma": "Raised dots are carved in the stone: the mark that parts a sentence."
+  }
+}

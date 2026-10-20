@@ -1,0 +1,11 @@
+{
+  // Three Island's Poké Mart (plan 19 · K9, part a): the common counter by the badges
+  "area": "three_island_mart",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "still": true, "dialog": [ "Welcome! How can I help you?" ] },
+    "picnicker": { "name": "Picnicker", "dialog": [ "Even out here, the Mart has everything you'd need on a journey. Isn't that something?" ] },
+    "bug_catcher": { "name": "Bug Catcher", "dialog": [ "I came to the islands to catch new bugs. Heracross live in trees somewhere round here!" ] },
+    "youngster": { "name": "Youngster", "dialog": [ "If you're heading out to sea, stock up on Repels. The water's full of Tentacool." ] }
+  }
+}

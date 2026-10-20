@@ -1,0 +1,40 @@
+{
+  // Three Island (plan 19 · K9, part a): FireRed's map, our words. A small town of farmers that a gang of bikers has
+  // taken over once the player comes from the Joyful Game Corner: two townsmen argue with the gang's leader at the
+  // street's south end, the gang blocks the way and is battled four in a row, and then the town is quiet again
+  // (three_island.txt). The bikers stand behind FireRed's own flags
+  "area": "three_island",
+  "name": "Three Island",
+  "bgmTrack": "kanto/sevii_123",
+  "trees": "Round",
+  "architecture": "Isle",
+  "triggers": [
+    { "trigger": 0, "script": "BikerIntro" },
+    { "trigger": 1, "script": "BikerIntro" },
+    { "trigger": 2, "script": "BikerIntro" },
+    { "trigger": 3, "script": "BikerIntro" },
+    { "trigger": 7, "script": "BikerIntro" },
+    { "trigger": 4, "script": "BikerBattle" },
+    { "trigger": 5, "script": "BikerBattle" },
+    { "trigger": 6, "script": "BikerBattle" },
+    { "trigger": 8, "script": "BikerBattle" },
+    { "trigger": 9, "script": "BikerBattle" }
+  ],
+  "people": {
+    "three_island_antibiker1": { "name": "Man", "script": "AntiBiker1", "still": true },
+    "three_island_antibiker2": { "name": "Man", "script": "AntiBiker2", "still": true },
+    "paxton": { "name": "Paxton", "script": "Biker", "still": true },
+    "three_island_biker1": { "name": "Biker", "script": "Biker", "still": true },
+    "three_island_biker2": { "name": "Biker", "script": "Biker", "still": true },
+    "three_island_biker3": { "name": "Biker", "script": "Biker", "still": true },
+    "three_island_biker4": { "name": "Biker", "script": "Biker", "still": true },
+    "three_island_biker5": { "name": "Biker", "script": "Biker", "still": true },
+    "three_island_biker6": { "name": "Biker", "still": true, "dialog": [ "This island's ours now. Nothing but fields and sheep round here, so we're bringing some noise!" ] },
+    "woman_1": { "name": "Woman", "dialog": [ "Those bikers rode their bikes over the crops and frightened the Doduo. I hope someone sends them packing." ] },
+    "little_boy": { "name": "Little Boy", "dialog": [ "My Doduo can run faster than any bike! It just doesn't want to." ] },
+    "doduo": { "name": "Doduo", "npcType": "Pokemon", "species": "Doduo", "still": true, "dialog": [ "Doduo: Gwaa! Gwaa!" ] }
+  },
+  "signs": {
+    "ThreeIsland_EventScript_IslandSign": "Three Island\nAn island of farms, quiet and kind"
+  }
+}

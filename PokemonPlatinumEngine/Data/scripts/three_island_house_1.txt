@@ -1,0 +1,8 @@
+# Lostelle's house on Three Island (plan 19 · K9, part a), on FireRed's beats (data/maps/ThreeIsland_House1). She is
+# home once Bill has sailed back to Kanto (VAR_MAP_SCENE_CINNABAR_ISLAND 4, cinnabar_island.txt clears her flag);
+# until then she is at her father's game corner, or lost.
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_CINNABAR_ISLAND < 4 setflag FLAG_HIDE_LOSTELLE_IN_HER_HOME
+  end

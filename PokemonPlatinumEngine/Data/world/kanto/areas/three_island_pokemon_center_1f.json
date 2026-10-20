@@ -1,0 +1,29 @@
+{
+  "key": "three_island_pokemon_center_1f",
+  "index": 394,
+  "name": "Three Island",
+  "matrix": 341,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "three_island", "toWarp": 1 },
+    { "x": 1, "z": 6, "to": "three_island_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "three_island_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "rocker", "looks": "rocker", "movement": "look_south", "x": 12, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_PokemonCenter_1F_EventScript_Rocker" },
+    { "id": "lass", "looks": "lass", "movement": "wander_west_and_east", "x": 3, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_PokemonCenter_1F_EventScript_Lass" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_south", "x": 11, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_PokemonCenter_1F_EventScript_Sailor" }
+  ],
+  "signs": [],
+  "triggers": []
+}

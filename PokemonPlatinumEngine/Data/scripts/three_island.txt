@@ -1,0 +1,110 @@
+# Three Island (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/ThreeIsland/scripts.inc).
+#
+# A gang of bikers has landed on the island and stands across its street. VAR_MAP_SCENE_THREE_ISLAND: 2 once Lostelle's
+# father has asked for help (two_island_joyful_game_corner.txt), when the gang's leader, Paxton, is there too, arguing
+# with two of the townsmen; the first step onto the row below them (the area's triggers 0 to 3 and 7) lets the player
+# hear it (3). The next step north (triggers 4 to 6, 8 and 9) has the gang ask whether the player wants trouble: no,
+# and the player is pushed back a step; yes, and three of the gang and then Paxton are battled one after another,
+# after which the whole gang leaves the island (4: FLAG_HIDE_THREE_ISLAND_BIKERS and
+# FLAG_HIDE_THREE_ISLAND_LONE_BIKER). One townsman then gives a Full Restore (FLAG_GOT_FULL_RESTORE_FROM_THREE_ISLAND_DEFENDER,
+# a flag of ours) and the other says where Lostelle went. Both go home once she is found.
+
+
+script OnEnter
+  if flag FLAG_RESCUED_LOSTELLE setflag FLAG_HIDE_THREE_ISLAND_ANTIBIKERS
+  if var VAR_MAP_SCENE_THREE_ISLAND < 2 setflag FLAG_HIDE_THREE_ISLAND_LONE_BIKER
+  end
+
+
+# The row below the gang (triggers 0 to 3 and 7, while the variable is 2)
+script BikerIntro
+  scene "The bikers on Three Island"
+  face player up
+  face three_island_antibiker1 right
+  speaker "Man"
+  say "You lot have no business here! Get off our island and take your noisy bikes with you!"
+  face paxton left
+  speaker "Paxton"
+  say "Or what, old man? This island's ours now. You farmers can go and live somewhere else."
+  emote paxton exclaim
+  face paxton down
+  say "Hah? And who are you supposed to be? Another one who wants to tell us what to do?"
+  setvar VAR_MAP_SCENE_THREE_ISLAND 3
+  endscene
+  end
+
+
+# The row before them (triggers 4 to 6, 8 and 9, while the variable is 3)
+script BikerBattle
+  face player up
+  speaker "Biker"
+  say "Hey! You looking for trouble, kid?"
+  ask "Want to make something of it?"
+  if no goto Back
+  scene "The bikers battled"
+  say "Big mistake! Let's see what you've got!"
+  battle three_island_biker1 as "kanto_biker_goon"
+  speaker "Biker"
+  say "No way! Somebody else take this kid!"
+  battle three_island_biker2 as "kanto_biker_goon_2"
+  speaker "Biker"
+  say "Boss! This kid's too tough for us!"
+  battle three_island_biker3 as "kanto_biker_goon_3"
+  speaker "Paxton"
+  say "Pathetic, the lot of you. Fine, I'll deal with this one myself!"
+  battle paxton as "kanto_cue_ball_paxton"
+  speaker "Paxton"
+  say "Grr... All right, you win! This island's too boring for us anyway. Let's ride, boys!"
+  fade out 0.4
+  hide paxton
+  hide three_island_biker1
+  hide three_island_biker2
+  hide three_island_biker3
+  hide three_island_biker4
+  hide three_island_biker5
+  hide three_island_biker6
+  setflag FLAG_HIDE_THREE_ISLAND_BIKERS
+  setflag FLAG_HIDE_THREE_ISLAND_LONE_BIKER
+  setvar VAR_MAP_SCENE_THREE_ISLAND 4
+  fade in 0.4
+  endscene
+  end
+label Back
+  say "Then get lost!"
+  walk player down 1
+  end
+
+
+script AntiBiker1
+  face three_island_antibiker1 player
+  speaker "Man"
+  if var VAR_MAP_SCENE_THREE_ISLAND >= 4 goto Gone
+  say "Those bikers think they can push us around. Well, I won't be pushed!"
+  end
+label Gone
+  if flag FLAG_GOT_FULL_RESTORE_FROM_THREE_ISLAND_DEFENDER goto Given
+  say "You drove that whole gang off our island! Here, you've earned this."
+  setflag FLAG_GOT_FULL_RESTORE_FROM_THREE_ISLAND_DEFENDER
+  give "Full Restore"
+  end
+label Given
+  say "Peace and quiet again. The whole island owes you, you know."
+  end
+
+
+script AntiBiker2
+  face three_island_antibiker2 player
+  speaker "Man"
+  if var VAR_MAP_SCENE_THREE_ISLAND >= 4 goto Gone
+  say "There are so many of them... We can't drive them off on our own."
+  end
+label Gone
+  say "Lostelle from Two Island? Yes, I saw her go over Bond Bridge to the forest. Please, find her!"
+  end
+
+
+script Biker
+  speaker "Biker"
+  say "What are you staring at? Beat it, kid. This street's ours."
+  end

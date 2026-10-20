@@ -1,0 +1,8 @@
+{
+  // A house on Three Island (plan 19 · K9, part a)
+  "area": "three_island_house_5",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "little_girl": { "name": "Little Girl", "dialog": [ "Lostelle and I play together every day. She knows where every berry tree in the forest is!" ] }
+  }
+}

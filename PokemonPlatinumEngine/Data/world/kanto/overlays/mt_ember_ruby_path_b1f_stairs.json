@@ -1,0 +1,6 @@
+{
+  // The Ruby Path's stairs below B1F (plan 19 · K9, part a)
+  "area": "mt_ember_ruby_path_b1f_stairs",
+  "name": "Ruby Path",
+  "bgmTrack": "kanto/sevii_cave"
+}

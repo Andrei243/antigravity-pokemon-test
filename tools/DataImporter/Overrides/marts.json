@@ -2,6 +2,11 @@
 // specialties of marts.json by their keys.
 {
   "specialties": {
+    // Two Island's stall (plan 19 · K9, part a), in FireRed's order (TwoIsland_Items1 to 3): its stock grows once
+    // Lostelle is home and again after the Hall of Fame (two_island.txt chooses the counter)
+    "two_island_1": [ "Great Ball", "Fresh Water" ],
+    "two_island_2": [ "Ultra Ball", "Great Ball", "Soda Pop", "Fresh Water" ],
+    "two_island_3": [ "Ultra Ball", "Great Ball", "Lemonade", "Soda Pop", "Fresh Water", "Moomoo Milk" ],
     // The Goldenrod Department Store (plan 20 · J7), in HeartGold's order (src/scrcmd_mart.c, the lists the store's
     // scripts ask for with SpecialMartBuy 3 to 7): the second floor's two counters, then the third, fourth and fifth
     "goldenrod_2f_medicine": [ "Potion", "Super Potion", "Hyper Potion", "Max Potion", "Revive", "Antidote", "Paralyze Heal", "Burn Heal", "Ice Heal", "Awakening", "Full Heal" ],

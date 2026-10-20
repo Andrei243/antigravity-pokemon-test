@@ -174,7 +174,50 @@ label Train
   say "Your Pokémon grows stronger by battling. Viridian City is just north of here, up Route 1."
   end
 label AfterTheDex
+  if nationaldex goto National
+  if flag FLAG_SYS_GAME_CLEAR goto Champion
   say "Pokémon are waiting for you all over the world, {player}. Fill that Pokédex with every one you meet!"
+  end
+label National
+  say "With the National Pokédex, you can record Pokémon from far beyond Kanto. I can hardly wait to see it filled!"
+  end
+# FireRed's PalletTown_ProfessorOaksLab_EventScript_NationalDexScene (plan 19 · K9, part a): after the Hall of Fame,
+# once the player has been to One Island (met Celio there: VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 1 or more) and
+# caught sixty species, Oak upgrades both Pokédexes to the National one. FireRed has him meet the player outside the
+# house; here he gives it at his desk (docs/mechanics/rulings.md, "The first Sevii Islands").
+label Champion
+  say "You became Champion, {player}! I always knew you had it in you. Now, let me see your Pokédex."
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F < 1 goto NotTheIslands
+  if var CAUGHT < 60 goto NotEnough
+  scene "The National Dex"
+  say "Remarkable! You've caught so many. And you've seen the Pokémon of the islands to the south, too."
+  say "I've been studying them myself, and there are far more kinds of Pokémon in the world than Kanto's alone."
+  speaker "{rival}"
+  music "kanto/rival"
+  clearflag FLAG_HIDE_RIVAL_IN_LAB
+  place oaks_lab_rival 6 11 up
+  show oaks_lab_rival
+  walk oaks_lab_rival up 6
+  say "Gramps! I heard you were upgrading the Pokédex. You'd better not leave me out!"
+  music area
+  speaker "Prof. Oak"
+  say "Of course not, {rival}. Both of you, hand me your Pokédexes. There... It's done!"
+  nationaldex
+  fanfare keyitem
+  text "{player}'s Pokédex was upgraded to the National Pokédex!"
+  say "Now it can record Pokémon from every land. Go out and meet them all, the two of you!"
+  speaker "{rival}"
+  say "This time I'll fill it first, {player}. You'll see! Smell ya!"
+  walk oaks_lab_rival down 6 fast
+  hide oaks_lab_rival
+  setflag FLAG_HIDE_RIVAL_IN_LAB
+  endscene
+  end
+label NotTheIslands
+  say "Hmm, a fine effort. But there are Pokémon out on the islands south of Cinnabar that you've never met. Have you been there?"
+  end
+label NotEnough
+  say "Hmm, a good start. Keep at it! Catch sixty kinds of Pokémon and show me, and I'll have something special for you."
   end
 label Parcel
   scene "Oak's invention"

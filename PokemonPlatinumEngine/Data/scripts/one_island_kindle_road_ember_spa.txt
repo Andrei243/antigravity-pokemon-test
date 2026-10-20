@@ -1,0 +1,36 @@
+# The Ember Spa on Kindle Road (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are our own,
+# on FireRed's beats (data/maps/OneIsland_KindleRoad_EmberSpa/scripts.inc).
+#
+# Stepping into the hot spring (the area's trigger 0, while VAR_TEMP_1 is 0) heals the team once a visit, and the old
+# man by the water gives HM06, Rock Smash (FLAG_GOT_HM06, FireRed's).
+
+
+script OnEnter
+  setvar VAR_TEMP_1 0
+  end
+
+
+script SpaHeal
+  speaker none
+  text "The water is pleasantly hot. {player}'s Pokémon soaked in the spring with {player}."
+  fade out 0.4
+  heal
+  fade in 0.4
+  text "Every Pokémon looks refreshed!"
+  setvar VAR_TEMP_1 1
+  end
+
+
+script RockSmashMan
+  face old_man_1_2 player
+  speaker "Old Man"
+  if flag FLAG_GOT_HM06 goto Given
+  say "The rocks round this spring are cracked all over from the volcano's rumbling. I smash them for exercise."
+  say "Here, you take this. A young trainer should have it more than an old man."
+  setflag FLAG_GOT_HM06
+  give "HM06"
+  say "That's Rock Smash. It breaks a cracked rock clean apart, and something might be hiding underneath."
+  end
+label Given
+  say "Ahh, a good soak after smashing rocks. Nothing better for old bones."
+  end

@@ -1,0 +1,40 @@
+# Berry Forest (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/ThreeIsland_BerryForest/scripts.inc).
+#
+# Lostelle is at the forest's far end once her father has asked for help (VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER
+# 1, two_island_joyful_game_corner.txt). Spoken to, she is set on by a Hypno; once it is dealt with she gives an
+# Iapapa Berry, and the player takes her home (FLAG_RESCUED_LOSTELLE, FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST; the game
+# corner's variable 2, and a warp into the game corner, where her father's scene plays).
+
+
+script OnEnter
+  if flag FLAG_RESCUED_LOSTELLE end
+  if var VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER == 0 setflag FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST
+  if var VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER >= 1 clearflag FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST
+  end
+
+
+script Lostelle
+  scene "Lostelle in Berry Forest"
+  face berry_forest_lostelle player
+  speaker "Lostelle"
+  say "Who's there? Oh! You're a trainer! Please help me, a scary Pokémon keeps following me!"
+  speaker none
+  cry "Hypno"
+  text "A Hypno stepped out from behind the trees!"
+  wildbattle "Hypno" 30
+  speaker "Lostelle"
+  say "It's gone... Thank you! I came to pick berries, and then I got lost, and then that Pokémon came."
+  say "Here, this is the best berry I found today. You can have it."
+  give "Iapapa Berry"
+  say "Will you take me home? Daddy will be so worried."
+  fade out 0.6
+  hide self
+  setflag FLAG_RESCUED_LOSTELLE
+  setflag FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST
+  clearflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
+  setvar VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER 2
+  warp "TwoIsland_JoyfulGameCorner" 6 6 up
+  fade in 0.4
+  endscene
+  end

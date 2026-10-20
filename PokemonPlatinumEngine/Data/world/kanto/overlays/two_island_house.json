@@ -1,0 +1,9 @@
+{
+  // A house on Two Island (plan 19 · K9, part a): FireRed's Move Maniac, who reminds a Pokémon of a move it has
+  // forgotten. Nobody relearns a move in this game yet (plan 12 · Q19), so he says what he would do
+  "area": "two_island_house",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "fat_man": { "name": "Move Maniac", "dialog": [ "I know every move a Pokémon has ever forgotten. Someday I'll help yours remember them all.", "For now, I'm still writing them down." ] }
+  }
+}
