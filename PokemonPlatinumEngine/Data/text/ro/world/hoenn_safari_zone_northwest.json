@@ -1,0 +1,23 @@
+{
+  "people": {
+    "man_1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Huff... huff... I made it all the way out here... and now I'm too tired to catch anything..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -776,5 +776,59 @@
         "Sunt Jeffrey! Am găsit un Surskit patinând pe o băltoacă în ploaie. Insectele sunt cele mai tari, nu-i așa?"
       ]
     }
+  ],
+  "HoennWalter": [
+    {
+      "en": [
+        "Walter"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good day, this is Walter. My Manectric and I walked to the Safari Zone's gate and back. Splendid exercise."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennJessica": [
+    {
+      "en": [
+        "Jessica"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi, it's Jessica! My Kecleon hid in the curtains all morning. I only found it when it sneezed!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennCristin": [
+    {
+      "en": [
+        "Cristin"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Cristin here. I've been training every day since our battle. Don't think I've forgotten!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

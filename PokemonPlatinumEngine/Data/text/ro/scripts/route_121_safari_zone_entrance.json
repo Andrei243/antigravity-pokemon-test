@@ -1,0 +1,154 @@
+{
+  "Counter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Safari Zone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's $500, thank you. Here are your Safari Balls."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received 30 Safari Balls!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We'll let you know when your game is over. Until then, off you go into the wild!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough money."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All right. Please come and play another time!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "CounterTalk": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Walk along the counter toward the zone's door, and I'll ask whether you'd like to play the Safari Game."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Welcome": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Safari Zone! Pokémon you'll hardly ever see in Hoenn live here in the wild."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And trainers may catch them to keep. Come in and enjoy yourself!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Explain": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Safari Zone! Is this your first visit?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You go in with 30 Safari Balls, the only balls you may throw inside."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The game is over when you've thrown your last ball, or when you've walked 500 steps."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come in and enjoy the Safari Zone!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

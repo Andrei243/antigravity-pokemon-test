@@ -1,0 +1,104 @@
+{
+  "Disguise": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, are you one of the new recruits too? We took on a whole crowd for the Radio Tower job and ran short of uniforms."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The photo studio here keeps a rack of them for its pictures, so I'm helping myself. You'd better change too!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} pulled on a Team Rocket uniform from the studio's rack."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Look at you! Very sharp. Just don't go scaring people in the street dressed like that, all right?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Look at you! Very sharp. Just don't go scaring people in the street dressed like that, all right?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We ran short of uniforms for the Radio Tower job. Good thing the photo studio has a rack of them."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door": [
+    {
+      "en": [
+        "STAFF ONLY BEYOND THIS DOOR"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} turned the Basement Key in the lock."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door slid open!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

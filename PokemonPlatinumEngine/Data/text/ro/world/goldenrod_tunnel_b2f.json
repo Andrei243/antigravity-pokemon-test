@@ -1,0 +1,593 @@
+{
+  "people": {
+    "d37r0104_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: A kid, down here? Somebody's let you wander a long way from home."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Fine, go on, get lost in the shutters for all I care."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0104_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: These passages are ours now. Turn round!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Ours... for about another minute, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0104_rocketm_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: The switches? Don't you dare touch them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Go on, then. See if you can make sense of them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0104_rocketw": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Nobody goes near the warehouse. Boss's orders!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: The boss isn't going to like this one bit."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0104_thief": {
+      "name": {
+        "en": [
+          "Orson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Burglar Orson: With Team Rocket keeping everyone busy, a fellow can pick up all sorts down here."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Burglar Orson: I'll find something else to pick up. Not a fight, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0104_thief_2": {
+      "name": {
+        "en": [
+          "Duncan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Burglar Duncan: Hand over your money and nobody needs to battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Burglar Duncan: I should have just stuck to the shops."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_0_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_0_1": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_0_2": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_1_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_1_1": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_1_2": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_2_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_3_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_4_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_4_1": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_4_2": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_5_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_5_1": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_5_2": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_6_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_6_1": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_6_2": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_7_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_8_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_gate_9_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_purple_gate_0": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_purple_gate_1": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "b2f_purple_gate_2": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "goldenrod_b2f_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

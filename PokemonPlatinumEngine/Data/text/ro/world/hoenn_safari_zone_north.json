@@ -1,0 +1,41 @@
+{
+  "people": {
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came looking for water Pokémon nobody sees in Hoenn. Is there a lake around here somewhere?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm going to catch heaps of rare Pokémon and trade them with my friends back home!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,184 @@
+{
+  "people": {
+    "d23r0102_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Radio has it all: music, Pokémon news, surprises, stories that make you cry. All it's missing is pictures.",
+          "...Then again, I suppose that's what television is for."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "d23r0102_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0102_tsure_poke_static_jigglypuff": {
+      "name": {
+        "en": [
+          "Jigglypuff"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0102_policeman": {
+      "name": {
+        "en": [
+          "Policeman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0102_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: This tower belongs to Team Rocket now. Who let a kid in here?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Fine, you win this one. You still can't stop what we've started."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0102_rocketw": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: We're putting our own shows on the air. Tune in and listen to Team Rocket!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: No... Our big broadcast is ruined!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0102_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Every radio in Johto will hear us! Get lost before I make you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Ugh... I wasn't ready."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0102_rocketm_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Nobody comes up these stairs without going through me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Go on, then. The ones upstairs are tougher than me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D23R0102_000+1": {
+      "en": [
+        "2F Sales"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D23R0102_001+1": {
+      "en": [
+        "Pokémon Talk with Professor Oak\nThe show everyone's listening to!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D23R0102_002+1": {
+      "en": [
+        "2F Studio 2"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

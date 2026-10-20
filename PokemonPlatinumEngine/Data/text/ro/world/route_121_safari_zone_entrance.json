@@ -1,0 +1,44 @@
+{
+  "people": {
+    "picnicker": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper_2": {
+      "name": {
+        "en": [
+          "Attendant"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route121_SafariZoneEntrance_EventScript_TrainerTipSign": {
+      "en": [
+        "Safari Zone Trainer Tip!\nCreep up close to a Pokémon before you throw a Safari Ball."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "Gate": [
+    {
+      "en": [
+        "The shutter is shut tight. A switch somewhere must work it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Not so fast. What I told you before was a lie. I thought if I stuck to you, you'd lead me to that Lance."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He never turned up. Never mind. I meant to beat you after him, but you'll do first. I always settle my debts!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...I don't get it. Was that Lance right? That I don't treat my Pokémon properly? Love... trust... Is that what I'm missing?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Is that why I keep losing? I don't understand. But I'm not finished. Not now, not like this. I'll never give up!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

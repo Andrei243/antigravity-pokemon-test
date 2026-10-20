@@ -1,0 +1,105 @@
+{
+  "people": {
+    "d37r0103_gsfighter": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Come on, Machoke! Put your back into it and shift that crate!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0103_gsfighter_2": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "With Machoke on the job this place is swept in no time. Anything left lying on the floor is rubbish, so help yourself!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0103_tsure_poke_static_machoke": {
+      "name": {
+        "en": [
+          "Machoke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machoke: Maaa... chok!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0103_tsure_poke_static_machoke_2": {
+      "name": {
+        "en": [
+          "Machoke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machoke: Maaa... chok!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0103_tsure_poke_static_machoke_3": {
+      "name": {
+        "en": [
+          "Machoke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Machoke: Maaa... chok!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0103_babyboy1_9": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
