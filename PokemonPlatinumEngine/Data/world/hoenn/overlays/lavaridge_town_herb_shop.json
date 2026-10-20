@@ -1,0 +1,11 @@
+{
+  // Lavaridge Town's herb shop (plan 21 · H4, part b): Emerald's counter of bitter medicine, and the old man who hands a
+  // visitor Charcoal (lavaridge_town_herb_shop.txt)
+  "area": "lavaridge_town_herb_shop",
+  "bgmTrack": "hoenn/oldale",
+  "people": {
+    "woman_2": { "name": "Clerk", "script": "HerbClerk" },
+    "old_man": { "name": "Old Man", "script": "OldMan" },
+    "expert_m": { "name": "Old Man", "dialog": [ "Herbal medicine does the job, I'll grant you. But it's so bitter your Pokémon will sulk for days!" ] }
+  }
+}

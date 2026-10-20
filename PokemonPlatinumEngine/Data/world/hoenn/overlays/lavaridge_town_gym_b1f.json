@@ -1,0 +1,15 @@
+{
+  // The floor of steam under Lavaridge's Gym (plan 21 · H4, part b): its vents blow whoever steps on them back up into
+  // the hall above (the importer's warp panels). The vent under Eli, the hiker who stands in it, would throw its rider
+  // into the hall's wall above (Emerald keeps it under its trainer for good), so it is shut
+  "area": "lavaridge_town_gym_b1f",
+  "bgmTrack": "hoenn/gym",
+  "arenaType": "Fire",
+  "locked": [ 20 ],
+  "people": {
+    "jace": { "name": "Jace", "trainer": { "dialogueBefore": "Kindler Jace: Down here the steam never stops. Neither does my fire!", "dialogueAfter": "Kindler Jace: My fire went out in all this steam." } },
+    "keegan": { "name": "Keegan", "trainer": { "dialogueBefore": "Kindler Keegan: You fell through the floor? Ha! Everyone does. Now battle me!", "dialogueAfter": "Kindler Keegan: The vents will take you back up. Good luck finding the right one." } },
+    "jeff": { "name": "Jeff", "trainer": { "dialogueBefore": "Kindler Jeff: Two Slugma, double the heat! Let's go!", "dialogueAfter": "Kindler Jeff: Double the heat, and still not enough." } },
+    "eli": { "name": "Eli", "trainer": { "dialogueBefore": "Hiker Eli: I came for the hot springs and stayed for the battles. Ready?", "dialogueAfter": "Hiker Eli: Ahh, I'll go and soak my sore feet now." } }
+  }
+}

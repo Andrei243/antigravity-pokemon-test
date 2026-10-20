@@ -102,11 +102,14 @@ public sealed class GbaWorld
             Fill(matrix);
             Heights(matrix);
         }
-        // Where a faller comes down: the warp each hole names, on the floor below (plan 19 · K6, part b)
+        // Where a faller comes down: the warp each hole names, on the floor below (plan 19 · K6, part b); and where a
+        // panel throws its rider (plan 21 · H4, part b: Lavaridge's Gym, whose vents below pop their rider up onto plain
+        // sand above, a tile the original never takes since its behaviour is no warp's)
         foreach (var matrix in Matrices)
             foreach (var (map, _, ox, oy) in matrix.Maps)
                 foreach (var w in map.Warps)
-                    if (matrix.Has(ox + w.X, oy + w.Y) && (TileBehavior)matrix.Behaviour[(oy + w.Y) * matrix.Width + ox + w.X] == TileBehavior.Hole)
+                    if (matrix.Has(ox + w.X, oy + w.Y)
+                        && (TileBehavior)matrix.Behaviour[(oy + w.Y) * matrix.Width + ox + w.X] is TileBehavior.Hole or TileBehavior.WarpPanel)
                         holeTargets.Add((w.DestMap, w.DestWarp));
     }
 
@@ -142,7 +145,8 @@ public sealed class GbaWorld
     /// <summary>
     /// Whether a map's warp is only where someone falling through a hole above comes down (plan 19 · K6, part b): a
     /// hole names it, and its own tile is no way anywhere (the Seafoam Islands' floors keep one under each hole, on
-    /// plain floor or water). The original never takes such a warp; here it is written as a landing
+    /// plain floor or water); or where a panel puts its rider down on plain floor (plan 21 · H4, part b: Lavaridge's
+    /// Gym). The original never takes such a warp; here it is written as a landing
     /// (<see cref="AreaWarp.Landing"/>), which leads nowhere and shuts nothing.
     /// </summary>
     public bool IsLanding(string mapId, int warp, TileBehavior own) =>
