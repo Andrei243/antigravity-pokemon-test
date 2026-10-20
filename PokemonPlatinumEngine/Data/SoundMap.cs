@@ -17,6 +17,13 @@ public sealed class SoundMapFile
 
     /// <summary>Trainer class → the short name of a battle theme (<c>gym</c>, <c>rival</c>, <c>galactic</c>…).</summary>
     public Dictionary<string, string> BattleThemes { get; set; } = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Trainer class → the file of an eye song of a region's own folder (<c>eye_magma</c>), played in a region that has
+    /// one in place of the class's eye theme (plan 21 · H4, part b: Emerald's two teams each have an eye song of their
+    /// own); a region without the file plays the eye theme.
+    /// </summary>
+    public Dictionary<string, string> EyeSongs { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 }
 
 public static class SoundMap
@@ -30,10 +37,12 @@ public static class SoundMap
         {
             Comment = read.Comment,
             EyeThemes = new Dictionary<string, string>(read.EyeThemes, StringComparer.OrdinalIgnoreCase),
-            BattleThemes = new Dictionary<string, string>(read.BattleThemes, StringComparer.OrdinalIgnoreCase)
+            BattleThemes = new Dictionary<string, string>(read.BattleThemes, StringComparer.OrdinalIgnoreCase),
+            EyeSongs = new Dictionary<string, string>(read.EyeSongs, StringComparer.OrdinalIgnoreCase)
         };
     });
 
     public static IReadOnlyDictionary<string, string> EyeThemes => file.Value.EyeThemes;
     public static IReadOnlyDictionary<string, string> BattleThemes => file.Value.BattleThemes;
+    public static IReadOnlyDictionary<string, string> EyeSongs => file.Value.EyeSongs;
 }

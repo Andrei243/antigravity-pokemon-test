@@ -1,0 +1,33 @@
+# A battle with Team Magma's or Team Aqua's leader (Emerald's battle with Maxie and Archie): a fierce, driving riff in
+# F minor, a pulse lead hammering up the chord over brass stabs and a pounding octave bass, darker and faster than the
+# grunts' battle. Original composition for this game (plan 21 · H4, part b).
+title Battle! Team Leader
+tempo 166
+meter 4/4
+lowhptempo 1.07
+reverb 0.16
+
+track lead pulse lowhp=sawlead vol=0.72 pan=0.05 rev=0.18
+  o5 f8 r8 f8 r8 a-8 r8 o6 c8 r8 | o6 d-4 c4 o5 b-4 g4 | L o5 f4 a-8 o6 c8 f4 c4 | o5 d-4 f8 a-8 o6 d-4 o5 a-4 |
+  o5 b-4 o6 d-8 f8 d-4 o5 b-4 | o5 c4 e8 g8 o6 c4 o5 g4 | o6 f4 c8 o5 a-8 f4 a-4 | o5 a-4 f8 a-8 d-4 f4 |
+  o5 e-4 g8 b-8 o6 e-4 o5 b-4 | o6 c2 o5 g4 o6 c4 |
+
+track brass brass unless=lowhp vol=0.32 pan=-0.25 rev=0.2
+  o4 (f a- >c)8 r8 (f a- >c)8 r8 (f a- >c)8 r8 (f a- >c)8 r8 | o4 (d- f b-)4 (c e g)4 (d- f b-)4 (c e g)4 | L o4 (f a- >c)1 | o4 (d- f a-)1 |
+  o4 (d- f b-)1 | o4 (c e g)1 | o4 (f a- >c)1 | o4 (d- f a-)1 |
+  o4 (e- g b-)1 | o4 (c e g)1 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 f8 r8 f8 r8 f8 r8 f8 r8 | o3 d-4 c4 d-4 c4 | L [ o2 f8 o3 f8 ]4 | [ o2 d-8 o3 d-8 ]4 |
+  [ o2 b-8 o3 b-8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 f8 o3 f8 ]4 | [ o2 d-8 o3 d-8 ]4 |
+  [ o2 e-8 o3 e-8 ]4 | [ o2 c8 o3 c8 ]4 |
+
+track drums kit vol=0.5 rev=0.1
+  v105 (b c)8 r8 b8 r8 (b c)8 r8 b8 r8 | (b c)8 r8 b8 r8 s16 s16 s16 s16 s8 s8 | L [ b8 b8 s8 b8 b8 b8 s8 b8 | ]7 b8 b8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.4 pan=0.15 rev=0.1
+  r1 | r1 | L v64 [ h8 v42 h8 v64 h8 v42 h8 v64 h8 v42 h8 v64 h8 v42 h8 v64 | ]8
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 f16 r16 f16 r16 r4 f16 r16 f16 r16 r4 | ]8
