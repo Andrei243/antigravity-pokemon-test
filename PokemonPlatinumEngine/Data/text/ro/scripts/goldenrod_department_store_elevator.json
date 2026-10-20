@@ -19,21 +19,12 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-      ],
-      "was": [
-        "Bun venit. La ce etaj doriți?",
+        "Bine ai venit. La ce etaj dorești să mergi?",
         "ETAJUL 6",
         "ETAJUL 5",
         "ETAJUL 4",
         "ETAJUL 3",
-        "PARTER SAU ETAJUL 2",
+        "ETAJELE DE JOS",
         "Rămân aici"
       ]
     },
@@ -46,16 +37,10 @@
         "Stay here"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ],
-      "was": [
-        "Parterul sau etajul al doilea?",
-        "PARTER",
+        "Etajul doi, parterul sau subsolul?",
         "ETAJUL 2",
+        "PARTER",
+        "SUBSOL",
         "Rămân aici"
       ]
     },

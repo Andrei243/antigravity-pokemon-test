@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "...Then again, I suppose that's what television is for."
         ],
         "text": [
-          "",
-          ""
+          "La radio găsești de toate: muzică, știri Pokémon, surprize, povești care te fac să plângi. Îi lipsesc doar imaginile.",
+          "...Deși, cred că pentru asta există televiziunea."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Jigglypuff"
         ],
         "text": [
-          ""
+          "Jigglypuff"
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Policeman"
         ],
         "text": [
-          ""
+          "Polițistul"
         ]
       }
     },
@@ -56,7 +56,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -64,7 +64,7 @@
           "Grunt: This tower belongs to Team Rocket now. Who let a kid in here?"
         ],
         "text": [
-          ""
+          "Grunt: Turnul ăsta aparține acum Echipei Rocket. Cine a lăsat un copil să intre aici?"
         ]
       },
       "after": {
@@ -72,7 +72,7 @@
           "Grunt: Fine, you win this one. You still can't stop what we've started."
         ],
         "text": [
-          ""
+          "Grunt: Bine, ai câștigat de data asta. Tot nu poți opri ce am început."
         ]
       }
     },
@@ -82,7 +82,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -90,7 +90,7 @@
           "Grunt: We're putting our own shows on the air. Tune in and listen to Team Rocket!"
         ],
         "text": [
-          ""
+          "Grunt: Ne difuzăm propriile emisiuni. Dați drumul la radio și ascultați Echipa Rocket!"
         ]
       },
       "after": {
@@ -98,7 +98,7 @@
           "Grunt: No... Our big broadcast is ruined!"
         ],
         "text": [
-          ""
+          "Grunt: Nu... Marea noastră transmisiune e ruinată!"
         ]
       }
     },
@@ -108,7 +108,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -116,7 +116,7 @@
           "Grunt: Every radio in Johto will hear us! Get lost before I make you!"
         ],
         "text": [
-          ""
+          "Grunt: Toate radiourile din Johto ne vor auzi! Dispari înainte să te fac eu!"
         ]
       },
       "after": {
@@ -124,7 +124,7 @@
           "Grunt: Ugh... I wasn't ready."
         ],
         "text": [
-          ""
+          "Grunt: Uf... Nu eram pregătit."
         ]
       }
     },
@@ -134,7 +134,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -142,7 +142,7 @@
           "Grunt: Nobody comes up these stairs without going through me!"
         ],
         "text": [
-          ""
+          "Grunt: Nimeni nu urcă scările astea fără să treacă de mine!"
         ]
       },
       "after": {
@@ -150,7 +150,7 @@
           "Grunt: Go on, then. The ones upstairs are tougher than me."
         ],
         "text": [
-          ""
+          "Grunt: Hai, urcă atunci. Cei de sus sunt mai tari decât mine."
         ]
       }
     }
@@ -161,7 +161,7 @@
         "2F Sales"
       ],
       "text": [
-        ""
+        "Et. 2 Vânzări"
       ]
     },
     "D23R0102_001+1": {
@@ -169,7 +169,7 @@
         "Pokémon Talk with Professor Oak\nThe show everyone's listening to!"
       ],
       "text": [
-        ""
+        "Discuții Pokémon cu Profesorul Oak\nEmisiunea pe care o ascultă toți!"
       ]
     },
     "D23R0102_002+1": {
@@ -177,7 +177,7 @@
         "2F Studio 2"
       ],
       "text": [
-        ""
+        "Et. 2 Studioul 2"
       ]
     }
   }

@@ -5,7 +5,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "We're on the air twenty-four hours a day. If the shows never sleep, neither do I!"
       ],
       "text": [
-        ""
+        "Emitem douăzeci și patru de ore pe zi. Dacă emisiunile nu dorm niciodată, nici eu!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "A Trainer's Pokémon is a partner, not a tool. Team Rocket wants to bend them to its will. It's monstrous."
       ],
       "text": [
-        ""
+        "Pokémonul unui Antrenor e un partener, nu o unealtă. Echipa Rocket vrea să-i supună voinței ei. E monstruos."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeia"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Their boss has shut himself away upstairs, past the shutters. Only the Director could open them, and he's on the fifth floor."
       ],
       "text": [
-        ""
+        "Șeful lor s-a închis sus, dincolo de oblonuri. Doar Directorul le-ar putea deschide, iar el e la etajul cinci."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Please, help him!"
       ],
       "text": [
-        ""
+        "Ajută-l, te rog!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Is the Director all right? Please tell me he's safe..."
       ],
       "text": [
-        ""
+        "Directorul e bine? Te rog, spune-mi că e în siguranță..."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "You did it! You chased Team Rocket out of the tower! Here, please take this, with all our thanks."
       ],
       "text": [
-        ""
+        "Ai reușit! Ai izgonit Echipa Rocket din turn! Ia, te rog, asta, cu toată recunoștința noastră."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "TM11 is Sunny Day. It makes the sun blaze for a while, and Fire-type moves burn all the hotter."
       ],
       "text": [
-        ""
+        "TM11 este Zi Însorită. Face soarele să ardă o vreme, iar mișcările de tip Foc ard și mai tare."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "You were wonderful. The whole tower is talking about you!"
       ],
       "text": [
-        ""
+        "Ai fost de neîntrecut! Tot turnul vorbește despre tine!"
       ]
     }
   ],
@@ -89,7 +89,7 @@
         "The shutter is locked. It must open with a Card Key."
       ],
       "text": [
-        ""
+        "Oblonul e încuiat. Se deschide, probabil, cu o Card-Cheie."
       ]
     }
   ],
@@ -99,7 +99,7 @@
         "It's a slot for a Card Key."
       ],
       "text": [
-        ""
+        "E o fantă pentru o Card-Cheie."
       ]
     },
     {
@@ -107,7 +107,7 @@
         "{player} slid the Card Key into the slot."
       ],
       "text": [
-        ""
+        "{player} a băgat Card-Cheia în fantă."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "The shutter rattled open!"
       ],
       "text": [
-        ""
+        "Oblonul s-a deschis zdrăngănind!"
       ]
     },
     {
@@ -123,7 +123,7 @@
         "It's a slot for a Card Key. The shutter beside it stands open."
       ],
       "text": [
-        ""
+        "E o fantă pentru o Card-Cheie. Oblonul de lângă ea stă deschis."
       ]
     }
   ]

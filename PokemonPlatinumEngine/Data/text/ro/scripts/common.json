@@ -1533,7 +1533,7 @@
         "Brrrring! Brrrring! It's the Pokégear..."
       ],
       "text": [
-        ""
+        "Țârrr! Țârrr! E Pokégearul..."
       ]
     },
     {
@@ -1541,7 +1541,7 @@
         "Prof. Elm"
       ],
       "text": [
-        ""
+        "Profesorul Elm"
       ]
     },
     {
@@ -1549,7 +1549,7 @@
         "{player}! Is that you? Have you had the radio on? Every station's been playing the same thing for an hour."
       ],
       "text": [
-        ""
+        "{player}! Tu ești? Ai ascultat radioul? Toate posturile transmit același lucru de-o oră."
       ]
     },
     {
@@ -1557,7 +1557,7 @@
         "It's Team Rocket! They're broadcasting from the Radio Tower in Goldenrod City. They say they've taken it over!"
       ],
       "text": [
-        ""
+        "E Echipa Rocket! Transmit de la Turnul Radio din Goldenrod. Spun că l-au ocupat!"
       ]
     },
     {
@@ -1565,7 +1565,7 @@
         "If they can reach every radio in Johto with that signal of theirs... {player}, please be careful. Go and see what's happening!"
       ],
       "text": [
-        ""
+        "Dacă pot ajunge la toate radiourile din Johto cu semnalul ăla al lor... {player}, ai grijă, te rog. Du-te să vezi ce se întâmplă!"
       ]
     },
     {
@@ -1573,7 +1573,7 @@
         "Click... The call has ended."
       ],
       "text": [
-        ""
+        "Clic... Convorbirea s-a încheiat."
       ]
     }
   ],

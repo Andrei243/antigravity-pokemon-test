@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "That peak beyond the water is Mt. Pyre. People climb it to remember the Pokémon they have lost."
         ],
         "text": [
-          ""
+          "Vârful de dincolo de apă e Muntele Pyre. Oamenii urcă acolo ca să-și amintească de Pokémonii pe care i-au pierdut."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Mt. Pyre is just across the water. Let's get going!"
         ],
         "text": [
-          ""
+          "Muntele Pyre e chiar peste apă. Să mergem!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Don't get in our way, kid. We've got business on the mountain."
         ],
         "text": [
-          ""
+          "Nu ne sta în cale. Avem treabă pe munte."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Whatever's up on that mountain, the boss wants it before Team Magma gets there."
         ],
         "text": [
-          ""
+          "Orice ar fi pe muntele ăla, șeful îl vrea înainte să ajungă Echipa Magma."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Kate & Joy"
         ],
         "text": [
-          ""
+          "Kate și Joy"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Sr. and Jr. Kate & Joy: Mother and daughter, side by side! We'll take you on together!"
         ],
         "text": [
-          ""
+          "Mare și mic Kate și Joy: Mamă și fiică, una lângă alta! Te înfruntăm împreună!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Sr. and Jr. Kate & Joy: We'll keep practising, the two of us."
         ],
         "text": [
-          ""
+          "Mare și mic Kate și Joy: Vom continua să exersăm, noi două."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Kate & Joy"
         ],
         "text": [
-          ""
+          "Kate și Joy"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Sr. and Jr. Kate & Joy: Mother and daughter, side by side! We'll take you on together!"
         ],
         "text": [
-          ""
+          "Mare și mic Kate și Joy: Mamă și fiică, una lângă alta! Te înfruntăm împreună!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Sr. and Jr. Kate & Joy: We'll keep practising, the two of us."
         ],
         "text": [
-          ""
+          "Mare și mic Kate și Joy: Vom continua să exersăm, noi două."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Vanessa"
         ],
         "text": [
-          ""
+          "Vanessa"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Pokéfan Vanessa: Isn't my Pikachu the sweetest? It's tough, too. Watch!"
         ],
         "text": [
-          ""
+          "Pokéfan Vanessa: Nu-i așa că Pikachu al meu e cel mai drăguț? Și e și puternic. Uite!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Pokéfan Vanessa: Still the sweetest, even when it loses."
         ],
         "text": [
-          ""
+          "Pokéfan Vanessa: Tot cel mai drăguț, chiar și când pierde."
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Walter"
         ],
         "text": [
-          ""
+          "Walter"
         ]
       },
       "before": {
@@ -164,7 +164,7 @@
           "Gentleman Walter: A stroll with my Manectric, and now a battle. A fine afternoon."
         ],
         "text": [
-          ""
+          "Gentleman Walter: O plimbare cu Manectric al meu, iar acum o luptă. O după-amiază frumoasă."
         ]
       },
       "after": {
@@ -172,7 +172,7 @@
           "Gentleman Walter: A fine afternoon, all the same."
         ],
         "text": [
-          ""
+          "Gentleman Walter: O după-amiază frumoasă, totuși."
         ]
       }
     },
@@ -182,7 +182,7 @@
           "Tammy"
         ],
         "text": [
-          ""
+          "Tammy"
         ]
       },
       "before": {
@@ -190,7 +190,7 @@
           "Hex Maniac Tammy: The mountain calls to my Pokémon... and they answer by battling you!"
         ],
         "text": [
-          ""
+          "Maniac ocult Tammy: Muntele îmi cheamă Pokémonii... iar ei răspund luptând cu tine!"
         ]
       },
       "after": {
@@ -198,7 +198,7 @@
           "Hex Maniac Tammy: The mountain has gone quiet."
         ],
         "text": [
-          ""
+          "Maniac ocult Tammy: Muntele a amuțit."
         ]
       }
     },
@@ -208,7 +208,7 @@
           "Jessica"
         ],
         "text": [
-          ""
+          "Jessica"
         ]
       },
       "before": {
@@ -216,7 +216,7 @@
           "Beauty Jessica: My Pokémon are as lovely as they are sly. Can you even see them coming?"
         ],
         "text": [
-          ""
+          "Frumoasă Jessica: Pokémonii mei sunt pe cât de frumoși, pe atât de vicleni. Îi poți măcar vedea venind?"
         ]
       },
       "after": {
@@ -224,7 +224,7 @@
           "Beauty Jessica: You saw right through us."
         ],
         "text": [
-          ""
+          "Frumoasă Jessica: Ne-ai văzut prin toate."
         ]
       }
     },
@@ -234,7 +234,7 @@
           "Cale"
         ],
         "text": [
-          ""
+          "Cale"
         ]
       },
       "before": {
@@ -242,7 +242,7 @@
           "Bug Maniac Cale: My moths came out of the Safari Zone's grass. They're the pride of my collection!"
         ],
         "text": [
-          ""
+          "Pasionat de insecte Cale: Moliile mele au ieșit din iarba Zonei Safari. Sunt mândria colecției mele!"
         ]
       },
       "after": {
@@ -250,7 +250,7 @@
           "Bug Maniac Cale: Back to the grass to find more."
         ],
         "text": [
-          ""
+          "Pasionat de insecte Cale: Înapoi în iarbă după altele."
         ]
       }
     },
@@ -260,7 +260,7 @@
           "Myles"
         ],
         "text": [
-          ""
+          "Myles"
         ]
       },
       "before": {
@@ -268,7 +268,7 @@
           "Pkmn Breeder Myles: I raised all six of these myself. Let's see what you think of them!"
         ],
         "text": [
-          ""
+          "Crescător Pokémon Myles: I-am crescut pe toți șase singur. Să vedem ce zici de ei!"
         ]
       },
       "after": {
@@ -276,7 +276,7 @@
           "Pkmn Breeder Myles: They're still my pride and joy."
         ],
         "text": [
-          ""
+          "Crescător Pokémon Myles: Tot mândria și bucuria mea sunt."
         ]
       }
     },
@@ -286,7 +286,7 @@
           "Pat"
         ],
         "text": [
-          ""
+          "Pat"
         ]
       },
       "before": {
@@ -294,7 +294,7 @@
           "Pkmn Breeder Pat: Six little ones, all raised with love. Be gentle with them!"
         ],
         "text": [
-          ""
+          "Crescător Pokémon Pat: Șase pui, crescuți cu dragoste. Poartă-te frumos cu ei!"
         ]
       },
       "after": {
@@ -302,7 +302,7 @@
           "Pkmn Breeder Pat: You weren't gentle at all!"
         ],
         "text": [
-          ""
+          "Crescător Pokémon Pat: Ce lipsă de blândețe!"
         ]
       }
     },
@@ -312,7 +312,7 @@
           "Marcel"
         ],
         "text": [
-          ""
+          "Marcel"
         ]
       },
       "before": {
@@ -320,7 +320,7 @@
           "Cooltrainer Marcel: I'm on my way to Lilycove to test myself. You'll do for a warm-up."
         ],
         "text": [
-          ""
+          "Antrenor As Marcel: Mă îndrept spre Orașul Lilycove să mă pun la încercare. Cu tine îmi fac încălzirea."
         ]
       },
       "after": {
@@ -328,7 +328,7 @@
           "Cooltrainer Marcel: Some warm-up. I'm the one who got burned."
         ],
         "text": [
-          ""
+          "Antrenor As Marcel: Frumoasă încălzire. Eu sunt cel care s-a ars."
         ]
       }
     },
@@ -338,7 +338,7 @@
           "Cristin"
         ],
         "text": [
-          ""
+          "Cristin"
         ]
       },
       "before": {
@@ -346,7 +346,7 @@
           "Cooltrainer Cristin: You look like you've come a long way. Let's see if it shows."
         ],
         "text": [
-          ""
+          "Antrenoare As Cristin: Pari să fi venit de departe. Să vedem dacă se vede."
         ]
       },
       "after": {
@@ -354,7 +354,7 @@
           "Cooltrainer Cristin: It shows. It really shows."
         ],
         "text": [
-          ""
+          "Antrenoare As Cristin: Se vede. Chiar se vede."
         ]
       }
     }
@@ -365,7 +365,7 @@
         "Mt. Pyre Pier\nThe mountain's landing lies across the water to the south."
       ],
       "text": [
-        ""
+        "Debarcaderul Muntelui Pyre\nPortul muntelui se află peste apă, spre sud."
       ]
     },
     "Route121_EventScript_SafariZoneSign": {
@@ -373,7 +373,7 @@
         "Safari Zone\nRare Pokémon from far and wide. Gate just ahead!"
       ],
       "text": [
-        ""
+        "Zona Safari\nPokémoni rari din toate colțurile lumii. Poarta e chiar în față!"
       ]
     }
   }

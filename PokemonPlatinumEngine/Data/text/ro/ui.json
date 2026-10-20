@@ -212,6 +212,13 @@
       "value": "Maneta {n}",
       "help": "Care dintre manetele conectate este citită de joc. Tastatura merge oricare ar fi aleasă."
     },
+    "recordBattles": {
+      "label": "Înregistrează luptele",
+      "help": {
+        "on": "Cu Vs. Recorder în rucsac, lupta cu un Antrenor se încheie cu o întrebare: o păstrezi, ca s-o revezi?",
+        "off": "Doar luptele cu Elita celor Patru și cu Campionul se păstrează pe Vs. Recorder, pe măsură ce le dai."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",
@@ -1758,7 +1765,15 @@
     "noWater": "Nu e apă aici în care să pescuiești.",
     "noWayOut": "Aici nu se găsește nicio ieșire cu el.",
     "scriptWentWrong": "Un script a mers prost: {problem}",
-    "onlyCanBeChosen": "Aici poate fi ales doar {only}."
+    "onlyCanBeChosen": "Aici poate fi ales doar {only}.",
+    "recordBattle": {
+      "question": "Înregistrezi lupta asta?",
+      "saved": "Lupta a fost păstrată pe Vs. Recorder.",
+      "notSaved": "Lupta n-a putut fi păstrată: în dosarul Vs. Recorder nu se poate scrie.",
+      "otherVersion": "Lupta a fost înregistrată cu alte date Pokémon. Nu poate fi redată.",
+      "otherFile": "Lupta a fost înregistrată de un joc mai nou. Nu poate fi redată.",
+      "damaged": "Înregistrarea e deteriorată. Nu poate fi redată."
+    }
   },
   "tunnels": {
     "kitNotHere": "Trusa de Explorator nu poate fi folosită aici.",
@@ -3276,6 +3291,9 @@
     "Route118": "Ruta 118",
     "Route119": "Ruta 119",
     "Route120": "Ruta 120",
-    "TeamRocketHq": "Sediul Rocket"
+    "TeamRocketHq": "Sediul Rocket",
+    "Route121": "Ruta 121",
+    "AncientTomb": "Mormântul Antic",
+    "ScorchedSlab": "Placa Pârjolită"
   }
 }

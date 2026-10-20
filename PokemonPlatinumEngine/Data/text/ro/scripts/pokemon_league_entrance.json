@@ -1,0 +1,52 @@
+{
+  "DoorGuard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        "Paznic"
+      ]
+    },
+    {
+      "en": [
+        "Beyond this door the Elite Four are waiting. Only a Trainer with all eight of Johto's Gym Badges goes through."
+      ],
+      "text": [
+        "Dincolo de ușa asta te așteaptă Elita celor Patru. Trece doar un Antrenor cu toate cele opt Insigne de Arenă din Johto."
+      ]
+    },
+    {
+      "en": [
+        "Let me see... Eight Badges, every one of them Johto's. You may go in."
+      ],
+      "text": [
+        "Să vedem... Opt Insigne, toate din Johto. Poți intra."
+      ]
+    },
+    {
+      "en": [
+        "Once you start, you face all four and then the Champion. There is no coming back out until it is over."
+      ],
+      "text": [
+        "Odată ce începi, înfrunți pe toți patru, apoi Campionul. Nu mai ieși până nu se termină."
+      ]
+    },
+    {
+      "en": [
+        "Come back when you have all eight. The Elite Four won't see anyone with fewer."
+      ],
+      "text": [
+        "Revino când le ai pe toate opt. Elita celor Patru nu primește pe nimeni cu mai puține."
+      ]
+    },
+    {
+      "en": [
+        "Rest your Pokémon well. Nobody will heal them for you between the rooms."
+      ],
+      "text": [
+        "Odihnește-ți bine Pokémonii. Nimeni nu-i va vindeca între camere."
+      ]
+    }
+  ]
+}

@@ -5,7 +5,7 @@
         "Receptionist"
       ],
       "text": [
-        ""
+        "Recepționera"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Radio Tower! Do look around the ground floor. The staff upstairs are hard at work on today's shows."
       ],
       "text": [
-        ""
+        "Bine ați venit la Turnul Radio! Aruncați o privire la parter. Personalul de sus muncește din greu la emisiunile de azi."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I'm sorry... There are no visitors today. None at all. Please, just go home."
       ],
       "text": [
-        ""
+        "Îmi pare rău... Azi nu primim vizitatori. Deloc. Vă rog, plecați acasă."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Oh! One of you... I've done as I was told. I'm sending every visitor home."
       ],
       "text": [
-        ""
+        "Oh! Unul de-ai voștri... Am făcut cum mi s-a spus. Îi trimit acasă pe toți vizitatorii."
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Stop right there. Only Team Rocket in uniform go up these stairs. Beat it, kid!"
       ],
       "text": [
-        ""
+        "Stop. Pe scările astea urcă doar Echipa Rocket, în uniformă. Pleacă de aici!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Oh, you're one of us? Must be new. Go on up, they're waiting for you."
       ],
       "text": [
-        ""
+        "A, ești de-al nostru? Probabil te-ai alăturat de curând. Urcă, te așteaptă."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Team Rocket. Always in a gang. They're cowards, every one of them."
       ],
       "text": [
-        ""
+        "Echipa Rocket. Mereu în bandă. Sunt niște lași, toți."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "...What? It's you. In that uniform? Are you serious?"
       ],
       "text": [
-        ""
+        "...Ce? Tu ești. În uniforma aia? Vorbești serios?"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "You look ridiculous. Nobody in their right mind would take you for one of them."
       ],
       "text": [
-        ""
+        "Arăți ridicol. Nimeni cu mintea întreagă nu te-ar lua drept unul de-al lor."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "{player} pulled off the borrowed uniform."
       ],
       "text": [
-        ""
+        "{player} a scos uniforma împrumutată."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "Hey! You're no newcomer at all! Nobody fools Team Rocket!"
       ],
       "text": [
-        ""
+        "Hei! Nu ești deloc de-al nostru! Pe Echipa Rocket nu o păcălește nimeni!"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Too strong... I've got to warn the others!"
       ],
       "text": [
-        ""
+        "Ce forță... Trebuie să-i avertizez pe ceilalți!"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "I didn't come here for Team Rocket. I came for Lance, the one who took me apart in their hideout."
       ],
       "text": [
-        ""
+        "N-am venit aici pentru Echipa Rocket. Am venit pentru Lance, cel care m-a făcut praf în ascunzătoarea lor."
       ]
     },
     {
@@ -151,7 +151,7 @@
         "I'll beat him. And after him, you. Stay out of my way until then."
       ],
       "text": [
-        ""
+        "Îl voi învinge. Și după el, pe tine. Până atunci, stai departe de mine."
       ]
     }
   ],

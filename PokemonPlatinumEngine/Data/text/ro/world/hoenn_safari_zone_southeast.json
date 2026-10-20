@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Pokémon around here don't look like they come from Hoenn at all."
         ],
         "text": [
-          ""
+          "Pokémonii de pe aici nu par deloc să fie din Hoenn."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Every Pokémon in this part is new to me. And I'm allowed to catch them! How great is that?"
         ],
         "text": [
-          ""
+          "Toți Pokémonii din partea asta sunt noi pentru mine. Și am voie să-i prind! Ce tare e asta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Wow! Wow! I've never seen any of these Pokémon before!"
         ],
         "text": [
-          ""
+          "Wow! Wow! N-am mai văzut niciodată Pokémonii ăștia!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The Safari Zone's new area is finished at last. We hope you enjoy it!"
         ],
         "text": [
-          ""
+          "Zona nouă a Zonei Safari e gata, în sfârșit. Sperăm să vă placă!"
         ]
       }
     }

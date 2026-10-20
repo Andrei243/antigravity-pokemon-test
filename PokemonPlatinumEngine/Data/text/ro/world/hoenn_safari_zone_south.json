@@ -6,7 +6,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Someone told me Pokémon gather round the little boxes in the grass if you leave a treat in them. I've got nothing to leave!"
         ],
         "text": [
-          ""
+          "Mi-a zis cineva că Pokémonii se adună în jurul cutiilor mici din iarbă dacă lași o gustare în ele. Eu n-am nimic de lăsat!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'd go further in if I had a Bicycle. I just know the rarest Pokémon live out at the edges."
         ],
         "text": [
-          ""
+          "M-aș duce mai departe dacă aș avea o Bicicletă. Simt că Pokémonii cei mai rari trăiesc la margini."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I left a treat in one of the boxes, and when I looked again it was gone. Something ate it while I wasn't watching!"
         ],
         "text": [
-          ""
+          "Am lăsat o gustare într-o cutie și, când m-am uitat din nou, dispăruse. A mâncat-o ceva cât nu m-am uitat!"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Builder"
         ],
         "text": [
-          ""
+          "Constructor"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Sorry! This part is still being built. No entry yet!"
         ],
         "text": [
-          ""
+          "Scuze! Partea asta încă se construiește. Nu se intră deocamdată!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Builder"
         ],
         "text": [
-          ""
+          "Constructor"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "We're making the zone bigger. Come back once the work is done!"
         ],
         "text": [
-          ""
+          "Mărim zona. Reveniți când se termină lucrările!"
         ]
       }
     }
