@@ -1,0 +1,64 @@
+{
+  "RootFossil": [
+    {
+      "en": [
+        "It's the Root Fossil! The floor around it looks ready to crumble away..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take the Root Fossil anyway?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} left the Root Fossil where it lay."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ClawFossil": [
+    {
+      "en": [
+        "It's the Claw Fossil! The floor around it looks ready to crumble away..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Take the Claw Fossil anyway?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} left the Claw Fossil where it lay."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Collapse": [
+    {
+      "en": [
+        "Mirage Tower crumbled into the sand and was gone, as if it had never been there at all..."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

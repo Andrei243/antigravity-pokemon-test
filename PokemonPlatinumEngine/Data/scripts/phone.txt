@@ -112,7 +112,7 @@ label Waiting
 # ------------------------------------------------------------------ Hoenn's Match Call (plan 21 · H2, part b)
 # The PokéNav's numbers (Data/world/hoenn/phone.json): calls the player makes from its Match Call page. Nobody of
 # Hoenn rings on their own yet. Plan 21 · H3 added Steven, Brawly, Scott and the two tubers of Route 109's beach, and its second part Wattson and eight
-# trainers of Routes 110 and 117; plan 21 · H4, part b Flannery and Norman.
+# trainers of Routes 110 and 117; plan 21 · H4, part b Flannery.
 
 # Mom, at home in Littleroot Town
 script HoennMom

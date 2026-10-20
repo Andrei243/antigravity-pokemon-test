@@ -1,0 +1,135 @@
+{
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Eric"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Eric: Jagged Pass lives up to its name. Every step's a battle, so here's one more!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Eric: I tripped over my own feet on that one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Ethan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Ethan: I'm training on the steepest path in Hoenn. My Pokémon are tougher for it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Ethan: Not tough enough, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Diana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Diana: Lunch with a view of the volcano! Want to battle while my sandwich cools?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Diana: My sandwich is cold now, and I lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker_2": {
+      "name": {
+        "en": [
+          "Autumn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Autumn: The ash makes everything look like autumn up here. Fitting, don't you think?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Autumn: I fell like a leaf."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_m": {
+      "name": {
+        "en": [
+          "Julio"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Julio: Riding down Jagged Pass is the ultimate test of nerve! Let's see yours!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Julio: I hit the brakes too late."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

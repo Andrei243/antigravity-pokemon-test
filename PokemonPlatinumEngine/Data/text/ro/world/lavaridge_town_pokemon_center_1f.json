@@ -1,0 +1,69 @@
+{
+  "people": {
+    "lavaridge_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Spend time with your Pokémon and you'll grow closer. The more time, the better. That's what I reckon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Just sitting in the hot springs makes you feel brand new. I wish my Pokémon could have a soak too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hohoho! The hot springs are just out the back door. When your Pokémon rest, so should you!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,53 @@
+# Wally's house in Petalburg City (plan 21 · H4, part b). docs/scripts.md describes the language; the lines are our
+# own, on Emerald's beats (data/maps/PetalburgCity_WallysHouse/scripts.inc).
+#
+# Wally's father brings the player here from the Gym once Norman is beaten (VAR_PETALBURG_CITY_STATE 4,
+# petalburg_city_gym.txt) and gives HM03, Surf, as thanks for helping Wally catch his first Pokémon
+# (FLAG_RECEIVED_HM_SURF, VAR_PETALBURG_CITY_STATE 5). Emerald walks the two of them from the Gym's door across the
+# city to the house's; here the dark that closes in the Gym opens in the house.
+
+
+script OnEnter
+  if var VAR_PETALBURG_CITY_STATE != 4 end
+  scene "Surf from Wally's father"
+  face player right
+  face wallys_house_wallys_dad left
+  speaker "Wally's Father"
+  say "{player}, forgive me for hurrying you off like that. But I had to thank you properly."
+  say "Wally's grown so much healthier since he went to Verdanturf. And it all began with the Pokémon you helped him catch."
+  say "That made him happier than I've seen him in years. And it made me happy too, as his father, that he has a friend like you."
+  say "It isn't much of a thank-you, but please take this."
+  give "HM03"
+  setflag FLAG_RECEIVED_HM_SURF
+  say "HM03 holds Surf. A Pokémon that knows it can carry you over the water, to all sorts of places you couldn't reach before."
+  setvar VAR_PETALBURG_CITY_STATE 5
+  endscene
+  end
+
+
+script WallysDad
+  speaker "Wally's Father"
+  if flag FLAG_RECEIVED_HM_SURF goto Surf
+  if flag FLAG_THANKED_FOR_PLAYING_WITH_WALLY goto Wondering
+  say "Ah, you must be {player}. Thank you for looking after our Wally earlier."
+  say "He's been frail since he was a baby, so we've sent him to my relatives in Verdanturf Town. The air there is much cleaner."
+  say "He's already set off, you see. I wonder how far he's got by now?"
+  setflag FLAG_THANKED_FOR_PLAYING_WITH_WALLY
+  end
+label Wondering
+  say "I wonder how our Wally is getting on."
+  end
+label Surf
+  say "Wally will be coming home soon. I can hardly wait."
+  end
+
+
+script WallysMom
+  speaker "Wally's Mother"
+  if flag FLAG_RECEIVED_HM_SURF goto Secret
+  say "Wally was so happy when he told us he'd caught a Pokémon. I hadn't seen him smile like that in ages."
+  end
+label Secret
+  say "Don't tell my husband, but Wally has gone off from Verdanturf without a word to anyone."
+  say "He's frail, but he's stubborn too. I'm sure he'll come home safe and sound one day."
+  end

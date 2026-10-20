@@ -3,38 +3,26 @@
     "wallys_house_wallys_dad": {
       "name": {
         "en": [
-          "Man"
+          "Wally's Father"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Bărbatul"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Our boy is going off to stay with relatives in Verdanturf soon. The air there is better for him.",
-          "He's always wanted a Pokémon of his own to take along. Maybe one day."
-        ],
-        "text": [
-          "Băiatul nostru pleacă în curând la niște rude în Verdanturf. Aerul de acolo îi face mai bine.",
-          "Mereu și-a dorit un Pokémon al lui pe care să-l ia cu el. Poate într-o zi."
         ]
       }
     },
     "woman_4": {
       "name": {
         "en": [
-          "Woman"
+          "Wally's Mother"
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Femeia"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Please make yourself at home. We don't get many visitors, but we love having them."
-        ],
-        "text": [
-          "Te rog, simte-te ca acasă. Nu prea avem musafiri, dar ne bucurăm mult de ei."
         ]
       }
     }

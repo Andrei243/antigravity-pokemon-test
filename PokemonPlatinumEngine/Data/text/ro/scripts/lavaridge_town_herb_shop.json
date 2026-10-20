@@ -1,0 +1,54 @@
+{
+  "HerbClerk": [
+    {
+      "en": [
+        "Clerk"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the herb shop! Our medicine works wonders, and it costs next to nothing."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "OldMan": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come all the way to Lavaridge to look at herbal medicine, have you? Good for you. I like that. Here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That Charcoal goes into our medicine. Let a Pokémon hold it, and its Fire moves burn all the hotter."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
