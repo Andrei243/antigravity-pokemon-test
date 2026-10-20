@@ -221,6 +221,8 @@ public partial class GameEngine
     /// </summary>
     internal static Battle.Sim.BattleTerrain TerrainAt(Map map, int x, int y)
     {
+        // The sea floor is Emerald's underwater terrain, which is the water's here: the Dive Ball's (plan 21 · H5)
+        if (map.IsUnderwater) return Battle.Sim.BattleTerrain.Water;
         var b = map.BehaviourAt(x, y);
         switch (b)
         {

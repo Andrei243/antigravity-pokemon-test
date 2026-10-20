@@ -115,8 +115,10 @@ public enum TileBehavior : byte
 
     // What the Game Boy Advance's maps have and Platinum has no value for (plan 18 · W6), among the values the
     // original leaves unused at the top of its byte (0xEA to 0xEC are Platinum's own shelves, unnamed here)
-    DeepWater = 0xED,
-    Underwater = 0xEE,
+    // The sea and its floor (plan 21 · H5 names them): the dark water one dives into, the floor's seaweed, and the
+    // floor and the seaweed under rock or a ledge of the sea above, where nobody comes up
+    DiveWater = 0xED,
+    NoSurfacing = 0xEE,
     Seaweed = 0xEF,
     ThinIce = 0xF0,
     CrackedFloor = 0xF1,
@@ -132,6 +134,7 @@ public enum TileBehavior : byte
     BumpySlope = 0xFB,
     CyclingRoadPull = 0xFC,
     NoRunning = 0xFD,
+    SeaweedNoSurfacing = 0xFE,
 
     // What HeartGold and SoulSilver have and Platinum has no value for (plan 20 · J1 maps them by name, J2 names them):
     // Headbutt, Whirlpool and Stop Sliding keep HeartGold's own values, which Platinum leaves unused; magma and the
@@ -253,9 +256,10 @@ public static class TileBehaviors
         [TileBehavior.BlockSouthAndEast] = "Open ground closed on its south and east sides.",
         [TileBehavior.BlockSouthAndWest] = "Open ground closed on its south and west sides.",
         [TileBehavior.LedgeNorth] = "A ledge hopped over northward (Platinum's own value, which only the GBA's maps use).",
-        [TileBehavior.DeepWater] = "Deep water: surfed, and dived into where the sea floor below is a map (the GBA's).",
-        [TileBehavior.Underwater] = "The sea floor, swum along after a dive; no surfacing where it says so (the GBA's).",
+        [TileBehavior.DiveWater] = "Deep, dark water: surfed, and dived into where the sea floor below is a map (the GBA's).",
+        [TileBehavior.NoSurfacing] = "The sea floor under rock or a ledge above: swum along after a dive, and nobody comes up there (the GBA's).",
         [TileBehavior.Seaweed] = "Seaweed on the sea floor, where wild Pokémon live (the GBA's).",
+        [TileBehavior.SeaweedNoSurfacing] = "Seaweed on the sea floor under rock above: wild Pokémon live in it, and nobody comes up there (the GBA's).",
         [TileBehavior.ThinIce] = "Thin ice that cracks under a step and gives way under the next (the GBA's).",
         [TileBehavior.CrackedFloor] = "A cracked floor that gives way after a step, or the hole it leaves (the GBA's).",
         [TileBehavior.Hole] = "A hole that drops whoever steps in to the floor below (the GBA's).",
@@ -287,11 +291,12 @@ public static class TileBehaviors
     /// <summary>Wild Pokémon can appear on a step here (what appears depends on the area and on land or water).</summary>
     public static bool HasEncounters(TileBehavior b) => b is TileBehavior.TallGrass or TileBehavior.VeryTallGrass or TileBehavior.CaveFloor
         or TileBehavior.OldChateauFloor or TileBehavior.River or TileBehavior.Sea or TileBehavior.MarshGrass or TileBehavior.DeepMarshGrass
-        or TileBehavior.BridgeOverCave or TileBehavior.BikeBridgeEastWestOverGrass or TileBehavior.DeepWater or TileBehavior.Seaweed;
+        or TileBehavior.BridgeOverCave or TileBehavior.BikeBridgeEastWestOverGrass or TileBehavior.DiveWater or TileBehavior.Seaweed
+        or TileBehavior.SeaweedNoSurfacing;
 
     /// <summary>Water a Pokémon can carry its trainer across, including what runs under some bridges.</summary>
     public static bool IsSurfable(TileBehavior b) => b is TileBehavior.River or TileBehavior.Waterfall or TileBehavior.Sea or TileBehavior.Whirlpool
-        or TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater or TileBehavior.DeepWater
+        or TileBehavior.BridgeOverWater or TileBehavior.BikeBridgeEastWestOverWater or TileBehavior.DiveWater
         or TileBehavior.CurrentEast or TileBehavior.CurrentWest or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth;
 
     /// <summary>Ground that keeps the print of a shoe, as in Platinum: its sand, and snow of every depth.</summary>
@@ -311,16 +316,18 @@ public static class TileBehaviors
             or TileBehavior.BlockNorth or TileBehavior.BlockSouth or TileBehavior.BlockNorthAndEast or TileBehavior.BlockNorthAndWest
             or TileBehavior.BlockSouthAndEast or TileBehavior.BlockSouthAndWest
             => (BehaviourSupport.Ruled, "No step across its closed side, either way."),
-        TileBehavior.DeepWater
-            => (BehaviourSupport.Ruled, "Stops a walker; surfed with Surf, meeting the area's water Pokémon. Diving is plan 21's (Hoenn)."),
+        TileBehavior.DiveWater
+            => (BehaviourSupport.Ruled, "Stops a walker; surfed with Surf, meeting the area's water Pokémon; where the area has a sea floor, a surfer who knows Dive goes down to the same tile of it (FieldMovement.CanDive; plan 21 · H5)."),
         TileBehavior.CurrentEast or TileBehavior.CurrentWest or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth
             => (BehaviourSupport.Ruled, "Stops a walker and is surfed; it carries the surfer its own way, step after step, until calm water or something in the way (FieldMovement.Carries; plan 19 · K6, part b)."),
         TileBehavior.Hole
             => (BehaviourSupport.Ruled, "A warp down to the floor below, taken by stepping on it; whoever lands on water there rides out on it (Player.ComeDownOn), and a boulder pushed in is a pit's (Map.BoulderPits; plan 19 · K6, part b)."),
         TileBehavior.Spinner
             => (BehaviourSupport.Ruled, "Ends a GBA spin: one begun on an arrow goes on over plain floor until a stop (FieldMovement.Spins)."),
-        TileBehavior.Underwater or TileBehavior.Seaweed
-            => (BehaviourSupport.Waiting, "The sea floor, reached by Dive: plan 21 (Hoenn)."),
+        TileBehavior.Seaweed
+            => (BehaviourSupport.Ruled, "The sea floor's grass, swum through after a dive at walking pace, meeting the area's water Pokémon; Dive comes up from it to the same tile of the sea above (FieldMovement.CanSurface; plan 21 · H5)."),
+        TileBehavior.NoSurfacing or TileBehavior.SeaweedNoSurfacing
+            => (BehaviourSupport.Ruled, "The sea floor under rock or a ledge above: swum along after a dive (the seaweed meeting the area's water Pokémon), and Dive never comes up from it (FieldMovement.CanSurface; plan 21 · H5)."),
         TileBehavior.CyclingRoadPull
             => (BehaviourSupport.Ruled, "A rider who steers nowhere is pulled south a step at a time (FieldMovement.Pulls; plan 19 · K6); someone on foot stands."),
         TileBehavior.RailNorthSouth or TileBehavior.RailEastWest

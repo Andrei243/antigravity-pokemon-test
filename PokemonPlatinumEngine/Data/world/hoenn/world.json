@@ -3,7 +3,9 @@
   // (plan 18 · W6, W7: --game emerald); "maps" are the maps the game makes from its matrices, "areas" the areas
   // open to walk in. After adding an area, run `dotnet run --project tools/MapImporter -- --game emerald --data`
   // and write its overlay (overlays/<key>.json). A room is a matrix of its own built from its layout ("Indoors").
-  // The sea floor (Emerald's underwater maps, which the reader keeps as matrices of their own for now) is plan 21 · H5's.
+  // The sea floor (plan 21 · H5): Emerald's underwater maps, which the reader stitches into a matrix for each set of
+  // floors joined to one another, laid under their routes so that a floor's tile is the same as the sea's above it.
+  // A map of such a matrix is "Underwater"; its areas open one by one, with the routes over them.
   "region": "Hoenn",
   // A GBA game's houses are drawn into its tiles: each is found at its door (WorldMapBuilder.BuildingsAtDoors)
   "buildingsAtDoors": true,
@@ -140,7 +142,10 @@
     { "name": "MirageTower_4F", "matrix": 284, "area": "mirage_tower_4f", "trees": "Round", "setting": "Cave" },
     { "name": "MeteorFalls_1F_2R", "matrix": 188, "area": "meteor_falls_1f_2r", "trees": "Round", "setting": "Cave" },
     { "name": "MeteorFalls_B1F_1R", "matrix": 189, "area": "meteor_falls_b1f_1r", "trees": "Round", "setting": "Cave" },
-    { "name": "MeteorFalls_B1F_2R", "matrix": 190, "area": "meteor_falls_b1f_2r", "trees": "Round", "setting": "Cave" }
+    { "name": "MeteorFalls_B1F_2R", "matrix": 190, "area": "meteor_falls_b1f_2r", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
+    // map for the four, whose tiles are the overworld's; only Route 124's floor is open so far
+    { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -193,6 +198,9 @@
     "lavaridge_town_herb_shop", "lavaridge_town_gym_1f", "lavaridge_town_gym_b1f", "lavaridge_town_house",
     "lavaridge_town_mart", "lavaridge_town_pokemon_center_1f", "lavaridge_town_pokemon_center_2f",
     "mirage_tower_1f", "mirage_tower_2f", "mirage_tower_3f", "mirage_tower_4f",
-    "route_115", "meteor_falls_1f_2r", "meteor_falls_b1f_1r", "meteor_falls_b1f_2r"
+    "route_115", "meteor_falls_1f_2r", "meteor_falls_b1f_1r", "meteor_falls_b1f_2r",
+    // Plan 21 · H5: Route 124's sea and the sea floor under it, Dive's first pair (the way there by water from
+    // Lilycove City is plan 21 · H7's)
+    "route_124", "underwater_route_124"
   ]
 }

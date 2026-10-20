@@ -13,8 +13,8 @@
   "heroes": { "boy": "PLAYER", "girl": "DAWN" },
   "starters": [ "Treecko", "Torchic", "Mudkip" ],
   "badges": [ "Stone", "Knuckle", "Dynamo", "Heat", "Balance", "Feather", "Mind", "Rain" ],
-  // Emerald's: each field move by the badge that lets it be used outside battle. Dive's (the Mind Badge) is plan 21 · H5's,
-  // with the move's place in the party menu
+  // Emerald's: each field move by the badge that lets it be used outside battle, Dive's the Mind Badge (plan 21 · H5), which
+  // also lists Dive in the party menu here alone
   "gates": {
     "Cut": "Stone",
     "Flash": "Knuckle",
@@ -22,7 +22,8 @@
     "Strength": "Heat",
     "Surf": "Balance",
     "Fly": "Feather",
-    "Waterfall": "Rain"
+    "Waterfall": "Rain",
+    "Dive": "Mind"
   },
   "professor": {
     "name": "Prof. Birch",

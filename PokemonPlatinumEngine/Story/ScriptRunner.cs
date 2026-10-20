@@ -330,7 +330,7 @@ public sealed partial class ScriptRunner
         Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker => false,
         // A field move's cut-in and what it does, a step out onto the water or up a face, a flight: the player's own to see
-        Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape => true,
+        Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape or Op.Dive => true,
         Op.Poketch or Op.PoketchApp or Op.Safari or Op.Turnback or Op.Partner or Op.Defeat or Op.Bicycle => false,
         // A puzzle's pieces move while the field waits
         Op.FlowerClock or Op.PressButton or Op.GearButton => true,
@@ -777,6 +777,9 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Climb:
                 Result = host.Climb() ? 1 : 0;
+                break;
+            case Op.Dive:
+                Result = host.Dive() ? 1 : 0;
                 break;
             case Op.Fly:
                 Result = host.Fly() ? 1 : 0;

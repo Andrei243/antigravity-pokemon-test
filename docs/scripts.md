@@ -335,6 +335,7 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `usemove "Cut"` | "{user} used Cut!", then the move's cut-in (the Pokémon on a band across the screen, with its cry). As the band closes, the obstacle the script belongs to gives way (Cut and Rock Smash). `{user}` in a line is the Pokémon that used it: the one chosen in the party menu, or the first of the team who knows the move. The move must be a field move. |
 | `surf` | The player rides out onto the water ahead and the script waits for the step. `RESULT` is 0 where there is no water to ride out on. |
 | `climb` | Up or down the waterfall or rock face ahead, to its end. `RESULT` 0 where there is none. |
+| `dive` | Down from the dark water under a surfer to the same tile of the sea floor below, or up from the sea floor to the same tile of the sea above, behind a fade with the dive's sound (plan 21 · H5; `FieldMovement.CanDive` and `CanSurface`). Never hurried: a skipped scene stops before it. `RESULT` 0 where neither way is open, and nothing happens. |
 | `fly` | Through a fade to the town chosen on Fly's map, in front of its Pokémon Center (or the player's house in Twinleaf Town). |
 | `teleport` | Through a fade to the town of the Pokémon Center last gone into. |
 | `escape` | Through a fade out of the caves, to where the player went into them (Dig, an Escape Rope). |

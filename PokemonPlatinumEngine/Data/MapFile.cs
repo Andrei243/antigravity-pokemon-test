@@ -656,7 +656,8 @@ public static class TileCodes
         (TileType.Puddle, 'p'),
         (TileType.Void, 'V'),
         (TileType.DistortionGround, 'd'),
-        (TileType.DistortionSlab, 'Q')
+        (TileType.DistortionSlab, 'Q'),
+        (TileType.Kelp, 'k')
     };
 
     public static char CodeOf(TileType type)

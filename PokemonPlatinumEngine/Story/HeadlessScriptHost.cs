@@ -790,6 +790,38 @@ public sealed class HeadlessScriptHost : IScriptHost
         return true;
     }
 
+    public bool Dive()
+    {
+        Shown("dive");
+        NeverInAHurry("a dive");
+        var (x, y) = PlayerTile;
+        // With no map the dive is taken on trust: down from the water, up from the floor
+        if (Map == null)
+        {
+            Log.Add(PlayerMode == TravelMode.Diving ? "dive up" : "dive down");
+            PlayerMode = PlayerMode == TravelMode.Diving ? TravelMode.Surfing : TravelMode.Diving;
+            return true;
+        }
+        bool up = Map.IsUnderwater;
+        string? onto = up
+            ? FieldMovement.CanSurface(Map, x, y) ? Map.EmergeAt(x, y) : null
+            : FieldMovement.CanDive(Map, x, y, new Walker(TravelMode.Surfing, Map.HeightAt(x, y), Moves: FieldMoves.Dive)) ? Map.DiveAt(x, y) : null;
+        if (onto == null)
+        {
+            Log.Add("dive nowhere");
+            return false;
+        }
+        Log.Add($"dive {(up ? "up" : "down")} {onto} {x} {y}");
+        if (MapNamed?.Invoke(onto) is { } target)
+        {
+            Map = target;
+            Map.ForgetForced();
+            Map.ApplyPresence(Story.Has);
+        }
+        PlayerMode = up ? TravelMode.Surfing : TravelMode.Diving;
+        return true;
+    }
+
     /// <summary>Where <c>fly</c> goes: the town chosen on the map. Null, and <c>fly</c> does nothing.</summary>
     public SpawnLocation? FlyTo { get; set; }
 
@@ -1157,6 +1189,6 @@ public sealed class HeadlessScriptHost : IScriptHost
     public void Ride(bool on)
     {
         Log.Add(on ? "bicycle on" : "bicycle off");
-        if (PlayerMode != TravelMode.Surfing) PlayerMode = on ? TravelMode.Cycling : TravelMode.OnFoot;
+        if (PlayerMode is not (TravelMode.Surfing or TravelMode.Diving)) PlayerMode = on ? TravelMode.Cycling : TravelMode.OnFoot;
     }
 }

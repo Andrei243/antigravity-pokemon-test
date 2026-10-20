@@ -141,7 +141,23 @@ internal static class ArtLook
 
     /// <summary>The field's light on a map: a room's by the clock through its windows, a cave's own, the sky's by the hour.</summary>
     public static LightRig FieldRig(float hour, Overworld.Map map) =>
-        map.IsVoid ? VoidFieldRig : map.IsCave && !map.IsIndoors ? CaveFieldRig : FieldRig(hour, map.IsIndoors);
+        map.IsVoid ? VoidFieldRig : map.IsUnderwater ? UnderwaterFieldRig : map.IsCave && !map.IsIndoors ? CaveFieldRig : FieldRig(hour, map.IsIndoors);
+
+    /// <summary>
+    /// The sea floor (plan 21 · H5; style guide, "The sea floor"): one rig whatever the hour, as a cave's is. The
+    /// light comes down through the water from nearly overhead, blue-green, with blue all round and a little warmth
+    /// bounced off the sand; a close blue fog swallows the distance; the colour is drained and the corners darken. No
+    /// sky, no cloud shade, no lamps.
+    /// </summary>
+    public static readonly LightRig UnderwaterFieldRig = new(
+        new SceneLighting(Dir(-0.1f, 0.95f, 0.3f), V(0.5f, 0.66f, 0.66f), V(0.38f, 0.5f, 0.62f), V(0.36f, 0.4f, 0.36f)),
+        Rgb(22, 58, 78), V(0.1f, 0.3f, 0.38f), 0.5f, 36f, 60f,
+        FieldDayPost with
+        {
+            BloomThreshold = 0.9f, BloomStrength = 0.22f, Saturation = 0.8f, Contrast = 1.04f,
+            ShadowTint = V(0.84f, 0.96f, 1.12f), HighlightTint = V(0.94f, 1.04f, 1.02f), Vignette = 0.34f
+        },
+        0f, 0.3f, NoSky);
 
     /// <summary>
     /// The Distortion World (style guide, "The Distortion World"): it ignores the clock. A dim, cool key from high

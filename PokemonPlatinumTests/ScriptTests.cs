@@ -172,6 +172,7 @@ public class ScriptTests
           usemove "Cut"
           surf
           climb
+          dive
           fly
           teleport
           escape
@@ -1541,6 +1542,7 @@ public class ScriptTests
         public void UseMove(FieldMove move, Pokemon user, NPC? subject) { }
         public bool Surf() => true;
         public bool Climb() => true;
+        public bool Dive() => true;
         public bool Fly() => true;
         public bool Teleport() => true;
         public bool Escape() => true;

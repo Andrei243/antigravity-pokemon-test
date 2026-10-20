@@ -78,6 +78,15 @@ public sealed class MapArea
     public bool EscapeRopeAllowed { get; init; }
     public bool FlyAllowed { get; init; }
 
+    /// <summary>
+    /// The map Dive goes down onto from this area's dark water, and the map coming up from this area's sea floor
+    /// comes up onto (plan 21 · H5; the GBA's <c>dive</c> and <c>emerge</c> connections, <c>WorldAreaFile.Dive</c> and
+    /// <c>Emerge</c>, which name the area below or above): tile for tile, the same tile there. Null where there is
+    /// none, or where that area isn't open yet.
+    /// </summary>
+    public string? Dive { get; init; }
+    public string? Emerge { get; init; }
+
     /// <summary>The wild Pokémon of the area's grass and caves, and Platinum's rate for them (see <see cref="EncounterSteps"/>).</summary>
     public List<WildEncounterEntry> WildEncounters { get; } = new();
     public int LandRate { get; set; }
@@ -183,6 +192,15 @@ public class Map
 
     /// <summary>The Distortion World (plan 01 · M8): islands over nothing, a light of their own, no weather.</summary>
     public bool IsVoid => Setting == MapSetting.Void;
+
+    /// <summary>The sea floor (plan 21 · H5): swum along after a dive, a light of its own whatever the hour, no weather.</summary>
+    public bool IsUnderwater => Setting == MapSetting.Underwater;
+
+    /// <summary>The map Dive goes down onto from this tile (plan 21 · H5), or null where the sea here has no floor that is open.</summary>
+    public string? DiveAt(int x, int y) => AreaAt(x, y) is { Open: true, Dive: { } below } ? below : null;
+
+    /// <summary>The map coming up from this tile of the sea floor comes up onto (plan 21 · H5), or null.</summary>
+    public string? EmergeAt(int x, int y) => AreaAt(x, y) is { Open: true, Emerge: { } above } ? above : null;
 
     /// <summary>The camera the field is looked at with here, as the area's header in the original names it.</summary>
     public FieldCamera Camera { get; set; } = FieldCamera.Default;
@@ -397,6 +415,8 @@ public class Map
         if (IsIndoors) return Arena ?? BattleArena.Indoors;
         var named = AreaAt(x, y)?.Arena ?? Arena;
         if (named is BattleArena.Gym or BattleArena.League) return named.Value;
+        // On the sea floor a battle is fought in the water whatever the seabed is (plan 21 · H5)
+        if (IsUnderwater) return named ?? BattleArena.Water;
         if (InBounds(x, y))
         {
             switch (GetGroundTile(x, y))

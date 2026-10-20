@@ -1178,7 +1178,7 @@ public partial class GameEngine
         {
             game.flow.Journal.Tell(new JournalEvent(JournalEventKind.UsedFieldMove, FieldMoveRules.MoveName(move)));
             // Whose Surf it is carries the player (plan 10 · F1)
-            if (move == FieldMove.Surf) game.flow.Player.Carrier = user.ModelName;
+            if (move is FieldMove.Surf or FieldMove.Dive) game.flow.Player.Carrier = user.ModelName;
             // (A hurry begun while the move's own line was being read uses the move without its cut-in)
             if (Skipping) return;
             game.StartCutIn(move, user, subject);
@@ -1195,6 +1195,8 @@ public partial class GameEngine
         }
 
         public bool Climb() => game.flow.FieldMoveStep = game.flow.Player.Climb(game.flow.Map);
+
+        public bool Dive() => game.Dive();
 
         public bool Fly()
         {
@@ -1237,8 +1239,11 @@ public partial class GameEngine
             var map = game.flow.Map;
             int x = game.flow.Player.GridX, y = game.flow.Player.GridY;
             var underfoot = map.BehaviourAt(x, y);
-            bool water = game.flow.Player.Mode == TravelMode.Surfing;
-            if (!TileBehaviors.HasEncounters(underfoot) || water != TileBehaviors.IsSurfable(underfoot)) return false;
+            // (on the sea floor its seaweed draws out the floor's water Pokémon, as a step there meets them: plan 21 · H5)
+            bool diving = game.flow.Player.Mode == TravelMode.Diving;
+            bool water = game.flow.Player.Mode == TravelMode.Surfing || diving;
+            bool where = diving ? underfoot is TileBehavior.Seaweed or TileBehavior.SeaweedNoSurfacing : water == TileBehaviors.IsSurfable(underfoot);
+            if (!TileBehaviors.HasEncounters(underfoot) || !where) return false;
             if (map.DrawOutWild(x, y, water, game.flow.Player.Lead, game.EncounterMomentNow()) is not { } wild) return false;
             game.flow.ScriptOutcome = BattleOutcome.None;
             game.flow.BattleMayBeLost = false;

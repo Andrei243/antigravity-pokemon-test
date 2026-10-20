@@ -23,7 +23,7 @@ internal static class SceneTextures
     public static void Warm()
     {
         ownerThread = Environment.CurrentManagedThreadId;
-        _ = White; _ = Bark; _ = Leaves; _ = LeafShell; _ = Needles; _ = TallGrass; _ = LawnTuft; _ = Flowers; _ = LedgeFace; _ = RockLedgeFace;
+        _ = White; _ = Bark; _ = Leaves; _ = LeafShell; _ = Needles; _ = TallGrass; _ = Kelp; _ = LawnTuft; _ = Flowers; _ = LedgeFace; _ = RockLedgeFace;
         _ = BankFace; _ = RockFace; _ = PowerFace; _ = Waterfall; _ = IslandUnderside;
         _ = LeagueFace(LeagueArt.Stone.Slate); _ = LeagueFace(LeagueArt.Stone.Basalt); _ = LeagueFace(LeagueArt.Stone.Marble);
         _ = LeagueFace(LeagueArt.Stone.Sandstone); _ = RoomFace;
@@ -100,6 +100,9 @@ internal static class SceneTextures
 
     /// <summary>Clumps of tall grass, repeating along a row (cut out by the field shader).</summary>
     public static Texture2D TallGrass => Get("tall_grass", NatureArt.TallGrass, repeat: true);
+
+    /// <summary>Kelp's fronds on the sea floor, repeating along a row (cut out by the field shader; plan 21 · H5).</summary>
+    public static Texture2D Kelp => Get("kelp", NatureArt.Kelp, repeat: true);
 
     /// <summary>A small clump of grass for scattering over lawns.</summary>
     public static Texture2D LawnTuft => Get("lawn_tuft", NatureArt.LawnTuft, repeat: false);

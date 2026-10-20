@@ -1,0 +1,10 @@
+{
+  // The sea floor under Route 124 (plan 21 · H5): Dive's first pair. Its floor lies tile for tile under the route's sea,
+  // so a dive from the route's dark water comes down on the same tile here, and coming up from anywhere but the floor
+  // under the rocks and the islets lands on the same tile of the sea above. Clamperl, Chinchou and Relicanth live in its
+  // seaweed; its shards and pearls are hidden in the sand.
+  "area": "underwater_route_124",
+  "name": "Underwater",
+  "bgmTrack": "hoenn/underwater",
+  "trees": "Round"
+}

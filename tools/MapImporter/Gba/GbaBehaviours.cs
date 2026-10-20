@@ -6,7 +6,7 @@ namespace MapImporter.Gba;
 /// What each of the Game Boy Advance's metatile behaviours (<c>MB_*</c>, by name, since FireRed and Emerald number
 /// them differently) becomes among this game's <see cref="TileBehavior"/> values (plan 18 · W6). Platinum's own value
 /// where Platinum has one that means the same; one of the values the original leaves unused at the top of its byte
-/// (<c>0xED</c> to <c>0xFD</c>) where it has none; and <see cref="TileBehavior.None"/> for what only says how a tile
+/// (<c>0xED</c> to <c>0xFE</c>) where it has none; and <see cref="TileBehavior.None"/> for what only says how a tile
 /// is read or drawn (a sign, a cupboard, a poster), which is an event's or the art's business. A name the table
 /// doesn't know is <see cref="TileBehavior.None"/> too, and the report lists it.
 /// </summary>
@@ -33,19 +33,19 @@ public static class GbaBehaviours
         ["MB_OCEAN_WATER"] = TileBehavior.Sea,
         ["MB_CYCLING_ROAD_WATER"] = TileBehavior.Sea,
         ["MB_UNUSED_WATER"] = TileBehavior.Sea,
-        ["MB_DEEP_WATER"] = TileBehavior.DeepWater,
-        ["MB_INTERIOR_DEEP_WATER"] = TileBehavior.DeepWater,
-        ["MB_SOOTOPOLIS_DEEP_WATER"] = TileBehavior.DeepWater,
-        ["MB_UNUSED_SOOTOPOLIS_DEEP_WATER"] = TileBehavior.DeepWater,
-        ["MB_UNUSED_SOOTOPOLIS_DEEP_WATER_2"] = TileBehavior.DeepWater,
+        ["MB_DEEP_WATER"] = TileBehavior.DiveWater,
+        ["MB_INTERIOR_DEEP_WATER"] = TileBehavior.DiveWater,
+        ["MB_SOOTOPOLIS_DEEP_WATER"] = TileBehavior.DiveWater,
+        ["MB_UNUSED_SOOTOPOLIS_DEEP_WATER"] = TileBehavior.DiveWater,
+        ["MB_UNUSED_SOOTOPOLIS_DEEP_WATER_2"] = TileBehavior.DiveWater,
         ["MB_WATERFALL"] = TileBehavior.Waterfall,
         ["MB_PUDDLE"] = TileBehavior.Puddle,
         ["MB_SHALLOW_WATER"] = TileBehavior.ShallowWater,
         ["MB_HOT_SPRINGS"] = TileBehavior.ShallowWater,
-        ["MB_NO_SURFACING"] = TileBehavior.Underwater,
-        ["MB_UNDERWATER_BLOCKED_ABOVE"] = TileBehavior.Underwater,
+        ["MB_NO_SURFACING"] = TileBehavior.NoSurfacing,
+        ["MB_UNDERWATER_BLOCKED_ABOVE"] = TileBehavior.NoSurfacing,
         ["MB_SEAWEED"] = TileBehavior.Seaweed,
-        ["MB_SEAWEED_NO_SURFACING"] = TileBehavior.Seaweed,
+        ["MB_SEAWEED_NO_SURFACING"] = TileBehavior.SeaweedNoSurfacing,
         ["MB_EASTWARD_CURRENT"] = TileBehavior.CurrentEast,
         ["MB_WESTWARD_CURRENT"] = TileBehavior.CurrentWest,
         ["MB_NORTHWARD_CURRENT"] = TileBehavior.CurrentNorth,

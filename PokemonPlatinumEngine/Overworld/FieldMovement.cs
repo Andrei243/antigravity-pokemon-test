@@ -9,7 +9,12 @@ public enum TravelMode
     OnFoot,
     /// <summary>On a Pokémon's back, across water.</summary>
     Surfing,
-    Cycling
+    Cycling,
+    /// <summary>
+    /// Under the sea after a dive (plan 21 · H5): swimming along the sea floor at walking pace, never running, as
+    /// Emerald's <c>PLAYER_AVATAR_FLAG_UNDERWATER</c> walks; Dive takes them back up.
+    /// </summary>
+    Diving
 }
 
 /// <summary>
@@ -45,7 +50,9 @@ public enum FieldMoves
     /// <summary>Knows Flash, which lights a dark cave once it is used (<see cref="Darkness"/>, <see cref="FieldMoveRules"/>).</summary>
     Flash = 8,
     /// <summary>Knows Whirlpool, which carries a surfer across a whirlpool once they have said yes to it (plan 20 · J8).</summary>
-    Whirlpool = 16
+    Whirlpool = 16,
+    /// <summary>Knows Dive, which takes a surfer down from dark water to the sea floor under it and back up (plan 21 · H5).</summary>
+    Dive = 32
 }
 
 public enum StepKind
@@ -267,7 +274,7 @@ public static class FieldMovement
         if (LedgeDirection(there) is { } facing)
         {
             int lx = nx + dx, ly = ny + dy;
-            if (facing != dir || walker.Mode == TravelMode.Surfing || !map.IsWalkable(lx, ly)) return No(Obstacle.Ledge);
+            if (facing != dir || walker.Mode is TravelMode.Surfing or TravelMode.Diving || !map.IsWalkable(lx, ly)) return No(Obstacle.Ledge);
             return new FieldStep(StepKind.Hop, lx, ly, map.SurfaceAt(lx, ly, walker.Height).Height, Pace.Walk, walker.Mode, Obstacle.None);
         }
 
@@ -417,6 +424,8 @@ public static class FieldMovement
     public static Pace PaceOn(TileBehavior underfoot, Walker walker) => walker.Mode switch
     {
         TravelMode.Surfing => Pace.Fast,
+        // Under the sea nobody runs (Emerald's PlayerNotOnBikeMoving walks a diver at the normal pace)
+        TravelMode.Diving => Pace.Walk,
         TravelMode.Cycling => walker.AtFullSpeed ? Pace.Fastest : Pace.Fast,
         _ => underfoot switch
         {
@@ -500,6 +509,33 @@ public static class FieldMovement
     }
 
     /// <summary>
+    /// Whether a surfer on (<paramref name="x"/>, <paramref name="y"/>) can dive (plan 21 · H5; Emerald's
+    /// <c>TrySetDiveWarp</c> and <c>MetatileBehavior_IsDiveable</c>): they know Dive, they are on dark water
+    /// (<see cref="TileBehavior.DiveWater"/>) and the area there has a sea floor under it (<see cref="Map.DiveAt"/>),
+    /// where they come down on the same tile. The Mind Badge is the field move's to ask (<see cref="FieldMoveRules"/>).
+    /// </summary>
+    public static bool CanDive(Map map, int x, int y, Walker walker) =>
+        walker.Mode == TravelMode.Surfing && walker.Moves.HasFlag(FieldMoves.Dive) && map.InBounds(x, y)
+        && map.BehaviourAt(x, y) == TileBehavior.DiveWater && map.DiveAt(x, y) != null;
+
+    /// <summary>
+    /// Whether a diver on (<paramref name="x"/>, <paramref name="y"/>) of the sea floor can come up (plan 21 · H5;
+    /// Emerald's <c>MetatileBehavior_IsUnableToEmerge</c>): anywhere the area has the sea above it
+    /// (<see cref="Map.EmergeAt"/>), but on the floor and the seaweed under rock or a ledge of the sea above
+    /// (<see cref="TileBehavior.NoSurfacing"/>, <see cref="TileBehavior.SeaweedNoSurfacing"/>).
+    /// </summary>
+    public static bool CanSurface(Map map, int x, int y) =>
+        map.IsUnderwater && map.InBounds(x, y) && map.EmergeAt(x, y) != null
+        && map.BehaviourAt(x, y) is not (TileBehavior.NoSurfacing or TileBehavior.SeaweedNoSurfacing);
+
+    /// <summary>
+    /// Whether a diver coming up onto (<paramref name="x"/>, <paramref name="y"/>) of the sea above finds open water
+    /// to surf on there: the tile the original's map leaves for them, which the import holds to be so.
+    /// </summary>
+    public static bool SurfacesOnto(Map above, int x, int y) =>
+        above.InBounds(x, y) && !above.IsSolid(x, y) && TileBehaviors.IsSurfable(above.BehaviourAt(x, y));
+
+    /// <summary>
     /// Whether a boulder can be pushed a tile on with Strength: the tile beyond is open ground it could be walked
     /// onto at its own height, with nobody there (the original asks the boulder's own step for a collision,
     /// <c>sub_02063EBC</c>): no water, no ledge, no cliff, nothing solid.
@@ -532,6 +568,7 @@ public static class FieldMovement
                     "Rock Climb" => FieldMoves.RockClimb,
                     "Flash" => FieldMoves.Flash,
                     "Whirlpool" => FieldMoves.Whirlpool,
+                    "Dive" => FieldMoves.Dive,
                     _ => FieldMoves.None
                 };
             }

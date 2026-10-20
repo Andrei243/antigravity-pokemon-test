@@ -427,6 +427,9 @@ public class Player
             settled = true;
             if (float.IsNaN(height)) height = map.HeightAt(GridX, GridY);
             if (Mode == TravelMode.Surfing && !map.IsDeepWater(GridX, GridY)) Mode = TravelMode.OnFoot;
+            // On the sea floor everyone is a diver, and nowhere else (plan 21 · H5): a save made under the sea wakes there diving
+            if (map.IsUnderwater) Mode = TravelMode.Diving;
+            else if (Mode == TravelMode.Diving) Mode = map.IsDeepWater(GridX, GridY) ? TravelMode.Surfing : TravelMode.OnFoot;
         }
 
         if (IsMoving)
@@ -548,9 +551,12 @@ public class Player
         InTallGrass = map.IsTallGrass(GridX, GridY);
         if (InTallGrass) GrassRustleTimer = 0.2f;
 
-        // Pokémon live in grass, in caves and in water; the water's are met only by someone surfing on it
-        bool onWater = Mode == TravelMode.Surfing;
-        if (onWildEncounter != null && !interrupted && TileBehaviors.HasEncounters(underfoot) && onWater == TileBehaviors.IsSurfable(underfoot))
+        // Pokémon live in grass, in caves and in water; the water's are met only by someone surfing on it, and on the
+        // sea floor in its seaweed, from the floor's own water table (Emerald's underwater encounters, plan 21 · H5)
+        bool diving = Mode == TravelMode.Diving;
+        bool onWater = Mode == TravelMode.Surfing || diving;
+        bool where = diving ? underfoot is TileBehavior.Seaweed or TileBehavior.SeaweedNoSurfacing : onWater == TileBehaviors.IsSurfable(underfoot);
+        if (onWildEncounter != null && !interrupted && TileBehaviors.HasEncounters(underfoot) && where)
         {
             bool thick = underfoot == TileBehavior.VeryTallGrass || Mode == TravelMode.Cycling;
             var wild = map.RollWildEncounter(GridX, GridY, Encounters, onWater, thick, Lead, Moment?.Invoke());
@@ -668,7 +674,7 @@ public class Player
         IsMoving = true;
         moveProgress = 0f;
         if (step.Kind is StepKind.Hop or StepKind.Jump) AudioManager.PlaySound("ledge");
-        else if (Mode != TravelMode.Surfing && SoundBank.StepSound(map.BehaviourAt(step.X, step.Y)) is { } footfall) AudioManager.PlaySound(footfall);
+        else if (Mode is not (TravelMode.Surfing or TravelMode.Diving) && SoundBank.StepSound(map.BehaviourAt(step.X, step.Y)) is { } footfall) AudioManager.PlaySound(footfall);
     }
 
     /// <summary>
@@ -683,6 +689,30 @@ public class Player
         Begin(map, new FieldStep(StepKind.Land, nx, ny, map.HeightAt(nx, ny), Pace.Walk, TravelMode.Surfing, Obstacle.None), Facing);
         mounting = true;
         return true;
+    }
+
+    /// <summary>
+    /// Goes down under the water to the sea floor (plan 21 · H5): the player has been put on the floor's tile below,
+    /// and swims there from now on. The dive's warp is the script's (<c>dive</c>); this only changes how they travel.
+    /// </summary>
+    public void StartDive()
+    {
+        Mode = TravelMode.Diving;
+        height = float.NaN;
+        carried = null;
+        IsSliding = false;
+    }
+
+    /// <summary>
+    /// Comes back up from the sea floor onto the sea above, on the back of the Pokémon whose Dive it was (plan 21 · H5):
+    /// the player has been put on the water's tile above, and surfs from now on.
+    /// </summary>
+    public void Surface()
+    {
+        Mode = TravelMode.Surfing;
+        height = float.NaN;
+        carried = null;
+        IsSliding = false;
     }
 
     /// <summary>
@@ -701,7 +731,7 @@ public class Player
     /// <summary>Gets on or off the Bicycle. False while on the water or in the middle of a step.</summary>
     public bool SetCycling(bool cycling)
     {
-        if (IsMoving || Mode == TravelMode.Surfing) return false;
+        if (IsMoving || Mode is TravelMode.Surfing or TravelMode.Diving) return false;
         Mode = cycling ? TravelMode.Cycling : TravelMode.OnFoot;
         return true;
     }

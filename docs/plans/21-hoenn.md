@@ -417,7 +417,44 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     walk with Wally's father across Petalburg to his house (here the dark that closes in the Gym opens in the house);
     Mirage Tower's coming and going by the day (it stands until it falls); the buried trainers springing out of
     Lavaridge's sand; the rival's bicycle; the harness's shots above. Still from H2 and H3 as part a lists them.
-- [ ] H5 Dive and the sea floor
+- [ ] H5 Dive and the sea floor (part a done 2026-10-20, wave 36: Dive, Route 124 and the sea floor under it)
+  - **Opened**: Route 124 (its sea, islets and nine swimmers; the treasure hunter's house `locked` until H8) and
+    `underwater_route_124` beneath it, the first pair. The reader lays each of Emerald's underwater maps under the route
+    it lies under (`GbaWorld.LayUnderItsRoutes`): the floors of Routes 124 to 128 are matrix 2, `HoennUnderwater`
+    (`MapSetting.Underwater`, in `RegionDatabase`'s Hoenn maps), at the overworld's own coordinates, 469 dark-water tiles
+    over 469 open floor tiles with none astray; the floors of the Seafloor Cavern, Sootopolis and the Marine Cave are
+    matrices 3 to 5, for H8 and H12 (the plan had one map). Route 124 is come to by sea from Lilycove (H7), so the walk
+    of the game reaches it through `WorldWalk.OpenedAhead` (630, 109, the sand before the house), which H7 takes off.
+  - **Engine**: `TravelMode.Diving` and `FieldMoves.Dive` at their enums' ends; the four tiles (`DiveWater`,
+    `NoSurfacing`, `Seaweed`, `SeaweedNoSurfacing`, in `TileBehaviors.InGame` and `docs/tile-behaviours.md`) and
+    `TileType.Kelp` (map code `k`); `FieldMovement.CanDive`, `CanSurface` and `SurfacesOnto`, a diver's pace `Walk`
+    with no running, bike or ledges (a ruling: Emerald's diver walks); `MapArea.Dive` and `Emerge` from the area files,
+    `Map.IsUnderwater`, `DiveAt`, `EmergeAt`; `Player.StartDive` and `Surface`, a player on an underwater map settling
+    diving, encounters only in seaweed from the floor's water table; `FieldMove.Dive` on the team's menu only where the
+    region's `gates` name it (`PartyScreen.Region`, `ActionsFor(pokemon, region)`), Hoenn's gate the Mind Badge;
+    `FieldSpot.Dive` and `Surface`; `common.Dive`, `Surface` and `UseDive`, started from `TryInteract` by the tile
+    underfoot with A (B is Run); the script command `dive` (`Op.Dive`, both hosts, `StopsAHurry`, `RESULT` 1 or 0;
+    `GameEngine.Diving.cs`: a fade, the sound `dive`, the same tile of the other map). Battles under the sea are on
+    `BattleTerrain.Water` and the water's stage until part b. Saving under the sea keeps `Diving` as surfing keeps
+    surfing; no version raised, so no older save is touched.
+  - **Looks and music**: the style guide's "The sea floor" first, then `ArtLook.UnderwaterFieldRig` (one rig at every
+    hour), the floor's sand and rock with kelp beds (`PixelGround`'s kelp ground, `NatureArt.Kelp` swaying through
+    `MapScene.AddKelp` in `MeshPass.Ground`). `hoenn/underwater.mml` (ours; clash-free, −19.4 LUFS, not yet heard) and
+    the sound `dive` (−30.2 dB, not yet heard). Route 124 plays `hoenn/route104` until Emerald's Route 120 song is
+    written. Rulings: "Dive and the sea floor".
+  - **Tests**: written but not run. `FieldMovementTests` (`ADiveGoesDownFromDarkWaterAndComesUpWhereTheFloorLetsIt`:
+    refused on plain sea, without the move, under `NoSurfacing`; `UnderTheSeaNobodyRunsHopsOrRides`;
+    `WildPokemonOfTheSeaFloorLiveInItsSeaweed`), `FieldMoveTests` (`DiveGoesDownAndComesUpByTheQuestionWithHoennsMindBadge`,
+    `DiveIsOnATeamsMenuOnlyInARegionWhoseGatesNameIt`), `HoennTests` (`TheSeaFloorLiesTileForTileUnderTheSeaItIsDivedTo`,
+    `TheWalkDivesToTheSeaFloorAndComesBackUp`), `ScriptTests.EveryCommand` (`dive`); `WorldWalk` dives and surfaces.
+  - **Shots**: not taken (no harness this wave). The `hoenn` mode ends with `HoennSeaShots` (`Modes/HoennSea.cs`):
+    `h92_route124_surface`, `h93_dive_down`, `h94_sea_floor_day` and `h95_sea_floor_night` (each with `_native`),
+    `h96_seaweed_battle`, and the way back up; the plan's `h40` to `h44` were already taken.
+  - **Left for part b**: the caustic haze layer and the diver's bubbles (`FieldLife.Bubbles`, `LifeArt` cells; the style
+    guide's "The sea floor" lists both under "Still to come"), `BattleArena.Underwater` and its stage (the style guide's
+    "Arenas (G8)" first), `AmbienceBed.Underwater` with `SoundTests`, `FieldLifeTests` and `AmbienceTests`, and the
+    `profile` before and after on `HoennUnderwater` that the plan's "Done when" asks for (the kelp is sway geometry over
+    every floor tile of kelp). The floors of Routes 125 to 128 open with their routes in H8.
 - [ ] H6 Route 118 to Fortree
 - [ ] H7 Lilycove, Mt. Pyre and the hideouts
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis

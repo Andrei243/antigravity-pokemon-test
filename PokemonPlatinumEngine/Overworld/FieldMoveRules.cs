@@ -11,9 +11,9 @@ namespace PokemonPlatinumEngine.Overworld;
 /// <summary>
 /// The moves a Pokémon can use outside battle (plan 02 · S2), in the original's order (<c>FieldMoveList</c> in
 /// <c>field_move_tasks.h</c>), which is also the order the party menu offers them in when one Pokémon knows several.
-/// HeartGold's Whirlpool (plan 20 · J8) comes last, after Platinum's own.
+/// HeartGold's Whirlpool (plan 20 · J8) comes after Platinum's own, and Emerald's Dive (plan 21 · H5) after it.
 /// </summary>
-public enum FieldMove { Cut, Fly, Surf, Strength, Defog, RockSmash, Waterfall, RockClimb, Flash, Teleport, Dig, SweetScent, Chatter, MilkDrink, Softboiled, Whirlpool }
+public enum FieldMove { Cut, Fly, Surf, Strength, Defog, RockSmash, Waterfall, RockClimb, Flash, Teleport, Dig, SweetScent, Chatter, MilkDrink, Softboiled, Whirlpool, Dive }
 
 /// <summary>Why a field move can't be used here and now: the original's <c>FieldMoveError</c>.</summary>
 public enum FieldMoveError
@@ -50,6 +50,15 @@ public sealed record FieldSpot
 
     /// <summary>A whirlpool in front (HeartGold's, plan 20 · J8).</summary>
     public bool Whirlpool { get; init; }
+
+    /// <summary>
+    /// Dark water under a surfer with a sea floor under it, where Dive goes down (Emerald's, plan 21 · H5;
+    /// <see cref="FieldMovement.CanDive"/> without asking who knows the move).
+    /// </summary>
+    public bool Dive { get; init; }
+
+    /// <summary>The sea floor under a diver, where Dive comes back up (<see cref="FieldMovement.CanSurface"/>).</summary>
+    public bool Surface { get; init; }
 
     /// <summary>The place lies in fog that nobody has blown away.</summary>
     public bool Fog { get; init; }
@@ -124,6 +133,7 @@ public static class FieldMoveRules
         "Milk Drink" => FieldMove.MilkDrink,
         "Soft-Boiled" => FieldMove.Softboiled,
         "Whirlpool" => FieldMove.Whirlpool,
+        "Dive" => FieldMove.Dive,
         _ => null
     };
 
@@ -187,6 +197,11 @@ public static class FieldMoveRules
             // HeartGold's: a whirlpool in front, faced from the water (plan 20 · J8)
             case FieldMove.Whirlpool:
                 return spot.Whirlpool && spot.Surfing ? FieldMoveError.None : FieldMoveError.Location;
+            // Emerald's: down from dark water with a floor under it, or up from the floor (SetUpFieldMove_Dive asks
+            // TrySetDiveWarp for either), with nobody walking along (plan 21 · H5)
+            case FieldMove.Dive:
+                if (!spot.Dive && !spot.Surface) return FieldMoveError.Location;
+                return spot.Partner ? FieldMoveError.Partner : FieldMoveError.None;
             case FieldMove.RockClimb:
                 if (!spot.RockFace) return FieldMoveError.Location;
                 return spot.Partner ? FieldMoveError.Partner : FieldMoveError.None;
@@ -254,6 +269,8 @@ public static class FieldMoveRules
             RockFace = FieldMovement.IsRockFace(ahead, facing),
             Waterfall = ahead == TileBehavior.Waterfall,
             Whirlpool = ahead == TileBehavior.Whirlpool,
+            Dive = FieldMovement.CanDive(map, x, y, walker with { Moves = walker.Moves | FieldMoves.Dive }),
+            Surface = walker.Mode == TravelMode.Diving && FieldMovement.CanSurface(map, x, y),
             Fog = map.WeatherAt(x, y) == FieldWeather.Fog,
             Dark = Darkness.Covers(map),
             Surfing = walker.Mode == TravelMode.Surfing,
