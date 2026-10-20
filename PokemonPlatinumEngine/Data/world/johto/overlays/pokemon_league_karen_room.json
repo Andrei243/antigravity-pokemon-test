@@ -3,5 +3,8 @@
   // challenger and the door on that opens once Karen is beaten are plan 20 · J12's, so both ways stand open
   "area": "pokemon_league_karen_room",
   "bgmTrack": "johto/indigo_plateau",
+  // HeartGold walks the challenger in through the doorway at the room's foot, whose tile is a wall to a step: until
+  // J12's scene does, a step into the doorway comes out beyond it
+  "exits": [ { "x": 6, "z": 20, "map": "IndigoLeague_KarenRoom", "toX": 6, "toY": 18, "facing": "Up" } ],
   "people": {}
 }

@@ -9162,7 +9162,7 @@
         "personality": 2170504,
         "moves": [
           "Pay Day",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Screech",
           "Bite"
         ]
@@ -9694,7 +9694,7 @@
         "personality": 2009464,
         "moves": [
           "Pay Day",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Bite",
           "Screech"
         ]
@@ -9823,7 +9823,7 @@
         "moves": [
           "Fury Swipes",
           "Screech",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Pay Day"
         ]
       },
@@ -10052,7 +10052,7 @@
           "Fury Swipes",
           "Bite",
           "Screech",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -15901,7 +15901,7 @@
         "personality": 3208072,
         "moves": [
           "Slash",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Snore",
           "Rest"
         ]
@@ -15930,7 +15930,7 @@
         "moves": [
           "Slash",
           "Screech",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Bite"
         ]
       },
@@ -19544,7 +19544,7 @@
         "personality": 3207816,
         "moves": [
           "Slash",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Snore",
           "Rest"
         ]
@@ -19573,7 +19573,7 @@
         "moves": [
           "Slash",
           "Screech",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Bite"
         ]
       },

@@ -90,6 +90,9 @@ public class FurnitureTests
             game.Place(house, 6, 4, Direction.Up);
             game.Interact();
             Assert.Equal(FieldScripts.Television, game.ScriptNow);
+            // The script is started by the interaction and run by the next frame, which puts its first line up
+            InputManager.Feed(ActionFrame.None);
+            engine.Update(1f / 60f);
             Assert.Equal(GameState.Dialogue, game.State);
             Read(engine);
 

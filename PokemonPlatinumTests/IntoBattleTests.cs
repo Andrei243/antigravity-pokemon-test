@@ -259,12 +259,13 @@ public class IntoBattleTests
         Assert.Equal(26, SceneTransition.Bands.Concat(SceneTransition.KantoBands).Select(b => Rgb(b.Base)).Distinct().Count());
         foreach (var trainer in TrainerDatabase.OfRegion("kanto").Where(t => t.Class is "Leader" or "Elite Four" || TrainerDatabase.IsRivalAsChampion(t)))
         {
-            var band = SceneTransition.BandOf(trainer.Class, trainer.Name);
+            // The Champion's record keeps FireRed's name for the rival, which the world fills as {rival} (TrainerDatabase.Fill)
+            var band = SceneTransition.BandOf(trainer.Class, TrainerDatabase.IsRivalAsChampion(trainer) ? "{rival}" : trainer.Name);
             Assert.Contains(SceneTransition.KantoBands, b => b.Class == trainer.Class && Rgb(b.Base) == Rgb(band.Base));
         }
         // The Champion is the rival, whatever the player called him, and a meeting opens on the band
         var champion = TrainerDatabase.Get("kanto_champion_first_squirtle")!;
-        var met = SceneTransition.BandFor(With(BattleTerrain.Special, 60, 62, false, new MetTrainer(champion.Class, champion.Name)));
+        var met = SceneTransition.BandFor(With(BattleTerrain.Special, 60, 62, false, new MetTrainer(champion.Class, "{rival}")));
         Assert.Equal(("Champion", Rgb(SceneTransition.KantoBands.Last().Base)), (met!.Value.Class, Rgb(met.Value.Base)));
         Assert.Equal(Rgb(SceneTransition.KantoBands.Last().Base), Rgb(SceneTransition.BandOf("Champion", "{rival}").Base));
         // Cynthia keeps hers, and a Champion with a name that is not the rival's is plain

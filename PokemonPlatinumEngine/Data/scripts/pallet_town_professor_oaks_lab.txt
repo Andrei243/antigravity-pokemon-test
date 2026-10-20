@@ -165,6 +165,8 @@ label Chose
 # player, and the rival is off. Everything the scene opens is set at its end: the Mart's counter, the old man's
 # lesson in Viridian City, the rival's sister's Town Map, the rival's wait on Route 22.
 script ProfOak
+  # (a Champion of Kanto has long had the Pokédex)
+  if flag FLAG_SYS_GAME_CLEAR goto AfterTheDex
   if var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB >= 6 goto AfterTheDex
   if item "Parcel" goto Parcel
   if var VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB == 4 goto Train

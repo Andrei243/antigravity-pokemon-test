@@ -2,6 +2,7 @@
   "comment": "Which music a trainer class brings: the eye theme that plays when one of them spots the player (the original's table in src/field_bgm.c, by our names for the classes; a class the original splits by gender, as School Kid, takes the boy's), and the battle theme for the few whose battle has one of its own. A class not listed gets eye_boy and the trainer battle theme. Values are the short names of MusicDirector.EyeThemes and BattleThemes. eyeSongs names, for a class, a song file of a region's own folder that plays there in place of the eye theme (Emerald's Team Magma, plan 21 · H4, part b).",
   "eyeThemes": {
     "Aroma Lady": "lady",
+    "Painter": "girl",
     "Ruin Maniac": "mountain",
     "Interviewers": "fun",
     "Tuber": "kid",

@@ -291,8 +291,14 @@ public class PokemonTests
             // Hoenn and the regions after it have no maps yet; every map there is must be one the game can come to
             Assert.True(reached.TryGetValue(map, out var tiles), $"{name} can't be reached from where its region starts");
             foreach (var warp in map.Warps)
-                Assert.True(tiles!.Contains((warp.SourceX, warp.SourceY)),
+            {
+                // A warp under someone who stands on it for good is no way anywhere, in the original either: Lavaridge
+                // Gym's trainers lie buried in its sand on the holes of its first floor (plan 21 · H4, part b)
+                if (!tiles!.Contains((warp.SourceX, warp.SourceY)) && map.GetNpcAt(warp.SourceX, warp.SourceY) is { } standing
+                    && standing.Movement is not { Kind: PersonMoves.Wander or PersonMoves.Loop }) continue;
+                Assert.True(tiles.Contains((warp.SourceX, warp.SourceY)),
                     $"{name}: the warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) can't be reached from where the game starts");
+            }
         }
 
         // The Underground's tunnels are six systems that don't join, each dug down into from the country over it:

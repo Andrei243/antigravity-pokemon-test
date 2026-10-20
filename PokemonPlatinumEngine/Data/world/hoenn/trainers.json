@@ -1829,7 +1829,7 @@
         "moves": [
           "Bite",
           "Dig",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Sand Tomb"
         ]
       },
@@ -1864,7 +1864,7 @@
         "personality": 3669896,
         "moves": [
           "Giga Drain",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Double Team",
           "Swagger"
         ]
@@ -2315,7 +2315,7 @@
         "ivScale": 255,
         "personality": 609144,
         "moves": [
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Shock Wave"
         ]
       }
@@ -2395,7 +2395,7 @@
         "personality": 558200,
         "moves": [
           "Baton Pass",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Fake Tears",
           "Bite"
         ]
@@ -3317,7 +3317,7 @@
           "Bind",
           "Lick",
           "Fury Swipes",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -3460,7 +3460,7 @@
           "Bind",
           "Lick",
           "Fury Swipes",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -3496,7 +3496,7 @@
           "Bind",
           "Lick",
           "Fury Swipes",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -3532,7 +3532,7 @@
           "Bind",
           "Lick",
           "Fury Swipes",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -3568,7 +3568,7 @@
           "Bind",
           "Lick",
           "Fury Swipes",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -6560,7 +6560,7 @@
         "personality": 2133128,
         "moves": [
           "Leech Seed",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Needle Arm",
           "Cotton Spore"
         ]
@@ -6628,7 +6628,7 @@
           "Shadow Ball",
           "Grudge",
           "Will-O-Wisp",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -6640,7 +6640,7 @@
           "Shadow Ball",
           "Double Team",
           "Night Shade",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -7102,7 +7102,7 @@
           "Slash",
           "Facade",
           "Encore",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -7127,7 +7127,7 @@
           "Counter",
           "Yawn",
           "Facade",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       }
     ]
@@ -7697,7 +7697,7 @@
           "Focus Punch",
           "Yawn",
           "Slack Off",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       }
     ]
@@ -7946,7 +7946,7 @@
         "moves": [
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Heal Bell"
         ]
       },
@@ -7959,7 +7959,7 @@
         "moves": [
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Heal Bell"
         ]
       },
@@ -7972,7 +7972,7 @@
         "moves": [
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Heal Bell"
         ]
       },
@@ -7985,7 +7985,7 @@
         "moves": [
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Heal Bell"
         ]
       },
@@ -7998,7 +7998,7 @@
         "moves": [
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Heal Bell"
         ]
       },
@@ -8011,7 +8011,7 @@
         "moves": [
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Heal Bell"
         ]
       }
@@ -8437,7 +8437,7 @@
         "ivScale": 200,
         "personality": 658808,
         "moves": [
-          "MOVE_HI_JUMP_KICK",
+          "High Jump Kick",
           "Meditate",
           "Confusion",
           "Detect"
@@ -13618,7 +13618,7 @@
           "Sing",
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -17135,7 +17135,7 @@
         "moves": [
           "Flamethrower",
           "Fury Swipes",
-          "MOVE_FAINT_ATTACK",
+          "Feint Attack",
           "Bind"
         ]
       }
@@ -17422,7 +17422,7 @@
           "Sing",
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -17499,7 +17499,7 @@
           "Sing",
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -17576,7 +17576,7 @@
           "Sing",
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {
@@ -17653,7 +17653,7 @@
           "Sing",
           "Assist",
           "Charm",
-          "MOVE_FAINT_ATTACK"
+          "Feint Attack"
         ]
       },
       {

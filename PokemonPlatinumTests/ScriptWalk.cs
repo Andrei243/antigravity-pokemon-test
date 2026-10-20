@@ -340,6 +340,9 @@ internal sealed class ScriptWalk
                 case Query.Var when c.Name == "SEEN":
                     Add($"{c.Number} species seen", host => host.SeenInSinnoh = c.Number);
                     break;
+                case Query.Var when c.Name == "CAUGHT":
+                    Add($"{c.Number} species caught", host => host.Caught = c.Number);
+                    break;
                 // Where the player stands as the script begins: a scene that plays only for someone who came in by
                 // a door asks the tile in front of it
                 case Query.Var when c.Other == null && c.Name is "PLAYER_X" or "PLAYER_Y":
