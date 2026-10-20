@@ -1,0 +1,79 @@
+{
+  "key": "johto_victory_road_3f",
+  "index": 179,
+  "name": "Victory Road Jk",
+  "matrix": 163,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_CHAMPROAD",
+  "nightMusic": "GS_D_CHAMPROAD",
+  "encounters": "D43R0103",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Graveler", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Donphan", "level": 33 },
+    { "species": "Donphan", "level": 33 },
+    { "species": "Onix", "level": 34 },
+    { "species": "Onix", "level": 34 },
+    { "species": "Onix", "level": 36 },
+    { "species": "Rhyhorn", "level": 35 },
+    { "species": "Onix", "level": 36 },
+    { "species": "Rhyhorn", "level": 35 }
+  ],
+  "landRate": 10,
+  "rockSmash": [
+    { "species": "Geodude", "level": 24, "maxLevel": 32 },
+    { "species": "Graveler", "level": 30, "maxLevel": 33 }
+  ],
+  "rockSmashRate": 40,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 38, "z": 14, "to": "indigo_plateau", "toWarp": 0 },
+    { "x": 25, "z": 45, "to": "johto_victory_road_2f", "toWarp": 1 },
+    { "x": 49, "z": 39, "to": "johto_victory_road_2f", "toWarp": 3 },
+    { "x": 54, "z": 22, "to": "johto_victory_road_2f", "toWarp": 5 },
+    { "x": 5, "z": 19, "to": "johto_victory_road_2f", "toWarp": 7 },
+    { "x": 38, "z": 13, "to": "indigo_plateau", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d43r0103_gsrivel", "looks": "gsrivel", "movement": "0", "x": 33, "z": 29, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VICTORY_ROAD_RIVAL", "script": "D43R0103_001+1" },
+    { "id": "d43r0103_monstarball", "looks": "monstarball", "movement": "0", "x": 46, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D43R0103_ULTRA_BALL", "item": "Ultra Ball", "script": "std_itemball_d43r0103_ultra_ball" },
+    { "id": "d43r0103_monstarball_2", "looks": "monstarball", "movement": "0", "x": 33, "z": 36, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D43R0103_TM79", "item": "TM79", "script": "std_itemball_d43r0103_tm79" },
+    { "id": "d43r0103_monstarball_3", "looks": "monstarball", "movement": "0", "x": 25, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D43R0103_RARE_CANDY", "item": "Rare Candy", "script": "std_itemball_d43r0103_rare_candy" },
+    { "id": "d43r0103_breakrock", "looks": "breakrock", "movement": "0", "x": 33, "z": 31, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "d43r0103_breakrock_2", "looks": "breakrock", "movement": "0", "x": 33, "z": 32, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "d43r0103_breakrock_3", "looks": "breakrock", "movement": "0", "x": 33, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_rock_smash" },
+    { "id": "d43r0103_breakrock_4", "looks": "breakrock", "movement": "0", "x": 43, "z": 19, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_rock_smash" },
+    { "id": "d43r0103_breakrock_5", "looks": "breakrock", "movement": "0", "x": 45, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_014", "script": "std_field_rock_smash" },
+    { "id": "d43r0103_breakrock_6", "looks": "breakrock", "movement": "0", "x": 47, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_015", "script": "std_field_rock_smash" },
+    { "id": "d43r0103_breakrock_7", "looks": "breakrock", "movement": "0", "x": 42, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_016", "script": "std_field_rock_smash" }
+  ],
+  "signs": [
+    { "x": 59, "z": 40, "type": 2, "script": "std_hiddenitem_d43r0103_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_D43R0103_HYPER_POTION" },
+    { "x": 43, "z": 18, "type": 2, "script": "std_hiddenitem_d43r0103_zinc", "item": "Zinc", "flag": "FLAG_HIDDEN_ITEM_D43R0103_ZINC" }
+  ],
+  "triggers": [
+    { "x": 37, "z": 21, "width": 3, "depth": 1, "script": "D43R0103_000+1", "variable": "VAR_UNK_40C5", "value": "0" },
+    { "x": 55, "z": 42, "width": 1, "depth": 1, "script": "D43R0103_002+1", "variable": "VAR_UNK_40C9", "value": "0" },
+    { "x": 26, "z": 38, "width": 1, "depth": 1, "script": "D43R0103_003+1", "variable": "VAR_UNK_40C9", "value": "0" },
+    { "x": 29, "z": 44, "width": 1, "depth": 1, "script": "D43R0103_004+1", "variable": "VAR_UNK_40C9", "value": "0" },
+    { "x": 20, "z": 18, "width": 1, "depth": 1, "script": "D43R0103_005+1", "variable": "VAR_UNK_40C9", "value": "0" },
+    { "x": 56, "z": 28, "width": 1, "depth": 1, "script": "D43R0103_006+1", "variable": "VAR_UNK_40C9", "value": "0" }
+  ]
+}

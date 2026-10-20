@@ -1,0 +1,7 @@
+{
+  // Koga's room, the second of the Elite Four's (plan 20 · J10, part b), a place for now: Koga, the door that shuts behind the
+  // challenger and the door on that opens once Koga is beaten are plan 20 · J12's, so both ways stand open
+  "area": "pokemon_league_koga_room",
+  "bgmTrack": "johto/indigo_plateau",
+  "people": {}
+}

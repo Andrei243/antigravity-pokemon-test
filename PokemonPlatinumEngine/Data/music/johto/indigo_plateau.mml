@@ -1,0 +1,39 @@
+# The Indigo Plateau, the League's Pokémon Center and its rooms: HeartGold's SEQ_GS_CHAMPROAD, and this game a song of
+# its own: a solemn horn in D major over a church organ, held strings, a slow bass and the roll of a timpani, the
+# summit every trainer of Johto walks toward. The same by day and night. Original composition for this game (plan
+# 20 · J10, part b).
+title Indigo Plateau
+tempo 96
+meter 4/4
+reverb 0.45
+night none
+
+track lead horn vol=0.74 pan=0 rev=0.4
+  L o5 d2 f+4 a4 | o5 b2. g4 | o5 a4 g4 f+4 e4 | o5 f+2. r4 |
+  o5 f+4 b4 o6 d4 c+4 | o5 b2 g4 b4 | o5 e4 g4 b4 a4 | o5 a2. r4 |
+  o6 d2 c+4 o5 b4 | o5 a2 f+4 c+4 | o5 d4 g4 b4 o6 d4 | o6 d2. r4 |
+  o6 d4 o5 b4 g4 b4 | o5 a4 o6 c+4 e4 c+4 | o6 d2 o5 a2 | o5 d2. r4 |
+
+track organ organ vol=0.26 pan=-0.25 rev=0.45
+  L o4 (d f+ a)1 | o4 (d g b)1 | o4 (c+ e a)1 | o4 (d f+ a)1 |
+  o4 (d f+ b)1 | o4 (d g b)1 | o4 (e g b)1 | o4 (c+ e a)1 |
+  o4 (d f+ a)1 | o4 (c+ f+ a)1 | o4 (d g b)1 | o4 (d f+ a)1 |
+  o4 (d g b)1 | o4 (c+ e a)1 | o4 (d f+ a)1 | o4 (d f+ a)1 |
+
+track strings strings vol=0.2 pan=0.25 rev=0.5
+  L o3 (a >d)1 | o3 (b >d)1 | o3 (a >c+)1 | o3 (a >d)1 |
+  o3 (b >d)1 | o3 (g b)1 | o3 (g b)1 | o3 (a >c+)1 |
+  o3 (a >d)1 | o3 (a >c+)1 | o3 (g b)1 | o3 (a >d)1 |
+  o3 (g b)1 | o3 (a >c+)1 | o3 (a >d)1 | o3 (a >d)1 |
+
+track bass contrabass vol=0.48 rev=0.15
+  L o2 d2 a2 | o2 g2 o3 d2 | o2 a2 o3 e2 | o2 d2 a2 |
+  o2 b2 o3 f+2 | o2 g2 o3 d2 | o2 e2 b2 | o2 a2 o3 e2 |
+  o2 d2 a2 | o2 f+2 o3 c+2 | o2 g2 o3 d2 | o2 d2 a2 |
+  o2 g2 o3 d2 | o2 a2 o3 e2 | o2 d2 a2 | o2 d1 |
+
+track timpani timpani vol=0.3 rev=0.3
+  L o3 d2 r4 a4 | o3 g2 r2 | o3 a2 r4 a4 | o3 d2 r2 |
+  o3 b2 r2 | o3 g2 r2 | o3 e2 r2 | o3 a2 r4 a4 |
+  o3 d2 r4 a4 | o3 f+2 r2 | o3 g2 r2 | o3 d2 r2 |
+  o3 g2 r2 | o3 a2 r4 a4 | o3 d2 r4 a4 | o3 d1 |

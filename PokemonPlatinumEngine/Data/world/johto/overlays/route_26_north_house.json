@@ -1,0 +1,9 @@
+{
+  // The house on Route 26 (plan 20 · J10, part b), built as Viridian builds: the woman here lets the team rest
+  // (route_26_north_house.txt)
+  "area": "route_26_north_house",
+  "bgmTrack": "johto/route26",
+  "people": {
+    "r26r0101_gswoman1": { "name": "Woman", "script": "Woman", "still": true }
+  }
+}

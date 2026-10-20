@@ -1,0 +1,32 @@
+{
+  "key": "pokemon_league_lance_room",
+  "index": 305,
+  "name": "Pokémon League",
+  "matrix": 169,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Lance",
+  "dayMusic": "GS_CHAMPROAD",
+  "nightMusic": "GS_CHAMPROAD",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 28, "to": "pokemon_league_karen_room", "toWarp": 1 },
+    { "x": 6, "z": 2, "to": "johto_pokemon_league_hall_of_fame", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t10r0601_wataru", "looks": "wataru", "movement": "15", "x": 6, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t10r0601_ookido", "looks": "ookido", "movement": "15", "x": 22, "z": 27, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t10r0601_kurumi", "looks": "kurumi", "movement": "15", "x": 21, "z": 27, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t10r0601_babyboy1_11", "looks": "babyboy1_11", "movement": "0", "x": 6, "z": 26, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_210", "script": "0" },
+    { "id": "t10r0601_leag_door2", "looks": "leag_door2", "movement": "0", "x": 6, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 5, "z": 10, "width": 3, "depth": 1, "script": "T10R0601_000+1", "variable": "VAR_UNK_40C7", "value": "0" }
+  ]
+}

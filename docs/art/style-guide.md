@@ -274,6 +274,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Cianwood (Cliffside) | pale stone | gable, sea green `64,132,112` | a chimney: the island town of the pharmacy and the fighters, fish drying on its quay (plan 20 · J8) |
 | Mahogany (Upland) | dark logs | hip, moss green `94,116,70` | a chimney: the small mountain town of the souvenir shop and the ice Gym, a lookout post at each end of its street; the Lake of Rage's two houses are Mahogany's too (plan 20 · J10) |
 | Blackthorn (Dragonstone) | grey cut stone | gable, dragon blue `52,86,132` | shutters, a chimney: the walled city of the dragon tamers under the mountain, a stone gate across its street (plan 20 · J10) |
+| Routes 26 and 27 (Evergreen, plan 20 · J10, part b) | logs | gable, evergreen `48,116,82` | the few houses on the roads from Johto into Kanto are built as Viridian builds, the nearest town of Kanto's |
 | Littleroot (Sapling) | boards | gable, leaf green `112,170,76` | a chimney, flower boxes: the little town where the grass starts, fenced in wood (plan 21 · H1) |
 | Oldale (Meadow) | white clapboard | hip, sky blue `92,150,206` | shutters: the crossroads town between the routes, fenced in wood (plan 21 · H1) |
 | Petalburg (Parkside) | plaster over a stone base | hip, ochre `196,150,72` | a chimney: the quiet city of the Gym by the pond (plan 21 · H1) |
@@ -294,6 +295,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Pokémon Center, Mart, lab | plaster, hip roof (orange, blue, cyan) | the entrance block with its roundel or name |
 | Gym | plaster, hip roof in its leader's type: Rock `150,128,100`, Grass `92,170,96`, Ghost `124,98,170`, Fighting `204,96,72`, Water `72,140,214`, Steel `138,150,170`, Ice `126,200,220`, Electric `236,196,64` | an entrance block 84 wide in that colour, signed `GYM` |
 | Gate house | stone, hip roof green-grey `104,146,122` | an open porch where the road goes through north and south; a door in each end wall where it goes east and west |
+| The League's reception gate (Route 22, Johto, plan 20 · J10, part b) | a gate house | one room seen from three roads: a face on Route 26 to the south, on Route 22 to the east and on Route 28 to the west, each built as a gate house of its own |
 | Shop (flower shop, cycle shop, café, market, Game Corner, Day Care, Fan Club) | its town's house | an entrance block wide enough for its name, in the roof's colour |
 | Department store | panel block of five storeys | its name on the band along the top, ribbon windows |
 | Museum | cut stone under a flat roof, two storeys | `MUSEUM` on the band, arched windows |
@@ -310,6 +312,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Mansion | plaster, two storeys, hip roof slate `88,98,126` | arched windows, an entrance block |
 | Team Galactic's buildings | dark panel under a flat roof | slit windows `120,230,220`, a yellow band `232,204,76` along the top, spikes on the roof corners |
 | Pokémon League | pale stone `214,210,204`, flat roofs | three tiers stepping back, a crimson band `196,60,70`, arched windows, a grand open porch |
+| The Indigo Plateau's League (Johto, plan 20 · J10, part b) | pale stone `214,210,204`, two storeys, under a hip roof of league red `176,52,60` | arched windows, glass doors, an entrance block 84 wide signed `LEAGUE` with an accent of old gold `214,178,84`; a lamp at each corner of the plaza before it. Johto's League is one building with its Pokémon Center inside, not Sinnoh's tiers |
 | The Ribbon Syndicate (Resort Area) | the Resort's white clapboard, two storeys, under a hip roof of ribbon rose `214,104,150` | a veranda across its whole front where the world builds its entrance out: glazed bays either side of the way in, each a wide window in a white frame, under a canopy in the roof's colour that carries `RIBBONS` between two rosettes (a gold disc `250,210,76` with two tails) |
 | The Battleground (Survival Area) | a shop of the Battle Zone: its town's white clapboard under the turquoise hip roof | two small blocks side by side as the world builds it, `BATTLE` on the entrance block of the one with the door |
 | The Battle Tower (Battle Frontier; plan 01 · M10, part b) | pale stone `214,210,204` on a flat-roofed ground stage as wide as the world blocks, the Frontier's blue `58,92,170` | a shaft of four stages, the first nine tiles wide and each a seventh narrower than the one under it, a blue band round the top of each and arched windows that burn all night; on the last a gallery and a lantern room, and over that a cap of blue slate half as tall again as a tower's. As tall as its model stands (up to 380 rows): from its door its top is out of the picture, which is the point of it |

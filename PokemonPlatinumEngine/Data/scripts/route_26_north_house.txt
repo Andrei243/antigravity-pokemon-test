@@ -1,0 +1,18 @@
+# The house on Route 26 (plan 20 · J10, part b). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats: the woman who lives here lets a trainer on the way to the League rest the team, behind a fade.
+
+
+script Woman
+  speaker "Woman"
+  ask "The road to the League is a long one. Would your Pokémon like a rest?"
+  if no goto NotNow
+  say "Make yourselves at home."
+  fade out
+  fanfare heal
+  heal
+  fade in
+  say "There, everyone looks lively again. Do your best at the League!"
+  end
+label NotNow
+  say "All right. Come back if you get tired on the way."
+  end

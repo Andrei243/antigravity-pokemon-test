@@ -1,0 +1,14 @@
+{
+  // The house on Route 27 (plan 20 · J10, part b), built as Viridian builds; its old woman only talks
+  "area": "route_27_house",
+  "bgmTrack": "johto/route26",
+  "people": {
+    "r27r0101_gsoldwoman1": {
+      "name": "Old Woman",
+      "still": true,
+      "dialog": [
+        "Trainers pass my window every day, all heading east to the League. Not many of them come back this way."
+      ]
+    }
+  }
+}

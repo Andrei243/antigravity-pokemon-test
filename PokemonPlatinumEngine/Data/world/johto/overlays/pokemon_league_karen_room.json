@@ -1,0 +1,7 @@
+{
+  // Karen's room, the last of the Elite Four's (plan 20 · J10, part b), a place for now: Karen, the door that shuts behind the
+  // challenger and the door on that opens once Karen is beaten are plan 20 · J12's, so both ways stand open
+  "area": "pokemon_league_karen_room",
+  "bgmTrack": "johto/indigo_plateau",
+  "people": {}
+}

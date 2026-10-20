@@ -185,7 +185,29 @@
     { "name": "DragonsDen", "matrix": 146, "area": "dragons_den", "trees": "Round", "setting": "Cave" },
     { "name": "DragonsDen_Shrine", "matrix": 149, "area": "dragons_den_shrine", "trees": "Round", "setting": "Indoors" },
     { "name": "DarkCave_Route31Side", "matrix": 99, "area": "dark_cave_route_31_side", "trees": "Round", "setting": "Cave" },
-    { "name": "DarkCave_Route45Side", "matrix": 98, "area": "dark_cave_route_45_side", "trees": "Round", "setting": "Cave" }
+    { "name": "DarkCave_Route45Side", "matrix": 98, "area": "dark_cave_route_45_side", "trees": "Round", "setting": "Cave" },
+    // Plan 20 · J10, part b: the way to the League. Route 26's two houses and Route 27's, Tohjo Falls and the room
+    // behind its water, the League's reception gate on Route 22, Victory Road's three floors, and on the Indigo Plateau
+    // the League's Pokémon Center with its floor below, the four rooms of the Elite Four, the Champion's and the Hall
+    // of Fame. Kanto's FireRed rooms have their own names (VictoryRoad_1F, PokemonLeague_BrunosRoom), so these are
+    // Indigo's; the areas whose keys another region's world has already take Johto's prefix (HgWorld.Clashes)
+    { "name": "Route26_NorthHouse", "matrix": 66, "area": "route_26_north_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route26_WeekSiblingsHouse", "matrix": 147, "area": "route_26_week_siblings_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route27_House", "matrix": 66, "area": "route_27_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "TohjoFalls", "matrix": 151, "area": "tohjo_falls", "trees": "Round", "setting": "Cave" },
+    { "name": "TohjoFalls_HiddenRoom", "matrix": 164, "area": "tohjo_falls_hidden_room", "trees": "Round", "setting": "Cave" },
+    { "name": "Route22_LeagueReceptionGate", "matrix": 150, "area": "route_22_pokemon_league_reception_gate", "trees": "Round", "setting": "Indoors" },
+    { "name": "IndigoVictoryRoad_1F", "matrix": 161, "area": "johto_victory_road_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "IndigoVictoryRoad_2F", "matrix": 162, "area": "johto_victory_road_2f", "trees": "Round", "setting": "Cave" },
+    { "name": "IndigoVictoryRoad_3F", "matrix": 163, "area": "johto_victory_road_3f", "trees": "Round", "setting": "Cave" },
+    { "name": "IndigoLeague_PokemonCenter_1F", "matrix": 148, "area": "pokemon_league_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "IndigoLeague_PokemonCenter_B1F", "matrix": 77, "area": "pokemon_league_entrance_wifi_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "IndigoLeague_WillRoom", "matrix": 165, "area": "pokemon_league_will_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "IndigoLeague_KogaRoom", "matrix": 166, "area": "pokemon_league_koga_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "IndigoLeague_BrunoRoom", "matrix": 167, "area": "pokemon_league_bruno_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "IndigoLeague_KarenRoom", "matrix": 168, "area": "pokemon_league_karen_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "IndigoLeague_LanceRoom", "matrix": 169, "area": "pokemon_league_lance_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "IndigoLeague_HallOfFame", "matrix": 170, "area": "johto_pokemon_league_hall_of_fame", "trees": "Round", "setting": "Indoors" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -254,6 +276,15 @@
     "blackthorn", "blackthorn_pokecenter_1f", "blackthorn_pokecenter_b1f", "blackthorn_pokemart", "blackthorn_gym",
     "blackthorn_west_house", "blackthorn_east_house", "blackthorn_move_tutor_house",
     "dragons_den_entrance", "dragons_den", "dragons_den_shrine",
-    "route_45", "route_46", "dark_cave_route_31_side", "dark_cave_route_45_side"
+    "route_45", "route_46", "dark_cave_route_31_side", "dark_cave_route_45_side",
+    // Plan 20 · J10, part b: Routes 27 and 26 from New Bark Town by Tohjo Falls, Route 22's reception gate, Victory
+    // Road and the Indigo Plateau with the League's rooms
+    "route_27", "route_27_house", "tohjo_falls", "tohjo_falls_hidden_room",
+    "route_26", "route_26_north_house", "route_26_week_siblings_house",
+    "johto_route_22", "route_22_pokemon_league_reception_gate",
+    "johto_victory_road_1f", "johto_victory_road_2f", "johto_victory_road_3f",
+    "indigo_plateau", "pokemon_league_entrance", "pokemon_league_entrance_wifi_room",
+    "pokemon_league_will_room", "pokemon_league_koga_room", "pokemon_league_bruno_room", "pokemon_league_karen_room",
+    "pokemon_league_lance_room", "johto_pokemon_league_hall_of_fame"
   ]
 }

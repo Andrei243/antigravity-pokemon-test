@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r27r0101_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Trainers pass my window every day, all heading east to the League. Not many of them come back this way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

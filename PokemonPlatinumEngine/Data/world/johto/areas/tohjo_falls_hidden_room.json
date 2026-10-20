@@ -1,0 +1,32 @@
+{
+  "key": "tohjo_falls_hidden_room",
+  "index": 298,
+  "name": "Tohjo Falls",
+  "matrix": 164,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 10, "to": "tohjo_falls", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "d45r0102_breakrock", "looks": "breakrock", "movement": "0", "x": 5, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "d45r0102_breakrock_2", "looks": "breakrock", "movement": "0", "x": 8, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "d45r0102_breakrock_3", "looks": "breakrock", "movement": "0", "x": 4, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_rock_smash" },
+    { "id": "d45r0102_breakrock_4", "looks": "breakrock", "movement": "0", "x": 3, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_rock_smash" },
+    { "id": "d45r0102_sakaki", "looks": "sakaki", "movement": "0", "x": 12, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TOHJO_FALLS_GIOVANNI", "script": "0" },
+    { "id": "d45r0102_var_1", "looks": "var_1", "movement": "0", "x": 12, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_TOHJO_FALLS_FRIEND", "script": "0" }
+  ],
+  "signs": [
+    { "x": 7, "z": 3, "type": 0, "script": "D45R0102_003+1" }
+  ],
+  "triggers": []
+}

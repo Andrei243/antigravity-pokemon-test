@@ -1,0 +1,7 @@
+{
+  // Victory Road's first floor (plan 20 · J10, part b): the cave north of the League's reception gate, its boulders
+  // pushed with Strength. Its key takes Johto's prefix, since Platinum's Victory Road is victory_road_1f
+  "area": "johto_victory_road_1f",
+  "bgmTrack": "johto/victory_road",
+  "people": {}
+}

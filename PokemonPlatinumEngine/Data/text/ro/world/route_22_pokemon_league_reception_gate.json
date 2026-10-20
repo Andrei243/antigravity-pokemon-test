@@ -1,0 +1,51 @@
+{
+  "people": {
+    "r22r0101_policeman": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r22r0101_policeman_2": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The road west leads to Mt. Silver. Only trainers the League invites may go that way, so the door stays shut."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r22r0101_policeman_3": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Through this door is Route 22, and Kanto beyond it. It opens to those who have stood before the Champion."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,178 @@
+{
+  "people": {
+    "r26_fishing_2": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Scott: The fish up here bite hard. So do I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Scott: That's the one that got away."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r26_mystery_2": {
+      "name": {
+        "en": [
+          "Vernon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Vernon: I can read your next move. Can you read mine?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Vernon: I read it. I just couldn't stop it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r26_gswoman3": {
+      "name": {
+        "en": [
+          "Joyce"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Joyce: The League is just ahead. Let's see if you're ready for it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Joyce: You're ready. More than I am, anyway."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r26_gsman3": {
+      "name": {
+        "en": [
+          "Gaven"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Gaven: Every trainer on this road wants to be Champion. Prove you deserve it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Gaven: You might just make it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r26_gsman3_2": {
+      "name": {
+        "en": [
+          "Jake"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Jake: I've been training here for weeks, waiting for a real challenge."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Jake: Worth the wait. Painful, but worth it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r26_gswoman3_2": {
+      "name": {
+        "en": [
+          "Jamie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Jamie: Before you reach the gate, you'll have to get past me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Jamie: Fine, the gate's all yours."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R26_002+1": {
+      "en": [
+        "Pokémon League Reception Gate\nVictory Road lies beyond."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R26_003+1": {
+      "en": [
+        "Route 26\nNorth to the Pokémon League."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

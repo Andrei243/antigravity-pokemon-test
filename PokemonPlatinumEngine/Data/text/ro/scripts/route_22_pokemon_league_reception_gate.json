@@ -1,0 +1,88 @@
+{
+  "BadgeCheck": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold on a moment. The road north is for trainers with all eight of Johto's Badges... and you have every one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Victory Road waits beyond the north door. Good luck up there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold on a moment. The road north is for trainers with all eight of Johto's Badges, and you don't have them yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back once you've won the rest."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Only a trainer with all eight of Johto's Badges may take the road north to Victory Road."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've shown me all eight Badges. The way north to Victory Road is open to you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KantoShut": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sorry, this door to Route 22 is closed. Kanto is open only to trainers who have stood before the League's Champion."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

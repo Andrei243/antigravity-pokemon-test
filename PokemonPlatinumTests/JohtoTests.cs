@@ -490,6 +490,78 @@ public class JohtoTests
             Assert.NotNull(SpawnLocations.ArrivedIn(RegionDatabase.Johto, town));
     }
 
+    private static readonly string[] TheWayToTheLeague = { "route_27", "route_26", "johto_route_22", "indigo_plateau" };
+
+    [Fact]
+    public void TheLeagueIsWalkedToFromNewBarkTownByTohjoFallsAndVictoryRoad()
+    {
+        // Plan 20 · J10, part b: east of New Bark Town over the water of Route 27, through Tohjo Falls and up its falls,
+        // north along Route 26 to the League's reception gate, through Victory Road's three floors and out onto the
+        // Indigo Plateau, into the League's hall and on through the Elite Four's rooms, the Champion's and the Hall of Fame
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in TheWayToTheLeague)
+        {
+            Assert.Contains(key, Johto.Index.Areas);
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        }
+        string[] rooms = { "Route27_House", "TohjoFalls", "TohjoFalls_HiddenRoom", "Route26_NorthHouse",
+            "Route26_WeekSiblingsHouse", "Route22_LeagueReceptionGate", "IndigoVictoryRoad_1F", "IndigoVictoryRoad_2F",
+            "IndigoVictoryRoad_3F", "IndigoLeague_PokemonCenter_1F", "IndigoLeague_PokemonCenter_B1F", "IndigoLeague_WillRoom",
+            "IndigoLeague_KogaRoom", "IndigoLeague_BrunoRoom", "IndigoLeague_KarenRoom", "IndigoLeague_LanceRoom",
+            "IndigoLeague_HallOfFame" };
+        foreach (string name in rooms)
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+
+        // HeartGold's Kanto shares its keys with FireRed's and Platinum's: those that meet another region's take
+        // Johto's prefix (HgWorld.Clashes), and the rest are Johto's own
+        Assert.True(HgWorld.Clashes("victory_road_1f"));
+        Assert.True(HgWorld.Clashes("route_22"));
+        Assert.Equal("johto_pokemon_league_hall_of_fame", HgWorld.KeyOf("MAP_POKEMON_LEAGUE_HALL_OF_FAME"));
+        Assert.Equal("route_26", HgWorld.KeyOf("MAP_ROUTE_26"));
+
+        // The league's places are places only for now: nobody of the Elite Four, the Champion or the Hall of Fame stands
+        // in them (plan 20 · J12), and every door between them stands open
+        foreach (string name in new[] { "IndigoLeague_WillRoom", "IndigoLeague_KogaRoom", "IndigoLeague_BrunoRoom",
+                     "IndigoLeague_KarenRoom", "IndigoLeague_LanceRoom", "IndigoLeague_HallOfFame" })
+            Assert.Empty(MapNamed(name).Everyone);
+        var hall = MapNamed("IndigoLeague_PokemonCenter_1F");
+        Assert.Equal(InteriorStyle.PokemonCenter, hall.Interior);
+        Assert.Contains(hall.Everyone, n => n.Script == "Nurse");
+
+        // The reception gate: Route 28's door is shut, the guard turns back anyone short of eight Badges, and the door to
+        // Kanto's Route 22 is held until the Champion has been faced
+        var gate = MapNamed("Route22_LeagueReceptionGate");
+        var route28 = Johto.Area("route_22_pokemon_league_reception_gate")!.Warps[3];
+        Assert.Null(gate.GetWarpAt(route28.X, route28.Z));
+        Assert.Contains(gate.Triggers, t => t.Script == "BadgeCheck" && t.Variable == "VAR_UNK_4110" && t.Value == 0);
+        Assert.Contains(gate.Triggers, t => t.Script == "KantoShut");
+
+        // The roads, Victory Road and the Plateau have songs of their own; Tohjo Falls is a cave of Union Cave's song
+        var route26 = Johto.Area("route_26")!.Warps[0];
+        Assert.Equal("johto/route26", Overworld.BgmTrackAt(route26.X, route26.Z + 1));
+        var plateau = Johto.Area("indigo_plateau")!.Warps[1];
+        Assert.Equal("johto/indigo_plateau", Overworld.BgmTrackAt(plateau.X, plateau.Z + 1));
+        Assert.Equal("Indigo Plateau", Overworld.DisplayNameAt(plateau.X, plateau.Z + 1));
+        var road = Johto.Area("johto_victory_road_1f")!.Warps[0];
+        Assert.Equal("johto/victory_road", MapNamed("IndigoVictoryRoad_1F").BgmTrackAt(road.X, road.Z));
+        var falls = Johto.Area("tohjo_falls")!.Warps[0];
+        Assert.Equal("johto/union_cave", MapNamed("TohjoFalls").BgmTrackAt(falls.X, falls.Z));
+
+        // The houses of the two routes are Viridian's, and the League one building of its own
+        Assert.Equal(Architecture.Evergreen, WorldModels.Of("kn_h01", "johto")!.Town);
+        Assert.Equal(BuildingKind.League, WorldModels.Of("pke_league", "johto")!.Kind);
+
+        // The trainers battle by HeartGold's records
+        foreach (string id in new[] { "johto_ace_trainer_f_megan", "johto_psychic_m_eli", "johto_fisherman_scott" })
+            Assert.Contains(Overworld.Everyone, n => n.Id == id);
+
+        // Fly lands before the League's door once the Plateau has been come to
+        var spawn = SpawnLocations.ArrivedIn(RegionDatabase.Johto, "indigo_plateau")!;
+        Assert.Equal("IndigoLeague_PokemonCenter_1F", spawn.Room);
+        Assert.Equal(spawn.Room, Overworld.GetWarpAt(spawn.X, spawn.Y - 1)?.TargetMap);
+    }
+
     [Fact]
     public void JohtosTrainersBattleWithHeartGoldsPrizeAndPersonalities()
     {
