@@ -3199,8 +3199,51 @@ a flag of ours; Route 121's arrival calls it for a save that never ran it. What 
   trainer jumps out at whoever comes near and stays on the patch once beaten, so Emerald's player never takes those
   warps; the reader writes a warp under a `TRAINER_TYPE_BURIED` object as a landing, which leads nowhere (Gerald's at
   2, 15 was one nobody could reach).
-- **What waits** (part c): Gabby and Ty's interviews, the Wingull's errand, the bridges' bounce underfoot and their
-  metatiles once the Kecleon has fled.
+- **What waits** (part c, below): the bridges' metatiles once the Kecleon has fled.
+
+## Gabby and Ty, the Wingull and the planks (2026-10-20, plan 21 · H6, its third part)
+
+Gabby and Ty's battles and interviews, Fortree's fourth house and the plank bridges are scripts and rules of ours on
+Emerald's beats (`common.txt`: `HoennChapterSevenC`, `GabbyAndTyUpdateLocation`, `GabbyAndTyGabby`, `GabbyAndTyTy`,
+`GabbyAndTyFight`, `GabbyAndTyAfterTheBattle`; `fortree_city_house_4.txt`; `Graphics/FieldLife.Planks.cs`), under
+Emerald's flags and variables (`VAR_GABBY_AND_TY_BATTLE_NUM`, the eight `FLAG_HIDE_ROUTE_1xx_GABBY_AND_TY_n`,
+`FLAG_GABBY_AND_TY_ON_AIR`, `FLAG_WINGULL_SENT_ON_ERRAND`, `FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL`,
+`FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL`). **No story or save version is raised**: `HoennChapterSevenC` hides the
+pair and the Mossdeep Wingull and shows the Fortree one, `HoennNewGame` calls it, and the arrival scripts of Routes 111,
+118, 119 and 120 and of Fortree City call it for a save that never ran it (`FLAG_HOENN_CHAPTER_SEVEN_C`, a flag of
+ours). What differs, and why:
+
+- **One script for every route**: Emerald has a script to each of the pair's nine places; the three routes share
+  `GabbyAndTyGabby` and `GabbyAndTyTy`, which pick the party by the count of battles. The count goes 0 to 8 and, past
+  the ninth battle, back to 6 (Emerald's remainder), so from the sixth party on the pair go round Routes 111, 118 and
+  120 with the sixth party for good. The six parties are Emerald's (`hoenn_gabby_and_ty_1` to `6`, class "Interviewer",
+  a double battle).
+- **Temporary flags**: Emerald's trainer flag and `FLAG_TEMP_SKIP_GABBY_INTERVIEW` are one local flag here
+  (`FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN`), cleared when the player leaves the route: the pair fought on this visit only
+  say they are watching, as the beaten trainer's second talk does. The player needs two Pokémon able to be sent out
+  together; one is told to come back with two.
+- **Two words for one**: Emerald asks for one easy-chat word. This game's phrase picker (plan 08 · P9) takes two, so
+  the answer is two words (`phrase GABBY_AND_TY`), kept until the next battle, quoted back at it, and read in the
+  segment. Backing out of the picker refuses the interview, as saying no does.
+- **What the battle is remembered for**: Emerald notes whether the player threw a ball, used a healing item, lost a
+  Pokémon, took fewer than the usual number of turns or won in a single turn (its trivia, `GabbyAndTyTrivia`). This game
+  counts two of those, as the host can tell them: a battle over at once (`TURNS == 0`, Emerald's "short battle") and a
+  Pokémon of the team fallen in it (`FAINTED` rose). A thrown ball or a healing item in a double battle against the
+  trainers of the pair is not counted, so those two bits of trivia are left.
+- **The segment on the air**: an interview given sets `FLAG_GABBY_AND_TY_ON_AIR` (Hoenn's televisions only, among the
+  programmes `Broadcasts.On` offers) and `FLAG_GABBY_AND_TY_SHOW_NEW`, so the first television looked at afterwards
+  shows it, as Jubilife's interview is. The next battle with the pair takes it off the air until it is interviewed
+  about again, as Emerald's `gabbyAndTyData.onAir` is cleared when the pair are fought.
+- **The Wingull**: the boy sends it out the first time he is spoken to, and it runs off through the door. Emerald shows
+  Mossdeep's Wingull then (the other half of the errand); here that bird stays hidden in a town that is not built yet,
+  and the boy says the Wingull is away on an errand ever after. The letter delivered, the Wingull home again and the
+  boy's Mental Herb are plan 21 · H8's, written with Mossdeep, so nothing here asks for those flags yet.
+- **The planks**: Emerald's `FortreeBridgePerStepCallback` lowers the plank's metatile under the player for a few
+  frames and springs the one they left. The plank's picture here is baked into its chunk, so the walker's sprite does
+  the dipping, for Hoenn's `Bridge` tiles alone (Sinnoh's decks are stone and iron, and share the behaviour). The
+  numbers are the style guide's ("Planks that give"); the sound is `bridge_walk`, ours.
+- **What waits**: the metatile swap of the bridge once Fortree's Kecleon has fled (an alternate chunk of the importer's);
+  the Wingull's return and Mental Herb (H8).
 
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 

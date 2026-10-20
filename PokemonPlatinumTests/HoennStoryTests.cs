@@ -35,6 +35,9 @@ public class HoennStoryTests
         public PlayerLook Look { get; init; }
         public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
         public bool Impatient { get; init; }
+        /// <summary>The turns a battle of the scripts to come takes (the host's BattleTurns), and what is done to the team in it.</summary>
+        public int Turns { get; set; } = 3;
+        public Action? DuringFight { get; set; }
         /// <summary>How the questions of the scripts to come are answered (left out, the first answer: yes).</summary>
         public Func<string, IReadOnlyList<string>, int>? Decide { get; set; }
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
@@ -128,6 +131,8 @@ public class HoennStoryTests
                 Decide = Decide,
                 NeedsPokemon = true
             };
+            // (a battle's turns, and whatever happens to the team in it: Gabby and Ty ask after both)
+            host.Fight = _ => { host.BattleTurns = Turns; DuringFight?.Invoke(); return Fight; };
             var runner = new ScriptRunner(Scripts, host) { Impatient = Impatient };
             runner.Start(script, subject);
             runner.RunToEnd();
@@ -1430,7 +1435,7 @@ public class HoennStoryTests
     public void ANewGameOfHoennHidesTheSeventhStretchsPeopleAndAnOlderSaveHasThemHiddenOnTheWay()
     {
         var fresh = new Game();
-        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_SEVEN", "FLAG_HIDE_ROUTE_119_RIVAL", "FLAG_HIDE_ROUTE_119_SCOTT", "FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS", "FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL", "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1" })
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_SEVEN", "FLAG_HIDE_ROUTE_119_RIVAL", "FLAG_HIDE_ROUTE_119_SCOTT", "FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS", "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1" })
             Assert.True(fresh.Story.Has(flag), flag);
         Assert.False(fresh.Story.Has("FLAG_HIDE_ROUTE_118_STEVEN"));
 
@@ -1577,5 +1582,207 @@ public class HoennStoryTests
         var again = game.Talk("expert_m");
         Assert.Empty(again.Asked);
         Assert.Equal(TutorAnswer.Able, MoveTutors.ForKanto(new Pokemon(PokemonDatabase.Get("Zigzagoon")!, 10), "Sleep Talk"));
+    }
+
+    // ------------------------------------------------------------------ plan 21 · H6, part c: Gabby and Ty, and Fortree's Wingull
+
+    /// <summary>Where the pair stands for each count of their battles, 0 to 8: the route's tile to arrive at, and the person (the sixth places go round again).</summary>
+    private static readonly (int X, int Y, string Gabby)[] GabbyPlaces =
+    {
+        (213, 88, "route111_gabby_1"), (270, 148, "route118_gabby_1"), (373, 17, "route120_gabby_1"),
+        (213, 88, "route111_gabby_2"), (270, 148, "route118_gabby_2"), (373, 17, "route120_gabby_2"),
+        (213, 88, "route111_gabby_3"), (270, 148, "route118_gabby_3"), (373, 17, "route120_gabby_2")
+    };
+
+    private static readonly string[] EveryGabby =
+    {
+        "route111_gabby_1", "route111_gabby_2", "route111_gabby_3", "route118_gabby_1", "route118_gabby_2", "route118_gabby_3",
+        "route120_gabby_1", "route120_gabby_2"
+    };
+
+    /// <summary>A game past Norman with two Pokémon on the team, for a double battle.</summary>
+    private static Game WithTwo()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        if (game.Party.Count < 2) game.Party.Members.Add(new Pokemon(PokemonDatabase.Get("Zigzagoon")!, 6));
+        return game;
+    }
+
+    [Fact]
+    public void GabbyAndTyStandWhereTheCountOfTheirBattlesPutsThemAndFightWithTheNthParty()
+    {
+        var game = WithTwo();
+        for (int count = 0; count < GabbyPlaces.Length; count++)
+        {
+            var (x, y, gabby) = GabbyPlaces[count];
+            game.Story.ClearLocal();
+            game.Story.SetVar("VAR_GABBY_AND_TY_BATTLE_NUM", count);
+            game.Arrive("Hoenn", x, y);
+            foreach (string key in EveryGabby)
+                Assert.Equal(key == gabby, game.Present(key) != null);
+
+            var host = game.Talk(gabby);
+            // The sixth party from then on, and the count goes round from nine to six
+            Assert.Contains(host.Log, l => l.StartsWith($"battle hoenn_gabby_and_ty_{Math.Min(count, 5) + 1} "));
+            Assert.Equal(count + 1 >= 9 ? 6 : count + 1, game.Story.Var("VAR_GABBY_AND_TY_BATTLE_NUM"));
+            Assert.True(game.Story.Has("FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN"));
+        }
+    }
+
+    [Fact]
+    public void GabbyAndTyOnlySayTheyAreWatchingOnceFoughtAndWantTwoPokemonToBegin()
+    {
+        var game = WithTwo();
+        game.Arrive("Hoenn", 213, 88);
+        game.Talk("route111_gabby_1");
+        // The same visit: no second battle
+        var again = game.Talk("route111_gabby_1");
+        Assert.DoesNotContain(again.Log, l => l.StartsWith("battle "));
+        Assert.Equal(1, game.Story.Var("VAR_GABBY_AND_TY_BATTLE_NUM"));
+
+        // One Pokémon makes half of a double battle
+        var alone = PastNorman(0, PlayerLook.Boy);
+        while (alone.Party.Count > 1) alone.Party.Members.RemoveAt(alone.Party.Count - 1);
+        alone.Arrive("Hoenn", 213, 88);
+        var turned = alone.Talk("route111_ty_1");
+        Assert.DoesNotContain(turned.Log, l => l.StartsWith("battle "));
+        Assert.Equal(0, alone.Story.Var("VAR_GABBY_AND_TY_BATTLE_NUM"));
+        Assert.False(alone.Story.Has("FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN"));
+    }
+
+    [Fact]
+    public void AnInterviewIsKeptQuotedBackAndPutOnTheAirAndTheBattleIsRememberedFor()
+    {
+        var game = WithTwo();
+        string lead = game.Party.Members[0].Species.DisplayName;
+        string second = game.Party.Members[1].Species.DisplayName;
+
+        // The first battle, a normal length: the interview is given and kept, and the segment is ready for the television
+        game.Arrive("Hoenn", 213, 88);
+        var first = game.Talk("route111_gabby_1");
+        Assert.Contains(first.Log, l => l.Contains("open Phrase GABBY_AND_TY"));
+        Assert.Equal(new[] { "feelings:happy", "small:together" }, game.Story.PhraseOf("GABBY_AND_TY"));
+        foreach (string flag in new[] { "FLAG_GABBY_AND_TY_ON_AIR", "FLAG_GABBY_AND_TY_SHOW_NEW", "FLAG_GABBY_AND_TY_QUOTE_PENDING" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.Equal(0, game.Story.Var("VAR_GABBY_AND_TY_TRIVIA"));
+        Assert.Equal(111, game.Story.Var("VAR_GABBY_AND_TY_ROUTE"));
+
+        // The television shows it first, once
+        var tv = game.Play(Scripts.Find("Television", "common")!);
+        Assert.False(game.Story.Has("FLAG_GABBY_AND_TY_SHOW_NEW"));
+        Assert.Contains(tv.Transcript, l => l.Text.Contains(lead) && l.Text.Contains(second));
+        Assert.Contains(tv.Transcript, l => l.Text.Contains("together"));
+        var facts = tv.Broadcast();
+        Assert.True(facts.GabbyOnAir);
+        Assert.Contains(Programme.GabbyAndTy, Broadcasts.On(facts));
+
+        // The second battle is over at once: the pair quote the answer back, and ask the question the first left
+        game.Story.ClearLocal();
+        game.Turns = 0;
+        game.Arrive("Hoenn", 270, 148);
+        var second2 = game.Talk("route118_gabby_1");
+        Assert.Contains(second2.Transcript, l => l.Text.Contains("Last time you told us") && l.Text.Contains("together"));
+        Assert.Equal(1, game.Story.Var("VAR_GABBY_AND_TY_TRIVIA"));
+        Assert.Equal(118, game.Story.Var("VAR_GABBY_AND_TY_ROUTE"));
+
+        // The third remembers that: the viewers were told it was over at once
+        game.Story.ClearLocal();
+        game.Turns = 3;
+        game.Arrive("Hoenn", 373, 17);
+        var third = game.Talk("route120_gabby_1");
+        Assert.Contains(third.Asked, a => a.Item1.Contains("flattened"));
+        Assert.Equal(120, game.Story.Var("VAR_GABBY_AND_TY_ROUTE"));
+        Assert.Equal(3, game.Story.Var("VAR_GABBY_AND_TY_BATTLE_NUM"));
+    }
+
+    [Fact]
+    public void ALostPokemonIsWhatTheNextBattleIsAskedAbout()
+    {
+        var game = WithTwo();
+        game.Arrive("Hoenn", 213, 88);
+        game.DuringFight = () => game.Party.Members[1].CurrentHP = 0;
+        game.Talk("route111_gabby_1");
+        Assert.Equal(4, game.Story.Var("VAR_GABBY_AND_TY_TRIVIA"));
+
+        game.DuringFight = null;
+        game.Party.Members[1].CurrentHP = game.Party.Members[1].MaxHP;
+        game.Story.ClearLocal();
+        game.Arrive("Hoenn", 270, 148);
+        var next = game.Talk("route118_gabby_1");
+        Assert.Contains(next.Asked, a => a.Item1.Contains("lost a Pokémon"));
+    }
+
+    [Fact]
+    public void AnInterviewRefusedLeavesNothingOnTheAirButTheBattleIsCounted()
+    {
+        var game = WithTwo();
+        game.Decide = (_, _) => 1;
+        game.Arrive("Hoenn", 213, 88);
+        var host = game.Talk("route111_ty_1");
+        Assert.Contains(host.Transcript, l => l.Text.Contains("no interview"));
+        Assert.Equal(1, game.Story.Var("VAR_GABBY_AND_TY_BATTLE_NUM"));
+        Assert.False(game.Story.Has("FLAG_GABBY_AND_TY_ON_AIR"));
+        Assert.False(game.Story.Has("FLAG_GABBY_AND_TY_QUOTE_PENDING"));
+        Assert.DoesNotContain(host.Log, l => l.StartsWith("open Phrase"));
+    }
+
+    [Fact]
+    public void GabbyAndTysSegmentIsHoennsAloneAndNeedsAnInterview()
+    {
+        var on = new BroadcastFacts { Region = RegionDatabase.Hoenn, GabbyOnAir = true, GabbyMon1 = "Treecko", GabbyMon2 = "Zigzagoon", GabbyRoute = 120, GabbyTrivia = 4, GabbyQuote = new[] { "feelings:happy", "small:together" }, PlayerName = "Brendan" };
+        Assert.Contains(Programme.GabbyAndTy, Broadcasts.On(on));
+        Assert.DoesNotContain(Programme.GabbyAndTy, Broadcasts.On(on with { Region = RegionDatabase.Sinnoh }));
+        Assert.DoesNotContain(Programme.GabbyAndTy, Broadcasts.On(on with { GabbyOnAir = false }));
+        Assert.DoesNotContain(Programme.GabbyAndTy, Broadcasts.On(on with { GabbyMon1 = null }));
+
+        string said = string.Join(" ", Broadcasts.Lines(Programme.GabbyAndTy, on));
+        Assert.Contains("Treecko", said);
+        Assert.Contains("Zigzagoon", said);
+        Assert.Contains("together", said);
+        Assert.Contains("Brendan", said);
+        // One Pokémon fought alone has a line of its own
+        string solo = string.Join(" ", Broadcasts.Lines(Programme.GabbyAndTy, on with { GabbyMon2 = null }));
+        Assert.DoesNotContain("Zigzagoon", solo);
+        Assert.Contains("gabbyandty", Broadcasts.Names);
+    }
+
+    [Fact]
+    public void FortreesBoySendsHisWingullOffOnItsErrandOnce()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("FortreeCity_House4", 3, 4);
+        Assert.NotNull(game.Present("fortree_house_wingull"));
+        Assert.True(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL"));
+
+        game.Talk("boy_3");
+        Assert.True(game.Story.Has("FLAG_WINGULL_SENT_ON_ERRAND"));
+        Assert.True(game.Story.Has("FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL"));
+        Assert.False(game.Story.Has("FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL"));
+        Assert.Null(game.Present("fortree_house_wingull"));
+
+        // Spoken to again, he only says the bird is away; coming back to the house, it is still out
+        var again = game.Talk("boy_3");
+        Assert.Contains(again.Transcript, l => l.Text.Contains("errand"));
+        game.Arrive("FortreeCity_House4", 3, 4);
+        Assert.Null(game.Present("fortree_house_wingull"));
+    }
+
+    [Fact]
+    public void ANewGameOfHoennHidesGabbyAndTyAndAnOlderSaveIsGivenTheThirdPartOnTheWay()
+    {
+        var fresh = new Game();
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_SEVEN_C", "FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1", "FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3", "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2", "FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL" })
+            Assert.True(fresh.Story.Has(flag), flag);
+        Assert.False(fresh.Story.Has("FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL"));
+
+        // A save from before part c never ran its script (part b hid the Wingull): Route 120's arrival runs it, and no story version is raised
+        var old = PastNorman(0, PlayerLook.Boy);
+        old.Story.Unset("FLAG_HOENN_CHAPTER_SEVEN_C");
+        old.Story.Unset("FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1");
+        old.Story.Set("FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL");
+        old.Arrive("Hoenn", 373, 17);
+        Assert.True(old.Story.Has("FLAG_HOENN_CHAPTER_SEVEN_C"));
+        Assert.True(old.Story.Has("FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1"));
+        Assert.False(old.Story.Has("FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL"));
     }
 }

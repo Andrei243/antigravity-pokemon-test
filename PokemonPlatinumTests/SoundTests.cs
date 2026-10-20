@@ -318,6 +318,15 @@ public class SoundTests
     }
 
     [Fact]
+    public void APlankBridgeKnocksUnderTheFeet()
+    {
+        // Plan 21 · H6, part c: a step on a plank of Hoenn is one short sound of the field, over before the next step
+        var entry = SoundBank.Entries.Single(e => e.Name == "bridge_walk");
+        Assert.Equal(SoundGroup.Field, entry.Group);
+        Assert.InRange(SoundBank.Get("bridge_walk")!.Duration, 0.05f, 0.5f);
+    }
+
+    [Fact]
     public void ADiverIsHeardOnceABreath()
     {
         // Plan 21 · H5: the bubbles of a breath on the sea floor are one sound of the field, over before the next breath
