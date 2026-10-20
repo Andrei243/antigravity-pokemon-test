@@ -1152,6 +1152,9 @@ public class FieldMovementTests
             changes |= FieldMovement.Pulls(behaviour, TravelMode.Cycling) != null;
             // A hole changes no step of its own either: what it does is its warp's, and a pushed boulder's pit's (plan 19 · K6, part b)
             changes |= behaviour == TileBehavior.Hole;
+            // Nor does the sea floor: its seaweed is where a diver meets wild Pokémon, and under rock it keeps a diver from
+            // coming up (plan 21 · H5, FieldMovement.CanSurface)
+            changes |= behaviour is TileBehavior.Seaweed or TileBehavior.NoSurfacing or TileBehavior.SeaweedNoSurfacing;
             Assert.True(changes, $"{behaviour} is listed as having a rule and changes nothing");
         }
     }

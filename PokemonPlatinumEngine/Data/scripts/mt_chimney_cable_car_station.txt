@@ -18,10 +18,6 @@ script Attendant
   ask "Thank you for riding the Mt. Chimney Cable Car! Would you like to go back down to Route 112?"
   if no goto Later
   say "Of course! Step this way, please."
-  move mt_chimney_cable_car_attendant up 3
-  waitmoves
-  face mt_chimney_cable_car_attendant down
-  walk player up 3
   setvar VAR_CABLE_CAR_STATION_STATE 2
   fade out
   music "hoenn/cable_car"

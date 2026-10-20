@@ -2445,7 +2445,17 @@ public static class WorldMapBuilder
             if (map.GetGroundTile(from.X, from.Z) == TileType.Door) map.SetSolid(from.X, from.Z, false);
             // So is a GBA game's door the story opens by swapping its tile (the Trick House's puzzle doors, plan 21 · H3,
             // part b): the tile is the way's, which Map.ApplyDoors keeps shut until the story opens it
-            else if (world.Index.BuildingsAtDoors && (warp.From != null || warp.OpenedBy != null)) map.SetSolid(from.X, from.Z, false);
+            else if (world.Index.BuildingsAtDoors && (warp.From != null || warp.OpenedBy != null))
+            {
+                map.SetSolid(from.X, from.Z, false);
+                // A mouth the story opens in a rock face (the Ruby Path's, plan 19 · K9, part a) is rock to the import,
+                // at the rock's height: it is cut down to the ground it is walked into from, or no step reaches it
+                float? ground = null;
+                foreach (var (dx, dz) in new[] { (0, 1), (0, -1), (1, 0), (-1, 0) })
+                    if (map.InBounds(from.X + dx, from.Z + dz) && !map.IsSolid(from.X + dx, from.Z + dz)
+                        && map.HeightAt(from.X + dx, from.Z + dz) is var h && (ground == null || h < ground)) ground = h;
+                if (ground is { } level && level < map.HeightAt(from.X, from.Z)) map.SetHeight(from.X, from.Z, level);
+            }
         }
 
         foreach (var exit in overlay?.Exits ?? new())

@@ -203,8 +203,10 @@ public class PokemonTests
         Assert.Equal(mapName, map.Name);
         // The Hall of Fame is the end of the way: nobody leaves it but by its own scene (plan 01 · M9, part 2d)
         // And the Underground has no way in or out but the Explorer Kit (plan 06 · R16a), and Pal Park's grounds none
-        // but the attendants' scripts: the strip before its gate asks whether to give the show up (plan 06 · R16b)
-        if (mapName != "PokemonLeagueHallOfFame" && mapName != "Underground" && mapName != "PalPark") Assert.NotEmpty(map.Warps);
+        // but the attendants' scripts: the strip before its gate asks whether to give the show up (plan 06 · R16b),
+        // and Hoenn's sea floor none but Dive, down from the routes over it and back up (plan 21 · H5)
+        if (mapName != "PokemonLeagueHallOfFame" && mapName != "Underground" && mapName != "PalPark" && mapName != "HoennUnderwater")
+            Assert.NotEmpty(map.Warps);
         // A map of the imported world is many places, and not every one leads to every other: a cave lies between
         // the two halves of a route, rocks wait for Rock Smash. The test below walks the whole game instead.
         if (map.IsStreamed) return;
@@ -354,8 +356,8 @@ public class PokemonTests
         Assert.NotEmpty(trainers);
         Assert.All(trainers, t => Assert.True(t.TrainerData!.Party.Count > 0, $"{t.Name} has no Pokémon"));
 
-        // Platinum's own teams: Logan's Burmy knows nothing but Tackle
-        var logan = trainers.Single(t => t.Name == "Logan").TrainerData!;
+        // Platinum's own teams: Logan's Burmy knows nothing but Tackle (Route 201's youngster; Kanto's Mt. Ember has a Logan too)
+        var logan = trainers.Single(t => t.TrainerData!.Id == "youngster_logan").TrainerData!;
         Assert.Equal(new[] { "Burmy" }, logan.Party.Members.Select(p => p.Species.Name));
         Assert.Equal(5, logan.Party.Members[0].Level);
         Assert.Equal(new[] { "Tackle" }, logan.Party.Members[0].Moves.Select(m => m.Name));
