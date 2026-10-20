@@ -75,14 +75,15 @@ public static class EncounterSlots
     public static List<WildEncounterEntry> Grass(MapArea area, EncounterMoment? moment)
     {
         var slots = area.WildEncounters.Select(Copy).ToList();
-        if (moment == null || slots.Count != 12) return slots;
+        if (moment == null) return slots;
         void Put(int slot, string? species)
         {
             if (!string.IsNullOrEmpty(species)) slots[slot].SpeciesName = species;
         }
 
         // A slot with a species of its own for each time of day (plan 20 · J2, HeartGold's grass: the morning's is the
-        // slot's own, the day's from ten to eight, the evening the day's, and the night's after that)
+        // slot's own, the day's from ten to eight, the evening the day's, and the night's after that), in a table of
+        // any length: the Johto Safari Zone's grass is ten slots met alike (plan 20 · J8, part b)
         for (int slot = 0; slot < slots.Count; slot++)
         {
             var own = area.WildEncounters[slot];
@@ -93,6 +94,7 @@ public static class EncounterSlots
                 _ => null
             });
         }
+        if (slots.Count != 12) return slots;
 
         var timed = moment.Time switch
         {

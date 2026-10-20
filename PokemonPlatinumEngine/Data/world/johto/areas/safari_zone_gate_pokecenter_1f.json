@@ -1,0 +1,33 @@
+{
+  "key": "safari_zone_gate_pokecenter_1f",
+  "index": 534,
+  "name": "Safari Zone Gate",
+  "matrix": 73,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_POKESEN",
+  "nightMusic": "GS_POKESEN",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 19, "to": "safari_zone_gate", "toWarp": 2 },
+    { "x": 14, "z": 17, "to": "safari_zone_gate_pokecenter_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d47pc0101_pcwoman1", "looks": "pcwoman1", "movement": "15", "x": 8, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47PC0101_000+1" },
+    { "id": "d47pc0101_pcwoman2", "looks": "pcwoman2", "movement": "15", "x": 2, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_card_explain" },
+    { "id": "d47pc0101_pcwoman2_2", "looks": "pcwoman2", "movement": "15", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_union_room" },
+    { "id": "d47pc0101_pcwoman2_3", "looks": "pcwoman2", "movement": "15", "x": 11, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "std_wireless_colosseum" },
+    { "id": "d47pc0101_gsgirl2", "looks": "gsgirl2", "movement": "9", "x": 6, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47PC0101_001+1" },
+    { "id": "d47pc0101_mount_2", "looks": "mount_2", "movement": "5", "x": 11, "z": 18, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "D47PC0101_002+1" }
+  ],
+  "signs": [
+    { "x": 4, "z": 8, "type": 0, "script": "0" }
+  ],
+  "triggers": []
+}

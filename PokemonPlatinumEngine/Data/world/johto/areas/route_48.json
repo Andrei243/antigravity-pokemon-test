@@ -1,0 +1,54 @@
+{
+  "key": "route_48",
+  "index": 152,
+  "name": "Route 48",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Mountain",
+  "dayMusic": "GS_SAFARI_ROAD",
+  "nightMusic": "GS_SAFARI_ROAD",
+  "encounters": "R48",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Farfetch'd", "level": 25, "night": "Growlithe" },
+    { "species": "Tauros", "level": 20 },
+    { "species": "Hoppip", "level": 20 },
+    { "species": "Fearow", "level": 21 },
+    { "species": "Gloom", "level": 22 },
+    { "species": "Gloom", "level": 24 },
+    { "species": "Growlithe", "level": 21 },
+    { "species": "Girafarig", "level": 20 },
+    { "species": "Diglett", "level": 20 },
+    { "species": "Growlithe", "level": 22 },
+    { "species": "Hoppip", "level": 22 },
+    { "species": "Tauros", "level": 24 }
+  ],
+  "landRate": 25,
+  "hoennSounds": [
+    "Plusle",
+    "Minun"
+  ],
+  "sinnohSounds": [
+    "Shinx",
+    "Shinx"
+  ],
+  "warps": [],
+  "objects": [
+    { "id": "r48_monstarball", "looks": "monstarball", "movement": "0", "x": 75, "z": 336, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R48_NUGGET", "item": "Nugget", "script": "std_itemball_r48_nugget" },
+    { "id": "r48_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 101, "z": 343, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R48_000+1" },
+    { "id": "r48_gsman1", "looks": "gsman1", "movement": "2", "x": 85, "z": 313, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_0AE", "script": "65535" },
+    { "id": "r48_gswoman2", "looks": "gswoman2", "movement": "16", "x": 97, "z": 314, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_0AE", "script": "65535" },
+    { "id": "r48_tsure_poke_static_slowpoke", "looks": "follower_mon_static_slowpoke", "movement": "16", "x": 98, "z": 314, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_0AE", "script": "65535" },
+    { "id": "r48_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 95, "z": 311, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_0AE", "script": "65535" }
+  ],
+  "signs": [
+    { "x": 103, "z": 336, "type": 1, "script": "R48_002+1" }
+  ],
+  "triggers": []
+}

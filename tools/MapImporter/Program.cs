@@ -10,6 +10,7 @@
 //   dotnet run --project tools/MapImporter -- --game firered|emerald [--quick]   a Game Boy Advance game into out/kanto or out/hoenn (plan 18 · W6, W7)
 //   dotnet run --project tools/MapImporter -- --game firered|emerald --data      rewrite what the region's world.json opens in Data/world/<region> (W7)
 //   dotnet run --project tools/MapImporter -- --game heartgold [--quick] [--data]   HeartGold's Johto and Kanto into out/johto, or Data/world/johto (plan 20 · J1)
+//   dotnet run --project tools/MapImporter -- --game heartgold --unknown <area>     the textures no rule sorts on an area's chunks, with counts (plan 20 · J8, part b)
 //   dotnet run --project tools/MapImporter -- --game platinum   the same as no --game: Sinnoh
 //   dotnet run --project tools/MapImporter -- --chunk <id>    print which texture lies over each tile of a chunk (the names only), to sort a new area's ground by
 
@@ -27,7 +28,9 @@ bool quick = args.Contains("--quick");
 
 // HeartGold (plan 20 · J1): the second DS game, its own pin, out/johto/
 if (Arg("--game") is "heartgold" or "soulsilver")
-    return args.Contains("--data")
+    return Arg("--unknown") is { } unknownArea
+        ? MapImporter.Hg.HgImport.Unknown(repo, decompDir, unknownArea)
+        : args.Contains("--data")
         ? MapImporter.Hg.HgImport.Data(repo, decompDir, Arg("--data-dir"))
         : MapImporter.Hg.HgImport.Run(repo, decompDir, Path.Combine(outDir, MapImporter.Hg.HgImport.Region), quick);
 

@@ -560,6 +560,41 @@ public sealed class Matrix
         }
         return new Matrix { Id = id, Name = name, Width = width, Height = height, Land = land, Headers = headers, Altitudes = altitudes };
     }
+
+    /// <summary>
+    /// A copy with some cells given a chunk and an area (plan 20 · J8, part b: the Safari Zone's hole, which HeartGold
+    /// fills as the zone loads, <c>MapMatrix_Load</c>). The copy keeps a column of areas only where this one has one.
+    /// </summary>
+    /// <summary>
+    /// The matrix made wider (plan 20 · J8, part b: the Johto Safari Zone's twelve areas side by side): each new column a
+    /// copy of the last one, its chunks, areas and heights, so a ring round the old grid goes round the new one.
+    /// </summary>
+    public Matrix Widened(int width)
+    {
+        if (width <= Width) return this;
+        T[]? Wide<T>(T[]? cells)
+        {
+            if (cells == null) return null;
+            var wide = new T[width * Height];
+            for (int y = 0; y < Height; y++)
+                for (int x = 0; x < width; x++)
+                    wide[y * width + x] = cells[y * Width + Math.Min(x, Width - 1)];
+            return wide;
+        }
+        return new Matrix { Id = Id, Name = Name, Width = width, Height = Height, Land = Wide(Land)!, Headers = Wide(Headers), Altitudes = Wide(Altitudes) };
+    }
+
+    public Matrix WithCells(IEnumerable<(int X, int Y, int Land, string Header)> cells)
+    {
+        var land = (int[])Land.Clone();
+        var headers = (string[]?)Headers?.Clone();
+        foreach (var (x, y, chunk, header) in cells)
+        {
+            land[y * Width + x] = chunk;
+            if (headers != null) headers[y * Width + x] = header;
+        }
+        return new Matrix { Id = Id, Name = Name, Width = Width, Height = Height, Land = land, Headers = headers, Altitudes = Altitudes };
+    }
 }
 
 /// <summary>What is placed on an area, in tiles of the area's matrix (for the overworld: global tile coordinates).</summary>

@@ -26,6 +26,15 @@ public sealed class SafariGame
     /// <summary>FireRed's Safari Zone gives its thirty balls for six hundred steps (plan 19 · K6; <c>safari start 600</c>).</summary>
     public const int KantoSteps = 600;
 
+    /// <summary>
+    /// HeartGold's Safari Zone counts no steps (plan 20 · J8, part b; <c>safari start endless</c>): its game ends only
+    /// with its last ball, or when the player walks out. A game of no steps is never ended by a step (<see cref="Step"/>).
+    /// </summary>
+    public const int NoStepLimit = 0;
+
+    /// <summary>A game under way that no step will end: started with <see cref="NoStepLimit"/>, and so read back from a save.</summary>
+    public bool Endless => Active && Steps <= 0;
+
     public void Start() => Start(StartSteps);
 
     /// <summary>A game of so many steps: Platinum's five hundred, or another game's own (FireRed's six hundred).</summary>

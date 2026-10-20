@@ -1991,32 +1991,6 @@
       ]
     },
     {
-      "key": "safari_zone_entrance_exterior",
-      "name": "Safari Zone",
-      "cells": "",
-      "morning": [
-        "Rattata"
-      ],
-      "day": [
-        "Rattata"
-      ],
-      "night": [
-        "Rattata"
-      ],
-      "surf": [
-        "Magikarp"
-      ],
-      "oldRod": [
-        "Goldeen"
-      ],
-      "goodRod": [
-        "Goldeen"
-      ],
-      "superRod": [
-        "Goldeen"
-      ]
-    },
-    {
       "key": "mount_silver_cave_upper_mountainside",
       "name": "Mt. Silver Cave",
       "cells": "",
@@ -2346,6 +2320,503 @@
       ],
       "night": [
         "Unown"
+      ]
+    },
+    {
+      "key": "safari_zone_01",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Rattata",
+        "Abra",
+        "Girafarig",
+        "Smeargle"
+      ],
+      "day": [
+        "Rattata",
+        "Abra",
+        "Girafarig",
+        "Smeargle"
+      ],
+      "night": [
+        "Raticate",
+        "Abra",
+        "Girafarig",
+        "Stantler"
+      ],
+      "surf": [
+        "Wooper",
+        "Tentacool"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Goldeen",
+        "Seaking",
+        "Dratini"
+      ]
+    },
+    {
+      "key": "safari_zone_02",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Jigglypuff",
+        "Hoppip",
+        "Skiploom"
+      ],
+      "day": [
+        "Jigglypuff",
+        "Sunkern",
+        "Hoppip",
+        "Skiploom"
+      ],
+      "night": [
+        "Jigglypuff",
+        "Marill",
+        "Wooper",
+        "Clefairy"
+      ],
+      "surf": [
+        "Magikarp",
+        "Wooper",
+        "Marill"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Poliwag"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Poliwag",
+        "Poliwhirl"
+      ],
+      "superRod": [
+        "Poliwag",
+        "Poliwhirl"
+      ]
+    },
+    {
+      "key": "safari_zone_03",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Nidoran♀",
+        "Nidoran♂",
+        "Tauros",
+        "Rhyhorn"
+      ],
+      "day": [
+        "Nidoran♀",
+        "Nidoran♂",
+        "Tauros",
+        "Rhyhorn"
+      ],
+      "night": [
+        "Nidorina",
+        "Nidorino",
+        "Zubat",
+        "Golbat"
+      ],
+      "surf": [
+        "Wooper",
+        "Tentacool"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Goldeen",
+        "Seaking",
+        "Dratini"
+      ]
+    },
+    {
+      "key": "safari_zone_04",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Geodude",
+        "Magnemite",
+        "Graveler",
+        "Magneton",
+        "Magmar"
+      ],
+      "day": [
+        "Geodude",
+        "Magnemite",
+        "Graveler",
+        "Magneton",
+        "Magmar"
+      ],
+      "night": [
+        "Geodude",
+        "Magnemite",
+        "Wobbuffet",
+        "Magneton"
+      ],
+      "surf": [
+        "Wooper",
+        "Tentacool"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Goldeen",
+        "Seaking",
+        "Dratini"
+      ]
+    },
+    {
+      "key": "safari_zone_05",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Doduo",
+        "Slowpoke",
+        "Krabby",
+        "Slowbro"
+      ],
+      "day": [
+        "Doduo",
+        "Slowpoke",
+        "Krabby",
+        "Slowbro"
+      ],
+      "night": [
+        "Zubat",
+        "Slowpoke",
+        "Krabby",
+        "Slowbro"
+      ],
+      "surf": [
+        "Magikarp",
+        "Poliwag",
+        "Poliwhirl",
+        "Lapras"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Goldeen",
+        "Krabby"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Krabby"
+      ],
+      "superRod": [
+        "Goldeen",
+        "Seaking",
+        "Kingler"
+      ]
+    },
+    {
+      "key": "safari_zone_06",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Spearow",
+        "Sentret",
+        "Farfetch'd",
+        "Ditto"
+      ],
+      "day": [
+        "Spearow",
+        "Sentret",
+        "Farfetch'd",
+        "Ditto"
+      ],
+      "night": [
+        "Wooper",
+        "Psyduck",
+        "Quagsire",
+        "Golduck"
+      ],
+      "surf": [
+        "Poliwag",
+        "Wooper",
+        "Psyduck",
+        "Quagsire"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Poliwag"
+      ],
+      "goodRod": [
+        "Poliwag",
+        "Poliwhirl"
+      ],
+      "superRod": [
+        "Poliwag",
+        "Poliwhirl"
+      ]
+    },
+    {
+      "key": "safari_zone_07",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Bellsprout",
+        "Pidgey",
+        "Mr. Mime",
+        "Misdreavus"
+      ],
+      "day": [
+        "Bellsprout",
+        "Pidgey",
+        "Mr. Mime",
+        "Misdreavus"
+      ],
+      "night": [
+        "Bellsprout",
+        "Gastly",
+        "Misdreavus",
+        "Haunter"
+      ],
+      "surf": [
+        "Wooper",
+        "Tentacool"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Goldeen",
+        "Seaking",
+        "Dratini"
+      ]
+    },
+    {
+      "key": "safari_zone_08",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Sentret",
+        "Jigglypuff",
+        "Paras",
+        "Murkrow"
+      ],
+      "day": [
+        "Sentret",
+        "Jigglypuff",
+        "Paras",
+        "Murkrow"
+      ],
+      "night": [
+        "Sentret",
+        "Drowzee",
+        "Murkrow",
+        "Hypno"
+      ],
+      "surf": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "oldRod": [
+        "Magikarp"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Goldeen",
+        "Seaking",
+        "Dratini"
+      ]
+    },
+    {
+      "key": "safari_zone_09",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Ekans",
+        "Koffing",
+        "Weezing",
+        "Arbok",
+        "Grimer"
+      ],
+      "day": [
+        "Ekans",
+        "Koffing",
+        "Weezing",
+        "Arbok",
+        "Grimer"
+      ],
+      "night": [
+        "Wooper",
+        "Koffing",
+        "Oddish",
+        "Gloom"
+      ],
+      "surf": [
+        "Poliwag",
+        "Wooper",
+        "Grimer"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Poliwag"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Poliwhirl"
+      ],
+      "superRod": [
+        "Poliwhirl",
+        "Gyarados"
+      ]
+    },
+    {
+      "key": "safari_zone_10",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Kangaskhan",
+        "Onix",
+        "Magnemite",
+        "Machop",
+        "Machoke"
+      ],
+      "day": [
+        "Kangaskhan",
+        "Onix",
+        "Magnemite",
+        "Machop"
+      ],
+      "night": [
+        "Fearow",
+        "Onix",
+        "Magnemite"
+      ],
+      "surf": [
+        "Wooper",
+        "Tentacool"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Goldeen",
+        "Seaking",
+        "Dratini"
+      ]
+    },
+    {
+      "key": "safari_zone_11",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Raticate",
+        "Lickitung",
+        "Rattata",
+        "Magneton",
+        "Larvitar"
+      ],
+      "day": [
+        "Raticate",
+        "Lickitung",
+        "Rattata",
+        "Magneton",
+        "Larvitar"
+      ],
+      "night": [
+        "Zubat",
+        "Golbat",
+        "Rattata",
+        "Magneton"
+      ],
+      "surf": [
+        "Wooper",
+        "Tentacool"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Goldeen",
+        "Seaking",
+        "Dratini"
+      ]
+    },
+    {
+      "key": "safari_zone_12",
+      "name": "Safari Zone",
+      "cells": "2,8 3,8 2,9 3,9",
+      "morning": [
+        "Sandshrew",
+        "Sandslash",
+        "Cubone",
+        "Marowak"
+      ],
+      "day": [
+        "Sandshrew",
+        "Sandslash",
+        "Cubone",
+        "Marowak"
+      ],
+      "night": [
+        "Sandshrew",
+        "Sandslash",
+        "Fearow"
+      ],
+      "surf": [
+        "Wooper",
+        "Tentacool"
+      ],
+      "oldRod": [
+        "Magikarp",
+        "Goldeen"
+      ],
+      "goodRod": [
+        "Magikarp",
+        "Goldeen",
+        "Seaking"
+      ],
+      "superRod": [
+        "Goldeen",
+        "Seaking",
+        "Dratini"
       ]
     }
   ]

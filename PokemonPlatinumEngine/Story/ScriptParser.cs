@@ -498,8 +498,12 @@ public static class ScriptParser
             {
                 // A Safari Game of another game's own number of steps (plan 19 · K6: FireRed's Safari Zone is 600)
                 bool start = r.OneOf("start", "end") == "start";
-                int steps = start && r.PeekNumber ? r.Int("how many steps") : 0;
+                // ...or of none: HeartGold's Safari Zone counts no steps (plan 20 · J8, part b: `safari start endless`)
+                bool endless = start && r.PeekWord("endless");
+                if (endless) r.Next();
+                int steps = start && !endless && r.PeekNumber ? r.Int("how many steps") : 0;
                 if (steps < 0) throw r.Error("a Safari Game has steps");
+                if (endless) steps = -1;
                 return new Instruction { Op = Op.Safari, Line = line, Option = start, Number = steps };
             }
             case "bicycle":
@@ -990,7 +994,13 @@ public static class ScriptParser
             case "knows":
                 return new Condition { Query = Query.Knows, Negated = negated, Name = r.Text("a move's name") };
             case "has":
-                return new Condition { Query = Query.Has, Negated = negated, Name = r.Text("a species' name") };
+            {
+                string species = r.Text("a species' name");
+                // ...met at a place (plan 20 · J8, part b: Baoba's tests ask for a Pokémon caught in the Safari Zone)
+                if (!r.PeekWord("met")) return new Condition { Query = Query.Has, Negated = negated, Name = species };
+                r.Next();
+                return new Condition { Query = Query.Has, Negated = negated, Name = species, Place = r.Text("a place's name") };
+            }
             case "yes":
                 return new Condition { Query = Query.Yes, Negated = negated };
             case "no":

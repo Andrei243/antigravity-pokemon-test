@@ -108,6 +108,35 @@ label Waiting
   say "Ralph again. I'm still by the water on Route 32, waiting for our battle. The fish can wait."
   end
 
+# Warden Baoba (plan 20 · J8, part b): his Safari Zone, and the test he has set the player (VAR_UNK_4057, the
+# original's: safari_zone_entrance_interior.txt says what each value is). His first call is Olivine City's, as the
+# player comes down from the lighthouse (olivine.txt), and his second the gate's, once a day has passed after the
+# first test (safari_zone_gate.txt)
+script Baoba
+  speaker "Baoba"
+  if var VAR_UNK_4057 >= 6 goto Owner
+  if var VAR_UNK_4057 == 5 goto Sandshrew
+  if var VAR_UNK_4057 == 4 goto Ready
+  if var VAR_UNK_4057 == 3 goto Thinking
+  if var VAR_UNK_4057 == 2 goto Geodude
+  say "Baoba here! My Safari Zone is open. Go through the gate in the cliff by Cianwood City and follow the path."
+  end
+label Geodude
+  say "Baoba here! Caught that Geodude in my Safari Zone yet? It's in the grass nearest the way in. You can do it!"
+  end
+label Thinking
+  say "Ah, it's you! I'm still working out the second test. Give an old warden a little more time, will you?"
+  end
+label Ready
+  say "Perfect timing! The second test is ready at last. Come to the Safari Zone and I'll tell you all about it."
+  end
+label Sandshrew
+  say "Baoba here! Found a Sandshrew yet? Look in the Desert, the far corner of the zone. Good luck!"
+  end
+label Owner
+  say "How's my Safari Zone's owner doing? I'm dreaming up new ways to play. I'll ring you the moment I have one!"
+  end
+
 
 # ------------------------------------------------------------------ Hoenn's Match Call (plan 21 · H2, part b)
 # The PokéNav's numbers (Data/world/hoenn/phone.json): calls the player makes from its Match Call page. Nobody of

@@ -261,6 +261,19 @@ public static partial class WorldModels
         Ground("mg06_swc", "the Olivine Gym's statue of a steel Pokémon behind its Leader: the wall draws it"),
         Ground("d_mat02", "a mat inside a side door: the floor draws it"),
         Furniture("shelf02", PropType.Bookshelf, "a shelf"),
+
+        // ---------------------------------------------------------------- plan 20 · J8, part b: Routes 47 and 48 and the Safari Zone
+        Ground("fall_r47", "the great waterfall off Route 47's cliffs: its tiles draw it"),
+        // The Safari Zone's gate on Route 48 (msg_: the original's Safari gate)
+        Built("msg_gtmn", BuildingKind.Gate, "the Safari Zone's gate house, at the head of its plaza", Architecture.Farm, sign: "SAFARI ZONE"),
+        Door("sg_door_op"),
+        Thing("msp_f", PropType.Mast, "a pennant on its pole at a corner of the Safari Zone's gate house"),
+        Ground("msg_gtob", "the arch over the way into the Safari Zone's plaza: the plaza's own ground and fences draw its posts"),
+        Thing("msg_tn01", PropType.Outcrop, "a long block of rock the gate's plaza is laid round"),
+        Thing("msg_tn02", PropType.Outcrop, "a long block of rock the gate's plaza is laid round"),
+        Thing("msg_tn03", PropType.Outcrop, "a long block of rock the gate's plaza is laid round"),
+        Thing("msg_tn04", PropType.Outcrop, "a long block of rock the gate's plaza is laid round"),
+        Furniture("msg_pc", PropType.Computer, "the Area Customizer, Baoba's machine in the gate"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);
