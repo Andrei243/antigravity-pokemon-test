@@ -7,11 +7,7 @@
 
 script OnEnter
   if var VAR_CABLE_CAR_STATION_STATE != 1 end
-  place mt_chimney_cable_car_attendant 6 3 down
   fade in
-  walk player down 3
-  move mt_chimney_cable_car_attendant down 3
-  waitmoves
   face player up
   setvar VAR_CABLE_CAR_STATION_STATE 0
   end
@@ -31,7 +27,7 @@ script Attendant
   music "hoenn/cable_car"
   text "The car glides down the mountainside, the summit shrinking behind it..."
   wait 1.5
-  warp "Route112_CableCarStation" 6 4 down
+  warp "Route112_CableCarStation" 6 7 down
   end
 label Later
   say "Take your time up here. Do watch out for the ash, though!"

@@ -4,17 +4,14 @@
 # The attendant sends the car up Mt. Chimney once Team Magma's grunts have left the road outside (Emerald's grunts
 # stand in the way of the door; ours stand beside it, so she waits for FLAG_HIDE_ROUTE_112_TEAM_MAGMA). The station's
 # corridor to the car is one tile wide: she steps up onto the platform before the car and the player follows her up
-# the corridor, the picture goes dark over the ride, and the summit's station puts the player down
-# (VAR_CABLE_CAR_STATION_STATE 1 going up, 2 coming down; each station's OnEnter plays its end of the ride).
+# the corridor, the picture goes dark over the ride, and the summit's station puts the player down on the tile before
+# its attendant, at the corridor's foot, where a walk of the whole game finds the way on (VAR_CABLE_CAR_STATION_STATE 1
+# going up, 2 coming down; each station's OnEnter turns the player to her as the picture opens).
 
 
 script OnEnter
   if var VAR_CABLE_CAR_STATION_STATE != 2 end
-  place route112_cable_car_attendant 6 3 down
   fade in
-  walk player down 3
-  move route112_cable_car_attendant down 3
-  waitmoves
   face player up
   setvar VAR_CABLE_CAR_STATION_STATE 0
   end
@@ -35,7 +32,7 @@ script Attendant
   music "hoenn/cable_car"
   text "The car sways gently on its wire as it climbs above the ash..."
   wait 1.5
-  warp "MtChimney_CableCarStation" 6 4 down
+  warp "MtChimney_CableCarStation" 6 7 down
   end
 label Later
   say "Whenever you're ready. The view from the top is worth the trip!"
