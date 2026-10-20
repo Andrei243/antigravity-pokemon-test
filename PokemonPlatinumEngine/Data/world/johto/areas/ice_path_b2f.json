@@ -1,0 +1,62 @@
+{
+  "key": "ice_path_b2f",
+  "index": 238,
+  "name": "Ice Path",
+  "matrix": 134,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D39R0103",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Swinub", "level": 22 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Swinub", "level": 22 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Swinub", "level": 24 },
+    { "species": "Swinub", "level": 24 },
+    { "species": "Zubat", "level": 23, "day": "Jynx" },
+    { "species": "Jynx", "level": 23 },
+    { "species": "Zubat", "level": 23, "day": "Jynx" },
+    { "species": "Jynx", "level": 23 }
+  ],
+  "landRate": 5,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 26, "z": 11, "to": "ice_path_b1f", "toWarp": 2 },
+    { "x": 26, "z": 10, "to": "ice_path_b1f", "toWarp": 2 },
+    { "x": 16, "z": 17, "to": "ice_path_b3f", "toWarp": 0 },
+    { "x": 50, "z": 5, "to": "ice_path_b3f", "toWarp": 2 },
+    { "x": 43, "z": 22, "to": "ice_path_b1f", "toWarp": 3 },
+    { "x": 43, "z": 21, "to": "ice_path_b1f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "d39r0103_rock", "looks": "rock", "movement": "0", "x": 12, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_1_FALLEN", "script": "D39R0103_002+1" },
+    { "id": "d39r0103_rock_2", "looks": "rock", "movement": "0", "x": 11, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_2_FALLEN", "script": "D39R0103_002+1" },
+    { "id": "d39r0103_rock_3", "looks": "rock", "movement": "0", "x": 19, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_3_FALLEN", "script": "D39R0103_002+1" },
+    { "id": "d39r0103_rock_4", "looks": "rock", "movement": "0", "x": 20, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_4_FALLEN", "script": "D39R0103_002+1" },
+    { "id": "d39r0103_monstarball", "looks": "monstarball", "movement": "0", "x": 57, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D39R0103_TM72", "item": "TM72", "script": "std_itemball_d39r0103_tm72" },
+    { "id": "d39r0103_monstarball_2", "looks": "monstarball", "movement": "0", "x": 15, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D39R0103_FULL_HEAL", "item": "Full Heal", "script": "std_itemball_d39r0103_full_heal" },
+    { "id": "d39r0103_monstarball_3", "looks": "monstarball", "movement": "0", "x": 5, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D39R0103_MAX_POTION", "item": "Max Potion", "script": "std_itemball_d39r0103_max_potion" }
+  ],
+  "signs": [
+    { "x": 26, "z": 26, "type": 2, "script": "std_hiddenitem_d39r0103_carbos", "item": "Carbos", "flag": "FLAG_HIDDEN_ITEM_D39R0103_CARBOS" }
+  ],
+  "triggers": []
+}

@@ -82,8 +82,10 @@ public class JohtoTests
             Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
         foreach (var entry in Johto.Index.Maps)
             Assert.True(walked.Keys.Any(m => m.Name == entry.Name), $"nobody walks into {entry.Name}");
-        // Route 31's north end, by the Dark Cave's mouth, is reached; the cave waits for its session
+        // Route 31's north end, by the Dark Cave's mouth, is reached, and since plan 20 · J10 the cave beyond it
         Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_31" && t.X > 555);
+        var darkCave = Johto.Area("route_31")!.Warps[2];
+        Assert.Contains(Overworld.WarpsAt(darkCave.X, darkCave.Z), w => w.TargetMap == "DarkCave_Route31Side");
         // Since plan 20 · J4 Violet's Gym and Sprout Tower are open, and Route 32 runs south to Union Cave's mouth, open
         // since J5 with the Ruins of Alph beyond their gate house
         var gymDoor = Johto.Area("violet")!.Warps[2];
@@ -156,12 +158,13 @@ public class JohtoTests
                      "Goldenrod_Underground", "Goldenrod_GameCorner", "Ecruteak_DanceTheater", "BurnedTower_B1F", "Ecruteak_BellTowerGate" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // What waits stays shut: the Magnet Train and the Global Terminal, the roads west and east of Ecruteak City, the
-        // Bell Tower beyond its gate, the Radio Tower's upper floors (Ecruteak's Gym is open since plan 20 · J7)
+        // What waits stays shut: the Magnet Train and the Global Terminal, the Bell Tower beyond its gate, the Radio
+        // Tower's upper floors (Ecruteak's Gym is open since plan 20 · J7, the road west since J8 and the road east to
+        // Route 42 since J10)
         var goldenrod = Johto.Area("goldenrod")!;
         foreach (int shut in new[] { 9, 16 }) Assert.Empty(Overworld.WarpsAt(goldenrod.Warps[shut].X, goldenrod.Warps[shut].Z));
         var ecruteak = Johto.Area("ecruteak")!;
-        Assert.Empty(Overworld.WarpsAt(ecruteak.Warps[10].X, ecruteak.Warps[10].Z));
+        Assert.Contains(Overworld.WarpsAt(ecruteak.Warps[10].X, ecruteak.Warps[10].Z), w => w.TargetMap == "Route42_EcruteakGate");
         Assert.Contains(Overworld.WarpsAt(ecruteak.Warps[7].X, ecruteak.Warps[7].Z), w => w.TargetMap == "Ecruteak_Gym");
         Assert.DoesNotContain(walked.Keys, m => m.Name.StartsWith("BellTower", StringComparison.Ordinal));
 
@@ -336,9 +339,9 @@ public class JohtoTests
                      "WhirlIslands_1F", "WhirlIslands_B2F" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // What waits stays shut: the S.S. Aqua's quay, the Battle Frontier's road, Lugia's cave and the road east of
-        // Ecruteak to Route 42; the lighthouse's lift waits for Jasmine to step aside (plan 20 · J9), its door a wall
-        // until then. The cliff path to Route 47 is open since plan 20 · J8, part b
+        // What waits stays shut: the S.S. Aqua's quay, the Battle Frontier's road and Lugia's cave (the road east of
+        // Ecruteak to Route 42 is open since plan 20 · J10); the lighthouse's lift waits for Jasmine to step aside (plan
+        // 20 · J9), its door a wall until then. The cliff path to Route 47 is open since plan 20 · J8, part b
         Assert.Null(MapNamed("Olivine_PortHall").GetWarpAt(7, 11));
         Assert.Null(MapNamed("Route40_FrontierGate").GetWarpAt(5, 2));
         Assert.Equal("FLAG_UNK_1D8", MapNamed("OlivineLighthouse_1F").GetWarpAt(8, 4)?.OpenedBy);
@@ -418,6 +421,73 @@ public class JohtoTests
         var route47 = Johto.Area("route_47")!;
         foreach (int warp in new[] { 4, 5, 6 })
             Assert.Empty(Overworld.WarpsAt(route47.Warps[warp].X, route47.Warps[warp].Z));
+    }
+
+    private static readonly string[] North = { "route_42", "mahogany", "route_43", "lake_of_rage", "route_44", "blackthorn", "route_45", "route_46" };
+
+    [Fact]
+    public void TheNorthIsWalkedToFromEcruteakCityThroughMtMortarAndTheIcePath()
+    {
+        // Plan 20 · J10, part a: east out of Ecruteak by Route 42 and through Mt. Mortar's floors to Mahogany Town, north
+        // by Route 43 and its gates to the Lake of Rage, east along Route 44 into the Ice Path, down its four floors and
+        // out into Blackthorn City, behind the Gym into the Dragon's Den and over its water to the shrine, and south by
+        // Route 45, the Dark Cave and Route 46 to Route 29's gate. Every room of theirs is come into
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in North)
+        {
+            Assert.Contains(key, Johto.Index.Areas);
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        }
+        foreach (string name in new[] { "Route42_EcruteakGate", "MtMortar_1F", "MtMortar_1F_Back", "MtMortar_2F", "MtMortar_B1F",
+                     "Mahogany_PokemonCenter_1F", "Mahogany_PokemonCenter_B1F", "Mahogany_SouvenirShop", "Mahogany_EastHouse",
+                     "Mahogany_Gym", "Mahogany_Gym_2", "Mahogany_Gym_3", "Route43_MahoganyGate", "Route43_Gate",
+                     "LakeOfRage_HiddenPowerHouse", "LakeOfRage_FishingGuruHouse", "IcePath_1F", "IcePath_B1F", "IcePath_B2F",
+                     "IcePath_B3F", "Blackthorn_PokemonCenter_1F", "Blackthorn_PokemonCenter_B1F", "Blackthorn_Mart",
+                     "Blackthorn_Gym", "Blackthorn_WestHouse", "Blackthorn_EastHouse", "Blackthorn_MoveTutorHouse",
+                     "DragonsDen_Entrance", "DragonsDen", "DragonsDen_Shrine", "DarkCave_Route31Side", "DarkCave_Route45Side" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+
+        // The Ice Path joins Route 44 to Blackthorn City: its way in from the route and its way out into the city
+        var icePath = Johto.Area("route_44")!.Warps[0];
+        Assert.Contains(Overworld.WarpsAt(icePath.X, icePath.Z), w => w.TargetMap == "IcePath_1F");
+        var outOfIt = Johto.Area("blackthorn")!.Warps[0];
+        Assert.Contains(Overworld.WarpsAt(outOfIt.X, outOfIt.Z), w => w.TargetMap == "IcePath_1F");
+
+        // What waits for plan 20 · J11 stays shut or off the map: the Team Rocket Hideout under the souvenir shop (its
+        // stairs behind the salesman), Pryce, Clair and Lance; the red Gyarados is no person of the lake's
+        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Hideout", StringComparison.Ordinal));
+        Assert.DoesNotContain(MapNamed("Mahogany_Gym_3").Everyone, n => n.Name == "Pryce");
+        Assert.DoesNotContain(MapNamed("Blackthorn_Gym").Everyone, n => n.Name == "Clair");
+        Assert.DoesNotContain(MapNamed("DragonsDen").Everyone, n => n.Name is "Clair" or "Lance");
+        Assert.DoesNotContain(Overworld.NPCs, n => n.Species == "Gyarados");
+
+        // Mahogany and Blackthorn are built their own ways, with songs of their own, as are the roads, the Ice Path and
+        // the Dragon's Den; Mt. Mortar is a dungeon of the Union Cave's song and Routes 45 and 46 Route 34's
+        Assert.Equal(Architecture.Upland, WorldModels.Of("ch_h01", "johto")!.Town);
+        Assert.Equal(Architecture.Dragonstone, WorldModels.Of("fu_h01", "johto")!.Town);
+        var mahogany = Johto.Area("mahogany")!;
+        var blackthorn = Johto.Area("blackthorn")!;
+        Assert.Equal("johto/mahogany", Overworld.BgmTrackAt(mahogany.Warps[3].X, mahogany.Warps[3].Z + 1));
+        Assert.Equal("johto/blackthorn", Overworld.BgmTrackAt(blackthorn.Warps[6].X, blackthorn.Warps[6].Z + 1));
+        var route42 = Johto.Area("route_42")!.Warps[2];
+        Assert.Equal("johto/route42", Overworld.BgmTrackAt(route42.X, route42.Z + 1));
+        Assert.Equal("johto/ice_path", MapNamed("IcePath_1F").BgmTrackAt(Johto.Area("ice_path_1f")!.Warps[0].X, Johto.Area("ice_path_1f")!.Warps[0].Z));
+        var shrine = Johto.Area("dragons_den_shrine")!.Warps[0];
+        Assert.Equal("johto/dragons_den", MapNamed("DragonsDen_Shrine").BgmTrackAt(shrine.X, shrine.Z));
+        Assert.Equal("johto/union_cave", MapNamed("MtMortar_1F").BgmTrackAt(Johto.Area("mount_mortar_1f_entrance")!.Warps[0].X, Johto.Area("mount_mortar_1f_entrance")!.Warps[0].Z));
+
+        // The trainers battle by HeartGold's records, the Dragon's Den's twins as one
+        Assert.Contains(Overworld.Everyone, n => n.Id == "johto_hiker_benjamin");
+        Assert.Contains(Overworld.Everyone, n => n.Id == "johto_hiker_erik");
+        Assert.Contains(MapNamed("Mahogany_Gym_3").Everyone, n => n.Id == "johto_boarder_deandre");
+        Assert.Contains(MapNamed("Blackthorn_Gym").Everyone, n => n.Id == "johto_ace_trainer_m_paulo");
+        Assert.Contains(MapNamed("DragonsDen").Everyone, n => n.Id == "johto_ace_trainer_m_kobe");
+        Assert.Equal(2, MapNamed("DragonsDen").Everyone.Count(n => n.Id == "johto_twins_clea_and_gil"));
+
+        // Fly lands before the two new towns' Pokémon Centers
+        foreach (string town in new[] { "mahogany", "blackthorn" })
+            Assert.NotNull(SpawnLocations.ArrivedIn(RegionDatabase.Johto, town));
     }
 
     [Fact]

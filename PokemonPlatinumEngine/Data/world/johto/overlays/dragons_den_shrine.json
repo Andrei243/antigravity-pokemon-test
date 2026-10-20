@@ -1,0 +1,29 @@
+{
+  // The Dragon Shrine on its island in the Dragon's Den (plan 20 · J10). The elder's questions are plan 20 · J11's; Clair
+  // and the photographer wait with them and are left out
+  "area": "dragons_den_shrine",
+  "bgmTrack": "johto/dragons_den",
+  "people": {
+    "d44r0103_chourou": {
+      "name": "Elder",
+      "still": true,
+      "dialog": [
+        "Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong.",
+        "When the time is right, I will ask you some questions. Not yet."
+      ]
+    },
+    "d44r0103_gsoldman1": {
+      "name": "Old Man",
+      "still": true,
+      "dialog": [
+        "The elder has watched over this shrine since before Clair was born."
+      ]
+    },
+    "d44r0103_gsoldman1_2": {
+      "name": "Old Man",
+      "dialog": [
+        "A dragon tamer's heart matters more than their strength. The elder taught us that."
+      ]
+    }
+  }
+}

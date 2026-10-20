@@ -226,6 +226,10 @@ public enum Architecture
     Seaport,
     /// <summary>Pale stone under sea-green gable roofs with a chimney: the island town of the pharmacy and the fighters (Cianwood, plan 20 · J8).</summary>
     Cliffside,
+    /// <summary>Dark logs under moss-green hipped roofs with a chimney: the small mountain town of the souvenir shop and the ice Gym (Mahogany, plan 20 · J10).</summary>
+    Upland,
+    /// <summary>Grey cut stone under dragon-blue gable roofs with shutters and a chimney: the walled city of the dragon tamers (Blackthorn, plan 20 · J10).</summary>
+    Dragonstone,
 
     // Hoenn (plan 21): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>Boards under leaf-green gable roofs with a chimney and flower boxes: the little town where the grass starts (Littleroot, plan 21 · H1).</summary>

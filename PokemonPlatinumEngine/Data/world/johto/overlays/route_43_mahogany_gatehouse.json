@@ -1,0 +1,13 @@
+{
+  // The gate house between Mahogany Town and Route 43 (plan 20 · J10)
+  "area": "route_43_mahogany_gatehouse",
+  "bgmTrack": "johto/route42",
+  "people": {
+    "r43r0101_counterm": {
+      "name": "Guard",
+      "dialog": [
+        "Route 43 leads north to the Lake of Rage. It's a lovely walk, if you don't mind the trainers."
+      ]
+    }
+  }
+}

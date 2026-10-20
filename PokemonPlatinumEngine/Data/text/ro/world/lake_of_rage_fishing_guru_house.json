@@ -1,0 +1,25 @@
+{
+  "people": {
+    "t29r0201_fishing_2": {
+      "name": {
+        "en": [
+          "Fishing Guru"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I've fished this lake for forty years. The Magikarp here grow bigger than anywhere else.",
+          "One day I'll catch the biggest Magikarp in the world. You'll see!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

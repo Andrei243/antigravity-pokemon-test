@@ -1,12 +1,12 @@
 {
-  // The gate house between Route 29 and Route 46 (plan 20 · J2). Its north door leads to Route 46, plan 20 · J5's,
-  // and stays shut until then
+  // The gate house between Route 29 and Route 46 (plan 20 · J2). Its north door leads to Route 46, open since plan
+  // 20 · J10
   "area": "route_29_route_46_gatehouse",
   "bgmTrack": "johto/route29",
   "people": {
     "r29r0101_counterm": {
       "name": "Officer",
-      "dialog": [ "Route 46 is up ahead. The path is being repaired, so I'm afraid nobody can go through for now." ]
+      "dialog": [ "Route 46 is up ahead. It's a rough mountain road, so watch your step on the ledges." ]
     },
     "r29r0101_gsboy1": {
       "name": "Boy",

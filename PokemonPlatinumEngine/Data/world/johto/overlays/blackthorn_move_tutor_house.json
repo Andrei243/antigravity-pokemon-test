@@ -1,0 +1,36 @@
+{
+  // The house of moves in Blackthorn City (plan 20 · J10). Its people only talk: what they do waits for plan 12 · Q19 and
+  // plan 13 · V4, as the Move Relearner and the Name Rater elsewhere
+  "area": "blackthorn_move_tutor_house",
+  "bgmTrack": "johto/blackthorn",
+  "people": {
+    "t30r0601_gsmiddleman1": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "My father can make a Pokémon forget a move, and my uncle can help it remember one. They're very busy, though."
+      ]
+    },
+    "t30r0601_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "A Pokémon can only know four moves at once. Choosing which ones is half the fun!"
+      ]
+    },
+    "t30r0601_gsoldman1": {
+      "name": "Old Man",
+      "still": true,
+      "dialog": [
+        "Forgetting a move is no shame. Even an HM can be let go, if you know how. Not today, though."
+      ]
+    },
+    "t30r0601_gsoldwoman1": {
+      "name": "Old Woman",
+      "still": true,
+      "dialog": [
+        "Remembering a forgotten move takes patience. Come back another time, dear."
+      ]
+    }
+  }
+}

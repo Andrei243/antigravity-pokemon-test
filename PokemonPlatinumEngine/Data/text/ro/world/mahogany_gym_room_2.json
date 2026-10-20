@@ -1,0 +1,57 @@
+{
+  "people": {
+    "everywhere_skierw": {
+      "name": {
+        "en": [
+          "Diana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Diana: I could slide across this ice with my eyes shut. Can you keep up?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Diana: I took a tumble on that one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "everywhere_boarder": {
+      "name": {
+        "en": [
+          "Patton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Boarder Patton: My Swinub love the cold. How about yours?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Boarder Patton: Wiped out!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

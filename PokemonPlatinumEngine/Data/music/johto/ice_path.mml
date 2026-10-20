@@ -1,0 +1,32 @@
+# The Ice Path (and the Dark Cave): HeartGold's SEQ_GS_D_KOORINONUKE, and this game a song of its own: a slow, cold
+# celesta in D minor over glassy held strings, a bell that drips like meltwater and a deep bass. A cave plays the same
+# by day and night. Original composition for this game (plan 20 · J10).
+title The Ice Path
+tempo 88
+meter 4/4
+reverb 0.5
+night none
+
+track lead celesta vol=0.86 pan=0 rev=0.5
+  L o5 d4 f4 a2 | o5 g4 b-4 a2 | o5 f4 e4 d4 c+4 | o5 d2. r4 |
+  o5 a4 o6 c4 d2 | o6 c4 o5 b-4 g2 | o5 a4 g4 f4 e4 | o5 a2. r4 |
+  o5 f4 a4 o6 c2 | o5 b-4 o6 d4 c2 | o5 a4 f4 g4 e4 | o5 f2. r4 |
+  o5 d4 f4 b-2 | o5 a4 g4 e2 | o5 f4 e4 c+4 e4 | o5 d2. r4 |
+
+track drip glockenspiel vol=0.16 pan=-0.35 rev=0.66
+  L [ r2 o5 a8 r8 r4 | r4 d8 r8 r2 | ]8
+
+track pad strings vol=0.44 pan=0.25 rev=0.56
+  L o3 (d f a)1 | o3 (d f b-)1 | o3 (c+ e a)1 | o3 (d f a)1 |
+  o3 (d f a)1 | o3 (d g b-)1 | o3 (c+ e g)1 | o3 (c+ e a)1 |
+  o3 (c f a)1 | o3 (d f b-)1 | o3 (c e g)1 | o3 (c f a)1 |
+  o3 (d f b-)1 | o3 (d g b-)1 | o3 (c+ e a)1 | o3 (d f a)1 |
+
+track bass contrabass vol=0.64 rev=0.2
+  L o2 d1 | o2 b-1 | o2 a1 | o2 d1 |
+  o2 d1 | o2 g1 | o2 a1 | o2 a1 |
+  o2 f1 | o2 b-1 | o2 c1 | o2 f1 |
+  o2 b-1 | o2 g1 | o2 a1 | o2 d1 |
+
+track drums kit vol=0.16 rev=0.34
+  v52 L [ b2 r4 k4 | r2 k4 r4 | ]8

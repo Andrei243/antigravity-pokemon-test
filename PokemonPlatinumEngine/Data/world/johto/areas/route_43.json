@@ -1,0 +1,98 @@
+{
+  "key": "route_43",
+  "index": 45,
+  "name": "Route 43",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_7_42",
+  "nightMusic": "GS_R_7_42",
+  "encounters": "R43",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Flaaffy", "level": 15 },
+    { "species": "Girafarig", "level": 15 },
+    { "species": "Flaaffy", "level": 15 },
+    { "species": "Girafarig", "level": 15 },
+    { "species": "Pidgeotto", "level": 17, "night": "Noctowl" },
+    { "species": "Pidgeotto", "level": 17, "night": "Noctowl" },
+    { "species": "Mareep", "level": 15, "night": "Venonat" },
+    { "species": "Mareep", "level": 15, "night": "Venonat" },
+    { "species": "Venonat", "level": 16, "day": "Flaaffy", "night": "Mareep" },
+    { "species": "Pidgeotto", "level": 17, "day": "Flaaffy", "night": "Venonat" },
+    { "species": "Venonat", "level": 16, "day": "Flaaffy", "night": "Mareep" },
+    { "species": "Pidgeotto", "level": 17, "day": "Flaaffy", "night": "Venonat" }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Magikarp", "level": 15, "maxLevel": 25 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 },
+    { "species": "Magikarp", "level": 50, "maxLevel": 50 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 524, "z": 156, "to": "route_43_mahogany_gatehouse", "toWarp": 1 },
+    { "x": 525, "z": 156, "to": "route_43_mahogany_gatehouse", "toWarp": 1 },
+    { "x": 537, "z": 143, "to": "route_43_gatehouse", "toWarp": 0 },
+    { "x": 538, "z": 143, "to": "route_43_gatehouse", "toWarp": 0 },
+    { "x": 537, "z": 134, "to": "route_43_gatehouse", "toWarp": 1 },
+    { "x": 538, "z": 134, "to": "route_43_gatehouse", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "r43_campboy_2", "looks": "campboy_2", "movement": "16", "x": 526, "z": 149, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_CAMPER_SPENCER" },
+    { "id": "r43_picnicgirl_2", "looks": "picnicgirl_2", "movement": "15", "x": 526, "z": 127, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 262144, "trainer": "sees", "sight": 4, "script": "TRAINER_PICNICKER_TIFFANY" },
+    { "id": "r43_mania", "looks": "mania", "movement": "15", "x": 531, "z": 122, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_POKE_MANIAC_BRENT" },
+    { "id": "r43_mania_2", "looks": "mania", "movement": "4", "x": 537, "z": 111, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_POKE_MANIAC_BECKETT" },
+    { "id": "r43_mania_3", "looks": "mania", "movement": "5", "x": 530, "z": 104, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_POKE_MANIAC_RON" },
+    { "id": "r43_fishing_2", "looks": "fishing_2", "movement": "17", "x": 520, "z": 113, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 7, "script": "TRAINER_FISHERMAN_MARVIN" },
+    { "id": "r43_bonguri", "looks": "bonguri", "movement": "0", "x": 513, "z": 125, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r43_monstarball", "looks": "monstarball", "movement": "0", "x": 532, "z": 138, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R43_MAX_ETHER", "item": "Max Ether", "script": "std_itemball_r43_max_ether" },
+    { "id": "r43_tree", "looks": "tree", "movement": "0", "x": 515, "z": 128, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" }
+  ],
+  "signs": [
+    { "x": 527, "z": 154, "type": 1, "script": "R43_001+1" },
+    { "x": 532, "z": 146, "type": 1, "script": "R43_002+1" },
+    { "x": 532, "z": 99, "type": 1, "script": "R43_003+1" }
+  ],
+  "triggers": []
+}

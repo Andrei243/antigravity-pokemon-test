@@ -150,7 +150,42 @@
     { "name": "SafariZoneGate_PokemonCenter_1F", "matrix": 73, "area": "safari_zone_gate_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "SafariZoneGate_PokemonCenter_B1F", "matrix": 77, "area": "safari_zone_gate_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
     { "name": "SafariZone_Gate", "matrix": 227, "area": "safari_zone_entrance_interior", "trees": "Round", "setting": "Indoors" },
-    { "name": "SafariZone", "matrix": 212, "trees": "Round" }
+    { "name": "SafariZone", "matrix": 212, "trees": "Round" },
+    // Plan 20 · J10, part a: the north. Route 42's gate house and Mt. Mortar, Mahogany Town's rooms and Gym (the
+    // Rocket Hideout under the souvenir shop waits for plan 20 · J11, whose scene opens its stairs), Route 43's two gate
+    // houses, the Lake of Rage's houses, the Ice Path, Blackthorn City's rooms and Gym, the Dragon's Den and the Dark Cave
+    { "name": "Route42_EcruteakGate", "matrix": 70, "area": "route_42_ecruteak_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "MtMortar_1F", "matrix": 62, "area": "mount_mortar_1f_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "MtMortar_1F_Back", "matrix": 63, "area": "mount_mortar_1f_back", "trees": "Round", "setting": "Cave" },
+    { "name": "MtMortar_2F", "matrix": 64, "area": "mount_mortar_2f", "trees": "Round", "setting": "Cave" },
+    { "name": "MtMortar_B1F", "matrix": 65, "area": "mount_mortar_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "Mahogany_PokemonCenter_1F", "matrix": 73, "area": "mahogany_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Mahogany_PokemonCenter_B1F", "matrix": 77, "area": "mahogany_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Mahogany_SouvenirShop", "matrix": 138, "area": "mahogany_souvenir_shop", "trees": "Round", "setting": "Indoors" },
+    { "name": "Mahogany_EastHouse", "matrix": 95, "area": "mahogany_east_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Mahogany_Gym", "matrix": 93, "area": "mahogany_gym_room_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "Mahogany_Gym_2", "matrix": 228, "area": "mahogany_gym_room_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "Mahogany_Gym_3", "matrix": 229, "area": "mahogany_gym_leader_room", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route43_MahoganyGate", "matrix": 69, "area": "route_43_mahogany_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route43_Gate", "matrix": 69, "area": "route_43_gatehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "LakeOfRage_HiddenPowerHouse", "matrix": 66, "area": "lake_of_rage_hidden_power_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "LakeOfRage_FishingGuruHouse", "matrix": 95, "area": "lake_of_rage_fishing_guru_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "IcePath_1F", "matrix": 132, "area": "ice_path_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "IcePath_B1F", "matrix": 133, "area": "ice_path_b1f", "trees": "Round", "setting": "Cave" },
+    { "name": "IcePath_B2F", "matrix": 134, "area": "ice_path_b2f", "trees": "Round", "setting": "Cave" },
+    { "name": "IcePath_B3F", "matrix": 135, "area": "ice_path_b3f", "trees": "Round", "setting": "Cave" },
+    { "name": "Blackthorn_PokemonCenter_1F", "matrix": 73, "area": "blackthorn_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Blackthorn_PokemonCenter_B1F", "matrix": 77, "area": "blackthorn_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Blackthorn_Mart", "matrix": 104, "area": "blackthorn_pokemart", "trees": "Round", "setting": "Indoors" },
+    { "name": "Blackthorn_Gym", "matrix": 94, "area": "blackthorn_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Blackthorn_WestHouse", "matrix": 95, "area": "blackthorn_west_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Blackthorn_EastHouse", "matrix": 95, "area": "blackthorn_east_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Blackthorn_MoveTutorHouse", "matrix": 95, "area": "blackthorn_move_tutor_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "DragonsDen_Entrance", "matrix": 145, "area": "dragons_den_entrance", "trees": "Round", "setting": "Cave" },
+    { "name": "DragonsDen", "matrix": 146, "area": "dragons_den", "trees": "Round", "setting": "Cave" },
+    { "name": "DragonsDen_Shrine", "matrix": 149, "area": "dragons_den_shrine", "trees": "Round", "setting": "Indoors" },
+    { "name": "DarkCave_Route31Side", "matrix": 99, "area": "dark_cave_route_31_side", "trees": "Round", "setting": "Cave" },
+    { "name": "DarkCave_Route45Side", "matrix": 98, "area": "dark_cave_route_45_side", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 20 · J2: New Bark Town to Route 31's gate house, with their rooms
@@ -206,6 +241,19 @@
     "safari_zone_gate", "safari_zone_gate_pokecenter_1f", "safari_zone_gate_pokecenter_b1f", "safari_zone_entrance_interior",
     "safari_zone_entrance_exterior", "safari_zone_01", "safari_zone_02", "safari_zone_03", "safari_zone_04",
     "safari_zone_05", "safari_zone_06", "safari_zone_07", "safari_zone_08", "safari_zone_09", "safari_zone_10",
-    "safari_zone_11", "safari_zone_12"
+    "safari_zone_11", "safari_zone_12",
+    // Plan 20 · J10, part a: Route 42 and Mt. Mortar, Mahogany Town, Route 43 and the Lake of Rage, Route 44 and the
+    // Ice Path, Blackthorn City and the Dragon's Den, Routes 45 and 46 and the Dark Cave
+    "route_42", "route_42_ecruteak_gatehouse",
+    "mount_mortar_1f_entrance", "mount_mortar_1f_back", "mount_mortar_2f", "mount_mortar_b1f",
+    "mahogany", "mahogany_pokecenter_1f", "mahogany_pokecenter_b1f", "mahogany_souvenir_shop", "mahogany_east_house",
+    "mahogany_gym_room_1", "mahogany_gym_room_2", "mahogany_gym_leader_room",
+    "route_43", "route_43_mahogany_gatehouse", "route_43_gatehouse",
+    "lake_of_rage", "lake_of_rage_hidden_power_house", "lake_of_rage_fishing_guru_house",
+    "route_44", "ice_path_1f", "ice_path_b1f", "ice_path_b2f", "ice_path_b3f",
+    "blackthorn", "blackthorn_pokecenter_1f", "blackthorn_pokecenter_b1f", "blackthorn_pokemart", "blackthorn_gym",
+    "blackthorn_west_house", "blackthorn_east_house", "blackthorn_move_tutor_house",
+    "dragons_den_entrance", "dragons_den", "dragons_den_shrine",
+    "route_45", "route_46", "dark_cave_route_31_side", "dark_cave_route_45_side"
   ]
 }

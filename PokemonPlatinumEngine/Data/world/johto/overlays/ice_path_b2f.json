@@ -1,0 +1,6 @@
+{
+  // The Ice Path's second basement (plan 20 · J10): its sheets of ice, and the boulders that stand on them
+  "area": "ice_path_b2f",
+  "bgmTrack": "johto/ice_path",
+  "people": {}
+}

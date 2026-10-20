@@ -1,0 +1,83 @@
+{
+  "people": {
+    "t28gym0101_boarder": {
+      "name": {
+        "en": [
+          "Deandre"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Boarder Deandre: This is the best ice in all of Johto. Let's ride!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Boarder Deandre: I need a better board."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t28gym0101_boarder_2": {
+      "name": {
+        "en": [
+          "Gerardo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Boarder Gerardo: You've slid all the way in here? Then you can battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Boarder Gerardo: You stuck the landing. I didn't."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t28gym0101_skierw": {
+      "name": {
+        "en": [
+          "Jill"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Skier Jill: Pryce taught me to stay calm on the ice. Watch!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Skier Jill: I lost my balance, and the battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

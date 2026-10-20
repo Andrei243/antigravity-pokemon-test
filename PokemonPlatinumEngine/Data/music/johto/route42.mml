@@ -1,0 +1,36 @@
+# Routes 42 to 44, the Lake of Rage and their gate houses: HeartGold gives the mountain roads of the north one theme
+# (SEQ_GS_R_7_42), and this game a song of its own: a bright horn in D major striding over a rolling harp, held
+# strings and a walking bass, the road climbing past Mt. Mortar toward the snow. Original composition for this game
+# (plan 20 · J10).
+title Routes 42 to 44
+tempo 124
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+
+track lead horn night=clarinet vol=0.7 pan=0 rev=0.3
+  L o5 d4 f+8 a8 o6 d4 o5 a4 | o5 b4 g8 b8 o6 d2 | o5 a4 f+8 d8 e4 f+4 | o5 e2. r4 |
+  o5 d4 f+8 a8 o6 d4 e4 | o6 f+4 e8 d8 o5 b2 | o5 a4 g4 f+4 e4 | o5 d2. r4 |
+  o5 g4 b8 o6 d8 g2 | o6 f+4 d8 o5 a8 f+2 | o5 e4 g8 b8 o6 e4 d4 | o6 c+2. r4 |
+  o5 b4 o6 d8 f+8 e2 | o6 d4 o5 b8 g8 a2 | o5 g4 b4 a4 o6 c+4 | o6 d2. r4 |
+
+track harp harp night=pizzicato vol=0.38 pan=-0.25 rev=0.3
+  L o4 d4 f+4 a4 f+4 | o3 g4 b4 o4 d4 o3 b4 | o3 b4 o4 d4 f+4 d4 | o3 a4 o4 c+4 e4 c+4 |
+  o4 d4 f+4 a4 f+4 | o3 b4 o4 d4 f+4 d4 | o3 a4 o4 c+4 e4 c+4 | o4 d4 f+4 a4 f+4 |
+  o3 g4 b4 o4 d4 o3 b4 | o4 d4 f+4 a4 f+4 | o4 e4 g4 b4 g4 | o3 a4 o4 c+4 e4 c+4 |
+  o3 b4 o4 d4 f+4 d4 | o3 g4 b4 o4 d4 o3 b4 | o3 a4 o4 c+4 e4 c+4 | o4 d4 f+4 a4 f+4 |
+
+track pad strings night=pad vol=0.24 pan=0.25 rev=0.4
+  L o4 (d f+ a)1 | o4 (d g b)1 | o4 (d f+ b)1 | o4 (c+ e a)1 |
+  o4 (d f+ a)1 | o4 (d f+ b)1 | o4 (c+ e a)1 | o4 (d f+ a)1 |
+  o4 (d g b)1 | o4 (d f+ a)1 | o4 (e g b)1 | o4 (c+ e a)1 |
+  o4 (d f+ b)1 | o4 (d g b)1 | o4 (c+ e a)1 | o4 (d f+ a)1 |
+
+track bass contrabass vol=0.5 rev=0.12
+  L o2 d2 a2 | o2 g2 o3 d2 | o2 b2 o3 f+2 | o2 a2 o3 e2 |
+  o2 d2 a2 | o2 b2 o3 f+2 | o2 a2 o3 e2 | o2 d2 a2 |
+  o2 g2 o3 d2 | o2 d2 a2 | o2 e2 b2 | o2 a2 o3 e2 |
+  o2 b2 o3 f+2 | o2 g2 o3 d2 | o2 a2 o3 e2 | o2 d1 |
+
+track drums kit vol=0.24 pan=0.1 rev=0.16
+  v60 L [ b4 h8 h8 s4 h8 h8 | ]16

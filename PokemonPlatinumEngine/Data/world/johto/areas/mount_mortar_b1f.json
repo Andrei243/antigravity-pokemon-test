@@ -1,0 +1,93 @@
+{
+  "key": "mount_mortar_b1f",
+  "index": 252,
+  "name": "Mt. Mortar",
+  "matrix": 65,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D38R0104",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 15 },
+    { "species": "Zubat", "level": 17 },
+    { "species": "Zubat", "level": 15 },
+    { "species": "Zubat", "level": 17 },
+    { "species": "Rattata", "level": 16 },
+    { "species": "Rattata", "level": 16 },
+    { "species": "Machop", "level": 16 },
+    { "species": "Machop", "level": 16 },
+    { "species": "Geodude", "level": 16 },
+    { "species": "Raticate", "level": 16 },
+    { "species": "Geodude", "level": 16 },
+    { "species": "Raticate", "level": 16 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 20 },
+    { "species": "Seaking", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 32, "z": 71, "to": "mount_mortar_1f_entrance", "toWarp": 10 },
+    { "x": 21, "z": 14, "to": "mount_mortar_1f_back", "toWarp": 7 },
+    { "x": 21, "z": 13, "to": "mount_mortar_1f_back", "toWarp": 7 },
+    { "x": 32, "z": 70, "to": "mount_mortar_1f_entrance", "toWarp": 10 }
+  ],
+  "objects": [
+    { "id": "d38r0104_rock", "looks": "rock", "movement": "0", "x": 26, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_strength" },
+    { "id": "d38r0104_gsfighter", "looks": "gsfighter", "movement": "15", "x": 41, "z": 18, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D38R0104_000+1" },
+    { "id": "d38r0104_monstarball", "looks": "monstarball", "movement": "0", "x": 11, "z": 58, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0104_CARBOS", "item": "Carbos", "script": "std_itemball_d38r0104_carbos" },
+    { "id": "d38r0104_monstarball_2", "looks": "monstarball", "movement": "0", "x": 36, "z": 66, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0104_PP_UP", "item": "PP Up", "script": "std_itemball_d38r0104_pp_up" },
+    { "id": "d38r0104_monstarball_3", "looks": "monstarball", "movement": "0", "x": 52, "z": 64, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0104_FULL_RESTORE", "item": "Full Restore", "script": "std_itemball_d38r0104_full_restore" },
+    { "id": "d38r0104_monstarball_4", "looks": "monstarball", "movement": "0", "x": 46, "z": 45, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0104_MAX_ETHER", "item": "Max Ether", "script": "std_itemball_d38r0104_max_ether" },
+    { "id": "d38r0104_monstarball_5", "looks": "monstarball", "movement": "0", "x": 40, "z": 39, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0104_HYPER_POTION", "item": "Hyper Potion", "script": "std_itemball_d38r0104_hyper_potion" }
+  ],
+  "signs": [
+    { "x": 33, "z": 15, "type": 2, "script": "std_hiddenitem_d38r0104_max_revive", "item": "Max Revive", "flag": "FLAG_HIDDEN_ITEM_D38R0104_MAX_REVIVE" },
+    { "x": 17, "z": 73, "type": 2, "script": "std_hiddenitem_d38r0104_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D38R0104_ULTRA_BALL" }
+  ],
+  "triggers": []
+}

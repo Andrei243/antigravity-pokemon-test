@@ -1,0 +1,164 @@
+{
+  "people": {
+    "t30gym0101_sunglasses": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Clair uses dragons, the toughest Pokémon around. Ice moves are your best bet against them!",
+          "Clair isn't taking challengers just now. Her trainers are, though!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "t30gym0101_gsman3": {
+      "name": {
+        "en": [
+          "Paulo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Paulo: Dragons don't scare easily. Neither do I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Paulo: I'm a little scared now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30gym0101_gswoman3": {
+      "name": {
+        "en": [
+          "Lola"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Lola: Clair trains us hard. Let me show you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Lola: She'll train me harder after this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30gym0101_gsman3_2": {
+      "name": {
+        "en": [
+          "Cody"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Cody: Horsea grow into dragons too, you know!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Cody: Not big enough dragons."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30gym0101_gswoman3_2": {
+      "name": {
+        "en": [
+          "Fran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Fran: Only the best get to battle Clair. Are you the best?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Fran: You might just be."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30gym0101_gsman3_3": {
+      "name": {
+        "en": [
+          "Mike"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Mike: My Dragonair is the last test before the Leader!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Mike: You've passed it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T30GYM0101_005+1": {
+      "en": [
+        "Blackthorn City Pokémon Gym\nLeader: Clair"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

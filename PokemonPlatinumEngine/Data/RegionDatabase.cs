@@ -456,6 +456,15 @@ public static class RegionDatabase
                 // Plan 20 · J8, part b, and J9, part b: Route 47's gate, Cliff Cave and the Safari Zone with its gate
                 "CliffEdgeGate", "CliffCave", "SafariZoneGate_PokemonCenter_1F", "SafariZoneGate_PokemonCenter_B1F",
                 "SafariZone_Gate", "SafariZone",
+                // Plan 20 · J10, part a: the north, from Route 42's gate to the Dragon's Den and the Dark Cave
+                "Route42_EcruteakGate", "MtMortar_1F", "MtMortar_1F_Back", "MtMortar_2F", "MtMortar_B1F",
+                "Mahogany_PokemonCenter_1F", "Mahogany_PokemonCenter_B1F", "Mahogany_SouvenirShop", "Mahogany_EastHouse",
+                "Mahogany_Gym", "Mahogany_Gym_2", "Mahogany_Gym_3", "Route43_MahoganyGate", "Route43_Gate",
+                "LakeOfRage_HiddenPowerHouse", "LakeOfRage_FishingGuruHouse",
+                "IcePath_1F", "IcePath_B1F", "IcePath_B2F", "IcePath_B3F",
+                "Blackthorn_PokemonCenter_1F", "Blackthorn_PokemonCenter_B1F", "Blackthorn_Mart", "Blackthorn_Gym",
+                "Blackthorn_WestHouse", "Blackthorn_EastHouse", "Blackthorn_MoveTutorHouse",
+                "DragonsDen_Entrance", "DragonsDen", "DragonsDen_Shrine", "DarkCave_Route31Side", "DarkCave_Route45Side",
             }
         },
         new()

@@ -3458,3 +3458,40 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
 - **Left for later sessions**: the Embedded Tower behind Route 47's hiker (warps 4 to 6 locked), Crasher Wake by
   Route 47's waterfall and Chuck there after the Kanto Badges, Cameron on Route 48 (the Kanto Safari Zone's link),
   the Area Customizer and objects, and the Safari Zone's Pokémon called by the objects.
+
+## The north of Johto, first part (2026-10-20, plan 20 · J10, part a)
+
+Route 42 and Mt. Mortar, Mahogany Town, Route 43 and the Lake of Rage, Route 44, the Ice Path, Blackthorn City and the
+Dragon's Den, Routes 45 and 46 and the Dark Cave, from HeartGold's maps, events and tables, in our own words and music.
+Routes 26 and 27, Tohjo Falls, Victory Road and the Indigo Plateau are part b's.
+
+- **The way east is open as the stretch is**: Ecruteak's gate to Route 42 (its warps 10 and 11), the Dark Cave behind
+  Route 31 and Route 46 above Route 29's gate house. Mahogany Town's east exit, which HeartGold's Rage Candy seller
+  stands in until the Team Rocket Hideout is cleared, is open: he is the fourth chapter's (J11), who puts him there
+  behind the hideout's flag, so that the Ice Path and Blackthorn City can be built and walked to now.
+- **What waits for the fourth chapter (J11)** is left out of the overlays, so no story version is raised: Pryce in his
+  Gym, Clair in hers and in the Dragon's Den, Lance, the rival in the Den, the red Gyarados and Wesley at the Lake of
+  Rage, the Team Rocket grunts on Route 43 and in Mahogany, the man by the Gym, Suicune and Eusine on Route 42, the
+  hiker before one of Mt. Mortar's mouths, the Ice Path's HM07 man, the Kimono Girl and the guards before the Gym and
+  the Den. The Team Rocket Hideout's floors are not opened: their way down is the souvenir shop's stairs, on which its
+  salesman stands, as HeartGold has him until the hideout's scene (the stairs lead nowhere until J11 opens them). The
+  Mahogany Gym's ice blocks are HeartGold's statues of the scene after Pryce, and wait with him.
+- **The original hides some people behind flags nothing in this game sets**: the Lake of Rage's four fishermen and
+  campers, the souvenir shop's two and the guard in Route 43's gate are always there. The gifts of the stretch (the Lake
+  of Rage's TM10 and the fishing guru's record, the Mt. Mortar karate master's Tyrogue, the Ice Path's HM07) wait for
+  their chapter's scripts; their givers only talk.
+- **Ice and lava**: the Ice Path's and the Mahogany Gym's ice is HeartGold's behaviour 0x20, which is Platinum's own
+  ice, so they slide by `IceSlide` already. A walk of the whole game steps tile by tile and is not carried by ice, so it
+  comes into every floor; whether every slide comes to rest where HeartGold's does is the Mahogany Gym's puzzle, which
+  comes with Pryce (J11). The Blackthorn Gym's lava (HeartGold's `Magma`, about a thousand tiles, none of them blocked
+  in the area's own grid) and the Ice Path's ladders stay `Waiting` behaviours: until the Gym's boulders are pushed into
+  the lava to bridge it, with Clair (J11), its lava is plain ground and can be walked over.
+- **The towns' looks** (the style guide's "Buildings"): Mahogany is `Architecture.Upland` (dark logs under a mossy hip
+  roof, a chimney; the Lake of Rage's two houses are Mahogany's), Blackthorn `Dragonstone` (grey cut stone under dragon
+  blue gables, shutters and a chimney). Mahogany's lookout posts and Blackthorn's stone gate are columns, the boulders
+  of Blackthorn's streets outcrops, the Dragon Shrine a shrine of Blackthorn's stone on its island.
+- **Music**: `johto/route42` (Routes 42 to 44, the Lake of Rage and the gate houses, as HeartGold's headers share
+  `SEQ_GS_R_7_42`), `mahogany`, `ice_path` (the Ice Path and the Dark Cave, which share `SEQ_GS_D_KOORINONUKE`),
+  `blackthorn` and `dragons_den`, our own; Mt. Mortar plays `union_cave` and Routes 45 and 46 `route34`, as HeartGold's
+  headers share theirs, and the Gyms `gym`.
+- **Fly** lands before Mahogany's and Blackthorn's Pokémon Centers (spawns 9 and 10). The Indigo Plateau's is part b's.

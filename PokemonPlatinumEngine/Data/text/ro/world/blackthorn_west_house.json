@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t30r0201_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Dratini hatched from an Egg the elder gave me long ago. It's still young, for a dragon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30r0201_tsure_poke_static_dratini": {
+      "name": {
+        "en": [
+          "Dratini"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Draa!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

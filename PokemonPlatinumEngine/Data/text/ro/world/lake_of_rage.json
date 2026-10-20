@@ -1,0 +1,180 @@
+{
+  "people": {
+    "t29_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This lake was made by the rage of Gyarados, so the story goes. They thrashed until the ground gave way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t29_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The fishing is good here, but the Magikarp all seem cross. I've never seen them like this."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t29_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come up here to think. It's quiet, apart from the splashing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t29_fishing_2": {
+      "name": {
+        "en": [
+          "Andre"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Andre: This is the lake where the Gyarados grow biggest! Want to see mine?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Andre: It's big, but you're stronger."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t29_fishing_2_2": {
+      "name": {
+        "en": [
+          "Raymond"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Raymond: Four Magikarp! That's my whole team. Don't laugh!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Raymond: All right, you can laugh now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t29_gsman3": {
+      "name": {
+        "en": [
+          "Alton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Alton: I've raised the three Pokémon Kanto's young trainers start with. Let's see you beat all three!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Alton: Beaten by a Johto trainer. Well done."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t29_gswoman3": {
+      "name": {
+        "en": [
+          "Lois"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Lois: A walk round the lake and then a battle. That's my idea of a good day!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Lois: A good day, even so."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T29_007+1": {
+      "en": [
+        "Lake of Rage\nAlso known as Gyarados Lake."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T29_006+1": {
+      "en": [
+        "The Fishing Guru's house"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

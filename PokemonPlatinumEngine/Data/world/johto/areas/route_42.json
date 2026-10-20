@@ -1,0 +1,107 @@
+{
+  "key": "route_42",
+  "index": 44,
+  "name": "Route 42",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_7_42",
+  "nightMusic": "GS_R_7_42",
+  "encounters": "R42",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Mankey", "level": 15 },
+    { "species": "Mareep", "level": 13 },
+    { "species": "Mankey", "level": 15 },
+    { "species": "Mareep", "level": 13 },
+    { "species": "Spearow", "level": 14, "night": "Zubat" },
+    { "species": "Spearow", "level": 14, "night": "Zubat" },
+    { "species": "Spearow", "level": 16, "night": "Zubat" },
+    { "species": "Spearow", "level": 16, "night": "Zubat" },
+    { "species": "Flaaffy", "level": 15 },
+    { "species": "Flaaffy", "level": 17 },
+    { "species": "Flaaffy", "level": 15 },
+    { "species": "Flaaffy", "level": 17 }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 20 },
+    { "species": "Seaking", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 422, "z": 175, "to": "route_42_ecruteak_gatehouse", "toWarp": 1 },
+    { "x": 422, "z": 176, "to": "route_42_ecruteak_gatehouse", "toWarp": 1 },
+    { "x": 436, "z": 171, "to": "mount_mortar_1f_entrance", "toWarp": 0 },
+    { "x": 464, "z": 175, "to": "mount_mortar_1f_entrance", "toWarp": 1 },
+    { "x": 466, "z": 164, "to": "mount_mortar_1f_entrance", "toWarp": 2 },
+    { "x": 493, "z": 171, "to": "mount_mortar_1f_entrance", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "r42_fishing_2", "looks": "fishing_2", "movement": "15", "x": 483, "z": 175, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_FISHERMAN_TULLY" },
+    { "id": "r42_mania", "looks": "mania", "movement": "15", "x": 495, "z": 172, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_POKE_MANIAC_SHANE" },
+    { "id": "r42_mount_2", "looks": "mount_2", "movement": "6", "x": 501, "z": 177, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_HIKER_BENJAMIN" },
+    { "id": "r42_bonguri", "looks": "bonguri", "movement": "0", "x": 464, "z": 184, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r42_bonguri_2", "looks": "bonguri", "movement": "0", "x": 465, "z": 184, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r42_bonguri_3", "looks": "bonguri", "movement": "0", "x": 466, "z": 184, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r42_monstarball", "looks": "monstarball", "movement": "0", "x": 472, "z": 176, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R42_SUPER_POTION", "item": "Super Potion", "script": "std_itemball_r42_super_potion" },
+    { "id": "r42_monstarball_2", "looks": "monstarball", "movement": "0", "x": 477, "z": 166, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R42_DUBIOUS_DISC", "item": "Dubious Disc", "script": "std_itemball_r42_dubious_disc" },
+    { "id": "r42_monstarball_3", "looks": "monstarball", "movement": "0", "x": 430, "z": 169, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R42_TM65", "item": "TM65", "script": "std_itemball_r42_tm65" },
+    { "id": "r42_tree", "looks": "tree", "movement": "0", "x": 460, "z": 181, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_cut" },
+    { "id": "r42_mount_2_2", "looks": "mount_2", "movement": "0", "x": 436, "z": 171, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_42_HIKER", "script": "0" },
+    { "id": "r42_tsure_poke_static_suicune", "looks": "follower_mon_static_suicune", "movement": "0", "x": 466, "z": 182, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_42_SUICUNE", "script": "0" },
+    { "id": "r42_minaki", "looks": "minaki", "movement": "0", "x": 452, "z": 181, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_42_EUSINE", "script": "0" }
+  ],
+  "signs": [
+    { "x": 427, "z": 177, "type": 1, "script": "R42_002+1" },
+    { "x": 432, "z": 171, "type": 1, "script": "R42_003+1" },
+    { "x": 491, "z": 172, "type": 1, "script": "R42_004+1" },
+    { "x": 504, "z": 172, "type": 1, "script": "R42_005+1" },
+    { "x": 480, "z": 182, "type": 2, "script": "std_hiddenitem_r42_max_potion", "item": "Max Potion", "flag": "FLAG_HIDDEN_ITEM_R42_MAX_POTION" }
+  ],
+  "triggers": [
+    { "x": 434, "z": 172, "width": 1, "depth": 5, "script": "R42_000+1", "variable": "VAR_UNK_4091", "value": "0" },
+    { "x": 460, "z": 181, "width": 1, "depth": 1, "script": "R42_001+1", "variable": "VAR_UNK_4092", "value": "1" }
+  ]
+}

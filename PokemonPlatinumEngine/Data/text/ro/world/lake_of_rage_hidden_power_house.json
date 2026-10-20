@@ -1,0 +1,25 @@
+{
+  "people": {
+    "t29r0101_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Every Pokémon has a power hidden inside it. Its type depends on the Pokémon itself!",
+          "I sit here and meditate on it. Mostly I just sit here."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

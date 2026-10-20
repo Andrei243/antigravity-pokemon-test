@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r42r0101_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 42 runs east round Mt. Mortar to Mahogany Town. The cave itself is a maze, so take care."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,75 @@
+{
+  "key": "mount_mortar_1f_back",
+  "index": 250,
+  "name": "Mt. Mortar",
+  "matrix": 63,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D38R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 13 },
+    { "species": "Machop", "level": 13 },
+    { "species": "Geodude", "level": 13 },
+    { "species": "Machop", "level": 13 },
+    { "species": "Geodude", "level": 15 },
+    { "species": "Geodude", "level": 15 },
+    { "species": "Rattata", "level": 14 },
+    { "species": "Rattata", "level": 14 },
+    { "species": "Machop", "level": 15 },
+    { "species": "Zubat", "level": 14 },
+    { "species": "Machop", "level": 15 },
+    { "species": "Zubat", "level": 14 }
+  ],
+  "landRate": 10,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 35, "z": 81, "to": "mount_mortar_1f_entrance", "toWarp": 4 },
+    { "x": 57, "z": 81, "to": "mount_mortar_1f_entrance", "toWarp": 5 },
+    { "x": 82, "z": 81, "to": "mount_mortar_1f_entrance", "toWarp": 6 },
+    { "x": 27, "z": 65, "to": "mount_mortar_1f_entrance", "toWarp": 7 },
+    { "x": 27, "z": 64, "to": "mount_mortar_1f_entrance", "toWarp": 7 },
+    { "x": 70, "z": 66, "to": "mount_mortar_1f_entrance", "toWarp": 8 },
+    { "x": 70, "z": 65, "to": "mount_mortar_1f_entrance", "toWarp": 8 },
+    { "x": 35, "z": 38, "to": "mount_mortar_b1f", "toWarp": 1 },
+    { "x": 28, "z": 13, "to": "mount_mortar_2f", "toWarp": 1 },
+    { "x": 28, "z": 12, "to": "mount_mortar_2f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "everywhere_rock", "looks": "rock", "movement": "0", "x": 51, "z": 72, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_strength" },
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 67, "z": 54, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0102_ESCAPE_ROPE", "item": "Escape Rope", "script": "std_itemball_d38r0102_escape_rope" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 67, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0102_NUGGET", "item": "Nugget", "script": "std_itemball_d38r0102_nugget" },
+    { "id": "everywhere_monstarball_3", "looks": "monstarball", "movement": "0", "x": 51, "z": 31, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0102_IRON_BALL", "item": "Iron Ball", "script": "std_itemball_d38r0102_iron_ball" },
+    { "id": "everywhere_monstarball_4", "looks": "monstarball", "movement": "0", "x": 51, "z": 43, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0102_MAX_POTION", "item": "Max Potion", "script": "std_itemball_d38r0102_max_potion" },
+    { "id": "everywhere_monstarball_5", "looks": "monstarball", "movement": "0", "x": 29, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0102_IRON", "item": "Iron", "script": "std_itemball_d38r0102_iron" },
+    { "id": "everywhere_monstarball_6", "looks": "monstarball", "movement": "0", "x": 23, "z": 36, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0102_MAX_REVIVE", "item": "Max Revive", "script": "std_itemball_d38r0102_max_revive" },
+    { "id": "everywhere_monstarball_7", "looks": "monstarball", "movement": "0", "x": 37, "z": 52, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0102_ULTRA_BALL", "item": "Ultra Ball", "script": "std_itemball_d38r0102_ultra_ball" },
+    { "id": "everywhere_mania", "looks": "mania", "movement": "15", "x": 62, "z": 79, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_POKE_MANIAC_HARRISON" },
+    { "id": "everywhere_gsassistantm", "looks": "gsassistantm", "movement": "2", "x": 52, "z": 50, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_SUPER_NERD_MARKUS" },
+    { "id": "everywhere_monstarball_8", "looks": "monstarball", "movement": "0", "x": 73, "z": 47, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0102_FULL_INCENSE", "item": "Full Incense", "script": "std_itemball_d38r0102_full_incense" },
+    { "id": "everywhere_monstarball_9", "looks": "monstarball", "movement": "0", "x": 38, "z": 75, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0102_PROTECTOR", "item": "Protector", "script": "std_itemball_d38r0102_protector" }
+  ],
+  "signs": [
+    { "x": 54, "z": 68, "type": 2, "script": "std_hiddenitem_d38r0102_max_repel", "item": "Max Repel", "flag": "FLAG_HIDDEN_ITEM_D38R0102_MAX_REPEL" },
+    { "x": 43, "z": 20, "type": 2, "script": "std_hiddenitem_d38r0102_ether", "item": "Ether", "flag": "FLAG_HIDDEN_ITEM_D38R0102_ETHER" },
+    { "x": 34, "z": 74, "type": 2, "script": "std_hiddenitem_d38r0102_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_D38R0102_RARE_CANDY" },
+    { "x": 60, "z": 37, "type": 2, "script": "std_hiddenitem_d38r0102_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D38R0102_ULTRA_BALL" },
+    { "x": 61, "z": 71, "type": 2, "script": "std_hiddenitem_d38r0102_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_D38R0102_NUGGET" }
+  ],
+  "triggers": []
+}

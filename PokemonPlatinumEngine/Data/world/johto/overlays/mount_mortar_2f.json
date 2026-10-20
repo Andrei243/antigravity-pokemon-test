@@ -1,0 +1,14 @@
+{
+  // Mt. Mortar's upper floor (plan 20 · J10), above the waterfall: one trainer by his own record
+  "area": "mount_mortar_2f",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "everywhere_gsassistantm": {
+      "name": "Hugh",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Hugh: Nobody comes all the way up here. You must be strong. Prove it!",
+        "dialogueAfter": "Super Nerd Hugh: You really are strong. I should have stayed lower down."
+      }
+    }
+  }
+}

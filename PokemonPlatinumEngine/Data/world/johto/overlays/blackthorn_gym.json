@@ -1,0 +1,54 @@
+{
+  // The Blackthorn Gym (plan 20 · J10), HeartGold's room: its guide by the door and five trainers by their own records.
+  // Clair, and the boulders that make a way over its lava, wait for plan 20 · J11
+  "area": "blackthorn_gym",
+  "bgmTrack": "johto/gym",
+  "people": {
+    "t30gym0101_sunglasses": {
+      "name": "Gym Guide",
+      "still": true,
+      "dialog": [
+        "Clair uses dragons, the toughest Pokémon around. Ice moves are your best bet against them!",
+        "Clair isn't taking challengers just now. Her trainers are, though!"
+      ]
+    },
+    "t30gym0101_gsman3": {
+      "name": "Paulo",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Paulo: Dragons don't scare easily. Neither do I!",
+        "dialogueAfter": "Ace Trainer Paulo: I'm a little scared now."
+      }
+    },
+    "t30gym0101_gswoman3": {
+      "name": "Lola",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Lola: Clair trains us hard. Let me show you!",
+        "dialogueAfter": "Ace Trainer Lola: She'll train me harder after this."
+      }
+    },
+    "t30gym0101_gsman3_2": {
+      "name": "Cody",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Cody: Horsea grow into dragons too, you know!",
+        "dialogueAfter": "Ace Trainer Cody: Not big enough dragons."
+      }
+    },
+    "t30gym0101_gswoman3_2": {
+      "name": "Fran",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Fran: Only the best get to battle Clair. Are you the best?",
+        "dialogueAfter": "Ace Trainer Fran: You might just be."
+      }
+    },
+    "t30gym0101_gsman3_3": {
+      "name": "Mike",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Mike: My Dragonair is the last test before the Leader!",
+        "dialogueAfter": "Ace Trainer Mike: You've passed it."
+      }
+    }
+  },
+  "signs": {
+    "T30GYM0101_005+1": "Blackthorn City Pokémon Gym\nLeader: Clair"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  // The Mahogany Gym's last room (plan 20 · J10): three trainers by their own records. Pryce waits for plan 20 · J11
+  "area": "mahogany_gym_leader_room",
+  "bgmTrack": "johto/gym",
+  "people": {
+    "t28gym0101_boarder": {
+      "name": "Deandre",
+      "trainer": {
+        "dialogueBefore": "Boarder Deandre: This is the best ice in all of Johto. Let's ride!",
+        "dialogueAfter": "Boarder Deandre: I need a better board."
+      }
+    },
+    "t28gym0101_boarder_2": {
+      "name": "Gerardo",
+      "trainer": {
+        "dialogueBefore": "Boarder Gerardo: You've slid all the way in here? Then you can battle me!",
+        "dialogueAfter": "Boarder Gerardo: You stuck the landing. I didn't."
+      }
+    },
+    "t28gym0101_skierw": {
+      "name": "Jill",
+      "trainer": {
+        "dialogueBefore": "Skier Jill: Pryce taught me to stay calm on the ice. Watch!",
+        "dialogueAfter": "Skier Jill: I lost my balance, and the battle."
+      }
+    }
+  }
+}

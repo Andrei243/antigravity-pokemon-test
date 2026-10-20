@@ -1,0 +1,31 @@
+{
+  "people": {
+    "everywhere_gsassistantm": {
+      "name": {
+        "en": [
+          "Hugh"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Hugh: Nobody comes all the way up here. You must be strong. Prove it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Hugh: You really are strong. I should have stayed lower down."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

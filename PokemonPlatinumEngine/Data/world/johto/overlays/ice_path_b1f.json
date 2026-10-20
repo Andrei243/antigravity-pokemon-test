@@ -1,0 +1,7 @@
+{
+  // The Ice Path's first basement (plan 20 · J10): its boulders are pushed with Strength; the holes that drop them to
+  // the floor below are plan 20 · J11's
+  "area": "ice_path_b1f",
+  "bgmTrack": "johto/ice_path",
+  "people": {}
+}

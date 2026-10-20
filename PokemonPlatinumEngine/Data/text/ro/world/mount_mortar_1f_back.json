@@ -1,0 +1,57 @@
+{
+  "people": {
+    "everywhere_mania": {
+      "name": {
+        "en": [
+          "Harrison"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Harrison: My Nidoking and Nidoqueen are the king and queen of this cave!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Harrison: Dethroned in their own cave..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "everywhere_gsassistantm": {
+      "name": {
+        "en": [
+          "Markus"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Markus: I've charted every tunnel of this mountain. Have you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Markus: My map didn't show that coming."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

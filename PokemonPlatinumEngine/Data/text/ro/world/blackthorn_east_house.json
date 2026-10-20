@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t30r0301_gsgirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everyone in my family trains dragons. I'm going to be the first to train a Kingdra!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30r0301_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The snow on the mountains melts into the Dragon's Den. The water there is clean and cold."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

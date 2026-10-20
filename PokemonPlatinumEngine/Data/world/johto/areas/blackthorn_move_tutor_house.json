@@ -1,0 +1,29 @@
+{
+  "key": "blackthorn_move_tutor_house",
+  "index": 291,
+  "name": "Blackthorn City",
+  "matrix": 95,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_FUSUBE",
+  "nightMusic": "GS_C_FUSUBE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "blackthorn", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "t30r0601_gsmiddleman1", "looks": "gsmiddleman1", "movement": "15", "x": 1, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T30R0601_000+1" },
+    { "id": "t30r0601_gsbigman", "looks": "gsbigman", "movement": "15", "x": 3, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T30R0601_001+1" },
+    { "id": "t30r0601_gsoldman1", "looks": "gsoldman1", "movement": "0", "x": 8, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T30R0601_003+1" },
+    { "id": "t30r0601_gsoldwoman1", "looks": "gsoldwoman1", "movement": "0", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T30R0601_002+1" },
+    { "id": "t30r0601_babyboy1_2", "looks": "babyboy1_2", "movement": "0", "x": 7, "z": 5, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T30R0601_004+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

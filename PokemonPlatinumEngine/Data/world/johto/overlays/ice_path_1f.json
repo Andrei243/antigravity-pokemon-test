@@ -1,0 +1,7 @@
+{
+  // The Ice Path's first floor (plan 20 · J10): from Route 44 to Blackthorn City, with two ways down. The man who gives
+  // HM07, the Kimono Girl lost in the cold and its boulder puzzle's story wait for plan 20 · J11
+  "area": "ice_path_1f",
+  "bgmTrack": "johto/ice_path",
+  "people": {}
+}

@@ -1,0 +1,29 @@
+{
+  // Mahogany Town's souvenir shop (plan 20 · J10). Its salesman and the customer stand where HeartGold has them until
+  // plan 20 · J11's scene (the original hides them by a flag nothing sets yet); the stairs behind the salesman and the
+  // floors under the shop are that session's too, and Lance with them
+  "area": "mahogany_souvenir_shop",
+  "bgmTrack": "johto/mahogany",
+  "people": {
+    "d35r0101_sunglasses": {
+      "name": "Salesman",
+      "hiddenBy": "",
+      "still": true,
+      "dialog": [
+        "Welcome, welcome! Rage Candy Bars, fresh today. Well... nearly fresh.",
+        "Nothing back there but stock. Customers stay this side of the counter!"
+      ]
+    },
+    "d35r0101_gsfighter": {
+      "name": "Man",
+      "hiddenBy": "",
+      "still": true,
+      "dialog": [
+        "I stop in here every time I pass through. Something about this place always feels a little off."
+      ]
+    }
+  },
+  "signs": {
+    "D35R0101_009+1": "A poster of the shop's sweets.\n“Rage Candy Bars: the taste of the mountains!”"
+  }
+}

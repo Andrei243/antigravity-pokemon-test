@@ -1,0 +1,29 @@
+{
+  "key": "dragons_den_shrine",
+  "index": 288,
+  "name": "Dragons Den",
+  "matrix": 149,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_RYUUNOANA",
+  "nightMusic": "GS_RYUUNOANA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 19, "to": "dragons_den", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "d44r0103_chourou", "looks": "chourou", "movement": "15", "x": 6, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D44R0103_000+1" },
+    { "id": "d44r0103_gsoldman1", "looks": "gsoldman1", "movement": "17", "x": 3, "z": 13, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D44R0103_001+1" },
+    { "id": "d44r0103_gsoldman1_2", "looks": "gsoldman1", "movement": "16", "x": 9, "z": 13, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D44R0103_002+1" },
+    { "id": "d44r0103_gsleader8", "looks": "gsleader8", "movement": "17", "x": 1, "z": 1, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d44r0103_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 5, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D44R0103_005+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

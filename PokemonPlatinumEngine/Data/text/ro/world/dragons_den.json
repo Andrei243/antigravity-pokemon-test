@@ -1,0 +1,118 @@
+{
+  "people": {
+    "d44r0102_gsman3": {
+      "name": {
+        "en": [
+          "Kobe"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kobe: Only those who train in the Den earn the elder's trust. Show me yours!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kobe: You've earned some of mine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d44r0102_gswoman3": {
+      "name": {
+        "en": [
+          "Piper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Piper: The water here is where Horsea learn to be dragons. Watch them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Piper: They have a lot more to learn."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d44r0102_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Clea"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Clea: We're training to be dragon tamers, the two of us!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Clea: We'll train together some more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d44r0102_gsbabygirl1_2": {
+      "name": {
+        "en": [
+          "Gil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Gil: Our Dratini are twins too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Gil: Our Dratini need a nap."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D44R0102_005+1": {
+      "en": [
+        "Dragon Shrine\nA place of prayer for Blackthorn's dragon tamers."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

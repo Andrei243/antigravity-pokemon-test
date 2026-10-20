@@ -1,0 +1,123 @@
+{
+  "people": {
+    "t30pc0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30pc0101_pcwoman2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30pc0101_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30pc0101_pcwoman2_3": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30pc0101_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Past the Pokémon League's gate lies Kanto. They say the trainers there are tough as well."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30pc0101_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My big brother says the Dragon's Den is spooky. I want to go in anyway!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30pc0101_gsman3": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Gym Leader here is proud as a dragon. Beat her, and you've beaten the strongest Leader in Johto."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

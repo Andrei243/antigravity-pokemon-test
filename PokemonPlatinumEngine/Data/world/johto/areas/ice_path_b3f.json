@@ -1,0 +1,53 @@
+{
+  "key": "ice_path_b3f",
+  "index": 239,
+  "name": "Ice Path",
+  "matrix": 135,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D39R0104",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Swinub", "level": 22 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Swinub", "level": 22 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Swinub", "level": 24 },
+    { "species": "Swinub", "level": 24 },
+    { "species": "Zubat", "level": 23, "day": "Jynx" },
+    { "species": "Jynx", "level": 23 },
+    { "species": "Zubat", "level": 23, "day": "Jynx" },
+    { "species": "Jynx", "level": 23 }
+  ],
+  "landRate": 5,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 5, "z": 11, "to": "ice_path_b2f", "toWarp": 2 },
+    { "x": 5, "z": 10, "to": "ice_path_b2f", "toWarp": 2 },
+    { "x": 24, "z": 12, "to": "ice_path_b2f", "toWarp": 3 },
+    { "x": 24, "z": 11, "to": "ice_path_b2f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "everywhere_breakrock", "looks": "breakrock", "movement": "0", "x": 10, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" },
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 12, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D39R0104_NEVERMELTICE", "item": "Never-Melt Ice", "script": "std_itemball_d39r0104_nevermeltice" }
+  ],
+  "signs": [],
+  "triggers": []
+}
