@@ -224,7 +224,7 @@ These are the plans the README put after Sinnoh's Hall of Fame, which has been i
   - **Kanto** (19 · K1 to K9, in order) after W1, W6 and W7. Plan 19's rule that no Kanto chapter comes before the Sinnoh chapter of the same number is met: Sinnoh's story is whole.
   - **Johto**: 20 · J1 right after W6 (the same importer); J2 on after W1 to W4. J3 and J5 can share a wave; J14 can go any time after J2.
   - **Hoenn** (21) after K1 and K2. H5 (Dive) comes after H7, because the sea floor's way in is through Lilycove.
-  - **Unova** (22): a decompilation of Black 2 and White 2 was found on 2026-10-20 (fuddlesworth/pokebw2, GPL v3.0), so by the rule above Unova is read from it as Johto is, not drawn, and follows Black 2's story (the user's choice): U1 after 20 · J1's DS reader, plan 22's decision 2 waiting on the user.
+  - **Unova** (22): a decompilation of Black 2 and White 2 was found on 2026-10-20 (fuddlesworth/pokebw2, GPL v3.0), so by the rule above Unova is read from it as Johto is, not drawn, and follows Black 2's story (the user's choice): U1 after 20 · J1's DS reader; the user chose on 2026-10-20 to import its maps, events, wild Pokémon and trainers as well (plan 22's decision 2).
   - **The later regions** (23): Z1 (Kalos) and Z9 (Galar) once U1 has shown how a drawn region goes, side by side, drawn the same way. Hisui (Z17–Z20) and Lumiose's era (Z21–Z24) come after Paldea, behind the rift.
   - A region chapter that adds a Pokétch, a phone, a bicycle or a field power keeps to its region's files where it can. The hot files in the table below are merged by its rules.
 - **Ways to play (13).**
