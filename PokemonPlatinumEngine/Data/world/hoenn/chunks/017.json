@@ -69,11 +69,11 @@
     "####.########..........####....."
   ],
   "cover": [
-    "wTTTTTTTTT...:::::.CCCCCCCCCCC??",
-    "TTTTTTTTTTTT...:::?CCCCCCCCCCCCC",
-    "TTTTTTTTTTTTTT.:::.CCCCCCCCCC??C",
-    "TTTTTTTTTTTTTT..::.CCCCCCCCCC??C",
-    "TTTTT??????????.::.::CCC?:?CCCCC",
+    "wTTTTTTTTT...:::::.CCCrrrrrrrr??",
+    "TTTTTTTTTTTT...:::?CCCrrrrrCCCCC",
+    "TTTTTTTTTTTTTT.:::.CCCCrrrrCr??C",
+    "TTTTTTTTTTTTTT..::.CCCCrrrrCr??C",
+    "TTTTT??????????.::.::CCC?:?CrCCC",
     "TTTTTCCCCCCCCCC?.::::CCC?:?CCC?,",
     "?TTTTC???????C???::..::::::,,::,",
     "????TCCCCCCCCCCCC..:::::::,,,::,",

@@ -100,7 +100,7 @@
     "wwwwwwwwwwwwwwwwTTTTTTTTTTTTTTTT",
     "..........?????.TTTTTTTTTTTTTTTT",
     "CCCCcCcCTT.....TTTTTTTTTTTTTTTTT",
-    "CCCCCCCCTTT....TTTTTTTTTTTTTTTTT"
+    "rrrrrrrCTTT....TTTTTTTTTTTTTTTTT"
   ],
   "heights": [
     { "x": 0, "z": 0, "width": 16, "depth": 30, "height": 1, "slopeX": 0, "slopeZ": 0 },
