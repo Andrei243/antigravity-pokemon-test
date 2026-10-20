@@ -1,12 +1,12 @@
 {
-  // Three Island's port (plan 19 · K9, part a): FireRed's map, our words. The south end of the island, where the
-  // Seagallop docks and the bikers first landed. Dunsparce Tunnel's east end is part b's (the tunnel dug through), so
-  // its way in is locked
+  // Three Island's port (plan 19 · K9, parts a and c): FireRed's map, our words. The south end of the island, where
+  // the Seagallop docks and the bikers first landed. The east steps are Dunsparce Tunnel's far end, a wall until the
+  // prospector's dig breaks through (FLAG_THREE_ISLAND_TUNNEL_DUG_OUT, which the tunnel's own OnEnter sets)
   "area": "three_island_port",
   "name": "Three Island",
   "bgmTrack": "kanto/route3",
   "trees": "Round",
-  "locked": [ 1 ],
+  "switches": [ { "warp": 1, "from": "FLAG_THREE_ISLAND_TUNNEL_DUG_OUT" } ],
   "people": {
     "woman_3": { "name": "Woman", "dialog": [ "A gang of bikers rolled off a boat here and roared off into town. What a racket!" ] },
     "biker": { "name": "Biker", "dialog": [ "Heh, this island's way too quiet. We're gonna liven it up!" ] },

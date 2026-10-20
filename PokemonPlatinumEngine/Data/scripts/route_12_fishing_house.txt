@@ -1,12 +1,16 @@
-# The fishing house on Route 12 (plan 19 · K6, part a). docs/scripts.md describes the language; the lines are our
-# own, on FireRed's beats (data/maps/Route12_FishingHouse/scripts.inc): the youngest of the three fishing brothers
-# gives a Super Rod to a trainer who likes to fish (FLAG_GOT_SUPER_ROD). FireRed's measure of the biggest Magikarp
-# brought him waits for one of Kanto's own.
+# The fishing house on Route 12 (plan 19 · K6, part a, and plan 19 · K9, part c). docs/scripts.md describes the
+# language; the lines are our own, on FireRed's beats (data/maps/Route12_FishingHouse/scripts.inc): the youngest of
+# the three fishing brothers gives a Super Rod to a trainer who likes to fish (FLAG_GOT_SUPER_ROD), and from then on
+# measures any Magikarp of the team he is shown and keeps the biggest (Models/SizeContest.cs, the original's own
+# arithmetic; his record is VAR_MAGIKARP_SIZE_RECORD, nothing until he has measured one). A Magikarp bigger than his
+# record earns a Net Ball, every time, and becomes the record; the first one shown always does, as in FireRed, whose
+# record begins at nothing. Sizes are told in centimetres here (docs/mechanics/rulings.md). The original gives
+# nothing and keeps nothing when the bag is full; the bag here always has room.
 
 
 script FishingGurusBrother
   speaker "Fisherman"
-  if flag FLAG_GOT_SUPER_ROD goto Biting
+  if flag FLAG_GOT_SUPER_ROD goto Measure
   ask "I'm the youngest of the fishing brothers! Do you like to fish, too?"
   if yes goto Give
   say "No? Then I've nothing to say to you. Hmph."
@@ -15,8 +19,53 @@ label Give
   say "I knew it! You've got the look of a true angler. This is the best rod there is."
   give "Super Rod"
   setflag FLAG_GOT_SUPER_ROD
-  say "With a Super Rod, you can hook Pokémon that the other rods could only dream of!"
+  say "With a Super Rod, you can hook Pokémon that the other rods could only dream of!" "And if you land a whopping great Magikarp, bring it here. I keep the measurements."
   end
-label Biting
-  say "Caught anything big with that Super Rod yet?"
+# Route12_FishingHouse_EventScript_CheckMagikarpRecord
+label Measure
+  if not has "Magikarp" goto Bring
+  say "Hold it! That's a Magikarp you've got there." "Let me have the tape on it. I keep a board of the biggest ones landed hereabouts."
+  choosepokemon
+  if result == 255 goto Denied
+  team size "Magikarp" VAR_MAGIKARP_SIZE_RECORD
+  if result == 3 goto Other
+  if not flag FLAG_GOT_RECORD_SETTING_MAGIKARP goto Biggest
+  if result == 0 goto Smaller
+  if result == 1 goto Same
+  goto Biggest
+# Route12_FishingHouse_EventScript_NewRecordMagikarp
+label Biggest
+  say "Whoa! {size} of Magikarp, nose to tail!" "That's the biggest ever landed round here. Take this, you've earned it."
+  give "Net Ball"
+  setflag FLAG_GOT_RECORD_SETTING_MAGIKARP
+  team size keep VAR_MAGIKARP_SIZE_RECORD
+  say "Up on the board it goes. I'll be waiting for a bigger one!"
+  end
+# Route12_FishingHouse_EventScript_TryFishingBringMeMagikarp
+label Bring
+  say "Caught anything big with that Super Rod yet?" "Land a great fat Magikarp and bring it to me. I'll measure it for you."
+  end
+label Same
+  say "Huh. {size}, and the board says {record}." "The same fish to the millimetre? Now that's angling."
+  end
+label Smaller
+  say "Hmm. {size}. A tidy Magikarp, I'll give you that." "But the board says {record}, and I don't rub out the board."
+  end
+# Route12_FishingHouse_EventScript_DoesntLookLikeMagikarp
+label Other
+  say "That doesn't look like a Magikarp to me. I only measure Magikarp."
+  end
+label Denied
+  say "Changed your mind? Fine, fine. The tape will keep."
+  end
+
+
+# The board on the wall (Route12_FishingHouse_EventScript_MagikarpRecordSign)
+script Board
+  team record "Magikarp" VAR_MAGIKARP_SIZE_RECORD
+  if result == 0 goto Blank
+  say "A board of the Magikarp landed hereabouts. The biggest so far: {record}."
+  end
+label Blank
+  say "A board of the Magikarp landed hereabouts. Not one is written up yet."
   end

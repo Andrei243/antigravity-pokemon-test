@@ -1,15 +1,35 @@
-# Lorelei's house on Four Island (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our
+# Lorelei's house on Four Island (plan 19 · K9, parts b and c). docs/scripts.md describes the language; the lines are our
 # own, on FireRed's beats (data/maps/FourIsland_LoreleisHouse/scripts.inc).
 #
 # Lorelei is at home from the poachers' scene in Icefall Cave (four_island_icefall_cave_back.txt clears FLAG_HIDE_
 # LORELEI_IN_HER_HOUSE) until Celio takes the Sapphire (one_island_pokemon_center_1f.txt sets it again: she goes back
 # to the League). Before the scene she isn't home. What she says follows Team Rocket's warehouse (FLAG_DEFEATED_
-# ROCKETS_IN_WAREHOUSE) and whether she has said it (FLAG_TALKED_TO_LORELEI_AFTER_WAREHOUSE). Her dolls are all on
-# show: FireRed's draw of which stand where is left out.
+# ROCKETS_IN_WAREHOUSE) and whether she has said it (FLAG_TALKED_TO_LORELEI_AFTER_WAREHOUSE).
+#
+# Six of her dolls always stand. The other eight come one at a time with the times the team has entered the Hall of
+# Fame, at 25, 50, 75, 100, 125, 150, 175 and 200 (plan 19 · K9, part c: FireRed's UpdateLoreleiDollCollection, called
+# from this room's own ON_TRANSITION, which only clears the flags, since its new game sets them; here the arrival sets
+# them first, so a save made before they were read finds its collection as the count has earned it).
 
 
 script OnEnter
   if var VAR_MAP_SCENE_ICEFALL_CAVE_BACK == 0 setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
+  setflag FLAG_HIDE_LORELEI_HOUSE_MEOWTH_DOLL
+  setflag FLAG_HIDE_LORELEI_HOUSE_CHANSEY_DOLL
+  setflag FLAG_HIDE_LORELEIS_HOUSE_NIDORAN_F_DOLL
+  setflag FLAG_HIDE_LORELEI_HOUSE_JIGGLYPUFF_DOLL
+  setflag FLAG_HIDE_LORELEIS_HOUSE_NIDORAN_M_DOLL
+  setflag FLAG_HIDE_LORELEIS_HOUSE_FEAROW_DOLL
+  setflag FLAG_HIDE_LORELEIS_HOUSE_PIDGEOT_DOLL
+  setflag FLAG_HIDE_LORELEIS_HOUSE_LAPRAS_DOLL
+  if var LEAGUE_VICTORIES >= 25 clearflag FLAG_HIDE_LORELEI_HOUSE_MEOWTH_DOLL
+  if var LEAGUE_VICTORIES >= 50 clearflag FLAG_HIDE_LORELEI_HOUSE_CHANSEY_DOLL
+  if var LEAGUE_VICTORIES >= 75 clearflag FLAG_HIDE_LORELEIS_HOUSE_NIDORAN_F_DOLL
+  if var LEAGUE_VICTORIES >= 100 clearflag FLAG_HIDE_LORELEI_HOUSE_JIGGLYPUFF_DOLL
+  if var LEAGUE_VICTORIES >= 125 clearflag FLAG_HIDE_LORELEIS_HOUSE_NIDORAN_M_DOLL
+  if var LEAGUE_VICTORIES >= 150 clearflag FLAG_HIDE_LORELEIS_HOUSE_FEAROW_DOLL
+  if var LEAGUE_VICTORIES >= 175 clearflag FLAG_HIDE_LORELEIS_HOUSE_PIDGEOT_DOLL
+  if var LEAGUE_VICTORIES >= 200 clearflag FLAG_HIDE_LORELEIS_HOUSE_LAPRAS_DOLL
   end
 
 

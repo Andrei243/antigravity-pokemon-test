@@ -11,14 +11,5 @@
       }
     }
   },
-  "signs": {
-    "Route12_FishingHouse_EventScript_MagikarpRecordSign": {
-      "en": [
-        "The record Magikarp caught here. Nobody has beaten it yet!"
-      ],
-      "text": [
-        "Recordul la Magikarp prins aici. Nu l-a bătut încă nimeni!"
-      ]
-    }
-  }
+  "signs": {}
 }

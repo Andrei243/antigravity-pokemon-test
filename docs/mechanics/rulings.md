@@ -3397,6 +3397,62 @@ was raised: each place's arrival hides whoever its part of the errand hasn't rea
 - **Mewtwo** waits at the bottom of Cerulean Cave at level 70 until fought, as the birds; a run from it hides it until
   the cave is come to again.
 
+## The last Sevii Islands, part c (2026-10-20, plan 19 · K9, part c)
+
+The little the islands still owed, as scripts of ours on FireRed's beats and flags
+(`data/maps/ThreeIsland_DunsparceTunnel/scripts.inc`, `SixIsland_WaterPath_House1`, `Route12_FishingHouse`,
+`FiveIsland_ResortGorgeous_House`, `FourIsland_LoreleisHouse`, and `src/field_specials.c`'s
+`SampleResortGorgeousMonAndReward` and `UpdateLoreleiDollCollection`).
+
+- **The Dunsparce Tunnel is dug through with the National Pokédex.** FireRed lays the tunnel out again with
+  `setmaplayoutindex` once the Pokédex is the National one; here the dug-out layout is an alternate the GBA reader
+  writes as a chunk of its own (`GbaWorld.Alternates`, chunk 655), swapped in by `world.json`'s `swaps` on
+  `FLAG_THREE_ISLAND_TUNNEL_DUG_OUT`, which both arrivals set (`three_island_dunsparce_tunnel.OnEnter` and
+  `three_island_port.OnEnter`, each `if nationaldex setflag`), so the dig is through whichever end is come to first.
+  Until then the prospector is a second person of the overlay at the wall he is working (`prospector_digging`, hidden
+  by the flag) and the port's east steps are shut, a way `from` the flag in the overlay's `switches`; after it he
+  stands at his own end with a Nugget to give, once (`FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL`).
+- **The size measurers keep records of their own.** The Water Path's beauty measures Heracross and Route 12's fishing
+  brother Magikarp, each against a record of their own rather than the one size record of Platinum's Route 221
+  fisherman: `team size "<species>" <variable>` measures against the named variable and `team size keep <variable>`
+  writes it, and `team record <species> [<variable>]` tells what is written up. So a Heracross never spoils the
+  Magikarp board, and Sinnoh's `VAR_SIZE_CONTEST_RECORD` is untouched by either. The first one shown always earns its
+  ball, as in FireRed, where a record of nothing is beaten by anything: a Nest Ball
+  (`FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1`) and a Net Ball (`FLAG_GOT_RECORD_SETTING_MAGIKARP`), each once, and
+  the brother measures nothing until his Super Rod has been given. The sizes are Platinum's own arithmetic
+  (`Models/SizeContest.cs`), not FireRed's, which has no bell curve: the same Pokémon is the same size wherever it is
+  measured in this game.
+- **Selphy's wishes.** Her wish is a species the Pokédex has seen, drawn on the game's own chance (`random seen`, the
+  new `IScriptHost.SpeciesSeenAtRandom`, FireRed's `SampleResortGorgeousMon`) and kept as its National Pokédex number
+  in `VAR_RESORT_GORGEOUS_REQUESTED_MON`, which `if has var VAR_…` asks the team about and `{species:VAR_…}` says in a
+  line; the gift is drawn with it (`VAR_RESORT_GORGEOUS_REWARD`: 1 a Luxury Ball, seven draws in ten, and 2 to 7 one
+  of FireRed's six deluxe rewards, in its own order), and the butler, who is off the map until she calls him, hands it
+  over. She wishes again the next time the house is come into (`FLAG_MAP_LOCAL_SELPHY_THANKED`, FireRed's
+  `FLAG_TEMP_2`). **FireRed forgets a wish 250 steps after it is made; here a wish stands until it is granted**, since
+  nothing else in this game counts steps against a flag and a forgotten wish only annoys.
+- **Lorelei's dolls** come one by one with the times the team has entered the Hall of Fame, as FireRed's
+  `UpdateLoreleiDollCollection` gives them (25 entries a Meowth, then 50, 75, 100, 125, 150, 175 and 200 a Chansey, a
+  female Nidoran, a Jigglypuff, a male Nidoran, a Fearow, a Pidgeot and a Lapras): her room's `OnEnter` sets all eight
+  flags and clears each the count has earned, reading the count as the built-in `LEAGUE_VICTORIES`, where FireRed
+  reads its own game record. Her other six dolls always stand.
+- **The Rocket Warehouse's arrows need nothing of their own.** Part b's "left" list was mistaken: the warehouse is
+  laid out from FireRed's own tiles, whose slides and spinner are the behaviours plan 19 · K5, part b taught the field
+  for the Rocket Hideout, so its floor already runs and stops as the hideout's does
+  (`KantoTests.TheRocketWarehousesArrowsSpinAsTheHideoutsDo` holds it).
+
+What the islands still owe, and why:
+
+- **The roaming beast.** FireRed sets Raikou, Entei or Suicune roaming once Celio's network is finished, chosen by the
+  starter. `Models/Roamers.cs` keeps a roamer by species and the three of them already have Johto's routes to roam
+  (plan 20), so letting Kanto loose one would need a field of its own in the save to say which region's roam a beast
+  is on. Left to the session that gives the roamers a region.
+- **Icefall Cave's cracked ice** (FireRed's `MB_CRACKED_FLOOR`) needs a tile that remembers how often it has been
+  stepped on and a fall to the floor below; the cave is walked without it, as plan 19 · K9, part b left it.
+- **The Seagallop's Rainbow menu** stays two tiers of questions, since `choose` takes at most six answers and the
+  Rainbow Pass opens seven islands.
+- **The Trainer Tower and Altering Cave** want the e-Reader; **Two Island's Poké Maniac** wants a trade, which is plan
+  07's.
+
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,

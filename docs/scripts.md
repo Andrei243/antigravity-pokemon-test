@@ -148,7 +148,8 @@ R15) `{daycare:0}` and `{daycare:1}` the Pokémon in each place of the Day Care,
 have brought it to, `{grown:N}` the levels it has grown and `{fee:N}` what taking it back costs, `{left}` the Pokémon
 last left there and `{taken}` the one last taken back, and (plan 01 · M11, part c) `{size}` the size of the Pokémon
 last measured with `team size` and `{record}` the record it was held against, in centimetres, and (plan 14 · B14)
-`{chosen}` the Pokémon the last `choosepokemon` chose, by its nickname.
+`{chosen}` the Pokémon the last `choosepokemon` chose, by its nickname, and (plan 19 · K9, part c)
+`{species:NAME}` the species whose National Pokédex number the variable holds.
 
 ### Where a script goes
 
@@ -160,6 +161,7 @@ last measured with `team size` and `{record}` the record it was held against, in
 | `end` | Ends everything, whoever called. |
 | `if [not] <question> <command>` | Carries the command out when the answer is yes. Any one command may follow, most often `goto`. |
 | `scene "Name"`, `endscene` | Mark a scene that may be skipped, from its first line to where it has been played to its end (plan 12 · Q20). "Scenes that may be skipped", below, has both. |
+| `random seen` | A species the Pokédex has seen, drawn on the game's own chance (plan 19 · K9, part c; FireRed's `SampleResortGorgeousMon`): `RESULT` is its National Pokédex number, and 0 where the Pokédex has seen none. A test says which it has seen (`HeadlessScriptHost.PokedexSeen`) and rolls for the draw. |
 | `random 26` | A die of that many sides (one or more), rolled on the game's own chance: `RESULT` is 0 to one less than its sides (the original's `GetRandom`; plan 01 · M11, part a: the flower shop's berry of the day, the Berry Master's, the Old Chateau's ghosts). A test rolls for it (`HeadlessScriptHost.Rolls`, and 0 once they run out). |
 
 What an `if` can ask:
@@ -176,6 +178,7 @@ What an `if` can ask:
 | `item "Potion"`, `item "Coupon 1" >= 3` | The bag holds it (that many). |
 | `party < 6`, `has "Starly"`, `knows "Cut"` | The team's size, a species on it, a move one of them knows. |
 | `has "Geodude" met "Safari Zone"` | A species on the team that was met at that place (plan 20 · J8, part b: the original's `CheckSafariZoneChallengeCompleted`, for Warden Baoba's tests). The place is the name the Pokémon keeps of where it was met (`Pokemon.MetLocation`), which is the area's name as it is shown. |
+| `has var VAR_X` | A species on the team by the National Pokédex number a variable holds (plan 19 · K9, part c: Selphy wishes for a species she has heard of, `random seen`, and then asks whether one has been brought). Nothing is on the team for a variable that holds no species. |
 | `defeated self`, `defeated "trainer_id"` | The trainer has been beaten. |
 | `taken "item_id"` | An item on the ground has been picked up. |
 | `starter "Piplup"` | The species the player took from the briefcase. |
@@ -552,6 +555,8 @@ it, each after one command of the original's. Part c (the north and the Battle Z
 | `team nature serious` | `RESULT` is the place of the first of the team, no Egg, of that nature, or 255 with none (`FindPartySlotWithNature`): the inventor of Sunyshore City, who gives a Pokétch app for the sight of one. |
 | `team size "Remoraid"` | The Pokémon `RESULT` names (after `choosepokemon`) is measured against the size record (`CalcSizeContestResult`; `Models/SizeContest.cs`): `RESULT` 0 smaller, 1 the same, 2 larger, and 3 where it isn't that species (an Egg is none, and so is nobody chosen). `{size}` is its size and `{record}` the record's, as that species. The record is the story's `VAR_SIZE_CONTEST_RECORD`, and until one is kept the original's first (33,280). |
 | `team size keep` | The Pokémon last measured is the record from now on (`UpdateSizeContestRecord`). |
+| `team size "Heracross" VAR_HERACROSS_SIZE_RECORD`, `team size keep VAR_HERACROSS_SIZE_RECORD` | The same, against a record of the measurer's own (plan 19 · K9, part c: Kanto's two measurers each keep theirs, FireRed's `VAR_HERACROSS_SIZE_RECORD` and `VAR_MAGIKARP_SIZE_RECORD`). A variable of its own holds nothing until a Pokémon is kept, so the first one shown is larger than the record, as in FireRed. |
+| `team record "Heracross" VAR_HERACROSS_SIZE_RECORD` | `{record}` is what that record comes to as that species, with nothing measured (FireRed's `GetHeracrossSizeRecordInfo`, for the chart on the measurer's wall); `RESULT` is 1 where a record is kept and 0 where none is yet. The variable may be left out for the story's own. |
 | `team deoxys "Deoxys-Speed"` | Every Deoxys of the team, no Egg, takes that forme (`"Deoxys"` is its Normal Forme); `RESULT` is how many changed (plan 06 · R29; `ChangeDeoxysForm`, Veilstone City's four meteorites). |
 | `team holds "Adamant Orb"` | `RESULT` 1 when anyone of the team holds the item, 0 when nobody does; an Egg holds nothing (plan 02 · S15, part c; `CheckPartyHasHeldItem`). Mt. Coronet's sixth floor asks it of the Adamant and the Lustrous Orb beside `if item`, which asks the bag. |
 

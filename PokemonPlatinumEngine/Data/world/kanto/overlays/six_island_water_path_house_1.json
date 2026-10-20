@@ -1,12 +1,13 @@
 {
-  // A house by the Water Path (plan 19 · K9, part b): a woman who loves big Heracross. FireRed's measuring of one is
-  // left for later
+  // A house by the Water Path (plan 19 · K9, parts b and c): a woman who loves big Heracross and measures the ones
+  // she is shown (six_island_water_path_house_1.txt; her record is VAR_HERACROSS_SIZE_RECORD), and the chart she
+  // writes them on
   "area": "six_island_water_path_house_1",
   "bgmTrack": "kanto/fuchsia",
   "people": {
-    "beauty": { "name": "Beauty", "dialog": [ "Heracross are the most marvellous Pokémon! The bigger the horn, the better. One day I'll find the biggest of them all." ] }
+    "beauty": { "name": "Beauty", "script": "Beauty" }
   },
-  "signs": {
-    "SixIsland_WaterPath_House1_EventScript_SizeRecord": "A chart for writing down Heracross sizes. Nothing is written on it yet."
+  "read": {
+    "SixIsland_WaterPath_House1_EventScript_SizeRecord": "Chart"
   }
 }

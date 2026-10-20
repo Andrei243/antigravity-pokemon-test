@@ -1367,6 +1367,13 @@ public partial class GameEngine
         // A script's die is rolled on the game's chance, so the harness's runs repeat (plan 01 · M11)
         public int Random(int sides) => Dice.Shared.Next(Math.Max(1, sides));
 
+        // A species the Pokédex has seen, drawn on the same chance (plan 19 · K9, part c: Selphy's wish)
+        public int SpeciesSeenAtRandom()
+        {
+            var seen = game.flow.Pokedex.SeenSpecies.Order().ToList();
+            return seen.Count == 0 ? 0 : seen[Dice.Shared.Next(seen.Count)];
+        }
+
         public int BattleTurns => game.flow.ScriptTurns;
 
         // The original's field cries (a legendary in its lair, a Pokémon a script brings out) have an echo beside them

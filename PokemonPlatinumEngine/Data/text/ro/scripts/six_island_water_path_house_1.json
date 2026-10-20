@@ -1,0 +1,106 @@
+{
+  "Beauty": [
+    {
+      "en": [
+        "Beauty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! Oh my! Is that a Heracross with you?",
+        "I simply must know how big it is. May I measure it? Please?"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{size}! A horn to horn length of {size}!",
+        "That is the finest Heracross I have ever been shown.",
+        "Here, you must take this. A splendid Pokémon deserves a splendid ball."
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I shall write it on my chart at once. Do come back if you find a bigger one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Heracross are the most marvellous Pokémon! The bigger the horn, the better.",
+        "Bring one to my door and I'll measure it for you, on my word."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{size}... and my chart says {record}.",
+        "The very same, to the millimetre! How uncanny."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This one comes to {size}. A fine Heracross, truly.",
+        "But the chart says {record}, and the chart does not lie."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This won't do at all. I measure Heracross and nothing else!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No? Oh, how disappointing. I had my tape ready and all."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Chart": [
+    {
+      "en": [
+        "A chart for writing down Heracross sizes. The biggest so far: {record}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A chart for writing down Heracross sizes. Nothing is written on it yet."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

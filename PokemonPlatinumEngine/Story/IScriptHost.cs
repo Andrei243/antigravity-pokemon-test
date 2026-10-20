@@ -495,6 +495,14 @@ public interface IScriptHost
     /// </summary>
     int Random(int sides);
 
+    /// <summary>
+    /// A species the Pokédex has seen, drawn on the game's own chance (<c>random seen</c>; plan 19 · K9, part c:
+    /// FireRed's <c>SampleResortGorgeousMon</c>, which Selphy's wish is drawn with): its National Pokédex number, or 0
+    /// where the Pokédex has seen none. The original tries a hundred species at random and then counts down to one it
+    /// has seen; this draws among those seen, which comes to the same spread without the fallback's bias.
+    /// </summary>
+    int SpeciesSeenAtRandom() => 0;
+
     // ------------------------------------------------------------------ the Battle Frontier (plan 06 · R18a)
 
     /// <summary>The Battle Frontier's records: every facility's numbers, the streaks running, the Battle Points.</summary>
