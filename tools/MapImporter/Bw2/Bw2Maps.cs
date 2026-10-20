@@ -189,8 +189,11 @@ public sealed class Bw2Heights
         normal.Y == 0 ? 0f : -(offset + normal.X * x + normal.Z * z) / normal.Y;
 }
 
-/// <summary>A tile of a terrain grid: its class, its flags and the height of the ground at its middle, in tiles.</summary>
-public readonly record struct Bw2Tile(int Class, int Flags, float Height)
+/// <summary>
+/// A tile of a terrain grid: its class, its flags and the height of the ground at its middle, in tiles, and since
+/// plan 22 · U2 how much it rises a tile eastward and southward (a cut tile's two planes taken together).
+/// </summary>
+public readonly record struct Bw2Tile(int Class, int Flags, float Height, float SlopeX = 0f, float SlopeZ = 0f)
 {
     public bool Blocked => (Flags & Bw2Behaviours.BlockedFlag) != 0 || Class is 0xFF or 0xFFFF;
 }
@@ -229,28 +232,41 @@ public sealed class Bw2Terrain
             int x = Get(r, header, "x"), z = Get(r, header, "z");
             long type = long.Parse(r[header["tile_type"]], CultureInfo.InvariantCulture);
             float ux = (x + 0.5f) * LandData.TileUnits - half, uz = (z + 0.5f) * LandData.TileUnits - halfZ;
-            float units;
+            float units, sx = 0f, sz = 0f;
             if (raw)
             {
                 // Two planes written out, each its normal and offset; at the tile's middle, on the diagonal, the mean
                 var n0 = (Get(r, header, "normal0_x"), Get(r, header, "normal0_y"), Get(r, header, "normal0_z"));
                 var n1 = (Get(r, header, "normal1_x"), Get(r, header, "normal1_y"), Get(r, header, "normal1_z"));
                 units = (Bw2Heights.HeightOn(n0, Get(r, header, "offset0"), ux, uz) + Bw2Heights.HeightOn(n1, Get(r, header, "offset1"), ux, uz)) / 2f;
+                (sx, sz) = Mean(Rise(n0), Rise(n1));
             }
             else
             {
                 int shape = Get(r, header, "shape"), slope = Get(r, header, "slope"), offset = Get(r, header, "offset");
-                if (shape == 0) units = Bw2Heights.HeightOn(heights.Normal(slope), heights.Offset(offset), ux, uz);
+                if (shape == 0)
+                {
+                    units = Bw2Heights.HeightOn(heights.Normal(slope), heights.Offset(offset), ux, uz);
+                    (sx, sz) = Rise(heights.Normal(slope));
+                }
                 else if (shape == 2 && splits.TryGetValue(offset, out var s))
+                {
                     // The middle lies on the cut, where the two planes meet: their mean
                     units = (Bw2Heights.HeightOn(heights.Normal(s.Slope0), heights.Offset(s.Offset0), ux, uz)
                         + Bw2Heights.HeightOn(heights.Normal(s.Slope1), heights.Offset(s.Offset1), ux, uz)) / 2f;
+                    (sx, sz) = Mean(Rise(heights.Normal(s.Slope0)), Rise(heights.Normal(s.Slope1)));
+                }
                 else units = 0f;
             }
-            tiles[z * width + x] = new Bw2Tile(Bw2Behaviours.ClassOf(type), Bw2Behaviours.FlagsOf(type), units / LandData.TileUnits);
+            tiles[z * width + x] = new Bw2Tile(Bw2Behaviours.ClassOf(type), Bw2Behaviours.FlagsOf(type), units / LandData.TileUnits, sx, sz);
         }
         return new Bw2Terrain(width, height, tiles, raw);
     }
+
+    // How a plane rises a tile eastward and southward (the same in tiles as in units)
+    private static (float X, float Z) Rise((int X, int Y, int Z) n) => n.Y == 0 ? (0f, 0f) : (-(float)n.X / n.Y, -(float)n.Z / n.Y);
+
+    private static (float X, float Z) Mean((float X, float Z) a, (float X, float Z) b) => ((a.X + b.X) / 2f, (a.Z + b.Z) / 2f);
 
     private static List<string[]> Rows(string csv, out Dictionary<string, int> header)
     {
@@ -357,6 +373,9 @@ public sealed class Bw2Maps
 
     private readonly Dictionary<string, Bw2Terrain?[]> terrain = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Bw2Model?> models = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, List<Bw2Geometry.Triangle>> geometry = new(StringComparer.Ordinal);
+    private readonly Dictionary<int, string> propFiles = new();
+    private readonly Dictionary<int, (Vector3 Min, Vector3 Max)?> propBoxes = new();
 
     public Bw2Maps(string dir)
     {
@@ -404,6 +423,8 @@ public sealed class Bw2Maps
                 string name = Regex.Replace(Path.GetFileName(Path.GetDirectoryName(file))!, @"_\d+$", "");
                 var counts = names.TryGetValue(id.GetInt32(), out var c) ? c : names[id.GetInt32()] = new Dictionary<string, int>(StringComparer.Ordinal);
                 counts[name] = counts.GetValueOrDefault(name) + 1;
+                string glb = Path.Combine(Path.GetDirectoryName(file)!, "model.glb");
+                if (File.Exists(glb)) propFiles.TryAdd(id.GetInt32(), glb);
             }
         PropNames = names.ToDictionary(kv => kv.Key, kv => kv.Value.OrderByDescending(n => n.Value).ThenBy(n => n.Key, StringComparer.Ordinal).First().Key);
 
@@ -454,6 +475,39 @@ public sealed class Bw2Maps
             catch (Exception e) when (e is InvalidDataException or JsonException or EndOfStreamException) {Problems.Add($"{chunk}: model.glb can't be read ({e.Message})"); }
         }
         return models[chunk] = model;
+    }
+
+    /// <summary>
+    /// Where a chunk's textures lie (plan 22 · U2): the triangles of its <c>model.glb</c>, read as numbers only to sort
+    /// its tiles' looks by (<see cref="Bw2Geometry"/>); none where it has no model or can't be read.
+    /// </summary>
+    public List<Bw2Geometry.Triangle> Geometry(string chunk)
+    {
+        if (geometry.TryGetValue(chunk, out var known)) return known;
+        string path = Path.Combine(Directory, "res", "field", "maps", "models", chunk, "model.glb");
+        var triangles = new List<Bw2Geometry.Triangle>();
+        if (File.Exists(path))
+        {
+            try { triangles = Bw2Geometry.ReadFile(path); }
+            catch (Exception e) when (e is InvalidDataException or JsonException or ArgumentOutOfRangeException or IndexOutOfRangeException or KeyNotFoundException)
+            {
+                Problems.Add($"{chunk}: model.glb's triangles can't be read ({e.Message})");
+            }
+        }
+        return geometry[chunk] = triangles;
+    }
+
+    /// <summary>A field prop's box by its resource, in units from its origin, from its model's JSON chunk alone; null where it has none.</summary>
+    public (Vector3 Min, Vector3 Max)? PropBox(int resource)
+    {
+        if (propBoxes.TryGetValue(resource, out var known)) return known;
+        (Vector3, Vector3)? box = null;
+        if (propFiles.TryGetValue(resource, out string? path))
+        {
+            try { box = Bw2Geometry.Box(Bw2Model.JsonChunk(File.ReadAllBytes(path))); }
+            catch (Exception e) when (e is InvalidDataException or JsonException) { Problems.Add($"prop {resource}: its model's box can't be read ({e.Message})"); }
+        }
+        return propBoxes[resource] = box;
     }
 
     /// <summary>The zones whose header names a matrix, in their order.</summary>

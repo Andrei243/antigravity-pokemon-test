@@ -34,7 +34,8 @@ public static class Bw2Import
             + $"the overworld is {over.Width} × {over.Height} chunks, {filled} of its zone cells filled from a neighbour ({clock.Elapsed.TotalSeconds:F1} s)");
 
         Directory.CreateDirectory(outDir);
-        var tiles = Tiles(maps, over);
+        var unsorted = new Dictionary<string, int>(StringComparer.Ordinal);
+        var tiles = Tiles(maps, over, unsorted);
         Mosaic(maps, over, tiles, 4, byCover: true).Save(Path.Combine(outDir, "unova.png"));
         Mosaic(maps, over, tiles, 4, byCover: false).Save(Path.Combine(outDir, "unova_behaviours.png"));
         HeightPicture(tiles, 2).Save(Path.Combine(outDir, "unova_heights.png"));
@@ -58,7 +59,7 @@ public static class Bw2Import
         Console.WriteLine($"Drew {pictures} pictures ({clock.Elapsed.TotalSeconds:F1} s)");
 
         var census = Census.Take(maps);
-        File.WriteAllText(Path.Combine(outDir, "report.md"), Report(maps, over, tiles, census));
+        File.WriteAllText(Path.Combine(outDir, "report.md"), Report(maps, over, tiles, census, unsorted));
         string doc = Path.Combine(repo, "docs", "tile-behaviours.md");
         File.WriteAllText(doc, DocSections.Splice(File.Exists(doc) ? File.ReadAllText(doc) : "", SectionTitle, Section(census)));
 
@@ -71,7 +72,7 @@ public static class Bw2Import
 
     // ---------------------------------------------------------------- tiles
 
-    public static TileGrid Tiles(Bw2Maps maps, Bw2Matrix matrix)
+    public static TileGrid Tiles(Bw2Maps maps, Bw2Matrix matrix, Dictionary<string, int>? unsorted = null)
     {
         int w = matrix.Width * LandData.Tiles, h = matrix.Height * LandData.Tiles;
         var grid = new TileGrid(w, h, new int[w * h], new byte[w * h], new bool[w * h], new TerrainCover[w * h], new float[w * h], new string?[w * h]);
@@ -83,6 +84,7 @@ public static class Bw2Import
                 if (matrix.ModelAt(cx, cy) is not { } model) continue;
                 if (maps.Terrain(Bw2Matrix.Folder(model)) is not [{ } land, ..]) continue;
                 string zone = (matrix.HasZones ? matrix.ZoneAt(cx, cy) : only) ?? "";
+                var look = Bw2Cover.OfChunk(maps, Bw2Matrix.Folder(model), unsorted);
                 for (int z = 0; z < Math.Min(LandData.Tiles, land.Height); z++)
                     for (int x = 0; x < Math.Min(LandData.Tiles, land.Width); x++)
                     {
@@ -92,7 +94,7 @@ public static class Bw2Import
                         grid.Class[i] = tile.Class;
                         grid.Behaviour[i] = (byte)behaviour;
                         grid.Solid[i] = tile.Blocked;
-                        grid.Cover[i] = Bw2Cover.OfTile(behaviour);
+                        grid.Cover[i] = look.Length > 0 ? look[z * land.Width + x] : Bw2Cover.OfTile(behaviour);
                         grid.Ground[i] = tile.Height;
                         grid.Zone[i] = zone;
                     }
@@ -255,7 +257,7 @@ public static class Bw2Import
 
     // ---------------------------------------------------------------- report
 
-    public static string Report(Bw2Maps maps, Bw2Matrix over, TileGrid tiles, Census census)
+    public static string Report(Bw2Maps maps, Bw2Matrix over, TileGrid tiles, Census census, IReadOnlyDictionary<string, int>? unsortedTiles = null)
     {
         var text = new StringBuilder();
         int overZones = maps.ZonesOn(Bw2Maps.Overworld).Count();
@@ -272,11 +274,29 @@ public static class Bw2Import
             The overworld (`{Bw2Maps.Overworld}`) is {over.Width} × {over.Height} chunks, {overCells} of them with a chunk; {over.ZonesFilled} of those had no zone in the matrix's grid and were given their nearest neighbour's.
             {placed:N0} props placed, of {census.Props.Count} resources ({census.Props.Keys.Count(maps.PropNames.ContainsKey)} with a name by their folder).
 
-            **Where a texture lies is not read.** The plan reads each `model.glb` for its JSON chunk alone, and the polygons' places are in the binary one: the look of a tile here is what its behaviour says ({Percent(sorted, overTiles)} of the overworld's {overTiles:N0} tiles), the rest painted as plain or blocked ground, and the textures below are counted by the chunks whose glTF names them. U2 decides how a tile's look is found.
+            **Where a texture lies** (plan 22 · U2, the user's ruling of 2026-10-20): each chunk's `model.glb` is read past its JSON chunk into its binary one, as plain numbers, only to find which texture lies over the middle of each tile (`Bw2/Bw2Geometry.cs`), and nothing of it is kept but a tile's `TerrainCover`. The rules of `Bw2/Bw2Cover.cs` sort {Percent(sorted, overTiles)} of the overworld's {overTiles:N0} tiles; the rest are drawn as plain or blocked ground.
 
             ## Problems
 
             """);
+        if (unsortedTiles is { Count: > 0 })
+        {
+            int problemsAt = text.ToString().IndexOf("## Problems", StringComparison.Ordinal);
+            var list = new StringBuilder();
+            list.Append(CultureInfo.InvariantCulture, $"""
+                ## Textures no rule sorts, by the overworld's tiles they lie over
+
+                {unsortedTiles.Count} names, over {unsortedTiles.Values.Sum():N0} tiles. A region session adds their patterns to `Bw2/Bw2Cover.cs` for the areas it opens.
+
+                | Texture | Tiles |
+                |---|---:|
+
+                """);
+            foreach (var (name, count) in unsortedTiles.OrderByDescending(kv => kv.Value).ThenBy(kv => kv.Key, StringComparer.Ordinal).Take(120))
+                list.Append(CultureInfo.InvariantCulture, $"| `{name}` | {count:N0} |\n");
+            list.Append('\n');
+            text.Insert(problemsAt, list.ToString());
+        }
         var problems = maps.Problems.Concat(census.Unnamed).Concat(census.OddSizes.Select(c => $"{c}: a grid that isn't 32 × 32; its first 32 × 32 is drawn")).ToList();
         if (census.NoTerrain > 0) problems.Add($"{census.NoTerrain} chunk folders have no terrain grid");
         if (problems.Count == 0) text.AppendLine("None.");

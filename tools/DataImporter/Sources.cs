@@ -139,10 +139,14 @@ public static class Sources
     /// <summary>
     /// Black 2 and White 2 (plan 22 · U1): fuddlesworth/pokebw2, a decompilation under the GPL v3.0, read by
     /// <c>tools/MapImporter/Bw2</c>. Layouts and numbers only, as for the others: the zones' headers, the matrices, each
-    /// chunk's terrain grid (<c>terrain_*.csv</c>) and its <c>model.glb</c>, of which only the glTF's JSON chunk is read
-    /// (the props' places and ids, the materials' texture names: never a vertex, never the binary buffer), each field
-    /// prop's resource id beside its folder's name, the generated lists of constants, and the C file that holds the
-    /// height tables. The textures the glTF names live elsewhere in the repository and are never fetched.
+    /// chunk's terrain grid (<c>terrain_*.csv</c>) and its <c>model.glb</c> (its JSON chunk for the props' places and
+    /// ids and the materials' texture names; since plan 22 · U2 its binary chunk too, read as plain numbers only to
+    /// find which texture lies over each tile, and nothing of it kept but a <c>TerrainCover</c> code a tile), each field
+    /// prop's <c>model.glb</c> for its JSON chunk's box alone (the accessors' least and greatest), each field
+    /// prop's resource id beside its folder's name, the generated lists of constants, the C file that holds the height
+    /// tables, and since U2 each zone's events, the encounter tables, the trainers' data (never their <c>messages</c>)
+    /// and the two global scripts that say what an item's ball and a hidden item hold (read for their numbers alone).
+    /// The textures the glTF names live elsewhere in the repository and are never fetched.
     /// </summary>
     public const string Bw2Repo = "https://github.com/fuddlesworth/pokebw2.git";
     public const string Bw2Commit = "9ba4760ada88496013d64346af3faf1c67fe9238";
@@ -150,6 +154,8 @@ public static class Sources
     {
         "/res/field/zones/", "/res/field/matrices/", "/res/field/areas/",
         "/res/field/maps/models/*/terrain_*.csv", "/res/field/maps/models/*/model.glb", "/res/field/maps/models/*/data.json",
-        "/res/field/props/*/models/*/*/data.json", "/generated/*.txt", "/src/ov036/field_map_chunk_height.c"
+        "/res/field/props/*/models/*/*/data.json", "/res/field/props/*/models/*/*/model.glb", "/generated/*.txt", "/src/ov036/field_map_chunk_height.c",
+        "/res/field/events/", "/res/field/encounters/", "/res/trainers/data/",
+        "/res/field/scripts/global_7000.s", "/res/field/scripts/global_8000.s"
     };
 }
