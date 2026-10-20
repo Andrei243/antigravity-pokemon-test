@@ -1,6 +1,7 @@
 # Kanto's Hall of Fame (FireRed's MUS_HALL_OF_FAME): a stately, glowing piece in C major, a trumpet's long phrases
-# over warm held strings, a slow bass and timpani on the strong beats, for the room where a new Champion's team is
-# recorded. A place indoors plays the same by day and night. Original composition for this game (plan 19 · K7).
+# over warm held strings, a slow bass and timpani on the strong beats, for the ceremony in which a new Champion's team is
+# recorded (the room itself plays slow_pallet). A place indoors plays the same by day and night. Original composition
+# for this game (plan 19 · K7; played by the ceremony since plan 19 · K8).
 title Hall of Fame
 tempo 84
 meter 4/4

@@ -84,8 +84,8 @@ public sealed class HallOfFameCeremony
         Array.Clear(rendered);
         figureRendered = false;
         Go(team.Count > 0 ? CeremonyPhase.Enter : CeremonyPhase.Champion);
-        // A song of the Hall of Fame's own is plan 05 · A6's: the Champion's victory theme stands for it
-        AudioManager.PlayMusic(MusicRole.VictoryChampion);
+        // The region's own song for the ceremony where it has one (plan 19 · K8: kanto/hall_of_fame); the Champion's victory theme stands for the rest
+        AudioManager.PlaySceneMusic("hall_of_fame", MusicRole.VictoryChampion);
     }
 
     private void Go(CeremonyPhase phase)

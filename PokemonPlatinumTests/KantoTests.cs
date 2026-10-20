@@ -789,4 +789,48 @@ public class KantoTests
         foreach (string song in new[] { "kanto/victory_road", "kanto/sevii_123", "kanto/hall_of_fame" })
             Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists(song), song);
     }
+
+    // ------------------------------------------------------------------ plan 19 · K8: the way on and Kanto's own songs
+
+    [Fact]
+    public void TheCaptainWhoSailsAChampionToJohtoStandsOnVermilionsQuayAndNobodyIsLeftOnPalletsShore()
+    {
+        var attendants = Overworld.Everyone.Where(n => n.IsTransportAttendant).ToList();
+        var captain = Assert.Single(attendants);
+        Assert.Equal("vermilion_city", Overworld.AreaAt(captain.GridX, captain.GridY)?.Key);
+        Assert.Equal("Vermilion City", Overworld.DisplayNameAt(captain.GridX, captain.GridY));
+        Assert.True(Overworld.IsWalkable(captain.GridX - 1, captain.GridY) || Overworld.IsWalkable(captain.GridX + 1, captain.GridY),
+            "nobody can come up to the captain");
+        // Spoken to, he runs the common attendant's script, which asks the region's link
+        Assert.Equal(PokemonPlatinumEngine.Story.FieldScripts.Attendant, PokemonPlatinumEngine.Story.FieldScripts.For(captain));
+        // The way on opens only once Kanto's Hall of Fame has been entered, and goes to Johto
+        var link = RegionDatabase.LinkFrom(RegionDatabase.Kanto)!;
+        var story = new PokemonPlatinumEngine.Story.StoryState();
+        Assert.Equal(TravelCheck.StoryUnfinished, RegionDatabase.CheckTravel(link, story));
+        story.Set("KantoHallOfFame");
+        Assert.Equal(TravelCheck.Ready, RegionDatabase.CheckTravel(link, story));
+        Assert.Equal(RegionDatabase.Johto, link.To);
+        Assert.Contains("Johto", RegionDatabase.AttendantLines(link, TravelCheck.Ready)[0]);
+    }
+
+    [Fact]
+    public void KantoPlaysItsOwnChampionBattleCreditsAndSlowPalletButSinnohKeepsItsOwn()
+    {
+        var exists = PokemonPlatinumEngine.Audio.MusicLibrary.Exists;
+        var champion = PokemonPlatinumEngine.Audio.MusicRole.BattleChampion;
+        // The rival as Champion is of the Champion's class: Kanto's own battle song answers him
+        Assert.Equal(champion, PokemonPlatinumEngine.Audio.MusicDirector.BattleRoleOf("Champion"));
+        Assert.Equal("kanto/battle_champion", PokemonPlatinumEngine.Audio.MusicDirector.Resolve(champion, RegionDatabase.Kanto, exists));
+        Assert.Equal("common/battle_champion", PokemonPlatinumEngine.Audio.MusicDirector.Resolve(champion, RegionDatabase.Sinnoh, exists));
+        // The credits and the Hall of Fame's ceremony have songs of Kanto's, and a region with none plays the role it did
+        Assert.Equal("kanto/credits", PokemonPlatinumEngine.Audio.MusicDirector.SceneSong(RegionDatabase.Kanto, "credits", exists));
+        Assert.Equal("kanto/hall_of_fame", PokemonPlatinumEngine.Audio.MusicDirector.SceneSong(RegionDatabase.Kanto, "hall_of_fame", exists));
+        Assert.Null(PokemonPlatinumEngine.Audio.MusicDirector.SceneSong(RegionDatabase.Sinnoh, "credits", exists));
+        Assert.Null(PokemonPlatinumEngine.Audio.MusicDirector.SceneSong(null, "credits", exists));
+        // The Hall of Fame's room plays the slowed Pallet Town tune, which loops long enough for an area's theme
+        Assert.Equal("kanto/slow_pallet", Kanto.Overlay("pokemon_league_hall_of_fame")!.BgmTrack);
+        Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Get("kanto/slow_pallet")!.LoopDuration() >= 25);
+        // The credits' song is a long one: the roll goes on for more than a minute
+        Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Get("kanto/credits")!.LoopDuration() >= 60);
+    }
 }

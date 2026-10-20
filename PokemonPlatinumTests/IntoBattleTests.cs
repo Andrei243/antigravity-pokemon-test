@@ -232,10 +232,47 @@ public class IntoBattleTests
         Assert.Null(SceneTransition.BandFor(With(BattleTerrain.Building, 14, 20, false, new MetTrainer("Hiker", "Roark"))));
         Assert.Null(SceneTransition.BandFor(With("galactic_boss_cyrus_galactic_hq")));
         Assert.Null(SceneTransition.BandFor(Wild(BattleTerrain.Grass)));
-        // A Leader the table doesn't name (another region's, before their band is written) wears the plain band under their own name
-        var brock = SceneTransition.BandFor(With(BattleTerrain.Building, 12, 14, false, new MetTrainer("Leader", "Brock")));
-        Assert.Equal(SceneTransition.PlainBand with { Class = "Leader", Name = "Brock" }, brock);
-        Assert.DoesNotContain(brock!.Value, SceneTransition.Bands);
+        // A Leader no table names (another region's, before their band is written: Johto's Falkner) wears the plain band under their own name
+        var falkner = SceneTransition.BandFor(With(BattleTerrain.Building, 12, 14, false, new MetTrainer("Leader", "Falkner")));
+        Assert.Equal(SceneTransition.PlainBand with { Class = "Leader", Name = "Falkner" }, falkner);
+        Assert.DoesNotContain(falkner!.Value, SceneTransition.Bands);
+        Assert.DoesNotContain(falkner.Value, SceneTransition.KantoBands);
+    }
+
+    /// <summary>
+    /// Kanto's thirteen bands (plan 19 · K8, the style guide's second table): every Leader, member of the Elite Four and
+    /// Champion of Kanto's data has one, found by class and name, with the rival as Champion found by whatever name he has
+    /// and no two sharing a base colour, nor one with a Sinnoh band's.
+    /// </summary>
+    [Fact]
+    public void KantoHasItsOwnThirteenBands()
+    {
+        Assert.Equal(13, SceneTransition.KantoBands.Count);
+        Assert.Equal((8, 4, 1), (SceneTransition.KantoBands.Count(b => b.Class == "Leader"), SceneTransition.KantoBands.Count(b => b.Class == "Elite Four"), SceneTransition.KantoBands.Count(b => b.Class == "Champion")));
+        int Light(Color c) => c.R * 3 + c.G * 6 + c.B;
+        foreach (var band in SceneTransition.KantoBands)
+        {
+            Assert.True(Light(band.Deep) < Light(band.Base) - 300 && Light(band.Light) > Light(band.Base) + 300, $"{band.Name}'s colours");
+            Assert.True(Light(band.Deep) < 1200, $"{band.Name}'s plate is too pale for a white name");
+            Assert.Equal(band.Light, band.Backing);
+        }
+        Assert.Equal(26, SceneTransition.Bands.Concat(SceneTransition.KantoBands).Select(b => Rgb(b.Base)).Distinct().Count());
+        foreach (var trainer in TrainerDatabase.OfRegion("kanto").Where(t => t.Class is "Leader" or "Elite Four" || TrainerDatabase.IsRivalAsChampion(t)))
+        {
+            var band = SceneTransition.BandOf(trainer.Class, trainer.Name);
+            Assert.Contains(SceneTransition.KantoBands, b => b.Class == trainer.Class && Rgb(b.Base) == Rgb(band.Base));
+        }
+        // The Champion is the rival, whatever the player called him, and a meeting opens on the band
+        var champion = TrainerDatabase.Get("kanto_champion_first_squirtle")!;
+        var met = SceneTransition.BandFor(With(BattleTerrain.Special, 60, 62, false, new MetTrainer(champion.Class, champion.Name)));
+        Assert.Equal(("Champion", Rgb(SceneTransition.KantoBands.Last().Base)), (met!.Value.Class, Rgb(met.Value.Base)));
+        Assert.Equal(Rgb(SceneTransition.KantoBands.Last().Base), Rgb(SceneTransition.BandOf("Champion", "{rival}").Base));
+        // Cynthia keeps hers, and a Champion with a name that is not the rival's is plain
+        Assert.Equal(SceneTransition.Bands.Last(), SceneTransition.BandOf("Champion", "Cynthia"));
+        Assert.Equal(SceneTransition.PlainBand with { Class = "Champion", Name = "Steven" }, SceneTransition.BandOf("Champion", "Steven"));
+        // A Leader of Kanto opens on the Leaders' band and a member of the Elite Four on the League's
+        Assert.Equal(("Leader", "Brock"), (SceneTransition.BandFor(With("kanto_leader_brock", BattleTerrain.Building, 14, 20))!.Value.Class, SceneTransition.BandFor(With("kanto_leader_brock", BattleTerrain.Building, 14, 20))!.Value.Name));
+        Assert.Equal("Elite Four", SceneTransition.BandFor(With("kanto_elite_four_lance", BattleTerrain.Special, 60, 62))!.Value.Class);
     }
 
     /// <summary>

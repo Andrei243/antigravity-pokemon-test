@@ -162,8 +162,8 @@ public sealed class CreditsScreen
         Held = keyHeld = false;
         pictured = -1;
         Go(CreditsPhase.Title);
-        // A song of the credits' own is plan 05 · A6's: the title's theme stands for it
-        AudioManager.PlayMusic(MusicRole.Title);
+        // The region's own credits song where it has one (plan 19 · K8: kanto/credits); the title's theme stands for the rest
+        AudioManager.PlaySceneMusic("credits", MusicRole.Title);
     }
 
     private void Go(CreditsPhase phase)

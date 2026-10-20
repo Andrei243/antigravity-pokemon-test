@@ -3190,6 +3190,28 @@ and variables. What differs from FireRed, and why:
   `FLAG_GAME_COMPLETED`, Sinnoh's, is not set. What a Champion of Kanto finds afterwards (the sailor moved to
   Vermilion's harbour and the way on to Johto, the National Pokédex) is plan 19 · K8's and K9's.
 
+## Kanto's sixth chapter (2026-10-20, plan 19 · K8)
+
+What K7 left of the League's end: the way on to Johto, the songs and the bands. Nothing of Sinnoh's moved.
+
+- **The way on to Johto is by boat from Vermilion City.** FireRed has no such crossing, so the sailor is ours: a
+  captain on the quay east of the pier (301, 230), an overlay person who is `isTransportAttendant`, so
+  `common.Attendant` and `RegionDatabase.AttendantLines` speak for him as they do for Sinnoh's. He says only who may
+  come aboard until `KantoHallOfFame` is set (the region's `StoryCompleteFlag`, which the Hall of Fame's script
+  sets), and then takes the player to Johto's arrival before the house in New Bark Town. Pallet Town's shore has no
+  sailor now. The ruling of plan 18 · W10 (a region's attendant at its departure map; the next region's story is not
+  started until the previous one's Hall of Fame) is unchanged.
+- **Kanto's own songs.** The Champion's battle (`kanto/battle_champion`), the quiet room the Hall of Fame is entered
+  by (`kanto/slow_pallet`, the room's map theme: FireRed's room plays its Pallet Town theme slowed) and the credits
+  (`kanto/credits`) are compositions of ours; the ceremony itself plays `kanto/hall_of_fame` as before. A scene's song
+  that only some regions have is asked of the region's folder first (`MusicDirector.SceneSong`,
+  `AudioManager.PlaySceneMusic`) and falls back to the common role's (Title for the credits, Victory Champion for the
+  ceremony), so a new region's songs are a file and no new `MusicRole`.
+- **Kanto's bands.** The eight Leaders, the Elite Four and the Champion wear bands after their Gym's type or their
+  room (the style guide's second table), none the colour of a Sinnoh band of the same type. The Champion is the rival,
+  so his band is found by the class and the rival's name (the data's `{rival}` or whatever the player called him),
+  and the plate fills the placeholder when it is drawn. A trainer no table names still wears the plain band.
+
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,

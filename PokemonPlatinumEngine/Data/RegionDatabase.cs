@@ -522,7 +522,7 @@ public static class RegionDatabase
         // attendant yet; plan 18 · W5 gives the crossing its vessel and its scene.
         new() { From = Sinnoh, To = Kanto, Transport = Transport.Undecided },
         // As in HeartGold and SoulSilver, but the other way round: the ship sails from Vermilion to Olivine.
-        // A sailor on Pallet Town's shore stands in for Vermilion's harbour until plan 19 · K8 opens Vermilion City.
+        // Its captain stands on the quay in Vermilion City (plan 19 · K8: Vermilion's overlay, common.Attendant on the map of Kanto).
         new() { From = Kanto, To = Johto, Transport = Transport.Boat, DepartureMap = "Kanto" },
         new() { From = Johto, To = Hoenn, Transport = Transport.Undecided },
         new() { From = Hoenn, To = Unova, Transport = Transport.Undecided },
