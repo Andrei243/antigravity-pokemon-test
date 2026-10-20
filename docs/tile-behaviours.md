@@ -375,3 +375,103 @@ The values of the GBA's own, and what the game does with each today:
 | `0xFC` | `CyclingRoadPull` | The Cycling Road's slope, which pulls a rider south (the GBA's). | **Rule.** A rider who steers nowhere is pulled south a step at a time (FieldMovement.Pulls; plan 19 · K6); someone on foot stands. |
 | `0xFD` | `NoRunning` | Ground where nobody may run (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
 | `0xFE` | `SeaweedNoSurfacing` | Seaweed on the sea floor under rock above: wild Pokémon live in it, and nobody comes up there (the GBA's). | **Rule.** The sea floor under rock or a ledge above: swum along after a dive (the seaweed meeting the area's water Pokémon), and Dive never comes up from it (FieldMovement.CanSurface; plan 21 · H5). |
+
+## Black 2's behaviours
+
+*Written by `tools/MapImporter --game black2` (plan 22 · U1); the Sinnoh run and the GBA's keep it as it is.*
+
+A tile of a Black 2 chunk carries a 32-bit type: its low sixteen bits are its class, which the field code asks about class by class (`src/ov036/map_attr.c`), and the lowest of its high sixteen blocks the tile. The reader (`tools/MapImporter/Bw2/Bw2Behaviours.cs`) turns each class the code names into Platinum's value where Platinum has one that means the same, the GBA's where the GBA has one, and a value of Black 2's own from `0xB0` where neither has; a class the code asks about only for its battle background, or not at all, becomes `None` and waits for the session that opens a place using it. Height is separate: each tile names a plane (a slope and an offset in the original's two tables, or two planes for a tile cut along a diagonal), and the reader takes its height at the tile's middle.
+
+| Class | What | Becomes | Value | Tiles | Blocked |
+|---|---|---|---|---:|---:|
+| `0x00` | Plain ground. | `None` | `0x00` | 145,303 | 1,312 |
+| `0x01` | A wall: plain, always blocked. | `None` | `0x00` | 823,825 | 822,858 |
+| `0x02` | Not understood yet. | `None` (not in the table) | `0x00` | 1,243 | 0 |
+| `0x03` | Not understood yet. | `None` (not in the table) | `0x00` | 10,978 | 0 |
+| `0x04` | Tall grass. | `TallGrass` | `0x02` | 7,932 | 0 |
+| `0x05` | Tall grass of a second look. | `TallGrass` | `0x02` | 113 | 0 |
+| `0x06` | Dark grass: two wild Pokémon at a time. | `DarkGrass` | `0xB0` | 3,791 | 0 |
+| `0x07` | Dark grass of a second look. | `DarkGrass` | `0xB0` | 81 | 0 |
+| `0x08` | Very tall grass. | `VeryTallGrass` | `0x03` | 919 | 0 |
+| `0x09` | Very tall dark grass. | `VeryTallDarkGrass` | `0xB1` | 149 | 0 |
+| `0x0A` | A cave's floor. | `CaveFloor` | `0x08` | 24,925 | 0 |
+| `0x0B` | Sand. | `Sand` | `0x21` | 3,518 | 0 |
+| `0x0C` | Deep sand. | `DeepSand` | `0xB3` | 2,239 | 0 |
+| `0x0D` | Not understood yet. | `None` (not in the table) | `0x00` | 75 | 0 |
+| `0x0E` | Snow. | `ShadedSnow` | `0xA9` | 3,174 | 0 |
+| `0x0F` | Snow no Bicycle crosses. | `ShallowSnow` | `0xA8` | 391 | 0 |
+| `0x10` | Ice that is slid on. | `Ice` | `0x20` | 111 | 0 |
+| `0x11` | Not understood yet. | `None` (not in the table) | `0x00` | 2 | 0 |
+| `0x12` | Not understood yet. | `None` (not in the table) | `0x00` | 327 | 327 |
+| `0x13` | Not understood yet. | `None` (not in the table) | `0x00` | 53 | 0 |
+| `0x14` | Not understood yet. | `None` (not in the table) | `0x00` | 521 | 0 |
+| `0x15` | Not understood yet. | `None` (not in the table) | `0x00` | 181 | 2 |
+| `0x16` | Not understood yet. | `None` (not in the table) | `0x00` | 10,419 | 0 |
+| `0x17` | Not understood yet. | `None` (not in the table) | `0x00` | 1,424 | 0 |
+| `0x18` | Ice that is slid on, of a second kind. | `Ice` | `0x20` | 4,268 | 0 |
+| `0x19` | A beach's sand. | `Sand` | `0x21` | 3,182 | 0 |
+| `0x1B` | Not understood yet. | `None` (not in the table) | `0x00` | 1,056 | 9 |
+| `0x1C` | A swamp. | `MarshGrass` | `0xA6` | 1,295 | 0 |
+| `0x1D` | A hole for a boulder pushed with Strength. | `StrengthHole` | `0xB5` | 297 | 297 |
+| `0x1E` | Not understood yet. | `None` (not in the table) | `0x00` | 242 | 0 |
+| `0x1F` | Not understood yet. | `None` (not in the table) | `0x00` | 17,114 | 0 |
+| `0x20` | A bridge's deck, with birds' shadows crossing it. | `Bridge` | `0x71` | 2,100 | 0 |
+| `0x21` | Tall grass of a third look. | `TallGrass` | `0x02` | 22 | 0 |
+| `0x22` | Dark grass of a third look. | `DarkGrass` | `0xB0` | 36 | 0 |
+| `0x23` | Sand of a second look. | `Sand` | `0x21` | 2,133 | 0 |
+| `0x24` | The grass before a Hidden Grotto. | `GrottoGrass` | `0xB2` | 10 | 0 |
+| `0x25` | Not understood yet. | `None` (not in the table) | `0x00` | 616 | 0 |
+| `0x30` | The charged floor of Chargestone Cave. | `ChargedFloor` | `0xB6` | 235 | 0 |
+| `0x32` | Not understood yet. | `None` (not in the table) | `0x00` | 207 | 207 |
+| `0x33` | Not understood yet. | `None` (not in the table) | `0x00` | 121 | 0 |
+| `0x3D` | Water that is surfed. | `River` | `0x10` | 4,764 | 0 |
+| `0x3F` | The sea. | `Sea` | `0x15` | 18,089 | 0 |
+| `0x40` | A waterfall. | `Waterfall` | `0x13` | 125 | 125 |
+| `0x41` | The water's edge, where Surf begins. | `SurfEdge` | `0xB7` | 4,368 | 4,368 |
+| `0x43` | The sea, of a third kind. | `Sea` | `0x15` | 36 | 0 |
+| `0x44` | The water's edge, of a second kind. | `SurfEdge` | `0xB7` | 1,183 | 1,183 |
+| `0x51` | No way out east. | `BlockEast` | `0x30` | 53 | 0 |
+| `0x52` | No way out west. | `BlockWest` | `0x31` | 50 | 0 |
+| `0x53` | No way out north. | `BlockNorth` | `0x32` | 50 | 0 |
+| `0x54` | No way out south. | `BlockSouth` | `0x33` | 35 | 0 |
+| `0x72` | A ledge jumped east. | `LedgeEast` | `0x38` | 191 | 191 |
+| `0x73` | A ledge jumped west. | `LedgeWest` | `0x39` | 109 | 109 |
+| `0x74` | A ledge jumped north. | `LedgeNorth` | `0x3A` | 68 | 68 |
+| `0x75` | A ledge jumped south. | `LedgeSouth` | `0x3B` | 249 | 249 |
+| `0x7C` | Quicksand. | `Quicksand` | `0xB4` | 223 | 0 |
+| `0x94` | A current that carries a surfer east. | `CurrentEast` | `0xF3` | 363 | 0 |
+| `0x95` | A current that carries a surfer west. | `CurrentWest` | `0xF4` | 161 | 0 |
+| `0x96` | A current that carries a surfer north. | `CurrentNorth` | `0xF5` | 60 | 0 |
+| `0x97` | A current that carries a surfer south. | `CurrentSouth` | `0xF6` | 169 | 0 |
+| `0x9C` | Not understood yet. | `None` (not in the table) | `0x00` | 6,844 | 0 |
+| `0xA3` | Not understood yet. | `None` (not in the table) | `0x00` | 83 | 0 |
+| `0xBE` | A catwalk. | `Catwalk` | `0xB8` | 261 | 0 |
+| `0xBF` | A catwalk's end, where it is stepped onto. | `Catwalk` | `0xB8` | 72 | 0 |
+| `0xD4` | A reception counter. | `Counter` | `0x80` | 2,358 | 2,358 |
+| `0xD6` | A PC. | `Computer` | `0x83` | 19 | 19 |
+| `0xD8` | A television. | `Television` | `0x86` | 77 | 77 |
+| `0xD9` | A bookcase. | `Bookshelf` | `0xE1` | 47 | 47 |
+| `0xDA` | A bookcase of a second kind. | `Bookshelf` | `0xE1` | 38 | 38 |
+| `0xDB` | A bookcase of a third kind. | `Bookshelf` | `0xE1` | 49 | 49 |
+| `0xDC` | A bookcase of a fourth kind. | `Bookshelf` | `0xE1` | 15 | 15 |
+| `0xDE` | A trash can of a second kind. | `TrashCan` | `0xE4` | 136 | 136 |
+| `0xDF` | A shelf of goods. | `ShopShelf` | `0xE5` | 8 | 8 |
+| `0xE0` | A shelf of goods of a second kind. | `ShopShelf` | `0xE5` | 14 | 14 |
+| `0xE1` | A shelf of goods of a third kind. | `ShopShelf` | `0xE5` | 46 | 46 |
+| `0xE2` | A vending machine: an event's business. | `None` | `0x00` | 80 | 80 |
+| `0xFE` | Plain, blocked. | `None` | `0x00` | 3,029 | 3,029 |
+| `0xFFFF` | No class: blocked. | `None` | `0x00` | 58 | 58 |
+
+The values of Black 2's own, and what the game does with each today:
+
+| Value | Name | What it is | In the game |
+|---|---|---|---|
+| `0xB0` | `DarkGrass` | Dark grass, where wild Pokémon may come two at a time (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
+| `0xB1` | `VeryTallDarkGrass` | Grass taller than the walker where wild Pokémon may come two at a time; no Bicycles (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
+| `0xB2` | `GrottoGrass` | The grass before a Hidden Grotto's way in; no Bicycles (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
+| `0xB3` | `DeepSand` | Deep sand (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
+| `0xB4` | `Quicksand` | Quicksand, which pulls whoever stands in it down (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
+| `0xB5` | `StrengthHole` | A hole a boulder pushed with Strength fills (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
+| `0xB6` | `ChargedFloor` | The charged floor of an electric cave (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
+| `0xB7` | `SurfEdge` | The edge of the water, where Surf may begin though a walker can't step (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
+| `0xB8` | `Catwalk` | A narrow catwalk, walked and never cycled (Black 2's). | *Not yet.* A Black 2 behaviour whose rule comes with the session of plan 22 that opens a place using it; walked like plain ground until then. |
