@@ -1,12 +1,13 @@
 {
-  // The fishing house on Route 12 (plan 19 · K5, part b): the Fishing Guru's brother, whose Super Rod is plan 19 · K6's
-  // (route_12_fishing_house.txt). His record Magikarp waits for a measure of Kanto's
+  // The fishing house on Route 12 (plan 19 · K5, part b; plan 19 · K6, part a's Super Rod; plan 19 · K9, part c's
+  // measure): the Fishing Guru's brother, who measures the Magikarp of a Super Rod's owner and keeps the biggest
+  // (route_12_fishing_house.txt; his record is VAR_MAGIKARP_SIZE_RECORD), and the board he writes them on
   "area": "route_12_fishing_house",
   "bgmTrack": "kanto/celadon",
   "people": {
     "fisher": { "name": "Fisherman", "script": "FishingGurusBrother" }
   },
-  "signs": {
-    "Route12_FishingHouse_EventScript_MagikarpRecordSign": "The record Magikarp caught here. Nobody has beaten it yet!"
+  "read": {
+    "Route12_FishingHouse_EventScript_MagikarpRecordSign": "Board"
   }
 }

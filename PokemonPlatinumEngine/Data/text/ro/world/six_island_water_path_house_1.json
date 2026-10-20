@@ -8,25 +8,8 @@
         "text": [
           ""
         ]
-      },
-      "dialog": {
-        "en": [
-          "Heracross are the most marvellous Pokémon! The bigger the horn, the better. One day I'll find the biggest of them all."
-        ],
-        "text": [
-          ""
-        ]
       }
     }
   },
-  "signs": {
-    "SixIsland_WaterPath_House1_EventScript_SizeRecord": {
-      "en": [
-        "A chart for writing down Heracross sizes. Nothing is written on it yet."
-      ],
-      "text": [
-        ""
-      ]
-    }
-  }
+  "signs": {}
 }

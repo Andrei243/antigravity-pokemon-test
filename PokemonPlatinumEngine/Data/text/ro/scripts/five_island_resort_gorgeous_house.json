@@ -10,7 +10,47 @@
     },
     {
       "en": [
-        "My hero! My butler has been fussing over me ever since I came home. It's lovely to see you again."
+        "My hero! My butler has been fussing over me ever since I came home.",
+        "Oh, but while you are here, would you hear one little wish of mine?"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I do so long to see a {species:VAR_RESORT_GORGEOUS_REQUESTED_MON} with my own eyes.",
+        "Would you be a dear and bring one to my door?"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I should dearly love to see some rare Pokémon, but I know of none at all.",
+        "Travel a little and tell me what you find!"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! Oh, is that a {species:VAR_RESORT_GORGEOUS_REQUESTED_MON} with you?",
+        "You brought one all this way, for me? You darling creature!"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Butler"
       ],
       "text": [
         ""
@@ -18,9 +58,53 @@
     },
     {
       "en": [
-        "I'm still thinking of a proper way to thank you. Do call again!"
+        "You called, my lady?"
       ],
       "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Selphy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A token of my appreciation for my hero, if you please. The good one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Butler"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I shall do as you bid, my lady.",
+        "Her ladyship asks that you accept this with her thanks."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I shall think of something else I simply must see.",
+        "Until then, my hero, I wish you the very best of luck!"
+      ],
+      "text": [
+        "",
         ""
       ]
     }

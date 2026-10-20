@@ -37,6 +37,10 @@ public class KantoStoryTests
         /// <summary>Whether the Pokédex is the National one (<c>if nationaldex</c>), carried from one script to the next.</summary>
         public bool NationalDex { get; set; }
         public bool Impatient { get; init; }
+        /// <summary>The species the Pokédex has seen (<c>random seen</c>, plan 19 · K9, part c: Selphy's wish).</summary>
+        public List<string> Seen { get; } = new();
+        /// <summary>How many teams have entered the Hall of Fame (<c>LEAGUE_VICTORIES</c>); -1 for the host's own count.</summary>
+        public int Victories { get; set; } = -1;
         /// <summary>The script's dice to come (<c>random</c>) and the answers to its questions, handed on from one script to the next.</summary>
         public Queue<int> Rolls { get; } = new();
         public Queue<int> Answers { get; } = new();
@@ -115,6 +119,8 @@ public class KantoStoryTests
                 Caught = Caught,
                 NationalDex = NationalDex
             };
+            host.PokedexSeen.AddRange(Seen);
+            if (Victories >= 0) host.LeagueVictories = Victories;
             while (Rolls.Count > 0) host.Rolls.Enqueue(Rolls.Dequeue());
             while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
             var runner = new ScriptRunner(Scripts, host) { Impatient = Impatient };
@@ -2465,5 +2471,183 @@ public class KantoStoryTests
         Assert.Null(game.Present("lost_cave_selphy"));
         game.Arrive("FiveIsland_ResortGorgeous_House", 4, 6);
         Assert.NotNull(game.Present("resort_gorgeous_house_selphy"));
+    }
+
+    // ------------------------------------------------------------------ plan 19 · K9, part c
+
+    [Fact]
+    public void TheProspectorsTunnelIsDugThroughToTheHarbourStepsOnceTheNationalPokedexIsHad()
+    {
+        var game = WithTheRainbowPass();
+        game.NationalDex = false;
+        // Without the National Pokédex the tunnel is a dead end: the prospector stands at the wall he is working, his
+        // own tile at the far end is empty, and the port's east steps are shut
+        game.Arrive("ThreeIsland_DunsparceTunnel", 3, 4);
+        Assert.False(game.Story.Has("FLAG_THREE_ISLAND_TUNNEL_DUG_OUT"));
+        Assert.Equal((6, 3), WhereIs(game, "prospector_digging"));
+        Assert.Null(game.Present("prospector"));
+        Assert.Contains(game.Talk("prospector_digging").Transcript, l => l.Text.Contains("for gold"));
+        Assert.True(game.Map.Warps.Single(w => w.TargetMap == "ThreeIsland_Port" && w.SourceX == 25).Shut);
+        // With it, the dig breaks through: the chunk is swapped for the dug-out one, the prospector stands at his own
+        // end with a Nugget to give, and both ways in are open
+        game.NationalDex = true;
+        game.Arrive("ThreeIsland_DunsparceTunnel", 3, 4);
+        Assert.True(game.Story.Has("FLAG_THREE_ISLAND_TUNNEL_DUG_OUT"));
+        Assert.Null(game.Present("prospector_digging"));
+        Assert.Equal((23, 2), WhereIs(game, "prospector"));
+        Assert.False(game.Map.Warps.Single(w => w.TargetMap == "ThreeIsland_Port" && w.SourceX == 25).Shut);
+        int had = Count(game, "Nugget");
+        game.Talk("prospector");
+        Assert.Equal(had + 1, Count(game, "Nugget"));
+        Assert.True(game.Story.Has("FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL"));
+        // ...once only, and the port's own side leads into the tunnel from then on
+        game.Talk("prospector");
+        Assert.Equal(had + 1, Count(game, "Nugget"));
+        game.Arrive("ThreeIsland_Port", 9, 4);
+        Assert.Contains(game.Map.Warps, w => w.TargetMap == "ThreeIsland_DunsparceTunnel" && !w.Shut);
+    }
+
+    private static (int X, int Y)? WhereIs(Game game, string key) => game.Present(key) is { } who ? (who.GridX, who.GridY) : null;
+
+    [Fact]
+    public void TheWaterPathsBeautyMeasuresHeracrossAndKeepsTheBiggestOnHerChart()
+    {
+        var game = WithTheRainbowPass();
+        game.Arrive("SixIsland_WaterPath_House1", 3, 6);
+        var chart = Scripts.Find("Chart", "six_island_water_path_house_1")!;
+        // With no Heracross she only talks, and her chart is blank
+        Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("most marvellous"));
+        Assert.Contains(game.Play(chart).Transcript, l => l.Text.Contains("Nothing is written"));
+        // The first Heracross shown beats a record of nothing: a Nest Ball, and the size on the chart
+        var small = new Pokemon(PokemonDatabase.Get("Heracross")!, 30) { Personality = 0x11110111 };
+        game.Party.Members.Insert(0, small);
+        game.Answers.Enqueue(0);
+        game.Talk("beauty");
+        Assert.Equal(1, Count(game, "Nest Ball"));
+        Assert.True(game.Story.Has("FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1"));
+        int kept = game.Story.Var("VAR_HERACROSS_SIZE_RECORD");
+        Assert.Equal(SizeContest.Factor(small), kept);
+        Assert.Equal(0, game.Story.Var(SizeContest.RecordVariable));
+        Assert.Contains(game.Play(chart).Transcript, l => l.Text.Contains(SizeContest.Told(SizeContest.Millimetres(small))));
+        // The same one again is the same size, and changes nothing
+        game.Answers.Enqueue(0);
+        Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("to the millimetre"));
+        Assert.Equal((1, kept), (Count(game, "Nest Ball"), game.Story.Var("VAR_HERACROSS_SIZE_RECORD")));
+        // A smaller one earns nothing
+        game.Party.Members[0] = new Pokemon(PokemonDatabase.Get("Heracross")!, 30) { Personality = 0 };
+        game.Answers.Enqueue(0);
+        Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("does not lie"));
+        Assert.Equal((1, kept), (Count(game, "Nest Ball"), game.Story.Var("VAR_HERACROSS_SIZE_RECORD")));
+        // A bigger one earns another ball and takes the record
+        var big = new Pokemon(PokemonDatabase.Get("Heracross")!, 30) { Personality = 0xFFFFFFFF };
+        game.Party.Members[0] = big;
+        game.Answers.Enqueue(0);
+        game.Talk("beauty");
+        Assert.Equal((2, SizeContest.Factor(big)), (Count(game, "Nest Ball"), game.Story.Var("VAR_HERACROSS_SIZE_RECORD")));
+        // Shown something else, she measures nothing
+        game.Party.Members[0] = new Pokemon(PokemonDatabase.Get("Pinsir")!, 30);
+        game.Answers.Enqueue(0);
+        Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("nothing else"));
+        // ...and a refusal is a refusal
+        game.Party.Members[0] = big;
+        game.Answers.Enqueue(-1);
+        Assert.Contains(game.Talk("beauty").Transcript, l => l.Text.Contains("my tape ready"));
+    }
+
+    [Fact]
+    public void TheFishingBrotherOnRouteTwelveMeasuresMagikarpOnceHisSuperRodIsGiven()
+    {
+        var game = WithTheRainbowPass();
+        game.Story.Unset("FLAG_GOT_SUPER_ROD");
+        game.Arrive("Route12_FishingHouse", 4, 6);
+        var board = Scripts.Find("Board", "route_12_fishing_house")!;
+        var karp = new Pokemon(PokemonDatabase.Get("Magikarp")!, 15) { Personality = 0x5555AAAA };
+        game.Party.Members.Insert(0, karp);
+        // Before the rod he only offers it, measuring nothing, and his board is blank
+        game.Answers.Enqueue(0);
+        game.Talk("fisher");
+        Assert.Equal(1, Count(game, "Super Rod"));
+        Assert.Equal(0, game.Story.Var("VAR_MAGIKARP_SIZE_RECORD"));
+        Assert.Contains(game.Play(board).Transcript, l => l.Text.Contains("Not one is written up"));
+        // With the rod given, the Magikarp on the team is measured: the first is the record, and earns a Net Ball
+        game.Answers.Enqueue(0);
+        game.Talk("fisher");
+        Assert.Equal(1, Count(game, "Net Ball"));
+        Assert.True(game.Story.Has("FLAG_GOT_RECORD_SETTING_MAGIKARP"));
+        Assert.Equal(SizeContest.Factor(karp), game.Story.Var("VAR_MAGIKARP_SIZE_RECORD"));
+        Assert.Contains(game.Play(board).Transcript, l => l.Text.Contains(SizeContest.Told(SizeContest.Millimetres(karp))));
+        // His record and the Heracross woman's are each their own
+        Assert.Equal(0, game.Story.Var("VAR_HERACROSS_SIZE_RECORD"));
+        // With no Magikarp he asks for one
+        game.Party.Members.RemoveAt(0);
+        Assert.Contains(game.Talk("fisher").Transcript, l => l.Text.Contains("bring it to me"));
+    }
+
+    [Fact]
+    public void SelphyWishesForAPokemonThePokedexHasSeenAndHerButlerPaysForIt()
+    {
+        var game = WithTheRainbowPass();
+        game.Story.SetVar("VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS", 2);
+        game.Seen.Add("Lapras");
+        game.Arrive("FiveIsland_ResortGorgeous_House", 4, 6);
+        // Her wish is a species the Pokédex has seen, kept by its National Pokédex number, and the gift is drawn with
+        // it: a hundred's draw of 30 or more is a Luxury Ball
+        game.Rolls.Enqueue(0);
+        game.Rolls.Enqueue(40);
+        var asked = game.Talk("resort_gorgeous_house_selphy");
+        Assert.Equal(PokemonDatabase.Get("Lapras")!.DexNumber, game.Story.Var("VAR_RESORT_GORGEOUS_REQUESTED_MON"));
+        Assert.Equal(1, game.Story.Var("VAR_RESORT_GORGEOUS_REWARD"));
+        Assert.Contains(asked.Transcript, l => l.Text.Contains("Lapras"));
+        // Asked again she says the same wish, and draws nothing new
+        game.Talk("resort_gorgeous_house_selphy");
+        Assert.Equal(1, game.Story.Var("VAR_RESORT_GORGEOUS_REWARD"));
+        // The butler is off the map until she calls him
+        Assert.Null(game.Present("resort_gorgeous_house_butler"));
+        // With the Pokémon in the team she calls him in and he hands over the gift, once
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Lapras")!, 30));
+        var shown = game.Talk("resort_gorgeous_house_selphy");
+        Assert.NotNull(game.Present("resort_gorgeous_house_butler"));
+        Assert.Contains(shown.Transcript, l => l.Speaker == "Butler");
+        Assert.Equal(1, Count(game, "Luxury Ball"));
+        Assert.Equal(0, game.Story.Var("VAR_RESORT_GORGEOUS_REQUESTED_MON"));
+        Assert.Contains(game.Talk("resort_gorgeous_house_selphy").Transcript, l => l.Text.Contains("best of luck"));
+        Assert.Equal(1, Count(game, "Luxury Ball"));
+        // The next visit wishes again, and a draw under 30 gives one of the six deluxe rewards instead
+        game.Seen.Add("Dratini");
+        game.Rolls.Enqueue(1);
+        game.Rolls.Enqueue(10);
+        game.Rolls.Enqueue(4);
+        game.Arrive("FiveIsland_ResortGorgeous_House", 4, 6);
+        game.Talk("resort_gorgeous_house_selphy");
+        Assert.Equal(PokemonDatabase.Get("Dratini")!.DexNumber, game.Story.Var("VAR_RESORT_GORGEOUS_REQUESTED_MON"));
+        Assert.Equal(6, game.Story.Var("VAR_RESORT_GORGEOUS_REWARD"));
+        int nuggets = Count(game, "Nugget");
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Dratini")!, 15));
+        game.Talk("resort_gorgeous_house_selphy");
+        Assert.Equal(nuggets + 1, Count(game, "Nugget"));
+    }
+
+    [Fact]
+    public void LoreleisDollsComeOneByOneWithTheTimesTheTeamHasEnteredTheHallOfFame()
+    {
+        var game = WithTheRainbowPass();
+        game.Story.SetVar("VAR_MAP_SCENE_ICEFALL_CAVE_BACK", 1);
+        // Six of her dolls always stand; the eight behind their flags wait for the entries FireRed asks of them
+        var earned = new (int Entries, string Doll)[]
+        {
+            (25, "meowth"), (50, "chansey"), (75, "nidoran_f"), (100, "jigglypuff"),
+            (125, "nidoran_m"), (150, "fearow"), (175, "pidgeot"), (200, "lapras_doll")
+        };
+        string[] always = { "wigglytuff", "seel", "pikachu", "slowpoke", "slowbro", "psyduck" };
+        foreach (int entries in new[] { 0, 25, 50, 75, 100, 125, 150, 175, 200 })
+        {
+            game.Victories = entries;
+            game.Arrive("FourIsland_LoreleisHouse", 7, 6);
+            foreach (string doll in always) Assert.NotNull(game.Present(doll));
+            foreach (var (needed, doll) in earned) Assert.Equal(entries >= needed, game.Present(doll) != null);
+        }
+        // A doll says what a doll says, and Lorelei is at home
+        Assert.Contains(game.Talk("meowth").Transcript, l => l.Text.Contains("doll"));
+        Assert.NotNull(game.Present("lorelei"));
     }
 }

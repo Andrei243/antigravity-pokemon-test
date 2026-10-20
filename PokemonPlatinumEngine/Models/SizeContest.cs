@@ -78,8 +78,19 @@ public static class SizeContest
 
     public static long Millimetres(Pokemon pokemon) => Millimetres(pokemon.Height, Factor(pokemon));
 
-    /// <summary>The record as the story has it: the factor kept, or the one every game begins with.</summary>
-    public static int Record(StoryState story) => story.Var(RecordVariable) is var kept && kept != 0 ? kept : FirstRecord;
+    /// <summary>
+    /// The variable a measurer keeps its record in (plan 19 · K9, part c): its own where it names one, as Kanto's
+    /// three do (FireRed's <c>VAR_HERACROSS_SIZE_RECORD</c> and its kin), and the story's own where it names none.
+    /// </summary>
+    public static string VariableFor(string kept) => kept.Length > 0 ? kept : RecordVariable;
+
+    /// <summary>
+    /// The record as the story has it: the factor kept, or, for Route 222's fisherman, the one every game begins with
+    /// (<c>ScrCmd_InitSizeContestRecord</c>). A measurer with a variable of its own begins with nothing (FireRed's
+    /// <c>DEFAULT_MAX_SIZE</c>), so the first Pokémon shown beats a record of nought and the script says as much.
+    /// </summary>
+    public static int Record(StoryState story, string kept = "") =>
+        story.Var(VariableFor(kept)) is var held && held != 0 ? held : kept.Length > 0 ? 0 : FirstRecord;
 
     /// <summary>
     /// A Pokémon beside the record, both as its own species (<c>SizeContest_CalcResultForPartyMon</c>). The original

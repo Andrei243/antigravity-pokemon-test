@@ -330,7 +330,8 @@ public sealed class ScriptLibrary
                     case Query.Item when ItemDatabase.Get(c.Name) == null:
                         Wrong(i, $"there is no item '{c.Name}'");
                         break;
-                    case Query.Has or Query.Starter when PokemonDatabase.Get(c.Name) == null:
+                    // "has var VAR_X" names no species of its own (plan 19 · K9, part c)
+                    case Query.Has or Query.Starter when c.Name.Length > 0 && PokemonDatabase.Get(c.Name) == null:
                         Wrong(i, $"there is no species '{c.Name}'");
                         break;
                     case Query.Knows when MoveDatabase.Get(c.Name) == null:

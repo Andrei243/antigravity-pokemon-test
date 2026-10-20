@@ -200,6 +200,13 @@ public sealed class Instruction
     /// </summary>
     public string AsTrainer { get; init; } = "";
 
+    /// <summary>
+    /// For <c>team size</c>, the variable the record is kept in (plan 19 · K9, part c: Kanto's other size measurers
+    /// each keep a record of their own, FireRed's <c>VAR_…_SIZE_RECORD</c>); empty for the story's own
+    /// (<see cref="Models.SizeContest.RecordVariable"/>), which Route 222's fisherman keeps.
+    /// </summary>
+    public string Record { get; init; } = "";
+
     /// <summary>For <c>battle self rematch</c>: the trainer fights with the team the Vs. Seeker has them bring (plan 06 · R12).</summary>
     public bool Rematch { get; init; }
 

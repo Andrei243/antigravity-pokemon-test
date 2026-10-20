@@ -1,10 +1,18 @@
-# Dunsparce Tunnel (plan 19 · K9, part a), on FireRed's beats (data/maps/ThreeIsland_DunsparceTunnel/scripts.inc).
-# The prospector has been digging for gold; once the player has the National Pokédex he hands over a Nugget he found
-# (FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL). FireRed's tunnel dug through to the east is part b's.
+# Dunsparce Tunnel (plan 19 · K9, parts a and c), on FireRed's beats (data/maps/ThreeIsland_DunsparceTunnel/
+# scripts.inc). The prospector has been digging for gold; once the player has the National Pokédex he hands over a
+# Nugget he found (FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL) and his dig has broken through to the port's east steps,
+# which FireRed shows by laying another layout of the map (LAYOUT_..._DUG_OUT) in its ON_TRANSITION: here that is
+# FLAG_THREE_ISLAND_TUNNEL_DUG_OUT, which world.json swaps the chunk on and the two overlays open the east way on.
 
+
+# FireRed's ON_TRANSITION: the dug-out tunnel with the National Pokédex, and the prospector moved back to the wall
+# without it (the overlay's second prospector, hidden once the flag is set)
+script OnEnter
+  if nationaldex setflag FLAG_THREE_ISLAND_TUNNEL_DUG_OUT
+  end
 
 script Prospector
-  face prospector player
+  face self player
   speaker "Prospector"
   if flag FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL goto Given
   if nationaldex goto Nugget
@@ -16,5 +24,5 @@ label Nugget
   give "Nugget"
   end
 label Given
-  say "One day this tunnel will reach all the way through the island. Then I'll find the motherlode!"
+  say "My pick came out the other side this morning! Walk it through and you'll come up by the harbour steps."
   end

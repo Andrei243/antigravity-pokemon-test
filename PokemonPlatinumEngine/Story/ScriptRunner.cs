@@ -1042,9 +1042,9 @@ public sealed partial class ScriptRunner
                 PalPark(i);
                 break;
 
-            // A die of the script's own (plan 01 · M11)
+            // A die of the script's own (plan 01 · M11), and a species the Pokédex has seen (plan 19 · K9, part c)
             case Op.Random:
-                Result = host.Random(i.Number);
+                Result = i.Name == "seen" ? host.SpeciesSeenAtRandom() : host.Random(i.Number);
                 break;
 
             // The Battle Frontier's frame and the Battle Tower (plan 06 · R18a)
@@ -1719,7 +1719,7 @@ public sealed partial class ScriptRunner
             // (an Egg is none, as the original's GetPartyMonSpecies has it). "team size keep" is
             // ScrCmd_UpdateSizeContestRecord for the one last measured
             case "size" when i.Option:
-                if (measured != null) host.Story.SetVar(SizeContest.RecordVariable, SizeContest.Factor(measured));
+                if (measured != null) host.Story.SetVar(SizeContest.VariableFor(i.Record), SizeContest.Factor(measured));
                 break;
             case "size":
             {
@@ -1728,10 +1728,21 @@ public sealed partial class ScriptRunner
                 Result = 3;
                 if (slot < 0 || slot >= team.Count || team[slot].IsEgg || team[slot].Species.Name != i.Other) break;
                 measured = team[slot];
-                int record = SizeContest.Record(host.Story);
+                int record = SizeContest.Record(host.Story, i.Record);
                 lastSize = SizeContest.Told(SizeContest.Millimetres(measured));
                 lastRecord = SizeContest.Told(SizeContest.Millimetres(measured.Height, record));
                 Result = (int)SizeContest.Compare(measured, record);
+                break;
+            }
+            // The record alone, as a size, for the chart on a measurer's wall (plan 19 · K9, part c: FireRed's
+            // GetHeracrossSizeRecordInfo and GetMagikarpSizeRecordInfo, which fill their buffer with no Pokémon shown).
+            // RESULT is 1 where a record is kept and 0 where none is yet
+            case "record":
+            {
+                var species = PokemonDatabase.Get(i.Other);
+                int kept = host.Story.Var(SizeContest.VariableFor(i.Record));
+                lastRecord = species == null ? "" : SizeContest.Told(SizeContest.Millimetres(species.Height, SizeContest.Record(host.Story, i.Record)));
+                Result = kept == 0 ? 0 : 1;
                 break;
             }
             // ScrCmd_CheckPartyHasHeldItem (plan 02 · S15, part c): 1 when anyone of the team holds the item, as Mt.
@@ -1816,6 +1827,16 @@ public sealed partial class ScriptRunner
 
     // ------------------------------------------------------------------ conditions
 
+    /// <summary>
+    /// The species a <c>has</c> asks after: the name it was written with, or, for <c>has var VAR_X</c> (plan 19 · K9,
+    /// part c), the species whose National Pokédex number the variable holds; null where the variable holds no species.
+    /// </summary>
+    private string? SpeciesAskedAbout(Condition c)
+    {
+        if (c.Other == null) return c.Name;
+        return PokemonDatabase.GetByDex(Value(c.Other))?.Name;
+    }
+
     private int Value(string variable) => variable switch
     {
         "RESULT" => Result,
@@ -1857,7 +1878,8 @@ public sealed partial class ScriptRunner
             Query.Item => Condition.Holds(ItemDatabase.Get(c.Name) is { } item ? host.Bag.GetQuantity(item) : 0, c.Compare, c.Number),
             Query.Party => Condition.Holds(host.Party.Count, c.Compare, c.Number),
             Query.Knows => host.Party.Members.Any(p => p.Moves.Any(m => m.Name == c.Name)),
-            Query.Has => host.Party.Members.Any(p => p.Species.Name == c.Name && (c.Place == null || p.MetLocation == c.Place)),
+            // "has var VAR_X" asks after the species whose National Pokédex number the variable holds (plan 19 · K9, part c)
+            Query.Has => SpeciesAskedAbout(c) is { } asked && host.Party.Members.Any(p => p.Species.Name == asked && (c.Place == null || p.MetLocation == c.Place)),
             Query.Yes => Result == 1,
             Query.No => Result == 0,
             Query.Won => lastOutcome == BattleOutcome.Won,
@@ -1970,6 +1992,8 @@ public sealed partial class ScriptRunner
             "chosen" => chosenMember?.DisplayName ?? "",
             // The team's Pokémon at the place a variable gives (poison's survivors)
             "member" when argument.Length > 0 => Value(argument) is var slot && slot >= 0 && slot < host.Party.Count ? host.Party.Members[slot].DisplayName : "",
+            // The species whose National Pokédex number a variable holds (plan 19 · K9, part c: the one Selphy wishes for)
+            "species" when argument.Length > 0 => NameOfSpecies(PokemonDatabase.GetByDex(Value(argument))?.Name ?? ""),
             // The day's swarm and where it is, and the Trophy Garden's newest (plan 06 · R13)
             "swarm" => NameOfSpecies(Swarms.Species(Swarms.AreaOf(host.Encounters.SwarmDaily))),
             "swarmplace" => Swarms.PlaceName(Swarms.AreaOf(host.Encounters.SwarmDaily)),

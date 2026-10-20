@@ -1,7 +1,10 @@
-# Three Island's port (plan 19 · K9, part a), on FireRed's beats (data/maps/ThreeIsland_Port/scripts.inc): coming here
-# is the end of the first islands' detour (FLAG_SEVII_DETOUR_FINISHED, FireRed's, which Bill on One Island asks).
+# Three Island's port (plan 19 · K9, parts a and c), on FireRed's beats (data/maps/ThreeIsland_Port/scripts.inc):
+# coming here is the end of the first islands' detour (FLAG_SEVII_DETOUR_FINISHED, FireRed's, which Bill on One Island
+# asks). The east steps are Dunsparce Tunnel's far end: FireRed lays the dug-out tunnel in the tunnel's own
+# ON_TRANSITION, so the flag is set here as well, or the steps would be shut to someone who comes to the port first.
 
 
 script OnEnter
   setflag FLAG_SEVII_DETOUR_FINISHED
+  if nationaldex setflag FLAG_THREE_ISLAND_TUNNEL_DUG_OUT
   end

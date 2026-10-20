@@ -309,6 +309,7 @@ public class ScriptTests
           palpark store
           palpark end
           random 6
+          random seen
           frontier points
           frontier give 3
           frontier prize items
@@ -408,6 +409,9 @@ public class ScriptTests
           team nature serious
           team size "Remoraid"
           team size keep
+          team size "Heracross" VAR_HERACROSS_SIZE_RECORD
+          team size keep VAR_HERACROSS_SIZE_RECORD
+          team record "Heracross" VAR_HERACROSS_SIZE_RECORD
           team holds "Adamant Orb"
           team deoxys "Deoxys-Speed"
           setvar VAR_X RESULT
@@ -568,6 +572,7 @@ public class ScriptTests
               if knows "Cut" end
               if has "Starly" end
               if has "Geodude" met "Safari Zone" end
+              if has var VAR_A end
               if yes end
               if no end
               if won end

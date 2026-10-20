@@ -161,6 +161,19 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public int Random(int sides) => Rolls.Count > 0 ? Rolls.Dequeue() % Math.Max(1, sides) : 0;
 
+    /// <summary>
+    /// The species the Pokédex has seen, as a test says (<c>random seen</c>, plan 19 · K9, part c): one of these is
+    /// drawn by the script's die, and 0 comes back while the list is empty.
+    /// </summary>
+    public List<string> PokedexSeen { get; } = new();
+
+    public int SpeciesSeenAtRandom()
+    {
+        var seen = PokedexSeen.Select(name => Data.PokemonDatabase.Get(name)).Where(s => s != null).ToList();
+        if (seen.Count == 0) return 0;
+        return seen[Random(seen.Count)]!.DexNumber;
+    }
+
     /// <summary>The turns the battle last fought took, as a test says (<see cref="Fight"/> may set it battle by battle).</summary>
     public int BattleTurns { get; set; }
 
