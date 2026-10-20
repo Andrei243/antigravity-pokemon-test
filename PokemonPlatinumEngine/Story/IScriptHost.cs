@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -389,6 +389,15 @@ public interface IScriptHost
 
     /// <summary>Every Pokémon in the PC's boxes, box by box and place by place (the lottery's draw reads them).</summary>
     IEnumerable<Pokemon> Boxed { get; }
+
+    // ------------------------------------------------------------------ the television (plan 08 · P8)
+
+    /// <summary>
+    /// What is true of the game just now that a television's programme may speak of (<c>broadcast</c>,
+    /// <see cref="Broadcasts"/>). The default reads what the host already says; the game's host fills in the clock,
+    /// the play time and the whole Pokédex's counts.
+    /// </summary>
+    BroadcastFacts Broadcast() => Broadcasts.FactsOf(this);
 
     // ------------------------------------------------------------------ berry patches (plan 06 · R14a)
 

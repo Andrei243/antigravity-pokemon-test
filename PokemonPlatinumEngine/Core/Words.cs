@@ -41,11 +41,10 @@ public static class Words
     }
 
     /// <summary>A day's name: Monday to Sunday.</summary>
-    public static string Weekday(DateTime day)
-    {
-        var name = day.DayOfWeek;
-        return Text.Of($"summary.weekday.{name}");
-    }
+    public static string Weekday(DateTime day) => Weekday(day.DayOfWeek);
+
+    /// <summary>A day of the week's name (a television's time check, plan 08 · P8).</summary>
+    public static string Weekday(DayOfWeek name) => Text.Of($"summary.weekday.{name}");
 
     /// <summary>A Badge's name as the Trainer Card writes it under its medallion, by its name in its region's list (Coal, Boulder).</summary>
     public static string Badge(string name) => Text.Of($"badges.{name}");

@@ -9,6 +9,62 @@
       ]
     }
   ],
+  "Television": [
+    {
+      "en": [
+        "TV"
+      ],
+      "text": [
+        "Televizor"
+      ]
+    }
+  ],
+  "Bookshelf": [
+    {
+      "en": [
+        "The shelves are packed with books about Pokémon and the places they live."
+      ],
+      "text": [
+        "Rafturile sunt pline de cărți despre Pokémoni și locurile în care trăiesc."
+      ]
+    },
+    {
+      "en": [
+        "A row of books on raising Pokémon. Someone has marked a great many pages."
+      ],
+      "text": [
+        "Un șir de cărți despre creșterea Pokémonilor. Cineva a însemnat o mulțime de pagini."
+      ]
+    },
+    {
+      "en": [
+        "Picture books, travel guides and an old atlas, all lined up neatly."
+      ],
+      "text": [
+        "Cărți cu poze, ghiduri de călătorie și un atlas vechi, toate frumos aliniate."
+      ]
+    }
+  ],
+  "TrashCan": [
+    {
+      "en": [
+        "Nothing in it but a few scraps of paper."
+      ],
+      "text": [
+        "Nimic înăuntru, doar câteva petice de hârtie."
+      ]
+    }
+  ],
+  "TownMap": [
+    {
+      "en": [
+        "It's a map of the region, but it's too faded to make out."
+      ],
+      "text": [
+        "E o hartă a regiunii, dar e prea ștearsă ca să se mai vadă ceva."
+      ]
+    }
+  ],
   "BerryPatch": [
     {
       "en": [

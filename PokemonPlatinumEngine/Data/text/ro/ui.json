@@ -2874,6 +2874,46 @@
     "TuberM": "Copil cu colac",
     "Winstrate": "Familia Winstrate"
   },
+  "broadcast": {
+    "clock": {
+      "open": "„E ora {time}, {day}, și urmează ora exactă!”",
+      "morning": "„Bună dimineața! Roua e încă pe iarbă, iar Pokémonii se trezesc.”",
+      "day": "„Mai e mult până se întunecă. O zi bună pentru o plimbare prin iarba înaltă!”",
+      "twilight": "„Soarele apune. În curând ies Pokémonii nopții.”",
+      "night": "„S-a lăsat noaptea. Unii Pokémoni se arată doar pe întuneric, așa că fiți atenți!”",
+      "lateNight": "„E foarte târziu. Pokémonii voștri au nevoie de somn, și voi la fel!”",
+      "close": "„Asta a fost ora exactă. Rămâneți cu noi!”"
+    },
+    "pokedex": {
+      "open": "„Urmează Raportul Pokédex! Azi ne uităm în Pokédexul antrenorului {player}.”",
+      "counts": "„Pokédexul lui {player}: specii văzute: {seen}. Prinse: {n}.”",
+      "none": "„Niciunul prins încă? Orice Pokédex mare începe cu un singur Poké Ball!”",
+      "few": "„Un început frumos! Mai sunt mulți Pokémoni de întâlnit.”",
+      "many": "„Pokédexul ăsta merge departe. Tot așa!”",
+      "great": "„Remarcabil! Puțini antrenori au un Pokédex ca ăsta.”",
+      "close": "„Atât a fost Raportul Pokédex. Pe data viitoare!”"
+    },
+    "survey": {
+      "open": "„Acum, sondajul nostru. Azi l-am întrebat pe {player} despre echipă.”",
+      "alone": "„{player} călătorește cu un singur Pokémon: {lead}, la nivelul {level}.”",
+      "team": "„Pokémoni în echipa lui {player}: {n}. În frunte e {lead}, la nivelul {level}.”",
+      "noBadges": "„Nicio Insignă încă, dar orice Lider de Sală a fost cândva începător!”",
+      "badges": { "one": "„O Insignă câștigată deja. Următoarea Sală așteaptă!”", "few": "„{n} Insigne câștigate deja. {player} merită urmărit!”", "other": "„Insigne câștigate deja: {n}. {player} merită urmărit!”" },
+      "allBadges": "„Toate Insignele regiunii, câștigate! Ce antrenor!”",
+      "time": "„Timp pe drum până acum: {time}.”",
+      "close": "„Mulțumim, {player}! Asta a fost sondajul de azi.”"
+    },
+    "lottery": {
+      "open": "„E Colțul Loteriei! Numărul norocos de azi este {ticket}.”",
+      "how": "„Dacă se potrivește cu ultimele cifre ale ID-ului unui Pokémon, ridică premiul la Jubilife TV!”",
+      "close": "„Mâine vine un număr nou. Succes!”"
+    },
+    "fame": {
+      "open": "„Vești de la Liga Pokémon! {player} a intrat în Sala Faimei.”",
+      "entries": { "one": "„Echipa lui {player} a intrat o dată în Sala Faimei. Felicitări!”", "few": "„Echipele lui {player} au intrat de {n} ori în Sala Faimei!”", "other": "„Intrări în Sala Faimei pentru {player}: {n}!”" },
+      "close": "„Și acum, înapoi în studio!”"
+    }
+  },
   "scriptLines": {
     "yes": "Da",
     "no": "Nu",

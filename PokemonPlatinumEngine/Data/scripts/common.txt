@@ -381,6 +381,42 @@ script Sign
   end
 
 
+# Furniture with nothing of its own to say (plan 08 · P8): what a television, a bookshelf, a bin and a map on a wall
+# say when looked at (FieldScripts.ForFurniture). A television shows one of the programmes on (Story/Broadcasts.cs),
+# made of what is true of the game and drawn on the script's die.
+script Television
+  speaker "TV"
+  broadcast
+  end
+
+script Bookshelf
+  speaker none
+  random 3
+  if result == 1 goto Raising
+  if result == 2 goto Atlas
+  say "The shelves are packed with books about Pokémon and the places they live."
+  end
+label Raising
+  say "A row of books on raising Pokémon. Someone has marked a great many pages."
+  end
+label Atlas
+  say "Picture books, travel guides and an old atlas, all lined up neatly."
+  end
+
+script TrashCan
+  speaker none
+  say "Nothing in it but a few scraps of paper."
+  end
+
+# A map of the region on a wall: the Town Map's screen, looked at and put away. Where the region has no map, a line.
+script TownMap
+  speaker none
+  townmap
+  if result == 1 end
+  say "It's a map of the region, but it's too faded to make out."
+  end
+
+
 # A patch of soft soil (plan 06 · R14a), on the beats of the original's scripts_berry_tree_interaction.s: what grows
 # in it, a drink from the Sprayduck while it grows (standing south of it, facing it), its berries picked once it is
 # in fruit, and on bare soil mulch laid and a berry planted, both chosen from the bag. The soil is the script's own

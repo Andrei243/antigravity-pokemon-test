@@ -89,7 +89,23 @@ public sealed class MapFile
 
     /// <summary>Items nobody can see, found by looking at their tile; left out when there are none.</summary>
     public List<HiddenItemRecord>? HiddenItems { get; set; }
+
+    /// <summary>
+    /// Tiles that run a script of their own when looked at (plan 08 · P8; <see cref="Map.TileScripts"/>, as an overlay's
+    /// <c>read</c> gives them): a television with a programme of the room's own, a shelf with a book in it. Left out
+    /// when there are none. Furniture with none says what <see cref="Story.FieldScripts.ForFurniture"/> finds.
+    /// </summary>
+    public List<TileScriptRecord>? TileScripts { get; set; }
     public List<WildEncounterEntry> WildEncounters { get; set; } = new();
+
+    /// <summary>A tile and the script looking at it runs.</summary>
+    [System.Text.Json.Serialization.JsonConverter(typeof(OneLine<TileScriptRecord>))]
+    public sealed class TileScriptRecord
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public string Script { get; set; } = string.Empty;
+    }
 
     public sealed class PropRecord
     {
@@ -316,6 +332,14 @@ public sealed class MapFile
             if (ItemDatabase.Get(h.Item) == null) throw new InvalidDataException($"Map {Name}: the hidden item at {h.X},{h.Y} is '{h.Item}', which is no item.");
             if (h.Flag.Length == 0) throw new InvalidDataException($"Map {Name}: the hidden {h.Item} at {h.X},{h.Y} has no flag, so it would be found again and again.");
             map.HiddenItems[(h.X, h.Y)] = new HiddenItem(h.Item, h.Count ?? 1, h.Flag);
+        }
+
+        foreach (var t in TileScripts ?? new())
+        {
+            if (t.X < 0 || t.Y < 0 || t.X >= map.Width || t.Y >= map.Height)
+                throw new InvalidDataException($"Map {Name}: the tile script at {t.X},{t.Y} is off the map.");
+            if (t.Script.Length == 0) throw new InvalidDataException($"Map {Name}: the tile script at {t.X},{t.Y} names no script.");
+            map.TileScripts[(t.X, t.Y)] = t.Script;
         }
 
         foreach (var n in Npcs)
@@ -562,6 +586,9 @@ public sealed class MapFile
             {
                 X = kv.Key.X, Y = kv.Key.Y, Item = kv.Value.Item, Count = kv.Value.Count > 1 ? kv.Value.Count : null, Flag = kv.Value.Flag
             }).ToList();
+        if (map.TileScripts.Count > 0)
+            file.TileScripts = map.TileScripts.OrderBy(kv => kv.Key.Y).ThenBy(kv => kv.Key.X)
+                .Select(kv => new TileScriptRecord { X = kv.Key.X, Y = kv.Key.Y, Script = kv.Value }).ToList();
         file.WildEncounters = map.WildEncounters.ToList();
         return file;
     }

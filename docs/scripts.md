@@ -46,6 +46,13 @@ that exists, every script to something that starts it, and plays each to its end
   `Field_TileBehaviorToScript` does: a rock face along its grain runs `RockFace`, a waterfall faced from the water
   `Waterfall`, and deep water at the player's feet `Water`, which the field offers only to someone who may surf
   (the move and the Fen Badge).
+- **Looking at furniture** (plan 08 · P8). A television, a bookshelf, a bin and a map on a wall with nothing of
+  their own to say run `Television`, `Bookshelf`, `TrashCan` and `TownMap` (`FieldScripts.ForFurniture`): a
+  room's prop that covers the tile ahead (`Television`, `Bookshelf`, `TrashCan`), from any side, or else the
+  tile's behaviour (`Television`, the three bookshelves, `TrashCan`, `TownMap`: the imported games' rooms), read
+  as the GBA games read it, a bin from any side and the rest only from the south, facing north. A signboard, a
+  tile script (an overlay's `read`, a room file's `tileScripts`) or a hidden item on the tile goes first, so a
+  television with a programme of the room's own keeps it (the player's living room, Rotom's room).
 - **A boulder pushed onto a pit** (plan 02 · S12). A tile an overlay lists under `pits` takes a pushed boulder whatever
   the tile is (`FieldMovement.CanPush`), and as the boulder comes to rest there the pit's script starts with the
   boulder as its subject (`self`): it says where the boulder has gone (the Distortion World's fifth and sixth
@@ -122,6 +129,7 @@ Jubilife's, and nobody of another area is found. Someone a flag has taken off th
 | `say "..." ["..."]` | Lines in the text box, under the current speaker's name. Lines one after another are one talk: the box stays open between them. |
 | `text "..."` | The same with no name on the box: the game's own voice. |
 | `sayown` | The lines the script was started with: a person's `dialog`, a signboard's text. |
+| `broadcast` | A television's programme (plan 08 · P8; `Story/Broadcasts.cs`), said as one talk under the current speaker: one of the programmes on (the time check always; the Pokédex Report with a Pokédex; the trainer survey with a Pokémon; the Lottery Corner's number in Sinnoh; the Hall of Fame's news once a team has entered it), drawn on the script's die (`random`'s), its lines made of what is true of the game (`IScriptHost.Broadcast`, `BroadcastFacts`) in `ui.json`'s words (`broadcast.*`). Nothing is set. |
 | `trainerline before` / `after` | The trainer's own line before the battle, or once beaten. `RESULT` is 1 if there was a line to say, 0 if not. |
 | `trainerline before pair` | The same for the second of two trainers who came together (`pair`, below), under their own title. |
 | `speaker "Name"` / `none` / `self` | Who the following `say` lines are said by. A script starts with `self`. |
@@ -268,7 +276,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 ### The screens that exist
 
 `starter` (the briefcase's three; `RESULT` is the one taken, 0 to 2), `chooseitem berries` and `chooseitem mulch` (the bag, at the pocket of berries or of items, to choose a berry that grows or a mulch: `RESULT` 1 and the item is the script's last, or 0 when none was chosen; plan 06 · R14a), `choosepokemon` (the party, to choose one of the team: `RESULT` is its place, from 0, or 255 when none was chosen; plan 06 · R12; `{chosen}` names it in a line), `choosepokemon "Bidoof"` (the same, only a Bidoof may be chosen: every other card is greyed NOT ABLE, an Egg too, and a choice the species refuses leaves `RESULT` 255; plan 14 · B14, for `master`), `pc halloffame` (the PC's Hall of Fame), `shop` (a Mart's counter: BUY, SELL and SEE YA!; `shop "jubilife"` opens a town's own counter of `marts.json`, and a bare `shop` the clerk's own `mart` or else the common counter by the badges), `pc`, `wardrobe` (the player's clothes, slot by slot, changed for nothing: the bedroom's wardrobe; plan 11 · C10; `wardrobe "jubilife"` is a boutique of `clothes.json`, whose stock is tried on and bought with a yes), `travel` (the way to the
-next region: the attendant says how things stand; `RESULT` is 0 where no way leads on from here), and the Poffin House's pot (`poffin cook`, below).
+next region: the attendant says how things stand; `RESULT` is 0 where no way leads on from here), `townmap` (a map on a wall, plan 08 · P8: the Town Map's screen in its wall mode, `TownMapMode.Wall`, back to the field when put away; `RESULT` is 1 when it opened, 0 where the region has no `townmap.json`), and the Poffin House's pot (`poffin cook`, below).
 
 ### The trainer tools
 

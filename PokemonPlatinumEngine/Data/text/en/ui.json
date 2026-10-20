@@ -2868,6 +2868,46 @@
     "TuberM": "Tuber",
     "Winstrate": "Winstrate"
   },
+  "broadcast": {
+    "clock": {
+      "open": "\"It's {time} on {day}, and this is the time check!\"",
+      "morning": "\"Good morning! The dew is still on the grass, and the Pokémon are waking up.\"",
+      "day": "\"Plenty of daylight left. A fine day for a long walk through the tall grass!\"",
+      "twilight": "\"The sun is going down. Before long, the Pokémon of the night will be out.\"",
+      "night": "\"Night has fallen. Some Pokémon are only seen after dark, so keep your eyes open!\"",
+      "lateNight": "\"It's very late. Your Pokémon could do with some sleep, and so could you!\"",
+      "close": "\"That was the time check. Stay tuned!\""
+    },
+    "pokedex": {
+      "open": "\"It's the Pokédex Report! Today we look at the Pokédex of a trainer called {player}.\"",
+      "counts": "\"{player} has seen {seen} kinds of Pokémon and caught {n} of them.\"",
+      "none": "\"Not one caught yet? Every great Pokédex begins with a single Poké Ball!\"",
+      "few": "\"A fine start! There are plenty of Pokémon out there still to meet.\"",
+      "many": "\"That's a Pokédex that's going places. Keep it up!\"",
+      "great": "\"Remarkable! There can't be many trainers with a Pokédex like that.\"",
+      "close": "\"That's all from the Pokédex Report. Until next time!\""
+    },
+    "survey": {
+      "open": "\"Now for our trainer survey. Today we asked {player} about the team.\"",
+      "alone": "\"{player} travels with just one Pokémon: {lead}, at level {level}.\"",
+      "team": "\"{player} travels with {n} Pokémon, with {lead} out in front at level {level}.\"",
+      "noBadges": "\"No Badges yet, but every Gym Leader was a beginner once!\"",
+      "badges": { "one": "\"One Badge won already. The next Gym is waiting!\"", "other": "\"{n} Badges won already. {player} is one to watch!\"" },
+      "allBadges": "\"Every Badge of the region, won! What a trainer.\"",
+      "time": "\"Time on the road so far: {time}.\"",
+      "close": "\"Thank you, {player}! That's our survey for today.\""
+    },
+    "lottery": {
+      "open": "\"It's the Lottery Corner! Today's lucky number is {ticket}.\"",
+      "how": "\"If it matches the last digits of a Pokémon's ID number, claim your prize at Jubilife TV!\"",
+      "close": "\"A new number comes up tomorrow. Good luck!\""
+    },
+    "fame": {
+      "open": "\"News from the Pokémon League! {player} is in the Hall of Fame.\"",
+      "entries": { "one": "\"{player}'s team has entered the Hall of Fame once. Congratulations!\"", "other": "\"{player}'s teams have entered the Hall of Fame {n} times now!\"" },
+      "close": "\"And now, back to the studio!\""
+    }
+  },
   "scriptLines": {
     "yes": "Yes",
     "no": "No",

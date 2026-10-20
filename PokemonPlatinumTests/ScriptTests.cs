@@ -392,6 +392,8 @@ public class ScriptTests
           halloffame show
           save
           credits
+          broadcast
+          townmap
           tutor moves "route_212"
           tutor afford
           tutor pay

@@ -90,6 +90,17 @@ public sealed class HeadlessScriptHost : IScriptHost
     public TimeOfDay TimeOfDay { get; set; } = TimeOfDay.Morning;
     public DayOfWeek Weekday { get; set; } = DayOfWeek.Monday;
 
+    /// <summary>The clock's hour and minute and the time played, which a television's programme tells (plan 08 · P8).</summary>
+    public int Hour { get; set; } = 10;
+    public int Minute { get; set; }
+    public float PlayTimeSeconds { get; set; }
+
+    /// <summary>What a television's programme may speak of: what this host says, with its clock and time played.</summary>
+    public BroadcastFacts Broadcast() => Broadcasts.FactsOf(this) with { Hour = Hour, Minute = Minute, PlayTimeSeconds = PlayTimeSeconds };
+
+    /// <summary>Whether a map on a wall opens (<c>townmap</c>, plan 08 · P8): the region has one, unless a test says not.</summary>
+    public bool TownMapOpens { get; set; } = true;
+
     /// <summary>The Pokémon in the PC's boxes the lottery reads; none unless a test puts some there.</summary>
     public List<Pokemon> Boxes { get; } = new();
     public IEnumerable<Pokemon> Boxed => Boxes;
@@ -679,6 +690,8 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (screen == ScriptScreen.ChoosePokemon) Answer = PokemonChoice;
         // A panel of the Ruins of Alph: put together, unless the test says it was left (plan 20 · J5)
         if (screen == ScriptScreen.AlphPuzzle) Answer = PuzzleSolved ? 1 : 0;
+        // A map on a wall (plan 08 · P8): it opens where the region has one, unless the test says it has none
+        if (screen == ScriptScreen.TownMap) Answer = TownMapOpens ? 1 : 0;
         if (screen == ScriptScreen.ChooseItem)
         {
             string what = counter ?? "berries";
