@@ -4,7 +4,7 @@
       "One Island"
     ],
     "text": [
-      ""
+      "Insula Unu"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Bill"
         ],
         "text": [
-          ""
+          "Bill"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "Celio's in the Pokémon Center, just up the road."
         ],
         "text": [
-          ""
+          "Celio e în Centrul Pokémon, chiar pe drumul ăsta."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "We're lucky to have young Celio here. He's always tinkering with something clever in the Pokémon Center."
         ],
         "text": [
-          ""
+          "Avem noroc cu tânărul Celio aici. Mereu meșterește ceva ingenios în Centrul Pokémon."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -58,7 +58,7 @@
           "Isn't the weather here wonderful? It's warm all year round on the islands."
         ],
         "text": [
-          ""
+          "Nu-i minunat vremea aici? E cald tot anul pe insule."
         ]
       }
     }
@@ -69,7 +69,7 @@
         "One Island\nA warm welcome from the Sevii Islands"
       ],
       "text": [
-        ""
+        "Insula Unu\nUn călduros bun venit din Insulele Sevii"
       ]
     },
     "OneIsland_EventScript_PokemonNetCenterSign": {
@@ -77,7 +77,7 @@
         "Pokémon Net Center\nLinking trainers far and wide"
       ],
       "text": [
-        ""
+        "Centrul Pokémon Net\nLegând Antrenori de pretutindeni"
       ]
     }
   }

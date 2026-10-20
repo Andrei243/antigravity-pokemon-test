@@ -33,7 +33,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -41,7 +41,7 @@
         "Hey! If it isn't {player}! Fancy meeting you way out here."
       ],
       "text": [
-        ""
+        "Hei! Dar uite cine e, {player}! Ce surpriză să ne întâlnim tocmai aici."
       ]
     },
     {
@@ -49,7 +49,7 @@
         "You beat Blaine? Then you've earned a break. I'm off to One Island, out past the sea, to help a friend of mine called Celio."
       ],
       "text": [
-        ""
+        "Ai învins-o pe Blaine? Atunci meriți o pauză. Eu plec spre Insula Unu, dincolo de mare, să-l ajut pe un prieten, pe nume Celio."
       ]
     },
     {
@@ -57,7 +57,7 @@
         "He's a whiz with machines, and he's building something to link PCs between the islands. How about coming along?"
       ],
       "text": [
-        ""
+        "E un geniu cu mașinăriile și construiește ceva care să lege PC-urile dintre insule. Vii cu mine?"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "Will you come to One Island with me?"
       ],
       "text": [
-        ""
+        "Vii cu mine la Insula Unu?"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Great! My pal's ferry should be pulling in any minute."
       ],
       "text": [
-        ""
+        "Grozav! Feribotul prietenului meu trebuie să sosească dintr-o clipă în alta."
       ]
     },
     {
@@ -81,7 +81,7 @@
         "No? Well, I'll wait for you in the Pokémon Center. Come and find me when you're ready to sail."
       ],
       "text": [
-        ""
+        "Nu? Ei bine, te aștept în Centrul Pokémon. Vino să mă găsești când ești gata de plecare."
       ]
     }
   ]

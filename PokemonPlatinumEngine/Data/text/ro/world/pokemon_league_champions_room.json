@@ -4,7 +4,7 @@
       "Pokémon League"
     ],
     "text": [
-      ""
+      "Liga Pokémon"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Prof. Oak"
         ],
         "text": [
-          ""
+          "Profesorul Oak"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Congratulations, {player}!"
         ],
         "text": [
-          ""
+          "Felicitări, {player}!"
         ]
       }
     }

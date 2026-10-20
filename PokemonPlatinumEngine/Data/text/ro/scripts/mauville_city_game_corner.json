@@ -5,7 +5,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -15,7 +15,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -25,7 +25,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -35,7 +35,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -45,7 +45,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -75,7 +75,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -85,7 +85,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -95,7 +95,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -105,7 +105,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -115,7 +115,7 @@
         "The reels spin behind the glass. Without a Coin Case there's nothing to play with."
       ],
       "text": [
-        ""
+        "Rolele se învârt după geam. Fără o Cutie de Fise n-ai cu ce juca."
       ]
     }
   ],
@@ -125,7 +125,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătoarea"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Welcome to the Mauville Game Corner!"
       ],
       "text": [
-        ""
+        "Bun venit la Sala de Jocuri din Mauville!"
       ]
     },
     {
@@ -144,10 +144,10 @@
         "No, thanks"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "50 de Fise costă $1.000. Câte vrei?",
+        "50 DE FISE",
+        "500 DE FISE",
+        "Nu, mulțumesc"
       ]
     },
     {
@@ -155,7 +155,7 @@
         "Then do enjoy yourself!"
       ],
       "text": [
-        ""
+        "Atunci distrează-te de minune!"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "Thank you! Here are your 50 Coins."
       ],
       "text": [
-        ""
+        "Mulțumesc! Poftim cele 50 de Fise."
       ]
     },
     {
@@ -171,7 +171,7 @@
         "Thank you! Here are your 500 Coins."
       ],
       "text": [
-        ""
+        "Mulțumesc! Poftim cele 500 de Fise."
       ]
     },
     {
@@ -179,7 +179,7 @@
         "I'm sorry, you don't have enough money."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destui bani."
       ]
     },
     {
@@ -187,7 +187,7 @@
         "Your Coin Case is full! You must be doing very well."
       ],
       "text": [
-        ""
+        "Cutia ta de Fise e plină! Se vede că îți merge foarte bine."
       ]
     },
     {
@@ -195,7 +195,7 @@
         "You'll need a Coin Case to hold your Coins. I believe someone in the house next door has one."
       ],
       "text": [
-        ""
+        "O să-ți trebuiască o Cutie de Fise ca să ții Fisele. Cred că cineva din casa de alături are una."
       ]
     }
   ],
@@ -205,7 +205,7 @@
         "Clerk"
       ],
       "text": [
-        ""
+        "Vânzătoarea"
       ]
     },
     {
@@ -213,7 +213,7 @@
         "We exchange your Coins for prizes. You have {coins} Coins."
       ],
       "text": [
-        ""
+        "Schimbăm Fisele tale pe premii. Ai {coins} de Fise."
       ]
     },
     {
@@ -221,7 +221,7 @@
         "The {item}, for {price} Coins?"
       ],
       "text": [
-        ""
+        "{item}, pentru {price} Fise?"
       ]
     },
     {
@@ -229,7 +229,7 @@
         "Here you go!"
       ],
       "text": [
-        ""
+        "Poftim!"
       ]
     },
     {
@@ -237,7 +237,7 @@
         "{player} put the {item} away."
       ],
       "text": [
-        ""
+        "{player} a pus deoparte {item}."
       ]
     },
     {
@@ -245,7 +245,7 @@
         "I'm sorry, you don't have enough Coins."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destule Fise."
       ]
     },
     {
@@ -253,7 +253,7 @@
         "Oh, is that so? Come back any time."
       ],
       "text": [
-        ""
+        "A, așa? Mai treci oricând."
       ]
     },
     {
@@ -261,7 +261,7 @@
         "Without a Coin Case, you have no Coins to exchange, I'm afraid."
       ],
       "text": [
-        ""
+        "Fără o Cutie de Fise, n-ai nicio Fisă de schimbat, mă tem."
       ]
     }
   ],
@@ -271,7 +271,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -279,7 +279,7 @@
         "No Coins? Luck only lasts so long, you know. Here, take some of mine."
       ],
       "text": [
-        ""
+        "Nicio Fisă? Norocul ține doar o vreme, să știi. Poftim, ia câteva de-ale mele."
       ]
     },
     {
@@ -287,7 +287,7 @@
         "{player} received 20 Coins!"
       ],
       "text": [
-        ""
+        "{player} a primit 20 de Fise!"
       ]
     },
     {
@@ -295,7 +295,7 @@
         "Mauville has something for everyone. Even me!"
       ],
       "text": [
-        ""
+        "Mauville are câte ceva pentru toată lumea. Chiar și pentru mine!"
       ]
     },
     {
@@ -303,7 +303,7 @@
         "You need a Coin Case to play. The lady next door might help you out."
       ],
       "text": [
-        ""
+        "Îți trebuie o Cutie de Fise ca să joci. Doamna de alături te-ar putea ajuta."
       ]
     }
   ]

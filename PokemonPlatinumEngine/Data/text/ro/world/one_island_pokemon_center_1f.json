@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Bill"
         ],
         "text": [
-          ""
+          "Bill"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Celio"
         ],
         "text": [
-          ""
+          "Celio"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Little Boy"
         ],
         "text": [
-          ""
+          "Băiețelul"
         ]
       },
       "dialog": {
@@ -44,7 +44,7 @@
           "I came here from Pallet Town on the ferry. Do you know Pallet Town? It's tiny!"
         ],
         "text": [
-          ""
+          "Am venit aici din Orașul Pallet cu feribotul. Cunoști Orașul Pallet? E minuscul!"
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -62,7 +62,7 @@
           "There's a great big volcano at the north end of this island. Mt. Ember, they call it."
         ],
         "text": [
-          ""
+          "La capătul de nord al insulei e un vulcan uriaș. Muntele Ember, îi zic."
         ]
       }
     },
@@ -72,7 +72,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -80,7 +80,7 @@
           "I wish I could trade Pokémon with my boyfriend. He lives far, far away."
         ],
         "text": [
-          ""
+          "Aș vrea să pot face schimb de Pokémoni cu iubitul meu. Locuiește foarte, foarte departe."
         ]
       }
     }
@@ -91,7 +91,7 @@
         "A great big machine, humming and blinking. It must be Celio's network machine."
       ],
       "text": [
-        ""
+        "O mașinărie uriașă, care bâzâie și clipește. Trebuie să fie mașinăria de rețea a lui Celio."
       ]
     }
   }

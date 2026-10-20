@@ -6,7 +6,7 @@
           "Attendant"
         ],
         "text": [
-          ""
+          "Însoțitoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome to the Battle Tent! Here, the judges decide a battle after three turns. Our challenge isn't ready yet, I'm afraid."
         ],
         "text": [
-          ""
+          "Bun venit la Cortul de Luptă! Aici, judecătorii hotărăsc lupta după trei ture. Provocarea noastră nu e încă pregătită, din păcate."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "If neither Pokémon faints in three turns, the judges look at how each fought. Strength isn't everything!"
         ],
         "text": [
-          ""
+          "Dacă niciun Pokémon nu cade în trei ture, judecătorii se uită la cum a luptat fiecare. Forța nu e totul!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I want to be a judge! I'd give points for the coolest moves."
         ],
         "text": [
-          ""
+          "Vreau să fiu judecător! Aș da puncte pentru cele mai tari mișcări."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Attacking a lot earns points from the judges. So does staying healthy!"
         ],
         "text": [
-          ""
+          "Dacă ataci des, primești puncte de la judecători. La fel dacă rămâi sănătos!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Scott"
         ],
         "text": [
-          ""
+          "Scott"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "{player}! The Battle Tent's judges are hard to please. I like that."
         ],
         "text": [
-          ""
+          "{player}! Judecătorii de la Cortul de Luptă sunt greu de mulțumit. Îmi place asta."
         ]
       }
     }
@@ -97,7 +97,7 @@
         "Battle Tent Rules\nThree turns, then the judges decide. Win three in a row!"
       ],
       "text": [
-        ""
+        "Regulile Cortului de Luptă\nTrei ture, apoi hotărăsc judecătorii. Câștigă trei lupte la rând!"
       ]
     }
   }

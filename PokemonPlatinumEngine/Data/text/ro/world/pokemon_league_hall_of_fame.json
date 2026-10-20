@@ -4,7 +4,7 @@
       "Hall of Fame"
     ],
     "text": [
-      ""
+      "Sala Faimei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Prof. Oak"
         ],
         "text": [
-          ""
+          "Profesorul Oak"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "You've earned your place here, {player}."
         ],
         "text": [
-          ""
+          "Ți-ai câștigat locul aici, {player}."
         ]
       }
     }

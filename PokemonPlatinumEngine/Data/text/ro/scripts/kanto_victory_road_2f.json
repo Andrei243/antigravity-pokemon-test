@@ -5,7 +5,7 @@
         "Cooltrainer"
       ],
       "text": [
-        ""
+        "Antrenor As"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "You made it this far, so you must be serious. Want me to teach one of your Pokémon Double-Edge?"
       ],
       "text": [
-        ""
+        "Dacă ai ajuns până aici, înseamnă că ești serios. Vrei să învăț unul dintre Pokémonii tăi Tăiș Dublu?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Good choice. Which one?"
       ],
       "text": [
-        ""
+        "Bună alegere. Pe care?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "{wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{wearer} learned {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} a învățat {thing}!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Double-Edge hits with everything the user has, and it hurts the user too. Use it when it counts!"
       ],
       "text": [
-        ""
+        "Tăiș Dublu lovește cu tot ce are cel care îl folosește și îl rănește și pe el. Folosește-l când contează!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Suit yourself. I'll be here if you change your mind."
       ],
       "text": [
-        ""
+        "Cum dorești. Voi fi aici dacă te răzgândești."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "An Egg can't learn anything yet. Hatch it first!"
       ],
       "text": [
-        ""
+        "Un Ou nu poate învăța încă nimic. Mai întâi lasă-l să eclozeze!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Sorry, that one just can't learn it."
       ],
       "text": [
-        ""
+        "Îmi pare rău, dar ăsta pur și simplu nu-l poate învăța."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "That one already knows it!"
       ],
       "text": [
-        ""
+        "Ăsta îl știe deja!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "That move can't be forgotten here. Another time."
       ],
       "text": [
-        ""
+        "Mișcarea aceea nu poate fi uitată aici. Altă dată."
       ]
     }
   ]

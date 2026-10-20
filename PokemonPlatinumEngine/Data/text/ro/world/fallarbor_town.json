@@ -6,7 +6,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "My Azurill is so precious to me. I take it with me everywhere, even to the shops!"
         ],
         "text": [
-          ""
+          "Azurill al meu îmi e atât de drag. Îl iau peste tot cu mine, chiar și la cumpărături!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Have you been to Lavaridge yet? Flannery, the Gym Leader there, is said to be fiery in every way."
         ],
         "text": [
-          ""
+          "Ai fost deja la Lavaridge? Se zice că Flannery, Liderul Arenei de acolo, e înfocată în toate privințele."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Azurill"
         ],
         "text": [
-          ""
+          "Azurill"
         ]
       }
     }
@@ -63,7 +63,7 @@
         "Fallarbor Town\nA farm community with small gardens"
       ],
       "text": [
-        ""
+        "Orășelul Fallarbor\nO comunitate de fermieri, cu grădini mici"
       ]
     },
     "FallarborTown_EventScript_BattleTentSign": {
@@ -71,7 +71,7 @@
         "Battle Tent: Fallarbor\nThe judges decide who wins!"
       ],
       "text": [
-        ""
+        "Cortul de Luptă: Fallarbor\nJudecătorii hotărăsc cine câștigă!"
       ]
     },
     "FallarborTown_EventScript_MoveTutorSign": {
@@ -79,7 +79,7 @@
         "The Move Tutor's House\nForgotten moves remembered!"
       ],
       "text": [
-        ""
+        "Casa Profesorului de Mișcări\nMișcările uitate, reamintite!"
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -87,7 +87,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     },
     "Common_EventScript_ShowPokemartSign": {
@@ -95,7 +95,7 @@
         "Poké Mart\nFor all your trainer needs."
       ],
       "text": [
-        ""
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
       ]
     }
   }

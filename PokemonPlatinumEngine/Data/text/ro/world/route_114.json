@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Lenny"
         ],
         "text": [
-          ""
+          "Lenny"
         ]
       },
       "before": {
@@ -44,7 +44,7 @@
           "Hiker Lenny: I've walked this valley a hundred times. Let's see what you're made of!"
         ],
         "text": [
-          ""
+          "Drumeț Lenny: Am străbătut valea asta de o sută de ori. Să vedem din ce ești făcut!"
         ]
       },
       "after": {
@@ -52,7 +52,7 @@
           "Hiker Lenny: The hundred and first walk will be sadder."
         ],
         "text": [
-          ""
+          "Drumeț Lenny: A o sută una plimbare va fi mai tristă."
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Lucas"
         ],
         "text": [
-          ""
+          "Lucas"
         ]
       },
       "before": {
@@ -70,7 +70,7 @@
           "Hiker Lucas: Rocks and fire, that's my team! Ready?"
         ],
         "text": [
-          ""
+          "Drumeț Lucas: Stâncă și foc, asta e echipa mea! Ești gata?"
         ]
       },
       "after": {
@@ -78,7 +78,7 @@
           "Hiker Lucas: All crumbled."
         ],
         "text": [
-          ""
+          "Drumeț Lucas: Totul s-a prăbușit."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Shane"
         ],
         "text": [
-          ""
+          "Shane"
         ]
       },
       "before": {
@@ -96,7 +96,7 @@
           "Camper Shane: There's a waterfall up ahead that falls from the stars, they say. First, a battle!"
         ],
         "text": [
-          ""
+          "Campist Shane: Mai încolo e o cascadă care cade din stele, se zice. Mai întâi, o luptă!"
         ]
       },
       "after": {
@@ -104,7 +104,7 @@
           "Camper Shane: I'm the one who fell."
         ],
         "text": [
-          ""
+          "Campist Shane: Eu sunt cel care a căzut."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Nancy"
         ],
         "text": [
-          ""
+          "Nancy"
         ]
       },
       "before": {
@@ -122,7 +122,7 @@
           "Picnicker Nancy: The river here is so clear! Our battle won't be so calm."
         ],
         "text": [
-          ""
+          "Excursionistă Nancy: Râul de aici e atât de limpede! Lupta noastră nu va fi la fel de liniștită."
         ]
       },
       "after": {
@@ -130,7 +130,7 @@
           "Picnicker Nancy: I'll sit by the river for a while."
         ],
         "text": [
-          ""
+          "Excursionistă Nancy: Voi sta o vreme lângă râu."
         ]
       }
     },
@@ -140,7 +140,7 @@
           "Steve"
         ],
         "text": [
-          ""
+          "Steve"
         ]
       },
       "before": {
@@ -148,7 +148,7 @@
           "Pokémaniac Steve: Steel and rock! My Aron's the best there is!"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Steve: Oțel și stâncă! Aron al meu e cel mai bun!"
         ]
       },
       "after": {
@@ -156,7 +156,7 @@
           "Pokémaniac Steve: My Aron's still the best. Just not today."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Steve: Aron al meu tot cel mai bun e. Doar nu azi."
         ]
       }
     },
@@ -166,7 +166,7 @@
           "Nolan"
         ],
         "text": [
-          ""
+          "Nolan"
         ]
       },
       "before": {
@@ -174,7 +174,7 @@
           "Fisherman Nolan: Shh, you'll scare off the fish. Oh, a battle? Fine!"
         ],
         "text": [
-          ""
+          "Pescar Nolan: Șșt, o să sperii peștii. Ah, o luptă? Bine!"
         ]
       },
       "after": {
@@ -182,7 +182,7 @@
           "Fisherman Nolan: Now the fish are laughing at me."
         ],
         "text": [
-          ""
+          "Pescar Nolan: Acum peștii râd de mine."
         ]
       }
     },
@@ -192,7 +192,7 @@
           "Claude"
         ],
         "text": [
-          ""
+          "Claude"
         ]
       },
       "before": {
@@ -200,7 +200,7 @@
           "Fisherman Claude: I reeled you in! Time to battle!"
         ],
         "text": [
-          ""
+          "Pescar Claude: Te-am prins! E timpul de luptă!"
         ]
       },
       "after": {
@@ -208,7 +208,7 @@
           "Fisherman Claude: The one that got away."
         ],
         "text": [
-          ""
+          "Pescar Claude: Cel care mi-a scăpat."
         ]
       }
     },
@@ -218,7 +218,7 @@
           "Bernie"
         ],
         "text": [
-          ""
+          "Bernie"
         ]
       },
       "before": {
@@ -226,7 +226,7 @@
           "Kindler Bernie: I'll set this battle ablaze! Hope you've got water on hand!"
         ],
         "text": [
-          ""
+          "Aprinzător Bernie: Voi da foc luptei ăsteia! Sper că ai apă la îndemână!"
         ]
       },
       "after": {
@@ -234,7 +234,7 @@
           "Kindler Bernie: You put my fire out."
         ],
         "text": [
-          ""
+          "Aprinzător Bernie: Mi-ai stins focul."
         ]
       }
     },
@@ -244,7 +244,7 @@
           "Tyra & Ivy"
         ],
         "text": [
-          ""
+          "Tyra și Ivy"
         ]
       },
       "before": {
@@ -252,7 +252,7 @@
           "Sr. & Jr. Tyra & Ivy: The two of us make one strong team!"
         ],
         "text": [
-          ""
+          "Mare și mic Tyra și Ivy: Noi două facem o echipă puternică!"
         ]
       },
       "after": {
@@ -260,7 +260,7 @@
           "Sr. & Jr. Tyra & Ivy: Even two of us weren't enough."
         ],
         "text": [
-          ""
+          "Mare și mic Tyra și Ivy: Nici două nu ne-am descurcat."
         ]
       }
     },
@@ -270,7 +270,7 @@
           "Tyra & Ivy"
         ],
         "text": [
-          ""
+          "Tyra și Ivy"
         ]
       },
       "before": {
@@ -278,7 +278,7 @@
           "Sr. & Jr. Tyra & Ivy: I'll do my best beside my big sister!"
         ],
         "text": [
-          ""
+          "Mare și mic Tyra și Ivy: Fac tot ce pot alături de sora mea mare!"
         ]
       },
       "after": {
@@ -286,7 +286,7 @@
           "Sr. & Jr. Tyra & Ivy: We'll practise more together."
         ],
         "text": [
-          ""
+          "Mare și mic Tyra și Ivy: Vom exersa mai mult împreună."
         ]
       }
     },
@@ -296,7 +296,7 @@
           "Charlotte"
         ],
         "text": [
-          ""
+          "Charlotte"
         ]
       },
       "before": {
@@ -304,7 +304,7 @@
           "Picnicker Charlotte: I came all the way up here for the view. And to battle someone like you!"
         ],
         "text": [
-          ""
+          "Excursionistă Charlotte: Am venit tocmai până aici pentru priveliște. Și ca să mă lupt cu cineva ca tine!"
         ]
       },
       "after": {
@@ -312,7 +312,7 @@
           "Picnicker Charlotte: At least the view's still nice."
         ],
         "text": [
-          ""
+          "Excursionistă Charlotte: Măcar priveliștea e tot frumoasă."
         ]
       }
     },
@@ -322,7 +322,7 @@
           "Angelina"
         ],
         "text": [
-          ""
+          "Angelina"
         ]
       },
       "before": {
@@ -330,7 +330,7 @@
           "Picnicker Angelina: I've been waiting by the water for a strong trainer. Is it you?"
         ],
         "text": [
-          ""
+          "Excursionistă Angelina: Aștept lângă apă un Antrenor puternic. Ești tu?"
         ]
       },
       "after": {
@@ -338,7 +338,7 @@
           "Picnicker Angelina: It was you, all right."
         ],
         "text": [
-          ""
+          "Excursionistă Angelina: Tu erai, fără îndoială."
         ]
       }
     },
@@ -348,7 +348,7 @@
           "Kai"
         ],
         "text": [
-          ""
+          "Kai"
         ]
       },
       "before": {
@@ -356,7 +356,7 @@
           "Fisherman Kai: My Barboach can sense when a battle's coming. It's been twitching all day!"
         ],
         "text": [
-          ""
+          "Pescar Kai: Barboach al meu simte când vine o luptă. S-a zvârcolit toată ziua!"
         ]
       },
       "after": {
@@ -364,7 +364,7 @@
           "Fisherman Kai: Now it's sulking at the bottom of the river."
         ],
         "text": [
-          ""
+          "Pescar Kai: Acum se vântură supărat pe fundul râului."
         ]
       }
     }
@@ -375,7 +375,7 @@
         "Meteor Falls\nAhead: Route 115"
       ],
       "text": [
-        ""
+        "Cascada Meteorilor\nÎn față: Ruta 115"
       ]
     },
     "Route114_EventScript_FossilManiacsHouseSign": {
@@ -383,7 +383,7 @@
         "The Fossil Maniac's House\nFossils welcome!"
       ],
       "text": [
-        ""
+        "Casa Maniacului Fosilelor\nFosilele sunt binevenite!"
       ]
     },
     "Route114_EventScript_LanettesHouseSign": {
@@ -391,7 +391,7 @@
         "Lanette's House"
       ],
       "text": [
-        ""
+        "Casa lui Lanette"
       ]
     }
   }
