@@ -82,9 +82,9 @@
     "~~~~~~RRRRRR~~RR~~~~~CC??CCC??CC",
     "~~~~~~RR~~RR??RR~~~~~?CCCCCC??CC",
     "~~~~~~~~~~~~~~~~~RR~CC??CCC?????",
-    "CCC??C?~~~~~~~~~~RR~CCC??C??CCC?",
-    "CCC?~~~~~~~~~~~~~~~~CCC??CCCCCCC",
-    "?CCC?~~~~~~~~~~~~~~~CCCCC??CCCCC",
+    "rrr??C?~~~~~~~~~~RR~CCC??C??CCC?",
+    "Crr?~~~~~~~~~~~~~~~~CCC??CCCCCCC",
+    "?Crr?~~~~~~~~~~~~~~~CCCCC??CCCCC",
     "~?CC?~~~~~~~~~~~~??~CCCCCCCCCCCC",
     "~~~~~~~~~~~~~~~~~~RRCCCCCCCCCCCC",
     "~~~~~~~~~~~~~~~~~~RRCCCCCCCCCCCC",
@@ -100,7 +100,7 @@
     "~~~~~~~~~~~~~~~~~~~~~RR?CCCCCCCC",
     "~~~~~~~~~~~~~~~~~~~~~RR~~CCCCCCC",
     "~~~~~~~~~~~~~~~~~~~~~~~~~?CCCCCC",
-    "~~~~~~~~~~~~~~~~~~~~~~~~~~~CCCCC"
+    "~~~~~~~~~~~~~~~~~~~~~~~~~~~CCCCr"
   ],
   "heights": [
     { "x": 0, "z": 0, "width": 32, "depth": 32, "height": 1, "slopeX": 0, "slopeZ": 0 }

@@ -47,6 +47,8 @@ script Shelly
   hide weather_institute_2f_grunt_4
   show man_4
   show man_4_2
+  # Where OnEnter holds him; said again so the scene stands on its own, wherever he was left
+  place weather_institute_2f_scientist 1 6 right
   place player 5 6 left
   fade in
   walk weather_institute_2f_scientist right 3

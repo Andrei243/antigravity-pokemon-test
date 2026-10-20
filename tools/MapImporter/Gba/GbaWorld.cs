@@ -317,6 +317,10 @@ public sealed class GbaWorld
                     m.Behaviour[i] = (byte)behaviour;
                     m.Solid[i] = GbaLayout.CollisionOf(block) != 0;
                     m.Elevation[i] = (byte)GbaLayout.ElevationOf(block);
+                    // A tile the GBA leaves open is walked, whatever its metatile looks like: a mountain's top named for the
+                    // mountain is open rock, never a cliff (the builder blocks every cliff; Route 119's way up to its
+                    // bridge was one, plan 21 · H6)
+                    if (cover == TerrainCover.Cliff && !m.Solid[i]) cover = TerrainCover.Rock;
                     m.Cover[i] = cover;
                     if (indoors) m.Furniture[i] = GbaFurniture.Of(name, tileset, metatile, Source.Game);
                     if (!count) continue;

@@ -299,7 +299,7 @@ public static class WorldMapBuilder
                             map.SetTileArea(cx * T + x, cy * T + z, tileArea);
                         }
                 }
-                PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague, blank, tilesOwn);
+                PlaceChunk(map, chunk, cx * T, cy * T, matrix.AltitudeAt(cx, cy) / 2f, area, under, vague, blank, tilesOwn, world.Index.BuildingsAtDoors);
                 foreach (var prop in chunk.Props)
                 {
                     // A GBA room's furniture (plan 19 · K2) is laid once the room's floor and walls are
@@ -1402,8 +1402,9 @@ public static class WorldMapBuilder
     /// <param name="under">Marks the tiles whose look is settled later, by the model that stands on them.</param>
     /// <param name="vague">Gathers the open tiles of ground nobody named.</param>
     /// <param name="blank">Gathers the blocked tiles the original draws nothing on.</param>
+    /// <param name="gba">A Game Boy Advance region's chunk, whose only plates that overlap are a bridge's deck.</param>
     private static void PlaceChunk(Map map, WorldChunkFile chunk, int ox, int oy, float altitude, MapArea area, bool[] under,
-        List<(int X, int Z)> vague, List<(int X, int Z)> blank, MapArea?[]? own = null)
+        List<(int X, int Z)> vague, List<(int X, int Z)> blank, MapArea?[]? own = null, bool gba = false)
     {
         var chunkArea = area;
         for (int z = 0; z < T; z++)
@@ -1414,7 +1415,7 @@ public static class WorldMapBuilder
                 var behaviour = chunk.BehaviourAt(x, z);
                 bool solid = chunk.SolidAt(x, z);
                 map.SetBehaviour(ox + x, oy + z, behaviour);
-                PlaceHeight(map, chunk, x, z, ox, oy, altitude, behaviour);
+                PlaceHeight(map, chunk, x, z, ox, oy, altitude, behaviour, gba);
 
                 var (type, blocks, prop) = Look(cover, behaviour, solid);
                 // Soft soil is blocked by the patch that stands on it (an object of the area, plan 06 · R14a), not by
@@ -1445,9 +1446,12 @@ public static class WorldMapBuilder
 
     /// <summary>
     /// A tile's ground from the chunk's plates: the plate under its middle gives its height and slope. Where two
-    /// lie one over the other at a bridge, the lower is the ground and the upper the deck.
+    /// lie one over the other at a bridge, the lower is the ground and the upper the deck. A GBA map's bridge over land
+    /// (elevation 15: Route 119's, with the path under it) has no behaviour of its own, and there the reader writes an
+    /// overlapping plate for nothing but a deck (<c>GbaWorld.Plates</c>), so the overlap alone says it is one.
     /// </summary>
-    private static void PlaceHeight(Map map, WorldChunkFile chunk, int x, int z, int ox, int oy, float altitude, TileBehavior behaviour)
+    private static void PlaceHeight(Map map, WorldChunkFile chunk, int x, int z, int ox, int oy, float altitude, TileBehavior behaviour,
+        bool gba = false)
     {
         float mx = x + 0.5f, mz = z + 0.5f;
         HeightPlate? ground = null, upper = null;
@@ -1461,7 +1465,7 @@ public static class WorldMapBuilder
         if (ground == null) return;
 
         // Where plates overlap without a bridge the walker's own is the upper one (a terrace over a hidden floor)
-        bool deck = HasDeck(behaviour) && upper != ground && upper!.HeightAt(mx, mz) - ground.HeightAt(mx, mz) >= 0.75f;
+        bool deck = (gba || HasDeck(behaviour)) && upper != ground && upper!.HeightAt(mx, mz) - ground.HeightAt(mx, mz) >= 0.75f;
         var stand = deck ? ground : upper!;
         map.SetHeight(ox + x, oy + z, altitude + stand.HeightAt(mx, mz), stand.SlopeX, stand.SlopeZ);
         if (deck) map.SetDeck(ox + x, oy + z, altitude + upper!.HeightAt(mx, mz));

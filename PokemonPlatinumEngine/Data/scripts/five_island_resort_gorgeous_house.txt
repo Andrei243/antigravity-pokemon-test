@@ -13,8 +13,11 @@
 # granted (docs/mechanics/rulings.md, "The last Sevii Islands").
 
 
+# Once she is home the butler is off the map until she calls him, each time the house is come into: her call only
+# shows him (FireRed's addobject), so he is gone again on the next visit
 script OnEnter
   if var VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS < 2 setflag FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY
+  if var VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS >= 2 setflag FLAG_HIDE_SELPHYS_BUTLER
   end
 
 
@@ -55,7 +58,6 @@ label NoWish
 # FiveIsland_ResortGorgeous_House_EventScript_ShowRequestedMon
 label Shown
   say "Oh! Oh, is that a {species:VAR_RESORT_GORGEOUS_REQUESTED_MON} with you?" "You brought one all this way, for me? You darling creature!"
-  clearflag FLAG_HIDE_SELPHYS_BUTLER
   show resort_gorgeous_house_butler
   wait 0.5
   speaker "Butler"
