@@ -2995,7 +2995,66 @@ variables (`FLAG_HIDE_ROUTE_111_*_WINSTRATE`, `FLAG_RECEIVED_MACHO_BRACE`, `FLAG
   Mart only talks. Fallarbor's Battle Tent is its lobby (the Battle Arena's rules, plan 14 · B9).
 - **What waits**: the rest of H4 (the cable car, Mt. Chimney and Maxie, Jagged Pass, Lavaridge and Flannery, the Go-Goggles,
   the desert, Mirage Tower and its fossils, Petalburg's Gym and Norman), Route 115 and Meteor Falls' rooms behind the falls,
-  the Battle Tents' bouts, Gabby and Ty, the Secret Power man on Route 111.
+  the Battle Tents' bouts, Gabby and Ty, the Secret Power man on Route 111. (Part b, below, wrote all of H4 but the Desert
+  Ruins, Gabby and Ty and the Secret Power man.)
+
+## Mt. Chimney, Lavaridge and Petalburg's Gym (2026-10-20, plan 21 · H4, its second part)
+
+The cable car, Mt. Chimney's summit, Jagged Pass, Lavaridge Town and its Gym, Mirage Tower, Route 115, Meteor Falls'
+inner rooms and Petalburg's Gym are scripts of ours on Emerald's beats (`route_112_cable_car_station.txt`,
+`mt_chimney_cable_car_station.txt`, `mt_chimney.txt`, `lavaridge_town.txt`, `lavaridge_town_gym_1f.txt`,
+`lavaridge_town_herb_shop.txt`, `lavaridge_town_house.txt`, `mirage_tower_4f.txt`, `fallarbor_town_cozmos_house.txt`,
+`petalburg_city_gym.txt`, `petalburg_city_wallys_house.txt`), under Emerald's flags and variables
+(`VAR_CABLE_CAR_STATION_STATE`, `FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA`, `FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA`,
+`FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY`, `FLAG_HIDE_MT_CHIMNEY_TRAINERS`, `FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY`,
+`FLAG_RECEIVED_TM_RETURN`, `FLAG_RECEIVED_LAVARIDGE_EGG`, `FLAG_RECEIVED_CHARCOAL`, `FLAG_RECEIVED_TM_OVERHEAT`,
+`VAR_LAVARIDGE_TOWN_STATE`, `FLAG_RECEIVED_GO_GOGGLES`, `FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL`, `_CLAW_FOSSIL`,
+`FLAG_CHOSE_ROOT_FOSSIL`, `FLAG_CHOSE_CLAW_FOSSIL`, `VAR_MIRAGE_TOWER_STATE`, `VAR_PETALBURG_GYM_STATE`,
+`FLAG_DEFEATED_PETALBURG_GYM`, `FLAG_RECEIVED_TM_FACADE`, `VAR_PETALBURG_CITY_STATE`, `FLAG_RECEIVED_HM_SURF`). Story
+version 29: `common.HoennChapterSix`, which `HoennNewGame` calls, hides the summit's trainers and the Lava Cookie lady
+until Team Magma has gone, the rival in Lavaridge until the Go-Goggles and Wally's father in the Gym until Norman is
+beaten. What differs, and why:
+
+- **The cable car** is a scene at each station: the attendant steps up onto the platform before the car, the player
+  follows her up the station's corridor (one tile wide, so she can't walk beside them as Emerald's does), the picture goes
+  dark over the ride and the other station's arrival script puts the player down (`VAR_CABLE_CAR_STATION_STATE` 1 going
+  up, 2 coming down). Emerald's view of the car over the mountain is not drawn. Route 112's attendant waits for Team
+  Magma's grunts to leave the road (`FLAG_HIDE_ROUTE_112_TEAM_MAGMA`): Emerald's stand in her door's way, ours beside it.
+- **Mt. Chimney's summit**: Tabitha and two grunts are trainers of the map in the way; Team Aqua and Team Magma scuffle
+  in the middle with their Poochyena, each of whom only talks. Maxie battles at the machine, his people are taken off
+  behind a fade, and Archie walks round to thank the player from whichever side they spoke to Maxie from. The Meteorite
+  is read out of the machine (Emerald's `MeteoriteMachine`) and Cozmo, home in Fallarbor from then on, gives TM27 for it.
+  The mountain's trainers come out once Lavaridge Town is come to after the summit (Emerald clears their flag in
+  Lavaridge's own script), and the Lava Cookie lady sells at 200 money from the summit's quiet.
+- **Team Magma's eye song** is a song of Hoenn's own folder (`eye_magma`), which the sound map's `eyeSongs` names for
+  `Team Magma`, `Magma Admin` and `Magma Leader` (`MusicDirector.EyeSong`): a region without the file plays the class's
+  eye theme. Team Aqua keeps the eye theme part a gave both teams. The two leaders' battles and victories are Hoenn's own
+  `battle_galactic_boss` and `victory_galactic_boss` by their classes, the admins' Team Galactic's grunt theme.
+- **Lavaridge's Gym** is Emerald's two floors: the patches of sand that drop their walker to the floor of steam and the
+  vents that blow them back up are warp panels (`Overworld/WarpPanels.cs`), each to the tile over or under it. Where a
+  vent throws its rider onto plain sand that leads nowhere, the reader now counts that tile as a landing (`GbaWorld`), so
+  the builder lays no warp there. The vent under Eli, the hiker, would throw its rider into the hall's wall, and Emerald
+  keeps him standing on it for good: it is `locked`. Emerald buries its trainers in the sand and has them spring out as
+  the player comes near; here they stand on their patches in plain sight.
+- **The Go-Goggles** are Emerald's scene, but it waits for the doors it is written for: Emerald plays it on whatever tile
+  the town is next come to by, though its state is set only inside the Gym; ours plays as the player comes out of the
+  Gym or the Pokémon Center (`PLAYER_X` and `PLAYER_Y`). Emerald's rival rides off on a bicycle, a second object of the
+  town; ours runs.
+- **Mirage Tower** stands until one of its fossils is taken, where Emerald shows it on some days only. Taking either
+  hides both, shakes the floor and puts the player down in the sand before where it stood (`VAR_MIRAGE_TOWER_STATE` 1);
+  `FLAG_HOENN_MIRAGE_TOWER_FALLEN`, a flag of ours, shuts Route 111's way in (an overlay's `switches`), since Emerald hides
+  the tower's whole map object, which this world draws as its ground.
+- **Petalburg's Gym**: Emerald's doors between its rooms are warps that lead nowhere until a script moves the player; ours
+  are read, each asking "Go in?" before it lets the player through, open in the hall with four Badges
+  (`VAR_PETALBURG_GYM_STATE` 6) and in a room once its trainer is beaten. Whoever goes through comes in a tile north of
+  the room's mat facing into the room, so they don't stand on the way back out; each mat leads back to the floor before
+  the door it was come in by (the overlay's `doors`). Norman stands in the hall until the fourth Badge (Emerald's
+  `MoveNormanToEntrance`) and waits in his room from then on.
+- **HM03**: after Norman's battle Wally's father comes in, and the dark that closes in the Gym opens in Wally's house, where
+  he gives Surf (`VAR_PETALBURG_CITY_STATE` 4 to 5). Emerald walks the two of them across the city to his door. Norman's
+  Match Call is Emerald's on Route 104's boat, which H2 wrote without it, so it is not registered here.
+- **What waits**: the Desert Ruins' door (until the Regis), Gabby and Ty, the Secret Power man, Norman's rematch, the
+  harness's shots of this part.
 
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
