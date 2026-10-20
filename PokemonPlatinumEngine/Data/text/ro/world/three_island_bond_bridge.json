@@ -4,7 +4,7 @@
       "Bond Bridge"
     ],
     "text": [
-      ""
+      "Podul Legăturii"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Nikki"
         ],
         "text": [
-          ""
+          "Nikki"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Aroma Lady Nikki: The breeze off the forest smells of ripe berries. Let me share its sweetness with a battle!"
         ],
         "text": [
-          ""
+          "Doamna Aromelor Nikki: Adierea dinspre pădure miroase a boabe coapte. Lasă-mă să-i împart dulceața printr-o luptă!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Aroma Lady Nikki: Sweet, but a little sour too."
         ],
         "text": [
-          ""
+          "Doamna Aromelor Nikki: Dulce, dar și un pic acru."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Violet"
         ],
         "text": [
-          ""
+          "Violet"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Aroma Lady Violet: My Pokémon and I bathe in the scent of flowers every morning. Can you smell it?"
         ],
         "text": [
-          ""
+          "Doamna Aromelor Violet: Eu și Pokémonii mei ne scăldăm în parfumul florilor în fiecare dimineață. Îl simți?"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Aroma Lady Violet: Even the flowers wilted."
         ],
         "text": [
-          ""
+          "Doamna Aromelor Violet: Până și florile s-au ofilit."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Amira"
         ],
         "text": [
-          ""
+          "Amira"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Tuber Amira: I float under the bridge all day! Come and splash with me!"
         ],
         "text": [
-          ""
+          "Copil cu colac Amira: Plutesc toată ziua sub pod! Vino să te stropești cu mine!"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Tuber Amira: My ring sprang a leak."
         ],
         "text": [
-          ""
+          "Copil cu colac Amira: Mi s-a stricat colacul."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Alexis"
         ],
         "text": [
-          ""
+          "Alexis"
         ]
       },
       "before": {
@@ -100,7 +100,7 @@
           "Tuber Alexis: I'm going to swim all the way to the forest one day!"
         ],
         "text": [
-          ""
+          "Copil cu colac Alexis: Într-o zi o să înot până la pădure!"
         ]
       },
       "after": {
@@ -108,7 +108,7 @@
           "Tuber Alexis: Maybe I'll take the bridge instead."
         ],
         "text": [
-          ""
+          "Copil cu colac Alexis: Poate merg totuși pe pod."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Tisha"
         ],
         "text": [
-          ""
+          "Tisha"
         ]
       },
       "before": {
@@ -126,7 +126,7 @@
           "Swimmer Tisha: The sea under Bond Bridge is so clear you can see the fish. Battle me while I tread water!"
         ],
         "text": [
-          ""
+          "Înotătoare Tisha: Marea de sub Podul Legăturii e atât de limpede încât se văd peștii. Luptă-te cu mine cât mă țin pe apă!"
         ]
       },
       "after": {
@@ -134,7 +134,7 @@
           "Swimmer Tisha: I'm worn out. Time to float."
         ],
         "text": [
-          ""
+          "Înotătoare Tisha: Sunt sleită. E timpul să plutesc."
         ]
       }
     },
@@ -144,7 +144,7 @@
           "Joy"
         ],
         "text": [
-          ""
+          "Joy"
         ]
       },
       "before": {
@@ -152,7 +152,7 @@
           "Twins Joy: We're twins! We go everywhere together, even into battle!"
         ],
         "text": [
-          ""
+          "Gemene Joy: Suntem gemene! Mergem peste tot împreună, chiar și în luptă!"
         ]
       },
       "after": {
@@ -160,7 +160,7 @@
           "Twins Joy: We lost together, too."
         ],
         "text": [
-          ""
+          "Gemene Joy: Am pierdut tot împreună."
         ]
       }
     },
@@ -170,7 +170,7 @@
           "Meg"
         ],
         "text": [
-          ""
+          "Meg"
         ]
       },
       "before": {
@@ -178,7 +178,7 @@
           "Twins Meg: We're twins! We go everywhere together, even into battle!"
         ],
         "text": [
-          ""
+          "Gemene Meg: Suntem gemene! Mergem peste tot împreună, chiar și în luptă!"
         ]
       },
       "after": {
@@ -186,7 +186,7 @@
           "Twins Meg: We lost together, too."
         ],
         "text": [
-          ""
+          "Gemene Meg: Am pierdut tot împreună."
         ]
       }
     }
@@ -197,7 +197,7 @@
         "Berry Forest\nStraight ahead"
       ],
       "text": [
-        ""
+        "Pădurea Berry\nÎnainte"
       ]
     },
     "ThreeIsland_BondBridge_EventScript_BondBridgeSign": {
@@ -205,7 +205,7 @@
         "Bond Bridge\nThree Island - Berry Forest"
       ],
       "text": [
-        ""
+        "Podul Legăturii\nInsula Trei - Pădurea Berry"
       ]
     }
   }

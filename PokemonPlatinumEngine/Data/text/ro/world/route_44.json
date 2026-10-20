@@ -6,7 +6,7 @@
           "Phil"
         ],
         "text": [
-          ""
+          "Phil"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Psychic Phil: I sensed you coming from the other end of the route."
         ],
         "text": [
-          ""
+          "Medium Phil: Te-am simțit venind de la celălalt capăt al rutei."
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Psychic Phil: I didn't sense that, though."
         ],
         "text": [
-          ""
+          "Medium Phil: Pe asta, însă, nu am simțit-o."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Edgar"
         ],
         "text": [
-          ""
+          "Edgar"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Fisherman Edgar: Shh! You'll scare the fish. Fine, a quick battle!"
         ],
         "text": [
-          ""
+          "Pescar Edgar: Șșt! Sperii peștii. Bine, o luptă scurtă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Fisherman Edgar: Now the fish really are scared."
         ],
         "text": [
-          ""
+          "Pescar Edgar: Acum peștii chiar sunt speriați."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Wilton"
         ],
         "text": [
-          ""
+          "Wilton"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Fisherman Wilton: My Goldeen are the prettiest swimmers on this river."
         ],
         "text": [
-          ""
+          "Pescar Wilton: Goldeen ai mei sunt cei mai frumoși înotători de pe râul ăsta."
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Fisherman Wilton: Pretty, but not strong enough."
         ],
         "text": [
-          ""
+          "Pescar Wilton: Frumoși, dar nu destul de puternici."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Cybil"
         ],
         "text": [
-          ""
+          "Cybil"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Ace Trainer Cybil: You've come this far? Then you must be good. Show me!"
         ],
         "text": [
-          ""
+          "Antrenoare As Cybil: Ai ajuns până aici? Atunci trebuie să te pricepi. Arată-mi!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Ace Trainer Cybil: You're better than good."
         ],
         "text": [
-          ""
+          "Antrenoare As Cybil: Valorezi mai mult decât credeam."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Allen"
         ],
         "text": [
-          ""
+          "Allen"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Ace Trainer Allen: Fire and steel, my favourite mix. Let's battle!"
         ],
         "text": [
-          ""
+          "Antrenor As Allen: Foc și oțel, amestecul meu preferat. Hai să luptăm!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Ace Trainer Allen: That mix didn't work."
         ],
         "text": [
-          ""
+          "Antrenor As Allen: Amestecul ăsta n-a mers."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Zach"
         ],
         "text": [
-          ""
+          "Zach"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Poké Maniac Zach: My Rhyhorn charges first and thinks later. Ready?"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Zach: Rhyhorn al meu atacă întâi și gândește apoi. Gata?"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Poké Maniac Zach: It's still thinking about that one."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Zach: Încă se gândește la asta."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Vance"
         ],
         "text": [
-          ""
+          "Vance"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "Bird Keeper Vance: My birds watch the road to the Ice Path. Nobody gets by without a battle!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Vance: Păsările mele veghează drumul spre Calea de Gheață. Nimeni nu trece fără o luptă!"
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Bird Keeper Vance: My birds will let you by."
         ],
         "text": [
-          ""
+          "Crescător de păsări Vance: Păsările mele te lasă să treci."
         ]
       }
     }
@@ -189,7 +189,7 @@
         "Ice Path\nThe frozen way through to Blackthorn City."
       ],
       "text": [
-        ""
+        "Calea de Gheață\nTrecătoarea înghețată spre Orașul Blackthorn."
       ]
     },
     "R44_002+1": {
@@ -197,7 +197,7 @@
         "Route 44\nMahogany Town is to the west."
       ],
       "text": [
-        ""
+        "Ruta 44\nOrășelul Mahogany e spre vest."
       ]
     }
   }

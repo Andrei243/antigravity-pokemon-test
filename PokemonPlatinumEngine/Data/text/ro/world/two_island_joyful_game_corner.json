@@ -4,7 +4,7 @@
       "Joyful Game Corner"
     ],
     "text": [
-      ""
+      "Sala de Jocuri Joyful"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Lostelle's Daddy"
         ],
         "text": [
-          ""
+          "Tatăl lui Lostelle"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Biker"
         ],
         "text": [
-          ""
+          "Motociclist"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Outta my way!"
         ],
         "text": [
-          ""
+          "Din calea mea!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Lostelle"
         ],
         "text": [
-          ""
+          "Lostelle"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     }
@@ -63,7 +63,7 @@
         "A board for the records of the game corner's games. It's blank for now."
       ],
       "text": [
-        ""
+        "Un panou pentru recordurile jocurilor din sala de jocuri. Deocamdată e gol."
       ]
     },
     "TwoIsland_JoyfulGameCorner_EventScript_ShowDodrioBerryPickingRecords": {
@@ -71,7 +71,7 @@
         "A board for the records of the game corner's games. It's blank for now."
       ],
       "text": [
-        ""
+        "Un panou pentru recordurile jocurilor din sala de jocuri. Deocamdată e gol."
       ]
     }
   }

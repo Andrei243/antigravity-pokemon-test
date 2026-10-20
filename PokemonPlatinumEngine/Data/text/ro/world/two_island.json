@@ -4,7 +4,7 @@
       "Two Island"
     ],
     "text": [
-      ""
+      "Insula Doi"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The shop has more to sell since Lostelle came home. Her father ordered in all sorts for her."
         ],
         "text": [
-          ""
+          "Magazinul are mai multe de vândut de când s-a întors Lostelle acasă. Tatăl ei a comandat tot felul de lucruri pentru ea."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Beauty"
         ],
         "text": [
-          ""
+          "Frumoasa"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I sailed over from Kanto just to shop here. The stall gets the most unusual things."
         ],
         "text": [
-          ""
+          "Am venit cu vaporul din Kanto doar ca să cumpăr de aici. Taraba are cele mai neobișnuite lucruri."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Pokémaniac"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I heard the stall gets goods from far-off lands now. I simply had to see!"
         ],
         "text": [
-          ""
+          "Am auzit că taraba primește acum mărfuri din ținuturi îndepărtate. Trebuia pur și simplu să văd!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Sailor"
         ],
         "text": [
-          ""
+          "Marinar"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "The currents round the cape are fierce. Only a strong swimmer's Pokémon can cross them."
         ],
         "text": [
-          ""
+          "Curenții din jurul capului sunt puternici. Doar un Pokémon bun înotător îi poate traversa."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Little Boy"
         ],
         "text": [
-          ""
+          "Băiețelul"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "Lostelle is my friend! She runs off to pick berries all the time."
         ],
         "text": [
-          ""
+          "Lostelle e prietena mea! Fuge mereu să culeagă boabe."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "At the tip of Cape Brink lives an old woman who teaches the best moves to Pokémon. But only to ones that trust you completely!"
         ],
         "text": [
-          ""
+          "În vârful Capului Brink locuiește o bătrână care învață Pokémonii cele mai bune mișcări. Dar numai pe cei care au încredere deplină în tine!"
         ]
       }
     }
@@ -133,7 +133,7 @@
         "Two Island\nThe village where the waves bring good fortune"
       ],
       "text": [
-        ""
+        "Insula Doi\nSatul unde valurile aduc noroc"
       ]
     },
     "TwoIsland_EventScript_JoyfulGameCornerSign": {
@@ -141,7 +141,7 @@
         "Joyful Game Corner\nGames and good times for all the family"
       ],
       "text": [
-        ""
+        "Sala de Jocuri Joyful\nJocuri și veselie pentru toată familia"
       ]
     },
     "TwoIsland_EventScript_FastCurrentSign": {
@@ -149,7 +149,7 @@
         "Caution! Fast currents around the cape. Swim with care."
       ],
       "text": [
-        ""
+        "Atenție! Curenți puternici în jurul capului. Înotați cu grijă."
       ]
     }
   }

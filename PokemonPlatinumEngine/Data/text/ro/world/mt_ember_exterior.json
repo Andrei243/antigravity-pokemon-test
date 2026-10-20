@@ -4,7 +4,7 @@
       "Mt. Ember"
     ],
     "text": [
-      ""
+      "Muntele Ember"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "Climbing a live volcano is a test of nerve. The rocks up top are hot enough to fry an egg!"
         ],
         "text": [
-          ""
+          "Să urci pe un vulcan activ e o probă de nervi. Stâncile din vârf sunt destul de fierbinți cât să prăjești un ou!"
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Jocelyn"
         ],
         "text": [
-          ""
+          "Jocelyn"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Crush Girl Jocelyn: Climbing a volcano is the best training there is. Battle me at the top of my game!"
         ],
         "text": [
-          ""
+          "Luptătoare Crush Jocelyn: Urcatul pe un vulcan e cel mai bun antrenament. Luptă-te cu mine când sunt în plină formă!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Crush Girl Jocelyn: I'm all burned out."
         ],
         "text": [
-          ""
+          "Luptătoare Crush Jocelyn: Sunt complet epuizată."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Logan"
         ],
         "text": [
-          ""
+          "Logan"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Pokémon Ranger Logan: I keep watch over the Pokémon on this mountain. Show me you treat yours well!"
         ],
         "text": [
-          ""
+          "Ranger Pokémon Logan: Veghez asupra Pokémonilor de pe muntele ăsta. Arată-mi că te porți bine cu ai tăi!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Pokémon Ranger Logan: Yes, they're in good hands."
         ],
         "text": [
-          ""
+          "Ranger Pokémon Logan: Da, sunt pe mâini bune."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Beth"
         ],
         "text": [
-          ""
+          "Beth"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Pokémon Ranger Beth: A ranger goes wherever the Pokémon need help. Even up a volcano!"
         ],
         "text": [
-          ""
+          "Ranger Pokémon Beth: Un ranger merge oriunde au nevoie de ajutor Pokémonii. Chiar și pe un vulcan!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Pokémon Ranger Beth: You'd make a fine ranger yourself."
         ],
         "text": [
-          ""
+          "Ranger Pokémon Beth: Ai avea talent de ranger."
         ]
       }
     }

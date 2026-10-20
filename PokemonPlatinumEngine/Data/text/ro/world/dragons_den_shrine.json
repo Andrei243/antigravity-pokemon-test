@@ -6,7 +6,7 @@
           "Elder"
         ],
         "text": [
-          ""
+          "Bătrâna înțeleaptă"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "When the time is right, I will ask you some questions. Not yet."
         ],
         "text": [
-          "",
-          ""
+          "Bun venit în Sanctuarul Dragonilor. Aici îmblânzitorii de dragoni din Blackthorn învață ce înseamnă să fii puternic.",
+          "Când va veni vremea, îți voi pune câteva întrebări. Încă nu."
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "The elder has watched over this shrine since before Clair was born."
         ],
         "text": [
-          ""
+          "Bătrânul veghează asupra sanctuarului ăstuia de dinainte să se nască Clair."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "A dragon tamer's heart matters more than their strength. The elder taught us that."
         ],
         "text": [
-          ""
+          "Inima unui îmblânzitor de dragoni contează mai mult decât forța lui. Asta ne-a învățat bătrânul."
         ]
       }
     }

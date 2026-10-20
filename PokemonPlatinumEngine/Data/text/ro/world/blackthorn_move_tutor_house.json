@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "My father can make a Pokémon forget a move, and my uncle can help it remember one. They're very busy, though."
         ],
         "text": [
-          ""
+          "Tata poate face un Pokémon să uite o mișcare, iar unchiul meu îl poate ajuta să-și amintească una. Dar sunt foarte ocupați."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "A Pokémon can only know four moves at once. Choosing which ones is half the fun!"
         ],
         "text": [
-          ""
+          "Un Pokémon poate cunoaște doar patru mișcări odată. Alegerea lor e jumătate din distracție!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Forgetting a move is no shame. Even an HM can be let go, if you know how. Not today, though."
         ],
         "text": [
-          ""
+          "Nu e nicio rușine să uiți o mișcare. Chiar și un HM poate fi dat uitării, dacă știi cum. Nu azi, însă."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Remembering a forgotten move takes patience. Come back another time, dear."
         ],
         "text": [
-          ""
+          "Amintirea unei mișcări uitate cere răbdare. Revino altă dată, dragă."
         ]
       }
     }

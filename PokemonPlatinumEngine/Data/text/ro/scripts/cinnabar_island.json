@@ -91,7 +91,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -99,7 +99,7 @@
         "Phew, back on Cinnabar! Thanks for coming all that way with me, {player}."
       ],
       "text": [
-        ""
+        "Uf, înapoi pe Cinnabar! Mulțumesc că ai venit cu mine până acolo, {player}."
       ]
     },
     {
@@ -107,7 +107,7 @@
         "Keep the Tri-Pass. Celio said he'd love to see you again, so drop in on him when you're on One Island."
       ],
       "text": [
-        ""
+        "Păstrează Tri-Permisul. Celio a zis că i-ar plăcea să te revadă, așa că treci pe la el când ajungi pe Insula Unu."
       ]
     },
     {
@@ -115,7 +115,7 @@
         "Me, I'm off home to my cottage. My PCs must be missing me! See you around!"
       ],
       "text": [
-        ""
+        "Eu mă duc acasă, la căsuța mea. Mi-or fi dus dorul PC-urile! Ne vedem!"
       ]
     }
   ]

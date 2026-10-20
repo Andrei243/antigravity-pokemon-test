@@ -125,10 +125,7 @@
         "We'll be at this for a while. Say, {player}, could you run an errand for me while you look around?"
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "O să ne ia ceva timp. Du-te și uită-te prin jur, {player}. Marinarul din port te poate duce înapoi în Kanto."
+        "Mai durează puțin. Hei, {player}, ai putea să-mi faci o mică favoare cât te uiți prin jur?"
       ]
     },
     {
@@ -136,7 +133,7 @@
         "Go and have a look around, {player}. The sailor at the harbour can take you back to Kanto too."
       ],
       "text": [
-        ""
+        "Du-te și uită-te prin jur, {player}. Marinarul din port te poate duce și înapoi în Kanto."
       ]
     }
   ],
@@ -146,7 +143,7 @@
         "That's a Meteorite. A fellow who runs the game corner on Two Island has been wanting one for ages."
       ],
       "text": [
-        ""
+        "Ăsta e un meteorit. Un domn care conduce sala de jocuri de pe Insula Doi își dorește unul de o veșnicie."
       ]
     },
     {
@@ -154,7 +151,7 @@
         "Would you take it to him? Celio's been meaning to send it over, but he can't leave the machine."
       ],
       "text": [
-        ""
+        "Îl duci tu la el? Celio voia să-l trimită, dar nu poate lăsa mașinăria."
       ]
     }
   ],
@@ -164,7 +161,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -172,7 +169,7 @@
         "{player}! You're back! Guess what? Celio and I got the machine talking to Kanto at last."
       ],
       "text": [
-        ""
+        "{player}! Te-ai întors! Ghici ce? Eu și Celio am făcut mașinăria să vorbească în sfârșit cu Kanto."
       ]
     },
     {
@@ -180,7 +177,7 @@
         "The PCs on the islands are linked with the ones at home now. My work here's done."
       ],
       "text": [
-        ""
+        "PC-urile de pe insule sunt acum legate de cele de acasă. Treaba mea aici s-a terminat."
       ]
     },
     {
@@ -188,7 +185,7 @@
         "So I'm heading back to Kanto. Why don't you come along? I'll ride the Seagallop with you as far as Cinnabar."
       ],
       "text": [
-        ""
+        "Așa că mă întorc în Kanto. De ce nu vii și tu? Merg cu Seagallop împreună cu tine până la Cinnabar."
       ]
     },
     {
@@ -196,7 +193,7 @@
         "Celio"
       ],
       "text": [
-        ""
+        "Celio"
       ]
     },
     {
@@ -204,7 +201,7 @@
         "Bill, {player}, thank you both. I couldn't have done it without you."
       ],
       "text": [
-        ""
+        "Bill, {player}, vă mulțumesc amândurora. N-aș fi reușit fără voi."
       ]
     },
     {
@@ -212,7 +209,7 @@
         "{player}, come back and see me anytime. There's still so much I want to try with this machine."
       ],
       "text": [
-        ""
+        "{player}, revino oricând pe la mine. Mai am atâtea de încercat cu mașinăria asta."
       ]
     }
   ],
@@ -238,7 +235,7 @@
         "Did you take the Meteorite to the game corner on Two Island yet? The Seagallop will get you there."
       ],
       "text": [
-        ""
+        "Ai dus meteoritul la sala de jocuri de pe Insula Doi? Seagallop te duce acolo."
       ]
     },
     {
@@ -246,7 +243,7 @@
         "Oh, {player}! I almost forgot. Could you run an errand for me?"
       ],
       "text": [
-        ""
+        "A, {player}! Aproape uitam. Mi-ai face o mică favoare?"
       ]
     },
     {
@@ -254,7 +251,7 @@
         "You've been all the way to Three Island? Then you've seen more of the islands than me! Take your time, the machine's nearly there."
       ],
       "text": [
-        ""
+        "Ai ajuns până pe Insula Trei? Atunci ai văzut mai multe din insule decât mine! Nu te grăbi, mașinăria e aproape gata."
       ]
     }
   ],
@@ -272,10 +269,7 @@
         "Sorry, I'm in the middle of something. This machine is giving me no end of trouble."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Bill e un geniu. Cu ajutorul lui, sunt sigur că mașinăria se va lega de Kanto în scurt timp."
+        "Scuze, sunt ocupat. Mașinăria asta îmi dă bătăi de cap fără sfârșit."
       ]
     },
     {
@@ -283,10 +277,7 @@
         "Bill's a genius. With his help, I'm sure the machine will link up with Kanto in no time."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Scuze, sunt la mijlocul unei treburi. Mașinăria asta îmi face numai probleme."
+        "Bill e un geniu. Cu ajutorul lui, sunt sigur că mașinăria se va lega de Kanto în curând."
       ]
     },
     {
@@ -294,7 +285,7 @@
         "{player}, your Pokédex... it's been upgraded to the National Pokédex! Then you'll be meeting Pokémon from far and wide."
       ],
       "text": [
-        ""
+        "{player}, Pokédexul tău... a fost îmbunătățit la Pokédexul Național! Atunci vei întâlni Pokémoni din toate colțurile lumii."
       ]
     },
     {
@@ -302,7 +293,7 @@
         "Here's the thing. I want to link this machine to networks much farther away than Kanto. But it needs more power."
       ],
       "text": [
-        ""
+        "Uite care e treaba. Vreau să leg mașinăria asta la rețele mult mai îndepărtate decât Kanto. Dar are nevoie de mai multă putere."
       ]
     },
     {
@@ -310,7 +301,7 @@
         "There's a gem called the Ruby that holds the power I need. It's said to lie somewhere deep inside Mt. Ember, at the north end of this island."
       ],
       "text": [
-        ""
+        "Există o piatră prețioasă numită Rubin, care deține puterea de care am nevoie. Se zice că se află undeva adânc în Muntele Ember, la capătul de nord al insulei."
       ]
     },
     {
@@ -318,7 +309,7 @@
         "I know it's a lot to ask, but could you look for it? I'd go myself, but I'm no match for the Pokémon on that mountain."
       ],
       "text": [
-        ""
+        "Știu că cer mult, dar ai putea s-o cauți? Aș merge eu, dar nu fac față Pokémonilor de pe muntele acela."
       ]
     },
     {
@@ -326,7 +317,7 @@
         "Thanks to Bill, the islands' PCs are linked with Kanto. Now I'm trying to make the machine reach even farther."
       ],
       "text": [
-        ""
+        "Datorită lui Bill, PC-urile insulelor sunt legate de Kanto. Acum încerc să fac mașinăria să ajungă și mai departe."
       ]
     },
     {
@@ -334,7 +325,7 @@
         "That glow... It's the Ruby! You found it on Mt. Ember? Thank you, {player}!"
       ],
       "text": [
-        ""
+        "Strălucirea aceea... E Rubinul! L-ai găsit pe Muntele Ember? Mulțumesc, {player}!"
       ]
     },
     {
@@ -342,7 +333,7 @@
         "Now, there's one more thing I need. Could I ask one more favour of you?"
       ],
       "text": [
-        ""
+        "Mai am nevoie de ceva. Pot să-ți cer încă o favoare?"
       ]
     },
     {
@@ -350,7 +341,7 @@
         "Will you help me again?"
       ],
       "text": [
-        ""
+        "Mă ajuți din nou?"
       ]
     },
     {
@@ -358,7 +349,7 @@
         "There's said to be another gem, the Sapphire, somewhere on the islands farther south. With both, the machine will be complete."
       ],
       "text": [
-        ""
+        "Se zice că mai există o piatră prețioasă, Safirul, undeva pe insulele mai spre sud. Cu amândouă, mașinăria va fi completă."
       ]
     },
     {
@@ -366,7 +357,7 @@
         "This pass will help. Take it in place of your Tri-Pass."
       ],
       "text": [
-        ""
+        "Permisul ăsta te va ajuta. Ia-l în locul Tri-Permisului."
       ]
     },
     {
@@ -374,7 +365,7 @@
         "With the Rainbow Pass, the Seagallop will take you to all seven islands. I'm counting on you!"
       ],
       "text": [
-        ""
+        "Cu Permisul Curcubeu, Seagallop te duce pe toate cele șapte insule. Contez pe tine!"
       ]
     },
     {
@@ -382,7 +373,7 @@
         "Oh... Please think it over, {player}. You're the only one I can ask. Keep the Ruby safe until then."
       ],
       "text": [
-        ""
+        "A... Te rog, gândește-te, {player}. Ești singurul căruia îi pot cere. Păstrează Rubinul în siguranță până atunci."
       ]
     },
     {
@@ -390,7 +381,7 @@
         "The Ruby should be somewhere deep inside Mt. Ember. Please be careful on that mountain!"
       ],
       "text": [
-        ""
+        "Rubinul ar trebui să fie undeva adânc în Muntele Ember. Ai grijă pe muntele acela!"
       ]
     },
     {
@@ -398,7 +389,7 @@
         "The Sapphire should be on one of the islands farther south. The Seagallop will take you there with the Rainbow Pass."
       ],
       "text": [
-        ""
+        "Safirul ar trebui să fie pe una dintre insulele mai spre sud. Seagallop te duce acolo cu Permisul Curcubeu."
       ]
     }
   ]

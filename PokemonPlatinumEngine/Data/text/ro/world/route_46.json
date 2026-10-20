@@ -6,7 +6,7 @@
           "Bailey"
         ],
         "text": [
-          ""
+          "Bailey"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Hiker Bailey: Geodude, Geodude, Geodude! I only raise the best!"
         ],
         "text": [
-          ""
+          "Drumeț Bailey: Geodude, Geodude, Geodude! Eu cresc doar pe cei mai buni!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Hiker Bailey: Five of the best, and still beaten."
         ],
         "text": [
-          ""
+          "Drumeț Bailey: Cinci dintre cei mai buni, și tot învinși."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Ted"
         ],
         "text": [
-          ""
+          "Ted"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Camper Ted: I've been walking these hills all day. One more battle!"
         ],
         "text": [
-          ""
+          "Campist Ted: Am umblat pe dealurile astea toată ziua. Încă o luptă!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Camper Ted: That's my day done."
         ],
         "text": [
-          ""
+          "Campist Ted: Gata cu ziua mea."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Erin"
         ],
         "text": [
-          ""
+          "Erin"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Picnicker Erin: My Ponyta can gallop up any hill. Race you!"
         ],
         "text": [
-          ""
+          "Excursionistă Erin: Ponyta mea poate galopa pe orice deal. Întrecere!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Picnicker Erin: You won by a length."
         ],
         "text": [
-          ""
+          "Excursionistă Erin: Ai câștigat la o lungime."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -92,7 +92,7 @@
           "The road north climbs to the Dark Cave. It's pitch black inside without a light."
         ],
         "text": [
-          ""
+          "Drumul spre nord urcă spre Peștera Întunecată. Înăuntru e beznă fără o lumină."
         ]
       }
     }
@@ -103,7 +103,7 @@
         "Route 46\nRoute 29 is to the south."
       ],
       "text": [
-        ""
+        "Ruta 46\nRuta 29 e spre sud."
       ]
     },
     "R46_002+1": {
@@ -111,7 +111,7 @@
         "Dark Cave"
       ],
       "text": [
-        ""
+        "Peștera Întunecată"
       ]
     }
   }

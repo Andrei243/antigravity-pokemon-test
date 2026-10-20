@@ -6,7 +6,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "Clair isn't taking challengers just now. Her trainers are, though!"
         ],
         "text": [
-          "",
-          ""
+          "Clair folosește dragoni, cei mai duri Pokémoni. Mișcările de tip Gheață sunt cea mai bună șansă împotriva lor!",
+          "Clair nu primește provocări acum. Antrenorii ei, în schimb, da!"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Paulo"
         ],
         "text": [
-          ""
+          "Paulo"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Ace Trainer Paulo: Dragons don't scare easily. Neither do I!"
         ],
         "text": [
-          ""
+          "Antrenor As Paulo: Dragonii nu se sperie ușor. Nici eu!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Ace Trainer Paulo: I'm a little scared now."
         ],
         "text": [
-          ""
+          "Antrenor As Paulo: Acum mi-e un pic frică."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Lola"
         ],
         "text": [
-          ""
+          "Lola"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Ace Trainer Lola: Clair trains us hard. Let me show you!"
         ],
         "text": [
-          ""
+          "Antrenoare As Lola: Clair ne antrenează aspru. Lasă-mă să-ți arăt!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Ace Trainer Lola: She'll train me harder after this."
         ],
         "text": [
-          ""
+          "Antrenoare As Lola: După asta o să mă antreneze și mai aspru."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Cody"
         ],
         "text": [
-          ""
+          "Cody"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Ace Trainer Cody: Horsea grow into dragons too, you know!"
         ],
         "text": [
-          ""
+          "Antrenor As Cody: Și Horsea cresc și devin dragoni, să știi!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Ace Trainer Cody: Not big enough dragons."
         ],
         "text": [
-          ""
+          "Antrenor As Cody: Dragoni nu destul de mari."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Fran"
         ],
         "text": [
-          ""
+          "Fran"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Ace Trainer Fran: Only the best get to battle Clair. Are you the best?"
         ],
         "text": [
-          ""
+          "Antrenoare As Fran: Doar cei mai buni ajung să lupte cu Clair. Faci parte dintre ei?"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Ace Trainer Fran: You might just be."
         ],
         "text": [
-          ""
+          "Antrenoare As Fran: Se prea poate să faci parte."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Mike"
         ],
         "text": [
-          ""
+          "Mike"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Ace Trainer Mike: My Dragonair is the last test before the Leader!"
         ],
         "text": [
-          ""
+          "Antrenor As Mike: Dragonair-ul meu e ultimul test înaintea Liderului!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Ace Trainer Mike: You've passed it."
         ],
         "text": [
-          ""
+          "Antrenor As Mike: Ai trecut testul."
         ]
       }
     }
@@ -157,7 +157,7 @@
         "Blackthorn City Pokémon Gym\nLeader: Clair"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Blackthorn\nLideră: Clair"
       ]
     }
   }
