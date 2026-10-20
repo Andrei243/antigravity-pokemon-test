@@ -978,7 +978,7 @@ public class JohtoStoryTests
         Assert.Null(game.Present("d23r0103_babyboy1_9"));
 
         // The lift up from the fifth floor, and Archer on the deck
-        game.Arrive("Goldenrod_RadioTower_Elevator", 2, 4);
+        game.Arrive("Goldenrod_RadioTower_Elevator", 3, 5);
         Assert.Equal("Goldenrod_RadioTower_ObservationDeck", game.Map.Name);
         var archer = game.Talk("d23r0106_rkanbum");
         Assert.Contains(archer.Log, l => l.StartsWith("battle johto_executive_archer_archer"));

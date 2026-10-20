@@ -1653,7 +1653,6 @@ script JohtoPokegear
 # Mahogany Town calls this, as HeartGold rings the Pokégear on the next map. The radio has gone strange: Team Rocket
 # has taken Goldenrod's Radio Tower (2; FLAG_ROCKET_TAKEOVER_ACTIVE, FLAG_UNK_0C5).
 script JohtoTakeoverCall
-  scene "Professor Elm's call"
   sound "select"
   text "Brrrring! Brrrring! It's the Pokégear..."
   speaker "Prof. Elm"
@@ -1664,7 +1663,6 @@ script JohtoTakeoverCall
   setvar VAR_SCENE_ROCKET_TAKEOVER 2
   setflag FLAG_UNK_0C5
   setflag FLAG_ROCKET_TAKEOVER_ACTIVE
-  endscene
   return
 
 

@@ -505,9 +505,9 @@ public class JohtoTests
                      "Goldenrod_DeptStore_Basement" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // Petrel and Archer are battled by the scripts, Ariana and the floors' grunts by HeartGold's records
+        // Petrel and Archer are battled by the scripts, Ariana, Proton (HeartGold's second record of him) and the floors' grunts by HeartGold's records
         Assert.Contains(MapNamed("Goldenrod_RadioTower_5F").Everyone, n => n.Id == "johto_executive_ariana_ariana");
-        Assert.Contains(MapNamed("Goldenrod_RadioTower_4F").Everyone, n => n.Id == "johto_executive_proton_proton");
+        Assert.Contains(MapNamed("Goldenrod_RadioTower_4F").Everyone, n => n.Id == "johto_executive_proton_proton_2");
         Assert.Contains(MapNamed("Goldenrod_Underground_B2F").Everyone, n => n.Id == "johto_burglar_orson");
         Assert.Contains(MapNamed("Goldenrod_Underground_B1F").Everyone, n => n.Id == "johto_poke_maniac_donald");
         // The shutters of the second basement are ten, over twenty tiles, and the purple one three more
