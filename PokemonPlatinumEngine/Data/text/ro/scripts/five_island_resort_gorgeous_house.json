@@ -14,8 +14,8 @@
         "Oh, but while you are here, would you hear one little wish of mine?"
       ],
       "text": [
-        "",
-        ""
+        "Ce bine că ai venit! De când m-am întors acasă, majordomul nu mă slăbește deloc.",
+        "Dar, cât ești aici, ai vrea să asculți o mică dorință de-a mea?"
       ]
     },
     {
@@ -24,8 +24,8 @@
         "Would you be a dear and bring one to my door?"
       ],
       "text": [
-        "",
-        ""
+        "Tânjesc atât de mult să văd cu ochii mei un {species:VAR_RESORT_GORGEOUS_REQUESTED_MON}.",
+        "Ai vrea să-mi aduci unul la ușă?"
       ]
     },
     {
@@ -34,8 +34,8 @@
         "Travel a little and tell me what you find!"
       ],
       "text": [
-        "",
-        ""
+        "Mi-ar plăcea enorm să văd niște Pokémoni rari, dar nu cunosc niciunul.",
+        "Călătorește puțin și spune-mi ce găsești!"
       ]
     },
     {
@@ -44,8 +44,8 @@
         "You brought one all this way, for me? You darling creature!"
       ],
       "text": [
-        "",
-        ""
+        "Oh! Oh, ăla e un {species:VAR_RESORT_GORGEOUS_REQUESTED_MON} lângă tine?",
+        "Ai adus unul tocmai până aici, pentru mine? Ce gest minunat!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Butler"
       ],
       "text": [
-        "Ce bine că ai venit! Majordomul nu s-a dezlipit de lângă mine de când m-am întors. Mă bucur să te văd din nou."
+        "Majordom"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "You called, my lady?"
       ],
       "text": [
-        "Încă mă gândesc la o cale potrivită să-ți mulțumesc. Mai vino pe la mine!"
+        "Ați chemat, doamnă?"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Selphy"
       ],
       "text": [
-        ""
+        "Selphy"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "A token of my appreciation for my hero, if you please. The good one."
       ],
       "text": [
-        ""
+        "Un mic dar, ca semn al recunoștinței mele. Cel bun, te rog."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Butler"
       ],
       "text": [
-        ""
+        "Majordom"
       ]
     },
     {
@@ -94,8 +94,8 @@
         "Her ladyship asks that you accept this with her thanks."
       ],
       "text": [
-        "",
-        ""
+        "Cum doriți, doamnă.",
+        "Doamna te roagă să primești asta, cu mulțumirile ei."
       ]
     },
     {
@@ -104,8 +104,8 @@
         "Until then, my hero, I wish you the very best of luck!"
       ],
       "text": [
-        "",
-        ""
+        "Mă voi gândi la altceva ce îmi doresc neapărat să văd.",
+        "Până atunci, îți urez mult noroc!"
       ]
     }
   ]

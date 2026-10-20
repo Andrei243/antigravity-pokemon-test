@@ -6,7 +6,7 @@
           "Winona"
         ],
         "text": [
-          ""
+          "Winona"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Jared"
         ],
         "text": [
-          ""
+          "Jared"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Bird Keeper Jared: Behold the elegant flight of my birds! Winona taught me everything!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Jared: Priviți zborul elegant al păsărilor mele! Winona m-a învățat tot!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Bird Keeper Jared: Elegant, but not enough."
         ],
         "text": [
-          ""
+          "Crescător de păsări Jared: Elegant, dar nu destul."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Flint"
         ],
         "text": [
-          ""
+          "Flint"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Camper Flint: The gates in here aren't the only thing that'll turn you round. So will I!"
         ],
         "text": [
-          ""
+          "Campist Flint: Porțile de aici nu sunt singurele care te învârt pe loc. Și eu te învârt!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Camper Flint: I'm the one who got turned round."
         ],
         "text": [
-          ""
+          "Campist Flint: Eu sunt cel care s-a învârtit pe loc."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Ashley"
         ],
         "text": [
-          ""
+          "Ashley"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Picnicker Ashley: My three Swablu sing together! Can you handle a chorus?"
         ],
         "text": [
-          ""
+          "Excursionistă Ashley: Cei trei Swablu ai mei cântă împreună! Te descurci cu un cor?"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Picnicker Ashley: They're singing a sad song now."
         ],
         "text": [
-          ""
+          "Excursionistă Ashley: Acum cântă un cântec trist."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Edwardo"
         ],
         "text": [
-          ""
+          "Edwardo"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Bird Keeper Edwardo: The lovers of birds gather here to train under Winona. You'll go no further!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Edwardo: Iubitorii de păsări se adună aici ca să se antreneze sub Winona. Mai departe nu treci!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Bird Keeper Edwardo: Go on, then. Winona's waiting."
         ],
         "text": [
-          ""
+          "Crescător de păsări Edwardo: Hai, treci atunci. Winona te așteaptă."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Humberto"
         ],
         "text": [
-          ""
+          "Humberto"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Bird Keeper Humberto: Skarmory's steel wings will cut through you!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Humberto: Aripile de oțel ale lui Skarmory te vor tăia!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Bird Keeper Humberto: Blunted, those wings."
         ],
         "text": [
-          ""
+          "Crescător de păsări Humberto: Tocite, aripile alea."
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Darius"
         ],
         "text": [
-          ""
+          "Darius"
         ]
       },
       "before": {
@@ -164,7 +164,7 @@
           "Bird Keeper Darius: You've made it this far through the gates? Impressive. But here it ends!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Darius: Ai ajuns până aici prin porți? Impresionant. Dar aici te oprești!"
         ]
       },
       "after": {
@@ -172,7 +172,7 @@
           "Bird Keeper Darius: It didn't end. Go on."
         ],
         "text": [
-          ""
+          "Crescător de păsări Darius: Nu s-a terminat aici pentru tine. Mergi mai departe."
         ]
       }
     }
@@ -183,7 +183,7 @@
         "Fortree City Pokémon Gym\nLeader: Winona"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Fortree\nLideră: Winona"
       ]
     },
     "FortreeCity_Gym_EventScript_RightGymStatue": {
@@ -191,7 +191,7 @@
         "Fortree City Pokémon Gym\nLeader: Winona"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Fortree\nLideră: Winona"
       ]
     }
   }

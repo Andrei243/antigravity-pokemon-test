@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Up here in the trees, the Pokémon Center feels like a nest. A very comfortable nest."
         ],
         "text": [
-          ""
+          "Aici sus, printre copaci, Centrul Pokémon pare un cuib. Un cuib foarte confortabil."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "A Pokémon's moves aren't everything. How you use them is what counts."
         ],
         "text": [
-          ""
+          "Mișcările unui Pokémon nu sunt totul. Contează cum le folosești."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "There's a shop in town that sells things to decorate a secret base. I've been saving up!"
         ],
         "text": [
-          ""
+          "În oraș e un magazin care vinde lucruri pentru decorarea unei baze secrete. Am strâns bani pentru el!"
         ]
       }
     }

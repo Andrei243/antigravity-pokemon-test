@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "Pryce won't battle while it's going on. Come back once things have settled down."
         ],
         "text": [
-          "",
-          ""
+          "Ne pare rău, Arena nu e deschisă provocatorilor acum. În orașul ăsta se petrece ceva dubios.",
+          "Pryce nu se va lupta cât timp durează asta. Vino înapoi când lucrurile se liniștesc."
         ]
       }
     },

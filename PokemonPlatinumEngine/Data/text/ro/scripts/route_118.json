@@ -5,7 +5,7 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! Funny, running into you out here. I've just come from the Weather Institute up the river."
       ],
       "text": [
-        ""
+        "{player}! Ce coincidență să dăm unul peste altul aici. Tocmai vin de la Institutul Meteo, de pe râu în sus."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Tell me, how are your Pokémon? Do you feel the two of you have grown stronger together since Granite Cave?"
       ],
       "text": [
-        ""
+        "Spune-mi, ce mai fac Pokémonii tăi? Simțiți că v-ați întărit împreună de la Peștera de Granit?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "I'm heading on to Route 120 to look into something there. If you're passing, come and find me."
       ],
       "text": [
-        ""
+        "Merg mai departe pe Ruta 120, să cercetez ceva acolo. Dacă treci pe-acolo, vino să mă cauți."
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Fisherman"
       ],
       "text": [
-        ""
+        "Pescarul"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Ah, a fellow angler? A good rod makes all the difference, wouldn't you say?"
       ],
       "text": [
-        ""
+        "Ah, un coleg pescar? O undiță bună schimbă totul, nu crezi?"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Ha! I knew it the moment I saw you. Kindred spirits! Here, take this one. I've got a spare."
       ],
       "text": [
-        ""
+        "Ha! Mi-am dat seama de cum te-am văzut. Suflete înrudite! Uite, ia-o pe asta. Mai am una de rezervă."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Cast it where the water runs and see what bites. The fish here pull harder than you'd think!"
       ],
       "text": [
-        ""
+        "Aruncă-o unde curge apa și vezi ce mușcă. Peștii de aici trag mai tare decât ai crede!"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "No? Then you've never felt a real bite on the line. Come back once you have."
       ],
       "text": [
-        ""
+        "Nu? Atunci n-ai simțit niciodată o mușcătură adevărată pe fir. Vino înapoi când ai simțit."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Is the Good Rod treating you well? Bigger water means bigger Pokémon, remember that!"
       ],
       "text": [
-        ""
+        "Te servește bine Undița Bună? Apă mai mare înseamnă Pokémoni mai mari, ține minte!"
       ]
     }
   ],
@@ -89,7 +89,7 @@
         "Rose"
       ],
       "text": [
-        ""
+        "Rose"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "What a lovely battle. May I have your number? I'd like to share news of my flowers."
       ],
       "text": [
-        ""
+        "Ce luptă frumoasă. Îmi dai numărul tău? Aș vrea să-ți dau vești despre florile mele."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "Register Rose in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "O înregistrezi pe Rose la Apelurile din PokéNav?"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Thank you. I'll call when they bloom."
       ],
       "text": [
-        ""
+        "Mulțumesc. Te sun când înfloresc."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Oh, that's a shame. Perhaps another time."
       ],
       "text": [
-        ""
+        "Ah, păcat. Poate altă dată."
       ]
     }
   ],
@@ -131,7 +131,7 @@
         "Dalton"
       ],
       "text": [
-        ""
+        "Dalton"
       ]
     },
     {
@@ -139,7 +139,7 @@
         "Man, you rock! Let's swap numbers. I'll call when I've got a new song."
       ],
       "text": [
-        ""
+        "Omule, ești grozav! Să facem schimb de numere. Te sun când am un cântec nou."
       ]
     },
     {
@@ -147,7 +147,7 @@
         "Register Dalton in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "Îl înregistrezi pe Dalton la Apelurile din PokéNav?"
       ]
     },
     {
@@ -155,7 +155,7 @@
         "Sweet! Keep your ears open."
       ],
       "text": [
-        ""
+        "Super! Ține urechile deschise."
       ]
     },
     {
@@ -163,7 +163,7 @@
         "No worries. The music goes on!"
       ],
       "text": [
-        ""
+        "Nicio problemă. Muzica merge mai departe!"
       ]
     }
   ]

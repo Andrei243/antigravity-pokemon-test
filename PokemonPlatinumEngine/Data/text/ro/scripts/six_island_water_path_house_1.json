@@ -5,7 +5,7 @@
         "Beauty"
       ],
       "text": [
-        ""
+        "Frumoasa"
       ]
     },
     {
@@ -14,8 +14,8 @@
         "I simply must know how big it is. May I measure it? Please?"
       ],
       "text": [
-        "",
-        ""
+        "Oh! Oh, doamne! Ăla e un Heracross lângă tine?",
+        "Trebuie neapărat să știu cât de mare e. Pot să-l măsor? Te rog?"
       ]
     },
     {
@@ -25,9 +25,9 @@
         "Here, you must take this. A splendid Pokémon deserves a splendid ball."
       ],
       "text": [
-        "",
-        "",
-        ""
+        "{size}! De la un capăt al cornului la celălalt, {size} întregi!",
+        "Ăsta e cel mai frumos Heracross care mi s-a arătat vreodată.",
+        "Uite, trebuie să primești asta. Un Pokémon splendid merită un Ball splendid."
       ]
     },
     {
@@ -35,7 +35,7 @@
         "I shall write it on my chart at once. Do come back if you find a bigger one!"
       ],
       "text": [
-        ""
+        "O trec pe grafic chiar acum. Întoarce-te dacă găsești unul mai mare!"
       ]
     },
     {
@@ -44,8 +44,8 @@
         "Bring one to my door and I'll measure it for you, on my word."
       ],
       "text": [
-        "",
-        ""
+        "Heracross sunt cei mai minunați Pokémoni! Cu cât cornul e mai mare, cu atât mai bine.",
+        "Adu-mi unul la ușă și ți-l măsor, pe cuvânt."
       ]
     },
     {
@@ -54,8 +54,8 @@
         "The very same, to the millimetre! How uncanny."
       ],
       "text": [
-        "",
-        ""
+        "{size}... iar graficul meu zice {record}.",
+        "Exact la fel, până la milimetru! Ce stranie coincidență."
       ]
     },
     {
@@ -64,8 +64,8 @@
         "But the chart says {record}, and the chart does not lie."
       ],
       "text": [
-        "",
-        ""
+        "Ăsta face {size}. Un Heracross frumos, într-adevăr.",
+        "Dar graficul zice {record}, iar graficul nu minte."
       ]
     },
     {
@@ -73,7 +73,7 @@
         "This won't do at all. I measure Heracross and nothing else!"
       ],
       "text": [
-        ""
+        "Așa nu merge deloc. Eu măsor Heracross și nimic altceva!"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "No? Oh, how disappointing. I had my tape ready and all."
       ],
       "text": [
-        ""
+        "Nu? Oh, ce dezamăgire. Îmi pregătisem și ruleta."
       ]
     }
   ],
@@ -91,7 +91,7 @@
         "A chart for writing down Heracross sizes. The biggest so far: {record}."
       ],
       "text": [
-        ""
+        "Un grafic pentru notarea mărimilor Heracross. Cel mai mare până acum: {record}."
       ]
     },
     {
@@ -99,7 +99,7 @@
         "A chart for writing down Heracross sizes. Nothing is written on it yet."
       ],
       "text": [
-        ""
+        "Un grafic pentru notarea mărimilor Heracross. Încă nu e scris nimic pe el."
       ]
     }
   ]
