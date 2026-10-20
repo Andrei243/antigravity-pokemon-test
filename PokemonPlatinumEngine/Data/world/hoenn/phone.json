@@ -164,5 +164,26 @@
     "class": "Bug Maniac",
     "trainer": "hoenn_jeffrey_1",
     "area": "route_120"
+  },
+  {
+    "id": "hoenn_walter",
+    "type": 0,
+    "class": "Gentleman",
+    "trainer": "hoenn_walter_1",
+    "area": "route_121"
+  },
+  {
+    "id": "hoenn_jessica",
+    "type": 0,
+    "class": "Beauty",
+    "trainer": "hoenn_jessica_1",
+    "area": "route_121"
+  },
+  {
+    "id": "hoenn_cristin",
+    "type": 0,
+    "class": "Cooltrainer",
+    "trainer": "hoenn_cristin_1",
+    "area": "route_121"
   }
 ]

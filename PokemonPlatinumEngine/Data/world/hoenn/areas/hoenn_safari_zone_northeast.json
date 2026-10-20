@@ -1,0 +1,58 @@
+{
+  "key": "hoenn_safari_zone_northeast",
+  "index": 411,
+  "name": "Safari Zone",
+  "matrix": 356,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SAFARI_ZONE",
+  "nightMusic": "MUS_SAFARI_ZONE",
+  "encounters": "hoenn_safari_zone_northeast",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Aipom", "level": 33 },
+    { "species": "Teddiursa", "level": 34 },
+    { "species": "Aipom", "level": 35 },
+    { "species": "Teddiursa", "level": 36 },
+    { "species": "Sunkern", "level": 34 },
+    { "species": "Ledyba", "level": 33 },
+    { "species": "Hoothoot", "level": 35 },
+    { "species": "Pineco", "level": 34 },
+    { "species": "Houndour", "level": 36 },
+    { "species": "Miltank", "level": 37 },
+    { "species": "Houndour", "level": 39 },
+    { "species": "Miltank", "level": 40 }
+  ],
+  "landRate": 25,
+  "rockSmash": [
+    { "species": "Shuckle", "level": 25, "maxLevel": 30 },
+    { "species": "Shuckle", "level": 20, "maxLevel": 25 },
+    { "species": "Shuckle", "level": 30, "maxLevel": 35 },
+    { "species": "Shuckle", "level": 30, "maxLevel": 35 },
+    { "species": "Shuckle", "level": 35, "maxLevel": 40 }
+  ],
+  "rockSmashRate": 25,
+  "warps": [],
+  "objects": [
+    { "id": "boy_3", "looks": "boy_3", "movement": "look_around", "x": 88, "z": 20, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_Northeast_EventScript_Boy" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "look_around", "x": 110, "z": 22, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_Northeast_EventScript_Girl" },
+    { "id": "breakable_rock", "looks": "breakable_rock", "movement": "look_around", "x": 91, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_around", "x": 93, "z": 35, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_Northeast_EventScript_Woman" },
+    { "id": "breakable_rock_2", "looks": "breakable_rock", "movement": "look_around", "x": 88, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_3", "looks": "breakable_rock", "movement": "look_around", "x": 89, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_4", "looks": "breakable_rock", "movement": "look_around", "x": 88, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_RockSmash" },
+    { "id": "breakable_rock_5", "looks": "breakable_rock", "movement": "look_around", "x": 92, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 88, "z": 17, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET", "item": "Nugget", "script": "SafariZone_Northeast_EventScript_ItemNugget" }
+  ],
+  "signs": [
+    { "x": 111, "z": 35, "type": 2, "script": "", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_SAFARI_ZONE_NORTH_EAST_RARE_CANDY" },
+    { "x": 101, "z": 5, "type": 2, "script": "", "item": "Zinc", "flag": "FLAG_HIDDEN_ITEM_SAFARI_ZONE_NORTH_EAST_ZINC" }
+  ],
+  "triggers": []
+}

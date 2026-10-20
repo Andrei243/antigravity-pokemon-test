@@ -1,0 +1,73 @@
+{
+  "key": "hoenn_safari_zone_southeast",
+  "index": 412,
+  "name": "Safari Zone",
+  "matrix": 356,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SAFARI_ZONE",
+  "nightMusic": "MUS_SAFARI_ZONE",
+  "encounters": "hoenn_safari_zone_southeast",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Sunkern", "level": 33 },
+    { "species": "Mareep", "level": 34 },
+    { "species": "Sunkern", "level": 35 },
+    { "species": "Mareep", "level": 36 },
+    { "species": "Aipom", "level": 34 },
+    { "species": "Spinarak", "level": 33 },
+    { "species": "Hoothoot", "level": 35 },
+    { "species": "Snubbull", "level": 34 },
+    { "species": "Stantler", "level": 36 },
+    { "species": "Gligar", "level": 37 },
+    { "species": "Stantler", "level": 39 },
+    { "species": "Gligar", "level": 40 }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Wooper", "level": 25, "maxLevel": 30 },
+    { "species": "Marill", "level": 25, "maxLevel": 30 },
+    { "species": "Marill", "level": 25, "maxLevel": 30 },
+    { "species": "Marill", "level": 30, "maxLevel": 35 },
+    { "species": "Quagsire", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 9,
+  "oldRod": [
+    { "species": "Magikarp", "level": 25, "maxLevel": 30, "weight": 70 },
+    { "species": "Goldeen", "level": 25, "maxLevel": 30 }
+  ],
+  "oldRodRate": 35,
+  "goodRod": [
+    { "species": "Magikarp", "level": 25, "maxLevel": 30, "weight": 60 },
+    { "species": "Goldeen", "level": 25, "maxLevel": 30, "weight": 20 },
+    { "species": "Remoraid", "level": 30, "maxLevel": 35, "weight": 20 }
+  ],
+  "goodRodRate": 35,
+  "superRod": [
+    { "species": "Goldeen", "level": 25, "maxLevel": 30 },
+    { "species": "Remoraid", "level": 25, "maxLevel": 30 },
+    { "species": "Remoraid", "level": 30, "maxLevel": 35 },
+    { "species": "Remoraid", "level": 30, "maxLevel": 35 },
+    { "species": "Octillery", "level": 35, "maxLevel": 40 }
+  ],
+  "superRodRate": 35,
+  "warps": [],
+  "objects": [
+    { "id": "rich_boy", "looks": "rich_boy", "movement": "look_around", "x": 87, "z": 47, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_Southeast_EventScript_RichBoy" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "wander_around", "x": 100, "z": 70, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_Southeast_EventScript_FatMan" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "wander_around", "x": 88, "z": 66, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_Southeast_EventScript_LittleGirl" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 111, "z": 55, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL", "item": "Big Pearl", "script": "SafariZone_Southeast_EventScript_ItemBigPearl" },
+    { "id": "camper", "looks": "camper", "movement": "look_west", "x": 92, "z": 56, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION", "script": "SafariZone_Southeast_EventScript_ExpansionZoneAttendant" }
+  ],
+  "signs": [
+    { "x": 99, "z": 76, "type": 2, "script": "", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_SAFARI_ZONE_SOUTH_EAST_PP_UP" },
+    { "x": 112, "z": 73, "type": 2, "script": "", "item": "Full Restore", "flag": "FLAG_HIDDEN_ITEM_SAFARI_ZONE_SOUTH_EAST_FULL_RESTORE" }
+  ],
+  "triggers": []
+}

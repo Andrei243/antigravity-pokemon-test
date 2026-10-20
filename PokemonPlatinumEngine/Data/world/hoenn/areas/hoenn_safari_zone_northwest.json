@@ -1,0 +1,67 @@
+{
+  "key": "hoenn_safari_zone_northwest",
+  "index": 407,
+  "name": "Safari Zone",
+  "matrix": 356,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SAFARI_ZONE",
+  "nightMusic": "MUS_SAFARI_ZONE",
+  "encounters": "hoenn_safari_zone_northwest",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Rhyhorn", "level": 27 },
+    { "species": "Oddish", "level": 27 },
+    { "species": "Rhyhorn", "level": 29 },
+    { "species": "Oddish", "level": 29 },
+    { "species": "Doduo", "level": 27 },
+    { "species": "Gloom", "level": 29 },
+    { "species": "Gloom", "level": 31 },
+    { "species": "Doduo", "level": 29 },
+    { "species": "Dodrio", "level": 29 },
+    { "species": "Pinsir", "level": 27 },
+    { "species": "Dodrio", "level": 31 },
+    { "species": "Pinsir", "level": 29 }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 30 },
+    { "species": "Psyduck", "level": 30, "maxLevel": 35 },
+    { "species": "Golduck", "level": 30, "maxLevel": 35 },
+    { "species": "Golduck", "level": 25, "maxLevel": 40 }
+  ],
+  "waterRate": 9,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 35,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 25, "weight": 20 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 35,
+  "superRod": [
+    { "species": "Goldeen", "level": 25, "maxLevel": 30 },
+    { "species": "Goldeen", "level": 30, "maxLevel": 35 },
+    { "species": "Seaking", "level": 30, "maxLevel": 35 },
+    { "species": "Seaking", "level": 35, "maxLevel": 40 },
+    { "species": "Seaking", "level": 25, "maxLevel": 30 }
+  ],
+  "superRodRate": 35,
+  "warps": [],
+  "objects": [
+    { "id": "man_1", "looks": "man_1", "movement": "look_south", "x": 8, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SafariZone_Northwest_EventScript_Man" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 33, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_SAFARI_ZONE_NORTH_WEST_TM_SOLAR_BEAM", "item": "TM22", "script": "SafariZone_Northwest_EventScript_ItemTMSolarBeam" }
+  ],
+  "signs": [],
+  "triggers": []
+}

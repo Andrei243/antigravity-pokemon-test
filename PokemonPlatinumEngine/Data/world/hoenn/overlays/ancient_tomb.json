@@ -1,0 +1,12 @@
+{
+  // The Ancient Tomb (plan 21 · H6, part b), behind the cut tree on Route 120: a hall and the chamber behind it, both
+  // open as in Emerald. The raised dots over the inner doorway are read as words of our own. Registeel is not listed:
+  // it stays away, as Emerald keeps it until the Sealed Chamber is read (plan 21 · H8 and after), and Flash in the
+  // chamber's middle opens nothing until then
+  "area": "ancient_tomb",
+  "bgmTrack": "hoenn/sealed_chamber",
+  "signs": {
+    "AncientTomb_EventScript_CaveEntranceMiddle": "Rows of raised dots are carved over the doorway.\nThey seem to say: let light shine in the middle.",
+    "AncientTomb_EventScript_CaveEntranceSide": "The wall is covered in raised dots, worn smooth\nby the years. Nobody could read them now."
+  }
+}

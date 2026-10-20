@@ -1,0 +1,10 @@
+{
+  // The Safari Zone's rest house (plan 21 · H6, part b): three visitors resting their feet
+  "area": "hoenn_safari_zone_rest_house",
+  "bgmTrack": "hoenn/safari_zone",
+  "people": {
+    "youngster": { "name": "Youngster", "dialog": [ "I had no treats to throw, but I still caught plenty. Sneak up close before you throw a ball. It works!" ] },
+    "psychic_m": { "name": "Psychic", "dialog": [ "A treat makes a wild Pokémon slower to run off. Though there's no point giving one to a Pokémon that never runs." ] },
+    "fat_man": { "name": "Man", "dialog": [ "Leave a treat in a box out there, and Pokémon come for it. I bet each kind of treat draws a different sort." ] }
+  }
+}

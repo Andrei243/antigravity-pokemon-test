@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
@@ -337,5 +338,58 @@ public class HoennTests
         // Coming in again lays every gate out afresh
         gates.Reset();
         Assert.Equal(start, Enumerable.Range(0, count).Select(gates.TurnOf));
+    }
+
+    // ------------------------------------------------------------------ plan 21 · H6, part b: Route 121 and the Safari Zone
+
+    [Fact]
+    public void RouteOneTwentyOneAndTheSafariZoneAreOpenWithTheirTables()
+    {
+        foreach (string key in new[] { "route_121", "route_121_safari_zone_entrance", "hoenn_safari_zone_south", "hoenn_safari_zone_southwest",
+                     "hoenn_safari_zone_north", "hoenn_safari_zone_northwest", "hoenn_safari_zone_northeast", "hoenn_safari_zone_southeast",
+                     "hoenn_safari_zone_rest_house", "ancient_tomb", "scorched_slab" })
+            Assert.Contains(key, Hoenn.Index.Areas);
+        Assert.Equal("route_121", Overworld.AreaAt(429, 94)?.Key);
+        Assert.Equal("hoenn/route120", Overworld.BgmTrackAt(429, 94));
+        // The zone's six parts are one map, each part its own area with Emerald's own table and the zone's own song
+        var zone = BuiltMaps.Value["HoennSafariZone"];
+        Assert.Equal("hoenn_safari_zone_south", zone.AreaAt(72, 75)?.Key);
+        Assert.Equal("hoenn/safari_zone", zone.BgmTrackAt(72, 75));
+        Assert.Contains(Hoenn.Area("hoenn_safari_zone_south")!.Land!, e => e.Species == "Girafarig");
+        foreach (string part in new[] { "south", "southwest", "north", "northwest" })
+            Assert.NotEmpty(Hoenn.Area($"hoenn_safari_zone_{part}")!.Land!);
+        // FireRed's Safari Zone keeps its keys: Hoenn's take the region's prefix, so the two never meet
+        Assert.DoesNotContain("safari_zone_south", Hoenn.Index.Areas);
+        // The zone's attendant stands before its door back to the gate, and the counter's trigger is in the gate
+        Assert.Contains(zone.Everyone, n => n.Key == "safari_exit_attendant" && n.GridX == 72 && n.GridY == 74);
+        Assert.Contains(BuiltMaps.Value["Route121_SafariZoneEntrance"].Triggers, t => t.Script == "Counter");
+        Assert.True(MusicLibrary.Exists("hoenn/safari_zone"));
+        Assert.True(MusicLibrary.Exists("hoenn/sealed_chamber"));
+    }
+
+    [Fact]
+    public void TheAncientTombAndTheScorchedSlabOpenOffRouteOneTwenty()
+    {
+        // Route 120's two ways in are open since part b
+        foreach (string target in new[] { "AncientTomb", "ScorchedSlab" })
+            Assert.Contains(Overworld.Warps, w => w.TargetMap == target && !w.Shut);
+        var tomb = BuiltMaps.Value["AncientTomb"];
+        Assert.Equal("hoenn/sealed_chamber", tomb.BgmTrackAt(8, 25));
+        // Registeel stays away until its chamber is read (plan 21 · H8 and after)
+        Assert.DoesNotContain(tomb.NPCs, n => n.Key == "registeel");
+        // The Scorched Slab's TM11, Sunny Day, lies on its far side
+        Assert.Contains(BuiltMaps.Value["ScorchedSlab"].Everyone, n => n.IsItemBall && n.Item == "TM11");
+    }
+
+    [Fact]
+    public void LavaridgesBuriedTrainersLieOnPatchesThatLeadNowhere()
+    {
+        // A buried trainer springs up at whoever comes near and stays on the patch once beaten, so the warp under one
+        // is never taken: the reader writes it as a landing (plan 21 · H6, part b), as Gerald's at 2,15 is
+        var gym = Hoenn.Area("lavaridge_town_gym_1f")!;
+        Assert.True(gym.Warps.Single(w => w.X == 2 && w.Z == 15).Landing == true);
+        Assert.True(gym.Warps.Single(w => w.X == 5 && w.Z == 14).Landing != true);
+        var b1f = Hoenn.Area("lavaridge_town_gym_b1f")!;
+        Assert.Contains(b1f.Warps, w => w.Landing == true);
     }
 }

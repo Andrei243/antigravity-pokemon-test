@@ -2,12 +2,11 @@
   // Route 120 (plan 21 · H6): east of Fortree City, over the bridge where Steven waits beside a Kecleon nobody can see,
   // then south through rain and long grass toward Route 121 (route_120.txt). Emerald sets its weather by script as the
   // player crosses rows and columns: here the north end is clear, the middle wet and the south under cloud. The ways
-  // into the Ancient Tomb and the Scorched Slab stay shut for part b. The shadow Emerald draws under the bridge's
+  // into the Ancient Tomb and the Scorched Slab are open since part b. The shadow Emerald draws under the bridge's
   // Kecleon, and Gabby and Ty, are left away
   "area": "route_120",
   "bgmTrack": "hoenn/route120",
   "trees": "Round",
-  "locked": [ 0, 1 ],
   "zones": [
     { "x": 360, "z": 15, "width": 40, "depth": 46, "weather": "Raining" },
     { "x": 360, "z": 61, "width": 40, "depth": 39, "weather": "Cloudy" }

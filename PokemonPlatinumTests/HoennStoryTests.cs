@@ -1450,4 +1450,132 @@ public class HoennStoryTests
             Assert.True(MusicLibrary.Exists(song), song);
         Assert.Equal(9111, ItemDatabase.Get("Devon Scope")!.Id);
     }
+
+    // ------------------------------------------------------------------ plan 21 · H6, part b: Route 121, the Safari Zone and Fortree's houses
+
+    [Fact]
+    public void TeamAquasGruntsMoveOutOfRouteOneTwentyOneOnce()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("Hoenn", 428, 90);
+        Assert.True(game.Story.Has("FLAG_HOENN_CHAPTER_SEVEN_B"));
+        Assert.NotNull(game.Present("route121_grunt_1"));
+        var scene = game.Step("GruntsMoveOut");
+        Assert.Contains(scene.Transcript, l => l.Text.Contains("Mt. Pyre"));
+        Assert.Equal(1, game.Story.Var("VAR_ROUTE121_STATE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS"));
+        foreach (string grunt in new[] { "route121_grunt_1", "route121_grunt_2", "route121_grunt_3" })
+            Assert.Null(game.Present(grunt));
+        Assert.False(game.Fires("GruntsMoveOut"));
+    }
+
+    [Fact]
+    public void TheSafariZoneIsPaidForAtItsCounterAndLeftPastItsAttendant()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("Route121_SafariZoneEntrance", 8, 5);
+        var counter = game.Step("Counter");
+        // $500 for thirty Safari Balls and Emerald's five hundred steps, then through the zone's door
+        Assert.True(counter.Safari.Active);
+        Assert.Equal(SafariGame.StartBalls, counter.Safari.Balls);
+        Assert.Equal(500, counter.Safari.Steps);
+        Assert.Equal(3000 - SafariGame.Fee, counter.Money);
+        Assert.Equal("HoennSafariZone", game.Map.Name);
+        Assert.Equal((72, 75), game.Tile);
+        Assert.Equal(0, game.Story.Var("VAR_SAFARI_ZONE_STATE"));
+        Assert.False(game.Story.Has("FLAG_GOOD_LUCK_SAFARI_ZONE"));
+
+        // A game over in Hoenn (the last step, the last ball) brings the player back to the gate, past the counter
+        game.Play(Scripts.Find("SafariTimeUp", "common")!);
+        Assert.Equal("Route121_SafariZoneEntrance", game.Map.Name);
+        Assert.Equal(0, game.Story.Var("VAR_SAFARI_ZONE_STATE"));
+        Assert.Equal((9, 4), game.Tile);
+
+        // With no game on, the attendant inside the door shows the player out the same way
+        game.Arrive("HoennSafariZone", 72, 75);
+        game.Talk("safari_exit_attendant");
+        Assert.Equal("Route121_SafariZoneEntrance", game.Map.Name);
+        Assert.Equal((9, 4), game.Tile);
+        Assert.Equal(0, game.Story.Var("VAR_SAFARI_ZONE_STATE"));
+
+        // Turned down, the counter sends the player a step back and takes nothing
+        game.Arrive("Route121_SafariZoneEntrance", 8, 5);
+        game.Decide = (_, _) => 1;
+        var refused = game.Step("Counter");
+        Assert.False(refused.Safari.Active);
+        Assert.Equal(3000, refused.Money);
+        Assert.Equal("Route121_SafariZoneEntrance", game.Map.Name);
+    }
+
+    [Fact]
+    public void ANewGameOfHoennKeepsTheSafariZonesExpansionShutAndAnOlderSaveIsToldOnRouteOneTwentyOne()
+    {
+        var fresh = new Game();
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_SEVEN_B", "FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION" })
+            Assert.True(fresh.Story.Has(flag), flag);
+        Assert.False(fresh.Story.Has("FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS"));
+
+        // A save from before part b never ran its script: Route 121's arrival runs it, and no story version is raised
+        var old = PastNorman(0, PlayerLook.Boy);
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_SEVEN_B", "FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION" })
+            old.Story.Unset(flag);
+        old.Arrive("Hoenn", 428, 90);
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_SEVEN_B", "FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION" })
+            Assert.True(old.Story.Has(flag), flag);
+    }
+
+    [Fact]
+    public void FortreesBoyTradesHisPlusleForAVolbeatOnce()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Volbeat")!, 20));
+        game.Arrive("FortreeCity_House1", 3, 4);
+        game.Talk("ninja_boy");
+        Assert.True(game.Story.Has("FLAG_FORTREE_NPC_TRADE_COMPLETED"));
+        var pluses = game.Party.Members[0];
+        Assert.Equal("Plusle", pluses.Species.Name);
+        Assert.Equal("Pluses", pluses.Nickname);
+        Assert.Equal("Grass Mail", pluses.HeldItem?.Name);
+        // Emerald's trade gives each condition its own number, and a sheen
+        Assert.Equal((5, 5, 30, 5, 5, 10), (pluses.Cool, pluses.Beauty, pluses.Cute, pluses.Smart, pluses.Tough, pluses.Sheen));
+        var again = game.Talk("ninja_boy");
+        Assert.Empty(again.Asked);
+
+        // One who brings no Volbeat keeps their own
+        var other = PastNorman(0, PlayerLook.Boy);
+        string mine = other.Party.Members[0].Species.Name;
+        other.Arrive("FortreeCity_House1", 3, 4);
+        other.Talk("ninja_boy");
+        Assert.False(other.Story.Has("FLAG_FORTREE_NPC_TRADE_COMPLETED"));
+        Assert.Equal(mine, other.Party.Members[0].Species.Name);
+    }
+
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public void FortreesOldWomanGivesHiddenPowerForThreeRightGuesses(bool right)
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("FortreeCity_House2", 3, 4);
+        // The coin is in the right hand, the right, then the left (Emerald's answers)
+        game.Decide = (question, _) => question.Contains("One more") ? (right ? 1 : 0) : 0;
+        game.Talk("expert_f");
+        Assert.True(game.Story.Has("FLAG_MET_HIDDEN_POWER_GIVER"));
+        Assert.Equal(right, game.Story.Has("FLAG_RECEIVED_TM_HIDDEN_POWER"));
+        Assert.Equal(right ? 1 : 0, game.Bag.GetQuantity(ItemDatabase.Get("TM10")!));
+    }
+
+    [Fact]
+    public void FortreesOldManTeachesSleepTalkOnce()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Slakoth")!, 5));
+        game.Arrive("FortreeCity_House2", 6, 4);
+        game.Talk("expert_m");
+        Assert.True(game.Party.Members[0].Knows("Sleep Talk"));
+        Assert.True(game.Story.Has("FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK"));
+        var again = game.Talk("expert_m");
+        Assert.Empty(again.Asked);
+        Assert.Equal(TutorAnswer.Able, MoveTutors.ForKanto(new Pokemon(PokemonDatabase.Get("Zigzagoon")!, 10), "Sleep Talk"));
+    }
 }

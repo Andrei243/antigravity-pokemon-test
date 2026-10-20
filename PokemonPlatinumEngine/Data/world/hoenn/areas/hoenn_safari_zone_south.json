@@ -1,0 +1,46 @@
+{
+  "key": "hoenn_safari_zone_south",
+  "index": 410,
+  "name": "Safari Zone",
+  "matrix": 356,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SAFARI_ZONE",
+  "nightMusic": "MUS_SAFARI_ZONE",
+  "encounters": "hoenn_safari_zone_south",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Oddish", "level": 25 },
+    { "species": "Oddish", "level": 27 },
+    { "species": "Girafarig", "level": 25 },
+    { "species": "Girafarig", "level": 27 },
+    { "species": "Natu", "level": 25 },
+    { "species": "Doduo", "level": 25 },
+    { "species": "Gloom", "level": 25 },
+    { "species": "Wobbuffet", "level": 27 },
+    { "species": "Pikachu", "level": 25 },
+    { "species": "Wobbuffet", "level": 27 },
+    { "species": "Pikachu", "level": 27 },
+    { "species": "Wobbuffet", "level": 29 }
+  ],
+  "landRate": 25,
+  "warps": [
+    { "x": 72, "z": 73, "to": "route_121_safari_zone_entrance", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "safari_exit_attendant", "looks": "camper", "movement": "look_south", "x": 72, "z": 74, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SafariZone_South_EventScript_ExitAttendant" },
+    { "id": "boy_1", "looks": "boy_1", "movement": "wander_around", "x": 66, "z": 68, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_South_EventScript_Boy" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_south", "x": 56, "z": 46, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "SafariZone_South_EventScript_Man" },
+    { "id": "youngster", "looks": "youngster", "movement": "wander_around", "x": 55, "z": 71, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SafariZone_South_EventScript_Youngster" },
+    { "id": "camper", "looks": "camper", "movement": "look_west", "x": 76, "z": 56, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_SOUTH_CONSTRUCTION_WORKERS", "script": "SafariZone_South_EventScript_ConstructionWorker1" },
+    { "id": "camper_2", "looks": "camper", "movement": "look_west", "x": 76, "z": 57, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_SOUTH_CONSTRUCTION_WORKERS", "script": "SafariZone_South_EventScript_ConstructionWorker2" }
+  ],
+  "signs": [],
+  "triggers": []
+}
