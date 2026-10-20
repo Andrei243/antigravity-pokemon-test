@@ -290,6 +290,17 @@
     "description": "A pass for the Seagallop ferry. It lets its holder sail to all seven of the Sevii Islands.",
     "cantBeTossed": true
   },
+  "Sapphire": {
+    "id": 9037,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A clear blue gem won back from Team Rocket. Cool to the touch, as if the sea were inside it.",
+    "cantBeTossed": true
+  },
   // The orbs of Primal Reversion (plan 06 · R20): PokeAPI's words are a story's; ours say what they do when held
   "Blue Orb": {
     "description": "Held by Kyogre, it brings out its primal form when it enters battle."

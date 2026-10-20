@@ -1,0 +1,17 @@
+{
+  // Seven Island (plan 19 · K9, part b): FireRed's map, our words. The last of the islands, its town at the head of
+  // Sevault Canyon, the Trainer Tower to the north; a cool trainer here teaches Swords Dance once (seven_island.txt)
+  "area": "seven_island",
+  "name": "Seven Island",
+  "bgmTrack": "kanto/sevii_67",
+  "trees": "Round",
+  "architecture": "Isle",
+  "people": {
+    "swords_dance_tutor": { "name": "Cool Trainer", "script": "Tutor", "still": true },
+    "old_woman": { "name": "Old Woman", "dialog": [ "The old tale goes that the seven islands were made in seven days, one a day. This one was the last, so it's the youngest." ] },
+    "scientist": { "name": "Scientist", "dialog": [ "This island is hardly touched. Sevault Canyon and the Tanoby Ruins are just as they were long, long ago." ] }
+  },
+  "signs": {
+    "SevenIsland_EventScript_IslandSign": "Seven Island\nThe last isle, where the canyon meets the sea"
+  }
+}

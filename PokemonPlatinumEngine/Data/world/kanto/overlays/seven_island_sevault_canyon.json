@@ -1,0 +1,22 @@
+{
+  // Sevault Canyon (plan 19 · K9, part b): FireRed's map, our words. A deep gorge of boulders and ledges down to the
+  // Tanoby Ruins; the Tanoby Key's cave opens in its side
+  "area": "seven_island_sevault_canyon",
+  "name": "Sevault Canyon",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "people": {
+    "crush_girl": { "name": "Cyndy", "trainer": { "dialogueBefore": "Crush Girl Cyndy: Climbing the canyon walls makes my arms strong. Want to feel my punch?", "dialogueAfter": "Crush Girl Cyndy: My arms are jelly." } },
+    "man": { "name": "Evan", "trainer": { "dialogueBefore": "Tamer Evan: My Pokémon do exactly as I tell them. Watch!", "dialogueAfter": "Tamer Evan: Except win, it seems." } },
+    "camper": { "name": "Jackson", "trainer": { "dialogueBefore": "Pokémon Ranger Jackson: A ranger's job is never done. Especially not in a canyon!", "dialogueAfter": "Pokémon Ranger Jackson: Back to patrolling." } },
+    "picnicker": { "name": "Katelyn", "trainer": { "dialogueBefore": "Pokémon Ranger Katelyn: I keep the canyon's Pokémon safe. Let's see if yours are!", "dialogueAfter": "Pokémon Ranger Katelyn: They're safe with you, all right." } },
+    "cooltrainer_m": { "name": "Leroy", "trainer": { "dialogueBefore": "Cool Trainer Leroy: Only the toughest trainers make it this far down the canyon.", "dialogueAfter": "Cool Trainer Leroy: You're one of them, no doubt about it." } },
+    "cooltrainer_f": { "name": "Michelle", "trainer": { "dialogueBefore": "Cool Trainer Michelle: I train at the bottom of the canyon where nobody can bother me. Until now!", "dialogueAfter": "Cool Trainer Michelle: Bother me any time, then." } },
+    "cooltrainer_m_2": { "name": "Lex", "trainer": { "dialogueBefore": "Cool Couple Lex & Nya: We're the coolest couple on the islands. Take us both on!", "dialogueAfter": "Cool Couple Lex & Nya: Cool, but not cool enough." } },
+    "cooltrainer_f_2": { "name": "Nya", "trainer": { "dialogueBefore": "Cool Couple Lex & Nya: Together we're unbeatable! Well, we were.", "dialogueAfter": "Cool Couple Lex & Nya: We'll just have to train together more." } },
+    "black_belt": { "name": "Black Belt", "dialog": [ "The canyon walls are the best training there is. I climb them every morning with my bare hands!" ] }
+  },
+  "signs": {
+    "SevenIsland_SevaultCanyon_EventScript_RouteSign": "Sevault Canyon\nTanoby Ruins ahead"
+  }
+}

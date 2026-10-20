@@ -1,0 +1,8 @@
+{
+  // A house on Six Island (plan 19 · K9, part b)
+  "area": "six_island_house",
+  "bgmTrack": "kanto/sevii_67",
+  "people": {
+    "old_man_1": { "name": "Old Man", "dialog": [ "This island has both nature and history, and plenty of each. A fine place to spend your last years." ] }
+  }
+}

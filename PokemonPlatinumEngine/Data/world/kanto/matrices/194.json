@@ -1,0 +1,24 @@
+{
+  "id": 194,
+  "width": 4,
+  "height": 4,
+  "chunks": [
+    "427 428 429 430",
+    "431 432 433 434",
+    "  -   - 435 436",
+    "  -   -   - 437"
+  ],
+  "areas": [
+    " 1  1  3  3",
+    " 1  0  2  4",
+    " -  -  2  4",
+    " -  -  -  4"
+  ],
+  "areaKeys": [
+    "five_island",
+    "five_island_water_labyrinth",
+    "five_island_meadow",
+    "five_island_resort_gorgeous",
+    "five_island_memorial_pillar"
+  ]
+}

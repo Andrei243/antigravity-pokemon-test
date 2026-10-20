@@ -1,0 +1,25 @@
+{
+  "key": "five_island_house_2",
+  "index": 413,
+  "name": "Five Island",
+  "matrix": 360,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_45",
+  "nightMusic": "MUS_SEVII_45",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "five_island", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "wander_around", "x": 2, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 2, "script": "FiveIsland_House2_EventScript_OldMan" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,74 @@
+# Icefall Cave, its back (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/FourIsland_IcefallCave_Back/scripts.inc).
+#
+# Team Rocket's poachers have cornered Lorelei by the water. The first step onto the row before them (the area's
+# triggers 0 to 2, while VAR_MAP_SCENE_ICEFALL_CAVE_BACK is 0) plays the scene: Lorelei asks the player's help, one
+# grunt battles, and the three let slip that the Pokémon they took are in their warehouse on Five Island before they
+# run (1). Lorelei thanks the player and goes home (FLAG_HIDE_LORELEI_IN_HER_HOUSE cleared: four_island_loreleis_house
+# .txt), and the scientist of Ruin Valley moves on (FLAG_HIDE_RUIN_VALLEY_SCIENTIST), as FireRed's scene does. FireRed
+# walks the four about; here they speak where they stand and a dark screen takes them away.
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_ICEFALL_CAVE_BACK == 0 end
+  setflag FLAG_HIDE_ICEFALL_CAVE_LORELEI
+  setflag FLAG_HIDE_ICEFALL_CAVE_ROCKETS
+  end
+
+
+# The row before the poachers (triggers 0 to 2)
+script Poachers
+  scene "Lorelei and the poachers"
+  face player up
+  speaker "Lorelei"
+  say "Keep your hands off those Pokémon! They live here, and they're not yours to take!"
+  face icefall_rocket1 down
+  speaker "Grunt"
+  say "Pipe down, lady. Nobody asked you. Go and find somewhere else to skate."
+  emote icefall_lorelei exclaim
+  face icefall_lorelei down
+  speaker "Lorelei"
+  say "{player}! What luck that you're here. Help me drive these poachers out of the cave!"
+  face icefall_rocket3 left
+  music "kanto/rocket_hideout"
+  speaker "Grunt"
+  say "Some kid wants to play hero? Fine. I'll freeze you out myself!"
+  battle icefall_rocket3 as "kanto_team_rocket_grunt_45"
+  speaker "Lorelei"
+  say "Now, where have you taken the Pokémon you caught? Tell me!"
+  speaker "Grunt"
+  say "Like we'd tell you that!"
+  speaker "Lorelei"
+  cry "Lapras"
+  say "Then perhaps my Lapras can loosen your tongue. It's very good at freezing things solid."
+  speaker "Grunt"
+  say "W-wait! They're at our warehouse on Five Island, all right? Let's get out of here!"
+  fade out 0.4
+  hide icefall_rocket1
+  hide icefall_rocket2
+  hide icefall_rocket3
+  setflag FLAG_HIDE_ICEFALL_CAVE_ROCKETS
+  music area
+  fade in 0.4
+  face player down
+  speaker "Lorelei"
+  say "Thank you, {player}. To think Team Rocket would come this far to steal Pokémon... It makes my blood run cold."
+  say "I grew up on this island, you know. I'll go home and think about what I can do. Please, come and see me."
+  setflag FLAG_HIDE_RUIN_VALLEY_SCIENTIST
+  clearflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
+  setvar VAR_MAP_SCENE_ICEFALL_CAVE_BACK 1
+  endscene
+  end
+
+
+script Lorelei
+  face icefall_lorelei player
+  speaker "Lorelei"
+  say "Team Rocket on my island... I won't stand for it."
+  end
+
+
+script Grunt
+  speaker "Grunt"
+  say "Get lost, kid! This is grown-up business."
+  end

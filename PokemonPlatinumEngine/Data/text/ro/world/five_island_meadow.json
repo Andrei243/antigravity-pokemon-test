@@ -1,0 +1,91 @@
+{
+  "displayName": {
+    "en": [
+      "Five Isle Meadow"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "rocket_f": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: This meadow is Team Rocket property now. Trespassers get battled!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Fine, trespass all you like."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: Keep away from the warehouse! There's nothing in there. Nothing at all!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Whatever you think is in there, you're wrong!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_m_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: I'm on lookout duty. And I've just looked out and found you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Maybe I should've kept looking the other way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

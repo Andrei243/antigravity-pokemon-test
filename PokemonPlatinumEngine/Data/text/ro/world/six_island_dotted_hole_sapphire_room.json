@@ -1,0 +1,42 @@
+{
+  "displayName": {
+    "en": [
+      "Dotted Hole"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "sapphire": {
+      "name": {
+        "en": [
+          "Sapphire"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "dotted_hole_thief": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SixIsland_DottedHole_SapphireRoom_EventScript_BrailleMessage": {
+      "en": [
+        "The raised dots read: Here sleeps the blue stone, deep below the valley of ruins."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

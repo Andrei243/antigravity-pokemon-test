@@ -1,0 +1,82 @@
+{
+  "displayName": {
+    "en": [
+      "Trainer Tower"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Dario"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Dario: I can see the future. You're about to lose!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Dario: I didn't see that coming."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Rodette"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Rodette: My mind and my Pokémon are one. Can you say the same?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Rodette: My mind is blank."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SevenIsland_TrainerTower_EventScript_TrainerTowerSign": {
+      "en": [
+        "Trainer Tower\nClosed for now. Come back soon!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SevenIsland_TrainerTower_EventScript_TrainerTowerAheadSign": {
+      "en": [
+        "Trainer Tower ahead"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

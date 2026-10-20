@@ -11,8 +11,10 @@
 #
 # Celio alone (plan 19 · K9, part a): with the National Pokédex he asks for the Ruby from Mt. Ember (4, which opens
 # the Ruby Path and puts Team Rocket's two at Mt. Ember's foot, VAR_MAP_SCENE_MT_EMBER_EXTERIOR 1), and for it he
-# gives the Rainbow Pass for all seven islands and asks after the Sapphire (5). The Sapphire's errand, from Four Island
-# on, is part b's.
+# gives the Rainbow Pass for all seven islands and asks after the Sapphire (5). The Sapphire won back from Team Rocket
+# (plan 19 · K9, part b: six_island_dotted_hole_sapphire_room.txt, five_island_rocket_warehouse.txt) completes the
+# machine, which links the islands with Hoenn (6, FLAG_SYS_CAN_LINK_WITH_RS: the Elite Four and the Champion take their
+# second teams, Cerulean Cave's guard goes, Lorelei goes back to the League). FireRed's roaming beast is part c's.
 
 
 script OnEnter
@@ -153,5 +155,34 @@ label Seeking
   say "The Ruby should be somewhere deep inside Mt. Ember. Please be careful on that mountain!"
   end
 label Sapphire
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F >= 6 goto Linked
+  if item "Sapphire" goto Complete
   say "The Sapphire should be on one of the islands farther south. The Seagallop will take you there with the Rainbow Pass."
+  end
+label Complete
+  scene "The Sapphire"
+  say "{player}! That blue light... It's the Sapphire! You really found it!"
+  take "Sapphire"
+  fanfare keyitem
+  speaker none
+  text "{player} handed the Sapphire to Celio."
+  speaker "Celio"
+  say "Thank you! Now, let me set it in beside the Ruby..."
+  face celio up
+  sound "select"
+  wait 0.8
+  say "That's it, it fits perfectly. Now if I just bring the power up slowly..."
+  wait 0.8
+  sound "pc_on"
+  say "It's working! The machine's reaching out farther than ever... and something's answered! A PC far away, in a region called Hoenn!"
+  face celio player
+  say "{player}, thank you. With your help the islands are linked with Kanto and with Hoenn too. I'll never forget it."
+  setflag FLAG_SYS_CAN_LINK_WITH_RS
+  setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
+  setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
+  setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 6
+  endscene
+  end
+label Linked
+  say "The machine hasn't missed a beat since you brought the Sapphire. I wish you the very best on your travels, {player}!"
   end

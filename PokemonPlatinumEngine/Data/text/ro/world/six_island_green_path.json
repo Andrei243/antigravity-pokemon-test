@@ -1,0 +1,56 @@
+{
+  "displayName": {
+    "en": [
+      "Green Path"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "woman_1": {
+      "name": {
+        "en": [
+          "Jaclyn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Jaclyn: I sensed you coming from across the water!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Jaclyn: I didn't sense that coming."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SixIsland_GreenPath_EventScript_LeftRouteSign": {
+      "en": [
+        "Green Path\nPattern Bush - Outcast Island"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SixIsland_GreenPath_EventScript_RightRouteSign": {
+      "en": [
+        "Green Path\nPattern Bush - Water Path"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  // A house on Four Island (plan 19 · K9, part b): the big man who teaches Body Slam once (four_island_house_1.txt)
+  // and his brother
+  "area": "four_island_house_1",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "fat_man": { "name": "Big Man", "script": "Tutor", "still": true },
+    "fat_man_2": { "name": "Big Man", "dialog": [ "My brother says he isn't heavy, he's just built big. Try telling that to the floorboards!" ] }
+  }
+}

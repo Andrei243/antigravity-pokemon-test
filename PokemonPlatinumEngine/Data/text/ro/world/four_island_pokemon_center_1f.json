@@ -1,0 +1,78 @@
+{
+  "people": {
+    "four_island_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Icefall Cave is home to ice Pokémon you won't find anywhere in Kanto. Bring plenty of Poké Balls."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Day-Care couple once found an Egg in their yard. Nobody knows where it came from!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm waiting for the new Pokémon Journal. The boat with it hasn't come in yet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FourIsland_PokemonCenter_1F_EventScript_PokemonJournal": {
+      "en": [
+        "A copy of the Pokémon Journal, open at a page about Lorelei of the Elite Four and her quiet childhood on Four Island."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

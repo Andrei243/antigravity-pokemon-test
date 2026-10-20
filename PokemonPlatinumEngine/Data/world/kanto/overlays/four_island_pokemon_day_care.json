@@ -1,0 +1,9 @@
+{
+  // Four Island's Pokémon Day Care (plan 19 · K9, part b): the Day-Care Lady at her counter (common.DayCareLady), her
+  // husband outside by the yard
+  "area": "four_island_pokemon_day_care",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "four_island_daycare_woman": { "name": "Day-Care Lady", "script": "DayCareLady" }
+  }
+}

@@ -3344,6 +3344,59 @@ its part of the errand hasn't reached, so a save from before K9 finds the island
   first three islands; Four to Seven are part b's. Two Island's Poké Maniac, FireRed's link trader, is not there.
 - **Moltres** waits on Mt. Ember's summit at level 50 until it has been fought, as Zapdos and Articuno.
 
+## The last Sevii Islands (2026-10-20, plan 19 · K9, part b)
+
+Four to Seven Island, their caves and rooms, Cerulean Cave and the end of Celio's errand, as scripts of ours on
+FireRed's beats and flags (`FourIsland`, `FourIsland_IcefallCave_Back`, `FourIsland_LoreleisHouse`,
+`SixIsland_PokemonCenter_1F`, `SixIsland_RuinValley`, `SixIsland_DottedHole_SapphireRoom`, `FiveIsland_Meadow`,
+`FiveIsland_RocketWarehouse`, `OneIsland_PokemonCenter_1F`, `SevenIsland_SevaultCanyon_TanobyKey`,
+`FiveIsland_LostCave_Room10`, `FiveIsland_ResortGorgeous`, `CeruleanCave_B1F`), in our own words. No story version
+was raised: each place's arrival hides whoever its part of the errand hasn't reached.
+
+- **The Rainbow Pass sails anywhere.** A holder of it is asked first which waters (Kanto, One to Three Island, Four to
+  Seven Island) and then which port (`common.SeagallopRainbow`, every harbour's `VAR_SEAGALLOP_HERE` 0 to 8, FireRed's
+  `SEAGALLOP_*` numbers); the Tri-Pass alone still sails as in part a. The ships at the four new harbours stay out of
+  sight, as One Island's does.
+- **The rival meets the player once**, on Four Island or in Six Island's Pokémon Center, whichever comes first
+  (FireRed's two scenes and their shared `VAR_MAP_SCENE_FOUR_ISLAND`); he only talks, as FireRed's. Both play on
+  arrival, with a fade where FireRed walks him off.
+- **Icefall Cave's poachers.** The scene on the back room's three triggers is FireRed's: Lorelei, the grunts, one
+  battle (`kanto_team_rocket_grunt_45`), her Lapras, the warehouse named. It also takes the scientist from before the
+  Dotted Hole's door in Ruin Valley (`FLAG_HIDE_RUIN_VALLEY_SCIENTIST`), so the door is come to only after the cave,
+  and puts Lorelei at home among her dolls (all of which are shown, where FireRed shows each by a draw of its own).
+  HM07 is the cave's own item ball, as FireRed's.
+- **The Dotted Hole's door is Cut on its dots** (FireRed's braille, which spells CUT): read, it asks, and a team that
+  knows Cut with the Cascade Badge opens it for good (`FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE` on the door's
+  `openedBy`). The Sapphire is snatched in its room by the scientist who followed the player, who gives away the
+  warehouse's second password as he goes; the room's tremor is a `camera shake`.
+- **The passwords are ours.** Mt. Ember's grunts let slip the first ('Seel the deal') and the Dotted Hole's thief the
+  second ('Ekans ate the cake'); FireRed's two are its own words and are not used. The keypad by the warehouse's door
+  is read, and with both (`FLAG_LEARNED_YES_NAH_CHANSEY`) opens the door (`FLAG_UNLOCKED_ROCKET_WAREHOUSE`).
+- **The warehouse.** The admin on the trigger row calls the player over; beaten, the whole of Team Rocket leaves with
+  a fade (`FLAG_HIDE_FIVE_ISLAND_ROCKETS`, `FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE`). FireRed's spin arrows are not laid
+  on the floor. Gideon battles for the Sapphire and gives it up (`FLAG_RECOVERED_SAPPHIRE`); the Sapphire is an item
+  of ours, id 9037, as the Ruby.
+- **Celio's last scene.** Given the Sapphire he finishes the machine and it links the islands with Hoenn (6,
+  `FLAG_SYS_CAN_LINK_WITH_RS`): Cerulean Cave's guard goes (`FLAG_HIDE_CERULEAN_CAVE_GUARD`), Lorelei goes back to
+  the League (`FLAG_HIDE_LORELEI_IN_HER_HOUSE`), and the Elite Four and the Champion battle with FireRed's second
+  teams (`kanto_elite_four_<name>_2`, `kanto_champion_rematch_<starter>`). FireRed's roaming beast is not let loose.
+- **The Tanoby Key.** Its seven floor switches are pits (`pits` in the overlay): a boulder come to rest on one sets a
+  local flag of ours (`FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1` to `_7`), and the seventh opens the seven chambers for good
+  (`FLAG_SYS_UNLOCKED_TANOBY_RUINS` on their doors' `openedBy`). Leaving the room forgets a half-done puzzle, as the
+  boulders are put back.
+- **Selphy** battles the player as they come into the Lost Cave's tenth room and is led home at once (FireRed has her
+  walk behind the player); she thanks them before her door and is at home from then on. Her wishes are not written.
+- **The Memorial Pillar** takes one Lemonade for TM42; FireRed's flag for a full bag is not needed, since the TM
+  always fits.
+- **The Water Labyrinth's Egg** is Togepi's, for a lead at full friendship (`LEAD_FRIENDSHIP` 255), and waits for room
+  on the team.
+- **The tutors.** Four Island's big man teaches Body Slam and Seven Island's cooltrainer Swords Dance, once each
+  (`Models/MoveTutors.cs`'s Kanto table: Body Slam's kin among Platinum's machines is Return, Swords Dance is TM75);
+  Cape Brink's old woman teaches the strongest move of a starter's last form as Route 228's master does, to the twelve
+  starters of Kanto to Sinnoh fully grown, where FireRed's knows only Kanto's three.
+- **Mewtwo** waits at the bottom of Cerulean Cave at level 70 until fought, as the birds; a run from it hides it until
+  the cave is come to again.
+
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,

@@ -1,0 +1,32 @@
+{
+  "people": {
+    "seven_island_house_old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Watching a good battle is all the joy I have left. Nobody comes to battle in my back room any more, more's the pity."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SevenIsland_House_Room1_EventScript_Box": {
+      "en": [
+        "There's a faint breeze coming from the box. How odd."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

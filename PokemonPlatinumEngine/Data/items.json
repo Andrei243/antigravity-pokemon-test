@@ -13735,6 +13735,18 @@
     "cantBeTossed": true
   },
   {
+    "id": 9037,
+    "name": "Sapphire",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A clear blue gem won back from Team Rocket. Cool to the touch, as if the sea were inside it.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9100,
     "name": "Letter",
     "pocket": "KeyItems",

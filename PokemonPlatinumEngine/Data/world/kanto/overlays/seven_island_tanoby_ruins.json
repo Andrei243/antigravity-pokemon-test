@@ -1,0 +1,17 @@
+{
+  // The Tanoby Ruins (plan 19 · K9, part b): FireRed's map, our words. Seven ancient chambers on the islets off Seven
+  // Island's south. FireRed lets the player into them at any time and fills them with Unown once the Tanoby Key's
+  // switches are pressed; here their ways in stay shut until then (FLAG_SYS_UNLOCKED_TANOBY_RUINS), since an area's
+  // wild Pokémon don't wait for a flag
+  "area": "seven_island_tanoby_ruins",
+  "name": "Tanoby Ruins",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "doors": [ { "warp": 0, "map": "SevenIsland_TanobyRuins_MoneanChamber", "x": 11, "y": 14, "facing": "Up", "openedBy": "FLAG_SYS_UNLOCKED_TANOBY_RUINS" }, { "warp": 1, "map": "SevenIsland_TanobyRuins_LiptooChamber", "x": 11, "y": 14, "facing": "Up", "openedBy": "FLAG_SYS_UNLOCKED_TANOBY_RUINS" }, { "warp": 2, "map": "SevenIsland_TanobyRuins_WeepthChamber", "x": 11, "y": 14, "facing": "Up", "openedBy": "FLAG_SYS_UNLOCKED_TANOBY_RUINS" }, { "warp": 3, "map": "SevenIsland_TanobyRuins_DilfordChamber", "x": 11, "y": 14, "facing": "Up", "openedBy": "FLAG_SYS_UNLOCKED_TANOBY_RUINS" }, { "warp": 4, "map": "SevenIsland_TanobyRuins_ScufibChamber", "x": 11, "y": 14, "facing": "Up", "openedBy": "FLAG_SYS_UNLOCKED_TANOBY_RUINS" }, { "warp": 5, "map": "SevenIsland_TanobyRuins_RixyChamber", "x": 11, "y": 14, "facing": "Up", "openedBy": "FLAG_SYS_UNLOCKED_TANOBY_RUINS" }, { "warp": 6, "map": "SevenIsland_TanobyRuins_ViapoisChamber", "x": 11, "y": 14, "facing": "Up", "openedBy": "FLAG_SYS_UNLOCKED_TANOBY_RUINS" } ],
+  "people": {
+    "hiker": { "name": "Brandon", "trainer": { "dialogueBefore": "Ruin Maniac Brandon: The chambers are sealed tight. I know there's something inside!", "dialogueAfter": "Ruin Maniac Brandon: Sealed tight, like my chances." } },
+    "hiker_2": { "name": "Benjamin", "trainer": { "dialogueBefore": "Ruin Maniac Benjamin: I've studied these ruins for twenty years. Let me show you twenty years of training!", "dialogueAfter": "Ruin Maniac Benjamin: Twenty years, and still not enough." } },
+    "lass": { "name": "Edna", "trainer": { "dialogueBefore": "Painter Edna: I'm painting the ruins at sunset. Don't block my view!", "dialogueAfter": "Painter Edna: Fine, block it." } },
+    "gentleman": { "name": "Clifford", "trainer": { "dialogueBefore": "Gentleman Clifford: Ah, a fellow admirer of the ruins. Shall we battle among them?", "dialogueAfter": "Gentleman Clifford: Splendid. Simply splendid." } }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "key": "six_island_dotted_hole_b2f",
+  "index": 159,
+  "name": "Dotted Hole",
+  "matrix": 123,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_DUNGEON",
+  "nightMusic": "MUS_SEVII_DUNGEON",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 7, "to": "six_island_dotted_hole_b1f", "toWarp": 1, "landing": true },
+    { "x": 6, "z": 1, "to": "six_island_dotted_hole_1f", "toWarp": 3 },
+    { "x": 11, "z": 5, "to": "six_island_dotted_hole_1f", "toWarp": 3 },
+    { "x": 6, "z": 9, "to": "six_island_dotted_hole_1f", "toWarp": 3 },
+    { "x": 1, "z": 5, "to": "six_island_dotted_hole_b3f", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 6, "z": 5, "type": 0, "script": "SixIsland_DottedHole_B2F_EventScript_BrailleLeft" }
+  ],
+  "triggers": []
+}

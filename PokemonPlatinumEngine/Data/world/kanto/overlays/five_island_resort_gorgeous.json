@@ -1,0 +1,23 @@
+{
+  // Resort Gorgeous (plan 19 · K9, part b): FireRed's map, our words. A seaside resort on Five Island's west, Selphy's
+  // house among its villas, the Lost Cave's mouth at its east end. Selphy comes home here once the player has found
+  // her in the cave (five_island_resort_gorgeous.txt)
+  "area": "five_island_resort_gorgeous",
+  "name": "Resort Gorgeous",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "architecture": "Isle",
+  "people": {
+    "lass": { "name": "Daisy", "trainer": { "dialogueBefore": "Painter Daisy: I'm painting the sea. Stand still, you'll be in the picture!", "dialogueAfter": "Painter Daisy: I'll paint you as the winner." } },
+    "lass_2": { "name": "Celina", "trainer": { "dialogueBefore": "Painter Celina: My brush is ready, and so are my Pokémon!", "dialogueAfter": "Painter Celina: My colours have run." } },
+    "lass_3": { "name": "Rayna", "trainer": { "dialogueBefore": "Painter Rayna: A battle is a picture that moves! Let's paint one together.", "dialogueAfter": "Painter Rayna: Not my best work." } },
+    "woman_2": { "name": "Jacki", "trainer": { "dialogueBefore": "Lady Jacki: A lady never refuses a battle. Do try to keep up!", "dialogueAfter": "Lady Jacki: How very unladylike of me to lose." } },
+    "woman_2_2": { "name": "Gillian", "trainer": { "dialogueBefore": "Lady Gillian: My Pokémon are groomed every morning. Are yours?", "dialogueAfter": "Lady Gillian: Groomed, but not quite good enough." } },
+    "youngster": { "name": "Destin", "trainer": { "dialogueBefore": "Youngster Destin: My parents rent a villa here every summer. I'm bored! Battle me!", "dialogueAfter": "Youngster Destin: Now I'm bored and beaten." } },
+    "swimmer_m_water": { "name": "Toby", "trainer": { "dialogueBefore": "Swimmer Toby: The resort's beach is the best place to swim. And to battle!", "dialogueAfter": "Swimmer Toby: I'll just float here for a bit." } },
+    "resort_gorgeous_selphy": { "name": "Selphy", "script": "Selphy", "still": true }
+  },
+  "signs": {
+    "FiveIsland_ResortGorgeous_EventScript_SelphysHouseSign": "Selphy's House"
+  }
+}

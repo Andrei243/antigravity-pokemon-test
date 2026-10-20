@@ -1,0 +1,23 @@
+{
+  "people": {
+    "sticker_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I collect stickers of great deeds. When you've done something truly amazing, come and tell me about it!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

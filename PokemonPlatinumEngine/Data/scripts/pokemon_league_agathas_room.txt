@@ -10,7 +10,12 @@ script Agatha
   scene "Agatha"
   say "I am Agatha of the Elite Four. Oak's taken a liking to you, has he? That old fool."
   say "Pokémon are for battling! I'll show you what a real trainer can do, child."
+  if flag FLAG_SYS_CAN_LINK_WITH_RS goto Stronger
   battle self as "kanto_elite_four_agatha"
+  goto Won
+label Stronger
+  battle self as "kanto_elite_four_agatha_2"
+label Won
   speaker "Agatha"
   say "Oh ho! You're something special, child."
   setflag FLAG_DEFEATED_AGATHA

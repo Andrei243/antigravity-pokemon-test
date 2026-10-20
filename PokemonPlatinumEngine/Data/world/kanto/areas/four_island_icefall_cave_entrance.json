@@ -1,0 +1,68 @@
+{
+  "key": "four_island_icefall_cave_entrance",
+  "index": 152,
+  "name": "Icefall Cave",
+  "matrix": 116,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "four_island_icefall_cave_entrance",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Seel", "level": 43 },
+    { "species": "Golbat", "level": 45 },
+    { "species": "Seel", "level": 45 },
+    { "species": "Seel", "level": 47 },
+    { "species": "Zubat", "level": 40 },
+    { "species": "Dewgong", "level": 49 },
+    { "species": "Dewgong", "level": 51 },
+    { "species": "Psyduck", "level": 41 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Dewgong", "level": 53 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Dewgong", "level": 53 }
+  ],
+  "landRate": 7,
+  "water": [
+    { "species": "Seel", "level": 5, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 5, "maxLevel": 35 },
+    { "species": "Dewgong", "level": 35, "maxLevel": 40 },
+    { "species": "Wooper", "level": 5, "maxLevel": 15 },
+    { "species": "Wooper", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 17, "z": 30, "to": "four_island", "toWarp": 3 },
+    { "x": 10, "z": 21, "to": "four_island_icefall_cave_1f", "toWarp": 0 },
+    { "x": 9, "z": 7, "to": "four_island_icefall_cave_1f", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

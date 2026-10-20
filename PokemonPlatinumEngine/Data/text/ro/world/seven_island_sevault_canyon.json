@@ -1,0 +1,248 @@
+{
+  "displayName": {
+    "en": [
+      "Sevault Canyon"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "crush_girl": {
+      "name": {
+        "en": [
+          "Cyndy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Crush Girl Cyndy: Climbing the canyon walls makes my arms strong. Want to feel my punch?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Crush Girl Cyndy: My arms are jelly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Evan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tamer Evan: My Pokémon do exactly as I tell them. Watch!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tamer Evan: Except win, it seems."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Jackson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Jackson: A ranger's job is never done. Especially not in a canyon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Jackson: Back to patrolling."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Katelyn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Katelyn: I keep the canyon's Pokémon safe. Let's see if yours are!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Katelyn: They're safe with you, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m": {
+      "name": {
+        "en": [
+          "Leroy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cool Trainer Leroy: Only the toughest trainers make it this far down the canyon."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cool Trainer Leroy: You're one of them, no doubt about it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Michelle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cool Trainer Michelle: I train at the bottom of the canyon where nobody can bother me. Until now!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cool Trainer Michelle: Bother me any time, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_m_2": {
+      "name": {
+        "en": [
+          "Lex"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cool Couple Lex & Nya: We're the coolest couple on the islands. Take us both on!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cool Couple Lex & Nya: Cool, but not cool enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_f_2": {
+      "name": {
+        "en": [
+          "Nya"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cool Couple Lex & Nya: Together we're unbeatable! Well, we were."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cool Couple Lex & Nya: We'll just have to train together more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The canyon walls are the best training there is. I climb them every morning with my bare hands!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SevenIsland_SevaultCanyon_EventScript_RouteSign": {
+      "en": [
+        "Sevault Canyon\nTanoby Ruins ahead"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

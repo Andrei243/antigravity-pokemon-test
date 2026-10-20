@@ -1,0 +1,70 @@
+{
+  "Sapphire": [
+    {
+      "en": [
+        "{player} found the Sapphire! It shone a deep, clear blue."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! I knew it. I was right to follow you down here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've been looking for this gem for years. I'll take that, thank you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket will pay a fortune for a stone like this. All I have to do is take it to their warehouse on Five Island."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The password for the inner door? 'Ekans ate the cake.' Ha! As if you could ever get that far. So long!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Thief": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Sapphire is mine now!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

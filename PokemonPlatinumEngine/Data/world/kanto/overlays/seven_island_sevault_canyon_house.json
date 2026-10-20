@@ -1,0 +1,10 @@
+{
+  // A house in Sevault Canyon (plan 19 · K9, part b): a man who dances with his Chansey. FireRed's dance is a line
+  // here
+  "area": "seven_island_sevault_canyon_house",
+  "bgmTrack": "kanto/sevii_67",
+  "people": {
+    "chansey_dance_man": { "name": "Man", "dialog": [ "Step, step, wiggle and turn! That's the Chansey Dance! Come on, dance it with us, it'll put a spring in your step!" ] },
+    "chansey": { "name": "Chansey", "npcType": "Pokemon", "species": "Chansey", "still": true, "dialog": [ "Chansey: Chaaan-sey!" ] }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "key": "seven_island_mart",
+  "index": 378,
+  "name": "Seven Island",
+  "matrix": 325,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "seven_island", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "clerk", "looks": "clerk", "movement": "look_east", "x": 2, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_Mart_EventScript_Clerk" },
+    { "id": "lass", "looks": "lass", "movement": "look_north_and_east", "x": 6, "z": 2, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_Mart_EventScript_Lass" },
+    { "id": "fisher", "looks": "fisher", "movement": "wander_north_and_south", "x": 9, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_Mart_EventScript_Fisher" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_south", "x": 5, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_Mart_EventScript_Hiker" }
+  ],
+  "signs": [],
+  "triggers": []
+}

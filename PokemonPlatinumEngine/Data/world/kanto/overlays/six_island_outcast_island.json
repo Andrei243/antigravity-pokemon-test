@@ -1,0 +1,16 @@
+{
+  // Outcast Island (plan 19 · K9, part b): FireRed's map, our words. A rocky islet at the end of the Green Path, a
+  // Team Rocket grunt on watch by Altering Cave until the warehouse is cleared
+  "area": "six_island_outcast_island",
+  "name": "Outcast Island",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "people": {
+    "rocket_m": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: Nobody comes out this far! So what are you doing here?", "dialogueAfter": "Team Rocket Grunt: I was sent out here to keep out of the way. Some job!" } },
+    "fisher": { "name": "Tylor", "trainer": { "dialogueBefore": "Fisherman Tylor: The fish out here have never seen a hook. Neither have my Pokémon seen defeat!", "dialogueAfter": "Fisherman Tylor: Well, now they have." } },
+    "swimmer_m_water": { "name": "Mymo", "trainer": { "dialogueBefore": "Swimmer Mymo: I swam all the way from Six Island! Battle time!", "dialogueAfter": "Swimmer Mymo: And now I have to swim all the way back." } },
+    "swimmer_f_water": { "name": "Nicole", "trainer": { "dialogueBefore": "Swimmer Nicole: The current out here is strong. So am I!", "dialogueAfter": "Swimmer Nicole: The current wins, and so do you." } },
+    "swimmer_f_water_2": { "name": "Ava", "trainer": { "dialogueBefore": "Sis and Bro Ava & Geb: My little brother and I swim together. And we battle together!", "dialogueAfter": "Sis and Bro Ava & Geb: We'll swim home and train some more." } },
+    "tuber_m_water": { "name": "Geb", "trainer": { "dialogueBefore": "Sis and Bro Ava & Geb: My big sister's the best! Together we can't lose!", "dialogueAfter": "Sis and Bro Ava & Geb: We lost... but she's still the best!" } }
+  }
+}

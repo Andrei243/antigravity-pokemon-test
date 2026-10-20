@@ -2,7 +2,7 @@
 # beats (data/maps/OneIsland_Harbor/scripts.inc).
 #
 # The sailor sails a holder of the Tri-Pass or the Rainbow Pass back to Vermilion City or Cinnabar Island, or on to Two
-# and Three Island (common.SeagallopTo…; plan 19 · K9, part a). The Rainbow Pass's other four islands are part b's.
+# and Three Island (common.SeagallopTo…; plan 19 · K9, part a), and a holder of the Rainbow Pass to every port (common.SeagallopRainbow, part b).
 # FireRed's ship at the pier's end lies past the room's floor here, and stays out of sight
 # (FLAG_HIDE_ONE_ISLAND_HARBOR_SEAGALLOP, a flag of ours).
 
@@ -15,7 +15,7 @@ script OnEnter
 script Sailor
   face sailor player
   speaker "Sailor"
-  if item "Rainbow Pass" goto Pass
+  if item "Rainbow Pass" goto Rainbow
   if not item "Tri-Pass" goto NoPass
 label Pass
   say "Welcome aboard the Seagallop! Have your pass ready."
@@ -44,4 +44,10 @@ label Three
   end
 label NoPass
   say "The Seagallop sails only for holders of a pass, I'm afraid. Celio in the Pokémon Center might be able to help."
+  end
+# Plan 19 · K9, part b: the Rainbow Pass sails to every port (common.SeagallopRainbow)
+label Rainbow
+  say "Welcome aboard the Seagallop! Have your pass ready."
+  setvar VAR_SEAGALLOP_HERE 2
+  call SeagallopRainbow
   end

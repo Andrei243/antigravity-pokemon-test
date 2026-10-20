@@ -1,0 +1,16 @@
+{
+  // Six Island (plan 19 · K9, part b): FireRed's map, our words. A small town on the island's south shore, with the
+  // Water Path, Ruin Valley, the Green Path, Pattern Bush and Outcast Island on the same matrix
+  "area": "six_island",
+  "name": "Six Island",
+  "bgmTrack": "kanto/sevii_67",
+  "trees": "Round",
+  "architecture": "Isle",
+  "people": {
+    "boy": { "name": "Boy", "dialog": [ "On a clear night you can see every star there is from here. The sky goes on for ever!" ] },
+    "hiker": { "name": "Hiker", "dialog": [ "That way leads to the Water Path, and on to Ruin Valley. Mind the ruin maniacs, they love a battle." ] }
+  },
+  "signs": {
+    "SixIsland_EventScript_IslandSign": "Six Island\nWhere old stones keep old secrets"
+  }
+}

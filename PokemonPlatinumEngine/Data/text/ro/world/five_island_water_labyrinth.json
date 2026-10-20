@@ -1,0 +1,49 @@
+{
+  "displayName": {
+    "en": [
+      "Water Labyrinth"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "gentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Alize"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Alize: Breeding Pokémon takes patience. So does battling!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Alize: I've lots of patience. Just not enough skill."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

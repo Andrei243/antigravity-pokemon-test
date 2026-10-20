@@ -1,0 +1,87 @@
+{
+  "people": {
+    "five_island_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cooltrainer_f": {
+      "name": {
+        "en": [
+          "Cool Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "So you're trying to catch every kind of Pokémon there is? I'll cheer you on!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "chef": {
+      "name": {
+        "en": [
+          "Chef"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm on my way to cook dinner for a fancy party at Resort Gorgeous. I'd better not be late!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "0": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine left on the bench, open at a page about Bruno of the Elite Four, training in the mountains."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "0_2": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine left on the bench, open at a page about Bruno of the Elite Four, training in the mountains."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

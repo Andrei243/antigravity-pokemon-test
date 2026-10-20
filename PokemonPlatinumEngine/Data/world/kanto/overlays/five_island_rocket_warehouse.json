@@ -1,0 +1,24 @@
+{
+  // Team Rocket's warehouse in Five Isle Meadow (plan 19 · K9, part b): FireRed's map, our words. Team Rocket keeps
+  // the Pokémon it poached here; its admins and Gideon, the scientist who stole the Sapphire, are inside
+  // (five_island_rocket_warehouse.txt). FireRed's floor arrows are plain floor here
+  "area": "five_island_rocket_warehouse",
+  "name": "Rocket Warehouse",
+  "bgmTrack": "kanto/rocket_hideout",
+  "doors": [ { "warp": 0, "map": "FiveIsland", "x": 84, "y": 61, "facing": "Down" } ],
+  "triggers": [ { "trigger": 0, "script": "Admin2Trigger" }, { "trigger": 1, "script": "Admin2Trigger" }, { "trigger": 2, "script": "Admin2Trigger" } ],
+  "people": {
+    "warehouse_grunt2": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: How did you get in here? You'd better not touch our Pokémon!", "dialogueAfter": "Team Rocket Grunt: Touch them all you like, then..." } },
+    "warehouse_grunt3": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: These Pokémon are worth a fortune! We're not letting them go!", "dialogueAfter": "Team Rocket Grunt: There goes our fortune." } },
+    "warehouse_admin1": { "name": "Admin", "trainer": { "dialogueBefore": "Team Rocket Admin: You came all this way just to meddle? How very tiresome.", "dialogueAfter": "Team Rocket Admin: Tiresome, and strong. Go on, then." } },
+    "warehouse_admin2": { "name": "Admin", "script": "Admin2", "still": true },
+    "rocket_f": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: The password worked? Someone's going to be in big trouble for that!", "dialogueAfter": "Team Rocket Grunt: Someone like me..." } },
+    "scientist": { "name": "Gideon", "script": "Gideon", "still": true }
+  },
+  "read": {
+    "FiveIsland_RocketWarehouse_EventScript_Cage": "Cage"
+  },
+  "signs": {
+    "FiveIsland_RocketWarehouse_EventScript_Computer": "A report full of graphs and tables. It's about what Pokémon sell for in the far-off regions."
+  }
+}

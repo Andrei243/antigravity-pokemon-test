@@ -1,0 +1,101 @@
+{
+  "displayName": {
+    "en": [
+      "Memorial Pillar"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "memorial_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Milo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Milo: The wind off these cliffs is perfect for flying. My birds love it here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Milo: Grounded, just like that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_2": {
+      "name": {
+        "en": [
+          "Chaz"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Chaz: Watch my birds swoop! Then watch them win!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Chaz: They swooped. They didn't win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker_3": {
+      "name": {
+        "en": [
+          "Harold"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Harold: I've come to see the pillar. And to battle anyone who passes by!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Harold: Maybe I should have just looked at the pillar."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

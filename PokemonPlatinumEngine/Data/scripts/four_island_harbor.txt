@@ -1,0 +1,23 @@
+# Four Island's harbour (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/FourIsland_Harbor/scripts.inc).
+#
+# The sailor sails a holder of the Rainbow Pass to any port (common.SeagallopRainbow); nobody comes this far without
+# it. The ship stays out of sight, as One Island's does (FLAG_HIDE_FOUR_ISLAND_HARBOR_SEAGALLOP, a flag of ours).
+
+
+script OnEnter
+  setflag FLAG_HIDE_FOUR_ISLAND_HARBOR_SEAGALLOP
+  end
+
+
+script Sailor
+  face sailor player
+  speaker "Sailor"
+  if not item "Rainbow Pass" goto NoPass
+  say "Welcome aboard the Seagallop! Have your pass ready."
+  setvar VAR_SEAGALLOP_HERE 5
+  call SeagallopRainbow
+  end
+label NoPass
+  say "The Seagallop sails only for holders of a pass, I'm afraid."
+  end

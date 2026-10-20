@@ -1,0 +1,70 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Selphy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! Someone's here! I've been wandering in the dark for ever so long. Are you real?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prove it! Battle me, and then I'll know I'm not dreaming."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Selphy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're real, and you're strong too! Please, would you take me home? I'm sure I'll only get lost again on my own."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} led Selphy out of the Lost Cave and back to Resort Gorgeous."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Selphy": [
+    {
+      "en": [
+        "Selphy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which way is out? Every room looks the same!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

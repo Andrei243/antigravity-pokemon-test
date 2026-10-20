@@ -1,0 +1,8 @@
+{
+  // A house on Five Island (plan 19 · K9, part b)
+  "area": "five_island_house_2",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "old_man_1": { "name": "Old Man", "dialog": [ "That meadow belonged to my family once. Now strangers have built a warehouse on it, and nobody knows what they keep inside." ] }
+  }
+}

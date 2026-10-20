@@ -1,0 +1,32 @@
+{
+  "key": "seven_island",
+  "index": 240,
+  "name": "Seven Island",
+  "matrix": 195,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_67",
+  "nightMusic": "MUS_SEVII_67",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 59, "z": 49, "to": "seven_island_house_room_1", "toWarp": 0 },
+    { "x": 53, "z": 49, "to": "seven_island_mart", "toWarp": 0 },
+    { "x": 60, "z": 43, "to": "seven_island_pokemon_center_1f", "toWarp": 0 },
+    { "x": 64, "z": 53, "to": "seven_island_harbor", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "swords_dance_tutor", "looks": "cooltrainer_m", "movement": "look_west", "x": 55, "z": 58, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_EventScript_SwordsDanceTutor" },
+    { "id": "old_woman", "looks": "old_woman", "movement": "look_south_and_north", "x": 57, "z": 47, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_EventScript_OldWoman" },
+    { "id": "scientist", "looks": "scientist", "movement": "wander_around", "x": 63, "z": 45, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_EventScript_Scientist" }
+  ],
+  "signs": [
+    { "x": 65, "z": 49, "type": 0, "script": "SevenIsland_EventScript_IslandSign" }
+  ],
+  "triggers": []
+}

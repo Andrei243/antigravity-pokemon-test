@@ -1,0 +1,7 @@
+{
+  // Altering Cave (plan 19 · K9, part b): FireRed's map. A cave on Outcast Island whose Pokémon FireRed changed by a
+  // link it no longer has; its own Zubat live here
+  "area": "six_island_altering_cave",
+  "name": "Altering Cave",
+  "bgmTrack": "kanto/sevii_cave"
+}

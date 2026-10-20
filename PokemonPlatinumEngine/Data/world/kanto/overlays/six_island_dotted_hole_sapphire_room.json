@@ -1,0 +1,14 @@
+{
+  // The Dotted Hole's deepest room (plan 19 · K9, part b): the Sapphire glows under a stone of dots, and the scientist
+  // who followed the player in snatches it for Team Rocket (six_island_dotted_hole_sapphire_room.txt)
+  "area": "six_island_dotted_hole_sapphire_room",
+  "name": "Dotted Hole",
+  "bgmTrack": "kanto/sevii_dungeon",
+  "people": {
+    "sapphire": { "name": "Sapphire", "npcType": "ItemBall", "item": "Sapphire", "script": "Sapphire" },
+    "dotted_hole_thief": { "name": "Scientist", "script": "Thief", "still": true }
+  },
+  "signs": {
+    "SixIsland_DottedHole_SapphireRoom_EventScript_BrailleMessage": "The raised dots read: Here sleeps the blue stone, deep below the valley of ruins."
+  }
+}

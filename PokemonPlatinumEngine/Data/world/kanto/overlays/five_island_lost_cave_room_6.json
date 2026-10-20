@@ -1,0 +1,6 @@
+{
+  // The Lost Cave, room 6 (plan 19 · K9, part b): FireRed's map, one room of the maze
+  "area": "five_island_lost_cave_room_6",
+  "name": "Lost Cave",
+  "bgmTrack": "kanto/sevii_cave"
+}

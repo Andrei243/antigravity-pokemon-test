@@ -1,0 +1,15 @@
+{
+  // The Green Path (plan 19 · K9, part b): FireRed's map, our words. A sea lane across Six Island's north, Pattern
+  // Bush's two ways in on its shore
+  "area": "six_island_green_path",
+  "name": "Green Path",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "people": {
+    "woman_1": { "name": "Jaclyn", "trainer": { "dialogueBefore": "Psychic Jaclyn: I sensed you coming from across the water!", "dialogueAfter": "Psychic Jaclyn: I didn't sense that coming." } }
+  },
+  "signs": {
+    "SixIsland_GreenPath_EventScript_LeftRouteSign": "Green Path\nPattern Bush - Outcast Island",
+    "SixIsland_GreenPath_EventScript_RightRouteSign": "Green Path\nPattern Bush - Water Path"
+  }
+}

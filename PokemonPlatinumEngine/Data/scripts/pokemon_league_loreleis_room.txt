@@ -4,7 +4,7 @@
 # Spoken to, Lorelei battles (a battle lost ends it there, and the game wakes the player as every battle lost does);
 # beaten, she opens the door behind her (FLAG_DEFEATED_LORELEI, which the room's door is opened by). The hall's Pokémon
 # Center puts her back (indigo_plateau_pokemon_center_1f.txt). Her rematch team (FireRed's, once the Sevii Islands
-# are linked) is plan 19 · K9's.
+# are linked) is played since plan 19 · K9, part b, once FLAG_SYS_CAN_LINK_WITH_RS is set.
 
 
 script Lorelei
@@ -15,7 +15,12 @@ script Lorelei
   say "Welcome to the Pokémon League. I am Lorelei of the Elite Four."
   say "No one can match me where Ice-type Pokémon are concerned. Not even a trainer who has come this far."
   say "Your Pokémon will be frozen where they stand. Shall we begin?"
+  if flag FLAG_SYS_CAN_LINK_WITH_RS goto Stronger
   battle self as "kanto_elite_four_lorelei"
+  goto Won
+label Stronger
+  battle self as "kanto_elite_four_lorelei_2"
+label Won
   speaker "Lorelei"
   say "You melted my ice... How remarkable."
   setflag FLAG_DEFEATED_LORELEI

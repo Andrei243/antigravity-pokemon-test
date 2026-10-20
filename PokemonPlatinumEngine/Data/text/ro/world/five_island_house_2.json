@@ -1,0 +1,23 @@
+{
+  "people": {
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That meadow belonged to my family once. Now strangers have built a warehouse on it, and nobody knows what they keep inside."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

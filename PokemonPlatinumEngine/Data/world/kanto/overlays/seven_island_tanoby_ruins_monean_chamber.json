@@ -1,0 +1,7 @@
+{
+  // The Monean Chamber of the Tanoby Ruins (plan 19 · K9, part b): FireRed's map. A room of old carvings where Unown
+  // gather; its way in opens once the Tanoby Key's switches are pressed (seven_island_tanoby_ruins.json)
+  "area": "seven_island_tanoby_ruins_monean_chamber",
+  "name": "Monean Chamber",
+  "bgmTrack": "kanto/sevii_dungeon"
+}

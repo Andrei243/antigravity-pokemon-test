@@ -1,0 +1,59 @@
+{
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ruins in the valley are older than anyone knows. Some say they're older than the islands."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Picnicker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Why not buy some Mail and write home? Your family would love a letter from the islands."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

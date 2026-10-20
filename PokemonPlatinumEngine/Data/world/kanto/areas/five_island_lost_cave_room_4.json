@@ -1,0 +1,44 @@
+{
+  "key": "five_island_lost_cave_room_4",
+  "index": 181,
+  "name": "Lost Cave",
+  "matrix": 145,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "five_island_lost_cave_room_4",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Gastly", "level": 40 },
+    { "species": "Zubat", "level": 37 },
+    { "species": "Haunter", "level": 44 },
+    { "species": "Haunter", "level": 46 },
+    { "species": "Golbat", "level": 41 },
+    { "species": "Golbat", "level": 43 },
+    { "species": "Gastly", "level": 38 },
+    { "species": "Haunter", "level": 48 },
+    { "species": "Haunter", "level": 50 },
+    { "species": "Murkrow", "level": 22 },
+    { "species": "Haunter", "level": 52 },
+    { "species": "Murkrow", "level": 22 }
+  ],
+  "landRate": 4,
+  "warps": [
+    { "x": 5, "z": 1, "to": "five_island_lost_cave_room_12", "toWarp": 0 },
+    { "x": 8, "z": 5, "to": "five_island_lost_cave_room_1", "toWarp": 4 },
+    { "x": 5, "z": 8, "to": "five_island_lost_cave_room_5", "toWarp": 0 },
+    { "x": 2, "z": 5, "to": "five_island_lost_cave_room_1", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_south", "x": 6, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PSYCHIC_LAURA" }
+  ],
+  "signs": [],
+  "triggers": []
+}

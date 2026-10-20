@@ -14,7 +14,7 @@ script OnEnter
 script Sailor
   face sailor player
   speaker "Sailor"
-  if item "Rainbow Pass" goto Pass
+  if item "Rainbow Pass" goto Rainbow
   if not item "Tri-Pass" goto NoPass
 label Pass
   say "Welcome aboard the Seagallop! Have your pass ready."
@@ -43,4 +43,10 @@ label Three
   end
 label NoPass
   say "The Seagallop sails only for holders of a pass, I'm afraid."
+  end
+# Plan 19 · K9, part b: the Rainbow Pass sails to every port (common.SeagallopRainbow)
+label Rainbow
+  say "Welcome aboard the Seagallop! Have your pass ready."
+  setvar VAR_SEAGALLOP_HERE 3
+  call SeagallopRainbow
   end

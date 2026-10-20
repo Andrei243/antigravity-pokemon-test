@@ -1,0 +1,78 @@
+{
+  "Scientist": [
+    {
+      "en": [
+        "Scientist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've studied this door for days, and I still can't work out how to get inside..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, hello. I found this place all by myself, you know. The dots must mean something, if only I could read them."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DottedHoleDoor": [
+    {
+      "en": [
+        "There's a door in the rock, covered in raised dots. Look at it more closely?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The dots spell a single word: CUT."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Use Cut on the door?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The stone split down its middle, and the door slid open!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door stands open."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} left the door alone."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

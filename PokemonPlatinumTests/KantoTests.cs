@@ -842,6 +842,102 @@ public class KantoTests
         Assert.Equal("FLAG_HIDE_MOLTRES", moltres.HiddenBy);
     }
 
+    // ------------------------------------------------------------------ plan 19 · K9, part b: the last Sevii Islands
+
+    static readonly string[] LastIslandsRooms =
+    {
+        "FourIsland", "FourIsland_IcefallCave_Entrance", "FourIsland_IcefallCave_1F", "FourIsland_IcefallCave_B1F", "FourIsland_IcefallCave_Back",
+        "FourIsland_PokemonDayCare", "FourIsland_PokemonCenter_1F", "FourIsland_PokemonCenter_2F", "FourIsland_House1", "FourIsland_LoreleisHouse",
+        "FourIsland_Harbor", "FourIsland_House2", "FourIsland_Mart",
+        "FiveIsland", "FiveIsland_RocketWarehouse", "FiveIsland_LostCave_Entrance", "FiveIsland_LostCave_Room1", "FiveIsland_LostCave_Room10",
+        "FiveIsland_PokemonCenter_1F", "FiveIsland_PokemonCenter_2F", "FiveIsland_Harbor", "FiveIsland_House1", "FiveIsland_House2",
+        "FiveIsland_ResortGorgeous_House",
+        "SixIsland", "SixIsland_DottedHole_1F", "SixIsland_DottedHole_B1F", "SixIsland_DottedHole_B2F", "SixIsland_DottedHole_B3F",
+        "SixIsland_DottedHole_B4F", "SixIsland_DottedHole_SapphireRoom", "SixIsland_PatternBush", "SixIsland_AlteringCave",
+        "SixIsland_PokemonCenter_1F", "SixIsland_PokemonCenter_2F", "SixIsland_Harbor", "SixIsland_House", "SixIsland_Mart",
+        "SixIsland_WaterPath_House1", "SixIsland_WaterPath_House2",
+        "SevenIsland", "SevenIsland_TanobyRuins_MoneanChamber", "SevenIsland_TanobyRuins_LiptooChamber", "SevenIsland_TanobyRuins_WeepthChamber",
+        "SevenIsland_TanobyRuins_DilfordChamber", "SevenIsland_TanobyRuins_ScufibChamber", "SevenIsland_TanobyRuins_RixyChamber",
+        "SevenIsland_TanobyRuins_ViapoisChamber", "SevenIsland_SevaultCanyon_TanobyKey", "SevenIsland_House_Room1", "SevenIsland_Mart",
+        "SevenIsland_PokemonCenter_1F", "SevenIsland_PokemonCenter_2F", "SevenIsland_Harbor", "SevenIsland_SevaultCanyon_House",
+        "CeruleanCave_1F", "CeruleanCave_2F", "CeruleanCave_B1F",
+    };
+
+    [Fact]
+    public void FourToSevenIslandAndCeruleanCaveAreOpenAndWalkedTo()
+    {
+        var walked = Walked.Value;
+        // The Rainbow Pass's sailors sail on to Four to Seven Island; every room and cave of theirs, and Cerulean Cave, is walked into
+        foreach (string room in LastIslandsRooms)
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == room), $"nobody walks into {room}");
+            Assert.Contains(room, RegionDatabase.Get(RegionDatabase.Kanto)!.Maps);
+        }
+        // The fourteen rooms of the Lost Cave are all in the region
+        for (int n = 1; n <= 14; n++)
+            Assert.Contains($"FiveIsland_LostCave_Room{n}", RegionDatabase.Get(RegionDatabase.Kanto)!.Maps);
+        foreach (var (map, keys) in new[] { ("FourIsland", new[] { "four_island" }),
+                     ("FiveIsland", new[] { "five_island", "five_island_meadow", "five_island_memorial_pillar", "five_island_resort_gorgeous", "five_island_water_labyrinth" }),
+                     ("SixIsland", new[] { "six_island", "six_island_ruin_valley", "six_island_green_path", "six_island_outcast_island", "six_island_water_path" }),
+                     ("SevenIsland", new[] { "seven_island", "seven_island_sevault_canyon", "seven_island_sevault_canyon_entrance", "seven_island_tanoby_ruins" }) })
+        {
+            var tiles = walked.Single(kv => kv.Key.Name == map).Value;
+            foreach (string key in keys)
+                Assert.True(tiles.Any(t => BuiltMaps.Value[map].AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to");
+        }
+    }
+
+    [Fact]
+    public void TheLastIslandsDoorsWaitForTheirFlagsAndOpenOntoOpenGround()
+    {
+        // The warehouse's door waits for both passwords, the Dotted Hole's for Cut on its dots, the chambers for the Tanoby Key
+        foreach (var (outside, inside, flag) in new[] {
+                     ("FiveIsland", "FiveIsland_RocketWarehouse", "FLAG_UNLOCKED_ROCKET_WAREHOUSE"),
+                     ("SixIsland", "SixIsland_DottedHole_1F", "FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE"),
+                     ("SevenIsland", "SevenIsland_TanobyRuins_MoneanChamber", "FLAG_SYS_UNLOCKED_TANOBY_RUINS"),
+                     ("SevenIsland", "SevenIsland_TanobyRuins_ViapoisChamber", "FLAG_SYS_UNLOCKED_TANOBY_RUINS") })
+        {
+            var door = Assert.Single(BuiltMaps.Value[outside].Warps, w => w.TargetMap == inside);
+            Assert.Equal(flag, door.OpenedBy);
+            Assert.False(BuiltMaps.Value[inside].IsSolid(door.TargetX, door.TargetY), $"{inside}'s door lands on a wall");
+        }
+        // Each chamber's own way out lands on open ground before its door
+        foreach (string chamber in LastIslandsRooms.Where(r => r.StartsWith("SevenIsland_TanobyRuins_")))
+        {
+            var back = BuiltMaps.Value[chamber].Warps.First();
+            Assert.Equal("SevenIsland", back.TargetMap);
+            Assert.False(BuiltMaps.Value["SevenIsland"].IsSolid(back.TargetX, back.TargetY), chamber);
+        }
+    }
+
+    [Fact]
+    public void TheLastIslandsLooksSongsMewtwoAndTheSapphireAreThere()
+    {
+        foreach (string key in new[] { "four_island", "five_island", "six_island", "seven_island" })
+            Assert.Equal(Architecture.Isle, Kanto.Overlay(key)!.Architecture);
+        // The four songs of FireRed's last islands
+        foreach (string song in new[] { "kanto/sevii_45", "kanto/sevii_67", "kanto/sevii_route", "kanto/sevii_dungeon" })
+            Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists(song), song);
+        Assert.Equal("kanto/sevii_45", Kanto.Overlay("four_island")!.BgmTrack);
+        Assert.Equal("kanto/sevii_45", Kanto.Overlay("five_island")!.BgmTrack);
+        Assert.Equal("kanto/sevii_67", Kanto.Overlay("six_island")!.BgmTrack);
+        Assert.Equal("kanto/sevii_67", Kanto.Overlay("seven_island")!.BgmTrack);
+        Assert.Equal("kanto/sevii_route", Kanto.Overlay("six_island_ruin_valley")!.BgmTrack);
+        Assert.Equal("kanto/sevii_dungeon", Kanto.Overlay("six_island_dotted_hole_1f")!.BgmTrack);
+        Assert.Equal("kanto/sevii_dungeon", Kanto.Overlay("seven_island_tanoby_ruins_monean_chamber")!.BgmTrack);
+        Assert.Equal("kanto/rocket_hideout", Kanto.Overlay("five_island_rocket_warehouse")!.BgmTrack);
+        // The Sapphire is a key item, and Mewtwo waits at the bottom of Cerulean Cave behind FireRed's flag
+        Assert.Equal(ItemPocket.KeyItems, ItemDatabase.Get("Sapphire")!.Pocket);
+        var mewtwo = Assert.Single(BuiltMaps.Value["CeruleanCave_B1F"].Everyone, n => n.Species == "Mewtwo");
+        Assert.Equal("FLAG_HIDE_MEWTWO", mewtwo.HiddenBy);
+        Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists("common/legendary/mewtwo"));
+        // The Cape Brink's tutor's neighbours: Four Island's Body Slam and Seven Island's Swords Dance
+        Assert.True(PokemonPlatinumEngine.Models.MoveTutors.Kanto.ContainsKey("Body Slam"));
+        Assert.True(PokemonPlatinumEngine.Models.MoveTutors.Kanto.ContainsKey("Swords Dance"));
+        Assert.Equal("FLAG_TUTOR_BODY_SLAM", PokemonPlatinumEngine.Models.MoveTutors.KantoFlag("Body Slam"));
+        Assert.Equal("FLAG_TUTOR_SWORDS_DANCE", PokemonPlatinumEngine.Models.MoveTutors.KantoFlag("Swords Dance"));
+    }
+
     // ------------------------------------------------------------------ plan 19 · K8: the way on and Kanto's own songs
 
     [Fact]

@@ -1,0 +1,105 @@
+{
+  "people": {
+    "seven_island_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Celio's machine on One Island links us with faraway places now. Who knows who'll come visiting next?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you sail here on the Seagallop? Fastest ship on these seas, she is."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Trainer Tower up north isn't open yet. They're still getting it ready. I can't wait!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "0": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine left on the bench, open at a page about Agatha of the Elite Four and her Ghost Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "0_2": {
+      "name": {
+        "en": [
+          "Notice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A magazine left on the bench, open at a page about Agatha of the Elite Four and her Ghost Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,23 @@
+{
+  "people": {
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My neighbour measured me with her tape the other day. She said I'd make a fine Heracross. What's that supposed to mean?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

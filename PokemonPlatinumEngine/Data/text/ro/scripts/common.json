@@ -1309,6 +1309,184 @@
       ]
     }
   ],
+  "SeagallopRainbow": [
+    {
+      "en": [
+        "Where would you like to sail?",
+        "KANTO",
+        "ONE TO THREE ISLAND",
+        "FOUR TO SEVEN ISLAND",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which port of Kanto?",
+        "VERMILION CITY",
+        "CINNABAR ISLAND",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which island?",
+        "ONE ISLAND",
+        "TWO ISLAND",
+        "THREE ISLAND",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which island?",
+        "FOUR ISLAND",
+        "FIVE ISLAND",
+        "SIX ISLAND",
+        "SEVEN ISLAND",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Vermilion City!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Cinnabar Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for One Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Two Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Three Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Four Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Five Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Six Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Seven Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! We're moored right here already. Pick another port, and we'll cast off."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "SeagallopSails": [
     {
       "en": [
