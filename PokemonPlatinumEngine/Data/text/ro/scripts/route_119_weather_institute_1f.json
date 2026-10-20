@@ -1,0 +1,90 @@
+{
+  "LittleBoy": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Some scary people in blue barged in and went upstairs. My dad's up there! Please, help him!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dad says the people in blue wanted something from upstairs. You chased them off, didn't you? Thank you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "InstituteWorker1": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We watch the weather all over Hoenn from here. Lately there have been odd readings: sudden rain, sudden sun."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Something out at sea, perhaps. It's as though the weather has a mind of its own."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "InstituteWorker2": [
+    {
+      "en": [
+        "Worker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you for chasing Team Aqua off. They took our data on rain and storms, but at least they're gone."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Bed": [
+    {
+      "en": [
+        "There's a bed here... A little rest wouldn't hurt."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokémon are fully rested."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

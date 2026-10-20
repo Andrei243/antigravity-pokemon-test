@@ -1,0 +1,173 @@
+{
+  "people": {
+    "weather_institute_2f_grunt_1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: The rain data's ours! With it, the sea will grow and grow!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: The sea will still grow. Without me, I guess."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "weather_institute_2f_grunt_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: You again? The boss warned us about a kid like you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: The boss was right to warn us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "weather_institute_2f_grunt_4": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Aqua Grunt: Admin Shelly's orders: nobody comes up here. Nobody!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Aqua Grunt: Nobody except you, apparently."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "weather_institute_2f_shelly": {
+      "name": {
+        "en": [
+          "Shelly"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Aqua Admin Shelly: Ahahaha! You want to play? Then let's play!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Aqua Admin Shelly: Ahaha... not bad, kid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "weather_institute_2f_grunt_3": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Admin Shelly! Admin Shelly!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "weather_institute_2f_scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Phew! I really thought they'd take every bit of our research. Thank you!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_4_2": {
+      "name": {
+        "en": [
+          "Worker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Aqua wanted everything we have on rain. What on earth would they do with it?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

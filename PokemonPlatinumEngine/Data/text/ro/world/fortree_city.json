@@ -1,0 +1,148 @@
+{
+  "people": {
+    "man_2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody believes me, but I saw an enormous Pokémon high in the sky, twisting as it flew out to sea."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The trees here drink up the rain and grow taller every year. That's why we build our houses up in them!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I leave my window open, Bug Pokémon fly right into my room. I don't mind. They're good company."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Living among the trees keeps everyone hale and hearty. The fresh air does wonders, young one!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gameboy_kid": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Some Pokémon only evolve when they're traded. I wish I had someone to trade with!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FortreeCity_EventScript_CitySign": {
+      "en": [
+        "Fortree City\nA city that lives high among the trees"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FortreeCity_EventScript_GymSign": {
+      "en": [
+        "Fortree City Pokémon Gym\nLeader: Winona\nShe rides the winds above the forest!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

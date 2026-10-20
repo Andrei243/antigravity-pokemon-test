@@ -1526,5 +1526,31 @@
         "O barieră blochează drumul. Trebuie să fie un comutator pe undeva."
       ]
     }
+  ],
+  "HoennKecleonLook": [
+    {
+      "en": [
+        "Something unseeable is in the way."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Something unseeable is in the way. Use the Devon Scope?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} used the Devon Scope. A Pokémon that had melted into the scenery shows itself!"
+      ],
+      "text": [
+        ""
+      ]
+    }
   ]
 }

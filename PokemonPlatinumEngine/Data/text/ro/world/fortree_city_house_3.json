@@ -1,0 +1,41 @@
+{
+  "people": {
+    "maniac": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon that live in the trees are good at hiding. I've lived here for years and still find new ones."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "school_kid_m": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Winona's Pokémon fly so high, they're specks in the sky. I want to be a Bird Keeper too!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

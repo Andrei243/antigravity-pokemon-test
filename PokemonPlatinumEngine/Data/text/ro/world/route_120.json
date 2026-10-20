@@ -1,0 +1,440 @@
+{
+  "people": {
+    "route120_steven": {
+      "name": {
+        "en": [
+          "Steven"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bridge_kecleon": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon_2": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon_3": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon_4": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon_5": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Colin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Colin: My birds can see you from way up high. There's no hiding!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Colin: They saw you win, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_2": {
+      "name": {
+        "en": [
+          "Robert"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Robert: My Swablu's cotton wings are softer than clouds, but tough in battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Robert: Soft as a cloud, and just as beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Lorenzo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pkmn Ranger Lorenzo: The grass Pokémon here thrive in the rain. So do mine!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pkmn Ranger Lorenzo: Even in the rain, you shine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Jenna"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pkmn Ranger Jenna: Out here, a trainer has to be ready for anything. Are you?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pkmn Ranger Jenna: You were ready."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Jeffrey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Maniac Jeffrey: Three Surskit, all raised in puddles! Behold!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Maniac Jeffrey: Back to the puddles with you three."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Jennifer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Jennifer: I train out here where nobody bothers me. Until now."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Jennifer: Well. That was a bother."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Chip"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Chip: There are ancient ruins somewhere near here. I can feel it in my bones!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Chip: My bones are aching now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_2": {
+      "name": {
+        "en": [
+          "Clarissa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Parasol Lady Clarissa: My parasol keeps me dry. My Pokémon keep me winning."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Parasol Lady Clarissa: At least I'm still dry."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_3": {
+      "name": {
+        "en": [
+          "Angelica"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Parasol Lady Angelica: My Castform changes with the weather. Which shape will you face?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Parasol Lady Angelica: Every shape lost. Remarkable."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Keigo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Keigo: Ha! I was disguised as a tree stump!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Keigo: Back to being a stump."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy_2": {
+      "name": {
+        "en": [
+          "Riley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Riley: You fell for my trap! Now we battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Riley: I fell into my own trap."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Callie"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Callie: I run this route every day to get stronger. Let's spar!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Callie: More laps for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Leonel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Leonel: You look like you've battled a Gym Leader or two. Show me."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Leonel: You've battled more than a couple, clearly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route120_EventScript_RouteSignFortree": {
+      "en": [
+        "Route 120\nWest: Fortree City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route120_EventScript_RouteSign121": {
+      "en": [
+        "Route 120\nSouth: Route 121\nFurther: Lilycove City"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
