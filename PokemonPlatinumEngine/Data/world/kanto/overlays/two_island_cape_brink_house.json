@@ -1,10 +1,9 @@
 {
-  // The house at Cape Brink's tip (plan 19 · K9, part a): an old woman who teaches the strongest moves of the three
-  // Kanto starters' last forms to one that trusts its trainer completely. Her teaching is plan 19 · K9, part b's;
-  // until then she only talks
+  // The house at Cape Brink's tip (plan 19 · K9, part a): an old woman who teaches the strongest moves of the
+  // starters' last forms to one that trusts its trainer completely (two_island_cape_brink_house.txt, since part b)
   "area": "two_island_cape_brink_house",
   "bgmTrack": "kanto/sevii_123",
   "people": {
-    "cape_brink_tutor": { "name": "Old Woman", "dialog": [ "I teach a move of great power, but only to a Pokémon that has grown up from a starter and loves its trainer with all its heart.", "Come back when I've had a better look at you, dearie." ] }
+    "cape_brink_tutor": { "name": "Old Woman", "script": "Tutor" }
   }
 }

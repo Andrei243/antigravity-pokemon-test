@@ -1,0 +1,76 @@
+{
+  "key": "five_island_memorial_pillar",
+  "index": 239,
+  "name": "Memorial Pillar",
+  "matrix": 194,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "five_island_memorial_pillar",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Hoppip", "level": 10 },
+    { "species": "Hoppip", "level": 12 },
+    { "species": "Hoppip", "level": 8 },
+    { "species": "Hoppip", "level": 14 },
+    { "species": "Hoppip", "level": 10 },
+    { "species": "Hoppip", "level": 12 },
+    { "species": "Hoppip", "level": 16 },
+    { "species": "Hoppip", "level": 6 },
+    { "species": "Hoppip", "level": 8 },
+    { "species": "Hoppip", "level": 14 },
+    { "species": "Hoppip", "level": 8 },
+    { "species": "Hoppip", "level": 14 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Hoppip", "level": 5, "maxLevel": 15 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Qwilfish", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [],
+  "objects": [
+    { "id": "memorial_man", "looks": "man", "movement": "look_north_and_west", "x": 104, "z": 104, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "FiveIsland_MemorialPillar_EventScript_MemorialMan" },
+    { "id": "rocker", "looks": "rocker", "movement": "look_north_west_and_east", "x": 108, "z": 66, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_BIRD_KEEPER_MILO" },
+    { "id": "rocker_2", "looks": "rocker", "movement": "look_south_north_and_west", "x": 110, "z": 77, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_BIRD_KEEPER_CHAZ" },
+    { "id": "rocker_3", "looks": "rocker", "movement": "wander_around", "x": 113, "z": 91, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_BIRD_KEEPER_HAROLD" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 100, "z": 107, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_MEMORIAL_PILLAR_METAL_COAT", "item": "Metal Coat", "script": "FiveIsland_MemorialPillar_EventScript_ItemMetalCoat" }
+  ],
+  "signs": [
+    { "x": 105, "z": 103, "type": 0, "script": "FiveIsland_MemorialPillar_EventScript_Memorial" },
+    { "x": 104, "z": 112, "type": 2, "script": "", "item": "Big Pearl", "flag": "FLAG_HIDDEN_ITEM_FIVE_ISLAND_MEMORIAL_PILLAR_BIG_PEARL" },
+    { "x": 111, "z": 67, "type": 2, "script": "", "item": "Razz Berry", "flag": "FLAG_HIDDEN_ITEM_FIVE_ISLAND_MEMORIAL_PILLAR_RAZZ_BERRY" },
+    { "x": 113, "z": 82, "type": 2, "script": "", "item": "Sitrus Berry", "flag": "FLAG_HIDDEN_ITEM_FIVE_ISLAND_MEMORIAL_PILLAR_SITRUS_BERRY" },
+    { "x": 110, "z": 85, "type": 2, "script": "", "item": "Bluk Berry", "flag": "FLAG_HIDDEN_ITEM_FIVE_ISLAND_MEMORIAL_PILLAR_BLUK_BERRY" }
+  ],
+  "triggers": []
+}

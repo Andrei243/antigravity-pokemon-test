@@ -1345,6 +1345,113 @@ script SeagallopToThreeIsland
   fade in 0.4
   return
 
+# Four to Seven Island's harbours (plan 19 · K9, part b), each the same room as One Island's again
+script SeagallopToFourIsland
+  call SeagallopSails
+  warp "FourIsland_Harbor" 8 5 up
+  fade in 0.4
+  return
+
+script SeagallopToFiveIsland
+  call SeagallopSails
+  warp "FiveIsland_Harbor" 8 5 up
+  fade in 0.4
+  return
+
+script SeagallopToSixIsland
+  call SeagallopSails
+  warp "SixIsland_Harbor" 8 5 up
+  fade in 0.4
+  return
+
+script SeagallopToSevenIsland
+  call SeagallopSails
+  warp "SevenIsland_Harbor" 8 5 up
+  fade in 0.4
+  return
+
+# The Seagallop's ports for a holder of the Rainbow Pass (plan 19 · K9, part b; FireRed's SeviiIslands_EventScript_
+# ChooseSeagallopDest with its list of every port): nine ports are more than a question's six answers, so the sailor
+# asks first which waters and then which port. The harbour sets VAR_SEAGALLOP_HERE (a variable of ours: 0 Vermilion
+# City, 1 Cinnabar Island, 2 to 8 One to Seven Island) before it calls, and the port the ship lies at is told so, as
+# FireRed leaves it off its list.
+script SeagallopRainbow
+  choose "Where would you like to sail?" "KANTO" "ONE TO THREE ISLAND" "FOUR TO SEVEN ISLAND" "NOT NOW"
+  if result == 0 goto Kanto
+  if result == 1 goto Near
+  if result == 2 goto Far
+  say "Come back any time."
+  return
+label Kanto
+  choose "Which port of Kanto?" "VERMILION CITY" "CINNABAR ISLAND" "NOT NOW"
+  if result == 0 goto Vermilion
+  if result == 1 goto Cinnabar
+  say "Come back any time."
+  return
+label Near
+  choose "Which island?" "ONE ISLAND" "TWO ISLAND" "THREE ISLAND" "NOT NOW"
+  if result == 0 goto One
+  if result == 1 goto Two
+  if result == 2 goto Three
+  say "Come back any time."
+  return
+label Far
+  choose "Which island?" "FOUR ISLAND" "FIVE ISLAND" "SIX ISLAND" "SEVEN ISLAND" "NOT NOW"
+  if result == 0 goto Four
+  if result == 1 goto Five
+  if result == 2 goto Six
+  if result == 3 goto Seven
+  say "Come back any time."
+  return
+label Vermilion
+  if var VAR_SEAGALLOP_HERE == 0 goto Here
+  say "All aboard for Vermilion City!"
+  call SeagallopToVermilion
+  return
+label Cinnabar
+  if var VAR_SEAGALLOP_HERE == 1 goto Here
+  say "All aboard for Cinnabar Island!"
+  call SeagallopToCinnabar
+  return
+label One
+  if var VAR_SEAGALLOP_HERE == 2 goto Here
+  say "All aboard for One Island!"
+  call SeagallopToOneIsland
+  return
+label Two
+  if var VAR_SEAGALLOP_HERE == 3 goto Here
+  say "All aboard for Two Island!"
+  call SeagallopToTwoIsland
+  return
+label Three
+  if var VAR_SEAGALLOP_HERE == 4 goto Here
+  say "All aboard for Three Island!"
+  call SeagallopToThreeIsland
+  return
+label Four
+  if var VAR_SEAGALLOP_HERE == 5 goto Here
+  say "All aboard for Four Island!"
+  call SeagallopToFourIsland
+  return
+label Five
+  if var VAR_SEAGALLOP_HERE == 6 goto Here
+  say "All aboard for Five Island!"
+  call SeagallopToFiveIsland
+  return
+label Six
+  if var VAR_SEAGALLOP_HERE == 7 goto Here
+  say "All aboard for Six Island!"
+  call SeagallopToSixIsland
+  return
+label Seven
+  if var VAR_SEAGALLOP_HERE == 8 goto Here
+  say "All aboard for Seven Island!"
+  call SeagallopToSevenIsland
+  return
+label Here
+  say "Ha! We're moored right here already. Pick another port, and we'll cast off."
+  return
+
 script SeagallopSails
   fade out 0.6
   speaker none

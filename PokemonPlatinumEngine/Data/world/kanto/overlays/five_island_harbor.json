@@ -1,0 +1,11 @@
+{
+  // Five Island's harbour (plan 19 · K9, part b): the Seagallop's landing, its sailor sailing a holder of the Rainbow
+  // Pass on to any port (five_island_harbor.txt). The ship at the pier's end lies past the room's floor, and is left
+  // out, as One Island's is
+  "area": "five_island_harbor",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "seagallop": { "name": "Seagallop", "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_HARBOR_SEAGALLOP", "dialog": [ "The Seagallop rocks gently at the pier." ] },
+    "sailor": { "name": "Sailor", "script": "Sailor", "still": true }
+  }
+}

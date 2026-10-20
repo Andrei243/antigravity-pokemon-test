@@ -1,0 +1,23 @@
+{
+  "people": {
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My husband has gone fishing off Resort Gorgeous again. He won't be home before dark."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

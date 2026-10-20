@@ -1,0 +1,39 @@
+{
+  "key": "four_island_loreleis_house",
+  "index": 405,
+  "name": "Four Island",
+  "matrix": 352,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_45",
+  "nightMusic": "MUS_SEVII_45",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "four_island", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "lorelei", "looks": "lorelei", "movement": "look_west", "x": 7, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LORELEI_IN_HER_HOUSE", "script": "FourIsland_LoreleisHouse_EventScript_Lorelei" },
+    { "id": "wigglytuff", "looks": "wigglytuff", "movement": "look_south", "x": 0, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "seel", "looks": "seel", "movement": "look_south", "x": 10, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "pikachu", "looks": "pikachu", "movement": "look_south", "x": 9, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "slowpoke", "looks": "slowpoke", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "slowbro", "looks": "slowbro", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "psyduck", "looks": "psyduck", "movement": "look_south", "x": 6, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "meowth", "looks": "meowth", "movement": "look_south", "x": 9, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LORELEI_HOUSE_MEOWTH_DOLL", "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "chansey", "looks": "chansey", "movement": "look_south", "x": 10, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LORELEI_HOUSE_CHANSEY_DOLL", "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "jigglypuff", "looks": "jigglypuff", "movement": "look_south", "x": 0, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LORELEI_HOUSE_JIGGLYPUFF_DOLL", "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "nidoran_f", "looks": "nidoran_f", "movement": "look_south", "x": 0, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LORELEIS_HOUSE_NIDORAN_F_DOLL", "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "nidoran_m", "looks": "nidoran_m", "movement": "look_south", "x": 1, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LORELEIS_HOUSE_NIDORAN_M_DOLL", "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "pidgeot", "looks": "pidgeot", "movement": "look_south", "x": 9, "z": 0, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LORELEIS_HOUSE_PIDGEOT_DOLL", "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "fearow", "looks": "fearow", "movement": "look_south", "x": 10, "z": 0, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LORELEIS_HOUSE_FEAROW_DOLL", "script": "FourIsland_LoreleisHouse_EventScript_Doll" },
+    { "id": "lapras_doll", "looks": "lapras_doll", "movement": "look_south", "x": 9, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LORELEIS_HOUSE_LAPRAS_DOLL", "script": "FourIsland_LoreleisHouse_EventScript_Doll" }
+  ],
+  "signs": [],
+  "triggers": []
+}

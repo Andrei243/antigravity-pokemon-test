@@ -1,0 +1,325 @@
+{
+  "displayName": {
+    "en": [
+      "Pattern Bush"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Bethany"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Bethany: The patterns in this grass make my Pokémon sleepy. Let's wake them up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Bethany: Back to sleep, everyone."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2_2": {
+      "name": {
+        "en": [
+          "Allison"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Breeder Allison: I raise every Pokémon with love. Let me show you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Breeder Allison: Love wasn't quite enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Garret"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Garret: The bugs here have the strangest markings!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Garret: My bugs need new markings."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher_2": {
+      "name": {
+        "en": [
+          "Jonah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Jonah: Shh! You'll scare the bugs away! Too late, let's battle."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Jonah: Now the bugs are gone and I lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher_3": {
+      "name": {
+        "en": [
+          "Vance"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Vance: I walk round and round looking for bugs. Found you instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Vance: Round and round I go."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Nash"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Nash: I got lost in the bushes. A battle will help me find my way!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Nash: Still lost. Still beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster_2": {
+      "name": {
+        "en": [
+          "Cordell"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Cordell: Bet you can't beat my team!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Cordell: You won the bet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Dalia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Dalia: The patterns on the grass make me dizzy. Battle me before I fall over!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Dalia: Oh, now I'm really dizzy."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Joana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lass Joana: Isn't this place pretty? Let's have a pretty battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lass Joana: That wasn't pretty at all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Riley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Riley: I'm camping in the bush tonight. Battle me before it gets dark!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Riley: I'll sleep on that one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Marcy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Marcy: I came here for a picnic, but a battle sounds even better!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Marcy: Back to my sandwiches."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Layton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Layton: These patterns must be a message from long ago! I'm sure of it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Layton: The message says: you win."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

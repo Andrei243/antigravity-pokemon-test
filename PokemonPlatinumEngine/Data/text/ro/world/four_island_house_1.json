@@ -1,0 +1,33 @@
+{
+  "people": {
+    "fat_man": {
+      "name": {
+        "en": [
+          "Big Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fat_man_2": {
+      "name": {
+        "en": [
+          "Big Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My brother says he isn't heavy, he's just built big. Try telling that to the floorboards!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -152,6 +152,11 @@ public static class MoveTutors
         // K7). Double-Edge is no machine of Platinum's: its nearest kin among them is Return (TM27), the other Normal
         // move that hits with all the user has
         ["Double-Edge"] = "Return",
+        // Four Island's man by the window (FireRed's FourIsland_House1_EventScript_BodySlamTutor; plan 19 · K9, part b):
+        // Body Slam is no machine of Platinum's, and its nearest kin among them is Return again, a Normal body blow
+        ["Body Slam"] = "Return",
+        // The young man on Seven Island's shore (FireRed's SevenIsland_EventScript_SwordsDanceTutor), whose move is TM75's
+        ["Swords Dance"] = "Swords Dance",
     };
 
     /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>

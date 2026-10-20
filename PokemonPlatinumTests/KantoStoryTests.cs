@@ -2104,13 +2104,366 @@ public class KantoStoryTests
         Assert.Equal(0, Count(game, "Tri-Pass"));
         Assert.Equal(1, Count(game, "Rainbow Pass"));
         Assert.Equal(5, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
-        // The harbours' sailors take the Rainbow Pass as they took the Tri-Pass
+        // The harbours' sailors take the Rainbow Pass to every port (part b): the waters first, then the port
         game.Arrive("OneIsland_Harbor", 8, 5);
-        game.Answers.Enqueue(3);
-        game.Talk("sailor");
-        Assert.Equal("ThreeIsland_Harbor", game.Map.Name);
+        game.Answers.Enqueue(1);
         game.Answers.Enqueue(2);
         game.Talk("sailor");
+        Assert.Equal("ThreeIsland_Harbor", game.Map.Name);
+        game.Answers.Enqueue(1);
+        game.Answers.Enqueue(0);
+        game.Talk("sailor");
         Assert.Equal("OneIsland_Harbor", game.Map.Name);
+    }
+
+    // ------------------------------------------------------------------ plan 19 · K9, part b: the last islands and the Sapphire
+
+    /// <summary>A Champion of Kanto with the National Pokédex who has given Celio the Ruby for the Rainbow Pass (part a).</summary>
+    private Game WithTheRainbowPass()
+    {
+        var game = AtOneIsland();
+        game.NationalDex = true;
+        game.Story.SetVar("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F", 5);
+        game.Bag.AddItem(ItemDatabase.Get("Rainbow Pass")!);
+        return game;
+    }
+
+    [Fact]
+    public void TheRainbowPassSailsToFourToSevenIslandAndTheRivalMeetsThePlayerOnFourIsland()
+    {
+        var game = WithTheRainbowPass();
+        game.Arrive("OneIsland_Harbor", 8, 5);
+        // The far islands, from each harbour to the next
+        foreach (var (n, harbor) in new[] { (0, "FourIsland_Harbor"), (1, "FiveIsland_Harbor"), (2, "SixIsland_Harbor"), (3, "SevenIsland_Harbor") })
+        {
+            game.Answers.Enqueue(2);
+            game.Answers.Enqueue(n);
+            game.Talk("sailor");
+            Assert.Equal(harbor, game.Map.Name);
+        }
+        // The ship is moored at Seven Island already, and from there it sails back to One Island and to Vermilion City
+        game.Answers.Enqueue(2);
+        game.Answers.Enqueue(3);
+        var here = game.Talk("sailor");
+        Assert.Equal("SevenIsland_Harbor", game.Map.Name);
+        Assert.Contains(here.Transcript, l => l.Text.Contains("moored right here"));
+        game.Answers.Enqueue(1);
+        game.Answers.Enqueue(0);
+        game.Talk("sailor");
+        Assert.Equal("OneIsland_Harbor", game.Map.Name);
+        // Four Island: the rival comes out of the Day Care's way on the first visit, talks of his Egg and goes
+        game.Answers.Enqueue(2);
+        game.Answers.Enqueue(0);
+        game.Talk("sailor");
+        game.Through("FourIsland");
+        Assert.Equal("FourIsland", game.Map.Name);
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_FOUR_ISLAND"));
+        Assert.Contains(game.Played, p => p.Host.Transcript.Any(l => l.Text.Contains("found an Egg")));
+        Assert.True(game.Story.Has("FLAG_HIDE_FOUR_ISLAND_RIVAL"));
+        Assert.Null(game.Present("four_island_rival"));
+        int scenes = game.Played.Count(p => p.Host.Transcript.Any(l => l.Text.Contains("found an Egg")));
+        game.Arrive("FourIsland", 8, 26);
+        Assert.Equal(scenes, game.Played.Count(p => p.Host.Transcript.Any(l => l.Text.Contains("found an Egg"))));
+        Assert.Null(game.Present("four_island_rival"));
+    }
+
+    [Fact]
+    public void MetFirstInSixIslandsPokemonCenterTheRivalIsNoLongerWaitingOnFourIsland()
+    {
+        var game = WithTheRainbowPass();
+        game.Arrive("SixIsland_PokemonCenter_1F", 7, 8);
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_SIX_ISLAND_POKEMON_CENTER_1F"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_FOUR_ISLAND"));
+        Assert.Null(game.Present("six_island_rival"));
+        game.Arrive("FourIsland", 8, 26);
+        Assert.Null(game.Present("four_island_rival"));
+        Assert.DoesNotContain(game.Last.Transcript, l => l.Text.Contains("found an Egg"));
+    }
+
+    [Fact]
+    public void TheSapphireIsFoundStolenAndWonBackFromTeamRocketsWarehouseAndCelioLinksTheIslands()
+    {
+        var game = WithTheRainbowPass();
+        // Ruin Valley's scientist stands before the dotted door until the poachers are driven out of Icefall Cave
+        game.Arrive("SixIsland", 48, 187);
+        Assert.NotNull(game.Present("ruin_valley_scientist"));
+        game.Arrive("FourIsland_IcefallCave_Back", 12, 19);
+        Assert.NotNull(game.Present("icefall_lorelei"));
+        Assert.NotNull(game.Present("icefall_rocket3"));
+        Assert.True(game.Fires("Poachers"));
+        var poachers = game.Step("Poachers");
+        Assert.Contains(poachers.Log, l => l.StartsWith("battle kanto_team_rocket_grunt_45 Won"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_ICEFALL_CAVE_BACK"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ICEFALL_CAVE_ROCKETS"));
+        Assert.True(game.Story.Has("FLAG_HIDE_RUIN_VALLEY_SCIENTIST"));
+        Assert.Null(game.Present("icefall_rocket3"));
+        Assert.False(game.Fires("Poachers"));
+        game.Arrive("FourIsland_IcefallCave_Back", 12, 19);
+        Assert.Null(game.Present("icefall_lorelei"));
+        // Lorelei has gone home to her house of dolls
+        game.Arrive("FourIsland_LoreleisHouse", 7, 6);
+        Assert.NotNull(game.Present("lorelei"));
+        game.Talk("lorelei");
+        Assert.False(game.Story.Has("FLAG_TALKED_TO_LORELEI_AFTER_WAREHOUSE"));
+        // The warehouse's keypad wants two passwords: Mt. Ember's grunts gave the first, and nobody yet the second
+        game.Arrive("FiveIsland", 84, 62);
+        var keypad = game.Map.TileScripts.Single(kv => kv.Value == "WarehouseDoor").Key;
+        var warehouseDoor = Scripts.Find("WarehouseDoor", game.Map.ScriptFileAt(keypad.X, keypad.Y))!;
+        Assert.Contains(game.Play(warehouseDoor).Transcript, l => l.Text.Contains("second password"));
+        Assert.False(game.Story.Has("FLAG_UNLOCKED_ROCKET_WAREHOUSE"));
+        // The dotted door spells CUT: read without the move it stays shut, and Cut opens it
+        game.Arrive("SixIsland", 48, 187);
+        Assert.Null(game.Present("ruin_valley_scientist"));
+        var dots = game.Map.TileScripts.Single(kv => kv.Value == "DottedHoleDoor").Key;
+        var dottedDoor = Scripts.Find("DottedHoleDoor", game.Map.ScriptFileAt(dots.X, dots.Y))!;
+        Assert.DoesNotContain(game.Party.Members, p => p.Knows("Cut"));
+        game.Answers.Enqueue(0);
+        Assert.Contains(game.Play(dottedDoor).Transcript, l => l.Text.Contains("CUT"));
+        Assert.False(game.Story.Has("FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE"));
+        game.Party.Members[0].Moves[0] = new Move(MoveDatabase.Get("Cut")!);
+        game.Answers.Enqueue(0);
+        game.Answers.Enqueue(0);
+        var cut = game.Play(dottedDoor);
+        Assert.Contains(cut.Log, l => l.StartsWith("usemove Cut"));
+        Assert.True(game.Story.Has("FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE"));
+        // At the bottom of the Dotted Hole the Sapphire shines, and the scientist who followed the player snatches it
+        game.Through("SixIsland_DottedHole_1F");
+        Assert.Equal("SixIsland_DottedHole_1F", game.Map.Name);
+        game.Arrive("SixIsland_DottedHole_SapphireRoom", 7, 9);
+        Assert.NotNull(game.Present("sapphire"));
+        Assert.Null(game.Present("dotted_hole_thief"));
+        var stolen = game.Talk("sapphire");
+        Assert.Contains(stolen.Transcript, l => l.Text.Contains("Ekans ate the cake"));
+        Assert.Equal(0, Count(game, "Sapphire"));
+        Assert.True(game.Story.Has("FLAG_HIDE_SAPPHIRE"));
+        Assert.True(game.Story.Has("FLAG_LEARNED_YES_NAH_CHANSEY"));
+        Assert.Null(game.Present("sapphire"));
+        Assert.Null(game.Present("dotted_hole_thief"));
+        // Both passwords, and the warehouse opens
+        game.Arrive("FiveIsland", 84, 62);
+        game.Play(warehouseDoor);
+        Assert.True(game.Story.Has("FLAG_UNLOCKED_ROCKET_WAREHOUSE"));
+        Assert.Contains(game.Play(warehouseDoor).Transcript, l => l.Text.Contains("is unlocked"));
+        game.Through("FiveIsland_RocketWarehouse");
+        Assert.Equal("FiveIsland_RocketWarehouse", game.Map.Name);
+        // The admin calls the player over, is battled, and Team Rocket leaves the islands' Pokémon behind
+        Assert.True(game.Fires("Admin2Trigger"));
+        game.Step("Admin2Trigger");
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_ROCKET_WAREHOUSE"));
+        Assert.False(game.Fires("Admin2Trigger"));
+        var admin = game.Talk("warehouse_admin2");
+        Assert.Contains(admin.Log, l => l.StartsWith("battle kanto_team_rocket_admin_2 Won"));
+        Assert.True(game.Story.Has("FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_FIVE_ISLAND_ROCKETS"));
+        Assert.Null(game.Present("warehouse_admin2"));
+        Assert.Null(game.Present("warehouse_grunt2"));
+        // Gideon, the scientist who stole it, battles for it and gives it up
+        var gideon = game.Talk("scientist");
+        Assert.Contains(gideon.Log, l => l.StartsWith("battle kanto_scientist_gideon Won"));
+        Assert.Equal(1, Count(game, "Sapphire"));
+        Assert.True(game.Story.Has("FLAG_RECOVERED_SAPPHIRE"));
+        Assert.DoesNotContain(game.Talk("scientist").Log, l => l.StartsWith("battle"));
+        Assert.Equal(1, Count(game, "Sapphire"));
+        // Lorelei has heard, and thanks the player once
+        game.Arrive("FourIsland_LoreleisHouse", 7, 6);
+        game.Talk("lorelei");
+        Assert.True(game.Story.Has("FLAG_TALKED_TO_LORELEI_AFTER_WAREHOUSE"));
+        // Celio sets the Sapphire beside the Ruby: the machine links the islands with Hoenn, and the world after the story opens
+        game.Arrive("OneIsland_PokemonCenter_1F", 9, 8);
+        var linked = game.Talk("celio");
+        Assert.Contains(linked.Transcript, l => l.Text.Contains("Hoenn"));
+        Assert.Equal(0, Count(game, "Sapphire"));
+        Assert.Equal(6, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
+        Assert.True(game.Story.Has("FLAG_SYS_CAN_LINK_WITH_RS"));
+        Assert.True(game.Story.Has("FLAG_HIDE_CERULEAN_CAVE_GUARD"));
+        Assert.DoesNotContain(game.Talk("celio").Transcript, l => l.Text.Contains("handed the Sapphire"));
+        // Lorelei has gone back to the League, Gideon speaks of the boss's son, and Cerulean Cave's guard has gone
+        game.Arrive("FourIsland_LoreleisHouse", 7, 6);
+        Assert.Null(game.Present("lorelei"));
+        game.Arrive("FiveIsland_RocketWarehouse", 24, 24);
+        Assert.Contains(game.Talk("scientist").Transcript, l => l.Text.Contains("son"));
+        game.Arrive("Kanto", 287, 60);
+        Assert.Null(game.Present("cerulean_cave_guard"));
+    }
+
+    [Fact]
+    public void CeruleanCavesGuardStandsUntilTheSapphireIsBack()
+    {
+        var game = WithTheRainbowPass();
+        game.Arrive("Kanto", 287, 60);
+        Assert.NotNull(game.Present("cerulean_cave_guard"));
+        game.Story.Set("FLAG_HIDE_CERULEAN_CAVE_GUARD");
+        game.Arrive("Kanto", 287, 60);
+        Assert.Null(game.Present("cerulean_cave_guard"));
+    }
+
+    [Fact]
+    public void MewtwoWaitsAtTheBottomOfCeruleanCaveAtLevelSeventyAndIsGoneForGoodOnceFought()
+    {
+        var game = WithTheRainbowPass();
+        game.Arrive("CeruleanCave_B1F", 7, 14);
+        Assert.NotNull(game.Present("mewtwo"));
+        game.Fight = BattleOutcome.Fled;
+        var fled = game.Talk("mewtwo");
+        Assert.Contains(fled.Log, l => l.StartsWith("wildbattle Mewtwo 70"));
+        Assert.Null(game.Present("mewtwo"));
+        Assert.False(game.Story.Has("FLAG_FOUGHT_MEWTWO"));
+        game.Arrive("CeruleanCave_B1F", 7, 14);
+        Assert.NotNull(game.Present("mewtwo"));
+        game.Fight = BattleOutcome.Won;
+        game.Talk("mewtwo");
+        Assert.True(game.Story.Has("FLAG_FOUGHT_MEWTWO"));
+        game.Arrive("CeruleanCave_B1F", 7, 14);
+        Assert.Null(game.Present("mewtwo"));
+    }
+
+    [Fact]
+    public void TheTanobyKeysSevenSwitchesOpenTheChambersOnceAllArePressed()
+    {
+        var game = WithTheRainbowPass();
+        game.Arrive("SevenIsland_SevaultCanyon_TanobyKey", 7, 12);
+        Assert.Equal(7, game.Map.BoulderPits.Count);
+        for (int n = 1; n <= 7; n++)
+            Assert.Contains($"Switch{n}", game.Map.BoulderPits.Values);
+        var file = game.Map.ScriptFileAt(7, 12);
+        // Six pressed, and nothing yet; the same one pressed twice counts once
+        for (int n = 1; n <= 6; n++) game.Play(Scripts.Find($"Switch{n}", file)!);
+        game.Play(Scripts.Find("Switch1", file)!);
+        Assert.False(game.Story.Has("FLAG_SYS_UNLOCKED_TANOBY_RUINS"));
+        var last = game.Play(Scripts.Find("Switch7", file)!);
+        Assert.True(game.Story.Has("FLAG_SYS_UNLOCKED_TANOBY_RUINS"));
+        Assert.Contains(last.Transcript, l => l.Text.Contains("rumble"));
+        // The chambers' doors are open from then on
+        game.Arrive("SevenIsland", 55, 59);
+        var chambers = game.Map.Warps.Where(w => w.TargetMap.StartsWith("SevenIsland_TanobyRuins_")).ToList();
+        Assert.Equal(7, chambers.Count);
+        Assert.All(chambers, door => Assert.Equal("FLAG_SYS_UNLOCKED_TANOBY_RUINS", door.OpenedBy));
+        // A switch left half done is forgotten as the place is left (its flags are the place's own)
+        var other = WithTheRainbowPass();
+        other.Arrive("SevenIsland_SevaultCanyon_TanobyKey", 7, 12);
+        other.Play(Scripts.Find("Switch1", file)!);
+        Assert.True(other.Story.Has("FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1"));
+        other.Story.ClearLocal();
+        Assert.False(other.Story.Has("FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1"));
+    }
+
+    [Theory]
+    [InlineData("FourIsland_House1", 8, 5, "fat_man", "Snorlax", "Body Slam")]
+    [InlineData("SevenIsland", 55, 59, "swords_dance_tutor", "Scyther", "Swords Dance")]
+    public void TheLastIslandsTutorsTeachTheirMoveOnce(string map, int x, int y, string who, string species, string move)
+    {
+        var game = WithTheRainbowPass();
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get(species)!, 30));
+        game.Party.Members[0].Moves.RemoveAll(m => m.Name == move);
+        while (game.Party.Members[0].Moves.Count > 3) game.Party.Members[0].Moves.RemoveAt(0);
+        game.Arrive(map, x, y);
+        game.Answers.Enqueue(0);
+        var taught = game.Talk(who);
+        Assert.True(game.Party.Members[0].Knows(move));
+        Assert.True(game.Story.Has(MoveTutors.KantoFlag(move)));
+        Assert.Contains(taught.Transcript, l => l.Text.Contains($"learned {move}"));
+        Assert.Empty(game.Talk(who).Asked);
+    }
+
+    [Fact]
+    public void CapeBrinksOldWomanTeachesAFullyGrownStarterThatTrustsItsTrainerItsStrongestMove()
+    {
+        var game = WithTheRainbowPass();
+        var venusaur = new Pokemon(PokemonDatabase.Get("Venusaur")!, 50);
+        while (venusaur.Moves.Count > 3) venusaur.Moves.RemoveAt(0);
+        game.Party.Members.Insert(0, venusaur);
+        game.Arrive("TwoIsland_CapeBrink_House", 4, 6);
+        // Not yet: it doesn't trust its trainer enough
+        venusaur.Friendship = 200;
+        game.Answers.Enqueue(0);
+        var close = game.Talk("cape_brink_tutor");
+        Assert.Contains(close.Transcript, l => l.Text.Contains("trusts its trainer"));
+        Assert.False(venusaur.Knows("Frenzy Plant"));
+        // At full friendship, Frenzy Plant
+        venusaur.Friendship = 255;
+        game.Answers.Enqueue(0);
+        game.Answers.Enqueue(0);
+        game.Talk("cape_brink_tutor");
+        Assert.True(venusaur.Knows("Frenzy Plant"));
+        // A Pokémon that isn't a starter grown to its last form can learn nothing of hers
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Rattata")!, 20) { Friendship = 255 });
+        game.Answers.Enqueue(0);
+        Assert.Contains(game.Talk("cape_brink_tutor").Transcript, l => l.Text.Contains("can't learn any of my moves"));
+    }
+
+    [Fact]
+    public void TheWaterLabyrinthsGentlemanGivesAnEggToATrainerWhosePokemonLovesThemDearly()
+    {
+        var game = WithTheRainbowPass();
+        game.Arrive("FiveIsland", 14, 32);
+        var gentleman = game.Map.NPCs.Single(n => n.Key == "gentleman" && game.Map.AreaAt(n.GridX, n.GridY)?.Key == "five_island_water_labyrinth");
+        // Not yet: the lead's friendship is short of the most
+        game.Party.Members[0].Friendship = 254;
+        game.Talk(gentleman);
+        Assert.False(game.Story.Has("FLAG_GOT_TOGEPI_EGG"));
+        // With a full team he asks the player to come back, and gives nothing
+        game.Party.Members[0].Friendship = 255;
+        while (game.Party.Members.Count < 6) game.Party.Members.Add(new Pokemon(PokemonDatabase.Get("Rattata")!, 5));
+        game.Talk(gentleman);
+        Assert.False(game.Story.Has("FLAG_GOT_TOGEPI_EGG"));
+        // With room, a Togepi Egg, once
+        game.Party.Members.RemoveAt(5);
+        game.Talk(gentleman);
+        Assert.True(game.Story.Has("FLAG_GOT_TOGEPI_EGG"));
+        var egg = Assert.Single(game.Party.Members, p => p.IsEgg);
+        Assert.Equal("Togepi", egg.Species.Name);
+        game.Talk(gentleman);
+        Assert.Single(game.Party.Members, p => p.IsEgg);
+    }
+
+    [Fact]
+    public void TheMemorialPillarTakesALemonadeForTheOnixAndItsOwnerGivesTmFortyTwo()
+    {
+        var game = WithTheRainbowPass();
+        game.Arrive("FiveIsland", 104, 106);
+        var stone = game.Map.TileScripts.Single(kv => kv.Value == "Memorial").Key;
+        var memorial = Scripts.Find("Memorial", game.Map.ScriptFileAt(stone.X, stone.Y))!;
+        // Nothing to leave without Lemonade
+        game.Play(memorial);
+        Assert.False(game.Story.Has("FLAG_GOT_TM42_AT_MEMORIAL_PILLAR"));
+        game.Bag.AddItem(ItemDatabase.Get("Lemonade")!, 2);
+        // Asked, and refused
+        game.Answers.Enqueue(1);
+        game.Play(memorial);
+        Assert.Equal(2, Count(game, "Lemonade"));
+        // Asked, and left
+        game.Answers.Enqueue(0);
+        game.Play(memorial);
+        Assert.Equal(1, Count(game, "Lemonade"));
+        Assert.Equal(1, Count(game, "TM42"));
+        Assert.True(game.Story.Has("FLAG_GOT_TM42_AT_MEMORIAL_PILLAR"));
+        game.Play(memorial);
+        Assert.Equal(1, Count(game, "Lemonade"));
+        Assert.Equal(1, Count(game, "TM42"));
+    }
+
+    [Fact]
+    public void SelphyIsFoundInTheLostCaveBattledAndTakenHomeToResortGorgeous()
+    {
+        var game = WithTheRainbowPass();
+        // At Resort Gorgeous she is nowhere to be seen, and in her house only her butler waits
+        game.Arrive("FiveIsland", 87, 10);
+        Assert.Null(game.Present("resort_gorgeous_selphy"));
+        game.Arrive("FiveIsland_ResortGorgeous_House", 4, 6);
+        Assert.Null(game.Present("resort_gorgeous_house_selphy"));
+        Assert.NotNull(game.Present("resort_gorgeous_house_butler"));
+        // Deep in the Lost Cave she battles the player and is led home: the two come out before her door, and she goes in
+        game.Arrive("FiveIsland_LostCave_Room10", 5, 7);
+        Assert.Contains(game.Played, p => p.Host.Log.Any(l => l.StartsWith("battle kanto_lady_selphy Won")));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_FIVE_ISLAND_LOST_CAVE_ROOM10"));
+        Assert.Equal("FiveIsland", game.Map.Name);
+        Assert.Equal("five_island_resort_gorgeous", game.Map.AreaAt(game.Tile.X, game.Tile.Y)?.Key);
+        Assert.Equal(2, game.Story.Var("VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS"));
+        Assert.Null(game.Present("resort_gorgeous_selphy"));
+        // The cave is empty afterwards, and she is at home
+        game.Arrive("FiveIsland_LostCave_Room10", 5, 7);
+        Assert.Null(game.Present("lost_cave_selphy"));
+        game.Arrive("FiveIsland_ResortGorgeous_House", 4, 6);
+        Assert.NotNull(game.Present("resort_gorgeous_house_selphy"));
     }
 }

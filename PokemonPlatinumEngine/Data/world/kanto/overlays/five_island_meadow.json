@@ -1,0 +1,20 @@
+{
+  // Five Isle Meadow (plan 19 · K9, part b): FireRed's map, our words. The grassland north of Five Island where Team
+  // Rocket keeps its warehouse. Its door is read (five_island_meadow.txt): it takes the two passwords, the one heard
+  // on Mt. Ember and the one heard in the Dotted Hole, and once both are given it stands open
+  // (FLAG_UNLOCKED_ROCKET_WAREHOUSE). The grunts outside go with the rest of the gang once the warehouse is cleared
+  // (FLAG_HIDE_FIVE_ISLAND_ROCKETS)
+  "area": "five_island_meadow",
+  "name": "Five Isle Meadow",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "doors": [ { "warp": 0, "map": "FiveIsland_RocketWarehouse", "x": 24, "y": 24, "facing": "Up", "openedBy": "FLAG_UNLOCKED_ROCKET_WAREHOUSE" } ],
+  "people": {
+    "rocket_f": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: This meadow is Team Rocket property now. Trespassers get battled!", "dialogueAfter": "Team Rocket Grunt: Fine, trespass all you like." } },
+    "rocket_m": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: Keep away from the warehouse! There's nothing in there. Nothing at all!", "dialogueAfter": "Team Rocket Grunt: Whatever you think is in there, you're wrong!" } },
+    "rocket_m_2": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Rocket Grunt: I'm on lookout duty. And I've just looked out and found you!", "dialogueAfter": "Team Rocket Grunt: Maybe I should've kept looking the other way." } }
+  },
+  "read": {
+    "FiveIsland_Meadow_EventScript_WarehouseDoor": "WarehouseDoor"
+  }
+}

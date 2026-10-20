@@ -1,0 +1,27 @@
+{
+  "key": "seven_island_sevault_canyon_house",
+  "index": 424,
+  "name": "Sevault Canyon",
+  "matrix": 371,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_67",
+  "nightMusic": "MUS_SEVII_67",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "seven_island_sevault_canyon", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "chansey_dance_man", "looks": "balding_man", "movement": "look_south", "x": 2, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_SevaultCanyon_House_EventScript_ChanseyDanceMan" },
+    { "id": "chansey", "looks": "chansey", "movement": "look_south", "x": 4, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_SevaultCanyon_House_EventScript_Chansey" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 6, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEVEN_ISLAND_SEVAULT_CANYON_HOUSE_LUCKY_PUNCH", "item": "Lucky Punch", "script": "SevenIsland_SevaultCanyon_House_EventScript_ItemLuckyPunch" }
+  ],
+  "signs": [],
+  "triggers": []
+}

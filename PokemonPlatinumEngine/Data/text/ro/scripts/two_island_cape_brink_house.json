@@ -1,0 +1,128 @@
+{
+  "Tutor": [
+    {
+      "en": [
+        "Old Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "My, a visitor all the way out at the cape! Sit, sit.",
+        "I've spent my life learning the oldest moves there are, the ones only a starter grown to its full strength can bear."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall I teach one of those moves to a Pokémon of yours?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Show me the one you'd like to learn it, dearie."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So I'm to teach {thing} to your {wearer}?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There now, {wearer} has let go of {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Use it with care. A move like that takes everything out of the one who uses it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, there's no hurry. The sea and I will still be here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, an Egg! Let it hatch first, dearie. It can't learn a thing in there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That Pokémon can't learn any of my moves. Only a starter grown to its last form can."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Why, it knows the move already! There's nothing more I can teach it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It isn't quite there yet. Those moves need a Pokémon that trusts its trainer with its whole heart.",
+        "Spend more time together and come back."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} didn't learn {thing}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move to be given up like that. {wearer} didn't learn {thing}."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

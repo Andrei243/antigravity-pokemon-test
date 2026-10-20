@@ -217,15 +217,26 @@ internal static class WorldWalk
 
     /// <summary>
     /// Where a person's script can send the player (its <c>warp</c> commands, whichever answer leads there, and those of
-    /// a script it calls: the Seagallop's sailors' trips are common scripts, plan 19 · K7).
+    /// the scripts it calls, however deep: the Seagallop's sailors' trips are common scripts, plan 19 · K7, and the
+    /// Rainbow Pass's menu is a common script that calls them, plan 19 · K9, part b).
     /// </summary>
     private static IEnumerable<PokemonPlatinumEngine.Story.Instruction> WarpsOf(string script, string? file)
     {
         var library = PokemonPlatinumEngine.Story.ScriptLibrary.Default;
-        var lines = library.Find(script, file)?.Everything().ToList();
-        if (lines == null) return Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>();
-        lines.AddRange(lines.Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Call).ToList()
-            .SelectMany(call => library.Find(call.Name, file)?.Everything() ?? Enumerable.Empty<PokemonPlatinumEngine.Story.Instruction>()));
+        var lines = new List<PokemonPlatinumEngine.Story.Instruction>();
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        var waiting = new Queue<string>();
+        waiting.Enqueue(script);
+        while (waiting.Count > 0)
+        {
+            string name = waiting.Dequeue();
+            if (!seen.Add(name) || library.Find(name, file) is not { } found) continue;
+            foreach (var line in found.Everything())
+            {
+                lines.Add(line);
+                if (line.Op == PokemonPlatinumEngine.Story.Op.Call) waiting.Enqueue(line.Name);
+            }
+        }
         return lines.Where(i => i.Op == PokemonPlatinumEngine.Story.Op.Warp);
     }
 

@@ -1,0 +1,39 @@
+{
+  "key": "seven_island_tanoby_ruins_liptoo_chamber",
+  "index": 193,
+  "name": "Liptoo Chamber",
+  "matrix": 157,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_DUNGEON",
+  "nightMusic": "MUS_SEVII_DUNGEON",
+  "encounters": "seven_island_tanoby_ruins_liptoo_chamber",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 11, "z": 15, "to": "seven_island_tanoby_ruins", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

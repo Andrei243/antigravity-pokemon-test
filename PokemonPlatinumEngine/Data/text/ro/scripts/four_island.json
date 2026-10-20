@@ -1,0 +1,36 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey, {player}! You came all the way out here too? Took you long enough."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The old couple on this island run a Day Care. I left two of mine there and they found an Egg. Can you believe it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm going to hatch it and raise it into the toughest Pokémon around. Smell you later!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

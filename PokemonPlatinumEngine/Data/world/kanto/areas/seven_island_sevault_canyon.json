@@ -1,0 +1,72 @@
+{
+  "key": "seven_island_sevault_canyon",
+  "index": 243,
+  "name": "Sevault Canyon",
+  "matrix": 195,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "seven_island_sevault_canyon",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 46 },
+    { "species": "Phanpy", "level": 15 },
+    { "species": "Cubone", "level": 46 },
+    { "species": "Fearow", "level": 50 },
+    { "species": "Marowak", "level": 52 },
+    { "species": "Meowth", "level": 43 },
+    { "species": "Onix", "level": 54 },
+    { "species": "Skarmory", "level": 30 },
+    { "species": "Larvitar", "level": 15 },
+    { "species": "Persian", "level": 49 },
+    { "species": "Larvitar", "level": 20 },
+    { "species": "Persian", "level": 52 }
+  ],
+  "landRate": 21,
+  "rockSmash": [
+    { "species": "Geodude", "level": 25, "maxLevel": 35 },
+    { "species": "Graveler", "level": 30, "maxLevel": 45 },
+    { "species": "Graveler", "level": 35, "maxLevel": 50 },
+    { "species": "Geodude", "level": 30, "maxLevel": 40 },
+    { "species": "Geodude", "level": 30, "maxLevel": 40 }
+  ],
+  "rockSmashRate": 25,
+  "warps": [
+    { "x": 79, "z": 97, "to": "seven_island_sevault_canyon_tanoby_key", "toWarp": 0 },
+    { "x": 86, "z": 141, "to": "seven_island_sevault_canyon_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "crush_girl", "looks": "crush_girl", "movement": "look_north", "x": 85, "z": 123, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_CRUSH_GIRL_CYNDY" },
+    { "id": "man", "looks": "man", "movement": "look_south_and_east", "x": 85, "z": 116, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_TAMER_EVAN" },
+    { "id": "camper", "looks": "camper", "movement": "look_north_west_and_east", "x": 75, "z": 115, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_PKMN_RANGER_JACKSON" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_south_west_and_east", "x": 75, "z": 116, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_PKMN_RANGER_KATELYN" },
+    { "id": "cooltrainer_m", "looks": "cooltrainer_m", "movement": "wander_around", "x": 79, "z": 136, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_COOLTRAINER_LEROY" },
+    { "id": "cooltrainer_f", "looks": "cooltrainer_f", "movement": "wander_around", "x": 83, "z": 143, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_COOLTRAINER_MICHELLE" },
+    { "id": "cooltrainer_m_2", "looks": "cooltrainer_m", "movement": "look_east", "x": 86, "z": 93, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_COOL_COUPLE_LEX_NYA" },
+    { "id": "cooltrainer_f_2", "looks": "cooltrainer_f", "movement": "look_east", "x": 86, "z": 94, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_COOL_COUPLE_LEX_NYA" },
+    { "id": "rock_smash_rock", "looks": "rock_smash_rock", "movement": "look_around", "x": 75, "z": 121, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 85, "z": 127, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "rock_smash_rock_2", "looks": "rock_smash_rock", "movement": "look_around", "x": 79, "z": 124, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_3", "looks": "rock_smash_rock", "movement": "look_around", "x": 84, "z": 127, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_4", "looks": "rock_smash_rock", "movement": "look_around", "x": 87, "z": 126, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_5", "looks": "rock_smash_rock", "movement": "look_around", "x": 88, "z": 127, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_RockSmash" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 89, "z": 127, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "rock_smash_rock_6", "looks": "rock_smash_rock", "movement": "look_around", "x": 83, "z": 111, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_1B", "script": "EventScript_RockSmash" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 90, "z": 125, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEVEN_ISLAND_SEVAULT_CANYON_KINGS_ROCK", "item": "King's Rock", "script": "SevenIsland_SevaultCanyon_EventScript_ItemKingsRock" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 79, "z": 118, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEVEN_ISLAND_SEVAULT_CANYON_MAX_ELIXIR", "item": "Max Elixir", "script": "SevenIsland_SevaultCanyon_EventScript_ItemMaxElixir" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 89, "z": 103, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SEVEN_ISLAND_SEVAULT_CANYON_NUGGET", "item": "Nugget", "script": "SevenIsland_SevaultCanyon_EventScript_ItemNugget" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_north", "x": 80, "z": 106, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_SevaultCanyon_EventScript_BlackBelt" }
+  ],
+  "signs": [
+    { "x": 87, "z": 146, "type": 2, "script": "", "item": "Cheri Berry", "flag": "FLAG_HIDDEN_ITEM_SEVEN_ISLAND_SEVAULT_CANYON_CHERI_BERRY" },
+    { "x": 88, "z": 151, "type": 0, "script": "SevenIsland_SevaultCanyon_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

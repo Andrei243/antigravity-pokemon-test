@@ -1,0 +1,184 @@
+{
+  "displayName": {
+    "en": [
+      "Four Island"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "four_island_daycare_man": {
+      "name": {
+        "en": [
+          "Day-Care Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "doduo": {
+      "name": {
+        "en": [
+          "Doduo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Doduo: Gwaa! Gwaa!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "nidoran_f": {
+      "name": {
+        "en": [
+          "Nidoran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nidoran: Kyuu!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "nidoran_m": {
+      "name": {
+        "en": [
+          "Nidoran"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nidoran: Kyu-kyuu!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "psyduck": {
+      "name": {
+        "en": [
+          "Psyduck"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Psyduck: Kwaa?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lorelei of the Elite Four was born on this island, you know. She comes home to rest now and then, and she's still as sweet as she was as a girl."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "four_island_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Smell you later, {player}!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fat_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The cave up north keeps the whole shore icy all year round. I scoop up the ice and pour berry juice over it. Best treat on the islands!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Little Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The lady in the house by the shore has loads and loads of Pokémon dolls. I peeked in at the window once!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FourIsland_EventScript_IslandSign": {
+      "en": [
+        "Four Island\nAn isle of cold breezes and warm hearts"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FourIsland_EventScript_LoreleisHouseSign": {
+      "en": [
+        "Lorelei's House"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

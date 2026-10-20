@@ -1,0 +1,9 @@
+{
+  // A house on Four Island (plan 19 · K9, part b): a man who collects stickers. FireRed's stickers on the Trainer Card
+  // are left out
+  "area": "four_island_house_2",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "sticker_man": { "name": "Man", "dialog": [ "I collect stickers of great deeds. When you've done something truly amazing, come and tell me about it!" ] }
+  }
+}

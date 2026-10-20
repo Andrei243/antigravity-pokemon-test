@@ -1,0 +1,67 @@
+{
+  "key": "five_island_resort_gorgeous",
+  "index": 238,
+  "name": "Resort Gorgeous",
+  "matrix": 194,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "five_island_resort_gorgeous",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Hoppip", "level": 5, "maxLevel": 15 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Qwilfish", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 112, "z": 13, "to": "five_island_lost_cave_entrance", "toWarp": 0 },
+    { "x": 87, "z": 8, "to": "five_island_resort_gorgeous_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "lass", "looks": "lass", "movement": "look_south_and_east", "x": 92, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_PAINTER_DAISY" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_north", "x": 81, "z": 12, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_PAINTER_CELINA" },
+    { "id": "lass_3", "looks": "lass", "movement": "look_south", "x": 60, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PAINTER_RAYNA" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "wander_around", "x": 71, "z": 9, "facing": 1, "rangeX": 2, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_LADY_JACKI" },
+    { "id": "woman_2_2", "looks": "woman_2", "movement": "look_south", "x": 81, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_LADY_GILLIAN" },
+    { "id": "youngster", "looks": "youngster", "movement": "walk_sequence_south_east_north_west", "x": 81, "z": 3, "facing": 1, "rangeX": 10, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_YOUNGSTER_DESTIN" },
+    { "id": "swimmer_m_water", "looks": "swimmer_m_water", "movement": "look_around", "x": 104, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_TOBY" },
+    { "id": "resort_gorgeous_selphy", "looks": "woman_2", "movement": "look_south", "x": 87, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RESORT_GORGEOUS_SELPHY", "script": "" }
+  ],
+  "signs": [
+    { "x": 58, "z": 7, "type": 2, "script": "", "item": "Nest Ball", "flag": "FLAG_HIDDEN_ITEM_FIVE_ISLAND_RESORT_GORGEOUS_NEST_BALL" },
+    { "x": 75, "z": 11, "type": 2, "script": "", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_FIVE_ISLAND_RESORT_GORGEOUS_STARDUST" },
+    { "x": 88, "z": 12, "type": 2, "script": "", "item": "Star Piece", "flag": "FLAG_HIDDEN_ITEM_FIVE_ISLAND_RESORT_GORGEOUS_STAR_PIECE" },
+    { "x": 75, "z": 5, "type": 2, "script": "", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_FIVE_ISLAND_RESORT_GORGEOUS_STARDUST_2" },
+    { "x": 90, "z": 9, "type": 0, "script": "FiveIsland_ResortGorgeous_EventScript_SelphysHouseSign" }
+  ],
+  "triggers": []
+}

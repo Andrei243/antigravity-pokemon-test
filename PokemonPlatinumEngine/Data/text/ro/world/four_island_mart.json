@@ -1,0 +1,59 @@
+{
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nothing here sells better than Ice Heals. Folk go into that cave and come out frozen stiff."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Camper"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Icefall Cave is freezing! I went in once in shorts. Never again."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,21 @@
+{
+  // Ruin Valley (plan 19 · K9, part b): FireRed's map, our words. A valley of old stones at Six Island's south end,
+  // the Dotted Hole's door in its cliff: a scientist stands before it puzzling until Lorelei's scene in Icefall Cave,
+  // and its dots, read, ask for Cut (FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE, six_island_ruin_valley.txt)
+  "area": "six_island_ruin_valley",
+  "name": "Ruin Valley",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "doors": [ { "warp": 0, "map": "SixIsland_DottedHole_1F", "x": 6, "y": 8, "facing": "Up", "openedBy": "FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE" } ],
+  "people": {
+    "ruin_valley_scientist": { "name": "Scientist", "script": "Scientist", "still": true },
+    "hiker": { "name": "Stanly", "trainer": { "dialogueBefore": "Ruin Maniac Stanly: These ruins are older than the islands themselves! Probably!", "dialogueAfter": "Ruin Maniac Stanly: Older than me, at least." } },
+    "hiker_2": { "name": "Foster", "trainer": { "dialogueBefore": "Ruin Maniac Foster: I dig by day and battle by night. It's day, but I'll make an exception!", "dialogueAfter": "Ruin Maniac Foster: Back to digging." } },
+    "hiker_3": { "name": "Larry", "trainer": { "dialogueBefore": "Ruin Maniac Larry: Don't step on the ruins! Step into a battle instead!", "dialogueAfter": "Ruin Maniac Larry: I'll go and sulk by the stones." } },
+    "hiker_4": { "name": "Daryl", "trainer": { "dialogueBefore": "Hiker Daryl: I climbed down into this valley for the view. And for a battle!", "dialogueAfter": "Hiker Daryl: Climbing back up will be hard now." } },
+    "poke_maniac": { "name": "Hector", "trainer": { "dialogueBefore": "Poké Maniac Hector: I came looking for rare Pokémon in the ruins. Show me yours!", "dialogueAfter": "Poké Maniac Hector: Rare, and strong too." } }
+  },
+  "read": {
+    "SixIsland_RuinValley_EventScript_DottedHoleDoor": "DottedHoleDoor"
+  }
+}

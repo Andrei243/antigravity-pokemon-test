@@ -218,6 +218,33 @@ partial class Harness
             ("kk7_one_island_center", "OneIsland_PokemonCenter_1F", 9, 8, Direction.Up),
             ("kk8_one_island_harbor", "OneIsland_Harbor", 8, 4, Direction.Up),
             ("kk9_rocket_hideout_arrows", "RocketHideout_B3F", 20, 14, Direction.Up),
+            // Plan 19 · K9, part b: Four to Seven Island, their caves and rooms, and Cerulean Cave
+            ("km0_four_island", "FourIsland", 18, 22, Direction.Up),
+            ("km1_icefall_cave_entrance", "FourIsland_IcefallCave_Entrance", 17, 29, Direction.Up),
+            ("km2_icefall_cave_1f", "FourIsland_IcefallCave_1F", 12, 15, Direction.Up),
+            ("km3_icefall_cave_back", "FourIsland_IcefallCave_Back", 12, 21, Direction.Up),
+            ("km4_loreleis_house", "FourIsland_LoreleisHouse", 4, 6, Direction.Up),
+            ("km5_four_island_day_care", "FourIsland_PokemonDayCare", 4, 6, Direction.Up),
+            ("km6_five_island", "FiveIsland", 60, 55, Direction.Up),
+            ("km7_five_island_meadow", "FiveIsland", 84, 63, Direction.Up),
+            ("km8_resort_gorgeous", "FiveIsland", 87, 11, Direction.Up),
+            ("km9_rocket_warehouse", "FiveIsland_RocketWarehouse", 24, 23, Direction.Up),
+            ("kn0_lost_cave", "FiveIsland_LostCave_Entrance", 5, 7, Direction.Up),
+            ("kn1_six_island", "SixIsland", 59, 144, Direction.Up),
+            ("kn2_ruin_valley", "SixIsland", 48, 187, Direction.Up),
+            ("kn3_dotted_hole", "SixIsland_DottedHole_1F", 6, 8, Direction.Up),
+            ("kn4_sapphire_room", "SixIsland_DottedHole_SapphireRoom", 7, 9, Direction.Up),
+            ("kn5_pattern_bush", "SixIsland_PatternBush", 55, 25, Direction.Up),
+            ("kn6_altering_cave", "SixIsland_AlteringCave", 18, 21, Direction.Up),
+            ("kn7_seven_island", "SevenIsland", 59, 50, Direction.Up),
+            ("kn8_sevault_canyon", "SevenIsland", 85, 125, Direction.Up),
+            ("kn9_tanoby_ruins", "SevenIsland", 127, 172, Direction.Up),
+            ("ko0_tanoby_key", "SevenIsland_SevaultCanyon_TanobyKey", 7, 12, Direction.Up),
+            ("ko1_monean_chamber", "SevenIsland_TanobyRuins_MoneanChamber", 11, 14, Direction.Up),
+            ("ko2_cerulean_cave_1f", "CeruleanCave_1F", 33, 20, Direction.Up),
+            ("ko3_cerulean_cave_b1f", "CeruleanCave_B1F", 7, 14, Direction.Up),
+            ("ko4_water_labyrinth", "FiveIsland", 14, 33, Direction.Up),
+            ("ko5_outcast_island", "SixIsland", 9, 26, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
@@ -258,6 +285,10 @@ partial class Harness
         At("Kanto", 74, 388, Direction.Up); Frames(2); Shot("ki5_cinnabar_night");
         At("Kanto", 11, 20, Direction.Up); Frames(2); Shot("kl0_indigo_plateau_night");
         At("OneIsland", 12, 133, Direction.Up); Frames(2); Shot("kl1_one_island_night");
+        At("FourIsland", 18, 22, Direction.Up); Frames(2); Shot("kl2_four_island_night");
+        At("FiveIsland", 60, 55, Direction.Up); Frames(2); Shot("kl3_five_island_night");
+        At("SixIsland", 59, 144, Direction.Up); Frames(2); Shot("kl4_six_island_night");
+        At("SevenIsland", 59, 50, Direction.Up); Frames(2); Shot("kl5_seven_island_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

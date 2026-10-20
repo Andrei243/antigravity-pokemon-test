@@ -1,0 +1,178 @@
+{
+  "displayName": {
+    "en": [
+      "Canyon Entrance"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Miah"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Miah: The flowers by the canyon smell sweetest at dawn. Battle me among them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Miah: My flowers have wilted."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Eve"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Eve & Jon: We came to the canyon for a romantic walk. And a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Eve & Jon: Not very romantic, losing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Jon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Young Couple Eve & Jon: Two hearts, two teams, one battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Young Couple Eve & Jon: We'll walk off our defeat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Nicolas"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Nicolas: Rangers keep watch over the canyon. Let me see how you treat your Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Nicolas: They're in good hands."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Madeline"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Madeline: The canyon's Pokémon are wild and proud. Are yours?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Madeline: Proud, and strong as well."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Mason"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Mason: Round and round I spin! Can you keep up?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Mason: I've spun myself dizzy."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SevenIsland_SevaultCanyon_Entrance_EventScript_RouteSign": {
+      "en": [
+        "Sevault Canyon\nSeven Island - Tanoby Ruins"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

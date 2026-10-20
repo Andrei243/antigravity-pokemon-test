@@ -12,7 +12,12 @@ script Lance
   say "Ah! I've heard of you. I lead the Elite Four. My name is Lance, and I'm a dragon trainer."
   say "Dragons are mighty Pokémon, hard to catch and harder still to raise. Their strength is beyond question."
   say "There's no running away now. Prepare to lose!"
+  if flag FLAG_SYS_CAN_LINK_WITH_RS goto Stronger
   battle self as "kanto_elite_four_lance"
+  goto Won
+label Stronger
+  battle self as "kanto_elite_four_lance_2"
+label Won
   speaker "Lance"
   say "I can't believe it. My dragons have been beaten..."
   setflag FLAG_DEFEATED_LANCE

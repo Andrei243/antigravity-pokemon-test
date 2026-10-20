@@ -1,0 +1,28 @@
+{
+  "id": 195,
+  "width": 6,
+  "height": 6,
+  "chunks": [
+    "438 439 440 441   -   -",
+    "442 443 444 445   -   -",
+    "  - 446 447   -   -   -",
+    "  - 448 449   -   -   -",
+    "  -   - 450   -   -   -",
+    "451 452 453 454 455 456"
+  ],
+  "areas": [
+    " 1  1  1  1  -  -",
+    " 1  0  1  1  -  -",
+    " -  2  3  -  -  -",
+    " -  2  3  -  -  -",
+    " -  -  3  -  -  -",
+    " 4  4  4  4  4  4"
+  ],
+  "areaKeys": [
+    "seven_island",
+    "seven_island_trainer_tower",
+    "seven_island_sevault_canyon_entrance",
+    "seven_island_sevault_canyon",
+    "seven_island_tanoby_ruins"
+  ]
+}

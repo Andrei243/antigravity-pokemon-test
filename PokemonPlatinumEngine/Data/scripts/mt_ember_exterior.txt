@@ -4,9 +4,9 @@
 # Once Celio has asked for the Ruby (one_island_pokemon_center_1f.txt: VAR_MAP_SCENE_MT_EMBER_EXTERIOR 1, and
 # FLAG_MT_EMBER_RUBY_PATH_OPEN, which opens the Ruby Path's mouth behind them, and the two shown) two Team Rocket
 # grunts stand before the mouth. The first step onto the row below them (the area's triggers 0 to 2) lets the player
-# hear them talk of the passwords to their warehouse (2); each is then battled where he stands, and once both are
-# beaten they run off (FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS). The warehouse the passwords open is part b's, on Five
-# Island. Before Celio's request the grunts aren't there.
+# hear them talk of the passwords to their warehouse (2): the first, as FireRed's grunts give it; the second is the
+# Dotted Hole's thief's (plan 19 · K9, part b: five_island_meadow.txt). Each is then battled where he stands, and once
+# both are beaten they run off (FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS). Before Celio's request the grunts aren't there.
 
 
 script OnEnter
@@ -19,7 +19,7 @@ script Password
   scene "Team Rocket on Mount Ember"
   face player up
   speaker "Grunt"
-  say "So the first password's 'Seel the deal'? And the second one's... 'Ekans ate the cake'?"
+  say "So the first password's 'Seel the deal'? And the second one's... er, it'll come to me."
   face mt_ember_grunt2 left
   say "Keep your voice down! The first opens the warehouse door, the second gets you inside. Write 'em down!"
   face mt_ember_grunt1 right

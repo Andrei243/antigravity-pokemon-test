@@ -1,0 +1,14 @@
+{
+  // Four Island's Pokémon Center (plan 19 · K9, part b)
+  "area": "four_island_pokemon_center_1f",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "four_island_nurse": { "name": "Nurse", "script": "Nurse" },
+    "man": { "name": "Man", "dialog": [ "Icefall Cave is home to ice Pokémon you won't find anywhere in Kanto. Bring plenty of Poké Balls." ] },
+    "woman_3": { "name": "Woman", "dialog": [ "The Day-Care couple once found an Egg in their yard. Nobody knows where it came from!" ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "I'm waiting for the new Pokémon Journal. The boat with it hasn't come in yet." ] }
+  },
+  "signs": {
+    "FourIsland_PokemonCenter_1F_EventScript_PokemonJournal": "A copy of the Pokémon Journal, open at a page about Lorelei of the Elite Four and her quiet childhood on Four Island."
+  }
+}

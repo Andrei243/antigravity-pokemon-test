@@ -1,0 +1,23 @@
+{
+  "people": {
+    "old_man_1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This island has both nature and history, and plenty of each. A fine place to spend your last years."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

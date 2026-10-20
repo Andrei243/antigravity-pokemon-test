@@ -1,0 +1,7 @@
+{
+  // The Lost Cave's mouth (plan 19 · K9, part b): FireRed's map. A maze of dark rooms under Resort Gorgeous, every way
+  // out of one leading into another
+  "area": "five_island_lost_cave_entrance",
+  "name": "Lost Cave",
+  "bgmTrack": "kanto/sevii_cave"
+}

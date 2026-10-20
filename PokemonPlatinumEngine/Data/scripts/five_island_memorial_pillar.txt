@@ -1,0 +1,40 @@
+# The Memorial Pillar on Five Island (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/FiveIsland_MemorialPillar/scripts.inc).
+#
+# A man keeps watch by a stone raised for his Onix. Lemonade left at the stone was his Onix's favourite; once the
+# player leaves one he thanks them with TM42 (FLAG_GOT_TM42_AT_MEMORIAL_PILLAR, FireRed's). FireRed's second flag, for
+# a bag with no room, has no use here: a bag always has room.
+
+
+script MemorialMan
+  face memorial_man player
+  speaker "Man"
+  if flag FLAG_GOT_TM42_AT_MEMORIAL_PILLAR goto Thanked
+  say "This stone stands for my Onix. We were together for a long, long time."
+  say "It loved Lemonade more than anything. I come here every day to keep it company."
+  end
+label Thanked
+  say "Thank you for the Lemonade. I'm sure my Onix was glad of it."
+  end
+
+
+script Memorial
+  speaker none
+  if flag FLAG_GOT_TM42_AT_MEMORIAL_PILLAR goto Placed
+  text "Words are cut into the stone: 'For Onix, my dearest friend.'"
+  if not item "Lemonade" end
+  ask "Leave a can of Lemonade at the stone?"
+  if no end
+  take "Lemonade"
+  text "{player} set a can of Lemonade at the foot of the stone."
+  face memorial_man player
+  speaker "Man"
+  say "Oh... You left Lemonade for my Onix? That was its favourite. How kind of you."
+  say "Please, take this. I'd like you to have it."
+  give "TM42"
+  setflag FLAG_GOT_TM42_AT_MEMORIAL_PILLAR
+  say "Facade hits all the harder when a Pokémon is burned, poisoned or paralysed. My Onix never gave up, either."
+  end
+label Placed
+  text "A can of Lemonade sits at the foot of the stone."
+  end

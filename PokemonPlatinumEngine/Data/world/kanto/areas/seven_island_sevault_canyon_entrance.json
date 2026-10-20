@@ -1,0 +1,47 @@
+{
+  "key": "seven_island_sevault_canyon_entrance",
+  "index": 242,
+  "name": "Canyon Entrance",
+  "matrix": 195,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "seven_island_sevault_canyon_entrance",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Spearow", "level": 44 },
+    { "species": "Sentret", "level": 10 },
+    { "species": "Phanpy", "level": 10 },
+    { "species": "Fearow", "level": 48 },
+    { "species": "Sentret", "level": 15 },
+    { "species": "Meowth", "level": 41 },
+    { "species": "Fearow", "level": 50 },
+    { "species": "Psyduck", "level": 41 },
+    { "species": "Phanpy", "level": 15 },
+    { "species": "Persian", "level": 47 },
+    { "species": "Phanpy", "level": 15 },
+    { "species": "Persian", "level": 50 }
+  ],
+  "landRate": 21,
+  "warps": [],
+  "objects": [
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_west", "x": 60, "z": 66, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_AROMA_LADY_MIAH" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_east", "x": 51, "z": 94, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_YOUNG_COUPLE_EVE_JON" },
+    { "id": "man", "looks": "man", "movement": "look_west", "x": 52, "z": 94, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_YOUNG_COUPLE_EVE_JON" },
+    { "id": "camper", "looks": "camper", "movement": "look_south_north_and_east", "x": 59, "z": 86, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_PKMN_RANGER_NICOLAS" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_south_north_and_west", "x": 58, "z": 86, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_PKMN_RANGER_MADELINE" },
+    { "id": "rocker", "looks": "rocker", "movement": "rotate_counterclockwise", "x": 59, "z": 77, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_JUGGLER_MASON" }
+  ],
+  "signs": [
+    { "x": 56, "z": 89, "type": 2, "script": "", "item": "Rawst Berry", "flag": "FLAG_HIDDEN_ITEM_SEVEN_ISLAND_SEVAULT_CANYON_ENTRANCE_RAWST_BERRY" },
+    { "x": 62, "z": 86, "type": 0, "script": "SevenIsland_SevaultCanyon_Entrance_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

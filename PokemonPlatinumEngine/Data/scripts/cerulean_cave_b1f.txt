@@ -1,0 +1,30 @@
+# Cerulean Cave's lowest floor (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own,
+# on FireRed's beats (data/maps/CeruleanCave_B1F/scripts.inc).
+#
+# Mewtwo waits at the back until it has been fought (FLAG_FOUGHT_MEWTWO), at level 70, as Moltres on Mt. Ember: beaten
+# or caught it is gone for good, run from it vanishes and is back on the next visit. The cave itself is open once the
+# guard at its mouth has gone, with the Sapphire set in Celio's machine (one_island_pokemon_center_1f.txt).
+
+
+script OnEnter
+  if not flag FLAG_FOUGHT_MEWTWO clearflag FLAG_HIDE_MEWTWO
+  end
+
+script Mewtwo
+  scene "Mewtwo"
+  speaker none
+  cry "Mewtwo"
+  text "Myuu...\nA cold, sharp will pressed against {player}'s mind!"
+  wildbattle "Mewtwo" 70
+  if result == 2 goto Fled
+  setflag FLAG_FOUGHT_MEWTWO
+  setflag FLAG_HIDE_MEWTWO
+  hide self
+  endscene
+  end
+label Fled
+  setflag FLAG_HIDE_MEWTWO
+  hide self
+  text "Mewtwo vanished into the dark of the cave!"
+  endscene
+  end

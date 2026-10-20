@@ -1,0 +1,26 @@
+{
+  "key": "six_island_dotted_hole_1f",
+  "index": 157,
+  "name": "Dotted Hole",
+  "matrix": 121,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_DUNGEON",
+  "nightMusic": "MUS_SEVII_DUNGEON",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 9, "to": "six_island_ruin_valley", "toWarp": 0 },
+    { "x": 6, "z": 5, "to": "six_island_dotted_hole_b1f", "toWarp": 0 },
+    { "x": 13, "z": 5, "to": "six_island_dotted_hole_sapphire_room", "toWarp": 0 },
+    { "x": 6, "z": 7, "to": "six_island_dotted_hole_b1f", "toWarp": 2, "landing": true }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

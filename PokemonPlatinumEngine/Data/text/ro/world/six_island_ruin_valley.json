@@ -1,0 +1,153 @@
+{
+  "displayName": {
+    "en": [
+      "Ruin Valley"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "ruin_valley_scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Stanly"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Stanly: These ruins are older than the islands themselves! Probably!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Stanly: Older than me, at least."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Foster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Foster: I dig by day and battle by night. It's day, but I'll make an exception!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Foster: Back to digging."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_3": {
+      "name": {
+        "en": [
+          "Larry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Larry: Don't step on the ruins! Step into a battle instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Larry: I'll go and sulk by the stones."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_4": {
+      "name": {
+        "en": [
+          "Daryl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Daryl: I climbed down into this valley for the view. And for a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Daryl: Climbing back up will be hard now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Hector"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Hector: I came looking for rare Pokémon in the ruins. Show me yours!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Hector: Rare, and strong too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

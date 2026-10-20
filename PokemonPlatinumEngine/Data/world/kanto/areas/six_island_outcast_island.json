@@ -1,0 +1,62 @@
+{
+  "key": "six_island_outcast_island",
+  "index": 249,
+  "name": "Outcast Island",
+  "matrix": 196,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "six_island_outcast_island",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Qwilfish", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 7, "z": 21, "to": "six_island_altering_cave", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "look_around", "x": 9, "z": 24, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_46" },
+    { "id": "fisher", "looks": "fisher", "movement": "look_north", "x": 12, "z": 15, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_FISHERMAN_TYLOR" },
+    { "id": "swimmer_m_water", "looks": "swimmer_m_water", "movement": "look_around", "x": 13, "z": 34, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_MYMO" },
+    { "id": "swimmer_f_water", "looks": "swimmer_f_water", "movement": "walk_sequence_south_west_north_east", "x": 14, "z": 61, "facing": 1, "rangeX": 2, "rangeZ": 4, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_FEMALE_NICOLE" },
+    { "id": "swimmer_f_water_2", "looks": "swimmer_f_water", "movement": "look_north", "x": 10, "z": 44, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SIS_AND_BRO_AVA_GEB" },
+    { "id": "tuber_m_water", "looks": "tuber_m_water", "movement": "look_north", "x": 11, "z": 44, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SIS_AND_BRO_AVA_GEB" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 11, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SIX_ISLAND_OUTCAST_ISLAND_PP_UP", "item": "PP Up", "script": "SixIsland_OutcastIsland_EventScript_ItemPPUp" }
+  ],
+  "signs": [
+    { "x": 16, "z": 23, "type": 2, "script": "", "item": "Star Piece", "flag": "FLAG_HIDDEN_ITEM_SIX_ISLAND_OUTCAST_ISLAND_STAR_PIECE" },
+    { "x": 6, "z": 24, "type": 2, "script": "", "item": "Net Ball", "flag": "FLAG_HIDDEN_ITEM_SIX_ISLAND_OUTCAST_ISLAND_NET_BALL" }
+  ],
+  "triggers": []
+}

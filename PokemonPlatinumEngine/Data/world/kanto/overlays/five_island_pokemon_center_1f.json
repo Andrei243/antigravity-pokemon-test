@@ -1,0 +1,12 @@
+{
+  // Five Island's Pokémon Center (plan 19 · K9, part b)
+  "area": "five_island_pokemon_center_1f",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "five_island_nurse": { "name": "Nurse", "script": "Nurse" },
+    "cooltrainer_f": { "name": "Cool Trainer", "dialog": [ "So you're trying to catch every kind of Pokémon there is? I'll cheer you on!" ] },
+    "chef": { "name": "Chef", "dialog": [ "I'm on my way to cook dinner for a fancy party at Resort Gorgeous. I'd better not be late!" ] },
+    "0": { "name": "Notice", "dialog": [ "A magazine left on the bench, open at a page about Bruno of the Elite Four, training in the mountains." ] },
+    "0_2": { "name": "Notice", "dialog": [ "A magazine left on the bench, open at a page about Bruno of the Elite Four, training in the mountains." ] }
+  }
+}

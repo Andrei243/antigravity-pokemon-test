@@ -1,0 +1,32 @@
+# Six Island's Pokémon Center (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/SixIsland_PokemonCenter_1F/scripts.inc).
+#
+# The first time the player comes in (VAR_MAP_SCENE_SIX_ISLAND_POKEMON_CENTER_1F 0) the rival is here, grumbling that
+# the Pokémon of these islands are hard to come by; he leaves (1), and won't wait on Four Island after it either
+# (VAR_MAP_SCENE_FOUR_ISLAND 1), as FireRed's scene sets. FireRed walks him to the player and out; here he speaks
+# where he stands and a dark screen takes him away.
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_SIX_ISLAND_POKEMON_CENTER_1F == 0 goto Rival
+  setflag FLAG_HIDE_SIX_ISLAND_POKECENTER_RIVAL
+  end
+label Rival
+  scene "The rival on Six Island"
+  clearflag FLAG_HIDE_SIX_ISLAND_POKECENTER_RIVAL
+  show six_island_rival
+  music "kanto/rival"
+  emote six_island_rival exclaim
+  speaker "{rival}"
+  say "{player}? You again! You keep turning up wherever I go."
+  say "I came all this way for the Pokémon of these islands, and half of them won't show their faces. Catching them all from here is hopeless!"
+  say "Well, I'm off to look somewhere else. Smell you later!"
+  fade out 0.4
+  hide six_island_rival
+  setflag FLAG_HIDE_SIX_ISLAND_POKECENTER_RIVAL
+  music area
+  fade in 0.4
+  setvar VAR_MAP_SCENE_SIX_ISLAND_POKEMON_CENTER_1F 1
+  setvar VAR_MAP_SCENE_FOUR_ISLAND 1
+  endscene
+  end

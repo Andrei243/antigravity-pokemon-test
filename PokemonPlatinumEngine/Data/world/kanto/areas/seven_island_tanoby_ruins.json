@@ -1,0 +1,67 @@
+{
+  "key": "seven_island_tanoby_ruins",
+  "index": 244,
+  "name": "Tanoby Ruins",
+  "matrix": 195,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "seven_island_tanoby_ruins",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Qwilfish", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 144, "z": 170, "to": "seven_island_tanoby_ruins_monean_chamber", "toWarp": 0 },
+    { "x": 127, "z": 170, "to": "seven_island_tanoby_ruins_liptoo_chamber", "toWarp": 0 },
+    { "x": 112, "z": 168, "to": "seven_island_tanoby_ruins_weepth_chamber", "toWarp": 0 },
+    { "x": 68, "z": 171, "to": "seven_island_tanoby_ruins_dilford_chamber", "toWarp": 0 },
+    { "x": 56, "z": 169, "to": "seven_island_tanoby_ruins_scufib_chamber", "toWarp": 0 },
+    { "x": 36, "z": 175, "to": "seven_island_tanoby_ruins_rixy_chamber", "toWarp": 0 },
+    { "x": 35, "z": 166, "to": "seven_island_tanoby_ruins_viapois_chamber", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "hiker", "looks": "hiker", "movement": "wander_around", "x": 59, "z": 167, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_RUIN_MANIAC_BRANDON" },
+    { "id": "hiker_2", "looks": "hiker", "movement": "look_around", "x": 145, "z": 171, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_RUIN_MANIAC_BENJAMIN" },
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 109, "z": 168, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PAINTER_EDNA" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "wander_around", "x": 109, "z": 165, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_GENTLEMAN_CLIFFORD" }
+  ],
+  "signs": [
+    { "x": 57, "z": 170, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_SEVEN_ISLAND_TANOBY_RUINS_HEART_SCALE" },
+    { "x": 110, "z": 169, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_SEVEN_ISLAND_TANOBY_RUINS_HEART_SCALE_2" },
+    { "x": 149, "z": 165, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_SEVEN_ISLAND_TANOBY_RUINS_HEART_SCALE_3" },
+    { "x": 32, "z": 162, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_SEVEN_ISLAND_TANOBY_RUINS_HEART_SCALE_4" }
+  ],
+  "triggers": []
+}

@@ -1,8 +1,8 @@
 {
   // Cerulean City (plan 19 · K4): FireRed's map, our words; it plays MUS_FUCHSIA, which FireRed gives Cerulean and
   // Fuchsia alike. The rival at the foot of Nugget Bridge, the thief in the burgled house's yard and the people who
-  // keep the exits until the S.S. Ticket are cerulean_city.txt's. Cerulean Cave stays shut behind its guard until
-  // plan 19 · K9
+  // keep the exits until the S.S. Ticket are cerulean_city.txt's. Cerulean Cave's guard stands in its mouth until
+  // the Sapphire is set in Celio's machine (FLAG_HIDE_CERULEAN_CAVE_GUARD, plan 19 · K9, part b)
   "area": "cerulean_city",
   "bgmTrack": "kanto/fuchsia",
   "trees": "Round",

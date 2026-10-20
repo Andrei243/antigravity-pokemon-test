@@ -1,0 +1,58 @@
+{
+  "displayName": {
+    "en": [
+      "Six Island"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "On a clear night you can see every star there is from here. The sky goes on for ever!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That way leads to the Water Path, and on to Ruin Valley. Mind the ruin maniacs, they love a battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SixIsland_EventScript_IslandSign": {
+      "en": [
+        "Six Island\nWhere old stones keep old secrets"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

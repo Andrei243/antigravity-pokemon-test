@@ -21,6 +21,9 @@ script OnEnter
   say "While you were busy out there, I beat the Elite Four. That makes me the new Pokémon League Champion!"
   say "I've built the perfect team. Strong against every type, ready for anything. Nobody can touch us."
   say "And now I get to prove it against you, of all people. {player}! I'm the strongest trainer in the world!"
+  # Once the Sevii Islands are linked with Hoenn (FLAG_SYS_CAN_LINK_WITH_RS, plan 19 · K9, part b) his team is FireRed's
+  # second
+  if flag FLAG_SYS_CAN_LINK_WITH_RS goto Stronger
   if starter "Bulbasaur" goto VsCharmander
   if starter "Charmander" goto VsSquirtle
   battle champions_room_rival as "kanto_champion_first_bulbasaur"
@@ -30,6 +33,17 @@ label VsCharmander
   goto Fought
 label VsSquirtle
   battle champions_room_rival as "kanto_champion_first_squirtle"
+  goto Fought
+label Stronger
+  if starter "Bulbasaur" goto StrongerVsCharmander
+  if starter "Charmander" goto StrongerVsSquirtle
+  battle champions_room_rival as "kanto_champion_rematch_bulbasaur"
+  goto Fought
+label StrongerVsCharmander
+  battle champions_room_rival as "kanto_champion_rematch_charmander"
+  goto Fought
+label StrongerVsSquirtle
+  battle champions_room_rival as "kanto_champion_rematch_squirtle"
 label Fought
   speaker "{rival}"
   say "NO! That can't be! You beat my best?"

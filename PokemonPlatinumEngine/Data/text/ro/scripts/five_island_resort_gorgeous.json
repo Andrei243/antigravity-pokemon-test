@@ -1,0 +1,46 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Selphy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Home at last! Thank you ever so much. I'd still be wandering in that cave if it weren't for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do come and visit me. I'll think of a proper way to thank you!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Selphy": [
+    {
+      "en": [
+        "Selphy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do come in! My house is just here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

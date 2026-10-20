@@ -1,0 +1,83 @@
+{
+  "key": "six_island_water_path",
+  "index": 246,
+  "name": "Water Path",
+  "matrix": 196,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "six_island_water_path",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Spearow", "level": 44 },
+    { "species": "Sentret", "level": 10 },
+    { "species": "Oddish", "level": 44 },
+    { "species": "Fearow", "level": 48 },
+    { "species": "Sentret", "level": 15 },
+    { "species": "Meowth", "level": 41 },
+    { "species": "Gloom", "level": 48 },
+    { "species": "Psyduck", "level": 41 },
+    { "species": "Fearow", "level": 50 },
+    { "species": "Persian", "level": 47 },
+    { "species": "Fearow", "level": 50 },
+    { "species": "Persian", "level": 50 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Qwilfish", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 77, "z": 93, "to": "six_island_water_path_house_1", "toWarp": 0 },
+    { "x": 83, "z": 99, "to": "six_island_water_path_house_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_south_north_and_west", "x": 84, "z": 93, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_AROMA_LADY_ROSE" },
+    { "id": "rocker", "looks": "rocker", "movement": "look_north", "x": 83, "z": 132, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_JUGGLER_EDWARD" },
+    { "id": "swimmer_m_water", "looks": "swimmer_m_water", "movement": "look_around", "x": 85, "z": 115, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_SWIMMER_MALE_SAMIR" },
+    { "id": "swimmer_f_water", "looks": "swimmer_f_water", "movement": "wander_around", "x": 87, "z": 125, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_FEMALE_DENISE" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "look_south", "x": 78, "z": 101, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_TWINS_MIU_MIA" },
+    { "id": "little_girl_2", "looks": "little_girl", "movement": "look_south", "x": 79, "z": 101, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_TWINS_MIU_MIA" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_north_and_west", "x": 83, "z": 156, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_HIKER_EARL" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 89, "z": 99, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SIX_ISLAND_WATER_PATH_ELIXIR", "item": "Elixir", "script": "SixIsland_WaterPath_EventScript_ItemElixir" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 89, "z": 167, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SIX_ISLAND_WATER_PATH_DRAGON_SCALE", "item": "Dragon Scale", "script": "SixIsland_WaterPath_EventScript_ItemDragonScale" }
+  ],
+  "signs": [
+    { "x": 80, "z": 94, "type": 0, "script": "SixIsland_WaterPath_EventScript_HornWantedSign" },
+    { "x": 87, "z": 156, "type": 2, "script": "", "item": "Aspear Berry", "flag": "FLAG_HIDDEN_ITEM_SIX_ISLAND_WATER_PATH_ASPEAR_BERRY" },
+    { "x": 75, "z": 88, "type": 2, "script": "", "item": "Oran Berry", "flag": "FLAG_HIDDEN_ITEM_SIX_ISLAND_WATER_PATH_ORAN_BERRY" },
+    { "x": 85, "z": 143, "type": 2, "script": "", "item": "Pinap Berry", "flag": "FLAG_HIDDEN_ITEM_SIX_ISLAND_WATER_PATH_PINAP_BERRY" },
+    { "x": 84, "z": 134, "type": 0, "script": "SixIsland_WaterPath_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

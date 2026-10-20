@@ -754,5 +754,147 @@ partial class Harness
         if (State() != GameState.HallOfFameCeremony) Console.WriteLine("  !! never happened: the team's entry");
         Skip(3.0); Shot("kse1_the_teams_entry");
         Console.WriteLine($"  the League: champion beaten {story.Has("FLAG_DEFEATED_CHAMP")}, KantoHallOfFame {story.Has("KantoHallOfFame")}, entries {game.HallOfFame.Total}");
+
+        // ---- Plan 19 · K9, part b: the last islands and the Sapphire, in a new game of their own. A Champion who has given
+        // Celio the Ruby (part a) and holds the Rainbow Pass; a Scyther that knows Cut for the dotted door
+        engine.StartNewGame();
+        game.State = GameState.Overworld;
+        game.SaveSlot = 1;
+        game.LocationSign.Hide();
+        story = game.Story;
+        keepLead = true;
+        foreach (string badge in new[] { "Boulder", "Cascade", "Thunder", "Rainbow", "Soul", "Marsh", "Volcano", "Earth" }) story.GiveBadge("Kanto", badge);
+        story.Set(StoryState.PokedexFlag);
+        story.Set("FLAG_SYS_GAME_CLEAR");
+        story.SetVar("VAR_MAP_SCENE_CINNABAR_ISLAND", 4);
+        story.SetVar("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F", 5);
+        game.Bag.AddItem(ItemDatabase.Get("Rainbow Pass")!);
+        game.Party.Members.Clear();
+        game.Party.Members.Add(new Pokemon(PokemonDatabase.Get("Mewtwo")!, 100));
+        var cutter = new Pokemon(PokemonDatabase.Get("Scyther")!, 50);
+        cutter.Moves[0] = new Move(MoveDatabase.Get("Cut")!);
+        game.Party.Members.Add(cutter);
+        Frames(30);
+        void IslandsLeft(string what) =>
+            Console.WriteLine($"  {what}: Four Island {story.Var("VAR_MAP_SCENE_FOUR_ISLAND")}, Icefall {story.Var("VAR_MAP_SCENE_ICEFALL_CAVE_BACK")}, "
+                + $"door cut {story.Has("FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE")}, second password {story.Has("FLAG_LEARNED_YES_NAH_CHANSEY")}, "
+                + $"warehouse open {story.Has("FLAG_UNLOCKED_ROCKET_WAREHOUSE")}, rockets beaten {story.Has("FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE")}, "
+                + $"Sapphire {game.Bag.GetQuantity(ItemDatabase.Get("Sapphire")!)}, Celio {story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F")}, "
+                + $"linked {story.Has("FLAG_SYS_CAN_LINK_WITH_RS")}, the player on {game.Map.Name} at {game.Player.GridX},{game.Player.GridY}");
+
+        // The Seagallop's far islands
+        TalkTo("OneIsland_Harbor", "sailor", 0, -1);
+        ReadTo("Where would you like to sail"); Frames(10); Shot("ksf0_the_rainbow_pass");
+        engine.Choice.Move(2); Frames(4); engine.Choice.Confirm(); Frames(4);
+        ReadTo("Which island"); Frames(10); Shot("ksf1_the_far_islands");
+        OnTo("FourIsland_Harbor");
+        ReadTo(null); Frames(20); Shot("ksf2_four_island_harbor");
+        // The rival on Four Island, on the first visit
+        ComeThrough("FourIsland", 8, 27, Direction.Up);
+        ReadTo("found an Egg"); Frames(10); Shot("ksf3_the_rival_on_four_island");
+        ReadTo(null);
+        IslandsLeft("Four Island");
+        // Lorelei and the poachers in Icefall Cave
+        StepOnto("FourIsland_IcefallCave_Back", 12, 18, Direction.Up);
+        ReadTo("Keep your hands off"); Frames(10); Shot("ksf4_lorelei_and_the_poachers");
+        ReadTo("Help me drive"); Frames(10); Shot("ksf5_lorelei_calls_for_help");
+        IntoBattle("the poachers' battle");
+        ToMainMenu(game.Battle); Shot("ksf6_the_poachers_battle");
+        Win();
+        ReadTo("loosen your tongue"); Frames(10); Shot("ksf7_laprass_cold_threat");
+        ReadTo("come and see me"); Frames(10); Shot("ksf8_the_cave_cleared");
+        ReadTo(null);
+        TalkTo("FourIsland_LoreleisHouse", "lorelei");
+        ReadTo("where I was born"); Frames(10); Shot("ksf9_lorelei_at_home");
+        ReadTo(null);
+        IslandsLeft("Icefall Cave");
+        // The warehouse's keypad with one password, the dotted door, the Sapphire stolen
+        At("FiveIsland", 84, 62, Direction.Up); game.Interact();
+        ReadTo("second password"); Frames(10); Shot("ksg0_the_warehouse_keypad");
+        ReadTo(null);
+        At("SixIsland", 48, 185, Direction.Up); game.Interact();
+        ReadTo("Look at it more closely"); Frames(10); Shot("ksg1_the_dotted_door");
+        ReadTo("slid open"); Frames(10); Shot("ksg2_the_door_cut");
+        ReadTo(null);
+        TalkTo("SixIsland_DottedHole_SapphireRoom", "sapphire");
+        ReadTo("found the Sapphire"); Frames(10); Shot("ksg3_the_sapphire");
+        ReadTo("take that, thank you"); Frames(10); Shot("ksg4_the_thief");
+        ReadTo("Ekans ate the cake"); Frames(10); Shot("ksg5_the_second_password");
+        ReadTo(null);
+        IslandsLeft("the Dotted Hole");
+        // Both passwords, and the warehouse
+        At("FiveIsland", 84, 62, Direction.Up); game.Interact();
+        ReadTo("Click!"); Frames(10); Shot("ksg6_the_warehouse_unlocked");
+        ReadTo(null);
+        ComeThrough("FiveIsland_RocketWarehouse", 24, 24, Direction.Up);
+        Frames(10); Shot("ksg7_inside_the_warehouse");
+        StepOnto("FiveIsland_RocketWarehouse", 24, 11, Direction.Up);
+        ReadTo("deal with you myself"); Frames(10); Shot("ksg8_the_admin_calls");
+        ReadTo(null);
+        TalkTo("FiveIsland_RocketWarehouse", "warehouse_admin2", -1, 0);
+        ReadTo("hunting ground"); Frames(10);
+        IntoBattle("the admin's battle");
+        ToMainMenu(game.Battle); Shot("ksg9_the_admins_battle");
+        Win();
+        ReadTo("pulling out"); Frames(10); Shot("ksh0_team_rocket_leaves");
+        ReadTo(null);
+        TalkTo("FiveIsland_RocketWarehouse", "scientist");
+        ReadTo("make me rich"); Frames(10); Shot("ksh1_gideon");
+        IntoBattle("Gideon's battle");
+        Win();
+        ReadTo("precious stone"); Frames(10); Shot("ksh2_the_sapphire_back");
+        ReadTo(null);
+        IslandsLeft("the warehouse");
+        // Celio sets the Sapphire in his machine
+        TalkTo("OneIsland_PokemonCenter_1F", "celio");
+        ReadTo("It's the Sapphire"); Frames(10); Shot("ksh3_celio_and_the_sapphire");
+        ReadTo("region called Hoenn"); Frames(10); Shot("ksh4_the_machine_reaches_hoenn");
+        ReadTo(null);
+        IslandsLeft("Celio");
+        // Cerulean Cave's guard gone, and Mewtwo at its bottom
+        At("Kanto", 265, 54, Direction.Up); Frames(10); Shot("ksh5_cerulean_caves_mouth");
+        ComeThrough("CeruleanCave_B1F", 7, 14, Direction.Up);
+        TalkTo("CeruleanCave_B1F", "mewtwo");
+        ReadTo("cold, sharp will"); Frames(10); Shot("ksh6_mewtwo");
+        IntoBattle("Mewtwo's battle");
+        ToMainMenu(game.Battle); Shot("ksh7_mewtwos_battle");
+        Win();
+        ReadTo(null);
+        Console.WriteLine($"  Cerulean Cave: guard hidden {story.Has("FLAG_HIDE_CERULEAN_CAVE_GUARD")}, Mewtwo fought {story.Has("FLAG_FOUGHT_MEWTWO")}");
+        // Selphy lost in the Lost Cave, and home
+        ComeThrough("FiveIsland_LostCave_Room10", 5, 7, Direction.Up);
+        ReadTo("Are you real"); Frames(10); Shot("ksh8_selphy_lost");
+        IntoBattle("Selphy's battle");
+        Win();
+        ReadTo("take me home"); Frames(10); Shot("ksh9_take_me_home");
+        OnTo("FiveIsland");
+        ReadTo("Home at last"); Frames(10); Shot("ksi0_selphy_home");
+        ReadTo(null);
+        Console.WriteLine($"  Selphy: cave {story.Var("VAR_MAP_SCENE_FIVE_ISLAND_LOST_CAVE_ROOM10")}, resort {story.Var("VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS")}, at home {!story.Has("FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY")}");
+        // The Water Labyrinth's Egg for a lead that loves its trainer as much as can be
+        game.Party.Members[0].Friendship = 255;
+        var gentleman = MapDatabase.Get("FiveIsland").NPCs.First(n => n.Key == "gentleman"
+            && MapDatabase.Get("FiveIsland").AreaAt(n.GridX, n.GridY)?.Key == "five_island_water_labyrinth");
+        At("FiveIsland", gentleman.GridX, gentleman.GridY + 1, Direction.Up); game.Interact();
+        ReadTo("how fond your Pokémon"); Frames(10); Shot("ksi1_the_egg_gentleman");
+        ReadTo("received an Egg"); Frames(10); Shot("ksi2_the_togepi_egg");
+        ReadTo(null);
+        // The Memorial Pillar and its Lemonade
+        game.Bag.AddItem(ItemDatabase.Get("Lemonade")!);
+        At("FiveIsland", 105, 104, Direction.Up); game.Interact();
+        ReadTo("For Onix"); Frames(10); Shot("ksi3_the_memorial_pillar");
+        ReadTo("Facade hits"); Frames(10); Shot("ksi4_tm42");
+        ReadTo(null);
+        Console.WriteLine($"  Five Island: Egg {game.Party.Members.Any(p => p.IsEgg)}, TM42 {game.Bag.GetQuantity(ItemDatabase.Get("TM42")!)}");
+        // Seven Island's tutor asks, and is told no
+        TalkTo("SevenIsland", "swords_dance_tutor");
+        ReadTo("Swords Dance?"); Frames(10); Shot("ksi5_the_swords_dance_tutor");
+        Until(() => engine.Choice.IsOpen, "the tutor's question", 120);
+        engine.Choice.Move(1); Frames(4); engine.Choice.Confirm(); Frames(4);
+        ReadTo(null);
+        // The Tanoby Ruins' chambers open once the Tanoby Key's switches are all pressed (the boulders' pits: the tests play them)
+        story.Set("FLAG_SYS_UNLOCKED_TANOBY_RUINS");
+        ComeThrough("SevenIsland_TanobyRuins_LiptooChamber", 11, 14, Direction.Up);
+        Frames(10); Shot("ksi6_a_chamber_open");
     }
 }

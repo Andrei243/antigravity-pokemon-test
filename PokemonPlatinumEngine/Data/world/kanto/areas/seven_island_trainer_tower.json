@@ -1,0 +1,60 @@
+{
+  "key": "seven_island_trainer_tower",
+  "index": 241,
+  "name": "Trainer Tower",
+  "matrix": 195,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "seven_island_trainer_tower",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Qwilfish", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 58, "z": 7, "to": "trainer_tower_lobby", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "boy", "looks": "boy", "movement": "look_north", "x": 56, "z": 26, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PSYCHIC_DARIO" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_south", "x": 56, "z": 29, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PSYCHIC_RODETTE" }
+  ],
+  "signs": [
+    { "x": 49, "z": 27, "type": 2, "script": "", "item": "Big Pearl", "flag": "FLAG_HIDDEN_ITEM_SEVEN_ISLAND_TRAINER_TOWER_BIG_PEARL" },
+    { "x": 47, "z": 30, "type": 2, "script": "", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_SEVEN_ISLAND_TRAINER_TOWER_PEARL" },
+    { "x": 59, "z": 32, "type": 2, "script": "", "item": "Nanab Berry", "flag": "FLAG_HIDDEN_ITEM_SEVEN_ISLAND_TRAINER_TOWER_NANAB_BERRY" },
+    { "x": 56, "z": 8, "type": 0, "script": "SevenIsland_TrainerTower_EventScript_TrainerTowerSign" },
+    { "x": 50, "z": 30, "type": 0, "script": "SevenIsland_TrainerTower_EventScript_TrainerTowerAheadSign" }
+  ],
+  "triggers": []
+}

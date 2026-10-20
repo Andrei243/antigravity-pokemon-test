@@ -126,9 +126,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "O să ne ia ceva timp. Du-te și uită-te prin jur, {player}. Marinarul din port te poate duce înapoi în Kanto."
       ]
     },
     {
@@ -273,9 +270,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "Bill e un geniu. Cu ajutorul lui, sunt sigur că mașinăria se va lega de Kanto în scurt timp."
       ]
     },
     {
@@ -284,9 +278,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "Scuze, sunt la mijlocul unei treburi. Mașinăria asta îmi face numai probleme."
       ]
     },
     {
@@ -396,6 +387,70 @@
     {
       "en": [
         "The Sapphire should be on one of the islands farther south. The Seagallop will take you there with the Rainbow Pass."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! That blue light... It's the Sapphire! You really found it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} handed the Sapphire to Celio."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Celio"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you! Now, let me set it in beside the Ruby..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's it, it fits perfectly. Now if I just bring the power up slowly..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's working! The machine's reaching out farther than ever... and something's answered! A PC far away, in a region called Hoenn!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, thank you. With your help the islands are linked with Kanto and with Hoenn too. I'll never forget it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The machine hasn't missed a beat since you brought the Sapphire. I wish you the very best on your travels, {player}!"
       ],
       "text": [
         ""

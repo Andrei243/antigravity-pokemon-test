@@ -1,0 +1,19 @@
+# Selphy's house at Resort Gorgeous (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/FiveIsland_ResortGorgeous_House/scripts.inc).
+#
+# Selphy is at home once she has been brought back from the Lost Cave (five_island_resort_gorgeous.txt clears FLAG_
+# HIDE_RESORT_GORGEOUS_INSIDE_SELPHY); before that her butler waits for her alone. FireRed's wishes of hers (a Pokémon
+# she would like to see, and a gift for showing it) are left for plan 19 · K9, part c.
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS < 2 setflag FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY
+  end
+
+
+script Selphy
+  face resort_gorgeous_house_selphy player
+  speaker "Selphy"
+  say "My hero! My butler has been fussing over me ever since I came home. It's lovely to see you again."
+  say "I'm still thinking of a proper way to thank you. Do call again!"
+  end

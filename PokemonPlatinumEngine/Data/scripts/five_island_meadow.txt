@@ -1,0 +1,26 @@
+# Five Isle Meadow (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/FiveIsland_Meadow/scripts.inc).
+#
+# Team Rocket's warehouse stands at the meadow's end behind a door with a keypad. The first password, which the grunts
+# on Mt. Ember let slip (mt_ember_exterior.txt), is taken by the keypad, which then asks for a second; the second is
+# the one the scientist in the Dotted Hole lets slip (FLAG_LEARNED_YES_NAH_CHANSEY, six_island_dotted_hole_sapphire_
+# room.txt). With it the door opens for good (FLAG_UNLOCKED_ROCKET_WAREHOUSE, which the overlay's door waits for). As
+# in FireRed, the keypad asks nothing of whether the player heard the first: whoever reads it types it in. Our
+# passwords are our own words.
+
+
+script WarehouseDoor
+  speaker none
+  if flag FLAG_UNLOCKED_ROCKET_WAREHOUSE goto Open
+  if flag FLAG_LEARNED_YES_NAH_CHANSEY goto Second
+  text "A keypad by the door. {player} typed in the password: 'Seel the deal'. Beep! A second password is needed."
+  end
+label Second
+  text "{player} typed in 'Seel the deal', and then 'Ekans ate the cake'."
+  setflag FLAG_UNLOCKED_ROCKET_WAREHOUSE
+  sound "door_open"
+  text "Click! The warehouse door unlocked!"
+  end
+label Open
+  text "The warehouse door is unlocked."
+  end

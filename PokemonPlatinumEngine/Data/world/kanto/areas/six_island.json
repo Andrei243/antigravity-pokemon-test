@@ -1,0 +1,32 @@
+{
+  "key": "six_island",
+  "index": 245,
+  "name": "Six Island",
+  "matrix": 196,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_67",
+  "nightMusic": "MUS_SEVII_67",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 59, "z": 143, "to": "six_island_harbor", "toWarp": 0 },
+    { "x": 59, "z": 131, "to": "six_island_pokemon_center_1f", "toWarp": 0 },
+    { "x": 64, "z": 137, "to": "six_island_house", "toWarp": 0 },
+    { "x": 68, "z": 131, "to": "six_island_mart", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "boy", "looks": "boy", "movement": "look_west", "x": 58, "z": 135, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SixIsland_EventScript_Boy" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_south_and_east", "x": 63, "z": 133, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SixIsland_EventScript_Hiker" }
+  ],
+  "signs": [
+    { "x": 57, "z": 137, "type": 0, "script": "SixIsland_EventScript_IslandSign" },
+    { "x": 57, "z": 127, "type": 2, "script": "", "item": "Leppa Berry", "flag": "FLAG_HIDDEN_ITEM_SIX_ISLAND_LEPPA_BERRY" }
+  ],
+  "triggers": []
+}

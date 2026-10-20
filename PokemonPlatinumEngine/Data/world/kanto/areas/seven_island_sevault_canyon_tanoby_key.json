@@ -1,0 +1,39 @@
+{
+  "key": "seven_island_sevault_canyon_tanoby_key",
+  "index": 200,
+  "name": "Tanoby Key",
+  "matrix": 164,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_DUNGEON",
+  "nightMusic": "MUS_SEVII_DUNGEON",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 13, "to": "seven_island_sevault_canyon", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "tanoby_key_boulder1", "looks": "pushable_boulder", "movement": "look_around", "x": 7, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "tanoby_key_boulder2", "looks": "pushable_boulder", "movement": "look_around", "x": 8, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "tanoby_key_boulder3", "looks": "pushable_boulder", "movement": "look_around", "x": 8, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "tanoby_key_boulder4", "looks": "pushable_boulder", "movement": "look_around", "x": 6, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "tanoby_key_boulder5", "looks": "pushable_boulder", "movement": "look_around", "x": 8, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "tanoby_key_boulder6", "looks": "pushable_boulder", "movement": "look_around", "x": 6, "z": 9, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "tanoby_key_boulder7", "looks": "pushable_boulder", "movement": "look_around", "x": 6, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 7, "z": 2, "width": 1, "depth": 1, "script": "SevenIsland_SevaultCanyon_TanobyKey_EventScript_Switch1", "variable": "VAR_TEMP_1", "value": "99" },
+    { "x": 9, "z": 8, "width": 1, "depth": 1, "script": "SevenIsland_SevaultCanyon_TanobyKey_EventScript_Switch7", "variable": "VAR_TEMP_7", "value": "99" },
+    { "x": 5, "z": 8, "width": 1, "depth": 1, "script": "SevenIsland_SevaultCanyon_TanobyKey_EventScript_Switch6", "variable": "VAR_TEMP_6", "value": "99" },
+    { "x": 9, "z": 6, "width": 1, "depth": 1, "script": "SevenIsland_SevaultCanyon_TanobyKey_EventScript_Switch5", "variable": "VAR_TEMP_5", "value": "99" },
+    { "x": 5, "z": 6, "width": 1, "depth": 1, "script": "SevenIsland_SevaultCanyon_TanobyKey_EventScript_Switch4", "variable": "VAR_TEMP_4", "value": "99" },
+    { "x": 10, "z": 4, "width": 1, "depth": 1, "script": "SevenIsland_SevaultCanyon_TanobyKey_EventScript_Switch3", "variable": "VAR_TEMP_3", "value": "99" },
+    { "x": 4, "z": 4, "width": 1, "depth": 1, "script": "SevenIsland_SevaultCanyon_TanobyKey_EventScript_Switch2", "variable": "VAR_TEMP_2", "value": "99" }
+  ]
+}

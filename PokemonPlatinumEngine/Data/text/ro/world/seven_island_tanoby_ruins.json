@@ -1,0 +1,117 @@
+{
+  "displayName": {
+    "en": [
+      "Tanoby Ruins"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Brandon"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Brandon: The chambers are sealed tight. I know there's something inside!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Brandon: Sealed tight, like my chances."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker_2": {
+      "name": {
+        "en": [
+          "Benjamin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Benjamin: I've studied these ruins for twenty years. Let me show you twenty years of training!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Benjamin: Twenty years, and still not enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Edna"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Painter Edna: I'm painting the ruins at sunset. Don't block my view!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Painter Edna: Fine, block it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Clifford"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Clifford: Ah, a fellow admirer of the ruins. Shall we battle among them?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Clifford: Splendid. Simply splendid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

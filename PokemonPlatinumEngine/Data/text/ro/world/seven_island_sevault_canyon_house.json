@@ -1,0 +1,41 @@
+{
+  "people": {
+    "chansey_dance_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Step, step, wiggle and turn! That's the Chansey Dance! Come on, dance it with us, it'll put a spring in your step!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "chansey": {
+      "name": {
+        "en": [
+          "Chansey"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Chansey: Chaaan-sey!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

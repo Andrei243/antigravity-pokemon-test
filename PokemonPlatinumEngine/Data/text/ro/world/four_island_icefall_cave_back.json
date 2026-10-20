@@ -1,0 +1,53 @@
+{
+  "displayName": {
+    "en": [
+      "Icefall Cave"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "icefall_rocket1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "icefall_rocket2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "icefall_rocket3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "icefall_lorelei": {
+      "name": {
+        "en": [
+          "Lorelei"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

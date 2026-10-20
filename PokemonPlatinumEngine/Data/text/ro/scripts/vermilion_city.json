@@ -80,9 +80,6 @@
       ],
       "text": [
         ""
-      ],
-      "was": [
-        "Ah, un Tri-Permis! Seagallop e gata ori de câte ori ești și tu."
       ]
     },
     {
@@ -99,11 +96,6 @@
         "",
         "",
         ""
-      ],
-      "was": [
-        "Încotro vrei să navigăm?",
-        "INSULA UNU",
-        "NU ACUM"
       ]
     },
     {
@@ -133,6 +125,14 @@
     {
       "en": [
         "All aboard! Next stop, Three Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, a pass for the Seagallop! She's ready whenever you are."
       ],
       "text": [
         ""

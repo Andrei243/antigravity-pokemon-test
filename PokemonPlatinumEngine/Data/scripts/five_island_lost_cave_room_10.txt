@@ -1,0 +1,39 @@
+# The Lost Cave, room 10 (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/FiveIsland_LostCave_Room10/scripts.inc).
+#
+# Selphy of Resort Gorgeous wandered into the cave and lost her way. The first time the player comes into this room
+# (VAR_MAP_SCENE_FIVE_ISLAND_LOST_CAVE_ROOM10 0) she battles them, asks to be taken home, and the two come out at her
+# house's door (the room's variable 1, Resort Gorgeous's 1: five_island_resort_gorgeous.txt goes on). FireRed plays it
+# as she sees the player come in; here it plays on arrival. Afterwards she isn't here (FLAG_HIDE_LOST_CAVE_SELPHY).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_FIVE_ISLAND_LOST_CAVE_ROOM10 == 0 goto Found
+  setflag FLAG_HIDE_LOST_CAVE_SELPHY
+  end
+label Found
+  scene "Selphy in the Lost Cave"
+  emote lost_cave_selphy exclaim
+  speaker "Selphy"
+  say "Oh! Someone's here! I've been wandering in the dark for ever so long. Are you real?"
+  say "Prove it! Battle me, and then I'll know I'm not dreaming."
+  battle lost_cave_selphy as "kanto_lady_selphy"
+  speaker "Selphy"
+  say "You're real, and you're strong too! Please, would you take me home? I'm sure I'll only get lost again on my own."
+  fade out 0.6
+  hide lost_cave_selphy
+  setflag FLAG_HIDE_LOST_CAVE_SELPHY
+  clearflag FLAG_HIDE_RESORT_GORGEOUS_SELPHY
+  setvar VAR_MAP_SCENE_FIVE_ISLAND_LOST_CAVE_ROOM10 1
+  setvar VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS 1
+  speaker none
+  text "{player} led Selphy out of the Lost Cave and back to Resort Gorgeous."
+  warp "FiveIsland" 87 10 up
+  endscene
+  end
+
+
+script Selphy
+  speaker "Selphy"
+  say "Which way is out? Every room looks the same!"
+  end

@@ -1,0 +1,35 @@
+# Six and Seven Island (FireRed's MUS_SEVII_67, which the last two islands share): a wistful tune in E minor, an oboe
+# over a celesta's slow broken chords, a string pad and a deep bass, for the far islands of ruins and canyons where
+# few people live. Original composition for this game (plan 19 · K9, part b).
+title Six and Seven Island
+tempo 88
+meter 4/4
+reverb 0.38
+nighttempo 0.9
+
+track lead oboe night=clarinet vol=0.72 pan=0 rev=0.36
+  L o5 e4. f+8 g4 b4 | o5 a4 g4 e4 c4 | o5 d4. e8 f+4 a4 | o5 g2. r4 |
+  o5 b4. a8 g4 e4 | o6 c4 o5 b8 a8 e4 a4 | o5 d+4 f+4 b4 a4 | o5 g2. r4 |
+  o5 g4. e8 c4 e4 | o5 f+4. e8 d4 f+4 | o5 g4 b4 o6 d4 o5 b4 | o5 b2. r4 |
+  o5 a4. b8 o6 c4 o5 a4 | o5 b4 a4 f+4 d+4 | o5 e4 g4 b4 g4 | o5 e2. r4 |
+
+track celesta celesta night=harp vol=0.28 pan=-0.3 rev=0.45
+  L [ o4 e8 g8 b8 g8 ]2 | [ o4 c8 e8 g8 e8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+  [ o4 e8 g8 b8 g8 ]2 | [ o4 a8 o5 c8 e8 c8 ]2 | [ o4 b8 o5 d+8 f+8 d+8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+  [ o4 c8 e8 g8 e8 ]2 | [ o4 d8 f+8 a8 f+8 ]2 | [ o4 g8 b8 o5 d8 o4 b8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+  [ o4 a8 o5 c8 e8 c8 ]2 | [ o4 b8 o5 d+8 f+8 d+8 ]2 | [ o4 e8 g8 b8 g8 ]2 | [ o4 e8 g8 b8 g8 ]2 |
+
+track pad strings vol=0.3 pan=0.25 rev=0.55
+  L o3 (e g b)1 | (c e g)1 | (d f+ a)1 | (e g b)1 |
+  (e g b)1 | (a >c e)1 | (b >d+ f+)1 | (e g b)1 |
+  (c e g)1 | (d f+ a)1 | (g b >d)1 | (e g b)1 |
+  (a >c e)1 | (b >d+ f+)1 | (e g b)1 | (e g b)1 |
+
+track bass contrabass vol=0.62 rev=0.16
+  L o3 e1 | c1 | d1 | e1 |
+  e1 | o2 a1 | b1 | o3 e1 |
+  c1 | d1 | o2 g1 | o3 e1 |
+  o2 a1 | b1 | o3 e1 | e1 |
+
+track drums kit vol=0.18 rev=0.2
+  v50 L [ b4 h8 h8 r4 h4 | ]16

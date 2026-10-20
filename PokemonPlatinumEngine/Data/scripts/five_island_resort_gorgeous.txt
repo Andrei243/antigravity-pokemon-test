@@ -1,0 +1,35 @@
+# Resort Gorgeous on Five Island (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own,
+# on FireRed's beats (data/maps/FiveIsland_ResortGorgeous/scripts.inc).
+#
+# Brought home from the Lost Cave (five_island_lost_cave_room_10.txt: VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS 1),
+# Selphy stands with the player before her door, thanks them and goes in (2): from then on she is at home
+# (FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY cleared, five_island_resort_gorgeous_house.txt). Outside, she is seen only
+# in that scene (FLAG_HIDE_RESORT_GORGEOUS_SELPHY).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS == 1 goto Home
+  setflag FLAG_HIDE_RESORT_GORGEOUS_SELPHY
+  end
+label Home
+  scene "Selphy comes home"
+  clearflag FLAG_HIDE_RESORT_GORGEOUS_SELPHY
+  show resort_gorgeous_selphy
+  face player up
+  speaker "Selphy"
+  say "Home at last! Thank you ever so much. I'd still be wandering in that cave if it weren't for you."
+  say "Do come and visit me. I'll think of a proper way to thank you!"
+  face resort_gorgeous_selphy up
+  sound "door_open"
+  hide resort_gorgeous_selphy
+  setflag FLAG_HIDE_RESORT_GORGEOUS_SELPHY
+  clearflag FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY
+  setvar VAR_MAP_SCENE_FIVE_ISLAND_RESORT_GORGEOUS 2
+  endscene
+  end
+
+
+script Selphy
+  speaker "Selphy"
+  say "Do come in! My house is just here."
+  end

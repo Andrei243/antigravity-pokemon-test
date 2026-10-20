@@ -1,0 +1,47 @@
+# The Dotted Hole's deepest room (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own,
+# on FireRed's beats (data/maps/SixIsland_DottedHole_SapphireRoom/scripts.inc).
+#
+# The Sapphire lies on the floor (FLAG_HIDE_SAPPHIRE, FireRed's). Taking it plays the scene: the player finds it, the
+# scientist who trailed them down drops in from above, snatches it, says he will sell it to Team Rocket and lets slip
+# the second password of their warehouse on Five Island before he runs (FLAG_LEARNED_YES_NAH_CHANSEY, FireRed's name;
+# five_island_meadow.txt asks it). FireRed slides him down from the ceiling and walks him out; here he comes down with
+# a thump where he stands and a dark screen takes him away. He is never in the room but in the scene
+# (FLAG_HIDE_DOTTED_HOLE_SCIENTIST). The Sapphire is won back in the warehouse (five_island_rocket_warehouse.txt).
+
+
+script OnEnter
+  setflag FLAG_HIDE_DOTTED_HOLE_SCIENTIST
+  end
+
+
+script Sapphire
+  scene "The Sapphire"
+  speaker none
+  fanfare keyitem
+  text "{player} found the Sapphire! It shone a deep, clear blue."
+  clearflag FLAG_HIDE_DOTTED_HOLE_SCIENTIST
+  show dotted_hole_thief
+  sound "boulder"
+  camera shake 0.5
+  wait 0.6
+  face player left
+  speaker "Scientist"
+  say "Ha! I knew it. I was right to follow you down here!"
+  say "I've been looking for this gem for years. I'll take that, thank you!"
+  hide sapphire
+  setflag FLAG_HIDE_SAPPHIRE
+  say "Team Rocket will pay a fortune for a stone like this. All I have to do is take it to their warehouse on Five Island."
+  say "The password for the inner door? 'Ekans ate the cake.' Ha! As if you could ever get that far. So long!"
+  fade out 0.4
+  hide dotted_hole_thief
+  setflag FLAG_HIDE_DOTTED_HOLE_SCIENTIST
+  setflag FLAG_LEARNED_YES_NAH_CHANSEY
+  fade in 0.4
+  endscene
+  end
+
+
+script Thief
+  speaker "Scientist"
+  say "The Sapphire is mine now!"
+  end

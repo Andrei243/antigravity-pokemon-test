@@ -1,0 +1,17 @@
+{
+  // The Memorial Pillar (plan 19 · K9, part b): FireRed's map, our words. A stone on the cliffs of Five Island's east
+  // shore where a man mourns his Onix, and gives a TM for an offering of Lemonade (five_island_memorial_pillar.txt)
+  "area": "five_island_memorial_pillar",
+  "name": "Memorial Pillar",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "people": {
+    "memorial_man": { "name": "Man", "script": "MemorialMan", "still": true },
+    "rocker": { "name": "Milo", "trainer": { "dialogueBefore": "Bird Keeper Milo: The wind off these cliffs is perfect for flying. My birds love it here!", "dialogueAfter": "Bird Keeper Milo: Grounded, just like that." } },
+    "rocker_2": { "name": "Chaz", "trainer": { "dialogueBefore": "Bird Keeper Chaz: Watch my birds swoop! Then watch them win!", "dialogueAfter": "Bird Keeper Chaz: They swooped. They didn't win." } },
+    "rocker_3": { "name": "Harold", "trainer": { "dialogueBefore": "Bird Keeper Harold: I've come to see the pillar. And to battle anyone who passes by!", "dialogueAfter": "Bird Keeper Harold: Maybe I should have just looked at the pillar." } }
+  },
+  "read": {
+    "FiveIsland_MemorialPillar_EventScript_Memorial": "Memorial"
+  }
+}

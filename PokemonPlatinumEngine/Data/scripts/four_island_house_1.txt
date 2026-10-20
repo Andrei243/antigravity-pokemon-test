@@ -1,0 +1,44 @@
+# A house on Four Island (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/FourIsland_House1/scripts.inc).
+#
+# The big man by the table teaches Body Slam once, for nothing (`tutor once`; Models/MoveTutors.cs, Kanto's table of
+# who may learn it, our own). FLAG_TUTOR_BODY_SLAM, FireRed's name: he has taught it.
+
+
+script Tutor
+  speaker "Big Man"
+  if flag FLAG_TUTOR_BODY_SLAM goto Taught
+  ask "There's nothing like throwing your whole weight at a problem! Shall I teach one of your Pokémon Body Slam?"
+  if no goto Later
+  say "That's the spirit! Which Pokémon is to learn it?"
+  choosepokemon
+  tutor once "Body Slam"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_TUTOR_BODY_SLAM
+label Taught
+  say "A good Body Slam can leave the foe too stunned to move. Use it well!"
+  end
+label Later
+  say "Suit yourself. I'll be right here, sitting heavily."
+  end
+label Egg
+  say "An Egg has no weight to throw about yet. Hatch it first!"
+  end
+label Cannot
+  say "Hmm, that one hasn't got the build for Body Slam, I'm afraid."
+  end
+label Knows
+  say "That one already knows {thing}!"
+  end
+label Hm
+  say "{forgotten} isn't a move that can be given up like that."
+  goto Later

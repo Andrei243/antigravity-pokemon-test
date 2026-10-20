@@ -1,0 +1,77 @@
+{
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! How can I help you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Pokémon have personalities all their own, just like people. Mine is a real show-off."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If you want to fish, the water round Seven Island is as good as it gets."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rope, lamp, snacks... My preparations are complete. Next stop, the Tanoby Ruins!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
