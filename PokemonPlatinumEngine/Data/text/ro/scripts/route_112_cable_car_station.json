@@ -10,34 +10,62 @@
     },
     {
       "en": [
-        "Welcome to the Mt. Chimney Cable Car. Some rough-looking people have been hanging about outside, haven't they?"
+        "Welcome to the Mt. Chimney Cable Car! Shall I send you up to the summit?"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Bun venit la Telecabina Muntelui Chimney. Niște oameni cu aspect dubios au dat târcoale pe-afară, nu-i așa?"
       ]
     },
     {
       "en": [
-        "I'm afraid the car is being looked over just now. Please come back later!"
+        "Lovely! Step this way, please, and mind the gap."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Mă tem că telecabina e în verificare acum. Te rog să revii mai târziu!"
       ]
     },
     {
       "en": [
-        "Those people in red have gone at last. But the car is still being looked over, I'm sorry to say."
+        "The car sways gently on its wire as it climbs above the ash..."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Oamenii ăia în roșu au plecat, în sfârșit. Dar telecabina e încă în verificare, îmi pare rău."
       ]
     },
     {
       "en": [
-        "It'll be running again soon. Please come back later!"
+        "Whenever you're ready. The view from the top is worth the trip!"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Va funcționa din nou în curând. Te rog să revii mai târziu!"
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Mt. Chimney Cable Car. Some rough-looking people have been hanging about outside, haven't they?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm afraid I can't send anyone up while they're there. Please come back later!"
+      ],
+      "text": [
+        ""
       ]
     }
   ]
