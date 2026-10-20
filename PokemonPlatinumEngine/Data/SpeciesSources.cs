@@ -55,8 +55,15 @@ public sealed class SpeciesSources
         get
         {
             lock (loading)
-                return sinnoh ??= Of(World.LoadAll().First(w => string.Equals(w.Index.Region, "Sinnoh", StringComparison.OrdinalIgnoreCase)),
-                    ScriptLibrary.Default, Rooms(), HighestInSinnoh);
+            {
+                if (sinnoh != null) return sinnoh;
+                var worlds = World.LoadAll().ToList();
+                var home = worlds.First(w => string.Equals(w.Index.Region, "Sinnoh", StringComparison.OrdinalIgnoreCase));
+                // The scripts of another region's places give nothing in Sinnoh (Kanto's Mewtwo, plan 19 · K9)
+                var elsewhere = worlds.Where(w => w != home).SelectMany(w => w.Index.Areas).ToHashSet(StringComparer.OrdinalIgnoreCase);
+                elsewhere.ExceptWith(home.Index.Areas);
+                return sinnoh = Of(home, ScriptLibrary.Default, Rooms(), HighestInSinnoh, file => !elsewhere.Contains(file));
+            }
         }
     }
 
@@ -70,9 +77,10 @@ public sealed class SpeciesSources
     }
 
     /// <summary>What a world, its scripts and the rooms give, for the species numbered up to <paramref name="highest"/>.</summary>
-    public static SpeciesSources Of(World world, ScriptLibrary scripts, IEnumerable<MapFile> rooms, int highest = HighestInSinnoh)
+    public static SpeciesSources Of(World world, ScriptLibrary scripts, IEnumerable<MapFile> rooms, int highest = HighestInSinnoh,
+        Func<string, bool>? scriptFile = null)
     {
-        var found = Gather(world, scripts, rooms.ToList());
+        var found = Gather(world, scripts, rooms.ToList(), scriptFile ?? (_ => true));
         var pool = PokemonDatabase.GetAll().Where(s => s.DexNumber >= 1 && s.DexNumber <= highest && !found.ways.ContainsKey(s.Name))
             .OrderBy(s => s.DexNumber).Select(s => s.Name).ToList();
         var sources = new SpeciesSources(pool);
@@ -106,7 +114,7 @@ public sealed class SpeciesSources
         }
     }
 
-    private static Found Gather(World world, ScriptLibrary scripts, List<MapFile> rooms)
+    private static Found Gather(World world, ScriptLibrary scripts, List<MapFile> rooms, Func<string, bool> scriptFile)
     {
         var f = new Found();
 
@@ -158,7 +166,7 @@ public sealed class SpeciesSources
 
         // What the scripts hand over, battle or sell
         bool revives = false;
-        foreach (var script in scripts.All)
+        foreach (var script in scripts.All.Where(s => scriptFile(s.File)))
             foreach (var i in script.Everything())
             {
                 string where = script.FullName;

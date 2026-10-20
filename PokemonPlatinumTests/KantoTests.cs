@@ -15,7 +15,7 @@ public class KantoTests
     private static readonly Lazy<World> LoadedWorld = new(() => World.LoadAll().Single(w => w.Index.Region == "Kanto"));
     private static readonly Lazy<Dictionary<string, Map>> BuiltMaps = new(() => LoadedWorld.Value.BuildMaps().ToDictionary(m => m.Name));
     private static readonly Lazy<Dictionary<Map, HashSet<(int X, int Y)>>> Walked =
-        new(() => WorldWalk.From(MapNamed, RegionDatabase.Get(RegionDatabase.Kanto)!.Start!));
+        new(() => WorldWalk.From(MapNamed, WorldWalk.FallenTo.Prepend(RegionDatabase.Get(RegionDatabase.Kanto)!.Start!).ToArray()));
 
     private static World Kanto => LoadedWorld.Value;
     private static Map Overworld => BuiltMaps.Value["Kanto"];

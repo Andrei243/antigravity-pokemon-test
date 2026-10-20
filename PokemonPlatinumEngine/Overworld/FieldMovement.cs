@@ -298,13 +298,14 @@ public static class FieldMovement
 
         // A waterfall is taken north or south only: up it once the player has said yes to Waterfall, down it with a
         // Pokémon that knows the move (ov5_021E04A8: the way down needs the move and no badge, the way up the question)
-        if (there == TileBehavior.Waterfall)
+        // (HeartGold's lip at a waterfall's head is crossed with it: plan 20 · J10's Tohjo Falls)
+        if (there is TileBehavior.Waterfall or TileBehavior.WaterfallLip)
         {
             if (walker.Mode != TravelMode.Surfing) return No(Obstacle.Water);
             if (dir is Direction.Left or Direction.Right) return No(Obstacle.Waterfall);
             if (!walker.Moves.HasFlag(FieldMoves.Waterfall)) return No(Obstacle.Waterfall);
             if (dir == Direction.Up && !walker.Climbing) return No(Obstacle.Waterfall);
-            var (tx, ty) = PastRun(map, nx, ny, dx, dy, b => b == TileBehavior.Waterfall);
+            var (tx, ty) = PastRun(map, nx, ny, dx, dy, b => b is TileBehavior.Waterfall or TileBehavior.WaterfallLip);
             if (!map.InBounds(tx, ty) || map.IsSolid(tx, ty) || !map.IsDeepWater(tx, ty)) return No(Obstacle.Waterfall);
             return new FieldStep(StepKind.Climb, tx, ty, map.HeightAt(tx, ty), Pace.Fast, TravelMode.Surfing, Obstacle.None);
         }

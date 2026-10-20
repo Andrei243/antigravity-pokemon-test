@@ -6,7 +6,21 @@
 # and the boulder stays there. Each switch is pressed once while the player stays in the chamber (FLAG_MAP_LOCAL_
 # TANOBY_KEY_SWITCH_1 to 7, FireRed's VAR_TEMP_1 to 7); with all seven pressed the ground shakes and the chambers of
 # the Tanoby Ruins open for good (FLAG_SYS_UNLOCKED_TANOBY_RUINS, which seven_island_tanoby_ruins' doors wait for).
-# Leaving the chamber puts the boulders back, as FireRed's does until the ruins are open.
+# Leaving the chamber puts the boulders back, as FireRed's does until the ruins are open. The switches pressed are
+# counted too (VAR_TANOBY_KEY_SWITCHES_PRESSED, ours), and the count and the flags begin again with the boulders
+# whenever the chamber is come to.
+
+
+script OnEnter
+  setvar VAR_TANOBY_KEY_SWITCHES_PRESSED 0
+  clearflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1
+  clearflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_2
+  clearflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_3
+  clearflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_4
+  clearflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_5
+  clearflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_6
+  clearflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_7
+  end
 
 
 script Switch1
@@ -62,13 +76,8 @@ script Switch7
 # A switch pressed: a click, and with all seven the ruins open
 script Pressed
   sound "select"
-  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1 return
-  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_2 return
-  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_3 return
-  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_4 return
-  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_5 return
-  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_6 return
-  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_7 return
+  addvar VAR_TANOBY_KEY_SWITCHES_PRESSED 1
+  if var VAR_TANOBY_KEY_SWITCHES_PRESSED < 7 return
   scene "The Tanoby Key"
   sound "thunder_rumble"
   camera shake 0.8

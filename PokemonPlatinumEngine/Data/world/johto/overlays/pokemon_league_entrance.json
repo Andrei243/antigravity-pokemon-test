@@ -23,10 +23,8 @@
     },
     "t10r0101_counterm": {
       "name": "Guard",
-      "still": true,
-      "dialog": [
-        "Beyond this door the Elite Four are waiting. Once you start, you face all four and then the Champion."
-      ]
+      "script": "DoorGuard",
+      "still": true
     },
     "t10r0101_gsoldman1": {
       "name": "Old Man",

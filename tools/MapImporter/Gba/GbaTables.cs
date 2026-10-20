@@ -377,7 +377,15 @@ public static class GbaNames
     });
 
     public static string? Species(string constant) => Look(SpeciesNames.Value, constant, "SPECIES_");
-    public static string? Move(string constant) => Look(MoveNames.Value, constant, "MOVE_");
+    public static string? Move(string constant) =>
+        Look(MoveNames.Value, constant, "MOVE_") ?? (Renamed.TryGetValue(constant, out var later) ? Look(MoveNames.Value, later, "MOVE_") : null);
+
+    /// <summary>The moves the third generation spelt otherwise than the data, which takes the later spelling.</summary>
+    private static readonly Dictionary<string, string> Renamed = new(StringComparer.Ordinal)
+    {
+        ["MOVE_FAINT_ATTACK"] = "MOVE_FEINT_ATTACK", ["MOVE_VICE_GRIP"] = "MOVE_VISE_GRIP", ["MOVE_HI_JUMP_KICK"] = "MOVE_HIGH_JUMP_KICK",
+        ["MOVE_SMELLING_SALT"] = "MOVE_SMELLING_SALTS"
+    };
 
     public static string? Item(string constant)
     {

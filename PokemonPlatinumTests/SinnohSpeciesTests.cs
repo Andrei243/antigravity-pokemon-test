@@ -39,7 +39,7 @@ public class SinnohSpeciesTests
         "Chikorita", "Bayleef", "Meganium", "Cyndaquil", "Quilava", "Typhlosion", "Totodile", "Croconaw", "Feraligatr",
         "Treecko", "Grovyle", "Sceptile", "Torchic", "Combusken", "Blaziken", "Mudkip", "Marshtomp", "Swampert",
         // The legendary and mythical Pokémon of the older regions and Sinnoh's of an event (plan 03 · D12c's quests)
-        "Mewtwo", "Mew", "Suicune", "Lugia", "Ho-Oh", "Celebi", "Regirock", "Regice", "Registeel",
+        "Mewtwo", "Mew", "Raikou", "Entei", "Suicune", "Lugia", "Ho-Oh", "Celebi", "Regirock", "Regice", "Registeel",
         "Latias", "Latios", "Kyogre", "Groudon", "Rayquaza", "Jirachi", "Deoxys", "Phione", "Manaphy", "Darkrai", "Shaymin",
         "Arceus"
     };

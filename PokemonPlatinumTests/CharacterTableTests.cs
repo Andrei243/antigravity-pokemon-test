@@ -256,7 +256,7 @@ public class CharacterTableTests
         Assert.Equal(new[]
         {
             "ace_trainer_snow_f", "ace_trainer_snow_m", "roughneck", "sailor", "skier_f", "skier_m",
-            "snowpoint_npc_f", "swimmer_f", "swimmer_m", "tuber_f", "tuber_m"
+            "snowpoint_npc_f", "swimmer_f", "swimmer_m", "tuber_m"
         }, unmade);
     }
 

@@ -294,7 +294,17 @@ internal static class WorldWalk
         new("Hoenn", 630, 109, Direction.Down),
     };
 
+    /// <summary>
+    /// Floors reached only by falling through the one above, which the field doesn't do yet: the walk sets out from where
+    /// the fall lands. Icefall Cave's B1F lies under 1F's thin ice, which FireRed breaks under a second step (plan 19 ·
+    /// K9, part c, whose session takes the line out once the ice gives way).
+    /// </summary>
+    public static readonly MapSpot[] FallenTo =
+    {
+        new("FourIsland_IcefallCave_B1F", 8, 9, Direction.Down),
+    };
+
     /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> FromEveryStart(Func<string, Map> mapOf) =>
-        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).Concat(StoryArrivals).Concat(OpenedAhead).ToArray());
+        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).Concat(StoryArrivals).Concat(OpenedAhead).Concat(FallenTo).ToArray());
 }

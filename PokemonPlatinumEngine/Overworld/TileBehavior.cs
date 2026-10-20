@@ -145,7 +145,10 @@ public enum TileBehavior : byte
     Magma = 0xE6,
     LadderNorth = 0xE7,
     LadderSouth = 0xE8,
-    LadderDown = 0xE9
+    LadderDown = 0xE9,
+    // HeartGold's unnamed 34, the lip at the head of a waterfall (Tohjo Falls, plan 20 · J10): not water to surf on, and
+    // crossed only as part of the waterfall below it. Platinum leaves 0x22 unused, so it keeps HeartGold's value
+    WaterfallLip = 0x22
 }
 
 /// <summary>What each <see cref="TileBehavior"/> means, in a sentence, and the two facts the original keeps in a
@@ -277,6 +280,7 @@ public static class TileBehaviors
         [TileBehavior.HeadbuttTree] = "A tree that Headbutt shakes, and Pokémon may drop out of (HeartGold's).",
         [TileBehavior.Whirlpool] = "A whirlpool on the water: crossed only with Whirlpool (HeartGold's).",
         [TileBehavior.StopSliding] = "Ground that stops a slide on ice (HeartGold's).",
+        [TileBehavior.WaterfallLip] = "The lip at the head of a waterfall, crossed only with the waterfall below it (HeartGold's).",
         [TileBehavior.Magma] = "Magma (HeartGold's).",
         [TileBehavior.LadderNorth] = "A ladder climbed northward (HeartGold's).",
         [TileBehavior.LadderSouth] = "A ladder climbed southward (HeartGold's).",
@@ -340,6 +344,7 @@ public static class TileBehaviors
         TileBehavior.RockClimbNorthSouth or TileBehavior.RockClimbEastWest
             => (BehaviourSupport.Ruled, "Climbed to its far end by a party that knows Rock Climb."),
         TileBehavior.Waterfall => (BehaviourSupport.Ruled, "Surfed up with Waterfall and down without; never sideways."),
+        TileBehavior.WaterfallLip => (BehaviourSupport.Ruled, "Taken with the waterfall below it, up or down, and nobody stops on it (plan 20 · J10)."),
         TileBehavior.Whirlpool => (BehaviourSupport.Ruled, "Stops a surfer from every side; with Whirlpool, once the player says yes to it, they are carried across the run of whirlpool tiles to the open water beyond (plan 20 · J8)."),
         TileBehavior.Ice => (BehaviourSupport.Ruled, "Whoever steps on it slides on until something stops them; down a slope the slide gathers speed and up one loses it, and a slide with speed breaks a snowball (IceSlide)."),
         TileBehavior.SlideEast or TileBehavior.SlideWest or TileBehavior.SlideNorth or TileBehavior.SlideSouth

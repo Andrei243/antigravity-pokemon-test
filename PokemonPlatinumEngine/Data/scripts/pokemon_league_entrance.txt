@@ -1,0 +1,41 @@
+# The Pokémon League's hall on the Indigo Plateau (plan 20 · J10, part b). docs/scripts.md describes the language; the
+# lines are our own. The guard before the Elite Four's door stands in the doorway itself, as HeartGold's does; spoken to
+# with Johto's eight Badges he steps out of it, as Sinnoh's guard does (PokemonLeagueNorthPokemonCenter.txt), and
+# FLAG_INDIGO_PLATEAU_DOOR_GUARD_MOVED_AWAY, a flag of ours, keeps him aside. The rival who waits here and the League's
+# battles are plan 20 · J12's.
+
+
+# Coming in again finds the guard where he stepped to
+script OnEnter
+  if flag FLAG_INDIGO_PLATEAU_DOOR_GUARD_MOVED_AWAY place t10r0101_counterm 12 8 down
+  end
+
+
+# He looks the Badges over and steps out of the doorway, to the side away from the player
+script DoorGuard
+  speaker "Guard"
+  if flag FLAG_INDIGO_PLATEAU_DOOR_GUARD_MOVED_AWAY goto Moved
+  say "Beyond this door the Elite Four are waiting. Only a Trainer with all eight of Johto's Gym Badges goes through."
+  if badges < 8 goto Short
+  say "Let me see... Eight Badges, every one of them Johto's. You may go in."
+  if facing left goto FromTheEast
+  walk self right 1
+  if facing right goto FromTheWest
+  face self down
+  goto Away
+label FromTheWest
+  face self left
+  goto Away
+label FromTheEast
+  walk self left 1
+  face self right
+label Away
+  setflag FLAG_INDIGO_PLATEAU_DOOR_GUARD_MOVED_AWAY
+  say "Once you start, you face all four and then the Champion. There is no coming back out until it is over."
+  end
+label Short
+  say "Come back when you have all eight. The Elite Four won't see anyone with fewer."
+  end
+label Moved
+  say "Rest your Pokémon well. Nobody will heal them for you between the rooms."
+  end
