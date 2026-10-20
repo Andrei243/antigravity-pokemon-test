@@ -188,7 +188,22 @@ public sealed class HgWorld
         return file;
     }
 
-    public static string KeyOf(string headerId) => headerId.StartsWith("MAP_", StringComparison.Ordinal) ? headerId["MAP_".Length..].ToLowerInvariant() : headerId.ToLowerInvariant();
+    public static string KeyOf(string headerId)
+    {
+        string key = headerId.StartsWith("MAP_", StringComparison.Ordinal) ? headerId["MAP_".Length..].ToLowerInvariant() : headerId.ToLowerInvariant();
+        return Clashes(key) ? "johto_" + key : key;
+    }
+
+    /// <summary>
+    /// A key of HeartGold's that another region's world has already (plan 20 · J10, part b): every game has a Victory
+    /// Road, and Platinum's keys are <c>victory_road_1f</c> and the rest; FireRed's Route 22 and Hall of Fame are
+    /// <c>route_22</c> and <c>pokemon_league_hall_of_fame</c>. Such a key takes the region's prefix, as FireRed's
+    /// Victory Road takes <c>kanto_</c>, since a script file and the regions' areas are found by the key alone. The
+    /// rest of HeartGold's Kanto shares FireRed's keys too (<c>route_1</c>, <c>route_25</c>): the session that opens
+    /// it adds them here.
+    /// </summary>
+    public static bool Clashes(string key) =>
+        key.StartsWith("victory_road", StringComparison.Ordinal) || key is "route_22" or "pokemon_league_hall_of_fame";
 
     /// <summary>The area's table of wild Pokémon, by its header's bank (<c>R29</c>); null for none.</summary>
     public HgEncounters? EncountersOf(HgHeader header) => header.Encounters == null ? null : Encounters.FirstOrDefault(e => e.Map == header.Encounters);

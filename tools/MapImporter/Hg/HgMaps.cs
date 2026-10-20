@@ -15,8 +15,11 @@ public sealed record HgHeader(
     int Weather, string MapType, int Camera, string FollowMode, string BattleBackground,
     bool Bike, bool EscapeRope, bool Fly, bool OutgoingCalls, bool IncomingCalls, bool RadioSignal)
 {
-    /// <summary>The constant without <c>MAP_</c>, in lower case: <c>new_bark</c>, <c>route_29</c>.</summary>
-    public string Key => Id["MAP_".Length..].ToLowerInvariant();
+    /// <summary>
+    /// The constant without <c>MAP_</c>, in lower case: <c>new_bark</c>, <c>route_29</c>; one another region's world has
+    /// already takes Johto's prefix (<see cref="HgWorld.Clashes"/>: <c>johto_victory_road_1f</c>).
+    /// </summary>
+    public string Key => HgWorld.KeyOf(Id);
 
     /// <summary>Johto's areas are 0 in <c>regionNo</c>, Kanto's 1.</summary>
     public bool Kanto => Region == 1;

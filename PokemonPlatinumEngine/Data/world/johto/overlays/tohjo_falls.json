@@ -1,0 +1,8 @@
+{
+  // Tohjo Falls (plan 20 · J10, part b): the cave behind the falls that Route 27 runs through, crossed with Surf. Its
+  // way into the hidden room behind the water is open (HeartGold's marker on it is nothing to draw); its waterfall is
+  // its tiles'. It plays Union Cave's song, a cave of the coast as this one is
+  "area": "tohjo_falls",
+  "bgmTrack": "johto/union_cave",
+  "people": {}
+}

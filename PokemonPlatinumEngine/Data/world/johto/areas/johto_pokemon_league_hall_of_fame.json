@@ -1,0 +1,25 @@
+{
+  "key": "johto_pokemon_league_hall_of_fame",
+  "index": 306,
+  "name": "Pokémon League",
+  "matrix": 170,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_CHAMPROAD",
+  "nightMusic": "GS_CHAMPROAD",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 22, "to": "pokemon_league_lance_room", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t10r0701_wataru", "looks": "wataru", "movement": "0", "x": 6, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

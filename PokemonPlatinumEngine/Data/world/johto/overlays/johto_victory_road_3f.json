@@ -1,0 +1,7 @@
+{
+  // Victory Road's third floor (plan 20 · J10, part b): its rocks smashed, and the way out onto the Indigo Plateau. The
+  // rival's last challenge here, and the triggers that bring him on, are plan 20 · J12's story
+  "area": "johto_victory_road_3f",
+  "bgmTrack": "johto/victory_road",
+  "people": {}
+}

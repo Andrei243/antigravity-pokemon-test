@@ -1,0 +1,196 @@
+{
+  "people": {
+    "r27_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Past those falls, the road runs all the way to the Pokémon League. Only the strongest trainers make it there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r27_gswoman3": {
+      "name": {
+        "en": [
+          "Megan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Megan: Few trainers make it this far. Show me why you're one of them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Megan: I see. You really are on your way to the League."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r27_gsman3": {
+      "name": {
+        "en": [
+          "Blake"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Blake: I came all this way to train by the sea. You'll do nicely!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Blake: The waves are calmer than my head right now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r27_gsman2": {
+      "name": {
+        "en": [
+          "Jose"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Jose: My bird and I have flown over every cliff on this coast. Let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Jose: Grounded, just like that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r27_gsman3_2": {
+      "name": {
+        "en": [
+          "Brian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Brian: One Pokémon, raised with everything I've got. That's all I need!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Brian: Maybe I need a second one after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r27_mystery_2": {
+      "name": {
+        "en": [
+          "Eli"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Eli: I saw this battle in a dream last night. I wonder how it ends..."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Eli: My dream left out the ending. Now I know why."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r27_gswoman3_2": {
+      "name": {
+        "en": [
+          "Reena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Reena: The sea breeze keeps my team sharp. Ready for a real battle?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Reena: Sharp, but not sharp enough..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R27_002+1": {
+      "en": [
+        "Tohjo Falls\nThe water falls where Johto's coast meets Kanto's."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R27_004+1": {
+      "en": [
+        "Route 27\nTohjo Falls lies to the west, the road to the League to the east."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

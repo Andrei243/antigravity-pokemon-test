@@ -1,0 +1,10 @@
+{
+  // The siblings' house on Route 26 (plan 20 · J10, part b): the seven brothers and sisters who each keep a day of the
+  // week live out on Johto's roads, and the house is empty but for the note on its wall
+  "area": "route_26_week_siblings_house",
+  "bgmTrack": "johto/route26",
+  "people": {},
+  "signs": {
+    "R26R0201_000+1": "A note on the wall:\nSeven of us, one for each day of the week. Look for us out on the roads!"
+  }
+}

@@ -1,0 +1,36 @@
+# Routes 26 and 27, their houses and the League's reception gate: HeartGold gives the roads from New Bark Town to the
+# League one theme (SEQ_GS_R_1_26), and this game a song of its own: a bold trumpet in B-flat major marching over a
+# rolling harp, held strings and a striding bass, the long road east by the sea toward the Pokémon League. Original
+# composition for this game (plan 20 · J10, part b).
+title Routes 26 and 27
+tempo 132
+meter 4/4
+reverb 0.3
+nighttempo 0.92
+
+track lead trumpet night=clarinet vol=0.72 pan=0 rev=0.3
+  L o5 f4 d8 f8 b-4 o6 d4 | o6 c4 o5 b-8 g8 e-2 | o5 f4 a8 o6 c8 e-4 d4 | o6 d2. r4 |
+  o5 g4 b-8 o6 d8 g4 f4 | o6 e-4 d8 c8 o5 b-2 | o5 g4 o6 c4 e4 d4 | o6 c2. r4 |
+  o5 d4 f8 b-8 o6 d4 f4 | o6 f4 e8 d8 o5 a2 | o5 g4 b-4 o6 e-4 g4 | o6 f2. r4 |
+  o6 g4 f8 e-8 d4 o5 b-4 | o5 b-4 o6 c8 d8 e-2 | o6 d4 c4 o5 a4 f4 | o5 b-2. r4 |
+
+track harp harp night=pizzicato vol=0.38 pan=-0.25 rev=0.3
+  L o4 b-4 o5 d4 f4 d4 | o4 e-4 g4 b-4 g4 | o4 f4 a4 o5 c4 o4 a4 | o4 b-4 o5 d4 f4 d4 |
+  o4 g4 b-4 o5 d4 o4 b-4 | o4 e-4 g4 b-4 g4 | o4 c4 e4 g4 e4 | o4 f4 a4 o5 c4 o4 a4 |
+  o4 b-4 o5 d4 f4 d4 | o4 d4 f4 a4 f4 | o4 e-4 g4 b-4 g4 | o4 f4 a4 o5 c4 o4 a4 |
+  o4 g4 b-4 o5 d4 o4 b-4 | o4 e-4 g4 b-4 g4 | o4 f4 a4 o5 c4 o4 a4 | o4 b-4 o5 d4 f4 d4 |
+
+track pad strings night=pad vol=0.24 pan=0.25 rev=0.4
+  L o4 (d f b-)1 | o4 (e- g b-)1 | o4 (c f a)1 | o4 (d f b-)1 |
+  o4 (d g b-)1 | o4 (e- g b-)1 | o4 (c e g)1 | o4 (c f a)1 |
+  o4 (d f b-)1 | o4 (d f a)1 | o4 (e- g b-)1 | o4 (c f a)1 |
+  o4 (d g b-)1 | o4 (e- g b-)1 | o4 (c f a)1 | o4 (d f b-)1 |
+
+track bass contrabass vol=0.5 rev=0.12
+  L o2 b-2 o3 f2 | o2 e-2 b-2 | o2 f2 o3 c2 | o2 b-2 o3 f2 |
+  o2 g2 o3 d2 | o2 e-2 b-2 | o2 c2 g2 | o2 f2 o3 c2 |
+  o2 b-2 o3 f2 | o2 d2 a2 | o2 e-2 b-2 | o2 f2 o3 c2 |
+  o2 g2 o3 d2 | o2 e-2 b-2 | o2 f2 o3 c2 | o2 b-1 |
+
+track drums kit vol=0.24 pan=0.1 rev=0.16
+  v60 L [ b4 h8 h8 s4 h8 h8 | ]16

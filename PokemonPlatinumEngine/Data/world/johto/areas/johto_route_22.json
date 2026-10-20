@@ -1,0 +1,87 @@
+{
+  "key": "johto_route_22",
+  "index": 27,
+  "name": "Route 22",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_9_03",
+  "nightMusic": "GS_R_9_03",
+  "encounters": "R22",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Rattata", "level": 3 },
+    { "species": "Spearow", "level": 3, "night": "Rattata" },
+    { "species": "Rattata", "level": 3 },
+    { "species": "Spearow", "level": 3, "night": "Rattata" },
+    { "species": "Spearow", "level": 5, "night": "Rattata" },
+    { "species": "Spearow", "level": 5, "night": "Rattata" },
+    { "species": "Doduo", "level": 4, "night": "Rattata" },
+    { "species": "Doduo", "level": 4, "night": "Rattata" },
+    { "species": "Ponyta", "level": 6 },
+    { "species": "Fearow", "level": 7, "night": "Rattata" },
+    { "species": "Ponyta", "level": 6 },
+    { "species": "Fearow", "level": 7, "night": "Rattata" }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 5, "maxLevel": 5 },
+    { "species": "Poliwhirl", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwhirl", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwhirl", "level": 10, "maxLevel": 10 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 936, "z": 266, "to": "route_22_pokemon_league_reception_gate", "toWarp": 2 },
+    { "x": 936, "z": 267, "to": "route_22_pokemon_league_reception_gate", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "r22_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 952, "z": 271, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R22_000+1" },
+    { "id": "r22_sakaki", "looks": "sakaki", "movement": "0", "x": 940, "z": 270, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL", "script": "0" },
+    { "id": "r22_gsrivel", "looks": "gsrivel", "movement": "0", "x": 944, "z": 270, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_22_GIOVANNI_RIVAL", "script": "0" },
+    { "id": "r22_var_1", "looks": "var_1", "movement": "0", "x": 948, "z": 275, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_22_FRIEND", "script": "0" }
+  ],
+  "signs": [
+    { "x": 938, "z": 264, "type": 1, "script": "R22_002+1" }
+  ],
+  "triggers": []
+}

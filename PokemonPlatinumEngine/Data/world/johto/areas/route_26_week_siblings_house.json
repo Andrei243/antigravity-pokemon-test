@@ -1,0 +1,25 @@
+{
+  "key": "route_26_week_siblings_house",
+  "index": 297,
+  "name": "Route 26",
+  "matrix": 147,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_1_26",
+  "nightMusic": "GS_R_1_26",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 14, "to": "route_26", "toWarp": 1 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 7, "z": 10, "type": 0, "script": "R26R0201_000+1" }
+  ],
+  "triggers": []
+}

@@ -474,6 +474,12 @@ public static class RegionDatabase
                 "Blackthorn_PokemonCenter_1F", "Blackthorn_PokemonCenter_B1F", "Blackthorn_Mart", "Blackthorn_Gym",
                 "Blackthorn_WestHouse", "Blackthorn_EastHouse", "Blackthorn_MoveTutorHouse",
                 "DragonsDen_Entrance", "DragonsDen", "DragonsDen_Shrine", "DarkCave_Route31Side", "DarkCave_Route45Side",
+                // Plan 20 · J10, part b: Routes 26 and 27, Tohjo Falls, the League's gate, Victory Road and the Plateau
+                "Route26_NorthHouse", "Route26_WeekSiblingsHouse", "Route27_House", "TohjoFalls", "TohjoFalls_HiddenRoom",
+                "Route22_LeagueReceptionGate", "IndigoVictoryRoad_1F", "IndigoVictoryRoad_2F", "IndigoVictoryRoad_3F",
+                "IndigoLeague_PokemonCenter_1F", "IndigoLeague_PokemonCenter_B1F", "IndigoLeague_WillRoom",
+                "IndigoLeague_KogaRoom", "IndigoLeague_BrunoRoom", "IndigoLeague_KarenRoom", "IndigoLeague_LanceRoom",
+                "IndigoLeague_HallOfFame",
             }
         },
         new()

@@ -1,0 +1,55 @@
+{
+  // Route 26 (plan 20 · J10, part b): the coast road north from Route 27 to the Pokémon League's reception gate. Its six
+  // trainers by their own records; its Apricorn tree is plan 20 · J6's, and Cameron is held back, as on Route 48
+  "area": "route_26",
+  "bgmTrack": "johto/route26",
+  "trees": "Round",
+  "people": {
+    "r26_fishing_2": {
+      "name": "Scott",
+      "trainer": {
+        "dialogueBefore": "Fisherman Scott: The fish up here bite hard. So do I!",
+        "dialogueAfter": "Fisherman Scott: That's the one that got away."
+      }
+    },
+    "r26_mystery_2": {
+      "name": "Vernon",
+      "trainer": {
+        "dialogueBefore": "Psychic Vernon: I can read your next move. Can you read mine?",
+        "dialogueAfter": "Psychic Vernon: I read it. I just couldn't stop it."
+      }
+    },
+    "r26_gswoman3": {
+      "name": "Joyce",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Joyce: The League is just ahead. Let's see if you're ready for it!",
+        "dialogueAfter": "Ace Trainer Joyce: You're ready. More than I am, anyway."
+      }
+    },
+    "r26_gsman3": {
+      "name": "Gaven",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Gaven: Every trainer on this road wants to be Champion. Prove you deserve it!",
+        "dialogueAfter": "Ace Trainer Gaven: You might just make it."
+      }
+    },
+    "r26_gsman3_2": {
+      "name": "Jake",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Jake: I've been training here for weeks, waiting for a real challenge.",
+        "dialogueAfter": "Ace Trainer Jake: Worth the wait. Painful, but worth it."
+      }
+    },
+    "r26_gswoman3_2": {
+      "name": "Jamie",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Jamie: Before you reach the gate, you'll have to get past me!",
+        "dialogueAfter": "Ace Trainer Jamie: Fine, the gate's all yours."
+      }
+    }
+  },
+  "signs": {
+    "R26_002+1": "Pokémon League Reception Gate\nVictory Road lies beyond.",
+    "R26_003+1": "Route 26\nNorth to the Pokémon League."
+  }
+}

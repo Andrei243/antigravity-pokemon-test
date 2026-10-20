@@ -1,0 +1,6 @@
+{
+  // Victory Road's second floor (plan 20 · J10, part b): ledges and stairs between the first floor and the third
+  "area": "johto_victory_road_2f",
+  "bgmTrack": "johto/victory_road",
+  "people": {}
+}

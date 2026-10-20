@@ -1,0 +1,32 @@
+{
+  "key": "pokemon_league_koga_room",
+  "index": 302,
+  "name": "Pokémon League",
+  "matrix": 166,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Koga",
+  "dayMusic": "GS_CHAMPROAD",
+  "nightMusic": "GS_CHAMPROAD",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 22, "to": "pokemon_league_entrance", "toWarp": 1 },
+    { "x": 6, "z": 2, "to": "pokemon_league_bruno_room", "toWarp": 0 },
+    { "x": 5, "z": 2, "to": "pokemon_league_bruno_room", "toWarp": 0 },
+    { "x": 7, "z": 2, "to": "pokemon_league_bruno_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t10r0301_gsbigfour2", "looks": "gsbigfour2", "movement": "15", "x": 6, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T10R0301_001+1" },
+    { "id": "t10r0301_babyboy1_11", "looks": "babyboy1_11", "movement": "0", "x": 6, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_KOGAS_ROOM_RETREAT", "script": "0" },
+    { "id": "t10r0301_leag_door2", "looks": "leag_door2", "movement": "0", "x": 6, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_KOGAS_ROOM_EXIT", "script": "0" },
+    { "id": "t10r0301_stop", "looks": "stop", "movement": "0", "x": 5, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_KOGAS_ROOM_EXIT", "script": "0" },
+    { "id": "t10r0301_stop_2", "looks": "stop", "movement": "0", "x": 7, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_KOGAS_ROOM_EXIT", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

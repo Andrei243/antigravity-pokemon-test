@@ -1,0 +1,32 @@
+{
+  "key": "pokemon_league_bruno_room",
+  "index": 303,
+  "name": "Pokémon League",
+  "matrix": 167,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Bruno",
+  "dayMusic": "GS_CHAMPROAD",
+  "nightMusic": "GS_CHAMPROAD",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 22, "to": "pokemon_league_entrance", "toWarp": 1 },
+    { "x": 6, "z": 2, "to": "pokemon_league_karen_room", "toWarp": 0 },
+    { "x": 5, "z": 2, "to": "pokemon_league_karen_room", "toWarp": 0 },
+    { "x": 7, "z": 2, "to": "pokemon_league_karen_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t10r0401_gsbigfour3", "looks": "gsbigfour3", "movement": "15", "x": 6, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T10R0401_001+1" },
+    { "id": "t10r0401_babyboy1_11", "looks": "babyboy1_11", "movement": "0", "x": 6, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BRUNOS_ROOM_RETREAT", "script": "0" },
+    { "id": "t10r0401_leag_door2", "looks": "leag_door2", "movement": "0", "x": 6, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BRUNOS_ROOM_EXIT", "script": "0" },
+    { "id": "t10r0401_leag_door2_2", "looks": "leag_door2", "movement": "0", "x": 5, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BRUNOS_ROOM_EXIT", "script": "0" },
+    { "id": "t10r0401_leag_door2_3", "looks": "leag_door2", "movement": "0", "x": 7, "z": 2, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BRUNOS_ROOM_EXIT", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

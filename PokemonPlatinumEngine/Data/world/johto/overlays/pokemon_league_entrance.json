@@ -1,0 +1,65 @@
+{
+  // The Pokémon League's hall on the Indigo Plateau (plan 20 · J10, part b): its Pokémon Center and Poké Mart under one
+  // roof, the guard before the Elite Four's door and the stairs down to the link's floor. The link's counters are
+  // closed, as in every Center (decision 06 · 7); the rival who waits here, and the trigger that brings him, are
+  // plan 20 · J12's
+  "area": "pokemon_league_entrance",
+  "bgmTrack": "johto/indigo_plateau",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t10r0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t10r0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! Stock up well before you face the Elite Four."
+      ]
+    },
+    "t10r0101_counterm": {
+      "name": "Guard",
+      "still": true,
+      "dialog": [
+        "Beyond this door the Elite Four are waiting. Once you start, you face all four and then the Champion."
+      ]
+    },
+    "t10r0101_gsoldman1": {
+      "name": "Old Man",
+      "dialog": [
+        "My Abra and I came all this way just to watch the challengers go through that door. What a sight they are!"
+      ]
+    },
+    "t10r0101_tsure_poke_static_abra": {
+      "name": "Abra",
+      "npcType": "Pokemon",
+      "species": "Abra",
+      "dialog": [ "Abra is fast asleep, as usual." ]
+    },
+    "t10r0101_gsfighter": {
+      "name": "Man",
+      "dialog": [
+        "I lost to the very first of the Elite Four. They aren't called the best for nothing."
+      ]
+    },
+    "t10r0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t10r0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    }
+  },
+  "signs": {
+    "T10R0101_007+1": "The Pokémon League\nChallengers, see the Nurse before you go through the door."
+  }
+}

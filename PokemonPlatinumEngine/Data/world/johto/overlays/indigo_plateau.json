@@ -1,0 +1,12 @@
+{
+  // The Indigo Plateau (plan 20 · J10, part b): the summit at the end of Victory Road and the Pokémon League on it, one
+  // building with its Pokémon Center inside, in pale stone under a red hip roof (the style guide's "Buildings"), a lamp
+  // at each corner of its plaza. Fly lands before its door (regions/johto.json, spawn 11)
+  "area": "indigo_plateau",
+  "bgmTrack": "johto/indigo_plateau",
+  "trees": "Round",
+  "people": {},
+  "signs": {
+    "T10_000+1": "Indigo Plateau\nThe Pokémon League, where the best trainers of Johto and Kanto meet."
+  }
+}

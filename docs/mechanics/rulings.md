@@ -3563,3 +3563,34 @@ Routes 26 and 27, Tohjo Falls, Victory Road and the Indigo Plateau are part b's.
   `blackthorn` and `dragons_den`, our own; Mt. Mortar plays `union_cave` and Routes 45 and 46 `route34`, as HeartGold's
   headers share theirs, and the Gyms `gym`.
 - **Fly** lands before Mahogany's and Blackthorn's Pokémon Centers (spawns 9 and 10). The Indigo Plateau's is part b's.
+
+## The way to the Indigo Plateau (2026-10-20, plan 20 · J10, part b)
+
+Route 27 and Tohjo Falls, Route 26, the League's reception gate with Kanto's Route 22 beside it, Victory Road and the
+Indigo Plateau with the League's hall and rooms, from HeartGold's maps, events and tables, in our own words and music.
+
+- **Three keys take Johto's prefix**: HeartGold names its Victory Road's floors, Route 22 and the Hall of Fame as
+  Platinum and FireRed name theirs, and a place's scripts are found by its area's key alone, whatever the region. Those
+  keys are written `johto_…` by the importer (`HgWorld.Clashes`: `johto_victory_road_1f` to `3f`, `johto_route_22`,
+  `johto_pokemon_league_hall_of_fame`); every other key of the stretch is HeartGold's own. The rest of HeartGold's
+  Kanto meets FireRed's keys the same way, which J15 settles when it opens it.
+- **The League's rooms are places only**: Will's, Koga's, Bruno's, Karen's and Lance's rooms and the Hall of Fame are
+  open with nobody in them, and every door between them stands open, since the battles, the doors that shut behind a
+  challenger and open once the master is beaten, the guard who counts the Badges at the hall's door, Lance's, Professor
+  Oak's and Mary's scene and the Hall of Fame's are the fifth chapter's (J12). The rival who waits in Victory Road is
+  J12's too.
+- **The reception gate**: HeartGold's guard asks for the eight Johto Badges on the tile before Victory Road's door
+  (`VAR_UNK_4110`, its own variable, set once he lets the player by); ours does, in our words, and steps whoever is
+  short of them back. The door east to Kanto's Route 22 is held by the same gate's other trigger, which turns everyone
+  back for now: HeartGold opens it once the player has been to the Hall of Fame, and asking `JohtoHallOfFame` before
+  J12 sets it would be a flag nothing sets. The door west to Route 28 is locked until J15 opens Mt. Silver's side.
+- **Left out**: Giovanni in Tohjo Falls' hidden room, who belongs to a distributed event of HeartGold's (Celebi), not to
+  its story; the week siblings in Route 26's house, who come with the days (J13); the trainer on Route 26 that the
+  original holds back for its story.
+- **The League's look** (the style guide's "Buildings"): one building on the Plateau with its Pokémon Center and Mart
+  inside, pale stone under a red hip roof, arched windows and glass doors, `LEAGUE` over its entrance; not Sinnoh's
+  tiers. Its rooms keep a room's look for now. Routes 26 and 27's houses are Viridian's (`Architecture.Evergreen`).
+- **Music**: `johto/route26` (Routes 26, 27 and 22, the gate and the houses; HeartGold's Route 22 plays a theme of
+  Kanto's own, which comes with J15), `victory_road`, `indigo_plateau`, `battle_elite_four` and `battle_champion`, our
+  own; Tohjo Falls plays `union_cave`.
+- **Fly** lands before the League's door on the Plateau (spawn 11), once it has been come to.

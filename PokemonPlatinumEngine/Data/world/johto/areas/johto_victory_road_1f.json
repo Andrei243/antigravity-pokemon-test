@@ -1,0 +1,59 @@
+{
+  "key": "johto_victory_road_1f",
+  "index": 124,
+  "name": "Victory Road Jk",
+  "matrix": 161,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave3",
+  "dayMusic": "GS_D_CHAMPROAD",
+  "nightMusic": "GS_D_CHAMPROAD",
+  "encounters": "D43R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Graveler", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Donphan", "level": 33 },
+    { "species": "Donphan", "level": 33 },
+    { "species": "Onix", "level": 34 },
+    { "species": "Onix", "level": 34 },
+    { "species": "Onix", "level": 36 },
+    { "species": "Rhyhorn", "level": 35 },
+    { "species": "Onix", "level": 36 },
+    { "species": "Rhyhorn", "level": 35 }
+  ],
+  "landRate": 10,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 46, "z": 59, "to": "route_22_pokemon_league_reception_gate", "toWarp": 1 },
+    { "x": 19, "z": 7, "to": "johto_victory_road_2f", "toWarp": 0 },
+    { "x": 19, "z": 6, "to": "johto_victory_road_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 34, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D43R0101_MAX_REVIVE", "item": "Max Revive", "script": "std_itemball_d43r0101_max_revive" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 35, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D43R0101_FULL_HEAL", "item": "Full Heal", "script": "std_itemball_d43r0101_full_heal" },
+    { "id": "everywhere_monstarball_3", "looks": "monstarball", "movement": "0", "x": 42, "z": 40, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D43R0101_POTION", "item": "Potion", "script": "std_itemball_d43r0101_potion" },
+    { "id": "everywhere_rock", "looks": "rock", "movement": "0", "x": 43, "z": 52, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "everywhere_rock_2", "looks": "rock", "movement": "0", "x": 25, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "everywhere_rock_3", "looks": "rock", "movement": "0", "x": 24, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" }
+  ],
+  "signs": [
+    { "x": 26, "z": 35, "type": 2, "script": "std_hiddenitem_d43r0101_full_heal", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_D43R0101_FULL_HEAL" },
+    { "x": 18, "z": 33, "type": 2, "script": "std_hiddenitem_d43r0101_max_potion", "item": "Max Potion", "flag": "FLAG_HIDDEN_ITEM_D43R0101_MAX_POTION" }
+  ],
+  "triggers": []
+}
