@@ -3065,6 +3065,31 @@
       }
     }
   },
+  "replays": {
+    "title": "VS. RECORDER",
+    "watch": "Privește",
+    "empty": "Încă n-a fost păstrată nicio luptă pe Vs. Recorder.",
+    "unreadable": "NU SE POATE REDA",
+    "result": {
+      "won": "VICTORIE",
+      "lost": "ÎNFRÂNGERE",
+      "caught": "PRINS",
+      "ran": "FUGIT",
+      "fled": "A FUGIT",
+      "none": "NETERMINATĂ"
+    },
+    "single": "Luptă simplă",
+    "double": "Luptă dublă",
+    "turns": "{turns} ture",
+    "oneTurn": "1 tură",
+    "theirs": "ECHIPA LOR",
+    "yours": "ECHIPA TA",
+    "file": "FIȘIER",
+    "banner": "RELUARE",
+    "fast": "×3",
+    "hintFast": "Ține apăsat: ×3",
+    "broke": "Înregistrarea nu mai poate fi redată de aici."
+  },
   "scriptLines": {
     "yes": "Da",
     "no": "Nu",
