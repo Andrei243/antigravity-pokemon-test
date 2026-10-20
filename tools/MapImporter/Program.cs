@@ -11,7 +11,8 @@
 //   dotnet run --project tools/MapImporter -- --game firered|emerald --data      rewrite what the region's world.json opens in Data/world/<region> (W7)
 //   dotnet run --project tools/MapImporter -- --game heartgold [--quick] [--data]   HeartGold's Johto and Kanto into out/johto, or Data/world/johto (plan 20 · J1)
 //   dotnet run --project tools/MapImporter -- --game heartgold --unknown <area>     the textures no rule sorts on an area's chunks, with counts (plan 20 · J8, part b)
-//   dotnet run --project tools/MapImporter -- --game platinum   the same as no --game: Sinnoh
+//   dotnet run --project tools/MapImporter -- --game black2 [--quick]    Black 2's Unova into out/unova: mosaics, a picture per area, report.md (plan 22 · U1)
+//   dotnet run --project tools/MapImporter -- --game platinum  the same as no --game: Sinnoh
 //   dotnet run --project tools/MapImporter -- --chunk <id>    print which texture lies over each tile of a chunk (the names only), to sort a new area's ground by
 
 using System.Diagnostics;
@@ -25,6 +26,10 @@ string repo = FindRepo();
 string? decompDir = Arg("--decomp");
 string outDir = Arg("--out") ?? Path.Combine(repo, "tools", "MapImporter", "out");
 bool quick = args.Contains("--quick");
+
+// Black 2 (plan 22 · U1): the third DS game, a decompilation of its own, out/unova/
+if (Arg("--game") is "black2" or "white2")
+    return MapImporter.Bw2.Bw2Import.Run(repo, decompDir, Path.Combine(outDir, MapImporter.Bw2.Bw2Import.Region), quick);
 
 // HeartGold (plan 20 · J1): the second DS game, its own pin, out/johto/
 if (Arg("--game") is "heartgold" or "soulsilver")
@@ -133,10 +138,13 @@ if (!quick)
     Console.WriteLine($"Wrote {files} world files ({clock.Elapsed.TotalSeconds:F1} s)");
 }
 
-// The GBA's section (plan 18 · W6) is the --game runs' to write: this run keeps it as it stands
+// The GBA's section (plan 18 · W6) and Black 2's (plan 22 · U1) are the --game runs' to write: this run keeps them as they stand
 string behavioursDoc = Path.Combine(repo, "docs", "tile-behaviours.md");
-string gbaSection = File.Exists(behavioursDoc) ? MapImporter.Gba.GbaImport.SectionOf(File.ReadAllText(behavioursDoc)) : "";
-File.WriteAllText(behavioursDoc, gbaSection.Length > 0 ? MapImporter.Gba.GbaImport.Splice(report.TileBehaviours(), gbaSection) : report.TileBehaviours());
+string oldDoc = File.Exists(behavioursDoc) ? File.ReadAllText(behavioursDoc) : "";
+string newDoc = report.TileBehaviours();
+foreach (string title in new[] { MapImporter.Gba.GbaImport.SectionTitle, MapImporter.Bw2.Bw2Import.SectionTitle })
+    if (DocSections.Of(oldDoc, title) is { Length: > 0 } kept) newDoc = DocSections.Splice(newDoc, title, kept);
+File.WriteAllText(behavioursDoc, newDoc);
 File.WriteAllText(Path.Combine(repo, "docs", "world-models.md"), report.WorldModelsDoc());
 Directory.CreateDirectory(outDir);
 File.WriteAllText(Path.Combine(outDir, "report.md"), report.Run(comparisons));
