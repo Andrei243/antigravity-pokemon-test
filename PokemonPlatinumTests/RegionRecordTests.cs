@@ -23,7 +23,7 @@ public class RegionRecordTests
 
     private static Region Of(string id) => RegionDatabase.Get(id)!;
 
-    private static readonly string[] FilesRegions = { RegionDatabase.Kanto, RegionDatabase.Sinnoh, RegionDatabase.Hoenn };
+    private static readonly string[] FilesRegions = { RegionDatabase.Kanto, RegionDatabase.Sinnoh, RegionDatabase.Hoenn, RegionDatabase.Unova };
 
     [Fact]
     public void EveryRegionWithAFileHasWhatAnIntroductionAndABriefcaseNeed()
@@ -51,9 +51,20 @@ public class RegionRecordTests
                 Assert.False(string.IsNullOrWhiteSpace((string)property.GetValue(professor.Lines)!), $"{id}'s {property.Name}");
         }
         // The record of a region without a file is empty, not missing
-        Assert.Null(Of(RegionDatabase.Unova).File);
-        Assert.Empty(Of(RegionDatabase.Unova).Starters);
+        Assert.Null(Of(RegionDatabase.Kalos).File);
+        Assert.Empty(Of(RegionDatabase.Kalos).Starters);
+        Assert.False(Of(RegionDatabase.Kalos).HasStory);
+    }
+
+    [Fact]
+    public void OnlyUnovaChangesWithTheSeasons()
+    {
+        // Plan 22 · U2: Black 2's places have a table for each season; no other region's file says so
+        Assert.True(Of(RegionDatabase.Unova).HasSeasons);
         Assert.False(Of(RegionDatabase.Unova).HasStory);
+        Assert.Equal(new[] { "Snivy", "Tepig", "Oshawott" }, Of(RegionDatabase.Unova).Starters);
+        foreach (var region in RegionDatabase.All.Where(r => r.Id != RegionDatabase.Unova))
+            Assert.False(region.HasSeasons, $"{region.Id} says it has seasons");
     }
 
     [Fact]

@@ -16,6 +16,8 @@
     },
     "6": {
       "name": "Youngster",
+      "at": [ 40, 740 ],
+      "still": true,
       "dialog": [ "That's the Trainers' School. The Gym is right behind it: you go through the school to get there." ]
     },
     "9": {
