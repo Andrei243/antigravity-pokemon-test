@@ -1,13 +1,22 @@
 {
   // Mahogany Town (plan 20 · J10): HeartGold's map, our words. The small mountain town of the souvenir shop and the ice
-  // Gym, built in dark logs under moss-green hips (Upland). The man who sells Rage Candy Bars at the east end of the
-  // street, the saleswoman and the man by the Gym wait for plan 20 · J11 and are left out, so the way east to Route 44
-  // is open meanwhile
+  // Gym, built in dark logs under moss-green hips (Upland). Since plan 20 · J11, part a, the big man before the Gym's
+  // door keeps everyone out until the Team Rocket Hideout under the souvenir shop is cleared (FLAG_UNK_1F9). The man
+  // who sells Rage Candy Bars at the east end of the street and the saleswoman wait for plan 20 · J11, part b (the
+  // Rage Candy Bar is no item of this game's data yet) and are left out, so the way east to Route 44 is open meanwhile
   "area": "mahogany",
   "bgmTrack": "johto/mahogany",
   "trees": "Round",
   "architecture": "Upland",
   "people": {
+    "t28_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Sorry, the Gym's not open to challengers right now. Something shady's going on in this town.",
+        "Pryce won't battle while it's going on. Come back once things have settled down."
+      ]
+    },
     "t28_gsoldman1": {
       "name": "Old Man",
       "dialog": [

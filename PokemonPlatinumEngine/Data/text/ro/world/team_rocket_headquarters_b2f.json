@@ -1,0 +1,305 @@
+{
+  "people": {
+    "d35r0103_wataru": {
+      "name": {
+        "en": [
+          "Lance"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_dragonite": {
+      "name": {
+        "en": [
+          "Dragonite"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: You came all the way down here? Then you're not leaving!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Our big plans, wrecked by a kid with a backpack..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Who's this? Nobody told me about a kid on this floor!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: I'll be hearing about this from the boss..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_rocketm_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: This corridor's off limits. Turn round, or I'll make you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Off limits means nothing to you, does it?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_babyboy1_9": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_babyboy1_9_2": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_rkanbuw": {
+      "name": {
+        "en": [
+          "Ariana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ariana: Two against two. Let's see how long that lasts."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ariana: Impossible..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_rocketm_4": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: I've got your back, Ariana!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Sorry, Ariana..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_electrode": {
+      "name": {
+        "en": [
+          "Electrode"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_electrode_2": {
+      "name": {
+        "en": [
+          "Electrode"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_electrode_3": {
+      "name": {
+        "en": [
+          "Electrode"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_electrode_4": {
+      "name": {
+        "en": [
+          "Electrode"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "An Electrode is wired into the machine. It's humming with power."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_electrode_5": {
+      "name": {
+        "en": [
+          "Electrode"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "An Electrode is wired into the machine. It's humming with power."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_electrode_6": {
+      "name": {
+        "en": [
+          "Electrode"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "An Electrode is wired into the machine. It's humming with power."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_murkrow": {
+      "name": {
+        "en": [
+          "Murkrow"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Murkrow is muttering something to itself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_murkrow_2": {
+      "name": {
+        "en": [
+          "Murkrow"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Murkrow is muttering something to itself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0103_tsure_poke_static_murkrow_3": {
+      "name": {
+        "en": [
+          "Murkrow"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

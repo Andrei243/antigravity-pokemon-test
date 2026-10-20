@@ -1,0 +1,154 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You came. Watch this. Dragonite!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That man was no customer. He was a lookout for Team Rocket, keeping watch on whoever comes in."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This shop is their front. The signal driving the lake's Magikarp to rage comes from right under our feet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Salesman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "H-hey! Customers stay this side of the counter!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Stairs, hidden behind the counter. Just as I thought."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, I'm going down. Follow me when you're ready, and keep your guard up."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Salesman": [
+    {
+      "en": [
+        "Salesman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome, welcome! Rage Candy Bars, fresh today. Well... nearly fresh."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Nothing back there but stock. Customers stay this side of the counter!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I-I don't know anything about any stairs! I just work the till, honest!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Customer": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I stop in here every time I pass through. Something about this place always feels a little off."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ow... That Dragonite packs a wallop. Me, a lookout? I'm just here for the sweets!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Lance": [
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Something about this shop doesn't sit right with me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

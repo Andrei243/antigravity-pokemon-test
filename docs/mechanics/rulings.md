@@ -3763,3 +3763,50 @@ Indigo Plateau with the League's hall and rooms, from HeartGold's maps, events a
   Kanto's own, which comes with J15), `victory_road`, `indigo_plateau`, `battle_elite_four` and `battle_champion`, our
   own; Tohjo Falls plays `union_cave`.
 - **Fly** lands before the League's door on the Plateau (spawn 11), once it has been come to.
+
+## Johto's fourth chapter, part a (2026-10-20, plan 20 · J11, part a)
+
+The Lake of Rage to the Glacier Badge: the toll on Route 43, the red Gyarados, Lance, the souvenir shop's stairs, the
+Team Rocket Hideout's three floors with the tag battle beside Lance, and Pryce, played by scripts of ours on HeartGold's
+beats (`scr_seq_R43R0201`, `T29`, `D35R0101` to `D35R0104`, `T28GYM0101`) and its flags and variables. The Radio Tower,
+the Ice Path's scenes, Clair, the Dragon's Den, the Kimono Girls, Ho-Oh and Lugia are part b's.
+
+- **The toll is asked on arrival**: HeartGold's gate house in the middle of Route 43 takes ¥1,000 (or all that is left
+  when that is less) as its room script runs, until the hideout is cleared. Ours does the same in the room's `OnEnter`,
+  a hundred, ten and one at a time where the player has less, and it also sets `FLAG_HIDE_ROUTE_43_GATE_GUARD`, which
+  HeartGold's new game sets: the guard is back once the hideout is cleared, with the grunts gone
+  (`FLAG_HIDE_ROUTE_43_GATE_ROCKETS`), and gives TM36. Setting a flag HeartGold's new game sets as the place is come
+  to, rather than in `common.JohtoNewGame`, is how no story version is raised (a save begun before would never have
+  run it): so do the lake (Lance hidden until the Gyarados is gone) and the hideout's floors (their scene people
+  hidden until their scenes).
+- **The red Gyarados is met shiny** (`wildbattle "Gyarados" 30 shiny`, a shiny personality drawn for the player's
+  trainer number as HeartGold's flag on its `WildBattle` makes one). Its model and sprites are the species' own colours:
+  a shiny palette is no part of this game's models yet, so it looks like any Gyarados and is told apart by its line and
+  its sparkle in battle. Won or caught it leaves the Red Scale, which **is a flag only** (`FLAG_GOT_RED_SCALE`): the item
+  isn't in this game's data and the importer can't be run here, so Mr. Pokémon's trade for the Exp. Share waits with
+  it (part b, or the next run of the importer). Run from, it is gone all the same and nothing is left.
+- **The shop's stairs**: HeartGold slides a shelf aside; this room's shelf is its wall, so the stairs' warp is a lone
+  switched way (`switches`, `from` `FLAG_MAHOGANY_SHOP_STAIRS_FOUND`, a flag of ours), a wall until Lance's scene sets
+  it. The big man before the Mahogany Gym's door is HeartGold's, behind its `FLAG_UNK_1F9`, which the hideout's last
+  scene sets: Pryce can't be reached before the hideout is cleared, as in HeartGold.
+- **The hideout** keeps HeartGold's own count (`VAR_UNK_40AC`, 0 to 10, its steps listed at the head of
+  `team_rocket_headquarters_b2f.txt`) and B2F's (`VAR_UNK_40A9`). The two grunts on B3F who each tell half the password
+  move the count on with their own scripts once both are beaten, as HeartGold's do. The passwords are our own words
+  ("Golden" and "Persian" for B3F's shutters; the Murkrow's "The boss is back!" for B2F's), HeartGold's not being ours
+  to use. The shutters are things of the map (`GalacticDoor` cards) behind our door flags
+  (`FLAG_ROCKET_HIDEOUT_B3F_DOOR_OPEN`, `_B2F_DOOR_OPEN`); B1F's statues are the original's five variables
+  (`VAR_UNK_40AD` to `_40B1`), its grunt battles as HeartGold's two trainers, and its floor traps throw their wild
+  Pokémon once each (`VAR_ROCKET_TRAP_*`), all turned off once the hideout is cleared. Ariana's battle is a tag battle
+  beside Lance (`battle ariana and grunt with "johto_pkmn_trainer_lance_lance"`), and the three Electrode at the
+  generator are `wildbattle`s that may be fled and tried again.
+- **The hideout's music** is `johto/union_cave`: HeartGold's own hideout theme is no song of ours yet.
+- **The Mahogany Gym's ice blocks** (`npcType` `IceBlock`, `FieldMovement.IceBlockRun`): walked or slid into, a block
+  slides away over the ice until a wall, a person, another block or a way out stops it, and is back where it stood when
+  the room is come to again, as a boulder is. HeartGold asks for no field move to push them and neither do we.
+- **The takeover's start**: HeartGold sets `VAR_SCENE_ROCKET_TAKEOVER` as its count of the Storm, Mineral and Glacier
+  Badges reaches three. Here the Leader's script that gives the last of the three sets it; Pryce's does now, and part b
+  gives Chuck's and Jasmine's the same lines, for a game that wins the Glacier Badge before either.
+- **Left out**: Whirlpool's HM, which HeartGold's Lance gives after the hideout: this game's `HM05` is Platinum's
+  Defog, and HeartGold's HM of Whirlpool is no item of its data yet (the importer must give it a name of its own), so
+  the Whirl Islands' lower floors stay shut with it; the Rage Candy seller at Mahogany's east exit and the
+  saleswoman (the Rage Candy Bar isn't in the data either); Wesley, the fishing guru's record and TM10 at the lake.

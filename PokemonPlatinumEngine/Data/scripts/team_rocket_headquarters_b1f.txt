@@ -1,0 +1,418 @@
+# The Team Rocket Hideout's first basement (plan 20 · J11, part a). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_D35R0102).
+#
+# Five Persian statues watch the floor. Stepping before one whose eyes are lit (its variable, VAR_UNK_40AD to
+# VAR_UNK_40B1, at 0) sets off the alarm: a grunt runs out (FLAG_UNK_1E8 hides him the rest of the time), battles
+# twice as two of the original's trainers and runs back, and that statue is spent (2). The computer in the middle
+# room turns the statues' eyes off and on again (1 and 0, FLAG_UNK_0D6). The traps of the west room's floor each
+# throw a wild Pokémon at whoever steps on them once (VAR_ROCKET_TRAP_*), and the tile at its south end sends the
+# player back to the stairs. HeartGold's room script turns everything off once the floor below is cleared (VAR_UNK_40AC
+# 9 or more), and moves the chase of the Murkrow on (VAR_UNK_40AC 8) if the player comes back up in the middle of it.
+
+
+# D35R0102_031 and _030
+script OnEnter
+  setflag FLAG_UNK_1E8
+  if var VAR_UNK_40AC >= 9 goto Off
+  if var VAR_UNK_40AC < 4 end
+  if var VAR_UNK_40AC > 7 end
+  setvar VAR_UNK_40AC 8
+  setvar VAR_UNK_40A9 2
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
+  clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
+  end
+label Off
+  setvar VAR_UNK_40AD 2
+  setvar VAR_UNK_40AE 2
+  setvar VAR_UNK_40AF 2
+  setvar VAR_UNK_40B0 2
+  setvar VAR_UNK_40B1 2
+  end
+
+
+# The alarm, once the grunt stands on the row beside the player: from the west (the statues at x 44) or from the east
+# (those at x 18). HeartGold's two battles are TRAINER_TEAM_ROCKET_GRUNT_20 and _21
+script FromTheWest
+  clearflag FLAG_UNK_1E8
+  show d35r0102_rocketm
+  walk d35r0102_rocketm right 11 fast
+  face d35r0102_rocketm player
+  call FirstGrunt
+  walk d35r0102_rocketm left 10 fast
+  walk d35r0102_rocketm right 10 fast
+  face d35r0102_rocketm player
+  call SecondGrunt
+  walk d35r0102_rocketm left 10 fast
+  hide d35r0102_rocketm
+  setflag FLAG_UNK_1E8
+  return
+
+script FromTheEast
+  clearflag FLAG_UNK_1E8
+  show d35r0102_rocketm
+  walk d35r0102_rocketm left 9 fast
+  face d35r0102_rocketm player
+  call FirstGrunt
+  walk d35r0102_rocketm right 8 fast
+  walk d35r0102_rocketm left 8 fast
+  face d35r0102_rocketm player
+  call SecondGrunt
+  walk d35r0102_rocketm right 8 fast
+  hide d35r0102_rocketm
+  setflag FLAG_UNK_1E8
+  return
+
+script FirstGrunt
+  speaker "Grunt"
+  say "An intruder! You tripped the alarm, so now you deal with me!"
+  battle d35r0102_rocketm as "johto_team_rocket_grunt_20"
+  speaker "Grunt"
+  say "Argh! I'm calling for backup!"
+  return
+
+script SecondGrunt
+  speaker "Grunt"
+  say "Backup's here! Nobody gets past the statues!"
+  battle d35r0102_rocketm as "johto_team_rocket_grunt_21"
+  speaker "Grunt"
+  say "Ugh... Fine. That alarm's not going off again, anyway."
+  return
+
+script Alarm
+  emote player exclaim
+  sound "timer_alarm"
+  text "Whoop-whoop! The Persian statue's eyes flashed! An alarm is blaring!"
+  return
+
+
+# D35R0102_000: the trigger before d35r0102_aji_peru
+script StatueNorthEast
+  emote d35r0102_aji_peru exclaim
+  call Alarm
+  if var PLAYER_Y == 4 goto Below
+  place d35r0102_rocketm 33 4 right
+  goto Runs
+label Below
+  place d35r0102_rocketm 33 5 right
+label Runs
+  call FromTheWest
+  setvar VAR_UNK_40AD 2
+  end
+
+
+# D35R0102_005: the trigger before d35r0102_aji_peru_2
+script StatueNorthWest
+  emote d35r0102_aji_peru_2 exclaim
+  call Alarm
+  if var PLAYER_Y == 4 goto Below
+  place d35r0102_rocketm 27 4 left
+  goto Runs
+label Below
+  place d35r0102_rocketm 27 5 left
+label Runs
+  call FromTheEast
+  setvar VAR_UNK_40AE 2
+  end
+
+
+# D35R0102_006: the trigger before d35r0102_aji_peru_3
+script StatueMiddle
+  emote d35r0102_aji_peru_3 exclaim
+  call Alarm
+  if var PLAYER_Y == 11 goto Below
+  place d35r0102_rocketm 33 11 right
+  goto Runs
+label Below
+  place d35r0102_rocketm 33 12 right
+label Runs
+  call FromTheWest
+  setvar VAR_UNK_40AF 2
+  end
+
+
+# D35R0102_007: the trigger before d35r0102_aji_peru_4
+script StatueSouthEast
+  emote d35r0102_aji_peru_4 exclaim
+  call Alarm
+  if var PLAYER_Y == 29 goto Below
+  place d35r0102_rocketm 33 29 right
+  goto Runs
+label Below
+  place d35r0102_rocketm 33 30 right
+label Runs
+  call FromTheWest
+  setvar VAR_UNK_40B0 2
+  end
+
+
+# D35R0102_008: the trigger before d35r0102_aji_peru_5
+script StatueSouthWest
+  emote d35r0102_aji_peru_5 exclaim
+  call Alarm
+  if var PLAYER_Y == 29 goto Below
+  place d35r0102_rocketm 27 29 left
+  goto Runs
+label Below
+  place d35r0102_rocketm 27 30 left
+label Runs
+  call FromTheEast
+  setvar VAR_UNK_40B1 2
+  end
+
+
+# D35R0102_001
+script LookStatueNorthEast
+  if var VAR_UNK_40AD == 0 goto Lit
+  if var VAR_UNK_40AD == 1 goto Dark
+  text "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+  end
+label Lit
+  text "A statue of a Persian. Its eyes glint red, watching everything that moves."
+  end
+label Dark
+  text "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+  end
+
+
+# D35R0102_009
+script LookStatueNorthWest
+  if var VAR_UNK_40AE == 0 goto Lit
+  if var VAR_UNK_40AE == 1 goto Dark
+  text "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+  end
+label Lit
+  text "A statue of a Persian. Its eyes glint red, watching everything that moves."
+  end
+label Dark
+  text "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+  end
+
+
+# D35R0102_010
+script LookStatueMiddle
+  if var VAR_UNK_40AF == 0 goto Lit
+  if var VAR_UNK_40AF == 1 goto Dark
+  text "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+  end
+label Lit
+  text "A statue of a Persian. Its eyes glint red, watching everything that moves."
+  end
+label Dark
+  text "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+  end
+
+
+# D35R0102_011
+script LookStatueSouthEast
+  if var VAR_UNK_40B0 == 0 goto Lit
+  if var VAR_UNK_40B0 == 1 goto Dark
+  text "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+  end
+label Lit
+  text "A statue of a Persian. Its eyes glint red, watching everything that moves."
+  end
+label Dark
+  text "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+  end
+
+
+# D35R0102_012
+script LookStatueSouthWest
+  if var VAR_UNK_40B1 == 0 goto Lit
+  if var VAR_UNK_40B1 == 1 goto Dark
+  text "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+  end
+label Lit
+  text "A statue of a Persian. Its eyes glint red, watching everything that moves."
+  end
+label Dark
+  text "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+  end
+
+
+# D35R0102_004: the computer of the middle room
+script Computer
+  if var VAR_UNK_40AC >= 9 goto Dead
+  if flag FLAG_UNK_0D6 goto On
+  ask "A computer that runs the hideout's security. Switch the statues' alarms off?"
+  if no end
+  sound "pc_off"
+  text "{player} pressed a button. Click!"
+  setflag FLAG_UNK_0D6
+  if var VAR_UNK_40AD < 2 setvar VAR_UNK_40AD 1
+  if var VAR_UNK_40AE < 2 setvar VAR_UNK_40AE 1
+  if var VAR_UNK_40AF < 2 setvar VAR_UNK_40AF 1
+  if var VAR_UNK_40B0 < 2 setvar VAR_UNK_40B0 1
+  if var VAR_UNK_40B1 < 2 setvar VAR_UNK_40B1 1
+  text "The statues' eyes went dark. The alarm is off."
+  end
+label On
+  ask "The security system is switched off. Switch it back on?"
+  if no end
+  sound "pc_on"
+  text "{player} pressed a button. Click!"
+  clearflag FLAG_UNK_0D6
+  if var VAR_UNK_40AD == 1 setvar VAR_UNK_40AD 0
+  if var VAR_UNK_40AE == 1 setvar VAR_UNK_40AE 0
+  if var VAR_UNK_40AF == 1 setvar VAR_UNK_40AF 0
+  if var VAR_UNK_40B0 == 1 setvar VAR_UNK_40B0 0
+  if var VAR_UNK_40B1 == 1 setvar VAR_UNK_40B1 0
+  text "The statues' eyes lit up again. The alarm is on."
+  end
+label Dead
+  text "The computer's screen is dark. Somebody has pulled its plug."
+  end
+
+
+# D35R0102_013
+script KoffingTrap1
+  sound "status_poison"
+  text "A cloud of gas! A Koffing burst out of a trap in the floor!"
+  wildbattle "Koffing" 21
+  setvar VAR_ROCKET_TRAP_KOFFING_1 1
+  end
+
+
+# D35R0102_014
+script VoltorbTrap1
+  sound "status_paralysis"
+  text "Zzzt! A Voltorb burst out of a trap in the floor!"
+  wildbattle "Voltorb" 23
+  setvar VAR_ROCKET_TRAP_VOLTORB_1 1
+  end
+
+
+# D35R0102_015
+script GeodudeTrap1
+  sound "rock_smash"
+  text "Crash! A Geodude burst out of a trap in the floor!"
+  wildbattle "Geodude" 21
+  setvar VAR_ROCKET_TRAP_GEODUDE_1 1
+  end
+
+
+# D35R0102_016
+script VoltorbTrap2
+  sound "status_paralysis"
+  text "Zzzt! A Voltorb burst out of a trap in the floor!"
+  wildbattle "Voltorb" 23
+  setvar VAR_ROCKET_TRAP_VOLTORB_2 1
+  end
+
+
+# D35R0102_017
+script GeodudeTrap2
+  sound "rock_smash"
+  text "Crash! A Geodude burst out of a trap in the floor!"
+  wildbattle "Geodude" 21
+  setvar VAR_ROCKET_TRAP_GEODUDE_2 1
+  end
+
+
+# D35R0102_018
+script VoltorbTrap3
+  sound "status_paralysis"
+  text "Zzzt! A Voltorb burst out of a trap in the floor!"
+  wildbattle "Voltorb" 23
+  setvar VAR_ROCKET_TRAP_VOLTORB_3 1
+  end
+
+
+# D35R0102_019
+script VoltorbTrap4
+  sound "status_paralysis"
+  text "Zzzt! A Voltorb burst out of a trap in the floor!"
+  wildbattle "Voltorb" 23
+  setvar VAR_ROCKET_TRAP_VOLTORB_4 1
+  end
+
+
+# D35R0102_020
+script KoffingTrap2
+  sound "status_poison"
+  text "A cloud of gas! A Koffing burst out of a trap in the floor!"
+  wildbattle "Koffing" 21
+  setvar VAR_ROCKET_TRAP_KOFFING_2 1
+  end
+
+
+# D35R0102_021
+script KoffingTrap3
+  sound "status_poison"
+  text "A cloud of gas! A Koffing burst out of a trap in the floor!"
+  wildbattle "Koffing" 21
+  setvar VAR_ROCKET_TRAP_KOFFING_3 1
+  end
+
+
+# D35R0102_022
+script GeodudeTrap3
+  sound "rock_smash"
+  text "Crash! A Geodude burst out of a trap in the floor!"
+  wildbattle "Geodude" 21
+  setvar VAR_ROCKET_TRAP_GEODUDE_3 1
+  end
+
+
+# D35R0102_023
+script GeodudeTrap4
+  sound "rock_smash"
+  text "Crash! A Geodude burst out of a trap in the floor!"
+  wildbattle "Geodude" 21
+  setvar VAR_ROCKET_TRAP_GEODUDE_4 1
+  end
+
+
+# D35R0102_024
+script KoffingTrap4
+  sound "status_poison"
+  text "A cloud of gas! A Koffing burst out of a trap in the floor!"
+  wildbattle "Koffing" 21
+  setvar VAR_ROCKET_TRAP_KOFFING_4 1
+  end
+
+
+# D35R0102_025
+script VoltorbTrap5
+  sound "status_paralysis"
+  text "Zzzt! A Voltorb burst out of a trap in the floor!"
+  wildbattle "Voltorb" 23
+  setvar VAR_ROCKET_TRAP_VOLTORB_5 1
+  end
+
+
+# D35R0102_026
+script VoltorbTrap6
+  sound "status_paralysis"
+  text "Zzzt! A Voltorb burst out of a trap in the floor!"
+  wildbattle "Voltorb" 23
+  setvar VAR_ROCKET_TRAP_VOLTORB_6 1
+  end
+
+
+# D35R0102_027
+script KoffingTrap5
+  sound "status_poison"
+  text "A cloud of gas! A Koffing burst out of a trap in the floor!"
+  wildbattle "Koffing" 21
+  setvar VAR_ROCKET_TRAP_KOFFING_5 1
+  end
+
+
+# D35R0102_028
+script GeodudeTrap5
+  sound "rock_smash"
+  text "Crash! A Geodude burst out of a trap in the floor!"
+  wildbattle "Geodude" 21
+  setvar VAR_ROCKET_TRAP_GEODUDE_5 1
+  end
+
+
+# D35R0102_029: the trap at the south end of the west room, which sends the player back to the stairs
+script BackToTheStairs
+  sound "warp"
+  text "Whoa! The floor gave way!"
+  warp "TeamRocketHQ_B1F" 50 4 left
+  end

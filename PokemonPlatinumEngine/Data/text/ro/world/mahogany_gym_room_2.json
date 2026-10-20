@@ -1,5 +1,41 @@
 {
   "people": {
+    "everywhere_ice": {
+      "name": {
+        "en": [
+          "Block of ice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A big block of ice. Pushed, it would slide across the floor until something stopped it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "everywhere_ice_2": {
+      "name": {
+        "en": [
+          "Block of ice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A big block of ice. Pushed, it would slide across the floor until something stopped it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "everywhere_skierw": {
       "name": {
         "en": [

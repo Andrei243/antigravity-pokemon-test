@@ -8,7 +8,7 @@ partial class Harness
     /// Violet City and Route 32's head (<c>jst01</c> to <c>jst22</c>), through the game's own steps, <c>TryInteract</c>
     /// and arrivals. It wins every battle a scene starts (the lead never tires) and prints what each scene left behind.
     /// </summary>
-    private void JohtoScenes(bool second = false, bool third = false)
+    private void JohtoScenes(bool second = false, bool third = false, bool fourth = false)
     {
         var story = game.Story;
         DialogueManager Box() => game.Dialogue;
@@ -104,7 +104,7 @@ partial class Harness
         // The second chapter (plan 20 · J7) is played in a new game set as the first leaves it, at the mode's end; the
         // third (plan 20 · J9) goes on from where the second ends, or by itself (JOHTO_FROM=sea) in a game set as the
         // second leaves it
-        if (second || third)
+        if (second || third || fourth)
         {
             engine.NewGameRegion = "Johto";
             engine.StartNewGame();
@@ -120,11 +120,15 @@ partial class Harness
             story.ChooseStarter("Cyndaquil");
             story.GiveBadge("Johto", "Zephyr");
             game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 40));
-            if (!third) goto ChapterTwo;
+            if (!third && !fourth) goto ChapterTwo;
             foreach (string badge in new[] { "Hive", "Plain", "Fog" }) story.GiveBadge("Johto", badge);
             story.SetVar("VAR_UNK_4079", 4);
             game.Bag.AddItem(ItemDatabase.Get("HM03")!, 1);
-            goto ChapterThree;
+            if (!fourth) goto ChapterThree;
+            foreach (string badge in new[] { "Storm", "Mineral" }) story.GiveBadge("Johto", badge);
+            story.Set("FLAG_GOT_HM02");
+            game.Bag.AddItem(ItemDatabase.Get("HM02")!, 1);
+            goto ChapterFour;
         }
 
         // A new game of Johto, from its first step
@@ -486,5 +490,150 @@ partial class Harness
         fly.Cancel(); Frames(4);
         game.State = GameState.Overworld;
         Third("the chapter's end");
+
+    // ================= The fourth chapter, part a (plan 20 · J11): the Lake of Rage to the Glacier Badge (jst80 to jst8m)
+    ChapterFour:
+        void Fourth(string what) =>
+            Console.WriteLine($"  {what}: lake {story.Has("FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS")}, scale {story.Has("FLAG_GOT_RED_SCALE")}, "
+                + $"Lance {story.Var("VAR_UNK_40A8")}, stairs {story.Has("FLAG_MAHOGANY_SHOP_STAIRS_FOUND")}, hideout {story.Var("VAR_UNK_40AC")}, "
+                + $"B2F {story.Var("VAR_UNK_40A9")}, statues {story.Var("VAR_UNK_40AD")} {story.Var("VAR_UNK_40AE")} {story.Var("VAR_UNK_40AF")} {story.Var("VAR_UNK_40B0")} {story.Var("VAR_UNK_40B1")}, "
+                + $"password {story.Has("FLAG_UNK_0D3")}, shutters {story.Has("FLAG_ROCKET_HIDEOUT_B3F_DOOR_OPEN")} {story.Has("FLAG_ROCKET_HIDEOUT_B2F_DOOR_OPEN")}, "
+                + $"cleared {story.Has("FLAG_ROCKET_HIDEOUT_CLEARED")}, Glacier Badge {story.HasBadge("Johto", "Glacier")}, takeover {story.Var("VAR_SCENE_ROCKET_TAKEOVER")}, "
+                + $"money {game.Money}, bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+        var fourthLead = game.Party.Members[0];
+        fourthLead.CurrentHP = fourthLead.MaxHP;
+
+        // ---- Route 43's gate house: the toll, asked on arrival
+        ComeThrough("Route43_Gate", 5, 11, Direction.Up);
+        ReadTo("This here's a toll gate"); Frames(10); Shot("jst80_the_toll");
+        ReadTo(null);
+        Fourth("the toll");
+
+        // ---- the Lake of Rage: the red Gyarados, met shiny, and Lance on the shore
+        var lake = MapDatabase.Get("Johto");
+        var red = lake.NPCs.First(n => n.Key == "t29_rgyaradosu");
+        At("Johto", red.GridX, red.GridY + 1, Direction.Up);
+        game.Player.SetMode(TravelMode.Surfing);
+        game.EnterArea();
+        Frames(10); Shot("jst81_the_red_gyarados");
+        game.Interact();
+        ReadTo("The red Gyarados is thrashing wildly!");
+        IntoBattle("the red Gyarados");
+        ToMainMenu(game.Battle); Shot("jst82_the_red_gyarados_in_battle");
+        Win();
+        ReadTo(null);
+        fourthLead.CurrentHP = fourthLead.MaxHP;
+        var lance = lake.NPCs.FirstOrDefault(n => n.Key == "t29_wataru");
+        if (lance == null) Console.WriteLine("  !! Lance isn't on the lake's shore");
+        else
+        {
+            At("Johto", lance.GridX, lance.GridY + 1, Direction.Up);
+            game.Player.SetMode(TravelMode.OnFoot);
+            game.Interact();
+            ReadTo("Someone is forcing them to evolve"); Frames(10); Shot("jst83_lance_by_the_lake");
+            ReadTo(null);
+        }
+        Fourth("the lake");
+
+        // ---- the souvenir shop: Lance's Dragonite and the stairs behind the counter
+        ComeThrough("Mahogany_SouvenirShop", 5, 8, Direction.Up);
+        ReadTo("You came. Watch this"); Frames(10); Shot("jst84_lance_in_the_shop");
+        ReadTo("Stairs, hidden behind the counter"); Frames(10); Shot("jst85_the_stairs");
+        ReadTo(null);
+
+        // ---- B1F: the statues' alarm
+        ComeThrough("TeamRocketHQ_B1F", 50, 4, Direction.Left);
+        Frames(20); Shot("jst86_the_hideout");
+        StepOnto("TeamRocketHQ_B1F", 44, 4, Direction.Right);
+        ReadTo("You tripped the alarm"); Frames(10); Shot("jst87_the_alarm");
+        ReadTo(null);
+        fourthLead.CurrentHP = fourthLead.MaxHP;
+
+        // ---- B2F: Lance at the foot of the stairs
+        ComeThrough("TeamRocketHQ_B2F", 11, 29, Direction.Right);
+        ReadTo("Let me see to them"); Frames(10); Shot("jst88_lance_in_the_hideout");
+        ReadTo(null);
+
+        // ---- B3F: Lance, the two grunts' halves of the password, the shutters, the rival and Petrel
+        ComeThrough("TeamRocketHQ_B3F", 50, 29, Direction.Left);
+        ReadTo(null);
+        TalkTo("TeamRocketHQ_B3F", "d35r0104_rocketw");
+        ReadTo(null);
+        TalkTo("TeamRocketHQ_B3F", "d35r0104_rocketm_2");
+        ReadTo(null);
+        fourthLead.CurrentHP = fourthLead.MaxHP;
+        TalkTo("TeamRocketHQ_B3F", "d35r0104_babyboy1_9");
+        ReadTo(null);
+        StepOnto("TeamRocketHQ_B3F", 20, 18, Direction.Right);
+        ReadTo("What are you doing in a dump like this"); Frames(10); Shot("jst89_the_rival_in_the_hideout");
+        ReadTo(null);
+        StepOnto("TeamRocketHQ_B3F", 23, 12, Direction.Up);
+        ReadTo("I am Giovanni"); Frames(10); Shot("jst8a_giovanni");
+        ReadTo("Fooled you"); Frames(10); Shot("jst8b_petrel");
+        IntoBattle("Petrel's battle");
+        ToMainMenu(game.Battle); Shot("jst8c_petrels_battle");
+        Win();
+        ReadTo(null);
+        fourthLead.CurrentHP = fourthLead.MaxHP;
+        Fourth("Petrel");
+
+        // ---- the Murkrow's chase, and the password it says
+        StepOnto("TeamRocketHQ_B2F", 11, 4, Direction.Left);
+        Frames(20); Shot("jst8d_the_murkrow");
+        ReadTo(null);
+        StepOnto("TeamRocketHQ_B3F", 50, 4, Direction.Up);
+        ReadTo(null);
+        StepOnto("TeamRocketHQ_B2F", 50, 29, Direction.Up);
+        ReadTo(null);
+        StepOnto("TeamRocketHQ_B2F", 30, 27, Direction.Up);
+        ReadTo("The boss is back!"); Frames(10); Shot("jst8e_the_password");
+        ReadTo(null);
+        TalkTo("TeamRocketHQ_B2F", "d35r0103_babyboy1_9");
+        ReadTo(null);
+        Fourth("the password");
+
+        // ---- Ariana and a grunt, battled beside Lance
+        StepOnto("TeamRocketHQ_B2F", 30, 19, Direction.Up);
+        ReadTo("This is where your little adventure ends"); Frames(10); Shot("jst8f_ariana");
+        ReadTo("let's take them on together"); Frames(10); Shot("jst8g_lance_beside_the_player");
+        IntoBattle("the tag battle with Ariana");
+        ToMainMenu(game.Battle); Shot("jst8h_the_tag_battle");
+        Win();
+        ReadTo(null);
+        fourthLead.CurrentHP = fourthLead.MaxHP;
+
+        // ---- the generator's three Electrode
+        foreach (string electrode in new[] { "d35r0103_tsure_poke_static_electrode", "d35r0103_tsure_poke_static_electrode_2", "d35r0103_tsure_poke_static_electrode_3" })
+        {
+            TalkTo("TeamRocketHQ_B2F", electrode, -1, 0);
+            if (electrode.EndsWith("electrode")) { ReadTo("An Electrode wired into the generator"); Frames(10); Shot("jst8i_the_generator"); }
+            ReadTo("An Electrode wired into the generator");
+            fourthLead.CurrentHP = fourthLead.MaxHP;
+            if (electrode.EndsWith("_3")) { ReadTo("The signal has stopped"); Frames(10); Shot("jst8j_lance_at_the_generator"); }
+            ReadTo(null);
+        }
+        Fourth("the hideout cleared");
+
+        // ---- the gate house's guard, and Pryce's Gym: a block of ice pushed, Pryce and the Glacier Badge
+        ComeThrough("Route43_Gate", 5, 11, Direction.Up);
+        ReadTo(null);
+        TalkTo("Route43_Gate", "r43r0201_counterm");
+        ReadTo(null);
+        ComeThrough("Mahogany_Gym", 4, 13, Direction.Up);
+        engine.Steering = (Direction.Up, false);
+        Frames(12);
+        engine.Steering = null;
+        Frames(6); Shot("jst8k_a_block_of_ice");
+        Frames(60);
+        var block = MapDatabase.Get("Mahogany_Gym").NPCs.FirstOrDefault(n => n.Key == "t28gym0103_ice");
+        Console.WriteLine($"  the block of ice pushed north from (4, 12) came to rest at ({block?.GridX}, {block?.GridY})");
+        ComeThrough("Mahogany_Gym_3", 5, 18, Direction.Up);
+        TalkTo("Mahogany_Gym_3", "t28gym0101_gsleader7");
+        ReadTo("I am Pryce"); Frames(10); Shot("jst8l_pryce");
+        IntoBattle("Pryce's battle");
+        Win();
+        ReadTo("received the Glacier Badge"); Frames(10); Shot("jst8m_the_glacier_badge");
+        ReadTo(null);
+        Fourth("the chapter's part a");
     }
 }

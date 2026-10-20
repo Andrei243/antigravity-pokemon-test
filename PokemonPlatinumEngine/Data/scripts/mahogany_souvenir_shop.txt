@@ -1,0 +1,87 @@
+# Mahogany Town's souvenir shop (plan 20 · J11, part a). docs/scripts.md describes the language; the lines are our own,
+# on HeartGold's beats (scr_seq_D35R0101).
+#
+# Once the player has agreed to help Lance by the Lake of Rage (VAR_UNK_40A8 1, lake_of_rage.txt), he waits inside
+# with his Dragonite, which knocks the customer, a lookout, aside; the salesman backs away from the stairs he was
+# standing on, Lance goes down them, and the way into the Team Rocket Hideout is open from then on
+# (FLAG_MAHOGANY_SHOP_STAIRS_FOUND, a flag of ours, and VAR_UNK_40A8 2). HeartGold's room script stands the two where
+# the scene left them on every visit after.
+
+
+# D35R0101_001
+script OnEnter
+  if var VAR_UNK_40A8 != 1 setflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
+  if var VAR_UNK_40A8 >= 2 goto After
+  if var VAR_UNK_40A8 == 1 goto Lance
+  end
+label After
+  place d35r0101_gsfighter 10 7 left
+  place d35r0101_sunglasses 4 3 down
+  end
+label Lance
+  place d35r0101_gsfighter 8 7 left
+  scene "Lance in the souvenir shop"
+  emote player exclaim
+  speaker "Lance"
+  say "You came. Watch this. Dragonite!"
+  cry "Dragonite"
+  sound "hit_normal"
+  walk d35r0101_gsfighter right 2 fast
+  face d35r0101_wataru player
+  say "That man was no customer. He was a lookout for Team Rocket, keeping watch on whoever comes in."
+  say "This shop is their front. The signal driving the lake's Magikarp to rage comes from right under our feet."
+  walk d35r0101_wataru up 3 right 1
+  face d35r0101_wataru up
+  walk d35r0101_tsure_poke_static_dragonite up 2
+  walk player up 3
+  emote d35r0101_sunglasses exclaim
+  speaker "Salesman"
+  say "H-hey! Customers stay this side of the counter!"
+  walk d35r0101_sunglasses left 2
+  face d35r0101_sunglasses right
+  speaker "Lance"
+  say "Stairs, hidden behind the counter. Just as I thought."
+  setflag FLAG_MAHOGANY_SHOP_STAIRS_FOUND
+  face d35r0101_wataru player
+  say "{player}, I'm going down. Follow me when you're ready, and keep your guard up."
+  fade out 0.4
+  hide d35r0101_wataru
+  hide d35r0101_tsure_poke_static_dragonite
+  setflag FLAG_HIDE_MAHOGANY_SHOP_LANCE
+  setvar VAR_UNK_40A8 2
+  fade in
+  endscene
+  end
+
+
+# D35R0101_002
+script Salesman
+  face d35r0101_sunglasses player
+  speaker "Salesman"
+  if var VAR_UNK_40A8 >= 2 goto Found
+  say "Welcome, welcome! Rage Candy Bars, fresh today. Well... nearly fresh."
+  say "Nothing back there but stock. Customers stay this side of the counter!"
+  end
+label Found
+  say "I-I don't know anything about any stairs! I just work the till, honest!"
+  end
+
+
+# D35R0101_003
+script Customer
+  face d35r0101_gsfighter player
+  speaker "Man"
+  if var VAR_UNK_40A8 >= 2 goto Found
+  say "I stop in here every time I pass through. Something about this place always feels a little off."
+  end
+label Found
+  say "Ow... That Dragonite packs a wallop. Me, a lookout? I'm just here for the sweets!"
+  end
+
+
+# D35R0101_005
+script Lance
+  face d35r0101_wataru player
+  speaker "Lance"
+  say "Something about this shop doesn't sit right with me."
+  end

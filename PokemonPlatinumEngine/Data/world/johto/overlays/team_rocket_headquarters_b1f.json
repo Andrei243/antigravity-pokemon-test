@@ -1,0 +1,57 @@
+{
+  // The Team Rocket Hideout's first basement (plan 20 · J11, part a): HeartGold's floor under Mahogany Town's
+  // souvenir shop, our words. Five Persian statues that set off an alarm (a grunt who runs out of the north-east
+  // room, FLAG_UNK_1E8), the computer that turns their eyes off, the traps of the west room's floor and the tile that
+  // sends the player back to the stairs (scripts/team_rocket_headquarters_b1f.txt). Its two trainers battle by their
+  // own records until Ariana is beaten below (FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN). HeartGold has no song of its
+  // own for the hideout in this game's music, so it plays the caves' as the Slowpoke Well does
+  "area": "team_rocket_headquarters_b1f",
+  "bgmTrack": "johto/union_cave",
+  "read": { "D35R0102_004+1": "Computer" },
+  "triggers": [
+    { "trigger": 0, "script": "StatueNorthEast" },
+    { "trigger": 1, "script": "StatueNorthWest" },
+    { "trigger": 2, "script": "StatueMiddle" },
+    { "trigger": 3, "script": "StatueSouthEast" },
+    { "trigger": 4, "script": "StatueSouthWest" },
+    { "trigger": 5, "script": "KoffingTrap1" },
+    { "trigger": 6, "script": "VoltorbTrap1" },
+    { "trigger": 7, "script": "GeodudeTrap1" },
+    { "trigger": 8, "script": "VoltorbTrap2" },
+    { "trigger": 9, "script": "GeodudeTrap2" },
+    { "trigger": 10, "script": "VoltorbTrap3" },
+    { "trigger": 11, "script": "VoltorbTrap4" },
+    { "trigger": 12, "script": "KoffingTrap2" },
+    { "trigger": 13, "script": "KoffingTrap3" },
+    { "trigger": 14, "script": "GeodudeTrap3" },
+    { "trigger": 15, "script": "GeodudeTrap4" },
+    { "trigger": 16, "script": "KoffingTrap4" },
+    { "trigger": 17, "script": "VoltorbTrap5" },
+    { "trigger": 18, "script": "VoltorbTrap6" },
+    { "trigger": 19, "script": "KoffingTrap5" },
+    { "trigger": 20, "script": "GeodudeTrap5" },
+    { "trigger": 21, "script": "BackToTheStairs" }
+  ],
+  "people": {
+    "d35r0102_aji_peru": { "name": "Persian statue", "npcType": "Pokemon", "species": "Persian", "script": "LookStatueNorthEast", "still": true },
+    "d35r0102_aji_peru_2": { "name": "Persian statue", "npcType": "Pokemon", "species": "Persian", "script": "LookStatueNorthWest", "still": true },
+    "d35r0102_aji_peru_3": { "name": "Persian statue", "npcType": "Pokemon", "species": "Persian", "script": "LookStatueMiddle", "still": true },
+    "d35r0102_aji_peru_4": { "name": "Persian statue", "npcType": "Pokemon", "species": "Persian", "script": "LookStatueSouthEast", "still": true },
+    "d35r0102_aji_peru_5": { "name": "Persian statue", "npcType": "Pokemon", "species": "Persian", "script": "LookStatueSouthWest", "still": true },
+    "d35r0102_rocketm": { "name": "Grunt", "still": true, "dialog": [ "Don't go near those statues!" ] },
+    "d35r0102_rocketm_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Who let a kid in here? This is Team Rocket's hideout, and you're not welcome!",
+        "dialogueAfter": "Grunt: How did a kid get this strong?"
+      }
+    },
+    "d35r0102_assistantm": {
+      "name": "Gregg",
+      "trainer": {
+        "dialogueBefore": "Scientist Gregg: Our radio waves make Magikarp evolve in a rage. A marvel of science! Want to see?",
+        "dialogueAfter": "Scientist Gregg: My experiments... ruined by a child!"
+      }
+    }
+  }
+}

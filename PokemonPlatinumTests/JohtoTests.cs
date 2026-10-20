@@ -454,13 +454,15 @@ public class JohtoTests
         var outOfIt = Johto.Area("blackthorn")!.Warps[0];
         Assert.Contains(Overworld.WarpsAt(outOfIt.X, outOfIt.Z), w => w.TargetMap == "IcePath_1F");
 
-        // What waits for plan 20 · J11 stays shut or off the map: the Team Rocket Hideout under the souvenir shop (its
-        // stairs behind the salesman), Pryce, Clair and Lance; the red Gyarados is no person of the lake's
-        Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Hideout", StringComparison.Ordinal));
-        Assert.DoesNotContain(MapNamed("Mahogany_Gym_3").Everyone, n => n.Name == "Pryce");
+        // Plan 20 · J11, part a opened the Team Rocket Hideout under the souvenir shop (its stairs behind the salesman,
+        // a way of the story's), Pryce in his Gym and the red Gyarados on the lake; what waits for part b stays off the
+        // map: Clair, and Lance in the Dragon's Den
+        foreach (string floor in new[] { "TeamRocketHQ_B1F", "TeamRocketHQ_B2F", "TeamRocketHQ_B3F" })
+            Assert.True(walked.Keys.Any(m => m.Name == floor), $"nobody walks into {floor}");
+        Assert.Contains(MapNamed("Mahogany_Gym_3").Everyone, n => n.Name == "Pryce");
+        Assert.Contains(Overworld.Everyone, n => n.Species == "Gyarados");
         Assert.DoesNotContain(MapNamed("Blackthorn_Gym").Everyone, n => n.Name == "Clair");
         Assert.DoesNotContain(MapNamed("DragonsDen").Everyone, n => n.Name is "Clair" or "Lance");
-        Assert.DoesNotContain(Overworld.NPCs, n => n.Species == "Gyarados");
 
         // Mahogany and Blackthorn are built their own ways, with songs of their own, as are the roads, the Ice Path and
         // the Dragon's Den; Mt. Mortar is a dungeon of the Union Cave's song and Routes 45 and 46 Route 34's

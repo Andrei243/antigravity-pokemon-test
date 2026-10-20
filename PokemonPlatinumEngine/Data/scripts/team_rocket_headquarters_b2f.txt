@@ -1,0 +1,283 @@
+# The Team Rocket Hideout's second basement (plan 20 · J11, part a). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_D35R0103).
+#
+# How far the hideout has come is HeartGold's own VAR_UNK_40AC, which this floor and the one below share:
+#   0  nobody met yet           5  the Murkrow fled this floor's north corridor
+#   1  Lance met on B3F         6  it fled B3F's east corridor
+#   2  B3F's two grunts beaten  7  it fled this floor's south corridor
+#   3  the rival met on B3F     8  the password heard, the shutters open
+#   4  Petrel beaten            9  Ariana beaten          10  the generator stopped: the hideout is cleared
+# VAR_UNK_40A9 is this floor's own: Lance's welcome (1), the password heard after coming back up from B1F in the
+# middle of the chase (2, team_rocket_headquarters_b1f.txt), heard (3) and Ariana beaten (4). The shutters across the
+# middle corridor open for whoever knows the password (FLAG_UNK_0D3) and stay open (FLAG_ROCKET_HIDEOUT_B2F_DOOR_OPEN,
+# a flag of ours). The hideout cleared sets everything the rest of Johto asks (FLAG_ROCKET_HIDEOUT_CLEARED): the toll
+# gate on Route 43 empty, the Gym's doorway in Mahogany Town free, the traps of B1F spent.
+
+
+# D35R0103_018 and _015
+script OnEnter
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
+  if var VAR_UNK_40AC < 4 setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
+  if var VAR_UNK_40AC < 4 setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
+  if var VAR_UNK_40AC < 4 setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
+  if var VAR_UNK_40A9 == 0 goto Welcome
+  if var VAR_UNK_40AC >= 10 end
+  if var VAR_UNK_40A9 >= 4 goto Waits
+  end
+label Waits
+  clearflag FLAG_UNK_1E5
+  place d35r0103_wataru 39 18 up
+  place d35r0103_tsure_poke_static_dragonite 40 18 up
+  end
+label Welcome
+  scene "Lance at the foot of the stairs"
+  walk player up 4 right 4
+  face player up
+  face d35r0103_wataru down
+  speaker "Lance"
+  say "{player}. Good, you found the way down. This place is a maze of corridors and locked doors."
+  say "Your Pokémon have been working hard. Let me see to them before we go any further."
+  heal
+  text "{player}'s Pokémon were restored to full health!"
+  speaker "Lance"
+  say "Team Rocket's grunts are everywhere down here. I'll scout ahead. Be careful, {player}."
+  walk d35r0103_wataru right 11 fast
+  walk d35r0103_tsure_poke_static_dragonite right 11 fast
+  hide d35r0103_wataru
+  hide d35r0103_tsure_poke_static_dragonite
+  setflag FLAG_UNK_1E5
+  setvar VAR_UNK_40A9 1
+  endscene
+  end
+
+
+# D35R0103_000
+script Lance
+  face d35r0103_wataru player
+  speaker "Lance"
+  if var VAR_UNK_40AC >= 9 goto Generator
+  say "Rest when you need to. Team Rocket won't give you the chance once a battle starts."
+  end
+label Generator
+  say "The Electrode in the generator room are powering the signal. Stop them, and the signal stops with them."
+  end
+
+
+script Dragonite
+  cry "Dragonite"
+  text "Dragonite: Grroar!"
+  end
+
+
+# D35R0103_008 and _009: once Ariana is beaten, Lance keeps the player in the generator's room until it is stopped
+script LanceStops
+  emote d35r0103_wataru exclaim
+  speaker "Lance"
+  say "Wait, {player}. Not that way. The generator comes first: the Electrode are on the west side of the room."
+  walk player left 1
+  end
+
+
+# D35R0103_013: the Murkrow at the end of the north corridor, which flies off as the player comes up from B3F
+script MurkrowOne
+  scene "The Murkrow in the north corridor"
+  emote d35r0103_tsure_poke_static_murkrow exclaim
+  cry "Murkrow"
+  walk d35r0103_tsure_poke_static_murkrow right 5 fast
+  hide d35r0103_tsure_poke_static_murkrow
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
+  clearflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
+  setvar VAR_UNK_40AC 5
+  endscene
+  end
+
+
+# D35R0103_014: the Murkrow at the east end of the south corridor
+script MurkrowTwo
+  scene "The Murkrow in the south corridor"
+  emote d35r0103_tsure_poke_static_murkrow_2 exclaim
+  cry "Murkrow"
+  walk d35r0103_tsure_poke_static_murkrow_2 left 10 fast
+  hide d35r0103_tsure_poke_static_murkrow_2
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
+  clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
+  setvar VAR_UNK_40AC 7
+  endscene
+  end
+
+
+# D35R0103_011 and _012: the Murkrow before the shutters says the password, as it heard the boss say it
+script Password
+  scene "The password"
+  emote d35r0103_tsure_poke_static_murkrow_3 exclaim
+  cry "Murkrow"
+  speaker "Murkrow"
+  say "Krah! The boss is back! The boss is back! Krah!"
+  speaker none
+  text "The Murkrow keeps repeating the same words. That must be the password to the shutters!"
+  sound "warp"
+  text "The Murkrow flew off down the corridor!"
+  hide d35r0103_tsure_poke_static_murkrow_3
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
+  setflag FLAG_UNK_0D3
+  setvar VAR_UNK_40AC 8
+  setvar VAR_UNK_40A9 3
+  endscene
+  end
+
+
+# D35R0103_001: the shutters across the middle corridor
+script Door
+  speaker none
+  if flag FLAG_ROCKET_HIDEOUT_B2F_DOOR_OPEN end
+  if flag FLAG_UNK_0D3 goto Opens
+  text "The shutter is locked tight. A speaker beside it crackles: 'Password?'"
+  end
+label Opens
+  text "A speaker beside the shutter crackles: 'Password?' {player} said what the Murkrow kept repeating."
+  sound "door_slide"
+  setflag FLAG_ROCKET_HIDEOUT_B2F_DOOR_OPEN
+  text "The shutter slid open!"
+  end
+
+
+# D35R0103_003: Ariana and a grunt come up behind the player, and Lance joins the battle
+script Ariana
+  scene "Ariana in the hideout"
+  if var PLAYER_X == 31 walk player left 1
+  speaker "???"
+  say "Hold it right there! Where do you think you're going?"
+  walk player down 5
+  face player right
+  clearflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
+  show d35r0103_rkanbuw
+  show d35r0103_rocketm_4
+  walk d35r0103_rkanbuw up 6
+  walk d35r0103_rocketm_4 up 3
+  face d35r0103_rkanbuw player
+  speaker "Ariana"
+  say "So you're the child who's been running about my hideout. Did you really think I'd let that go?"
+  say "This is where your little adventure ends."
+  clearflag FLAG_UNK_1E5
+  show d35r0103_wataru
+  show d35r0103_tsure_poke_static_dragonite
+  place d35r0103_wataru 20 25 right
+  place d35r0103_tsure_poke_static_dragonite 19 25 right
+  walk d35r0103_wataru right 9 fast
+  walk d35r0103_tsure_poke_static_dragonite right 9 fast
+  face d35r0103_wataru right
+  speaker "Lance"
+  say "Not while I'm here. {player}, let's take them on together!"
+  battle d35r0103_rkanbuw and d35r0103_rocketm_4 with "johto_pkmn_trainer_lance_lance"
+  speaker "Ariana"
+  say "Hmph. Fine. We'll leave this hideout. We have plans that matter far more than this one."
+  say "And there's nothing you can do to stop them."
+  fade out 0.4
+  hide d35r0103_rkanbuw
+  hide d35r0103_rocketm_4
+  hide d35r0103_rocketm
+  hide d35r0103_rocketm_2
+  hide d35r0103_rocketm_3
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
+  setflag FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN
+  setflag FLAG_UNK_1E8
+  fade in
+  face d35r0103_wataru player
+  face player d35r0103_wataru
+  speaker "Lance"
+  say "They've run. That leaves the signal. It comes from the generator in the room behind those shutters."
+  say "Its power comes from Electrode wired into the machine. Help me stop them, {player}."
+  fade out 0.4
+  place d35r0103_wataru 39 18 up
+  place d35r0103_tsure_poke_static_dragonite 40 18 up
+  fade in
+  setvar VAR_UNK_40AC 9
+  setvar VAR_UNK_40A9 4
+  endscene
+  end
+
+
+# D35R0103_010: the generator's panels
+script Generator
+  speaker none
+  if flag FLAG_ROCKET_HIDEOUT_CLEARED goto Off
+  text "A huge machine thrums and crackles. Cables run from it to the Electrode around the room."
+  end
+label Off
+  text "The machine is silent. Not a spark comes from it now."
+  end
+
+
+# D35R0103_004, _005 and _006: an Electrode of the generator, battled; once it is fainted or caught, it and the one
+# wired opposite it are gone
+script Electrode1
+  cry "Electrode"
+  text "An Electrode wired into the generator! It's glaring at you!"
+  wildbattle "Electrode" 23
+  if result == 2 end
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_1_AND_4
+  call AllStopped
+  end
+
+script Electrode2
+  cry "Electrode"
+  text "An Electrode wired into the generator! It's glaring at you!"
+  wildbattle "Electrode" 23
+  if result == 2 end
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_2_AND_5
+  call AllStopped
+  end
+
+script Electrode3
+  cry "Electrode"
+  text "An Electrode wired into the generator! It's glaring at you!"
+  wildbattle "Electrode" 23
+  if result == 2 end
+  setflag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_3_AND_6
+  call AllStopped
+  end
+
+script AllStopped
+  if not flag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_1_AND_4 return
+  if not flag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_2_AND_5 return
+  if not flag FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_3_AND_6 return
+  scene "The generator stops"
+  sound "pc_off"
+  text "The generator shuddered and went quiet."
+  walk d35r0103_wataru left 8 fast
+  face d35r0103_wataru player
+  speaker "Lance"
+  say "That's the last of them. The signal has stopped. The lake's Magikarp will calm down now."
+  say "Team Rocket has scattered, too. With their hideout gone, Mahogany Town can breathe again."
+  say "You've done well, {player}. I'll make sure the League hears about this. Until we meet again!"
+  fade out 0.4
+  hide d35r0103_wataru
+  hide d35r0103_tsure_poke_static_dragonite
+  setflag FLAG_UNK_1E5
+  setflag FLAG_ROCKET_HIDEOUT_CLEARED
+  clearflag FLAG_HIDE_ROUTE_43_GATE_GUARD
+  setflag FLAG_HIDE_ROUTE_43_GATE_ROCKETS
+  setflag FLAG_UNK_1F9
+  setvar VAR_UNK_40AC 10
+  setvar VAR_UNK_410F 1
+  setvar VAR_ROCKET_TRAP_KOFFING_1 1
+  setvar VAR_ROCKET_TRAP_KOFFING_2 1
+  setvar VAR_ROCKET_TRAP_KOFFING_3 1
+  setvar VAR_ROCKET_TRAP_KOFFING_4 1
+  setvar VAR_ROCKET_TRAP_KOFFING_5 1
+  setvar VAR_ROCKET_TRAP_VOLTORB_1 1
+  setvar VAR_ROCKET_TRAP_VOLTORB_2 1
+  setvar VAR_ROCKET_TRAP_VOLTORB_3 1
+  setvar VAR_ROCKET_TRAP_VOLTORB_4 1
+  setvar VAR_ROCKET_TRAP_VOLTORB_5 1
+  setvar VAR_ROCKET_TRAP_VOLTORB_6 1
+  setvar VAR_ROCKET_TRAP_GEODUDE_1 1
+  setvar VAR_ROCKET_TRAP_GEODUDE_2 1
+  setvar VAR_ROCKET_TRAP_GEODUDE_3 1
+  setvar VAR_ROCKET_TRAP_GEODUDE_4 1
+  setvar VAR_ROCKET_TRAP_GEODUDE_5 1
+  fade in
+  endscene
+  return

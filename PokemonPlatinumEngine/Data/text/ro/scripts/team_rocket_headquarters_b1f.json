@@ -1,0 +1,438 @@
+{
+  "FirstGrunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An intruder! You tripped the alarm, so now you deal with me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Argh! I'm calling for backup!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SecondGrunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Backup's here! Nobody gets past the statues!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ugh... Fine. That alarm's not going off again, anyway."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Alarm": [
+    {
+      "en": [
+        "Whoop-whoop! The Persian statue's eyes flashed! An alarm is blaring!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LookStatueNorthEast": [
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes glint red, watching everything that moves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LookStatueNorthWest": [
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes glint red, watching everything that moves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LookStatueMiddle": [
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes glint red, watching everything that moves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LookStatueSouthEast": [
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes glint red, watching everything that moves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LookStatueSouthWest": [
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dull. The alarm it set off has gone quiet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes glint red, watching everything that moves."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A statue of a Persian. Its eyes are dark. The security system must be switched off."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Computer": [
+    {
+      "en": [
+        "A computer that runs the hideout's security. Switch the statues' alarms off?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} pressed a button. Click!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The statues' eyes went dark. The alarm is off."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The security system is switched off. Switch it back on?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} pressed a button. Click!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The statues' eyes lit up again. The alarm is on."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The computer's screen is dark. Somebody has pulled its plug."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KoffingTrap1": [
+    {
+      "en": [
+        "A cloud of gas! A Koffing burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VoltorbTrap1": [
+    {
+      "en": [
+        "Zzzt! A Voltorb burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GeodudeTrap1": [
+    {
+      "en": [
+        "Crash! A Geodude burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VoltorbTrap2": [
+    {
+      "en": [
+        "Zzzt! A Voltorb burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GeodudeTrap2": [
+    {
+      "en": [
+        "Crash! A Geodude burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VoltorbTrap3": [
+    {
+      "en": [
+        "Zzzt! A Voltorb burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VoltorbTrap4": [
+    {
+      "en": [
+        "Zzzt! A Voltorb burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KoffingTrap2": [
+    {
+      "en": [
+        "A cloud of gas! A Koffing burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KoffingTrap3": [
+    {
+      "en": [
+        "A cloud of gas! A Koffing burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GeodudeTrap3": [
+    {
+      "en": [
+        "Crash! A Geodude burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GeodudeTrap4": [
+    {
+      "en": [
+        "Crash! A Geodude burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KoffingTrap4": [
+    {
+      "en": [
+        "A cloud of gas! A Koffing burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VoltorbTrap5": [
+    {
+      "en": [
+        "Zzzt! A Voltorb burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "VoltorbTrap6": [
+    {
+      "en": [
+        "Zzzt! A Voltorb burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KoffingTrap5": [
+    {
+      "en": [
+        "A cloud of gas! A Koffing burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GeodudeTrap5": [
+    {
+      "en": [
+        "Crash! A Geodude burst out of a trap in the floor!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BackToTheStairs": [
+    {
+      "en": [
+        "Whoa! The floor gave way!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}
