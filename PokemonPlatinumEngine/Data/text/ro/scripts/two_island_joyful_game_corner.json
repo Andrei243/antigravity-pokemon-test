@@ -1,0 +1,210 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Lostelle's Daddy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, a customer? I'm sorry, I can't think about games right now. It's my daughter, Lostelle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "She went off to pick berries this morning, the way she always does, and she still hasn't come home!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Biker"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yo! Is this the place with the little girl? I saw a kid heading for the forest over on Three Island."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Our gang's taking that island over, so she'd better keep out of our way. Heh heh!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lostelle's Daddy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Three Island? Then she's gone to Berry Forest, past Bond Bridge. And with a gang of bikers about..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, I beg you! Would you go and look for her? The Seagallop can take you to Three Island."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lostelle"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Daddy, I'm home! A trainer saved me from a scary Hypno in the forest!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lostelle's Daddy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lostelle! Oh, thank goodness. And thank you, {player}. I don't know how I can ever repay you."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Daddy": [
+    {
+      "en": [
+        "Lostelle's Daddy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please, find Lostelle! She must be somewhere in Berry Forest on Three Island."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What's that you've got there? A Meteorite? From Celio on One Island? He promised me one for my collection!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you brought my Lostelle home too. Please, take this as my thanks for both."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Tell Celio thank you from me. I'm sure Bill and he could use some good news over on One Island."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you for bringing Lostelle home. If there's anything I can do for you, just say so."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The games are up and running again! Come and play whenever you like. Lostelle loves having company."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Lostelle": [
+    {
+      "en": [
+        "Lostelle"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you for saving me! I'll always remember it. Next time I go berry picking, I'll bring you some!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "InfoMan": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This game corner's games are played by friends together, over a link. Nobody's linking up these days, though."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Still, the owner keeps the place spotless. He's a good father, and a good host."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

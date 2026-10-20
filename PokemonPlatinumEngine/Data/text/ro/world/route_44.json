@@ -1,0 +1,204 @@
+{
+  "people": {
+    "r44_mystery_2": {
+      "name": {
+        "en": [
+          "Phil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Phil: I sensed you coming from the other end of the route."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Phil: I didn't sense that, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r44_fishing_2": {
+      "name": {
+        "en": [
+          "Edgar"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Edgar: Shh! You'll scare the fish. Fine, a quick battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Edgar: Now the fish really are scared."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r44_fishing_2_2": {
+      "name": {
+        "en": [
+          "Wilton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Wilton: My Goldeen are the prettiest swimmers on this river."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Wilton: Pretty, but not strong enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r44_gswoman3": {
+      "name": {
+        "en": [
+          "Cybil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Cybil: You've come this far? Then you must be good. Show me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Cybil: You're better than good."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r44_gsman3": {
+      "name": {
+        "en": [
+          "Allen"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Allen: Fire and steel, my favourite mix. Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Allen: That mix didn't work."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r44_mania": {
+      "name": {
+        "en": [
+          "Zach"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Zach: My Rhyhorn charges first and thinks later. Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Zach: It's still thinking about that one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r44_gsman2": {
+      "name": {
+        "en": [
+          "Vance"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Vance: My birds watch the road to the Ice Path. Nobody gets by without a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Vance: My birds will let you by."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R44_001+1": {
+      "en": [
+        "Ice Path\nThe frozen way through to Blackthorn City."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R44_002+1": {
+      "en": [
+        "Route 44\nMahogany Town is to the west."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

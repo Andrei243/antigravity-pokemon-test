@@ -1,0 +1,61 @@
+{
+  "people": {
+    "d44r0103_chourou": {
+      "name": {
+        "en": [
+          "Elder"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong.",
+          "When the time is right, I will ask you some questions. Not yet."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "d44r0103_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The elder has watched over this shrine since before Clair was born."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d44r0103_gsoldman1_2": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A dragon tamer's heart matters more than their strength. The elder taught us that."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

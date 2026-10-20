@@ -1,0 +1,156 @@
+{
+  "displayName": {
+    "en": [
+      "Two Island"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "clerk": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The shop has more to sell since Lostelle came home. Her father ordered in all sorts for her."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Beauty"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I sailed over from Kanto just to shop here. The stall gets the most unusual things."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poke_maniac": {
+      "name": {
+        "en": [
+          "Pokémaniac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I heard the stall gets goods from far-off lands now. I simply had to see!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The currents round the cape are fierce. Only a strong swimmer's Pokémon can cross them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lostelle is my friend! She runs off to pick berries all the time."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "At the tip of Cape Brink lives an old woman who teaches the best moves to Pokémon. But only to ones that trust you completely!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TwoIsland_EventScript_IslandSign": {
+      "en": [
+        "Two Island\nThe village where the waves bring good fortune"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "TwoIsland_EventScript_JoyfulGameCornerSign": {
+      "en": [
+        "Joyful Game Corner\nGames and good times for all the family"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "TwoIsland_EventScript_FastCurrentSign": {
+      "en": [
+        "Caution! Fast currents around the cape. Swim with care."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

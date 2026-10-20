@@ -320,6 +320,85 @@ public class FieldMoveTests
     }
 
     [Fact]
+    public void DiveGoesDownAndComesUpByTheQuestionWithHoennsMindBadge()
+    {
+        // Plan 21 · H5: Emerald's Dive, gated in Hoenn by the Mind Badge and in no other region
+        Assert.Equal("Mind", FieldMoveRules.BadgeFor(FieldMove.Dive, RegionDatabase.Hoenn));
+        Assert.Null(FieldMoveRules.BadgeFor(FieldMove.Dive, RegionDatabase.Sinnoh));
+        Assert.Equal(FieldMove.Dive, FieldMoveRules.Of("Dive"));
+        var story = new StoryState();
+        var down = new FieldSpot { Dive = true, Surfing = true, Region = RegionDatabase.Hoenn };
+        Assert.Equal(FieldMoveError.Badge, FieldMoveRules.Check(FieldMove.Dive, down, story));
+        story.GiveBadge(RegionDatabase.Hoenn, "Mind");
+        Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.Dive, down, story));
+        Assert.Equal(FieldMoveError.None, FieldMoveRules.Check(FieldMove.Dive, down with { Dive = false, Surface = true }, story));
+        Assert.Equal(FieldMoveError.Location, FieldMoveRules.Check(FieldMove.Dive, down with { Dive = false }, story));
+        Assert.Equal(FieldMoveError.Partner, FieldMoveRules.Check(FieldMove.Dive, down with { Partner = true }, story));
+
+        // A sea of dark water with a floor under it, one chunk each, the floor's tiles under the sea's
+        var sea = new Map(32, 32) { Name = "DiveSea" };
+        var floor = new Map(32, 32) { Name = "DiveFloor", Setting = MapSetting.Underwater };
+        for (int y = 0; y < 32; y++)
+            for (int x = 0; x < 32; x++)
+            {
+                sea.SetGroundTile(x, y, TileType.Water);
+                sea.SetBehaviour(x, y, TileBehavior.DiveWater);
+                floor.SetGroundTile(x, y, TileType.Sand);
+                floor.SetBehaviour(x, y, TileBehavior.None);
+            }
+        floor.SetBehaviour(9, 9, TileBehavior.NoSurfacing);
+        sea.SetArea(0, 0, new MapArea { Key = "route_124", Open = true, Dive = floor.Name });
+        floor.SetArea(0, 0, new MapArea { Key = "underwater_route_124", Open = true, Emerge = sea.Name });
+        Map? Named(string name) => name == sea.Name ? sea : name == floor.Name ? floor : null;
+
+        HeadlessScriptHost Play(string script, Map on, (int, int) tile, TravelMode mode, Pokemon pokemon, int badges)
+        {
+            var host = new HeadlessScriptHost { Map = on, MapNamed = Named, PlayerTile = tile, PlayerFacing = Direction.Up, PlayerMode = mode, Region = RegionDatabase.Hoenn };
+            host.Party.Add(pokemon);
+            host.Story.SetBadges(RegionDatabase.Hoenn, badges);
+            var runner = new ScriptRunner(ScriptLibrary.Default, host);
+            runner.Start(ScriptLibrary.Default.Find(script)!);
+            runner.RunToEnd();
+            return host;
+        }
+        int mind = 1 << StoryState.BadgeIndex(RegionDatabase.Hoenn, "Mind");
+
+        // Down: the same tile of the floor, swimming; refused without the Badge or the move
+        var dived = Play(FieldScripts.Dive, sea, (5, 6), TravelMode.Surfing, Knowing("Dive"), mind);
+        Assert.Same(floor, dived.Map);
+        Assert.Equal((5, 6), dived.PlayerTile);
+        Assert.Equal(TravelMode.Diving, dived.PlayerMode);
+        Assert.Contains("dive down DiveFloor 5 6", dived.Log);
+        Assert.Same(sea, Play(FieldScripts.Dive, sea, (5, 6), TravelMode.Surfing, Knowing("Dive"), 0).Map);
+        Assert.Same(sea, Play(FieldScripts.Dive, sea, (5, 6), TravelMode.Surfing, Knowing("Surf"), 0xFF).Map);
+
+        // Up: the same tile of the sea, surfing; never from under rock above
+        var surfaced = Play(FieldScripts.Surface, floor, (12, 4), TravelMode.Diving, Knowing("Dive"), mind);
+        Assert.Same(sea, surfaced.Map);
+        Assert.Equal((12, 4), surfaced.PlayerTile);
+        Assert.Equal(TravelMode.Surfing, surfaced.PlayerMode);
+        var stuck = Play(FieldScripts.Surface, floor, (9, 9), TravelMode.Diving, Knowing("Dive"), mind);
+        Assert.Same(floor, stuck.Map);
+        Assert.Equal(TravelMode.Diving, stuck.PlayerMode);
+
+        // From the party menu the move does the same
+        Assert.Equal("common.UseDive", FieldScripts.FromMenu(FieldMove.Dive));
+        Assert.Equal(TravelMode.Diving, Play(FieldScripts.FromMenu(FieldMove.Dive)!, sea, (5, 6), TravelMode.Surfing, Knowing("Dive"), mind).PlayerMode);
+    }
+
+    [Fact]
+    public void DiveIsOnATeamsMenuOnlyInARegionWhoseGatesNameIt()
+    {
+        // Platinum has no Dive in the field: a Pokémon that knows it shows Sinnoh the menu it always did
+        var pokemon = Knowing("Tackle", "Dive", "Surf");
+        Assert.Equal(new[] { "SUMMARY", "SURF", "SWITCH", "CANCEL" }, PartyScreen.ActionsFor(pokemon).Select(a => a.Label));
+        Assert.Equal(new[] { "SUMMARY", "SURF", "SWITCH", "CANCEL" }, PartyScreen.ActionsFor(pokemon, RegionDatabase.Sinnoh).Select(a => a.Label));
+        Assert.Equal(new[] { "SUMMARY", "SURF", "SWITCH", "CANCEL" }, PartyScreen.ActionsFor(pokemon, RegionDatabase.Johto).Select(a => a.Label));
+        // ...and Hoenn's, in the order of its moves
+        Assert.Equal(new[] { "SUMMARY", "DIVE", "SURF", "SWITCH", "CANCEL" }, PartyScreen.ActionsFor(pokemon, RegionDatabase.Hoenn).Select(a => a.Label));
+    }
+
+    [Fact]
     public void AWaterfallAndARockFaceAreClimbedByTheQuestion()
     {
         // A river with a fall of three tiles, and beside it a rock face of three

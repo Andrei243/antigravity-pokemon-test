@@ -1,0 +1,35 @@
+{
+  // Blackthorn City's Poké Mart (plan 20 · J10). Its delivery men are the original's gifts, which this game has no use for
+  "area": "blackthorn_pokemart",
+  "bgmTrack": "johto/blackthorn",
+  "people": {
+    "t30fs0101_shopm1_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t30fs0101_shopm1_2_2": {
+      "name": "Clerk",
+      "script": "Clerk",
+      "still": true,
+      "dialog": [
+        "Welcome! How can I help you?"
+      ]
+    },
+    "t30fs0101_gsfighter": {
+      "name": "Man",
+      "dialog": [
+        "Up here in the mountains, Full Heals sell almost as well as Potions. The cold freezes Pokémon solid!"
+      ]
+    },
+    "t30fs0101_gsman3": {
+      "name": "Man",
+      "dialog": [
+        "I'm stocking up before I take on the Dragon's Den. You can never have too many Revives."
+      ]
+    }
+  }
+}

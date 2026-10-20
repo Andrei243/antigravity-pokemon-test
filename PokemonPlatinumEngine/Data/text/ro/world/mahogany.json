@@ -1,0 +1,50 @@
+{
+  "people": {
+    "t28_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mahogany is an old town of ninjas, they say. These days it's mostly known for its souvenirs.",
+          "The lake north of town has been acting strangely. Folk say its Pokémon are angry."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T28_006+1": {
+      "en": [
+        "Mahogany Town\nWelcome to the home of the ninja."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T28_007+1": {
+      "en": [
+        "Mahogany Souvenirs\nSweets and keepsakes of the mountains."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T28_008+1": {
+      "en": [
+        "Mahogany Town Pokémon Gym\nLeader: Pryce"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The Safari Zone feels like another country. It gives me the strangest feeling, coming here."
         ],
         "text": [
-          ""
+          "Zona Safari pare o altă țară. Mă cuprinde o senzație ciudată când vin aici."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -33,8 +33,8 @@
           "(She doesn't seem to be one for chatting.)"
         ],
         "text": [
-          "",
-          ""
+          "..........",
+          "(Nu pare genul care să stea la taifas.)"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Kangaskhan"
         ],
         "text": [
-          ""
+          "Kangaskhan"
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -62,7 +62,7 @@
           "What a Safari Zone! I chased Pokémon all morning. My Jigglypuff is in a sulk about it, I'm afraid."
         ],
         "text": [
-          ""
+          "Ce Zonă Safari! Am urmărit Pokémoni toată dimineața. Jigglypuff-ul meu s-a supărat din cauza asta, mă tem."
         ]
       }
     },
@@ -72,7 +72,7 @@
           "Jigglypuff"
         ],
         "text": [
-          ""
+          "Jigglypuff"
         ]
       }
     },
@@ -82,7 +82,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Butterfree"
         ],
         "text": [
-          ""
+          "Butterfree"
         ]
       }
     },
@@ -122,7 +122,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -130,7 +130,7 @@
           "There are so many Pokémon here, but none as sweet as Slowpoke. People keep telling me I look like one!"
         ],
         "text": [
-          ""
+          "Sunt atât de mulți Pokémoni aici, dar niciunul atât de drăgălaș ca Slowpoke. Lumea îmi tot spune că seamăn cu unul!"
         ]
       }
     },
@@ -140,7 +140,7 @@
           "Slowpoke"
         ],
         "text": [
-          ""
+          "Slowpoke"
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "I always wanted my very first Pokémon to come from the Safari Zone."
         ],
         "text": [
-          ""
+          "Mi-am dorit mereu ca primul meu Pokémon să vină din Zona Safari."
         ]
       }
     },
@@ -168,7 +168,7 @@
           "Workman"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -176,7 +176,7 @@
           "You think there's some clever machinery behind those Area Customizer swaps, don't you? Well, the truth is..."
         ],
         "text": [
-          ""
+          "Crezi că e o mașinărie ingenioasă în spatele schimburilor Personalizatorului de Arii, nu? Ei bine, adevărul e că..."
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Workman"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -194,7 +194,7 @@
           "Ugh... I'm worn out. This job takes everything you've got."
         ],
         "text": [
-          ""
+          "Uf... Sunt epuizat. Slujba asta îți ia tot ce ai."
         ]
       }
     }
@@ -205,7 +205,7 @@
         "Safari Zone\nWhere everything is thrilling! Come and meet the wild."
       ],
       "text": [
-        ""
+        "Zona Safari\nUnde totul e palpitant! Vino să cunoști natura sălbatică."
       ]
     }
   }

@@ -1,0 +1,19 @@
+{
+  // A house in Mahogany Town (plan 20 · J10)
+  "area": "mahogany_east_house",
+  "bgmTrack": "johto/mahogany",
+  "people": {
+    "t28r0201_gsfighter": {
+      "name": "Man",
+      "dialog": [
+        "I climb the hills round town every morning. The view of the lake from up there is something else."
+      ]
+    },
+    "t28r0201_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "Strange men have been hanging round the souvenir shop lately. I don't like the look of them."
+      ]
+    }
+  }
+}

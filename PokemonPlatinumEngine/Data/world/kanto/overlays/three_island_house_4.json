@@ -1,0 +1,9 @@
+{
+  // A house on Three Island (plan 19 · K9, part a)
+  "area": "three_island_house_4",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "balding_man": { "name": "Man", "dialog": [ "We farm Doduo and Rapidash on this island. They're quick on their feet, and the eggs are good too." ] },
+    "little_boy": { "name": "Little Boy", "dialog": [ "When I grow up, I'm going to ride a Rapidash across every island!" ] }
+  }
+}

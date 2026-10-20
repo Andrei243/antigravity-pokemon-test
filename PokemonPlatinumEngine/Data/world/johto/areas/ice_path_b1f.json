@@ -1,0 +1,66 @@
+{
+  "key": "ice_path_b1f",
+  "index": 237,
+  "name": "Ice Path",
+  "matrix": 133,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D39R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Swinub", "level": 21 },
+    { "species": "Golbat", "level": 22 },
+    { "species": "Swinub", "level": 21 },
+    { "species": "Golbat", "level": 22 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Swinub", "level": 23 },
+    { "species": "Swinub", "level": 23 },
+    { "species": "Zubat", "level": 22, "day": "Jynx" },
+    { "species": "Jynx", "level": 22 },
+    { "species": "Zubat", "level": 22, "day": "Jynx" },
+    { "species": "Jynx", "level": 22 }
+  ],
+  "landRate": 5,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 6, "z": 21, "to": "ice_path_1f", "toWarp": 2 },
+    { "x": 6, "z": 20, "to": "ice_path_1f", "toWarp": 2 },
+    { "x": 25, "z": 8, "to": "ice_path_b2f", "toWarp": 0 },
+    { "x": 27, "z": 40, "to": "ice_path_b2f", "toWarp": 4 },
+    { "x": 6, "z": 42, "to": "ice_path_1f", "toWarp": 3 },
+    { "x": 6, "z": 41, "to": "ice_path_1f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "d39r0102_rock", "looks": "rock", "movement": "0", "x": 10, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_1_INIT", "script": "std_field_strength" },
+    { "id": "d39r0102_rock_2", "looks": "rock", "movement": "0", "x": 13, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_2_INIT", "script": "std_field_strength" },
+    { "id": "d39r0102_rock_3", "looks": "rock", "movement": "0", "x": 18, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_3_INIT", "script": "std_field_strength" },
+    { "id": "d39r0102_rock_4", "looks": "rock", "movement": "0", "x": 25, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_4_INIT", "script": "std_field_strength" },
+    { "id": "d39r0102_rock_5", "looks": "rock", "movement": "0", "x": 12, "z": 44, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d39r0102_monstarball", "looks": "monstarball", "movement": "0", "x": 13, "z": 48, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D39R0102_IRON", "item": "Iron", "script": "std_itemball_d39r0102_iron" }
+  ],
+  "signs": [
+    { "x": 15, "z": 47, "type": 2, "script": "std_hiddenitem_d39r0102_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D39R0102_REVIVE" }
+  ],
+  "triggers": [
+    { "x": 11, "z": 10, "width": 1, "depth": 1, "script": "D39R0102_000+1", "variable": "VAR_UNK_40AA", "value": "0" },
+    { "x": 10, "z": 18, "width": 1, "depth": 1, "script": "D39R0102_001+1", "variable": "VAR_UNK_40AA", "value": "0" },
+    { "x": 18, "z": 7, "width": 1, "depth": 1, "script": "D39R0102_002+1", "variable": "VAR_UNK_40AA", "value": "0" },
+    { "x": 19, "z": 19, "width": 1, "depth": 1, "script": "D39R0102_003+1", "variable": "VAR_UNK_40AA", "value": "0" }
+  ]
+}

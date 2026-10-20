@@ -1,0 +1,28 @@
+{
+  "key": "route_43_gatehouse",
+  "index": 245,
+  "name": "Route 43",
+  "matrix": 69,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_7_42",
+  "nightMusic": "GS_R_7_42",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 12, "to": "route_43", "toWarp": 2 },
+    { "x": 5, "z": 2, "to": "route_43", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "r43r0201_rocketm", "looks": "rocketm", "movement": "15", "x": 3, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_43_GATE_ROCKETS", "script": "R43R0201_000+1" },
+    { "id": "r43r0201_rocketm_2", "looks": "rocketm", "movement": "14", "x": 7, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_43_GATE_ROCKETS", "script": "R43R0201_000+1" },
+    { "id": "r43r0201_counterm", "looks": "counterm", "movement": "17", "x": 1, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROUTE_43_GATE_GUARD", "script": "R43R0201_003+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

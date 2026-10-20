@@ -1,0 +1,93 @@
+{
+  "key": "mount_mortar_2f",
+  "index": 251,
+  "name": "Mt. Mortar",
+  "matrix": 64,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D38R0103",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Graveler", "level": 31 },
+    { "species": "Machoke", "level": 32 },
+    { "species": "Graveler", "level": 31 },
+    { "species": "Machoke", "level": 32 },
+    { "species": "Geodude", "level": 31 },
+    { "species": "Geodude", "level": 31 },
+    { "species": "Raticate", "level": 30 },
+    { "species": "Raticate", "level": 30 },
+    { "species": "Machop", "level": 28 },
+    { "species": "Golbat", "level": 30 },
+    { "species": "Machop", "level": 28 },
+    { "species": "Golbat", "level": 30 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 30 },
+    { "species": "Seaking", "level": 20, "maxLevel": 30 },
+    { "species": "Seaking", "level": 20, "maxLevel": 30 },
+    { "species": "Seaking", "level": 20, "maxLevel": 30 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 27, "z": 55, "to": "mount_mortar_1f_entrance", "toWarp": 9 },
+    { "x": 9, "z": 16, "to": "mount_mortar_1f_back", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 6, "z": 55, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0103_RARE_CANDY", "item": "Rare Candy", "script": "std_itemball_d38r0103_rare_candy" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 45, "z": 38, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0103_MAX_POTION", "item": "Max Potion", "script": "std_itemball_d38r0103_max_potion" },
+    { "id": "everywhere_monstarball_3", "looks": "monstarball", "movement": "0", "x": 29, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0103_TM40", "item": "TM40", "script": "std_itemball_d38r0103_tm40" },
+    { "id": "everywhere_monstarball_4", "looks": "monstarball", "movement": "0", "x": 16, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0103_ELIXIR", "item": "Elixir", "script": "std_itemball_d38r0103_elixir" },
+    { "id": "everywhere_monstarball_5", "looks": "monstarball", "movement": "0", "x": 27, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0103_DRAGON_SCALE", "item": "Dragon Scale", "script": "std_itemball_d38r0103_dragon_scale" },
+    { "id": "everywhere_monstarball_6", "looks": "monstarball", "movement": "0", "x": 45, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0103_ESCAPE_ROPE", "item": "Escape Rope", "script": "std_itemball_d38r0103_escape_rope" },
+    { "id": "everywhere_gsassistantm", "looks": "gsassistantm", "movement": "2", "x": 19, "z": 46, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_SUPER_NERD_HUGH" }
+  ],
+  "signs": [
+    { "x": 53, "z": 29, "type": 2, "script": "std_hiddenitem_d38r0103_full_restore", "item": "Full Restore", "flag": "FLAG_HIDDEN_ITEM_D38R0103_FULL_RESTORE" },
+    { "x": 34, "z": 38, "type": 2, "script": "std_hiddenitem_d38r0103_hp_up", "item": "HP Up", "flag": "FLAG_HIDDEN_ITEM_D38R0103_HP_UP" },
+    { "x": 42, "z": 48, "type": 2, "script": "std_hiddenitem_d38r0103_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_D38R0103_HYPER_POTION" },
+    { "x": 16, "z": 18, "type": 2, "script": "std_hiddenitem_d38r0103_full_heal", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_D38R0103_FULL_HEAL" }
+  ],
+  "triggers": []
+}

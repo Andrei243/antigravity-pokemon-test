@@ -837,6 +837,39 @@ script UseWhirlpool
   end
 
 
+# Dark water under a surfer where the sea floor lies below it (Emerald's, plan 21 · H5), and the sea floor under a diver.
+# The field offers them only with the region's Badge for Dive (the Mind Badge in Hoenn); Dive goes down to the same spot
+# of the floor, or back up to the same spot of the sea.
+script Dive
+  if not knows "Dive" goto Cannot
+  if not movebadge "Dive" goto Cannot
+  ask "The water here is dark and very deep. Use Dive to go down?"
+  if no end
+  usemove "Dive"
+  dive
+  end
+label Cannot
+  text "The water here is dark and very deep. A Pokémon might be able to dive into it."
+  end
+
+script Surface
+  if not knows "Dive" goto Cannot
+  if not movebadge "Dive" goto Cannot
+  ask "Sunlight shimmers on the water far overhead. Use Dive to swim up?"
+  if no end
+  usemove "Dive"
+  dive
+  end
+label Cannot
+  text "Sunlight shimmers on the water far overhead. A Pokémon might be able to swim up to it."
+  end
+
+script UseDive
+  usemove "Dive"
+  dive
+  end
+
+
 # Light in a dark cave, until the player leaves the caves.
 script UseFlash
   usemove "Flash"
@@ -1296,6 +1329,19 @@ script SeagallopToCinnabar
 script SeagallopToOneIsland
   call SeagallopSails
   warp "OneIsland_Harbor" 8 5 up
+  fade in 0.4
+  return
+
+# Two and Three Island's harbours (plan 19 · K9, part a), each the same room as One Island's
+script SeagallopToTwoIsland
+  call SeagallopSails
+  warp "TwoIsland_Harbor" 8 5 up
+  fade in 0.4
+  return
+
+script SeagallopToThreeIsland
+  call SeagallopSails
+  warp "ThreeIsland_Harbor" 8 5 up
   fade in 0.4
   return
 

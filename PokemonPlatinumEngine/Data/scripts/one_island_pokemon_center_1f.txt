@@ -1,16 +1,24 @@
-# One Island's Pokémon Center (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on
+# One Island's Pokémon Center (plan 19 · K7, K9). docs/scripts.md describes the language; the lines are our own, on
 # FireRed's beats (data/maps/OneIsland_PokemonCenter_1F/scripts.inc).
 #
 # The first time the player comes in with Bill (VAR_MAP_SCENE_ONE_ISLAND_HARBOR 3, one_island.txt) the two meet Celio
 # at his network machine: Bill brings him up to speed, sets to work on it with him, and Celio gives the player the
-# Tri-Pass for the Seagallop (VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 1). Bill stays to help from then on. FireRed's
-# Meteorite, its errand on Two and Three Island, and Celio's later requests (the Ruby and the Sapphire) are plan 19 ·
-# K9's; so is Bill's sailing home once the machine works (FLAG_SEVII_DETOUR_FINISHED).
+# Tri-Pass for the Seagallop (VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 1). Since plan 19 · K9 Bill also hands over
+# the Meteorite for the Joyful Game Corner on Two Island (FLAG_GOT_METEORITE_FROM_BILL, a flag of ours; a game that met
+# Celio before is given it when Bill is next spoken to). Once the Meteorite has been delivered
+# (two_island_joyful_game_corner.txt sets the variable to 2) the machine works, and the first step towards Bill sends
+# the two of them home to Cinnabar Island by the Seagallop (3; cinnabar_island.txt plays the rest).
+#
+# Celio alone (plan 19 · K9, part a): with the National Pokédex he asks for the Ruby from Mt. Ember (4, which opens
+# the Ruby Path and puts Team Rocket's two at Mt. Ember's foot, VAR_MAP_SCENE_MT_EMBER_EXTERIOR 1), and for it he
+# gives the Rainbow Pass for all seven islands and asks after the Sapphire (5). The Sapphire's errand, from Four Island
+# on, is part b's.
 
 
 script OnEnter
   if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 0 setflag FLAG_HIDE_ONE_ISLAND_POKECENTER_BILL
   if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 0 clearflag FLAG_HIDE_ONE_ISLAND_POKECENTER_CELIO
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F >= 3 setflag FLAG_HIDE_ONE_ISLAND_POKECENTER_BILL
   if not var VAR_MAP_SCENE_ONE_ISLAND_HARBOR == 3 end
   if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 0 goto Meet
   end
@@ -36,8 +44,45 @@ label Meet
   give "Tri-Pass"
   say "With the Tri-Pass, the Seagallop will take you between Kanto and the first three islands, whenever you like."
   speaker "Bill"
-  say "We'll be at this for a while. Go and have a look around, {player}. The sailor at the harbour can take you back to Kanto too."
+  say "We'll be at this for a while. Say, {player}, could you run an errand for me while you look around?"
+  call GiveMeteorite
+  say "Go and have a look around, {player}. The sailor at the harbour can take you back to Kanto too."
   setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 1
+  endscene
+  end
+
+
+# Bill's Meteorite (a flag of ours: FireRed gives it in the meeting, which a game of plan 19 · K7 has played without it)
+script GiveMeteorite
+  setflag FLAG_GOT_METEORITE_FROM_BILL
+  give "Meteorite"
+  say "That's a Meteorite. A fellow who runs the game corner on Two Island has been wanting one for ages."
+  say "Would you take it to him? Celio's been meaning to send it over, but he can't leave the machine."
+  return
+
+
+# The machine works: the first step towards Bill on the column before it (the area's triggers 0 to 3, while the
+# variable is 2). Bill comes over to the player, and the two of them sail for Kanto
+script BillLeaves
+  scene "Bill sails home"
+  face player right
+  if var PLAYER_Y == 7 walk one_island_pokemon_center_bill down 1
+  if var PLAYER_Y == 8 walk one_island_pokemon_center_bill down 2
+  if var PLAYER_Y == 9 walk one_island_pokemon_center_bill down 3
+  walk one_island_pokemon_center_bill left 1
+  face one_island_pokemon_center_bill player
+  speaker "Bill"
+  say "{player}! You're back! Guess what? Celio and I got the machine talking to Kanto at last."
+  say "The PCs on the islands are linked with the ones at home now. My work here's done."
+  say "So I'm heading back to Kanto. Why don't you come along? I'll ride the Seagallop with you as far as Cinnabar."
+  speaker "Celio"
+  say "Bill, {player}, thank you both. I couldn't have done it without you."
+  say "{player}, come back and see me anytime. There's still so much I want to try with this machine."
+  setflag FLAG_HIDE_ONE_ISLAND_POKECENTER_BILL
+  setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 3
+  clearflag FLAG_HIDE_CINNABAR_BILL
+  setvar VAR_MAP_SCENE_CINNABAR_ISLAND 3
+  call SeagallopToCinnabar
   endscene
   end
 
@@ -45,7 +90,17 @@ label Meet
 script Bill
   face one_island_pokemon_center_bill player
   speaker "Bill"
+  if not flag FLAG_GOT_METEORITE_FROM_BILL goto Errand
+  if flag FLAG_SEVII_DETOUR_FINISHED goto Stroll
   say "Hmm, what if I connect this here... No, that's not it either. Don't worry, we'll crack it!"
+  if item "Meteorite" say "Did you take the Meteorite to the game corner on Two Island yet? The Seagallop will get you there."
+  end
+label Errand
+  say "Oh, {player}! I almost forgot. Could you run an errand for me?"
+  call GiveMeteorite
+  end
+label Stroll
+  say "You've been all the way to Three Island? Then you've seen more of the islands than me! Take your time, the machine's nearly there."
   end
 
 
@@ -53,8 +108,50 @@ script Celio
   face celio player
   speaker "Celio"
   if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 0 goto Busy
-  say "Bill's a genius. With his help, I'm sure the machine will link up with Kanto in no time."
-  end
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F <= 2 goto Working
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 3 goto Alone
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F == 4 goto Ruby
+  goto Sapphire
 label Busy
   say "Sorry, I'm in the middle of something. This machine is giving me no end of trouble."
+  end
+label Working
+  say "Bill's a genius. With his help, I'm sure the machine will link up with Kanto in no time."
+  end
+label Alone
+  if not nationaldex goto Modifying
+  say "{player}, your Pokédex... it's been upgraded to the National Pokédex! Then you'll be meeting Pokémon from far and wide."
+  say "Here's the thing. I want to link this machine to networks much farther away than Kanto. But it needs more power."
+  say "There's a gem called the Ruby that holds the power I need. It's said to lie somewhere deep inside Mt. Ember, at the north end of this island."
+  say "I know it's a lot to ask, but could you look for it? I'd go myself, but I'm no match for the Pokémon on that mountain."
+  setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 4
+  setvar VAR_MAP_SCENE_MT_EMBER_EXTERIOR 1
+  setflag FLAG_MT_EMBER_RUBY_PATH_OPEN
+  clearflag FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS
+  end
+label Modifying
+  say "Thanks to Bill, the islands' PCs are linked with Kanto. Now I'm trying to make the machine reach even farther."
+  end
+label Ruby
+  if not flag FLAG_GOT_RUBY goto Seeking
+  say "That glow... It's the Ruby! You found it on Mt. Ember? Thank you, {player}!"
+  say "Now, there's one more thing I need. Could I ask one more favour of you?"
+  ask "Will you help me again?"
+  if no goto NotYet
+  take "Ruby"
+  say "There's said to be another gem, the Sapphire, somewhere on the islands farther south. With both, the machine will be complete."
+  say "This pass will help. Take it in place of your Tri-Pass."
+  take "Tri-Pass"
+  give "Rainbow Pass"
+  say "With the Rainbow Pass, the Seagallop will take you to all seven islands. I'm counting on you!"
+  setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 5
+  end
+label NotYet
+  say "Oh... Please think it over, {player}. You're the only one I can ask. Keep the Ruby safe until then."
+  end
+label Seeking
+  say "The Ruby should be somewhere deep inside Mt. Ember. Please be careful on that mountain!"
+  end
+label Sapphire
+  say "The Sapphire should be on one of the islands farther south. The Seagallop will take you there with the Rainbow Pass."
   end

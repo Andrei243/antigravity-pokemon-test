@@ -10,9 +10,12 @@
     },
     {
       "en": [
-        "Welcome aboard the Seagallop! Have your Tri-Pass ready."
+        "Welcome aboard the Seagallop! Have your pass ready."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Bun venit la bordul Seagallop! Ține Tri-Permisul la îndemână."
       ]
     },
@@ -21,9 +24,19 @@
         "Where would you like to sail?",
         "VERMILION CITY",
         "CINNABAR ISLAND",
+        "TWO ISLAND",
+        "THREE ISLAND",
         "NOT NOW"
       ],
       "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "was": [
         "Încotro vrei să navigăm?",
         "ORAȘUL VERMILION",
         "INSULA CINNABAR",
@@ -56,10 +69,29 @@
     },
     {
       "en": [
+        "All aboard for Two Island!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Seagallop navighează doar pentru cei cu permis, mă tem. Celio, din Centrul Pokémon, te-ar putea ajuta."
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Three Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "The Seagallop sails only for holders of a pass, I'm afraid. Celio in the Pokémon Center might be able to help."
       ],
       "text": [
-        "Seagallop navighează doar pentru cei cu permis, mă tem. Celio, din Centrul Pokémon, te-ar putea ajuta."
+        ""
       ]
     }
   ]

@@ -97,6 +97,7 @@ public sealed class GbaWorld
             if (placed.Contains(map.Id)) continue;
             Matrices.Add(Stitch(map, Matrices.Count, placed, alone: StandIns.ContainsKey(map.Id)));
         }
+        foreach (var matrix in Matrices.Skip(1)) LayUnderItsRoutes(matrix);
         foreach (var matrix in Matrices)
         {
             Fill(matrix);
@@ -174,6 +175,41 @@ public sealed class GbaWorld
         };
 
     // ---------------------------------------------------------------- stitching
+
+    /// <summary>
+    /// A set of the sea floor's maps laid under the routes it lies under (plan 21 · H5): Emerald's underwater maps join
+    /// one another by ordinary connections and their routes only by <c>emerge</c>, so the reader stitches them into a
+    /// matrix of their own, from its own corner. Here that matrix is moved so that each floor's tiles have the
+    /// coordinates of the overworld's tiles above them (Emerald joins a sea and its floor tile for tile, as the two
+    /// layouts are the same size), and a dive lands on the same coordinates of another map. The matrix keeps its
+    /// number; its empty chunks are none, so it costs nothing to stand where it stands. A floor whose route disagrees
+    /// with where its neighbours put it is reported, and the first wins.
+    /// </summary>
+    private void LayUnderItsRoutes(GbaMatrix matrix)
+    {
+        if (Matrices.Count == 0 || matrix.Maps.Count == 0 || matrix.Maps.Any(p => p.Map.MapType != "MAP_TYPE_UNDERWATER")) return;
+        var overworld = Matrices[0];
+        (int X, int Y)? shift = null;
+        foreach (var p in matrix.Maps)
+            foreach (var c in p.Map.Connections.Where(c => c.Direction == "emerge"))
+            {
+                if (overworld.Maps.FirstOrDefault(o => o.Map.Id == c.Map) is not { } above) continue;
+                if (above.Layout.Width != p.Layout.Width || above.Layout.Height != p.Layout.Height)
+                {
+                    Problems.Add($"{p.Map.Name} emerges into {above.Map.Name}, which is another size: the floor isn't laid under it");
+                    continue;
+                }
+                var here = (X: above.X - p.X, Y: above.Y - p.Y);
+                if (shift == null) shift = here;
+                else if (shift != here)
+                    Problems.Add($"{p.Map.Name} lies under {above.Map.Name} {here.X - shift.Value.X},{here.Y - shift.Value.Y} tiles from where its neighbours put it: the first placed wins");
+            }
+        if (shift is not { } by || by.X < 0 || by.Y < 0) return;
+        var moved = matrix.Maps.Select(p => p with { X = p.X + by.X, Y = p.Y + by.Y }).ToList();
+        matrix.Maps.Clear();
+        matrix.Maps.AddRange(moved);
+        matrix.Allocate(moved.Max(p => p.X + p.Layout.Width), moved.Max(p => p.Y + p.Layout.Height));
+    }
 
     private GbaMatrix Stitch(GbaMap first, int id, HashSet<string> placed, bool alone = false)
     {

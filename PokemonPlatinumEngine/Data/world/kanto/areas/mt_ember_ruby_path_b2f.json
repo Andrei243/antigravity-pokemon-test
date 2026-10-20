@@ -1,0 +1,56 @@
+{
+  "key": "mt_ember_ruby_path_b2f",
+  "index": 147,
+  "name": "Mt Ember",
+  "matrix": 111,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "mt_ember_ruby_path_b2f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 40 },
+    { "species": "Slugma", "level": 26 },
+    { "species": "Geodude", "level": 42 },
+    { "species": "Slugma", "level": 24 },
+    { "species": "Slugma", "level": 28 },
+    { "species": "Slugma", "level": 30 },
+    { "species": "Geodude", "level": 44 },
+    { "species": "Slugma", "level": 32 },
+    { "species": "Geodude", "level": 44 },
+    { "species": "Slugma", "level": 22 },
+    { "species": "Geodude", "level": 44 },
+    { "species": "Slugma", "level": 22 }
+  ],
+  "landRate": 7,
+  "rockSmash": [
+    { "species": "Geodude", "level": 25, "maxLevel": 35 },
+    { "species": "Graveler", "level": 30, "maxLevel": 45 },
+    { "species": "Graveler", "level": 35, "maxLevel": 50 },
+    { "species": "Geodude", "level": 30, "maxLevel": 40 },
+    { "species": "Geodude", "level": 30, "maxLevel": 40 }
+  ],
+  "rockSmashRate": 50,
+  "warps": [
+    { "x": 1, "z": 7, "to": "mt_ember_ruby_path_b1f", "toWarp": 1 },
+    { "x": 13, "z": 9, "to": "mt_ember_ruby_path_b3f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 9, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 12, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_3", "looks": "pushable_boulder", "movement": "look_around", "x": 12, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "rock_smash_rock", "looks": "rock_smash_rock", "movement": "look_around", "x": 4, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_2", "looks": "rock_smash_rock", "movement": "look_around", "x": 1, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_3", "looks": "rock_smash_rock", "movement": "look_around", "x": 4, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_4", "looks": "rock_smash_rock", "movement": "look_around", "x": 5, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" }
+  ],
+  "signs": [],
+  "triggers": []
+}

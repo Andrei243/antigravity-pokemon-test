@@ -1,0 +1,80 @@
+{
+  "key": "dragons_den",
+  "index": 253,
+  "name": "Dragons Den",
+  "matrix": 146,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_RYUUNOANA",
+  "nightMusic": "GS_RYUUNOANA",
+  "encounters": "D44R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "water": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 },
+    { "species": "Dratini", "level": 5, "maxLevel": 15 },
+    { "species": "Dratini", "level": 5, "maxLevel": 15 },
+    { "species": "Dratini", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Dratini", "level": 20, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Dratini", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Dragonair", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 28, "z": 6, "to": "dragons_den_entrance", "toWarp": 1 },
+    { "x": 28, "z": 5, "to": "dragons_den_entrance", "toWarp": 1 },
+    { "x": 28, "z": 50, "to": "dragons_den_shrine", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d44r0102_gsleader8", "looks": "gsleader8", "movement": "17", "x": 24, "z": 14, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_VICTORY_ROAD_CLAIR", "script": "D44R0102_003+1" },
+    { "id": "d44r0102_gsman3", "looks": "gsman3", "movement": "0", "x": 30, "z": 10, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_ACE_TRAINER_M_KOBE" },
+    { "id": "d44r0102_gswoman3", "looks": "gswoman3", "movement": "0", "x": 12, "z": 20, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_ACE_TRAINER_F_PIPER" },
+    { "id": "d44r0102_gsbabygirl1", "looks": "gsbabygirl1", "movement": "0", "x": 6, "z": 30, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_TWINS_CLEA_AND_GIL" },
+    { "id": "d44r0102_gsbabygirl1_2", "looks": "gsbabygirl1", "movement": "0", "x": 6, "z": 31, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "std_trainer_2(TRAINER_TWINS_CLEA_AND_GIL)" },
+    { "id": "d44r0102_monstarball", "looks": "monstarball", "movement": "0", "x": 50, "z": 34, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D44R0102_DRAGON_FANG", "item": "Dragon Fang", "script": "std_itemball_d44r0102_dragon_fang" },
+    { "id": "d44r0102_gsrivel", "looks": "gsrivel", "movement": "15", "x": 25, "z": 41, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 131072, "hiddenBy": "FLAG_HIDE_CHAMPIONS_ROOM_RETREAT", "script": "D44R0102_001+1" },
+    { "id": "d44r0102_monstarball_2", "looks": "monstarball", "movement": "0", "x": 42, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D44R0102_CALCIUM", "item": "Calcium", "script": "std_itemball_d44r0102_calcium" },
+    { "id": "d44r0102_monstarball_3", "looks": "monstarball", "movement": "0", "x": 7, "z": 33, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D44R0102_MAX_ELIXIR", "item": "Max Elixir", "script": "std_itemball_d44r0102_max_elixir" },
+    { "id": "d44r0102_gsrivel_2", "looks": "gsrivel", "movement": "15", "x": 24, "z": 47, "facing": 1, "rangeX": 0, "rangeZ": 0, "y": 131072, "hiddenBy": "FLAG_HIDE_DRAGONS_DEN_RIVAL", "script": "0" },
+    { "id": "d44r0102_var_1", "looks": "var_1", "movement": "14", "x": 24, "z": 49, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 131072, "hiddenBy": "FLAG_HIDE_DRAGONS_DEN_RIVAL", "script": "0" },
+    { "id": "d44r0102_wataru", "looks": "wataru", "movement": "0", "x": 51, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d44r0102_gsleader8_2", "looks": "gsleader8", "movement": "0", "x": 53, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" }
+  ],
+  "signs": [
+    { "x": 14, "z": 12, "type": 2, "script": "std_hiddenitem_d44r0102_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D44R0102_REVIVE" },
+    { "x": 32, "z": 49, "type": 2, "script": "std_hiddenitem_d44r0102_max_elixir", "item": "Max Elixir", "flag": "FLAG_HIDDEN_ITEM_D44R0102_MAX_ELIXIR" },
+    { "x": 8, "z": 22, "type": 2, "script": "std_hiddenitem_d44r0102_max_potion", "item": "Max Potion", "flag": "FLAG_HIDDEN_ITEM_D44R0102_MAX_POTION" },
+    { "x": 31, "z": 41, "type": 1, "script": "D44R0102_005+1" }
+  ],
+  "triggers": [
+    { "x": 27, "z": 14, "width": 3, "depth": 1, "script": "D44R0102_000+1", "variable": "VAR_UNK_40C4", "value": "1" },
+    { "x": 24, "z": 43, "width": 2, "depth": 1, "script": "D44R0102_004+1", "variable": "VAR_UNK_40FC", "value": "1" }
+  ]
+}

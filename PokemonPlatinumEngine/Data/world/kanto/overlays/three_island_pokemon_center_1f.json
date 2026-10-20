@@ -1,0 +1,11 @@
+{
+  // Three Island's Pokémon Center (plan 19 · K9, part a)
+  "area": "three_island_pokemon_center_1f",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "three_island_nurse": { "name": "Nurse", "script": "Nurse" },
+    "rocker": { "name": "Guitarist", "dialog": [ "The bikers came over on a boat from Kanto. They say this island's too quiet for their liking." ] },
+    "lass": { "name": "Lass", "dialog": [ "Bond Bridge is so pretty at sunset. My friends and I cross it just to look." ] },
+    "sailor": { "name": "Sailor", "dialog": [ "I sail the Seagallop between the islands. Every island's got its own little ways." ] }
+  }
+}

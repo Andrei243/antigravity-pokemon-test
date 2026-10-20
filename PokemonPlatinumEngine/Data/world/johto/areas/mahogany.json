@@ -1,0 +1,39 @@
+{
+  "key": "mahogany",
+  "index": 87,
+  "name": "Mahogany Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_T_CHOUJI",
+  "nightMusic": "GS_T_CHOUJI",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 524, "z": 165, "to": "route_43_mahogany_gatehouse", "toWarp": 0 },
+    { "x": 525, "z": 165, "to": "route_43_mahogany_gatehouse", "toWarp": 0 },
+    { "x": 523, "z": 183, "to": "mahogany_gym_room_1", "toWarp": 0 },
+    { "x": 534, "z": 183, "to": "mahogany_pokecenter_1f", "toWarp": 0 },
+    { "x": 537, "z": 174, "to": "mahogany_east_house", "toWarp": 0 },
+    { "x": 528, "z": 174, "to": "mahogany_souvenir_shop", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t28_gsmiddleman1", "looks": "gsmiddleman1", "movement": "15", "x": 540, "z": 175, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_205", "script": "T28_000+1" },
+    { "id": "t28_gsoldman1", "looks": "gsoldman1", "movement": "5", "x": 523, "z": 175, "facing": 2, "rangeX": 1, "rangeZ": 0, "script": "T28_002+1" },
+    { "id": "t28_gsbigman", "looks": "gsbigman", "movement": "15", "x": 523, "z": 184, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1F9", "script": "T28_004+1" },
+    { "id": "t28_gsgirl1", "looks": "gsgirl1", "movement": "15", "x": 530, "z": 175, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN", "script": "T28_003+1" }
+  ],
+  "signs": [
+    { "x": 516, "z": 172, "type": 1, "script": "T28_006+1" },
+    { "x": 526, "z": 174, "type": 1, "script": "T28_007+1" },
+    { "x": 520, "z": 184, "type": 1, "script": "T28_008+1" }
+  ],
+  "triggers": [
+    { "x": 540, "z": 176, "width": 1, "depth": 2, "script": "T28_001+1", "variable": "VAR_UNK_407A", "value": "0" }
+  ]
+}

@@ -472,6 +472,127 @@ public class FieldMovementTests
         Assert.True(FieldMoveRules.SpotOf(map, 4, 6, North, new Walker(TravelMode.Surfing)).Whirlpool);
     }
 
+    // ------------------------------------------------------------------ the sea floor (plan 21 · H5)
+
+    /// <summary>
+    /// A sea one chunk across whose columns 3 and 4 are dark water, and a sea floor of sand under it: two maps of one
+    /// chunk each, the sea's area diving to the floor's map and the floor's coming up to the sea's.
+    /// </summary>
+    private static (Map Sea, Map Floor) SeaAndFloor()
+    {
+        var sea = new Map(32, 32) { Name = "Sea", WaterIsOneLevel = true };
+        var floor = new Map(32, 32) { Name = "Floor", Setting = MapSetting.Underwater, WaterIsOneLevel = true };
+        for (int y = 0; y < 32; y++)
+            for (int x = 0; x < 32; x++)
+            {
+                sea.SetGroundTile(x, y, TileType.Water);
+                sea.SetBehaviour(x, y, x is 3 or 4 ? TileBehavior.DiveWater : TileBehavior.Sea);
+                floor.SetGroundTile(x, y, TileType.Sand);
+                floor.SetBehaviour(x, y, TileBehavior.None);
+            }
+        sea.SetArea(0, 0, new MapArea { Key = "route_124", Open = true, Dive = "Floor" });
+        floor.SetArea(0, 0, new MapArea { Key = "underwater_route_124", Open = true, Emerge = "Sea" });
+        return (sea, floor);
+    }
+
+    [Fact]
+    public void ADiveGoesDownFromDarkWaterAndComesUpWhereTheFloorLetsIt()
+    {
+        var (sea, floor) = SeaAndFloor();
+        var diver = new Walker(TravelMode.Surfing, 0f, Moves: FieldMoves.Dive);
+
+        // Down from dark water, while surfing with the move, to the map below
+        Assert.True(FieldMovement.CanDive(sea, 3, 5, diver));
+        Assert.Equal("Floor", sea.DiveAt(3, 5));
+        // ...never from the open sea, without the move, on foot, or where the floor below isn't open yet
+        Assert.False(FieldMovement.CanDive(sea, 1, 5, diver));
+        Assert.False(FieldMovement.CanDive(sea, 3, 5, diver with { Moves = FieldMoves.Surf }));
+        Assert.False(FieldMovement.CanDive(sea, 3, 5, diver with { Mode = TravelMode.OnFoot }));
+        sea.AreaAt(3, 5)!.Open = false;
+        Assert.False(FieldMovement.CanDive(sea, 3, 5, diver));
+        sea.AreaAt(3, 5)!.Open = true;
+
+        // Up from anywhere on the floor but under rock or a ledge above, and only on the floor
+        Assert.True(FieldMovement.CanSurface(floor, 10, 5));
+        Assert.Equal("Sea", floor.EmergeAt(10, 5));
+        floor.SetBehaviour(10, 5, TileBehavior.Seaweed);
+        Assert.True(FieldMovement.CanSurface(floor, 10, 5));
+        floor.SetBehaviour(10, 5, TileBehavior.NoSurfacing);
+        Assert.False(FieldMovement.CanSurface(floor, 10, 5));
+        floor.SetBehaviour(10, 5, TileBehavior.SeaweedNoSurfacing);
+        Assert.False(FieldMovement.CanSurface(floor, 10, 5));
+        Assert.False(FieldMovement.CanSurface(sea, 3, 5));
+        // ...and onto open water above, never onto rock
+        Assert.True(FieldMovement.SurfacesOnto(sea, 10, 5));
+        sea.SetSolid(10, 5, true);
+        Assert.False(FieldMovement.SurfacesOnto(sea, 10, 5));
+
+        // A party that knows the move can do it
+        var party = new Party();
+        var clamperl = new Pokemon(PokemonDatabase.Get("Clamperl")!, 30);
+        clamperl.Moves.Clear();
+        clamperl.Moves.Add(new Move(MoveDatabase.Get("Dive")!));
+        party.Add(clamperl);
+        Assert.True(FieldMovement.MovesOf(party).HasFlag(FieldMoves.Dive));
+        Assert.True(FieldMoveRules.SpotOf(sea, 4, 6, North, new Walker(TravelMode.Surfing)).Dive);
+        Assert.False(FieldMoveRules.SpotOf(sea, 1, 6, North, new Walker(TravelMode.Surfing)).Dive);
+        Assert.True(FieldMoveRules.SpotOf(floor, 12, 6, North, new Walker(TravelMode.Diving)).Surface);
+    }
+
+    [Fact]
+    public void UnderTheSeaNobodyRunsHopsOrRides()
+    {
+        var (_, floor) = SeaAndFloor();
+        // A diver swims along the floor at a walk, running or not (Emerald's PlayerNotOnBikeMoving), and stays a diver
+        var swim = Step(floor, 10, 10, East, TravelMode.Diving, running: true);
+        AssertMoves(StepKind.Walk, 11, 10, swim);
+        Assert.Equal(Pace.Walk, swim.Pace);
+        Assert.Equal(TravelMode.Diving, swim.Mode);
+        // A ledge of the floor is a wall to a diver
+        floor.SetBehaviour(11, 10, TileBehavior.LedgeEast);
+        AssertBlocked(Obstacle.Ledge, Step(floor, 10, 10, East, TravelMode.Diving));
+        // No Bicycle under the sea
+        Assert.Equal(BicycleCheck.NotHere, BicycleRules.Check(floor, 10, 10, TravelMode.Diving, onCyclingRoad: false));
+
+        // A player put down on the floor swims there, whatever they were doing before
+        var player = new Player(5, 5);
+        player.SetMode(TravelMode.OnFoot);
+        Walk(player, floor, East);
+        Assert.Equal(TravelMode.Diving, player.Mode);
+        Assert.Equal((6, 5), (player.GridX, player.GridY));
+        // Coming up, they surf on; going down again, they swim
+        player.Surface();
+        Assert.Equal(TravelMode.Surfing, player.Mode);
+        player.StartDive();
+        Assert.Equal(TravelMode.Diving, player.Mode);
+    }
+
+    [Fact]
+    public void WildPokemonOfTheSeaFloorLiveInItsSeaweed()
+    {
+        var (_, floor) = SeaAndFloor();
+        var area = floor.AreaAt(0, 0)!;
+        area.WaterEncounters.Add(new WildEncounterEntry { SpeciesName = "Clamperl", MinLevel = 20, MaxLevel = 30, Weight = 100 });
+        area.WaterRate = 100;
+        for (int x = 0; x < 32; x++) floor.SetBehaviour(x, 20, TileBehavior.Seaweed);
+
+        int Met(int row)
+        {
+            int met = 0;
+            var player = new Player(2, row);
+            for (int lap = 0; lap < 6; lap++)
+                for (int step = 0; step < 20; step++)
+                    Walk(player, floor, lap % 2 == 0 ? East : West, wild => { Assert.Equal("Clamperl", wild.SpeciesName); met++; });
+            return met;
+        }
+        // In the seaweed the area's water table, and on the bare sand nothing
+        Assert.True(Met(20) > 0);
+        Assert.Equal(0, Met(10));
+        Assert.True(TileBehaviors.HasEncounters(TileBehavior.Seaweed));
+        Assert.True(TileBehaviors.HasEncounters(TileBehavior.SeaweedNoSurfacing));
+        Assert.False(TileBehaviors.HasEncounters(TileBehavior.NoSurfacing));
+    }
+
     // ------------------------------------------------------------------ rock faces
 
     [Fact]

@@ -1,0 +1,26 @@
+{
+  "key": "route_42_ecruteak_gatehouse",
+  "index": 132,
+  "name": "Route 42",
+  "matrix": 70,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_7_42",
+  "nightMusic": "GS_R_7_42",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 1, "z": 7, "to": "ecruteak", "toWarp": 10 },
+    { "x": 10, "z": 7, "to": "route_42", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r42r0101_counterm", "looks": "counterm", "movement": "15", "x": 5, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R42R0101_001+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

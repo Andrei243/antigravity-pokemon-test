@@ -1,0 +1,32 @@
+{
+  "key": "one_island_kindle_road_ember_spa",
+  "index": 222,
+  "name": "Ember Spa",
+  "matrix": 186,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FUCHSIA",
+  "nightMusic": "MUS_FUCHSIA",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 36, "to": "one_island_kindle_road", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "look_south", "x": 11, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "OneIsland_KindleRoad_EmberSpa_EventScript_OldMan" },
+    { "id": "balding_man", "looks": "balding_man", "movement": "look_south_and_east", "x": 15, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "OneIsland_KindleRoad_EmberSpa_EventScript_BaldingMan1" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "wander_west_and_east", "x": 6, "z": 8, "facing": 2, "rangeX": 2, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "OneIsland_KindleRoad_EmberSpa_EventScript_BlackBelt" },
+    { "id": "old_woman", "looks": "old_woman", "movement": "look_south", "x": 20, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "OneIsland_KindleRoad_EmberSpa_EventScript_OldWoman" },
+    { "id": "old_man_1_2", "looks": "old_man_1", "movement": "look_south", "x": 10, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "OneIsland_KindleRoad_EmberSpa_EventScript_RockSmashMan" },
+    { "id": "balding_man_2", "looks": "balding_man", "movement": "wander_west_and_east", "x": 11, "z": 20, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "OneIsland_KindleRoad_EmberSpa_EventScript_BaldingMan2" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 13, "z": 13, "width": 1, "depth": 1, "script": "OneIsland_KindleRoad_EmberSpa_EventScript_SpaHeal", "variable": "VAR_TEMP_1", "value": "0" }
+  ]
+}

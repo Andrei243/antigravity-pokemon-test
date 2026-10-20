@@ -559,6 +559,42 @@
       ]
     }
   ],
+  "Dive": [
+    {
+      "en": [
+        "The water here is dark and very deep. Use Dive to go down?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The water here is dark and very deep. A Pokémon might be able to dive into it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Surface": [
+    {
+      "en": [
+        "Sunlight shimmers on the water far overhead. Use Dive to swim up?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Sunlight shimmers on the water far overhead. A Pokémon might be able to swim up to it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "UseDefog": [
     {
       "en": [

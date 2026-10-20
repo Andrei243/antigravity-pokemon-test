@@ -195,6 +195,7 @@ public static class GbaImport
     {
         "MAP_TYPE_INDOOR" or "MAP_TYPE_SECRET_BASE" => MapSetting.Indoors,
         "MAP_TYPE_UNDERGROUND" => MapSetting.Cave,
+        "MAP_TYPE_UNDERWATER" => MapSetting.Underwater,
         _ => MapSetting.Outdoors
     };
 

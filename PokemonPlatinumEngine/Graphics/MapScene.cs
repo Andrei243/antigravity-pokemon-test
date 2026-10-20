@@ -251,6 +251,7 @@ internal sealed class MapScene
             scene.AddFaces(batches);
             scene.AddTrees(batches);
             scene.AddTallGrass(batches.For(SceneTextures.TallGrass, MeshPass.Ground));
+            if (map.IsUnderwater) scene.AddKelp(batches.For(SceneTextures.Kelp, MeshPass.Ground));
             scene.AddLawnDetail(batches);
             scene.AddLedges(batches);
 
@@ -800,6 +801,32 @@ internal sealed class MapScene
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// The sea floor's kelp (plan 21 · H5; style guide, "The sea floor"): one row of fronds a tile tall standing
+    /// across the middle of each kelp tile, in two pieces so the tops bend round a diver as tall grass does, and
+    /// sway with it. In the ground pass, so it takes shadows and casts none.
+    /// </summary>
+    private void AddKelp(MeshBuilder b)
+    {
+        float h = 1f * VS;
+        var normal = Vector3.Normalize(new Vector3(0, 0.7f, 0.7f));
+        var top = MeshBuilder.Sway(Color.White, 1f);
+        for (int ty = content.Y; ty < content.Bottom; ty++)
+            for (int tx = content.X; tx < content.Right; tx++)
+            {
+                if (Map.GetGroundTile(tx, ty) != TileType.Kelp) continue;
+                float z = ty + 0.5f;
+                for (int piece = 0; piece < 2; piece++)
+                {
+                    float u0 = piece * 0.5f, u1 = u0 + 0.5f;
+                    float x0 = tx + u0, x1 = x0 + 0.5f;
+                    float y0 = Y(tx + 0.5f, z);
+                    b.Quad(new(x0, y0, z), new(x1, y0, z), new(x1, y0 + h, z), new(x0, y0 + h, z),
+                        new(u0, 1), new(u1, 1), new(u1, 0), new(u0, 0), Color.White, top, normal);
+                }
+            }
     }
 
     /// <summary>Grass tufts scattered on lawns and flowers standing in the flower beds, placed on the texel grid.</summary>

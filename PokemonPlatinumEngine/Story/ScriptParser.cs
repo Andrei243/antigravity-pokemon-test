@@ -478,6 +478,8 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Surf, Line = line };
             case "climb":
                 return new Instruction { Op = Op.Climb, Line = line };
+            case "dive":
+                return new Instruction { Op = Op.Dive, Line = line };
             case "fly":
                 return new Instruction { Op = Op.Fly, Line = line };
             case "teleport":

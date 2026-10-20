@@ -1,0 +1,100 @@
+{
+  "key": "dark_cave_route_31_side",
+  "index": 176,
+  "name": "Dark Cave",
+  "matrix": 99,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "11",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D42R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 3 },
+    { "species": "Zubat", "level": 2 },
+    { "species": "Geodude", "level": 3 },
+    { "species": "Zubat", "level": 2 },
+    { "species": "Geodude", "level": 2 },
+    { "species": "Geodude", "level": 2 },
+    { "species": "Geodude", "level": 4 },
+    { "species": "Geodude", "level": 4 },
+    { "species": "Zubat", "level": 3 },
+    { "species": "Zubat", "level": 4 },
+    { "species": "Zubat", "level": 3 },
+    { "species": "Dunsparce", "level": 4 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 },
+    { "species": "Magikarp", "level": 2, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 2, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 2, "maxLevel": 10 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "rockSmash": [
+    { "species": "Dunsparce", "level": 4, "maxLevel": 8 },
+    { "species": "Geodude", "level": 8, "maxLevel": 14 }
+  ],
+  "rockSmashRate": 50,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 5, "z": 26, "to": "route_31", "toWarp": 2 },
+    { "x": 26, "z": 4, "to": "dark_cave_route_45_side", "toWarp": 0 },
+    { "x": 55, "z": 56, "to": "route_46", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "everywhere_rock", "looks": "rock", "movement": "0", "x": 28, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "everywhere_breakrock", "looks": "breakrock", "movement": "0", "x": 17, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_011", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_2", "looks": "breakrock", "movement": "0", "x": 40, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_012", "script": "std_field_rock_smash" },
+    { "id": "everywhere_breakrock_3", "looks": "breakrock", "movement": "0", "x": 55, "z": 53, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_013", "script": "std_field_rock_smash" },
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 10, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D42R0102_POTION", "item": "Potion", "script": "std_itemball_d42r0102_potion" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 51, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D42R0102_HYPER_POTION", "item": "Hyper Potion", "script": "std_itemball_d42r0102_hyper_potion" },
+    { "id": "everywhere_monstarball_3", "looks": "monstarball", "movement": "0", "x": 56, "z": 43, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D42R0102_FULL_HEAL", "item": "Full Heal", "script": "std_itemball_d42r0102_full_heal" },
+    { "id": "everywhere_monstarball_4", "looks": "monstarball", "movement": "0", "x": 46, "z": 51, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D42R0102_DIRE_HIT", "item": "Dire Hit", "script": "std_itemball_d42r0102_dire_hit" },
+    { "id": "everywhere_monstarball_5", "looks": "monstarball", "movement": "0", "x": 17, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D42R0102_BLACK_FLUTE", "item": "Black Flute", "script": "std_itemball_d42r0102_black_flute" },
+    { "id": "everywhere_breakrock_4", "looks": "breakrock", "movement": "0", "x": 17, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_MAPTEMP_010", "script": "std_field_rock_smash" }
+  ],
+  "signs": [
+    { "x": 12, "z": 11, "type": 2, "script": "std_hiddenitem_d42r0102_poke_ball", "item": "Poké Ball", "flag": "FLAG_HIDDEN_ITEM_D42R0102_POKE_BALL" },
+    { "x": 59, "z": 26, "type": 2, "script": "std_hiddenitem_d42r0102_max_ether", "item": "Max Ether", "flag": "FLAG_HIDDEN_ITEM_D42R0102_MAX_ETHER" }
+  ],
+  "triggers": []
+}

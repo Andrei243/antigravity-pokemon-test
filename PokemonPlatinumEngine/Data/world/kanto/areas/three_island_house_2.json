@@ -1,0 +1,26 @@
+{
+  "key": "three_island_house_2",
+  "index": 397,
+  "name": "Three Island",
+  "matrix": 344,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_123",
+  "nightMusic": "MUS_SEVII_123",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "three_island", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "rocker", "looks": "rocker", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_House2_EventScript_Rocker" },
+    { "id": "man", "looks": "man", "movement": "look_west", "x": 7, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_House2_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}

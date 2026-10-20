@@ -1,0 +1,78 @@
+{
+  "displayName": {
+    "en": [
+      "Joyful Game Corner"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "joyful_game_corner_daddy": {
+      "name": {
+        "en": [
+          "Lostelle's Daddy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "joyful_game_corner_biker": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Outta my way!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "joyful_game_corner_lostelle": {
+      "name": {
+        "en": [
+          "Lostelle"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "TwoIsland_JoyfulGameCorner_EventScript_ShowPokemonJumpRecords": {
+      "en": [
+        "A board for the records of the game corner's games. It's blank for now."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "TwoIsland_JoyfulGameCorner_EventScript_ShowDodrioBerryPickingRecords": {
+      "en": [
+        "A board for the records of the game corner's games. It's blank for now."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

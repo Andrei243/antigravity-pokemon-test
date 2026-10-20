@@ -1,0 +1,6 @@
+{
+  // The summit path, its third floor (plan 19 · K9, part a): out onto the slopes below the summit
+  "area": "mt_ember_summit_path_3f",
+  "name": "Mt. Ember",
+  "bgmTrack": "kanto/sevii_cave"
+}

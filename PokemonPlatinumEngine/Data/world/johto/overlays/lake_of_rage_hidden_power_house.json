@@ -1,0 +1,14 @@
+{
+  // A house by the Lake of Rage (plan 20 · J10). Its man only talks: the TM he gives in HeartGold waits for a later session
+  "area": "lake_of_rage_hidden_power_house",
+  "bgmTrack": "johto/route42",
+  "people": {
+    "t29r0101_gsbigman": {
+      "name": "Man",
+      "dialog": [
+        "Every Pokémon has a power hidden inside it. Its type depends on the Pokémon itself!",
+        "I sit here and meditate on it. Mostly I just sit here."
+      ]
+    }
+  }
+}

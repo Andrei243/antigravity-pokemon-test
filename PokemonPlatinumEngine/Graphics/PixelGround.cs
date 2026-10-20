@@ -67,6 +67,9 @@ internal static class PixelGround
         new(TileType.ForestMouth, new(34, 40, 30, 255), new(42, 50, 36, 255), new(20, 24, 18, 255), new(28, 34, 24, 255), 80),
         // A puddle: the sky dimmed by the mud under it, a rim of wet earth (style guide, "Puddles")
         new(TileType.Puddle, new(112, 142, 170, 255), new(138, 168, 194, 255), new(92, 80, 68, 255), new(196, 218, 232, 255), 81),
+        // The sea floor's bed of weed, where the kelp stands: the seabed's sand darkened and greened by it (style
+        // guide, "The sea floor"; plan 21 · H5). It goes before the Distortion World's stone, which stays the last
+        new(TileType.Kelp, new(150, 156, 112, 255), new(166, 170, 124, 255), new(108, 120, 84, 255), new(92, 112, 76, 255), 83),
         // The grey-violet stone of the Distortion World's islands (style guide, "The Distortion World")
         new(TileType.DistortionGround, new(122, 112, 138, 255), new(136, 126, 152, 255), new(84, 74, 100, 255), new(100, 90, 118, 255), 82)
     };
@@ -137,7 +140,8 @@ internal static class PixelGround
         bool icy = map.Interior == InteriorStyle.Gym && map.ArenaType == Data.PokemonType.Ice;
         // And a hall floored with sand (Bertha's room of the League) has sand under everything: no lawn shows where the
         // rounded corners of its rock meet
-        bool dusty = map.Interior == InteriorStyle.Gym && map.ArenaType == Data.PokemonType.Ground;
+        // and the sea floor has sand under everything (plan 21 · H5)
+        bool dusty = (map.Interior == InteriorStyle.Gym && map.ArenaType == Data.PokemonType.Ground) || map.IsUnderwater;
         TileType? TypeAt(int tx, int ty)
         {
             var type = GroundBaker.TypeAt(map, tx + originX, ty + originY);
@@ -762,6 +766,11 @@ internal static class PixelGround
                     // A glint: a short stroke, or a ring two texels across
                     if (k == 0) { c.SetRaw(x, y, kind.Mark); c.SetRaw(x + 1, y, kind.Mark); c.SetRaw(x + 2, y, kind.Mark); }
                     else { c.SetRaw(x + 1, y, kind.Mark); c.SetRaw(x, y + 1, kind.Mark); c.SetRaw(x + 2, y + 1, kind.Mark); c.SetRaw(x + 1, y + 2, kind.Mark); }
+                    break;
+                case TileType.Kelp:
+                    // A holdfast: a dark knot with two roots splayed from it
+                    c.SetRaw(x + 1, y, kind.Mark); c.SetRaw(x + 2, y, kind.Mark);
+                    c.SetRaw(x, y + 1, kind.Mark); c.SetRaw(x + 3, y + 1, kind.Mark);
                     break;
                 case TileType.Marsh:
                     // A wet patch: a flat oval with one light texel

@@ -790,6 +790,58 @@ public class KantoTests
             Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists(song), song);
     }
 
+    // ------------------------------------------------------------------ plan 19 · K9, part a: the first Sevii Islands
+
+    [Fact]
+    public void KindleRoadMtEmberAndTwoAndThreeIslandAreOpenAndWalkedTo()
+    {
+        var walked = Walked.Value;
+        // The Seagallop's sailors sail on to Two and Three Island, and every room and cave of the three islands is walked into
+        foreach (string room in new[] { "OneIsland_KindleRoad_EmberSpa", "MtEmber_Exterior", "MtEmber_SummitPath_1F", "MtEmber_SummitPath_2F",
+                     "MtEmber_SummitPath_3F", "MtEmber_Summit", "MtEmber_RubyPath_1F", "MtEmber_RubyPath_B1F", "MtEmber_RubyPath_B2F",
+                     "MtEmber_RubyPath_B3F", "MtEmber_RubyPath_B4F", "MtEmber_RubyPath_B5F", "MtEmber_RubyPath_B1F_Stairs",
+                     "MtEmber_RubyPath_B2F_Stairs", "TwoIsland", "TwoIsland_JoyfulGameCorner", "TwoIsland_House", "TwoIsland_PokemonCenter_1F",
+                     "TwoIsland_PokemonCenter_2F", "TwoIsland_Harbor", "TwoIsland_CapeBrink_House", "ThreeIsland", "ThreeIsland_BerryForest",
+                     "ThreeIsland_DunsparceTunnel", "ThreeIsland_House1", "ThreeIsland_PokemonCenter_1F", "ThreeIsland_PokemonCenter_2F",
+                     "ThreeIsland_Mart", "ThreeIsland_House2", "ThreeIsland_House3", "ThreeIsland_House4", "ThreeIsland_House5", "ThreeIsland_Harbor" })
+        {
+            Assert.True(walked.Keys.Any(m => m.Name == room), $"nobody walks into {room}");
+            Assert.Contains(room, RegionDatabase.Get(RegionDatabase.Kanto)!.Maps);
+        }
+        // The islands' outdoors, each a map of its own matrix with several areas on it
+        foreach (var (map, keys) in new[] { ("OneIsland", new[] { "one_island", "one_island_kindle_road", "one_island_treasure_beach" }),
+                     ("TwoIsland", new[] { "two_island", "two_island_cape_brink" }), ("ThreeIsland", new[] { "three_island", "three_island_bond_bridge", "three_island_port" }) })
+        {
+            var tiles = walked.Single(kv => kv.Key.Name == map).Value;
+            foreach (string key in keys)
+                Assert.True(tiles.Any(t => BuiltMaps.Value[map].AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to");
+        }
+        // The Ruby Path's mouth opens only once Celio has asked for the Ruby (one_island_pokemon_center_1f.txt)
+        var mouth = Assert.Single(BuiltMaps.Value["MtEmber_Exterior"].Warps, w => w.TargetMap == "MtEmber_RubyPath_1F");
+        Assert.Equal("FLAG_MT_EMBER_RUBY_PATH_OPEN", mouth.OpenedBy);
+        Assert.False(BuiltMaps.Value["MtEmber_RubyPath_1F"].IsSolid(22, 16));
+    }
+
+    [Fact]
+    public void TheIslandsBuildInTheirOwnWayAndTheirLooksSongsAndItemsAreThere()
+    {
+        foreach (string key in new[] { "two_island", "three_island" })
+            Assert.Equal(Architecture.Isle, Kanto.Overlay(key)!.Architecture);
+        foreach (string look in new[] { "biker", "little_girl", "balding_man", "crush_girl", "black_belt", "woman_2", "tuber_f", "fat_man" })
+            Assert.True(CharacterStyles.Default.Has(look), look);
+        Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists("kanto/sevii_cave"));
+        Assert.Equal("kanto/sevii_cave", Kanto.Overlay("mt_ember_exterior")!.BgmTrack);
+        // FireRed's two key items of the errand, and the Two Island stall's three stocks
+        foreach (string item in new[] { "Ruby", "Rainbow Pass", "Meteorite", "Tri-Pass" })
+            Assert.Equal(ItemPocket.KeyItems, ItemDatabase.Get(item)!.Pocket);
+        foreach (string stall in new[] { "two_island_1", "two_island_2", "two_island_3" })
+            Assert.All(MartDatabase.Specialties[stall], i => Assert.NotNull(ItemDatabase.Get(i)));
+        Assert.Equal(new[] { "Great Ball", "Fresh Water" }, MartDatabase.Specialties["two_island_1"]);
+        // Moltres stands on Mt. Ember's summit behind FireRed's flag
+        var moltres = Assert.Single(BuiltMaps.Value["MtEmber_Summit"].Everyone, n => n.Species == "Moltres");
+        Assert.Equal("FLAG_HIDE_MOLTRES", moltres.HiddenBy);
+    }
+
     // ------------------------------------------------------------------ plan 19 · K8: the way on and Kanto's own songs
 
     [Fact]

@@ -5,7 +5,7 @@
         "Wally's Father"
       ],
       "text": [
-        ""
+        "Tatăl lui Wally"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}, forgive me for hurrying you off like that. But I had to thank you properly."
       ],
       "text": [
-        ""
+        "{player}, iartă-mă că te-am luat așa în grabă. Dar trebuia să-ți mulțumesc cum se cuvine."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Wally's grown so much healthier since he went to Verdanturf. And it all began with the Pokémon you helped him catch."
       ],
       "text": [
-        ""
+        "Wally s-a făcut mult mai sănătos de când a plecat la Verdanturf. Și totul a început cu Pokémonul pe care l-ai ajutat să-l prindă."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "That made him happier than I've seen him in years. And it made me happy too, as his father, that he has a friend like you."
       ],
       "text": [
-        ""
+        "L-a făcut mai fericit decât l-am văzut de ani de zile. Iar pe mine, ca tată, m-a bucurat că are un prieten ca tine."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "It isn't much of a thank-you, but please take this."
       ],
       "text": [
-        ""
+        "Nu e prea mult pentru o mulțumire, dar te rog, ia asta."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "HM03 holds Surf. A Pokémon that knows it can carry you over the water, to all sorts of places you couldn't reach before."
       ],
       "text": [
-        ""
+        "HM03 conține Surf. Un Pokémon care o știe te poate duce peste apă, în tot felul de locuri unde nu puteai ajunge înainte."
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Wally's Father"
       ],
       "text": [
-        ""
+        "Tatăl lui Wally"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Ah, you must be {player}. Thank you for looking after our Wally earlier."
       ],
       "text": [
-        ""
+        "A, tu trebuie să fii {player}. Mulțumesc că ai avut grijă de Wally al nostru mai devreme."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "He's been frail since he was a baby, so we've sent him to my relatives in Verdanturf Town. The air there is much cleaner."
       ],
       "text": [
-        ""
+        "E fragil de când era bebeluș, așa că l-am trimis la rudele mele din Orășelul Verdanturf. Acolo aerul e mult mai curat."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "He's already set off, you see. I wonder how far he's got by now?"
       ],
       "text": [
-        ""
+        "A și plecat, vezi tu. Mă întreb până unde a ajuns acum."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "I wonder how our Wally is getting on."
       ],
       "text": [
-        ""
+        "Mă întreb cum o duce Wally al nostru."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Wally will be coming home soon. I can hardly wait."
       ],
       "text": [
-        ""
+        "Wally se întoarce acasă în curând. Abia aștept."
       ]
     }
   ],
@@ -105,7 +105,7 @@
         "Wally's Mother"
       ],
       "text": [
-        ""
+        "Mama lui Wally"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Wally was so happy when he told us he'd caught a Pokémon. I hadn't seen him smile like that in ages."
       ],
       "text": [
-        ""
+        "Wally a fost atât de fericit când ne-a spus că a prins un Pokémon. Nu-l mai văzusem zâmbind așa de mult timp."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Don't tell my husband, but Wally has gone off from Verdanturf without a word to anyone."
       ],
       "text": [
-        ""
+        "Să nu-i spui soțului meu, dar Wally a plecat din Verdanturf fără să spună nimănui."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "He's frail, but he's stubborn too. I'm sure he'll come home safe and sound one day."
       ],
       "text": [
-        ""
+        "E fragil, dar și încăpățânat. Sunt sigură că va veni într-o zi acasă sănătos și teafăr."
       ]
     }
   ]

@@ -16,7 +16,7 @@ internal static class WorldWalk
 {
     private static readonly Direction[] Ways = { Direction.Up, Direction.Right, Direction.Left, Direction.Down };
 
-    private const FieldMoves Everything = FieldMoves.Surf | FieldMoves.Waterfall | FieldMoves.RockClimb | FieldMoves.Whirlpool;
+    private const FieldMoves Everything = FieldMoves.Surf | FieldMoves.Waterfall | FieldMoves.RockClimb | FieldMoves.Whirlpool | FieldMoves.Dive;
 
     /// <summary>The tiles reached on each map, from one place or several.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> From(Func<string, Map> mapOf, params MapSpot[] starts)
@@ -112,6 +112,21 @@ internal static class WorldWalk
                 var below = mapOf("Underground");
                 if (below.Name == "Underground" && below.InBounds(bx, bz) && !below.IsSolid(bx, bz))
                     Visit(below, bx, bz, TravelMode.OnFoot, below.HeightAt(bx, bz), arrived: true);
+            }
+
+            // Dive takes a surfer on dark water down to the same tile of the sea floor under it, and a diver back up to
+            // the same tile of the sea above wherever the floor lets them (plan 21 · H5)
+            if (mode == TravelMode.Surfing && FieldMovement.CanDive(map, x, y, new Walker(mode, height, Moves: Everything)))
+            {
+                var below = mapOf(map.DiveAt(x, y)!);
+                if (below.InBounds(x, y) && !below.IsSolid(x, y))
+                    Visit(below, x, y, TravelMode.Diving, below.HeightAt(x, y), arrived: false);
+            }
+            if (mode == TravelMode.Diving && FieldMovement.CanSurface(map, x, y))
+            {
+                var above = mapOf(map.EmergeAt(x, y)!);
+                if (FieldMovement.SurfacesOnto(above, x, y))
+                    Visit(above, x, y, TravelMode.Surfing, above.SurfaceAt(x, y, above.HeightAt(x, y)).Height, arrived: false);
             }
 
             // A platform of the League's (plan 01 · M9, part 2d) carries whoever steps onto it at the foot of its
@@ -258,7 +273,17 @@ internal static class WorldWalk
         new("Sinnoh", 152, 277, Direction.Right),
     };
 
+    /// <summary>
+    /// Places of a region opened before the way to them: a walk of the whole game sets out from these too, until the
+    /// session that opens the way takes its line out. Route 124 (plan 21 · H5, the sea over Dive's first floor) is
+    /// reached by sea from Lilycove City, which is plan 21 · H7's: the sand before the treasure hunter's house.
+    /// </summary>
+    public static readonly MapSpot[] OpenedAhead =
+    {
+        new("Hoenn", 630, 109, Direction.Down),
+    };
+
     /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> FromEveryStart(Func<string, Map> mapOf) =>
-        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).Concat(StoryArrivals).ToArray());
+        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).Concat(StoryArrivals).Concat(OpenedAhead).ToArray());
 }

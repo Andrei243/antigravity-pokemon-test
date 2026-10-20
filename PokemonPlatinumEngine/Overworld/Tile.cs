@@ -73,7 +73,12 @@ public enum TileType : byte
     /// A pale slab set into an island, where the Distortion World carries the player somewhere else: a slab that
     /// rises or sinks to another floor, a stone that ferries across the drop, the foot of a wall walked sideways.
     /// </summary>
-    DistortionSlab
+    DistortionSlab,
+    /// <summary>
+    /// Kelp on the sea floor (plan 21 · H5; style guide, "The sea floor"): the floor's sand with fronds standing in it
+    /// that sway like tall grass, where the GBA's seaweed is and wild Pokémon live.
+    /// </summary>
+    Kelp
 }
 
 /// <summary>What a map of the imported world is where nothing else is said (plan 01 · M5).</summary>
@@ -95,9 +100,9 @@ public enum MapSetting
     /// </summary>
     Indoors,
     /// <summary>
-    /// The sea floor under Hoenn's eastern routes (plan 21): reached by Dive from the tile of deep water above it. A
-    /// value only since plan 21 · H1; no map is made with it until H5 builds the dive, its light and its kelp, and
-    /// until then the builder treats it as open country.
+    /// The sea floor under Hoenn's eastern routes (plan 21 · H5): reached by Dive from the tile of deep water above it,
+    /// with the same coordinates. Rock where no chunk says otherwise, sand where the import couldn't name the floor,
+    /// kelp on the seaweed; a light of its own whatever the hour (<c>ArtLook.UnderwaterFieldRig</c>), no weather.
     /// </summary>
     Underwater
 }
@@ -226,6 +231,10 @@ public enum Architecture
     Seaport,
     /// <summary>Pale stone under sea-green gable roofs with a chimney: the island town of the pharmacy and the fighters (Cianwood, plan 20 · J8).</summary>
     Cliffside,
+    /// <summary>Dark logs under moss-green hipped roofs with a chimney: the small mountain town of the souvenir shop and the ice Gym (Mahogany, plan 20 · J10).</summary>
+    Upland,
+    /// <summary>Grey cut stone under dragon-blue gable roofs with shutters and a chimney: the walled city of the dragon tamers (Blackthorn, plan 20 · J10).</summary>
+    Dragonstone,
 
     // Hoenn (plan 21): each town's own way of building, a row of the style guide's "Buildings" first
     /// <summary>Boards under leaf-green gable roofs with a chimney and flower boxes: the little town where the grass starts (Littleroot, plan 21 · H1).</summary>

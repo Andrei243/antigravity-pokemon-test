@@ -266,6 +266,30 @@
     "description": "A pass for the Seagallop ferry. It lets its holder sail to One, Two and Three Island.",
     "cantBeTossed": true
   },
+  // Plan 19 · K9, part a: the gem Celio sends the player into Mt. Ember for, and the pass he gives for it, which the
+  // Seagallop takes to all seven islands (FireRed's ITEM_RUBY and ITEM_RAINBOW_PASS)
+  "Ruby": {
+    "id": 9035,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A deep red gem found far under Mt. Ember. It glows with a warmth of its own.",
+    "cantBeTossed": true
+  },
+  "Rainbow Pass": {
+    "id": 9036,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A pass for the Seagallop ferry. It lets its holder sail to all seven of the Sevii Islands.",
+    "cantBeTossed": true
+  },
   // The orbs of Primal Reversion (plan 06 · R20): PokeAPI's words are a story's; ours say what they do when held
   "Blue Orb": {
     "description": "Held by Kyogre, it brings out its primal form when it enters battle."

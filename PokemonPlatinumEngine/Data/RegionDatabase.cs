@@ -397,6 +397,15 @@ public static class RegionDatabase
                 "PokemonLeague_AgathasRoom", "PokemonLeague_LancesRoom", "PokemonLeague_ChampionsRoom",
                 "PokemonLeague_HallOfFame", "OneIsland", "OneIsland_PokemonCenter_1F", "OneIsland_PokemonCenter_2F",
                 "OneIsland_House1", "OneIsland_House2", "OneIsland_Harbor",
+                // Plan 19 · K9, part a: the Ember Spa, Mt. Ember, Two Island and Three Island with their rooms
+                "OneIsland_KindleRoad_EmberSpa", "MtEmber_Exterior", "MtEmber_SummitPath_1F", "MtEmber_SummitPath_2F",
+                "MtEmber_SummitPath_3F", "MtEmber_Summit", "MtEmber_RubyPath_1F", "MtEmber_RubyPath_B1F",
+                "MtEmber_RubyPath_B2F", "MtEmber_RubyPath_B3F", "MtEmber_RubyPath_B4F", "MtEmber_RubyPath_B5F",
+                "MtEmber_RubyPath_B1F_Stairs", "MtEmber_RubyPath_B2F_Stairs", "TwoIsland", "TwoIsland_JoyfulGameCorner",
+                "TwoIsland_House", "TwoIsland_PokemonCenter_1F", "TwoIsland_PokemonCenter_2F", "TwoIsland_Harbor",
+                "TwoIsland_CapeBrink_House", "ThreeIsland", "ThreeIsland_BerryForest", "ThreeIsland_DunsparceTunnel",
+                "ThreeIsland_House1", "ThreeIsland_PokemonCenter_1F", "ThreeIsland_PokemonCenter_2F", "ThreeIsland_Mart",
+                "ThreeIsland_House2", "ThreeIsland_House3", "ThreeIsland_House4", "ThreeIsland_House5", "ThreeIsland_Harbor",
             }
         },
         new()
@@ -456,6 +465,15 @@ public static class RegionDatabase
                 // Plan 20 · J8, part b, and J9, part b: Route 47's gate, Cliff Cave and the Safari Zone with its gate
                 "CliffEdgeGate", "CliffCave", "SafariZoneGate_PokemonCenter_1F", "SafariZoneGate_PokemonCenter_B1F",
                 "SafariZone_Gate", "SafariZone",
+                // Plan 20 · J10, part a: the north, from Route 42's gate to the Dragon's Den and the Dark Cave
+                "Route42_EcruteakGate", "MtMortar_1F", "MtMortar_1F_Back", "MtMortar_2F", "MtMortar_B1F",
+                "Mahogany_PokemonCenter_1F", "Mahogany_PokemonCenter_B1F", "Mahogany_SouvenirShop", "Mahogany_EastHouse",
+                "Mahogany_Gym", "Mahogany_Gym_2", "Mahogany_Gym_3", "Route43_MahoganyGate", "Route43_Gate",
+                "LakeOfRage_HiddenPowerHouse", "LakeOfRage_FishingGuruHouse",
+                "IcePath_1F", "IcePath_B1F", "IcePath_B2F", "IcePath_B3F",
+                "Blackthorn_PokemonCenter_1F", "Blackthorn_PokemonCenter_B1F", "Blackthorn_Mart", "Blackthorn_Gym",
+                "Blackthorn_WestHouse", "Blackthorn_EastHouse", "Blackthorn_MoveTutorHouse",
+                "DragonsDen_Entrance", "DragonsDen", "DragonsDen_Shrine", "DarkCave_Route31Side", "DarkCave_Route45Side",
             }
         },
         new()
@@ -516,6 +534,9 @@ public static class RegionDatabase
                 "JaggedPass", "LavaridgeTown_HerbShop", "LavaridgeTown_Gym_1F", "LavaridgeTown_Gym_B1F", "LavaridgeTown_House",
                 "LavaridgeTown_Mart", "LavaridgeTown_PokemonCenter_1F", "LavaridgeTown_PokemonCenter_2F",
                 "MirageTower_1F", "MirageTower_2F", "MirageTower_3F", "MirageTower_4F",
+                // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (Emerald's matrix of their underwater
+                // maps), laid tile for tile under the sea it is dived to from
+                "HoennUnderwater",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

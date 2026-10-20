@@ -1,0 +1,67 @@
+{
+  "displayName": {
+    "en": [
+      "Three Island"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A gang of bikers rolled off a boat here and roared off into town. What a racket!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Heh, this island's way too quiet. We're gonna liven it up!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "biker_2": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The boss says we're taking over. Better stay outta our way."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,116 @@
+{
+  "people": {
+    "r42_fishing_2": {
+      "name": {
+        "en": [
+          "Tully"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Tully: The pond at the foot of the mountain is my spot. Let's see what you've reeled in!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Tully: You've hooked a better catch than me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r42_mania": {
+      "name": {
+        "en": [
+          "Shane"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Shane: My Nidoran are all grown up now! Want to see?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Shane: They've grown, but not enough..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r42_mount_2": {
+      "name": {
+        "en": [
+          "Benjamin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Benjamin: I came down off Mt. Mortar for some fresh air. A battle will do nicely!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Benjamin: Ha! Back up the mountain I go."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R42_002+1": {
+      "en": [
+        "Route 42\nEcruteak City is to the west."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R42_003+1": {
+      "en": [
+        "Mt. Mortar\nThe cave runs right through the mountain."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R42_004+1": {
+      "en": [
+        "Mt. Mortar\nThe cave runs right through the mountain."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R42_005+1": {
+      "en": [
+        "Route 42\nMahogany Town is to the east."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

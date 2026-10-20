@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! What can I get for you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot servi?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "An X Speed makes a Pokémon quicker in battle. Strike first, and you're halfway to winning!"
         ],
         "text": [
-          ""
+          "Un Viteză X face un Pokémon mai rapid în luptă. Lovește primul și ești pe jumătate câștigător!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Up on Mt. Chimney's peak there's a treat you can only buy there. Pokémon simply adore it."
         ],
         "text": [
-          ""
+          "Sus, pe vârful Muntelui Chimney, e o bunătate pe care o poți cumpăra doar acolo. Pokémonii o adoră pur și simplu."
         ]
       }
     }

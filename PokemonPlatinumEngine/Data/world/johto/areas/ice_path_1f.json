@@ -1,0 +1,62 @@
+{
+  "key": "ice_path_1f",
+  "index": 120,
+  "name": "Ice Path",
+  "matrix": 132,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D39R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Swinub", "level": 21 },
+    { "species": "Golbat", "level": 22 },
+    { "species": "Swinub", "level": 21 },
+    { "species": "Golbat", "level": 22 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Swinub", "level": 23 },
+    { "species": "Swinub", "level": 23 },
+    { "species": "Zubat", "level": 22, "day": "Jynx" },
+    { "species": "Jynx", "level": 22 },
+    { "species": "Zubat", "level": 22, "day": "Jynx" },
+    { "species": "Jynx", "level": 22 }
+  ],
+  "landRate": 5,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 11, "z": 58, "to": "route_44", "toWarp": 0 },
+    { "x": 55, "z": 40, "to": "blackthorn", "toWarp": 0 },
+    { "x": 55, "z": 7, "to": "ice_path_b1f", "toWarp": 0 },
+    { "x": 55, "z": 20, "to": "ice_path_b1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "d39r0101_monstarball", "looks": "monstarball", "movement": "0", "x": 47, "z": 10, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D39R0101_HM07", "item": "HM07", "script": "std_itemball_d39r0101_hm07" },
+    { "id": "d39r0101_gsmiddleman1", "looks": "gsmiddleman1", "movement": "15", "x": 47, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D39R0101_000+1" },
+    { "id": "d39r0101_dancer", "looks": "dancer", "movement": "15", "x": 55, "z": 29, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_239", "script": "D39R0101_002+1" },
+    { "id": "d39r0101_monstarball_2", "looks": "monstarball", "movement": "0", "x": 53, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D39R0101_PROTEIN", "item": "Protein", "script": "std_itemball_d39r0101_protein" },
+    { "id": "d39r0101_monstarball_3", "looks": "monstarball", "movement": "0", "x": 53, "z": 35, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D39R0101_PP_UP", "item": "PP Up", "script": "std_itemball_d39r0101_pp_up" },
+    { "id": "d39r0101_gsmiddleman1_2", "looks": "gsmiddleman1", "movement": "14", "x": 38, "z": 21, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D39R0101_003+1" }
+  ],
+  "signs": [
+    { "x": 17, "z": 18, "type": 2, "script": "std_hiddenitem_d39r0101_max_potion", "item": "Max Potion", "flag": "FLAG_HIDDEN_ITEM_D39R0101_MAX_POTION" },
+    { "x": 48, "z": 5, "type": 2, "script": "std_hiddenitem_d39r0101_ice_heal", "item": "Ice Heal", "flag": "FLAG_HIDDEN_ITEM_D39R0101_ICE_HEAL" }
+  ],
+  "triggers": [
+    { "x": 47, "z": 6, "width": 1, "depth": 1, "script": "D39R0101_004+1", "variable": "VAR_UNK_4100", "value": "0" }
+  ]
+}

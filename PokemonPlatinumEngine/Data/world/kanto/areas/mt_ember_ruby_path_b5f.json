@@ -1,0 +1,27 @@
+{
+  "key": "mt_ember_ruby_path_b5f",
+  "index": 144,
+  "name": "Mt Ember",
+  "matrix": 108,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 7, "to": "mt_ember_ruby_path_b4f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ruby", "looks": "ruby", "movement": "look_south", "x": 7, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_RUBY", "script": "MtEmber_RubyPath_B5F_EventScript_Ruby" }
+  ],
+  "signs": [
+    { "x": 7, "z": 2, "type": 0, "script": "MtEmber_RubyPath_B5F_EventScript_BrailleMessage" }
+  ],
+  "triggers": []
+}

@@ -173,6 +173,17 @@ Water lies in the ground plane and is drawn texel by texel (`PixelGround` bakes 
 | Foam | broken dashes of foam on the outer rim, 4–8 texels long |
 | Motion | the arms turn a twelfth of a turn a frame, in whole texels; the rim's foam stays where it is |
 
+#### The sea floor
+
+The sea floor (plan 21 · H5; a map whose setting is `Underwater`, `HoennUnderwater`) lies tile for tile under the sea it is dived to from. It is the field's own pixel ground, sprites and relief under a light of its own; the surface is never seen from the steep camera, so nothing is drawn for it.
+
+- **Ground**: the field's sand where the floor is swum, the field's rock where it is blocked (stood up as rock is everywhere, `RaiseRock`), and sand under everything, so no lawn shows where rock's rounded corners meet the floor. Nothing grows there but kelp: no forest past the floor's edge, no trees, no houses.
+- **The kelp bed** (`TileType.Kelp`, the GBA's seaweed) is a ground of its own under the fronds: base `150,156,112`, patches `166,170,124`, a rim `108,120,84` where it meets the sand, and holdfasts `92,112,76` (a knot two texels wide with a root splayed to each side).
+- **Kelp** (`NatureArt.Kelp`, 32 × 32, repeating along a row) stands a tile tall in one row across the middle of each kelp tile, cut out by the field shader, swaying and parting round a diver as tall grass does. Four fronds to the texture, each a stalk two texels thick, `44,82,64` at its holdfast, `62,110,76` up to half way, `92,140,88` above and a tip of `132,170,104`, its side texel a shade darker; it waves a texel either way every four rows, two in its top third, and puts out a blade of leaf a shade lighter every five rows, to the left and the right in turn.
+- **The light ignores the clock** (`ArtLook.UnderwaterFieldRig`), as a cave's does: a blue-green key from nearly overhead `0.50,0.66,0.66`, blue light from all round `0.38,0.50,0.62`, a little warmth bounced off the sand `0.36,0.40,0.36`. The background is a deep sea-blue `22,58,78`; a blue fog `0.10,0.30,0.38` takes half the colour from 36 units to 60. The colour is drained (saturation 0.80, contrast 1.04), shade leans blue `0.84,0.96,1.12`, highlights a little green `0.94,1.04,1.02`, bloom only above 0.90 at 0.22, vignette 0.34. No sky, no cloud shade, no lamps, no weather.
+- **Still to come** (plan 21 · H5, part b): caustics, a layer of light of the haze's kind drawn after the composite in whole texels and timed by `FieldLife.Now`; bubbles rising from the diver (`FieldLife.Bubbles`, cells of `LifeArt`). The camera stays the field's.
+- **Don't** draw the sea's surface overhead, grade the sea floor by the hour, or let the sand bloom to white.
+
 ### Grass, flowers, trees, ledges and rocks
 
 - **Tall grass**: two rows of clumps per tile, each clump five blades in four flat shades (`36,110,62`, `62,150,78`, `106,196,98`, tips `170,232,130`), 16 texels tall, the rows half a clump out of step. They sway at the top and lean away from anyone walking through.
@@ -259,6 +270,8 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Ecruteak (Heritage) | dark planks | hip, deep red-brown `122,58,48` | stone lanterns in the streets, fenced in wood: the old city of the two towers and the dancers (plan 20 · J5, part b) |
 | Olivine (Seaport) | white plaster | gable, red `184,66,56` | shutters: the port of the lighthouse and the ship, yachts in its harbour (plan 20 · J8) |
 | Cianwood (Cliffside) | pale stone | gable, sea green `64,132,112` | a chimney: the island town of the pharmacy and the fighters, fish drying on its quay (plan 20 · J8) |
+| Mahogany (Upland) | dark logs | hip, moss green `94,116,70` | a chimney: the small mountain town of the souvenir shop and the ice Gym, a lookout post at each end of its street; the Lake of Rage's two houses are Mahogany's too (plan 20 · J10) |
+| Blackthorn (Dragonstone) | grey cut stone | gable, dragon blue `52,86,132` | shutters, a chimney: the walled city of the dragon tamers under the mountain, a stone gate across its street (plan 20 · J10) |
 | Littleroot (Sapling) | boards | gable, leaf green `112,170,76` | a chimney, flower boxes: the little town where the grass starts, fenced in wood (plan 21 · H1) |
 | Oldale (Meadow) | white clapboard | hip, sky blue `92,150,206` | shutters: the crossroads town between the routes, fenced in wood (plan 21 · H1) |
 | Petalburg (Parkside) | plaster over a stone base | hip, ochre `196,150,72` | a chimney: the quiet city of the Gym by the pond (plan 21 · H1) |

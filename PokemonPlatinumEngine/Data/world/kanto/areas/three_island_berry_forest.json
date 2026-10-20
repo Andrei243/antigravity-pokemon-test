@@ -1,0 +1,99 @@
+{
+  "key": "three_island_berry_forest",
+  "index": 151,
+  "name": "Berry Forest",
+  "matrix": 115,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Cloudy",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_VIRIDIAN_FOREST",
+  "nightMusic": "MUS_VIRIDIAN_FOREST",
+  "encounters": "three_island_berry_forest",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Pidgeotto", "level": 37 },
+    { "species": "Gloom", "level": 35 },
+    { "species": "Pidgey", "level": 32 },
+    { "species": "Oddish", "level": 30 },
+    { "species": "Venonat", "level": 34 },
+    { "species": "Drowzee", "level": 34 },
+    { "species": "Exeggcute", "level": 35 },
+    { "species": "Psyduck", "level": 31 },
+    { "species": "Venomoth", "level": 37 },
+    { "species": "Hypno", "level": 37 },
+    { "species": "Venomoth", "level": 40 },
+    { "species": "Hypno", "level": 40 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Psyduck", "level": 5, "maxLevel": 20 },
+    { "species": "Psyduck", "level": 20, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 35, "maxLevel": 40 },
+    { "species": "Golduck", "level": 35, "maxLevel": 40 },
+    { "species": "Golduck", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 43, "z": 41, "to": "three_island_bond_bridge", "toWarp": 0 },
+    { "x": 42, "z": 41, "to": "three_island_bond_bridge", "toWarp": 0 },
+    { "x": 44, "z": 41, "to": "three_island_bond_bridge", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "berry_forest_lostelle", "looks": "little_girl", "movement": "look_around", "x": 4, "z": 8, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST", "script": "ThreeIsland_BerryForest_EventScript_Lostelle" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_around", "x": 12, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_2", "looks": "cut_tree", "movement": "look_around", "x": 19, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_3", "looks": "cut_tree", "movement": "look_around", "x": 23, "z": 17, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_4", "looks": "cut_tree", "movement": "look_around", "x": 38, "z": 23, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_5", "looks": "cut_tree", "movement": "look_around", "x": 44, "z": 23, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_6", "looks": "cut_tree", "movement": "look_around", "x": 44, "z": 29, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_7", "looks": "cut_tree", "movement": "look_around", "x": 16, "z": 43, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_18", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_8", "looks": "cut_tree", "movement": "look_around", "x": 17, "z": 39, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_19", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_9", "looks": "cut_tree", "movement": "look_around", "x": 14, "z": 39, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_1A", "script": "EventScript_CutTree" },
+    { "id": "cut_tree_10", "looks": "cut_tree", "movement": "look_around", "x": 11, "z": 39, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_1B", "script": "EventScript_CutTree" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 12, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BERRY_FOREST_MAX_ETHER", "item": "Max Ether", "script": "ThreeIsland_BerryForest_EventScript_ItemMaxEther" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 27, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BERRY_FOREST_FULL_HEAL", "item": "Full Heal", "script": "ThreeIsland_BerryForest_EventScript_ItemFullHeal" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 12, "z": 43, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BERRY_FOREST_MAX_ELIXIR", "item": "Max Elixir", "script": "ThreeIsland_BerryForest_EventScript_ItemMaxElixir" }
+  ],
+  "signs": [
+    { "x": 7, "z": 27, "type": 0, "script": "ThreeIsland_BerryForest_EventScript_BewareSign" },
+    { "x": 39, "z": 35, "type": 0, "script": "ThreeIsland_BerryForest_EventScript_WelcomeSign" },
+    { "x": 31, "z": 25, "type": 2, "script": "", "item": "Razz Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_RAZZ_BERRY" },
+    { "x": 15, "z": 15, "type": 2, "script": "", "item": "Bluk Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_BLUK_BERRY" },
+    { "x": 25, "z": 24, "type": 2, "script": "", "item": "Nanab Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_NANAB_BERRY" },
+    { "x": 11, "z": 24, "type": 2, "script": "", "item": "Wepear Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_WEPEAR_BERRY" },
+    { "x": 37, "z": 18, "type": 2, "script": "", "item": "Oran Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_ORAN_BERRY" },
+    { "x": 14, "z": 23, "type": 2, "script": "", "item": "Cheri Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_CHERI_BERRY" },
+    { "x": 47, "z": 5, "type": 2, "script": "", "item": "Chesto Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_CHESTO_BERRY" },
+    { "x": 7, "z": 30, "type": 2, "script": "", "item": "Pecha Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_PECHA_BERRY" },
+    { "x": 16, "z": 5, "type": 2, "script": "", "item": "Rawst Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_RAWST_BERRY" },
+    { "x": 25, "z": 6, "type": 2, "script": "", "item": "Aspear Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_ASPEAR_BERRY" },
+    { "x": 46, "z": 32, "type": 2, "script": "", "item": "Persim Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_PERSIM_BERRY" },
+    { "x": 43, "z": 16, "type": 2, "script": "", "item": "Pinap Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_PINAP_BERRY" },
+    { "x": 8, "z": 5, "type": 2, "script": "", "item": "Lum Berry", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_BERRY_FOREST_LUM_BERRY" }
+  ],
+  "triggers": []
+}

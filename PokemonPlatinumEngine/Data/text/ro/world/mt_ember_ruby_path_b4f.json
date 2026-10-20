@@ -1,0 +1,93 @@
+{
+  "displayName": {
+    "en": [
+      "Ruby Path"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {},
+  "signs": {
+    "MtEmber_RubyPath_B4F_EventScript_BrailleABC": {
+      "en": [
+        "Raised dots are carved in the stone. They read: A, B, C."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MtEmber_RubyPath_B4F_EventScript_BrailleDEF": {
+      "en": [
+        "Raised dots are carved in the stone. They read: D, E, F."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MtEmber_RubyPath_B4F_EventScript_BrailleGHI": {
+      "en": [
+        "Raised dots are carved in the stone. They read: G, H, I."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MtEmber_RubyPath_B4F_EventScript_BrailleJKL": {
+      "en": [
+        "Raised dots are carved in the stone. They read: J, K, L."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MtEmber_RubyPath_B4F_EventScript_BrailleMNO": {
+      "en": [
+        "Raised dots are carved in the stone. They read: M, N, O."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MtEmber_RubyPath_B4F_EventScript_BraillePQRS": {
+      "en": [
+        "Raised dots are carved in the stone. They read: P, Q, R, S."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MtEmber_RubyPath_B4F_EventScript_BrailleTUV": {
+      "en": [
+        "Raised dots are carved in the stone. They read: T, U, V."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MtEmber_RubyPath_B4F_EventScript_BrailleWXYZ": {
+      "en": [
+        "Raised dots are carved in the stone. They read: W, X, Y, Z."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MtEmber_RubyPath_B4F_EventScript_BraillePeriod": {
+      "en": [
+        "Raised dots are carved in the stone: the mark that ends a sentence."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "MtEmber_RubyPath_B4F_EventScript_BrailleComma": {
+      "en": [
+        "Raised dots are carved in the stone: the mark that parts a sentence."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

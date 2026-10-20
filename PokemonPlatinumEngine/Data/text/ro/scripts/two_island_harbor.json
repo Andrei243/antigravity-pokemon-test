@@ -1,0 +1,86 @@
+{
+  "Sailor": [
+    {
+      "en": [
+        "Sailor"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome aboard the Seagallop! Have your pass ready."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Where would you like to sail?",
+        "VERMILION CITY",
+        "CINNABAR ISLAND",
+        "ONE ISLAND",
+        "THREE ISLAND",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Vermilion City!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Cinnabar Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for One Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Three Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The Seagallop sails only for holders of a pass, I'm afraid."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

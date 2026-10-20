@@ -1,0 +1,58 @@
+{
+  "key": "three_island",
+  "index": 231,
+  "name": "Three Island",
+  "matrix": 192,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_123",
+  "nightMusic": "MUS_SEVII_123",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 99, "z": 31, "to": "three_island_house_1", "toWarp": 0 },
+    { "x": 110, "z": 27, "to": "three_island_pokemon_center_1f", "toWarp": 0 },
+    { "x": 114, "z": 12, "to": "three_island_mart", "toWarp": 0 },
+    { "x": 100, "z": 6, "to": "three_island_house_2", "toWarp": 0 },
+    { "x": 108, "z": 6, "to": "three_island_house_3", "toWarp": 0 },
+    { "x": 108, "z": 12, "to": "three_island_house_4", "toWarp": 0 },
+    { "x": 109, "z": 19, "to": "three_island_house_5", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "three_island_antibiker1", "looks": "man", "movement": "look_east", "x": 103, "z": 24, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_ANTIBIKERS", "script": "ThreeIsland_EventScript_AntiBiker1" },
+    { "id": "three_island_antibiker2", "looks": "man", "movement": "look_east", "x": 104, "z": 23, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_ANTIBIKERS", "script": "ThreeIsland_EventScript_AntiBiker2" },
+    { "id": "paxton", "looks": "biker", "movement": "look_west", "x": 104, "z": 24, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_LONE_BIKER", "script": "ThreeIsland_EventScript_Biker" },
+    { "id": "three_island_biker3", "looks": "biker", "movement": "look_west", "x": 105, "z": 23, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BIKERS", "script": "ThreeIsland_EventScript_Biker" },
+    { "id": "three_island_biker1", "looks": "biker", "movement": "look_west", "x": 105, "z": 24, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BIKERS", "script": "ThreeIsland_EventScript_Biker" },
+    { "id": "three_island_biker4", "looks": "biker", "movement": "look_west", "x": 106, "z": 22, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BIKERS", "script": "ThreeIsland_EventScript_Biker" },
+    { "id": "three_island_biker2", "looks": "biker", "movement": "look_west", "x": 106, "z": 24, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BIKERS", "script": "ThreeIsland_EventScript_Biker" },
+    { "id": "three_island_biker5", "looks": "biker", "movement": "look_west", "x": 107, "z": 23, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BIKERS", "script": "ThreeIsland_EventScript_Biker" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_around", "x": 116, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 114, "z": 17, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_ZINC", "item": "Zinc", "script": "ThreeIsland_EventScript_ItemZinc" },
+    { "id": "woman_1", "looks": "woman_1", "movement": "wander_west_and_east", "x": 111, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_EventScript_Woman" },
+    { "id": "little_boy", "looks": "little_boy", "movement": "look_east", "x": 110, "z": 14, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_EventScript_LittleBoy" },
+    { "id": "doduo", "looks": "doduo", "movement": "look_west", "x": 111, "z": 14, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_EventScript_Doduo" },
+    { "id": "three_island_biker6", "looks": "biker", "movement": "wander_west_and_east", "x": 111, "z": 31, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BIKERS", "script": "ThreeIsland_EventScript_Biker6" }
+  ],
+  "signs": [
+    { "x": 108, "z": 31, "type": 0, "script": "ThreeIsland_EventScript_IslandSign" },
+    { "x": 101, "z": 13, "type": 2, "script": "", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_THREE_ISLAND_PP_UP" }
+  ],
+  "triggers": [
+    { "x": 103, "z": 27, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BikerBossIntroTrigger", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "2" },
+    { "x": 104, "z": 27, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BikerBossIntroTrigger", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "2" },
+    { "x": 105, "z": 27, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BikerBossIntroTrigger", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "2" },
+    { "x": 106, "z": 27, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BikerBossIntroTrigger", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "2" },
+    { "x": 103, "z": 26, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BattleBikersTriggerLeft", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "3" },
+    { "x": 104, "z": 26, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BattleBikersTriggerMidLeft", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "3" },
+    { "x": 105, "z": 26, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BattleBikersTriggerMid", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "3" },
+    { "x": 107, "z": 27, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BikerBossIntroTrigger", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "2" },
+    { "x": 106, "z": 26, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BattleBikersTriggerMidRight", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "3" },
+    { "x": 107, "z": 26, "width": 1, "depth": 1, "script": "ThreeIsland_EventScript_BattleBikersTriggerRight", "variable": "VAR_MAP_SCENE_THREE_ISLAND", "value": "3" }
+  ]
+}

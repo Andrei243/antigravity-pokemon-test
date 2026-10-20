@@ -1,0 +1,40 @@
+{
+  "key": "mt_ember_summit_path_1f",
+  "index": 140,
+  "name": "Mt Ember",
+  "matrix": 104,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "mt_ember_summit_path_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 33 },
+    { "species": "Machop", "level": 35 },
+    { "species": "Geodude", "level": 29 },
+    { "species": "Geodude", "level": 31 },
+    { "species": "Machop", "level": 31 },
+    { "species": "Machop", "level": 33 },
+    { "species": "Geodude", "level": 35 },
+    { "species": "Machop", "level": 37 },
+    { "species": "Geodude", "level": 37 },
+    { "species": "Machop", "level": 39 },
+    { "species": "Geodude", "level": 37 },
+    { "species": "Machop", "level": 39 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 2, "z": 15, "to": "mt_ember_exterior", "toWarp": 2 },
+    { "x": 11, "z": 1, "to": "mt_ember_summit_path_2f", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

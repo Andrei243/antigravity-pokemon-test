@@ -1,0 +1,55 @@
+{
+  "key": "mt_ember_ruby_path_1f",
+  "index": 145,
+  "name": "Mt Ember",
+  "matrix": 109,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "mt_ember_ruby_path_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 36 },
+    { "species": "Machop", "level": 38 },
+    { "species": "Geodude", "level": 32 },
+    { "species": "Geodude", "level": 34 },
+    { "species": "Machop", "level": 34 },
+    { "species": "Machop", "level": 36 },
+    { "species": "Geodude", "level": 38 },
+    { "species": "Machoke", "level": 40 },
+    { "species": "Geodude", "level": 40 },
+    { "species": "Machoke", "level": 42 },
+    { "species": "Geodude", "level": 40 },
+    { "species": "Machoke", "level": 42 }
+  ],
+  "landRate": 7,
+  "rockSmash": [
+    { "species": "Geodude", "level": 25, "maxLevel": 35 },
+    { "species": "Graveler", "level": 30, "maxLevel": 45 },
+    { "species": "Graveler", "level": 35, "maxLevel": 50 },
+    { "species": "Geodude", "level": 30, "maxLevel": 40 },
+    { "species": "Geodude", "level": 30, "maxLevel": 40 }
+  ],
+  "rockSmashRate": 50,
+  "warps": [
+    { "x": 22, "z": 17, "to": "mt_ember_exterior", "toWarp": 5 },
+    { "x": 1, "z": 1, "to": "mt_ember_ruby_path_b1f", "toWarp": 0 },
+    { "x": 24, "z": 5, "to": "mt_ember_ruby_path_b2f_stairs", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "rock_smash_rock", "looks": "rock_smash_rock", "movement": "look_around", "x": 18, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_2", "looks": "rock_smash_rock", "movement": "look_around", "x": 23, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_3", "looks": "rock_smash_rock", "movement": "look_around", "x": 20, "z": 12, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_4", "looks": "rock_smash_rock", "movement": "look_around", "x": 19, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_5", "looks": "rock_smash_rock", "movement": "look_around", "x": 21, "z": 15, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_RockSmash" }
+  ],
+  "signs": [],
+  "triggers": []
+}

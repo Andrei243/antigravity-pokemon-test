@@ -1,0 +1,21 @@
+{
+  // Mt. Ember's slopes (plan 19 · K9, part a): FireRed's map, our words. The volcano at the head of Kindle Road, its
+  // summit path climbing inside the mountain to Moltres's nest. Two Team Rocket grunts dig at the rock by the cave on
+  // the east side; once Celio has asked for the Ruby the cave is open (FLAG_MT_EMBER_RUBY_PATH_OPEN, a flag of ours
+  // in place of FireRed's metatile set by VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 4), the grunts let slip their
+  // password in front of the player (the area's triggers 0 to 2) and battle (mt_ember_exterior.txt)
+  "area": "mt_ember_exterior",
+  "name": "Mt. Ember",
+  "bgmTrack": "kanto/sevii_cave",
+  "trees": "Round",
+  "triggers": [ { "trigger": 0, "script": "Password" }, { "trigger": 1, "script": "Password" }, { "trigger": 2, "script": "Password" } ],
+  "doors": [ { "warp": 5, "map": "MtEmber_RubyPath_1F", "x": 22, "y": 16, "facing": "Up", "openedBy": "FLAG_MT_EMBER_RUBY_PATH_OPEN" } ],
+  "people": {
+    "hiker": { "name": "Hiker", "dialog": [ "Climbing a live volcano is a test of nerve. The rocks up top are hot enough to fry an egg!" ] },
+    "mt_ember_grunt1": { "name": "Grunt", "script": "Grunt1", "still": true },
+    "mt_ember_grunt2": { "name": "Grunt", "script": "Grunt2", "still": true },
+    "crush_girl": { "name": "Jocelyn", "trainer": { "dialogueBefore": "Crush Girl Jocelyn: Climbing a volcano is the best training there is. Battle me at the top of my game!", "dialogueAfter": "Crush Girl Jocelyn: I'm all burned out." } },
+    "camper": { "name": "Logan", "trainer": { "dialogueBefore": "Pokémon Ranger Logan: I keep watch over the Pokémon on this mountain. Show me you treat yours well!", "dialogueAfter": "Pokémon Ranger Logan: Yes, they're in good hands." } },
+    "picnicker": { "name": "Beth", "trainer": { "dialogueBefore": "Pokémon Ranger Beth: A ranger goes wherever the Pokémon need help. Even up a volcano!", "dialogueAfter": "Pokémon Ranger Beth: You'd make a fine ranger yourself." } }
+  }
+}

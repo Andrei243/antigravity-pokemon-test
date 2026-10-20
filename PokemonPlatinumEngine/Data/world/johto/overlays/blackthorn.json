@@ -1,0 +1,43 @@
+{
+  // Blackthorn City (plan 20 · J10): HeartGold's map, our words. The walled city of the dragon tamers under the
+  // mountain, built in grey stone under dragon-blue gables (Dragonstone). The men who guard the Gym's door and the way
+  // to the Dragon's Den wait for plan 20 · J11 and are left out, as is the boy who waits for its scene
+  "area": "blackthorn",
+  "bgmTrack": "johto/blackthorn",
+  "trees": "Round",
+  "architecture": "Dragonstone",
+  "people": {
+    "t30_gsfighter": {
+      "name": "Man",
+      "dialog": [
+        "Blackthorn's people have trained dragons since long before anyone wrote it down."
+      ]
+    },
+    "t30_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "The Dragon's Den is behind the Gym. Only those the elder thinks worthy may train in there."
+      ]
+    },
+    "t30_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "Dragons are the strongest Pokémon there are! When I grow up, I'll have a Dragonite!"
+      ]
+    },
+    "t30_gswoman3_2": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "Did you come through the Ice Path? You must be frozen! The Pokémon Center's warm, at least."
+      ]
+    }
+  },
+  "signs": {
+    "T30_008+1": "Blackthorn City\nA quiet mountain retreat.",
+    "T30_009+1": "Blackthorn City Pokémon Gym\nLeader: Clair",
+    "T30_010+1": "A house of moves\nForget a move, or remember one.",
+    "T30_011+1": "Dragon's Den\nHoly ground of Blackthorn's dragon tamers.",
+    "T30_012+1": "Blackthorn City\nRoute 45 is to the south."
+  }
+}

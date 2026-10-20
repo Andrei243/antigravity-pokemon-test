@@ -3056,6 +3056,42 @@ beaten. What differs, and why:
 - **What waits**: the Desert Ruins' door (until the Regis), Gabby and Ty, the Secret Power man, Norman's rematch, the
   harness's shots of this part.
 
+## Dive and the sea floor (2026-10-20, plan 21 · H5, its first part)
+
+Platinum has no Dive in the field, so the field move follows Emerald (`TrySetupDiveDownScript`,
+`TrySetupDiveEmergeScript`, `TrySetDiveWarp`, `FldEff_UseDive`) where the plan doesn't say otherwise. What differs, and why:
+
+- **The Badge is the region's**: Dive is offered only in a region whose file's `gates` name it (Hoenn's `"Dive": "Mind"`,
+  Emerald's `FLAG_BADGE07_GET`), both in the field and on the team's menu (`PartyScreen.ActionsFor(pokemon, region)`):
+  a Pokémon that knows Dive in Sinnoh or Johto shows the menu it always showed, and their dark water stays plain sea.
+- **The tiles** are Emerald's four behaviours under names of ours, at the end of the GBA block (`DiveWater` for
+  `MB_DEEP_WATER`, `NoSurfacing`, `Seaweed`, `SeaweedNoSurfacing`). Dark water is surfable like any sea; `CanDive` says yes
+  on it to a surfer whose team knows Dive, `CanSurface` under any floor tile but the two that forbid it, and coming up
+  also needs open sea on the same tile above (`SurfacesOnto`). Wild Pokémon of the floor are met only in its seaweed, from
+  the floor's own water table (Emerald's underwater `water_mons`: Clamperl, Chinchou, Relicanth).
+- **One button both ways**: Emerald dives and comes up with A on the tile underfoot, and B is our Run, so A is both:
+  `TryInteract` reads the tile under a surfer or a diver before what lies ahead, and runs `common.Dive` or
+  `common.Surface` (the question, the move's cut-in, then the script's `dive`, which fades, plays the bubbles' sound
+  `dive` and lands the player on the same tile of the other map, diving or surfing).
+- **A diver walks**: the plan had surfing's pace under the sea; Emerald's diver moves at walking pace and can't run, and
+  so does ours (`FieldMovement`'s pace for `TravelMode.Diving` is `Walk`), with no bike, no ledges and no footfalls.
+- **The floors are maps by matrix, not one map**: the reader lays each of Emerald's underwater maps under the route it
+  lies under (`GbaWorld.LayUnderItsRoutes`); the floors under Routes 124 to 128 are matrix 2, `HoennUnderwater`, at the
+  overworld's own coordinates, so a dive lands on the same tile (469 tiles each way, none astray). The floors under the
+  Seafloor Cavern, Sootopolis and the Marine Cave are matrices of their own for H8 and H12. Only `underwater_route_124`
+  is open; the rest is rock until its route opens.
+- **Under the sea battles are fought on the water's ground and stage** (`BattleTerrain.Water`, `Map.ArenaAt`) until part
+  b's `BattleArena.Underwater`; Dive the move in battle is unchanged.
+- **Route 124 waits for Lilycove**: it is reached by sea from Lilycove City (H7), so a walk of the game finds it only
+  through `WorldWalk.OpenedAhead` (the sand before the treasure hunter's house), which H7 takes off. Its song is
+  `hoenn/route104` until Emerald's Route 120 song is written; the treasure hunter's house is `locked` until H8.
+- **Saves**: a game saved under the sea keeps `TravelMode.Diving` as one saved surfing keeps surfing, and a player on an
+  underwater map always settles diving (and off one never does). No version was raised: no older save can stand on a map
+  that didn't exist, so none is touched.
+- **Still to come (part b)**: the caustic layer and the diver's bubbles, `BattleArena.Underwater` and its stage,
+  `AmbienceBed.Underwater`, the floors under Routes 125 to 128 with their routes (H8), and the frame weighed with
+  `profile`.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,
@@ -3271,6 +3307,38 @@ What K7 left of the League's end: the way on to Johto, the songs and the bands. 
   so his band is found by the class and the rival's name (the data's `{rival}` or whatever the player called him),
   and the plate fills the placeholder when it is drawn. A trainer no table names still wears the plain band.
 
+## The first Sevii Islands (2026-10-20, plan 19 · K9, part a)
+
+Kindle Road, Mt. Ember, Two Island and Three Island, and the errand that runs through them, as scripts of ours on
+FireRed's beats and flags (`OneIsland_PokemonCenter_1F`, `TwoIsland_JoyfulGameCorner`, `ThreeIsland`,
+`ThreeIsland_BerryForest`, `CinnabarIsland`, `MtEmber_Exterior`, `MtEmber_RubyPath_B5F`, `MtEmber_Summit`,
+`PalletTown_ProfessorOaksLab`), in our own words. No story version was raised: each place's own arrival hides whoever
+its part of the errand hasn't reached, so a save from before K9 finds the islands as a new game does.
+
+- **The Meteorite is Bill's.** FireRed's Celio gives it in the meeting; here Bill hands it over as the two set to
+  work (`one_island_pokemon_center_1f.GiveMeteorite`, `FLAG_GOT_METEORITE_FROM_BILL`, a flag of ours), and a game
+  that met Celio under K7, before there was a Meteorite, is given it the next time Bill is spoken to.
+- **The detour ends as FireRed's does.** Lostelle's father takes the Meteorite for a Moon Stone once she is home
+  (`VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F` 2), the first step towards Bill sends the two of them to Cinnabar by
+  the Seagallop (3), and Bill says goodbye on the dock (`VAR_MAP_SCENE_CINNABAR_ISLAND` 4), after which Lostelle is
+  in her own house on Three Island. The game corner's link games are not played: its machines say that nobody is
+  linking.
+- **The bikers.** Three of the gang and then Paxton are battled one after another, as FireRed's
+  `ThreeIsland_EventScript_BattleBikers`, as teams of FireRed's data (`kanto_biker_goon` to `_3`,
+  `kanto_cue_ball_paxton`); refusing their question sends the player back a step.
+- **The National Pokédex is Oak's, at his desk.** FireRed's Oak stops a Champion outside his house; here he gives it
+  when spoken to in the lab, the rival coming in for his. The rule is FireRed's (`Pokedex.CanUnlockNational` with
+  Kanto's `Caught60`): the Hall of Fame (`FLAG_SYS_GAME_CLEAR`), One Island reached (Celio met,
+  `VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F` 1 or more) and sixty species caught.
+- **Celio's Ruby waits for the detour and the National Pokédex**, as FireRed's `OneIsland_PokemonCenter_1F` asks: his
+  request (4) opens the Ruby Path's mouth (`FLAG_MT_EMBER_RUBY_PATH_OPEN`, a flag of ours on the warp's `openedBy`,
+  where FireRed has the mouth walkable and empty) and brings two Team Rocket grunts to it; their passwords are ours,
+  and the warehouse they open is part b's. Given the Ruby he asks a second favour; agreed to, he takes the Ruby and
+  the Tri-Pass for the Rainbow Pass (an item of ours, id 9036, as the Ruby, 9035). Refused, he waits.
+- **The Seagallop's sailors** at One, Two and Three Island and at Vermilion's pier take either pass, and sail to the
+  first three islands; Four to Seven are part b's. Two Island's Poké Maniac, FireRed's link trader, is not there.
+- **Moltres** waits on Mt. Ember's summit at level 50 until it has been fought, as Zapdos and Articuno.
+
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,
@@ -3458,3 +3526,40 @@ the gate hall and the zone itself, from HeartGold's maps, events and tables (`sc
 - **Left for later sessions**: the Embedded Tower behind Route 47's hiker (warps 4 to 6 locked), Crasher Wake by
   Route 47's waterfall and Chuck there after the Kanto Badges, Cameron on Route 48 (the Kanto Safari Zone's link),
   the Area Customizer and objects, and the Safari Zone's Pokémon called by the objects.
+
+## The north of Johto, first part (2026-10-20, plan 20 · J10, part a)
+
+Route 42 and Mt. Mortar, Mahogany Town, Route 43 and the Lake of Rage, Route 44, the Ice Path, Blackthorn City and the
+Dragon's Den, Routes 45 and 46 and the Dark Cave, from HeartGold's maps, events and tables, in our own words and music.
+Routes 26 and 27, Tohjo Falls, Victory Road and the Indigo Plateau are part b's.
+
+- **The way east is open as the stretch is**: Ecruteak's gate to Route 42 (its warps 10 and 11), the Dark Cave behind
+  Route 31 and Route 46 above Route 29's gate house. Mahogany Town's east exit, which HeartGold's Rage Candy seller
+  stands in until the Team Rocket Hideout is cleared, is open: he is the fourth chapter's (J11), who puts him there
+  behind the hideout's flag, so that the Ice Path and Blackthorn City can be built and walked to now.
+- **What waits for the fourth chapter (J11)** is left out of the overlays, so no story version is raised: Pryce in his
+  Gym, Clair in hers and in the Dragon's Den, Lance, the rival in the Den, the red Gyarados and Wesley at the Lake of
+  Rage, the Team Rocket grunts on Route 43 and in Mahogany, the man by the Gym, Suicune and Eusine on Route 42, the
+  hiker before one of Mt. Mortar's mouths, the Ice Path's HM07 man, the Kimono Girl and the guards before the Gym and
+  the Den. The Team Rocket Hideout's floors are not opened: their way down is the souvenir shop's stairs, on which its
+  salesman stands, as HeartGold has him until the hideout's scene (the stairs lead nowhere until J11 opens them). The
+  Mahogany Gym's ice blocks are HeartGold's statues of the scene after Pryce, and wait with him.
+- **The original hides some people behind flags nothing in this game sets**: the Lake of Rage's four fishermen and
+  campers, the souvenir shop's two and the guard in Route 43's gate are always there. The gifts of the stretch (the Lake
+  of Rage's TM10 and the fishing guru's record, the Mt. Mortar karate master's Tyrogue, the Ice Path's HM07) wait for
+  their chapter's scripts; their givers only talk.
+- **Ice and lava**: the Ice Path's and the Mahogany Gym's ice is HeartGold's behaviour 0x20, which is Platinum's own
+  ice, so they slide by `IceSlide` already. A walk of the whole game steps tile by tile and is not carried by ice, so it
+  comes into every floor; whether every slide comes to rest where HeartGold's does is the Mahogany Gym's puzzle, which
+  comes with Pryce (J11). The Blackthorn Gym's lava (HeartGold's `Magma`, about a thousand tiles, none of them blocked
+  in the area's own grid) and the Ice Path's ladders stay `Waiting` behaviours: until the Gym's boulders are pushed into
+  the lava to bridge it, with Clair (J11), its lava is plain ground and can be walked over.
+- **The towns' looks** (the style guide's "Buildings"): Mahogany is `Architecture.Upland` (dark logs under a mossy hip
+  roof, a chimney; the Lake of Rage's two houses are Mahogany's), Blackthorn `Dragonstone` (grey cut stone under dragon
+  blue gables, shutters and a chimney). Mahogany's lookout posts and Blackthorn's stone gate are columns, the boulders
+  of Blackthorn's streets outcrops, the Dragon Shrine a shrine of Blackthorn's stone on its island.
+- **Music**: `johto/route42` (Routes 42 to 44, the Lake of Rage and the gate houses, as HeartGold's headers share
+  `SEQ_GS_R_7_42`), `mahogany`, `ice_path` (the Ice Path and the Dark Cave, which share `SEQ_GS_D_KOORINONUKE`),
+  `blackthorn` and `dragons_den`, our own; Mt. Mortar plays `union_cave` and Routes 45 and 46 `route34`, as HeartGold's
+  headers share theirs, and the Gyms `gym`.
+- **Fly** lands before Mahogany's and Blackthorn's Pokémon Centers (spawns 9 and 10). The Indigo Plateau's is part b's.

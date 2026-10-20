@@ -1,0 +1,212 @@
+{
+  "displayName": {
+    "en": [
+      "Bond Bridge"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Nikki"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Nikki: The breeze off the forest smells of ripe berries. Let me share its sweetness with a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Nikki: Sweet, but a little sour too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2_2": {
+      "name": {
+        "en": [
+          "Violet"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Violet: My Pokémon and I bathe in the scent of flowers every morning. Can you smell it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Violet: Even the flowers wilted."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_f": {
+      "name": {
+        "en": [
+          "Amira"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Amira: I float under the bridge all day! Come and splash with me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Amira: My ring sprang a leak."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_f_2": {
+      "name": {
+        "en": [
+          "Alexis"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tuber Alexis: I'm going to swim all the way to the forest one day!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tuber Alexis: Maybe I'll take the bridge instead."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_water": {
+      "name": {
+        "en": [
+          "Tisha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Tisha: The sea under Bond Bridge is so clear you can see the fish. Battle me while I tread water!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Tisha: I'm worn out. Time to float."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Joy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Joy: We're twins! We go everywhere together, even into battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Joy: We lost together, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl_2": {
+      "name": {
+        "en": [
+          "Meg"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Meg: We're twins! We go everywhere together, even into battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Meg: We lost together, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ThreeIsland_BondBridge_EventScript_BerryForestSign": {
+      "en": [
+        "Berry Forest\nStraight ahead"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "ThreeIsland_BondBridge_EventScript_BondBridgeSign": {
+      "en": [
+        "Bond Bridge\nThree Island - Berry Forest"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

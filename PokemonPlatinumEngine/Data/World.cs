@@ -208,6 +208,8 @@ public static class WorldMapBuilder
         int ChunkOf(int cx, int cy) =>
             swap?.Cells.FirstOrDefault(c => c.ChunkX == cx && c.ChunkY == cy) is { } swapped ? swapped.Chunk : Built(cx, cy) ? matrix.ChunkAt(cx, cy) : WorldMatrixFile.NoChunk;
         bool cave = entry.Setting == MapSetting.Cave, nothing = entry.Setting == MapSetting.Void, room = entry.Setting == MapSetting.Indoors;
+        // The sea floor (plan 21 · H5): rock where no chunk says otherwise, no forest and no houses
+        bool sea = entry.Setting == MapSetting.Underwater;
         // A room built from a layout is as large as its floor and the walls round it, not the chunk it is laid in: a
         // room is looked at from its middle and walled at its edges (plan 19 · K1)
         // A DS game's room (plan 20 · J2) lies in its chunk's corner too, but the original leaves the chunk round it open:
@@ -252,7 +254,7 @@ public static class WorldMapBuilder
         for (int y = 0; y < map.Height; y++)
             for (int x = 0; x < map.Width; x++)
             {
-                map.SetGroundTile(x, y, cave ? TileType.CaveWall : nothing ? TileType.Void : room ? TileType.Wall : TileType.Tree, isSolid: true);
+                map.SetGroundTile(x, y, cave ? TileType.CaveWall : nothing ? TileType.Void : room ? TileType.Wall : sea ? TileType.Rock : TileType.Tree, isSolid: true);
                 map.SetHeight(x, y, GroundLevel);
             }
 
@@ -350,7 +352,7 @@ public static class WorldMapBuilder
         // Where the world has no chunk at all there is forest too. Round the Battle Zone, where every chunk with trees
         // beside such a cell grows round ones, it is that forest; anywhere a pine wood stands beside it, it stays one
         TreeStyle? TreesOfChunk(int cx, int cy) => wooded.Contains((cx, cy)) ? map.TreesAt(cx * T, cy * T) : null;
-        if (!cave && !nothing && !room)
+        if (!cave && !nothing && !room && !sea)
             for (int cy = 0; cy < matrix.Height; cy++)
                 for (int cx = 0; cx < matrix.Width; cx++)
                 {
@@ -468,6 +470,18 @@ public static class WorldMapBuilder
                 LayFurniture(map, furniture.Where(p => p.Y >= back && p.X > 0 && p.X + p.Width < map.Width && p.Y + p.Depth < map.Height).ToList(), back);
             }
         }
+        else if (sea)
+        {
+            // The sea floor (plan 21 · H5; style guide, "The sea floor"): what the import couldn't name is the floor's
+            // sand where it is swum and rock where it is blocked, and the seaweed is kelp standing in the sand
+            foreach (var (x, z) in vague) map.SetGroundTile(x, z, map.IsSolid(x, z) ? TileType.Rock : TileType.Sand, map.IsSolid(x, z));
+            foreach (var (x, z) in blank) map.SetGroundTile(x, z, TileType.Rock, isSolid: true);
+            for (int z = 0; z < map.Height; z++)
+                for (int x = 0; x < map.Width; x++)
+                    if (!map.IsSolid(x, z) && map.BehaviourAt(x, z) is TileBehavior.Seaweed or TileBehavior.SeaweedNoSurfacing)
+                        map.SetGroundTile(x, z, TileType.Kelp, isSolid: false);
+            RaiseRock(map, (x, z) => map.GetGroundTile(x, z) == TileType.Rock && map.IsSolid(x, z));
+        }
         else
         {
             // The original paints its dark of a cave's mouth in a few places that lead into nothing (the west end of
@@ -508,7 +522,7 @@ public static class WorldMapBuilder
         // Last, because a door knows where it leads only once the warps are in place
         map.PlacedBuildings = parts.Select(part => ToBuilding(map, part, entrances)).ToList();
         // A world whose houses are drawn into its tiles (a GBA game's, plan 18 · W7) has its buildings found at their doors
-        if (world.Index.BuildingsAtDoors && !cave && !nothing && !room)
+        if (world.Index.BuildingsAtDoors && !cave && !nothing && !room && !sea)
             map.PlacedBuildings.AddRange(BuildingsAtDoors(map, blank, world.Index.Maps.FirstOrDefault(m => m.Matrix == 0)?.Name,
                 world.Index.Maps.Where(m => m.Setting != MapSetting.Indoors).Select(m => m.Name)));
         return map;
@@ -1238,6 +1252,9 @@ public static class WorldMapBuilder
             BikeAllowed = file?.Bike ?? false,
             EscapeRopeAllowed = file?.EscapeRope ?? false,
             FlyAllowed = file?.Fly ?? false,
+            // Each a map's name: the map that holds the area below or above, and only once that area is open (plan 21 · H5)
+            Dive = file?.Dive is { } below && world.IsOpen(below) ? world.MapOf(below)?.Name : null,
+            Emerge = file?.Emerge is { } above && world.IsOpen(above) ? world.MapOf(above)?.Name : null,
             EastSea = file?.EastSea ?? false,
             UnownTable = file?.UnownTable ?? 0
         };

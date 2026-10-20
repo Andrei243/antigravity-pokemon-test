@@ -1,0 +1,6 @@
+{
+  // The summit path, its first floor (plan 19 · K9, part a): the way up inside Mt. Ember
+  "area": "mt_ember_summit_path_1f",
+  "name": "Mt. Ember",
+  "bgmTrack": "kanto/sevii_cave"
+}

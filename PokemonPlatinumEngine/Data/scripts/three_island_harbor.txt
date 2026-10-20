@@ -1,0 +1,46 @@
+# Three Island's harbour (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/ThreeIsland_Harbor/scripts.inc).
+#
+# The sailor sails a holder of the Tri-Pass or the Rainbow Pass to Kanto or to One and Two Island
+# (common.SeagallopTo…). The ship stays out of sight, as One Island's does (FLAG_HIDE_THREE_ISLAND_HARBOR_SEAGALLOP, a
+# flag of ours).
+
+
+script OnEnter
+  setflag FLAG_HIDE_THREE_ISLAND_HARBOR_SEAGALLOP
+  end
+
+
+script Sailor
+  face sailor player
+  speaker "Sailor"
+  if item "Rainbow Pass" goto Pass
+  if not item "Tri-Pass" goto NoPass
+label Pass
+  say "Welcome aboard the Seagallop! Have your pass ready."
+  choose "Where would you like to sail?" "VERMILION CITY" "CINNABAR ISLAND" "ONE ISLAND" "TWO ISLAND" "NOT NOW"
+  if result == 0 goto Vermilion
+  if result == 1 goto Cinnabar
+  if result == 2 goto One
+  if result == 3 goto Two
+  say "Come back any time."
+  end
+label Vermilion
+  say "All aboard for Vermilion City!"
+  call SeagallopToVermilion
+  end
+label Cinnabar
+  say "All aboard for Cinnabar Island!"
+  call SeagallopToCinnabar
+  end
+label One
+  say "All aboard for One Island!"
+  call SeagallopToOneIsland
+  end
+label Two
+  say "All aboard for Two Island!"
+  call SeagallopToTwoIsland
+  end
+label NoPass
+  say "The Seagallop sails only for holders of a pass, I'm afraid."
+  end

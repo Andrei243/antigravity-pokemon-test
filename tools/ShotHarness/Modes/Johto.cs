@@ -24,6 +24,17 @@ partial class Harness
             engine.NewGameRegion = "Sinnoh";
             return;
         }
+        // JOHTO_FROM=north shoots only the north (plan 20 · J10), in a new game of its own
+        if (Environment.GetEnvironmentVariable("JOHTO_FROM") == "north")
+        {
+            engine.NewGameRegion = "Johto";
+            engine.StartNewGame();
+            game.SaveSlot = 1;
+            game.LocationSign.Hide();
+            JohtoMountainShots();
+            engine.NewGameRegion = "Sinnoh";
+            return;
+        }
         engine.NewGameRegion = "Johto";
         engine.StartNewGame();
         game.State = GameState.Overworld;
@@ -126,6 +137,9 @@ partial class Harness
         JohtoNorthShots();
         // And the west and the sea plan 20 · J8 opened: Routes 38 to 41, Olivine, its lighthouse, Cianwood and the Whirl Islands
         JohtoWestShots();
+        // And the north plan 20 · J10 opened: Routes 42 to 46, Mt. Mortar, Mahogany, the Lake of Rage, the Ice Path,
+        // Blackthorn, the Dragon's Den and the Dark Cave
+        JohtoMountainShots();
         // And last the second chapter played by its own scripts, in a new game of its own (plan 20 · J7: jst30 to jst59)
         JohtoScenes(second: true);
         engine.NewGameRegion = "Sinnoh";

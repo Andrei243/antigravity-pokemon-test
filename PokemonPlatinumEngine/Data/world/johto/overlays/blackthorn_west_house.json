@@ -1,0 +1,22 @@
+{
+  // A house in Blackthorn City (plan 20 · J10): an old woman and her Dratini
+  "area": "blackthorn_west_house",
+  "bgmTrack": "johto/blackthorn",
+  "people": {
+    "t30r0201_gsoldwoman1": {
+      "name": "Old Woman",
+      "dialog": [
+        "My Dratini hatched from an Egg the elder gave me long ago. It's still young, for a dragon."
+      ]
+    },
+    "t30r0201_tsure_poke_static_dratini": {
+      "name": "Dratini",
+      "npcType": "Pokemon",
+      "species": "Dratini",
+      "still": true,
+      "dialog": [
+        "Draa!"
+      ]
+    }
+  }
+}

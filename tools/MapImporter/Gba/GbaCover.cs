@@ -188,7 +188,7 @@ public static class GbaCover
     public static TerrainCover? OfBehaviour(TileBehavior behaviour) => behaviour switch
     {
         TileBehavior.TallGrass or TileBehavior.VeryTallGrass => TerrainCover.TallGrass,
-        TileBehavior.River or TileBehavior.Sea or TileBehavior.DeepWater or TileBehavior.Waterfall or TileBehavior.CurrentEast
+        TileBehavior.River or TileBehavior.Sea or TileBehavior.DiveWater or TileBehavior.Waterfall or TileBehavior.CurrentEast
             or TileBehavior.CurrentWest or TileBehavior.CurrentNorth or TileBehavior.CurrentSouth => TerrainCover.Water,
         TileBehavior.Puddle => TerrainCover.Puddle,
         TileBehavior.Sand => TerrainCover.Sand,

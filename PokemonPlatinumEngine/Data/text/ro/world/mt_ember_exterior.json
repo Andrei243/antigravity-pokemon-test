@@ -1,0 +1,129 @@
+{
+  "displayName": {
+    "en": [
+      "Mt. Ember"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Hiker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Climbing a live volcano is a test of nerve. The rocks up top are hot enough to fry an egg!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mt_ember_grunt1": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mt_ember_grunt2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "crush_girl": {
+      "name": {
+        "en": [
+          "Jocelyn"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Crush Girl Jocelyn: Climbing a volcano is the best training there is. Battle me at the top of my game!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Crush Girl Jocelyn: I'm all burned out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Logan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Logan: I keep watch over the Pokémon on this mountain. Show me you treat yours well!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Logan: Yes, they're in good hands."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Beth"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokémon Ranger Beth: A ranger goes wherever the Pokémon need help. Even up a volcano!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokémon Ranger Beth: You'd make a fine ranger yourself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

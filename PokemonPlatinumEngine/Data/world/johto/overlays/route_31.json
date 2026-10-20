@@ -1,6 +1,6 @@
 {
   // Route 31 (plan 20 · J2): east of Violet City's gate house to the Dark Cave. Violet City (beyond the gate house) and
-  // the Dark Cave (warp 2) are plan 20's next stretch, and their ways stay shut until then. Bug Catcher Wade's team is
+  // the Dark Cave (warp 2, open since plan 20 · J10) lie at its two ends. Bug Catcher Wade's team is
   // read from Johto's trainers.json; the man who wants his mail taken is plan 20 · J4's
   "area": "route_31",
   "bgmTrack": "johto/route30",

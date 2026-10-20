@@ -1,0 +1,20 @@
+{
+  // A house in Blackthorn City (plan 20 · J10)
+  "area": "blackthorn_east_house",
+  "bgmTrack": "johto/blackthorn",
+  "people": {
+    "t30r0301_gsgirl1": {
+      "name": "Girl",
+      "dialog": [
+        "Everyone in my family trains dragons. I'm going to be the first to train a Kingdra!"
+      ]
+    },
+    "t30r0301_gswoman1": {
+      "name": "Woman",
+      "still": true,
+      "dialog": [
+        "The snow on the mountains melts into the Dragon's Den. The water there is clean and cold."
+      ]
+    }
+  }
+}

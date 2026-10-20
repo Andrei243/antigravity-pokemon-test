@@ -1,0 +1,36 @@
+# The Dragon's Den (its way down, its water and the Dragon Shrine): HeartGold's SEQ_GS_RYUUNOANA, and this game a song
+# of its own: a grave oboe in C minor over a low choir, a harp that rises and falls like the water, a deep bass and a
+# far drum, the old shrine in the dark. A cave plays the same by day and night. Original composition for this game
+# (plan 20 · J10).
+title The Dragon's Den
+tempo 80
+meter 4/4
+reverb 0.52
+night none
+
+track lead oboe vol=0.74 pan=0 rev=0.5
+  L o5 c4 e-4 g2 | o5 a-4 g4 f2 | o5 d4 o4 b4 g4 b4 | o5 c2. r4 |
+  o5 g4 e-4 b-2 | o5 a-4 g4 e-2 | o5 f4 d4 o4 b-4 o5 d4 | o5 g2. r4 |
+  o5 e-4 g4 o6 c2 | o6 d4 c4 o5 b-2 | o5 a-4 o6 c4 o5 b-4 a-4 | o5 g2. r4 |
+  o5 c4 e-4 a-2 | o5 g4 f4 d2 | o5 f4 d4 o4 b4 o5 d4 | o5 c2. r4 |
+
+track water harp vol=0.3 pan=-0.3 rev=0.56
+  L o3 c4 e-4 g4 e-4 | o3 f4 a-4 o4 c4 o3 a-4 | o3 g4 b4 o4 d4 o3 b4 | o3 c4 e-4 g4 e-4 |
+  o3 e-4 g4 b-4 g4 | o3 a-4 o4 c4 e-4 c4 | o3 b-4 o4 d4 f4 d4 | o3 g4 b4 o4 d4 o3 b4 |
+  o3 c4 e-4 g4 e-4 | o3 g4 b-4 o4 d4 o3 b-4 | o3 a-4 o4 c4 e-4 c4 | o3 g4 b4 o4 d4 o3 b4 |
+  o3 a-4 o4 c4 e-4 c4 | o3 b-4 o4 d4 f4 d4 | o3 g4 b4 o4 d4 o3 b4 | o3 c4 e-4 g4 e-4 |
+
+track choir choir vol=0.33 pan=0.25 rev=0.6
+  L o4 (c e- g)1 | o4 (c f a-)1 | o3 (g b >d)1 | o4 (c e- g)1 |
+  o4 (e- g b-)1 | o4 (c e- a-)1 | o4 (d f b-)1 | o3 (g b >d)1 |
+  o4 (c e- g)1 | o4 (d g b-)1 | o4 (c e- a-)1 | o3 (g b >d)1 |
+  o4 (c e- a-)1 | o4 (d f b-)1 | o3 (g b >d)1 | o4 (c e- g)1 |
+
+track bass contrabass vol=0.5 rev=0.2
+  L o2 c1 | o2 f1 | o2 g1 | o2 c1 |
+  o2 e-1 | o2 a-1 | o2 b-1 | o2 g1 |
+  o2 c1 | o2 g1 | o2 a-1 | o2 g1 |
+  o2 a-1 | o2 b-1 | o2 g1 | o2 c1 |
+
+track drums kit vol=0.18 rev=0.4
+  v56 L [ f2 r2 | r2 f4 r4 | ]8

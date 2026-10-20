@@ -1,0 +1,6 @@
+{
+  // The Ruby Path, B3F (plan 19 · K9, part a): the widest floor, its boulders and rocks between the ways down
+  "area": "mt_ember_ruby_path_b3f",
+  "name": "Ruby Path",
+  "bgmTrack": "kanto/sevii_cave"
+}

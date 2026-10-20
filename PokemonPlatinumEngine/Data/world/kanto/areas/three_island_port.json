@@ -1,0 +1,45 @@
+{
+  "key": "three_island_port",
+  "index": 232,
+  "name": "Three Isle Port",
+  "matrix": 192,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "three_island_port",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Dunsparce", "level": 15 },
+    { "species": "Dunsparce", "level": 15 },
+    { "species": "Dunsparce", "level": 10 },
+    { "species": "Dunsparce", "level": 10 },
+    { "species": "Dunsparce", "level": 20 },
+    { "species": "Dunsparce", "level": 20 },
+    { "species": "Dunsparce", "level": 25 },
+    { "species": "Dunsparce", "level": 30 },
+    { "species": "Dunsparce", "level": 25 },
+    { "species": "Dunsparce", "level": 30 },
+    { "species": "Dunsparce", "level": 5 },
+    { "species": "Dunsparce", "level": 35 }
+  ],
+  "landRate": 1,
+  "warps": [
+    { "x": 112, "z": 44, "to": "three_island_dunsparce_tunnel", "toWarp": 0 },
+    { "x": 134, "z": 45, "to": "three_island_dunsparce_tunnel", "toWarp": 1 },
+    { "x": 108, "z": 53, "to": "three_island_harbor", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "woman_3", "looks": "woman_3", "movement": "look_around", "x": 110, "z": 49, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_Port_EventScript_Woman" },
+    { "id": "biker", "looks": "biker", "movement": "walk_east_and_west", "x": 104, "z": 48, "facing": 3, "rangeX": 3, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BIKERS", "script": "ThreeIsland_Port_EventScript_Biker1" },
+    { "id": "biker_2", "looks": "biker", "movement": "walk_sequence_north_east_south_west", "x": 109, "z": 50, "facing": 0, "rangeX": 2, "rangeZ": 2, "hiddenBy": "FLAG_HIDE_THREE_ISLAND_BIKERS", "script": "ThreeIsland_Port_EventScript_Biker2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1834,6 +1834,10 @@ public partial class GameEngine
         if (spot.Waterfall && spot.Surfing) StartScript(FieldScripts.Waterfall);
         // (and a whirlpool faced from the water: HeartGold's, plan 20 · J8)
         else if (spot.Whirlpool && spot.Surfing) StartScript(FieldScripts.Whirlpool);
+        // (and Dive, Emerald's, plan 21 · H5: the dark water under a surfer, or the floor under a diver, offered only once
+        // the region's Badge for it is had, as TrySetupDiveDownScript and TrySetupDiveEmergeScript ask FLAG_BADGE07_GET)
+        else if ((spot.Dive || spot.Surface) && FieldMoveRules.Check(FieldMove.Dive, spot, flow.Story) == FieldMoveError.None)
+            StartScript(spot.Surface ? FieldScripts.Surface : FieldScripts.Dive);
         else if (spot.RockFace && flow.Player.Mode == TravelMode.OnFoot) StartScript(FieldScripts.RockFace);
         else if (spot.Water && FieldMoveRules.Knower(flow.Party, FieldMove.Surf) != null
                  && FieldMoveRules.Check(FieldMove.Surf, spot, flow.Story) == FieldMoveError.None) StartScript(FieldScripts.Water);
@@ -2021,6 +2025,7 @@ public partial class GameEngine
             case StartMenuChoice.Pokemon:
                 flow.State = GameState.PartyMenu;
                 flow.PartyScreen.Open();
+                flow.PartyScreen.Region = Here.Id;
                 // The summary's condition page, once the Contest Hall has been visited (plan 06 · R14c)
                 flow.PartyScreen.ShowCondition = flow.Story.Has(ContestHallVisitedFlag);
                 break;

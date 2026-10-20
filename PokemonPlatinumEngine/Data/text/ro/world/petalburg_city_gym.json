@@ -34,7 +34,7 @@
           "Wally's Father"
         ],
         "text": [
-          ""
+          "Tatăl lui Wally"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Ah, {player}! Come along, come along."
         ],
         "text": [
-          ""
+          "A, {player}! Vino, vino."
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Randall"
         ],
         "text": [
-          ""
+          "Randall"
         ]
       },
       "before": {
@@ -70,7 +70,7 @@
           "Cooltrainer Randall: The Speed Room! Here the quick strike first, and the slow never strike at all!"
         ],
         "text": [
-          ""
+          "Antrenor As Randall: Camera Vitezei! Aici cei iuți lovesc primii, iar cei lenți nu lovesc deloc!"
         ]
       },
       "after": {
@@ -78,7 +78,7 @@
           "Cooltrainer Randall: You were faster than I was. That stings."
         ],
         "text": [
-          ""
+          "Antrenor As Randall: Ai fost mai rapid decât mine. Doare."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Mary"
         ],
         "text": [
-          ""
+          "Mary"
         ]
       },
       "before": {
@@ -96,7 +96,7 @@
           "Cooltrainer Mary: In the Accuracy Room, every move lands where it's meant to. Let's see if yours do!"
         ],
         "text": [
-          ""
+          "Antrenoare As Mary: În Camera Preciziei, fiecare mișcare nimerește unde trebuie. Să vedem dacă și ale tale!"
         ]
       },
       "after": {
@@ -104,7 +104,7 @@
           "Cooltrainer Mary: Right on target... but it was your target, not mine."
         ],
         "text": [
-          ""
+          "Antrenoare As Mary: Drept în țintă... dar a fost ținta ta, nu a mea."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Parker"
         ],
         "text": [
-          ""
+          "Parker"
         ]
       },
       "before": {
@@ -122,7 +122,7 @@
           "Cooltrainer Parker: Welcome to the Confusion Room. Try to keep your head straight in here!"
         ],
         "text": [
-          ""
+          "Antrenor As Parker: Bine ai venit în Camera Confuziei. Încearcă să-ți păstrezi mintea limpede aici!"
         ]
       },
       "after": {
@@ -130,7 +130,7 @@
           "Cooltrainer Parker: I'm the one who's all mixed up now."
         ],
         "text": [
-          ""
+          "Antrenor As Parker: Acum eu sunt cel încurcat de-a binelea."
         ]
       }
     },
@@ -140,7 +140,7 @@
           "Alexia"
         ],
         "text": [
-          ""
+          "Alexia"
         ]
       },
       "before": {
@@ -148,7 +148,7 @@
           "Cooltrainer Alexia: The Defense Room. My Pokémon can take any hit you throw. Go on, try!"
         ],
         "text": [
-          ""
+          "Antrenoare As Alexia: Camera Apărării. Pokémonii mei pot lua orice lovitură. Hai, încearcă!"
         ]
       },
       "after": {
@@ -156,7 +156,7 @@
           "Cooltrainer Alexia: All that defense, and it still wasn't enough."
         ],
         "text": [
-          ""
+          "Antrenoare As Alexia: Atâta apărare, și tot nu a fost de ajuns."
         ]
       }
     },
@@ -166,7 +166,7 @@
           "George"
         ],
         "text": [
-          ""
+          "George"
         ]
       },
       "before": {
@@ -174,7 +174,7 @@
           "Cooltrainer George: In the Recovery Room, a Pokémon that rests comes back stronger. Let's go!"
         ],
         "text": [
-          ""
+          "Antrenor As George: În Camera Recuperării, un Pokémon care se odihnește revine mai puternic. Hai!"
         ]
       },
       "after": {
@@ -182,7 +182,7 @@
           "Cooltrainer George: There was no recovering from that one."
         ],
         "text": [
-          ""
+          "Antrenor As George: De la asta nu mai era recuperare."
         ]
       }
     },
@@ -192,7 +192,7 @@
           "Jody"
         ],
         "text": [
-          ""
+          "Jody"
         ]
       },
       "before": {
@@ -200,7 +200,7 @@
           "Cooltrainer Jody: The Strength Room! One good hit is all a strong Pokémon needs!"
         ],
         "text": [
-          ""
+          "Antrenoare As Jody: Camera Forței! O singură lovitură bună e tot ce-i trebuie unui Pokémon puternic!"
         ]
       },
       "after": {
@@ -208,7 +208,7 @@
           "Cooltrainer Jody: Your one good hit was better than mine."
         ],
         "text": [
-          ""
+          "Antrenoare As Jody: Lovitura ta bună a fost mai bună decât a mea."
         ]
       }
     },
@@ -218,7 +218,7 @@
           "Berke"
         ],
         "text": [
-          ""
+          "Berke"
         ]
       },
       "before": {
@@ -226,7 +226,7 @@
           "Cooltrainer Berke: This is the One-Hit KO Room. One blow decides everything. Ready?"
         ],
         "text": [
-          ""
+          "Antrenor As Berke: Asta e Camera K.O. dintr-o Lovitură. O singură lovitură decide totul. Gata?"
         ]
       },
       "after": {
@@ -234,7 +234,7 @@
           "Cooltrainer Berke: Decided in one blow, all right. Yours."
         ],
         "text": [
-          ""
+          "Antrenor As Berke: Decis dintr-o lovitură, într-adevăr. A ta."
         ]
       }
     }
@@ -245,7 +245,7 @@
         "Petalburg City Pokémon Gym\nLeader: Norman"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Petalburg\nLider: Norman"
       ]
     },
     "PetalburgCity_Gym_EventScript_RightGymStatue": {
@@ -253,7 +253,7 @@
         "Petalburg City Pokémon Gym\nLeader: Norman"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Petalburg\nLider: Norman"
       ]
     }
   }

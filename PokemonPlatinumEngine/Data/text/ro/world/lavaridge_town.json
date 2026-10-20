@@ -6,7 +6,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Oh, you like the hot springs, do you? That's unusual for someone as young as you."
         ],
         "text": [
-          ""
+          "Oh, îți plac izvoarele termale, nu-i așa? E neobișnuit pentru cineva atât de tânăr."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "We take all the hot water we like, and still the springs never run dry. The magma below warms the water underground, you see."
         ],
         "text": [
-          ""
+          "Luăm câtă apă fierbinte vrem, iar izvoarele tot nu seacă. Magma de dedesubt încălzește apa din pământ, vezi tu."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Ow! Some Pokémon nipped me in the hot springs! Right on the backside, too!"
         ],
         "text": [
-          ""
+          "Au! Niște Pokémoni m-au mușcat în izvoarele termale! Și chiar în spate!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I soak in the hot springs every single day. I'm going to be strong and pretty, just like Flannery!"
         ],
         "text": [
-          ""
+          "Mă scald în izvoarele termale în fiecare zi. O să fiu puternică și drăguță, ca Flannery!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "If people put Pokémon in the hot springs, who knows what would happen? A fizzy bath? A lava bath?"
         ],
         "text": [
-          ""
+          "Dacă oamenii ar pune Pokémoni în izvoarele termale, cine știe ce s-ar întâmpla? O baie cu bule? O baie de lavă?"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "They say these springs cure stiff shoulders, aching muscles, broken hearts and empty purses. Well, I hope so!"
         ],
         "text": [
-          ""
+          "Se zice că izvoarele astea vindecă umerii țepeni, mușchii dureroși, inimile frânte și buzunarele goale. Ei bine, sper!"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "Go and battle your dad, {player}!"
         ],
         "text": [
-          ""
+          "Du-te și luptă-te cu tatăl tău, {player}!"
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       }
     }
@@ -143,7 +143,7 @@
         "Lavaridge Town\nRest a while in the natural hot springs"
       ],
       "text": [
-        ""
+        "Orășelul Lavaridge\nOdihnește-te puțin în izvoarele termale naturale"
       ]
     },
     "LavaridgeTown_EventScript_GymSign": {
@@ -151,7 +151,7 @@
         "Lavaridge Town Pokémon Gym\nLeader: Flannery\nA fiery passion that never cools!"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orășelul Lavaridge\nLideră: Flannery\nO pasiune înfocată care nu se răcește niciodată!"
       ]
     },
     "LavaridgeTown_EventScript_HerbShopSign": {
@@ -159,7 +159,7 @@
         "Herb Shop\nBitter medicine that works wonders"
       ],
       "text": [
-        ""
+        "Magazin de ierburi\nMedicament amar care face minuni"
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -167,7 +167,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     },
     "Common_EventScript_ShowPokemartSign": {
@@ -175,7 +175,7 @@
         "Poké Mart\nFor all your trainer needs."
       ],
       "text": [
-        ""
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
       ]
     }
   }

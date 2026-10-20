@@ -1,0 +1,76 @@
+{
+  "key": "one_island_treasure_beach",
+  "index": 227,
+  "name": "Treasure Beach",
+  "matrix": 190,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "one_island_treasure_beach",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Spearow", "level": 32 },
+    { "species": "Tangela", "level": 33 },
+    { "species": "Spearow", "level": 31 },
+    { "species": "Tangela", "level": 35 },
+    { "species": "Fearow", "level": 36 },
+    { "species": "Meowth", "level": 31 },
+    { "species": "Fearow", "level": 38 },
+    { "species": "Psyduck", "level": 31 },
+    { "species": "Fearow", "level": 40 },
+    { "species": "Persian", "level": 37 },
+    { "species": "Fearow", "level": 40 },
+    { "species": "Persian", "level": 40 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [],
+  "objects": [
+    { "id": "swimmer_f_water", "looks": "swimmer_f_water", "movement": "wander_around", "x": 8, "z": 151, "facing": 1, "rangeX": 2, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_FEMALE_AMARA" },
+    { "id": "boy", "looks": "boy", "movement": "wander_around", "x": 13, "z": 160, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "OneIsland_TreasureBeach_EventScript_Boy" }
+  ],
+  "signs": [
+    { "x": 8, "z": 160, "type": 2, "script": "", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_ONE_ISLAND_TREASURE_BEACH_STARDUST" },
+    { "x": 13, "z": 167, "type": 2, "script": "", "item": "Stardust", "flag": "FLAG_HIDDEN_ITEM_ONE_ISLAND_TREASURE_BEACH_STARDUST_2" },
+    { "x": 11, "z": 171, "type": 2, "script": "", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_ONE_ISLAND_TREASURE_BEACH_PEARL" },
+    { "x": 9, "z": 174, "type": 2, "script": "", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_ONE_ISLAND_TREASURE_BEACH_PEARL_2" },
+    { "x": 15, "z": 162, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_ONE_ISLAND_TREASURE_BEACH_ULTRA_BALL" },
+    { "x": 16, "z": 173, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_ONE_ISLAND_TREASURE_BEACH_ULTRA_BALL_2" },
+    { "x": 15, "z": 169, "type": 2, "script": "", "item": "Star Piece", "flag": "FLAG_HIDDEN_ITEM_ONE_ISLAND_TREASURE_BEACH_STAR_PIECE" },
+    { "x": 8, "z": 167, "type": 2, "script": "", "item": "Big Pearl", "flag": "FLAG_HIDDEN_ITEM_ONE_ISLAND_TREASURE_BEACH_BIG_PEARL" }
+  ],
+  "triggers": []
+}

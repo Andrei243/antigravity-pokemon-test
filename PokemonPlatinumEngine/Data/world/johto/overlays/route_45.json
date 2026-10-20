@@ -1,0 +1,69 @@
+{
+  // Route 45 (plan 20 · J10): the mountain road south from Blackthorn City, its ledges leading down to Route 46, and the
+  // Dark Cave's back way in. Its seven trainers by their own records; its Apricorn tree is plan 20 · J6's and the
+  // photographer plan 20 · J11's. It plays Route 34's song, as HeartGold's header shares it
+  "area": "route_45",
+  "bgmTrack": "johto/route34",
+  "trees": "Round",
+  "people": {
+    "r45_mount_2": {
+      "name": "Erik",
+      "trainer": {
+        "dialogueBefore": "Hiker Erik: This mountain road is my training ground. Let's go!",
+        "dialogueAfter": "Hiker Erik: My legs are stronger than my Pokémon."
+      }
+    },
+    "r45_gsman3": {
+      "name": "Ryan",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Ryan: A strong wind blows up here. Can your Pokémon stand in it?",
+        "dialogueAfter": "Ace Trainer Ryan: They stood. Mine didn't."
+      }
+    },
+    "r45_mount_2_2": {
+      "name": "Parry",
+      "trainer": {
+        "dialogueBefore": "Hiker Parry: Onix and I are as solid as the mountain!",
+        "dialogueAfter": "Hiker Parry: The mountain cracked."
+      }
+    },
+    "r45_gswoman3": {
+      "name": "Kelly",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Kelly: Water Pokémon are my speciality. Let's make a splash!",
+        "dialogueAfter": "Ace Trainer Kelly: I'm soaked through."
+      }
+    },
+    "r45_gsfighter": {
+      "name": "Kenji",
+      "trainer": {
+        "dialogueBefore": "Black Belt Kenji: I train on this slope from dawn to dusk. Hyah!",
+        "dialogueAfter": "Black Belt Kenji: Back to training until dusk..."
+      }
+    },
+    "r45_mount_2_3": {
+      "name": "Timothy",
+      "trainer": {
+        "dialogueBefore": "Hiker Timothy: Diglett dig, Dugtrio dig faster! Ready?",
+        "dialogueAfter": "Hiker Timothy: They dug themselves into a hole."
+      }
+    },
+    "r45_mount_2_4": {
+      "name": "Michael",
+      "trainer": {
+        "dialogueBefore": "Hiker Michael: Rocks, rocks and more rocks. That's my team!",
+        "dialogueAfter": "Hiker Michael: Crushed like gravel."
+      }
+    },
+    "r45_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "The ledges on this road only go one way. Once you hop down, you're going south!"
+      ]
+    }
+  },
+  "signs": {
+    "R45_000+1": "Route 45\nBlackthorn City is to the north.",
+    "R45_004+1": "Dark Cave\nThe back way in."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  // A house on Three Island (plan 19 · K9, part a)
+  "area": "three_island_house_3",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "beauty": { "name": "Beauty", "dialog": [ "The berries from the forest make the most wonderful jam. I'd share some, but my Pokémon ate it all." ] }
+  }
+}

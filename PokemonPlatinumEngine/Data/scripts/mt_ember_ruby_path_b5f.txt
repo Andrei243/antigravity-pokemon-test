@@ -1,0 +1,17 @@
+# The Ruby Path's deepest room (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are our own,
+# on FireRed's beats (data/maps/MtEmber_RubyPath_B5F/scripts.inc).
+#
+# The Ruby lies here until it is picked up (FLAG_GOT_RUBY; the ball's own flag, FLAG_HIDE_RUBY, keeps it off the map
+# from then on). Celio on One Island takes it (one_island_pokemon_center_1f.txt).
+
+
+script OnEnter
+  if not flag FLAG_GOT_RUBY clearflag FLAG_HIDE_RUBY
+  end
+
+script Ruby
+  setflag FLAG_GOT_RUBY
+  setflag own
+  hide self
+  find own
+  end

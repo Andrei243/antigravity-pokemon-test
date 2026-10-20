@@ -1,0 +1,174 @@
+{
+  "displayName": {
+    "en": [
+      "Three Island"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "three_island_antibiker1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "three_island_antibiker2": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "paxton": {
+      "name": {
+        "en": [
+          "Paxton"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "three_island_biker1": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "three_island_biker2": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "three_island_biker3": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "three_island_biker4": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "three_island_biker5": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "three_island_biker6": {
+      "name": {
+        "en": [
+          "Biker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This island's ours now. Nothing but fields and sheep round here, so we're bringing some noise!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Those bikers rode their bikes over the crops and frightened the Doduo. I hope someone sends them packing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Doduo can run faster than any bike! It just doesn't want to."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "doduo": {
+      "name": {
+        "en": [
+          "Doduo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Doduo: Gwaa! Gwaa!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "ThreeIsland_EventScript_IslandSign": {
+      "en": [
+        "Three Island\nAn island of farms, quiet and kind"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

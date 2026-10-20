@@ -1,0 +1,21 @@
+{
+  // Mt. Mortar's back halls (plan 20 · J10): two trainers by their own records, and a boulder that Strength moves
+  "area": "mount_mortar_1f_back",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "everywhere_mania": {
+      "name": "Harrison",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Harrison: My Nidoking and Nidoqueen are the king and queen of this cave!",
+        "dialogueAfter": "Poké Maniac Harrison: Dethroned in their own cave..."
+      }
+    },
+    "everywhere_gsassistantm": {
+      "name": "Markus",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Markus: I've charted every tunnel of this mountain. Have you?",
+        "dialogueAfter": "Super Nerd Markus: My map didn't show that coming."
+      }
+    }
+  }
+}

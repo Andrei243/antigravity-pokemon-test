@@ -1,0 +1,14 @@
+{
+  // The Dark Cave's north side (plan 20 · J10), its back way out onto Route 45
+  "area": "dark_cave_route_45_side",
+  "bgmTrack": "johto/ice_path",
+  "people": {
+    "d42r0101_sunglasses": {
+      "name": "Man",
+      "dialog": [
+        "Nobody ever finds this side of the cave. I come here when I want to be left alone.",
+        "Funny Pokémon live down here. Little ones with wings that dig through the ground."
+      ]
+    }
+  }
+}

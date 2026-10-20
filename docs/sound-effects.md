@@ -42,6 +42,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `warp` | `SEQ_SE_DP_TELE2` | A warp panel. And, until it has a sound of its own, a hut of Amity Square's ruins carrying the player to another (the original's `SEQ_SE_DP_GYURU`; plan 06 · R16c). |
 | `exclaim` | — | The "!" over a trainer who has seen the player, or anyone a script surprises. |
 | `surf` | — | A Pokémon is ridden out onto the water. |
+| `dive` | — | Dive taken down under the sea, or back up from its floor: a plunge and a stream of bubbles (plan 21 · H5). |
 | `save` | `SEQ_SE_DP_SAVE` | The game is saved. |
 | `pc_on` | `SEQ_SE_DP_PC_LOGIN` | A PC is switched on: as its screen comes on in the field (`anim pc on`, plan 09 · L12). |
 | `pc_off` | `SEQ_SE_DP_PC_LOGOFF` | A PC is switched off: as its screen goes dark in the field (`anim pc off`). |

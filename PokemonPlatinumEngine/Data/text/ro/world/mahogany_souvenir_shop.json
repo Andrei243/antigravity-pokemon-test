@@ -1,0 +1,52 @@
+{
+  "people": {
+    "d35r0101_sunglasses": {
+      "name": {
+        "en": [
+          "Salesman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome, welcome! Rage Candy Bars, fresh today. Well... nearly fresh.",
+          "Nothing back there but stock. Customers stay this side of the counter!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "d35r0101_gsfighter": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I stop in here every time I pass through. Something about this place always feels a little off."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D35R0101_009+1": {
+      "en": [
+        "A poster of the shop's sweets.\n“Rage Candy Bars: the taste of the mountains!”"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

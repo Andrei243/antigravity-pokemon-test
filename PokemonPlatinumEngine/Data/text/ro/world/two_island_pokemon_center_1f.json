@@ -1,0 +1,51 @@
+{
+  "people": {
+    "two_island_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gba_kid": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lostelle's always wandering off to pick berries. Her dad worries himself sick."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Bug Catcher"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I came all the way from Viridian Forest to look for bugs here. The islands have kinds I've never seen!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,41 @@
+{
+  "people": {
+    "balding_man": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We farm Doduo and Rapidash on this island. They're quick on their feet, and the eggs are good too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_boy": {
+      "name": {
+        "en": [
+          "Little Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I grow up, I'm going to ride a Rapidash across every island!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

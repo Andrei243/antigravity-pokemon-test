@@ -1,0 +1,34 @@
+{
+  "people": {
+    "t28gym0103_sunglasses": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Brr! The floor in here is solid ice. Once you start sliding, you won't stop until you hit something!",
+          "Pryce is away from his Gym for now. His trainers are inside, though, and they love the cold."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T28GYM0103_001+1": {
+      "en": [
+        "Mahogany Town Pokémon Gym\nLeader: Pryce"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

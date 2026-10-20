@@ -1,0 +1,11 @@
+{
+  // Dunsparce Tunnel (plan 19 · K9, part a): FireRed's map, our words. A prospector's tunnel under Three Island's
+  // port. FireRed digs it through to the east once the National Pokédex is had; the tunnel's dug-out half is part b's,
+  // so its east end stays shut (three_island_port.json) and the prospector only talks of it
+  "area": "three_island_dunsparce_tunnel",
+  "name": "Dunsparce Tunnel",
+  "bgmTrack": "kanto/sevii_cave",
+  "people": {
+    "prospector": { "name": "Prospector", "script": "Prospector", "still": true }
+  }
+}

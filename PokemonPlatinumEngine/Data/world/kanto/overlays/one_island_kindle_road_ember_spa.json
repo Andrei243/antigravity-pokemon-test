@@ -1,0 +1,17 @@
+{
+  // The Ember Spa (plan 19 · K9, part a): FireRed's hot spring in a cave off Kindle Road. Stepping into its water
+  // heals the team (the area's trigger 0, one_island_kindle_road_ember_spa.txt); an old man by the far wall gives
+  // HM06, Rock Smash, as FireRed's does
+  "area": "one_island_kindle_road_ember_spa",
+  "name": "Ember Spa",
+  "bgmTrack": "kanto/fuchsia",
+  "triggers": [ { "trigger": 0, "script": "SpaHeal" } ],
+  "people": {
+    "old_man_1": { "name": "Old Man", "dialog": [ "A soak in this spring cures every ache. The volcano's heat warms the water all year round." ] },
+    "balding_man": { "name": "Man", "dialog": [ "Pokémon love the spa too. Step in with them and see how lively they get!" ] },
+    "black_belt": { "name": "Black Belt", "dialog": [ "I heard a trainer from Pallet Town became Champion. Every fighter on the islands is talking about it." ] },
+    "old_woman": { "name": "Old Woman", "dialog": [ "Ah, nothing like a hot spring after a long walk up Kindle Road." ] },
+    "old_man_1_2": { "name": "Old Man", "script": "RockSmashMan", "still": true },
+    "balding_man_2": { "name": "Man", "dialog": [ "They say a great fire bird nests on the top of Mt. Ember. I've never dared climb up to look." ] }
+  }
+}

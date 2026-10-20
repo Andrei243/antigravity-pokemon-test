@@ -6,7 +6,7 @@
           "Maxie"
         ],
         "text": [
-          ""
+          "Maxie"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Archie"
         ],
         "text": [
-          ""
+          "Archie"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Tabitha"
         ],
         "text": [
-          ""
+          "Tabitha"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Tabitha: Hehehe! You've come a long way up the mountain just to be turned back. The boss isn't to be disturbed!"
         ],
         "text": [
-          ""
+          "Tabitha: Hehehe! Ai urcat mult pe munte doar ca să fii trimis înapoi. Șeful nu trebuie deranjat!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Tabitha: Hehe... I lost? Well, the boss will deal with you himself."
         ],
         "text": [
-          ""
+          "Tabitha: Hehe... Am pierdut? Ei bine, șeful se va ocupa personal de tine."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Team Magma Grunt: The volcano's about to get a whole lot livelier. Nobody spoils the boss's plan!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Vulcanul e pe cale să devină mult mai animat. Nimeni nu strică planul șefului!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Team Magma Grunt: Ugh, that's not how it was supposed to go."
         ],
         "text": [
-          ""
+          "Magma Grunt: Uf, nu așa trebuia să iasă."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Team Magma Grunt: Can you feel the heat? That's Team Magma's dream about to come true!"
         ],
         "text": [
-          ""
+          "Magma Grunt: Simți căldura? Visul Echipei Magma e pe cale să devină realitate!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Team Magma Grunt: I'm the one who got burned..."
         ],
         "text": [
-          ""
+          "Magma Grunt: Eu sunt cel care s-a ars..."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -112,7 +112,7 @@
           "Team Aqua, here? You lot never know when to quit!"
         ],
         "text": [
-          ""
+          "Echipa Aqua, aici? Voi nu știți niciodată când să vă opriți!"
         ]
       }
     },
@@ -122,7 +122,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -130,7 +130,7 @@
           "Stay back! This is between Team Magma and Team Aqua!"
         ],
         "text": [
-          ""
+          "Înapoi! Asta e între Echipa Magma și Echipa Aqua!"
         ]
       }
     },
@@ -140,7 +140,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -148,7 +148,7 @@
           "Nobody gets to the boss! Not Team Aqua, and not you!"
         ],
         "text": [
-          ""
+          "Nimeni nu ajunge la șef! Nici Echipa Aqua, nici tu!"
         ]
       }
     },
@@ -158,7 +158,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -166,7 +166,7 @@
           "Keep at it, Poochyena! Show those Aqua fools who rules the mountain!"
         ],
         "text": [
-          ""
+          "Hai, Poochyena! Arată-le nătărăilor din Echipa Aqua cine stăpânește muntele!"
         ]
       }
     },
@@ -176,7 +176,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -184,7 +184,7 @@
           "Hey, we're a bit busy here! Can't you see we're in the middle of something?"
         ],
         "text": [
-          ""
+          "Hei, avem treabă aici! Nu vezi că suntem în mijlocul unui lucru?"
         ]
       }
     },
@@ -194,7 +194,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       },
       "dialog": {
@@ -202,7 +202,7 @@
           "Grr! Team Aqua's like ants at a picnic. Always where they're not wanted!"
         ],
         "text": [
-          ""
+          "Grr! Echipa Aqua e ca furnicile la picnic. Mereu unde nu trebuie!"
         ]
       }
     },
@@ -212,7 +212,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -220,7 +220,7 @@
           "Team Magma won't get their volcano without a fight from us!"
         ],
         "text": [
-          ""
+          "Echipa Magma nu-și va primi vulcanul fără o luptă din partea noastră!"
         ]
       }
     },
@@ -230,7 +230,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -238,7 +238,7 @@
           "Hold the line! Don't let Team Magma near the boss!"
         ],
         "text": [
-          ""
+          "Țineți linia! Nu-i lăsați pe cei din Echipa Magma să se apropie de șef!"
         ]
       }
     },
@@ -248,7 +248,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -256,7 +256,7 @@
           "If that volcano blows, the whole sea's in trouble! We can't let it happen!"
         ],
         "text": [
-          ""
+          "Dacă vulcanul explodează, toată marea e în pericol! Nu putem lăsa să se întâmple!"
         ]
       }
     },
@@ -266,7 +266,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -274,7 +274,7 @@
           "Poochyena: Grrrrowf!"
         ],
         "text": [
-          ""
+          "Poochyena: Grrrrowf!"
         ]
       }
     },
@@ -284,7 +284,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -292,7 +292,7 @@
           "Poochyena: Rrrrff!"
         ],
         "text": [
-          ""
+          "Poochyena: Rrrrff!"
         ]
       }
     },
@@ -302,7 +302,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -310,7 +310,7 @@
           "Poochyena: Grrrr!"
         ],
         "text": [
-          ""
+          "Poochyena: Grrrr!"
         ]
       }
     },
@@ -320,7 +320,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -328,7 +328,7 @@
           "Poochyena: Wrrrf!"
         ],
         "text": [
-          ""
+          "Poochyena: Wrrrf!"
         ]
       }
     },
@@ -338,7 +338,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -346,7 +346,7 @@
           "Poochyena: Grrowl!"
         ],
         "text": [
-          ""
+          "Poochyena: Grrowl!"
         ]
       }
     },
@@ -356,7 +356,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -364,7 +364,7 @@
           "Poochyena: Rrrf! Rrrf!"
         ],
         "text": [
-          ""
+          "Poochyena: Rrrf! Rrrf!"
         ]
       }
     },
@@ -374,7 +374,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -382,7 +382,7 @@
           "Poochyena: Grrrrrr!"
         ],
         "text": [
-          ""
+          "Poochyena: Grrrrrr!"
         ]
       }
     },
@@ -392,7 +392,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -400,7 +400,7 @@
           "Poochyena: Wrrrowf!"
         ],
         "text": [
-          ""
+          "Poochyena: Wrrrowf!"
         ]
       }
     },
@@ -410,7 +410,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -418,7 +418,7 @@
           "Poochyena: Rrrrowf!"
         ],
         "text": [
-          ""
+          "Poochyena: Rrrrowf!"
         ]
       }
     },
@@ -428,7 +428,7 @@
           "Poochyena"
         ],
         "text": [
-          ""
+          "Poochyena"
         ]
       },
       "dialog": {
@@ -436,7 +436,7 @@
           "Poochyena: Grrrf!"
         ],
         "text": [
-          ""
+          "Poochyena: Grrrf!"
         ]
       }
     },
@@ -446,7 +446,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       }
     },
@@ -456,7 +456,7 @@
           "Shelby"
         ],
         "text": [
-          ""
+          "Shelby"
         ]
       },
       "before": {
@@ -464,7 +464,7 @@
           "Expert Shelby: I've soaked in these hot springs for years and battled on this mountain for longer. Shall we?"
         ],
         "text": [
-          ""
+          "Expertă Shelby: M-am scăldat în izvoarele astea termale ani de zile și m-am luptat pe muntele ăsta și mai mult. Începem?"
         ]
       },
       "after": {
@@ -472,7 +472,7 @@
           "Expert Shelby: My, my. You battle like the mountain itself."
         ],
         "text": [
-          ""
+          "Expertă Shelby: Vai, vai. Te lupți ca muntele însuși."
         ]
       }
     },
@@ -482,7 +482,7 @@
           "Melissa"
         ],
         "text": [
-          ""
+          "Melissa"
         ]
       },
       "before": {
@@ -490,7 +490,7 @@
           "Beauty Melissa: The volcano's heat is wonderful for the skin. Now, let me warm you up with a battle!"
         ],
         "text": [
-          ""
+          "Frumoasă Melissa: Căldura vulcanului e minunată pentru piele. Acum lasă-mă să te încălzesc cu o luptă!"
         ]
       },
       "after": {
@@ -498,7 +498,7 @@
           "Beauty Melissa: Oh, I'm the one who's flushed now."
         ],
         "text": [
-          ""
+          "Frumoasă Melissa: Oh, acum eu sunt cea înroșită."
         ]
       }
     },
@@ -508,7 +508,7 @@
           "Sheila"
         ],
         "text": [
-          ""
+          "Sheila"
         ]
       },
       "before": {
@@ -516,7 +516,7 @@
           "Beauty Sheila: I climbed all this way for the view, and now I've found you. Let's battle!"
         ],
         "text": [
-          ""
+          "Frumoasă Sheila: Am urcat până aici pentru priveliște, iar acum te-am găsit pe tine. Să ne luptăm!"
         ]
       },
       "after": {
@@ -524,7 +524,7 @@
           "Beauty Sheila: The view's still lovely, at least."
         ],
         "text": [
-          ""
+          "Frumoasă Sheila: Priveliștea e tot frumoasă, cel puțin."
         ]
       }
     },
@@ -534,7 +534,7 @@
           "Shirley"
         ],
         "text": [
-          ""
+          "Shirley"
         ]
       },
       "before": {
@@ -542,7 +542,7 @@
           "Beauty Shirley: A volcano, a hot spring and a battle. What a perfect day out!"
         ],
         "text": [
-          ""
+          "Frumoasă Shirley: Un vulcan, un izvor termal și o luptă. Ce zi de excursie perfectă!"
         ]
       },
       "after": {
@@ -550,7 +550,7 @@
           "Beauty Shirley: Well, two out of three isn't bad."
         ],
         "text": [
-          ""
+          "Frumoasă Shirley: Ei bine, două din trei nu e rău."
         ]
       }
     },
@@ -560,7 +560,7 @@
           "Sawyer"
         ],
         "text": [
-          ""
+          "Sawyer"
         ]
       },
       "before": {
@@ -568,7 +568,7 @@
           "Hiker Sawyer: I've hiked up this volcano more times than I can count. Let's see if you can keep up!"
         ],
         "text": [
-          ""
+          "Drumeț Sawyer: Am urcat pe vulcanul ăsta de mai multe ori decât pot număra. Să vedem dacă ții pasul!"
         ]
       },
       "after": {
@@ -576,7 +576,7 @@
           "Hiker Sawyer: Whew! You're quite the climber."
         ],
         "text": [
-          ""
+          "Drumeț Sawyer: Uf! Ești un adevărat alpinist."
         ]
       }
     }
@@ -587,7 +587,7 @@
         "Jagged Pass\nThe way down to Lavaridge Town"
       ],
       "text": [
-        ""
+        "Pasul Zimțat\nDrumul în jos spre Orășelul Lavaridge"
       ]
     }
   }

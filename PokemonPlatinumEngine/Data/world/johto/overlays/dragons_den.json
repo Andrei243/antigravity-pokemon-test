@@ -1,0 +1,41 @@
+{
+  // The Dragon's Den (plan 20 · J10): its water, crossed by Surf and Whirlpool, round the Dragon Shrine's island, and its
+  // trainers by their own records (Clea and Gil one trainer on two people). Clair, Lance and the red-haired boy wait for
+  // plan 20 · J11 and plan 20 · J12 and are left out
+  "area": "dragons_den",
+  "bgmTrack": "johto/dragons_den",
+  "people": {
+    "d44r0102_gsman3": {
+      "name": "Kobe",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Kobe: Only those who train in the Den earn the elder's trust. Show me yours!",
+        "dialogueAfter": "Ace Trainer Kobe: You've earned some of mine."
+      }
+    },
+    "d44r0102_gswoman3": {
+      "name": "Piper",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Piper: The water here is where Horsea learn to be dragons. Watch them!",
+        "dialogueAfter": "Ace Trainer Piper: They have a lot more to learn."
+      }
+    },
+    "d44r0102_gsbabygirl1": {
+      "name": "Clea",
+      "trainer": {
+        "dialogueBefore": "Twins Clea: We're training to be dragon tamers, the two of us!",
+        "dialogueAfter": "Twins Clea: We'll train together some more."
+      }
+    },
+    "d44r0102_gsbabygirl1_2": {
+      "name": "Gil",
+      "trainer": {
+        "id": "johto_twins_clea_and_gil",
+        "dialogueBefore": "Twins Gil: Our Dratini are twins too!",
+        "dialogueAfter": "Twins Gil: Our Dratini need a nap."
+      }
+    }
+  },
+  "signs": {
+    "D44R0102_005+1": "Dragon Shrine\nA place of prayer for Blackthorn's dragon tamers."
+  }
+}

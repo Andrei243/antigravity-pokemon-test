@@ -180,7 +180,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_CYCLING_ROAD_WATER` | 0x1B |  | `Sea` | `0x15` | 751 |  |
 | `MB_DEEP_SAND` |  | 0x06 | `Sand` | `0x21` |  | 690 |
 | `MB_DEEP_SOUTH_WARP` |  | 0x6E | `ExitSouth` | `0x6F` |  | 2 |
-| `MB_DEEP_WATER` | 0x12 | 0x12 | `DeepWater` | `0xED` |  | 3,575 |
+| `MB_DEEP_WATER` | 0x12 | 0x12 | `DiveWater` | `0xED` |  | 3,575 |
 | `MB_DOWN_ESCALATOR` | 0x6B | 0x6B | `Escalator` | `0x6B` | 19 | 17 |
 | `MB_DOWN_LEFT_STAIR_WARP` | 0x6F |  | `StairsWest` | `0x5F` | 41 |  |
 | `MB_DOWN_RIGHT_STAIR_WARP` | 0x6E |  | `StairsEast` | `0x5E` | 82 |  |
@@ -211,7 +211,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_INDIGO_PLATEAU_SIGN_1` | 0x91 |  | `None` (not in the table) | `0x00` | 22 |  |
 | `MB_INDIGO_PLATEAU_SIGN_2` | 0x92 |  | `None` (not in the table) | `0x00` | 21 |  |
 | `MB_INDOOR_ENCOUNTER` | 0x0B | 0x0B | `OldChateauFloor` | `0x0B` |  | 2,564 |
-| `MB_INTERIOR_DEEP_WATER` |  | 0x11 | `DeepWater` | `0xED` |  | 308 |
+| `MB_INTERIOR_DEEP_WATER` |  | 0x11 | `DiveWater` | `0xED` |  | 308 |
 | `MB_ISOLATED_HORIZONTAL_RAIL` |  | 0xD4 | `RailEastWest` | `0xFA` |  | 6 |
 | `MB_ISOLATED_VERTICAL_RAIL` |  | 0xD3 | `RailNorthSouth` | `0xF9` |  | 3 |
 | `MB_JUMP_EAST` | 0x38 | 0x38 | `LedgeEast` | `0x38` | 39 | 120 |
@@ -237,7 +237,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_NORTHWARD_CURRENT` | 0x52 | 0x52 | `CurrentNorth` | `0xF5` | 142 | 319 |
 | `MB_NORTH_ARROW_WARP` | 0x64 | 0x64 | `ExitNorth` | `0x6E` | 16 | 6 |
 | `MB_NO_RUNNING` |  | 0x0A | `NoRunning` | `0xFD` |  | 142 |
-| `MB_NO_SURFACING` |  | 0x19 | `Underwater` | `0xEE` |  | 1,182 |
+| `MB_NO_SURFACING` |  | 0x19 | `NoSurfacing` | `0xEE` |  | 1,182 |
 | `MB_OCEAN_WATER` | 0x15 | 0x15 | `Sea` | `0x15` | 34,484 | 46,286 |
 | `MB_PACIFIDLOG_HORIZONTAL_LOG_LEFT` |  | 0x76 | `BridgeOverWater` | `0x73` |  | 9 |
 | `MB_PACIFIDLOG_HORIZONTAL_LOG_RIGHT` |  | 0x77 | `BridgeOverWater` | `0x73` |  | 9 |
@@ -267,7 +267,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_SAND` | 0x21 | 0x21 | `Sand` | `0x21` | 1,505 | 2,242 |
 | `MB_SAND_CAVE` | 0x2B |  | `CaveFloor` | `0x08` | 516 |  |
 | `MB_SEAWEED` | 0x22 | 0x22 | `Seaweed` | `0xEF` |  | 587 |
-| `MB_SEAWEED_NO_SURFACING` |  | 0x2A | `Seaweed` | `0xEF` |  | 454 |
+| `MB_SEAWEED_NO_SURFACING` |  | 0x2A | `SeaweedNoSurfacing` | `0xFE` |  | 454 |
 | `MB_SECRET_BASE_HOLE` |  | 0xC2 | `None` (not in the table) | `0x00` |  | 14 |
 | `MB_SECRET_BASE_NORTH_WALL` |  | 0xB7 | `None` (not in the table) | `0x00` |  | 260 |
 | `MB_SECRET_BASE_PC` |  | 0xB0 | `Computer` | `0x83` |  | 24 |
@@ -300,7 +300,7 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_SLIDE_SOUTH` | 0x47 | 0x47 | `SlideSouth` | `0x43` |  | 12 |
 | `MB_SLIDE_WEST` | 0x45 | 0x45 | `SlideWest` | `0x41` |  |  |
 | `MB_SLOT_MACHINE` |  | 0x89 | `None` (not in the table) | `0x00` |  | 20 |
-| `MB_SOOTOPOLIS_DEEP_WATER` |  | 0x14 | `DeepWater` | `0xED` |  | 19 |
+| `MB_SOOTOPOLIS_DEEP_WATER` |  | 0x14 | `DiveWater` | `0xED` |  | 19 |
 | `MB_SOUTHWARD_CURRENT` | 0x53 | 0x53 | `CurrentSouth` | `0xF6` | 45 | 165 |
 | `MB_SOUTH_ARROW_WARP` | 0x65 | 0x65 | `ExitSouth` | `0x6F` | 282 | 651 |
 | `MB_SPIN_DOWN` | 0x57 |  | `SlideSouth` | `0x43` | 52 |  |
@@ -320,11 +320,11 @@ The Game Boy Advance's maps give a tile a behaviour (`MB_*`, numbered differentl
 | `MB_TRASH_CAN` |  | 0xE4 | `TrashCan` | `0xE4` |  | 102 |
 | `MB_TRICK_HOUSE_PUZZLE_8_FLOOR` | 0x48 | 0x48 | `None` (not in the table) | `0x00` |  | 186 |
 | `MB_TRICK_HOUSE_PUZZLE_DOOR` |  | 0x8C | `None` (not in the table) | `0x00` |  | 8 |
-| `MB_UNDERWATER_BLOCKED_ABOVE` | 0x19 |  | `Underwater` | `0xEE` |  |  |
+| `MB_UNDERWATER_BLOCKED_ABOVE` | 0x19 |  | `NoSurfacing` | `0xEE` |  |  |
 | `MB_UNION_ROOM_WARP` | 0x71 |  | `WarpPanel` | `0x67` | 1 |  |
 | `MB_UNUSED_BRIDGE` |  | 0x7E | `Bridge` | `0x71` |  |  |
-| `MB_UNUSED_SOOTOPOLIS_DEEP_WATER` |  | 0x18 | `DeepWater` | `0xED` |  |  |
-| `MB_UNUSED_SOOTOPOLIS_DEEP_WATER_2` |  | 0x1A | `DeepWater` | `0xED` |  |  |
+| `MB_UNUSED_SOOTOPOLIS_DEEP_WATER` |  | 0x18 | `DiveWater` | `0xED` |  |  |
+| `MB_UNUSED_SOOTOPOLIS_DEEP_WATER_2` |  | 0x1A | `DiveWater` | `0xED` |  |  |
 | `MB_UNUSED_WATER` | 0x1A |  | `Sea` | `0x15` |  |  |
 | `MB_UP_ESCALATOR` | 0x6A | 0x6A | `Escalator` | `0x6B` | 19 | 17 |
 | `MB_UP_LEFT_STAIR_WARP` | 0x6D |  | `StairsWest` | `0x5F` | 26 |  |
@@ -357,9 +357,9 @@ The values of the GBA's own, and what the game does with each today:
 | `0x36` | `BlockSouthAndEast` | Open ground closed on its south and east sides. | **Rule.** No step across its closed side, either way. |
 | `0x37` | `BlockSouthAndWest` | Open ground closed on its south and west sides. | **Rule.** No step across its closed side, either way. |
 | `0x3A` | `LedgeNorth` | A ledge hopped over northward (Platinum's own value, which only the GBA's maps use). | **Rule.** Hopped the way it faces, two tiles on; a wall from every other side. |
-| `0xED` | `DeepWater` | Deep water: surfed, and dived into where the sea floor below is a map (the GBA's). | **Rule.** Stops a walker; surfed with Surf, meeting the area's water Pokémon. Diving is plan 21's (Hoenn). |
-| `0xEE` | `Underwater` | The sea floor, swum along after a dive; no surfacing where it says so (the GBA's). | *Not yet.* The sea floor, reached by Dive: plan 21 (Hoenn). |
-| `0xEF` | `Seaweed` | Seaweed on the sea floor, where wild Pokémon live (the GBA's). | *Not yet.* The sea floor, reached by Dive: plan 21 (Hoenn). |
+| `0xED` | `DiveWater` | Deep, dark water: surfed, and dived into where the sea floor below is a map (the GBA's). | **Rule.** Stops a walker; surfed with Surf, meeting the area's water Pokémon; where the area has a sea floor, a surfer who knows Dive goes down to the same tile of it (FieldMovement.CanDive; plan 21 · H5). |
+| `0xEE` | `NoSurfacing` | The sea floor under rock or a ledge above: swum along after a dive, and nobody comes up there (the GBA's). | **Rule.** The sea floor under rock or a ledge above: swum along after a dive (the seaweed meeting the area's water Pokémon), and Dive never comes up from it (FieldMovement.CanSurface; plan 21 · H5). |
+| `0xEF` | `Seaweed` | Seaweed on the sea floor, where wild Pokémon live (the GBA's). | **Rule.** The sea floor's grass, swum through after a dive at walking pace, meeting the area's water Pokémon; Dive comes up from it to the same tile of the sea above (FieldMovement.CanSurface; plan 21 · H5). |
 | `0xF0` | `ThinIce` | Thin ice that cracks under a step and gives way under the next (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
 | `0xF1` | `CrackedFloor` | A cracked floor that gives way after a step, or the hole it leaves (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
 | `0xF2` | `Hole` | A hole that drops whoever steps in to the floor below (the GBA's). | **Rule.** A warp down to the floor below, taken by stepping on it; whoever lands on water there rides out on it (Player.ComeDownOn), and a boulder pushed in is a pit's (Map.BoulderPits; plan 19 · K6, part b). |
@@ -374,3 +374,4 @@ The values of the GBA's own, and what the game does with each today:
 | `0xFB` | `BumpySlope` | A bumpy slope only the Acro Bike's hops climb (the GBA's). | **Rule.** Hopped up only on the Acro Bike (plan 21 · H3); anyone goes down it. |
 | `0xFC` | `CyclingRoadPull` | The Cycling Road's slope, which pulls a rider south (the GBA's). | **Rule.** A rider who steers nowhere is pulled south a step at a time (FieldMovement.Pulls; plan 19 · K6); someone on foot stands. |
 | `0xFD` | `NoRunning` | Ground where nobody may run (the GBA's). | *Not yet.* A Game Boy Advance behaviour whose rule comes with the region plan that opens a place using it (19 · Kanto, 21 · Hoenn); walked like plain ground until then. |
+| `0xFE` | `SeaweedNoSurfacing` | Seaweed on the sea floor under rock above: wild Pokémon live in it, and nobody comes up there (the GBA's). | **Rule.** The sea floor under rock or a ledge above: swum along after a dive (the seaweed meeting the area's water Pokémon), and Dive never comes up from it (FieldMovement.CanSurface; plan 21 · H5). |

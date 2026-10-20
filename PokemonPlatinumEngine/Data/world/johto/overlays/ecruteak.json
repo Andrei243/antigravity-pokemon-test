@@ -3,16 +3,12 @@
   // built in dark planks under deep red tile (Heritage). Plan 20 · J7 (scripts/ecruteak.txt): Morty's Gym
   // (warp 7) is open, the red-haired boy runs into the player at the Dance Theater's door once the Fog Badge is won
   // (trigger 0), and the old man by the Burned Tower tells of the three Pokémon once they have fled it. The gate to
-  // Route 38 (warps 8 and 9) is open since plan 20 · J8; the gate to Route 42 (warps 10 and 11) waits for its route
+  // Route 38 (warps 8 and 9) is open since plan 20 · J8, the gate to Route 42 (warps 10 and 11) since plan 20 · J10
   "area": "ecruteak",
   "bgmTrack": "johto/ecruteak",
   "trees": "Round",
   "architecture": "Heritage",
   "triggers": [ { "trigger": 0, "script": "RivalBumps" } ],
-  "locked": [
-    10,
-    11
-  ],
   "people": {
     "t27_gsrivel": { "name": "{rival}", "npcType": "Silver", "still": true, "dialog": [ "..." ] },
     "t27_gsoldman1_3": {

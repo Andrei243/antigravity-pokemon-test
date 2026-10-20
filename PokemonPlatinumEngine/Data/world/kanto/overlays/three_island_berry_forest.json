@@ -1,0 +1,16 @@
+{
+  // Berry Forest (plan 19 · K9, part a): FireRed's map, our words. A wood of fruit trees north of Bond Bridge, where
+  // Lostelle wandered off to pick berries and was cornered by a Hypno at the wood's far end
+  // (three_island_berry_forest.txt)
+  "area": "three_island_berry_forest",
+  "name": "Berry Forest",
+  "bgmTrack": "kanto/viridian_forest",
+  "trees": "Round",
+  "people": {
+    "berry_forest_lostelle": { "name": "Lostelle", "script": "Lostelle", "still": true }
+  },
+  "signs": {
+    "ThreeIsland_BerryForest_EventScript_BewareSign": "Watch your step! Wild Pokémon live deep in this forest. Don't wander off alone.",
+    "ThreeIsland_BerryForest_EventScript_WelcomeSign": "Welcome to Berry Forest\nPlease share the berries with the Pokémon."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  // The Dark Cave's south side (plan 20 · J10): from Route 31 and Route 46 into the dark, where Flash lights the way, its
+  // rocks smashed with Rock Smash and its boulder moved with Strength. It plays the Ice Path's song, as HeartGold's
+  // header has it
+  "area": "dark_cave_route_31_side",
+  "bgmTrack": "johto/ice_path",
+  "people": {}
+}

@@ -1,0 +1,41 @@
+{
+  "people": {
+    "t28r0201_gsfighter": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I climb the hills round town every morning. The view of the lake from up there is something else."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t28r0201_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Strange men have been hanging round the souvenir shop lately. I don't like the look of them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

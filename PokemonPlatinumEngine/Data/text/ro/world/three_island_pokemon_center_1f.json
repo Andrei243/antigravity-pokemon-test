@@ -1,0 +1,69 @@
+{
+  "people": {
+    "three_island_nurse": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Guitarist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The bikers came over on a boat from Kanto. They say this island's too quiet for their liking."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Bond Bridge is so pretty at sunset. My friends and I cross it just to look."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I sail the Seagallop between the islands. Every island's got its own little ways."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

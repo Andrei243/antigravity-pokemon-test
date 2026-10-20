@@ -1,0 +1,25 @@
+{
+  "people": {
+    "d38r0104_gsfighter": {
+      "name": {
+        "en": [
+          "Karate Master"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hah! I train down here where no one can disturb me.",
+          "My fists aren't ready to face a challenger yet. Leave me to my training!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

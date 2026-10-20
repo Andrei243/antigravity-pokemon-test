@@ -151,7 +151,7 @@
         "Norman"
       ],
       "text": [
-        ""
+        "Norman"
       ]
     },
     {
@@ -159,7 +159,7 @@
         "Four Gym Badges, {player}. Then come back and face me. Start with Roxanne in Rustboro City."
       ],
       "text": [
-        ""
+        "Patru Insigne de Arenă, {player}. Apoi întoarce-te și înfruntă-mă. Începe cu Roxanne din Orașul Rustboro."
       ]
     },
     {
@@ -167,7 +167,7 @@
         "You've won Rustboro's Badge? Well done! Brawly's Gym is next, in Dewford Town across the sea. Mr. Briney sails there."
       ],
       "text": [
-        ""
+        "Ai câștigat Insigna din Rustboro? Bravo! Următoarea e Arena lui Brawly, în Orășelul Dewford, peste mare. Domnul Briney merge acolo cu barca."
       ]
     },
     {
@@ -175,7 +175,7 @@
         "You've grown stronger, {player}. I can see it in the way your Pokémon look at you. Keep going: four Badges."
       ],
       "text": [
-        ""
+        "Te-ai întărit, {player}. Se vede după felul în care te privesc Pokémonii tăi. Continuă: patru Insigne."
       ]
     },
     {
@@ -183,7 +183,7 @@
         "Norman"
       ],
       "text": [
-        ""
+        "Norman"
       ]
     },
     {
@@ -191,7 +191,7 @@
         "So. You really have won four Gym Badges. Then, as I promised, we'll battle."
       ],
       "text": [
-        ""
+        "Deci chiar ai câștigat patru Insigne de Arenă. Atunci, cum am promis, ne luptăm."
       ]
     },
     {
@@ -199,7 +199,7 @@
         "{player}... I can't tell you how glad I am to face my own child in a real battle."
       ],
       "text": [
-        ""
+        "{player}... Nu pot spune cât de fericit sunt să-mi înfrunt propriul copil într-o luptă adevărată."
       ]
     },
     {
@@ -207,7 +207,7 @@
         "But a battle is a battle. As a Gym Leader, I'll give it everything I have!"
       ],
       "text": [
-        ""
+        "Dar lupta e luptă. Ca Lider de Arenă, voi da tot ce am!"
       ]
     },
     {
@@ -215,7 +215,7 @@
         "I... lost? To you, {player}? I can hardly believe it."
       ],
       "text": [
-        ""
+        "Am... pierdut? În fața ta, {player}? Abia îmi vine să cred."
       ]
     },
     {
@@ -223,7 +223,7 @@
         "But rules are rules. You've earned this. Take it."
       ],
       "text": [
-        ""
+        "Dar regulile sunt reguli. Ai meritat-o. Ia-o."
       ]
     },
     {
@@ -231,7 +231,7 @@
         "{player} received the Balance Badge from Norman!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Echilibru de la Norman!"
       ]
     },
     {
@@ -239,7 +239,7 @@
         "With the Balance Badge, your Pokémon can use Surf outside of battle to cross the water."
       ],
       "text": [
-        ""
+        "Cu Insigna Echilibru, Pokémonii tăi pot folosi Surf în afara luptei, ca să traverseze apa."
       ]
     },
     {
@@ -247,7 +247,7 @@
         "And take this as well."
       ],
       "text": [
-        ""
+        "Și ia și asta."
       ]
     },
     {
@@ -255,7 +255,7 @@
         "TM42 holds Facade. When its user is poisoned, burned or paralysed, it hits twice as hard. Turn a bad spot into strength!"
       ],
       "text": [
-        ""
+        "TM42 conține Fațadă. Când cel care o folosește e otrăvit, ars sau paralizat, lovește de două ori mai tare. Transformă un punct slab în forță!"
       ]
     },
     {
@@ -263,7 +263,7 @@
         "As a Gym Leader, I'm more upset than I can say. But as your father... it makes me happy, and a little sad. Strange, isn't it?"
       ],
       "text": [
-        ""
+        "Ca Lider de Arenă, sunt mai amărât decât pot spune. Dar ca tată... mă face fericit și puțin trist. Ciudat, nu-i așa?"
       ]
     },
     {
@@ -271,7 +271,7 @@
         "Wally's Father"
       ],
       "text": [
-        ""
+        "Tatăl lui Wally"
       ]
     },
     {
@@ -279,7 +279,7 @@
         "Ah, there you are, {player}! Would you come with me? There's something I'd like you to have."
       ],
       "text": [
-        ""
+        "A, iată-te, {player}! Vii cu mine? Am ceva pentru tine."
       ]
     },
     {
@@ -287,7 +287,7 @@
         "Norman, you won't mind if I borrow {player} for a minute or two, will you?"
       ],
       "text": [
-        ""
+        "Norman, nu te superi dacă îl iau pe {player} cu mine un minut-două, nu?"
       ]
     },
     {
@@ -295,7 +295,7 @@
         "Norman"
       ],
       "text": [
-        ""
+        "Norman"
       ]
     },
     {
@@ -303,7 +303,7 @@
         "TM42 holds Facade. When its user is poisoned, burned or paralysed, it hits twice as hard. Turn a bad spot into strength!"
       ],
       "text": [
-        ""
+        "TM42 conține Fațadă. Când cel care o folosește e otrăvit, ars sau paralizat, lovește de două ori mai tare. Transformă un punct slab în forță!"
       ]
     },
     {
@@ -311,7 +311,7 @@
         "Go and see your mother now and then, {player}. I'll be here, training harder than ever. I can't stay beaten by my own child!"
       ],
       "text": [
-        ""
+        "Du-te din când în când să-ți vezi mama, {player}. Eu rămân aici, antrenându-mă mai mult ca niciodată. Nu pot rămâne învins de propriul meu copil!"
       ]
     }
   ],
@@ -321,7 +321,7 @@
         "The Speed Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Vitezei. Intri?"
       ]
     },
     {
@@ -329,7 +329,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -339,7 +339,7 @@
         "The Accuracy Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Preciziei. Intri?"
       ]
     },
     {
@@ -347,7 +347,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -357,7 +357,7 @@
         "The Confusion Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Confuziei. Intri?"
       ]
     },
     {
@@ -365,7 +365,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -375,7 +375,7 @@
         "The Defense Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Apărării. Intri?"
       ]
     },
     {
@@ -383,7 +383,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -393,7 +393,7 @@
         "The Defense Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Apărării. Intri?"
       ]
     },
     {
@@ -401,7 +401,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -411,7 +411,7 @@
         "The Recovery Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Recuperării. Intri?"
       ]
     },
     {
@@ -419,7 +419,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -429,7 +429,7 @@
         "The Strength Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Forței. Intri?"
       ]
     },
     {
@@ -437,7 +437,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -447,7 +447,7 @@
         "The Strength Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Forței. Intri?"
       ]
     },
     {
@@ -455,7 +455,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -465,7 +465,7 @@
         "The One-Hit KO Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera K.O. dintr-o Lovitură. Intri?"
       ]
     },
     {
@@ -473,7 +473,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -483,7 +483,7 @@
         "The One-Hit KO Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera K.O. dintr-o Lovitură. Intri?"
       ]
     },
     {
@@ -491,7 +491,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -501,7 +501,7 @@
         "The Gym Leader's Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Liderului de Arenă. Intri?"
       ]
     },
     {
@@ -509,7 +509,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -519,7 +519,7 @@
         "The Gym Leader's Room. Go in?"
       ],
       "text": [
-        ""
+        "Camera Liderului de Arenă. Intri?"
       ]
     },
     {
@@ -527,7 +527,7 @@
         "The door appears to be locked."
       ],
       "text": [
-        ""
+        "Ușa pare să fie încuiată."
       ]
     }
   ],
@@ -537,7 +537,7 @@
         "Gym Guide"
       ],
       "text": [
-        ""
+        "Ghidul Arenei"
       ]
     },
     {
@@ -545,7 +545,7 @@
         "Hey there! This is the Petalburg Gym. Norman's rooms each test a trainer's skill a different way."
       ],
       "text": [
-        ""
+        "Salutare! Asta e Arena din Petalburg. Camerele lui Norman pun fiecare la încercare îndemânarea unui Antrenor în alt fel."
       ]
     },
     {
@@ -553,7 +553,7 @@
         "But the doors stay shut until you've got four Badges. Rules are rules!"
       ],
       "text": [
-        ""
+        "Dar ușile rămân închise până ai patru Insigne. Regulile sunt reguli!"
       ]
     },
     {
@@ -561,7 +561,7 @@
         "Four Badges! The doors are open to you now. Each one beyond opens once you beat the trainer in its room."
       ],
       "text": [
-        ""
+        "Patru Insigne! Acum ușile ți se deschid. Fiecare ușă de dincolo se deschide după ce învingi Antrenorul din camera ei."
       ]
     },
     {
@@ -569,7 +569,7 @@
         "The left door goes to the Speed Room, the right to the Accuracy Room. Norman's Pokémon are Normal types: Fighting moves hit them hard!"
       ],
       "text": [
-        ""
+        "Ușa din stânga duce la Camera Vitezei, cea din dreapta la Camera Preciziei. Pokémonii lui Norman sunt de tip Normal: mișcările de Luptă îi lovesc tare!"
       ]
     },
     {
@@ -577,7 +577,7 @@
         "You beat your own father! Whoa. I don't think anybody in Petalburg will ever forget that battle."
       ],
       "text": [
-        ""
+        "Ți-ai învins propriul tată! Uau. Nu cred că cineva din Petalburg va uita vreodată lupta aceea."
       ]
     }
   ]

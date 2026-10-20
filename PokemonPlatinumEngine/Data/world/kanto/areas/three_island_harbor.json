@@ -1,0 +1,26 @@
+{
+  "key": "three_island_harbor",
+  "index": 419,
+  "name": "Three Isle Port",
+  "matrix": 366,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_123",
+  "nightMusic": "MUS_SEVII_123",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 2, "to": "three_island_port", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "seagallop", "looks": "seagallop", "movement": "look_south", "x": 8, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_north", "x": 8, "z": 6, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_Harbor_EventScript_Sailor" }
+  ],
+  "signs": [],
+  "triggers": []
+}

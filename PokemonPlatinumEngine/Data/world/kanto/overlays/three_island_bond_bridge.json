@@ -1,0 +1,21 @@
+{
+  // Bond Bridge (plan 19 · K9, part a): FireRed's map, our words. The long boardwalk from Three Island's west shore to
+  // Berry Forest; its trainers battle by their own records, and Joy and Meg, the twins, battle together as one
+  "area": "three_island_bond_bridge",
+  "name": "Bond Bridge",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "woman_2": { "name": "Nikki", "trainer": { "dialogueBefore": "Aroma Lady Nikki: The breeze off the forest smells of ripe berries. Let me share its sweetness with a battle!", "dialogueAfter": "Aroma Lady Nikki: Sweet, but a little sour too." } },
+    "woman_2_2": { "name": "Violet", "trainer": { "dialogueBefore": "Aroma Lady Violet: My Pokémon and I bathe in the scent of flowers every morning. Can you smell it?", "dialogueAfter": "Aroma Lady Violet: Even the flowers wilted." } },
+    "tuber_f": { "name": "Amira", "trainer": { "dialogueBefore": "Tuber Amira: I float under the bridge all day! Come and splash with me!", "dialogueAfter": "Tuber Amira: My ring sprang a leak." } },
+    "tuber_f_2": { "name": "Alexis", "trainer": { "dialogueBefore": "Tuber Alexis: I'm going to swim all the way to the forest one day!", "dialogueAfter": "Tuber Alexis: Maybe I'll take the bridge instead." } },
+    "swimmer_f_water": { "name": "Tisha", "trainer": { "dialogueBefore": "Swimmer Tisha: The sea under Bond Bridge is so clear you can see the fish. Battle me while I tread water!", "dialogueAfter": "Swimmer Tisha: I'm worn out. Time to float." } },
+    "little_girl": { "name": "Joy", "trainer": { "dialogueBefore": "Twins Joy: We're twins! We go everywhere together, even into battle!", "dialogueAfter": "Twins Joy: We lost together, too." } },
+    "little_girl_2": { "name": "Meg", "trainer": { "dialogueBefore": "Twins Meg: We're twins! We go everywhere together, even into battle!", "dialogueAfter": "Twins Meg: We lost together, too." } }
+  },
+  "signs": {
+    "ThreeIsland_BondBridge_EventScript_BerryForestSign": "Berry Forest\nStraight ahead",
+    "ThreeIsland_BondBridge_EventScript_BondBridgeSign": "Bond Bridge\nThree Island - Berry Forest"
+  }
+}

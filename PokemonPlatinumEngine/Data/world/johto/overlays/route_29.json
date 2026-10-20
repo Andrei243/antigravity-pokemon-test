@@ -1,6 +1,6 @@
 {
   // Route 29 (plan 20 · J2): from New Bark Town west to Cherrygrove City, with the gate house to Route 46 on its north
-  // side (Route 46 itself is plan 20 · J5's, so its way out of the gate house is shut). The Apricorn tree is J6's, and
+  // side (Route 46 itself opened with plan 20 · J10, beyond the gate house). The Apricorn tree is J6's, and
   // the girl who is here only on Tuesdays plan 20 · J13's
   "area": "route_29",
   "bgmTrack": "johto/route29",

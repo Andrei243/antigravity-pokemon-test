@@ -5,7 +5,7 @@
         "Brrrring! Brrrring! It's the Pokégear..."
       ],
       "text": [
-        ""
+        "Țârrr! Țârrr! E Pokégearul..."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Baoba"
       ],
       "text": [
-        ""
+        "Baoba"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Hello, {player}! Warden Baoba here. Sorry to keep you waiting, but the second test is ready at last!"
       ],
       "text": [
-        ""
+        "Salut, {player}! Aici Paznicul Baoba. Scuze că te-am făcut să aștepți, dar al doilea test e gata în sfârșit!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Come and see me at the Safari Zone and I'll tell you all about it."
       ],
       "text": [
-        ""
+        "Vino la mine la Zona Safari și îți spun totul."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Click... The call has ended."
       ],
       "text": [
-        ""
+        "Clic... Convorbirea s-a încheiat."
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "Kangaskhan: ..........."
       ],
       "text": [
-        ""
+        "Kangaskhan: ..........."
       ]
     }
   ],
@@ -57,7 +57,7 @@
         "Jigglypuff: Puu, pupuu!"
       ],
       "text": [
-        ""
+        "Jigglypuff: Puu, pupuu!"
       ]
     }
   ],
@@ -67,7 +67,7 @@
         "Boy"
       ],
       "text": [
-        ""
+        "Băiatul"
       ]
     },
     {
@@ -75,7 +75,7 @@
         "Safari, safari, oh what fun! Safari, safari, catch everyone! Pokémon are waiting for us all!"
       ],
       "text": [
-        ""
+        "Safari, safari, ce distracție! Safari, safari, prinde-i pe toți! Pokémonii ne așteaptă pe noi toți!"
       ]
     },
     {
@@ -83,7 +83,7 @@
         "...I made that song up. I sing it whenever I come here."
       ],
       "text": [
-        ""
+        "...Cântecul l-am inventat eu. Îl cânt de fiecare dată când vin aici."
       ]
     },
     {
@@ -91,7 +91,7 @@
         "Up goes the Safari Ball into the blue! Out comes a friend for me and you! I love the Safari Zone!"
       ],
       "text": [
-        ""
+        "Safari Ballul zboară spre albastru! Iese un prieten pentru mine și pentru tine! Ador Zona Safari!"
       ]
     },
     {
@@ -99,7 +99,7 @@
         "...That's my new jingle. Think anyone would want it for an advert?"
       ],
       "text": [
-        ""
+        "...Ăsta e noul meu jingle. Crezi că l-ar vrea cineva pentru o reclamă?"
       ]
     }
   ],
@@ -109,7 +109,7 @@
         "Old Man"
       ],
       "text": [
-        ""
+        "Bătrânul"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "I've taken up selling drinks for Pokémon. It's all new to me, but I'll do my best!"
       ],
       "text": [
-        ""
+        "M-am apucat să vând băuturi pentru Pokémoni. Mi-e totul nou, dar fac tot ce pot!"
       ]
     }
   ],
@@ -127,7 +127,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeia"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Oh, are you buying? Give me a moment to set out my things... There!"
       ],
       "text": [
-        ""
+        "A, cumperi? Dă-mi o clipă să-mi aranjez lucrurile... Gata!"
       ]
     }
   ],
@@ -145,7 +145,7 @@
         "Butterfree: Free, free!"
       ],
       "text": [
-        ""
+        "Butterfree: Free, free!"
       ]
     }
   ],
@@ -155,7 +155,7 @@
         "Slowpoke: ...Yawn?"
       ],
       "text": [
-        ""
+        "Slowpoke: ...Căscat?"
       ]
     }
   ]

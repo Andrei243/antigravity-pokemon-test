@@ -1,0 +1,10 @@
+{
+  // Two Island's Pokémon Center (plan 19 · K9, part a)
+  "area": "two_island_pokemon_center_1f",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "two_island_nurse": { "name": "Nurse", "script": "Nurse" },
+    "gba_kid": { "name": "Boy", "dialog": [ "Lostelle's always wandering off to pick berries. Her dad worries himself sick." ] },
+    "bug_catcher": { "name": "Bug Catcher", "dialog": [ "I came all the way from Viridian Forest to look for bugs here. The islands have kinds I've never seen!" ] }
+  }
+}

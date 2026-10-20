@@ -34,7 +34,7 @@ public static class BicycleRules
         if (mode == TravelMode.Cycling && (onCyclingRoad || FieldMovement.BikePlankRunsNorthSouth(underfoot) != null)) return BicycleCheck.CannotDismount;
         if (underfoot is TileBehavior.VeryTallGrass or TileBehavior.Mud or TileBehavior.DeepMud or TileBehavior.MarshGrass or TileBehavior.DeepMarshGrass)
             return BicycleCheck.NotHere;
-        if (!map.BikeAllowedAt(x, y) || mode == TravelMode.Surfing) return BicycleCheck.NotHere;
+        if (!map.BikeAllowedAt(x, y) || mode is TravelMode.Surfing or TravelMode.Diving) return BicycleCheck.NotHere;
         return BicycleCheck.Ok;
     }
 

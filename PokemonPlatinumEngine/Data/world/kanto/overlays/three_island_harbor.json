@@ -1,0 +1,10 @@
+{
+  // Three Island's harbour (plan 19 · K9, part a): the Seagallop's landing, its sailor sailing a holder of a pass back
+  // to Kanto or on to the other islands (three_island_harbor.txt)
+  "area": "three_island_harbor",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "seagallop": { "name": "Seagallop", "hiddenBy": "FLAG_HIDE_THREE_ISLAND_HARBOR_SEAGALLOP", "dialog": [ "The Seagallop rocks gently at the pier." ] },
+    "sailor": { "name": "Sailor", "script": "Sailor", "still": true }
+  }
+}

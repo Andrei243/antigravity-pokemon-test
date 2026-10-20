@@ -284,34 +284,68 @@
     },
     {
       "en": [
-        "Oh, {player}! How is my old Pokémon treating you?"
+        "With the National Pokédex, you can record Pokémon from far beyond Kanto. I can hardly wait to see it filled!"
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "O, {player}! Cum se poartă cu tine bătrânul meu Pokémon?"
       ]
     },
     {
       "en": [
-        "What's this? A parcel from the Mart? So my order has finally come. Thank you!"
+        "You became Champion, {player}! I always knew you had it in you. Now, let me see your Pokédex."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Ce-i asta? Un colet de la Mart? Deci a sosit în sfârșit comanda mea. Mulțumesc!"
       ]
     },
     {
       "en": [
-        "{rival}"
+        "Remarkable! You've caught so many. And you've seen the Pokémon of the islands to the south, too."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "{rival}"
       ]
     },
     {
       "en": [
-        "Gramps! You called? What's this about?"
+        "I've been studying them myself, and there are far more kinds of Pokémon in the world than Kanto's alone."
       ],
       "text": [
+        ""
+      ],
+      "was": [
         "Bunicule! M-ai chemat? Despre ce e vorba?"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Profesorul Oak"
+      ]
+    },
+    {
+      "en": [
+        "Gramps! I heard you were upgrading the Pokédex. You'd better not leave me out!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "A, {rival}, chiar la țanc. Am să vă rog ceva pe amândoi."
       ]
     },
     {
@@ -319,7 +353,130 @@
         "Prof. Oak"
       ],
       "text": [
-        "Profesorul Oak"
+        ""
+      ],
+      "was": [
+        "Acesta e Pokédexul, un aparat conceput de mine. Înregistrează singur fiecare Pokémon pe care-l vezi sau îl prinzi."
+      ]
+    },
+    {
+      "en": [
+        "Of course not, {rival}. Both of you, hand me your Pokédexes. There... It's done!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Visul meu a fost mereu un ghid complet al tuturor Pokémonilor din lume. Dar sunt prea bătrân să mai călătoresc ca odinioară."
+      ]
+    },
+    {
+      "en": [
+        "{player}'s Pokédex was upgraded to the National Pokédex!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Așa că vreau să-l terminați voi doi în locul meu. Poftim, câte unul fiecare."
+      ]
+    },
+    {
+      "en": [
+        "Now it can record Pokémon from every land. Go out and meet them all, the two of you!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "{player} a primit Pokédexul de la Profesorul Oak!"
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Ca să vezi un Pokémon, ajunge să-l întâlnești. Ca să-l prinzi, îți trebuie astea."
+      ]
+    },
+    {
+      "en": [
+        "This time I'll fill it first, {player}. You'll see! Smell ya!"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Aruncă un Poké Ball spre un Pokémon sălbatic după ce l-ai obosit, și s-ar putea să fie al tău."
+      ]
+    },
+    {
+      "en": [
+        "Hmm, a fine effort. But there are Pokémon out on the islands south of Cinnabar that you've never met. Have you been there?"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "{rival}"
+      ]
+    },
+    {
+      "en": [
+        "Hmm, a good start. Keep at it! Catch sixty kinds of Pokémon and show me, and I'll have something special for you."
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Lasă pe mine, bunicule! Îl umplu tot până să apuce {player} să înceapă."
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! How is my old Pokémon treating you?"
+      ],
+      "text": [
+        ""
+      ],
+      "was": [
+        "Îi cer surorii mele o Hartă a Regiunii. Tu nici nu te obosi s-o rogi, {player}. Pa, melcule!"
+      ]
+    },
+    {
+      "en": [
+        "What's this? A parcel from the Mart? So my order has finally come. Thank you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gramps! You called? What's this about?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Oak"
+      ],
+      "text": [
+        ""
       ]
     },
     {
@@ -327,7 +484,7 @@
         "Ah, {rival}, perfect timing. I have a favour to ask the two of you."
       ],
       "text": [
-        "A, {rival}, chiar la țanc. Am să vă rog ceva pe amândoi."
+        ""
       ]
     },
     {
@@ -335,7 +492,7 @@
         "This is the Pokédex, a device of my own design. It records every Pokémon you see or catch, all by itself."
       ],
       "text": [
-        "Acesta e Pokédexul, un aparat conceput de mine. Înregistrează singur fiecare Pokémon pe care-l vezi sau îl prinzi."
+        ""
       ]
     },
     {
@@ -343,7 +500,7 @@
         "My dream has always been a complete guide to every Pokémon in the world. But I'm too old to travel the way I used to."
       ],
       "text": [
-        "Visul meu a fost mereu un ghid complet al tuturor Pokémonilor din lume. Dar sunt prea bătrân să mai călătoresc ca odinioară."
+        ""
       ]
     },
     {
@@ -351,7 +508,7 @@
         "So I want the two of you to finish it for me. Here, take one each."
       ],
       "text": [
-        "Așa că vreau să-l terminați voi doi în locul meu. Poftim, câte unul fiecare."
+        ""
       ]
     },
     {
@@ -359,7 +516,7 @@
         "{player} received the Pokédex from Professor Oak!"
       ],
       "text": [
-        "{player} a primit Pokédexul de la Profesorul Oak!"
+        ""
       ]
     },
     {
@@ -367,7 +524,7 @@
         "To see a Pokémon you only have to meet it. To catch one, you'll need these."
       ],
       "text": [
-        "Ca să vezi un Pokémon, ajunge să-l întâlnești. Ca să-l prinzi, îți trebuie astea."
+        ""
       ]
     },
     {
@@ -375,7 +532,7 @@
         "Throw a Poké Ball at a wild Pokémon once it's tired out, and it may be yours."
       ],
       "text": [
-        "Aruncă un Poké Ball spre un Pokémon sălbatic după ce l-ai obosit, și s-ar putea să fie al tău."
+        ""
       ]
     },
     {
@@ -383,7 +540,7 @@
         "{rival}"
       ],
       "text": [
-        "{rival}"
+        ""
       ]
     },
     {
@@ -391,7 +548,7 @@
         "Leave it to me, Gramps! I'll fill the whole thing before {player} has even started."
       ],
       "text": [
-        "Lasă pe mine, bunicule! Îl umplu tot până să apuce {player} să înceapă."
+        ""
       ]
     },
     {
@@ -399,7 +556,7 @@
         "I'll ask my sister for a Town Map. Don't bother asking her yourself, {player}. Smell ya!"
       ],
       "text": [
-        "Îi cer surorii mele o Hartă a Regiunii. Tu nici nu te obosi s-o rogi, {player}. Pa, melcule!"
+        ""
       ]
     }
   ]

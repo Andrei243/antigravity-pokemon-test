@@ -1,0 +1,40 @@
+{
+  // Route 46 (plan 20 · J10): the mountain road north from Route 29's gate house to the Dark Cave, with Route 45's ledges
+  // coming down into it. Its three trainers by their own records; its Apricorn trees are plan 20 · J6's
+  "area": "route_46",
+  "bgmTrack": "johto/route34",
+  "trees": "Round",
+  "people": {
+    "r46_mount_2": {
+      "name": "Bailey",
+      "trainer": {
+        "dialogueBefore": "Hiker Bailey: Geodude, Geodude, Geodude! I only raise the best!",
+        "dialogueAfter": "Hiker Bailey: Five of the best, and still beaten."
+      }
+    },
+    "r46_campboy_2": {
+      "name": "Ted",
+      "trainer": {
+        "dialogueBefore": "Camper Ted: I've been walking these hills all day. One more battle!",
+        "dialogueAfter": "Camper Ted: That's my day done."
+      }
+    },
+    "r46_picnicgirl_2": {
+      "name": "Erin",
+      "trainer": {
+        "dialogueBefore": "Picnicker Erin: My Ponyta can gallop up any hill. Race you!",
+        "dialogueAfter": "Picnicker Erin: You won by a length."
+      }
+    },
+    "r46_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "The road north climbs to the Dark Cave. It's pitch black inside without a light."
+      ]
+    }
+  },
+  "signs": {
+    "R46_001+1": "Route 46\nRoute 29 is to the south.",
+    "R46_002+1": "Dark Cave"
+  }
+}

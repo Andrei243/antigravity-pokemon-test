@@ -1,0 +1,80 @@
+{
+  "key": "mt_ember_exterior",
+  "index": 139,
+  "name": "Mt Ember",
+  "matrix": 103,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "mt_ember_exterior",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Ponyta", "level": 30 },
+    { "species": "Fearow", "level": 38 },
+    { "species": "Ponyta", "level": 33 },
+    { "species": "Spearow", "level": 32 },
+    { "species": "Machop", "level": 35 },
+    { "species": "Geodude", "level": 33 },
+    { "species": "Ponyta", "level": 36 },
+    { "species": "Fearow", "level": 40 },
+    { "species": "Spearow", "level": 30 },
+    { "species": "Rapidash", "level": 39 },
+    { "species": "Spearow", "level": 30 },
+    { "species": "Rapidash", "level": 42 }
+  ],
+  "landRate": 21,
+  "rockSmash": [
+    { "species": "Geodude", "level": 5, "maxLevel": 20 },
+    { "species": "Geodude", "level": 10, "maxLevel": 20 },
+    { "species": "Geodude", "level": 15, "maxLevel": 30 },
+    { "species": "Graveler", "level": 25, "maxLevel": 40 },
+    { "species": "Graveler", "level": 30, "maxLevel": 40 }
+  ],
+  "rockSmashRate": 50,
+  "warps": [
+    { "x": 28, "z": 48, "to": "one_island_kindle_road", "toWarp": 0 },
+    { "x": 29, "z": 48, "to": "one_island_kindle_road", "toWarp": 1 },
+    { "x": 14, "z": 24, "to": "mt_ember_summit_path_1f", "toWarp": 0 },
+    { "x": 39, "z": 19, "to": "mt_ember_summit_path_3f", "toWarp": 1 },
+    { "x": 29, "z": 7, "to": "mt_ember_summit", "toWarp": 0 },
+    { "x": 42, "z": 39, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "hiker", "looks": "hiker", "movement": "look_north", "x": 29, "z": 45, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "MtEmber_Exterior_EventScript_ExplosionTutor" },
+    { "id": "mt_ember_grunt1", "looks": "rocket_m", "movement": "look_east", "x": 41, "z": 40, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS", "script": "MtEmber_Exterior_EventScript_Grunt1" },
+    { "id": "mt_ember_grunt2", "looks": "rocket_m", "movement": "look_west", "x": 42, "z": 40, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS", "script": "MtEmber_Exterior_EventScript_Grunt2" },
+    { "id": "crush_girl", "looks": "crush_girl", "movement": "walk_sequence_south_east_north_west", "x": 22, "z": 35, "facing": 1, "rangeX": 5, "rangeZ": 3, "trainer": "normal", "sight": 1, "script": "TRAINER_CRUSH_GIRL_JOCELYN" },
+    { "id": "camper", "looks": "camper", "movement": "look_south", "x": 15, "z": 28, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "script": "TRAINER_PKMN_RANGER_LOGAN" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_south_and_west", "x": 14, "z": 42, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_PKMN_RANGER_BETH" },
+    { "id": "rock_smash_rock", "looks": "rock_smash_rock", "movement": "look_around", "x": 29, "z": 41, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_2", "looks": "rock_smash_rock", "movement": "look_around", "x": 30, "z": 42, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 22, "z": 45, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 17, "z": 46, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_3", "looks": "pushable_boulder", "movement": "look_around", "x": 36, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "rock_smash_rock_3", "looks": "rock_smash_rock", "movement": "look_around", "x": 34, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_4", "looks": "rock_smash_rock", "movement": "look_around", "x": 36, "z": 15, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "pushable_boulder_4", "looks": "pushable_boulder", "movement": "look_around", "x": 35, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_5", "looks": "pushable_boulder", "movement": "look_around", "x": 35, "z": 17, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "rock_smash_rock_5", "looks": "rock_smash_rock", "movement": "look_around", "x": 18, "z": 39, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_6", "looks": "rock_smash_rock", "movement": "look_around", "x": 19, "z": 40, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_RockSmash" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 13, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_EMBER_EXTERIOR_ULTRA_BALL", "item": "Ultra Ball", "script": "MtEmber_Exterior_EventScript_ItemUltraBall" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 38, "z": 10, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_EMBER_EXTERIOR_FIRE_STONE", "item": "Fire Stone", "script": "MtEmber_Exterior_EventScript_ItemFireStone" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 48, "z": 20, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MT_EMBER_EXTERIOR_DIRE_HIT", "item": "Dire Hit", "script": "MtEmber_Exterior_EventScript_ItemDireHit" }
+  ],
+  "signs": [
+    { "x": 18, "z": 17, "type": 2, "script": "", "item": "Fire Stone", "flag": "FLAG_HIDDEN_ITEM_MT_EMBER_EXTERIOR_FIRE_STONE" },
+    { "x": 8, "z": 30, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_MT_EMBER_EXTERIOR_ULTRA_BALL" }
+  ],
+  "triggers": [
+    { "x": 37, "z": 43, "width": 1, "depth": 1, "script": "MtEmber_Exterior_EventScript_RocketPasswordScene", "variable": "VAR_MAP_SCENE_MT_EMBER_EXTERIOR", "value": "1" },
+    { "x": 38, "z": 43, "width": 1, "depth": 1, "script": "MtEmber_Exterior_EventScript_RocketPasswordScene", "variable": "VAR_MAP_SCENE_MT_EMBER_EXTERIOR", "value": "1" },
+    { "x": 39, "z": 43, "width": 1, "depth": 1, "script": "MtEmber_Exterior_EventScript_RocketPasswordScene", "variable": "VAR_MAP_SCENE_MT_EMBER_EXTERIOR", "value": "1" }
+  ]
+}

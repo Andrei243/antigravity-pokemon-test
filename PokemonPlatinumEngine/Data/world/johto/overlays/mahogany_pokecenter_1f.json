@@ -1,0 +1,51 @@
+{
+  // Mahogany Town's Pokémon Center (plan 20 · J10), the Centers' floor with the town's people. The counters for the
+  // link say it is closed, as in every Center (decision 06 · 7)
+  "area": "mahogany_pokecenter_1f",
+  "bgmTrack": "johto/mahogany",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t28pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t28pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t28pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t28pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t28pc0101_gsboy1": {
+      "name": "Boy",
+      "dialog": [
+        "There's a lake north of here where the Gyarados get really angry. I saw one leap clean out of the water!"
+      ]
+    },
+    "t28pc0101_gswoman3": {
+      "name": "Woman",
+      "dialog": [
+        "The road east of town goes up into the snow. Bring something warm, and Pokémon that can take the cold."
+      ]
+    },
+    "t28pc0101_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "The Gym Leader here has lived through more winters than anyone. His ice Pokémon are tough."
+      ]
+    }
+  }
+}
