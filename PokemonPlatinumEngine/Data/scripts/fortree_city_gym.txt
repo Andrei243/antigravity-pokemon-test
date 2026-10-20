@@ -1,0 +1,64 @@
+# Fortree City's Gym (plan 21 · H6). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/FortreeCity_Gym/scripts.inc).
+#
+# Winona battles for the Feather Badge (FLAG_BADGE06_GET, `givebadge feather`), which lets Fly be used outside battle,
+# and gives TM40, Aerial Ace (FLAG_RECEIVED_TM_AERIAL_ACE). Her Badge counts the Gym's six trainers beaten, and with the
+# PokéNav she is registered in Match Call (FLAG_ENABLE_WINONA_MATCH_CALL); Scott will call about it
+# (FLAG_SCOTT_CALL_FORTREE_GYM). The rotating gates between the door and her are the room's puzzle (FortreeGates).
+
+
+script Winona
+  face winona player
+  speaker "Winona"
+  if badge feather goto Won
+  scene "Winona"
+  say "I am Winona, the Leader of Fortree's Gym. I have lived among the trees and the wind all my life."
+  say "My Bird Pokémon and I have learned to ride the wind as one. Can you keep your feet when we come at you?"
+  battle self as "hoenn_winona_1"
+  say "I have never seen anyone hold their ground so well against my birds. You fly higher than I thought."
+  say "This is the Feather Badge. Take it with my respect."
+  givebadge feather
+  text "{player} received the Feather Badge from Winona!"
+  say "With the Feather Badge, your Pokémon can use Fly outside of battle to carry you to any town you know."
+  setflag FLAG_DEFEATED_FORTREE_GYM
+  defeat "hoenn_jared"
+  defeat "hoenn_flint"
+  defeat "hoenn_ashley"
+  defeat "hoenn_edwardo"
+  defeat "hoenn_humberto"
+  defeat "hoenn_darius"
+  say "And please, accept this as well."
+  give "TM40"
+  setflag FLAG_RECEIVED_TM_AERIAL_ACE
+  say "TM40 holds Aerial Ace. It strikes so fast that it can never miss. A move worthy of the sky!"
+  setflag FLAG_SCOTT_CALL_FORTREE_GYM
+  if flag FLAG_ENABLE_WINONA_MATCH_CALL goto Done
+  if not flag FLAG_SYS_POKENAV_GET goto Done
+  say "May I have your number? I would like to hear how high you fly from here."
+  addcontact winona
+  setflag FLAG_ENABLE_WINONA_MATCH_CALL
+  text "Registered Winona in the PokéNav."
+label Done
+  endscene
+  end
+label Won
+  if flag FLAG_RECEIVED_TM_AERIAL_ACE goto Proud
+  give "TM40"
+  setflag FLAG_RECEIVED_TM_AERIAL_ACE
+  say "TM40 holds Aerial Ace. It strikes so fast that it can never miss. A move worthy of the sky!"
+  end
+label Proud
+  say "Even though I lost, my Pokémon and I will keep flying. The wind is always there to lift us again."
+  end
+
+
+# The guide by the door: advice before the Badge, praise after
+script GymGuide
+  speaker "Gym Guide"
+  if flag FLAG_DEFEATED_FORTREE_GYM goto Won
+  say "Yo, champ in the making! Winona flies Bird Pokémon, so Electric, Ice and Rock moves will serve you well."
+  say "The gates in here turn as you push through them. Mind which way you push, or you'll wall yourself in!"
+  end
+label Won
+  say "You beat Winona! You must have nerves of steel to stand up to that much wind."
+  end

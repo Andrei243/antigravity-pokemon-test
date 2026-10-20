@@ -5,7 +5,7 @@
         "{player} found the Sapphire! It shone a deep, clear blue."
       ],
       "text": [
-        ""
+        "{player} a găsit Safirul! Strălucea într-un albastru adânc și limpede."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Scientist"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Ha! I knew it. I was right to follow you down here!"
       ],
       "text": [
-        ""
+        "Ha! Știam eu. Bine am făcut că te-am urmărit până aici!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "I've been looking for this gem for years. I'll take that, thank you!"
       ],
       "text": [
-        ""
+        "Caut piatra asta de ani de zile. O iau eu, mulțumesc!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Team Rocket will pay a fortune for a stone like this. All I have to do is take it to their warehouse on Five Island."
       ],
       "text": [
-        ""
+        "Echipa Rocket va plăti o avere pentru o piatră ca asta. N-am decât s-o duc la depozitul lor de pe Insula Cinci."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "The password for the inner door? 'Ekans ate the cake.' Ha! As if you could ever get that far. So long!"
       ],
       "text": [
-        ""
+        "Parola pentru ușa dinăuntru? „Ekans a mâncat tortul.” Ha! Ca și cum ai putea ajunge vreodată atât de departe. Pa!"
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Scientist"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "The Sapphire is mine now!"
       ],
       "text": [
-        ""
+        "Safirul e al meu acum!"
       ]
     }
   ]

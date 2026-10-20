@@ -5,7 +5,7 @@
         "A keypad by the door. {player} typed in the password: 'Seel the deal'. Beep! A second password is needed."
       ],
       "text": [
-        ""
+        "Lângă ușă e o tastatură. {player} a tastat parola: „Seel face târgul”. Bip! Mai trebuie o parolă."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player} typed in 'Seel the deal', and then 'Ekans ate the cake'."
       ],
       "text": [
-        ""
+        "{player} a tastat „Seel face târgul”, apoi „Ekans a mâncat tortul”."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Click! The warehouse door unlocked!"
       ],
       "text": [
-        ""
+        "Clic! Ușa depozitului s-a deblocat!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "The warehouse door is unlocked."
       ],
       "text": [
-        ""
+        "Ușa depozitului este deblocată."
       ]
     }
   ]

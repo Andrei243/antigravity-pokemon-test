@@ -111,6 +111,7 @@ public class ScriptTests
           clearflag FLAG_A
           addcontact joey
           puzzle kabuto
+          phrase INTERVIEW
           setvar VAR_A 3
           addvar VAR_A -1
           give "Potion" 2
@@ -134,6 +135,7 @@ public class ScriptTests
           master self canlose
           wildbattle "Starly" 2
           wildbattle "Giratina" 47 nofleeing
+          wildbattle "Gyarados" 30 shiny
           catchinglesson "Bidoof" 2
           catchinglesson "Ralts" 5 by "Wally" "Zigzagoon" 7
           face self player
@@ -309,6 +311,7 @@ public class ScriptTests
           palpark store
           palpark end
           random 6
+          random seen
           frontier points
           frontier give 3
           frontier prize items
@@ -393,6 +396,7 @@ public class ScriptTests
           save
           credits
           broadcast
+          broadcast interview
           townmap
           tutor moves "route_212"
           tutor afford
@@ -408,6 +412,9 @@ public class ScriptTests
           team nature serious
           team size "Remoraid"
           team size keep
+          team size "Heracross" VAR_HERACROSS_SIZE_RECORD
+          team size keep VAR_HERACROSS_SIZE_RECORD
+          team record "Heracross" VAR_HERACROSS_SIZE_RECORD
           team holds "Adamant Orb"
           team deoxys "Deoxys-Speed"
           setvar VAR_X RESULT
@@ -568,6 +575,7 @@ public class ScriptTests
               if knows "Cut" end
               if has "Starly" end
               if has "Geodude" met "Safari Zone" end
+              if has var VAR_A end
               if yes end
               if no end
               if won end
@@ -622,6 +630,7 @@ public class ScriptTests
     [InlineData("script A\n end now", "more than the line needs")]
     [InlineData("script A\n emote self none", "no bubble")]
     [InlineData("script A\n givepokemon \"Starly\" 101", "1 to 100")]
+    [InlineData("script A\n givepokemon \"Castform\" 25 carrying \"Mystic Water\"", "'carrying' is not 'holding'")]
     [InlineData("script A\n givebadge thistle", "not a badge")]
     [InlineData("script A\n choose \"Which?\" \"Only one\"", "at least two answers")]
     [InlineData("script A\n fade sideways", "'out' or 'in'")]
@@ -1051,6 +1060,20 @@ public class ScriptTests
     }
 
     [Fact]
+    public void APokemonGivenHoldingAnItemComesWithIt()
+    {
+        // Plan 21 · H6: the Weather Institute's Castform comes holding Mystic Water, as Emerald's does
+        var host = Run("""
+            script S
+              givepokemon "Castform" 25 holding "Mystic Water"
+              givepokemon "Starly" 4
+            """);
+
+        Assert.Equal("Mystic Water", host.Party.Members[0].HeldItem?.Name);
+        Assert.Null(host.Party.Members[1].HeldItem);
+    }
+
+    [Fact]
     public void APokemonMetSomewhereIsAskedForByWhereItWasMet()
     {
         // Plan 20 · J8, part b: Warden Baoba's tests ask for a Geodude caught in the Safari Zone, not any Geodude
@@ -1268,6 +1291,17 @@ public class ScriptTests
     {
         var host = Run("script S\n wildbattle \"Giratina\" 47 nofleeing", h => h.Fight = _ => BattleOutcome.Won);
         Assert.Contains("wildbattle Giratina 47 nofleeing Won", host.Log);
+    }
+
+    [Fact]
+    public void AShinyWildPokemonIsShinyWhenCaught()
+    {
+        // Plan 20 · J11: the Lake of Rage's red Gyarados, met as the original's script asks, a shiny one
+        var host = Run("script S\n wildbattle \"Gyarados\" 30 nofleeing shiny", h => h.Fight = _ => BattleOutcome.Caught);
+        Assert.Contains("wildbattle Gyarados 30 nofleeing Caught", host.Log);
+        var caught = Assert.Single(host.Party.Members, p => p.Species.Name == "Gyarados");
+        Assert.True(caught.IsShiny);
+        Assert.Equal(30, caught.Level);
     }
 
     // ------------------------------------------------------------------ people and the field

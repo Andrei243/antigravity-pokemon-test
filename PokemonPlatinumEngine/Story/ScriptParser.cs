@@ -198,7 +198,14 @@ public static class ScriptParser
                 string species = r.Text("a species' name");
                 int level = r.Int("its level");
                 if (level is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
-                return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level };
+                // (plan 21 · H6: `holding "Mystic Water"`, the item the Pokémon comes with, as Emerald's Castform does)
+                string held = "";
+                if (r.More)
+                {
+                    r.OneOf("holding");
+                    held = r.Text("the item it holds");
+                }
+                return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level, Other = held };
             }
             case "givebadge":
                 return new Instruction { Op = Op.GiveBadge, Line = line, Name = r.Badge() };
@@ -305,8 +312,15 @@ public static class ScriptParser
                     if (theirLevel is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
                     return new Instruction { Op = Op.CatchingLesson, Line = line, Name = species, Number = level, Other = catcher, Partner = theirs, X = theirLevel };
                 }
-                bool noFleeing = r.More && r.OneOf("nofleeing") == "nofleeing";
-                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing };
+                // `nofleeing` (a battle that can't be run from) and `shiny` (plan 20 · J11: the Lake of Rage's red
+                // Gyarados), in either order
+                bool noFleeing = false, shiny = false;
+                while (r.More)
+                {
+                    if (r.OneOf("nofleeing", "shiny") == "shiny") shiny = true;
+                    else noFleeing = true;
+                }
+                return new Instruction { Op = Op.WildBattle, Line = line, Name = species, Number = level, Option = noFleeing, Shiny = shiny };
             }
 
             case "face":
@@ -683,6 +697,9 @@ public static class ScriptParser
             // A die of the script's own (plan 01 · M11; the original's GetRandom): RESULT is 0 to one less than its sides
             case "random":
             {
+                // "random seen" draws a species the Pokédex has seen (plan 19 · K9, part c: FireRed's
+                // SampleResortGorgeousMon, which Selphy's wish is drawn with): RESULT is its National Pokédex number
+                if (r.PeekWord("seen")) { r.Next(); return new Instruction { Op = Op.Random, Line = line, Name = "seen" }; }
                 int sides = r.Int("how many sides the die has");
                 if (sides < 1) throw r.Error("a die has at least one side");
                 return new Instruction { Op = Op.Random, Line = line, Number = sides };
@@ -763,15 +780,17 @@ public static class ScriptParser
             // What a room's people ask of the team (plan 01 · M11, part b)
             case "team":
             {
-                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "holds", "deoxys");
+                string what = r.OneOf("befriend", "level", "combee", "condition", "massage", "first", "nature", "size", "record", "holds", "deoxys");
                 return what switch
                 {
                     // Plan 06 · R29: Veilstone City's meteorites (ChangeDeoxysForm): "Deoxys" is its Normal Forme
                     "deoxys" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = DeoxysForm(r) },
                     // Plan 01 · M11, part c: a nature by its name, and a size beside the record ("team size keep" keeps it)
                     "nature" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = NatureWord(r) },
-                    "size" when r.PeekWord("keep") => new Instruction { Op = Op.Team, Line = line, Name = what, Option = r.OneOf("keep") == "keep" },
-                    "size" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Text("a species' name") },
+                    "size" => SizeLine(r, what, line),
+                    // Plan 19 · K9, part c: the size a measurer's record comes to, with no Pokémon measured
+                    // (FireRed's GetHeracrossSizeRecordInfo), for the chart on their wall
+                    "record" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Text("a species' name"), Record = r.PeekVariable ? r.Variable(writable: false) : "" },
                     // Plan 02 · S15, part c: whether anyone of the team holds an item (the Adamant and Lustrous Orbs)
                     "holds" => new Instruction { Op = Op.Team, Line = line, Name = what, Other = r.Text("an item's name") },
                     "befriend" => new Instruction { Op = Op.Team, Line = line, Name = what, Number = r.Int("how much friendlier") },
@@ -805,7 +824,19 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Credits, Line = line };
             // Furniture and the programmes (plan 08 · P8): a television's programme, and a map on a wall
             case "broadcast":
-                return new Instruction { Op = Op.Broadcast, Line = line };
+            {
+                // One programme by its name (the interview, plan 08 · P9), or whichever the die picks of those on
+                string programme = r.More ? r.OneOf(Broadcasts.Names) : "";
+                return new Instruction { Op = Op.Broadcast, Line = line, Name = programme };
+            }
+            // A phrase of two words (plan 08 · P9): asked for on the picker and kept by its name, in capitals as the
+            // placeholder {phrase:NAME} that says it
+            case "phrase":
+            {
+                string name = r.Identifier("the phrase's name");
+                if (!System.Text.RegularExpressions.Regex.IsMatch(name, "^[A-Z][A-Z0-9_]*$")) throw r.Error($"'{name}' is not a phrase's name: capitals, digits and _ only");
+                return new Instruction { Op = Op.Phrase, Line = line, Name = name };
+            }
             case "townmap":
                 return new Instruction { Op = Op.TownMap, Line = line };
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
@@ -1002,6 +1033,9 @@ public static class ScriptParser
                 return new Condition { Query = Query.Knows, Negated = negated, Name = r.Text("a move's name") };
             case "has":
             {
+                // ...the species a variable holds, by its National Pokédex number (plan 19 · K9, part c: Selphy asks
+                // for one she has heard of and then whether the player has brought it)
+                if (r.PeekWord("var")) { r.Next(); return new Condition { Query = Query.Has, Negated = negated, Other = r.Variable(writable: false) }; }
                 string species = r.Text("a species' name");
                 // ...met at a place (plan 20 · J8, part b: Baoba's tests ask for a Pokémon caught in the Safari Zone)
                 if (!r.PeekWord("met")) return new Condition { Query = Query.Has, Negated = negated, Name = species };
@@ -1329,6 +1363,20 @@ public static class ScriptParser
         string form = r.Text("a forme of Deoxys's");
         if (form != "Deoxys" && PokemonDatabase.Get("Deoxys")?.Form(form) == null) throw r.Error($"'{form}' is no forme of Deoxys's");
         return form;
+    }
+
+    /// <summary>
+    /// <c>team size "Species" [VAR_RECORD]</c> and <c>team size keep [VAR_RECORD]</c> (plan 01 · M11, part c; plan 19 ·
+    /// K9, part c): a measurer with a record of its own names the variable it keeps it in, as FireRed's three do; with
+    /// no variable the record is the story's own (<see cref="Models.SizeContest.RecordVariable"/>).
+    /// </summary>
+    private static Instruction SizeLine(Reader r, string what, int line)
+    {
+        bool keep = r.PeekWord("keep");
+        if (keep) r.Next();
+        string species = keep ? "" : r.Text("a species' name");
+        string record = r.PeekVariable ? r.Variable(writable: true) : "";
+        return new Instruction { Op = Op.Team, Line = line, Name = what, Other = species, Option = keep, Record = record };
     }
 
     private static string NatureWord(Reader r)

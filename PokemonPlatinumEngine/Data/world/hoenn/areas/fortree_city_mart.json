@@ -1,0 +1,29 @@
+{
+  "key": "fortree_city_mart",
+  "index": 154,
+  "name": "Fortree City",
+  "matrix": 103,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "fortree_city", "toWarp": 3 },
+    { "x": 4, "z": 7, "to": "fortree_city", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "fortree_mart_clerk", "looks": "mart_employee", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_Mart_EventScript_Clerk" },
+    { "id": "woman_2", "looks": "woman_2", "movement": "look_north", "x": 9, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_Mart_EventScript_Woman" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "wander_around", "x": 8, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FortreeCity_Mart_EventScript_Girl" },
+    { "id": "boy_2", "looks": "boy_2", "movement": "look_east", "x": 5, "z": 6, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "FortreeCity_Mart_EventScript_Boy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

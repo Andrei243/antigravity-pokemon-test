@@ -1,0 +1,61 @@
+# The gate house in the middle of Route 43 (plan 20 · J11, part a). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_R43R0201).
+#
+# Until the Team Rocket Hideout is cleared (FLAG_ROCKET_HIDEOUT_CLEARED, team_rocket_headquarters_b2f.txt) two of
+# Team Rocket's men stand in the gate house and make whoever comes in pay ¥1,000 to pass, or whatever they have
+# left when that is less: HeartGold's room script asks it on every arrival, which is where this one asks it too. The
+# guard is out of the way meanwhile (FLAG_HIDE_ROUTE_43_GATE_GUARD, which HeartGold's new game sets and this
+# arrival sets in its place), and once he is back he gives TM36, Sludge Bomb (FLAG_GOT_TM36_FROM_ROUTE_43_GUARD).
+
+
+# R43R0201_002 and _001
+script OnEnter
+  if flag FLAG_ROCKET_HIDEOUT_CLEARED end
+  setflag FLAG_HIDE_ROUTE_43_GATE_GUARD
+  scene "The toll on Route 43"
+  emote r43r0201_rocketm exclaim
+  emote r43r0201_rocketm_2 exclaim
+  face r43r0201_rocketm player
+  face r43r0201_rocketm_2 player
+  speaker "Grunt"
+  say "Hold it right there, kid. This here's a toll gate. It's ¥1,000 to pass."
+  if money >= 1000 goto Pays
+  say "What's that? You haven't got that much? Fine. We'll take whatever you've got, then."
+label Hundreds
+  takemoney 100
+  if result == 1 goto Hundreds
+label Tens
+  takemoney 10
+  if result == 1 goto Tens
+label Ones
+  takemoney 1
+  if result == 1 goto Ones
+  say "Thank you kindly! Off you go."
+  endscene
+  end
+label Pays
+  takemoney 1000
+  say "Thank you kindly! Pleasure doing business."
+  endscene
+  end
+
+
+# R43R0201_000
+script Rocket
+  speaker "Grunt"
+  say "You've paid. Now beat it before we change our minds about the price."
+  end
+
+
+# R43R0201_003
+script Guard
+  face r43r0201_counterm player
+  speaker "Guard"
+  if flag FLAG_GOT_TM36_FROM_ROUTE_43_GUARD goto Given
+  say "Those men locked me in the back room and charged everyone who came through. Thanks for running them off!"
+  say "Here. They left this behind. I'd rather it went to someone who'll put it to good use."
+  give "TM36"
+  setflag FLAG_GOT_TM36_FROM_ROUTE_43_GUARD
+label Given
+  say "TM36 is Sludge Bomb. It's a strong Poison move, and it may poison the target too."
+  end

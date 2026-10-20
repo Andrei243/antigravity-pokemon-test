@@ -161,6 +161,19 @@ public sealed class HeadlessScriptHost : IScriptHost
 
     public int Random(int sides) => Rolls.Count > 0 ? Rolls.Dequeue() % Math.Max(1, sides) : 0;
 
+    /// <summary>
+    /// The species the Pokédex has seen, as a test says (<c>random seen</c>, plan 19 · K9, part c): one of these is
+    /// drawn by the script's die, and 0 comes back while the list is empty.
+    /// </summary>
+    public List<string> PokedexSeen { get; } = new();
+
+    public int SpeciesSeenAtRandom()
+    {
+        var seen = PokedexSeen.Select(name => Data.PokemonDatabase.Get(name)).Where(s => s != null).ToList();
+        if (seen.Count == 0) return 0;
+        return seen[Random(seen.Count)]!.DexNumber;
+    }
+
     /// <summary>The turns the battle last fought took, as a test says (<see cref="Fight"/> may set it battle by battle).</summary>
     public int BattleTurns { get; set; }
 
@@ -675,6 +688,16 @@ public sealed class HeadlessScriptHost : IScriptHost
     /// <summary>Whether a stone panel of the Ruins of Alph a script opens is put back together (plan 20 · J5); left, it is not.</summary>
     public bool PuzzleSolved { get; set; } = true;
 
+    /// <summary>
+    /// The phrase given when a script asks for one (<c>phrase</c>, plan 08 · P9), its two words as their keys
+    /// (<see cref="PhraseGroups"/>); null backs out of the picker, as B on the phrase would. A phrase that isn't whole
+    /// is backed out of too, since the picker's OK takes only a whole one.
+    /// </summary>
+    public IReadOnlyList<string>? PhraseChoice { get; set; } = DefaultPhrase;
+
+    /// <summary>The phrase a test gives unless it says otherwise: two of our own words.</summary>
+    public static IReadOnlyList<string> DefaultPhrase => new[] { "feelings:happy", "small:together" };
+
     public void Open(ScriptScreen screen, NPC? subject, string? counter = null)
     {
         Shown("open a screen");
@@ -684,6 +707,7 @@ public sealed class HeadlessScriptHost : IScriptHost
             : screen == ScriptScreen.Wardrobe && counter != null ? $"open {screen} {counter}"
             : screen == ScriptScreen.ChoosePokemon && counter != null ? $"open {screen} {counter}"
             : screen == ScriptScreen.AlphPuzzle ? $"open {screen} {counter} {(PuzzleSolved ? "solved" : "left")}"
+            : screen == ScriptScreen.Phrase ? $"open {screen} {counter} {(PhraseGroups.IsWhole(PhraseChoice) ? string.Join(" ", PhraseChoice!) : "none")}"
             : $"open {screen}");
         Answer = 0;
         // The team's Pokémon a script asks to have chosen: the one the test says (none, 255, to back out)
@@ -692,6 +716,12 @@ public sealed class HeadlessScriptHost : IScriptHost
         if (screen == ScriptScreen.AlphPuzzle) Answer = PuzzleSolved ? 1 : 0;
         // A map on a wall (plan 08 · P8): it opens where the region has one, unless the test says it has none
         if (screen == ScriptScreen.TownMap) Answer = TownMapOpens ? 1 : 0;
+        // A phrase (plan 08 · P9): the one the test gives is kept under the script's name, as the game's picker keeps it
+        if (screen == ScriptScreen.Phrase && PhraseGroups.IsWhole(PhraseChoice) && counter is { Length: > 0 } phrase)
+        {
+            Story.SetPhrase(phrase, PhraseChoice!);
+            Answer = 1;
+        }
         if (screen == ScriptScreen.ChooseItem)
         {
             string what = counter ?? "berries";

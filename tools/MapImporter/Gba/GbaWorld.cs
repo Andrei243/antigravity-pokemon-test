@@ -125,7 +125,10 @@ public sealed class GbaWorld
     public static readonly IReadOnlyList<(string Map, string Layout)> Alternates = new[]
     {
         ("MAP_SEAFOAM_ISLANDS_B3F", "LAYOUT_SEAFOAM_ISLANDS_B3F_CURRENT_STOPPED"),
-        ("MAP_SEAFOAM_ISLANDS_B4F", "LAYOUT_SEAFOAM_ISLANDS_B4F_CURRENT_STOPPED")
+        ("MAP_SEAFOAM_ISLANDS_B4F", "LAYOUT_SEAFOAM_ISLANDS_B4F_CURRENT_STOPPED"),
+        // Plan 19 · K9, part c: Dunsparce Tunnel dug through to Three Island's port (FireRed's ON_TRANSITION lays this
+        // layout once the National Pokédex is had)
+        ("MAP_THREE_ISLAND_DUNSPARCE_TUNNEL", "LAYOUT_THREE_ISLAND_DUNSPARCE_TUNNEL_DUG_OUT")
     };
 
     /// <summary>

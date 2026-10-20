@@ -5,7 +5,7 @@
         "Big Man"
       ],
       "text": [
-        ""
+        "Omul Corpolent"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "There's nothing like throwing your whole weight at a problem! Shall I teach one of your Pokémon Body Slam?"
       ],
       "text": [
-        ""
+        "Nimic nu se compară cu aruncarea întregii tale greutăți într-o problemă! Să-l învăț pe unul dintre Pokémonii tăi mișcarea Trântă Grea?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "That's the spirit! Which Pokémon is to learn it?"
       ],
       "text": [
-        ""
+        "Așa mai vorbim! Care Pokémon să o învețe?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "{wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{wearer} learned {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} a învățat {thing}!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "A good Body Slam can leave the foe too stunned to move. Use it well!"
       ],
       "text": [
-        ""
+        "O Trântă Grea bună îl poate lăsa pe adversar prea năuc ca să se mai miște. Folosește-o cu cap!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Suit yourself. I'll be right here, sitting heavily."
       ],
       "text": [
-        ""
+        "Cum dorești. Eu rămân aici, așezat bine."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "An Egg has no weight to throw about yet. Hatch it first!"
       ],
       "text": [
-        ""
+        "Un Ou n-are încă nicio greutate de aruncat. Lasă-l mai întâi să eclozeze!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Hmm, that one hasn't got the build for Body Slam, I'm afraid."
       ],
       "text": [
-        ""
+        "Hmm, ăsta n-are constituția pentru Trântă Grea, mă tem."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "That one already knows {thing}!"
       ],
       "text": [
-        ""
+        "Ăsta știe deja {thing}!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "{forgotten} isn't a move that can be given up like that."
       ],
       "text": [
-        ""
+        "{forgotten} nu e o mișcare la care să se poată renunța așa."
       ]
     }
   ]

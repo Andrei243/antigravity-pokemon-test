@@ -982,4 +982,41 @@ public class KantoTests
         // The credits' song is a long one: the roll goes on for more than a minute
         Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Get("kanto/credits")!.LoopDuration() >= 60);
     }
+
+    // ------------------------------------------------------------------ plan 19 · K9, part c
+
+    [Fact]
+    public void TheDunsparceTunnelIsLaidOutAgainOnceItIsDugThrough()
+    {
+        // FireRed lays the tunnel out again by setmaplayoutindex once the National Pokédex is had: the reader writes
+        // the dug-out layout's chunk and world.json swaps it in by the flag the tunnel's own arrival sets
+        var map = LoadedWorld.Value.BuildMaps().Single(m => m.Name == "ThreeIsland_DunsparceTunnel");
+        int Open() => Enumerable.Range(0, map.Width).SelectMany(x => Enumerable.Range(0, map.Height).Select(y => (x, y)))
+            .Count(t => map.IsWalkable(t.x, t.y));
+        var place = Assert.Single(map.SwappedPlaces);
+        Assert.Equal("FLAG_THREE_ISLAND_TUNNEL_DUG_OUT", place.Flag);
+        int shut = Open();
+        Assert.Empty(map.ApplySwappedPlaces(_ => 0, _ => false));
+        Assert.Single(map.ApplySwappedPlaces(_ => 0, f => f == "FLAG_THREE_ISLAND_TUNNEL_DUG_OUT"));
+        Assert.True(Open() > shut, "the dug-out tunnel is no longer than the dead end");
+        // Its far end is a way to the port's east steps either way, and shut until the dig breaks through
+        var east = map.Warps.Single(w => w.TargetMap == "ThreeIsland_Port" && w.SourceX == 25);
+        Assert.Equal("FLAG_THREE_ISLAND_TUNNEL_DUG_OUT", east.From);
+    }
+
+    [Fact]
+    public void TheRocketWarehousesArrowsSpinAsTheHideoutsDo()
+    {
+        // The warehouse on Five Island is laid out from FireRed's own tiles, so its arrows and stops are the ones
+        // plan 19 · K5, part b taught the field (nothing of the warehouse's own was needed)
+        var warehouse = BuiltMaps.Value["FiveIsland_RocketWarehouse"];
+        Assert.True(warehouse.HasSpinStops);
+        var behaviours = Enumerable.Range(0, warehouse.Width)
+            .SelectMany(x => Enumerable.Range(0, warehouse.Height).Select(y => warehouse.BehaviourAt(x, y))).ToHashSet();
+        Assert.Contains(TileBehavior.SlideEast, behaviours);
+        Assert.Contains(TileBehavior.Spinner, behaviours);
+        Assert.Equal(Direction.Right, FieldMovement.Spins(warehouse, TileBehavior.SlideEast, Direction.Right, null));
+        Assert.Equal(Direction.Right, FieldMovement.Spins(warehouse, TileBehavior.None, null, Direction.Right));
+        Assert.Null(FieldMovement.Spins(warehouse, TileBehavior.Spinner, null, Direction.Right));
+    }
 }

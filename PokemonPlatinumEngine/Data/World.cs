@@ -233,6 +233,8 @@ public static class WorldMapBuilder
         // A room built from a layout is a room of the kind its name says (plan 19 · K1): a Pokémon Center's floor, a
         // Mart's, a lab's, and a house's for the rest, until the region's plan gives its rooms looks of their own
         if (room) map.Interior = RoomStyleOf(entry.Name);
+        // A room whose entry names a puzzle has it, as a map file's does (plan 21 · H6: Fortree's rotating gates)
+        map.Puzzle = GymPuzzle.Create(entry.Puzzle);
         // A room whose overlay names its Leader's type is that type's Gym hall (plan 19 · K4: Pewter's of rock)
         if (room && entry.Area != null && world.Overlay(entry.Area)?.ArenaType is { } arena)
         {
@@ -1502,7 +1504,7 @@ public static class WorldMapBuilder
         town is Architecture.Timber or Architecture.Plaster or Architecture.Clapboard or Architecture.Cottage or Architecture.Farm
             or Architecture.Marsh or Architecture.Resort or Architecture.HalfTimber or Architecture.Evergreen or Architecture.Breeze
             or Architecture.Bayside or Architecture.Sapling or Architecture.Meadow or Architecture.Woodland or Architecture.Heritage or Architecture.Islet
-            or Architecture.Glade or Architecture.Hayloft;
+            or Architecture.Glade or Architecture.Hayloft or Architecture.Treetop;
 
     /// <summary>
     /// Cuts a set of tiles into rectangles, the largest first: a house is one, a museum with a wing two. Ties go
@@ -2310,7 +2312,9 @@ public static class WorldMapBuilder
                 map.SetSolid(px, pz, false);
                 if (inside.Type == PropType.Pool) npc.Wading = PoolDepth;
             }
-            map.NPCs.Add(npc);
+            // A block of ice is put back where it stood when the player comes in again, as a boulder is (plan 20 · J11)
+            if (npc.IsIceBlock) map.Add(npc);
+            else map.NPCs.Add(npc);
         }
 
         foreach (var record in people ? overlay?.Npcs ?? new() : new())

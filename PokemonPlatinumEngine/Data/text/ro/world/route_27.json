@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Past those falls, the road runs all the way to the Pokémon League. Only the strongest trainers make it there."
         ],
         "text": [
-          ""
+          "Dincolo de cascadele alea, drumul duce până la Liga Pokémon. Doar cei mai puternici antrenori ajung acolo."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Megan"
         ],
         "text": [
-          ""
+          "Megan"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "Ace Trainer Megan: Few trainers make it this far. Show me why you're one of them!"
         ],
         "text": [
-          ""
+          "Antrenoare As Megan: Puțini antrenori ajung până aici. Arată-mi că te numeri printre ei!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Ace Trainer Megan: I see. You really are on your way to the League."
         ],
         "text": [
-          ""
+          "Antrenoare As Megan: Văd. Chiar ești în drum spre Ligă."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Blake"
         ],
         "text": [
-          ""
+          "Blake"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "Ace Trainer Blake: I came all this way to train by the sea. You'll do nicely!"
         ],
         "text": [
-          ""
+          "Antrenor As Blake: Am venit până aici să mă antrenez lângă mare. Te potrivești de minune!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "Ace Trainer Blake: The waves are calmer than my head right now."
         ],
         "text": [
-          ""
+          "Antrenor As Blake: Valurile sunt mai calme decât capul meu acum."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Jose"
         ],
         "text": [
-          ""
+          "Jose"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "Bird Keeper Jose: My bird and I have flown over every cliff on this coast. Let's go!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Jose: Pasărea mea și cu mine am zburat peste toate stâncile de pe coasta asta. Hai!"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "Bird Keeper Jose: Grounded, just like that."
         ],
         "text": [
-          ""
+          "Crescător de păsări Jose: Aduși la pământ, așa, pe loc."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Brian"
         ],
         "text": [
-          ""
+          "Brian"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "Ace Trainer Brian: One Pokémon, raised with everything I've got. That's all I need!"
         ],
         "text": [
-          ""
+          "Antrenor As Brian: Un singur Pokémon, crescut cu tot ce am. Atât îmi trebuie!"
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "Ace Trainer Brian: Maybe I need a second one after all."
         ],
         "text": [
-          ""
+          "Antrenor As Brian: Poate că îmi trebuie totuși și un al doilea."
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Eli"
         ],
         "text": [
-          ""
+          "Eli"
         ]
       },
       "before": {
@@ -136,7 +136,7 @@
           "Psychic Eli: I saw this battle in a dream last night. I wonder how it ends..."
         ],
         "text": [
-          ""
+          "Medium Eli: Am văzut lupta asta într-un vis azi-noapte. Mă întreb cum se termină..."
         ]
       },
       "after": {
@@ -144,7 +144,7 @@
           "Psychic Eli: My dream left out the ending. Now I know why."
         ],
         "text": [
-          ""
+          "Medium Eli: Visul meu a omis finalul. Acum știu de ce."
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Reena"
         ],
         "text": [
-          ""
+          "Reena"
         ]
       },
       "before": {
@@ -162,7 +162,7 @@
           "Ace Trainer Reena: The sea breeze keeps my team sharp. Ready for a real battle?"
         ],
         "text": [
-          ""
+          "Antrenoare As Reena: Briza mării îmi ține echipa ascuțită. Ești gata pentru o luptă adevărată?"
         ]
       },
       "after": {
@@ -170,7 +170,7 @@
           "Ace Trainer Reena: Sharp, but not sharp enough..."
         ],
         "text": [
-          ""
+          "Antrenoare As Reena: Ascuțită, dar nu destul de ascuțită..."
         ]
       }
     }
@@ -181,7 +181,7 @@
         "Tohjo Falls\nThe water falls where Johto's coast meets Kanto's."
       ],
       "text": [
-        ""
+        "Cascada Tohjo\nApa cade acolo unde coasta Johtoului se întâlnește cu a Kantoului."
       ]
     },
     "R27_004+1": {
@@ -189,7 +189,7 @@
         "Route 27\nTohjo Falls lies to the west, the road to the League to the east."
       ],
       "text": [
-        ""
+        "Ruta 27\nCascada Tohjo se află la vest, drumul spre Ligă la est."
       ]
     }
   }

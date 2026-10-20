@@ -1,0 +1,65 @@
+{
+  // The Team Rocket Hideout's third basement (plan 20 · J11, part a): HeartGold's floor, our words. Lance meets the
+  // player at the foot of the east stairs, two grunts each know half the password to the shutters before the north
+  // room, the rival comes down the west corridor, and Petrel waits in the north room dressed as Giovanni
+  // (scripts/team_rocket_headquarters_b3f.txt). The shutters are things of the map behind a flag of ours,
+  // FLAG_ROCKET_HIDEOUT_B3F_DOOR_OPEN. The floor's trainers battle by their own records until Ariana is beaten above
+  // (FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN)
+  "area": "team_rocket_headquarters_b3f",
+  "bgmTrack": "johto/union_cave",
+  "triggers": [
+    { "trigger": 0, "script": "Rival" },
+    { "trigger": 1, "script": "Petrel" },
+    { "trigger": 2, "script": "MurkrowTwo" }
+  ],
+  "people": {
+    "d35r0104_rocketm": { "name": "Grunt", "script": "Grunt", "still": true },
+    "d35r0104_assistantm": {
+      "name": "Ross",
+      "trainer": {
+        "dialogueBefore": "Scientist Ross: An intruder in the laboratory? My data will not be disturbed!",
+        "dialogueAfter": "Scientist Ross: My calculations didn't account for you."
+      }
+    },
+    "d35r0104_assistantm_2": {
+      "name": "Mitch",
+      "trainer": {
+        "dialogueBefore": "Scientist Mitch: The signal we send makes Pokémon evolve before their time. Shall I show you what it can do?",
+        "dialogueAfter": "Scientist Mitch: Even our research can't make a Pokémon stronger than yours."
+      }
+    },
+    "d35r0104_rocketm_2": {
+      "name": "Grunt",
+      "script": "GruntWest",
+      "trainer": {
+        "dialogueBefore": "Grunt: The password? As if I'd tell a kid like you! Unless you beat me, that is.",
+        "dialogueAfter": "Grunt: I've told you my half. Leave me alone."
+      }
+    },
+    "d35r0104_rocketw": {
+      "name": "Grunt",
+      "script": "GruntEast",
+      "trainer": {
+        "dialogueBefore": "Grunt: You want to get into the boss's room? You'll have to get past me first!",
+        "dialogueAfter": "Grunt: I've told you my half. Now get lost."
+      }
+    },
+    "d35r0104_wataru": { "name": "Lance", "still": true, "dialog": [ "Find the password, {player}. I'll keep the rest of them busy." ] },
+    "d35r0104_tsure_poke_static_dragonite": { "name": "Dragonite", "npcType": "Pokemon", "species": "Dragonite", "still": true, "dialog": [ "Dragonite: Grroar!" ] },
+    "d35r0104_gsrivel": { "name": "{rival}", "npcType": "Silver", "still": true, "dialog": [ "..." ] },
+    "d35r0104_rkanbum2": {
+      "name": "Petrel",
+      "still": true,
+      "trainer": {
+        "id": "johto_executive_petrel_petrel_2",
+        "dialogueBefore": "Petrel: Let's see what you can do, kid.",
+        "dialogueAfter": "Petrel: You win this one."
+      }
+    },
+    "d35r0104_sakaki": { "name": "Giovanni", "still": true, "dialog": [ "..." ] },
+    "d35r0104_tsure_poke_static_murkrow": { "name": "Murkrow", "npcType": "Pokemon", "species": "Murkrow", "script": "Murkrow", "still": true },
+    "d35r0104_tsure_poke_static_murkrow_2": { "name": "Murkrow", "npcType": "Pokemon", "species": "Murkrow", "still": true, "dialog": [ "Murkrow is muttering something to itself." ] },
+    "d35r0104_babyboy1_9": { "name": "Shutter", "npcType": "GalacticDoor", "hiddenBy": "FLAG_ROCKET_HIDEOUT_B3F_DOOR_OPEN", "script": "Door", "still": true },
+    "d35r0104_babyboy1_9_2": { "name": "Shutter", "npcType": "GalacticDoor", "hiddenBy": "FLAG_ROCKET_HIDEOUT_B3F_DOOR_OPEN", "script": "Door", "still": true }
+  }
+}

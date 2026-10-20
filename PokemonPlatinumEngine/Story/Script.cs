@@ -111,6 +111,8 @@ public enum Op
     Broadcast,
     // A map on a wall looked at: the Town Map's screen in its wall mode (plan 08 · P8)
     TownMap,
+    // A phrase of two words asked for on the phrase picker, kept by its name (plan 08 · P9)
+    Phrase,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -200,11 +202,21 @@ public sealed class Instruction
     /// </summary>
     public string AsTrainer { get; init; } = "";
 
+    /// <summary>
+    /// For <c>team size</c>, the variable the record is kept in (plan 19 · K9, part c: Kanto's other size measurers
+    /// each keep a record of their own, FireRed's <c>VAR_…_SIZE_RECORD</c>); empty for the story's own
+    /// (<see cref="Models.SizeContest.RecordVariable"/>), which Route 222's fisherman keeps.
+    /// </summary>
+    public string Record { get; init; } = "";
+
     /// <summary>For <c>battle self rematch</c>: the trainer fights with the team the Vs. Seeker has them bring (plan 06 · R12).</summary>
     public bool Rematch { get; init; }
 
     /// <summary>For <c>battle self inverse</c>: an inverse battle, its type chart turned round (plan 14 · B1).</summary>
     public bool Inverse { get; init; }
+
+    /// <summary>For <c>wildbattle … shiny</c>: the Pokémon met is a shiny one (plan 20 · J11: the Lake of Rage's red Gyarados).</summary>
+    public bool Shiny { get; init; }
 
     /// <summary>A count, a level, an amount, a value; and a tile where the line names one.</summary>
     public int Number { get; init; }

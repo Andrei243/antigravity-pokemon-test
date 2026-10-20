@@ -1,0 +1,602 @@
+{
+  "people": {
+    "route119_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Fortree's just up the road, {player}!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route119_scott": {
+      "name": {
+        "en": [
+          "Scott"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'll be watching, {player}!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_3": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Behind the waterfall there's a cave? No, that's just a story. Probably."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "boy_2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Rain, rain, rain! It's always raining around here. My Pokémon love it, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cycling_triathlete_m": {
+      "name": {
+        "en": [
+          "Cyclist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This grass is so tall it snags my bike's tyres. I can barely get anywhere!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "kecleon_2": {
+      "name": {
+        "en": [
+          "Kecleon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher": {
+      "name": {
+        "en": [
+          "Greg"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Greg: The tall grass here is full of bugs! Let me show you my best ones!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Greg: Back into the grass to find more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Taylor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Maniac Taylor: I've raised these bugs from tiny Wurmple! Witness their glory!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Maniac Taylor: Their glory has been dimmed."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac_2": {
+      "name": {
+        "en": [
+          "Donald"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Maniac Donald: Rain brings out the best bugs. And the best bug battles!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Maniac Donald: Washed out by the rain."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Jackson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pkmn Ranger Jackson: I patrol this route rain or shine. Show me you can handle yourself out here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pkmn Ranger Jackson: You'll be fine out here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac_3": {
+      "name": {
+        "en": [
+          "Brent"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Maniac Brent: Surskit skates on the puddles here. Have you ever seen anything so lovely?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Maniac Brent: It slipped on its own puddle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Catherine"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pkmn Ranger Catherine: I keep an eye on the Pokémon here. Let me see how you treat yours!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pkmn Ranger Catherine: Your Pokémon trust you. I can tell."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher_2": {
+      "name": {
+        "en": [
+          "Doug"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Doug: My Ninjask is so fast you won't even see it coming!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Doug: You saw it coming after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "bug_catcher_3": {
+      "name": {
+        "en": [
+          "Kent"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Catcher Kent: Bzzz! That's the sound of my Ninjask about to win!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Catcher Kent: Bzzz... that's the sound of me losing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Yasu"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Yasu: You walked right past me! My hiding skills are flawless!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Yasu: My battle skills are less flawless."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy_2": {
+      "name": {
+        "en": [
+          "Takashi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Takashi: Hah! I was hiding in the grass the whole time!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Takashi: Back into hiding, in shame."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy_3": {
+      "name": {
+        "en": [
+          "Hideo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Hideo: Shh! I'm practising my stealth! Now you've seen me, so we battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Hideo: More practice needed."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Hugh"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Hugh: My birds love the wind over the river. Let's see if they carry the day!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Hugh: They didn't carry it far."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_2": {
+      "name": {
+        "en": [
+          "Phil"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Phil: Swellow, dive! This trainer's wide open!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Phil: Not so wide open after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Chris"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Chris: I've fished every pool on this route. Look what I've caught!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Chris: Maybe I should throw a few back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Rachel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Parasol Lady Rachel: My parasol keeps the rain off. Can you keep my Pokémon off?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Parasol Lady Rachel: You certainly could."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_3": {
+      "name": {
+        "en": [
+          "Dayton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Kindler Dayton: All this rain can't put out my fire! Come on!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Kindler Dayton: Okay, maybe it can."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_4": {
+      "name": {
+        "en": [
+          "Fabian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Fabian: The rain on the leaves sounds like a drum. Let's battle to it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Fabian: Lost the beat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route119_EventScript_WeatherInstituteSign": {
+      "en": [
+        "Weather Institute"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route119_EventScript_RouteSignFortree": {
+      "en": [
+        "Route 119\nNorth: Fortree City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route119_EventScript_TrainerTipsDecoration": {
+      "en": [
+        "Trainer Tips\nFortree's shop sells furniture and dolls for a secret base. Make one your own!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,43 @@
+# The Mahogany Gym's last room (plan 20 · J11, part a). docs/scripts.md describes the language; the lines are our own,
+# on HeartGold's beats (scr_seq_T28GYM0101).
+#
+# Pryce battles, gives the Glacier Badge (`givebadge glacier`), counts the Gym's five skiers and boarders beaten as
+# HeartGold's SetTrainerFlag does, and gives TM07, Hail (FLAG_GOT_TM07_FROM_PRYCE). HeartGold starts Team Rocket's
+# takeover of the Radio Tower once the Storm, Mineral and Glacier Badges are all held (VAR_SCENE_ROCKET_TAKEOVER 1,
+# which it sets as its count of the three reaches three): here whichever Leader's script gives the last of them sets
+# it, so Pryce's asks after the other two (plan 20 · J11, part b gives Chuck's and Jasmine's the same lines).
+
+
+# T28GYM0101_000
+script Pryce
+  face t28gym0101_gsleader7 player
+  speaker "Pryce"
+  if badge glacier goto Won
+  scene "Pryce"
+  say "Pokémon have lived through a great deal, as I have. I have seen many winters, and they have taught me patience."
+  say "I am Pryce, the winter's harsh cold made flesh. Let us see whether you can stand it."
+  battle self as "johto_leader_pryce_pryce"
+  say "Hmm. Your Pokémon carried you through the cold. You have earned this: the Glacier Badge."
+  givebadge glacier
+  text "{player} received the Glacier Badge from Pryce!"
+  defeat "johto_boarder_deandre"
+  defeat "johto_boarder_gerardo"
+  defeat "johto_skier_jill"
+  defeat "johto_skier_diana"
+  defeat "johto_boarder_patton"
+  if not badge storm goto Said
+  if not badge mineral goto Said
+  setvar VAR_SCENE_ROCKET_TAKEOVER 1
+label Said
+  say "With it, your Pokémon will use Whirlpool outside of battle, and every Pokémon's Speed rises a little."
+  endscene
+label Tm
+  say "Take this as well. It is the winter itself, in a disc."
+  give "TM07"
+  setflag FLAG_GOT_TM07_FROM_PRYCE
+  say "TM07 is Hail. It brings down a storm of ice that hurts every Pokémon not of the Ice type, for five turns."
+  end
+label Won
+  if not flag FLAG_GOT_TM07_FROM_PRYCE goto Tm
+  say "When the ice breaks, spring comes. Perhaps you are a spring of sorts for these old bones."
+  end

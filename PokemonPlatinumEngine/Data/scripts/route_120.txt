@@ -1,0 +1,184 @@
+# Route 120 (plan 21 · H6). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route120/scripts.inc).
+#
+# Steven waits by the bridge east of Fortree City, where something nobody can see stands in the way. Asked, he looks
+# through the Devon Scope, the Kecleon on the bridge shows itself and comes at the player; whatever comes of it,
+# Steven gives the Scope (FLAG_RECEIVED_DEVON_SCOPE) and flies off (FLAG_HIDE_ROUTE_120_STEVEN). Told the player isn't
+# ready, he waits (FLAG_NOT_READY_FOR_BATTLE_ROUTE_120). Five more Kecleon stand unseen along the route. The beauty by
+# the berry trees gives one berry a day (FLAG_DAILY_ROUTE_120_RECEIVED_BERRY): Emerald picks it by the last digit of the
+# player's trainer number, which no script reads here, so the day's die picks among the same five (rulings,
+# "Route 118 to Fortree City").
+
+
+script Steven
+  face self player
+  speaker "Steven"
+  if flag FLAG_NOT_READY_FOR_BATTLE_ROUTE_120 goto Again
+  ask "{player}! Good timing. There's something on this bridge that nobody can see. Will you help me find out what?"
+  if no goto NotReady
+  goto Battle
+label Again
+  ask "Are your Pokémon ready now? Let's see what's hiding on this bridge."
+  if no goto NotReady
+  goto Battle
+label NotReady
+  say "No hurry. I'll wait here until you're ready."
+  setflag FLAG_NOT_READY_FOR_BATTLE_ROUTE_120
+  end
+label Battle
+  scene "Steven and the Kecleon on the bridge"
+  say "Then show me what you and your Pokémon can do!"
+  if facing left walk player down 1 left 1
+  if facing up face player left
+  face route120_steven left
+  wait 0.3
+  say "This is the Devon Scope. With it, a Pokémon that blends into its surroundings can't hide."
+  effect sparkles 372 16 wait
+  cry "Kecleon"
+  wildbattle "Kecleon" 30
+  hide bridge_kecleon
+  setflag FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE
+  face route120_steven down
+  face player up
+  speaker "Steven"
+  say "So it was a Kecleon. It changes its colours to match whatever is round it. Clever, isn't it?"
+  say "You saw what the Scope can do. Take it. There are more of them about, and you'll find them now."
+  give "Devon Scope"
+  setflag FLAG_RECEIVED_DEVON_SCOPE
+  say "I'm going on ahead. Something is stirring in Hoenn, {player}, and I want to see it with my own eyes."
+  say "We'll meet again. Take care of yourself."
+  wait 0.4
+  hide route120_steven
+  setflag FLAG_HIDE_ROUTE_120_STEVEN
+  endscene
+  end
+
+
+# What stands on the bridge, before anyone has seen it
+script BridgeKecleon
+  speaker none
+  text "Something unseeable is in the way."
+  end
+
+
+# The beauty by the berry trees, and a berry a day
+script BerryBeauty
+  face self player
+  speaker "Beauty"
+  if flag FLAG_DAILY_ROUTE_120_RECEIVED_BERRY goto Had
+  ask "Don't you think berries are a kind of love letter? From the soil, to whoever picks them?"
+  if no goto Doubt
+  say "I knew you'd understand! Then you should have one of mine."
+  goto Give
+label Doubt
+  say "Oh, you'll see it one day. Here, maybe this will help you understand."
+label Give
+  random 5
+  if result == 0 goto Figy
+  if result == 1 goto Wiki
+  if result == 2 goto Mago
+  if result == 3 goto Aguav
+  give "Iapapa Berry"
+  goto Given
+label Figy
+  give "Figy Berry"
+  goto Given
+label Wiki
+  give "Wiki Berry"
+  goto Given
+label Mago
+  give "Mago Berry"
+  goto Given
+label Aguav
+  give "Aguav Berry"
+label Given
+  setflag FLAG_DAILY_ROUTE_120_RECEIVED_BERRY
+  say "That one's hard to come by. Plant it and raise it with care!"
+  end
+label Had
+  say "I'm off to the Berry Master's later for more. Come back tomorrow and I'll have another for you."
+  end
+
+
+# The Kecleon along the route
+script Kecleon1
+  call HoennKecleonLook
+  effect sparkles 380 11 wait
+  call HoennKecleonFound
+  end
+
+
+script Kecleon2
+  call HoennKecleonLook
+  effect sparkles 387 2 wait
+  call HoennKecleonFound
+  end
+
+
+script Kecleon3
+  call HoennKecleonLook
+  effect sparkles 364 77 wait
+  call HoennKecleonFound
+  end
+
+
+script Kecleon4
+  call HoennKecleonLook
+  effect sparkles 379 48 wait
+  call HoennKecleonFound
+  end
+
+
+script Kecleon5
+  call HoennKecleonLook
+  effect sparkles 367 51 wait
+  call HoennKecleonFound
+  end
+
+
+# Robert, beaten, swaps numbers for the PokéNav
+script Robert
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_ROBERT goto Known
+label Ask
+  speaker "Robert"
+  say "Your Pokémon fly true! Let's exchange numbers and train together sometime."
+  ask "Register Robert in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_robert
+  say "Great! I'll call when Swablu learns something new."
+  end
+label Refused
+  say "Ah well. The sky's big enough for both of us."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Jeffrey, beaten, swaps numbers for the PokéNav
+script Jeffrey
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_JEFFREY goto Known
+label Ask
+  speaker "Jeffrey"
+  say "You know your stuff! Want my number? I'll tell you about every bug I find."
+  ask "Register Jeffrey in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_jeffrey
+  say "Brilliant! Expect lots of calls about Surskit."
+  end
+label Refused
+  say "Fine, fine. More bugs for me!"
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask

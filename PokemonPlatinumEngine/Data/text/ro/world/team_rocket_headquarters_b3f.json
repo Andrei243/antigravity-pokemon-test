@@ -1,0 +1,265 @@
+{
+  "people": {
+    "d35r0104_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_assistantm": {
+      "name": {
+        "en": [
+          "Ross"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Ross: An intruder in the laboratory? My data will not be disturbed!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Ross: My calculations didn't account for you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_assistantm_2": {
+      "name": {
+        "en": [
+          "Mitch"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Mitch: The signal we send makes Pokémon evolve before their time. Shall I show you what it can do?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Mitch: Even our research can't make a Pokémon stronger than yours."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: The password? As if I'd tell a kid like you! Unless you beat me, that is."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: I've told you my half. Leave me alone."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_rocketw": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: You want to get into the boss's room? You'll have to get past me first!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: I've told you my half. Now get lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_wataru": {
+      "name": {
+        "en": [
+          "Lance"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Find the password, {player}. I'll keep the rest of them busy."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_tsure_poke_static_dragonite": {
+      "name": {
+        "en": [
+          "Dragonite"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Dragonite: Grroar!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_gsrivel": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_rkanbum2": {
+      "name": {
+        "en": [
+          "Petrel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Petrel: Let's see what you can do, kid."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Petrel: You win this one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_sakaki": {
+      "name": {
+        "en": [
+          "Giovanni"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_tsure_poke_static_murkrow": {
+      "name": {
+        "en": [
+          "Murkrow"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_tsure_poke_static_murkrow_2": {
+      "name": {
+        "en": [
+          "Murkrow"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Murkrow is muttering something to itself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_babyboy1_9": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0104_babyboy1_9_2": {
+      "name": {
+        "en": [
+          "Shutter"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

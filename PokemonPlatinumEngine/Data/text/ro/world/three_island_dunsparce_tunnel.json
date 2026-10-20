@@ -17,6 +17,16 @@
           "Căutătorul de aur"
         ]
       }
+    },
+    "prospector_digging": {
+      "name": {
+        "en": [
+          "Prospector"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {}

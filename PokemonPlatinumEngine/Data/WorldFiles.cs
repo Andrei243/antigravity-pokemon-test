@@ -677,6 +677,12 @@ public sealed class WorldMapEntry
     /// on one of four tiles of the chunk below, and its tunnels are several systems that don't join one another).
     /// </summary>
     public List<int[]>? ArrivalsInEveryChunk { get; set; }
+
+    /// <summary>
+    /// The Gym puzzle of a room the map is (<see cref="Overworld.GymPuzzle.Create"/>), as a map file names one: plan 21 · H6,
+    /// Fortree's rotating gates, which the import knows nothing of, since Emerald keeps them in code.
+    /// </summary>
+    public string? Puzzle { get; set; }
 }
 
 /// <summary>

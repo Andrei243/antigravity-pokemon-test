@@ -1,0 +1,28 @@
+{
+  "key": "fortree_city_house_5",
+  "index": 158,
+  "name": "Fortree City",
+  "matrix": 107,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FORTREE",
+  "nightMusic": "MUS_FORTREE",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 5, "to": "fortree_city", "toWarp": 7 },
+    { "x": 4, "z": 5, "to": "fortree_city", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "pokefan_f", "looks": "pokefan_f", "movement": "look_south_north_and_east", "x": 6, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_House5_EventScript_PokefanF" },
+    { "id": "zigzagoon_2", "looks": "zigzagoon_2", "movement": "look_south", "x": 6, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_House5_EventScript_Zigzagoon" },
+    { "id": "man_1", "looks": "man_1", "movement": "look_east", "x": 2, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_House5_EventScript_Man" }
+  ],
+  "signs": [],
+  "triggers": []
+}

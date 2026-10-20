@@ -143,6 +143,20 @@
     { "name": "MeteorFalls_1F_2R", "matrix": 188, "area": "meteor_falls_1f_2r", "trees": "Round", "setting": "Cave" },
     { "name": "MeteorFalls_B1F_1R", "matrix": 189, "area": "meteor_falls_b1f_1r", "trees": "Round", "setting": "Cave" },
     { "name": "MeteorFalls_B1F_2R", "matrix": 190, "area": "meteor_falls_b1f_2r", "trees": "Round", "setting": "Cave" },
+    // Plan 21 · H6: Route 119's house and its Weather Institute on two floors, Fortree City's rooms and Winona's Gym
+    // (its rotating gates the room's puzzle, Emerald's rotating_gate.c); the decoration shop is H10's
+    { "name": "Route119_House", "matrix": 459, "area": "route_119_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route119_WeatherInstitute_1F", "matrix": 457, "area": "route_119_weather_institute_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Route119_WeatherInstitute_2F", "matrix": 458, "area": "route_119_weather_institute_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "FortreeCity_House1", "matrix": 99, "area": "fortree_city_house_1", "trees": "Round", "setting": "Indoors" },
+    { "name": "FortreeCity_Gym", "matrix": 100, "area": "fortree_city_gym", "trees": "Round", "setting": "Indoors", "puzzle": "FortreeGates" },
+    { "name": "FortreeCity_PokemonCenter_1F", "matrix": 101, "area": "fortree_city_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "FortreeCity_PokemonCenter_2F", "matrix": 102, "area": "fortree_city_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "FortreeCity_Mart", "matrix": 103, "area": "fortree_city_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "FortreeCity_House2", "matrix": 104, "area": "fortree_city_house_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "FortreeCity_House3", "matrix": 105, "area": "fortree_city_house_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "FortreeCity_House4", "matrix": 106, "area": "fortree_city_house_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "FortreeCity_House5", "matrix": 107, "area": "fortree_city_house_5", "trees": "Round", "setting": "Indoors" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; only Route 124's floor is open so far
     { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" }
@@ -201,6 +215,12 @@
     "route_115", "meteor_falls_1f_2r", "meteor_falls_b1f_1r", "meteor_falls_b1f_2r",
     // Plan 21 · H5: Route 124's sea and the sea floor under it, Dive's first pair (the way there by water from
     // Lilycove City is plan 21 · H7's)
-    "route_124", "underwater_route_124"
+    "route_124", "underwater_route_124",
+    // Plan 21 · H6, part a: Route 118 to Fortree City and on along Route 120, with Route 119's Weather Institute and
+    // house and Fortree's rooms and Gym (Route 121, the Safari Zone and the decoration shop are part b's)
+    "route_118", "route_119", "fortree_city", "route_120",
+    "route_119_house", "route_119_weather_institute_1f", "route_119_weather_institute_2f",
+    "fortree_city_house_1", "fortree_city_house_2", "fortree_city_house_3", "fortree_city_house_4", "fortree_city_house_5",
+    "fortree_city_gym", "fortree_city_pokemon_center_1f", "fortree_city_pokemon_center_2f", "fortree_city_mart"
   ]
 }

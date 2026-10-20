@@ -1,5 +1,69 @@
 {
   "people": {
+    "t28gym0101_gsleader7": {
+      "name": {
+        "en": [
+          "Pryce"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t28gym0101_ice": {
+      "name": {
+        "en": [
+          "Block of ice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A big block of ice. Pushed, it would slide across the floor until something stopped it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t28gym0101_ice_2": {
+      "name": {
+        "en": [
+          "Block of ice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A big block of ice. Pushed, it would slide across the floor until something stopped it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t28gym0101_ice_3": {
+      "name": {
+        "en": [
+          "Block of ice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A big block of ice. Pushed, it would slide across the floor until something stopped it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "t28gym0101_boarder": {
       "name": {
         "en": [

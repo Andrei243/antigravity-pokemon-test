@@ -3097,6 +3097,61 @@ Platinum has no Dive in the field, so the field move follows Emerald (`TrySetupD
   is above. Still to come: the floors under Routes 125 to 128 with their routes (H8), and the frame weighed with
   `profile` on the user's machine.
 
+## Route 118 to Fortree City (2026-10-20, plan 21 · H6, its first part)
+
+Route 118, Route 119 with the Weather Institute, Fortree City with Winona's Gym, and Route 120 are scripts of ours on
+Emerald's beats (`route_118.txt`, `route_119.txt`, `route_119_weather_institute_1f.txt`,
+`route_119_weather_institute_2f.txt`, `fortree_city.txt`, `fortree_city_gym.txt`, `route_120.txt`, and in `common.txt`
+`HoennChapterSeven`, `HoennKecleonLook` and `HoennKecleonFound`), under Emerald's flags and variables
+(`VAR_ROUTE118_STATE`, `FLAG_HIDE_ROUTE_118_STEVEN`, `FLAG_RECEIVED_GOOD_ROD`, `VAR_WEATHER_INSTITUTE_STATE`,
+`FLAG_HIDE_ROUTE_119_TEAM_AQUA`, `FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS`, `_2F_WORKERS`, `_2F_AQUA_GRUNT_M`,
+`FLAG_RECEIVED_CASTFORM`, `VAR_ROUTE119_STATE`, `FLAG_HIDE_ROUTE_119_RIVAL`, `FLAG_HIDE_ROUTE_119_SCOTT`,
+`FLAG_RECEIVED_HM_FLY`, `VAR_SCOTT_STATE`, `FLAG_KECLEON_FLED_FORTREE`, `FLAG_HIDE_FORTREE_CITY_KECLEON`,
+`FLAG_NOT_READY_FOR_BATTLE_ROUTE_120`, `FLAG_RECEIVED_DEVON_SCOPE`, `FLAG_HIDE_ROUTE_120_STEVEN`,
+`FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE`, `FLAG_HIDE_ROUTE_120_KECLEON_1` to `_5`, `FLAG_DAILY_ROUTE_120_RECEIVED_BERRY`,
+`FLAG_DEFEATED_FORTREE_GYM`, `FLAG_RECEIVED_TM_AERIAL_ACE`, `FLAG_ENABLE_WINONA_MATCH_CALL`). **No story version is
+raised**: `common.HoennChapterSeven`, which `HoennNewGame` calls, hides the stretch's people (the rival and Scott on
+Route 119, the institute's workers and the grunt who brings the news, the Wingull of Fortree's fourth house, Gabby and
+Ty) and sets `FLAG_HOENN_CHAPTER_SEVEN`, a flag of ours; Route 118's and Route 119's arrival scripts call it for a save
+that has never run it, which is every save from before this part, since nobody could reach these roads before it. What
+differs, and why:
+
+- **The weather is the area's zones**: Emerald's coordinate events set the weather as the player crosses rows of
+  Routes 119 and 120 (`SetRoute119Weather`, `SetRoute120Weather`). Here the overlays give a stretch its weather
+  (`zones`): Route 118 is clear, Route 119 rains from the institute's south to Fortree's edge, and Route 120 runs clear
+  by the city, rain over the bridge and the long grass, and cloud in the south.
+- **Steven on Route 118** comes to the ledge's edge before whichever of the three tiles below it the player steps on,
+  hops down and walks off east, as Emerald's does; Emerald's line about the player's team is ours.
+- **The Weather Institute**: Shelly battles only when spoken to, as in Emerald; once beaten, a grunt runs up from the
+  stairs with the news of Mt. Pyre and Team Aqua leaves behind a fade. The scientist gives Castform at level 25 holding a
+  Mystic Water, which needed `givepokemon … holding` (`docs/scripts.md`). The ground floor's beds heal the team, read on
+  any of their tiles. The workers come back downstairs as the player comes out (state 1 to 2), where Emerald moves them
+  on the institute's own map.
+- **The rival on Route 119** runs up from the west end of the bridge, battles with the starter's team and gives HM02;
+  Emerald's rides off on a bicycle (a second object of the rival), ours runs, as in Lavaridge. Scott then comes down the
+  path to talk (`VAR_SCOTT_STATE`).
+- **Kecleon nobody can see** are things of the map (`NPC.UnseenType`, "Unseen" in an overlay): in the way and spoken to,
+  drawn as nothing, with no shadow; Emerald's `invisible` movement. Without the Devon Scope speaking to one says only that
+  something unseeable is in the way. With it, the player is asked whether to use the Scope, the Kecleon's tile sparkles
+  (`effect sparkles`), it cries and is battled at level 30 (Route 119's two and Route 120's five), and it is gone whatever
+  came of the battle but a loss. Emerald plays the Scope's own reveal animation; the sparkles are ours.
+- **Fortree's Kecleon** on the bridge to the Gym only flees, as in Emerald, and the bridge is free
+  (`FLAG_KECLEON_FLED_FORTREE`). Emerald then swaps the bridge's metatiles; here the bridge is already drawn whole.
+- **Steven on Route 120** asks whether the player is ready; refused, he waits (`FLAG_NOT_READY_FOR_BATTLE_ROUTE_120`).
+  Agreed, he shows the bridge's Kecleon through the Scope, it is battled, he gives the Devon Scope and is gone behind no
+  fade (Emerald's Steven walks off the bridge).
+- **The berry beauty of Route 120** gives one berry a day. Emerald chooses it by the last digit of the trainer number,
+  which no script here reads; the day's die (`random 5`) chooses among the same five: Figy, Wiki, Mago, Aguav, Iapapa.
+- **Winona's Gym**: the rotating gates are the room's puzzle (`FortreeGates`, Emerald's `rotating_gate.c` with its
+  Fortree layout, shapes and sweeps): a step into an arm turns the gate a quarter round unless an arm would sweep into a
+  wall, and coming in again lays them out afresh. Her Badge counts the Gym's six trainers beaten, as Emerald's does; she
+  gives TM40, and with the PokéNav her number (`addcontact winona`).
+- **Match Call on the routes**: six trainers (Rose and Dalton on Route 118, Jackson and Catherine on 119, Robert and
+  Jeffrey on 120) ask, once beaten and spoken to, to be registered, as Emerald's do; their calls are `phone.txt`'s.
+- **What waits** (part b): Route 121, the Safari Zone, Fortree's decoration shop (H10), Gabby and Ty's interviews, the
+  Ancient Tomb's and the Scorched Slab's doors (`locked`), Fortree's house trades, the Hidden Power quiz and the Sleep
+  Talk tutor, the Wingull's errand, and the bridges' bounce underfoot.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,
@@ -3397,6 +3452,62 @@ was raised: each place's arrival hides whoever its part of the errand hasn't rea
 - **Mewtwo** waits at the bottom of Cerulean Cave at level 70 until fought, as the birds; a run from it hides it until
   the cave is come to again.
 
+## The last Sevii Islands, part c (2026-10-20, plan 19 · K9, part c)
+
+The little the islands still owed, as scripts of ours on FireRed's beats and flags
+(`data/maps/ThreeIsland_DunsparceTunnel/scripts.inc`, `SixIsland_WaterPath_House1`, `Route12_FishingHouse`,
+`FiveIsland_ResortGorgeous_House`, `FourIsland_LoreleisHouse`, and `src/field_specials.c`'s
+`SampleResortGorgeousMonAndReward` and `UpdateLoreleiDollCollection`).
+
+- **The Dunsparce Tunnel is dug through with the National Pokédex.** FireRed lays the tunnel out again with
+  `setmaplayoutindex` once the Pokédex is the National one; here the dug-out layout is an alternate the GBA reader
+  writes as a chunk of its own (`GbaWorld.Alternates`, chunk 655), swapped in by `world.json`'s `swaps` on
+  `FLAG_THREE_ISLAND_TUNNEL_DUG_OUT`, which both arrivals set (`three_island_dunsparce_tunnel.OnEnter` and
+  `three_island_port.OnEnter`, each `if nationaldex setflag`), so the dig is through whichever end is come to first.
+  Until then the prospector is a second person of the overlay at the wall he is working (`prospector_digging`, hidden
+  by the flag) and the port's east steps are shut, a way `from` the flag in the overlay's `switches`; after it he
+  stands at his own end with a Nugget to give, once (`FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL`).
+- **The size measurers keep records of their own.** The Water Path's beauty measures Heracross and Route 12's fishing
+  brother Magikarp, each against a record of their own rather than the one size record of Platinum's Route 221
+  fisherman: `team size "<species>" <variable>` measures against the named variable and `team size keep <variable>`
+  writes it, and `team record <species> [<variable>]` tells what is written up. So a Heracross never spoils the
+  Magikarp board, and Sinnoh's `VAR_SIZE_CONTEST_RECORD` is untouched by either. The first one shown always earns its
+  ball, as in FireRed, where a record of nothing is beaten by anything: a Nest Ball
+  (`FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1`) and a Net Ball (`FLAG_GOT_RECORD_SETTING_MAGIKARP`), each once, and
+  the brother measures nothing until his Super Rod has been given. The sizes are Platinum's own arithmetic
+  (`Models/SizeContest.cs`), not FireRed's, which has no bell curve: the same Pokémon is the same size wherever it is
+  measured in this game.
+- **Selphy's wishes.** Her wish is a species the Pokédex has seen, drawn on the game's own chance (`random seen`, the
+  new `IScriptHost.SpeciesSeenAtRandom`, FireRed's `SampleResortGorgeousMon`) and kept as its National Pokédex number
+  in `VAR_RESORT_GORGEOUS_REQUESTED_MON`, which `if has var VAR_…` asks the team about and `{species:VAR_…}` says in a
+  line; the gift is drawn with it (`VAR_RESORT_GORGEOUS_REWARD`: 1 a Luxury Ball, seven draws in ten, and 2 to 7 one
+  of FireRed's six deluxe rewards, in its own order), and the butler, who is off the map until she calls him, hands it
+  over. She wishes again the next time the house is come into (`FLAG_MAP_LOCAL_SELPHY_THANKED`, FireRed's
+  `FLAG_TEMP_2`). **FireRed forgets a wish 250 steps after it is made; here a wish stands until it is granted**, since
+  nothing else in this game counts steps against a flag and a forgotten wish only annoys.
+- **Lorelei's dolls** come one by one with the times the team has entered the Hall of Fame, as FireRed's
+  `UpdateLoreleiDollCollection` gives them (25 entries a Meowth, then 50, 75, 100, 125, 150, 175 and 200 a Chansey, a
+  female Nidoran, a Jigglypuff, a male Nidoran, a Fearow, a Pidgeot and a Lapras): her room's `OnEnter` sets all eight
+  flags and clears each the count has earned, reading the count as the built-in `LEAGUE_VICTORIES`, where FireRed
+  reads its own game record. Her other six dolls always stand.
+- **The Rocket Warehouse's arrows need nothing of their own.** Part b's "left" list was mistaken: the warehouse is
+  laid out from FireRed's own tiles, whose slides and spinner are the behaviours plan 19 · K5, part b taught the field
+  for the Rocket Hideout, so its floor already runs and stops as the hideout's does
+  (`KantoTests.TheRocketWarehousesArrowsSpinAsTheHideoutsDo` holds it).
+
+What the islands still owe, and why:
+
+- **The roaming beast.** FireRed sets Raikou, Entei or Suicune roaming once Celio's network is finished, chosen by the
+  starter. `Models/Roamers.cs` keeps a roamer by species and the three of them already have Johto's routes to roam
+  (plan 20), so letting Kanto loose one would need a field of its own in the save to say which region's roam a beast
+  is on. Left to the session that gives the roamers a region.
+- **Icefall Cave's cracked ice** (FireRed's `MB_CRACKED_FLOOR`) needs a tile that remembers how often it has been
+  stepped on and a fall to the floor below; the cave is walked without it, as plan 19 · K9, part b left it.
+- **The Seagallop's Rainbow menu** stays two tiers of questions, since `choose` takes at most six answers and the
+  Rainbow Pass opens seven islands.
+- **The Trainer Tower and Altering Cave** want the e-Reader; **Two Island's Poké Maniac** wants a trade, which is plan
+  07's.
+
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,
@@ -3652,3 +3763,50 @@ Indigo Plateau with the League's hall and rooms, from HeartGold's maps, events a
   Kanto's own, which comes with J15), `victory_road`, `indigo_plateau`, `battle_elite_four` and `battle_champion`, our
   own; Tohjo Falls plays `union_cave`.
 - **Fly** lands before the League's door on the Plateau (spawn 11), once it has been come to.
+
+## Johto's fourth chapter, part a (2026-10-20, plan 20 · J11, part a)
+
+The Lake of Rage to the Glacier Badge: the toll on Route 43, the red Gyarados, Lance, the souvenir shop's stairs, the
+Team Rocket Hideout's three floors with the tag battle beside Lance, and Pryce, played by scripts of ours on HeartGold's
+beats (`scr_seq_R43R0201`, `T29`, `D35R0101` to `D35R0104`, `T28GYM0101`) and its flags and variables. The Radio Tower,
+the Ice Path's scenes, Clair, the Dragon's Den, the Kimono Girls, Ho-Oh and Lugia are part b's.
+
+- **The toll is asked on arrival**: HeartGold's gate house in the middle of Route 43 takes ¥1,000 (or all that is left
+  when that is less) as its room script runs, until the hideout is cleared. Ours does the same in the room's `OnEnter`,
+  a hundred, ten and one at a time where the player has less, and it also sets `FLAG_HIDE_ROUTE_43_GATE_GUARD`, which
+  HeartGold's new game sets: the guard is back once the hideout is cleared, with the grunts gone
+  (`FLAG_HIDE_ROUTE_43_GATE_ROCKETS`), and gives TM36. Setting a flag HeartGold's new game sets as the place is come
+  to, rather than in `common.JohtoNewGame`, is how no story version is raised (a save begun before would never have
+  run it): so do the lake (Lance hidden until the Gyarados is gone) and the hideout's floors (their scene people
+  hidden until their scenes).
+- **The red Gyarados is met shiny** (`wildbattle "Gyarados" 30 shiny`, a shiny personality drawn for the player's
+  trainer number as HeartGold's flag on its `WildBattle` makes one). Its model and sprites are the species' own colours:
+  a shiny palette is no part of this game's models yet, so it looks like any Gyarados and is told apart by its line and
+  its sparkle in battle. Won or caught it leaves the Red Scale, which **is a flag only** (`FLAG_GOT_RED_SCALE`): the item
+  isn't in this game's data and the importer can't be run here, so Mr. Pokémon's trade for the Exp. Share waits with
+  it (part b, or the next run of the importer). Run from, it is gone all the same and nothing is left.
+- **The shop's stairs**: HeartGold slides a shelf aside; this room's shelf is its wall, so the stairs' warp is a lone
+  switched way (`switches`, `from` `FLAG_MAHOGANY_SHOP_STAIRS_FOUND`, a flag of ours), a wall until Lance's scene sets
+  it. The big man before the Mahogany Gym's door is HeartGold's, behind its `FLAG_UNK_1F9`, which the hideout's last
+  scene sets: Pryce can't be reached before the hideout is cleared, as in HeartGold.
+- **The hideout** keeps HeartGold's own count (`VAR_UNK_40AC`, 0 to 10, its steps listed at the head of
+  `team_rocket_headquarters_b2f.txt`) and B2F's (`VAR_UNK_40A9`). The two grunts on B3F who each tell half the password
+  move the count on with their own scripts once both are beaten, as HeartGold's do. The passwords are our own words
+  ("Golden" and "Persian" for B3F's shutters; the Murkrow's "The boss is back!" for B2F's), HeartGold's not being ours
+  to use. The shutters are things of the map (`GalacticDoor` cards) behind our door flags
+  (`FLAG_ROCKET_HIDEOUT_B3F_DOOR_OPEN`, `_B2F_DOOR_OPEN`); B1F's statues are the original's five variables
+  (`VAR_UNK_40AD` to `_40B1`), its grunt battles as HeartGold's two trainers, and its floor traps throw their wild
+  Pokémon once each (`VAR_ROCKET_TRAP_*`), all turned off once the hideout is cleared. Ariana's battle is a tag battle
+  beside Lance (`battle ariana and grunt with "johto_pkmn_trainer_lance_lance"`), and the three Electrode at the
+  generator are `wildbattle`s that may be fled and tried again.
+- **The hideout's music** is `johto/union_cave`: HeartGold's own hideout theme is no song of ours yet.
+- **The Mahogany Gym's ice blocks** (`npcType` `IceBlock`, `FieldMovement.IceBlockRun`): walked or slid into, a block
+  slides away over the ice until a wall, a person, another block or a way out stops it, and is back where it stood when
+  the room is come to again, as a boulder is. HeartGold asks for no field move to push them and neither do we.
+- **The takeover's start**: HeartGold sets `VAR_SCENE_ROCKET_TAKEOVER` as its count of the Storm, Mineral and Glacier
+  Badges reaches three. Here the Leader's script that gives the last of the three sets it; Pryce's does now, and part b
+  gives Chuck's and Jasmine's the same lines, for a game that wins the Glacier Badge before either.
+- **Left out**: Whirlpool's HM, which HeartGold's Lance gives after the hideout: this game's `HM05` is Platinum's
+  Defog, and HeartGold's HM of Whirlpool is no item of its data yet (the importer must give it a name of its own), so
+  the Whirl Islands' lower floors stay shut with it; the Rage Candy seller at Mahogany's east exit and the
+  saleswoman (the Rage Candy Bar isn't in the data either); Wesley, the fishing guru's record and TM10 at the lake.

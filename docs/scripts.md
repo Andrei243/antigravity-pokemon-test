@@ -129,7 +129,9 @@ Jubilife's, and nobody of another area is found. Someone a flag has taken off th
 | `say "..." ["..."]` | Lines in the text box, under the current speaker's name. Lines one after another are one talk: the box stays open between them. |
 | `text "..."` | The same with no name on the box: the game's own voice. |
 | `sayown` | The lines the script was started with: a person's `dialog`, a signboard's text. |
-| `broadcast` | A television's programme (plan 08 · P8; `Story/Broadcasts.cs`), said as one talk under the current speaker: one of the programmes on (the time check always; the Pokédex Report with a Pokédex; the trainer survey with a Pokémon; the Lottery Corner's number in Sinnoh; the Hall of Fame's news once a team has entered it), drawn on the script's die (`random`'s), its lines made of what is true of the game (`IScriptHost.Broadcast`, `BroadcastFacts`) in `ui.json`'s words (`broadcast.*`). Nothing is set. |
+| `broadcast` | A television's programme (plan 08 · P8; `Story/Broadcasts.cs`), said as one talk under the current speaker: one of the programmes on (the time check always; the Pokédex Report with a Pokédex; the trainer survey with a Pokémon; the Lottery Corner's number in Sinnoh; the Hall of Fame's news once a team has entered it), drawn on the script's die (`random`'s), its lines made of what is true of the game (`IScriptHost.Broadcast`, `BroadcastFacts`) in `ui.json`'s words (`broadcast.*`). Nothing is set. Plan 08 · P9's interview (Jubilife Street Talk: the answer given to Jubilife City's reporters, `StoryState.InterviewPhrase`) is among the programmes once an interview has been given. |
+| `broadcast interview` | The programme named (`Broadcasts.Names`: `clock`, `pokedex`, `survey`, `lottery`, `halloffame`, `interview`), with no die drawn, where it is on; where it isn't, whichever the die picks, as `broadcast` does. A television says the interview this way the first time it is looked at after one was given (`FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR`, which the reporters set and `common.Television` and `PlayerHouse.TV` clear). |
+| `phrase INTERVIEW` | A phrase of two words the player chooses (plan 08 · P9; style guide, "Phrases"): the picker over the field (`PhraseScreen`, `GameState.Phrases`), on the phrase kept under that name, and the script waits. The words are the Pokémon seen, the team's moves, the types and our own lists (`PhraseGroups`); what is chosen is kept in the story under the name (`StoryState.Phrases`, saved as `SaveData.StoryPhrases`), each word by its key (`feelings:happy`). `RESULT` is 1 when a phrase was given and 0 when the picker was backed out of, the phrase left as it was. Never skipped: a scene in a hurry stops before it. `HeadlessScriptHost.PhraseChoice` is the phrase a test gives (null backs out). |
 | `trainerline before` / `after` | The trainer's own line before the battle, or once beaten. `RESULT` is 1 if there was a line to say, 0 if not. |
 | `trainerline before pair` | The same for the second of two trainers who came together (`pair`, below), under their own title. |
 | `speaker "Name"` / `none` / `self` | Who the following `say` lines are said by. A script starts with `self`. |
@@ -148,7 +150,9 @@ R15) `{daycare:0}` and `{daycare:1}` the Pokémon in each place of the Day Care,
 have brought it to, `{grown:N}` the levels it has grown and `{fee:N}` what taking it back costs, `{left}` the Pokémon
 last left there and `{taken}` the one last taken back, and (plan 01 · M11, part c) `{size}` the size of the Pokémon
 last measured with `team size` and `{record}` the record it was held against, in centimetres, and (plan 14 · B14)
-`{chosen}` the Pokémon the last `choosepokemon` chose, by its nickname.
+`{chosen}` the Pokémon the last `choosepokemon` chose, by its nickname, (plan 19 · K9, part c)
+`{species:NAME}` the species whose National Pokédex number the variable holds, and (plan 08 · P9) `{phrase:NAME}` the
+phrase kept under that name (`phrase NAME`), as the chosen language says its words.
 
 ### Where a script goes
 
@@ -160,6 +164,7 @@ last measured with `team size` and `{record}` the record it was held against, in
 | `end` | Ends everything, whoever called. |
 | `if [not] <question> <command>` | Carries the command out when the answer is yes. Any one command may follow, most often `goto`. |
 | `scene "Name"`, `endscene` | Mark a scene that may be skipped, from its first line to where it has been played to its end (plan 12 · Q20). "Scenes that may be skipped", below, has both. |
+| `random seen` | A species the Pokédex has seen, drawn on the game's own chance (plan 19 · K9, part c; FireRed's `SampleResortGorgeousMon`): `RESULT` is its National Pokédex number, and 0 where the Pokédex has seen none. A test says which it has seen (`HeadlessScriptHost.PokedexSeen`) and rolls for the draw. |
 | `random 26` | A die of that many sides (one or more), rolled on the game's own chance: `RESULT` is 0 to one less than its sides (the original's `GetRandom`; plan 01 · M11, part a: the flower shop's berry of the day, the Berry Master's, the Old Chateau's ghosts). A test rolls for it (`HeadlessScriptHost.Rolls`, and 0 once they run out). |
 
 What an `if` can ask:
@@ -176,6 +181,7 @@ What an `if` can ask:
 | `item "Potion"`, `item "Coupon 1" >= 3` | The bag holds it (that many). |
 | `party < 6`, `has "Starly"`, `knows "Cut"` | The team's size, a species on it, a move one of them knows. |
 | `has "Geodude" met "Safari Zone"` | A species on the team that was met at that place (plan 20 · J8, part b: the original's `CheckSafariZoneChallengeCompleted`, for Warden Baoba's tests). The place is the name the Pokémon keeps of where it was met (`Pokemon.MetLocation`), which is the area's name as it is shown. |
+| `has var VAR_X` | A species on the team by the National Pokédex number a variable holds (plan 19 · K9, part c: Selphy wishes for a species she has heard of, `random seen`, and then asks whether one has been brought). Nothing is on the team for a variable that holds no species. |
 | `defeated self`, `defeated "trainer_id"` | The trainer has been beaten. |
 | `taken "item_id"` | An item on the ground has been picked up. |
 | `starter "Piplup"` | The species the player took from the briefcase. |
@@ -217,6 +223,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `additem "Potion" [3]` | Into the bag without a word. |
 | `take "Coupon 1" [3]` | Out of the bag: all of them or none. `RESULT` is 1 if they were taken. |
 | `givepokemon "Starly" 4` | Onto the team, or to the PC when the team is full. `RESULT` is 1 or 2. The words and the fanfare are the script's. |
+| `givepokemon "Castform" 25 holding "Mystic Water"` | The same with an item in its hand (plan 21 · H6: the Weather Institute's Castform, as Emerald gives it). |
 | `givebadge coal` | Gives a badge of the region the player is in, by its name in that region's file (plan 18 · W2), with its fanfare. |
 | `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. |
 | `heal` | The whole team. |
@@ -238,6 +245,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `master self [canlose]` | A Master Trainer's battle (plan 14 · B14; `docs/mechanics/rulings.md`, "Master Trainers"): the person fights as the master of the species of the Pokémon the last `choosepokemon "Species"` chose (`master_bidoof`, `Data/master-trainers.json`, its one Pokémon at level 75), one-on-one: the player's side is that Pokémon alone, the team's own, so the EXP, the levels and the hurts it takes stay with it, and nothing may be used from the bag by either side (`BattleTerms.NoBattleItems`). No prize is paid. With nobody chosen, or the one chosen fainted, no battle is fought and `RESULT` is 255. Won, `master_<species>` is beaten for good (`if defeated "master_bidoof"`), which is what a title is; lost under `canlose`, the team is healed and it may be tried again. |
 | `wildbattle "Starly" 2` | A wild Pokémon put in the player's way. `RESULT`: 1 won, 0 lost, 2 fled, 3 caught. Like `battle`, it waits for a Pokémon able to fight. |
 | `wildbattle "Giratina" 47 nofleeing` | One that can't be run from (the story's legendaries). |
+| `wildbattle "Gyarados" 30 shiny` | A shiny one (plan 20 · J11: the Lake of Rage's red Gyarados), made of a shiny personality drawn for the player's trainer number as the original's does; `nofleeing` and `shiny` go in either order. |
 | `wildbattle "Giratina-Origin" 47` | A form's name in place of its species': the Pokémon is met in that form (plan 02 · S12), and one caught keeps it only as the form's own rule lets it (Giratina's by the Griseous Orb, `FormRules.ByHeldItem`). |
 | `defeat "lass_caroline"` | A trainer of Platinum's data counts as beaten without a battle, in this game and every save of it, and whoever carries that trainer on any map stops wanting to battle: a Leader's script does it for the trainers of the Gym once the Badge is won (the original's `SetTrainerFlag`, plan 01 · M9). |
 | `catchinglesson "Bidoof" 2` | The assistant shows how a Pokémon is caught: their own starter at level 5 and twenty Poké Balls, nothing chosen by the player, no critical hit and no miss, and a ball that can't fail. What is caught is the assistant's. `RESULT` is 3. |
@@ -552,6 +560,8 @@ it, each after one command of the original's. Part c (the north and the Battle Z
 | `team nature serious` | `RESULT` is the place of the first of the team, no Egg, of that nature, or 255 with none (`FindPartySlotWithNature`): the inventor of Sunyshore City, who gives a Pokétch app for the sight of one. |
 | `team size "Remoraid"` | The Pokémon `RESULT` names (after `choosepokemon`) is measured against the size record (`CalcSizeContestResult`; `Models/SizeContest.cs`): `RESULT` 0 smaller, 1 the same, 2 larger, and 3 where it isn't that species (an Egg is none, and so is nobody chosen). `{size}` is its size and `{record}` the record's, as that species. The record is the story's `VAR_SIZE_CONTEST_RECORD`, and until one is kept the original's first (33,280). |
 | `team size keep` | The Pokémon last measured is the record from now on (`UpdateSizeContestRecord`). |
+| `team size "Heracross" VAR_HERACROSS_SIZE_RECORD`, `team size keep VAR_HERACROSS_SIZE_RECORD` | The same, against a record of the measurer's own (plan 19 · K9, part c: Kanto's two measurers each keep theirs, FireRed's `VAR_HERACROSS_SIZE_RECORD` and `VAR_MAGIKARP_SIZE_RECORD`). A variable of its own holds nothing until a Pokémon is kept, so the first one shown is larger than the record, as in FireRed. |
+| `team record "Heracross" VAR_HERACROSS_SIZE_RECORD` | `{record}` is what that record comes to as that species, with nothing measured (FireRed's `GetHeracrossSizeRecordInfo`, for the chart on the measurer's wall); `RESULT` is 1 where a record is kept and 0 where none is yet. The variable may be left out for the story's own. |
 | `team deoxys "Deoxys-Speed"` | Every Deoxys of the team, no Egg, takes that forme (`"Deoxys"` is its Normal Forme); `RESULT` is how many changed (plan 06 · R29; `ChangeDeoxysForm`, Veilstone City's four meteorites). |
 | `team holds "Adamant Orb"` | `RESULT` 1 when anyone of the team holds the item, 0 when nobody does; an Egg holds nothing (plan 02 · S15, part c; `CheckPartyHasHeldItem`). Mt. Coronet's sixth floor asks it of the Adamant and the Lustrous Orb beside `if item`, which asks the bag. |
 

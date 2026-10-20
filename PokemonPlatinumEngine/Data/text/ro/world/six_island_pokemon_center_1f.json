@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Smell you later, {player}!"
         ],
         "text": [
-          ""
+          "Pa-pa, {player}!"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "They say there's something hidden on this island. Something old, and precious."
         ],
         "text": [
-          ""
+          "Se spune că pe insula asta e ascuns ceva. Ceva vechi și prețios."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "Some Pokémon evolve when they're traded holding a certain item. Curious, isn't it?"
         ],
         "text": [
-          ""
+          "Unii Pokémoni evoluează când sunt schimbați ținând un anumit obiect. Curios, nu?"
         ]
       }
     }

@@ -1,8 +1,11 @@
 {
-  // The Mahogany Gym's second room (plan 20 · J10): two trainers by their own records
+  // The Mahogany Gym's second room (plan 20 · J10): two trainers by their own records, and since plan 20 · J11 its two
+  // blocks of ice
   "area": "mahogany_gym_room_2",
   "bgmTrack": "johto/gym",
   "people": {
+    "everywhere_ice": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
+    "everywhere_ice_2": { "name": "Block of ice", "npcType": "IceBlock", "still": true, "dialog": [ "A big block of ice. Pushed, it would slide across the floor until something stopped it." ] },
     "everywhere_skierw": {
       "name": "Diana",
       "trainer": {

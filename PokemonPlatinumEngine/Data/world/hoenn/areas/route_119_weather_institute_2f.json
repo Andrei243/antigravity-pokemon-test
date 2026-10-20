@@ -1,0 +1,32 @@
+{
+  "key": "route_119_weather_institute_2f",
+  "index": 515,
+  "name": "Route 119",
+  "matrix": 458,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_RUSTBORO",
+  "nightMusic": "MUS_RUSTBORO",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 17, "z": 1, "to": "route_119_weather_institute_1f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "weather_institute_2f_grunt_1", "looks": "aqua_member_m", "movement": "look_east", "x": 15, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "hiddenBy": "FLAG_HIDE_ROUTE_119_TEAM_AQUA", "script": "TRAINER_GRUNT_WEATHER_INST_2" },
+    { "id": "weather_institute_2f_grunt_2", "looks": "aqua_member_m", "movement": "look_south_and_north", "x": 10, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 2, "hiddenBy": "FLAG_HIDE_ROUTE_119_TEAM_AQUA", "script": "TRAINER_GRUNT_WEATHER_INST_3" },
+    { "id": "weather_institute_2f_shelly", "looks": "aqua_member_f", "movement": "look_east", "x": 4, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 0, "hiddenBy": "FLAG_HIDE_ROUTE_119_TEAM_AQUA", "script": "TRAINER_SHELLY_WEATHER_INSTITUTE" },
+    { "id": "man_4", "looks": "man_4", "movement": "look_east", "x": 0, "z": 6, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS", "script": "" },
+    { "id": "weather_institute_2f_scientist", "looks": "scientist_1", "movement": "look_around", "x": 18, "z": 6, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "Route119_WeatherInstitute_2F_EventScript_WeatherScientist" },
+    { "id": "man_4_2", "looks": "man_4", "movement": "look_east", "x": 1, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS", "script": "" },
+    { "id": "weather_institute_2f_grunt_3", "looks": "aqua_member_m", "movement": "look_west", "x": 16, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M", "script": "" },
+    { "id": "weather_institute_2f_grunt_4", "looks": "aqua_member_f", "movement": "look_west", "x": 19, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_ROUTE_119_TEAM_AQUA", "script": "TRAINER_GRUNT_WEATHER_INST_5" }
+  ],
+  "signs": [],
+  "triggers": []
+}

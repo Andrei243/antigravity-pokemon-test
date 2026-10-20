@@ -453,6 +453,24 @@
       ]
     }
   ],
+  "Winona": [
+    {
+      "en": [
+        "Winona"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}. This is Winona. The wind over Fortree is strong today. My Altaria is soaring above the trees."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "Scott": [
     {
       "en": [
@@ -648,6 +666,114 @@
       ],
       "text": [
         "Maria la telefon! Doduo și cu mine ne-am bătut recordul pe Ruta 117. Două capete chiar sunt mai bune decât unul!"
+      ]
+    }
+  ],
+  "HoennRose": [
+    {
+      "en": [
+        "Rose"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rose here. My Roselia's flowers have opened at last. The whole house smells sweet!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennDalton": [
+    {
+      "en": [
+        "Dalton"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Yo, it's Dalton! I wrote a new song about the river on Route 118. My Whismur hums along!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennJackson": [
+    {
+      "en": [
+        "Jackson"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Jackson speaking. The rain on Route 119 hasn't let up all week. Perfect for training in the tall grass."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennCatherine": [
+    {
+      "en": [
+        "Catherine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hi, it's Catherine! My Gloom loves the rain. I think it's grown a little since we battled."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennRobert": [
+    {
+      "en": [
+        "Robert"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Robert here. My Swablu flew all the way to Fortree and back today. Its wings are getting stronger!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "HoennJeffrey": [
+    {
+      "en": [
+        "Jeffrey"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Jeffrey! I found a Surskit skating on a puddle in the rain. Bugs are the best, aren't they?"
+      ],
+      "text": [
+        ""
       ]
     }
   ]

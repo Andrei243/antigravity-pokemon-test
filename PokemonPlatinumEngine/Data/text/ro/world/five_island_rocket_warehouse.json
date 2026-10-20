@@ -4,7 +4,7 @@
       "Rocket Warehouse"
     ],
     "text": [
-      ""
+      "Depozitul Rocket"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: How did you get in here? You'd better not touch our Pokémon!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Cum ai intrat aici? Mai bine nu atinge Pokémonii noștri!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: Touch them all you like, then..."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Atunci atinge-i cât vrei..."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Team Rocket Grunt: These Pokémon are worth a fortune! We're not letting them go!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Pokémonii ăștia valorează o avere! Nu-i lăsăm să plece!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Team Rocket Grunt: There goes our fortune."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Pa, avere."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Admin"
         ],
         "text": [
-          ""
+          "Admin"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Team Rocket Admin: You came all this way just to meddle? How very tiresome."
         ],
         "text": [
-          ""
+          "Rocket Admin: Ai venit până aici doar ca să te bagi în treaba noastră? Ce chestie obositoare."
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Team Rocket Admin: Tiresome, and strong. Go on, then."
         ],
         "text": [
-          ""
+          "Rocket Admin: Un bucluc, și încă unul serios. Hai, treci mai departe."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Admin"
         ],
         "text": [
-          ""
+          "Admin"
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "Team Rocket Grunt: The password worked? Someone's going to be in big trouble for that!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Parola a funcționat? Cineva va avea mari probleme pentru asta!"
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "Team Rocket Grunt: Someone like me..."
         ],
         "text": [
-          ""
+          "Rocket Grunt: Cineva ca mine..."
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Gideon"
         ],
         "text": [
-          ""
+          "Gideon"
         ]
       }
     }
@@ -139,7 +139,7 @@
         "A report full of graphs and tables. It's about what Pokémon sell for in the far-off regions."
       ],
       "text": [
-        ""
+        "Un raport plin de grafice și tabele. Vorbește despre cât se vând Pokémonii în regiunile îndepărtate."
       ]
     }
   }

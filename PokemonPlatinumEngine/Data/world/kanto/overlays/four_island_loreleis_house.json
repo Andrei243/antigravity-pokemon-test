@@ -1,7 +1,8 @@
 {
-  // Lorelei's house on Four Island (plan 19 · K9, part b): her collection of Pokémon dolls, every one on show (FireRed
-  // shows some by a draw; here all of them stand), and Lorelei herself from the poachers in Icefall Cave until the
-  // Sapphire sends her back to the League (four_island_loreleis_house.txt)
+  // Lorelei's house on Four Island (plan 19 · K9, parts b and c): her collection of Pokémon dolls, of which six
+  // always stand and eight come one by one with the times the team has entered the Hall of Fame (their own flags,
+  // which the room's arrival script sets and clears: FireRed's UpdateLoreleiDollCollection), and Lorelei herself from
+  // the poachers in Icefall Cave until the Sapphire sends her back to the League (four_island_loreleis_house.txt)
   "area": "four_island_loreleis_house",
   "bgmTrack": "kanto/sevii_45",
   "people": {
@@ -12,13 +13,13 @@
     "slowpoke": { "name": "Doll", "npcType": "Pokemon", "species": "Slowpoke", "still": true, "hiddenBy": "", "script": "Doll" },
     "slowbro": { "name": "Doll", "npcType": "Pokemon", "species": "Slowbro", "still": true, "hiddenBy": "", "script": "Doll" },
     "psyduck": { "name": "Doll", "npcType": "Pokemon", "species": "Psyduck", "still": true, "hiddenBy": "", "script": "Doll" },
-    "meowth": { "name": "Doll", "npcType": "Pokemon", "species": "Meowth", "still": true, "hiddenBy": "", "script": "Doll" },
-    "chansey": { "name": "Doll", "npcType": "Pokemon", "species": "Chansey", "still": true, "hiddenBy": "", "script": "Doll" },
-    "jigglypuff": { "name": "Doll", "npcType": "Pokemon", "species": "Jigglypuff", "still": true, "hiddenBy": "", "script": "Doll" },
-    "nidoran_f": { "name": "Doll", "npcType": "Pokemon", "species": "Nidoran♀", "still": true, "hiddenBy": "", "script": "Doll" },
-    "nidoran_m": { "name": "Doll", "npcType": "Pokemon", "species": "Nidoran♂", "still": true, "hiddenBy": "", "script": "Doll" },
-    "pidgeot": { "name": "Doll", "npcType": "Pokemon", "species": "Pidgeot", "still": true, "hiddenBy": "", "script": "Doll" },
-    "fearow": { "name": "Doll", "npcType": "Pokemon", "species": "Fearow", "still": true, "hiddenBy": "", "script": "Doll" },
-    "lapras_doll": { "name": "Doll", "npcType": "Pokemon", "species": "Lapras", "still": true, "hiddenBy": "", "script": "Doll" }
+    "meowth": { "name": "Doll", "npcType": "Pokemon", "species": "Meowth", "still": true, "script": "Doll" },
+    "chansey": { "name": "Doll", "npcType": "Pokemon", "species": "Chansey", "still": true, "script": "Doll" },
+    "jigglypuff": { "name": "Doll", "npcType": "Pokemon", "species": "Jigglypuff", "still": true, "script": "Doll" },
+    "nidoran_f": { "name": "Doll", "npcType": "Pokemon", "species": "Nidoran♀", "still": true, "script": "Doll" },
+    "nidoran_m": { "name": "Doll", "npcType": "Pokemon", "species": "Nidoran♂", "still": true, "script": "Doll" },
+    "pidgeot": { "name": "Doll", "npcType": "Pokemon", "species": "Pidgeot", "still": true, "script": "Doll" },
+    "fearow": { "name": "Doll", "npcType": "Pokemon", "species": "Fearow", "still": true, "script": "Doll" },
+    "lapras_doll": { "name": "Doll", "npcType": "Pokemon", "species": "Lapras", "still": true, "script": "Doll" }
   }
 }

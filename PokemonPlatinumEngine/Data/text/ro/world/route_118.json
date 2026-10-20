@@ -1,0 +1,250 @@
+{
+  "people": {
+    "route118_steven": {
+      "name": {
+        "en": [
+          "Steven"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The river runs fast here. I wonder what it has carried down from the mountains."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman": {
+      "name": {
+        "en": [
+          "Fisherman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_2": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "With Surf, a Pokémon can carry you right across a river like this one. No bridge needed!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Perry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Perry: My Wingull rides the sea breeze all the way up here. Ready to be blown away?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Perry: The breeze changed direction on me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Rose"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Rose: Do you smell that? My flowers are in full bloom, and so is their power!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Rose: Even a wilted flower has its charm, I suppose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman_2": {
+      "name": {
+        "en": [
+          "Wade"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Wade: I've been waiting for a bite all morning. You'll do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Wade: That one got away from me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_2": {
+      "name": {
+        "en": [
+          "Chester"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Chester: My birds have been circling you for a while. Time to swoop!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Chester: Grounded, and by a kid on foot."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisherman_3": {
+      "name": {
+        "en": [
+          "Barny"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Barny: The river's full of strong Pokémon. Let me show you what I've reeled in!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Barny: Back to the riverbank for me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_3": {
+      "name": {
+        "en": [
+          "Dalton"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Guitarist Dalton: Feel the rhythm! My Pokémon battle to the beat of my strings!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Guitarist Dalton: Broke a string on that last chord."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Deandre"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Deandre: I came all the way from Mauville to train here. Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Deandre: I should've stayed in Mauville."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route118_EventScript_RouteSignMauville": {
+      "en": [
+        "Route 118\nWest: Mauville City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route118_EventScript_RouteSign119": {
+      "en": [
+        "Route 118\nNorth: Route 119"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

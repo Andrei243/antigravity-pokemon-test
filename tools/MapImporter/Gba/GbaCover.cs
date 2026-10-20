@@ -328,6 +328,28 @@ public static class GbaCover
                 (0x2C4, 0x2C4, TerrainCover.Path), (0x2D0, 0x2D1, TerrainCover.Path), (0x2D4, 0x2D4, TerrainCover.Path),
                 (0x2DE, 0x2DF, TerrainCover.Path), (0x2FE, 0x303, TerrainCover.Path), (0x31D, 0x31D, TerrainCover.Path),
             },
+            // Plan 21 · H6: Fortree City and Routes 119 and 120, read from their layouts. The plank platforms before the
+            // tree houses' doors (elevation 4, the walkways' height) and the river's bridges, the ladders down from a
+            // platform, the forest floor's earth paths that wander under them, and the great trees, trunks, canopies
+            // and bushes the city stands among. A house's own metatiles and the Weather Institute's are left out: each
+            // is found at its door
+            ["gTileset_Fortree"] = new (int, int, TerrainCover)[]
+            {
+                (0x23B, 0x23F, TerrainCover.Bridge), (0x211, 0x211, TerrainCover.Bridge), (0x213, 0x215, TerrainCover.Bridge),
+                (0x219, 0x219, TerrainCover.Bridge), (0x21B, 0x21D, TerrainCover.Bridge),
+                (0x245, 0x245, TerrainCover.Steps), (0x24D, 0x24D, TerrainCover.Steps),
+                (0x241, 0x241, TerrainCover.Path), (0x24B, 0x24C, TerrainCover.Path), (0x255, 0x255, TerrainCover.Path),
+                (0x258, 0x259, TerrainCover.Path), (0x260, 0x262, TerrainCover.Path), (0x268, 0x26A, TerrainCover.Path),
+                (0x26C, 0x26C, TerrainCover.Path), (0x276, 0x276, TerrainCover.Path), (0x29B, 0x29C, TerrainCover.Path),
+                (0x2CA, 0x2CA, TerrainCover.Path), (0x2D0, 0x2D2, TerrainCover.Path), (0x2D5, 0x2D6, TerrainCover.Path),
+                (0x2E6, 0x2E6, TerrainCover.Path), (0x2F5, 0x2F5, TerrainCover.Path), (0x2FE, 0x2FE, TerrainCover.Path),
+                (0x306, 0x306, TerrainCover.Path),
+                (0x206, 0x207, TerrainCover.Tree), (0x20F, 0x20F, TerrainCover.Tree), (0x222, 0x223, TerrainCover.Tree),
+                (0x22A, 0x22A, TerrainCover.Tree), (0x230, 0x232, TerrainCover.Tree), (0x238, 0x23A, TerrainCover.Tree),
+                (0x240, 0x240, TerrainCover.Tree), (0x242, 0x244, TerrainCover.Tree), (0x246, 0x24A, TerrainCover.Tree),
+                (0x250, 0x253, TerrainCover.Tree), (0x25C, 0x25D, TerrainCover.Tree), (0x263, 0x265, TerrainCover.Tree),
+                (0x26D, 0x26D, TerrainCover.Tree), (0x270, 0x270, TerrainCover.Tree), (0x272, 0x273, TerrainCover.Tree),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

@@ -4,7 +4,7 @@
       "Five Island"
     ],
     "text": [
-      ""
+      "Insula Cinci"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescarul"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "More and more boats have been putting in here lately. Strange folk on them, too, all in black."
         ],
         "text": [
-          ""
+          "Tot mai multe bărci acostează aici în ultima vreme. Și oameni ciudați în ele, toți în negru."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Bug Catcher"
         ],
         "text": [
-          ""
+          "Vânătorul de insecte"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "There's a weird building out in the meadow. Grown-ups in black go in and out of it all day!"
         ],
         "text": [
-          ""
+          "În pajiște e o clădire ciudată. Oameni mari în negru intră și ies din ea toată ziua!"
         ]
       }
     }
@@ -51,7 +51,7 @@
         "Five Island\nWhere the sea wind sings over the meadows"
       ],
       "text": [
-        ""
+        "Insula Cinci\nUnde vântul mării cântă peste pajiști"
       ]
     }
   }

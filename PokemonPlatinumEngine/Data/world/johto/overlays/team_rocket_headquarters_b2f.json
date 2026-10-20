@@ -1,0 +1,74 @@
+{
+  // The Team Rocket Hideout's second basement (plan 20 · J11, part a): HeartGold's floor, our words. Lance waits at the
+  // foot of the stairs to heal the team, a Murkrow that knows the password to the shutters of the middle corridor runs
+  // from floor to floor, Ariana and a grunt stop the player behind them and are battled beside Lance, and the three
+  // Electrode wired into the generator are what keeps the lake's signal going (scripts/team_rocket_headquarters_b2f.txt).
+  // The shutters are things of the map behind a flag of ours, FLAG_ROCKET_HIDEOUT_B2F_DOOR_OPEN. Its three grunts
+  // battle by their own records until Ariana is beaten (FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN)
+  "area": "team_rocket_headquarters_b2f",
+  "bgmTrack": "johto/union_cave",
+  "read": { "D35R0103_010+1": "Generator" },
+  "triggers": [
+    { "trigger": 0, "script": "Ariana" },
+    { "trigger": 1, "script": "LanceStops" },
+    { "trigger": 2, "script": "LanceStops" },
+    { "trigger": 3, "script": "Password" },
+    { "trigger": 4, "script": "Password" },
+    { "trigger": 5, "script": "MurkrowOne" },
+    { "trigger": 6, "script": "MurkrowTwo" }
+  ],
+  "people": {
+    "d35r0103_wataru": { "name": "Lance", "script": "Lance", "still": true },
+    "d35r0103_tsure_poke_static_dragonite": { "name": "Dragonite", "npcType": "Pokemon", "species": "Dragonite", "script": "Dragonite", "still": true },
+    "d35r0103_rocketm": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: You came all the way down here? Then you're not leaving!",
+        "dialogueAfter": "Grunt: Our big plans, wrecked by a kid with a backpack..."
+      }
+    },
+    "d35r0103_rocketm_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Who's this? Nobody told me about a kid on this floor!",
+        "dialogueAfter": "Grunt: I'll be hearing about this from the boss..."
+      }
+    },
+    "d35r0103_rocketm_3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: This corridor's off limits. Turn round, or I'll make you!",
+        "dialogueAfter": "Grunt: Off limits means nothing to you, does it?"
+      }
+    },
+    "d35r0103_babyboy1_9": { "name": "Shutter", "npcType": "GalacticDoor", "hiddenBy": "FLAG_ROCKET_HIDEOUT_B2F_DOOR_OPEN", "script": "Door", "still": true },
+    "d35r0103_babyboy1_9_2": { "name": "Shutter", "npcType": "GalacticDoor", "hiddenBy": "FLAG_ROCKET_HIDEOUT_B2F_DOOR_OPEN", "script": "Door", "still": true },
+    "d35r0103_rkanbuw": {
+      "name": "Ariana",
+      "still": true,
+      "trainer": {
+        "id": "johto_executive_ariana_ariana_2",
+        "dialogueBefore": "Ariana: Two against two. Let's see how long that lasts.",
+        "dialogueAfter": "Ariana: Impossible..."
+      }
+    },
+    "d35r0103_rocketm_4": {
+      "name": "Grunt",
+      "still": true,
+      "trainer": {
+        "id": "johto_team_rocket_grunt_25",
+        "dialogueBefore": "Grunt: I've got your back, Ariana!",
+        "dialogueAfter": "Grunt: Sorry, Ariana..."
+      }
+    },
+    "d35r0103_tsure_poke_static_electrode": { "name": "Electrode", "npcType": "Pokemon", "species": "Electrode", "script": "Electrode1", "still": true },
+    "d35r0103_tsure_poke_static_electrode_2": { "name": "Electrode", "npcType": "Pokemon", "species": "Electrode", "script": "Electrode2", "still": true },
+    "d35r0103_tsure_poke_static_electrode_3": { "name": "Electrode", "npcType": "Pokemon", "species": "Electrode", "script": "Electrode3", "still": true },
+    "d35r0103_tsure_poke_static_electrode_4": { "name": "Electrode", "npcType": "Pokemon", "species": "Electrode", "still": true, "dialog": [ "An Electrode is wired into the machine. It's humming with power." ] },
+    "d35r0103_tsure_poke_static_electrode_5": { "name": "Electrode", "npcType": "Pokemon", "species": "Electrode", "still": true, "dialog": [ "An Electrode is wired into the machine. It's humming with power." ] },
+    "d35r0103_tsure_poke_static_electrode_6": { "name": "Electrode", "npcType": "Pokemon", "species": "Electrode", "still": true, "dialog": [ "An Electrode is wired into the machine. It's humming with power." ] },
+    "d35r0103_tsure_poke_static_murkrow": { "name": "Murkrow", "npcType": "Pokemon", "species": "Murkrow", "still": true, "dialog": [ "Murkrow is muttering something to itself." ] },
+    "d35r0103_tsure_poke_static_murkrow_2": { "name": "Murkrow", "npcType": "Pokemon", "species": "Murkrow", "still": true, "dialog": [ "Murkrow is muttering something to itself." ] },
+    "d35r0103_tsure_poke_static_murkrow_3": { "name": "Murkrow", "npcType": "Pokemon", "species": "Murkrow", "script": "Password", "still": true }
+  }
+}

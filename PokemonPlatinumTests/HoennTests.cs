@@ -260,4 +260,82 @@ public class HoennTests
         foreach (var (_, ranges) in MapImporter.Gba.GbaCover.HoennRanges)
             foreach (var (from, to, _) in ranges) Assert.True(from <= to && to < 0x400);
     }
+
+    // ------------------------------------------------------------------ plan 21 · H6: Route 118 to Fortree City
+
+    [Fact]
+    public void FortreeCityIsOpenWithItsFlySpotItsTreetopsAndItsRooms()
+    {
+        foreach (string key in new[] { "route_118", "route_119", "fortree_city", "route_120", "fortree_city_gym", "route_119_weather_institute_1f", "route_119_weather_institute_2f" })
+            Assert.Contains(key, Hoenn.Index.Areas);
+        var fortree = SpawnLocations.Of(RegionDatabase.Get(RegionDatabase.Hoenn)!).Single(s => s.Area == "fortree_city");
+        Assert.Equal("FortreeCity_PokemonCenter_1F", fortree.Room);
+        Assert.True(Overworld.IsWalkable(fortree.X, fortree.Y), $"nobody can land at {fortree.X},{fortree.Y}");
+        Assert.Equal(Architecture.Treetop, Overworld.ArchitectureAt(335, 10));
+        Assert.Equal("hoenn/fortree", Overworld.BgmTrackAt(335, 10));
+        Assert.Single(BuiltMaps.Value["FortreeCity_PokemonCenter_1F"].Everyone, n => n.Script == "Nurse");
+        // Fly over Hoenn: the Town Map has a place for Fortree on its own cell, and one for every spawn on the overworld
+        var townMap = RegionMap.Of(RegionDatabase.Hoenn)!;
+        Assert.Contains(townMap.FlySpots, f => f.Spawn == 7 && f.Cells.Contains((10, 0)));
+        foreach (var spawn in SpawnLocations.Of(RegionDatabase.Get(RegionDatabase.Hoenn)!).Where(s => s.Id != 0))
+            Assert.Contains(townMap.FlySpots, f => f.Spawn == spawn.Id);
+        Assert.IsType<FortreeGates>(BuiltMaps.Value["FortreeCity_Gym"].Puzzle);
+        // The plank walks between the tree houses are bridges, the forest floor under them earth, the trunks trees
+        var emerald = MapImporter.Gba.GbaGame.Emerald;
+        Assert.Equal(TerrainCover.Bridge, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Fortree", 0x23B, emerald));
+        Assert.Equal(TerrainCover.Path, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Fortree", 0x241, emerald));
+        Assert.Equal(TerrainCover.Tree, MapImporter.Gba.GbaCover.Of(TileBehavior.None, null, "gTileset_Fortree", 0x206, emerald));
+    }
+
+    [Fact]
+    public void RoutesOneNineteenAndOneTwentyHaveTheirWeatherAndTheirSongs()
+    {
+        // Emerald sets the weather by script as the player crosses its rows: here each stretch is a zone of the area
+        Assert.True(Weathers.IsRain(Overworld.WeatherAt(300, 60)), "Route 119's middle should be under rain");
+        Assert.Equal(FieldWeather.Clear, Overworld.WeatherAt(270, 148));
+        Assert.True(Weathers.IsRain(Overworld.WeatherAt(380, 30)), "Route 120's north should be under rain");
+        Assert.Equal(FieldWeather.Cloudy, Overworld.WeatherAt(380, 80));
+        Assert.Equal("hoenn/route118", Overworld.BgmTrackAt(270, 148));
+        Assert.Equal("hoenn/route119", Overworld.BgmTrackAt(300, 60));
+        Assert.Equal("hoenn/route120", Overworld.BgmTrackAt(380, 30));
+    }
+
+    [Fact]
+    public void AKecleonNobodyCanSeeStandsInTheWayOnFortreesBridge()
+    {
+        var kecleon = Assert.Single(Overworld.Everyone, n => n.Key == "kecleon" && n.GridX == 345 && n.GridY == 8);
+        Assert.True(kecleon.IsUnseen);
+        Assert.True(kecleon.IsThing);
+        Assert.Equal("FLAG_HIDE_FORTREE_CITY_KECLEON", kecleon.HiddenBy);
+        // And the one on Route 120's bridge, beside Steven
+        var bridge = Assert.Single(Overworld.Everyone, n => n.Key == "bridge_kecleon");
+        Assert.True(bridge.IsUnseen);
+        Assert.Contains(Overworld.Everyone, n => n.Key == "route120_steven");
+    }
+
+    [Fact]
+    public void TheFortreeGymsGatesTurnWhenPushedAndHoldAgainstAWall()
+    {
+        var gym = BuiltMaps.Value["FortreeCity_Gym"];
+        var gates = new FortreeGates();
+        int count = FortreeGates.Layout.Length;
+        var start = Enumerable.Range(0, count).Select(gates.TurnOf).ToArray();
+        Assert.Equal(FortreeGates.Layout.Select(g => g.Start), start);
+        int turned = 0, held = 0;
+        foreach (var gate in FortreeGates.Layout)
+            for (int y = gate.Y - 2; y <= gate.Y + 1; y++)
+                for (int x = gate.X - 2; x <= gate.X + 1; x++)
+                    foreach (var dir in new[] { Direction.Up, Direction.Down, Direction.Left, Direction.Right })
+                    {
+                        var probe = new FortreeGates();
+                        if (probe.Bars(gym, x, y, dir)) { held++; continue; }
+                        probe.Crossed(gym, x, y, dir);
+                        if (Enumerable.Range(0, count).Any(i => probe.TurnOf(i) != start[i])) turned++;
+                    }
+        Assert.True(turned > 0, "no step pushes a gate round");
+        Assert.True(held > 0, "no gate ever holds against a wall");
+        // Coming in again lays every gate out afresh
+        gates.Reset();
+        Assert.Equal(start, Enumerable.Range(0, count).Select(gates.TurnOf));
+    }
 }

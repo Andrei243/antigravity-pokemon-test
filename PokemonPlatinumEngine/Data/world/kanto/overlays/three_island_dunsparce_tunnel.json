@@ -1,11 +1,17 @@
 {
-  // Dunsparce Tunnel (plan 19 · K9, part a): FireRed's map, our words. A prospector's tunnel under Three Island's
-  // port. FireRed digs it through to the east once the National Pokédex is had; the tunnel's dug-out half is part b's,
-  // so its east end stays shut (three_island_port.json) and the prospector only talks of it
+  // Dunsparce Tunnel (plan 19 · K9, parts a and c): FireRed's map, our words. A prospector's tunnel under Three
+  // Island's port. Once the National Pokédex is had his dig breaks through to the port's east steps
+  // (FLAG_THREE_ISLAND_TUNNEL_DUG_OUT, set by this area's OnEnter: FireRed's ON_TRANSITION, which lays the dug-out
+  // layout there), which swaps the chunk (world.json) and opens the east way. Until then the prospector stands at the
+  // tunnel's end by the wall, as FireRed's setobjectxyperm puts him
   "area": "three_island_dunsparce_tunnel",
   "name": "Dunsparce Tunnel",
   "bgmTrack": "kanto/sevii_cave",
+  "switches": [ { "warp": 1, "from": "FLAG_THREE_ISLAND_TUNNEL_DUG_OUT" } ],
   "people": {
-    "prospector": { "name": "Prospector", "script": "Prospector", "still": true }
-  }
+    "prospector": { "name": "Prospector", "script": "Prospector", "still": true, "shownBy": "FLAG_THREE_ISLAND_TUNNEL_DUG_OUT" }
+  },
+  "npcs": [
+    { "id": "prospector_digging", "name": "Prospector", "npcType": "Gentleman", "x": 6, "y": 3, "facing": "Right", "script": "Prospector", "hiddenBy": "FLAG_THREE_ISLAND_TUNNEL_DUG_OUT" }
+  ]
 }

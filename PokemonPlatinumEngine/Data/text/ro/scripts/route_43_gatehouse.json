@@ -1,0 +1,96 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hold it right there, kid. This here's a toll gate. It's ¥1,000 to pass."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What's that? You haven't got that much? Fine. We'll take whatever you've got, then."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you kindly! Off you go."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you kindly! Pleasure doing business."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rocket": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've paid. Now beat it before we change our minds about the price."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Guard": [
+    {
+      "en": [
+        "Guard"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those men locked me in the back room and charged everyone who came through. Thanks for running them off!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here. They left this behind. I'd rather it went to someone who'll put it to good use."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM36 is Sludge Bomb. It's a strong Poison move, and it may poison the target too."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

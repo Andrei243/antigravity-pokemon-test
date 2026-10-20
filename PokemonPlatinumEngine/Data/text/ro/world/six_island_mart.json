@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The ruins in the valley are older than anyone knows. Some say they're older than the islands."
         ],
         "text": [
-          ""
+          "Ruinele din vale sunt mai vechi decât știe cineva. Unii spun că sunt mai vechi decât insulele."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Picnicker"
         ],
         "text": [
-          ""
+          "Excursionistă"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Why not buy some Mail and write home? Your family would love a letter from the islands."
         ],
         "text": [
-          ""
+          "De ce nu cumperi niște Mail și nu scrii acasă? Familiei tale i-ar plăcea o scrisoare de pe insule."
         ]
       }
     }

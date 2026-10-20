@@ -332,3 +332,44 @@ script Grunt
   speaker "Galactic Grunt"
   say "Beat it, kid! This is Team Galactic business!"
   end
+
+
+# Jubilife TV's reporter and her cameraman (plan 08 · P9): people of our own beside the station's door, after
+# Platinum's interviews, where a reporter asked the player a question and took an answer made of the easy chat's
+# words. Once a day she asks about life with Pokémon and takes two words for an answer (phrase INTERVIEW: the picker
+# over the field, on the answer given last time). The answer is kept in the story and goes on the air: the next
+# television the player looks at shows it first (FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR; common.Television and
+# PlayerHouse.TV), and it stays among the programmes after. FLAG_DAILY_JUBILIFE_INTERVIEW is the day's interview given.
+script Interview
+  face self player
+  speaker self
+  if flag FLAG_DAILY_JUBILIFE_INTERVIEW goto Given
+  say "Hi there! I'm a reporter for Jubilife TV, and that's my cameraman. We're asking trainers out on the street."
+  ask "How about it? Will you answer a question for Jubilife Street Talk?"
+  if no goto Refused
+  say "Wonderful! Look into the camera... Here's the question."
+  say "What is life with Pokémon like for you? Tell us in just two words!"
+  phrase INTERVIEW
+  speaker self
+  if result == 0 goto Shy
+  say "\"{phrase:INTERVIEW}\"... I love it! Short, and straight from the heart."
+  say "It will be on the air soon. Turn on any TV and you might just see yourself!"
+  setflag FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR
+  setflag FLAG_DAILY_JUBILIFE_INTERVIEW
+  end
+label Shy
+  say "Lost for words? It happens to everyone once the camera is rolling."
+  say "We're out here every day. Come back when something comes to mind!"
+  end
+label Refused
+  say "That's all right. We're out here every day, if you change your mind!"
+  end
+label Given
+  say "Thanks again for today's interview! Keep an eye on the TV. You never know when you'll be on."
+  end
+
+
+script Cameraman
+  speaker self
+  say "Don't look at me, look at the reporter! I'm only the one holding the camera."
+  end

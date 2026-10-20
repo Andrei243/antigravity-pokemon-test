@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Lass"
         ],
         "text": [
-          ""
+          "Domnișoara"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Pokémon have personalities all their own, just like people. Mine is a real show-off."
         ],
         "text": [
-          ""
+          "Pokémonii au personalități ale lor, ca oamenii. Al meu e un adevărat lăudăros."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescarul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "If you want to fish, the water round Seven Island is as good as it gets."
         ],
         "text": [
-          ""
+          "Dacă vrei să pescuiești, apa din jurul Insulei Șapte e cea mai bună."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Rope, lamp, snacks... My preparations are complete. Next stop, the Tanoby Ruins!"
         ],
         "text": [
-          ""
+          "Frânghie, lampă, gustări... Pregătirile mele sunt gata. Următoarea oprire, Ruinele Tanoby!"
         ]
       }
     }

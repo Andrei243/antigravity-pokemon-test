@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Icefall Cave is home to ice Pokémon you won't find anywhere in Kanto. Bring plenty of Poké Balls."
         ],
         "text": [
-          ""
+          "În Peștera Icefall trăiesc Pokémoni de gheață pe care nu-i găsești nicăieri în Kanto. Adu o grămadă de Poké Ball."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "The Day-Care couple once found an Egg in their yard. Nobody knows where it came from!"
         ],
         "text": [
-          ""
+          "Cuplul de la Pensiune a găsit odată un Ou în curte. Nimeni nu știe de unde a venit!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm waiting for the new Pokémon Journal. The boat with it hasn't come in yet."
         ],
         "text": [
-          ""
+          "Aștept noul Jurnal Pokémon. Barca cu el n-a acostat încă."
         ]
       }
     }
@@ -71,7 +71,7 @@
         "A copy of the Pokémon Journal, open at a page about Lorelei of the Elite Four and her quiet childhood on Four Island."
       ],
       "text": [
-        ""
+        "Un exemplar din Jurnalul Pokémon, deschis la o pagină despre Lorelei de la Elita celor Patru și copilăria ei liniștită pe Insula Patru."
       ]
     }
   }

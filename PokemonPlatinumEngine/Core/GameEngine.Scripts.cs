@@ -42,7 +42,7 @@ public partial class GameEngine
     }
 
     // Boulders sliding on after a push: which, how long they have left, and which way they go
-    private readonly List<(NPC Boulder, float Left, int Dx, int Dy)> slides = new();
+    private readonly List<(NPC Boulder, float Left, float Length, int Dx, int Dy)> slides = new();
 
     /// <summary>True while a script has the field: the player's keys do nothing.</summary>
     public bool ScriptRunning => flow.Runner != null && flow.Runner.IsRunning;
@@ -221,7 +221,7 @@ public partial class GameEngine
         flow.Fishing = null;
         // A flute's tune lasts only while the player stays where it was played (field_map_change_flags.c)
         flow.EncounterAids.ChangePlace();
-        foreach (var (boulder, _, _, _) in slides) boulder.StepOffsetX = boulder.StepOffsetY = 0f;
+        foreach (var (boulder, _, _, _, _) in slides) boulder.StepOffsetX = boulder.StepOffsetY = 0f;
         slides.Clear();
         flow.Map.ResetObstacles();
         // The Battle Points a script was speaking of stay behind with the room (plan 06 · R18a)
@@ -594,28 +594,35 @@ public partial class GameEngine
         ModernUi.DrawCutIn(VirtualWidth, VirtualHeight, sprite, flow.CutIn.Move, flow.CutIn.Band, flow.CutIn.Slide, flow.CutIn.Label);
     }
 
-    /// <summary>A boulder the player pushed starts sliding on to its new tile (it is there already), with its sound.</summary>
+    /// <summary>
+    /// A boulder the player pushed starts sliding on to its new tile (it is there already), with its sound; a block of
+    /// ice slides over every tile the ice carried it (plan 20 · J11), at the ice's own pace.
+    /// </summary>
     private void SlideBoulders(float dt)
     {
         if (flow.Player.TakePush() is var (pushed, way))
         {
             var (dx, dy) = FieldMovement.Delta(way);
+            int tiles = Math.Max(1, flow.Player.PushedTiles);
+            dx *= tiles;
+            dy *= tiles;
+            float length = pushed.IsIceBlock ? tiles * FieldMovement.IceBlockSecondsATile : FieldMovement.BoulderPushSeconds;
             slides.RemoveAll(s => s.Boulder == pushed);
-            slides.Add((pushed, FieldMovement.BoulderPushSeconds, dx, dy));
+            slides.Add((pushed, length, length, dx, dy));
             pushed.StepOffsetX = -dx;
             pushed.StepOffsetY = -dy;
             AudioManager.PlaySound("boulder");
         }
         for (int i = slides.Count - 1; i >= 0; i--)
         {
-            var (boulder, left, dx, dy) = slides[i];
+            var (boulder, left, length, dx, dy) = slides[i];
             left -= dt;
-            float rest = Math.Max(0f, left / FieldMovement.BoulderPushSeconds);
+            float rest = Math.Max(0f, left / length);
             boulder.StepOffsetX = -dx * rest;
             boulder.StepOffsetY = -dy * rest;
             if (left > 0f)
             {
-                slides[i] = (boulder, left, dx, dy);
+                slides[i] = (boulder, left, length, dx, dy);
                 continue;
             }
             slides.RemoveAt(i);
@@ -1111,6 +1118,10 @@ public partial class GameEngine
                     PokemonSprites.Request(game.flow.AlphPuzzleScreen.Puzzle!.Species);
                     game.flow.State = GameState.AlphPuzzle;
                     break;
+                // A phrase of two words (plan 08 · P9): the picker, on the phrase given last time under the same name
+                case ScriptScreen.Phrase:
+                    game.OpenPhrases(counter ?? PokemonPlatinumEngine.Story.StoryState.InterviewPhrase);
+                    break;
                 // A map on a wall (plan 08 · P8): the Town Map's screen in its wall mode, back to the field when put
                 // away; where the region has no map nothing opens and the script hears 0
                 case ScriptScreen.TownMap:
@@ -1366,6 +1377,13 @@ public partial class GameEngine
 
         // A script's die is rolled on the game's chance, so the harness's runs repeat (plan 01 · M11)
         public int Random(int sides) => Dice.Shared.Next(Math.Max(1, sides));
+
+        // A species the Pokédex has seen, drawn on the same chance (plan 19 · K9, part c: Selphy's wish)
+        public int SpeciesSeenAtRandom()
+        {
+            var seen = game.flow.Pokedex.SeenSpecies.Order().ToList();
+            return seen.Count == 0 ? 0 : seen[Dice.Shared.Next(seen.Count)];
+        }
 
         public int BattleTurns => game.flow.ScriptTurns;
 

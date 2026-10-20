@@ -4,7 +4,7 @@
       "Lost Cave"
     ],
     "text": [
-      ""
+      "Peștera Pierdută"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Lawson"
         ],
         "text": [
-          ""
+          "Lawson"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Ruin Maniac Lawson: I've been lost in here for days. A battle will cheer me up!"
         ],
         "text": [
-          ""
+          "Pasionat de ruine Lawson: Sunt pierdut aici de zile întregi. O luptă mă va înveseli!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Ruin Maniac Lawson: Well, now I'm lost and beaten."
         ],
         "text": [
-          ""
+          "Pasionat de ruine Lawson: Ei bine, acum sunt pierdut și învins."
         ]
       }
     }

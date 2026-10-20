@@ -5,7 +5,7 @@
         "Cooltrainer"
       ],
       "text": [
-        ""
+        "Antrenor As"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "A battle can turn on a single dance. Shall I teach one of your Pokémon Swords Dance?"
       ],
       "text": [
-        ""
+        "O luptă se poate decide dintr-un singur dans. Să-l învăț pe unul dintre Pokémonii tăi mișcarea Dansul Săbiilor?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Good. Which Pokémon is to learn it?"
       ],
       "text": [
-        ""
+        "Bine. Care Pokémon să o învețe?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{wearer} forgot {forgotten}. And..."
       ],
       "text": [
-        ""
+        "{wearer} a uitat {forgotten}. Și..."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{wearer} learned {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} a învățat {thing}!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Swords Dance sharpens a Pokémon's Attack a great deal. Dance first, then strike!"
       ],
       "text": [
-        ""
+        "Dansul Săbiilor ascute mult Atacul unui Pokémon. Dansează mai întâi, apoi lovește!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Come back if you want to learn. The dance will wait."
       ],
       "text": [
-        ""
+        "Revino dacă vrei să înveți. Dansul va aștepta."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "An Egg can't dance! Hatch it first."
       ],
       "text": [
-        ""
+        "Un Ou nu poate dansa! Lasă-l mai întâi să eclozeze."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "That one can't learn Swords Dance, I'm afraid."
       ],
       "text": [
-        ""
+        "Ăsta nu poate învăța Dansul Săbiilor, mă tem."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "That one already knows {thing}!"
       ],
       "text": [
-        ""
+        "Ăsta știe deja {thing}!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "{forgotten} isn't a move that can be given up like that."
       ],
       "text": [
-        ""
+        "{forgotten} nu e o mișcare la care să se poată renunța așa."
       ]
     }
   ]

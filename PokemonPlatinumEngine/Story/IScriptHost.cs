@@ -15,7 +15,7 @@ public enum BattleOutcome { None, Won, Lost, Fled, Caught }
 public sealed record LessonCatcher(string Name, Pokemon Own);
 
 /// <summary>The screens a script can open and wait for.</summary>
-public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap }
+public enum ScriptScreen { Starter, Shop, Pc, Travel, ChoosePokemon, HallOfFame, Wardrobe, ChooseItem, PoffinCooking, BallCapsules, SealShop, ContestPhoto, Ceremony, Credits, AlphPuzzle, TownMap, Phrase }
 
 /// <summary>
 /// What a script needs of the game it runs in. The <see cref="ScriptRunner"/> decides what happens and in what
@@ -494,6 +494,14 @@ public interface IScriptHost
     /// less than <paramref name="sides"/>. The Berry Master's berry of the day, a ghost of the Old Chateau.
     /// </summary>
     int Random(int sides);
+
+    /// <summary>
+    /// A species the Pokédex has seen, drawn on the game's own chance (<c>random seen</c>; plan 19 · K9, part c:
+    /// FireRed's <c>SampleResortGorgeousMon</c>, which Selphy's wish is drawn with): its National Pokédex number, or 0
+    /// where the Pokédex has seen none. The original tries a hundred species at random and then counts down to one it
+    /// has seen; this draws among those seen, which comes to the same spread without the fallback's bias.
+    /// </summary>
+    int SpeciesSeenAtRandom() => 0;
 
     // ------------------------------------------------------------------ the Battle Frontier (plan 06 · R18a)
 

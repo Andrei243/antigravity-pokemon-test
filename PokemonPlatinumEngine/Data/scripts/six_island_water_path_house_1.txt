@@ -1,0 +1,58 @@
+# A house by the Water Path on Six Island (plan 19 · K9, parts b and c). docs/scripts.md describes the language; the
+# lines are our own, on FireRed's beats (data/maps/SixIsland_WaterPath_House1/scripts.inc): a woman who measures any
+# Heracross of the team she is shown and keeps the biggest (Models/SizeContest.cs, which is the original's own
+# arithmetic; her record is VAR_HERACROSS_SIZE_RECORD, nothing until she has measured one). A Heracross bigger than
+# her record earns a Nest Ball, every time, and becomes the record; the first one shown always does, as in FireRed,
+# whose record begins at nothing. Sizes are told in centimetres here (docs/mechanics/rulings.md). The original gives
+# nothing and keeps nothing when the bag is full; the bag here always has room.
+
+
+script Beauty
+  face self player
+  speaker "Beauty"
+  if not has "Heracross" goto Longing
+  say "Oh! Oh my! Is that a Heracross with you?" "I simply must know how big it is. May I measure it? Please?"
+  choosepokemon
+  if result == 255 goto Denied
+  team size "Heracross" VAR_HERACROSS_SIZE_RECORD
+  if result == 3 goto Other
+  if not flag FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1 goto Biggest
+  if result == 0 goto Smaller
+  if result == 1 goto Same
+  goto Biggest
+# SixIsland_WaterPath_House1_EventScript_ShownBigHeracross
+label Biggest
+  say "{size}! A horn to horn length of {size}!" "That is the finest Heracross I have ever been shown." "Here, you must take this. A splendid Pokémon deserves a splendid ball."
+  give "Nest Ball"
+  setflag FLAG_GOT_NEST_BALL_FROM_WATER_PATH_HOUSE_1
+  team size keep VAR_HERACROSS_SIZE_RECORD
+  say "I shall write it on my chart at once. Do come back if you find a bigger one!"
+  end
+# SixIsland_WaterPath_House1_EventScript_LoveItNeedItHeracross
+label Longing
+  say "Heracross are the most marvellous Pokémon! The bigger the horn, the better." "Bring one to my door and I'll measure it for you, on my word."
+  end
+label Same
+  say "{size}... and my chart says {record}." "The very same, to the millimetre! How uncanny."
+  end
+label Smaller
+  say "This one comes to {size}. A fine Heracross, truly." "But the chart says {record}, and the chart does not lie."
+  end
+# SixIsland_WaterPath_House1_EventScript_ThisWontDo
+label Other
+  say "This won't do at all. I measure Heracross and nothing else!"
+  end
+label Denied
+  say "No? Oh, how disappointing. I had my tape ready and all."
+  end
+
+
+# The chart on the wall (SixIsland_WaterPath_House1_EventScript_SizeRecord)
+script Chart
+  team record "Heracross" VAR_HERACROSS_SIZE_RECORD
+  if result == 0 goto Blank
+  say "A chart for writing down Heracross sizes. The biggest so far: {record}."
+  end
+label Blank
+  say "A chart for writing down Heracross sizes. Nothing is written on it yet."
+  end

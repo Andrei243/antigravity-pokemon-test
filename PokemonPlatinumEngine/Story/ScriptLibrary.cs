@@ -280,6 +280,9 @@ public sealed class ScriptLibrary
                     case Op.GivePokemon or Op.CatchingLesson or Op.GiveEgg or Op.Seen when PokemonDatabase.Get(i.Name) == null:
                         Wrong(i, $"there is no species '{i.Name}'");
                         break;
+                    case Op.GivePokemon when i.Other.Length > 0 && ItemDatabase.Get(i.Other) == null:
+                        Wrong(i, $"there is no item '{i.Other}'");
+                        break;
                     case Op.Team when i.Name == "size" && !i.Option && PokemonDatabase.Get(i.Other) == null:
                         Wrong(i, $"there is no species '{i.Other}'");
                         break;
@@ -330,7 +333,8 @@ public sealed class ScriptLibrary
                     case Query.Item when ItemDatabase.Get(c.Name) == null:
                         Wrong(i, $"there is no item '{c.Name}'");
                         break;
-                    case Query.Has or Query.Starter when PokemonDatabase.Get(c.Name) == null:
+                    // "has var VAR_X" names no species of its own (plan 19 · K9, part c)
+                    case Query.Has or Query.Starter when c.Name.Length > 0 && PokemonDatabase.Get(c.Name) == null:
                         Wrong(i, $"there is no species '{c.Name}'");
                         break;
                     case Query.Knows when MoveDatabase.Get(c.Name) == null:

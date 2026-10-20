@@ -5,7 +5,7 @@
         "Scientist"
       ],
       "text": [
-        ""
+        "Cercetătorul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "I've studied this door for days, and I still can't work out how to get inside..."
       ],
       "text": [
-        ""
+        "Studiez ușa asta de zile întregi și tot nu-mi dau seama cum să intru..."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Oh, hello. I found this place all by myself, you know. The dots must mean something, if only I could read them."
       ],
       "text": [
-        ""
+        "A, bună. Am găsit locul ăsta singur, să știi. Punctele trebuie să însemne ceva, dacă le-aș putea citi."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "There's a door in the rock, covered in raised dots. Look at it more closely?"
       ],
       "text": [
-        ""
+        "Pe stâncă e o ușă acoperită cu puncte în relief. Te uiți mai de aproape?"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "The dots spell a single word: CUT."
       ],
       "text": [
-        ""
+        "Punctele alcătuiesc un singur cuvânt: TĂIERE."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Use Cut on the door?"
       ],
       "text": [
-        ""
+        "Folosești Tăiere pe ușă?"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "The stone split down its middle, and the door slid open!"
       ],
       "text": [
-        ""
+        "Piatra s-a despicat pe la mijloc și ușa a alunecat deschisă!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "The door stands open."
       ],
       "text": [
-        ""
+        "Ușa stă deschisă."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "{player} left the door alone."
       ],
       "text": [
-        ""
+        "{player} a lăsat ușa în pace."
       ]
     }
   ]

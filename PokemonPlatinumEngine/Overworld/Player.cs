@@ -111,6 +111,33 @@ public class Player
     /// <summary>True while the player leans into a boulder that is sliding on.</summary>
     public bool IsPushing => pushing > 0f;
 
+    /// <summary>
+    /// How many tiles the last push sends its boulder or block of ice (plan 20 · J11): one for a boulder, as many as
+    /// the ice carries a block (<see cref="FieldMovement.IceBlockRun"/>). The game slides it over them.
+    /// </summary>
+    public int PushedTiles { get; private set; } = 1;
+
+    /// <summary>
+    /// Pushes a block of ice in the way, if it can move (plan 20 · J11): it is on its new tile at once and slides
+    /// there, and the player leans after it as behind a boulder. No field move is asked for: HeartGold's blocks slide
+    /// for anyone. False where the block can't move.
+    /// </summary>
+    private bool PushIceBlock(Map map, Direction dir)
+    {
+        if (Mode != TravelMode.OnFoot) return false;
+        var (dx, dy) = FieldMovement.Delta(dir);
+        if (map.GetNpcAt(GridX + dx, GridY + dy) is not { IsIceBlock: true } block) return false;
+        var (x, y, tiles) = FieldMovement.IceBlockRun(map, block, dir);
+        if (tiles == 0) return false;
+        block.GridX = x;
+        block.GridY = y;
+        pushed = (block, dir);
+        PushedTiles = tiles;
+        pushing = Math.Max(FieldMovement.BoulderPushSeconds, tiles * FieldMovement.IceBlockSecondsATile);
+        Facing = dir;
+        return true;
+    }
+
     // A step on the spot a script asks for (plan 11 · C11, the original's WalkOnSpot): the legs walk where the
     // player stands, as they do behind a boulder that slides on
     private float onSpot;
@@ -599,12 +626,21 @@ public class Player
         var step = FieldMovement.Step(map, GridX, GridY, dir, WalkerOn(map));
         if (step.Moves)
         {
+            // A step that pushes a gate of the Fortree Gym's turns it as it is taken (plan 21 · H6)
+            if (step.Kind == StepKind.Walk && map.Puzzle != null)
+            {
+                var (dx, dy) = FieldMovement.Delta(dir);
+                map.Puzzle.Crossed(map, GridX + dx, GridY + dy, dir);
+            }
             Begin(map, step, dir);
             return;
         }
 
         // At the map's edge a warp underfoot is what happens next, not a thud
         if (step.Obstacle == Obstacle.MapEdge && map.GetWarpAt(GridX, GridY) != null) return;
+
+        // A block of ice in the way slides off over the ice (plan 20 · J11)
+        if (step.Obstacle == Obstacle.Person && PushIceBlock(map, dir)) return;
 
         // With Strength in force a boulder in the way is pushed on, if there is room beyond it (ov5_021DFF1C)
         if (step.Obstacle == Obstacle.Person && PushesBoulders && Mode == TravelMode.OnFoot)
@@ -616,6 +652,7 @@ public class Player
                 boulder.GridX += dx;
                 boulder.GridY += dy;
                 pushed = (boulder, dir);
+                PushedTiles = 1;
                 pushing = FieldMovement.BoulderPushSeconds;
                 return;
             }
@@ -648,6 +685,8 @@ public class Player
                 break;
             default:
                 IsSliding = false;
+                // A slide that ends against a block of ice sends the block on over the ice (plan 20 · J11)
+                if (next.Step.Obstacle == Obstacle.Person) PushIceBlock(map, onward);
                 break;
         }
     }

@@ -1,0 +1,242 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Lance"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, over here. The signal's coming from somewhere on this floor."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The room it comes from is behind a pair of shutters, and they open only to a password. The grunts down here know it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Get it out of them. I'll deal with the rest of their lookouts."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The password? Don't look at me. They only tell it to the ones who guard the doors."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GruntWest": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fine! The first half of the password is... 'Golden'. You won't get the other half, though!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GruntEast": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All right, all right! The other half of the password is... 'Persian'. Happy now?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Door": [
+    {
+      "en": [
+        "A speaker beside the shutter crackles: 'Password?' {player} said both halves the grunts gave."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The shutter slid open!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The shutter is locked tight. A speaker beside it crackles: 'Password?'"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Rival": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...You again. What are you doing in a dump like this?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket. They act tough in a gang, but on their own every one of them is weak."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm going to be strong enough to take them all on alone. Don't get in my way."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Petrel": [
+    {
+      "en": [
+        "Giovanni"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So. You've made it this far. I am Giovanni, leader of Team Rocket, returned at last."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you think you can stand against me? Then show me..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Petrel"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! Fooled you, didn't I? I'm Petrel, Team Rocket's master of disguise. The boss isn't here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But you've seen my face now, so you're not leaving!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Petrel"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Argh! All right, you win. The radio signal? It comes from the generator on the floor above."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But you'll never open the shutters to it. Only the boss's Murkrow knows that password!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! Murkrow, come back! ...Oh, forget it. I'm out of here."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Murkrow": [
+    {
+      "en": [
+        "The Murkrow keeps croaking the same words over and over."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

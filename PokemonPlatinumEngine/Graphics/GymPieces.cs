@@ -46,6 +46,9 @@ internal sealed class GymPieces
     private readonly Dictionary<SunyshoreGears.Shape, Piece> gears = new();
     private readonly Dictionary<(int Sense, bool Half), Piece> gearButtons = new();
 
+    // The Fortree Gym's (plan 21 · H6): a gate's post on its pivot, and a rail of one tile and of two, lying north
+    private Piece? gatePost, gateArm, gateLongArm;
+
     // The League's rooms (plan 01 · M9, part 2d): what stands still (carpets, rails, piers, the machine, the Pokémon
     // Center's gate), a door of the back wall shut and open, the gate that shuts the front wall, a lift's platform,
     // and the lava's frames
@@ -128,6 +131,23 @@ internal sealed class GymPieces
             // The sign of the door that leads on, standing where it was put this time
             if (map.Puzzle is HearthomeDoors { Correct: { } sign } doors && clues.TryGetValue(sign, out var clue))
                 yield return (clue, Matrix4x4.CreateTranslation(doors.Clue.X, 0f, doors.Clue.Y));
+            yield break;
+        }
+        if (map.Puzzle is FortreeGates fortree)
+        {
+            // Each gate on its pivot, the corner of four tiles, its arms lying the ways it has been pushed round to: a
+            // rail is built lying north and turned clockwise as seen from above, a quarter for each way round
+            int i = 0;
+            foreach (var (g, _) in fortree.Gates)
+            {
+                float floor = Relief.At(map, g.X, g.Y);
+                var pivot = Matrix4x4.CreateTranslation(g.X, floor, g.Y);
+                if (gatePost != null) yield return (gatePost, pivot);
+                foreach (var (way, longArm) in fortree.ArmsOf(i))
+                    if ((longArm ? gateLongArm : gateArm) is { } rail)
+                        yield return (rail, Matrix4x4.CreateRotationY(-way * MathF.PI / 2f) * pivot);
+                i++;
+            }
             yield break;
         }
         if (map.Puzzle is SunyshoreGears turning)
@@ -217,6 +237,7 @@ internal sealed class GymPieces
         else if (map.Puzzle is PastoriaWater) BuildPastoria(map);
         else if (map.Puzzle is CanalaveLifts) BuildCanalave(map);
         else if (map.Puzzle is SunyshoreGears turning) BuildSunyshore(map, turning);
+        else if (map.Puzzle is FortreeGates) BuildFortree(map);
         else if (hearthome) BuildHearthome(map);
         else if (snowy) BuildSnowpoint(map);
         return true;
@@ -760,6 +781,41 @@ internal sealed class GymPieces
         snowball = Make(kit);
     }
 
+    // ------------------------------------------------------------------ the Fortree Gym
+
+    /// <summary>A gate's rail in texels: its half thickness, the top of its rail and of the bar under it, and its post's half width.</summary>
+    private const int RailHalf = 2, RailTop = 16, BarTop = 8, PostHalf = 4, PostTop = 20;
+
+    /// <summary>
+    /// The Fortree Gym's rotating gates (style guide, "Gyms"): a turnstile of weathered wood on a post at its pivot, each
+    /// arm two rails between posts a tile apart, built lying north from the post and turned as the gate is. The arms
+    /// lie on the lines between tiles, as the original's do, so whoever walks along one passes beside it.
+    /// </summary>
+    private void BuildFortree(Map map)
+    {
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        var post = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+        post.Block("gate.post", GymArt.GateWood, -PostHalf, PostHalf, -PostHalf, PostHalf, 0, PostTop);
+        KitBuilder Arm(int tiles)
+        {
+            var kit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+            int reach = tiles * GroundBaker.ArtTile;
+            kit.Block("gate.rail", GymArt.GateWood, -RailHalf, RailHalf, -reach, -PostHalf, RailTop - 3, RailTop);
+            kit.Block("gate.bar", GymArt.GateWood, -RailHalf, RailHalf, -reach, -PostHalf, BarTop - 3, BarTop);
+            // A post at the arm's end, and one between where it is two tiles long
+            for (int t = 1; t <= tiles; t++)
+                kit.Block("gate.stile", GymArt.GateWood, -RailHalf - 1, RailHalf + 1, -t * GroundBaker.ArtTile, -t * GroundBaker.ArtTile + 4, 0, RailTop + 1);
+            return kit;
+        }
+        var arm = Arm(1);
+        var longArm = Arm(2);
+        art = Upload(sheet);
+        gatePost = Make(post);
+        gateArm = Make(arm);
+        gateLongArm = Make(longArm);
+    }
+
     // ------------------------------------------------------------------ the Sunyshore Gym
 
     /// <summary>A flat gear's measures in texels: its wheel across, the root of its teeth, its arms' half width and reach, their thickness.</summary>
@@ -1203,6 +1259,7 @@ internal sealed class GymPieces
         Array.Clear(decks);
         platforms.Clear();
         snowball = null;
+        gatePost = gateArm = gateLongArm = null;
         league = false;
         doorShut = doorOpen = gate = liftPlatform = machineBall = machineBallLit = null;
         sockets.Clear();

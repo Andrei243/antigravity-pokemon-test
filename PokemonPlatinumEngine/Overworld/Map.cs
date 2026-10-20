@@ -801,11 +801,11 @@ public class Map
     public void Add(NPC npc)
     {
         NPCs.Add(npc);
-        if (npc.IsObstacle) obstacleHomes[npc] = (npc.GridX, npc.GridY);
+        if (npc.IsObstacle || npc.IsIceBlock) obstacleHomes[npc] = (npc.GridX, npc.GridY);
     }
 
     /// <summary>
-    /// Puts every boulder that was pushed back where it stood, as the original's objects are when their map is
+    /// Puts every boulder (and block of ice) that was pushed back where it stood, as the original's objects are when their map is
     /// loaded again: the game does it when the player comes to another place.
     /// </summary>
     public void ResetObstacles()

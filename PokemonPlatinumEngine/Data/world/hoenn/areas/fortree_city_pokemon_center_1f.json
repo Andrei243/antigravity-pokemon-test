@@ -1,0 +1,30 @@
+{
+  "key": "fortree_city_pokemon_center_1f",
+  "index": 152,
+  "name": "Fortree City",
+  "matrix": 101,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "fortree_city", "toWarp": 0 },
+    { "x": 6, "z": 8, "to": "fortree_city", "toWarp": 0 },
+    { "x": 1, "z": 6, "to": "fortree_city_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "fortree_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_around", "x": 4, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_PokemonCenter_1F_EventScript_Gentleman" },
+    { "id": "man_3", "looks": "man_3", "movement": "look_around", "x": 8, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "FortreeCity_PokemonCenter_1F_EventScript_Man" },
+    { "id": "boy_3", "looks": "boy_3", "movement": "look_south", "x": 2, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FortreeCity_PokemonCenter_1F_EventScript_Boy" }
+  ],
+  "signs": [],
+  "triggers": []
+}

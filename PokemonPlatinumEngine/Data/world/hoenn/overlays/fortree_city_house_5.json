@@ -1,0 +1,10 @@
+{
+  // A house of Fortree City (plan 21 · H6)
+  "area": "fortree_city_house_5",
+  "bgmTrack": "hoenn/fortree",
+  "people": {
+    "pokefan_f": { "name": "Woman", "dialog": [ "My Zigzagoon keeps finding things outside and bringing them home. Our house is full of treasures!" ] },
+    "zigzagoon_2": { "name": "Zigzagoon", "npcType": "Pokemon", "species": "Zigzagoon", "dialog": [ "Zigzagoon: Gu-guu!" ] },
+    "man_1": { "name": "Man", "dialog": [ "Living up in the trees means a lot of climbing. My legs have never been stronger!" ] }
+  }
+}

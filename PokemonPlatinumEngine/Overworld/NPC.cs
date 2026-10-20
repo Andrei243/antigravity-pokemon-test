@@ -294,6 +294,28 @@ public class NPC
     public const string DomeFossilType = "DomeFossil", HelixFossilType = "HelixFossil", OldAmberType = "OldAmber",
         PokedexType = "Pokedex", TownMapType = "TownMap";
 
+    /// <summary>
+    /// Something in the way that nobody sees (plan 21 · H6: Emerald's Kecleon, whose movement is <c>invisible</c>): a
+    /// thing of the map on its tile, in the way like a person and spoken to like one, drawn as nothing at all and
+    /// casting no shadow. The scene that shows what it is lights its tile (<c>effect sparkles</c>), cries and battles
+    /// it, and then hides it by its flag (<c>common.HoennKecleonFound</c>).
+    /// </summary>
+    public const string UnseenType = "Unseen";
+
+    /// <summary>Whether this is something in the way that nobody sees (<see cref="UnseenType"/>).</summary>
+    public bool IsUnseen => NpcType == UnseenType;
+
+    /// <summary>
+    /// A block of ice of the Mahogany Gym (plan 20 · J11; HeartGold's <c>ice</c> objects): a thing of the map, in the
+    /// way like a person, which the player pushes by walking or sliding into it: it slides on over the ice until
+    /// something stops it (<see cref="FieldMovement.IceBlockRun"/>). Its tile is kept, and it is put back there when
+    /// the player next comes in (<see cref="Map.ResetObstacles"/>). Drawn as a card.
+    /// </summary>
+    public const string IceBlockType = "IceBlock";
+
+    /// <summary>A block of ice the player pushes (<see cref="IceBlockType"/>).</summary>
+    public bool IsIceBlock => NpcType == IceBlockType;
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -313,6 +335,7 @@ public class NPC
         OldAmberType => PropType.OldAmber,
         PokedexType => PropType.DeskPokedex,
         TownMapType => PropType.RolledTownMap,
+        IceBlockType => PropType.IceBlock,
         _ => null
     };
 
@@ -354,7 +377,7 @@ public class NPC
     /// A thing rather than a person: an item's ball, an obstacle or a patch of soil. It is drawn as a card, never
     /// as a character, and never turns to face anyone.
     /// </summary>
-    public bool IsThing => IsItemBall || IsObstacle || GymThing != null || IsBerrySoil;
+    public bool IsThing => IsItemBall || IsObstacle || GymThing != null || IsBerrySoil || IsUnseen;
 
     // ---- The story (plan 02 · S1)
 

@@ -242,6 +242,13 @@ public enum PropType
     /// party knows Whirlpool (<see cref="FieldMovement.Step"/>).
     /// </summary>
     Whirlpool,
+    /// <summary>
+    /// A block of ice on the Mahogany Gym's floor (plan 20 · J11: HeartGold's <c>ice</c> objects): a thing of the map
+    /// (<see cref="NPC.IceBlockType"/>), drawn as a card. Walked or slid into, it slides away over the ice until
+    /// something stops it (<see cref="FieldMovement.IceBlockRun"/>), and it is back where it stood the next time the
+    /// player comes in.
+    /// </summary>
+    IceBlock,
 }
 
 /// <summary>A piece of furniture or decoration placed in a room, covering a rectangle of tiles.</summary>

@@ -4,7 +4,7 @@
       "Outcast Island"
     ],
     "text": [
-      ""
+      "Insula Izolaților"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Team Rocket Grunt: Nobody comes out this far! So what are you doing here?"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Nimeni nu ajunge atât de departe! Deci ce cauți aici?"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Team Rocket Grunt: I was sent out here to keep out of the way. Some job!"
         ],
         "text": [
-          ""
+          "Rocket Grunt: Am fost trimis aici ca să nu stau în drum. Frumoasă treabă!"
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Tylor"
         ],
         "text": [
-          ""
+          "Tylor"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Fisherman Tylor: The fish out here have never seen a hook. Neither have my Pokémon seen defeat!"
         ],
         "text": [
-          ""
+          "Pescar Tylor: Peștii de aici n-au văzut niciodată un cârlig. Nici Pokémonii mei n-au văzut înfrângerea!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Fisherman Tylor: Well, now they have."
         ],
         "text": [
-          ""
+          "Pescar Tylor: Ei bine, acum au văzut-o."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Mymo"
         ],
         "text": [
-          ""
+          "Mymo"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Swimmer Mymo: I swam all the way from Six Island! Battle time!"
         ],
         "text": [
-          ""
+          "Înotător Mymo: Am înotat tot drumul de la Insula Șase! E timpul luptei!"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Swimmer Mymo: And now I have to swim all the way back."
         ],
         "text": [
-          ""
+          "Înotător Mymo: Și acum trebuie să înot tot drumul înapoi."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Nicole"
         ],
         "text": [
-          ""
+          "Nicole"
         ]
       },
       "before": {
@@ -100,7 +100,7 @@
           "Swimmer Nicole: The current out here is strong. So am I!"
         ],
         "text": [
-          ""
+          "Înotătoare Nicole: Curentul de aici e puternic. Și eu la fel!"
         ]
       },
       "after": {
@@ -108,7 +108,7 @@
           "Swimmer Nicole: The current wins, and so do you."
         ],
         "text": [
-          ""
+          "Înotătoare Nicole: Curentul câștigă, la fel ca tine."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Ava"
         ],
         "text": [
-          ""
+          "Ava"
         ]
       },
       "before": {
@@ -126,7 +126,7 @@
           "Sis and Bro Ava & Geb: My little brother and I swim together. And we battle together!"
         ],
         "text": [
-          ""
+          "Soră și frate Ava și Geb: Fratele meu mai mic și cu mine înotăm împreună. Și ne luptăm împreună!"
         ]
       },
       "after": {
@@ -134,7 +134,7 @@
           "Sis and Bro Ava & Geb: We'll swim home and train some more."
         ],
         "text": [
-          ""
+          "Soră și frate Ava și Geb: Înotăm acasă și ne mai antrenăm."
         ]
       }
     },
@@ -144,7 +144,7 @@
           "Geb"
         ],
         "text": [
-          ""
+          "Geb"
         ]
       },
       "before": {
@@ -152,7 +152,7 @@
           "Sis and Bro Ava & Geb: My big sister's the best! Together we can't lose!"
         ],
         "text": [
-          ""
+          "Soră și frate Ava și Geb: Sora mea mare e cea mai bună! Împreună nu putem pierde!"
         ]
       },
       "after": {
@@ -160,7 +160,7 @@
           "Sis and Bro Ava & Geb: We lost... but she's still the best!"
         ],
         "text": [
-          ""
+          "Soră și frate Ava și Geb: Am pierdut... dar tot ea e cea mai bună!"
         ]
       }
     }

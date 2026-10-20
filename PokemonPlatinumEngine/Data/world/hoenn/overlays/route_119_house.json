@@ -1,0 +1,14 @@
+{
+  // The house on Route 119 (plan 21 · H6): a woman who looks after a flock of Wingull, sheltering from the rain
+  "area": "route_119_house",
+  "bgmTrack": "hoenn/route119",
+  "people": {
+    "woman_4": { "name": "Woman", "dialog": [ "These Wingull came in out of the rain one day and never left. Now I can't imagine the house without them!" ] },
+    "wingull": { "name": "Wingull", "npcType": "Pokemon", "species": "Wingull", "dialog": [ "Wingull: Pihyoo!" ] },
+    "wingull_2": { "name": "Wingull", "npcType": "Pokemon", "species": "Wingull", "dialog": [ "Wingull: Pihyoo!" ] },
+    "wingull_3": { "name": "Wingull", "npcType": "Pokemon", "species": "Wingull", "dialog": [ "Wingull: Pihyoo!" ] },
+    "wingull_4": { "name": "Wingull", "npcType": "Pokemon", "species": "Wingull", "dialog": [ "Wingull: Pihyoo!" ] },
+    "wingull_5": { "name": "Wingull", "npcType": "Pokemon", "species": "Wingull", "dialog": [ "Wingull: Pihyoo!" ] },
+    "wingull_6": { "name": "Wingull", "npcType": "Pokemon", "species": "Wingull", "dialog": [ "Wingull: Pihyoo!" ] }
+  }
+}

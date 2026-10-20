@@ -1,5 +1,25 @@
 {
   "people": {
+    "r43r0201_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r43r0201_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "r43r0201_counterm": {
       "name": {
         "en": [
@@ -7,14 +27,6 @@
         ],
         "text": [
           "Paznic"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "This gate house is free to pass through, of course. Who'd ever charge a toll on a road?"
-        ],
-        "text": [
-          "Pe aici se trece liber, desigur. Cine ar pune taxă de trecere pe un drum?"
         ]
       }
     }

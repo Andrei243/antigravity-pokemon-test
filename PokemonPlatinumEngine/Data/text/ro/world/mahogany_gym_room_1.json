@@ -1,5 +1,41 @@
 {
   "people": {
+    "t28gym0103_ice": {
+      "name": {
+        "en": [
+          "Block of ice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A big block of ice. Pushed, it would slide across the floor until something stopped it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t28gym0103_ice_2": {
+      "name": {
+        "en": [
+          "Block of ice"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A big block of ice. Pushed, it would slide across the floor until something stopped it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "t28gym0103_sunglasses": {
       "name": {
         "en": [
@@ -12,11 +48,11 @@
       "dialog": {
         "en": [
           "Brr! The floor in here is solid ice. Once you start sliding, you won't stop until you hit something!",
-          "Pryce is away from his Gym for now. His trainers are inside, though, and they love the cold."
+          "See those blocks of ice? Give one a shove and it slides till it hits something. Put them where you want to stop!"
         ],
         "text": [
-          "Brr! Podeaua de aici e numai gheață. Odată ce începi să aluneci, nu te oprești până nu dai de ceva!",
-          "Pryce e plecat din Arena lui deocamdată. Antrenorii lui sunt înăuntru, însă, și iubesc frigul."
+          "",
+          ""
         ]
       }
     }

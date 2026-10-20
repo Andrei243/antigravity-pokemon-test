@@ -1,0 +1,17 @@
+{
+  // The Weather Institute's ground floor on Route 119 (plan 21 · H6): two of Team Aqua's grunts while it is held, the
+  // workers once it is free, the boy whose father works upstairs, and two beds that rest the team
+  // (route_119_weather_institute_1f.txt). Emerald plays Rustboro City's song in the institute, and so does this
+  "area": "route_119_weather_institute_1f",
+  "bgmTrack": "hoenn/rustboro",
+  "people": {
+    "aqua_member_m": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: Nobody gets upstairs! Our admin's busy with the weather nerds!", "dialogueAfter": "Team Aqua Grunt: The admin's going to be furious." } },
+    "aqua_member_f": { "name": "Grunt", "trainer": { "dialogueBefore": "Team Aqua Grunt: Lost, kid? This place is ours now. Get lost properly!", "dialogueAfter": "Team Aqua Grunt: Fine, fine. Go on up, see if I care." } },
+    "man_4": { "name": "Worker", "script": "InstituteWorker2" },
+    "man_4_2": { "name": "Worker", "script": "InstituteWorker1" },
+    "weather_institute_little_boy": { "name": "Boy", "script": "LittleBoy", "still": true }
+  },
+  "read": {
+    "Route119_WeatherInstitute_1F_EventScript_Bed": "Bed"
+  }
+}

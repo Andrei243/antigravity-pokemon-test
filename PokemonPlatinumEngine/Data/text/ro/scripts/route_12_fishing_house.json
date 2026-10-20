@@ -34,18 +34,104 @@
     },
     {
       "en": [
-        "With a Super Rod, you can hook Pokémon that the other rods could only dream of!"
+        "With a Super Rod, you can hook Pokémon that the other rods could only dream of!",
+        "And if you land a whopping great Magikarp, bring it here. I keep the measurements."
       ],
       "text": [
-        "Cu o Superundiță poți prinde Pokémoni la care celelalte undițe doar visează!"
+        "",
+        ""
       ]
     },
     {
       "en": [
-        "Caught anything big with that Super Rod yet?"
+        "Hold it! That's a Magikarp you've got there.",
+        "Let me have the tape on it. I keep a board of the biggest ones landed hereabouts."
       ],
       "text": [
-        "Ai prins ceva mare cu Superundița?"
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Whoa! {size} of Magikarp, nose to tail!",
+        "That's the biggest ever landed round here. Take this, you've earned it."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Up on the board it goes. I'll be waiting for a bigger one!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Caught anything big with that Super Rod yet?",
+        "Land a great fat Magikarp and bring it to me. I'll measure it for you."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Huh. {size}, and the board says {record}.",
+        "The same fish to the millimetre? Now that's angling."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm. {size}. A tidy Magikarp, I'll give you that.",
+        "But the board says {record}, and I don't rub out the board."
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That doesn't look like a Magikarp to me. I only measure Magikarp."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Changed your mind? Fine, fine. The tape will keep."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Board": [
+    {
+      "en": [
+        "A board of the Magikarp landed hereabouts. The biggest so far: {record}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A board of the Magikarp landed hereabouts. Not one is written up yet."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

@@ -11,7 +11,10 @@
   // matrix's chunks (plan 19 · K6, part b)
   "swaps": [
     { "map": "SeafoamIslands_B3F", "flag": "FLAG_STOPPED_SEAFOAM_B3F_CURRENT", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 651 }, { "chunkX": 1, "chunkY": 0, "chunk": 652 } ] },
-    { "map": "SeafoamIslands_B4F", "flag": "FLAG_STOPPED_SEAFOAM_B4F_CURRENT", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 653 }, { "chunkX": 1, "chunkY": 0, "chunk": 654 } ] }
+    { "map": "SeafoamIslands_B4F", "flag": "FLAG_STOPPED_SEAFOAM_B4F_CURRENT", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 653 }, { "chunkX": 1, "chunkY": 0, "chunk": 654 } ] },
+    // Plan 19 · K9, part c: the prospector's tunnel dug through to the port's east steps once the National Pokédex is
+    // had (FireRed's LAYOUT_THREE_ISLAND_DUNSPARCE_TUNNEL_DUG_OUT, laid by its ON_TRANSITION)
+    { "map": "ThreeIsland_DunsparceTunnel", "flag": "FLAG_THREE_ISLAND_TUNNEL_DUG_OUT", "cells": [ { "chunkX": 0, "chunkY": 0, "chunk": 655 } ] }
   ],
   "maps": [
     // The overworld: FireRed's connected maps stitched into one, 416 by 416 tiles, Pallet Town at its south-west

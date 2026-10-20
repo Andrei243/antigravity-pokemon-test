@@ -59,6 +59,8 @@ public static class Lines
             or "daycare" or "left" or "taken" or "wearer" or "rental" or "entrant" or "walker" or "contestant" or "ally" or "chosen" => widestSpecies.Value,
         // A move
         "forgotten" or "allymove" => widestMove.Value,
+        // A phrase of two words (plan 08 · P9), whose widest are a Pokémon's name and a move's
+        "phrase" => widestSpecies.Value + " " + widestMove.Value,
         // A trainer by class and name, or two of them
         "foe" or "struck" => widestTrainer.Value,
         // A number: a variable, an amount of money or of points, a level, a price

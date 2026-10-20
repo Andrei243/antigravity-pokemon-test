@@ -1,0 +1,125 @@
+{
+  "people": {
+    "d35r0102_aji_peru": {
+      "name": {
+        "en": [
+          "Persian statue"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0102_aji_peru_2": {
+      "name": {
+        "en": [
+          "Persian statue"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0102_aji_peru_3": {
+      "name": {
+        "en": [
+          "Persian statue"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0102_aji_peru_4": {
+      "name": {
+        "en": [
+          "Persian statue"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0102_aji_peru_5": {
+      "name": {
+        "en": [
+          "Persian statue"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0102_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Don't go near those statues!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0102_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Who let a kid in here? This is Team Rocket's hideout, and you're not welcome!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: How did a kid get this strong?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d35r0102_assistantm": {
+      "name": {
+        "en": [
+          "Gregg"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Scientist Gregg: Our radio waves make Magikarp evolve in a rage. A marvel of science! Want to see?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Scientist Gregg: My experiments... ruined by a child!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

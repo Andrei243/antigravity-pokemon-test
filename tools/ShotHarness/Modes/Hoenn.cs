@@ -115,11 +115,31 @@ partial class Harness
             ("h86_fossil_maniacs_house", "Route114_FossilManiacsHouse", 4, 6, Direction.Up),
             ("h87_lanettes_house", "Route114_LanettesHouse", 5, 6, Direction.Up),
             ("h88_game_corner", "MauvilleCity_GameCorner", 11, 9, Direction.Up),
+            // Plan 21 · H6, part a: Route 118, Route 119 in its rain with the Weather Institute, Fortree City in the
+            // treetops with its rooms and Winona's Gym of rotating gates, and Route 120's rain and cloud (h100 to h117)
+            ("h100_route118", "Hoenn", 270, 150, Direction.Up),
+            ("h101_route118_steven", "Hoenn", 284, 152, Direction.Up),
+            ("h102_route119_south", "Hoenn", 300, 125, Direction.Up),
+            ("h103_route119_rain", "Hoenn", 300, 60, Direction.Up),
+            ("h104_weather_institute", "Hoenn", 286, 35, Direction.Up),
+            ("h105_institute_1f", "Route119_WeatherInstitute_1F", 9, 11, Direction.Up),
+            ("h106_institute_2f", "Route119_WeatherInstitute_2F", 17, 2, Direction.Down),
+            ("h107_route119_north", "Hoenn", 305, 20, Direction.Up),
+            ("h108_fortree_city", "Hoenn", 335, 10, Direction.Up),
+            ("h109_fortree_west", "Hoenn", 326, 9, Direction.Up),
+            ("h110_fortree_gym", "FortreeCity_Gym", 15, 22, Direction.Up),
+            ("h111_fortree_center", "FortreeCity_PokemonCenter_1F", 7, 7, Direction.Up),
+            ("h112_fortree_mart", "FortreeCity_Mart", 3, 6, Direction.Up),
+            ("h113_fortree_house", "FortreeCity_House1", 3, 4, Direction.Up),
+            ("h114_route119_house", "Route119_House", 3, 7, Direction.Up),
+            ("h115_route120_bridge", "Hoenn", 373, 17, Direction.Up),
+            ("h116_route120_rain", "Hoenn", 380, 40, Direction.Up),
+            ("h117_route120_cloud", "Hoenn", 380, 80, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -135,6 +155,8 @@ partial class Harness
         At("Hoenn", 225, 60, Direction.Up); Frames(2); Shot("h89_desert_night");
         At("Hoenn", 150, 10, Direction.Left); Frames(2); Shot("h90_route113_night");
         At("Hoenn", 90, 12, Direction.Up); Frames(2); Shot("h91_fallarbor_night");
+        At("Hoenn", 335, 10, Direction.Up); Frames(2); Shot("h118_fortree_night");
+        At("Hoenn", 300, 60, Direction.Up); Frames(2); Shot("h119_route119_rain_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

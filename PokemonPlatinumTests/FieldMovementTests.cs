@@ -663,6 +663,35 @@ public class FieldMovementTests
     }
 
     [Fact]
+    public void ABlockOfIceSlidesUntilSomethingStopsIt()
+    {
+        // Plan 20 · J11, part a: the Mahogany Gym's blocks of ice, pushed by walking into them, go as a slider goes
+        var map = Lawn();
+        for (int y = 1; y <= 7; y++)
+            for (int x = 2; x <= 6; x++)
+                map.SetGroundTile(x, y, TileType.Ice);
+        map.SetGroundTile(5, 2, TileType.Rock, isSolid: true);
+        NPC Block(int x, int y)
+        {
+            var block = new NPC { Name = "Block of ice", NpcType = NPC.IceBlockType, GridX = x, GridY = y };
+            map.Add(block);
+            return block;
+        }
+
+        // Across the open sheet and one tile off it onto the lawn, where it stops
+        Assert.Equal((7, 4, 4), FieldMovement.IceBlockRun(map, Block(3, 4), East));
+        // Against the rock: stopped on the tile before it
+        Assert.Equal((4, 2, 1), FieldMovement.IceBlockRun(map, Block(3, 2), East));
+        // With someone right before it, it doesn't move at all
+        map.Add(new NPC { Name = "Skier", GridX = 4, GridY = 6 });
+        Assert.Equal((3, 6, 0), FieldMovement.IceBlockRun(map, Block(3, 6), East));
+        // Another block stops it as well
+        Block(3, 7);
+        Assert.Equal((2, 7, 0), FieldMovement.IceBlockRun(map, Block(2, 7), East));
+        Assert.True(map.NPCs.At(3, 7)!.IsIceBlock);
+    }
+
+    [Fact]
     public void AMovingFloorCarriesItsOwnWay()
     {
         Assert.Equal(East, FieldMovement.Carries(TileBehavior.SlideEast, North));

@@ -1,0 +1,131 @@
+{
+  "people": {
+    "woman_4": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "These Wingull came in out of the rain one day and never left. Now I can't imagine the house without them!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wingull": {
+      "name": {
+        "en": [
+          "Wingull"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wingull: Pihyoo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wingull_2": {
+      "name": {
+        "en": [
+          "Wingull"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wingull: Pihyoo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wingull_3": {
+      "name": {
+        "en": [
+          "Wingull"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wingull: Pihyoo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wingull_4": {
+      "name": {
+        "en": [
+          "Wingull"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wingull: Pihyoo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wingull_5": {
+      "name": {
+        "en": [
+          "Wingull"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wingull: Pihyoo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "wingull_6": {
+      "name": {
+        "en": [
+          "Wingull"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wingull: Pihyoo!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

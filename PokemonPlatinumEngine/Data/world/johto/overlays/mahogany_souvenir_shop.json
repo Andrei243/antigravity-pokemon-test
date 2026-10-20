@@ -1,27 +1,20 @@
 {
-  // Mahogany Town's souvenir shop (plan 20 · J10). Its salesman and the customer stand where HeartGold has them until
-  // plan 20 · J11's scene (the original hides them by a flag nothing sets yet); the stairs behind the salesman and the
-  // floors under the shop are that session's too, and Lance with them
+  // Mahogany Town's souvenir shop (plan 20 · J10, J11, part a). Its salesman stands on the stairs behind the counter
+  // and the customer by the shelves until Team Rocket's executive Ariana is beaten in the hideout below
+  // (FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN). Lance and his Dragonite come in once the player has agreed by the Lake of
+  // Rage (FLAG_HIDE_MAHOGANY_SHOP_LANCE, VAR_UNK_40A8 1): the scene of scripts/mahogany_souvenir_shop.txt finds the
+  // stairs, and the way down is a wall until then (a flag of ours, FLAG_MAHOGANY_SHOP_STAIRS_FOUND: HeartGold slides
+  // its shelves aside, which this room has as part of its wall)
   "area": "mahogany_souvenir_shop",
   "bgmTrack": "johto/mahogany",
+  "switches": [
+    { "warp": 1, "from": "FLAG_MAHOGANY_SHOP_STAIRS_FOUND" }
+  ],
   "people": {
-    "d35r0101_sunglasses": {
-      "name": "Salesman",
-      "hiddenBy": "",
-      "still": true,
-      "dialog": [
-        "Welcome, welcome! Rage Candy Bars, fresh today. Well... nearly fresh.",
-        "Nothing back there but stock. Customers stay this side of the counter!"
-      ]
-    },
-    "d35r0101_gsfighter": {
-      "name": "Man",
-      "hiddenBy": "",
-      "still": true,
-      "dialog": [
-        "I stop in here every time I pass through. Something about this place always feels a little off."
-      ]
-    }
+    "d35r0101_sunglasses": { "name": "Salesman", "script": "Salesman", "still": true },
+    "d35r0101_gsfighter": { "name": "Man", "script": "Customer", "still": true },
+    "d35r0101_wataru": { "name": "Lance", "script": "Lance", "still": true },
+    "d35r0101_tsure_poke_static_dragonite": { "name": "Dragonite", "npcType": "Pokemon", "species": "Dragonite", "still": true, "dialog": [ "Dragonite is glaring at the counter." ] }
   },
   "signs": {
     "D35R0101_009+1": "A poster of the shop's sweets.\n“Rage Candy Bars: the taste of the mountains!”"

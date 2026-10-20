@@ -345,6 +345,9 @@ public static class FieldMovement
         }
 
         if (map.IsSolid(nx, ny)) return No(Obstacle.Solid);
+        // A gate of the Fortree Gym's that can't be pushed round stands in the way like a rail (plan 21 · H6,
+        // CheckForRotatingGatePuzzleCollision, asked after the tile's own collision)
+        if (map.Puzzle?.Bars(map, nx, ny, dir) == true) return No(Obstacle.Rail);
 
         var (height, onDeck) = map.SurfaceAt(nx, ny, walker.Height);
         // A floor a Gym's puzzle lays over the tile (the Pastoria Gym's water) carries whoever it is above the room's
@@ -551,6 +554,34 @@ public static class FieldMovement
         return step.Kind == StepKind.Walk && step.X == boulder.GridX + dx && step.Y == boulder.GridY + dy
             && map.GetWarpAt(step.X, step.Y) == null;
     }
+
+    /// <summary>
+    /// Where a block of ice pushed a way comes to rest (plan 20 · J11; <see cref="NPC.IceBlockType"/>), and how many
+    /// tiles it slides: a tile at a time as a boulder is pushed (<see cref="CanPush"/>: open ground at its own level,
+    /// nobody there, no way out), and on while the tile it has come onto is ice, as a slider goes. Nought tiles where
+    /// the first tile is refused: the block stays and stops whoever ran into it.
+    /// </summary>
+    public static (int X, int Y, int Tiles) IceBlockRun(Map map, NPC block, Direction dir)
+    {
+        var (dx, dy) = Delta(dir);
+        int x = block.GridX, y = block.GridY, tiles = 0;
+        // Never further than the map is across, whatever the ice
+        while (tiles < map.Width + map.Height)
+        {
+            int nx = x + dx, ny = y + dy;
+            var step = Step(map, x, y, dir, new Walker(TravelMode.OnFoot, map.HeightAt(x, y)));
+            if (step.Kind != StepKind.Walk || step.X != nx || step.Y != ny || map.GetWarpAt(nx, ny) != null
+                || map.NPCs.At(nx, ny, block, static (n, pushed) => n != pushed) != null)
+                break;
+            (x, y) = (nx, ny);
+            tiles++;
+            if (map.BehaviourAt(x, y) != TileBehavior.Ice) break;
+        }
+        return (x, y, tiles);
+    }
+
+    /// <summary>The seconds a pushed block of ice takes over each tile of its slide: the ice's own pace, a slider's at nought.</summary>
+    public static float IceBlockSecondsATile => 1f / IceSlide.TilesPerSecond(0);
 
     /// <summary>What a party can do in the field: the moves its Pokémon know that open the way.</summary>
     public static FieldMoves MovesOf(Models.Party party)

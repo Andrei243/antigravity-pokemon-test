@@ -1,0 +1,222 @@
+{
+  "RivalBattle": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! There you are! I heard Team Aqua was causing trouble at the Weather Institute. Did you sort it out?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You did? I knew it. I've been training nonstop since Lavaridge, so let's see whose team grew more!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Beaten again! You really are something, {player}. I think Dad would want you to have this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's Fly. Teach it to a bird Pokémon and it'll carry you to any town you've been to before."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You'll need Fortree's Badge before you can use it outside battle, though. The Gym's just up the road!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm going to keep looking for Pokémon around here. See you, {player}!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ScottComes": [
+    {
+      "en": [
+        "Scott"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! I caught the end of that from up the path. You two pushed each other hard, didn't you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And I hear Team Aqua was chased out of the Weather Institute too. You do get around!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Fortree's Leader, Winona, flies like no one else. I'd love to see how you fare against her. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BridgeAquaGrunt1": [
+    {
+      "en": [
+        "Team Aqua Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Our admin's busy inside. The weather people have something we want, and we're not leaving without it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "BridgeAquaGrunt2": [
+    {
+      "en": [
+        "Team Aqua Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Rain, sun, storms... If we know how the weather works, we can make the sea grow. Now scram!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Jackson": [
+    {
+      "en": [
+        "Jackson"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've got good instincts. Want to swap numbers? Rangers stick together."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Jackson in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good. I'll check in after my patrol."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Understood. Stay safe out there."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Catherine": [
+    {
+      "en": [
+        "Catherine"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're strong! Can we keep in touch? I want to know how you're getting on."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Register Catherine in the PokéNav's Match Call?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thanks! I'll call when my Gloom grows."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Aww, okay. Good luck on the road!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

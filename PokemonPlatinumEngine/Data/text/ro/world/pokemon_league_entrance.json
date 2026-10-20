@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Welcome! Stock up well before you face the Elite Four."
         ],
         "text": [
-          ""
+          "Bine ai venit! Aprovizionează-te bine înainte să înfrunți Elita celor Patru."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznic"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "Beyond this door the Elite Four are waiting. Once you start, you face all four and then the Champion."
         ],
         "text": [
-          ""
+          "Dincolo de ușa asta așteaptă Elita celor Patru. Odată ce începi, îi înfrunți pe toți patru, apoi pe Campion."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "My Abra and I came all this way just to watch the challengers go through that door. What a sight they are!"
         ],
         "text": [
-          ""
+          "Abra al meu și cu mine am venit până aici doar ca să-i privim pe provocatori trecând prin ușa aia. Ce priveliște!"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Abra"
         ],
         "text": [
-          ""
+          "Abra"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Abra is fast asleep, as usual."
         ],
         "text": [
-          ""
+          "Abra doarme dus, ca de obicei."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "I lost to the very first of the Elite Four. They aren't called the best for nothing."
         ],
         "text": [
-          ""
+          "Am pierdut în fața primului din Elita celor Patru. Nu degeaba sunt numiți cei mai buni."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -132,7 +132,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     }
@@ -143,7 +143,7 @@
         "The Pokémon League\nChallengers, see the Nurse before you go through the door."
       ],
       "text": [
-        ""
+        "Liga Pokémon\nProvocatori, treceți pe la Asistentă înainte de ușă."
       ]
     }
   }

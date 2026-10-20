@@ -498,6 +498,8 @@ public static class RegionDatabase
                 "IndigoLeague_PokemonCenter_1F", "IndigoLeague_PokemonCenter_B1F", "IndigoLeague_WillRoom",
                 "IndigoLeague_KogaRoom", "IndigoLeague_BrunoRoom", "IndigoLeague_KarenRoom", "IndigoLeague_LanceRoom",
                 "IndigoLeague_HallOfFame",
+                // Plan 20 · J11, part a: the Team Rocket Hideout under Mahogany's souvenir shop
+                "TeamRocketHQ_B1F", "TeamRocketHQ_B2F", "TeamRocketHQ_B3F",
             }
         },
         new()
@@ -561,6 +563,10 @@ public static class RegionDatabase
                 // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (Emerald's matrix of their underwater
                 // maps), laid tile for tile under the sea it is dived to from
                 "HoennUnderwater",
+                // Plan 21 · H6, part a: Route 119's house and Weather Institute, Fortree City's rooms and Winona's Gym
+                "Route119_House", "Route119_WeatherInstitute_1F", "Route119_WeatherInstitute_2F", "FortreeCity_House1",
+                "FortreeCity_Gym", "FortreeCity_PokemonCenter_1F", "FortreeCity_PokemonCenter_2F", "FortreeCity_Mart",
+                "FortreeCity_House2", "FortreeCity_House3", "FortreeCity_House4", "FortreeCity_House5",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },

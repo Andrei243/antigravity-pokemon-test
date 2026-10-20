@@ -1,0 +1,198 @@
+{
+  "people": {
+    "winona": {
+      "name": {
+        "en": [
+          "Winona"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5": {
+      "name": {
+        "en": [
+          "Jared"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Jared: Behold the elegant flight of my birds! Winona taught me everything!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Jared: Elegant, but not enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "camper": {
+      "name": {
+        "en": [
+          "Flint"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Flint: The gates in here aren't the only thing that'll turn you round. So will I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Flint: I'm the one who got turned round."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "picnicker": {
+      "name": {
+        "en": [
+          "Ashley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Ashley: My three Swablu sing together! Can you handle a chorus?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Ashley: They're singing a sad song now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_2": {
+      "name": {
+        "en": [
+          "Edwardo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Edwardo: The lovers of birds gather here to train under Winona. You'll go no further!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Edwardo: Go on, then. Winona's waiting."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_3": {
+      "name": {
+        "en": [
+          "Humberto"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Humberto: Skarmory's steel wings will cut through you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Humberto: Blunted, those wings."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_5_4": {
+      "name": {
+        "en": [
+          "Darius"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bird Keeper Darius: You've made it this far through the gates? Impressive. But here it ends!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bird Keeper Darius: It didn't end. Go on."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FortreeCity_Gym_EventScript_LeftGymStatue": {
+      "en": [
+        "Fortree City Pokémon Gym\nLeader: Winona"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "FortreeCity_Gym_EventScript_RightGymStatue": {
+      "en": [
+        "Fortree City Pokémon Gym\nLeader: Winona"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

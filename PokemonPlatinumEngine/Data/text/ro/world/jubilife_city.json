@@ -371,6 +371,26 @@
           "Așa prietenul meu primește două cadouri deodată!"
         ]
       }
+    },
+    "tv_reporter": {
+      "name": {
+        "en": [
+          "Reporter"
+        ],
+        "text": [
+          "Reporteră"
+        ]
+      }
+    },
+    "tv_cameraman": {
+      "name": {
+        "en": [
+          "Cameraman"
+        ],
+        "text": [
+          "Cameraman"
+        ]
+      }
     }
   },
   "signs": {
