@@ -111,6 +111,7 @@ public class ScriptTests
           clearflag FLAG_A
           addcontact joey
           puzzle kabuto
+          phrase INTERVIEW
           setvar VAR_A 3
           addvar VAR_A -1
           give "Potion" 2
@@ -393,6 +394,7 @@ public class ScriptTests
           save
           credits
           broadcast
+          broadcast interview
           townmap
           tutor moves "route_212"
           tutor afford

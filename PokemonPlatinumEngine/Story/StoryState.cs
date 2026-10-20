@@ -190,6 +190,45 @@ public sealed class StoryState
         foreach (string key in saved) SeeScene(key);
     }
 
+    // ------------------------------------------------------------------ phrases
+
+    private readonly Dictionary<string, IReadOnlyList<string>> phrases = new(StringComparer.Ordinal);
+
+    /// <summary>The phrase a reporter's question was last answered with (plan 08 · P9): what Jubilife TV's interview reads back.</summary>
+    public const string InterviewPhrase = "INTERVIEW";
+
+    /// <summary>
+    /// The phrases the player has given (plan 08 · P9), by their names (<c>INTERVIEW</c>): two words each, as their
+    /// keys (<see cref="Data.PhraseGroups"/>), so the same in every language. A script's <c>phrase</c> asks for one and
+    /// <c>{phrase:NAME}</c> says it; the save keeps them (<c>SaveData.StoryPhrases</c>).
+    /// </summary>
+    public IReadOnlyDictionary<string, IReadOnlyList<string>> Phrases => phrases;
+
+    /// <summary>A phrase by its name; null when none was given.</summary>
+    public IReadOnlyList<string>? PhraseOf(string name) => phrases.TryGetValue(name, out var words) ? words : null;
+
+    /// <summary>Keeps a phrase under its name, in place of the one before.</summary>
+    public void SetPhrase(string name, IReadOnlyList<string> words)
+    {
+        if (name.Length == 0) return;
+        if (phrases.TryGetValue(name, out var had) && had.SequenceEqual(words)) return;
+        phrases[name] = words.ToList();
+        Revision++;
+    }
+
+    /// <summary>The phrases a save kept (<c>SaveData.StoryPhrases</c>): none in a save from before they were kept.</summary>
+    public void RestorePhrases(IReadOnlyDictionary<string, List<string>>? saved)
+    {
+        phrases.Clear();
+        if (saved == null) return;
+        foreach (var (name, words) in saved)
+            if (name.Length > 0 && words is { Count: > 0 }) phrases[name] = words.ToList();
+    }
+
+    /// <summary>The phrases as a save writes them, by name in order.</summary>
+    public Dictionary<string, List<string>> PhrasesToSave() =>
+        phrases.OrderBy(p => p.Key, StringComparer.Ordinal).ToDictionary(p => p.Key, p => p.Value.ToList());
+
     // ------------------------------------------------------------------ badges
 
     // Each region's badges as the save and the Trainer Card keep them (plan 18 · W2): one bit each, in the order of the
@@ -306,6 +345,7 @@ public sealed class StoryState
         taken.Clear();
         greeted.Clear();
         scenes.Clear();
+        phrases.Clear();
         badges.Clear();
         PlayerStarter = RivalStarter = null;
         Revision++;

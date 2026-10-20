@@ -386,7 +386,13 @@ script Sign
 # made of what is true of the game and drawn on the script's die.
 script Television
   speaker "TV"
+  # An interview given to Jubilife City's reporters is shown first, the first time a television is looked at after it (plan 08 · P9)
+  if flag FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR goto OnAir
   broadcast
+  end
+label OnAir
+  clearflag FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR
+  broadcast interview
   end
 
 script Bookshelf

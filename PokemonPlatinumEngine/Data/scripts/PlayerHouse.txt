@@ -192,6 +192,8 @@ label Parcel
 # in the morning, the Smart Contest by day and at dusk, the Tough Contest at night).
 script TV
   speaker "TV"
+  # An interview given to Jubilife City's reporters is on first, here as on any television (plan 08 · P9)
+  if flag FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR goto OnAir
   if time morning goto Cute
   if time night goto Tough
   if time latenight goto Tough
@@ -205,4 +207,8 @@ label Cute
 label Tough
   say "\"...and that was tonight's Normal Rank Tough Contest! The ribbon goes to a hiker from Oreburgh, whose Pokémon looked fit to carry the stage away.\""
   say "\"That's the Contest Round-up for tonight. See you next time!\""
+  end
+label OnAir
+  clearflag FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR
+  broadcast interview
   end

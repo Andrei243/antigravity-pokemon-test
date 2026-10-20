@@ -732,5 +732,97 @@
         "Șterge-o, puștiule! Asta e treaba Echipei Galactic!"
       ]
     }
+  ],
+  "Interview": [
+    {
+      "en": [
+        "Hi there! I'm a reporter for Jubilife TV, and that's my cameraman. We're asking trainers out on the street."
+      ],
+      "text": [
+        "Bună! Sunt reporteră la Jubilife TV, iar el e cameramanul meu. Le punem întrebări antrenorilor de pe stradă."
+      ]
+    },
+    {
+      "en": [
+        "How about it? Will you answer a question for Jubilife Street Talk?"
+      ],
+      "text": [
+        "Ce zici? Răspunzi la o întrebare pentru Vorba pe Stradă?"
+      ]
+    },
+    {
+      "en": [
+        "Wonderful! Look into the camera... Here's the question."
+      ],
+      "text": [
+        "Minunat! Uită-te în cameră... Iată întrebarea."
+      ]
+    },
+    {
+      "en": [
+        "What is life with Pokémon like for you? Tell us in just two words!"
+      ],
+      "text": [
+        "Cum e viața ta cu Pokémonii? Spune-ne în doar două cuvinte!"
+      ]
+    },
+    {
+      "en": [
+        "\"{phrase:INTERVIEW}\"... I love it! Short, and straight from the heart."
+      ],
+      "text": [
+        "„{phrase:INTERVIEW}”... Îmi place! Scurt și din inimă."
+      ]
+    },
+    {
+      "en": [
+        "It will be on the air soon. Turn on any TV and you might just see yourself!"
+      ],
+      "text": [
+        "În curând intră pe post. Deschide orice televizor și poate te vezi pe tine!"
+      ]
+    },
+    {
+      "en": [
+        "Lost for words? It happens to everyone once the camera is rolling."
+      ],
+      "text": [
+        "Nu-ți găsești cuvintele? I se întâmplă oricui când pornește camera."
+      ]
+    },
+    {
+      "en": [
+        "We're out here every day. Come back when something comes to mind!"
+      ],
+      "text": [
+        "Suntem aici în fiecare zi. Revino când îți vine ceva în minte!"
+      ]
+    },
+    {
+      "en": [
+        "That's all right. We're out here every day, if you change your mind!"
+      ],
+      "text": [
+        "Nicio problemă. Suntem aici în fiecare zi, dacă te răzgândești!"
+      ]
+    },
+    {
+      "en": [
+        "Thanks again for today's interview! Keep an eye on the TV. You never know when you'll be on."
+      ],
+      "text": [
+        "Mulțumim încă o dată pentru interviul de azi! Fii atent la televizor. Nu se știe când apari."
+      ]
+    }
+  ],
+  "Cameraman": [
+    {
+      "en": [
+        "Don't look at me, look at the reporter! I'm only the one holding the camera."
+      ],
+      "text": [
+        "Nu te uita la mine, uită-te la reporteră! Eu doar țin camera."
+      ]
+    }
   ]
 }

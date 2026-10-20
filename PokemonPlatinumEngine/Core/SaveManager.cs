@@ -372,6 +372,12 @@ public class SaveData
     /// </summary>
     public List<string> ScenesSeen { get; set; } = new();
 
+    /// <summary>
+    /// The phrases the player has given (plan 08 · P9; <c>StoryState.Phrases</c>), by name, two words each as their keys
+    /// (<c>feelings:happy</c>). A save from before they were kept has none, and nothing brings it up to date.
+    /// </summary>
+    public Dictionary<string, List<string>> StoryPhrases { get; set; } = new();
+
     /// <summary>The species taken from the professor's briefcase, and the one the rival took; null until then.</summary>
     public string? PlayerStarter { get; set; }
     public string? RivalStarter { get; set; }

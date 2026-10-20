@@ -69,6 +69,9 @@ public class OpeningTests
         /// <summary>Answers for the next script's questions, in order (the first answer, yes, for any left over).</summary>
         public Queue<int> Answers { get; } = new();
 
+        /// <summary>The phrase given when a script asks for one (plan 08 · P9), its words as their keys; null backs out of the picker.</summary>
+        public IReadOnlyList<string>? Phrase { get; set; } = HeadlessScriptHost.DefaultPhrase;
+
         /// <summary>Every script played, in order, each with the host it ran in.</summary>
         public List<(string Script, HeadlessScriptHost Host)> Played { get; } = new();
 
@@ -178,7 +181,8 @@ public class OpeningTests
                 PlayerLook = Look,
                 NationalDex = NationalDex,
                 SaveFails = SaveFails,
-                LeagueVictories = LeagueVictories
+                LeagueVictories = LeagueVictories,
+                PhraseChoice = Phrase
             };
             if (Weekday is { } day) host.Weekday = day;
             if (Time is { } time) host.TimeOfDay = time;
