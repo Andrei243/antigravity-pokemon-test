@@ -38,6 +38,9 @@ public static class FieldScripts
     public const string RockFace = "common.RockFace";
     /// <summary>A whirlpool faced from the water (HeartGold's, plan 20 · J8).</summary>
     public const string Whirlpool = "common.Whirlpool";
+    /// <summary>Dark water under a surfer where the sea floor lies below, and the sea floor under a diver (Emerald's, plan 21 · H5).</summary>
+    public const string Dive = "common.Dive";
+    public const string Surface = "common.Surface";
 
     /// <summary>An Escape Rope used from the bag, and the Cycling Road's gate keepers turning back anyone not riding.</summary>
     public const string EscapeRope = "common.EscapeRope";

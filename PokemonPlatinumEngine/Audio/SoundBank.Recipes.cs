@@ -39,6 +39,7 @@ public static partial class SoundBank
         Add("warp", SoundGroup.Field, "SEQ_SE_DP_TELE2", "A warp panel.");
         Add("exclaim", SoundGroup.Field, null, "The \"!\" over a trainer who has seen the player, or anyone a script surprises.");
         Add("surf", SoundGroup.Field, null, "A Pokémon is ridden out onto the water.");
+        Add("dive", SoundGroup.Field, null, "Dive taken down under the sea, or back up from its floor: a plunge and a stream of bubbles (plan 21 · H5).");
         Add("save", SoundGroup.Field, "SEQ_SE_DP_SAVE", "The game is saved.");
         Add("pc_on", SoundGroup.Field, "SEQ_SE_DP_PC_LOGIN", "A PC is switched on.");
         Add("pc_off", SoundGroup.Field, "SEQ_SE_DP_PC_LOGOFF", "A PC is switched off.");
@@ -287,6 +288,13 @@ public static partial class SoundBank
                 d.Noise(0, 0.25f, Filter.Band, 2500f, 1200f, 0.4f, 1.2f, 0.02f, 2f);
                 d.Thump(0, 0.12f, 160f, 70f, 0.4f, 0f);
                 d.Bubbles(0.1f, 0.4f, 6, 350f, 900f, 0.25f);
+                return Finish(d.S, 0.4f);
+            case "dive":
+                // Under the water: a deep gulp of a plunge, the rush closing over it, and bubbles streaming up after
+                d = new SoundDesign(0.9f, 0xD17Eu);
+                d.Thump(0, 0.2f, 120f, 45f, 0.6f, 0.2f);
+                d.Noise(0, 0.45f, Filter.Low, 1800f, 300f, 0.7f, 0.8f, 0.02f, 1.6f);
+                d.Bubbles(0.12f, 0.75f, 12, 280f, 1100f, 0.3f);
                 return Finish(d.S, 0.4f);
             case "thunder":
                 // A crack that splits into a long, falling roll

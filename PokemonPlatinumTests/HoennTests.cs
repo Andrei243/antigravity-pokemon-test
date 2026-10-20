@@ -15,7 +15,7 @@ public class HoennTests
     private static readonly Lazy<World> LoadedWorld = new(() => World.LoadAll().Single(w => w.Index.Region == "Hoenn"));
     private static readonly Lazy<Dictionary<string, Map>> BuiltMaps = new(() => LoadedWorld.Value.BuildMaps().ToDictionary(m => m.Name));
     private static readonly Lazy<Dictionary<Map, HashSet<(int X, int Y)>>> Walked =
-        new(() => WorldWalk.From(MapNamed, RegionDatabase.Get(RegionDatabase.Hoenn)!.Start!));
+        new(() => WorldWalk.From(MapNamed, WorldWalk.OpenedAhead.Where(s => s.Map == "Hoenn").Prepend(RegionDatabase.Get(RegionDatabase.Hoenn)!.Start!).ToArray()));
 
     private static World Hoenn => LoadedWorld.Value;
     private static Map Overworld => BuiltMaps.Value["Hoenn"];
@@ -108,6 +108,61 @@ public class HoennTests
             Assert.True(walked.Keys.Any(m => m.Name == entry.Name), $"nobody walks into {entry.Name}");
         // A floor of tiles, so a route that opened half way shows
         Assert.True(outside.Count >= 2200, $"only {outside.Count} tiles of Hoenn walked");
+    }
+
+    [Fact]
+    public void TheSeaFloorLiesTileForTileUnderTheSeaItIsDivedTo()
+    {
+        // Plan 21 · H5: Underwater Route 124 under Route 124, the first pair; a dive lands on the same coordinates, so
+        // an offset wrong by a tile would put the player in rock
+        var floor = BuiltMaps.Value["HoennUnderwater"];
+        Assert.True(floor.IsUnderwater);
+        Assert.Contains("route_124", Hoenn.Index.Areas);
+        Assert.Contains("underwater_route_124", Hoenn.Index.Areas);
+        int down = 0, up = 0;
+        for (int y = 0; y < Overworld.Height; y++)
+            for (int x = 0; x < Overworld.Width; x++)
+            {
+                if (Overworld.BehaviourAt(x, y) != TileBehavior.DiveWater || Overworld.DiveAt(x, y) is not { } below) continue;
+                Assert.Equal("HoennUnderwater", below);
+                Assert.True(floor.InBounds(x, y) && !floor.IsSolid(x, y), $"the dark water at {x},{y} dives onto rock");
+                down++;
+            }
+        for (int y = 0; y < floor.Height; y++)
+            for (int x = 0; x < floor.Width; x++)
+            {
+                if (floor.IsSolid(x, y) || !FieldMovement.CanSurface(floor, x, y)) continue;
+                Assert.Equal("Hoenn", floor.EmergeAt(x, y));
+                Assert.True(FieldMovement.SurfacesOnto(Overworld, x, y), $"the sea floor at {x},{y} comes up onto {Overworld.BehaviourAt(x, y)}");
+                up++;
+            }
+        // Route 124's trenches: hundreds of tiles each way (469 of each when it was opened)
+        Assert.True(down >= 400, $"only {down} tiles of dark water dive");
+        Assert.True(up >= 400, $"only {up} tiles of the sea floor come up");
+        // Clamperl, Chinchou and Relicanth in its seaweed, and the seaweed is kelp
+        var area = floor.Areas.Single(a => a.Key == "underwater_route_124");
+        Assert.Contains(area.WaterEncounters, e => e.SpeciesName == "Clamperl");
+        Assert.Contains(area.WaterEncounters, e => e.SpeciesName == "Relicanth");
+        int kelp = 0;
+        for (int y = 0; y < floor.Height; y++)
+            for (int x = 0; x < floor.Width; x++)
+                if (floor.BehaviourAt(x, y) is TileBehavior.Seaweed or TileBehavior.SeaweedNoSurfacing && !floor.IsSolid(x, y))
+                {
+                    Assert.Equal(TileType.Kelp, floor.GetGroundTile(x, y));
+                    kelp++;
+                }
+        Assert.True(kelp > 0, "no kelp on the sea floor");
+    }
+
+    [Fact]
+    public void TheWalkDivesToTheSeaFloorAndComesBackUp()
+    {
+        // From Route 124 (WorldWalk.OpenedAhead until plan 21 · H7 opens the way by sea), down to the floor and up again
+        var floor = Walked.Value.Single(kv => kv.Key.Name == "HoennUnderwater").Value;
+        Assert.True(floor.Count >= 400, $"only {floor.Count} tiles of the sea floor swum");
+        var outside = Walked.Value.Single(kv => kv.Key.Name == "Hoenn").Value;
+        Assert.Contains(outside, t => Overworld.AreaAt(t.X, t.Y)?.Key == "route_124" && Overworld.BehaviourAt(t.X, t.Y) == TileBehavior.DiveWater);
+        Assert.Contains(WorldWalk.OpenedAhead, s => s.Map == "Hoenn" && Overworld.AreaAt(s.X, s.Y)?.Key == "route_124");
     }
 
     [Fact]

@@ -5,7 +5,8 @@ partial class Harness
     /// the modes after it): a new game begun there (<c>--region Hoenn</c>), Littleroot Town, Route 101 and Oldale Town by
     /// day and after dark (h01 to h06), Routes 102 and 103 and Petalburg City (h07 to h10), the rooms of the three
     /// towns furnished (h11 to h18), and the walk from the family's door to Petalburg City's Pokémon Center at running
-    /// pace, every frame timed, with what streaming cost.
+    /// pace, every frame timed, with what streaming cost; the chapters' scenes after it, and last Dive and the sea floor
+    /// under Route 124 (plan 21 · H5, h92 to h96, <c>HoennSeaShots</c>).
     /// </summary>
     public void HoennMode()
     {
@@ -178,6 +179,8 @@ partial class Harness
         }
         // And last the first chapter played by its own scripts, in a new game of its own (plan 21 · H2)
         HoennScenes();
+        // And after the chapter, Dive and the sea floor under Route 124 (plan 21 · H5, h92 to h96)
+        HoennSeaShots();
         engine.NewGameRegion = "Sinnoh";
     }
 }

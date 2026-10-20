@@ -341,7 +341,7 @@ public static class RegionMapArt
             TileType.FlowerGrass => Flowers,
             TileType.Path or TileType.Signpost => Path,
             TileType.Dirt => Dirt,
-            TileType.Sand => Sand,
+            TileType.Sand or TileType.Kelp => Sand,
             TileType.Snow => Snow,
             TileType.Ice => Ice,
             TileType.Marsh => Marsh,

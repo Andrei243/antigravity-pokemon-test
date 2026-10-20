@@ -166,15 +166,21 @@ public class PartyScreen
         Sharing = null;
     }
 
+    /// <summary>The region the team's menu is opened in, whose field moves it lists (plan 21 · H5: Dive only where its gates name it).</summary>
+    public string Region { get; set; } = RegionDatabase.Sinnoh;
+
     /// <summary>
     /// A Pokémon's menu in the field: its summary, then its field moves in the order of its moves (Chatter left
-    /// out), then moving it and backing out, as the original's (<c>GetContextMenuEntriesForPartyMon</c>).
+    /// out), then moving it and backing out, as the original's (<c>GetContextMenuEntriesForPartyMon</c>). Dive is
+    /// listed only in a region whose file's gates name it (Hoenn's, plan 21 · H5), as Platinum has no Dive in the field.
     /// </summary>
-    public static List<PartyAction> ActionsFor(Pokemon pokemon)
+    public static List<PartyAction> ActionsFor(Pokemon pokemon, string? region = null)
     {
         var actions = new List<PartyAction> { new(PartyActionKind.Summary) };
+        bool dives = RegionDatabase.Get(region ?? RegionDatabase.Sinnoh)?.Gates.ContainsKey(nameof(FieldMove.Dive)) == true;
         // An Egg knows no field moves it could use (plan 06 · R15)
-        if (!pokemon.IsEgg) actions.AddRange(FieldMoveRules.Known(pokemon).Distinct().Select(m => new PartyAction(PartyActionKind.FieldMove, m)));
+        if (!pokemon.IsEgg)
+            actions.AddRange(FieldMoveRules.Known(pokemon).Distinct().Where(m => m != FieldMove.Dive || dives).Select(m => new PartyAction(PartyActionKind.FieldMove, m)));
         actions.Add(new PartyAction(PartyActionKind.Switch));
         actions.Add(new PartyAction(PartyActionKind.Cancel));
         return actions;
@@ -259,7 +265,7 @@ public class PartyScreen
         }
         if (Actions == null)
         {
-            Actions = ActionsFor(party.Members[SelectedIndex]);
+            Actions = ActionsFor(party.Members[SelectedIndex], Region);
             ActionIndex = 0;
             AudioManager.PlaySound("select");
             return;

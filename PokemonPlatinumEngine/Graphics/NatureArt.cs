@@ -53,6 +53,43 @@ internal static class NatureArt
         return c;
     }
 
+    private static readonly Color[] KelpShades = { Rgb(44, 82, 64), Rgb(62, 110, 76), Rgb(92, 140, 88), Rgb(132, 170, 104) };
+
+    /// <summary>
+    /// Kelp on the sea floor (plan 21 · H5; style guide, "The sea floor"): 32x32, two fronds a clump of 16 texels
+    /// wide, each a stalk two texels thick that waves a texel or two either way as it rises, dark at its holdfast and
+    /// lighter upward, with a blade of leaf out to alternate sides every few rows and a pale tip. Repeats along a row.
+    /// </summary>
+    public static PixelCanvas Kelp()
+    {
+        var c = new PixelCanvas(32, 32);
+        (int Base, int Height, int Phase)[] fronds = { (4, 29, 0), (11, 23, 3), (20, 31, 5), (27, 21, 1) };
+        int bottom = c.Height - 1;
+        foreach (var (baseX, height, phase) in fronds)
+        {
+            for (int y = 0; y < height; y++)
+            {
+                // A wave in whole texels: a texel each way, two near the top, never off the frond's own clump
+                int sway = ((y + phase) / 4 % 4) switch { 0 => 0, 1 => 1, 2 => 0, _ => -1 } * (y > height * 2 / 3 ? 2 : 1);
+                int x = baseX + sway;
+                int shade = y >= height - 2 ? 3 : y < 5 ? 0 : y < height / 2 ? 1 : 2;
+                c.SetRaw(Wrap(x, c.Width), bottom - y, KelpShades[shade]);
+                c.SetRaw(Wrap(x + 1, c.Width), bottom - y, KelpShades[Math.Max(0, shade - 1)]);
+                // A blade of leaf every five rows, to the left and the right in turn, two texels long and darker below
+                if (y > 4 && y < height - 3 && (y + phase) % 5 == 0)
+                {
+                    int side = (y + phase) / 5 % 2 == 0 ? -1 : 2;
+                    int dir = side < 0 ? -1 : 1;
+                    c.SetRaw(Wrap(x + side, c.Width), bottom - y, KelpShades[Math.Min(3, shade + 1)]);
+                    c.SetRaw(Wrap(x + side + dir, c.Width), bottom - y + 1, KelpShades[shade]);
+                }
+            }
+        }
+        return c;
+
+        static int Wrap(int x, int w) => ((x % w) + w) % w;
+    }
+
     /// <summary>A lawn tuft: 16x12, four short blades in the lawn's shades.</summary>
     public static PixelCanvas LawnTuft()
     {

@@ -3056,6 +3056,42 @@ beaten. What differs, and why:
 - **What waits**: the Desert Ruins' door (until the Regis), Gabby and Ty, the Secret Power man, Norman's rematch, the
   harness's shots of this part.
 
+## Dive and the sea floor (2026-10-20, plan 21 · H5, its first part)
+
+Platinum has no Dive in the field, so the field move follows Emerald (`TrySetupDiveDownScript`,
+`TrySetupDiveEmergeScript`, `TrySetDiveWarp`, `FldEff_UseDive`) where the plan doesn't say otherwise. What differs, and why:
+
+- **The Badge is the region's**: Dive is offered only in a region whose file's `gates` name it (Hoenn's `"Dive": "Mind"`,
+  Emerald's `FLAG_BADGE07_GET`), both in the field and on the team's menu (`PartyScreen.ActionsFor(pokemon, region)`):
+  a Pokémon that knows Dive in Sinnoh or Johto shows the menu it always showed, and their dark water stays plain sea.
+- **The tiles** are Emerald's four behaviours under names of ours, at the end of the GBA block (`DiveWater` for
+  `MB_DEEP_WATER`, `NoSurfacing`, `Seaweed`, `SeaweedNoSurfacing`). Dark water is surfable like any sea; `CanDive` says yes
+  on it to a surfer whose team knows Dive, `CanSurface` under any floor tile but the two that forbid it, and coming up
+  also needs open sea on the same tile above (`SurfacesOnto`). Wild Pokémon of the floor are met only in its seaweed, from
+  the floor's own water table (Emerald's underwater `water_mons`: Clamperl, Chinchou, Relicanth).
+- **One button both ways**: Emerald dives and comes up with A on the tile underfoot, and B is our Run, so A is both:
+  `TryInteract` reads the tile under a surfer or a diver before what lies ahead, and runs `common.Dive` or
+  `common.Surface` (the question, the move's cut-in, then the script's `dive`, which fades, plays the bubbles' sound
+  `dive` and lands the player on the same tile of the other map, diving or surfing).
+- **A diver walks**: the plan had surfing's pace under the sea; Emerald's diver moves at walking pace and can't run, and
+  so does ours (`FieldMovement`'s pace for `TravelMode.Diving` is `Walk`), with no bike, no ledges and no footfalls.
+- **The floors are maps by matrix, not one map**: the reader lays each of Emerald's underwater maps under the route it
+  lies under (`GbaWorld.LayUnderItsRoutes`); the floors under Routes 124 to 128 are matrix 2, `HoennUnderwater`, at the
+  overworld's own coordinates, so a dive lands on the same tile (469 tiles each way, none astray). The floors under the
+  Seafloor Cavern, Sootopolis and the Marine Cave are matrices of their own for H8 and H12. Only `underwater_route_124`
+  is open; the rest is rock until its route opens.
+- **Under the sea battles are fought on the water's ground and stage** (`BattleTerrain.Water`, `Map.ArenaAt`) until part
+  b's `BattleArena.Underwater`; Dive the move in battle is unchanged.
+- **Route 124 waits for Lilycove**: it is reached by sea from Lilycove City (H7), so a walk of the game finds it only
+  through `WorldWalk.OpenedAhead` (the sand before the treasure hunter's house), which H7 takes off. Its song is
+  `hoenn/route104` until Emerald's Route 120 song is written; the treasure hunter's house is `locked` until H8.
+- **Saves**: a game saved under the sea keeps `TravelMode.Diving` as one saved surfing keeps surfing, and a player on an
+  underwater map always settles diving (and off one never does). No version was raised: no older save can stand on a map
+  that didn't exist, so none is touched.
+- **Still to come (part b)**: the caustic layer and the diver's bubbles, `BattleArena.Underwater` and its stage,
+  `AmbienceBed.Underwater`, the floors under Routes 125 to 128 with their routes (H8), and the frame weighed with
+  `profile`.
+
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
 From Celadon City to the Marsh Badge, scripts of ours on FireRed's beats (`celadon_city_*.txt`, `rocket_hideout_*.txt`,

@@ -281,6 +281,13 @@ public interface IScriptHost
     /// <summary>Flies to the town chosen on the map before the script began. False when none was chosen.</summary>
     bool Fly();
 
+    /// <summary>
+    /// Dive (plan 21 · H5): down from the dark water the player surfs on to the same tile of the sea floor under it, or
+    /// up from the sea floor to the same tile of the sea above, behind a fade. False when there is no floor below, or no
+    /// sea above that may be come up to, where the player is.
+    /// </summary>
+    bool Dive();
+
     /// <summary>Back to the town of the Pokémon Center the player last went into (Teleport). False when there is no way there.</summary>
     bool Teleport();
 

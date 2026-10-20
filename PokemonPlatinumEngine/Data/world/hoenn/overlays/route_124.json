@@ -1,0 +1,24 @@
+{
+  // Route 124 (plan 21 · H5): the open sea west of Mossdeep City, whose dark trenches go down to the sea floor with Dive
+  // (the Mind Badge, Mossdeep City's Gym's). Its swimmers wait for a surfer; the treasure hunter's house on its islet is
+  // shut until the east sea's rooms are built (plan 21 · H8), and the way here by water from Lilycove City is plan 21
+  // · H7's. Emerald plays Route 120's song here, which this game hasn't written yet: Route 104's sea stands in.
+  "area": "route_124",
+  "bgmTrack": "hoenn/route104",
+  "trees": "Round",
+  "locked": [ 0 ],
+  "people": {
+    "swimmer_m": { "name": "Spencer", "trainer": { "dialogueBefore": "Swimmer Spencer: The water's so clear out here, I can see right down to the bottom!", "dialogueAfter": "Swimmer Spencer: All I can see now is defeat." } },
+    "swimmer_m_2": { "name": "Roland", "trainer": { "dialogueBefore": "Swimmer Roland: Out in the open sea, you can't run from a battle. Ready?", "dialogueAfter": "Swimmer Roland: I'd swim away if I had any energy left." } },
+    "swimmer_f": { "name": "Jenny", "trainer": { "dialogueBefore": "Swimmer Jenny: I'm turning round and round to look for trainers. Found one!", "dialogueAfter": "Swimmer Jenny: Now I'm dizzy as well as beaten." } },
+    "swimmer_f_2": { "name": "Grace", "trainer": { "dialogueBefore": "Swimmer Grace: My Marill keeps me afloat when I get tired. We're a team!", "dialogueAfter": "Swimmer Grace: We're a team that lost, but still a team." } },
+    "swimmer_m_3": { "name": "Chad", "trainer": { "dialogueBefore": "Swimmer Chad: Back and forth, back and forth. A battle breaks up the laps!", "dialogueAfter": "Swimmer Chad: Back to my laps, then." } },
+    "swimmer_f_3": { "name": "Lila and Roy", "trainer": { "dialogueBefore": "Sis and Bro Lila and Roy: My little brother and I take on every surfer together!", "dialogueAfter": "Sis and Bro Lila and Roy: We'll practise our teamwork some more." } },
+    "tuber_m_swimming": { "name": "Lila and Roy", "trainer": { "dialogueBefore": "Sis and Bro Lila and Roy: My big sister and I take on every surfer together!", "dialogueAfter": "Sis and Bro Lila and Roy: Next time we'll splash you good!" } },
+    "swimmer_m_4": { "name": "Declan", "trainer": { "dialogueBefore": "Swimmer Declan: Under these waves there's a whole other world. Ever been down there?", "dialogueAfter": "Swimmer Declan: You should see it with Dive. It's beautiful." } },
+    "swimmer_f_4": { "name": "Isabella", "trainer": { "dialogueBefore": "Triathlete Isabella: Swimming is the last part of my training. You're the bonus part!", "dialogueAfter": "Triathlete Isabella: I'll have to train even harder." } }
+  },
+  "signs": {
+    "Route124_EventScript_HuntersHouseSign": "Treasure Hunter's House\nShards from the sea floor traded here."
+  }
+}

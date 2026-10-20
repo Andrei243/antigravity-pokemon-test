@@ -115,6 +115,8 @@ internal sealed class FieldLife
         var type = map.GetGroundTile(x, y);
         var behaviour = map.BehaviourAt(x, y);
 
+        // A diver leaves nothing on the sea floor (plan 21 · H5); their bubbles are the sea's own
+        if (mode == TravelMode.Diving) return;
         if (mode == TravelMode.Surfing)
         {
             // On the water left behind, where the last stroke was

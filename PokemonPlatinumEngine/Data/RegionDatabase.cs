@@ -516,6 +516,9 @@ public static class RegionDatabase
                 "JaggedPass", "LavaridgeTown_HerbShop", "LavaridgeTown_Gym_1F", "LavaridgeTown_Gym_B1F", "LavaridgeTown_House",
                 "LavaridgeTown_Mart", "LavaridgeTown_PokemonCenter_1F", "LavaridgeTown_PokemonCenter_2F",
                 "MirageTower_1F", "MirageTower_2F", "MirageTower_3F", "MirageTower_4F",
+                // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (Emerald's matrix of their underwater
+                // maps), laid tile for tile under the sea it is dived to from
+                "HoennUnderwater",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
