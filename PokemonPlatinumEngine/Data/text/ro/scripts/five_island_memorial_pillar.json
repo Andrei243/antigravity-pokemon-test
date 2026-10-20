@@ -5,7 +5,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "This stone stands for my Onix. We were together for a long, long time."
       ],
       "text": [
-        ""
+        "Piatra asta îl reprezintă pe Onixul meu. Am fost împreună multă, multă vreme."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "It loved Lemonade more than anything. I come here every day to keep it company."
       ],
       "text": [
-        ""
+        "Iubea Limonada mai mult decât orice. Vin aici în fiecare zi să-i țin companie."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Thank you for the Lemonade. I'm sure my Onix was glad of it."
       ],
       "text": [
-        ""
+        "Mulțumesc pentru Limonadă. Sunt sigur că Onixul meu s-a bucurat de ea."
       ]
     }
   ],
@@ -39,7 +39,7 @@
         "Words are cut into the stone: 'For Onix, my dearest friend.'"
       ],
       "text": [
-        ""
+        "Pe piatră sunt săpate cuvinte: „Pentru Onix, cel mai drag prieten al meu.”"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Leave a can of Lemonade at the stone?"
       ],
       "text": [
-        ""
+        "Lași o cutie de Limonadă la piatră?"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "{player} set a can of Lemonade at the foot of the stone."
       ],
       "text": [
-        ""
+        "{player} a pus o cutie de Limonadă la baza pietrei."
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Man"
       ],
       "text": [
-        ""
+        "Bărbatul"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Oh... You left Lemonade for my Onix? That was its favourite. How kind of you."
       ],
       "text": [
-        ""
+        "Oh... I-ai lăsat Limonadă Onixului meu? Era preferata lui. Ce drăguț din partea ta."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Please, take this. I'd like you to have it."
       ],
       "text": [
-        ""
+        "Te rog, ia asta. Aș vrea să o ai tu."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Facade hits all the harder when a Pokémon is burned, poisoned or paralysed. My Onix never gave up, either."
       ],
       "text": [
-        ""
+        "Fațadă lovește mult mai tare când un Pokémon e ars, otrăvit sau paralizat. Nici Onixul meu nu s-a dat bătut niciodată."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "A can of Lemonade sits at the foot of the stone."
       ],
       "text": [
-        ""
+        "O cutie de Limonadă stă la baza pietrei."
       ]
     }
   ]

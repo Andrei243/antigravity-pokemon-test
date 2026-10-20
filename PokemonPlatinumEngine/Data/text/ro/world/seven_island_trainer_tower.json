@@ -4,7 +4,7 @@
       "Trainer Tower"
     ],
     "text": [
-      ""
+      "Turnul Antrenorilor"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Dario"
         ],
         "text": [
-          ""
+          "Dario"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Psychic Dario: I can see the future. You're about to lose!"
         ],
         "text": [
-          ""
+          "Medium Dario: Văd viitorul. Urmează să pierzi!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Psychic Dario: I didn't see that coming."
         ],
         "text": [
-          ""
+          "Medium Dario: Asta nu am văzut-o venind."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Rodette"
         ],
         "text": [
-          ""
+          "Rodette"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Psychic Rodette: My mind and my Pokémon are one. Can you say the same?"
         ],
         "text": [
-          ""
+          "Medium Rodette: Mintea mea și Pokémonii mei sunt una. Poți spune și tu același lucru?"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Psychic Rodette: My mind is blank."
         ],
         "text": [
-          ""
+          "Medium Rodette: Mintea mea e goală."
         ]
       }
     }
@@ -67,7 +67,7 @@
         "Trainer Tower\nClosed for now. Come back soon!"
       ],
       "text": [
-        ""
+        "Turnul Antrenorilor\nÎnchis deocamdată. Revino curând!"
       ]
     },
     "SevenIsland_TrainerTower_EventScript_TrainerTowerAheadSign": {
@@ -75,7 +75,7 @@
         "Trainer Tower ahead"
       ],
       "text": [
-        ""
+        "Turnul Antrenorilor în față"
       ]
     }
   }

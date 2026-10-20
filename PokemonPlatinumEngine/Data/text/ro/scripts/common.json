@@ -1319,11 +1319,11 @@
         "NOT NOW"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Unde vrei să navigăm?",
+        "KANTO",
+        "INSULELE UNU-TREI",
+        "INSULELE PATRU-ȘAPTE",
+        "NU ACUM"
       ]
     },
     {
@@ -1331,7 +1331,7 @@
         "Come back any time."
       ],
       "text": [
-        ""
+        "Revino oricând."
       ]
     },
     {
@@ -1342,10 +1342,10 @@
         "NOT NOW"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Care port din Kanto?",
+        "ORAȘUL VERMILION",
+        "INSULA CINNABAR",
+        "NU ACUM"
       ]
     },
     {
@@ -1353,7 +1353,7 @@
         "Come back any time."
       ],
       "text": [
-        ""
+        "Revino oricând."
       ]
     },
     {
@@ -1365,11 +1365,11 @@
         "NOT NOW"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Care insulă?",
+        "INSULA UNU",
+        "INSULA DOI",
+        "INSULA TREI",
+        "NU ACUM"
       ]
     },
     {
@@ -1377,7 +1377,7 @@
         "Come back any time."
       ],
       "text": [
-        ""
+        "Revino oricând."
       ]
     },
     {
@@ -1390,12 +1390,12 @@
         "NOT NOW"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Care insulă?",
+        "INSULA PATRU",
+        "INSULA CINCI",
+        "INSULA ȘASE",
+        "INSULA ȘAPTE",
+        "NU ACUM"
       ]
     },
     {
@@ -1403,7 +1403,7 @@
         "Come back any time."
       ],
       "text": [
-        ""
+        "Revino oricând."
       ]
     },
     {
@@ -1411,7 +1411,7 @@
         "All aboard for Vermilion City!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Orașul Vermilion!"
       ]
     },
     {
@@ -1419,7 +1419,7 @@
         "All aboard for Cinnabar Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Cinnabar!"
       ]
     },
     {
@@ -1427,7 +1427,7 @@
         "All aboard for One Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Unu!"
       ]
     },
     {
@@ -1435,7 +1435,7 @@
         "All aboard for Two Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Doi!"
       ]
     },
     {
@@ -1443,7 +1443,7 @@
         "All aboard for Three Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Trei!"
       ]
     },
     {
@@ -1451,7 +1451,7 @@
         "All aboard for Four Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Patru!"
       ]
     },
     {
@@ -1459,7 +1459,7 @@
         "All aboard for Five Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Cinci!"
       ]
     },
     {
@@ -1467,7 +1467,7 @@
         "All aboard for Six Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Șase!"
       ]
     },
     {
@@ -1475,7 +1475,7 @@
         "All aboard for Seven Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Șapte!"
       ]
     },
     {
@@ -1483,7 +1483,7 @@
         "Ha! We're moored right here already. Pick another port, and we'll cast off."
       ],
       "text": [
-        ""
+        "Ha! Suntem deja ancorați chiar aici. Alege alt port și plecăm."
       ]
     }
   ],

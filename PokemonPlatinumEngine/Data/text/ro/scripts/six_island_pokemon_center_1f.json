@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}? You again! You keep turning up wherever I go."
       ],
       "text": [
-        ""
+        "{player}? Tu din nou! Apari oriunde mă duc."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I came all this way for the Pokémon of these islands, and half of them won't show their faces. Catching them all from here is hopeless!"
       ],
       "text": [
-        ""
+        "Am venit până aici după Pokémonii de pe insulele astea, iar jumătate dintre ei nu se arată. Să-i prind pe toți de aici e fără speranță!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Well, I'm off to look somewhere else. Smell you later!"
       ],
       "text": [
-        ""
+        "Ei bine, mă duc să caut în altă parte. Pa-pa!"
       ]
     }
   ]

@@ -4,7 +4,7 @@
       "Ruin Valley"
     ],
     "text": [
-      ""
+      "Valea Ruinelor"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Stanly"
         ],
         "text": [
-          ""
+          "Stanly"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "Ruin Maniac Stanly: These ruins are older than the islands themselves! Probably!"
         ],
         "text": [
-          ""
+          "Pasionat de ruine Stanly: Ruinele astea sunt mai vechi decât insulele însele! Probabil!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Ruin Maniac Stanly: Older than me, at least."
         ],
         "text": [
-          ""
+          "Pasionat de ruine Stanly: Mai vechi decât mine, măcar."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Foster"
         ],
         "text": [
-          ""
+          "Foster"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "Ruin Maniac Foster: I dig by day and battle by night. It's day, but I'll make an exception!"
         ],
         "text": [
-          ""
+          "Pasionat de ruine Foster: Sap ziua și mă lupt noaptea. Acum e zi, dar fac o excepție!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "Ruin Maniac Foster: Back to digging."
         ],
         "text": [
-          ""
+          "Pasionat de ruine Foster: Înapoi la săpat."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Larry"
         ],
         "text": [
-          ""
+          "Larry"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "Ruin Maniac Larry: Don't step on the ruins! Step into a battle instead!"
         ],
         "text": [
-          ""
+          "Pasionat de ruine Larry: Nu călca pe ruine! Calcă într-o luptă!"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "Ruin Maniac Larry: I'll go and sulk by the stones."
         ],
         "text": [
-          ""
+          "Pasionat de ruine Larry: Mă duc să mă îmbufnez lângă pietre."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Daryl"
         ],
         "text": [
-          ""
+          "Daryl"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "Hiker Daryl: I climbed down into this valley for the view. And for a battle!"
         ],
         "text": [
-          ""
+          "Drumeț Daryl: M-am cățărat în vale pentru priveliște. Și pentru o luptă!"
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "Hiker Daryl: Climbing back up will be hard now."
         ],
         "text": [
-          ""
+          "Drumeț Daryl: Acum urcatul înapoi va fi greu."
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Hector"
         ],
         "text": [
-          ""
+          "Hector"
         ]
       },
       "before": {
@@ -136,7 +136,7 @@
           "Poké Maniac Hector: I came looking for rare Pokémon in the ruins. Show me yours!"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Hector: Am venit în căutarea Pokémonilor rari din ruine. Arată-mi-i pe ai tăi!"
         ]
       },
       "after": {
@@ -144,7 +144,7 @@
           "Poké Maniac Hector: Rare, and strong too."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Hector: Rari, și puternici pe deasupra."
         ]
       }
     }

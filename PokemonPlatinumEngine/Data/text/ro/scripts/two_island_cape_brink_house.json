@@ -5,7 +5,7 @@
         "Old Woman"
       ],
       "text": [
-        ""
+        "Bătrâna"
       ]
     },
     {
@@ -14,8 +14,8 @@
         "I've spent my life learning the oldest moves there are, the ones only a starter grown to its full strength can bear."
       ],
       "text": [
-        "",
-        ""
+        "Ia te uită, un vizitator tocmai pe capul ăsta de lume! Stai jos, stai jos.",
+        "Mi-am petrecut viața învățând cele mai vechi mișcări care există, cele pe care le poate duce doar un Pokémon de început ajuns la puterea lui deplină."
       ]
     },
     {
@@ -23,7 +23,7 @@
         "Shall I teach one of those moves to a Pokémon of yours?"
       ],
       "text": [
-        ""
+        "Să învăț una dintre mișcările astea unui Pokémon de-al tău?"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "Show me the one you'd like to learn it, dearie."
       ],
       "text": [
-        ""
+        "Arată-mi care ar trebui să o învețe, dragă."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "So I'm to teach {thing} to your {wearer}?"
       ],
       "text": [
-        ""
+        "Deci îl învăț pe {wearer} mișcarea {thing}?"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "There now, {wearer} has let go of {forgotten}. And..."
       ],
       "text": [
-        ""
+        "Gata, {wearer} a renunțat la {forgotten}. Și..."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "{wearer} learned {thing}!"
       ],
       "text": [
-        ""
+        "{wearer} a învățat {thing}!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Use it with care. A move like that takes everything out of the one who uses it."
       ],
       "text": [
-        ""
+        "Folosește-o cu grijă. O mișcare ca asta ia totul din cel care o folosește."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Well, there's no hurry. The sea and I will still be here."
       ],
       "text": [
-        ""
+        "Ei bine, nu e nicio grabă. Marea și cu mine vom fi tot aici."
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Oh, an Egg! Let it hatch first, dearie. It can't learn a thing in there."
       ],
       "text": [
-        ""
+        "Ah, un Ou! Lasă-l mai întâi să eclozeze, dragă. Înăuntru nu poate învăța nimic."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "That Pokémon can't learn any of my moves. Only a starter grown to its last form can."
       ],
       "text": [
-        ""
+        "Pokémonul ăla nu poate învăța nicio mișcare de-ale mele. Doar un Pokémon de început ajuns la ultima formă poate."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Why, it knows the move already! There's nothing more I can teach it."
       ],
       "text": [
-        ""
+        "Ia te uită, o știe deja! Nu mai am ce să-l învăț."
       ]
     },
     {
@@ -104,8 +104,8 @@
         "Spend more time together and come back."
       ],
       "text": [
-        "",
-        ""
+        "Încă nu e pregătit. Mișcările astea cer un Pokémon care are încredere în antrenorul lui din tot sufletul.",
+        "Petreceți mai mult timp împreună și reveniți."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "{wearer} didn't learn {thing}."
       ],
       "text": [
-        ""
+        "{wearer} nu a învățat {thing}."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "{forgotten} isn't a move to be given up like that. {wearer} didn't learn {thing}."
       ],
       "text": [
-        ""
+        "{forgotten} nu e o mișcare la care să se poată renunța așa. {wearer} nu a învățat {thing}."
       ]
     }
   ]

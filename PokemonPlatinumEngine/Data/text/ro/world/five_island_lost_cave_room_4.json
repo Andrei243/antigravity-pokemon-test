@@ -4,7 +4,7 @@
       "Lost Cave"
     ],
     "text": [
-      ""
+      "Peștera Pierdută"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Laura"
         ],
         "text": [
-          ""
+          "Laura"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Psychic Laura: I came in here to find myself. I found you instead!"
         ],
         "text": [
-          ""
+          "Medium Laura: Am intrat aici să mă găsesc pe mine. Te-am găsit pe tine!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Psychic Laura: I still haven't found myself."
         ],
         "text": [
-          ""
+          "Medium Laura: Tot nu m-am găsit."
         ]
       }
     }

@@ -4,7 +4,7 @@
       "Water Path"
     ],
     "text": [
-      ""
+      "Poteca Apei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Rose"
         ],
         "text": [
-          ""
+          "Rose"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Aroma Lady Rose: Can you smell the flowers on the sea breeze? Battle me in their scent!"
         ],
         "text": [
-          ""
+          "Doamna Aromelor Rose: Simți florile în briza mării? Luptă cu mine în parfumul lor!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Aroma Lady Rose: The scent has faded."
         ],
         "text": [
-          ""
+          "Doamna Aromelor Rose: Parfumul s-a stins."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Edward"
         ],
         "text": [
-          ""
+          "Edward"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Juggler Edward: Watch me juggle my Poké Balls! Now watch me battle with them!"
         ],
         "text": [
-          ""
+          "Jongler Edward: Privește-mă cum jonglez cu Poké Ballurile! Acum privește-mă cum lupt cu ele!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Juggler Edward: Dropped them all."
         ],
         "text": [
-          ""
+          "Jongler Edward: Le-am scăpat pe toate."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Samir"
         ],
         "text": [
-          ""
+          "Samir"
         ]
       },
       "before": {
@@ -74,7 +74,7 @@
           "Swimmer Samir: The Water Path is a swimmer's dream!"
         ],
         "text": [
-          ""
+          "Înotător Samir: Poteca Apei e visul unui înotător!"
         ]
       },
       "after": {
@@ -82,7 +82,7 @@
           "Swimmer Samir: A dream, and a defeat."
         ],
         "text": [
-          ""
+          "Înotător Samir: Un vis, și o înfrângere."
         ]
       }
     },
@@ -92,7 +92,7 @@
           "Denise"
         ],
         "text": [
-          ""
+          "Denise"
         ]
       },
       "before": {
@@ -100,7 +100,7 @@
           "Swimmer Denise: I swim up and down the path every day. Want to race?"
         ],
         "text": [
-          ""
+          "Înotătoare Denise: Înot pe potecă în sus și în jos în fiecare zi. Vrei o întrecere?"
         ]
       },
       "after": {
@@ -108,7 +108,7 @@
           "Swimmer Denise: You'd win the race, too."
         ],
         "text": [
-          ""
+          "Înotătoare Denise: Ai câștiga și întrecerea."
         ]
       }
     },
@@ -118,7 +118,7 @@
           "Miu"
         ],
         "text": [
-          ""
+          "Miu"
         ]
       },
       "before": {
@@ -126,7 +126,7 @@
           "Twins Miu & Mia: We're twins! We do everything together!"
         ],
         "text": [
-          ""
+          "Gemene Miu și Mia: Suntem gemene! Facem totul împreună!"
         ]
       },
       "after": {
@@ -134,7 +134,7 @@
           "Twins Miu & Mia: We lost together too."
         ],
         "text": [
-          ""
+          "Gemene Miu și Mia: Am pierdut și împreună."
         ]
       }
     },
@@ -144,7 +144,7 @@
           "Mia"
         ],
         "text": [
-          ""
+          "Mia"
         ]
       },
       "before": {
@@ -152,7 +152,7 @@
           "Twins Miu & Mia: You can't beat two of us at once!"
         ],
         "text": [
-          ""
+          "Gemene Miu și Mia: Nu ne poți bate pe amândouă deodată!"
         ]
       },
       "after": {
@@ -160,7 +160,7 @@
           "Twins Miu & Mia: Oh. You can."
         ],
         "text": [
-          ""
+          "Gemene Miu și Mia: Oh. Se poate."
         ]
       }
     },
@@ -170,7 +170,7 @@
           "Earl"
         ],
         "text": [
-          ""
+          "Earl"
         ]
       },
       "before": {
@@ -178,7 +178,7 @@
           "Hiker Earl: I'm walking the whole length of the island. Care to stop me?"
         ],
         "text": [
-          ""
+          "Drumeț Earl: Parcurg insula pe toată lungimea ei. Vrei să mă oprești?"
         ]
       },
       "after": {
@@ -186,7 +186,7 @@
           "Hiker Earl: You stopped me."
         ],
         "text": [
-          ""
+          "Drumeț Earl: M-ai oprit."
         ]
       }
     }
@@ -197,7 +197,7 @@
         "WANTED!\nThe biggest Heracross horn on the islands!\nAsk at the house by the path."
       ],
       "text": [
-        ""
+        "CĂUTAT!\nCel mai mare corn de Heracross de pe insule!\nÎntreabă la casa de lângă potecă."
       ]
     },
     "SixIsland_WaterPath_EventScript_RouteSign": {
@@ -205,7 +205,7 @@
         "Water Path\nSix Island - Ruin Valley"
       ],
       "text": [
-        ""
+        "Poteca Apei\nInsula Șase - Valea Ruinelor"
       ]
     }
   }

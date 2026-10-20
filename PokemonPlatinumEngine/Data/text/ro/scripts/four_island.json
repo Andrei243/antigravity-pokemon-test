@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hey, {player}! You came all the way out here too? Took you long enough."
       ],
       "text": [
-        ""
+        "Hei, {player}! Ai ajuns și tu până aici? Ți-a luat destul."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The old couple on this island run a Day Care. I left two of mine there and they found an Egg. Can you believe it?"
       ],
       "text": [
-        ""
+        "Cuplul bătrân de pe insula asta ține o Pensiune. Am lăsat acolo doi de-ai mei și au găsit un Ou. Îți vine să crezi?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "I'm going to hatch it and raise it into the toughest Pokémon around. Smell you later!"
       ],
       "text": [
-        ""
+        "O să-l eclozez și o să-l cresc până devine cel mai tare Pokémon din lume. Pa-pa!"
       ]
     }
   ]

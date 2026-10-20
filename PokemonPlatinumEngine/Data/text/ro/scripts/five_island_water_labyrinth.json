@@ -5,7 +5,7 @@
         "Gentleman"
       ],
       "text": [
-        ""
+        "Gentlemanul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "My word, how fond your Pokémon is of you! I can see it in its eyes. You're just the trainer I've been waiting for."
       ],
       "text": [
-        ""
+        "Doamne, cât de mult te iubește Pokémonul tău! Îi văd asta în ochi. Ești exact persoana pe care o așteptam."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I have a Pokémon Egg I'd like raised by someone like you. Would you take it?"
       ],
       "text": [
-        ""
+        "Am un Ou de Pokémon pe care aș vrea să-l crească cineva ca tine. Îl iei?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} received an Egg from the gentleman!"
       ],
       "text": [
-        ""
+        "{player} a primit un Ou de la gentleman!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Gentleman"
       ],
       "text": [
-        ""
+        "Gentlemanul"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Take good care of it. Love it as your Pokémon loves you."
       ],
       "text": [
-        ""
+        "Ai grijă de el. Iubește-l așa cum te iubește Pokémonul tău pe tine."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Ah, but you have no room for it on your team. Come back once you've made some."
       ],
       "text": [
-        ""
+        "Ah, dar nu mai ai loc în echipă. Revino când faci loc."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "A trainer and a Pokémon who trust each other completely are a fine thing to see. Treat yours well, won't you?"
       ],
       "text": [
-        ""
+        "Un antrenor și un Pokémon care au încredere deplină unul în altul sunt frumos de văzut. Poartă-te bine cu al tău, bine?"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "How is the Egg? Whatever hatches from it, I'm sure it will grow up happy with you."
       ],
       "text": [
-        ""
+        "Cum mai e Oul? Orice va ieși din el, sunt sigur că va crește fericit lângă tine."
       ]
     }
   ]

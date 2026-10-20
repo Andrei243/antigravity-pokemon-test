@@ -4,7 +4,7 @@
       "Four Island"
     ],
     "text": [
-      ""
+      "Insula Patru"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Day-Care Man"
         ],
         "text": [
-          ""
+          "Omul de la Pensiune"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Doduo"
         ],
         "text": [
-          ""
+          "Doduo"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Doduo: Gwaa! Gwaa!"
         ],
         "text": [
-          ""
+          "Doduo: Gwaa! Gwaa!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Nidoran"
         ],
         "text": [
-          ""
+          "Nidoran"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Nidoran: Kyuu!"
         ],
         "text": [
-          ""
+          "Nidoran: Kyuu!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Nidoran"
         ],
         "text": [
-          ""
+          "Nidoran"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Nidoran: Kyu-kyuu!"
         ],
         "text": [
-          ""
+          "Nidoran: Kyu-kyuu!"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Psyduck"
         ],
         "text": [
-          ""
+          "Psyduck"
         ]
       },
       "dialog": {
@@ -86,7 +86,7 @@
           "Psyduck: Kwaa?"
         ],
         "text": [
-          ""
+          "Psyduck: Kwaa?"
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Old Woman"
         ],
         "text": [
-          ""
+          "Bătrâna"
         ]
       },
       "dialog": {
@@ -104,7 +104,7 @@
           "Lorelei of the Elite Four was born on this island, you know. She comes home to rest now and then, and she's still as sweet as she was as a girl."
         ],
         "text": [
-          ""
+          "Lorelei de la Elita celor Patru s-a născut pe insula asta, să știi. Vine acasă să se odihnească din când în când și e la fel de dulce ca atunci când era fată."
         ]
       }
     },
@@ -114,7 +114,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -122,7 +122,7 @@
           "Smell you later, {player}!"
         ],
         "text": [
-          ""
+          "Pa-pa, {player}!"
         ]
       }
     },
@@ -132,7 +132,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -140,7 +140,7 @@
           "The cave up north keeps the whole shore icy all year round. I scoop up the ice and pour berry juice over it. Best treat on the islands!"
         ],
         "text": [
-          ""
+          "Peștera din nord ține tot țărmul înghețat tot anul. Adun gheață și torn suc de boabe peste ea. Cea mai bună răsfățare de pe insule!"
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Little Girl"
         ],
         "text": [
-          ""
+          "Fetița"
         ]
       },
       "dialog": {
@@ -158,7 +158,7 @@
           "The lady in the house by the shore has loads and loads of Pokémon dolls. I peeked in at the window once!"
         ],
         "text": [
-          ""
+          "Doamna din casa de lângă țărm are o grămadă de păpuși Pokémon. Odată m-am uitat pe geam!"
         ]
       }
     }
@@ -169,7 +169,7 @@
         "Four Island\nAn isle of cold breezes and warm hearts"
       ],
       "text": [
-        ""
+        "Insula Patru\nO insulă cu adieri reci și inimi calde"
       ]
     },
     "FourIsland_EventScript_LoreleisHouseSign": {
@@ -177,7 +177,7 @@
         "Lorelei's House"
       ],
       "text": [
-        ""
+        "Casa lui Lorelei"
       ]
     }
   }

@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Nothing here sells better than Ice Heals. Folk go into that cave and come out frozen stiff."
         ],
         "text": [
-          ""
+          "Nimic nu se vinde aici mai bine ca Leacul de Îngheț. Oamenii intră în peștera aia și ies înțepeniți de ger."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Camper"
         ],
         "text": [
-          ""
+          "Campistul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Icefall Cave is freezing! I went in once in shorts. Never again."
         ],
         "text": [
-          ""
+          "Peștera Icefall e înghețată! Am intrat o dată în pantaloni scurți. Niciodată iar."
         ]
       }
     }

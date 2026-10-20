@@ -4,7 +4,7 @@
       "Green Path"
     ],
     "text": [
-      ""
+      "Poteca Verde"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Jaclyn"
         ],
         "text": [
-          ""
+          "Jaclyn"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Psychic Jaclyn: I sensed you coming from across the water!"
         ],
         "text": [
-          ""
+          "Medium Jaclyn: Te-am simțit venind de peste apă!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Psychic Jaclyn: I didn't sense that coming."
         ],
         "text": [
-          ""
+          "Medium Jaclyn: Asta nu am simțit-o venind."
         ]
       }
     }
@@ -41,7 +41,7 @@
         "Green Path\nPattern Bush - Outcast Island"
       ],
       "text": [
-        ""
+        "Poteca Verde\nTufișul cu Modele - Insula Izolaților"
       ]
     },
     "SixIsland_GreenPath_EventScript_RightRouteSign": {
@@ -49,7 +49,7 @@
         "Green Path\nPattern Bush - Water Path"
       ],
       "text": [
-        ""
+        "Poteca Verde\nTufișul cu Modele - Poteca Apei"
       ]
     }
   }

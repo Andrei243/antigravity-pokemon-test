@@ -6,7 +6,7 @@
           "Scott"
         ],
         "text": [
-          ""
+          "Scott"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Fisherman Scott: The fish up here bite hard. So do I!"
         ],
         "text": [
-          ""
+          "Pescar Scott: Peștii de aici mușcă tare. La fel și eu!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Fisherman Scott: That's the one that got away."
         ],
         "text": [
-          ""
+          "Pescar Scott: Ăsta e cel care mi-a scăpat."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Vernon"
         ],
         "text": [
-          ""
+          "Vernon"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Psychic Vernon: I can read your next move. Can you read mine?"
         ],
         "text": [
-          ""
+          "Medium Vernon: Îți citesc următoarea mutare. Mi-o citești și tu pe a mea?"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Psychic Vernon: I read it. I just couldn't stop it."
         ],
         "text": [
-          ""
+          "Medium Vernon: Am citit-o. Doar că n-am putut-o opri."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Joyce"
         ],
         "text": [
-          ""
+          "Joyce"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Ace Trainer Joyce: The League is just ahead. Let's see if you're ready for it!"
         ],
         "text": [
-          ""
+          "Antrenoare As Joyce: Liga e chiar în față. Să vedem dacă ești gata pentru ea!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Ace Trainer Joyce: You're ready. More than I am, anyway."
         ],
         "text": [
-          ""
+          "Antrenoare As Joyce: Ești gata. Mai mult decât sunt eu, oricum."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Gaven"
         ],
         "text": [
-          ""
+          "Gaven"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Ace Trainer Gaven: Every trainer on this road wants to be Champion. Prove you deserve it!"
         ],
         "text": [
-          ""
+          "Antrenor As Gaven: Orice antrenor de pe drumul ăsta vrea să fie Campion. Dovedește că meriți!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Ace Trainer Gaven: You might just make it."
         ],
         "text": [
-          ""
+          "Antrenor As Gaven: Poate chiar reușești."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Jake"
         ],
         "text": [
-          ""
+          "Jake"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Ace Trainer Jake: I've been training here for weeks, waiting for a real challenge."
         ],
         "text": [
-          ""
+          "Antrenor As Jake: Mă antrenez aici de săptămâni, în așteptarea unei provocări adevărate."
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Ace Trainer Jake: Worth the wait. Painful, but worth it."
         ],
         "text": [
-          ""
+          "Antrenor As Jake: Merita așteptarea. Dureros, dar merita."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Jamie"
         ],
         "text": [
-          ""
+          "Jamie"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Ace Trainer Jamie: Before you reach the gate, you'll have to get past me!"
         ],
         "text": [
-          ""
+          "Antrenoare As Jamie: Înainte să ajungi la poartă, trebuie să treci de mine!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Ace Trainer Jamie: Fine, the gate's all yours."
         ],
         "text": [
-          ""
+          "Antrenoare As Jamie: Bine, poarta e a ta."
         ]
       }
     }
@@ -163,7 +163,7 @@
         "Pokémon League Reception Gate\nVictory Road lies beyond."
       ],
       "text": [
-        ""
+        "Poarta de recepție a Ligii Pokémon\nDrumul Victoriei se află dincolo."
       ]
     },
     "R26_003+1": {
@@ -171,7 +171,7 @@
         "Route 26\nNorth to the Pokémon League."
       ],
       "text": [
-        ""
+        "Ruta 26\nLa nord, spre Liga Pokémon."
       ]
     }
   }

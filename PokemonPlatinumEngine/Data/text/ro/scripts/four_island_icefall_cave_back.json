@@ -5,7 +5,7 @@
         "Lorelei"
       ],
       "text": [
-        ""
+        "Lorelei"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Keep your hands off those Pokémon! They live here, and they're not yours to take!"
       ],
       "text": [
-        ""
+        "Mâinile jos de pe Pokémonii ăia! Ei trăiesc aici și nu sunt ai voștri ca să-i luați!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Pipe down, lady. Nobody asked you. Go and find somewhere else to skate."
       ],
       "text": [
-        ""
+        "Taci din gură, doamnă. Nu te-a întrebat nimeni. Du-te să patinezi în alt loc."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Lorelei"
       ],
       "text": [
-        ""
+        "Lorelei"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player}! What luck that you're here. Help me drive these poachers out of the cave!"
       ],
       "text": [
-        ""
+        "{player}! Ce noroc că ești aici. Ajută-mă să-i alung pe braconierii ăștia din peșteră!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Some kid wants to play hero? Fine. I'll freeze you out myself!"
       ],
       "text": [
-        ""
+        "Ia uite, cineva vrea să ne dea lecții? Bine. Te îngheț eu pe loc!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Lorelei"
       ],
       "text": [
-        ""
+        "Lorelei"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Now, where have you taken the Pokémon you caught? Tell me!"
       ],
       "text": [
-        ""
+        "Acum, unde ați dus Pokémonii pe care i-ați prins? Spuneți!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Like we'd tell you that!"
       ],
       "text": [
-        ""
+        "Ca și cum ți-am spune!"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Lorelei"
       ],
       "text": [
-        ""
+        "Lorelei"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Then perhaps my Lapras can loosen your tongue. It's very good at freezing things solid."
       ],
       "text": [
-        ""
+        "Atunci poate Lapras al meu vă dezleagă limba. Se pricepe de minune să înghețe lucrurile bocnă."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "W-wait! They're at our warehouse on Five Island, all right? Let's get out of here!"
       ],
       "text": [
-        ""
+        "S-stai! Sunt la depozitul nostru de pe Insula Cinci, bine? Hai să plecăm de aici!"
       ]
     },
     {
@@ -133,7 +133,7 @@
         "Lorelei"
       ],
       "text": [
-        ""
+        "Lorelei"
       ]
     },
     {
@@ -141,7 +141,7 @@
         "Thank you, {player}. To think Team Rocket would come this far to steal Pokémon... It makes my blood run cold."
       ],
       "text": [
-        ""
+        "Îți mulțumesc, {player}. Să mă gândesc că Echipa Rocket ar veni atât de departe să fure Pokémoni... Mi se răcește sângele în vine."
       ]
     },
     {
@@ -149,7 +149,7 @@
         "I grew up on this island, you know. I'll go home and think about what I can do. Please, come and see me."
       ],
       "text": [
-        ""
+        "Am crescut pe insula asta, să știi. Mă duc acasă să mă gândesc ce pot face. Te rog, vino să mă vezi."
       ]
     }
   ],
@@ -159,7 +159,7 @@
         "Lorelei"
       ],
       "text": [
-        ""
+        "Lorelei"
       ]
     },
     {
@@ -167,7 +167,7 @@
         "Team Rocket on my island... I won't stand for it."
       ],
       "text": [
-        ""
+        "Echipa Rocket pe insula mea... Nu voi îngădui asta."
       ]
     }
   ],
@@ -177,7 +177,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -185,7 +185,7 @@
         "Get lost, kid! This is grown-up business."
       ],
       "text": [
-        ""
+        "Cară-te de aici! Asta e treabă de oameni mari."
       ]
     }
   ]
