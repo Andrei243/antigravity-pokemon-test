@@ -220,6 +220,7 @@ on leaving any place), `FLAG_FLASH_ACTIVE` and `FLAG_DEFOG_ACTIVE` (cleared on g
 | `additem "Potion" [3]` | Into the bag without a word. |
 | `take "Coupon 1" [3]` | Out of the bag: all of them or none. `RESULT` is 1 if they were taken. |
 | `givepokemon "Starly" 4` | Onto the team, or to the PC when the team is full. `RESULT` is 1 or 2. The words and the fanfare are the script's. |
+| `givepokemon "Castform" 25 holding "Mystic Water"` | The same with an item in its hand (plan 21 · H6: the Weather Institute's Castform, as Emerald gives it). |
 | `givebadge coal` | Gives a badge of the region the player is in, by its name in that region's file (plan 18 · W2), with its fanfare. |
 | `givemoney 500`, `takemoney 500` | `takemoney` takes all of it or nothing; `RESULT` says which. |
 | `heal` | The whole team. |

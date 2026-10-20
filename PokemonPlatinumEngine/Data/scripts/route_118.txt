@@ -1,0 +1,138 @@
+# Route 118 (plan 21 · H6). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route118/scripts.inc).
+#
+# Steven waits on the ledge north of the path east of the river (VAR_ROUTE118_STATE 0): at the first step onto one of
+# the three tiles below it (the area's triggers 0 to 2) he comes to the ledge's edge before the player, hops down,
+# asks after the player's team, says he is bound for Route 120 and walks off east (VAR_ROUTE118_STATE 1,
+# FLAG_HIDE_ROUTE_118_STEVEN). The fisherman by the river gives the Good Rod to whoever agrees that it is good
+# (FLAG_RECEIVED_GOOD_ROD).
+
+
+# The way onto this stretch from Mauville: a save from before plan 21 · H6 hides the stretch's people here
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_SEVEN call HoennChapterSeven
+  end
+
+
+script StevenTrigger0
+  if var VAR_ROUTE118_STATE != 0 end
+  scene "Steven on Route 118 from the west"
+  face player up
+  walk route118_steven left 1
+  call StevenComes
+  walk route118_steven right 10
+  call StevenGone
+  endscene
+  end
+
+
+script StevenTrigger1
+  if var VAR_ROUTE118_STATE != 0 end
+  scene "Steven on Route 118"
+  face player up
+  call StevenComes
+  walk route118_steven right 9
+  call StevenGone
+  endscene
+  end
+
+
+script StevenTrigger2
+  if var VAR_ROUTE118_STATE != 0 end
+  scene "Steven on Route 118 from the east"
+  face player up
+  walk route118_steven right 1
+  call StevenComes
+  walk route118_steven right 8
+  call StevenGone
+  endscene
+  end
+
+
+# Steven hops down the ledge and has his say, standing over the player
+script StevenComes
+  sound "ledge"
+  walk route118_steven down 3
+  wait 0.5
+  speaker "Steven"
+  say "{player}! Funny, running into you out here. I've just come from the Weather Institute up the river."
+  say "Tell me, how are your Pokémon? Do you feel the two of you have grown stronger together since Granite Cave?"
+  say "I'm heading on to Route 120 to look into something there. If you're passing, come and find me."
+  face player right
+  return
+
+
+# He walks off east and is gone for good
+script StevenGone
+  setvar VAR_ROUTE118_STATE 1
+  hide route118_steven
+  setflag FLAG_HIDE_ROUTE_118_STEVEN
+  return
+
+
+# The fisherman who agrees that a Good Rod is good
+script GoodRodFisherman
+  face self player
+  speaker "Fisherman"
+  if flag FLAG_RECEIVED_GOOD_ROD goto Had
+  ask "Ah, a fellow angler? A good rod makes all the difference, wouldn't you say?"
+  if no goto Refused
+  say "Ha! I knew it the moment I saw you. Kindred spirits! Here, take this one. I've got a spare."
+  give "Good Rod"
+  setflag FLAG_RECEIVED_GOOD_ROD
+  say "Cast it where the water runs and see what bites. The fish here pull harder than you'd think!"
+  end
+label Refused
+  say "No? Then you've never felt a real bite on the line. Come back once you have."
+  end
+label Had
+  say "Is the Good Rod treating you well? Bigger water means bigger Pokémon, remember that!"
+  end
+
+
+# Rose, beaten, swaps numbers for the PokéNav
+script Rose
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_ROSE goto Known
+label Ask
+  speaker "Rose"
+  say "What a lovely battle. May I have your number? I'd like to share news of my flowers."
+  ask "Register Rose in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_rose
+  say "Thank you. I'll call when they bloom."
+  end
+label Refused
+  say "Oh, that's a shame. Perhaps another time."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Dalton, beaten, swaps numbers for the PokéNav
+script Dalton
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_DALTON goto Known
+label Ask
+  speaker "Dalton"
+  say "Man, you rock! Let's swap numbers. I'll call when I've got a new song."
+  ask "Register Dalton in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_dalton
+  say "Sweet! Keep your ears open."
+  end
+label Refused
+  say "No worries. The music goes on!"
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask

@@ -13885,6 +13885,18 @@
     "cantBeTossed": true
   },
   {
+    "id": 9111,
+    "name": "Devon Scope",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A scope made by the Devon Corporation. It shows a Pokémon that has hidden itself by blending in.",
+    "cantBeTossed": true
+  },
+  {
     "id": 9200,
     "name": "SquirtBottle",
     "pocket": "KeyItems",

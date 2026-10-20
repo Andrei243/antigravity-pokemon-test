@@ -1,0 +1,35 @@
+# Route 118: the river east of Mauville City and the grass beyond it, a sunny oboe tune in G major over plucked
+# strings that run in eighths, a long pad and a walking bass, with a steady backbeat. Original composition for this
+# game (plan 21 · H6).
+title Route 118
+tempo 128
+meter 4/4
+reverb 0.26
+nighttempo 0.92
+
+track lead oboe night=flute vol=0.66 pan=0.05 rev=0.26
+  L o5 g4 b8 o6 d8 o5 b4 g4 | o5 a4 f+8 a8 o6 d4 o5 a4 | o5 b4 g8 e8 g4 b4 | o6 c4 o5 g8 e8 g2 |
+  o5 d4 g8 b8 o6 d4 o5 b4 | o5 a4 o6 d8 c8 o5 b4 a4 | o5 g4 e8 g8 o6 c4 o5 g4 | o5 a2. r4 |
+  o5 b4 o6 e8 d8 o5 b4 g4 | o5 a4 g8 e8 c4 e4 | o5 d4 g8 b8 o6 d4 g4 | o6 f+4 e8 d8 o5 a2 |
+  o6 e4 d8 c8 o5 g4 e4 | o5 f+4 a8 o6 d8 c4 o5 a4 | o5 b4 o6 d8 o5 b8 g4 d4 | o5 g2. r4 |
+
+track pluck pizzicato vol=0.34 pan=-0.3 rev=0.24
+  L o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 f+8 a8 o5 d8 o4 a8 f+8 a8 o5 d8 o4 a8 | o4 e8 g8 b8 g8 e8 g8 b8 g8 | o4 e8 g8 o5 c8 o4 g8 e8 g8 o5 c8 o4 g8 |
+  o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 f+8 a8 o5 d8 o4 a8 f+8 a8 o5 d8 o4 a8 | o4 e8 g8 o5 c8 o4 g8 e8 g8 o5 c8 o4 g8 | o4 f+8 a8 o5 d8 o4 a8 f+8 a8 o5 d8 o4 a8 |
+  o4 e8 g8 b8 g8 e8 g8 b8 g8 | o4 e8 g8 o5 c8 o4 g8 e8 g8 o5 c8 o4 g8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 f+8 a8 o5 d8 o4 a8 f+8 a8 o5 d8 o4 a8 |
+  o4 e8 g8 o5 c8 o4 g8 e8 g8 o5 c8 o4 g8 | o4 f+8 a8 o5 d8 o4 a8 f+8 a8 o5 d8 o4 a8 | o4 g8 b8 o5 d8 o4 b8 g8 b8 o5 d8 o4 b8 | o4 g8 b8 o5 d8 o4 b8 g2 |
+
+track pad strings night=pad vol=0.22 pan=0.25 rev=0.4
+  L o4 (g b >d)1 | (d f+ a)1 | (e g b)1 | (c e g)1 |
+  (g b >d)1 | (d f+ a)1 | (c e g)1 | (d f+ a)1 |
+  (e g b)1 | (c e g)1 | (g b >d)1 | (d f+ a)1 |
+  (c e g)1 | (d f+ a)1 | (g b >d)1 | (g b >d)1 |
+
+track bass bass vol=0.64 rev=0.08
+  L o2 g4 b4 o3 d4 o2 b4 | o2 d4 f+4 a4 f+4 | o2 e4 g4 b4 g4 | o2 c4 e4 g4 e4 |
+  o2 g4 b4 o3 d4 o2 b4 | o2 d4 f+4 a4 f+4 | o2 c4 e4 g4 e4 | o2 d4 f+4 a4 f+4 |
+  o2 e4 g4 b4 g4 | o2 c4 e4 g4 e4 | o2 g4 b4 o3 d4 o2 b4 | o2 d4 f+4 a4 f+4 |
+  o2 c4 e4 g4 e4 | o2 d4 f+4 a4 f+4 | o2 g4 b4 o3 d4 o2 b4 | o2 g4 d4 g2 |
+
+track drums kit vol=0.38 rev=0.14
+  v78 L [ b4 h8 h8 s4 h8 h8 | ]16

@@ -198,7 +198,14 @@ public static class ScriptParser
                 string species = r.Text("a species' name");
                 int level = r.Int("its level");
                 if (level is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
-                return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level };
+                // (plan 21 · H6: `holding "Mystic Water"`, the item the Pokémon comes with, as Emerald's Castform does)
+                string held = "";
+                if (r.More)
+                {
+                    r.OneOf("holding");
+                    held = r.Text("the item it holds");
+                }
+                return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level, Other = held };
             }
             case "givebadge":
                 return new Instruction { Op = Op.GiveBadge, Line = line, Name = r.Badge() };

@@ -1,0 +1,25 @@
+{
+  // Fortree City (plan 21 · H6): the city in the treetops, its houses built round the trunks and joined by rope
+  // bridges, with Winona's Gym on its east side behind a Kecleon nobody can see (fortree_city.txt). The decoration shop
+  // stays shut for part b
+  "area": "fortree_city",
+  "bgmTrack": "hoenn/fortree",
+  "trees": "Round",
+  "architecture": "Treetop",
+  "locked": [ 8 ],
+  "people": {
+    "man_2": { "name": "Man", "dialog": [ "Nobody believes me, but I saw an enormous Pokémon high in the sky, twisting as it flew out to sea." ] },
+    "girl_1": { "name": "Girl", "dialog": [ "The trees here drink up the rain and grow taller every year. That's why we build our houses up in them!" ] },
+    "woman_5": { "name": "Woman", "script": "Woman" },
+    "boy_1": { "name": "Boy", "dialog": [ "When I leave my window open, Bug Pokémon fly right into my room. I don't mind. They're good company." ] },
+    "old_man": { "name": "Old Man", "dialog": [ "Living among the trees keeps everyone hale and hearty. The fresh air does wonders, young one!" ] },
+    "gameboy_kid": { "name": "Boy", "dialog": [ "Some Pokémon only evolve when they're traded. I wish I had someone to trade with!" ] },
+    "kecleon": { "name": "Kecleon", "npcType": "Unseen", "script": "Kecleon" }
+  },
+  "signs": {
+    "FortreeCity_EventScript_CitySign": "Fortree City\nA city that lives high among the trees",
+    "FortreeCity_EventScript_GymSign": "Fortree City Pokémon Gym\nLeader: Winona\nShe rides the winds above the forest!",
+    "Common_EventScript_ShowPokemonCenterSign": "Pokémon Center\nRest your weary Pokémon here.",
+    "Common_EventScript_ShowPokemartSign": "Poké Mart\nFor all your trainer needs."
+  }
+}

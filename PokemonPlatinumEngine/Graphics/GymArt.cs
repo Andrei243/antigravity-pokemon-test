@@ -121,6 +121,9 @@ internal static class GymArt
     /// <summary>The gold of the original's gears and the steel blue of its "alt" gears (style guide, "Gyms").</summary>
     public static Tone GearTone(bool alt) => alt ? Tone.Of(110, 150, 214, 164, 198, 244, 66, 96, 160) : Tone.Of(228, 184, 58, 250, 220, 118, 164, 122, 36);
 
+    /// <summary>The weathered wood of the Fortree Gym's gates (plan 21 · H6).</summary>
+    public static readonly Tone GateWood = Tone.Of(164, 118, 74, 204, 160, 110, 104, 70, 42);
+
     /// <summary>The pale steel of the walkways.</summary>
     public static readonly Tone Deck = Tone.Of(186, 194, 210, 214, 220, 232, 128, 136, 156);
 

@@ -528,7 +528,9 @@ public sealed partial class ScriptRunner
             case Op.GivePokemon:
             {
                 var species = PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
-                Result = host.GivePokemon(new Pokemon(species, i.Number)) ? 1 : 2;
+                var gift = new Pokemon(species, i.Number);
+                if (i.Other.Length > 0) gift.HeldItem = ItemDatabase.Get(i.Other) ?? throw Wrong(i, $"there is no item '{i.Other}'");
+                Result = host.GivePokemon(gift) ? 1 : 2;
                 break;
             }
             case Op.GiveBadge:

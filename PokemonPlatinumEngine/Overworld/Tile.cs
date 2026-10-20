@@ -268,7 +268,9 @@ public enum Architecture
     /// <summary>White stucco under sea-turquoise hip roofs with shutters: the warm port of the first Sevii Island (One Island, plan 19 · K7).</summary>
     Isle,
     /// <summary>White clapboard under ember-orange gable roofs with a chimney and shutters: the hot-spring town on the volcano's slope (Lavaridge, plan 21 · H4, part b).</summary>
-    Spa
+    Spa,
+    /// <summary>Weathered boards under leaf-green gable roofs with shutters: the city of houses built in the treetops (Fortree, plan 21 · H6).</summary>
+    Treetop
 }
 
 /// <summary>Visual theme for indoor maps; <see cref="None"/> means the map is outdoors.</summary>

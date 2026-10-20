@@ -285,6 +285,7 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Verdanturf (Glade) | plaster | gable, moss green `96,140,82` | a chimney, flower boxes: the quiet town of clean air at the foot of the hills, fenced in wood (plan 21 · H3, part b) |
 | Fallarbor (Hayloft) | logs | gable, rust red `160,74,52` | a chimney, shutters: the farming town under the falling ash below Mt. Chimney, fenced in wood (plan 21 · H4, part a) |
 | Lavaridge (Spa) | white clapboard | gable, ember orange `214,112,48` | a chimney, shutters: the hot-spring town on the volcano's slope, steam over its pools, its yards walled in stone (plan 21 · H4, part b) |
+| Fortree (Treetop) | weathered boards | gable, leaf green `84,138,70` | shutters: the city in the treetops, each house on a plank platform up a ladder and the platforms joined by walkways over the forest floor, which wanders under them; Route 119's house is Fortree's too (plan 21 · H6) |
 | One Island (Isle) | white stucco | hip, sea turquoise `46,150,160` | shutters: the warm port of the first Sevii Island, all sea light and sun-bleached walls (plan 19 · K7; the other Sevii towns take it until their own sessions) |
 
 - **Snow on a roof**: instead of tiles, a 64×64 sheet of snow `226,234,246` with drift lines `204,216,238` three to six texels long and a blue shade `188,202,230` along the two rows above the eave; the fascia stays the building's own. Snowpoint's Center and Mart keep their shapes and signs under it.

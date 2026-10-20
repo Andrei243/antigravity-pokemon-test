@@ -504,7 +504,63 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     (`tools/dev/ab.sh` on the commit before part b with `sea floor`), which is what "Done when" still waits for: the
     caustics are two full-screen draws of a 64-texel texture and the kelp sway geometry, so the floor is the scene to
     watch; looking at `h94` to `h99`, `a40`, `a41` and listening to the bed and `bubbles` (MP3s from MusicRender's WAVs).
-- [ ] H6 Route 118 to Fortree
+- [ ] H6 Route 118 to Fortree (part a done 2026-10-20, wave 38: Route 118 to Winona and Route 120; part b, Route 121
+  and the Safari Zone, left)
+  - **Played**: Steven on Route 118, coming to the ledge's edge above whichever of the three tiles the player steps on,
+    hopping down and walking off east (`VAR_ROUTE118_STATE`); the fisherman's Good Rod; the Weather Institute held by
+    Team Aqua, Shelly beaten upstairs, a grunt's news of Mt. Pyre, Team Aqua gone behind a fade, Castform at 25 holding a
+    Mystic Water, the workers back downstairs as the player comes out (`VAR_WEATHER_INSTITUTE_STATE` 0 to 2), the ground
+    floor's beds that heal; the rival on Route 119's bridge by the starter's team, HM02, the rival running off and Scott
+    coming down the path (`VAR_ROUTE119_STATE`, `VAR_SCOTT_STATE`); Kecleon nobody can see, two on Route 119 and five on
+    Route 120 battled at 30 once the Devon Scope is had, Fortree's on the bridge to the Gym fleeing; Steven on Route 120,
+    asked and told "not yet" or shown the bridge's Kecleon, the Devon Scope given; the beauty's berry a day; Winona, the
+    Feather Badge with her six trainers counted beaten, TM40 and her number; six route trainers registered in Match Call
+    once beaten (Rose, Dalton, Jackson, Catherine, Robert, Jeffrey). Every scene a `scene`. **No story version raised**:
+    `common.HoennChapterSeven` (called by `HoennNewGame`, and by Route 118's and Route 119's arrival scripts for a save
+    that never ran it, `FLAG_HOENN_CHAPTER_SEVEN`) hides the stretch's people. Rulings: "Route 118 to Fortree City".
+  - **Opened**: Routes 118, 119 and 120, Fortree City (`Architecture.Treetop`, the style guide's row first: weathered
+    boards, leaf-green gables, shutters) and twelve rooms (Route 119's house, the Weather Institute's two floors,
+    Fortree's five houses, its Mart, its Pokémon Center on both floors and Winona's Gym); 160 areas. Fortree's tileset
+    has its rows in `GbaCover.HoennRanges` (the plank walks and platforms as bridges, the ladders as steps, the forest
+    floor's earth, the trunks and canopies as trees). Shut: the decoration shop (H10), the Ancient Tomb and the Scorched
+    Slab (`locked`), Route 121 and on. A spawn for Fortree (7) and **Fly over Hoenn**: the Town Map's `fly` places for
+    every spawn on the overworld, each on its town's cells, so the Feather Badge's Fly lands where plan 02 · S2's Fly
+    lands in Sinnoh.
+  - **Engine**: `FortreeGates` (`Overworld/FortreeGates.cs`, a `GymPuzzle`, Emerald's `rotating_gate.c` with the
+    Fortree layout: eight gates of rails turning on a corner's pivot, a step into an arm turning it a quarter round
+    unless an arm would sweep into a wall, laid out afresh on every arrival; `GymPuzzle.Bars` and `Crossed`, asked by
+    `FieldMovement.Step` and `Player`; drawn by `GymPieces` with `GymArt`'s rails), named by a room's entry in Hoenn's
+    `world.json` (`WorldMapEntry.Puzzle`, which `WorldMapBuilder` hands `GymPuzzle.Create`); `NPC.UnseenType`
+    ("Unseen"): a thing of the map in the way and spoken to, drawn as nothing and casting no shadow (Emerald's
+    `invisible` Kecleon); `givepokemon "<species>" <level> holding "<item>"` (the parser, the runner,
+    `ScriptLibrary.Problems`, `docs/scripts.md`, `ScriptTests`). The Devon Scope (item 9111) in the importer's overrides
+    and `items.json`, with its Romanian name.
+  - **Looks and music**: Winona and Shelly in `characters.json`; the Kecleon have no look (they are never drawn). Songs
+    (ours, rendered clash-free, −19.0 to −20.2 LUFS, not yet heard): `route118`, `route119` (Route 119 and its
+    institute's road), `fortree` (the city and its rooms), `route120`. The institute plays Rustboro's song, as Emerald's
+    does. `safari_zone` is part b's.
+  - **Tests** (written, not run): `HoennStoryTests` (`TheSeventhStretchPlaysFromRouteOneEighteenToWinona` three ways by
+    look and starter, `StevenOnRouteOneTwentyWaitsWhenThePlayerIsNotReady`,
+    `ANewGameOfHoennHidesTheSeventhStretchsPeopleAndAnOlderSaveHasThemHiddenOnTheWay`,
+    `TheSongsOfRouteOneEighteenToFortreeAreThere`); `HoennTests` (`FortreeCityIsOpenWithItsFlySpotItsTreetopsAndItsRooms`
+    with the Fly places and Fortree's cover rows, `RoutesOneNineteenAndOneTwentyHaveTheirWeatherAndTheirSongs`,
+    `AKecleonNobodyCanSeeStandsInTheWayOnFortreesBridge`, `TheFortreeGymsGatesTurnWhenPushedAndHoldAgainstAWall`);
+    `ScriptTests` (`APokemonGivenHoldingAnItemComesWithIt`, a parse error). The content check finds nothing.
+  - **Shots** (written, not taken): the `hoenn` mode's `h100`–`h117` (Route 118, Steven's ledge, Route 119 south and in
+    its rain, the institute outside and on both floors, Route 119 north, Fortree from its middle and west with a
+    `_native` crop, the Gym with a `_native` crop, the Center, the Mart, a house, Route 119's house, Route 120's bridge,
+    rain and cloud) and after dark `h118_fortree_night`, `h119_route119_rain_night`; the scenes `hs114`–`hs139` at the
+    end of `HoennScenes` (Steven on Route 118, the institute held, Shelly and her battle, the grunt's news, Castform, the
+    rival and his battle, HM02, Scott, Route 119 in the rain, the unseeable Kecleon, Steven on Route 120, the Scope, the
+    Kecleon showing itself and its battle, the Scope given, the Kecleon fleeing, Winona, her battle and the Badge);
+    `profile` times "fortree city in the treetops", "route 119 in the rain" and "fortree gym, the rotating gates".
+  - **Left for part b**: Route 121, the Safari Zone (Hoenn's tables on the Great Marsh's `SafariGame`, `safari_zone`),
+    Gabby and Ty's interviews (hidden by `HoennChapterSeven`), the Ancient Tomb and the Scorched Slab, Fortree's house
+    trade, house 2's Hidden Power quiz and the Sleep Talk tutor, house 4's Wingull errand (its Wingull hidden), the plank
+    bridges' bounce underfoot (Emerald's `MB_FORTREE_BRIDGE` step effect) and the bridge's metatiles swapped once
+    Fortree's Kecleon has fled; then the "Done when": Winona beaten in the harness, and Fortree's bridges looked at as
+    decks over the forest floor in `h108` and `h109`. The Lavaridge Gym's warp at 2, 15 (Gerald, a buried trainer
+    standing on a warp) was not touched.
 - [ ] H7 Lilycove, Mt. Pyre and the hideouts
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis
 - [ ] H9 Ever Grande and the League

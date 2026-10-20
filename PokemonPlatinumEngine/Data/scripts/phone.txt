@@ -141,7 +141,8 @@ label Owner
 # ------------------------------------------------------------------ Hoenn's Match Call (plan 21 · H2, part b)
 # The PokéNav's numbers (Data/world/hoenn/phone.json): calls the player makes from its Match Call page. Nobody of
 # Hoenn rings on their own yet. Plan 21 · H3 added Steven, Brawly, Scott and the two tubers of Route 109's beach, and its second part Wattson and eight
-# trainers of Routes 110 and 117; plan 21 · H4, part b Flannery.
+# trainers of Routes 110 and 117; plan 21 · H4, part b Flannery; plan 21 · H6 Winona and six trainers of Routes 118
+# to 120.
 
 # Mom, at home in Littleroot Town
 script HoennMom
@@ -201,6 +202,13 @@ script Wattson
 script Flannery
   speaker "Flannery"
   say "{player}! It's Flannery. I've been training in the hot springs every morning. My Pokémon are fired up!"
+  end
+
+
+# Winona, Fortree's Gym Leader, registered with her Badge (plan 21 · H6)
+script Winona
+  speaker "Winona"
+  say "Hello, {player}. This is Winona. The wind over Fortree is strong today. My Altaria is soaring above the trees."
   end
 
 
@@ -278,4 +286,46 @@ script HoennDylan
 script HoennMaria
   speaker "Maria"
   say "Maria here! Doduo and I beat our best time on Route 117. Two heads really are better than one!"
+  end
+
+
+# Rose, the Aroma Lady of Route 118 (plan 21 · H6)
+script HoennRose
+  speaker "Rose"
+  say "Rose here. My Roselia's flowers have opened at last. The whole house smells sweet!"
+  end
+
+
+# Dalton, the guitarist of Route 118
+script HoennDalton
+  speaker "Dalton"
+  say "Yo, it's Dalton! I wrote a new song about the river on Route 118. My Whismur hums along!"
+  end
+
+
+# Jackson, the Pokémon Ranger of Route 119
+script HoennJackson
+  speaker "Jackson"
+  say "Jackson speaking. The rain on Route 119 hasn't let up all week. Perfect for training in the tall grass."
+  end
+
+
+# Catherine, the Pokémon Ranger of Route 119
+script HoennCatherine
+  speaker "Catherine"
+  say "Hi, it's Catherine! My Gloom loves the rain. I think it's grown a little since we battled."
+  end
+
+
+# Robert, the bird keeper of Route 120
+script HoennRobert
+  speaker "Robert"
+  say "Robert here. My Swablu flew all the way to Fortree and back today. Its wings are getting stronger!"
+  end
+
+
+# Jeffrey, the bug maniac of Route 120
+script HoennJeffrey
+  speaker "Jeffrey"
+  say "It's Jeffrey! I found a Surskit skating on a puddle in the rain. Bugs are the best, aren't they?"
   end

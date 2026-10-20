@@ -1,0 +1,11 @@
+{
+  // Fortree City's Pokémon Center (plan 21 · H6)
+  "area": "fortree_city_pokemon_center_1f",
+  "bgmTrack": "hoenn/fortree",
+  "people": {
+    "fortree_nurse": { "name": "Nurse", "script": "Nurse" },
+    "gentleman": { "name": "Gentleman", "dialog": [ "Up here in the trees, the Pokémon Center feels like a nest. A very comfortable nest." ] },
+    "man_3": { "name": "Man", "dialog": [ "A Pokémon's moves aren't everything. How you use them is what counts." ] },
+    "boy_3": { "name": "Boy", "dialog": [ "There's a shop in town that sells things to decorate a secret base. I've been saving up!" ] }
+  }
+}

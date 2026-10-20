@@ -1292,4 +1292,162 @@ public class HoennStoryTests
             Assert.True(MusicLibrary.Exists(song), song);
         Assert.Contains("Revival Herb", MartDatabase.Stock("lavaridge_herb_shop", 0).Select(i => i.Name));
     }
+
+    // ------------------------------------------------------------------ plan 21 · H6, part a: Route 118 to Fortree City
+
+    /// <summary>Past the sixth stretch: Flannery's and Norman's Badges won and Surf had (plan 21 · H4, part b).</summary>
+    private static Game PastNorman(int starter, PlayerLook look)
+    {
+        var game = PastMeteorFalls(starter, look);
+        game.Story.GiveBadge(RegionDatabase.Hoenn, "Heat");
+        game.Story.GiveBadge(RegionDatabase.Hoenn, "Balance");
+        game.Story.Set("FLAG_RECEIVED_HM_SURF");
+        game.Story.SetVar("VAR_PETALBURG_GYM_STATE", 7);
+        game.Bag.AddItem(ItemDatabase.Get("HM03")!);
+        return game;
+    }
+
+    [Theory]
+    [InlineData(0, PlayerLook.Boy)]
+    [InlineData(1, PlayerLook.Girl)]
+    [InlineData(2, PlayerLook.Boy)]
+    public void TheSeventhStretchPlaysFromRouteOneEighteenToWinona(int starter, PlayerLook look)
+    {
+        var game = PastNorman(starter, look);
+        string mine = RegionDatabase.Get(RegionDatabase.Hoenn)!.Starters[starter];
+        Assert.True(game.Story.Has("FLAG_HOENN_CHAPTER_SEVEN"));
+
+        // Route 118: Steven hops down the ledge, has his say and walks off east; the fisherman's Good Rod
+        game.Arrive("Hoenn", 284, 152);
+        Assert.NotNull(game.Present("route118_steven"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1"));
+        var steven = game.Step("StevenTrigger1");
+        Assert.Contains(steven.Transcript, l => l.Text.Contains("Route 120"));
+        Assert.Equal(1, game.Story.Var("VAR_ROUTE118_STATE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_118_STEVEN"));
+        Assert.Null(game.Present("route118_steven"));
+        Assert.False(game.Fires("StevenTrigger0"));
+        game.Talk("fisherman");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Good Rod")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_GOOD_ROD"));
+
+        // The Weather Institute: Shelly beaten upstairs, Team Aqua gone, Castform holding a Mystic Water
+        game.Arrive("Route119_WeatherInstitute_2F", 17, 2);
+        Assert.Equal((1, 6), (game.Present("weather_institute_2f_scientist")!.GridX, game.Present("weather_institute_2f_scientist")!.GridY));
+        var shelly = game.Talk("weather_institute_2f_shelly");
+        Assert.Contains(shelly.Log, l => l.StartsWith("battle hoenn_shelly_weather_institute"));
+        Assert.Equal(1, game.Story.Var("VAR_WEATHER_INSTITUTE_STATE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_119_TEAM_AQUA"));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_CASTFORM"));
+        Assert.Null(game.Present("weather_institute_2f_shelly"));
+        Assert.NotNull(game.Present("man_4"));
+        var castform = Assert.Single(game.Party.Members, p => p.Species.Name == "Castform");
+        Assert.Equal(25, castform.Level);
+        Assert.Equal("Mystic Water", castform.HeldItem?.Name);
+
+        // Back out on Route 119: the workers go downstairs and the bridge before the door is free
+        game.Arrive("Hoenn", 286, 33);
+        Assert.Equal(2, game.Story.Var("VAR_WEATHER_INSTITUTE_STATE"));
+        Assert.False(game.Story.Has("FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS"));
+        Assert.DoesNotContain(game.Map.NPCs, n => n.Key == "aqua_member_m" && n.GridX == 293 && n.GridY == 33);
+
+        // The rival on the bridge north of the institute: the battle by the starter, HM02, and Scott afterwards
+        game.Arrive("Hoenn", 305, 33);
+        int scott = game.Story.Var("VAR_SCOTT_STATE");
+        var rival = game.Step("RivalTrigger1");
+        Assert.Contains(rival.Log, l => l.StartsWith($"battle hoenn_{game.Rival.ToLowerInvariant()}_route_119_{mine.ToLowerInvariant()}"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM02")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_HM_FLY"));
+        Assert.Equal(1, game.Story.Var("VAR_ROUTE119_STATE"));
+        Assert.Equal(scott + 1, game.Story.Var("VAR_SCOTT_STATE"));
+        foreach (string flag in new[] { "FLAG_HIDE_ROUTE_119_RIVAL", "FLAG_HIDE_ROUTE_119_SCOTT" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.False(game.Fires("RivalTrigger2"));
+
+        // Fortree City: the Kecleon on the bridge to the Gym is nothing anyone can see, and can't be got past yet
+        game.Arrive("Hoenn", 345, 10);
+        Assert.True(game.Story.Has("FLAG_VISITED_FORTREE_CITY"));
+        var unseen = game.Talk("kecleon");
+        Assert.Contains(unseen.Transcript, l => l.Text.Contains("unseeable"));
+        Assert.False(game.Story.Has("FLAG_HIDE_FORTREE_CITY_KECLEON"));
+
+        // Route 120: Steven, the Kecleon on the bridge shown by the Devon Scope, and the Scope handed over
+        game.Arrive("Hoenn", 373, 17);
+        var bridge = game.Talk("route120_steven");
+        Assert.Contains(bridge.Log, l => l.StartsWith("wildbattle Kecleon 30"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Devon Scope")!));
+        foreach (string flag in new[] { "FLAG_RECEIVED_DEVON_SCOPE", "FLAG_HIDE_ROUTE_120_STEVEN", "FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.Null(game.Present("route120_steven"));
+        Assert.Null(game.Present("bridge_kecleon"));
+        // One of the five more along the route, seen through the Scope now
+        game.Arrive("Hoenn", 380, 12);
+        var another = game.Talk("kecleon");
+        Assert.Contains(another.Log, l => l.StartsWith("wildbattle Kecleon 30"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROUTE_120_KECLEON_1"));
+
+        // Back in Fortree City, the Kecleon is seen and flees, and the woman can go to the Gym
+        game.Arrive("Hoenn", 345, 10);
+        var fled = game.Talk("kecleon");
+        Assert.DoesNotContain(fled.Log, l => l.StartsWith("wildbattle"));
+        Assert.True(game.Story.Has("FLAG_KECLEON_FLED_FORTREE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_FORTREE_CITY_KECLEON"));
+        Assert.DoesNotContain(game.Map.NPCs, n => n.Key == "kecleon" && n.GridX == 345 && n.GridY == 8);
+        var woman = game.Talk("woman_5");
+        Assert.Contains(woman.Transcript, l => l.Text.Contains("gone"));
+
+        // Winona: the Feather Badge, TM40, the Gym's trainers counted beaten and her number in the PokéNav
+        game.Arrive("FortreeCity_Gym", 15, 22);
+        var winona = game.Talk("winona");
+        Assert.Contains(winona.Log, l => l.StartsWith("battle hoenn_winona_1"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Hoenn, "Feather"));
+        Assert.Equal(6, game.Story.BadgeCount(RegionDatabase.Hoenn));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM40")!));
+        foreach (string flag in new[] { "FLAG_DEFEATED_FORTREE_GYM", "FLAG_RECEIVED_TM_AERIAL_ACE", "FLAG_ENABLE_WINONA_MATCH_CALL", "FLAG_PHONE_CONTACT_WINONA", "FLAG_SCOTT_CALL_FORTREE_GYM" })
+            Assert.True(game.Story.Has(flag), flag);
+        foreach (string id in new[] { "hoenn_jared", "hoenn_flint", "hoenn_ashley", "hoenn_edwardo", "hoenn_humberto", "hoenn_darius" })
+            Assert.True(game.Story.HasDefeated(id), id);
+        var again = game.Talk("winona");
+        Assert.DoesNotContain(again.Log, l => l.StartsWith("battle"));
+    }
+
+    [Fact]
+    public void StevenOnRouteOneTwentyWaitsWhenThePlayerIsNotReady()
+    {
+        var game = PastNorman(0, PlayerLook.Boy);
+        game.Arrive("Hoenn", 373, 17);
+        game.Decide = (_, _) => 1;
+        var refused = game.Talk("route120_steven");
+        Assert.DoesNotContain(refused.Log, l => l.StartsWith("wildbattle"));
+        Assert.True(game.Story.Has("FLAG_NOT_READY_FOR_BATTLE_ROUTE_120"));
+        Assert.NotNull(game.Present("route120_steven"));
+        game.Decide = null;
+        game.Talk("route120_steven");
+        Assert.True(game.Story.Has("FLAG_RECEIVED_DEVON_SCOPE"));
+    }
+
+    [Fact]
+    public void ANewGameOfHoennHidesTheSeventhStretchsPeopleAndAnOlderSaveHasThemHiddenOnTheWay()
+    {
+        var fresh = new Game();
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_SEVEN", "FLAG_HIDE_ROUTE_119_RIVAL", "FLAG_HIDE_ROUTE_119_SCOTT", "FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS", "FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL", "FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1" })
+            Assert.True(fresh.Story.Has(flag), flag);
+        Assert.False(fresh.Story.Has("FLAG_HIDE_ROUTE_118_STEVEN"));
+
+        // A save from before plan 21 · H6 never ran the chapter's script: Route 118's arrival runs it, and no story version is raised
+        var old = PastNorman(0, PlayerLook.Boy);
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_SEVEN", "FLAG_HIDE_ROUTE_119_RIVAL", "FLAG_HIDE_ROUTE_119_SCOTT" })
+            old.Story.Unset(flag);
+        old.Arrive("Hoenn", 270, 148);
+        foreach (string flag in new[] { "FLAG_HOENN_CHAPTER_SEVEN", "FLAG_HIDE_ROUTE_119_RIVAL", "FLAG_HIDE_ROUTE_119_SCOTT" })
+            Assert.True(old.Story.Has(flag), flag);
+    }
+
+    [Fact]
+    public void TheSongsOfRouteOneEighteenToFortreeAreThere()
+    {
+        foreach (string song in new[] { "hoenn/route118", "hoenn/route119", "hoenn/fortree", "hoenn/route120" })
+            Assert.True(MusicLibrary.Exists(song), song);
+        Assert.Equal(9111, ItemDatabase.Get("Devon Scope")!.Id);
+    }
 }

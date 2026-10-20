@@ -294,6 +294,17 @@ public class NPC
     public const string DomeFossilType = "DomeFossil", HelixFossilType = "HelixFossil", OldAmberType = "OldAmber",
         PokedexType = "Pokedex", TownMapType = "TownMap";
 
+    /// <summary>
+    /// Something in the way that nobody sees (plan 21 · H6: Emerald's Kecleon, whose movement is <c>invisible</c>): a
+    /// thing of the map on its tile, in the way like a person and spoken to like one, drawn as nothing at all and
+    /// casting no shadow. The scene that shows what it is lights its tile (<c>effect sparkles</c>), cries and battles
+    /// it, and then hides it by its flag (<c>common.HoennKecleonFound</c>).
+    /// </summary>
+    public const string UnseenType = "Unseen";
+
+    /// <summary>Whether this is something in the way that nobody sees (<see cref="UnseenType"/>).</summary>
+    public bool IsUnseen => NpcType == UnseenType;
+
     /// <summary>Which thing of a Gym's puzzle this is; null for anyone and anything else.</summary>
     public PropType? GymThing => NpcType switch
     {
@@ -354,7 +365,7 @@ public class NPC
     /// A thing rather than a person: an item's ball, an obstacle or a patch of soil. It is drawn as a card, never
     /// as a character, and never turns to face anyone.
     /// </summary>
-    public bool IsThing => IsItemBall || IsObstacle || GymThing != null || IsBerrySoil;
+    public bool IsThing => IsItemBall || IsObstacle || GymThing != null || IsBerrySoil || IsUnseen;
 
     // ---- The story (plan 02 · S1)
 
