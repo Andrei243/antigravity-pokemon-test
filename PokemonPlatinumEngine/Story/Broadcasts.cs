@@ -50,6 +50,19 @@ public sealed record BroadcastFacts
     /// two words as their keys (<see cref="PhraseGroups"/>); null until an interview has been given.
     /// </summary>
     public IReadOnlyList<string>? Interview { get; init; }
+
+    /// <summary>
+    /// Gabby and Ty's segment, on the air once the player has given them an interview (plan 21 · H6, part c; the
+    /// original's <c>gabbyAndTyData.onAir</c>): the route it was given on (111, 118 or 120), the two Pokémon the
+    /// player fought beside (by the name shown; the second null with one), what the battle was remembered for
+    /// (<see cref="GabbyAndTyTrivia"/>) and the answer given, as keys.
+    /// </summary>
+    public bool GabbyOnAir { get; init; }
+    public int GabbyRoute { get; init; }
+    public string? GabbyMon1 { get; init; }
+    public string? GabbyMon2 { get; init; }
+    public int GabbyTrivia { get; init; }
+    public IReadOnlyList<string>? GabbyQuote { get; init; }
 }
 
 /// <summary>The programmes a television shows when it has nothing of its own (plan 08 · P8; plan 08's decision 5).</summary>
@@ -67,6 +80,8 @@ public enum Programme
     HallOfFame,
     /// <summary>Jubilife Street Talk: the answer the player gave Jubilife City's reporters, read back (plan 08 · P9). Once an interview has been given.</summary>
     Interview,
+    /// <summary>Gabby and Ty's segment on the trainer they last interviewed (plan 21 · H6, part c). Hoenn's, once an interview has been given.</summary>
+    GabbyAndTy,
 }
 
 /// <summary>
@@ -82,8 +97,17 @@ public static class Broadcasts
     /// <summary>The flag the reporters set as an interview is given and a television clears as it first shows it (plan 08 · P9).</summary>
     public const string InterviewOnAirFlag = "FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR";
 
+    /// <summary>The flags and variables of Gabby and Ty's segment (plan 21 · H6, part c); the scripts of <c>common.txt</c> keep them.</summary>
+    public const string GabbyOnAirFlag = "FLAG_GABBY_AND_TY_ON_AIR";
+    public const string GabbyNewFlag = "FLAG_GABBY_AND_TY_SHOW_NEW";
+    public const string GabbyQuoteName = "GABBY_AND_TY";
+    public const string GabbyRouteVariable = "VAR_GABBY_AND_TY_ROUTE";
+    public const string GabbyTriviaVariable = "VAR_GABBY_AND_TY_TRIVIA";
+    public const string GabbyMon1Variable = "VAR_GABBY_AND_TY_MON_1";
+    public const string GabbyMon2Variable = "VAR_GABBY_AND_TY_MON_2";
+
     /// <summary>The programmes by the names a script calls them (<c>broadcast interview</c>), in the enum's order.</summary>
-    public static string[] Names => new[] { "clock", "pokedex", "survey", "lottery", "halloffame", "interview" };
+    public static string[] Names => new[] { "clock", "pokedex", "survey", "lottery", "halloffame", "interview", "gabbyandty" };
 
     /// <summary>A programme by the name a script calls it.</summary>
     public static Programme Named(string name) => (Programme)Math.Max(0, Array.IndexOf(Names, name));
@@ -113,9 +137,19 @@ public static class Broadcasts
             TeamSize = host.Party.Count,
             Lead = lead?.DisplayName,
             LeadLevel = lead?.Level ?? 0,
-            Interview = host.Story.PhraseOf(StoryState.InterviewPhrase) is { } answer && PhraseGroups.IsWhole(answer) ? answer : null
+            Interview = host.Story.PhraseOf(StoryState.InterviewPhrase) is { } answer && PhraseGroups.IsWhole(answer) ? answer : null,
+            GabbyOnAir = host.Story.Has(GabbyOnAirFlag),
+            GabbyRoute = host.Story.Var(GabbyRouteVariable),
+            GabbyMon1 = SpeciesShown(host.Story.Var(GabbyMon1Variable)),
+            GabbyMon2 = SpeciesShown(host.Story.Var(GabbyMon2Variable)),
+            GabbyTrivia = host.Story.Var(GabbyTriviaVariable),
+            GabbyQuote = host.Story.PhraseOf(GabbyQuoteName) is { } quote && PhraseGroups.IsWhole(quote) ? quote : null
         };
     }
+
+    /// <summary>A species by the National Pokédex number a variable holds, by the name shown; null for none.</summary>
+    private static string? SpeciesShown(int dexNumber) =>
+        dexNumber > 0 && PokemonDatabase.GetByDex(dexNumber) is { } species ? species.DisplayName : null;
 
     /// <summary>What is on for these facts, in a fixed order: the die picks among them.</summary>
     public static IReadOnlyList<Programme> On(BroadcastFacts facts)
@@ -126,6 +160,7 @@ public static class Broadcasts
         if (facts.Region == RegionDatabase.Sinnoh) on.Add(Programme.Lottery);
         if (facts.LeagueVictories > 0) on.Add(Programme.HallOfFame);
         if (facts.Interview != null) on.Add(Programme.Interview);
+        if (facts.GabbyOnAir && facts.Region == RegionDatabase.Hoenn && facts.GabbyMon1 != null) on.Add(Programme.GabbyAndTy);
         return on;
     }
 
@@ -154,6 +189,7 @@ public static class Broadcasts
         Programme.Lottery => Lottery(facts),
         Programme.HallOfFame => HallOfFame(facts),
         Programme.Interview => Interview(facts),
+        Programme.GabbyAndTy => GabbyAndTy(facts),
         _ => Clock(facts),
     };
 
@@ -228,6 +264,28 @@ public static class Broadcasts
         Text.Of("broadcast.interview.answer", ("player", f.PlayerName), ("phrase", PhraseGroups.Shown(f.Interview ?? Array.Empty<string>()))),
         Text.Of("broadcast.interview.close")
     };
+
+    /// <summary>
+    /// Gabby and Ty on the trainer they last stopped (plan 21 · H6, part c): the route, the Pokémon fought beside, the
+    /// one thing the battle was remembered for (the original's trivia: a battle over at once, or a Pokémon lost) and the
+    /// answer given, when there is one.
+    /// </summary>
+    private static IReadOnlyList<string> GabbyAndTy(BroadcastFacts f)
+    {
+        var lines = new List<string>
+        {
+            Text.Of("broadcast.search.open"),
+            Text.Of("broadcast.search.met", ("player", f.PlayerName), ("place", Text.Of(f.GabbyRoute switch { 118 => "broadcast.search.place118", 120 => "broadcast.search.place120", _ => "broadcast.search.place111" })))
+        };
+        lines.Add(f.GabbyMon2 == null
+            ? Text.Of("broadcast.search.alone", ("player", f.PlayerName), ("mon", f.GabbyMon1))
+            : Text.Of("broadcast.search.pair", ("player", f.PlayerName), ("mon", f.GabbyMon1), ("other", f.GabbyMon2)));
+        if (f.GabbyTrivia == 1) lines.Add(Text.Of("broadcast.search.quick"));
+        else if (f.GabbyTrivia == 4) lines.Add(Text.Of("broadcast.search.lost", ("player", f.PlayerName)));
+        if (f.GabbyQuote != null) lines.Add(Text.Of("broadcast.search.quote", ("player", f.PlayerName), ("phrase", PhraseGroups.Shown(f.GabbyQuote))));
+        lines.Add(Text.Of("broadcast.search.close"));
+        return lines;
+    }
 
     private static IReadOnlyList<string> HallOfFame(BroadcastFacts f) => new[]
     {

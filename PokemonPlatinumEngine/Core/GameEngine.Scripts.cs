@@ -813,9 +813,16 @@ public partial class GameEngine
         if (flow.Choice.Visible) ModernUi.DrawChoices(VirtualWidth, VirtualHeight, flow.Choice.Options, flow.Choice.Cursor, flow.Choice.Shown);
     }
 
+    private bool steppedFromPlank;
+
     /// <summary>What a step leaves behind: a print, dust, leaves, a ring on the water, a splash where they rode out onto it.</summary>
     private void StepLeavesItsMark()
     {
+        // A step onto, along or off a plank bridge of Hoenn knocks on the wood (Emerald's SE_BRIDGE_WALK: the plank
+        // under the player or the one they left; plan 21 · H6, part c). The dip itself is the renderer's.
+        bool onPlank = (flow.Player.Mode is TravelMode.OnFoot or TravelMode.Cycling) && FieldLife.IsPlank(flow.Map, flow.Player.GridX, flow.Player.GridY);
+        if (onPlank || steppedFromPlank) AudioManager.PlaySound("bridge_walk");
+        steppedFromPlank = onPlank;
         if (flow.Player.JustRodeOut) world.Life.Splash(flow.Map, flow.Player.GridX, flow.Player.GridY);
         else world.Life.Footstep(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing, flow.Player.IsRunning, flow.Player.Mode);
         if (flow.Player.JustLanded && flow.Player.Mode != TravelMode.Surfing) world.Life.Landing(flow.Map, flow.Player.GridX, flow.Player.GridY);

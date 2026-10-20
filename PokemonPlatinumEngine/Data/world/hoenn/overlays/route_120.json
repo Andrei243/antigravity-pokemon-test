@@ -3,7 +3,7 @@
   // then south through rain and long grass toward Route 121 (route_120.txt). Emerald sets its weather by script as the
   // player crosses rows and columns: here the north end is clear, the middle wet and the south under cloud. The ways
   // into the Ancient Tomb and the Scorched Slab are open since part b. The shadow Emerald draws under the bridge's
-  // Kecleon, and Gabby and Ty, are left away
+  // Kecleon is left away; Gabby and Ty stand here in their turn (plan 21 · H6, part c)
   "area": "route_120",
   "bgmTrack": "hoenn/route120",
   "trees": "Round",
@@ -12,6 +12,10 @@
     { "x": 360, "z": 61, "width": 40, "depth": 39, "weather": "Cloudy" }
   ],
   "people": {
+    "route120_ty_1": { "name": "Ty", "script": "GabbyAndTyTy", "still": true },
+    "route120_gabby_1": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },
+    "route120_gabby_2": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },
+    "route120_ty_2": { "name": "Ty", "script": "GabbyAndTyTy", "still": true },
     "route120_steven": { "name": "Steven", "npcType": "steven", "script": "Steven", "still": true },
     "bridge_kecleon": { "name": "Kecleon", "npcType": "Unseen", "script": "BridgeKecleon" },
     "kecleon": { "name": "Kecleon", "npcType": "Unseen", "script": "Kecleon1" },

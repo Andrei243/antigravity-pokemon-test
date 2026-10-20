@@ -14,6 +14,7 @@
 # workers go back downstairs once the institute is free
 script OnEnter
   if not flag FLAG_HOENN_CHAPTER_SEVEN call HoennChapterSeven
+  if not flag FLAG_HOENN_CHAPTER_SEVEN_C call HoennChapterSevenC
   if var VAR_WEATHER_INSTITUTE_STATE != 1 end
   setflag FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
   clearflag FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS

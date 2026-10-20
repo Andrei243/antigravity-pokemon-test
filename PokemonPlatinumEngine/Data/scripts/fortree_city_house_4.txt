@@ -1,0 +1,34 @@
+# A house of Fortree City (plan 21 · H6, part c). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/FortreeCity_House4/scripts.inc).
+#
+# The boy sends his Wingull off on an errand the first time he is spoken to (FLAG_WINGULL_SENT_ON_ERRAND): it runs out
+# of the door and is gone (FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL), and the Wingull of Mossdeep City's second house,
+# which Emerald shows at that moment (FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL), is the other half of the errand. That
+# half is plan 21 · H8's, who builds Mossdeep: the letter delivered (FLAG_WINGULL_DELIVERED_MAIL), the Wingull home
+# again and the boy's Mental Herb (FLAG_RECEIVED_MENTAL_HERB) are written there, so nothing here asks for them yet.
+# Until then the boy says the bird is still away, as Emerald's does.
+
+
+script Boy
+  face self player
+  speaker "Boy"
+  if flag FLAG_WINGULL_SENT_ON_ERRAND goto Away
+  say "There! Off you go, bird Pokémon!"
+  setflag FLAG_WINGULL_SENT_ON_ERRAND
+  clearflag FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL
+  walk fortree_house_wingull down 2 right 1 fast
+  hide fortree_house_wingull
+  setflag FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL
+  end
+label Away
+  say "Heh-heh, I've asked my Wingull to run an errand for me."
+  end
+
+
+# The Wingull waiting for its errand
+script Wingull
+  face self player
+  cry "Wingull"
+  speaker "Wingull"
+  say "Wingull: Pihyoh!"
+  end

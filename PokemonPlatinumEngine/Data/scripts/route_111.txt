@@ -10,6 +10,9 @@
 
 
 script OnEnter
+  # Gabby and Ty, where the count of their battles puts them (plan 21 · H6, part c; common.txt)
+  if not flag FLAG_HOENN_CHAPTER_SEVEN_C call HoennChapterSevenC
+  call GabbyAndTyUpdateLocation
   if defeated "hoenn_vicky" end
   clearflag FLAG_HIDE_ROUTE_111_VICTOR_WINSTRATE
   setflag FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE

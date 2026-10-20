@@ -2952,6 +2952,19 @@
       "asked": "\"Today we stopped {player} outside our studio and asked about life with Pokémon.\"",
       "answer": "\"And {player} told us, in just two words: {phrase}!\"",
       "close": "\"Short and sweet! That's all from Jubilife Street Talk.\""
+    },
+    "search": {
+      "open": "\"Gabby here, with Ty behind the camera! This is our hunt for trainers worth a second look!\"",
+      "met": "\"This week we tracked down a trainer called {player} {place}, and we got our battle!\"",
+      "place111": "on Route 111, out where the sand starts to blow",
+      "place118": "on Route 118, by the river",
+      "place120": "on Route 120, in the rain",
+      "alone": "\"{player} faced us side by side with {mon}, and not one of us blinked.\"",
+      "pair": "\"{player} sent out {mon} and {other} against the two of us. What a pair!\"",
+      "quick": "\"It was over so fast that Ty hardly had time to focus the lens!\"",
+      "lost": "\"{player} lost a Pokémon on the way to the win, but never let up. That's the spirit!\"",
+      "quote": "\"Asked how it felt, {player} gave us just two words: {phrase}!\"",
+      "close": "\"That's all for now! Gabby and Ty will be back on the road soon. Keep your eyes peeled!\""
     }
   },
   "phrases": {

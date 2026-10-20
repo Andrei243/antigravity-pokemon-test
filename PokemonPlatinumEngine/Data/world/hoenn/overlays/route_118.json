@@ -1,13 +1,19 @@
 {
   // Route 118 (plan 21 · H6): east of Mauville City across a river that needs Surf, then grass and a ledge up to the
   // way north to Route 119 (route_118.txt). Steven waits on the ledge over the path and comes down at the first step
-  // below him. The two ways into Terra Cave stay shut until the weather goes wrong (plan 21 · H8); Gabby and Ty are
-  // left away for part b
+  // below him. The two ways into Terra Cave stay shut until the weather goes wrong (plan 21 · H8); Gabby and Ty stand here
+  // in their turn (plan 21 · H6, part c)
   "area": "route_118",
   "bgmTrack": "hoenn/route118",
   "trees": "Round",
   "locked": [ 0, 1 ],
   "people": {
+    "route118_gabby_1": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },
+    "route118_ty_1": { "name": "Ty", "script": "GabbyAndTyTy", "still": true },
+    "route118_gabby_2": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },
+    "route118_ty_2": { "name": "Ty", "script": "GabbyAndTyTy", "still": true },
+    "route118_gabby_3": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },
+    "route118_ty_3": { "name": "Ty", "script": "GabbyAndTyTy", "still": true },
     "route118_steven": { "name": "Steven", "npcType": "steven", "still": true, "dialog": [ "The river runs fast here. I wonder what it has carried down from the mountains." ] },
     "fisherman": { "name": "Fisherman", "script": "GoodRodFisherman", "still": true },
     "girl_2": { "name": "Girl", "dialog": [ "With Surf, a Pokémon can carry you right across a river like this one. No bridge needed!" ] },

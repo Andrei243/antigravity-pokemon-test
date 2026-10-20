@@ -506,7 +506,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     watch; looking at `h94` to `h99`, `a40`, `a41` and listening to the bed and `bubbles` (MP3s from MusicRender's WAVs).
 - [ ] H6 Route 118 to Fortree (part a done 2026-10-20, wave 38: Route 118 to Winona and Route 120; part b done
   2026-10-20, wave 39: Route 121, the Safari Zone, the Ancient Tomb and the Scorched Slab, Fortree's trade, Hidden
-  Power quiz and Sleep Talk tutor; part c, Gabby and Ty, the Wingull errand and the bridges' bounce, left)
+  Power quiz and Sleep Talk tutor; part c done 2026-10-20, wave 40: Gabby and Ty, Fortree's half of the Wingull
+  errand and the plank bridges' bounce; what is left of the chapter is listed under "Left after part c")
   - **Played**: Steven on Route 118, coming to the ledge's edge above whichever of the three tiles the player steps on,
     hopping down and walking off east (`VAR_ROUTE118_STATE`); the fisherman's Good Rod; the Weather Institute held by
     Team Aqua, Shelly beaten upstairs, a grunt's news of Mt. Pyre, Team Aqua gone behind a fade, Castform at 25 holding a
@@ -611,12 +612,55 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     `HoennScenes` (the grunts and the road clear, the counter's question, the balls, the zone, the attendant's luck and
     his offer to leave, out past the counter, the trade offer and Pluses, the coin game, which hand, three in a row, the
     Sleep Talk tutor and the move learned).
-  - **Left for part c**: Gabby and Ty's interviews (hidden by `HoennChapterSeven`); house 4's Wingull errand (Mossdeep's
-    half is H8's, its Wingull hidden); the plank bridges' bounce underfoot (Emerald's `MB_FORTREE_BRIDGE` step effect)
-    and the bridge's metatiles swapped once Fortree's Kecleon has fled; the Safari Zone's Pokéblock feeders and the
-    Case the counter asks for (H11); the expansion's opening (H9); the Ancient Tomb's Flash in the chamber's middle and
-    Registeel (with the Sealed Chamber, H8 and after); then the "Done when": Winona beaten in the harness, and Fortree's
-    bridges looked at as decks over the forest floor in `h108` and `h109`.
+  - **Part c, played** (wave 40): *Gabby and Ty*, Emerald's reporter and cameraman, stand on Routes 111, 118 and 120 in
+    turn by the count of their battles (`VAR_GABBY_AND_TY_BATTLE_NUM`, 0 to 8: the nine places the area files give,
+    which goes round from 9 to 6 as Emerald's remainder does). `GabbyAndTyUpdateLocation` (`common.txt`), run by the
+    arrival scripts of the three routes, hides them where they were and shows them where the count puts them; each
+    person of the three areas' overlays runs `GabbyAndTyGabby` or `GabbyAndTyTy`, the same script on every route, with
+    two Pokémon on the team asked for (one is told to come back with two). The battle is a double against a party of
+    their own (`hoenn_gabby_and_ty_1` to `6`, class Interviewer: the first five by the count, the sixth after), and the
+    interview follows: the first time Emerald's one easy-chat word, here the phrase picker's two words (plan 08 · P9,
+    `phrase GABBY_AND_TY`), kept until the next battle, when the pair quote it back and ask the question of the battle
+    they remember. Two things of a battle are remembered for it, the two this game can tell: it was over at once
+    (`TURNS == 0`) or a Pokémon of the team fell in it (`FAINTED` rose). An interview given puts their segment on the
+    air (`FLAG_GABBY_AND_TY_ON_AIR`, a new `broadcast gabbyandty` programme, Hoenn's alone, on the first television looked
+    at after it by `FLAG_GABBY_AND_TY_SHOW_NEW`, then one among those a die draws until the next battle takes it off);
+    the segment says the route, the two Pokémon fought beside, what the battle is remembered for and the answer. Three
+    built-in variables came with it (`FAINTED`, `LEAD_SPECIES`, `SECOND_SPECIES`; `docs/scripts.md`). A battle already
+    fought on this visit leaves a word that the pair are watching (`FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN`, a local flag
+    standing in for Emerald's trainer flag and its temporary skip). *Fortree's fourth house*: the boy's first talk
+    sends the Wingull out of the door (`FLAG_WINGULL_SENT_ON_ERRAND`, hidden afterwards by
+    `FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL`, which part b had kept hidden for want of anything to do with it), clears
+    Mossdeep's Wingull's hide for H8, and from then on he says the bird is away on an errand. *The plank bridges*
+    (`FieldLife.PlankRows`, `Graphics/FieldLife.Planks.cs`; style guide, "Life", "Planks that give"): on the tiles
+    Emerald calls `MB_FORTREE_BRIDGE` (Hoenn's maps only, since Sinnoh's decks share `TileBehavior.Bridge` and must stay
+    still) the walker's sprite is lowered two rows for 0.07 s after their feet come onto a plank, one row until 0.13 s,
+    two again until 0.20 s, then one for as long as they stand, and the step is heard as the new sound `bridge_walk`.
+  - **Part c, decisions**: no story or save version is raised. The new people are hidden by `HoennChapterSevenC`
+    (`FLAG_HOENN_CHAPTER_SEVEN_C`), which `HoennNewGame` calls and which Routes 111, 118, 119 and 120's and Fortree
+    City's arrival scripts run for a save from before (`rulings.md`, "Gabby and Ty, the Wingull and the planks"). The
+    plank's picture is baked into its chunk and cannot move, so the walker carries the dip alone.
+  - **Part c, tests** (written, not run): `FieldLifeTests` (`ThePlankNumbersAreTheStyleGuides`,
+    `OnlyHoennsBridgesGiveUnderFoot`, `AWalkerOnAPlankDropsSpringsAndSettlesAndDropsAgainOnTheNext`), `SoundTests`
+    (`APlankBridgeKnocksUnderTheFeet`), `HoennStoryTests` (`GabbyAndTyStandWhereTheCountOfTheirBattlesPutsThemAndFightWithTheNthParty`,
+    `GabbyAndTyOnlySayTheyAreWatchingOnceFoughtAndWantTwoPokemonToBegin`,
+    `AnInterviewIsKeptQuotedBackAndPutOnTheAirAndTheBattleIsRememberedFor`, `ALostPokemonIsWhatTheNextBattleIsAskedAbout`,
+    `AnInterviewRefusedLeavesNothingOnTheAirButTheBattleIsCounted`, `GabbyAndTysSegmentIsHoennsAloneAndNeedsAnInterview`,
+    `FortreesBoySendsHisWingullOffOnItsErrandOnce`, `ANewGameOfHoennHidesGabbyAndTyAndAnOlderSaveIsGivenTheThirdPartOnTheWay`).
+    The content check finds nothing. `scripts.txt` of the golden files moves (common.txt, Routes 111, 118, 119, 120,
+    Fortree City and its fourth house).
+  - **Part c, shots** (written, not taken): the `hoenn` mode's `hs155`–`hs167` at the end of `HoennScenes` (the pair on
+    Route 111, spotting the player, the offer, the double battle, the pair beaten, the interview asked, the phrase
+    picker and its whole phrase, the viewers' line, Route 118's pair and the answer quoted, Route 120's pair, the boy and
+    his Wingull running out and gone, the plank before, giving, springing back and at rest). It prints the pair's
+    variables and flags after each stage and whether a plank tile was found near Fortree.
+  - **Left after part c**: the bridge's metatiles swapped once Fortree's Kecleon has fled (Emerald's bridge changes
+    picture; it wants an alternate chunk from the importer, which needs the decompilation's cache and could not be
+    fetched this session); the pair's thrown-ball and healing-item trivia (the engine does not count them); the
+    Wingull's return, the delivered letter and the boy's Mental Herb (Mossdeep's half, H8); the Safari Zone's
+    Pokéblock feeders and the Case the counter asks for (H11); the expansion's opening (H9); the Ancient Tomb's Flash in
+    the chamber's middle and Registeel (with the Sealed Chamber, H8 and after); then the "Done when": Winona beaten in
+    the harness, and Fortree's bridges looked at as decks over the forest floor in `h108` and `h109`.
 - [ ] H7 Lilycove, Mt. Pyre and the hideouts
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis
 - [ ] H9 Ever Grande and the League

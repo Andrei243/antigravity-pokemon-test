@@ -26,13 +26,15 @@
         "text": [
           "Băiatul"
         ]
-      },
-      "dialog": {
+      }
+    },
+    "fortree_house_wingull": {
+      "name": {
         "en": [
-          "My Wingull flew off with a letter a while ago. I hope it comes back soon."
+          "Wingull"
         ],
         "text": [
-          "Wingullul meu a plecat cu o scrisoare acum ceva vreme. Sper să se întoarcă curând."
+          ""
         ]
       }
     }
