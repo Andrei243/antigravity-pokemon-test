@@ -1,0 +1,14 @@
+{
+  // The Safari Zone's south-east part (plan 21 · H6, part b), Emerald's expansion beyond the builders, shut until
+  // Hoenn's Hall of Fame: three visitors, and the attendant who tells of the expansion, away until then
+  // (common.HoennChapterSevenB)
+  "area": "hoenn_safari_zone_southeast",
+  "bgmTrack": "hoenn/safari_zone",
+  "trees": "Round",
+  "people": {
+    "rich_boy": { "name": "Boy", "dialog": [ "The Pokémon around here don't look like they come from Hoenn at all." ] },
+    "fat_man": { "name": "Man", "dialog": [ "Every Pokémon in this part is new to me. And I'm allowed to catch them! How great is that?" ] },
+    "little_girl": { "name": "Girl", "dialog": [ "Wow! Wow! I've never seen any of these Pokémon before!" ] },
+    "camper": { "name": "Attendant", "dialog": [ "The Safari Zone's new area is finished at last. We hope you enjoy it!" ], "still": true }
+  }
+}

@@ -157,6 +157,15 @@
     { "name": "FortreeCity_House3", "matrix": 105, "area": "fortree_city_house_3", "trees": "Round", "setting": "Indoors" },
     { "name": "FortreeCity_House4", "matrix": 106, "area": "fortree_city_house_4", "trees": "Round", "setting": "Indoors" },
     { "name": "FortreeCity_House5", "matrix": 107, "area": "fortree_city_house_5", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H6, part b: Route 121's gate to the Safari Zone, the zone's six parts on one map (Emerald joins them by
+    // their edges; their keys take Hoenn's prefix, as FireRed's zone has the same names) and its rest house, and the two
+    // caves of Route 120, the Ancient Tomb (its inner chamber shut until the braille's riddle, plan 21 · H8) and the
+    // Scorched Slab
+    { "name": "Route121_SafariZoneEntrance", "matrix": 186, "area": "route_121_safari_zone_entrance", "trees": "Round", "setting": "Indoors" },
+    { "name": "HoennSafariZone", "matrix": 356, "trees": "Round" },
+    { "name": "HoennSafariZone_RestHouse", "matrix": 364, "area": "hoenn_safari_zone_rest_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "AncientTomb", "matrix": 255, "area": "ancient_tomb", "trees": "Round", "setting": "Cave" },
+    { "name": "ScorchedSlab", "matrix": 260, "area": "scorched_slab", "trees": "Round", "setting": "Cave" },
     // Plan 21 · H5: the sea floor under Routes 124, 126, 127 and 128 (the east sea, round Mossdeep and Sootopolis), one
     // map for the four, whose tiles are the overworld's; only Route 124's floor is open so far
     { "name": "HoennUnderwater", "matrix": 2, "trees": "Round", "setting": "Underwater" }
@@ -221,6 +230,12 @@
     "route_118", "route_119", "fortree_city", "route_120",
     "route_119_house", "route_119_weather_institute_1f", "route_119_weather_institute_2f",
     "fortree_city_house_1", "fortree_city_house_2", "fortree_city_house_3", "fortree_city_house_4", "fortree_city_house_5",
-    "fortree_city_gym", "fortree_city_pokemon_center_1f", "fortree_city_pokemon_center_2f", "fortree_city_mart"
+    "fortree_city_gym", "fortree_city_pokemon_center_1f", "fortree_city_pokemon_center_2f", "fortree_city_mart",
+    // Plan 21 · H6, part b: Route 121, its gate and the Safari Zone with its rest house (the zone's east half, Emerald's
+    // expansion, stands open behind its builders until Hoenn's Hall of Fame, H9), the Ancient Tomb and the Scorched Slab
+    "route_121", "route_121_safari_zone_entrance",
+    "hoenn_safari_zone_south", "hoenn_safari_zone_southwest", "hoenn_safari_zone_north", "hoenn_safari_zone_northwest",
+    "hoenn_safari_zone_northeast", "hoenn_safari_zone_southeast", "hoenn_safari_zone_rest_house",
+    "ancient_tomb", "scorched_slab"
   ]
 }

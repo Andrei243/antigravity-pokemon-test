@@ -1,0 +1,6 @@
+{
+  // The Scorched Slab (plan 21 · H6, part b), a cave on Route 120's south-west shore reached by Surf: a pool under its
+  // sunlit roof and TM11, Sunny Day, on the far side. Emerald plays Petalburg Woods' song here, and so does this game
+  "area": "scorched_slab",
+  "bgmTrack": "hoenn/petalburg_woods"
+}

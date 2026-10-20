@@ -157,6 +157,10 @@ public static class MoveTutors
         ["Body Slam"] = "Return",
         // The young man on Seven Island's shore (FireRed's SevenIsland_EventScript_SwordsDanceTutor), whose move is TM75's
         ["Swords Dance"] = "Swords Dance",
+        // Hoenn's first tutor of one move, the old man of Fortree City's second house (Emerald's
+        // FortreeCity_House2_EventScript_SleepTalkTutor; plan 21 · H6, part b), whose move is TM82's. The table serves
+        // every region's tutor of one move once in a game, whatever its name says
+        ["Sleep Talk"] = "Sleep Talk",
     };
 
     /// <summary>The flag a Kanto tutor sets once their move is taught (FireRed's <c>FLAG_TUTOR_MEGA_PUNCH</c>).</summary>

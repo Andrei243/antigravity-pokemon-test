@@ -1,0 +1,12 @@
+{
+  // The Safari Zone's north-east part (plan 21 · H6, part b), Emerald's expansion beyond the builders, shut until
+  // Hoenn's Hall of Fame: three visitors and the rocks Rock Smash breaks
+  "area": "hoenn_safari_zone_northeast",
+  "bgmTrack": "hoenn/safari_zone",
+  "trees": "Round",
+  "people": {
+    "boy_3": { "name": "Boy", "dialog": [ "I've only got a couple of Safari Balls left. Which Pokémon should I spend them on?" ] },
+    "girl_3": { "name": "Girl", "dialog": [ "Oh, come on! I haven't caught a single thing! That's my entry fee wasted!" ] },
+    "woman_1": { "name": "Woman", "dialog": [ "Someone said Pikachu live out here. Have you seen one anywhere?" ] }
+  }
+}

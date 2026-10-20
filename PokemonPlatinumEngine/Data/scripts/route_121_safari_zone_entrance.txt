@@ -1,0 +1,73 @@
+# The Safari Zone's gate on Route 121 (plan 21 · H6, part b). docs/scripts.md describes the language; the lines are
+# our own, on Emerald's beats (data/maps/Route121_SafariZoneEntrance/scripts.inc).
+#
+# Whoever walks the one-tile passage before the counter steps onto Emerald's coordinate event there (the area's
+# trigger 0) and is asked to play: for $500, thirty Safari Balls and Emerald's five hundred steps (`safari start 500`;
+# Models/SafariGame.cs), then along the counter and in through the zone's door. Turned down, or short of the fee, they
+# are sent a step back. Emerald asks for a Pokéblock Case first, which is plan 21 · H11's: until then it asks nothing
+# (rulings, "Route 121 and the Safari Zone"); nor does it ask whether the boxes are full, as no gate of this game does.
+# VAR_SAFARI_ZONE_STATE 2 tells the zone a player is coming in, and FLAG_GOOD_LUCK_SAFARI_ZONE is cleared, so its
+# attendant wishes them luck once.
+#
+# A game that ended (the attendant inside the zone's door asked to let the player out, the last step, the last ball:
+# common.SafariTimeUp and SafariOutOfBalls, which bring a player of Hoenn here with the variable 1) is walked out past
+# the counter (Emerald's ExitSafariZone).
+
+
+script OnEnter
+  if var VAR_SAFARI_ZONE_STATE != 1 end
+  walk player right 7
+  setvar VAR_SAFARI_ZONE_STATE 0
+  end
+
+
+# The counter, from Emerald's coordinate event before it (EntranceCounterTrigger)
+script Counter
+  if safari end
+  face player up
+  speaker "Attendant"
+  say "Welcome to the Safari Zone!"
+  ask "Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game?"
+  if no goto Away
+  takemoney 500
+  if result == 0 goto Short
+  sound "select"
+  safari start 500
+  say "That's $500, thank you. Here are your Safari Balls."
+  text "{player} received 30 Safari Balls!"
+  say "We'll let you know when your game is over. Until then, off you go into the wild!"
+  walk player left 6 down 1
+  setvar VAR_SAFARI_ZONE_STATE 2
+  clearflag FLAG_GOOD_LUCK_SAFARI_ZONE
+  warp "HoennSafariZone" 72 75 down
+  end
+label Short
+  say "I'm sorry, you don't have enough money."
+label Away
+  say "All right. Please come and play another time!"
+  walk player right 1
+  end
+
+
+script CounterTalk
+  speaker "Attendant"
+  say "Walk along the counter toward the zone's door, and I'll ask whether you'd like to play the Safari Game."
+  end
+
+
+script Welcome
+  speaker "Attendant"
+  say "Welcome to the Safari Zone! Pokémon you'll hardly ever see in Hoenn live here in the wild."
+  say "And trainers may catch them to keep. Come in and enjoy yourself!"
+  end
+
+
+script Explain
+  speaker "Attendant"
+  ask "Welcome to the Safari Zone! Is this your first visit?"
+  if no goto Enjoy
+  say "You go in with 30 Safari Balls, the only balls you may throw inside."
+  say "The game is over when you've thrown your last ball, or when you've walked 500 steps."
+label Enjoy
+  say "Come in and enjoy the Safari Zone!"
+  end

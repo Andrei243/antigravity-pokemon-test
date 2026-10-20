@@ -1008,7 +1008,8 @@ script BlackOutHome
 # is taken back inside its gate in Fuchsia City, whose arrival sees them off (FireRed's
 # VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE 1, ExitWarpIn). In Johto (plan 20 · J8, part b) the game has no
 # steps, and the player is taken back before the counter of the Safari Zone's gate hall, which sees them off
-# (HeartGold's VAR_SCENE_SAFARI_ZONE_ENTRANCE, our 2).
+# (HeartGold's VAR_SCENE_SAFARI_ZONE_ENTRANCE, our 2). In Hoenn (plan 21 · H6, part b) the player is taken back inside
+# the zone's door in Route 121's gate, whose arrival walks them out past the counter (Emerald's VAR_SAFARI_ZONE_STATE 1).
 script SafariTimeUp
   speaker "Attendant"
   say "Ding-dong! That's time! Your Safari Game is over."
@@ -1016,6 +1017,7 @@ script SafariTimeUp
   safari end
   if region "Kanto" goto Kanto
   if region "Johto" goto Johto
+  if region "Hoenn" goto Hoenn
   setvar VAR_SAFARI_GAME_STATE 2
   warp "PastoriaCityObservatoryGate1F" 5 3 down
   end
@@ -1026,6 +1028,10 @@ label Kanto
 label Johto
   setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE 2
   warp "SafariZone_Gate" 4 6 up
+  end
+label Hoenn
+  setvar VAR_SAFARI_ZONE_STATE 1
+  warp "Route121_SafariZoneEntrance" 2 4 right
   end
 
 script SafariOutOfBalls
@@ -1035,6 +1041,7 @@ script SafariOutOfBalls
   safari end
   if region "Kanto" goto Kanto
   if region "Johto" goto Johto
+  if region "Hoenn" goto Hoenn
   setvar VAR_SAFARI_GAME_STATE 2
   warp "PastoriaCityObservatoryGate1F" 5 3 down
   end
@@ -1045,6 +1052,10 @@ label Kanto
 label Johto
   setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE 2
   warp "SafariZone_Gate" 4 6 up
+  end
+label Hoenn
+  setvar VAR_SAFARI_ZONE_STATE 1
+  warp "Route121_SafariZoneEntrance" 2 4 right
   end
 
 
@@ -1673,6 +1684,7 @@ script HoennNewGame
   call HoennChapterFive
   call HoennChapterSix
   call HoennChapterSeven
+  call HoennChapterSevenB
   return
 
 
@@ -1829,6 +1841,18 @@ script HoennChapterSeven
   setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
   setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1
   setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
+  return
+
+
+# What a new game of Emerald sets for the second half of the seventh stretch, Route 121 and the Safari Zone (plan 21 ·
+# H6, part b): the attendant who tells of the zone's expansion is away until Hoenn's Hall of Fame (plan 21 · H9) clears
+# his flag, as Emerald's own new game sets it. The two builders who keep the expansion shut stand there from the
+# start, and Hoenn's Hall of Fame sets their flag. FLAG_HOENN_CHAPTER_SEVEN_B, a flag of ours, says it has run.
+# HoennNewGame calls it; a save from before it was written runs it from Route 121's own arrival script, the only way to
+# the zone, so no story version is raised for it. It may only set flags and variables, and ends in return.
+script HoennChapterSevenB
+  setflag FLAG_HOENN_CHAPTER_SEVEN_B
+  setflag FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION
   return
 
 

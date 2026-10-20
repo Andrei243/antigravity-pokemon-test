@@ -1,0 +1,18 @@
+{
+  // The Safari Zone's gate on Route 121 (plan 21 · H6, part b): its counter asks whoever walks past it to the zone's
+  // door (the area's trigger 0, before the counter in the one-tile passage) to play the Safari Game, the attendant
+  // behind it explains the game, and the one by the door welcomes visitors (route_121_safari_zone_entrance.txt)
+  "area": "route_121_safari_zone_entrance",
+  "bgmTrack": "hoenn/fortree",
+  "triggers": [
+    { "trigger": 0, "script": "Counter" }
+  ],
+  "people": {
+    "picnicker": { "name": "Attendant", "script": "Welcome", "still": true },
+    "camper": { "name": "Attendant", "script": "Explain", "still": true },
+    "camper_2": { "name": "Attendant", "script": "CounterTalk", "still": true }
+  },
+  "signs": {
+    "Route121_SafariZoneEntrance_EventScript_TrainerTipSign": "Safari Zone Trainer Tip!\nCreep up close to a Pokémon before you throw a Safari Ball."
+  }
+}

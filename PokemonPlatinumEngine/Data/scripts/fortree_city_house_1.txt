@@ -1,0 +1,29 @@
+# A house of Fortree City (plan 21 · H6, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/FortreeCity_House1/scripts.inc).
+#
+# The boy trades his Plusle, Pluses, for a Volbeat, once (NpcTrades "pluses", which carries Emerald's contest
+# condition and sheen for the Plusle). FLAG_FORTREE_NPC_TRADE_COMPLETED, Emerald's name: the trade is done.
+
+
+script Trader
+  speaker "Boy"
+  if flag FLAG_FORTREE_NPC_TRADE_COMPLETED goto Done
+  ask "I've got a Plusle, but what I really want is a Volbeat. Will you trade me one?"
+  if no goto Waiting
+  say "Which Pokémon will you trade?"
+  choosepokemon
+  if result == 255 goto Waiting
+  trade pluses
+  if result == 0 goto NotWanted
+  setflag FLAG_FORTREE_NPC_TRADE_COMPLETED
+  say "A Volbeat! Thanks! Look after Pluses for me, OK?"
+  end
+label NotWanted
+  say "Huh? That's not a Volbeat. I'm only after a Volbeat."
+  end
+label Waiting
+  say "No? If you ever catch a Volbeat, come back and see me."
+  end
+label Done
+  say "Volbeat and I go out every night to watch the lights in the trees. How's my old Pluses doing?"
+  end

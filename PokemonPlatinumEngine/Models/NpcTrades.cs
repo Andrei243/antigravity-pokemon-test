@@ -11,11 +11,15 @@ namespace PokemonPlatinumEngine.Models;
 /// its trade table (<c>res/npc_trades</c>, built by <c>NPCTrade_CreateMon</c>). Each wants one species and gives
 /// another, at the level of the Pokémon given, with its own name, its first trainer's name, number and look, fixed
 /// IVs and a fixed personality (so its nature, ability and gender are always the same), and the item it holds.
-/// No drawing or input: a script asks for it with <c>trade</c>.
+/// Platinum's table gives one number for all five of a Pokémon's contest condition (<see cref="Contest"/>); a
+/// trade of the GBA games gives each of the five its own (<see cref="Conditions"/>: cool, beauty, cute, smart and
+/// tough) and a sheen (plan 21 · H6, part b: Fortree City's Plusle). No drawing or input: a script asks for it with
+/// <c>trade</c>.
 /// </summary>
 public sealed record NpcTrade(
     string Id, string Wants, string Gives, string Nickname, string TrainerName, int TrainerId, PlayerLook TrainerLook,
-    uint Personality, string Item, int[] Ivs, Nature Nature, string Ability, Gender Gender, int Contest = 0, string? Language = null)
+    uint Personality, string Item, int[] Ivs, Nature Nature, string Ability, Gender Gender, int Contest = 0, string? Language = null,
+    int[]? Conditions = null, int Sheen = 0)
 {
     /// <summary>Where a traded Pokémon was met: the original writes "Link trade" whatever the map (met location 2001).</summary>
     public const string MetBy = "a trade";
@@ -34,7 +38,13 @@ public static class NpcTrades
         new NpcTrade("gaspar", "Medicham", "Haunter", "Gaspar", "Mindy", 19248, PlayerLook.Girl, 136, "Everstone",
             new[] { 20, 25, 15, 25, 15, 15 }, Nature.Hasty, "Levitate", Gender.Male),
         new NpcTrade("foppa", "Finneon", "Magikarp", "Foppa", "Meister", 53277, PlayerLook.Boy, 1116, "Lum Berry",
-            new[] { 15, 25, 15, 20, 25, 15 }, Nature.Mild, "Swift Swim", Gender.Female, Language: "German")
+            new[] { 15, 25, 15, 20, 25, 15 }, Nature.Mild, "Swift Swim", Gender.Female, Language: "German"),
+        // Emerald's INGAME_TRADE_PLUSLE (src/data/trade.h): the boy of Fortree City's first house wants a Volbeat.
+        // Its personality 0x6F gives a Hasty female with its first ability; the IVs are in the table's order, which
+        // is the one above. Emerald's Plusle holds Wood Mail, which the item table hasn't got: it holds Grass Mail
+        new NpcTrade("pluses", "Volbeat", "Plusle", "Pluses", "Roman", 73996, PlayerLook.Boy, 0x6F, "Grass Mail",
+            new[] { 4, 4, 4, 5, 5, 4 }, Nature.Hasty, "Plus", Gender.Female,
+            Conditions: new[] { 5, 5, 30, 5, 5 }, Sheen: 10)
     };
 
     public static NpcTrade? Get(string id) => All.FirstOrDefault(t => string.Equals(t.Id, id, StringComparison.OrdinalIgnoreCase));
@@ -56,12 +66,14 @@ public static class NpcTrades
             Ball = "Poké Ball",
             OriginalTrainer = new TrainerMark(trade.TrainerName, trade.TrainerId, trade.TrainerLook),
             Language = trade.Language,
-            // The table's cool, beauty, cute, smart and tough (NPCTrade_CreateMon); never the sheen
-            Cool = trade.Contest,
-            Beauty = trade.Contest,
-            Cute = trade.Contest,
-            Smart = trade.Contest,
-            Tough = trade.Contest,
+            // The table's cool, beauty, cute, smart and tough (NPCTrade_CreateMon: one number, and never the sheen),
+            // or a GBA table's five and its sheen (CreateInGameTradePokemon)
+            Cool = trade.Conditions?[0] ?? trade.Contest,
+            Beauty = trade.Conditions?[1] ?? trade.Contest,
+            Cute = trade.Conditions?[2] ?? trade.Contest,
+            Smart = trade.Conditions?[3] ?? trade.Contest,
+            Tough = trade.Conditions?[4] ?? trade.Contest,
+            Sheen = trade.Sheen,
             IvHP = trade.Ivs[0],
             IvAttack = trade.Ivs[1],
             IvDefense = trade.Ivs[2],

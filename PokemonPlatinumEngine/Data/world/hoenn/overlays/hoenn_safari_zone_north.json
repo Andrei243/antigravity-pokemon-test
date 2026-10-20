@@ -1,0 +1,11 @@
+{
+  // The Safari Zone's north part (plan 21 · H6, part b), up its muddy slopes: a fisherman, a collector and the rocks
+  // Rock Smash breaks
+  "area": "hoenn_safari_zone_north",
+  "bgmTrack": "hoenn/safari_zone",
+  "trees": "Round",
+  "people": {
+    "fisherman": { "name": "Fisherman", "dialog": [ "I came looking for water Pokémon nobody sees in Hoenn. Is there a lake around here somewhere?" ] },
+    "man_4": { "name": "Man", "dialog": [ "I'm going to catch heaps of rare Pokémon and trade them with my friends back home!" ] }
+  }
+}

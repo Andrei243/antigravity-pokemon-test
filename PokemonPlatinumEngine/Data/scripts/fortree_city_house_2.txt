@@ -1,0 +1,77 @@
+# A house of Fortree City (plan 21 · H6, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/FortreeCity_House2/scripts.inc).
+#
+# The old woman hides a coin in one hand three times; guess right each time (the right hand, the right, then the left,
+# as Emerald has it) and she gives TM10, Hidden Power, once. FLAG_MET_HIDDEN_POWER_GIVER: she has told the player of
+# her game; FLAG_RECEIVED_TM_HIDDEN_POWER: the TM is given.
+#
+# The old man teaches Sleep Talk to one Pokémon, once in a game, for nothing (`tutor once`; Models/MoveTutors.cs).
+# FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK, Emerald's name: he has taught it.
+
+
+script HiddenPower
+  speaker "Old Woman"
+  if flag FLAG_RECEIVED_TM_HIDDEN_POWER goto Explain
+  if flag FLAG_MET_HIDDEN_POWER_GIVER goto Again
+  setflag FLAG_MET_HIDDEN_POWER_GIVER
+  say "Every Pokémon has a power hidden inside it. Nobody can see it, but it is there." "I've a game for you. I hold a coin in one hand, and you guess which." "Guess right three times running, and you'll have something worth having."
+label Again
+  ask "Shall we play?"
+  if no goto Later
+  choose "Which hand holds the coin?" "Right" "Left"
+  if result != 0 goto Wrong
+  choose "Right you are! Again, now. Which hand?" "Right" "Left"
+  if result != 0 goto Wrong
+  choose "Right again! One more. Which hand?" "Right" "Left"
+  if result != 1 goto Wrong
+  say "Three in a row! You see what others miss. This is yours."
+  give "TM10"
+  setflag FLAG_RECEIVED_TM_HIDDEN_POWER
+label Explain
+  say "Hidden Power takes its type from the Pokémon that uses it. Every one of them is different."
+  end
+label Wrong
+  say "Wrong hand, I'm afraid. Come and try again another time."
+  end
+label Later
+  say "Suit yourself. My hands will keep."
+  end
+
+
+script SleepTalk
+  speaker "Old Man"
+  if flag FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK goto Taught
+  ask "A Pokémon that can fight in its sleep is never idle. Shall I teach one of yours Sleep Talk?"
+  if no goto Later
+  say "Very well. Which one?"
+  choosepokemon
+  tutor once "Sleep Talk"
+  if result == 1 goto Later
+  if result == 2 goto Egg
+  if result == 3 goto Cannot
+  if result == 4 goto Knows
+  tutor learn
+  if result == 0 goto Later
+  if result == 2 goto Hm
+  if result == 3 say "{wearer} forgot {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  setflag FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK
+label Taught
+  say "Pair Sleep Talk with Rest, and a Pokémon heals and fights at once. Zzz..."
+  end
+label Later
+  say "Ah. Then I'll go back to my nap."
+  end
+label Egg
+  say "An Egg sleeps already, but it can't learn anything yet."
+  end
+label Cannot
+  say "Hmm, that one can't learn Sleep Talk."
+  end
+label Knows
+  say "That one already knows {thing}."
+  end
+label Hm
+  say "{forgotten} isn't a move that can be given up like that."
+  goto Later

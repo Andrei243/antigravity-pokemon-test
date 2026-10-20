@@ -1,0 +1,107 @@
+# Route 121 (plan 21 · H6, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's beats
+# (data/maps/Route121/scripts.inc).
+#
+# The road east from Route 120 to Lilycove City, with the Safari Zone's gate and the pier for Mt. Pyre. Three Team
+# Aqua grunts stand at its west end until the player first comes up to them (the area's triggers 0 to 3,
+# VAR_ROUTE121_STATE 0): one gives the order to move out to Mt. Pyre and the three walk off south and are gone
+# (FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS, VAR_ROUTE121_STATE 1). Walter, Jessica and Cristin swap numbers for the
+# PokéNav once beaten.
+
+
+# The way onto this stretch: a save from before part b has the Safari Zone's own people set as a new game sets them
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_SEVEN_B call HoennChapterSevenB
+  end
+
+
+script GruntsMoveOut
+  if var VAR_ROUTE121_STATE != 0 end
+  scene "Team Aqua leaves Route 121"
+  music "hoenn/eye_galactic"
+  walk route121_grunt_2 onspot right 1
+  speaker "Team Aqua Grunt"
+  say "Right, you lot! Orders from the top: we move out to Mt. Pyre. Now!"
+  move route121_grunt_1 down 8
+  move route121_grunt_2 down 8
+  move route121_grunt_3 down 8
+  waitmoves
+  music area
+  hide route121_grunt_1
+  hide route121_grunt_2
+  hide route121_grunt_3
+  setflag FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS
+  setvar VAR_ROUTE121_STATE 1
+  endscene
+  end
+
+
+# Walter, beaten, swaps numbers for the PokéNav
+script Walter
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_WALTER goto Known
+label Ask
+  speaker "Walter"
+  say "A splendid battle. May I have your number? My Manectric would enjoy hearing how you fare."
+  ask "Register Walter in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_walter
+  say "Very good. I shall telephone now and then, at a polite hour."
+  end
+label Refused
+  say "Quite all right. Perhaps another day."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Jessica, beaten, swaps numbers for the PokéNav
+script Jessica
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_JESSICA goto Known
+label Ask
+  speaker "Jessica"
+  say "You're good at spotting things. Let's keep in touch, so I can tell you how my Kecleon is doing."
+  ask "Register Jessica in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_jessica
+  say "Lovely! Don't be surprised if I call out of nowhere."
+  end
+label Refused
+  say "Oh well. My Kecleon will just have to hide its sulk."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask
+
+
+# Cristin, beaten, swaps numbers for the PokéNav
+script Cristin
+  if not defeated self goto Fight
+  if flag FLAG_PHONE_CONTACT_HOENN_CRISTIN goto Known
+label Ask
+  speaker "Cristin"
+  say "I want a rematch someday. Let's swap numbers, and I'll call when I'm ready."
+  ask "Register Cristin in the PokéNav's Match Call?"
+  if no goto Refused
+  addcontact hoenn_cristin
+  say "Done! Next time, I won't hold back."
+  end
+label Refused
+  say "Then I'll find you myself. Count on it."
+  end
+label Known
+  trainerline after
+  end
+label Fight
+  trainerline before
+  battle self
+  goto Ask

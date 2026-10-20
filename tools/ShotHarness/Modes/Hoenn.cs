@@ -135,11 +135,25 @@ partial class Harness
             ("h115_route120_bridge", "Hoenn", 373, 17, Direction.Up),
             ("h116_route120_rain", "Hoenn", 380, 40, Direction.Up),
             ("h117_route120_cloud", "Hoenn", 380, 80, Direction.Up),
+            // Plan 21 · H6, part b: Route 121, the Safari Zone's gate and its parts, the rest house, the Ancient Tomb,
+            // the Scorched Slab and Fortree's second house
+            ("h120_route121", "Hoenn", 428, 90, Direction.Up),
+            ("h121_route121_pier", "Hoenn", 431, 93, Direction.Down),
+            ("h122_safari_gate", "Route121_SafariZoneEntrance", 9, 4, Direction.Left),
+            ("h123_safari_south", "HoennSafariZone", 72, 75, Direction.Down),
+            ("h124_safari_southwest", "HoennSafariZone", 22, 50, Direction.Up),
+            ("h125_safari_north", "HoennSafariZone", 62, 10, Direction.Up),
+            ("h126_safari_northwest", "HoennSafariZone", 8, 9, Direction.Up),
+            ("h127_safari_rest_house", "HoennSafariZone_RestHouse", 4, 7, Direction.Up),
+            ("h128_ancient_tomb", "AncientTomb", 8, 28, Direction.Up),
+            ("h129_ancient_tomb_chamber", "AncientTomb", 8, 10, Direction.Up),
+            ("h130_scorched_slab", "ScorchedSlab", 7, 15, Direction.Up),
+            ("h131_fortree_house_2", "FortreeCity_House2", 4, 4, Direction.Up),
         };
         foreach (var (name, map, x, y, facing) in places)
         {
             At(map, x, y, facing); Frames(2); Shot(name);
-            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
+            if (name is "h01_littleroot_day" or "h09_petalburg_day" or "h34_dewford_town" or "h43_slateport_city" or "h57_mauville_city" or "h65_verdanturf_town" or "h72_desert_storm" or "h76_fallarbor_town" or "h108_fortree_city" or "h110_fortree_gym" or "h123_safari_south") ShotCrop(name + "_native", 640, 300, 640, 360, 2);
         }
 
         engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -157,6 +171,7 @@ partial class Harness
         At("Hoenn", 90, 12, Direction.Up); Frames(2); Shot("h91_fallarbor_night");
         At("Hoenn", 335, 10, Direction.Up); Frames(2); Shot("h118_fortree_night");
         At("Hoenn", 300, 60, Direction.Up); Frames(2); Shot("h119_route119_rain_night");
+        At("HoennSafariZone", 72, 75, Direction.Down); Frames(2); Shot("h132_safari_night");
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
 

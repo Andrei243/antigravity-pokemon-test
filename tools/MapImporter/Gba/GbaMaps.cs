@@ -169,6 +169,9 @@ public sealed class GbaMaps
                 // Every game has a Victory Road, and Platinum's keys are victory_road_1f and the rest: a GBA game's take
                 // the region's prefix (plan 19's design, kept the day FireRed's opened: plan 19 · K7)
                 if (map.Name.StartsWith("VictoryRoad", StringComparison.Ordinal)) map.KeyPrefix = game.Region + "_";
+                // So has FireRed a Safari Zone, whose keys are safari_zone_north and the rest: Emerald's takes Hoenn's
+                // prefix, all seven of its maps alike (plan 21 · H6, part b: hoenn_safari_zone_south)
+                if (game == GbaGame.Emerald && map.Name.StartsWith("SafariZone", StringComparison.Ordinal)) map.KeyPrefix = game.Region + "_";
                 Maps.Add(map);
                 ById[map.Id] = map;
             }

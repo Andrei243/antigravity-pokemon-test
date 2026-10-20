@@ -567,6 +567,9 @@ public static class RegionDatabase
                 "Route119_House", "Route119_WeatherInstitute_1F", "Route119_WeatherInstitute_2F", "FortreeCity_House1",
                 "FortreeCity_Gym", "FortreeCity_PokemonCenter_1F", "FortreeCity_PokemonCenter_2F", "FortreeCity_Mart",
                 "FortreeCity_House2", "FortreeCity_House3", "FortreeCity_House4", "FortreeCity_House5",
+                // Plan 21 · H6, part b: Route 121's gate, the Safari Zone and its rest house, the Ancient Tomb and the
+                // Scorched Slab
+                "Route121_SafariZoneEntrance", "HoennSafariZone", "HoennSafariZone_RestHouse", "AncientTomb", "ScorchedSlab",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
