@@ -366,7 +366,14 @@ public sealed class Bw2Maps
     /// <summary>The chunks' folders under <c>res/field/maps/models</c>.</summary>
     public IReadOnlyList<string> Chunks { get; }
     /// <summary>The field props' names by resource id: the folder a resource's <c>data.json</c> is in, without its <c>_N</c>.</summary>
+    /// <remarks>
+    /// The props of the open country (<c>res/field/props/exterior</c>) and those of the rooms (<c>interior</c>) are
+    /// numbered apart, each from 0 (plan 22 · U2): resource 0 is the Pokémon Center's building outdoors and a PC in a
+    /// room. These are the open country's; <see cref="InteriorPropNames"/> the rooms'.
+    /// </remarks>
     public IReadOnlyDictionary<int, string> PropNames { get; }
+    /// <summary>The rooms' props' names by resource id (<c>res/field/props/interior</c>).</summary>
+    public IReadOnlyDictionary<int, string> InteriorPropNames { get; }
     /// <summary>Whether each area (<c>AREA_*</c>) is outdoors, from <c>res/field/areas/&lt;n&gt;.json</c>'s <c>exterior</c>.</summary>
     public IReadOnlyDictionary<string, bool> AreaOutdoors { get; }
     public List<string> Problems { get; } = new();
@@ -374,8 +381,9 @@ public sealed class Bw2Maps
     private readonly Dictionary<string, Bw2Terrain?[]> terrain = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Bw2Model?> models = new(StringComparer.Ordinal);
     private readonly Dictionary<string, List<Bw2Geometry.Triangle>> geometry = new(StringComparer.Ordinal);
-    private readonly Dictionary<int, string> propFiles = new();
-    private readonly Dictionary<int, (Vector3 Min, Vector3 Max)?> propBoxes = new();
+    private readonly Dictionary<(bool Interior, int Id), string> propFiles = new();
+    private readonly Dictionary<(bool Interior, int Id), (Vector3 Min, Vector3 Max)?> propBoxes = new();
+    private HashSet<string>? interiorChunks;
 
     public Bw2Maps(string dir)
     {
@@ -414,6 +422,7 @@ public sealed class Bw2Maps
 
         // The props' names: the most common folder name of each resource, its _N taken off
         var names = new Dictionary<int, Dictionary<string, int>>();
+        var interiorNames = new Dictionary<int, Dictionary<string, int>>();
         string props = Path.Combine(dir, "res", "field", "props");
         if (System.IO.Directory.Exists(props))
             foreach (string file in System.IO.Directory.EnumerateFiles(props, "data.json", SearchOption.AllDirectories))
@@ -421,19 +430,27 @@ public sealed class Bw2Maps
                 using var doc = JsonDocument.Parse(File.ReadAllText(file));
                 if (!doc.RootElement.TryGetProperty("res_id", out var id) || id.ValueKind != JsonValueKind.Number) continue;
                 string name = Regex.Replace(Path.GetFileName(Path.GetDirectoryName(file))!, @"_\d+$", "");
-                var counts = names.TryGetValue(id.GetInt32(), out var c) ? c : names[id.GetInt32()] = new Dictionary<string, int>(StringComparer.Ordinal);
+                bool interior = Path.GetRelativePath(props, file).StartsWith("interior", StringComparison.Ordinal);
+                var table = interior ? interiorNames : names;
+                var counts = table.TryGetValue(id.GetInt32(), out var c) ? c : table[id.GetInt32()] = new Dictionary<string, int>(StringComparer.Ordinal);
                 counts[name] = counts.GetValueOrDefault(name) + 1;
                 string glb = Path.Combine(Path.GetDirectoryName(file)!, "model.glb");
-                if (File.Exists(glb)) propFiles.TryAdd(id.GetInt32(), glb);
+                if (File.Exists(glb)) propFiles.TryAdd((interior, id.GetInt32()), glb);
             }
-        PropNames = names.ToDictionary(kv => kv.Key, kv => kv.Value.OrderByDescending(n => n.Value).ThenBy(n => n.Key, StringComparer.Ordinal).First().Key);
+        static Dictionary<int, string> Commonest(Dictionary<int, Dictionary<string, int>> table) =>
+            table.ToDictionary(kv => kv.Key, kv => kv.Value.OrderByDescending(n => n.Value).ThenBy(n => n.Key, StringComparer.Ordinal).First().Key);
+        PropNames = Commonest(names);
+        InteriorPropNames = Commonest(interiorNames);
 
         // The areas' settings, by the areas' constants in their list's order
         var areaIds = Bw2Constants.Read(Text("generated", "areas.txt"));
         var outdoors = new Dictionary<string, bool>(StringComparer.Ordinal);
         foreach (var (area, id) in areaIds)
         {
-            string path = Path.Combine(dir, "res", "field", "areas", id.ToString(CultureInfo.InvariantCulture) + ".json");
+            // Each area's file is named after it (aspertia_city.json); a few the list names by number only (AREA_0) are 0.json
+            string folder = Path.Combine(dir, "res", "field", "areas");
+            string path = Path.Combine(folder, (area.StartsWith("AREA_", StringComparison.Ordinal) ? area[5..] : area).ToLowerInvariant() + ".json");
+            if (!File.Exists(path)) path = Path.Combine(folder, id.ToString(CultureInfo.InvariantCulture) + ".json");
             if (!File.Exists(path)) continue;
             using var doc = JsonDocument.Parse(File.ReadAllText(path));
             outdoors[area] = doc.RootElement.TryGetProperty("exterior", out var e) && e.ValueKind == JsonValueKind.True;
@@ -498,16 +515,43 @@ public sealed class Bw2Maps
     }
 
     /// <summary>A field prop's box by its resource, in units from its origin, from its model's JSON chunk alone; null where it has none.</summary>
-    public (Vector3 Min, Vector3 Max)? PropBox(int resource)
+    public (Vector3 Min, Vector3 Max)? PropBox(int resource, bool interior = false)
     {
-        if (propBoxes.TryGetValue(resource, out var known)) return known;
+        if (propBoxes.TryGetValue((interior, resource), out var known)) return known;
         (Vector3, Vector3)? box = null;
-        if (propFiles.TryGetValue(resource, out string? path))
+        if (propFiles.TryGetValue((interior, resource), out string? path))
         {
             try { box = Bw2Geometry.Box(Bw2Model.JsonChunk(File.ReadAllBytes(path))); }
             catch (Exception e) when (e is InvalidDataException or JsonException) { Problems.Add($"prop {resource}: its model's box can't be read ({e.Message})"); }
         }
-        return propBoxes[resource] = box;
+        return propBoxes[(interior, resource)] = box;
+    }
+
+    /// <summary>A prop's name by its resource, from the rooms' numbering or the open country's.</summary>
+    public string PropName(int resource, bool interior) =>
+        (interior ? InteriorPropNames : PropNames).GetValueOrDefault(resource, "");
+
+    /// <summary>
+    /// Whether a chunk is a room's (plan 22 · U2): it lies on a matrix that isn't the overworld, whose zones' areas are
+    /// all indoors (<see cref="AreaOutdoors"/>); its props are then numbered as the rooms' are.
+    /// </summary>
+    public bool IsInterior(string chunk)
+    {
+        if (interiorChunks == null)
+        {
+            var set = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var (constant, (_, matrix)) in Matrices)
+            {
+                if (constant == Overworld) continue;
+                var zones = ZonesOn(constant).ToList();
+                if (zones.Count == 0 || zones.Any(z => SettingOf(z) == Renders.Setting.Outdoors)) continue;
+                for (int y = 0; y < matrix.Height; y++)
+                    for (int x = 0; x < matrix.Width; x++)
+                        if (matrix.ModelAt(x, y) is { } model) set.Add(Bw2Matrix.Folder(model));
+            }
+            interiorChunks = set;
+        }
+        return interiorChunks.Contains(chunk);
     }
 
     /// <summary>The zones whose header names a matrix, in their order.</summary>

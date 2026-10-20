@@ -1,0 +1,95 @@
+{
+  "key": "aspertia_city",
+  "index": 427,
+  "name": "Aspertia City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "City",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "BGM_SW_C_12",
+  "nightMusic": "BGM_SW_C_12",
+  "encounters": "ENCOUNTERS_ASPERTIA_CITY",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Goldeen", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Goldeen", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Goldeen", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "ripplingWater": [
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Seaking", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Seaking", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Seaking", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 52, "z": 710, "to": "aspertia_gate", "toWarp": 0 },
+    { "x": 47, "z": 761, "to": "aspertia_city_2", "toWarp": 0 },
+    { "x": 38, "z": 761, "to": "aspertia_city_5", "toWarp": 0 },
+    { "x": 43, "z": 750, "to": "aspertia_city_3", "toWarp": 0 },
+    { "x": 39, "z": 738, "to": "aspertia_city_9", "toWarp": 0 },
+    { "x": 48, "z": 739, "to": "aspertia_city_pokemon_center", "toWarp": 0 },
+    { "x": 59, "z": 723, "to": "aspertia_city_7", "toWarp": 0 },
+    { "x": 53, "z": 710, "to": "aspertia_gate", "toWarp": 0 },
+    { "x": 54, "z": 710, "to": "aspertia_gate", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "291", "movement": "none", "x": 43, "z": 751, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02e9", "script": "1" },
+    { "id": "1", "looks": "251", "movement": "none", "x": 46, "z": 740, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02e7", "script": "9" },
+    { "id": "2", "looks": "249", "movement": "none", "x": 36, "z": 709, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02e6", "script": "7" },
+    { "id": "3", "looks": "twins", "movement": "none", "x": 45, "z": 740, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02e8", "script": "10" },
+    { "id": "4", "looks": "backers_m", "movement": "none", "x": 39, "z": 764, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "13" },
+    { "id": "5", "looks": "artist", "movement": "wander_north_and_south", "x": 55, "z": 749, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "12" },
+    { "id": "6", "looks": "youngster", "movement": "none", "x": 39, "z": 739, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "11" },
+    { "id": "7", "looks": "223", "movement": "none", "x": 39, "z": 738, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02e5", "script": "24" },
+    { "id": "8", "looks": "110", "movement": "none", "x": 61, "z": 765, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x044c", "item": "TM53", "script": "7000" },
+    { "id": "9", "looks": "pokefan_m", "movement": "wander_around", "x": 59, "z": 736, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "26" },
+    { "id": "10", "looks": "14", "movement": "wander_around", "x": 51, "z": 717, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "27" },
+    { "id": "11", "looks": "21", "movement": "wander_around", "x": 36, "z": 747, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "28" },
+    { "id": "12", "looks": "lass", "movement": "wander_around", "x": 57, "z": 742, "facing": 2, "rangeX": 0, "rangeZ": 1, "script": "31" },
+    { "id": "13", "looks": "251", "movement": "none", "x": 43, "z": 763, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03ef", "script": "2000" }
+  ],
+  "signs": [
+    { "x": 56, "z": 739, "type": 0, "script": "14" },
+    { "x": 45, "z": 761, "type": 0, "script": "15" },
+    { "x": 49, "z": 723, "type": 0, "script": "16" },
+    { "x": 37, "z": 739, "type": 0, "script": "17" },
+    { "x": 41, "z": 739, "type": 0, "script": "17" }
+  ],
+  "triggers": [
+    { "x": 41, "z": 761, "width": 4, "depth": 1, "script": "18", "variable": "VAR_UNOVA_0x40a1", "value": "0" },
+    { "x": 48, "z": 740, "width": 1, "depth": 1, "script": "19", "variable": "VAR_UNOVA_0x40a1", "value": "1" },
+    { "x": 36, "z": 720, "width": 3, "depth": 1, "script": "3", "variable": "VAR_UNOVA_0x40a1", "value": "3" },
+    { "x": 36, "z": 714, "width": 3, "depth": 1, "script": "33", "variable": "VAR_UNOVA_0x40a1", "value": "4" },
+    { "x": 36, "z": 720, "width": 3, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x40a1", "value": "2" },
+    { "x": 36, "z": 716, "width": 3, "depth": 1, "script": "8", "variable": "VAR_UNOVA_0x40a1", "value": "5" },
+    { "x": 36, "z": 719, "width": 3, "depth": 1, "script": "22", "variable": "VAR_UNOVA_0x40a4", "value": "0" },
+    { "x": 39, "z": 740, "width": 1, "depth": 1, "script": "20", "variable": "VAR_UNOVA_0x40a1", "value": "1" },
+    { "x": 52, "z": 711, "width": 3, "depth": 1, "script": "21", "variable": "VAR_UNOVA_0x40a1", "value": "1" }
+  ]
+}

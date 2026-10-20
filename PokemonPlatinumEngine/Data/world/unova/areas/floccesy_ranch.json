@@ -1,0 +1,60 @@
+{
+  "key": "floccesy_ranch",
+  "index": 444,
+  "name": "Floccesy Ranch",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Plain",
+  "dayMusic": "BGM_SW_R_19_SP",
+  "nightMusic": "BGM_SW_R_19_SP",
+  "encounters": "ENCOUNTERS_FLOCCESY_RANCH",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Azurill", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "ripplingWater": [
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Marill", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Azumarill", "level": 5, "maxLevel": 15 },
+    { "species": "Azumarill", "level": 5, "maxLevel": 15 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Politoed", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Politoed", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 141, "z": 629, "to": "floccesy_ranch_2", "toWarp": 0 },
+    { "x": 142, "z": 629, "to": "floccesy_ranch_2", "toWarp": 0 },
+    { "x": 143, "z": 629, "to": "floccesy_ranch_2", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 145, "z": 630, "type": 0, "script": "1" }
+  ],
+  "triggers": []
+}

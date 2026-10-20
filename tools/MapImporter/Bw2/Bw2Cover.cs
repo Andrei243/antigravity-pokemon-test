@@ -108,9 +108,9 @@ public static class Bw2Cover
         }
         var over = triangles.Count > 0 ? Bw2Geometry.LayersOver(triangles, w, h, Surface) : null;
 
-        // Tiles under a building's box
+        // Tiles under a building's box (a room has none: its props are its furniture, numbered as the rooms' are)
         var buildings = new bool[w * h];
-        if (maps.Model(chunk) is { } model)
+        if (!maps.IsInterior(chunk) && maps.Model(chunk) is { } model)
             foreach (var prop in model.Props)
             {
                 if (maps.PropBox(prop.Resource) is not { } box || !IsBuilding(box.Max - box.Min)) continue;

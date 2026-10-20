@@ -70,6 +70,72 @@ public static class Bw2Import
         return 0;
     }
 
+    /// <summary>
+    /// <c>--game black2 --data</c> (plan 22 · U2): the files <c>Data/world/unova/</c> holds, by its own hand-written
+    /// <c>world.json</c>: its open areas, the matrices they stand on, the chunks in view of them (the open areas' own and
+    /// a cell round them on the overworld; every chunk of a room's matrix any of whose areas is open), and always the
+    /// region's <c>trainers.json</c> and <c>habitats.json</c>.
+    /// </summary>
+    public static int Data(string repo, string? dir, string? dataDir)
+    {
+        string data = dataDir ?? Path.Combine(repo, "PokemonPlatinumEngine", "Data", World.Folder, Region);
+        string indexFile = Path.Combine(data, World.IndexFile);
+        if (!File.Exists(indexFile))
+        {
+            Console.WriteLine($"{indexFile} isn't there: a region's world.json is written by hand, with the areas it opens, before --data writes their files.");
+            return 1;
+        }
+        var index = GameDataFiles.Deserialize<WorldIndexFile>(File.ReadAllText(indexFile));
+        var world = new Bw2World(new Bw2Maps(dir ?? Fetch(repo)));
+        int files = WriteWorld(world, data, new HashSet<string>(index.Areas, StringComparer.Ordinal));
+        foreach (string problem in world.Problems.Take(20)) Console.WriteLine("  " + problem);
+        Console.WriteLine($"Wrote {files} files of {index.Areas.Count} open areas into {data}");
+        return 0;
+    }
+
+    /// <summary>The world files of the areas <paramref name="open"/> names under <paramref name="directory"/>, written only where they changed.</summary>
+    public static int WriteWorld(Bw2World world, string directory, ISet<string> open)
+    {
+        int files = 0;
+        void Write<T>(string folder, string name, T value)
+        {
+            string path = Path.Combine(directory, folder, name + ".json");
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            string text = GameDataFiles.Serialize(value);
+            if (File.Exists(path) && File.ReadAllText(path) == text) return;
+            File.WriteAllText(path, text);
+            files++;
+        }
+        var maps = world.Maps;
+        var wanted = new SortedDictionary<int, string>();
+        foreach (var (constant, (id, matrix)) in maps.Matrices)
+        {
+            if (id < 0) continue;
+            var areas = world.AreasOn(constant).ToList();
+            if (!areas.Any(a => open.Contains(Bw2World.KeyOf(a.Constant)))) continue;
+            for (int cy = 0; cy < matrix.Height; cy++)
+                for (int cx = 0; cx < matrix.Width; cx++)
+                {
+                    if (matrix.ModelAt(cx, cy) is not { } model) continue;
+                    // A room's matrix belongs to every area that loads it: it is wanted whole when any of them is open
+                    bool inView = !matrix.HasZones;
+                    for (int y = cy - 1; y <= cy + 1 && !inView; y++)
+                        for (int x = cx - 1; x <= cx + 1 && !inView; x++)
+                            inView = matrix.ModelAt(x, y) != null && matrix.ZoneAt(x, y) is { } z && open.Contains(Bw2World.KeyOf(z));
+                    string folder = Bw2Matrix.Folder(model);
+                    int chunk = world.ChunkId(folder);
+                    if (inView && chunk >= 0) wanted[chunk] = folder;
+                }
+            Write("matrices", id.ToString("000", CultureInfo.InvariantCulture), world.MatrixFile(constant));
+            foreach (var zone in areas)
+                if (open.Contains(Bw2World.KeyOf(zone.Constant))) Write("areas", Bw2World.KeyOf(zone.Constant), world.Area(zone));
+        }
+        foreach (var (chunk, folder) in wanted) Write("chunks", chunk.ToString("000", CultureInfo.InvariantCulture), world.Chunk(folder));
+        Write("", "trainers", world.Trainers);
+        Write("", Path.GetFileNameWithoutExtension(WorldHabitatsFile.FileName), world.Habitats());
+        return files;
+    }
+
     // ---------------------------------------------------------------- tiles
 
     public static TileGrid Tiles(Bw2Maps maps, Bw2Matrix matrix, Dictionary<string, int>? unsorted = null)
@@ -249,7 +315,9 @@ public static class Bw2Import
                     var t = census.Textures.GetValueOrDefault(texture);
                     census.Textures[texture] = overworld ? (t.Overworld + 1, t.Elsewhere) : (t.Overworld, t.Elsewhere + 1);
                 }
-                foreach (var prop in model.Props) census.Props[prop.Resource] = census.Props.GetValueOrDefault(prop.Resource) + 1;
+                // The open country's props alone: a room's are numbered apart (plan 22 · U2, Bw2Maps.InteriorPropNames)
+                if (!maps.IsInterior(chunk))
+                    foreach (var prop in model.Props) census.Props[prop.Resource] = census.Props.GetValueOrDefault(prop.Resource) + 1;
             }
             return census;
         }

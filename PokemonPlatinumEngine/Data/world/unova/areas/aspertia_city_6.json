@@ -1,0 +1,26 @@
+{
+  "key": "aspertia_city_6",
+  "index": 432,
+  "name": "Aspertia City",
+  "matrix": 262,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_12",
+  "nightMusic": "BGM_SW_C_12",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 2, "to": "aspertia_city_5", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "nursery_aide", "movement": "none", "x": 2, "z": 14, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "1" },
+    { "id": "1", "looks": "8", "movement": "none", "x": 6, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "2" }
+  ],
+  "signs": [],
+  "triggers": []
+}

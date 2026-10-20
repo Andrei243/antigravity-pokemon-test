@@ -1437,7 +1437,9 @@ public static class WorldMapBuilder
                 else if (map.IsIndoors && prop == PropType.Fence) prop = null;
                 // An area that isn't built yet is scenery: seen from its neighbours, entered by nobody
                 map.SetGroundTile(ox + x, oy + z, type, blocks || !area.Open);
-                if (cover is TerrainCover.Building or TerrainCover.Lamp && solid) under[(oy + z) * map.Width + ox + x] = true;
+                // (a DS room is cut to what its ways in reach, and the chunk's corner beyond it is no tile of the map:
+                // Black 2's rooms keep a wall's building texture there, plan 22 · U2)
+                if (cover is TerrainCover.Building or TerrainCover.Lamp && solid && map.InBounds(ox + x, oy + z)) under[(oy + z) * map.Width + ox + x] = true;
                 if (cover == TerrainCover.Unknown && !solid && type == TileType.Grass) vague.Add((ox + x, oy + z));
                 if (cover == TerrainCover.Unknown && solid && type == TileType.Tree) blank.Add((ox + x, oy + z));
                 if (prop is { } standing && (blocks || !area.Open)) map.Props.Add(new Prop { Type = standing, X = ox + x, Y = oy + z });
