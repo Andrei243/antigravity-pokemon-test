@@ -1056,6 +1056,31 @@
     "takenAway": "The {thing} was taken away.",
     "putAway": "The {thing} was put away."
   },
+  "replays": {
+    "title": "VS. RECORDER",
+    "watch": "Watch",
+    "empty": "No battles have been kept on the Vs. Recorder yet.",
+    "unreadable": "CAN'T PLAY",
+    "result": {
+      "won": "WON",
+      "lost": "LOST",
+      "caught": "CAUGHT",
+      "ran": "RAN",
+      "fled": "IT FLED",
+      "none": "UNFINISHED"
+    },
+    "single": "Single Battle",
+    "double": "Double Battle",
+    "turns": "{turns} turns",
+    "oneTurn": "1 turn",
+    "theirs": "THEIR TEAM",
+    "yours": "YOUR TEAM",
+    "file": "FILE",
+    "banner": "REPLAY",
+    "fast": "×3",
+    "hintFast": "Hold: ×3",
+    "broke": "The recording can't be played on from here."
+  },
   "records": {
     "title": "BATTLE RECORDS",
     "facility": { "tower": "Battle Tower", "factory": "Battle Factory", "castle": "Battle Castle", "hall": "Battle Hall", "arcade": "Battle Arcade" },

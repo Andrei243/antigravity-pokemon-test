@@ -400,6 +400,12 @@ public partial class GameEngine
             flow.JournalScreen.Open();
             return;
         }
+        // The Vs. Recorder's battles off the item button, and back to the field (plan 08 · P11)
+        if (item.FieldUse == "VsRecorder")
+        {
+            OpenReplays(fromBag: false);
+            return;
+        }
         // The Town Map off the item button: the map of the region, and back to the field (plan 01 · M12)
         if (item.FieldUse == "TownMap")
         {

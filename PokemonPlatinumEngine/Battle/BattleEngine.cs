@@ -197,8 +197,17 @@ public partial class BattleEngine
     {
     }
 
-    public BattleEngine(BattleSetup setup)
+    public BattleEngine(BattleSetup setup) : this(setup, null)
     {
+    }
+
+    /// <summary>
+    /// A battle on screen: fought, or (with <paramref name="watched"/>, plan 08 · P11) a recorded battle watched, whose
+    /// answers are the record's and whose Pokémon, bag and Pokédex are the recording's own (<see cref="ForReplay"/>).
+    /// </summary>
+    private BattleEngine(BattleSetup setup, BattleRecordFile? watched)
+    {
+        Watched = watched;
         PlayerParty = setup.PlayerParty;
         PlayerInventory = setup.Inventory;
         Pokedex = setup.Pokedex;
@@ -236,14 +245,15 @@ public partial class BattleEngine
             Frontier = setup.Frontier,
             NoBattleItems = setup.NoBattleItems,
             OffersSwitch = setup.OffersSwitch,
-            // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20)
-            KeyStone = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem),
+            // A Key Stone in the bag lets one of the player's Pokémon Mega Evolve (plan 06 · R20); a battle watched
+            // has what the recorded one had (plan 08 · P11)
+            KeyStone = watched?.KeyStone ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.KeyStoneItem),
             // And a Z-Ring lets one use a Z-Move and Ultra Burst (plan 06 · R21)
-            ZRing = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.ZRingItem),
+            ZRing = watched?.ZRing ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.ZRingItem),
             // And a Dynamax Band lets one Dynamax (plan 06 · R22)
-            DynamaxBand = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.DynamaxBandItem),
+            DynamaxBand = watched?.DynamaxBand ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.DynamaxBandItem),
             // And a Tera Orb lets one Terastallize (plan 06 · R23)
-            TeraOrb = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.TeraOrbItem)
+            TeraOrb = watched?.TeraOrb ?? setup.Inventory.AllItems.Any(s => s.Name == BattleCore.TeraOrbItem)
         };
         // The battle as its rules begin it, before they have changed anything: what the Vs. Recorder keeps (plan 08 · P10)
         Opening = BattleRecordFile.Opening(rules);
@@ -454,7 +464,8 @@ public partial class BattleEngine
                     line.OnShow?.Invoke();
                     // Battle Style Shift's line is its question: Yes and No come up beside it as it is written, with
                     // no press between (plan 08 · P1; the original's PrintMessage, Wait, YesNoMenu)
-                    if (steps.Count == 0 && interlude.Count == 0 && core.Request is SwitchOfferRequest && playingTheLog)
+                    // (A battle watched shows the line, and the record answers it once it has been read, plan 08 · P11)
+                    if (steps.Count == 0 && interlude.Count == 0 && core.Request is SwitchOfferRequest && playingTheLog && !Watching)
                         waitingForMessageConfirm = false;
                     break;
                 case Happening happening:
@@ -475,6 +486,12 @@ public partial class BattleEngine
     private void LogPlayed()
     {
         SyncFromCore();
+        // A battle watched opens no menu: the record answers what the rules ask (plan 08 · P11)
+        if (Watching)
+        {
+            FeedTheRecord();
+            return;
+        }
         switch (core.Request)
         {
             case ActionRequest:
@@ -817,7 +834,8 @@ public partial class BattleEngine
                     AudioManager.PlaySound("exp", -0.3f);
                 break;
             case MoveWanted wanted:
-                WantMove(wanted);
+                // Nobody is asked anything while a recording is watched (plan 08 · P11)
+                if (!Watching) WantMove(wanted);
                 break;
             case LevelRose level:
             {
@@ -917,6 +935,13 @@ public partial class BattleEngine
 
     public void Update(float dt)
     {
+        // A recording watched (plan 08 · P11): Menu leaves at any line and Run held plays it three times as fast;
+        // nothing else is read
+        if (Watching)
+        {
+            Watch(dt, InputManager.IsActionDown(GameAction.Run), InputManager.IsActionPressed(GameAction.Menu));
+            return;
+        }
         Anim.Update(dt, (side, slot) => SlotsOf(side).ElementAtOrDefault(slot)?.Pokemon);
         UpdatePendingEffects(dt);
         HUD.LevelUp?.Advance(dt);
@@ -1064,5 +1089,7 @@ public partial class BattleEngine
             currentMessage,
             Anim,
             PlayerInventory);
+        // The tag that says it is a recording, and how to leave it (plan 08 · P11)
+        if (Watched is { } watched) UI.ModernUi.ReplayTag(screenWidth, watched, WatchFast);
     }
 }
