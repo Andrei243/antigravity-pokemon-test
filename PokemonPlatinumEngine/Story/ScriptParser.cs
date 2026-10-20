@@ -27,6 +27,7 @@ public static class ScriptParser
         "LEAGUE_VICTORIES",
         "CYCLING",
         "CAUGHT",
+        "FAINTED", "LEAD_SPECIES", "SECOND_SPECIES",
     };
 
     private static readonly Regex Identifier = new("^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);

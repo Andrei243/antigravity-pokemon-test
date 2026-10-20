@@ -1577,6 +1577,222 @@
       ]
     }
   ],
+  "GabbyAndTyGabby": [
+    {
+      "en": [
+        "Gabby"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you are! Ty, get the camera rolling. We've been hoping to run into this trainer again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wait, wait! Ty, the camera! A trainer with Pokémon at their side, and we're after trainers!",
+        "We're the reporters Gabby and Ty. Give us a battle for the cameras, two against two?"
+      ],
+      "text": [
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gabby"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, we lost again! Still, that's the footage the viewers like."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We lost! Wow, that was a battle! Ty, tell me you got all of that."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We'll be keeping an eye out for you. Keep up the good work out there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A double battle's what we're after, and you've only one Pokémon to fight with. Come back with two!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GabbyAndTyTy": [
+    {
+      "en": [
+        "Ty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gabby, it's the trainer from before! I'm rolling. Let's see how they do this time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gabby's spotted you, and when she does, I film. Two against two, for the cameras. Ready?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ty"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We lost again, and I got it all on tape. Not bad for the viewers."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We lost, but I got every bit of it. That'll be good footage."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That was a good battle. I got it all on tape."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Gabby wants a double battle, and one Pokémon makes only half of one. Come back with two."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GabbyAndTyAfterTheBattle": [
+    {
+      "en": [
+        "Gabby"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We never got an interview out of you last time. How about it now?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "By the way, who ARE you? A trainer who battles like that deserves an interview. Would you mind?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Last time you told us, \"{phrase:GABBY_AND_TY}\". The viewers loved it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Care to be interviewed again?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you flattened us so fast that Ty had barely started filming! How about another interview?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And you lost a Pokémon and still won, which made us look rather good. How about another interview?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wonderful! Then tell us in two words: how did that battle feel?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Perfect! That's just what the viewers want. We'll be seeing you!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, no interview? We won't give up. We'll find you again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "HoennKecleonLook": [
     {
       "en": [

@@ -388,11 +388,17 @@ script Television
   speaker "TV"
   # An interview given to Jubilife City's reporters is shown first, the first time a television is looked at after it (plan 08 · P9)
   if flag FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR goto OnAir
+  # Gabby and Ty's segment on the interview the player gave them is shown first as well (plan 21 · H6, part c)
+  if flag FLAG_GABBY_AND_TY_SHOW_NEW goto GabbyAndTyOnAir
   broadcast
   end
 label OnAir
   clearflag FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR
   broadcast interview
+  end
+label GabbyAndTyOnAir
+  clearflag FLAG_GABBY_AND_TY_SHOW_NEW
+  broadcast gabbyandty
   end
 
 script Bookshelf
@@ -1703,6 +1709,7 @@ script HoennNewGame
   call HoennChapterSix
   call HoennChapterSeven
   call HoennChapterSevenB
+  call HoennChapterSevenC
   return
 
 
@@ -1871,6 +1878,245 @@ script HoennChapterSeven
 script HoennChapterSevenB
   setflag FLAG_HOENN_CHAPTER_SEVEN_B
   setflag FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION
+  return
+
+
+# What a new game of Emerald sets for the third part of the seventh stretch (plan 21 · H6, part c): Gabby and Ty on
+# Route 111 and the Wingull of Fortree's fourth house. All of Gabby and Ty's objects start hidden and
+# GabbyAndTyUpdateLocation, which the three routes' arrival scripts run, shows the pair where the count of their
+# battles puts them. Part b hid the Wingull because nothing could be done with it; it now stands in the house until the
+# boy sends it off (FLAG_WINGULL_SENT_ON_ERRAND), and Mossdeep City's Wingull, the errand's other half, is hidden until
+# then (plan 21 · H8 builds the town). FLAG_HOENN_CHAPTER_SEVEN_C, a flag of ours, says it has run. HoennNewGame calls
+# it; a save from before it was written runs it from Route 111's, 118's, 119's and 120's and Fortree City's own
+# arrival scripts, the only ways to the pair and the house, so no story version is raised for it. It may only set flags
+# and variables, and ends in return.
+script HoennChapterSevenC
+  setflag FLAG_HOENN_CHAPTER_SEVEN_C
+  setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1
+  setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2
+  setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3
+  setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1
+  setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2
+  setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
+  setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1
+  setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
+  setflag FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL
+  if not flag FLAG_WINGULL_SENT_ON_ERRAND clearflag FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL
+  return
+
+
+# ---------------------------------------------------------------- Gabby and Ty (plan 21 · H6, part c)
+#
+# Emerald's reporter and cameraman (data/scripts/gabby_and_ty.inc, src/tv.c): a pair who come on three routes in turn,
+# Route 111, then 118, then 120, and battle the player as a double battle with a party of their own each time (six
+# of them; after the sixth they keep it and go on round the routes). VAR_GABBY_AND_TY_BATTLE_NUM is the count of their
+# battles, 0 to 8: the nine places they stand in turn (Emerald has object events for three parties on Route 111 and
+# 118 and two on Route 120), so past the sixth battle it goes back from 9 to 6, as the original's GabbyAndTyGetBattleNum
+# does with a remainder. Each time the player comes to one of the routes GabbyAndTyUpdateLocation hides the pair where
+# they were and shows them where the count says. After the battle they ask for an interview: two words
+# (`phrase GABBY_AND_TY`, where Emerald takes one easy-chat word), which they remember until the next battle, when
+# they quote it back and ask a question about the battle they remember (it was over at once, or a Pokémon was lost:
+# the two things this game can tell; Emerald's thrown ball and healing item are left). An interview given puts their
+# segment on the air (FLAG_GABBY_AND_TY_ON_AIR, shown first on the next television looked at, FLAG_GABBY_AND_TY_SHOW_NEW)
+# until the next battle takes it off. FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN is Emerald's trainer flag and its
+# FLAG_TEMP_SKIP_GABBY_INTERVIEW in one: they have been fought on this visit, so they only say they are watching.
+
+# Shows the pair where the count puts them and hides them where they were
+script GabbyAndTyUpdateLocation
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 0 goto Battle0
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 1 goto Battle1
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 2 goto Battle2
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 3 goto Battle3
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 4 goto Battle4
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 5 goto Battle5
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 6 goto Battle6
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 7 goto Battle7
+  goto Battle8
+label Battle0
+  clearflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1
+  return
+label Battle1
+  clearflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1
+  setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1
+  return
+label Battle2
+  clearflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1
+  setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1
+  return
+label Battle3
+  clearflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2
+  setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1
+  return
+label Battle4
+  clearflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2
+  setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2
+  return
+label Battle5
+  clearflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
+  setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2
+  return
+label Battle6
+  clearflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3
+  setflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
+  return
+label Battle7
+  clearflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
+  setflag FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3
+  return
+label Battle8
+  clearflag FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
+  setflag FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
+  return
+
+
+# Gabby, spoken to: the battle and the interview, or, with the pair already fought on this visit, a word that they are
+# watching
+script GabbyAndTyGabby
+  face self player
+  speaker "Gabby"
+  if flag FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN goto Watching
+  if var PARTY_COUNT < 2 goto NotEnough
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 0 goto First
+  say "There you are! Ty, get the camera rolling. We've been hoping to run into this trainer again!"
+  goto Fight
+label First
+  say "Wait, wait! Ty, the camera! A trainer with Pokémon at their side, and we're after trainers!" "We're the reporters Gabby and Ty. Give us a battle for the cameras, two against two?"
+label Fight
+  call GabbyAndTyFight
+  speaker "Gabby"
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 0 goto DefeatFirst
+  say "Oh, we lost again! Still, that's the footage the viewers like."
+  goto Interview
+label DefeatFirst
+  say "We lost! Wow, that was a battle! Ty, tell me you got all of that."
+label Interview
+  call GabbyAndTyAfterTheBattle
+  end
+label Watching
+  say "We'll be keeping an eye out for you. Keep up the good work out there!"
+  end
+label NotEnough
+  say "A double battle's what we're after, and you've only one Pokémon to fight with. Come back with two!"
+  end
+
+
+# Ty, spoken to: the same
+script GabbyAndTyTy
+  face self player
+  speaker "Ty"
+  if flag FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN goto Watching
+  if var PARTY_COUNT < 2 goto NotEnough
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 0 goto First
+  say "Gabby, it's the trainer from before! I'm rolling. Let's see how they do this time."
+  goto Fight
+label First
+  say "Gabby's spotted you, and when she does, I film. Two against two, for the cameras. Ready?"
+label Fight
+  call GabbyAndTyFight
+  speaker "Ty"
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 0 goto DefeatFirst
+  say "We lost again, and I got it all on tape. Not bad for the viewers."
+  goto Interview
+label DefeatFirst
+  say "We lost, but I got every bit of it. That'll be good footage."
+label Interview
+  call GabbyAndTyAfterTheBattle
+  end
+label Watching
+  say "That was a good battle. I got it all on tape."
+  end
+label NotEnough
+  say "Gabby wants a double battle, and one Pokémon makes only half of one. Come back with two."
+  end
+
+
+# The battle: the party is the one the count of their battles calls for (the sixth from then on), and what the player
+# fought with and how many lay fainted before it are noted for the interview
+script GabbyAndTyFight
+  setvar VAR_GABBY_AND_TY_MON_1 LEAD_SPECIES
+  setvar VAR_GABBY_AND_TY_MON_2 SECOND_SPECIES
+  setvar VAR_GABBY_AND_TY_FAINTED_BEFORE FAINTED
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 0 goto Party1
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 1 goto Party2
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 2 goto Party3
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 3 goto Party4
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 4 goto Party5
+  goto Party6
+label Party1
+  battle self as "hoenn_gabby_and_ty_1"
+  return
+label Party2
+  battle self as "hoenn_gabby_and_ty_2"
+  return
+label Party3
+  battle self as "hoenn_gabby_and_ty_3"
+  return
+label Party4
+  battle self as "hoenn_gabby_and_ty_4"
+  return
+label Party5
+  battle self as "hoenn_gabby_and_ty_5"
+  return
+label Party6
+  battle self as "hoenn_gabby_and_ty_6"
+  return
+
+
+# The battle won: what it is to be remembered for, the count moved on, and the interview (Emerald's
+# GabbyAndTyBeforeInterview, then FirstInterview after the first battle and RequestInterview after the rest)
+script GabbyAndTyAfterTheBattle
+  speaker "Gabby"
+  setflag FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN
+  clearflag FLAG_GABBY_AND_TY_ON_AIR
+  setvar VAR_GABBY_AND_TY_NEW_TRIVIA 0
+  if var FAINTED > VAR_GABBY_AND_TY_FAINTED_BEFORE setvar VAR_GABBY_AND_TY_NEW_TRIVIA 4
+  if var TURNS == 0 setvar VAR_GABBY_AND_TY_NEW_TRIVIA 1
+  setvar VAR_GABBY_AND_TY_ROUTE 111
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 1 setvar VAR_GABBY_AND_TY_ROUTE 118
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 4 setvar VAR_GABBY_AND_TY_ROUTE 118
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 7 setvar VAR_GABBY_AND_TY_ROUTE 118
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 2 setvar VAR_GABBY_AND_TY_ROUTE 120
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 5 setvar VAR_GABBY_AND_TY_ROUTE 120
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 8 setvar VAR_GABBY_AND_TY_ROUTE 120
+  addvar VAR_GABBY_AND_TY_BATTLE_NUM 1
+  if var VAR_GABBY_AND_TY_BATTLE_NUM >= 9 setvar VAR_GABBY_AND_TY_BATTLE_NUM 6
+  if var VAR_GABBY_AND_TY_BATTLE_NUM == 1 goto FirstTime
+  if flag FLAG_GABBY_AND_TY_QUOTE_PENDING goto Quote
+  ask "We never got an interview out of you last time. How about it now?"
+  if no goto Refused
+  goto Describe
+label FirstTime
+  ask "By the way, who ARE you? A trainer who battles like that deserves an interview. Would you mind?"
+  if no goto Refused
+  goto Describe
+label Quote
+  clearflag FLAG_GABBY_AND_TY_QUOTE_PENDING
+  say "Last time you told us, \"{phrase:GABBY_AND_TY}\". The viewers loved it!"
+  if var VAR_GABBY_AND_TY_TRIVIA == 1 goto Quick
+  if var VAR_GABBY_AND_TY_TRIVIA == 4 goto Lost
+  ask "Care to be interviewed again?"
+  if no goto Refused
+  goto Describe
+label Quick
+  ask "And you flattened us so fast that Ty had barely started filming! How about another interview?"
+  if no goto Refused
+  goto Describe
+label Lost
+  ask "And you lost a Pokémon and still won, which made us look rather good. How about another interview?"
+  if no goto Refused
+  goto Describe
+label Describe
+  say "Wonderful! Then tell us in two words: how did that battle feel?"
+  phrase GABBY_AND_TY
+  if result == 0 goto Refused
+  say "Perfect! That's just what the viewers want. We'll be seeing you!"
+  setvar VAR_GABBY_AND_TY_TRIVIA VAR_GABBY_AND_TY_NEW_TRIVIA
+  setflag FLAG_GABBY_AND_TY_QUOTE_PENDING
+  setflag FLAG_GABBY_AND_TY_ON_AIR
+  setflag FLAG_GABBY_AND_TY_SHOW_NEW
+  return
+label Refused
+  say "Oh, no interview? We won't give up. We'll find you again!"
   return
 
 

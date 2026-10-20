@@ -438,6 +438,8 @@
     "Aqua Admin": null,
     "Aqua Leader": null,
     "Expert": [ "gentleman", "lady" ],
-    "Old Couple": [ "gentleman", "lady" ]
+    "Old Couple": [ "gentleman", "lady" ],
+    // Plan 21 · H6, part c: Gabby and Ty, whose reporter and cameraman stand as the nearest looks until theirs are made
+    "Interviewer": [ "lady", "gentleman" ]
   }
 }

@@ -10,6 +10,14 @@
 # "Route 118 to Fortree City").
 
 
+# Gabby and Ty, where the count of their battles puts them (plan 21 · H6, part c; common.txt). A save from before them
+# runs HoennChapterSevenC here, the only way to the route besides Route 119's and Route 121's.
+script OnEnter
+  if not flag FLAG_HOENN_CHAPTER_SEVEN_C call HoennChapterSevenC
+  call GabbyAndTyUpdateLocation
+  end
+
+
 script Steven
   face self player
   speaker "Steven"

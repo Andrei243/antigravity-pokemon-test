@@ -1876,8 +1876,24 @@ public sealed partial class ScriptRunner
         "CYCLING" => host.Cycling ? 1 : 0,
         // How many species are caught (plan 19 · K3: Oak's aides, who hand out a reward for so many)
         "CAUGHT" => host.Caught,
+        // How many of the team lie fainted just now, and the National Pokédex numbers of the first two that are no Egg
+        // and can fight (0 for none): what Gabby and Ty ask of a battle once it is over (plan 21 · H6, part c)
+        "FAINTED" => host.Party.Members.Count(p => !p.IsEgg && p.IsFainted),
+        "LEAD_SPECIES" => AbleSpecies(0),
+        "SECOND_SPECIES" => AbleSpecies(1),
         _ => host.Story.Var(variable)
     };
+
+    /// <summary>The National Pokédex number of the nth of the team that is no Egg and isn't fainted, 0 with none.</summary>
+    private int AbleSpecies(int nth)
+    {
+        foreach (var p in host.Party.Members)
+        {
+            if (p.IsEgg || p.IsFainted) continue;
+            if (nth-- == 0) return p.Species.DexNumber;
+        }
+        return 0;
+    }
 
     private bool Holds(Condition c, Instruction at)
     {
