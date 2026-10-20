@@ -107,6 +107,10 @@ public enum Op
     Bicycle,
     // Down to the sea floor under the dark water, or back up from it (plan 21 · H5: Emerald's Dive)
     Dive,
+    // A television's programme, made of what is true of the game (plan 08 · P8, Broadcasts)
+    Broadcast,
+    // A map on a wall looked at: the Town Map's screen in its wall mode (plan 08 · P8)
+    TownMap,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

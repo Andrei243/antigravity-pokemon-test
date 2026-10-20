@@ -44,6 +44,8 @@ public class TextTests
         "Models/Poffins.cs", "Models/SuperContests/ContestRules.cs", "Models/Ribbons.cs", "Models/Underground/SecretBaseRules.cs",
         "Overworld/FieldMoveRules.cs", "Overworld/Fishing.cs", "Overworld/Bicycle.cs", "Models/ItemUse.cs", "Models/MoveTeaching.cs",
         "Models/EncounterAids.cs", "Models/Journal.cs",
+        // Plan 08 · P8: the programmes a television shows
+        "Story/Broadcasts.cs",
         // Plan 17 · N2: the battle's words that are no line of its log (which TheBattleSaysNothingInQuotesOfItsOwn holds)
         "Battle/BattleText.cs", "Battle/BattleInfo.cs", "Battle/BattleBag.cs", "Battle/MoveHint.cs",
         "Battle/BattleEngine.cs", "Battle/BattleEngine.Menus.cs", "Battle/BattleEngine.Learning.cs", "Battle/BattleHUD.cs", "Models/Trainer.cs"

@@ -1111,6 +1111,11 @@ public partial class GameEngine
                     PokemonSprites.Request(game.flow.AlphPuzzleScreen.Puzzle!.Species);
                     game.flow.State = GameState.AlphPuzzle;
                     break;
+                // A map on a wall (plan 08 · P8): the Town Map's screen in its wall mode, back to the field when put
+                // away; where the region has no map nothing opens and the script hears 0
+                case ScriptScreen.TownMap:
+                    game.flow.ScriptAnswer = game.OpenTownMap(TownMapMode.Wall, fromBag: false) ? 1 : 0;
+                    break;
                 case ScriptScreen.Travel:
                     // The way to the next region, where this map has one: the attendant says how things stand,
                     // and the ship leaves when the story of this region is done
@@ -1302,6 +1307,21 @@ public partial class GameEngine
         public DayOfWeek Weekday => GameClock.Today.DayOfWeek;
 
         public IEnumerable<Pokemon> Boxed => game.flow.Boxes.All;
+
+        // ---- the television (plan 08 · P8): the clock as the game reads it, the time played and the whole Pokédex
+        public BroadcastFacts Broadcast()
+        {
+            float hour = GameClock.Hour;
+            int whole = (int)hour;
+            return Broadcasts.FactsOf(this) with
+            {
+                Hour = ((whole % 24) + 24) % 24,
+                Minute = Math.Clamp((int)((hour - whole) * 60f), 0, 59),
+                PlayTimeSeconds = game.flow.PlayTime,
+                Seen = game.flow.Pokedex.SeenCount
+            };
+        }
+
         public BerryPatches Berries => game.flow.Berries;
         public string? ChosenItem => game.flow.ScriptItem;
 

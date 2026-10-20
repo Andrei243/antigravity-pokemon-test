@@ -1826,6 +1826,11 @@ public partial class GameEngine
         // A honey tree faced from the south (HoneyTree_TryInteract, plan 06 · R13)
         if (HoneyTrees.Faced(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing) != null && StartScript(FieldScripts.HoneyTree)) return;
 
+        // Furniture with nothing of its own to say (plan 08 · P8): a television's programme, a bookshelf, a bin, a map
+        // on a wall (the original's TileBehavior_IsTV and its kin)
+        if (FieldScripts.ForFurniture(flow.Map, targetX, targetY, flow.Player.Facing) is { } furniture
+            && StartScript(furniture, file: flow.Map.ScriptFileAt(targetX, targetY))) return;
+
         // What the tile ahead is (Field_TileBehaviorToScript): a waterfall faced from the water, a rock face along
         // its grain, and deep water at the player's feet, offered only to someone who may surf (the move and the
         // Fen Badge), as the original offers it

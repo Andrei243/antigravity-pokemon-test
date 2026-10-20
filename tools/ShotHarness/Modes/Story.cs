@@ -426,5 +426,30 @@ partial class Harness
         Until(() => !engine.ScriptRunning, "the PC switched off again", 120);
         Frames(4); Screen("st72_pc_off");
         Console.WriteLine($"pc off: its screen's frame {Frame()?.ToString() ?? "none (dark)"}, script running {engine.ScriptRunning}");
+
+        // ---- furniture and the programmes (plan 08 · P8), after everything else so that nothing before them moves: the
+        // living room's television at home with its own programme, a television with nothing of its own showing one of
+        // the programmes (common.Television), a bookshelf and a bin. Each prints the script it ran and the lines read
+        void Furniture(string name, string map, int x, int y)
+        {
+            At(map, x, y, Direction.Up);
+            Frames(10);
+            Talk();
+            string? script = game.ScriptNow;
+            var said = new List<string>();
+            for (int i = 0; i < 12 && Box().IsActive && !Box().IsQuestion; i++)
+            {
+                Whole();
+                said.Add(Box().CurrentLine);
+                if (i == 0) Shot(name);
+                Next();
+            }
+            Console.WriteLine($"{name}: {script ?? "no script"} said {said.Count} lines: {string.Join(" / ", said)}");
+            Until(() => !engine.ScriptRunning, $"{name}'s script ended", 120);
+        }
+        Furniture("st90_television", "PlayerHouse", 6, 6);
+        Furniture("st91_television_broadcast", "TwinleafTownNortheastHouse", 6, 4);
+        Furniture("st92_shelf", "TwinleafTownNortheastHouse", 8, 4);
+        Furniture("st93_bin", "SandgemTownCounterpartHouse2F", 4, 4);
     }
 }

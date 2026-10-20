@@ -1,3 +1,4 @@
+using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
 
 namespace PokemonPlatinumEngine.Story;
@@ -105,6 +106,45 @@ public static class FieldScripts
         if (npc.IsTrainer && npc.TrainerData != null) return Trainer;
         return npc.DialogLines.Count > 0 ? Talk : null;
     }
+
+    // Furniture (plan 08 · P8): what a television, a bookshelf, a bin and a map on a wall say when looked at
+    public const string Television = "common.Television";
+    public const string Bookshelf = "common.Bookshelf";
+    public const string TrashCan = "common.TrashCan";
+    public const string TownMap = "common.TownMap";
+
+    /// <summary>
+    /// The script a piece of furniture at a tile runs when looked at (plan 08 · P8): a room's prop that covers the tile
+    /// first (a hand-made room marks its furniture so), then the tile's own behaviour (a room of the imported games
+    /// marks it so: the original's <c>TileBehavior_IsTV</c>, <c>IsBookshelf</c>, <c>IsTrashCan</c>, <c>IsTownMap</c>).
+    /// Null where nothing there says anything. A sign or a tile script of the map's own goes before it
+    /// (<see cref="Map.SignScripts"/>, <see cref="Map.TileScripts"/>). A tile marked by its behaviour is read as the
+    /// GBA games read theirs (<c>GetInteractedMetatileScript</c>): a television, a shelf and a map from the south, facing
+    /// north, a bin from any side; a prop of ours from any side, since our rooms stand it where it is looked at.
+    /// </summary>
+    public static string? ForFurniture(Map map, int x, int y, Direction facing)
+    {
+        if (!map.InBounds(x, y)) return null;
+        foreach (var prop in map.Props)
+            if (prop.Covers(x, y) && OfProp(prop.Type) is { } script) return script;
+        return map.BehaviourAt(x, y) switch
+        {
+            TileBehavior.TrashCan => TrashCan,
+            _ when facing != Direction.Up => null,
+            TileBehavior.Television => Television,
+            TileBehavior.SmallBookshelf or TileBehavior.Bookshelf or TileBehavior.TallBookshelf => Bookshelf,
+            TileBehavior.TownMap => TownMap,
+            _ => null
+        };
+    }
+
+    private static string? OfProp(PropType type) => type switch
+    {
+        PropType.Television => Television,
+        PropType.Bookshelf => Bookshelf,
+        PropType.TrashCan => TrashCan,
+        _ => null
+    };
 
     /// <summary>What is hidden at a tile and hasn't been found yet, or null.</summary>
     public static HiddenItem? HiddenAt(Map map, int x, int y, StoryState story) =>
