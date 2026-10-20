@@ -1265,7 +1265,9 @@ public class Bw2ImportTests
         Assert.True(known);
         Assert.Equal(TerrainCover.Cliff, Bw2Cover.OfTexture("gake_02", out _));
         Assert.Equal(TerrainCover.Tree, Bw2Cover.OfTexture("ki03", out _));
-        Assert.Equal(TerrainCover.TallGrass, Bw2Cover.OfTexture("kusa_01", out _));
+        // A plain kusa texture is the lawn: the long grass is nagakusa, and grass Pokémon live in is told by its behaviour (plan 22 · U2)
+        Assert.Equal(TerrainCover.Grass, Bw2Cover.OfTexture("kusa_01", out _));
+        Assert.Equal(TerrainCover.TallGrass, Bw2Cover.OfTexture("nagakusa_01", out _));
         Assert.Null(Bw2Cover.OfTexture("kage_01", out known));
         Assert.True(known);
         Assert.Equal(TerrainCover.Water, Bw2Cover.OfTile(Bw2Behaviours.Of(0x3F)));

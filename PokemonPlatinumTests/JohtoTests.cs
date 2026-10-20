@@ -312,10 +312,11 @@ public class JohtoTests
         Assert.Equal((byte)TileBehavior.LadderSouth, HgBehaviours.LadderSouth);
         Assert.Equal((byte)TileBehavior.LadderDown, HgBehaviours.LadderDown);
         // Each is told of, and waits for the session of plan 20 that opens a place using it
-        foreach (var b in new[] { TileBehavior.HeadbuttTree, TileBehavior.Magma, TileBehavior.LadderDown })
+        foreach (var b in new[] { TileBehavior.HeadbuttTree, TileBehavior.LadderDown })
             Assert.Equal(BehaviourSupport.Waiting, TileBehaviors.InGame(b).Support);
-        // ...but the whirlpool, whose rule plan 20 · J8 wrote
+        // ...but the whirlpool, whose rule plan 20 · J8 wrote, and the lava, the Blackthorn Gym's (J11, part c)
         Assert.Equal(BehaviourSupport.Ruled, TileBehaviors.InGame(TileBehavior.Whirlpool).Support);
+        Assert.Equal(BehaviourSupport.Ruled, TileBehaviors.InGame(TileBehavior.Magma).Support);
     }
 
     private static readonly string[] WestAndSea = { "route_38", "route_39", "olivine", "route_40", "route_41", "cianwood" };

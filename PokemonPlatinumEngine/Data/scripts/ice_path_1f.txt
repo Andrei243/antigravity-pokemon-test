@@ -2,7 +2,7 @@
 # HeartGold's beats (scr_seq_D39R0101).
 #
 # The man by the HM: the first time the player comes up to the ball before him (trigger 0, VAR_UNK_4100 0) he turns,
-# starts and tells them to take it; once it is taken (its ball's own flag, FLAG_HIDE_ITEMBALL_D39R0101_HM07) he says
+# starts and tells them to take it; once it is taken (HeartGold asks its ball's flag; here the bag, since an HM is never let go) he says
 # what Waterfall is for, and the trigger is done (VAR_UNK_4100 1). HM07 is Waterfall in HeartGold and in Platinum both.
 # A Kimono Girl is stuck on the ice in the south-east: spoken to from the tile north of her, she asks to be pushed,
 # slides off south and goes on her way (FLAG_UNK_239, VAR_UNK_40E8 1, HeartGold's own).
@@ -16,7 +16,7 @@ script Noticed
   wait 0.25
   face player down
   speaker "Man"
-  if flag FLAG_HIDE_ITEMBALL_D39R0101_HM07 goto Taken
+  if item "HM07" goto Taken
   say "Oh! You gave me a fright. There's an HM lying right there, see? I can't use it, but you could. Go on, take it!"
   face d39r0101_gsmiddleman1 down
   walk player left 1
@@ -34,7 +34,7 @@ script Man
   face d39r0101_gsmiddleman1 player
   speaker "Man"
   if var VAR_UNK_4100 == 1 goto Said
-  if flag FLAG_HIDE_ITEMBALL_D39R0101_HM07 goto Taken
+  if item "HM07" goto Taken
   say "There's an HM lying right there, see? I can't use it, but you could. Go on, take it!"
   face d39r0101_gsmiddleman1 down
   end

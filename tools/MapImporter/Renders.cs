@@ -42,7 +42,7 @@ public sealed class Renders
         ("MOUNTAIN FLOOR", Rgb.Of(198, 184, 156), b => b == 0x0C),
         ("OLD CHATEAU FLOOR", Rgb.Of(150, 132, 150), b => b == 0x0B),
         ("RIVER", Rgb.Of(92, 156, 224), b => b == 0x10),
-        ("WATERFALL", Rgb.Of(176, 214, 246), b => b == 0x13),
+        ("WATERFALL", Rgb.Of(176, 214, 246), b => b is 0x13 or 0x22),   // and HeartGold's lip at its head (plan 20 · J10)
         ("SEA", Rgb.Of(60, 120, 204), b => b == 0x15),
         ("PUDDLE", Rgb.Of(140, 184, 224), b => b is 0x16 or 0x1D),
         ("SHALLOW WATER", Rgb.Of(118, 178, 228), b => b == 0x17),
