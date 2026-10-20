@@ -2,6 +2,7 @@ using System.Buffers.Binary;
 using System.Numerics;
 using System.Text;
 using MapImporter;
+using MapImporter.Bw2;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Overworld;
 
@@ -964,5 +965,311 @@ public class TileBehaviorTests
         Assert.True(TileBehaviors.IsSurfable(TileBehavior.BridgeOverWater));
         Assert.False(TileBehaviors.IsSurfable(TileBehavior.Puddle));
         Assert.False(TileBehaviors.IsSurfable(TileBehavior.ShallowWater));
+    }
+}
+
+/// <summary>
+/// Black 2's reader (plan 22 · U1), on small files written here in the decompilation's own formats: a terrain grid
+/// and its splits, a matrix with its zones, a zone's header, a binary glTF whose JSON chunk alone is read, and the
+/// table of tile classes. No test needs the decompilation.
+/// </summary>
+public class Bw2ImportTests
+{
+    // A flat plane (slope 0) and one rising a tile to the south over a tile (slope 1), with two offsets: nought and a tile up
+    private const string HeightSource = """
+        static const fx16 MAP_HEIGHT_SLOPE_TABLE[] = {
+            0, 0x1000, 0,
+            0, 0x1000, 0x100,
+        };
+        static const fx32 MAP_HEIGHT_OFFSET_TABLE[] = {
+            0,
+            -0x10000,
+        };
+        """;
+
+    [Fact]
+    public void TheHeightTablesAreReadFromTheirCSource()
+    {
+        var heights = Bw2Heights.Parse(HeightSource);
+        Assert.Equal(new short[] { 0, 0x1000, 0, 0, 0x1000, 0x100 }, heights.Slopes);
+        Assert.Equal(new[] { 0, -0x10000 }, heights.Offsets);
+        // The third value turned round, as the original sets it
+        Assert.Equal((0, 0x1000, -0x100), heights.Normal(1));
+        // A slope past the table's end is level
+        Assert.Equal((0, 4096, 0), heights.Normal(9));
+        // -(offset + n.x·x + n.z·z) / n.y: a tile (sixteen units) up for the offset of -16 in fx32
+        Assert.Equal(16f, Bw2Heights.HeightOn(heights.Normal(0), heights.Offset(1), 5, -7));
+        // The slope rises a sixteenth of a unit for each unit south
+        Assert.Equal(1f, Bw2Heights.HeightOn(heights.Normal(1), 0, 0, 16), 3);
+    }
+
+    [Fact]
+    public void ABlack2TerrainGridIsReadWithItsClassesFlagsAndHeights()
+    {
+        var heights = Bw2Heights.Parse(HeightSource);
+        // Three tiles in a row: a whole tile on the flat plane a tile up, blocked tall grass (class 4 with flag 1);
+        // a tile cut in two (shape 2) whose planes are the ground and a tile up; and a class of no tile, blocked
+        string csv = string.Join('\n',
+            "x,z,shape,slope,offset,tile_type,diagonal",
+            "0,0,0,0,1,65540,0",
+            "1,0,2,0,0,4,1",
+            "2,0,0,0,0,255,0");
+        string splits = string.Join('\n', "index,slope0,slope1,offset0,offset1", "0,0,0,0,1");
+        var grid = Bw2Terrain.Read(csv, splits, heights);
+
+        Assert.Equal(3, grid.Width);
+        Assert.Equal(1, grid.Height);
+        Assert.False(grid.RawPlanes);
+
+        var grass = grid.At(0, 0);
+        Assert.Equal(0x04, grass.Class);
+        Assert.Equal(1, grass.Flags);
+        Assert.True(grass.Blocked);
+        Assert.Equal(1f, grass.Height, 3);
+        Assert.Equal(TileBehavior.TallGrass, Bw2Behaviours.Of(grass.Class));
+
+        // The middle of a split tile lies on its cut: the mean of the two planes
+        var split = grid.At(1, 0);
+        Assert.False(split.Blocked);
+        Assert.Equal(0.5f, split.Height, 3);
+
+        Assert.True(grid.At(2, 0).Blocked);
+        Assert.Equal(0f, grid.At(2, 0).Height, 3);
+    }
+
+    [Fact]
+    public void ABlack2TerrainGridThatWritesItsPlanesOutInFullIsReadToo()
+    {
+        var heights = Bw2Heights.Parse(HeightSource);
+        // Two planes written out, both level: one at the ground and one two tiles up, so the middle is a tile up
+        string csv = string.Join('\n',
+            "x,z,normal0_x,normal0_y,normal0_z,offset0,normal1_x,normal1_y,normal1_z,offset1,tile_type",
+            "0,0,0,4096,0,0,0,4096,0,-131072,10");
+        var grid = Bw2Terrain.Read(csv, null, heights);
+        Assert.True(grid.RawPlanes);
+        Assert.Equal(0x0A, grid.At(0, 0).Class);
+        Assert.Equal(1f, grid.At(0, 0).Height, 3);
+        Assert.Equal(TileBehavior.CaveFloor, Bw2Behaviours.Of(grid.At(0, 0).Class));
+    }
+
+    [Fact]
+    public void ABlack2MatrixFillsTheZonesOfItsJoinsFromTheNearestChunk()
+    {
+        // Two rows of chunks, the second shorter and with a hole; zones only for the first and the third chunk
+        const string json = """
+            {
+              "maps": [["MAP_MODEL_A", "MAP_MODEL_B", "MAP_MODEL_C"], [null, "MAP_MODEL_D"]],
+              "zones": [["ZONE_WEST", null, "ZONE_EAST"], [null, null, null]]
+            }
+            """;
+        var matrix = Bw2Matrix.Parse("MAP_MATRIX_TEST", json);
+        Assert.Equal(3, matrix.Width);
+        Assert.Equal(2, matrix.Height);
+        Assert.True(matrix.HasZones);
+        Assert.Equal("MAP_MODEL_D", matrix.ModelAt(1, 1));
+        Assert.Null(matrix.ModelAt(2, 1));   // the short row's end
+        Assert.Null(matrix.ModelAt(0, 1));
+        Assert.Null(matrix.ZoneAt(1, 0));
+
+        // The breadth-first fill: the north row's middle from the west (the first in the queue), the chunk under it from that
+        Assert.Equal(2, matrix.FillZones());
+        Assert.Equal(2, matrix.ZonesFilled);
+        Assert.Equal("ZONE_WEST", matrix.ZoneAt(1, 0));
+        Assert.Equal("ZONE_WEST", matrix.ZoneAt(1, 1));
+        Assert.Equal("ZONE_EAST", matrix.ZoneAt(2, 0));
+        // No chunk, no zone
+        Assert.Null(matrix.ZoneAt(0, 1));
+        Assert.Null(matrix.ZoneAt(2, 1));
+        Assert.Equal(new[] { "MAP_MODEL_A", "MAP_MODEL_B", "MAP_MODEL_C", "MAP_MODEL_D" }, matrix.Models.ToArray());
+
+        // A matrix of a place of its own has no zones of its own, and nothing to fill
+        var room = Bw2Matrix.Parse("MAP_MATRIX_ROOM", """{ "maps": [["MAP_MODEL_ROOM"]] }""");
+        Assert.False(room.HasZones);
+        Assert.Equal(0, room.FillZones());
+        Assert.Null(room.ZoneAt(0, 0));
+
+        Assert.Equal("overworld_2_map03_20", Bw2Matrix.Folder("MAP_MODEL_OVERWORLD_2_MAP03_20"));
+        Assert.Equal("MAP_MATRIX_CASTELIA_CITY", Bw2Matrix.Constant("castelia_city"));
+    }
+
+    [Fact]
+    public void ABlack2ZoneHeaderIsRead()
+    {
+        const string json = """
+            {
+              "map_type": 1, "matrix": "MAP_MATRIX_OVERWORLD", "area": "AREA_ASPERTIA", "place": "PLACE_ASPERTIA_CITY",
+              "parent": "ZONE_ASPERTIA_CITY", "bgm": { "spring": "SEQ_BGM_T_01", "summer": "SEQ_BGM_T_02" },
+              "encounters": "ENCOUNTER_NONE", "weather": 3, "camera": 2, "battle_bg": 5,
+              "cycling": true, "escape_rope": false, "fly_from": true, "fly": { "x": 10, "y": 0, "z": 22 }
+            }
+            """;
+        var zone = Bw2Zone.Parse("aspertia_city", 42, json);
+        Assert.Equal("ZONE_ASPERTIA_CITY", zone.Constant);
+        Assert.Equal("ASPERTIA CITY", zone.Name);
+        Assert.Equal(42, zone.Id);
+        Assert.Equal(1, zone.MapType);
+        Assert.Equal("MAP_MATRIX_OVERWORLD", zone.Matrix);
+        Assert.Equal("AREA_ASPERTIA", zone.Area);
+        // A song that changes with the season is its spring's
+        Assert.Equal("SEQ_BGM_T_01", zone.Music);
+        Assert.Equal("ENCOUNTER_NONE", zone.Encounters);
+        Assert.Equal(3, zone.Weather);
+        Assert.Equal(2, zone.Camera);
+        Assert.Equal(5, zone.BattleBackground);
+        Assert.True(zone.Cycling);
+        Assert.False(zone.EscapeRope);
+        Assert.True(zone.FlyFrom);
+        Assert.Equal((10, 0, 22), zone.Fly);
+
+        // A plain song, no place's words, nothing else
+        var room = Bw2Zone.Parse("pokecenter_1f", 7, """{ "matrix": "MAP_MATRIX_ROOM", "bgm": "SEQ_BGM_PC" }""");
+        Assert.Equal("SEQ_BGM_PC", room.Music);
+        Assert.Equal("POKECENTER 1F", room.Name);
+        Assert.Null(room.Fly);
+        Assert.False(room.Cycling);
+
+        // The lists the constants are numbered by: from the last "= N" on, comments left out
+        var constants = Bw2Constants.Read("# a list\nZONE_A\nZONE_B = 5\nZONE_C\n");
+        Assert.Equal(0, constants["ZONE_A"]);
+        Assert.Equal(5, constants["ZONE_B"]);
+        Assert.Equal(6, constants["ZONE_C"]);
+    }
+
+    // A binary glTF of a JSON chunk and a binary chunk of whatever is given
+    private static byte[] Glb(string json, byte[] binary, int binaryLengthClaimed)
+    {
+        var jsonBytes = Encoding.UTF8.GetBytes(json);
+        int padded = (jsonBytes.Length + 3) & ~3;
+        var file = new MemoryStream();
+        void U32(uint v) { Span<byte> b = stackalloc byte[4]; BinaryPrimitives.WriteUInt32LittleEndian(b, v); file.Write(b); }
+        U32(0x46546C67);                                   // "glTF"
+        U32(2);
+        U32((uint)(12 + 8 + padded + 8 + binaryLengthClaimed));
+        U32((uint)padded);
+        U32(0x4E4F534A);                                   // "JSON"
+        file.Write(jsonBytes);
+        for (int i = jsonBytes.Length; i < padded; i++) file.WriteByte((byte)' ');
+        U32((uint)binaryLengthClaimed);
+        U32(0x004E4942);                                   // "BIN"
+        file.Write(binary);
+        return file.ToArray();
+    }
+
+    [Fact]
+    public void ABlack2GltfGivesItsPropsAndTexturesFromItsJsonChunkAlone()
+    {
+        float half = MathF.Sqrt(0.5f);
+        string json = $$"""
+            {
+              "asset": { "version": "2.0" },
+              "images": [ { "uri": "textures/gake_01.png" }, { "uri": "michi.png" }, { "uri": "textures\\gake_01.png" } ],
+              "nodes": [
+                { "name": "terrain", "mesh": 0 },
+                { "name": "bw2_prop_0003_id_00042", "translation": [16, 0, -32], "rotation": [0, {{half.ToString(System.Globalization.CultureInfo.InvariantCulture)}}, 0, {{half.ToString(System.Globalization.CultureInfo.InvariantCulture)}}] },
+                { "name": "bw2_prop_0001_id_7", "translation": [-8, 4, 0] },
+                { "name": "bw2_prop_x_id_9" }
+              ]
+            }
+            """;
+        // The binary chunk claims far more than the file holds: a reader that went past the JSON would fail
+        var glb = Glb(json, new byte[] { 1, 2, 3, 4 }, binaryLengthClaimed: 1 << 20);
+
+        var model = Bw2Model.Read(glb);
+        Assert.Equal(new[] { "gake_01", "michi" }, model.Textures);
+        Assert.Equal(2, model.Props.Count);
+
+        var turned = model.Props[0];
+        Assert.Equal(3, turned.Index);
+        Assert.Equal(42, turned.Resource);
+        Assert.Equal(new Vector3(16, 0, -32), turned.Position);
+        Assert.Equal(90f, turned.Turn, 1);
+
+        var plain = model.Props[1];
+        Assert.Equal(1, plain.Index);
+        Assert.Equal(7, plain.Resource);
+        Assert.Equal(new Vector3(-8, 4, 0), plain.Position);
+        Assert.Equal(0f, plain.Turn);
+
+        // From a file the same: its header and JSON chunk are read and nothing after them
+        string path = Path.Combine(Path.GetTempPath(), $"bw2-{Guid.NewGuid():N}.glb");
+        try
+        {
+            File.WriteAllBytes(path, glb);
+            var read = Bw2Model.ReadFile(path);
+            Assert.Equal(model.Textures, read.Textures);
+            Assert.Equal(model.Props, read.Props);
+        }
+        finally { File.Delete(path); }
+
+        // Anything that isn't a binary glTF is refused
+        Assert.Throws<InvalidDataException>(() => Bw2Model.Read(Encoding.UTF8.GetBytes("{ \"asset\": {} } and more bytes")));
+    }
+
+    // The classes src/ov036/map_attr.c and field_water_current.c ask about, each of which must have a row
+    private static readonly int[] ClassesTheFieldCodeNames =
+    {
+        0x00, 0x01, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x0C, 0x0E, 0x0F, 0x10, 0x18, 0x19, 0x1C, 0x1D,
+        0x20, 0x21, 0x22, 0x23, 0x24, 0x30, 0x3D, 0x3E, 0x3F, 0x40, 0x41, 0x42, 0x43, 0x44,
+        0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x72, 0x73, 0x74, 0x75, 0x7C, 0x94, 0x95, 0x96, 0x97,
+        0xBE, 0xBF, 0xD4, 0xD6, 0xD8, 0xD9, 0xDA, 0xDB, 0xDC, 0xDD, 0xDE, 0xDF, 0xE0, 0xE1, 0xE2, 0xFE, 0xFF, 0xFFFF,
+    };
+
+    [Fact]
+    public void EveryBlack2ClassTheFieldCodeNamesHasARowAndEveryValueOfItsOwnIsDescribed()
+    {
+        foreach (int cls in ClassesTheFieldCodeNames)
+        {
+            Assert.True(Bw2Behaviours.Table.ContainsKey(cls), $"class 0x{cls:X2} has no row");
+            Assert.False(string.IsNullOrWhiteSpace(Bw2Behaviours.Table[cls].What));
+        }
+        Assert.Equal(ClassesTheFieldCodeNames.Order().ToArray(), Bw2Behaviours.Table.Keys.Order().ToArray());
+
+        // A class in no row is plain ground, and says so
+        Assert.Equal(TileBehavior.None, Bw2Behaviours.Of(0x02, out bool known));
+        Assert.False(known);
+
+        // The type's two halves
+        Assert.Equal(0x41, Bw2Behaviours.ClassOf(0x10041));
+        Assert.Equal(1, Bw2Behaviours.FlagsOf(0x10041));
+        Assert.True(Bw2Behaviours.Blocked(0x10041));
+        Assert.False(Bw2Behaviours.Blocked(0x00004));
+        Assert.True(Bw2Behaviours.Blocked(0x000FF));
+        Assert.True(Bw2Behaviours.Blocked(0x0FFFF));
+
+        // The ledges and the currents by the order of field_water_current.c's moves: north, south, west, east
+        Assert.Equal(TileBehavior.LedgeEast, Bw2Behaviours.Of(0x72));
+        Assert.Equal(TileBehavior.LedgeSouth, Bw2Behaviours.Of(0x75));
+        Assert.Equal(TileBehavior.CurrentEast, Bw2Behaviours.Of(0x94));
+        Assert.Equal(TileBehavior.CurrentSouth, Bw2Behaviours.Of(0x97));
+
+        // Black 2's own values: 0xB0 to 0xB8, each described, waiting for its session, in the document and given a look
+        var own = Bw2Import.OwnValues.ToList();
+        Assert.Equal(Enumerable.Range(0xB0, 9).ToArray(), own.Select(b => (int)b).ToArray());
+        string doc = File.ReadAllText(Path.Combine(Repository.Root, "docs", "tile-behaviours.md"));
+        string section = DocSections.Of(doc, Bw2Import.SectionTitle);
+        Assert.False(string.IsNullOrEmpty(section), "docs/tile-behaviours.md has no Black 2 section");
+        foreach (var behaviour in own)
+        {
+            Assert.True(TileBehaviors.IsKnown((byte)behaviour), $"{behaviour} has no meaning");
+            Assert.Equal(BehaviourSupport.Waiting, TileBehaviors.InGame(behaviour).Support);
+            Assert.Contains($"| `0x{(int)behaviour:X2}` | `{behaviour}` |", section);
+            // Each has a look but the boulder's hole, whose look is the ground round it
+            if (behaviour != TileBehavior.StrengthHole) Assert.NotNull(Bw2Cover.OfBehaviour(behaviour));
+        }
+    }
+
+    [Fact]
+    public void Black2sTextureNamesAreSortedBeforePlatinums()
+    {
+        Assert.Equal(TerrainCover.Path, Bw2Cover.OfTexture("gake_michi_01", out bool known));
+        Assert.True(known);
+        Assert.Equal(TerrainCover.Cliff, Bw2Cover.OfTexture("gake_02", out _));
+        Assert.Equal(TerrainCover.Tree, Bw2Cover.OfTexture("ki03", out _));
+        Assert.Equal(TerrainCover.TallGrass, Bw2Cover.OfTexture("kusa_01", out _));
+        Assert.Null(Bw2Cover.OfTexture("kage_01", out known));
+        Assert.True(known);
+        Assert.Equal(TerrainCover.Water, Bw2Cover.OfTile(Bw2Behaviours.Of(0x3F)));
+        Assert.Equal(TerrainCover.TallGrass, Bw2Cover.OfTile(Bw2Behaviours.Of(0x06)));
+        Assert.Equal(TerrainCover.Unknown, Bw2Cover.OfTile(TileBehavior.None));
     }
 }

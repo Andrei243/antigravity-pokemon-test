@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Team Aqua Grunt: The rain data's ours! With it, the sea will grow and grow!"
         ],
         "text": [
-          ""
+          "Aqua Grunt: Datele despre ploaie sunt ale noastre! Cu ele, marea va crește și va crește!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Team Aqua Grunt: The sea will still grow. Without me, I guess."
         ],
         "text": [
-          ""
+          "Aqua Grunt: Marea va crește oricum. Fără mine, deci."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Team Aqua Grunt: You again? The boss warned us about a kid like you!"
         ],
         "text": [
-          ""
+          "Aqua Grunt: Tu din nou? Șeful ne-a avertizat despre unul ca tine!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Team Aqua Grunt: The boss was right to warn us."
         ],
         "text": [
-          ""
+          "Aqua Grunt: Șeful a avut dreptate să ne avertizeze."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Team Aqua Grunt: Admin Shelly's orders: nobody comes up here. Nobody!"
         ],
         "text": [
-          ""
+          "Aqua Grunt: Ordinul Administratoarei Shelly: nimeni nu urcă aici. Nimeni!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Team Aqua Grunt: Nobody except you, apparently."
         ],
         "text": [
-          ""
+          "Aqua Grunt: Nimeni, în afară de tine, se pare."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Shelly"
         ],
         "text": [
-          ""
+          "Shelly"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Aqua Admin Shelly: Ahahaha! You want to play? Then let's play!"
         ],
         "text": [
-          ""
+          "Administrator Aqua Shelly: Ahahaha! Vrei să te joci? Atunci să ne jucăm!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Aqua Admin Shelly: Ahaha... not bad, kid."
         ],
         "text": [
-          ""
+          "Administrator Aqua Shelly: Ahaha... nu e rău deloc."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       },
       "dialog": {
@@ -118,7 +118,7 @@
           "Admin Shelly! Admin Shelly!"
         ],
         "text": [
-          ""
+          "Administratoare Shelly! Administratoare Shelly!"
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Scientist"
         ],
         "text": [
-          ""
+          "Cercetătorul"
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -146,7 +146,7 @@
           "Phew! I really thought they'd take every bit of our research. Thank you!"
         ],
         "text": [
-          ""
+          "Uf! Chiar am crezut că ne iau fiecare fărâmă de cercetare. Mulțumesc!"
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       },
       "dialog": {
@@ -164,7 +164,7 @@
           "Team Aqua wanted everything we have on rain. What on earth would they do with it?"
         ],
         "text": [
-          ""
+          "Echipa Aqua voia tot ce avem despre ploaie. Ce ar face cu ea, pe lume?"
         ]
       }
     }

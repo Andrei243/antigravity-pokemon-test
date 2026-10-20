@@ -1,0 +1,112 @@
+{
+  // The second basement of the passage under Goldenrod City (plan 20 · J11, part b): HeartGold's floor, our words.
+  // Team Rocket hold it while the takeover is at its height; ten shutters cut its corridors and three switches turn
+  // them over, and the red-haired boy comes down after the player (scripts/goldenrod_tunnel_b2f.txt). Each shutter is
+  // a row of things of the map over the tiles HeartGold's sliding gates close, shown while its flag of ours says it is
+  // shut; the red-haired boy is a person of our own, since HeartGold keeps him beyond the floor until his scene
+  "area": "goldenrod_tunnel_b2f",
+  "bgmTrack": "johto/union_cave",
+  "triggers": [
+    { "trigger": 0, "script": "Rival" }
+  ],
+  "read": {
+    "D37R0104_000+1": "Blue",
+    "D37R0104_001+1": "Green",
+    "D37R0104_002+1": "Red",
+    "D37R0104_003+1": "Purple"
+  },
+  "people": {
+    "d37r0104_rocketm": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: A kid, down here? Somebody's let you wander a long way from home.",
+        "dialogueAfter": "Grunt: Fine, go on, get lost in the shutters for all I care."
+      }
+    },
+    "d37r0104_rocketm_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: These passages are ours now. Turn round!",
+        "dialogueAfter": "Grunt: Ours... for about another minute, it seems."
+      }
+    },
+    "d37r0104_rocketm_3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: The switches? Don't you dare touch them!",
+        "dialogueAfter": "Grunt: Go on, then. See if you can make sense of them."
+      }
+    },
+    "d37r0104_rocketw": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Nobody goes near the warehouse. Boss's orders!",
+        "dialogueAfter": "Grunt: The boss isn't going to like this one bit."
+      }
+    },
+    "d37r0104_thief": {
+      "name": "Orson",
+      "trainer": {
+        "dialogueBefore": "Burglar Orson: With Team Rocket keeping everyone busy, a fellow can pick up all sorts down here.",
+        "dialogueAfter": "Burglar Orson: I'll find something else to pick up. Not a fight, though."
+      }
+    },
+    "d37r0104_thief_2": {
+      "name": "Duncan",
+      "trainer": {
+        "dialogueBefore": "Burglar Duncan: Hand over your money and nobody needs to battle!",
+        "dialogueAfter": "Burglar Duncan: I should have just stuck to the shops."
+      }
+    }
+  },
+  "npcs": [
+    { "id": "b2f_gate_0_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 2, "y": 8, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_0_SHUT" },
+    { "id": "b2f_gate_0_1", "name": "Shutter", "npcType": "GalacticDoor", "x": 3, "y": 8, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_0_SHUT" },
+    { "id": "b2f_gate_0_2", "name": "Shutter", "npcType": "GalacticDoor", "x": 4, "y": 8, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_0_SHUT" },
+    { "id": "b2f_gate_1_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 14, "y": 8, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_1_SHUT" },
+    { "id": "b2f_gate_1_1", "name": "Shutter", "npcType": "GalacticDoor", "x": 15, "y": 8, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_1_SHUT" },
+    { "id": "b2f_gate_1_2", "name": "Shutter", "npcType": "GalacticDoor", "x": 16, "y": 8, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_1_SHUT" },
+    { "id": "b2f_gate_2_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 6, "y": 10, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_2_SHUT" },
+    { "id": "b2f_gate_3_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 12, "y": 10, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_3_SHUT" },
+    { "id": "b2f_gate_4_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 2, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_4_SHUT" },
+    { "id": "b2f_gate_4_1", "name": "Shutter", "npcType": "GalacticDoor", "x": 3, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_4_SHUT" },
+    { "id": "b2f_gate_4_2", "name": "Shutter", "npcType": "GalacticDoor", "x": 4, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_4_SHUT" },
+    { "id": "b2f_gate_5_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 8, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_5_SHUT" },
+    { "id": "b2f_gate_5_1", "name": "Shutter", "npcType": "GalacticDoor", "x": 9, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_5_SHUT" },
+    { "id": "b2f_gate_5_2", "name": "Shutter", "npcType": "GalacticDoor", "x": 10, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_5_SHUT" },
+    { "id": "b2f_gate_6_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 14, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_6_SHUT" },
+    { "id": "b2f_gate_6_1", "name": "Shutter", "npcType": "GalacticDoor", "x": 15, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_6_SHUT" },
+    { "id": "b2f_gate_6_2", "name": "Shutter", "npcType": "GalacticDoor", "x": 16, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_6_SHUT" },
+    { "id": "b2f_gate_7_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 6, "y": 16, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_7_SHUT" },
+    { "id": "b2f_gate_8_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 12, "y": 16, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_8_SHUT" },
+    { "id": "b2f_gate_9_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 18, "y": 16, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "shownBy": "FLAG_GOLDENROD_B2F_GATE_9_SHUT" },
+    { "id": "b2f_purple_gate_0", "name": "Shutter", "npcType": "GalacticDoor", "x": 20, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "hiddenBy": "FLAG_OPENED_GOLDENROD_PURPLE_GATE" },
+    { "id": "b2f_purple_gate_1", "name": "Shutter", "npcType": "GalacticDoor", "x": 21, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "hiddenBy": "FLAG_OPENED_GOLDENROD_PURPLE_GATE" },
+    { "id": "b2f_purple_gate_2", "name": "Shutter", "npcType": "GalacticDoor", "x": 22, "y": 14, "facing": "Down", "script": "Gate",
+      "dialog": [ "..." ], "hiddenBy": "FLAG_OPENED_GOLDENROD_PURPLE_GATE" },
+    { "id": "goldenrod_b2f_rival", "name": "{rival}", "npcType": "Silver", "x": 27, "y": 4, "facing": "Left",
+      "dialog": [ "..." ], "hiddenBy": "FLAG_HIDE_GOLDENROD_B2F_RIVAL" }
+  ]
+}

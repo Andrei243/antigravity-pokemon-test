@@ -1,0 +1,39 @@
+# The Underground passage under Goldenrod City (plan 20 · J11, part b). docs/scripts.md describes the language; the
+# lines are our own, on HeartGold's beats (scr_seq_D37R0101).
+#
+# Its two people say what they make of Team Rocket while the takeover lasts (VAR_SCENE_ROCKET_TAKEOVER 2 to 4), the
+# man a word of his own for a player in a borrowed uniform (3).
+
+
+# D37R0101_000
+script Man
+  face d37r0101_gsman1 player
+  speaker "Man"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  if var VAR_SCENE_ROCKET_TAKEOVER == 2 goto Takeover
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Takeover
+  say "Somebody downstairs wanted to battle me. It's no place for the timid down there, so watch yourself."
+  end
+label Takeover
+  say "Team Rocket again! Can't they ever leave people in peace?"
+  end
+label Uniform
+  say "You seem a decent sort. However did you end up with Team Rocket?"
+  end
+
+
+# D37R0101_001
+script Woman
+  face d37r0101_gswoman1 player
+  speaker "Woman"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  if var VAR_SCENE_ROCKET_TAKEOVER == 2 goto Takeover
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Takeover
+  say "There are shops down the stairs, but Trainers too. I'm too nervous to go down."
+  end
+label Takeover
+  say "Everyone who worked down here has gone. Nobody wants trouble with Team Rocket."
+  end
+label Uniform
+  say "Oh... Of course. Team Rocket can use the passage as well as anyone."
+  end

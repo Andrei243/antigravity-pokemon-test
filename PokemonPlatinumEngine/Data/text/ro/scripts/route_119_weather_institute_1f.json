@@ -5,7 +5,7 @@
         "Boy"
       ],
       "text": [
-        ""
+        "Băiatul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Some scary people in blue barged in and went upstairs. My dad's up there! Please, help him!"
       ],
       "text": [
-        ""
+        "Niște oameni înfricoșători în albastru au dat buzna și au urcat. Tata e sus! Te rog, ajută-l!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Dad says the people in blue wanted something from upstairs. You chased them off, didn't you? Thank you!"
       ],
       "text": [
-        ""
+        "Tata zice că oamenii în albastru voiau ceva de sus. I-ai gonit, nu-i așa? Mulțumesc!"
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Worker"
       ],
       "text": [
-        ""
+        "Muncitorul"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "We watch the weather all over Hoenn from here. Lately there have been odd readings: sudden rain, sudden sun."
       ],
       "text": [
-        ""
+        "De aici urmărim vremea din tot Hoenn. În ultima vreme au apărut citiri ciudate: ploaie bruscă, soare brusc."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "Something out at sea, perhaps. It's as though the weather has a mind of its own."
       ],
       "text": [
-        ""
+        "Poate ceva din larg. De parcă vremea ar avea minte proprie."
       ]
     }
   ],
@@ -57,7 +57,7 @@
         "Worker"
       ],
       "text": [
-        ""
+        "Muncitorul"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "Thank you for chasing Team Aqua off. They took our data on rain and storms, but at least they're gone."
       ],
       "text": [
-        ""
+        "Mulțumim că ai alungat Echipa Aqua. Ne-au luat datele despre ploi și furtuni, dar măcar au plecat."
       ]
     }
   ],
@@ -75,7 +75,7 @@
         "There's a bed here... A little rest wouldn't hurt."
       ],
       "text": [
-        ""
+        "Aici e un pat... Puțină odihnă n-ar strica."
       ]
     },
     {
@@ -83,7 +83,7 @@
         "{player}'s Pokémon are fully rested."
       ],
       "text": [
-        ""
+        "Pokémonii lui {player} sunt complet odihniți."
       ]
     }
   ]

@@ -1,0 +1,31 @@
+{
+  // The warehouse under Goldenrod City (plan 20 · J11, part b): HeartGold's floor, our words. Three grunts keep it
+  // while the takeover is at its height, and the Radio Tower's real Director, shut up in it, hands the player his
+  // Card Key (scripts/goldenrod_tunnel_warehouse.txt). Its far door leads up into the Department Store's basement
+  "area": "goldenrod_tunnel_warehouse",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "d37r0105_gsgentleman": { "name": "Director", "script": "Director", "still": true },
+    "d37r0105_rocketm": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Nobody's coming for the old man, kid. Least of all you!",
+        "dialogueAfter": "Grunt: Well, somebody came for him after all."
+      }
+    },
+    "d37r0105_rocketm_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: I'm guarding a crate of nothing. Battling you beats that!",
+        "dialogueAfter": "Grunt: Back to the crates, then."
+      }
+    },
+    "d37r0105_rocketm_3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: The real Director's locked up in here. Whoever's upstairs in his chair, it isn't him!",
+        "dialogueAfter": "Grunt: I've said too much, haven't I?"
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Nobody believes me, but I saw an enormous Pokémon high in the sky, twisting as it flew out to sea."
         ],
         "text": [
-          ""
+          "Nu mă crede nimeni, dar am văzut sus pe cer un Pokémon uriaș, răsucindu-se în zbor spre larg."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The trees here drink up the rain and grow taller every year. That's why we build our houses up in them!"
         ],
         "text": [
-          ""
+          "Copacii de aici beau ploaia și cresc mai înalți în fiecare an. De-asta ne facem casele în ei!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "When I leave my window open, Bug Pokémon fly right into my room. I don't mind. They're good company."
         ],
         "text": [
-          ""
+          "Când las fereastra deschisă, Pokémoni de tip Insectă zboară direct în camera mea. Nu mă deranjează. Sunt o companie bună."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Living among the trees keeps everyone hale and hearty. The fresh air does wonders, young one!"
         ],
         "text": [
-          ""
+          "Viața printre copaci ne ține pe toți zdraveni. Aerul curat face minuni!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "Some Pokémon only evolve when they're traded. I wish I had someone to trade with!"
         ],
         "text": [
-          ""
+          "Unii Pokémoni evoluează doar când sunt schimbați. Aș vrea să am cu cine să fac schimb!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Kecleon"
         ],
         "text": [
-          ""
+          "Kecleon"
         ]
       }
     }
@@ -117,7 +117,7 @@
         "Fortree City\nA city that lives high among the trees"
       ],
       "text": [
-        ""
+        "Orașul Fortree\nUn oraș care trăiește sus, printre copaci"
       ]
     },
     "FortreeCity_EventScript_GymSign": {
@@ -125,7 +125,7 @@
         "Fortree City Pokémon Gym\nLeader: Winona\nShe rides the winds above the forest!"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Fortree\nLideră: Winona\nCălărește vânturile deasupra pădurii!"
       ]
     },
     "Common_EventScript_ShowPokemonCenterSign": {
@@ -133,7 +133,7 @@
         "Pokémon Center\nRest your weary Pokémon here."
       ],
       "text": [
-        ""
+        "Centru Pokémon\nOdihnește-ți aici Pokémonii obosiți."
       ]
     },
     "Common_EventScript_ShowPokemartSign": {
@@ -141,7 +141,7 @@
         "Poké Mart\nFor all your trainer needs."
       ],
       "text": [
-        ""
+        "Poké Mart\nTot ce-i trebuie unui Antrenor."
       ]
     }
   }

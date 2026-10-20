@@ -1,9 +1,10 @@
 {
-  // A house of Fortree City (plan 21 · H6): the woman who quizzes trainers for a TM and the man who teaches Sleep Talk, who only talk until part b
+  // A house of Fortree City (plan 21 · H6): the woman who quizzes trainers for the Hidden Power TM and the man who
+  // teaches Sleep Talk (fortree_city_house_2.txt, plan 21 · H6, part b)
   "area": "fortree_city_house_2",
   "bgmTrack": "hoenn/fortree",
   "people": {
-    "expert_f": { "name": "Old Woman", "dialog": [ "Every Pokémon hides a power of its own that nobody can see. Come back someday, and I'll tell you more." ] },
-    "expert_m": { "name": "Old Man", "dialog": [ "Even fast asleep, a Pokémon can fight, if it knows how. Ah, but I'm too tired to teach anyone today." ] }
+    "expert_f": { "name": "Old Woman", "script": "HiddenPower" },
+    "expert_m": { "name": "Old Man", "script": "SleepTalk" }
   }
 }

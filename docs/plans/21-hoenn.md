@@ -504,8 +504,9 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     (`tools/dev/ab.sh` on the commit before part b with `sea floor`), which is what "Done when" still waits for: the
     caustics are two full-screen draws of a 64-texel texture and the kelp sway geometry, so the floor is the scene to
     watch; looking at `h94` to `h99`, `a40`, `a41` and listening to the bed and `bubbles` (MP3s from MusicRender's WAVs).
-- [ ] H6 Route 118 to Fortree (part a done 2026-10-20, wave 38: Route 118 to Winona and Route 120; part b, Route 121
-  and the Safari Zone, left)
+- [ ] H6 Route 118 to Fortree (part a done 2026-10-20, wave 38: Route 118 to Winona and Route 120; part b done
+  2026-10-20, wave 39: Route 121, the Safari Zone, the Ancient Tomb and the Scorched Slab, Fortree's trade, Hidden
+  Power quiz and Sleep Talk tutor; part c, Gabby and Ty, the Wingull errand and the bridges' bounce, left)
   - **Played**: Steven on Route 118, coming to the ledge's edge above whichever of the three tiles the player steps on,
     hopping down and walking off east (`VAR_ROUTE118_STATE`); the fisherman's Good Rod; the Weather Institute held by
     Team Aqua, Shelly beaten upstairs, a grunt's news of Mt. Pyre, Team Aqua gone behind a fade, Castform at 25 holding a
@@ -561,6 +562,61 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     Fortree's Kecleon has fled; then the "Done when": Winona beaten in the harness, and Fortree's bridges looked at as
     decks over the forest floor in `h108` and `h109`. The Lavaridge Gym's warp at 2, 15 (Gerald, a buried trainer
     standing on a warp) was not touched.
+  - **Part b, done 2026-10-20 (wave 39)**. Rulings: "Route 121 and the Safari Zone".
+  - **Open**: Route 121 (west of Lilycove, which stays shut, with the pier for Mt. Pyre), the Safari Zone's gate
+    (`Route121_SafariZoneEntrance`), the Safari Zone (`HoennSafariZone`, Emerald's six parts laid side by side on one map
+    as the importer's matrix 356, each part its own area with Emerald's own tables: `hoenn_safari_zone_south`,
+    `_southwest`, `_north`, `_northwest`, `_northeast`, `_southeast`) and its rest house, the Ancient Tomb and the
+    Scorched Slab (Route 120's two `locked` ways open). 171 areas. **Emerald's Safari Zone keys take the region's
+    prefix** (`GbaMaps`: `hoenn_safari_zone_*`, `HoennSafariZone`), since FireRed's `safari_zone_*` are Kanto's.
+  - **The story**: Team Aqua's three grunts at Route 121's west end, met at any of the area's four triggers, ordered out
+    to Mt. Pyre and walking off down the pier (`VAR_ROUTE121_STATE`, `FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS`, a
+    `scene`); Walter, Jessica and Cristin in Match Call once beaten, Kate and Joy's double battle. **The Safari Game is
+    the Great Marsh's**, as plan 01 · M7 built it: the counter's coordinate event asks, takes $500, `safari start 500`
+    (thirty balls, Emerald's five hundred steps) and walks the player in through the zone's door
+    (`VAR_SAFARI_ZONE_STATE` 2, cleared as the zone is come to); the attendant inside the door wishes luck once
+    (`FLAG_GOOD_LUCK_SAFARI_ZONE`) and after that offers to end the game; `common.SafariTimeUp` and `SafariOutOfBalls`
+    bring a player of Hoenn back to the gate (`VAR_SAFARI_ZONE_STATE` 1), whose arrival walks them out past the counter.
+    No Pokéblock Case is asked for (H11 owns Pokéblocks), and no box is checked for room (no gate of this game does).
+    The two builders before the expansion stand until Hoenn's Hall of Fame sets their flag (H9), and the expansion's
+    attendant is away (`common.HoennChapterSevenB`, `FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION`, as Emerald's new game
+    sets it). Fortree's first house: the boy's Plusle, Pluses, for a Volbeat, once (`NpcTrades` "pluses", holding Grass
+    Mail, with Emerald's five conditions and sheen: the trade record gained `Conditions` and `Sheen`). Fortree's second
+    house: the old woman's coin, right, right, then left, for TM10 (`FLAG_MET_HIDDEN_POWER_GIVER`,
+    `FLAG_RECEIVED_TM_HIDDEN_POWER`); the old man's Sleep Talk, once (`tutor once "Sleep Talk"`, the move's row in
+    `MoveTutors.Kanto`, which serves every region's one-move tutors; `FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK`). The Ancient
+    Tomb's raised dots are read as words of ours; Registeel is not listed and stays away. **No story version raised**:
+    `common.HoennChapterSevenB` is called by `HoennNewGame` and by Route 121's arrival for a save that never ran it
+    (`FLAG_HOENN_CHAPTER_SEVEN_B`). Emerald's Wood Mail is not in the item table (a new item wants its Romanian name,
+    which this session could not write), so Pluses holds Grass Mail.
+  - **Lavaridge's Gym**: the GBA reader writes a warp under a buried trainer (`TRAINER_TYPE_BURIED`) as a landing
+    (`GbaEvents.BuriedOn`): the trainer springs out at whoever comes near and stays on the patch, so Emerald's player
+    never steps on it. Gerald's warp at 2, 15 and seven more of the two floors (3, 14, 3, 10 and 5, 2 above; 4, 18,
+    3, 6, 4, 16 and 13, 17 below) lead nowhere now; the warps they were paired with on the other floor stay.
+  - **Look and music**: the zone's parts with round trees; the gate plays Fortree's song, Route 121 Route 120's.
+    Songs (ours): `safari_zone` (G major, 112 bpm, ocarina, marimba, strings; clash-free, −19.3 LUFS) and
+    `sealed_chamber` (the Ancient Tomb's, 60 bpm, choir, bell, contrabass and timpani; rendered once, quiet by 1.4 dB,
+    its volumes raised and not rendered again). The Scorched Slab plays Petalburg Woods' song, as Emerald's does.
+    Route 121's Hex Maniac brought her class's eye theme to the sound map (`mystery`, Emerald's suspicious encounter).
+  - **Tests** (written, not run): `HoennTests` (`RouteOneTwentyOneAndTheSafariZoneAreOpenWithTheirTables`,
+    `TheAncientTombAndTheScorchedSlabOpenOffRouteOneTwenty`, `LavaridgesBuriedTrainersLieOnPatchesThatLeadNowhere`);
+    `HoennStoryTests` (`TeamAquasGruntsMoveOutOfRouteOneTwentyOneOnce`,
+    `TheSafariZoneIsPaidForAtItsCounterAndLeftPastItsAttendant`,
+    `ANewGameOfHoennKeepsTheSafariZonesExpansionShutAndAnOlderSaveIsToldOnRouteOneTwentyOne`,
+    `FortreesBoyTradesHisPlusleForAVolbeatOnce`, `FortreesOldWomanGivesHiddenPowerForThreeRightGuesses` two ways,
+    `FortreesOldManTeachesSleepTalkOnce`). The content check finds nothing.
+  - **Shots** (written, not taken): the `hoenn` mode's `h120`–`h131` (Route 121 and its pier, the gate, the zone's
+    south with a `_native` crop, south-west, north and north-west, the rest house, the Ancient Tomb's hall and chamber,
+    the Scorched Slab, Fortree's second house) and `h132_safari_night`; the scenes `hs140`–`hs154` at the end of
+    `HoennScenes` (the grunts and the road clear, the counter's question, the balls, the zone, the attendant's luck and
+    his offer to leave, out past the counter, the trade offer and Pluses, the coin game, which hand, three in a row, the
+    Sleep Talk tutor and the move learned).
+  - **Left for part c**: Gabby and Ty's interviews (hidden by `HoennChapterSeven`); house 4's Wingull errand (Mossdeep's
+    half is H8's, its Wingull hidden); the plank bridges' bounce underfoot (Emerald's `MB_FORTREE_BRIDGE` step effect)
+    and the bridge's metatiles swapped once Fortree's Kecleon has fled; the Safari Zone's Pokéblock feeders and the
+    Case the counter asks for (H11); the expansion's opening (H9); the Ancient Tomb's Flash in the chamber's middle and
+    Registeel (with the Sealed Chamber, H8 and after); then the "Done when": Winona beaten in the harness, and Fortree's
+    bridges looked at as decks over the forest floor in `h108` and `h109`.
 - [ ] H7 Lilycove, Mt. Pyre and the hideouts
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis
 - [ ] H9 Ever Grande and the League

@@ -1,0 +1,77 @@
+# The Radio Tower's fifth floor (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_D23R0105).
+#
+# The Director's office. While the takeover is at its height (VAR_SCENE_ROCKET_TAKEOVER 4) the man at the desk is
+# Petrel in the Director's clothes, reading out praise of Team Rocket: spoken to, he is found out, battles, and hands
+# over the Basement Key to the warehouse under the city where the real Director is kept. The desk's two are one or the
+# other by FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR, which the scene sets and the observation deck's clears: Petrel
+# stands there whenever the Director doesn't (FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED, kept to it by the arrival).
+# Ariana holds the east side, before the lift to the deck. HeartGold's Basement Key also sends a Kimono Girl to the
+# passage under the city (VAR_UNK_40E7 2), which is a later part's. A battle lost puts Petrel back in his disguise,
+# as HeartGold's white-out does.
+
+
+# D23R0105_000
+script OnEnter
+  setvar VAR_RADIO_TOWER_LIFT_FLOOR 0
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  setflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
+  if flag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR clearflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
+  end
+
+
+# D23R0105_002: the man at the Director's desk
+script Director
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Takeover
+  face d23r0105_gsgentleman player
+  speaker "Director"
+  say "Ah, it's you! You know, I simply love Pokémon. I built this tower so that I could share that love with everyone."
+  say "I do hope people enjoy our shows."
+  end
+label Takeover
+  if item "Basement Key" goto Told
+  scene "The Director who isn't"
+  speaker "Director"
+  say "Ahem. Is this thing on? This is your Director speaking. From today we'll be broadcasting shows in praise of Team Rocket!"
+  say "And I don't want to hear any complaints. Just do your jobs and..."
+  face d23r0105_gsgentleman player
+  emote d23r0105_gsgentleman exclaim
+  say "Yikes! Can't you see I'm busy pretending to be the... Hang on. Who are you?"
+  say "...Oh no. Not you again, {player}!"
+  face d23r0105_gsgentleman left
+  face d23r0105_gsgentleman up
+  face d23r0105_gsgentleman right
+  face d23r0105_gsgentleman down
+  hide d23r0105_gsgentleman
+  setflag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
+  clearflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
+  show d23r0105_rkanbum2
+  face d23r0105_rkanbum2 player
+  speaker "Petrel"
+  say "It's me, Petrel! I was playing the Director so the whole region would come round to Team Rocket's side."
+  say "This time I'm not holding anything back. Give me everything you've got!"
+  battle d23r0105_rkanbum2 as "johto_executive_petrel_petrel" canlose
+  if lost goto Lost
+  speaker "Petrel"
+  say "All right, all right, listen. We locked the real Director in the warehouse under the city, at the far end of the Goldenrod Tunnel."
+  say "And since I'm such a nice guy, you can have the Basement Key. Take it, and say thank you!"
+  give "Basement Key"
+  endscene
+  end
+label Lost
+  speaker "Petrel"
+  say "Ha! Off you go, then. And don't come back!"
+  fade out 0.4
+  hide d23r0105_rkanbum2
+  setflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
+  clearflag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
+  show d23r0105_gsgentleman
+  fade in
+  endscene
+  end
+label Told
+  face d23r0105_rkanbum2 player
+  speaker "Petrel"
+  say "The Director's in the warehouse at the far end of the Goldenrod Tunnel. Ha! I doubt a kid like you will get that far."
+  end

@@ -6,7 +6,7 @@
           "Steven"
         ],
         "text": [
-          ""
+          "Steven"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The river runs fast here. I wonder what it has carried down from the mountains."
         ],
         "text": [
-          ""
+          "Râul curge repede aici. Mă întreb ce a adus din munți."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Fisherman"
         ],
         "text": [
-          ""
+          "Pescarul"
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "With Surf, a Pokémon can carry you right across a river like this one. No bridge needed!"
         ],
         "text": [
-          ""
+          "Cu Surf, un Pokémon te poate duce direct peste un râu ca ăsta. Nu trebuie pod!"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Perry"
         ],
         "text": [
-          ""
+          "Perry"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Bird Keeper Perry: My Wingull rides the sea breeze all the way up here. Ready to be blown away?"
         ],
         "text": [
-          ""
+          "Crescător de păsări Perry: Wingullul meu călărește briza mării până aici sus. Ești gata să fii luat de vânt?"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Bird Keeper Perry: The breeze changed direction on me."
         ],
         "text": [
-          ""
+          "Crescător de păsări Perry: Briza mi-a schimbat direcția."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Rose"
         ],
         "text": [
-          ""
+          "Rose"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Aroma Lady Rose: Do you smell that? My flowers are in full bloom, and so is their power!"
         ],
         "text": [
-          ""
+          "Doamna Aromelor Rose: Simți mirosul? Florile mele sunt în plină floare, la fel și puterea lor!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Aroma Lady Rose: Even a wilted flower has its charm, I suppose."
         ],
         "text": [
-          ""
+          "Doamna Aromelor Rose: Până și o floare veștejită are farmecul ei, presupun."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Wade"
         ],
         "text": [
-          ""
+          "Wade"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Fisherman Wade: I've been waiting for a bite all morning. You'll do!"
         ],
         "text": [
-          ""
+          "Pescar Wade: Aștept să muște de azi-dimineață. Tu vei merge!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Fisherman Wade: That one got away from me."
         ],
         "text": [
-          ""
+          "Pescar Wade: Ăsta mi-a scăpat."
         ]
       }
     },
@@ -130,7 +130,7 @@
           "Chester"
         ],
         "text": [
-          ""
+          "Chester"
         ]
       },
       "before": {
@@ -138,7 +138,7 @@
           "Bird Keeper Chester: My birds have been circling you for a while. Time to swoop!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Chester: Păsările mele te-au înconjurat de ceva vreme. E timpul să se năpustească!"
         ]
       },
       "after": {
@@ -146,7 +146,7 @@
           "Bird Keeper Chester: Grounded, and by a kid on foot."
         ],
         "text": [
-          ""
+          "Crescător de păsări Chester: Doborâte, și încă de cineva care merge pe jos."
         ]
       }
     },
@@ -156,7 +156,7 @@
           "Barny"
         ],
         "text": [
-          ""
+          "Barny"
         ]
       },
       "before": {
@@ -164,7 +164,7 @@
           "Fisherman Barny: The river's full of strong Pokémon. Let me show you what I've reeled in!"
         ],
         "text": [
-          ""
+          "Pescar Barny: Râul e plin de Pokémoni puternici. Lasă-mă să-ți arăt ce am scos!"
         ]
       },
       "after": {
@@ -172,7 +172,7 @@
           "Fisherman Barny: Back to the riverbank for me."
         ],
         "text": [
-          ""
+          "Pescar Barny: Mă întorc pe malul râului."
         ]
       }
     },
@@ -182,7 +182,7 @@
           "Dalton"
         ],
         "text": [
-          ""
+          "Dalton"
         ]
       },
       "before": {
@@ -190,7 +190,7 @@
           "Guitarist Dalton: Feel the rhythm! My Pokémon battle to the beat of my strings!"
         ],
         "text": [
-          ""
+          "Chitarist Dalton: Simte ritmul! Pokémonii mei luptă pe ritmul strunelor mele!"
         ]
       },
       "after": {
@@ -198,7 +198,7 @@
           "Guitarist Dalton: Broke a string on that last chord."
         ],
         "text": [
-          ""
+          "Chitarist Dalton: Mi s-a rupt o strună la ultimul acord."
         ]
       }
     },
@@ -208,7 +208,7 @@
           "Deandre"
         ],
         "text": [
-          ""
+          "Deandre"
         ]
       },
       "before": {
@@ -216,7 +216,7 @@
           "Youngster Deandre: I came all the way from Mauville to train here. Let's battle!"
         ],
         "text": [
-          ""
+          "Puști Deandre: Am venit tocmai din Mauville să mă antrenez aici. Hai să ne luptăm!"
         ]
       },
       "after": {
@@ -224,7 +224,7 @@
           "Youngster Deandre: I should've stayed in Mauville."
         ],
         "text": [
-          ""
+          "Puști Deandre: Trebuia să rămân în Mauville."
         ]
       }
     }
@@ -235,7 +235,7 @@
         "Route 118\nWest: Mauville City"
       ],
       "text": [
-        ""
+        "Ruta 118\nVest: Orașul Mauville"
       ]
     },
     "Route118_EventScript_RouteSign119": {
@@ -243,7 +243,7 @@
         "Route 118\nNorth: Route 119"
       ],
       "text": [
-        ""
+        "Ruta 118\nNord: Ruta 119"
       ]
     }
   }

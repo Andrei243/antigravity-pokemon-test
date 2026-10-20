@@ -1,4 +1,160 @@
 {
+  "Receptionist": [
+    {
+      "en": [
+        "Receptionist"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Radio Tower! Do look around the ground floor. The staff upstairs are hard at work on today's shows."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry... There are no visitors today. None at all. Please, just go home."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! One of you... I've done as I was told. I'm sending every visitor home."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Stop right there. Only Team Rocket in uniform go up these stairs. Beat it, kid!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, you're one of us? Must be new. Go on up, they're waiting for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket. Always in a gang. They're cowards, every one of them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...What? It's you. In that uniform? Are you serious?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You look ridiculous. Nobody in their right mind would take you for one of them."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} pulled off the borrowed uniform."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hey! You're no newcomer at all! Nobody fools Team Rocket!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Too strong... I've got to warn the others!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I didn't come here for Team Rocket. I came for Lance, the one who took me apart in their hideout."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'll beat him. And after him, you. Stay out of my way until then."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "Quiz": [
     {
       "en": [

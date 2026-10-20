@@ -1,0 +1,79 @@
+# The Radio Tower's observation deck (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_D23R0106).
+#
+# Archer waits at the north rail while the takeover is at its height (VAR_SCENE_ROCKET_TAKEOVER 4). Beaten, he breaks
+# Team Rocket up as Giovanni did before him and is gone (FLAG_ROCKET_TAKEOVER_ACTIVE cleared), and the Director, set
+# free from the warehouse, comes up in the lift: he gives the player the Rainbow Wing (FLAG_UNK_093), found at the top
+# of the tower that stood here before the Radio Tower, and tells what his friend in Cianwood City says of it. The
+# takeover is over (5; FLAG_BEAT_RADIO_TOWER_ROCKETS), the Director goes back to his desk
+# (FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR cleared), and HeartGold also moves on what waits in Mahogany Town and
+# Blackthorn City: the souvenir shop's saleswoman (FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN, VAR_UNK_407A 1) and the guard
+# before the Blackthorn Gym, who stands aside (FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT set, _ASIDE cleared). The
+# Director who comes up the lift is a person of our own: HeartGold keeps him beside the deck, where this room has
+# no floor (FLAG_HIDE_RADIO_TOWER_DECK_DIRECTOR, a flag of ours that the arrival sets).
+
+
+script OnEnter
+  setvar VAR_RADIO_TOWER_LIFT_FLOOR 1
+  setflag FLAG_HIDE_RADIO_TOWER_DECK_DIRECTOR
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  end
+
+
+# D23R0106_001
+script Archer
+  face d23r0106_rkanbum player
+  speaker "Archer"
+  scene "Archer on the observation deck"
+  say "So, you've made it all the way up here. You must be quite a Trainer."
+  say "We took this tower to tell the world Team Rocket is back. When he hears it, our leader Giovanni will come home from his training."
+  say "Team Rocket will be great again, and I won't let a child stand in our way!"
+  battle d23r0106_rkanbum as "johto_executive_archer_archer" canlose
+  if lost goto Lost
+  speaker "Archer"
+  say "How can this be? Everything we dreamed of, gone... I wasn't equal to it after all."
+  say "As Giovanni did before me, I'm breaking up Team Rocket, here and now. Farewell."
+  fade out 0.4
+  hide d23r0106_rkanbum
+  sound "stairs"
+  clearflag FLAG_ROCKET_TAKEOVER_ACTIVE
+  setflag FLAG_BEAT_RADIO_TOWER_ROCKETS
+  fade in
+  if var PLAYER_X == 7 walk player down 1 right 1
+  if var PLAYER_X == 9 walk player down 1 left 1
+  face player down
+  show deck_director
+  place deck_director 8 13 up
+  walk deck_director left 3 up 8 right 3
+  face deck_director player
+  speaker "Director"
+  say "You've beaten them already? Thank you! You've saved every Pokémon in the country. Here, you more than deserve this."
+  give "Rainbow Wing"
+  setflag FLAG_UNK_093
+  say "A tower stood on this very spot long ago. When it came down to make way for the Radio Tower, that feather was found at its top."
+  say "A friend of mine in Cianwood City tells me that whoever holds a Rainbow Wing may climb the Bell Tower in Ecruteak City."
+  say "Well, I must get back to my office."
+  walk deck_director left 3
+  face deck_director right
+  say "Oh, I almost forgot! My friend says the legendary Pokémon won't come just for the wing. There's something else you need..."
+  say "Now what was it? I can't for the life of me remember."
+  walk deck_director right 3
+  face deck_director player
+  say "Waiting for something more, were you? That was a feint! Now I really must go. Goodbye!"
+  walk deck_director left 3 down 8 right 3 up 1
+  hide deck_director
+  setvar VAR_SCENE_ROCKET_TAKEOVER 5
+  clearflag FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR
+  setflag FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
+  setvar VAR_UNK_407A 1
+  clearflag FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN
+  setflag FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT
+  clearflag FLAG_HIDE_BLACKTHORN_GYM_GUARD_ASIDE
+  endscene
+  end
+label Lost
+  speaker "Archer"
+  say "Know your place, child. Team Rocket's return can't be stopped."
+  endscene
+  end

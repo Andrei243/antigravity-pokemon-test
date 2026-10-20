@@ -1527,13 +1527,63 @@
       ]
     }
   ],
+  "JohtoTakeoverCall": [
+    {
+      "en": [
+        "Brrrring! Brrrring! It's the Pokégear..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Prof. Elm"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! Is that you? Have you had the radio on? Every station's been playing the same thing for an hour."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's Team Rocket! They're broadcasting from the Radio Tower in Goldenrod City. They say they've taken it over!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If they can reach every radio in Johto with that signal of theirs... {player}, please be careful. Go and see what's happening!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click... The call has ended."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "HoennKecleonLook": [
     {
       "en": [
         "Something unseeable is in the way."
       ],
       "text": [
-        ""
+        "Ceva nevăzut stă în cale."
       ]
     },
     {
@@ -1541,7 +1591,7 @@
         "Something unseeable is in the way. Use the Devon Scope?"
       ],
       "text": [
-        ""
+        "Ceva nevăzut stă în cale. Folosești Luneta Devon?"
       ]
     },
     {
@@ -1549,7 +1599,7 @@
         "{player} used the Devon Scope. A Pokémon that had melted into the scenery shows itself!"
       ],
       "text": [
-        ""
+        "{player} a folosit Luneta Devon. Un Pokémon care se contopise cu peisajul se arată!"
       ]
     }
   ]

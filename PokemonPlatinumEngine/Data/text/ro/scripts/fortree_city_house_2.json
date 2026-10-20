@@ -1,0 +1,190 @@
+{
+  "HiddenPower": [
+    {
+      "en": [
+        "Old Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every Pokémon has a power hidden inside it. Nobody can see it, but it is there.",
+        "I've a game for you. I hold a coin in one hand, and you guess which.",
+        "Guess right three times running, and you'll have something worth having."
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall we play?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which hand holds the coin?",
+        "Right",
+        "Left"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right you are! Again, now. Which hand?",
+        "Right",
+        "Left"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Right again! One more. Which hand?",
+        "Right",
+        "Left"
+      ],
+      "text": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Three in a row! You see what others miss. This is yours."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hidden Power takes its type from the Pokémon that uses it. Every one of them is different."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wrong hand, I'm afraid. Come and try again another time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Suit yourself. My hands will keep."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SleepTalk": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A Pokémon that can fight in its sleep is never idle. Shall I teach one of yours Sleep Talk?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. Which one?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pair Sleep Talk with Rest, and a Pokémon heals and fights at once. Zzz..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah. Then I'll go back to my nap."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg sleeps already, but it can't learn anything yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hmm, that one can't learn Sleep Talk."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

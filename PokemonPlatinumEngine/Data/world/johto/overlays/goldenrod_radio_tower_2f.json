@@ -1,0 +1,53 @@
+{
+  // The Radio Tower's second floor (plan 20 · J11, part b): HeartGold's floor, our words. Team Rocket's four hold it
+  // while the takeover lasts, and a policeman keeps the stairs up the rest of the time
+  // (scripts/goldenrod_radio_tower_2f.txt). Buena, who reads out her password show's word, and the woman who trades
+  // her Blue Card's points are a later part's and are left out
+  "area": "goldenrod_radio_tower_2f",
+  "bgmTrack": "johto/goldenrod",
+  "people": {
+    "d23r0102_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "Radio has it all: music, Pokémon news, surprises, stories that make you cry. All it's missing is pictures.",
+        "...Then again, I suppose that's what television is for."
+      ]
+    },
+    "d23r0102_gswoman2": { "name": "Woman", "script": "Woman", "still": true },
+    "d23r0102_tsure_poke_static_jigglypuff": { "name": "Jigglypuff", "npcType": "Pokemon", "species": "Jigglypuff", "script": "Jigglypuff", "still": true },
+    "d23r0102_policeman": { "name": "Policeman", "script": "Policeman", "still": true },
+    "d23r0102_rocketm": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: This tower belongs to Team Rocket now. Who let a kid in here?",
+        "dialogueAfter": "Grunt: Fine, you win this one. You still can't stop what we've started."
+      }
+    },
+    "d23r0102_rocketw": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: We're putting our own shows on the air. Tune in and listen to Team Rocket!",
+        "dialogueAfter": "Grunt: No... Our big broadcast is ruined!"
+      }
+    },
+    "d23r0102_rocketm_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Every radio in Johto will hear us! Get lost before I make you!",
+        "dialogueAfter": "Grunt: Ugh... I wasn't ready."
+      }
+    },
+    "d23r0102_rocketm_3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Nobody comes up these stairs without going through me!",
+        "dialogueAfter": "Grunt: Go on, then. The ones upstairs are tougher than me."
+      }
+    }
+  },
+  "signs": {
+    "D23R0102_000+1": "2F Sales",
+    "D23R0102_001+1": "Pokémon Talk with Professor Oak\nThe show everyone's listening to!",
+    "D23R0102_002+1": "2F Studio 2"
+  }
+}

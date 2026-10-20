@@ -405,3 +405,31 @@ public sealed class Report
             $"| {renders.Name(header)} | {width} × {height}, {map.Width} × {map.Height} | {tall}, {mapTall} | {ledges}, {mapLedges} | {water}, {mapWater} | {buildings}, {MapStructures.FindBuildings(map).Count} | {events.Warps.Count}, {map.Warps.Count} | {events.Objects.Count}, {map.NPCs.Count} | {events.Signs.Count}, {map.Signboards.Count} |\n");
     }
 }
+
+/// <summary>
+/// The other readers' sections of <c>docs/tile-behaviours.md</c> (the GBA's, plan 18 · W6; Black 2's, plan 22 · U1),
+/// each from its title to the next title or the end. Each reader writes its own and keeps the rest; the Sinnoh run,
+/// which writes the page's head, keeps them all as they stand.
+/// </summary>
+public static class DocSections
+{
+    /// <summary>A section of a doc as it stands, from its title up to the next <c>## </c> title, or nothing.</summary>
+    public static string Of(string doc, string title)
+    {
+        int at = doc.IndexOf(title, StringComparison.Ordinal);
+        if (at < 0) return "";
+        int end = doc.IndexOf("\n## ", at + title.Length, StringComparison.Ordinal);
+        return end >= 0 ? doc[at..end] : doc[at..];
+    }
+
+    /// <summary>A doc with a section put in at its end, or in place of the one it had with whatever follows kept.</summary>
+    public static string Splice(string doc, string title, string section)
+    {
+        int at = doc.IndexOf(title, StringComparison.Ordinal);
+        if (at < 0) return doc.TrimEnd('\r', '\n', ' ') + "\n\n" + section;
+        string before = doc[..at].TrimEnd('\r', '\n', ' ');
+        int end = doc.IndexOf("\n## ", at + title.Length, StringComparison.Ordinal);
+        string after = end >= 0 ? doc[(end + 1)..] : "";
+        return after.Length == 0 ? before + "\n\n" + section : before + "\n\n" + section.TrimEnd('\r', '\n', ' ') + "\n\n" + after;
+    }
+}

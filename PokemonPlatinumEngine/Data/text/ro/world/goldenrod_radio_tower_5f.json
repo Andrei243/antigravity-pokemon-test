@@ -1,0 +1,68 @@
+{
+  "people": {
+    "d23r0105_gsgentleman": {
+      "name": {
+        "en": [
+          "Director"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0105_rkanbum2": {
+      "name": {
+        "en": [
+          "Petrel"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d23r0105_rkanbuw": {
+      "name": {
+        "en": [
+          "Ariana"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ariana: You've caused us quite enough trouble. The deck above is Archer's, and you'll not set foot on it."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ariana: Archer will finish you. Go up, if you dare."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D23R0105_001+1": {
+      "en": [
+        "5F Director's Office"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "D23R0105_003+1": {
+      "en": [
+        "Observation Deck\nUp the lift"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

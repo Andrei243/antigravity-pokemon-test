@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Team Aqua Grunt: Nobody gets upstairs! Our admin's busy with the weather nerds!"
         ],
         "text": [
-          ""
+          "Aqua Grunt: Nimeni nu urcă la etaj! Administratoarea noastră e ocupată cu tocilarii de la meteo!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Team Aqua Grunt: The admin's going to be furious."
         ],
         "text": [
-          ""
+          "Aqua Grunt: Administratoarea o să fie furioasă."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Team Aqua Grunt: Lost, kid? This place is ours now. Get lost properly!"
         ],
         "text": [
-          ""
+          "Aqua Grunt: Te-ai pierdut? Locul ăsta e al nostru acum. Cară-te cum trebuie!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Team Aqua Grunt: Fine, fine. Go on up, see if I care."
         ],
         "text": [
-          ""
+          "Aqua Grunt: Bine, bine. Urcă, nu-mi pasă."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Worker"
         ],
         "text": [
-          ""
+          "Muncitorul"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       }
     }

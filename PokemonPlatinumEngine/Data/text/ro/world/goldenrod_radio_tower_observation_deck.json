@@ -1,0 +1,33 @@
+{
+  "people": {
+    "d23r0106_rkanbum": {
+      "name": {
+        "en": [
+          "Archer"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "deck_director": {
+      "name": {
+        "en": [
+          "Director"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

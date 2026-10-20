@@ -1,0 +1,23 @@
+# The Radio Tower's lift (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D23R0107).
+#
+# The lift joins the fifth floor and the observation deck, and carries whoever comes in to the other end at once, as
+# the Glitter Lighthouse's does (olivine_lighthouse_elevator.txt): the two ends each say so as they are come to
+# (VAR_RADIO_TOWER_LIFT_FLOOR, a variable of our own: 0 set by the fifth floor's arrival script, 1 by the deck's).
+
+
+script OnEnter
+  walk player up 2
+  face player down
+  if var VAR_RADIO_TOWER_LIFT_FLOOR == 1 goto Down
+  anim elevator up 2
+  text "The lift has reached the observation deck."
+  sound "stairs"
+  warp "Goldenrod_RadioTower_ObservationDeck" 8 13 down
+  end
+label Down
+  anim elevator down 2
+  text "The lift has reached the fifth floor."
+  sound "stairs"
+  warp "Goldenrod_RadioTower_5F" 13 3 down
+  end

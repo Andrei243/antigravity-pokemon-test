@@ -6,7 +6,7 @@
           "Lance"
         ],
         "text": [
-          ""
+          "Lance"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Dragonite"
         ],
         "text": [
-          ""
+          "Dragonite"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Grunt: You came all the way down here? Then you're not leaving!"
         ],
         "text": [
-          ""
+          "Grunt: Ai coborât până aici? Atunci nu mai pleci!"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Grunt: Our big plans, wrecked by a kid with a backpack..."
         ],
         "text": [
-          ""
+          "Grunt: Marile noastre planuri, distruse de un copil cu rucsac..."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Grunt: Who's this? Nobody told me about a kid on this floor!"
         ],
         "text": [
-          ""
+          "Grunt: Cine ești? Nimeni nu mi-a spus de un copil pe etajul ăsta!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Grunt: I'll be hearing about this from the boss..."
         ],
         "text": [
-          ""
+          "Grunt: O să aud eu de asta de la șef..."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Grunt: This corridor's off limits. Turn round, or I'll make you!"
         ],
         "text": [
-          ""
+          "Grunt: Coridorul ăsta e interzis. Întoarce-te, sau te întorc eu!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Grunt: Off limits means nothing to you, does it?"
         ],
         "text": [
-          ""
+          "Grunt: Interzis nu înseamnă nimic pentru tine, nu-i așa?"
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       }
     },
@@ -114,7 +114,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       }
     },
@@ -124,7 +124,7 @@
           "Ariana"
         ],
         "text": [
-          ""
+          "Ariana"
         ]
       },
       "before": {
@@ -132,7 +132,7 @@
           "Ariana: Two against two. Let's see how long that lasts."
         ],
         "text": [
-          ""
+          "Ariana: Doi contra doi. Să vedem cât ține."
         ]
       },
       "after": {
@@ -140,7 +140,7 @@
           "Ariana: Impossible..."
         ],
         "text": [
-          ""
+          "Ariana: Imposibil..."
         ]
       }
     },
@@ -150,7 +150,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -158,7 +158,7 @@
           "Grunt: I've got your back, Ariana!"
         ],
         "text": [
-          ""
+          "Grunt: Te acopăr, Ariana!"
         ]
       },
       "after": {
@@ -166,7 +166,7 @@
           "Grunt: Sorry, Ariana..."
         ],
         "text": [
-          ""
+          "Grunt: Scuze, Ariana..."
         ]
       }
     },
@@ -176,7 +176,7 @@
           "Electrode"
         ],
         "text": [
-          ""
+          "Electrode"
         ]
       }
     },
@@ -186,7 +186,7 @@
           "Electrode"
         ],
         "text": [
-          ""
+          "Electrode"
         ]
       }
     },
@@ -196,7 +196,7 @@
           "Electrode"
         ],
         "text": [
-          ""
+          "Electrode"
         ]
       }
     },
@@ -206,7 +206,7 @@
           "Electrode"
         ],
         "text": [
-          ""
+          "Electrode"
         ]
       },
       "dialog": {
@@ -214,7 +214,7 @@
           "An Electrode is wired into the machine. It's humming with power."
         ],
         "text": [
-          ""
+          "Un Electrode e conectat la mașină. Vâjâie de energie."
         ]
       }
     },
@@ -224,7 +224,7 @@
           "Electrode"
         ],
         "text": [
-          ""
+          "Electrode"
         ]
       },
       "dialog": {
@@ -232,7 +232,7 @@
           "An Electrode is wired into the machine. It's humming with power."
         ],
         "text": [
-          ""
+          "Un Electrode e conectat la mașină. Vâjâie de energie."
         ]
       }
     },
@@ -242,7 +242,7 @@
           "Electrode"
         ],
         "text": [
-          ""
+          "Electrode"
         ]
       },
       "dialog": {
@@ -250,7 +250,7 @@
           "An Electrode is wired into the machine. It's humming with power."
         ],
         "text": [
-          ""
+          "Un Electrode e conectat la mașină. Vâjâie de energie."
         ]
       }
     },
@@ -260,7 +260,7 @@
           "Murkrow"
         ],
         "text": [
-          ""
+          "Murkrow"
         ]
       },
       "dialog": {
@@ -268,7 +268,7 @@
           "Murkrow is muttering something to itself."
         ],
         "text": [
-          ""
+          "Murkrow mormăie ceva pentru sine."
         ]
       }
     },
@@ -278,7 +278,7 @@
           "Murkrow"
         ],
         "text": [
-          ""
+          "Murkrow"
         ]
       },
       "dialog": {
@@ -286,7 +286,7 @@
           "Murkrow is muttering something to itself."
         ],
         "text": [
-          ""
+          "Murkrow mormăie ceva pentru sine."
         ]
       }
     },
@@ -296,7 +296,7 @@
           "Murkrow"
         ],
         "text": [
-          ""
+          "Murkrow"
         ]
       }
     }

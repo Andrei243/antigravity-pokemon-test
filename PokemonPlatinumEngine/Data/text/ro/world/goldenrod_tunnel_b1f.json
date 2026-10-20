@@ -1,0 +1,138 @@
+{
+  "people": {
+    "d37r0102_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0102_babyboy1_8": {
+      "name": {
+        "en": [
+          "Door"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0102_mania": {
+      "name": {
+        "en": [
+          "Donald"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Donald: I came down here to show off my rare Pokémon. Want to see?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Donald: Rare doesn't mean strong, does it..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0102_gsassistantm": {
+      "name": {
+        "en": [
+          "Teru"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Teru: I've worked out every type matchup there is. You don't stand a chance!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Teru: My sums were right. My Pokémon just didn't follow them."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0102_mania_2": {
+      "name": {
+        "en": [
+          "Issac"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Issac: My Pokémon get the best grooming in the city, right here underground!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Issac: At least they lost looking their best."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0102_gsassistantm_2": {
+      "name": {
+        "en": [
+          "Eric"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Super Nerd Eric: I'm waiting for the shops to open. A battle will pass the time!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Super Nerd Eric: That passed the time quicker than I wanted."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D37R0102_007+1": {
+      "en": [
+        "STAFF ONLY BEYOND THIS DOOR"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

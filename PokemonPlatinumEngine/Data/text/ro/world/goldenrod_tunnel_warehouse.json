@@ -1,0 +1,93 @@
+{
+  "people": {
+    "d37r0105_gsgentleman": {
+      "name": {
+        "en": [
+          "Director"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0105_rocketm": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: Nobody's coming for the old man, kid. Least of all you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Well, somebody came for him after all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0105_rocketm_2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: I'm guarding a crate of nothing. Battling you beats that!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: Back to the crates, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d37r0105_rocketm_3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Grunt: The real Director's locked up in here. Whoever's upstairs in his chair, it isn't him!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Grunt: I've said too much, haven't I?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

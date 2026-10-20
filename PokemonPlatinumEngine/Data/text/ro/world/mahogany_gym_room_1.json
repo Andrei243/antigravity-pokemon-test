@@ -6,7 +6,7 @@
           "Block of ice"
         ],
         "text": [
-          ""
+          "Bloc de gheață"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "A big block of ice. Pushed, it would slide across the floor until something stopped it."
         ],
         "text": [
-          ""
+          "Un bloc mare de gheață. Împins, ar aluneca pe podea până s-ar opri de ceva."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Block of ice"
         ],
         "text": [
-          ""
+          "Bloc de gheață"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "A big block of ice. Pushed, it would slide across the floor until something stopped it."
         ],
         "text": [
-          ""
+          "Un bloc mare de gheață. Împins, ar aluneca pe podea până s-ar opri de ceva."
         ]
       }
     },
@@ -51,8 +51,8 @@
           "See those blocks of ice? Give one a shove and it slides till it hits something. Put them where you want to stop!"
         ],
         "text": [
-          "",
-          ""
+          "Brr! Podeaua de aici e gheață solidă. Odată ce începi să aluneci, nu te oprești până nu dai de ceva!",
+          "Vezi blocurile alea de gheață? Dă-i unuia un brânci și alunecă până lovește ceva. Pune-le unde vrei să te oprești!"
         ]
       }
     }

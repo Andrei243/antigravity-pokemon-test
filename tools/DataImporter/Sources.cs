@@ -135,4 +135,21 @@ public static class Sources
         "/src/trainer_data.c", "/asm/overlay_12_battle_command.s", "/src/data/fieldmap/hidden_items.h",
         "/include/constants/hidden_items.h"
     };
+
+    /// <summary>
+    /// Black 2 and White 2 (plan 22 · U1): fuddlesworth/pokebw2, a decompilation under the GPL v3.0, read by
+    /// <c>tools/MapImporter/Bw2</c>. Layouts and numbers only, as for the others: the zones' headers, the matrices, each
+    /// chunk's terrain grid (<c>terrain_*.csv</c>) and its <c>model.glb</c>, of which only the glTF's JSON chunk is read
+    /// (the props' places and ids, the materials' texture names: never a vertex, never the binary buffer), each field
+    /// prop's resource id beside its folder's name, the generated lists of constants, and the C file that holds the
+    /// height tables. The textures the glTF names live elsewhere in the repository and are never fetched.
+    /// </summary>
+    public const string Bw2Repo = "https://github.com/fuddlesworth/pokebw2.git";
+    public const string Bw2Commit = "9ba4760ada88496013d64346af3faf1c67fe9238";
+    public static readonly string[] Bw2Folders =
+    {
+        "/res/field/zones/", "/res/field/matrices/", "/res/field/areas/",
+        "/res/field/maps/models/*/terrain_*.csv", "/res/field/maps/models/*/model.glb", "/res/field/maps/models/*/data.json",
+        "/res/field/props/*/models/*/*/data.json", "/generated/*.txt", "/src/ov036/field_map_chunk_height.c"
+    };
 }

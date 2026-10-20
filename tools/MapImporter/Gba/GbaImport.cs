@@ -457,18 +457,9 @@ public static class GbaImport
         return text.ToString();
     }
 
-    /// <summary>A doc with its GBA section put in or replaced: everything from the section's title to the end is the GBA's.</summary>
-    public static string Splice(string doc, string section)
-    {
-        int at = doc.IndexOf(SectionTitle, StringComparison.Ordinal);
-        string before = (at >= 0 ? doc[..at] : doc).TrimEnd('\r', '\n', ' ');
-        return before + "\n\n" + section;
-    }
+    /// <summary>A doc with its GBA section put in or replaced, and whatever section follows it (Black 2's) kept.</summary>
+    public static string Splice(string doc, string section) => DocSections.Splice(doc, SectionTitle, section);
 
     /// <summary>The GBA's section of a doc as it stands, or nothing: what the Sinnoh run keeps.</summary>
-    public static string SectionOf(string doc)
-    {
-        int at = doc.IndexOf(SectionTitle, StringComparison.Ordinal);
-        return at >= 0 ? doc[at..] : "";
-    }
+    public static string SectionOf(string doc) => DocSections.Of(doc, SectionTitle);
 }

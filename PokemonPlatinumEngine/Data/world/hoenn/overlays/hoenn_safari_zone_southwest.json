@@ -1,0 +1,12 @@
+{
+  // The Safari Zone's south-west part (plan 21 · H6, part b): its rest house and a visitor
+  "area": "hoenn_safari_zone_southwest",
+  "bgmTrack": "hoenn/safari_zone",
+  "trees": "Round",
+  "people": {
+    "woman_2": { "name": "Woman", "dialog": [ "Some Pokémon gobble up whatever I toss them, and some won't touch it. I wonder if they're fussy eaters." ] }
+  },
+  "signs": {
+    "SafariZone_Southwest_EventScript_RestHouseSign": "Rest House\nPut your feet up for a while."
+  }
+}

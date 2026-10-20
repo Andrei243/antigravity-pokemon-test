@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Models.SuperContests;
 using PokemonPlatinumEngine.Models.Underground;
@@ -24,6 +25,13 @@ public sealed partial class GameFlow
 
     /// <summary>The answer the script's last question, screen or chooser came back with.</summary>
     public int ScriptAnswer { get; set; }
+
+    /// <summary>
+    /// A battle the Vs. Recorder may keep (plan 08 · P10): its file, waiting for the field to come back to be asked
+    /// about, and whether the question about it is the one on the screen.
+    /// </summary>
+    public BattleRecordFile? RecordOffered { get; set; }
+    public bool RecordAsked { get; set; }
 
     /// <summary>The item the bag chose for a script's <c>chooseitem</c> (plan 06 · R14a).</summary>
     public string? ScriptItem { get; set; }

@@ -2718,7 +2718,7 @@
       ]
     },
     {
-      "key": "safari_zone_northwest",
+      "key": "hoenn_safari_zone_northwest",
       "name": "Safari Zone",
       "cells": "",
       "morning": [
@@ -2763,7 +2763,7 @@
       ]
     },
     {
-      "key": "safari_zone_north",
+      "key": "hoenn_safari_zone_north",
       "name": "Safari Zone",
       "cells": "",
       "morning": [
@@ -2792,7 +2792,7 @@
       ]
     },
     {
-      "key": "safari_zone_southwest",
+      "key": "hoenn_safari_zone_southwest",
       "name": "Safari Zone",
       "cells": "",
       "morning": [
@@ -2839,7 +2839,7 @@
       ]
     },
     {
-      "key": "safari_zone_south",
+      "key": "hoenn_safari_zone_south",
       "name": "Safari Zone",
       "cells": "",
       "morning": [
@@ -2871,7 +2871,7 @@
       ]
     },
     {
-      "key": "safari_zone_northeast",
+      "key": "hoenn_safari_zone_northeast",
       "name": "Safari Zone",
       "cells": "",
       "morning": [
@@ -2906,7 +2906,7 @@
       ]
     },
     {
-      "key": "safari_zone_southeast",
+      "key": "hoenn_safari_zone_southeast",
       "name": "Safari Zone",
       "cells": "",
       "morning": [

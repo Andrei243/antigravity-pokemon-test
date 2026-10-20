@@ -1,0 +1,23 @@
+{
+  "id": 356,
+  "width": 4,
+  "height": 3,
+  "chunks": [
+    "677 678 679 680",
+    "681 682 683 684",
+    "685 686 687 688"
+  ],
+  "areas": [
+    " 0  1  1  4",
+    " 2  3  3  5",
+    " 2  3  3  5"
+  ],
+  "areaKeys": [
+    "hoenn_safari_zone_northwest",
+    "hoenn_safari_zone_north",
+    "hoenn_safari_zone_southwest",
+    "hoenn_safari_zone_south",
+    "hoenn_safari_zone_northeast",
+    "hoenn_safari_zone_southeast"
+  ]
+}

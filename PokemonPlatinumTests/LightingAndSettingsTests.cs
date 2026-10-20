@@ -229,6 +229,13 @@ public class LightingAndSettingsTests
         Assert.Equal(BattleStyle.Set, s.BattleStyle);
         OptionsScreen.Change(s, OptionRow.BattleStyle, 1);
         Assert.Equal(BattleStyle.Shift, s.BattleStyle);
+
+        // The Vs. Recorder's row (plan 08 · P10): off unless chosen, a toggle either way
+        Assert.False(s.RecordBattles);
+        OptionsScreen.Change(s, OptionRow.RecordBattles, 1);
+        Assert.True(s.RecordBattles);
+        OptionsScreen.Change(s, OptionRow.RecordBattles, -1);
+        Assert.False(s.RecordBattles);
     }
 
     [Theory]

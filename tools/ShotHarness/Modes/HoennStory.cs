@@ -658,5 +658,77 @@ partial class Harness
         ReadTo("This is the Feather Badge"); Frames(10); Shot("hs139_the_feather_badge");
         ReadTo(null);
         Fortree("Winona");
+
+        // ---- Plan 21 · H6, part b: Route 121, the Safari Zone and Fortree's houses (hs140 to hs154)
+        void Safari(string what) =>
+            Console.WriteLine($"  {what}: route 121 {story.Var("VAR_ROUTE121_STATE")}, grunts hidden {story.Has("FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS")}, "
+                + $"safari {(game.Safari.Active ? $"on, {game.Safari.Balls} balls, {game.Safari.Steps} steps" : "off")}, zone state {story.Var("VAR_SAFARI_ZONE_STATE")}, "
+                + $"good luck {story.Has("FLAG_GOOD_LUCK_SAFARI_ZONE")}, money {game.Money}, trade {story.Has("FLAG_FORTREE_NPC_TRADE_COMPLETED")}, "
+                + $"tm10 {game.Bag.GetQuantity(ItemDatabase.Get("TM10")!)}, sleep talk taught {story.Has("FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK")}, "
+                + $"team {string.Join(", ", game.Party.Members.Select(p => p.DisplayName))}, on {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+        void ChooseFirst()
+        {
+            Until(() => game.State == GameState.PartyMenu, "the team to choose from");
+            Frames(10);
+            game.PartyScreen.SelectedIndex = 0;
+            game.PartyScreen.Confirm(game.Party);
+            Frames(3);
+        }
+
+        // Route 121: the three grunts at its west end, the order to move out to Mt. Pyre, and the road clear
+        At("Hoenn", 424, 87, Direction.Right); game.EnterArea(); ReadTo(null);
+        engine.Steering = (Direction.Right, false);
+        Until(() => engine.ScriptRunning, "Team Aqua's scene on Route 121", 120);
+        engine.Steering = null;
+        ReadTo("we move out to Mt. Pyre"); Frames(10); Shot("hs140_team_aqua_on_route_121");
+        ReadTo(null);
+        Frames(20); Shot("hs141_the_grunts_gone");
+        Safari("Team Aqua on Route 121");
+
+        // The Safari Zone: the counter's question, the balls, the zone inside its door, its attendant's luck and the way out
+        StepOnto("Route121_SafariZoneEntrance", 8, 4, Direction.Left);
+        ReadTo("Would you like to play the Safari Game"); Frames(10); Shot("hs142_the_safari_counter");
+        ReadTo("Here are your Safari Balls"); Frames(10); Shot("hs143_thirty_safari_balls");
+        ReadTo(null);
+        Frames(20); Shot("hs144_in_the_safari_zone");
+        Safari("into the Safari Zone");
+        TalkTo("HoennSafariZone", "safari_exit_attendant");
+        ReadTo("Good luck out there"); Frames(10); Shot("hs145_good_luck");
+        ReadTo(null);
+        TalkTo("HoennSafariZone", "safari_exit_attendant");
+        ReadTo("Would you like to leave the Safari Zone now"); Frames(10); Shot("hs146_leave_early");
+        ReadTo(null);
+        Frames(20); Shot("hs147_out_past_the_counter");
+        Safari("out of the Safari Zone");
+
+        // Fortree's first house: the boy's Plusle for a Volbeat
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Volbeat")!, 20));
+        TalkTo("FortreeCity_House1", "ninja_boy");
+        ReadTo("what I really want is a Volbeat"); Frames(10); Shot("hs148_the_trade_offer");
+        ReadTo("Which Pokémon will you trade");
+        Box().Advance(); Frames(2);
+        ChooseFirst();
+        ReadTo("Look after Pluses"); Frames(10); Shot("hs149_pluses");
+        ReadTo(null);
+        Safari("the Fortree trade");
+
+        // Fortree's second house: the coin in the old woman's hand three times, and the old man's Sleep Talk
+        TalkTo("FortreeCity_House2", "expert_f");
+        ReadTo("I hold a coin in one hand"); Frames(10); Shot("hs150_the_hidden_power_game");
+        ReadTo("Which hand holds the coin"); Frames(10); Shot("hs151_which_hand");
+        Pick("Right");
+        ReadTo("Again, now"); Pick("Right");
+        ReadTo("One more"); Pick("Left");
+        ReadTo("Three in a row"); Frames(10); Shot("hs152_three_in_a_row");
+        ReadTo(null);
+        game.Party.Members.Insert(0, new Pokemon(PokemonDatabase.Get("Slakoth")!, 5));
+        TalkTo("FortreeCity_House2", "expert_m");
+        ReadTo("Shall I teach one of yours Sleep Talk"); Frames(10); Shot("hs153_the_sleep_talk_tutor");
+        ReadTo("Which one");
+        Box().Advance(); Frames(2);
+        ChooseFirst();
+        ReadTo("learned"); Frames(10); Shot("hs154_sleep_talk_learned");
+        ReadTo(null);
+        Safari("Fortree's second house");
     }
 }

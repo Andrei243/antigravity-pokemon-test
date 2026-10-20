@@ -1,0 +1,380 @@
+{
+  "people": {
+    "woman_3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That peak beyond the water is Mt. Pyre. People climb it to remember the Pokémon they have lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route121_grunt_1": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mt. Pyre is just across the water. Let's get going!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route121_grunt_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Don't get in our way, kid. We've got business on the mountain."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "route121_grunt_3": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Whatever's up on that mountain, the boss wants it before Team Magma gets there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Kate & Joy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sr. and Jr. Kate & Joy: Mother and daughter, side by side! We'll take you on together!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sr. and Jr. Kate & Joy: We'll keep practising, the two of us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Kate & Joy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sr. and Jr. Kate & Joy: Mother and daughter, side by side! We'll take you on together!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sr. and Jr. Kate & Joy: We'll keep practising, the two of us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "pokefan_f": {
+      "name": {
+        "en": [
+          "Vanessa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pokéfan Vanessa: Isn't my Pikachu the sweetest? It's tough, too. Watch!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pokéfan Vanessa: Still the sweetest, even when it loses."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gentleman": {
+      "name": {
+        "en": [
+          "Walter"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Gentleman Walter: A stroll with my Manectric, and now a battle. A fine afternoon."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Gentleman Walter: A fine afternoon, all the same."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hex_maniac": {
+      "name": {
+        "en": [
+          "Tammy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hex Maniac Tammy: The mountain calls to my Pokémon... and they answer by battling you!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hex Maniac Tammy: The mountain has gone quiet."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Jessica"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Jessica: My Pokémon are as lovely as they are sly. Can you even see them coming?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Jessica: You saw right through us."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Cale"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Bug Maniac Cale: My moths came out of the Safari Zone's grass. They're the pride of my collection!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Bug Maniac Cale: Back to the grass to find more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_4": {
+      "name": {
+        "en": [
+          "Myles"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pkmn Breeder Myles: I raised all six of these myself. Let's see what you think of them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pkmn Breeder Myles: They're still my pride and joy."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Pat"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Pkmn Breeder Pat: Six little ones, all raised with love. Be gentle with them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Pkmn Breeder Pat: You weren't gentle at all!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Marcel"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Marcel: I'm on my way to Lilycove to test myself. You'll do for a warm-up."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Marcel: Some warm-up. I'm the one who got burned."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Cristin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Cristin: You look like you've come a long way. Let's see if it shows."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Cristin: It shows. It really shows."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route121_EventScript_MtPyrePierSign": {
+      "en": [
+        "Mt. Pyre Pier\nThe mountain's landing lies across the water to the south."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route121_EventScript_SafariZoneSign": {
+      "en": [
+        "Safari Zone\nRare Pokémon from far and wide. Gate just ahead!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

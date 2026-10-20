@@ -1,0 +1,25 @@
+{
+  "key": "scorched_slab",
+  "index": 311,
+  "name": "Scorched Slab",
+  "matrix": 260,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 16, "to": "route_120", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 7, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_SCORCHED_SLAB_TM_SUNNY_DAY", "item": "TM11", "script": "ScorchedSlab_EventScript_ItemTMSunnyDay" }
+  ],
+  "signs": [],
+  "triggers": []
+}
