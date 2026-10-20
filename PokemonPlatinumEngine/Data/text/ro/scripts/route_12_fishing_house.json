@@ -38,8 +38,8 @@
         "And if you land a whopping great Magikarp, bring it here. I keep the measurements."
       ],
       "text": [
-        "",
-        ""
+        "Cu o Superundiță poți prinde Pokémoni la care alte undițe nici nu pot visa!",
+        "Iar dacă prinzi un Magikarp uriaș, adu-l aici. Eu țin evidența măsurătorilor."
       ]
     },
     {
@@ -48,8 +48,8 @@
         "Let me have the tape on it. I keep a board of the biggest ones landed hereabouts."
       ],
       "text": [
-        "",
-        ""
+        "Stai! Ai un Magikarp acolo.",
+        "Lasă-mă să-l măsor cu ruleta. Țin un panou cu cei mai mari pești prinși pe aici."
       ]
     },
     {
@@ -58,8 +58,8 @@
         "That's the biggest ever landed round here. Take this, you've earned it."
       ],
       "text": [
-        "",
-        ""
+        "Uau! {size} de Magikarp, de la bot la coadă!",
+        "E cel mai mare prins pe aici. Ia asta, ai meritat-o."
       ]
     },
     {
@@ -67,7 +67,7 @@
         "Up on the board it goes. I'll be waiting for a bigger one!"
       ],
       "text": [
-        ""
+        "Și intră pe panou. Aștept unul și mai mare!"
       ]
     },
     {
@@ -76,8 +76,8 @@
         "Land a great fat Magikarp and bring it to me. I'll measure it for you."
       ],
       "text": [
-        "",
-        ""
+        "Ai prins ceva mare cu Superundița?",
+        "Prinde un Magikarp mare și gras și adu-l la mine. Ți-l măsor."
       ]
     },
     {
@@ -86,8 +86,8 @@
         "The same fish to the millimetre? Now that's angling."
       ],
       "text": [
-        "",
-        ""
+        "Hm. {size}, iar panoul zice {record}.",
+        "Același pește, până la milimetru? Asta da pescuit."
       ]
     },
     {
@@ -96,8 +96,8 @@
         "But the board says {record}, and I don't rub out the board."
       ],
       "text": [
-        "",
-        ""
+        "Hmm. {size}. Un Magikarp ca lumea, recunosc.",
+        "Dar panoul zice {record}, iar panoul nu se șterge."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "That doesn't look like a Magikarp to me. I only measure Magikarp."
       ],
       "text": [
-        ""
+        "Ăsta nu pare un Magikarp. Eu măsor doar Magikarp."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Changed your mind? Fine, fine. The tape will keep."
       ],
       "text": [
-        ""
+        "Te-ai răzgândit? Bine, bine. Ruleta rămâne aici."
       ]
     }
   ],
@@ -123,7 +123,7 @@
         "A board of the Magikarp landed hereabouts. The biggest so far: {record}."
       ],
       "text": [
-        ""
+        "Un panou cu Magikarp prinși pe aici. Cel mai mare până acum: {record}."
       ]
     },
     {
@@ -131,7 +131,7 @@
         "A board of the Magikarp landed hereabouts. Not one is written up yet."
       ],
       "text": [
-        ""
+        "Un panou cu Magikarp prinși pe aici. Niciunul nu e trecut încă."
       ]
     }
   ]

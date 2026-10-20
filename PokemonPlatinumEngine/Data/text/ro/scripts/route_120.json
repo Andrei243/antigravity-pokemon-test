@@ -5,7 +5,7 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! Good timing. There's something on this bridge that nobody can see. Will you help me find out what?"
       ],
       "text": [
-        ""
+        "{player}! Ai venit la țanc. Pe podul ăsta e ceva ce nimeni nu poate vedea. Mă ajuți să aflu ce e?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Are your Pokémon ready now? Let's see what's hiding on this bridge."
       ],
       "text": [
-        ""
+        "Pokémonii tăi sunt gata acum? Să vedem ce se ascunde pe pod."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "No hurry. I'll wait here until you're ready."
       ],
       "text": [
-        ""
+        "Fără grabă. Aștept aici până ești gata."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Then show me what you and your Pokémon can do!"
       ],
       "text": [
-        ""
+        "Atunci arată-mi ce pot face tu și Pokémonii tăi!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "This is the Devon Scope. With it, a Pokémon that blends into its surroundings can't hide."
       ],
       "text": [
-        ""
+        "Asta e Luneta Devon. Cu ea, un Pokémon care se contopește cu împrejurimile nu se mai poate ascunde."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Steven"
       ],
       "text": [
-        ""
+        "Steven"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "So it was a Kecleon. It changes its colours to match whatever is round it. Clever, isn't it?"
       ],
       "text": [
-        ""
+        "Deci era un Kecleon. Își schimbă culorile ca să se potrivească cu tot ce-l înconjoară. Isteț, nu?"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "You saw what the Scope can do. Take it. There are more of them about, and you'll find them now."
       ],
       "text": [
-        ""
+        "Ai văzut ce poate face Luneta. Ia-o. Mai sunt și alți Pokémoni de felul ăsta pe aici, iar acum îi vei găsi."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "I'm going on ahead. Something is stirring in Hoenn, {player}, and I want to see it with my own eyes."
       ],
       "text": [
-        ""
+        "Merg înainte. Ceva se agită în Hoenn, {player}, și vreau să văd cu ochii mei."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "We'll meet again. Take care of yourself."
       ],
       "text": [
-        ""
+        "Ne mai întâlnim. Ai grijă de tine."
       ]
     }
   ],
@@ -95,7 +95,7 @@
         "Something unseeable is in the way."
       ],
       "text": [
-        ""
+        "Ceva nevăzut stă în cale."
       ]
     }
   ],
@@ -105,7 +105,7 @@
         "Beauty"
       ],
       "text": [
-        ""
+        "Frumoasa"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Don't you think berries are a kind of love letter? From the soil, to whoever picks them?"
       ],
       "text": [
-        ""
+        "Nu crezi că boabele sunt un fel de scrisoare de dragoste? De la pământ, către cel care le culege?"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "I knew you'd understand! Then you should have one of mine."
       ],
       "text": [
-        ""
+        "Știam că înțelegi! Atunci ar trebui să primești una de-a mea."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "Oh, you'll see it one day. Here, maybe this will help you understand."
       ],
       "text": [
-        ""
+        "Oh, o să vezi tu într-o zi. Uite, poate asta te ajută să înțelegi."
       ]
     },
     {
@@ -137,7 +137,7 @@
         "That one's hard to come by. Plant it and raise it with care!"
       ],
       "text": [
-        ""
+        "Aia e greu de găsit. Plantează-o și crește-o cu grijă!"
       ]
     },
     {
@@ -145,7 +145,7 @@
         "I'm off to the Berry Master's later for more. Come back tomorrow and I'll have another for you."
       ],
       "text": [
-        ""
+        "Mai târziu merg la Maestrul Boabelor, după încă. Vino mâine și îți voi avea alta."
       ]
     }
   ],
@@ -155,7 +155,7 @@
         "Robert"
       ],
       "text": [
-        ""
+        "Robert"
       ]
     },
     {
@@ -163,7 +163,7 @@
         "Your Pokémon fly true! Let's exchange numbers and train together sometime."
       ],
       "text": [
-        ""
+        "Pokémonii tăi zboară drept! Să facem schimb de numere și să ne antrenăm împreună cândva."
       ]
     },
     {
@@ -171,7 +171,7 @@
         "Register Robert in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "Îl înregistrezi pe Robert la Apelurile din PokéNav?"
       ]
     },
     {
@@ -179,7 +179,7 @@
         "Great! I'll call when Swablu learns something new."
       ],
       "text": [
-        ""
+        "Grozav! Te sun când învață Swablul meu ceva nou."
       ]
     },
     {
@@ -187,7 +187,7 @@
         "Ah well. The sky's big enough for both of us."
       ],
       "text": [
-        ""
+        "Ei bine. Cerul e destul de mare pentru amândoi."
       ]
     }
   ],
@@ -197,7 +197,7 @@
         "Jeffrey"
       ],
       "text": [
-        ""
+        "Jeffrey"
       ]
     },
     {
@@ -205,7 +205,7 @@
         "You know your stuff! Want my number? I'll tell you about every bug I find."
       ],
       "text": [
-        ""
+        "Te pricepi! Vrei numărul meu? Îți povestesc despre fiecare insectă pe care o găsesc."
       ]
     },
     {
@@ -213,7 +213,7 @@
         "Register Jeffrey in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "Îl înregistrezi pe Jeffrey la Apelurile din PokéNav?"
       ]
     },
     {
@@ -221,7 +221,7 @@
         "Brilliant! Expect lots of calls about Surskit."
       ],
       "text": [
-        ""
+        "Strălucit! Așteaptă-te la multe apeluri despre Surskit."
       ]
     },
     {
@@ -229,7 +229,7 @@
         "Fine, fine. More bugs for me!"
       ],
       "text": [
-        ""
+        "Bine, bine. Mai multe insecte pentru mine!"
       ]
     }
   ]

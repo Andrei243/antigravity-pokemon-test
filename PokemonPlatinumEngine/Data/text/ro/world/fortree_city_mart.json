@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! What can I get for you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot servi?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "A Super Repel keeps weak Pokémon away for a long while. It's a must on the long roads round here."
         ],
         "text": [
-          ""
+          "Un Superspray ține departe Pokémonii slabi mult timp. E obligatoriu pe drumurile lungi de pe aici."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "When it rains here, it really rains. I never leave home without an umbrella."
         ],
         "text": [
-          ""
+          "Când plouă aici, plouă pe bune. Nu ies niciodată din casă fără umbrelă."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "The shop next door sells furniture and dolls for secret bases. This one just sells Poké Balls and potions."
         ],
         "text": [
-          ""
+          "Magazinul de alături vinde mobilă și păpuși pentru bazele secrete. Ăsta vinde doar Poké Balluri și poțiuni."
         ]
       }
     }

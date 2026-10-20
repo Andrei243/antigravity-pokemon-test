@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! There you are! I heard Team Aqua was causing trouble at the Weather Institute. Did you sort it out?"
       ],
       "text": [
-        ""
+        "{player}! Aici erai! Am auzit că Echipa Aqua făcea probleme la Institutul Meteo. Ai rezolvat?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "You did? I knew it. I've been training nonstop since Lavaridge, so let's see whose team grew more!"
       ],
       "text": [
-        ""
+        "Da? Știam eu. M-am antrenat non-stop de la Lavaridge, așa că hai să vedem a cui echipă a crescut mai mult!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Beaten again! You really are something, {player}. I think Dad would want you to have this."
       ],
       "text": [
-        ""
+        "Am pierdut din nou! Ești ceva, {player}. Cred că tata ar vrea să primești asta."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "That's Fly. Teach it to a bird Pokémon and it'll carry you to any town you've been to before."
       ],
       "text": [
-        ""
+        "E Zbor. Învață-l unui Pokémon zburător și te va duce în orice oraș în care ai mai fost."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "You'll need Fortree's Badge before you can use it outside battle, though. The Gym's just up the road!"
       ],
       "text": [
-        ""
+        "Ai nevoie de Insigna din Fortree ca să-l poți folosi în afara luptei. Arena e chiar mai încolo, pe drum!"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "I'm going to keep looking for Pokémon around here. See you, {player}!"
       ],
       "text": [
-        ""
+        "Eu mai caut Pokémoni pe aici. Pe curând, {player}!"
       ]
     }
   ],
@@ -71,7 +71,7 @@
         "Scott"
       ],
       "text": [
-        ""
+        "Scott"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "{player}! I caught the end of that from up the path. You two pushed each other hard, didn't you?"
       ],
       "text": [
-        ""
+        "{player}! Am prins sfârșitul de pe potecă. V-ați împins tare unul pe altul, nu-i așa?"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "And I hear Team Aqua was chased out of the Weather Institute too. You do get around!"
       ],
       "text": [
-        ""
+        "Și aud că Echipa Aqua a fost alungată și de la Institutul Meteo. Te pricepi să te afli peste tot!"
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Fortree's Leader, Winona, flies like no one else. I'd love to see how you fare against her. Good luck!"
       ],
       "text": [
-        ""
+        "Lidera din Fortree, Winona, zboară ca nimeni altcineva. Mi-ar plăcea să văd cum te descurci în fața ei. Mult noroc!"
       ]
     }
   ],
@@ -105,7 +105,7 @@
         "Team Aqua Grunt"
       ],
       "text": [
-        ""
+        "Aqua Grunt"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Our admin's busy inside. The weather people have something we want, and we're not leaving without it."
       ],
       "text": [
-        ""
+        "Administratoarea noastră e ocupată înăuntru. Meteorologii au ceva ce ne trebuie și nu plecăm fără."
       ]
     }
   ],
@@ -123,7 +123,7 @@
         "Team Aqua Grunt"
       ],
       "text": [
-        ""
+        "Aqua Grunt"
       ]
     },
     {
@@ -131,7 +131,7 @@
         "Rain, sun, storms... If we know how the weather works, we can make the sea grow. Now scram!"
       ],
       "text": [
-        ""
+        "Ploaie, soare, furtuni... Dacă știm cum funcționează vremea, putem face marea să crească. Acum cară-te!"
       ]
     }
   ],
@@ -141,7 +141,7 @@
         "Jackson"
       ],
       "text": [
-        ""
+        "Jackson"
       ]
     },
     {
@@ -149,7 +149,7 @@
         "You've got good instincts. Want to swap numbers? Rangers stick together."
       ],
       "text": [
-        ""
+        "Ai instinct bun. Facem schimb de numere? Rangerii se țin aproape unii de alții."
       ]
     },
     {
@@ -157,7 +157,7 @@
         "Register Jackson in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "Îl înregistrezi pe Jackson la Apelurile din PokéNav?"
       ]
     },
     {
@@ -165,7 +165,7 @@
         "Good. I'll check in after my patrol."
       ],
       "text": [
-        ""
+        "Bine. Te sun după patrulă."
       ]
     },
     {
@@ -173,7 +173,7 @@
         "Understood. Stay safe out there."
       ],
       "text": [
-        ""
+        "Am înțeles. Ai grijă pe-acolo."
       ]
     }
   ],
@@ -183,7 +183,7 @@
         "Catherine"
       ],
       "text": [
-        ""
+        "Catherine"
       ]
     },
     {
@@ -191,7 +191,7 @@
         "You're strong! Can we keep in touch? I want to know how you're getting on."
       ],
       "text": [
-        ""
+        "Ești tare! Păstrăm legătura? Vreau să aflu cum te descurci."
       ]
     },
     {
@@ -199,7 +199,7 @@
         "Register Catherine in the PokéNav's Match Call?"
       ],
       "text": [
-        ""
+        "O înregistrezi pe Catherine la Apelurile din PokéNav?"
       ]
     },
     {
@@ -207,7 +207,7 @@
         "Thanks! I'll call when my Gloom grows."
       ],
       "text": [
-        ""
+        "Mulțumesc! Te sun când crește Gloomul meu."
       ]
     },
     {
@@ -215,7 +215,7 @@
         "Aww, okay. Good luck on the road!"
       ],
       "text": [
-        ""
+        "Aww, bine. Mult noroc pe drum!"
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Fortree's just up the road, {player}!"
         ],
         "text": [
-          ""
+          "Fortree e chiar mai încolo pe drum, {player}!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Scott"
         ],
         "text": [
-          ""
+          "Scott"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "I'll be watching, {player}!"
         ],
         "text": [
-          ""
+          "Voi fi cu ochii pe tine, {player}!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Team Aqua Grunt"
         ],
         "text": [
-          ""
+          "Aqua Grunt"
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "Behind the waterfall there's a cave? No, that's just a story. Probably."
         ],
         "text": [
-          ""
+          "În spatele cascadei e o peșteră? Nu, e doar o poveste. Probabil."
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "Rain, rain, rain! It's always raining around here. My Pokémon love it, though."
         ],
         "text": [
-          ""
+          "Ploaie, ploaie, ploaie! Plouă mereu pe aici. Pokémonilor mei le place, totuși."
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Cyclist"
         ],
         "text": [
-          ""
+          "Biciclista"
         ]
       },
       "dialog": {
@@ -106,7 +106,7 @@
           "This grass is so tall it snags my bike's tyres. I can barely get anywhere!"
         ],
         "text": [
-          ""
+          "Iarba asta e atât de înaltă că îmi agață cauciucurile bicicletei. Abia înaintez!"
         ]
       }
     },
@@ -116,7 +116,7 @@
           "Kecleon"
         ],
         "text": [
-          ""
+          "Kecleon"
         ]
       }
     },
@@ -126,7 +126,7 @@
           "Kecleon"
         ],
         "text": [
-          ""
+          "Kecleon"
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Greg"
         ],
         "text": [
-          ""
+          "Greg"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Bug Catcher Greg: The tall grass here is full of bugs! Let me show you my best ones!"
         ],
         "text": [
-          ""
+          "Vânător de insecte Greg: Iarba înaltă de aici e plină de insecte! Lasă-mă să ți le arăt pe cele mai bune!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Bug Catcher Greg: Back into the grass to find more."
         ],
         "text": [
-          ""
+          "Vânător de insecte Greg: Mă întorc în iarbă să găsesc altele."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Taylor"
         ],
         "text": [
-          ""
+          "Taylor"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "Bug Maniac Taylor: I've raised these bugs from tiny Wurmple! Witness their glory!"
         ],
         "text": [
-          ""
+          "Pasionat de insecte Taylor: Am crescut insectele astea din Wurmple mici! Fii martor la gloria lor!"
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Bug Maniac Taylor: Their glory has been dimmed."
         ],
         "text": [
-          ""
+          "Pasionat de insecte Taylor: Gloria lor s-a stins."
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Donald"
         ],
         "text": [
-          ""
+          "Donald"
         ]
       },
       "before": {
@@ -196,7 +196,7 @@
           "Bug Maniac Donald: Rain brings out the best bugs. And the best bug battles!"
         ],
         "text": [
-          ""
+          "Pasionat de insecte Donald: Ploaia scoate la iveală cele mai bune insecte. Și cele mai bune lupte cu insecte!"
         ]
       },
       "after": {
@@ -204,7 +204,7 @@
           "Bug Maniac Donald: Washed out by the rain."
         ],
         "text": [
-          ""
+          "Pasionat de insecte Donald: Spălat de ploaie."
         ]
       }
     },
@@ -214,7 +214,7 @@
           "Jackson"
         ],
         "text": [
-          ""
+          "Jackson"
         ]
       },
       "before": {
@@ -222,7 +222,7 @@
           "Pkmn Ranger Jackson: I patrol this route rain or shine. Show me you can handle yourself out here!"
         ],
         "text": [
-          ""
+          "Ranger Pokémon Jackson: Patrulez pe ruta asta cu ploaie sau cu soare. Arată-mi că te poți descurca pe aici!"
         ]
       },
       "after": {
@@ -230,7 +230,7 @@
           "Pkmn Ranger Jackson: You'll be fine out here."
         ],
         "text": [
-          ""
+          "Ranger Pokémon Jackson: Te vei descurca bine pe aici."
         ]
       }
     },
@@ -240,7 +240,7 @@
           "Brent"
         ],
         "text": [
-          ""
+          "Brent"
         ]
       },
       "before": {
@@ -248,7 +248,7 @@
           "Bug Maniac Brent: Surskit skates on the puddles here. Have you ever seen anything so lovely?"
         ],
         "text": [
-          ""
+          "Pasionat de insecte Brent: Surskit patinează pe băltoacele de aici. Ai văzut vreodată ceva mai frumos?"
         ]
       },
       "after": {
@@ -256,7 +256,7 @@
           "Bug Maniac Brent: It slipped on its own puddle."
         ],
         "text": [
-          ""
+          "Pasionat de insecte Brent: A alunecat pe propria băltoacă."
         ]
       }
     },
@@ -266,7 +266,7 @@
           "Catherine"
         ],
         "text": [
-          ""
+          "Catherine"
         ]
       },
       "before": {
@@ -274,7 +274,7 @@
           "Pkmn Ranger Catherine: I keep an eye on the Pokémon here. Let me see how you treat yours!"
         ],
         "text": [
-          ""
+          "Ranger Pokémon Catherine: Veghez asupra Pokémonilor de aici. Lasă-mă să văd cum îi tratezi pe ai tăi!"
         ]
       },
       "after": {
@@ -282,7 +282,7 @@
           "Pkmn Ranger Catherine: Your Pokémon trust you. I can tell."
         ],
         "text": [
-          ""
+          "Ranger Pokémon Catherine: Pokémonii tăi au încredere în tine. Se vede."
         ]
       }
     },
@@ -292,7 +292,7 @@
           "Doug"
         ],
         "text": [
-          ""
+          "Doug"
         ]
       },
       "before": {
@@ -300,7 +300,7 @@
           "Bug Catcher Doug: My Ninjask is so fast you won't even see it coming!"
         ],
         "text": [
-          ""
+          "Vânător de insecte Doug: Ninjaskul meu e atât de rapid că nici n-o să vezi când vine!"
         ]
       },
       "after": {
@@ -308,7 +308,7 @@
           "Bug Catcher Doug: You saw it coming after all."
         ],
         "text": [
-          ""
+          "Vânător de insecte Doug: L-ai văzut venind, totuși."
         ]
       }
     },
@@ -318,7 +318,7 @@
           "Kent"
         ],
         "text": [
-          ""
+          "Kent"
         ]
       },
       "before": {
@@ -326,7 +326,7 @@
           "Bug Catcher Kent: Bzzz! That's the sound of my Ninjask about to win!"
         ],
         "text": [
-          ""
+          "Vânător de insecte Kent: Bzzz! Ăsta e sunetul Ninjaskului meu pe cale să câștige!"
         ]
       },
       "after": {
@@ -334,7 +334,7 @@
           "Bug Catcher Kent: Bzzz... that's the sound of me losing."
         ],
         "text": [
-          ""
+          "Vânător de insecte Kent: Bzzz... ăsta e sunetul meu pierzând."
         ]
       }
     },
@@ -344,7 +344,7 @@
           "Yasu"
         ],
         "text": [
-          ""
+          "Yasu"
         ]
       },
       "before": {
@@ -352,7 +352,7 @@
           "Ninja Boy Yasu: You walked right past me! My hiding skills are flawless!"
         ],
         "text": [
-          ""
+          "Băiat ninja Yasu: Ai trecut chiar pe lângă mine! Abilitățile mele de ascundere sunt perfecte!"
         ]
       },
       "after": {
@@ -360,7 +360,7 @@
           "Ninja Boy Yasu: My battle skills are less flawless."
         ],
         "text": [
-          ""
+          "Băiat ninja Yasu: Abilitățile mele de luptă sunt mai puțin perfecte."
         ]
       }
     },
@@ -370,7 +370,7 @@
           "Takashi"
         ],
         "text": [
-          ""
+          "Takashi"
         ]
       },
       "before": {
@@ -378,7 +378,7 @@
           "Ninja Boy Takashi: Hah! I was hiding in the grass the whole time!"
         ],
         "text": [
-          ""
+          "Băiat ninja Takashi: Hah! Am stat ascuns în iarbă tot timpul!"
         ]
       },
       "after": {
@@ -386,7 +386,7 @@
           "Ninja Boy Takashi: Back into hiding, in shame."
         ],
         "text": [
-          ""
+          "Băiat ninja Takashi: Mă ascund din nou, de rușine."
         ]
       }
     },
@@ -396,7 +396,7 @@
           "Hideo"
         ],
         "text": [
-          ""
+          "Hideo"
         ]
       },
       "before": {
@@ -404,7 +404,7 @@
           "Ninja Boy Hideo: Shh! I'm practising my stealth! Now you've seen me, so we battle!"
         ],
         "text": [
-          ""
+          "Băiat ninja Hideo: Șșt! Îmi exersez furișarea! Acum m-ai văzut, deci ne luptăm!"
         ]
       },
       "after": {
@@ -412,7 +412,7 @@
           "Ninja Boy Hideo: More practice needed."
         ],
         "text": [
-          ""
+          "Băiat ninja Hideo: Mai am de exersat."
         ]
       }
     },
@@ -422,7 +422,7 @@
           "Hugh"
         ],
         "text": [
-          ""
+          "Hugh"
         ]
       },
       "before": {
@@ -430,7 +430,7 @@
           "Bird Keeper Hugh: My birds love the wind over the river. Let's see if they carry the day!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Hugh: Păsărilor mele le place vântul de deasupra râului. Să vedem dacă ne duc la victorie!"
         ]
       },
       "after": {
@@ -438,7 +438,7 @@
           "Bird Keeper Hugh: They didn't carry it far."
         ],
         "text": [
-          ""
+          "Crescător de păsări Hugh: N-au dus-o departe."
         ]
       }
     },
@@ -448,7 +448,7 @@
           "Phil"
         ],
         "text": [
-          ""
+          "Phil"
         ]
       },
       "before": {
@@ -456,7 +456,7 @@
           "Bird Keeper Phil: Swellow, dive! This trainer's wide open!"
         ],
         "text": [
-          ""
+          "Crescător de păsări Phil: Swellow, în picaj! Antrenorul ăsta e descoperit!"
         ]
       },
       "after": {
@@ -464,7 +464,7 @@
           "Bird Keeper Phil: Not so wide open after all."
         ],
         "text": [
-          ""
+          "Crescător de păsări Phil: Nu chiar atât de descoperit, la urma urmei."
         ]
       }
     },
@@ -474,7 +474,7 @@
           "Chris"
         ],
         "text": [
-          ""
+          "Chris"
         ]
       },
       "before": {
@@ -482,7 +482,7 @@
           "Fisherman Chris: I've fished every pool on this route. Look what I've caught!"
         ],
         "text": [
-          ""
+          "Pescar Chris: Am pescuit în fiecare bazin de pe ruta asta. Uite ce am prins!"
         ]
       },
       "after": {
@@ -490,7 +490,7 @@
           "Fisherman Chris: Maybe I should throw a few back."
         ],
         "text": [
-          ""
+          "Pescar Chris: Poate ar trebui să dau câțiva înapoi în apă."
         ]
       }
     },
@@ -500,7 +500,7 @@
           "Rachel"
         ],
         "text": [
-          ""
+          "Rachel"
         ]
       },
       "before": {
@@ -508,7 +508,7 @@
           "Parasol Lady Rachel: My parasol keeps the rain off. Can you keep my Pokémon off?"
         ],
         "text": [
-          ""
+          "Doamna cu umbrelă Rachel: Umbrela mea ține ploaia departe. Poți ține departe Pokémonii mei?"
         ]
       },
       "after": {
@@ -516,7 +516,7 @@
           "Parasol Lady Rachel: You certainly could."
         ],
         "text": [
-          ""
+          "Doamna cu umbrelă Rachel: Cu siguranță ai putut."
         ]
       }
     },
@@ -526,7 +526,7 @@
           "Dayton"
         ],
         "text": [
-          ""
+          "Dayton"
         ]
       },
       "before": {
@@ -534,7 +534,7 @@
           "Kindler Dayton: All this rain can't put out my fire! Come on!"
         ],
         "text": [
-          ""
+          "Aprinzător Dayton: Toată ploaia asta nu-mi poate stinge focul! Hai!"
         ]
       },
       "after": {
@@ -542,7 +542,7 @@
           "Kindler Dayton: Okay, maybe it can."
         ],
         "text": [
-          ""
+          "Aprinzător Dayton: Bine, poate că poate."
         ]
       }
     },
@@ -552,7 +552,7 @@
           "Fabian"
         ],
         "text": [
-          ""
+          "Fabian"
         ]
       },
       "before": {
@@ -560,7 +560,7 @@
           "Guitarist Fabian: The rain on the leaves sounds like a drum. Let's battle to it!"
         ],
         "text": [
-          ""
+          "Chitarist Fabian: Ploaia pe frunze sună ca o tobă. Hai să luptăm pe ritmul ei!"
         ]
       },
       "after": {
@@ -568,7 +568,7 @@
           "Guitarist Fabian: Lost the beat."
         ],
         "text": [
-          ""
+          "Chitarist Fabian: Am pierdut ritmul."
         ]
       }
     }
@@ -579,7 +579,7 @@
         "Weather Institute"
       ],
       "text": [
-        ""
+        "Institutul Meteo"
       ]
     },
     "Route119_EventScript_RouteSignFortree": {
@@ -587,7 +587,7 @@
         "Route 119\nNorth: Fortree City"
       ],
       "text": [
-        ""
+        "Ruta 119\nNord: Orașul Fortree"
       ]
     },
     "Route119_EventScript_TrainerTipsDecoration": {
@@ -595,7 +595,7 @@
         "Trainer Tips\nFortree's shop sells furniture and dolls for a secret base. Make one your own!"
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nMagazinul din Fortree vinde mobilă și păpuși pentru bazele secrete. Fă-ți una a ta!"
       ]
     }
   }

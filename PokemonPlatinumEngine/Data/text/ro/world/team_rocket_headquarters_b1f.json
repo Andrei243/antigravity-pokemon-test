@@ -6,7 +6,7 @@
           "Persian statue"
         ],
         "text": [
-          ""
+          "Statuie de Persian"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Persian statue"
         ],
         "text": [
-          ""
+          "Statuie de Persian"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Persian statue"
         ],
         "text": [
-          ""
+          "Statuie de Persian"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Persian statue"
         ],
         "text": [
-          ""
+          "Statuie de Persian"
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Persian statue"
         ],
         "text": [
-          ""
+          "Statuie de Persian"
         ]
       }
     },
@@ -56,7 +56,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "dialog": {
@@ -64,7 +64,7 @@
           "Don't go near those statues!"
         ],
         "text": [
-          ""
+          "Nu te apropia de statuile alea!"
         ]
       }
     },
@@ -74,7 +74,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -82,7 +82,7 @@
           "Grunt: Who let a kid in here? This is Team Rocket's hideout, and you're not welcome!"
         ],
         "text": [
-          ""
+          "Grunt: Cine a lăsat un copil să intre aici? Asta e ascunzătoarea Echipei Rocket și nu ești binevenit!"
         ]
       },
       "after": {
@@ -90,7 +90,7 @@
           "Grunt: How did a kid get this strong?"
         ],
         "text": [
-          ""
+          "Grunt: Cum de e un copil așa de puternic?"
         ]
       }
     },
@@ -100,7 +100,7 @@
           "Gregg"
         ],
         "text": [
-          ""
+          "Gregg"
         ]
       },
       "before": {
@@ -108,7 +108,7 @@
           "Scientist Gregg: Our radio waves make Magikarp evolve in a rage. A marvel of science! Want to see?"
         ],
         "text": [
-          ""
+          "Om de știință Gregg: Undele noastre radio îi fac pe Magikarp să evolueze în furie. O minune a științei! Vrei să vezi?"
         ]
       },
       "after": {
@@ -116,7 +116,7 @@
           "Scientist Gregg: My experiments... ruined by a child!"
         ],
         "text": [
-          ""
+          "Om de știință Gregg: Experimentele mele... ruinate de un copil!"
         ]
       }
     }

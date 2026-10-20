@@ -1533,7 +1533,7 @@
         "Something unseeable is in the way."
       ],
       "text": [
-        ""
+        "Ceva nevăzut stă în cale."
       ]
     },
     {
@@ -1541,7 +1541,7 @@
         "Something unseeable is in the way. Use the Devon Scope?"
       ],
       "text": [
-        ""
+        "Ceva nevăzut stă în cale. Folosești Luneta Devon?"
       ]
     },
     {
@@ -1549,7 +1549,7 @@
         "{player} used the Devon Scope. A Pokémon that had melted into the scenery shows itself!"
       ],
       "text": [
-        ""
+        "{player} a folosit Luneta Devon. Un Pokémon care se contopise cu peisajul se arată!"
       ]
     }
   ]
