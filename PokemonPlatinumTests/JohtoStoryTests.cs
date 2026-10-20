@@ -729,6 +729,82 @@ public class JohtoStoryTests
     }
 
     [Fact]
+    public void WardenBaobaOpensTheSafariZoneAndMakesAnOwnerOfWhoeverShowsHimAGeodudeAndASandshrew()
+    {
+        // Plan 20 · J8, part b, and J9, part b (the rulings' "The Johto Safari Zone")
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 45));
+        var world = Johto.Value;
+        var cliffWay = world.Area("cianwood")!.Warps[6];
+        var olivine = world.Area("olivine")!.Warps[1];
+        var plaza = world.Area("safari_zone_gate")!.Warps[0];
+
+        // Until the warden rings, the workmen stand in the cliff gate
+        game.Arrive("Johto", cliffWay.X, cliffWay.Z);
+        game.Through("CliffEdgeGate");
+        Assert.NotNull(game.Present("d48r0101_workman"));
+
+        // Amphy cured, Olivine City rings once: the zone open, the test begun, the warden's number in the Pokégear
+        game.Story.SetVar("VAR_SCENE_LIGHTHOUSE_JASMINE", 2);
+        game.Arrive("Johto", olivine.X, olivine.Z + 1);
+        Assert.Equal(1, game.Story.Var("VAR_UNK_4057"));
+        Assert.Equal(3, game.Story.Var("VAR_SCENE_LIGHTHOUSE_JASMINE"));
+        Assert.True(game.Story.Has("FLAG_UNK_0F5"));
+        Assert.True(game.Story.Has(Pokegear.ContactFlag("baoba")));
+        game.Arrive("Johto", cliffWay.X, cliffWay.Z);
+        game.Through("CliffEdgeGate");
+        Assert.Null(game.Present("d48r0101_workman"));
+
+        // The gate hall: his welcome and the first test
+        game.Answers.Enqueue(0);
+        game.Arrive("SafariZone_Gate", 4, 14);
+        Assert.Equal(2, game.Story.Var("VAR_UNK_4057"));
+
+        // The counter: $500 for thirty Safari Balls and no steps, and into the zone
+        game.Answers.Enqueue(0);
+        var counter = game.Talk("d47r0101_counterm_3");
+        Assert.True(counter.Safari.Endless);
+        Assert.Equal(SafariGame.StartBalls, counter.Safari.Balls);
+        Assert.Equal(2500, counter.Money);
+        Assert.Equal("SafariZone", game.Map.Name);
+        Assert.Equal(1, game.Story.Var("VAR_SCENE_SAFARI_ZONE_ENTRANCE"));
+
+        // The last ball thrown brings the player back before the counter, which sees them off
+        game.Play(Scripts.Find("SafariOutOfBalls", "common")!);
+        Assert.Equal("SafariZone_Gate", game.Map.Name);
+        Assert.Equal((4, 6), game.Tile);
+        Assert.Equal(0, game.Story.Var("VAR_SCENE_SAFARI_ZONE_ENTRANCE"));
+
+        // A Geodude met anywhere else is not the one he asked for; one met in the zone passes the first test
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Geodude")!, 15) { MetLocation = "Route 46" });
+        game.Talk("d47r0101_gsgentleman");
+        Assert.Equal(2, game.Story.Var("VAR_UNK_4057"));
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Geodude")!, 15) { MetLocation = "Safari Zone" });
+        game.Talk("d47r0101_gsgentleman");
+        Assert.Equal(3, game.Story.Var("VAR_UNK_4057"));
+
+        // The same day the plaza is quiet; the next, it plays his second call
+        game.Arrive("Johto", plaza.X, plaza.Z + 1);
+        Assert.Equal(3, game.Story.Var("VAR_UNK_4057"));
+        Assert.Null(game.Present("d47_workman"));
+        game.Story.ClearDaily();
+        game.Arrive("Johto", plaza.X, plaza.Z + 1);
+        Assert.Equal(4, game.Story.Var("VAR_UNK_4057"));
+
+        // The second test, and the workmen come out on the plaza
+        game.Arrive("SafariZone_Gate", 4, 14);
+        Assert.Equal(5, game.Story.Var("VAR_UNK_4057"));
+        game.Arrive("Johto", plaza.X, plaza.Z + 1);
+        Assert.NotNull(game.Present("d47_workman"));
+
+        // A Sandshrew of the zone makes the player its Owner
+        game.Arrive("SafariZone_Gate", 4, 14);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Sandshrew")!, 15) { MetLocation = "Safari Zone" });
+        game.Talk("d47r0101_gsgentleman");
+        Assert.Equal(6, game.Story.Var("VAR_UNK_4057"));
+    }
+
+    [Fact]
     public void ASmashedRockLetsOutItsPlacesPokemonAtItsRate()
     {
         // Plan 20 · J9 (J7's leftover): Cianwood's rocks hold HeartGold's Krabby and Shuckle, met 90 and 10 times in a

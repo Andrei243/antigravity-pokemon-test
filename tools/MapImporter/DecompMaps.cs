@@ -562,10 +562,6 @@ public sealed class Matrix
     }
 
     /// <summary>
-    /// A copy with some cells given a chunk and an area (plan 20 · J8, part b: the Safari Zone's hole, which HeartGold
-    /// fills as the zone loads, <c>MapMatrix_Load</c>). The copy keeps a column of areas only where this one has one.
-    /// </summary>
-    /// <summary>
     /// The matrix made wider (plan 20 · J8, part b: the Johto Safari Zone's twelve areas side by side): each new column a
     /// copy of the last one, its chunks, areas and heights, so a ring round the old grid goes round the new one.
     /// </summary>
@@ -584,6 +580,10 @@ public sealed class Matrix
         return new Matrix { Id = Id, Name = Name, Width = width, Height = Height, Land = Wide(Land)!, Headers = Wide(Headers), Altitudes = Wide(Altitudes) };
     }
 
+    /// <summary>
+    /// A copy with some cells given a chunk and an area (plan 20 · J8, part b: the Safari Zone's hole, which HeartGold
+    /// fills as the zone loads, <c>MapMatrix_Load</c>). The copy keeps a column of areas only where this one has one.
+    /// </summary>
     public Matrix WithCells(IEnumerable<(int X, int Y, int Land, string Header)> cells)
     {
         var land = (int[])Land.Clone();

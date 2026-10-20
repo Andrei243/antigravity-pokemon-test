@@ -3318,6 +3318,62 @@ Olivine's lighthouse to the Mineral Badge, as scripts of ours on HeartGold's bea
   hundred (`rocksmash` after the common `Rock` script): HeartGold's two slots are met 90 and 10 times in a hundred, the
   GBA games' five by their water's weights, the lead's ability having its say and a Repel none, as for a rod. Sinnoh's
   rocks hide nothing, as in Platinum.
-- **Left for later sessions**: Routes 47 and 48, the cliff gate and Cliff Cave, the Safari Zone and its gate (J8's
-  part b with J9's Safari Zone); Baoba on Route 40; Jasmine's and Chuck's numbers and rematches; Elm's call after the
+- **Left for later sessions**: Baoba on Route 40; Jasmine's and Chuck's numbers and rematches; Elm's call after the
   third Badge and `VAR_SCENE_ROCKET_TAKEOVER` (J11); the photographer and the weekday siblings of Routes 40 and 41.
+  (Routes 47 and 48, the cliff gate, Cliff Cave and the Safari Zone came with J8's and J9's parts b: "The Johto Safari
+  Zone", below.)
+
+## The Johto Safari Zone (2026-10-20, plan 20 · J8, part b, and J9, part b)
+
+Routes 47 and 48, the Cliff Edge Gate behind Cianwood City, Cliff Cave, the Safari Zone's gate with its Pokémon Center,
+the gate hall and the zone itself, from HeartGold's maps, events and tables (`scr_seq_D47R0101`, `D48R0101`,
+`D50R0101`, `R47`, `T26`), in our own words; Warden Baoba's call and his Owner Aptitude Test up to the Owner.
+
+- **Twelve areas side by side, no Area Customizer.** HeartGold's zone is a ring of trees round a hole of three chunks
+  by two, which the game fills as the zone loads with six of its twelve areas in the order the player has set
+  (`MapMatrix_Load`, `SafariZone_InitAreaSet`); the Area Customizer swaps the others in. Here the importer widens the
+  zone's matrix (212) to eight chunks and fills both sixes at once (`HgMaps.SafariCells`): the opening arrangement
+  (Plains, Meadow and Savannah north; Peak, Rocky Beach and Wetland south) where HeartGold puts it, and the other six
+  (Forest, Swamp, Marshland; Wasteland, Mountain, Desert) east of them in the same order. Every area is open from the
+  first visit. The machine in the hall says it can change nothing yet, and its attendant says why: arranging the
+  areas is a later session's, if ever.
+- **Each area keeps its own wild Pokémon**, read from HeartGold's `safari_enc.json` (`FieldSystem_GenerateSafariEncounter`):
+  ten slots met as often as one another, each at its level, the grass's species by the time of day as the rest of
+  Johto's are. The slots HeartGold adds for the objects placed in an area (and for days spent laid out) are left out
+  with the Customizer. Every area is named "Safari Zone", which is the place a Pokémon caught there was met.
+- **The Safari Game is HeartGold's: thirty balls and no steps** (`safari start endless`, `SafariGame.NoStepLimit`). The
+  counter takes $500 and gives thirty Safari Balls; the game ends when the last is thrown (`common.SafariOutOfBalls`,
+  which brings a Johto player back before the hall's counter) or when the player walks back out through the zone's
+  door and says so (the hall's arrival asks, as `D47R0101_006` does; no sends them back in). The step counter over the
+  field shows the balls alone for an endless game (style guide, "Field menus and notices"). The battles are Platinum's
+  Safari battles (`BattleKind.Safari`: Bait and Mud, the flight after each throw), not HeartGold's, which add a
+  Pokémon's mood and leave out Mud for Rocks; the Great Marsh's daily Pokémon never reach the zone (their table is
+  asked by the Great Marsh's own area keys).
+- **The counter's gate** moves aside in HeartGold for whoever has paid. This hall has no moving gate: its tile is
+  solid, and the player is taken through behind a fade (out: a warp into the zone; back: `place` before the counter).
+- **The zone's door leads back into the hall**, behind the counter. HeartGold's leads to "the last place" the player
+  came from; here both of its warps lead to the hall's back tile, whose arrival asks whether the game is over.
+- **Warden Baoba's call** (`VAR_UNK_4057` 1, `FLAG_UNK_0F5`, `FLAG_UNK_249`, HeartGold's): HeartGold rings as the
+  player leaves the Glitter Lighthouse with Amphy cured; here Olivine City's own arrival rings the first time it is
+  come to after the cure (`VAR_SCENE_LIGHTHOUSE_JASMINE` 2) and sets the variable to 3, a value of ours, so the call
+  comes once. The call opens the Safari Zone (the workmen leave the Cliff Edge Gate) and puts his number in the
+  Pokégear (`addcontact baoba`; his own talk on the phone is a line of `phone.txt`).
+- **The two tests are asked by where a Pokémon was met** (`if has "Geodude" met "Safari Zone"`): HeartGold asks for a
+  Geodude, and later a Sandshrew, caught in the zone by checking the met location of the team's members, which is what
+  the condition does. Geodude lives in the Peak Area, Sandshrew in the Desert Area.
+- **The second test waits a day**: HeartGold's Baoba rings once a timer of its own has run out (`VAR_UNK_4057` 3 to 4);
+  here passing the first test sets a daily flag of ours (`FLAG_DAILY_BAOBA_THINKING`), and the Safari Zone's gate on
+  Route 48 plays his call as the player comes to it on a later day. The workmen on the gate's plaza come out with the
+  second test (`FLAG_HIDE_SAFARI_ZONE_WORKERS`, set by the gate's own arrival until then), as HeartGold's do.
+- **The Owner** (`VAR_UNK_4057` 6) is greeted as one at the counter and still pays, as in HeartGold. What HeartGold asks
+  of an Owner after that (placing objects, `VAR_UNK_4057` 7 and on, `FLAG_UNK_183`) is a later session's.
+- **The Safari Zone Link** (swapping zones with a friend) is closed: its counters say it isn't ready, as the wireless
+  link is down elsewhere (decision 06 · 7).
+- **Cliff Cave's cracked rocks** stand only for a player with the National Pokédex: the cave's arrival takes them off
+  the map otherwise, as `D50R0101`'s does.
+- **Music**: no song of ours has been written for these places yet, so they borrow Johto's others (Route 38's
+  for the routes, Route 34's for the gate in the cliff, Union Cave's for Cliff Cave, the National Park's for the
+  Safari Zone, its gate and its hall).
+- **Left for later sessions**: the Embedded Tower behind Route 47's hiker (warps 4 to 6 locked), Crasher Wake by
+  Route 47's waterfall and Chuck there after the Kanto Badges, Cameron on Route 48 (the Kanto Safari Zone's link),
+  the Area Customizer and objects, and the Safari Zone's Pokémon called by the objects.

@@ -1,0 +1,162 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Brrrring! Brrrring! It's the Pokégear..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Baoba"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}! Warden Baoba here. Sorry to keep you waiting, but the second test is ready at last!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come and see me at the Safari Zone and I'll tell you all about it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click... The call has ended."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Kangaskhan": [
+    {
+      "en": [
+        "Kangaskhan: ..........."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Jigglypuff": [
+    {
+      "en": [
+        "Jigglypuff: Puu, pupuu!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Singer": [
+    {
+      "en": [
+        "Boy"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Safari, safari, oh what fun! Safari, safari, catch everyone! Pokémon are waiting for us all!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...I made that song up. I sing it whenever I come here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Up goes the Safari Ball into the blue! Out comes a friend for me and you! I love the Safari Zone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...That's my new jingle. Think anyone would want it for an advert?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Vitamins": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've taken up selling drinks for Pokémon. It's all new to me, but I'll do my best!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Balls": [
+    {
+      "en": [
+        "Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, are you buying? Give me a moment to set out my things... There!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Butterfree": [
+    {
+      "en": [
+        "Butterfree: Free, free!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Slowpoke": [
+    {
+      "en": [
+        "Slowpoke: ...Yawn?"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

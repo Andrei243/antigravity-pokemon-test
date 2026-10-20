@@ -1,0 +1,37 @@
+# The Cliff Edge Gate (plan 20 · J8, part b). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D48R0101).
+#
+# The woman by the board: before the Safari Zone opens (FLAG_UNK_0F5, which Warden Baoba's first call sets in
+# olivine.txt) she can't wait for it; once it is open she urges the player along; once the player has walked out onto
+# Route 47 (VAR_UNK_40EB 1, route_47.txt) she can tell they enjoyed it.
+
+
+# D48R0101_000
+script Woman
+  speaker "Woman"
+  if var VAR_UNK_40EB == 1 goto Been
+  if flag FLAG_UNK_0F5 goto Open
+  say "Have you heard? They're building a Safari Zone just past this cliff. You can catch any Pokémon you find there!"
+  say "I can hardly wait. Hurry up and finish it, workmen!"
+  end
+label Open
+  ask "The Safari Zone's open at last, just around the corner! Any Pokémon you find, you can catch. Won't you go and look?"
+  if no goto No
+  say "That's the spirit! Up the stairs and out onto the cliff path. It's only a short walk from there."
+  end
+label No
+  say "Really? It's such a bargain, though..."
+  end
+label Been
+  say "You've been to the Safari Zone, haven't you? Don't tell me, I can see it on your face. It was wonderful!"
+  end
+
+
+# D48R0101_003: the board by the stairs
+script Board
+  if flag FLAG_UNK_0F5 goto Open
+  text "Warden Baoba's Safari Zone\nCOMING SOON! Wild Pokémon to find around every corner!"
+  end
+label Open
+  text "Warden Baoba's Safari Zone\nNOW OPEN! Wild Pokémon to find around every corner!"
+  end

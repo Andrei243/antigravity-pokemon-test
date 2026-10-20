@@ -2,15 +2,12 @@
   // Cianwood City (plan 20 · J8): HeartGold's map, our words. The island town west across the sea, built in pale
   // stone under sea-green roofs (Cliffside), its rocks cracked for Rock Smash. Suicune on the north shore, Eusine's
   // challenge and Chuck's wife with Fly are plan 20 · J9's (scripts/cianwood.txt); the gate to the cliff path and
-  // Route 47 (warp 6) waits for that road
+  // Route 47 (warp 6) is open since plan 20 · J8, part b, its workmen in the way until the Safari Zone opens
   "area": "cianwood",
   "bgmTrack": "johto/cianwood",
   "trees": "Round",
   "architecture": "Cliffside",
   "triggers": [ { "trigger": 0, "script": "Suicune" } ],
-  "locked": [
-    6
-  ],
   "people": {
     "t24_middlewoman1_2": {
       "name": "Woman",

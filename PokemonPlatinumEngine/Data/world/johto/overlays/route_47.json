@@ -1,0 +1,58 @@
+{
+  // Route 47 (plan 20 · J8, part b): HeartGold's map, our words. The cliff path west of Cianwood, from the Cliff Edge
+  // Gate past Cliff Cave's three ways in to Route 48 and the Safari Zone. The hiker by the hole in the cliff talks of the
+  // Embedded Tower, whose rooms (warps 4 to 6) are a later session's, as are Crasher Wake by the waterfall and Chuck
+  // after the Kanto Badges. Thom and Kae, and Duff and Eda, each battle as one trainer of HeartGold's table
+  "area": "route_47",
+  "bgmTrack": "johto/route38",
+  "trees": "Round",
+  "locked": [ 4, 5, 6 ],
+  "heldBack": [ "r47_leader3", "r47_gsleader5" ],
+  "people": {
+    "r47_mount_2": { "name": "Hiker", "script": "Hiker", "hiddenBy": "" },
+    "r47_gsman3": {
+      "name": "Thom",
+      "trainer": {
+        "dialogueBefore": "Double Team Thom: The two of us never lose on the cliff path. Ready to fall?",
+        "dialogueAfter": "Double Team Thom: Looks like we're the ones who fell."
+      }
+    },
+    "r47_gswoman3": {
+      "name": "Kae",
+      "trainer": {
+        "id": "johto_double_team_thom_and_kae",
+        "dialogueBefore": "Double Team Kae: Thom and I are in perfect step. Try to keep up!",
+        "dialogueAfter": "Double Team Kae: You broke our rhythm completely."
+      }
+    },
+    "r47_campboy_2": {
+      "name": "Grant",
+      "trainer": {
+        "dialogueBefore": "Camper Grant: I'm camping out here to watch the sea. You'll make a nice break from the view!",
+        "dialogueAfter": "Camper Grant: Back to the view, I suppose."
+      }
+    },
+    "r47_gsman2": {
+      "name": "Duff",
+      "trainer": {
+        "dialogueBefore": "Young Couple Duff: We came up here for the sunset. A battle first, though!",
+        "dialogueAfter": "Young Couple Duff: Well, the sunset's still lovely."
+      }
+    },
+    "r47_gswoman2": {
+      "name": "Eda",
+      "trainer": {
+        "id": "johto_young_couple_duff_and_eda",
+        "dialogueBefore": "Young Couple Eda: Duff and I do everything together, battles included!",
+        "dialogueAfter": "Young Couple Eda: We lost together. That's sweet, in its way."
+      }
+    },
+    "r47_mount_2_2": {
+      "name": "Devin",
+      "trainer": {
+        "dialogueBefore": "Hiker Devin: These cliffs are steep, but my legs are steeper! Battle me!",
+        "dialogueAfter": "Hiker Devin: My legs are wobbling now."
+      }
+    }
+  }
+}

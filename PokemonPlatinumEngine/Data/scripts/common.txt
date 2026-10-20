@@ -931,19 +931,26 @@ script BlackOutHome
 # counter, inside its door to the marsh (plan 01 · M11, part b: the room's arrival walks them out from there, as the
 # original's does for VAR_SAFARI_GAME_STATE 2). In Kanto (plan 19 · K6) the game is the Safari Zone's, and the player
 # is taken back inside its gate in Fuchsia City, whose arrival sees them off (FireRed's
-# VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE 1, ExitWarpIn).
+# VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE 1, ExitWarpIn). In Johto (plan 20 · J8, part b) the game has no
+# steps, and the player is taken back before the counter of the Safari Zone's gate hall, which sees them off
+# (HeartGold's VAR_SCENE_SAFARI_ZONE_ENTRANCE, our 2).
 script SafariTimeUp
   speaker "Attendant"
   say "Ding-dong! That's time! Your Safari Game is over."
   say "Thank you for playing. Please come again!"
   safari end
   if region "Kanto" goto Kanto
+  if region "Johto" goto Johto
   setvar VAR_SAFARI_GAME_STATE 2
   warp "PastoriaCityObservatoryGate1F" 5 3 down
   end
 label Kanto
   setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE 1
   warp "FuchsiaCity_SafariZone_Entrance" 4 2 down
+  end
+label Johto
+  setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE 2
+  warp "SafariZone_Gate" 4 6 up
   end
 
 script SafariOutOfBalls
@@ -952,12 +959,17 @@ script SafariOutOfBalls
   say "Thank you for playing. Please come again!"
   safari end
   if region "Kanto" goto Kanto
+  if region "Johto" goto Johto
   setvar VAR_SAFARI_GAME_STATE 2
   warp "PastoriaCityObservatoryGate1F" 5 3 down
   end
 label Kanto
   setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE 1
   warp "FuchsiaCity_SafariZone_Entrance" 4 2 down
+  end
+label Johto
+  setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE 2
+  warp "SafariZone_Gate" 4 6 up
   end
 
 

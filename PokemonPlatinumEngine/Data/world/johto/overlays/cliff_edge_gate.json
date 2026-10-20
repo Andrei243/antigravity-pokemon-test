@@ -1,0 +1,21 @@
+{
+  // The Cliff Edge Gate (plan 20 · J8, part b): HeartGold's cave behind Cianwood City, our words. Its stairs lead up to
+  // Route 47. Two workmen stand in the way until Warden Baoba rings to say his Safari Zone is open (FLAG_UNK_249,
+  // olivine.txt); the woman by the board talks of nothing else (scripts/cliff_edge_gate.txt). Chuck, who waits here for
+  // the way to the Embedded Tower after the Kanto Badges, is a later session's
+  "area": "cliff_edge_gate",
+  "bgmTrack": "johto/route34",
+  "heldBack": [ "d48r0101_gsleader5" ],
+  "people": {
+    "d48r0101_middlewoman1_2": { "name": "Woman", "script": "Woman" },
+    "d48r0101_workman": {
+      "name": "Workman",
+      "dialog": [ "Heading for the Safari Zone? It isn't finished yet, sorry. Come back once it's open." ]
+    },
+    "d48r0101_workman_2": {
+      "name": "Workman",
+      "dialog": [ "Everyone's excited about the new Safari Zone. The lady at the front desk talks it up like it's the eighth wonder of the world." ]
+    }
+  },
+  "read": { "D48R0101_003+1": "Board" }
+}

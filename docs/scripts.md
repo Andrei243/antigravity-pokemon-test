@@ -167,6 +167,7 @@ What an `if` can ask:
 | `movebadge "Cut"` | The Badge a field move needs outside battle in the region the player is in is won, or that region asks none (plan 19 · K4, part b; `FieldMoveRules.BadgeFor`, the region's `gates`): the Forest Badge for Cut in Sinnoh, the Cascade Badge in Kanto. The common scripts of the obstacles ask this, never a Badge by its name. |
 | `item "Potion"`, `item "Coupon 1" >= 3` | The bag holds it (that many). |
 | `party < 6`, `has "Starly"`, `knows "Cut"` | The team's size, a species on it, a move one of them knows. |
+| `has "Geodude" met "Safari Zone"` | A species on the team that was met at that place (plan 20 · J8, part b: the original's `CheckSafariZoneChallengeCompleted`, for Warden Baoba's tests). The place is the name the Pokémon keeps of where it was met (`Pokemon.MetLocation`), which is the area's name as it is shown. |
 | `defeated self`, `defeated "trainer_id"` | The trainer has been beaten. |
 | `taken "item_id"` | An item on the ground has been picked up. |
 | `starter "Piplup"` | The species the player took from the briefcase. |
@@ -174,7 +175,7 @@ What an `if` can ask:
 | `poketch` | The player has the Pokétch. |
 | `poketchapp MemoPad` | The app is on the Pokétch (the original's `CheckPoketchAppRegistered`). |
 | `pokerus` | A Pokémon of the team carries Pokérus now (the nurse's script asks it). |
-| `safari` | A Safari Game is under way in the Great Marsh. |
+| `safari` | A Safari Game is under way (the Great Marsh, Kanto's Safari Zone or Johto's). |
 | `region "Kanto"` | The player is in that region (plan 19 · K6): for a common script two regions share, such as where a Safari Game that runs out sends the player back to. |
 | `subject "pushable_boulder_2"` | Whoever the script belongs to is that one of its place, by their id in the area's file (plan 19 · K6, part b): for a script many share that does something of each's own, as the Seafoam Islands' holes do with the boulder that fell, each of which shows a boulder of its own on the floor below. |
 | `partner` | Someone travels with the player (`partner`, below). |
@@ -341,7 +342,7 @@ Plan 02 · S2. These do what a move or an item does; whether it may be used is t
 | `smashencounter` | After a rock is smashed: where the place keeps Pokémon under its rocks (Hoenn's areas, Emerald's `rock_smash_mons` and rate; plan 21 · H4), one may come out, and it is battled. `RESULT` is 1 when one did, 0 when the rock hid nothing (always, in Platinum's places). | The older name `rocksmash` is the same command; HeartGold's table (plan 20 · J9) counts its rate in a hundred and its rock is the tile ahead, 90 and 10 for its two slots.
 | `poketch on` | Gives the player the Pokétch. |
 | `poketchapp PartyStatus` | Puts an app on it, by its name in the original's list (`PoketchApp`). |
-| `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. `safari start 600` is a game of another number of steps (plan 19 · K6: FireRed's Safari Zone in Fuchsia City), and the two common scripts send a player of Kanto back to its entrance. |
+| `safari start`, `safari end` | Starts the Great Marsh's Safari Game (30 Safari Balls, 500 steps; the fee is the script's own `takemoney`) or ends it (plan 01 · M7). While one is on, every wild Pokémon is met in a Safari battle, and its last step or ball runs `common.SafariTimeUp` or `common.SafariOutOfBalls`. `safari start 600` is a game of another number of steps (plan 19 · K6: FireRed's Safari Zone in Fuchsia City), and the two common scripts send a player of Kanto back to its entrance. `safari start endless` is HeartGold's game (plan 20 · J8, part b): thirty balls and no steps, over when the last ball is thrown or the player walks out; the panel over the field shows the balls alone, and the common scripts send a player of Johto back inside the Safari Zone's gate. |
 | `bicycle on`, `bicycle off` | Puts the player on the Bicycle or takes them off it, with the riding song (plan 19 · K6: FireRed's `ForcePlayerOntoBike`, which Kanto's Cycling Road does to whoever comes onto it through its gates); nothing on the water. |
 | `partner cheryl "cheryl_eterna_forest"` | Someone of the map travels with the player (plan 02 · S6; `Follower`): they walk a step behind, onto each tile the player leaves, and are never in the player's way (walking back into them swaps the two round). While they do, the team is healed after every battle that isn't lost, every Pokémon met in the grass comes with a second and the partner battles beside the player, two trainers who see the player at once come together for a tag battle, the Bicycle, the rods, an Escape Rope and the field moves that leave the place can't be used, and losing leaves them behind. The player gets off the Bicycle. Saved. |
 | `partner off` | They stop, where they stand. |

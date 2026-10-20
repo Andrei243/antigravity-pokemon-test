@@ -1,0 +1,45 @@
+{
+  // The Safari Zone gate's Pokémon Center (plan 20 · J8, part b), the Centers' floor with its own people. The link's
+  // counters say it is closed, as in every Center (decision 06 · 7)
+  "area": "safari_zone_gate_pokecenter_1f",
+  "bgmTrack": "johto/national_park",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "d47pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "d47pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "d47pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "d47pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "d47pc0101_gsgirl2": {
+      "name": "Girl",
+      "dialog": [
+        "People who drop in at Pokémon Centers a lot really look after their Pokémon. Don't you think?"
+      ]
+    },
+    "d47pc0101_mount_2": {
+      "name": "Hiker",
+      "dialog": [
+        "After a long trek through the hills, with your legs about to give out, a Pokémon Center is paradise!"
+      ]
+    }
+  }
+}
