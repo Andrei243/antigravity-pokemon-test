@@ -1,11 +1,12 @@
 {
   // Meteor Falls' first room (plan 21 · H4, part a): the cave of waterfalls between Route 114 and Route 115, where Team
-  // Magma takes Professor Cozmo's meteorite and Team Aqua comes after them (meteor_falls_1f_1r.txt). Route 115, the
-  // rooms behind the falls and Steven's cave stay shut until Waterfall and the later parts of plan 21
+  // Magma takes Professor Cozmo's meteorite and Team Aqua comes after them (meteor_falls_1f_1r.txt); Cozmo stays at a loss
+  // until Mt. Chimney's summit is quiet (FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO). Route 115 and the rooms behind the falls
+  // are open since plan 21 · H4, part b (Surf and Waterfall reach them); Steven's cave stays shut until the post-game
   "area": "meteor_falls_1f_1r",
   "bgmTrack": "hoenn/cave_of_origin",
   "trees": "Round",
-  "locked": [ 1, 2, 3, 4, 5 ],
+  "locked": [ 5 ],
   "triggers": [
     { "trigger": 0, "script": "MagmaStealsTheMeteorite" }
   ],

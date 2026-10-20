@@ -1,12 +1,12 @@
 {
   // Route 112 (plan 21 · H4, part a): the foot of Mt. Chimney between Route 111 and Lavaridge Town, with the cable car's
   // station and the two ways into Fiery Path. Two of Team Magma's grunts stand before the station until the scene at
-  // Meteor Falls sends them off (FLAG_HIDE_ROUTE_112_TEAM_MAGMA; route_112.txt); the cable car's ride up the mountain
-  // and Jagged Pass are plan 21 · H4's next part, so the way down to Lavaridge stays shut
+  // Meteor Falls sends them off (FLAG_HIDE_ROUTE_112_TEAM_MAGMA; route_112.txt), and the cable car then rides up the
+  // mountain (route_112_cable_car_station.txt). The way at the route's south-west corner climbs Jagged Pass to the
+  // summit (plan 21 · H4, part b)
   "area": "route_112",
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
-  "locked": [ 2, 3 ],
   "people": {
     "route112_grunt_1": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "script": "MagmaGrunts", "still": true },
     "route112_grunt_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "script": "MagmaGrunts", "still": true },

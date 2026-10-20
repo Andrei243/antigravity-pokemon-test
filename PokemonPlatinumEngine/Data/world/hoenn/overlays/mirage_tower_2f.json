@@ -1,0 +1,7 @@
+{
+  // Mirage Tower's second floor (plan 21 · H4, part b), whose cracked floors Emerald drops the Mach Bike through: here
+  // they are floor (the cracked floors are plan 21 · H12's)
+  "area": "mirage_tower_2f",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round"
+}

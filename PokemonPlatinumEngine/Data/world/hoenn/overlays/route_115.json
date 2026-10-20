@@ -1,0 +1,26 @@
+{
+  // Route 115 (plan 21 · H4, part b): the seaside road north from Rustboro City to Meteor Falls' western mouth, with its
+  // beach and the high ground above it. Terra Cave's hollows open only after Sootopolis's storm (plan 21 · H12), so its
+  // two ways in stay shut
+  "area": "route_115",
+  "bgmTrack": "hoenn/route104",
+  "trees": "Round",
+  "locked": [ 1, 2 ],
+  "people": {
+    "woman_2": { "name": "Woman", "dialog": [ "The sea breeze up here is lovely. Meteor Falls is just north, if you fancy a look at the waterfalls." ] },
+    "expert_m": { "name": "Timothy", "trainer": { "dialogueBefore": "Expert Timothy: I've trained on this cliff since before you were born. Let me show you what that means!", "dialogueAfter": "Expert Timothy: Hm! The young learn quickly these days." } },
+    "black_belt": { "name": "Nob", "trainer": { "dialogueBefore": "Black Belt Nob: The waves pound the shore, and I pound my training! Hiyah!", "dialogueAfter": "Black Belt Nob: The waves win today." } },
+    "girl_3": { "name": "Cyndy", "trainer": { "dialogueBefore": "Battle Girl Cyndy: I train barefoot on the sand. It's good for the footwork! Ready?", "dialogueAfter": "Battle Girl Cyndy: My footwork let me down." } },
+    "black_belt_2": { "name": "Koichi", "trainer": { "dialogueBefore": "Black Belt Koichi: Back and forth, back and forth, all day long! That's how I get strong!", "dialogueAfter": "Black Belt Koichi: Back to pacing, then." } },
+    "maniac": { "name": "Hector", "trainer": { "dialogueBefore": "Collector Hector: My Pokémon are the pride of my collection. Want to see them up close?", "dialogueAfter": "Collector Hector: Don't scratch them, please!" } },
+    "running_triathlete_f": { "name": "Kyra", "trainer": { "dialogueBefore": "Triathlete Kyra: Running on sand builds stamina like nothing else! Can you keep pace?", "dialogueAfter": "Triathlete Kyra: Out of breath, out of luck." } },
+    "ninja_boy": { "name": "Jaiden", "trainer": { "dialogueBefore": "Ninja Boy Jaiden: You didn't see me hiding in that tree, did you? Ninja art: surprise battle!", "dialogueAfter": "Ninja Boy Jaiden: My disguise wasn't enough." } },
+    "girl_3_2": { "name": "Helene", "trainer": { "dialogueBefore": "Battle Girl Helene: Every trainer who comes this way gets a challenge from me!", "dialogueAfter": "Battle Girl Helene: You passed the challenge." } },
+    "lass": { "name": "Alix", "trainer": { "dialogueBefore": "Psychic Alix: I sensed you coming from far away. I sense a battle, too!", "dialogueAfter": "Psychic Alix: I didn't sense that coming." } },
+    "lass_2": { "name": "Marlene", "trainer": { "dialogueBefore": "Psychic Marlene: My mind is calm as the sea. Let's see if yours is too!", "dialogueAfter": "Psychic Marlene: The sea's gone choppy." } }
+  },
+  "signs": {
+    "Route115_EventScript_RouteSignRustboro": "Route 115\nSouth: Rustboro City",
+    "Route115_EventScript_MeteorFallsSign": "Meteor Falls\nRoute 114 lies beyond"
+  }
+}
