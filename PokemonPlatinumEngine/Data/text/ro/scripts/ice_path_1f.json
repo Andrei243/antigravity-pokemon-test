@@ -1,0 +1,112 @@
+{
+  "Noticed": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh! You gave me a fright. There's an HM lying right there, see? I can't use it, but you could. Go on, take it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Waterfall lets your Pokémon swim right up a waterfall. With the Rising Badge you can use it outside of battle."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Man": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There's an HM lying right there, see? I can't use it, but you could. Go on, take it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Waterfall lets your Pokémon swim right up a waterfall. With the Rising Badge you can use it outside of battle."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "KimonoGirl": [
+    {
+      "en": [
+        "Kimono Girl"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! I've been standing here so long my feet have frozen to the ice. Would you give me a push?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Please don't leave me here! I can't move at all. Just one little push?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh... Then I'll just have to wait for the spring."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here goes... Whee!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you, {player}! I'm free! I'll see you again soon, I'm sure of it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, {player}! My feet are frozen to the ice. If someone pushed me from behind, I might slide free."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

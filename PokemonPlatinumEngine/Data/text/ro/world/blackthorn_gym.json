@@ -1,5 +1,15 @@
 {
   "people": {
+    "t30gym0101_gsleader8": {
+      "name": {
+        "en": [
+          "Clair"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "t30gym0101_sunglasses": {
       "name": {
         "en": [
@@ -7,16 +17,6 @@
         ],
         "text": [
           "Ghidul Arenei"
-        ]
-      },
-      "dialog": {
-        "en": [
-          "Clair uses dragons, the toughest Pokémon around. Ice moves are your best bet against them!",
-          "Clair isn't taking challengers just now. Her trainers are, though!"
-        ],
-        "text": [
-          "Clair folosește dragoni, cei mai duri Pokémoni. Mișcările de tip Gheață sunt cea mai bună șansă împotriva lor!",
-          "Clair nu primește provocări acum. Antrenorii ei, în schimb, da!"
         ]
       }
     },

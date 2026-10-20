@@ -1,0 +1,45 @@
+{
+  "people": {
+    "fallen_boulder_1": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fallen_boulder_2": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fallen_boulder_3": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fallen_boulder_4": {
+      "name": {
+        "en": [
+          "Boulder"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}
