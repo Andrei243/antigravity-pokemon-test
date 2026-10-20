@@ -339,4 +339,87 @@ internal static class GymArt
                 c.SetRaw(x, y, col);
             }
     }
+
+    // ------------------------------------------------------------------ the Blackthorn Gym's slabs (plan 20 · J11, part c)
+
+    /// <summary>The bare basalt of a slab and its sides (style guide, "Gyms", "The slabs on the lava").</summary>
+    public static readonly Tone Basalt = Tone.Of(70, 62, 66, 98, 88, 90, 46, 40, 44);
+
+    /// <summary>The pale stone a slab's floor is paved with, its two tones and its grout.</summary>
+    private static readonly Color Paving = Rgb(150, 140, 128), PavingShade = Rgb(138, 128, 118), Grout = Rgb(104, 96, 90);
+
+    /// <summary>A button's cap, the ink of its arrow, and the lava's glow along a slab's foot.</summary>
+    private static readonly Tone ButtonCap = Tone.Of(220, 92, 48, 248, 150, 96, 150, 52, 30);
+    private static readonly Color LavaSeam = Rgb(236, 120, 40), ArrowInk = Rgb(246, 236, 220);
+
+    /// <summary>
+    /// A slab seen from above, unturned, a tile to 32 texels: basalt with cracks, its floor of three tiles by six (from
+    /// the second column and the second row) paved in pale stone, and on the floor's second row the three buttons: the
+    /// turn in the middle, an arrow to each side pointing the way that button slides the slab.
+    /// </summary>
+    public static void PaintSlabTop(PixelCanvas c)
+    {
+        const int T = 32;
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+            {
+                int col = x / T, row = y / T, u = x % T, v = y % T;
+                bool floor = col >= 1 && col <= 3 && row >= 1 && row <= 6;
+                Color colour;
+                if (floor)
+                {
+                    bool seam = u == T - 1 || v == T - 1;
+                    colour = seam ? Grout : u == 0 || v == 0 ? Rgb(166, 156, 144) : (col + row) % 2 == 0 ? Paving : PavingShade;
+                }
+                else
+                {
+                    // The rim's rock: lit along the slab's top and left, shaded along its foot and right, cracked here and there
+                    int h = (x * 7 + y * 13 + x * y) % 29;
+                    colour = x < 2 || y < 2 ? Basalt.Light : x >= c.Width - 2 || y >= c.Height - 2 ? Basalt.Dark
+                        : h == 0 || (x + 2 * y) % 37 == 0 ? Basalt.Dark : Basalt.Base;
+                }
+                c.SetRaw(x, y, colour);
+            }
+        PaintSlabButton(c, 2 * T, 2 * T, 0);
+        PaintSlabButton(c, 3 * T, 2 * T, 1);
+        PaintSlabButton(c, T, 2 * T, -1);
+    }
+
+    /// <summary>One of a slab's buttons on the tile whose top left is (<paramref name="ox"/>, <paramref name="oy"/>): <paramref name="way"/> 0 the turn, 1 east, -1 west.</summary>
+    private static void PaintSlabButton(PixelCanvas c, int ox, int oy, int way)
+    {
+        const float r = 12f;
+        for (int y = 0; y < 32; y++)
+            for (int x = 0; x < 32; x++)
+            {
+                float dx = x + 0.5f - 16f, dy = y + 0.5f - 16f, d = MathF.Sqrt(dx * dx + dy * dy);
+                if (d > r + 1.5f) continue;
+                Color col = d > r ? Basalt.Dark : d > r - 2f ? (dx + dy < 0 ? ButtonCap.Light : ButtonCap.Dark)
+                    : dx + dy < -r * 0.6f ? ButtonCap.Light : ButtonCap.Base;
+                if (way == 0)
+                {
+                    // A ring of an arrow round the middle, open at the top right, its head turning clockwise
+                    float a = MathF.Atan2(dy, dx);
+                    if (MathF.Abs(d - 6f) < 1.2f && !(a > -1.4f && a < -0.3f)) col = ArrowInk;
+                    if (x >= 19 && x <= 23 && y >= 8 && y <= 12 && x - 19 >= y - 10) col = ArrowInk;
+                }
+                else
+                {
+                    // A shaft and a head pointing the way the button slides the slab
+                    float ax = way * dx;
+                    if (MathF.Abs(dy) < 1.3f && ax > -6f && ax < 3f) col = ArrowInk;
+                    if (ax >= 1f && ax <= 7f && MathF.Abs(dy) <= 7f - ax) col = ArrowInk;
+                }
+                c.SetRaw(ox + x, oy + y, col);
+            }
+    }
+
+    /// <summary>A slab's side: basalt, lit at its top edge, with the lava's glow along its foot.</summary>
+    public static void PaintSlabSide(PixelCanvas c)
+    {
+        for (int y = 0; y < c.Height; y++)
+            for (int x = 0; x < c.Width; x++)
+                c.SetRaw(x, y, y == 0 ? Basalt.Light : y >= c.Height - 2 ? LavaSeam : y == c.Height - 3 ? Basalt.Dark
+                    : (x * 5 + y * 11) % 23 == 0 ? Basalt.Dark : Basalt.Base);
+    }
 }
