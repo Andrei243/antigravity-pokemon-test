@@ -1,0 +1,112 @@
+# Mt. Chimney's summit (plan 21 · H4, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MtChimney/scripts.inc).
+#
+# Team Magma has fitted Professor Cozmo's meteorite into a machine at the crater's edge and means to wake the volcano
+# with it, while Archie and Team Aqua scuffle with their grunts in the middle of the summit. Tabitha and two grunts
+# stand in the way; Maxie, beaten, takes his people away (FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA), Archie walks over to thank
+# the player and takes his away too (FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA), and the summit is quiet:
+# FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY, Professor Cozmo home in Fallarbor (FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO cleared)
+# and gone from Meteor Falls (FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO), and the Lava Cookie lady at her stall
+# (FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY cleared). Lavaridge Town lets the mountain's trainers out once the player comes
+# down (lavaridge_town.txt, FLAG_HIDE_MT_CHIMNEY_TRAINERS). The meteorite stays in the machine until it is taken out.
+
+
+script Maxie
+  scene "Maxie on the summit"
+  music "hoenn/eye_magma"
+  speaker "Maxie"
+  say "The meteorite's energy, poured into the heart of the volcano... Mt. Chimney will erupt, and the land will grow!"
+  face mt_chimney_maxie player
+  emote mt_chimney_maxie exclaim
+  say "So. You're the child who keeps turning up wherever Team Magma has work to do."
+  say "I am Maxie, Team Magma's leader. More land for people and Pokémon to live on: that is our dream."
+  say "I won't let a meddler stand in its way. Show me what you have!"
+  battle self as "hoenn_maxie_mt_chimney"
+  say "Hmph. Beaten by a child, here of all places..."
+  say "Very well. I'll leave the volcano be, for now. But Team Magma is far from finished. Remember that."
+  fade out
+  hide mt_chimney_maxie
+  hide mt_chimney_magma_grunt_1
+  hide mt_chimney_tabitha
+  hide mt_chimney_magma_grunt_2
+  setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+  fade in
+  music area
+  place mt_chimney_archie 10 12 up
+  if facing right goto FromTheWest
+  walk mt_chimney_archie up 5 right 2
+  face player left
+  face mt_chimney_archie right
+  call ArchieThanks
+  walk mt_chimney_archie left 2 down 7
+  goto Gone
+label FromTheWest
+  walk mt_chimney_archie up 6 right 1
+  face player left
+  face mt_chimney_archie right
+  call ArchieThanks
+  walk mt_chimney_archie left 1 down 7
+label Gone
+  hide mt_chimney_archie
+  setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
+  setflag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY
+  clearflag FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
+  setflag FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+  clearflag FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
+  endscene
+  end
+
+
+script ArchieThanks
+  speaker "Archie"
+  say "Ha! You saw Maxie off all by yourself. I'll admit it, I'm impressed."
+  say "If that volcano had gone up, the sea would have been the one to pay for it. Team Aqua owes you one."
+  say "We'll be on our way. Keep your eyes open, kid. Team Magma won't stay quiet for long."
+  return
+
+
+script Archie
+  speaker "Archie"
+  if flag FLAG_EVIL_LEADER_PLEASE_STOP goto Busy
+  setflag FLAG_EVIL_LEADER_PLEASE_STOP
+  say "You again! Team Magma's set that meteorite in a machine up there, and they mean to wake the volcano with it."
+  say "My crew's got our hands full with their grunts. Get up there and stop Maxie, would you?"
+  end
+label Busy
+  say "Go on, stop Maxie! We'll keep his grunts busy down here!"
+  end
+
+
+script MeteoriteMachine
+  if not flag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY goto Working
+  if flag FLAG_RECEIVED_METEORITE goto Empty
+  text "A meteorite is fitted into the machine. It doesn't seem to be doing anything any more."
+  ask "Take the meteorite out of the machine?"
+  if no end
+  give "Meteorite"
+  setflag FLAG_RECEIVED_METEORITE
+  end
+label Working
+  text "A meteorite is fitted into the machine, which hums as it soaks up the meteorite's strange energy."
+  end
+label Empty
+  text "The machine sits silent. It doesn't respond to anything."
+  end
+
+
+script LavaCookieLady
+  speaker "Old Woman"
+  say "Ah, a climber! Up here we bake Lava Cookies in the volcano's own heat."
+  ask "Would you like one? It's just 200 money."
+  if no goto NoThanks
+  takemoney 200
+  if var RESULT == 0 goto Short
+  give "Lava Cookie"
+  say "Here you are! Share it with your Pokémon. They'll love it."
+  end
+label NoThanks
+  say "That's a pity. They're the best on the mountain, you know."
+  end
+label Short
+  say "Oh dear, you're a little short. Come back when you have the money."
+  end

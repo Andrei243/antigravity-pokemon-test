@@ -1,7 +1,7 @@
 # Professor Cozmo's house in Fallarbor Town (plan 21 · H4, part a). docs/scripts.md describes the language; the lines
 # are our own, on Emerald's beats (data/maps/FallarborTown_CozmosHouse/scripts.inc). His wife says where he went, and
-# how he is once Team Magma has been beaten at Mt. Chimney; Cozmo himself is home only after that (plan 21 · H4's next
-# part), and asks for the meteorite back for TM27 (FLAG_RECEIVED_TM_RETURN).
+# how he is once Team Magma has been beaten at Mt. Chimney; Cozmo himself is home only after that (mt_chimney.txt, plan
+# 21 · H4, part b), and asks for the meteorite back for TM27 (FLAG_RECEIVED_TM_RETURN).
 
 
 script Wife

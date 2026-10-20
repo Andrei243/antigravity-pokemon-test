@@ -1,0 +1,506 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You still have Safari Balls left. Would you like to leave the Safari Zone?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Certainly. Please hand back any Safari Balls you have left."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Did you have fun? Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then off you go. Have fun!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Did you have fun? Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Baoba"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you are! I've been waiting for you. Well? What do you think of it? A brand-new Safari Zone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, I've just had an idea! How would you like to take my Owner Aptitude Test?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What, you'd turn it down? Nobody turns it down! Pass, and you become the Safari Zone's Owner!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Owner... Doesn't it have a lovely ring to it? Go on, take the test!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ho ho! I'll take that as a yes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Splendid! It's very simple. Catch a Geodude in my Safari Zone and come and show it to me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "They live in the grass of the Peak Area, up and to the west of the way in. It shouldn't take you long. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Baoba"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "There you are! The second test is ready. This time, catch a Sandshrew and show it to me."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Easy, you think? Not so fast! Sandshrew live only in the Desert Area, out at the far east of my zone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And over there is my pride and joy: the Area Customizer! One day it will let you lay out my zone's areas any way you please."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "For now my twelve areas lie side by side, all open at once. The attendant beside the machine can tell you more."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So, off to the desert with you! Find me a Sandshrew. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Counter": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Safari Zone! For just $500, you can play the Safari Game and catch whatever you like. Would you like to play?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Owner! Welcome to the Safari Zone! For just $500, you can play the Safari Game and catch whatever you like. Would you like to play?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That'll be $500, please! And here are your Safari Balls."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received 30 Safari Balls from the attendant."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We'll call you back when your last ball is thrown. Well, have fun out there!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, you don't have enough money. Please come again."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. Please come again!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Explain": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello! Is this your first time at the Safari Zone?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome, Owner! Shall I explain how the Safari Zone works?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "In the Safari Game you're given 30 Safari Balls to catch Pokémon with. When they're gone, the game is over."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "When you meet a Pokémon, you can throw Bait or Mud. Bait makes it stay longer, but it gets harder to catch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Mud makes it easier to catch, but it might run off. Have fun in the Safari Zone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have fun in the Safari Zone!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Customizer": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Area Customizer. In time it will let you swap the Safari Zone's areas about and set them in any order."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every area has Pokémon of its own, so a different layout means different Pokémon to find."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "For now the warden has opened all twelve areas side by side, so you can visit any of them. Do try them all!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, but this machine can't be used yet. Warden Baoba has some grand plan for it... or so he says."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Even we don't know what it is. It's a secret."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Machine": [
+    {
+      "en": [
+        "It's the Area Customizer. Twelve areas are laid out on its screen, side by side."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's still being finished. Nothing can be changed yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It's a large machine. Its screen is dark."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Link": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This is the Safari Zone Link counter... or it will be. We're not ready yet. Please come back another time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LinkExplain": [
+    {
+      "en": [
+        "Attendant"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "One day, the Safari Zone Link will let you swap Safari Zones with your friends and play in theirs."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're still getting it ready, though. I'm sorry!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Baoba": [
+    {
+      "en": [
+        "Baoba"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Slow down there! When the next test is ready, I'll ring you on your Pokégear. Give me a little time, all right?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Show me the Geodude once you've caught one. They're in the grass of the Peak Area. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, splendid! A Geodude from my Safari Zone! You've passed the first test!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "...Hm? Didn't I say there were two tests? Becoming the Owner isn't as easy as all that!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The second test is... well, I'm still working on it. I'll ring you on your Pokégear once it's ready."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Show me a Sandshrew once you've caught one. They live in the Desert Area. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You did it! A Sandshrew! I knew you could. You've passed! You are now the Owner of the Safari Zone!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I always dreamt of young people having fun in my safari. It gives me ideas, and it helps you fill your Pokédex."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, but even the Owner pays the entrance fee, I'm afraid. We have our reasons! Off you go and enjoy yourself!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The moment I think of something new for the safari, I'll ring you on your Pokégear!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

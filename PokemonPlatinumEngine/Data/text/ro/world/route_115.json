@@ -1,0 +1,300 @@
+{
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The sea breeze up here is lovely. Meteor Falls is just north, if you fancy a look at the waterfalls."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Timothy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Expert Timothy: I've trained on this cliff since before you were born. Let me show you what that means!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Expert Timothy: Hm! The young learn quickly these days."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt": {
+      "name": {
+        "en": [
+          "Nob"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Nob: The waves pound the shore, and I pound my training! Hiyah!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Nob: The waves win today."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3": {
+      "name": {
+        "en": [
+          "Cyndy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Cyndy: I train barefoot on the sand. It's good for the footwork! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Cyndy: My footwork let me down."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "black_belt_2": {
+      "name": {
+        "en": [
+          "Koichi"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Koichi: Back and forth, back and forth, all day long! That's how I get strong!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Koichi: Back to pacing, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "maniac": {
+      "name": {
+        "en": [
+          "Hector"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Collector Hector: My Pokémon are the pride of my collection. Want to see them up close?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Collector Hector: Don't scratch them, please!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "running_triathlete_f": {
+      "name": {
+        "en": [
+          "Kyra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Triathlete Kyra: Running on sand builds stamina like nothing else! Can you keep pace?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Triathlete Kyra: Out of breath, out of luck."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Jaiden"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ninja Boy Jaiden: You didn't see me hiding in that tree, did you? Ninja art: surprise battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ninja Boy Jaiden: My disguise wasn't enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "girl_3_2": {
+      "name": {
+        "en": [
+          "Helene"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Helene: Every trainer who comes this way gets a challenge from me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Helene: You passed the challenge."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass": {
+      "name": {
+        "en": [
+          "Alix"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Alix: I sensed you coming from far away. I sense a battle, too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Alix: I didn't sense that coming."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Marlene"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Marlene: My mind is calm as the sea. Let's see if yours is too!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Marlene: The sea's gone choppy."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "Route115_EventScript_RouteSignRustboro": {
+      "en": [
+        "Route 115\nSouth: Rustboro City"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Route115_EventScript_MeteorFallsSign": {
+      "en": [
+        "Meteor Falls\nRoute 114 lies beyond"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

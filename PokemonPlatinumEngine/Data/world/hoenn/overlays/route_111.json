@@ -2,12 +2,15 @@
   // Route 111 (plan 21 · H4, part a): the long road north from Mauville City past the desert to Route 113, with the
   // Winstrate family's house at its foot and the old lady's rest stop at its head. The desert in the middle blows a
   // sandstorm (its zones, by the rows and columns Emerald's sandstorm and sun triggers mark) that nobody crosses without
-  // Go-Goggles: its edge's triggers turn the player back (route_111.txt). Mirage Tower, the Desert Ruins and the Trainer
-  // Hill's door stay shut; Gabby and Ty's interview is left for later (they are hidden)
+  // Go-Goggles: its edge's triggers turn the player back (route_111.txt). Mirage Tower stands in the sand until its fossil
+  // is taken and it falls (plan 21 · H4, part b: FLAG_HOENN_MIRAGE_TOWER_FALLEN shuts its way in); the Desert Ruins stay
+  // shut until the Regis' riddles and the Trainer Hill's door until its own session; Gabby and Ty's interview is left
+  // for later (they are hidden)
   "area": "route_111",
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
-  "locked": [ 1, 3, 4 ],
+  "locked": [ 1, 4 ],
+  "switches": [ { "warp": 3, "until": "FLAG_HOENN_MIRAGE_TOWER_FALLEN" } ],
   "zones": [
     { "x": 215, "z": 37, "width": 24, "depth": 68, "weather": "Sandstorm", "bgmTrack": "hoenn/desert" },
     { "x": 211, "z": 40, "width": 4, "depth": 23, "weather": "Sandstorm", "bgmTrack": "hoenn/desert" }

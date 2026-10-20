@@ -1,6 +1,7 @@
 {
   // Professor Cozmo's house in Fallarbor Town (plan 21 · H4, part a): his wife waits for him while he is at Meteor
-  // Falls with Team Magma; he comes home with plan 21 · H4's next part (FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO)
+  // Falls with Team Magma; he comes home once Maxie is beaten at Mt. Chimney (plan 21 · H4, part b; mt_chimney.txt
+  // clears FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO)
   "area": "fallarbor_town_cozmos_house",
   "bgmTrack": "hoenn/fallarbor",
   "people": {

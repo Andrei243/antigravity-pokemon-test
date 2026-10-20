@@ -183,6 +183,8 @@ public class ScriptTests
           safari end
           safari start 600
           safari end
+          safari start endless
+          safari end
           bicycle on
           bicycle off
           turnback
@@ -562,6 +564,7 @@ public class ScriptTests
               if party < 6 end
               if knows "Cut" end
               if has "Starly" end
+              if has "Geodude" met "Safari Zone" end
               if yes end
               if no end
               if won end
@@ -1042,6 +1045,29 @@ public class ScriptTests
         Assert.Equal(new[] { "On the team.", "Sent to the PC.", "A Starly is with you.", "Six." }, Said(host));
         Assert.Equal(("Starly", 4), (host.Party.Members[5].Species.Name, host.Party.Members[5].Level));
         Assert.Equal("Bidoof", host.Box.Single().Species.Name);
+    }
+
+    [Fact]
+    public void APokemonMetSomewhereIsAskedForByWhereItWasMet()
+    {
+        // Plan 20 · J8, part b: Warden Baoba's tests ask for a Geodude caught in the Safari Zone, not any Geodude
+        var host = Run("""
+            script S
+              if has "Geodude" met "Safari Zone" say "From the zone."
+              if has "Geodude" say "A Geodude."
+              if not has "Sandshrew" met "Safari Zone" say "No Sandshrew from the zone."
+            """, h =>
+        {
+            h.Party.Add(new Pokemon(PokemonDatabase.Get("Geodude")!, 3) { MetLocation = "Route 46" });
+            h.Party.Add(new Pokemon(PokemonDatabase.Get("Sandshrew")!, 3) { MetLocation = "Route 46" });
+        });
+        Assert.Equal(new[] { "A Geodude.", "No Sandshrew from the zone." }, Said(host));
+
+        host = Run("""
+            script S
+              if has "Geodude" met "Safari Zone" say "From the zone."
+            """, h => h.Party.Add(new Pokemon(PokemonDatabase.Get("Geodude")!, 3) { MetLocation = "Safari Zone" }));
+        Assert.Equal(new[] { "From the zone." }, Said(host));
     }
 
     [Fact]

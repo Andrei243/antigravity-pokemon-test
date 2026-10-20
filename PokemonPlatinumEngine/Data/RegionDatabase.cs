@@ -453,6 +453,9 @@ public static class RegionDatabase
                 "Cianwood_NorthHouse", "Cianwood_PhotoStudio", "WhirlIslands_1F", "WhirlIslands_B1F", "WhirlIslands_B2F",
                 // Plan 20 · J9: the lighthouse's lift
                 "OlivineLighthouse_Elevator",
+                // Plan 20 · J8, part b, and J9, part b: Route 47's gate, Cliff Cave and the Safari Zone with its gate
+                "CliffEdgeGate", "CliffCave", "SafariZoneGate_PokemonCenter_1F", "SafariZoneGate_PokemonCenter_B1F",
+                "SafariZone_Gate", "SafariZone",
             }
         },
         new()
@@ -507,6 +510,12 @@ public static class RegionDatabase
                 "Route114_FossilManiacsTunnel", "Route114_LanettesHouse", "FallarborTown_Mart", "FallarborTown_BattleTentLobby",
                 "FallarborTown_PokemonCenter_1F", "FallarborTown_PokemonCenter_2F", "FallarborTown_CozmosHouse",
                 "FallarborTown_MoveRelearnersHouse",
+                // Plan 21 · H4, part b: Meteor Falls' other rooms, Mt. Chimney, Jagged Pass, Lavaridge Town's rooms and
+                // the Mirage Tower
+                "MeteorFalls_1F_2R", "MeteorFalls_B1F_1R", "MeteorFalls_B1F_2R", "MtChimney", "MtChimney_CableCarStation",
+                "JaggedPass", "LavaridgeTown_HerbShop", "LavaridgeTown_Gym_1F", "LavaridgeTown_Gym_B1F", "LavaridgeTown_House",
+                "LavaridgeTown_Mart", "LavaridgeTown_PokemonCenter_1F", "LavaridgeTown_PokemonCenter_2F",
+                "MirageTower_1F", "MirageTower_2F", "MirageTower_3F", "MirageTower_4F",
             }
         },
         new() { Id = Unova, Name = "Unova", Generation = 5 },
@@ -522,7 +531,7 @@ public static class RegionDatabase
         // attendant yet; plan 18 · W5 gives the crossing its vessel and its scene.
         new() { From = Sinnoh, To = Kanto, Transport = Transport.Undecided },
         // As in HeartGold and SoulSilver, but the other way round: the ship sails from Vermilion to Olivine.
-        // A sailor on Pallet Town's shore stands in for Vermilion's harbour until plan 19 · K8 opens Vermilion City.
+        // Its captain stands on the quay in Vermilion City (plan 19 · K8: Vermilion's overlay, common.Attendant on the map of Kanto).
         new() { From = Kanto, To = Johto, Transport = Transport.Boat, DepartureMap = "Kanto" },
         new() { From = Johto, To = Hoenn, Transport = Transport.Undecided },
         new() { From = Hoenn, To = Unova, Transport = Transport.Undecided },

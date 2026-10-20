@@ -1,0 +1,212 @@
+{
+  "people": {
+    "d47_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Safari Zone feels like another country. It gives me the strangest feeling, coming here."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "..........",
+          "(She doesn't seem to be one for chatting.)"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    },
+    "d47_tsure_poke_static_kangaskhan": {
+      "name": {
+        "en": [
+          "Kangaskhan"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_gsgentleman": {
+      "name": {
+        "en": [
+          "Gentleman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "What a Safari Zone! I chased Pokémon all morning. My Jigglypuff is in a sulk about it, I'm afraid."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_tsure_poke_static_jigglypuff": {
+      "name": {
+        "en": [
+          "Jigglypuff"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_gsbabyboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_gswoman1": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_tsure_poke_static_butterfree": {
+      "name": {
+        "en": [
+          "Butterfree"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_gswoman2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "There are so many Pokémon here, but none as sweet as Slowpoke. People keep telling me I look like one!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_tsure_poke_static_slowpoke": {
+      "name": {
+        "en": [
+          "Slowpoke"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_gsbabygirl1": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I always wanted my very first Pokémon to come from the Safari Zone."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_workman": {
+      "name": {
+        "en": [
+          "Workman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You think there's some clever machinery behind those Area Customizer swaps, don't you? Well, the truth is..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d47_workman_2": {
+      "name": {
+        "en": [
+          "Workman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ugh... I'm worn out. This job takes everything you've got."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "D47_011+1": {
+      "en": [
+        "Safari Zone\nWhere everything is thrilling! Come and meet the wild."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

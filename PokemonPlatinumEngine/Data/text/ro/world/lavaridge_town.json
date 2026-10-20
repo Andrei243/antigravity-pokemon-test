@@ -1,0 +1,182 @@
+{
+  "people": {
+    "expert_f": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Oh, you like the hot springs, do you? That's unusual for someone as young as you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "We take all the hot water we like, and still the springs never run dry. The magma below warms the water underground, you see."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ow! Some Pokémon nipped me in the hot springs! Right on the backside, too!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "twin": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I soak in the hot springs every single day. I'm going to be strong and pretty, just like Flannery!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hot_springs_old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If people put Pokémon in the hot springs, who knows what would happen? A fizzy bath? A lava bath?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hot_springs_old_woman_2": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "They say these springs cure stiff shoulders, aching muscles, broken hearts and empty purses. Well, I hope so!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lavaridge_rival": {
+      "name": {
+        "en": [
+          "{rival}"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Go and battle your dad, {player}!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f_2": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LavaridgeTown_EventScript_TownSign": {
+      "en": [
+        "Lavaridge Town\nRest a while in the natural hot springs"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "LavaridgeTown_EventScript_GymSign": {
+      "en": [
+        "Lavaridge Town Pokémon Gym\nLeader: Flannery\nA fiery passion that never cools!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "LavaridgeTown_EventScript_HerbShopSign": {
+      "en": [
+        "Herb Shop\nBitter medicine that works wonders"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemonCenterSign": {
+      "en": [
+        "Pokémon Center\nRest your weary Pokémon here."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "Common_EventScript_ShowPokemartSign": {
+      "en": [
+        "Poké Mart\nFor all your trainer needs."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -310,6 +310,24 @@ public static class GbaCover
                 (0x228, 0x229, TerrainCover.Bridge),
                 (0x23A, 0x23A, TerrainCover.Tree), (0x243, 0x243, TerrainCover.Tree),
             },
+            // Plan 21 · H4, part b: Lavaridge Town, Mt. Chimney and Jagged Pass, read from what is walked: every metatile
+            // of the tileset that no behaviour or label names and that is open more often than blocked is the
+            // volcano's grey earth (the ash on the summit's paths, the pass's tracks, the town's lanes); what is
+            // blocked is left to the rock and the trees the builder stands where nothing is named (World.BareRock),
+            // since a house of the town is found at its door and the mountain's faces are rock either way
+            ["gTileset_Lavaridge"] = new (int, int, TerrainCover)[]
+            {
+                (0x202, 0x202, TerrainCover.Path), (0x209, 0x209, TerrainCover.Path), (0x210, 0x210, TerrainCover.Path),
+                (0x216, 0x217, TerrainCover.Path), (0x21E, 0x220, TerrainCover.Path), (0x222, 0x224, TerrainCover.Path),
+                (0x226, 0x227, TerrainCover.Path), (0x22C, 0x22C, TerrainCover.Path), (0x241, 0x242, TerrainCover.Path),
+                (0x252, 0x254, TerrainCover.Path), (0x25A, 0x25B, TerrainCover.Path), (0x271, 0x271, TerrainCover.Path),
+                (0x28A, 0x28A, TerrainCover.Path), (0x28C, 0x28C, TerrainCover.Path), (0x291, 0x292, TerrainCover.Path),
+                (0x298, 0x298, TerrainCover.Path), (0x29C, 0x29C, TerrainCover.Path), (0x29E, 0x29E, TerrainCover.Path),
+                (0x2A0, 0x2A0, TerrainCover.Path), (0x2A3, 0x2A3, TerrainCover.Path), (0x2AA, 0x2AA, TerrainCover.Path),
+                (0x2AC, 0x2AC, TerrainCover.Path), (0x2AE, 0x2AF, TerrainCover.Path), (0x2BB, 0x2BC, TerrainCover.Path),
+                (0x2C4, 0x2C4, TerrainCover.Path), (0x2D0, 0x2D1, TerrainCover.Path), (0x2D4, 0x2D4, TerrainCover.Path),
+                (0x2DE, 0x2DF, TerrainCover.Path), (0x2FE, 0x303, TerrainCover.Path), (0x31D, 0x31D, TerrainCover.Path),
+            },
             ["gTileset_Petalburg"] = new (int, int, TerrainCover)[]
             {
                 // The doormat before a house's door, and the earth where the paths meet the towns' edges

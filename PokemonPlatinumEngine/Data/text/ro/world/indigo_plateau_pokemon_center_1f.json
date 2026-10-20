@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Welcome! Stock up before you face the Elite Four."
         ],
         "text": [
-          ""
+          "Bun venit! Fă-ți provizii înainte să înfrunți Elita celor Patru."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Guide"
         ],
         "text": [
-          ""
+          "Ghidul"
         ]
       },
       "dialog": {
@@ -43,8 +43,8 @@
           "Once you go through that door, there's no turning back until it's over. Make sure your Pokémon are ready."
         ],
         "text": [
-          "",
-          ""
+          "Salutare! Elita celor Patru folosește toate tipurile care există. Adu o echipă care să le poată face față tuturor!",
+          "După ce treci prin ușa aia, nu mai e cale de întoarcere până nu se termină. Asigură-te că Pokémonii tăi sunt pregătiți."
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Guard"
         ],
         "text": [
-          ""
+          "Paznic"
         ]
       }
     },
@@ -64,7 +64,7 @@
           "Black Belt"
         ],
         "text": [
-          ""
+          "Centură Neagră"
         ]
       },
       "dialog": {
@@ -72,7 +72,7 @@
           "Even the Champion trains here from time to time. I'm waiting for my chance to battle him."
         ],
         "text": [
-          ""
+          "Până și Campionul se antrenează pe aici din când în când. Aștept ocazia să mă lupt cu el."
         ]
       }
     },
@@ -82,7 +82,7 @@
           "Cooltrainer"
         ],
         "text": [
-          ""
+          "Antrenor As"
         ]
       },
       "dialog": {
@@ -90,7 +90,7 @@
           "I lost to Lorelei again. Her Ice-types froze my whole team solid."
         ],
         "text": [
-          ""
+          "Am pierdut din nou în fața lui Lorelei. Pokémonii ei de tip Gheață mi-au înghețat toată echipa bocnă."
         ]
       }
     }

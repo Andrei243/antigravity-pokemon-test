@@ -84,6 +84,53 @@ public static class HgImport
     }
 
     /// <summary>
+    /// <c>--game heartgold --unknown &lt;area&gt;</c> (plan 20 · J8, part b): the textures no rule of <see cref="HgCover"/>
+    /// or Platinum's <c>Cover.cs</c> sorts on each chunk of an area (its own matrix's, or the cells it holds on a matrix
+    /// of several areas), with how many tiles each lies on: what a session that opens the area sorts its ground by.
+    /// </summary>
+    public static int Unknown(string repo, string? dir, string area)
+    {
+        var maps = new HgMaps(dir ?? Fetch(repo));
+        var world = new HgWorld(maps);
+        var header = maps.Headers.Values.FirstOrDefault(h => h.Key == area);
+        if (header == null)
+        {
+            Console.WriteLine($"No area {area}");
+            return 1;
+        }
+        var matrix = maps.Matrix(world.SafariAreaOf(header) >= 0 ? HgMaps.SafariMatrix : header.Matrix);
+        var lands = new List<int>();
+        for (int y = 0; y < matrix.Height; y++)
+            for (int x = 0; x < matrix.Width; x++)
+                if (matrix.LandAt(x, y) is var l and not Matrix.NoLand && (matrix.Headers == null || matrix.HeaderAt(x, y) == header.Id)) lands.Add(l);
+        foreach (int land in lands.Distinct())
+        {
+            var layers = maps.Land(land).ReadTerrain()?.LayersOver(maps.Land(land).Heights);
+            var look = world.CoverOf(land);
+            var counts = new Dictionary<string, (int Count, int Blocked, Dictionary<string, int> Behaviours)>(StringComparer.Ordinal);
+            var data = maps.Land(land);
+            if (layers != null)
+                for (int i = 0; i < look.Length; i++)
+                {
+                    if (look[i] != TerrainCover.Unknown) continue;
+                    int x = i % LandData.Tiles, z = i / LandData.Tiles;
+                    var behaviour = (TileBehavior)world.Behaviour(data, x, z);
+                    foreach (string? name in new[] { layers.Ground[i], layers.Above[i] }.Distinct())
+                    {
+                        if (name == null) continue;
+                        var (count, blocked, behaviours) = counts.GetValueOrDefault(name, (0, 0, new Dictionary<string, int>(StringComparer.Ordinal)));
+                        behaviours[behaviour.ToString()] = behaviours.GetValueOrDefault(behaviour.ToString()) + 1;
+                        counts[name] = (count + 1, blocked + (data.Solid(x, z) ? 1 : 0), behaviours);
+                    }
+                }
+            Console.WriteLine($"chunk {land}: {look.Count(c => c == TerrainCover.Unknown)} tiles unsorted");
+            foreach (var (name, (count, blocked, behaviours)) in counts.OrderByDescending(kv => kv.Value.Count).ThenBy(kv => kv.Key, StringComparer.Ordinal))
+                Console.WriteLine($"  {name} {count} ({blocked} blocked; {string.Join(", ", behaviours.OrderByDescending(b => b.Value).Take(4).Select(b => $"{b.Key} {b.Value}"))})");
+        }
+        return 0;
+    }
+
+    /// <summary>
     /// The world files under <paramref name="directory"/>. With no <paramref name="open"/>, every matrix, chunk and
     /// area and a <c>world.json</c> that makes a map of each matrix and opens every area (for a tool to build); with
     /// one, only what it opens and the chunks round it, and no <c>world.json</c>. The region's three tables either way.

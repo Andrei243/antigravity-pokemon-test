@@ -28,6 +28,24 @@
         ]
       }
     },
+    "petalburg_gym_wallys_dad": {
+      "name": {
+        "en": [
+          "Wally's Father"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Ah, {player}! Come along, come along."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
     "man_2": {
       "name": {
         "en": [
@@ -37,23 +55,205 @@
           "Ghidul Arenei"
         ]
       }
+    },
+    "man_3": {
+      "name": {
+        "en": [
+          "Randall"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Randall: The Speed Room! Here the quick strike first, and the slow never strike at all!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Randall: You were faster than I was. That stings."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5": {
+      "name": {
+        "en": [
+          "Mary"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Mary: In the Accuracy Room, every move lands where it's meant to. Let's see if yours do!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Mary: Right on target... but it was your target, not mine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_2": {
+      "name": {
+        "en": [
+          "Parker"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Parker: Welcome to the Confusion Room. Try to keep your head straight in here!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Parker: I'm the one who's all mixed up now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_2": {
+      "name": {
+        "en": [
+          "Alexia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Alexia: The Defense Room. My Pokémon can take any hit you throw. Go on, try!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Alexia: All that defense, and it still wasn't enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_3": {
+      "name": {
+        "en": [
+          "George"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer George: In the Recovery Room, a Pokémon that rests comes back stronger. Let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer George: There was no recovering from that one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_5_3": {
+      "name": {
+        "en": [
+          "Jody"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Jody: The Strength Room! One good hit is all a strong Pokémon needs!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Jody: Your one good hit was better than mine."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_3_4": {
+      "name": {
+        "en": [
+          "Berke"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Berke: This is the One-Hit KO Room. One blow decides everything. Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Berke: Decided in one blow, all right. Yours."
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {
-    "PetalburgCity_Gym_EventScript_SpeedRoomDoor": {
+    "PetalburgCity_Gym_EventScript_LeftGymStatue": {
       "en": [
-        "SPEED ROOM\nThe door is shut tight."
+        "Petalburg City Pokémon Gym\nLeader: Norman"
       ],
       "text": [
-        "CAMERA VITEZEI\nUșa e închisă bine."
+        ""
       ]
     },
-    "PetalburgCity_Gym_EventScript_AccuracyRoomDoor": {
+    "PetalburgCity_Gym_EventScript_RightGymStatue": {
       "en": [
-        "ACCURACY ROOM\nThe door is shut tight."
+        "Petalburg City Pokémon Gym\nLeader: Norman"
       ],
       "text": [
-        "CAMERA PRECIZIEI\nUșa e închisă bine."
+        ""
       ]
     }
   }

@@ -1,15 +1,43 @@
-# The cable car's station on Route 112 (plan 21 · H4, part a). docs/scripts.md describes the language; the lines are
-# our own. Emerald's attendant sells the ride up Mt. Chimney; the ride and the summit are plan 21 · H4's next part, so
-# here she says the car is being looked over.
+# The cable car's station on Route 112 (plan 21 · H4). docs/scripts.md describes the language; the lines are our own,
+# on Emerald's beats (data/maps/Route112_CableCarStation/scripts.inc, data/scripts/cable_car.inc).
+#
+# The attendant sends the car up Mt. Chimney once Team Magma's grunts have left the road outside (Emerald's grunts
+# stand in the way of the door; ours stand beside it, so she waits for FLAG_HIDE_ROUTE_112_TEAM_MAGMA). The station's
+# corridor to the car is one tile wide: she steps up onto the platform before the car and the player follows her up
+# the corridor, the picture goes dark over the ride, and the summit's station puts the player down on the tile before
+# its attendant, at the corridor's foot, where a walk of the whole game finds the way on (VAR_CABLE_CAR_STATION_STATE 1
+# going up, 2 coming down; each station's OnEnter turns the player to her as the picture opens).
+
+
+script OnEnter
+  if var VAR_CABLE_CAR_STATION_STATE != 2 end
+  fade in
+  face player up
+  setvar VAR_CABLE_CAR_STATION_STATE 0
+  end
 
 
 script Attendant
   speaker "Attendant"
-  if flag FLAG_HIDE_ROUTE_112_TEAM_MAGMA goto Gone
-  say "Welcome to the Mt. Chimney Cable Car. Some rough-looking people have been hanging about outside, haven't they?"
-  say "I'm afraid the car is being looked over just now. Please come back later!"
+  if not flag FLAG_HIDE_ROUTE_112_TEAM_MAGMA goto Shut
+  ask "Welcome to the Mt. Chimney Cable Car! Shall I send you up to the summit?"
+  if no goto Later
+  say "Lovely! Step this way, please, and mind the gap."
+  move route112_cable_car_attendant up 3
+  waitmoves
+  face route112_cable_car_attendant down
+  walk player up 3
+  setvar VAR_CABLE_CAR_STATION_STATE 1
+  fade out
+  music "hoenn/cable_car"
+  text "The car sways gently on its wire as it climbs above the ash..."
+  wait 1.5
+  warp "MtChimney_CableCarStation" 6 7 down
   end
-label Gone
-  say "Those people in red have gone at last. But the car is still being looked over, I'm sorry to say."
-  say "It'll be running again soon. Please come back later!"
+label Later
+  say "Whenever you're ready. The view from the top is worth the trip!"
+  end
+label Shut
+  say "Welcome to the Mt. Chimney Cable Car. Some rough-looking people have been hanging about outside, haven't they?"
+  say "I'm afraid I can't send anyone up while they're there. Please come back later!"
   end

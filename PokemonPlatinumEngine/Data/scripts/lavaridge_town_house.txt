@@ -1,0 +1,7 @@
+# A house of Lavaridge Town (plan 21 · H4, part b). docs/scripts.md describes the language; the lines are our own.
+
+
+script Zigzagoon
+  cry "Zigzagoon"
+  text "Zigzagoon: Pshuu!"
+  end

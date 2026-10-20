@@ -1,0 +1,51 @@
+{
+  "people": {
+    "d48r0101_middlewoman1_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d48r0101_workman": {
+      "name": {
+        "en": [
+          "Workman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Heading for the Safari Zone? It isn't finished yet, sorry. Come back once it's open."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "d48r0101_workman_2": {
+      "name": {
+        "en": [
+          "Workman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Everyone's excited about the new Safari Zone. The lady at the front desk talks it up like it's the eighth wonder of the world."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

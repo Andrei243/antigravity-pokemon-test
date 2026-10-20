@@ -1752,7 +1752,8 @@ public partial class GameEngine
 
         // Their eye theme, by their class, plays while they walk up and talk, until the battle theme cuts in
         AudioManager.Region = RegionDatabase.RegionOfMap(flow.Map.Name)?.Id;
-        AudioManager.PlayMusic(MusicDirector.EyeRole(trainer.TrainerData?.TrainerClass), immediate: true);
+        if (MusicDirector.EyeSong(trainer.TrainerData?.TrainerClass, AudioManager.Region, MusicLibrary.Exists) is { } eyeSong)
+            AudioManager.PlayMusic(eyeSong, immediate: true);
         eyeThemePlaying = true;
         return true;
     }
@@ -2355,7 +2356,7 @@ public partial class GameEngine
                 DrawCutIn();
                 // The Pokétch shows over the field while nothing else is on the screen
                 if (shown == GameState.Overworld && !flow.StartMenu.IsActive && !ScriptRunning) flow.PoketchView.Draw(VirtualWidth, VirtualHeight, flow.Poketch, PoketchNow());
-                if (flow.Safari.Active) ModernUi.SafariCount(VirtualWidth, flow.Safari.Balls, flow.Safari.Steps);
+                if (flow.Safari.Active) ModernUi.SafariCount(VirtualWidth, flow.Safari.Balls, flow.Safari.Steps, flow.Safari.Endless);
                 DrawParkCount();
                 DrawBattlePoints();
                 DrawCastlePoints();

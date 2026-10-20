@@ -61,6 +61,8 @@
     { "id": 5, "area": "mauville_city", "x": 222, "y": 146, "room": "MauvilleCity_PokemonCenter_1F" },
     { "id": 18, "area": "verdanturf_town", "x": 136, "y": 144, "room": "VerdanturfTown_PokemonCenter_1F" },
     // Plan 21 · H4, part a: Fallarbor's
-    { "id": 17, "area": "fallarbor_town", "x": 94, "y": 8, "room": "FallarborTown_PokemonCenter_1F" }
+    { "id": 17, "area": "fallarbor_town", "x": 94, "y": 8, "room": "FallarborTown_PokemonCenter_1F" },
+    // Plan 21 · H4, part b: Lavaridge's
+    { "id": 16, "area": "lavaridge_town", "x": 149, "y": 67, "room": "LavaridgeTown_PokemonCenter_1F" }
   ]
 }

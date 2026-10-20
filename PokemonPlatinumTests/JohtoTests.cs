@@ -336,16 +336,16 @@ public class JohtoTests
                      "WhirlIslands_1F", "WhirlIslands_B2F" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // What waits stays shut: the S.S. Aqua's quay, the Battle Frontier's road, Lugia's cave, the cliff path to Route
-        // 47 and the road east of Ecruteak to Route 42; the lighthouse's lift waits for Jasmine to step aside (plan 20 ·
-        // J9), its door a wall until then
+        // What waits stays shut: the S.S. Aqua's quay, the Battle Frontier's road, Lugia's cave and the road east of
+        // Ecruteak to Route 42; the lighthouse's lift waits for Jasmine to step aside (plan 20 · J9), its door a wall
+        // until then. The cliff path to Route 47 is open since plan 20 · J8, part b
         Assert.Null(MapNamed("Olivine_PortHall").GetWarpAt(7, 11));
         Assert.Null(MapNamed("Route40_FrontierGate").GetWarpAt(5, 2));
         Assert.Equal("FLAG_UNK_1D8", MapNamed("OlivineLighthouse_1F").GetWarpAt(8, 4)?.OpenedBy);
         Assert.Equal("FLAG_UNK_1D8", MapNamed("OlivineLighthouse_LightRoom").GetWarpAt(8, 4)?.OpenedBy);
         Assert.DoesNotContain(walked.Keys, m => m.Name.Contains("Lugia", StringComparison.Ordinal));
         var cianwood = Johto.Area("cianwood")!;
-        Assert.Empty(Overworld.WarpsAt(cianwood.Warps[6].X, cianwood.Warps[6].Z));
+        Assert.Contains(Overworld.WarpsAt(cianwood.Warps[6].X, cianwood.Warps[6].Z), w => w.TargetMap == "CliffEdgeGate");
 
         // The whirlpools of Route 41 are the original's blocks of three tiles by three, each with its ring on the water,
         // and the islands' ways in lie behind them
@@ -376,6 +376,48 @@ public class JohtoTests
         Assert.Contains(MapNamed("OlivineLighthouse_LightRoom").NPCs, n => n.Name == "Jasmine");
         Assert.Contains(MapNamed("Olivine_Gym").Everyone, n => n.Name == "Jasmine");
         Assert.Contains(MapNamed("Cianwood_Gym").NPCs, n => n.Name == "Chuck");
+    }
+
+    [Fact]
+    public void TheCliffPathLeadsFromCianwoodCityToTheSafariZonesTwelveAreas()
+    {
+        // Plan 20 · J8, part b: up through the gate in Cianwood's cliff, along Route 47 past Cliff Cave, over Route 48 to
+        // the Safari Zone's gate and its hall, and from its counter into the zone, whose twelve areas lie side by side
+        // (the rulings' "The Johto Safari Zone")
+        var walked = Walked.Value;
+        var outside = walked.Single(kv => kv.Key.Name == "Johto").Value;
+        foreach (string key in new[] { "route_47", "route_48", "safari_zone_gate" })
+        {
+            Assert.Contains(key, Johto.Index.Areas);
+            Assert.True(outside.Any(t => Overworld.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the start");
+        }
+        foreach (string name in new[] { "CliffEdgeGate", "CliffCave", "SafariZoneGate_PokemonCenter_1F", "SafariZoneGate_PokemonCenter_B1F",
+                     "SafariZone_Gate", "SafariZone" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+
+        var (zone, inZone) = walked.Single(kv => kv.Key.Name == "SafariZone");
+        for (int area = 1; area <= 12; area++)
+        {
+            string key = $"safari_zone_{area:00}";
+            Assert.True(inZone.Any(t => zone.AreaAt(t.X, t.Y)?.Key == key), $"{key} can't be walked to from the way in");
+            Assert.Equal("Safari Zone", Johto.Area(key)!.Name);
+            Assert.False(Johto.Area(key)!.Fly);
+        }
+        // The tests' two: Geodude in the Peak Area, Sandshrew in the Desert Area
+        Assert.Contains(Johto.Area("safari_zone_04")!.Land!, s => s.Species == "Geodude");
+        Assert.Contains(Johto.Area("safari_zone_12")!.Land!, s => s.Species == "Sandshrew");
+
+        // The zone's door leads back behind the hall's counter, whose arrival asks whether the game is over
+        var door = Johto.Area("safari_zone_entrance_exterior")!.Warps[0];
+        var back = zone.GetWarpAt(door.X, door.Z);
+        Assert.Equal(("SafariZone_Gate", 5, 3), (back?.TargetMap, back?.TargetX, back?.TargetY));
+        Assert.Equal("johto/national_park", zone.BgmTrackAt(door.X, door.Z));
+        Assert.Equal("johto/union_cave", MapNamed("CliffCave").BgmTrackAt(Johto.Area("cliff_cave")!.Warps[0].X, Johto.Area("cliff_cave")!.Warps[0].Z));
+
+        // The Embedded Tower behind Route 47 waits
+        var route47 = Johto.Area("route_47")!;
+        foreach (int warp in new[] { 4, 5, 6 })
+            Assert.Empty(Overworld.WarpsAt(route47.Warps[warp].X, route47.Warps[warp].Z));
     }
 
     [Fact]

@@ -1,0 +1,10 @@
+{
+  // Lavaridge Town's Poké Mart (plan 21 · H4, part b)
+  "area": "lavaridge_town_mart",
+  "bgmTrack": "hoenn/oldale",
+  "people": {
+    "lavaridge_mart_clerk": { "name": "Clerk", "script": "Clerk", "dialog": [ "Welcome! What can I get for you?" ] },
+    "expert_m": { "name": "Old Man", "dialog": [ "An X Speed makes a Pokémon quicker in battle. Strike first, and you're halfway to winning!" ] },
+    "old_woman": { "name": "Old Woman", "dialog": [ "Up on Mt. Chimney's peak there's a treat you can only buy there. Pokémon simply adore it." ] }
+  }
+}

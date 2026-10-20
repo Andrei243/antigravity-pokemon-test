@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hey, {player}! I was looking forward to seeing you here."
       ],
       "text": [
-        ""
+        "Hei, {player}! Abia așteptam să te văd aici."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "While you were busy out there, I beat the Elite Four. That makes me the new Pokémon League Champion!"
       ],
       "text": [
-        ""
+        "În timp ce tu erai ocupat pe-afară, eu am învins Elita celor Patru. Asta mă face noul Campion al Ligii Pokémon!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "I've built the perfect team. Strong against every type, ready for anything. Nobody can touch us."
       ],
       "text": [
-        ""
+        "Mi-am făcut echipa perfectă. Puternică împotriva oricărui tip, pregătită pentru orice. Nimeni nu ne poate atinge."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "And now I get to prove it against you, of all people. {player}! I'm the strongest trainer in the world!"
       ],
       "text": [
-        ""
+        "Și acum pot dovedi asta pe tine, dintre toți oamenii. {player}! Sunt cel mai puternic Antrenor din lume!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "NO! That can't be! You beat my best?"
       ],
       "text": [
-        ""
+        "NU! Nu se poate! Ai învins ce aveam mai bun?"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "After all that work to get here... my reign is over already? It's not fair!"
       ],
       "text": [
-        ""
+        "După tot efortul de a ajunge aici... domnia mea s-a terminat deja? Nu e corect!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Prof. Oak"
       ],
       "text": [
-        ""
+        "Profesorul Oak"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "{player}!"
       ],
       "text": [
-        ""
+        "{player}!"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "So you've won! Congratulations! You are the new Pokémon League Champion!"
       ],
       "text": [
-        ""
+        "Deci ai câștigat! Felicitări! Ești noul Campion al Ligii Pokémon!"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "You've grown so much since the day you left Pallet Town with that first Pokémon of yours. You truly came of age!"
       ],
       "text": [
-        ""
+        "Ai crescut atât de mult de când ai plecat din Orașul Pallet cu primul tău Pokémon. Chiar ai devenit adult!"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "{rival}... I'm disappointed in you. Do you know why you lost?"
       ],
       "text": [
-        ""
+        "{rival}... sunt dezamăgit de tine. Știi de ce ai pierdut?"
       ]
     },
     {
@@ -109,7 +109,7 @@
         "You forgot to treat your Pokémon with trust and love. Without that, you will never become the best."
       ],
       "text": [
-        ""
+        "Ai uitat să-ți tratezi Pokémonii cu încredere și dragoste. Fără ele, nu vei deveni niciodată cel mai bun."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "{player}, come with me. There is a room ahead where your victory will be kept for all time."
       ],
       "text": [
-        ""
+        "{player}, vino cu mine. Mai încolo e o cameră unde victoria ta va fi păstrată pentru totdeauna."
       ]
     }
   ],
@@ -127,7 +127,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "Go on, then. Don't keep the old man waiting."
       ],
       "text": [
-        ""
+        "Hai, atunci. Nu-l lăsa pe bătrân să aștepte."
       ]
     }
   ]

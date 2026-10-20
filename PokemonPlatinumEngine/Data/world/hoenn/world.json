@@ -121,7 +121,26 @@
     { "name": "FallarborTown_PokemonCenter_1F", "matrix": 33, "area": "fallarbor_town_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "FallarborTown_PokemonCenter_2F", "matrix": 34, "area": "fallarbor_town_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
     { "name": "FallarborTown_CozmosHouse", "matrix": 35, "area": "fallarbor_town_cozmos_house", "trees": "Round", "setting": "Indoors" },
-    { "name": "FallarborTown_MoveRelearnersHouse", "matrix": 36, "area": "fallarbor_town_move_relearners_house", "trees": "Round", "setting": "Indoors" }
+    { "name": "FallarborTown_MoveRelearnersHouse", "matrix": 36, "area": "fallarbor_town_move_relearners_house", "trees": "Round", "setting": "Indoors" },
+    // Plan 21 · H4, part b: the cable car's top station and Mt. Chimney's summit, Jagged Pass down to Lavaridge Town,
+    // Lavaridge's rooms and Gym, Mirage Tower in the desert and Meteor Falls' inner rooms
+    { "name": "MtChimney", "matrix": 199, "area": "mt_chimney", "trees": "Round" },
+    { "name": "MtChimney_CableCarStation", "matrix": 180, "area": "mt_chimney_cable_car_station", "trees": "Round", "setting": "Indoors" },
+    { "name": "JaggedPass", "matrix": 200, "area": "jagged_pass", "trees": "Round" },
+    { "name": "LavaridgeTown_HerbShop", "matrix": 22, "area": "lavaridge_town_herb_shop", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavaridgeTown_Gym_1F", "matrix": 23, "area": "lavaridge_town_gym_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavaridgeTown_Gym_B1F", "matrix": 24, "area": "lavaridge_town_gym_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavaridgeTown_House", "matrix": 25, "area": "lavaridge_town_house", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavaridgeTown_Mart", "matrix": 26, "area": "lavaridge_town_mart", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavaridgeTown_PokemonCenter_1F", "matrix": 27, "area": "lavaridge_town_pokemon_center_1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "LavaridgeTown_PokemonCenter_2F", "matrix": 28, "area": "lavaridge_town_pokemon_center_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "MirageTower_1F", "matrix": 281, "area": "mirage_tower_1f", "trees": "Round", "setting": "Cave" },
+    { "name": "MirageTower_2F", "matrix": 282, "area": "mirage_tower_2f", "trees": "Round", "setting": "Cave" },
+    { "name": "MirageTower_3F", "matrix": 283, "area": "mirage_tower_3f", "trees": "Round", "setting": "Cave" },
+    { "name": "MirageTower_4F", "matrix": 284, "area": "mirage_tower_4f", "trees": "Round", "setting": "Cave" },
+    { "name": "MeteorFalls_1F_2R", "matrix": 188, "area": "meteor_falls_1f_2r", "trees": "Round", "setting": "Cave" },
+    { "name": "MeteorFalls_B1F_1R", "matrix": 189, "area": "meteor_falls_b1f_1r", "trees": "Round", "setting": "Cave" },
+    { "name": "MeteorFalls_B1F_2R", "matrix": 190, "area": "meteor_falls_b1f_2r", "trees": "Round", "setting": "Cave" }
   ],
   "areas": [
     // Plan 21 · H1: Littleroot Town, Route 101, Oldale Town, Routes 102 and 103 and Petalburg City, with their rooms
@@ -167,6 +186,13 @@
     "route_111_winstrate_familys_house", "route_111_old_ladys_rest_stop", "route_112_cable_car_station",
     "route_113_glass_workshop", "route_114_fossil_maniacs_house", "route_114_fossil_maniacs_tunnel", "route_114_lanettes_house",
     "fallarbor_town_mart", "fallarbor_town_battle_tent_lobby", "fallarbor_town_pokemon_center_1f",
-    "fallarbor_town_pokemon_center_2f", "fallarbor_town_cozmos_house", "fallarbor_town_move_relearners_house"
+    "fallarbor_town_pokemon_center_2f", "fallarbor_town_cozmos_house", "fallarbor_town_move_relearners_house",
+    // Plan 21 · H4, part b: the cable car, Mt. Chimney, Jagged Pass and Lavaridge Town with its rooms and Gym, Mirage
+    // Tower, Route 115 and Meteor Falls' inner rooms
+    "mt_chimney", "mt_chimney_cable_car_station", "jagged_pass", "lavaridge_town",
+    "lavaridge_town_herb_shop", "lavaridge_town_gym_1f", "lavaridge_town_gym_b1f", "lavaridge_town_house",
+    "lavaridge_town_mart", "lavaridge_town_pokemon_center_1f", "lavaridge_town_pokemon_center_2f",
+    "mirage_tower_1f", "mirage_tower_2f", "mirage_tower_3f", "mirage_tower_4f",
+    "route_115", "meteor_falls_1f_2r", "meteor_falls_b1f_1r", "meteor_falls_b1f_2r"
   ]
 }

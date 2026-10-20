@@ -16,7 +16,17 @@ public static class HgCover
     private static readonly (Regex Pattern, TerrainCover? Cover)[] Rules = new (string, TerrainCover?)[]
     {
         ("^ymb_hole", TerrainCover.CaveMouth),                    // the dark in a cave's mouth
-        ("^etc_", null),                                          // odds and ends drawn over the ground
+        ("^etc_|^h_kage|^a18_shadow", null),                     // odds and ends drawn over the ground, shadows
+        // The Safari Zone's areas (plan 20 · J8, part b), judged by `--unknown`'s counts of open and blocked tiles:
+        // the Meadow's and the Forest's ground, the Peak's and the Mountain's tracks and faces, the Rocky Beach's sand
+        // and rocks, the Wetland's banks, the Swamp's mud, the Wasteland's broken rock
+        ("^ms02_|^ms04_0[123]|^ms09_|^ms07_", TerrainCover.Grass),
+        ("^ms08_", TerrainCover.Marsh),
+        ("^ms05_0[145]|^ms10_0[25]|^ms11_", TerrainCover.Path),
+        ("^ms06_0[367]", TerrainCover.Sand),
+        ("^ms10_01", TerrainCover.Rock),
+        ("^ms05_|^ms06_|^ms04_|^ms10_", TerrainCover.Cliff),
+        ("^msg_\\d", TerrainCover.Building),                      // the zone's gate, drawn into the ground behind its door
         ("^overpass|_br$|_br\\d", TerrainCover.Bridge),
         ("^sea_|^pond_|^river|_wf\\d", TerrainCover.Water),       // the sea, ponds and their edges, rivers, waterfalls
         ("^flower", TerrainCover.Flowers),

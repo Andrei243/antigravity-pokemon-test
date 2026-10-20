@@ -5,7 +5,7 @@
         "Miltank looks very weak. It hardly lifts its head."
       ],
       "text": [
-        ""
+        "Miltank arată foarte slab. Abia își ridică capul."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Give Miltank an Oran Berry?"
       ],
       "text": [
-        ""
+        "Îi dai lui Miltank o Boabă Oran?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} gave Miltank an Oran Berry. It munched it down."
       ],
       "text": [
-        ""
+        "{player} i-a dat lui Miltank o Boabă Oran. A mâncat-o cu poftă."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Miltank seems a little happier."
       ],
       "text": [
-        ""
+        "Miltank pare puțin mai fericit."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Miltank is starting to look more lively."
       ],
       "text": [
-        ""
+        "Miltank începe să arate mai vioi."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Miltank is full of energy again! It's back on its feet!"
       ],
       "text": [
-        ""
+        "Miltank e din nou plin de energie! A revenit pe picioare!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "If only there were some Oran Berries to give it..."
       ],
       "text": [
-        ""
+        "Dacă ar avea cineva niște Boabe Oran de dat..."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{player} decided to come back later."
       ],
       "text": [
-        ""
+        "{player} s-a hotărât să revină mai târziu."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Moooo! Miltank looks happy and healthy."
       ],
       "text": [
-        ""
+        "Muuu! Miltank arată fericit și sănătos."
       ]
     }
   ],
@@ -79,7 +79,7 @@
         "Girl"
       ],
       "text": [
-        ""
+        "Fata"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Our Miltank is poorly. She just lies there and won't eat her hay."
       ],
       "text": [
-        ""
+        "Miltank-ul nostru e bolnav. Stă întins și nu vrea să-și mănânce fânul."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Miltank's better! Thank you! She's going to make lots of yummy milk again."
       ],
       "text": [
-        ""
+        "Miltank e mai bine! Mulțumesc! O să facă iar mult lapte gustos."
       ]
     }
   ],
@@ -105,7 +105,7 @@
         "Girl"
       ],
       "text": [
-        ""
+        "Fata"
       ]
     },
     {
@@ -113,7 +113,7 @@
         "Grandpa says lots of Berries would make her better. Do you have any?"
       ],
       "text": [
-        ""
+        "Bunicul zice că multe Boabe ar face-o bine. Ai?"
       ]
     },
     {
@@ -121,7 +121,7 @@
         "She ate it! Keep going, please! Grandpa says she needs lots."
       ],
       "text": [
-        ""
+        "A mâncat-o! Continuă, te rog! Bunicul zice că are nevoie de multe."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "You made Miltank better with Berries! You're amazing!"
       ],
       "text": [
-        ""
+        "Ai vindecat-o pe Miltank cu Boabe! E uimitor ce ai făcut!"
       ]
     }
   ]

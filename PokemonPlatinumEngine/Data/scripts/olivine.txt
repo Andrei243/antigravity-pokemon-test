@@ -5,10 +5,34 @@
 # boy comes out of it: the Leader is up the lighthouse nursing a sick Pokémon, and he has no time for a Leader like
 # that. He goes back the way he came and the trigger is spent (VAR_UNK_4078 1). Until then he is kept off the street
 # (FLAG_HIDE_OLIVINE_RIVAL, which HeartGold's new game sets: here the town's own arrival does, so no save needs it).
+#
+# Warden Baoba's first call (plan 20 · J9, part b): the first time the player comes back down into the town once Amphy
+# is cured (VAR_SCENE_LIGHTHOUSE_JASMINE 2, olivine_lighthouse_light_room.txt), Baoba rings to say his Safari Zone is
+# open (FLAG_UNK_0F5), which sends the workmen away from the Cliff Edge Gate (FLAG_UNK_249) and starts his test
+# (VAR_UNK_4057 1, safari_zone_entrance_interior.txt); his number goes into the Pokégear. HeartGold rings as the player
+# leaves the lighthouse; the variable's 3 is ours, so the call comes once (docs/mechanics/rulings.md, "The Johto Safari
+# Zone").
 
 
 script OnEnter
   if var VAR_UNK_4078 == 0 setflag FLAG_HIDE_OLIVINE_RIVAL
+  if var VAR_SCENE_LIGHTHOUSE_JASMINE == 2 goto Baoba
+  end
+label Baoba
+  scene "Warden Baoba's call"
+  sound "select"
+  text "Brrrring! Brrrring! It's the Pokégear..."
+  speaker "Baoba"
+  say "Hello, {player}! Warden Baoba here. Sorry to keep you waiting, but my Safari Zone is open at last!"
+  say "Do you know the gate in the cave behind Cianwood City? Go through it and follow the cliff path, and you'll be there in no time."
+  say "We're a little out of the way, but do come and visit!"
+  text "Click... The call has ended."
+  addcontact baoba
+  setflag FLAG_UNK_0F5
+  setflag FLAG_UNK_249
+  setvar VAR_UNK_4057 1
+  setvar VAR_SCENE_LIGHTHOUSE_JASMINE 3
+  endscene
   end
 
 

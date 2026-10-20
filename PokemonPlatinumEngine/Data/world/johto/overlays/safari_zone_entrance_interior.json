@@ -1,0 +1,20 @@
+{
+  // The Safari Zone's gate hall (plan 20 · J8, part b, and J9, part b): HeartGold's room, our words. The attendant at
+  // the counter takes the $500 and sends the player in through the door behind her; Warden Baoba sets his two tests;
+  // the attendant by the Area Customizer explains the machine once the second test is set; the two counters of the
+  // Safari Zone Link on the right say it isn't ready, and the door behind them (warp 2, a friend's zone) stays shut
+  // (scripts/safari_zone_entrance_interior.txt)
+  "area": "safari_zone_entrance_interior",
+  "bgmTrack": "johto/national_park",
+  "locked": [ 2 ],
+  "read": { "D47R0101_005+1": "Machine" },
+  "people": {
+    "d47r0101_counterm": { "name": "Attendant", "script": "Explain", "still": true },
+    "d47r0101_counterm_2": { "name": "Attendant", "script": "Customizer", "still": true },
+    "d47r0101_counterm_3": { "name": "Attendant", "script": "Counter", "still": true },
+    "d47r0101_counterm_4": { "name": "Attendant", "script": "Link", "still": true },
+    "d47r0101_counterm_5": { "name": "Attendant", "script": "Link", "still": true },
+    "d47r0101_counterm_6": { "name": "Attendant", "script": "LinkExplain", "still": true },
+    "d47r0101_gsgentleman": { "name": "Baoba", "script": "Baoba", "still": true }
+  }
+}

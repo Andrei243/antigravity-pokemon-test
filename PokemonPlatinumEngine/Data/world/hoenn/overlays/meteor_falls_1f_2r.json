@@ -1,0 +1,12 @@
+{
+  // Meteor Falls' upper room (plan 21 · H4, part b), reached by Waterfall from the first room: a Dragon Tamer and an old
+  // couple who battle together, and the ways down to the lower rooms
+  "area": "meteor_falls_1f_2r",
+  "bgmTrack": "hoenn/cave_of_origin",
+  "trees": "Round",
+  "people": {
+    "man_3": { "name": "Nicolas", "trainer": { "dialogueBefore": "Dragon Tamer Nicolas: This place is a sacred ground for Dragon Pokémon. Prove you're worthy to walk it!", "dialogueAfter": "Dragon Tamer Nicolas: You're worthy, all right." } },
+    "expert_m": { "name": "John & Jay", "trainer": { "dialogueBefore": "Old Couple John & Jay: We've battled side by side for fifty years. Shall we show you how it's done?", "dialogueAfter": "Old Couple John & Jay: Fifty years, and still something to learn." } },
+    "expert_f": { "name": "John & Jay", "trainer": { "dialogueBefore": "Old Couple John & Jay: We've battled side by side for fifty years. Shall we show you how it's done?", "dialogueAfter": "Old Couple John & Jay: Fifty years, and still something to learn." } }
+  }
+}

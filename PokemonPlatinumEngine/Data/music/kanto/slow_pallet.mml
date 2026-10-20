@@ -1,0 +1,33 @@
+# Kanto's quiet homecoming (FireRed's MUS_SLOW_PALLET): the opening of Pallet Town's tune, a rising fifth and a fall,
+# slowed to a lullaby in D major for the player's room once the Hall of Fame has been seen and the game is saved: a flute
+# over a harp's slow arpeggios and held strings. A place indoors plays the same by day and night. Original composition
+# for this game (plan 19 · K8).
+title Slow Pallet Town
+tempo 56
+meter 4/4
+reverb 0.4
+night none
+
+track lead flute vol=0.78 pan=0 rev=0.42
+  L o5 a4 f+8 a8 o6 d2 | o6 c+4. d8 e2 | o6 d4. c+8 o5 b2 | o5 a4. b8 o6 c+2 |
+  o5 b4 g8 b8 o6 d2 | o6 d4. c+8 o5 a4 f+4 | o5 g4. e8 b2 | o5 a2 o6 c+2 |
+  o5 a4 o6 d4 f+2 | o6 e4. c+8 o5 a2 | o6 d4. f+8 d2 | o6 c+4. o5 a8 f+2 |
+  o5 b4. o6 d8 g2 | o6 f+4. d8 o5 a4 f+4 | o5 e4 a4 o6 c+4 e4 | o6 d1 |
+
+track harp harp vol=0.46 pan=0.3 rev=0.4
+  L o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 | o3 a8 >c+8 e8 c+8 e8 c+8 <a8 e8 | o3 b8 >d8 f+8 d8 f+8 d8 <b8 f+8 | o3 f+8 a8 >c+8 a8 c+8 a8 <f+8 c+8 |
+  o3 g8 b8 >d8 b8 d8 b8 <g8 d8 | o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 | o3 e8 g8 b8 >e8 b8 <b8 g8 e8 | o3 a8 >c+8 e8 c+8 e8 c+8 <a8 e8 |
+  o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 | o3 a8 >c+8 e8 c+8 e8 c+8 <a8 e8 | o3 b8 >d8 f+8 d8 f+8 d8 <b8 f+8 | o3 f+8 a8 >c+8 a8 c+8 a8 <f+8 c+8 |
+  o3 g8 b8 >d8 b8 d8 b8 <g8 d8 | o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 | o3 a8 >c+8 e8 c+8 e8 c+8 <a8 e8 | o3 d8 a8 >d8 f+8 a8 f+8 d8 <a8 |
+
+track pad strings vol=0.34 pan=-0.3 rev=0.45
+  L o4 (d f+ a)1 | (c+ e a)1 | (d f+ b)1 | (c+ f+ a)1 |
+  (d g b)1 | (d f+ a)1 | (e g b)1 | (c+ e a)1 |
+  (d f+ a)1 | (c+ e a)1 | (d f+ b)1 | (c+ f+ a)1 |
+  (d g b)1 | (d f+ a)1 | (c+ e a)1 | (d f+ a)1 |
+
+track bass contrabass vol=0.6 rev=0.25
+  L o3 d2 a2 | a2 e2 | b2 f+2 | f+2 c+2 |
+  g2 d2 | d2 a2 | e2 b2 | a2 e2 |
+  d2 a2 | a2 e2 | b2 f+2 | f+2 c+2 |
+  g2 d2 | d2 a2 | a2 e2 | d1 |

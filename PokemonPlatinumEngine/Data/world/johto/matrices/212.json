@@ -1,0 +1,39 @@
+{
+  "id": 212,
+  "width": 8,
+  "height": 4,
+  "chunks": [
+    "211 211 211 211 211 211 211 211",
+    "211 652 653 654 658 659 660 211",
+    "211 655 656 657 661 662 663 211",
+    "211 211 666 211 211 211 211 211"
+  ],
+  "areas": [
+    " 0  0  0  0  0  0  0  0",
+    " 0  1  2  3  4  5  6  0",
+    " 0  7  8  9 10 11 12  0",
+    " 0  0 13  0  0  0  0  0"
+  ],
+  "areaKeys": [
+    "everywhere",
+    "safari_zone_01",
+    "safari_zone_02",
+    "safari_zone_03",
+    "safari_zone_07",
+    "safari_zone_08",
+    "safari_zone_09",
+    "safari_zone_04",
+    "safari_zone_05",
+    "safari_zone_06",
+    "safari_zone_10",
+    "safari_zone_11",
+    "safari_zone_12",
+    "safari_zone_entrance_exterior"
+  ],
+  "altitudes": [
+    " 0  0  0  0  0  0  0  0",
+    " 0  0  0  0  0  0  0  0",
+    " 0  0  0  0  0  0  0  0",
+    " 0  0  0  0  0  0  0  0"
+  ]
+}

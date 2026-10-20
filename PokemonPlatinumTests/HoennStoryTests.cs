@@ -1162,4 +1162,134 @@ public class HoennStoryTests
         foreach (string song in new[] { "hoenn/desert", "hoenn/route113", "hoenn/fallarbor", "hoenn/cave_of_origin", "hoenn/game_corner" })
             Assert.True(MusicLibrary.Exists(song), song);
     }
+
+    /// <summary>Past the fifth stretch: Team Magma gone from Meteor Falls with the meteorite (plan 21 · H4, part a).</summary>
+    private static Game PastMeteorFalls(int starter, PlayerLook look)
+    {
+        var game = PastVerdanturf(starter, look);
+        game.Arrive("MeteorFalls_1F_1R", 27, 17);
+        Assert.NotNull(game.StepAt(14, 18));
+        Assert.Equal(1, game.Story.Var("VAR_METEOR_FALLS_STATE"));
+        return game;
+    }
+
+    [Theory]
+    [InlineData(0, PlayerLook.Boy)]
+    [InlineData(1, PlayerLook.Girl)]
+    [InlineData(2, PlayerLook.Boy)]
+    public void TheSixthStretchPlaysFromMtChimneyToNorman(int starter, PlayerLook look)
+    {
+        var game = PastMeteorFalls(starter, look);
+
+        // Mt. Chimney's summit: Maxie beaten at his machine, Team Magma and Team Aqua gone, the meteorite taken back
+        game.Arrive("MtChimney", 13, 7);
+        Assert.NotNull(game.Present("mt_chimney_maxie"));
+        Assert.Null(game.Present("old_woman"));
+        var maxie = game.Talk("mt_chimney_maxie");
+        Assert.Contains(maxie.Log, l => l.StartsWith("battle hoenn_maxie_mt_chimney"));
+        foreach (string flag in new[] { "FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY", "FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA", "FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA", "FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO" })
+            Assert.True(game.Story.Has(flag), flag);
+        Assert.False(game.Story.Has("FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO"));
+        Assert.Null(game.Present("mt_chimney_maxie"));
+        Assert.Null(game.Present("mt_chimney_archie"));
+        Assert.NotNull(game.Present("old_woman"));
+        var machine = game.Map.TileScripts.First(kv => kv.Value == "MeteoriteMachine").Key;
+        game.Read(machine.X, machine.Y);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Meteorite")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_METEORITE"));
+
+        // Flannery's Gym: the Heat Badge, TM50 and the town's state for the rival's Go-Goggles
+        game.Arrive("LavaridgeTown_Gym_1F", 13, 17);
+        game.Talk("flannery");
+        Assert.True(game.Story.HasBadge(RegionDatabase.Hoenn, "Heat"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM50")!));
+        Assert.Equal(1, game.Story.Var("VAR_LAVARIDGE_TOWN_STATE"));
+        Assert.Equal(6, game.Story.Var("VAR_PETALBURG_GYM_STATE"));
+        foreach (string id in new[] { "hoenn_cole", "hoenn_gerald", "hoenn_axle", "hoenn_danielle", "hoenn_jace", "hoenn_keegan", "hoenn_jeff", "hoenn_eli" })
+            Assert.True(game.Story.HasDefeated(id), id);
+
+        // Out of the Gym's door, the rival with the Go-Goggles; the mountain's trainers are back up there
+        game.Arrive("Hoenn", 145, 76);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Go-Goggles")!));
+        Assert.Equal(2, game.Story.Var("VAR_LAVARIDGE_TOWN_STATE"));
+        Assert.Null(game.Present("lavaridge_rival"));
+        Assert.False(game.Story.Has("FLAG_HIDE_MT_CHIMNEY_TRAINERS"));
+
+        // The desert lets the player through with the goggles on
+        game.Arrive("Hoenn", 212, 63);
+        game.StepAt(212, 61);
+        Assert.Equal((212, 61), game.Tile);
+
+        // Mirage Tower: a fossil taken, the other lost, and the tower gone
+        game.Arrive("MirageTower_4F", 5, 5);
+        game.Talk("mirage_root_fossil");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Root Fossil")!));
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Claw Fossil")!));
+        Assert.True(game.Story.Has("FLAG_HOENN_MIRAGE_TOWER_FALLEN"));
+        Assert.Equal("Hoenn", game.Map.Name);
+
+        // Petalburg's Gym: Norman waits in his room, the hall's doors open to four Badges and the rooms' to their trainers
+        game.Arrive("PetalburgCity_Gym", 4, 109);
+        Assert.Equal(2, game.Present("petalburg_gym_norman")!.GridY);
+        game.Read(1, 105);
+        Assert.Equal((7, 84), game.Tile);
+        var shut = game.Read(1, 79);
+        Assert.Contains(shut.Transcript, l => l.Text.Contains("locked"));
+        game.Talk("man_3");
+        Assert.True(game.Story.HasDefeated("hoenn_randall"));
+        game.Read(1, 79);
+        Assert.Equal((7, 45), game.Tile);
+
+        // Norman's battle, the Balance Badge and TM42, and Wally's father's HM03 at home
+        var norman = game.Talk("petalburg_gym_norman");
+        Assert.Contains(norman.Log, l => l.StartsWith("battle hoenn_norman_1"));
+        Assert.True(game.Story.HasBadge(RegionDatabase.Hoenn, "Balance"));
+        Assert.Equal(7, game.Story.Var("VAR_PETALBURG_GYM_STATE"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM42")!));
+        foreach (string id in new[] { "hoenn_randall", "hoenn_mary", "hoenn_parker", "hoenn_alexia", "hoenn_george", "hoenn_jody", "hoenn_berke" })
+            Assert.True(game.Story.HasDefeated(id), id);
+        Assert.False(game.Story.Has("FLAG_HIDE_MAUVILLE_CITY_WATTSON"));
+        Assert.Equal("PetalburgCity_WallysHouse", game.Map.Name);
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM03")!));
+        Assert.True(game.Story.Has("FLAG_RECEIVED_HM_SURF"));
+        Assert.Equal(5, game.Story.Var("VAR_PETALBURG_CITY_STATE"));
+    }
+
+    [Fact]
+    public void PetalburgsGymDoorsAreShutUntilFourBadges()
+    {
+        var game = PastTheMuseum(0, PlayerLook.Boy);
+        game.Arrive("PetalburgCity_Gym", 4, 109);
+        Assert.Equal(107, game.Present("petalburg_gym_norman")!.GridY);
+        var speed = game.Read(1, 105);
+        Assert.Contains(speed.Transcript, l => l.Text.Contains("locked"));
+        Assert.Equal((1, 106), game.Tile);
+        // Each room's own mat leads back to the floor before the door it was come in by
+        foreach (var (x, y, toX, toY) in new[] { (6, 85, 1, 106), (2, 98, 7, 106), (7, 46, 1, 80), (1, 59, 7, 80), (6, 59, 1, 93), (1, 72, 7, 93), (1, 20, 7, 41), (7, 20, 1, 54), (1, 33, 7, 54), (6, 33, 1, 67), (2, 7, 7, 15), (6, 7, 1, 28) })
+        {
+            var warp = game.Map.GetWarpAt(x, y);
+            Assert.NotNull(warp);
+            Assert.Equal(("PetalburgCity_Gym", toX, toY), (warp!.TargetMap, warp.TargetX, warp.TargetY));
+        }
+    }
+
+    [Fact]
+    public void ASaveFromBeforeTheSixthStretchHasItsPeopleHidden()
+    {
+        var story = new StoryState();
+        StoryMigration.Upgrade(story, 28, Array.Empty<Pokemon>(), Scripts);
+        foreach (string flag in new[] { "FLAG_HIDE_MT_CHIMNEY_TRAINERS", "FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY", "FLAG_HIDE_LAVARIDGE_TOWN_RIVAL", "FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD" })
+            Assert.True(story.Has(flag), flag);
+        Assert.False(story.Has("FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL"));
+        Assert.False(story.Has("FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL"));
+        Assert.True(StoryState.CurrentVersion >= 29);
+    }
+
+    [Fact]
+    public void TheSongsOfMtChimneyAndTheCableCarAreThere()
+    {
+        foreach (string song in new[] { "hoenn/mt_chimney", "hoenn/cable_car", "hoenn/eye_magma", "hoenn/battle_galactic_boss", "hoenn/victory_galactic_boss" })
+            Assert.True(MusicLibrary.Exists(song), song);
+        Assert.Contains("Revival Herb", MartDatabase.Stock("lavaridge_herb_shop", 0).Select(i => i.Name));
+    }
 }

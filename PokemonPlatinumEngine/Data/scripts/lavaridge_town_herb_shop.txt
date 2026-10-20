@@ -1,0 +1,25 @@
+# Lavaridge Town's herb shop (plan 21 · H4, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/LavaridgeTown_HerbShop/scripts.inc): its counter sells Emerald's four herbs
+# (marts.json's lavaridge_herb_shop), and the old man gives Charcoal once (FLAG_RECEIVED_CHARCOAL).
+
+
+script HerbClerk
+  face self player
+  speaker "Clerk"
+  say "Welcome to the herb shop! Our medicine works wonders, and it costs next to nothing."
+  shop "lavaridge_herb_shop"
+  say "Please come again!"
+  end
+
+
+script OldMan
+  face self player
+  speaker "Old Man"
+  if flag FLAG_RECEIVED_CHARCOAL goto Given
+  say "Come all the way to Lavaridge to look at herbal medicine, have you? Good for you. I like that. Here!"
+  give "Charcoal"
+  setflag FLAG_RECEIVED_CHARCOAL
+  end
+label Given
+  say "That Charcoal goes into our medicine. Let a Pokémon hold it, and its Fire moves burn all the hotter."
+  end

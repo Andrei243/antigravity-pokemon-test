@@ -1,0 +1,46 @@
+{
+  "key": "safari_zone_gate",
+  "index": 174,
+  "name": "Safari Zone Gate",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_SAFARI_HOUSE",
+  "nightMusic": "GS_SAFARI_HOUSE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 88, "z": 293, "to": "safari_zone_entrance_interior", "toWarp": 0 },
+    { "x": 89, "z": 293, "to": "safari_zone_entrance_interior", "toWarp": 0 },
+    { "x": 82, "z": 302, "to": "safari_zone_gate_pokecenter_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d47_gsman1", "looks": "gsman1", "movement": "2", "x": 85, "z": 313, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47_000+1" },
+    { "id": "d47_gsgentleman", "looks": "gsgentleman", "movement": "2", "x": 79, "z": 295, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47_003+1" },
+    { "id": "d47_tsure_poke_static_jigglypuff", "looks": "follower_mon_static_jigglypuff", "movement": "2", "x": 78, "z": 295, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47_004+1" },
+    { "id": "d47_tsure_poke_static_kangaskhan", "looks": "follower_mon_static_kangaskhan", "movement": "0", "x": 97, "z": 299, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47_002+1" },
+    { "id": "d47_middlewoman1_2", "looks": "middlewoman1_2", "movement": "0", "x": 96, "z": 299, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47_001+1" },
+    { "id": "d47_gsbabyboy1", "looks": "gsbabyboy1", "movement": "0", "x": 95, "z": 305, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47_005+1" },
+    { "id": "d47_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 95, "z": 311, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47_006+1" },
+    { "id": "d47_gswoman1", "looks": "gswoman1", "movement": "0", "x": 82, "z": 310, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47_007+1" },
+    { "id": "d47_gswoman2", "looks": "gswoman2", "movement": "16", "x": 97, "z": 314, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D47_009+1" },
+    { "id": "d47_tsure_poke_static_butterfree", "looks": "follower_mon_static_butterfree", "movement": "0", "x": 81, "z": 310, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47_008+1" },
+    { "id": "d47_tsure_poke_static_slowpoke", "looks": "follower_mon_static_slowpoke", "movement": "16", "x": 98, "z": 314, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D47_010+1" },
+    { "id": "d47_gsbabygirl1", "looks": "gsbabygirl1", "movement": "3", "x": 86, "z": 303, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "D47_012+1" },
+    { "id": "d47_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 87, "z": 300, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "D47_013+1" },
+    { "id": "d47_workman", "looks": "workman", "movement": "0", "x": 94, "z": 294, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_WORKERS", "script": "D47_015+1" },
+    { "id": "d47_workman_2", "looks": "workman", "movement": "0", "x": 95, "z": 294, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_SAFARI_ZONE_WORKERS", "script": "D47_016+1" }
+  ],
+  "signs": [
+    { "x": 91, "z": 294, "type": 1, "script": "D47_011+1" },
+    { "x": 78, "z": 305, "type": 2, "script": "std_hiddenitem_d47_tinymushroom", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_D47_TINYMUSHROOM" },
+    { "x": 86, "z": 300, "type": 2, "script": "std_hiddenitem_d47_tinymushroom_2", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_D47_TINYMUSHROOM_2" },
+    { "x": 100, "z": 299, "type": 2, "script": "std_hiddenitem_d47_tinymushroom_3", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_D47_TINYMUSHROOM_3" }
+  ],
+  "triggers": []
+}

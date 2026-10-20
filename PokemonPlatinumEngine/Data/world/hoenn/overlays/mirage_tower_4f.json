@@ -1,0 +1,12 @@
+{
+  // Mirage Tower's top floor (plan 21 · H4, part b): the Root Fossil and the Claw Fossil, one of which may be taken
+  // before the tower falls (mirage_tower_4f.txt). They stand as Kanto's Dome and Helix Fossils' cards until fossils of
+  // Hoenn's own are drawn
+  "area": "mirage_tower_4f",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round",
+  "people": {
+    "mirage_root_fossil": { "name": "Root Fossil", "npcType": "DomeFossil", "script": "RootFossil" },
+    "mirage_claw_fossil": { "name": "Claw Fossil", "npcType": "HelixFossil", "script": "ClawFossil" }
+  }
+}

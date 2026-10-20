@@ -5,7 +5,7 @@
         "Prof. Oak"
       ],
       "text": [
-        ""
+        "Profesorul Oak"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Here we are. This is the Hall of Fame, where the names of the League's Champions are kept for all time."
       ],
       "text": [
-        ""
+        "Am ajuns. Asta e Sala Faimei, unde numele Campionilor Ligii sunt păstrate pentru totdeauna."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Every trainer who has stood where you're standing came here with the Pokémon who carried them to victory."
       ],
       "text": [
-        ""
+        "Fiecare Antrenor care a stat unde stai tu acum a venit aici cu Pokémonii care l-au dus spre victorie."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player}, you and your Pokémon have earned your place among them. Let's record your team, so nobody ever forgets."
       ],
       "text": [
-        ""
+        "{player}, tu și Pokémonii tăi v-ați câștigat locul printre ei. Să vă înregistrăm echipa, ca să nu uite nimeni vreodată."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} saved the game."
       ],
       "text": [
-        ""
+        "{player} a salvat jocul."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "The game could not be saved."
       ],
       "text": [
-        ""
+        "Jocul nu a putut fi salvat."
       ]
     }
   ]

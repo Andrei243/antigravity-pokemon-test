@@ -1,0 +1,25 @@
+{
+  "key": "safari_zone_entrance_exterior",
+  "index": 357,
+  "name": "Safari Zone",
+  "matrix": 212,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_SAFARI_FIELD",
+  "nightMusic": "GS_SAFARI_FIELD",
+  "encounters": "D47R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 79, "z": 100, "to": "4095", "toWarp": 256 },
+    { "x": 80, "z": 100, "to": "4095", "toWarp": 256 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

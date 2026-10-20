@@ -1,0 +1,25 @@
+{
+  "people": {
+    "d50r0101_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When a cave's path splits, one way usually goes on and the other ends in rock. You still want to try both, don't you?",
+          "So, up the ladder or down it? I can never make up my mind."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

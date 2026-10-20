@@ -186,7 +186,9 @@ public class TextTests
         ["UI/SceneTransition.Bands.cs"] = new[]
         {
             "Leader", "Elite Four", "Champion", "Roark", "Gardenia", "Wake", "Maylene", "Fantina", "Candice", "Byron", "Volkner",
-            "Aaron", "Bertha", "Flint", "Lucian", "Cynthia", "VS"
+            "Aaron", "Bertha", "Flint", "Lucian", "Cynthia", "VS",
+            // Kanto's (plan 19 · K8): its Leaders and the Elite Four by name, and the Champion who is the rival
+            "Brock", "Misty", "Lt. Surge", "Erika", "Koga", "Sabrina", "Blaine", "Giovanni", "Lorelei", "Bruno", "Agatha", "Lance", "{rival}"
         },
         // The region and the rooms the Journal goes by, the Gyms' towns it keeps in the save, the items' uses the bag goes by, the move Surf and the bicycles
         ["Core/GameEngine.Scripts.cs"] = new[]

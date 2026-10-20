@@ -36,6 +36,12 @@
     "area": "mauville_city_gym"
   },
   {
+    "id": "flannery",
+    "type": 12,
+    "class": "Leader",
+    "area": "lavaridge_town_gym_1f"
+  },
+  {
     "id": "scott",
     "type": 2,
     "class": "Pokémon Trainer",

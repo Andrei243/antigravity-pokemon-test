@@ -223,10 +223,91 @@ public sealed class HgWorld
         return value;
     }
 
+    /// <summary>The Safari Zone's own header, whose matrix holds the zone (<c>D47R0102</c>).</summary>
+    public const string SafariExterior = "MAP_SAFARI_ZONE_ENTRANCE_EXTERIOR";
+
+    /// <summary>
+    /// The Safari Zone's area a header stands for (plan 20 · J8, part b): <c>MAP_SAFARI_ZONE_01</c> to <c>_12</c> are its
+    /// twelve areas, in <c>safari_enc.json</c>'s order (the Plains first); <c>_13</c> and <c>_14</c> name none. -1 for
+    /// any other header.
+    /// </summary>
+    public int SafariAreaOf(HgHeader header) =>
+        header.Key.StartsWith("safari_zone_", StringComparison.Ordinal) && int.TryParse(header.Key["safari_zone_".Length..], NumberStyles.None, CultureInfo.InvariantCulture, out int n)
+        && n >= 1 && n <= Safari.Count ? n - 1 : -1;
+
+    /// <summary>
+    /// One of the Safari Zone's areas as the zone holds it (plan 20 · J8, part b): HeartGold's header of each area is a
+    /// dummy whose matrix (197 and on) holds its chunk alone, and the zone itself is the exterior's header with the
+    /// area's chunk in its hole (<see cref="HgMaps.SafariCells"/>). So the area is written as the exterior is, its name,
+    /// music, camera, ground and rates, on the exterior's matrix, with the area's own tables of <c>safari_enc.json</c>
+    /// (<c>FieldSystem_GenerateSafariEncounter</c>): ten slots met as often as one another (<c>LCRandom() % 10</c>),
+    /// each at its level (the slot's <c>maxLevel</c>), the grass's species by the time of day as the rest of Johto's
+    /// (the morning's the slot's own), the water's and the rods' the day's. The slots that objects bring are left out
+    /// (the rulings).
+    /// </summary>
+    private WorldAreaFile SafariArea(HgHeader header, int area)
+    {
+        var exterior = Maps.Headers[SafariExterior];
+        var file = Area(exterior);
+        var tables = Safari[area];
+        List<AreaEncounter>? Slots(string way, string time)
+        {
+            if (!tables.Ways.TryGetValue(way, out var slots) || slots.Count == 0) return null;
+            return slots.Select(s =>
+            {
+                string constant = s.Species(heartGold: true, time);
+                return new AreaEncounter
+                {
+                    Species = GbaNames.Species(constant) ?? Note($"{header.Key}: {constant} is not in the game's data", constant),
+                    Level = s.MaxLevel.HeartGold,
+                    Weight = 1
+                };
+            }).ToList();
+        }
+        var land = Slots("land", "morn");
+        if (land != null)
+        {
+            var day = Slots("land", "day")!;
+            var night = Slots("land", "nite")!;
+            for (int i = 0; i < land.Count; i++)
+            {
+                if (day[i].Species != land[i].Species) land[i].Day = day[i].Species;
+                if (night[i].Species != land[i].Species) land[i].Night = night[i].Species;
+            }
+        }
+        var wild = EncountersOf(exterior);
+        file.Key = header.Key;
+        file.Index = header.Index;
+        file.Matrix = HgMaps.SafariMatrix;
+        file.Encounters = null;
+        file.Land = land;
+        file.LandRate = land == null ? null : wild?.Land.Rate;
+        file.Water = Slots("surf", "day");
+        file.WaterRate = file.Water == null ? null : wild?.Surf.Rate;
+        file.OldRod = Slots("oldrod", "day");
+        file.OldRodRate = file.OldRod == null ? null : wild?.OldRod.Rate;
+        file.GoodRod = Slots("goodrod", "day");
+        file.GoodRodRate = file.GoodRod == null ? null : wild?.GoodRod.Rate;
+        file.SuperRod = Slots("superrod", "day");
+        file.SuperRodRate = file.SuperRod == null ? null : wild?.SuperRod.Rate;
+        file.RockSmash = null;
+        file.RockSmashRate = null;
+        file.HoennSounds = null;
+        file.SinnohSounds = null;
+        // The exterior's events are its two ways out at the way in, which stays the exterior's: the areas have none
+        file.Warps = new();
+        file.Objects = new();
+        file.Signs = new();
+        file.Triggers = new();
+        return file;
+    }
+
     public WorldAreaFile Area(HgHeader header)
     {
+        if (SafariAreaOf(header) is var safari and >= 0) return SafariArea(header, safari);
         var events = Maps.Events(header.Events);
-        var wild = EncountersOf(header);
+        // The exterior's own table is a dummy (Rattata in every slot): the zone's Pokémon are its areas', by place
+        var wild = header.Id == SafariExterior ? null : EncountersOf(header);
         // HeartGold gives every slot of the grass a species for the morning, the day and the night (plan 20 · J2): the
         // morning's is the slot's own, and the day's and the night's are kept beside it where they differ from it
         var land = wild == null ? null : Slots(wild.Land, "morn", header.Key, range: false);
@@ -337,7 +418,7 @@ public sealed class HgWorld
         static List<string>? Distinct(List<AreaEncounter>? slots) => slots is { Count: > 0 } ? slots.Select(s => s.Species).Distinct().ToList() : null;
         foreach (var header in Maps.Headers.Values.Where(h => !h.Kanto).OrderBy(h => h.Index))
         {
-            if (EncountersOf(header) is not { } wild) continue;
+            if (header.Id == SafariExterior || EncountersOf(header) is not { } wild) continue;
             var habitat = new HabitatArea
             {
                 Key = header.Key,
@@ -354,11 +435,31 @@ public sealed class HgWorld
             if (habitat.Morning == null && habitat.Surf == null && habitat.OldRod == null && habitat.GoodRod == null && habitat.SuperRod == null) continue;
             file.Areas.Add(habitat);
         }
+        // The Safari Zone's twelve areas (plan 20 · J8, part b), shown on the gate's chunks
+        foreach (int area in HgMaps.SafariAreas)
+        {
+            var header = Maps.Headers[$"MAP_SAFARI_ZONE_{area + 1:00}"];
+            var safari = SafariArea(header, area);
+            file.Areas.Add(new HabitatArea
+            {
+                Key = header.Key,
+                Name = safari.Name,
+                Cells = cells.TryGetValue("safari_zone_gate", out var gate) ? string.Join(' ', gate) : "",
+                Morning = Distinct(safari.Land),
+                Day = safari.Land?.Select(s => s.Day ?? s.Species).Distinct().ToList(),
+                Night = safari.Land?.Select(s => s.Night ?? s.Species).Distinct().ToList(),
+                Surf = Distinct(safari.Water),
+                OldRod = Distinct(safari.OldRod),
+                GoodRod = Distinct(safari.GoodRod),
+                SuperRod = Distinct(safari.SuperRod)
+            });
+        }
         return file;
     }
 
     /// <summary>The headers whose ground a matrix holds: on the overworld those its cells name, elsewhere those that load it.</summary>
     public IEnumerable<HgHeader> AreasOn(Matrix matrix) => matrix.Headers != null
         ? matrix.Headers.Distinct().Where(Maps.Headers.ContainsKey).Select(id => Maps.Headers[id]).Where(h => h.Index != 0)
-        : Maps.Headers.Values.Where(h => h.Matrix == matrix.Id).OrderBy(h => h.Index);
+        // The Safari Zone's areas are its matrix's (plan 20 · J8, part b), not their dummy matrices' of one chunk each
+        : Maps.Headers.Values.Where(h => h.Matrix == matrix.Id && SafariAreaOf(h) < 0).OrderBy(h => h.Index);
 }

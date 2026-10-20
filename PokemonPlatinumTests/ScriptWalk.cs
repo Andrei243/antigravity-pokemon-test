@@ -367,7 +367,8 @@ internal sealed class ScriptWalk
                     Add($"{c.Name} in the bag", host => host.Bag.AddItem(item, Math.Max(1, c.Number)));
                     break;
                 case Query.Has when PokemonDatabase.Get(c.Name) is { } species:
-                    Add($"a {c.Name} on the team", host => host.Party.Add(new Pokemon(species, 30, new Random(1))));
+                    Add(c.Place == null ? $"a {c.Name} on the team" : $"a {c.Name} met at {c.Place} on the team",
+                        host => host.Party.Add(new Pokemon(species, 30, new Random(1)) { MetLocation = c.Place }));
                     break;
                 case Query.Defeated when c.Name != "self":
                     Add($"{c.Name} beaten", host => host.Story.Defeat(c.Name));

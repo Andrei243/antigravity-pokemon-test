@@ -1,0 +1,96 @@
+{
+  "key": "route_115",
+  "index": 24,
+  "name": "Route 115",
+  "matrix": 0,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE104",
+  "nightMusic": "MUS_ROUTE104",
+  "encounters": "route_115",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Swablu", "level": 23 },
+    { "species": "Taillow", "level": 23 },
+    { "species": "Swablu", "level": 25 },
+    { "species": "Taillow", "level": 24 },
+    { "species": "Taillow", "level": 25 },
+    { "species": "Swellow", "level": 25 },
+    { "species": "Jigglypuff", "level": 24 },
+    { "species": "Jigglypuff", "level": 25 },
+    { "species": "Wingull", "level": 24 },
+    { "species": "Wingull", "level": 24 },
+    { "species": "Wingull", "level": 26 },
+    { "species": "Wingull", "level": 25 }
+  ],
+  "landRate": 20,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Wingull", "level": 10, "maxLevel": 30 },
+    { "species": "Wingull", "level": 15, "maxLevel": 25 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 },
+    { "species": "Pelipper", "level": 25, "maxLevel": 30 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Tentacool", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Wailmer", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Wailmer", "level": 25, "maxLevel": 30 },
+    { "species": "Wailmer", "level": 30, "maxLevel": 35 },
+    { "species": "Wailmer", "level": 20, "maxLevel": 25 },
+    { "species": "Wailmer", "level": 35, "maxLevel": 40 },
+    { "species": "Wailmer", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 27, "z": 79, "to": "meteor_falls_1f_1r", "toWarp": 1 },
+    { "x": 21, "z": 48, "to": "terra_cave_entrance", "toWarp": 0 },
+    { "x": 36, "z": 52, "to": "terra_cave_entrance", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "woman_2", "looks": "woman_2", "movement": "wander_around", "x": 18, "z": 110, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "Route115_EventScript_Woman" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_east", "x": 5, "z": 57, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 6, "script": "TRAINER_TIMOTHY_1" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "look_north_and_west", "x": 27, "z": 95, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_NOB_1" },
+    { "id": "berry_tree", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 12, "z": 47, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 159, "script": "BerryTreeScript" },
+    { "id": "berry_tree_2", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 13, "z": 47, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 160, "script": "BerryTreeScript" },
+    { "id": "berry_tree_3", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 14, "z": 47, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 161, "script": "BerryTreeScript" },
+    { "id": "girl_3", "looks": "girl_3", "movement": "walk_in_place_south", "x": 15, "z": 92, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_CYNDY_1" },
+    { "id": "black_belt_2", "looks": "black_belt", "movement": "walk_west_and_east", "x": 19, "z": 57, "facing": 2, "rangeX": 5, "rangeZ": 0, "trainer": "normal", "sight": 2, "script": "TRAINER_KOICHI" },
+    { "id": "maniac", "looks": "maniac", "movement": "look_south_and_east", "x": 24, "z": 104, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_HECTOR" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 20, "z": 102, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_115_SUPER_POTION", "item": "Super Potion", "script": "Route115_EventScript_ItemSuperPotion" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_around", "x": 18, "z": 49, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_115_TM_FOCUS_PUNCH", "item": "TM01", "script": "Route115_EventScript_ItemTMFocusPunch" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_around", "x": 23, "z": 71, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_ROUTE_115_IRON", "item": "Iron", "script": "Route115_EventScript_ItemIron" },
+    { "id": "berry_tree_4", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 31, "z": 106, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 157, "script": "BerryTreeScript" },
+    { "id": "berry_tree_5", "looks": "berry_tree", "movement": "berry_tree_growth", "x": 31, "z": 107, "facing": 1, "rangeX": 0, "rangeZ": 0, "patch": 158, "script": "BerryTreeScript" },
+    { "id": "breakable_rock", "looks": "breakable_rock", "movement": "look_around", "x": 29, "z": 92, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_RockSmash" },
+    { "id": "item_ball_4", "looks": "item_ball", "movement": "look_around", "x": 31, "z": 98, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_115_GREAT_BALL", "item": "Great Ball", "script": "Route115_EventScript_ItemGreatBall" },
+    { "id": "running_triathlete_f", "looks": "running_triathlete_f", "movement": "walk_sequence_south_east_north_west", "x": 10, "z": 57, "facing": 1, "rangeX": 3, "rangeZ": 3, "trainer": "normal", "sight": 2, "script": "TRAINER_KYRA" },
+    { "id": "ninja_boy", "looks": "ninja_boy", "movement": "tree_disguise", "x": 11, "z": 54, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_JAIDEN" },
+    { "id": "girl_3_2", "looks": "girl_3", "movement": "look_west", "x": 15, "z": 49, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_HELENE" },
+    { "id": "lass", "looks": "lass", "movement": "look_east", "x": 10, "z": 49, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_ALIX" },
+    { "id": "lass_2", "looks": "lass", "movement": "look_west", "x": 28, "z": 104, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_MARLENE" },
+    { "id": "item_ball_5", "looks": "item_ball", "movement": "look_around", "x": 26, "z": 109, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_115_PP_UP", "item": "PP Up", "script": "Route115_EventScript_ItemPPUp" },
+    { "id": "item_ball_6", "looks": "item_ball", "movement": "look_around", "x": 12, "z": 56, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_ITEM_ROUTE_115_HEAL_POWDER", "item": "Heal Powder", "script": "Route115_EventScript_ItemHealPowder" }
+  ],
+  "signs": [
+    { "x": 16, "z": 106, "type": 0, "script": "Route115_EventScript_RouteSignRustboro" },
+    { "x": 25, "z": 80, "type": 0, "script": "Route115_EventScript_MeteorFallsSign" },
+    { "x": 15, "z": 91, "type": 2, "script": "", "item": "Heart Scale", "flag": "FLAG_HIDDEN_ITEM_ROUTE_115_HEART_SCALE" }
+  ],
+  "triggers": []
+}

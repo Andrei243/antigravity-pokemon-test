@@ -1,0 +1,48 @@
+{
+  // The Safari Zone's gate (plan 20 · J8, part b): HeartGold's plaza at the top of Route 48, our words. Visitors and
+  // their Pokémon, two stalls, a Pokémon Center, and the gate itself, whose door leads into its hall
+  // (safari_zone_entrance_interior). The two workmen by the gate come out once Warden Baoba has shown the player his
+  // Area Customizer (FLAG_HIDE_SAFARI_ZONE_WORKERS). Cameron the photographer is a later session's
+  "area": "safari_zone_gate",
+  "bgmTrack": "johto/national_park",
+  "trees": "Round",
+  "heldBack": [ "d47_gsmiddleman1" ],
+  "people": {
+    "d47_gsman1": {
+      "name": "Man",
+      "dialog": [ "The Safari Zone feels like another country. It gives me the strangest feeling, coming here." ]
+    },
+    "d47_middlewoman1_2": {
+      "name": "Woman",
+      "dialog": [ "..........", "(She doesn't seem to be one for chatting.)" ]
+    },
+    "d47_tsure_poke_static_kangaskhan": { "name": "Kangaskhan", "script": "Kangaskhan", "still": true },
+    "d47_gsgentleman": {
+      "name": "Gentleman",
+      "dialog": [ "What a Safari Zone! I chased Pokémon all morning. My Jigglypuff is in a sulk about it, I'm afraid." ]
+    },
+    "d47_tsure_poke_static_jigglypuff": { "name": "Jigglypuff", "script": "Jigglypuff" },
+    "d47_gsbabyboy1": { "name": "Boy", "script": "Singer", "still": true },
+    "d47_gsoldman1": { "name": "Old Man", "script": "Vitamins" },
+    "d47_gswoman1": { "name": "Woman", "script": "Balls", "still": true },
+    "d47_tsure_poke_static_butterfree": { "name": "Butterfree", "script": "Butterfree", "still": true },
+    "d47_gswoman2": {
+      "name": "Woman",
+      "dialog": [ "There are so many Pokémon here, but none as sweet as Slowpoke. People keep telling me I look like one!" ]
+    },
+    "d47_tsure_poke_static_slowpoke": { "name": "Slowpoke", "script": "Slowpoke" },
+    "d47_gsbabygirl1": {
+      "name": "Girl",
+      "dialog": [ "I always wanted my very first Pokémon to come from the Safari Zone." ]
+    },
+    "d47_workman": {
+      "name": "Workman",
+      "dialog": [ "You think there's some clever machinery behind those Area Customizer swaps, don't you? Well, the truth is..." ]
+    },
+    "d47_workman_2": {
+      "name": "Workman",
+      "dialog": [ "Ugh... I'm worn out. This job takes everything you've got." ]
+    }
+  },
+  "signs": { "D47_011+1": "Safari Zone\nWhere everything is thrilling! Come and meet the wild." }
+}

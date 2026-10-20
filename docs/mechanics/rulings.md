@@ -2995,7 +2995,66 @@ variables (`FLAG_HIDE_ROUTE_111_*_WINSTRATE`, `FLAG_RECEIVED_MACHO_BRACE`, `FLAG
   Mart only talks. Fallarbor's Battle Tent is its lobby (the Battle Arena's rules, plan 14 · B9).
 - **What waits**: the rest of H4 (the cable car, Mt. Chimney and Maxie, Jagged Pass, Lavaridge and Flannery, the Go-Goggles,
   the desert, Mirage Tower and its fossils, Petalburg's Gym and Norman), Route 115 and Meteor Falls' rooms behind the falls,
-  the Battle Tents' bouts, Gabby and Ty, the Secret Power man on Route 111.
+  the Battle Tents' bouts, Gabby and Ty, the Secret Power man on Route 111. (Part b, below, wrote all of H4 but the Desert
+  Ruins, Gabby and Ty and the Secret Power man.)
+
+## Mt. Chimney, Lavaridge and Petalburg's Gym (2026-10-20, plan 21 · H4, its second part)
+
+The cable car, Mt. Chimney's summit, Jagged Pass, Lavaridge Town and its Gym, Mirage Tower, Route 115, Meteor Falls'
+inner rooms and Petalburg's Gym are scripts of ours on Emerald's beats (`route_112_cable_car_station.txt`,
+`mt_chimney_cable_car_station.txt`, `mt_chimney.txt`, `lavaridge_town.txt`, `lavaridge_town_gym_1f.txt`,
+`lavaridge_town_herb_shop.txt`, `lavaridge_town_house.txt`, `mirage_tower_4f.txt`, `fallarbor_town_cozmos_house.txt`,
+`petalburg_city_gym.txt`, `petalburg_city_wallys_house.txt`), under Emerald's flags and variables
+(`VAR_CABLE_CAR_STATION_STATE`, `FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA`, `FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA`,
+`FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY`, `FLAG_HIDE_MT_CHIMNEY_TRAINERS`, `FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY`,
+`FLAG_RECEIVED_TM_RETURN`, `FLAG_RECEIVED_LAVARIDGE_EGG`, `FLAG_RECEIVED_CHARCOAL`, `FLAG_RECEIVED_TM_OVERHEAT`,
+`VAR_LAVARIDGE_TOWN_STATE`, `FLAG_RECEIVED_GO_GOGGLES`, `FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL`, `_CLAW_FOSSIL`,
+`FLAG_CHOSE_ROOT_FOSSIL`, `FLAG_CHOSE_CLAW_FOSSIL`, `VAR_MIRAGE_TOWER_STATE`, `VAR_PETALBURG_GYM_STATE`,
+`FLAG_DEFEATED_PETALBURG_GYM`, `FLAG_RECEIVED_TM_FACADE`, `VAR_PETALBURG_CITY_STATE`, `FLAG_RECEIVED_HM_SURF`). Story
+version 29: `common.HoennChapterSix`, which `HoennNewGame` calls, hides the summit's trainers and the Lava Cookie lady
+until Team Magma has gone, the rival in Lavaridge until the Go-Goggles and Wally's father in the Gym until Norman is
+beaten. What differs, and why:
+
+- **The cable car** is a scene at each station: the attendant steps up onto the platform before the car, the player
+  follows her up the station's corridor (one tile wide, so she can't walk beside them as Emerald's does), the picture goes
+  dark over the ride and the other station's arrival script puts the player down (`VAR_CABLE_CAR_STATION_STATE` 1 going
+  up, 2 coming down). Emerald's view of the car over the mountain is not drawn. Route 112's attendant waits for Team
+  Magma's grunts to leave the road (`FLAG_HIDE_ROUTE_112_TEAM_MAGMA`): Emerald's stand in her door's way, ours beside it.
+- **Mt. Chimney's summit**: Tabitha and two grunts are trainers of the map in the way; Team Aqua and Team Magma scuffle
+  in the middle with their Poochyena, each of whom only talks. Maxie battles at the machine, his people are taken off
+  behind a fade, and Archie walks round to thank the player from whichever side they spoke to Maxie from. The Meteorite
+  is read out of the machine (Emerald's `MeteoriteMachine`) and Cozmo, home in Fallarbor from then on, gives TM27 for it.
+  The mountain's trainers come out once Lavaridge Town is come to after the summit (Emerald clears their flag in
+  Lavaridge's own script), and the Lava Cookie lady sells at 200 money from the summit's quiet.
+- **Team Magma's eye song** is a song of Hoenn's own folder (`eye_magma`), which the sound map's `eyeSongs` names for
+  `Team Magma`, `Magma Admin` and `Magma Leader` (`MusicDirector.EyeSong`): a region without the file plays the class's
+  eye theme. Team Aqua keeps the eye theme part a gave both teams. The two leaders' battles and victories are Hoenn's own
+  `battle_galactic_boss` and `victory_galactic_boss` by their classes, the admins' Team Galactic's grunt theme.
+- **Lavaridge's Gym** is Emerald's two floors: the patches of sand that drop their walker to the floor of steam and the
+  vents that blow them back up are warp panels (`Overworld/WarpPanels.cs`), each to the tile over or under it. Where a
+  vent throws its rider onto plain sand that leads nowhere, the reader now counts that tile as a landing (`GbaWorld`), so
+  the builder lays no warp there. The vent under Eli, the hiker, would throw its rider into the hall's wall, and Emerald
+  keeps him standing on it for good: it is `locked`. Emerald buries its trainers in the sand and has them spring out as
+  the player comes near; here they stand on their patches in plain sight.
+- **The Go-Goggles** are Emerald's scene, but it waits for the doors it is written for: Emerald plays it on whatever tile
+  the town is next come to by, though its state is set only inside the Gym; ours plays as the player comes out of the
+  Gym or the Pokémon Center (`PLAYER_X` and `PLAYER_Y`). Emerald's rival rides off on a bicycle, a second object of the
+  town; ours runs.
+- **Mirage Tower** stands until one of its fossils is taken, where Emerald shows it on some days only. Taking either
+  hides both, shakes the floor and puts the player down in the sand before where it stood (`VAR_MIRAGE_TOWER_STATE` 1);
+  `FLAG_HOENN_MIRAGE_TOWER_FALLEN`, a flag of ours, shuts Route 111's way in (an overlay's `switches`), since Emerald hides
+  the tower's whole map object, which this world draws as its ground.
+- **Petalburg's Gym**: Emerald's doors between its rooms are warps that lead nowhere until a script moves the player; ours
+  are read, each asking "Go in?" before it lets the player through, open in the hall with four Badges
+  (`VAR_PETALBURG_GYM_STATE` 6) and in a room once its trainer is beaten. Whoever goes through comes in a tile north of
+  the room's mat facing into the room, so they don't stand on the way back out; each mat leads back to the floor before
+  the door it was come in by (the overlay's `doors`). Norman stands in the hall until the fourth Badge (Emerald's
+  `MoveNormanToEntrance`) and waits in his room from then on.
+- **HM03**: after Norman's battle Wally's father comes in, and the dark that closes in the Gym opens in Wally's house, where
+  he gives Surf (`VAR_PETALBURG_CITY_STATE` 4 to 5). Emerald walks the two of them across the city to his door. Norman's
+  Match Call is Emerald's on Route 104's boat, which H2 wrote without it, so it is not registered here.
+- **What waits**: the Desert Ruins' door (until the Regis), Gabby and Ty, the Secret Power man, Norman's rematch, the
+  harness's shots of this part.
 
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
@@ -3190,6 +3249,28 @@ and variables. What differs from FireRed, and why:
   `FLAG_GAME_COMPLETED`, Sinnoh's, is not set. What a Champion of Kanto finds afterwards (the sailor moved to
   Vermilion's harbour and the way on to Johto, the National Pokédex) is plan 19 · K8's and K9's.
 
+## Kanto's sixth chapter (2026-10-20, plan 19 · K8)
+
+What K7 left of the League's end: the way on to Johto, the songs and the bands. Nothing of Sinnoh's moved.
+
+- **The way on to Johto is by boat from Vermilion City.** FireRed has no such crossing, so the sailor is ours: a
+  captain on the quay east of the pier (301, 230), an overlay person who is `isTransportAttendant`, so
+  `common.Attendant` and `RegionDatabase.AttendantLines` speak for him as they do for Sinnoh's. He says only who may
+  come aboard until `KantoHallOfFame` is set (the region's `StoryCompleteFlag`, which the Hall of Fame's script
+  sets), and then takes the player to Johto's arrival before the house in New Bark Town. Pallet Town's shore has no
+  sailor now. The ruling of plan 18 · W10 (a region's attendant at its departure map; the next region's story is not
+  started until the previous one's Hall of Fame) is unchanged.
+- **Kanto's own songs.** The Champion's battle (`kanto/battle_champion`), the quiet room the Hall of Fame is entered
+  by (`kanto/slow_pallet`, the room's map theme: FireRed's room plays its Pallet Town theme slowed) and the credits
+  (`kanto/credits`) are compositions of ours; the ceremony itself plays `kanto/hall_of_fame` as before. A scene's song
+  that only some regions have is asked of the region's folder first (`MusicDirector.SceneSong`,
+  `AudioManager.PlaySceneMusic`) and falls back to the common role's (Title for the credits, Victory Champion for the
+  ceremony), so a new region's songs are a file and no new `MusicRole`.
+- **Kanto's bands.** The eight Leaders, the Elite Four and the Champion wear bands after their Gym's type or their
+  room (the style guide's second table), none the colour of a Sinnoh band of the same type. The Champion is the rival,
+  so his band is found by the class and the rival's name (the data's `{rival}` or whatever the player called him),
+  and the plate fills the placeholder when it is drawn. A trainer no table names still wears the plain band.
+
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,
@@ -3318,6 +3399,62 @@ Olivine's lighthouse to the Mineral Badge, as scripts of ours on HeartGold's bea
   hundred (`rocksmash` after the common `Rock` script): HeartGold's two slots are met 90 and 10 times in a hundred, the
   GBA games' five by their water's weights, the lead's ability having its say and a Repel none, as for a rod. Sinnoh's
   rocks hide nothing, as in Platinum.
-- **Left for later sessions**: Routes 47 and 48, the cliff gate and Cliff Cave, the Safari Zone and its gate (J8's
-  part b with J9's Safari Zone); Baoba on Route 40; Jasmine's and Chuck's numbers and rematches; Elm's call after the
+- **Left for later sessions**: Baoba on Route 40; Jasmine's and Chuck's numbers and rematches; Elm's call after the
   third Badge and `VAR_SCENE_ROCKET_TAKEOVER` (J11); the photographer and the weekday siblings of Routes 40 and 41.
+  (Routes 47 and 48, the cliff gate, Cliff Cave and the Safari Zone came with J8's and J9's parts b: "The Johto Safari
+  Zone", below.)
+
+## The Johto Safari Zone (2026-10-20, plan 20 · J8, part b, and J9, part b)
+
+Routes 47 and 48, the Cliff Edge Gate behind Cianwood City, Cliff Cave, the Safari Zone's gate with its Pokémon Center,
+the gate hall and the zone itself, from HeartGold's maps, events and tables (`scr_seq_D47R0101`, `D48R0101`,
+`D50R0101`, `R47`, `T26`), in our own words; Warden Baoba's call and his Owner Aptitude Test up to the Owner.
+
+- **Twelve areas side by side, no Area Customizer.** HeartGold's zone is a ring of trees round a hole of three chunks
+  by two, which the game fills as the zone loads with six of its twelve areas in the order the player has set
+  (`MapMatrix_Load`, `SafariZone_InitAreaSet`); the Area Customizer swaps the others in. Here the importer widens the
+  zone's matrix (212) to eight chunks and fills both sixes at once (`HgMaps.SafariCells`): the opening arrangement
+  (Plains, Meadow and Savannah north; Peak, Rocky Beach and Wetland south) where HeartGold puts it, and the other six
+  (Forest, Swamp, Marshland; Wasteland, Mountain, Desert) east of them in the same order. Every area is open from the
+  first visit. The machine in the hall says it can change nothing yet, and its attendant says why: arranging the
+  areas is a later session's, if ever.
+- **Each area keeps its own wild Pokémon**, read from HeartGold's `safari_enc.json` (`FieldSystem_GenerateSafariEncounter`):
+  ten slots met as often as one another, each at its level, the grass's species by the time of day as the rest of
+  Johto's are. The slots HeartGold adds for the objects placed in an area (and for days spent laid out) are left out
+  with the Customizer. Every area is named "Safari Zone", which is the place a Pokémon caught there was met.
+- **The Safari Game is HeartGold's: thirty balls and no steps** (`safari start endless`, `SafariGame.NoStepLimit`). The
+  counter takes $500 and gives thirty Safari Balls; the game ends when the last is thrown (`common.SafariOutOfBalls`,
+  which brings a Johto player back before the hall's counter) or when the player walks back out through the zone's
+  door and says so (the hall's arrival asks, as `D47R0101_006` does; no sends them back in). The step counter over the
+  field shows the balls alone for an endless game (style guide, "Field menus and notices"). The battles are Platinum's
+  Safari battles (`BattleKind.Safari`: Bait and Mud, the flight after each throw), not HeartGold's, which add a
+  Pokémon's mood and leave out Mud for Rocks; the Great Marsh's daily Pokémon never reach the zone (their table is
+  asked by the Great Marsh's own area keys).
+- **The counter's gate** moves aside in HeartGold for whoever has paid. This hall has no moving gate: its tile is
+  solid, and the player is taken through behind a fade (out: a warp into the zone; back: `place` before the counter).
+- **The zone's door leads back into the hall**, behind the counter. HeartGold's leads to "the last place" the player
+  came from; here both of its warps lead to the hall's back tile, whose arrival asks whether the game is over.
+- **Warden Baoba's call** (`VAR_UNK_4057` 1, `FLAG_UNK_0F5`, `FLAG_UNK_249`, HeartGold's): HeartGold rings as the
+  player leaves the Glitter Lighthouse with Amphy cured; here Olivine City's own arrival rings the first time it is
+  come to after the cure (`VAR_SCENE_LIGHTHOUSE_JASMINE` 2) and sets the variable to 3, a value of ours, so the call
+  comes once. The call opens the Safari Zone (the workmen leave the Cliff Edge Gate) and puts his number in the
+  Pokégear (`addcontact baoba`; his own talk on the phone is a line of `phone.txt`).
+- **The two tests are asked by where a Pokémon was met** (`if has "Geodude" met "Safari Zone"`): HeartGold asks for a
+  Geodude, and later a Sandshrew, caught in the zone by checking the met location of the team's members, which is what
+  the condition does. Geodude lives in the Peak Area, Sandshrew in the Desert Area.
+- **The second test waits a day**: HeartGold's Baoba rings once a timer of its own has run out (`VAR_UNK_4057` 3 to 4);
+  here passing the first test sets a daily flag of ours (`FLAG_DAILY_BAOBA_THINKING`), and the Safari Zone's gate on
+  Route 48 plays his call as the player comes to it on a later day. The workmen on the gate's plaza come out with the
+  second test (`FLAG_HIDE_SAFARI_ZONE_WORKERS`, set by the gate's own arrival until then), as HeartGold's do.
+- **The Owner** (`VAR_UNK_4057` 6) is greeted as one at the counter and still pays, as in HeartGold. What HeartGold asks
+  of an Owner after that (placing objects, `VAR_UNK_4057` 7 and on, `FLAG_UNK_183`) is a later session's.
+- **The Safari Zone Link** (swapping zones with a friend) is closed: its counters say it isn't ready, as the wireless
+  link is down elsewhere (decision 06 · 7).
+- **Cliff Cave's cracked rocks** stand only for a player with the National Pokédex: the cave's arrival takes them off
+  the map otherwise, as `D50R0101`'s does.
+- **Music**: no song of ours has been written for these places yet, so they borrow Johto's others (Route 38's
+  for the routes, Route 34's for the gate in the cliff, Union Cave's for Cliff Cave, the National Park's for the
+  Safari Zone, its gate and its hall).
+- **Left for later sessions**: the Embedded Tower behind Route 47's hiker (warps 4 to 6 locked), Crasher Wake by
+  Route 47's waterfall and Chuck there after the Kanto Badges, Cameron on Route 48 (the Kanto Safari Zone's link),
+  the Area Customizer and objects, and the Safari Zone's Pokémon called by the objects.

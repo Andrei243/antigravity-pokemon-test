@@ -1,0 +1,85 @@
+# The Safari Zone's gate (plan 20 · J8, part b, and J9, part b). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_D47).
+#
+# The workmen by the gate are kept off the plaza until Warden Baoba has set his second test (VAR_UNK_4057 5,
+# safari_zone_entrance_interior.txt), where HeartGold's new game sets their flag.
+#
+# Baoba's second call: once the player has shown him a Geodude from the zone (VAR_UNK_4057 3), he works on his second
+# test until the next day (FLAG_DAILY_BAOBA_THINKING, a flag of ours that the new day clears); the next time the player
+# comes to the plaza after that he rings to say it is ready (VAR_UNK_4057 4), where HeartGold rings wherever the player
+# is once the hours have passed (UpdateSafariZoneIGT, docs/mechanics/rulings.md, "The Johto Safari Zone").
+
+
+script OnEnter
+  if var VAR_UNK_4057 < 5 setflag FLAG_HIDE_SAFARI_ZONE_WORKERS
+  if var VAR_UNK_4057 != 3 end
+  if flag FLAG_DAILY_BAOBA_THINKING end
+  scene "Warden Baoba's second call"
+  sound "select"
+  text "Brrrring! Brrrring! It's the Pokégear..."
+  speaker "Baoba"
+  say "Hello, {player}! Warden Baoba here. Sorry to keep you waiting, but the second test is ready at last!"
+  say "Come and see me at the Safari Zone and I'll tell you all about it."
+  text "Click... The call has ended."
+  setvar VAR_UNK_4057 4
+  endscene
+  end
+
+
+# D47_002
+script Kangaskhan
+  cry "Kangaskhan"
+  text "Kangaskhan: ..........."
+  end
+
+
+# D47_004
+script Jigglypuff
+  cry "Jigglypuff"
+  text "Jigglypuff: Puu, pupuu!"
+  end
+
+
+# D47_005: a song one time, a jingle the next
+script Singer
+  speaker "Boy"
+  if var VAR_TEMP_SAFARI_SINGER == 1 goto Jingle
+  say "Safari, safari, oh what fun! Safari, safari, catch everyone! Pokémon are waiting for us all!"
+  say "...I made that song up. I sing it whenever I come here."
+  setvar VAR_TEMP_SAFARI_SINGER 1
+  end
+label Jingle
+  say "Up goes the Safari Ball into the blue! Out comes a friend for me and you! I love the Safari Zone!"
+  say "...That's my new jingle. Think anyone would want it for an advert?"
+  setvar VAR_TEMP_SAFARI_SINGER 0
+  end
+
+
+# D47_006: the old man's stall (HeartGold's special mart 6)
+script Vitamins
+  speaker "Old Man"
+  say "I've taken up selling drinks for Pokémon. It's all new to me, but I'll do my best!"
+  shop "safari_gate_vitamins"
+  end
+
+
+# D47_007: the woman's stall (HeartGold's special mart 14)
+script Balls
+  speaker "Woman"
+  say "Oh, are you buying? Give me a moment to set out my things... There!"
+  shop "safari_gate_balls"
+  end
+
+
+# D47_008
+script Butterfree
+  cry "Butterfree"
+  text "Butterfree: Free, free!"
+  end
+
+
+# D47_010
+script Slowpoke
+  cry "Slowpoke"
+  text "Slowpoke: ...Yawn?"
+  end

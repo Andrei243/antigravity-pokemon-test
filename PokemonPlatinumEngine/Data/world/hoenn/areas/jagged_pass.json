@@ -1,0 +1,60 @@
+{
+  "key": "jagged_pass",
+  "index": 251,
+  "name": "Jagged Pass",
+  "matrix": 200,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_PETALBURG_WOODS",
+  "nightMusic": "MUS_PETALBURG_WOODS",
+  "encounters": "jagged_pass",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Numel", "level": 21 },
+    { "species": "Numel", "level": 21 },
+    { "species": "Machop", "level": 21 },
+    { "species": "Numel", "level": 20 },
+    { "species": "Spoink", "level": 20 },
+    { "species": "Machop", "level": 20 },
+    { "species": "Spoink", "level": 21 },
+    { "species": "Machop", "level": 22 },
+    { "species": "Numel", "level": 22 },
+    { "species": "Spoink", "level": 22 },
+    { "species": "Numel", "level": 22 },
+    { "species": "Spoink", "level": 22 }
+  ],
+  "landRate": 20,
+  "warps": [
+    { "x": 14, "z": 40, "to": "route_112", "toWarp": 2 },
+    { "x": 15, "z": 40, "to": "route_112", "toWarp": 3 },
+    { "x": 13, "z": 5, "to": "mt_chimney", "toWarp": 2 },
+    { "x": 14, "z": 5, "to": "mt_chimney", "toWarp": 3 },
+    { "x": 16, "z": 18, "to": "magma_hideout_1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "hiker", "looks": "hiker", "movement": "look_east", "x": 10, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 3, "script": "TRAINER_ERIC" },
+    { "id": "camper", "looks": "camper", "movement": "look_west_and_east", "x": 16, "z": 35, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "normal", "sight": 4, "script": "TRAINER_ETHAN_1" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_around", "x": 23, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_ITEM_JAGGED_PASS_BURN_HEAL", "item": "Burn Heal", "script": "JaggedPass_EventScript_ItemBurnHeal" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_north_and_east", "x": 9, "z": 21, "facing": 0, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_DIANA_1" },
+    { "id": "magma_hideout_guard", "looks": "magma_member_m", "movement": "look_north", "x": 16, "z": 19, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_JAGGED_PASS_MAGMA_GUARD", "script": "JaggedPass_EventScript_MagmaHideoutGuard" },
+    { "id": "picnicker_2", "looks": "picnicker", "movement": "look_east", "x": 14, "z": 25, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_AUTUMN" },
+    { "id": "cycling_triathlete_m", "looks": "cycling_triathlete_m", "movement": "look_west", "x": 18, "z": 25, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_JULIO" }
+  ],
+  "signs": [
+    { "x": 8, "z": 10, "type": 2, "script": "", "item": "Full Heal", "flag": "FLAG_HIDDEN_ITEM_JAGGED_PASS_FULL_HEAL" },
+    { "x": 7, "z": 29, "type": 2, "script": "", "item": "Great Ball", "flag": "FLAG_HIDDEN_ITEM_JAGGED_PASS_GREAT_BALL" }
+  ],
+  "triggers": [
+    { "x": 21, "z": 15, "width": 1, "depth": 1, "script": "JaggedPass_EventScript_OpenMagmaHideout", "variable": "VAR_JAGGED_PASS_STATE", "value": "1" },
+    { "x": 22, "z": 20, "width": 1, "depth": 1, "script": "JaggedPass_EventScript_OpenMagmaHideout", "variable": "VAR_JAGGED_PASS_STATE", "value": "1" },
+    { "x": 21, "z": 20, "width": 1, "depth": 1, "script": "JaggedPass_EventScript_OpenMagmaHideout", "variable": "VAR_JAGGED_PASS_STATE", "value": "1" },
+    { "x": 14, "z": 15, "width": 1, "depth": 1, "script": "JaggedPass_EventScript_OpenMagmaHideout", "variable": "VAR_JAGGED_PASS_STATE", "value": "1" },
+    { "x": 13, "z": 15, "width": 1, "depth": 1, "script": "JaggedPass_EventScript_OpenMagmaHideout", "variable": "VAR_JAGGED_PASS_STATE", "value": "1" }
+  ]
+}

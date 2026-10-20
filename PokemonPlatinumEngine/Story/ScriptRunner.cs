@@ -794,7 +794,7 @@ public sealed partial class ScriptRunner
                 host.Poketch.Register(Enum.Parse<PoketchApp>(i.Name));
                 break;
             case Op.Safari:
-                if (i.Option) host.Safari.Start(i.Number > 0 ? i.Number : SafariGame.StartSteps);
+                if (i.Option) host.Safari.Start(i.Number > 0 ? i.Number : i.Number < 0 ? SafariGame.NoStepLimit : SafariGame.StartSteps);
                 else host.Safari.End();
                 break;
             case Op.Bicycle:
@@ -1839,7 +1839,7 @@ public sealed partial class ScriptRunner
             Query.Item => Condition.Holds(ItemDatabase.Get(c.Name) is { } item ? host.Bag.GetQuantity(item) : 0, c.Compare, c.Number),
             Query.Party => Condition.Holds(host.Party.Count, c.Compare, c.Number),
             Query.Knows => host.Party.Members.Any(p => p.Moves.Any(m => m.Name == c.Name)),
-            Query.Has => host.Party.Members.Any(p => p.Species.Name == c.Name),
+            Query.Has => host.Party.Members.Any(p => p.Species.Name == c.Name && (c.Place == null || p.MetLocation == c.Place)),
             Query.Yes => Result == 1,
             Query.No => Result == 0,
             Query.Won => lastOutcome == BattleOutcome.Won,

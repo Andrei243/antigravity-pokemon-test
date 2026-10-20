@@ -11,10 +11,15 @@
     "goldenrod_5f": [ "TM70", "TM17", "TM54", "TM83", "TM16", "TM33", "TM22", "TM52", "TM38", "TM25", "TM14", "TM15" ],
     // Cianwood's pharmacy (plan 20 · J9), in HeartGold's order (src/scrcmd_mart.c's list 11, SpecialMartBuy 11)
     "cianwood_pharmacy": [ "Potion", "Super Potion", "Hyper Potion", "Full Heal", "Revive" ],
+    // The two stalls before the Safari Zone's gate (plan 20 · J8, part b; src/scrcmd_mart.c's lists 6 and 14)
+    "safari_gate_vitamins": [ "Protein", "Iron", "Calcium", "Zinc", "Carbos", "HP Up" ],
+    "safari_gate_balls": [ "Air Mail", "Nest Ball", "Dusk Ball", "Quick Ball" ],
     // Hoenn's counters of plan 21 · H3: the Seashore House's Soda Pops and the Energy Guru's vitamins
     "seashore_house": [ "Soda Pop" ],
     "slateport_energy_guru": [ "Protein", "Iron", "Carbos", "Zinc", "Calcium", "HP Up" ],
     // Slateport Mart's mail counter (plan 21 · H3, part c): the Harbor Mail Mauville's Coin Case is traded for
-    "slateport_mail": [ "Harbor Mail" ]
+    "slateport_mail": [ "Harbor Mail" ],
+    // Lavaridge Town's herb shop (plan 21 · H4, part b), in Emerald's order (LavaridgeTown_HerbShop_Pokemart)
+    "lavaridge_herb_shop": [ "Energy Powder", "Energy Root", "Heal Powder", "Revival Herb" ]
   }
 }

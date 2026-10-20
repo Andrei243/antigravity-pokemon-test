@@ -4,7 +4,7 @@
       "Victory Road"
     ],
     "text": [
-      ""
+      "Drumul Victoriei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Rolando"
         ],
         "text": [
-          ""
+          "Rolando"
         ]
       },
       "before": {
@@ -22,7 +22,7 @@
           "Cooltrainer Rolando: Only the toughest trainers make it this far. Let's see if you're one of them!"
         ],
         "text": [
-          ""
+          "Antrenor As Rolando: Doar cei mai puternici Antrenori ajung până aici. Să vedem dacă ești unul dintre ei!"
         ]
       },
       "after": {
@@ -30,7 +30,7 @@
           "Cooltrainer Rolando: You're one of them, all right."
         ],
         "text": [
-          ""
+          "Antrenor As Rolando: Ești unul dintre ei, fără îndoială."
         ]
       }
     },
@@ -40,7 +40,7 @@
           "Naomi"
         ],
         "text": [
-          ""
+          "Naomi"
         ]
       },
       "before": {
@@ -48,7 +48,7 @@
           "Cooltrainer Naomi: Victory Road is the final test before the League. I'm your first exam!"
         ],
         "text": [
-          ""
+          "Antrenoare As Naomi: Drumul Victoriei e ultimul test înainte de Ligă. Eu sunt primul tău examen!"
         ]
       },
       "after": {
@@ -56,7 +56,7 @@
           "Cooltrainer Naomi: You passed with top marks."
         ],
         "text": [
-          ""
+          "Antrenoare As Naomi: Ai luat nota maximă."
         ]
       }
     },
@@ -66,7 +66,7 @@
           "Rock barrier"
         ],
         "text": [
-          ""
+          "Barieră de stâncă"
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Rock barrier"
         ],
         "text": [
-          ""
+          "Barieră de stâncă"
         ]
       }
     }

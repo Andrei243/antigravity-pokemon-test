@@ -238,6 +238,18 @@ public static class MusicDirector
         return null;
     }
 
+    /// <summary>
+    /// The song a region has for a scene that no role names (plan 19 · K8): <c>kanto/credits</c> for the credits,
+    /// <c>kanto/hall_of_fame</c> for the Hall of Fame's ceremony. Null where the region has none, and the scene plays the
+    /// role it always did (the title's theme under the credits, the Champion's victory under the ceremony).
+    /// </summary>
+    public static string? SceneSong(string? region, string name, Func<string, bool> exists)
+    {
+        if (string.IsNullOrEmpty(region)) return null;
+        string own = $"{region.ToLowerInvariant()}/{name}";
+        return exists(own) ? own : null;
+    }
+
     /// <summary>The folder, in a region's music or <c>common</c>, of the legendary and mythical Pokémon's own battle themes.</summary>
     public const string LegendaryFolder = "legendary";
 
@@ -276,6 +288,19 @@ public static class MusicDirector
         if (trainerClass != null && SoundMap.EyeThemes.TryGetValue(trainerClass, out var theme) && EyeThemes.TryGetValue(theme, out var role))
             return role;
         return MusicRole.EyeBoy;
+    }
+
+    /// <summary>
+    /// The song that plays when a trainer of this class spots the player in a region: the eye song of the region's own
+    /// folder the sound map names for the class (<c>eyeSongs</c>, plan 21 · H4, part b: Team Magma's <c>eye_magma</c>),
+    /// where the region has it, and otherwise the song of the class's eye theme (<see cref="EyeRole"/>).
+    /// </summary>
+    public static string? EyeSong(string? trainerClass, string? region, Func<string, bool> exists)
+    {
+        if (trainerClass != null && !string.IsNullOrEmpty(region) && SoundMap.EyeSongs.TryGetValue(trainerClass, out var file)
+            && exists($"{region.ToLowerInvariant()}/{file}"))
+            return $"{region.ToLowerInvariant()}/{file}";
+        return Resolve(EyeRole(trainerClass), region, exists);
     }
 
     /// <summary>The battle theme one trainer class brings: the sound map's, or the trainer battle theme.</summary>

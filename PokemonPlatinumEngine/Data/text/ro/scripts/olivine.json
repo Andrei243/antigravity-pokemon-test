@@ -1,11 +1,61 @@
 {
+  "OnEnter": [
+    {
+      "en": [
+        "Brrrring! Brrrring! It's the Pokégear..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Baoba"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hello, {player}! Warden Baoba here. Sorry to keep you waiting, but my Safari Zone is open at last!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Do you know the gate in the cave behind Cianwood City? Go through it and follow the cliff path, and you'll be there in no time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "We're a little out of the way, but do come and visit!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click... The call has ended."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "RivalAtTheGym": [
     {
       "en": [
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +63,7 @@
         "...You again. If you're here for the Gym, don't bother. The Leader's not even in it."
       ],
       "text": [
-        ""
+        "...Din nou tu. Dacă ai venit pentru Arenă, nu te obosi. Liderul nici măcar nu e în ea."
       ]
     },
     {
@@ -21,7 +71,7 @@
         "She's up that lighthouse, fussing over some sick Pokémon. A Gym Leader playing nurse!"
       ],
       "text": [
-        ""
+        "E sus, în far, ocupată cu niște Pokémoni bolnavi. Un Lider de Arenă în rol de asistentă!"
       ]
     },
     {
@@ -29,7 +79,7 @@
         "A Pokémon too weak to stand isn't worth the time. You'd waste yours on it too, wouldn't you? That's why you'll never be strong."
       ],
       "text": [
-        ""
+        "Un Pokémon prea slab ca să stea în picioare nu merită timpul. Și tu ți-l risipești pe el, nu-i așa? De-asta n-o să fii niciodată puternic."
       ]
     }
   ]

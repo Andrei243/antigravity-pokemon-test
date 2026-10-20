@@ -1,0 +1,14 @@
+# Cliff Cave (plan 20 · J8, part b). docs/scripts.md describes the language; HeartGold's beat (scr_seq_D50R0101_001):
+# without the National Pokédex the six cracked rocks are moved off the map as the cave is come to, so they stand only
+# for a player who has it.
+
+
+script OnEnter
+  if nationaldex end
+  hide d50r0101_breakrock
+  hide d50r0101_breakrock_2
+  hide d50r0101_breakrock_3
+  hide d50r0101_breakrock_4
+  hide d50r0101_breakrock_5
+  hide d50r0101_breakrock_6
+  end

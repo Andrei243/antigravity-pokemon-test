@@ -1,0 +1,6 @@
+{
+  // Mirage Tower's third floor (plan 21 · H4, part b): two cracked rocks for Rock Smash before the ladder up
+  "area": "mirage_tower_3f",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round"
+}

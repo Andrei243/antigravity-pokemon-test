@@ -148,20 +148,404 @@
     },
     {
       "en": [
-        "Four Gym Badges, {player}. Then come back and face me. I'll be waiting."
+        "Norman"
       ],
       "text": [
-        "Patru Insigne de Arenă, {player}. Apoi întoarce-te și înfruntă-mă. Te aștept."
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Four Gym Badges, {player}. Then come back and face me. Start with Roxanne in Rustboro City."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've won Rustboro's Badge? Well done! Brawly's Gym is next, in Dewford Town across the sea. Mr. Briney sails there."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You've grown stronger, {player}. I can see it in the way your Pokémon look at you. Keep going: four Badges."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Norman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "So. You really have won four Gym Badges. Then, as I promised, we'll battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}... I can't tell you how glad I am to face my own child in a real battle."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But a battle is a battle. As a Gym Leader, I'll give it everything I have!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I... lost? To you, {player}? I can hardly believe it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "But rules are rules. You've earned this. Take it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Balance Badge from Norman!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With the Balance Badge, your Pokémon can use Surf outside of battle to cross the water."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "And take this as well."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM42 holds Facade. When its user is poisoned, burned or paralysed, it hits twice as hard. Turn a bad spot into strength!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "As a Gym Leader, I'm more upset than I can say. But as your father... it makes me happy, and a little sad. Strange, isn't it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally's Father"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, there you are, {player}! Would you come with me? There's something I'd like you to have."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Norman, you won't mind if I borrow {player} for a minute or two, will you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Norman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "TM42 holds Facade. When its user is poisoned, burned or paralysed, it hits twice as hard. Turn a bad spot into strength!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Go and see your mother now and then, {player}. I'll be here, training harder than ever. I can't stay beaten by my own child!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "SpeedRoomDoor": [
+    {
+      "en": [
+        "The Speed Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "AccuracyRoomDoor": [
+    {
+      "en": [
+        "The Accuracy Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "ConfusionRoomDoor": [
+    {
+      "en": [
+        "The Confusion Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LeftDefenseRoomDoor": [
+    {
+      "en": [
+        "The Defense Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RightDefenseRoomDoor": [
+    {
+      "en": [
+        "The Defense Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RecoveryRoomDoor": [
+    {
+      "en": [
+        "The Recovery Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LeftStrengthRoomDoor": [
+    {
+      "en": [
+        "The Strength Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RightStrengthRoomDoor": [
+    {
+      "en": [
+        "The Strength Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LeftOHKORoomDoor": [
+    {
+      "en": [
+        "The One-Hit KO Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RightOHKORoomDoor": [
+    {
+      "en": [
+        "The One-Hit KO Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "LeftLeadersRoomDoor": [
+    {
+      "en": [
+        "The Gym Leader's Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "RightLeadersRoomDoor": [
+    {
+      "en": [
+        "The Gym Leader's Room. Go in?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The door appears to be locked."
+      ],
+      "text": [
+        ""
       ]
     }
   ],
   "GymGuide": [
     {
       "en": [
+        "Gym Guide"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
         "Hey there! This is the Petalburg Gym. Norman's rooms each test a trainer's skill a different way."
       ],
       "text": [
-        "Salut! Asta e Arena Petalburg. Fiecare cameră a lui Norman pune la încercare altă îndemânare a Antrenorului."
+        ""
       ]
     },
     {
@@ -169,7 +553,31 @@
         "But the doors stay shut until you've got four Badges. Rules are rules!"
       ],
       "text": [
-        "Dar ușile rămân închise până ai patru Insigne. Regula e regulă!"
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Four Badges! The doors are open to you now. Each one beyond opens once you beat the trainer in its room."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The left door goes to the Speed Room, the right to the Accuracy Room. Norman's Pokémon are Normal types: Fighting moves hit them hard!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat your own father! Whoa. I don't think anybody in Petalburg will ever forget that battle."
+      ],
+      "text": [
+        ""
       ]
     }
   ]

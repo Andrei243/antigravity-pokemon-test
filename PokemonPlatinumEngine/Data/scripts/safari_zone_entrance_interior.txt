@@ -1,0 +1,208 @@
+# The Safari Zone's gate hall (plan 20 · J8, part b, and J9, part b). docs/scripts.md describes the language; the lines
+# are our own, on HeartGold's beats (scr_seq_D47R0101). docs/mechanics/rulings.md, "The Johto Safari Zone", says what
+# is HeartGold's and what is ours.
+#
+# The Safari Game: the attendant at the counter takes $500 and gives thirty Safari Balls, and the game has no steps
+# (`safari start endless`): it is over when the last ball is thrown (common.SafariOutOfBalls brings the player back
+# here with VAR_SCENE_SAFARI_ZONE_ENTRANCE 2, and the hall's arrival sees them off) or when the player walks back out
+# through the zone's door and says so (the hall's arrival asks, as HeartGold's D47R0101_006 does). The way through the
+# counter is HeartGold's moving gate, which this hall doesn't have: the player is taken through it behind a fade.
+#
+# Warden Baoba's Owner Aptitude Test (VAR_UNK_4057, HeartGold's):
+#   1  he has rung to say the zone is open (olivine.txt): the hall's arrival plays his welcome and the first test
+#   2  catch a Geodude in the zone and show him (`has "Geodude" met "Safari Zone"`)
+#   3  shown: he is working on the second test until the next day (FLAG_DAILY_BAOBA_THINKING)
+#   4  he has rung to say it is ready (safari_zone_gate.txt): the hall's arrival plays it
+#   5  catch a Sandshrew in the zone (the Desert Area) and show him; the workmen on the plaza come out
+#   6  shown: the player is the Safari Zone's Owner
+# HeartGold's later beats (Object Arrangement, VAR_UNK_4057 7 and FLAG_UNK_183) are a later session's.
+
+
+script OnEnter
+  if var VAR_SCENE_SAFARI_ZONE_ENTRANCE == 2 goto Over
+  if safari goto Back
+  if var VAR_UNK_4057 == 1 goto Welcome
+  if var VAR_UNK_4057 == 4 goto SecondTest
+  end
+label Back
+  speaker "Attendant"
+  ask "You still have Safari Balls left. Would you like to leave the Safari Zone?"
+  if no goto Again
+  say "Certainly. Please hand back any Safari Balls you have left."
+  safari end
+  setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE 0
+  fade out
+  place player 4 6 up
+  fade in
+  say "Did you have fun? Please come again!"
+  end
+label Again
+  say "Then off you go. Have fun!"
+  warp "SafariZone" 79 99 up
+  end
+label Over
+  setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE 0
+  speaker "Attendant"
+  say "Did you have fun? Please come again!"
+  end
+label Welcome
+  scene "Warden Baoba's welcome"
+  emote d47r0101_gsgentleman exclaim
+  walk player up 2
+  face player right
+  walk d47r0101_gsgentleman left 2
+  speaker "Baoba"
+  say "There you are! I've been waiting for you. Well? What do you think of it? A brand-new Safari Zone!"
+  ask "Oh, I've just had an idea! How would you like to take my Owner Aptitude Test?"
+  if yes goto FirstTest
+  say "What, you'd turn it down? Nobody turns it down! Pass, and you become the Safari Zone's Owner!"
+  ask "Owner... Doesn't it have a lovely ring to it? Go on, take the test!"
+  if yes goto FirstTest
+  say "Ho ho! I'll take that as a yes."
+label FirstTest
+  say "Splendid! It's very simple. Catch a Geodude in my Safari Zone and come and show it to me."
+  say "They live in the grass of the Peak Area, up and to the west of the way in. It shouldn't take you long. Good luck!"
+  setvar VAR_UNK_4057 2
+  endscene
+  end
+label SecondTest
+  scene "Warden Baoba's second test"
+  emote d47r0101_gsgentleman exclaim
+  walk player up 2
+  face player right
+  walk d47r0101_gsgentleman left 2
+  speaker "Baoba"
+  say "There you are! The second test is ready. This time, catch a Sandshrew and show it to me."
+  say "Easy, you think? Not so fast! Sandshrew live only in the Desert Area, out at the far east of my zone."
+  face d47r0101_gsgentleman up
+  say "And over there is my pride and joy: the Area Customizer! One day it will let you lay out my zone's areas any way you please."
+  say "For now my twelve areas lie side by side, all open at once. The attendant beside the machine can tell you more."
+  face d47r0101_gsgentleman player
+  say "So, off to the desert with you! Find me a Sandshrew. Good luck!"
+  setvar VAR_UNK_4057 5
+  clearflag FLAG_HIDE_SAFARI_ZONE_WORKERS
+  endscene
+  end
+
+
+# D47R0101_001: the counter
+script Counter
+  speaker "Attendant"
+  if var VAR_UNK_4057 >= 6 goto Owner
+  ask "Welcome to the Safari Zone! For just $500, you can play the Safari Game and catch whatever you like. Would you like to play?"
+  if no goto Away
+  goto Pay
+label Owner
+  ask "Owner! Welcome to the Safari Zone! For just $500, you can play the Safari Game and catch whatever you like. Would you like to play?"
+  if no goto Away
+label Pay
+  takemoney 500
+  if result == 0 goto Short
+  sound "select"
+  say "That'll be $500, please! And here are your Safari Balls."
+  safari start endless
+  setvar VAR_SCENE_SAFARI_ZONE_ENTRANCE 1
+  text "{player} received 30 Safari Balls from the attendant."
+  say "We'll call you back when your last ball is thrown. Well, have fun out there!"
+  warp "SafariZone" 79 99 up
+  end
+label Short
+  say "I'm sorry, you don't have enough money. Please come again."
+  end
+label Away
+  say "Very well. Please come again!"
+  end
+
+
+# D47R0101_000: the attendant by the wall
+script Explain
+  speaker "Attendant"
+  if var VAR_UNK_4057 >= 6 goto Owner
+  ask "Hello! Is this your first time at the Safari Zone?"
+  if no goto Enjoy
+  goto Rules
+label Owner
+  ask "Welcome, Owner! Shall I explain how the Safari Zone works?"
+  if no goto Enjoy
+label Rules
+  say "In the Safari Game you're given 30 Safari Balls to catch Pokémon with. When they're gone, the game is over."
+  say "When you meet a Pokémon, you can throw Bait or Mud. Bait makes it stay longer, but it gets harder to catch."
+  say "Mud makes it easier to catch, but it might run off. Have fun in the Safari Zone!"
+  end
+label Enjoy
+  say "Have fun in the Safari Zone!"
+  end
+
+
+# D47R0101_002: the attendant by the Area Customizer
+script Customizer
+  speaker "Attendant"
+  if var VAR_UNK_4057 < 5 goto NotYet
+  say "This is the Area Customizer. In time it will let you swap the Safari Zone's areas about and set them in any order."
+  say "Every area has Pokémon of its own, so a different layout means different Pokémon to find."
+  say "For now the warden has opened all twelve areas side by side, so you can visit any of them. Do try them all!"
+  end
+label NotYet
+  say "I'm sorry, but this machine can't be used yet. Warden Baoba has some grand plan for it... or so he says."
+  say "Even we don't know what it is. It's a secret."
+  end
+
+
+# D47R0101_005: the Area Customizer itself
+script Machine
+  if var VAR_UNK_4057 < 5 goto Off
+  text "It's the Area Customizer. Twelve areas are laid out on its screen, side by side."
+  text "It's still being finished. Nothing can be changed yet."
+  end
+label Off
+  text "It's a large machine. Its screen is dark."
+  end
+
+
+# D47R0101_003 and _004: the counters of the Safari Zone Link
+script Link
+  speaker "Attendant"
+  say "This is the Safari Zone Link counter... or it will be. We're not ready yet. Please come back another time."
+  end
+
+
+# D47R0101_011: the attendant by the Link's counters
+script LinkExplain
+  speaker "Attendant"
+  say "One day, the Safari Zone Link will let you swap Safari Zones with your friends and play in theirs."
+  say "We're still getting it ready, though. I'm sorry!"
+  end
+
+
+# D47R0101_010: Warden Baoba
+script Baoba
+  speaker "Baoba"
+  if var VAR_UNK_4057 == 2 goto Geodude
+  if var VAR_UNK_4057 == 5 goto Sandshrew
+  if var VAR_UNK_4057 >= 6 goto Owner
+  say "Slow down there! When the next test is ready, I'll ring you on your Pokégear. Give me a little time, all right?"
+  end
+label Geodude
+  if has "Geodude" met "Safari Zone" goto Passed
+  say "Show me the Geodude once you've caught one. They're in the grass of the Peak Area. Good luck!"
+  end
+label Passed
+  say "Oh, splendid! A Geodude from my Safari Zone! You've passed the first test!"
+  say "...Hm? Didn't I say there were two tests? Becoming the Owner isn't as easy as all that!"
+  say "The second test is... well, I'm still working on it. I'll ring you on your Pokégear once it's ready."
+  setvar VAR_UNK_4057 3
+  setflag FLAG_DAILY_BAOBA_THINKING
+  end
+label Sandshrew
+  if has "Sandshrew" met "Safari Zone" goto Owned
+  say "Show me a Sandshrew once you've caught one. They live in the Desert Area. Good luck!"
+  end
+label Owned
+  say "You did it! A Sandshrew! I knew you could. You've passed! You are now the Owner of the Safari Zone!"
+  say "I always dreamt of young people having fun in my safari. It gives me ideas, and it helps you fill your Pokédex."
+  say "Ah, but even the Owner pays the entrance fee, I'm afraid. We have our reasons! Off you go and enjoy yourself!"
+  setvar VAR_UNK_4057 6
+  end
+label Owner
+  say "The moment I think of something new for the safari, I'll ring you on your Pokégear!"
+  end

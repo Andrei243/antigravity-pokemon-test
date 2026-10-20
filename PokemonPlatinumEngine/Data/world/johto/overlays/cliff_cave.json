@@ -1,0 +1,16 @@
+{
+  // Cliff Cave (plan 20 · J8, part b): HeartGold's cave under Route 47, our words. Three ways in from the route and
+  // ladders between its levels. Its six cracked rocks stand only once the National Pokédex is had: until then the
+  // cave's arrival takes them away, as HeartGold moves them off its map (scripts/cliff_cave.txt)
+  "area": "cliff_cave",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "d50r0101_gsmiddleman1": {
+      "name": "Man",
+      "dialog": [
+        "When a cave's path splits, one way usually goes on and the other ends in rock. You still want to try both, don't you?",
+        "So, up the ladder or down it? I can never make up my mind."
+      ]
+    }
+  }
+}

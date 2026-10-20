@@ -1,0 +1,10 @@
+{
+  // Route 48 (plan 20 · J8, part b): HeartGold's map, our words. The short grassy road north from Route 47 to the Safari
+  // Zone's gate. Cameron the photographer is a later session's (his photo album isn't built), and the four of HeartGold's
+  // that stand here only under a flag of its own are the gate's own people, placed by the gate's overlay
+  "area": "route_48",
+  "bgmTrack": "johto/route38",
+  "trees": "Round",
+  "heldBack": [ "r48_gsmiddleman1", "r48_gsman1", "r48_gswoman2", "r48_tsure_poke_static_slowpoke", "r48_gsoldman1" ],
+  "signs": { "R48_002+1": "Route 48\nNorth to the Safari Zone" }
+}

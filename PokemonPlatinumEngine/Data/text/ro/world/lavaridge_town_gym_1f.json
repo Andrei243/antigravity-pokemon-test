@@ -1,0 +1,146 @@
+{
+  "people": {
+    "flannery": {
+      "name": {
+        "en": [
+          "Flannery"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "man_2": {
+      "name": {
+        "en": [
+          "Gym Guide"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "cole": {
+      "name": {
+        "en": [
+          "Cole"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Kindler Cole: Whoa! You almost stepped on me! I was having a nice warm soak in the sand."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Kindler Cole: Back into the sand I go. It's toasty in there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "gerald": {
+      "name": {
+        "en": [
+          "Gerald"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Cooltrainer Gerald: The heat in here makes most challengers wilt. Let's see how long you last!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Cooltrainer Gerald: Not wilting at all, are you?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "axle": {
+      "name": {
+        "en": [
+          "Axle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Kindler Axle: Surprise! A sand bath does wonders for the fighting spirit!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Kindler Axle: My fighting spirit's gone a bit soggy."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "danielle": {
+      "name": {
+        "en": [
+          "Danielle"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Battle Girl Danielle: I train in the hot sand to toughen up. You won't get past me so easily!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Battle Girl Danielle: Tougher than me. Go on, Flannery's waiting."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "LavaridgeTown_Gym_1F_EventScript_LeftGymStatue": {
+      "en": [
+        "Lavaridge Town Pokémon Gym\nLeader: Flannery"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "LavaridgeTown_Gym_1F_EventScript_RightGymStatue": {
+      "en": [
+        "Lavaridge Town Pokémon Gym\nLeader: Flannery"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

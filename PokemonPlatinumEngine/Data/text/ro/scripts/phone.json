@@ -237,6 +237,64 @@
       ]
     }
   ],
+  "Baoba": [
+    {
+      "en": [
+        "Baoba"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Baoba here! My Safari Zone is open. Go through the gate in the cliff by Cianwood City and follow the path."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Baoba here! Caught that Geodude in my Safari Zone yet? It's in the grass nearest the way in. You can do it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, it's you! I'm still working out the second test. Give an old warden a little more time, will you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Perfect timing! The second test is ready at last. Come to the Safari Zone and I'll tell you all about it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Baoba here! Found a Sandshrew yet? Look in the Desert, the far corner of the zone. Good luck!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "How's my Safari Zone's owner doing? I'm dreaming up new ways to play. I'll ring you the moment I have one!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
   "HoennMom": [
     {
       "en": [
@@ -374,6 +432,24 @@
       ],
       "text": [
         "Uahahaha! {player}, tu ești? Tocmai am refăcut toate firele din Arenă. Luminile sunt mai puternice ca oricând!"
+      ]
+    }
+  ],
+  "Flannery": [
+    {
+      "en": [
+        "Flannery"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! It's Flannery. I've been training in the hot springs every morning. My Pokémon are fired up!"
+      ],
+      "text": [
+        ""
       ]
     }
   ],

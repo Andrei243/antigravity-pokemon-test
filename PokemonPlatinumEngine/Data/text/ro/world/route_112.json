@@ -6,7 +6,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Team Magma Grunt"
         ],
         "text": [
-          ""
+          "Magma Grunt"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Hiker"
         ],
         "text": [
-          ""
+          "Drumețul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "I'd like to go down to Mauville, but once I'm off these ledges, getting back up to Lavaridge is no easy climb."
         ],
         "text": [
-          ""
+          "Aș vrea să cobor la Mauville, dar odată ce părăsesc terasele astea, urcatul înapoi spre Lavaridge nu e deloc ușor."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Brice"
         ],
         "text": [
-          ""
+          "Brice"
         ]
       },
       "before": {
@@ -52,7 +52,7 @@
           "Hiker Brice: Mt. Chimney's slopes made my legs strong. Let's see how strong my Pokémon are!"
         ],
         "text": [
-          ""
+          "Drumeț Brice: Pantele Muntelui Chimney mi-au făcut picioarele puternice. Să vedem cât de puternici sunt Pokémonii mei!"
         ]
       },
       "after": {
@@ -60,7 +60,7 @@
           "Hiker Brice: My legs are fine. My pride, not so much."
         ],
         "text": [
-          ""
+          "Drumeț Brice: Picioarele mele sunt bine. Mândria mea, mai puțin."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Larry"
         ],
         "text": [
-          ""
+          "Larry"
         ]
       },
       "before": {
@@ -78,7 +78,7 @@
           "Camper Larry: I'm camping at the foot of a volcano. Exciting, right? Battle!"
         ],
         "text": [
-          ""
+          "Campist Larry: Campez la poalele unui vulcan. Palpitant, nu? Luptă!"
         ]
       },
       "after": {
@@ -86,7 +86,7 @@
           "Camper Larry: That was hotter than the volcano."
         ],
         "text": [
-          ""
+          "Campist Larry: A fost mai fierbinte decât vulcanul."
         ]
       }
     },
@@ -96,7 +96,7 @@
           "Carol"
         ],
         "text": [
-          ""
+          "Carol"
         ]
       },
       "before": {
@@ -104,7 +104,7 @@
           "Picnicker Carol: We packed a lunch for the climb! But a battle comes first."
         ],
         "text": [
-          ""
+          "Excursionistă Carol: Am luat un prânz pentru urcuș! Dar mai întâi vine lupta."
         ]
       },
       "after": {
@@ -112,7 +112,7 @@
           "Picnicker Carol: I need that lunch now."
         ],
         "text": [
-          ""
+          "Excursionistă Carol: Acum îmi trebuie prânzul ăla."
         ]
       }
     },
@@ -122,7 +122,7 @@
           "Trent"
         ],
         "text": [
-          ""
+          "Trent"
         ]
       },
       "before": {
@@ -130,7 +130,7 @@
           "Hiker Trent: My Geodude and I have climbed every mountain in Hoenn!"
         ],
         "text": [
-          ""
+          "Drumeț Trent: Geodude al meu și cu mine am urcat toți munții din Hoenn!"
         ]
       },
       "after": {
@@ -138,7 +138,7 @@
           "Hiker Trent: We'll go and climb a bigger one."
         ],
         "text": [
-          ""
+          "Drumeț Trent: Mergem să urcăm unul mai mare."
         ]
       }
     },
@@ -148,7 +148,7 @@
           "Bryant"
         ],
         "text": [
-          ""
+          "Bryant"
         ]
       },
       "before": {
@@ -156,7 +156,7 @@
           "Kindler Bryant: Being so close to the volcano fires me right up!"
         ],
         "text": [
-          ""
+          "Aprinzător Bryant: Să fiu atât de aproape de vulcan mă înfierbântă!"
         ]
       },
       "after": {
@@ -164,7 +164,7 @@
           "Kindler Bryant: Doused."
         ],
         "text": [
-          ""
+          "Aprinzător Bryant: Stins."
         ]
       }
     },
@@ -174,7 +174,7 @@
           "Shayla"
         ],
         "text": [
-          ""
+          "Shayla"
         ]
       },
       "before": {
@@ -182,7 +182,7 @@
           "Aroma Lady Shayla: The flowers by the berry trees smell lovely. Shall we battle among them?"
         ],
         "text": [
-          ""
+          "Doamna Aromelor Shayla: Florile de lângă pomii cu boabe miros minunat. Ne luptăm printre ele?"
         ]
       },
       "after": {
@@ -190,7 +190,7 @@
           "Aroma Lady Shayla: Even losing smells sweet here."
         ],
         "text": [
-          ""
+          "Doamna Aromelor Shayla: Până și înfrângerea miroase dulce aici."
         ]
       }
     }
@@ -201,7 +201,7 @@
         "Mt. Chimney\nFor Lavaridge Town or the summit, please take the cable car."
       ],
       "text": [
-        ""
+        "Muntele Chimney\nPentru Orășelul Lavaridge sau pentru vârf, te rugăm să iei telecabina."
       ]
     },
     "Route112_EventScript_MtChimneyCableCarSign": {
@@ -209,7 +209,7 @@
         "Mt. Chimney Cable Car\nA short walk up this way!"
       ],
       "text": [
-        ""
+        "Telecabina Muntelui Chimney\nO scurtă plimbare pe aici!"
       ]
     },
     "Route112_EventScript_RouteSignLavaridge": {
@@ -217,7 +217,7 @@
         "Route 112\nWest: Lavaridge Town"
       ],
       "text": [
-        ""
+        "Ruta 112\nVest: Orășelul Lavaridge"
       ]
     }
   }

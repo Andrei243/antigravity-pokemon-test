@@ -1,0 +1,7 @@
+{
+  // Meteor Falls' lower room (plan 21 · H4, part b): the deep pool under the falls, joined to the rooms above by ladders
+  // and by the falls themselves
+  "area": "meteor_falls_b1f_1r",
+  "bgmTrack": "hoenn/cave_of_origin",
+  "trees": "Round"
+}

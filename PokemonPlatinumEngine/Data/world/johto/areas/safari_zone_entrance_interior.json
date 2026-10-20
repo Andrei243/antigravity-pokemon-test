@@ -1,0 +1,35 @@
+{
+  "key": "safari_zone_entrance_interior",
+  "index": 173,
+  "name": "Safari Zone Gate",
+  "matrix": 227,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_SAFARI_HOUSE",
+  "nightMusic": "GS_SAFARI_HOUSE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 15, "to": "safari_zone_gate", "toWarp": 0 },
+    { "x": 5, "z": 2, "to": "safari_zone_entrance_exterior", "toWarp": 0 },
+    { "x": 19, "z": 2, "to": "safari_zone_entrance_exterior", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d47r0101_counterm", "looks": "counterm", "movement": "17", "x": 1, "z": 12, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D47R0101_000+1" },
+    { "id": "d47r0101_counterm_2", "looks": "counterm", "movement": "15", "x": 10, "z": 7, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47R0101_002+1" },
+    { "id": "d47r0101_counterm_3", "looks": "counterm", "movement": "15", "x": 4, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47R0101_001+1" },
+    { "id": "d47r0101_counterm_4", "looks": "counterm", "movement": "15", "x": 21, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47R0101_003+1" },
+    { "id": "d47r0101_counterm_5", "looks": "counterm", "movement": "15", "x": 18, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47R0101_004+1" },
+    { "id": "d47r0101_gsgentleman", "looks": "gsgentleman", "movement": "15", "x": 7, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D47R0101_010+1" },
+    { "id": "d47r0101_counterm_6", "looks": "counterm", "movement": "16", "x": 22, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D47R0101_011+1" }
+  ],
+  "signs": [
+    { "x": 9, "z": 6, "type": 0, "script": "D47R0101_005+1" }
+  ],
+  "triggers": []
+}

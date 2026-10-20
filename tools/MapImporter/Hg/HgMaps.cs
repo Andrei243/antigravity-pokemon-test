@@ -90,10 +90,44 @@ public sealed partial class HgMaps
         if (!matrices.TryGetValue(id, out var matrix))
         {
             if (!matrixFiles.TryGetValue(id, out string? file)) throw new InvalidDataException($"No map_matrix_{id:0000}");
-            matrices[id] = matrix = MapImporter.Matrix.ParseBinary(id, File.ReadAllBytes(file), n => n < HeaderIds.Count ? HeaderIds[n] : $"MAP_{n}");
+            matrix = MapImporter.Matrix.ParseBinary(id, File.ReadAllBytes(file), n => n < HeaderIds.Count ? HeaderIds[n] : $"MAP_{n}");
+            if (id == SafariMatrix) matrix = matrix.Widened(SafariWidth).WithCells(SafariCells());
+            matrices[id] = matrix;
         }
         return matrix;
     }
+
+    /// <summary>The Safari Zone's matrix (<c>D47R0102</c>): a ring of trees round a hole of three chunks by two, and its way in below.</summary>
+    public const int SafariMatrix = 212;
+
+    /// <summary>The chunk of the Safari Zone's first area, the Plains; area <c>n</c>'s is this plus <c>n</c> (and its own matrix 197 plus <c>n</c>).</summary>
+    public const int SafariFirstChunk = 652;
+
+    /// <summary>The six areas of the Safari Zone's opening arrangement, by HeartGold's numbers (<c>include/constants/safari.h</c>), row by row from the north-west.</summary>
+    public static readonly int[] SafariOpening = { 0, 1, 2, 3, 4, 5 };
+
+    /// <summary>The six the Area Customizer would swap in (Forest, Swamp, Marshland; Wasteland, Mountain, Desert), laid east of the opening six.</summary>
+    public static readonly int[] SafariBeyond = { 6, 7, 8, 9, 10, 11 };
+
+    /// <summary>The zone's matrix made wide enough for both sixes: the ring, six chunks, the ring.</summary>
+    public const int SafariWidth = 8;
+
+    /// <summary>
+    /// The hole HeartGold fills as the zone loads (<c>src/map_matrix.c</c>: the cell of place <c>i</c> of the
+    /// arrangement, <c>x = i % 3</c>, <c>y = i / 3</c>, inside the ring, is chunk 652 plus its area's number), filled
+    /// with the opening arrangement (<c>SafariZone_InitAreaSet</c>: Plains, Meadow and Savannah north, Peak, Rocky Beach
+    /// and Wetland south), each cell the area of its own header (<c>MAP_SAFARI_ZONE_01</c> for the Plains) so that the
+    /// game finds its wild Pokémon by place. The Area Customizer's other six are laid in the same way east of them, in a
+    /// matrix widened for them (<see cref="SafariWidth"/>): all twelve areas lie open at once, where HeartGold shows six
+    /// of them at a time (docs/mechanics/rulings.md, "The Johto Safari Zone").
+    /// </summary>
+    private IEnumerable<(int X, int Y, int Land, string Header)> SafariCells() =>
+        SafariOpening.Select((area, i) => (i % 3 + 1, i / 3 + 1, area))
+            .Concat(SafariBeyond.Select((area, i) => (i % 3 + 4, i / 3 + 1, area)))
+            .Select(c => (c.Item1, c.Item2, SafariFirstChunk + c.area, $"MAP_SAFARI_ZONE_{c.area + 1:00}"));
+
+    /// <summary>Every area of the zone, the opening six first.</summary>
+    public static IEnumerable<int> SafariAreas => SafariOpening.Concat(SafariBeyond);
 
     public IEnumerable<int> MatrixIds => matrixFiles.Keys.OrderBy(k => k);
 

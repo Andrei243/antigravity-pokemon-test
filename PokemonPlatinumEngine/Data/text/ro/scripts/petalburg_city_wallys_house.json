@@ -1,0 +1,136 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Wally's Father"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, forgive me for hurrying you off like that. But I had to thank you properly."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally's grown so much healthier since he went to Verdanturf. And it all began with the Pokémon you helped him catch."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That made him happier than I've seen him in years. And it made me happy too, as his father, that he has a friend like you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "It isn't much of a thank-you, but please take this."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "HM03 holds Surf. A Pokémon that knows it can carry you over the water, to all sorts of places you couldn't reach before."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "WallysDad": [
+    {
+      "en": [
+        "Wally's Father"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, you must be {player}. Thank you for looking after our Wally earlier."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He's been frail since he was a baby, so we've sent him to my relatives in Verdanturf Town. The air there is much cleaner."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He's already set off, you see. I wonder how far he's got by now?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I wonder how our Wally is getting on."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally will be coming home soon. I can hardly wait."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "WallysMom": [
+    {
+      "en": [
+        "Wally's Mother"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Wally was so happy when he told us he'd caught a Pokémon. I hadn't seen him smile like that in ages."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Don't tell my husband, but Wally has gone off from Verdanturf without a word to anyone."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "He's frail, but he's stubborn too. I'm sure he'll come home safe and sound one day."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

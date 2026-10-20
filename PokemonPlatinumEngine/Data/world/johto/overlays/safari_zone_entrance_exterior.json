@@ -1,0 +1,13 @@
+{
+  // The Safari Zone's way in (plan 20 · J8, part b): the path from the gate hall's back door up into the twelve areas
+  // (docs/mechanics/rulings.md, "The Johto Safari Zone"). HeartGold leads its door back to wherever the player came in
+  // from (a warp to "the last place"); here it leads back inside the hall's back door, whose arrival asks whether the
+  // game is over
+  "area": "safari_zone_entrance_exterior",
+  "bgmTrack": "johto/national_park",
+  "trees": "Round",
+  "doors": [
+    { "warp": 0, "map": "SafariZone_Gate", "x": 5, "y": 3, "facing": "Down" },
+    { "warp": 1, "map": "SafariZone_Gate", "x": 5, "y": 3, "facing": "Down" }
+  ]
+}

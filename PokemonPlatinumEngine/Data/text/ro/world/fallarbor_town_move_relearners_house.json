@@ -6,7 +6,7 @@
           "Move Relearner"
         ],
         "text": [
-          ""
+          "Amintitorul de Mișcări"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "My memory's a bit foggy today, though. Come back another time, would you?"
         ],
         "text": [
-          "",
-          ""
+          "Sunt Amintitorul de Mișcări. Pot să-i amintesc unui Pokémon o mișcare pe care o știa cândva, în schimbul unui Solz-Inimă.",
+          "Dar azi memoria mea e cam încețoșată. Revino altă dată, bine?"
         ]
       }
     }

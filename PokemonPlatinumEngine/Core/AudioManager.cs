@@ -167,6 +167,17 @@ public static class AudioManager
         if (id != null) PlayMusic(id, immediate);
     }
 
+    /// <summary>
+    /// Plays the current region's song for a scene that no role names (<see cref="MusicDirector.SceneSong"/>), or the
+    /// role's where the region has none: the credits' and the Hall of Fame's.
+    /// </summary>
+    public static void PlaySceneMusic(string scene, MusicRole fallback, bool immediate = false)
+    {
+        if (!isInitialized) return;
+        if (MusicDirector.SceneSong(Region, scene, MusicLibrary.Exists) is { } own) PlayMusic(own, immediate);
+        else PlayMusic(fallback, immediate);
+    }
+
     /// <summary>What the field sounds like now (the beds asked for last), with or without an audio device: how tests hear the ambience.</summary>
     public static IReadOnlyList<AmbienceLayer> CurrentAmbience { get; private set; } = Array.Empty<AmbienceLayer>();
 

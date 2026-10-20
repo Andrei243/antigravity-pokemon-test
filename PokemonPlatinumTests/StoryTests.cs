@@ -721,14 +721,11 @@ public class StoryTests
     /// sets each. The Hall of Fame's script (plan 02 · S14; scripts/PokemonLeagueHallOfFame.txt, Victory) asked six so,
     /// and the session that wrote a scene took its flag off this list: plan 02 · S15, part b Heatran's, Regigigas's and
     /// Charon's arrest, plan 01 · M11, part d the professor's in the Veilstone Department Store's basement, and plan 02 ·
-    /// S15, part c the last three (Dialga and Palkia at Spear Pillar, Buck spoken to at the Battleground). It is empty:
-    /// whoever asks ahead of a scene again names the flag here, one to a line.
+    /// S15, part c the last three (Dialga and Palkia at Spear Pillar, Buck spoken to at the Battleground), and plan 21 ·
+    /// H4, part b Team Magma beaten on Mt. Chimney. It is empty: whoever asks ahead of a scene again names the flag here,
+    /// one to a line.
     /// </summary>
-    internal static readonly string[] AskedAheadOfTheirScenes =
-    {
-        // Team Magma beaten on Mt. Chimney (plan 21 · H4's next part), which Fallarbor's old man and Cozmo's wife ask
-        "FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY",
-    };
+    internal static readonly string[] AskedAheadOfTheirScenes = { };
 
     [Fact]
     public void AFlagOrAVariableAskedAboutIsSetSomewhere()
