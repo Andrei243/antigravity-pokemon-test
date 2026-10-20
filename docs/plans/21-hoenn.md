@@ -417,7 +417,9 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     walk with Wally's father across Petalburg to his house (here the dark that closes in the Gym opens in the house);
     Mirage Tower's coming and going by the day (it stands until it falls); the buried trainers springing out of
     Lavaridge's sand; the rival's bicycle; the harness's shots above. Still from H2 and H3 as part a lists them.
-- [ ] H5 Dive and the sea floor (part a done 2026-10-20, wave 36: Dive, Route 124 and the sea floor under it)
+- [ ] H5 Dive and the sea floor (part a done 2026-10-20, wave 36: Dive, Route 124 and the sea floor under it; part b
+  done 2026-10-20, wave 37: the sea floor's light, bubbles, stage and sound, its record below part a's; only the frame's
+  timing on the user's machine is left before the box is ticked)
   - **Opened**: Route 124 (its sea, islets and nine swimmers; the treasure hunter's house `locked` until H8) and
     `underwater_route_124` beneath it, the first pair. The reader lays each of Emerald's underwater maps under the route
     it lies under (`GbaWorld.LayUnderItsRoutes`): the floors of Routes 124 to 128 are matrix 2, `HoennUnderwater`
@@ -455,6 +457,53 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     "Arenas (G8)" first), `AmbienceBed.Underwater` with `SoundTests`, `FieldLifeTests` and `AmbienceTests`, and the
     `profile` before and after on `HoennUnderwater` that the plan's "Done when" asks for (the kelp is sway geometry over
     every floor tile of kelp). The floors of Routes 125 to 128 open with their routes in H8.
+  - **Part b, the looks** (the style guide's "The sea floor", "Life" and "Arenas (G8)" first): **the waves' light** is a
+    64-texel net that repeats at its edges (`LifeArt.Caustics`: the edges between the cells of a 4×4 Worley pattern,
+    alpha 255 in their core and 110 at their fringe, nothing between, no lone speck), laid in two layers over the
+    composite by `WorldRenderer.DrawCaustics` in additive blend (`WeatherFx.Caustics`, `CausticLayers`: texels of 6 and
+    9 layout units drifting east and west, both down, tinted `196,236,228` at alpha 34 and 26), each wrapped by its repeat,
+    held to the 3-unit grid and pinned to the floor through the camera's target (`WorldRenderer.seaPin`), so the net goes
+    with the ground as the camera moves and every edge falls on a texel of the field; point-filtered
+    (`SceneTextures.Caustics`), timed by `FieldLife.Now`, drawn under the weather's layers and dimmed with them, and only
+    where `Map.IsUnderwater`. **The diver's bubbles** are `FieldLife.Bubbles(map, x, z)`, which the engine asks every
+    frame of the field while the player is `Diving`: a breath on every whole multiple of `BreathEvery` (2.8 s) of the
+    field's clock, three bubbles a tenth of a second apart from `HeadHeight` (1.25) over the floor, a few texels to one
+    side by the breath's number, rising 24 texels a second and swaying a texel every fifth of a second, small (cell 13)
+    for a third of a second, grown (14), bursting (15) for the last 0.15 s of 1.3 (`BubbleAt`); the same however the
+    frames fall, none made up after a pause (`BreathCatchUp`), none in a room. Each breath plays the sound `bubbles`.
+  - **Part b, the battle**: `BattleArena.Underwater` at the enum's end, which `Map.ArenaAt` gives on an underwater map
+    whatever the seabed (a stage the area's overlay names still wins), its ground still `BattleTerrain.Water`
+    (`GameEngine.TerrainAt`, part a's, unchanged, so the Dive Ball and Nature Power read as they did). The stage
+    (`BattleArenas.Underwater`): rippled sand, a sand platform on a rock skirt, kelp in rows behind and to the sides
+    (`BattleArenas.Kelp`, a lathe of four greens with double-sided blades, swaying in `MeshPass.Ground`), far rock masses
+    and boulders; lit by `ArtLook.UnderwaterArenaRig` at every hour (a blue-green key from nearly overhead, a blue fog
+    that closes in at 16 to 64, the sea for a sky with no cloud or star; not `ArenaSpec.Outdoors`); in its water
+    `ArenaFx.SeaBubbles` (thirty streams rising, every third a trio), pale shafts of light and motes, all depth-tested.
+  - **Part b, the sound**: `AmbienceBed.Underwater` at the enum's end, a 12-second bed (a muffled hum, the sea swelling
+    slowly overhead every 6 s, now and then a few low bubbles, a short echo), which `FieldAmbience.Around` gives alone
+    on an underwater map at `UnderwaterGain` (0.9), centred, whatever the weather above or the tiles' behaviours.
+    MusicRender: −28.6 dB in the bed window (−30 to −26), peak −13 dB, seam 0.007 against a largest step of 0.084. The
+    sound `bubbles` (Field, 420 ms): −27.9 dB, peak at 0.36 before the bus, clean ends. Neither heard yet.
+    `docs/sound-effects.md` has both rows.
+  - **Part b, tests** (written, not run): `FieldLifeTests` (`TheSeaFloorsNumbersAreTheStyleGuides`,
+    `ADiverBreathesOutThreeBubblesThatRiseInWholeTexelsGrowAndBurst`, `ADiversBubblesAreTheSameHoweverTheFramesFall`,
+    `AfterAPauseNoBreathIsMadeUpAndARoomHasNone`, `TheWavesLightIsHeldToTheFieldsTexelsAndPinnedToTheFloor`,
+    `TheWavesNetIsLinesInTwoStepsOfLightThatJoinAcrossItsEdges`, and the atlas test's cells 13 to 15), `AmbienceTests`
+    (`TheSeaFloorIsHeardAsItsOwnBedAloneWhateverIsAbove`; the beds' own test takes the new bed by itself), `SoundTests`
+    (`ADiverIsHeardOnceABreath`; the bank's tests take `bubbles` by themselves), `BattlePresentationTests`
+    (`TheSeaFloorIsFoughtOnItsOwnStage`, the sea floor among the arenas that ignore the clock and have something in
+    the air).
+  - **Part b, shots** (written, not taken): the `hoenn` mode's `HoennSeaShots` goes on from `h96` (now on the sea
+    floor's own stage) with `h97_bubbles_rising`, `h98_bubbles_bursting_native` and `h99_caustics_later` (each with a
+    `_native` crop), timed on the field's clock from the next breath, before the way back up; `arenas` ends with
+    `a40_underwater` and `a41_underwater_night` (the same light: the rig ignores the clock); `profile` times
+    "hoenn's sea floor", "hoenn's sea floor, in the kelp" (by `AreaSpot("underwater_route_124")`, diving) and "battle
+    on the sea floor, at the menu". No golden file should move (the arena is the face's alone, the terrain unchanged),
+    and no story or save version was raised.
+  - **Left**: the `profile` timing on the user's machine (the GTX 970) against the 8 ms budget on High, before and after
+    (`tools/dev/ab.sh` on the commit before part b with `sea floor`), which is what "Done when" still waits for: the
+    caustics are two full-screen draws of a 64-texel texture and the kelp sway geometry, so the floor is the scene to
+    watch; looking at `h94` to `h99`, `a40`, `a41` and listening to the bed and `bubbles` (MP3s from MusicRender's WAVs).
 - [ ] H6 Route 118 to Fortree
 - [ ] H7 Lilycove, Mt. Pyre and the hideouts
 - [ ] H8 Mossdeep, the Seafloor Cavern and Sootopolis

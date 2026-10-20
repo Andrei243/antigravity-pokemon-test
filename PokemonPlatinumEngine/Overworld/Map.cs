@@ -415,8 +415,8 @@ public class Map
         if (IsIndoors) return Arena ?? BattleArena.Indoors;
         var named = AreaAt(x, y)?.Arena ?? Arena;
         if (named is BattleArena.Gym or BattleArena.League) return named.Value;
-        // On the sea floor a battle is fought in the water whatever the seabed is (plan 21 · H5)
-        if (IsUnderwater) return named ?? BattleArena.Water;
+        // On the sea floor a battle is fought on the sea floor's own stage whatever the seabed is (plan 21 · H5)
+        if (IsUnderwater) return named ?? BattleArena.Underwater;
         if (InBounds(x, y))
         {
             switch (GetGroundTile(x, y))

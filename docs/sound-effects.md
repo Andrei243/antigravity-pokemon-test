@@ -43,6 +43,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `exclaim` | — | The "!" over a trainer who has seen the player, or anyone a script surprises. |
 | `surf` | — | A Pokémon is ridden out onto the water. |
 | `dive` | — | Dive taken down under the sea, or back up from its floor: a plunge and a stream of bubbles (plan 21 · H5). |
+| `bubbles` | — | A diver on the sea floor breathes out: a soft low rush and three bubbles a tenth of a second apart, every 2.8 seconds, as the field shows them (`FieldLife.Bubbles`, plan 21 · H5). |
 | `save` | `SEQ_SE_DP_SAVE` | The game is saved. |
 | `pc_on` | `SEQ_SE_DP_PC_LOGIN` | A PC is switched on: as its screen comes on in the field (`anim pc on`, plan 09 · L12). |
 | `pc_off` | `SEQ_SE_DP_PC_LOGOFF` | A PC is switched off: as its screen goes dark in the field (`anim pc off`). |
@@ -1081,6 +1082,7 @@ The field's background sound (plan 05 · A7): loops ("beds") on the mixer's ambi
 | `River` | — | Running water (river tiles) within reach. |
 | `Waves` | `SEQ_SE_DP_NAMI` | The sea, or a lake: louder the more of the view is water, from its side. |
 | `Cave` | — | In a cave (a map whose setting is a cave): a low rumble, and drips that ring round the walls. |
+| `Underwater` | — | On the sea floor (a map whose setting is `Underwater`, plan 21 · H5): the water's muffled hum, the sea overhead swelling and drawing back every six seconds, and now and then a few low bubbles, from neither side. It is heard alone: the weather of the world above and the tiles' water (which are the sea's own down there) are not. |
 
 Clear skies, clouds, fog and ash make no sound, and a room none at all. Water is heard by its tiles' behaviour (`Waterfall`, `River`, `Sea`), each tile within reach counting less the further off it is; the original's `Sea` is also the still water of lakes and ponds, so a lake's shore laps more softly than the open sea only by being smaller. **Checking them**: `dotnet run --project tools/MusicRender -- <out dir> --ambience [bed ...] [--handheld]` renders each bed looped twice, with its spectrogram, its loudness against the bus's window and the size of its seam against its largest step; `AmbienceTests` holds the same, and the field's rules (the weather, the cave, a waterfall walked up to, the sea from the shore, thunder after each flash).
 

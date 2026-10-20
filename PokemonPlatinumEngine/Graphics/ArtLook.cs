@@ -465,6 +465,7 @@ internal static class ArtLook
         Overworld.BattleArena.Snow => SnowGrade(BattleRig(hour)),
         Overworld.BattleArena.Sand => SandGrade(BattleRig(hour)),
         Overworld.BattleArena.Cave => CaveRig,
+        Overworld.BattleArena.Underwater => UnderwaterArenaRig,
         Overworld.BattleArena.Indoors => AtHour(hour, RoomBattleRigFor),
         Overworld.BattleArena.Gym or Overworld.BattleArena.League => HallRig(spec.Theme, spec.Kind == Overworld.BattleArena.League),
         _ => BattleRig(hour)
@@ -666,6 +667,22 @@ internal static class ArtLook
             ShadowTint = V(0.84f, 0.9f, 1.14f), HighlightTint = V(1.08f, 1.0f, 0.88f), Vignette = 0.42f
         },
         1f, 0.5f, new SkyColors(Rgb(16, 13, 16), Rgb(24, 20, 22), Rgb(36, 30, 32), Rgb(40, 36, 40), 0f));
+
+    /// <summary>
+    /// The sea floor in battle (plan 21 · H5; style guide, "Arenas (G8)"): it ignores the clock, as the field's sea
+    /// floor does. A blue-green key from nearly overhead, blue light all round and a little warmth off the sand; a
+    /// blue fog that closes in sooner than the field's; the sky behind is the sea, lighter overhead and deep at its
+    /// foot, with no cloud and no star; the colour drained a little, shade leaning blue.
+    /// </summary>
+    public static readonly LightRig UnderwaterArenaRig = new(
+        new SceneLighting(Dir(-0.12f, 0.94f, 0.32f), V(0.52f, 0.68f, 0.66f), V(0.4f, 0.52f, 0.64f), V(0.36f, 0.4f, 0.34f)),
+        Rgb(20, 56, 80), V(0.1f, 0.3f, 0.38f), 0.62f, 16f, 64f,
+        BattleDayPost with
+        {
+            BloomThreshold = 0.88f, BloomStrength = 0.24f, Saturation = 0.82f, Contrast = 1.04f,
+            ShadowTint = V(0.84f, 0.96f, 1.12f), HighlightTint = V(0.94f, 1.04f, 1.02f), Vignette = 0.32f
+        },
+        0f, 0.35f, new SkyColors(Rgb(92, 170, 184), Rgb(46, 112, 132), Rgb(20, 56, 80), Rgb(92, 170, 184), 0f));
 
     /// <summary>A room in battle: the indoor light of the time of day, graded like the battles.</summary>
     public static LightRig RoomBattleRigFor(TimeOfDay time)

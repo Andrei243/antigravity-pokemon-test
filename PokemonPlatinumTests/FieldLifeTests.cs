@@ -634,7 +634,8 @@ public class FieldLifeTests
         var used = new[]
         {
             FieldLife.Print, FieldLife.Puff, FieldLife.Puff + 1, FieldLife.Puff + 2, FieldLife.Leaf, FieldLife.Leaf + 1,
-            FieldLife.Ring, FieldLife.Ring + 1, FieldLife.Ring + 2, FieldLife.Drop, FieldLife.Fleck, FieldLife.Fleck + 1, FieldLife.Star
+            FieldLife.Ring, FieldLife.Ring + 1, FieldLife.Ring + 2, FieldLife.Drop, FieldLife.Fleck, FieldLife.Fleck + 1, FieldLife.Star,
+            FieldLife.Bubble, FieldLife.Bubble + 1, FieldLife.Bubble + 2
         };
         Assert.Equal(used.Length, used.Distinct().Count());
         for (int cell = 0; cell < FieldLife.Columns * 2; cell++)
@@ -778,6 +779,205 @@ public class FieldLifeTests
         int all = LifeArt.HazeSize * LifeArt.HazeSize;
         Assert.InRange(clear, all / 50, all * 3 / 4);
         Assert.InRange(thick, all / 50, all * 3 / 4);
+    }
+
+    // ------------------------------------------------------------------ the sea floor (plan 21 · H5)
+
+    private static Map SeaFloor() => new(9, 9) { Name = "SeaLab", Setting = MapSetting.Underwater };
+
+    /// <summary>A diver at the middle of a map, the field's clock run in steps of <paramref name="step"/>: the breaths let out.</summary>
+    private static int Dive(FieldLife life, Map map, float seconds, float step)
+    {
+        int breaths = 0, steps = (int)MathF.Round(seconds / step);
+        for (int i = 0; i < steps; i++)
+        {
+            life.Advance(step);
+            breaths += life.Bubbles(map, 4.5f, 4.5f);
+        }
+        return breaths;
+    }
+
+    /// <summary>The numbers the style guide gives for the sea floor ("The sea floor"): change them there first.</summary>
+    [Fact]
+    public void TheSeaFloorsNumbersAreTheStyleGuides()
+    {
+        Assert.Equal((2.8f, 0.1f, 3), (FieldLife.BreathEvery, FieldLife.BubbleApart, FieldLife.BubblesABreath));
+        Assert.Equal((1.25f, 24f, 1.3f), (FieldLife.HeadHeight, FieldLife.BubbleRise, FieldLife.BubbleTime));
+        Assert.Equal((0.33f, 0.15f, 0.2f), (FieldLife.BubbleSmall, FieldLife.BubbleBursts, FieldLife.BubbleSways));
+        Assert.Equal((64, 4), (LifeArt.CausticSize, LifeArt.CausticCells));
+        Assert.Equal(2, WeatherFx.CausticLayers.Length);
+        Assert.Equal((6f, 9f, 4f), (WeatherFx.CausticLayers[0].Scale, WeatherFx.CausticLayers[0].East, WeatherFx.CausticLayers[0].Down));
+        Assert.Equal((9f, -12f, 6f), (WeatherFx.CausticLayers[1].Scale, WeatherFx.CausticLayers[1].East, WeatherFx.CausticLayers[1].Down));
+        foreach (var (layer, alpha) in WeatherFx.CausticLayers.Zip(new[] { 34, 26 }))
+            Assert.Equal((196, 236, 228, alpha), ((int)layer.Tint.R, (int)layer.Tint.G, (int)layer.Tint.B, (int)layer.Tint.A));
+
+        var life = new FieldLife();
+        Dive(life, SeaFloor(), 2.9f, Frame);
+        var (_, upright) = Quads(life);
+        Assert.NotEmpty(upright);
+        Assert.All(upright, q => Assert.Equal((214, 236, 250), (q.Tint.R, q.Tint.G, q.Tint.B)));
+    }
+
+    [Fact]
+    public void ADiverBreathesOutThreeBubblesThatRiseInWholeTexelsGrowAndBurst()
+    {
+        const float texel = 1f / 32f;
+        var map = SeaFloor();
+        var life = new FieldLife();
+        // Nothing before the first breath is due
+        Assert.Equal(0, Dive(life, map, 2.7f, Frame));
+        Assert.Empty(Quads(life).Upright);
+        // Then one breath, its three bubbles from over the diver's head, a tenth of a second apart
+        Assert.Equal(1, Dive(life, map, 0.35f, Frame));
+        var (flat, upright) = Quads(life);
+        Assert.Empty(flat);
+        Assert.Equal(FieldLife.BubblesABreath, upright.Count);
+        foreach (var q in upright)
+        {
+            Assert.Equal(FieldLife.Bubble, q.Cell);
+            float up = q.At.Y - FieldLife.HeadHeight;
+            Assert.InRange(up, 0f, 0.3f * FieldLife.BubbleRise * texel + 0.001f);
+            // Up and to the side in whole texels
+            Assert.True(MathF.Abs(up / texel - MathF.Round(up / texel)) < 0.01f, $"{up} is no whole texel up");
+            float aside = q.At.X - 4.5f;
+            Assert.True(MathF.Abs(aside / texel - MathF.Round(aside / texel)) < 0.01f, $"{aside} is no whole texel aside");
+            Assert.InRange(MathF.Abs(aside), 0f, 5f * texel + 0.001f);
+            Assert.Equal(4.7f, q.At.Z, 4);
+        }
+        // Each a little higher the older it is
+        Assert.Equal(FieldLife.BubblesABreath, upright.Select(q => q.At.Y).Distinct().Count());
+
+        // Small, grown, then bursting; up a texel every 1/24 of a second, a texel aside on every other fifth of a second
+        Assert.Equal((0f, 0f, FieldLife.Bubble), FieldLife.BubbleAt(0f, 1));
+        Assert.Equal(FieldLife.Bubble, FieldLife.BubbleAt(0.32f, 1).Cell);
+        Assert.Equal(FieldLife.Bubble + 1, FieldLife.BubbleAt(0.34f, 1).Cell);
+        Assert.Equal(FieldLife.Bubble + 1, FieldLife.BubbleAt(1.14f, 1).Cell);
+        Assert.Equal(FieldLife.Bubble + 2, FieldLife.BubbleAt(1.16f, 1).Cell);
+        Assert.Equal(12f * texel, FieldLife.BubbleAt(0.5f, 1).Up, 5);
+        Assert.Equal(texel, FieldLife.BubbleAt(0.25f, 1).Aside, 5);
+        Assert.Equal(-texel, FieldLife.BubbleAt(0.25f, -1).Aside, 5);
+        Assert.Equal(0f, FieldLife.BubbleAt(0.45f, 1).Aside, 5);
+        for (float age = 0f; age < FieldLife.BubbleTime; age += 0.013f)
+        {
+            var (up, aside, _) = FieldLife.BubbleAt(age, -1);
+            Assert.True(MathF.Abs(up / texel - MathF.Round(up / texel)) < 0.01f);
+            Assert.True(aside is 0f or -texel);
+            Assert.True(FieldLife.BubbleAt(age + 0.05f, -1).Up >= up);
+        }
+        // Gone once their time is up
+        Dive(life, map, FieldLife.BubbleTime + 0.3f, Frame);
+        Assert.Empty(Quads(life).Upright);
+    }
+
+    [Fact]
+    public void ADiversBubblesAreTheSameHoweverTheFramesFall()
+    {
+        // Two divers to 6.07 seconds, one in hundredths and one in twentieths: the same breaths, the same bubbles
+        var map = SeaFloor();
+        var fine = new FieldLife();
+        int fineBreaths = Dive(fine, map, 6.07f, 0.01f);
+        var coarse = new FieldLife();
+        coarse.Advance(0.07f);
+        int coarseBreaths = coarse.Bubbles(map, 4.5f, 4.5f) + Dive(coarse, map, 6f, 0.05f);
+        Assert.Equal(2, fineBreaths);
+        Assert.Equal(fineBreaths, coarseBreaths);
+
+        static List<string> Seen(FieldLife life) => Quads(life).Upright
+            .Select(q => $"{q.At.X:F3} {q.At.Y:F3} {q.At.Z:F3} {q.Cell} {q.Tint.A}").OrderBy(s => s).ToList();
+        var a = Seen(fine);
+        Assert.Equal(FieldLife.BubblesABreath, a.Count);
+        Assert.Equal(a, Seen(coarse));
+    }
+
+    [Fact]
+    public void AfterAPauseNoBreathIsMadeUpAndARoomHasNone()
+    {
+        var map = SeaFloor();
+        var life = new FieldLife();
+        Dive(life, map, 0.5f, Frame);
+        // The field stood still behind a menu for five seconds, then goes on: no breath is owed
+        for (int i = 0; i < 300; i++) life.Advance(Frame);
+        Assert.Equal(0, life.Bubbles(map, 4.5f, 4.5f));
+        Assert.Empty(Quads(life).Upright);
+        // From then on they come as before
+        Assert.Equal(1, Dive(life, map, FieldLife.BreathEvery, Frame));
+
+        // Nobody breathes out bubbles in a room
+        var room = new Map(9, 9) { Name = "SeaRoom", Interior = InteriorStyle.House };
+        var dry = new FieldLife();
+        Assert.Equal(0, Dive(dry, room, 6f, Frame));
+        Assert.Equal(0, dry.Count);
+    }
+
+    private static List<HazeLayer> Caustics(double time, float pinX, float pinY)
+    {
+        var layers = new List<HazeLayer>();
+        WeatherFx.Caustics(time, pinX, pinY, layers);
+        return layers;
+    }
+
+    [Fact]
+    public void TheWavesLightIsHeldToTheFieldsTexelsAndPinnedToTheFloor()
+    {
+        foreach (double time in new[] { 0.0, 7.3, 12.6, 4000.25 })
+            foreach (var (px, py) in new[] { (0f, 0f), (123.4f, 56.7f), (-9001.5f, 4321.9f) })
+            {
+                var layers = Caustics(time, px, py);
+                Assert.Equal(WeatherFx.CausticLayers.Length, layers.Count);
+                Assert.Equal(layers, Caustics(time, px, py));
+                for (int i = 0; i < layers.Count; i++)
+                {
+                    var layer = layers[i];
+                    float repeat = LifeArt.CausticSize * layer.Scale;
+                    Assert.Equal(WeatherFx.CausticLayers[i].Scale, layer.Scale);
+                    Assert.Equal(WeatherFx.CausticLayers[i].Tint, layer.Tint);
+                    foreach (float v in new[] { layer.OffsetX, layer.OffsetY })
+                    {
+                        Assert.True(MathF.Abs(v / 3f - MathF.Round(v / 3f)) < 0.001f, $"{v} is not on the three-unit grid");
+                        Assert.InRange(v, 0f, repeat - 3f);
+                    }
+                }
+            }
+
+        // The light drifts with the time
+        Assert.NotEqual(Caustics(7.3, 0f, 0f), Caustics(9.3, 0f, 0f));
+        // And goes with the floor: the floor moved 96 units across the picture moves the net as far
+        var still = Caustics(7.3, 123.4f, 56.7f);
+        var moved = Caustics(7.3, 123.4f + 96f, 56.7f - 96f);
+        for (int i = 0; i < still.Count; i++)
+        {
+            float repeat = LifeArt.CausticSize * still[i].Scale;
+            Assert.Equal((still[i].OffsetX + 96f) % repeat, moved[i].OffsetX, 2);
+            Assert.Equal((still[i].OffsetY - 96f + repeat) % repeat, moved[i].OffsetY, 2);
+        }
+    }
+
+    [Fact]
+    public void TheWavesNetIsLinesInTwoStepsOfLightThatJoinAcrossItsEdges()
+    {
+        var net = LifeArt.Caustics();
+        int size = LifeArt.CausticSize;
+        Assert.Equal((size, size), (net.Width, net.Height));
+        int lit = 0, core = 0;
+        for (int y = 0; y < size; y++)
+            for (int x = 0; x < size; x++)
+            {
+                var texel = net.Get(x, y);
+                Assert.True(texel.A is 0 or 110 or 255, $"({x}, {y}) has alpha {texel.A}");
+                if (texel.A == 0) continue;
+                Assert.Equal((255, 255, 255), (texel.R, texel.G, texel.B));
+                lit++;
+                if (texel.A == 255) core++;
+                // No lone speck: every lit texel has a lit neighbour, across the edge as well
+                bool joined = false;
+                for (int dy = -1; dy <= 1 && !joined; dy++)
+                    for (int dx = -1; dx <= 1 && !joined; dx++)
+                        if ((dx, dy) != (0, 0) && net.Get((x + dx + size) % size, (y + dy + size) % size).A > 0) joined = true;
+                Assert.True(joined, $"a lone speck at ({x}, {y})");
+            }
+        int all = size * size;
+        Assert.InRange(lit, all / 10, all * 45 / 100);
+        Assert.InRange(core, all / 20, all / 4);
     }
 
     // ------------------------------------------------------------------ weather over the picture

@@ -165,6 +165,30 @@ public class AmbienceTests
         Assert.True(river.Gain > 0.5f && river.Pan < 0f, $"{river}");
     }
 
+    [Theory]
+    [InlineData(FieldWeather.Clear)]
+    [InlineData(FieldWeather.Rain)]
+    [InlineData(FieldWeather.Thunderstorm)]
+    public void TheSeaFloorIsHeardAsItsOwnBedAloneWhateverIsAbove(FieldWeather weather)
+    {
+        // Plan 21 · H5: under the sea nothing of the weather overhead and nothing of the waves is heard, only the sea floor's hum
+        var floor = new Map(40, 20) { Weather = weather, Setting = MapSetting.Underwater };
+        for (int y = 0; y < 20; y++)
+            for (int x = 20; x < 40; x++) floor.SetBehaviour(x, y, TileBehavior.Sea);
+        for (int y = 4; y < 10; y++) floor.SetBehaviour(30, y, TileBehavior.Waterfall);
+        foreach (var (x, y) in new[] { (5, 5), (25, 7), (31, 10) })
+        {
+            var layer = Assert.Single(FieldAmbience.Around(floor, x, y));
+            Assert.Equal(AmbienceBed.Underwater, layer.Bed);
+            Assert.Equal(FieldAmbience.UnderwaterGain, layer.Gain);
+            Assert.Equal(0f, layer.Pan);
+        }
+        // The bed is a long, slow one, and nowhere else is it heard
+        Assert.True(Ambience.LoopSeconds(AmbienceBed.Underwater) >= 8f);
+        Assert.DoesNotContain(FieldAmbience.Around(new Map(12, 12) { Weather = weather }, 6, 6), l => l.Bed == AmbienceBed.Underwater);
+        Assert.DoesNotContain(FieldAmbience.Around(new Map(12, 12) { Weather = weather, Setting = MapSetting.Cave }, 6, 6), l => l.Bed == AmbienceBed.Underwater);
+    }
+
     [Fact]
     public void ASoundOfTheFieldIsHeardFromItsSideOfTheScreen()
     {
