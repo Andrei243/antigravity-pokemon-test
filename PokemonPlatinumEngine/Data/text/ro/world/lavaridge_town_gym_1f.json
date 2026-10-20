@@ -6,7 +6,7 @@
           "Flannery"
         ],
         "text": [
-          ""
+          "Flannery"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Cole"
         ],
         "text": [
-          ""
+          "Cole"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Kindler Cole: Whoa! You almost stepped on me! I was having a nice warm soak in the sand."
         ],
         "text": [
-          ""
+          "Aprinzător Cole: Hopa! Era să calci pe mine! Făceam o baie caldă în nisip."
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Kindler Cole: Back into the sand I go. It's toasty in there."
         ],
         "text": [
-          ""
+          "Aprinzător Cole: Mă întorc în nisip. E cald acolo."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Gerald"
         ],
         "text": [
-          ""
+          "Gerald"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Cooltrainer Gerald: The heat in here makes most challengers wilt. Let's see how long you last!"
         ],
         "text": [
-          ""
+          "Antrenor As Gerald: Căldura de aici îi veștejește pe cei mai mulți provocatori. Hai să vedem cât reziști!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Cooltrainer Gerald: Not wilting at all, are you?"
         ],
         "text": [
-          ""
+          "Antrenor As Gerald: Nu te veștejești deloc, nu-i așa?"
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Axle"
         ],
         "text": [
-          ""
+          "Axle"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Kindler Axle: Surprise! A sand bath does wonders for the fighting spirit!"
         ],
         "text": [
-          ""
+          "Aprinzător Axle: Surpriză! O baie de nisip face minuni pentru spiritul de luptă!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Kindler Axle: My fighting spirit's gone a bit soggy."
         ],
         "text": [
-          ""
+          "Aprinzător Axle: Spiritul meu de luptă s-a cam muiat."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Danielle"
         ],
         "text": [
-          ""
+          "Danielle"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Battle Girl Danielle: I train in the hot sand to toughen up. You won't get past me so easily!"
         ],
         "text": [
-          ""
+          "Luptătoare Danielle: Mă antrenez în nisipul fierbinte ca să mă întăresc. Nu mă treci atât de ușor!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Battle Girl Danielle: Tougher than me. Go on, Flannery's waiting."
         ],
         "text": [
-          ""
+          "Luptătoare Danielle: Mai puternic decât mine. Du-te, Flannery te așteaptă."
         ]
       }
     }
@@ -131,7 +131,7 @@
         "Lavaridge Town Pokémon Gym\nLeader: Flannery"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orășelul Lavaridge\nLideră: Flannery"
       ]
     },
     "LavaridgeTown_Gym_1F_EventScript_RightGymStatue": {
@@ -139,7 +139,7 @@
         "Lavaridge Town Pokémon Gym\nLeader: Flannery"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orășelul Lavaridge\nLideră: Flannery"
       ]
     }
   }

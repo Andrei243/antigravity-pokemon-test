@@ -5,7 +5,7 @@
         "Flannery"
       ],
       "text": [
-        ""
+        "Flannery"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome! I'm Flannery, the Leader of Lavaridge's Gym. My grandfather handed it to me not long ago."
       ],
       "text": [
-        ""
+        "Bine ai venit! Sunt Flannery, Lidera Arenei din Lavaridge. Bunicul mi-a lăsat-o nu de mult."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I may be new at this, but don't you dare go easy on me! My Fire Pokémon and I are burning to battle!"
       ],
       "text": [
-        ""
+        "Poate sunt nouă în meserie, dar să nu te porți blând cu mine! Pokémonii mei de Foc și cu mine ardem de nerăbdare să ne luptăm!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Oh... I lost. I think I was trying so hard to act like a Leader that I forgot to just be myself."
       ],
       "text": [
-        ""
+        "Of... am pierdut. Cred că m-am străduit atât de tare să par o Lideră, încât am uitat să fiu eu însămi."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Thank you. You've reminded me of something important. Please, take the Heat Badge."
       ],
       "text": [
-        ""
+        "Mulțumesc. Mi-ai amintit un lucru important. Te rog, ia Insigna Arșiță."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "{player} received the Heat Badge from Flannery!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Arșiță de la Flannery!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "With the Heat Badge, your Pokémon can use Strength outside of battle to shove big boulders around."
       ],
       "text": [
-        ""
+        "Cu Insigna Arșiță, Pokémonii tăi pot folosi Forță în afara luptei, ca să împingă bolovani mari."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "And this is my thanks for a hot battle. Take it!"
       ],
       "text": [
-        ""
+        "Și asta e mulțumirea mea pentru o luptă fierbinte. Ia-o!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "TM50 holds Overheat. It's the strongest Fire move there is, but it wears its user out. Use it boldly!"
       ],
       "text": [
-        ""
+        "TM50 conține Supraîncălzire. E cea mai puternică mișcare de Foc, dar îl epuizează pe cel care o folosește. Folosește-o cu curaj!"
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Can I have your number, too? I'd like to tell you how I'm getting on as a Leader."
       ],
       "text": [
-        ""
+        "Pot să-ți iau și numărul? Aș vrea să-ți povestesc cum mă descurc ca Lideră."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Registered Flannery in the PokéNav."
       ],
       "text": [
-        ""
+        "Flannery a fost înregistrată în PokéNav."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "TM50 holds Overheat. It's the strongest Fire move there is, but it wears its user out. Use it boldly!"
       ],
       "text": [
-        ""
+        "TM50 conține Supraîncălzire. E cea mai puternică mișcare de Foc, dar îl epuizează pe cel care o folosește. Folosește-o cu curaj!"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "I'm going to train harder than anyone! Next time we meet, I'll be a Leader worthy of the name."
       ],
       "text": [
-        ""
+        "O să mă antrenez mai mult decât oricine! Data viitoare când ne întâlnim, voi fi o Lideră demnă de acest nume."
       ]
     }
   ],
@@ -111,7 +111,7 @@
         "Gym Guide"
       ],
       "text": [
-        ""
+        "Ghidul Arenei"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "Hey, champ in the making! Flannery's Gym is built on hot springs. Watch your step: the sand gives way!"
       ],
       "text": [
-        ""
+        "Salutare! Arena lui Flannery e construită pe izvoare termale. Ai grijă pe unde calci: nisipul cedează!"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Fall through and the steam vents below will blow you back up. Her Pokémon are Fire types, so bring Water or Ground moves!"
       ],
       "text": [
-        ""
+        "Dacă cazi, gurile de abur de dedesubt te aruncă înapoi sus. Pokémonii ei sunt de tip Foc, așa că adu mișcări de Apă sau de Pământ!"
       ]
     },
     {
@@ -135,7 +135,7 @@
         "You beat Flannery! That was one hot battle. Even the steam stopped to watch!"
       ],
       "text": [
-        ""
+        "Ai învins-o pe Flannery! Ce luptă fierbinte! Până și aburul s-a oprit să se uite!"
       ]
     }
   ]

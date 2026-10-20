@@ -5,7 +5,7 @@
         "It's the Root Fossil! The floor around it looks ready to crumble away..."
       ],
       "text": [
-        ""
+        "E Fosila Rădăcină! Podeaua din jurul ei pare gata să se prăbușească..."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Take the Root Fossil anyway?"
       ],
       "text": [
-        ""
+        "Iei Fosila Rădăcină oricum?"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "{player} left the Root Fossil where it lay."
       ],
       "text": [
-        ""
+        "{player} a lăsat Fosila Rădăcină unde era."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "It's the Claw Fossil! The floor around it looks ready to crumble away..."
       ],
       "text": [
-        ""
+        "E Fosila Gheară! Podeaua din jurul ei pare gata să se prăbușească..."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Take the Claw Fossil anyway?"
       ],
       "text": [
-        ""
+        "Iei Fosila Gheară oricum?"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "{player} left the Claw Fossil where it lay."
       ],
       "text": [
-        ""
+        "{player} a lăsat Fosila Gheară unde era."
       ]
     }
   ],
@@ -57,7 +57,7 @@
         "Mirage Tower crumbled into the sand and was gone, as if it had never been there at all..."
       ],
       "text": [
-        ""
+        "Turnul Miraj s-a năruit în nisip și a dispărut, de parcă nu ar fi existat niciodată..."
       ]
     }
   ]

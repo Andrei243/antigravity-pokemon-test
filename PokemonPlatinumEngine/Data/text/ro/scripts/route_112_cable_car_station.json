@@ -13,10 +13,7 @@
         "Welcome to the Mt. Chimney Cable Car! Shall I send you up to the summit?"
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Bun venit la Telecabina Muntelui Chimney. Niște oameni cu aspect dubios au dat târcoale pe-afară, nu-i așa?"
+        "Bine ai venit la Telecabina Muntelui Chimney! Te trimit sus, pe vârf?"
       ]
     },
     {
@@ -24,10 +21,7 @@
         "Lovely! Step this way, please, and mind the gap."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Mă tem că telecabina e în verificare acum. Te rog să revii mai târziu!"
+        "Perfect! Pe aici, te rog, și ai grijă la prag."
       ]
     },
     {
@@ -35,10 +29,7 @@
         "The car sways gently on its wire as it climbs above the ash..."
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Oamenii ăia în roșu au plecat, în sfârșit. Dar telecabina e încă în verificare, îmi pare rău."
+        "Cabina se leagănă ușor pe cablu în timp ce urcă deasupra cenușii..."
       ]
     },
     {
@@ -46,10 +37,7 @@
         "Whenever you're ready. The view from the top is worth the trip!"
       ],
       "text": [
-        ""
-      ],
-      "was": [
-        "Va funcționa din nou în curând. Te rog să revii mai târziu!"
+        "Când ești gata. Priveliștea de sus merită drumul!"
       ]
     },
     {
@@ -57,7 +45,7 @@
         "Welcome to the Mt. Chimney Cable Car. Some rough-looking people have been hanging about outside, haven't they?"
       ],
       "text": [
-        ""
+        "Bine ai venit la Telecabina Muntelui Chimney. Niște oameni cu aspect dubios au dat târcoale pe-afară, nu-i așa?"
       ]
     },
     {
@@ -65,7 +53,7 @@
         "I'm afraid I can't send anyone up while they're there. Please come back later!"
       ],
       "text": [
-        ""
+        "Mă tem că nu pot trimite pe nimeni sus cât timp sunt ei acolo. Te rog să revii mai târziu!"
       ]
     }
   ]

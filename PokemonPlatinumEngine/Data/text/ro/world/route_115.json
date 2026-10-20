@@ -6,7 +6,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "The sea breeze up here is lovely. Meteor Falls is just north, if you fancy a look at the waterfalls."
         ],
         "text": [
-          ""
+          "Briza mării de aici de sus e încântătoare. Cascada Meteorilor e chiar la nord, dacă ai chef să vezi cascadele."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Timothy"
         ],
         "text": [
-          ""
+          "Timothy"
         ]
       },
       "before": {
@@ -32,7 +32,7 @@
           "Expert Timothy: I've trained on this cliff since before you were born. Let me show you what that means!"
         ],
         "text": [
-          ""
+          "Expert Timothy: M-am antrenat pe stânca asta dinainte să te naști. Lasă-mă să-ți arăt ce înseamnă asta!"
         ]
       },
       "after": {
@@ -40,7 +40,7 @@
           "Expert Timothy: Hm! The young learn quickly these days."
         ],
         "text": [
-          ""
+          "Expert Timothy: Hm! Tinerii învață repede în zilele noastre."
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Nob"
         ],
         "text": [
-          ""
+          "Nob"
         ]
       },
       "before": {
@@ -58,7 +58,7 @@
           "Black Belt Nob: The waves pound the shore, and I pound my training! Hiyah!"
         ],
         "text": [
-          ""
+          "Centură Neagră Nob: Valurile bat țărmul, iar eu bat antrenamentul! Hiyah!"
         ]
       },
       "after": {
@@ -66,7 +66,7 @@
           "Black Belt Nob: The waves win today."
         ],
         "text": [
-          ""
+          "Centură Neagră Nob: Valurile câștigă azi."
         ]
       }
     },
@@ -76,7 +76,7 @@
           "Cyndy"
         ],
         "text": [
-          ""
+          "Cyndy"
         ]
       },
       "before": {
@@ -84,7 +84,7 @@
           "Battle Girl Cyndy: I train barefoot on the sand. It's good for the footwork! Ready?"
         ],
         "text": [
-          ""
+          "Luptătoare Cyndy: Mă antrenez desculță pe nisip. E bine pentru jocul de picioare! Gata?"
         ]
       },
       "after": {
@@ -92,7 +92,7 @@
           "Battle Girl Cyndy: My footwork let me down."
         ],
         "text": [
-          ""
+          "Luptătoare Cyndy: Jocul meu de picioare m-a lăsat baltă."
         ]
       }
     },
@@ -102,7 +102,7 @@
           "Koichi"
         ],
         "text": [
-          ""
+          "Koichi"
         ]
       },
       "before": {
@@ -110,7 +110,7 @@
           "Black Belt Koichi: Back and forth, back and forth, all day long! That's how I get strong!"
         ],
         "text": [
-          ""
+          "Centură Neagră Koichi: Încoace și încolo, încoace și încolo, toată ziua! Așa mă fac puternic!"
         ]
       },
       "after": {
@@ -118,7 +118,7 @@
           "Black Belt Koichi: Back to pacing, then."
         ],
         "text": [
-          ""
+          "Centură Neagră Koichi: Înapoi la plimbat, atunci."
         ]
       }
     },
@@ -128,7 +128,7 @@
           "Hector"
         ],
         "text": [
-          ""
+          "Hector"
         ]
       },
       "before": {
@@ -136,7 +136,7 @@
           "Collector Hector: My Pokémon are the pride of my collection. Want to see them up close?"
         ],
         "text": [
-          ""
+          "Colecționar Hector: Pokémonii mei sunt mândria colecției mele. Vrei să-i vezi de aproape?"
         ]
       },
       "after": {
@@ -144,7 +144,7 @@
           "Collector Hector: Don't scratch them, please!"
         ],
         "text": [
-          ""
+          "Colecționar Hector: Să nu-i zgârii, te rog!"
         ]
       }
     },
@@ -154,7 +154,7 @@
           "Kyra"
         ],
         "text": [
-          ""
+          "Kyra"
         ]
       },
       "before": {
@@ -162,7 +162,7 @@
           "Triathlete Kyra: Running on sand builds stamina like nothing else! Can you keep pace?"
         ],
         "text": [
-          ""
+          "Triatlonist Kyra: Alergatul pe nisip dă rezistență ca nimic altceva! Poți ține pasul?"
         ]
       },
       "after": {
@@ -170,7 +170,7 @@
           "Triathlete Kyra: Out of breath, out of luck."
         ],
         "text": [
-          ""
+          "Triatlonist Kyra: Fără suflu, fără noroc."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Jaiden"
         ],
         "text": [
-          ""
+          "Jaiden"
         ]
       },
       "before": {
@@ -188,7 +188,7 @@
           "Ninja Boy Jaiden: You didn't see me hiding in that tree, did you? Ninja art: surprise battle!"
         ],
         "text": [
-          ""
+          "Băiat ninja Jaiden: Nu m-ai văzut ascuns în copacul ăla, nu-i așa? Arta ninja: luptă-surpriză!"
         ]
       },
       "after": {
@@ -196,7 +196,7 @@
           "Ninja Boy Jaiden: My disguise wasn't enough."
         ],
         "text": [
-          ""
+          "Băiat ninja Jaiden: Deghizarea mea n-a fost de ajuns."
         ]
       }
     },
@@ -206,7 +206,7 @@
           "Helene"
         ],
         "text": [
-          ""
+          "Helene"
         ]
       },
       "before": {
@@ -214,7 +214,7 @@
           "Battle Girl Helene: Every trainer who comes this way gets a challenge from me!"
         ],
         "text": [
-          ""
+          "Luptătoare Helene: Fiecare Antrenor care trece pe aici primește o provocare din partea mea!"
         ]
       },
       "after": {
@@ -222,7 +222,7 @@
           "Battle Girl Helene: You passed the challenge."
         ],
         "text": [
-          ""
+          "Luptătoare Helene: Ai trecut provocarea."
         ]
       }
     },
@@ -232,7 +232,7 @@
           "Alix"
         ],
         "text": [
-          ""
+          "Alix"
         ]
       },
       "before": {
@@ -240,7 +240,7 @@
           "Psychic Alix: I sensed you coming from far away. I sense a battle, too!"
         ],
         "text": [
-          ""
+          "Medium Alix: Te-am simțit venind de departe. Simt și o luptă!"
         ]
       },
       "after": {
@@ -248,7 +248,7 @@
           "Psychic Alix: I didn't sense that coming."
         ],
         "text": [
-          ""
+          "Medium Alix: Asta nu am simțit-o venind."
         ]
       }
     },
@@ -258,7 +258,7 @@
           "Marlene"
         ],
         "text": [
-          ""
+          "Marlene"
         ]
       },
       "before": {
@@ -266,7 +266,7 @@
           "Psychic Marlene: My mind is calm as the sea. Let's see if yours is too!"
         ],
         "text": [
-          ""
+          "Medium Marlene: Mintea mea e calmă ca marea. Să vedem dacă și a ta e la fel!"
         ]
       },
       "after": {
@@ -274,7 +274,7 @@
           "Psychic Marlene: The sea's gone choppy."
         ],
         "text": [
-          ""
+          "Medium Marlene: Marea s-a întărâtat."
         ]
       }
     }
@@ -285,7 +285,7 @@
         "Route 115\nSouth: Rustboro City"
       ],
       "text": [
-        ""
+        "Ruta 115\nSud: Orașul Rustboro"
       ]
     },
     "Route115_EventScript_MeteorFallsSign": {
@@ -293,7 +293,7 @@
         "Meteor Falls\nRoute 114 lies beyond"
       ],
       "text": [
-        ""
+        "Cascada Meteorilor\nDincolo se află Ruta 114"
       ]
     }
   }

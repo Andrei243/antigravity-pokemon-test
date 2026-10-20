@@ -5,7 +5,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "{player}! You won Flannery's Badge? That makes four! You're getting really good, you know."
       ],
       "text": [
-        ""
+        "{player}! Ai câștigat Insigna lui Flannery? Sunt deja patru! Faci progrese văzând cu ochii, să știi."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "I've just been in the herb shop. Anyway, take these. I picked them up for you."
       ],
       "text": [
-        ""
+        "Tocmai am fost la magazinul de ierburi. Oricum, ia-le pe astea. Le-am luat pentru tine."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Those are Go-Goggles. With them on, the sandstorm in the desert on Route 111 won't get in your eyes."
       ],
       "text": [
-        ""
+        "Sunt Ochelari de Nisip. Cu ei pe ochi, furtuna de nisip din deșertul de pe Ruta 111 nu te mai încurcă."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "With four Badges, you should go and battle your dad in Petalburg too! I'm heading back to help mine. Bye!"
       ],
       "text": [
-        ""
+        "Cu patru Insigne, ar trebui să mergi să te lupți și cu tatăl tău, la Petalburg! Eu mă întorc să-l ajut pe al meu. Pa!"
       ]
     }
   ],
@@ -47,7 +47,7 @@
         "Old Woman"
       ],
       "text": [
-        ""
+        "Bătrâna"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "I found an Egg, but I'm too old to carry it about until it hatches. Would you take it?"
       ],
       "text": [
-        ""
+        "Am găsit un Ou, dar sunt prea bătrână să-l car până eclozează. Îl iei tu?"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "{player} received the Egg."
       ],
       "text": [
-        ""
+        "{player} a primit Oul."
       ]
     },
     {
@@ -71,7 +71,7 @@
         "Walk plenty with it, and it will hatch in no time. Look after it, won't you?"
       ],
       "text": [
-        ""
+        "Plimbă-te mult cu el și va ecloza într-o clipă. Ai grijă de el, bine?"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Oh, your team is full. Come back when you have room for it."
       ],
       "text": [
-        ""
+        "Vai, echipa ta e plină. Vino înapoi când ai loc pentru el."
       ]
     },
     {
@@ -87,7 +87,7 @@
         "Very well. I'll keep it warm a while longer."
       ],
       "text": [
-        ""
+        "Foarte bine. Îl mai țin la căldură o vreme."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "Every so often an Egg turns up at the Day Care. That's where that one came from, I expect."
       ],
       "text": [
-        ""
+        "Din când în când apare câte un Ou la Pensiunea Pokémon. De acolo cred că vine și ăsta."
       ]
     }
   ]
