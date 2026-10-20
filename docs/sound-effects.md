@@ -43,6 +43,7 @@ Every sound effect of the game (plan 05 · A3), what it stands for in the origin
 | `exclaim` | — | The "!" over a trainer who has seen the player, or anyone a script surprises. |
 | `surf` | — | A Pokémon is ridden out onto the water. |
 | `dive` | — | Dive taken down under the sea, or back up from its floor: a plunge and a stream of bubbles (plan 21 · H5). |
+| `bridge_walk` | — | A step on, along or off a plank bridge of Hoenn: a dry wooden knock and a short creak as the plank gives (Emerald's `SE_BRIDGE_WALK`; plan 21 · H6, part c). The dip of the walker's sprite is `FieldLife.PlankRows`'s. |
 | `bubbles` | — | A diver on the sea floor breathes out: a soft low rush and three bubbles a tenth of a second apart, every 2.8 seconds, as the field shows them (`FieldLife.Bubbles`, plan 21 · H5). |
 | `save` | `SEQ_SE_DP_SAVE` | The game is saved. |
 | `pc_on` | `SEQ_SE_DP_PC_LOGIN` | A PC is switched on: as its screen comes on in the field (`anim pc on`, plan 09 · L12). |

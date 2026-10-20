@@ -25,7 +25,7 @@ internal readonly record struct HazeLayer(float Scale, float OffsetX, float Offs
 /// door) and says what there is to draw at this moment; everything is a function of its own clock, so tests
 /// run it without a window.
 /// </summary>
-internal sealed class FieldLife
+internal sealed partial class FieldLife
 {
     public const int Cell = 16, Columns = 8;
 
@@ -86,6 +86,7 @@ internal sealed class FieldLife
         pieces.Clear();
         effects.Clear();
         door = null;
+        ForgetPlank();
     }
 
     private static float LifeOf(Kind kind) => kind switch

@@ -1154,7 +1154,7 @@ public sealed class WorldRenderer
             carrier = FieldSprites.Get(carried, facing);
         }
         float seat = carrier != null ? CarrierSeat(carrier) : SurfMount.Seat;
-        float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump);
+        float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump) - Rows(Life.PlankRows(map, px, pz)) * (1f - saddle);
         actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.Character, shaders), new Vector3(px + NudgeOf(null), feet, pz), player.Yaw, playerPose));
 
         if (player.Mount is { } ridden)

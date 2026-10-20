@@ -41,6 +41,7 @@ public static partial class SoundBank
         Add("surf", SoundGroup.Field, null, "A Pokémon is ridden out onto the water.");
         Add("dive", SoundGroup.Field, null, "Dive taken down under the sea, or back up from its floor: a plunge and a stream of bubbles (plan 21 · H5).");
         Add("bubbles", SoundGroup.Field, null, "A diver on the sea floor breathes out: three low bubbles, every 2.8 seconds (plan 21 · H5).");
+        Add("bridge_walk", SoundGroup.Field, null, "A step on, along or off a plank bridge of Hoenn: a dry wooden knock and a short creak as the plank gives (Emerald's SE_BRIDGE_WALK; plan 21 · H6, part c).");
         Add("save", SoundGroup.Field, "SEQ_SE_DP_SAVE", "The game is saved.");
         Add("pc_on", SoundGroup.Field, "SEQ_SE_DP_PC_LOGIN", "A PC is switched on.");
         Add("pc_off", SoundGroup.Field, "SEQ_SE_DP_PC_LOGOFF", "A PC is switched off.");
@@ -306,6 +307,13 @@ public static partial class SoundBank
                 d.Bubble(0.12f, 410f, 0.42f);
                 d.Bubble(0.22f, 290f, 0.36f);
                 return Finish(d.S, 0.36f);
+            case "bridge_walk":
+                // A plank that gives: a dry knock of wood, a low thud under it and a short creak that falls away
+                d = new SoundDesign(0.2f, 0xB21D6Eu);
+                d.Thump(0, 0.1f, 210f, 95f, 0.7f, 0.5f);
+                d.Noise(0, 0.04f, Filter.Band, 1500f, 900f, 0.8f, 0.9f, 0.05f, 2f);
+                d.Tone(0.02f, 0.15f, Wave.Triangle, N(62), N(57), 0.18f, 0.08f, 2.2f);
+                return Finish(d.S, 0.34f);
             case "thunder":
                 // A crack that splits into a long, falling roll
                 d = new SoundDesign(2.6f, 0x7A11u);
