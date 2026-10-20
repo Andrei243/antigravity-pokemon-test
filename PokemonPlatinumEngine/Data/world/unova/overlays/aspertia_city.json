@@ -1,0 +1,46 @@
+{
+  // Aspertia City (plan 22 · U2): Black 2's town on the hill, our words. Its story (the lookout, the starters, Hugh at
+  // the door, Cheren's Gym) is plan 22 · U4's, so the people of its scenes are left out, and the triggers with them.
+  // Unova has no songs of its own yet: Sinnoh's stand in until plan 22's music session
+  "area": "aspertia_city",
+  "bgmTrack": "sinnoh/twinleaf",
+  "trees": "Round",
+  "people": {
+    "4": {
+      "name": "Boy",
+      "dialog": [ "Climb to the lookout at the top of town. On a clear day you can see halfway across Unova from there." ]
+    },
+    "5": {
+      "name": "Artist",
+      "dialog": [ "I come up here every morning to paint the hills. The light is never the same twice." ]
+    },
+    "6": {
+      "name": "Youngster",
+      "dialog": [ "That's the Trainers' School. The Gym is right behind it: you go through the school to get there." ]
+    },
+    "9": {
+      "name": "Pokéfan",
+      "dialog": [ "Aspertia is so high up that the clouds sometimes drift right down the street." ]
+    },
+    "10": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "The gate in the north of town leads to Route 19. Wild Pokémon hide in the tall grass along it." ]
+    },
+    "11": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "I'll be a Trainer as soon as I'm old enough. Then it's straight down the hill and off on a journey!" ]
+    },
+    "12": {
+      "name": "Lass",
+      "dialog": [ "If your Pokémon are tired, take them to the Pokémon Center. It heals them for free." ]
+    }
+  },
+  "signs": {
+    "14": "TRAINER TIPS\nOpen the menu to check on your Pokémon\nand the things in your bag.",
+    "15": "{player}'s House",
+    "16": "Aspertia City\nA hillside town with a view that goes on forever.",
+    "17": "Aspertia City Trainers' School\nThe Gym is through the back of the school."
+  }
+}

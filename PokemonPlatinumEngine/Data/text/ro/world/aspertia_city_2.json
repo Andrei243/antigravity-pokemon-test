@@ -1,0 +1,66 @@
+{
+  "people": {
+    "aspertia_city_2.Mom": {
+      "name": {
+        "en": [
+          "Mom"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "You look tired out, dear. Sit down for a minute and let your Pokémon rest.",
+          "There, all better. Off you go, and be careful out there!"
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "6": {
+      "en": [
+        "The PC is on. There's a message from a friend\nasking how the journey is going."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "7": {
+      "en": [
+        "A tidy kitchen. Something good is in the oven."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "8": {
+      "en": [
+        "A potted plant. Someone waters it every day."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "14": {
+      "en": [
+        "A map of Unova. Aspertia City is marked\nin the bottom corner."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "15": {
+      "en": [
+        "A calendar. The days of the seasons are\nmarked in four colours."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

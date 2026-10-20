@@ -363,6 +363,11 @@
     "man_4": "Gentleman",
     "man_5": "Youngster",
     "maniac": "Gentleman",
+    // Black 2's looks of the places plan 22 · U2 opens, until plan 22's chapters give Unova's classes and cast their own
+    // (Black 2 names most of its people by number: an overlay gives those an npcType of their own)
+    "backers_m": "Youngster", "backers_f": "Lass", "nursery_aide": "Lady", "preschooler_m": "Youngster",
+    "preschooler_f": "Lass", "janitor": "Gentleman", "pkmn_ranger_m": "Youngster", "pkmn_ranger_f": "Lass",
+    "pkmn_breeder_m": "Gentleman", "pkmn_breeder_f": "Lady", "team_plasma_grunt_m": "Grunt", "team_plasma_grunt_f": "Grunt",
     // Plan 20 · J5: HeartGold's people of the Ruins of Alph, Union Cave and Azalea Town, until plan 20 · J14's looks
     "gswoman6": "scientist", "gsassistantm": "scientist", "suit": "Gentleman", "gantetsu": "Gentleman",
     "gsfighter": "Gentleman", "gsbabygirl1": "Lass", "middlewoman1_2": "Lady", "rocketm": "rocket",

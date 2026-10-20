@@ -1,0 +1,17 @@
+{
+  // The gate between Aspertia City and Route 19 (plan 22 · U2): Black 2's room, our words. Its trigger is the story's
+  "area": "aspertia_gate",
+  "bgmTrack": "sinnoh/route201",
+  "people": {
+    "0": {
+      "name": "Guard",
+      "npcType": "Gentleman",
+      "dialog": [ "Beyond this gate is Route 19. Floccesy Town is a short walk down the hill." ]
+    },
+    "1": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "The wind blows straight up the hill through this gate. It makes my hair stand on end!" ]
+    }
+  }
+}

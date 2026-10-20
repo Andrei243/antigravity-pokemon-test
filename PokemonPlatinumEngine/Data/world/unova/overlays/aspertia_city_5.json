@@ -1,0 +1,16 @@
+{
+  // Another house of Aspertia City, downstairs (plan 22 · U2): Black 2's room, our words
+  "area": "aspertia_city_5",
+  "bgmTrack": "sinnoh/twinleaf",
+  "people": {
+    "0": {
+      "name": "Artist",
+      "dialog": [ "I'm painting the view from the lookout, from memory. It's harder than it sounds." ]
+    },
+    "1": {
+      "name": "Old Man",
+      "npcType": "Gentleman",
+      "dialog": [ "When I was young, Aspertia was a handful of houses. Now look at it: a school, a Gym, the lot!" ]
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Lessons are over for today, but the students always stay behind to battle."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you know? A Pokémon's type decides which moves hurt it most. It's all on the board up there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Schoolboy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Normal moves can't touch a Ghost type, and Ghost moves can't touch a Normal type. Weird, right?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The door at the back goes into the Gym. Go on, if you think you're ready!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Schoolgirl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm studying status conditions. A sleeping Pokémon can't attack, but it wakes up in the end."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "5": {
+      "en": [
+        "The blackboard is covered in notes about\nwhich types are strong against which."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "7": {
+      "en": [
+        "A notice about the Gym through the door:\nchallengers welcome at any time."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

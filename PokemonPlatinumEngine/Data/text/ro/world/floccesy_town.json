@@ -1,0 +1,130 @@
+{
+  "people": {
+    "2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The bell in the tower rings every morning. You get used to it. Mostly."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "3": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ranch north of here raises all kinds of Pokémon. I could watch them all day."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Floccesy's flowers are at their best in spring. In winter it's all white, and just as pretty."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A famous Trainer lives in the house at the top of town. He's always out walking, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Girl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 20 goes east to Virbank City. It's a long walk, but the grass is full of Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "8": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm saving up for a Bicycle. Then I'll ride all the way down to the sea!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "13": {
+      "en": [
+        "Floccesy Town\nA quiet town where the bell rings out."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "15": {
+      "en": [
+        "TRAINER TIPS\nA Pokémon Center heals your team and sells\nwhat you need for the road."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}
