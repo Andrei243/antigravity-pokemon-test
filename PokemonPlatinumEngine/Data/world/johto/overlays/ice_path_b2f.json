@@ -1,6 +1,16 @@
 {
-  // The Ice Path's second basement (plan 20 · J10): its sheets of ice, and the boulders that stand on them
+  // The Ice Path's second basement (plan 20 · J10): its sheets of ice. Since plan 20 · J11, part c the four boulders
+  // that fall through the holes above stand on the ice under them (scripts/ice_path_b2f.txt): HeartGold's objects,
+  // whose own script makes them no Strength boulders, are things of the map nobody pushes (FallenBoulder), each behind
+  // its object's flag
   "area": "ice_path_b2f",
   "bgmTrack": "johto/ice_path",
-  "people": {}
+  "people": {},
+  "heldBack": [ "d39r0103_rock", "d39r0103_rock_2", "d39r0103_rock_3", "d39r0103_rock_4" ],
+  "npcs": [
+    { "id": "fallen_boulder_1", "name": "Boulder", "npcType": "FallenBoulder", "x": 12, "y": 13, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_1_FALLEN", "script": "Fallen" },
+    { "id": "fallen_boulder_2", "name": "Boulder", "npcType": "FallenBoulder", "x": 11, "y": 21, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_2_FALLEN", "script": "Fallen" },
+    { "id": "fallen_boulder_3", "name": "Boulder", "npcType": "FallenBoulder", "x": 19, "y": 10, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_3_FALLEN", "script": "Fallen" },
+    { "id": "fallen_boulder_4", "name": "Boulder", "npcType": "FallenBoulder", "x": 20, "y": 22, "hiddenBy": "FLAG_HIDE_ICE_PATH_BOULDER_4_FALLEN", "script": "Fallen" }
+  ]
 }

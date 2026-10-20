@@ -1,0 +1,25 @@
+# The Ice Path, B2F (plan 20 · J11, part c). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D39R0103).
+#
+# The four boulders that fall through the holes above (ice_path_b1f.txt) stand on the ice here once they have fallen,
+# each under its hole, and stop whoever slides into them; nobody can move them again. HeartGold hides them from the
+# start by setting FLAG_HIDE_ICE_PATH_BOULDER_<N>_FALLEN as a new game begins; here the floor's own arrival hides each
+# whose hole nothing has fallen through yet (FLAG_ICE_PATH_HOLE_<N>_FILLED, a flag of ours), so no save needs a step.
+# Whoever falls through a hole lands with a jolt (VAR_UNK_40AB 1, D39R0103_000).
+
+
+script OnEnter
+  if not flag FLAG_ICE_PATH_HOLE_1_FILLED setflag FLAG_HIDE_ICE_PATH_BOULDER_1_FALLEN
+  if not flag FLAG_ICE_PATH_HOLE_2_FILLED setflag FLAG_HIDE_ICE_PATH_BOULDER_2_FALLEN
+  if not flag FLAG_ICE_PATH_HOLE_3_FILLED setflag FLAG_HIDE_ICE_PATH_BOULDER_3_FALLEN
+  if not flag FLAG_ICE_PATH_HOLE_4_FILLED setflag FLAG_HIDE_ICE_PATH_BOULDER_4_FALLEN
+  if var VAR_UNK_40AB != 1 end
+  setvar VAR_UNK_40AB 0
+  camera shake 0.3
+  end
+
+
+# D39R0103_002: a boulder that fell from above
+script Fallen
+  text "The boulder that fell from above is wedged fast in the ice. It won't budge."
+  end

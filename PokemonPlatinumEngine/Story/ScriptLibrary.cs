@@ -283,6 +283,9 @@ public sealed class ScriptLibrary
                     case Op.GivePokemon when i.Other.Length > 0 && ItemDatabase.Get(i.Other) == null:
                         Wrong(i, $"there is no item '{i.Other}'");
                         break;
+                    case Op.GivePokemon when i.Move.Length > 0 && !MoveDatabase.Has(i.Move):
+                        Wrong(i, $"there is no move '{i.Move}'");
+                        break;
                     case Op.Team when i.Name == "size" && !i.Option && PokemonDatabase.Get(i.Other) == null:
                         Wrong(i, $"there is no species '{i.Other}'");
                         break;

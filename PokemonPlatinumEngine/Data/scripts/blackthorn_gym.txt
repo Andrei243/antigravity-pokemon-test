@@ -1,0 +1,94 @@
+# The Blackthorn Gym (plan 20 · J11, part c). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T30GYM0101).
+#
+# The floor is lava, crossed on three slabs of stone that turn and slide at the press of their buttons (the room's
+# puzzle, BlackthornPlatforms, laid out afresh each time the player comes in, as HeartGold's BlackthornGymInit lays
+# them out). Three panels at the far ends of the ways across carry whoever steps on them back to the door (triggers 0 to
+# 2, T30GYM0101_002, a warp into the same room, which lays the slabs out again). The guide comes over the first time the player walks in (trigger 3, FLAG_UNK_138).
+#
+# Clair battles and will not give her Badge: she sends the player to the Dragon Shrine's elder instead
+# (FLAG_UNK_0D1, which also moves the old man before the Dragon's Den aside, blackthorn.txt). She gives the Rising Badge
+# in the shrine (dragons_den_shrine.txt, FLAG_UNK_0EA) and TM59, Dragon Pulse, in the Dragon's Den or here
+# (FLAG_GOT_TM59_FROM_CLAIR). HeartGold hides her in the Gym only for her rematches after the Hall of Fame, which this
+# game has not yet: she is always home.
+
+
+# T30GYM0101_004: the guide comes over to the player at the door, the first time
+script Guide
+  if flag FLAG_UNK_138 end
+  scene "The Blackthorn Gym's guide"
+  emote t30gym0101_sunglasses exclaim
+  if var PLAYER_X == 12 walk t30gym0101_sunglasses left 2
+  if var PLAYER_X == 13 walk t30gym0101_sunglasses left 1
+  face t30gym0101_sunglasses player
+  face player t30gym0101_sunglasses
+  speaker "Gym Guide"
+  say "Hey, champ in the making! Careful: the floor in here is lava, so you cross it on the stone slabs. Press the buttons on a slab to turn it or slide it."
+  say "Clair's Pokémon are dragons, and dragons shrug off most attacks. Ice moves are what they hate."
+  if var PLAYER_X == 12 walk t30gym0101_sunglasses right 2
+  if var PLAYER_X == 13 walk t30gym0101_sunglasses right 1
+  face t30gym0101_sunglasses down
+  setflag FLAG_UNK_138
+  setvar VAR_UNK_4120 1
+  endscene
+  end
+
+
+# T30GYM0101_003: the guide
+script GuideTalk
+  face t30gym0101_sunglasses player
+  speaker "Gym Guide"
+  if flag FLAG_UNK_0D1 goto Beaten
+  say "Clair's Pokémon are dragons, and dragons shrug off most attacks. Ice moves are what they hate. And mind the lava!"
+  end
+label Beaten
+  say "You beat Clair! Whatever she says, you're a real trainer already. I'd still do what she asks, though."
+  end
+
+
+# T30GYM0101_002: a panel at the far end of a way across carries the player back to the door
+script BackToTheDoor
+  walk player onspot down onspot left onspot up onspot right
+  sound "warp"
+  warp "Blackthorn_Gym" 8 83 up
+  end
+
+
+# T30GYM0101_000: Clair
+script Clair
+  face t30gym0101_gsleader8 player
+  speaker "Clair"
+  if flag FLAG_UNK_0EA goto Badge
+  if flag FLAG_UNK_0D1 goto Waiting
+  scene "Clair"
+  say "I am Clair, the finest master of Dragon-type Pokémon there is. I can stand up to the Elite Four themselves."
+  say "You still want to battle me? ...Fine. A Gym Leader holds nothing back, whoever comes. Here I come!"
+  battle self as "johto_leader_clair_clair"
+  say "I won't accept this. I lost, yes, but you're still not ready for the Pokémon League."
+  say "I know. Take the dragon tamers' test. Behind this Gym is the Dragon's Den, and a shrine stands at its heart. Go there."
+  say "Show the elder you've left your soft ideas behind, and I'll admit you deserve a Badge."
+  defeat "johto_ace_trainer_m_paulo"
+  defeat "johto_ace_trainer_m_cody"
+  defeat "johto_ace_trainer_m_mike"
+  defeat "johto_ace_trainer_f_fran"
+  defeat "johto_ace_trainer_f_lola"
+  setflag FLAG_UNK_0D1
+  setflag FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT
+  clearflag FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE
+  endscene
+  end
+label Waiting
+  say "What's the matter? Is the shrine too much to ask of you?"
+  end
+label Badge
+  if flag FLAG_GOT_TM59_FROM_CLAIR goto Said
+  say "You've kept me waiting! Here, take this."
+  give "TM59"
+  setflag FLAG_GOT_TM59_FROM_CLAIR
+  say "That's Dragon Pulse. It's... a sort of great surge of energy. You don't have to use it if you don't want to."
+  end
+label Said
+  say "Aren't you off to the Pokémon League? Something in your face says you've unfinished business first."
+  say "You came from New Bark Town, didn't you, where Professor Elm's lab is? Maybe you should go back there."
+  say "Whatever comes next will be harder. Don't you dare give up, or I'll feel even worse about losing to you!"
+  end

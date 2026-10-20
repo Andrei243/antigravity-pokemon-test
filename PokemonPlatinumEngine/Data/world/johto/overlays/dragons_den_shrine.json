@@ -1,28 +1,24 @@
 {
-  // The Dragon Shrine on its island in the Dragon's Den (plan 20 · J10). The elder's questions are plan 20 · J11's; Clair
-  // and the photographer wait with them and are left out
+  // The Dragon Shrine on its island in the Dragon's Den (plan 20 · J10). Since plan 20 · J11, part c the elder's
+  // questions, Clair's scene with the Rising Badge and the elder's Dratini (scripts/dragons_den_shrine.txt). Clair is
+  // the shrine's own object, off the map but in her scene (FLAG_HIDE_DRAGON_SHRINE_CLAIR, ours); the photographer
+  // Cameron waits for the Pokégear's next session and is left out
   "area": "dragons_den_shrine",
   "bgmTrack": "johto/dragons_den",
   "people": {
-    "d44r0103_chourou": {
-      "name": "Elder",
-      "still": true,
-      "dialog": [
-        "Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong.",
-        "When the time is right, I will ask you some questions. Not yet."
-      ]
-    },
+    "d44r0103_chourou": { "name": "Elder", "script": "Elder", "still": true },
+    "d44r0103_gsleader8": { "name": "Clair", "still": true, "hiddenBy": "FLAG_HIDE_DRAGON_SHRINE_CLAIR", "dialog": [ "..." ] },
     "d44r0103_gsoldman1": {
       "name": "Old Man",
       "still": true,
       "dialog": [
-        "The elder has watched over this shrine since before Clair was born."
+        "It has been a long time since a trainer won the elder's approval. Not since Master Lance, in fact."
       ]
     },
     "d44r0103_gsoldman1_2": {
       "name": "Old Man",
       "dialog": [
-        "A dragon tamer's heart matters more than their strength. The elder taught us that."
+        "You know young Master Lance? He looks just as the elder did when he was young. It runs in the blood."
       ]
     }
   }

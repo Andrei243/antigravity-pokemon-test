@@ -1,0 +1,79 @@
+# The Ice Path, 1F (plan 20 · J11, part c). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D39R0101).
+#
+# The man by the HM: the first time the player comes up to the ball before him (trigger 0, VAR_UNK_4100 0) he turns,
+# starts and tells them to take it; once it is taken (its ball's own flag, FLAG_HIDE_ITEMBALL_D39R0101_HM07) he says
+# what Waterfall is for, and the trigger is done (VAR_UNK_4100 1). HM07 is Waterfall in HeartGold and in Platinum both.
+# A Kimono Girl is stuck on the ice in the south-east: spoken to from the tile north of her, she asks to be pushed,
+# slides off south and goes on her way (FLAG_UNK_239, VAR_UNK_40E8 1, HeartGold's own).
+
+
+# D39R0101_004: the man notices the player at the head of the ball's passage
+script Noticed
+  scene "The man by the HM"
+  face d39r0101_gsmiddleman1 up
+  emote d39r0101_gsmiddleman1 exclaim
+  wait 0.25
+  face player down
+  speaker "Man"
+  if flag FLAG_HIDE_ITEMBALL_D39R0101_HM07 goto Taken
+  say "Oh! You gave me a fright. There's an HM lying right there, see? I can't use it, but you could. Go on, take it!"
+  face d39r0101_gsmiddleman1 down
+  walk player left 1
+  endscene
+  end
+label Taken
+  say "Waterfall lets your Pokémon swim right up a waterfall. With the Rising Badge you can use it outside of battle."
+  setvar VAR_UNK_4100 1
+  endscene
+  end
+
+
+# D39R0101_000: the man
+script Man
+  face d39r0101_gsmiddleman1 player
+  speaker "Man"
+  if var VAR_UNK_4100 == 1 goto Said
+  if flag FLAG_HIDE_ITEMBALL_D39R0101_HM07 goto Taken
+  say "There's an HM lying right there, see? I can't use it, but you could. Go on, take it!"
+  face d39r0101_gsmiddleman1 down
+  end
+label Taken
+  setvar VAR_UNK_4100 1
+label Said
+  say "Waterfall lets your Pokémon swim right up a waterfall. With the Rising Badge you can use it outside of battle."
+  end
+
+
+# D39R0101_002: the Kimono Girl stuck on the ice. Only from the tile north of her can she be pushed off it
+script KimonoGirl
+  speaker "Kimono Girl"
+  if var PLAYER_X != 55 goto Stuck
+  if var PLAYER_Y != 28 goto Stuck
+  scene "The Kimono Girl on the ice"
+  ask "Oh, {player}! I've been standing here so long my feet have frozen to the ice. Would you give me a push?"
+  if yes goto Push
+  ask "Please don't leave me here! I can't move at all. Just one little push?"
+  if yes goto Push
+  say "Oh... Then I'll just have to wait for the spring."
+  endscene
+  end
+label Push
+  sound "bump"
+  say "Here goes... Whee!"
+  move d39r0101_dancer down 7 fast
+  camera pan 55 33 0.6
+  waitmoves
+  face d39r0101_dancer up
+  say "Thank you, {player}! I'm free! I'll see you again soon, I'm sure of it."
+  walk d39r0101_dancer down 4
+  hide d39r0101_dancer
+  sound "stairs"
+  setflag FLAG_UNK_239
+  setvar VAR_UNK_40E8 1
+  camera release 0.6
+  endscene
+  end
+label Stuck
+  say "Oh, {player}! My feet are frozen to the ice. If someone pushed me from behind, I might slide free."
+  end

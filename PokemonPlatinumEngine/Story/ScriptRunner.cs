@@ -532,6 +532,14 @@ public sealed partial class ScriptRunner
                 var species = PokemonDatabase.Get(i.Name) ?? throw Wrong(i, $"there is no species '{i.Name}'");
                 var gift = new Pokemon(species, i.Number);
                 if (i.Other.Length > 0) gift.HeldItem = ItemDatabase.Get(i.Other) ?? throw Wrong(i, $"there is no item '{i.Other}'");
+                // A move in its first place, as HeartGold's SetMonMove puts one (the Dragon Shrine's Dratini)
+                if (i.Move.Length > 0)
+                {
+                    if (!MoveDatabase.Has(i.Move)) throw Wrong(i, $"there is no move '{i.Move}'");
+                    var move = MoveDatabase.Create(i.Move);
+                    if (gift.Moves.Count == 0) gift.Moves.Add(move);
+                    else gift.Moves[0] = move;
+                }
                 Result = host.GivePokemon(gift) ? 1 : 2;
                 break;
             }

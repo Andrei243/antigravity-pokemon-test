@@ -1,0 +1,56 @@
+# Blackthorn City (plan 20 · J11, part c). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_T30).
+#
+# Two pairs of men stand at two doors, one of each pair before the door and one beside it, HeartGold's own objects:
+# the Gym's (FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT, set once Team Rocket is out of the Radio Tower,
+# goldenrod_radio_tower_observation_deck.txt, which also lets the one beside it show) and the Dragon's Den's
+# (FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT, set as Clair is beaten, blackthorn_gym.txt; HeartGold spells the other's
+# flag FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE). HeartGold hides the two beside the doors as a new game begins; here the
+# city's own arrival does, until what moves them aside has happened, so no save needs a step. And once Clair has
+# given the Rising Badge in the shrine (VAR_UNK_40C4 1), she waits in the Dragon's Den to give TM59; coming back to
+# the city without meeting her sends her home (HeartGold's T30_005).
+
+
+script OnEnter
+  if not flag FLAG_BEAT_RADIO_TOWER_ROCKETS setflag FLAG_HIDE_BLACKTHORN_GYM_GUARD_ASIDE
+  if not flag FLAG_UNK_0D1 setflag FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE
+  if var VAR_UNK_40C4 != 1 end
+  setflag FLAG_HIDE_VICTORY_ROAD_CLAIR
+  setvar VAR_UNK_40C4 2
+  end
+
+
+# T30_000: the man before the Gym's door
+script GymGuard
+  face t30_gsman1 player
+  speaker "Man"
+  say "I'm sorry. Clair, our Leader, has gone into the Dragon's Den behind the Gym, and nobody knows when she'll be back."
+  end
+
+
+# T30_001: the man beside it once the way is open
+script GymGuardAside
+  face t30_gsman1_2 player
+  speaker "Man"
+  if flag FLAG_UNK_0D1 goto Beaten
+  say "Clair is waiting for challengers. Just don't expect an ordinary trainer to stand a chance against her."
+  end
+label Beaten
+  say "You beat Clair? That's incredible! I've never heard of anyone doing that except Lance."
+  end
+
+
+# T30_002: the old man before the Dragon's Den
+script DenGuard
+  face t30_gsoldman1 player
+  speaker "Old Man"
+  say "No, no. Only trainers who have been chosen may go into the Den. Please turn back."
+  end
+
+
+# T30_003: the old man beside it once Clair has been beaten
+script DenGuardAside
+  face t30_gsoldman1_2 player
+  speaker "Old Man"
+  say "If Clair agrees to it, so will her grandfather, our elder. Go on in."
+  end

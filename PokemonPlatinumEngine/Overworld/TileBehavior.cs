@@ -415,7 +415,8 @@ public static class TileBehaviors
         TileBehavior.WarpPanel => (BehaviourSupport.Plain, "Walked onto; whoever ends a step on it is carried to the panel its warp names and stands there facing as they did, turning on the spot on the way. Arriving is no step, so the far panel carries them back only once they step off it and on again (`WarpPanels`; the floors of Team Galactic's headquarters)."),
         TileBehavior.LedgeCornerSouthEast or TileBehavior.LedgeCornerSouthWest => (BehaviourSupport.Plain, "A blocked tile, drawn as the end of its ledge."),
         TileBehavior.HeadbuttTree => (BehaviourSupport.Waiting, "A tree that blocks the way; shaking it with Headbutt is plan 20 · J7's."),
-        TileBehavior.StopSliding or TileBehavior.Magma or TileBehavior.LadderNorth or TileBehavior.LadderSouth or TileBehavior.LadderDown
+        TileBehavior.Magma => (BehaviourSupport.Ruled, "Lava: walked only on a slab of the Blackthorn Gym's that stands over it (BlackthornPlatforms.Refuses; plan 20 · J11, part c)."),
+        TileBehavior.StopSliding or TileBehavior.LadderNorth or TileBehavior.LadderSouth or TileBehavior.LadderDown
             => (BehaviourSupport.Waiting, "A HeartGold behaviour whose rule comes with the session of plan 20 that opens a place using it; walked like plain ground until then."),
         TileBehavior.DarkGrass or TileBehavior.VeryTallDarkGrass or TileBehavior.GrottoGrass or TileBehavior.DeepSand
             or TileBehavior.Quicksand or TileBehavior.StrengthHole or TileBehavior.ChargedFloor or TileBehavior.SurfEdge or TileBehavior.Catwalk

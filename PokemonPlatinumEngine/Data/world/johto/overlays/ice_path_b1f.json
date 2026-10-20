@@ -1,7 +1,20 @@
 {
-  // The Ice Path's first basement (plan 20 · J10): its boulders are pushed with Strength; the holes that drop them to
-  // the floor below are plan 20 · J11's
+  // The Ice Path's first basement (plan 20 · J10): its boulders are pushed with Strength. Since plan 20 · J11, part c
+  // its four holes drop the player (triggers 0 to 3) and a boulder pushed onto one (the pits) to the ice below
+  // (scripts/ice_path_b1f.txt)
   "area": "ice_path_b1f",
   "bgmTrack": "johto/ice_path",
-  "people": {}
+  "people": {},
+  "triggers": [
+    { "trigger": 0, "script": "Hole1" },
+    { "trigger": 1, "script": "Hole2" },
+    { "trigger": 2, "script": "Hole3" },
+    { "trigger": 3, "script": "Hole4" }
+  ],
+  "pits": [
+    { "x": 11, "z": 10, "script": "Boulder1" },
+    { "x": 10, "z": 18, "script": "Boulder2" },
+    { "x": 18, "z": 7, "script": "Boulder3" },
+    { "x": 19, "z": 19, "script": "Boulder4" }
+  ]
 }
