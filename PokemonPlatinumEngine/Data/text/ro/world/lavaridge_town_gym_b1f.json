@@ -1,0 +1,109 @@
+{
+  "people": {
+    "jace": {
+      "name": {
+        "en": [
+          "Jace"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Kindler Jace: Down here the steam never stops. Neither does my fire!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Kindler Jace: My fire went out in all this steam."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "keegan": {
+      "name": {
+        "en": [
+          "Keegan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Kindler Keegan: You fell through the floor? Ha! Everyone does. Now battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Kindler Keegan: The vents will take you back up. Good luck finding the right one."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "jeff": {
+      "name": {
+        "en": [
+          "Jeff"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Kindler Jeff: Two Slugma, double the heat! Let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Kindler Jeff: Double the heat, and still not enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "eli": {
+      "name": {
+        "en": [
+          "Eli"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Eli: I came for the hot springs and stayed for the battles. Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Eli: Ahh, I'll go and soak my sore feet now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

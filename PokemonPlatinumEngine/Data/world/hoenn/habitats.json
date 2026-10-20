@@ -2023,7 +2023,7 @@
       ]
     },
     {
-      "key": "victory_road_1f",
+      "key": "hoenn_victory_road_1f",
       "name": "Victory Road",
       "cells": "",
       "morning": [
@@ -2058,7 +2058,7 @@
       ]
     },
     {
-      "key": "victory_road_b1f",
+      "key": "hoenn_victory_road_b1f",
       "name": "Victory Road",
       "cells": "",
       "morning": [
@@ -2081,7 +2081,7 @@
       ]
     },
     {
-      "key": "victory_road_b2f",
+      "key": "hoenn_victory_road_b2f",
       "name": "Victory Road",
       "cells": "",
       "morning": [

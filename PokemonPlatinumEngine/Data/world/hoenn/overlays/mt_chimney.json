@@ -1,0 +1,48 @@
+{
+  // Mt. Chimney's summit (plan 21 · H4, part b): the crater, the cable car's station and the way down Jagged Pass.
+  // Team Magma's meteorite machine stands at the crater's edge with Maxie beside it, Tabitha and two grunts in the way,
+  // and Team Aqua scuffling with the rest of Team Magma in the middle of the summit (mt_chimney.txt). The mountain's
+  // own trainers and the Lava Cookie lady come out once Team Magma has gone (FLAG_HIDE_MT_CHIMNEY_TRAINERS,
+  // FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY)
+  "area": "mt_chimney",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round",
+  "people": {
+    "mt_chimney_maxie": { "name": "Maxie", "npcType": "maxie", "script": "Maxie", "still": true },
+    "mt_chimney_archie": { "name": "Archie", "npcType": "archie", "script": "Archie", "still": true },
+    "mt_chimney_tabitha": { "name": "Tabitha", "npcType": "tabitha", "still": true, "trainer": { "dialogueBefore": "Tabitha: Hehehe! You've come a long way up the mountain just to be turned back. The boss isn't to be disturbed!", "dialogueAfter": "Tabitha: Hehe... I lost? Well, the boss will deal with you himself." } },
+    "mt_chimney_magma_grunt_1": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "trainer": { "dialogueBefore": "Team Magma Grunt: The volcano's about to get a whole lot livelier. Nobody spoils the boss's plan!", "dialogueAfter": "Team Magma Grunt: Ugh, that's not how it was supposed to go." } },
+    "mt_chimney_magma_grunt_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "trainer": { "dialogueBefore": "Team Magma Grunt: Can you feel the heat? That's Team Magma's dream about to come true!", "dialogueAfter": "Team Magma Grunt: I'm the one who got burned..." } },
+    "magma_member_m": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Team Aqua, here? You lot never know when to quit!" ] },
+    "magma_member_m_2": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Stay back! This is between Team Magma and Team Aqua!" ] },
+    "magma_member_m_3": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Nobody gets to the boss! Not Team Aqua, and not you!" ] },
+    "magma_member_m_4": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Keep at it, Poochyena! Show those Aqua fools who rules the mountain!" ] },
+    "magma_member_m_5": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Hey, we're a bit busy here! Can't you see we're in the middle of something?" ] },
+    "magma_member_m_6": { "name": "Team Magma Grunt", "npcType": "magma_grunt", "still": true, "dialog": [ "Grr! Team Aqua's like ants at a picnic. Always where they're not wanted!" ] },
+    "aqua_member_m": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "Team Magma won't get their volcano without a fight from us!" ] },
+    "aqua_member_m_2": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "Hold the line! Don't let Team Magma near the boss!" ] },
+    "aqua_member_m_3": { "name": "Team Aqua Grunt", "npcType": "aqua_grunt", "still": true, "dialog": [ "If that volcano blows, the whole sea's in trouble! We can't let it happen!" ] },
+    "poochyena": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Grrrrowf!" ] },
+    "poochyena_2": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Rrrrff!" ] },
+    "poochyena_3": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Grrrr!" ] },
+    "poochyena_4": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Wrrrf!" ] },
+    "poochyena_5": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Grrowl!" ] },
+    "poochyena_6": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Rrrf! Rrrf!" ] },
+    "poochyena_7": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Grrrrrr!" ] },
+    "poochyena_8": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Wrrrowf!" ] },
+    "poochyena_9": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Rrrrowf!" ] },
+    "poochyena_10": { "name": "Poochyena", "still": true, "dialog": [ "Poochyena: Grrrf!" ] },
+    "old_woman": { "name": "Old Woman", "script": "LavaCookieLady" },
+    "expert_f": { "name": "Shelby", "trainer": { "dialogueBefore": "Expert Shelby: I've soaked in these hot springs for years and battled on this mountain for longer. Shall we?", "dialogueAfter": "Expert Shelby: My, my. You battle like the mountain itself." } },
+    "beauty": { "name": "Melissa", "trainer": { "dialogueBefore": "Beauty Melissa: The volcano's heat is wonderful for the skin. Now, let me warm you up with a battle!", "dialogueAfter": "Beauty Melissa: Oh, I'm the one who's flushed now." } },
+    "beauty_2": { "name": "Sheila", "trainer": { "dialogueBefore": "Beauty Sheila: I climbed all this way for the view, and now I've found you. Let's battle!", "dialogueAfter": "Beauty Sheila: The view's still lovely, at least." } },
+    "beauty_3": { "name": "Shirley", "trainer": { "dialogueBefore": "Beauty Shirley: A volcano, a hot spring and a battle. What a perfect day out!", "dialogueAfter": "Beauty Shirley: Well, two out of three isn't bad." } },
+    "hiker": { "name": "Sawyer", "trainer": { "dialogueBefore": "Hiker Sawyer: I've hiked up this volcano more times than I can count. Let's see if you can keep up!", "dialogueAfter": "Hiker Sawyer: Whew! You're quite the climber." } }
+  },
+  "read": {
+    "MtChimney_EventScript_MeteoriteMachine": "MeteoriteMachine"
+  },
+  "signs": {
+    "MtChimney_EventScript_RouteSign": "Jagged Pass\nThe way down to Lavaridge Town"
+  }
+}

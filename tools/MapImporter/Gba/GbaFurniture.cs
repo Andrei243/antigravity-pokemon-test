@@ -230,6 +230,9 @@ public static class GbaFurniture
             {
                 // The till's end of the counter, and the plant by the door
                 (0x242, 0x242, PropType.Counter), (0x22D, 0x22D, PropType.Plant),
+                // Plan 21 · H4, part b: Lavaridge's herb shop: the shelves of herbs along its back wall two rows deep,
+                // its counter across the room, and the plants by its east wall
+                (0x288, 0x29D, PropType.StoreShelf), (0x2A2, 0x2AD, PropType.Counter), (0x312, 0x314, PropType.Plant),
             },
             // Plan 21 · H3: Devon's offices, Stern's shipyard and Slateport's harbour, read from their layouts: Devon's
             // reception counter and the potted plants by its stairs, the president's great desk and the researchers'

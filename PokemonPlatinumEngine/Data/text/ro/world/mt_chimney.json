@@ -1,0 +1,594 @@
+{
+  "people": {
+    "mt_chimney_maxie": {
+      "name": {
+        "en": [
+          "Maxie"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mt_chimney_archie": {
+      "name": {
+        "en": [
+          "Archie"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mt_chimney_tabitha": {
+      "name": {
+        "en": [
+          "Tabitha"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Tabitha: Hehehe! You've come a long way up the mountain just to be turned back. The boss isn't to be disturbed!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Tabitha: Hehe... I lost? Well, the boss will deal with you himself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mt_chimney_magma_grunt_1": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: The volcano's about to get a whole lot livelier. Nobody spoils the boss's plan!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: Ugh, that's not how it was supposed to go."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mt_chimney_magma_grunt_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Magma Grunt: Can you feel the heat? That's Team Magma's dream about to come true!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Magma Grunt: I'm the one who got burned..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "magma_member_m": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Aqua, here? You lot never know when to quit!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "magma_member_m_2": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Stay back! This is between Team Magma and Team Aqua!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "magma_member_m_3": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody gets to the boss! Not Team Aqua, and not you!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "magma_member_m_4": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Keep at it, Poochyena! Show those Aqua fools who rules the mountain!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "magma_member_m_5": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hey, we're a bit busy here! Can't you see we're in the middle of something?"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "magma_member_m_6": {
+      "name": {
+        "en": [
+          "Team Magma Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Grr! Team Aqua's like ants at a picnic. Always where they're not wanted!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Team Magma won't get their volcano without a fight from us!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_2": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hold the line! Don't let Team Magma near the boss!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "aqua_member_m_3": {
+      "name": {
+        "en": [
+          "Team Aqua Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If that volcano blows, the whole sea's in trouble! We can't let it happen!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Grrrrowf!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena_2": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Rrrrff!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena_3": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Grrrr!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena_4": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Wrrrf!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena_5": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Grrowl!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena_6": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Rrrf! Rrrf!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena_7": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Grrrrrr!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena_8": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Wrrrowf!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena_9": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Rrrrowf!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "poochyena_10": {
+      "name": {
+        "en": [
+          "Poochyena"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Poochyena: Grrrf!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "Shelby"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Expert Shelby: I've soaked in these hot springs for years and battled on this mountain for longer. Shall we?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Expert Shelby: My, my. You battle like the mountain itself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty": {
+      "name": {
+        "en": [
+          "Melissa"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Melissa: The volcano's heat is wonderful for the skin. Now, let me warm you up with a battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Melissa: Oh, I'm the one who's flushed now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_2": {
+      "name": {
+        "en": [
+          "Sheila"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Sheila: I climbed all this way for the view, and now I've found you. Let's battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Sheila: The view's still lovely, at least."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "beauty_3": {
+      "name": {
+        "en": [
+          "Shirley"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Beauty Shirley: A volcano, a hot spring and a battle. What a perfect day out!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Beauty Shirley: Well, two out of three isn't bad."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Sawyer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Sawyer: I've hiked up this volcano more times than I can count. Let's see if you can keep up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Sawyer: Whew! You're quite the climber."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "MtChimney_EventScript_RouteSign": {
+      "en": [
+        "Jagged Pass\nThe way down to Lavaridge Town"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

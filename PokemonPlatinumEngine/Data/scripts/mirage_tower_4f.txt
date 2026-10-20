@@ -1,0 +1,59 @@
+# Mirage Tower's top floor (plan 21 · H4, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/MirageTower_4F/scripts.inc).
+#
+# Two fossils lie on the top floor, and taking either brings the tower down: the other is lost
+# (FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL and _CLAW_FOSSIL both set, FLAG_CHOSE_ROOT_FOSSIL or FLAG_CHOSE_CLAW_FOSSIL for
+# the one taken), the floor shakes and the player is put down in the sand before where the tower stood
+# (VAR_MIRAGE_TOWER_STATE 1, and FLAG_HOENN_MIRAGE_TOWER_FALLEN, a flag of ours that shuts Route 111's way in). Emerald
+# shows the tower only on some days; here it stands until it falls.
+
+
+script RootFossil
+  speaker none
+  text "It's the Root Fossil! The floor around it looks ready to crumble away..."
+  ask "Take the Root Fossil anyway?"
+  if no goto LeaveRoot
+  give "Root Fossil"
+  setflag FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL
+  setflag FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL
+  hide mirage_root_fossil
+  hide mirage_claw_fossil
+  wait 0.5
+  setflag FLAG_CHOSE_ROOT_FOSSIL
+  call Collapse
+  end
+label LeaveRoot
+  text "{player} left the Root Fossil where it lay."
+  end
+
+
+script ClawFossil
+  speaker none
+  text "It's the Claw Fossil! The floor around it looks ready to crumble away..."
+  ask "Take the Claw Fossil anyway?"
+  if no goto LeaveClaw
+  give "Claw Fossil"
+  setflag FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL
+  setflag FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL
+  hide mirage_claw_fossil
+  hide mirage_root_fossil
+  wait 0.5
+  setflag FLAG_CHOSE_CLAW_FOSSIL
+  call Collapse
+  end
+label LeaveClaw
+  text "{player} left the Claw Fossil where it lay."
+  end
+
+
+# The tower gives way: the picture shakes, and the player is left on the sand of Route 111
+script Collapse
+  camera shake 1.2
+  wait 1.2
+  setvar VAR_MIRAGE_TOWER_STATE 1
+  setflag FLAG_HOENN_MIRAGE_TOWER_FALLEN
+  fade out
+  warp "Hoenn" 219 59 down
+  fade in
+  text "Mirage Tower crumbled into the sand and was gone, as if it had never been there at all..."
+  return

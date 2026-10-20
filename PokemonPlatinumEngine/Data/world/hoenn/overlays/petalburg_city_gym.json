@@ -1,18 +1,70 @@
 {
-  // Petalburg City's Gym (plan 21 · H2): Emerald's long building of rooms one behind another, of which only the hall at
-  // its door is walked for now. Norman stands there until his Badge (Emerald's MoveNormanToEntrance) and Wally comes in
-  // for his scenes (petalburg_city_gym.txt). Every way on into the rooms (the warps but the two at the street door) is
-  // shut until plan 21 · H4 plays the Gym, its trainers and Norman's battle
+  // Petalburg City's Gym (plan 21 · H2, plan 21 · H4, part b): Emerald's long building of rooms one behind another, the
+  // hall at its door at the foot and Norman's own room at the head. Until the fourth Badge Norman stands in the hall
+  // (Emerald's MoveNormanToEntrance) and Wally comes in for his scenes; from then on Norman waits in his room for his
+  // battle (petalburg_city_gym.txt). Each room's two doors in its north wall are read, as Emerald's are: the hall's open
+  // with four Badges, a room's once its trainer is beaten, and each asks before it lets the player through into the room
+  // beyond (the `read` scripts; Emerald's warps on those doors lead nowhere and stay shut). The mat at the foot of each
+  // room leads back out to the floor before the door it was come in by (the `doors`)
   "area": "petalburg_city_gym",
   "bgmTrack": "hoenn/gym",
-  "locked": [ 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37 ],
+  "arenaType": "Normal",
+  "locked": [ 2, 5, 8, 9, 14, 15, 20, 21, 22, 23, 32, 33 ],
+  "doors": [
+    { "warp": 3, "map": "PetalburgCity_Gym", "x": 1, "y": 106, "facing": "Down" },
+    { "warp": 4, "map": "PetalburgCity_Gym", "x": 1, "y": 106, "facing": "Down" },
+    { "warp": 6, "map": "PetalburgCity_Gym", "x": 7, "y": 106, "facing": "Down" },
+    { "warp": 7, "map": "PetalburgCity_Gym", "x": 7, "y": 106, "facing": "Down" },
+    { "warp": 10, "map": "PetalburgCity_Gym", "x": 1, "y": 80, "facing": "Down" },
+    { "warp": 11, "map": "PetalburgCity_Gym", "x": 1, "y": 80, "facing": "Down" },
+    { "warp": 12, "map": "PetalburgCity_Gym", "x": 7, "y": 80, "facing": "Down" },
+    { "warp": 13, "map": "PetalburgCity_Gym", "x": 7, "y": 80, "facing": "Down" },
+    { "warp": 16, "map": "PetalburgCity_Gym", "x": 1, "y": 93, "facing": "Down" },
+    { "warp": 17, "map": "PetalburgCity_Gym", "x": 1, "y": 93, "facing": "Down" },
+    { "warp": 18, "map": "PetalburgCity_Gym", "x": 7, "y": 93, "facing": "Down" },
+    { "warp": 19, "map": "PetalburgCity_Gym", "x": 7, "y": 93, "facing": "Down" },
+    { "warp": 24, "map": "PetalburgCity_Gym", "x": 7, "y": 41, "facing": "Down" },
+    { "warp": 25, "map": "PetalburgCity_Gym", "x": 7, "y": 41, "facing": "Down" },
+    { "warp": 26, "map": "PetalburgCity_Gym", "x": 1, "y": 54, "facing": "Down" },
+    { "warp": 27, "map": "PetalburgCity_Gym", "x": 1, "y": 54, "facing": "Down" },
+    { "warp": 28, "map": "PetalburgCity_Gym", "x": 7, "y": 54, "facing": "Down" },
+    { "warp": 29, "map": "PetalburgCity_Gym", "x": 7, "y": 54, "facing": "Down" },
+    { "warp": 30, "map": "PetalburgCity_Gym", "x": 1, "y": 67, "facing": "Down" },
+    { "warp": 31, "map": "PetalburgCity_Gym", "x": 1, "y": 67, "facing": "Down" },
+    { "warp": 34, "map": "PetalburgCity_Gym", "x": 7, "y": 15, "facing": "Down" },
+    { "warp": 35, "map": "PetalburgCity_Gym", "x": 7, "y": 15, "facing": "Down" },
+    { "warp": 36, "map": "PetalburgCity_Gym", "x": 1, "y": 28, "facing": "Down" },
+    { "warp": 37, "map": "PetalburgCity_Gym", "x": 1, "y": 28, "facing": "Down" }
+  ],
+  "read": {
+    "PetalburgCity_Gym_EventScript_SpeedRoomDoor": "SpeedRoomDoor",
+    "PetalburgCity_Gym_EventScript_AccuracyRoomDoor": "AccuracyRoomDoor",
+    "PetalburgCity_Gym_EventScript_ConfusionRoomDoor": "ConfusionRoomDoor",
+    "PetalburgCity_Gym_EventScript_LeftDefenseRoomDoor": "LeftDefenseRoomDoor",
+    "PetalburgCity_Gym_EventScript_RightDefenseRoomDoor": "RightDefenseRoomDoor",
+    "PetalburgCity_Gym_EventScript_RecoveryRoomDoor": "RecoveryRoomDoor",
+    "PetalburgCity_Gym_EventScript_LeftStrengthRoomDoor": "LeftStrengthRoomDoor",
+    "PetalburgCity_Gym_EventScript_RightStrengthRoomDoor": "RightStrengthRoomDoor",
+    "PetalburgCity_Gym_EventScript_LeftOHKORoomDoor": "LeftOHKORoomDoor",
+    "PetalburgCity_Gym_EventScript_RightOHKORoomDoor": "RightOHKORoomDoor",
+    "PetalburgCity_Gym_EventScript_LeftGymLeadersRoomDoor": "LeftLeadersRoomDoor",
+    "PetalburgCity_Gym_EventScript_RightGymLeadersRoomDoor": "RightLeadersRoomDoor"
+  },
   "people": {
     "petalburg_gym_norman": { "name": "Norman", "hiddenBy": "", "script": "Norman", "still": true },
     "petalburg_gym_wally": { "name": "Wally", "still": true, "dialog": [ "Mr. Norman is so kind..." ] },
-    "man_2": { "name": "Gym Guide", "hiddenBy": "", "script": "GymGuide", "still": true }
+    "petalburg_gym_wallys_dad": { "name": "Wally's Father", "still": true, "dialog": [ "Ah, {player}! Come along, come along." ] },
+    "man_2": { "name": "Gym Guide", "hiddenBy": "", "script": "GymGuide", "still": true },
+    "man_3": { "name": "Randall", "trainer": { "dialogueBefore": "Cooltrainer Randall: The Speed Room! Here the quick strike first, and the slow never strike at all!", "dialogueAfter": "Cooltrainer Randall: You were faster than I was. That stings." } },
+    "woman_5": { "name": "Mary", "trainer": { "dialogueBefore": "Cooltrainer Mary: In the Accuracy Room, every move lands where it's meant to. Let's see if yours do!", "dialogueAfter": "Cooltrainer Mary: Right on target... but it was your target, not mine." } },
+    "man_3_2": { "name": "Parker", "trainer": { "dialogueBefore": "Cooltrainer Parker: Welcome to the Confusion Room. Try to keep your head straight in here!", "dialogueAfter": "Cooltrainer Parker: I'm the one who's all mixed up now." } },
+    "woman_5_2": { "name": "Alexia", "trainer": { "dialogueBefore": "Cooltrainer Alexia: The Defense Room. My Pokémon can take any hit you throw. Go on, try!", "dialogueAfter": "Cooltrainer Alexia: All that defense, and it still wasn't enough." } },
+    "man_3_3": { "name": "George", "trainer": { "dialogueBefore": "Cooltrainer George: In the Recovery Room, a Pokémon that rests comes back stronger. Let's go!", "dialogueAfter": "Cooltrainer George: There was no recovering from that one." } },
+    "woman_5_3": { "name": "Jody", "trainer": { "dialogueBefore": "Cooltrainer Jody: The Strength Room! One good hit is all a strong Pokémon needs!", "dialogueAfter": "Cooltrainer Jody: Your one good hit was better than mine." } },
+    "man_3_4": { "name": "Berke", "trainer": { "dialogueBefore": "Cooltrainer Berke: This is the One-Hit KO Room. One blow decides everything. Ready?", "dialogueAfter": "Cooltrainer Berke: Decided in one blow, all right. Yours." } }
   },
   "signs": {
-    "PetalburgCity_Gym_EventScript_SpeedRoomDoor": "SPEED ROOM\nThe door is shut tight.",
-    "PetalburgCity_Gym_EventScript_AccuracyRoomDoor": "ACCURACY ROOM\nThe door is shut tight."
+    "PetalburgCity_Gym_EventScript_LeftGymStatue": "Petalburg City Pokémon Gym\nLeader: Norman",
+    "PetalburgCity_Gym_EventScript_RightGymStatue": "Petalburg City Pokémon Gym\nLeader: Norman"
   }
 }

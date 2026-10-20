@@ -1,0 +1,69 @@
+# Lavaridge Town's Gym (plan 21 · H4, part b). docs/scripts.md describes the language; the lines are our own, on
+# Emerald's beats (data/maps/LavaridgeTown_Gym_1F/scripts.inc).
+#
+# Flannery battles for the Heat Badge (FLAG_BADGE04_GET, `givebadge heat`), which lets Strength be used outside battle,
+# and gives TM50, Overheat (FLAG_RECEIVED_TM_OVERHEAT). Her Badge counts the Gym's eight trainers beaten on both
+# floors, adds one to Petalburg's count of Badges, sends Wally on from Wanda's house in Verdanturf Town and sets the
+# town's state for the rival's Go-Goggles outside (VAR_LAVARIDGE_TOWN_STATE 1, lavaridge_town.txt).
+
+
+script Flannery
+  face flannery player
+  speaker "Flannery"
+  if badge heat goto Won
+  scene "Flannery"
+  say "Welcome! I'm Flannery, the Leader of Lavaridge's Gym. My grandfather handed it to me not long ago."
+  say "I may be new at this, but don't you dare go easy on me! My Fire Pokémon and I are burning to battle!"
+  battle self as "hoenn_flannery_1"
+  say "Oh... I lost. I think I was trying so hard to act like a Leader that I forgot to just be myself."
+  say "Thank you. You've reminded me of something important. Please, take the Heat Badge."
+  givebadge heat
+  text "{player} received the Heat Badge from Flannery!"
+  say "With the Heat Badge, your Pokémon can use Strength outside of battle to shove big boulders around."
+  setflag FLAG_DEFEATED_LAVARIDGE_GYM
+  setflag FLAG_WHITEOUT_TO_LAVARIDGE
+  setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
+  setvar VAR_LAVARIDGE_TOWN_STATE 1
+  addvar VAR_PETALBURG_GYM_STATE 1
+  defeat "hoenn_cole"
+  defeat "hoenn_gerald"
+  defeat "hoenn_axle"
+  defeat "hoenn_danielle"
+  defeat "hoenn_jace"
+  defeat "hoenn_keegan"
+  defeat "hoenn_jeff"
+  defeat "hoenn_eli"
+  say "And this is my thanks for a hot battle. Take it!"
+  give "TM50"
+  setflag FLAG_RECEIVED_TM_OVERHEAT
+  say "TM50 holds Overheat. It's the strongest Fire move there is, but it wears its user out. Use it boldly!"
+  if flag FLAG_ENABLE_FLANNERY_MATCH_CALL goto Done
+  if not flag FLAG_SYS_POKENAV_GET goto Done
+  say "Can I have your number, too? I'd like to tell you how I'm getting on as a Leader."
+  addcontact flannery
+  setflag FLAG_ENABLE_FLANNERY_MATCH_CALL
+  text "Registered Flannery in the PokéNav."
+label Done
+  endscene
+  end
+label Won
+  if flag FLAG_RECEIVED_TM_OVERHEAT goto Warm
+  give "TM50"
+  setflag FLAG_RECEIVED_TM_OVERHEAT
+  say "TM50 holds Overheat. It's the strongest Fire move there is, but it wears its user out. Use it boldly!"
+  end
+label Warm
+  say "I'm going to train harder than anyone! Next time we meet, I'll be a Leader worthy of the name."
+  end
+
+
+# The guide by the door: advice before the Badge, praise after
+script GymGuide
+  speaker "Gym Guide"
+  if flag FLAG_DEFEATED_LAVARIDGE_GYM goto Won
+  say "Hey, champ in the making! Flannery's Gym is built on hot springs. Watch your step: the sand gives way!"
+  say "Fall through and the steam vents below will blow you back up. Her Pokémon are Fire types, so bring Water or Ground moves!"
+  end
+label Won
+  say "You beat Flannery! That was one hot battle. Even the steam stopped to watch!"
+  end

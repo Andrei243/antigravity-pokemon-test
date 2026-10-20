@@ -290,6 +290,19 @@ public static class MusicDirector
         return MusicRole.EyeBoy;
     }
 
+    /// <summary>
+    /// The song that plays when a trainer of this class spots the player in a region: the eye song of the region's own
+    /// folder the sound map names for the class (<c>eyeSongs</c>, plan 21 · H4, part b: Team Magma's <c>eye_magma</c>),
+    /// where the region has it, and otherwise the song of the class's eye theme (<see cref="EyeRole"/>).
+    /// </summary>
+    public static string? EyeSong(string? trainerClass, string? region, Func<string, bool> exists)
+    {
+        if (trainerClass != null && !string.IsNullOrEmpty(region) && SoundMap.EyeSongs.TryGetValue(trainerClass, out var file)
+            && exists($"{region.ToLowerInvariant()}/{file}"))
+            return $"{region.ToLowerInvariant()}/{file}";
+        return Resolve(EyeRole(trainerClass), region, exists);
+    }
+
     /// <summary>The battle theme one trainer class brings: the sound map's, or the trainer battle theme.</summary>
     public static MusicRole BattleRoleOf(string? trainerClass)
     {

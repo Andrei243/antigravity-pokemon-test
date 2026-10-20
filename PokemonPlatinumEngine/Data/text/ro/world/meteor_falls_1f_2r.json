@@ -1,0 +1,83 @@
+{
+  "people": {
+    "man_3": {
+      "name": {
+        "en": [
+          "Nicolas"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Dragon Tamer Nicolas: This place is a sacred ground for Dragon Pokémon. Prove you're worthy to walk it!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Dragon Tamer Nicolas: You're worthy, all right."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_m": {
+      "name": {
+        "en": [
+          "John & Jay"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Old Couple John & Jay: We've battled side by side for fifty years. Shall we show you how it's done?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Old Couple John & Jay: Fifty years, and still something to learn."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "expert_f": {
+      "name": {
+        "en": [
+          "John & Jay"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Old Couple John & Jay: We've battled side by side for fifty years. Shall we show you how it's done?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Old Couple John & Jay: Fifty years, and still something to learn."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

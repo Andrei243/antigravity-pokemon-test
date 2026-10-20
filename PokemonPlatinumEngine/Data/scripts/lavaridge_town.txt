@@ -1,0 +1,95 @@
+# Lavaridge Town (plan 21 · H4, part b). docs/scripts.md describes the language; the lines are our own, on Emerald's
+# beats (data/maps/LavaridgeTown/scripts.inc).
+#
+# Coming into town once Team Magma has left Mt. Chimney brings its trainers back up there (FLAG_HIDE_MT_CHIMNEY_TRAINERS,
+# hidden by common.HoennChapterSix until then). Flannery's Badge sets VAR_LAVARIDGE_TOWN_STATE 1, and the next time the
+# player comes out of the Gym or the Pokémon Center the rival meets them with the Go-Goggles that see them through the
+# desert's sandstorm on Route 111 (FLAG_RECEIVED_GO_GOGGLES, VAR_LAVARIDGE_TOWN_STATE 2). Emerald plays the scene on
+# whatever tile the town is come to by, though its state is set only inside the Gym; here it waits for one of the two
+# doors it is written for. The rival rides off on a bicycle in Emerald, a second object of the town; here they run.
+
+
+script OnEnter
+  setflag FLAG_VISITED_LAVARIDGE_TOWN
+  if not flag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY goto Goggles
+  clearflag FLAG_HIDE_MT_CHIMNEY_TRAINERS
+label Goggles
+  if var VAR_LAVARIDGE_TOWN_STATE != 1 end
+  if var PLAYER_X == 149 goto FromTheCenter
+  if var PLAYER_X != 145 end
+  if var PLAYER_Y != 76 end
+  scene "The rival's Go-Goggles"
+  clearflag FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
+  place lavaridge_rival 152 76 left
+  show lavaridge_rival
+  sound "door_open"
+  emote lavaridge_rival exclaim
+  face player right
+  music "hoenn/rival"
+  walk lavaridge_rival left 6
+  call Goggles
+  walk lavaridge_rival right 3 fast
+  walk lavaridge_rival up 7 fast
+  call Gone
+  endscene
+  end
+label FromTheCenter
+  if var PLAYER_Y != 67 end
+  scene "The rival's Go-Goggles at the Center"
+  clearflag FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
+  place lavaridge_rival 151 69 up
+  show lavaridge_rival
+  emote lavaridge_rival exclaim
+  music "hoenn/rival"
+  walk lavaridge_rival left 2
+  walk lavaridge_rival up 1
+  face player down
+  call Goggles
+  walk lavaridge_rival down 1 fast
+  walk lavaridge_rival right 8 fast
+  call Gone
+  endscene
+  end
+
+
+script Goggles
+  speaker "{rival}"
+  say "{player}! You won Flannery's Badge? That makes four! You're getting really good, you know."
+  say "I've just been in the herb shop. Anyway, take these. I picked them up for you."
+  give "Go-Goggles"
+  setflag FLAG_RECEIVED_GO_GOGGLES
+  say "Those are Go-Goggles. With them on, the sandstorm in the desert on Route 111 won't get in your eyes."
+  say "With four Badges, you should go and battle your dad in Petalburg too! I'm heading back to help mine. Bye!"
+  return
+
+
+script Gone
+  hide lavaridge_rival
+  setflag FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
+  setvar VAR_LAVARIDGE_TOWN_STATE 2
+  music area
+  return
+
+
+# The woman by the hot springs who has an Egg for whoever will walk it until it hatches
+script EggWoman
+  face self player
+  speaker "Old Woman"
+  if flag FLAG_RECEIVED_LAVARIDGE_EGG goto Given
+  ask "I found an Egg, but I'm too old to carry it about until it hatches. Would you take it?"
+  if no goto Declined
+  giveegg "Wynaut"
+  if var RESULT == 0 goto Full
+  setflag FLAG_RECEIVED_LAVARIDGE_EGG
+  text "{player} received the Egg."
+  say "Walk plenty with it, and it will hatch in no time. Look after it, won't you?"
+  end
+label Full
+  say "Oh, your team is full. Come back when you have room for it."
+  end
+label Declined
+  say "Very well. I'll keep it warm a while longer."
+  end
+label Given
+  say "Every so often an Egg turns up at the Day Care. That's where that one came from, I expect."
+  end

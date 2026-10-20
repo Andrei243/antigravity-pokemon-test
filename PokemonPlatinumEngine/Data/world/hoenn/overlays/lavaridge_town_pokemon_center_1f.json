@@ -1,0 +1,12 @@
+{
+  // Lavaridge Town's Pokémon Center (plan 21 · H4, part b), its floor as Emerald lays it out, with its back door out to
+  // the hot springs
+  "area": "lavaridge_town_pokemon_center_1f",
+  "bgmTrack": "hoenn/oldale",
+  "people": {
+    "lavaridge_nurse": { "name": "Nurse", "script": "Nurse" },
+    "youngster": { "name": "Boy", "dialog": [ "Spend time with your Pokémon and you'll grow closer. The more time, the better. That's what I reckon." ] },
+    "woman_3": { "name": "Woman", "dialog": [ "Just sitting in the hot springs makes you feel brand new. I wish my Pokémon could have a soak too." ] },
+    "gentleman": { "name": "Gentleman", "dialog": [ "Hohoho! The hot springs are just out the back door. When your Pokémon rest, so should you!" ] }
+  }
+}

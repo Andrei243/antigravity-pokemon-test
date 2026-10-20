@@ -1,0 +1,102 @@
+{
+  "Goggles": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! You won Flannery's Badge? That makes four! You're getting really good, you know."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I've just been in the herb shop. Anyway, take these. I picked them up for you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Those are Go-Goggles. With them on, the sandstorm in the desert on Route 111 won't get in your eyes."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With four Badges, you should go and battle your dad in Petalburg too! I'm heading back to help mine. Bye!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "EggWoman": [
+    {
+      "en": [
+        "Old Woman"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I found an Egg, but I'm too old to carry it about until it hatches. Would you take it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Egg."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Walk plenty with it, and it will hatch in no time. Look after it, won't you?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Oh, your team is full. Come back when you have room for it."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Very well. I'll keep it warm a while longer."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Every so often an Egg turns up at the Day Care. That's where that one came from, I expect."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

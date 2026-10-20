@@ -1,0 +1,27 @@
+{
+  "key": "mt_chimney_cable_car_station",
+  "index": 231,
+  "name": "Mt Chimney",
+  "matrix": 180,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE110",
+  "nightMusic": "MUS_ROUTE110",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 11, "to": "mt_chimney", "toWarp": 0 },
+    { "x": 7, "z": 11, "to": "mt_chimney", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "mt_chimney_cable_car_attendant", "looks": "beauty", "movement": "look_south", "x": 6, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "MtChimney_CableCarStation_EventScript_Attendant" },
+    { "id": "cable_car", "looks": "cable_car", "movement": "look_around", "x": 6, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "" }
+  ],
+  "signs": [],
+  "triggers": []
+}

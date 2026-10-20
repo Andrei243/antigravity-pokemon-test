@@ -156,6 +156,12 @@
     // Plan 21 · H4, part a (our own take): a grunt of Team Magma, the red hood pulled over dark hair as a cap, a red
     // hooded top with a charcoal trim, charcoal trousers
     "magma_grunt": { "hairColor": "#2e2628", "hat": "Cap", "hatColor": "#b8302c", "hatBand": "#2c2a2e", "top": "#c43a32", "accent": "#2c2a2e", "bottom": "#3a3434", "shoes": "#1e1c1e", "eyes": "#4a2e2e", "build": "Adult" },
+    // Plan 21 · H4, part b (our own takes): Maxie, Team Magma's leader, swept rust-red hair and dark-framed glasses, a
+    // long red coat over charcoal; Tabitha, his admin, short and stocky, the team's red hood up with a gold trim;
+    // Flannery, Lavaridge's Gym Leader, long fiery red hair, a white top with short sleeves and dark trousers
+    "maxie": { "hairColor": "#8a3426", "hair": "Swept", "glasses": "#1e1c22", "top": "#b42e28", "accent": "#2c2a2e", "bottom": "#2c2a2e", "shoes": "#1a181c", "eyes": "#3a2a2a", "coat": true, "build": "Adult", "height": 1.1 },
+    "tabitha": { "hairColor": "#2a2428", "hat": "Cap", "hatColor": "#b8302c", "hatBand": "#d8b04a", "top": "#c43a32", "accent": "#d8b04a", "bottom": "#3a3434", "shoes": "#1e1c1e", "eyes": "#4a2e2e", "build": "Adult", "height": 0.96 },
+    "flannery": { "hairColor": "#c8382c", "hair": "Long", "top": "#f2eee6", "accent": "#d8402c", "bottom": "#2e3448", "shoes": "#3a2e2a", "eyes": "#5a2e2a", "shortSleeves": true, "lashes": true, "build": "Adult", "height": 1.02 },
     "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
     // Kanto's cast of plan 19 · K5 (our own takes): Lt. Surge, the tallest, spiky pale-gold hair and an olive soldier's vest over a khaki shirt; the
     // S.S. Anne's captain, a white cap with a navy band and a white coat, a moustache; Mr. Fuji, small, short white hair and a long plum robe;
@@ -414,6 +420,14 @@
     "Hall Matron": null,
     "Tower Tycoon": null,
     "Team Aqua": "aqua_grunt",
-    "Team Magma": "magma_grunt"
+    "Team Magma": "magma_grunt",
+    // Plan 21 · H4, part b: the teams' admins and leaders are who they are; Emerald's Experts and its old couple
+    // stand as the nearest looks until their own are made
+    "Magma Admin": null,
+    "Magma Leader": null,
+    "Aqua Admin": null,
+    "Aqua Leader": null,
+    "Expert": [ "gentleman", "lady" ],
+    "Old Couple": [ "gentleman", "lady" ]
   }
 }

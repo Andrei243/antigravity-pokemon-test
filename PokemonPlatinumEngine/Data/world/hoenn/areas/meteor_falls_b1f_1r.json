@@ -1,0 +1,71 @@
+{
+  "key": "meteor_falls_b1f_1r",
+  "index": 240,
+  "name": "Meteor Falls",
+  "matrix": 189,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_CAVE_OF_ORIGIN",
+  "nightMusic": "MUS_CAVE_OF_ORIGIN",
+  "encounters": "meteor_falls_b1f_1r",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Golbat", "level": 33 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Golbat", "level": 33 },
+    { "species": "Solrock", "level": 35 },
+    { "species": "Solrock", "level": 33 },
+    { "species": "Solrock", "level": 37 },
+    { "species": "Golbat", "level": 35 },
+    { "species": "Solrock", "level": 39 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Golbat", "level": 40 },
+    { "species": "Golbat", "level": 38 },
+    { "species": "Golbat", "level": 40 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Golbat", "level": 30, "maxLevel": 35 },
+    { "species": "Golbat", "level": 30, "maxLevel": 35 },
+    { "species": "Solrock", "level": 25, "maxLevel": 35 },
+    { "species": "Solrock", "level": 15, "maxLevel": 25 },
+    { "species": "Solrock", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 4,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "maxLevel": 10, "weight": 70 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 10 }
+  ],
+  "oldRodRate": 30,
+  "goodRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 30, "weight": 60 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 30, "weight": 20 },
+    { "species": "Barboach", "level": 10, "maxLevel": 30, "weight": 20 }
+  ],
+  "goodRodRate": 30,
+  "superRod": [
+    { "species": "Barboach", "level": 25, "maxLevel": 30 },
+    { "species": "Barboach", "level": 30, "maxLevel": 35 },
+    { "species": "Whiscash", "level": 30, "maxLevel": 35 },
+    { "species": "Whiscash", "level": 35, "maxLevel": 40 },
+    { "species": "Whiscash", "level": 40, "maxLevel": 45 }
+  ],
+  "superRodRate": 30,
+  "warps": [
+    { "x": 5, "z": 6, "to": "meteor_falls_1f_2r", "toWarp": 1 },
+    { "x": 7, "z": 11, "to": "meteor_falls_1f_2r", "toWarp": 2 },
+    { "x": 18, "z": 15, "to": "meteor_falls_1f_2r", "toWarp": 3 },
+    { "x": 17, "z": 3, "to": "meteor_falls_b1f_2r", "toWarp": 0 },
+    { "x": 3, "z": 23, "to": "meteor_falls_1f_1r", "toWarp": 3 },
+    { "x": 20, "z": 36, "to": "meteor_falls_1f_1r", "toWarp": 4 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

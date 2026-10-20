@@ -117,6 +117,9 @@ public static class StoryMigration
         // Version 28: Hoenn's fifth stretch (plan 21 · H4, part a): the people of Route 111 to Meteor Falls are hidden until
         // their scenes by common.HoennChapterFive, which a new game runs too
         if (savedVersion < 28) Run(story, scripts, "common.HoennChapterFive");
+        // Version 29: Hoenn's sixth stretch (plan 21 · H4, part b): the people of Mt. Chimney to Petalburg's Gym are hidden
+        // until their scenes by common.HoennChapterSix, which a new game runs too
+        if (savedVersion < 29) Run(story, scripts, "common.HoennChapterSix");
     }
 
     /// <summary>

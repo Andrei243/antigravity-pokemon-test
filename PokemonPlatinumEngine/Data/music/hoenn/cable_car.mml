@@ -1,0 +1,29 @@
+# The cable car up Mt. Chimney (Emerald's MUS_CABLE_CAR): a lilting waltz in F major, a celesta swaying over soft
+# strings and a plucked bass, as the car rocks gently on its wire. Original composition for this game (plan 21 · H4,
+# part b).
+title Mt. Chimney Cable Car
+tempo 120
+meter 3/4
+reverb 0.34
+night none
+
+track lead celesta vol=0.88 pan=0.05 rev=0.34
+  L o5 c4 f4 a4 | o5 g4. e8 c4 | o5 d4 f4 b-4 | o5 a2. |
+  o5 a4 f4 d4 | o5 b-4. a8 g4 | o5 e4 g4 o6 c4 | o5 b-2 r4 |
+  o6 c4 o5 a4 f4 | o5 e4. a8 o6 c4 | o6 d4 c4 o5 b-4 | o5 a2. |
+  o5 g4 b-4 o6 d4 | o6 c4. o5 b-8 g4 | o5 e4 g4 b-4 | o5 f2. |
+
+track pad strings vol=0.34 pan=-0.25 rev=0.36
+  L o4 (f a >c)2. | o4 (e g >c)2. | o4 (d f b-)2. | o4 (f a >c)2. |
+  o4 (d f a)2. | o4 (d g b-)2. | o4 (e g >c)2. | o4 (e g b-)2. |
+  o4 (f a >c)2. | o4 (e a >c)2. | o4 (d f b-)2. | o4 (f a >c)2. |
+  o4 (d g b-)2. | o4 (e g >c)2. | o4 (e g b-)2. | o4 (f a >c)2. |
+
+track bass contrabass vol=0.74 rev=0.12
+  L o3 f4 r2 | o3 c4 r2 | o2 b-4 r2 | o3 f4 r2 |
+  o3 d4 r2 | o3 g4 r2 | o3 c4 r2 | o3 c4 r2 |
+  o3 f4 r2 | o3 a4 r2 | o2 b-4 r2 | o3 f4 r2 |
+  o3 g4 r2 | o3 c4 r2 | o3 c4 r2 | o3 f4 r2 |
+
+track drums kit vol=0.32 rev=0.2
+  v60 L [ b4 h4 h4 | ]16

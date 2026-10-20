@@ -316,6 +316,12 @@
     ],
     "slateport_mail": [
       "Harbor Mail"
+    ],
+    "lavaridge_herb_shop": [
+      "Energy Powder",
+      "Energy Root",
+      "Heal Powder",
+      "Revival Herb"
     ]
   }
 }

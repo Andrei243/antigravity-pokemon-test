@@ -1,5 +1,5 @@
 {
-  "comment": "Which music a trainer class brings: the eye theme that plays when one of them spots the player (the original's table in src/field_bgm.c, by our names for the classes; a class the original splits by gender, as School Kid, takes the boy's), and the battle theme for the few whose battle has one of its own. A class not listed gets eye_boy and the trainer battle theme. Values are the short names of MusicDirector.EyeThemes and BattleThemes.",
+  "comment": "Which music a trainer class brings: the eye theme that plays when one of them spots the player (the original's table in src/field_bgm.c, by our names for the classes; a class the original splits by gender, as School Kid, takes the boy's), and the battle theme for the few whose battle has one of its own. A class not listed gets eye_boy and the trainer battle theme. Values are the short names of MusicDirector.EyeThemes and BattleThemes. eyeSongs names, for a class, a song file of a region's own folder that plays there in place of the eye theme (Emerald's Team Magma, plan 21 · H4, part b).",
   "eyeThemes": {
     "Aroma Lady": "lady",
     "Ruin Maniac": "mountain",
@@ -116,7 +116,13 @@
     "Triathlete": "sport",
     "Bug Maniac": "mystery",
     "Sr And Jr": "kid",
-    "Pkmn Breeder": "girl"
+    "Pkmn Breeder": "girl",
+    "Expert": "fighter",
+    "Old Couple": "fun",
+    "Magma Admin": "galactic",
+    "Magma Leader": "galactic",
+    "Aqua Admin": "galactic",
+    "Aqua Leader": "galactic"
   },
   "battleThemes": {
     "Leader": "gym",
@@ -139,6 +145,15 @@
     "Champion": "champion",
     "Team Aqua": "galactic",
     "Team Magma": "galactic",
-    "Boss": "galacticBoss"
+    "Boss": "galacticBoss",
+    "Magma Admin": "galactic",
+    "Magma Leader": "galacticBoss",
+    "Aqua Admin": "galactic",
+    "Aqua Leader": "galacticBoss"
+  },
+  "eyeSongs": {
+    "Team Magma": "eye_magma",
+    "Magma Admin": "eye_magma",
+    "Magma Leader": "eye_magma"
   }
 }

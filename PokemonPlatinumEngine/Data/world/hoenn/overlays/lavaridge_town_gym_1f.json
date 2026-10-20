@@ -1,0 +1,23 @@
+{
+  // Lavaridge Town's Gym (plan 21 · H4, part b), Flannery's hot springs: a hall of sand over a floor of steam. Emerald's
+  // patches of sand that sink their walker to the floor below, and the vents there that blow them back up, are warp
+  // panels on both floors (the importer's), each sinking or rising to the tile over or under it; where a vent throws its
+  // rider up onto plain sand that leads nowhere, the tile above is a landing. Emerald buries its trainers in the sand
+  // and has them spring out as the player comes near; here they stand on their patches in plain sight, the panels under
+  // them unused as in Emerald, where a buried trainer is in the way all the same
+  "area": "lavaridge_town_gym_1f",
+  "bgmTrack": "hoenn/gym",
+  "arenaType": "Fire",
+  "people": {
+    "flannery": { "name": "Flannery", "npcType": "flannery", "script": "Flannery", "still": true },
+    "man_2": { "name": "Gym Guide", "script": "GymGuide", "still": true },
+    "cole": { "name": "Cole", "trainer": { "dialogueBefore": "Kindler Cole: Whoa! You almost stepped on me! I was having a nice warm soak in the sand.", "dialogueAfter": "Kindler Cole: Back into the sand I go. It's toasty in there." } },
+    "gerald": { "name": "Gerald", "trainer": { "dialogueBefore": "Cooltrainer Gerald: The heat in here makes most challengers wilt. Let's see how long you last!", "dialogueAfter": "Cooltrainer Gerald: Not wilting at all, are you?" } },
+    "axle": { "name": "Axle", "trainer": { "dialogueBefore": "Kindler Axle: Surprise! A sand bath does wonders for the fighting spirit!", "dialogueAfter": "Kindler Axle: My fighting spirit's gone a bit soggy." } },
+    "danielle": { "name": "Danielle", "trainer": { "dialogueBefore": "Battle Girl Danielle: I train in the hot sand to toughen up. You won't get past me so easily!", "dialogueAfter": "Battle Girl Danielle: Tougher than me. Go on, Flannery's waiting." } }
+  },
+  "signs": {
+    "LavaridgeTown_Gym_1F_EventScript_LeftGymStatue": "Lavaridge Town Pokémon Gym\nLeader: Flannery",
+    "LavaridgeTown_Gym_1F_EventScript_RightGymStatue": "Lavaridge Town Pokémon Gym\nLeader: Flannery"
+  }
+}

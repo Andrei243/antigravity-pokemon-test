@@ -210,7 +210,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     `Region.RivalFor`, the introduction's offer), drawn from an overlay's `Rival:MAY:BRENDAN`
     (`PlayerIdentity.CharacterFor`); the family lives in the west house for both looks (rulings, "Hoenn's first
     chapter").
-  - **Opened**: Petalburg's Gym (`PetalburgCity_Gym`), its hall alone, every way on `locked` until H4.
+  - **Opened**: Petalburg's Gym (`PetalburgCity_Gym`), its hall alone, every way on `locked` until H4 (its rooms opened
+    by H4's part b, their doors read).
   - **Looks**: `prof_birch` (the introduction's professor too), `may`, `brendan`, `wally`, `norman`; the `Rival` class
     in battle picks May's or Brendan's.
   - **Music** (ours, rendered clash-free, −18.4 to −20.3 LUFS, not yet heard): `gym`, `rival`, `help`, `battle_wild`,
@@ -335,7 +336,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     **Still left of H3**: the three Battle Tents' bouts (Slateport's on R18b's Factory rules with Emerald's level-30
     rentals; Verdanturf's and Fallarbor's wait for plan 14 · B9's Palace and Arena), Emerald's own slot machine and
     roulette, the Cycling Road's timed challenge, the move tutors, Birch's number on Route 110, the cracked floors (H12).
-- [ ] H4 The desert, Mt. Chimney and Lavaridge (part a done 2026-10-20, wave 34: Route 111 to Meteor Falls)
+- [x] H4 The desert, Mt. Chimney and Lavaridge (part a done 2026-10-20, wave 34: Route 111 to Meteor Falls; part b
+  done 2026-10-20, wave 35: the cable car to Norman, its record below part a's)
   - **Played**: the Winstrates one after another at their door (Victor, Victoria, Vivi, Vicky; a family lost to part
     way is put back as Route 111 is come to again) and Victoria's Macho Brace; the desert's storm turning back whoever
     has no Go-Goggles at its south and west edges (Emerald's `ViciousSandstormTrigger`); the old lady's rest stop; the
@@ -372,6 +374,49 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
     `mt_chimney`, `cable_car`, `eye_magma` and the bosses' themes are not; Gabby and Ty; the Secret Power man.
     Still from H2 and H3: Hoenn's rematches (Emerald's table), Emerald's berry rules (the Wailmer Pail waters nothing),
     Walda's phrase, the museum's plain exhibits, the Trick House's furniture, Verdanturf's Battle Tent outside. `PokemonTests` stalls on this machine before its first test (a testhost at 3 s of CPU for twenty minutes, as other sessions' did the same hour): not run to its end this session.
+  - **Part b, done** (wave 35): the chapter from the cable car to Norman.
+  - **Played**: the cable car's ride up and down (Route 112's attendant once Team Magma's grunts have gone, the summit's
+    attendant back; `VAR_CABLE_CAR_STATION_STATE`); Mt. Chimney's summit: Tabitha and two grunts in the way, Team Aqua
+    and Team Magma scuffling with their Poochyena, Maxie's battle at the meteorite machine, Team Magma gone, Archie's
+    thanks, the Meteorite taken from the machine and handed back to Cozmo in Fallarbor for TM27, the mountain's trainers
+    out once Lavaridge is come to, the Lava Cookie lady (200 money a cookie); Jagged Pass and its five trainers; Lavaridge
+    Town, the old woman's Wynaut Egg (`FLAG_RECEIVED_LAVARIDGE_EGG`), the herb shop's counter (Emerald's four herbs) and
+    its Charcoal; Flannery's Gym on its two floors of sand and steam, her battle, the Heat Badge and TM50; the rival with
+    the Go-Goggles as the player next comes out of the Gym or the Pokémon Center; the desert with its trainers past the
+    goggles' gate; Mirage Tower's four floors and its two fossils, one taken and the tower fallen; Route 115 and Meteor
+    Falls' inner rooms with their trainers; Petalburg's Gym room by room, each door read and asking, Norman's battle,
+    the Balance Badge and TM42, Wally's father coming in and HM03 in Wally's house. Every scene a `scene`. **Story
+    version 29** (`common.HoennChapterSix`, called by `HoennNewGame`: the summit's trainers and the Lava Cookie lady, the
+    rival in Lavaridge and Wally's father in the Gym hidden until their scenes). Rulings: "Mt. Chimney, Lavaridge and
+    Petalburg's Gym".
+  - **Opened**: Mt. Chimney's summit and its cable car station, Jagged Pass (its way into Team Magma's hideout `locked`
+    until H7), Lavaridge Town (`Architecture.Spa`, the style guide's row first) and its six rooms with the Gym's two
+    floors, Mirage Tower's four floors (Route 111's way in a `switch` until `FLAG_HOENN_MIRAGE_TOWER_FALLEN`), Route 115
+    (Terra Cave's two ways in `locked` until H12), Meteor Falls' upper room and its two lower ones, and every room of
+    Petalburg's Gym; 19 areas. A spawn for Lavaridge. Still shut: the Desert Ruins (until the Regis), the Desert
+    Underpass, the Trainer Hill, Meteor Falls' Steven room behind its falls.
+  - **Engine**: the GBA reader counts the tile a warp panel throws its rider onto as a landing (`GbaWorld`), so
+    Lavaridge's vents put their riders on plain sand that leads nowhere; `Architecture.Spa` and its `BuildingArt` style;
+    `MusicDirector.EyeSong` and the sound map's `eyeSongs` (a region's own eye song for a class: Team Magma's
+    `eye_magma`); the herb shop's counter an override of the importer's `marts.json`.
+  - **Looks and music**: `maxie`, `tabitha` and `flannery` (our own takes); the teams' admins and leaders drawn as who
+    they are in battle, Emerald's Experts and old couple as `gentleman` and `lady`. Songs (ours, rendered clash-free with MusicRender, not yet heard):
+    `mt_chimney`, `cable_car`, `eye_magma`, `battle_galactic_boss` and `victory_galactic_boss` in their Hoenn versions
+    (the team leaders' battle and victory through the sound map's classes `Magma Leader` and `Aqua Leader`).
+  - **Shots**: not taken (no harness this wave). The `hoenn` mode has no shots of part b yet: `h92` on and `hs114` on are
+    owed (the cable car, the summit and Maxie, Jagged Pass, Lavaridge and its Gym's two floors, the Go-Goggles, the desert
+    in its storm with the goggles on, Mirage Tower falling, Petalburg's rooms and Norman, Wally's house), and with them the
+    budget of the desert's storm the plan's "Done when" asks for.
+  - **Tests**: written but not run. `HoennStoryTests.TheSixthStretchPlaysFromMtChimneyToNorman` (three ways by starter:
+    Maxie, the Meteorite, Flannery and the Heat Badge, the Go-Goggles and the desert let through, a fossil taken,
+    Petalburg's doors and Norman, HM03), `PetalburgsGymDoorsAreShutUntilFourBadges`,
+    `ASaveFromBeforeTheSixthStretchHasItsPeopleHidden`, `TheSongsOfMtChimneyAndTheCableCarAreThere`; the two tests that
+    name the story version say 29; `StoryTests.AskedAheadOfTheirScenes` is empty again.
+  - **Left**: the Desert Ruins' door (shut until the Regis, plan 21 · H8 or later); Gabby and Ty; the Secret Power man on
+    Route 111; Norman's Match Call (Emerald registers it on Route 104's boat, H2's to write) and his rematch; Emerald's
+    walk with Wally's father across Petalburg to his house (here the dark that closes in the Gym opens in the house);
+    Mirage Tower's coming and going by the day (it stands until it falls); the buried trainers springing out of
+    Lavaridge's sand; the rival's bicycle; the harness's shots above. Still from H2 and H3 as part a lists them.
 - [ ] H5 Dive and the sea floor
 - [ ] H6 Route 118 to Fortree
 - [ ] H7 Lilycove, Mt. Pyre and the hideouts

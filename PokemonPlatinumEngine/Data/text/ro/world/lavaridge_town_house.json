@@ -1,0 +1,51 @@
+{
+  "people": {
+    "old_man": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My wife's keeping an Egg warm in the hot springs. She says the Day Care found it between two of her Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "zigzagoon_2": {
+      "name": {
+        "en": [
+          "Zigzagoon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "ninja_boy": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Mimic lets a Pokémon copy the last move its foe used. Copying is a skill too, you know!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

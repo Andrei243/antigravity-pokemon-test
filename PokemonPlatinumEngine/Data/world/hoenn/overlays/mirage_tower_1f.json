@@ -1,0 +1,7 @@
+{
+  // Mirage Tower's ground floor (plan 21 · H4, part b): the sand-filled tower in Route 111's desert, its floors joined
+  // by ladders up to the two fossils on the top floor (mirage_tower_4f.txt), where the tower falls
+  "area": "mirage_tower_1f",
+  "bgmTrack": "hoenn/mt_chimney",
+  "trees": "Round"
+}

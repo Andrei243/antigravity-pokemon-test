@@ -1,9 +1,17 @@
-# Petalburg City's Gym, the player's father's (plan 21 · H2). docs/scripts.md describes the language; the lines are
-# our own, on Emerald's beats (data/maps/PetalburgCity_Gym/scripts.inc).
+# Petalburg City's Gym, the player's father's (plan 21 · H2, plan 21 · H4, part b). docs/scripts.md describes the
+# language; the lines are our own, on Emerald's beats (data/maps/PetalburgCity_Gym/scripts.inc).
 #
 # VAR_PETALBURG_GYM_STATE, as Emerald counts it: 0 Norman met at the door, 1 back from Wally's catch, 2 told to win four
-# Badges first. Until the Balance Badge (plan 21 · H4) Norman stands in the hall at the door (Emerald's
-# MoveNormanToEntrance) and its doors on into the rooms stay shut (the overlay's `locked`).
+# Badges first, and one more for each of the Badges of Rustboro, Dewford, Mauville and Lavaridge, so 6 is four Badges
+# won and Norman's battle waiting, 7 Norman beaten. Until 6 Norman stands in the hall at the door (Emerald's
+# MoveNormanToEntrance) and the hall's two doors are shut; from 6 he waits in his own room at the head of the Gym.
+#
+# The rooms lie one behind another, each with a Cooltrainer who battles only when spoken to and two doors in its north
+# wall. A door is read (Emerald's door scripts): shut until the room's trainer is beaten (the hall's until four
+# Badges), and then it asks before it lets the player through into the room beyond, onto the floor before the mat that
+# leads back. Norman's Badge, the Balance Badge, lets Surf be used outside battle; he gives TM42, Facade
+# (FLAG_RECEIVED_TM_FACADE), counts his Gym's trainers beaten, sends Wattson out into Mauville's street, and Wally's
+# father comes in to take the player home with him for HM03, Surf (petalburg_city_wallys_house.txt).
 
 
 script OnEnter
@@ -32,8 +40,10 @@ script OnEnter
 
 
 # Norman (Emerald's PetalburgCity_Gym_EventScript_Norman): at the first visit, Wally comes in with his father's word
-# and Norman sends the player out with him to catch his first Pokémon
+# and Norman sends the player out with him to catch his first Pokémon; with four Badges, his battle
 script Norman
+  if var VAR_PETALBURG_GYM_STATE >= 7 goto After
+  if var VAR_PETALBURG_GYM_STATE >= 6 goto Battle
   if var VAR_PETALBURG_GYM_STATE >= 2 goto Rules
   scene "Norman and Wally"
   speaker "Norman"
@@ -63,11 +73,267 @@ script Norman
   endscene
   end
 label Rules
-  say "Four Gym Badges, {player}. Then come back and face me. I'll be waiting."
+  face petalburg_gym_norman player
+  speaker "Norman"
+  if var VAR_PETALBURG_GYM_STATE >= 4 goto Stronger
+  if var VAR_PETALBURG_GYM_STATE >= 3 goto Dewford
+  say "Four Gym Badges, {player}. Then come back and face me. Start with Roxanne in Rustboro City."
+  end
+label Dewford
+  say "You've won Rustboro's Badge? Well done! Brawly's Gym is next, in Dewford Town across the sea. Mr. Briney sails there."
+  end
+label Stronger
+  say "You've grown stronger, {player}. I can see it in the way your Pokémon look at you. Keep going: four Badges."
+  end
+label Battle
+  face petalburg_gym_norman player
+  scene "Norman's battle"
+  speaker "Norman"
+  say "So. You really have won four Gym Badges. Then, as I promised, we'll battle."
+  say "{player}... I can't tell you how glad I am to face my own child in a real battle."
+  say "But a battle is a battle. As a Gym Leader, I'll give it everything I have!"
+  battle self as "hoenn_norman_1"
+  say "I... lost? To you, {player}? I can hardly believe it."
+  say "But rules are rules. You've earned this. Take it."
+  givebadge balance
+  text "{player} received the Balance Badge from Norman!"
+  say "With the Balance Badge, your Pokémon can use Surf outside of battle to cross the water."
+  setflag FLAG_DEFEATED_PETALBURG_GYM
+  setvar VAR_PETALBURG_GYM_STATE 7
+  setflag FLAG_HIDE_MAUVILLE_GYM_WATTSON
+  clearflag FLAG_HIDE_MAUVILLE_CITY_WATTSON
+  defeat "hoenn_randall"
+  defeat "hoenn_mary"
+  defeat "hoenn_parker"
+  defeat "hoenn_alexia"
+  defeat "hoenn_george"
+  defeat "hoenn_jody"
+  defeat "hoenn_berke"
+  say "And take this as well."
+  give "TM42"
+  setflag FLAG_RECEIVED_TM_FACADE
+  say "TM42 holds Facade. When its user is poisoned, burned or paralysed, it hits twice as hard. Turn a bad spot into strength!"
+  say "As a Gym Leader, I'm more upset than I can say. But as your father... it makes me happy, and a little sad. Strange, isn't it?"
+  wait 0.6
+  sound "door_open"
+  clearflag FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
+  place petalburg_gym_wallys_dad 1 7 up
+  show petalburg_gym_wallys_dad
+  walk petalburg_gym_wallys_dad up 1
+  emote petalburg_gym_wallys_dad exclaim
+  walk petalburg_gym_wallys_dad right 2
+  walk petalburg_gym_wallys_dad up 3
+  face petalburg_gym_wallys_dad player
+  speaker "Wally's Father"
+  say "Ah, there you are, {player}! Would you come with me? There's something I'd like you to have."
+  face petalburg_gym_wallys_dad up
+  say "Norman, you won't mind if I borrow {player} for a minute or two, will you?"
+  setvar VAR_PETALBURG_CITY_STATE 4
+  fade out
+  hide petalburg_gym_wallys_dad
+  setflag FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
+  warp "PetalburgCity_WallysHouse" 2 4 right
+  endscene
+  end
+label After
+  face petalburg_gym_norman player
+  speaker "Norman"
+  if flag FLAG_RECEIVED_TM_FACADE goto Training
+  give "TM42"
+  setflag FLAG_RECEIVED_TM_FACADE
+  say "TM42 holds Facade. When its user is poisoned, burned or paralysed, it hits twice as hard. Turn a bad spot into strength!"
+  end
+label Training
+  say "Go and see your mother now and then, {player}. I'll be here, training harder than ever. I can't stay beaten by my own child!"
+  end
+
+
+# The hall's doors, open with four Badges (Emerald's SpeedRoomDoor and AccuracyRoomDoor)
+script SpeedRoomDoor
+  speaker none
+  if var VAR_PETALBURG_GYM_STATE < 6 goto Locked
+  ask "The Speed Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 7 84 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+script AccuracyRoomDoor
+  speaker none
+  if var VAR_PETALBURG_GYM_STATE < 6 goto Locked
+  ask "The Accuracy Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 1 97 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+# The Speed Room's doors, open once Randall is beaten
+script ConfusionRoomDoor
+  speaker none
+  if not defeated "hoenn_randall" goto Locked
+  ask "The Confusion Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 7 45 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+script LeftDefenseRoomDoor
+  speaker none
+  if not defeated "hoenn_randall" goto Locked
+  ask "The Defense Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 1 58 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+# The Accuracy Room's, once Mary is beaten
+script RightDefenseRoomDoor
+  speaker none
+  if not defeated "hoenn_mary" goto Locked
+  ask "The Defense Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 7 58 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+script RecoveryRoomDoor
+  speaker none
+  if not defeated "hoenn_mary" goto Locked
+  ask "The Recovery Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 1 71 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+# The Confusion Room's, once Parker is beaten
+script LeftStrengthRoomDoor
+  speaker none
+  if not defeated "hoenn_parker" goto Locked
+  ask "The Strength Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 1 19 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+# The Defense Room's, once Alexia is beaten
+script RightStrengthRoomDoor
+  speaker none
+  if not defeated "hoenn_alexia" goto Locked
+  ask "The Strength Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 7 19 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+script LeftOHKORoomDoor
+  speaker none
+  if not defeated "hoenn_alexia" goto Locked
+  ask "The One-Hit KO Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 1 32 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+# The Recovery Room's, once George is beaten
+script RightOHKORoomDoor
+  speaker none
+  if not defeated "hoenn_george" goto Locked
+  ask "The One-Hit KO Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 7 32 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+# The doors into Norman's own room: the Strength Room's once Jody is beaten, the One-Hit KO Room's once Berke is
+script LeftLeadersRoomDoor
+  speaker none
+  if not defeated "hoenn_jody" goto Locked
+  ask "The Gym Leader's Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 1 6 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
+  end
+
+
+script RightLeadersRoomDoor
+  speaker none
+  if not defeated "hoenn_berke" goto Locked
+  ask "The Gym Leader's Room. Go in?"
+  if no goto Stay
+  warp "PetalburgCity_Gym" 7 6 up
+  end
+label Locked
+  text "The door appears to be locked."
+  end
+label Stay
   end
 
 
 script GymGuide
+  speaker "Gym Guide"
+  if flag FLAG_DEFEATED_PETALBURG_GYM goto Won
+  if var VAR_PETALBURG_GYM_STATE >= 6 goto Advice
   say "Hey there! This is the Petalburg Gym. Norman's rooms each test a trainer's skill a different way."
   say "But the doors stay shut until you've got four Badges. Rules are rules!"
+  end
+label Advice
+  say "Four Badges! The doors are open to you now. Each one beyond opens once you beat the trainer in its room."
+  say "The left door goes to the Speed Room, the right to the Accuracy Room. Norman's Pokémon are Normal types: Fighting moves hit them hard!"
+  end
+label Won
+  say "You beat your own father! Whoa. I don't think anybody in Petalburg will ever forget that battle."
   end

@@ -1,0 +1,11 @@
+{
+  // A house of Lavaridge Town (plan 21 · H4, part b). Emerald's boy here teaches Mimic; the move tutors of Hoenn are left
+  // for later, so he only talks
+  "area": "lavaridge_town_house",
+  "bgmTrack": "hoenn/oldale",
+  "people": {
+    "old_man": { "name": "Old Man", "dialog": [ "My wife's keeping an Egg warm in the hot springs. She says the Day Care found it between two of her Pokémon!" ] },
+    "zigzagoon_2": { "name": "Zigzagoon", "npcType": "Pokemon", "species": "Zigzagoon", "script": "Zigzagoon" },
+    "ninja_boy": { "name": "Boy", "dialog": [ "Mimic lets a Pokémon copy the last move its foe used. Copying is a skill too, you know!" ] }
+  }
+}

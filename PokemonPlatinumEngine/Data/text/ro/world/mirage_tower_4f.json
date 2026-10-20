@@ -1,0 +1,25 @@
+{
+  "people": {
+    "mirage_root_fossil": {
+      "name": {
+        "en": [
+          "Root Fossil"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "mirage_claw_fossil": {
+      "name": {
+        "en": [
+          "Claw Fossil"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

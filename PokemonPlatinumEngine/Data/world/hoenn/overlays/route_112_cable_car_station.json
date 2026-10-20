@@ -1,9 +1,10 @@
 {
-  // The cable car's station on Route 112 (plan 21 · H4, part a): the ride up to Mt. Chimney's summit is the next part
-  // of plan 21 · H4, so the attendant only says when it runs (route_112_cable_car_station.txt)
+  // The cable car's station on Route 112 (plan 21 · H4): the attendant sends the car up to Mt. Chimney's summit once
+  // Team Magma's grunts have gone from the road outside, and the station's OnEnter puts down whoever rides it back
+  // (route_112_cable_car_station.txt)
   "area": "route_112_cable_car_station",
   "bgmTrack": "hoenn/route110",
   "people": {
-    "route112_cable_car_attendant": { "name": "Attendant", "script": "Attendant" }
+    "route112_cable_car_attendant": { "name": "Attendant", "script": "Attendant", "still": true }
   }
 }

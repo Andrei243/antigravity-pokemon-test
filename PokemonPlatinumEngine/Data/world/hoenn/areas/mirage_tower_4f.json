@@ -1,0 +1,43 @@
+{
+  "key": "mirage_tower_4f",
+  "index": 335,
+  "name": "Mirage Tower",
+  "matrix": 284,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_MT_CHIMNEY",
+  "nightMusic": "MUS_MT_CHIMNEY",
+  "encounters": "mirage_tower_4f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Sandshrew", "level": 21 },
+    { "species": "Trapinch", "level": 21 },
+    { "species": "Sandshrew", "level": 20 },
+    { "species": "Trapinch", "level": 20 },
+    { "species": "Sandshrew", "level": 20 },
+    { "species": "Trapinch", "level": 20 },
+    { "species": "Sandshrew", "level": 22 },
+    { "species": "Trapinch", "level": 22 },
+    { "species": "Sandshrew", "level": 23 },
+    { "species": "Trapinch", "level": 23 },
+    { "species": "Sandshrew", "level": 24 },
+    { "species": "Trapinch", "level": 24 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 1, "z": 4, "to": "mirage_tower_3f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "mirage_root_fossil", "looks": "fossil", "movement": "look_south", "x": 5, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL", "script": "MirageTower_4F_EventScript_RootFossil" },
+    { "id": "mirage_claw_fossil", "looks": "fossil", "movement": "look_south", "x": 7, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL", "script": "MirageTower_4F_EventScript_ClawFossil" },
+    { "id": "breakable_rock", "looks": "breakable_rock", "movement": "look_around", "x": 6, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_RockSmash" }
+  ],
+  "signs": [],
+  "triggers": []
+}

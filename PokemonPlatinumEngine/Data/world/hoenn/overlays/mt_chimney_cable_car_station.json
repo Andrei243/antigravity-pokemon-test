@@ -1,0 +1,9 @@
+{
+  // The cable car's station at Mt. Chimney's summit (plan 21 · H4, part b): the other end of Route 112's ride
+  // (mt_chimney_cable_car_station.txt)
+  "area": "mt_chimney_cable_car_station",
+  "bgmTrack": "hoenn/route110",
+  "people": {
+    "mt_chimney_cable_car_attendant": { "name": "Attendant", "script": "Attendant", "still": true }
+  }
+}
