@@ -5,7 +5,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hey there, Celio! Long time no see."
       ],
       "text": [
-        ""
+        "Salut, Celio! Ce mult a trecut!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Celio"
       ],
       "text": [
-        ""
+        "Celio"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Bill! You really came all the way out here? I can't believe it!"
       ],
       "text": [
-        ""
+        "Bill! Chiar ai venit până aici? Nu-mi vine să cred!"
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "This is {player}. A real up-and-coming trainer, beat every Gym Leader in Kanto. Came along to keep me company."
       ],
       "text": [
-        ""
+        "Ăsta e {player}. Un Antrenor în plină ascensiune, a învins toți Liderii de Arenă din Kanto. A venit să-mi țină companie."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Celio"
       ],
       "text": [
-        ""
+        "Celio"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "Pleased to meet you! I'm Celio. I'm trying to link the PCs here on the islands with the PCs back in Kanto."
       ],
       "text": [
-        ""
+        "Încântat de cunoștință! Sunt Celio. Încerc să leg PC-urile de pe insule cu PC-urile din Kanto."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "But the machine just won't talk to Kanto's network. I've been stuck on it for weeks."
       ],
       "text": [
-        ""
+        "Dar mașinăria pur și simplu nu vrea să vorbească cu rețeaua din Kanto. Sunt blocat pe asta de săptămâni."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Leave it to me. Two heads are better than one, right? Let's see what's going on in there."
       ],
       "text": [
-        ""
+        "Lasă pe mine. Două capete gândesc mai bine decât unul, nu? Să vedem ce se întâmplă acolo."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Celio"
       ],
       "text": [
-        ""
+        "Celio"
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Thanks, Bill! Oh, and {player}, you should see more of the islands while you're here. Please, take this."
       ],
       "text": [
-        ""
+        "Mulțumesc, Bill! Ah, și, {player}, ar trebui să vezi mai mult din insule cât ești aici. Te rog, ia asta."
       ]
     },
     {
@@ -109,7 +109,7 @@
         "With the Tri-Pass, the Seagallop will take you between Kanto and the first three islands, whenever you like."
       ],
       "text": [
-        ""
+        "Cu Tri-Permisul, Seagallop te duce între Kanto și primele trei insule, ori de câte ori vrei."
       ]
     },
     {
@@ -117,7 +117,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -125,7 +125,7 @@
         "We'll be at this for a while. Go and have a look around, {player}. The sailor at the harbour can take you back to Kanto too."
       ],
       "text": [
-        ""
+        "O să ne ia ceva timp. Du-te și uită-te prin jur, {player}. Marinarul din port te poate duce înapoi în Kanto."
       ]
     }
   ],
@@ -135,7 +135,7 @@
         "Bill"
       ],
       "text": [
-        ""
+        "Bill"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "Hmm, what if I connect this here... No, that's not it either. Don't worry, we'll crack it!"
       ],
       "text": [
-        ""
+        "Hmm, dacă leg asta aici... Nu, nici așa. Nu-ți face griji, o descurcăm noi!"
       ]
     }
   ],
@@ -153,7 +153,7 @@
         "Celio"
       ],
       "text": [
-        ""
+        "Celio"
       ]
     },
     {
@@ -161,7 +161,7 @@
         "Bill's a genius. With his help, I'm sure the machine will link up with Kanto in no time."
       ],
       "text": [
-        ""
+        "Bill e un geniu. Cu ajutorul lui, sunt sigur că mașinăria se va lega de Kanto în scurt timp."
       ]
     },
     {
@@ -169,7 +169,7 @@
         "Sorry, I'm in the middle of something. This machine is giving me no end of trouble."
       ],
       "text": [
-        ""
+        "Scuze, sunt la mijlocul unei treburi. Mașinăria asta îmi face numai probleme."
       ]
     }
   ]

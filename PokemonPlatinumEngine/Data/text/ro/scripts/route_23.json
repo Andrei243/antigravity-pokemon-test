@@ -5,7 +5,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "You need the Cascade Badge to go any further."
       ],
       "text": [
-        ""
+        "Ai nevoie de Insigna Cascadă ca să mergi mai departe."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "That's the Cascade Badge, all right. Go on through!"
       ],
       "text": [
-        ""
+        "Asta e Insigna Cascadă, într-adevăr. Treci!"
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "You need the Thunder Badge to go any further."
       ],
       "text": [
-        ""
+        "Ai nevoie de Insigna Tunet ca să mergi mai departe."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "That's the Thunder Badge, all right. Go on through!"
       ],
       "text": [
-        ""
+        "Asta e Insigna Tunet, într-adevăr. Treci!"
       ]
     }
   ],
@@ -57,7 +57,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -65,7 +65,7 @@
         "You need the Rainbow Badge to go any further."
       ],
       "text": [
-        ""
+        "Ai nevoie de Insigna Curcubeu ca să mergi mai departe."
       ]
     },
     {
@@ -73,7 +73,7 @@
         "That's the Rainbow Badge, all right. Go on through!"
       ],
       "text": [
-        ""
+        "Asta e Insigna Curcubeu, într-adevăr. Treci!"
       ]
     }
   ],
@@ -83,7 +83,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -91,7 +91,7 @@
         "You need the Soul Badge to go any further."
       ],
       "text": [
-        ""
+        "Ai nevoie de Insigna Suflet ca să mergi mai departe."
       ]
     },
     {
@@ -99,7 +99,7 @@
         "That's the Soul Badge, all right. Go on through!"
       ],
       "text": [
-        ""
+        "Asta e Insigna Suflet, într-adevăr. Treci!"
       ]
     }
   ],
@@ -109,7 +109,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "You need the Marsh Badge to go any further."
       ],
       "text": [
-        ""
+        "Ai nevoie de Insigna Smârc ca să mergi mai departe."
       ]
     },
     {
@@ -125,7 +125,7 @@
         "That's the Marsh Badge, all right. Go on through!"
       ],
       "text": [
-        ""
+        "Asta e Insigna Smârc, într-adevăr. Treci!"
       ]
     }
   ],
@@ -135,7 +135,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "You need the Volcano Badge to go any further."
       ],
       "text": [
-        ""
+        "Ai nevoie de Insigna Vulcan ca să mergi mai departe."
       ]
     },
     {
@@ -151,7 +151,7 @@
         "That's the Volcano Badge, all right. Go on through!"
       ],
       "text": [
-        ""
+        "Asta e Insigna Vulcan, într-adevăr. Treci!"
       ]
     }
   ],
@@ -161,7 +161,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -169,7 +169,7 @@
         "You need the Earth Badge to go any further."
       ],
       "text": [
-        ""
+        "Ai nevoie de Insigna Pământ ca să mergi mai departe."
       ]
     },
     {
@@ -177,7 +177,7 @@
         "That's the Earth Badge! You've won all eight. Victory Road is just ahead. Go on through!"
       ],
       "text": [
-        ""
+        "Asta e Insigna Pământ! Le-ai câștigat pe toate opt. Drumul Victoriei e chiar în față. Treci!"
       ]
     }
   ],
@@ -187,7 +187,7 @@
         "Halt! Only trainers strong enough to face the Pokémon League may travel this road."
       ],
       "text": [
-        ""
+        "Stai! Doar Antrenorii destul de puternici ca să înfrunte Liga Pokémon pot călători pe drumul ăsta."
       ]
     }
   ],
@@ -197,7 +197,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -205,7 +205,7 @@
         "I check for the Cascade Badge. No trainer passes me without it."
       ],
       "text": [
-        ""
+        "Verific Insigna Cascadă. Niciun Antrenor nu trece de mine fără ea."
       ]
     },
     {
@@ -213,7 +213,7 @@
         "You've shown me the Cascade Badge. The way is open."
       ],
       "text": [
-        ""
+        "Mi-ai arătat Insigna Cascadă. Drumul e liber."
       ]
     }
   ],
@@ -223,7 +223,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -231,7 +231,7 @@
         "I check for the Thunder Badge. No trainer passes me without it."
       ],
       "text": [
-        ""
+        "Verific Insigna Tunet. Niciun Antrenor nu trece de mine fără ea."
       ]
     },
     {
@@ -239,7 +239,7 @@
         "You've shown me the Thunder Badge. The way is open."
       ],
       "text": [
-        ""
+        "Mi-ai arătat Insigna Tunet. Drumul e liber."
       ]
     }
   ],
@@ -249,7 +249,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -257,7 +257,7 @@
         "I check for the Rainbow Badge. No trainer passes me without it."
       ],
       "text": [
-        ""
+        "Verific Insigna Curcubeu. Niciun Antrenor nu trece de mine fără ea."
       ]
     },
     {
@@ -265,7 +265,7 @@
         "You've shown me the Rainbow Badge. The way is open."
       ],
       "text": [
-        ""
+        "Mi-ai arătat Insigna Curcubeu. Drumul e liber."
       ]
     }
   ],
@@ -275,7 +275,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -283,7 +283,7 @@
         "I check for the Soul Badge. No trainer passes me without it."
       ],
       "text": [
-        ""
+        "Verific Insigna Suflet. Niciun Antrenor nu trece de mine fără ea."
       ]
     },
     {
@@ -291,7 +291,7 @@
         "You've shown me the Soul Badge. The way is open."
       ],
       "text": [
-        ""
+        "Mi-ai arătat Insigna Suflet. Drumul e liber."
       ]
     }
   ],
@@ -301,7 +301,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -309,7 +309,7 @@
         "I check for the Marsh Badge. No trainer passes me without it."
       ],
       "text": [
-        ""
+        "Verific Insigna Smârc. Niciun Antrenor nu trece de mine fără ea."
       ]
     },
     {
@@ -317,7 +317,7 @@
         "You've shown me the Marsh Badge. The way is open."
       ],
       "text": [
-        ""
+        "Mi-ai arătat Insigna Smârc. Drumul e liber."
       ]
     }
   ],
@@ -327,7 +327,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -335,7 +335,7 @@
         "I check for the Volcano Badge. No trainer passes me without it."
       ],
       "text": [
-        ""
+        "Verific Insigna Vulcan. Niciun Antrenor nu trece de mine fără ea."
       ]
     },
     {
@@ -343,7 +343,7 @@
         "You've shown me the Volcano Badge. The way is open."
       ],
       "text": [
-        ""
+        "Mi-ai arătat Insigna Vulcan. Drumul e liber."
       ]
     }
   ],
@@ -353,7 +353,7 @@
         "Guard"
       ],
       "text": [
-        ""
+        "Paznic"
       ]
     },
     {
@@ -361,7 +361,7 @@
         "I check for the Earth Badge, the last of the eight. No trainer passes me without it."
       ],
       "text": [
-        ""
+        "Verific Insigna Pământ, ultima din cele opt. Niciun Antrenor nu trece de mine fără ea."
       ]
     },
     {
@@ -369,7 +369,7 @@
         "You've shown me all eight Badges. Victory Road is yours to take. Good luck!"
       ],
       "text": [
-        ""
+        "Mi-ai arătat toate cele opt Insigne. Drumul Victoriei e al tău. Mult noroc!"
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Every step I take, puff! Up goes the ash. I could walk around in it all day!"
         ],
         "text": [
-          ""
+          "La fiecare pas, pufff! Se ridică cenușa. Aș putea umbla prin ea toată ziua!"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "This ash can be made into glass, you know. The workshop down the road does wonderful things with it."
         ],
         "text": [
-          ""
+          "Cenușa asta se poate transforma în sticlă, să știi. Atelierul de pe drum face lucruri minunate din ea."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Jaylen"
         ],
         "text": [
-          ""
+          "Jaylen"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Youngster Jaylen: My shorts are covered in ash, but I'm still ready to battle!"
         ],
         "text": [
-          ""
+          "Puști Jaylen: Pantalonii mei scurți sunt plini de cenușă, dar sunt gata de luptă!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Youngster Jaylen: Now I'm covered in ash and losing."
         ],
         "text": [
-          ""
+          "Puști Jaylen: Acum sunt plin de cenușă și pierd."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Dillon"
         ],
         "text": [
-          ""
+          "Dillon"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Youngster Dillon: My Aron's made of iron. It doesn't care about the ash!"
         ],
         "text": [
-          ""
+          "Puști Dillon: Aron al meu e din fier. Nu-i pasă de cenușă!"
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "Youngster Dillon: It cares about losing, though."
         ],
         "text": [
-          ""
+          "Puști Dillon: Îi pasă de înfrângere, în schimb."
         ]
       }
     },
@@ -94,7 +94,7 @@
           "Madeline"
         ],
         "text": [
-          ""
+          "Madeline"
         ]
       },
       "before": {
@@ -102,7 +102,7 @@
           "Parasol Lady Madeline: My parasol keeps the ash off me. Nothing will keep you from losing!"
         ],
         "text": [
-          ""
+          "Doamna cu umbrelă Madeline: Umbrela mea mă ferește de cenușă. Nimic nu te va feri pe tine de înfrângere!"
         ]
       },
       "after": {
@@ -110,7 +110,7 @@
           "Parasol Lady Madeline: My parasol didn't help me at all."
         ],
         "text": [
-          ""
+          "Doamna cu umbrelă Madeline: Umbrela mea nu m-a ajutat deloc."
         ]
       }
     },
@@ -120,7 +120,7 @@
           "Lao"
         ],
         "text": [
-          ""
+          "Lao"
         ]
       },
       "before": {
@@ -128,7 +128,7 @@
           "Ninja Boy Lao: I was hiding in the ash! You found me, so now you battle me!"
         ],
         "text": [
-          ""
+          "Băiat ninja Lao: Mă ascundeam în cenușă! M-ai găsit, așa că acum te lupți cu mine!"
         ]
       },
       "after": {
@@ -136,7 +136,7 @@
           "Ninja Boy Lao: I'll hide better next time."
         ],
         "text": [
-          ""
+          "Băiat ninja Lao: Data viitoare mă ascund mai bine."
         ]
       }
     },
@@ -146,7 +146,7 @@
           "Lung"
         ],
         "text": [
-          ""
+          "Lung"
         ]
       },
       "before": {
@@ -154,7 +154,7 @@
           "Ninja Boy Lung: You walked right past my hiding spot. Ha! Battle!"
         ],
         "text": [
-          ""
+          "Băiat ninja Lung: Ai trecut chiar pe lângă ascunzătoarea mea. Ha! Luptă!"
         ]
       },
       "after": {
@@ -162,7 +162,7 @@
           "Ninja Boy Lung: Back into hiding with me."
         ],
         "text": [
-          ""
+          "Băiat ninja Lung: Înapoi în ascunzătoare."
         ]
       }
     },
@@ -172,7 +172,7 @@
           "Tori & Tia"
         ],
         "text": [
-          ""
+          "Tori și Tia"
         ]
       },
       "before": {
@@ -180,7 +180,7 @@
           "Twins Tori & Tia: We do everything together, even battling!"
         ],
         "text": [
-          ""
+          "Gemene Tori și Tia: Facem totul împreună, chiar și luptele!"
         ]
       },
       "after": {
@@ -188,7 +188,7 @@
           "Twins Tori & Tia: We lost together too."
         ],
         "text": [
-          ""
+          "Gemene Tori și Tia: Și am pierdut tot împreună."
         ]
       }
     },
@@ -198,7 +198,7 @@
           "Tori & Tia"
         ],
         "text": [
-          ""
+          "Tori și Tia"
         ]
       },
       "before": {
@@ -206,7 +206,7 @@
           "Twins Tori & Tia: Our Spinda spin together. Watch them go!"
         ],
         "text": [
-          ""
+          "Gemene Tori și Tia: Spinda ai noștri se învârt împreună. Uită-te cum merg!"
         ]
       },
       "after": {
@@ -214,7 +214,7 @@
           "Twins Tori & Tia: Our Spinda are too dizzy now."
         ],
         "text": [
-          ""
+          "Gemene Tori și Tia: Spinda ai noștri sunt prea amețiți acum."
         ]
       }
     },
@@ -224,7 +224,7 @@
           "Wyatt"
         ],
         "text": [
-          ""
+          "Wyatt"
         ]
       },
       "before": {
@@ -232,7 +232,7 @@
           "Pokémaniac Wyatt: My Pokémon love the ash. They roll around in it! Let's battle!"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Wyatt: Pokémonilor mei le place cenușa. Se tăvălesc prin ea! Hai să ne luptăm!"
         ]
       },
       "after": {
@@ -240,7 +240,7 @@
           "Pokémaniac Wyatt: Now they need a bath."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Wyatt: Acum au nevoie de o baie."
         ]
       }
     },
@@ -250,7 +250,7 @@
           "Lawrence"
         ],
         "text": [
-          ""
+          "Lawrence"
         ]
       },
       "before": {
@@ -258,7 +258,7 @@
           "Camper Lawrence: Grey sky, grey ground, grey everything! Let's brighten things up with a battle."
         ],
         "text": [
-          ""
+          "Campist Lawrence: Cer gri, pământ gri, totul gri! Să înviorăm lucrurile cu o luptă."
         ]
       },
       "after": {
@@ -266,7 +266,7 @@
           "Camper Lawrence: Still grey. And now I'm blue."
         ],
         "text": [
-          ""
+          "Campist Lawrence: Tot gri. Și acum sunt și trist."
         ]
       }
     },
@@ -276,7 +276,7 @@
           "Sophie"
         ],
         "text": [
-          ""
+          "Sophie"
         ]
       },
       "before": {
@@ -284,7 +284,7 @@
           "Picnicker Sophie: I shook the ash off my blanket for a picnic. And a battle!"
         ],
         "text": [
-          ""
+          "Excursionistă Sophie: Mi-am scuturat pătura de cenușă pentru un picnic. Și pentru o luptă!"
         ]
       },
       "after": {
@@ -292,7 +292,7 @@
           "Picnicker Sophie: The ash is settling on my lunch again."
         ],
         "text": [
-          ""
+          "Excursionistă Sophie: Cenușa se așază iar pe prânzul meu."
         ]
       }
     },
@@ -302,7 +302,7 @@
           "Coby"
         ],
         "text": [
-          ""
+          "Coby"
         ]
       },
       "before": {
@@ -310,7 +310,7 @@
           "Bird Keeper Coby: My birds fly above the ash. Can yours keep up?"
         ],
         "text": [
-          ""
+          "Crescător de păsări Coby: Păsările mele zboară deasupra cenușii. Pot ai tăi să țină pasul?"
         ]
       },
       "after": {
@@ -318,7 +318,7 @@
           "Bird Keeper Coby: They've come back to land."
         ],
         "text": [
-          ""
+          "Crescător de păsări Coby: S-au întors pe pământ."
         ]
       }
     }
@@ -329,7 +329,7 @@
         "Route 113\nEast: Route 111"
       ],
       "text": [
-        ""
+        "Ruta 113\nEst: Ruta 111"
       ]
     },
     "Route113_EventScript_RouteSignFallarbor": {
@@ -337,7 +337,7 @@
         "Route 113\nWest: Fallarbor Town"
       ],
       "text": [
-        ""
+        "Ruta 113\nVest: Orășelul Fallarbor"
       ]
     },
     "Route113_EventScript_TrainerTipsRegisterKeyItems": {
@@ -345,7 +345,7 @@
         "Trainer Tips\nA key item registered in the bag can be used at once with a single button."
       ],
       "text": [
-        ""
+        "Sfaturi pentru Antrenori\nUn obiect-cheie înregistrat în rucsac poate fi folosit pe loc cu un singur buton."
       ]
     },
     "Route113_EventScript_GlassWorkshopSign": {
@@ -353,7 +353,7 @@
         "Glass Workshop\nWe make beautiful things out of volcanic ash!"
       ],
       "text": [
-        ""
+        "Atelier de Sticlă\nFacem lucruri frumoase din cenușă vulcanică!"
       ]
     }
   }

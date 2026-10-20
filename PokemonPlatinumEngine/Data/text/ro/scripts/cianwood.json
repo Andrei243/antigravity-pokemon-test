@@ -5,7 +5,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeia"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "You beat my husband? My, my! Then you've earned this. It's something I keep for strong Trainers."
       ],
       "text": [
-        ""
+        "Ți-ai învins soțul? Ei, ei! Atunci meriți asta. O păstrez pentru Antrenorii puternici."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "HM02 is Fly. With the Storm Badge, your Pokémon can carry you to any town you've visited before."
       ],
       "text": [
-        ""
+        "HM02 este Zbor. Cu Insigna Furtună, Pokémonul tău te poate duce în orice oraș în care ai mai fost."
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "Woman"
       ],
       "text": [
-        ""
+        "Femeia"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "My husband is the Gym Leader. He's out there under that waterfall day and night, bellowing at it."
       ],
       "text": [
-        ""
+        "Soțul meu e Liderul Arenei. E acolo, sub cascadă, zi și noapte, și urlă la ea."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "If you ever beat him, come and find me. I've got something for a Trainer like that."
       ],
       "text": [
-        ""
+        "Dacă îl învingi vreodată, vino să mă găsești. Am ceva pentru un Antrenor ca tine."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Is Fly treating you well? Soaring over the sea is lovely on a calm day."
       ],
       "text": [
-        ""
+        "Te ajută Zborul? E o încântare să plutești peste mare într-o zi liniștită."
       ]
     }
   ],
@@ -65,7 +65,7 @@
         "Suicune is looking this way!"
       ],
       "text": [
-        ""
+        "Suicune se uită încoace!"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Suicune bounded off across the sea!"
       ],
       "text": [
-        ""
+        "Suicune a țâșnit peste mare!"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "Eusine"
       ],
       "text": [
-        ""
+        "Eusine"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "Did you see it? Suicune! I've chased it all the way from the Burned Tower, and it went straight past me to look at you."
       ],
       "text": [
-        ""
+        "L-ai văzut? Suicune! L-am urmărit tot drumul de la Turnul Ars, iar el a trecut direct pe lângă mine ca să se uite la tine."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "I'm Eusine. I've studied Suicune for ten years. Why would it look at you? I have to know. Battle me, {player}!"
       ],
       "text": [
-        ""
+        "Sunt Eusine. Îl studiez pe Suicune de zece ani. De ce s-ar uita la tine? Trebuie să aflu. Luptă cu mine, {player}!"
       ]
     },
     {
@@ -105,7 +105,7 @@
         "I lost... So that's it. You and your Pokémon share something Suicune can sense."
       ],
       "text": [
-        ""
+        "Am pierdut... Deci asta e. Tu și Pokémonii tăi aveți ceva ce Suicune poate simți."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "I'll keep searching. Suicune won't be far. Next time, I'll be the one it waits for!"
       ],
       "text": [
-        ""
+        "Voi continua să caut. Suicune nu e departe. Data viitoare, eu voi fi cel pe care îl așteaptă!"
       ]
     }
   ]

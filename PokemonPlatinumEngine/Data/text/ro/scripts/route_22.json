@@ -71,7 +71,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "{player}! Hold it right there!"
       ],
       "text": [
-        ""
+        "{player}! Stai pe loc!"
       ]
     },
     {
@@ -87,7 +87,7 @@
         "So you've got all eight Badges too. I knew you'd turn up sooner or later."
       ],
       "text": [
-        ""
+        "Deci ai și tu toate cele opt Insigne. Știam că apari mai devreme sau mai târziu."
       ]
     },
     {
@@ -95,7 +95,7 @@
         "I've been training non-stop. My team's the strongest it's ever been, and I'm taking it all the way to the top."
       ],
       "text": [
-        ""
+        "M-am antrenat fără oprire. Echipa mea e cea mai puternică de până acum și o duc până în vârf."
       ]
     },
     {
@@ -103,7 +103,7 @@
         "Before I go, I'm going to show you the difference between us. Ready?"
       ],
       "text": [
-        ""
+        "Înainte să plec, o să-ți arăt diferența dintre noi. Ești gata?"
       ]
     },
     {
@@ -111,7 +111,7 @@
         "{rival}"
       ],
       "text": [
-        ""
+        "{rival}"
       ]
     },
     {
@@ -119,7 +119,7 @@
         "What? I lost? ...Fine. That just means I'll have to win where it really counts."
       ],
       "text": [
-        ""
+        "Ce? Am pierdut? ...Bine. Înseamnă doar că trebuie să câștig acolo unde contează cu adevărat."
       ]
     },
     {
@@ -127,7 +127,7 @@
         "The Pokémon League is past Victory Road, beyond the gate. The trainers there are the best in the land."
       ],
       "text": [
-        ""
+        "Liga Pokémon e dincolo de Drumul Victoriei, după poartă. Antrenorii de acolo sunt cei mai buni din țară."
       ]
     },
     {
@@ -135,7 +135,7 @@
         "I'll be waiting for you at the top, {player}. Don't keep me waiting too long!"
       ],
       "text": [
-        ""
+        "Te aștept în vârf, {player}. Nu mă lăsa să aștept prea mult!"
       ]
     }
   ]

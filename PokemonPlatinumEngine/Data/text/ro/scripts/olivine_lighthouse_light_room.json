@@ -5,7 +5,7 @@
         "Jasmine"
       ],
       "text": [
-        ""
+        "Jasmine"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oh... a visitor. Forgive me, I'm Jasmine, the Leader of Olivine's Gym."
       ],
       "text": [
-        ""
+        "Oh... un vizitator. Iartă-mă, sunt Jasmine, Liderul Arenei din Olivine."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "This is Amphy. Its light keeps the ships off the rocks at night, but it's fallen ill and can barely glow."
       ],
       "text": [
-        ""
+        "Ea e Amphy. Lumina ei ferește corăbiile de stânci noaptea, dar s-a îmbolnăvit și abia mai poate străluci."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "There's a pharmacy in Cianwood City, over the sea. They make a medicine there that might help, but I can't leave Amphy alone..."
       ],
       "text": [
-        ""
+        "E o farmacie în Orașul Cianwood, peste mare. Fac acolo un leac care ar putea ajuta, dar nu pot s-o las pe Amphy singură..."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "If you're going that way, would you... No, I shouldn't ask. Here, take the lift down. It's quicker than the stairs."
       ],
       "text": [
-        ""
+        "Dacă mergi într-acolo, ai putea... Nu, nu ar trebui să cer. Poftim, ia liftul în jos. E mai rapid decât scările."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Cianwood City is across the sea, west of here. Please, if you find the medicine... Amphy hasn't much light left."
       ],
       "text": [
-        ""
+        "Orașul Cianwood e peste mare, la vest de aici. Te rog, dacă găsești leacul... Amphy nu mai are multă lumină."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Is that the medicine from Cianwood? Will you let Amphy have it?"
       ],
       "text": [
-        ""
+        "Ăsta e leacul din Cianwood? Îi dai voie lui Amphy să-l ia?"
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{player} handed over the Secret Potion."
       ],
       "text": [
-        ""
+        "{player} a înmânat Poțiunea Secretă."
       ]
     },
     {
@@ -69,7 +69,7 @@
         "Thank you so much. Here, Amphy. Drink it slowly..."
       ],
       "text": [
-        ""
+        "Îți mulțumesc din inimă. Poftim, Amphy. Bea-l încet..."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Amphy drank the medicine down."
       ],
       "text": [
-        ""
+        "Amphy a băut tot leacul."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Oh! Its tail is shining again! Amphy, you're all right!"
       ],
       "text": [
-        ""
+        "Oh! Coada îi strălucește din nou! Amphy, ești bine!"
       ]
     },
     {
@@ -93,7 +93,7 @@
         "I can't thank you enough. Amphy's light will reach the ships tonight."
       ],
       "text": [
-        ""
+        "Nu-ți pot mulțumi îndeajuns. Lumina lui Amphy va ajunge la corăbii în noaptea asta."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "I must get back to my Gym. Come and see me there. I'd like to battle you, properly, as a Leader should."
       ],
       "text": [
-        ""
+        "Trebuie să mă întorc la Arenă. Vino să mă vezi acolo. Aș vrea să mă lupt cu tine cum se cuvine, ca un Lider."
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Oh... I see. Please don't take too long. Amphy's light is so faint."
       ],
       "text": [
-        ""
+        "Oh... înțeleg. Te rog să nu întârzii prea mult. Lumina lui Amphy e atât de slabă."
       ]
     }
   ],
@@ -119,7 +119,7 @@
         "Amphy... It breathes weakly, and its tail's light barely glows."
       ],
       "text": [
-        ""
+        "Amphy... Respiră greu, iar lumina cozii abia se vede."
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Pa-paloo! Amphy's tail shines bright and steady."
       ],
       "text": [
-        ""
+        "Pa-paloo! Coada lui Amphy strălucește puternic și constant."
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Giovanni"
       ],
       "text": [
-        ""
+        "Giovanni"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "So. You have come all this way at last."
       ],
       "text": [
-        ""
+        "Deci. Ai ajuns în sfârșit până aici."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Team Rocket's hideout, the Pokémon Tower, Silph Co. Every time, it was you who stood in my way."
       ],
       "text": [
-        ""
+        "Ascunzătoarea Echipei Rocket, Turnul Pokémon, Silph S.A. De fiecare dată, tu mi-ai stat în cale."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "This is my Gym. Here I am its Leader, and nothing more. Show me whether you were lucky, or whether you are strong."
       ],
       "text": [
-        ""
+        "Asta e Arena mea. Aici sunt Liderul ei și nimic mai mult. Arată-mi dacă ai avut noroc sau dacă ai adevărată forță."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Giovanni"
       ],
       "text": [
-        ""
+        "Giovanni"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Ha! There is no luck in that. You are strong, and I am beaten."
       ],
       "text": [
-        ""
+        "Ha! Aici nu e vorba de noroc. Ai putere, iar eu sunt învins."
       ]
     },
     {
@@ -53,7 +53,7 @@
         "Take the Earth Badge. It is proof that you have beaten the Leader of the Viridian City Gym."
       ],
       "text": [
-        ""
+        "Ia Insigna Pământ. E dovada că l-ai învins pe Liderul Arenei din Orașul Viridian."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "{player} received the Earth Badge from Giovanni!"
       ],
       "text": [
-        ""
+        "{player} a primit Insigna Pământ de la Giovanni!"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "With the Earth Badge, every Pokémon will obey you, whatever its level. It is the last of Kanto's eight."
       ],
       "text": [
-        ""
+        "Cu Insigna Pământ, orice Pokémon te va asculta, indiferent de nivel. E ultima din cele opt din Kanto."
       ]
     },
     {
@@ -77,7 +77,7 @@
         "Take this as well. Use it as you see fit."
       ],
       "text": [
-        ""
+        "Ia și asta. Folosește-o cum crezi de cuviință."
       ]
     },
     {
@@ -85,7 +85,7 @@
         "TM26 is Earthquake. It shakes the whole ground, and very little can stand against it."
       ],
       "text": [
-        ""
+        "TM26 conține Cutremur. Zguduie tot pământul și foarte puține lucruri îi pot sta împotrivă."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "Having lost to you, I can no longer face the people who followed me."
       ],
       "text": [
-        ""
+        "După ce am pierdut în fața ta, nu mai pot înfrunta oamenii care m-au urmat."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "Team Rocket is finished. I shall go away alone and train, as I once did, until I understand what I have lacked."
       ],
       "text": [
-        ""
+        "Echipa Rocket s-a terminat. Voi pleca singur să mă antrenez, ca odinioară, până voi înțelege ce mi-a lipsit."
       ]
     },
     {
@@ -109,7 +109,7 @@
         "Should we meet again one day, it will be as trainers. Farewell, child."
       ],
       "text": [
-        ""
+        "Dacă ne mai întâlnim într-o zi, va fi ca Antrenori. Rămas-bun, copile."
       ]
     }
   ],
@@ -119,7 +119,7 @@
         "Guide"
       ],
       "text": [
-        ""
+        "Ghidul"
       ]
     },
     {
@@ -127,7 +127,7 @@
         "Hey, champ in the making! Nobody knows much about the Leader of this Gym. They say he's away more often than not."
       ],
       "text": [
-        ""
+        "Salutare! Nimeni nu știe prea multe despre Liderul acestei Arene. Se zice că lipsește mai mult decât e prezent."
       ]
     },
     {
@@ -135,7 +135,7 @@
         "His Pokémon fight with the strength of the earth itself. Water and Grass moves will serve you well. And watch your step on those arrows!"
       ],
       "text": [
-        ""
+        "Pokémonii lui luptă cu puterea pământului însuși. Mișcările de Apă și Iarbă îți vor fi de folos. Și ai grijă pe unde calci, pe săgețile alea!"
       ]
     },
     {
@@ -143,7 +143,7 @@
         "Blew me away! You beat the mysterious Leader and won all eight Badges. The Pokémon League is waiting for you now!"
       ],
       "text": [
-        ""
+        "M-ai dat pe spate! Ai învins Liderul misterios și ai câștigat toate cele opt Insigne. Liga Pokémon te așteaptă acum!"
       ]
     }
   ],
@@ -153,7 +153,7 @@
         "Viridian City Pokémon Gym. Leader: ?. Winning trainers: {rival}."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Viridian. Lider: ?. Antrenori învingători: {rival}."
       ]
     },
     {
@@ -161,7 +161,7 @@
         "Viridian City Pokémon Gym. Leader: Giovanni. Winning trainers: {rival}, {player}."
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Viridian. Lider: Giovanni. Antrenori învingători: {rival}, {player}."
       ]
     }
   ]

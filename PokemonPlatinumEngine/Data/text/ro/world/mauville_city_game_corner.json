@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "Our dolls are prizes for decorating a secret base. We'll have them in stock soon!"
         ],
         "text": [
-          ""
+          "Păpușile noastre sunt premii pentru decorarea unei baze secrete. Le vom avea în stoc în curând!"
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -52,7 +52,7 @@
           "You need Coins to play the machines. The counter will sell you some, if you have a Coin Case."
         ],
         "text": [
-          ""
+          "Ai nevoie de Fise ca să joci la aparate. La ghișeu ți le vinde cineva, dacă ai o Cutie de Fise."
         ]
       }
     },
@@ -62,7 +62,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -70,7 +70,7 @@
           "The roulette tables are closed for repairs. Pity. Roulette is pure luck, and I'm feeling lucky!"
         ],
         "text": [
-          ""
+          "Mesele de ruletă sunt închise pentru reparații. Păcat. Ruleta e noroc curat, iar eu mă simt norocos!"
         ]
       }
     },
@@ -80,7 +80,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -88,7 +88,7 @@
           "I won the same doll twice! I'd give you one, but they're for secret bases, and they're not ready yet."
         ],
         "text": [
-          ""
+          "Am câștigat aceeași păpușă de două ori! Ți-aș da una, dar sunt pentru bazele secrete și încă nu sunt gata."
         ]
       }
     },
@@ -98,7 +98,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -108,7 +108,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -116,7 +116,7 @@
           "The two roulette tables pay out at different rates. When they open again, pick your table wisely!"
         ],
         "text": [
-          ""
+          "Cele două mese de ruletă plătesc diferit. Când se redeschid, alege-ți masa cu grijă!"
         ]
       }
     },
@@ -126,7 +126,7 @@
           "Cook"
         ],
         "text": [
-          ""
+          "Bucătăreasa"
         ]
       },
       "dialog": {
@@ -134,7 +134,7 @@
           "I came here on my day off, and now I've lost all my Coins. Back to the kitchen tomorrow!"
         ],
         "text": [
-          ""
+          "Am venit aici în ziua mea liberă și acum mi-am pierdut toate Fisele. Mâine înapoi la bucătărie!"
         ]
       }
     },
@@ -144,7 +144,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -152,7 +152,7 @@
           "Stop the reels in the right order and you'll win more. That's my theory, anyway."
         ],
         "text": [
-          ""
+          "Oprește rolele în ordinea potrivită și câștigi mai mult. Asta e teoria mea, cel puțin."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -170,7 +170,7 @@
           "Three sevens in a row! I saw it once. I've been chasing that feeling ever since."
         ],
         "text": [
-          ""
+          "Trei de șapte la rând! Am văzut asta o dată. De atunci alerg după senzația aia."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -188,7 +188,7 @@
           "I only play a little. A little at a time! Well, maybe a little more."
         ],
         "text": [
-          ""
+          "Joc doar puțin. Câte puțin! Ei bine, poate ceva mai mult."
         ]
       }
     }
@@ -199,7 +199,7 @@
         "The roulette table is covered with a cloth. A card on it says: \"Closed for repairs.\""
       ],
       "text": [
-        ""
+        "Masa de ruletă e acoperită cu o față de masă. Pe ea stă un bilet: „Închis pentru reparații.”"
       ]
     },
     "Roulette_EventScript_Table2": {
@@ -207,7 +207,7 @@
         "The roulette table is covered with a cloth. A card on it says: \"Closed for repairs.\""
       ],
       "text": [
-        ""
+        "Masa de ruletă e acoperită cu o față de masă. Pe ea stă un bilet: „Închis pentru reparații.”"
       ]
     }
   }

@@ -79,7 +79,7 @@
         "Ah, a Tri-Pass! The Seagallop is ready whenever you are."
       ],
       "text": [
-        ""
+        "Ah, un Tri-Permis! Seagallop e gata ori de câte ori ești și tu."
       ]
     },
     {
@@ -89,9 +89,9 @@
         "NOT NOW"
       ],
       "text": [
-        "",
-        "",
-        ""
+        "Încotro vrei să navigăm?",
+        "INSULA UNU",
+        "NU ACUM"
       ]
     },
     {
@@ -99,7 +99,7 @@
         "Come back any time."
       ],
       "text": [
-        ""
+        "Revino oricând."
       ]
     },
     {
@@ -107,7 +107,7 @@
         "All aboard! Next stop, One Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord! Următoarea oprire, Insula Unu!"
       ]
     }
   ],

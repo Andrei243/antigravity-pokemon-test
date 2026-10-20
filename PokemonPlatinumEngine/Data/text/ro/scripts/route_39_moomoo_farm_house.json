@@ -5,7 +5,7 @@
         "Farmer"
       ],
       "text": [
-        ""
+        "Fermier"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Our best Miltank's fallen sick. She won't give a drop of milk, and she's barely eaten in days."
       ],
       "text": [
-        ""
+        "Cea mai bună Miltank a noastră s-a îmbolnăvit. Nu dă nicio picătură de lapte și abia a mâncat de zile întregi."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Lots of Oran Berries might perk her up. If you've any to spare, she's in the barn next door."
       ],
       "text": [
-        ""
+        "Multe Boabe Oran ar putea-o înviora. Dacă ai de prisos, e în hambarul de alături."
       ]
     },
     {
@@ -32,10 +32,10 @@
         "No thanks"
       ],
       "text": [
-        "",
-        "",
-        "",
-        ""
+        "Lapte Moomoo proaspăt! Vrei puțin? Redă 100 PS unui Pokémon.",
+        "O sticlă: 500",
+        "O duzină: 6.000",
+        "Nu, mersi"
       ]
     },
     {
@@ -43,7 +43,7 @@
         "Here you go! Drink it up while it's fresh."
       ],
       "text": [
-        ""
+        "Poftim! Bea-l cât e proaspăt."
       ]
     },
     {
@@ -51,7 +51,7 @@
         "Here you go! A dozen bottles, fresh from our Miltank."
       ],
       "text": [
-        ""
+        "Poftim! O duzină de sticle, proaspete de la Miltank-ul nostru."
       ]
     },
     {
@@ -59,7 +59,7 @@
         "Sorry, you haven't got the money for that."
       ],
       "text": [
-        ""
+        "Scuze, nu ai banii pentru asta."
       ]
     },
     {
@@ -67,7 +67,7 @@
         "Come back if you get thirsty!"
       ],
       "text": [
-        ""
+        "Revino dacă îți e sete!"
       ]
     }
   ],
@@ -77,7 +77,7 @@
         "Farmer's Wife"
       ],
       "text": [
-        ""
+        "Soția fermierului"
       ]
     },
     {
@@ -85,7 +85,7 @@
         "Our Miltank's sick, poor thing. We've tried everything we can think of."
       ],
       "text": [
-        ""
+        "Miltank-ul nostru e bolnav, sărmana. Am încercat tot ce ne-a trecut prin minte."
       ]
     },
     {
@@ -93,7 +93,7 @@
         "You made our Miltank well again! I can't thank you enough. Please, take this."
       ],
       "text": [
-        ""
+        "Ai vindecat-o pe Miltank-ul nostru! Nu-ți pot mulțumi îndeajuns. Te rog, ia asta."
       ]
     },
     {
@@ -101,7 +101,7 @@
         "TM83 is Natural Gift. Its power and type change with the Berry the Pokémon holds. Fitting, isn't it?"
       ],
       "text": [
-        ""
+        "TM83 conține Dar Natural. Puterea și tipul lui se schimbă după Boaba pe care o ține Pokémonul. Potrivit, nu?"
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Glass Worker"
       ],
       "text": [
-        ""
+        "Sticlarul"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to my glass workshop! I make glass out of the volcanic ash that falls on the road outside."
       ],
       "text": [
-        ""
+        "Bun venit în atelierul meu de sticlă! Fac sticlă din cenușa vulcanică ce cade pe drumul de afară."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "But I'm getting on, and gathering ash is hard work. Would you collect some for me? Take this."
       ],
       "text": [
-        ""
+        "Dar mă apropii de bătrânețe, iar adunatul cenușii e muncă grea. Mi-ai strânge puțină? Ia asta."
       ]
     },
     {
@@ -29,7 +29,7 @@
         "Walk through the grass where the ash lies with that Soot Sack in your bag, and the ash will go right into it."
       ],
       "text": [
-        ""
+        "Mergi prin iarba unde stă cenușa, cu Sacul de Funingine în rucsac, și cenușa va intra direct în el."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Bring me plenty, and I'll make you something lovely out of it."
       ],
       "text": [
-        ""
+        "Adu-mi multă și îți fac ceva frumos din ea."
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Let's have a look at the ash you've gathered. Hmm... {var:VAR_ASH_GATHER_COUNT} steps' worth."
       ],
       "text": [
-        ""
+        "Să vedem cenușa pe care ai adunat-o. Hmm... cât pentru {var:VAR_ASH_GATHER_COUNT} de pași."
       ]
     },
     {
@@ -59,13 +59,13 @@
         "Nothing"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Ce să-ți fac?",
+        "Flaut Albastru (250)",
+        "Flaut Galben (500)",
+        "Flaut Roșu (500)",
+        "Flaut Alb (1.000)",
+        "Flaut Negru (1.000)",
+        "Nimic"
       ]
     },
     {
@@ -73,7 +73,7 @@
         "Come back whenever you like. The ash keeps falling!"
       ],
       "text": [
-        ""
+        "Revino oricând. Cenușa tot cade!"
       ]
     },
     {
@@ -81,7 +81,7 @@
         "A Blue Flute it is! There we are, fresh from the fire."
       ],
       "text": [
-        ""
+        "Un Flaut Albastru, deci! Poftim, proaspăt din foc."
       ]
     },
     {
@@ -89,7 +89,7 @@
         "A Yellow Flute it is! There we are, fresh from the fire."
       ],
       "text": [
-        ""
+        "Un Flaut Galben, deci! Poftim, proaspăt din foc."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "A Red Flute it is! There we are, fresh from the fire."
       ],
       "text": [
-        ""
+        "Un Flaut Roșu, deci! Poftim, proaspăt din foc."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "A White Flute it is! There we are, fresh from the fire."
       ],
       "text": [
-        ""
+        "Un Flaut Alb, deci! Poftim, proaspăt din foc."
       ]
     },
     {
@@ -113,7 +113,7 @@
         "A Black Flute it is! There we are, fresh from the fire."
       ],
       "text": [
-        ""
+        "Un Flaut Negru, deci! Poftim, proaspăt din foc."
       ]
     },
     {
@@ -121,7 +121,7 @@
         "Oh dear, that takes more ash than you've gathered. Go and collect a little more."
       ],
       "text": [
-        ""
+        "Vai, pentru asta e nevoie de mai multă cenușă decât ai adunat. Mai strânge puțină."
       ]
     },
     {
@@ -129,7 +129,7 @@
         "That's not quite enough to make anything yet. Keep walking through that ash!"
       ],
       "text": [
-        ""
+        "Încă nu ajunge ca să fac ceva. Continuă să mergi prin cenușa aia!"
       ]
     },
     {
@@ -137,7 +137,7 @@
         "Where's the Soot Sack I gave you? I can't make anything without the ash in it."
       ],
       "text": [
-        ""
+        "Unde e Sacul de Funingine pe care ți l-am dat? Nu pot face nimic fără cenușa din el."
       ]
     }
   ]

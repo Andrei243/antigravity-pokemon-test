@@ -5,7 +5,7 @@
         "Lanette"
       ],
       "text": [
-        ""
+        "Lanette"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Oh, it's you, from the Pokémon Center! Excuse the mess. I'm always tinkering with the storage system."
       ],
       "text": [
-        ""
+        "Oh, ești tu, cel de la Centrul Pokémon! Scuze pentru dezordine. Mereu mă ocup de sistemul de stocare."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Keep your boxes tidy and give each one a name. You'll always know where everyone is!"
       ],
       "text": [
-        ""
+        "Ține-ți cutiile ordonate și dă-le câte un nume. Vei ști mereu unde e fiecare!"
       ]
     }
   ],
@@ -31,7 +31,7 @@
         "It's Lanette's research notebook. Read it?"
       ],
       "text": [
-        ""
+        "E caietul de cercetare al lui Lanette. Îl citești?"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "\"The storage system turns a Pokémon into data, so that it can be kept safely in a PC.\""
       ],
       "text": [
-        ""
+        "„Sistemul de stocare transformă un Pokémon în date, ca să poată fi păstrat în siguranță într-un PC.”"
       ]
     },
     {
@@ -47,7 +47,7 @@
         "There's more on the next page. Keep reading?"
       ],
       "text": [
-        ""
+        "Mai e ceva pe pagina următoare. Continui să citești?"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "\"Anyone can use it from any Pokémon Center's PC. That was the hardest part to make work.\""
       ],
       "text": [
-        ""
+        "„Oricine îl poate folosi de la PC-ul oricărui Centru Pokémon. Asta a fost cel mai greu de făcut să meargă.”"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "{player} closed the notebook."
       ],
       "text": [
-        ""
+        "{player} a închis caietul."
       ]
     }
   ]

@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! What can I get for you?"
         ],
         "text": [
-          ""
+          "Bun venit! Cu ce vă pot servi?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Should I let my Skitty evolve? It's so cute as it is... But a Delcatty would be lovely too."
         ],
         "text": [
-          ""
+          "Să-l las pe Skitty să evolueze? E atât de drăgălaș cum e... Dar și un Delcatty ar fi minunat."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I found a Nugget out in town and sold it here. Easy money, if you know where to look!"
         ],
         "text": [
-          ""
+          "Am găsit o Pepită prin oraș și am vândut-o aici. Bani ușori, dacă știi unde să cauți!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Skitty"
         ],
         "text": [
-          ""
+          "Skitty"
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Metronome makes a Pokémon use any move at all. You never know what's coming! Isn't that exciting?"
         ],
         "text": [
-          ""
+          "Metronom face un Pokémon să folosească orice mișcare. Nu știi niciodată ce urmează! Nu-i palpitant?"
         ]
       }
     }
