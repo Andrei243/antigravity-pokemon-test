@@ -8,7 +8,7 @@ using static PokemonPlatinumEngine.Audio.SoundDesign;
 namespace PokemonPlatinumEngine.Audio;
 
 /// <summary>A loop of the field's background sound: weather, water, a cave (plan 05 · A7).</summary>
-public enum AmbienceBed { Rain, HeavyRain, Hail, Wind, Blizzard, Sandstorm, Waterfall, River, Waves, Cave }
+public enum AmbienceBed { Rain, HeavyRain, Hail, Wind, Blizzard, Sandstorm, Waterfall, River, Waves, Cave, Underwater }
 
 /// <summary>One bed heard at a moment: how loud (0 to 1, the bed's own level at 1) and from where (-1 left, 1 right).</summary>
 public readonly record struct AmbienceLayer(AmbienceBed Bed, float Gain, float Pan);
@@ -42,14 +42,15 @@ public static class Ambience
         new AmbienceEntry(AmbienceBed.Waterfall, null, "A waterfall is near: louder the nearer, from its side of the screen."),
         new AmbienceEntry(AmbienceBed.River, null, "Running water is near."),
         new AmbienceEntry(AmbienceBed.Waves, "SEQ_SE_DP_NAMI", "The sea or a lake is near: louder the more water is round the player."),
-        new AmbienceEntry(AmbienceBed.Cave, null, "In a cave: a low rumble and drips.")
+        new AmbienceEntry(AmbienceBed.Cave, null, "In a cave: a low rumble and drips."),
+        new AmbienceEntry(AmbienceBed.Underwater, null, "On the sea floor (plan 21 · H5): a muffled hum, the sea swelling slowly overhead, now and then a few low bubbles; alone, whatever the weather above.")
     };
 
     private static readonly ConcurrentDictionary<AmbienceBed, SoundSample> Made = new();
     private static readonly ConcurrentDictionary<AmbienceBed, Task> Making = new();
 
     /// <summary>How long a bed lasts before it starts again.</summary>
-    public static float LoopSeconds(AmbienceBed bed) => bed is AmbienceBed.Cave or AmbienceBed.River ? 12f : 8f;
+    public static float LoopSeconds(AmbienceBed bed) => bed is AmbienceBed.Cave or AmbienceBed.River or AmbienceBed.Underwater ? 12f : 8f;
 
     /// <summary>The bed, made now on this thread if it isn't made yet.</summary>
     public static SoundSample Get(AmbienceBed bed) => Made.GetOrAdd(bed, b => new SoundSample("ambience_" + b.ToString().ToLowerInvariant(), Make(b)));
@@ -139,6 +140,18 @@ public static class Ambience
                 d.Noise(0, all, Filter.Low, 110f, 110f, 0.4f, 0.7f, 0.001f, 0f, flutterHz: 0.08f, flutterDepth: 0.3f);
                 d.Bubbles(0, all, 9, 1100f, 2300f, 0.3f);
                 d.Echo(0.23f, 0.35f);
+                break;
+            case AmbienceBed.Underwater:
+                // Under the sea: the water's own muffled hum, the sea above swelling and drawing back every six
+                // seconds (two to the loop, so the join falls between them), and now and then a few low bubbles
+                d.Noise(0, all, Filter.Low, 140f, 140f, 0.5f, 0.7f, 0.001f, 0f, flutterHz: 0.09f, flutterDepth: 0.25f);
+                for (float at = -3f; at < all; at += 6f)
+                {
+                    float start = Math.Max(0f, at), cut = start - at;
+                    d.Noise(start, 6f - cut, Filter.Band, 220f, 420f, 0.32f, 0.6f, 0.5f, 1.2f);
+                }
+                d.Bubbles(0, all, (int)(all * 2), 160f, 480f, 0.12f);
+                d.Echo(0.31f, 0.25f);
                 break;
         }
         return Join(d.S, (int)(loop * Rate));

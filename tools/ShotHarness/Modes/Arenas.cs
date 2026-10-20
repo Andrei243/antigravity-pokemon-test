@@ -45,6 +45,9 @@ partial class Harness
         int l = 30;
         foreach (var type in new PokemonType?[] { PokemonType.Bug, PokemonType.Ground, PokemonType.Fire, PokemonType.Psychic, null })
             Arena($"a{l++}_league_{type?.ToString().ToLowerInvariant() ?? "champion"}", BattleArena.League, type);
+        // The sea floor's own stage (plan 21 · H5, part b), whose light ignores the clock
+        Arena("a40_underwater", BattleArena.Underwater);
+        Arena("a41_underwater_night", BattleArena.Underwater, time: TimeOfDay.Night);
         engine.Settings.TimeOfDay = TimeOfDay.Day;
         engine.ApplySettings(window: false);
     }

@@ -161,7 +161,9 @@ public enum BattleArena
     /// <summary>A gym hall, themed on its leader's type.</summary>
     Gym,
     /// <summary>A room of the Pokémon League: an Elite Four member's type, or the Champion's room.</summary>
-    League
+    League,
+    /// <summary>The sea floor (plan 21 · H5): sand and kelp under the water, a light of its own.</summary>
+    Underwater
 }
 
 /// <summary>How a town's houses are built (style guide, "Buildings"); public buildings look the same everywhere.</summary>

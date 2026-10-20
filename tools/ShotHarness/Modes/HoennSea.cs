@@ -4,8 +4,10 @@ partial class Harness
     /// Dive and the sea floor (plan 21 · H5), last of the <c>hoenn</c> mode so nothing before it moves: Route 124's sea
     /// with a surfer on its dark water (<c>h92</c>), Dive's question there (<c>h93</c>), the sea floor under it by day and
     /// after dark, whose light ignores the clock (<c>h94</c>, <c>h95</c>, each with a crop at the screen's own
-    /// resolution), and a wild Pokémon met in its kelp (<c>h96</c>); then the way back up. It prints where each dive put
-    /// the player and how they travel there.
+    /// resolution), and a wild Pokémon met in its kelp (<c>h96</c>, on the sea floor's own stage since part b); then,
+    /// where the dive came down, a breath's bubbles rising and bursting and the waves' light moved on between two breaths
+    /// (<c>h97</c> to <c>h99</c>, with crops at the screen's own resolution, part b), and the way back up. It prints where
+    /// each dive put the player and how they travel there, and when the breath fell.
     /// </summary>
     void HoennSeaShots()
     {
@@ -106,10 +108,27 @@ partial class Harness
         }
         else Console.WriteLine("  !! no kelp on the open sea floor");
 
-        // And back up from where the dive came down
+        // Where the dive came down: the diver's bubbles and the waves' light over the floor (plan 21 · H5, part b).
+        // A breath falls on a whole multiple of FieldLife.BreathEvery on the field's clock: wait for the next and shoot
+        // its bubbles grown and rising, the first of them bursting, and the floor between two breaths with the light moved on
         At("HoennUnderwater", dx, dy, Direction.Up);
         game.Player.SetMode(TravelMode.Diving);
         Frames(4);
+        game.LocationSign.Hide();
+        double breath = (Math.Floor(game.World.Life.Now / FieldLife.BreathEvery) + 1) * FieldLife.BreathEvery;
+        void OnTheClock(double at) => Until(() => game.World.Life.Now >= at, $"the field's clock at {at:0.00}", 600);
+        OnTheClock(breath + 0.55);
+        Console.WriteLine($"  bubbles: a breath at {breath:0.00} s, shot {game.World.Life.Now - breath:0.00} s after it; "
+            + $"{game.World.Life.Count} pieces of life about");
+        Shot("h97_bubbles_rising");
+        ShotCrop("h97_bubbles_rising_native", 640, 240, 640, 360, 2);
+        OnTheClock(breath + 1.22);
+        ShotCrop("h98_bubbles_bursting_native", 640, 240, 640, 360, 2);
+        OnTheClock(breath + FieldLife.BreathEvery - 0.3);
+        Shot("h99_caustics_later");
+        ShotCrop("h99_caustics_later_native", 640, 240, 640, 360, 2);
+
+        // And back up from where the dive came down
         game.Interact(); Frames(3); Whole(); Until(() => engine.Choice.IsOpen, "the question to swim up"); Frames(2);
         engine.Choice.Confirm(); Frames(4);
         for (int i = 0; i < 900 && (engine.ScriptRunning || State() != GameState.Overworld); i++)

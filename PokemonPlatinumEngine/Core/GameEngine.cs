@@ -815,6 +815,10 @@ public partial class GameEngine
             // Rain and hail land round the player while they stand in it
             world.Life.Rainfall(flow.Map, flow.Player.PixelX / Player.TileSize + 0.5f, flow.Player.PixelY / Player.TileSize + 0.5f,
                 Weathers.LandsABeat(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)));
+            // A diver breathes out bubbles on the sea floor, and each breath is heard (plan 21 · H5)
+            if (flow.Player.Mode == TravelMode.Diving
+                && world.Life.Bubbles(flow.Map, flow.Player.PixelX / Player.TileSize + 0.5f, flow.Player.PixelY / Player.TileSize + 0.5f) > 0)
+                AudioManager.PlaySound("bubbles");
             flow.Player.TickBubble(dt);
             flow.Player.TickGesture(FieldTime(dt));
             // Only the people near the player are looked at each frame (plan 01 · M12): a bubble is shown over

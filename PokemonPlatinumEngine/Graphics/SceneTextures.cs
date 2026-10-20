@@ -169,6 +169,12 @@ internal static class SceneTextures
     /// <summary>The cells of the story's scene effects: bursts, beams, rifts, shadows, sparkles (<see cref="LifeArt.Scene"/>).</summary>
     public static Texture2D Effects => Get("scene_fx", LifeArt.Scene, repeat: false);
 
+    /// <summary>
+    /// The net of the waves' light over the sea floor (<see cref="LifeArt.Caustics"/>, plan 21 · H5): repeating and
+    /// point-filtered, so it is drawn in whole texels.
+    /// </summary>
+    public static Texture2D Caustics => Get("caustics", LifeArt.Caustics, repeat: true);
+
     /// <summary>Mist, drawn large and smooth over the picture in drifting layers (<see cref="LifeArt.Haze"/>).</summary>
     public static Texture2D Haze
     {

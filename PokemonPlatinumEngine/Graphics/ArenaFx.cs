@@ -70,6 +70,12 @@ internal static partial class ArenaFx
             case BattleArena.League:
                 HallMatter(fx, time, spec.Theme, spec.Kind == BattleArena.League);
                 break;
+            case BattleArena.Underwater:
+                // The sea floor (plan 21 · H5): bubbles rising, the waves' light slanting down, motes adrift
+                SeaBubbles(fx, time);
+                LightShafts(fx, time, Rgba(170, 236, 226), 40);
+                Motes(fx, time, 26, Rgba(214, 240, 236, 110), 0.04f, new Vector3(0.06f, 0.04f, 0.02f));
+                break;
         }
     }
 
@@ -109,8 +115,10 @@ internal static partial class ArenaFx
         }
     }
 
-    /// <summary>Soft rays of sunlight slanting down through the canopy.</summary>
-    private static void LightShafts(FxList fx, float time)
+    /// <summary>Soft rays of sunlight slanting down through the canopy (or the sea's light through the water).</summary>
+    private static void LightShafts(FxList fx, float time) => LightShafts(fx, time, Rgba(255, 244, 196), 46);
+
+    private static void LightShafts(FxList fx, float time, Color color, int alpha)
     {
         (float X, float Z, float W)[] shafts = { (-9f, -6f, 1.6f), (4f, -9f, 2.2f), (-2f, 3f, 1.2f), (10f, -2f, 1.4f) };
         var along = Vector3.Normalize(new Vector3(0.45f, -1f, 0.2f));
@@ -119,7 +127,7 @@ internal static partial class ArenaFx
             var (x, z, w) = shafts[i];
             float breathe = 0.75f + 0.25f * MathF.Sin(time * 0.4f + i * 1.7f);
             var at = new Vector3(x, 6f, z);
-            fx.Streak(FxShape.Glow, at, along, w, 4.5f, Rgba(255, 244, 196, (int)(46 * breathe)), depth: true);
+            fx.Streak(FxShape.Glow, at, along, w, 4.5f, Rgba(color.R, color.G, color.B, (int)(alpha * breathe)), depth: true);
         }
     }
 
@@ -205,6 +213,30 @@ internal static partial class ArenaFx
             default:
                 Motes(fx, time, count, Fx.Fade(colors.Light, 0.7f), 0.05f, new Vector3(0.05f, 0.12f, 0f));
                 break;
+        }
+    }
+
+    /// <summary>
+    /// Bubbles rising through the sea (plan 21 · H5): some alone, some in threes one under another, each a pale body
+    /// under its rim and glint so it reads over the sand and the kelp, swaying as it rises and fading at the ends.
+    /// </summary>
+    private static void SeaBubbles(FxList fx, float time)
+    {
+        var rimColor = Rgba(214, 236, 250);
+        var body = Rgba(170, 214, 230);
+        for (int i = 0; i < 30; i++)
+        {
+            var p = Drift(i, time, NearMin, NearMax, new Vector3(0.05f, 0.7f + R(i, 3) * 0.6f, 0f), 80);
+            int count = i % 3 == 0 ? 3 : 1;
+            for (int k = 0; k < count; k++)
+            {
+                var q = p + new Vector3(MathF.Sin(time * 1.6f + i + k) * 0.12f, -k * 0.32f, 0f);
+                float u = (q.Y - NearMin.Y) / (NearMax.Y - NearMin.Y);
+                float fade = EdgeFade(Math.Clamp(u, 0f, 1f));
+                float size = (0.07f + R(i, 4) * 0.05f) * (1f - 0.15f * k);
+                fx.Sprite(FxShape.Dot, q, size * 1.3f, Fx.Fade(body, 0.6f * fade), FxBlend.Alpha, 0f, depth: true);
+                fx.Sprite(FxShape.Bubble, q, size, Fx.Fade(rimColor, fade), FxBlend.Alpha, time + i, depth: true);
+            }
         }
     }
 

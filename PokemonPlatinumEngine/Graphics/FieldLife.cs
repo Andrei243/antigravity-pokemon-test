@@ -30,10 +30,24 @@ internal sealed class FieldLife
     public const int Cell = 16, Columns = 8;
 
     // Cells of the atlas
-    public const int Print = 0, Puff = 1, Leaf = 4, Ring = 6, Drop = 9, Fleck = 10, Star = 12;
+    public const int Print = 0, Puff = 1, Leaf = 4, Ring = 6, Drop = 9, Fleck = 10, Star = 12, Bubble = 13;
 
     public const float PrintStays = 3f, PrintFades = 3f, PuffTime = 0.36f, LeafTime = 0.5f, RingTime = 0.7f, DropTime = 0.3f, FleckTime = 0.3f, StarTime = 1.5f;
     public const float DoorOpens = 0.2f, DoorLingers = 0.4f;
+
+    /// <summary>
+    /// A diver's breath on the sea floor (plan 21 · H5; style guide, "The sea floor"): one every <see cref="BreathEvery"/>
+    /// seconds of the field's clock, <see cref="BubblesABreath"/> bubbles <see cref="BubbleApart"/> apart from
+    /// <see cref="HeadHeight"/> over the ground, each rising <see cref="BubbleRise"/> texels a second for
+    /// <see cref="BubbleTime"/>: small for <see cref="BubbleSmall"/>, bursting for its last <see cref="BubbleBursts"/>.
+    /// </summary>
+    public const float BreathEvery = 2.8f, BubbleApart = 0.1f, HeadHeight = 1.25f, BubbleRise = 24f, BubbleTime = 1.3f,
+        BubbleSmall = 0.33f, BubbleBursts = 0.15f, BubbleSways = 0.2f;
+
+    public const int BubblesABreath = 3;
+
+    /// <summary>After a pause longer than this (a battle, a menu) no breath is made up.</summary>
+    public const float BreathCatchUp = 0.5f;
 
     /// <summary>How often rain lands: this many times a second, a few drops each time (<see cref="Weathers.LandsABeat"/>).</summary>
     public const float RainBeats = 30f;
@@ -41,13 +55,14 @@ internal sealed class FieldLife
     /// <summary>The stretch of ground rain is seen landing on, in tiles, round the middle of the view.</summary>
     public const float RainWidth = 24f, RainDepth = 16f;
 
-    private enum Kind { Print, Puff, Leaf, Ring, Drop, Fleck, Star }
+    private enum Kind { Print, Puff, Leaf, Ring, Drop, Fleck, Star, Bubble }
 
     private readonly record struct Piece(Kind Kind, Vector3 At, double Born, Color Tint, int Turn, float Seed, float Size);
 
     private readonly List<Piece> pieces = new();
     private int steps;
     private long rainBeat;
+    private double breathClock;
 
     /// <summary>
     /// Seconds since the game began walking the field: the clock everything here runs by. It is kept to double
@@ -81,11 +96,13 @@ internal sealed class FieldLife
         Kind.Ring => RingTime,
         Kind.Fleck => FleckTime,
         Kind.Star => StarTime,
+        Kind.Bubble => BubbleTime,
         _ => DropTime
     };
 
     private static Color Rgb(int r, int g, int b) => new(r, g, b, 255);
 
+    private static readonly Color BubbleTint = Rgb(214, 236, 250);
     private static readonly Color RingTint = Rgb(210, 236, 255), DropTint = Rgb(190, 222, 250), FleckTint = Rgb(236, 242, 255);
     private static readonly Color LeafLight = Rgb(168, 226, 112), LeafMid = Rgb(110, 196, 92);
 
@@ -311,6 +328,45 @@ internal sealed class FieldLife
         }
     }
 
+    /// <summary>
+    /// A diver on the sea floor at a spot (in tiles), told every frame the field runs (plan 21 · H5): every breath due
+    /// since the last time is let out, three bubbles from over their head. A breath falls at a whole multiple of
+    /// <see cref="BreathEvery"/> on the field's clock and each bubble's place to the side follows from the breath's
+    /// number and its own, so the bubbles are the same however the frames fall; after a pause none is made up.
+    /// Returns how many breaths were let out, each a sound to hear.
+    /// </summary>
+    public int Bubbles(Map map, float x, float z)
+    {
+        double from = breathClock;
+        breathClock = Now;
+        if (map.IsIndoors || Now - from > BreathCatchUp || Now <= from) return 0;
+        const float texel = 1f / 32f;
+        long first = (long)Math.Floor(from / BreathEvery) + 1, last = (long)Math.Floor(Now / BreathEvery);
+        float ground = Relief.At(map, x, z);
+        int breaths = 0;
+        for (long n = first; n <= last; n++, breaths++)
+            for (int k = 0; k < BubblesABreath; k++)
+            {
+                // A few texels to one side, and which way it sways first
+                int number = (int)(n % int.MaxValue);
+                float side = MathF.Round((GroundBaker.Rand01(number, k, 951) - 0.5f) * 8f) * texel;
+                int sway = GroundBaker.Rand01(number, k, 952) < 0.5f ? -1 : 1;
+                pieces.Add(new Piece(Kind.Bubble, new Vector3(x, ground + HeadHeight, z + 0.2f), n * (double)BreathEvery + k * BubbleApart,
+                    BubbleTint, sway, side, 1f));
+            }
+        return breaths;
+    }
+
+    /// <summary>Where a bubble is and which cell of the atlas it shows, <paramref name="age"/> seconds after it was let out.</summary>
+    public static (float Up, float Aside, int Cell) BubbleAt(float age, int sway)
+    {
+        const float texel = 1f / 32f;
+        float up = MathF.Floor(age * BubbleRise) * texel;
+        float aside = (int)(age / BubbleSways) % 2 == 1 ? sway * texel : 0f;
+        int cell = age >= BubbleTime - BubbleBursts ? Bubble + 2 : age < BubbleSmall ? Bubble : Bubble + 1;
+        return (up, aside, cell);
+    }
+
     /// <summary>Alpha in the two or three flat steps things fade by.</summary>
     private static byte Fade(float left)
     {
@@ -368,6 +424,13 @@ internal sealed class FieldLife
                     // Those to one side start flat and those to the other turned, and each turns over as it tops its arc
                     int frame = ((a < 0.5f ? 0 : 1) + (p.Seed > 0f ? 1 : 0)) % 2;
                     upright.Add(new LifeQuad(p.At + new Vector3(along, up, 0), 0.5f, 0.5f, Leaf + frame, p.Tint with { A = a > 0.8f ? (byte)170 : (byte)255 }));
+                    break;
+                }
+                case Kind.Bubble:
+                {
+                    // Up in whole texels, a texel aside and back, small, grown, then bursting
+                    var (up, aside, cell) = BubbleAt(age, p.Turn);
+                    upright.Add(new LifeQuad(p.At + new Vector3(p.Seed + aside, up, 0), 0.5f, 0.5f, cell, p.Tint with { A = cell == Bubble + 2 ? (byte)170 : (byte)230 }));
                     break;
                 }
                 case Kind.Star:
@@ -662,6 +725,32 @@ internal static class WeatherFx
         }
     }
 
+    /// <summary>The caustics' two layers: texels of so many layout units, drifting so many units a second east and down.</summary>
+    public static readonly (float Scale, float East, float Down, Color Tint)[] CausticLayers =
+    {
+        (6f, 9f, 4f, new Color(196, 236, 228, 34)),
+        (9f, -12f, 6f, new Color(196, 236, 228, 26))
+    };
+
+    /// <summary>
+    /// The light of the waves over the sea floor (plan 21 · H5): two layers of the caustic net (<see cref="LifeArt.Caustics"/>),
+    /// each moved by the time and pinned to the floor by <paramref name="pinX"/> and <paramref name="pinY"/> (where the
+    /// floor's origin would be on the picture, in layout units: the camera's target times a tile's size there,
+    /// negated), wrapped by the net's repeat and held to the 3-unit grid, so every edge falls on a texel of the field.
+    /// </summary>
+    public static void Caustics(double time, float pinX, float pinY, List<HazeLayer> into)
+    {
+        foreach (var (scale, east, down, tint) in CausticLayers)
+        {
+            double repeat = LifeArt.CausticSize * (double)scale;
+            float Held(double v) { float snapped = Snap((float)Around(v, repeat)); return snapped >= repeat ? 0f : snapped; }
+            into.Add(new HazeLayer(scale, Held(pinX + time * east), Held(pinY + time * down), tint));
+        }
+    }
+
+    /// <summary><paramref name="v"/> wrapped into [0, <paramref name="span"/>).</summary>
+    private static double Around(double v, double span) => ((v % span) + span) % span;
+
     /// <summary>
     /// The layers of mist a kind of weather lays over the picture at a moment, the nearest last. A layer's
     /// offset wraps where its cloud repeats, so it stays small however long the mist has drifted.
@@ -811,6 +900,71 @@ internal static partial class LifeArt
         c.Rect(sx + 2, sy + 7, 12, 2, white);
         c.Rect(sx + 6, sy + 5, 4, 6, white);
         c.Rect(sx + 5, sy + 6, 6, 4, white);
+
+        // A diver's bubbles (plan 21 · H5): small, a ring four texels across round a glint
+        var (bx, by) = Origin(FieldLife.Bubble);
+        c.Rect(bx + 7, by + 6, 2, 1, white);
+        c.Rect(bx + 6, by + 7, 1, 2, white);
+        c.Rect(bx + 9, by + 7, 1, 2, white);
+        c.Rect(bx + 7, by + 9, 2, 1, white);
+        c.SetRaw(bx + 7, by + 7, white);
+        // Grown: a ring six texels across with a body inside, so it reads over pale sand, and a glint at its upper left
+        var (gbx, gby) = Origin(FieldLife.Bubble + 1);
+        c.Rect(gbx + 6, gby + 5, 4, 1, white);
+        c.Rect(gbx + 5, gby + 6, 1, 4, white);
+        c.Rect(gbx + 10, gby + 6, 1, 4, white);
+        c.Rect(gbx + 6, gby + 10, 4, 1, white);
+        for (int y = 6; y < 10; y++)
+            for (int x = 6; x < 10; x++) c.SetRaw(gbx + x, gby + y, new Color(255, 255, 255, 90));
+        c.SetRaw(gbx + 6, gby + 7, white);
+        c.SetRaw(gbx + 7, gby + 6, white);
+        // Bursting: four specks flying apart
+        var (kx, ky) = Origin(FieldLife.Bubble + 2);
+        c.SetRaw(kx + 4, ky + 5, white);
+        c.SetRaw(kx + 11, ky + 5, white);
+        c.SetRaw(kx + 5, ky + 11, white);
+        c.SetRaw(kx + 10, ky + 11, white);
+        return c;
+    }
+
+    public const int CausticSize = 64, CausticCells = 4;
+
+    /// <summary>
+    /// The light the waves throw down on the sea floor (plan 21 · H5; style guide, "The sea floor"): a net of bright
+    /// lines, the edges between the cells of a Worley pattern that repeats at its edges, white, its alpha 255 in the
+    /// lines' core and 110 at their fringe, nothing between. Drawn point-filtered over the picture in layers
+    /// (<see cref="WeatherFx.Caustics"/>).
+    /// </summary>
+    public static PixelCanvas Caustics()
+    {
+        const int span = CausticSize / CausticCells;
+        var c = new PixelCanvas(CausticSize, CausticSize);
+        // Each cell's point, somewhere inside it
+        var points = new Vector2[CausticCells, CausticCells];
+        for (int j = 0; j < CausticCells; j++)
+            for (int i = 0; i < CausticCells; i++)
+                points[i, j] = new Vector2((i + 0.15f + 0.7f * GroundBaker.Rand01(i, j, 960)) * span, (j + 0.15f + 0.7f * GroundBaker.Rand01(i, j, 961)) * span);
+        for (int y = 0; y < CausticSize; y++)
+            for (int x = 0; x < CausticSize; x++)
+            {
+                var at = new Vector2(x + 0.5f, y + 0.5f);
+                int ci = x / span, cj = y / span;
+                float f1 = float.MaxValue, f2 = float.MaxValue;
+                for (int dj = -2; dj <= 2; dj++)
+                    for (int di = -2; di <= 2; di++)
+                    {
+                        int i = ci + di, j = cj + dj;
+                        int wi = ((i % CausticCells) + CausticCells) % CausticCells, wj = ((j % CausticCells) + CausticCells) % CausticCells;
+                        // The point of a cell past the edge is its own cell's, moved by the repeat
+                        var p = points[wi, wj] + new Vector2((i - wi) * span, (j - wj) * span);
+                        float d = Vector2.Distance(at, p);
+                        if (d < f1) { f2 = f1; f1 = d; }
+                        else if (d < f2) f2 = d;
+                    }
+                float edge = f2 - f1;
+                if (edge < 0.8f) c.SetRaw(x, y, new Color(255, 255, 255, 255));
+                else if (edge < 1.6f) c.SetRaw(x, y, new Color(255, 255, 255, 110));
+            }
         return c;
     }
 

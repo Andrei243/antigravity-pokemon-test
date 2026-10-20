@@ -28,7 +28,7 @@ internal readonly record struct ArenaSpec(BattleArena Kind, PokemonType? Theme =
 /// <summary>
 /// Builds each arena's scenery (plan 04 · G8): the ground, the two platforms, and what surrounds them — the
 /// local trees and hills, a forest closing in, cave walls with crystals, the open sea, snowy pines under
-/// mountains, dunes and mesas, a room, or a gym or League hall themed on its type. All of it is static geometry
+/// mountains, dunes and mesas, a room, a gym or League hall themed on its type, or the sea floor's kelp and rock. All of it is static geometry
 /// in the smooth battle style: vertex gradients and soft textures, GPU-free until it is uploaded.
 /// </summary>
 internal static class BattleArenas
@@ -53,6 +53,7 @@ internal static class BattleArenas
             case BattleArena.Indoors: Room(b); break;
             case BattleArena.Gym: Hall(b, spec.Theme, league: false); break;
             case BattleArena.League: Hall(b, spec.Theme, league: true); break;
+            case BattleArena.Underwater: Underwater(b); break;
             default: Meadow(b, spec); break;
         }
     }
@@ -508,6 +509,128 @@ internal static class BattleArenas
             water.Tri(P(inner, a0), P(outer, a1), P(outer, a0), default, default, default, Vector3.UnitY, Vector3.UnitY, Vector3.UnitY, white, clear, clear);
             water.Tri(P(inner, a0), P(inner, a1), P(outer, a1), default, default, default, Vector3.UnitY, Vector3.UnitY, Vector3.UnitY, white, white, clear);
         }
+    }
+
+    // ------------------------------------------------------------------ the sea floor (plan 21 · H5)
+
+    /// <summary>
+    /// The sea floor: sand with paler and darker patches, the platforms low rock under sandy tops, rows of kelp
+    /// behind the field and closing in at its sides, masses of rock and boulders on the sand. No sky and no
+    /// horizon: the sea's blue fog takes everything far off.
+    /// </summary>
+    private static void Underwater(MeshBatches batches)
+    {
+        GroundDisc(batches, SoftTextures.Ground("seafloor", Rgb(196, 190, 150), Rgb(214, 206, 166), Rgb(170, 166, 128), Rgb(150, 156, 112), 0.25f, ripples: 0.6f));
+
+        // Low rock under the sand of each platform, wider at its foot
+        var top = SoftTextures.Top("seafloor", Rgb(206, 196, 154), Rgb(184, 174, 136), Rgb(164, 154, 120));
+        var rim = Rgb(104, 108, 100);
+        foreach (var (center, rad) in new[] { (Enemy, EnemyRadius), (Player, PlayerRadius) })
+        {
+            batches.For(SceneTextures.White).Lathe(center, new[]
+            {
+                new Vector2(rad * 1.16f, -0.1f), new Vector2(rad * 1.08f, Top * 0.3f), new Vector2(rad * 1.02f, Top * 0.7f), new Vector2(rad * 0.97f, Top)
+            }, 48, i => i <= 1 ? Rgb(78, 88, 88) : rim);
+            Platform(batches, center, rad, top, rim);
+        }
+
+        // Kelp: four rows behind the field, and stalks closing in at both sides
+        var kelp = Backdrop(batches);
+        int seed = 900;
+        for (int row = 0; row < 4; row++)
+        {
+            float z = -11f - row * 4.5f;
+            for (float x = -42f; x <= 34f; x += 1.7f - row * 0.15f)
+            {
+                seed++;
+                float jx = (Rand(seed, row, 101) - 0.5f) * 1.2f, jz = (Rand(seed, row, 102) - 0.5f) * 2.4f;
+                Kelp(kelp, x + jx, z + jz, 4.2f + row * 0.9f + Rand(seed, row, 103) * 2.6f, seed);
+            }
+        }
+        for (float z = -8f; z <= 22f; z += 2.4f)
+            for (int k = 0; k < 2; k++)
+            {
+                seed++;
+                float x = -15f - k * 2.6f - Rand(seed, 1, 104) * 1.4f;
+                Kelp(kelp, x, z + Rand(seed, 2, 104) * 1.6f, 5f + Rand(seed, 3, 104) * 3f, seed);
+            }
+        for (float z = -8f; z <= 8f; z += 2.2f)
+        {
+            seed++;
+            Kelp(kelp, 12.5f + Rand(seed, 3, 105) * 2.5f, z, 5f + Rand(seed, 4, 105) * 3f, seed);
+        }
+
+        // Masses of rock far behind the kelp and at the sides, boulders on the sand nearer
+        var walls = Backdrop(batches);
+        var foot = Rgb(52, 70, 78);
+        var mid = Rgb(88, 106, 108);
+        var lit = Rgb(124, 140, 132);
+        for (int i = 0; i < 9; i++)
+        {
+            float x = -60f + i * 15f + Rand(i, 1, 106) * 6f;
+            float z = -34f - Rand(i, 2, 106) * 10f;
+            RockMass(walls, new Vector3(x, 0, z), new Vector3(5f + Rand(i, 3, 106) * 3f, 5f + Rand(i, 4, 106) * 6f, 4f), foot, mid, lit, 300 + i);
+        }
+        RockMass(walls, new Vector3(-24f, 0, 4f), new Vector3(3.4f, 4.6f, 3f), foot, mid, lit, 320);
+        RockMass(walls, new Vector3(20f, 0, -4f), new Vector3(3.2f, 4f, 3f), foot, mid, lit, 321);
+        var rock = batches.For(SceneTextures.White);
+        foreach (var (x, z, s) in new[] { (-12.5f, -3.2f, 0.9f), (9.2f, -6.4f, 1.1f), (11.5f, 2.6f, 0.7f), (-9.6f, 10.5f, 0.8f), (5.4f, -9.6f, 0.6f) })
+            SoftFoliage.Rock(rock, x, z, s, (int)(x * 11), foot, mid, lit);
+    }
+
+    /// <summary>
+    /// A stalk of kelp: a tapering stem from a dark holdfast to a pale tip, leaning a little, with a blade of leaf
+    /// off it every so often to the left and the right in turn. It sways more the higher it reaches.
+    /// </summary>
+    private static void Kelp(MeshBuilder b, float x, float z, float height, int seed)
+    {
+        var root = Rgb(44, 82, 64);
+        var lower = Rgb(62, 110, 76);
+        var upper = Rgb(92, 140, 88);
+        var tip = Rgb(132, 170, 104);
+        Color At(float t)
+        {
+            var c = t < 0.5f ? Mix(root, lower, t / 0.5f) : t < 0.85f ? Mix(lower, upper, (t - 0.5f) / 0.35f) : Mix(upper, tip, (t - 0.85f) / 0.15f);
+            return MeshBuilder.Sway(c, 0.9f * t);
+        }
+
+        const int points = 8;
+        float r = 0.08f + Rand(seed, 0, 107) * 0.04f;
+        var profile = new Vector2[points];
+        for (int i = 0; i < points; i++)
+        {
+            float t = i / (float)(points - 1);
+            profile[i] = new Vector2(i == points - 1 ? 0.01f : r * (1f - 0.6f * t), t * height - (i == 0 ? 0.05f : 0f));
+        }
+        var stalk = new MeshBuilder();
+        stalk.Lathe(Vector3.Zero, profile, 6, i => At(i / (float)(points - 1)));
+
+        // Blades: a long leaf off the stem every so often, left and right in turn
+        var normal = Vector3.UnitZ;
+        int blades = 3 + (int)(height / 2.2f);
+        for (int k = 0; k < blades; k++)
+        {
+            float t = 0.22f + 0.7f * k / blades + Rand(seed, k, 108) * 0.05f;
+            float side = k % 2 == 0 ? 1f : -1f;
+            float y = t * height, length = 0.55f + Rand(seed, k, 109) * 0.35f, w = 0.12f;
+            var basePt = new Vector3(0, y, 0);
+            var mid = new Vector3(side * length * 0.55f, y + length * 0.35f, 0);
+            var end = new Vector3(side * length, y + length * 0.8f, 0);
+            var cb = At(t);
+            var ce = At(MathF.Min(1f, t + 0.12f));
+            // A shade lighter than the stem, swaying as far as the stem where it ends
+            var leaf = PixelCanvas.Light1(ce, 0.08f);
+            var up = new Vector3(0, w, 0);
+            // Both faces, so it shows from either side
+            stalk.Tri(basePt, mid + up, mid - up, default, default, default, normal, normal, normal, cb, leaf, leaf);
+            stalk.Tri(basePt, mid - up, mid + up, default, default, default, -normal, -normal, -normal, cb, leaf, leaf);
+            stalk.Tri(mid - up, mid + up, end, default, default, default, normal, normal, normal, leaf, leaf, leaf);
+            stalk.Tri(mid + up, mid - up, end, default, default, default, -normal, -normal, -normal, leaf, leaf, leaf);
+        }
+
+        float lean = (Rand(seed, 1, 107) - 0.5f) * 0.24f;
+        float spin = Rand(seed, 2, 107) * MathF.Tau;
+        b.Append(stalk, Matrix4x4.CreateRotationZ(lean) * Matrix4x4.CreateRotationY(spin) * Matrix4x4.CreateTranslation(x, 0, z));
     }
 
     // ------------------------------------------------------------------ snow

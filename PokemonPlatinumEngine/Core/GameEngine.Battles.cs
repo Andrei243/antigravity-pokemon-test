@@ -256,7 +256,7 @@ public partial class GameEngine
         {
             BattleArena.Forest => Battle.Sim.BattleTerrain.Grass,
             BattleArena.Cave => Battle.Sim.BattleTerrain.Cave,
-            BattleArena.Water => Battle.Sim.BattleTerrain.Water,
+            BattleArena.Water or BattleArena.Underwater => Battle.Sim.BattleTerrain.Water,
             BattleArena.Snow => Battle.Sim.BattleTerrain.Snow,
             BattleArena.Sand => Battle.Sim.BattleTerrain.Sand,
             BattleArena.Indoors or BattleArena.Gym => Battle.Sim.BattleTerrain.Building,

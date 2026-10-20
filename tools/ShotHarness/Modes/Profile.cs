@@ -136,6 +136,28 @@ partial class Harness
             Room("OldChateau", "old chateau");
             Room("BattleTower", "battle tower's lobby");
             Room("GlobalTerminal1F", "global terminal");
+
+            // Hoenn's sea floor (plan 21 · H5, part b): the waves' light laid over the whole picture twice, the diver's
+            // bubbles and the kelp swaying round them, by the open sand nearest the middle of Route 124's floor and in
+            // the kelp nearest it
+            {
+                var (sea, sx, sy) = AreaSpot("underwater_route_124");
+                At(sea.Name, sx, sy, Direction.Up);
+                game.Player.SetMode(TravelMode.Diving);
+                Frames(40); Profile("hoenn's sea floor");
+                var area = sea.AreaAt(sx, sy);
+                var kelp = Enumerable.Range(0, sea.Height).SelectMany(y => Enumerable.Range(0, sea.Width).Select(x => (X: x, Y: y)))
+                    .Where(t => sea.AreaAt(t.X, t.Y) == area && sea.GetGroundTile(t.X, t.Y) == TileType.Kelp && sea.IsWalkable(t.X, t.Y))
+                    .OrderBy(t => Math.Abs(t.X - sx) + Math.Abs(t.Y - sy)).Select(t => ((int, int)?)(t.X, t.Y)).FirstOrDefault();
+                if (kelp is { } k)
+                {
+                    At(sea.Name, k.Item1, k.Item2, Direction.Up);
+                    game.Player.SetMode(TravelMode.Diving);
+                    Frames(40); Profile("hoenn's sea floor, in the kelp");
+                }
+                else Console.WriteLine("  !! no kelp on Route 124's floor");
+                game.Player.SetMode(TravelMode.OnFoot);
+            }
             game.Map = MapDatabase.Get("Sinnoh");
 
             engine.Settings.TimeOfDay = TimeOfDay.Night;
@@ -186,6 +208,14 @@ partial class Harness
             ToMainMenu(rainy);
             Skip(1.0);
             Profile("battle in rain, at the menu");
+
+            // On the sea floor's own stage (plan 21 · H5, part b): its kelp, its rocks and its bubbles rising all round
+            game.BattleRenderer.SetArena(BattleArena.Underwater);
+            var deep = Wild(34);
+            ToMainMenu(deep);
+            Skip(1.0);
+            Profile("battle on the sea floor, at the menu");
+            game.BattleRenderer.SetArena(game.Map, stageX, stageY);
 
             // Both tired at the menu, their bars in the red (plan 25 · Y5): the slow breath and the droop are poses,
             // and should cost what the battle at the menu costs

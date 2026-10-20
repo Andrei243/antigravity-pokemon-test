@@ -3080,17 +3080,22 @@ Platinum has no Dive in the field, so the field move follows Emerald (`TrySetupD
   overworld's own coordinates, so a dive lands on the same tile (469 tiles each way, none astray). The floors under the
   Seafloor Cavern, Sootopolis and the Marine Cave are matrices of their own for H8 and H12. Only `underwater_route_124`
   is open; the rest is rock until its route opens.
-- **Under the sea battles are fought on the water's ground and stage** (`BattleTerrain.Water`, `Map.ArenaAt`) until part
-  b's `BattleArena.Underwater`; Dive the move in battle is unchanged.
+- **Under the sea battles are fought on the water's ground and the sea floor's own stage**: `BattleTerrain.Water` (so the
+  Dive Ball, Nature Power, Camouflage and Secret Power read as they do on the water, which is where Platinum's rules
+  would put Emerald's underwater terrain) and, since part b, `BattleArena.Underwater` (`Map.ArenaAt` on an underwater
+  map, whatever the seabed). Its look is ours: Emerald's underwater battle background has no counterpart in Platinum.
+  Dive the move in battle is unchanged.
 - **Route 124 waits for Lilycove**: it is reached by sea from Lilycove City (H7), so a walk of the game finds it only
   through `WorldWalk.OpenedAhead` (the sand before the treasure hunter's house), which H7 takes off. Its song is
   `hoenn/route104` until Emerald's Route 120 song is written; the treasure hunter's house is `locked` until H8.
 - **Saves**: a game saved under the sea keeps `TravelMode.Diving` as one saved surfing keeps surfing, and a player on an
   underwater map always settles diving (and off one never does). No version was raised: no older save can stand on a map
   that didn't exist, so none is touched.
-- **Still to come (part b)**: the caustic layer and the diver's bubbles, `BattleArena.Underwater` and its stage,
-  `AmbienceBed.Underwater`, the floors under Routes 125 to 128 with their routes (H8), and the frame weighed with
-  `profile`.
+- **The sea floor's light, bubbles and sound are ours** (part b): Emerald draws the light of the waves and a diver's
+  bubbles as a field effect and plays its own underwater song; ours are the style guide's caustic layers, a breath
+  every 2.8 seconds of the field's clock heard as `bubbles`, and `AmbienceBed.Underwater` alone under whatever weather
+  is above. Still to come: the floors under Routes 125 to 128 with their routes (H8), and the frame weighed with
+  `profile` on the user's machine.
 
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
