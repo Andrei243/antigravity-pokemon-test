@@ -44,6 +44,12 @@ public sealed record BroadcastFacts
     public int TeamSize { get; init; }
     public string? Lead { get; init; }
     public int LeadLevel { get; init; }
+
+    /// <summary>
+    /// The answer last given to Jubilife City's reporters (plan 08 · P9: <see cref="StoryState.InterviewPhrase"/>), its
+    /// two words as their keys (<see cref="PhraseGroups"/>); null until an interview has been given.
+    /// </summary>
+    public IReadOnlyList<string>? Interview { get; init; }
 }
 
 /// <summary>The programmes a television shows when it has nothing of its own (plan 08 · P8; plan 08's decision 5).</summary>
@@ -59,17 +65,29 @@ public enum Programme
     Lottery,
     /// <summary>News of the Hall of Fame, once a team has entered it.</summary>
     HallOfFame,
+    /// <summary>Jubilife Street Talk: the answer the player gave Jubilife City's reporters, read back (plan 08 · P9). Once an interview has been given.</summary>
+    Interview,
 }
 
 /// <summary>
 /// The programmes of a television that has no line of its own (plan 08 · P8; the original's TV programmes, in our own
 /// words and of our own making): each is lines composed from what is true of the game (<see cref="BroadcastFacts"/>),
 /// never anything made up, and which is on is drawn on the game's own die. The script's <c>broadcast</c> says them
-/// (<c>common.Television</c>). The interviews (plan 08 · P9) join the programmes once the reporters ask their
-/// questions. GPU-free.
+/// (<c>common.Television</c>). The interview (plan 08 · P9) joins them once the player has answered Jubilife City's
+/// reporters, and a television says it first the first time it is looked at after (<c>broadcast interview</c>, on the
+/// flag the reporters set). GPU-free.
 /// </summary>
 public static class Broadcasts
 {
+    /// <summary>The flag the reporters set as an interview is given and a television clears as it first shows it (plan 08 · P9).</summary>
+    public const string InterviewOnAirFlag = "FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR";
+
+    /// <summary>The programmes by the names a script calls them (<c>broadcast interview</c>), in the enum's order.</summary>
+    public static string[] Names => new[] { "clock", "pokedex", "survey", "lottery", "halloffame", "interview" };
+
+    /// <summary>A programme by the name a script calls it.</summary>
+    public static Programme Named(string name) => (Programme)Math.Max(0, Array.IndexOf(Names, name));
+
     /// <summary>
     /// The facts a script host already knows (<see cref="IScriptHost.Broadcast"/>'s default): the team, the Badges,
     /// the Pokédex, the day. The clock's hour and the play time are left as they are made, for a host that knows them.
@@ -94,7 +112,8 @@ public static class Broadcasts
             LeagueVictories = host.LeagueVictories,
             TeamSize = host.Party.Count,
             Lead = lead?.DisplayName,
-            LeadLevel = lead?.Level ?? 0
+            LeadLevel = lead?.Level ?? 0,
+            Interview = host.Story.PhraseOf(StoryState.InterviewPhrase) is { } answer && PhraseGroups.IsWhole(answer) ? answer : null
         };
     }
 
@@ -106,6 +125,7 @@ public static class Broadcasts
         if (facts.Lead != null) on.Add(Programme.Survey);
         if (facts.Region == RegionDatabase.Sinnoh) on.Add(Programme.Lottery);
         if (facts.LeagueVictories > 0) on.Add(Programme.HallOfFame);
+        if (facts.Interview != null) on.Add(Programme.Interview);
         return on;
     }
 
@@ -119,6 +139,13 @@ public static class Broadcasts
     /// <summary>A programme drawn and its lines: what <c>broadcast</c> says.</summary>
     public static IReadOnlyList<string> Compose(BroadcastFacts facts, Func<int, int> die) => Lines(Choose(facts, die), facts);
 
+    /// <summary>
+    /// What <c>broadcast</c> says given a programme by name: that programme where it is on, with no die drawn, and
+    /// whichever the die picks where it isn't (an interview asked for before any was given).
+    /// </summary>
+    public static IReadOnlyList<string> Compose(BroadcastFacts facts, Func<int, int> die, string? named) =>
+        string.IsNullOrEmpty(named) || !On(facts).Contains(Named(named)) ? Compose(facts, die) : Lines(Named(named), facts);
+
     /// <summary>A programme's lines for these facts, in the language chosen.</summary>
     public static IReadOnlyList<string> Lines(Programme programme, BroadcastFacts facts) => programme switch
     {
@@ -126,6 +153,7 @@ public static class Broadcasts
         Programme.Survey => Survey(facts),
         Programme.Lottery => Lottery(facts),
         Programme.HallOfFame => HallOfFame(facts),
+        Programme.Interview => Interview(facts),
         _ => Clock(facts),
     };
 
@@ -191,6 +219,14 @@ public static class Broadcasts
         Text.Of("broadcast.lottery.open", ("ticket", Models.Lottery.TicketOf(f.DailyNumber).ToString("D5"))),
         Text.Of("broadcast.lottery.how"),
         Text.Of("broadcast.lottery.close")
+    };
+
+    private static IReadOnlyList<string> Interview(BroadcastFacts f) => new[]
+    {
+        Text.Of("broadcast.interview.open"),
+        Text.Of("broadcast.interview.asked", ("player", f.PlayerName)),
+        Text.Of("broadcast.interview.answer", ("player", f.PlayerName), ("phrase", PhraseGroups.Shown(f.Interview ?? Array.Empty<string>()))),
+        Text.Of("broadcast.interview.close")
     };
 
     private static IReadOnlyList<string> HallOfFame(BroadcastFacts f) => new[]

@@ -129,7 +129,9 @@ Jubilife's, and nobody of another area is found. Someone a flag has taken off th
 | `say "..." ["..."]` | Lines in the text box, under the current speaker's name. Lines one after another are one talk: the box stays open between them. |
 | `text "..."` | The same with no name on the box: the game's own voice. |
 | `sayown` | The lines the script was started with: a person's `dialog`, a signboard's text. |
-| `broadcast` | A television's programme (plan 08 · P8; `Story/Broadcasts.cs`), said as one talk under the current speaker: one of the programmes on (the time check always; the Pokédex Report with a Pokédex; the trainer survey with a Pokémon; the Lottery Corner's number in Sinnoh; the Hall of Fame's news once a team has entered it), drawn on the script's die (`random`'s), its lines made of what is true of the game (`IScriptHost.Broadcast`, `BroadcastFacts`) in `ui.json`'s words (`broadcast.*`). Nothing is set. |
+| `broadcast` | A television's programme (plan 08 · P8; `Story/Broadcasts.cs`), said as one talk under the current speaker: one of the programmes on (the time check always; the Pokédex Report with a Pokédex; the trainer survey with a Pokémon; the Lottery Corner's number in Sinnoh; the Hall of Fame's news once a team has entered it), drawn on the script's die (`random`'s), its lines made of what is true of the game (`IScriptHost.Broadcast`, `BroadcastFacts`) in `ui.json`'s words (`broadcast.*`). Nothing is set. Plan 08 · P9's interview (Jubilife Street Talk: the answer given to Jubilife City's reporters, `StoryState.InterviewPhrase`) is among the programmes once an interview has been given. |
+| `broadcast interview` | The programme named (`Broadcasts.Names`: `clock`, `pokedex`, `survey`, `lottery`, `halloffame`, `interview`), with no die drawn, where it is on; where it isn't, whichever the die picks, as `broadcast` does. A television says the interview this way the first time it is looked at after one was given (`FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR`, which the reporters set and `common.Television` and `PlayerHouse.TV` clear). |
+| `phrase INTERVIEW` | A phrase of two words the player chooses (plan 08 · P9; style guide, "Phrases"): the picker over the field (`PhraseScreen`, `GameState.Phrases`), on the phrase kept under that name, and the script waits. The words are the Pokémon seen, the team's moves, the types and our own lists (`PhraseGroups`); what is chosen is kept in the story under the name (`StoryState.Phrases`, saved as `SaveData.StoryPhrases`), each word by its key (`feelings:happy`). `RESULT` is 1 when a phrase was given and 0 when the picker was backed out of, the phrase left as it was. Never skipped: a scene in a hurry stops before it. `HeadlessScriptHost.PhraseChoice` is the phrase a test gives (null backs out). |
 | `trainerline before` / `after` | The trainer's own line before the battle, or once beaten. `RESULT` is 1 if there was a line to say, 0 if not. |
 | `trainerline before pair` | The same for the second of two trainers who came together (`pair`, below), under their own title. |
 | `speaker "Name"` / `none` / `self` | Who the following `say` lines are said by. A script starts with `self`. |
@@ -148,8 +150,9 @@ R15) `{daycare:0}` and `{daycare:1}` the Pokémon in each place of the Day Care,
 have brought it to, `{grown:N}` the levels it has grown and `{fee:N}` what taking it back costs, `{left}` the Pokémon
 last left there and `{taken}` the one last taken back, and (plan 01 · M11, part c) `{size}` the size of the Pokémon
 last measured with `team size` and `{record}` the record it was held against, in centimetres, and (plan 14 · B14)
-`{chosen}` the Pokémon the last `choosepokemon` chose, by its nickname, and (plan 19 · K9, part c)
-`{species:NAME}` the species whose National Pokédex number the variable holds.
+`{chosen}` the Pokémon the last `choosepokemon` chose, by its nickname, (plan 19 · K9, part c)
+`{species:NAME}` the species whose National Pokédex number the variable holds, and (plan 08 · P9) `{phrase:NAME}` the
+phrase kept under that name (`phrase NAME`), as the chosen language says its words.
 
 ### Where a script goes
 

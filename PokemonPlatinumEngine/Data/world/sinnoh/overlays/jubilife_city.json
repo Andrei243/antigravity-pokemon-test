@@ -147,6 +147,15 @@
       ]
     }
   },
+  // Plan 08 · P9: people of our own, Jubilife TV's reporter and her cameraman, on the street west of the station's
+  // door, clear of the scenes' walks up the main street. Once a day she asks the player a question and takes two words
+  // for an answer, which the television reads back (scripts/jubilife_city.txt, Interview)
+  "npcs": [
+    { "id": "tv_reporter", "name": "Reporter", "npcType": "Lady", "x": 168, "y": 753, "facing": "Down",
+      "script": "Interview" },
+    { "id": "tv_cameraman", "name": "Cameraman", "npcType": "Gentleman", "x": 169, "y": 753, "facing": "Left",
+      "script": "Cameraman" }
+  ],
   "signs": {
     "map_signpost_1": "Jubilife City\nSinnoh's busiest city, where people and new ideas meet.",
     "map_signpost_2": "Jubilife City\nSinnoh's busiest city, where people and new ideas meet.",

@@ -80,6 +80,8 @@ public enum GameState
     PokeNav,
     /// <summary>A stone panel of the Ruins of Alph's chambers (plan 20 · J5).</summary>
     AlphPuzzle,
+    /// <summary>The phrase picker over the field, a script's <c>phrase</c> waiting on it (plan 08 · P9).</summary>
+    Phrases,
     Transition,
     /// <summary>
     /// The window's close button asked (plan 12 · Q1): its question over whatever was on screen, which waits under it
@@ -555,6 +557,7 @@ public partial class GameEngine
         StoryMigration.Upgrade(flow.Story, save.StoryVersion, flow.Party.Members.Concat(flow.Boxes.All), flow.Scripts, flow.Bag);
         flow.Story.RestoreGreetings(save.GreetedPeople);
         flow.Story.RestoreScenes(save.ScenesSeen);
+        flow.Story.RestorePhrases(save.StoryPhrases);
         ResetTheSkip();
         OweTheFashionCase();
         MapDatabase.RestoreDefeatedTrainers(flow.Story.DefeatedTrainers);
@@ -666,6 +669,7 @@ public partial class GameEngine
             TakenItems = told.TakenItems,
             GreetedPeople = flow.Story.Greeted.Order(StringComparer.Ordinal).ToList(),
             ScenesSeen = flow.Story.ScenesSeen.Order(StringComparer.Ordinal).ToList(),
+            StoryPhrases = flow.Story.PhrasesToSave(),
             PlayerStarter = told.PlayerStarter,
             RivalStarter = told.RivalStarter,
             Money = flow.Money,
@@ -1070,6 +1074,11 @@ public partial class GameEngine
                     flow.ScriptAnswer = flow.AlphPuzzleScreen.Outcome == true ? 1 : 0;
                     flow.State = GameState.Overworld;
                 }
+                break;
+            case GameState.Phrases:
+                // The script that asked hears whether a phrase was given (plan 08 · P9), and the story keeps it
+                flow.PhraseScreen.Update(dt);
+                if (!flow.PhraseScreen.IsActive) ClosePhrases();
                 break;
             case GameState.SuperContest:
                 UpdateContest(dt);
@@ -2294,7 +2303,7 @@ public partial class GameEngine
         GameState shown = flow.Shown;
         // During a fade, show the screen being left while fading out and the new one while fading in
         GameState scene = flow.Scene;
-        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu;
+        bool showWorld = scene is GameState.Overworld or GameState.Dialogue or GameState.SaveMenu or GameState.Phrases;
         bool showBattle = scene == GameState.Battle && flow.Battle != null;
         bool showTitle = scene == GameState.Title;
 
@@ -2441,6 +2450,11 @@ public partial class GameEngine
                 break;
             case GameState.AlphPuzzle:
                 flow.AlphPuzzleScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
+            case GameState.Phrases:
+                // Over the field, which stays under it as under a question (plan 08 · P9)
+                world.DrawToScreen(VirtualWidth, VirtualHeight);
+                flow.PhraseScreen.Draw(VirtualWidth, VirtualHeight);
                 break;
             case GameState.SuperContest:
                 flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);

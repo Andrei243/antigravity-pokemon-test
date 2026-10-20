@@ -1111,6 +1111,10 @@ public partial class GameEngine
                     PokemonSprites.Request(game.flow.AlphPuzzleScreen.Puzzle!.Species);
                     game.flow.State = GameState.AlphPuzzle;
                     break;
+                // A phrase of two words (plan 08 · P9): the picker, on the phrase given last time under the same name
+                case ScriptScreen.Phrase:
+                    game.OpenPhrases(counter ?? PokemonPlatinumEngine.Story.StoryState.InterviewPhrase);
+                    break;
                 // A map on a wall (plan 08 · P8): the Town Map's screen in its wall mode, back to the field when put
                 // away; where the region has no map nothing opens and the script hears 0
                 case ScriptScreen.TownMap:

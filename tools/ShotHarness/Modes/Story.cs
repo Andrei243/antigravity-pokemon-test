@@ -451,5 +451,33 @@ partial class Harness
         Furniture("st91_television_broadcast", "TwinleafTownNortheastHouse", 6, 4);
         Furniture("st92_shelf", "TwinleafTownNortheastHouse", 8, 4);
         Furniture("st93_bin", "SandgemTownCounterpartHouse2F", 4, 4);
+
+        // ---- phrases, interviews and reporters (plan 08 · P9), last of all so that nothing before them moves: Jubilife
+        // TV's reporter beside the station's door and her question, the phrase picker over the field (the phrase, the
+        // groups, a group's words, both words chosen), her answer said back, and the television at home reading the
+        // interview on the air. It prints the phrase kept and the flag that puts it on the air before and after
+        At("Sinnoh", 168, 754, Direction.Up);
+        Frames(10);
+        Talk();
+        ReadOn();
+        Whole(); Until(() => engine.Choice.IsOpen, "the reporter's question"); Frames(20); Shot("st94_interview_question");
+        engine.Choice.Confirm(); Frames(4);
+        ReadOn();
+        Until(() => State() == GameState.Phrases, "the phrase picker", 300);
+        var picker = game.Phrases;
+        Frames(15); Shot("st95_phrases");
+        picker.Confirm(); picker.Move(1, 0); picker.Move(0, 1); Frames(4); Shot("st96_phrases_groups");
+        picker.Confirm(); picker.Move(0, 1); Frames(4); Shot("st97_phrases_words");
+        picker.Move(0, -1); picker.Confirm(); Frames(4);
+        picker.Entry!.Choose(1, "small:together"); Frames(4); Shot("st98_phrases_whole");
+        picker.Confirm();
+        Until(() => State() != GameState.Phrases, "the picker put away", 60);
+        Until(() => Box().IsActive, "the reporter's answer"); Whole(); Shot("st99_interview_answer");
+        ReadOn();
+        Until(() => !engine.ScriptRunning, "the interview's end", 300);
+        Console.WriteLine($"interview: the phrase kept {string.Join(" ", story.PhraseOf(StoryState.InterviewPhrase) ?? Array.Empty<string>())}" +
+            $" ({PhraseGroups.Shown(story.PhraseOf(StoryState.InterviewPhrase) ?? Array.Empty<string>())}), on the air {story.Has(Broadcasts.InterviewOnAirFlag)}");
+        Furniture("st9a_television_interview", "PlayerHouse", 6, 6);
+        Console.WriteLine($"interview: on the air after the television {story.Has(Broadcasts.InterviewOnAirFlag)}");
     }
 }

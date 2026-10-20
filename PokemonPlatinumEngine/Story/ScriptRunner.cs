@@ -364,6 +364,8 @@ public sealed partial class ScriptRunner
         // A television's programme is only said (its die is drawn all the same); a map on a wall is the player's to look at
         Op.Broadcast => false,
         Op.TownMap => true,
+        // A phrase is the player's own to choose
+        Op.Phrase => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1078,8 +1080,9 @@ public sealed partial class ScriptRunner
 
             // Furniture and the programmes (plan 08 · P8). A television's programme: one of those on, drawn on the
             // script's die, its lines made of what is true of the game (Broadcasts) and said as one talk
+            // A programme named on the line (broadcast interview, plan 08 · P9) is shown where it is on, with no die drawn
             case Op.Broadcast:
-                host.Say(speakerShown, Broadcasts.Compose(host.Broadcast(), host.Random).ToList());
+                host.Say(speakerShown, Broadcasts.Compose(host.Broadcast(), host.Random, i.Name).ToList());
                 break;
             // A map on a wall: the Town Map's screen in its wall mode while the script waits. RESULT is 1 when it
             // opened, 0 where the region has no map
@@ -1105,6 +1108,14 @@ public sealed partial class ScriptRunner
             // when the panel was left as it was
             case Op.Puzzle:
                 host.Open(ScriptScreen.AlphPuzzle, Subject, i.Name);
+                afterBusy = () => Result = host.Answer;
+                break;
+
+            // A phrase of two words (plan 08 · P9): the phrase picker while the script waits, on the answer given last
+            // time under the same name. The host keeps what was chosen in the story (StoryState.Phrases); RESULT is 1
+            // when a phrase was given, 0 when the picker was backed out of and the phrase is as it was
+            case Op.Phrase:
+                host.Open(ScriptScreen.Phrase, Subject, i.Name);
                 afterBusy = () => Result = host.Answer;
                 break;
 
@@ -2054,6 +2065,8 @@ public sealed partial class ScriptRunner
             "struck" => lastStruck,
             // Amity Square's walk (plan 06 · R16c): the Pokémon the receptionist asks about, or the one walking along
             "walker" => lastWalker,
+            // A phrase the player gave, by its name, as the chosen language says it (plan 08 · P9)
+            "phrase" when argument.Length > 0 => PhraseGroups.Shown(host.Story.PhraseOf(argument) ?? Array.Empty<string>()),
             "contestant" => contestSlot >= 0 && contestSlot < host.Party.Count ? host.Party.Members[contestSlot].DisplayName : host.ContestOutcome?.Pokemon ?? "",
             _ => match.Value
         };

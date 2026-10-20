@@ -111,6 +111,8 @@ public enum Op
     Broadcast,
     // A map on a wall looked at: the Town Map's screen in its wall mode (plan 08 · P8)
     TownMap,
+    // A phrase of two words asked for on the phrase picker, kept by its name (plan 08 · P9)
+    Phrase,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>

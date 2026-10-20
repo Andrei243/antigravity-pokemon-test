@@ -87,6 +87,8 @@ public partial class GameEngine
         public HallBoardScreen HallBoard => game.flow.HallBoardScreen;
         /// <summary>A stone panel of the Ruins of Alph, open while a chamber's script waits on it (plan 20 · J5).</summary>
         public AlphPuzzleScreen AlphPuzzle => game.flow.AlphPuzzleScreen;
+        /// <summary>The phrase picker, open while a script's <c>phrase</c> waits on it (plan 08 · P9).</summary>
+        public PhraseScreen Phrases => game.flow.PhraseScreen;
         public Models.Frontier.BattleCastleChallenge? Castle => game.flow.Castle;
         public CastleScreen CastleCounter => game.flow.CastleScreen;
         /// <summary>The Battle Arcade (plan 06 · R18d): the challenge under way and its game board.</summary>
