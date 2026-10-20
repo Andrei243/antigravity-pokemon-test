@@ -1,0 +1,16 @@
+{
+  // Mt. Mortar's lowest floor (plan 20 · J10). The karate master training in its depths only talks: his battle and his
+  // gift wait for a later session of plan 20
+  "area": "mount_mortar_b1f",
+  "bgmTrack": "johto/union_cave",
+  "people": {
+    "d38r0104_gsfighter": {
+      "name": "Karate Master",
+      "still": true,
+      "dialog": [
+        "Hah! I train down here where no one can disturb me.",
+        "My fists aren't ready to face a challenger yet. Leave me to my training!"
+      ]
+    }
+  }
+}

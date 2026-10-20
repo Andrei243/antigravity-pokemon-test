@@ -1,0 +1,24 @@
+{
+  // Mahogany Town (plan 20 · J10): HeartGold's map, our words. The small mountain town of the souvenir shop and the ice
+  // Gym, built in dark logs under moss-green hips (Upland). The man who sells Rage Candy Bars at the east end of the
+  // street, the saleswoman and the man by the Gym wait for plan 20 · J11 and are left out, so the way east to Route 44
+  // is open meanwhile
+  "area": "mahogany",
+  "bgmTrack": "johto/mahogany",
+  "trees": "Round",
+  "architecture": "Upland",
+  "people": {
+    "t28_gsoldman1": {
+      "name": "Old Man",
+      "dialog": [
+        "Mahogany is an old town of ninjas, they say. These days it's mostly known for its souvenirs.",
+        "The lake north of town has been acting strangely. Folk say its Pokémon are angry."
+      ]
+    }
+  },
+  "signs": {
+    "T28_006+1": "Mahogany Town\nWelcome to the home of the ninja.",
+    "T28_007+1": "Mahogany Souvenirs\nSweets and keepsakes of the mountains.",
+    "T28_008+1": "Mahogany Town Pokémon Gym\nLeader: Pryce"
+  }
+}

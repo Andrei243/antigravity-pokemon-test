@@ -1,0 +1,77 @@
+{
+  "people": {
+    "t30r0601_gsmiddleman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My father can make a Pokémon forget a move, and my uncle can help it remember one. They're very busy, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30r0601_gsbigman": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "A Pokémon can only know four moves at once. Choosing which ones is half the fun!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30r0601_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Forgetting a move is no shame. Even an HM can be let go, if you know how. Not today, though."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30r0601_gsoldwoman1": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Remembering a forgotten move takes patience. Come back another time, dear."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

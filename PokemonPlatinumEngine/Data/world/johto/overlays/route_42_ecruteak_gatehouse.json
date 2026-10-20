@@ -1,0 +1,13 @@
+{
+  // The gate house between Ecruteak City and Route 42 (plan 20 · J10)
+  "area": "route_42_ecruteak_gatehouse",
+  "bgmTrack": "johto/route42",
+  "people": {
+    "r42r0101_counterm": {
+      "name": "Guard",
+      "dialog": [
+        "Route 42 runs east round Mt. Mortar to Mahogany Town. The cave itself is a maze, so take care."
+      ]
+    }
+  }
+}

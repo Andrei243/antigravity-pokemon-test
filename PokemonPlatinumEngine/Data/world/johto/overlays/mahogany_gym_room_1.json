@@ -1,0 +1,19 @@
+{
+  // The Mahogany Gym's first room (plan 20 · J10), HeartGold's: its guide by the door. Pryce, his challenge and the
+  // blocks of ice the player pushes wait for plan 20 · J11
+  "area": "mahogany_gym_room_1",
+  "bgmTrack": "johto/gym",
+  "people": {
+    "t28gym0103_sunglasses": {
+      "name": "Gym Guide",
+      "still": true,
+      "dialog": [
+        "Brr! The floor in here is solid ice. Once you start sliding, you won't stop until you hit something!",
+        "Pryce is away from his Gym for now. His trainers are inside, though, and they love the cold."
+      ]
+    }
+  },
+  "signs": {
+    "T28GYM0103_001+1": "Mahogany Town Pokémon Gym\nLeader: Pryce"
+  }
+}

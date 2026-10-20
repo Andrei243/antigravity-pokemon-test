@@ -1,0 +1,35 @@
+# Blackthorn City (and its rooms): HeartGold's SEQ_GS_C_FUSUBE, and this game a song of its own: a proud brass line
+# in G minor over a striding harp, a held string chord, a marching bass and a measured drum, a city of stone at the
+# foot of the dragons' cliffs. Original composition for this game (plan 20 · J10).
+title Blackthorn City
+tempo 112
+meter 4/4
+reverb 0.34
+nighttempo 0.93
+
+track lead brass night=horn vol=0.74 pan=0 rev=0.32
+  L o5 g4 b-8 o6 d8 g4 d4 | o6 e-4 d8 c8 o5 b-2 | o5 a4 o6 c8 e-8 d4 c4 | o5 b-2. r4 |
+  o5 g4 b-8 o6 d8 g4 f4 | o6 e-4 c8 o5 a8 o6 c2 | o6 d4 c4 o5 a4 f+4 | o5 g2. r4 |
+  o6 d4 f8 b-8 f2 | o6 e-4 c8 g8 e-2 | o6 f4 d8 o5 b-8 o6 d4 f4 | o6 d2. r4 |
+  o6 g4 f8 e-8 d4 c4 | o5 b-4 o6 c8 d8 e-2 | o6 d4 c4 o5 a4 f+4 | o5 g2. r4 |
+
+track harp harp night=pizzicato vol=0.4 pan=-0.25 rev=0.32
+  L o3 g4 b-4 o4 d4 o3 b-4 | o3 e-4 g4 b-4 g4 | o3 f4 a4 o4 c4 o3 a4 | o3 b-4 o4 d4 f4 d4 |
+  o3 g4 b-4 o4 d4 o3 b-4 | o3 c4 e-4 g4 e-4 | o3 d4 f+4 a4 f+4 | o3 g4 b-4 o4 d4 o3 b-4 |
+  o3 b-4 o4 d4 f4 d4 | o3 c4 e-4 g4 e-4 | o3 b-4 o4 d4 f4 d4 | o3 d4 f+4 a4 f+4 |
+  o3 e-4 g4 b-4 g4 | o3 c4 e-4 g4 e-4 | o3 d4 f+4 a4 f+4 | o3 g4 b-4 o4 d4 o3 b-4 |
+
+track pad strings night=pad vol=0.27 pan=0.25 rev=0.42
+  L o4 (d g b-)1 | o4 (e- g b-)1 | o4 (c f a)1 | o4 (d f b-)1 |
+  o4 (d g b-)1 | o4 (c e- g)1 | o4 (d f+ a)1 | o4 (d g b-)1 |
+  o4 (d f b-)1 | o4 (c e- g)1 | o4 (d f b-)1 | o4 (d f+ a)1 |
+  o4 (e- g b-)1 | o4 (c e- g)1 | o4 (d f+ a)1 | o4 (d g b-)1 |
+
+track bass contrabass vol=0.5 rev=0.12
+  L o2 g2 o3 d2 | o2 e-2 b-2 | o2 f2 o3 c2 | o2 b-2 o3 f2 |
+  o2 g2 o3 d2 | o2 c2 g2 | o2 d2 a2 | o2 g2 o3 d2 |
+  o2 b-2 o3 f2 | o2 c2 g2 | o2 b-2 o3 f2 | o2 d2 a2 |
+  o2 e-2 b-2 | o2 c2 g2 | o2 d2 a2 | o2 g1 |
+
+track drums kit vol=0.24 pan=0.1 rev=0.18
+  v62 L [ b4 r8 b8 s4 r4 | b4 h4 s4 h4 | ]8

@@ -1,0 +1,24 @@
+{
+  "key": "dragons_den_entrance",
+  "index": 125,
+  "name": "Dragons Den",
+  "matrix": 145,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_RYUUNOANA",
+  "nightMusic": "GS_RYUUNOANA",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 6, "z": 9, "to": "blackthorn", "toWarp": 2 },
+    { "x": 6, "z": 5, "to": "dragons_den", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

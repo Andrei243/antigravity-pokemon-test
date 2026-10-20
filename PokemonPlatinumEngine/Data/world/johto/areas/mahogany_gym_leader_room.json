@@ -1,0 +1,31 @@
+{
+  "key": "mahogany_gym_leader_room",
+  "index": 140,
+  "name": "Mahogany Town",
+  "matrix": 229,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building2",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 19, "to": "mahogany_gym_room_2", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t28gym0101_gsleader7", "looks": "gsleader7", "movement": "15", "x": 7, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAHOGANY_GYM_PRYCE", "script": "T28GYM0101_000+1" },
+    { "id": "t28gym0101_ice", "looks": "ice", "movement": "15", "x": 4, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t28gym0101_ice_2", "looks": "ice", "movement": "15", "x": 6, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t28gym0101_boarder", "looks": "boarder", "movement": "4", "x": 2, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_BOARDER_DEANDRE" },
+    { "id": "t28gym0101_boarder_2", "looks": "boarder", "movement": "15", "x": 9, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_BOARDER_GERARDO" },
+    { "id": "t28gym0101_ice_3", "looks": "ice", "movement": "15", "x": 9, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "t28gym0101_skierw", "looks": "skierw", "movement": "17", "x": 3, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 1, "script": "TRAINER_SKIER_JILL" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,222 @@
+{
+  "people": {
+    "r45_mount_2": {
+      "name": {
+        "en": [
+          "Erik"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Erik: This mountain road is my training ground. Let's go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Erik: My legs are stronger than my Pokémon."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r45_gsman3": {
+      "name": {
+        "en": [
+          "Ryan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Ryan: A strong wind blows up here. Can your Pokémon stand in it?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Ryan: They stood. Mine didn't."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r45_mount_2_2": {
+      "name": {
+        "en": [
+          "Parry"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Parry: Onix and I are as solid as the mountain!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Parry: The mountain cracked."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r45_gswoman3": {
+      "name": {
+        "en": [
+          "Kelly"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ace Trainer Kelly: Water Pokémon are my speciality. Let's make a splash!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ace Trainer Kelly: I'm soaked through."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r45_gsfighter": {
+      "name": {
+        "en": [
+          "Kenji"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Black Belt Kenji: I train on this slope from dawn to dusk. Hyah!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Black Belt Kenji: Back to training until dusk..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r45_mount_2_3": {
+      "name": {
+        "en": [
+          "Timothy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Timothy: Diglett dig, Dugtrio dig faster! Ready?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Timothy: They dug themselves into a hole."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r45_mount_2_4": {
+      "name": {
+        "en": [
+          "Michael"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Michael: Rocks, rocks and more rocks. That's my team!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Michael: Crushed like gravel."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r45_gsman1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The ledges on this road only go one way. Once you hop down, you're going south!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R45_000+1": {
+      "en": [
+        "Route 45\nBlackthorn City is to the north."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R45_004+1": {
+      "en": [
+        "Dark Cave\nThe back way in."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  // The Mahogany Gym's second room (plan 20 · J10): two trainers by their own records
+  "area": "mahogany_gym_room_2",
+  "bgmTrack": "johto/gym",
+  "people": {
+    "everywhere_skierw": {
+      "name": "Diana",
+      "trainer": {
+        "dialogueBefore": "Skier Diana: I could slide across this ice with my eyes shut. Can you keep up?",
+        "dialogueAfter": "Skier Diana: I took a tumble on that one."
+      }
+    },
+    "everywhere_boarder": {
+      "name": "Patton",
+      "trainer": {
+        "dialogueBefore": "Boarder Patton: My Swinub love the cold. How about yours?",
+        "dialogueAfter": "Boarder Patton: Wiped out!"
+      }
+    }
+  }
+}

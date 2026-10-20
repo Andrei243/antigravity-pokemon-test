@@ -1,0 +1,186 @@
+{
+  "people": {
+    "r43_campboy_2": {
+      "name": {
+        "en": [
+          "Spencer"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Camper Spencer: I've been camping out here for days. I'm ready for anything!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Camper Spencer: Maybe I'm ready for a hot bath instead."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r43_picnicgirl_2": {
+      "name": {
+        "en": [
+          "Tiffany"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Picnicker Tiffany: My Clefairy and I picnic up here every weekend. Battle with us!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Picnicker Tiffany: We'd better pack up and go home."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r43_mania": {
+      "name": {
+        "en": [
+          "Brent"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Brent: I've raised my Nidoran pair since they were tiny!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Brent: They were tiny against you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r43_mania_2": {
+      "name": {
+        "en": [
+          "Beckett"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Beckett: My Slowbro is the slowest thinker and the hardest hitter!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Beckett: It still hasn't noticed it lost."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r43_mania_3": {
+      "name": {
+        "en": [
+          "Ron"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Poké Maniac Ron: Nidoking! Show this kid your horn!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Poké Maniac Ron: Its horn wasn't enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "r43_fishing_2": {
+      "name": {
+        "en": [
+          "Marvin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Marvin: The lake up north is full of Gyarados. I raise my own from Magikarp!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Marvin: I'll go back to fishing for a while."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "R43_001+1": {
+      "en": [
+        "Route 43\nThe Lake of Rage is to the north."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R43_002+1": {
+      "en": [
+        "Route 43\nThe gate house ahead leads north to the lake."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "R43_003+1": {
+      "en": [
+        "Route 43\nThe Lake of Rage is just ahead."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

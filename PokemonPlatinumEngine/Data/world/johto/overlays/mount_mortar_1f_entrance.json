@@ -1,0 +1,7 @@
+{
+  // Mt. Mortar's first floor (plan 20 · J10): its four mouths onto Route 42, the ways into the mountain's back halls and
+  // its stairs up and down. Its waterfall is climbed with Waterfall; it plays Union Cave's song, as HeartGold's header shares it
+  "area": "mount_mortar_1f_entrance",
+  "bgmTrack": "johto/union_cave",
+  "people": {}
+}

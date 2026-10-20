@@ -1,0 +1,66 @@
+{
+  // The Lake of Rage (plan 20 · J10): HeartGold's map, our words. The great lake north of Route 43, under its rain. Its
+  // four trainers stand where the original has them after its scene (flags nothing sets yet); the red Gyarados, Lance,
+  // Pryce and the Wednesday sibling wait for plan 20 · J11 and plan 20 · J13 and are left out
+  "area": "lake_of_rage",
+  "bgmTrack": "johto/route42",
+  "trees": "Round",
+  "architecture": "Upland",
+  "people": {
+    "t29_gsoldman1": {
+      "name": "Old Man",
+      "still": true,
+      "dialog": [
+        "This lake was made by the rage of Gyarados, so the story goes. They thrashed until the ground gave way."
+      ]
+    },
+    "t29_gswoman1": {
+      "name": "Woman",
+      "dialog": [
+        "The fishing is good here, but the Magikarp all seem cross. I've never seen them like this."
+      ]
+    },
+    "t29_gsman1": {
+      "name": "Man",
+      "dialog": [
+        "I come up here to think. It's quiet, apart from the splashing."
+      ]
+    },
+    "t29_fishing_2": {
+      "name": "Andre",
+      "trainer": {
+        "dialogueBefore": "Fisherman Andre: This is the lake where the Gyarados grow biggest! Want to see mine?",
+        "dialogueAfter": "Fisherman Andre: It's big, but you're stronger."
+      },
+      "hiddenBy": ""
+    },
+    "t29_fishing_2_2": {
+      "name": "Raymond",
+      "trainer": {
+        "dialogueBefore": "Fisherman Raymond: Four Magikarp! That's my whole team. Don't laugh!",
+        "dialogueAfter": "Fisherman Raymond: All right, you can laugh now."
+      },
+      "hiddenBy": ""
+    },
+    "t29_gsman3": {
+      "name": "Alton",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Alton: I've raised the three Pokémon Kanto's young trainers start with. Let's see you beat all three!",
+        "dialogueAfter": "Ace Trainer Alton: Beaten by a Johto trainer. Well done."
+      },
+      "hiddenBy": ""
+    },
+    "t29_gswoman3": {
+      "name": "Lois",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Lois: A walk round the lake and then a battle. That's my idea of a good day!",
+        "dialogueAfter": "Ace Trainer Lois: A good day, even so."
+      },
+      "hiddenBy": ""
+    }
+  },
+  "signs": {
+    "T29_007+1": "Lake of Rage\nAlso known as Gyarados Lake.",
+    "T29_006+1": "The Fishing Guru's house"
+  }
+}

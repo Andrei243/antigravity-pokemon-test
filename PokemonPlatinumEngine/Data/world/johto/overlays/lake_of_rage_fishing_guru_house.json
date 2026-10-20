@@ -1,0 +1,15 @@
+{
+  // The Fishing Guru's house by the Lake of Rage (plan 20 · J10). He only talks: his record Magikarp waits for a later session
+  "area": "lake_of_rage_fishing_guru_house",
+  "bgmTrack": "johto/route42",
+  "people": {
+    "t29r0201_fishing_2": {
+      "name": "Fishing Guru",
+      "still": true,
+      "dialog": [
+        "I've fished this lake for forty years. The Magikarp here grow bigger than anywhere else.",
+        "One day I'll catch the biggest Magikarp in the world. You'll see!"
+      ]
+    }
+  }
+}

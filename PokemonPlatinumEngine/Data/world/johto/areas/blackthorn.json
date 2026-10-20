@@ -1,0 +1,80 @@
+{
+  "key": "blackthorn",
+  "index": 89,
+  "name": "Blackthorn City",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_C_FUSUBE",
+  "nightMusic": "GS_C_FUSUBE",
+  "encounters": "T30",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "water": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 },
+    { "species": "Magikarp", "level": 2, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 2, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 2, "maxLevel": 10 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 },
+    { "species": "Poliwag", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 },
+    { "species": "Poliwag", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Poliwag", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "warps": [
+    { "x": 697, "z": 144, "to": "ice_path_1f", "toWarp": 1 },
+    { "x": 668, "z": 151, "to": "blackthorn_gym", "toWarp": 0 },
+    { "x": 672, "z": 132, "to": "dragons_den_entrance", "toWarp": 0 },
+    { "x": 660, "z": 165, "to": "blackthorn_west_house", "toWarp": 0 },
+    { "x": 684, "z": 168, "to": "blackthorn_east_house", "toWarp": 0 },
+    { "x": 667, "z": 176, "to": "blackthorn_pokemart", "toWarp": 0 },
+    { "x": 674, "z": 176, "to": "blackthorn_pokecenter_1f", "toWarp": 0 },
+    { "x": 658, "z": 176, "to": "blackthorn_move_tutor_house", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "t30_gsman1", "looks": "gsman1", "movement": "15", "x": 668, "z": 152, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT", "script": "T30_000+1" },
+    { "id": "t30_gsoldman1", "looks": "gsoldman1", "movement": "15", "x": 672, "z": 133, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT", "script": "T30_002+1" },
+    { "id": "t30_gsfighter", "looks": "gsfighter", "movement": "5", "x": 675, "z": 181, "facing": 3, "rangeX": 2, "rangeZ": 0, "script": "T30_004+1" },
+    { "id": "t30_gswoman3", "looks": "gswoman3", "movement": "4", "x": 664, "z": 176, "facing": 1, "rangeX": 0, "rangeZ": 1, "script": "T30_013+1" },
+    { "id": "t30_gsboy1", "looks": "gsboy1", "movement": "3", "x": 661, "z": 155, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "T30_014+1" },
+    { "id": "t30_gswoman3_2", "looks": "gswoman3", "movement": "14", "x": 696, "z": 157, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "T30_015+1" },
+    { "id": "t30_gsman1_2", "looks": "gsman1", "movement": "15", "x": 669, "z": 152, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BLACKTHORN_GYM_GUARD_ASIDE", "script": "T30_001+1" },
+    { "id": "t30_gsoldman1_2", "looks": "gsoldman1", "movement": "15", "x": 673, "z": 133, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE", "script": "T30_003+1" },
+    { "id": "t30_gsboy2", "looks": "gsboy2", "movement": "15", "x": 674, "z": 163, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_204", "script": "T30_006+1" },
+    { "id": "t30_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 684, "z": 175, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "T30_016+1" }
+  ],
+  "signs": [
+    { "x": 692, "z": 170, "type": 1, "script": "T30_008+1" },
+    { "x": 666, "z": 153, "type": 1, "script": "T30_009+1" },
+    { "x": 661, "z": 176, "type": 1, "script": "T30_010+1" },
+    { "x": 671, "z": 134, "type": 1, "script": "T30_011+1" },
+    { "x": 653, "z": 171, "type": 1, "script": "T30_012+1" }
+  ],
+  "triggers": []
+}

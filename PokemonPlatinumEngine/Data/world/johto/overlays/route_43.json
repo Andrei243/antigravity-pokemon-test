@@ -1,0 +1,56 @@
+{
+  // Route 43 (plan 20 · J10): the road north from Mahogany Town to the Lake of Rage, its six trainers by their own
+  // records. Its Apricorn tree is plan 20 · J6's
+  "area": "route_43",
+  "bgmTrack": "johto/route42",
+  "trees": "Round",
+  "people": {
+    "r43_campboy_2": {
+      "name": "Spencer",
+      "trainer": {
+        "dialogueBefore": "Camper Spencer: I've been camping out here for days. I'm ready for anything!",
+        "dialogueAfter": "Camper Spencer: Maybe I'm ready for a hot bath instead."
+      }
+    },
+    "r43_picnicgirl_2": {
+      "name": "Tiffany",
+      "trainer": {
+        "dialogueBefore": "Picnicker Tiffany: My Clefairy and I picnic up here every weekend. Battle with us!",
+        "dialogueAfter": "Picnicker Tiffany: We'd better pack up and go home."
+      }
+    },
+    "r43_mania": {
+      "name": "Brent",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Brent: I've raised my Nidoran pair since they were tiny!",
+        "dialogueAfter": "Poké Maniac Brent: They were tiny against you."
+      }
+    },
+    "r43_mania_2": {
+      "name": "Beckett",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Beckett: My Slowbro is the slowest thinker and the hardest hitter!",
+        "dialogueAfter": "Poké Maniac Beckett: It still hasn't noticed it lost."
+      }
+    },
+    "r43_mania_3": {
+      "name": "Ron",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Ron: Nidoking! Show this kid your horn!",
+        "dialogueAfter": "Poké Maniac Ron: Its horn wasn't enough."
+      }
+    },
+    "r43_fishing_2": {
+      "name": "Marvin",
+      "trainer": {
+        "dialogueBefore": "Fisherman Marvin: The lake up north is full of Gyarados. I raise my own from Magikarp!",
+        "dialogueAfter": "Fisherman Marvin: I'll go back to fishing for a while."
+      }
+    }
+  },
+  "signs": {
+    "R43_001+1": "Route 43\nThe Lake of Rage is to the north.",
+    "R43_002+1": "Route 43\nThe gate house ahead leads north to the lake.",
+    "R43_003+1": "Route 43\nThe Lake of Rage is just ahead."
+  }
+}

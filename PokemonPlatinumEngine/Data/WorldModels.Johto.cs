@@ -274,6 +274,39 @@ public static partial class WorldModels
         Thing("msg_tn03", PropType.Outcrop, "a long block of rock the gate's plaza is laid round"),
         Thing("msg_tn04", PropType.Outcrop, "a long block of rock the gate's plaza is laid round"),
         Furniture("msg_pc", PropType.Computer, "the Area Customizer, Baoba's machine in the gate"),
+
+        // ---------------------------------------------------------------- plan 20 · J10, part a: the north
+        // Mahogany Town (ch_: the original's Chouji), and the Lake of Rage's two houses, built as the town builds
+        House("ch_h01", Architecture.Upland, "a house of Mahogany Town or by the Lake of Rage (the souvenir shop is one)"),
+        Built("ch_gym", BuildingKind.Gym, "the Mahogany Gym"),
+        Thing("ch_mihari", PropType.Column, "a wooden lookout post at an end of Mahogany's street"),
+        Ground("antena_tree", "the tree beside the souvenir shop that hides a radio mast: the town's own trees stand for it"),
+        Door("ch_door1"),
+        // The Mahogany Gym's three rooms, on the field's models: the room draws their ice and their doors
+        Ground("ch_r_cool", "the Mahogany Gym's floor of ice and its walls: the room draws them"),
+        Ground("ch_r_door", "a door between the Mahogany Gym's rooms: the warp's tile is the way"),
+        // The shade of the Lake of Rage's trees on the grass: the trees cast their own
+        Ground("map15_01kokage", "the shade of the trees round the Lake of Rage: the trees cast their own"),
+        Ground("map15_02kokage", "the shade of the trees round the Lake of Rage: the trees cast their own"),
+        Ground("map16_01kokage", "the shade of the trees round the Lake of Rage: the trees cast their own"),
+        Ground("map16_02kokage", "the shade of the trees round the Lake of Rage: the trees cast their own"),
+        Ground("map17_01kokage", "the shade of the trees round the Lake of Rage: the trees cast their own"),
+        // Blackthorn City (fu_: Fusube) under the mountain, and the Dragon's Den behind it
+        House("fu_h01", Architecture.Dragonstone, "a house of Blackthorn City"),
+        Built("fu_gym", BuildingKind.Gym, "the Blackthorn Gym"),
+        Thing("fu_mon", PropType.Column, "a stone gatepost of the gate across Blackthorn's street"),
+        Thing("fu_rock", PropType.Outcrop, "a crag of the mountain standing in Blackthorn City"),
+        Door("fu_door1"),
+        Ground("g08_00pt", "the Blackthorn Gym's floor over its lava: the room draws it"),
+        Ground("g08_01pt", "the Blackthorn Gym's floor over its lava: the room draws it"),
+        Ground("g08_02pt", "the Blackthorn Gym's floor over its lava: the room draws it"),
+        Built("d17_tmpl", BuildingKind.Shrine, "the Dragon Shrine on its island in the Dragon's Den", Architecture.Dragonstone),
+        Door("d17_tpdr"),
+        Furniture("ms01_p01", PropType.Column, "a pillar of the Dragon Shrine"),
+        Furniture("table02_1", PropType.Table, "a table"),
+        // The falls of the north: their tiles draw them
+        Ground("fall_suri", "the waterfall inside Mt. Mortar: its tiles draw it"),
+        Ground("fall03_01", "a little waterfall on Route 45's mountainside: its tiles draw it"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

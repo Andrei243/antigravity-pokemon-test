@@ -1,0 +1,36 @@
+{
+  "key": "mahogany_souvenir_shop",
+  "index": 116,
+  "name": "Mahogany Town",
+  "matrix": 138,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_T_CHOUJI",
+  "nightMusic": "GS_T_CHOUJI",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 9, "to": "mahogany", "toWarp": 5 },
+    { "x": 6, "z": 3, "to": "team_rocket_headquarters_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d35r0101_babyboy1_10", "looks": "babyboy1_10", "movement": "0", "x": 8, "z": 3, "facing": 0, "rangeX": 2, "rangeZ": 0, "y": 65536, "script": "0" },
+    { "id": "d35r0101_stop", "looks": "stop", "movement": "0", "x": 7, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 65536, "script": "0" },
+    { "id": "d35r0101_stop_2", "looks": "stop", "movement": "0", "x": 8, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 65536, "script": "D35R0101_000+1" },
+    { "id": "d35r0101_stop_3", "looks": "stop", "movement": "0", "x": 7, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 65536, "script": "0" },
+    { "id": "d35r0101_gsfighter", "looks": "gsfighter", "movement": "0", "x": 3, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN", "script": "D35R0101_003+1" },
+    { "id": "d35r0101_sunglasses", "looks": "sunglasses", "movement": "0", "x": 6, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN", "script": "D35R0101_002+1" },
+    { "id": "d35r0101_gsoldwoman1", "looks": "gsoldwoman1", "movement": "0", "x": 2, "z": 4, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN", "script": "D35R0101_004+1" },
+    { "id": "d35r0101_wataru", "looks": "wataru", "movement": "0", "x": 5, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAHOGANY_SHOP_LANCE", "script": "D35R0101_005+1" },
+    { "id": "d35r0101_tsure_poke_static_dragonite", "looks": "follower_mon_static_dragonite", "movement": "0", "x": 6, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MAHOGANY_SHOP_LANCE", "script": "D35R0101_007+1" }
+  ],
+  "signs": [
+    { "x": 1, "z": 3, "type": 0, "script": "D35R0101_009+1" }
+  ],
+  "triggers": []
+}

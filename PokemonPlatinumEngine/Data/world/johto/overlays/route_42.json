@@ -1,0 +1,37 @@
+{
+  // Route 42 (plan 20 · J10): HeartGold's map, our words. The road east from Ecruteak City round Mt. Mortar to
+  // Mahogany Town, its three trainers by their own records. Its Apricorn trees are plan 20 · J6's; the hiker at
+  // the cave's west mouth, Suicune and Eusine wait for plan 20 · J11 and are left out
+  "area": "route_42",
+  "bgmTrack": "johto/route42",
+  "trees": "Round",
+  "people": {
+    "r42_fishing_2": {
+      "name": "Tully",
+      "trainer": {
+        "dialogueBefore": "Fisherman Tully: The pond at the foot of the mountain is my spot. Let's see what you've reeled in!",
+        "dialogueAfter": "Fisherman Tully: You've hooked a better catch than me."
+      }
+    },
+    "r42_mania": {
+      "name": "Shane",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Shane: My Nidoran are all grown up now! Want to see?",
+        "dialogueAfter": "Poké Maniac Shane: They've grown, but not enough..."
+      }
+    },
+    "r42_mount_2": {
+      "name": "Benjamin",
+      "trainer": {
+        "dialogueBefore": "Hiker Benjamin: I came down off Mt. Mortar for some fresh air. A battle will do nicely!",
+        "dialogueAfter": "Hiker Benjamin: Ha! Back up the mountain I go."
+      }
+    }
+  },
+  "signs": {
+    "R42_002+1": "Route 42\nEcruteak City is to the west.",
+    "R42_003+1": "Mt. Mortar\nThe cave runs right through the mountain.",
+    "R42_004+1": "Mt. Mortar\nThe cave runs right through the mountain.",
+    "R42_005+1": "Route 42\nMahogany Town is to the east."
+  }
+}

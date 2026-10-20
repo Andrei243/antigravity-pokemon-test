@@ -1,0 +1,23 @@
+{
+  "people": {
+    "r43r0101_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Route 43 leads north to the Lake of Rage. It's a lovely walk, if you don't mind the trainers."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

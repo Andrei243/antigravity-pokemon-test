@@ -1,0 +1,88 @@
+{
+  "key": "dark_cave_route_45_side",
+  "index": 123,
+  "name": "Dark Cave",
+  "matrix": 98,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "11",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_KOORINONUKE",
+  "nightMusic": "GS_D_KOORINONUKE",
+  "encounters": "D42R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 23 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Geodude", "level": 23 },
+    { "species": "Zubat", "level": 23 },
+    { "species": "Graveler", "level": 25 },
+    { "species": "Graveler", "level": 25 },
+    { "species": "Wobbuffet", "level": 20 },
+    { "species": "Wobbuffet", "level": 20 },
+    { "species": "Wobbuffet", "level": 25 },
+    { "species": "Golbat", "level": 23 },
+    { "species": "Wobbuffet", "level": 25 },
+    { "species": "Golbat", "level": 23 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 20 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15 },
+    { "species": "Magikarp", "level": 2, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 2, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 2, "maxLevel": 10 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 6, "z": 57, "to": "dark_cave_route_31_side", "toWarp": 1 },
+    { "x": 60, "z": 4, "to": "route_45", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d42r0101_sunglasses", "looks": "sunglasses", "movement": "2", "x": 16, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D42R0101_000+1" },
+    { "id": "d42r0101_monstarball", "looks": "monstarball", "movement": "0", "x": 14, "z": 49, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D42R0101_TM54", "item": "TM54", "script": "std_itemball_d42r0101_tm54" },
+    { "id": "d42r0101_monstarball_2", "looks": "monstarball", "movement": "0", "x": 42, "z": 44, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D42R0101_REVIVE", "item": "Revive", "script": "std_itemball_d42r0101_revive" }
+  ],
+  "signs": [
+    { "x": 14, "z": 9, "type": 2, "script": "std_hiddenitem_d42r0101_max_revive", "item": "Max Revive", "flag": "FLAG_HIDDEN_ITEM_D42R0101_MAX_REVIVE" },
+    { "x": 9, "z": 52, "type": 2, "script": "std_hiddenitem_d42r0101_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_D42R0101_HYPER_POTION" },
+    { "x": 48, "z": 16, "type": 2, "script": "std_hiddenitem_d42r0101_elixir", "item": "Elixir", "flag": "FLAG_HIDDEN_ITEM_D42R0101_ELIXIR" }
+  ],
+  "triggers": []
+}

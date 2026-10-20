@@ -259,6 +259,8 @@ A building is a 3D box dressed in pixel art at 32 texels per tile. Every wall fa
 | Ecruteak (Heritage) | dark planks | hip, deep red-brown `122,58,48` | stone lanterns in the streets, fenced in wood: the old city of the two towers and the dancers (plan 20 · J5, part b) |
 | Olivine (Seaport) | white plaster | gable, red `184,66,56` | shutters: the port of the lighthouse and the ship, yachts in its harbour (plan 20 · J8) |
 | Cianwood (Cliffside) | pale stone | gable, sea green `64,132,112` | a chimney: the island town of the pharmacy and the fighters, fish drying on its quay (plan 20 · J8) |
+| Mahogany (Upland) | dark logs | hip, moss green `94,116,70` | a chimney: the small mountain town of the souvenir shop and the ice Gym, a lookout post at each end of its street; the Lake of Rage's two houses are Mahogany's too (plan 20 · J10) |
+| Blackthorn (Dragonstone) | grey cut stone | gable, dragon blue `52,86,132` | shutters, a chimney: the walled city of the dragon tamers under the mountain, a stone gate across its street (plan 20 · J10) |
 | Littleroot (Sapling) | boards | gable, leaf green `112,170,76` | a chimney, flower boxes: the little town where the grass starts, fenced in wood (plan 21 · H1) |
 | Oldale (Meadow) | white clapboard | hip, sky blue `92,150,206` | shutters: the crossroads town between the routes, fenced in wood (plan 21 · H1) |
 | Petalburg (Parkside) | plaster over a stone base | hip, ochre `196,150,72` | a chimney: the quiet city of the Gym by the pond (plan 21 · H1) |

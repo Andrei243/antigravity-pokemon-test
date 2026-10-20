@@ -1,0 +1,6 @@
+{
+  // The Ice Path's lowest floor (plan 20 · J10): a cracked rock that Rock Smash breaks
+  "area": "ice_path_b3f",
+  "bgmTrack": "johto/ice_path",
+  "people": {}
+}

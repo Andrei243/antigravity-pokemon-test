@@ -1,0 +1,25 @@
+{
+  "people": {
+    "d42r0101_sunglasses": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Nobody ever finds this side of the cave. I come here when I want to be left alone.",
+          "Funny Pokémon live down here. Little ones with wings that dig through the ground."
+        ],
+        "text": [
+          "",
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

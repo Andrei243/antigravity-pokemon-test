@@ -50,6 +50,8 @@
     { "id": 5, "area": "goldenrod", "x": 352, "y": 369, "room": "Goldenrod_PokemonCenter_1F" },
     { "id": 6, "area": "ecruteak", "x": 397, "y": 184, "room": "Ecruteak_PokemonCenter_1F" },
     { "id": 7, "area": "olivine", "x": 272, "y": 258, "room": "Olivine_PokemonCenter_1F" },
-    { "id": 8, "area": "cianwood", "x": 187, "y": 370, "room": "Cianwood_PokemonCenter_1F" }
+    { "id": 8, "area": "cianwood", "x": 187, "y": 370, "room": "Cianwood_PokemonCenter_1F" },
+    { "id": 9, "area": "mahogany", "x": 534, "y": 184, "room": "Mahogany_PokemonCenter_1F" },
+    { "id": 10, "area": "blackthorn", "x": 674, "y": 177, "room": "Blackthorn_PokemonCenter_1F" }
   ]
 }

@@ -1,0 +1,118 @@
+{
+  "people": {
+    "t30_gsfighter": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Blackthorn's people have trained dragons since long before anyone wrote it down."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30_gswoman3": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Dragon's Den is behind the Gym. Only those the elder thinks worthy may train in there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30_gsboy1": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Dragons are the strongest Pokémon there are! When I grow up, I'll have a Dragonite!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t30_gswoman3_2": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Did you come through the Ice Path? You must be frozen! The Pokémon Center's warm, at least."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T30_008+1": {
+      "en": [
+        "Blackthorn City\nA quiet mountain retreat."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T30_009+1": {
+      "en": [
+        "Blackthorn City Pokémon Gym\nLeader: Clair"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T30_010+1": {
+      "en": [
+        "A house of moves\nForget a move, or remember one."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T30_011+1": {
+      "en": [
+        "Dragon's Den\nHoly ground of Blackthorn's dragon tamers."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "T30_012+1": {
+      "en": [
+        "Blackthorn City\nRoute 45 is to the south."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

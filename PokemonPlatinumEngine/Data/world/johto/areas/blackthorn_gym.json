@@ -1,0 +1,39 @@
+{
+  "key": "blackthorn_gym",
+  "index": 141,
+  "name": "Blackthorn City",
+  "matrix": 94,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_GYM",
+  "nightMusic": "GS_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 87, "to": "blackthorn", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "t30gym0101_gsleader8", "looks": "gsleader8", "movement": "15", "x": 12, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_BLACKTHORN_GYM_CLAIR", "script": "T30GYM0101_000+1" },
+    { "id": "t30gym0101_gsman3", "looks": "gsman3", "movement": "7", "x": 11, "z": 66, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_ACE_TRAINER_M_PAULO" },
+    { "id": "t30gym0101_gswoman3", "looks": "gswoman3", "movement": "16", "x": 8, "z": 61, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_ACE_TRAINER_F_LOLA" },
+    { "id": "t30gym0101_gsman3_2", "looks": "gsman3", "movement": "4", "x": 20, "z": 54, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_ACE_TRAINER_M_CODY" },
+    { "id": "t30gym0101_gswoman3_2", "looks": "gswoman3", "movement": "8", "x": 21, "z": 45, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "script": "TRAINER_ACE_TRAINER_F_FRAN" },
+    { "id": "t30gym0101_gsman3_3", "looks": "gsman3", "movement": "17", "x": 13, "z": 40, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_ACE_TRAINER_M_MIKE" },
+    { "id": "t30gym0101_sunglasses", "looks": "sunglasses", "movement": "15", "x": 15, "z": 82, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "T30GYM0101_003+1" }
+  ],
+  "signs": [
+    { "x": 11, "z": 86, "type": 0, "script": "T30GYM0101_005+1" },
+    { "x": 15, "z": 86, "type": 0, "script": "T30GYM0101_005+1" }
+  ],
+  "triggers": [
+    { "x": 5, "z": 9, "width": 1, "depth": 1, "script": "T30GYM0101_002+1", "variable": "VAR_UNK_4111", "value": "0" },
+    { "x": 23, "z": 41, "width": 1, "depth": 1, "script": "T30GYM0101_002+1", "variable": "VAR_UNK_4111", "value": "0" },
+    { "x": 3, "z": 62, "width": 1, "depth": 1, "script": "T30GYM0101_002+1", "variable": "VAR_UNK_4111", "value": "0" },
+    { "x": 12, "z": 82, "width": 3, "depth": 1, "script": "T30GYM0101_004+1", "variable": "VAR_UNK_4120", "value": "0" }
+  ]
+}

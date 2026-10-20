@@ -1,0 +1,95 @@
+{
+  "key": "mount_mortar_1f_entrance",
+  "index": 119,
+  "name": "Mt. Mortar",
+  "matrix": 62,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D38R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 13 },
+    { "species": "Zubat", "level": 15 },
+    { "species": "Zubat", "level": 13 },
+    { "species": "Zubat", "level": 15 },
+    { "species": "Machop", "level": 14 },
+    { "species": "Machop", "level": 14 },
+    { "species": "Rattata", "level": 14 },
+    { "species": "Rattata", "level": 14 },
+    { "species": "Geodude", "level": 14 },
+    { "species": "Rattata", "level": 16 },
+    { "species": "Geodude", "level": 14 },
+    { "species": "Marill", "level": 15 }
+  ],
+  "landRate": 10,
+  "water": [
+    { "species": "Goldeen", "level": 15, "maxLevel": 25 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 20 },
+    { "species": "Seaking", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 15, "maxLevel": 25 },
+    { "species": "Seaking", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 20, "z": 46, "to": "route_42", "toWarp": 2 },
+    { "x": 45, "z": 50, "to": "route_42", "toWarp": 3 },
+    { "x": 59, "z": 53, "to": "route_42", "toWarp": 4 },
+    { "x": 70, "z": 46, "to": "route_42", "toWarp": 5 },
+    { "x": 34, "z": 31, "to": "mount_mortar_1f_back", "toWarp": 0 },
+    { "x": 56, "z": 31, "to": "mount_mortar_1f_back", "toWarp": 1 },
+    { "x": 81, "z": 31, "to": "mount_mortar_1f_back", "toWarp": 2 },
+    { "x": 26, "z": 14, "to": "mount_mortar_1f_back", "toWarp": 3 },
+    { "x": 69, "z": 15, "to": "mount_mortar_1f_back", "toWarp": 5 },
+    { "x": 45, "z": 2, "to": "mount_mortar_2f", "toWarp": 0 },
+    { "x": 45, "z": 44, "to": "mount_mortar_b1f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "everywhere_monstarball", "looks": "monstarball", "movement": "0", "x": 34, "z": 20, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0101_ETHER", "item": "Ether", "script": "std_itemball_d38r0101_ether" },
+    { "id": "everywhere_monstarball_2", "looks": "monstarball", "movement": "0", "x": 67, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D38R0101_REVIVE", "item": "Revive", "script": "std_itemball_d38r0101_revive" }
+  ],
+  "signs": [
+    { "x": 27, "z": 42, "type": 2, "script": "std_hiddenitem_d38r0101_hyper_potion", "item": "Hyper Potion", "flag": "FLAG_HIDDEN_ITEM_D38R0101_HYPER_POTION" },
+    { "x": 58, "z": 46, "type": 2, "script": "std_hiddenitem_d38r0101_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D38R0101_REVIVE" }
+  ],
+  "triggers": []
+}

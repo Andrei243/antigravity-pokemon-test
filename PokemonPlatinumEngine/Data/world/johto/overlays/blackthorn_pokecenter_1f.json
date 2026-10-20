@@ -1,0 +1,52 @@
+{
+  // Blackthorn City's Pokémon Center (plan 20 · J10), the Centers' floor with the city's people. The counters for the
+  // link say it is closed, as in every Center (decision 06 · 7)
+  "area": "blackthorn_pokecenter_1f",
+  "bgmTrack": "johto/blackthorn",
+  "read": {
+    "0": "PC"
+  },
+  "people": {
+    "t30pc0101_pcwoman1": {
+      "name": "Nurse",
+      "script": "Nurse"
+    },
+    "t30pc0101_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
+      ]
+    },
+    "t30pc0101_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t30pc0101_pcwoman2_3": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t30pc0101_gsgentleman": {
+      "name": "Gentleman",
+      "still": true,
+      "dialog": [
+        "Past the Pokémon League's gate lies Kanto. They say the trainers there are tough as well."
+      ]
+    },
+    "t30pc0101_gsbabygirl1": {
+      "name": "Girl",
+      "dialog": [
+        "My big brother says the Dragon's Den is spooky. I want to go in anyway!"
+      ]
+    },
+    "t30pc0101_gsman3": {
+      "name": "Man",
+      "dialog": [
+        "The Gym Leader here is proud as a dragon. Beat her, and you've beaten the strongest Leader in Johto."
+      ]
+    }
+  }
+}
