@@ -3271,6 +3271,38 @@ What K7 left of the League's end: the way on to Johto, the songs and the bands. 
   so his band is found by the class and the rival's name (the data's `{rival}` or whatever the player called him),
   and the plate fills the placeholder when it is drawn. A trainer no table names still wears the plain band.
 
+## The first Sevii Islands (2026-10-20, plan 19 · K9, part a)
+
+Kindle Road, Mt. Ember, Two Island and Three Island, and the errand that runs through them, as scripts of ours on
+FireRed's beats and flags (`OneIsland_PokemonCenter_1F`, `TwoIsland_JoyfulGameCorner`, `ThreeIsland`,
+`ThreeIsland_BerryForest`, `CinnabarIsland`, `MtEmber_Exterior`, `MtEmber_RubyPath_B5F`, `MtEmber_Summit`,
+`PalletTown_ProfessorOaksLab`), in our own words. No story version was raised: each place's own arrival hides whoever
+its part of the errand hasn't reached, so a save from before K9 finds the islands as a new game does.
+
+- **The Meteorite is Bill's.** FireRed's Celio gives it in the meeting; here Bill hands it over as the two set to
+  work (`one_island_pokemon_center_1f.GiveMeteorite`, `FLAG_GOT_METEORITE_FROM_BILL`, a flag of ours), and a game
+  that met Celio under K7, before there was a Meteorite, is given it the next time Bill is spoken to.
+- **The detour ends as FireRed's does.** Lostelle's father takes the Meteorite for a Moon Stone once she is home
+  (`VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F` 2), the first step towards Bill sends the two of them to Cinnabar by
+  the Seagallop (3), and Bill says goodbye on the dock (`VAR_MAP_SCENE_CINNABAR_ISLAND` 4), after which Lostelle is
+  in her own house on Three Island. The game corner's link games are not played: its machines say that nobody is
+  linking.
+- **The bikers.** Three of the gang and then Paxton are battled one after another, as FireRed's
+  `ThreeIsland_EventScript_BattleBikers`, as teams of FireRed's data (`kanto_biker_goon` to `_3`,
+  `kanto_cue_ball_paxton`); refusing their question sends the player back a step.
+- **The National Pokédex is Oak's, at his desk.** FireRed's Oak stops a Champion outside his house; here he gives it
+  when spoken to in the lab, the rival coming in for his. The rule is FireRed's (`Pokedex.CanUnlockNational` with
+  Kanto's `Caught60`): the Hall of Fame (`FLAG_SYS_GAME_CLEAR`), One Island reached (Celio met,
+  `VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F` 1 or more) and sixty species caught.
+- **Celio's Ruby waits for the detour and the National Pokédex**, as FireRed's `OneIsland_PokemonCenter_1F` asks: his
+  request (4) opens the Ruby Path's mouth (`FLAG_MT_EMBER_RUBY_PATH_OPEN`, a flag of ours on the warp's `openedBy`,
+  where FireRed has the mouth walkable and empty) and brings two Team Rocket grunts to it; their passwords are ours,
+  and the warehouse they open is part b's. Given the Ruby he asks a second favour; agreed to, he takes the Ruby and
+  the Tri-Pass for the Rainbow Pass (an item of ours, id 9036, as the Ruby, 9035). Refused, he waits.
+- **The Seagallop's sailors** at One, Two and Three Island and at Vermilion's pier take either pass, and sail to the
+  first three islands; Four to Seven are part b's. Two Island's Poké Maniac, FireRed's link trader, is not there.
+- **Moltres** waits on Mt. Ember's summit at level 50 until it has been fought, as Zapdos and Articuno.
+
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,

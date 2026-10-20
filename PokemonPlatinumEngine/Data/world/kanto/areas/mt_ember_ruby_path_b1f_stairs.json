@@ -1,0 +1,50 @@
+{
+  "key": "mt_ember_ruby_path_b1f_stairs",
+  "index": 149,
+  "name": "Mt Ember",
+  "matrix": 113,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "mt_ember_ruby_path_b1f_stairs",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Geodude", "level": 40 },
+    { "species": "Slugma", "level": 26 },
+    { "species": "Geodude", "level": 42 },
+    { "species": "Slugma", "level": 24 },
+    { "species": "Slugma", "level": 28 },
+    { "species": "Slugma", "level": 30 },
+    { "species": "Geodude", "level": 44 },
+    { "species": "Slugma", "level": 32 },
+    { "species": "Geodude", "level": 44 },
+    { "species": "Slugma", "level": 22 },
+    { "species": "Geodude", "level": 44 },
+    { "species": "Slugma", "level": 22 }
+  ],
+  "landRate": 7,
+  "rockSmash": [
+    { "species": "Geodude", "level": 25, "maxLevel": 35 },
+    { "species": "Graveler", "level": 30, "maxLevel": 45 },
+    { "species": "Graveler", "level": 35, "maxLevel": 50 },
+    { "species": "Geodude", "level": 30, "maxLevel": 40 },
+    { "species": "Geodude", "level": 30, "maxLevel": 40 }
+  ],
+  "rockSmashRate": 50,
+  "warps": [
+    { "x": 4, "z": 1, "to": "mt_ember_ruby_path_b3f", "toWarp": 1 },
+    { "x": 1, "z": 5, "to": "mt_ember_ruby_path_b2f_stairs", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rock_smash_rock", "looks": "rock_smash_rock", "movement": "look_around", "x": 4, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" }
+  ],
+  "signs": [],
+  "triggers": []
+}

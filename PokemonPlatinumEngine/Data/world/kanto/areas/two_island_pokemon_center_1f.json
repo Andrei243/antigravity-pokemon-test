@@ -1,0 +1,28 @@
+{
+  "key": "two_island_pokemon_center_1f",
+  "index": 390,
+  "name": "Two Island",
+  "matrix": 337,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "two_island", "toWarp": 2 },
+    { "x": 1, "z": 6, "to": "two_island_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "two_island_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "TwoIsland_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "gba_kid", "looks": "gba_kid", "movement": "look_south", "x": 11, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "TwoIsland_PokemonCenter_1F_EventScript_GBAKid" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "wander_west_and_east", "x": 4, "z": 4, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "TwoIsland_PokemonCenter_1F_EventScript_BugCatcher" }
+  ],
+  "signs": [],
+  "triggers": []
+}

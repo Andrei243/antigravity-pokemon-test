@@ -1,0 +1,8 @@
+{
+  // Cape Brink (plan 19 · K9, part a): FireRed's map, our words. The cape north of Two Island, reached by Surf, with
+  // one house at its tip
+  "area": "two_island_cape_brink",
+  "name": "Cape Brink",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round"
+}

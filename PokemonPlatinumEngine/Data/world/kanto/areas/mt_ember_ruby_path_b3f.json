@@ -1,0 +1,60 @@
+{
+  "key": "mt_ember_ruby_path_b3f",
+  "index": 148,
+  "name": "Mt Ember",
+  "matrix": 112,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "mt_ember_ruby_path_b3f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Slugma", "level": 26 },
+    { "species": "Slugma", "level": 28 },
+    { "species": "Slugma", "level": 30 },
+    { "species": "Slugma", "level": 32 },
+    { "species": "Slugma", "level": 24 },
+    { "species": "Slugma", "level": 22 },
+    { "species": "Slugma", "level": 20 },
+    { "species": "Slugma", "level": 34 },
+    { "species": "Slugma", "level": 36 },
+    { "species": "Slugma", "level": 18 },
+    { "species": "Slugma", "level": 36 },
+    { "species": "Slugma", "level": 18 }
+  ],
+  "landRate": 7,
+  "rockSmash": [
+    { "species": "Slugma", "level": 15, "maxLevel": 25 },
+    { "species": "Slugma", "level": 25, "maxLevel": 35 },
+    { "species": "Magcargo", "level": 40, "maxLevel": 45 },
+    { "species": "Magcargo", "level": 35, "maxLevel": 45 },
+    { "species": "Magcargo", "level": 25, "maxLevel": 35 }
+  ],
+  "rockSmashRate": 50,
+  "warps": [
+    { "x": 1, "z": 4, "to": "mt_ember_ruby_path_b2f", "toWarp": 1 },
+    { "x": 19, "z": 19, "to": "mt_ember_ruby_path_b1f_stairs", "toWarp": 0 },
+    { "x": 5, "z": 19, "to": "mt_ember_ruby_path_b4f", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 10, "z": 4, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 26, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_3", "looks": "pushable_boulder", "movement": "look_around", "x": 28, "z": 8, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "rock_smash_rock", "looks": "rock_smash_rock", "movement": "look_around", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_2", "looks": "rock_smash_rock", "movement": "look_around", "x": 4, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_3", "looks": "rock_smash_rock", "movement": "look_around", "x": 6, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_4", "looks": "rock_smash_rock", "movement": "look_around", "x": 7, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_5", "looks": "rock_smash_rock", "movement": "look_around", "x": 4, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_6", "looks": "rock_smash_rock", "movement": "look_around", "x": 5, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_RockSmash" },
+    { "id": "pushable_boulder_4", "looks": "pushable_boulder", "movement": "look_around", "x": 15, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" }
+  ],
+  "signs": [],
+  "triggers": []
+}

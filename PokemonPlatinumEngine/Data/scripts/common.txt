@@ -1299,6 +1299,19 @@ script SeagallopToOneIsland
   fade in 0.4
   return
 
+# Two and Three Island's harbours (plan 19 · K9, part a), each the same room as One Island's
+script SeagallopToTwoIsland
+  call SeagallopSails
+  warp "TwoIsland_Harbor" 8 5 up
+  fade in 0.4
+  return
+
+script SeagallopToThreeIsland
+  call SeagallopSails
+  warp "ThreeIsland_Harbor" 8 5 up
+  fade in 0.4
+  return
+
 script SeagallopSails
   fade out 0.6
   speaker none

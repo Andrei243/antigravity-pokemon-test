@@ -1,0 +1,28 @@
+{
+  // Kindle Road (plan 19 · K9, part a): FireRed's map, our words. The long shore north of One Island, sand and shallow
+  // sea up to the foot of Mt. Ember, with the Ember Spa's cave halfway; its trainers battle by their own records
+  // (Kanto's trainers.json), and Mik and Kia, a brother and sister of the Crush Kin, battle together as one
+  "area": "one_island_kindle_road",
+  "name": "Kindle Road",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "swimmer_f_water": { "name": "Maria", "trainer": { "dialogueBefore": "Swimmer Maria: The water by the volcano is lovely and warm. Swim with me, then battle!", "dialogueAfter": "Swimmer Maria: I'll float here and think it over." } },
+    "swimmer_f_land": { "name": "Abigail", "trainer": { "dialogueBefore": "Swimmer Abigail: I just came out of the sea and I'm still dripping. Don't mind me!", "dialogueAfter": "Swimmer Abigail: Now I'm dripping and beaten." } },
+    "swimmer_m_water": { "name": "Finn", "trainer": { "dialogueBefore": "Swimmer Finn: I swim laps along this shore every day. You're in my lane!", "dialogueAfter": "Swimmer Finn: Go on, take the lane." } },
+    "swimmer_m_land": { "name": "Garrett", "trainer": { "dialogueBefore": "Swimmer Garrett: The sand's hot enough to cook on, so let's make this quick!", "dialogueAfter": "Swimmer Garrett: Ouch, my feet. And my pride." } },
+    "fisher": { "name": "Tommy", "trainer": { "dialogueBefore": "Fisherman Tommy: The fish round here grow fat on the warm water. So do mine!", "dialogueAfter": "Fisherman Tommy: Fat, but slow, it seems." } },
+    "crush_girl": { "name": "Sharon", "trainer": { "dialogueBefore": "Crush Girl Sharon: I'm training on this road until I can punch through a boulder!", "dialogueAfter": "Crush Girl Sharon: The boulder's safe for now." } },
+    "crush_girl_2": { "name": "Tanya", "trainer": { "dialogueBefore": "Crush Girl Tanya: Every step up this road makes my legs stronger. Feel my kick!", "dialogueAfter": "Crush Girl Tanya: My legs are jelly." } },
+    "black_belt": { "name": "Shea", "trainer": { "dialogueBefore": "Black Belt Shea: A true fighter trains where the ground shakes. Face me!", "dialogueAfter": "Black Belt Shea: My stance needs work." } },
+    "black_belt_2": { "name": "Hugh", "trainer": { "dialogueBefore": "Black Belt Hugh: Hah! My fists and my Pokémon are both made of iron!", "dialogueAfter": "Black Belt Hugh: Rusty iron, it turns out." } },
+    "camper": { "name": "Bryce", "trainer": { "dialogueBefore": "Camper Bryce: I'm camping at the foot of the volcano. Brave, huh? Battle me!", "dialogueAfter": "Camper Bryce: Maybe I'll camp somewhere quieter." } },
+    "picnicker": { "name": "Claire", "trainer": { "dialogueBefore": "Picnicker Claire: A picnic by the sea, then a battle. Perfect!", "dialogueAfter": "Picnicker Claire: My sandwiches have sand in them now." } },
+    "black_belt_3": { "name": "Mik", "trainer": { "dialogueBefore": "Crush Kin Mik: My sister and I train side by side. Take on both of us!", "dialogueAfter": "Crush Kin Mik: Back to training, sis." } },
+    "crush_girl_3": { "name": "Kia", "trainer": { "dialogueBefore": "Crush Kin Kia: Two fists are better than one! Ready?", "dialogueAfter": "Crush Kin Kia: Our fists need sharpening." } }
+  },
+  "signs": {
+    "OneIsland_KindleRoad_EventScript_EmberSpaSign": "Ember Spa\nRest your Pokémon in the volcano's warm springs",
+    "OneIsland_KindleRoad_EventScript_RouteSign": "Kindle Road\nOne Island - Mt. Ember"
+  }
+}

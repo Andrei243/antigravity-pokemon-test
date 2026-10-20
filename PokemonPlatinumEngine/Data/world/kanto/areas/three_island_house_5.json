@@ -1,0 +1,25 @@
+{
+  "key": "three_island_house_5",
+  "index": 400,
+  "name": "Three Island",
+  "matrix": 347,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_123",
+  "nightMusic": "MUS_SEVII_123",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "three_island", "toWarp": 6 }
+  ],
+  "objects": [
+    { "id": "little_girl", "looks": "little_girl", "movement": "wander_around", "x": 2, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "ThreeIsland_House5_EventScript_LittleGirl" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,9 +1,10 @@
-# One Island's harbour (plan 19 · K7). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# One Island's harbour (plan 19 · K7, K9). docs/scripts.md describes the language; the lines are our own, on FireRed's
 # beats (data/maps/OneIsland_Harbor/scripts.inc).
 #
-# The sailor sails a holder of the Tri-Pass back to Vermilion City or to Cinnabar Island (common.SeagallopTo…); Two and
-# Three Island, which the pass is also for, are plan 19 · K9's. FireRed's ship at the pier's end lies past the room's
-# floor here, and stays out of sight (FLAG_HIDE_ONE_ISLAND_HARBOR_SEAGALLOP, a flag of ours).
+# The sailor sails a holder of the Tri-Pass or the Rainbow Pass back to Vermilion City or Cinnabar Island, or on to Two
+# and Three Island (common.SeagallopTo…; plan 19 · K9, part a). The Rainbow Pass's other four islands are part b's.
+# FireRed's ship at the pier's end lies past the room's floor here, and stays out of sight
+# (FLAG_HIDE_ONE_ISLAND_HARBOR_SEAGALLOP, a flag of ours).
 
 
 script OnEnter
@@ -14,11 +15,15 @@ script OnEnter
 script Sailor
   face sailor player
   speaker "Sailor"
+  if item "Rainbow Pass" goto Pass
   if not item "Tri-Pass" goto NoPass
-  say "Welcome aboard the Seagallop! Have your Tri-Pass ready."
-  choose "Where would you like to sail?" "VERMILION CITY" "CINNABAR ISLAND" "NOT NOW"
+label Pass
+  say "Welcome aboard the Seagallop! Have your pass ready."
+  choose "Where would you like to sail?" "VERMILION CITY" "CINNABAR ISLAND" "TWO ISLAND" "THREE ISLAND" "NOT NOW"
   if result == 0 goto Vermilion
   if result == 1 goto Cinnabar
+  if result == 2 goto Two
+  if result == 3 goto Three
   say "Come back any time."
   end
 label Vermilion
@@ -28,6 +33,14 @@ label Vermilion
 label Cinnabar
   say "All aboard for Cinnabar Island!"
   call SeagallopToCinnabar
+  end
+label Two
+  say "All aboard for Two Island!"
+  call SeagallopToTwoIsland
+  end
+label Three
+  say "All aboard for Three Island!"
+  call SeagallopToThreeIsland
   end
 label NoPass
   say "The Seagallop sails only for holders of a pass, I'm afraid. Celio in the Pokémon Center might be able to help."

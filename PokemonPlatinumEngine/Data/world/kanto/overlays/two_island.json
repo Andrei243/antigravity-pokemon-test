@@ -1,0 +1,24 @@
+{
+  // Two Island (plan 19 · K9, part a): FireRed's map, our words. A quiet fishing village, Lostelle's family's Joyful
+  // Game Corner at its east end and Cape Brink to the north. Its little shop's stall grows as the island's story goes
+  // on, and so do the people who come to it (two_island.txt)
+  "area": "two_island",
+  "name": "Two Island",
+  "bgmTrack": "kanto/sevii_123",
+  "trees": "Round",
+  "architecture": "Isle",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "still": true },
+    "woman_1": { "name": "Woman", "dialog": [ "The shop has more to sell since Lostelle came home. Her father ordered in all sorts for her." ] },
+    "beauty": { "name": "Beauty", "dialog": [ "I sailed over from Kanto just to shop here. The stall gets the most unusual things." ] },
+    "poke_maniac": { "name": "Pokémaniac", "dialog": [ "I heard the stall gets goods from far-off lands now. I simply had to see!" ] },
+    "sailor": { "name": "Sailor", "dialog": [ "The currents round the cape are fierce. Only a strong swimmer's Pokémon can cross them." ] },
+    "little_boy": { "name": "Little Boy", "dialog": [ "Lostelle is my friend! She runs off to pick berries all the time." ] },
+    "boy": { "name": "Boy", "dialog": [ "At the tip of Cape Brink lives an old woman who teaches the best moves to Pokémon. But only to ones that trust you completely!" ] }
+  },
+  "signs": {
+    "TwoIsland_EventScript_IslandSign": "Two Island\nThe village where the waves bring good fortune",
+    "TwoIsland_EventScript_JoyfulGameCornerSign": "Joyful Game Corner\nGames and good times for all the family",
+    "TwoIsland_EventScript_FastCurrentSign": "Caution! Fast currents around the cape. Swim with care."
+  }
+}

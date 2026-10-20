@@ -1,0 +1,29 @@
+# Mt. Ember's summit (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/MtEmber_Summit/scripts.inc).
+#
+# Moltres waits in the crater until it has been fought (FLAG_FOUGHT_MOLTRES), as Zapdos in the Power Plant: beaten or
+# caught it is gone for good, run from it flies off and is back on the next visit.
+
+
+script OnEnter
+  if not flag FLAG_FOUGHT_MOLTRES clearflag FLAG_HIDE_MOLTRES
+  end
+
+script Moltres
+  scene "Moltres"
+  speaker none
+  cry "Moltres"
+  text "Gyaoo!\nFlames swirled round the great bird as it spread its wings!"
+  wildbattle "Moltres" 50
+  if result == 2 goto Fled
+  setflag FLAG_FOUGHT_MOLTRES
+  setflag FLAG_HIDE_MOLTRES
+  hide self
+  endscene
+  end
+label Fled
+  setflag FLAG_HIDE_MOLTRES
+  hide self
+  text "Moltres flew off over the crater's rim!"
+  endscene
+  end

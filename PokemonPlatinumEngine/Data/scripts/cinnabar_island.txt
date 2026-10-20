@@ -18,9 +18,13 @@ script OnEnter
   setflag FLAG_HIDE_CINNABAR_SEAGALLOP
   if item "Secret Key" setvar VAR_TEMP_1 1
   if var VAR_MAP_SCENE_CINNABAR_ISLAND == 1 goto Bill
+  if var VAR_MAP_SCENE_CINNABAR_ISLAND == 3 goto Home
   end
 label Bill
   call BillScene
+  end
+label Home
+  call BillHome
   end
 
 script LockedGymDoor
@@ -65,6 +69,29 @@ label Wait
   setflag FLAG_HIDE_CINNABAR_BILL
   clearflag FLAG_HIDE_CINNABAR_POKECENTER_BILL
   setvar VAR_MAP_SCENE_CINNABAR_ISLAND 2
+  endscene
+  end
+
+
+# CinnabarIsland_EventScript_BillReturnScene (plan 19 · K9, part a): back from One Island once the network works
+# (one_island_pokemon_center_1f.txt sets the variable to 3), Bill says goodbye on the dock and goes home. Lostelle,
+# rescued, is home on Three Island from now on (4)
+script BillHome
+  scene "Bill back in Kanto"
+  clearflag FLAG_HIDE_CINNABAR_BILL
+  show cinnabar_bill
+  face cinnabar_bill player
+  speaker "Bill"
+  say "Phew, back on Cinnabar! Thanks for coming all that way with me, {player}."
+  say "Keep the Tri-Pass. Celio said he'd love to see you again, so drop in on him when you're on One Island."
+  say "Me, I'm off home to my cottage. My PCs must be missing me! See you around!"
+  fade out 0.3
+  hide cinnabar_bill
+  fade in 0.3
+  setflag FLAG_HIDE_CINNABAR_BILL
+  setflag FLAG_HIDE_TWO_ISLAND_GAME_CORNER_LOSTELLE
+  clearflag FLAG_HIDE_LOSTELLE_IN_HER_HOME
+  setvar VAR_MAP_SCENE_CINNABAR_ISLAND 4
   endscene
   end
 

@@ -1,0 +1,76 @@
+# Mt. Ember's slopes (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/MtEmber_Exterior/scripts.inc).
+#
+# Once Celio has asked for the Ruby (one_island_pokemon_center_1f.txt: VAR_MAP_SCENE_MT_EMBER_EXTERIOR 1, and
+# FLAG_MT_EMBER_RUBY_PATH_OPEN, which opens the Ruby Path's mouth behind them, and the two shown) two Team Rocket
+# grunts stand before the mouth. The first step onto the row below them (the area's triggers 0 to 2) lets the player
+# hear them talk of the passwords to their warehouse (2); each is then battled where he stands, and once both are
+# beaten they run off (FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS). The warehouse the passwords open is part b's, on Five
+# Island. Before Celio's request the grunts aren't there.
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F < 4 setflag FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS
+  end
+
+
+# The row below the grunts (triggers 0 to 2, while the variable is 1)
+script Password
+  scene "Team Rocket on Mount Ember"
+  face player up
+  speaker "Grunt"
+  say "So the first password's 'Seel the deal'? And the second one's... 'Ekans ate the cake'?"
+  face mt_ember_grunt2 left
+  say "Keep your voice down! The first opens the warehouse door, the second gets you inside. Write 'em down!"
+  face mt_ember_grunt1 right
+  say "Nah, I've got a great memory. Our warehouse on Five Island's safe as houses."
+  emote mt_ember_grunt1 exclaim
+  face mt_ember_grunt1 down
+  face mt_ember_grunt2 down
+  say "Hey! A kid's been listening in! Forget everything you just heard, got it?"
+  setvar VAR_MAP_SCENE_MT_EMBER_EXTERIOR 2
+  endscene
+  end
+
+
+script Grunt1
+  face mt_ember_grunt1 player
+  speaker "Grunt"
+  if defeated "kanto_team_rocket_grunt_43" goto Beaten
+  say "The cave behind us is off-limits! Team Rocket's digging for treasure in there!"
+  battle self as "kanto_team_rocket_grunt_43"
+  speaker "Grunt"
+  say "Ugh... Even if you get past us, you won't find anything in there!"
+  call BothBeaten
+  end
+label Beaten
+  say "I've forgotten the passwords already. Don't tell the boss."
+  end
+
+
+script Grunt2
+  face mt_ember_grunt2 player
+  speaker "Grunt"
+  if defeated "kanto_team_rocket_grunt_44" goto Beaten
+  say "You heard the passwords? Then you're not leaving this mountain!"
+  battle self as "kanto_team_rocket_grunt_44"
+  speaker "Grunt"
+  say "No way! Beaten by a kid on a volcano..."
+  call BothBeaten
+  end
+label Beaten
+  say "We were told to search the cave for something red and shiny. Whatever it is, it's ours!"
+  end
+
+
+# Once both grunts are beaten they flee down the mountain
+script BothBeaten
+  if not defeated "kanto_team_rocket_grunt_43" return
+  if not defeated "kanto_team_rocket_grunt_44" return
+  say "This is bad! We've gotta tell the others at the warehouse!"
+  fade out 0.4
+  hide mt_ember_grunt1
+  hide mt_ember_grunt2
+  setflag FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS
+  fade in 0.4
+  return

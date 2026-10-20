@@ -1,0 +1,20 @@
+# Dunsparce Tunnel (plan 19 · K9, part a), on FireRed's beats (data/maps/ThreeIsland_DunsparceTunnel/scripts.inc).
+# The prospector has been digging for gold; once the player has the National Pokédex he hands over a Nugget he found
+# (FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL). FireRed's tunnel dug through to the east is part b's.
+
+
+script Prospector
+  face prospector player
+  speaker "Prospector"
+  if flag FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL goto Given
+  if nationaldex goto Nugget
+  say "I'm digging for gold under this island. Every day, a little deeper. One day I'll strike it rich!"
+  end
+label Nugget
+  say "Look here, I struck gold at last! Well, a little bit. I've more than enough now, so you have this one."
+  setflag FLAG_GOT_NUGGET_FROM_DUNSPARCE_TUNNEL
+  give "Nugget"
+  end
+label Given
+  say "One day this tunnel will reach all the way through the island. Then I'll find the motherlode!"
+  end

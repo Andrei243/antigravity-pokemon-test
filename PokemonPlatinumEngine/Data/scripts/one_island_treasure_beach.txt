@@ -1,0 +1,10 @@
+# Treasure Beach on One Island (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are our own,
+# on FireRed's beats (data/maps/OneIsland_TreasureBeach/scripts.inc).
+
+
+script Boy
+  face boy player
+  speaker "Boy"
+  say "All kinds of things wash up on this beach. I find something new buried in the sand almost every day."
+  say "Look carefully where the sand looks different. You might find treasure too!"
+  end

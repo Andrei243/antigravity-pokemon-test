@@ -1,0 +1,7 @@
+{
+  // The summit path, its second floor (plan 19 · K9, part a): a long climb round the inside of the mountain, its
+  // cracked rocks in the way
+  "area": "mt_ember_summit_path_2f",
+  "name": "Mt. Ember",
+  "bgmTrack": "kanto/sevii_cave"
+}

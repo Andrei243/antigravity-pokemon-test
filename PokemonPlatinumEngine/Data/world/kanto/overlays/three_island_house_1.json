@@ -1,0 +1,12 @@
+{
+  // Lostelle's house on Three Island (plan 19 · K9, part a): she comes home once Bill has sailed for Kanto
+  // (three_island_house_1.txt)
+  "area": "three_island_house_1",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "little_girl": { "name": "Lostelle", "dialog": [ "Daddy says I'm not to go into the forest by myself any more. So next time, will you come with me?" ] }
+  },
+  "signs": {
+    "ThreeIsland_House1_EventScript_DisplayCase": "A glass case of dried flowers and pretty berry stones. Lostelle must have collected them."
+  }
+}

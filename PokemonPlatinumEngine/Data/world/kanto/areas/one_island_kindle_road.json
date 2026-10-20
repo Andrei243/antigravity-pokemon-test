@@ -1,0 +1,109 @@
+{
+  "key": "one_island_kindle_road",
+  "index": 228,
+  "name": "Kindle Road",
+  "matrix": 190,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROUTE3",
+  "nightMusic": "MUS_ROUTE3",
+  "encounters": "one_island_kindle_road",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Spearow", "level": 32 },
+    { "species": "Ponyta", "level": 34 },
+    { "species": "Fearow", "level": 36 },
+    { "species": "Ponyta", "level": 31 },
+    { "species": "Geodude", "level": 31 },
+    { "species": "Meowth", "level": 31 },
+    { "species": "Spearow", "level": 30 },
+    { "species": "Psyduck", "level": 34 },
+    { "species": "Rapidash", "level": 37 },
+    { "species": "Persian", "level": 37 },
+    { "species": "Rapidash", "level": 40 },
+    { "species": "Persian", "level": 40 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "rockSmash": [
+    { "species": "Geodude", "level": 5, "maxLevel": 20 },
+    { "species": "Geodude", "level": 10, "maxLevel": 20 },
+    { "species": "Geodude", "level": 15, "maxLevel": 30 },
+    { "species": "Graveler", "level": 25, "maxLevel": 40 },
+    { "species": "Graveler", "level": 30, "maxLevel": 40 }
+  ],
+  "rockSmashRate": 25,
+  "warps": [
+    { "x": 35, "z": 6, "to": "mt_ember_exterior", "toWarp": 0 },
+    { "x": 36, "z": 6, "to": "mt_ember_exterior", "toWarp": 1 },
+    { "x": 39, "z": 58, "to": "one_island_kindle_road_ember_spa", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "swimmer_f_water", "looks": "swimmer_f_water", "movement": "look_west_and_east", "x": 35, "z": 32, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_SWIMMER_FEMALE_MARIA" },
+    { "id": "swimmer_f_land", "looks": "swimmer_f_land", "movement": "look_south", "x": 41, "z": 132, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_SWIMMER_FEMALE_ABIGAIL" },
+    { "id": "swimmer_m_water", "looks": "swimmer_m_water", "movement": "walk_sequence_east_south_west_north", "x": 31, "z": 39, "facing": 3, "rangeX": 6, "rangeZ": 3, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_FINN" },
+    { "id": "swimmer_m_land", "looks": "swimmer_m_land", "movement": "look_south", "x": 43, "z": 79, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_SWIMMER_MALE_GARRETT" },
+    { "id": "fisher", "looks": "fisher", "movement": "look_west", "x": 39, "z": 25, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 0, "script": "TRAINER_FISHERMAN_TOMMY" },
+    { "id": "crush_girl", "looks": "crush_girl", "movement": "walk_south_and_north", "x": 33, "z": 53, "facing": 1, "rangeX": 1, "rangeZ": 7, "trainer": "normal", "sight": 1, "script": "TRAINER_CRUSH_GIRL_SHARON" },
+    { "id": "crush_girl_2", "looks": "crush_girl", "movement": "walk_sequence_south_west_north_east", "x": 42, "z": 105, "facing": 1, "rangeX": 1, "rangeZ": 4, "trainer": "normal", "sight": 1, "script": "TRAINER_CRUSH_GIRL_TANYA" },
+    { "id": "black_belt", "looks": "black_belt", "movement": "walk_west_and_east", "x": 40, "z": 64, "facing": 2, "rangeX": 2, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BLACK_BELT_SHEA" },
+    { "id": "black_belt_2", "looks": "black_belt", "movement": "walk_east_and_west", "x": 35, "z": 64, "facing": 3, "rangeX": 2, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_BLACK_BELT_HUGH" },
+    { "id": "camper", "looks": "camper", "movement": "look_west_and_east", "x": 35, "z": 89, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "script": "TRAINER_CAMPER_BRYCE" },
+    { "id": "picnicker", "looks": "picnicker", "movement": "look_around", "x": 33, "z": 108, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_PICNICKER_CLAIRE" },
+    { "id": "black_belt_3", "looks": "black_belt", "movement": "look_south", "x": 32, "z": 68, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_CRUSH_KIN_MIK_KIA" },
+    { "id": "crush_girl_3", "looks": "crush_girl", "movement": "look_south", "x": 33, "z": 68, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_CRUSH_KIN_MIK_KIA" },
+    { "id": "rock_smash_rock", "looks": "rock_smash_rock", "movement": "look_around", "x": 32, "z": 104, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_2", "looks": "rock_smash_rock", "movement": "look_around", "x": 35, "z": 95, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_3", "looks": "rock_smash_rock", "movement": "look_around", "x": 36, "z": 96, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_4", "looks": "rock_smash_rock", "movement": "look_around", "x": 34, "z": 95, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_5", "looks": "rock_smash_rock", "movement": "look_around", "x": 33, "z": 105, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_18", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_6", "looks": "rock_smash_rock", "movement": "look_around", "x": 39, "z": 75, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_19", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_7", "looks": "rock_smash_rock", "movement": "look_around", "x": 33, "z": 84, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_1A", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_8", "looks": "rock_smash_rock", "movement": "look_around", "x": 39, "z": 74, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_1B", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_9", "looks": "rock_smash_rock", "movement": "look_around", "x": 39, "z": 73, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_1C", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_10", "looks": "rock_smash_rock", "movement": "look_around", "x": 42, "z": 111, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_1D", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_11", "looks": "rock_smash_rock", "movement": "look_around", "x": 34, "z": 86, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_1E", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_12", "looks": "rock_smash_rock", "movement": "look_around", "x": 33, "z": 110, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_1F", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_13", "looks": "rock_smash_rock", "movement": "look_around", "x": 42, "z": 112, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_11", "script": "EventScript_RockSmash" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 39, "z": 70, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ONE_ISLAND_KINDLE_ROAD_ETHER", "item": "Ether", "script": "OneIsland_KindleRoad_EventScript_ItemEther" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 41, "z": 103, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ONE_ISLAND_KINDLE_ROAD_MAX_REPEL", "item": "Max Repel", "script": "OneIsland_KindleRoad_EventScript_ItemMaxRepel" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 42, "z": 114, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ONE_ISLAND_KINDLE_ROAD_CARBOS", "item": "Carbos", "script": "OneIsland_KindleRoad_EventScript_ItemCarbos" }
+  ],
+  "signs": [
+    { "x": 37, "z": 59, "type": 0, "script": "OneIsland_KindleRoad_EventScript_EmberSpaSign" },
+    { "x": 32, "z": 115, "type": 0, "script": "OneIsland_KindleRoad_EventScript_RouteSign" }
+  ],
+  "triggers": []
+}

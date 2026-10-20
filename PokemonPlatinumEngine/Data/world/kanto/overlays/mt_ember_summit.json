@@ -1,0 +1,10 @@
+{
+  // Mt. Ember's summit (plan 19 · K9, part a): FireRed's crater, where Moltres waits until it has been fought
+  // (mt_ember_summit.txt), as Zapdos in the Power Plant and Articuno in the Seafoam Islands
+  "area": "mt_ember_summit",
+  "name": "Mt. Ember",
+  "bgmTrack": "kanto/sevii_cave",
+  "people": {
+    "moltres": { "name": "Moltres", "script": "Moltres", "still": true }
+  }
+}

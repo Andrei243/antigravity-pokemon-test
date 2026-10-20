@@ -1,0 +1,12 @@
+{
+  // Treasure Beach (plan 19 · K9, part a): FireRed's map, our words. The sandy point south of One Island, where the
+  // tide leaves things in the sand for whoever looks
+  "area": "one_island_treasure_beach",
+  "name": "Treasure Beach",
+  "bgmTrack": "kanto/route3",
+  "trees": "Round",
+  "people": {
+    "swimmer_f_water": { "name": "Amara", "trainer": { "dialogueBefore": "Swimmer Amara: Looking for treasure? The best treasure here is a good battle!", "dialogueAfter": "Swimmer Amara: That was worth more than a pearl." } },
+    "boy": { "name": "Boy", "script": "Boy" }
+  }
+}

@@ -3,6 +3,12 @@
   // along its north-east wall. Bill and Celio meet the player here the first time (one_island_pokemon_center_1f.txt)
   "area": "one_island_pokemon_center_1f",
   "bgmTrack": "kanto/sevii_123",
+  "triggers": [
+    { "trigger": 0, "script": "BillLeaves" },
+    { "trigger": 1, "script": "BillLeaves" },
+    { "trigger": 2, "script": "BillLeaves" },
+    { "trigger": 3, "script": "BillLeaves" }
+  ],
   "people": {
     "one_island_nurse": { "name": "Nurse", "script": "Nurse" },
     "one_island_pokemon_center_bill": { "name": "Bill", "script": "Bill", "still": true },

@@ -1,0 +1,9 @@
+{
+  // The Ruby Path, its first floor (plan 19 · K9, part a): the cave Team Rocket dug open in Mt. Ember's east side. Its
+  // way out lands on the mouth of the cave, which is open whenever the path can be come to
+  // (FLAG_MT_EMBER_RUBY_PATH_OPEN, mt_ember_exterior.json)
+  "area": "mt_ember_ruby_path_1f",
+  "name": "Ruby Path",
+  "bgmTrack": "kanto/sevii_cave",
+  "doors": [ { "warp": 0, "map": "MtEmber_Exterior", "x": 42, "y": 39, "facing": "Down" } ]
+}

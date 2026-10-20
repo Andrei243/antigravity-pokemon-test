@@ -1,0 +1,9 @@
+{
+  // A house on Three Island (plan 19 · K9, part a)
+  "area": "three_island_house_2",
+  "bgmTrack": "kanto/sevii_123",
+  "people": {
+    "rocker": { "name": "Guitarist", "dialog": [ "I came here to get away from the city and play my guitar in peace. Then the bikers showed up, louder than any amp." ] },
+    "man": { "name": "Man", "dialog": [ "My grandfather built this house with his own hands. The wind off the sea has never once got in." ] }
+  }
+}

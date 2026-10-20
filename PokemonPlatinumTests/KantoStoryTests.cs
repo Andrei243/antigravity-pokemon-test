@@ -34,6 +34,8 @@ public class KantoStoryTests
         public int Starter { get; init; }
         public BattleOutcome Fight { get; set; } = BattleOutcome.Won;
         public int Caught { get; set; }
+        /// <summary>Whether the Pokédex is the National one (<c>if nationaldex</c>), carried from one script to the next.</summary>
+        public bool NationalDex { get; set; }
         public bool Impatient { get; init; }
         /// <summary>The script's dice to come (<c>random</c>) and the answers to its questions, handed on from one script to the next.</summary>
         public Queue<int> Rolls { get; } = new();
@@ -110,7 +112,8 @@ public class KantoStoryTests
                 RivalName = Rival,
                 Fight = _ => Fight,
                 NeedsPokemon = true,
-                Caught = Caught
+                Caught = Caught,
+                NationalDex = NationalDex
             };
             while (Rolls.Count > 0) host.Rolls.Enqueue(Rolls.Dequeue());
             while (Answers.Count > 0) host.Answers.Enqueue(Answers.Dequeue());
@@ -120,6 +123,7 @@ public class KantoStoryTests
             while (host.Rolls.Count > 0) Rolls.Enqueue(host.Rolls.Dequeue());
             while (host.Answers.Count > 0) Answers.Enqueue(host.Answers.Dequeue());
             Played.Add((script.FullName, host));
+            NationalDex = host.NationalDex;
             Assert.Empty(host.Problems);
             foreach (var map in maps.Values.Distinct())
             {
@@ -1603,6 +1607,7 @@ public class KantoStoryTests
     [Theory]
     [InlineData("SeafoamIslands_B4F", 15, 10, "articuno", "Articuno", "FLAG_FOUGHT_ARTICUNO", "FLAG_HIDE_ARTICUNO")]
     [InlineData("PowerPlant", 5, 37, "zapdos", "Zapdos", "FLAG_FOUGHT_ZAPDOS", "FLAG_HIDE_ZAPDOS")]
+    [InlineData("MtEmber_Summit", 9, 12, "moltres", "Moltres", "FLAG_FOUGHT_MOLTRES", "FLAG_HIDE_MOLTRES")]
     public void TheLegendaryBirdFliesOffWhenRunFromAndIsGoneForGoodOnceFought(string map, int x, int y, string key, string species, string fought, string hide)
     {
         var game = PastPewter();
@@ -1906,6 +1911,206 @@ public class KantoStoryTests
         game.Arrive("Kanto", 288, 232);
         game.Answers.Enqueue(0);
         game.Talk("vermilion_ferry_sailor");
+        Assert.Equal("OneIsland_Harbor", game.Map.Name);
+    }
+
+    // ------------------------------------------------------------------ plan 19 · K9, part a: the first islands and the Ruby
+
+    /// <summary>A Champion of Kanto who sailed with Bill to One Island and met Celio there (plan 19 · K7's scene).</summary>
+    private static Game AtOneIsland()
+    {
+        var game = WithBadges(8);
+        game.Story.SetVar("VAR_MAP_SCENE_CINNABAR_ISLAND", 1);
+        game.Answers.Enqueue(0);
+        game.Arrive("Kanto", 80, 385);
+        Assert.Equal("OneIsland_PokemonCenter_1F", game.Map.Name);
+        return game;
+    }
+
+    [Fact]
+    public void BillsMeteoriteTakesThePlayerToTwoIslandAndLostellesRescueSendsBillHome()
+    {
+        var game = AtOneIsland();
+        // Bill hands over the Meteorite for the game corner on Two Island as he and Celio set to work
+        Assert.Equal(1, Count(game, "Meteorite"));
+        Assert.True(game.Story.Has("FLAG_GOT_METEORITE_FROM_BILL"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
+        // Spoken to again he gives nothing more
+        game.Talk("one_island_pokemon_center_bill");
+        Assert.Equal(1, Count(game, "Meteorite"));
+        // The Tri-Pass sails to Two Island, where Lostelle's father has lost her and a biker brings word of Three Island
+        game.Arrive("OneIsland_Harbor", 8, 5);
+        game.Answers.Enqueue(2);
+        game.Talk("sailor");
+        Assert.Equal("TwoIsland_Harbor", game.Map.Name);
+        game.Arrive("TwoIsland_JoyfulGameCorner", 5, 7);
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER"));
+        Assert.Equal(2, game.Story.Var("VAR_MAP_SCENE_THREE_ISLAND"));
+        Assert.Null(game.Present("joyful_game_corner_lostelle"));
+        Assert.Null(game.Present("joyful_game_corner_biker"));
+        // He keeps the Meteorite waiting until she is home
+        game.Talk("joyful_game_corner_daddy");
+        Assert.Equal(1, Count(game, "Meteorite"));
+        // On to Three Island: the gang's leader argues with the townsmen, and the gang is battled and leaves
+        game.Arrive("TwoIsland_Harbor", 8, 5);
+        game.Answers.Enqueue(3);
+        game.Talk("sailor");
+        Assert.Equal("ThreeIsland_Harbor", game.Map.Name);
+        game.Arrive("ThreeIsland", 104, 28);
+        Assert.NotNull(game.Present("paxton"));
+        Assert.True(game.Fires("BikerIntro"));
+        game.Step("BikerIntro");
+        Assert.Equal(3, game.Story.Var("VAR_MAP_SCENE_THREE_ISLAND"));
+        Assert.False(game.Fires("BikerIntro"));
+        // Asked whether they want trouble: no, and the player is sent back a step
+        game.Answers.Enqueue(1);
+        var refused = game.Step("BikerBattle");
+        Assert.DoesNotContain(refused.Log, l => l.StartsWith("battle"));
+        Assert.Equal(3, game.Story.Var("VAR_MAP_SCENE_THREE_ISLAND"));
+        // Yes, and three of them and then Paxton are battled one after another
+        game.Answers.Enqueue(0);
+        var bikers = game.Step("BikerBattle");
+        foreach (string id in new[] { "kanto_biker_goon", "kanto_biker_goon_2", "kanto_biker_goon_3", "kanto_cue_ball_paxton" })
+            Assert.Contains(bikers.Log, l => l.StartsWith($"battle {id} Won"));
+        Assert.Equal(4, game.Story.Var("VAR_MAP_SCENE_THREE_ISLAND"));
+        Assert.True(game.Story.Has("FLAG_HIDE_THREE_ISLAND_BIKERS"));
+        Assert.Null(game.Present("paxton"));
+        Assert.Null(game.Present("three_island_biker1"));
+        game.Talk("three_island_antibiker1");
+        Assert.Equal(1, Count(game, "Full Restore"));
+        game.Talk("three_island_antibiker1");
+        Assert.Equal(1, Count(game, "Full Restore"));
+        // Lostelle in Berry Forest: a Hypno, an Iapapa Berry, and home to the game corner, where her father thanks the player
+        game.Arrive("ThreeIsland_BerryForest", 4, 10);
+        Assert.NotNull(game.Present("berry_forest_lostelle"));
+        var forest = game.Talk("berry_forest_lostelle");
+        Assert.Contains(forest.Log, l => l.StartsWith("wildbattle Hypno 30"));
+        Assert.Equal(1, Count(game, "Iapapa Berry"));
+        Assert.True(game.Story.Has("FLAG_RESCUED_LOSTELLE"));
+        Assert.Equal("TwoIsland_JoyfulGameCorner", game.Map.Name);
+        Assert.Equal(3, game.Story.Var("VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER"));
+        Assert.NotNull(game.Present("joyful_game_corner_lostelle"));
+        game.Arrive("ThreeIsland_BerryForest", 4, 10);
+        Assert.Null(game.Present("berry_forest_lostelle"));
+        // The Meteorite for a Moon Stone, which tells the machine on One Island it can be finished
+        game.Arrive("TwoIsland_JoyfulGameCorner", 5, 7);
+        game.Talk("joyful_game_corner_daddy");
+        Assert.Equal(0, Count(game, "Meteorite"));
+        Assert.Equal(1, Count(game, "Moon Stone"));
+        Assert.Equal(4, game.Story.Var("VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER"));
+        Assert.Equal(2, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
+        // Back at One Island the first step towards Bill sends him home by the Seagallop, and he says goodbye on Cinnabar
+        game.Arrive("OneIsland_PokemonCenter_1F", 9, 8);
+        Assert.True(game.Fires("BillLeaves"));
+        game.Step("BillLeaves");
+        Assert.Equal("Kanto", game.Map.Name);
+        Assert.Equal("cinnabar_island", game.Map.AreaAt(game.Tile.X, game.Tile.Y)?.Key);
+        Assert.Equal(4, game.Story.Var("VAR_MAP_SCENE_CINNABAR_ISLAND"));
+        Assert.True(game.Story.Has("FLAG_HIDE_CINNABAR_BILL"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ONE_ISLAND_POKECENTER_BILL"));
+        Assert.Equal(3, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
+        // Lostelle is home on Three Island from now on
+        Assert.False(game.Story.Has("FLAG_HIDE_LOSTELLE_IN_HER_HOME"));
+        game.Arrive("TwoIsland_JoyfulGameCorner", 5, 7);
+        Assert.Null(game.Present("joyful_game_corner_lostelle"));
+        game.Arrive("OneIsland_PokemonCenter_1F", 9, 8);
+        Assert.Null(game.Present("one_island_pokemon_center_bill"));
+    }
+
+    [Fact]
+    public void OakGivesTheNationalPokedexToAChampionWhoHasBeenToTheIslandsAndCaughtSixty()
+    {
+        var game = WithBadges(8);
+        game.Story.SetVar("VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB", 6);
+        game.Story.Unset("FLAG_HIDE_OAK_IN_HIS_LAB");
+        game.Story.Set("FLAG_HIDE_RIVAL_IN_LAB");
+        game.Caught = 60;
+        game.Arrive("PalletTown_ProfessorOaksLab", 6, 10);
+        // Not before the Hall of Fame
+        game.Talk("oaks_lab_prof_oak");
+        Assert.False(game.NationalDex);
+        // Nor before the islands
+        game.Story.Set("FLAG_SYS_GAME_CLEAR");
+        game.Talk("oaks_lab_prof_oak");
+        Assert.False(game.NationalDex);
+        // Nor with fewer than sixty caught: Kanto's own rule, which the Pokédex asks too
+        game.Story.SetVar("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F", 1);
+        game.Caught = 59;
+        game.Talk("oaks_lab_prof_oak");
+        Assert.False(game.NationalDex);
+        var kanto = RegionDatabase.Get(RegionDatabase.Kanto)!;
+        var pokedex = new Pokedex();
+        for (int n = 1; n <= 59; n++) pokedex.RegisterCaught(n);
+        Assert.False(pokedex.CanUnlockNational(game.Story, kanto));
+        pokedex.RegisterCaught(60);
+        Assert.True(pokedex.CanUnlockNational(game.Story, kanto));
+        // Sixty, and the rival comes in for his too
+        game.Caught = 60;
+        var upgrade = game.Talk("oaks_lab_prof_oak");
+        Assert.True(game.NationalDex);
+        Assert.Contains(upgrade.Log, l => l.Contains("nationaldex"));
+        Assert.True(game.Story.Has("FLAG_HIDE_RIVAL_IN_LAB"));
+        Assert.Null(game.Present("oaks_lab_rival"));
+        Assert.DoesNotContain(game.Talk("oaks_lab_prof_oak").Log, l => l.Contains("nationaldex"));
+    }
+
+    [Fact]
+    public void CelioAsksAChampionWithTheNationalPokedexForTheRubyAndGivesTheRainbowPassForIt()
+    {
+        var game = AtOneIsland();
+        game.Story.SetVar("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F", 3);
+        game.Arrive("OneIsland_PokemonCenter_1F", 9, 8);
+        Assert.Null(game.Present("one_island_pokemon_center_bill"));
+        // Without the National Pokédex he only talks of his machine, and Mt. Ember's Ruby Path stays shut
+        game.Talk("celio");
+        Assert.Equal(3, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
+        Assert.False(game.Story.Has("FLAG_MT_EMBER_RUBY_PATH_OPEN"));
+        game.Arrive("MtEmber_Exterior", 41, 44);
+        Assert.Null(game.Present("mt_ember_grunt1"));
+        // With it he asks for the Ruby, which opens the path and brings Team Rocket to the mountain
+        game.NationalDex = true;
+        game.Arrive("OneIsland_PokemonCenter_1F", 9, 8);
+        game.Talk("celio");
+        Assert.Equal(4, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
+        Assert.True(game.Story.Has("FLAG_MT_EMBER_RUBY_PATH_OPEN"));
+        Assert.Equal(1, game.Story.Var("VAR_MAP_SCENE_MT_EMBER_EXTERIOR"));
+        game.Arrive("MtEmber_Exterior", 41, 44);
+        Assert.NotNull(game.Present("mt_ember_grunt1"));
+        Assert.NotNull(game.Present("mt_ember_grunt2"));
+        Assert.True(game.Fires("Password"));
+        game.Step("Password");
+        Assert.Equal(2, game.Story.Var("VAR_MAP_SCENE_MT_EMBER_EXTERIOR"));
+        Assert.Contains(game.Talk("mt_ember_grunt1").Log, l => l.StartsWith("battle kanto_team_rocket_grunt_43 Won"));
+        Assert.NotNull(game.Present("mt_ember_grunt2"));
+        Assert.Contains(game.Talk("mt_ember_grunt2").Log, l => l.StartsWith("battle kanto_team_rocket_grunt_44 Won"));
+        Assert.True(game.Story.Has("FLAG_HIDE_MT_EMBER_EXTERIOR_ROCKETS"));
+        Assert.Null(game.Present("mt_ember_grunt1"));
+        // The Ruby at the path's deepest room, picked up once
+        game.Arrive("MtEmber_RubyPath_B5F", 7, 9);
+        game.Talk("ruby");
+        Assert.Equal(1, Count(game, "Ruby"));
+        Assert.True(game.Story.Has("FLAG_GOT_RUBY"));
+        game.Arrive("MtEmber_RubyPath_B5F", 7, 9);
+        Assert.Null(game.Present("ruby"));
+        // Celio asks a second favour: refused, he waits; agreed to, he takes the Ruby and the Tri-Pass for the Rainbow Pass
+        game.Arrive("OneIsland_PokemonCenter_1F", 9, 8);
+        game.Answers.Enqueue(1);
+        game.Talk("celio");
+        Assert.Equal(1, Count(game, "Ruby"));
+        Assert.Equal(4, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
+        game.Answers.Enqueue(0);
+        game.Talk("celio");
+        Assert.Equal(0, Count(game, "Ruby"));
+        Assert.Equal(0, Count(game, "Tri-Pass"));
+        Assert.Equal(1, Count(game, "Rainbow Pass"));
+        Assert.Equal(5, game.Story.Var("VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F"));
+        // The harbours' sailors take the Rainbow Pass as they took the Tri-Pass
+        game.Arrive("OneIsland_Harbor", 8, 5);
+        game.Answers.Enqueue(3);
+        game.Talk("sailor");
+        Assert.Equal("ThreeIsland_Harbor", game.Map.Name);
+        game.Answers.Enqueue(2);
+        game.Talk("sailor");
         Assert.Equal("OneIsland_Harbor", game.Map.Name);
     }
 }

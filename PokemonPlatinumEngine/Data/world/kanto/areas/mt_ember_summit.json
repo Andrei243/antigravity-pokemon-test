@@ -1,0 +1,29 @@
+{
+  "key": "mt_ember_summit",
+  "index": 143,
+  "name": "Mt Ember",
+  "matrix": 107,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 15, "to": "mt_ember_exterior", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "moltres", "looks": "moltres", "movement": "look_south", "x": 9, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_MOLTRES", "script": "MtEmber_Summit_EventScript_Moltres" },
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 10, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 9, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_3", "looks": "pushable_boulder", "movement": "look_around", "x": 8, "z": 11, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_4", "looks": "pushable_boulder", "movement": "look_around", "x": 8, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" }
+  ],
+  "signs": [],
+  "triggers": []
+}

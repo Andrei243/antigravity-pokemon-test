@@ -1,0 +1,37 @@
+# Two Island (plan 19 · K9, part a). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/TwoIsland/scripts.inc).
+#
+# The island's little stall sells more as its story goes on, as FireRed's does: a couple of things at first, more once
+# Lostelle is home (FLAG_RESCUED_LOSTELLE, three_island_berry_forest.txt), and the most once the player is Champion
+# (FLAG_SYS_GAME_CLEAR) as well (marts.json's two_island_1 to _3). The woman who comes for the new goods is there from
+# the rescue on, the beauty from the Hall of Fame on. FireRed's last stock, and the Pokémaniac who comes for it, wait
+# on a link with another game, which this one has no part of: he stays away.
+
+
+script OnEnter
+  setflag FLAG_HIDE_TWO_ISLAND_POKE_MANIAC
+  if not flag FLAG_RESCUED_LOSTELLE setflag FLAG_HIDE_TWO_ISLAND_WOMAN
+  if flag FLAG_RESCUED_LOSTELLE clearflag FLAG_HIDE_TWO_ISLAND_WOMAN
+  setflag FLAG_HIDE_TWO_ISLAND_BEAUTY
+  if not flag FLAG_RESCUED_LOSTELLE end
+  if flag FLAG_SYS_GAME_CLEAR clearflag FLAG_HIDE_TWO_ISLAND_BEAUTY
+  end
+
+
+script Clerk
+  face clerk player
+  speaker "Clerk"
+  say "Welcome! Have a look at what we've got in today."
+  if not flag FLAG_RESCUED_LOSTELLE goto First
+  if flag FLAG_SYS_GAME_CLEAR goto Third
+  shop "two_island_2"
+  say "Thank you! Do come again."
+  end
+label First
+  shop "two_island_1"
+  say "Thank you! Do come again."
+  end
+label Third
+  shop "two_island_3"
+  say "Thank you! Do come again."
+  end
