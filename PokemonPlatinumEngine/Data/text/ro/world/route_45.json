@@ -6,7 +6,7 @@
           "Erik"
         ],
         "text": [
-          ""
+          "Erik"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Hiker Erik: This mountain road is my training ground. Let's go!"
         ],
         "text": [
-          ""
+          "Drumeț Erik: Drumul ăsta de munte e terenul meu de antrenament. Hai!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Hiker Erik: My legs are stronger than my Pokémon."
         ],
         "text": [
-          ""
+          "Drumeț Erik: Picioarele mele sunt mai puternice decât Pokémonii mei."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Ryan"
         ],
         "text": [
-          ""
+          "Ryan"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Ace Trainer Ryan: A strong wind blows up here. Can your Pokémon stand in it?"
         ],
         "text": [
-          ""
+          "Antrenor As Ryan: Aici sus bate un vânt puternic. Pokémonii tăi rezistă în el?"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Ace Trainer Ryan: They stood. Mine didn't."
         ],
         "text": [
-          ""
+          "Antrenor As Ryan: Ai tăi au rezistat. Ai mei nu."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Parry"
         ],
         "text": [
-          ""
+          "Parry"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Hiker Parry: Onix and I are as solid as the mountain!"
         ],
         "text": [
-          ""
+          "Drumeț Parry: Onix și cu mine suntem solizi ca muntele!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Hiker Parry: The mountain cracked."
         ],
         "text": [
-          ""
+          "Drumeț Parry: Muntele s-a crăpat."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Kelly"
         ],
         "text": [
-          ""
+          "Kelly"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Ace Trainer Kelly: Water Pokémon are my speciality. Let's make a splash!"
         ],
         "text": [
-          ""
+          "Antrenoare As Kelly: Pokémonii de apă sunt specialitatea mea. Hai să facem valuri!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Ace Trainer Kelly: I'm soaked through."
         ],
         "text": [
-          ""
+          "Antrenoare As Kelly: Sunt udă până la piele."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Kenji"
         ],
         "text": [
-          ""
+          "Kenji"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Black Belt Kenji: I train on this slope from dawn to dusk. Hyah!"
         ],
         "text": [
-          ""
+          "Centură Neagră Kenji: Mă antrenez pe panta asta de la zori până la amurg. Hyah!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Black Belt Kenji: Back to training until dusk..."
         ],
         "text": [
-          ""
+          "Centură Neagră Kenji: Înapoi la antrenament până la amurg..."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Timothy"
         ],
         "text": [
-          ""
+          "Timothy"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Hiker Timothy: Diglett dig, Dugtrio dig faster! Ready?"
         ],
         "text": [
-          ""
+          "Drumeț Timothy: Diglett sapă, Dugtrio sapă și mai repede! Gata?"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Hiker Timothy: They dug themselves into a hole."
         ],
         "text": [
-          ""
+          "Drumeț Timothy: S-au săpat singuri într-o groapă."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Michael"
         ],
         "text": [
-          ""
+          "Michael"
         ]
       },
       "before": {
@@ -170,7 +170,7 @@
           "Hiker Michael: Rocks, rocks and more rocks. That's my team!"
         ],
         "text": [
-          ""
+          "Drumeț Michael: Stânci, stânci și iar stânci. Asta e echipa mea!"
         ]
       },
       "after": {
@@ -178,7 +178,7 @@
           "Hiker Michael: Crushed like gravel."
         ],
         "text": [
-          ""
+          "Drumeț Michael: Zdrobiți ca pietrișul."
         ]
       }
     },
@@ -188,7 +188,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -196,7 +196,7 @@
           "The ledges on this road only go one way. Once you hop down, you're going south!"
         ],
         "text": [
-          ""
+          "Treptele de pământ de pe drumul ăsta merg într-o singură direcție. Odată ce sari jos, mergi spre sud!"
         ]
       }
     }
@@ -207,7 +207,7 @@
         "Route 45\nBlackthorn City is to the north."
       ],
       "text": [
-        ""
+        "Ruta 45\nOrașul Blackthorn e spre nord."
       ]
     },
     "R45_004+1": {
@@ -215,7 +215,7 @@
         "Dark Cave\nThe back way in."
       ],
       "text": [
-        ""
+        "Peștera Întunecată\nIntrarea din spate."
       ]
     }
   }

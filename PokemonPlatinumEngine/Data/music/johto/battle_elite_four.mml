@@ -1,0 +1,38 @@
+# The Elite Four of Johto (HeartGold's SEQ_GS_VS_SHITENNOU, for Will, Koga, Bruno and Karen): stabbing brass and a
+# hard trumpet line in D minor over a running piano, octave bass and a pounding kit, each of the four a step nearer the
+# Champion. Original composition for this game (plan 20 · J10, part b).
+title Battle! Elite Four (Johto)
+tempo 168
+meter 4/4
+lowhptempo 1.07
+reverb 0.18
+
+track lead trumpet lowhp=sawlead vol=0.8 pan=0.05 rev=0.2
+  o5 d8 r8 d8 r8 e8 r8 f8 r8 | o5 a8 r8 a8 r8 o6 c+4 e4 |
+  L o5 d4. f8 a4 o6 d4 | o6 d4 c8 o5 b-8 f2 | o5 g4. b-8 o6 d4 g4 | o6 e4 c+8 o5 a8 e2 |
+  o5 f4. a8 o6 d4 f4 | o6 f4 e8 d8 o5 b-2 | o6 c4 e4 g4 e4 | o6 e4 c+4 a4 g4 |
+
+track brass brass unless=lowhp vol=0.36 pan=-0.25 rev=0.22
+  o4 (d f a)8 r8 (d f a)8 r8 (d f a)8 r8 (d f a)8 r8 | (c+ e a)8 r8 (c+ e a)8 r8 (c+ e a)4 (c+ e a)4 |
+  L o4 (d f a)1 | (d f b-)1 | (d g b-)1 | (c+ e a)1 |
+  (d f a)1 | (d f b-)1 | (c e g)1 | (c+ e a)1 |
+
+track piano piano vol=0.34 pan=0.3 rev=0.16
+  r1 | r1 |
+  L [ o4 d16 f16 a16 f16 ]4 | [ o4 d16 f16 b-16 f16 ]4 | [ o4 d16 g16 b-16 g16 ]4 | [ o4 c+16 e16 a16 e16 ]4 |
+  [ o4 d16 f16 a16 f16 ]4 | [ o4 d16 f16 b-16 f16 ]4 | [ o4 c16 e16 g16 e16 ]4 | [ o4 c+16 e16 a16 e16 ]4 |
+
+track bass synthbass vol=0.7 rev=0.05
+  o3 d8 r8 d8 r8 d8 r8 d8 r8 | o2 a8 r8 a8 r8 a4 a4 |
+  L [ o2 d8 o3 d8 ]4 | [ o2 b-8 o3 b-8 ]4 | [ o2 g8 o3 g8 ]4 | [ o2 a8 o3 a8 ]4 |
+  [ o2 d8 o3 d8 ]4 | [ o2 b-8 o3 b-8 ]4 | [ o2 c8 o3 c8 ]4 | [ o2 a8 o3 a8 ]4 |
+
+track drums kit vol=0.5 rev=0.1
+  v100 (b c)8 r8 b8 r8 (b c)8 r8 b8 r8 | (b c)8 r8 b8 r8 s16 s16 s16 s16 s8 s8 | L [ b8 r8 s8 b8 r8 b8 s8 r8 | ]7 b8 r8 s8 b8 s16 s16 s16 s16 s8 s8 |
+
+track hats kit vol=0.42 pan=0.15 rev=0.1
+  r1 | r1 | L v62 [ h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 h8 v40 h8 v62 | ]8
+
+# Low HP: two pips a beat, only while a Pokémon of the player's is in the red
+track alarm pulse only=lowhp vol=0.5 pan=0.1 rev=0.08
+  v110 r1 | r1 | L [ o6 d16 r16 d16 r16 r4 d16 r16 d16 r16 r4 | ]8

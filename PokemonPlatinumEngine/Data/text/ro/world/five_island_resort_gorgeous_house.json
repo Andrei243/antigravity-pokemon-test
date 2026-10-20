@@ -1,0 +1,42 @@
+{
+  "people": {
+    "resort_gorgeous_house_selphy": {
+      "name": {
+        "en": [
+          "Selphy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "resort_gorgeous_house_butler": {
+      "name": {
+        "en": [
+          "Butler"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I have served Lady Selphy since she was a little girl. Her smile is the whole of my duty."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FiveIsland_ResortGorgeous_House_EventScript_PokemonJournal": {
+      "en": [
+        "A Pokémon Journal, open at a page on Lady Selphy's garden parties."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

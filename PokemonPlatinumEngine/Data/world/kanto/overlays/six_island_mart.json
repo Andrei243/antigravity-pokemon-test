@@ -1,0 +1,10 @@
+{
+  // Six Island's Poké Mart (plan 19 · K9, part b): the common counter by the badges
+  "area": "six_island_mart",
+  "bgmTrack": "kanto/sevii_67",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "still": true, "dialog": [ "Welcome! How can I help you?" ] },
+    "old_woman": { "name": "Old Woman", "dialog": [ "The ruins in the valley are older than anyone knows. Some say they're older than the islands." ] },
+    "picnicker": { "name": "Picnicker", "dialog": [ "Why not buy some Mail and write home? Your family would love a letter from the islands." ] }
+  }
+}

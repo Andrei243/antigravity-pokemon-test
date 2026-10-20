@@ -6,7 +6,7 @@
           "Tully"
         ],
         "text": [
-          ""
+          "Tully"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Fisherman Tully: The pond at the foot of the mountain is my spot. Let's see what you've reeled in!"
         ],
         "text": [
-          ""
+          "Pescar Tully: Iazul de la poalele muntelui e locul meu. Să vedem ce ai pescuit!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Fisherman Tully: You've hooked a better catch than me."
         ],
         "text": [
-          ""
+          "Pescar Tully: Ai prins o captură mai bună decât mine."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Shane"
         ],
         "text": [
-          ""
+          "Shane"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Poké Maniac Shane: My Nidoran are all grown up now! Want to see?"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Shane: Nidoran ai mei au crescut mari! Vrei să-i vezi?"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Poké Maniac Shane: They've grown, but not enough..."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Shane: Au crescut, dar nu destul..."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Benjamin"
         ],
         "text": [
-          ""
+          "Benjamin"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Hiker Benjamin: I came down off Mt. Mortar for some fresh air. A battle will do nicely!"
         ],
         "text": [
-          ""
+          "Drumeț Benjamin: Am coborât de pe Muntele Mortar să iau puțin aer proaspăt. O luptă mi-ar prinde bine!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Hiker Benjamin: Ha! Back up the mountain I go."
         ],
         "text": [
-          ""
+          "Drumeț Benjamin: Ha! Mă întorc pe munte."
         ]
       }
     }
@@ -85,7 +85,7 @@
         "Route 42\nEcruteak City is to the west."
       ],
       "text": [
-        ""
+        "Ruta 42\nOrașul Ecruteak e spre vest."
       ]
     },
     "R42_003+1": {
@@ -93,7 +93,7 @@
         "Mt. Mortar\nThe cave runs right through the mountain."
       ],
       "text": [
-        ""
+        "Muntele Mortar\nPeștera străbate muntele de la un capăt la altul."
       ]
     },
     "R42_004+1": {
@@ -101,7 +101,7 @@
         "Mt. Mortar\nThe cave runs right through the mountain."
       ],
       "text": [
-        ""
+        "Muntele Mortar\nPeștera străbate muntele de la un capăt la altul."
       ]
     },
     "R42_005+1": {
@@ -109,7 +109,7 @@
         "Route 42\nMahogany Town is to the east."
       ],
       "text": [
-        ""
+        "Ruta 42\nOrășelul Mahogany e spre est."
       ]
     }
   }

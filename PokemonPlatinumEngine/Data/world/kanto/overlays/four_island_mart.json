@@ -1,0 +1,10 @@
+{
+  // Four Island's Poké Mart (plan 19 · K9, part b): the common counter by the badges
+  "area": "four_island_mart",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "still": true, "dialog": [ "Welcome! How can I help you?" ] },
+    "old_man_1": { "name": "Old Man", "dialog": [ "Nothing here sells better than Ice Heals. Folk go into that cave and come out frozen stiff." ] },
+    "camper": { "name": "Camper", "dialog": [ "Icefall Cave is freezing! I went in once in shorts. Never again." ] }
+  }
+}

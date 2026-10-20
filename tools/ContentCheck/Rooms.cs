@@ -51,6 +51,14 @@ public static class Rooms
             Script(content, found, file, name, trigger.Script, room.Name, needed: true);
         }
 
+        // A tile that runs a script of its own when looked at (plan 08 · P8)
+        foreach (var read in source.TileScripts ?? new())
+        {
+            string name = $"the tile script at {read.X},{read.Y}";
+            if (!Inside(read.X, read.Y)) Add(Kind.Place, name, "stands outside the room");
+            Script(content, found, file, name, read.Script, room.Name, needed: true);
+        }
+
         foreach (var prop in source.Props)
             if (!Inside(prop.X, prop.Y) || !Inside(prop.X + prop.Width - 1, prop.Y + prop.Depth - 1))
                 Add(Kind.Place, $"the {prop.Type} at {prop.X},{prop.Y}", "reaches outside the room");

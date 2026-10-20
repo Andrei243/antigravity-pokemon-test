@@ -1,0 +1,192 @@
+{
+  "Poachers": [
+    {
+      "en": [
+        "Lorelei"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Keep your hands off those Pokémon! They live here, and they're not yours to take!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Pipe down, lady. Nobody asked you. Go and find somewhere else to skate."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lorelei"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}! What luck that you're here. Help me drive these poachers out of the cave!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Some kid wants to play hero? Fine. I'll freeze you out myself!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lorelei"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Now, where have you taken the Pokémon you caught? Tell me!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Like we'd tell you that!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lorelei"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Then perhaps my Lapras can loosen your tongue. It's very good at freezing things solid."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "W-wait! They're at our warehouse on Five Island, all right? Let's get out of here!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Lorelei"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Thank you, {player}. To think Team Rocket would come this far to steal Pokémon... It makes my blood run cold."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I grew up on this island, you know. I'll go home and think about what I can do. Please, come and see me."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Lorelei": [
+    {
+      "en": [
+        "Lorelei"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Team Rocket on my island... I won't stand for it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Grunt": [
+    {
+      "en": [
+        "Grunt"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Get lost, kid! This is grown-up business."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

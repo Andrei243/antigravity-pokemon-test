@@ -317,6 +317,26 @@ public class SoundTests
         Assert.Null(SoundBank.StepSound(TileBehavior.Sand));
     }
 
+    [Fact]
+    public void ADiverIsHeardOnceABreath()
+    {
+        // Plan 21 · H5: the bubbles of a breath on the sea floor are one sound of the field, over before the next breath
+        var entry = SoundBank.Entries.Single(e => e.Name == "bubbles");
+        Assert.Equal(SoundGroup.Field, entry.Group);
+        Assert.True(SoundBank.Get("bubbles")!.Duration < PokemonPlatinumEngine.Graphics.FieldLife.BreathEvery);
+
+        // The field's ten seconds on the sea floor: a breath at 2.8, 5.6 and 8.4, each a sound the engine plays
+        var floor = new Map(9, 9) { Name = "SeaSounds", Setting = MapSetting.Underwater };
+        var life = new PokemonPlatinumEngine.Graphics.FieldLife();
+        int breaths = 0;
+        for (int frame = 0; frame < 600; frame++)
+        {
+            life.Advance(1f / 60f);
+            breaths += life.Bubbles(floor, 4.5f, 4.5f);
+        }
+        Assert.Equal(3, breaths);
+    }
+
     // ------------------------------------------------------------------ a battle, heard
 
     /// <summary>What the game asks to hear while <paramref name="play"/> runs.</summary>

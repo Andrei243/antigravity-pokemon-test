@@ -1,0 +1,13 @@
+{
+  // The Water Labyrinth (plan 19 · K9, part b): FireRed's map, our words. A maze of shoals and rocks off Five Island's
+  // north-east, where an old gentleman gives an Egg to a trainer whose Pokémon trusts them fully
+  // (five_island_water_labyrinth.txt)
+  "area": "five_island_water_labyrinth",
+  "name": "Water Labyrinth",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "people": {
+    "gentleman": { "name": "Gentleman", "script": "EggGentleman", "still": true },
+    "woman_2": { "name": "Alize", "trainer": { "dialogueBefore": "Pokémon Breeder Alize: Breeding Pokémon takes patience. So does battling!", "dialogueAfter": "Pokémon Breeder Alize: I've lots of patience. Just not enough skill." } }
+  }
+}

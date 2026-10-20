@@ -529,6 +529,13 @@ public sealed class WorldRenderer
             darkAt = new Vector2(at.X / 1920f, (at.Y - 0.5f * (south.Y - at.Y)) / 1080f);
             darkTile = new Vector2((east.X - at.X) / 1920f, (south.Y - at.Y) / 1080f);
         }
+        // On the sea floor, where the floor's origin would be on the picture: the waves' light is pinned to it (plan 21 · H5)
+        underwater = player != null && map.IsUnderwater;
+        if (underwater)
+        {
+            OnPicture(camera.Target, camera, out var size);
+            seaPin = new Vector2(-camera.Target.X * size.X * 1920f, -camera.Target.Z * size.Y * 1080f);
+        }
         // Where the player's middle is on the picture, for whatever closes on them (a cave's way into a battle)
         PlayerOnPicture = player != null ? OnPicture(new Vector3(px, groundY, pz), camera, out _) : new Vector2(0.5f, 0.5f);
 
@@ -673,6 +680,7 @@ public sealed class WorldRenderer
         // A scene's ripple is read by the composite's own pass, and a burst's flash whitens everything over it
         var ripple = Life.Ripple;
         context.Composite(new Rectangle(0, 0, destWidth, destHeight), wavers.Reach > ripple.Reach ? wavers : ripple);
+        if (underwater) DrawCaustics(destWidth, destHeight);
         DrawWeather(destWidth, destHeight);
         if (dark) DrawDarkness(destWidth, destHeight);
         if (gymFog > 0f) DrawGymFog(destWidth, destHeight);
@@ -791,6 +799,30 @@ public sealed class WorldRenderer
         float falling = 0.55f + 0.45f * weatherLight;
         foreach (var block in weatherBlocks)
             Raylib.DrawRectangleRec(new Rectangle(block.X, block.Y, block.Width, block.Height), Dimmed(block.Color, falling));
+    }
+
+    private bool underwater;
+    private Vector2 seaPin;
+    private readonly List<HazeLayer> causticLayers = new();
+
+    /// <summary>
+    /// The light of the waves over the sea floor (plan 21 · H5; style guide, "The sea floor"): the caustic net added
+    /// over the picture in two layers, point-filtered and held to the field's texels, pinned to the floor
+    /// (<see cref="WeatherFx.Caustics"/>) and dimmed by the scene's light as the mist is.
+    /// </summary>
+    private void DrawCaustics(int destWidth, int destHeight)
+    {
+        causticLayers.Clear();
+        float wide = destWidth / 1920f, tall = destHeight / 1080f;
+        WeatherFx.Caustics(Life.Now, seaPin.X * wide, seaPin.Y * tall, causticLayers);
+        var texture = SceneTextures.Caustics;
+        Raylib.BeginBlendMode(BlendMode.Additive);
+        foreach (var layer in causticLayers)
+        {
+            var source = new Rectangle(-layer.OffsetX / layer.Scale, -layer.OffsetY / layer.Scale, destWidth / layer.Scale, destHeight / layer.Scale);
+            Raylib.DrawTexturePro(texture, source, new Rectangle(0, 0, destWidth, destHeight), Vector2.Zero, 0f, Dimmed(layer.Tint, weatherLight));
+        }
+        Raylib.EndBlendMode();
     }
 
     private readonly List<WeatherBlock> weatherBlocks = new();

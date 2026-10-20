@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Blackthorn's people have trained dragons since long before anyone wrote it down."
         ],
         "text": [
-          ""
+          "Oamenii din Blackthorn dresează dragoni de mult înainte să fi scris cineva despre asta."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The Dragon's Den is behind the Gym. Only those the elder thinks worthy may train in there."
         ],
         "text": [
-          ""
+          "Bârlogul Dragonilor e în spatele Arenei. Doar cei pe care bătrânul îi consideră demni se pot antrena acolo."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Dragons are the strongest Pokémon there are! When I grow up, I'll have a Dragonite!"
         ],
         "text": [
-          ""
+          "Dragonii sunt cei mai puternici Pokémoni care există! Când o să cresc, o să am un Dragonite!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "Did you come through the Ice Path? You must be frozen! The Pokémon Center's warm, at least."
         ],
         "text": [
-          ""
+          "Ai venit prin Calea de Gheață? Brr, ce frig! Măcar Centrul Pokémon e cald."
         ]
       }
     }
@@ -79,7 +79,7 @@
         "Blackthorn City\nA quiet mountain retreat."
       ],
       "text": [
-        ""
+        "Orașul Blackthorn\nUn refugiu liniștit la munte."
       ]
     },
     "T30_009+1": {
@@ -87,7 +87,7 @@
         "Blackthorn City Pokémon Gym\nLeader: Clair"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orașul Blackthorn\nLideră: Clair"
       ]
     },
     "T30_010+1": {
@@ -95,7 +95,7 @@
         "A house of moves\nForget a move, or remember one."
       ],
       "text": [
-        ""
+        "Casa mișcărilor\nUită o mișcare sau amintește-ți una."
       ]
     },
     "T30_011+1": {
@@ -103,7 +103,7 @@
         "Dragon's Den\nHoly ground of Blackthorn's dragon tamers."
       ],
       "text": [
-        ""
+        "Bârlogul Dragonilor\nLoc sfânt al îmblânzitorilor de dragoni din Blackthorn."
       ]
     },
     "T30_012+1": {
@@ -111,7 +111,7 @@
         "Blackthorn City\nRoute 45 is to the south."
       ],
       "text": [
-        ""
+        "Orașul Blackthorn\nRuta 45 e spre sud."
       ]
     }
   }

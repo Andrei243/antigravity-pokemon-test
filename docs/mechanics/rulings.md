@@ -3080,17 +3080,22 @@ Platinum has no Dive in the field, so the field move follows Emerald (`TrySetupD
   overworld's own coordinates, so a dive lands on the same tile (469 tiles each way, none astray). The floors under the
   Seafloor Cavern, Sootopolis and the Marine Cave are matrices of their own for H8 and H12. Only `underwater_route_124`
   is open; the rest is rock until its route opens.
-- **Under the sea battles are fought on the water's ground and stage** (`BattleTerrain.Water`, `Map.ArenaAt`) until part
-  b's `BattleArena.Underwater`; Dive the move in battle is unchanged.
+- **Under the sea battles are fought on the water's ground and the sea floor's own stage**: `BattleTerrain.Water` (so the
+  Dive Ball, Nature Power, Camouflage and Secret Power read as they do on the water, which is where Platinum's rules
+  would put Emerald's underwater terrain) and, since part b, `BattleArena.Underwater` (`Map.ArenaAt` on an underwater
+  map, whatever the seabed). Its look is ours: Emerald's underwater battle background has no counterpart in Platinum.
+  Dive the move in battle is unchanged.
 - **Route 124 waits for Lilycove**: it is reached by sea from Lilycove City (H7), so a walk of the game finds it only
   through `WorldWalk.OpenedAhead` (the sand before the treasure hunter's house), which H7 takes off. Its song is
   `hoenn/route104` until Emerald's Route 120 song is written; the treasure hunter's house is `locked` until H8.
 - **Saves**: a game saved under the sea keeps `TravelMode.Diving` as one saved surfing keeps surfing, and a player on an
   underwater map always settles diving (and off one never does). No version was raised: no older save can stand on a map
   that didn't exist, so none is touched.
-- **Still to come (part b)**: the caustic layer and the diver's bubbles, `BattleArena.Underwater` and its stage,
-  `AmbienceBed.Underwater`, the floors under Routes 125 to 128 with their routes (H8), and the frame weighed with
-  `profile`.
+- **The sea floor's light, bubbles and sound are ours** (part b): Emerald draws the light of the waves and a diver's
+  bubbles as a field effect and plays its own underwater song; ours are the style guide's caustic layers, a breath
+  every 2.8 seconds of the field's clock heard as `bubbles`, and `AmbienceBed.Underwater` alone under whatever weather
+  is above. Still to come: the floors under Routes 125 to 128 with their routes (H8), and the frame weighed with
+  `profile` on the user's machine.
 
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
@@ -3339,6 +3344,59 @@ its part of the errand hasn't reached, so a save from before K9 finds the island
   first three islands; Four to Seven are part b's. Two Island's Poké Maniac, FireRed's link trader, is not there.
 - **Moltres** waits on Mt. Ember's summit at level 50 until it has been fought, as Zapdos and Articuno.
 
+## The last Sevii Islands (2026-10-20, plan 19 · K9, part b)
+
+Four to Seven Island, their caves and rooms, Cerulean Cave and the end of Celio's errand, as scripts of ours on
+FireRed's beats and flags (`FourIsland`, `FourIsland_IcefallCave_Back`, `FourIsland_LoreleisHouse`,
+`SixIsland_PokemonCenter_1F`, `SixIsland_RuinValley`, `SixIsland_DottedHole_SapphireRoom`, `FiveIsland_Meadow`,
+`FiveIsland_RocketWarehouse`, `OneIsland_PokemonCenter_1F`, `SevenIsland_SevaultCanyon_TanobyKey`,
+`FiveIsland_LostCave_Room10`, `FiveIsland_ResortGorgeous`, `CeruleanCave_B1F`), in our own words. No story version
+was raised: each place's arrival hides whoever its part of the errand hasn't reached.
+
+- **The Rainbow Pass sails anywhere.** A holder of it is asked first which waters (Kanto, One to Three Island, Four to
+  Seven Island) and then which port (`common.SeagallopRainbow`, every harbour's `VAR_SEAGALLOP_HERE` 0 to 8, FireRed's
+  `SEAGALLOP_*` numbers); the Tri-Pass alone still sails as in part a. The ships at the four new harbours stay out of
+  sight, as One Island's does.
+- **The rival meets the player once**, on Four Island or in Six Island's Pokémon Center, whichever comes first
+  (FireRed's two scenes and their shared `VAR_MAP_SCENE_FOUR_ISLAND`); he only talks, as FireRed's. Both play on
+  arrival, with a fade where FireRed walks him off.
+- **Icefall Cave's poachers.** The scene on the back room's three triggers is FireRed's: Lorelei, the grunts, one
+  battle (`kanto_team_rocket_grunt_45`), her Lapras, the warehouse named. It also takes the scientist from before the
+  Dotted Hole's door in Ruin Valley (`FLAG_HIDE_RUIN_VALLEY_SCIENTIST`), so the door is come to only after the cave,
+  and puts Lorelei at home among her dolls (all of which are shown, where FireRed shows each by a draw of its own).
+  HM07 is the cave's own item ball, as FireRed's.
+- **The Dotted Hole's door is Cut on its dots** (FireRed's braille, which spells CUT): read, it asks, and a team that
+  knows Cut with the Cascade Badge opens it for good (`FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE` on the door's
+  `openedBy`). The Sapphire is snatched in its room by the scientist who followed the player, who gives away the
+  warehouse's second password as he goes; the room's tremor is a `camera shake`.
+- **The passwords are ours.** Mt. Ember's grunts let slip the first ('Seel the deal') and the Dotted Hole's thief the
+  second ('Ekans ate the cake'); FireRed's two are its own words and are not used. The keypad by the warehouse's door
+  is read, and with both (`FLAG_LEARNED_YES_NAH_CHANSEY`) opens the door (`FLAG_UNLOCKED_ROCKET_WAREHOUSE`).
+- **The warehouse.** The admin on the trigger row calls the player over; beaten, the whole of Team Rocket leaves with
+  a fade (`FLAG_HIDE_FIVE_ISLAND_ROCKETS`, `FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE`). FireRed's spin arrows are not laid
+  on the floor. Gideon battles for the Sapphire and gives it up (`FLAG_RECOVERED_SAPPHIRE`); the Sapphire is an item
+  of ours, id 9037, as the Ruby.
+- **Celio's last scene.** Given the Sapphire he finishes the machine and it links the islands with Hoenn (6,
+  `FLAG_SYS_CAN_LINK_WITH_RS`): Cerulean Cave's guard goes (`FLAG_HIDE_CERULEAN_CAVE_GUARD`), Lorelei goes back to
+  the League (`FLAG_HIDE_LORELEI_IN_HER_HOUSE`), and the Elite Four and the Champion battle with FireRed's second
+  teams (`kanto_elite_four_<name>_2`, `kanto_champion_rematch_<starter>`). FireRed's roaming beast is not let loose.
+- **The Tanoby Key.** Its seven floor switches are pits (`pits` in the overlay): a boulder come to rest on one sets a
+  local flag of ours (`FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1` to `_7`), and the seventh opens the seven chambers for good
+  (`FLAG_SYS_UNLOCKED_TANOBY_RUINS` on their doors' `openedBy`). Leaving the room forgets a half-done puzzle, as the
+  boulders are put back.
+- **Selphy** battles the player as they come into the Lost Cave's tenth room and is led home at once (FireRed has her
+  walk behind the player); she thanks them before her door and is at home from then on. Her wishes are not written.
+- **The Memorial Pillar** takes one Lemonade for TM42; FireRed's flag for a full bag is not needed, since the TM
+  always fits.
+- **The Water Labyrinth's Egg** is Togepi's, for a lead at full friendship (`LEAD_FRIENDSHIP` 255), and waits for room
+  on the team.
+- **The tutors.** Four Island's big man teaches Body Slam and Seven Island's cooltrainer Swords Dance, once each
+  (`Models/MoveTutors.cs`'s Kanto table: Body Slam's kin among Platinum's machines is Return, Swords Dance is TM75);
+  Cape Brink's old woman teaches the strongest move of a starter's last form as Route 228's master does, to the twelve
+  starters of Kanto to Sinnoh fully grown, where FireRed's knows only Kanto's three.
+- **Mewtwo** waits at the bottom of Cerulean Cave at level 70 until fought, as the birds; a run from it hides it until
+  the cave is come to again.
+
 ## Johto's second chapter (2026-10-18, plan 20 · J7)
 
 From the Slowpoke Well to the Fog Badge, as scripts of ours on HeartGold's beats and flags (`scr_seq_T23`, `D26R0102`,
@@ -3563,3 +3621,34 @@ Routes 26 and 27, Tohjo Falls, Victory Road and the Indigo Plateau are part b's.
   `blackthorn` and `dragons_den`, our own; Mt. Mortar plays `union_cave` and Routes 45 and 46 `route34`, as HeartGold's
   headers share theirs, and the Gyms `gym`.
 - **Fly** lands before Mahogany's and Blackthorn's Pokémon Centers (spawns 9 and 10). The Indigo Plateau's is part b's.
+
+## The way to the Indigo Plateau (2026-10-20, plan 20 · J10, part b)
+
+Route 27 and Tohjo Falls, Route 26, the League's reception gate with Kanto's Route 22 beside it, Victory Road and the
+Indigo Plateau with the League's hall and rooms, from HeartGold's maps, events and tables, in our own words and music.
+
+- **Three keys take Johto's prefix**: HeartGold names its Victory Road's floors, Route 22 and the Hall of Fame as
+  Platinum and FireRed name theirs, and a place's scripts are found by its area's key alone, whatever the region. Those
+  keys are written `johto_…` by the importer (`HgWorld.Clashes`: `johto_victory_road_1f` to `3f`, `johto_route_22`,
+  `johto_pokemon_league_hall_of_fame`); every other key of the stretch is HeartGold's own. The rest of HeartGold's
+  Kanto meets FireRed's keys the same way, which J15 settles when it opens it.
+- **The League's rooms are places only**: Will's, Koga's, Bruno's, Karen's and Lance's rooms and the Hall of Fame are
+  open with nobody in them, and every door between them stands open, since the battles, the doors that shut behind a
+  challenger and open once the master is beaten, the guard who counts the Badges at the hall's door, Lance's, Professor
+  Oak's and Mary's scene and the Hall of Fame's are the fifth chapter's (J12). The rival who waits in Victory Road is
+  J12's too.
+- **The reception gate**: HeartGold's guard asks for the eight Johto Badges on the tile before Victory Road's door
+  (`VAR_UNK_4110`, its own variable, set once he lets the player by); ours does, in our words, and steps whoever is
+  short of them back. The door east to Kanto's Route 22 is held by the same gate's other trigger, which turns everyone
+  back for now: HeartGold opens it once the player has been to the Hall of Fame, and asking `JohtoHallOfFame` before
+  J12 sets it would be a flag nothing sets. The door west to Route 28 is locked until J15 opens Mt. Silver's side.
+- **Left out**: Giovanni in Tohjo Falls' hidden room, who belongs to a distributed event of HeartGold's (Celebi), not to
+  its story; the week siblings in Route 26's house, who come with the days (J13); the trainer on Route 26 that the
+  original holds back for its story.
+- **The League's look** (the style guide's "Buildings"): one building on the Plateau with its Pokémon Center and Mart
+  inside, pale stone under a red hip roof, arched windows and glass doors, `LEAGUE` over its entrance; not Sinnoh's
+  tiers. Its rooms keep a room's look for now. Routes 26 and 27's houses are Viridian's (`Architecture.Evergreen`).
+- **Music**: `johto/route26` (Routes 26, 27 and 22, the gate and the houses; HeartGold's Route 22 plays a theme of
+  Kanto's own, which comes with J15), `victory_road`, `indigo_plateau`, `battle_elite_four` and `battle_champion`, our
+  own; Tohjo Falls plays `union_cave`.
+- **Fly** lands before the League's door on the Plateau (spawn 11), once it has been come to.

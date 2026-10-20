@@ -1,0 +1,9 @@
+{
+  // The Tanoby Key (plan 19 · K9, part b): FireRed's map. A small chamber of boulders in Sevault Canyon's side; each
+  // boulder pushed onto one of the seven switches in its floor presses it, and with all seven pressed something stirs
+  // in the Tanoby Ruins (seven_island_sevault_canyon_tanoby_key.txt)
+  "area": "seven_island_sevault_canyon_tanoby_key",
+  "name": "Tanoby Key",
+  "bgmTrack": "kanto/sevii_dungeon",
+  "pits": [ { "x": 7, "z": 2, "script": "Switch1" }, { "x": 4, "z": 4, "script": "Switch2" }, { "x": 10, "z": 4, "script": "Switch3" }, { "x": 5, "z": 6, "script": "Switch4" }, { "x": 9, "z": 6, "script": "Switch5" }, { "x": 5, "z": 8, "script": "Switch6" }, { "x": 9, "z": 8, "script": "Switch7" } ]
+}

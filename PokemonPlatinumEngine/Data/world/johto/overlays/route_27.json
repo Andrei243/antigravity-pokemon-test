@@ -1,0 +1,63 @@
+{
+  // Route 27 (plan 20 · J10, part b): the long road east from New Bark Town, through Tohjo Falls and along the coast to
+  // the foot of Route 26. Its six trainers by their own records; the man at its west end only talks (his welcome to
+  // Kanto as the player first comes through is plan 20 · J12's scene). It plays the road's song of its own
+  "area": "route_27",
+  "bgmTrack": "johto/route26",
+  "trees": "Round",
+  "people": {
+    "r27_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "Past those falls, the road runs all the way to the Pokémon League. Only the strongest trainers make it there."
+      ]
+    },
+    "r27_gswoman3": {
+      "name": "Megan",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Megan: Few trainers make it this far. Show me why you're one of them!",
+        "dialogueAfter": "Ace Trainer Megan: I see. You really are on your way to the League."
+      }
+    },
+    "r27_gsman3": {
+      "name": "Blake",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Blake: I came all this way to train by the sea. You'll do nicely!",
+        "dialogueAfter": "Ace Trainer Blake: The waves are calmer than my head right now."
+      }
+    },
+    "r27_gsman2": {
+      "name": "Jose",
+      "trainer": {
+        "dialogueBefore": "Bird Keeper Jose: My bird and I have flown over every cliff on this coast. Let's go!",
+        "dialogueAfter": "Bird Keeper Jose: Grounded, just like that."
+      }
+    },
+    "r27_gsman3_2": {
+      "name": "Brian",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Brian: One Pokémon, raised with everything I've got. That's all I need!",
+        "dialogueAfter": "Ace Trainer Brian: Maybe I need a second one after all."
+      }
+    },
+    "r27_mystery_2": {
+      "name": "Eli",
+      "trainer": {
+        "dialogueBefore": "Psychic Eli: I saw this battle in a dream last night. I wonder how it ends...",
+        "dialogueAfter": "Psychic Eli: My dream left out the ending. Now I know why."
+      }
+    },
+    "r27_gswoman3_2": {
+      "name": "Reena",
+      "trainer": {
+        "dialogueBefore": "Ace Trainer Reena: The sea breeze keeps my team sharp. Ready for a real battle?",
+        "dialogueAfter": "Ace Trainer Reena: Sharp, but not sharp enough..."
+      }
+    }
+  },
+  "signs": {
+    "R27_002+1": "Tohjo Falls\nThe water falls where Johto's coast meets Kanto's.",
+    "R27_004+1": "Route 27\nTohjo Falls lies to the west, the road to the League to the east."
+  }
+}

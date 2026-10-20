@@ -4,7 +4,7 @@
       "Berry Forest"
     ],
     "text": [
-      ""
+      "Pădurea Berry"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Lostelle"
         ],
         "text": [
-          ""
+          "Lostelle"
         ]
       }
     }
@@ -25,7 +25,7 @@
         "Watch your step! Wild Pokémon live deep in this forest. Don't wander off alone."
       ],
       "text": [
-        ""
+        "Ai grijă pe unde calci! Pokémoni sălbatici trăiesc adânc în pădurea asta. Nu te aventura prea departe fără companie."
       ]
     },
     "ThreeIsland_BerryForest_EventScript_WelcomeSign": {
@@ -33,7 +33,7 @@
         "Welcome to Berry Forest\nPlease share the berries with the Pokémon."
       ],
       "text": [
-        ""
+        "Bun venit în Pădurea Berry\nVă rugăm să împărțiți boabele cu Pokémonii."
       ]
     }
   }

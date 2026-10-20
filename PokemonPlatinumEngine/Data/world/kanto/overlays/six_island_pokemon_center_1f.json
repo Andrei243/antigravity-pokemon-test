@@ -1,0 +1,12 @@
+{
+  // Six Island's Pokémon Center (plan 19 · K9, part b). The rival is here the first time the player comes in
+  // (six_island_pokemon_center_1f.txt)
+  "area": "six_island_pokemon_center_1f",
+  "bgmTrack": "kanto/sevii_67",
+  "people": {
+    "six_island_nurse": { "name": "Nurse", "script": "Nurse" },
+    "six_island_rival": { "name": "{rival}", "still": true, "dialog": [ "Smell you later, {player}!" ] },
+    "hiker": { "name": "Hiker", "dialog": [ "They say there's something hidden on this island. Something old, and precious." ] },
+    "old_man_2": { "name": "Old Man", "dialog": [ "Some Pokémon evolve when they're traded holding a certain item. Curious, isn't it?" ] }
+  }
+}

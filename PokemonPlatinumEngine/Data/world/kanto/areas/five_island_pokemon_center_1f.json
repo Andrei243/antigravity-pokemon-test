@@ -1,0 +1,30 @@
+{
+  "key": "five_island_pokemon_center_1f",
+  "index": 409,
+  "name": "Five Island",
+  "matrix": 356,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "five_island", "toWarp": 1 },
+    { "x": 1, "z": 6, "to": "five_island_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "five_island_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FiveIsland_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "cooltrainer_f", "looks": "cooltrainer_f", "movement": "look_north", "x": 9, "z": 4, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "FiveIsland_PokemonCenter_1F_EventScript_CooltrainerF" },
+    { "id": "chef", "looks": "chef", "movement": "wander_west_and_east", "x": 4, "z": 8, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "FiveIsland_PokemonCenter_1F_EventScript_Chef" },
+    { "id": "0", "looks": "0", "movement": "invisible", "x": 2, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "FiveIsland_PokemonCenter_1F_EventScript_PokemonJournal" },
+    { "id": "0_2", "looks": "0", "movement": "invisible", "x": 3, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "FiveIsland_PokemonCenter_1F_EventScript_PokemonJournal" }
+  ],
+  "signs": [],
+  "triggers": []
+}

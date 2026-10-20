@@ -1,0 +1,27 @@
+{
+  "key": "indigo_plateau",
+  "index": 58,
+  "name": "Indigo Plateau",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "GS_CHAMPROAD",
+  "nightMusic": "GS_CHAMPROAD",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "warps": [
+    { "x": 912, "z": 218, "to": "johto_victory_road_3f", "toWarp": 0 },
+    { "x": 912, "z": 200, "to": "pokemon_league_entrance", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [
+    { "x": 914, "z": 202, "type": 1, "script": "T10_000+1" },
+    { "x": 910, "z": 209, "type": 2, "script": "std_hiddenitem_t10_rare_candy", "item": "Rare Candy", "flag": "FLAG_HIDDEN_ITEM_T10_RARE_CANDY" }
+  ],
+  "triggers": []
+}

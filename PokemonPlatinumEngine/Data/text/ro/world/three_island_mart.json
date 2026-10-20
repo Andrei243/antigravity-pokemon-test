@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Picnicker"
         ],
         "text": [
-          ""
+          "Excursionistă"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Even out here, the Mart has everything you'd need on a journey. Isn't that something?"
         ],
         "text": [
-          ""
+          "Chiar și aici, Martul are tot ce-ți trebuie într-o călătorie. Nu e minunat?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Bug Catcher"
         ],
         "text": [
-          ""
+          "Vânătorul de insecte"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I came to the islands to catch new bugs. Heracross live in trees somewhere round here!"
         ],
         "text": [
-          ""
+          "Am venit pe insule să prind insecte noi. Heracross trăiesc prin copaci pe undeva pe aici!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Youngster"
         ],
         "text": [
-          ""
+          "Puștiul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "If you're heading out to sea, stock up on Repels. The water's full of Tentacool."
         ],
         "text": [
-          ""
+          "Dacă pornești pe mare, fă provizii de Spray-uri. Apa e plină de Tentacool."
         ]
       }
     }

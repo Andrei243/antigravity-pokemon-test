@@ -6,7 +6,7 @@
           "Gym Guide"
         ],
         "text": [
-          ""
+          "Ghidul Arenei"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "Pryce is away from his Gym for now. His trainers are inside, though, and they love the cold."
         ],
         "text": [
-          "",
-          ""
+          "Brr! Podeaua de aici e numai gheață. Odată ce începi să aluneci, nu te oprești până nu dai de ceva!",
+          "Pryce e plecat din Arena lui deocamdată. Antrenorii lui sunt înăuntru, însă, și iubesc frigul."
         ]
       }
     }
@@ -27,7 +27,7 @@
         "Mahogany Town Pokémon Gym\nLeader: Pryce"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orășelul Mahogany\nLider: Pryce"
       ]
     }
   }

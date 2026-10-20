@@ -1,0 +1,214 @@
+{
+  "displayName": {
+    "en": [
+      "Resort Gorgeous"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "lass": {
+      "name": {
+        "en": [
+          "Daisy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Painter Daisy: I'm painting the sea. Stand still, you'll be in the picture!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Painter Daisy: I'll paint you as the winner."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_2": {
+      "name": {
+        "en": [
+          "Celina"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Painter Celina: My brush is ready, and so are my Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Painter Celina: My colours have run."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "lass_3": {
+      "name": {
+        "en": [
+          "Rayna"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Painter Rayna: A battle is a picture that moves! Let's paint one together."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Painter Rayna: Not my best work."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2": {
+      "name": {
+        "en": [
+          "Jacki"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Jacki: A lady never refuses a battle. Do try to keep up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Jacki: How very unladylike of me to lose."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "woman_2_2": {
+      "name": {
+        "en": [
+          "Gillian"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Lady Gillian: My Pokémon are groomed every morning. Are yours?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Lady Gillian: Groomed, but not quite good enough."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "youngster": {
+      "name": {
+        "en": [
+          "Destin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Youngster Destin: My parents rent a villa here every summer. I'm bored! Battle me!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Youngster Destin: Now I'm bored and beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water": {
+      "name": {
+        "en": [
+          "Toby"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Toby: The resort's beach is the best place to swim. And to battle!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Toby: I'll just float here for a bit."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "resort_gorgeous_selphy": {
+      "name": {
+        "en": [
+          "Selphy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FiveIsland_ResortGorgeous_EventScript_SelphysHouseSign": {
+      "en": [
+        "Selphy's House"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

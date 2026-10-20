@@ -50,8 +50,8 @@ script FerrySailor
   speaker "Sailor"
   # Plan 19 · K7: with the Tri-Pass, the Seagallop sails from here to One Island (FireRed's
   # VermilionCity_EventScript_ChooseSeagallopDestTriPass), and since plan 19 · K9, part a to Two and Three Island too,
-  # with the Tri-Pass or the Rainbow Pass that takes its place (the Rainbow Pass's other four islands are part b's)
-  if item "Rainbow Pass" goto Seagallop
+  # with the Tri-Pass; since part b the Rainbow Pass sails to every port (common.SeagallopRainbow)
+  if item "Rainbow Pass" goto Rainbow
   if item "Tri-Pass" goto Seagallop
   if var VAR_MAP_SCENE_VERMILION_CITY == 3 goto Sailed
   say "Welcome to the S.S. Anne! Have your ticket ready at the gangway, please."
@@ -78,6 +78,11 @@ label Two
 label Three
   say "All aboard! Next stop, Three Island!"
   call SeagallopToThreeIsland
+  end
+label Rainbow
+  say "Ah, a pass for the Seagallop! She's ready whenever you are."
+  setvar VAR_SEAGALLOP_HERE 0
+  call SeagallopRainbow
   end
 
 

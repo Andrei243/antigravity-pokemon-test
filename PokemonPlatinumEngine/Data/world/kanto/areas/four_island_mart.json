@@ -1,0 +1,27 @@
+{
+  "key": "four_island_mart",
+  "index": 408,
+  "name": "Four Island",
+  "matrix": 355,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "four_island", "toWarp": 7 }
+  ],
+  "objects": [
+    { "id": "clerk", "looks": "clerk", "movement": "look_east", "x": 2, "z": 3, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_Mart_EventScript_Clerk" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "look_east", "x": 6, "z": 5, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_Mart_EventScript_OldMan" },
+    { "id": "camper", "looks": "camper", "movement": "wander_around", "x": 8, "z": 3, "facing": 1, "rangeX": 2, "rangeZ": 1, "script": "FourIsland_Mart_EventScript_Camper" }
+  ],
+  "signs": [],
+  "triggers": []
+}

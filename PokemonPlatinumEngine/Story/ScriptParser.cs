@@ -803,6 +803,11 @@ public static class ScriptParser
                 return new Instruction { Op = Op.Save, Line = line };
             case "credits":
                 return new Instruction { Op = Op.Credits, Line = line };
+            // Furniture and the programmes (plan 08 · P8): a television's programme, and a map on a wall
+            case "broadcast":
+                return new Instruction { Op = Op.Broadcast, Line = line };
+            case "townmap":
+                return new Instruction { Op = Op.TownMap, Line = line };
             // The move tutors and the Move Deleter (plan 01 · M11, part d)
             case "tutor":
             {

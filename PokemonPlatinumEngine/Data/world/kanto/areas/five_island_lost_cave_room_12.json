@@ -1,0 +1,41 @@
+{
+  "key": "five_island_lost_cave_room_12",
+  "index": 189,
+  "name": "Lost Cave",
+  "matrix": 153,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "five_island_lost_cave_room_12",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Gastly", "level": 40 },
+    { "species": "Zubat", "level": 37 },
+    { "species": "Haunter", "level": 44 },
+    { "species": "Haunter", "level": 46 },
+    { "species": "Golbat", "level": 41 },
+    { "species": "Murkrow", "level": 15 },
+    { "species": "Murkrow", "level": 20 },
+    { "species": "Haunter", "level": 48 },
+    { "species": "Haunter", "level": 50 },
+    { "species": "Murkrow", "level": 22 },
+    { "species": "Haunter", "level": 52 },
+    { "species": "Murkrow", "level": 22 }
+  ],
+  "landRate": 5,
+  "warps": [
+    { "x": 5, "z": 8, "to": "five_island_lost_cave_room_1", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 5, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_LOST_CAVE_ROOM12_SEA_INCENSE", "item": "Sea Incense", "script": "FiveIsland_LostCave_Room12_EventScript_ItemSeaIncense" }
+  ],
+  "signs": [],
+  "triggers": []
+}

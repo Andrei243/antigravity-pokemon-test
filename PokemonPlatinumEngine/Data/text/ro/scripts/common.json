@@ -9,6 +9,62 @@
       ]
     }
   ],
+  "Television": [
+    {
+      "en": [
+        "TV"
+      ],
+      "text": [
+        "Televizor"
+      ]
+    }
+  ],
+  "Bookshelf": [
+    {
+      "en": [
+        "The shelves are packed with books about Pokémon and the places they live."
+      ],
+      "text": [
+        "Rafturile sunt pline de cărți despre Pokémoni și locurile în care trăiesc."
+      ]
+    },
+    {
+      "en": [
+        "A row of books on raising Pokémon. Someone has marked a great many pages."
+      ],
+      "text": [
+        "Un șir de cărți despre creșterea Pokémonilor. Cineva a însemnat o mulțime de pagini."
+      ]
+    },
+    {
+      "en": [
+        "Picture books, travel guides and an old atlas, all lined up neatly."
+      ],
+      "text": [
+        "Cărți cu poze, ghiduri de călătorie și un atlas vechi, toate frumos aliniate."
+      ]
+    }
+  ],
+  "TrashCan": [
+    {
+      "en": [
+        "Nothing in it but a few scraps of paper."
+      ],
+      "text": [
+        "Nimic înăuntru, doar câteva petice de hârtie."
+      ]
+    }
+  ],
+  "TownMap": [
+    {
+      "en": [
+        "It's a map of the region, but it's too faded to make out."
+      ],
+      "text": [
+        "E o hartă a regiunii, dar e prea ștearsă ca să se mai vadă ceva."
+      ]
+    }
+  ],
   "BerryPatch": [
     {
       "en": [
@@ -565,7 +621,7 @@
         "The water here is dark and very deep. Use Dive to go down?"
       ],
       "text": [
-        ""
+        "Apa de aici e întunecată și foarte adâncă. Folosești mișcarea Scufundare ca să cobori?"
       ]
     },
     {
@@ -573,7 +629,7 @@
         "The water here is dark and very deep. A Pokémon might be able to dive into it."
       ],
       "text": [
-        ""
+        "Apa de aici e întunecată și foarte adâncă. Un Pokémon ar putea să se scufunde în ea."
       ]
     }
   ],
@@ -583,7 +639,7 @@
         "Sunlight shimmers on the water far overhead. Use Dive to swim up?"
       ],
       "text": [
-        ""
+        "Lumina soarelui sclipește pe apă, departe deasupra. Folosești mișcarea Scufundare ca să urci la suprafață?"
       ]
     },
     {
@@ -591,7 +647,7 @@
         "Sunlight shimmers on the water far overhead. A Pokémon might be able to swim up to it."
       ],
       "text": [
-        ""
+        "Lumina soarelui sclipește pe apă, departe deasupra. Un Pokémon ar putea să înoate până la ea."
       ]
     }
   ],
@@ -1250,6 +1306,184 @@
       ],
       "text": [
         "Seagallop a străbătut valurile în goană până la Insula Unu."
+      ]
+    }
+  ],
+  "SeagallopRainbow": [
+    {
+      "en": [
+        "Where would you like to sail?",
+        "KANTO",
+        "ONE TO THREE ISLAND",
+        "FOUR TO SEVEN ISLAND",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which port of Kanto?",
+        "VERMILION CITY",
+        "CINNABAR ISLAND",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which island?",
+        "ONE ISLAND",
+        "TWO ISLAND",
+        "THREE ISLAND",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Which island?",
+        "FOUR ISLAND",
+        "FIVE ISLAND",
+        "SIX ISLAND",
+        "SEVEN ISLAND",
+        "NOT NOW"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back any time."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Vermilion City!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Cinnabar Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for One Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Two Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Three Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Four Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Five Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Six Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "All aboard for Seven Island!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ha! We're moored right here already. Pick another port, and we'll cast off."
+      ],
+      "text": [
+        ""
       ]
     }
   ],

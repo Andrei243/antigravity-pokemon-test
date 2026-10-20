@@ -1,0 +1,44 @@
+{
+  "key": "four_island_icefall_cave_b1f",
+  "index": 154,
+  "name": "Icefall Cave",
+  "matrix": 118,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "four_island_icefall_cave_b1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Swinub", "level": 25 },
+    { "species": "Golbat", "level": 45 },
+    { "species": "Seel", "level": 45 },
+    { "species": "Swinub", "level": 27 },
+    { "species": "Zubat", "level": 40 },
+    { "species": "Swinub", "level": 29 },
+    { "species": "Delibird", "level": 30 },
+    { "species": "Swinub", "level": 31 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Swinub", "level": 23 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Swinub", "level": 23 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 12, "z": 12, "to": "four_island_icefall_cave_1f", "toWarp": 2 },
+    { "x": 12, "z": 3, "to": "four_island_icefall_cave_1f", "toWarp": 3 },
+    { "x": 15, "z": 16, "to": "four_island_icefall_cave_1f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 10, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FOUR_ISLAND_ICEFALL_CAVE_B1F_FULL_RESTORE", "item": "Full Restore", "script": "FourIsland_IcefallCave_B1F_EventScript_ItemFullRestore" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 21, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FOUR_ISLAND_ICEFALL_CAVE_B1F_NEVER_MELT_ICE", "item": "Never-Melt Ice", "script": "FourIsland_IcefallCave_B1F_EventScript_ItemNeverMeltIce" }
+  ],
+  "signs": [],
+  "triggers": []
+}

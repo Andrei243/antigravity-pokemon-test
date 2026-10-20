@@ -1,0 +1,86 @@
+{
+  "key": "six_island_ruin_valley",
+  "index": 248,
+  "name": "Ruin Valley",
+  "matrix": 196,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "six_island_ruin_valley",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Natu", "level": 15 },
+    { "species": "Spearow", "level": 44 },
+    { "species": "Yanma", "level": 18 },
+    { "species": "Wooper", "level": 15 },
+    { "species": "Fearow", "level": 49 },
+    { "species": "Meowth", "level": 43 },
+    { "species": "Wobbuffet", "level": 25 },
+    { "species": "Psyduck", "level": 41 },
+    { "species": "Natu", "level": 20 },
+    { "species": "Persian", "level": 49 },
+    { "species": "Natu", "level": 20 },
+    { "species": "Persian", "level": 52 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Wooper", "level": 5, "maxLevel": 20 },
+    { "species": "Wooper", "level": 10, "maxLevel": 20 },
+    { "species": "Wooper", "level": 15, "maxLevel": 25 },
+    { "species": "Wooper", "level": 20, "maxLevel": 25 },
+    { "species": "Wooper", "level": 20, "maxLevel": 25 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 48, "z": 184, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "ruin_valley_scientist", "looks": "scientist", "movement": "look_north", "x": 48, "z": 185, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RUIN_VALLEY_SCIENTIST", "script": "SixIsland_RuinValley_EventScript_Scientist" },
+    { "id": "hiker", "looks": "hiker", "movement": "look_south_and_west", "x": 56, "z": 171, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 4, "script": "TRAINER_RUIN_MANIAC_STANLY" },
+    { "id": "hiker_2", "looks": "hiker", "movement": "look_west_and_east", "x": 57, "z": 176, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_RUIN_MANIAC_FOSTER" },
+    { "id": "hiker_3", "looks": "hiker", "movement": "look_west", "x": 55, "z": 184, "facing": 2, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "script": "TRAINER_RUIN_MANIAC_LARRY" },
+    { "id": "hiker_4", "looks": "hiker", "movement": "look_south", "x": 38, "z": 170, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_HIKER_DARYL" },
+    { "id": "poke_maniac", "looks": "poke_maniac", "movement": "wander_around", "x": 45, "z": 189, "facing": 1, "rangeX": 2, "rangeZ": 3, "trainer": "normal", "sight": 1, "script": "TRAINER_POKEMANIAC_HECTOR" },
+    { "id": "pushable_boulder", "looks": "pushable_boulder", "movement": "look_around", "x": 41, "z": 170, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_2", "looks": "pushable_boulder", "movement": "look_around", "x": 41, "z": 172, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_3", "looks": "pushable_boulder", "movement": "look_around", "x": 42, "z": 171, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_4", "looks": "pushable_boulder", "movement": "look_around", "x": 30, "z": 193, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_5", "looks": "pushable_boulder", "movement": "look_around", "x": 30, "z": 194, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_6", "looks": "pushable_boulder", "movement": "look_around", "x": 65, "z": 192, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_7", "looks": "pushable_boulder", "movement": "look_around", "x": 65, "z": 193, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "pushable_boulder_8", "looks": "pushable_boulder", "movement": "look_around", "x": 66, "z": 193, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "EventScript_StrengthBoulder" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 29, "z": 193, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SIX_ISLAND_RUIN_VALLEY_HP_UP", "item": "HP Up", "script": "SixIsland_RuinValley_EventScript_ItemHPUp" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 43, "z": 171, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SIX_ISLAND_RUIN_VALLEY_FULL_RESTORE", "item": "Full Restore", "script": "SixIsland_RuinValley_EventScript_ItemFullRestore" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 67, "z": 192, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SIX_ISLAND_RUIN_VALLEY_SUN_STONE", "item": "Sun Stone", "script": "SixIsland_RuinValley_EventScript_ItemSunStone" }
+  ],
+  "signs": [
+    { "x": 48, "z": 184, "type": 0, "script": "SixIsland_RuinValley_EventScript_DottedHoleDoor" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,25 @@
+{
+  // The Pokémon League's floor below (plan 20 · J10, part b): the Wi-Fi counters, closed (decision 06 · 7)
+  "area": "pokemon_league_entrance_wifi_room",
+  "bgmTrack": "johto/indigo_plateau",
+  "people": {
+    "t10r0801_wifisf": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t10r0801_pcwoman2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    },
+    "t10r0801_pcwoman2_2": {
+      "name": "Receptionist",
+      "dialog": [
+        "I'm sorry, the link to other players is closed for now."
+      ]
+    }
+  }
+}

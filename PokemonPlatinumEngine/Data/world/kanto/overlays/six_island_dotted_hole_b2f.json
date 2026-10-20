@@ -1,0 +1,10 @@
+{
+  // The Dotted Hole, B2F (plan 19 · K9, part b): FireRed's map. A room of four ways, of which one leads on and the
+  // rest back to the top; the dots on its floor say which
+  "area": "six_island_dotted_hole_b2f",
+  "name": "Dotted Hole",
+  "bgmTrack": "kanto/sevii_dungeon",
+  "signs": {
+    "SixIsland_DottedHole_B2F_EventScript_BrailleLeft": "The raised dots read: The way on is LEFT."
+  }
+}

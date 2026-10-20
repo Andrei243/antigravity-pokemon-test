@@ -1,0 +1,150 @@
+{
+  "people": {
+    "t10r0101_pcwoman1": {
+      "name": {
+        "en": [
+          "Nurse"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t10r0101_shopm1_2": {
+      "name": {
+        "en": [
+          "Clerk"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Welcome! Stock up well before you face the Elite Four."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t10r0101_counterm": {
+      "name": {
+        "en": [
+          "Guard"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Beyond this door the Elite Four are waiting. Once you start, you face all four and then the Champion."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t10r0101_gsoldman1": {
+      "name": {
+        "en": [
+          "Old Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My Abra and I came all this way just to watch the challengers go through that door. What a sight they are!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t10r0101_tsure_poke_static_abra": {
+      "name": {
+        "en": [
+          "Abra"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Abra is fast asleep, as usual."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t10r0101_gsfighter": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I lost to the very first of the Elite Four. They aren't called the best for nothing."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t10r0101_pcwoman2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "t10r0101_pcwoman2_2": {
+      "name": {
+        "en": [
+          "Receptionist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'm sorry, the link to other players is closed for now."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "T10R0101_007+1": {
+      "en": [
+        "The Pokémon League\nChallengers, see the Nurse before you go through the door."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

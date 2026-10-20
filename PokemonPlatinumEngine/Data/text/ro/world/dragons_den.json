@@ -6,7 +6,7 @@
           "Kobe"
         ],
         "text": [
-          ""
+          "Kobe"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Ace Trainer Kobe: Only those who train in the Den earn the elder's trust. Show me yours!"
         ],
         "text": [
-          ""
+          "Antrenor As Kobe: Doar cei care se antrenează în Bârlog câștigă încrederea bătrânului. Arată-mi ce ai!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Ace Trainer Kobe: You've earned some of mine."
         ],
         "text": [
-          ""
+          "Antrenor As Kobe: Ai câștigat o parte din încrederea mea."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Piper"
         ],
         "text": [
-          ""
+          "Piper"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Ace Trainer Piper: The water here is where Horsea learn to be dragons. Watch them!"
         ],
         "text": [
-          ""
+          "Antrenoare As Piper: Apa asta e locul unde Horsea învață să fie dragoni. Privește-i!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Ace Trainer Piper: They have a lot more to learn."
         ],
         "text": [
-          ""
+          "Antrenoare As Piper: Mai au multe de învățat."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Clea"
         ],
         "text": [
-          ""
+          "Clea"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Twins Clea: We're training to be dragon tamers, the two of us!"
         ],
         "text": [
-          ""
+          "Gemene Clea: Ne antrenăm să devenim îmblânzitoare de dragoni, amândouă!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Twins Clea: We'll train together some more."
         ],
         "text": [
-          ""
+          "Gemene Clea: Ne mai antrenăm împreună."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Gil"
         ],
         "text": [
-          ""
+          "Gil"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Twins Gil: Our Dratini are twins too!"
         ],
         "text": [
-          ""
+          "Gemene Gil: Și Dratini ai noștri sunt gemeni!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Twins Gil: Our Dratini need a nap."
         ],
         "text": [
-          ""
+          "Gemene Gil: Dratini ai noștri au nevoie de un pui de somn."
         ]
       }
     }
@@ -111,7 +111,7 @@
         "Dragon Shrine\nA place of prayer for Blackthorn's dragon tamers."
       ],
       "text": [
-        ""
+        "Sanctuarul Dragonilor\nLoc de rugăciune pentru îmblânzitorii de dragoni din Blackthorn."
       ]
     }
   }

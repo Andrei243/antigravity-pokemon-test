@@ -815,6 +815,10 @@ public partial class GameEngine
             // Rain and hail land round the player while they stand in it
             world.Life.Rainfall(flow.Map, flow.Player.PixelX / Player.TileSize + 0.5f, flow.Player.PixelY / Player.TileSize + 0.5f,
                 Weathers.LandsABeat(flow.Map.WeatherAt(flow.Player.GridX, flow.Player.GridY)));
+            // A diver breathes out bubbles on the sea floor, and each breath is heard (plan 21 · H5)
+            if (flow.Player.Mode == TravelMode.Diving
+                && world.Life.Bubbles(flow.Map, flow.Player.PixelX / Player.TileSize + 0.5f, flow.Player.PixelY / Player.TileSize + 0.5f) > 0)
+                AudioManager.PlaySound("bubbles");
             flow.Player.TickBubble(dt);
             flow.Player.TickGesture(FieldTime(dt));
             // Only the people near the player are looked at each frame (plan 01 · M12): a bubble is shown over
@@ -1825,6 +1829,11 @@ public partial class GameEngine
 
         // A honey tree faced from the south (HoneyTree_TryInteract, plan 06 · R13)
         if (HoneyTrees.Faced(flow.Map, flow.Player.GridX, flow.Player.GridY, flow.Player.Facing) != null && StartScript(FieldScripts.HoneyTree)) return;
+
+        // Furniture with nothing of its own to say (plan 08 · P8): a television's programme, a bookshelf, a bin, a map
+        // on a wall (the original's TileBehavior_IsTV and its kin)
+        if (FieldScripts.ForFurniture(flow.Map, targetX, targetY, flow.Player.Facing) is { } furniture
+            && StartScript(furniture, file: flow.Map.ScriptFileAt(targetX, targetY))) return;
 
         // What the tile ahead is (Field_TileBehaviorToScript): a waterfall faced from the water, a rock face along
         // its grain, and deep water at the player's feet, offered only to someone who may surf (the move and the

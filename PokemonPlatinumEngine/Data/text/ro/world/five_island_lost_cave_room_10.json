@@ -1,0 +1,23 @@
+{
+  "displayName": {
+    "en": [
+      "Lost Cave"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "lost_cave_selphy": {
+      "name": {
+        "en": [
+          "Selphy"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

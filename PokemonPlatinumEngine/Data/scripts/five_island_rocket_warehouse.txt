@@ -1,0 +1,70 @@
+# Team Rocket's warehouse on Five Island (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are
+# our own, on FireRed's beats (data/maps/FiveIsland_RocketWarehouse/scripts.inc).
+#
+# The admin at the back turns to the player the first time they step onto the row before him (the area's triggers 0
+# to 2, while VAR_MAP_SCENE_ROCKET_WAREHOUSE is 0). Beaten, he and every other member of Team Rocket here are gone
+# (FLAG_HIDE_FIVE_ISLAND_ROCKETS), the pen of poached Pokémon is open (FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE) and the
+# variable is 1. Gideon, the scientist who took the Sapphire in the Dotted Hole, battles when spoken to and hands it
+# back (FLAG_RECOVERED_SAPPHIRE): Celio takes it on One Island (one_island_pokemon_center_1f.txt). FireRed's floor
+# arrows, which the first admin turns round, are plain floor here.
+
+
+# The row before the admin (triggers 0 to 2)
+script Admin2Trigger
+  face warehouse_admin2 left
+  speaker "Admin"
+  say "So you're the brat who's been meddling all over the islands. Come here. I'll deal with you myself."
+  setvar VAR_MAP_SCENE_ROCKET_WAREHOUSE 1
+  end
+
+
+script Admin2
+  face warehouse_admin2 player
+  speaker "Admin"
+  if flag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE end
+  say "These islands are Team Rocket's hunting ground now. Their Pokémon will fetch a fine price far away."
+  battle self as "kanto_team_rocket_admin_2"
+  speaker "Admin"
+  say "Hmph. You're no ordinary child. Team Rocket will be back, you know, with or without our boss."
+  say "Everyone, we're pulling out! Leave the Pokémon!"
+  fade out 0.4
+  hide warehouse_grunt2
+  hide warehouse_grunt3
+  hide warehouse_admin1
+  hide warehouse_admin2
+  hide rocket_f
+  setflag FLAG_HIDE_FIVE_ISLAND_ROCKETS
+  fade in 0.4
+  setvar VAR_MAP_SCENE_ROCKET_WAREHOUSE 1
+  setflag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE
+  end
+
+
+script Gideon
+  face scientist player
+  speaker "Gideon"
+  if flag FLAG_RECOVERED_SAPPHIRE goto Done
+  say "You followed me here? This gem is going to make me rich, and nobody is taking it away from me!"
+  battle self as "kanto_scientist_gideon"
+  speaker "Gideon"
+  say "Fine, fine! Take your precious stone. I only wanted to study it before I sold it, anyway."
+  give "Sapphire"
+  setflag FLAG_RECOVERED_SAPPHIRE
+  end
+label Done
+  if var VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F >= 6 goto Kid
+  say "Leave me be. I have notes to write up."
+  end
+label Kid
+  say "Did you hear? The boss of Team Rocket has a son. A boy with red hair, they say, somewhere far to the west."
+  end
+
+
+script Cage
+  speaker none
+  if flag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE goto Open
+  text "Pokémon are shut in a pen here. They look frightened."
+  end
+label Open
+  text "The pen stands open. The Pokémon that were kept here have all gone home."
+  end

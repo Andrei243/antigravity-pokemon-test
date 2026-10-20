@@ -1,0 +1,36 @@
+# Lorelei's house on Four Island (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/FourIsland_LoreleisHouse/scripts.inc).
+#
+# Lorelei is at home from the poachers' scene in Icefall Cave (four_island_icefall_cave_back.txt clears FLAG_HIDE_
+# LORELEI_IN_HER_HOUSE) until Celio takes the Sapphire (one_island_pokemon_center_1f.txt sets it again: she goes back
+# to the League). Before the scene she isn't home. What she says follows Team Rocket's warehouse (FLAG_DEFEATED_
+# ROCKETS_IN_WAREHOUSE) and whether she has said it (FLAG_TALKED_TO_LORELEI_AFTER_WAREHOUSE). Her dolls are all on
+# show: FireRed's draw of which stand where is left out.
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_ICEFALL_CAVE_BACK == 0 setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
+  end
+
+
+script Lorelei
+  face lorelei player
+  speaker "Lorelei"
+  if flag FLAG_TALKED_TO_LORELEI_AFTER_WAREHOUSE goto Later
+  if flag FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE goto Freed
+  say "This island is where I was born. If anything happened to it, or to the Pokémon that live here, I'd never forgive myself."
+  end
+label Freed
+  setflag FLAG_TALKED_TO_LORELEI_AFTER_WAREHOUSE
+  say "I heard you set free the Pokémon in Team Rocket's warehouse. Thank you, {player}. The island owes you a great deal."
+  say "Before long I'll go back to the Pokémon League. When you come to challenge it, I'll be waiting, colder than ever."
+  end
+label Later
+  say "For now I'll do what I can for the island. The League can spare me a little while longer."
+  end
+
+
+script Doll
+  speaker none
+  text "A Pokémon doll, plump and soft. There are dolls everywhere in this house!"
+  end

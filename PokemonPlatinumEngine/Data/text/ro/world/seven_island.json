@@ -1,0 +1,68 @@
+{
+  "displayName": {
+    "en": [
+      "Seven Island"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "swords_dance_tutor": {
+      "name": {
+        "en": [
+          "Cool Trainer"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "old_woman": {
+      "name": {
+        "en": [
+          "Old Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The old tale goes that the seven islands were made in seven days, one a day. This one was the last, so it's the youngest."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Scientist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "This island is hardly touched. Sevault Canyon and the Tanoby Ruins are just as they were long, long ago."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SevenIsland_EventScript_IslandSign": {
+      "en": [
+        "Seven Island\nThe last isle, where the canyon meets the sea"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

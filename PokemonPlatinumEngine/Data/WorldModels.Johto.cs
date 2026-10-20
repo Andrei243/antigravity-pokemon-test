@@ -307,6 +307,31 @@ public static partial class WorldModels
         // The falls of the north: their tiles draw them
         Ground("fall_suri", "the waterfall inside Mt. Mortar: its tiles draw it"),
         Ground("fall03_01", "a little waterfall on Route 45's mountainside: its tiles draw it"),
+
+        // ---------------------------------------------------------------- plan 20 · J10, part b: the way to the League
+        // Kanto's own models (kn_: the original's Kanto) where Routes 26, 27 and 22 cross into it: the houses on the
+        // two routes are built as Viridian builds, the nearest town of Kanto's
+        House("kn_h01", Architecture.Evergreen, "a house on Route 26 or Route 27"),
+        Door("kn_door2"),
+        // The League's reception gate is one room seen from three roads: a face of it on each
+        Built("kn_gate", BuildingKind.Gate, "the League's reception gate, its south face where Route 26 comes up to it"),
+        Built("kn_gate_r", BuildingKind.Gate, "the League's reception gate, its east face where Route 22 comes from Viridian City"),
+        Built("kn_gate_l", BuildingKind.Gate, "the League's reception gate, its west face where Route 28 comes down from Mt. Silver"),
+        Ground("fall_toujou", "Tohjo Falls' waterfall over its cave's way through: its tiles draw it"),
+        Ground("tkwa_sl", "a short flight of steps in Viridian City's terraces: its tiles draw it"),
+        // The Indigo Plateau (pke_: the original's Pokémon League)
+        Built("pke_league", BuildingKind.League, "the Pokémon League on the Indigo Plateau, its Pokémon Center and its Elite Four within", storeys: 2),
+        Door("pke_door1"),
+        Ground("pke_flower", "the Indigo Plateau's plaza and its beds of flowers: its own ground draws them"),
+        Ground("pke_gate", "an arch over the way up to the League, walked under: the plaza's own ground draws its posts"),
+        Thing("pke_obj01", PropType.LampPost, "a lamp at a corner of the League's plaza"),
+        // The League's rooms (bm_room's and the rooms' own): what stands in them is the room's own floor and walls
+        Furniture("pc02", PropType.Computer, "a PC"),
+        Ground("gof_01", "Will's room: its floor of tiles and its mirrors, which the room draws"),
+        Ground("gof_04", "Bruno's room: its floor of stone, which the room draws"),
+        Ground("gof_05", "Karen's room: its dark floor, which the room draws"),
+        Ground("chp_obj1", "the Champion's room: its floor and its dais, which the room draws"),
+        Ground("leage_o03", "the Hall of Fame's machine against the back wall: the room's wall stands for it until plan 20 · J12"),
     };
 
     private static readonly Dictionary<string, WorldModel> JohtoByName = JohtoTable.ToDictionary(m => m.Name, StringComparer.Ordinal);

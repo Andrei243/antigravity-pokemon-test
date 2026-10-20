@@ -1,0 +1,146 @@
+{
+  "displayName": {
+    "en": [
+      "Rocket Warehouse"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "warehouse_grunt2": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: How did you get in here? You'd better not touch our Pokémon!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Touch them all you like, then..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "warehouse_grunt3": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: These Pokémon are worth a fortune! We're not letting them go!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: There goes our fortune."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "warehouse_admin1": {
+      "name": {
+        "en": [
+          "Admin"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Admin: You came all this way just to meddle? How very tiresome."
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Admin: Tiresome, and strong. Go on, then."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "warehouse_admin2": {
+      "name": {
+        "en": [
+          "Admin"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocket_f": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: The password worked? Someone's going to be in big trouble for that!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: Someone like me..."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "scientist": {
+      "name": {
+        "en": [
+          "Gideon"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "FiveIsland_RocketWarehouse_EventScript_Computer": {
+      "en": [
+        "A report full of graphs and tables. It's about what Pokémon sell for in the far-off regions."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

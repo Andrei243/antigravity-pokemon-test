@@ -6,7 +6,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Clerk"
         ],
         "text": [
-          ""
+          "Vânzătoarea"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Welcome! How can I help you?"
         ],
         "text": [
-          ""
+          "Bine ai venit! Cu ce te pot ajuta?"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Up here in the mountains, Full Heals sell almost as well as Potions. The cold freezes Pokémon solid!"
         ],
         "text": [
-          ""
+          "Aici sus, la munte, Leacurile Totale se vând aproape la fel de bine ca Poțiunile. Frigul îi îngheață bocnă pe Pokémoni!"
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -68,7 +68,7 @@
           "I'm stocking up before I take on the Dragon's Den. You can never have too many Revives."
         ],
         "text": [
-          ""
+          "Fac provizii înainte să mă iau la trântă cu Bârlogul Dragonilor. Nu ai niciodată prea multe Reînvieri."
         ]
       }
     }

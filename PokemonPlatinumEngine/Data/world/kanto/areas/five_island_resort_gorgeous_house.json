@@ -1,0 +1,29 @@
+{
+  "key": "five_island_resort_gorgeous_house",
+  "index": 420,
+  "name": "Resort Gorgeous",
+  "matrix": 367,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_45",
+  "nightMusic": "MUS_SEVII_45",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 7, "to": "five_island_resort_gorgeous", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "resort_gorgeous_house_selphy", "looks": "woman_2", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_RESORT_GORGEOUS_INSIDE_SELPHY", "script": "FiveIsland_ResortGorgeous_House_EventScript_Selphy" },
+    { "id": "resort_gorgeous_house_butler", "looks": "gentleman", "movement": "look_south", "x": 6, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SELPHYS_BUTLER", "script": "FiveIsland_ResortGorgeous_House_EventScript_Butler" }
+  ],
+  "signs": [
+    { "x": 9, "z": 1, "type": 0, "script": "FiveIsland_ResortGorgeous_House_EventScript_PokemonJournal" },
+    { "x": 8, "z": 1, "type": 0, "script": "FiveIsland_ResortGorgeous_House_EventScript_PokemonJournal" }
+  ],
+  "triggers": []
+}

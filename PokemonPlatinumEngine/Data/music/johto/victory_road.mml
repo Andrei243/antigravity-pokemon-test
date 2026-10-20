@@ -1,0 +1,29 @@
+# Johto's Victory Road and Tohjo Falls' hidden room: HeartGold's SEQ_GS_D_CHAMPROAD, and this game a song of its own:
+# a tense trumpet in C minor over driving string eighths, a pushing bass and a steady drum, the last climb before the
+# League. A cave plays the same by day and night. Original composition for this game (plan 20 · J10, part b).
+title Victory Road (Johto)
+tempo 140
+meter 4/4
+reverb 0.4
+night none
+
+track lead trumpet vol=0.74 pan=0 rev=0.35
+  L o5 c4 e-8 g8 o6 c4 o5 b-8 g8 | o5 a-4. g8 f4 e-4 | o5 f4 b-8 o6 d8 f4 e-8 d8 | o6 d2 o5 b4 g4 |
+  o5 g4 o6 c8 e-8 g4 f8 e-8 | o6 f4. e-8 d4 c4 | o5 b4 o6 d4 f4 d4 | o5 g2. r4 |
+  o5 e-4 a-8 o6 c8 e-4 d8 c8 | o5 b-4. g8 e-4 g4 | o5 a-4 o6 c4 f4 e-4 | o6 d2. r4 |
+  o6 c4 o5 g8 e-8 c4 e-4 | o5 a-4 o6 c8 e-8 a-4 g4 | o6 g4 f4 d4 o5 b4 | o6 c2. r4 |
+
+track strings strings vol=0.3 pan=-0.25 rev=0.35
+  L [ o4 c8 g8 o5 c8 o4 g8 ]2 | [ o3 a-8 o4 e-8 a-8 e-8 ]2 | [ o3 b-8 o4 f8 b-8 f8 ]2 | [ o3 g8 o4 d8 g8 d8 ]2 |
+  [ o4 c8 g8 o5 c8 o4 g8 ]2 | [ o4 c8 f8 a-8 f8 ]2 | [ o3 g8 o4 d8 g8 d8 ]2 | [ o3 g8 o4 d8 g8 d8 ]2 |
+  [ o3 a-8 o4 e-8 a-8 e-8 ]2 | [ o3 b-8 o4 e-8 g8 e-8 ]2 | [ o4 c8 f8 a-8 f8 ]2 | [ o3 g8 o4 d8 g8 d8 ]2 |
+  [ o4 c8 g8 o5 c8 o4 g8 ]2 | [ o3 a-8 o4 e-8 a-8 e-8 ]2 | [ o3 g8 o4 d8 g8 d8 ]2 | [ o4 c8 g8 o5 c8 o4 g8 ]2 |
+
+track bass contrabass vol=0.52 rev=0.12
+  L o2 c4. c8 g4 c4 | o2 a-4. a-8 o3 e-4 o2 a-4 | o2 b-4. b-8 o3 f4 o2 b-4 | o2 g4. g8 o3 d4 o2 g4 |
+  o2 c4. c8 g4 c4 | o2 f4. f8 o3 c4 o2 f4 | o2 g4. g8 o3 d4 o2 g4 | o2 g4. g8 o3 d4 o2 g4 |
+  o2 a-4. a-8 o3 e-4 o2 a-4 | o2 e-4. e-8 b-4 e-4 | o2 f4. f8 o3 c4 o2 f4 | o2 g4. g8 o3 d4 o2 g4 |
+  o2 c4. c8 g4 c4 | o2 a-4. a-8 o3 e-4 o2 a-4 | o2 g4. g8 o3 d4 o2 g4 | o2 c1 |
+
+track drums kit vol=0.26 pan=0.1 rev=0.2
+  v70 L [ b8 b8 s8 b8 b8 b8 s8 h8 | ]16

@@ -1,0 +1,39 @@
+{
+  "key": "six_island_altering_cave",
+  "index": 164,
+  "name": "Altering Cave",
+  "matrix": 128,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "six_island_altering_cave",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 10 },
+    { "species": "Zubat", "level": 12 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Zubat", "level": 14 },
+    { "species": "Zubat", "level": 10 },
+    { "species": "Zubat", "level": 12 },
+    { "species": "Zubat", "level": 16 },
+    { "species": "Zubat", "level": 6 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Zubat", "level": 14 },
+    { "species": "Zubat", "level": 8 },
+    { "species": "Zubat", "level": 14 }
+  ],
+  "landRate": 5,
+  "warps": [
+    { "x": 18, "z": 22, "to": "six_island_outcast_island", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

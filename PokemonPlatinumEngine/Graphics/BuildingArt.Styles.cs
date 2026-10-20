@@ -268,6 +268,12 @@ internal static partial class BuildingArt
                 Band = true, Sign = SignKind.Galactic, Accent = Rgb(232, 204, 76),
                 Gear = b.Model == "c7_s03" ? RoofGear.Spikes | RoofGear.Dish : RoofGear.Spikes
             },
+            // Johto's League on the Indigo Plateau (plan 20 · J10, part b): one building, its Center within
+            BuildingKind.League when b.Model == "pke_league" => new BuildingStyle
+            {
+                Wall = WallKind.PaleStone, Roof = RoofShape.Hip, RoofColor = Rgb(176, 52, 60), Storeys = 2, Window = WindowKind.Arched,
+                GlassDoor = true, Sign = SignKind.Text, SignText = "LEAGUE", Portal = 84, Accent = Rgb(214, 178, 84)
+            },
             BuildingKind.League => new BuildingStyle
             {
                 Wall = WallKind.PaleStone, Roof = RoofShape.Flat, RoofColor = FlatGrey, Storeys = 3, Window = WindowKind.Arched, GlassDoor = true,

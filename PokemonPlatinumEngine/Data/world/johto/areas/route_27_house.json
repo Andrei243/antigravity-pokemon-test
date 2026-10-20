@@ -1,0 +1,25 @@
+{
+  "key": "route_27_house",
+  "index": 322,
+  "name": "Route 27",
+  "matrix": 66,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_R_1_26",
+  "nightMusic": "GS_R_1_26",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 8, "to": "route_27", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "r27r0101_gsoldwoman1", "looks": "gsoldwoman1", "movement": "0", "x": 5, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "R27R0101_000+1" }
+  ],
+  "signs": [],
+  "triggers": []
+}

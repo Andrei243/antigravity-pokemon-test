@@ -1,0 +1,10 @@
+{
+  // The hidden room behind Tohjo Falls (plan 20 · J10, part b): four rocks to smash. Giovanni and the friend who waits
+  // with him are HeartGold's Celebi event, which only a distributed item started, and are left out
+  "area": "tohjo_falls_hidden_room",
+  "bgmTrack": "johto/union_cave",
+  "people": {},
+  "signs": {
+    "D45R0102_003+1": "Words scratched into the rock:\nTrain where no one sees, and come back stronger."
+  }
+}

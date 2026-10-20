@@ -6,7 +6,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "The lake north of town has been acting strangely. Folk say its Pokémon are angry."
         ],
         "text": [
-          "",
-          ""
+          "Se zice că Mahogany e un oraș vechi de ninja. În zilele noastre e cunoscut mai ales pentru suveniruri.",
+          "Lacul din nordul orașului se poartă ciudat. Lumea spune că Pokémonii lui sunt furioși."
         ]
       }
     }
@@ -27,7 +27,7 @@
         "Mahogany Town\nWelcome to the home of the ninja."
       ],
       "text": [
-        ""
+        "Orășelul Mahogany\nBun venit în casa ninja."
       ]
     },
     "T28_007+1": {
@@ -35,7 +35,7 @@
         "Mahogany Souvenirs\nSweets and keepsakes of the mountains."
       ],
       "text": [
-        ""
+        "Suveniruri Mahogany\nDulciuri și amintiri de la munte."
       ]
     },
     "T28_008+1": {
@@ -43,7 +43,7 @@
         "Mahogany Town Pokémon Gym\nLeader: Pryce"
       ],
       "text": [
-        ""
+        "Arena Pokémon din Orășelul Mahogany\nLider: Pryce"
       ]
     }
   }

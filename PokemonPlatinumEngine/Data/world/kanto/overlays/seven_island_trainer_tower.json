@@ -1,0 +1,17 @@
+{
+  // The Trainer Tower's grounds (plan 19 · K9, part b): FireRed's map, our words. The tower itself is optional in the
+  // plan and not built, so its door stays shut
+  "area": "seven_island_trainer_tower",
+  "name": "Trainer Tower",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "locked": [ 0 ],
+  "people": {
+    "boy": { "name": "Dario", "trainer": { "dialogueBefore": "Psychic Dario: I can see the future. You're about to lose!", "dialogueAfter": "Psychic Dario: I didn't see that coming." } },
+    "woman_1": { "name": "Rodette", "trainer": { "dialogueBefore": "Psychic Rodette: My mind and my Pokémon are one. Can you say the same?", "dialogueAfter": "Psychic Rodette: My mind is blank." } }
+  },
+  "signs": {
+    "SevenIsland_TrainerTower_EventScript_TrainerTowerSign": "Trainer Tower\nClosed for now. Come back soon!",
+    "SevenIsland_TrainerTower_EventScript_TrainerTowerAheadSign": "Trainer Tower ahead"
+  }
+}

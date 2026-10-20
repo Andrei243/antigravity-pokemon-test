@@ -1,0 +1,13 @@
+{
+  // A house on Seven Island (plan 19 · K9, part b): an old woman who loves to watch battles. FireRed's visiting
+  // trainers came by a card reader this game has no counterpart for, so her back room stays shut
+  "area": "seven_island_house_room_1",
+  "bgmTrack": "kanto/sevii_67",
+  "locked": [ 1 ],
+  "people": {
+    "seven_island_house_old_woman": { "name": "Old Woman", "dialog": [ "Watching a good battle is all the joy I have left. Nobody comes to battle in my back room any more, more's the pity." ] }
+  },
+  "signs": {
+    "SevenIsland_House_Room1_EventScript_Box": "There's a faint breeze coming from the box. How odd."
+  }
+}

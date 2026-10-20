@@ -6,7 +6,7 @@
           "Old Man"
         ],
         "text": [
-          ""
+          "Bătrânul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "This lake was made by the rage of Gyarados, so the story goes. They thrashed until the ground gave way."
         ],
         "text": [
-          ""
+          "Lacul ăsta a fost făcut de furia unor Gyarados, așa spune povestea. S-au zbătut până a cedat pământul."
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "The fishing is good here, but the Magikarp all seem cross. I've never seen them like this."
         ],
         "text": [
-          ""
+          "Se pescuiește bine aici, dar toți Magikarp par supărați. N-am mai văzut așa ceva."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "I come up here to think. It's quiet, apart from the splashing."
         ],
         "text": [
-          ""
+          "Urc aici să mă gândesc. E liniște, în afară de pleoscăit."
         ]
       }
     },
@@ -60,7 +60,7 @@
           "Andre"
         ],
         "text": [
-          ""
+          "Andre"
         ]
       },
       "before": {
@@ -68,7 +68,7 @@
           "Fisherman Andre: This is the lake where the Gyarados grow biggest! Want to see mine?"
         ],
         "text": [
-          ""
+          "Pescar Andre: Ăsta e lacul unde Gyarados cresc cei mai mari! Vrei să-l vezi pe al meu?"
         ]
       },
       "after": {
@@ -76,7 +76,7 @@
           "Fisherman Andre: It's big, but you're stronger."
         ],
         "text": [
-          ""
+          "Pescar Andre: E mare, dar echipa ta e mai puternică."
         ]
       }
     },
@@ -86,7 +86,7 @@
           "Raymond"
         ],
         "text": [
-          ""
+          "Raymond"
         ]
       },
       "before": {
@@ -94,7 +94,7 @@
           "Fisherman Raymond: Four Magikarp! That's my whole team. Don't laugh!"
         ],
         "text": [
-          ""
+          "Pescar Raymond: Patru Magikarp! Asta e toată echipa mea. Să nu râzi!"
         ]
       },
       "after": {
@@ -102,7 +102,7 @@
           "Fisherman Raymond: All right, you can laugh now."
         ],
         "text": [
-          ""
+          "Pescar Raymond: Bine, acum poți râde."
         ]
       }
     },
@@ -112,7 +112,7 @@
           "Alton"
         ],
         "text": [
-          ""
+          "Alton"
         ]
       },
       "before": {
@@ -120,7 +120,7 @@
           "Ace Trainer Alton: I've raised the three Pokémon Kanto's young trainers start with. Let's see you beat all three!"
         ],
         "text": [
-          ""
+          "Antrenor As Alton: Am crescut cei trei Pokémoni cu care încep antrenorii tineri din Kanto. Hai să te văd cum îi învingi pe toți trei!"
         ]
       },
       "after": {
@@ -128,7 +128,7 @@
           "Ace Trainer Alton: Beaten by a Johto trainer. Well done."
         ],
         "text": [
-          ""
+          "Antrenor As Alton: Învins de cineva din Johto. Bravo."
         ]
       }
     },
@@ -138,7 +138,7 @@
           "Lois"
         ],
         "text": [
-          ""
+          "Lois"
         ]
       },
       "before": {
@@ -146,7 +146,7 @@
           "Ace Trainer Lois: A walk round the lake and then a battle. That's my idea of a good day!"
         ],
         "text": [
-          ""
+          "Antrenoare As Lois: O plimbare în jurul lacului și apoi o luptă. Asta numesc eu o zi bună!"
         ]
       },
       "after": {
@@ -154,7 +154,7 @@
           "Ace Trainer Lois: A good day, even so."
         ],
         "text": [
-          ""
+          "Antrenoare As Lois: Totuși, o zi bună."
         ]
       }
     }
@@ -165,7 +165,7 @@
         "Lake of Rage\nAlso known as Gyarados Lake."
       ],
       "text": [
-        ""
+        "Lacul Furiei\nCunoscut și ca Lacul Gyarados."
       ]
     },
     "T29_006+1": {
@@ -173,7 +173,7 @@
         "The Fishing Guru's house"
       ],
       "text": [
-        ""
+        "Casa Maestrului Pescar"
       ]
     }
   }

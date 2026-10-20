@@ -1,0 +1,36 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "{rival}"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}? You again! You keep turning up wherever I go."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I came all this way for the Pokémon of these islands, and half of them won't show their faces. Catching them all from here is hopeless!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well, I'm off to look somewhere else. Smell you later!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

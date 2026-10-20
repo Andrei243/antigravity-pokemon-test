@@ -6,7 +6,7 @@
           "Spencer"
         ],
         "text": [
-          ""
+          "Spencer"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Camper Spencer: I've been camping out here for days. I'm ready for anything!"
         ],
         "text": [
-          ""
+          "Campist Spencer: Campez aici de zile întregi. Sunt gata de orice!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Camper Spencer: Maybe I'm ready for a hot bath instead."
         ],
         "text": [
-          ""
+          "Campist Spencer: Poate sunt gata mai degrabă pentru o baie fierbinte."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Tiffany"
         ],
         "text": [
-          ""
+          "Tiffany"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Picnicker Tiffany: My Clefairy and I picnic up here every weekend. Battle with us!"
         ],
         "text": [
-          ""
+          "Excursionistă Tiffany: Eu și Clefairy-ul meu facem picnic aici în fiecare weekend. Luptă-te cu noi!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Picnicker Tiffany: We'd better pack up and go home."
         ],
         "text": [
-          ""
+          "Excursionistă Tiffany: Mai bine ne strângem lucrurile și mergem acasă."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Brent"
         ],
         "text": [
-          ""
+          "Brent"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Poké Maniac Brent: I've raised my Nidoran pair since they were tiny!"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Brent: Mi-am crescut perechea de Nidoran de când erau mititei!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Poké Maniac Brent: They were tiny against you."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Brent: Păreau mititei în fața ta."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Beckett"
         ],
         "text": [
-          ""
+          "Beckett"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Poké Maniac Beckett: My Slowbro is the slowest thinker and the hardest hitter!"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Beckett: Slowbro al meu e cel mai încet la gândit și cel mai tare la lovit!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Poké Maniac Beckett: It still hasn't noticed it lost."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Beckett: Încă nu a observat că a pierdut."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Ron"
         ],
         "text": [
-          ""
+          "Ron"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Poké Maniac Ron: Nidoking! Show this kid your horn!"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Ron: Nidoking! Arată-i cornul tău!"
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Poké Maniac Ron: Its horn wasn't enough."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Ron: Cornul lui n-a fost de ajuns."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Marvin"
         ],
         "text": [
-          ""
+          "Marvin"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Fisherman Marvin: The lake up north is full of Gyarados. I raise my own from Magikarp!"
         ],
         "text": [
-          ""
+          "Pescar Marvin: Lacul din nord e plin de Gyarados. Îi cresc pe ai mei din Magikarp!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Fisherman Marvin: I'll go back to fishing for a while."
         ],
         "text": [
-          ""
+          "Pescar Marvin: Mă întorc la pescuit o vreme."
         ]
       }
     }
@@ -163,7 +163,7 @@
         "Route 43\nThe Lake of Rage is to the north."
       ],
       "text": [
-        ""
+        "Ruta 43\nLacul Furiei e spre nord."
       ]
     },
     "R43_002+1": {
@@ -171,7 +171,7 @@
         "Route 43\nThe gate house ahead leads north to the lake."
       ],
       "text": [
-        ""
+        "Ruta 43\nCasa de la poartă duce spre nord, la lac."
       ]
     },
     "R43_003+1": {
@@ -179,7 +179,7 @@
         "Route 43\nThe Lake of Rage is just ahead."
       ],
       "text": [
-        ""
+        "Ruta 43\nLacul Furiei e chiar în față."
       ]
     }
   }

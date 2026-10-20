@@ -1,0 +1,76 @@
+{
+  "key": "four_island",
+  "index": 234,
+  "name": "Four Island",
+  "matrix": 193,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_45",
+  "nightMusic": "MUS_SEVII_45",
+  "encounters": "four_island",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Wooper", "level": 5, "maxLevel": 15 },
+    { "species": "Psyduck", "level": 5, "maxLevel": 35 },
+    { "species": "Wooper", "level": 15, "maxLevel": 25 },
+    { "species": "Wooper", "level": 15, "maxLevel": 25 },
+    { "species": "Wooper", "level": 15, "maxLevel": 25 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 18, "z": 20, "to": "four_island_pokemon_center_1f", "toWarp": 0 },
+    { "x": 12, "z": 13, "to": "four_island_pokemon_day_care", "toWarp": 0 },
+    { "x": 25, "z": 14, "to": "four_island_house_1", "toWarp": 0 },
+    { "x": 38, "z": 12, "to": "four_island_icefall_cave_entrance", "toWarp": 0 },
+    { "x": 33, "z": 23, "to": "four_island_loreleis_house", "toWarp": 0 },
+    { "x": 25, "z": 26, "to": "four_island_house_2", "toWarp": 0 },
+    { "x": 10, "z": 28, "to": "four_island_harbor", "toWarp": 0 },
+    { "x": 22, "z": 26, "to": "four_island_mart", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "four_island_daycare_man", "looks": "old_man_1", "movement": "look_south", "x": 16, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_EventScript_DaycareMan" },
+    { "id": "doduo", "looks": "doduo", "movement": "look_around", "x": 12, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "nidoran_f", "looks": "nidoran_f", "movement": "look_east", "x": 13, "z": 7, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "nidoran_m", "looks": "nidoran_m", "movement": "look_west", "x": 14, "z": 7, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "psyduck", "looks": "psyduck", "movement": "look_around", "x": 17, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "" },
+    { "id": "old_woman", "looks": "old_woman", "movement": "look_west", "x": 26, "z": 19, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_EventScript_OldWoman" },
+    { "id": "rock_smash_rock", "looks": "rock_smash_rock", "movement": "look_around", "x": 5, "z": 11, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 5, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FOUR_ISLAND_STAR_PIECE", "item": "Star Piece", "script": "FourIsland_EventScript_ItemStarPiece" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 32, "z": 19, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FOUR_ISLAND_STARDUST", "item": "Stardust", "script": "FourIsland_EventScript_ItemStardust" },
+    { "id": "four_island_rival", "looks": "blue", "movement": "look_west", "x": 8, "z": 25, "facing": 2, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FOUR_ISLAND_RIVAL", "script": "" },
+    { "id": "fat_man", "looks": "fat_man", "movement": "look_south", "x": 36, "z": 13, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_EventScript_FatMan" },
+    { "id": "little_girl", "looks": "little_girl", "movement": "look_east", "x": 31, "z": 21, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_EventScript_LittleGirl" }
+  ],
+  "signs": [
+    { "x": 13, "z": 19, "type": 0, "script": "FourIsland_EventScript_IslandSign" },
+    { "x": 22, "z": 34, "type": 2, "script": "", "item": "Pearl", "flag": "FLAG_HIDDEN_ITEM_FOUR_ISLAND_PEARL" },
+    { "x": 6, "z": 21, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_FOUR_ISLAND_ULTRA_BALL" },
+    { "x": 31, "z": 23, "type": 0, "script": "FourIsland_EventScript_LoreleisHouseSign" }
+  ],
+  "triggers": []
+}

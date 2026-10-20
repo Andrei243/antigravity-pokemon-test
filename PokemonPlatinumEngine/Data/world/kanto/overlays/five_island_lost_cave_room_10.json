@@ -1,0 +1,10 @@
+{
+  // The Lost Cave, room 10 (plan 19 · K9, part b): FireRed's map, one room of the maze. Selphy is lost in its deepest
+  // room until the player finds her (five_island_lost_cave_room_10.txt)
+  "area": "five_island_lost_cave_room_10",
+  "name": "Lost Cave",
+  "bgmTrack": "kanto/sevii_cave",
+  "people": {
+    "lost_cave_selphy": { "name": "Selphy", "script": "Selphy", "still": true }
+  }
+}

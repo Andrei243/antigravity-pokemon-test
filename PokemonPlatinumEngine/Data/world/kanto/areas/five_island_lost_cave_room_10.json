@@ -1,0 +1,42 @@
+{
+  "key": "five_island_lost_cave_room_10",
+  "index": 187,
+  "name": "Lost Cave",
+  "matrix": 151,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Fog",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "five_island_lost_cave_room_10",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Gastly", "level": 40 },
+    { "species": "Zubat", "level": 37 },
+    { "species": "Haunter", "level": 44 },
+    { "species": "Haunter", "level": 46 },
+    { "species": "Golbat", "level": 41 },
+    { "species": "Golbat", "level": 43 },
+    { "species": "Gastly", "level": 38 },
+    { "species": "Haunter", "level": 48 },
+    { "species": "Haunter", "level": 50 },
+    { "species": "Murkrow", "level": 22 },
+    { "species": "Haunter", "level": 52 },
+    { "species": "Murkrow", "level": 22 }
+  ],
+  "landRate": 10,
+  "warps": [
+    { "x": 5, "z": 8, "to": "five_island_lost_cave_room_1", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "lost_cave_selphy", "looks": "woman_2", "movement": "look_north", "x": 5, "z": 5, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_LOST_CAVE_SELPHY", "script": "" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 5, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_LOST_CAVE_ROOM10_SILK_SCARF", "item": "Silk Scarf", "script": "FiveIsland_LostCave_Room10_EventScript_ItemSilkScarf" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -1,0 +1,24 @@
+{
+  // Lorelei's house on Four Island (plan 19 · K9, part b): her collection of Pokémon dolls, every one on show (FireRed
+  // shows some by a draw; here all of them stand), and Lorelei herself from the poachers in Icefall Cave until the
+  // Sapphire sends her back to the League (four_island_loreleis_house.txt)
+  "area": "four_island_loreleis_house",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "lorelei": { "name": "Lorelei", "script": "Lorelei", "still": true },
+    "wigglytuff": { "name": "Doll", "npcType": "Pokemon", "species": "Wigglytuff", "still": true, "hiddenBy": "", "script": "Doll" },
+    "seel": { "name": "Doll", "npcType": "Pokemon", "species": "Seel", "still": true, "hiddenBy": "", "script": "Doll" },
+    "pikachu": { "name": "Doll", "npcType": "Pokemon", "species": "Pikachu", "still": true, "hiddenBy": "", "script": "Doll" },
+    "slowpoke": { "name": "Doll", "npcType": "Pokemon", "species": "Slowpoke", "still": true, "hiddenBy": "", "script": "Doll" },
+    "slowbro": { "name": "Doll", "npcType": "Pokemon", "species": "Slowbro", "still": true, "hiddenBy": "", "script": "Doll" },
+    "psyduck": { "name": "Doll", "npcType": "Pokemon", "species": "Psyduck", "still": true, "hiddenBy": "", "script": "Doll" },
+    "meowth": { "name": "Doll", "npcType": "Pokemon", "species": "Meowth", "still": true, "hiddenBy": "", "script": "Doll" },
+    "chansey": { "name": "Doll", "npcType": "Pokemon", "species": "Chansey", "still": true, "hiddenBy": "", "script": "Doll" },
+    "jigglypuff": { "name": "Doll", "npcType": "Pokemon", "species": "Jigglypuff", "still": true, "hiddenBy": "", "script": "Doll" },
+    "nidoran_f": { "name": "Doll", "npcType": "Pokemon", "species": "Nidoran♀", "still": true, "hiddenBy": "", "script": "Doll" },
+    "nidoran_m": { "name": "Doll", "npcType": "Pokemon", "species": "Nidoran♂", "still": true, "hiddenBy": "", "script": "Doll" },
+    "pidgeot": { "name": "Doll", "npcType": "Pokemon", "species": "Pidgeot", "still": true, "hiddenBy": "", "script": "Doll" },
+    "fearow": { "name": "Doll", "npcType": "Pokemon", "species": "Fearow", "still": true, "hiddenBy": "", "script": "Doll" },
+    "lapras_doll": { "name": "Doll", "npcType": "Pokemon", "species": "Lapras", "still": true, "hiddenBy": "", "script": "Doll" }
+  }
+}

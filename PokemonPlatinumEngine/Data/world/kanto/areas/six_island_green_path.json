@@ -1,0 +1,60 @@
+{
+  "key": "six_island_green_path",
+  "index": 247,
+  "name": "Green Path",
+  "matrix": 196,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "six_island_green_path",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Qwilfish", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 63, "z": 90, "to": "six_island_pattern_bush", "toWarp": 1 },
+    { "x": 64, "z": 90, "to": "six_island_pattern_bush", "toWarp": 1 },
+    { "x": 45, "z": 90, "to": "six_island_pattern_bush", "toWarp": 4 },
+    { "x": 46, "z": 90, "to": "six_island_pattern_bush", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "woman_1", "looks": "woman_1", "movement": "look_south_north_and_east", "x": 11, "z": 88, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 2, "script": "TRAINER_PSYCHIC_JACLYN" }
+  ],
+  "signs": [
+    { "x": 40, "z": 90, "type": 0, "script": "SixIsland_GreenPath_EventScript_LeftRouteSign" },
+    { "x": 69, "z": 90, "type": 0, "script": "SixIsland_GreenPath_EventScript_RightRouteSign" },
+    { "x": 12, "z": 89, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_SIX_ISLAND_GREEN_PATH_ULTRA_BALL" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,84 @@
+{
+  "key": "tohjo_falls",
+  "index": 126,
+  "name": "Tohjo Falls",
+  "matrix": 151,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave1",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "encounters": "D45R0101",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Zubat", "level": 22 },
+    { "species": "Raticate", "level": 22 },
+    { "species": "Zubat", "level": 22 },
+    { "species": "Raticate", "level": 22 },
+    { "species": "Golbat", "level": 22 },
+    { "species": "Golbat", "level": 22 },
+    { "species": "Slowpoke", "level": 21 },
+    { "species": "Slowpoke", "level": 21 },
+    { "species": "Rattata", "level": 20 },
+    { "species": "Slowpoke", "level": 23 },
+    { "species": "Rattata", "level": 20 },
+    { "species": "Slowpoke", "level": 23 }
+  ],
+  "landRate": 15,
+  "water": [
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Slowpoke", "level": 20, "maxLevel": 20 },
+    { "species": "Seaking", "level": 20, "maxLevel": 20 },
+    { "species": "Seaking", "level": 20, "maxLevel": 20 },
+    { "species": "Seaking", "level": 20, "maxLevel": 20 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 },
+    { "species": "Goldeen", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 },
+    { "species": "Goldeen", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Goldeen", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 },
+    { "species": "Seaking", "level": 40, "maxLevel": 40 },
+    { "species": "Magikarp", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 30, "z": 22, "to": "route_27", "toWarp": 0 },
+    { "x": 45, "z": 20, "to": "route_27", "toWarp": 1 },
+    { "x": 27, "z": 11, "to": "tohjo_falls_hidden_room", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d45r0101_stop", "looks": "stop", "movement": "0", "x": 27, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 589824, "script": "0" },
+    { "id": "d45r0101_monstarball", "looks": "monstarball", "movement": "0", "x": 23, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D45R0101_MOON_STONE", "item": "Moon Stone", "script": "std_itemball_d45r0101_moon_stone" }
+  ],
+  "signs": [],
+  "triggers": []
+}

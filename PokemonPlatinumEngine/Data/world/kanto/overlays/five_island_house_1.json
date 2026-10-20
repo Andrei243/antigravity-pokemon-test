@@ -1,0 +1,8 @@
+{
+  // A house on Five Island (plan 19 · K9, part b)
+  "area": "five_island_house_1",
+  "bgmTrack": "kanto/sevii_45",
+  "people": {
+    "woman_3": { "name": "Woman", "dialog": [ "My husband has gone fishing off Resort Gorgeous again. He won't be home before dark." ] }
+  }
+}

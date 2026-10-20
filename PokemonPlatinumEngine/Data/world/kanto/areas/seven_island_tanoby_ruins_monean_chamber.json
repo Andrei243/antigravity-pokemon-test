@@ -1,0 +1,39 @@
+{
+  "key": "seven_island_tanoby_ruins_monean_chamber",
+  "index": 192,
+  "name": "Monean Chamber",
+  "matrix": 156,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_DUNGEON",
+  "nightMusic": "MUS_SEVII_DUNGEON",
+  "encounters": "seven_island_tanoby_ruins_monean_chamber",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 },
+    { "species": "Unown", "level": 25 }
+  ],
+  "landRate": 7,
+  "warps": [
+    { "x": 11, "z": 15, "to": "seven_island_tanoby_ruins", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

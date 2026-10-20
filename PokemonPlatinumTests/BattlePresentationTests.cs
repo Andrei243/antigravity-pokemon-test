@@ -636,6 +636,41 @@ public class BattlePresentationTests
     }
 
     [Fact]
+    public void TheSeaFloorIsFoughtOnItsOwnStage()
+    {
+        // Plan 21 · H5: on the sea floor, sand, kelp or rock underfoot, the battle is the sea floor's; its ground is the water's
+        var floor = new Map(5, 5) { Setting = MapSetting.Underwater };
+        floor.SetGroundTile(1, 1, TileType.Sand);
+        floor.SetGroundTile(2, 2, TileType.Kelp);
+        floor.SetGroundTile(3, 3, TileType.Water);
+        foreach (var (x, y) in new[] { (1, 1), (2, 2), (3, 3), (0, 4) })
+        {
+            Assert.Equal(BattleArena.Underwater, floor.ArenaAt(x, y));
+            Assert.Equal(PokemonPlatinumEngine.Battle.Sim.BattleTerrain.Water, GameEngine.TerrainAt(floor, x, y));
+        }
+        var spec = ArenaSpec.For(floor, 2, 2);
+        Assert.Equal(BattleArena.Underwater, spec.Kind);
+        Assert.False(spec.Outdoors);
+        Assert.False(spec.Lakeside);
+        // A map that names its stage keeps it
+        floor.Arena = BattleArena.Water;
+        Assert.Equal(BattleArena.Water, floor.ArenaAt(2, 2));
+        // And a sandy beach above the sea is still sand
+        Assert.Equal(BattleArena.Sand, Field(TileType.Sand).ArenaAt(2, 2));
+
+        // Its light is the sea's: blue all round, a blue fog that closes in, a sea for a sky with no star in it
+        var sea = ArtLook.ArenaRig(new ArenaSpec(BattleArena.Underwater), 14f);
+        var grass = ArtLook.ArenaRig(new ArenaSpec(BattleArena.Grass), 14f);
+        Assert.True(sea.Light.SkyAmbient.Z > sea.Light.SkyAmbient.X, "the light all round is blue");
+        Assert.True(sea.FogColor.Z > sea.FogColor.X && sea.FogAmount > grass.FogAmount);
+        Assert.True(sea.FogFar <= grass.FogFar);
+        Assert.Equal(0f, sea.LampGlow);
+        Assert.True(sea.Background.B > sea.Background.R);
+        Assert.True(sea.Post.Saturation < 1f);
+        Assert.Equal(sea, ArtLook.ArenaRig(new ArenaSpec(BattleArena.Underwater), 23f));
+    }
+
+    [Fact]
     public void OnlyGrassArenasGetTheLakeAndOnlyHallsATheme()
     {
         MapDatabase.Initialize();
@@ -667,7 +702,7 @@ public class BattlePresentationTests
     [Fact]
     public void CavesAndHallsIgnoreTheClockButTheOpenAirFollowsIt()
     {
-        foreach (var kind in new[] { BattleArena.Cave, BattleArena.Gym, BattleArena.League })
+        foreach (var kind in new[] { BattleArena.Cave, BattleArena.Gym, BattleArena.League, BattleArena.Underwater })
             Assert.Equal(ArtLook.ArenaRig(new ArenaSpec(kind, PokemonType.Fire), 3f), ArtLook.ArenaRig(new ArenaSpec(kind, PokemonType.Fire), 14f));
         foreach (var kind in new[] { BattleArena.Grass, BattleArena.Forest, BattleArena.Water, BattleArena.Snow, BattleArena.Sand })
             Assert.NotEqual(ArtLook.ArenaRig(new ArenaSpec(kind), 3f), ArtLook.ArenaRig(new ArenaSpec(kind), 14f));
@@ -707,7 +742,8 @@ public class BattlePresentationTests
         foreach (var spec in new[]
         {
             new ArenaSpec(BattleArena.Snow), new ArenaSpec(BattleArena.Sand), new ArenaSpec(BattleArena.Forest), new ArenaSpec(BattleArena.Cave),
-            new ArenaSpec(BattleArena.Water), new ArenaSpec(BattleArena.Gym, PokemonType.Fire), new ArenaSpec(BattleArena.League)
+            new ArenaSpec(BattleArena.Water), new ArenaSpec(BattleArena.Gym, PokemonType.Fire), new ArenaSpec(BattleArena.League),
+            new ArenaSpec(BattleArena.Underwater)
         })
         {
             var fx = new FxList();

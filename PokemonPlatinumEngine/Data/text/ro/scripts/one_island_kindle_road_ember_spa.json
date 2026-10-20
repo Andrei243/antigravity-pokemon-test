@@ -5,7 +5,7 @@
         "The water is pleasantly hot. {player}'s Pokémon soaked in the spring with {player}."
       ],
       "text": [
-        ""
+        "Apa e plăcut de fierbinte. {player} s-a înmuiat în izvor împreună cu Pokémonii."
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Every Pokémon looks refreshed!"
       ],
       "text": [
-        ""
+        "Toți Pokémonii arată înviorați!"
       ]
     }
   ],
@@ -23,7 +23,7 @@
         "Old Man"
       ],
       "text": [
-        ""
+        "Bătrânul"
       ]
     },
     {
@@ -31,7 +31,7 @@
         "The rocks round this spring are cracked all over from the volcano's rumbling. I smash them for exercise."
       ],
       "text": [
-        ""
+        "Stâncile din jurul izvorului sunt crăpate peste tot de zguduirile vulcanului. Le sparg pentru mișcare."
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Here, you take this. A young trainer should have it more than an old man."
       ],
       "text": [
-        ""
+        "Ține, ia asta. Un antrenor tânăr are mai multă nevoie de ea decât un bătrân."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "That's Rock Smash. It breaks a cracked rock clean apart, and something might be hiding underneath."
       ],
       "text": [
-        ""
+        "Asta e Spărgător de Pietre. Sparge o stâncă crăpată în bucăți, și poate se ascunde ceva dedesubt."
       ]
     },
     {
@@ -55,7 +55,7 @@
         "Ahh, a good soak after smashing rocks. Nothing better for old bones."
       ],
       "text": [
-        ""
+        "Ahh, o baie bună după spart pietre. Nimic nu-i mai bun pentru oasele bătrâne."
       ]
     }
   ]

@@ -18,6 +18,7 @@ public static class HgCover
         ("^ymb_hole", TerrainCover.CaveMouth),                    // the dark in a cave's mouth
         // The mouths of Mt. Mortar, the Ice Path and the Dragon's Den in the north's cliffs (plan 20 · J10)
         ("^cavehole|^icehole", TerrainCover.CaveMouth),
+        ("^cavekn", TerrainCover.CaveMouth),                      // Tohjo Falls' two mouths on Route 27 (plan 20 · J10, part b)
         ("^etc_|^h_kage|^a18_shadow", null),                     // odds and ends drawn over the ground, shadows
         // The Safari Zone's areas (plan 20 · J8, part b), judged by `--unknown`'s counts of open and blocked tiles:
         // the Meadow's and the Forest's ground, the Peak's and the Mountain's tracks and faces, the Rocky Beach's sand
@@ -33,6 +34,8 @@ public static class HgCover
         ("^sea_|^pond_|^river|_wf\\d", TerrainCover.Water),       // the sea, ponds and their edges, rivers, waterfalls
         ("^flower", TerrainCover.Flowers),
         ("^wall\\d|^wallkn|^cl_bg|^r_climb", TerrainCover.Cliff), // the walls of rock between the areas, and their faces
+        // Route 22's open grass by the League's gate (plan 20 · J10, part b): every tile of it walked, none blocked
+        ("^tok_fe01", TerrainCover.Grass),
         ("_fe\\d|fence|^senro|_board$", TerrainCover.Fence),      // each town's fences, the railway's line, signboards
         ("_rd\\d|^ko_land|^ko_h\\d|^d22_|^area18_", TerrainCover.Path),
         ("_yuka|_fuch|^ar_|_teien$|^kk_|_shouka$", TerrainCover.Paving),   // floors, kerbs, the ruins' stone, gardens

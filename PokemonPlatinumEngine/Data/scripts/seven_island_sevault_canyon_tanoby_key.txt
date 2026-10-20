@@ -1,0 +1,80 @@
+# The Tanoby Key in Sevault Canyon (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our
+# own, on FireRed's beats (data/maps/SevenIsland_SevaultCanyon_TanobyKey/scripts.inc).
+#
+# Seven switches lie in the chamber's floor, and seven boulders stand about it. FireRed's switch is a trigger only a
+# boulder can set off; here each is a pit (the overlay's), whose script starts as a pushed boulder comes to rest on it,
+# and the boulder stays there. Each switch is pressed once while the player stays in the chamber (FLAG_MAP_LOCAL_
+# TANOBY_KEY_SWITCH_1 to 7, FireRed's VAR_TEMP_1 to 7); with all seven pressed the ground shakes and the chambers of
+# the Tanoby Ruins open for good (FLAG_SYS_UNLOCKED_TANOBY_RUINS, which seven_island_tanoby_ruins' doors wait for).
+# Leaving the chamber puts the boulders back, as FireRed's does until the ruins are open.
+
+
+script Switch1
+  if flag FLAG_SYS_UNLOCKED_TANOBY_RUINS end
+  if flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1 end
+  setflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1
+  call Pressed
+  end
+
+script Switch2
+  if flag FLAG_SYS_UNLOCKED_TANOBY_RUINS end
+  if flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_2 end
+  setflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_2
+  call Pressed
+  end
+
+script Switch3
+  if flag FLAG_SYS_UNLOCKED_TANOBY_RUINS end
+  if flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_3 end
+  setflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_3
+  call Pressed
+  end
+
+script Switch4
+  if flag FLAG_SYS_UNLOCKED_TANOBY_RUINS end
+  if flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_4 end
+  setflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_4
+  call Pressed
+  end
+
+script Switch5
+  if flag FLAG_SYS_UNLOCKED_TANOBY_RUINS end
+  if flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_5 end
+  setflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_5
+  call Pressed
+  end
+
+script Switch6
+  if flag FLAG_SYS_UNLOCKED_TANOBY_RUINS end
+  if flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_6 end
+  setflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_6
+  call Pressed
+  end
+
+script Switch7
+  if flag FLAG_SYS_UNLOCKED_TANOBY_RUINS end
+  if flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_7 end
+  setflag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_7
+  call Pressed
+  end
+
+
+# A switch pressed: a click, and with all seven the ruins open
+script Pressed
+  sound "select"
+  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1 return
+  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_2 return
+  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_3 return
+  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_4 return
+  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_5 return
+  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_6 return
+  if not flag FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_7 return
+  scene "The Tanoby Key"
+  sound "thunder_rumble"
+  camera shake 0.8
+  wait 0.8
+  speaker none
+  text "A deep rumble rolled through the rock. Somewhere far off, something heavy shifted and was still."
+  setflag FLAG_SYS_UNLOCKED_TANOBY_RUINS
+  endscene
+  return

@@ -1,0 +1,19 @@
+{
+  // The Canyon Entrance (plan 19 · K9, part b): FireRed's map, our words. The way down from Seven Island's town to
+  // Sevault Canyon
+  "area": "seven_island_sevault_canyon_entrance",
+  "name": "Canyon Entrance",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "people": {
+    "woman_2": { "name": "Miah", "trainer": { "dialogueBefore": "Aroma Lady Miah: The flowers by the canyon smell sweetest at dawn. Battle me among them!", "dialogueAfter": "Aroma Lady Miah: My flowers have wilted." } },
+    "beauty": { "name": "Eve", "trainer": { "dialogueBefore": "Young Couple Eve & Jon: We came to the canyon for a romantic walk. And a battle!", "dialogueAfter": "Young Couple Eve & Jon: Not very romantic, losing." } },
+    "man": { "name": "Jon", "trainer": { "dialogueBefore": "Young Couple Eve & Jon: Two hearts, two teams, one battle!", "dialogueAfter": "Young Couple Eve & Jon: We'll walk off our defeat." } },
+    "camper": { "name": "Nicolas", "trainer": { "dialogueBefore": "Pokémon Ranger Nicolas: Rangers keep watch over the canyon. Let me see how you treat your Pokémon!", "dialogueAfter": "Pokémon Ranger Nicolas: They're in good hands." } },
+    "picnicker": { "name": "Madeline", "trainer": { "dialogueBefore": "Pokémon Ranger Madeline: The canyon's Pokémon are wild and proud. Are yours?", "dialogueAfter": "Pokémon Ranger Madeline: Proud, and strong as well." } },
+    "rocker": { "name": "Mason", "trainer": { "dialogueBefore": "Juggler Mason: Round and round I spin! Can you keep up?", "dialogueAfter": "Juggler Mason: I've spun myself dizzy." } }
+  },
+  "signs": {
+    "SevenIsland_SevaultCanyon_Entrance_EventScript_RouteSign": "Sevault Canyon\nSeven Island - Tanoby Ruins"
+  }
+}

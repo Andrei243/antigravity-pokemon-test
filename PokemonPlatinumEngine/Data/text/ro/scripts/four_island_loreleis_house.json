@@ -1,0 +1,54 @@
+{
+  "Lorelei": [
+    {
+      "en": [
+        "Lorelei"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "This island is where I was born. If anything happened to it, or to the Pokémon that live here, I'd never forgive myself."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I heard you set free the Pokémon in Team Rocket's warehouse. Thank you, {player}. The island owes you a great deal."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Before long I'll go back to the Pokémon League. When you come to challenge it, I'll be waiting, colder than ever."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "For now I'll do what I can for the island. The League can spare me a little while longer."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Doll": [
+    {
+      "en": [
+        "A Pokémon doll, plump and soft. There are dolls everywhere in this house!"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

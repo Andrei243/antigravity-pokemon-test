@@ -59,6 +59,7 @@ A form (`PokemonForm`, plan 03 · D11) has a `name`, the species' and the form's
   "npcs": [ … ],
   "triggers": [ { "x": 4, "y": 9, "width": 3, "depth": 1, "script": "RivalStopsYou", "variable": "VAR_TOWN_STATE", "value": 0 } ],   // optional, see below
   "hiddenItems": [ { "x": 7, "y": 2, "item": "Nugget", "flag": "FLAG_OBTAINED_HIDDEN_SOMEWHERE_NUGGET" } ],   // optional, see below
+  "tileScripts": [ { "x": 6, "y": 5, "script": "TV" } ],   // optional: a tile that runs a script of its own when looked at (plan 08 · P8)
   "wildEncounters": [ { "speciesName": "Bidoof", "minLevel": 2, "maxLevel": 4, "weight": 45 } ]
 }
 ```
@@ -130,6 +131,8 @@ What a person does when spoken to is a script (`docs/scripts.md`). Left to thems
 **Pokémon in the field.** A Pokémon standing on the map (plan 10 · F1: the mine's Machop) is a person of the map whose `npcType` is `Pokemon`, with the `species` it is (a species of `species.json`, or a form by its name: `Giratina-Origin`). It is drawn as its species' field sprite (style guide, "Pokémon in the field"), stands in the way like a person, and runs its `script` when spoken to, or the common `Pokemon`: its cry, then its `dialog`. A file whose Pokémon names no species, or whose `species` is on anyone else, doesn't load.
 
 **Items on the ground.** An item to pick up is a person of the map whose `npcType` is `ItemBall`, with the `item` it holds (a name from `items.json`), a `count` when it is more than one, and a `hiddenBy` flag of its own: picking it up sets that flag, which is what takes the ball off the map and keeps it off in every game saved afterwards. A file whose ball has no flag, or an item that isn't one, doesn't load. `hiddenItems` are items nobody can see, found by looking at their tile: the tile, the `item`, a `count` when more than one, and the `flag` set once it has been found. In the imported world nothing of this is written by hand: the balls and the hidden items of an open area are there by themselves, from its area file.
+
+**Furniture and tile scripts** (plan 08 · P8). A room's `Television`, `Bookshelf` and `TrashCan` props say something when looked at with nothing written for them (`common.Television`, `Bookshelf`, `TrashCan`; `FieldScripts.ForFurniture`), and so do the tiles of the imported games' rooms whose behaviour is a television, a bookshelf, a bin or a map on a wall. A piece that should say something of its own takes a signboard with a `script`, or a `tileScripts` entry: the tile (inside the room) and the script it runs, as an overlay's `read` gives a tile of the world one. Either goes before the furniture's common script.
 
 A trainer carries a `trainer` block. On a hand-made map it says everything; in an overlay of the imported world it is the lines alone (plan 08 · P7, below):
 

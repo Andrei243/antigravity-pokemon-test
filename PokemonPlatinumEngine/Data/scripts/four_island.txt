@@ -1,0 +1,31 @@
+# Four Island (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own, on FireRed's
+# beats (data/maps/FourIsland/scripts.inc).
+#
+# The first time the player comes ashore (VAR_MAP_SCENE_FOUR_ISLAND 0) the rival is by the harbour, back from the Day
+# Care with an Egg of his own; he says so and leaves (1). FireRed walks him up to the player and off; here he speaks
+# where he stands and a dark screen takes him away. Six Island's Pokémon Center sets the variable too, for a player
+# who has met him there first (six_island_pokemon_center_1f.txt).
+
+
+script OnEnter
+  if var VAR_MAP_SCENE_FOUR_ISLAND == 0 goto Rival
+  setflag FLAG_HIDE_FOUR_ISLAND_RIVAL
+  end
+label Rival
+  scene "The rival on Four Island"
+  clearflag FLAG_HIDE_FOUR_ISLAND_RIVAL
+  show four_island_rival
+  music "kanto/rival"
+  emote four_island_rival exclaim
+  speaker "{rival}"
+  say "Hey, {player}! You came all the way out here too? Took you long enough."
+  say "The old couple on this island run a Day Care. I left two of mine there and they found an Egg. Can you believe it?"
+  say "I'm going to hatch it and raise it into the toughest Pokémon around. Smell you later!"
+  fade out 0.4
+  hide four_island_rival
+  setflag FLAG_HIDE_FOUR_ISLAND_RIVAL
+  music area
+  fade in 0.4
+  setvar VAR_MAP_SCENE_FOUR_ISLAND 1
+  endscene
+  end

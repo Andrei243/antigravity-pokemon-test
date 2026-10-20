@@ -1,0 +1,32 @@
+{
+  "key": "four_island_pokemon_center_1f",
+  "index": 402,
+  "name": "Four Island",
+  "matrix": 349,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "four_island", "toWarp": 0 },
+    { "x": 1, "z": 6, "to": "four_island_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "four_island_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "man", "looks": "man", "movement": "wander_around", "x": 10, "z": 6, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_PokemonCenter_1F_EventScript_Man" },
+    { "id": "woman_3", "looks": "woman_3", "movement": "look_south_and_north", "x": 5, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_PokemonCenter_1F_EventScript_Woman" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_north", "x": 2, "z": 2, "facing": 0, "rangeX": 1, "rangeZ": 1, "script": "FourIsland_PokemonCenter_1F_EventScript_Gentleman" }
+  ],
+  "signs": [
+    { "x": 3, "z": 1, "type": 0, "script": "FourIsland_PokemonCenter_1F_EventScript_PokemonJournal" },
+    { "x": 2, "z": 1, "type": 0, "script": "FourIsland_PokemonCenter_1F_EventScript_PokemonJournal" }
+  ],
+  "triggers": []
+}

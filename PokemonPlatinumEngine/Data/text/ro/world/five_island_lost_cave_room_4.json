@@ -1,0 +1,39 @@
+{
+  "displayName": {
+    "en": [
+      "Lost Cave"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "woman_1": {
+      "name": {
+        "en": [
+          "Laura"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Psychic Laura: I came in here to find myself. I found you instead!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Psychic Laura: I still haven't found myself."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,33 @@
+{
+  "people": {
+    "seagallop": {
+      "name": {
+        "en": [
+          "Seagallop"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The Seagallop rocks gently at the pier."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "sailor": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,169 @@
+{
+  "displayName": {
+    "en": [
+      "Outcast Island"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "rocket_m": {
+      "name": {
+        "en": [
+          "Grunt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Team Rocket Grunt: Nobody comes out this far! So what are you doing here?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Team Rocket Grunt: I was sent out here to keep out of the way. Some job!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "fisher": {
+      "name": {
+        "en": [
+          "Tylor"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Fisherman Tylor: The fish out here have never seen a hook. Neither have my Pokémon seen defeat!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Fisherman Tylor: Well, now they have."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water": {
+      "name": {
+        "en": [
+          "Mymo"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Mymo: I swam all the way from Six Island! Battle time!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Mymo: And now I have to swim all the way back."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_water": {
+      "name": {
+        "en": [
+          "Nicole"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Nicole: The current out here is strong. So am I!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Nicole: The current wins, and so do you."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_water_2": {
+      "name": {
+        "en": [
+          "Ava"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sis and Bro Ava & Geb: My little brother and I swim together. And we battle together!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sis and Bro Ava & Geb: We'll swim home and train some more."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "tuber_m_water": {
+      "name": {
+        "en": [
+          "Geb"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Sis and Bro Ava & Geb: My big sister's the best! Together we can't lose!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Sis and Bro Ava & Geb: We lost... but she's still the best!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

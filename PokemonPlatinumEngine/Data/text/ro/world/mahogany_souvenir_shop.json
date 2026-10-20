@@ -6,7 +6,7 @@
           "Salesman"
         ],
         "text": [
-          ""
+          "Vânzătorul"
         ]
       },
       "dialog": {
@@ -15,8 +15,8 @@
           "Nothing back there but stock. Customers stay this side of the counter!"
         ],
         "text": [
-          "",
-          ""
+          "Bun venit, bun venit! Batoane Rage Candy, proaspete de azi. Ei bine... aproape proaspete.",
+          "Dincolo nu e decât marfă. Clienții rămân de partea asta a tejghelei!"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "I stop in here every time I pass through. Something about this place always feels a little off."
         ],
         "text": [
-          ""
+          "Intru aici de fiecare dată când trec prin oraș. Locul ăsta are mereu ceva care nu e chiar în regulă."
         ]
       }
     }
@@ -45,7 +45,7 @@
         "A poster of the shop's sweets.\n“Rage Candy Bars: the taste of the mountains!”"
       ],
       "text": [
-        ""
+        "Un afiș cu dulciurile magazinului.\n„Batoane Rage Candy: gustul munților!”"
       ]
     }
   }

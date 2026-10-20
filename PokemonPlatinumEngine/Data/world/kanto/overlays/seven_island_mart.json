@@ -1,0 +1,11 @@
+{
+  // Seven Island's Poké Mart (plan 19 · K9, part b): the common counter by the badges
+  "area": "seven_island_mart",
+  "bgmTrack": "kanto/sevii_67",
+  "people": {
+    "clerk": { "name": "Clerk", "script": "Clerk", "still": true, "dialog": [ "Welcome! How can I help you?" ] },
+    "lass": { "name": "Lass", "dialog": [ "Pokémon have personalities all their own, just like people. Mine is a real show-off." ] },
+    "fisher": { "name": "Fisherman", "dialog": [ "If you want to fish, the water round Seven Island is as good as it gets." ] },
+    "hiker": { "name": "Hiker", "dialog": [ "Rope, lamp, snacks... My preparations are complete. Next stop, the Tanoby Ruins!" ] }
+  }
+}

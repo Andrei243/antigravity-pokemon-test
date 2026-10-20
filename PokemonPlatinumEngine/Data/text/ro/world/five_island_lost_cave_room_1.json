@@ -1,0 +1,39 @@
+{
+  "displayName": {
+    "en": [
+      "Lost Cave"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "hiker": {
+      "name": {
+        "en": [
+          "Lawson"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Ruin Maniac Lawson: I've been lost in here for days. A battle will cheer me up!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Ruin Maniac Lawson: Well, now I'm lost and beaten."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

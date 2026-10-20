@@ -361,6 +361,9 @@ public sealed partial class ScriptRunner
         Op.AddContact => false,
         // A panel of the Ruins of Alph is the player's own to put together
         Op.Puzzle => true,
+        // A television's programme is only said (its die is drawn all the same); a map on a wall is the player's to look at
+        Op.Broadcast => false,
+        Op.TownMap => true,
         _ => throw new ArgumentOutOfRangeException(nameof(i), i.Op, "This command doesn't say what it does in a hurry: name it in ScriptRunner.StopsAHurry.")
     };
 
@@ -1069,6 +1072,18 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Credits:
                 host.Open(ScriptScreen.Credits, Subject);
+                break;
+
+            // Furniture and the programmes (plan 08 · P8). A television's programme: one of those on, drawn on the
+            // script's die, its lines made of what is true of the game (Broadcasts) and said as one talk
+            case Op.Broadcast:
+                host.Say(speakerShown, Broadcasts.Compose(host.Broadcast(), host.Random).ToList());
+                break;
+            // A map on a wall: the Town Map's screen in its wall mode while the script waits. RESULT is 1 when it
+            // opened, 0 where the region has no map
+            case Op.TownMap:
+                host.Open(ScriptScreen.TownMap, Subject);
+                afterBusy = () => Result = host.Answer;
                 break;
 
             // After the Hall of Fame (plan 02 · S15): the Pokédex is upgraded to the National one, without a word

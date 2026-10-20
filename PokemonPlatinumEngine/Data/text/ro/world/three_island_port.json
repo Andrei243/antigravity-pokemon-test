@@ -4,7 +4,7 @@
       "Three Island"
     ],
     "text": [
-      ""
+      "Insula Trei"
     ]
   },
   "people": {
@@ -14,7 +14,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -22,7 +22,7 @@
           "A gang of bikers rolled off a boat here and roared off into town. What a racket!"
         ],
         "text": [
-          ""
+          "O bandă de motocicliști a coborât aici dintr-o barcă și a demarat în oraș. Ce zgomot!"
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Biker"
         ],
         "text": [
-          ""
+          "Motociclist"
         ]
       },
       "dialog": {
@@ -40,7 +40,7 @@
           "Heh, this island's way too quiet. We're gonna liven it up!"
         ],
         "text": [
-          ""
+          "He, insula asta e mult prea liniștită. O s-o însuflețim noi!"
         ]
       }
     },
@@ -50,7 +50,7 @@
           "Biker"
         ],
         "text": [
-          ""
+          "Motociclist"
         ]
       },
       "dialog": {
@@ -58,7 +58,7 @@
           "The boss says we're taking over. Better stay outta our way."
         ],
         "text": [
-          ""
+          "Șeful zice că preluăm noi. Mai bine nu ne ieși în cale."
         ]
       }
     }

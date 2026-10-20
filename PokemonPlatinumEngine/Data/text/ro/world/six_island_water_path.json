@@ -1,0 +1,212 @@
+{
+  "displayName": {
+    "en": [
+      "Water Path"
+    ],
+    "text": [
+      ""
+    ]
+  },
+  "people": {
+    "woman_2": {
+      "name": {
+        "en": [
+          "Rose"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Aroma Lady Rose: Can you smell the flowers on the sea breeze? Battle me in their scent!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Aroma Lady Rose: The scent has faded."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "rocker": {
+      "name": {
+        "en": [
+          "Edward"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Juggler Edward: Watch me juggle my Poké Balls! Now watch me battle with them!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Juggler Edward: Dropped them all."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_m_water": {
+      "name": {
+        "en": [
+          "Samir"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Samir: The Water Path is a swimmer's dream!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Samir: A dream, and a defeat."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "swimmer_f_water": {
+      "name": {
+        "en": [
+          "Denise"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Swimmer Denise: I swim up and down the path every day. Want to race?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Swimmer Denise: You'd win the race, too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl": {
+      "name": {
+        "en": [
+          "Miu"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Miu & Mia: We're twins! We do everything together!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Miu & Mia: We lost together too."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "little_girl_2": {
+      "name": {
+        "en": [
+          "Mia"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Twins Miu & Mia: You can't beat two of us at once!"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Twins Miu & Mia: Oh. You can."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "hiker": {
+      "name": {
+        "en": [
+          "Earl"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "before": {
+        "en": [
+          "Hiker Earl: I'm walking the whole length of the island. Care to stop me?"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "after": {
+        "en": [
+          "Hiker Earl: You stopped me."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "SixIsland_WaterPath_EventScript_HornWantedSign": {
+      "en": [
+        "WANTED!\nThe biggest Heracross horn on the islands!\nAsk at the house by the path."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "SixIsland_WaterPath_EventScript_RouteSign": {
+      "en": [
+        "Water Path\nSix Island - Ruin Valley"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

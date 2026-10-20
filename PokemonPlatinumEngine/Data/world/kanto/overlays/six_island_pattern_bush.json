@@ -1,0 +1,22 @@
+{
+  // Pattern Bush (plan 19 · K9, part b): FireRed's map, our words. A thicket of strange patterned grass off the Green
+  // Path, where bug catchers and breeders train
+  "area": "six_island_pattern_bush",
+  "name": "Pattern Bush",
+  "bgmTrack": "kanto/viridian_forest",
+  "trees": "Round",
+  "people": {
+    "woman_2": { "name": "Bethany", "trainer": { "dialogueBefore": "Pokémon Breeder Bethany: The patterns in this grass make my Pokémon sleepy. Let's wake them up!", "dialogueAfter": "Pokémon Breeder Bethany: Back to sleep, everyone." } },
+    "woman_2_2": { "name": "Allison", "trainer": { "dialogueBefore": "Pokémon Breeder Allison: I raise every Pokémon with love. Let me show you!", "dialogueAfter": "Pokémon Breeder Allison: Love wasn't quite enough." } },
+    "bug_catcher": { "name": "Garret", "trainer": { "dialogueBefore": "Bug Catcher Garret: The bugs here have the strangest markings!", "dialogueAfter": "Bug Catcher Garret: My bugs need new markings." } },
+    "bug_catcher_2": { "name": "Jonah", "trainer": { "dialogueBefore": "Bug Catcher Jonah: Shh! You'll scare the bugs away! Too late, let's battle.", "dialogueAfter": "Bug Catcher Jonah: Now the bugs are gone and I lost." } },
+    "bug_catcher_3": { "name": "Vance", "trainer": { "dialogueBefore": "Bug Catcher Vance: I walk round and round looking for bugs. Found you instead!", "dialogueAfter": "Bug Catcher Vance: Round and round I go." } },
+    "youngster": { "name": "Nash", "trainer": { "dialogueBefore": "Youngster Nash: I got lost in the bushes. A battle will help me find my way!", "dialogueAfter": "Youngster Nash: Still lost. Still beaten." } },
+    "youngster_2": { "name": "Cordell", "trainer": { "dialogueBefore": "Youngster Cordell: Bet you can't beat my team!", "dialogueAfter": "Youngster Cordell: You won the bet." } },
+    "lass": { "name": "Dalia", "trainer": { "dialogueBefore": "Lass Dalia: The patterns on the grass make me dizzy. Battle me before I fall over!", "dialogueAfter": "Lass Dalia: Oh, now I'm really dizzy." } },
+    "lass_2": { "name": "Joana", "trainer": { "dialogueBefore": "Lass Joana: Isn't this place pretty? Let's have a pretty battle!", "dialogueAfter": "Lass Joana: That wasn't pretty at all." } },
+    "camper": { "name": "Riley", "trainer": { "dialogueBefore": "Camper Riley: I'm camping in the bush tonight. Battle me before it gets dark!", "dialogueAfter": "Camper Riley: I'll sleep on that one." } },
+    "picnicker": { "name": "Marcy", "trainer": { "dialogueBefore": "Picnicker Marcy: I came here for a picnic, but a battle sounds even better!", "dialogueAfter": "Picnicker Marcy: Back to my sandwiches." } },
+    "hiker": { "name": "Layton", "trainer": { "dialogueBefore": "Ruin Maniac Layton: These patterns must be a message from long ago! I'm sure of it!", "dialogueAfter": "Ruin Maniac Layton: The message says: you win." } }
+  }
+}

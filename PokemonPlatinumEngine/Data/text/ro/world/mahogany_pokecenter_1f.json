@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "There's a lake north of here where the Gyarados get really angry. I saw one leap clean out of the water!"
         ],
         "text": [
-          ""
+          "Mai la nord e un lac unde Gyarados se înfurie rău. Am văzut unul sărind cu totul din apă!"
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "The road east of town goes up into the snow. Bring something warm, and Pokémon that can take the cold."
         ],
         "text": [
-          ""
+          "Drumul de la est de oraș urcă în zăpadă. Ia ceva călduros și Pokémoni care rezistă la frig."
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "The Gym Leader here has lived through more winters than anyone. His ice Pokémon are tough."
         ],
         "text": [
-          ""
+          "Liderul Arenei de aici a trecut prin mai multe ierni decât oricine. Pokémonii lui de gheață sunt duri."
         ]
       }
     }

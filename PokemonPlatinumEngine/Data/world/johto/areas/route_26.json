@@ -1,0 +1,97 @@
+{
+  "key": "route_26",
+  "index": 30,
+  "name": "Route 26",
+  "matrix": 0,
+  "kind": "Route",
+  "sign": "Route",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "General",
+  "dayMusic": "GS_R_1_26",
+  "nightMusic": "GS_R_1_26",
+  "encounters": "R26",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Doduo", "level": 28, "night": "Raticate" },
+    { "species": "Sandslash", "level": 28 },
+    { "species": "Doduo", "level": 28, "night": "Raticate" },
+    { "species": "Sandslash", "level": 28 },
+    { "species": "Ponyta", "level": 32 },
+    { "species": "Ponyta", "level": 32 },
+    { "species": "Doduo", "level": 30, "night": "Raticate" },
+    { "species": "Doduo", "level": 30, "night": "Raticate" },
+    { "species": "Raticate", "level": 30, "night": "Quagsire" },
+    { "species": "Dodrio", "level": 30, "night": "Quagsire" },
+    { "species": "Raticate", "level": 30, "night": "Quagsire" },
+    { "species": "Dodrio", "level": 30, "night": "Quagsire" }
+  ],
+  "landRate": 25,
+  "water": [
+    { "species": "Tentacool", "level": 30, "maxLevel": 30 },
+    { "species": "Tentacool", "level": 25, "maxLevel": 25 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 30 },
+    { "species": "Tentacruel", "level": 30, "maxLevel": 30 }
+  ],
+  "waterRate": 10,
+  "oldRod": [
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Magikarp", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 },
+    { "species": "Tentacool", "level": 10, "maxLevel": 10 }
+  ],
+  "oldRodRate": 25,
+  "goodRod": [
+    { "species": "Magikarp", "level": 20, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 },
+    { "species": "Shellder", "level": 20, "maxLevel": 20 },
+    { "species": "Chinchou", "level": 20, "maxLevel": 20 }
+  ],
+  "goodRodRate": 50,
+  "superRod": [
+    { "species": "Chinchou", "level": 40, "maxLevel": 40 },
+    { "species": "Shellder", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 },
+    { "species": "Lanturn", "level": 40, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 40, "maxLevel": 40 }
+  ],
+  "superRodRate": 75,
+  "hoennSounds": [
+    "Whismur",
+    "Linoone"
+  ],
+  "sinnohSounds": [
+    "Buizel",
+    "Bidoof"
+  ],
+  "warps": [
+    { "x": 923, "z": 345, "to": "route_26_north_house", "toWarp": 0 },
+    { "x": 907, "z": 365, "to": "route_26_week_siblings_house", "toWarp": 0 },
+    { "x": 909, "z": 296, "to": "route_22_pokemon_league_reception_gate", "toWarp": 0 },
+    { "x": 910, "z": 296, "to": "route_22_pokemon_league_reception_gate", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "r26_fishing_2", "looks": "fishing_2", "movement": "9", "x": 913, "z": 403, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_FISHERMAN_SCOTT" },
+    { "id": "r26_mystery_2", "looks": "mystery_2", "movement": "16", "x": 923, "z": 374, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_PSYCHIC_M_VERNON" },
+    { "id": "r26_gswoman3", "looks": "gswoman3", "movement": "19", "x": 917, "z": 344, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 5, "script": "TRAINER_ACE_TRAINER_F_JOYCE" },
+    { "id": "r26_gsman3", "looks": "gsman3", "movement": "16", "x": 926, "z": 330, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_ACE_TRAINER_M_GAVEN" },
+    { "id": "r26_gsman3_2", "looks": "gsman3", "movement": "15", "x": 921, "z": 322, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_ACE_TRAINER_M_JAKE" },
+    { "id": "r26_gswoman3_2", "looks": "gswoman3", "movement": "15", "x": 913, "z": 302, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "script": "TRAINER_ACE_TRAINER_F_JAMIE" },
+    { "id": "r26_monstarball", "looks": "monstarball", "movement": "0", "x": 910, "z": 314, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_R26_MAX_ELIXIR", "item": "Max Elixir", "script": "std_itemball_r26_max_elixir" },
+    { "id": "r26_bonguri", "looks": "bonguri", "movement": "0", "x": 920, "z": 342, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_apricorn_tree" },
+    { "id": "r26_gsmiddleman1", "looks": "gsmiddleman1", "movement": "14", "x": 914, "z": 390, "facing": 0, "rangeX": 0, "rangeZ": 0, "y": 196608, "hiddenBy": "FLAG_HIDE_CAMERON", "script": "R26_000+1" }
+  ],
+  "signs": [
+    { "x": 911, "z": 298, "type": 1, "script": "R26_002+1" },
+    { "x": 890, "z": 408, "type": 2, "script": "std_hiddenitem_r26_r27_nugget", "item": "Nugget", "flag": "FLAG_HIDDEN_ITEM_R26_R27_NUGGET" },
+    { "x": 923, "z": 316, "type": 2, "script": "std_hiddenitem_r26_tinymushroom", "item": "Tiny Mushroom", "flag": "FLAG_HIDDEN_ITEM_R26_TINYMUSHROOM" },
+    { "x": 916, "z": 341, "type": 1, "script": "R26_003+1" }
+  ],
+  "triggers": []
+}

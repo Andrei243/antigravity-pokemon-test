@@ -1,0 +1,8 @@
+{
+  // A house by the Water Path (plan 19 · K9, part b)
+  "area": "six_island_water_path_house_2",
+  "bgmTrack": "kanto/fuchsia",
+  "people": {
+    "man": { "name": "Man", "dialog": [ "My neighbour measured me with her tape the other day. She said I'd make a fine Heracross. What's that supposed to mean?" ] }
+  }
+}

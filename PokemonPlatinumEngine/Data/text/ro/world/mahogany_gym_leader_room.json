@@ -6,7 +6,7 @@
           "Deandre"
         ],
         "text": [
-          ""
+          "Deandre"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Boarder Deandre: This is the best ice in all of Johto. Let's ride!"
         ],
         "text": [
-          ""
+          "Snowboardist Deandre: Aici e cea mai bună gheață din tot Johto. Hai să alunecăm!"
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Boarder Deandre: I need a better board."
         ],
         "text": [
-          ""
+          "Snowboardist Deandre: Am nevoie de o placă mai bună."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Gerardo"
         ],
         "text": [
-          ""
+          "Gerardo"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Boarder Gerardo: You've slid all the way in here? Then you can battle me!"
         ],
         "text": [
-          ""
+          "Snowboardist Gerardo: Ai alunecat până aici? Atunci te poți lupta cu mine!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Boarder Gerardo: You stuck the landing. I didn't."
         ],
         "text": [
-          ""
+          "Snowboardist Gerardo: Tu ai aterizat bine. Eu nu."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Jill"
         ],
         "text": [
-          ""
+          "Jill"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Skier Jill: Pryce taught me to stay calm on the ice. Watch!"
         ],
         "text": [
-          ""
+          "Schior Jill: Pryce m-a învățat să rămân calmă pe gheață. Privește!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Skier Jill: I lost my balance, and the battle."
         ],
         "text": [
-          ""
+          "Schior Jill: Mi-am pierdut echilibrul și lupta."
         ]
       }
     }

@@ -1,0 +1,21 @@
+{
+  // The Water Path (plan 19 · K9, part b): FireRed's map, our words. A long road of sand and sea down Six Island's
+  // east side, two houses by its north end
+  "area": "six_island_water_path",
+  "name": "Water Path",
+  "bgmTrack": "kanto/sevii_route",
+  "trees": "Round",
+  "people": {
+    "woman_2": { "name": "Rose", "trainer": { "dialogueBefore": "Aroma Lady Rose: Can you smell the flowers on the sea breeze? Battle me in their scent!", "dialogueAfter": "Aroma Lady Rose: The scent has faded." } },
+    "rocker": { "name": "Edward", "trainer": { "dialogueBefore": "Juggler Edward: Watch me juggle my Poké Balls! Now watch me battle with them!", "dialogueAfter": "Juggler Edward: Dropped them all." } },
+    "swimmer_m_water": { "name": "Samir", "trainer": { "dialogueBefore": "Swimmer Samir: The Water Path is a swimmer's dream!", "dialogueAfter": "Swimmer Samir: A dream, and a defeat." } },
+    "swimmer_f_water": { "name": "Denise", "trainer": { "dialogueBefore": "Swimmer Denise: I swim up and down the path every day. Want to race?", "dialogueAfter": "Swimmer Denise: You'd win the race, too." } },
+    "little_girl": { "name": "Miu", "trainer": { "dialogueBefore": "Twins Miu & Mia: We're twins! We do everything together!", "dialogueAfter": "Twins Miu & Mia: We lost together too." } },
+    "little_girl_2": { "name": "Mia", "trainer": { "dialogueBefore": "Twins Miu & Mia: You can't beat two of us at once!", "dialogueAfter": "Twins Miu & Mia: Oh. You can." } },
+    "hiker": { "name": "Earl", "trainer": { "dialogueBefore": "Hiker Earl: I'm walking the whole length of the island. Care to stop me?", "dialogueAfter": "Hiker Earl: You stopped me." } }
+  },
+  "signs": {
+    "SixIsland_WaterPath_EventScript_HornWantedSign": "WANTED!\nThe biggest Heracross horn on the islands!\nAsk at the house by the path.",
+    "SixIsland_WaterPath_EventScript_RouteSign": "Water Path\nSix Island - Ruin Valley"
+  }
+}

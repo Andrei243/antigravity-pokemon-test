@@ -1,0 +1,76 @@
+{
+  "key": "five_island_meadow",
+  "index": 237,
+  "name": "Five Isle Meadow",
+  "matrix": 194,
+  "kind": "Outdoors",
+  "sign": "Route",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_ROUTE",
+  "nightMusic": "MUS_SEVII_ROUTE",
+  "encounters": "five_island_meadow",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "land": [
+    { "species": "Pidgey", "level": 44 },
+    { "species": "Sentret", "level": 10 },
+    { "species": "Pidgeotto", "level": 48 },
+    { "species": "Hoppip", "level": 10 },
+    { "species": "Sentret", "level": 15 },
+    { "species": "Meowth", "level": 41 },
+    { "species": "Hoppip", "level": 15 },
+    { "species": "Psyduck", "level": 41 },
+    { "species": "Pidgeotto", "level": 50 },
+    { "species": "Persian", "level": 47 },
+    { "species": "Pidgeotto", "level": 50 },
+    { "species": "Persian", "level": 50 }
+  ],
+  "landRate": 21,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Hoppip", "level": 5, "maxLevel": 15 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Qwilfish", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 84, "z": 61, "to": "", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "rocket_f", "looks": "rocket_f", "movement": "wander_around", "x": 90, "z": 58, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 1, "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_51" },
+    { "id": "rocket_m", "looks": "rocket_m", "movement": "look_south_and_west", "x": 89, "z": 45, "facing": 1, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 5, "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_49" },
+    { "id": "rocket_m_2", "looks": "rocket_m", "movement": "look_east", "x": 83, "z": 67, "facing": 3, "rangeX": 1, "rangeZ": 1, "trainer": "normal", "sight": 3, "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_ROCKETS", "script": "TRAINER_TEAM_ROCKET_GRUNT_50" },
+    { "id": "five_island_meadow_border_tree", "looks": "cut_tree", "movement": "look_around", "x": 80, "z": 49, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_CutTree" },
+    { "id": "cut_tree", "looks": "cut_tree", "movement": "look_around", "x": 91, "z": 52, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_CutTree" },
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 84, "z": 51, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_MEADOW_MAX_POTION", "item": "Max Potion", "script": "FiveIsland_Meadow_EventScript_ItemMaxPotion" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 75, "z": 62, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_FIVE_ISLAND_MEADOW_PP_UP", "item": "PP Up", "script": "FiveIsland_Meadow_EventScript_ItemPPUp" }
+  ],
+  "signs": [
+    { "x": 84, "z": 61, "type": 0, "script": "FiveIsland_Meadow_EventScript_WarehouseDoor" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,29 @@
+{
+  "key": "six_island_dotted_hole_sapphire_room",
+  "index": 162,
+  "name": "Dotted Hole",
+  "matrix": 126,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_DUNGEON",
+  "nightMusic": "MUS_SEVII_DUNGEON",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 11, "z": 7, "to": "six_island_dotted_hole_1f", "toWarp": 2 },
+    { "x": 5, "z": 9, "to": "six_island_dotted_hole_b4f", "toWarp": 3, "landing": true }
+  ],
+  "objects": [
+    { "id": "sapphire", "looks": "sapphire", "movement": "look_south", "x": 7, "z": 7, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_SAPPHIRE", "script": "SixIsland_DottedHole_SapphireRoom_EventScript_Sapphire" },
+    { "id": "dotted_hole_thief", "looks": "scientist", "movement": "look_south", "x": 5, "z": 9, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_DOTTED_HOLE_SCIENTIST", "script": "" }
+  ],
+  "signs": [
+    { "x": 7, "z": 2, "type": 0, "script": "SixIsland_DottedHole_SapphireRoom_EventScript_BrailleMessage" }
+  ],
+  "triggers": []
+}

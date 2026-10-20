@@ -1,0 +1,36 @@
+{
+  "WarehouseDoor": [
+    {
+      "en": [
+        "A keypad by the door. {player} typed in the password: 'Seel the deal'. Beep! A second password is needed."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} typed in 'Seel the deal', and then 'Ekans ate the cake'."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Click! The warehouse door unlocked!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "The warehouse door is unlocked."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

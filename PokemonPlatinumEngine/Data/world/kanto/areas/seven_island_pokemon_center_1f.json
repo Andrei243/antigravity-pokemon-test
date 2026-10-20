@@ -1,0 +1,31 @@
+{
+  "key": "seven_island_pokemon_center_1f",
+  "index": 379,
+  "name": "Seven Island",
+  "matrix": 326,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "seven_island", "toWarp": 2 },
+    { "x": 1, "z": 6, "to": "seven_island_pokemon_center_2f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "seven_island_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "old_man_1", "looks": "old_man_1", "movement": "look_south", "x": 11, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_PokemonCenter_1F_EventScript_OldMan" },
+    { "id": "sailor", "looks": "sailor", "movement": "look_west", "x": 14, "z": 6, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_PokemonCenter_1F_EventScript_Sailor" },
+    { "id": "beauty", "looks": "beauty", "movement": "look_east", "x": 4, "z": 4, "facing": 3, "rangeX": 1, "rangeZ": 1, "script": "SevenIsland_PokemonCenter_1F_EventScript_Beauty" },
+    { "id": "0", "looks": "0", "movement": "invisible", "x": 3, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "SevenIsland_PokemonCenter_1F_EventScript_PokemonJournal" },
+    { "id": "0_2", "looks": "0", "movement": "invisible", "x": 2, "z": 1, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_POSTGAME_GOSSIPERS", "script": "SevenIsland_PokemonCenter_1F_EventScript_PokemonJournal" }
+  ],
+  "signs": [],
+  "triggers": []
+}

@@ -5,7 +5,7 @@
         "Sailor"
       ],
       "text": [
-        ""
+        "Marinar"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome aboard the Seagallop! Have your pass ready."
       ],
       "text": [
-        ""
+        "Bun venit pe Seagallop! Pregătește-ți permisul."
       ]
     },
     {
@@ -26,12 +26,12 @@
         "NOT NOW"
       ],
       "text": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "Unde vrei să navigăm?",
+        "ORAȘUL VERMILION",
+        "INSULA CINNABAR",
+        "INSULA UNU",
+        "INSULA DOI",
+        "NU ACUM"
       ]
     },
     {
@@ -39,7 +39,7 @@
         "Come back any time."
       ],
       "text": [
-        ""
+        "Revino oricând."
       ]
     },
     {
@@ -47,7 +47,7 @@
         "All aboard for Vermilion City!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Orașul Vermilion!"
       ]
     },
     {
@@ -55,7 +55,7 @@
         "All aboard for Cinnabar Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Cinnabar!"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "All aboard for One Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Unu!"
       ]
     },
     {
@@ -71,12 +71,20 @@
         "All aboard for Two Island!"
       ],
       "text": [
-        ""
+        "Toată lumea la bord pentru Insula Doi!"
       ]
     },
     {
       "en": [
         "The Seagallop sails only for holders of a pass, I'm afraid."
+      ],
+      "text": [
+        "Seagallop navighează doar pentru deținătorii unui permis, mă tem."
+      ]
+    },
+    {
+      "en": [
+        "Welcome aboard the Seagallop! Have your pass ready."
       ],
       "text": [
         ""

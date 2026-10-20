@@ -1,0 +1,65 @@
+{
+  "key": "johto_victory_road_2f",
+  "index": 178,
+  "name": "Victory Road Jk",
+  "matrix": 162,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Cave2",
+  "dayMusic": "GS_D_CHAMPROAD",
+  "nightMusic": "GS_D_CHAMPROAD",
+  "encounters": "D43R0102",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Graveler", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Graveler", "level": 32 },
+    { "species": "Golbat", "level": 32 },
+    { "species": "Donphan", "level": 33 },
+    { "species": "Donphan", "level": 33 },
+    { "species": "Onix", "level": 34 },
+    { "species": "Onix", "level": 34 },
+    { "species": "Onix", "level": 36 },
+    { "species": "Rhyhorn", "level": 35 },
+    { "species": "Onix", "level": 36 },
+    { "species": "Rhyhorn", "level": 35 }
+  ],
+  "landRate": 10,
+  "hoennSounds": [
+    "Absol",
+    "Makuhita"
+  ],
+  "sinnohSounds": [
+    "Bronzor",
+    "Chingling"
+  ],
+  "warps": [
+    { "x": 7, "z": 31, "to": "johto_victory_road_1f", "toWarp": 1 },
+    { "x": 27, "z": 45, "to": "johto_victory_road_3f", "toWarp": 1 },
+    { "x": 27, "z": 44, "to": "johto_victory_road_3f", "toWarp": 1 },
+    { "x": 51, "z": 39, "to": "johto_victory_road_3f", "toWarp": 2 },
+    { "x": 51, "z": 38, "to": "johto_victory_road_3f", "toWarp": 2 },
+    { "x": 56, "z": 22, "to": "johto_victory_road_3f", "toWarp": 3 },
+    { "x": 56, "z": 21, "to": "johto_victory_road_3f", "toWarp": 3 },
+    { "x": 7, "z": 18, "to": "johto_victory_road_3f", "toWarp": 4 },
+    { "x": 7, "z": 17, "to": "johto_victory_road_3f", "toWarp": 4 }
+  ],
+  "objects": [
+    { "id": "d43r0102_monstarball", "looks": "monstarball", "movement": "0", "x": 13, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D43R0102_TM26", "item": "TM26", "script": "std_itemball_d43r0102_tm26" },
+    { "id": "d43r0102_monstarball_2", "looks": "monstarball", "movement": "0", "x": 31, "z": 36, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D43R0102_HP_UP", "item": "HP Up", "script": "std_itemball_d43r0102_hp_up" },
+    { "id": "d43r0102_monstarball_3", "looks": "monstarball", "movement": "0", "x": 44, "z": 24, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D43R0102_FULL_RESTORE", "item": "Full Restore", "script": "std_itemball_d43r0102_full_restore" },
+    { "id": "d43r0102_rock", "looks": "rock", "movement": "0", "x": 9, "z": 25, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" },
+    { "id": "d43r0102_rock_2", "looks": "rock", "movement": "0", "x": 50, "z": 28, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "std_field_strength" }
+  ],
+  "signs": [
+    { "x": 15, "z": 27, "type": 2, "script": "std_hiddenitem_d43r0102_max_revive", "item": "Max Revive", "flag": "FLAG_HIDDEN_ITEM_D43R0102_MAX_REVIVE" },
+    { "x": 28, "z": 38, "type": 2, "script": "std_hiddenitem_d43r0102_pp_up", "item": "PP Up", "flag": "FLAG_HIDDEN_ITEM_D43R0102_PP_UP" },
+    { "x": 57, "z": 42, "type": 2, "script": "std_hiddenitem_d43r0102_ultra_ball", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_D43R0102_ULTRA_BALL" }
+  ],
+  "triggers": []
+}

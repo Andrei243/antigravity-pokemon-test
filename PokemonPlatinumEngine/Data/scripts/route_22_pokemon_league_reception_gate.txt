@@ -1,0 +1,42 @@
+# The Pokémon League's reception gate, where Routes 26, 22 and 28 meet (plan 20 · J10, part b). docs/scripts.md
+# describes the language; the lines are our own, on HeartGold's beats.
+#
+# The guard in the middle of the hall lets a trainer north to Victory Road only with all eight of Johto's Badges: the
+# row before him is the area's first trigger, which waits on VAR_UNK_4110 as HeartGold counts it (1 once he has seen
+# them), and a trainer without them is turned back a step. The guard at the door to Route 22 keeps Kanto shut to
+# anyone who hasn't stood before the League's Champion: his line of tiles is the third trigger, which turns everyone
+# back until plan 20 · J12 gives it the Champion's victory to ask after. Route 28's door, toward Mt. Silver, is locked
+# in the overlay.
+
+
+script BadgeCheck
+  face r22r0101_policeman player
+  speaker "Guard"
+  if badges < 8 goto Short
+  say "Hold on a moment. The road north is for trainers with all eight of Johto's Badges... and you have every one!"
+  say "Victory Road waits beyond the north door. Good luck up there."
+  setvar VAR_UNK_4110 1
+  end
+label Short
+  say "Hold on a moment. The road north is for trainers with all eight of Johto's Badges, and you don't have them yet."
+  say "Come back once you've won the rest."
+  walk player down 1
+  end
+
+
+script Guard
+  speaker "Guard"
+  if var VAR_UNK_4110 == 1 goto Passed
+  say "Only a trainer with all eight of Johto's Badges may take the road north to Victory Road."
+  end
+label Passed
+  say "You've shown me all eight Badges. The way north to Victory Road is open to you."
+  end
+
+
+script KantoShut
+  face r22r0101_policeman_3 player
+  speaker "Guard"
+  say "Sorry, this door to Route 22 is closed. Kanto is open only to trainers who have stood before the League's Champion."
+  walk player left 1
+  end

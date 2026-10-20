@@ -1,0 +1,13 @@
+{
+  // Seven Island's Pokémon Center (plan 19 · K9, part b)
+  "area": "seven_island_pokemon_center_1f",
+  "bgmTrack": "kanto/sevii_67",
+  "people": {
+    "seven_island_nurse": { "name": "Nurse", "script": "Nurse" },
+    "old_man_1": { "name": "Old Man", "dialog": [ "Celio's machine on One Island links us with faraway places now. Who knows who'll come visiting next?" ] },
+    "sailor": { "name": "Sailor", "dialog": [ "Did you sail here on the Seagallop? Fastest ship on these seas, she is." ] },
+    "beauty": { "name": "Beauty", "dialog": [ "The Trainer Tower up north isn't open yet. They're still getting it ready. I can't wait!" ] },
+    "0": { "name": "Notice", "dialog": [ "A magazine left on the bench, open at a page about Agatha of the Elite Four and her Ghost Pokémon." ] },
+    "0_2": { "name": "Notice", "dialog": [ "A magazine left on the bench, open at a page about Agatha of the Elite Four and her Ghost Pokémon." ] }
+  }
+}

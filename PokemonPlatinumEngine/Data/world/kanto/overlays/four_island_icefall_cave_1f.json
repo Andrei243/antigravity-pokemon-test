@@ -1,0 +1,7 @@
+{
+  // Icefall Cave (plan 19 · K9, part b): FireRed's map. A cave of ice and frozen falls north-east of Four Island, HM07
+  // lying on the ice of its first floor
+  "area": "four_island_icefall_cave_1f",
+  "name": "Icefall Cave",
+  "bgmTrack": "kanto/sevii_cave"
+}

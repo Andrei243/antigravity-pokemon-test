@@ -1,0 +1,92 @@
+{
+  "Tutor": [
+    {
+      "en": [
+        "Cooltrainer"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "A battle can turn on a single dance. Shall I teach one of your Pokémon Swords Dance?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Good. Which Pokémon is to learn it?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} forgot {forgotten}. And..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{wearer} learned {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Swords Dance sharpens a Pokémon's Attack a great deal. Dance first, then strike!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Come back if you want to learn. The dance will wait."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "An Egg can't dance! Hatch it first."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one can't learn Swords Dance, I'm afraid."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That one already knows {thing}!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{forgotten} isn't a move that can be given up like that."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

@@ -6,8 +6,8 @@ namespace PokemonPlatinumEngine.Overworld;
 
 /// <summary>
 /// What the field sounds like where the player stands (plan 05 · A7), with no drawing or audio device: the
-/// weather's bed (rain, wind, a blizzard, a sandstorm), a cave's rumble, and the water round them, each from the
-/// side of the screen it is on. Water is heard by its tiles' behaviour within <see cref="Reach"/> tiles, each tile
+/// weather's bed (rain, wind, a blizzard, a sandstorm), a cave's rumble, and the water round them (or on the sea
+/// floor its own bed alone), each from the side of the screen it is on. Water is heard by its tiles' behaviour within <see cref="Reach"/> tiles, each tile
 /// counting less the further off it is, so a waterfall grows as the player walks up to it and a shore is louder
 /// the more of the view is sea. Sounds of a place are panned the same way (<see cref="PanOf"/>).
 /// </summary>
@@ -24,6 +24,9 @@ public static class FieldAmbience
 
     /// <summary>The pan of something <paramref name="dx"/> tiles to the right of the player (negative: to the left).</summary>
     public static float PanOf(float dx) => Math.Clamp(dx / HalfView, -1f, 1f) * PanReach;
+
+    /// <summary>How strong the sea floor's bed is heard: all round, from neither side.</summary>
+    public const float UnderwaterGain = 0.9f;
 
     /// <summary>A tile's weight in what is heard: 1 underfoot, a fifth at five tiles.</summary>
     private static float Near(int dx, int dy)
@@ -50,6 +53,13 @@ public static class FieldAmbience
     public static List<AmbienceLayer> Around(Map map, int x, int y)
     {
         var layers = new List<AmbienceLayer>();
+        // On the sea floor (plan 21 · H5) the sea is all there is to hear: no weather of the world above, and no
+        // shore or waterfall from the tiles' behaviours, which are the sea's own down there
+        if (map.IsUnderwater)
+        {
+            layers.Add(new AmbienceLayer(AmbienceBed.Underwater, UnderwaterGain, 0f));
+            return layers;
+        }
         if (OfWeather(map.WeatherAt(x, y)) is var (bed, gain)) layers.Add(new AmbienceLayer(bed, gain, 0f));
         if (map.IsCave) layers.Add(new AmbienceLayer(AmbienceBed.Cave, 0.8f, 0f));
 

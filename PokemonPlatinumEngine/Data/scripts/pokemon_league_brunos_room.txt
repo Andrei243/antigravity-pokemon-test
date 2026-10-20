@@ -10,7 +10,12 @@ script Bruno
   scene "Bruno"
   say "I am Bruno of the Elite Four! I have trained my body and my Pokémon together, through every kind of hardship."
   say "We will crush whatever stands before us with sheer strength. Hoo hah!"
+  if flag FLAG_SYS_CAN_LINK_WITH_RS goto Stronger
   battle self as "kanto_elite_four_bruno"
+  goto Won
+label Stronger
+  battle self as "kanto_elite_four_bruno_2"
+label Won
   speaker "Bruno"
   say "Why? How could I lose?"
   setflag FLAG_DEFEATED_BRUNO

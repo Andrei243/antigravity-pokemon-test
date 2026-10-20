@@ -1,0 +1,24 @@
+{
+  "key": "five_island_lost_cave_entrance",
+  "index": 177,
+  "name": "Lost Cave",
+  "matrix": 141,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 8, "to": "five_island_resort_gorgeous", "toWarp": 0 },
+    { "x": 5, "z": 5, "to": "five_island_lost_cave_room_1", "toWarp": 0 }
+  ],
+  "objects": [],
+  "signs": [],
+  "triggers": []
+}

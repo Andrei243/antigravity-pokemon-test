@@ -1,0 +1,93 @@
+{
+  "key": "cerulean_cave_1f",
+  "index": 114,
+  "name": "Cerulean Cave",
+  "matrix": 78,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_ROCKET_HIDEOUT",
+  "nightMusic": "MUS_ROCKET_HIDEOUT",
+  "encounters": "cerulean_cave_1f",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Magneton", "level": 49 },
+    { "species": "Parasect", "level": 49 },
+    { "species": "Golbat", "level": 46 },
+    { "species": "Machoke", "level": 46 },
+    { "species": "Primeape", "level": 52 },
+    { "species": "Ditto", "level": 52 },
+    { "species": "Electrode", "level": 58 },
+    { "species": "Parasect", "level": 58 },
+    { "species": "Golbat", "level": 55 },
+    { "species": "Wobbuffet", "level": 55 },
+    { "species": "Primeape", "level": 61 },
+    { "species": "Ditto", "level": 61 }
+  ],
+  "landRate": 7,
+  "water": [
+    { "species": "Psyduck", "level": 30, "maxLevel": 40 },
+    { "species": "Golduck", "level": 40, "maxLevel": 50 },
+    { "species": "Golduck", "level": 45, "maxLevel": 55 },
+    { "species": "Psyduck", "level": 40, "maxLevel": 50 },
+    { "species": "Psyduck", "level": 40, "maxLevel": 50 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Poliwag", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Goldeen", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Poliwag", "level": 15, "maxLevel": 25 },
+    { "species": "Poliwhirl", "level": 20, "maxLevel": 30 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 15, "maxLevel": 25 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "rockSmash": [
+    { "species": "Geodude", "level": 30, "maxLevel": 40 },
+    { "species": "Graveler", "level": 40, "maxLevel": 50 },
+    { "species": "Graveler", "level": 45, "maxLevel": 55 },
+    { "species": "Geodude", "level": 40, "maxLevel": 50 },
+    { "species": "Geodude", "level": 40, "maxLevel": 50 }
+  ],
+  "rockSmashRate": 50,
+  "warps": [
+    { "x": 33, "z": 21, "to": "cerulean_city", "toWarp": 7 },
+    { "x": 34, "z": 2, "to": "cerulean_cave_2f", "toWarp": 0 },
+    { "x": 1, "z": 7, "to": "cerulean_cave_b1f", "toWarp": 0 },
+    { "x": 10, "z": 2, "to": "cerulean_cave_2f", "toWarp": 1 },
+    { "x": 5, "z": 15, "to": "cerulean_cave_2f", "toWarp": 2 },
+    { "x": 30, "z": 10, "to": "cerulean_cave_2f", "toWarp": 3 },
+    { "x": 24, "z": 11, "to": "cerulean_cave_2f", "toWarp": 4 },
+    { "x": 2, "z": 4, "to": "cerulean_cave_2f", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "item_ball", "looks": "item_ball", "movement": "look_south", "x": 7, "z": 3, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CERULEAN_CAVE_1F_NUGGET", "item": "Nugget", "script": "CeruleanCave_1F_EventScript_ItemNugget" },
+    { "id": "item_ball_2", "looks": "item_ball", "movement": "look_south", "x": 11, "z": 16, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CERULEAN_CAVE_1F_FULL_RESTORE", "item": "Full Restore", "script": "CeruleanCave_1F_EventScript_ItemFullRestore" },
+    { "id": "item_ball_3", "looks": "item_ball", "movement": "look_south", "x": 25, "z": 5, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_CERULEAN_CAVE_1F_MAX_ELIXIR", "item": "Max Elixir", "script": "CeruleanCave_1F_EventScript_ItemMaxElixir" },
+    { "id": "rock_smash_rock", "looks": "rock_smash_rock", "movement": "look_around", "x": 7, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_12", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_2", "looks": "rock_smash_rock", "movement": "look_around", "x": 13, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_13", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_3", "looks": "rock_smash_rock", "movement": "look_around", "x": 5, "z": 20, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_14", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_4", "looks": "rock_smash_rock", "movement": "look_around", "x": 14, "z": 20, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_15", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_5", "looks": "rock_smash_rock", "movement": "look_around", "x": 11, "z": 21, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_16", "script": "EventScript_RockSmash" },
+    { "id": "rock_smash_rock_6", "looks": "rock_smash_rock", "movement": "look_around", "x": 9, "z": 18, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_TEMP_17", "script": "EventScript_RockSmash" }
+  ],
+  "signs": [
+    { "x": 12, "z": 2, "type": 2, "script": "", "item": "Ultra Ball", "flag": "FLAG_HIDDEN_ITEM_CERULEAN_CAVE_1F_ULTRA_BALL" }
+  ],
+  "triggers": []
+}

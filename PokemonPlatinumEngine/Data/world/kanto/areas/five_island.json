@@ -1,0 +1,59 @@
+{
+  "key": "five_island",
+  "index": 235,
+  "name": "Five Island",
+  "matrix": 194,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_45",
+  "nightMusic": "MUS_SEVII_45",
+  "encounters": "five_island",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 35 },
+    { "species": "Hoppip", "level": 5, "maxLevel": 15 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 40 }
+  ],
+  "waterRate": 1,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 10,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 10,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Shellder", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 10,
+  "warps": [
+    { "x": 60, "z": 54, "to": "five_island_harbor", "toWarp": 0 },
+    { "x": 66, "z": 46, "to": "five_island_pokemon_center_1f", "toWarp": 0 },
+    { "x": 60, "z": 46, "to": "five_island_house_1", "toWarp": 0 },
+    { "x": 70, "z": 49, "to": "five_island_house_2", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "fisher", "looks": "fisher", "movement": "look_west", "x": 56, "z": 45, "facing": 2, "rangeX": 1, "rangeZ": 1, "script": "FiveIsland_EventScript_Fisher" },
+    { "id": "bug_catcher", "looks": "bug_catcher", "movement": "wander_around", "x": 64, "z": 50, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "FiveIsland_EventScript_BugCatcher" }
+  ],
+  "signs": [
+    { "x": 68, "z": 48, "type": 0, "script": "FiveIsland_EventScript_IslandSign" }
+  ],
+  "triggers": []
+}

@@ -1,0 +1,39 @@
+# Ruin Valley on Six Island (plan 19 · K9, part b). docs/scripts.md describes the language; the lines are our own, on
+# FireRed's beats (data/maps/SixIsland_RuinValley/scripts.inc).
+#
+# The Dotted Hole's door is a slab of stone with dots on it. Read, the dots spell CUT; FireRed opens it when Cut is
+# used from the party menu before it, and here its question offers Cut as an obstacle's does (with the move and the
+# Badge it asks for). Once cut (FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE) the door is open for good: the overlay's door
+# waits for that flag. A scientist stands before it puzzling until Lorelei's scene in Icefall Cave sends him on
+# (FLAG_HIDE_RUIN_VALLEY_SCIENTIST).
+
+
+script Scientist
+  speaker "Scientist"
+  say "I've studied this door for days, and I still can't work out how to get inside..."
+  face ruin_valley_scientist player
+  say "Oh, hello. I found this place all by myself, you know. The dots must mean something, if only I could read them."
+  end
+
+
+script DottedHoleDoor
+  speaker none
+  if flag FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE goto Open
+  ask "There's a door in the rock, covered in raised dots. Look at it more closely?"
+  if no goto Leave
+  text "The dots spell a single word: CUT."
+  if not knows "Cut" end
+  if not movebadge "Cut" end
+  ask "Use Cut on the door?"
+  if no end
+  usemove "Cut"
+  setflag FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE
+  sound "door_open"
+  text "The stone split down its middle, and the door slid open!"
+  end
+label Open
+  text "The door stands open."
+  end
+label Leave
+  text "{player} left the door alone."
+  end

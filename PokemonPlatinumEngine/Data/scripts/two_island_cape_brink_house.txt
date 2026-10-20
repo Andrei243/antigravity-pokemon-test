@@ -1,0 +1,57 @@
+# The house at Cape Brink's tip on Two Island (plan 19 · K9, part b). docs/scripts.md describes the language; the
+# lines are our own, on FireRed's beats (data/maps/TwoIsland_CapeBrink_House/scripts.inc).
+#
+# The old woman teaches the strongest move of a starter's last form (Frenzy Plant, Blast Burn or Hydro Cannon) to one
+# that trusts its trainer completely and doesn't know it yet, for nothing and as often as asked. She goes by the rule
+# of Route 228's master (Models/MoveTutors.cs, `tutor special ultimate`): the twelve starters of Kanto to Sinnoh fully
+# grown, where FireRed's knows only Kanto's three (docs/mechanics/rulings.md, "The last Sevii Islands").
+# FLAG_TALKED_TO_CAPE_BRINK_TUTOR, a flag of ours: her first words are said.
+
+
+script Tutor
+  speaker "Old Woman"
+  if flag FLAG_TALKED_TO_CAPE_BRINK_TUTOR goto Again
+  setflag FLAG_TALKED_TO_CAPE_BRINK_TUTOR
+  say "My, a visitor all the way out at the cape! Sit, sit." "I've spent my life learning the oldest moves there are, the ones only a starter grown to its full strength can bear."
+label Again
+  ask "Shall I teach one of those moves to a Pokémon of yours?"
+  if no goto Fine
+  say "Show me the one you'd like to learn it, dearie."
+  choosepokemon
+  tutor special ultimate
+  if result == 1 goto Fine
+  if result == 2 goto Egg
+  if result == 3 goto CantLearn
+  if result == 4 goto Knows
+  if result == 5 goto NotClose
+  ask "So I'm to teach {thing} to your {wearer}?"
+  if no goto Fine
+  tutor learn
+  if result == 0 goto GaveUp
+  if result == 2 goto Hm
+  if result == 3 say "There now, {wearer} has let go of {forgotten}. And..."
+  fanfare levelup
+  say "{wearer} learned {thing}!"
+  say "Use it with care. A move like that takes everything out of the one who uses it."
+  end
+label Fine
+  say "Well, there's no hurry. The sea and I will still be here."
+  end
+label Egg
+  say "Oh, an Egg! Let it hatch first, dearie. It can't learn a thing in there."
+  end
+label CantLearn
+  say "That Pokémon can't learn any of my moves. Only a starter grown to its last form can."
+  end
+label Knows
+  say "Why, it knows the move already! There's nothing more I can teach it."
+  end
+label NotClose
+  say "It isn't quite there yet. Those moves need a Pokémon that trusts its trainer with its whole heart." "Spend more time together and come back."
+  end
+label GaveUp
+  say "{wearer} didn't learn {thing}."
+  goto Fine
+label Hm
+  say "{forgotten} isn't a move to be given up like that. {wearer} didn't learn {thing}."
+  goto Fine

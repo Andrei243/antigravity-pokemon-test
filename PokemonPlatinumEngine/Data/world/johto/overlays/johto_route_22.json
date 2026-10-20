@@ -1,0 +1,14 @@
+{
+  // Route 22 by the League's reception gate (plan 20 · J10, part b): Kanto's road west of Viridian City as HeartGold
+  // draws it, its east end waiting for HeartGold's Kanto (plan 20 · J15). Its key takes Johto's prefix, since FireRed's
+  // Route 22 is route_22. The gate's guard keeps the door shut until the League's Champion has been faced
+  // (route_22_pokemon_league_reception_gate.txt); Giovanni, the rival and the friend who meet here are HeartGold's
+  // Celebi event, which only a distributed item started, and are left out; Cameron is held back, as on Route 48
+  "area": "johto_route_22",
+  "bgmTrack": "johto/route26",
+  "trees": "Round",
+  "people": {},
+  "signs": {
+    "R22_002+1": "Pokémon League Reception Gate\nThe way to the League from Kanto."
+  }
+}

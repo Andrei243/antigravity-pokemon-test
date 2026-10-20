@@ -259,6 +259,8 @@ public partial class GameEngine
 
         /// <summary>A tool's hand on the menu button: held down while set, as the key is, and read where the key is read.</summary>
         public bool SkipHeld { get => game.SkipHeld; set => game.SkipHeld = value; }
+        /// <summary>The script running, by its file and name (<c>common.Television</c>); null when none is (plan 08 · P8).</summary>
+        public string? ScriptNow => game.ScriptRunning ? Flow.Runner.Current?.FullName : null;
         /// <summary>The key of the scene the script running is in (its file and its name); null outside one.</summary>
         public string? Scene => Flow.Runner.Scene;
         /// <summary>Whether that scene may be skipped now: the options allow it and nothing waits for the player.</summary>

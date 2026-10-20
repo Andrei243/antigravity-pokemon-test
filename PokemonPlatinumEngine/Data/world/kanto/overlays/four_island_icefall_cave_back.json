@@ -1,0 +1,15 @@
+{
+  // Icefall Cave, its back (plan 19 · K9, part b): where Team Rocket's poachers corner Lorelei the first time the
+  // player comes up the row before them (the area's triggers 0 to 2), and three of them flee after one is beaten
+  // (four_island_icefall_cave_back.txt)
+  "area": "four_island_icefall_cave_back",
+  "name": "Icefall Cave",
+  "bgmTrack": "kanto/sevii_cave",
+  "triggers": [ { "trigger": 0, "script": "Poachers" }, { "trigger": 1, "script": "Poachers" }, { "trigger": 2, "script": "Poachers" } ],
+  "people": {
+    "icefall_rocket1": { "name": "Grunt", "script": "Grunt", "still": true },
+    "icefall_rocket2": { "name": "Grunt", "script": "Grunt", "still": true },
+    "icefall_rocket3": { "name": "Grunt", "script": "Grunt", "still": true },
+    "icefall_lorelei": { "name": "Lorelei", "script": "Lorelei", "still": true }
+  }
+}

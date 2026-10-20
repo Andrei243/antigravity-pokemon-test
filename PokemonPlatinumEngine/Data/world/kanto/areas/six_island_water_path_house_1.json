@@ -1,0 +1,27 @@
+{
+  "key": "six_island_water_path_house_1",
+  "index": 422,
+  "name": "Water Path",
+  "matrix": 369,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_FUCHSIA",
+  "nightMusic": "MUS_FUCHSIA",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "six_island_water_path", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "beauty", "looks": "beauty", "movement": "look_south", "x": 3, "z": 4, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "SixIsland_WaterPath_House1_EventScript_Beauty" }
+  ],
+  "signs": [
+    { "x": 9, "z": 1, "type": 0, "script": "SixIsland_WaterPath_House1_EventScript_SizeRecord" }
+  ],
+  "triggers": []
+}

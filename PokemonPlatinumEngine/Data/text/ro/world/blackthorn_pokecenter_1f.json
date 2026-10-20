@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Your Trainer Card shows your name, your money and the Pokémon you've seen. Have a look at it from the menu."
         ],
         "text": [
-          ""
+          "Fișa de Antrenor îți arată numele, banii și Pokémonii pe care i-ai văzut. Uită-te la ea din meniu."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Receptionist"
         ],
         "text": [
-          ""
+          "Recepționera"
         ]
       },
       "dialog": {
@@ -60,7 +60,7 @@
           "I'm sorry, the link to other players is closed for now."
         ],
         "text": [
-          ""
+          "Îmi pare rău, legătura cu alți jucători e închisă deocamdată."
         ]
       }
     },
@@ -70,7 +70,7 @@
           "Gentleman"
         ],
         "text": [
-          ""
+          "Gentlemanul"
         ]
       },
       "dialog": {
@@ -78,7 +78,7 @@
           "Past the Pokémon League's gate lies Kanto. They say the trainers there are tough as well."
         ],
         "text": [
-          ""
+          "Dincolo de poarta Ligii Pokémon se află Kanto. Se zice că și antrenorii de acolo sunt duri."
         ]
       }
     },
@@ -88,7 +88,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -96,7 +96,7 @@
           "My big brother says the Dragon's Den is spooky. I want to go in anyway!"
         ],
         "text": [
-          ""
+          "Fratele meu mai mare zice că Bârlogul Dragonilor e înfricoșător. Eu vreau să intru oricum!"
         ]
       }
     },
@@ -106,7 +106,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -114,7 +114,7 @@
           "The Gym Leader here is proud as a dragon. Beat her, and you've beaten the strongest Leader in Johto."
         ],
         "text": [
-          ""
+          "Lidera Arenei de aici e mândră ca un dragon. Învinge-o și ai învins-o pe cea mai puternică Lideră din Johto."
         ]
       }
     }

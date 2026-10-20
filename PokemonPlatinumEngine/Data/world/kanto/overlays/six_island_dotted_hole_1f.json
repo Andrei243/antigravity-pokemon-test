@@ -1,0 +1,8 @@
+{
+  // The Dotted Hole's first floor (plan 19 · K9, part b): FireRed's map. Its way out lands on the door in Ruin Valley,
+  // which is open whenever the hole can be come to (FLAG_USED_CUT_ON_RUIN_VALLEY_BRAILLE, six_island_ruin_valley.json)
+  "area": "six_island_dotted_hole_1f",
+  "name": "Dotted Hole",
+  "bgmTrack": "kanto/sevii_dungeon",
+  "doors": [ { "warp": 0, "map": "SixIsland", "x": 48, "y": 184, "facing": "Down" } ]
+}

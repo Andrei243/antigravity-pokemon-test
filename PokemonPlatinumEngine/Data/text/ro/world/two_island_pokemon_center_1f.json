@@ -6,7 +6,7 @@
           "Nurse"
         ],
         "text": [
-          ""
+          "Asistenta"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -24,7 +24,7 @@
           "Lostelle's always wandering off to pick berries. Her dad worries himself sick."
         ],
         "text": [
-          ""
+          "Lostelle pleacă mereu să culeagă boabe. Tatăl ei se îngrijorează până se îmbolnăvește."
         ]
       }
     },
@@ -34,7 +34,7 @@
           "Bug Catcher"
         ],
         "text": [
-          ""
+          "Vânătorul de insecte"
         ]
       },
       "dialog": {
@@ -42,7 +42,7 @@
           "I came all the way from Viridian Forest to look for bugs here. The islands have kinds I've never seen!"
         ],
         "text": [
-          ""
+          "Am venit tocmai din Pădurea Viridian să caut insecte aici. Insulele au specii pe care nu le-am mai văzut!"
         ]
       }
     }

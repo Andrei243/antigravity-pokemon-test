@@ -1,0 +1,75 @@
+{
+  "key": "four_island_icefall_cave_back",
+  "index": 155,
+  "name": "Icefall Cave",
+  "matrix": 119,
+  "kind": "Cave",
+  "sign": "Cave",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_SEVII_CAVE",
+  "nightMusic": "MUS_SEVII_CAVE",
+  "encounters": "four_island_icefall_cave_back",
+  "bike": true,
+  "running": true,
+  "escapeRope": true,
+  "fly": false,
+  "land": [
+    { "species": "Seel", "level": 43 },
+    { "species": "Golbat", "level": 45 },
+    { "species": "Seel", "level": 45 },
+    { "species": "Seel", "level": 47 },
+    { "species": "Zubat", "level": 40 },
+    { "species": "Dewgong", "level": 49 },
+    { "species": "Dewgong", "level": 51 },
+    { "species": "Psyduck", "level": 41 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Dewgong", "level": 53 },
+    { "species": "Golbat", "level": 48 },
+    { "species": "Dewgong", "level": 53 }
+  ],
+  "landRate": 7,
+  "water": [
+    { "species": "Tentacool", "level": 5, "maxLevel": 20 },
+    { "species": "Tentacool", "level": 20, "maxLevel": 35 },
+    { "species": "Tentacool", "level": 35, "maxLevel": 45 },
+    { "species": "Tentacruel", "level": 35, "maxLevel": 45 },
+    { "species": "Lapras", "level": 30, "maxLevel": 45 }
+  ],
+  "waterRate": 2,
+  "oldRod": [
+    { "species": "Magikarp", "level": 5, "weight": 70 },
+    { "species": "Magikarp", "level": 5 }
+  ],
+  "oldRodRate": 20,
+  "goodRod": [
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 60 },
+    { "species": "Magikarp", "level": 5, "maxLevel": 15, "weight": 20 },
+    { "species": "Horsea", "level": 5, "maxLevel": 15, "weight": 20 }
+  ],
+  "goodRodRate": 20,
+  "superRod": [
+    { "species": "Horsea", "level": 15, "maxLevel": 25 },
+    { "species": "Shellder", "level": 15, "maxLevel": 25 },
+    { "species": "Gyarados", "level": 15, "maxLevel": 25 },
+    { "species": "Seadra", "level": 25, "maxLevel": 35 },
+    { "species": "Psyduck", "level": 25, "maxLevel": 35 }
+  ],
+  "superRodRate": 20,
+  "warps": [
+    { "x": 12, "z": 23, "to": "four_island_icefall_cave_1f", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "icefall_rocket1", "looks": "rocket_m", "movement": "look_south", "x": 11, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ICEFALL_CAVE_ROCKETS", "script": "" },
+    { "id": "icefall_rocket2", "looks": "rocket_m", "movement": "look_south", "x": 13, "z": 14, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ICEFALL_CAVE_ROCKETS", "script": "" },
+    { "id": "icefall_lorelei", "looks": "lorelei", "movement": "look_north", "x": 12, "z": 16, "facing": 0, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ICEFALL_CAVE_LORELEI", "script": "FourIsland_IcefallCave_Back_EventScript_Lorelei" },
+    { "id": "icefall_rocket3", "looks": "rocket_m", "movement": "look_south", "x": 10, "z": 15, "facing": 1, "rangeX": 1, "rangeZ": 1, "hiddenBy": "FLAG_HIDE_ICEFALL_CAVE_ROCKETS", "script": "" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 11, "z": 18, "width": 1, "depth": 1, "script": "FourIsland_IcefallCave_Back_EventScript_LoreleiRocketsScene", "variable": "VAR_MAP_SCENE_ICEFALL_CAVE_BACK", "value": "0" },
+    { "x": 12, "z": 18, "width": 1, "depth": 1, "script": "FourIsland_IcefallCave_Back_EventScript_LoreleiRocketsScene", "variable": "VAR_MAP_SCENE_ICEFALL_CAVE_BACK", "value": "0" },
+    { "x": 13, "z": 18, "width": 1, "depth": 1, "script": "FourIsland_IcefallCave_Back_EventScript_LoreleiRocketsScene", "variable": "VAR_MAP_SCENE_ICEFALL_CAVE_BACK", "value": "0" }
+  ]
+}
