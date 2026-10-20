@@ -356,8 +356,8 @@ public class PokemonTests
         Assert.NotEmpty(trainers);
         Assert.All(trainers, t => Assert.True(t.TrainerData!.Party.Count > 0, $"{t.Name} has no Pokémon"));
 
-        // Platinum's own teams: Logan's Burmy knows nothing but Tackle
-        var logan = trainers.Single(t => t.Name == "Logan").TrainerData!;
+        // Platinum's own teams: Logan's Burmy knows nothing but Tackle (Route 201's youngster; Kanto's Mt. Ember has a Logan too)
+        var logan = trainers.Single(t => t.TrainerData!.Id == "youngster_logan").TrainerData!;
         Assert.Equal(new[] { "Burmy" }, logan.Party.Members.Select(p => p.Species.Name));
         Assert.Equal(5, logan.Party.Members[0].Level);
         Assert.Equal(new[] { "Tackle" }, logan.Party.Members[0].Moves.Select(m => m.Name));
