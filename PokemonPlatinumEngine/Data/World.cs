@@ -2156,7 +2156,8 @@ public static class WorldMapBuilder
         // (and Emerald's, plan 21 · H1)
         "cut_tree" or "tree" or "cuttable_tree" => PropType.CutTree,
         "rock_smash" or "breakrock" or "breakable_rock" => PropType.CrackedRock,
-        "strength_boulder" or "pushable_boulder" => PropType.StrengthBoulder,
+        // (HeartGold's boulder is "rock", plan 20 · J11, part c: its std_field_strength boulders were people till then)
+        "strength_boulder" or "pushable_boulder" or "rock" => PropType.StrengthBoulder,
         _ => null
     };
 

@@ -34,6 +34,9 @@ public static class MoveDatabase
 
     public static IEnumerable<MoveData> GetAll() => Moves.Values;
 
+    /// <summary>Whether the data has a move of that name (<see cref="Get"/> answers Tackle for one it hasn't).</summary>
+    public static bool Has(string name) => Moves.ContainsKey(name);
+
     /// <summary>
     /// Whether a move does anything in a battle yet: every move but those whose effect no session has written and
     /// that have no power to hit with (<see cref="MoveEffectSupport.None"/>). A Pokémon learns only such moves by

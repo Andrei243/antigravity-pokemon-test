@@ -49,6 +49,9 @@ internal sealed class GymPieces
     // The Fortree Gym's (plan 21 · H6): a gate's post on its pivot, and a rail of one tile and of two, lying north
     private Piece? gatePost, gateArm, gateLongArm;
 
+    // The Blackthorn Gym's (plan 20 · J11, part c): a slab of each size, built unturned round its middle button
+    private Piece? slabWide, slabNarrow;
+
     // The League's rooms (plan 01 · M9, part 2d): what stands still (carpets, rails, piers, the machine, the Pokémon
     // Center's gate), a door of the back wall shut and open, the gate that shuts the front wall, a lift's platform,
     // and the lava's frames
@@ -150,6 +153,23 @@ internal sealed class GymPieces
             }
             yield break;
         }
+        if (map.Puzzle is BlackthornPlatforms slabs)
+        {
+            // Each slab where it stands, turned about its middle button; the one moving as far along or round as it has got
+            var slabList = slabs.Slabs;
+            for (int i = 0; i < slabList.Count; i++)
+            {
+                if ((i == 1 ? slabNarrow : slabWide) is not { } piece) continue;
+                var s = slabList[i];
+                float along = 0f, round = 0f;
+                int dx = 0, dz = 0;
+                if (slabs.Moving is { } m && m.Slab == i) (along, round, dx, dz) = (m.Along, m.Round, m.DX, m.DZ);
+                float floor = Relief.At(map, s.X + 0.5f, s.Z + 0.5f);
+                yield return (piece, Matrix4x4.CreateRotationY(-(s.Rotation + round) * MathF.PI / 2f)
+                    * Matrix4x4.CreateTranslation(s.X + 0.5f + dx * along, floor, s.Z + 0.5f + dz * along));
+            }
+            yield break;
+        }
         if (map.Puzzle is SunyshoreGears turning)
         {
             if (stillParts != null) yield return (stillParts, Matrix4x4.Identity);
@@ -238,6 +258,7 @@ internal sealed class GymPieces
         else if (map.Puzzle is CanalaveLifts) BuildCanalave(map);
         else if (map.Puzzle is SunyshoreGears turning) BuildSunyshore(map, turning);
         else if (map.Puzzle is FortreeGates) BuildFortree(map);
+        else if (map.Puzzle is BlackthornPlatforms) BuildBlackthorn(map);
         else if (hearthome) BuildHearthome(map);
         else if (snowy) BuildSnowpoint(map);
         return true;
@@ -816,6 +837,40 @@ internal sealed class GymPieces
         gateLongArm = Make(longArm);
     }
 
+    // ------------------------------------------------------------------ the Blackthorn Gym
+
+    /// <summary>A slab's lift over the floor and its depth, in texels.</summary>
+    private const int SlabTop = 2, SlabDepth = 8;
+
+    /// <summary>
+    /// The Blackthorn Gym's slabs (style guide, "Gyms", "The slabs on the lava"): a raft of basalt five tiles by seven
+    /// (the narrow one four by eight) built unturned round the middle of its middle button's tile, from two tiles west
+    /// and two north of it, its floor paved and its three buttons on it; the puzzle turns and places it as it draws.
+    /// </summary>
+    private void BuildBlackthorn(Map map)
+    {
+        const int T = GroundBaker.ArtTile;
+        var sheet = new ArtSheet();
+        float vs = MapScene.VerticalScaleOf(map);
+        KitBuilder Slab(int slab)
+        {
+            var (x0, z0, x1, z1) = BlackthornPlatforms.Extent(slab);
+            int w = (x1 - x0 + 1) * T, d = (z1 - z0 + 1) * T;
+            var kit = new KitBuilder(sheet, vs) { Origin = Vector3.Zero };
+            var top = kit.Face($"slab.top.{w}x{d}", w, d, GymArt.PaintSlabTop);
+            var across = kit.Face($"slab.side.{w}", w, SlabDepth, GymArt.PaintSlabSide);
+            var along = kit.Face($"slab.side.{d}", d, SlabDepth, GymArt.PaintSlabSide);
+            float left = (x0 - 0.5f) * T, right = (x1 + 0.5f) * T, north = (z0 - 0.5f) * T, south = (z1 + 0.5f) * T;
+            kit.Box(left, right, north, south, SlabTop - SlabDepth, SlabTop, top, across, along, along, across);
+            return kit;
+        }
+        var wide = Slab(0);
+        var narrow = Slab(1);
+        art = Upload(sheet);
+        slabWide = Make(wide);
+        slabNarrow = Make(narrow);
+    }
+
     // ------------------------------------------------------------------ the Sunyshore Gym
 
     /// <summary>A flat gear's measures in texels: its wheel across, the root of its teeth, its arms' half width and reach, their thickness.</summary>
@@ -1260,6 +1315,7 @@ internal sealed class GymPieces
         platforms.Clear();
         snowball = null;
         gatePost = gateArm = gateLongArm = null;
+        slabWide = slabNarrow = null;
         league = false;
         doorShut = doorOpen = gate = liftPlatform = machineBall = machineBallLit = null;
         sockets.Clear();

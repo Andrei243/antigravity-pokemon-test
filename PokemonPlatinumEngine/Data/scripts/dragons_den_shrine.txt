@@ -1,0 +1,165 @@
+# The Dragon Shrine (plan 20 · J11, part c). docs/scripts.md describes the language; the lines are our own, on
+# HeartGold's beats (scr_seq_D44R0103).
+#
+# Once Clair has been beaten (FLAG_UNK_0D1, blackthorn_gym.txt), the elder tests whoever she sends the moment they
+# come in (HeartGold's frame script while VAR_UNK_40C3 is 0): five questions, each of three answers with one wrong.
+# HeartGold asks a question again at once after a wrong answer; here the talk ends there and takes up again at the same
+# question (VAR_DRAGON_SHRINE_QUESTION, a variable of ours) when the elder is spoken to or the shrine come to again, so
+# no question leads back to itself. A wrong answer is remembered (FLAG_FAILED_DRAGONS_DEN_QUIZ). After the fifth Clair
+# comes in, is made to give the Rising Badge, and leaves; then the shrine's state is HeartGold's: FLAG_UNK_998,
+# FLAG_UNK_0EA (the Badge given), Clair waiting in the Den with TM59 (FLAG_HIDE_VICTORY_ROAD_CLAIR cleared,
+# VAR_UNK_40C4 1, dragons_den.txt) and VAR_UNK_40C3 1. What HeartGold sets there for New Bark Town and Professor Elm's
+# lab (the rival's room, VAR_SCENE_ELMS_LAB 8, the way east) is plan 20 · J12's, whose scenes it starts.
+#
+# Clair is the shrine's own object, standing nowhere (1, 1) until her scene: the shrine's arrival keeps her off the
+# map (FLAG_HIDE_DRAGON_SHRINE_CLAIR, ours), and her scene brings her in by the door. Once TM59 has been given, the
+# elder gives a Dratini of level 15, which knows Extreme Speed if no answer was ever wrong
+# (FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW, and _LONG_AGO from the next visit on).
+
+
+script OnEnter
+  setflag FLAG_HIDE_DRAGON_SHRINE_CLAIR
+  if flag FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW setflag FLAG_GOT_DRATINI_FROM_MASTER_LONG_AGO
+  if var VAR_UNK_40C3 != 0 end
+  if not flag FLAG_UNK_0D1 end
+  if var PLAYER_Y == 19 walk player up 8
+  if var PLAYER_Y == 18 walk player up 7
+  speaker "Elder"
+  call Quiz
+  end
+
+
+# D44R0103_000: the elder
+script Elder
+  face d44r0103_chourou player
+  speaker "Elder"
+  if var VAR_UNK_40C3 != 0 goto Passed
+  if flag FLAG_UNK_0D1 goto Test
+  say "Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong."
+  say "When the time is right, I will ask you some questions. Not yet."
+  end
+label Test
+  call Quiz
+  end
+label Passed
+  if flag FLAG_GOT_DRATINI_FROM_MASTER_LONG_AGO goto Long
+  if flag FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW goto Now
+  if flag FLAG_GOT_TM59_FROM_CLAIR goto Dratini
+  say "Have you heard of Lugia? They say it lived around the Whirl Islands once... Pay no mind. An old man's rambling."
+  end
+label Dratini
+  say "Ah, good, you came back. I have something for you. Take this Dratini as a sign that I know your worth."
+  if flag FLAG_FAILED_DRAGONS_DEN_QUIZ goto Plain
+  givepokemon "Dratini" 15 knowing "Extreme Speed"
+  goto Given
+label Plain
+  givepokemon "Dratini" 15
+label Given
+  fanfare pokemon
+  text "{player} received Dratini from the elder!"
+  setflag FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW
+label Now
+  say "Dragons stand for our clan. You have shown that one can be trusted to you."
+  end
+label Long
+  say "Clair seems to have learned something worth knowing from you. I thank you, as her grandfather."
+  end
+
+
+# D44R0103_003: the questions, from the one the player has come to
+script Quiz
+  if var VAR_DRAGON_SHRINE_QUESTION == 0 say "Hm. Good to see you. You needn't tell me why you're here: Clair sent you. That girl is a handful."
+  if var VAR_DRAGON_SHRINE_QUESTION == 0 say "I'm sorry, but I must test you. Don't worry: you need only answer a few questions. Ready?"
+  if var VAR_DRAGON_SHRINE_QUESTION != 0 say "Shall we go on? I believe I was asking you..."
+  if var VAR_DRAGON_SHRINE_QUESTION == 1 goto Second
+  if var VAR_DRAGON_SHRINE_QUESTION == 2 goto Third
+  if var VAR_DRAGON_SHRINE_QUESTION == 3 goto Fourth
+  if var VAR_DRAGON_SHRINE_QUESTION == 4 goto Fifth
+  choose "What are Pokémon to you?" "Friends" "Tools" "Partners"
+  if var RESULT == 1 goto Wrong
+  say "I see..."
+  setvar VAR_DRAGON_SHRINE_QUESTION 1
+label Second
+  choose "What helps you win battles?" "Planning" "Teamwork" "Luck alone"
+  if var RESULT == 2 goto Wrong
+  say "I see..."
+  setvar VAR_DRAGON_SHRINE_QUESTION 2
+label Third
+  choose "What kind of trainer do you want to battle?" "Weak ones" "Strong ones" "Anyone at all"
+  if var RESULT == 0 goto Wrong
+  say "I see..."
+  setvar VAR_DRAGON_SHRINE_QUESTION 3
+label Fourth
+  choose "What matters most in raising Pokémon?" "Love" "Strict orders" "Patience"
+  if var RESULT == 1 goto Wrong
+  say "I see..."
+  setvar VAR_DRAGON_SHRINE_QUESTION 4
+label Fifth
+  choose "Strong Pokémon or weak Pokémon: which matter more?" "The strong" "The weak" "Both alike"
+  if var RESULT == 0 goto Wrong
+  setvar VAR_DRAGON_SHRINE_QUESTION 5
+  scene "The Rising Badge"
+  say "Hm... I see. You care deeply for Pokémon. That is the conviction that matters most."
+  say "{player}, hold on to it. It will carry you through the Pokémon League."
+  place d44r0103_gsleader8 6 19 up
+  show d44r0103_gsleader8
+  sound "door_open"
+  wait 0.25
+  emote player exclaim
+  face player down
+  move d44r0103_gsleader8 up 6 left 1 up 2
+  wait 0.5
+  face player left
+  waitmoves
+  face d44r0103_gsleader8 right
+  speaker "Clair"
+  say "Well? How did it go? There's no point asking, I suppose. You failed, didn't you? ...What? You passed?"
+  walk d44r0103_gsleader8 back left 1 fast
+  say "That's impossible!"
+  walk d44r0103_gsleader8 back left 1
+  say "You're lying! Even I've never had his approval!"
+  walk d44r0103_chourou down 1 left 1
+  speaker "Elder"
+  say "Clair! This child has no flaw, in skill or in heart. Accept your defeat and give the Rising Badge... or must I tell Lance about this?"
+  emote d44r0103_gsleader8 exclaim
+  speaker "Clair"
+  say "I... I understand."
+  walk d44r0103_gsleader8 back right 2
+  face d44r0103_chourou right
+  say "Here. This is the Rising Badge. Hurry up and take it!"
+  givebadge rising
+  text "{player} received the Rising Badge from Clair!"
+  say "With it your Pokémon can climb waterfalls, and every Pokémon you have will obey you without question."
+  move d44r0103_chourou up 1 right 1
+  wait 0.5
+  face player up
+  face d44r0103_gsleader8 up
+  waitmoves
+  face d44r0103_chourou down
+  speaker "Elder"
+  say "Clair... Think about what this child has, and what you lack."
+  wait 0.5
+  speaker "Clair"
+  say "..."
+  walk d44r0103_gsleader8 back down 1
+  walk d44r0103_gsleader8 down 3 right 1 down 4 fast
+  hide d44r0103_gsleader8
+  sound "door_close"
+  face d44r0103_chourou down
+  speaker "Elder"
+  say "By the way... have you heard of Lugia? They say it lived around the Whirl Islands once... Pay no mind. An old man's rambling."
+  setflag FLAG_UNK_998
+  setflag FLAG_UNK_0EA
+  clearflag FLAG_HIDE_VICTORY_ROAD_CLAIR
+  setvar VAR_UNK_40C4 1
+  setvar VAR_UNK_40C3 1
+  endscene
+  return
+label Wrong
+  setflag FLAG_FAILED_DRAGONS_DEN_QUIZ
+  face d44r0103_chourou right
+  wait 0.25
+  say "Hm? I didn't quite catch that..."
+  face d44r0103_chourou down
+  say "What was it you said? Think it over, and speak to me again when you're ready."
+  end

@@ -200,13 +200,14 @@ public static class ScriptParser
                 int level = r.Int("its level");
                 if (level is < 1 or > 100) throw r.Error("a Pokémon's level is from 1 to 100");
                 // (plan 21 · H6: `holding "Mystic Water"`, the item the Pokémon comes with, as Emerald's Castform does)
-                string held = "";
-                if (r.More)
+                // (plan 20 · J11, part c: `knowing "Extreme Speed"`, a move in its first place, as the Dragon Shrine's elder gives)
+                string held = "", knows = "";
+                while (r.More)
                 {
-                    r.OneOf("holding");
-                    held = r.Text("the item it holds");
+                    if (r.OneOf("holding", "knowing") == "holding") held = r.Text("the item it holds");
+                    else knows = r.Text("the move it knows");
                 }
-                return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level, Other = held };
+                return new Instruction { Op = Op.GivePokemon, Line = line, Name = species, Number = level, Other = held, Move = knows };
             }
             case "givebadge":
                 return new Instruction { Op = Op.GiveBadge, Line = line, Name = r.Badge() };

@@ -121,6 +121,7 @@ public class ScriptTests
           additem "Potion"
           take "Potion"
           givepokemon "Starly" 4
+          givepokemon "Dratini" 15 knowing "Extreme Speed"
           givebadge coal
           givemoney 100
           takemoney 50
@@ -1071,6 +1072,24 @@ public class ScriptTests
 
         Assert.Equal("Mystic Water", host.Party.Members[0].HeldItem?.Name);
         Assert.Null(host.Party.Members[1].HeldItem);
+    }
+
+    [Fact]
+    public void APokemonGivenKnowingAMoveHasItInItsFirstPlace()
+    {
+        // Plan 20 · J11, part c: the Dragon Shrine's elder gives a Dratini that knows Extreme Speed, in place of the
+        // first of the moves its level gives it; the others stay
+        var host = Run("""
+            script S
+              givepokemon "Dratini" 15 knowing "Extreme Speed"
+              givepokemon "Dratini" 15
+            """);
+
+        var taught = host.Party.Members[0];
+        var plain = host.Party.Members[1];
+        Assert.Equal("Extreme Speed", taught.Moves[0].Name);
+        Assert.DoesNotContain(plain.Moves, m => m.Name == "Extreme Speed");
+        Assert.Equal(plain.Moves.Skip(1).Select(m => m.Name), taught.Moves.Skip(1).Select(m => m.Name));
     }
 
     [Fact]

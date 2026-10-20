@@ -28,6 +28,7 @@ public partial class GameEngine
         if (puzzle is CanalaveLifts { Moving: not null } lifts) PlayLiftRide(lifts, dt);
         if (puzzle is SunyshoreGears { Turning: not null } gears) PlayGears(gears, dt);
         if (puzzle is LeagueLift { Moving: true } lift) PlayLeagueLift(lift, dt);
+        if (puzzle is BlackthornPlatforms { Moving: not null } slabs) PlaySlabs(slabs, dt);
     }
 
     /// <summary>The player has come into a room by a door or a warp: its puzzle is laid out as the original lays it out on arrival.</summary>
@@ -44,12 +45,12 @@ public partial class GameEngine
     /// <summary>Whether something a puzzle set moving is still being played out (the script waits for it).</summary>
     private bool PuzzleMoving => flow.ClockTurn != null
         || flow.Map.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null }
-            or LeagueLift { Moving: true };
+            or LeagueLift { Moving: true } or BlackthornPlatforms { Moving: not null };
 
     /// <summary>Whether a puzzle has the field to itself for now, as the original's tasks do: a punching bag on its run.</summary>
     private bool PuzzleHoldsField => bagRun != null
         || flow.Map.Puzzle is PastoriaWater { Moving: true } or CanalaveLifts { Moving: not null } or SunyshoreGears { Turning: not null }
-            or LeagueLift { Moving: true };
+            or LeagueLift { Moving: true } or BlackthornPlatforms { Moving: not null };
 
     // ------------------------------------------------------------------ the Veilstone Gym's punching bags
 
@@ -190,6 +191,36 @@ public partial class GameEngine
         lift.Update(dt);
         flow.Player.CarryTo(flow.Player.GridX, flow.Player.GridY, lift.Height, dt);
         if (!lift.Moving) AudioManager.PlaySound("lift_stop");
+    }
+
+    // ------------------------------------------------------------------ the Blackthorn Gym's slabs (plan 20 · J11, part c)
+
+    // Where the player stood as a slab set off with them on it
+    private (int X, int Y) slabFrom;
+
+    /// <summary>
+    /// A button of the Blackthorn Gym's slabs under the player is pressed (HeartGold's <c>ov04_02255090</c>, which the
+    /// field asks before anything ahead is spoken to): the slab turns or slides, its grinding heard as it sets off.
+    /// </summary>
+    private bool TryWorkSlab()
+    {
+        if (flow.Map.Puzzle is not BlackthornPlatforms slabs || slabs.Moving != null) return false;
+        if (!slabs.Press(flow.Map, flow.Player.GridX, flow.Player.GridY)) return false;
+        slabFrom = (flow.Player.GridX, flow.Player.GridY);
+        AudioManager.PlaySound("lift");
+        return true;
+    }
+
+    /// <summary>The slab goes on with the player standing on it, bumps where it meets the room and comes back, and stops.</summary>
+    private void PlaySlabs(BlackthornPlatforms slabs, float dt)
+    {
+        var motion = slabs.Moving!;
+        float before = motion.Time;
+        slabs.Update(dt);
+        if (motion.BumpsAt(before, motion.Time)) AudioManager.PlaySound("bump");
+        float along = slabs.Moving == null ? (motion.Bumped ? 0f : motion.Tiles) : motion.Along;
+        flow.Player.CarryTo(slabFrom.X + motion.DX * along, slabFrom.Y + motion.DZ * along, flow.Player.HeightOn(flow.Map), dt);
+        if (slabs.Moving == null && !motion.Refused) AudioManager.PlaySound("lift_stop");
     }
 
     private void PlayClockTurn(float dt)

@@ -193,7 +193,7 @@
     { "name": "Blackthorn_PokemonCenter_1F", "matrix": 73, "area": "blackthorn_pokecenter_1f", "trees": "Round", "setting": "Indoors" },
     { "name": "Blackthorn_PokemonCenter_B1F", "matrix": 77, "area": "blackthorn_pokecenter_b1f", "trees": "Round", "setting": "Indoors" },
     { "name": "Blackthorn_Mart", "matrix": 104, "area": "blackthorn_pokemart", "trees": "Round", "setting": "Indoors" },
-    { "name": "Blackthorn_Gym", "matrix": 94, "area": "blackthorn_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "Blackthorn_Gym", "matrix": 94, "area": "blackthorn_gym", "trees": "Round", "setting": "Indoors", "puzzle": "BlackthornPlatforms" },
     { "name": "Blackthorn_WestHouse", "matrix": 95, "area": "blackthorn_west_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Blackthorn_EastHouse", "matrix": 95, "area": "blackthorn_east_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Blackthorn_MoveTutorHouse", "matrix": 95, "area": "blackthorn_move_tutor_house", "trees": "Round", "setting": "Indoors" },

@@ -8,15 +8,23 @@
         "text": [
           "Bătrâna înțeleaptă"
         ]
+      }
+    },
+    "d44r0103_gsleader8": {
+      "name": {
+        "en": [
+          "Clair"
+        ],
+        "text": [
+          ""
+        ]
       },
       "dialog": {
         "en": [
-          "Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong.",
-          "When the time is right, I will ask you some questions. Not yet."
+          "..."
         ],
         "text": [
-          "Bun venit în Sanctuarul Dragonilor. Aici îmblânzitorii de dragoni din Blackthorn învață ce înseamnă să fii puternic.",
-          "Când va veni vremea, îți voi pune câteva întrebări. Încă nu."
+          ""
         ]
       }
     },
@@ -31,9 +39,12 @@
       },
       "dialog": {
         "en": [
-          "The elder has watched over this shrine since before Clair was born."
+          "It has been a long time since a trainer won the elder's approval. Not since Master Lance, in fact."
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Bătrânul veghează asupra sanctuarului ăstuia de dinainte să se nască Clair."
         ]
       }
@@ -49,9 +60,12 @@
       },
       "dialog": {
         "en": [
-          "A dragon tamer's heart matters more than their strength. The elder taught us that."
+          "You know young Master Lance? He looks just as the elder did when he was young. It runs in the blood."
         ],
         "text": [
+          ""
+        ],
+        "was": [
           "Inima unui îmblânzitor de dragoni contează mai mult decât forța lui. Asta ne-a învățat bătrânul."
         ]
       }

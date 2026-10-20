@@ -1,0 +1,374 @@
+{
+  "OnEnter": [
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Elder": [
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "When the time is right, I will ask you some questions. Not yet."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Have you heard of Lugia? They say it lived around the Whirl Islands once... Pay no mind. An old man's rambling."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Ah, good, you came back. I have something for you. Take this Dratini as a sign that I know your worth."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received Dratini from the elder!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Dragons stand for our clan. You have shown that one can be trusted to you."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair seems to have learned something worth knowing from you. I thank you, as her grandfather."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "Quiz": [
+    {
+      "en": [
+        "Hm. Good to see you. You needn't tell me why you're here: Clair sent you. That girl is a handful."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry, but I must test you. Don't worry: you need only answer a few questions. Ready?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Shall we go on? I believe I was asking you..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What are Pokémon to you?",
+        "Friends",
+        "Tools",
+        "Partners"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I see..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What helps you win battles?",
+        "Planning",
+        "Teamwork",
+        "Luck alone"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I see..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What kind of trainer do you want to battle?",
+        "Weak ones",
+        "Strong ones",
+        "Anyone at all"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I see..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What matters most in raising Pokémon?",
+        "Love",
+        "Strict orders",
+        "Patience"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I see..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Strong Pokémon or weak Pokémon: which matter more?",
+        "The strong",
+        "The weak",
+        "Both alike"
+      ],
+      "text": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm... I see. You care deeply for Pokémon. That is the conviction that matters most."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player}, hold on to it. It will carry you through the Pokémon League."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Well? How did it go? There's no point asking, I suppose. You failed, didn't you? ...What? You passed?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "That's impossible!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You're lying! Even I've never had his approval!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair! This child has no flaw, in skill or in heart. Accept your defeat and give the Rising Badge... or must I tell Lance about this?"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I... I understand."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Here. This is the Rising Badge. Hurry up and take it!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "{player} received the Rising Badge from Clair!"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "With it your Pokémon can climb waterfalls, and every Pokémon you have will obey you without question."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair... Think about what this child has, and what you lack."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Elder"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "By the way... have you heard of Lugia? They say it lived around the Whirl Islands once... Pay no mind. An old man's rambling."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Hm? I didn't quite catch that..."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "What was it you said? Think it over, and speak to me again when you're ready."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

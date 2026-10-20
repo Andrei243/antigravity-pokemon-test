@@ -3945,3 +3945,52 @@ The Ice Path's scenes, Clair, the Dragon's Den, the Kimono Girls, Ho-Oh and Lugi
 - **Left out**: the Kimono Girl the Basement Key sends under the city (`VAR_UNK_40E7`), the tunnel's shops, salons and
   photo studio, Buena and her Blue Card, Whitney and the friend at the Gym, Team Rocket's broadcast on the radio, and the
   Department Store basement's crates, which its Machoke shift.
+
+## Johto's fourth chapter, part c (2026-10-20, plan 20 · J11, part c)
+
+The Ice Path, Blackthorn City's two doors, Clair and her Gym, the Dragon's Den and the Dragon Shrine's questions to the
+Rising Badge, played by scripts of ours on HeartGold's beats (`scr_seq_D39R0101` to `D39R0103`, `T30`, `T30GYM0101`,
+`D44R0102`, `D44R0103`) and flags. Whirlpool from Lance, the Whirl Islands' lower floors and Lugia, the Kimono Girls'
+battles and Ho-Oh, and the small gifts are left (plan 20's J11 record says why).
+
+- **The Blackthorn Gym is HeartGold's, not Gold's and Silver's**: its floor is lava crossed on three slabs of stone that
+  turn and slide (`BlackthornPlatforms`, from HeartGold's `src/field/gymmick/blackthorn.c`: the three slabs' places and
+  sizes, the buttons on each, a slide its own width with a bump and a return where its leading edge meets anything but
+  lava, a turn refused where a side touches something and stopped part way by the original's tables of how far each
+  corner gets). The plan's "lava bridged by its boulders" was Gold's and Silver's puzzle and is not built. The slabs are
+  laid out afresh whenever the room is come to, as HeartGold's `BlackthornGymInit` does, so nothing of them is saved.
+  The three panels at the ends of the ways across carry the player back to the door by a warp into the same room, which
+  lays the slabs out again. Their frames are the original's (two a tile, sixteen a quarter); their look is our own
+  (style guide, "The slabs on the lava").
+- **The Ice Path's boulders**: HeartGold's boulders are named `rock` in its field objects, which the import had read as
+  nothing; they are Strength boulders now wherever they stand in Johto (eleven areas: the Burned Tower, the Dark Cave,
+  the Ice Path, Victory Road, Mt. Mortar, the Slowpoke Well, Union Cave and the Whirl Islands). A boulder pushed onto a
+  hole of B1F (a pit of the overlay's) falls through: it is gone for good by its own object's flag, and a boulder of the
+  map stands on the ice below under its hole from then on (`FLAG_HIDE_ICE_PATH_BOULDER_<N>_FALLEN` cleared, and a flag
+  of ours, `FLAG_ICE_PATH_HOLE_<N>_FILLED`, so B2F's arrival can hide the others: HeartGold sets the four `_FALLEN`
+  flags as a new game begins). A fallen boulder is a thing of the map of its own (`npcType` `FallenBoulder`, drawn as a
+  boulder), which stops a slide and can't be pushed: HeartGold's fallen boulders are scenery. Which boulder falls
+  through which hole doesn't matter, as in HeartGold, whose holes each have the fallen boulder of their own number
+  under them.
+- **A fall through a hole** is the hole's own trigger (HeartGold's `D39R0102_000` to `_003`): the player spins, drops
+  to the tile below that the hole names, and B2F's arrival gives the landing its jolt (`VAR_UNK_40AB`).
+- **The Kimono Girl on the ice** is pushed only from the tile behind her, as in HeartGold. Refused twice, she gives up
+  for now; HeartGold asks again at once as long as the answer is no, which here would be a question leading back to
+  itself.
+- **Blackthorn's guards stand by the arrivals**: HeartGold hides the man beside the Gym's door and the old man beside the
+  Dragon's Den's as a new game begins; here the city's own arrival hides each until what moves them aside has happened
+  (Team Rocket out of the Radio Tower; Clair beaten), so no save needs a story version.
+- **Clair is always home**: HeartGold hides her in her Gym only around her rematches after the Hall of Fame, which this
+  game has not yet. She battles once, sends the player to the shrine, and gives TM59 (Dragon Pulse) in the Den on the
+  way out (`VAR_UNK_40C4` 1) or, if the player leaves another way, in her Gym; coming back to the city without meeting
+  her sends her home (HeartGold's `T30_005`).
+- **The elder's questions are taken up where they stopped**: HeartGold asks a question again at once after a wrong
+  answer. Here the talk ends there ("think it over") and goes on from the same question when the elder is spoken to or
+  the shrine come to again (`VAR_DRAGON_SHRINE_QUESTION`, a variable of ours), so no question leads back to itself. A
+  wrong answer is remembered all the same (`FLAG_FAILED_DRAGONS_DEN_QUIZ`), and the Dratini given once TM59 has been
+  had knows Extreme Speed only if no answer was ever wrong (`givepokemon … knowing`, in its first move's place, as
+  HeartGold's `SetMonMove` puts it). The right answers are HeartGold's (the second of each question's three is wrong in
+  the first and fourth, the third in the second, the first in the third and fifth); the words are ours.
+- **What the shrine's end sets for New Bark Town is J12's**: HeartGold sets the rival's room, `VAR_SCENE_ELMS_LAB` 8 and
+  the way east as the Badge is given; here only the shrine's own state (`FLAG_UNK_998`, `FLAG_UNK_0EA`, `VAR_UNK_40C3`)
+  and Clair's in the Den are set, and J12 writes the scenes those start.

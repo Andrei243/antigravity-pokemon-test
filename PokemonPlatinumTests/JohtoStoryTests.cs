@@ -1254,4 +1254,194 @@ public class JohtoStoryTests
         Assert.Equal(battles, game.Present("r35_policeman") != null);
         Assert.Equal(!battles, game.Present("r35_policeman_2") != null);
     }
+
+    /// <summary>A game past the Glacier Badge with Team Rocket out of the Radio Tower (part b), and a strong lead.</summary>
+    private static Game PastTheTakeover()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 50));
+        foreach (string badge in new[] { "Zephyr", "Hive", "Plain", "Fog", "Storm", "Mineral", "Glacier" }) game.Story.GiveBadge("Johto", badge);
+        game.Story.SetVar("VAR_SCENE_ROCKET_TAKEOVER", 5);
+        game.Story.Set("FLAG_BEAT_RADIO_TOWER_ROCKETS");
+        game.Story.Set("FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT");
+        return game;
+    }
+
+    [Fact]
+    public void TheIcePathsManHisHMTheKimonoGirlOnTheIceAndTheHolesInItsFloor()
+    {
+        // Plan 20 · J11, part c: the man who points out HM07 and then says what it is for, the Kimono Girl pushed off
+        // the ice from the tile behind her, a fall through each hole of B1F onto its own tile of B2F, and a boulder
+        // pushed into a hole standing on the ice below from then on
+        var game = PastTheTakeover();
+        game.Arrive("IcePath_1F", 47, 5);
+        Assert.True(game.Fires("Noticed"));
+        game.Step("Noticed");
+        Assert.Equal(0, game.Story.Var("VAR_UNK_4100"));
+        Assert.True(game.Fires("Noticed"));
+        game.Talk("d39r0101_monstarball");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("HM07")!));
+        game.Step("Noticed");
+        Assert.Equal(1, game.Story.Var("VAR_UNK_4100"));
+        Assert.False(game.Fires("Noticed"));
+
+        // Spoken to from in front she can't be helped; from the tile behind her she slides off and goes
+        var dancer = game.Present("d39r0101_dancer");
+        Assert.NotNull(dancer);
+        game.Talk("d39r0101_dancer");
+        Assert.False(game.Story.Has("FLAG_UNK_239"));
+        game.Tile = (55, 28);
+        game.Play(Scripts.Find("KimonoGirl", "ice_path_1f")!, dancer);
+        Assert.True(game.Story.Has("FLAG_UNK_239"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40E8"));
+        game.Arrive("IcePath_1F", 47, 5);
+        Assert.Null(game.Present("d39r0101_dancer"));
+
+        // B2F as nothing has fallen yet: the four places under the holes are bare ice
+        game.Arrive("IcePath_B2F", 26, 12);
+        foreach (int n in new[] { 1, 2, 3, 4 }) Assert.Null(game.Present($"fallen_boulder_{n}"));
+        foreach (string rock in new[] { "d39r0103_rock", "d39r0103_rock_2", "d39r0103_rock_3", "d39r0103_rock_4" }) Assert.Null(game.Present(rock));
+
+        // Each hole drops the player onto its own tile below, with a jolt that is over as they land
+        foreach (var (hole, x, y) in new[] { ("Hole1", 12, 12), ("Hole2", 10, 21), ("Hole3", 20, 10), ("Hole4", 21, 23) })
+        {
+            game.Arrive("IcePath_B1F", 25, 9);
+            Assert.True(game.Fires(hole), hole);
+            var fall = game.Step(hole);
+            Assert.Contains(fall.Log, l => l.StartsWith("warp IcePath_B2F"));
+            Assert.Equal("IcePath_B2F", game.Map.Name);
+            Assert.Equal((x, y), game.Tile);
+            Assert.Equal(0, game.Story.Var("VAR_UNK_40AB"));
+        }
+
+        // A boulder pushed into the first hole is gone from B1F for good and stands under it on B2F
+        game.Arrive("IcePath_B1F", 25, 9);
+        Assert.Equal("Boulder1", game.Map.BoulderPits[(11, 10)]);
+        var boulder = game.Present("d39r0102_rock")!;
+        Assert.Equal(PropType.StrengthBoulder, boulder.Obstacle);
+        game.Play(Scripts.Find("Boulder1", "ice_path_b1f")!, boulder);
+        Assert.True(game.Story.Has("FLAG_HIDE_ICE_PATH_BOULDER_1_INIT"));
+        Assert.True(game.Story.Has("FLAG_ICE_PATH_HOLE_1_FILLED"));
+        game.Arrive("IcePath_B1F", 25, 9);
+        Assert.Null(game.Present("d39r0102_rock"));
+        game.Arrive("IcePath_B2F", 26, 12);
+        var fallen = game.Present("fallen_boulder_1");
+        Assert.NotNull(fallen);
+        Assert.Equal(NPC.FallenBoulderType, fallen!.NpcType);
+        Assert.Equal((12, 13), (fallen.GridX, fallen.GridY));
+        Assert.Null(game.Present("fallen_boulder_2"));
+    }
+
+    [Fact]
+    public void ClairsTestTheShrinesQuestionsTheRisingBadgeAndTheEldersDratini()
+    {
+        // Plan 20 · J11, part c: the guards at Blackthorn's two doors, the Gym's guide, Clair beaten and sending the
+        // player to the shrine, a wrong answer that ends the talk and is taken up again at the same question, Clair
+        // made to give the Rising Badge, TM59 on the way out of the Dragon's Den, and the elder's Dratini without
+        // Extreme Speed, since an answer was wrong
+        var game = PastTheTakeover();
+        var town = Johto.Value.Area("blackthorn")!.Warps[0];
+
+        // Before Clair: the way into the Gym is open, the Den's old man stands in its door
+        game.Arrive("Johto", town.X, town.Z + 1);
+        Assert.Null(game.Present("t30_gsman1"));
+        Assert.NotNull(game.Present("t30_gsman1_2"));
+        Assert.NotNull(game.Present("t30_gsoldman1"));
+        Assert.Null(game.Present("t30_gsoldman1_2"));
+
+        // The Gym: its slabs, its guide at the door, and Clair
+        game.Arrive("Blackthorn_Gym", 13, 86);
+        Assert.IsType<BlackthornPlatforms>(game.Map.Puzzle);
+        Assert.True(game.Fires("Guide"));
+        game.Step("Guide");
+        Assert.True(game.Story.Has("FLAG_UNK_138"));
+        Assert.False(game.Fires("Guide"));
+        var clair = game.Talk("t30gym0101_gsleader8");
+        Assert.Contains(clair.Log, l => l.StartsWith("battle johto_leader_clair_clair"));
+        Assert.True(game.Story.Has("FLAG_UNK_0D1"));
+        Assert.False(game.Story.HasBadge("Johto", "Rising"));
+        Assert.True(game.Story.HasDefeated("johto_ace_trainer_m_paulo"));
+        Assert.DoesNotContain(game.Talk("t30gym0101_gsleader8").Log, l => l.StartsWith("battle "));
+
+        // The Den's old man stands aside
+        game.Arrive("Johto", town.X, town.Z + 1);
+        Assert.Null(game.Present("t30_gsoldman1"));
+        Assert.NotNull(game.Present("t30_gsoldman1_2"));
+
+        // The shrine: the elder asks at once; the third answer is wrong and the talk ends there
+        foreach (int answer in new[] { 0, 0, 0 }) game.Answers.Enqueue(answer);
+        game.Arrive("DragonsDen_Shrine", 6, 19);
+        Assert.True(game.Story.Has("FLAG_FAILED_DRAGONS_DEN_QUIZ"));
+        Assert.Equal(2, game.Story.Var("VAR_DRAGON_SHRINE_QUESTION"));
+        Assert.Equal(0, game.Story.Var("VAR_UNK_40C3"));
+        Assert.Null(game.Present("d44r0103_gsleader8"));
+
+        // Spoken to again he goes on from the third, and Clair comes in to give the Badge
+        foreach (int answer in new[] { 1, 0, 2 }) game.Answers.Enqueue(answer);
+        game.Talk("d44r0103_chourou");
+        Assert.True(game.Story.HasBadge("Johto", "Rising"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40C3"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40C4"));
+        Assert.True(game.Story.Has("FLAG_UNK_0EA"));
+        Assert.False(game.Story.Has("FLAG_HIDE_VICTORY_ROAD_CLAIR"));
+        Assert.Null(game.Present("d44r0103_gsleader8"));
+        // Nothing yet without TM59
+        game.Talk("d44r0103_chourou");
+        Assert.DoesNotContain(game.Party.Members, p => p.Species.Name == "Dratini");
+
+        // On the way out of the Den Clair gives TM59 and goes home
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.NotNull(game.Present("d44r0102_gsleader8"));
+        Assert.True(game.Fires("Clair"));
+        game.Step("Clair");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM59")!));
+        Assert.True(game.Story.Has("FLAG_GOT_TM59_FROM_CLAIR"));
+        Assert.Equal(2, game.Story.Var("VAR_UNK_40C4"));
+        Assert.Null(game.Present("d44r0102_gsleader8"));
+        Assert.False(game.Fires("Clair"));
+
+        // The elder's Dratini, without Extreme Speed
+        game.Arrive("DragonsDen_Shrine", 6, 11);
+        game.Talk("d44r0103_chourou");
+        var dratini = Assert.Single(game.Party.Members, p => p.Species.Name == "Dratini");
+        Assert.Equal(15, dratini.Level);
+        Assert.DoesNotContain(dratini.Moves, m => m.Name == "Extreme Speed");
+        Assert.True(game.Story.Has("FLAG_GOT_DRATINI_FROM_MASTER_JUST_NOW"));
+        game.Arrive("DragonsDen_Shrine", 6, 11);
+        Assert.True(game.Story.Has("FLAG_GOT_DRATINI_FROM_MASTER_LONG_AGO"));
+        game.Talk("d44r0103_chourou");
+        Assert.Single(game.Party.Members, p => p.Species.Name == "Dratini");
+    }
+
+    [Fact]
+    public void EveryAnswerRightGivesADratiniThatKnowsExtremeSpeedAndClairGivesTheTMInHerGym()
+    {
+        // Plan 20 · J11, part c: the five answers right at once; the city sends Clair home from the Den if she wasn't
+        // met there, and she gives TM59 in her Gym instead
+        var game = PastTheTakeover();
+        game.Story.Set("FLAG_UNK_0D1");
+        foreach (int answer in new[] { 0, 0, 1, 0, 2 }) game.Answers.Enqueue(answer);
+        game.Arrive("DragonsDen_Shrine", 6, 19);
+        Assert.False(game.Story.Has("FLAG_FAILED_DRAGONS_DEN_QUIZ"));
+        Assert.True(game.Story.HasBadge("Johto", "Rising"));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40C4"));
+
+        var town = Johto.Value.Area("blackthorn")!.Warps[0];
+        game.Arrive("Johto", town.X, town.Z + 1);
+        Assert.Equal(2, game.Story.Var("VAR_UNK_40C4"));
+        Assert.True(game.Story.Has("FLAG_HIDE_VICTORY_ROAD_CLAIR"));
+        game.Arrive("DragonsDen", 28, 12);
+        Assert.Null(game.Present("d44r0102_gsleader8"));
+        Assert.False(game.Fires("Clair"));
+
+        game.Arrive("Blackthorn_Gym", 13, 86);
+        game.Talk("t30gym0101_gsleader8");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM59")!));
+        Assert.True(game.Story.Has("FLAG_GOT_TM59_FROM_CLAIR"));
+
+        game.Arrive("DragonsDen_Shrine", 6, 11);
+        game.Talk("d44r0103_chourou");
+        var dratini = Assert.Single(game.Party.Members, p => p.Species.Name == "Dratini");
+        Assert.Contains(dratini.Moves, m => m.Name == "Extreme Speed");
+    }
 }

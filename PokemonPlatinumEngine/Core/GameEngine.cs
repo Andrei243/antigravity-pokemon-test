@@ -1794,6 +1794,8 @@ public partial class GameEngine
 
     private void TryInteract()
     {
+        // A button of the Blackthorn Gym's slabs underfoot works before anything ahead is spoken to (plan 20 · J11, part c)
+        if (TryWorkSlab()) return;
         int dx = 0, dy = 0;
         switch (flow.Player.Facing)
         {
