@@ -1,0 +1,56 @@
+{
+  // The Radio Tower's third floor (plan 20 · J11, part b): HeartGold's floor, our words. Team Rocket's four hold it while
+  // the takeover lasts, and a pair of shutters keeps the way to the east stairs until the Director's Card Key is put
+  // in the slot beside them (scripts/goldenrod_radio_tower_3f.txt). The shutters are things of the map behind
+  // HeartGold's own flag, FLAG_UNK_1BF
+  "area": "goldenrod_radio_tower_3f",
+  "bgmTrack": "johto/goldenrod",
+  "read": {
+    "D23R0103_007+1": "Slot"
+  },
+  "people": {
+    "d23r0103_gsman1": { "name": "Man", "script": "Worker", "still": true },
+    "d23r0103_gswoman2": { "name": "Woman", "script": "Woman", "still": true },
+    "d23r0103_gsman1_2": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "We keep recordings of the cries of every Pokémon anyone has found. Two hundred kinds, near enough."
+      ]
+    },
+    "d23r0103_babyboy1_9": { "name": "Shutter", "npcType": "GalacticDoor", "script": "Shutter", "still": true },
+    "d23r0103_babyboy1_9_2": { "name": "Shutter", "npcType": "GalacticDoor", "script": "Shutter", "still": true },
+    "d23r0103_rocketm": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: You've come all the way up here? Then I'll send you all the way back down!",
+        "dialogueAfter": "Grunt: How did a kid get this far?"
+      }
+    },
+    "d23r0103_rocketm_2": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: Stay out of the studios! We're on the air!",
+        "dialogueAfter": "Grunt: Off the air... Just like that."
+      }
+    },
+    "d23r0103_assistantm": {
+      "name": "Garett",
+      "trainer": {
+        "dialogueBefore": "Scientist Garett: Our signal will soon make every Pokémon in Johto listen to us. Shall I show you?",
+        "dialogueAfter": "Scientist Garett: My theory didn't allow for a Trainer like you."
+      }
+    },
+    "d23r0103_rocketm_3": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: The shutters won't open for you. And neither will I!",
+        "dialogueAfter": "Grunt: Only the Director's Card Key opens them. Not that you'll find it!"
+      }
+    }
+  },
+  "signs": {
+    "D23R0103_001+1": "3F Personnel",
+    "D23R0103_002+1": "Pokémon Music\nwith DJ Ben"
+  }
+}

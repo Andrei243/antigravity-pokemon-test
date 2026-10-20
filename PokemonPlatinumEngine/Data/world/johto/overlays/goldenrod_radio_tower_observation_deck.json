@@ -1,0 +1,15 @@
+{
+  // The Radio Tower's observation deck (plan 20 · J11, part b): HeartGold's deck, our words. Archer waits at its north
+  // rail while the takeover lasts, and once he is beaten the Director comes up in the lift with the Rainbow Wing
+  // (scripts/goldenrod_radio_tower_observation_deck.txt). HeartGold keeps the Director beside the deck until his scene,
+  // where this room has no floor: here he is a person of our own, brought on by the scene
+  "area": "goldenrod_radio_tower_observation_deck",
+  "bgmTrack": "johto/goldenrod",
+  "people": {
+    "d23r0106_rkanbum": { "name": "Archer", "script": "Archer", "still": true }
+  },
+  "npcs": [
+    { "id": "deck_director", "name": "Director", "npcType": "Gentleman", "x": 13, "y": 13, "facing": "Up",
+      "dialog": [ "..." ], "hiddenBy": "FLAG_HIDE_RADIO_TOWER_DECK_DIRECTOR" }
+  ]
+}

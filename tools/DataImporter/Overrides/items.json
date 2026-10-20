@@ -196,6 +196,31 @@
     "description": "A bottle that sprays a fine mist of water. Plants love it, and so do some things that only look like plants.",
     "cantBeTossed": true
   },
+  // Johto's key items of Goldenrod's takeover (plan 20 · J11, part b): the key Petrel hands over to the Goldenrod
+  // Tunnel's locked door, and the wing the Radio Tower's director gives (HeartGold's; SoulSilver's Silver Wing is
+  // another game's). The Card Key the director gives is Silph Co.'s item, below
+  "Basement Key": {
+    "id": 9201,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to the locked door at the far end of the passages under Goldenrod City.",
+    "cantBeTossed": true
+  },
+  "Rainbow Wing": {
+    "id": 9202,
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A feather that shimmers in every colour. It was found at the top of an old tower long ago.",
+    "cantBeTossed": true
+  },
   // FireRed's key items of the third chapter (plan 19 · K5, part b), which no game this importer reads has: the
   // Rocket Hideout's Lift Key and the Silph Scope Giovanni leaves, Mr. Fuji's Poké Flute, the Tea Celadon's old lady
   // gives (for the thirsty guards of Saffron City's gates) and Silph Co.'s Card Key
@@ -251,7 +276,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "A card that opens the locked doors of Silph Co.'s office building.",
+    "description": "A card that opens locked doors and shutters. Silph Co.'s office building in Saffron City uses them.",
     "cantBeTossed": true
   },
   // Plan 19 · K6: the Safari Zone Warden's lost dentures, found in the zone's west part and traded for HM04

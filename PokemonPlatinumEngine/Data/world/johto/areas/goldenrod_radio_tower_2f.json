@@ -1,0 +1,39 @@
+{
+  "key": "goldenrod_radio_tower_2f",
+  "index": 186,
+  "name": "Radio Tower",
+  "matrix": 29,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 23, "z": 5, "to": "goldenrod_radio_tower_1f", "toWarp": 1 },
+    { "x": 3, "z": 5, "to": "goldenrod_radio_tower_3f", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d23r0102_gsman1", "looks": "gsman1", "movement": "2", "x": 5, "z": 10, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D23R0102_005+1" },
+    { "id": "d23r0102_gswoman2", "looks": "gswoman2", "movement": "0", "x": 24, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D23R0102_004+1" },
+    { "id": "d23r0102_tsure_poke_static_jigglypuff", "looks": "follower_mon_static_jigglypuff", "movement": "0", "x": 20, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D23R0102_003+1" },
+    { "id": "d23r0102_policeman", "looks": "policeman", "movement": "0", "x": 3, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D23R0102_006+1" },
+    { "id": "d23r0102_rocketm", "looks": "rocketm", "movement": "0", "x": 13, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_5" },
+    { "id": "d23r0102_rocketw", "looks": "rocketw", "movement": "0", "x": 14, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_F_GRUNT_2" },
+    { "id": "d23r0102_rocketm_2", "looks": "rocketm", "movement": "18", "x": 7, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_6" },
+    { "id": "d23r0102_rocketm_3", "looks": "rocketm", "movement": "0", "x": 3, "z": 14, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_4" },
+    { "id": "d23r0102_gswoman2_2", "looks": "gswoman2", "movement": "0", "x": 18, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D23R0102_010+1" },
+    { "id": "d23r0102_gswoman1", "looks": "gswoman1", "movement": "0", "x": 24, "z": 11, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D23R0102_009+1" }
+  ],
+  "signs": [
+    { "x": 15, "z": 12, "type": 0, "script": "D23R0102_002+1" },
+    { "x": 21, "z": 4, "type": 0, "script": "D23R0102_001+1" },
+    { "x": 8, "z": 4, "type": 0, "script": "D23R0102_000+1" }
+  ],
+  "triggers": []
+}

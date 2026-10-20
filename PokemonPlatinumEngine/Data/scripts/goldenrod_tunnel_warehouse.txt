@@ -1,0 +1,33 @@
+# The warehouse under Goldenrod City (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are
+# our own, on HeartGold's beats (scr_seq_D37R0105).
+#
+# While the takeover is at its height (VAR_SCENE_ROCKET_TAKEOVER 4) three grunts keep the warehouse
+# (FLAG_HIDE_ROCKET_TAKEOVER_1), and the Radio Tower's real Director is shut up in it (_2). He hands the player his
+# Card Key for the shutters on the tower's third floor, which is HeartGold's FLAG_UNK_1C1: the slot there asks that
+# flag, not the bag, since a player who has been to Kanto may carry Silph Co.'s Card Key already.
+
+
+# D37R0105_000
+script OnEnter
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  if var VAR_SCENE_ROCKET_TAKEOVER != 4 end
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  end
+
+
+# D37R0105_001
+script Director
+  face d37r0105_gsgentleman player
+  speaker "Director"
+  if flag FLAG_UNK_1C1 goto Told
+  say "Who's there? You've come to get me out? Thank you! But tell me, what's become of the Radio Tower?"
+  say "Team Rocket have taken it? Then you'll need this. It's my Card Key."
+  if not item "Card Key" give "Card Key"
+  setflag FLAG_UNK_1C1
+label Told
+  say "It opens the shutters on the tower's third floor."
+  say "Please, I'm begging you. With the transmitter in their hands, there's no knowing what they'll do. They might even control Pokémon with some special signal!"
+  say "You're the only one I can turn to. Save the Radio Tower, and every Pokémon in the land!"
+  end

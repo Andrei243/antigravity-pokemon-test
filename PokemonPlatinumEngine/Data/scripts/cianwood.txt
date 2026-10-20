@@ -10,6 +10,9 @@
 #
 # Chuck's wife: with the Storm Badge just won (VAR_UNK_4116 1, cianwood_gym.txt) she meets the player as they come
 # out of the Gym and gives HM02, Fly (FLAG_GOT_HM02, VAR_UNK_4116 2), as HeartGold's T24_006 does.
+#
+# With the takeover begun by the last of three Badges (VAR_SCENE_ROCKET_TAKEOVER 1), Professor Elm rings as the player
+# comes out into the town (common.JohtoTakeoverCall, plan 20 · J11, part b).
 
 
 script OnEnter
@@ -19,6 +22,7 @@ script OnEnter
 label Suicune
   setflag FLAG_HIDE_CIANWOOD_SUICUNE
   if var VAR_UNK_4076 == 1 clearflag FLAG_HIDE_CIANWOOD_SUICUNE
+  if var VAR_SCENE_ROCKET_TAKEOVER == 1 call JohtoTakeoverCall
   if var VAR_UNK_4116 == 1 goto Fly
   end
 label Fly

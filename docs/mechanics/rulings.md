@@ -3810,3 +3810,45 @@ the Ice Path's scenes, Clair, the Dragon's Den, the Kimono Girls, Ho-Oh and Lugi
   Defog, and HeartGold's HM of Whirlpool is no item of its data yet (the importer must give it a name of its own), so
   the Whirl Islands' lower floors stay shut with it; the Rage Candy seller at Mahogany's east exit and the
   saleswoman (the Rage Candy Bar isn't in the data either); Wesley, the fishing guru's record and TM10 at the lake.
+
+## Johto's fourth chapter, part b (2026-10-20, plan 20 · J11, part b)
+
+Goldenrod's takeover, from the third of the Storm, Mineral and Glacier Badges to the Rainbow Wing: Professor Elm's call,
+the city taken, the uniform under the city, the Radio Tower's five floors, its lift and its observation deck, the
+basement of gates and the warehouse, played by scripts of ours on HeartGold's beats (`scr_seq_T25`, `D23R0101` to
+`D23R0107`, `D37R0101` to `D37R0105`) and its one count, `VAR_SCENE_ROCKET_TAKEOVER` (0 to 5, `goldenrod.txt`'s header).
+The Ice Path's scenes, Clair, the Dragon's Den, the Kimono Girls, Ho-Oh and Lugia are part c's.
+
+- **Elm's call comes on the next arrival**: HeartGold rings the Pokégear on the first map change after the third
+  Badge. Here Cianwood City's, Olivine City's and Mahogany Town's arrivals call `common.JohtoTakeoverCall` while the
+  count is 1 (the Leader's script that gives the last of the three sets it, Chuck's and Jasmine's since this part). The
+  call is a scene of the field's text box, as the Pokégear's scripted calls are not yet a screen of their own.
+- **The uniform is told in words**: the grunt by the photo studio under the city lends the player one, and the line
+  says so over a black screen; the player is drawn as before, since a Rocket uniform is J14's to dress. The count is 3
+  while it is worn, and the grunt on the tower's stairs goes by the count, not by a look.
+- **The rival at the tower follows the grunt's words**: HeartGold plays the red-haired boy's arrival from a trigger on
+  the stairs once the grunt has stepped aside. Here it follows straight on from the grunt's own script, so the one
+  scene plays however the player stands; it ends in the grunt's battle, which moves the count to 4.
+- **Petrel and Archer may be lost to** (`canlose`): a battle lost with Petrel puts him back in the Director's clothes
+  with no key given, as HeartGold's white-out does, and Archer stays at the rail.
+- **The Card Key is asked by a flag**: the slot on the tower's third floor asks `FLAG_UNK_1C1` (the Director has handed
+  his key over), not the bag, because Silph Co.'s Card Key in Kanto has the same name and a player who has been there
+  carries it already. The Director gives the item only when the bag has none.
+- **The basement's gates** are things of the map (`GalacticDoor` cards, three to a gate across a passage, one to a gate
+  in a doorway) behind flags of ours (`FLAG_GOLDENROD_B2F_GATE_0_SHUT` to `_9_SHUT`, `FLAG_OPENED_GOLDENROD_PURPLE_GATE`).
+  The three switches each turn their own set of gates over (HeartGold's table), the fourth opens the way to the
+  warehouse for good, and the floor's arrival sets the gates back as HeartGold's does.
+- **People of our own**: the rival under the city comes in on the stairs' own tile (HeartGold's tile beside it is a
+  wall here), and the Director who comes up the lift to the deck stands on the deck's floor, where HeartGold keeps him
+  beside it; each is behind a flag of ours that its place's arrival sets.
+- **The store's lift goes down**: the Department Store's basement is the lift's seventh stop
+  (`VAR_GOLDENROD_STORE_LIFT_FLOOR` 7); a question holds six answers, so the lower floors are a second question.
+- **The Basement Key and the Rainbow Wing** are key items of ours (9201, 9202) in the importer's overrides, written into
+  `items.json` by hand to match since the importer wasn't run; the Rainbow Wing is HeartGold's (SoulSilver's Silver
+  Wing is another game's).
+- **What the deck's scene moves on**: HeartGold's flags for Mahogany's saleswoman and `VAR_UNK_407A`, and the guard
+  before the Blackthorn Gym standing aside, are set as its scene sets them, though the saleswoman and Clair wait for
+  part c.
+- **Left out**: the Kimono Girl the Basement Key sends under the city (`VAR_UNK_40E7`), the tunnel's shops, salons and
+  photo studio, Buena and her Blue Card, Whitney and the friend at the Gym, Team Rocket's broadcast on the radio, and the
+  Department Store basement's crates, which its Machoke shift.

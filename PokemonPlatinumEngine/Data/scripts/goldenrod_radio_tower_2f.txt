@@ -1,0 +1,48 @@
+# The Radio Tower's second floor (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_D23R0102).
+#
+# The floor's arrival shows Team Rocket's four (FLAG_HIDE_ROCKET_TAKEOVER_1) while the takeover is at its height
+# (VAR_SCENE_ROCKET_TAKEOVER 4, which goldenrod.txt describes) and the staff (_2) the rest of the time. The policeman
+# who keeps the stairs up stands on them until the takeover; once it is over he stands aside, as HeartGold's
+# D23R0102_008 moves him. Buena and her Blue Card are a later part's.
+
+
+# D23R0102_007 and _008
+script OnEnter
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  if var VAR_SCENE_ROCKET_TAKEOVER != 4 clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  if var VAR_SCENE_ROCKET_TAKEOVER == 5 place d23r0102_policeman 2 7 right
+  end
+
+
+# D23R0102_004
+script Woman
+  face d23r0102_gswoman2 player
+  speaker "Woman"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Takeover
+  say "Did you know? When the radio plays a lullaby, the wild Pokémon in the grass doze off. You'll hardly meet any."
+  end
+label Takeover
+  say "What could Team Rocket want with a radio station? I don't understand it at all..."
+  end
+
+
+# D23R0102_003
+script Jigglypuff
+  cry "Jigglypuff"
+  text "Jigglypuff: Jiggly... puff..."
+  end
+
+
+# D23R0102_006: the policeman at the stairs up
+script Policeman
+  face d23r0102_policeman player
+  speaker "Policeman"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 5 goto Over
+  say "Sorry, the upper floors are staff only. They never used to be so strict... Something's not right with the Director lately."
+  end
+label Over
+  say "Go wherever you like. The Director's his old cheerful self again, so everything's back to normal."
+  end

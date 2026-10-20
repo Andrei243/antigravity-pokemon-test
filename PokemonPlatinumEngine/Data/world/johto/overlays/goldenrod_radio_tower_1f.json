@@ -1,50 +1,49 @@
 {
-  // The Radio Tower's ground floor (plan 20 · J5, part b). The quiz for the Radio Card is plan 20 · J7's
-  // (scripts/goldenrod_radio_tower_1f.txt), and Team Rocket's takeover the eleventh's: the stairs up (warp 1) stay shut, and the staff the takeover hides
-  // stand at every hour
+  // The Radio Tower's ground floor (plan 20 · J5, part b). The quiz for the Radio Card is plan 20 · J7's, and Team
+  // Rocket's takeover plan 20 · J11, part b's (scripts/goldenrod_radio_tower_1f.txt): the floor's arrival keeps the
+  // staff off it while the takeover lasts and a grunt on the stairs (warp 1) at its start, and the red-haired boy walks
+  // in at the door when the grunt lets a player in uniform by. Whitney, who stands by the desk in HeartGold once the
+  // takeover is over (FLAG_UNK_318), is left out
   "area": "goldenrod_radio_tower_1f",
   "bgmTrack": "johto/goldenrod",
-  "locked": [
-    1
-  ],
   "people": {
     "d23r0101_gswoman6": {
       "name": "Receptionist",
-      "still": true,
-      "dialog": [
-        "Welcome to the Radio Tower! I'm sorry, visitors may only see the ground floor today."
-      ]
+      "script": "Receptionist",
+      "still": true
     },
     "d23r0101_gswoman6_2": {
       "name": "Receptionist",
       "still": true,
       "dialog": [
         "We broadcast all over Johto, day and night. Do keep your radio tuned in!"
-      ],
-      "hiddenBy": ""
+      ]
     },
     // The quiz for the Radio Card (plan 20 · J7, scripts/goldenrod_radio_tower_1f.txt)
     "d23r0101_gswoman6_3": {
       "name": "Receptionist",
       "script": "Quiz",
-      "still": true,
-      "hiddenBy": ""
+      "still": true
     },
     "d23r0101_gsman1": {
       "name": "Man",
       "dialog": [
         "I work on the Lucky Number Show. Tune in once a week and see if your number comes up!"
-      ],
-      "hiddenBy": ""
+      ]
     },
     "d23r0101_gsgirl2": {
       "name": "Girl",
       "dialog": [
         "I came to see the DJs, but they're all upstairs. Maybe next time."
-      ],
-      "hiddenBy": ""
-    }
+      ]
+    },
+    "d23r0101_rocketm": { "name": "Grunt", "script": "Grunt", "still": true }
   },
+  // The red-haired boy, whom HeartGold keeps outside the floor until his scene
+  "npcs": [
+    { "id": "radio_tower_rival", "name": "{rival}", "npcType": "Silver", "x": 1, "y": 14, "facing": "Up",
+      "dialog": [ "..." ], "hiddenBy": "FLAG_HIDE_RADIO_TOWER_RIVAL" }
+  ],
   "signs": {
     "D23R0101_006+1": "Ground floor: Reception\nUpper floors: staff only",
     "D23R0101_007+1": "Radio Tower\nThe voice of Johto."

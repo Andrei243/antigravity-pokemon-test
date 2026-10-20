@@ -1,0 +1,47 @@
+{
+  // The first basement of the passage under Goldenrod City (plan 20 · J11, part b): HeartGold's floor, our words. Its
+  // Trainers keep away while Team Rocket hold the Radio Tower, and a grunt by the photo studio hands the player a
+  // uniform; the locked door at the east end of the long corridor opens to the Basement Key
+  // (scripts/goldenrod_tunnel_b1f.txt). The door is a thing of the map behind HeartGold's own flag, FLAG_UNK_1C0.
+  // HeartGold's shops, salons, photo studio and Kimono Girl are a later part's and are left out
+  "area": "goldenrod_tunnel_b1f",
+  "bgmTrack": "johto/goldenrod",
+  "triggers": [
+    { "trigger": 0, "script": "Disguise" }
+  ],
+  "people": {
+    "d37r0102_rocketm": { "name": "Grunt", "script": "Grunt", "still": true },
+    "d37r0102_babyboy1_8": { "name": "Door", "npcType": "GalacticDoor", "script": "Door", "still": true },
+    "d37r0102_mania": {
+      "name": "Donald",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Donald: I came down here to show off my rare Pokémon. Want to see?",
+        "dialogueAfter": "Poké Maniac Donald: Rare doesn't mean strong, does it..."
+      }
+    },
+    "d37r0102_gsassistantm": {
+      "name": "Teru",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Teru: I've worked out every type matchup there is. You don't stand a chance!",
+        "dialogueAfter": "Super Nerd Teru: My sums were right. My Pokémon just didn't follow them."
+      }
+    },
+    "d37r0102_mania_2": {
+      "name": "Issac",
+      "trainer": {
+        "dialogueBefore": "Poké Maniac Issac: My Pokémon get the best grooming in the city, right here underground!",
+        "dialogueAfter": "Poké Maniac Issac: At least they lost looking their best."
+      }
+    },
+    "d37r0102_gsassistantm_2": {
+      "name": "Eric",
+      "trainer": {
+        "dialogueBefore": "Super Nerd Eric: I'm waiting for the shops to open. A battle will pass the time!",
+        "dialogueAfter": "Super Nerd Eric: That passed the time quicker than I wanted."
+      }
+    }
+  },
+  "signs": {
+    "D37R0102_007+1": "STAFF ONLY BEYOND THIS DOOR"
+  }
+}

@@ -5,7 +5,8 @@
 # lighthouse, and so are the two who come to watch her battle: the room's own arrival keeps the three off the floor
 # (FLAG_HIDE_JASMINE_IN_GYM and its two, which HeartGold's new game sets and the light room's scene clears). Jasmine
 # battles, gives the Mineral Badge (`givebadge mineral`) and TM23, Iron Tail (FLAG_GOT_TM23_FROM_JASMINE). The Gym
-# has no trainers of its own.
+# has no trainers of its own. Whichever of Chuck, Jasmine and Pryce gives the last of the Storm, Mineral and Glacier
+# Badges starts Team Rocket's takeover (VAR_SCENE_ROCKET_TAKEOVER 1, plan 20 · J11, part b).
 
 
 script OnEnter
@@ -28,6 +29,10 @@ script Jasmine
   say "Your Pokémon cut through steel... You're stronger than I imagined. The Mineral Badge is yours."
   givebadge mineral
   text "{player} received the Mineral Badge from Jasmine!"
+  if not badge storm goto Said
+  if not badge glacier goto Said
+  setvar VAR_SCENE_ROCKET_TAKEOVER 1
+label Said
   say "Wear it proudly. Steel only grows harder under the hammer, and so do the Trainers who keep going."
   endscene
 label Tm

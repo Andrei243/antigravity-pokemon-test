@@ -1,0 +1,26 @@
+{
+  "key": "goldenrod_radio_tower_observation_deck",
+  "index": 190,
+  "name": "Radio Tower",
+  "matrix": 110,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 8, "z": 12, "to": "goldenrod_radio_tower_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d23r0106_rkanbum", "looks": "rkanbum", "movement": "0", "x": 8, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "D23R0106_001+1" },
+    { "id": "d23r0106_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 25, "z": 1, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "0" }
+  ],
+  "signs": [],
+  "triggers": []
+}

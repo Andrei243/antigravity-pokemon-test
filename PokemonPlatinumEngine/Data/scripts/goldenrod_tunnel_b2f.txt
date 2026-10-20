@@ -1,0 +1,199 @@
+# The second basement of the passage under Goldenrod City (plan 20 · J11, part b). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats (scr_seq_D37R0104).
+#
+# Team Rocket's grunts and two burglars hold the floor while the takeover is at its height (VAR_SCENE_ROCKET_TAKEOVER
+# 4; FLAG_HIDE_ROCKET_TAKEOVER_1 hides them otherwise). Its corridors are cut by ten shutters, each a row of things of
+# the map shown while its flag of ours says it is shut (FLAG_GOLDENROD_B2F_GATE_<n>_SHUT; HeartGold keeps them in
+# temporary variables). Three switches in the middle room each turn a set of them over, as HeartGold's do: the blue
+# one shutters 2, 3, 4, 5 and 7, the green one 0, 2, 4, 6, 8 and 9, the red one 1, 3, 5, 6, 7 and 8. Coming in puts
+# them back as HeartGold's arrival does, 2 and 9 shut and the rest open, so green, red and blue in turn open the way to
+# the warehouse. The purple shutter before the warehouse's corner opens from its own switch on the far side, for good
+# (FLAG_OPENED_GOLDENROD_PURPLE_GATE). The red-haired boy waits for the player at the top of the floor's east room
+# (VAR_UNK_40A0): HeartGold keeps him beyond the floor until then, here he comes down the stairs from the passage.
+
+
+# D37R0104_006
+script OnEnter
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 clearflag FLAG_HIDE_ROCKET_TAKEOVER_1
+  setflag FLAG_HIDE_GOLDENROD_B2F_RIVAL
+  clearflag FLAG_GOLDENROD_B2F_GATE_0_SHUT
+  clearflag FLAG_GOLDENROD_B2F_GATE_1_SHUT
+  setflag FLAG_GOLDENROD_B2F_GATE_2_SHUT
+  clearflag FLAG_GOLDENROD_B2F_GATE_3_SHUT
+  clearflag FLAG_GOLDENROD_B2F_GATE_4_SHUT
+  clearflag FLAG_GOLDENROD_B2F_GATE_5_SHUT
+  clearflag FLAG_GOLDENROD_B2F_GATE_6_SHUT
+  clearflag FLAG_GOLDENROD_B2F_GATE_7_SHUT
+  clearflag FLAG_GOLDENROD_B2F_GATE_8_SHUT
+  setflag FLAG_GOLDENROD_B2F_GATE_9_SHUT
+  end
+
+
+# D37R0104_000: the blue switch
+script Blue
+  sound "gear"
+  call Gate2
+  call Gate3
+  call Gate4
+  call Gate5
+  call Gate7
+  end
+
+
+# D37R0104_001: the green switch
+script Green
+  sound "gear"
+  call Gate0
+  call Gate2
+  call Gate4
+  call Gate6
+  call Gate8
+  call Gate9
+  end
+
+
+# D37R0104_002: the red switch
+script Red
+  sound "gear"
+  call Gate1
+  call Gate3
+  call Gate5
+  call Gate6
+  call Gate7
+  call Gate8
+  end
+
+
+# D37R0104_003: the purple switch
+script Purple
+  if flag FLAG_OPENED_GOLDENROD_PURPLE_GATE end
+  sound "gear"
+  setflag FLAG_OPENED_GOLDENROD_PURPLE_GATE
+  end
+
+
+# Each shutter turned over: shut if it was open, open if it was shut
+script Gate0
+  if flag FLAG_GOLDENROD_B2F_GATE_0_SHUT goto Open0
+  setflag FLAG_GOLDENROD_B2F_GATE_0_SHUT
+  return
+label Open0
+  clearflag FLAG_GOLDENROD_B2F_GATE_0_SHUT
+  return
+
+script Gate1
+  if flag FLAG_GOLDENROD_B2F_GATE_1_SHUT goto Open1
+  setflag FLAG_GOLDENROD_B2F_GATE_1_SHUT
+  return
+label Open1
+  clearflag FLAG_GOLDENROD_B2F_GATE_1_SHUT
+  return
+
+script Gate2
+  if flag FLAG_GOLDENROD_B2F_GATE_2_SHUT goto Open2
+  setflag FLAG_GOLDENROD_B2F_GATE_2_SHUT
+  return
+label Open2
+  clearflag FLAG_GOLDENROD_B2F_GATE_2_SHUT
+  return
+
+script Gate3
+  if flag FLAG_GOLDENROD_B2F_GATE_3_SHUT goto Open3
+  setflag FLAG_GOLDENROD_B2F_GATE_3_SHUT
+  return
+label Open3
+  clearflag FLAG_GOLDENROD_B2F_GATE_3_SHUT
+  return
+
+script Gate4
+  if flag FLAG_GOLDENROD_B2F_GATE_4_SHUT goto Open4
+  setflag FLAG_GOLDENROD_B2F_GATE_4_SHUT
+  return
+label Open4
+  clearflag FLAG_GOLDENROD_B2F_GATE_4_SHUT
+  return
+
+script Gate5
+  if flag FLAG_GOLDENROD_B2F_GATE_5_SHUT goto Open5
+  setflag FLAG_GOLDENROD_B2F_GATE_5_SHUT
+  return
+label Open5
+  clearflag FLAG_GOLDENROD_B2F_GATE_5_SHUT
+  return
+
+script Gate6
+  if flag FLAG_GOLDENROD_B2F_GATE_6_SHUT goto Open6
+  setflag FLAG_GOLDENROD_B2F_GATE_6_SHUT
+  return
+label Open6
+  clearflag FLAG_GOLDENROD_B2F_GATE_6_SHUT
+  return
+
+script Gate7
+  if flag FLAG_GOLDENROD_B2F_GATE_7_SHUT goto Open7
+  setflag FLAG_GOLDENROD_B2F_GATE_7_SHUT
+  return
+label Open7
+  clearflag FLAG_GOLDENROD_B2F_GATE_7_SHUT
+  return
+
+script Gate8
+  if flag FLAG_GOLDENROD_B2F_GATE_8_SHUT goto Open8
+  setflag FLAG_GOLDENROD_B2F_GATE_8_SHUT
+  return
+label Open8
+  clearflag FLAG_GOLDENROD_B2F_GATE_8_SHUT
+  return
+
+script Gate9
+  if flag FLAG_GOLDENROD_B2F_GATE_9_SHUT goto Open9
+  setflag FLAG_GOLDENROD_B2F_GATE_9_SHUT
+  return
+label Open9
+  clearflag FLAG_GOLDENROD_B2F_GATE_9_SHUT
+  return
+
+
+# A shutter spoken to
+script Gate
+  speaker none
+  text "The shutter is shut tight. A switch somewhere must work it."
+  end
+
+
+# D37R0104_004: the red-haired boy comes down the stairs after the player
+script Rival
+  scene "The red-haired boy under Goldenrod"
+  music "johto/rival"
+  clearflag FLAG_HIDE_GOLDENROD_B2F_RIVAL
+  show goldenrod_b2f_rival
+  place goldenrod_b2f_rival 27 4 left
+  emote player exclaim
+  walk goldenrod_b2f_rival left 2 down 1 left 4
+  walk player right 1
+  face goldenrod_b2f_rival player
+  face player goldenrod_b2f_rival
+  speaker "{rival}"
+  say "Not so fast. What I told you before was a lie. I thought if I stuck to you, you'd lead me to that Lance."
+  say "He never turned up. Never mind. I meant to beat you after him, but you'll do first. I always settle my debts!"
+  if starter "Chikorita" goto VsTyphlosion
+  if starter "Cyndaquil" goto VsFeraligatr
+  battle goldenrod_b2f_rival as "johto_rival_silver_17"
+  goto Won
+label VsTyphlosion
+  battle goldenrod_b2f_rival as "johto_rival_silver_18"
+  goto Won
+label VsFeraligatr
+  battle goldenrod_b2f_rival as "johto_rival_silver_12"
+label Won
+  speaker "{rival}"
+  say "...I don't get it. Was that Lance right? That I don't treat my Pokémon properly? Love... trust... Is that what I'm missing?"
+  say "Is that why I keep losing? I don't understand. But I'm not finished. Not now, not like this. I'll never give up!"
+  setvar VAR_UNK_40A0 1
+  walk goldenrod_b2f_rival right 4 up 1 right 2
+  hide goldenrod_b2f_rival
+  setflag FLAG_HIDE_GOLDENROD_B2F_RIVAL
+  music area
+  endscene
+  end

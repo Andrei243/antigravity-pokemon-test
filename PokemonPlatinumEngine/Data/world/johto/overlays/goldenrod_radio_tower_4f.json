@@ -1,0 +1,46 @@
+{
+  // The Radio Tower's fourth floor (plan 20 · J11, part b): HeartGold's floor, our words. Team Rocket holds it while the
+  // takeover lasts, Mary and DJ Ben are kept in a corner, and Proton stands on the east side between the two stairs
+  // the Card Key's shutters on the floor below lead to (scripts/goldenrod_radio_tower_4f.txt)
+  "area": "goldenrod_radio_tower_4f",
+  "bgmTrack": "johto/goldenrod",
+  "people": {
+    "d23r0104_kurumi": { "name": "Mary", "script": "Mary", "still": true },
+    "d23r0104_tsure_poke_static_meowth": { "name": "Meowth", "npcType": "Pokemon", "species": "Meowth", "script": "Meowth", "still": true },
+    "d23r0104_gsman2": { "name": "Ben", "script": "Ben", "still": true },
+    "d23r0104_rocketw": { "name": "Grunt", "script": "Guard", "still": true },
+    "d23r0104_gsbigman": {
+      "name": "Man",
+      "still": true,
+      "dialog": [
+        "I had my radio on while I was out at the ruins, and I heard the strangest broadcast. Nothing but odd noises."
+      ]
+    },
+    "d23r0104_assistantm": {
+      "name": "Trenton",
+      "trainer": {
+        "dialogueBefore": "Scientist Trenton: One signal from this tower, and every Pokémon that hears it will be ours.",
+        "dialogueAfter": "Scientist Trenton: The experiment can wait. You can't."
+      }
+    },
+    "d23r0104_rocketm": {
+      "name": "Grunt",
+      "trainer": {
+        "dialogueBefore": "Grunt: This is the production floor now. We decide what goes on the air!",
+        "dialogueAfter": "Grunt: Cut! Cut! That wasn't in the script!"
+      }
+    },
+    "d23r0104_rkanbum3": {
+      "name": "Proton",
+      "still": true,
+      "trainer": {
+        "dialogueBefore": "Proton: You again? I'm the scariest and cruelest of Team Rocket's executives, and you'll go no further.",
+        "dialogueAfter": "Proton: Beaten twice by a child... Go on up, then. Our leaders upstairs will deal with you."
+      }
+    }
+  },
+  "signs": {
+    "D23R0104_001+1": "4F Production",
+    "D23R0104_002+1": "4F Studio 1"
+  }
+}
