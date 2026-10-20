@@ -516,6 +516,33 @@ partial class Harness
                 $"played again {again?.Result} in {again?.Turn} turns with {again?.Log.Count} events against {recorded.Core.Log.Count}");
         }
         else Console.WriteLine("  !! the Vs. Recorder wrote nothing");
+
+        // ---- the Vs. Recorder's viewer (plan 08 · P11), after the file just written: the list as USE on the Vs.
+        // Recorder opens it off the item button, the recording chosen and watched with Run held (×3), shot on a line
+        // of its second turn, and left with Menu. It prints the list, how far the watching came and that the team, the
+        // bag and the money are what they were
+        Until(() => State() == GameState.Overworld && !Box().IsActive && !engine.ScriptRunning, "the field before the viewer", 600);
+        string Holdings() => $"{string.Join(",", team.Members.Select(p => $"{p.Species.Name}{p.Level}:{p.CurrentHP}/{p.CurrentExp}"))} " +
+            $"bag {string.Join(",", bag.AllItems.Select(s => $"{s.Name}x{s.Quantity}"))} money {game.Money}";
+        string before = Holdings();
+        game.UseFieldItem(ItemDatabase.Get(BattleRecordFile.RecorderItem)!);
+        Until(() => State() == GameState.ReplayList, "the Vs. Recorder's list", 60);
+        Frames(20); Shot("st9d_replays");
+        Console.WriteLine($"viewer: {game.ReplayList.Entries.Count} recording(s): " +
+            string.Join("; ", game.ReplayList.Entries.Select(e => e.File is { } f ? $"{f.Foe} {f.Result} {f.Turns} turns" : $"{e.FileName} refused {e.Refused}")));
+        game.ReplayList.Confirm();
+        Until(() => State() == GameState.Battle && game.Battle?.Watching == true, "the recording on screen", 600);
+        var watched = game.Battle!;
+        int turnShot = Math.Min(2, watched.Watched!.Turns);
+        InputManager.Feed(ActionFrame.Press(GameAction.Run).Next(GameAction.Run));
+        Until(() => watched.WatchOver || watched.Core.Turn >= turnShot && watched.IsWaitingForConfirm, "a line of the recording's second turn", 3600);
+        Frames(6); Shot("st9e_replay_watching");
+        Console.WriteLine($"viewer: on turn {watched.Core.Turn} of {watched.Watched.Turns}, {watched.AnswersFed} answer(s) fed, fast {watched.WatchFast}, line \"{watched.CurrentMessage}\"");
+        InputManager.Feed(ActionFrame.Press(GameAction.Menu)); Frames(1); InputManager.Feed(null);
+        Until(() => State() == GameState.ReplayList, "the list again", 600);
+        Console.WriteLine($"viewer: left {watched.WatchLeft}, broke {game.ReplayBroke}; the game {(Holdings() == before ? "as it was" : "!! changed: " + Holdings())}");
+        game.ReplayList.Cancel(); Frames(2);
+        Until(() => State() == GameState.Overworld, "the field after the viewer", 60);
         team.Members.RemoveAt(0);
         engine.Settings.RecordBattles = false;
         engine.ApplySettings(window: false);

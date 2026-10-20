@@ -13,8 +13,9 @@ namespace PokemonPlatinumEngine.Core;
 /// the question "Record this battle?" when the Vs. Recorder is in the bag and the options' Record battles row is on, and
 /// the battles of the Elite Four and the Champion are kept without a word whenever it is in the bag, as the plan says
 /// of the Hall of Fame's. A recording is a <see cref="BattleRecordFile"/> in the <c>replays</c> folder beside the saves
-/// (<see cref="SavePaths.Replays"/>), never in the working directory. A Frontier battle is not offered (its own end,
-/// <c>EndFrontierBattle</c>, never comes here), nor a wild one.
+/// (<see cref="SavePaths.Replays"/>), never in the working directory. A battle of the Battle Frontier is offered by the
+/// same rule as the story's (plan 08 · P11, P10's leftover: its own end, <c>EndFrontierBattle</c>, asks too), and is
+/// never kept without a word; a wild battle is never offered. The list and the watching are <c>GameEngine.Replays.cs</c>.
 /// </summary>
 public partial class GameEngine
 {
@@ -47,8 +48,9 @@ public partial class GameEngine
     {
         flow.RecordOffered = null;
         flow.RecordAsked = false;
-        if (battle == null || !battle.IsTrainerBattle || battle.IsFrontier || !HasTheRecorder) return;
-        bool league = IsLeagueBattle(battle);
+        // A recording watched (plan 08 · P11) is never recorded again
+        if (battle == null || battle.Watching || !battle.IsTrainerBattle || !HasTheRecorder) return;
+        bool league = !battle.IsFrontier && IsLeagueBattle(battle);
         if (!league && !Settings.RecordBattles) return;
         var file = battle.RecordFile(GameClock.Today);
         if (file == null) return;
