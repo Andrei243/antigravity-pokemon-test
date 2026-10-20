@@ -1,0 +1,66 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Wild Pokémon jump out of the tall grass. If yours gets tired, head back up the hill to heal."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "4": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I walk this route every day. Some Pokémon only come out in certain seasons, you know."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "4": {
+      "en": [
+        "Route 19\nAspertia City - Floccesy Town"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "5": {
+      "en": [
+        "Route 19\nFloccesy Town is just ahead."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "6": {
+      "en": [
+        "TRAINER TIPS\nThrow a Poké Ball at a weakened wild Pokémon\nto catch it."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

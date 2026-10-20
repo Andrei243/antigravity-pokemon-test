@@ -1,0 +1,59 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Sorry about the mess! We're getting ready for the spring festival."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Man"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My wife says I should get a Pokémon to help in the garden. I think she means me to do less work."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "2": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "When I grow up I'm going to work at the ranch. They have Pokémon everywhere!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

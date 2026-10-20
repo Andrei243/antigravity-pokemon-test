@@ -1,0 +1,15 @@
+{
+  // A house of Aspertia City, downstairs (plan 22 · U2): Black 2's room, our words
+  "area": "aspertia_city_3",
+  "bgmTrack": "sinnoh/twinleaf",
+  "people": {
+    "0": {
+      "name": "Woman",
+      "dialog": [ "My son trains on the hill every day. He says he'll take on the Gym before the year is out." ]
+    },
+    "1": {
+      "name": "Black Belt",
+      "dialog": [ "Hup! Hah! A Trainer must be strong in body as well as in spirit. Push-ups, every morning!" ]
+    }
+  }
+}

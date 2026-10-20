@@ -1,0 +1,28 @@
+{
+  "key": "aspertia_city_4",
+  "index": 430,
+  "name": "Aspertia City",
+  "matrix": 258,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_C_12",
+  "nightMusic": "BGM_SW_C_12",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 9, "z": 2, "to": "aspertia_city_3", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "twins", "movement": "none", "x": 4, "z": 12, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0323", "script": "2" },
+    { "id": "1", "looks": "308", "movement": "none", "x": 3, "z": 12, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03c5", "script": "3" }
+  ],
+  "signs": [
+    { "x": 4, "z": 3, "type": 0, "script": "4" }
+  ],
+  "triggers": []
+}

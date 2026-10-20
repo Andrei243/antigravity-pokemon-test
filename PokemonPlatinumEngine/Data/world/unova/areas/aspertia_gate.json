@@ -1,0 +1,33 @@
+{
+  "key": "aspertia_gate",
+  "index": 438,
+  "name": "Aspertia Gate",
+  "matrix": 12,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_GATE",
+  "nightMusic": "BGM_GATE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 14, "to": "aspertia_city", "toWarp": 0 },
+    { "x": 4, "z": 1, "to": "unova_route_19", "toWarp": 0 },
+    { "x": 5, "z": 14, "to": "aspertia_city", "toWarp": 0 },
+    { "x": 6, "z": 14, "to": "aspertia_city", "toWarp": 0 },
+    { "x": 5, "z": 1, "to": "unova_route_19", "toWarp": 0 },
+    { "x": 6, "z": 1, "to": "unova_route_19", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "76", "movement": "none", "x": 9, "z": 11, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "3" },
+    { "id": "1", "looks": "18", "movement": "none", "x": 3, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "4" }
+  ],
+  "signs": [],
+  "triggers": [
+    { "x": 1, "z": 11, "width": 7, "depth": 1, "script": "2", "variable": "VAR_UNOVA_0x40e0", "value": "0" }
+  ]
+}

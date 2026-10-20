@@ -1,0 +1,9 @@
+{
+  // The way into Floccesy Ranch from Route 20 (plan 22 · U2): Black 2's area, our words
+  "area": "floccesy_ranch",
+  "bgmTrack": "sinnoh/route201",
+  "trees": "Round",
+  "signs": {
+    "1": "Floccesy Ranch\nWalk with care: Pokémon at play."
+  }
+}

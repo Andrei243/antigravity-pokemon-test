@@ -299,6 +299,7 @@ public static partial class WorldModels
     public static IReadOnlyList<WorldModel> Catalogue(string models) =>
         string.Equals(models, "sinnoh", StringComparison.OrdinalIgnoreCase) ? Table
         : string.Equals(models, "johto", StringComparison.OrdinalIgnoreCase) ? JohtoTable
+        : string.Equals(models, "unova", StringComparison.OrdinalIgnoreCase) ? UnovaTable
         : Array.Empty<WorldModel>();
 
     /// <summary>What a model is in Sinnoh's catalogue, by the original's short name for it; null for a name the catalogue doesn't know.</summary>

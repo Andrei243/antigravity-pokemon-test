@@ -1,0 +1,32 @@
+{
+  // Aspertia City's Trainers' School (plan 22 · U2): Black 2's hall, our words. The Gym is through its north door. The
+  // Gym Leader's visit is plan 22 · U4's
+  "area": "aspertia_city_9",
+  "bgmTrack": "sinnoh/twinleaf",
+  "people": {
+    "0": {
+      "name": "Girl",
+      "dialog": [ "Lessons are over for today, but the students always stay behind to battle." ]
+    },
+    "1": {
+      "name": "Youngster",
+      "dialog": [ "Did you know? A Pokémon's type decides which moves hurt it most. It's all on the board up there." ]
+    },
+    "2": {
+      "name": "Schoolboy",
+      "dialog": [ "Normal moves can't touch a Ghost type, and Ghost moves can't touch a Normal type. Weird, right?" ]
+    },
+    "3": {
+      "name": "Youngster",
+      "dialog": [ "The door at the back goes into the Gym. Go on, if you think you're ready!" ]
+    },
+    "4": {
+      "name": "Schoolgirl",
+      "dialog": [ "I'm studying status conditions. A sleeping Pokémon can't attack, but it wakes up in the end." ]
+    }
+  },
+  "signs": {
+    "5": "The blackboard is covered in notes about\nwhich types are strong against which.",
+    "7": "A notice about the Gym through the door:\nchallengers welcome at any time."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  // Another house of Aspertia City, upstairs (plan 22 · U2): Black 2's room, our words
+  "area": "aspertia_city_6",
+  "bgmTrack": "sinnoh/twinleaf",
+  "people": {
+    "0": {
+      "name": "Woman",
+      "dialog": [ "The little ones are napping, so keep your voice down, please." ]
+    },
+    "1": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "I'm not sleepy! I want to go and see the Pokémon in the grass on Route 19." ]
+    }
+  }
+}

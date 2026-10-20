@@ -1,0 +1,40 @@
+{
+  // Floccesy Town (plan 22 · U2): Black 2's town under its bell tower, our words. Alder at the town's edge, the way to
+  // the Pledge Grove and the town's triggers are later sessions'
+  "area": "floccesy_town",
+  "bgmTrack": "sinnoh/floaroma",
+  "trees": "Round",
+  "people": {
+    "2": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "The bell in the tower rings every morning. You get used to it. Mostly." ]
+    },
+    "3": {
+      "name": "Pokéfan",
+      "dialog": [ "The ranch north of here raises all kinds of Pokémon. I could watch them all day." ]
+    },
+    "4": {
+      "name": "Artist",
+      "dialog": [ "Floccesy's flowers are at their best in spring. In winter it's all white, and just as pretty." ]
+    },
+    "5": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "A famous Trainer lives in the house at the top of town. He's always out walking, though." ]
+    },
+    "6": {
+      "name": "Girl",
+      "dialog": [ "Route 20 goes east to Virbank City. It's a long walk, but the grass is full of Pokémon." ]
+    },
+    "8": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "I'm saving up for a Bicycle. Then I'll ride all the way down to the sea!" ]
+    }
+  },
+  "signs": {
+    "13": "Floccesy Town\nA quiet town where the bell rings out.",
+    "15": "TRAINER TIPS\nA Pokémon Center heals your team and sells\nwhat you need for the road."
+  }
+}

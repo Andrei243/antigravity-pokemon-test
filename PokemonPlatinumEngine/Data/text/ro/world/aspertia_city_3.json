@@ -1,0 +1,41 @@
+{
+  "people": {
+    "0": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "My son trains on the hill every day. He says he'll take on the Gym before the year is out."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "1": {
+      "name": {
+        "en": [
+          "Black Belt"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Hup! Hah! A Trainer must be strong in body as well as in spirit. Push-ups, every morning!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {}
+}

@@ -1,0 +1,30 @@
+{
+  "key": "floccesy_town_2",
+  "index": 440,
+  "name": "Floccesy Town",
+  "matrix": 259,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Indoors1",
+  "dayMusic": "BGM_SW_T_06",
+  "nightMusic": "BGM_SW_T_06",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 5, "z": 12, "to": "floccesy_town", "toWarp": 3 },
+    { "x": 6, "z": 12, "to": "floccesy_town", "toWarp": 3 },
+    { "x": 7, "z": 12, "to": "floccesy_town", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "school_kid_f", "movement": "none", "x": 5, "z": 8, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "1", "looks": "school_kid_m", "movement": "none", "x": 7, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "2", "looks": "97", "movement": "none", "x": 6, "z": 3, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "4" },
+    { "id": "3", "looks": "304", "movement": "none", "x": 8, "z": 3, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03e4", "script": "7" }
+  ],
+  "signs": [],
+  "triggers": []
+}

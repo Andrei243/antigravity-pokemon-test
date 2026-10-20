@@ -1,0 +1,44 @@
+{
+  // Floccesy Ranch (plan 22 · U2): Black 2's field, its trainers and their lines ours. The ranch's owners, its lost
+  // Pokémon, Team Plasma's grunt and the field's triggers are plan 22 · U4's. The Pokémon that roam the field stand as
+  // Mareep, the ranch's own flock in our telling
+  "area": "floccesy_ranch_2",
+  "bgmTrack": "sinnoh/route205",
+  "trees": "Round",
+  "people": {
+    "3": {
+      "name": "Rancher",
+      "npcType": "Gentleman",
+      "dialog": [ "Mind the fences! The Pokémon here are friendly, but they don't like being startled." ]
+    },
+    "4": {
+      "name": "Lass",
+      "trainer": {
+        "dialogueBefore": "I come to the ranch to train where nobody can see me lose. Oops, now you can!",
+        "dialogueAfter": "Well, at least only you saw that."
+      }
+    },
+    "5": {
+      "name": "Janitor",
+      "trainer": {
+        "dialogueBefore": "I sweep up after the Pokémon here. A battle makes a nice change!",
+        "dialogueAfter": "Back to sweeping, I suppose."
+      }
+    },
+    "6": {
+      "name": "Youngster",
+      "trainer": {
+        "dialogueBefore": "I'm the toughest Trainer on the whole ranch! Probably!",
+        "dialogueAfter": "Second toughest. Definitely second."
+      }
+    },
+    "11": { "name": "Mareep", "npcType": "Pokemon", "species": "Mareep", "dialog": [ "Mareep: Baaah!" ] },
+    "12": { "name": "Mareep", "npcType": "Pokemon", "species": "Mareep", "dialog": [ "Mareep: Baa-baah!" ] },
+    "13": { "name": "Mareep", "npcType": "Pokemon", "species": "Mareep", "dialog": [ "Mareep: Mrrbaah?" ] },
+    "14": { "name": "Mareep", "npcType": "Pokemon", "species": "Mareep", "dialog": [ "Mareep: Baaah!" ] },
+    "15": { "name": "Mareep", "npcType": "Pokemon", "species": "Mareep", "dialog": [ "Mareep: Baa?" ] }
+  },
+  "signs": {
+    "10795": "Floccesy Ranch\nPlease close the gate behind you."
+  }
+}

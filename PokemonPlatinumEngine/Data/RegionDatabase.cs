@@ -58,6 +58,9 @@ public sealed class Region
     /// <summary>Whether a new game here begins with the region's story rather than a Pokémon and a few items.</summary>
     public bool HasStory => File?.HasStory ?? false;
 
+    /// <summary>Whether the region's places change with the seasons (plan 22 · U2: Unova's alone).</summary>
+    public bool HasSeasons => File?.HasSeasons ?? false;
+
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival => File?.Rival;
 
@@ -576,7 +579,25 @@ public static class RegionDatabase
                 "Route121_SafariZoneEntrance", "HoennSafariZone", "HoennSafariZone_RestHouse", "AncientTomb", "ScorchedSlab",
             }
         },
-        new() { Id = Unova, Name = "Unova", Generation = 5 },
+        new()
+        {
+            Id = Unova, Name = "Unova", Generation = 5, File = RegionFiles.Load(Unova),
+            // Black 2's Unova, read by the third DS reader (plan 22 · U2). A new game begun there wakes in the player's
+            // house in Aspertia City (its story is plan 22 · U4's); a Champion come across stands before the house's door
+            Start = new MapSpot("AspertiaCity_PlayersHouse", 14, 5, Direction.Down),
+            Arrival = new MapSpot("Unova", 47, 762, Direction.Down),
+            Maps = new[]
+            {
+                "Unova",
+                // Plan 22 · U2: Aspertia City's rooms, its gate to Route 19, its school and the Gym behind it, Floccesy
+                // Town's rooms and the ranch's field, each a matrix of the import
+                "AspertiaCity_PlayersHouse", "AspertiaCity_House1_1F", "AspertiaCity_House1_2F", "AspertiaCity_House2_1F",
+                "AspertiaCity_House2_2F", "AspertiaCity_House3_1F", "AspertiaCity_House3_2F", "AspertiaCity_TrainerSchool",
+                "AspertiaCity_Gym", "AspertiaCity_PokemonCenter", "AspertiaGate",
+                "FloccesyTown_AldersHouse", "FloccesyTown_House1", "FloccesyTown_House2", "FloccesyTown_PokemonCenter",
+                "FloccesyRanch",
+            }
+        },
         new() { Id = Kalos, Name = "Kalos", Generation = 6 },
         new() { Id = Alola, Name = "Alola", Generation = 7 },
         new() { Id = Galar, Name = "Galar", Generation = 8 },

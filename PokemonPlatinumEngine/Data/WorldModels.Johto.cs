@@ -353,5 +353,8 @@ public static partial class WorldModels
     /// region whose catalogue has no file of its own.
     /// </summary>
     public static WorldModel? Of(string name, string? catalogue) =>
-        string.Equals(catalogue, "johto", StringComparison.OrdinalIgnoreCase) ? JohtoByName.GetValueOrDefault(name) ?? Of(name) : Of(name);
+        string.Equals(catalogue, "johto", StringComparison.OrdinalIgnoreCase) ? JohtoByName.GetValueOrDefault(name) ?? Of(name)
+        // Unova's names are Black 2's own, and some of them (rock, plant) would mean other things in Sinnoh's table (plan 22 · U2)
+        : string.Equals(catalogue, "unova", StringComparison.OrdinalIgnoreCase) ? UnovaByName.GetValueOrDefault(name)
+        : Of(name);
 }

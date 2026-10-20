@@ -2482,6 +2482,67 @@ What R19b, R20 to R23, R27b and R28b left of the forms, outside a battle, and th
 - **The forms an evolution chooses** (`Evolution.Find` hands back the evolution with the form decided, so the scene shows it): Toxtricity is Low Key for the twelve natures Sword and Shield name (its own nature, not a mint's); a Maushold of three and a three-segment Dudunsparce come once in a hundred, when the personality is a multiple of a hundred (Scarlet and Violet's encryption constant, which is the personality here); Alcremie's cream is the spin's way, length and hour, its decoration the sweet held. **A spin is told once it is over** (`SpinTracker`: the player stops turning for 1.2 s, or turns the other way), so Milcery evolves a moment after the player stops, where it evolved on the fourth quarter turn before; a spin is long past five seconds from its first quarter turn to its last, and the Rainbow Swirl wants ten anticlockwise at dusk (Platinum's evening, 17:00 to 19:59, **our ruling**: Sword and Shield's is 19:00 to 19:59). Dusk is day for the other creams.
 - **Golden files**: `battles-platinum.txt` held still. `battles-modern.txt` moved in block 151 alone: its Scrafty draws the Griseous Core where it drew the Griseous Orb, since the corpus draws held items by hold effect and the core shares the orb's, and the rest of the foe's team is drawn after it. `scripts.txt` moved in Veilstone City's meteorites (four scripts in place of one).
 - **Left for R29b**: Furfrou's trims (a groomer of a later region), the Zygarde Cube's moves and Zygarde's cells, a choice screen for the Rotom Catalog, Hoopa's and Shaymin's going back in a box (Shaymin's is Platinum's and done; Hoopa's is the old games' and not Sword and Shield's), Necrozma-Ultra outside Ultra Burst (none), Magearna's and the Pokémon whose forms are only looks given by events, Zarude's Dada (an event), the names the data gives some forms otherwise than Showdown does (above, "Found on the way"); and the oracle, which knows none of these forms by Showdown's names.
+## Unova as Black 2's maps make it (2026-10-20, plan 22 · U2)
+
+Unova is read from [fuddlesworth/pokebw2](https://github.com/fuddlesworth/pokebw2) at the pinned commit
+(`tools/MapImporter/Bw2/`, `--game black2 --data`), as Johto is read from HeartGold's decompilation. Only numbers and
+names come into the repository. Aspertia City with its rooms and gate, Route 19, Floccesy Town with its rooms, Route 20
+and Floccesy Ranch are open; nothing of the story is (U5). What follows is what this game decides where the source
+leaves a choice.
+
+- **Black 2's version.** Wherever a table differs between the two versions (an encounter table's `black2` and `white2`
+  halves), Black 2's is read (plan 22's decision 4). White 2's species come by trade or plan 03 · D12's zone.
+- **The flags and variables carry the region's name.** The decompilation names most of its flags only by value
+  (`EVENT_FLAG_0x02e9`). Ours are `FLAG_UNOVA_0x02e9` and `VAR_UNOVA_0x40a1`, and a flag the decompilation has named keeps
+  its name after the prefix (`Bw2Events.Flag`, `Var`). So no flag of Unova's is ever another region's, and none takes a
+  placeholder's name as if it were a meaning. Black 2 gives an item ball with no flag of its own one by its script's
+  number (`FLAG_UNOVA_` and 0x4000 plus the script), so a ball once taken stays taken. A hidden item takes the flag its
+  global script sets (`0x8002`), or 0x0b04 plus its number where it sets none.
+- **The keys.** An area's key is the zone's own name in lower case (`aspertia_city`, `floccesy_ranch`). A route, Victory
+  Road and the League take the region's name (`unova_route_19`), since Kanto's routes have the same numbers and a script
+  file is found by its key alone. A trainer's id is the region's prefix and the constant (`unova_lass_molly`),
+  found by `TrainerDatabase.Get(constant, "unova")`.
+- **Movements.** Black 2's movement codes are read as the nearest of Platinum's words (`Bw2Events.Movement`: look about,
+  wander, wander along one line, look two ways). A code that walks a path of its own, or that a script drives, stands
+  still until the session that opens it. People and things on a rail (a bridge's or a cave's path that the camera
+  follows) have no tile and are left out.
+- **Trainers.** A trainer's team, items and AI routines are Black 2's. Each Pokémon's personality is worked out as
+  HeartGold's `TrainerData_BuildParty` works it, since the source does not port Black 2's own. The prize money is the
+  last Pokémon's level times four times the class's rate, twice that for a double battle. A triple battle and a
+  rotation battle are fought as single ones until plan 14 gives them their formats. The trainers' lines (`messages`)
+  are never read. Every trainer's two lines are their overlay's, in our own words. A Pokémon's form in a trainer's team
+  is not read yet. A class the source names only by value falls back to its constant's words ("Worker 44"); none stands
+  in an open area.
+- **Encounter rates.** A zone gives its grass, dark grass and water a rate setting, a number into twelve rows of how the
+  chance climbs (`ENCOUNT_RATE_CONFIGS`). Until plan 22 · U4 ports the climb, an area's rate is the row's largest number
+  (`Bw2Encounters.Rate`: 13 for the first row, 19 for the second). The rods' slots are met 60, 30, 5, 4 and 1 times in a
+  hundred, as the water's are.
+- **Seasons.** An area whose Pokémon change with the season keeps spring's tables as its own and each other season that
+  differs, whole, in `WorldAreaFile.Seasons`. Nothing reads them until U4's calendar of seasons: until then every game
+  meets spring's. The dark grass, the shaking grass and the rippling water are read and kept beside them, and U4 gives
+  them their rules. Unova alone has seasons (`RegionFile.HasSeasons`).
+- **Where the textures lie.** By the user's decision of 2026-10-20, each chunk's `model.glb` is read past its JSON chunk
+  into its binary one, as plain numbers, only to find which texture covers each tile (`Bw2Geometry`). Only a
+  `TerrainCover` code a tile is kept. `Bw2Cover` sorts the names, buildings take the tiles under their props' boxes, and
+  the report lists the textures no rule sorts by the tiles they lie over. 82.3% of the overworld's tiles are sorted. No
+  vertex, texture, palette, image, sound or text of the game is written into the repository.
+- **The rooms** are `Indoors` matrices, several to a matrix as Johto's are, each a map of its own told apart by its
+  area. A room's props are numbered apart from the open country's, since the two are two tables of the source.
+- **The new game.** A game begun with `--region Unova` wakes in the player's room in Aspertia City (14, 5). Unova has
+  no story yet (`HasStory` false), so the game starts as a region without one does: with Snivy, the record's first
+  starter, at level 5, and a few items, until U5's professor hands the starters out. The player's mother is ours: she stands at the table and
+  sees to the team as a nurse does, until U5 writes her scene. A Champion who comes over steps out before the house
+  (47, 762).
+- **The people left out.** Whoever a flag hides at the start of the original's story is left out of the overlays until
+  their scene is written, since every flag is clear in a new game and they would stand there. That includes the rival,
+  the professor's assistant, Team Plasma, and the Pokémon Rangers of Route 20, who wait for a later chapter at level 32.
+  Professor Juniper's and Hugh's looks are in `characters.json` for U5.
+- **The music** is Sinnoh's and the common songs standing in until plan 05 gives Unova its own: Twinleaf Town's for
+  Aspertia City, Floaroma Town's for Floccesy Town, Route 201's for the routes and the gate, Route 205's for the ranch's
+  field, and the common Pokémon Center's and Gym's.
+- **The buildings** are stand-ins in Sinnoh's ways of building (`WorldModels.Unova`, each with its `StandInUntil`),
+  until U5 gives each town a way of its own.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its

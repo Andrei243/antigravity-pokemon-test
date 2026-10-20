@@ -1,0 +1,116 @@
+{
+  "key": "floccesy_ranch_2",
+  "index": 445,
+  "name": "Floccesy Ranch",
+  "matrix": 255,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Plain",
+  "dayMusic": "BGM_SW_D_22",
+  "nightMusic": "BGM_SW_D_22",
+  "encounters": "ENCOUNTERS_FLOCCESY_RANCH_2",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": true,
+  "land": [
+    { "species": "Lillipup", "level": 4 },
+    { "species": "Azurill", "level": 5 },
+    { "species": "Patrat", "level": 5 },
+    { "species": "Mareep", "level": 5 },
+    { "species": "Lillipup", "level": 5 },
+    { "species": "Psyduck", "level": 5 },
+    { "species": "Lillipup", "level": 6 },
+    { "species": "Pidove", "level": 7 },
+    { "species": "Riolu", "level": 5 },
+    { "species": "Lillipup", "level": 7 },
+    { "species": "Riolu", "level": 7 },
+    { "species": "Lillipup", "level": 7 }
+  ],
+  "landRate": 19,
+  "water": [
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Azurill", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 }
+  ],
+  "waterRate": 12,
+  "superRod": [
+    { "species": "Poliwag", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Poliwag", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "superRodRate": 50,
+  "shakingGrass": [
+    { "species": "Audino", "level": 4 },
+    { "species": "Audino", "level": 4 },
+    { "species": "Audino", "level": 5 },
+    { "species": "Dunsparce", "level": 5 },
+    { "species": "Audino", "level": 6 },
+    { "species": "Audino", "level": 6 },
+    { "species": "Audino", "level": 7 },
+    { "species": "Audino", "level": 7 },
+    { "species": "Audino", "level": 7 },
+    { "species": "Audino", "level": 7 },
+    { "species": "Audino", "level": 7 },
+    { "species": "Audino", "level": 7 }
+  ],
+  "shakingGrassRate": 13,
+  "ripplingWater": [
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Marill", "level": 5, "maxLevel": 15 },
+    { "species": "Basculin", "level": 5, "maxLevel": 15 },
+    { "species": "Azumarill", "level": 5, "maxLevel": 15 },
+    { "species": "Azumarill", "level": 5, "maxLevel": 15 }
+  ],
+  "ripplingWaterRate": 13,
+  "ripplingRod": [
+    { "species": "Poliwhirl", "level": 40, "maxLevel": 60, "weight": 60 },
+    { "species": "Basculin", "level": 40, "maxLevel": 60, "weight": 30 },
+    { "species": "Poliwhirl", "level": 50, "maxLevel": 70, "weight": 5 },
+    { "species": "Politoed", "level": 50, "maxLevel": 70, "weight": 4 },
+    { "species": "Politoed", "level": 50, "maxLevel": 70, "weight": 1 }
+  ],
+  "ripplingRodRate": 1,
+  "warps": [
+    { "x": 45, "z": 54, "to": "floccesy_ranch", "toWarp": 0 },
+    { "x": 46, "z": 54, "to": "floccesy_ranch", "toWarp": 0 },
+    { "x": 47, "z": 54, "to": "floccesy_ranch", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "291", "movement": "wander_around", "x": 25, "z": 44, "facing": 1, "rangeX": 2, "rangeZ": 2, "hiddenBy": "FLAG_UNOVA_0x02d9", "script": "8" },
+    { "id": "1", "looks": "pkmn_breeder_m", "movement": "none", "x": 46, "z": 52, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d7", "script": "9" },
+    { "id": "2", "looks": "pkmn_breeder_f", "movement": "none", "x": 46, "z": 52, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d7", "script": "10" },
+    { "id": "3", "looks": "307", "movement": "none", "x": 51, "z": 20, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "11" },
+    { "id": "4", "looks": "lass", "movement": "wander_around", "x": 13, "z": 48, "facing": 0, "rangeX": 5, "rangeZ": 5, "trainer": "sees", "sight": 3, "script": "TRAINER_LASS_MOLLY" },
+    { "id": "5", "looks": "janitor", "movement": "none", "x": 19, "z": 10, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_JANITOR_ORVILLE" },
+    { "id": "6", "looks": "youngster", "movement": "wander_around", "x": 33, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 2, "script": "TRAINER_YOUNGSTER_KENNY" },
+    { "id": "7", "looks": "110", "movement": "none", "x": 28, "z": 48, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x0459", "item": "Poké Ball", "script": "7013" },
+    { "id": "8", "looks": "110", "movement": "none", "x": 31, "z": 24, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x045a", "item": "X Attack", "script": "7014" },
+    { "id": "9", "looks": "110", "movement": "none", "x": 47, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x045b", "item": "Potion", "script": "7015" },
+    { "id": "10", "looks": "307", "movement": "none", "x": 47, "z": 52, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d7", "script": "12" },
+    { "id": "11", "looks": "363", "movement": "wander_around", "x": 11, "z": 43, "facing": 2, "rangeX": 3, "rangeZ": 3, "script": "13" },
+    { "id": "12", "looks": "363", "movement": "wander_around", "x": 24, "z": 55, "facing": 3, "rangeX": 2, "rangeZ": 2, "script": "14" },
+    { "id": "13", "looks": "363", "movement": "wander_around", "x": 26, "z": 53, "facing": 2, "rangeX": 2, "rangeZ": 2, "script": "15" },
+    { "id": "14", "looks": "363", "movement": "wander_around", "x": 17, "z": 37, "facing": 2, "rangeX": 2, "rangeZ": 2, "script": "16" },
+    { "id": "15", "looks": "363", "movement": "wander_around", "x": 11, "z": 56, "facing": 3, "rangeX": 3, "rangeZ": 3, "script": "17" },
+    { "id": "16", "looks": "team_plasma_grunt_m", "movement": "none", "x": 52, "z": 20, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x02d8", "script": "2000" }
+  ],
+  "signs": [
+    { "x": 59, "z": 11, "type": 0, "script": "10795" },
+    { "x": 60, "z": 11, "type": 0, "script": "10795" }
+  ],
+  "triggers": [
+    { "x": 41, "z": 45, "width": 1, "depth": 2, "script": "3", "variable": "VAR_UNOVA_0x40a7", "value": "0" },
+    { "x": 21, "z": 33, "width": 3, "depth": 1, "script": "4", "variable": "VAR_UNOVA_0x40a7", "value": "1" },
+    { "x": 23, "z": 11, "width": 1, "depth": 3, "script": "5", "variable": "VAR_UNOVA_0x40a7", "value": "2" },
+    { "x": 43, "z": 12, "width": 1, "depth": 2, "script": "6", "variable": "VAR_UNOVA_0x40a7", "value": "3" },
+    { "x": 50, "z": 24, "width": 3, "depth": 1, "script": "7", "variable": "VAR_UNOVA_0x40a7", "value": "4" },
+    { "x": 41, "z": 14, "width": 2, "depth": 1, "script": "6", "variable": "VAR_UNOVA_0x40a7", "value": "3" }
+  ]
+}
