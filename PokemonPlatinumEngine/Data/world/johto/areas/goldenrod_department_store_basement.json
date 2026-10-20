@@ -1,0 +1,51 @@
+{
+  "key": "goldenrod_department_store_basement",
+  "index": 200,
+  "name": "Goldenrod City",
+  "matrix": 59,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 25, "z": 3, "to": "goldenrod_tunnel_warehouse", "toWarp": 1 },
+    { "x": 18, "z": 6, "to": "goldenrod_department_store_elevator", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d37r0103_gsfighter", "looks": "gsfighter", "movement": "17", "x": 17, "z": 14, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D37R0103_000+1" },
+    { "id": "d37r0103_tsure_poke_static_machoke", "looks": "follower_mon_static_machoke", "movement": "15", "x": 19, "z": 14, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "D37R0103_002+1" },
+    { "id": "d37r0103_tsure_poke_static_machoke_2", "looks": "follower_mon_static_machoke", "movement": "16", "x": 5, "z": 14, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D37R0103_002+1" },
+    { "id": "d37r0103_tsure_poke_static_machoke_3", "looks": "follower_mon_static_machoke", "movement": "17", "x": 5, "z": 17, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D37R0103_002+1" },
+    { "id": "d37r0103_gsfighter_2", "looks": "gsfighter", "movement": "4", "x": 5, "z": 16, "facing": 1, "rangeX": 0, "rangeZ": 1, "script": "D37R0103_001+1" },
+    { "id": "d37r0103_babyboy1_5", "looks": "babyboy1_5", "movement": "0", "x": 6, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_babyboy1_5_2", "looks": "babyboy1_5", "movement": "0", "x": 3, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_babyboy1_5_3", "looks": "babyboy1_5", "movement": "0", "x": 19, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_babyboy1_9", "looks": "babyboy1_9", "movement": "0", "x": 26, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1C1", "script": "0" },
+    { "id": "d37r0103_stop", "looks": "stop", "movement": "0", "x": 19, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_stop_2", "looks": "stop", "movement": "0", "x": 20, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_stop_3", "looks": "stop", "movement": "0", "x": 20, "z": 16, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_stop_4", "looks": "stop", "movement": "0", "x": 3, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_stop_5", "looks": "stop", "movement": "0", "x": 4, "z": 13, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_stop_6", "looks": "stop", "movement": "0", "x": 4, "z": 14, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_stop_7", "looks": "stop", "movement": "0", "x": 6, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_stop_8", "looks": "stop", "movement": "0", "x": 7, "z": 17, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_stop_9", "looks": "stop", "movement": "0", "x": 7, "z": 18, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "0" },
+    { "id": "d37r0103_monstarball", "looks": "monstarball", "movement": "0", "x": 27, "z": 3, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D37R0103_AMULET_COIN", "item": "Amulet Coin", "script": "std_itemball_d37r0103_amulet_coin" },
+    { "id": "d37r0103_monstarball_2", "looks": "monstarball", "movement": "0", "x": 12, "z": 4, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D37R0103_BURN_HEAL", "item": "Burn Heal", "script": "std_itemball_d37r0103_burn_heal" },
+    { "id": "d37r0103_monstarball_3", "looks": "monstarball", "movement": "0", "x": 17, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D37R0103_ETHER", "item": "Ether", "script": "std_itemball_d37r0103_ether" },
+    { "id": "d37r0103_monstarball_4", "looks": "monstarball", "movement": "0", "x": 24, "z": 22, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D37R0103_ULTRA_BALL", "item": "Ultra Ball", "script": "std_itemball_d37r0103_ultra_ball" }
+  ],
+  "signs": [
+    { "x": 1, "z": 9, "type": 2, "script": "std_hiddenitem_d37r0103_parlyz_heal", "item": "Paralyze Heal", "flag": "FLAG_HIDDEN_ITEM_D37R0103_PARLYZ_HEAL" },
+    { "x": 13, "z": 14, "type": 2, "script": "std_hiddenitem_d37r0103_super_potion", "item": "Super Potion", "flag": "FLAG_HIDDEN_ITEM_D37R0103_SUPER_POTION" },
+    { "x": 20, "z": 11, "type": 2, "script": "std_hiddenitem_d37r0103_antidote", "item": "Antidote", "flag": "FLAG_HIDDEN_ITEM_D37R0103_ANTIDOTE" }
+  ],
+  "triggers": []
+}

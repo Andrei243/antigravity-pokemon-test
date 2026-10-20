@@ -13683,7 +13683,7 @@
     "price": 0,
     "canUseInBattle": false,
     "canUseInOverworld": false,
-    "description": "A card that opens the locked doors of Silph Co.'s office building.",
+    "description": "A card that opens locked doors and shutters. Silph Co.'s office building in Saffron City uses them.",
     "cantBeTossed": true
   },
   {
@@ -13906,6 +13906,30 @@
     "canUseInBattle": false,
     "canUseInOverworld": false,
     "description": "A bottle that sprays a fine mist of water. Plants love it, and so do some things that only look like plants.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9201,
+    "name": "Basement Key",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A key to the locked door at the far end of the passages under Goldenrod City.",
+    "cantBeTossed": true
+  },
+  {
+    "id": 9202,
+    "name": "Rainbow Wing",
+    "pocket": "KeyItems",
+    "effectType": "KeyItem",
+    "effectValue": 0,
+    "price": 0,
+    "canUseInBattle": false,
+    "canUseInOverworld": false,
+    "description": "A feather that shimmers in every colour. It was found at the top of an old tower long ago.",
     "cantBeTossed": true
   }
 ]

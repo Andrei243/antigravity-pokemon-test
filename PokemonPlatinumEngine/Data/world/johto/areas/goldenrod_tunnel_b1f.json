@@ -1,0 +1,60 @@
+{
+  "key": "goldenrod_tunnel_b1f",
+  "index": 199,
+  "name": "Goldenrod Tunnel",
+  "matrix": 58,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 4, "z": 3, "to": "goldenrod_tunnel_1f", "toWarp": 6 },
+    { "x": 4, "z": 35, "to": "goldenrod_tunnel_1f", "toWarp": 8 },
+    { "x": 20, "z": 4, "to": "goldenrod_tunnel_b1f", "toWarp": 3 },
+    { "x": 2, "z": 57, "to": "goldenrod_tunnel_b1f", "toWarp": 2 },
+    { "x": 25, "z": 30, "to": "goldenrod_tunnel_1f", "toWarp": 4 },
+    { "x": 4, "z": 4, "to": "goldenrod_tunnel_1f", "toWarp": 6 },
+    { "x": 4, "z": 36, "to": "goldenrod_tunnel_1f", "toWarp": 8 }
+  ],
+  "objects": [
+    { "id": "d37r0102_gsoldman1", "looks": "gsoldman1", "movement": "0", "x": 10, "z": 17, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1B0", "script": "D37R0102_003+1" },
+    { "id": "d37r0102_gsman3", "looks": "gsman3", "movement": "0", "x": 10, "z": 21, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1B2", "script": "D37R0102_001+1" },
+    { "id": "d37r0102_gsman2", "looks": "gsman2", "movement": "0", "x": 10, "z": 22, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1B3", "script": "D37R0102_002+1" },
+    { "id": "d37r0102_gsoldwoman1", "looks": "gsoldwoman1", "movement": "0", "x": 10, "z": 28, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1B1", "script": "D37R0102_000+1" },
+    { "id": "d37r0102_mania", "looks": "mania", "movement": "0", "x": 4, "z": 7, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "TRAINER_POKE_MANIAC_DONALD" },
+    { "id": "d37r0102_gsassistantm", "looks": "gsassistantm", "movement": "0", "x": 11, "z": 9, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "TRAINER_SUPER_NERD_TERU" },
+    { "id": "d37r0102_mania_2", "looks": "mania", "movement": "0", "x": 4, "z": 30, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "TRAINER_POKE_MANIAC_ISSAC" },
+    { "id": "d37r0102_gsassistantm_2", "looks": "gsassistantm", "movement": "0", "x": 10, "z": 34, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 6, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "TRAINER_SUPER_NERD_ERIC" },
+    { "id": "d37r0102_rocketm", "looks": "rocketm", "movement": "0", "x": 15, "z": 6, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1B4", "script": "D37R0102_009+1" },
+    { "id": "d37r0102_mount_2", "looks": "mount_2", "movement": "0", "x": 22, "z": 7, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D37R0102_005+1" },
+    { "id": "d37r0102_gsmiddleman1", "looks": "gsmiddleman1", "movement": "0", "x": 22, "z": 8, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D37R0102_006+1" },
+    { "id": "d37r0102_babyboy1_8", "looks": "babyboy1_8", "movement": "0", "x": 25, "z": 30, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNK_1C0", "script": "D37R0102_010+1" },
+    { "id": "d37r0102_dancer", "looks": "dancer", "movement": "0", "x": 19, "z": 31, "facing": 3, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_UNDERGROUND_KIMONO_GIRL", "script": "0" },
+    { "id": "d37r0102_mount_2_2", "looks": "mount_2", "movement": "0", "x": 1, "z": 51, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D37R0102_023+1" }
+  ],
+  "signs": [
+    { "x": 23, "z": 30, "type": 0, "script": "D37R0102_007+1" },
+    { "x": 2, "z": 49, "type": 0, "script": "D37R0102_012+1" },
+    { "x": 5, "z": 49, "type": 0, "script": "D37R0102_013+1" },
+    { "x": 7, "z": 49, "type": 0, "script": "D37R0102_014+1" },
+    { "x": 9, "z": 49, "type": 0, "script": "D37R0102_015+1" },
+    { "x": 11, "z": 49, "type": 0, "script": "D37R0102_016+1" },
+    { "x": 13, "z": 49, "type": 0, "script": "D37R0102_017+1" },
+    { "x": 5, "z": 55, "type": 0, "script": "D37R0102_018+1" },
+    { "x": 7, "z": 55, "type": 0, "script": "D37R0102_019+1" },
+    { "x": 9, "z": 55, "type": 0, "script": "D37R0102_020+1" },
+    { "x": 11, "z": 55, "type": 0, "script": "D37R0102_021+1" },
+    { "x": 13, "z": 55, "type": 0, "script": "D37R0102_022+1" }
+  ],
+  "triggers": [
+    { "x": 15, "z": 7, "width": 1, "depth": 7, "script": "D37R0102_004+1", "variable": "VAR_SCENE_ROCKET_TAKEOVER", "value": "2" },
+    { "x": 16, "z": 31, "width": 1, "depth": 2, "script": "D37R0102_011+1", "variable": "VAR_UNK_40E7", "value": "2" }
+  ]
+}

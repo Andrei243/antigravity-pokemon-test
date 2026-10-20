@@ -158,9 +158,9 @@ public class JohtoTests
                      "Goldenrod_Underground", "Goldenrod_GameCorner", "Ecruteak_DanceTheater", "BurnedTower_B1F", "Ecruteak_BellTowerGate" })
             Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
 
-        // What waits stays shut: the Magnet Train and the Global Terminal, the Bell Tower beyond its gate, the Radio
-        // Tower's upper floors (Ecruteak's Gym is open since plan 20 · J7, the road west since J8 and the road east to
-        // Route 42 since J10)
+        // What waits stays shut: the Magnet Train and the Global Terminal, the Bell Tower beyond its gate (Ecruteak's
+        // Gym is open since plan 20 · J7, the road west since J8, the road east to Route 42 since J10 and the Radio
+        // Tower's upper floors since J11, part b)
         var goldenrod = Johto.Area("goldenrod")!;
         foreach (int shut in new[] { 9, 16 }) Assert.Empty(Overworld.WarpsAt(goldenrod.Warps[shut].X, goldenrod.Warps[shut].Z));
         var ecruteak = Johto.Area("ecruteak")!;
@@ -490,6 +490,32 @@ public class JohtoTests
         // Fly lands before the two new towns' Pokémon Centers
         foreach (string town in new[] { "mahogany", "blackthorn" })
             Assert.NotNull(SpawnLocations.ArrivedIn(RegionDatabase.Johto, town));
+    }
+
+    [Fact]
+    public void TheTakeoversPlacesAreWalkedToAndTheirTrainersAreHeartGolds()
+    {
+        // Plan 20 · J11, part b opened the Radio Tower's upper floors, its lift and observation deck, and the passages
+        // under Goldenrod City down to the warehouse and the Department Store's basement: each is walked into, the
+        // shutters and the locked door counting as the story opens them
+        var walked = Walked.Value;
+        foreach (string name in new[] { "Goldenrod_RadioTower_2F", "Goldenrod_RadioTower_3F", "Goldenrod_RadioTower_4F",
+                     "Goldenrod_RadioTower_5F", "Goldenrod_RadioTower_Elevator", "Goldenrod_RadioTower_ObservationDeck",
+                     "Goldenrod_Underground_B1F", "Goldenrod_Underground_B2F", "Goldenrod_Underground_Warehouse",
+                     "Goldenrod_DeptStore_Basement" })
+            Assert.True(walked.Keys.Any(m => m.Name == name), $"nobody walks into {name}");
+
+        // Petrel and Archer are battled by the scripts, Ariana and the floors' grunts by HeartGold's records
+        Assert.Contains(MapNamed("Goldenrod_RadioTower_5F").Everyone, n => n.Id == "johto_executive_ariana_ariana");
+        Assert.Contains(MapNamed("Goldenrod_RadioTower_4F").Everyone, n => n.Id == "johto_executive_proton_proton");
+        Assert.Contains(MapNamed("Goldenrod_Underground_B2F").Everyone, n => n.Id == "johto_burglar_orson");
+        Assert.Contains(MapNamed("Goldenrod_Underground_B1F").Everyone, n => n.Id == "johto_poke_maniac_donald");
+        // The shutters of the second basement are ten, over twenty tiles, and the purple one three more
+        Assert.Equal(20, MapNamed("Goldenrod_Underground_B2F").Everyone.Count(n => n.Key?.StartsWith("b2f_gate_", StringComparison.Ordinal) == true));
+        Assert.Equal(3, MapNamed("Goldenrod_Underground_B2F").Everyone.Count(n => n.Key?.StartsWith("b2f_purple_gate_", StringComparison.Ordinal) == true));
+        // The passages are a dungeon of the Union Cave's song; the tower keeps the city's
+        Assert.Equal("johto/union_cave", MapNamed("Goldenrod_Underground_B2F").BgmTrackAt(27, 4));
+        Assert.Equal("johto/goldenrod", MapNamed("Goldenrod_RadioTower_5F").BgmTrackAt(13, 3));
     }
 
     private static readonly string[] TheWayToTheLeague = { "route_27", "route_26", "johto_route_22", "indigo_plateau" };

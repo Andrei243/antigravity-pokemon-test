@@ -1,0 +1,19 @@
+# The Department Store's basement (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are our
+# own, on HeartGold's beats (scr_seq_D37R0103).
+#
+# Its far corner leads down to the warehouse under the city. A shutter keeps that way shut until the Radio Tower's
+# Director has handed over his Card Key in the warehouse (FLAG_UNK_1C1, which hides it), so the basement is the way
+# out of the passages under the city once he is free, not the way in. Whoever comes in finds the lift's car waiting at
+# the basement (VAR_GOLDENROD_STORE_LIFT_FLOOR 7; goldenrod_department_store_elevator.txt).
+
+
+script OnEnter
+  setvar VAR_GOLDENROD_STORE_LIFT_FLOOR 7
+  end
+
+
+# The shutter before the way down to the warehouse
+script Shutter
+  speaker none
+  text "The shutter is shut tight. It must be worked from the other side."
+  end

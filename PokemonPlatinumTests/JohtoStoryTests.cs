@@ -860,6 +860,186 @@ public class JohtoStoryTests
         Assert.Equal(1, game.Story.Var("VAR_SCENE_ROCKET_TAKEOVER"));
     }
 
+    [Theory]
+    [InlineData(0)]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void TeamRocketsTakeoverPlaysFromTheThirdBadgeToTheRainbowWing(int starter)
+    {
+        // Plan 20 · J11, part b: Pryce's Badge as the third of the three, Elm's call in the next town, Goldenrod taken,
+        // the uniform under the city, the red-haired boy at the tower's door and the grunt who sees through it, the
+        // false Director and the Basement Key, the locked door, the red-haired boy under the city, the shutters' three
+        // switches, the real Director and his Card Key, the slot on the third floor, Archer on the deck and the
+        // Rainbow Wing, and the town and the tower as they are afterwards
+        var game = new Game(starter);
+        var johto = RegionDatabase.Get(RegionDatabase.Johto)!;
+        game.Story.ChooseStarter(johto.Starters[starter]);
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 50));
+        game.Story.GiveBadge("Johto", "Storm");
+        game.Story.GiveBadge("Johto", "Mineral");
+        var world = Johto.Value;
+
+        // The Glacier Badge is the last of the three: the takeover begins, and Elm rings in the next town come to
+        game.Arrive("Mahogany_Gym_3", 5, 18);
+        game.Talk("t28gym0101_gsleader7");
+        Assert.Equal(1, game.Story.Var("VAR_SCENE_ROCKET_TAKEOVER"));
+        var mahogany = world.Area("mahogany")!.Warps[0];
+        game.Arrive("Johto", mahogany.X, mahogany.Z + 1);
+        Assert.Equal(2, game.Story.Var("VAR_SCENE_ROCKET_TAKEOVER"));
+        Assert.True(game.Story.Has("FLAG_ROCKET_TAKEOVER_ACTIVE"));
+
+        // Goldenrod City: the townspeople indoors and the grunts in the streets
+        var goldenrod = world.Area("goldenrod")!.Warps[5];
+        game.Arrive("Johto", goldenrod.X, goldenrod.Z + 1);
+        Assert.True(game.Story.Has("FLAG_HIDE_ROCKET_TAKEOVER_2"));
+        Assert.False(game.Story.Has("FLAG_HIDE_ROCKET_TAKEOVER_1"));
+
+        // The tower's stairs are for Team Rocket in uniform
+        game.Arrive("Goldenrod_RadioTower_1F", 2, 13);
+        Assert.NotNull(game.Present("d23r0101_rocketm"));
+        Assert.DoesNotContain(game.Talk("d23r0101_rocketm").Log, l => l.StartsWith("battle "));
+        Assert.Equal(2, game.Story.Var("VAR_SCENE_ROCKET_TAKEOVER"));
+
+        // Under the city: the floor's Trainers away, and the grunt by the photo studio hands over a uniform
+        game.Arrive("Goldenrod_Underground_B1F", 5, 4);
+        Assert.Null(game.Present("d37r0102_mania"));
+        Assert.NotNull(game.Present("d37r0102_rocketm"));
+        Assert.True(game.Fires("Disguise"));
+        game.Step("Disguise");
+        Assert.Equal(3, game.Story.Var("VAR_SCENE_ROCKET_TAKEOVER"));
+        Assert.False(game.Fires("Disguise"));
+        // The locked door wants a key
+        game.Talk("d37r0102_babyboy1_8");
+        Assert.False(game.Story.Has("FLAG_UNK_1C0"));
+
+        // The grunt at the stairs lets the uniform by, the red-haired boy walks in, and the grunt sees through it
+        game.Arrive("Goldenrod_RadioTower_1F", 2, 13);
+        var door = game.Talk("d23r0101_rocketm");
+        Assert.Contains(door.Log, l => l.StartsWith("battle johto_team_rocket_grunt_3"));
+        Assert.Equal(4, game.Story.Var("VAR_SCENE_ROCKET_TAKEOVER"));
+        Assert.Null(game.Present("d23r0101_rocketm"));
+        Assert.Null(game.Present("radio_tower_rival"));
+
+        // The fifth floor: the Director who isn't, Petrel and the Basement Key
+        game.Arrive("Goldenrod_RadioTower_5F", 5, 14);
+        Assert.NotNull(game.Present("d23r0105_rkanbuw"));
+        var petrel = game.Talk("d23r0105_gsgentleman");
+        Assert.Contains(petrel.Log, l => l.StartsWith("battle johto_executive_petrel_petrel"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Basement Key")!));
+        Assert.Null(game.Present("d23r0105_gsgentleman"));
+        Assert.NotNull(game.Present("d23r0105_rkanbum2"));
+
+        // The locked door opens to the key
+        game.Arrive("Goldenrod_Underground_B1F", 5, 4);
+        game.Talk("d37r0102_babyboy1_8");
+        Assert.True(game.Story.Has("FLAG_UNK_1C0"));
+        Assert.Null(game.Present("d37r0102_babyboy1_8"));
+
+        // The second basement: the red-haired boy comes down after the player
+        game.Arrive("Goldenrod_Underground_B2F", 26, 5);
+        Assert.NotNull(game.Present("d37r0104_rocketm"));
+        Assert.True(game.Fires("Rival"));
+        var rival = game.Step("Rival");
+        string team = starter switch { 0 => "johto_rival_silver_18", 1 => "johto_rival_silver_12", _ => "johto_rival_silver_17" };
+        Assert.Contains(rival.Log, l => l.StartsWith($"battle {team} "));
+        Assert.Equal(1, game.Story.Var("VAR_UNK_40A0"));
+        Assert.False(game.Fires("Rival"));
+        Assert.Null(game.Present("goldenrod_b2f_rival"));
+
+        // Green, red and blue open the way to the warehouse; the purple switch opens its corner for good
+        Assert.NotNull(game.Present("b2f_gate_9_0"));
+        game.Read(9, 8);
+        game.Read(10, 8);
+        game.Read(8, 8);
+        foreach (int shut in new[] { 0, 1, 2 }) Assert.NotNull(game.Present($"b2f_gate_{shut}_0"));
+        foreach (int open in new[] { 3, 4, 5, 6, 7, 8, 9 }) Assert.Null(game.Present($"b2f_gate_{open}_0"));
+        Assert.NotNull(game.Present("b2f_purple_gate_1"));
+        game.Read(23, 14);
+        Assert.Null(game.Present("b2f_purple_gate_1"));
+        // Coming in again puts the shutters back
+        game.Arrive("Goldenrod_Underground_B2F", 26, 5);
+        Assert.NotNull(game.Present("b2f_gate_9_0"));
+        Assert.Null(game.Present("b2f_gate_0_0"));
+        Assert.Null(game.Present("b2f_purple_gate_1"));
+
+        // The warehouse: the real Director and his Card Key; the basement's shutter is open behind him
+        game.Arrive("Goldenrod_Underground_Warehouse", 4, 17);
+        game.Talk("d37r0105_gsgentleman");
+        Assert.True(game.Story.Has("FLAG_UNK_1C1"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Card Key")!));
+        game.Arrive("Goldenrod_DeptStore_Basement", 18, 7);
+        Assert.Null(game.Present("d37r0103_babyboy1_9"));
+
+        // The third floor's slot opens the shutters to the east stairs
+        game.Arrive("Goldenrod_RadioTower_3F", 22, 12);
+        Assert.NotNull(game.Present("d23r0103_babyboy1_9"));
+        game.Read(22, 11);
+        Assert.True(game.Story.Has("FLAG_UNK_1BF"));
+        Assert.Null(game.Present("d23r0103_babyboy1_9"));
+
+        // The lift up from the fifth floor, and Archer on the deck
+        game.Arrive("Goldenrod_RadioTower_Elevator", 2, 4);
+        Assert.Equal("Goldenrod_RadioTower_ObservationDeck", game.Map.Name);
+        var archer = game.Talk("d23r0106_rkanbum");
+        Assert.Contains(archer.Log, l => l.StartsWith("battle johto_executive_archer_archer"));
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("Rainbow Wing")!));
+        Assert.Equal(5, game.Story.Var("VAR_SCENE_ROCKET_TAKEOVER"));
+        Assert.True(game.Story.Has("FLAG_BEAT_RADIO_TOWER_ROCKETS"));
+        Assert.False(game.Story.Has("FLAG_ROCKET_TAKEOVER_ACTIVE"));
+        Assert.True(game.Story.Has("FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT"));
+        Assert.Null(game.Present("d23r0106_rkanbum"));
+        Assert.Null(game.Present("deck_director"));
+
+        // Afterwards: the Director at his desk, the third floor's thanks, and the town out in its streets again
+        game.Arrive("Goldenrod_RadioTower_5F", 5, 14);
+        Assert.NotNull(game.Present("d23r0105_gsgentleman"));
+        Assert.Null(game.Present("d23r0105_rkanbum2"));
+        Assert.Null(game.Present("d23r0105_rkanbuw"));
+        game.Arrive("Goldenrod_RadioTower_3F", 22, 12);
+        game.Talk("d23r0103_gswoman2");
+        Assert.Equal(1, game.Bag.GetQuantity(ItemDatabase.Get("TM11")!));
+        game.Arrive("Johto", goldenrod.X, goldenrod.Z + 1);
+        Assert.False(game.Story.Has("FLAG_HIDE_ROCKET_TAKEOVER_2"));
+        Assert.True(game.Story.Has("FLAG_HIDE_ROCKET_TAKEOVER_1"));
+    }
+
+    [Fact]
+    public void ALostBattleWithPetrelLeavesTheDirectorsDisguiseAndNoKey()
+    {
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 50));
+        game.Story.SetVar("VAR_SCENE_ROCKET_TAKEOVER", 4);
+        game.Arrive("Goldenrod_RadioTower_5F", 5, 14);
+        game.Fight = BattleOutcome.Lost;
+        game.Talk("d23r0105_gsgentleman");
+        Assert.Equal(0, game.Bag.GetQuantity(ItemDatabase.Get("Basement Key")!));
+        Assert.NotNull(game.Present("d23r0105_gsgentleman"));
+        Assert.Null(game.Present("d23r0105_rkanbum2"));
+        Assert.False(game.Story.Has("FLAG_HIDE_RADIO_TOWER_5F_OFFICE_DIRECTOR"));
+    }
+
+    [Fact]
+    public void TheDepartmentStoresLiftGoesDownToTheBasement()
+    {
+        // Plan 20 · J11, part b: "B1F" among the lower floors, the ride down, and up again from the basement
+        var game = new Game();
+        game.Party.Add(new Pokemon(PokemonDatabase.Get("Machamp")!, 50));
+        game.Arrive("Goldenrod_DeptStore_Elevator", 2, 3);
+        game.Answers.Enqueue(4);
+        game.Answers.Enqueue(2);
+        var down = game.Talk("t25r1007_gswoman6");
+        Assert.Contains(down.Log, l => l.StartsWith("anim elevator down"));
+        Assert.Equal("Goldenrod_DeptStore_Basement", game.Map.Name);
+        Assert.Equal(7, game.Story.Var("VAR_GOLDENROD_STORE_LIFT_FLOOR"));
+        // Its shutter keeps the way down to the warehouse until the Director's Card Key
+        Assert.NotNull(game.Present("d37r0103_babyboy1_9"));
+        game.Arrive("Goldenrod_DeptStore_Elevator", 2, 3);
+        game.Answers.Enqueue(0);
+        var up = game.Talk("t25r1007_gswoman6");
+        Assert.Contains(up.Log, l => l.StartsWith("anim elevator up"));
+        Assert.Equal("Goldenrod_DeptStore_6F", game.Map.Name);
+    }
+
     [Fact]
     public void TheMoomooFarmsMiltankIsFedSevenOranBerriesAndItsMilkIsSoldAfterwards()
     {

@@ -1,8 +1,10 @@
 {
   // Goldenrod City (plan 20 · J5, part b): HeartGold's map, our words. The great city of the Radio Tower, the
   // Department Store, the Game Corner and Whitney's Gym, built in brick under gold roofs (Boulevard). Team Rocket's
-  // takeover is the eleventh chapter's (plan 20 · J11): its grunts are left out, and the townspeople the takeover hides
-  // stand at every hour. The Magnet Train station (warp 9) and the Global Terminal (warp 16) stay shut
+  // takeover (plan 20 · J11, part b) is the town's arrival script's (scripts/goldenrod.txt): the townspeople keep
+  // indoors while it lasts (FLAG_HIDE_ROCKET_TAKEOVER_2), and its grunts stand about the streets by HeartGold's flags.
+  // The friend of the Gym's who stands where a Gym trainer faces a grunt down after the takeover (FLAG_UNK_318) is
+  // left out. The Magnet Train station (warp 9) and the Global Terminal (warp 16) stay shut
   "area": "goldenrod",
   "bgmTrack": "johto/goldenrod",
   "trees": "Round",
@@ -11,56 +13,60 @@
     9,
     16
   ],
+  "triggers": [
+    { "trigger": 0, "script": "SouthGuard" }
+  ],
   "people": {
     "t25_gswoman2": {
       "name": "Woman",
       "dialog": [
         "The Department Store has six floors and a rooftop! I could spend all day in there."
-      ],
-      "hiddenBy": ""
+      ]
     },
     "t25_gsoldman1": {
       "name": "Old Man",
       "dialog": [
         "They're building a railway that runs all the way to Kanto. A train that floats on magnets!",
         "In my day you walked, and you were glad of it."
-      ],
-      "hiddenBy": ""
+      ]
     },
     "t25_gsboy1": {
       "name": "Boy",
       "dialog": [
         "Have you been to the Game Corner? I'm not old enough to play, but I watch the lights."
-      ],
-      "hiddenBy": ""
+      ]
     },
     "t25_gsboy1_2": {
       "name": "Boy",
       "dialog": [
         "Whitney is the Gym Leader here. She's super nice, until you battle her!"
-      ],
-      "hiddenBy": ""
+      ]
     },
     "t25_gsmiddleman1": {
       "name": "Man",
       "dialog": [
         "The Radio Tower plays music all day. I always have my radio on."
-      ],
-      "hiddenBy": ""
+      ]
     },
-    "t25_gswoman2_2": {
-      "name": "Woman",
-      "dialog": [
-        "Underground there's a passage that runs under the whole city. Shops set up down there."
-      ],
-      "hiddenBy": ""
-    },
+    "t25_gswoman2_2": { "name": "Woman", "script": "ManInBlack" },
+    "t25_rocketm": { "name": "Man in Black", "script": "TowerGrunt", "still": true },
+    "t25_rocketm_2": { "name": "Grunt", "script": "GateGuard", "still": true },
+    "t25_rocketm_3": { "name": "Grunt", "script": "GateGuardTwo", "still": true },
+    "t25_rocketm_4": { "name": "Grunt", "script": "GruntNorthOne", "still": true },
+    "t25_rocketm_5": { "name": "Grunt", "script": "GruntNorthTwo", "still": true },
+    "t25_rocketm_6": { "name": "Grunt", "script": "GruntEastOne", "still": true },
+    "t25_rocketm_7": { "name": "Grunt", "script": "GruntEastTwo", "still": true },
+    "t25_rocketm_8": { "name": "Grunt", "script": "GruntSouth", "still": true },
+    "t25_rocketm_9": { "name": "Grunt", "script": "SouthGuardTalk", "still": true },
+    "t25_rocketm_10": { "name": "Grunt", "script": "GruntWest", "still": true },
+    "t25_rocketm_11": { "name": "Grunt", "script": "GruntByTheTower", "still": true },
+    "t25_rocketm_12": { "name": "Grunt", "script": "GruntAtTheGym", "still": true },
+    "t25_gswoman2_3": { "name": "Gym Trainer", "script": "GymTrainer", "still": true },
     "t25_gsgirl1": {
       "name": "Girl",
       "dialog": [
         "Goldenrod is the biggest city in Johto! Everybody comes here sooner or later."
-      ],
-      "hiddenBy": ""
+      ]
     }
   },
   "signs": {

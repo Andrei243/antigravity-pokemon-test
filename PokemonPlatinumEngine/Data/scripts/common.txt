@@ -1648,6 +1648,26 @@ script JohtoPokegear
   return
 
 
+# Professor Elm's call once the Storm, Mineral and Glacier Badges are all held (plan 20 · J11, part b): the Leader who
+# gives the last of the three sets VAR_SCENE_ROCKET_TAKEOVER 1, and the next arrival in Cianwood City, Olivine City or
+# Mahogany Town calls this, as HeartGold rings the Pokégear on the next map. The radio has gone strange: Team Rocket
+# has taken Goldenrod's Radio Tower (2; FLAG_ROCKET_TAKEOVER_ACTIVE, FLAG_UNK_0C5).
+script JohtoTakeoverCall
+  scene "Professor Elm's call"
+  sound "select"
+  text "Brrrring! Brrrring! It's the Pokégear..."
+  speaker "Prof. Elm"
+  say "{player}! Is that you? Have you had the radio on? Every station's been playing the same thing for an hour."
+  say "It's Team Rocket! They're broadcasting from the Radio Tower in Goldenrod City. They say they've taken it over!"
+  say "If they can reach every radio in Johto with that signal of theirs... {player}, please be careful. Go and see what's happening!"
+  text "Click... The call has ended."
+  setvar VAR_SCENE_ROCKET_TAKEOVER 2
+  setflag FLAG_UNK_0C5
+  setflag FLAG_ROCKET_TAKEOVER_ACTIVE
+  endscene
+  return
+
+
 # ------------------------------------------------------------------ Hoenn (plan 21 · H2)
 
 # What every game starts with in Hoenn, as Emerald's new game and its moving van set it, for the people of the first

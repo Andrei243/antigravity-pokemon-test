@@ -8,7 +8,7 @@ partial class Harness
     /// Violet City and Route 32's head (<c>jst01</c> to <c>jst22</c>), through the game's own steps, <c>TryInteract</c>
     /// and arrivals. It wins every battle a scene starts (the lead never tires) and prints what each scene left behind.
     /// </summary>
-    private void JohtoScenes(bool second = false, bool third = false, bool fourth = false)
+    private void JohtoScenes(bool second = false, bool third = false, bool fourth = false, bool takeover = false)
     {
         var story = game.Story;
         DialogueManager Box() => game.Dialogue;
@@ -104,7 +104,7 @@ partial class Harness
         // The second chapter (plan 20 · J7) is played in a new game set as the first leaves it, at the mode's end; the
         // third (plan 20 · J9) goes on from where the second ends, or by itself (JOHTO_FROM=sea) in a game set as the
         // second leaves it
-        if (second || third || fourth)
+        if (second || third || fourth || takeover)
         {
             engine.NewGameRegion = "Johto";
             engine.StartNewGame();
@@ -120,15 +120,19 @@ partial class Harness
             story.ChooseStarter("Cyndaquil");
             story.GiveBadge("Johto", "Zephyr");
             game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 40));
-            if (!third && !fourth) goto ChapterTwo;
+            if (!third && !fourth && !takeover) goto ChapterTwo;
             foreach (string badge in new[] { "Hive", "Plain", "Fog" }) story.GiveBadge("Johto", badge);
             story.SetVar("VAR_UNK_4079", 4);
             game.Bag.AddItem(ItemDatabase.Get("HM03")!, 1);
-            if (!fourth) goto ChapterThree;
+            if (!fourth && !takeover) goto ChapterThree;
             foreach (string badge in new[] { "Storm", "Mineral" }) story.GiveBadge("Johto", badge);
             story.Set("FLAG_GOT_HM02");
             game.Bag.AddItem(ItemDatabase.Get("HM02")!, 1);
-            goto ChapterFour;
+            if (!takeover) goto ChapterFour;
+            story.GiveBadge("Johto", "Glacier");
+            story.SetVar("VAR_SCENE_ROCKET_TAKEOVER", 1);
+            story.Set("FLAG_ROCKET_HIDEOUT_CLEARED");
+            goto Takeover;
         }
 
         // A new game of Johto, from its first step
@@ -635,5 +639,132 @@ partial class Harness
         ReadTo("received the Glacier Badge"); Frames(10); Shot("jst8m_the_glacier_badge");
         ReadTo(null);
         Fourth("the chapter's part a");
+
+    // ================= The fourth chapter, part b (plan 20 · J11): Team Rocket's takeover of the Radio Tower (jst90 to jst9q)
+    Takeover:
+        void Takeover(string what) =>
+            Console.WriteLine($"  {what}: takeover {story.Var("VAR_SCENE_ROCKET_TAKEOVER")}, active {story.Has("FLAG_ROCKET_TAKEOVER_ACTIVE")}, "
+                + $"rival under the city {story.Var("VAR_UNK_40A0")}, door {story.Has("FLAG_UNK_1C0")}, Card Key handed {story.Has("FLAG_UNK_1C1")}, "
+                + $"shutters {story.Has("FLAG_UNK_1BF")}, gates shut {string.Join("", Enumerable.Range(0, 10).Select(n => story.Has($"FLAG_GOLDENROD_B2F_GATE_{n}_SHUT") ? n.ToString() : "-"))}, "
+                + $"purple {story.Has("FLAG_OPENED_GOLDENROD_PURPLE_GATE")}, beaten {story.Has("FLAG_BEAT_RADIO_TOWER_ROCKETS")}, wing {story.Has("FLAG_UNK_093")}, "
+                + $"money {game.Money}, bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+        var takeoverLead = game.Party.Members[0];
+        takeoverLead.CurrentHP = takeoverLead.MaxHP;
+        void Heal() => takeoverLead.CurrentHP = takeoverLead.MaxHP;
+
+        // ---- Elm rings in the next town come to, with the three Badges held
+        var mahoganyDoor = MapDatabase.Get("Mahogany_Gym").Warps.First(w => w.TargetMap == "Johto");
+        ComeThrough("Johto", mahoganyDoor.TargetX, mahoganyDoor.TargetY, Direction.Down);
+        ReadTo("They're broadcasting from the Radio Tower"); Frames(10); Shot("jst90_elms_call");
+        ReadTo(null);
+        Takeover("Elm's call");
+
+        // ---- Goldenrod City taken: its people indoors, grunts in the streets, the man in black before the tower
+        var towerDoor = MapDatabase.Get("Goldenrod_RadioTower_1F").Warps.First(w => w.TargetMap == "Johto");
+        ComeThrough("Johto", towerDoor.TargetX, towerDoor.TargetY, Direction.Down);
+        Frames(30); Shot("jst91_goldenrod_taken");
+        TalkTo("Goldenrod_RadioTower_1F", "d23r0101_rocketm");
+        ReadTo("Only Team Rocket in uniform"); Frames(10); Shot("jst92_the_stairs_guarded");
+        ReadTo(null);
+
+        // ---- under the city: the grunt by the photo studio and the uniform
+        StepOnto("Goldenrod_Underground_B1F", 15, 9, Direction.Up);
+        ReadTo("You'd better change too"); Frames(10); Shot("jst93_the_grunt_by_the_studio");
+        ReadTo("pulled on a Team Rocket uniform"); Frames(10); Shot("jst94_the_uniform");
+        ReadTo(null);
+        Takeover("the uniform");
+
+        // ---- the tower's door: let by, the red-haired boy, and seen through
+        TalkTo("Goldenrod_RadioTower_1F", "d23r0101_rocketm");
+        ReadTo("Always in a gang"); Frames(10); Shot("jst95_the_rival_at_the_tower");
+        ReadTo("In that uniform?"); Frames(10); Shot("jst96_seen_by_the_rival");
+        IntoBattle("the grunt at the stairs");
+        Win();
+        ReadTo(null);
+        Heal();
+        Takeover("the tower's door");
+
+        // ---- the fifth floor: the Director who isn't, and Petrel
+        TalkTo("Goldenrod_RadioTower_5F", "d23r0105_gsgentleman");
+        ReadTo("This is your Director speaking"); Frames(10); Shot("jst97_the_false_director");
+        ReadTo("It's me, Petrel!"); Frames(10); Shot("jst98_petrel_again");
+        IntoBattle("Petrel's battle");
+        ToMainMenu(game.Battle); Shot("jst99_petrels_battle");
+        Win();
+        ReadTo(null);
+        Heal();
+        Takeover("Petrel");
+
+        // ---- the locked door under the city opens to the Basement Key
+        TalkTo("Goldenrod_Underground_B1F", "d37r0102_babyboy1_8");
+        ReadTo("The door slid open!"); Frames(10); Shot("jst9a_the_basement_key");
+        ReadTo(null);
+
+        // ---- the second basement: the red-haired boy comes down after the player
+        StepOnto("Goldenrod_Underground_B2F", 19, 5, Direction.Left);
+        ReadTo("What I told you before was a lie"); Frames(10); Shot("jst9b_the_rival_under_the_city");
+        IntoBattle("the rival's battle");
+        ToMainMenu(game.Battle); Shot("jst9c_the_rivals_battle");
+        Win();
+        ReadTo("Love... trust..."); Frames(10); Shot("jst9d_the_rival_beaten");
+        ReadTo(null);
+        Heal();
+
+        // ---- the three switches: green, red and blue, and the shutters as they stand afterwards
+        At("Goldenrod_Underground_B2F", 9, 9, Direction.Up);
+        Frames(10); Shot("jst9e_the_switches");
+        foreach (int x in new[] { 9, 10, 8 })
+        {
+            At("Goldenrod_Underground_B2F", x, 9, Direction.Up);
+            game.Interact();
+            ReadTo(null);
+        }
+        At("Goldenrod_Underground_B2F", 10, 15, Direction.Down);
+        Frames(10); Shot("jst9f_the_way_open");
+        Takeover("the switches");
+
+        // ---- the warehouse: the real Director and his Card Key
+        TalkTo("Goldenrod_Underground_Warehouse", "d37r0105_gsgentleman");
+        ReadTo("It's my Card Key"); Frames(10); Shot("jst9g_the_real_director");
+        ReadTo(null);
+
+        // ---- the third floor's slot
+        At("Goldenrod_RadioTower_3F", 22, 12, Direction.Up);
+        game.Interact();
+        ReadTo("The shutter rattled open!"); Frames(10); Shot("jst9h_the_shutters_open");
+        ReadTo(null);
+        Takeover("the shutters");
+
+        // ---- Ariana before the lift, the lift, and Archer on the observation deck
+        TalkTo("Goldenrod_RadioTower_5F", "d23r0105_rkanbuw", 1, 0);
+        IntoBattle("Ariana's battle");
+        Win();
+        ReadTo(null);
+        Heal();
+        var liftDoor = MapDatabase.Get("Goldenrod_RadioTower_5F").Warps.First(w => w.TargetMap == "Goldenrod_RadioTower_Elevator");
+        ComeThrough(liftDoor.TargetMap, liftDoor.TargetX, liftDoor.TargetY, Direction.Up);
+        Frames(60); Shot("jst9i_the_lift");
+        ReadTo("The lift has reached the observation deck");
+        ReadTo(null);
+        Frames(20); Shot("jst9j_the_observation_deck");
+        TalkTo("Goldenrod_RadioTower_ObservationDeck", "d23r0106_rkanbum");
+        ReadTo("You must be quite a Trainer"); Frames(10); Shot("jst9k_archer");
+        IntoBattle("Archer's battle");
+        ToMainMenu(game.Battle); Shot("jst9l_archers_battle");
+        Win();
+        ReadTo("I'm breaking up Team Rocket"); Frames(10); Shot("jst9m_archer_beaten");
+        ReadTo("you more than deserve this"); Frames(10); Shot("jst9n_the_director_on_the_deck");
+        ReadTo("whoever holds a Rainbow Wing"); Frames(10); Shot("jst9o_the_rainbow_wing");
+        ReadTo(null);
+        Heal();
+        Takeover("the deck");
+
+        // ---- afterwards: the third floor's thanks and the town out in its streets
+        TalkTo("Goldenrod_RadioTower_3F", "d23r0103_gswoman2");
+        ReadTo("TM11 is Sunny Day"); Frames(10); Shot("jst9p_tm11");
+        ReadTo(null);
+        ComeThrough("Johto", towerDoor.TargetX, towerDoor.TargetY, Direction.Down);
+        Frames(30); Shot("jst9q_goldenrod_free");
+        Takeover("the takeover's end");
     }
 }

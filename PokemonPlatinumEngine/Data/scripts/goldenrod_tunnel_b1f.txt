@@ -1,0 +1,89 @@
+# The first basement of the passage under Goldenrod City (plan 20 · J11, part b). docs/scripts.md describes the
+# language; the lines are our own, on HeartGold's beats (scr_seq_D37R0102).
+#
+# While Team Rocket hold the Radio Tower (VAR_SCENE_ROCKET_TAKEOVER 2 to 4) the floor's Trainers keep away
+# (FLAG_HIDE_ROCKET_TAKEOVER_2), and a grunt stands by the photo studio (FLAG_UNK_1B4) until the tower's stairs
+# have seen through the uniform he hands the player. HeartGold dresses the player in it; here the change is told
+# in words and the count moves on to 3, which the grunt at the tower's stairs asks (goldenrod_radio_tower_1f.txt).
+# The door at the east end of the long corridor is locked until the Basement Key from the fifth floor's false
+# Director opens it (FLAG_UNK_1C0): it leads up into the nook of the passage that goes down to the warehouse.
+# HeartGold's shops, salons and photo studio, open on their days of the week, and the Kimono Girl's scene are a later
+# part's, and the floor's arrival leaves them be.
+
+
+# D37R0102_008
+script OnEnter
+  setflag FLAG_UNK_1B4
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  if var VAR_SCENE_ROCKET_TAKEOVER == 2 goto Takeover
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Takeover
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 end
+  clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  end
+label Takeover
+  clearflag FLAG_UNK_1B4
+  end
+
+
+# D37R0102_004: the grunt by the photo studio sees the player coming up the corridor beside it
+script Disguise
+  scene "A uniform from the photo studio"
+  emote d37r0102_rocketm exclaim
+  if var PLAYER_Y == 8 walk d37r0102_rocketm down 1
+  if var PLAYER_Y == 9 walk d37r0102_rocketm down 2
+  if var PLAYER_Y == 10 walk d37r0102_rocketm down 3
+  if var PLAYER_Y == 11 walk d37r0102_rocketm down 4
+  face d37r0102_rocketm down
+  speaker "Grunt"
+  say "Hey, are you one of the new recruits too? We took on a whole crowd for the Radio Tower job and ran short of uniforms."
+  say "The photo studio here keeps a rack of them for its pictures, so I'm helping myself. You'd better change too!"
+  if var PLAYER_Y == 8 walk d37r0102_rocketm up 1
+  if var PLAYER_Y == 9 walk d37r0102_rocketm up 2
+  if var PLAYER_Y == 10 walk d37r0102_rocketm up 3
+  if var PLAYER_Y == 11 walk d37r0102_rocketm up 4
+  walk d37r0102_rocketm right 1
+  if var PLAYER_Y == 7 walk player up 1
+  if var PLAYER_Y == 8 walk player up 2
+  if var PLAYER_Y == 9 walk player up 3
+  if var PLAYER_Y == 10 walk player up 4
+  if var PLAYER_Y == 11 walk player up 5
+  face player right
+  face d37r0102_rocketm left
+  fade out 0.4
+  sound "page"
+  wait 0.4
+  sound "page"
+  speaker none
+  text "{player} pulled on a Team Rocket uniform from the studio's rack."
+  setvar VAR_SCENE_ROCKET_TAKEOVER 3
+  fade in
+  speaker "Grunt"
+  say "Look at you! Very sharp. Just don't go scaring people in the street dressed like that, all right?"
+  endscene
+  end
+
+
+# D37R0102_009
+script Grunt
+  face d37r0102_rocketm player
+  speaker "Grunt"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 2 goto Uniforms
+  say "Look at you! Very sharp. Just don't go scaring people in the street dressed like that, all right?"
+  end
+label Uniforms
+  say "We ran short of uniforms for the Radio Tower job. Good thing the photo studio has a rack of them."
+  end
+
+
+# D37R0102_010: the locked door at the end of the corridor
+script Door
+  speaker none
+  if item "Basement Key" goto Key
+  text "STAFF ONLY BEYOND THIS DOOR"
+  end
+label Key
+  text "{player} turned the Basement Key in the lock."
+  sound "door_slide"
+  setflag FLAG_UNK_1C0
+  text "The door slid open!"
+  end

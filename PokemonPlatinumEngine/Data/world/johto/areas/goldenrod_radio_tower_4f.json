@@ -1,0 +1,39 @@
+{
+  "key": "goldenrod_radio_tower_4f",
+  "index": 188,
+  "name": "Radio Tower",
+  "matrix": 31,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building1",
+  "dayMusic": "GS_C_KOGANE",
+  "nightMusic": "GS_C_KOGANE",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 12, "z": 5, "to": "goldenrod_radio_tower_3f", "toWarp": 1 },
+    { "x": 3, "z": 5, "to": "goldenrod_radio_tower_5f", "toWarp": 0 },
+    { "x": 19, "z": 5, "to": "goldenrod_radio_tower_3f", "toWarp": 2 },
+    { "x": 23, "z": 5, "to": "goldenrod_radio_tower_5f", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "d23r0104_assistantm", "looks": "assistantm", "movement": "0", "x": 4, "z": 9, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_SCIENTIST_GS_TRENTON" },
+    { "id": "d23r0104_rocketm", "looks": "rocketm", "movement": "0", "x": 8, "z": 5, "facing": 1, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 4, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_10" },
+    { "id": "d23r0104_rocketw", "looks": "rocketw", "movement": "0", "x": 24, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "D23R0104_007+1" },
+    { "id": "d23r0104_rkanbum3", "looks": "rkanbum3", "movement": "0", "x": 23, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_EXECUTIVE_PROTON_PROTON_2" },
+    { "id": "d23r0104_kurumi", "looks": "kurumi", "movement": "0", "x": 21, "z": 11, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D23R0104_004+1" },
+    { "id": "d23r0104_tsure_poke_static_meowth", "looks": "follower_mon_static_meowth", "movement": "0", "x": 21, "z": 12, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "D23R0104_005+1" },
+    { "id": "d23r0104_gsbigman", "looks": "gsbigman", "movement": "0", "x": 9, "z": 11, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D23R0104_003+1" },
+    { "id": "d23r0104_gsman2", "looks": "gsman2", "movement": "0", "x": 24, "z": 12, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "D23R0104_006+1" },
+    { "id": "d23r0104_monstarball", "looks": "monstarball", "movement": "0", "x": 25, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D23R0104_ULTRA_BALL", "item": "Ultra Ball", "script": "std_itemball_d23r0104_ultra_ball" }
+  ],
+  "signs": [
+    { "x": 10, "z": 4, "type": 0, "script": "D23R0104_001+1" },
+    { "x": 15, "z": 12, "type": 0, "script": "D23R0104_002+1" }
+  ],
+  "triggers": []
+}

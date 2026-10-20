@@ -1,0 +1,10 @@
+# Mahogany Town (plan 20 · J11, part b). docs/scripts.md describes the language; the lines are our own.
+#
+# With the takeover begun by the last of the Storm, Mineral and Glacier Badges (VAR_SCENE_ROCKET_TAKEOVER 1, which
+# mahogany_gym_leader_room.txt sets when the Glacier Badge is the last), Professor Elm rings as the player comes out
+# into the town (common.JohtoTakeoverCall), as HeartGold rings the Pokégear on the next map.
+
+
+script OnEnter
+  if var VAR_SCENE_ROCKET_TAKEOVER == 1 call JohtoTakeoverCall
+  end

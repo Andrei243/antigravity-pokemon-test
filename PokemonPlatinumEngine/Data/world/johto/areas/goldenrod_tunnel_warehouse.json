@@ -1,0 +1,35 @@
+{
+  "key": "goldenrod_tunnel_warehouse",
+  "index": 202,
+  "name": "Goldenrod City",
+  "matrix": 61,
+  "kind": "Indoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "4",
+  "battleBackground": "Building3",
+  "dayMusic": "GS_D_CHIKATSUURO",
+  "nightMusic": "GS_D_CHIKATSUURO",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 18, "to": "goldenrod_tunnel_b2f", "toWarp": 1 },
+    { "x": 28, "z": 4, "to": "goldenrod_department_store_basement", "toWarp": 0 }
+  ],
+  "objects": [
+    { "id": "d37r0105_rocketm", "looks": "rocketm", "movement": "16", "x": 16, "z": 20, "facing": 2, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_13" },
+    { "id": "d37r0105_rocketm_2", "looks": "rocketm", "movement": "44", "x": 24, "z": 11, "facing": 1, "rangeX": 4, "rangeZ": 3, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_14" },
+    { "id": "d37r0105_rocketm_3", "looks": "rocketm", "movement": "17", "x": 17, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "trainer": "sees", "sight": 3, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_1", "script": "TRAINER_TEAM_ROCKET_GRUNT_22" },
+    { "id": "d37r0105_gsgentleman", "looks": "gsgentleman", "movement": "0", "x": 20, "z": 13, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ROCKET_TAKEOVER_2", "script": "D37R0105_001+1" },
+    { "id": "d37r0105_monstarball", "looks": "monstarball", "movement": "0", "x": 21, "z": 15, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D37R0105_TM82", "item": "TM82", "script": "std_itemball_d37r0105_tm82" },
+    { "id": "d37r0105_monstarball_2", "looks": "monstarball", "movement": "0", "x": 28, "z": 23, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D37R0105_MAX_ETHER", "item": "Max Ether", "script": "std_itemball_d37r0105_max_ether" },
+    { "id": "d37r0105_monstarball_3", "looks": "monstarball", "movement": "0", "x": 6, "z": 7, "facing": 0, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_ITEMBALL_D37R0105_ULTRA_BALL", "item": "Ultra Ball", "script": "std_itemball_d37r0105_ultra_ball" }
+  ],
+  "signs": [
+    { "x": 12, "z": 11, "type": 2, "script": "std_hiddenitem_d37r0105_max_potion", "item": "Max Potion", "flag": "FLAG_HIDDEN_ITEM_D37R0105_MAX_POTION" },
+    { "x": 27, "z": 13, "type": 2, "script": "std_hiddenitem_d37r0105_revive", "item": "Revive", "flag": "FLAG_HIDDEN_ITEM_D37R0105_REVIVE" }
+  ],
+  "triggers": []
+}

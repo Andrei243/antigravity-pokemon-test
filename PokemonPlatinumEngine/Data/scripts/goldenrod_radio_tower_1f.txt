@@ -1,6 +1,94 @@
 # The Radio Tower's ground floor in Goldenrod City (plan 20 · J7). docs/scripts.md describes the language; the lines
 # and the questions are our own, on HeartGold's beats (scr_seq_D23R0101_002): five questions answered yes or no, all
 # right in a row, win the Pokégear's Radio Card (FLAG_GOT_RADIO_CARD); one wrong ends the quiz until it is tried again.
+#
+# Team Rocket's takeover (plan 20 · J11, part b; VAR_SCENE_ROCKET_TAKEOVER, which goldenrod.txt describes): the floor's
+# arrival keeps the staff off it from 2 to 4 (FLAG_HIDE_ROCKET_TAKEOVER_2) and puts a grunt on the stairs at 2 and 3
+# (FLAG_HIDE_ROCKET_TAKEOVER_6), as HeartGold's D23R0101_008 does. He lets nobody up who isn't in uniform; in the
+# uniform borrowed under the city (3) he steps aside, and as he does the red-haired boy walks in at the door, sees
+# through the disguise and says so, and the grunt battles the player and runs upstairs to warn the others (4). HeartGold
+# plays the boy's part from a trigger on the stairs once the grunt has stepped aside; here it follows the grunt's own
+# words, so the one scene is played whichever way the player stands.
+
+
+# D23R0101_008
+script OnEnter
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_6
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  setflag FLAG_HIDE_RADIO_TOWER_RIVAL
+  if var VAR_SCENE_ROCKET_TAKEOVER == 2 clearflag FLAG_HIDE_ROCKET_TAKEOVER_6
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 clearflag FLAG_HIDE_ROCKET_TAKEOVER_6
+  if var VAR_SCENE_ROCKET_TAKEOVER < 2 clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  if var VAR_SCENE_ROCKET_TAKEOVER == 5 clearflag FLAG_HIDE_ROCKET_TAKEOVER_2
+  end
+
+
+# D23R0101_000: the receptionist at the desk
+script Receptionist
+  face d23r0101_gswoman6 player
+  speaker "Receptionist"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Uniform
+  if var VAR_SCENE_ROCKET_TAKEOVER == 2 goto Closed
+  if var VAR_SCENE_ROCKET_TAKEOVER == 4 goto Closed
+  say "Welcome to the Radio Tower! Do look around the ground floor. The staff upstairs are hard at work on today's shows."
+  end
+label Closed
+  say "I'm sorry... There are no visitors today. None at all. Please, just go home."
+  end
+label Uniform
+  say "Oh! One of you... I've done as I was told. I'm sending every visitor home."
+  end
+
+
+# D23R0101_005 and _009: the grunt on the stairs, and the red-haired boy who sees through the uniform
+script Grunt
+  face d23r0101_rocketm player
+  speaker "Grunt"
+  if var VAR_SCENE_ROCKET_TAKEOVER == 3 goto Newcomer
+  say "Stop right there. Only Team Rocket in uniform go up these stairs. Beat it, kid!"
+  end
+label Newcomer
+  scene "The red-haired boy at the Radio Tower"
+  say "Oh, you're one of us? Must be new. Go on up, they're waiting for you."
+  if var PLAYER_Y == 5 walk d23r0101_rocketm down 1
+  if var PLAYER_Y == 6 walk d23r0101_rocketm left 1
+  clearflag FLAG_HIDE_RADIO_TOWER_RIVAL
+  show radio_tower_rival
+  place radio_tower_rival 2 14 up
+  music "johto/rival"
+  speaker "{rival}"
+  say "Team Rocket. Always in a gang. They're cowards, every one of them."
+  walk radio_tower_rival up 8 fast
+  if var PLAYER_Y == 5 walk radio_tower_rival right 19 up 1
+  if var PLAYER_Y == 6 walk radio_tower_rival right 20
+  face player radio_tower_rival
+  emote radio_tower_rival exclaim
+  say "...What? It's you. In that uniform? Are you serious?"
+  say "You look ridiculous. Nobody in their right mind would take you for one of them."
+  text "{player} pulled off the borrowed uniform."
+  emote d23r0101_rocketm exclaim
+  face d23r0101_rocketm player
+  speaker "Grunt"
+  say "Hey! You're no newcomer at all! Nobody fools Team Rocket!"
+  battle d23r0101_rocketm as "johto_team_rocket_grunt_3"
+  speaker "Grunt"
+  say "Too strong... I've got to warn the others!"
+  if var PLAYER_Y == 5 walk d23r0101_rocketm up 1 fast
+  if var PLAYER_Y == 6 walk d23r0101_rocketm right 1 fast
+  hide d23r0101_rocketm
+  setflag FLAG_HIDE_ROCKET_TAKEOVER_6
+  face radio_tower_rival player
+  speaker "{rival}"
+  say "I didn't come here for Team Rocket. I came for Lance, the one who took me apart in their hideout."
+  say "I'll beat him. And after him, you. Stay out of my way until then."
+  if var PLAYER_Y == 5 walk radio_tower_rival down 1 left 19 down 8 fast
+  if var PLAYER_Y == 6 walk radio_tower_rival left 20 down 8 fast
+  hide radio_tower_rival
+  setflag FLAG_HIDE_RADIO_TOWER_RIVAL
+  setvar VAR_SCENE_ROCKET_TAKEOVER 4
+  music area
+  endscene
+  end
 
 
 script Quiz

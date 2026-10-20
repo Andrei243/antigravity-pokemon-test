@@ -166,6 +166,18 @@
     { "name": "TeamRocketHQ_B1F", "matrix": 53, "area": "team_rocket_headquarters_b1f", "trees": "Round", "setting": "Indoors" },
     { "name": "TeamRocketHQ_B2F", "matrix": 54, "area": "team_rocket_headquarters_b2f", "trees": "Round", "setting": "Indoors" },
     { "name": "TeamRocketHQ_B3F", "matrix": 55, "area": "team_rocket_headquarters_b3f", "trees": "Round", "setting": "Indoors" },
+    // Plan 20 · J11, part b: Goldenrod's takeover. The Radio Tower's upper floors, its lift and its observation deck,
+    // and under the city the tunnel's shops, its basement of gates, the Department Store's stockroom and the warehouse
+    { "name": "Goldenrod_RadioTower_2F", "matrix": 29, "area": "goldenrod_radio_tower_2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_RadioTower_3F", "matrix": 30, "area": "goldenrod_radio_tower_3f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_RadioTower_4F", "matrix": 31, "area": "goldenrod_radio_tower_4f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_RadioTower_5F", "matrix": 32, "area": "goldenrod_radio_tower_5f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_RadioTower_ObservationDeck", "matrix": 110, "area": "goldenrod_radio_tower_observation_deck", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_RadioTower_Elevator", "matrix": 262, "area": "goldenrod_radio_tower_elevator", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_Underground_B1F", "matrix": 58, "area": "goldenrod_tunnel_b1f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_Underground_B2F", "matrix": 60, "area": "goldenrod_tunnel_b2f", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_Underground_Warehouse", "matrix": 61, "area": "goldenrod_tunnel_warehouse", "trees": "Round", "setting": "Indoors" },
+    { "name": "Goldenrod_DeptStore_Basement", "matrix": 59, "area": "goldenrod_department_store_basement", "trees": "Round", "setting": "Indoors" },
     { "name": "Mahogany_EastHouse", "matrix": 95, "area": "mahogany_east_house", "trees": "Round", "setting": "Indoors" },
     { "name": "Mahogany_Gym", "matrix": 93, "area": "mahogany_gym_room_1", "trees": "Round", "setting": "Indoors" },
     { "name": "Mahogany_Gym_2", "matrix": 228, "area": "mahogany_gym_room_2", "trees": "Round", "setting": "Indoors" },
@@ -283,6 +295,10 @@
     "route_45", "route_46", "dark_cave_route_31_side", "dark_cave_route_45_side",
     // Plan 20 · J11, part a: the Rocket Hideout
     "team_rocket_headquarters_b1f", "team_rocket_headquarters_b2f", "team_rocket_headquarters_b3f",
+    // Plan 20 · J11, part b: the Radio Tower's upper floors and the tunnels under Goldenrod City
+    "goldenrod_radio_tower_2f", "goldenrod_radio_tower_3f", "goldenrod_radio_tower_4f", "goldenrod_radio_tower_5f",
+    "goldenrod_radio_tower_observation_deck", "goldenrod_radio_tower_elevator",
+    "goldenrod_tunnel_b1f", "goldenrod_tunnel_b2f", "goldenrod_tunnel_warehouse", "goldenrod_department_store_basement",
     // Plan 20 · J10, part b: Routes 27 and 26 from New Bark Town by Tohjo Falls, Route 22's reception gate, Victory
     // Road and the Indigo Plateau with the League's rooms
     "route_27", "route_27_house", "tohjo_falls", "tohjo_falls_hidden_room",

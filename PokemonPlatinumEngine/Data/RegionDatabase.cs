@@ -500,6 +500,10 @@ public static class RegionDatabase
                 "IndigoLeague_HallOfFame",
                 // Plan 20 · J11, part a: the Team Rocket Hideout under Mahogany's souvenir shop
                 "TeamRocketHQ_B1F", "TeamRocketHQ_B2F", "TeamRocketHQ_B3F",
+                // Plan 20 · J11, part b: Goldenrod's takeover, the Radio Tower's upper floors and the ways under the city
+                "Goldenrod_RadioTower_2F", "Goldenrod_RadioTower_3F", "Goldenrod_RadioTower_4F", "Goldenrod_RadioTower_5F",
+                "Goldenrod_RadioTower_ObservationDeck", "Goldenrod_RadioTower_Elevator", "Goldenrod_Underground_B1F",
+                "Goldenrod_Underground_B2F", "Goldenrod_Underground_Warehouse", "Goldenrod_DeptStore_Basement",
             }
         },
         new()
