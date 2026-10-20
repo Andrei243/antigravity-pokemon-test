@@ -3077,7 +3077,7 @@ Platinum has no Dive in the field, so the field move follows Emerald (`TrySetupD
   so does ours (`FieldMovement`'s pace for `TravelMode.Diving` is `Walk`), with no bike, no ledges and no footfalls.
 - **The floors are maps by matrix, not one map**: the reader lays each of Emerald's underwater maps under the route it
   lies under (`GbaWorld.LayUnderItsRoutes`); the floors under Routes 124 to 128 are matrix 2, `HoennUnderwater`, at the
-  overworld's own coordinates, so a dive lands on the same tile (469 tiles each way, none astray). The floors under the
+  overworld's own coordinates, so a dive lands on the same tile (188 tiles each way, none astray). The floors under the
   Seafloor Cavern, Sootopolis and the Marine Cave are matrices of their own for H8 and H12. Only `underwater_route_124`
   is open; the rest is rock until its route opens.
 - **Under the sea battles are fought on the water's ground and stage** (`BattleTerrain.Water`, `Map.ArenaAt`) until part

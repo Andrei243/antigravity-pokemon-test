@@ -421,8 +421,8 @@ The island off Lilycove is a map of its own (Emerald's `BattleFrontier_OutsideWe
   - **Opened**: Route 124 (its sea, islets and nine swimmers; the treasure hunter's house `locked` until H8) and
     `underwater_route_124` beneath it, the first pair. The reader lays each of Emerald's underwater maps under the route
     it lies under (`GbaWorld.LayUnderItsRoutes`): the floors of Routes 124 to 128 are matrix 2, `HoennUnderwater`
-    (`MapSetting.Underwater`, in `RegionDatabase`'s Hoenn maps), at the overworld's own coordinates, 469 dark-water tiles
-    over 469 open floor tiles with none astray; the floors of the Seafloor Cavern, Sootopolis and the Marine Cave are
+    (`MapSetting.Underwater`, in `RegionDatabase`'s Hoenn maps), at the overworld's own coordinates, 188 dark-water tiles
+    over 188 open floor tiles with none astray; the floors of the Seafloor Cavern, Sootopolis and the Marine Cave are
     matrices 3 to 5, for H8 and H12 (the plan had one map). Route 124 is come to by sea from Lilycove (H7), so the walk
     of the game reaches it through `WorldWalk.OpenedAhead` (630, 109, the sand before the house), which H7 takes off.
   - **Engine**: `TravelMode.Diving` and `FieldMoves.Dive` at their enums' ends; the four tiles (`DiveWater`,

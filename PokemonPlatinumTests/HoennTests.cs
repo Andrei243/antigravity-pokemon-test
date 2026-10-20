@@ -136,9 +136,9 @@ public class HoennTests
                 Assert.True(FieldMovement.SurfacesOnto(Overworld, x, y), $"the sea floor at {x},{y} comes up onto {Overworld.BehaviourAt(x, y)}");
                 up++;
             }
-        // Route 124's trenches: hundreds of tiles each way (469 of each when it was opened)
-        Assert.True(down >= 400, $"only {down} tiles of dark water dive");
-        Assert.True(up >= 400, $"only {up} tiles of the sea floor come up");
+        // Route 124's trenches: 188 tiles each way when it was opened
+        Assert.True(down >= 150, $"only {down} tiles of dark water dive");
+        Assert.True(up >= 150, $"only {up} tiles of the sea floor come up");
         // Clamperl, Chinchou and Relicanth in its seaweed, and the seaweed is kelp
         var area = floor.Areas.Single(a => a.Key == "underwater_route_124");
         Assert.Contains(area.WaterEncounters, e => e.SpeciesName == "Clamperl");

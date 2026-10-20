@@ -7349,6 +7349,17 @@ way 0
 way 1, from answer 1
   Researcher> No? A pity. Science waits for nobody.
   ? I've been studying a move that could do anything at all! Shall I teach Metronome to one of your Pokémon? = No
+=== cliff_edge_gate.Board
+from the tile read at 37,19 of CliffEdgeGate
+from the tile read at 38,19 of CliffEdgeGate
+from the tile read at 39,19 of CliffEdgeGate
+way -
+  > Warden Baoba's Safari Zone\nCOMING SOON! Wild Pokémon to find around every corner!
+=== cliff_edge_gate.Woman
+from Woman at 34,19 of CliffEdgeGate
+way -
+  Woman> Have you heard? They're building a Safari Zone just past this cliff. You can catch any Pokémon you find there!
+  Woman> I can hardly wait. Hurry up and finish it, workmen!
 === common.Attendant
 from a trainer with lines of their own
 way -
@@ -8185,6 +8196,10 @@ from a trainer with lines of their own
 way -
   Day-Care Man> I'm the Day-Care Man. My wife and I look after other Trainers' Pokémon for them.
   Day-Care Man> If you'd like us to raise one of yours, have a word with her inside.
+=== common.Dive
+from a trainer with lines of their own
+way -
+  > The water here is dark and very deep. A Pokémon might be able to dive into it.
 === common.EscapeRope
 from a trainer with lines of their own
 way -
@@ -8276,6 +8291,13 @@ way -
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
+=== common.HoennChapterSix
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
+  + FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
+  + FLAG_HIDE_MT_CHIMNEY_TRAINERS
+  + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
 === common.HoennChapterThree
 from a trainer with lines of their own
 way -
@@ -8311,6 +8333,7 @@ way -
   + FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
   + FLAG_HIDE_FALLARBOR_TOWN_BATTLE_TENT_SCOTT
   + FLAG_HIDE_LANETTES_HOUSE_LANETTE
+  + FLAG_HIDE_LAVARIDGE_TOWN_RIVAL
   + FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
   + FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_BIRCH
   + FLAG_HIDE_LITTLEROOT_TOWN_BIRCHS_LAB_RIVAL
@@ -8325,11 +8348,14 @@ way -
   + FLAG_HIDE_MAUVILLE_CITY_WATTSON
   + FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
   + FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
+  + FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
+  + FLAG_HIDE_MT_CHIMNEY_TRAINERS
   + FLAG_HIDE_OLDALE_TOWN_RIVAL
   + FLAG_HIDE_PETALBURG_CITY_SCOTT
   + FLAG_HIDE_PETALBURG_CITY_WALLY
   + FLAG_HIDE_PETALBURG_CITY_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_GYM_WALLY
+  + FLAG_HIDE_PETALBURG_GYM_WALLYS_DAD
   + FLAG_HIDE_PETALBURG_WOODS_AQUA_GRUNT
   + FLAG_HIDE_ROUTE_101_BIRCH
   + FLAG_HIDE_ROUTE_101_BOY
@@ -8842,6 +8868,20 @@ way -
   * fade out
   * warp OneIsland_Harbor 8 5
   * fade in
+=== common.SeagallopToThreeIsland
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+  * warp ThreeIsland_Harbor 8 5
+  * fade in
+=== common.SeagallopToTwoIsland
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+  * warp TwoIsland_Harbor 8 5
+  * fade in
 === common.SeagallopToVermilion
 from a trainer with lines of their own
 way -
@@ -8860,6 +8900,10 @@ way -
   > Bibarel braces itself. The boulders here can be pushed now.
   * usemove Strength Bibarel on Tree
   + FLAG_STRENGTH_ACTIVE
+=== common.Surface
+from a trainer with lines of their own
+way -
+  > Sunlight shimmers on the water far overhead. A Pokémon might be able to swim up to it.
 === common.SwarmNews
 from a trainer with lines of their own
 way -
@@ -8929,6 +8973,12 @@ from an obstacle, with every field move and every badge
 way -
   > Bibarel used Dig!
   * usemove Dig Bibarel on Tree
+=== common.UseDive
+from an obstacle, with every field move and every badge
+way -
+  > Bibarel used Dive!
+  * usemove Dive Bibarel on Tree
+  * dive nowhere
 === common.UseFlash
 from an obstacle, with every field move and every badge
 way -
@@ -10842,6 +10892,88 @@ way -
   Prof. Rowan> Lucas? What brings you here? There is no sign of the lake's Pokémon. Not a ripple.
   Prof. Rowan> And how was Lake Valor? You have been there, I trust?
   + FLAG_TALKED_TO_LAKE_VERITY_LOW_WATER_PROF_ROWAN
+=== lavaridge_town.EggWoman
+from Old Woman at 144,67 of Hoenn
+way 0
+  Old Woman> I found an Egg, but I'm too old to carry it about until it hatches. Would you take it?
+  > Lucas received the Egg.
+  Old Woman> Walk plenty with it, and it will hatch in no time. Look after it, won't you?
+  ? I found an Egg, but I'm too old to carry it about until it hatches. Would you take it? = Yes
+  + FLAG_RECEIVED_LAVARIDGE_EGG
+way 1, from answer 1
+  Old Woman> Very well. I'll keep it warm a while longer.
+  ? I found an Egg, but I'm too old to carry it about until it hatches. Would you take it? = No
+=== lavaridge_town_gym_1f.Flannery
+from Flannery at 13,9 of LavaridgeTown_Gym_1F
+way 0
+  Flannery> Welcome! I'm Flannery, the Leader of Lavaridge's Gym. My grandfather handed it to me not long ago.
+  Flannery> I may be new at this, but don't you dare go easy on me! My Fire Pokémon and I are burning to battle!
+  Flannery> Oh... I lost. I think I was trying so hard to act like a Leader that I forgot to just be myself.
+  Flannery> Thank you. You've reminded me of something important. Please, take the Heat Badge.
+  > Lucas received the Heat Badge from Flannery!
+  Flannery> With the Heat Badge, your Pokémon can use Strength outside of battle to shove big boulders around.
+  Flannery> And this is my thanks for a hot battle. Take it!
+  > Lucas received the TM50!
+  > TM50 holds the move Overheat.
+  > Lucas put it away in the TMs & HMs pocket.
+  Flannery> TM50 holds Overheat. It's the strongest Fire move there is, but it wears its user out. Use it boldly!
+  * scene lavaridge_town_gym_1f.Flannery
+  * battle hoenn_flannery_1 Won
+  * fanfare FanfareBadge
+  * defeat hoenn_cole
+  * defeat hoenn_gerald
+  * defeat hoenn_axle
+  * defeat hoenn_danielle
+  * defeat hoenn_jace
+  * defeat hoenn_keegan
+  * defeat hoenn_jeff
+  * defeat hoenn_eli
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_LAVARIDGE_GYM
+  + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
+  + FLAG_RECEIVED_TM_OVERHEAT
+  + FLAG_WHITEOUT_TO_LAVARIDGE
+  = VAR_LAVARIDGE_TOWN_STATE 0 -> 1
+  = VAR_PETALBURG_GYM_STATE 0 -> 1
+  + beaten hoenn_axle
+  + beaten hoenn_cole
+  + beaten hoenn_danielle
+  + beaten hoenn_eli
+  + beaten hoenn_flannery_1
+  + beaten hoenn_gerald
+  + beaten hoenn_jace
+  + beaten hoenn_jeff
+  + beaten hoenn_keegan
+  = badges Hoenn 0 -> 1000
+  + seen lavaridge_town_gym_1f.Flannery
+way 1, from answer 1
+  * battle hoenn_flannery_1 Lost
+  * scene over, unseen
+=== lavaridge_town_gym_1f.GymGuide
+from Gym Guide at 12,16 of LavaridgeTown_Gym_1F
+way -
+  Gym Guide> Hey, champ in the making! Flannery's Gym is built on hot springs. Watch your step: the sand gives way!
+  Gym Guide> Fall through and the steam vents below will blow you back up. Her Pokémon are Fire types, so bring Water or Ground moves!
+=== lavaridge_town_herb_shop.HerbClerk
+from Clerk at 3,2 of LavaridgeTown_HerbShop
+way -
+  Clerk> Welcome to the herb shop! Our medicine works wonders, and it costs next to nothing.
+  Clerk> Please come again!
+  * open Shop lavaridge_herb_shop
+=== lavaridge_town_herb_shop.OldMan
+from Old Man at 7,5 of LavaridgeTown_HerbShop
+way -
+  Old Man> Come all the way to Lavaridge to look at herbal medicine, have you? Good for you. I like that. Here!
+  > Lucas received the Charcoal!
+  > Lucas put it away in the Items pocket.
+  * fanfare FanfareItem
+  + FLAG_RECEIVED_CHARCOAL
+=== lavaridge_town_house.Zigzagoon
+from Zigzagoon at 6,6 of LavaridgeTown_House
+way -
+  > Zigzagoon: Pshuu!
+  * cry Zigzagoon
 === lavender_town_volunteer_pokemon_house.MrFuji
 from Mr. Fuji at 3,3 of LavenderTown_VolunteerPokemonHouse
 way -
@@ -11233,6 +11365,116 @@ way -
   + FLAG_MET_ARCHIE_METEOR_FALLS
   = VAR_METEOR_FALLS_STATE 0 -> 1
   + seen meteor_falls_1f_1r.Team Magma at Meteor Falls
+=== mirage_tower_4f.ClawFossil
+from Claw Fossil at 7,4 of MirageTower_4F
+way 0
+  > It's the Claw Fossil! The floor around it looks ready to crumble away...
+  > Take the Claw Fossil anyway?
+  > Lucas received the Claw Fossil!
+  > Lucas put it away in the Items pocket.
+  > Mirage Tower crumbled into the sand and was gone, as if it had never been there at all...
+  ? Take the Claw Fossil anyway? = Yes
+  * fanfare FanfareItem
+  * camera Shake
+  * fade out
+  * warp Hoenn 219 59
+  * fade in
+  + FLAG_CHOSE_CLAW_FOSSIL
+  + FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL
+  + FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL
+  + FLAG_HOENN_MIRAGE_TOWER_FALLEN
+  = VAR_MIRAGE_TOWER_STATE 0 -> 1
+way 1, from answer 1
+  > Lucas left the Claw Fossil where it lay.
+  ? Take the Claw Fossil anyway? = No
+=== mirage_tower_4f.RootFossil
+from Root Fossil at 5,4 of MirageTower_4F
+way 0
+  > It's the Root Fossil! The floor around it looks ready to crumble away...
+  > Take the Root Fossil anyway?
+  > Lucas received the Root Fossil!
+  > Lucas put it away in the Items pocket.
+  > Mirage Tower crumbled into the sand and was gone, as if it had never been there at all...
+  ? Take the Root Fossil anyway? = Yes
+  * fanfare FanfareItem
+  * camera Shake
+  * fade out
+  * warp Hoenn 219 59
+  * fade in
+  + FLAG_CHOSE_ROOT_FOSSIL
+  + FLAG_HIDE_MIRAGE_TOWER_CLAW_FOSSIL
+  + FLAG_HIDE_MIRAGE_TOWER_ROOT_FOSSIL
+  + FLAG_HOENN_MIRAGE_TOWER_FALLEN
+  = VAR_MIRAGE_TOWER_STATE 0 -> 1
+way 1, from answer 1
+  > Lucas left the Root Fossil where it lay.
+  ? Take the Root Fossil anyway? = No
+=== mt_chimney.Archie
+from Archie at 24,19 of MtChimney
+way -
+  Archie> You again! Team Magma's set that meteorite in a machine up there, and they mean to wake the volcano with it.
+  Archie> My crew's got our hands full with their grunts. Get up there and stop Maxie, would you?
+  + FLAG_EVIL_LEADER_PLEASE_STOP
+=== mt_chimney.LavaCookieLady
+from Old Woman at 19,39 of MtChimney
+way 0
+  Old Woman> Ah, a climber! Up here we bake Lava Cookies in the volcano's own heat.
+  Old Woman> Would you like one? It's just 200 money.
+  > Lucas received the Lava Cookie!
+  > Lucas put it away in the Medicine pocket.
+  Old Woman> Here you are! Share it with your Pokémon. They'll love it.
+  ? Would you like one? It's just 200 money. = Yes
+  * fanfare FanfareItem
+way 1, from answer 1
+  Old Woman> That's a pity. They're the best on the mountain, you know.
+  ? Would you like one? It's just 200 money. = No
+=== mt_chimney.Maxie
+from Maxie at 13,6 of MtChimney
+way 0
+  Maxie> The meteorite's energy, poured into the heart of the volcano... Mt. Chimney will erupt, and the land will grow!
+  Maxie> So. You're the child who keeps turning up wherever Team Magma has work to do.
+  Maxie> I am Maxie, Team Magma's leader. More land for people and Pokémon to live on: that is our dream.
+  Maxie> I won't let a meddler stand in its way. Show me what you have!
+  Maxie> Hmph. Beaten by a child, here of all places...
+  Maxie> Very well. I'll leave the volcano be, for now. But Team Magma is far from finished. Remember that.
+  Archie> Ha! You saw Maxie off all by yourself. I'll admit it, I'm impressed.
+  Archie> If that volcano had gone up, the sea would have been the one to pay for it. Team Aqua owes you one.
+  Archie> We'll be on our way. Keep your eyes open, kid. Team Magma won't stay quiet for long.
+  * scene mt_chimney.Maxie on the summit
+  * music hoenn/eye_magma
+  * emote Maxie Exclaim
+  * battle hoenn_maxie_mt_chimney Won
+  * fade out
+  * fade in
+  * music area
+  * endscene
+  + FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY
+  + FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO
+  + FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
+  + FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
+  + beaten hoenn_maxie_mt_chimney
+  + seen mt_chimney.Maxie on the summit
+way 1, from answer 1
+  * battle hoenn_maxie_mt_chimney Lost
+  * scene over, unseen
+=== mt_chimney.MeteoriteMachine
+from the tile read at 14,6 of MtChimney
+way -
+  > A meteorite is fitted into the machine, which hums as it soaks up the meteorite's strange energy.
+=== mt_chimney_cable_car_station.Attendant
+from Attendant at 6,6 of MtChimney_CableCarStation
+way 0
+  Attendant> Thank you for riding the Mt. Chimney Cable Car! Would you like to go back down to Route 112?
+  Attendant> Of course! Step this way, please.
+  > The car glides down the mountainside, the summit shrinking behind it...
+  ? Thank you for riding the Mt. Chimney Cable Car! Would you like to go back down to Route 112? = Yes
+  * fade out
+  * music hoenn/cable_car
+  * warp Route112_CableCarStation 6 7
+  = VAR_CABLE_CAR_STATION_STATE 0 -> 2
+way 1, from answer 1
+  Attendant> Take your time up here. Do watch out for the ash, though!
+  ? Thank you for riding the Mt. Chimney Cable Car! Would you like to go back down to Route 112? = No
 === mt_coronet_1f_north_room_1.GruntF
 from Grunt at 19,41 of MtCoronet1FNorthRoom1
 way -
@@ -11297,6 +11539,61 @@ from Rubble at 6,24 of MtCoronet2F
 from Rubble at 8,24 of MtCoronet2F
 way -
   > Broken stone lies either side of a hole. A scrap of paint on one piece is all that is left of the cave painting.
+=== mt_ember_exterior.Grunt1
+from Grunt at 41,40 of MtEmber_Exterior
+way 0
+  Grunt> The cave behind us is off-limits! Team Rocket's digging for treasure in there!
+  Grunt> Ugh... Even if you get past us, you won't find anything in there!
+  * battle kanto_team_rocket_grunt_43 Won
+  + beaten kanto_team_rocket_grunt_43
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_43 Lost
+=== mt_ember_exterior.Grunt2
+from Grunt at 42,40 of MtEmber_Exterior
+way 0
+  Grunt> You heard the passwords? Then you're not leaving this mountain!
+  Grunt> No way! Beaten by a kid on a volcano...
+  * battle kanto_team_rocket_grunt_44 Won
+  + beaten kanto_team_rocket_grunt_44
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_44 Lost
+=== mt_ember_exterior.Password
+from the trigger at 37,43 of MtEmber_Exterior
+from the trigger at 38,43 of MtEmber_Exterior
+from the trigger at 39,43 of MtEmber_Exterior
+way -
+  Grunt> So the first password's 'Seel the deal'? And the second one's... 'Ekans ate the cake'?
+  Grunt> Keep your voice down! The first opens the warehouse door, the second gets you inside. Write 'em down!
+  Grunt> Nah, I've got a great memory. Our warehouse on Five Island's safe as houses.
+  Grunt> Hey! A kid's been listening in! Forget everything you just heard, got it?
+  * scene mt_ember_exterior.Team Rocket on Mount Ember
+  * emote Grunt Exclaim
+  * endscene
+  = VAR_MAP_SCENE_MT_EMBER_EXTERIOR 0 -> 2
+  + seen mt_ember_exterior.Team Rocket on Mount Ember
+=== mt_ember_ruby_path_b5f.Ruby
+from Ruby at 7,7 of MtEmber_RubyPath_B5F
+way -
+  > Lucas found the Ruby!
+  > Lucas put it away in the Key Items pocket.
+  * fanfare FanfareKeyItem
+  * journal ItemWasObtained Ruby
+  + FLAG_GOT_RUBY
+  + FLAG_HIDE_RUBY
+=== mt_ember_summit.Moltres
+from Moltres at 9,6 of MtEmber_Summit
+way 0
+  > Gyaoo!\nFlames swirled round the great bird as it spread its wings!
+  * scene mt_ember_summit.Moltres
+  * cry Moltres
+  * wildbattle Moltres 50 Won
+  * endscene
+  + FLAG_FOUGHT_MOLTRES
+  + FLAG_HIDE_MOLTRES
+  + seen mt_ember_summit.Moltres
+way 1, from answer 1
+  * wildbattle Moltres 50 Lost
+  * scene over, unseen
 === mt_moon_b2f.DomeFossil
 from Dome Fossil at 13,7 of MtMoon_B2F
 way -
@@ -11530,14 +11827,65 @@ way -
 from Sailor at 8,6 of OneIsland_Harbor
 way -
   Sailor> The Seagallop sails only for holders of a pass, I'm afraid. Celio in the Pokémon Center might be able to help.
+=== one_island_kindle_road_ember_spa.RockSmashMan
+from Old Man at 10,5 of OneIsland_KindleRoad_EmberSpa
+way -
+  Old Man> The rocks round this spring are cracked all over from the volcano's rumbling. I smash them for exercise.
+  Old Man> Here, you take this. A young trainer should have it more than an old man.
+  > Lucas received the HM06!
+  > HM06 holds the move Rock Smash.
+  > Lucas put it away in the TMs & HMs pocket.
+  Old Man> That's Rock Smash. It breaks a cracked rock clean apart, and something might be hiding underneath.
+  * fanfare FanfareTM
+  + FLAG_GOT_HM06
+=== one_island_kindle_road_ember_spa.SpaHeal
+from the trigger at 13,13 of OneIsland_KindleRoad_EmberSpa
+way -
+  > The water is pleasantly hot. Lucas's Pokémon soaked in the spring with Lucas.
+  > Every Pokémon looks refreshed!
+  * fade out
+  * fade in
+  = VAR_TEMP_1 0 -> 1
 === one_island_pokemon_center_1f.Bill
 from Bill at 14,6 of OneIsland_PokemonCenter_1F
 way -
-  Bill> Hmm, what if I connect this here... No, that's not it either. Don't worry, we'll crack it!
+  Bill> Oh, Lucas! I almost forgot. Could you run an errand for me?
+  > Lucas received the Meteorite!
+  > Lucas put it away in the Key Items pocket.
+  Bill> That's a Meteorite. A fellow who runs the game corner on Two Island has been wanting one for ages.
+  Bill> Would you take it to him? Celio's been meaning to send it over, but he can't leave the machine.
+  * fanfare FanfareKeyItem
+  + FLAG_GOT_METEORITE_FROM_BILL
+=== one_island_pokemon_center_1f.BillLeaves
+from the trigger at 12,6 of OneIsland_PokemonCenter_1F
+from the trigger at 12,7 of OneIsland_PokemonCenter_1F
+from the trigger at 12,8 of OneIsland_PokemonCenter_1F
+from the trigger at 12,9 of OneIsland_PokemonCenter_1F
+way -
+  Bill> Lucas! You're back! Guess what? Celio and I got the machine talking to Kanto at last.
+  Bill> The PCs on the islands are linked with the ones at home now. My work here's done.
+  Bill> So I'm heading back to Kanto. Why don't you come along? I'll ride the Seagallop with you as far as Cinnabar.
+  Celio> Bill, Lucas, thank you both. I couldn't have done it without you.
+  Celio> Lucas, come back and see me anytime. There's still so much I want to try with this machine.
+  > The Seagallop sped across the waves.
+  * scene one_island_pokemon_center_1f.Bill sails home
+  * fade out
+  * warp Kanto 82 387
+  * fade in
+  * endscene
+  + FLAG_HIDE_ONE_ISLAND_POKECENTER_BILL
+  = VAR_MAP_SCENE_CINNABAR_ISLAND 0 -> 3
+  = VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F 0 -> 3
+  + seen one_island_pokemon_center_1f.Bill sails home
 === one_island_pokemon_center_1f.Celio
 from Celio at 15,6 of OneIsland_PokemonCenter_1F
 way -
   Celio> Sorry, I'm in the middle of something. This machine is giving me no end of trouble.
+=== one_island_treasure_beach.Boy
+from Boy at 13,160 of OneIsland
+way -
+  Boy> All kinds of things wash up on this beach. I find something new buried in the sand almost every day.
+  Boy> Look carefully where the sand looks different. You might find treasure too!
 === oreburgh_city.Rival
 from {rival} at 282,757 of Sinnoh
 way -
@@ -11811,11 +12159,35 @@ way -
 from Woman at 56,250 of Hoenn
 way -
   Woman> My boy Wally has always been frail. We're sending him to stay with relatives in Verdanturf, where the air is clean.
+=== petalburg_city_gym.AccuracyRoomDoor
+from the tile read at 7,105 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_gym.ConfusionRoomDoor
+from the tile read at 1,79 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
 === petalburg_city_gym.GymGuide
 from Gym Guide at 3,109 of PetalburgCity_Gym
 way -
   Gym Guide> Hey there! This is the Petalburg Gym. Norman's rooms each test a trainer's skill a different way.
   Gym Guide> But the doors stay shut until you've got four Badges. Rules are rules!
+=== petalburg_city_gym.LeftDefenseRoomDoor
+from the tile read at 7,79 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_gym.LeftLeadersRoomDoor
+from the tile read at 7,14 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_gym.LeftOHKORoomDoor
+from the tile read at 7,53 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_gym.LeftStrengthRoomDoor
+from the tile read at 7,40 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
 === petalburg_city_gym.Norman
 from Norman at 4,2 of PetalburgCity_Gym
 way -
@@ -11836,6 +12208,41 @@ way -
   = VAR_PETALBURG_CITY_STATE 0 -> 2
   = VAR_PETALBURG_GYM_STATE 0 -> 1
   + seen petalburg_city_gym.Norman and Wally
+=== petalburg_city_gym.RecoveryRoomDoor
+from the tile read at 7,92 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_gym.RightDefenseRoomDoor
+from the tile read at 1,92 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_gym.RightLeadersRoomDoor
+from the tile read at 1,27 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_gym.RightOHKORoomDoor
+from the tile read at 1,66 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_gym.RightStrengthRoomDoor
+from the tile read at 1,53 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_gym.SpeedRoomDoor
+from the tile read at 1,105 of PetalburgCity_Gym
+way -
+  > The door appears to be locked.
+=== petalburg_city_wallys_house.WallysDad
+from Wally's Father at 3,4 of PetalburgCity_WallysHouse
+way -
+  Wally's Father> Ah, you must be Lucas. Thank you for looking after our Wally earlier.
+  Wally's Father> He's been frail since he was a baby, so we've sent him to my relatives in Verdanturf Town. The air there is much cleaner.
+  Wally's Father> He's already set off, you see. I wonder how far he's got by now?
+  + FLAG_THANKED_FOR_PLAYING_WITH_WALLY
+=== petalburg_city_wallys_house.WallysMom
+from Wally's Mother at 7,5 of PetalburgCity_WallysHouse
+way -
+  Wally's Mother> Wally was so happy when he told us he'd caught a Pokémon. I hadn't seen him smile like that in ages.
 === petalburg_woods.DevonResearcher
 from the trigger at 26,23 of PetalburgWoods
 from the trigger at 27,23 of PetalburgWoods
@@ -12841,7 +13248,7 @@ way -
 from Attendant at 6,6 of Route112_CableCarStation
 way -
   Attendant> Welcome to the Mt. Chimney Cable Car. Some rough-looking people have been hanging about outside, haven't they?
-  Attendant> I'm afraid the car is being looked over just now. Please come back later!
+  Attendant> I'm afraid I can't send anyone up while they're there. Please come back later!
 === route_113_glass_workshop.GlassWorker
 from Glass Worker at 2,3 of Route113_GlassWorkshop
 way -
@@ -13999,6 +14406,13 @@ way 0
 way 1, from answer 1
   Black Belt> Come back if you change your mind. My punches aren't going anywhere.
   ? A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch? = No
+=== route_47.Hiker
+from Hiker at 86,390 of Johto
+way -
+  Hiker> Hello there! See that hole in the cliff? They say a great tower once stood here, half of it buried in the rock.
+  Hiker> It reached up into the sky and down into the earth, and some say right to the bottom of the sea.
+  Hiker> It's crumbled away now. All that's left is the way in and a room full of strange patterns.
+  + FLAG_MET_ROUTE_47_EMBEDDED_TOWER_HIKER
 === route_4_pokemon_center_1f.MagikarpSalesman
 from Man at 1,3 of Route4_PokemonCenter_1F
 way 0
@@ -14434,6 +14848,90 @@ way -
   Young Man> Wanda! Can you hear me? I'll dig through to you, I promise! Nothing's going to keep us apart!
   Young Man> Oh, sorry. Wanda's my girlfriend. She's just on the other side of these rocks, but they're too hard to move.
   Young Man> If only someone had a Pokémon strong enough to smash them...
+=== safari_zone_entrance_interior.Baoba
+from Baoba at 7,12 of SafariZone_Gate
+way -
+  Baoba> Slow down there! When the next test is ready, I'll ring you on your Pokégear. Give me a little time, all right?
+=== safari_zone_entrance_interior.Counter
+from Attendant at 4,4 of SafariZone_Gate
+way 0
+  Attendant> Welcome to the Safari Zone! For just $500, you can play the Safari Game and catch whatever you like. Would you like to play?
+  Attendant> That'll be $500, please! And here are your Safari Balls.
+  > Lucas received 30 Safari Balls from the attendant.
+  Attendant> We'll call you back when your last ball is thrown. Well, have fun out there!
+  ? Welcome to the Safari Zone! For just $500, you can play the Safari Game and catch whatever you like. Would you like to play? = Yes
+  * sound select
+  * warp SafariZone 79 99
+  = VAR_SCENE_SAFARI_ZONE_ENTRANCE 0 -> 1
+way 1, from answer 1
+  Attendant> Very well. Please come again!
+  ? Welcome to the Safari Zone! For just $500, you can play the Safari Game and catch whatever you like. Would you like to play? = No
+=== safari_zone_entrance_interior.Customizer
+from Attendant at 10,7 of SafariZone_Gate
+way -
+  Attendant> I'm sorry, but this machine can't be used yet. Warden Baoba has some grand plan for it... or so he says.
+  Attendant> Even we don't know what it is. It's a secret.
+=== safari_zone_entrance_interior.Explain
+from Attendant at 1,12 of SafariZone_Gate
+way 0
+  Attendant> Hello! Is this your first time at the Safari Zone?
+  Attendant> In the Safari Game you're given 30 Safari Balls to catch Pokémon with. When they're gone, the game is over.
+  Attendant> When you meet a Pokémon, you can throw Bait or Mud. Bait makes it stay longer, but it gets harder to catch.
+  Attendant> Mud makes it easier to catch, but it might run off. Have fun in the Safari Zone!
+  ? Hello! Is this your first time at the Safari Zone? = Yes
+way 1, from answer 1
+  Attendant> Have fun in the Safari Zone!
+  ? Hello! Is this your first time at the Safari Zone? = No
+=== safari_zone_entrance_interior.Link
+from Attendant at 18,4 of SafariZone_Gate
+from Attendant at 21,4 of SafariZone_Gate
+way -
+  Attendant> This is the Safari Zone Link counter... or it will be. We're not ready yet. Please come back another time.
+=== safari_zone_entrance_interior.LinkExplain
+from Attendant at 22,8 of SafariZone_Gate
+way -
+  Attendant> One day, the Safari Zone Link will let you swap Safari Zones with your friends and play in theirs.
+  Attendant> We're still getting it ready, though. I'm sorry!
+=== safari_zone_entrance_interior.Machine
+from the tile read at 9,6 of SafariZone_Gate
+way -
+  > It's a large machine. Its screen is dark.
+=== safari_zone_gate.Balls
+from Woman at 82,310 of Johto
+way -
+  Woman> Oh, are you buying? Give me a moment to set out my things... There!
+  * open Shop safari_gate_balls
+=== safari_zone_gate.Butterfree
+from Butterfree at 81,310 of Johto
+way -
+  > Butterfree: Free, free!
+  * cry Butterfree
+=== safari_zone_gate.Jigglypuff
+from Jigglypuff at 78,295 of Johto
+way -
+  > Jigglypuff: Puu, pupuu!
+  * cry Jigglypuff
+=== safari_zone_gate.Kangaskhan
+from Kangaskhan at 97,299 of Johto
+way -
+  > Kangaskhan: ...........
+  * cry Kangaskhan
+=== safari_zone_gate.Singer
+from Boy at 95,305 of Johto
+way -
+  Boy> Safari, safari, oh what fun! Safari, safari, catch everyone! Pokémon are waiting for us all!
+  Boy> ...I made that song up. I sing it whenever I come here.
+  = VAR_TEMP_SAFARI_SINGER 0 -> 1
+=== safari_zone_gate.Slowpoke
+from Slowpoke at 98,314 of Johto
+way -
+  > Slowpoke: ...Yawn?
+  * cry Slowpoke
+=== safari_zone_gate.Vitamins
+from Old Man at 95,311 of Johto
+way -
+  Old Man> I've taken up selling drinks for Pokémon. It's all new to me, but I'll do my best!
+  * open Shop safari_gate_vitamins
 === safari_zone_secret_house.Attendant
 from Attendant at 6,5 of SafariZone_SecretHouse
 way -
@@ -15475,6 +15973,123 @@ way -
 from {rival} at 651,339 of Sinnoh
 way -
   Barry> Lucas! I'm piling up the wins at the Battle Frontier! My dad had better watch out. I'm coming for him!
+=== three_island.AntiBiker1
+from Man at 103,24 of ThreeIsland
+way -
+  Man> Those bikers think they can push us around. Well, I won't be pushed!
+=== three_island.AntiBiker2
+from Man at 104,23 of ThreeIsland
+way -
+  Man> There are so many of them... We can't drive them off on our own.
+=== three_island.Biker
+from Biker at 105,23 of ThreeIsland
+from Biker at 105,24 of ThreeIsland
+from Biker at 106,22 of ThreeIsland
+from Biker at 106,24 of ThreeIsland
+from Biker at 107,23 of ThreeIsland
+from Paxton at 104,24 of ThreeIsland
+way -
+  Biker> What are you staring at? Beat it, kid. This street's ours.
+=== three_island.BikerBattle
+from the trigger at 103,26 of ThreeIsland
+from the trigger at 104,26 of ThreeIsland
+from the trigger at 105,26 of ThreeIsland
+from the trigger at 106,26 of ThreeIsland
+from the trigger at 107,26 of ThreeIsland
+way 0.0.0.0.0
+  Biker> Hey! You looking for trouble, kid?
+  Biker> Want to make something of it?
+  Biker> Big mistake! Let's see what you've got!
+  Biker> No way! Somebody else take this kid!
+  Biker> Boss! This kid's too tough for us!
+  Paxton> Pathetic, the lot of you. Fine, I'll deal with this one myself!
+  Paxton> Grr... All right, you win! This island's too boring for us anyway. Let's ride, boys!
+  ? Want to make something of it? = Yes
+  * scene three_island.The bikers battled
+  * battle kanto_biker_goon Won
+  * battle kanto_biker_goon_2 Won
+  * battle kanto_biker_goon_3 Won
+  * battle kanto_cue_ball_paxton Won
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_THREE_ISLAND_BIKERS
+  + FLAG_HIDE_THREE_ISLAND_LONE_BIKER
+  = VAR_MAP_SCENE_THREE_ISLAND 0 -> 4
+  + beaten kanto_biker_goon
+  + beaten kanto_biker_goon_2
+  + beaten kanto_biker_goon_3
+  + beaten kanto_cue_ball_paxton
+  + seen three_island.The bikers battled
+way 0.0.0.0.1, from answer 5
+  * battle kanto_cue_ball_paxton Lost
+  * scene over, unseen
+  + beaten kanto_biker_goon
+  + beaten kanto_biker_goon_2
+  + beaten kanto_biker_goon_3
+way 0.0.0.1, from answer 4
+  * battle kanto_biker_goon_3 Lost
+  * scene over, unseen
+  + beaten kanto_biker_goon
+  + beaten kanto_biker_goon_2
+way 0.0.1, from answer 3
+  * battle kanto_biker_goon_2 Lost
+  * scene over, unseen
+  + beaten kanto_biker_goon
+way 0.1, from answer 2
+  * battle kanto_biker_goon Lost
+  * scene over, unseen
+way 1, from answer 1
+  Biker> Then get lost!
+  ? Want to make something of it? = No
+=== three_island.BikerIntro
+from the trigger at 103,27 of ThreeIsland
+from the trigger at 104,27 of ThreeIsland
+from the trigger at 105,27 of ThreeIsland
+from the trigger at 106,27 of ThreeIsland
+from the trigger at 107,27 of ThreeIsland
+way -
+  Man> You lot have no business here! Get off our island and take your noisy bikes with you!
+  Paxton> Or what, old man? This island's ours now. You farmers can go and live somewhere else.
+  Paxton> Hah? And who are you supposed to be? Another one who wants to tell us what to do?
+  * scene three_island.The bikers on Three Island
+  * emote Paxton Exclaim
+  * endscene
+  = VAR_MAP_SCENE_THREE_ISLAND 0 -> 3
+  + seen three_island.The bikers on Three Island
+=== three_island_berry_forest.Lostelle
+from Lostelle at 4,8 of ThreeIsland_BerryForest
+way 0
+  Lostelle> Who's there? Oh! You're a trainer! Please help me, a scary Pokémon keeps following me!
+  > A Hypno stepped out from behind the trees!
+  Lostelle> It's gone... Thank you! I came to pick berries, and then I got lost, and then that Pokémon came.
+  Lostelle> Here, this is the best berry I found today. You can have it.
+  > Lucas received the Iapapa Berry!
+  > Lucas put it away in the Berries pocket.
+  Lostelle> Will you take me home? Daddy will be so worried.
+  * scene three_island_berry_forest.Lostelle in Berry Forest
+  * cry Hypno
+  * wildbattle Hypno 30 Won
+  * fanfare FanfareItem
+  * fade out
+  * warp TwoIsland_JoyfulGameCorner 6 6
+  * fade in
+  * endscene
+  + FLAG_HIDE_LOSTELLE_IN_BERRY_FOREST
+  + FLAG_RESCUED_LOSTELLE
+  = VAR_MAP_SCENE_TWO_ISLAND_JOYFUL_GAME_CORNER 0 -> 2
+  + seen three_island_berry_forest.Lostelle in Berry Forest
+way 1, from answer 1
+  * wildbattle Hypno 30 Lost
+  * scene over, unseen
+=== three_island_dunsparce_tunnel.Prospector
+from Prospector at 23,2 of ThreeIsland_DunsparceTunnel
+way -
+  Prospector> I'm digging for gold under this island. Every day, a little deeper. One day I'll strike it rich!
+=== three_island_harbor.Sailor
+from Sailor at 8,6 of ThreeIsland_Harbor
+way -
+  Sailor> The Seagallop sails only for holders of a pass, I'm afraid.
 === turnback_cave_entrance.Inscription
 from the tile read at 10,14 of TurnbackCaveEntrance
 from the tile read at 11,14 of TurnbackCaveEntrance
@@ -15551,6 +16166,29 @@ way -
   * endscene
   = VAR_TWINLEAF_TOWN_RIVAL_TRIGGER_STATE 0 -> 1
   + seen twinleaf_town.The rival runs out
+=== two_island.Clerk
+from Clerk at 28,44 of TwoIsland
+way -
+  Clerk> Welcome! Have a look at what we've got in today.
+  Clerk> Thank you! Do come again.
+  * open Shop two_island_1
+=== two_island_harbor.Sailor
+from Sailor at 8,6 of TwoIsland_Harbor
+way -
+  Sailor> The Seagallop sails only for holders of a pass, I'm afraid.
+=== two_island_joyful_game_corner.Daddy
+from Lostelle's Daddy at 5,5 of TwoIsland_JoyfulGameCorner
+way -
+  Lostelle's Daddy> Please, find Lostelle! She must be somewhere in Berry Forest on Three Island.
+=== two_island_joyful_game_corner.InfoMan
+from Man at 4,2 of TwoIsland_JoyfulGameCorner
+way -
+  Man> This game corner's games are played by friends together, over a link. Nobody's linking up these days, though.
+  Man> Still, the owner keeps the place spotless. He's a good father, and a good host.
+=== two_island_joyful_game_corner.Lostelle
+from Lostelle at 6,5 of TwoIsland_JoyfulGameCorner
+way -
+  Lostelle> Thank you for saving me! I'll always remember it. Next time I go berry picking, I'll bring you some!
 === underground.HikerGoods
 from Hiker at 175,279 of Underground
 from Hiker at 200,185 of Underground

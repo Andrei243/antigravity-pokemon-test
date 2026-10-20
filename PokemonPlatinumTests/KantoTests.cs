@@ -827,8 +827,9 @@ public class KantoTests
     {
         foreach (string key in new[] { "two_island", "three_island" })
             Assert.Equal(Architecture.Isle, Kanto.Overlay(key)!.Architecture);
+        // The islands' people: a look of the table, or one of ours that stands for FireRed's (the table's fallbacks)
         foreach (string look in new[] { "biker", "little_girl", "balding_man", "crush_girl", "black_belt", "woman_2", "tuber_f", "fat_man" })
-            Assert.True(CharacterStyles.Default.Has(look), look);
+            Assert.True(CharacterStyles.Default.Has(look) || CharacterStyles.Default.Fallbacks.ContainsKey(look), look);
         Assert.True(PokemonPlatinumEngine.Audio.MusicLibrary.Exists("kanto/sevii_cave"));
         Assert.Equal("kanto/sevii_cave", Kanto.Overlay("mt_ember_exterior")!.BgmTrack);
         // FireRed's two key items of the errand, and the Two Island stall's three stocks
