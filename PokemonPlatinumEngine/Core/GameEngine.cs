@@ -1232,6 +1232,9 @@ public partial class GameEngine
         // A scene being skipped has the field while its dark closes and opens (plan 12 · Q20)
         if (UpdateSkip(dt)) return;
 
+        // The battle just fought, asked about before a script that started it goes on (plan 08 · P10)
+        if (AskToRecord()) return;
+
         // A script has the field: the keys do nothing until it ends, and people moving of their own accord only
         // finish the step they are on
         if (flow.Runner.IsRunning)

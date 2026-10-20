@@ -80,6 +80,19 @@ public partial class BattleEngine
     /// <summary>The rules' side of the battle: its own Pokémon, its requests, its log.</summary>
     public BattleCore Core => core;
 
+    /// <summary>
+    /// The battle as its rules began it, before the first line (plan 08 · P10): both sides, the trainers, the format,
+    /// the rules and the conditions, taken from the copies the rules were handed. <see cref="RecordFile"/> adds what it
+    /// came to.
+    /// </summary>
+    public BattleRecordFile Opening { get; }
+
+    /// <summary>
+    /// The battle as the Vs. Recorder keeps it, on the day given (plan 08 · P10): the opening, the record of its seed
+    /// and answers, and how it ended. Null for a battle whose chance was no <see cref="BattleRandom"/>.
+    /// </summary>
+    public BattleRecordFile? RecordFile(DateTime day) => Opening.Closing(core, day);
+
     public Random Random => core.Random;
 
     /// <summary>The rules this battle is fought by: those of the game in progress unless the setup gave its own.</summary>
@@ -204,7 +217,7 @@ public partial class BattleEngine
 
         // The rules get copies of every Pokémon; the game's own are what the screen shows
         var trainers = setup.Trainers.Select(mirror.Copy).ToList();
-        core = new BattleCore(new CoreSetup
+        var rules = new CoreSetup
         {
             PlayerParty = mirror.Copy(setup.PlayerParty),
             WildPokemon = setup.WildPokemon.Select(mirror.Copy).ToList(),
@@ -231,7 +244,10 @@ public partial class BattleEngine
             DynamaxBand = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.DynamaxBandItem),
             // And a Tera Orb lets one Terastallize (plan 06 · R23)
             TeraOrb = setup.Inventory.AllItems.Any(s => s.Name == BattleCore.TeraOrbItem)
-        });
+        };
+        // The battle as its rules begin it, before they have changed anything: what the Vs. Recorder keeps (plan 08 · P10)
+        Opening = BattleRecordFile.Opening(rules);
+        core = new BattleCore(rules);
 
         Anim.Slots = core.PlayerSlots.Count;
         PlayerSlots = core.PlayerSlots.Select(OnScreen).ToList();

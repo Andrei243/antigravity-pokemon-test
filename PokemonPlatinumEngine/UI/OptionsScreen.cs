@@ -19,6 +19,7 @@ public enum OptionRow
     SkipScenes,
     BattleScene, BattleStyle,
     ButtonMode, StickDeadZone, Gamepad,
+    RecordBattles,
     Controls,
     Help
 }
@@ -28,7 +29,7 @@ public enum OptionRow
 /// on or off, a volume for each of the mixer's buses (the music with its fanfares, the sound effects, the cries,
 /// the ambience) and the speakers it plays through; then the helps of plan 12 (the move hints), the trainers' lines in battle (plan 11 · C12),
 /// the two rows of plan 16 · T3 (whether the game waits behind another window, and the most frames it draws a second),
-/// which scenes of the story may be skipped (plan 12 · Q20), Platinum's Battle Scene and Battle Style (plan 08 · P1) and the HELP pages
+/// which scenes of the story may be skipped (plan 12 · Q20), Platinum's Battle Scene and Battle Style (plan 08 · P1), the pad's rows (plan 12 · Q4), whether a trainer's battle may be kept on the Vs. Recorder (plan 08 · P10) and the HELP pages
 /// (<see cref="HelpScreen"/>), which open over the options. Changes apply at once; the caller saves the settings
 /// when the screen reports a change. More rows than fit scroll in a window (<see cref="VisibleRows"/>).
 /// </summary>
@@ -212,6 +213,9 @@ public class OptionsScreen
                 // Pad 1 to 4, and round again
                 s.GamepadIndex = Wrap(Math.Clamp(s.GamepadIndex, 0, 3) + step, 4);
                 break;
+            case OptionRow.RecordBattles:
+                s.RecordBattles = !s.RecordBattles;
+                break;
         }
     }
 
@@ -245,6 +249,7 @@ public class OptionsScreen
         OptionRow.ButtonMode => (Text.Of("options.buttonMode.label"), Text.Of($"options.buttonMode.value.{s.ButtonMode}"), Text.Of($"options.buttonMode.help.{s.ButtonMode}")),
         OptionRow.StickDeadZone => (Text.Of("options.stickDeadZone.label"), Text.Of("options.stickDeadZone.value", ("n", s.StickDeadZone)), Text.Of("options.stickDeadZone.help")),
         OptionRow.Gamepad => (Text.Of("options.gamepad.label"), Text.Of("options.gamepad.value", ("n", Math.Clamp(s.GamepadIndex, 0, 3) + 1)), Text.Of("options.gamepad.help")),
+        OptionRow.RecordBattles => (Text.Of("options.recordBattles.label"), OnOff(s.RecordBattles), Text.Of(s.RecordBattles ? "options.recordBattles.help.on" : "options.recordBattles.help.off")),
         OptionRow.Controls => (Text.Of("options.controls.label"), Text.Of("options.controls.value"), Text.Of("options.controls.help")),
         _ => (Text.Of("options.help.label"), Text.Of("options.help.value"), Text.Of("options.help.help"))
     };

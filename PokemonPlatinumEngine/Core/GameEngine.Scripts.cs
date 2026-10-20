@@ -766,6 +766,13 @@ public partial class GameEngine
         if (!flow.Dialogue.AwaitingAnswer || flow.Choice.IsOpen) return;
         if (flow.Choice.Take() is { } picked)
         {
+            // The Vs. Recorder's question has its own answer, which leaves the script's alone (plan 08 · P10)
+            if (flow.RecordAsked)
+            {
+                flow.Dialogue.Close();
+                AnswerTheRecord(picked == 0);
+                return;
+            }
             flow.ScriptAnswer = picked;
             flow.Dialogue.Close();
         }
