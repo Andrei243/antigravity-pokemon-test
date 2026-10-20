@@ -546,6 +546,26 @@ These are the kinds Platinum's map headers name. Five places (the south of Route
   | Lucian | the mind | `212,84,148` | `128,36,92` | `248,172,208` |
   | Cynthia | the Champion's room, night blue and gold | `52,56,84` | `22,24,40` | `236,200,108` |
 
+  **Kanto's thirteen** (plan 19 · K8; `SceneTransition.KantoBands`, the same beats and the same rules of colour: the deep colour darker than the base and the light one lighter, white reading on the plate), the eight Leaders, the four of the Elite Four and the Champion, each after its Gym's type or its room, none the colour of a Sinnoh band that stands for the same type, so that the two tables are told apart at a glance:
+
+  | Whose | After | Base | Deep | Light |
+  |---|---|---|---|---|
+  | Brock | rock, grey sandstone | `150,132,112` | `86,72,58` | `222,208,184` |
+  | Misty | water | `72,152,224` | `28,76,152` | `160,216,248` |
+  | Lt. Surge | electricity, an olive gold | `200,172,48` | `104,88,28` | `240,226,136` |
+  | Erika | grass, a blossom's teal green | `72,168,128` | `28,92,72` | `176,232,196` |
+  | Koga | poison | `150,78,170` | `78,38,104` | `214,160,232` |
+  | Sabrina | the mind | `224,96,172` | `132,40,104` | `250,176,224` |
+  | Blaine | fire, a flame red | `220,64,48` | `128,28,28` | `250,152,104` |
+  | Giovanni | the ground, a dark earth | `116,84,60` | `60,40,28` | `204,168,128` |
+  | Lorelei | ice, a violet frost | `136,168,232` | `56,84,164` | `208,226,252` |
+  | Bruno | fighting | `188,92,60` | `112,44,28` | `240,184,140` |
+  | Agatha | ghosts, a muted slate violet | `104,96,132` | `50,44,76` | `182,176,212` |
+  | Lance | dragons | `52,92,180` | `24,44,108` | `140,176,240` |
+  | the Champion | the rival's purple | `92,64,152` | `44,28,92` | `206,184,244` |
+
+  The Champion's band is the rival's, whoever the player named him: it is found by the class alone, and the plate says the name he was given. A Leader, a member of the Elite Four or a Champion that no table names wears the plain band, steel grey, under their own name. The card behind a portrait is the band's light colour for all thirteen of Kanto's.
+
   The card behind a portrait is the band's light colour, but for the two whose hair is that colour: Volkner's is the pale blue of a spark, `196,224,252`, and Cynthia's a moonlit blue, `132,140,196`, between her hair's gold and her coat's night. A band's colours are chosen with its person on it (the harness's `gyms` and `league` shoot all thirteen, `g_band_<name>` and `lg_band_<name>`), never from the table alone.
 
   A Leader or a League member the table doesn't name (another region's, before its band is written) wears a plain band of steel grey (`120,132,152`, `64,72,92`, `204,212,224`).

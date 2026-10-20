@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using Raylib_cs;
 using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
@@ -114,19 +115,53 @@ public static partial class SceneTransition
         new BattleBand("Champion", "Cynthia", Rgb(52, 56, 84), Rgb(22, 24, 40), Rgb(236, 200, 108), Rgb(132, 140, 196))
     };
 
+    /// <summary>
+    /// Kanto's thirteen (plan 19 · K8; the style guide's second table): the eight Leaders, the four of the Elite Four
+    /// and the Champion, who is the rival (his entry's name is the placeholder <c>{rival}</c>, and <see cref="BandOf"/>
+    /// finds it by whatever name the player gave him). None wears the colours of a Sinnoh band of the same type.
+    /// </summary>
+    public static IReadOnlyList<BattleBand> KantoBands { get; } = new[]
+    {
+        new BattleBand("Leader", "Brock", Rgb(150, 132, 112), Rgb(86, 72, 58), Rgb(222, 208, 184)),
+        new BattleBand("Leader", "Misty", Rgb(72, 152, 224), Rgb(28, 76, 152), Rgb(160, 216, 248)),
+        new BattleBand("Leader", "Lt. Surge", Rgb(200, 172, 48), Rgb(104, 88, 28), Rgb(240, 226, 136)),
+        new BattleBand("Leader", "Erika", Rgb(72, 168, 128), Rgb(28, 92, 72), Rgb(176, 232, 196)),
+        new BattleBand("Leader", "Koga", Rgb(150, 78, 170), Rgb(78, 38, 104), Rgb(214, 160, 232)),
+        new BattleBand("Leader", "Sabrina", Rgb(224, 96, 172), Rgb(132, 40, 104), Rgb(250, 176, 224)),
+        new BattleBand("Leader", "Blaine", Rgb(220, 64, 48), Rgb(128, 28, 28), Rgb(250, 152, 104)),
+        new BattleBand("Leader", "Giovanni", Rgb(116, 84, 60), Rgb(60, 40, 28), Rgb(204, 168, 128)),
+        new BattleBand("Elite Four", "Lorelei", Rgb(136, 168, 232), Rgb(56, 84, 164), Rgb(208, 226, 252)),
+        new BattleBand("Elite Four", "Bruno", Rgb(188, 92, 60), Rgb(112, 44, 28), Rgb(240, 184, 140)),
+        new BattleBand("Elite Four", "Agatha", Rgb(104, 96, 132), Rgb(50, 44, 76), Rgb(182, 176, 212)),
+        new BattleBand("Elite Four", "Lance", Rgb(52, 92, 180), Rgb(24, 44, 108), Rgb(140, 176, 240)),
+        new BattleBand("Champion", RivalPlaceholder, Rgb(92, 64, 152), Rgb(44, 28, 92), Rgb(206, 184, 244))
+    };
+
+    /// <summary>The name the Champion of Kanto's entry carries: the rival's, whatever the player called him.</summary>
+    public const string RivalPlaceholder = "{rival}";
+
     /// <summary>The band of someone the table doesn't name (another region's Leader, before their band is written): steel grey.</summary>
     public static readonly BattleBand PlainBand = new("", "", Rgb(120, 132, 152), Rgb(64, 72, 92), Rgb(204, 212, 224));
 
     /// <summary>True for the two ways in that are bands.</summary>
     public static bool IsBand(TransitionKind kind) => kind is TransitionKind.LeaderBand or TransitionKind.EliteBand;
 
-    /// <summary>The band of a trainer by class and name: the table's, or the plain one under their own class and name.</summary>
+    /// <summary>
+    /// The band of a trainer by class and name: Sinnoh's table, Kanto's, or the plain one under their own class and
+    /// name. The rival as Kanto's Champion (named <c>{rival}</c> in the data, or by the name the player gave him) wears
+    /// the Champion's band under that name.
+    /// </summary>
     public static BattleBand BandOf(string trainerClass, string name)
     {
         foreach (var band in Bands)
             if (band.Class == trainerClass && band.Name == name) return band;
+        foreach (var band in KantoBands)
+            if (band.Class == trainerClass && (band.Name == name || (trainerClass == "Champion" && IsTheRival(name))))
+                return band with { Name = name };
         return PlainBand with { Class = trainerClass, Name = name };
     }
+
+    private static bool IsTheRival(string name) => name == RivalPlaceholder || name == PlayerIdentity.RivalName;
 
     /// <summary>
     /// Whose band a meeting opens on: the first trainer's, as the first trainer's class alone picks the way
@@ -374,6 +409,8 @@ public static partial class SceneTransition
     private static void DrawName(BattleBand band, Vector2 at, bool centred, int alpha)
     {
         if (alpha <= 0 || band.Name.Length == 0) return;
+        // (The rival as Champion carries his placeholder until he is drawn)
+        band = band with { Name = PlayerIdentity.Fill(band.Name) };
         float wide = UiFonts.Measure(band.Name, NameSize, UiWeight.Black);
         float plate = MathF.Max(wide + 2f * PlatePad, 240f);
         float x = centred ? at.X - plate / 2f : at.X - plate;

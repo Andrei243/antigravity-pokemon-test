@@ -30,18 +30,5 @@
     "PalletTown_EventScript_RivalsHouseSign": "{rival}'s House",
     "PalletTown_EventScript_OaksLabSign": "Professor Oak's\nPokémon Research Lab",
     "PalletTown_EventScript_TrainerTips": "TRAINER TIPS\nPress Enter to open the menu.\nYou can save your game there at any time."
-  },
-  // The sailor who takes a Champion of Kanto on to Johto, on the shore south of town until plan 19 · K8 moves him to
-  // Vermilion City's harbour (RegionDatabase's link from Kanto)
-  "npcs": [
-    {
-      "id": "pallet_town.Sailor",
-      "name": "Sailor",
-      "npcType": "Clerk",
-      "x": 66,
-      "y": 277,
-      "facing": "Right",
-      "isTransportAttendant": true
-    }
-  ]
+  }
 }

@@ -93,6 +93,16 @@
           "Asistentul"
         ]
       }
+    },
+    "vermilion_city.Captain": {
+      "name": {
+        "en": [
+          "Sailor"
+        ],
+        "text": [
+          ""
+        ]
+      }
     }
   },
   "signs": {

@@ -1,0 +1,78 @@
+# Kanto's credits (FireRed's MUS_CREDITS): a warm, rolling theme in G major that grows over thirty-two bars, a flute alone
+# over a harp and held strings, the violins taking it up, a darker bridge in E minor, and a last statement with the
+# brass and the timpani, then round again for as long as the roll lasts. Original composition for this game (plan 19 · K8).
+title Credits (Kanto)
+tempo 96
+meter 4/4
+reverb 0.38
+night none
+
+track lead flute vol=0.78 pan=0 rev=0.38
+  L o5 g4 b4 o6 d2 | o6 c+4. d8 e4 d4 | o6 e4. d8 o5 b4 g4 | o5 e4 g4 o6 c2 |
+  o5 b4. o6 d8 g4 b4 | o6 a4. f+8 d4 f+4 | o6 e4. g8 c4 o5 g4 | o5 a4 f+4 d2 |
+  o5 g4 b4 o6 d2 | o6 c+4. d8 e4 d4 | o6 e4. d8 o5 b4 g4 | o5 e4 g4 o6 c2 |
+  o5 b4. o6 d8 g4 b4 | o6 a4. f+8 d4 f+4 | o6 e4. g8 c4 o5 g4 | o5 a4 f+4 d2 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 g4 b4 o6 d2 | o6 c+4. d8 e4 d4 | o6 e4. d8 o5 b4 g4 | o5 e4 g4 o6 c2 |
+  o5 b4. o6 d8 g4 b4 | o6 a4. f+8 d4 f+4 | o6 e4. g8 c4 o5 g4 | o5 g4 b4 o6 d2 |
+
+track violin violin vol=0.62 pan=-0.2 rev=0.36
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o5 g4 b4 o6 d2 | o6 c+4. d8 e4 d4 | o6 e4. d8 o5 b4 g4 | o5 e4 g4 o6 c2 |
+  o5 b4. o6 d8 g4 b4 | o6 a4. f+8 d4 f+4 | o6 e4. g8 c4 o5 g4 | o5 a4 f+4 d2 |
+  o5 e4. g8 b2 | o6 c4. e8 g4 e4 | o5 b4. o6 d8 g2 | o6 f+4. e8 d4 c+4 |
+  o5 g4. b8 o6 e2 | o6 e4. d8 c4 o5 g4 | o5 a4 o6 c4 e4 c4 | o6 d2 c+4 o5 a4 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+
+track harp harp vol=0.44 pan=0.3 rev=0.36
+  L o4 [ g8 b8 >d8 <b8 ]2 | o4 [ d8 f+8 a8 f+8 ]2 | o4 [ e8 g8 b8 g8 ]2 | o4 [ c8 e8 g8 e8 ]2 |
+  o4 [ g8 b8 >d8 <b8 ]2 | o4 [ d8 f+8 a8 f+8 ]2 | o4 [ c8 e8 g8 e8 ]2 | o4 [ d8 f+8 a8 f+8 ]2 |
+  o4 [ g8 b8 >d8 <b8 ]2 | o4 [ d8 f+8 a8 f+8 ]2 | o4 [ e8 g8 b8 g8 ]2 | o4 [ c8 e8 g8 e8 ]2 |
+  o4 [ g8 b8 >d8 <b8 ]2 | o4 [ d8 f+8 a8 f+8 ]2 | o4 [ c8 e8 g8 e8 ]2 | o4 [ d8 f+8 a8 f+8 ]2 |
+  o4 [ e8 g8 b8 g8 ]2 | o4 [ c8 e8 g8 e8 ]2 | o4 [ g8 b8 >d8 <b8 ]2 | o4 [ d8 f+8 a8 f+8 ]2 |
+  o4 [ e8 g8 b8 g8 ]2 | o4 [ c8 e8 g8 e8 ]2 | o4 [ a8 o5 c8 e8 c8 o4 ]2 | o4 [ d8 f+8 a8 f+8 ]2 |
+  o4 [ g8 b8 >d8 <b8 ]2 | o4 [ d8 f+8 a8 f+8 ]2 | o4 [ e8 g8 b8 g8 ]2 | o4 [ c8 e8 g8 e8 ]2 |
+  o4 [ g8 b8 >d8 <b8 ]2 | o4 [ d8 f+8 a8 f+8 ]2 | o4 [ c8 e8 g8 e8 ]2 | o4 [ g8 b8 >d8 <b8 ]2 |
+
+track pad strings vol=0.34 pan=-0.35 rev=0.4
+  L o4 (g b >d)1 | (d f+ a)1 | (e g b)1 | (c e g)1 |
+  (g b >d)1 | (d f+ a)1 | (c e g)1 | (d f+ a)1 |
+  (g b >d)1 | (d f+ a)1 | (e g b)1 | (c e g)1 |
+  (g b >d)1 | (d f+ a)1 | (c e g)1 | (d f+ a)1 |
+  (e g b)1 | (c e g)1 | (g b >d)1 | (d f+ a)1 |
+  (e g b)1 | (c e g)1 | (a >c e)1 | (d f+ a)1 |
+  (g b >d)1 | (d f+ a)1 | (e g b)1 | (c e g)1 |
+  (g b >d)1 | (d f+ a)1 | (c e g)1 | (g b >d)1 |
+
+track horns horn vol=0.4 pan=0.25 rev=0.38
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o4 g1 | d1 | e1 | c1 |
+  g1 | d1 | c1 | g1 |
+
+track bass contrabass vol=0.6 rev=0.25
+  L o3 g2 d2 | d2 a2 | e2 b2 | c2 g2 |
+  g2 d2 | d2 a2 | c2 g2 | d2 a2 |
+  g2 d2 | d2 a2 | e2 b2 | c2 g2 |
+  g2 d2 | d2 a2 | c2 g2 | d2 a2 |
+  e2 b2 | c2 g2 | g2 d2 | d2 a2 |
+  e2 b2 | c2 g2 | a2 e2 | d2 a2 |
+  g2 d2 | d2 a2 | e2 b2 | c2 g2 |
+  g2 d2 | d2 a2 | c2 g2 | g1 |
+
+track timpani timpani vol=0.42 rev=0.3
+  L r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  r1 | r1 | r1 | r1 |
+  o2 e4 r4 e4 r4 | c4 r4 c4 r4 | g4 r4 g4 r4 | d4 r4 d4 r4 |
+  e4 r4 e4 r4 | c4 r4 c4 r4 | a4 r4 a4 r4 | d2 r2 |
+  o2 g4 r4 g4 r4 | d4 r4 d4 r4 | e4 r4 e4 r4 | c4 r4 c4 r4 |
+  g4 r4 g4 r4 | d4 r4 d4 r4 | c4 r4 c4 r4 | g2 r2 |

@@ -238,6 +238,18 @@ public static class MusicDirector
         return null;
     }
 
+    /// <summary>
+    /// The song a region has for a scene that no role names (plan 19 · K8): <c>kanto/credits</c> for the credits,
+    /// <c>kanto/hall_of_fame</c> for the Hall of Fame's ceremony. Null where the region has none, and the scene plays the
+    /// role it always did (the title's theme under the credits, the Champion's victory under the ceremony).
+    /// </summary>
+    public static string? SceneSong(string? region, string name, Func<string, bool> exists)
+    {
+        if (string.IsNullOrEmpty(region)) return null;
+        string own = $"{region.ToLowerInvariant()}/{name}";
+        return exists(own) ? own : null;
+    }
+
     /// <summary>The folder, in a region's music or <c>common</c>, of the legendary and mythical Pokémon's own battle themes.</summary>
     public const string LegendaryFolder = "legendary";
 

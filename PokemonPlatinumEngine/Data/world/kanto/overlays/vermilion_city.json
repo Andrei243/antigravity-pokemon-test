@@ -30,5 +30,18 @@
     "VermilionCity_EventScript_GymSign": "Vermilion City Pokémon Gym\nLeader: Lt. Surge\nThe lightning soldier!",
     "VermilionCity_EventScript_HarborSign": "Vermilion Harbour",
     "VermilionCity_EventScript_SnorlaxNotice": "NOTICE\nA sleeping Pokémon is blocking Route 12.\nPlease take the road through Rock Tunnel."
-  }
+  },
+  // The captain who takes a Champion of Kanto on to Johto (plan 19 · K8; RegionDatabase's link from Kanto, common.Attendant),
+  // on the quay east of the pier. Before the Hall of Fame he says only who may come aboard
+  "npcs": [
+    {
+      "id": "vermilion_city.Captain",
+      "name": "Sailor",
+      "npcType": "captain",
+      "x": 301,
+      "y": 230,
+      "facing": "Down",
+      "isTransportAttendant": true
+    }
+  ]
 }
