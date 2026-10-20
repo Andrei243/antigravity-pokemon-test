@@ -1,0 +1,31 @@
+{
+  "key": "lavaridge_town_pokemon_center_1f",
+  "index": 78,
+  "name": "Lavaridge Town",
+  "matrix": 27,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_CENTER",
+  "nightMusic": "MUS_POKE_CENTER",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 7, "z": 8, "to": "lavaridge_town", "toWarp": 3 },
+    { "x": 6, "z": 8, "to": "lavaridge_town", "toWarp": 3 },
+    { "x": 1, "z": 6, "to": "lavaridge_town_pokemon_center_2f", "toWarp": 0 },
+    { "x": 2, "z": 1, "to": "lavaridge_town", "toWarp": 5 }
+  ],
+  "objects": [
+    { "id": "lavaridge_nurse", "looks": "nurse", "movement": "look_south", "x": 7, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_PokemonCenter_1F_EventScript_Nurse" },
+    { "id": "youngster", "looks": "youngster", "movement": "look_north", "x": 11, "z": 8, "facing": 0, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_PokemonCenter_1F_EventScript_Youngster" },
+    { "id": "woman_3", "looks": "woman_3", "movement": "look_west", "x": 10, "z": 6, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_PokemonCenter_1F_EventScript_Woman" },
+    { "id": "gentleman", "looks": "gentleman", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_PokemonCenter_1F_EventScript_Gentleman" }
+  ],
+  "signs": [],
+  "triggers": []
+}

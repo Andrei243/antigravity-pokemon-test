@@ -1,0 +1,49 @@
+{
+  "key": "lavaridge_town",
+  "index": 28,
+  "name": "Lavaridge Town",
+  "matrix": 0,
+  "kind": "Town",
+  "sign": "Town",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_OLDALE",
+  "nightMusic": "MUS_OLDALE",
+  "bike": true,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 152, "z": 75, "to": "lavaridge_town_herb_shop", "toWarp": 0 },
+    { "x": 145, "z": 75, "to": "lavaridge_town_gym_1f", "toWarp": 0 },
+    { "x": 155, "z": 65, "to": "lavaridge_town_mart", "toWarp": 0 },
+    { "x": 149, "z": 66, "to": "lavaridge_town_pokemon_center_1f", "toWarp": 0 },
+    { "x": 156, "z": 75, "to": "lavaridge_town_house", "toWarp": 0 },
+    { "x": 149, "z": 62, "to": "lavaridge_town_pokemon_center_1f", "toWarp": 3 }
+  ],
+  "objects": [
+    { "id": "expert_f", "looks": "expert_f", "movement": "look_south", "x": 148, "z": 67, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_EventScript_ExpertF" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_south", "x": 145, "z": 61, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_EventScript_ExpertM" },
+    { "id": "old_man", "looks": "old_man", "movement": "look_south", "x": 145, "z": 68, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_EventScript_OldMan" },
+    { "id": "twin", "looks": "twin", "movement": "wander_north_and_south", "x": 150, "z": 73, "facing": 0, "rangeX": 0, "rangeZ": 2, "script": "LavaridgeTown_EventScript_Twin" },
+    { "id": "hot_springs_old_woman", "looks": "hot_springs_old_woman", "movement": "look_south_and_east", "x": 144, "z": 64, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_EventScript_HotSpringsOldWoman1" },
+    { "id": "hot_springs_old_woman_2", "looks": "hot_springs_old_woman", "movement": "look_south_and_west", "x": 145, "z": 64, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_EventScript_HotSpringsOldWoman2" },
+    { "id": "lavaridge_rival_on_bike", "looks": "var_3", "movement": "look_west", "x": 146, "z": 76, "facing": 2, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAVARIDGE_TOWN_RIVAL_ON_BIKE", "script": "" },
+    { "id": "lavaridge_rival", "looks": "var_0", "movement": "look_south", "x": 152, "z": 75, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_HIDE_LAVARIDGE_TOWN_RIVAL", "script": "" },
+    { "id": "expert_f_2", "looks": "expert_f", "movement": "look_south", "x": 144, "z": 67, "facing": 1, "rangeX": 1, "rangeZ": 1, "script": "LavaridgeTown_EventScript_EggWoman" }
+  ],
+  "signs": [
+    { "x": 154, "z": 76, "type": 0, "script": "LavaridgeTown_EventScript_HerbShopSign" },
+    { "x": 147, "z": 75, "type": 0, "script": "LavaridgeTown_EventScript_GymSign" },
+    { "x": 157, "z": 65, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 153, "z": 68, "type": 0, "script": "LavaridgeTown_EventScript_TownSign" },
+    { "x": 150, "z": 66, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 156, "z": 65, "type": 0, "script": "Common_EventScript_ShowPokemartSign" },
+    { "x": 151, "z": 66, "type": 0, "script": "Common_EventScript_ShowPokemonCenterSign" },
+    { "x": 144, "z": 65, "type": 2, "script": "", "item": "Ice Heal", "flag": "FLAG_HIDDEN_ITEM_LAVARIDGE_TOWN_ICE_HEAL" }
+  ],
+  "triggers": [
+    { "x": 146, "z": 63, "width": 1, "depth": 1, "script": "LavaridgeTown_EventScript_HotSpringsTrigger", "variable": "TRIGGER_RUN_IMMEDIATELY", "value": "0" }
+  ]
+}

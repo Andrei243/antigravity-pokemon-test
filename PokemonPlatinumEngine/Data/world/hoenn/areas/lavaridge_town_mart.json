@@ -1,0 +1,28 @@
+{
+  "key": "lavaridge_town_mart",
+  "index": 77,
+  "name": "Lavaridge Town",
+  "matrix": 26,
+  "kind": "Indoors",
+  "sign": "Indoors",
+  "weather": "Clear",
+  "camera": "",
+  "battleBackground": "",
+  "dayMusic": "MUS_POKE_MART",
+  "nightMusic": "MUS_POKE_MART",
+  "bike": false,
+  "running": false,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 3, "z": 7, "to": "lavaridge_town", "toWarp": 2 },
+    { "x": 4, "z": 7, "to": "lavaridge_town", "toWarp": 2 }
+  ],
+  "objects": [
+    { "id": "lavaridge_mart_clerk", "looks": "mart_employee", "movement": "look_east", "x": 1, "z": 3, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_Mart_EventScript_Clerk" },
+    { "id": "expert_m", "looks": "expert_m", "movement": "look_south", "x": 4, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_Mart_EventScript_ExpertM" },
+    { "id": "old_woman", "looks": "old_woman", "movement": "look_east", "x": 9, "z": 5, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "LavaridgeTown_Mart_EventScript_OldWoman" }
+  ],
+  "signs": [],
+  "triggers": []
+}
