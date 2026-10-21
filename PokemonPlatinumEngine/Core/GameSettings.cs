@@ -33,6 +33,18 @@ public enum SpeakerMode { Stereo, Handheld, Mono }
 /// </summary>
 public enum BattleStyle { Shift, Set }
 
+/// <summary>How much faster battles, text and scenes play while Run is held (plan 08 · P2): not at all, twice or three times as fast.</summary>
+public enum SpeedUp { Off, Double, Triple }
+
+/// <summary>Whether a line that is whole goes on by itself (plan 08 · P2): never, after a long pause or after a short one.</summary>
+public enum AutoAdvance { Off, Slow, Fast }
+
+/// <summary>
+/// The frame of the text box (plan 08 · P2): our own six, drawn with shapes (style guide, "Field menus and notices").
+/// <see cref="Plain"/> is the box as it has always been.
+/// </summary>
+public enum TextFrame { Plain, DoubleRule, Wood, Stone, Glass, Ribbon }
+
 /// <summary>How fast written lines are typed out.</summary>
 public enum TextSpeed { Slow, Normal, Fast }
 
@@ -97,6 +109,24 @@ public sealed class GameSettings
     /// switch before the trainer's next Pokémon comes out (<see cref="Battle.Sim.SwitchOfferRequest"/>).
     /// </summary>
     public BattleStyle BattleStyle { get; set; } = BattleStyle.Shift;
+
+    /// <summary>The speed-up used while Run is held (plan 08 · P2): off unless chosen.</summary>
+    public SpeedUp SpeedUp { get; set; } = SpeedUp.Off;
+
+    /// <summary>How much the speed-up multiplies the pace of battles, text and scenes by.</summary>
+    public static float SpeedFactor(SpeedUp speed) => speed switch { SpeedUp.Double => 2f, SpeedUp.Triple => 3f, _ => 1f };
+
+    /// <summary>Whether a whole line goes on by itself (plan 08 · P2): off unless chosen; a question always waits.</summary>
+    public AutoAdvance AutoAdvance { get; set; } = AutoAdvance.Off;
+
+    /// <summary>How long a whole line waits before it goes on by itself, in seconds; null when it never does.</summary>
+    public static float? AutoAdvanceAfter(AutoAdvance mode) => mode switch { AutoAdvance.Slow => 2.5f, AutoAdvance.Fast => 1.2f, _ => null };
+
+    /// <summary>Whether the player runs unless Run is held, which then walks (plan 08 · P2): off unless chosen. Needs the Running Shoes as running does.</summary>
+    public bool Autorun { get; set; }
+
+    /// <summary>The frame of the text box (plan 08 · P2): the plain one unless chosen.</summary>
+    public TextFrame Frame { get; set; } = TextFrame.Plain;
 
     /// <summary>
     /// Whether a trainer's battle fought with the Vs. Recorder in the bag ends with "Record this battle?" (plan 08 · P10):

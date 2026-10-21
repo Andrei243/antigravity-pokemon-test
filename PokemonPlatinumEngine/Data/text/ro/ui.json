@@ -193,6 +193,36 @@
         "Set": "Când Pokémonul unui antrenor leșină, următorul iese imediat și nu ești întrebat dacă vrei să schimbi."
       }
     },
+    "speedUp": {
+      "label": "Accelerare",
+      "value": { "Off": "Oprită", "Double": "×2", "Triple": "×3" },
+      "help": {
+        "Off": "Ținând apăsat butonul de alergare, nimic nu se schimbă în lupte, text și scene.",
+        "Double": "Cât ții apăsat butonul de alergare, luptele, textul și scena evoluției merg de două ori mai repede. Nimic nu schimbă felul în care se termină.",
+        "Triple": "Cât ții apăsat butonul de alergare, luptele, textul și scena evoluției merg de trei ori mai repede. Nimic nu schimbă felul în care se termină."
+      }
+    },
+    "autoAdvance": {
+      "label": "Înaintare automată",
+      "value": { "Off": "Oprită", "Slow": "Lentă", "Fast": "Rapidă" },
+      "help": {
+        "Off": "O linie de text așteaptă până apeși un buton.",
+        "Slow": "O linie de text merge mai departe singură după o pauză lungă. O întrebare așteaptă mereu răspunsul tău.",
+        "Fast": "O linie de text merge mai departe singură după o pauză scurtă. O întrebare așteaptă mereu răspunsul tău."
+      }
+    },
+    "autorun": {
+      "label": "Alergare automată",
+      "help": {
+        "on": "Alergi fără să ții apăsat butonul de alergare, care acum te face să mergi. Cere Pantofii de alergare.",
+        "off": "Mergi și alergi cât ții apăsat butonul de alergare."
+      }
+    },
+    "frame": {
+      "label": "Cadrul textului",
+      "value": { "Plain": "Simplu", "DoubleRule": "Dublă linie", "Wood": "Lemn", "Stone": "Piatră", "Glass": "Sticlă întunecată", "Ribbon": "Panglică" },
+      "help": "Cadrul din jurul casetei în care se scriu liniile de text."
+    },
     "buttonMode": {
       "label": "Modul butoanelor",
       "value": { "Normal": "Normal", "StartIsX": "Start = X", "LIsA": "L = A" },

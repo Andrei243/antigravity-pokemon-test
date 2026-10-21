@@ -412,8 +412,12 @@ public class Player
                 ? (dir.X > 0 ? Direction.Right : Direction.Left)
                 : (dir.Y > 0 ? Direction.Down : Direction.Up);
         }
-        Advance(dt, map, want, InputManager.IsActionDown(GameAction.Run), onWildEncounter, onWarpTrigger, onArrive);
+        // With Autorun (plan 08 · P2) the run button walks and its absence runs; Advance itself is unchanged
+        Advance(dt, map, want, InputManager.IsActionDown(GameAction.Run) != Autorun, onWildEncounter, onWarpTrigger, onArrive);
     }
+
+    /// <summary>Whether the keys' run button is read the other way round (the options' Autorun, plan 08 · P2); running still needs the Running Shoes.</summary>
+    public bool Autorun { get; set; }
 
     /// <summary>
     /// One frame of the player's movement with the steering given rather than read from the keys, which is how

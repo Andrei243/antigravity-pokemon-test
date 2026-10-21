@@ -18,6 +18,7 @@ public enum OptionRow
     FocusPause, FrameCap,
     SkipScenes,
     BattleScene, BattleStyle,
+    SpeedUp, AutoAdvance, Autorun, Frame,
     ButtonMode, StickDeadZone, Gamepad,
     RecordBattles,
     Controls,
@@ -198,6 +199,18 @@ public class OptionsScreen
             case OptionRow.BattleStyle:
                 s.BattleStyle = s.BattleStyle == BattleStyle.Shift ? BattleStyle.Set : BattleStyle.Shift;
                 break;
+            case OptionRow.SpeedUp:
+                s.SpeedUp = (SpeedUp)Wrap((int)s.SpeedUp + step, 3);
+                break;
+            case OptionRow.AutoAdvance:
+                s.AutoAdvance = (AutoAdvance)Wrap((int)s.AutoAdvance + step, 3);
+                break;
+            case OptionRow.Autorun:
+                s.Autorun = !s.Autorun;
+                break;
+            case OptionRow.Frame:
+                s.Frame = (TextFrame)Wrap((int)s.Frame + step, 6);
+                break;
             case OptionRow.ButtonMode:
                 // Normal, Start=X, L=A, and round again (plan 12 · Q4)
                 s.ButtonMode = (ButtonMode)Wrap((int)s.ButtonMode + step, 3);
@@ -246,6 +259,10 @@ public class OptionsScreen
         OptionRow.SkipScenes => (Text.Of("options.skipScenes.label"), Text.Of($"options.skipScenes.value.{s.SkipScenes}"), Text.Of($"options.skipScenes.help.{s.SkipScenes}")),
         OptionRow.BattleScene => (Text.Of("options.battleScene.label"), OnOff(s.BattleScene), Text.Of(s.BattleScene ? "options.battleScene.help.on" : "options.battleScene.help.off")),
         OptionRow.BattleStyle => (Text.Of("options.battleStyle.label"), Text.Of($"options.battleStyle.value.{s.BattleStyle}"), Text.Of($"options.battleStyle.help.{s.BattleStyle}")),
+        OptionRow.SpeedUp => (Text.Of("options.speedUp.label"), Text.Of($"options.speedUp.value.{s.SpeedUp}"), Text.Of($"options.speedUp.help.{s.SpeedUp}")),
+        OptionRow.AutoAdvance => (Text.Of("options.autoAdvance.label"), Text.Of($"options.autoAdvance.value.{s.AutoAdvance}"), Text.Of($"options.autoAdvance.help.{s.AutoAdvance}")),
+        OptionRow.Autorun => (Text.Of("options.autorun.label"), OnOff(s.Autorun), Text.Of(s.Autorun ? "options.autorun.help.on" : "options.autorun.help.off")),
+        OptionRow.Frame => (Text.Of("options.frame.label"), Text.Of($"options.frame.value.{s.Frame}"), Text.Of("options.frame.help")),
         OptionRow.ButtonMode => (Text.Of("options.buttonMode.label"), Text.Of($"options.buttonMode.value.{s.ButtonMode}"), Text.Of($"options.buttonMode.help.{s.ButtonMode}")),
         OptionRow.StickDeadZone => (Text.Of("options.stickDeadZone.label"), Text.Of("options.stickDeadZone.value", ("n", s.StickDeadZone)), Text.Of("options.stickDeadZone.help")),
         OptionRow.Gamepad => (Text.Of("options.gamepad.label"), Text.Of("options.gamepad.value", ("n", Math.Clamp(s.GamepadIndex, 0, 3) + 1)), Text.Of("options.gamepad.help")),

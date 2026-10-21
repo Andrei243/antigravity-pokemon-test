@@ -427,7 +427,9 @@ public partial class GameEngine
         // A battle under way plays on with the scene as the options now have it (plan 08 · P1); the battle style is
         // the next battle's, since an offer already asked stays asked
         if (flow.Battle != null) flow.Battle.Scene = Settings.BattleScene;
+        if (flow.Battle != null) flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
         flow.Dialogue.CharactersPerSecond = GameSettings.CharactersPerSecond(Settings.TextSpeed);
+        ModernUi.TextFrame = Settings.Frame;
         if (window) WindowSettings.Apply(Settings);
     }
 
@@ -767,6 +769,21 @@ public partial class GameEngine
         }
     }
 
+    /// <summary>
+    /// The factor battles, text and the evolution scene are sped up by this frame (plan 08 · P2): the options' speed-up
+    /// while Run is held, 1 otherwise. A tool may set it outright (the harness shoots a battle at ×3); presentation is a
+    /// function of time, so no roll changes.
+    /// </summary>
+    internal float Pace
+    {
+        get => speedUpSet ?? (Settings.SpeedUp != Core.SpeedUp.Off && InputManager.IsActionDown(GameAction.Run) ? GameSettings.SpeedFactor(Settings.SpeedUp) : 1f);
+        set => speedUpSet = value;
+    }
+    private float? speedUpSet;
+
+    /// <summary>Lets go of a factor a tool set, so the options and the run button decide again.</summary>
+    internal void ClearSpeedUp() => speedUpSet = null;
+
     public void Update(float dt)
     {
         // The frame's actions are read once, as a frame (plan 16 · T11f), unless a tool or a test hands the game its own
@@ -899,12 +916,13 @@ public partial class GameEngine
                 TickPalPark(dt);
                 break;
             case GameState.Dialogue:
-                UpdateDialogue(dt);
+                UpdateDialogue(dt * Pace);
                 break;
             case GameState.Battle:
                 if (flow.Battle != null)
                 {
-                    flow.Battle.Update(dt);
+                    flow.Battle.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
+                    flow.Battle.Update(dt * Pace);
                     // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
                     AudioManager.LowHp = flow.Battle.Result == BattleResult.None && flow.Battle.PlayerInDanger;
                     // A recording watched (plan 08 · P11) ends back on the Vs. Recorder's list, and leaves nothing behind
@@ -1005,7 +1023,7 @@ public partial class GameEngine
                 }
                 break;
             case GameState.Evolution:
-                flow.EvolutionScreen.Update(dt);
+                flow.EvolutionScreen.Update(dt * Pace);
                 if (!flow.EvolutionScreen.IsActive) FinishEvolution();
                 break;
             case GameState.Hatch:
@@ -1372,6 +1390,7 @@ public partial class GameEngine
 
         // Overworld Player Movement
         flow.Player.Moves = FieldMovement.MovesOf(flow.Party);
+        flow.Player.Autorun = Settings.Autorun;
         flow.Player.Lead = WildLead.Of(flow.Party, flow.EncounterAids);
         flow.Player.Moment = momentOf ??= EncounterMomentNow;
         if (Steering is { } steer) flow.Player.Advance(dt, flow.Map, steer.Want, steer.Run, StartWildBattle, HandleWarp, OnStep);

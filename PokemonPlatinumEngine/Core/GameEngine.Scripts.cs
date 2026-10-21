@@ -754,6 +754,7 @@ public partial class GameEngine
         if (ScriptRunning && ReadTheSkip(dt)) return;
         if (ScriptRunning) AdvanceScriptedWalks(FieldTime(dt));
 
+        flow.Dialogue.AutoAdvanceAfter = GameSettings.AutoAdvanceAfter(Settings.AutoAdvance);
         if (flow.Choice.IsOpen) flow.Choice.ReadKeys();
         else flow.Dialogue.Update(dt);
         AnswerQuestion();

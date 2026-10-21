@@ -10,11 +10,51 @@ namespace PokemonPlatinumEngine.UI;
 /// <summary>What sits over the field: dialogue, the start menu, the location sign and notices.</summary>
 internal static partial class ModernUi
 {
+    /// <summary>The frame the text box is drawn in (the options' Text frame, plan 08 · P2); <see cref="Core.GameEngine.ApplySettings"/> sets it.</summary>
+    internal static TextFrame TextFrame { get; set; } = TextFrame.Plain;
+
+    /// <summary>
+    /// The text box's panel in a frame (style guide, "Field menus and notices", "Text frames"): six of our own, all
+    /// drawn with shapes. Returns the colour its writing is in.
+    /// </summary>
+    internal static Color DrawTextBox(Rectangle r, TextFrame frame)
+    {
+        var clear = new Color(0, 0, 0, 0);
+        switch (frame)
+        {
+            case TextFrame.DoubleRule:
+                Panel(r, 32);
+                UiShapes.Shape(new Rectangle(r.X + 12, r.Y + 12, r.Width - 24, r.Height - 24), 22, clear, clear, Frame, 2);
+                return Ink;
+            case TextFrame.Wood:
+                Panel(r, 28, 0f, 10f, new Color(122, 82, 46, 255));
+                UiShapes.Shape(new Rectangle(r.X + 10, r.Y + 10, r.Width - 20, r.Height - 20), 20, clear, clear, new Color(176, 128, 78, 255), 2);
+                return Ink;
+            case TextFrame.Stone:
+                Panel(r, 10, 0f, 10f, new Color(112, 118, 130, 255));
+                UiShapes.Shape(new Rectangle(r.X + 10, r.Y + 10, r.Width - 20, r.Height - 20), 4, clear, clear, new Color(168, 174, 186, 255), 2);
+                return Ink;
+            case TextFrame.Glass:
+                var dark = new Color(24, 30, 52, 235);
+                UiShapes.Shadow(r, 32, 24, new Vector2(0, 8), ShadowColor);
+                UiShapes.Shape(r, 32, Lighter(dark, 0.06f), dark, new Color(120, 150, 210, 255), 3);
+                return new Color(236, 242, 255, 255);
+            case TextFrame.Ribbon:
+                Panel(r, 32);
+                UiShapes.Fill(new Rectangle(r.X + 56, r.Y - 8, r.Width - 112, 16), 8, Red);
+                UiShapes.Fill(new Rectangle(r.X + 56, r.Y + r.Height - 8, r.Width - 112, 16), 8, Red);
+                return Ink;
+            default:
+                Panel(r, 32);
+                return Ink;
+        }
+    }
+
     public static void DrawDialogue(int sw, int sh, string speaker, string visibleText, bool complete)
     {
         // The box's measures are DialogueBox's, which a check with no window reads too (plan 16 · T8)
         var r = new Rectangle(DialogueBox.Side, sh - DialogueBox.Foot - DialogueBox.Height, sw - DialogueBox.Side * 2, DialogueBox.Height);
-        Panel(r, 32);
+        var ink = DrawTextBox(r, TextFrame);
         if (!string.IsNullOrEmpty(speaker))
         {
             float w = UiFonts.Measure(speaker, 30, UiWeight.Black) + 56;
@@ -23,7 +63,7 @@ internal static partial class ModernUi
             UiShapes.Shape(tag, 29, Lighter(Red, 0.12f), Darker(Red, 0.08f), Darker(Red, 0.3f), 3);
             UiFonts.DrawCentered(speaker, tag.X + 28, tag.Y + 29, 30, Color.White, UiWeight.Black);
         }
-        DrawWrapped(visibleText, r.X + DialogueBox.TextLeft, r.Y + DialogueBox.TextTop, DialogueBox.TextWidth(sw), DialogueBox.TextSize, Ink, DialogueBox.RowHeight, DialogueBox.TextWeight);
+        DrawWrapped(visibleText, r.X + DialogueBox.TextLeft, r.Y + DialogueBox.TextTop, DialogueBox.TextWidth(sw), DialogueBox.TextSize, ink, DialogueBox.RowHeight, DialogueBox.TextWeight);
         if (complete) AdvanceArrow(r.X + r.Width - 80, r.Y + r.Height - 60);
     }
 

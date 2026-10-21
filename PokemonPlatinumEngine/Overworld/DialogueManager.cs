@@ -80,6 +80,7 @@ public class DialogueManager
             if (currentSpeaker.Length > 0 && currentLine.StartsWith(prefix, StringComparison.Ordinal)) currentLine = currentLine[prefix.Length..];
             charIndex = 0;
             charProgress = 0f;
+            autoAdvanceWaited = 0f;
             AudioManager.PlaySound("text");
         }
         else
@@ -110,8 +111,18 @@ public class DialogueManager
             {
                 AdvanceLine();
             }
+            else if (AutoAdvanceAfter is { } pause)
+            {
+                // A whole line goes on by itself once it has been read (plan 08 · P2); a question never does
+                autoAdvanceWaited += dt;
+                if (autoAdvanceWaited >= pause) AdvanceLine();
+            }
         }
     }
+
+    /// <summary>How long a whole line waits before it goes on by itself (the options' auto-advance, plan 08 · P2); null when it waits for a press.</summary>
+    public float? AutoAdvanceAfter { get; set; }
+    private float autoAdvanceWaited;
 
     /// <summary>Writes out as much of the line as the time allows, at the same pace whatever the frame rate.</summary>
     public void Type(float dt)
