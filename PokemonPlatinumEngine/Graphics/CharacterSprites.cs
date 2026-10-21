@@ -8,7 +8,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>Which strip of sprite frames a pose takes its frame from.</summary>
-internal enum SpriteAnim { Idle, Walk, Run, Hop, Wave, Surprised, Nod, Cheer, Bow, Shrug, Point, Laugh, Sit, SitGround, Lie }
+internal enum SpriteAnim { Idle, Walk, Run, Hop, Wave, Surprised, Nod, Cheer, Bow, Shrug, Point, Laugh, Sit, SitGround, Lie, Swim, Fish, Tug }
 
 /// <summary>One baked sprite frame: a character type, facing, strip, frame, and its face.</summary>
 internal readonly record struct SpriteKey(CharacterRig Rig, int Facing, SpriteAnim Anim, int Frame, bool Blink, Expression Expression);
@@ -33,7 +33,7 @@ internal static class CharacterSprites
     // Seen a little from above, like hand-drawn overworld sprites
     internal const float ViewPitchDeg = 24f;
 
-    public const int WalkFrames = 8, IdleFrames = 2, HopFrames = 3, EmoteFrames = 6;
+    public const int WalkFrames = 8, IdleFrames = 2, HopFrames = 3, EmoteFrames = 6, SwimFrames = 4, TugFrames = 3;
 
     /// <summary>Seconds per idle breath (in and out), as in the idle clip.</summary>
     private const float BreathPeriod = 3.4f;
@@ -88,8 +88,14 @@ internal static class CharacterSprites
         // A stance has its own two breaths, and nothing else shows over it (plan 11 · C7)
         if (pose.Stance != Overworld.Stance.Stand)
         {
-            int breathing = MathF.Sin(pose.Time * MathF.Tau / BreathPeriod) > 0f ? 1 : 0;
-            return new SpriteKey(rig, facing, StripOf(pose.Stance), breathing, pose.Blink, expression);
+            // A swim's four frames go round with its stroke and a tug's three with its pull (plan 11 · C8)
+            int frame = pose.Stance switch
+            {
+                Overworld.Stance.Swim => (int)(Fraction(pose.Time / Overworld.Seats.StrokeSeconds) * SwimFrames) % SwimFrames,
+                Overworld.Stance.Tug => (int)(Fraction(pose.Time / Overworld.Seats.TugSeconds) * TugFrames) % TugFrames,
+                _ => MathF.Sin(pose.Time * MathF.Tau / BreathPeriod) > 0f ? 1 : 0
+            };
+            return new SpriteKey(rig, facing, StripOf(pose.Stance), frame, pose.Blink, expression);
         }
         if (pose.Hop > 0f && pose.Hop < 1f)
             return new SpriteKey(rig, facing, SpriteAnim.Hop, Math.Clamp((int)(pose.Hop * HopFrames), 0, HopFrames - 1), pose.Blink, expression);
@@ -131,6 +137,9 @@ internal static class CharacterSprites
     {
         Overworld.Stance.Sit => SpriteAnim.Sit,
         Overworld.Stance.SitGround => SpriteAnim.SitGround,
+        Overworld.Stance.Swim => SpriteAnim.Swim,
+        Overworld.Stance.Fish => SpriteAnim.Fish,
+        Overworld.Stance.Tug => SpriteAnim.Tug,
         _ => SpriteAnim.Lie
     };
 
@@ -140,6 +149,9 @@ internal static class CharacterSprites
         SpriteAnim.Sit => Overworld.Stance.Sit,
         SpriteAnim.SitGround => Overworld.Stance.SitGround,
         SpriteAnim.Lie => Overworld.Stance.Lie,
+        SpriteAnim.Swim => Overworld.Stance.Swim,
+        SpriteAnim.Fish => Overworld.Stance.Fish,
+        SpriteAnim.Tug => Overworld.Stance.Tug,
         _ => null
     };
 
@@ -180,9 +192,19 @@ internal static class CharacterSprites
             case SpriteAnim.Sit:
             case SpriteAnim.SitGround:
             case SpriteAnim.Lie:
+            case SpriteAnim.Fish:
                 // A stance's two breaths, as the idle's (plan 11 · C7)
                 pose.Stance = StanceOf(key.Anim)!.Value;
                 pose.Time = (key.Frame == 0 ? 0.75f : 0.25f) * BreathPeriod;
+                break;
+            case SpriteAnim.Swim:
+                // The middle of each quarter of the stroke, and of each third of the pull (plan 11 · C8)
+                pose.Stance = Overworld.Stance.Swim;
+                pose.Time = (key.Frame + 0.5f) / SwimFrames * Overworld.Seats.StrokeSeconds;
+                break;
+            case SpriteAnim.Tug:
+                pose.Stance = Overworld.Stance.Tug;
+                pose.Time = (key.Frame + 0.5f) / TugFrames * Overworld.Seats.TugSeconds;
                 break;
             default:
                 pose.Emote = EmoteOf(key.Anim);
@@ -243,6 +265,20 @@ internal static class CharacterSprites
         }
     }
 
+    /// <summary>
+    /// The row of a swimmer's sprite the water's surface lies along (plan 11 · C8): the shoulders' height as the
+    /// sprite's camera, 24° above, sees it. Everything below it is left out of the frame.
+    /// </summary>
+    public static int WaterLineRow(CharacterRig rig)
+    {
+        float pitch = ViewPitchDeg * MathF.PI / 180f;
+        float shoulders = WaterLineHeight(rig), look = FrameH / 2f - 0.05f;
+        return (int)MathF.Round(SpriteH / 2f - (shoulders - look) * MathF.Cos(pitch) * TexelsPerUnit);
+    }
+
+    /// <summary>How high on a swimmer the water comes, in the rig's units: a little under the shoulders, so they and the stroke show.</summary>
+    public static float WaterLineHeight(CharacterRig rig) => (rig.Skeleton[HumanBones.UpperArmL].Joint.Y - 0.07f) * rig.Scale;
+
     /// <summary>Renders the frame from the 3D rig, stamps the pixel face and outlines it.</summary>
     internal static PixelCanvas Render(RenderContext context, SpriteKey key)
     {
@@ -283,6 +319,13 @@ internal static class CharacterSprites
             var up = new Vector3(0, MathF.Cos(pitch), -MathF.Sin(pitch));
             var px = new Vector2(SpriteW / 2f + d.X * TexelsPerUnit, SpriteH / 2f - Vector3.Dot(d, up) * TexelsPerUnit);
             CharacterFaces.Stamp(canvas, px, key.Facing, rig.Style, key.Expression, key.Blink);
+        }
+        // A swimmer is what shows above the water: nothing below the shoulders' line (plan 11 · C8)
+        if (key.Anim == SpriteAnim.Swim)
+        {
+            int line = WaterLineRow(rig);
+            for (int y = line + 1; y < SpriteH; y++)
+                for (int x = 0; x < SpriteW; x++) canvas.SetRaw(x, y, new Color(0, 0, 0, 0));
         }
         canvas.OutlinePass(innerSeams: false);
         return canvas;

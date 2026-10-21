@@ -118,7 +118,7 @@ public sealed class Wandering
         {
             if (npc.Movement is not { } movement || npc.ReadyForRematch || npc.HasSpottedPlayer || still?.Invoke(npc) == true) continue;
             // Someone seated or lying keeps still and keeps the seat's facing (plan 11 · C7)
-            if (map.StanceOf(npc) != Stance.Stand) continue;
+            if (map.StanceOf(npc) is Stance.Sit or Stance.SitGround or Stance.Lie) continue;
 
             if (steps.TryGetValue(npc, out var walk))
             {

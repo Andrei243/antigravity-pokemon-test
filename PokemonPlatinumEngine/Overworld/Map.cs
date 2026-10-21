@@ -863,6 +863,8 @@ public class Map
     {
         if (npc.Posed is { } posed) return posed;
         if (npc.Stance is { } given) return given;
+        // Someone on open deep water swims (plan 11 · C8), stepping or not
+        if (Seats.SwimsAt(this, npc)) return Stance.Swim;
         if (npc.StepOffsetX != 0f || npc.StepOffsetY != 0f) return Stance.Stand;
         return SeatUnder(npc) is { } seat ? Seats.StanceOn(seat.Type) ?? Stance.Stand : Stance.Stand;
     }

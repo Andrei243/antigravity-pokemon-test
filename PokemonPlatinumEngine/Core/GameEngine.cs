@@ -1469,7 +1469,8 @@ public partial class GameEngine
             .Select(n => PlayerIdentity.CharacterFor(n.NpcType))
             .Append(PlayerIdentity.Character).Append("PLAYER").Append("DAWN")
             .ToList();
-        if (trim) CharacterModels.Trim(looks);
+        // (and the player's look holding a rod, which a cast builds: plan 11 · C8)
+        if (trim) CharacterModels.Trim(looks.Append(CharacterStyle.Holding(PlayerIdentity.Character, HeldProp.Rod)));
         CharacterModels.Preload(looks);
         // The Pokémon that stand in the field near the player (plan 10 · F1), whose sprites are baked from their
         // models: only those no earlier run has baked (plan 03 · D13), so that they are there before they are in view
@@ -1864,7 +1865,7 @@ public partial class GameEngine
             // Face player (a trainer goes back to looking the old way if they win); a thing stays as it is, and so does
             // someone seated or lying, who keeps the seat's facing (plan 11 · C7)
             if (npc.IsTrainer) npc.LeavePost();
-            if (!npc.IsThing && flow.Map.StanceOf(npc) == Overworld.Stance.Stand) npc.FaceTowards(flow.Player.GridX, flow.Player.GridY);
+            if (!npc.IsThing && flow.Map.StanceOf(npc) is Overworld.Stance.Stand or Overworld.Stance.Swim) npc.FaceTowards(flow.Player.GridX, flow.Player.GridY);
             // Someone spoken to counts toward the Hallowed Tower's stirring, once each (plan 08 · P12)
             if (!npc.IsThing && !npc.IsPokemon) flow.Story.Greet(GreetingKey(flow.Map, npc));
 
