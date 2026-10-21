@@ -48,6 +48,28 @@
     "Yanma",
     "Tangela"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Yanma",
+      "Tangela"
+    ],
+    "sapphire": [
+      "Yanma",
+      "Tangela"
+    ],
+    "emerald": [
+      "Yanma",
+      "Tangela"
+    ],
+    "fireRed": [
+      "Arbok",
+      "Arbok"
+    ],
+    "leafGreen": [
+      "Yanma",
+      "Tangela"
+    ]
+  },
   "water": [
     { "species": "Wooper", "level": 20, "maxLevel": 30 },
     { "species": "Wooper", "level": 20, "maxLevel": 30 },

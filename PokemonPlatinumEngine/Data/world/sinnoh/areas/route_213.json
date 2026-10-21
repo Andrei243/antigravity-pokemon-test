@@ -48,6 +48,28 @@
     "Swellow",
     "Swellow"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Buizel",
+      "Shellos"
+    ],
+    "sapphire": [
+      "Buizel",
+      "Shellos"
+    ],
+    "emerald": [
+      "Buizel",
+      "Shellos"
+    ],
+    "fireRed": [
+      "Buizel",
+      "Shellos"
+    ],
+    "leafGreen": [
+      "Buizel",
+      "Shellos"
+    ]
+  },
   "water": [
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },
     { "species": "Wingull", "level": 20, "maxLevel": 30 },

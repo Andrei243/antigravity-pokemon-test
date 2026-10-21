@@ -48,6 +48,28 @@
     "Torkoal",
     "Torkoal"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Numel",
+      "Rhyhorn"
+    ],
+    "sapphire": [
+      "Numel",
+      "Rhyhorn"
+    ],
+    "emerald": [
+      "Numel",
+      "Rhyhorn"
+    ],
+    "fireRed": [
+      "Numel",
+      "Rhyhorn"
+    ],
+    "leafGreen": [
+      "Numel",
+      "Rhyhorn"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 750, "z": 231, "to": "stark_mountain_room_1", "toWarp": 0 }

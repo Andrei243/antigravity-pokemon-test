@@ -48,6 +48,28 @@
     "Steelix",
     "Gabite"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Steelix",
+      "Gabite"
+    ],
+    "sapphire": [
+      "Steelix",
+      "Gabite"
+    ],
+    "emerald": [
+      "Steelix",
+      "Gabite"
+    ],
+    "fireRed": [
+      "Steelix",
+      "Gabite"
+    ],
+    "leafGreen": [
+      "Steelix",
+      "Gabite"
+    ]
+  },
   "water": [
     { "species": "Floatzel", "level": 30, "maxLevel": 50 },
     { "species": "Floatzel", "level": 30, "maxLevel": 50 },

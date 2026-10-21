@@ -48,6 +48,28 @@
     "Loudred",
     "Loudred"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Solrock",
+      "Solrock"
+    ],
+    "sapphire": [
+      "Lunatone",
+      "Lunatone"
+    ],
+    "emerald": [
+      "Absol",
+      "Chingling"
+    ],
+    "fireRed": [
+      "Absol",
+      "Chingling"
+    ],
+    "leafGreen": [
+      "Absol",
+      "Chingling"
+    ]
+  },
   "warps": [
     { "x": 42, "z": 40, "to": "mt_coronet_4f_rooms_1_and_2", "toWarp": 4 },
     { "x": 13, "z": 19, "to": "mt_coronet_4f_room_3", "toWarp": 0 },

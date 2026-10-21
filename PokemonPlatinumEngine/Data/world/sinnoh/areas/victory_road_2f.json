@@ -48,6 +48,28 @@
     "Onix",
     "Gabite"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Onix",
+      "Gabite"
+    ],
+    "sapphire": [
+      "Onix",
+      "Gabite"
+    ],
+    "emerald": [
+      "Onix",
+      "Gabite"
+    ],
+    "fireRed": [
+      "Onix",
+      "Gabite"
+    ],
+    "leafGreen": [
+      "Onix",
+      "Gabite"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 20, "z": 16, "to": "victory_road_1f", "toWarp": 0 },

@@ -252,6 +252,14 @@
         "off": "Doar luptele cu Elita celor Patru și cu Campionul se păstrează pe Vs. Recorder, pe măsură ce le dai."
       }
     },
+    "slotTwo": {
+      "label": "Jocul din slotul 2",
+      "value": { "None": "Niciunul", "Ruby": "Ruby", "Sapphire": "Sapphire", "Emerald": "Emerald", "FireRed": "FireRed", "LeafGreen": "LeafGreen" },
+      "help": {
+        "None": "Niciun joc în al doilea slot al consolei: iarba are doar Pokémonii Platinum.",
+        "game": "Ca și cum {game} ar fi în al doilea slot al consolei: cu Pokédexul Național, doi dintre Pokémonii lui se întâlnesc în iarba rutelor care îi au."
+      }
+    },
     "controls": {
       "label": "Comenzi",
       "value": "Deschide",

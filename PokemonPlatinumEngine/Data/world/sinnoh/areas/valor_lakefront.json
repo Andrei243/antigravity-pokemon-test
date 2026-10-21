@@ -48,6 +48,28 @@
     "Nidorino",
     "Nidorina"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Girafarig",
+      "Bibarel"
+    ],
+    "sapphire": [
+      "Girafarig",
+      "Bibarel"
+    ],
+    "emerald": [
+      "Girafarig",
+      "Bibarel"
+    ],
+    "fireRed": [
+      "Girafarig",
+      "Bibarel"
+    ],
+    "leafGreen": [
+      "Girafarig",
+      "Bibarel"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 706, "z": 790, "to": "restaurant", "toWarp": 0 },

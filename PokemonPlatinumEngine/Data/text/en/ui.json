@@ -252,6 +252,14 @@
         "off": "Only the battles of the Elite Four and the Champion are kept on the Vs. Recorder, as you fight them."
       }
     },
+    "slotTwo": {
+      "label": "Slot 2 game",
+      "value": { "None": "None", "Ruby": "Ruby", "Sapphire": "Sapphire", "Emerald": "Emerald", "FireRed": "FireRed", "LeafGreen": "LeafGreen" },
+      "help": {
+        "None": "No game in the console's second slot: the grass holds only Platinum's own Pokémon.",
+        "game": "As if {game} were in the console's second slot: once you have the National Pokédex, two of its Pokémon are met in the grass of the routes that have them."
+      }
+    },
     "controls": {
       "label": "Controls",
       "value": "Open",

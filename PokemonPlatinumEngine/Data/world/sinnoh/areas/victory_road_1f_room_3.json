@@ -48,6 +48,28 @@
     "Steelix",
     "Gabite"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Steelix",
+      "Gabite"
+    ],
+    "sapphire": [
+      "Steelix",
+      "Gabite"
+    ],
+    "emerald": [
+      "Steelix",
+      "Gabite"
+    ],
+    "fireRed": [
+      "Steelix",
+      "Gabite"
+    ],
+    "leafGreen": [
+      "Steelix",
+      "Gabite"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 12, "z": 16, "to": "victory_road_1f_room_2", "toWarp": 1 },

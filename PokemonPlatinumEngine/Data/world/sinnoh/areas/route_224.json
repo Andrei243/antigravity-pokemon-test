@@ -48,6 +48,28 @@
     "Beautifly",
     "Dustox"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Beautifly",
+      "Dustox"
+    ],
+    "sapphire": [
+      "Beautifly",
+      "Dustox"
+    ],
+    "emerald": [
+      "Shuckle",
+      "Shuckle"
+    ],
+    "fireRed": [
+      "Beautifly",
+      "Dustox"
+    ],
+    "leafGreen": [
+      "Beautifly",
+      "Dustox"
+    ]
+  },
   "water": [
     { "species": "Pelipper", "level": 35, "maxLevel": 55 },
     { "species": "Tentacruel", "level": 35, "maxLevel": 55 },

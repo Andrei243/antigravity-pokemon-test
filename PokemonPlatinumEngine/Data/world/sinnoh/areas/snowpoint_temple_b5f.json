@@ -48,6 +48,28 @@
     "Jynx",
     "Golbat"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Jynx",
+      "Golbat"
+    ],
+    "sapphire": [
+      "Jynx",
+      "Golbat"
+    ],
+    "emerald": [
+      "Jynx",
+      "Golbat"
+    ],
+    "fireRed": [
+      "Jynx",
+      "Golbat"
+    ],
+    "leafGreen": [
+      "Jynx",
+      "Golbat"
+    ]
+  },
   "warps": [
     { "x": 8, "z": 3, "to": "snowpoint_temple_b4f", "toWarp": 1 }
   ],

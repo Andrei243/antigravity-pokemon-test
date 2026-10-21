@@ -48,6 +48,28 @@
     "Smeargle",
     "Smeargle"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Zangoose",
+      "Zangoose"
+    ],
+    "sapphire": [
+      "Seviper",
+      "Seviper"
+    ],
+    "emerald": [
+      "Roselia",
+      "Bibarel"
+    ],
+    "fireRed": [
+      "Roselia",
+      "Bibarel"
+    ],
+    "leafGreen": [
+      "Roselia",
+      "Bibarel"
+    ]
+  },
   "water": [
     { "species": "Psyduck", "level": 20 },
     { "species": "Psyduck", "level": 20 },

@@ -48,6 +48,28 @@
     "Aron",
     "Aron"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Floatzel",
+      "Gastrodon"
+    ],
+    "sapphire": [
+      "Floatzel",
+      "Gastrodon"
+    ],
+    "emerald": [
+      "Floatzel",
+      "Gastrodon"
+    ],
+    "fireRed": [
+      "Floatzel",
+      "Gastrodon"
+    ],
+    "leafGreen": [
+      "Floatzel",
+      "Gastrodon"
+    ]
+  },
   "water": [
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },
     { "species": "Shellos", "level": 20, "maxLevel": 30 },

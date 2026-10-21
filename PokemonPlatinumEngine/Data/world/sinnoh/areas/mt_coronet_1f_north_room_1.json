@@ -48,6 +48,28 @@
     "Zubat",
     "Chingling"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Zubat",
+      "Chingling"
+    ],
+    "sapphire": [
+      "Zubat",
+      "Chingling"
+    ],
+    "emerald": [
+      "Zubat",
+      "Chingling"
+    ],
+    "fireRed": [
+      "Zubat",
+      "Chingling"
+    ],
+    "leafGreen": [
+      "Zubat",
+      "Chingling"
+    ]
+  },
   "warps": [
     { "x": 21, "z": 61, "to": "mt_coronet_1f_tunnel_room", "toWarp": 1 },
     { "x": 11, "z": 10, "to": "mt_coronet_b1f", "toWarp": 0 },

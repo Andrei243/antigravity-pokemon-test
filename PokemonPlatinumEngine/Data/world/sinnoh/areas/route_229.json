@@ -48,6 +48,28 @@
     "Venonat",
     "Venonat"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Nuzleaf",
+      "Nuzleaf"
+    ],
+    "sapphire": [
+      "Lombre",
+      "Lombre"
+    ],
+    "emerald": [
+      "Pineco",
+      "Pineco"
+    ],
+    "fireRed": [
+      "Beautifly",
+      "Dustox"
+    ],
+    "leafGreen": [
+      "Beautifly",
+      "Dustox"
+    ]
+  },
   "water": [
     { "species": "Surskit", "level": 35, "maxLevel": 45 },
     { "species": "Surskit", "level": 35, "maxLevel": 45 },

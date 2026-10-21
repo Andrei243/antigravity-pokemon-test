@@ -48,6 +48,28 @@
     "Slowpoke",
     "Slowpoke"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Budew",
+      "Budew"
+    ],
+    "sapphire": [
+      "Lotad",
+      "Lotad"
+    ],
+    "emerald": [
+      "Budew",
+      "Budew"
+    ],
+    "fireRed": [
+      "Budew",
+      "Budew"
+    ],
+    "leafGreen": [
+      "Budew",
+      "Budew"
+    ]
+  },
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

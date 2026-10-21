@@ -48,6 +48,28 @@
     "Unown",
     "Unown"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Unown",
+      "Unown"
+    ],
+    "sapphire": [
+      "Unown",
+      "Unown"
+    ],
+    "emerald": [
+      "Unown",
+      "Unown"
+    ],
+    "fireRed": [
+      "Unown",
+      "Unown"
+    ],
+    "leafGreen": [
+      "Unown",
+      "Unown"
+    ]
+  },
   "eastSea": true,
   "unownTable": 1,
   "warps": [

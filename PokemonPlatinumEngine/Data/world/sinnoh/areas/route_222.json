@@ -48,6 +48,28 @@
     "Flaaffy",
     "Flaaffy"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Pelipper",
+      "Magneton"
+    ],
+    "sapphire": [
+      "Pelipper",
+      "Magneton"
+    ],
+    "emerald": [
+      "Pelipper",
+      "Magneton"
+    ],
+    "fireRed": [
+      "Pelipper",
+      "Magneton"
+    ],
+    "leafGreen": [
+      "Pelipper",
+      "Magneton"
+    ]
+  },
   "water": [
     { "species": "Tentacool", "level": 30, "maxLevel": 40 },
     { "species": "Wingull", "level": 30, "maxLevel": 40 },

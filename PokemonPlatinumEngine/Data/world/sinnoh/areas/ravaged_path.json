@@ -48,6 +48,28 @@
     "Zubat",
     "Zubat"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Zubat",
+      "Zubat"
+    ],
+    "sapphire": [
+      "Zubat",
+      "Zubat"
+    ],
+    "emerald": [
+      "Zubat",
+      "Zubat"
+    ],
+    "fireRed": [
+      "Zubat",
+      "Zubat"
+    ],
+    "leafGreen": [
+      "Zubat",
+      "Zubat"
+    ]
+  },
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Zubat", "level": 20, "maxLevel": 30 },

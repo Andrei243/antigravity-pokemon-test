@@ -48,6 +48,28 @@
     "Geodude",
     "Hippopotas"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Geodude",
+      "Hippopotas"
+    ],
+    "sapphire": [
+      "Geodude",
+      "Hippopotas"
+    ],
+    "emerald": [
+      "Geodude",
+      "Hippopotas"
+    ],
+    "fireRed": [
+      "Geodude",
+      "Hippopotas"
+    ],
+    "leafGreen": [
+      "Geodude",
+      "Hippopotas"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 6, "z": 7, "to": "route_214", "toWarp": 2 }

@@ -48,6 +48,28 @@
     "Gible",
     "Onix"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Gible",
+      "Onix"
+    ],
+    "sapphire": [
+      "Gible",
+      "Onix"
+    ],
+    "emerald": [
+      "Gible",
+      "Onix"
+    ],
+    "fireRed": [
+      "Gible",
+      "Onix"
+    ],
+    "leafGreen": [
+      "Sandshrew",
+      "Sandshrew"
+    ]
+  },
   "warps": [
     { "x": 43, "z": 38, "to": "wayward_cave_1f", "toWarp": 3 },
     { "x": 16, "z": 40, "to": "wayward_cave_1f", "toWarp": 2 }

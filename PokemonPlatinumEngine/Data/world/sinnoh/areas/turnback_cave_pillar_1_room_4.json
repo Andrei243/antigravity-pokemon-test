@@ -48,6 +48,28 @@
     "Dusclops",
     "Chingling"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Solrock",
+      "Solrock"
+    ],
+    "sapphire": [
+      "Lunatone",
+      "Lunatone"
+    ],
+    "emerald": [
+      "Dusclops",
+      "Chingling"
+    ],
+    "fireRed": [
+      "Dusclops",
+      "Chingling"
+    ],
+    "leafGreen": [
+      "Dusclops",
+      "Chingling"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 11, "z": 1, "to": "turnback_cave_entrance", "toWarp": 2 },

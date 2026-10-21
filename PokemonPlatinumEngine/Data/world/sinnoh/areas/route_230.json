@@ -48,6 +48,28 @@
     "Togepi",
     "Togepi"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Pelipper",
+      "Floatzel"
+    ],
+    "sapphire": [
+      "Pelipper",
+      "Floatzel"
+    ],
+    "emerald": [
+      "Pelipper",
+      "Floatzel"
+    ],
+    "fireRed": [
+      "Pelipper",
+      "Floatzel"
+    ],
+    "leafGreen": [
+      "Pelipper",
+      "Floatzel"
+    ]
+  },
   "water": [
     { "species": "Sealeo", "level": 35, "maxLevel": 55 },
     { "species": "Pelipper", "level": 35, "maxLevel": 55 },

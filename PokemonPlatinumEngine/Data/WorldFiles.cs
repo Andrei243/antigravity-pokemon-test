@@ -351,6 +351,12 @@ public sealed class WorldAreaFile
     public List<string>? Radar { get; set; }
 
     /// <summary>
+    /// The two species each game in the console's second slot puts in slots 8 and 9 (plan 08 · P23; the original's
+    /// <c>ruby</c>, <c>sapphire</c>, <c>emerald</c>, <c>firered</c> and <c>leafgreen</c>); left out with the land table.
+    /// </summary>
+    public DualSlotTables? DualSlot { get; set; }
+
+    /// <summary>
     /// The wild Pokémon met surfing on the area's water: five slots, met 60, 30, 5, 4 and 1 times in a hundred
     /// (<see cref="WaterSlotWeights"/>), each with a range of levels. Left out when it has none.
     /// </summary>
@@ -520,9 +526,34 @@ public sealed class WorldHabitatsFile
 }
 
 /// <summary>
+/// The species of the five games a Game Boy Advance cartridge in the DS's second slot can be (plan 08 · P23): the two each
+/// puts in the grass's slots 8 and 9. A game with no list of its own (the area's are all the same filler) is null.
+/// </summary>
+public sealed class DualSlotTables
+{
+    public List<string>? Ruby { get; set; }
+    public List<string>? Sapphire { get; set; }
+    public List<string>? Emerald { get; set; }
+    public List<string>? FireRed { get; set; }
+    public List<string>? LeafGreen { get; set; }
+
+    /// <summary>The two species of a game; null for none (no game in the slot) or a game this area has no list for.</summary>
+    public List<string>? Of(Core.SlotTwoGame game) => game switch
+    {
+        Core.SlotTwoGame.Ruby => Ruby,
+        Core.SlotTwoGame.Sapphire => Sapphire,
+        Core.SlotTwoGame.Emerald => Emerald,
+        Core.SlotTwoGame.FireRed => FireRed,
+        Core.SlotTwoGame.LeafGreen => LeafGreen,
+        _ => null
+    };
+}
+
+/// <summary>
+/// <summary>
 /// One area's wild Pokémon by the way they are met: in its grass or cave at each of Platinum's times of day, on its
-/// water and with each rod. Swarms, the Poké Radar and the species a second game in the console calls up are left
-/// out, as the original's Pokédex leaves them out of its area page.
+/// water and with each rod. Swarms, the Poké Radar and the species a second game in the console calls up
+/// (<see cref="DualSlotTables"/>) are left out, as the original's Pokédex leaves them out of its area page.
 /// </summary>
 public sealed class HabitatArea
 {

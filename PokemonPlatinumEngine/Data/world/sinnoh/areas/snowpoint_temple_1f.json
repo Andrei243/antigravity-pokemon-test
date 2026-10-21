@@ -48,6 +48,28 @@
     "Smoochum",
     "Golbat"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Smoochum",
+      "Golbat"
+    ],
+    "sapphire": [
+      "Smoochum",
+      "Golbat"
+    ],
+    "emerald": [
+      "Smoochum",
+      "Golbat"
+    ],
+    "fireRed": [
+      "Smoochum",
+      "Golbat"
+    ],
+    "leafGreen": [
+      "Smoochum",
+      "Golbat"
+    ]
+  },
   "warps": [
     { "x": 8, "z": 13, "to": "snowpoint_city", "toWarp": 2 },
     { "x": 14, "z": 3, "to": "snowpoint_temple_b1f", "toWarp": 0 }

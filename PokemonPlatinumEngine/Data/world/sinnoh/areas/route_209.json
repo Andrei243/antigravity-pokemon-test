@@ -48,6 +48,28 @@
     "Kirlia",
     "Kirlia"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Ralts",
+      "Chansey"
+    ],
+    "sapphire": [
+      "Ralts",
+      "Chansey"
+    ],
+    "emerald": [
+      "Ralts",
+      "Chansey"
+    ],
+    "fireRed": [
+      "Ralts",
+      "Chansey"
+    ],
+    "leafGreen": [
+      "Vulpix",
+      "Vulpix"
+    ]
+  },
   "water": [
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },
     { "species": "Psyduck", "level": 20, "maxLevel": 30 },

@@ -48,6 +48,28 @@
     "Mareep",
     "Mareep"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Buizel",
+      "Shellos"
+    ],
+    "sapphire": [
+      "Buizel",
+      "Shellos"
+    ],
+    "emerald": [
+      "Buizel",
+      "Shellos"
+    ],
+    "fireRed": [
+      "Buizel",
+      "Shellos"
+    ],
+    "leafGreen": [
+      "Buizel",
+      "Shellos"
+    ]
+  },
   "water": [
     { "species": "Shellos", "level": 20, "maxLevel": 30 },
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },

@@ -61,6 +61,13 @@ public enum RulesDefault { Off, Rules, On }
 /// </summary>
 public enum SkipScenes { Off, Seen, Any }
 
+/// <summary>
+/// The Game Boy Advance game that is "in the console's other slot" (plan 08 · P23, the DS's dual slot): none, or one of the
+/// five whose species Platinum's grass swaps in for slots 8 and 9. Not <c>Foreign.GbaGame</c>, which tells which game a
+/// save file was written by.
+/// </summary>
+public enum SlotTwoGame { None, Ruby, Sapphire, Emerald, FireRed, LeafGreen }
+
 public static class RulesDefaults
 {
     /// <summary>Whether the help is on in a game played by these rules.</summary>
@@ -215,6 +222,12 @@ public sealed class GameSettings
     /// nothing is drawn and nothing can be skipped, as in Platinum.
     /// </summary>
     public SkipScenes SkipScenes { get; set; } = SkipScenes.Off;
+
+    /// <summary>
+    /// The game in the console's second slot (plan 08 · P23): with the National Pokédex, its two species take slots 8 and 9 of
+    /// every grass that has them, as in Platinum's dual slot. None unless chosen, so every table is Platinum's as imported.
+    /// </summary>
+    public SlotTwoGame SlotTwo { get; set; } = SlotTwoGame.None;
 
     /// <summary>
     /// The scenes this machine has seen played to their end, in any game (plan 12 · Q20), each by its key

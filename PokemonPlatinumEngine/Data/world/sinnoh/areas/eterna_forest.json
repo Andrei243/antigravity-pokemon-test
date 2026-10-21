@@ -48,6 +48,28 @@
     "Nincada",
     "Nincada"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Seedot",
+      "Seedot"
+    ],
+    "sapphire": [
+      "Buneary",
+      "Gastly"
+    ],
+    "emerald": [
+      "Pineco",
+      "Pineco"
+    ],
+    "fireRed": [
+      "Caterpie",
+      "Metapod"
+    ],
+    "leafGreen": [
+      "Weedle",
+      "Kakuna"
+    ]
+  },
   "warps": [
     { "x": 28, "z": 86, "to": "route_205_south", "toWarp": 0 },
     { "x": 29, "z": 86, "to": "route_205_south", "toWarp": 1 },

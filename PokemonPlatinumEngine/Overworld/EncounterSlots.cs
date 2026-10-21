@@ -30,6 +30,9 @@ public sealed record EncounterMoment
     /// <summary>Whether the player has the National Pokédex: the Trophy Garden's two come only with it, and the Great Marsh draws from its other list.</summary>
     public bool NationalDex { get; init; }
 
+    /// <summary>The game in the console's second slot (plan 08 · P23): its two species take slots 8 and 9 once the National Pokédex is had.</summary>
+    public SlotTwoGame SlotTwo { get; init; }
+
     /// <summary>The Trophy Garden's two, by species; null for a slot nobody has brought yet.</summary>
     public string? TrophyFirst { get; init; }
     public string? TrophySecond { get; init; }
@@ -134,6 +137,14 @@ public static class EncounterSlots
         {
             Put(OverlayNational.FirstLandSlot, area.NationalSlots[0]);
             Put(OverlayNational.FirstLandSlot + 1, area.NationalSlots[1]);
+        }
+        // WildEncounters_ReplaceDualSlotEncounters (plan 08 · P23): the two species of the game in the console's second slot,
+        // in slots 8 and 9, after ours above, which they take the place of. Only with the National Pokédex, and only where the
+        // area has a list for the game
+        if (moment.NationalDex && moment.SlotTwo != SlotTwoGame.None && area.DualSlot?.Of(moment.SlotTwo) is { Count: 2 } dual)
+        {
+            Put(OverlayNational.FirstLandSlot, dual[0]);
+            Put(OverlayNational.FirstLandSlot + 1, dual[1]);
         }
         // WildEncounters_ReplaceTrophyGardenEncounters
         if (area.Key == TrophyGarden && moment.NationalDex)

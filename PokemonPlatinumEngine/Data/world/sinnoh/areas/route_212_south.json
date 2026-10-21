@@ -48,6 +48,28 @@
     "Grimer",
     "Grimer"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Buizel",
+      "Shellos"
+    ],
+    "sapphire": [
+      "Lombre",
+      "Lotad"
+    ],
+    "emerald": [
+      "Buizel",
+      "Shellos"
+    ],
+    "fireRed": [
+      "Ekans",
+      "Ekans"
+    ],
+    "leafGreen": [
+      "Buizel",
+      "Shellos"
+    ]
+  },
   "water": [
     { "species": "Shellos", "level": 20, "maxLevel": 30 },
     { "species": "Tentacool", "level": 20, "maxLevel": 30 },

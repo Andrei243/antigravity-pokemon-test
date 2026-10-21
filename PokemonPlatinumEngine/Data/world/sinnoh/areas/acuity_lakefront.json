@@ -48,6 +48,28 @@
     "Sneasel",
     "Snover"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Sneasel",
+      "Snover"
+    ],
+    "sapphire": [
+      "Sneasel",
+      "Snover"
+    ],
+    "emerald": [
+      "Ursaring",
+      "Ursaring"
+    ],
+    "fireRed": [
+      "Sneasel",
+      "Snover"
+    ],
+    "leafGreen": [
+      "Sneasel",
+      "Snover"
+    ]
+  },
   "warps": [
     { "x": 308, "z": 229, "to": "lake_acuity_low_water", "toWarp": 0 },
     { "x": 309, "z": 229, "to": "lake_acuity_low_water", "toWarp": 1 },

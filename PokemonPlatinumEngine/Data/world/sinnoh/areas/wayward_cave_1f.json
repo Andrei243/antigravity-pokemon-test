@@ -48,6 +48,28 @@
     "Geodude",
     "Onix"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Geodude",
+      "Onix"
+    ],
+    "sapphire": [
+      "Geodude",
+      "Onix"
+    ],
+    "emerald": [
+      "Geodude",
+      "Onix"
+    ],
+    "fireRed": [
+      "Geodude",
+      "Onix"
+    ],
+    "leafGreen": [
+      "Sandshrew",
+      "Sandshrew"
+    ]
+  },
   "warps": [
     { "x": 30, "z": 55, "to": "route_206", "toWarp": 12 },
     { "x": 41, "z": 53, "to": "route_206", "toWarp": 13 },

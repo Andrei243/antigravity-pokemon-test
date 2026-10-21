@@ -48,6 +48,28 @@
     "Tyrogue",
     "Tyrogue"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Machop",
+      "Bronzor"
+    ],
+    "sapphire": [
+      "Machop",
+      "Bronzor"
+    ],
+    "emerald": [
+      "Teddiursa",
+      "Teddiursa"
+    ],
+    "fireRed": [
+      "Machop",
+      "Bronzor"
+    ],
+    "leafGreen": [
+      "Machop",
+      "Bronzor"
+    ]
+  },
   "warps": [
     { "x": 380, "z": 532, "to": "mt_coronet_1f_north_room_1", "toWarp": 2 }
   ],

@@ -48,6 +48,28 @@
     "Slugma",
     "Koffing"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Slugma",
+      "Koffing"
+    ],
+    "sapphire": [
+      "Slugma",
+      "Koffing"
+    ],
+    "emerald": [
+      "Slugma",
+      "Koffing"
+    ],
+    "fireRed": [
+      "Slugma",
+      "Koffing"
+    ],
+    "leafGreen": [
+      "Slugma",
+      "Koffing"
+    ]
+  },
   "eastSea": true,
   "warps": [
     { "x": 47, "z": 2, "to": "stark_mountain_room_3", "toWarp": 0 },

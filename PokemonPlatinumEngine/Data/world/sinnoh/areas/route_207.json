@@ -48,6 +48,28 @@
     "Stantler",
     "Stantler"
   ],
+  "dualSlot": {
+    "ruby": [
+      "Ponyta",
+      "Geodude"
+    ],
+    "sapphire": [
+      "Ponyta",
+      "Geodude"
+    ],
+    "emerald": [
+      "Ponyta",
+      "Geodude"
+    ],
+    "fireRed": [
+      "Ponyta",
+      "Geodude"
+    ],
+    "leafGreen": [
+      "Ponyta",
+      "Geodude"
+    ]
+  },
   "warps": [
     { "x": 341, "z": 712, "to": "mt_coronet_1f_south", "toWarp": 0 },
     { "x": 348, "z": 717, "to": "mt_coronet_2f", "toWarp": 1 }
