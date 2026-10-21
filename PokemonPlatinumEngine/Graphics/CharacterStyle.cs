@@ -1,3 +1,4 @@
+using System;
 using Raylib_cs;
 
 namespace PokemonPlatinumEngine.Graphics;
@@ -73,10 +74,22 @@ internal sealed class CharacterStyle
     /// </summary>
     public static CharacterStyle For(string npcType)
     {
+        // A look holding something (plan 11 · C8): the player fishing is "PLAYER+Rod"
+        HeldProp? held = null;
+        if (npcType.LastIndexOf('+') is var plus and > 0 && Enum.TryParse<HeldProp>(npcType[(plus + 1)..], true, out var holds))
+        {
+            held = holds;
+            npcType = npcType[..plus];
+        }
         var (character, outfit) = Core.Outfit.Undress(npcType);
         var look = Data.CharacterStyles.Default.Get(character);
-        return outfit == null ? look : Dressed(look, outfit);
+        var style = outfit == null ? look : Dressed(look, outfit);
+        if (held is { } h) style.Holds = h;
+        return style;
     }
+
+    /// <summary>The name of a look holding something (plan 11 · C8), which <see cref="For"/> reads back: <c>PLAYER+Rod</c>.</summary>
+    public static string Holding(string npcType, HeldProp held) => $"{npcType}+{held}";
 
     /// <summary>
     /// <paramref name="look"/> with the outfit's garments put on: each changes only what its slot covers (a hat its

@@ -112,4 +112,103 @@ public class StanceTests
         // A stance it doesn't know is the parser's error
         Assert.Throws<ScriptException>(() => ScriptParser.Parse("test", "script S\n pose mom kneel"));
     }
+
+    // ------------------------------------------------------------------ swimming and fishing (plan 11 · C8)
+
+    private static Map Sea()
+    {
+        var map = new Map(12, 12) { Name = "Sea" };
+        for (int x = 0; x < 12; x++)
+            for (int y = 6; y < 12; y++) map.SetGroundTile(x, y, TileType.Water);
+        return map;
+    }
+
+    [Fact]
+    public void SomeoneOnOpenDeepWaterSwimsWithoutBeingTold()
+    {
+        var map = Sea();
+        Assert.True(map.IsDeepWater(4, 8));
+        var swimmer = new NPC { Name = "Swimmer", GridX = 4, GridY = 8 };
+        map.NPCs.Add(swimmer);
+        Assert.Equal(Stance.Swim, map.StanceOf(swimmer));
+        // Stepping, too
+        swimmer.StepOffsetY = 0.5f;
+        Assert.Equal(Stance.Swim, map.StanceOf(swimmer));
+        swimmer.StepOffsetY = 0f;
+        // Not on a deck over it, not wading in a pool, not on land, and not a thing in the water
+        Assert.Equal(Stance.Stand, map.StanceOf(new NPC { Name = "Deck", GridX = 4, GridY = 8, Level = 1f }));
+        Assert.Equal(Stance.Stand, map.StanceOf(new NPC { Name = "Pool", GridX = 4, GridY = 8, Wading = 6 }));
+        Assert.Equal(Stance.Stand, map.StanceOf(new NPC { Name = "Shore", GridX = 4, GridY = 3 }));
+        // A swimmer still moves about and turns, as the original's swimmers do
+        swimmer.Movement = PersonMovement.Parse("look_around", 0, 0, 4, 8, Direction.Down);
+        var wandering = new Wandering();
+        var seen = new System.Collections.Generic.HashSet<Direction>();
+        var rng = new Random(7);
+        for (int frame = 0; frame < 30 * 60; frame++)
+        {
+            wandering.Update(1f / 60f, map, (0, 0), (0, 0), rng);
+            seen.Add(swimmer.Facing);
+        }
+        Assert.True(seen.Count > 1);
+    }
+
+    [Fact]
+    public void ARingSpreadsBehindEveryStrokeAtTheSameTimesHoweverTheFramesFall()
+    {
+        var map = Sea();
+        var once = new PokemonPlatinumEngine.Graphics.FieldLife();
+        var sliced = new PokemonPlatinumEngine.Graphics.FieldLife();
+        // Five seconds of strokes asked for in one go, and in a frame's slices of the same span
+        once.Strokes(map, 4.5f, 8.5f, Direction.Down, 0, 5, 0.3f);
+        for (int i = 0; i < 300; i++) sliced.Strokes(map, 4.5f, 8.5f, Direction.Down, i / 60.0, (i + 1) / 60.0, 0.3f);
+        // One a stroke, each born at its moment: 0.3 + k × 1.2 up to 5 is four
+        Assert.Equal(4, once.Count);
+        Assert.Equal(once.Count, sliced.Count);
+        var a = new System.Collections.Generic.List<PokemonPlatinumEngine.Graphics.LifeQuad>();
+        var b = new System.Collections.Generic.List<PokemonPlatinumEngine.Graphics.LifeQuad>();
+        once.Advance(4.8f);
+        sliced.Advance(4.8f);
+        once.Quads(a, new());
+        sliced.Quads(b, new());
+        Assert.Equal(a, b);
+        // Behind the swimmer: north of them, facing south
+        Assert.All(a, q => Assert.True(q.At.Z < 8.5f));
+        // Indoors, nothing
+        var pool = new PokemonPlatinumEngine.Graphics.FieldLife();
+        var room = Sea();
+        room.Interior = InteriorStyle.House;
+        pool.Strokes(room, 4.5f, 8.5f, Direction.Down, 0, 5, 0.3f);
+        Assert.Equal(0, pool.Count);
+    }
+
+    [Fact]
+    public void TheSwimmingAndFishingClipsDoWhatTheStyleGuideSays()
+    {
+        var player = PokemonPlatinumEngine.Graphics.CharacterModels.Build("PLAYER");
+        float shoulders = PokemonPlatinumEngine.Graphics.CharacterSprites.WaterLineHeight(player);
+        // The water comes to the shoulders: above the hips, under the eyes
+        Assert.True(shoulders > player.Skeleton[PokemonPlatinumEngine.Graphics.HumanBones.Hips].Joint.Y + 0.1f);
+        Assert.True(shoulders < player.Face.Anchor.Y);
+        // In the frame: a row between the face's and the frame's bottom
+        int line = PokemonPlatinumEngine.Graphics.CharacterSprites.WaterLineRow(player);
+        Assert.InRange(line, 15, PokemonPlatinumEngine.Graphics.CharacterSprites.SpriteH - 10);
+
+        // A swimmer's arms go round with the stroke: two moments half a stroke apart differ
+        System.Numerics.Vector3 HandAt(float t, Stance stance)
+        {
+            player.Animate(new PokemonPlatinumEngine.Graphics.CharacterPose { Time = t, Stance = stance });
+            return player.Skin[PokemonPlatinumEngine.Graphics.HumanBones.HandL].Translation;
+        }
+        Assert.NotEqual(HandAt(0.1f, Stance.Swim), HandAt(0.1f + Seats.StrokeSeconds / 2f, Stance.Swim));
+        // The tug's three frames are three poses, the first the rod held out
+        var pulls = Enumerable.Range(0, 3).Select(f => HandAt((f + 0.5f) / 3f * Seats.TugSeconds, Stance.Tug)).ToList();
+        Assert.Equal(3, pulls.Distinct().Count());
+        Assert.Equal(HandAt(0.5f / 3f * Seats.TugSeconds, Stance.Fish), pulls[0]);
+
+        // The player fishing is their own look holding a rod
+        var fishing = PokemonPlatinumEngine.Graphics.CharacterStyle.For(PokemonPlatinumEngine.Graphics.CharacterStyle.Holding("PLAYER", PokemonPlatinumEngine.Graphics.HeldProp.Rod));
+        var plain = PokemonPlatinumEngine.Graphics.CharacterStyle.For("PLAYER");
+        Assert.Equal(PokemonPlatinumEngine.Graphics.HeldProp.Rod, fishing.Holds);
+        Assert.Equal((plain.Top, plain.Hat, plain.Hair), (fishing.Top, fishing.Hat, fishing.Hair));
+    }
 }

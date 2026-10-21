@@ -523,6 +523,13 @@ public partial class GameEngine
         cast.Update(dt, InputManager.IsActionPressed(GameAction.Confirm) || FishingPress);
         FishingPress = false;
         flow.Player.StandStill(dt);
+        // The rod out over the water from the cast, pulled on from the bite until the catch is told (plan 11 · C8)
+        flow.Player.Posed = cast.Stage switch
+        {
+            FishingStage.Done => null,
+            FishingStage.Hooked or FishingStage.Landed => Overworld.Stance.Tug,
+            _ => Overworld.Stance.Fish
+        };
         var (dx, dy) = FieldMovement.Delta(flow.Player.Facing);
         int wx = flow.Player.GridX + dx, wy = flow.Player.GridY + dy;
         if (cast.Stage != before)

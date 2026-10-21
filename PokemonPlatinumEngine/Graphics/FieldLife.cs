@@ -121,6 +121,21 @@ internal sealed partial class FieldLife
         ground is TileType.Path or TileType.Sand or TileType.Dirt or TileType.Snow or TileType.CaveFloor or TileType.Rock;
 
     /// <summary>
+    /// A swimmer's strokes (plan 11 · C8): a ring on the water behind them, the way they face, for every stroke whose
+    /// moment (<paramref name="phase"/> plus whole strokes of <see cref="Seats.StrokeSeconds"/>) falls after
+    /// <paramref name="from"/> and no later than <paramref name="to"/> on the field's clock, born at that moment. So
+    /// the rings are the same however the frames between fall, and two lives told the same have the same rings.
+    /// </summary>
+    public void Strokes(Map map, float x, float z, Direction facing, double from, double to, float phase)
+    {
+        if (to <= from || map.IsIndoors) return;
+        var (dx, dz) = FieldMovement.Delta(facing);
+        float bx = x - dx * 0.35f, bz = z - dz * 0.35f;
+        for (double k = Math.Floor((from - phase) / Seats.StrokeSeconds) + 1; phase + k * Seats.StrokeSeconds <= to; k++)
+            pieces.Add(new Piece(Kind.Ring, new Vector3(bx, Relief.At(map, bx, bz) + 0.02f, bz), phase + k * Seats.StrokeSeconds, RingTint, 0, 0f, 0.9f));
+    }
+
+    /// <summary>
     /// Someone has just stepped onto a tile, walking <paramref name="facing"/>: a print in sand or snow, dust
     /// behind a run, leaves out of tall grass, a ring on the water behind a swimmer, a splash in a puddle.
     /// </summary>

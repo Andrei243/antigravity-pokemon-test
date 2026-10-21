@@ -192,6 +192,9 @@ public class CharacterAnimationTests
     [InlineData("Sit", 2)]
     [InlineData("SitGround", 2)]
     [InlineData("Lie", 2)]
+    [InlineData("Swim", 4)]
+    [InlineData("Fish", 2)]
+    [InlineData("Tug", 3)]
     public void EveryFrameIsBakedFromAPoseThatShowsThatFrame(string anim, int frames)
     {
         var strip = Enum.Parse<SpriteAnim>(anim);
@@ -475,6 +478,9 @@ public class CharacterAnimationTests
         Assert.Equal("down_sit_0.png", CharacterSprites.OverrideName(new SpriteKey(Player, 0, SpriteAnim.Sit, 0, false, Expression.Neutral)));
         Assert.Equal("up_sitground_1.png", CharacterSprites.OverrideName(new SpriteKey(Player, 2, SpriteAnim.SitGround, 1, false, Expression.Neutral)));
         Assert.Equal("left_lie_0_blink.png", CharacterSprites.OverrideName(new SpriteKey(Player, 3, SpriteAnim.Lie, 0, true, Expression.Neutral)));
+        // C8's
+        Assert.Equal("down_swim_3.png", CharacterSprites.OverrideName(new SpriteKey(Player, 0, SpriteAnim.Swim, 3, false, Expression.Neutral)));
+        Assert.Equal("right_tug_2.png", CharacterSprites.OverrideName(new SpriteKey(Player, 1, SpriteAnim.Tug, 2, false, Expression.Neutral)));
     }
 
     [Fact]

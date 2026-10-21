@@ -1057,6 +1057,9 @@ public sealed class WorldRenderer
     /// <summary>How far east of their tile someone is drawn this frame, in tiles: the whole texels a shake throws them (plan 09 · L12).</summary>
     private float NudgeOf(NPC? who) => Pieces.AnyoneMoved ? Pieces.OffsetOf(who, Life.Now) / (float)CharacterSprites.TexelsPerUnit : 0f;
 
+    // Where on the field's clock the swimmers' strokes were last looked for (plan 11 · C8)
+    private double strokesSince;
+
     private void GatherActors(Map map, Player? player, float px, float pz, float groundY, float lift, float time)
     {
         actors.Clear();
@@ -1064,6 +1067,9 @@ public sealed class WorldRenderer
         things.Clear();
         berryPlants.Clear();
         pokemon.Clear();
+        // The strokes swimmers have taken since the last frame drawn are looked for in what has passed of the field's
+        // clock since then (plan 11 · C8); a clock that has gone back (a new place) starts again from now
+        if (strokesSince > Life.Now) strokesSince = Life.Now;
         foreach (var npc in PeopleInSight(map))
         {
             // (Something in the way that nobody sees is drawn as nothing: plan 21 · H6's Kecleon)
@@ -1127,9 +1133,17 @@ public sealed class WorldRenderer
             var at = new Vector3(nx + nudge, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz) - Rows(npc.Wading) + Rows(jump), nz);
             // Sitting or lying on their furniture, never in it (plan 11 · C7; style guide, "Characters", "Stances")
             pose.Stance = map.StanceOf(npc);
+            if (pose.Stance == Overworld.Stance.Swim)
+            {
+                // A swimmer's strokes go by the field's own clock, a ring behind each (plan 11 · C8)
+                float phase = seed * Seats.StrokeSeconds;
+                pose.Time = (float)(Life.Now - phase);
+                Life.Strokes(map, nx + nudge, nz, npc.Facing, strokesSince, Life.Now, phase);
+            }
             if (pose.Stance != Overworld.Stance.Stand) at = Seated(rig, pose.Stance, at, npc.Facing, map.SeatUnder(npc), npc.Level != null, MapScene.PitchOf(map));
             actors.Add(new Actor(rig, at, Player.YawOf(npc.Facing), pose));
         }
+        strokesSince = Life.Now;
 
         // The player too may be shaken or flicker (nobody stands for them)
         if (player == null || !Seen(null)) return;
@@ -1159,7 +1173,11 @@ public sealed class WorldRenderer
         }
         float seat = carrier != null ? CarrierSeat(carrier) : SurfMount.Seat;
         float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump) - Rows(Life.PlankRows(map, px, pz)) * (1f - saddle);
-        var playerRig = CharacterModels.Get(PlayerIdentity.Character, shaders);
+        // Fishing, the player holds the rod (plan 11 · C8): their own look holding one
+        bool fishing = player.Posed is Overworld.Stance.Fish or Overworld.Stance.Tug;
+        // (built in the background the first time a cast is made; the plain look stands in until it is ready)
+        var playerRig = (fishing ? CharacterModels.TryGet(CharacterStyle.Holding(PlayerIdentity.Character, HeldProp.Rod), shaders) : null)
+            ?? CharacterModels.Get(PlayerIdentity.Character, shaders);
         var playerAt = new Vector3(px + NudgeOf(null), feet, pz);
         // A stance a script set them in, while they stand still on foot (plan 11 · C7): a step stands them up again
         if (player.Posed is { } posed && player.Mount == null && player.WalkBlend < 0.5f && player.HopProgress <= 0f)
@@ -1219,6 +1237,14 @@ public sealed class WorldRenderer
                 float neck = rig.Skeleton[HumanBones.Head].Joint.Y * rig.Scale;
                 float onCard = (CharacterAnimation.LieLift * MathF.Cos(CharacterSprites.ViewPitchDeg * MathF.PI / 180f) + neck * MathF.Sin(CharacterSprites.ViewPitchDeg * MathF.PI / 180f)) / MathF.Cos(pitchDeg * MathF.PI / 180f);
                 return at + new Vector3(-dx * 0.2f, height - onCard + 0.02f, -dz * 0.2f);
+            }
+            case Overworld.Stance.Swim:
+            {
+                // Sunk until the sprite's water line is at the water's surface: the rows under it on the card,
+                // stretched as every upright card is, and the margin the card leaves under the feet (plan 11 · C8)
+                float vs = 1f / MathF.Cos(pitchDeg * MathF.PI / 180f);
+                float onCard = ((CharacterSprites.SpriteH - CharacterSprites.WaterLineRow(rig)) / (float)CharacterSprites.TexelsPerUnit - 0.05f) * vs;
+                return at - new Vector3(0, onCard, 0);
             }
             default:
                 return at;

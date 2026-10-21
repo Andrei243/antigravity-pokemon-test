@@ -106,6 +106,49 @@ partial class Harness
         foreach (var npc in poses.NPCs) Console.WriteLine($"  {npc.Name} on {poses.SeatUnder(npc)?.Type.ToString() ?? "the floor"}: {poses.StanceOf(npc)}, facing {npc.Facing}");
         Shot("36d_lineup_poses");
         ShotCrop("36e_lineup_poses_close", 560, 260, 800, 450, 2);
+
+        // And last, the water (plan 11 · C8): swimmers in a pond and the player fishing at its edge, the rod out and
+        // then pulled on, and the strips of the three
+        foreach (var (type, anim, frames) in new[] { ("Swimmer_F", "Swim", CharacterSprites.SwimFrames), ("PLAYER+Rod", "Fish", 2), ("PLAYER+Rod", "Tug", CharacterSprites.TugFrames) })
+        {
+            string name = $"38_sheet_{type.Replace("+", "_").ToLowerInvariant()}_{anim.ToLowerInvariant()}";
+            if (Wanted(name)) Save(Strip(type, anim, frames), name);
+        }
+        var pond = BuildPond();
+        game.Map = pond;
+        game.Player.SetPosition(5, 5, Direction.Down);
+        // The rod's rig is built before the shot, as a cast's first second would
+        CharacterModels.Get(CharacterStyle.Holding(PlayerIdentity.Character, HeldProp.Rod), game.RenderContext.Shaders);
+        game.Player.Posed = PokemonPlatinumEngine.Overworld.Stance.Fish;
+        Frames(3);
+        Skip(0.6);
+        foreach (var npc in pond.NPCs) Console.WriteLine($"  {npc.Name}: {pond.StanceOf(npc)}");
+        Console.WriteLine($"  rings on the water: {game.World.Life.Count}");
+        Shot("36f_lineup_water");
+        ShotCrop("36g_lineup_water_close", 560, 300, 800, 450, 2);
+        game.Player.Posed = PokemonPlatinumEngine.Overworld.Stance.Tug;
+        Frames(2);
+        ShotCrop("36h_lineup_water_tug", 560, 300, 800, 450, 2);
+        game.Player.Posed = null;
+    }
+
+    // A pond south of a lawn, swimmers in it and the shore above it (plan 11 · C8)
+    static Map BuildPond()
+    {
+        var m = new Map(16, 13) { Name = "Pond", DisplayName = "Pond" };
+        for (int x = 0; x < 16; x++)
+            for (int y = 0; y < 13; y++)
+            {
+                if (x == 0 || x == 15 || y == 0 || y == 12) m.SetGroundTile(x, y, TileType.Tree, true);
+                else if (y >= 6) m.SetGroundTile(x, y, TileType.Water);
+            }
+        void Swimmer(string type, int x, int y, Direction facing) =>
+            m.NPCs.Add(new NPC { Name = $"{type}_{x}_{y}", NpcType = type, GridX = x, GridY = y, Facing = facing });
+        Swimmer("Swimmer_M", 8, 8, Direction.Down);
+        Swimmer("Swimmer_F", 10, 7, Direction.Left);
+        Swimmer("Tuber_F", 6, 9, Direction.Right);
+        Swimmer("Fisherman", 9, 5, Direction.Down);
+        return m;
     }
 
     // A room of a house with a seat of every kind and a bed, someone on each, and one posed on the floor (plan 11 · C7)

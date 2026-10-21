@@ -115,7 +115,7 @@ internal static class CharacterAnimation
         // A stance is breathed in as the idle is, and nothing else plays over it (plan 11 · C7)
         if (p.Stance != Overworld.Stance.Stand)
         {
-            StanceClip(rig, p.Stance, pose);
+            StanceClip(rig, p.Stance, p.Time, pose);
             return;
         }
         if (p.WalkBlend > 0f)
@@ -160,7 +160,7 @@ internal static class CharacterAnimation
     /// the hips drop to it and the legs lie out ahead; lying, the body turns onto its back about the feet, the head
     /// along the way behind them, lifted by the body's depth so the back rests on what is under it.
     /// </summary>
-    private static void StanceClip(CharacterRig rig, Overworld.Stance stance, SkeletonPose pose)
+    private static void StanceClip(CharacterRig rig, Overworld.Stance stance, float time, SkeletonPose pose)
     {
         float hips = rig.Skeleton[HumanBones.Hips].Joint.Y, knee = rig.Skeleton[HumanBones.ShinL].Joint.Y;
         switch (stance)
@@ -197,6 +197,41 @@ internal static class CharacterAnimation
                 pose.Turn(HumanBones.UpperArmL, 0f, 0f, 0.12f);
                 pose.Turn(HumanBones.UpperArmR, 0f, 0f, -0.12f);
                 break;
+            case Overworld.Stance.Swim:
+            {
+                // Treading water upright (plan 11 · C8): the arms out at the shoulders' height sweeping out and round
+                // in a breaststroke, a stroke every Seats.StrokeSeconds, the legs a little apart and kicking
+                float phase = time / Overworld.Seats.StrokeSeconds * Tau;
+                float sweep = 0.5f + 0.5f * MathF.Sin(phase);
+                pose.Turn(HumanBones.Spine, 0.08f);
+                pose.Turn(HumanBones.Head, -0.12f);
+                pose.Turn(HumanBones.UpperArmL, -1.15f, 0f, -0.2f - 0.55f * sweep);
+                pose.Turn(HumanBones.UpperArmR, -1.15f, 0f, 0.2f + 0.55f * sweep);
+                pose.Turn(HumanBones.ForeArmL, -0.7f + 0.5f * sweep);
+                pose.Turn(HumanBones.ForeArmR, -0.7f + 0.5f * sweep);
+                pose.Turn(HumanBones.ThighL, -0.3f - 0.15f * MathF.Cos(phase), 0f, 0.12f);
+                pose.Turn(HumanBones.ThighR, -0.3f - 0.15f * MathF.Cos(phase), 0f, -0.12f);
+                pose.Turn(HumanBones.ShinL, 0.6f);
+                pose.Turn(HumanBones.ShinR, 0.6f);
+                pose.Turn(HumanBones.Hair, 0.04f * MathF.Sin(phase));
+                break;
+            }
+            case Overworld.Stance.Fish:
+            case Overworld.Stance.Tug:
+            {
+                // The rod out over the water in both hands, the right forward (plan 11 · C8); on a bite the arms pull
+                // back and up in three beats a pull, the body leaning back against it
+                float pull = stance == Overworld.Stance.Tug ? MathF.Floor(time / Overworld.Seats.TugSeconds % 1f * 3f) / 2f : 0f;
+                pose.Turn(HumanBones.Spine, -0.12f * pull);
+                pose.Turn(HumanBones.UpperArmR, -0.95f - 0.55f * pull, 0f, 0.15f);
+                pose.Turn(HumanBones.ForeArmR, -0.45f - 0.3f * pull);
+                // The wrist tipped down so the rod points out over the water nearly level, not up with the raised arm
+                // (a rod tilted up toward the camera as much as the sprite's camera looks down would vanish from the front)
+                pose.Turn(HumanBones.HandR, 1.85f - 0.7f * pull, -0.55f);
+                pose.Turn(HumanBones.UpperArmL, -0.8f - 0.5f * pull, 0f, 0.35f);
+                pose.Turn(HumanBones.ForeArmL, -0.75f - 0.3f * pull, 0f, 0.3f);
+                break;
+            }
         }
     }
 
