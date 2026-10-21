@@ -131,6 +131,20 @@ public class DataFileTests
     }
 
     [Fact]
+    public void EveryFormHasItsOwnWrittenEntries()
+    {
+        // Plan 08 · P17: all 541 forms, each by its Showdown name, with two entries and a habitat of its own for the FORMS page
+        var forms = PokemonDatabase.GetAll().SelectMany(s => s.Forms ?? new List<PokemonForm>()).ToList();
+        Assert.True(forms.Count >= 541, "The data has " + forms.Count + " forms");
+        var missing = forms.Where(f => DexEntries.Of(f.Name) == null).Select(f => f.Name).ToList();
+        Assert.True(missing.Count == 0, "No written entries for " + string.Join(", ", missing));
+        foreach (var form in forms)
+            Assert.Equal(2, DexEntries.EntriesOf(form.Name)!.Count);
+        // The file holds exactly the species and the forms
+        Assert.Equal(PokemonDatabase.GetAll().Count() + forms.Count, DexEntries.All.Count);
+    }
+
+    [Fact]
     public void EverySpeciesUpToTheFloorHasItsWrittenEntries()
     {
         var wanted = PokemonDatabase.GetAll().Where(s => s.SinnohNumber != null || s.DexNumber <= WrittenEntriesThrough).ToList();
