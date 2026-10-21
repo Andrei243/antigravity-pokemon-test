@@ -41,6 +41,23 @@ partial class Harness
         Frames(30); Shot("20b_summary");
         partyScreen.MoveCursor(0, 1, party.Count);
         Frames(30); Shot("20c_summary_second");
+        // The summary's other pages and its marks (plan 08 · P3): the memo, the skills, a mark set on the first page
+        var marked = party.Members[1];
+        partyScreen.TurnSummaryPage(1);
+        Frames(20); Shot("20f_summary_memo");
+        partyScreen.TurnSummaryPage(1);
+        Frames(20); Shot("20g_summary_skills");
+        partyScreen.TurnSummaryPage(-1);
+        partyScreen.TurnSummaryPage(-1);
+        partyScreen.EditMarks(marked);
+        partyScreen.View.MoveMark(1);
+        partyScreen.View.ToggleMark(marked);
+        partyScreen.View.MoveMark(1);
+        Frames(10); Shot("20h_summary_marks");
+        Console.WriteLine($"summary marks: {marked.Marks} (cursor {partyScreen.MarkCursor}), characteristic: {Characteristics.Line(marked)}");
+        partyScreen.View.MoveMark(-1);
+        partyScreen.View.ToggleMark(marked);
+        partyScreen.View.LeaveMarks();
         // Pokérus (plan 06 · R10): the PKRS tag after the status, on the summary and on the party's card
         party.Members[1].Pokerus = 0x34;
         Frames(4); Shot("20d_summary_pokerus");
