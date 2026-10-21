@@ -5,7 +5,7 @@
 # Pokémon waiting in the park and six free places in the PC boxes, steps aside and lets the player through the door
 # to the park. VAR_PAL_PARK_STATE says how the player comes back: 1 with all six caught (the score is told, the
 # record kept, a berry given, and the six sent to the boxes or left in the park for another try), 2 having given
-# up (the six go on waiting). Nothing is migrated (plan 08 · P20 to P23 were dropped): when nothing waits, or another
+# up (the six go on waiting). Pokémon brought over from the player's own files wait here too (plan 08 · P21): when nothing waits, or another
 # day's six do, palpark check lets the day's six visitors come, the next six of the species Sinnoh has no other way to
 # by a fixed rotation by the date (plan 03 · D12a, the user's choice; Models/Pastimes.cs PalParkState.Welcome).
 #

@@ -277,6 +277,7 @@
       "newGame": "NEW GAME",
       "delete": "DELETE A SAVE",
       "deleteWhich": "DELETE WHICH SAVE?",
+      "migrate": "MIGRATE",
       "options": "OPTIONS",
       "quit": "QUIT"
     },
@@ -1160,6 +1161,77 @@
     "putOut": "The {thing} was put out.",
     "takenAway": "The {thing} was taken away.",
     "putAway": "The {thing} was put away."
+  },
+  "migrate": {
+    "title": "MIGRATE",
+    "hints": { "bring": "Bring" },
+    "keyBoxes": "Q / E",
+    "slot": "SLOT {slot}",
+    "national": { "yes": "NATIONAL POKÉDEX", "no": "NO NATIONAL POKÉDEX" },
+    "parkLabel": "PAL PARK",
+    "park": { "waiting": "{n} Pokémon wait there for the Catching Show.", "empty": "Nothing waits there yet." },
+    "pokemonLabel": "POKÉMON",
+    "empty": "There is nothing in the migrate folder to bring Pokémon from.",
+    "cantread": "CAN'T READ",
+    "trainer": "TRAINER",
+    "pokemon": { "count": "{n} in the boxes" },
+    "ready": "READY",
+    "waits": "NOT NOW",
+    "badEgg": "BAD EGG",
+    "egg": "EGG",
+    "chosen": "{n} / {of} CHOSEN",
+    "emptyPlace": "Nothing is here.",
+    "levelOf": "Lv. {level} {species}",
+    "ot": "ORIGINAL TRAINER",
+    "picked": "CHOSEN",
+    "canCome": "CAN COME",
+    "cantCome": "CAN'T COME",
+    "six": "THE SIX",
+    "confirm": {
+      "title": "Bring these {n} over?",
+      "body": "They will wait in Pal Park for the Catching Show, and {who} gives no more for a day. The file is left as it is.",
+      "no": "NO, WAIT",
+      "yes": "YES, BRING THEM"
+    },
+    "working": { "title": "Bringing them over", "body": "Saving the game." },
+    "result": {
+      "done": { "title": "They are on their way", "body": "{n} Pokémon wait in Pal Park for the Catching Show." },
+      "refused": { "title": "Nothing was brought over" },
+      "ok": "OK"
+    },
+    "kind": { "gba": "GBA SAVE", "platinum": "PLATINUM SAVE", "files": "{n} POKÉMON FILES", "file": "POKÉMON FILE", "unknown": "FILE" },
+    "refused": {
+      "size": "This file is none of the saves or Pokémon files the game knows.",
+      "save": "This save is damaged: no copy of it is whole, so none of it was read.",
+      "pokemon": "This Pokémon file is empty or damaged, so none of it was read.",
+      "unreadable": "The game could not open this file."
+    },
+    "files": { "name": "Pokémon files", "box": "FILES {n}" },
+    "why": {
+      "egg": "An Egg can't come over.",
+      "hm": "It knows a move of the older games that the park won't take: Cut, Fly, Surf, Strength, Flash, Rock Smash, Waterfall or Dive.",
+      "item": "It holds a key item or a machine of the older games.",
+      "species": "The park has no such Pokémon.",
+      "before": "It has come over before.",
+      "impossible": "{why}"
+    },
+    "impossible": {
+      "species": "Its species is not one this game has.",
+      "exp": "It has more EXP than a level 100 Pokémon can have.",
+      "effort": "Its effort is more than any Pokémon can have.",
+      "ivs": "Its IVs are out of bounds.",
+      "item": "It holds something this game doesn't have.",
+      "move": "It knows {move}, which it can't learn."
+    },
+    "block": {
+      "national": "Pal Park takes Pokémon only once the save has the National Pokédex.",
+      "tooFew": "There are fewer than {n} Pokémon in its boxes.",
+      "stocked": "The Pokémon that came before still wait in Pal Park for the Catching Show.",
+      "wait": "This one gave Pokémon in the last day. Try again in {hours} h.",
+      "notSix": "{n} different Pokémon must be chosen.",
+      "refused": "One of the Pokémon chosen can't come.",
+      "notSaved": "The save could not be written, so nothing was brought over."
+    }
   },
   "replays": {
     "title": "VS. RECORDER",

@@ -35,6 +35,7 @@ public sealed partial class GameFlow
     public HallOfFameScreen HallOfFameScreen { get; } = new();
     public JournalScreen JournalScreen { get; } = new();
     public ReplayListScreen ReplayListScreen { get; } = new();
+    public MigrateScreen MigrateScreen { get; } = new();
     public HatchScreen HatchScreen { get; } = new();
     public HallOfFameCeremony Ceremony { get; } = new();
     public CreditsScreen Credits { get; } = new();

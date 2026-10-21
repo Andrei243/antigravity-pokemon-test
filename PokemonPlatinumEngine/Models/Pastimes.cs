@@ -33,13 +33,26 @@ public sealed class Pastimes
         EggsHatched = save?.EggsHatched ?? 0;
         FossilsRevived = save?.FossilsRevived ?? 0;
         PalPark.Load(save?.Waiting);
+        PalPark.Ledger.Load(save?.Sources, save?.Came);
     }
 
     public PastimesSave ToSave() => new()
     {
         Coins = Coins.Coins, Steps = Steps, BerriesPlanted = BerriesPlanted, EggsHatched = EggsHatched, FossilsRevived = FossilsRevived,
-        Waiting = PalPark.Waiting.Count > 0 ? PalPark.Waiting.Select(Core.SavedPokemonData.FromPokemon).ToList() : null
+        Waiting = PalPark.Waiting.Count > 0 ? PalPark.Waiting.Select(Core.SavedPokemonData.FromPokemon).ToList() : null,
+        Sources = PalPark.Ledger.Sources.Count > 0 ? PalPark.Ledger.ToSources() : null,
+        Came = PalPark.Ledger.Came.Count > 0 ? PalPark.Ledger.Came.OrderBy(c => c, StringComparer.Ordinal).ToList() : null
     };
+}
+
+/// <summary>A source the migration has brought Pokémon from (<see cref="PalParkLedger"/>), as a save keeps it.</summary>
+public sealed class PalParkSourceSave
+{
+    /// <summary>The source's trainer ID and secret ID, the ID the low half.</summary>
+    public uint TrainerId { get; set; }
+
+    /// <summary>When it last brought Pokémon, in seconds since 1970 (UTC).</summary>
+    public long Seconds { get; set; }
 }
 
 public sealed class PastimesSave
@@ -51,6 +64,78 @@ public sealed class PastimesSave
     public int FossilsRevived { get; set; }
     /// <summary>The six Pokémon brought over and not yet caught again in the Catching Show (plan 08 · P21 fills them).</summary>
     public List<Core.SavedPokemonData>? Waiting { get; set; }
+
+    /// <summary>The sources the migration has brought Pokémon from, twenty at most (plan 08 · P21).</summary>
+    public List<PalParkSourceSave>? Sources { get; set; }
+
+    /// <summary>The identities of the Pokémon that have come over, so that none comes twice (plan 08 · P21).</summary>
+    public List<string>? Came { get; set; }
+}
+
+/// <summary>
+/// What the migration remembers (plan 08 · P21; the original's <c>pal_park_transfers.c</c> and this game's own addition):
+/// the twenty sources it has brought Pokémon from and when, so that one source gives once in a day, the oldest forgotten
+/// when a twenty-first comes; and the identity (personality and original trainer's ID) of every Pokémon brought over,
+/// so that the same Pokémon doesn't come twice.
+/// </summary>
+public sealed class PalParkLedger
+{
+    /// <summary><c>MAX_GBA_TRANSFER_HISTORY</c>.</summary>
+    public const int Remembered = 20;
+
+    /// <summary>A source gives once in this long (<c>CANNOT_MIGRATE_WAIT_FOR_FULL_DAY</c>).</summary>
+    public static readonly TimeSpan Wait = TimeSpan.FromDays(1);
+
+    private readonly List<PalParkSourceSave> sources = new();
+    private readonly HashSet<string> came = new(StringComparer.Ordinal);
+
+    public IReadOnlyList<PalParkSourceSave> Sources => sources;
+    public IReadOnlyCollection<string> Came => came;
+
+    public void Load(IEnumerable<PalParkSourceSave>? saved, IEnumerable<string>? identities)
+    {
+        sources.Clear();
+        came.Clear();
+        if (saved != null) sources.AddRange(saved.Take(Remembered).Select(s => new PalParkSourceSave { TrainerId = s.TrainerId, Seconds = s.Seconds }));
+        if (identities != null) foreach (var id in identities) came.Add(id);
+    }
+
+    public List<PalParkSourceSave> ToSources() => sources.Select(s => new PalParkSourceSave { TrainerId = s.TrainerId, Seconds = s.Seconds }).ToList();
+
+    /// <summary>The identity a Pokémon is remembered by: its personality and its original trainer's ID.</summary>
+    public static string Identity(uint personality, uint trainerId) => $"{personality:X8}-{trainerId:X8}";
+
+    public bool HasCome(string identity) => came.Contains(identity);
+
+    /// <summary>
+    /// How long it is since a source last brought Pokémon (<c>PalParkTransfer_GetSecondsSinceLastTransfer</c>); null when
+    /// it never has.
+    /// </summary>
+    public TimeSpan? SinceLast(uint trainerId, DateTime now)
+    {
+        foreach (var source in sources)
+            if (source.TrainerId == trainerId) return now.ToUniversalTime() - DateTime.UnixEpoch.AddSeconds(source.Seconds);
+        return null;
+    }
+
+    /// <summary>How much longer a source must wait to bring Pokémon again: nothing if it may.</summary>
+    public TimeSpan WaitLeft(uint trainerId, DateTime now) =>
+        SinceLast(trainerId, now) is { } since && since < Wait ? Wait - since : TimeSpan.Zero;
+
+    /// <summary>
+    /// A source brought Pokémon now (<c>PalParkTransfer_SaveTransferHistory</c>): its row is the one it had, else the first
+    /// empty, else the oldest's, which is forgotten.
+    /// </summary>
+    public void Remember(uint trainerId, DateTime now)
+    {
+        long seconds = (long)(now.ToUniversalTime() - DateTime.UnixEpoch).TotalSeconds;
+        var row = sources.FirstOrDefault(s => s.TrainerId == trainerId);
+        if (row != null) { row.Seconds = seconds; return; }
+        if (sources.Count >= Remembered) sources.Remove(sources.OrderBy(s => s.Seconds).First());
+        sources.Add(new PalParkSourceSave { TrainerId = trainerId, Seconds = seconds });
+    }
+
+    public void MarkCame(string identity) => came.Add(identity);
 }
 
 /// <summary>
@@ -67,6 +152,9 @@ public sealed class PalParkState
 
     private readonly List<Pokemon> waiting = new();
     public IReadOnlyList<Pokemon> Waiting => waiting;
+
+    /// <summary>The sources that have brought Pokémon over and the Pokémon that came (plan 08 · P21).</summary>
+    public PalParkLedger Ledger { get; } = new();
     public bool Stocked => waiting.Count >= Overworld.CatchingShow.Size;
 
     /// <summary>The show under way, and the seconds it has run.</summary>
@@ -93,6 +181,10 @@ public sealed class PalParkState
         waiting.AddRange(list);
         return true;
     }
+
+    /// <summary>Whether a Pokémon waiting in the park came over from the player's own files (its identity is in the ledger of those that did).</summary>
+    public bool IsMigrant(Pokemon pokemon) =>
+        pokemon.OriginalTrainer is { } trainer && Ledger.HasCome(PalParkLedger.Identity(pokemon.Personality, unchecked((uint)trainer.Id)));
 
     /// <summary>The levels the six visitors come at (plan 03 · D12a): the Battle Zone's grass, 47 to 55.</summary>
     public const int VisitorLowest = 47, VisitorHighest = 55;
@@ -145,7 +237,8 @@ public sealed class PalParkState
     /// </summary>
     public bool Welcome(IReadOnlyList<string> pool, DateTime day, Random chance)
     {
-        if (Show != null) return false;
+        // Six that were brought over from the player's own files (plan 08 · P21) wait for their show: no visitors take their place
+        if (Show != null || waiting.Any(IsMigrant)) return false;
         var today = VisitorSpecies(pool, day);
         if (Stocked && waiting.Select(p => p.Species.Name).OrderBy(s => s, StringComparer.Ordinal)
                 .SequenceEqual(today.OrderBy(s => s, StringComparer.Ordinal)))
