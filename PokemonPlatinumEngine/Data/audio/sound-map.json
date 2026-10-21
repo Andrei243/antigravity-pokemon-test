@@ -127,7 +127,10 @@
     "Magma Admin": "galactic",
     "Magma Leader": "galactic",
     "Aqua Admin": "galactic",
-    "Aqua Leader": "galactic"
+    "Aqua Leader": "galactic",
+    "Preschooler": "kid",
+    "Nursery Aide": "girl",
+    "Janitor": "fun"
   },
   "battleThemes": {
     "Leader": "gym",

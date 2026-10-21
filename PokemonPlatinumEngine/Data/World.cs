@@ -1433,8 +1433,9 @@ public static class WorldMapBuilder
                 if (map.IsCave) (type, prop) = InACave(type, blocks, prop);
                 else if (map.IsVoid) (type, blocks, prop) = InTheVoid(cover, behaviour, solid, type, blocks, prop);
                 // A room's blocked texture that the cover's rules take for a fence (a rail along a DS room's back wall:
-                // Route 34's Day Care, Goldenrod's Underground, plan 20 · J5) is the room's wall, which builds no fence
-                else if (map.IsIndoors && prop == PropType.Fence) prop = null;
+                // Route 34's Day Care, Goldenrod's Underground, plan 20 · J5) is the room's wall, which builds no fence, and
+                // a light the rules take for a street's lamp is the room's own (Aspertia City's houses, plan 22 · U2)
+                else if (map.IsIndoors && prop is PropType.Fence or PropType.LampPost) prop = null;
                 // An area that isn't built yet is scenery: seen from its neighbours, entered by nobody
                 map.SetGroundTile(ox + x, oy + z, type, blocks || !area.Open);
                 // (a DS room is cut to what its ways in reach, and the chunk's corner beyond it is no tile of the map:
