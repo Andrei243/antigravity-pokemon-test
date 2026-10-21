@@ -442,6 +442,37 @@
     "accuracy": "ACCURACY",
     "pp": "PP",
     "ppValue": "{pp} / {max}",
+    "contest": {
+      "appeal": "APPEAL",
+      "stat": "QUALITY",
+      "noContest": "This move has no turn on the contest stage.",
+      "effect": {
+        "None": "Nothing special: it earns its hearts and no more.",
+        "FirstNextTurn": "Lets the performer go first next turn.",
+        "LastNextTurn": "Sends the performer last next turn.",
+        "DoubledJudge": "The judge it is aimed at counts it twice.",
+        "TwoHeartsWhenVoltageUp": "Earns two more hearts when it lifts a judge's voltage.",
+        "Basic": "A plain, dependable show of the move.",
+        "UniqueJudge": "Earns more where no one else has pleased the judge.",
+        "ConsecutiveUse": "Can be shown turn after turn without losing its shine.",
+        "Voltage": "Lifts every judge's voltage.",
+        "AllSameJudge": "Pleases all the judges alike.",
+        "LowersVoltage": "Calms the judges down a notch.",
+        "DoubleNextTurn": "Makes the next turn's move count twice.",
+        "StealVoltage": "Takes voltage from the one who showed before.",
+        "SuppressVoltage": "Holds the others' voltage down.",
+        "RandomOrder": "Shuffles the order of the next turn.",
+        "DoubleFinalAct": "Worth double if shown in the final turn.",
+        "LowVoltageAdvantage": "Does best while the judges are still calm.",
+        "FirstPerformanceAdvantage": "Does best as the first to show.",
+        "FinalPerformanceAdvantage": "Does best as the last to show.",
+        "NoVoltageDown": "Keeps the voltage from falling.",
+        "TwoVoltageInARowAdvantage": "Does best after two moves of the same kind.",
+        "HighScoreLaterTurn": "Earns more the later in the show it comes.",
+        "MaxVoltageAdvantage": "Does best when the judges are at full voltage.",
+        "PityPoints": "Earns a few hearts even when it falls flat."
+      }
+    },
     "memo": {
       "trainer": "TRAINER",
       "id": "ID No.",
@@ -721,7 +752,7 @@
       "12": "Poké Center", "13": "Machine", "14": "Checks", "15": "Simple", "16": "Distortion", "17": "Contest",
       "18": "Nostalgic", "19": "Croagunk", "20": "Trio", "21": "PikaPika", "22": "Legend", "23": "Team Galactic"
     },
-    "action": { "Move": "MOVE", "Withdraw": "WITHDRAW", "Store": "STORE", "Mark": "MARK", "Release": "RELEASE", "Cancel": "CANCEL" },
+    "action": { "Move": "MOVE", "Withdraw": "WITHDRAW", "Store": "STORE", "Summary": "SUMMARY", "Mark": "MARK", "Release": "RELEASE", "Cancel": "CANCEL" },
     "release": {
       "question": "Release {name}?",
       "body": "Once it goes back to the wild, it won't come back to you.",
@@ -2737,6 +2768,7 @@
     "comingOutNext": "{pokemon} is coming out next. Send out which Pokémon?",
     "sendOutWhich": "Send out which Pokémon?",
     "hint": {
+      "summary": "Summary",
       "sendOut": "Send out",
       "stayIn": "Stay in",
       "superEffective": "SUPER EFFECTIVE",

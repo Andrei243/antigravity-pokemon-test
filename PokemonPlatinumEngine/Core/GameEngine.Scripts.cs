@@ -1124,6 +1124,7 @@ public partial class GameEngine
                 case ScriptScreen.Pc:
                     game.flow.State = GameState.PCStorage;
                     game.flow.PCScreen.Open(game.flow.Boxes);
+                    game.flow.PCScreen.ShowCondition = game.flow.Story.Has(ContestHallVisitedFlag);
                     break;
                 // The Hall of Fame's end (plan 02 · S14): the scene of the team's entry, and the credits
                 case ScriptScreen.Ceremony:

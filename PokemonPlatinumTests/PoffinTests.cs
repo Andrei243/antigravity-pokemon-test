@@ -635,13 +635,9 @@ public class PoffinTests
         Assert.DoesNotContain(PartyScreen.ConditionPage, screen.SummaryPages);
         screen.ShowCondition = true;
         // (The memo page stands between the Pokémon's own page and the condition's: plan 08 · P3)
-        screen.TurnSummaryPage(1);
-        screen.TurnSummaryPage(1);
-        screen.TurnSummaryPage(1);
+        while (screen.SummaryPage != PartyScreen.ConditionPage) screen.TurnSummaryPage(1);
         Assert.Equal(PartyScreen.ConditionPage, screen.SummaryPage);
-        screen.TurnSummaryPage(-1);
-        screen.TurnSummaryPage(-1);
-        screen.TurnSummaryPage(-1);
+        while (screen.SummaryPage != 0) screen.TurnSummaryPage(-1);
         Assert.Equal(0, screen.SummaryPage);
     }
 

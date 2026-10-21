@@ -621,6 +621,43 @@ public partial class BattleEngine
         return index;
     }
 
+    /// <summary>
+    /// The summary of the team's Pokémon the switching cards are on (plan 08 · P4): the same pages as the team's menu, with no
+    /// marks to set and no page for the contest condition, and a way back to the cards. Up and down go on to another Pokémon
+    /// of the team and the cards' cursor follows.
+    /// </summary>
+    public UI.SummaryView Summary { get; } = new() { CanMark = false };
+
+    /// <summary>Which of the team the summary is of, while <see cref="BattleMenuState.Summary"/> is the menu.</summary>
+    public int SummaryIndex { get; private set; }
+
+    /// <summary>Opens the summary of the Pokémon under the switching cards' cursor; false when no one is there.</summary>
+    public bool OpenSummary()
+    {
+        if (HUD.MenuState != BattleMenuState.SwitchPokemon || HUD.SwitchMenuIndex >= PlayerParty.Count) return false;
+        SummaryIndex = HUD.SwitchMenuIndex;
+        Summary.Open();
+        HUD.MenuState = BattleMenuState.Summary;
+        return true;
+    }
+
+    /// <summary>One frame of the open summary's keys; the page buttons turn its pages as left and right do.</summary>
+    public void UpdateSummary(int dx, int dy)
+    {
+        if (dx == 0) dx = InputManager.Axis(GameAction.PageLeft, GameAction.PageRight);
+        var result = Summary.Press(PlayerParty.Members[Math.Min(SummaryIndex, PlayerParty.Count - 1)], dx, dy);
+        if (result.Close)
+        {
+            HUD.MenuState = BattleMenuState.SwitchPokemon;
+            return;
+        }
+        if (result.Step == 0) return;
+        SummaryIndex = UI.Kit.UiNav.Wrap(SummaryIndex, result.Step, PlayerParty.Count);
+        HUD.SwitchMenuIndex = SummaryIndex;
+        Summary.PutCursorsAway();
+        AudioManager.PlaySound("cursor");
+    }
+
     private void HandleMenuInput()
     {
         int dx = InputManager.Axis(GameAction.Left, GameAction.Right), dy = InputManager.Axis(GameAction.Up, GameAction.Down);
@@ -684,7 +721,17 @@ public partial class BattleEngine
                 if (confirm) SelectTarget(HUD.TargetMenuIndex);
                 break;
 
+            case BattleMenuState.Summary:
+                UpdateSummary(dx, dy);
+                break;
+
             case BattleMenuState.SwitchPokemon:
+                // The Pokémon under the cursor's summary (plan 08 · P4)
+                if (InputManager.IsActionPressed(GameAction.Item) && OpenSummary())
+                {
+                    AudioManager.PlaySound("select");
+                    return;
+                }
                 if (cancel)
                 {
                     // The team opened by Battle Style Shift's Yes: backing out of it stays in (plan 08 · P1)

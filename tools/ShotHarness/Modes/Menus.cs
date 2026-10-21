@@ -58,6 +58,15 @@ partial class Harness
         partyScreen.View.MoveMark(-1);
         partyScreen.View.ToggleMark(marked);
         partyScreen.View.LeaveMarks();
+        // The moves on their own pages (plan 08 · P4): as a battle has them, with the second chosen, then as the contest stage does
+        for (int turn = 0; turn < 3; turn++) partyScreen.TurnSummaryPage(1);
+        partyScreen.View.LookAtMoves(marked);
+        partyScreen.View.MoveMove(1, marked.Moves.Count);
+        Frames(10); Shot("20i_summary_moves");
+        partyScreen.TurnSummaryPage(1);
+        partyScreen.View.LookAtMoves(marked);
+        Frames(10); Shot("20j_summary_contest_moves");
+        while (partyScreen.SummaryPage != PartyScreen.StatsPage) partyScreen.TurnSummaryPage(1);
         // Pokérus (plan 06 · R10): the PKRS tag after the status, on the summary and on the party's card
         party.Members[1].Pokerus = 0x34;
         Frames(4); Shot("20d_summary_pokerus");
@@ -224,6 +233,10 @@ partial class Harness
         boxed.Boxes[0].Wallpaper = 0;
         pc.Confirm(party, boxed, engine.ShowNotification);
         Frames(4); Shot("30g_pc_menu");
+        // The summary opened from the box (plan 08 · P4)
+        pc.Choose(PcAction.Summary, party, boxed, engine.ShowNotification);
+        Frames(30); Shot("30g2_pc_summary");
+        pc.Cancel(party, boxed);
         pc.Choose(PcAction.Move, party, boxed, engine.ShowNotification);
         pc.Move(0, 1, party.Count); pc.Move(0, 1, party.Count);
         Frames(4); Shot("30h_pc_carrying");
@@ -319,6 +332,9 @@ partial class Harness
         mb.HUD.MenuState = BattleMenuState.SwitchPokemon;
         mb.HUD.SwitchMenuIndex = 1;
         Frames(2); Shot("23_battle_switch");
+        // ... and the summary of the Pokémon under its cursor (plan 08 · P4)
+        mb.OpenSummary();
+        Frames(2); Shot("23f_battle_switch_summary");
         mb.HUD.MenuState = BattleMenuState.Main;
         // The battle's bag (plan 06 · R11): its four pockets and the last item used, a pocket's items, who a Potion is
         // for, and which move an Ether is for

@@ -64,6 +64,9 @@ public class PartyScreen
     /// <summary>The Pokémon's skills (plan 08 · P3): its stats and its ability.</summary>
     public const int SkillsPage = (int)UI.SummaryPage.Skills;
 
+    /// <summary>The two pages of moves (plan 08 · P4): the moves in battle, with the chosen one's text, and as the Acting Competition sees them.</summary>
+    public const int BattleMovesPage = (int)UI.SummaryPage.BattleMoves, ContestMovesPage = (int)UI.SummaryPage.ContestMoves;
+
     /// <summary>How many ribbons a row of the ribbons' page shows, and how many rows (the original shows six by three).</summary>
     public const int RibbonColumns = SummaryView.RibbonColumns, RibbonRows = SummaryView.RibbonRows;
 
@@ -75,6 +78,9 @@ public class PartyScreen
 
     /// <summary>The mark under the cursor while the marks are being set on the first page; -1 otherwise.</summary>
     public int MarkCursor => View.MarkCursor;
+
+    /// <summary>The move under the cursor on a move page; -1 otherwise.</summary>
+    public int MoveSelection => View.MoveSelection;
 
     /// <summary>The pages a summary turns through, by number: the condition's only once the Contest Hall has been visited.</summary>
     public IReadOnlyList<int> SummaryPages => View.Pages.Select(p => (int)p).ToList();
@@ -388,30 +394,10 @@ public class PartyScreen
         if (ShowSummary)
         {
             var shown = SelectedIndex < party.Count ? party.Members[SelectedIndex] : null;
-            // Looking through the ribbons: the arrows move over them, and either button stops (plan 06 · R17b)
-            if (RibbonCursor >= 0 && shown != null)
-            {
-                if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Confirm)) LeaveRibbons();
-                else MoveRibbon(dx, dy, shown.Ribbons.Count);
-                return;
-            }
-            // Setting the marks: left and right move along them, the confirm button sets or clears one, cancel stops (plan 08 · P3)
-            if (MarkCursor >= 0 && shown != null)
-            {
-                if (InputManager.IsActionPressed(GameAction.Cancel)) View.LeaveMarks();
-                else if (InputManager.IsActionPressed(GameAction.Confirm)) View.ToggleMark(shown);
-                else View.MoveMark(dx);
-                return;
-            }
-            if (InputManager.IsActionPressed(GameAction.Confirm) && shown != null && (SelectRibbons(shown) || EditMarks(shown))) return;
-            if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Confirm))
-            {
-                ShowSummary = false;
-                AudioManager.PlaySound("cancel");
-            }
-            // Left and right turn the page (an Egg's summary has the one), and up and down go through the team
-            else if (dx != 0 && shown is { IsEgg: false }) TurnSummaryPage(dx);
-            else MoveCursor(0, dy, party.Count);
+            // The summary's own keys, the same here as in the PC and the battle (plan 08 · P4)
+            var result = View.Press(shown, dx, dy);
+            if (result.Close) ShowSummary = false;
+            else if (result.Step != 0) MoveCursor(0, result.Step, party.Count);
             return;
         }
 
@@ -446,7 +432,7 @@ public class PartyScreen
         if (ShowSummary && SelectedIndex < party.Count)
         {
             ModernUi.DrawSummary(screenWidth, screenHeight, party.Members[SelectedIndex], SelectedIndex, party.Count,
-                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor, MarkCursor);
+                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor, MarkCursor, MoveSelection);
         }
         else if (Entering)
         {

@@ -109,6 +109,11 @@ internal static partial class ModernUi
             case BattleMenuState.Info:
                 if (battle.InfoShown is { } info) InfoPanel(info, battle.IsDouble);
                 break;
+            case BattleMenuState.Summary:
+                if (battle.SummaryIndex < party.Count)
+                    DrawSummary(sw, sh, party.Members[battle.SummaryIndex], battle.SummaryIndex, party.Count, 1f, (int)battle.Summary.Page,
+                        battle.Summary.RibbonCursor, battle.Summary.MarkCursor, battle.Summary.MoveSelection, canMark: false);
+                break;
             case BattleMenuState.LearnMove:
                 // The question in the message box, and beside it its Yes and No or the moves to forget
                 MessageBox(new Rectangle(48, 858, MessageBoxWidth, 172), message, null);
@@ -517,10 +522,11 @@ internal static partial class ModernUi
         UiFonts.DrawCentered(heading, head.X + 48, head.Y + head.Height / 2f, 36, Ink, UiWeight.ExtraBold);
         string sendOut = Text.Of("battleMenu.hint.sendOut");
         var keyZ = "shared.keys.z"; var keyX = "shared.keys.x";
-        if (forced) HintsDark(head.X + head.Width - 24, head.Y + 16, HintOf(keyZ, sendOut));
+        var keyC = "shared.keys.c"; string summaryHint = Text.Of("battleMenu.hint.summary");
+        if (forced) HintsDark(head.X + head.Width - 24, head.Y + 16, HintOf(keyC, summaryHint), HintOf(keyZ, sendOut));
         // Opened by Battle Style Shift's Yes (plan 08 · P1): backing out stays in, and says so
-        else if (battle.IsOfferingSwitch) HintsDark(head.X + head.Width - 24, head.Y + 16, HintOf(keyZ, sendOut), HintOf(keyX, Text.Of("battleMenu.hint.stayIn")));
-        else HintsDark(head.X + head.Width - 24, head.Y + 16, HintOf(keyZ, sendOut), HintOf(keyX, Text.Of("shared.hints.back")));
+        else if (battle.IsOfferingSwitch) HintsDark(head.X + head.Width - 24, head.Y + 16, HintOf(keyC, summaryHint), HintOf(keyZ, sendOut), HintOf(keyX, Text.Of("battleMenu.hint.stayIn")));
+        else HintsDark(head.X + head.Width - 24, head.Y + 16, HintOf(keyC, summaryHint), HintOf(keyZ, sendOut), HintOf(keyX, Text.Of("shared.hints.back")));
 
         for (int i = 0; i < Party.MaxSize; i++)
         {
