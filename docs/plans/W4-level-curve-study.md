@@ -1,6 +1,28 @@
 # The level curve for a team carried from region to region
 
-*Plan 18 · W4, the study part. Written 2026-10-18 for the user's decision. Nothing has been built and no code or data has changed.*
+*Plan 18 · W4, the study part. Written 2026-10-18 for the user's decision; decided 2026-10-21 (option B, below). Nothing has been built and no code or data has changed.*
+
+## The decision (2026-10-21)
+
+**The user chose B: the cap rises well above 100**, and the old team plays every new region's story at full strength. The study's recommendation, C2, is not taken. Two pieces of work come with it, so that the levels past 100 have something in them:
+
+1. **New moves to learn past level 100.** Moves of our own, so that a Pokémon still learns something as it climbs to the new cap. Placed as plan 06 · R31.
+2. **New evolutions past level 100** for a species that has no evolution, and for the last stage of a line of only two. Species of our own, so that a level past 100 can still change a Pokémon. Placed as plan 03 · D14.
+
+What the building sessions settle, each going ahead on its default unless the user says otherwise:
+
+| Question | Default | Who settles it |
+|---|---|---|
+| The new cap | about **260**, the "fair climb (modern EXP)" column of section 4, since the modern rules are the only ones (06 · decision 1); the exact number fixed by W4 after the simulation is run again with the new moves and evolutions in it | 18 · W4 |
+| What each later region's levels climb to | section 4's fair climb: Kanto's Champion about 104, Johto's 136, Hoenn's 162, up to Paldea's about 258; every trainer and wild table of the eight regions re-levelled by a "from, to" mapping in the region file, as each region's plan imports it | 18 · W4 writes the mapping; plans 19 to 23 apply it |
+| Erratic and Fluctuating past 100 | a rule of our own that keeps rising (the Erratic formula turns negative at 160); written into `docs/mechanics/rulings.md` | 18 · W4 |
+| Which species get an evolution past 100 | every species with none (205 in the data; of the legendaries and mythicals only some, the user said on 2026-10-21: D14 proposes which, region by region, and the user picks) and the last stage of every two-stage line (221 lines, more where a line branches): about 450 new species, each a design shown to the user first, in batches by region as the Megas of our own are (06 · R20b) | 03 · D14 |
+| At what levels the new evolutions happen | between 101 and the cap, set so a region's post-game reaches them; a three-stage line's last stage gains new moves only | 03 · D14 |
+| How many new moves | a pool of our own (a few per type, about 50 to 100), shared between species, each species learning a few between 101 and the cap by its type and line | 06 · R31 |
+
+Section 6's recommendation and its question are kept below as the study was written.
+
+## The study
 
 On 2026-10-12 you decided that **the team comes along** from region to region. Your worry was the levels: every region after Sinnoh has to be levelled for a team that has already won a League, as Gold and Silver levelled Kanto after Red and Blue, and the level cap of 100 may have to rise. On 2026-10-17 you said to study it when we got to it. This is that study. It ends with four options and a recommendation, and one question for you.
 
