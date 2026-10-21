@@ -86,7 +86,7 @@ Written 2026-10-06, before any session.
 - Tests: the fallback block keeps only the named cast C5 and C6 make, and the test that counted it now holds that every other people look of the original is in the table: the list is written into the test from the importer's full run, which is not in the repository (the player's own variants, the `var_*` stand-ins and the unused entries left out); the `classes` block covers every class of the sound map and of `Data/trainers.json`.
 - **Done when** `WorldMapBuilder.CharacterFor` falls back for nobody but the named cast, and the boards are approved.
 
-**Built (2026-10-21); the boards wait for the user's approval.** What was built, and where it differs from the above:
+**Done (2026-10-21; the boards approved by the user the same day).** What was built, and where it differs from the above:
 - The kit (style guide, "Characters", "The last trainers' parts", first): `Headwear.Visor` (a band round the brow and a peak), `Headwear.WideHat` (a low crown and a wide brim, the hair growing from under it) and `HeldProp.Camera` (a television camera on the right shoulder); every look made before builds the same shapes.
 - Thirty-two looks under the original's object names: the twenty-two of the plan's list but `ace_trainer_snow_*` and `snowpoint_npc_*`'s order, the Battle Frontier's three attendants, the Wi-Fi Plaza's two and the game's director (people of the original's list the plan's didn't name), and the four classes drawn only in battle (`dragon_tamer`, `ranger_m`, `ranger_f`, `pi`); the Bird Keeper already stood as plan 19's `bird_keeper`. `classes` names twenty-one more classes, the four of two as the pairs they are (`Interviewers`: the Reporter and the Cameraman; `Sis and Bro`: the Swimmers; `Belle & Pa`: a Lass and the townsman; `Double Team` and `Young Couple`: the Ace Trainers). HeartGold's `policeman` and `cameraman` fallbacks went (the looks are ours now), and its `reporter_f` stands as our Reporter.
 - What is left of Sinnoh's in `fallbacks` is the named cast whose objects the game has always called by their look's name (`barry` as `Rival`, `prof_rowan` as `Rowan`, `pokecenter_nurse` as `Nurse`: tried as `same` names, which renamed the rival's type and broke what goes by `Rival`), the `var_0` stand-in and the briefcase; `little_boy`, `little_girl` and `crush_girl` aren't Platinum's objects and stay for the regions whose plans give them looks. So `WorldMapBuilder.CharacterFor` no longer falls back for anyone of the original's list but those three, and the block stays for the other regions.
@@ -244,7 +244,7 @@ Written 2026-10-06, before any session.
 - [x] C1 The table and one name for a person
 - [x] C2 Parts I and the trainers of the open areas
 - [x] C3 Parts II and the rest of the open areas' people
-- [~] C4 The rest of Platinum's classes (built; the boards wait for the user's approval)
+- [x] C4 The rest of Platinum's classes
 - [x] C5 The named cast of the first half of the story
 - [x] C6 The named cast of the second half
 - [x] C7 Sitting, lying and the look-around
