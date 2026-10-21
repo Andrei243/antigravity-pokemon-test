@@ -104,6 +104,78 @@ partial class Harness
         var after = Directory.GetFiles(migrate).OrderBy(f => f).Select(f => (f, Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(f))))).ToList();
         Console.WriteLine($"the migrate folder is as it was: {before.SequenceEqual(after)}");
         screen.Close();
+        MigrateBetweenSavesShots(seconds, migrate, noon);
+    }
+
+    // ---------------------------------------------------------------- between this game's saves, and the way out (plan 08 · P22)
+
+    // After P21's, so that nothing before moves: the screen as the title opens it (what to do), the other save among the files, its
+    // boxes, and the way out: a save's team and boxes, a format, and the notice. The files go into this out dir's migrate/out
+    void MigrateBetweenSavesShots(Action<float> seconds, string migrate, DateTime noon)
+    {
+        var owner = new SaveData
+        {
+            PlayerName = "Lucas", CurrentMapName = "SandgemTown", PlayTimeSeconds = 20 * 3600, Badges = 0b0000_1111, NationalPokedex = true,
+            Party = new[] { ("Grotle", 24), ("Staravia", 22) }.Select(p => SavedPokemonData.FromPokemon(
+                new Pokemon(PokemonDatabase.Get(p.Item1)!, p.Item2, 2000u + (uint)p.Item2) { Id = new Guid(p.Item2, 0, 0, new byte[8]) })).ToList(),
+            Boxes = new SavedBoxes { Boxes = { new SavedBox { Name = "BOX 1" } } }
+        };
+        int[] dexes = { 1, 4, 7, 25, 39, 52, 94, 133, 700 };
+        for (int i = 0; i < dexes.Length; i++)
+        {
+            var mon = new Pokemon(PokemonDatabase.GetByDex(dexes[i])!, 18 + i, 3000u + (uint)i, new Random(i)) { Id = new Guid(100 + i, 0, 0, new byte[8]) };
+            owner.Boxes!.Boxes[0].Pokemon.Add(new SavedBoxedPokemon { Slot = i, Pokemon = SavedPokemonData.FromPokemon(mon) });
+        }
+        var other = new SaveData { PlayerName = "Dawn", CurrentMapName = "JubilifeCity", PlayTimeSeconds = 3600, NationalPokedex = true };
+        var saves = new[] { (1, owner), (2, other) };
+        var targets = saves.Select(s => new MigrateTarget(s.Item1, s.Item2)).ToList();
+        var sources = MigrationFolder.Read(migrate);
+        sources.AddRange(MigrationFolder.Slots(saves));
+        var screen = game.Migrate;
+        void Go(int place) => screen.Move(place % MigrateScreen.Columns - screen.Place % MigrateScreen.Columns, place / MigrateScreen.Columns - screen.Place / MigrateScreen.Columns);
+
+        // What to do, then the other save among the files, and its boxes
+        screen.Open(targets, sources, () => noon.AddDays(2), withMenu: true);
+        game.State = GameState.Migrate;
+        seconds(0.5f); Shot("title_17g_migrate_menu");
+        screen.Confirm();
+        screen.Move(0, 1);
+        screen.Confirm();
+        seconds(0.4f);
+        int slot = screen.Sources.ToList().FindIndex(s => s.Slot != null);
+        screen.Move(0, slot);
+        seconds(0.3f); Shot("title_17h_migrate_from_slot");
+        Console.WriteLine($"into slot 2, the files: {string.Join("; ", screen.Sources.Select(s => $"{s.Name} ({s.Kind}, {(s.Readable ? screen.BlockOf(s).ToString() : s.Refusal.ToString())})"))}");
+        screen.Confirm();
+        seconds(8f);
+        for (int i = 0; i < 3; i++) { Go(i); screen.Confirm(); }
+        Go(5);
+        seconds(0.3f); Shot("title_17i_migrate_slot_box");
+        screen.Close();
+
+        // The way out
+        screen.Open(targets, sources, () => noon.AddDays(2), withMenu: true);
+        game.State = GameState.Migrate;
+        screen.Move(0, 1);
+        screen.Confirm();
+        screen.Confirm();
+        seconds(2f); Shot("title_17j_write_out_team");
+        screen.ChangeBox(1);
+        seconds(6f);
+        Go(3);
+        seconds(0.3f); Shot("title_17k_write_out_box");
+        Go(8);
+        seconds(0.3f); Shot("title_17l_write_out_text_only");
+        Go(3);
+        screen.Confirm();
+        seconds(0.3f); Shot("title_17m_write_out_format");
+        screen.Confirm();
+        var request = screen.TakeWriteOut()!;
+        string? file = MigrationOut.Write(migrate, request.From.Save, request.Pokemon, request.Format);
+        screen.FinishWriteOut(file);
+        seconds(0.3f); Shot("title_17n_write_out_done");
+        Console.WriteLine($"written out: {file}; in the out folder: {string.Join(", ", Directory.GetFiles(Path.Combine(migrate, "out")).Select(Path.GetFileName))}");
+        screen.Close();
     }
 
     // ---------------------------------------------------------------- title screen

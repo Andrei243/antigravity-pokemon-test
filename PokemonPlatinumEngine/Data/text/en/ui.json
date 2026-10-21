@@ -1190,6 +1190,7 @@
     "confirm": {
       "title": "Bring these {n} over?",
       "body": "They will wait in Pal Park for the Catching Show, and {who} gives no more for a day. The file is left as it is.",
+      "bodyOwn": "They will wait in Pal Park for the Catching Show, and they leave {who}'s save for good.",
       "no": "NO, WAIT",
       "yes": "YES, BRING THEM"
     },
@@ -1199,7 +1200,26 @@
       "refused": { "title": "Nothing was brought over" },
       "ok": "OK"
     },
-    "kind": { "gba": "GBA SAVE", "platinum": "PLATINUM SAVE", "files": "{n} POKÉMON FILES", "file": "POKÉMON FILE", "unknown": "FILE" },
+    "kind": { "gba": "GBA SAVE", "platinum": "PLATINUM SAVE", "files": "{n} POKÉMON FILES", "file": "POKÉMON FILE", "slot": "THIS GAME · SLOT {slot}", "unknown": "FILE" },
+    "box": "BOX {n}",
+    "party": "TEAM",
+    "menu": {
+      "bring": "BRING POKÉMON OVER",
+      "out": "WRITE A POKÉMON OUT",
+      "bringBody": "Choose six Pokémon from another save or from files in the migrate folder. They wait in Pal Park for the Catching Show.",
+      "outBody": "Choose one Pokémon of a save of this game and write it as a file in the migrate folder's out folder. It stays in the save."
+    },
+    "out": {
+      "title": "Write {name} out as",
+      "body": "A copy is written into the out folder. Nothing leaves the save.",
+      "pk4": "A .PK4 FILE",
+      "showdown": "SHOWDOWN TEXT",
+      "either": "AS A FILE OR AS TEXT",
+      "textOnly": "AS TEXT ONLY",
+      "textOnlyWhy": "A .pk4 file holds only Pokémon of the fourth generation's Pokédex, with what that game had.",
+      "done": { "title": "Written out", "body": "The copy is {file}, in the out folder of the migrate folder." },
+      "failed": { "title": "Nothing was written", "body": "The file could not be written. The out folder may be read-only, or this Pokémon can't be written that way." }
+    },
     "refused": {
       "size": "This file is none of the saves or Pokémon files the game knows.",
       "save": "This save is damaged: no copy of it is whole, so none of it was read.",
@@ -1216,6 +1236,7 @@
       "impossible": "{why}"
     },
     "impossible": {
+      "noId": "It has no id of its own yet: open the save once in the game.",
       "species": "Its species is not one this game has.",
       "exp": "It has more EXP than a level 100 Pokémon can have.",
       "effort": "Its effort is more than any Pokémon can have.",

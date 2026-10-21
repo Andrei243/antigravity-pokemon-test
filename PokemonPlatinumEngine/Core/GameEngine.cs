@@ -275,6 +275,10 @@ public partial class GameEngine
             else if (old.Move == OldSaveMove.NoRoom) Log.Warn($"{SavePaths.OldSaveName} is from before there were slots, and every slot holds a save: it was left where it is.");
             else if (old.Move == OldSaveMove.Failed) Log.Warn($"{SavePaths.OldSaveName} is from before there were slots and couldn't be given one: {old.Problem}");
 
+            // A move between slots cut short by a crash is finished (or undone) before any slot is read (plan 08 · P22)
+            int finished = SlotMoves.Resolve(paths);
+            if (finished > 0) Log.Info($"{finished} move(s) of Pokémon between slots, cut short by the last run, were finished or undone.");
+
             titleSlots = SaveSlots.Read(paths);
             var crashed = CrashReport.TakePending(paths.Folder);
             string read = string.Join(", ", titleSlots.Select(s => $"slot {s.Number} {s.Outcome}"));

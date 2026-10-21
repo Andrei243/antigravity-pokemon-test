@@ -8,36 +8,51 @@ using PokemonPlatinumEngine.UI.Kit;
 
 namespace PokemonPlatinumEngine.UI;
 
-/// <summary>A save the migration can bring Pokémon to: a slot of the title and what it holds.</summary>
+/// <summary>A save the migration can bring Pokémon to, or write them out of: a slot of the title and what it holds.</summary>
 public sealed record MigrateTarget(int Slot, SaveData Save);
 
 /// <summary>What the player has asked of the migration: bring these six of this source into this slot's save.</summary>
 public sealed record MigrateRequest(MigrateTarget Target, MigrationSource Source, IReadOnlyList<ForeignPokemon> Six);
 
+/// <summary>What the player has asked of the way out (plan 08 · P22): write this Pokémon of this slot's save as this.</summary>
+public sealed record WriteOutRequest(MigrateTarget From, SavedPokemonData Pokemon, WriteFormat Format);
+
+/// <summary>The two ways a Pokémon is written out: as a <c>.pk4</c> file or as Showdown's text.</summary>
+public enum WriteFormat { Pk4, Showdown }
+
+/// <summary>What the screen is for: bringing Pokémon over, or writing one out.</summary>
+public enum MigrateMode { Bring, WriteOut }
+
 public enum MigratePhase
 {
-    /// <summary>Which save the Pokémon go to (only with several saves).</summary>
+    /// <summary>What to do: bring Pokémon over or write one out (only when the screen was opened with both).</summary>
+    Menu,
+    /// <summary>Which save the Pokémon go to, or are written out of (only with several saves).</summary>
     Save,
-    /// <summary>Which of the files in the folder to bring them from.</summary>
+    /// <summary>Which of the sources to bring them from: the files of the folder and the other saves.</summary>
     Files,
-    /// <summary>A source's boxes, to choose six from.</summary>
+    /// <summary>A source's boxes, to choose six from, or in the way out the save's team and boxes, to choose one from.</summary>
     Box,
     /// <summary>"Bring these six?"</summary>
     Confirm,
-    /// <summary>The answer is being carried out (the engine writes the save).</summary>
+    /// <summary>The way out: which of the two formats.</summary>
+    Format,
+    /// <summary>The answer is being carried out (the engine writes the save, or the file).</summary>
     Working,
     /// <summary>What came of it.</summary>
     Result
 }
 
 /// <summary>
-/// The migration's screen (plan 08 · P21; style guide, "Menu screens", "Migrate"; <c>docs/mechanics/rulings.md</c>,
-/// "Pal Park's migration"): reached from the title's MIGRATE. It lists the save to bring the Pokémon to (only when there
-/// are several), the files of the <c>migrate</c> folder, a file's boxes as the PC draws them, each Pokémon that can't
-/// come greyed with its reason, and six chosen; a question confirms. It writes nothing: the choice is handed over once
-/// (<see cref="TakeRequest"/>) and the engine, which owns the saves, writes the receiving one and says what came of it
-/// (<see cref="Finish"/>). Its logic takes no input (<see cref="Move"/>, <see cref="Confirm"/>, <see cref="Cancel"/>,
-/// <see cref="ChangeBox"/>, <see cref="Done"/>), so tests and the harness drive it.
+/// The migration's screen (plan 08 · P21 and P22; style guide, "Menu screens", "Migrate"; <c>docs/mechanics/rulings.md</c>,
+/// "Pal Park's migration" and "Between this game's saves"): reached from the title's MIGRATE. It offers what to do (bring
+/// Pokémon over, or write one out), lists the save the Pokémon go to (only when there are several), the sources (the files
+/// of the <c>migrate</c> folder and the game's other saves), a source's boxes as the PC draws them, each Pokémon that can't
+/// come greyed with its reason, and six chosen; a question confirms. For the way out it lists a save's team and boxes, one
+/// Pokémon is chosen, and a format. It writes nothing: the choice is handed over once (<see cref="TakeRequest"/>,
+/// <see cref="TakeWriteOut"/>) and the engine, which owns the saves and the folder, carries it out and says what came of it
+/// (<see cref="Finish"/>, <see cref="FinishWriteOut"/>). Its logic takes no input (<see cref="Move"/>, <see cref="Confirm"/>,
+/// <see cref="Cancel"/>, <see cref="ChangeBox"/>, <see cref="Done"/>), so tests and the harness drive it.
 /// </summary>
 public class MigrateScreen
 {
@@ -47,9 +62,14 @@ public class MigrateScreen
 
     private float openAge;
     private MigrateRequest? request;
+    private WriteOutRequest? writing;
     private readonly Dictionary<ForeignPokemon, MigrationVerdict> verdicts = new(ReferenceEqualityComparer.Instance);
     private readonly Dictionary<int, Pastimes> parks = new();
+    private readonly Dictionary<int, IReadOnlySet<Guid>> held = new();
     private readonly List<(int Box, int Slot)> chosen = new();
+    private IReadOnlyList<MigrationSource> everySource = Array.Empty<MigrationSource>();
+    private List<MigrationSource>? shownSources;
+    private bool menu;
     private Func<DateTime> clock = () => WallClock.UtcNow;
 
     /// <summary>How many rows a list shows (as many as its panel holds).</summary>
@@ -57,11 +77,14 @@ public class MigrateScreen
 
     public bool IsActive { get; private set; }
     public MigratePhase Phase { get; private set; } = MigratePhase.Files;
+    public MigrateMode Mode { get; private set; } = MigrateMode.Bring;
 
     public IReadOnlyList<MigrateTarget> Targets { get; private set; } = Array.Empty<MigrateTarget>();
-    public IReadOnlyList<MigrationSource> Sources { get; private set; } = Array.Empty<MigrationSource>();
 
-    /// <summary>The save the Pokémon are going to; null before one is chosen.</summary>
+    /// <summary>The sources there are to bring Pokémon from to the chosen save: the other saves are those but its own.</summary>
+    public IReadOnlyList<MigrationSource> Sources => shownSources ??= everySource.Where(s => s.Slot == null || s.Slot != Target?.Slot).ToList();
+
+    /// <summary>The save the Pokémon are going to, or are written out of; null before one is chosen.</summary>
     public MigrateTarget? Target { get; private set; }
 
     /// <summary>The cursor in the list the phase shows (the saves, the files), its first row, and in a box the Pokémon's place and the box's number.</summary>
@@ -70,40 +93,91 @@ public class MigrateScreen
     public int Place { get; private set; }
     public int BoxNumber { get; private set; }
 
-    /// <summary>The file chosen, whose boxes are on show.</summary>
+    /// <summary>The source chosen, whose boxes are on show.</summary>
     public MigrationSource? Source { get; private set; }
 
     /// <summary>In the question: true while YES is highlighted.</summary>
     public bool ConfirmYes { get; private set; }
 
+    /// <summary>The Pokémon chosen to be written out, and the format highlighted.</summary>
+    public ForeignPokemon? ToWrite { get; private set; }
+    public WriteFormat Format { get; private set; }
+
     /// <summary>What came of the request, once the engine says (<see cref="Finish"/>).</summary>
     public MigrationBlock Outcome { get; private set; }
+
+    /// <summary>The file a Pokémon was written to, by its name, or null where it couldn't be (<see cref="FinishWriteOut"/>).</summary>
+    public string? Wrote { get; private set; }
 
     /// <summary>Whether six were brought over this time the screen was open: the title's cards are read again if so.</summary>
     public bool Brought { get; private set; }
 
     public float Appear => Math.Clamp(openAge / AppearTime, 0f, 1f);
 
-    /// <summary>Opens on the saves that can receive and the sources the folder gave; with one save the choice of it is skipped.</summary>
-    public void Open(IReadOnlyList<MigrateTarget> targets, IReadOnlyList<MigrationSource> sources, Func<DateTime>? now = null)
+    /// <summary>
+    /// Opens on the saves that can receive and the sources there are; with one save the choice of it is skipped. With
+    /// <paramref name="withMenu"/> it opens on the choice between bringing Pokémon over and writing one out.
+    /// </summary>
+    public void Open(IReadOnlyList<MigrateTarget> targets, IReadOnlyList<MigrationSource> sources, Func<DateTime>? now = null, bool withMenu = false)
     {
         Targets = targets;
-        Sources = sources;
+        everySource = sources;
+        shownSources = null;
         clock = now ?? (() => WallClock.UtcNow);
         parks.Clear();
+        held.Clear();
         verdicts.Clear();
         chosen.Clear();
-        Target = targets.Count == 1 ? targets[0] : null;
+        menu = withMenu;
+        Mode = MigrateMode.Bring;
+        request = null;
+        writing = null;
+        ToWrite = null;
+        Wrote = null;
+        Brought = false;
+        Outcome = MigrationBlock.None;
+        Source = null;
+        Cursor = 0;
+        FirstRow = 0;
+        openAge = 0f;
+        IsActive = true;
+        if (withMenu)
+        {
+            Target = null;
+            Phase = MigratePhase.Menu;
+        }
+        else BeginBringing();
+        AudioManager.PlaySound("menu_open");
+    }
+
+    private void BeginBringing()
+    {
+        Mode = MigrateMode.Bring;
+        Target = Targets.Count == 1 ? Targets[0] : null;
+        shownSources = null;
         Phase = Target == null ? MigratePhase.Save : MigratePhase.Files;
         Cursor = 0;
         FirstRow = 0;
-        Source = null;
-        request = null;
-        Brought = false;
-        Outcome = MigrationBlock.None;
-        openAge = 0f;
-        IsActive = true;
-        AudioManager.PlaySound("menu_open");
+    }
+
+    private void BeginWritingOut()
+    {
+        Mode = MigrateMode.WriteOut;
+        Target = Targets.Count == 1 ? Targets[0] : null;
+        Cursor = 0;
+        FirstRow = 0;
+        if (Target == null) Phase = MigratePhase.Save;
+        else LookInto(Target);
+    }
+
+    /// <summary>The way out looks into a save: its team and boxes, to choose one Pokémon from.</summary>
+    private void LookInto(MigrateTarget save)
+    {
+        Source = new MigrationSource(save.Save.PlayerName, Migration.FromSave(save.Save, withParty: true), ForeignRefusal.None, 1, save.Slot);
+        BoxNumber = 0;
+        Place = 0;
+        ToWrite = null;
+        Phase = MigratePhase.Box;
     }
 
     public void Close() => IsActive = false;
@@ -122,6 +196,12 @@ public class MigrateScreen
         return pastimes.PalPark;
     }
 
+    private IReadOnlySet<Guid> HeldBy(MigrateTarget target)
+    {
+        if (!held.TryGetValue(target.Slot, out var ids)) held[target.Slot] = ids = SlotMoves.Held(target.Save);
+        return ids;
+    }
+
     /// <summary>Whether a source can bring Pokémon to the chosen save now, and if not why.</summary>
     public MigrationBlock BlockOf(MigrationSource source) =>
         Target == null || source.Save == null ? MigrationBlock.None
@@ -135,9 +215,12 @@ public class MigrateScreen
     public MigrationVerdict VerdictOf(ForeignPokemon pokemon)
     {
         if (!verdicts.TryGetValue(pokemon, out var verdict))
-            verdicts[pokemon] = verdict = Migration.WhyNot(pokemon, Target != null ? ParkOf(Target).Ledger : new PalParkLedger());
+            verdicts[pokemon] = verdict = Migration.WhyNot(pokemon, Target != null ? ParkOf(Target).Ledger : new PalParkLedger(), Target != null ? HeldBy(Target) : null);
         return verdict;
     }
+
+    /// <summary>Whether a Pokémon on show in the way out can be written as a <c>.pk4</c> (Platinum's records hold no later species).</summary>
+    public static bool CanBePk4(ForeignPokemon pokemon) => pokemon.Own is { } own && own.DexNumber is >= 1 and <= DsPokemon.HighestSpecies;
 
     /// <summary>The Pokémon under the cursor in the box on show; null in an empty place.</summary>
     public ForeignPokemon? Under => Source?.Save is { } save && BoxNumber < save.Boxes.Count && Place < save.Boxes[BoxNumber].Slots.Count
@@ -157,7 +240,13 @@ public class MigrateScreen
     public int BoxCount => Source?.Save?.Boxes.Count ?? 0;
 
     /// <summary>The rows of the list the phase shows.</summary>
-    public int ListLength => Phase == MigratePhase.Save ? Targets.Count : Sources.Count;
+    public int ListLength => Phase switch
+    {
+        MigratePhase.Menu => 2,
+        MigratePhase.Save => Targets.Count,
+        MigratePhase.Format => 2,
+        _ => Sources.Count
+    };
 
     // ------------------------------------------------------------------ the buttons
 
@@ -166,11 +255,17 @@ public class MigrateScreen
     {
         switch (Phase)
         {
+            case MigratePhase.Menu:
             case MigratePhase.Save:
             case MigratePhase.Files:
                 if (dy == 0 || ListLength == 0) return;
                 Cursor = UiNav.Wrap(Cursor, dy, ListLength);
                 FirstRow = UiNav.Window(FirstRow, Cursor, ListLength, VisibleRows);
+                AudioManager.PlaySound("cursor");
+                break;
+            case MigratePhase.Format:
+                if (dy == 0) return;
+                Format = Format == WriteFormat.Pk4 ? WriteFormat.Showdown : WriteFormat.Pk4;
                 AudioManager.PlaySound("cursor");
                 break;
             case MigratePhase.Box:
@@ -203,13 +298,20 @@ public class MigrateScreen
     {
         switch (Phase)
         {
+            case MigratePhase.Menu:
+                AudioManager.PlaySound("select");
+                if (Cursor == 0) BeginBringing();
+                else BeginWritingOut();
+                break;
             case MigratePhase.Save:
                 if (Cursor >= Targets.Count) return;
                 Target = Targets[Cursor];
+                shownSources = null;
+                AudioManager.PlaySound("select");
+                if (Mode == MigrateMode.WriteOut) { LookInto(Target); break; }
                 Phase = MigratePhase.Files;
                 Cursor = 0;
                 FirstRow = 0;
-                AudioManager.PlaySound("select");
                 break;
             case MigratePhase.Files:
                 if (Cursor >= Sources.Count) return;
@@ -227,7 +329,8 @@ public class MigrateScreen
                 AudioManager.PlaySound("select");
                 break;
             case MigratePhase.Box:
-                Choose();
+                if (Mode == MigrateMode.WriteOut) PickToWrite();
+                else Choose();
                 break;
             case MigratePhase.Confirm:
                 if (!ConfirmYes)
@@ -236,6 +339,16 @@ public class MigrateScreen
                     return;
                 }
                 request = new MigrateRequest(Target!, Source!, Six);
+                Phase = MigratePhase.Working;
+                AudioManager.PlaySound("select");
+                break;
+            case MigratePhase.Format:
+                if (Format == WriteFormat.Pk4 && !CanBePk4(ToWrite!))
+                {
+                    AudioManager.PlaySound("error");
+                    return;
+                }
+                writing = new WriteOutRequest(Target!, ToWrite!.Own!, Format);
                 Phase = MigratePhase.Working;
                 AudioManager.PlaySound("select");
                 break;
@@ -266,10 +379,20 @@ public class MigrateScreen
         AudioManager.PlaySound("select");
     }
 
+    /// <summary>The A button over a Pokémon in the way out: it is the one to write, and the format is asked.</summary>
+    private void PickToWrite()
+    {
+        if (Under is not { Own: not null } pokemon) return;
+        ToWrite = pokemon;
+        Format = CanBePk4(pokemon) ? WriteFormat.Pk4 : WriteFormat.Showdown;
+        Phase = MigratePhase.Format;
+        AudioManager.PlaySound("select");
+    }
+
     /// <summary>The Menu button in a box: with six chosen, the question is asked.</summary>
     public void Done()
     {
-        if (Phase != MigratePhase.Box) return;
+        if (Phase != MigratePhase.Box || Mode != MigrateMode.Bring) return;
         if (chosen.Count != Migration.Size)
         {
             AudioManager.PlaySound("error");
@@ -285,8 +408,12 @@ public class MigrateScreen
     {
         switch (Phase)
         {
-            case MigratePhase.Save:
+            case MigratePhase.Menu:
                 IsActive = false;
+                break;
+            case MigratePhase.Save:
+                if (menu) { Phase = MigratePhase.Menu; Cursor = Mode == MigrateMode.Bring ? 0 : 1; }
+                else IsActive = false;
                 break;
             case MigratePhase.Files:
                 if (Targets.Count > 1)
@@ -295,8 +422,15 @@ public class MigrateScreen
                     Cursor = Targets.ToList().FindIndex(t => t == Target);
                     FirstRow = 0;
                     Target = null;
+                    shownSources = null;
                 }
+                else if (menu) { Phase = MigratePhase.Menu; Cursor = 0; Target = null; shownSources = null; }
                 else IsActive = false;
+                break;
+            case MigratePhase.Box when Mode == MigrateMode.WriteOut:
+                Source = null;
+                if (Targets.Count > 1) { Phase = MigratePhase.Save; Cursor = Targets.ToList().FindIndex(t => t == Target); Target = null; }
+                else { Phase = MigratePhase.Menu; Cursor = 1; Target = null; }
                 break;
             case MigratePhase.Box:
                 Phase = MigratePhase.Files;
@@ -307,6 +441,10 @@ public class MigrateScreen
                 break;
             case MigratePhase.Confirm:
                 Phase = MigratePhase.Box;
+                break;
+            case MigratePhase.Format:
+                Phase = MigratePhase.Box;
+                ToWrite = null;
                 break;
             case MigratePhase.Working:
                 return;
@@ -319,11 +457,19 @@ public class MigrateScreen
 
     // ------------------------------------------------------------------ with the engine
 
-    /// <summary>The choice made, handed over once; null while there isn't one.</summary>
+    /// <summary>The choice made to bring Pokémon over, handed over once; null while there isn't one.</summary>
     public MigrateRequest? TakeRequest()
     {
         var made = request;
         request = null;
+        return made;
+    }
+
+    /// <summary>The choice made to write a Pokémon out, handed over once; null while there isn't one.</summary>
+    public WriteOutRequest? TakeWriteOut()
+    {
+        var made = writing;
+        writing = null;
         return made;
     }
 
@@ -335,9 +481,19 @@ public class MigrateScreen
         Phase = MigratePhase.Result;
         // What was brought makes the park busy: the lists are asked again
         parks.Clear();
+        held.Clear();
         verdicts.Clear();
+        shownSources = null;
         chosen.Clear();
         AudioManager.PlaySound(outcome == MigrationBlock.None ? "select" : "error");
+    }
+
+    /// <summary>The engine has written the Pokémon out (to a file of this name) or couldn't (null).</summary>
+    public void FinishWriteOut(string? file)
+    {
+        Wrote = file;
+        Phase = MigratePhase.Result;
+        AudioManager.PlaySound(file != null ? "select" : "error");
     }
 
     public void Update(float dt = 1f / 60f)

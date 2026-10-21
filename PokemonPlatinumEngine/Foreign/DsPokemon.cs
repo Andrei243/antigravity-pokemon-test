@@ -1,5 +1,6 @@
 using System;
 using PokemonPlatinumEngine.Data;
+using PokemonPlatinumEngine.Models;
 using static PokemonPlatinumEngine.Foreign.ForeignBytes;
 
 namespace PokemonPlatinumEngine.Foreign;
@@ -122,6 +123,123 @@ public static class DsPokemon
             MetDate = met
         };
     }
+
+    // ------------------------------------------------------------------ the way out (plan 08 · P22)
+
+    /// <summary>The highest species, item, ability and move numbers Platinum's records can hold (a later one is written as none).</summary>
+    public const int HighestSpecies = 493, HighestItem = 536, HighestAbility = 123, HighestMove = 467;
+
+    private static readonly Lazy<Dictionary<string, int>> DsCodes = new(() =>
+    {
+        var codes = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var (code, character) in MigrationDatabase.Data.DsChars) codes.TryAdd(character, code);
+        return codes;
+    });
+
+    private static void PutText(Span<byte> into, string text, int length)
+    {
+        int at = 0;
+        foreach (char c in text)
+        {
+            if (at >= length || !DsCodes.Value.TryGetValue(c.ToString(), out int code)) continue;
+            BitConverter.TryWriteBytes(into[(at * 2)..], (ushort)code);
+            at++;
+        }
+        // A string ends in 0xFFFF and the rest is that too, as the game fills a name it clears
+        for (; at < length; at++) BitConverter.TryWriteBytes(into[(at * 2)..], (ushort)0xFFFF);
+    }
+
+    /// <summary>
+    /// A Pokémon as a <c>.pk4</c> (136 bytes: what a box keeps, plain and in the order A, B, C, D, as the tools that read
+    /// <c>.pk4</c> files read them; <see cref="ReadPlain"/> reads it back), for the way out of the migration (plan 08 ·
+    /// P22). The original trainer is the Pokémon's own, or the save's player's where it has none. Null for a species Platinum's
+    /// records don't have (<see cref="HighestSpecies"/>); a held item, ability or move of a later game is written as none.
+    /// </summary>
+    public static byte[]? Write(Pokemon pokemon, uint ownTrainerId, string ownTrainerName, bool ownTrainerIsGirl)
+    {
+        if (pokemon.Species.DexNumber is < 1 or > HighestSpecies) return null;
+        var data = new byte[BoxSize];
+        var a = new byte[BlockSize];
+        var b = new byte[BlockSize];
+        var c = new byte[BlockSize];
+        var d = new byte[BlockSize];
+
+        var trainer = pokemon.OriginalTrainer;
+        uint otId = trainer != null ? unchecked((uint)trainer.Id) : ownTrainerId;
+        string otName = trainer?.Name ?? ownTrainerName;
+        bool otGirl = trainer != null ? trainer.Look == Core.PlayerLook.Girl : ownTrainerIsGirl;
+
+        BitConverter.TryWriteBytes(a.AsSpan(0), (ushort)pokemon.Species.DexNumber);
+        int item = pokemon.HeldItem?.Id ?? 0;
+        BitConverter.TryWriteBytes(a.AsSpan(2), (ushort)(item is > 0 and <= HighestItem ? item : 0));
+        BitConverter.TryWriteBytes(a.AsSpan(4), otId);
+        BitConverter.TryWriteBytes(a.AsSpan(8), (uint)Math.Max(0, pokemon.CurrentExp));
+        a[0xC] = (byte)Math.Clamp(pokemon.Friendship, 0, 255);
+        int ability = AbilityDatabase.IdOf(pokemon.AbilityName);
+        a[0xD] = (byte)(ability is > 0 and <= HighestAbility ? ability : 0);
+        a[0xE] = (byte)(pokemon.Marks & 0x3F);
+        a[0xF] = (byte)LanguageNumber(pokemon.Language);
+        int[] evs = { pokemon.EvHP, pokemon.EvAttack, pokemon.EvDefense, pokemon.EvSpeed, pokemon.EvSpAttack, pokemon.EvSpDefense };
+        for (int i = 0; i < 6; i++) a[0x10 + i] = (byte)Math.Clamp(evs[i], 0, 255);
+        int[] contest = { pokemon.Cool, pokemon.Beauty, pokemon.Cute, pokemon.Smart, pokemon.Tough, pokemon.Sheen };
+        for (int i = 0; i < 6; i++) a[0x16 + i] = (byte)Math.Clamp(contest[i], 0, 255);
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (i >= pokemon.Moves.Count) break;
+            var move = pokemon.Moves[i];
+            int id = move.Data.Id;
+            BitConverter.TryWriteBytes(b.AsSpan(i * 2), (ushort)(id is > 0 and <= HighestMove ? id : 0));
+            b[8 + i] = (byte)Math.Clamp(move.CurrentPP, 0, 255);
+            b[0xC + i] = (byte)Math.Clamp(move.PPUps, 0, 3);
+        }
+        uint ivs = (uint)(pokemon.IvHP & 31 | (pokemon.IvAttack & 31) << 5 | (pokemon.IvDefense & 31) << 10 | (pokemon.IvSpeed & 31) << 15
+            | (pokemon.IvSpAttack & 31) << 20 | (pokemon.IvSpDefense & 31) << 25);
+        if (pokemon.IsEgg) ivs |= 1u << 30;
+        if (pokemon.Nickname.Length > 0) ivs |= 1u << 31;
+        BitConverter.TryWriteBytes(b.AsSpan(0x10), ivs);
+        int form = pokemon.Form != null ? DsForms.NumberOf(pokemon.Species.Name, pokemon.Form) : 0;
+        b[0x18] = (byte)((pokemon.Gender == Gender.Female ? 2 : pokemon.Gender == Gender.Genderless ? 4 : 0) | form << 3);
+
+        PutText(c, pokemon.Nickname, 11);
+        c[0x17] = 12; // Platinum
+        PutText(d, otName, 8);
+        if (pokemon.MetDate is { } met && met.Year >= 2000)
+        {
+            d[0x13] = (byte)(met.Year - 2000);
+            d[0x14] = (byte)met.Month;
+            d[0x15] = (byte)met.Day;
+        }
+        d[0x1A] = (byte)pokemon.Pokerus;
+        int ball = Array.IndexOf(BallNames, pokemon.Ball ?? "");
+        d[0x1B] = (byte)Math.Max(0, ball);
+        d[0x1C] = (byte)(Math.Clamp(pokemon.MetLevel, 0, 127) | (otGirl ? 0x80 : 0));
+
+        BitConverter.TryWriteBytes(data.AsSpan(0), pokemon.Personality);
+        a.CopyTo(data, DataStart);
+        b.CopyTo(data, DataStart + BlockSize);
+        c.CopyTo(data, DataStart + BlockSize * 2);
+        d.CopyTo(data, DataStart + BlockSize * 3);
+        BitConverter.TryWriteBytes(data.AsSpan(6), WordSum(data.AsSpan(DataStart, DataSize)));
+        return data;
+    }
+
+    private static readonly string[] BallNames =
+    {
+        "", "Master Ball", "Ultra Ball", "Great Ball", "Poké Ball", "Safari Ball", "Net Ball", "Dive Ball", "Nest Ball",
+        "Repeat Ball", "Timer Ball", "Luxury Ball", "Premier Ball", "Dusk Ball", "Heal Ball", "Quick Ball", "Cherish Ball"
+    };
+
+    /// <summary>A language's number in the DS games' records (the GBA's: 1 Japanese, 2 English, 3 French, 4 Italian, 5 German, 7 Spanish); English for none.</summary>
+    private static int LanguageNumber(string? language) => language switch
+    {
+        "Japanese" => MigrationDatabase.Japanese,
+        "French" => MigrationDatabase.French,
+        "Italian" => MigrationDatabase.Italian,
+        "German" => MigrationDatabase.German,
+        "Spanish" => MigrationDatabase.Spanish,
+        _ => MigrationDatabase.English
+    };
 
     private static DateTime? SafeDate(int year, int month, int day)
     {

@@ -76,8 +76,10 @@ public static class Migration
     public static string IdentityOf(ForeignPokemon pokemon) => PalParkLedger.Identity(pokemon.Personality, pokemon.OtId);
 
     /// <summary>Whether a source's Pokémon may be chosen, and if not why.</summary>
-    public static MigrationVerdict WhyNot(ForeignPokemon pokemon, PalParkLedger ledger)
+    public static MigrationVerdict WhyNot(ForeignPokemon pokemon, PalParkLedger ledger, IReadOnlySet<Guid>? heldByTarget = null)
     {
+        // A Pokémon of one of this game's own saves (plan 08 · P22) is moved, not brought: it is told by its id
+        if (pokemon.Own != null) return WhyNotOwn(pokemon.Own, heldByTarget ?? new HashSet<Guid>());
         if (pokemon.IsEgg || pokemon.IsBadEgg) return new(MigrationRefusal.Egg);
         // The GBA's own checks, in the order the migrator asks them
         if (pokemon.Console == ForeignConsole.Gba)
@@ -88,6 +90,44 @@ public static class Migration
         if (!pokemon.HasARealSpecies) return new(MigrationRefusal.NotARealSpecies);
         if (ledger.HasCome(IdentityOf(pokemon))) return new(MigrationRefusal.CameBefore);
         return Impossible(pokemon) is { } why ? new(MigrationRefusal.Impossible, why) : new(MigrationRefusal.None);
+    }
+
+    /// <summary>
+    /// Whether a Pokémon of one of this game's saves may be moved to another (plan 08 · P22): not an Egg, one with an id
+    /// (a save not played since ids were given has none yet), not one the receiving save already holds, and one the legality check passes.
+    /// </summary>
+    public static MigrationVerdict WhyNotOwn(SavedPokemonData pokemon, IReadOnlySet<Guid> heldByTarget)
+    {
+        if (pokemon.IsEgg) return new(MigrationRefusal.Egg);
+        if (pokemon.Id is not { } id) return new(MigrationRefusal.Impossible, Text.Of("migrate.impossible.noId"));
+        if (heldByTarget.Contains(id)) return new(MigrationRefusal.CameBefore);
+        return ImpossibleSaved(pokemon) is { } why ? new(MigrationRefusal.Impossible, why) : new(MigrationRefusal.None);
+    }
+
+    /// <summary>The legality check of a Pokémon a save keeps: <see cref="Impossible"/> without the foreign file's numbers.</summary>
+    public static string? ImpossibleSaved(SavedPokemonData saved)
+    {
+        var species = PokemonDatabase.Get(saved.SpeciesName) ?? PokemonDatabase.GetByDex(saved.DexNumber);
+        if (species == null) return Text.Of("migrate.impossible.species");
+        if (saved.CurrentExp < 0 || saved.CurrentExp > Pokemon.GetExpForLevel(100, species.GrowthRate)) return Text.Of("migrate.impossible.exp");
+        int[] evs = { saved.EvHP, saved.EvAttack, saved.EvDefense, saved.EvSpeed, saved.EvSpAttack, saved.EvSpDefense };
+        if (evs.Any(e => e is < 0 or > 255) || evs.Sum() > 510) return Text.Of("migrate.impossible.effort");
+        int[] ivs = { saved.IvHP, saved.IvAttack, saved.IvDefense, saved.IvSpeed, saved.IvSpAttack, saved.IvSpDefense };
+        if (ivs.Any(i => i is < 0 or > 31)) return Text.Of("migrate.impossible.ivs");
+        return UnlearnableMove(saved.ToPokemon());
+    }
+
+    private static string? UnlearnableMove(Pokemon made)
+    {
+        HashSet<string> may;
+        lock (Learnable)
+        {
+            if (!Learnable.TryGetValue(made.Species.Name, out may!)) Learnable[made.Species.Name] = may = Legality.Learnable(made.Species);
+        }
+        foreach (var move in made.Learnset) may.Add(move.MoveName);
+        foreach (var move in made.Moves)
+            if (!may.Contains(move.Name)) return Text.Of("migrate.impossible.move", ("move", LocalNames.Move(move.Name)));
+        return null;
     }
 
     /// <summary>
@@ -106,16 +146,7 @@ public static class Migration
         PokemonPlatinumEngine.Core.SavedPokemonData saved;
         try { saved = pokemon.ToSaved(); }
         catch (InvalidOperationException) { return Text.Of("migrate.impossible.species"); }
-        var made = saved.ToPokemon();
-        HashSet<string> may;
-        lock (Learnable)
-        {
-            if (!Learnable.TryGetValue(made.Species.Name, out may!)) Learnable[made.Species.Name] = may = Legality.Learnable(made.Species);
-        }
-        foreach (var move in made.Learnset) may.Add(move.MoveName);
-        foreach (var move in made.Moves)
-            if (!may.Contains(move.Name)) return Text.Of("migrate.impossible.move", ("move", LocalNames.Move(move.Name)));
-        return null;
+        return UnlearnableMove(saved.ToPokemon());
     }
 
     /// <summary>
@@ -126,7 +157,8 @@ public static class Migration
     public static MigrationBlock WhyNotFrom(ForeignSave source, bool nationalPokedex, PalParkState park, DateTime now)
     {
         if (!nationalPokedex) return MigrationBlock.NeedsNationalPokedex;
-        if (park.Ledger.WaitLeft(SourceId(source), now) > TimeSpan.Zero) return MigrationBlock.WaitForADay;
+        // (this game's own saves take no turns: a move between them is told by the receipt, not by the day)
+        if (source.Kind != ForeignKind.OwnSave && park.Ledger.WaitLeft(SourceId(source), now) > TimeSpan.Zero) return MigrationBlock.WaitForADay;
         if (source.Count < Size) return MigrationBlock.TooFew;
         if (park.Waiting.Count > 0) return MigrationBlock.AlreadyStocked;
         return MigrationBlock.None;
@@ -168,6 +200,50 @@ public static class Migration
         var block = Bring(pastimes.PalPark, source, six, save.NationalPokedex, now, rules);
         if (block == MigrationBlock.None) save.Pastimes = pastimes.ToSave();
         return block;
+    }
+
+    /// <summary>
+    /// A save of this game as a source (plan 08 · P22): its boxes, each Pokémon as it is kept (<see cref="ForeignPokemon.Own"/>),
+    /// so that what is moved is the Pokémon itself and not a conversion of it.
+    /// </summary>
+    public static ForeignSave FromSave(SaveData save, bool withParty = false)
+    {
+        var boxes = new List<ForeignBox>();
+        // The way out looks at the team too: a box of its own before the first of the PC's
+        if (withParty)
+        {
+            var team = new ForeignPokemon?[PcBoxes.BoxSize];
+            for (int i = 0; i < Math.Min(save.Party.Count, team.Length); i++) team[i] = Of(save.Party[i], save);
+            boxes.Add(new ForeignBox { Name = Text.Of("migrate.party"), Slots = team });
+        }
+        foreach (var (box, i) in (save.Boxes?.Boxes ?? new()).Select((b, i) => (b, i)))
+        {
+            var slots = new ForeignPokemon?[PcBoxes.BoxSize];
+            foreach (var placed in box.Pokemon)
+                if (placed.Slot is >= 0 and < PcBoxes.BoxSize) slots[placed.Slot] = Of(placed.Pokemon, save);
+            boxes.Add(new ForeignBox { Name = string.IsNullOrEmpty(box.Name) ? Text.Of("migrate.box", ("n", i + 1)) : box.Name, Slots = slots });
+        }
+        return new ForeignSave { Kind = ForeignKind.OwnSave, TrainerName = save.PlayerName, TrainerId = unchecked((uint)save.TrainerId), Boxes = boxes };
+    }
+
+    /// <summary>A Pokémon of a save as the migration's screen draws and asks about it, holding the saved Pokémon whole.</summary>
+    public static ForeignPokemon Of(SavedPokemonData saved, SaveData save)
+    {
+        var species = PokemonDatabase.Get(saved.SpeciesName) ?? PokemonDatabase.GetByDex(saved.DexNumber);
+        var trainer = saved.OriginalTrainer;
+        return new ForeignPokemon
+        {
+            Console = ForeignConsole.Ds,
+            Own = saved,
+            Personality = saved.Personality ?? 0,
+            OtId = trainer != null ? unchecked((uint)trainer.Id) : unchecked((uint)save.TrainerId),
+            Species = species?.DexNumber ?? 0,
+            IsEgg = saved.IsEgg,
+            Nickname = saved.Nickname,
+            HasNickname = saved.Nickname.Length > 0,
+            OtName = trainer?.Name ?? save.PlayerName,
+            Experience = saved.CurrentExp
+        };
     }
 
     /// <summary>A loose Pokémon file is not a source of its own: the folder's files are one (<see cref="ForeignKind.Files"/>), thirty to a box.</summary>

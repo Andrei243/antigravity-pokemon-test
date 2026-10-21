@@ -12,7 +12,7 @@ namespace PokemonPlatinumEngine.Core;
 /// taken together as one, or a file the readers refuse (<see cref="Refusal"/>), kept in the list so that the player is told
 /// why it isn't offered.
 /// </summary>
-public sealed record MigrationSource(string Name, ForeignSave? Save, ForeignRefusal Refusal, int Files = 1)
+public sealed record MigrationSource(string Name, ForeignSave? Save, ForeignRefusal Refusal, int Files = 1, int? Slot = null)
 {
     public bool Readable => Save != null;
 
@@ -22,6 +22,7 @@ public sealed record MigrationSource(string Name, ForeignSave? Save, ForeignRefu
         ForeignKind.GbaSave => Text.Of("migrate.kind.gba"),
         ForeignKind.PlatinumSave => Text.Of("migrate.kind.platinum"),
         ForeignKind.Files => Text.Of("migrate.kind.files", ("n", Files)),
+        ForeignKind.OwnSave => Text.Of("migrate.kind.slot", ("slot", Slot ?? 0)),
         ForeignKind.GbaPokemon or ForeignKind.DsPokemon => Text.Of("migrate.kind.file"),
         _ => Text.Of("migrate.kind.unknown")
     };
@@ -76,6 +77,13 @@ public static class MigrationFolder
         return sources;
     }
 
-    /// <summary>Whether the folder holds something the readers know: what decides whether the title offers MIGRATE.</summary>
+    /// <summary>Whether the folder holds something the readers know.</summary>
     public static bool Offers(IEnumerable<MigrationSource> sources) => sources.Any(s => s.Readable);
+
+    /// <summary>
+    /// The saves of this game that can be moved from (plan 08 · P22): each slot that reads, as a source, with its player's
+    /// name. The title offers MIGRATE when there is a file in the folder or two saves, one to move from and one to move to.
+    /// </summary>
+    public static List<MigrationSource> Slots(IEnumerable<(int Slot, SaveData Save)> saves) =>
+        saves.Select(s => new MigrationSource(s.Save.PlayerName, Migration.FromSave(s.Save), ForeignRefusal.None, 1, s.Slot)).ToList();
 }

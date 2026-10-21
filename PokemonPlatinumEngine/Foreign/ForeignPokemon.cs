@@ -22,6 +22,12 @@ public sealed class ForeignPokemon
 {
     public ForeignConsole Console { get; init; }
 
+    /// <summary>
+    /// The Pokémon itself, where it is one of this game's own saves' (plan 08 · P22): what the migration's screen shows of it
+    /// is read off this, and <see cref="ToSaved"/> gives it back whole. Null for a Pokémon of a foreign file.
+    /// </summary>
+    public SavedPokemonData? Own { get; init; }
+
     /// <summary>The game of the save it came out of, for a Pokémon of the GBA's: Deoxys's forme is the game it left.</summary>
     public GbaGame Game { get; init; } = GbaGame.Unknown;
 
@@ -152,6 +158,7 @@ public sealed class ForeignPokemon
     /// </summary>
     public SavedPokemonData ToSaved(Ruleset? rules = null)
     {
+        if (Own != null) return Own;
         var species = SpeciesData ?? throw new InvalidOperationException($"no species {Species}");
         string? form = FormName(species);
         var formData = form != null ? species.Forms?.FirstOrDefault(f => f.Name == form) : null;
@@ -260,6 +267,14 @@ internal static class DsForms
         27 => "Unown-Question",
         _ => null
     };
+
+    /// <summary>The form number a form's name is of its species (<see cref="Of"/> the other way round); 0 for the species' own or a form the DS games' records have no number for.</summary>
+    public static int NumberOf(string species, string form)
+    {
+        for (int number = 1; number <= 27; number++)
+            if (Of(species, number) == form) return number;
+        return 0;
+    }
 
     /// <summary>The form of a species by its form number, null for the species' own or for one this game has no form of.</summary>
     public static string? Of(string species, int form)

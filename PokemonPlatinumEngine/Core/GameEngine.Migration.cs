@@ -32,13 +32,19 @@ public partial class GameEngine
 
     private DateTime MigrationNow => MigrationClock?.Invoke() ?? WallClock.UtcNow;
 
-    /// <summary>Whether the folder holds something the readers know: the title's MIGRATE is offered then.</summary>
+    /// <summary>
+    /// Whether the title's MIGRATE is offered (plan 08 · P22): the folder holds something the readers know, or two saves
+    /// of this game can be read, one to move from and one to move to.
+    /// </summary>
     internal void OfferMigration() =>
-        flow.TitleScreen.OfferMigration(MigrationFolder.Offers(MigrationFolder.Read(MigrateFolder)));
+        flow.TitleScreen.OfferMigration(MigrationFolder.Offers(MigrationFolder.Read(MigrateFolder)) || ReadableSlots().Count >= 2);
+
+    private List<SaveSlot> ReadableSlots() => titleSlots.Where(s => s.Taken && s.Save != null).ToList();
 
     private void OpenMigrate()
     {
-        var targets = titleSlots.Where(s => s.Taken && s.Save != null).Select(s => new MigrateTarget(s.Number, s.Save!)).ToList();
+        var slots = ReadableSlots();
+        var targets = slots.Select(s => new MigrateTarget(s.Number, s.Save!)).ToList();
         // The folder is read afresh, so that a file dropped in or taken out since the game began is seen
         var sources = MigrationFolder.Read(MigrateFolder);
         if (targets.Count == 0)
@@ -46,7 +52,11 @@ public partial class GameEngine
             flow.TitleScreen.OfferMigration(false);
             return;
         }
-        flow.MigrateScreen.Open(targets, sources, () => MigrationNow);
+        // The saves of this game are sources as well: the Pokémon of one are moved into another's park, or written out
+        // (before the files the readers refused, which stay at the foot of the list)
+        int firstRefused = sources.FindIndex(s => !s.Readable);
+        sources.InsertRange(firstRefused < 0 ? sources.Count : firstRefused, MigrationFolder.Slots(slots.Select(s => (s.Number, s.Save!))));
+        flow.MigrateScreen.Open(targets, sources, () => MigrationNow, withMenu: true);
         flow.State = GameState.Migrate;
     }
 
@@ -54,7 +64,21 @@ public partial class GameEngine
     {
         flow.MigrateScreen.Update(dt);
         if (flow.MigrateScreen.TakeRequest() is { } request) CarryOutMigration(request);
+        else if (flow.MigrateScreen.TakeWriteOut() is { } writeOut) CarryOutWriteOut(writeOut);
         else if (!flow.MigrateScreen.IsActive) CloseMigrate();
+    }
+
+    /// <summary>
+    /// A Pokémon of a save written out as a file or as text, into the migrate folder's out folder (plan 08 · P22). The save
+    /// is not touched: this is a copy.
+    /// </summary>
+    internal string? CarryOutWriteOut(WriteOutRequest request)
+    {
+        string? file = MigrationOut.Write(MigrateFolder, request.From.Save, request.Pokemon, request.Format);
+        if (file != null) Log.Info($"{request.Pokemon.SpeciesName} of slot {request.From.Slot} was written out as {file}.");
+        else Log.Warn($"{request.Pokemon.SpeciesName} of slot {request.From.Slot} could not be written out.");
+        flow.MigrateScreen.FinishWriteOut(file);
+        return file;
     }
 
     private void CloseMigrate()
@@ -73,6 +97,22 @@ public partial class GameEngine
     internal MigrationBlock CarryOutMigration(MigrateRequest request)
     {
         var paths = SavePaths.Current;
+        if (request.Source.Slot is { } fromSlot)
+        {
+            // Between this game's saves: four writes with a receipt, so that a crash in the middle is finished at the next start
+            var ids = request.Six.Where(p => p.Own?.Id != null).Select(p => p.Own!.Id!.Value).ToList();
+            var moved = SlotMoves.Move(paths, fromSlot, request.Target.Slot, ids);
+            if (moved == MigrationBlock.None)
+            {
+                // The title holds the two saves as they were read: bring them level with the files
+                titleSlots = titleSlots.Select(s => s.Number == fromSlot || s.Number == request.Target.Slot
+                    ? SaveSlots.Read(paths, s.Number) : s).ToList();
+                Log.Info($"{ids.Count} Pokémon of slot {fromSlot} were moved into slot {request.Target.Slot}.");
+            }
+            else Log.Warn($"Pokémon of slot {fromSlot} were to be moved into slot {request.Target.Slot}: {moved}.");
+            flow.MigrateScreen.Finish(moved);
+            return moved;
+        }
         var fresh = SaveSlots.Read(paths, request.Target.Slot).Save;
         var block = MigrationBlock.CouldNotSave;
         if (fresh != null && request.Source.Save is { } source)
