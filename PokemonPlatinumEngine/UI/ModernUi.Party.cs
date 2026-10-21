@@ -226,6 +226,13 @@ internal static partial class ModernUi
             return;
         }
 
+        // ---- The trainer memo, on its own (plan 08 · P3)
+        if (page == PartyScreen.MemoPage)
+        {
+            MemoPanel(new Rectangle(696 + slide, 132, 1160, 900), p);
+            return;
+        }
+
         // ---- The ribbons, on theirs
         if (page == PartyScreen.RibbonsPage)
         {
@@ -278,6 +285,45 @@ internal static partial class ModernUi
             UiFonts.DrawCentered(move.Accuracy > 0 ? move.Accuracy.ToString() : "—", moves.X + 808, cy, 32, Ink, UiWeight.Black);
             string pp = Text.Of("summary.ppValue", ("pp", move.CurrentPP), ("max", move.MaxPP));
             UiFonts.DrawCentered(pp, moves.X + moves.Width - 44 - UiFonts.Measure(pp, 30, UiWeight.Black), cy, 30, move.CurrentPP > 0 ? Ink : Red, UiWeight.Black);
+        }
+    }
+
+    /// <summary>
+    /// The trainer memo (plan 08 · P3): its trainer and number, when and where it was met and at what level, its nature
+    /// and characteristic, and its ability with what it does. A Pokémon of the player's own carries no mark and shows the
+    /// player's name and number.
+    /// </summary>
+    private static void MemoPanel(Rectangle r, Pokemon p)
+    {
+        Panel(r, 34);
+        float x = r.X + 44, wide = r.Width - 88;
+        var (name, id) = p.OriginalTrainer is { } mark ? (mark.Name, mark.Id) : (PlayerIdentity.Name, (int)(PlayerIdentity.Number & 0xFFFF));
+        Label(Text.Of("summary.memo.trainer"), x, r.Y + 34);
+        UiFonts.Draw(name, x, r.Y + 62, 40, Ink, UiWeight.Black);
+        string idLabel = Text.Of("summary.memo.id");
+        Label(idLabel, x + 640, r.Y + 34);
+        UiFonts.Draw(id.ToString("D5"), x + 640, r.Y + 62, 40, Ink, UiWeight.Black);
+        UiShapes.Fill(new Rectangle(x, r.Y + 140, wide, 3), 1.5f, Rule);
+
+        Label(p.MetDate != null ? Text.Of("summary.memo.metOn") : Text.Of("summary.memo.metOnUnknown"), x, r.Y + 166);
+        if (p.MetDate is { } day) UiFonts.Draw(Words.Date(day), x, r.Y + 194, 34, Ink, UiWeight.Black);
+        string where = p.MetLocation is { Length: > 0 } place ? LocalNames.PlaceShown(null, place) : "";
+        string met = where.Length == 0 ? Text.Of("summary.memo.unknownLine")
+            : p.MetLevel == 0 ? Text.Of("summary.memo.hatchedLine", ("where", where))
+            : Text.Of("summary.memo.metLine", ("where", where), ("level", p.MetLevel));
+        DrawWrapped(met, x, r.Y + 250, wide, 30, Ink, 40, UiWeight.ExtraBold);
+        DrawWrapped(Text.Of("summary.memo.nature", ("nature", Words.Nature(p.Nature))), x, r.Y + 330, wide, 30, Ink, 40, UiWeight.ExtraBold);
+        UiShapes.Fill(new Rectangle(x, r.Y + 410, wide, 3), 1.5f, Rule);
+
+        Label(Text.Of("summary.memo.characteristic"), x, r.Y + 436);
+        DrawWrapped(Characteristics.Line(p), x, r.Y + 466, wide, 34, Ink, 44, UiWeight.Black);
+        UiShapes.Fill(new Rectangle(x, r.Y + 560, wide, 3), 1.5f, Rule);
+
+        Label(Text.Of("summary.memo.ability"), x, r.Y + 586);
+        if (p.Ability is { } ability)
+        {
+            UiFonts.Draw(ability.DisplayName, x, r.Y + 614, 36, Ink, UiWeight.Black);
+            DrawWrapped(ability.DisplayDescription, x, r.Y + 668, wide, 30, Muted, 40, UiWeight.Bold);
         }
     }
 

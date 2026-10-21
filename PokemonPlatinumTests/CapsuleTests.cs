@@ -895,8 +895,9 @@ public class CapsuleTests
         screen.Confirm(party);
         screen.Confirm(party);
         Assert.True(screen.ShowSummary);
-        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.RibbonsPage }, screen.SummaryPages);
-        screen.TurnSummaryPage(1);
+        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.RibbonsPage }, screen.SummaryPages);
+        // (The ribbons are the last page: one step back from the first wraps round to them)
+        screen.TurnSummaryPage(-1);
         Assert.Equal(PartyScreen.RibbonsPage, screen.SummaryPage);
         // No ribbons: nothing to look through
         Assert.False(screen.SelectRibbons(lead));
@@ -908,9 +909,9 @@ public class CapsuleTests
         Assert.Equal(1 + PartyScreen.RibbonColumns, screen.RibbonCursor);
         screen.LeaveRibbons();
         Assert.Equal(-1, screen.RibbonCursor);
-        // With the Contest Hall visited the condition's page stands between the two
+        // With the Contest Hall visited the condition's page stands before the ribbons
         screen.ShowCondition = true;
-        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.ConditionPage, PartyScreen.RibbonsPage }, screen.SummaryPages);
+        Assert.Equal(new[] { PartyScreen.StatsPage, PartyScreen.MemoPage, PartyScreen.ConditionPage, PartyScreen.RibbonsPage }, screen.SummaryPages);
         screen.TurnSummaryPage(1);
         Assert.Equal(PartyScreen.StatsPage, screen.SummaryPage);
         screen.TurnSummaryPage(-1);

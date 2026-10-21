@@ -130,6 +130,9 @@ Whether to do it at all is decision 7: it reopens plan 03 · decision 4.
 - Shots: `20b_summary` (INFO, kept for the compare board), `20d_summary_memo`, `20e_summary_skills`.
 - **Done when** a Pokémon caught on Route 202 says so on its memo, with the day and the level, after a save and a load.
 
+**Partly done (2026-10-21).** Found already in place from other plans: `Pokemon.MetLocation`, `MetLevel`, `MetDate` (`Met(place, day)`), `Markings`/`Marks`, `OriginalTrainer`, their saving and `CopyStateFrom`, and the catch, gift and starter setting them. Built here: `Models/Characteristics.cs` (the original's rule: the highest IV, ties from the personality's remainder by six over the order HP, Attack, Defense, Speed, Sp. Atk, Sp. Def; the line by that IV's remainder by five; thirty lines of our own in `ui.json`, English and Romanian), and the memo as a page of the party's summary (`PartyScreen.MemoPage` = 3, turned to after the Pokémon's own page and before the condition and the ribbons; `ModernUi.MemoPanel`: trainer and ID, the day, where and at what level, nature, characteristic, ability and its text; style guide, "Summary"). Tests: `TrainerMemoTests`; the page lists in `CapsuleTests` and `PoffinTests` follow the new order.
+- **Not done**: the plan's `SummaryView` class and the split of the first page into Info and Skills (the existing page carries both), the memo's shots (`20d_summary_memo`, `20e_summary_skills`) and a look at the page on screen, the marks shown and set on the summary, and a nature line of our own for each of the 25 natures (the memo says only that the nature is such and such). P4 builds on the page list as it now stands.
+
 ### P4 · The move pages and the other doors
 - `BattleMoves` with a cursor and the chosen move's description, `ContestMoves` and `Ribbons` as empty frames; the view opened from `PCScreen` and from the battle's switch panel.
 - Tests: the cursor over four, three and one move; the PC's and the switch panel's way in and back.
@@ -359,7 +362,7 @@ Owed: the shots looked at, and the full suite run, once merged.
 
 - [x] P1 Platinum's battle options (2026-10-13: the three rows, Shift's offer as a question in the core and on screen, the scene off in the face; tests and shots written, not run)
 - [x] P2 A quicker battle, of our own (2026-10-21: the four rows, the speed-up, auto-advance, autorun and six text frames; tests run and green, the shots not taken)
-- [ ] P3 The memo's fields and the first three pages
+- [~] P3 The memo's fields and the first three pages (2026-10-21: the characteristic and the memo page are in; the fields already stood; the view split into Info/Skills and `SummaryView` are not done)
 - [ ] P4 The move pages and the other doors
 - [x] P5 The level-up panel (2026-10-12)
 - [x] P6 The trainer table imported (done by plan 06 · R9, 2026-10-06)

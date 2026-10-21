@@ -55,6 +55,9 @@ public class PartyScreen
 
     public const int StatsPage = 0, ConditionPage = 1, RibbonsPage = 2;
 
+    /// <summary>The trainer memo (plan 08 · P3): who met it where and when, its characteristic and its ability. It follows the Pokémon's page.</summary>
+    public const int MemoPage = 3;
+
     /// <summary>How many ribbons a row of the ribbons' page shows, and how many rows (the original shows four by three).</summary>
     public const int RibbonColumns = 6, RibbonRows = 3;
 
@@ -65,7 +68,7 @@ public class PartyScreen
     public int RibbonCursor { get; private set; } = -1;
 
     /// <summary>The pages a summary turns through: the condition's only once the Contest Hall has been visited.</summary>
-    public IReadOnlyList<int> SummaryPages => ShowCondition ? new[] { StatsPage, ConditionPage, RibbonsPage } : new[] { StatsPage, RibbonsPage };
+    public IReadOnlyList<int> SummaryPages => ShowCondition ? new[] { StatsPage, MemoPage, ConditionPage, RibbonsPage } : new[] { StatsPage, MemoPage, RibbonsPage };
 
     /// <summary>The chosen Pokémon's menu while it is open, and the entry under its cursor.</summary>
     public IReadOnlyList<PartyAction>? Actions { get; private set; }

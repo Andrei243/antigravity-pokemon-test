@@ -440,6 +440,38 @@
     "accuracy": "ACCURACY",
     "pp": "PP",
     "ppValue": "{pp} / {max}",
+    "memo": {
+      "trainer": "TRAINER",
+      "id": "ID No.",
+      "metOn": "MET ON",
+      "metOnUnknown": "MET",
+      "nature": "Has a {nature} nature.",
+      "metLine": "Met at {where} at Lv {level}.",
+      "hatchedLine": "Hatched at {where}.",
+      "unknownLine": "Met somewhere, a long time ago.",
+      "characteristic": "CHARACTERISTIC",
+      "ability": "ABILITY"
+    },
+    "characteristic": {
+      "HP": {
+        "0": "Seems to have a bottomless appetite.", "1": "Naps whenever the sun is warm.", "2": "Leaves a trail of mess wherever it goes.", "3": "Is happiest when there is nothing to do.", "4": "Takes a while to wake up properly."
+      },
+      "Attack": {
+        "0": "Shows off how strong it is.", "1": "Can't resist a good scuffle.", "2": "Flares up over small things.", "3": "Always looks for a rival to test.", "4": "Rushes in before anyone says go."
+      },
+      "Defense": {
+        "0": "Has a body like a brick wall.", "1": "Shrugs off a knock without a flinch.", "2": "Never gives up its ground.", "3": "Can stand about for hours.", "4": "Keeps calm while others tire."
+      },
+      "SpAttack": {
+        "0": "Pokes its nose into everything.", "1": "Loves playing tricks on people.", "2": "Is always a step ahead in a plot.", "3": "Stares off into space for ages.", "4": "Fusses over every little detail."
+      },
+      "SpDefense": {
+        "0": "Holds on to its resolve.", "1": "Likes to be admired.", "2": "Refuses to be told what to do.", "3": "Sulks when it loses.", "4": "Digs in and won't be moved."
+      },
+      "Speed": {
+        "0": "Bounds around at every chance.", "1": "Pricks up its ears at any noise.", "2": "Acts before it thinks.", "3": "Enjoys making others laugh.", "4": "Is off at the first sign of trouble."
+      }
+    },
     "egg": "A Pokémon Egg",
     "receivedFrom": "RECEIVED FROM",
     "on": "ON",
