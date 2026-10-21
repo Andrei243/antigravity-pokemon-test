@@ -44,7 +44,7 @@ internal static class CharacterFaces
         var c = face.TextureCenter;
         Vector2 Px(float x, float y) => new(S * 0.5f + (x - c.X) * k, S * 0.5f - (y - c.Y) * k);
 
-        bool adult = s.Build == BodyBuild.Adult;
+        bool adult = s.Build is BodyBuild.Adult or BodyBuild.Elder;
         float eyeW = (adult ? 0.029f : 0.034f) * k, eyeH = (adult ? 0.043f : 0.05f) * k;
         float eyeY = face.Anchor.Y;
         var dark = PixelCanvas.Mix(s.Eyes, Ink, 0.55f);

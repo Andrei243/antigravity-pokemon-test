@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Numerics;
 using System.Text.Json;
 using PokemonPlatinumEngine.Battle;
 using PokemonPlatinumEngine.Data;
@@ -252,12 +253,11 @@ public class CharacterTableTests
                 if (!Table.Has(looks) && !Table.Fallbacks.ContainsKey(looks)) unmade.Add(looks);
             }
         }
-        // The sea's, the snow's and the east's people (plan 01 · M7 and M8): plan 11 · C3 and C4's
+        // The snow's and the east's people (plan 01 · M7 and M8): plan 11 · C4's (C3 drew the sea's)
         // (Snowpoint's townsman is given a look that exists by his overlay since plan 02 · S11a)
         Assert.Equal(new[]
         {
-            "ace_trainer_snow_f", "ace_trainer_snow_m", "roughneck", "sailor", "skier_f", "skier_m",
-            "snowpoint_npc_f", "swimmer_f", "swimmer_m", "tuber_m"
+            "ace_trainer_snow_f", "ace_trainer_snow_m", "roughneck", "sailor", "skier_f", "skier_m", "snowpoint_npc_f"
         }, unmade);
     }
 
@@ -285,8 +285,8 @@ public class CharacterTableTests
             if (look == null) Assert.Equal("Roark", Table.InBattle(trainerClass, "Roark"));
             else if (!Table.Has(look)) plain.Add(trainerClass);
         }
-        // Plan 11 · C2 to C4 draw these: the count only falls (85 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, and K4's second part the Gamer and the Engineer of the sound map, which plan 11 · C13 and plan 20 · J14 will draw; 86 after plan 19 · K5 gave the Channeler a look and the sound map the Poké Maniac of FireRed's, "Pokemaniac"; 87 after K5's second part gave the Biker and the Cue Ball a look and the sound map FireRed's Rocker and Cooltrainer; 77 after plan 11 · C2 drew the first trainers of the open areas)
-        Assert.True(plain.Count <= 77, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
+        // Plan 11 · C2 to C4 draw these: the count only falls (85 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, and K4's second part the Gamer and the Engineer of the sound map, which plan 11 · C13 and plan 20 · J14 will draw; 86 after plan 19 · K5 gave the Channeler a look and the sound map the Poké Maniac of FireRed's, "Pokemaniac"; 87 after K5's second part gave the Biker and the Cue Ball a look and the sound map FireRed's Rocker and Cooltrainer; 77 after plan 11 · C2 drew the first trainers of the open areas; 63 after C3 drew the rest)
+        Assert.True(plain.Count <= 63, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
         Assert.Contains("Sailor", plain);
         // Plan 11 · C2 drew these
         Assert.DoesNotContain("Hiker", plain);
@@ -414,5 +414,74 @@ public class CharacterTableTests
         // A look without it has none
         var plain = CharacterModels.Build("LASS").Mesh;
         Assert.DoesNotContain(Enumerable.Range(0, plain.VertexCount), v => Near(plain.Colors[v], GalacticMark.Base));
+    }
+
+    /// <summary>The looks plan 11 · C3 made: the rest of the open areas' people, and three classes drawn only in battle.</summary>
+    public static readonly string[] SecondTrainers =
+    {
+        "beauty", "collector", "expert_m", "expert_f", "middle_aged_man", "middle_aged_woman", "old_man", "old_woman", "pokefan_m", "pokefan_f",
+        "pokemon_breeder_m", "pokemon_breeder_f", "tuber_m", "tuber_f", "parasol_lady", "fisherman", "swimmer_m", "swimmer_f", "scientist_m",
+        "scientist_f", "guitarist", "cowgirl", "rancher", "receptionist", "cashier_m", "aroma_lady", "veteran", "poke_kid"
+    };
+
+    [Fact]
+    public void TheSecondTrainersAreEachTheirOwnLook()
+    {
+        foreach (string look in SecondTrainers)
+        {
+            Assert.True(Table.Has(look), $"{look} has no look");
+            Assert.False(Table.Fallbacks.ContainsKey(look), $"{look} still falls back");
+            Assert.Equal(look, WorldMapBuilder.CharacterFor(look));
+        }
+        foreach (var (trainerClass, man, woman) in new[]
+        {
+            ("Pokéfan", "pokefan_m", "pokefan_f"), ("Pokémon Breeder", "pokemon_breeder_m", "pokemon_breeder_f"), ("Tuber", "tuber_m", "tuber_f"),
+            ("Swimmer", "swimmer_m", "swimmer_f"), ("Scientist", "scientist", "scientist_f"), ("Beauty", "beauty", "beauty"),
+            ("Collector", "collector", "collector"), ("Parasol Lady", "parasol_lady", "parasol_lady"), ("Fisherman", "fisherman", "fisherman"),
+            ("Guitarist", "guitarist", "guitarist"), ("Cowgirl", "cowgirl", "cowgirl"), ("Rancher", "rancher", "rancher"),
+            ("Aroma Lady", "aroma_lady", "aroma_lady"), ("Veteran", "veteran", "veteran"), ("Poké Kid", "poke_kid", "poke_kid")
+        })
+        {
+            Assert.Equal(man, Table.InBattle(trainerClass, null));
+            Assert.Equal(woman, Table.InBattle(trainerClass, woman));
+        }
+        // Every new part is worn by someone
+        var styles = SecondTrainers.Select(Table.Get).ToList();
+        Assert.Contains(styles, s => s.Overalls);
+        Assert.Contains(styles, s => s.Robe);
+        Assert.Contains(styles, s => s.Swimsuit);
+        Assert.Contains(styles, s => s.Apron != null);
+        Assert.Contains(styles, s => s.Vest != null);
+        Assert.Contains(styles, s => s.Hat == Headwear.Cowboy);
+        Assert.Contains(styles, s => s.Build == BodyBuild.Elder);
+        foreach (var held in Enum.GetValues<HeldProp>().Where(h => h is not (HeldProp.None or HeldProp.Net or HeldProp.Pickaxe)))
+            Assert.Contains(styles, s => s.Holds == held);
+        // The net and the pickaxe went to two of C2's looks
+        Assert.Equal(HeldProp.Net, Table.Get("bug_catcher").Holds);
+        Assert.Equal(HeldProp.Pickaxe, Table.Get("ruin_maniac").Holds);
+    }
+
+    /// <summary>What a person holds is part of their body and moves with its bone: a rod with the right hand, a float ring with the hips.</summary>
+    [Theory]
+    [InlineData("FISHERMAN", "Rod")]
+    [InlineData("TUBER_M", "FloatRing")]
+    [InlineData("BUG_CATCHER", "Net")]
+    public void WhatIsHeldMovesWithItsBone(string type, string holds)
+    {
+        var rig = CharacterModels.Build(type);
+        var held = Enum.Parse<HeldProp>(holds);
+        Assert.Equal(held, rig.Style.Holds);
+        var mesh = rig.Mesh;
+        int bone = held == HeldProp.FloatRing ? HumanBones.Hips : HumanBones.HandR;
+        // Somewhere well out from the body, the surface follows that bone alone
+        var far = Enumerable.Range(0, mesh.VertexCount)
+            .Where(v => held == HeldProp.FloatRing
+                // the ring before and behind the body, clear of the arms
+                ? MathF.Abs(mesh.Positions[v].X) < 0.08f && MathF.Abs(mesh.Positions[v].Z) > 0.17f && mesh.Positions[v].Y < 0.5f
+                // out ahead of the body below the face, on the right hand's side
+                : mesh.Positions[v].Z > 0.3f && mesh.Positions[v].Y < 0.75f && mesh.Positions[v].X < 0f)
+            .ToList();
+        Assert.True(far.Count > 30, $"{type}: only {far.Count} vertices of what is held");
+        Assert.All(far, v => Assert.True(mesh.WeightOf(v, bone) > 0.9f, $"{type}: a vertex at {mesh.Positions[v]} follows its bone {mesh.WeightOf(v, bone):F2} of the way"));
     }
 }
