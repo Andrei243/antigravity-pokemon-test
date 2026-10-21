@@ -167,7 +167,7 @@
     // blue top and dark trousers
     "winona": { "hairColor": "#b8a8d8", "hair": "Long", "top": "#6aa0d8", "accent": "#f2f2f6", "bottom": "#4a78b0", "shoes": "#2a3448", "eyes": "#3a3a6a", "lashes": true, "build": "Adult", "height": 1.04 },
     "shelly": { "hairColor": "#8a2a2e", "hair": "Long", "hat": "Cap", "hatColor": "#2a5ab0", "hatBand": "#f2f2f6", "top": "#24263a", "accent": "#2a5ab0", "bottom": "#24346a", "shoes": "#1e1e24", "eyes": "#4a2e3a", "lashes": true, "build": "Adult", "height": 1.0 },
-    "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "coat": true, "build": "Adult", "height": 1.02 },
+    "scientist": { "hairColor": "#5c4638", "top": "#f0f2f6", "accent": "#5676b0", "bottom": "#606474", "shoes": "#38302e", "glasses": "#3a3a46", "coat": true, "build": "Adult", "height": 1.02 },
     // Kanto's cast of plan 19 · K5 (our own takes): Lt. Surge, the tallest, spiky pale-gold hair and an olive soldier's vest over a khaki shirt; the
     // S.S. Anne's captain, a white cap with a navy band and a white coat, a moustache; Mr. Fuji, small, short white hair and a long plum robe;
     // a Channeler, long black hair and a long white robe with a purple sash
@@ -223,8 +223,8 @@
     // The first trainers of the open areas (plan 11 · C2), each our own take. The school kids: navy with a white collar, the boy in a bowl cut and grey shorts with a satchel, the girl with a ponytail tied in red and a red skirt
     "school_kid_m": { "hairColor": "#4a3428", "hair": "Bowl", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#8a8c96", "shoes": "#4a3428", "shorts": true, "bag": "#b4864e", "blush": true },
     "school_kid_f": { "hairColor": "#3c2a26", "hair": "Ponytail", "hatBand": "#d8434a", "top": "#34467a", "accent": "#f4f4f6", "bottom": "#c4464c", "shoes": "#3c2c2a", "skirt": true, "bag": "#b4864e", "lashes": true, "blush": true },
-    // The Bug Catcher: a green cap, a short-sleeved green shirt and brown shorts
-    "bug_catcher": { "hairColor": "#5a3a24", "hat": "Cap", "hatColor": "#5a9c48", "hatBand": "#f0d47a", "top": "#78b05a", "accent": "#f0e6c8", "bottom": "#7a5a38", "shoes": "#5a4030", "shorts": true, "shortSleeves": true, "blush": true },
+    // The Bug Catcher: a green cap, a short-sleeved green shirt and brown shorts, and a net (since plan 11 · C3, which made it)
+    "bug_catcher": { "hairColor": "#5a3a24", "hat": "Cap", "hatColor": "#5a9c48", "hatBand": "#f0d47a", "top": "#78b05a", "accent": "#f0e6c8", "bottom": "#7a5a38", "shoes": "#5a4030", "shorts": true, "shortSleeves": true, "holds": "Net", "blush": true },
     // The Camper: a knitted khaki beanie with a brown cuff, a khaki shirt, brown shorts and a green pack
     "camper": { "hairColor": "#6a4428", "hat": "Beanie", "hatColor": "#b8a468", "hatBand": "#7a5432", "top": "#c4ac72", "accent": "#7a5432", "bottom": "#6e5236", "shoes": "#4a3426", "shorts": true, "shortSleeves": true, "bag": "#5a8a4e", "blush": true },
     // The Picnicker: a ponytail tied in white, a yellow top and green shorts
@@ -251,16 +251,63 @@
     "psychic": { "hairColor": "#6a4a96", "hair": "Swept", "top": "#6e4a9a", "accent": "#e8e0f2", "bottom": "#3e3058", "shoes": "#2e2638", "eyes": "#5a3a7a", "coat": true, "build": "Adult", "height": 1.02 },
     // The Ninja Boy: all in navy under a navy bandana knotted in red, with a red scarf, barefoot in dark sandals
     "ninja_boy": { "hairColor": "#26262e", "hat": "Bandana", "hatColor": "#2a3048", "hatBand": "#d43c3c", "top": "#2a3048", "accent": "#d43c3c", "bottom": "#2a3048", "shoes": "#1e2028", "scarf": true, "blush": true },
-    // The Ruin Maniac: bearded and in glasses under a tan hard hat, a khaki shirt and a pack
-    "ruin_maniac": { "hairColor": "#6a4a34", "hat": "HardHat", "hatColor": "#d4bc84", "hatBand": "#8a6a44", "top": "#b4a272", "accent": "#7a5a3a", "bottom": "#6a5a42", "shoes": "#4a3a2c", "beard": true, "glasses": "#3a2e28", "bag": "#8a6a44", "build": "Adult", "height": 1.04 },
+    // The Ruin Maniac: bearded and in glasses under a tan hard hat, a khaki shirt and a pack, a pickaxe over his shoulder (since plan 11 · C3)
+    "ruin_maniac": { "hairColor": "#6a4a34", "hat": "HardHat", "hatColor": "#d4bc84", "hatBand": "#8a6a44", "top": "#b4a272", "accent": "#7a5a3a", "bottom": "#6a5a42", "shoes": "#4a3a2c", "beard": true, "glasses": "#3a2e28", "bag": "#8a6a44", "holds": "Pickaxe", "build": "Adult", "height": 1.04 },
     // The Artist: a maroon beret, a moustache and a cream smock over brown trousers
-    "artist": { "hairColor": "#8a8a96", "hair": "Swept", "hat": "Beret", "hatColor": "#8a2e3e", "hatBand": "#6a2030", "top": "#ece2c8", "accent": "#d4483c", "bottom": "#6a4a38", "shoes": "#3a2a24", "mustache": true, "coat": true, "build": "Adult", "height": 0.98 }
+    "artist": { "hairColor": "#8a8a96", "hair": "Swept", "hat": "Beret", "hatColor": "#8a2e3e", "hatBand": "#6a2030", "top": "#ece2c8", "accent": "#d4483c", "bottom": "#6a4a38", "shoes": "#3a2a24", "mustache": true, "coat": true, "build": "Adult", "height": 0.98 },
+    // The rest of the open areas' people (plan 11 · C3), each our own take. The Beauty: long golden hair and a red dress
+    "beauty": { "hairColor": "#ecc860", "hair": "Long", "top": "#d8405a", "accent": "#fcecf0", "bottom": "#d8405a", "shoes": "#a8283e", "eyes": "#5a3a4a", "skirt": true, "build": "Adult", "lashes": true, "height": 1.04 },
+    // The Collector: glasses, a moustache and a long plum coat, with a satchel
+    "collector": { "hairColor": "#4a3a2e", "hair": "Swept", "top": "#7a5a8a", "accent": "#f2ecdc", "bottom": "#4a4250", "shoes": "#3a2c26", "mustache": true, "glasses": "#2e2a2a", "coat": true, "bag": "#9a7a4a", "build": "Adult", "height": 1.0 },
+    // The Experts: the elderly in robes, the man bald and moustached in blue with a gold sash, the woman with a silver bun in rose
+    "expert_m": { "hairColor": "#c8ccd6", "hair": "Bald", "top": "#3e5a8a", "accent": "#f0c84a", "bottom": "#2e3a5a", "shoes": "#2a2420", "mustache": true, "bushyBrows": true, "robe": true, "build": "Elder" },
+    "expert_f": { "hairColor": "#c8ccd6", "hair": "Bun", "top": "#a84a5a", "accent": "#f0d07a", "bottom": "#6a2e3a", "shoes": "#2a2420", "robe": true, "build": "Elder", "lashes": true },
+    // The townsfolk: a man in an olive vest over a cream shirt, a woman with a brown bun in a lavender top and a plum skirt
+    "middle_aged_man": { "hairColor": "#5a4232", "hair": "Swept", "top": "#e8e2d0", "accent": "#8a7a5a", "bottom": "#5a4a3a", "shoes": "#3a2c24", "vest": "#6a7a4a", "build": "Adult", "height": 1.02 },
+    "middle_aged_woman": { "hairColor": "#6a4a34", "hair": "Bun", "top": "#b896c8", "accent": "#f4eef6", "bottom": "#6a4a78", "shoes": "#4a3434", "skirt": true, "build": "Adult", "lashes": true },
+    // The old folk: a bald man with a moustache in a grey-green cardigan coat, a woman with a white bun and a shawl
+    "old_man": { "hairColor": "#c8ccd6", "hair": "Bald", "top": "#8a8a6a", "accent": "#e8e4d4", "bottom": "#5a5a60", "shoes": "#3a302a", "mustache": true, "bushyBrows": true, "coat": true, "build": "Elder" },
+    "old_woman": { "hairColor": "#c8ccd8", "hair": "Bun", "top": "#8a6a9a", "accent": "#e8dcc8", "bottom": "#5a4a6a", "shoes": "#3a2e30", "skirt": true, "scarf": true, "build": "Elder", "lashes": true },
+    // The Pokéfans: red caps and white tops striped in a ball's red; the man big, the woman's hair in bunches under a pink cap
+    "pokefan_m": { "hairColor": "#4a3428", "hat": "Cap", "hatColor": "#e04040", "hatBand": "#f6f6f8", "top": "#f6f6f4", "accent": "#e04040", "bottom": "#3a4a7a", "shoes": "#e04040", "stripes": true, "bag": "#f2c84a", "build": "Adult", "height": 1.1 },
+    "pokefan_f": { "hairColor": "#8a4a34", "hair": "Bunches", "hat": "Cap", "hatColor": "#f08ab0", "hatBand": "#f6f6f8", "top": "#f6f6f4", "accent": "#f08ab0", "bottom": "#c4506e", "shoes": "#f08ab0", "stripes": true, "skirt": true, "build": "Adult", "lashes": true, "blush": true },
+    // The Pokémon Breeders: aprons over cream tops, the man's green, the woman's pink with a ponytail
+    "pokemon_breeder_m": { "hairColor": "#6a4428", "top": "#f4e6c8", "accent": "#7a5a3a", "bottom": "#5a5a6a", "shoes": "#4a3426", "apron": "#6aaa5a", "build": "Adult", "height": 1.02 },
+    "pokemon_breeder_f": { "hairColor": "#a8582e", "hair": "Ponytail", "hatBand": "#f6f6f8", "top": "#f4e6c8", "accent": "#7a5a3a", "bottom": "#5a5a6a", "shoes": "#4a3426", "apron": "#ec8aa8", "skirt": true, "build": "Adult", "lashes": true },
+    // The Tubers: little swimmers in float rings, the boy in blue trunks, the girl in a pink suit with bunches
+    "tuber_m": { "hairColor": "#3a2a24", "top": "#f6d0aa", "accent": "#f6d0aa", "bottom": "#3a6ad0", "shoes": "#f6d0aa", "swimsuit": true, "holds": "FloatRing", "propColor": "#f2a83a", "build": "Little", "blush": true },
+    "tuber_f": { "hairColor": "#6a3a2e", "hair": "Bunches", "hatBand": "#f6f6f8", "top": "#f08ab0", "accent": "#f08ab0", "bottom": "#f08ab0", "shoes": "#f6d0aa", "swimsuit": true, "holds": "FloatRing", "propColor": "#f2d04a", "build": "Little", "lashes": true, "blush": true },
+    // The Parasol Lady: long chestnut hair, a cream dress and a pink parasol with a white rim
+    "parasol_lady": { "hairColor": "#7a4632", "hair": "Long", "top": "#f4ecd8", "accent": "#fcfcfc", "bottom": "#f4ecd8", "shoes": "#c48a6a", "skirt": true, "holds": "Parasol", "propColor": "#f0a0c0", "build": "Adult", "lashes": true },
+    // The Fisherman: a blue cap, a green vest over a pale shirt, waders, and his rod
+    "fisherman": { "hairColor": "#4a3a2e", "hat": "Cap", "hatColor": "#4a6a9a", "hatBand": "#2a3a5a", "top": "#e4e4dc", "accent": "#6a7a5a", "bottom": "#3a5a4a", "shoes": "#2e3a30", "vest": "#5a7a4a", "mustache": true, "holds": "Rod", "build": "Adult", "height": 1.06 },
+    // The Swimmers: the man in navy trunks, the woman in a red suit with a ponytail
+    "swimmer_m": { "hairColor": "#2a2224", "top": "#eac09a", "accent": "#eac09a", "bottom": "#2a3460", "shoes": "#eac09a", "swimsuit": true, "build": "Adult" },
+    "swimmer_f": { "hairColor": "#3a2a26", "hair": "Ponytail", "hatBand": "#f6f6f8", "top": "#d83a3a", "accent": "#d83a3a", "bottom": "#d83a3a", "shoes": "#f0c8a4", "swimsuit": true, "build": "Adult", "lashes": true },
+    // The Scientist who is a woman: a brown bun, glasses and the white lab coat over a teal shirt
+    "scientist_f": { "hairColor": "#6a4430", "hair": "Bun", "top": "#f0f2f6", "accent": "#4aa0a0", "bottom": "#5a5e6e", "shoes": "#38302e", "glasses": "#3a3a46", "coat": true, "build": "Adult", "lashes": true },
+    // The Guitarist: spiky black hair, a black vest over a red shirt, dark jeans and his guitar
+    "guitarist": { "hairColor": "#26222a", "hair": "Spiky", "top": "#c83a3a", "accent": "#26262c", "bottom": "#2e3448", "shoes": "#1e1e22", "vest": "#26262c", "holds": "Guitar", "build": "Adult", "height": 1.04 },
+    // The Cowgirl: a brown cowboy hat, a ponytail, a tan vest over a white shirt, denim shorts and brown boots
+    "cowgirl": { "hairColor": "#b8783a", "hair": "Ponytail", "hatBand": "#f6f6f8", "hat": "Cowboy", "hatColor": "#8a5a32", "top": "#f6f6f4", "accent": "#d8383c", "bottom": "#4a6a9a", "shoes": "#7a4a2a", "vest": "#c49a5a", "shorts": true, "build": "Adult", "lashes": true },
+    // The Rancher: a tan cowboy hat, a red shirt under denim overalls, a moustache
+    "rancher": { "hairColor": "#6a4a34", "hat": "Cowboy", "hatColor": "#c4a46a", "hatBand": "#6a4a2a", "top": "#d84a3a", "accent": "#f2ecdc", "bottom": "#3a5a8a", "shoes": "#5a3a24", "overalls": true, "mustache": true, "build": "Adult", "height": 1.08 },
+    // A receptionist: a brown bun, a blue jacket with a white scarf and a navy skirt
+    "receptionist": { "hairColor": "#5a3a2c", "hair": "Bun", "top": "#3a6ab8", "accent": "#f6f6fa", "bottom": "#2a3460", "shoes": "#2a2a30", "scarf": true, "skirt": true, "build": "Adult", "lashes": true },
+    // The Mart's man on Route 201: a white shirt under a blue apron
+    "cashier_m": { "hairColor": "#4a3428", "top": "#f4f4f6", "accent": "#3a6ab8", "bottom": "#383c50", "shoes": "#2a2a30", "apron": "#3a6ab8", "build": "Adult", "height": 0.98 },
+    // The classes the open areas' trainers have with no object of their own, drawn only on the battle's platform. The Aroma Lady: green hair under a yellow bow, a rose dress
+    "aroma_lady": { "hairColor": "#5a8a4a", "hair": "Long", "hat": "Bow", "hatColor": "#f2d04a", "hatBand": "#e0a030", "top": "#e8b0c8", "accent": "#f8f0f4", "bottom": "#e8b0c8", "shoes": "#a8586e", "skirt": true, "build": "Adult", "lashes": true },
+    // The Veteran: an old soldier in a khaki cap and a long olive coat, moustached and bushy-browed
+    "veteran": { "hairColor": "#b8bcc6", "hair": "Swept", "hat": "Cap", "hatColor": "#6a7a4a", "hatBand": "#3a3a2a", "top": "#6a7a5a", "accent": "#d8c87a", "bottom": "#4a4a3a", "shoes": "#2a2420", "mustache": true, "bushyBrows": true, "coat": true, "build": "Elder", "height": 1.04 },
+    // The Poké Kid: a little girl with bunches tied in red, a yellow top and a red skirt
+    "poke_kid": { "hairColor": "#8a4a2a", "hair": "Bunches", "hatBand": "#e04040", "top": "#f2c84a", "accent": "#fcf6e0", "bottom": "#e04040", "shoes": "#e04040", "skirt": true, "shortSleeves": true, "build": "Little", "lashes": true, "blush": true }
   },
   // Names that are another look
-  "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt" },
+  "same": { "trainer": "player", "lucas": "player", "grunt_m": "grunt", "black_belt": "blackbelt", "scientist_m": "scientist" },
   // The original's object looks (OBJ_EVENT_GFX_*, as the map importer names them) that have no look of their own yet,
   // and the look of ours each stands as until it has; a look of the table is never folded, and anything else stands
-  // as the boy ("fallback"). Plan 11 · C2 made the first trainers' and took their lines out; C3 and C4 make the rest.
+  // as the boy ("fallback"). Plan 11 · C2 and C3 made the open areas' and took their lines out; C4 makes the rest.
   "fallbacks": {
     "barry": "Rival",
     "prof_rowan": "Rowan",
@@ -268,33 +315,12 @@
     "var_0": "Lass",
     "little_girl": "Lass",
     "crush_girl": "Lass",
-    "tuber_f": "Lass",
-    "guitarist": "Youngster",
     "little_boy": "Youngster",
-    "pokemon_breeder_f": "Lady",
-    "beauty": "Lady",
-    "aroma_lady": "Lady",
-    "parasol_lady": "Lady",
     "socialite": "Lady",
-    "middle_aged_woman": "Lady",
-    "old_woman": "Lady",
-    "pokefan_f": "Lady",
-    "collector": "Gentleman",
-    "old_man": "Gentleman",
     "rich_boy": "Gentleman",
-    "scientist_m": "Gentleman",
-    "middle_aged_man": "Gentleman",
-    "expert_m": "Gentleman",
-    "pokefan_m": "Gentleman",
-    "fisherman": "Gentleman",
-    "pokemon_breeder_m": "Gentleman",
-    "rancher": "Gentleman",
     "gym_guide": "Gentleman",
     "jogger": "Youngster",
-    "cowgirl": "Lass",
     "idol": "Lass",
-    "receptionist": "Lass",
-    "cashier_m": "Clerk",
     "cashier_f": "Clerk",
     "waiter": "Clerk",
     "briefcase": "StarterBriefcase",
@@ -394,7 +420,7 @@
     "aqua_member_m": "aqua_grunt", "aqua_member_f": "aqua_grunt",
     // Plan 21 · H4, part a: Team Magma's grunts have a look of their own; the old woman, the cook, a girl, the
     // reporter and her cameraman stand as the nearest looks until theirs are made
-    "magma_member_m": "magma_grunt", "magma_member_f": "magma_grunt", "expert_f": "Lady", "cook": "Gentleman",
+    "magma_member_m": "magma_grunt", "magma_member_f": "magma_grunt", "cook": "Gentleman",
     "girl_2": "Lass", "reporter_f": "Lady", "cameraman": "Gentleman",
     // Plan 20 · J7: the Slowpoke Well's executive and its woman grunt, and Bugsy, until plan 20 · J14's looks
     "rkanbum3": "rocket", "rocketw": "rocket", "gsleader2": "Youngster",
@@ -417,7 +443,7 @@
     "Lady": "lady",
     "Gentleman": "gentleman",
     "Clown": "clown",
-    "Scientist": "scientist",
+    "Scientist": [ "scientist", "scientist_f" ],
     "Black Belt": "blackbelt",
     "Galactic": [ "grunt", "grunt_f" ],
     // Plan 11 · C2: the first trainers of the open areas, the second look of a class standing for the women
@@ -434,11 +460,26 @@
     "Ninja Boy": "ninja_boy",
     "Ruin Maniac": "ruin_maniac",
     "Artist": "artist",
+    // Plan 11 · C3: the rest of the open areas' classes, and three whose trainers have no object of their own
+    "Beauty": "beauty",
+    "Collector": "collector",
+    "Pokéfan": [ "pokefan_m", "pokefan_f" ],
+    "Pokémon Breeder": [ "pokemon_breeder_m", "pokemon_breeder_f" ],
+    "Tuber": [ "tuber_m", "tuber_f" ],
+    "Parasol Lady": "parasol_lady",
+    "Fisherman": "fisherman",
+    "Swimmer": [ "swimmer_m", "swimmer_f" ],
+    "Guitarist": "guitarist",
+    "Cowgirl": "cowgirl",
+    "Rancher": "rancher",
+    "Aroma Lady": "aroma_lady",
+    "Veteran": "veteran",
+    "Poké Kid": "poke_kid",
     "Rival": [ "rival", "blue", "may", "brendan", "wally" ],
     // Emerald's classes of plan 21 · H3, part b, folded onto the nearest look until their own are made
     "Bug Maniac": [ "youngster" ],
     "Sr And Jr": [ "lass" ],
-    "Pkmn Breeder": [ "lady" ],
+    "Pkmn Breeder": [ "pokemon_breeder_m", "pokemon_breeder_f" ],
     "Team Rocket": "rocket",
     "Super Nerd": "scientist",
     "Channeler": "channeler",
@@ -469,13 +510,13 @@
     "Team Aqua": "aqua_grunt",
     "Team Magma": "magma_grunt",
     // Plan 21 · H4, part b: the teams' admins and leaders are who they are; Emerald's Experts and its old couple
-    // stand as the nearest looks until their own are made
+    // stand as Sinnoh's Experts and old folk (plan 11 · C3 made them; the Pkmn Breeder above stands as its Breeders)
     "Magma Admin": null,
     "Magma Leader": null,
     "Aqua Admin": null,
     "Aqua Leader": null,
-    "Expert": [ "gentleman", "lady" ],
-    "Old Couple": [ "gentleman", "lady" ],
+    "Expert": [ "expert_m", "expert_f" ],
+    "Old Couple": [ "old_man", "old_woman" ],
     // Plan 21 · H6, part c: Gabby and Ty, whose reporter and cameraman stand as the nearest looks until theirs are made
     "Interviewer": [ "lady", "gentleman" ],
     // Plan 22 · U2: Black 2's first trainers, folded onto the nearest looks until their own are made

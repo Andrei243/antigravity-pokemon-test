@@ -3,13 +3,16 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>What is worn on the head (style guide, "Characters"; Helmet to Headband came with plan 11 · C2).</summary>
-internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask, Fedora, Helmet, HardHat, Beanie, Bandana, Headband }
+internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask, Fedora, Helmet, HardHat, Beanie, Bandana, Headband, Cowboy }
 
 /// <summary>How the hair is cut (style guide, "Characters"; Bowl to Bald came with plan 11 · C2).</summary>
 internal enum HairCut { Short, Spiky, Long, Swept, Afro, Bun, Braids, Bunches, Bowl, Ponytail, Curls, Bald }
 
-/// <summary>Body proportions: chibi children, adults with a longer body and a slightly smaller head, and little children with a shorter one (plan 11 · C2).</summary>
-internal enum BodyBuild { Kid, Adult, Little }
+/// <summary>Body proportions: chibi children, adults with a longer body and a slightly smaller head, little children with a shorter one (plan 11 · C2) and the elderly, shorter still with the head forward (C3).</summary>
+internal enum BodyBuild { Kid, Adult, Little, Elder }
+
+/// <summary>Something a person holds (plan 11 · C3; style guide, "Characters", "The second trainers' parts").</summary>
+internal enum HeldProp { None, Rod, Parasol, Guitar, Net, Pickaxe, FloatRing }
 
 /// <summary>
 /// Outfit and colouring for one kind of character, shared by the 3D field models and the 2D trainer card art. Each
@@ -50,6 +53,15 @@ internal sealed class CharacterStyle
 
     /// <summary>Team Galactic's mark on the chest of the uniform (plan 11 · C2; <see cref="Graphics.GalacticMark"/>).</summary>
     public bool GalacticMark;
+
+    /// <summary>Clothes over the rest (plan 11 · C3): a bib and straps in the bottom's colour, an apron and a vest in their own, a
+    /// robe closed to the ankles, and a swimsuit (bare arms and legs).</summary>
+    public bool Overalls, Robe, Swimsuit;
+    public Color? Apron, Vest;
+
+    /// <summary>What the person holds (plan 11 · C3), in its own colour or the thing's.</summary>
+    public HeldProp Holds;
+    public Color? PropColor;
 
     /// <summary>Relative size: adults stand a little taller than the kids.</summary>
     public float Height = 1f;

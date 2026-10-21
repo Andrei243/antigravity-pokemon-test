@@ -28,7 +28,11 @@ public class CharacterKitTests
         "PALMER", "TEALA", "PROF_OAK", "THORTON", "ARGENTA", "DARACH", "DAHLIA", "CAITLIN",
         // Plan 11 · C2's: the first trainers of the open areas, and the grunt and the black belt it gave a mark and a headband
         "SCHOOL_KID_M", "SCHOOL_KID_F", "BUG_CATCHER", "CAMPER", "PICNICKER", "TWIN", "KID_WITH_NDS", "HIKER", "WORKER", "GRUNT", "GRUNT_F",
-        "CYCLIST_M", "CYCLIST_F", "BATTLE_GIRL", "ACE_TRAINER_M", "ACE_TRAINER_F", "BLACKBELT", "PSYCHIC", "NINJA_BOY", "RUIN_MANIAC", "ARTIST"
+        "CYCLIST_M", "CYCLIST_F", "BATTLE_GIRL", "ACE_TRAINER_M", "ACE_TRAINER_F", "BLACKBELT", "PSYCHIC", "NINJA_BOY", "RUIN_MANIAC", "ARTIST",
+        // Plan 11 · C3's: the rest of the open areas' people, and three classes drawn only in battle
+        "BEAUTY", "COLLECTOR", "EXPERT_M", "EXPERT_F", "MIDDLE_AGED_MAN", "MIDDLE_AGED_WOMAN", "OLD_MAN", "OLD_WOMAN", "POKEFAN_M", "POKEFAN_F",
+        "POKEMON_BREEDER_M", "POKEMON_BREEDER_F", "TUBER_M", "TUBER_F", "PARASOL_LADY", "FISHERMAN", "SWIMMER_M", "SWIMMER_F", "SCIENTIST",
+        "SCIENTIST_F", "GUITARIST", "COWGIRL", "RANCHER", "RECEPTIONIST", "CASHIER_M", "AROMA_LADY", "VETERAN", "POKE_KID"
     };
 
     public static IEnumerable<object[]> HumanTypes => Humans.Select(h => new object[] { h });
@@ -63,7 +67,9 @@ public class CharacterKitTests
         foreach (var p in mesh.Positions) { min = Vector3.Min(min, p); max = Vector3.Max(max, p); }
         Assert.InRange(min.Y, -0.01f, 0.01f);
         // (a little child, plan 11 · C2, stands about a unit tall)
-        Assert.InRange(max.Y, rig.Style.Build == BodyBuild.Little ? 0.9f : 1.1f, rig.Style.Hair == HairCut.Spiky ? 1.65f : 1.5f);
+        // (an elder, plan 11 · C3, a little shorter than an adult; a parasol stands over the head as spiky hair does)
+        Assert.InRange(max.Y, rig.Style.Build is BodyBuild.Little or BodyBuild.Elder ? 0.9f : 1.1f,
+            rig.Style.Hair == HairCut.Spiky || rig.Style.Holds == HeldProp.Parasol ? 1.65f : 1.5f);
         Assert.InRange(max.X - min.X, 0.45f, 0.9f);
 
         // Hands, feet and head move with their own bones: the surface round each hand's joint follows the hand
@@ -77,8 +83,10 @@ public class CharacterKitTests
             int nearToe = Enumerable.Range(0, mesh.VertexCount).OrderBy(v => Vector3.DistanceSquared(mesh.Positions[v], toe)).First();
             Assert.True(mesh.WeightOf(nearToe, foot) > 0.9f);
         }
+        // (the top of a parasol, plan 11 · C3, stands over the head and moves with the body)
         int top = Enumerable.Range(0, mesh.VertexCount).OrderByDescending(v => mesh.Positions[v].Y).First();
-        Assert.True(mesh.WeightOf(top, HumanBones.Head) + mesh.WeightOf(top, HumanBones.Hair) > 0.95f);
+        Assert.True(mesh.WeightOf(top, HumanBones.Head) + mesh.WeightOf(top, HumanBones.Hair) > 0.95f
+            || (rig.Style.Holds == HeldProp.Parasol && mesh.WeightOf(top, HumanBones.Spine) > 0.95f), $"{type}: the top follows the head only so far");
 
         // The face: its anchor is on the front of the head, and the patch the battle face is drawn on covers it
         Assert.NotNull(rig.FacePatch);
@@ -100,6 +108,8 @@ public class CharacterKitTests
     [InlineData("CAMPER")]
     [InlineData("NINJA_BOY")]
     [InlineData("BATTLE_GIRL")]
+    // Plan 11 · C3's cowboy hat
+    [InlineData("RANCHER")]
     public void EveryHatShowsOverTheHair(string type)
     {
         // The hair is built before the hat, so a hat set too close to the head disappears into it without a trace
