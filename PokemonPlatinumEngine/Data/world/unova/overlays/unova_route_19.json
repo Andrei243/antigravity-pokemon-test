@@ -1,0 +1,22 @@
+{
+  // Route 19 (plan 22 · U2): Black 2's road down from Aspertia City, our words. The friend who shows how to catch a
+  // Pokémon and the route's triggers are plan 22 · U4's
+  "area": "unova_route_19",
+  "bgmTrack": "sinnoh/route201",
+  "trees": "Round",
+  "people": {
+    "0": {
+      "name": "Youngster",
+      "dialog": [ "Wild Pokémon jump out of the tall grass. If yours gets tired, head back up the hill to heal." ]
+    },
+    "4": {
+      "name": "Lass",
+      "dialog": [ "I walk this route every day. Some Pokémon only come out in certain seasons, you know." ]
+    }
+  },
+  "signs": {
+    "4": "Route 19\nAspertia City - Floccesy Town",
+    "5": "Route 19\nFloccesy Town is just ahead.",
+    "6": "TRAINER TIPS\nThrow a Poké Ball at a weakened wild Pokémon\nto catch it."
+  }
+}

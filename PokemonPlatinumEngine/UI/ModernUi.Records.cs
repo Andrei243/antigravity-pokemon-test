@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Battle;
+using PokemonPlatinumEngine.Battle.Sim;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -464,5 +467,151 @@ internal static partial class ModernUi
         float bw = (r.Width - 112 - gap) / 2f;
         Button(new Rectangle(r.X + 56, r.Y + r.Height - 56 - 84, bw, 84), 42, Green, SaveScreen.Answers[0], 32, answer == 0);
         Button(new Rectangle(r.X + 56 + bw + gap, r.Y + r.Height - 56 - 84, bw, 84), 42, Blue, SaveScreen.Answers[1], 32, answer == 1);
+    }
+
+    // ------------------------------------------------------------------ the Vs. Recorder (plan 08 · P11)
+
+    /// <summary>
+    /// The Vs. Recorder's list: the recordings as list rows on the left (the first foe's icon, whom it was against,
+    /// the day), the one under the cursor told on the right, and a file that can't be played as a Muted row with its
+    /// notice.
+    /// </summary>
+    public static void DrawReplayList(int sw, int sh, ReplayListScreen screen, float appear = 1f)
+    {
+        Backdrop(sw, sh);
+        ScreenTitle(Text.Of("replays.title"));
+        Hints(sw - Margin, 44, Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.z", "replays.watch"),
+            Hint("shared.keys.esc", "shared.hints.back"));
+        float rise = (1f - UiMotion.EaseOut(appear)) * 60f;
+        var entries = screen.Entries;
+        if (entries.Count == 0)
+        {
+            var whole = new Rectangle(Margin, ContentTop + rise, sw - Margin * 2, ContentBottom - ContentTop);
+            Panel(whole, 40);
+            EmptyNote(whole, Text.Of("replays.empty"));
+            return;
+        }
+
+        // ---- The list
+        var list = new Rectangle(Margin, ContentTop + rise, 1040, ContentBottom - ContentTop);
+        Panel(list, 40);
+        int visible = ReplayListScreen.VisibleRows;
+        bool scrolls = entries.Count > visible;
+        for (int row = 0; row < visible && screen.FirstRow + row < entries.Count; row++)
+        {
+            int index = screen.FirstRow + row;
+            var entry = entries[index];
+            bool selected = index == screen.Cursor;
+            var r = RowRect(list, row, scrolls: scrolls);
+            if (entry.File is { } file && entry.Playable)
+            {
+                var ink = ListRow(r, selected, Fitted(file.Foe, r.Width - 104 - 260, 34));
+                if (ReplayLead(file) is { } lead) RowIcon(r, PixelArtGenerator.GetPokemonIcon(lead), 1, selected, hop: Hop(selected));
+                if (file.Day is { } day) RowValue(r, Words.ShortDate(day), ink, 26);
+            }
+            else
+            {
+                var ink = ListRow(r, selected, Fitted(entry.FileName, r.Width - 104 - 260, 34), enabled: false);
+                UiShapes.Circle(new Vector2(r.X + 52, r.Y + r.Height / 2f), 34, selected ? Color.White : Disc);
+                RowValue(r, Text.Of("replays.unreadable"), selected ? ink : Red, 26);
+            }
+        }
+        ScrollBar(list, screen.FirstRow, visible, entries.Count);
+
+        // ---- The one under the cursor
+        var detail = new Rectangle(list.X + list.Width + Gutter, ContentTop + rise, sw - Margin * 2 - list.Width - Gutter, ContentBottom - ContentTop);
+        Panel(detail, 40);
+        if (screen.Selected is not { } shown) return;
+        float x = detail.X + 44, wide = detail.Width - 88, y = detail.Y + 48;
+        if (shown.File is not { } chosen || !shown.Playable)
+        {
+            Label(Text.Of("replays.file"), x, y);
+            UiFonts.Draw(Fitted(shown.FileName, wide, 36), x, y + 30, 36, Ink, UiWeight.Black);
+            Tag(x, y + 90, Text.Of("replays.unreadable"), Red, 44);
+            UiShapes.Fill(new Rectangle(x, y + 162, wide, 3), 1.5f, Rule);
+            DrawWrapped(shown.Notice, x, y + 194, wide, 30, Ink, 42);
+            return;
+        }
+
+        UiFonts.Draw(Fitted(chosen.Foe, wide, 44), x, y, 44, Ink, UiWeight.Black);
+        if (chosen.Day is { } fought) UiFonts.Draw(Words.Date(fought), x, y + 60, 28, Muted, UiWeight.ExtraBold);
+        var (word, colour) = ReplayResult(chosen.Result);
+        float tagW = Tag(x, y + 112, word, colour, 44);
+        string format = Text.Of(chosen.Format == BattleFormat.Double ? "replays.double" : "replays.single");
+        string turns = chosen.Turns == 1 ? Text.Of("replays.oneTurn") : Text.Of("replays.turns", ("turns", chosen.Turns));
+        UiFonts.DrawCentered(format + "  ·  " + turns, x + tagW + 20, y + 134, 28, Ink, UiWeight.ExtraBold);
+        UiShapes.Fill(new Rectangle(x, y + 190, wide, 3), 1.5f, Rule);
+
+        float teamY = y + 224;
+        Label(Text.Of("replays.theirs"), x, teamY);
+        ReplayTeam(chosen.Trainers.Count > 0 ? chosen.Trainers.SelectMany(t => t.Party) : chosen.Wild, x, teamY + 32, wide);
+        Label(Text.Of("replays.yours"), x, teamY + 220);
+        ReplayTeam(chosen.Player, x, teamY + 252, wide);
+    }
+
+    /// <summary>The first foe a recording shows: the trainer's lead, or the wild Pokémon.</summary>
+    private static string? ReplayLead(BattleRecordFile file)
+    {
+        var first = file.Trainers.Count > 0 ? file.Trainers[0].Party.FirstOrDefault() : file.Wild.FirstOrDefault();
+        return first?.Pokemon is { } p ? p.Form ?? p.SpeciesName : null;
+    }
+
+    /// <summary>A team of a recording as its icons at twice their size, in a row on pale discs.</summary>
+    private static void ReplayTeam(IEnumerable<RecordedPokemon> team, float x, float y, float wide)
+    {
+        const float step = 116, radius = 52;
+        int i = 0;
+        foreach (var member in team)
+        {
+            if (i * step + radius * 2 > wide) break;
+            var c = new Vector2(x + radius + i * step, y + radius + 20);
+            UiShapes.Circle(c, radius, Disc);
+            var icon = member.Pokemon.IsEgg ? PixelArtGenerator.EggIcon : PixelArtGenerator.GetPokemonIcon(member.Pokemon.Form ?? member.Pokemon.SpeciesName);
+            PixelArt(icon, c, 2);
+            i++;
+        }
+    }
+
+    /// <summary>How a recorded battle ended, as its tag says it.</summary>
+    private static (string Word, Color Colour) ReplayResult(BattleResult result) => result switch
+    {
+        BattleResult.PlayerVictory => (Text.Of("replays.result.won"), Green),
+        BattleResult.PlayerDefeat => (Text.Of("replays.result.lost"), Red),
+        BattleResult.EnemyCaught => (Text.Of("replays.result.caught"), Frame),
+        BattleResult.PlayerRan => (Text.Of("replays.result.ran"), Frame),
+        BattleResult.EnemyFled => (Text.Of("replays.result.fled"), Frame),
+        _ => (Text.Of("replays.result.none"), Frame)
+    };
+
+    /// <summary>A text cut with an ellipsis where it is wider than the room it has.</summary>
+    private static string Fitted(string text, float room, float size)
+    {
+        if (UiFonts.Measure(text, size, UiWeight.Black) <= room) return text;
+        while (text.Length > 1 && UiFonts.Measure(text + "…", size, UiWeight.Black) > room) text = text[..^1];
+        return text.TrimEnd() + "…";
+    }
+
+    /// <summary>
+    /// Over a battle watched: a Blue REPLAY pill with whom it was against beside it, a Gold ×3 while Run is held,
+    /// and the two hints under it, at the top right where nothing of the battle stands.
+    /// </summary>
+    public static void ReplayTag(int sw, BattleRecordFile file, bool fast)
+    {
+        const float pill = 44;
+        float right = sw - 56, top = 52;
+        string foe = Fitted(file.Foe, 520, 28);
+        float foeW = UiFonts.Measure(foe, 28, UiWeight.Bold);
+        string banner = Text.Of("replays.banner"), faster = Text.Of("replays.fast");
+        float bannerW = UiFonts.Measure(banner, pill * 0.58f, UiWeight.Black) + pill * 0.9f;
+        float fastW = fast ? UiFonts.Measure(faster, pill * 0.58f, UiWeight.Black) + pill * 0.9f + 12 : 0f;
+        float width = bannerW + 16 + foeW + 28 + fastW;
+        var plate = new Rectangle(right - width - 12, top - 8, width + 24, pill + 16);
+        UiShapes.Fill(plate, plate.Height / 2f, new Color(12, 20, 40, 170));
+        float x = plate.X + 12;
+        x += Tag(x, top, banner, Blue, pill) + 16;
+        UiFonts.DrawCentered(foe, x, top + pill / 2f, 28, Color.White, UiWeight.Bold);
+        x += foeW + 28;
+        if (fast) Tag(x, top, faster, Gold, pill);
+        Hints(right, top + pill + 28, Hint("shared.keys.enter", "shared.hints.leave"), Hint("shared.keys.shift", "replays.hintFast"));
     }
 }

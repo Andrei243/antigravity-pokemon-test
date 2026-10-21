@@ -1,0 +1,16 @@
+{
+  // The third house of Aspertia City, upstairs (plan 22 · U2): Black 2's room, our words
+  "area": "aspertia_city_8",
+  "bgmTrack": "sinnoh/twinleaf",
+  "people": {
+    "0": {
+      "name": "Girl",
+      "dialog": [ "I'm writing down every Pokémon I see in a notebook. It's already half full!" ]
+    },
+    "1": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "Up the stairs and down again, all day long. Best training there is!" ]
+    }
+  }
+}

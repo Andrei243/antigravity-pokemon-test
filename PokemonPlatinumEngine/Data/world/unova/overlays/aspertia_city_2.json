@@ -1,0 +1,21 @@
+{
+  // The player's house in Aspertia City (plan 22 · U2), Black 2's room. The two who come calling as the story begins
+  // are plan 22 · U4's; Mom is ours, at the table, and sees to the team whenever she is spoken to, as in FireRed
+  "area": "aspertia_city_2",
+  "bgmTrack": "sinnoh/twinleaf",
+  "npcs": [
+    { "id": "aspertia_city_2.Mom", "name": "Mom", "npcType": "Mom", "x": 4, "y": 5, "facing": "Down", "script": "Healer",
+      "isHealingNurse": true,
+      "dialog": [
+        "You look tired out, dear. Sit down for a minute and let your Pokémon rest.",
+        "There, all better. Off you go, and be careful out there!"
+      ] }
+  ],
+  "signs": {
+    "6": "The PC is on. There's a message from a friend\nasking how the journey is going.",
+    "7": "A tidy kitchen. Something good is in the oven.",
+    "8": "A potted plant. Someone waters it every day.",
+    "14": "A map of Unova. Aspertia City is marked\nin the bottom corner.",
+    "15": "A calendar. The days of the seasons are\nmarked in four colours."
+  }
+}

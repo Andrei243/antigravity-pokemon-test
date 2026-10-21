@@ -1,0 +1,78 @@
+{
+  // Route 20 (plan 22 · U2): Black 2's road from Floccesy Town towards Virbank City, its trainers and their lines ours.
+  // The Pokémon Rangers who come in a later season, Team Plasma's grunt, the route's triggers and the gates to Virbank
+  // City and the Cave of Being are later sessions'
+  "area": "unova_route_20",
+  "bgmTrack": "sinnoh/route201",
+  "trees": "Round",
+  "people": {
+    "0": {
+      "name": "Hiker",
+      "dialog": [ "The grass here hides all sorts of Pokémon. Some of them even drop from the trees!" ]
+    },
+    "1": {
+      "name": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Hey, you! My Patrat and I just started out. Let's see who's ahead!",
+        "dialogueAfter": "You're way ahead. I'll catch up!"
+      }
+    },
+    "2": {
+      "name": "Twins",
+      "trainer": {
+        "dialogueBefore": "We do everything together! Even battles!",
+        "dialogueAfter": "We lost together, too..."
+      }
+    },
+    "3": {
+      "name": "Twins",
+      "trainer": {
+        "dialogueBefore": "We do everything together! Even battles!",
+        "dialogueAfter": "We lost together, too..."
+      }
+    },
+    "4": {
+      "name": "Preschooler",
+      "trainer": {
+        "dialogueBefore": "My Psyduck is the bestest! Battle me!",
+        "dialogueAfter": "Waaah! I'm telling my teacher!"
+      }
+    },
+    "5": {
+      "name": "Preschooler",
+      "trainer": {
+        "dialogueBefore": "I'm a big girl now, so I can battle too!",
+        "dialogueAfter": "That was fun! Can we go again later?"
+      }
+    },
+    "6": {
+      "name": "Nursery Aide",
+      "trainer": {
+        "dialogueBefore": "Looking after little ones is hard work. Battling you will be a nice rest!",
+        "dialogueAfter": "Oh my, you're strong. That was no rest at all!"
+      }
+    },
+    "7": {
+      "name": "Youngster",
+      "trainer": {
+        "dialogueBefore": "Our eyes met! That means we battle. Them's the rules!",
+        "dialogueAfter": "I didn't make the rules. I just lose by them."
+      }
+    },
+    "12": {
+      "name": "Lass",
+      "trainer": {
+        "dialogueBefore": "I caught my Purrloin right here on this route. Want to see what it can do?",
+        "dialogueAfter": "It can do a lot, just not enough today."
+      }
+    },
+    "24": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "Floccesy Ranch is just over there. The owners don't mind if you have a look round." ]
+    }
+  },
+  "signs": {
+    "5": "Route 20\nFloccesy Town - Virbank City"
+  }
+}

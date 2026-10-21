@@ -1,0 +1,25 @@
+{
+  // A house of Floccesy Town (plan 22 · U2): Black 2's room, our words
+  "area": "floccesy_town_3",
+  "bgmTrack": "sinnoh/floaroma",
+  "people": {
+    "0": {
+      "name": "Girl",
+      "npcType": "Lass",
+      "dialog": [ "Grandma knits scarves from the ranch's Mareep wool. They crackle a bit in winter!" ]
+    },
+    "1": {
+      "name": "Woman",
+      "dialog": [ "Do you want some tea? We have more than we can drink since the harvest." ]
+    },
+    "2": {
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "dialog": [ "I've lived in Floccesy all my life. The bell's rung every morning since before I was born." ]
+    },
+    "3": {
+      "name": "Artist",
+      "dialog": [ "I'm drawing the bell tower for a postcard. Do you think anyone will buy it?" ]
+    }
+  }
+}

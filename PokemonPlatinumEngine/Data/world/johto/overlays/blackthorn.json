@@ -1,12 +1,17 @@
 {
   // Blackthorn City (plan 20 · J10): HeartGold's map, our words. The walled city of the dragon tamers under the
   // mountain, built in grey stone under dragon-blue gables (Dragonstone). The men who guard the Gym's door and the way
-  // to the Dragon's Den wait for plan 20 · J11 and are left out, as is the boy who waits for its scene
+  // to the Dragon's Den stand since plan 20 · J11, part c, before each door until it opens and beside it after
+  // (scripts/blackthorn.txt); the boy who waits for a weekday's scene and Cameron are left out
   "area": "blackthorn",
   "bgmTrack": "johto/blackthorn",
   "trees": "Round",
   "architecture": "Dragonstone",
   "people": {
+    "t30_gsman1": { "name": "Man", "script": "GymGuard", "still": true },
+    "t30_gsman1_2": { "name": "Man", "script": "GymGuardAside", "still": true },
+    "t30_gsoldman1": { "name": "Old Man", "script": "DenGuard", "still": true },
+    "t30_gsoldman1_2": { "name": "Old Man", "script": "DenGuardAside", "still": true },
     "t30_gsfighter": {
       "name": "Man",
       "dialog": [

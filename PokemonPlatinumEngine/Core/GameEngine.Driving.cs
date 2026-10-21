@@ -256,6 +256,10 @@ public partial class GameEngine
         public BattleRecordFile? RecordOffered => game.flow.RecordOffered;
         /// <summary>Whether the question on the screen is the Vs. Recorder's.</summary>
         public bool AskingToRecord => game.flow.RecordAsked;
+        /// <summary>The Vs. Recorder's list of the battles it kept (plan 08 · P11).</summary>
+        public ReplayListScreen ReplayList => game.flow.ReplayListScreen;
+        /// <summary>The last recording watched broke off before its end (its answers ran out or were refused).</summary>
+        public bool ReplayBroke => game.ReplayBroke;
         /// <summary>The game as it stands, as the save screen would write it (plan 24 · X3: the harness's <c>saves</c>).</summary>
         public SaveData BuildSave() => game.BuildSave();
         /// <summary>Every Pokémon of the player's given its own id, as a save gives them (plan 07 · O2); how many were.</summary>

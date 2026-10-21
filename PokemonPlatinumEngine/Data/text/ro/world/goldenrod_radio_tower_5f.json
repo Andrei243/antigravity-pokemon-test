@@ -6,7 +6,7 @@
           "Director"
         ],
         "text": [
-          ""
+          "Director"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Petrel"
         ],
         "text": [
-          ""
+          "Petrel"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Ariana"
         ],
         "text": [
-          ""
+          "Ariana"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Ariana: You've caused us quite enough trouble. The deck above is Archer's, and you'll not set foot on it."
         ],
         "text": [
-          ""
+          "Ariana: Ne-ai creat destule probleme. Platforma de deasupra e a lui Archer și nu vei pune piciorul pe ea."
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Ariana: Archer will finish you. Go up, if you dare."
         ],
         "text": [
-          ""
+          "Ariana: Archer te va termina. Urcă, dacă îndrăznești."
         ]
       }
     }
@@ -53,7 +53,7 @@
         "5F Director's Office"
       ],
       "text": [
-        ""
+        "Et. 5 Biroul Directorului"
       ]
     },
     "D23R0105_003+1": {
@@ -61,7 +61,7 @@
         "Observation Deck\nUp the lift"
       ],
       "text": [
-        ""
+        "Platforma de observație\nCu liftul în sus"
       ]
     }
   }

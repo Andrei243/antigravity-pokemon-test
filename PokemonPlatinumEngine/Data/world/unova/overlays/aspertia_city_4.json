@@ -1,0 +1,8 @@
+{
+  // A house of Aspertia City, upstairs (plan 22 · U2): Black 2's room. The two who wait here are a later chapter's
+  "area": "aspertia_city_4",
+  "bgmTrack": "sinnoh/twinleaf",
+  "signs": {
+    "4": "A shelf of picture books about Pokémon.\nSomeone has drawn in some of them."
+  }
+}

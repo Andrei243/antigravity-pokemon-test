@@ -1,0 +1,21 @@
+{
+  // The third house of Aspertia City, downstairs (plan 22 · U2): Black 2's room, our words
+  "area": "aspertia_city_7",
+  "bgmTrack": "sinnoh/twinleaf",
+  "people": {
+    "0": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "My big sister says a Pokémon you raise yourself is always stronger than one you trade for." ]
+    },
+    "1": {
+      "name": "Lass",
+      "dialog": [ "I want a Pokémon that's cute and strong. Is that too much to ask?" ]
+    },
+    "2": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "Do wipe your feet. The dust from the hill gets into everything." ]
+    }
+  }
+}

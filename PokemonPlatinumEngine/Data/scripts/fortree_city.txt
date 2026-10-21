@@ -8,6 +8,8 @@
 
 script OnEnter
   setflag FLAG_VISITED_FORTREE_CITY
+  # A save from before the Wingull errand (plan 21 · H6, part c) finds the bird in its house
+  if not flag FLAG_HOENN_CHAPTER_SEVEN_C call HoennChapterSevenC
   end
 
 

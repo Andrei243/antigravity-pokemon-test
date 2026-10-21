@@ -1,0 +1,21 @@
+{
+  // The Aspertia Gym (plan 22 · U2), behind the Trainers' School: Black 2's hall, our words. Its Leader, its battles
+  // and the Basic Badge are plan 22 · U4's
+  "area": "aspertia_city_gym",
+  "bgmTrack": "common/gym",
+  "people": {
+    "1": {
+      "name": "Youngster",
+      "dialog": [ "The Gym Leader is out right now. I'm getting in some extra practice while I wait." ]
+    },
+    "2": {
+      "name": "Lass",
+      "dialog": [ "This Gym's Leader likes Normal-type Pokémon. Fighting types should do well here." ]
+    },
+    "3": {
+      "name": "Gym Guide",
+      "npcType": "Gentleman",
+      "dialog": [ "Hey there, challenger! The Leader isn't in yet. Come back once you've trained up a bit." ]
+    }
+  }
+}

@@ -223,6 +223,8 @@ public partial class GameEngine
         // The turns it took, which the Battle Arcade scores a battle by (dto->totalTurnsElapsed)
         flow.ScriptTurns = flow.Battle?.Core.Turn ?? 0;
         flow.BattleMayBeLost = false;
+        // The Vs. Recorder asks about it once the field is back, before the facility's script goes on (plan 08 · P11)
+        KeepTheRecord(flow.Battle);
         StartTransition(GameState.Overworld, () =>
         {
             PokemonModels.Trim(flow.Party.Members.Select(p => p.ModelName));

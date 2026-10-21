@@ -82,6 +82,8 @@ public enum GameState
     AlphPuzzle,
     /// <summary>The phrase picker over the field, a script's <c>phrase</c> waiting on it (plan 08 · P9).</summary>
     Phrases,
+    /// <summary>The Vs. Recorder's list of the battles it kept (plan 08 · P11); a recording watched is a <see cref="Battle"/>.</summary>
+    ReplayList,
     Transition,
     /// <summary>
     /// The window's close button asked (plan 12 · Q1): its question over whatever was on screen, which waits under it
@@ -905,7 +907,12 @@ public partial class GameEngine
                     flow.Battle.Update(dt);
                     // The battle theme turns agitated while a Pokémon of the player's is in the red, and calms for the end
                     AudioManager.LowHp = flow.Battle.Result == BattleResult.None && flow.Battle.PlayerInDanger;
-                    if (flow.Battle.IsBattleOver && flow.Battle.IsFrontier)
+                    // A recording watched (plan 08 · P11) ends back on the Vs. Recorder's list, and leaves nothing behind
+                    if (flow.Battle.Watching)
+                    {
+                        if (flow.Battle.WatchOver) EndWatching();
+                    }
+                    else if (flow.Battle.IsBattleOver && flow.Battle.IsFrontier)
                     {
                         // A battle of the Battle Frontier leaves nothing behind but how it went (plan 06 · R18a)
                         EndFrontierBattle();
@@ -991,6 +998,8 @@ public partial class GameEngine
                         // The Seal Case and the Fashion Case are looked into, and close back onto the bag (plan 06 · R17b)
                         else if (usedHere.Name == BagScreen.SealCaseItem) OpenBallCapsules(fromBag: true);
                         else if (usedHere.Name == BagScreen.FashionCaseItem) OpenFashionCase(fromBag: true);
+                        // The Vs. Recorder's battles, and back to the bag (plan 08 · P11)
+                        else if (usedHere.FieldUse == "VsRecorder") OpenReplays(fromBag: true);
                         else UseFieldItem(usedHere);
                     }
                 }
@@ -1124,6 +1133,9 @@ public partial class GameEngine
                 break;
             case GameState.ArcadeBoard:
                 UpdateArcadeBoard(dt);
+                break;
+            case GameState.ReplayList:
+                UpdateReplayList(dt);
                 break;
             case GameState.Journal:
                 flow.JournalScreen.Update(flow.Journal, dt);
@@ -1782,6 +1794,8 @@ public partial class GameEngine
 
     private void TryInteract()
     {
+        // A button of the Blackthorn Gym's slabs underfoot works before anything ahead is spoken to (plan 20 · J11, part c)
+        if (TryWorkSlab()) return;
         int dx = 0, dy = 0;
         switch (flow.Player.Facing)
         {
@@ -2436,6 +2450,9 @@ public partial class GameEngine
             case GameState.HallOfFame:
                 flow.HallOfFameScreen.Draw(VirtualWidth, VirtualHeight, flow.HallOfFame);
                 break;
+            case GameState.ReplayList:
+                flow.ReplayListScreen.Draw(VirtualWidth, VirtualHeight);
+                break;
             case GameState.Journal:
                 flow.JournalScreen.Draw(VirtualWidth, VirtualHeight, flow.Journal);
                 break;
@@ -2522,6 +2539,7 @@ public partial class GameEngine
                 else if (scene == GameState.Evolution) flow.EvolutionScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.Hatch) flow.HatchScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.BagMenu) flow.BagScreen.Draw(VirtualWidth, VirtualHeight, flow.Bag, flow.Party, EvolutionContextNow());
+                else if (scene == GameState.ReplayList) flow.ReplayListScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.SuperContest) flow.SuperContestScreen.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.HallOfFameCeremony) flow.Ceremony.Draw(VirtualWidth, VirtualHeight);
                 else if (scene == GameState.Credits) flow.Credits.Draw(VirtualWidth, VirtualHeight);

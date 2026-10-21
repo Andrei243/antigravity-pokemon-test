@@ -6,7 +6,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -34,7 +34,7 @@
           "We keep recordings of the cries of every Pokémon anyone has found. Two hundred kinds, near enough."
         ],
         "text": [
-          ""
+          "Păstrăm înregistrări cu strigătele fiecărui Pokémon descoperit vreodată. Vreo două sute de feluri, aproape."
         ]
       }
     },
@@ -44,7 +44,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       }
     },
@@ -54,7 +54,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       }
     },
@@ -64,7 +64,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -72,7 +72,7 @@
           "Grunt: You've come all the way up here? Then I'll send you all the way back down!"
         ],
         "text": [
-          ""
+          "Grunt: Ai ajuns până aici sus? Atunci te trimit tot drumul înapoi jos!"
         ]
       },
       "after": {
@@ -80,7 +80,7 @@
           "Grunt: How did a kid get this far?"
         ],
         "text": [
-          ""
+          "Grunt: Cum a ajuns un copil atât de departe?"
         ]
       }
     },
@@ -90,7 +90,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -98,7 +98,7 @@
           "Grunt: Stay out of the studios! We're on the air!"
         ],
         "text": [
-          ""
+          "Grunt: Nu intra în studiouri! Suntem în direct!"
         ]
       },
       "after": {
@@ -106,7 +106,7 @@
           "Grunt: Off the air... Just like that."
         ],
         "text": [
-          ""
+          "Grunt: Oprit din emisie... Pur și simplu."
         ]
       }
     },
@@ -116,7 +116,7 @@
           "Garett"
         ],
         "text": [
-          ""
+          "Garett"
         ]
       },
       "before": {
@@ -124,7 +124,7 @@
           "Scientist Garett: Our signal will soon make every Pokémon in Johto listen to us. Shall I show you?"
         ],
         "text": [
-          ""
+          "Om de știință Garett: Semnalul nostru va face curând toți Pokémonii din Johto să ne asculte. Să-ți arăt?"
         ]
       },
       "after": {
@@ -132,7 +132,7 @@
           "Scientist Garett: My theory didn't allow for a Trainer like you."
         ],
         "text": [
-          ""
+          "Om de știință Garett: Teoria mea nu a prevăzut un Antrenor ca tine."
         ]
       }
     },
@@ -142,7 +142,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -150,7 +150,7 @@
           "Grunt: The shutters won't open for you. And neither will I!"
         ],
         "text": [
-          ""
+          "Grunt: Oblonurile nu se deschid pentru tine. Iar eu nu mă dau la o parte!"
         ]
       },
       "after": {
@@ -158,7 +158,7 @@
           "Grunt: Only the Director's Card Key opens them. Not that you'll find it!"
         ],
         "text": [
-          ""
+          "Grunt: Oblonurile le deschide doar Card-Cheia Directorului. Nu că ai găsi-o!"
         ]
       }
     }
@@ -169,7 +169,7 @@
         "3F Personnel"
       ],
       "text": [
-        ""
+        "Et. 3 Personal"
       ]
     },
     "D23R0103_002+1": {
@@ -177,7 +177,7 @@
         "Pokémon Music\nwith DJ Ben"
       ],
       "text": [
-        ""
+        "Muzică Pokémon\ncu DJ Ben"
       ]
     }
   }

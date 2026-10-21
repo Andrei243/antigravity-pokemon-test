@@ -1,0 +1,32 @@
+{
+  "key": "aspertia_city_gym",
+  "index": 489,
+  "name": "Aspertia City",
+  "matrix": 275,
+  "kind": "Outdoors",
+  "sign": "None",
+  "weather": "0",
+  "camera": "0",
+  "battleBackground": "City",
+  "dayMusic": "BGM_GYM",
+  "nightMusic": "BGM_GYM",
+  "bike": false,
+  "running": true,
+  "escapeRope": false,
+  "fly": false,
+  "warps": [
+    { "x": 13, "z": 24, "to": "aspertia_city_9", "toWarp": 1 },
+    { "x": 14, "z": 24, "to": "aspertia_city_9", "toWarp": 1 },
+    { "x": 15, "z": 24, "to": "aspertia_city_9", "toWarp": 1 },
+    { "x": 16, "z": 24, "to": "aspertia_city_9", "toWarp": 1 },
+    { "x": 17, "z": 24, "to": "aspertia_city_9", "toWarp": 1 }
+  ],
+  "objects": [
+    { "id": "0", "looks": "223", "movement": "none", "x": 15, "z": 2, "facing": 1, "rangeX": 0, "rangeZ": 0, "hiddenBy": "FLAG_UNOVA_0x03e8", "script": "4" },
+    { "id": "1", "looks": "youngster", "movement": "none", "x": 17, "z": 18, "facing": 2, "rangeX": 0, "rangeZ": 0, "script": "5" },
+    { "id": "2", "looks": "lass", "movement": "none", "x": 13, "z": 9, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "6" },
+    { "id": "3", "looks": "187", "movement": "none", "x": 12, "z": 22, "facing": 3, "rangeX": 0, "rangeZ": 0, "script": "7" }
+  ],
+  "signs": [],
+  "triggers": []
+}

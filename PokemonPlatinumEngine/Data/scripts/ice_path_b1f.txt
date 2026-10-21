@@ -1,0 +1,78 @@
+# The Ice Path, B1F (plan 20 · J11, part c). docs/scripts.md describes the language; on HeartGold's beats
+# (scr_seq_D39R0102, and the field's own boulder that falls through a hole).
+#
+# Four holes in the floor. Whoever walks onto one falls through to the floor below (triggers 0 to 3, HeartGold's
+# D39R0102_000 to _003, which drop the player onto the tile of B2F each names and set VAR_UNK_40AB 1 for the landing,
+# ice_path_b2f.txt). A boulder pushed with Strength onto a hole (a pit of the overlay's) drops through too: it is gone
+# from here for good by its own flag (FLAG_HIDE_ICE_PATH_BOULDER_<N>_INIT, the object's), and stands on the ice below
+# from then on (FLAG_HIDE_ICE_PATH_BOULDER_<N>_FALLEN cleared), where it stops whoever slides into it. Which boulder
+# falls through which hole doesn't matter: the hole decides where it lands, as in HeartGold, whose holes each have the
+# fallen boulder of their own number under them. The holes stay open, and are still fallen through.
+
+
+# D39R0102_000 to _003: the player falls through a hole
+script Hole1
+  setvar VAR_UNK_40AB 1
+  walk player onspot down 2
+  call Fall
+  warp "IcePath_B2F" 12 12 down
+  end
+
+script Hole2
+  setvar VAR_UNK_40AB 1
+  walk player onspot down 2
+  call Fall
+  warp "IcePath_B2F" 10 21 down
+  end
+
+script Hole3
+  setvar VAR_UNK_40AB 1
+  walk player onspot down 2
+  call Fall
+  warp "IcePath_B2F" 20 10 down
+  end
+
+script Hole4
+  setvar VAR_UNK_40AB 1
+  walk player onspot down 2
+  call Fall
+  warp "IcePath_B2F" 21 23 down
+  end
+
+script Fall
+  sound "ledge"
+  return
+
+
+# The field's own: a boulder pushed onto a hole drops through it to the ice below
+script Boulder1
+  hide self
+  setflag own
+  sound "boulder"
+  clearflag FLAG_HIDE_ICE_PATH_BOULDER_1_FALLEN
+  setflag FLAG_ICE_PATH_HOLE_1_FILLED
+  end
+
+script Boulder2
+  hide self
+  setflag own
+  sound "boulder"
+  clearflag FLAG_HIDE_ICE_PATH_BOULDER_2_FALLEN
+  setflag FLAG_ICE_PATH_HOLE_2_FILLED
+  end
+
+script Boulder3
+  hide self
+  setflag own
+  sound "boulder"
+  clearflag FLAG_HIDE_ICE_PATH_BOULDER_3_FALLEN
+  setflag FLAG_ICE_PATH_HOLE_3_FILLED
+  end
+
+script Boulder4
+  hide self
+  setflag own
+  sound "boulder"
+  clearflag FLAG_HIDE_ICE_PATH_BOULDER_4_FALLEN
+  setflag FLAG_ICE_PATH_HOLE_4_FILLED
+  end

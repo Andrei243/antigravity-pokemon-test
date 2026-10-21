@@ -1,10 +1,15 @@
 {
   // The Dragon's Den (plan 20 · J10): its water, crossed by Surf and Whirlpool, round the Dragon Shrine's island, and its
-  // trainers by their own records (Clea and Gil one trainer on two people). Clair, Lance and the red-haired boy wait for
-  // plan 20 · J11 and plan 20 · J12 and are left out
+  // trainers by their own records (Clea and Gil one trainer on two people). Since plan 20 · J11, part c Clair, who waits
+  // by the way out with TM59 once she has given the Rising Badge (trigger 0; scripts/dragons_den.txt). Lance, Clair's
+  // trips here after the Hall of Fame and the red-haired boy wait for plan 20 · J12 and are left out
   "area": "dragons_den",
   "bgmTrack": "johto/dragons_den",
+  "triggers": [
+    { "trigger": 0, "script": "Clair" }
+  ],
   "people": {
+    "d44r0102_gsleader8": { "name": "Clair", "script": "ClairTalk", "still": true },
     "d44r0102_gsman3": {
       "name": "Kobe",
       "trainer": {

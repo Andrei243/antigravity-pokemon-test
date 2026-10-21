@@ -6,7 +6,7 @@
           "Mary"
         ],
         "text": [
-          ""
+          "Mary"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Meowth"
         ],
         "text": [
-          ""
+          "Meowth"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Ben"
         ],
         "text": [
-          ""
+          "Ben"
         ]
       }
     },
@@ -36,7 +36,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -46,7 +46,7 @@
           "Man"
         ],
         "text": [
-          ""
+          "Bărbatul"
         ]
       },
       "dialog": {
@@ -54,7 +54,7 @@
           "I had my radio on while I was out at the ruins, and I heard the strangest broadcast. Nothing but odd noises."
         ],
         "text": [
-          ""
+          "Aveam radioul pornit cât am fost la ruine și am auzit cea mai ciudată emisiune. Numai zgomote ciudate."
         ]
       }
     },
@@ -64,7 +64,7 @@
           "Trenton"
         ],
         "text": [
-          ""
+          "Trenton"
         ]
       },
       "before": {
@@ -72,7 +72,7 @@
           "Scientist Trenton: One signal from this tower, and every Pokémon that hears it will be ours."
         ],
         "text": [
-          ""
+          "Om de știință Trenton: Un singur semnal din turnul ăsta, și orice Pokémon îl aude va fi al nostru."
         ]
       },
       "after": {
@@ -80,7 +80,7 @@
           "Scientist Trenton: The experiment can wait. You can't."
         ],
         "text": [
-          ""
+          "Om de știință Trenton: Experimentul poate aștepta. Tu nu."
         ]
       }
     },
@@ -90,7 +90,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -98,7 +98,7 @@
           "Grunt: This is the production floor now. We decide what goes on the air!"
         ],
         "text": [
-          ""
+          "Grunt: Acum asta e etajul de producție. Noi decidem ce se difuzează!"
         ]
       },
       "after": {
@@ -106,7 +106,7 @@
           "Grunt: Cut! Cut! That wasn't in the script!"
         ],
         "text": [
-          ""
+          "Grunt: Stop! Stop! Asta nu era în scenariu!"
         ]
       }
     },
@@ -116,7 +116,7 @@
           "Proton"
         ],
         "text": [
-          ""
+          "Proton"
         ]
       },
       "before": {
@@ -124,7 +124,7 @@
           "Proton: You again? I'm the scariest and cruelest of Team Rocket's executives, and you'll go no further."
         ],
         "text": [
-          ""
+          "Proton: Tu din nou? Sunt cel mai înfricoșător și mai crud dintre executivii Echipei Rocket, și mai departe nu treci."
         ]
       },
       "after": {
@@ -132,7 +132,7 @@
           "Proton: Beaten twice by a child... Go on up, then. Our leaders upstairs will deal with you."
         ],
         "text": [
-          ""
+          "Proton: Învins de două ori de un copil... Hai, urcă atunci. Conducătorii noștri de sus se vor ocupa de tine."
         ]
       }
     }
@@ -143,7 +143,7 @@
         "4F Production"
       ],
       "text": [
-        ""
+        "Et. 4 Producție"
       ]
     },
     "D23R0104_002+1": {
@@ -151,7 +151,7 @@
         "4F Studio 1"
       ],
       "text": [
-        ""
+        "Et. 4 Studioul 1"
       ]
     }
   }

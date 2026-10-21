@@ -312,10 +312,11 @@ public class JohtoTests
         Assert.Equal((byte)TileBehavior.LadderSouth, HgBehaviours.LadderSouth);
         Assert.Equal((byte)TileBehavior.LadderDown, HgBehaviours.LadderDown);
         // Each is told of, and waits for the session of plan 20 that opens a place using it
-        foreach (var b in new[] { TileBehavior.HeadbuttTree, TileBehavior.Magma, TileBehavior.LadderDown })
+        foreach (var b in new[] { TileBehavior.HeadbuttTree, TileBehavior.LadderDown })
             Assert.Equal(BehaviourSupport.Waiting, TileBehaviors.InGame(b).Support);
-        // ...but the whirlpool, whose rule plan 20 · J8 wrote
+        // ...but the whirlpool, whose rule plan 20 · J8 wrote, and the lava, the Blackthorn Gym's (J11, part c)
         Assert.Equal(BehaviourSupport.Ruled, TileBehaviors.InGame(TileBehavior.Whirlpool).Support);
+        Assert.Equal(BehaviourSupport.Ruled, TileBehaviors.InGame(TileBehavior.Magma).Support);
     }
 
     private static readonly string[] WestAndSea = { "route_38", "route_39", "olivine", "route_40", "route_41", "cianwood" };
@@ -456,13 +457,17 @@ public class JohtoTests
 
         // Plan 20 · J11, part a opened the Team Rocket Hideout under the souvenir shop (its stairs behind the salesman,
         // a way of the story's), Pryce in his Gym and the red Gyarados on the lake; what waits for part b stays off the
-        // map: Clair, and Lance in the Dragon's Den
+        // map: Lance in the Dragon's Den. Part c brought Clair to her Gym, to the Den with TM59 and to the shrine's scene,
+        // and the Blackthorn Gym's slabs
         foreach (string floor in new[] { "TeamRocketHQ_B1F", "TeamRocketHQ_B2F", "TeamRocketHQ_B3F" })
             Assert.True(walked.Keys.Any(m => m.Name == floor), $"nobody walks into {floor}");
         Assert.Contains(MapNamed("Mahogany_Gym_3").Everyone, n => n.Name == "Pryce");
         Assert.Contains(Overworld.Everyone, n => n.Species == "Gyarados");
-        Assert.DoesNotContain(MapNamed("Blackthorn_Gym").Everyone, n => n.Name == "Clair");
-        Assert.DoesNotContain(MapNamed("DragonsDen").Everyone, n => n.Name is "Clair" or "Lance");
+        Assert.Contains(MapNamed("Blackthorn_Gym").Everyone, n => n.Name == "Clair");
+        Assert.Contains(MapNamed("DragonsDen").Everyone, n => n.Name == "Clair");
+        Assert.Contains(MapNamed("DragonsDen_Shrine").Everyone, n => n.Name == "Clair");
+        Assert.DoesNotContain(MapNamed("DragonsDen").Everyone, n => n.Name == "Lance");
+        Assert.IsType<BlackthornPlatforms>(MapNamed("Blackthorn_Gym").Puzzle);
 
         // Mahogany and Blackthorn are built their own ways, with songs of their own, as are the roads, the Ice Path and
         // the Dragon's Den; Mt. Mortar is a dungeon of the Union Cave's song and Routes 45 and 46 Route 34's

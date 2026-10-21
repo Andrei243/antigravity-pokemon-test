@@ -2482,6 +2482,67 @@ What R19b, R20 to R23, R27b and R28b left of the forms, outside a battle, and th
 - **The forms an evolution chooses** (`Evolution.Find` hands back the evolution with the form decided, so the scene shows it): Toxtricity is Low Key for the twelve natures Sword and Shield name (its own nature, not a mint's); a Maushold of three and a three-segment Dudunsparce come once in a hundred, when the personality is a multiple of a hundred (Scarlet and Violet's encryption constant, which is the personality here); Alcremie's cream is the spin's way, length and hour, its decoration the sweet held. **A spin is told once it is over** (`SpinTracker`: the player stops turning for 1.2 s, or turns the other way), so Milcery evolves a moment after the player stops, where it evolved on the fourth quarter turn before; a spin is long past five seconds from its first quarter turn to its last, and the Rainbow Swirl wants ten anticlockwise at dusk (Platinum's evening, 17:00 to 19:59, **our ruling**: Sword and Shield's is 19:00 to 19:59). Dusk is day for the other creams.
 - **Golden files**: `battles-platinum.txt` held still. `battles-modern.txt` moved in block 151 alone: its Scrafty draws the Griseous Core where it drew the Griseous Orb, since the corpus draws held items by hold effect and the core shares the orb's, and the rest of the foe's team is drawn after it. `scripts.txt` moved in Veilstone City's meteorites (four scripts in place of one).
 - **Left for R29b**: Furfrou's trims (a groomer of a later region), the Zygarde Cube's moves and Zygarde's cells, a choice screen for the Rotom Catalog, Hoopa's and Shaymin's going back in a box (Shaymin's is Platinum's and done; Hoopa's is the old games' and not Sword and Shield's), Necrozma-Ultra outside Ultra Burst (none), Magearna's and the Pokémon whose forms are only looks given by events, Zarude's Dada (an event), the names the data gives some forms otherwise than Showdown does (above, "Found on the way"); and the oracle, which knows none of these forms by Showdown's names.
+## Unova as Black 2's maps make it (2026-10-20, plan 22 · U2)
+
+Unova is read from [fuddlesworth/pokebw2](https://github.com/fuddlesworth/pokebw2) at the pinned commit
+(`tools/MapImporter/Bw2/`, `--game black2 --data`), as Johto is read from HeartGold's decompilation. Only numbers and
+names come into the repository. Aspertia City with its rooms and gate, Route 19, Floccesy Town with its rooms, Route 20
+and Floccesy Ranch are open; nothing of the story is (U5). What follows is what this game decides where the source
+leaves a choice.
+
+- **Black 2's version.** Wherever a table differs between the two versions (an encounter table's `black2` and `white2`
+  halves), Black 2's is read (plan 22's decision 4). White 2's species come by trade or plan 03 · D12's zone.
+- **The flags and variables carry the region's name.** The decompilation names most of its flags only by value
+  (`EVENT_FLAG_0x02e9`). Ours are `FLAG_UNOVA_0x02e9` and `VAR_UNOVA_0x40a1`, and a flag the decompilation has named keeps
+  its name after the prefix (`Bw2Events.Flag`, `Var`). So no flag of Unova's is ever another region's, and none takes a
+  placeholder's name as if it were a meaning. Black 2 gives an item ball with no flag of its own one by its script's
+  number (`FLAG_UNOVA_` and 0x4000 plus the script), so a ball once taken stays taken. A hidden item takes the flag its
+  global script sets (`0x8002`), or 0x0b04 plus its number where it sets none.
+- **The keys.** An area's key is the zone's own name in lower case (`aspertia_city`, `floccesy_ranch`). A route, Victory
+  Road and the League take the region's name (`unova_route_19`), since Kanto's routes have the same numbers and a script
+  file is found by its key alone. A trainer's id is the region's prefix and the constant (`unova_lass_molly`),
+  found by `TrainerDatabase.Get(constant, "unova")`.
+- **Movements.** Black 2's movement codes are read as the nearest of Platinum's words (`Bw2Events.Movement`: look about,
+  wander, wander along one line, look two ways). A code that walks a path of its own, or that a script drives, stands
+  still until the session that opens it. People and things on a rail (a bridge's or a cave's path that the camera
+  follows) have no tile and are left out.
+- **Trainers.** A trainer's team, items and AI routines are Black 2's. Each Pokémon's personality is worked out as
+  HeartGold's `TrainerData_BuildParty` works it, since the source does not port Black 2's own. The prize money is the
+  last Pokémon's level times four times the class's rate, twice that for a double battle. A triple battle and a
+  rotation battle are fought as single ones until plan 14 gives them their formats. The trainers' lines (`messages`)
+  are never read. Every trainer's two lines are their overlay's, in our own words. A Pokémon's form in a trainer's team
+  is not read yet. A class the source names only by value falls back to its constant's words ("Worker 44"); none stands
+  in an open area.
+- **Encounter rates.** A zone gives its grass, dark grass and water a rate setting, a number into twelve rows of how the
+  chance climbs (`ENCOUNT_RATE_CONFIGS`). Until plan 22 · U4 ports the climb, an area's rate is the row's largest number
+  (`Bw2Encounters.Rate`: 13 for the first row, 19 for the second). The rods' slots are met 60, 30, 5, 4 and 1 times in a
+  hundred, as the water's are.
+- **Seasons.** An area whose Pokémon change with the season keeps spring's tables as its own and each other season that
+  differs, whole, in `WorldAreaFile.Seasons`. Nothing reads them until U4's calendar of seasons: until then every game
+  meets spring's. The dark grass, the shaking grass and the rippling water are read and kept beside them, and U4 gives
+  them their rules. Unova alone has seasons (`RegionFile.HasSeasons`).
+- **Where the textures lie.** By the user's decision of 2026-10-20, each chunk's `model.glb` is read past its JSON chunk
+  into its binary one, as plain numbers, only to find which texture covers each tile (`Bw2Geometry`). Only a
+  `TerrainCover` code a tile is kept. `Bw2Cover` sorts the names, buildings take the tiles under their props' boxes, and
+  the report lists the textures no rule sorts by the tiles they lie over. 82.3% of the overworld's tiles are sorted. No
+  vertex, texture, palette, image, sound or text of the game is written into the repository.
+- **The rooms** are `Indoors` matrices, several to a matrix as Johto's are, each a map of its own told apart by its
+  area. A room's props are numbered apart from the open country's, since the two are two tables of the source.
+- **The new game.** A game begun with `--region Unova` wakes in the player's room in Aspertia City (14, 5). Unova has
+  no story yet (`HasStory` false), so the game starts as a region without one does: with Snivy, the record's first
+  starter, at level 5, and a few items, until U5's professor hands the starters out. The player's mother is ours: she stands at the table and
+  sees to the team as a nurse does, until U5 writes her scene. A Champion who comes over steps out before the house
+  (47, 762).
+- **The people left out.** Whoever a flag hides at the start of the original's story is left out of the overlays until
+  their scene is written, since every flag is clear in a new game and they would stand there. That includes the rival,
+  the professor's assistant, Team Plasma, and the Pokémon Rangers of Route 20, who wait for a later chapter at level 32.
+  Professor Juniper's and Hugh's looks are in `characters.json` for U5.
+- **The music** is Sinnoh's and the common songs standing in until plan 05 gives Unova its own: Twinleaf Town's for
+  Aspertia City, Floaroma Town's for Floccesy Town, Route 201's for the routes and the gate, Route 205's for the ranch's
+  field, and the common Pokémon Center's and Gym's.
+- **The buildings** are stand-ins in Sinnoh's ways of building (`WorldModels.Unova`, each with its `StandInUntil`),
+  until U5 gives each town a way of its own.
+
 ## Kanto's first chapter (2026-10-18, plan 19 · K3)
 
 FireRed's first chapter, from the bedroom in Pallet Town to the Boulder Badge in Pewter City, is scripts of ours on its
@@ -3199,8 +3260,51 @@ a flag of ours; Route 121's arrival calls it for a save that never ran it. What 
   trainer jumps out at whoever comes near and stays on the patch once beaten, so Emerald's player never takes those
   warps; the reader writes a warp under a `TRAINER_TYPE_BURIED` object as a landing, which leads nowhere (Gerald's at
   2, 15 was one nobody could reach).
-- **What waits** (part c): Gabby and Ty's interviews, the Wingull's errand, the bridges' bounce underfoot and their
-  metatiles once the Kecleon has fled.
+- **What waits** (part c, below): the bridges' metatiles once the Kecleon has fled.
+
+## Gabby and Ty, the Wingull and the planks (2026-10-20, plan 21 · H6, its third part)
+
+Gabby and Ty's battles and interviews, Fortree's fourth house and the plank bridges are scripts and rules of ours on
+Emerald's beats (`common.txt`: `HoennChapterSevenC`, `GabbyAndTyUpdateLocation`, `GabbyAndTyGabby`, `GabbyAndTyTy`,
+`GabbyAndTyFight`, `GabbyAndTyAfterTheBattle`; `fortree_city_house_4.txt`; `Graphics/FieldLife.Planks.cs`), under
+Emerald's flags and variables (`VAR_GABBY_AND_TY_BATTLE_NUM`, the eight `FLAG_HIDE_ROUTE_1xx_GABBY_AND_TY_n`,
+`FLAG_GABBY_AND_TY_ON_AIR`, `FLAG_WINGULL_SENT_ON_ERRAND`, `FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL`,
+`FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL`). **No story or save version is raised**: `HoennChapterSevenC` hides the
+pair and the Mossdeep Wingull and shows the Fortree one, `HoennNewGame` calls it, and the arrival scripts of Routes 111,
+118, 119 and 120 and of Fortree City call it for a save that never ran it (`FLAG_HOENN_CHAPTER_SEVEN_C`, a flag of
+ours). What differs, and why:
+
+- **One script for every route**: Emerald has a script to each of the pair's nine places; the three routes share
+  `GabbyAndTyGabby` and `GabbyAndTyTy`, which pick the party by the count of battles. The count goes 0 to 8 and, past
+  the ninth battle, back to 6 (Emerald's remainder), so from the sixth party on the pair go round Routes 111, 118 and
+  120 with the sixth party for good. The six parties are Emerald's (`hoenn_gabby_and_ty_1` to `6`, class "Interviewer",
+  a double battle).
+- **Temporary flags**: Emerald's trainer flag and `FLAG_TEMP_SKIP_GABBY_INTERVIEW` are one local flag here
+  (`FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN`), cleared when the player leaves the route: the pair fought on this visit only
+  say they are watching, as the beaten trainer's second talk does. The player needs two Pokémon able to be sent out
+  together; one is told to come back with two.
+- **Two words for one**: Emerald asks for one easy-chat word. This game's phrase picker (plan 08 · P9) takes two, so
+  the answer is two words (`phrase GABBY_AND_TY`), kept until the next battle, quoted back at it, and read in the
+  segment. Backing out of the picker refuses the interview, as saying no does.
+- **What the battle is remembered for**: Emerald notes whether the player threw a ball, used a healing item, lost a
+  Pokémon, took fewer than the usual number of turns or won in a single turn (its trivia, `GabbyAndTyTrivia`). This game
+  counts two of those, as the host can tell them: a battle over at once (`TURNS == 0`, Emerald's "short battle") and a
+  Pokémon of the team fallen in it (`FAINTED` rose). A thrown ball or a healing item in a double battle against the
+  trainers of the pair is not counted, so those two bits of trivia are left.
+- **The segment on the air**: an interview given sets `FLAG_GABBY_AND_TY_ON_AIR` (Hoenn's televisions only, among the
+  programmes `Broadcasts.On` offers) and `FLAG_GABBY_AND_TY_SHOW_NEW`, so the first television looked at afterwards
+  shows it, as Jubilife's interview is. The next battle with the pair takes it off the air until it is interviewed
+  about again, as Emerald's `gabbyAndTyData.onAir` is cleared when the pair are fought.
+- **The Wingull**: the boy sends it out the first time he is spoken to, and it runs off through the door. Emerald shows
+  Mossdeep's Wingull then (the other half of the errand); here that bird stays hidden in a town that is not built yet,
+  and the boy says the Wingull is away on an errand ever after. The letter delivered, the Wingull home again and the
+  boy's Mental Herb are plan 21 · H8's, written with Mossdeep, so nothing here asks for those flags yet.
+- **The planks**: Emerald's `FortreeBridgePerStepCallback` lowers the plank's metatile under the player for a few
+  frames and springs the one they left. The plank's picture here is baked into its chunk, so the walker's sprite does
+  the dipping, for Hoenn's `Bridge` tiles alone (Sinnoh's decks are stone and iron, and share the behaviour). The
+  numbers are the style guide's ("Planks that give"); the sound is `bridge_walk`, ours.
+- **What waits**: the metatile swap of the bridge once Fortree's Kecleon has fled (an alternate chunk of the importer's);
+  the Wingull's return and Mental Herb (H8).
 
 ## Kanto's third chapter, second part (2026-10-18, plan 19 · K5)
 
@@ -3902,3 +4006,52 @@ The Ice Path's scenes, Clair, the Dragon's Den, the Kimono Girls, Ho-Oh and Lugi
 - **Left out**: the Kimono Girl the Basement Key sends under the city (`VAR_UNK_40E7`), the tunnel's shops, salons and
   photo studio, Buena and her Blue Card, Whitney and the friend at the Gym, Team Rocket's broadcast on the radio, and the
   Department Store basement's crates, which its Machoke shift.
+
+## Johto's fourth chapter, part c (2026-10-20, plan 20 · J11, part c)
+
+The Ice Path, Blackthorn City's two doors, Clair and her Gym, the Dragon's Den and the Dragon Shrine's questions to the
+Rising Badge, played by scripts of ours on HeartGold's beats (`scr_seq_D39R0101` to `D39R0103`, `T30`, `T30GYM0101`,
+`D44R0102`, `D44R0103`) and flags. Whirlpool from Lance, the Whirl Islands' lower floors and Lugia, the Kimono Girls'
+battles and Ho-Oh, and the small gifts are left (plan 20's J11 record says why).
+
+- **The Blackthorn Gym is HeartGold's, not Gold's and Silver's**: its floor is lava crossed on three slabs of stone that
+  turn and slide (`BlackthornPlatforms`, from HeartGold's `src/field/gymmick/blackthorn.c`: the three slabs' places and
+  sizes, the buttons on each, a slide its own width with a bump and a return where its leading edge meets anything but
+  lava, a turn refused where a side touches something and stopped part way by the original's tables of how far each
+  corner gets). The plan's "lava bridged by its boulders" was Gold's and Silver's puzzle and is not built. The slabs are
+  laid out afresh whenever the room is come to, as HeartGold's `BlackthornGymInit` does, so nothing of them is saved.
+  The three panels at the ends of the ways across carry the player back to the door by a warp into the same room, which
+  lays the slabs out again. Their frames are the original's (two a tile, sixteen a quarter); their look is our own
+  (style guide, "The slabs on the lava").
+- **The Ice Path's boulders**: HeartGold's boulders are named `rock` in its field objects, which the import had read as
+  nothing; they are Strength boulders now wherever they stand in Johto (eleven areas: the Burned Tower, the Dark Cave,
+  the Ice Path, Victory Road, Mt. Mortar, the Slowpoke Well, Union Cave and the Whirl Islands). A boulder pushed onto a
+  hole of B1F (a pit of the overlay's) falls through: it is gone for good by its own object's flag, and a boulder of the
+  map stands on the ice below under its hole from then on (`FLAG_HIDE_ICE_PATH_BOULDER_<N>_FALLEN` cleared, and a flag
+  of ours, `FLAG_ICE_PATH_HOLE_<N>_FILLED`, so B2F's arrival can hide the others: HeartGold sets the four `_FALLEN`
+  flags as a new game begins). A fallen boulder is a thing of the map of its own (`npcType` `FallenBoulder`, drawn as a
+  boulder), which stops a slide and can't be pushed: HeartGold's fallen boulders are scenery. Which boulder falls
+  through which hole doesn't matter, as in HeartGold, whose holes each have the fallen boulder of their own number
+  under them.
+- **A fall through a hole** is the hole's own trigger (HeartGold's `D39R0102_000` to `_003`): the player spins, drops
+  to the tile below that the hole names, and B2F's arrival gives the landing its jolt (`VAR_UNK_40AB`).
+- **The Kimono Girl on the ice** is pushed only from the tile behind her, as in HeartGold. Refused twice, she gives up
+  for now; HeartGold asks again at once as long as the answer is no, which here would be a question leading back to
+  itself.
+- **Blackthorn's guards stand by the arrivals**: HeartGold hides the man beside the Gym's door and the old man beside the
+  Dragon's Den's as a new game begins; here the city's own arrival hides each until what moves them aside has happened
+  (Team Rocket out of the Radio Tower; Clair beaten), so no save needs a story version.
+- **Clair is always home**: HeartGold hides her in her Gym only around her rematches after the Hall of Fame, which this
+  game has not yet. She battles once, sends the player to the shrine, and gives TM59 (Dragon Pulse) in the Den on the
+  way out (`VAR_UNK_40C4` 1) or, if the player leaves another way, in her Gym; coming back to the city without meeting
+  her sends her home (HeartGold's `T30_005`).
+- **The elder's questions are taken up where they stopped**: HeartGold asks a question again at once after a wrong
+  answer. Here the talk ends there ("think it over") and goes on from the same question when the elder is spoken to or
+  the shrine come to again (`VAR_DRAGON_SHRINE_QUESTION`, a variable of ours), so no question leads back to itself. A
+  wrong answer is remembered all the same (`FLAG_FAILED_DRAGONS_DEN_QUIZ`), and the Dratini given once TM59 has been
+  had knows Extreme Speed only if no answer was ever wrong (`givepokemon … knowing`, in its first move's place, as
+  HeartGold's `SetMonMove` puts it). The right answers are HeartGold's (the second of each question's three is wrong in
+  the first and fourth, the third in the second, the first in the third and fifth); the words are ours.
+- **What the shrine's end sets for New Bark Town is J12's**: HeartGold sets the rival's room, `VAR_SCENE_ELMS_LAB` 8 and
+  the way east as the Badge is given; here only the shrine's own state (`FLAG_UNK_998`, `FLAG_UNK_0EA`, `VAR_UNK_40C3`)
+  and Clair's in the Den are set, and J12 writes the scenes those start.

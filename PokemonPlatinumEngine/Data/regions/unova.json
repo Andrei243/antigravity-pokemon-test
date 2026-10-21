@@ -1,0 +1,52 @@
+{
+  "id": "Unova",
+  "folder": "unova",
+  "models": "unova",
+  "map": "Unova",
+  "dex": "updated-unova",
+  "nationalUnlock": "HallOfFame",
+  // Plan 22 · U2: Black 2's Unova, read by the third DS reader. Its story is plan 22 · U5's, so a new game begun here
+  // (--region Unova) wakes in the player's house in Aspertia City with a Pokémon and a few items, as Johto's did before
+  // its first chapter
+  "hasStory": false,
+  // The places change with the seasons (plan 22 · U2 reads each area's tables for spring, summer, autumn and winter;
+  // U3 hands the month to them)
+  "hasSeasons": true,
+  "rival": "Hugh",
+  "heroes": { "boy": "PLAYER", "girl": "DAWN" },
+  "starters": [ "Snivy", "Tepig", "Oshawott" ],
+  "badges": [ "Basic", "Toxic", "Insect", "Bolt", "Quake", "Jet", "Legend", "Wave" ],
+  // Black 2 asks no badge of a field move outside battle (the fifth generation dropped the rule); a gate a later
+  // session finds it needs goes here
+  "gates": {},
+  "professor": {
+    "name": "Prof. Juniper",
+    "look": "PROF_JUNIPER",
+    "species": "Minccino",
+    "lines": {
+      "hello": "Oh, there you are! Come in, come in. I hope the trip wasn't too long.",
+      "welcome": "Welcome to the world of Pokémon!",
+      "myName": "My name is Juniper. I spend my days asking where Pokémon first came from, and I never run out of questions.",
+      "world": "Pokémon live everywhere you look: in the grass by the road, in rivers and caves, on mountains and over the sea.",
+      "oneOfThem": "This little one is always tidying up after everyone. Say hello!",
+      "liveAlongside": "People and Pokémon get by together here. They work side by side, they play, and some of them battle as partners.",
+      "study": "My research is about their beginnings: how each kind of Pokémon came to be what it is today.",
+      "enough": "But that's enough about my work. I'd like to hear about you.",
+      "boyOrGirl": "Are you a boy, or are you a girl?",
+      "askName": "And what's your name?",
+      "nextDoor": "There's a boy in your town who's about your age. He's set on becoming a strong Trainer.",
+      "neverStill": "He trains every single day, and he never stays put for long.",
+      "fineName": "{name}! That's a great name.",
+      "ofCourse": "I'm sure you two will push each other to do your best.",
+      "story": "{name}, your journey through Unova starts in Aspertia City, high on the hill at the south-west of the region.",
+      "offYouGo": "Off you go! Unova is waiting for you!"
+    }
+  },
+  // Black 2's heal places of the towns open so far (plan 22 · U2): the first is the player's house, where a white-out
+  // goes before any Pokémon Center; the rest are the Pokémon Centers, on the tile before each door
+  "spawns": [
+    { "id": 1, "area": "aspertia_city", "x": 47, "y": 762, "room": "AspertiaCity_PlayersHouse" },
+    { "id": 2, "area": "aspertia_city", "x": 48, "y": 740, "room": "AspertiaCity_PokemonCenter" },
+    { "id": 3, "area": "floccesy_town", "x": 105, "y": 694, "room": "FloccesyTown_PokemonCenter" }
+  ]
+}

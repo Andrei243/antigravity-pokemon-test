@@ -7,14 +7,14 @@ meter 4/4
 reverb 0.5
 night none
 
-track air choir vol=0.66 pan=-0.1 rev=0.5
+track air choir vol=0.73 pan=-0.1 rev=0.5
   L o4 (d a)1 | (d a)1 | (c g)1 | (c g)1 | (d f a)1 | (d f a)1 | (c e g)1 | (d a)1 |
 
-track code bell vol=0.66 pan=0.25 rev=0.55
+track code bell vol=0.73 pan=0.25 rev=0.55
   L o5 d8 r8 a8 r8 r2 | r1 | o5 c8 r8 g8 r8 r2 | r1 | o5 f8 r8 a8 r8 o6 d4 r4 | r1 | o5 e8 r8 g8 r8 o6 c4 r4 | r1 |
 
-track drone contrabass vol=0.9 rev=0.3
+track drone contrabass vol=0.99 rev=0.3
   L o2 d1 | d1 | c1 | c1 | d1 | d1 | c1 | d1 |
 
-track stroke timpani vol=0.6 rev=0.4
+track stroke timpani vol=0.66 rev=0.4
   L [ o2 d4 r2. | r1 | ]4

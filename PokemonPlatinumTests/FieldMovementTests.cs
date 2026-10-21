@@ -1184,6 +1184,9 @@ public class FieldMovementTests
             // Nor does the sea floor: its seaweed is where a diver meets wild Pokémon, and under rock it keeps a diver from
             // coming up (plan 21 · H5, FieldMovement.CanSurface)
             changes |= behaviour is TileBehavior.Seaweed or TileBehavior.NoSurfacing or TileBehavior.SeaweedNoSurfacing;
+            // Nor does lava: what refuses a step onto it is the Blackthorn Gym's puzzle, where no slab stands over it
+            // (BlackthornPlatforms.Refuses, plan 20 · J11, part c)
+            changes |= behaviour == TileBehavior.Magma;
             Assert.True(changes, $"{behaviour} is listed as having a rule and changes nothing");
         }
     }

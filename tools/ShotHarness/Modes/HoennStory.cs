@@ -730,5 +730,81 @@ partial class Harness
         ReadTo("learned"); Frames(10); Shot("hs154_sleep_talk_learned");
         ReadTo(null);
         Safari("Fortree's second house");
+
+        // ---- Plan 21 · H6, part c: Gabby and Ty, Fortree's Wingull and the plank bridges (hs155 to hs167)
+        void Reporters(string what) =>
+            Console.WriteLine($"  {what}: battles {story.Var("VAR_GABBY_AND_TY_BATTLE_NUM")}, route {story.Var("VAR_GABBY_AND_TY_ROUTE")}, trivia {story.Var("VAR_GABBY_AND_TY_TRIVIA")}, "
+                + $"mons {story.Var("VAR_GABBY_AND_TY_MON_1")}/{story.Var("VAR_GABBY_AND_TY_MON_2")}, on air {story.Has("FLAG_GABBY_AND_TY_ON_AIR")}, "
+                + $"show new {story.Has("FLAG_GABBY_AND_TY_SHOW_NEW")}, quote pending {story.Has("FLAG_GABBY_AND_TY_QUOTE_PENDING")}, "
+                + $"phrase {PhraseGroups.Shown(story.PhraseOf("GABBY_AND_TY") ?? Array.Empty<string>())}, "
+                + $"wingull errand {story.Has("FLAG_WINGULL_SENT_ON_ERRAND")}, wingull hidden {story.Has("FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL")}, "
+                + $"mossdeep wingull hidden {story.Has("FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL")}");
+
+        // Route 111: the pair where their first battle puts them, the battle for the cameras and the interview
+        story.SetVar("VAR_GABBY_AND_TY_BATTLE_NUM", 0);
+        story.ClearLocal();
+        At("Hoenn", 213, 90, Direction.Up); game.EnterArea(); Frames(20); Shot("hs155_gabby_and_ty_on_route_111");
+        TalkTo("Hoenn", "route111_gabby_1");
+        ReadTo("Wait, wait!"); Frames(10); Shot("hs156_gabby_spots_the_player");
+        ReadTo("two against two"); Frames(10); Shot("hs157_the_offer");
+        IntoBattle("Gabby and Ty's battle");
+        ToMainMenu(game.Battle); Shot("hs158_gabby_and_tys_double_battle");
+        Win();
+        ReadTo("We lost! Wow"); Frames(10); Shot("hs159_gabby_beaten");
+        ReadTo("who ARE you"); Frames(10); Shot("hs15a_the_interview_asked");
+        ReadTo("tell us in two words"); Frames(10);
+        Until(() => State() == GameState.Phrases, "the phrase picker", 300);
+        var phrasePicker = game.Phrases;
+        Frames(15); Shot("hs15b_the_phrase_picker");
+        phrasePicker.Confirm(); phrasePicker.Move(1, 0); phrasePicker.Move(0, 1); Frames(4);
+        phrasePicker.Confirm(); phrasePicker.Move(0, 1); Frames(4);
+        phrasePicker.Move(0, -1); phrasePicker.Confirm(); Frames(4);
+        phrasePicker.Entry!.Choose(1, "small:together"); Frames(4); Shot("hs15c_the_phrase_whole");
+        phrasePicker.Confirm();
+        Until(() => State() != GameState.Phrases, "the picker put away", 60);
+        ReadTo("That's just what the viewers want"); Frames(10); Shot("hs15d_the_viewers_will_like_it");
+        ReadTo(null);
+        Reporters("the first interview");
+
+        // Route 118 a battle on: the pair quote the answer back and ask after the battle they remember
+        story.ClearLocal();
+        At("Hoenn", 270, 148, Direction.Up); game.EnterArea(); Frames(20); Shot("hs15e_gabby_and_ty_on_route_118");
+        TalkTo("Hoenn", "route118_gabby_1");
+        ReadTo("Last time you told us"); Frames(10); Shot("hs15f_the_answer_quoted");
+        ReadTo(null);
+        Reporters("the second battle");
+
+        // Route 120, and the segment on the air
+        story.ClearLocal();
+        At("Hoenn", 373, 17, Direction.Up); game.EnterArea(); Frames(20); Shot("hs160_gabby_and_ty_on_route_120");
+        Reporters("on Route 120");
+
+        // Fortree's fourth house: the boy sends his Wingull off, the bird runs out of the door
+        TalkTo("FortreeCity_House4", "boy_3");
+        ReadTo("Off you go"); Frames(10); Shot("hs161_the_boy_sends_his_wingull");
+        Frames(15); Shot("hs162_the_wingull_running");
+        ReadTo(null);
+        Frames(20); Shot("hs163_the_wingull_gone");
+        TalkTo("FortreeCity_House4", "boy_3");
+        ReadTo("errand"); Frames(10); Shot("hs164_the_errand");
+        ReadTo(null);
+        Reporters("the Wingull's errand");
+
+        // The plank bridges: a walker's sprite drops as their feet come onto a plank, springs back and settles lower than on the ground
+        (int X, int Y)? plank = null;
+        var fortreeMap = MapDatabase.Get("Hoenn");
+        for (int py = 0; py < 30 && plank == null; py++)
+            for (int px = 320; px < 380 && plank == null; px++)
+                if (FieldLife.IsPlank(fortreeMap, px, py) && FieldLife.IsPlank(fortreeMap, px + 1, py)) plank = (px, py);
+        if (plank is { } plankAt)
+        {
+            At("Hoenn", plankAt.X - 1, plankAt.Y, Direction.Right); Frames(20); Shot("hs165_before_the_plank");
+            game.Player.SetPosition(plankAt.X, plankAt.Y, Direction.Right);
+            Frames(1); Shot("hs166_the_plank_gives");
+            Frames(5); Shot("hs166b_the_plank_springs_back");
+            Frames(40); Shot("hs167_standing_on_the_plank");
+            Console.WriteLine($"  plank: tile ({plankAt.X}, {plankAt.Y}), rows now {game.World.Life.PlankRows(fortreeMap, plankAt.X + 0.5f, plankAt.Y + 0.5f)}");
+        }
+        else Console.WriteLine("  !! no plank tile found round Fortree City");
     }
 }

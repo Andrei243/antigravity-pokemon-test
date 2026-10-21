@@ -1,0 +1,22 @@
+{
+  // Another house of Floccesy Town (plan 22 · U2): Black 2's room, our words
+  "area": "floccesy_town_4",
+  "bgmTrack": "sinnoh/floaroma",
+  "people": {
+    "0": {
+      "name": "Woman",
+      "npcType": "Lady",
+      "dialog": [ "Sorry about the mess! We're getting ready for the spring festival." ]
+    },
+    "1": {
+      "name": "Man",
+      "npcType": "Gentleman",
+      "dialog": [ "My wife says I should get a Pokémon to help in the garden. I think she means me to do less work." ]
+    },
+    "2": {
+      "name": "Boy",
+      "npcType": "Youngster",
+      "dialog": [ "When I grow up I'm going to work at the ranch. They have Pokémon everywhere!" ]
+    }
+  }
+}

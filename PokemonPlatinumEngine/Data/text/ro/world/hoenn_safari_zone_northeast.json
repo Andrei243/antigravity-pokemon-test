@@ -6,7 +6,7 @@
           "Boy"
         ],
         "text": [
-          ""
+          "Băiatul"
         ]
       },
       "dialog": {
@@ -14,7 +14,7 @@
           "I've only got a couple of Safari Balls left. Which Pokémon should I spend them on?"
         ],
         "text": [
-          ""
+          "Mi-au mai rămas doar două Safari Balluri. Pe ce Pokémon să le cheltui?"
         ]
       }
     },
@@ -24,7 +24,7 @@
           "Girl"
         ],
         "text": [
-          ""
+          "Fata"
         ]
       },
       "dialog": {
@@ -32,7 +32,7 @@
           "Oh, come on! I haven't caught a single thing! That's my entry fee wasted!"
         ],
         "text": [
-          ""
+          "Haide, serios! N-am prins nimic! Taxa de intrare e aruncată pe apa sâmbetei!"
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Woman"
         ],
         "text": [
-          ""
+          "Femeia"
         ]
       },
       "dialog": {
@@ -50,7 +50,7 @@
           "Someone said Pikachu live out here. Have you seen one anywhere?"
         ],
         "text": [
-          ""
+          "Cineva a zis că pe aici trăiesc Pikachu. Ai văzut vreunul pe undeva?"
         ]
       }
     }

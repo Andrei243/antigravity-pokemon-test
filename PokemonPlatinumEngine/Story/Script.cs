@@ -187,6 +187,12 @@ public sealed class Instruction
     public string Other { get; init; } = "";
 
     /// <summary>
+    /// A move a Pokémon given comes with in its first place (plan 20 · J11, part c: <c>givepokemon "Dratini" 15 knowing
+    /// "Extreme Speed"</c>, as the Dragon Shrine's elder gives HeartGold's with <c>SetMonMove</c>); empty for none.
+    /// </summary>
+    public string Move { get; init; } = "";
+
+    /// <summary>
     /// Who battles beside the player (plan 06 · R9): a person of the map, or with <see cref="PartnerById"/> a trainer
     /// of Platinum's data by its id.
     /// </summary>

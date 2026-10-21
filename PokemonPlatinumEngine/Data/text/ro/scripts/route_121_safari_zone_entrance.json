@@ -5,7 +5,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Welcome to the Safari Zone!"
       ],
       "text": [
-        ""
+        "Bun venit în Zona Safari!"
       ]
     },
     {
@@ -21,7 +21,7 @@
         "Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game?"
       ],
       "text": [
-        ""
+        "Prinde câți Pokémoni vrei pentru doar $500! Vrei să joci Jocul Safari?"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "That's $500, thank you. Here are your Safari Balls."
       ],
       "text": [
-        ""
+        "Sunt $500, mulțumesc. Iată Safari Ballurile tale."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "{player} received 30 Safari Balls!"
       ],
       "text": [
-        ""
+        "{player} a primit 30 de Safari Balluri!"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "We'll let you know when your game is over. Until then, off you go into the wild!"
       ],
       "text": [
-        ""
+        "Te anunțăm când se termină jocul. Până atunci, intră în sălbăticie!"
       ]
     },
     {
@@ -53,7 +53,7 @@
         "I'm sorry, you don't have enough money."
       ],
       "text": [
-        ""
+        "Îmi pare rău, nu ai destui bani."
       ]
     },
     {
@@ -61,7 +61,7 @@
         "All right. Please come and play another time!"
       ],
       "text": [
-        ""
+        "Bine. Te rog, vino să joci altă dată!"
       ]
     }
   ],
@@ -71,7 +71,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -79,7 +79,7 @@
         "Walk along the counter toward the zone's door, and I'll ask whether you'd like to play the Safari Game."
       ],
       "text": [
-        ""
+        "Mergi de-a lungul ghișeului spre ușa zonei și te voi întreba dacă vrei să joci Jocul Safari."
       ]
     }
   ],
@@ -89,7 +89,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -97,7 +97,7 @@
         "Welcome to the Safari Zone! Pokémon you'll hardly ever see in Hoenn live here in the wild."
       ],
       "text": [
-        ""
+        "Bine ai venit în Zona Safari! Aici trăiesc în sălbăticie Pokémoni pe care în Hoenn abia îi vezi."
       ]
     },
     {
@@ -105,7 +105,7 @@
         "And trainers may catch them to keep. Come in and enjoy yourself!"
       ],
       "text": [
-        ""
+        "Iar Antrenorii îi pot prinde și păstra. Intră și distrează-te!"
       ]
     }
   ],
@@ -115,7 +115,7 @@
         "Attendant"
       ],
       "text": [
-        ""
+        "Însoțitoarea"
       ]
     },
     {
@@ -123,7 +123,7 @@
         "Welcome to the Safari Zone! Is this your first visit?"
       ],
       "text": [
-        ""
+        "Bine ai venit în Zona Safari! E prima ta vizită?"
       ]
     },
     {
@@ -131,7 +131,7 @@
         "You go in with 30 Safari Balls, the only balls you may throw inside."
       ],
       "text": [
-        ""
+        "Intri cu 30 de Safari Balluri, singurele mingi pe care ai voie să le arunci înăuntru."
       ]
     },
     {
@@ -139,7 +139,7 @@
         "The game is over when you've thrown your last ball, or when you've walked 500 steps."
       ],
       "text": [
-        ""
+        "Jocul se termină când ai aruncat ultima minge sau când ai făcut 500 de pași."
       ]
     },
     {
@@ -147,7 +147,7 @@
         "Come in and enjoy the Safari Zone!"
       ],
       "text": [
-        ""
+        "Intră și bucură-te de Zona Safari!"
       ]
     }
   ]

@@ -5,7 +5,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -13,7 +13,7 @@
         "Hey, are you one of the new recruits too? We took on a whole crowd for the Radio Tower job and ran short of uniforms."
       ],
       "text": [
-        ""
+        "Hei, ești și tu printre noii recruți? Am luat o mulțime de oameni pentru treaba de la Turnul Radio și am rămas fără uniforme."
       ]
     },
     {
@@ -21,7 +21,7 @@
         "The photo studio here keeps a rack of them for its pictures, so I'm helping myself. You'd better change too!"
       ],
       "text": [
-        ""
+        "Studioul foto de aici ține un suport întreg cu ele pentru poze, așa că mă servesc. Mai bine te schimbi și tu!"
       ]
     },
     {
@@ -29,7 +29,7 @@
         "{player} pulled on a Team Rocket uniform from the studio's rack."
       ],
       "text": [
-        ""
+        "{player} a îmbrăcat o uniformă a Echipei Rocket de pe suportul studioului."
       ]
     },
     {
@@ -37,7 +37,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -45,7 +45,7 @@
         "Look at you! Very sharp. Just don't go scaring people in the street dressed like that, all right?"
       ],
       "text": [
-        ""
+        "Uită-te la tine! Foarte elegant. Doar să nu sperii lumea pe stradă în ținuta asta, bine?"
       ]
     }
   ],
@@ -55,7 +55,7 @@
         "Grunt"
       ],
       "text": [
-        ""
+        "Grunt"
       ]
     },
     {
@@ -63,7 +63,7 @@
         "Look at you! Very sharp. Just don't go scaring people in the street dressed like that, all right?"
       ],
       "text": [
-        ""
+        "Uită-te la tine! Foarte elegant. Doar să nu sperii lumea pe stradă în ținuta asta, bine?"
       ]
     },
     {
@@ -71,7 +71,7 @@
         "We ran short of uniforms for the Radio Tower job. Good thing the photo studio has a rack of them."
       ],
       "text": [
-        ""
+        "Am rămas fără uniforme pentru treaba de la Turnul Radio. Bine că studioul foto are un suport cu ele."
       ]
     }
   ],
@@ -81,7 +81,7 @@
         "STAFF ONLY BEYOND THIS DOOR"
       ],
       "text": [
-        ""
+        "DOAR PERSONAL DINCOLO DE UȘA ASTA"
       ]
     },
     {
@@ -89,7 +89,7 @@
         "{player} turned the Basement Key in the lock."
       ],
       "text": [
-        ""
+        "{player} a răsucit Cheia Subsolului în broască."
       ]
     },
     {
@@ -97,7 +97,7 @@
         "The door slid open!"
       ],
       "text": [
-        ""
+        "Ușa a glisat și s-a deschis!"
       ]
     }
   ]

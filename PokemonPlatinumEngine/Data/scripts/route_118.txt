@@ -11,6 +11,8 @@
 # The way onto this stretch from Mauville: a save from before plan 21 · H6 hides the stretch's people here
 script OnEnter
   if not flag FLAG_HOENN_CHAPTER_SEVEN call HoennChapterSeven
+  if not flag FLAG_HOENN_CHAPTER_SEVEN_C call HoennChapterSevenC
+  call GabbyAndTyUpdateLocation
   end
 
 

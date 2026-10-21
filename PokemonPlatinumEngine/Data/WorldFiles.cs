@@ -408,10 +408,54 @@ public sealed class WorldAreaFile
     public string? Dive { get; set; }
     public string? Emerge { get; set; }
 
+    /// <summary>
+    /// Black 2's tables beside the grass's and the water's (plan 22 · U2), each of the slots and rate of its own: the
+    /// dark grass's twelve, where two wild Pokémon may come at once; the twelve of a patch of grass that shakes; the
+    /// five of a patch of water that ripples, surfed and fished. Read by nothing yet (plan 22 · U4 gives them their
+    /// rules); left out where the area has none.
+    /// </summary>
+    public List<AreaEncounter>? DarkGrass { get; set; }
+    public int? DarkGrassRate { get; set; }
+    public List<AreaEncounter>? ShakingGrass { get; set; }
+    public int? ShakingGrassRate { get; set; }
+    public List<AreaEncounter>? RipplingWater { get; set; }
+    public int? RipplingWaterRate { get; set; }
+    public List<AreaEncounter>? RipplingRod { get; set; }
+    public int? RipplingRodRate { get; set; }
+
+    /// <summary>
+    /// The other seasons' tables of an area whose wild Pokémon change with the season (plan 22 · U2; Black 2's
+    /// <c>spring</c>, <c>summer</c>, <c>autumn</c> and <c>winter</c>): the area's own fields are spring's, and each
+    /// season after it that differs is here, whole. Left out for an area whose Pokémon are the same all year, and read
+    /// by nothing until plan 22 · U4's calendar of seasons.
+    /// </summary>
+    public List<AreaSeason>? Seasons { get; set; }
+
     public List<AreaWarp> Warps { get; set; } = new();
     public List<AreaObject> Objects { get; set; } = new();
     public List<AreaSign> Signs { get; set; } = new();
     public List<AreaTrigger> Triggers { get; set; } = new();
+}
+
+/// <summary>One season's wild Pokémon of an area whose tables change with the season (plan 22 · U2): <see cref="WorldAreaFile.Seasons"/>.</summary>
+public sealed class AreaSeason
+{
+    /// <summary><c>Summer</c>, <c>Autumn</c> or <c>Winter</c>: spring's tables are the area's own.</summary>
+    public string Season { get; set; } = "";
+    public List<AreaEncounter>? Land { get; set; }
+    public int? LandRate { get; set; }
+    public List<AreaEncounter>? DarkGrass { get; set; }
+    public int? DarkGrassRate { get; set; }
+    public List<AreaEncounter>? ShakingGrass { get; set; }
+    public int? ShakingGrassRate { get; set; }
+    public List<AreaEncounter>? Water { get; set; }
+    public int? WaterRate { get; set; }
+    public List<AreaEncounter>? RipplingWater { get; set; }
+    public int? RipplingWaterRate { get; set; }
+    public List<AreaEncounter>? SuperRod { get; set; }
+    public int? SuperRodRate { get; set; }
+    public List<AreaEncounter>? RipplingRod { get; set; }
+    public int? RipplingRodRate { get; set; }
 }
 
 /// <summary>One slot of an area's table of wild Pokémon.</summary>

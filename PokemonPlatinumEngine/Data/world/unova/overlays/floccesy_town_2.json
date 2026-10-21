@@ -1,0 +1,22 @@
+{
+  // The house at the top of Floccesy Town (plan 22 · U2): Black 2's room, our words. Its master is home and talks; his
+  // part in the story is plan 22 · U4's
+  "area": "floccesy_town_2",
+  "bgmTrack": "sinnoh/floaroma",
+  "people": {
+    "0": {
+      "name": "Schoolgirl",
+      "dialog": [ "We came to ask the old Champion for advice. He told us to go and play with our Pokémon!" ]
+    },
+    "1": {
+      "name": "Schoolboy",
+      "dialog": [ "He says the best training is just spending time together. Is that really it?" ]
+    },
+    "2": {
+      "name": "Alder",
+      "npcType": "Gentleman",
+      "still": true,
+      "dialog": [ "Ha! A young Trainer, eh? Get out there and see the world with your Pokémon. That's the best lesson." ]
+    }
+  }
+}

@@ -280,6 +280,14 @@ public class NPC
     public const string FalseRockType = "FalseRock";
 
     /// <summary>
+    /// A boulder that has fallen through a hole of the Ice Path (plan 20 · J11, part c; HeartGold's
+    /// <c>d39r0103_rock</c>s, whose script is a line of their own and never Strength's): a thing of the map drawn as the
+    /// boulder's own card, in the way like a person, which Strength does not push. It stands on the ice below as a
+    /// stop for whoever slides.
+    /// </summary>
+    public const string FallenBoulderType = "FallenBoulder";
+
+    /// <summary>
     /// A lock of the Vermilion City Gym (plan 19 · K4, part b; FireRed draws its beams into the tiles and changes them
     /// with <c>setmetatile</c>): a thing of the map on a tile of the gap it shuts, which the world builder opens under
     /// it, in the way like a person and read like one until its flag takes it away. Drawn as a card.
@@ -329,6 +337,7 @@ public class NPC
         CavePaintingType => PropType.CavePainting,
         MagmaStoneType => PropType.MagmaStone,
         FalseRockType => PropType.CrackedRock,
+        FallenBoulderType => PropType.StrengthBoulder,
         ElectricGateType => PropType.ElectricGate,
         DomeFossilType => PropType.DomeFossil,
         HelixFossilType => PropType.HelixFossil,

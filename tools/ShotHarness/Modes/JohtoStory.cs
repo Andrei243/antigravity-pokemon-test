@@ -8,7 +8,7 @@ partial class Harness
     /// Violet City and Route 32's head (<c>jst01</c> to <c>jst22</c>), through the game's own steps, <c>TryInteract</c>
     /// and arrivals. It wins every battle a scene starts (the lead never tires) and prints what each scene left behind.
     /// </summary>
-    private void JohtoScenes(bool second = false, bool third = false, bool fourth = false, bool takeover = false)
+    private void JohtoScenes(bool second = false, bool third = false, bool fourth = false, bool takeover = false, bool rising = false)
     {
         var story = game.Story;
         DialogueManager Box() => game.Dialogue;
@@ -104,7 +104,7 @@ partial class Harness
         // The second chapter (plan 20 · J7) is played in a new game set as the first leaves it, at the mode's end; the
         // third (plan 20 · J9) goes on from where the second ends, or by itself (JOHTO_FROM=sea) in a game set as the
         // second leaves it
-        if (second || third || fourth || takeover)
+        if (second || third || fourth || takeover || rising)
         {
             engine.NewGameRegion = "Johto";
             engine.StartNewGame();
@@ -120,19 +120,25 @@ partial class Harness
             story.ChooseStarter("Cyndaquil");
             story.GiveBadge("Johto", "Zephyr");
             game.Party.Add(new Pokemon(PokemonDatabase.Get("Typhlosion")!, 40));
-            if (!third && !fourth && !takeover) goto ChapterTwo;
+            if (!third && !fourth && !takeover && !rising) goto ChapterTwo;
             foreach (string badge in new[] { "Hive", "Plain", "Fog" }) story.GiveBadge("Johto", badge);
             story.SetVar("VAR_UNK_4079", 4);
             game.Bag.AddItem(ItemDatabase.Get("HM03")!, 1);
-            if (!fourth && !takeover) goto ChapterThree;
+            if (!fourth && !takeover && !rising) goto ChapterThree;
             foreach (string badge in new[] { "Storm", "Mineral" }) story.GiveBadge("Johto", badge);
             story.Set("FLAG_GOT_HM02");
             game.Bag.AddItem(ItemDatabase.Get("HM02")!, 1);
-            if (!takeover) goto ChapterFour;
+            if (!takeover && !rising) goto ChapterFour;
             story.GiveBadge("Johto", "Glacier");
             story.SetVar("VAR_SCENE_ROCKET_TAKEOVER", 1);
             story.Set("FLAG_ROCKET_HIDEOUT_CLEARED");
-            goto Takeover;
+            if (!rising) goto Takeover;
+            // JOHTO_FROM=rising: as the takeover leaves the game (plan 20 · J11, part b)
+            story.SetVar("VAR_SCENE_ROCKET_TAKEOVER", 5);
+            story.Set("FLAG_BEAT_RADIO_TOWER_ROCKETS");
+            story.Set("FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT");
+            story.Unset("FLAG_ROCKET_TAKEOVER_ACTIVE");
+            goto Rising;
         }
 
         // A new game of Johto, from its first step
@@ -766,5 +772,90 @@ partial class Harness
         ComeThrough("Johto", towerDoor.TargetX, towerDoor.TargetY, Direction.Down);
         Frames(30); Shot("jst9q_goldenrod_free");
         Takeover("the takeover's end");
+
+    // ================= The fourth chapter, part c (plan 20 · J11): the Ice Path, Clair and the Rising Badge (jsta0 to jstaj)
+    Rising:
+        void Risen(string what) =>
+            Console.WriteLine($"  {what}: man {story.Var("VAR_UNK_4100")}, kimono girl {story.Has("FLAG_UNK_239")}, holes filled "
+                + $"{string.Join("", Enumerable.Range(1, 4).Select(n => story.Has($"FLAG_ICE_PATH_HOLE_{n}_FILLED") ? n.ToString() : "-"))}, "
+                + $"guide {story.Has("FLAG_UNK_138")}, Clair beaten {story.Has("FLAG_UNK_0D1")}, question {story.Var("VAR_DRAGON_SHRINE_QUESTION")}, "
+                + $"failed {story.Has("FLAG_FAILED_DRAGONS_DEN_QUIZ")}, shrine {story.Var("VAR_UNK_40C3")}, Clair's TM {story.Var("VAR_UNK_40C4")} {story.Has("FLAG_GOT_TM59_FROM_CLAIR")}, "
+                + $"Rising Badge {story.HasBadge("Johto", "Rising")}, team {string.Join(", ", game.Party.Members.Select(p => $"{p.Species.Name} {p.Level} ({string.Join("/", p.Moves.Select(m => m.Name))})"))}, "
+                + $"bag {string.Join(", ", game.Bag.AllItems.Select(s => $"{s.Name} x{s.Quantity}"))}");
+        var risingLead = game.Party.Members[0];
+        risingLead.CurrentHP = risingLead.MaxHP;
+
+        // ---- the Ice Path: the man by the HM, the Kimono Girl on the ice, a hole in B1F's floor and a boulder fallen through
+        StepOnto("IcePath_1F", 47, 6, Direction.Down);
+        ReadTo("There's an HM lying right there"); Frames(10); Shot("jsta0_the_man_by_the_hm");
+        ReadTo(null);
+        At("IcePath_1F", 55, 28, Direction.Down);
+        game.Interact();
+        ReadTo("Would you give me a push?"); Frames(10); Shot("jsta1_the_kimono_girl_on_the_ice");
+        ReadTo("Here goes"); Frames(20); Shot("jsta2_pushed_off_the_ice");
+        ReadTo(null);
+        StepOnto("IcePath_B1F", 11, 10, Direction.Down);
+        Until(() => game.Map.Name == "IcePath_B2F", "the fall to B2F", 900);
+        ReadTo(null);
+        Frames(30); Shot("jsta3_fallen_through_a_hole");
+        Console.WriteLine($"  fell to {game.Map.Name} at ({game.Player.GridX}, {game.Player.GridY})");
+        // A boulder pushed into the first hole, as its pit script leaves it (pushing is the field's, shot by fieldmoves)
+        story.Set("FLAG_HIDE_ICE_PATH_BOULDER_1_INIT");
+        story.Set("FLAG_ICE_PATH_HOLE_1_FILLED");
+        story.Unset("FLAG_HIDE_ICE_PATH_BOULDER_1_FALLEN");
+        ComeThrough("IcePath_B2F", 12, 16, Direction.Up);
+        Frames(30); Shot("jsta4_a_boulder_fallen_below");
+        Console.WriteLine($"  the fallen boulder {(game.Map.NPCs.Any(n => n.Key == "fallen_boulder_1") ? "stands" : "is missing")} under the first hole");
+        Risen("the Ice Path");
+
+        // ---- the Blackthorn Gym: its guide, a slab turned and sent along, and Clair
+        ComeThrough("Blackthorn_Gym", 13, 86, Direction.Up);
+        StepOnto("Blackthorn_Gym", 13, 82, Direction.Up);
+        ReadTo("the floor in here is lava"); Frames(10); Shot("jsta5_the_gyms_guide");
+        ReadTo(null);
+        var slabs = (BlackthornPlatforms)game.Map.Puzzle!;
+        At("Blackthorn_Gym", 13, 75, Direction.Up);
+        game.Interact();
+        Frames(8); Shot("jsta6_a_slab_turning");
+        Until(() => slabs.Moving == null, "the turn's end", 120);
+        Frames(10); Shot("jsta7_the_slab_turned");
+        At("Blackthorn_Gym", 13, 76, Direction.Up);
+        game.Interact();
+        var sent = slabs.Moving;
+        Frames(4); Shot("jsta8_a_slab_sent_along");
+        Until(() => slabs.Moving == null, "the slide's end", 120);
+        Frames(10); Shot("jsta9_where_the_slab_stopped");
+        Console.WriteLine($"  the slide went {sent?.Tiles} tiles, bumped {sent?.Bumped}; the slabs stand at {string.Join(", ", slabs.Slabs.Select(s => $"({s.X}, {s.Z}) turned {s.Rotation}"))}, "
+            + $"the player at ({game.Player.GridX}, {game.Player.GridY})");
+        TalkTo("Blackthorn_Gym", "t30gym0101_gsleader8");
+        ReadTo("I am Clair"); Frames(10); Shot("jstaa_clair");
+        IntoBattle("Clair's battle");
+        ToMainMenu(game.Battle); Shot("jstab_clairs_battle");
+        Win();
+        ReadTo("Take the dragon tamers' test"); Frames(10); Shot("jstac_clair_beaten");
+        ReadTo(null);
+        risingLead.CurrentHP = risingLead.MaxHP;
+        ComeThrough("Johto", 672, 135, Direction.Up);
+        Frames(30); Shot("jstad_the_dens_old_man_aside");
+        Risen("Clair");
+
+        // ---- the Dragon Shrine: the elder's questions, Clair made to give the Badge, and Lugia
+        ComeThrough("DragonsDen_Shrine", 6, 19, Direction.Up);
+        ReadTo("What are Pokémon to you?"); Frames(10); Shot("jstae_the_elders_question");
+        foreach (int pick in new[] { 0, 0, 1, 0, 2 }) Answer(pick);
+        ReadTo("How did it go?"); Frames(10); Shot("jstaf_clair_comes_in");
+        ReadTo("received the Rising Badge"); Frames(10); Shot("jstag_the_rising_badge");
+        ReadTo("have you heard of Lugia"); Frames(10); Shot("jstah_lugia");
+        ReadTo(null);
+        Risen("the shrine");
+
+        // ---- Clair in the Dragon's Den with TM59, and the elder's Dratini
+        StepOnto("DragonsDen", 28, 14, Direction.Up);
+        ReadTo("Take this as my apology"); Frames(10); Shot("jstai_clair_in_the_den");
+        ReadTo(null);
+        TalkTo("DragonsDen_Shrine", "d44r0103_chourou");
+        ReadTo("received Dratini"); Frames(10); Shot("jstaj_the_elders_dratini");
+        ReadTo(null);
+        Risen("the chapter's part c");
     }
 }

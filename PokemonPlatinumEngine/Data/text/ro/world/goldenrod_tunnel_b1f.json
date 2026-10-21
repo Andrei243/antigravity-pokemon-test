@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Door"
         ],
         "text": [
-          ""
+          "Ușă"
         ]
       }
     },
@@ -26,7 +26,7 @@
           "Donald"
         ],
         "text": [
-          ""
+          "Donald"
         ]
       },
       "before": {
@@ -34,7 +34,7 @@
           "Poké Maniac Donald: I came down here to show off my rare Pokémon. Want to see?"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Donald: Am coborât aici să-mi arăt Pokémonii rari. Vrei să-i vezi?"
         ]
       },
       "after": {
@@ -42,7 +42,7 @@
           "Poké Maniac Donald: Rare doesn't mean strong, does it..."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Donald: Rar nu înseamnă puternic, nu?"
         ]
       }
     },
@@ -52,7 +52,7 @@
           "Teru"
         ],
         "text": [
-          ""
+          "Teru"
         ]
       },
       "before": {
@@ -60,7 +60,7 @@
           "Super Nerd Teru: I've worked out every type matchup there is. You don't stand a chance!"
         ],
         "text": [
-          ""
+          "Tocilar Teru: Am calculat toate avantajele de tip. N-ai nicio șansă!"
         ]
       },
       "after": {
@@ -68,7 +68,7 @@
           "Super Nerd Teru: My sums were right. My Pokémon just didn't follow them."
         ],
         "text": [
-          ""
+          "Tocilar Teru: Calculele mele erau corecte. Doar Pokémonii mei nu le-au urmat."
         ]
       }
     },
@@ -78,7 +78,7 @@
           "Issac"
         ],
         "text": [
-          ""
+          "Issac"
         ]
       },
       "before": {
@@ -86,7 +86,7 @@
           "Poké Maniac Issac: My Pokémon get the best grooming in the city, right here underground!"
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Issac: Pokémonii mei au cea mai bună toaletare din oraș, chiar aici, sub pământ!"
         ]
       },
       "after": {
@@ -94,7 +94,7 @@
           "Poké Maniac Issac: At least they lost looking their best."
         ],
         "text": [
-          ""
+          "Pasionat Pokémon Issac: Măcar au pierdut arătând perfect."
         ]
       }
     },
@@ -104,7 +104,7 @@
           "Eric"
         ],
         "text": [
-          ""
+          "Eric"
         ]
       },
       "before": {
@@ -112,7 +112,7 @@
           "Super Nerd Eric: I'm waiting for the shops to open. A battle will pass the time!"
         ],
         "text": [
-          ""
+          "Tocilar Eric: Aștept să se deschidă magazinele. O luptă mai face timpul să treacă!"
         ]
       },
       "after": {
@@ -120,7 +120,7 @@
           "Super Nerd Eric: That passed the time quicker than I wanted."
         ],
         "text": [
-          ""
+          "Tocilar Eric: Timpul a trecut mai repede decât voiam."
         ]
       }
     }
@@ -131,7 +131,7 @@
         "STAFF ONLY BEYOND THIS DOOR"
       ],
       "text": [
-        ""
+        "DOAR PERSONAL DINCOLO DE UȘA ASTA"
       ]
     }
   }

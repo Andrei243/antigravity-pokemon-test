@@ -1533,4 +1533,64 @@ public class FieldLifeTests
         // The dark it and the others close to is never pure black
         Assert.True(SceneTransition.Dark.R > 0 && SceneTransition.Dark.B > SceneTransition.Dark.R);
     }
+
+    /// <summary>Plan 21 · H6, part c; style guide, "Life", "Planks that give": change the numbers there first.</summary>
+    [Fact]
+    public void ThePlankNumbersAreTheStyleGuides()
+    {
+        Assert.Equal((0.07f, 0.13f, 0.20f), (FieldLife.PlankDropEnds, FieldLife.PlankSpringEnds, FieldLife.PlankShiverEnds));
+        Assert.Equal((1, 2), (FieldLife.PlankRest, FieldLife.PlankDrop));
+        Assert.Equal(2, FieldLife.PlankDipAt(0f));
+        Assert.Equal(2, FieldLife.PlankDipAt(0.06f));
+        Assert.Equal(1, FieldLife.PlankDipAt(0.07f));
+        Assert.Equal(1, FieldLife.PlankDipAt(0.12f));
+        Assert.Equal(2, FieldLife.PlankDipAt(0.13f));
+        Assert.Equal(2, FieldLife.PlankDipAt(0.19f));
+        Assert.Equal(1, FieldLife.PlankDipAt(0.20f));
+        Assert.Equal(1, FieldLife.PlankDipAt(30f));
+    }
+
+    [Fact]
+    public void OnlyHoennsBridgesGiveUnderFoot()
+    {
+        // Emerald's deck is a behaviour of its own; Sinnoh's decks share ours and must stay still
+        var hoenn = new Map(9, 9) { Name = "Hoenn" };
+        hoenn.SetBehaviour(4, 4, TileBehavior.Bridge);
+        var sinnoh = new Map(9, 9) { Name = "Sinnoh" };
+        sinnoh.SetBehaviour(4, 4, TileBehavior.Bridge);
+
+        Assert.True(FieldLife.IsPlank(hoenn, 4, 4));
+        Assert.False(FieldLife.IsPlank(hoenn, 3, 4));
+        Assert.False(FieldLife.IsPlank(hoenn, -1, 4));
+        Assert.False(FieldLife.IsPlank(sinnoh, 4, 4));
+        Assert.Equal(0, new FieldLife().PlankRows(sinnoh, 4.5f, 4.5f));
+    }
+
+    [Fact]
+    public void AWalkerOnAPlankDropsSpringsAndSettlesAndDropsAgainOnTheNext()
+    {
+        var map = new Map(9, 9) { Name = "Hoenn" };
+        map.SetBehaviour(4, 4, TileBehavior.Bridge);
+        map.SetBehaviour(5, 4, TileBehavior.Bridge);
+        var life = new FieldLife();
+
+        // Off the planks nothing is lowered
+        Assert.Equal(0, life.PlankRows(map, 2.5f, 4.5f));
+
+        // Feet come onto the first plank: down at once, then up, down again, and at rest a row lower than off the planks
+        Assert.Equal(FieldLife.PlankDrop, life.PlankRows(map, 4.5f, 4.5f));
+        Run(life, 0.1f);
+        Assert.Equal(FieldLife.PlankRest, life.PlankRows(map, 4.5f, 4.5f));
+        Run(life, 0.06f);
+        Assert.Equal(FieldLife.PlankDrop, life.PlankRows(map, 4.5f, 4.5f));
+        Run(life, 0.2f);
+        Assert.Equal(FieldLife.PlankRest, life.PlankRows(map, 4.5f, 4.5f));
+
+        // The next plank gives again, though the walker never left the bridge
+        Assert.Equal(FieldLife.PlankDrop, life.PlankRows(map, 5.5f, 4.5f));
+
+        // Off the bridge and back on is a new step
+        Assert.Equal(0, life.PlankRows(map, 6.5f, 4.5f));
+        Assert.Equal(FieldLife.PlankDrop, life.PlankRows(map, 5.5f, 4.5f));
+    }
 }

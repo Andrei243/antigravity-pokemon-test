@@ -1,17 +1,20 @@
 {
   // The Blackthorn Gym (plan 20 · J10), HeartGold's room: its guide by the door and five trainers by their own records.
-  // Clair, and the boulders that make a way over its lava, wait for plan 20 · J11
+  // Since plan 20 · J11, part c Clair at the back, the guide's welcome (trigger 3), the panels back to the door
+  // (triggers 0 to 2) and the slabs that carry the player over the lava (world.json's puzzle, BlackthornPlatforms;
+  // scripts/blackthorn_gym.txt). HeartGold hides Clair by a flag set only while she is out for her rematches after the
+  // Hall of Fame, which this game has not yet: she is always home
   "area": "blackthorn_gym",
   "bgmTrack": "johto/gym",
+  "triggers": [
+    { "trigger": 0, "script": "BackToTheDoor" },
+    { "trigger": 1, "script": "BackToTheDoor" },
+    { "trigger": 2, "script": "BackToTheDoor" },
+    { "trigger": 3, "script": "Guide" }
+  ],
   "people": {
-    "t30gym0101_sunglasses": {
-      "name": "Gym Guide",
-      "still": true,
-      "dialog": [
-        "Clair uses dragons, the toughest Pokémon around. Ice moves are your best bet against them!",
-        "Clair isn't taking challengers just now. Her trainers are, though!"
-      ]
-    },
+    "t30gym0101_gsleader8": { "name": "Clair", "script": "Clair", "still": true, "hiddenBy": "" },
+    "t30gym0101_sunglasses": { "name": "Gym Guide", "script": "GuideTalk", "still": true },
     "t30gym0101_gsman3": {
       "name": "Paulo",
       "trainer": {

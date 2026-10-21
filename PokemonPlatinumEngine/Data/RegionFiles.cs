@@ -96,6 +96,13 @@ public sealed class RegionFile
     /// <summary>Whether a new game here begins with the region's story (Sinnoh's: the player's room, with nothing).</summary>
     public bool HasStory { get; set; }
 
+    /// <summary>
+    /// Whether the region's places change with the seasons (plan 22 · U2: Unova's, whose wild Pokémon and some of whose
+    /// chunks go by the month, <see cref="AreaSeason"/>). No other region has seasons, and nothing reads it yet but the
+    /// tests: plan 22 · U3 hands the season to the encounters and the chunks.
+    /// </summary>
+    public bool HasSeasons { get; set; }
+
     /// <summary>The name the introduction offers for the rival; null where the region's rival is its other hero.</summary>
     public string? Rival { get; set; }
 

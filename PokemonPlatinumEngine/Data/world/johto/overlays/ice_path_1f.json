@@ -1,7 +1,14 @@
 {
-  // The Ice Path's first floor (plan 20 · J10): from Route 44 to Blackthorn City, with two ways down. The man who gives
-  // HM07, the Kimono Girl lost in the cold and its boulder puzzle's story wait for plan 20 · J11
+  // The Ice Path's first floor (plan 20 · J10): from Route 44 to Blackthorn City, with two ways down. Since plan 20 ·
+  // J11, part c the man by HM07, who notices the player coming (trigger 0), and the Kimono Girl stuck on the ice
+  // (scripts/ice_path_1f.txt)
   "area": "ice_path_1f",
   "bgmTrack": "johto/ice_path",
-  "people": {}
+  "people": {
+    "d39r0101_gsmiddleman1": { "name": "Man", "script": "Man", "still": true },
+    "d39r0101_dancer": { "name": "Kimono Girl", "script": "KimonoGirl", "still": true }
+  },
+  "triggers": [
+    { "trigger": 0, "script": "Noticed" }
+  ]
 }

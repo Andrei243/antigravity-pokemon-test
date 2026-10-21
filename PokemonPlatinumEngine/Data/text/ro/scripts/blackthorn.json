@@ -1,0 +1,82 @@
+{
+  "GymGuard": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "I'm sorry. Clair, our Leader, has gone into the Dragon's Den behind the Gym, and nobody knows when she'll be back."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "GymGuardAside": [
+    {
+      "en": [
+        "Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "Clair is waiting for challengers. Just don't expect an ordinary trainer to stand a chance against her."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "You beat Clair? That's incredible! I've never heard of anyone doing that except Lance."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DenGuard": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "No, no. Only trainers who have been chosen may go into the Den. Please turn back."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ],
+  "DenGuardAside": [
+    {
+      "en": [
+        "Old Man"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    {
+      "en": [
+        "If Clair agrees to it, so will her grandfather, our elder. Go on in."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  ]
+}

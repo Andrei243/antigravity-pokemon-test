@@ -6,7 +6,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -14,7 +14,7 @@
           "Grunt: A kid, down here? Somebody's let you wander a long way from home."
         ],
         "text": [
-          ""
+          "Grunt: Un copil, aici jos? Cineva te-a lăsat să te rătăcești departe de casă."
         ]
       },
       "after": {
@@ -22,7 +22,7 @@
           "Grunt: Fine, go on, get lost in the shutters for all I care."
         ],
         "text": [
-          ""
+          "Grunt: Bine, hai, pierde-te printre oblonuri, nu-mi pasă."
         ]
       }
     },
@@ -32,7 +32,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -40,7 +40,7 @@
           "Grunt: These passages are ours now. Turn round!"
         ],
         "text": [
-          ""
+          "Grunt: Pasajele astea sunt ale noastre acum. Întoarce-te!"
         ]
       },
       "after": {
@@ -48,7 +48,7 @@
           "Grunt: Ours... for about another minute, it seems."
         ],
         "text": [
-          ""
+          "Grunt: Ale noastre... încă vreun minut, se pare."
         ]
       }
     },
@@ -58,7 +58,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -66,7 +66,7 @@
           "Grunt: The switches? Don't you dare touch them!"
         ],
         "text": [
-          ""
+          "Grunt: Comutatoarele? Să nu îndrăznești să le atingi!"
         ]
       },
       "after": {
@@ -74,7 +74,7 @@
           "Grunt: Go on, then. See if you can make sense of them."
         ],
         "text": [
-          ""
+          "Grunt: Hai, atunci. Vezi dacă le pricepi."
         ]
       }
     },
@@ -84,7 +84,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -92,7 +92,7 @@
           "Grunt: Nobody goes near the warehouse. Boss's orders!"
         ],
         "text": [
-          ""
+          "Grunt: Nimeni nu se apropie de depozit. Ordinul șefului!"
         ]
       },
       "after": {
@@ -100,7 +100,7 @@
           "Grunt: The boss isn't going to like this one bit."
         ],
         "text": [
-          ""
+          "Grunt: Șefului nu-i va plăcea deloc asta."
         ]
       }
     },
@@ -110,7 +110,7 @@
           "Orson"
         ],
         "text": [
-          ""
+          "Orson"
         ]
       },
       "before": {
@@ -118,7 +118,7 @@
           "Burglar Orson: With Team Rocket keeping everyone busy, a fellow can pick up all sorts down here."
         ],
         "text": [
-          ""
+          "Hoț Orson: Cu Echipa Rocket ținând pe toată lumea ocupată, un tip găsește tot felul de lucruri pe aici."
         ]
       },
       "after": {
@@ -126,7 +126,7 @@
           "Burglar Orson: I'll find something else to pick up. Not a fight, though."
         ],
         "text": [
-          ""
+          "Hoț Orson: Voi găsi altceva de luat. Dar nu o luptă."
         ]
       }
     },
@@ -136,7 +136,7 @@
           "Duncan"
         ],
         "text": [
-          ""
+          "Duncan"
         ]
       },
       "before": {
@@ -144,7 +144,7 @@
           "Burglar Duncan: Hand over your money and nobody needs to battle!"
         ],
         "text": [
-          ""
+          "Hoț Duncan: Dă banii și nimeni nu trebuie să lupte!"
         ]
       },
       "after": {
@@ -152,7 +152,7 @@
           "Burglar Duncan: I should have just stuck to the shops."
         ],
         "text": [
-          ""
+          "Hoț Duncan: Trebuia să mă țin de magazine."
         ]
       }
     },
@@ -162,7 +162,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -170,7 +170,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -180,7 +180,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -188,7 +188,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -198,7 +198,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -206,7 +206,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -216,7 +216,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -224,7 +224,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -234,7 +234,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -242,7 +242,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -252,7 +252,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -260,7 +260,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -270,7 +270,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -278,7 +278,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -288,7 +288,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -296,7 +296,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -306,7 +306,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -314,7 +314,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -324,7 +324,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -332,7 +332,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -342,7 +342,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -350,7 +350,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -360,7 +360,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -368,7 +368,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -378,7 +378,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -386,7 +386,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -396,7 +396,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -404,7 +404,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -414,7 +414,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -422,7 +422,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -432,7 +432,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -440,7 +440,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -450,7 +450,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -458,7 +458,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -468,7 +468,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -476,7 +476,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -486,7 +486,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -494,7 +494,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -504,7 +504,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -512,7 +512,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -522,7 +522,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -530,7 +530,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -540,7 +540,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -548,7 +548,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -558,7 +558,7 @@
           "Shutter"
         ],
         "text": [
-          ""
+          "Oblon"
         ]
       },
       "dialog": {
@@ -566,7 +566,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     },
@@ -576,7 +576,7 @@
           "{rival}"
         ],
         "text": [
-          ""
+          "{rival}"
         ]
       },
       "dialog": {
@@ -584,7 +584,7 @@
           "..."
         ],
         "text": [
-          ""
+          "..."
         ]
       }
     }

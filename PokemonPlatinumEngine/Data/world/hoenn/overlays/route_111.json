@@ -4,8 +4,8 @@
   // sandstorm (its zones, by the rows and columns Emerald's sandstorm and sun triggers mark) that nobody crosses without
   // Go-Goggles: its edge's triggers turn the player back (route_111.txt). Mirage Tower stands in the sand until its fossil
   // is taken and it falls (plan 21 · H4, part b: FLAG_HOENN_MIRAGE_TOWER_FALLEN shuts its way in); the Desert Ruins stay
-  // shut until the Regis' riddles and the Trainer Hill's door until its own session; Gabby and Ty's interview is left
-  // for later (they are hidden)
+  // shut until the Regis' riddles and the Trainer Hill's door until its own session; Gabby and Ty come by turns on this
+  // route, 118 and 120 (plan 21 · H6, part c: GabbyAndTyUpdateLocation in common.txt)
   "area": "route_111",
   "bgmTrack": "hoenn/route110",
   "trees": "Round",
@@ -28,6 +28,12 @@
     { "trigger": 15, "script": "PushBackLeft" }
   ],
   "people": {
+    "route111_ty_1": { "name": "Ty", "script": "GabbyAndTyTy", "still": true },
+    "route111_gabby_1": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },
+    "route111_gabby_2": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },
+    "route111_ty_2": { "name": "Ty", "script": "GabbyAndTyTy", "still": true },
+    "route111_gabby_3": { "name": "Gabby", "script": "GabbyAndTyGabby", "still": true },
+    "route111_ty_3": { "name": "Ty", "script": "GabbyAndTyTy", "still": true },
     "route111_victor": { "name": "Victor", "script": "Victor", "still": true },
     "route111_victoria": { "name": "Victoria", "still": true, "dialog": [ "The whole family battles! It's how we spend our evenings." ] },
     "route111_vivi": { "name": "Vivi", "still": true, "dialog": [ "I'm the youngest, but I'm not the weakest!" ] },

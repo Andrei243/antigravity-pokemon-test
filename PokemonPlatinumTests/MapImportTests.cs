@@ -1265,11 +1265,236 @@ public class Bw2ImportTests
         Assert.True(known);
         Assert.Equal(TerrainCover.Cliff, Bw2Cover.OfTexture("gake_02", out _));
         Assert.Equal(TerrainCover.Tree, Bw2Cover.OfTexture("ki03", out _));
-        Assert.Equal(TerrainCover.TallGrass, Bw2Cover.OfTexture("kusa_01", out _));
+        // A plain kusa texture is the lawn: the long grass is nagakusa, and grass Pokémon live in is told by its behaviour (plan 22 · U2)
+        Assert.Equal(TerrainCover.Grass, Bw2Cover.OfTexture("kusa_01", out _));
+        Assert.Equal(TerrainCover.TallGrass, Bw2Cover.OfTexture("nagakusa_01", out _));
         Assert.Null(Bw2Cover.OfTexture("kage_01", out known));
         Assert.True(known);
         Assert.Equal(TerrainCover.Water, Bw2Cover.OfTile(Bw2Behaviours.Of(0x3F)));
         Assert.Equal(TerrainCover.TallGrass, Bw2Cover.OfTile(Bw2Behaviours.Of(0x06)));
         Assert.Equal(TerrainCover.Unknown, Bw2Cover.OfTile(TileBehavior.None));
+    }
+
+    // ---------------------------------------------------------------- plan 22 · U2: where the textures lie
+
+    [Fact]
+    public void AChunksTrianglesSayWhichTextureLiesOverEachTileAndWhatRisesAboveIt()
+    {
+        // Two tiles side by side (a grid of 2 × 1, its middle the model's origin, sixteen units to a tile): a level quad of
+        // path over both at the walking height, and a level square of leaves forty units up over the east tile alone
+        var bin = new MemoryStream();
+        void F(float v) { Span<byte> b = stackalloc byte[4]; BinaryPrimitives.WriteSingleLittleEndian(b, v); bin.Write(b); }
+        void S(ushort v) { Span<byte> b = stackalloc byte[2]; BinaryPrimitives.WriteUInt16LittleEndian(b, v); bin.Write(b); }
+        foreach (var (x, y, z) in new[] { (-16f, 0f, -8f), (16f, 0f, -8f), (16f, 0f, 8f), (-16f, 0f, 8f), (0f, 40f, -8f), (16f, 40f, -8f), (16f, 40f, 8f), (0f, 40f, 8f) })
+        { F(x); F(y); F(z); }
+        foreach (ushort i in new ushort[] { 0, 1, 2, 0, 2, 3, 0, 1, 2, 0, 2, 3 }) S(i);
+        var binary = bin.ToArray();
+        const string json = """
+            {
+              "asset": { "version": "2.0" },
+              "images": [ { "uri": "textures/michi_01.png" }, { "uri": "ki03.png" } ],
+              "textures": [ { "source": 0 }, { "source": 1 } ],
+              "materials": [ { "pbrMetallicRoughness": { "baseColorTexture": { "index": 0 } } }, { "pbrMetallicRoughness": { "baseColorTexture": { "index": 1 } } } ],
+              "meshes": [ { "primitives": [ { "attributes": { "POSITION": 0 }, "indices": 1, "material": 0 }, { "attributes": { "POSITION": 2 }, "indices": 3, "material": 1 } ] } ],
+              "nodes": [ { "name": "terrain", "mesh": 0 } ],
+              "buffers": [ { "byteLength": 120 } ],
+              "bufferViews": [ { "buffer": 0, "byteOffset": 0, "byteLength": 96 }, { "buffer": 0, "byteOffset": 96, "byteLength": 24 } ],
+              "accessors": [
+                { "bufferView": 0, "componentType": 5126, "count": 4, "type": "VEC3" },
+                { "bufferView": 1, "componentType": 5123, "count": 6, "type": "SCALAR" },
+                { "bufferView": 0, "byteOffset": 48, "componentType": 5126, "count": 4, "type": "VEC3" },
+                { "bufferView": 1, "byteOffset": 12, "componentType": 5123, "count": 6, "type": "SCALAR" }
+              ]
+            }
+            """;
+        var triangles = Bw2Geometry.Read(Glb(json, binary, binary.Length));
+        Assert.Equal(4, triangles.Count);
+        Assert.Equal(new[] { "michi_01", "michi_01", "ki03", "ki03" }, triangles.Select(t => t.Texture).ToArray());
+        Assert.Equal(new Vector3(0, 40, 8), triangles[3].C);
+
+        var layers = Bw2Geometry.LayersOver(triangles, 2, 1, (_, _, _) => 0f);
+        Assert.Equal(new[] { "michi_01", "michi_01" }, layers.Ground);
+        Assert.Equal(new string?[] { null, "ki03" }, layers.Above);
+        Assert.Equal(40f, layers.AboveHeight[1], 3);
+        // With nothing known of the walking surface, the topmost is the ground
+        Assert.Equal("ki03", Bw2Geometry.LayersOver(triangles, 2, 1, (_, _, _) => null).Ground[1]);
+        // A wall covers no tile
+        var wall = new Bw2Geometry.Triangle("kabe", new Vector3(-16, 0, 0), new Vector3(16, 0, 0), new Vector3(16, 16, 0));
+        Assert.All(Bw2Geometry.LayersOver(new[] { wall }, 2, 1, (_, _, _) => 0f).Ground, Assert.Null);
+    }
+
+    // ---------------------------------------------------------------- plan 22 · U2: events, encounters, trainers
+
+    // A zone's events in the decompilation's shape: a person, one on a rail (no grid), a warp whose grid is in sixteenths of
+    // a tile, a sign whose grid is x, the row and the height, and a trigger
+    private const string EventsSource = """
+        {
+          "npcs": [
+            { "id": 3, "model": "OBJ_CODE_YOUNGSTER", "movement": 3, "type": 0, "flag": "EVENT_FLAG_0x02e9", "script": 3012,
+              "direction": "DIR_LEFT", "params": [ 0, 2, 0 ], "area": { "width": 2, "height": 1 }, "grid": { "x": 12, "z": 7, "y": 0 } },
+            { "id": 4, "model": "OBJ_CODE_HIKER", "movement": 0, "script": 1, "rail": { "line": 2 } }
+          ],
+          "warps": [ { "zone": "ZONE_ASPERTIA_GATE", "warp": 1, "grid": { "x": 160, "z": 48, "y": 0, "width": 2, "height": 1 } } ],
+          "bg_events": [ { "script": 8004, "condition": 2, "grid": { "x": 5, "y": 9, "z": 1 } } ],
+          "triggers": [ { "script": 20, "var": "EVENT_WORK_0x40a1", "value": 1, "grid": { "x": 3, "z": 4, "width": 0, "height": 2 } } ]
+        }
+        """;
+
+    [Fact]
+    public void AZonesEventsAreReadWithTheirTilesAndTheRailsLeftOut()
+    {
+        var events = Bw2Events.Parse(EventsSource);
+        var person = Assert.Single(events.Npcs);
+        Assert.Equal((3, "youngster", 12, 7), (person.Id, person.Looks, person.X, person.Z));
+        Assert.Equal(("EVENT_FLAG_0x02e9", 3012, "DIR_LEFT", 2, 1), (person.Flag, person.Script, person.Direction, person.RangeX, person.RangeZ));
+        // A warp's grid is in sixteenths of a tile
+        var warp = Assert.Single(events.Warps);
+        Assert.Equal(("ZONE_ASPERTIA_GATE", 1, 10, 3, 2, 1), (warp.Zone, warp.To, warp.X, warp.Z, warp.Width, warp.Height));
+        // A sign's row is the grid's y, and a hidden item's condition is 2
+        var sign = Assert.Single(events.Signs);
+        Assert.Equal((8004, Bw2Events.Hidden, 5, 9, 1), (sign.Script, sign.Condition, sign.X, sign.Z, sign.Y));
+        var trigger = Assert.Single(events.Triggers);
+        Assert.Equal(("EVENT_WORK_0x40a1", 1, 3, 4, 1, 2), (trigger.Var, trigger.Value, trigger.X, trigger.Z, trigger.Width, trigger.Depth));
+        Assert.Empty(Bw2Events.Parse("{}").Warps);
+    }
+
+    [Fact]
+    public void UnovasFlagsAndVariablesCarryTheRegionsName()
+    {
+        Assert.Equal("FLAG_UNOVA_0x02e9", Bw2Events.Flag("EVENT_FLAG_0x02e9"));
+        Assert.Equal("FLAG_UNOVA_0x0bc4", Bw2Events.Flag(0xbc4));
+        Assert.Equal("FLAG_UNOVA_SOMETHING", Bw2Events.Flag("FLAG_SOMETHING"));
+        Assert.Equal("VAR_UNOVA_0x40a1", Bw2Events.Var("EVENT_WORK_0x40a1"));
+        // The movements as Platinum's words, a path of its own standing still; the facings as the area files keep them
+        Assert.Equal("wander_around", Bw2Events.Movement(3));
+        Assert.Equal("wander_west_and_east", Bw2Events.Movement(5));
+        Assert.Equal("look_around", Bw2Events.Movement(2));
+        Assert.Equal("none", Bw2Events.Movement(30));
+        Assert.Equal((0, 1, 2, 3), (Bw2Events.Facing("DIR_UP"), Bw2Events.Facing("DIR_DOWN"), Bw2Events.Facing("DIR_LEFT"), Bw2Events.Facing("DIR_RIGHT")));
+        // Every flag and variable the open areas' files name is Unova's own
+        foreach (string file in Directory.GetFiles(GameDataFiles.PathOf(Path.Combine(World.Folder, "unova", "areas")), "*.json"))
+        {
+            var area = GameDataFiles.Load<WorldAreaFile>(Path.Combine(World.Folder, "unova", "areas", Path.GetFileName(file)));
+            foreach (var o in area.Objects.Where(o => o.HiddenBy != null)) Assert.StartsWith("FLAG_UNOVA_", o.HiddenBy);
+            foreach (var t in area.Triggers.Where(t => !string.IsNullOrEmpty(t.Variable))) Assert.StartsWith("VAR_UNOVA_", t.Variable);
+        }
+    }
+
+    [Fact]
+    public void TheGlobalScriptsSayWhatEachBallAndHiddenItemSets()
+    {
+        const string source = """
+            Script_1:
+                WorkSetConst 0x800c, 17
+                WorkSetConst 0x800d, 1
+                CallStd 0
+            Script_2:
+                End
+            Script_3:
+                WorkSet 0x8000, 213
+                WorkSet 0x8001, 1
+                WorkSet 0x8002, 3012
+            """;
+        var scripts = Bw2Events.GlobalScripts(source);
+        Assert.Equal(new[] { 0, 2 }, scripts.Keys.OrderBy(k => k).ToArray());
+        Assert.Equal(17, scripts[0][0x800c]);
+        Assert.Equal(1, scripts[0][0x800d]);
+        Assert.Equal(3012, scripts[2][0x8002]);
+    }
+
+    // A zone's tables: spring with a grass table Black 2 and White 2 share and a dark grass one they don't; summer with
+    // its own grass
+    private const string EncounterSource = """
+        {
+          "spring": {
+            "rates": { "grass": 1, "dark_grass": 2, "surf": 0 },
+            "grass": [ [ "SPECIES_PATRAT", 2, 2 ], [ "SPECIES_PURRLOIN", 2, 4 ] ],
+            "dark_grass": { "black2": [ [ "SPECIES_SEWADDLE", 5, 5 ] ], "white2": [ [ "SPECIES_VENIPEDE", 5, 5 ] ] }
+          },
+          "summer": { "rates": { "grass": 2 }, "grass": [ [ "SPECIES_SUNKERN", 3, 3 ] ] },
+          "autumn": { "rates": { "grass": 1 }, "grass": [ [ "SPECIES_PATRAT", 2, 2 ] ] }
+        }
+        """;
+
+    [Fact]
+    public void AZonesTablesAreReadBySeasonAndBlack2sOwnWhereTheVersionsDiffer()
+    {
+        var tables = Bw2Encounters.Parse(EncounterSource);
+        Assert.True(tables.Seasonal);
+        Assert.Equal(new[] { "spring", "summer", "autumn" }, tables.BySeason.Select(s => s.Name).ToArray());
+        var spring = tables.BySeason[0];
+        Assert.Equal(1, spring.Rates["grass"]);
+        Assert.Equal("SPECIES_SEWADDLE", Assert.Single(spring.Tables["dark_grass"]).Species);
+        var problems = new List<string>();
+        var grass = Bw2Encounters.Slots(spring, "grass", range: false, weights: null, "test", problems)!;
+        Assert.Empty(problems);
+        Assert.Equal(("Patrat", 2, (int?)null), (grass[0].Species, grass[0].Level, grass[0].MaxLevel));
+        Assert.Equal(("Purrloin", 2, (int?)4), (grass[1].Species, grass[1].Level, grass[1].MaxLevel));
+        Assert.Null(Bw2Encounters.Slots(spring, "surf", range: true, Bw2Encounters.RodWeights, "test", problems));
+        var rods = Bw2Encounters.Slots(spring, "grass", range: true, Bw2Encounters.RodWeights, "test", problems)!;
+        Assert.Equal((60, 30), (rods[0].Weight, rods[1].Weight));
+        Assert.Equal(2, rods[0].MaxLevel);
+        // A species the data doesn't have is told of
+        var none = new Bw2Encounters.Season { Name = "spring" };
+        none.Tables["grass"] = new() { ("SPECIES_NOBODY", 1, 1) };
+        Bw2Encounters.Slots(none, "grass", false, null, "here", problems);
+        Assert.Single(problems);
+        // A zone the same all year is spring alone
+        Assert.False(Bw2Encounters.Parse("""{ "all_year": { "rates": { "grass": 1 }, "grass": [ [ "SPECIES_PATRAT", 2, 2 ] ] } }""").Seasonal);
+        // The game's rate is the row's largest number; none for a setting of nought or past the table
+        Assert.Equal(13, Bw2Encounters.Rate(1));
+        Assert.Equal(19, Bw2Encounters.Rate(2));
+        Assert.Null(Bw2Encounters.Rate(0));
+        Assert.Null(Bw2Encounters.Rate(13));
+        Assert.Equal(100, Bw2Encounters.RodWeights.Sum());
+    }
+
+    [Fact]
+    public void ASeasonsTablesGoThroughTheAreasFileAndBack()
+    {
+        var area = new WorldAreaFile
+        {
+            Key = "unova_route_20", Name = "Route 20",
+            Land = new() { new AreaEncounter { Species = "Pidove", Level = 2 } }, LandRate = 13,
+            DarkGrass = new() { new AreaEncounter { Species = "Venipede", Level = 3, MaxLevel = 4 } }, DarkGrassRate = 13,
+            Seasons = new()
+            {
+                new AreaSeason
+                {
+                    Season = "Summer", LandRate = 19, Land = new() { new AreaEncounter { Species = "Sunkern", Level = 3 } },
+                    RipplingRod = new() { new AreaEncounter { Species = "Basculin", Level = 10, MaxLevel = 20, Weight = 60 } }, RipplingRodRate = 10
+                }
+            }
+        };
+        var back = GameDataFiles.Deserialize<WorldAreaFile>(GameDataFiles.Serialize(area))!;
+        Assert.Equal("Venipede", Assert.Single(back.DarkGrass!).Species);
+        Assert.Equal(4, back.DarkGrass![0].MaxLevel);
+        var summer = Assert.Single(back.Seasons!);
+        Assert.Equal(("Summer", (int?)19, "Sunkern"), (summer.Season, summer.LandRate, summer.Land![0].Species));
+        Assert.Equal((60, (int?)10), (summer.RipplingRod![0].Weight, summer.RipplingRodRate));
+        Assert.Null(summer.Water);
+        // An area the same all year writes no seasons at all
+        Assert.DoesNotContain("seasons", GameDataFiles.Serialize(new WorldAreaFile { Key = "aspertia_city" }));
+    }
+
+    [Fact]
+    public void UnovasKeysAndTrainerClassesAreOurs()
+    {
+        Assert.Equal("aspertia_city", Bw2World.KeyOf("ZONE_ASPERTIA_CITY"));
+        Assert.Equal("unova_route_19", Bw2World.KeyOf("ZONE_ROUTE_19"));
+        Assert.Equal("unova_victory_road", Bw2World.KeyOf("ZONE_VICTORY_ROAD"));
+        Assert.Equal("Pokémon Ranger", Bw2World.ClassName("TRAINER_CLASS_PKMN_RANGER_M"));
+        Assert.Equal("Youngster", Bw2World.ClassName("TRAINER_CLASS_YOUNGSTER"));
+        // Nothing the importer writes for Unova carries the decompilation's message ids, which are made of the original's
+        // words: a person's lines are their overlay's, in our own
+        foreach (string folder in new[] { "areas", "overlays" })
+            foreach (string file in Directory.GetFiles(GameDataFiles.PathOf(Path.Combine(World.Folder, "unova", folder)), "*.json"))
+            {
+                string text = File.ReadAllText(file);
+                Assert.DoesNotContain("_Text_", text);
+                Assert.DoesNotContain("msg_", text);
+            }
+        string trainers = File.ReadAllText(GameDataFiles.PathOf(Path.Combine(World.Folder, "unova", "trainers.json")));
+        Assert.DoesNotContain("\"messages\"", trainers);
     }
 }

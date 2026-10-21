@@ -1,0 +1,35 @@
+{
+  // Floccesy Town's Pokémon Center (plan 22 · U2): the same floor as Aspertia's, with the town's own people
+  "area": "floccesy_town_pokemon_center",
+  "bgmTrack": "common/pokecenter",
+  "read": { "2108": "PC" },
+  "people": {
+    "2": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "3": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "4": {
+      "name": "Old Woman",
+      "npcType": "Lady",
+      "dialog": [ "Floccesy is a quiet town, but people come from all over to see the ranch's Pokémon." ]
+    },
+    "5": {
+      "name": "Receptionist",
+      "npcType": "Nurse",
+      "dialog": [ "I'm sorry, the link to other players is closed for now." ]
+    },
+    "6": { "name": "Nurse", "npcType": "Nurse", "script": "Nurse", "isHealingNurse": true },
+    "7": { "name": "Clerk", "npcType": "Clerk", "script": "Clerk", "dialog": [ "Welcome! How can I help you?" ] },
+    "8": {
+      "name": "Man",
+      "npcType": "Gentleman",
+      "dialog": [ "Route 20 is lovely this time of year. Mind the Trainers in the tall grass, though." ]
+    },
+    "9": {
+      "name": "Schoolgirl",
+      "dialog": [ "My Pokémon fainted on Route 20, so I ran all the way back here. Never again without Potions!" ]
+    },
+    "10": {
+      "name": "Boy",
+      "dialog": [ "The ranch to the north has loads of Pokémon. The owners let you walk among them." ]
+    }
+  }
+}

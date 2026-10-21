@@ -6,7 +6,7 @@
           "Director"
         ],
         "text": [
-          ""
+          "Director"
         ]
       }
     },
@@ -16,7 +16,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -24,7 +24,7 @@
           "Grunt: Nobody's coming for the old man, kid. Least of all you!"
         ],
         "text": [
-          ""
+          "Grunt: Nimeni nu vine după bătrân. Cu atât mai puțin tu!"
         ]
       },
       "after": {
@@ -32,7 +32,7 @@
           "Grunt: Well, somebody came for him after all."
         ],
         "text": [
-          ""
+          "Grunt: Ei bine, totuși a venit cineva după el."
         ]
       }
     },
@@ -42,7 +42,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -50,7 +50,7 @@
           "Grunt: I'm guarding a crate of nothing. Battling you beats that!"
         ],
         "text": [
-          ""
+          "Grunt: Păzesc o ladă cu nimic. O luptă cu tine e mai bună!"
         ]
       },
       "after": {
@@ -58,7 +58,7 @@
           "Grunt: Back to the crates, then."
         ],
         "text": [
-          ""
+          "Grunt: Înapoi la lăzi, atunci."
         ]
       }
     },
@@ -68,7 +68,7 @@
           "Grunt"
         ],
         "text": [
-          ""
+          "Grunt"
         ]
       },
       "before": {
@@ -76,7 +76,7 @@
           "Grunt: The real Director's locked up in here. Whoever's upstairs in his chair, it isn't him!"
         ],
         "text": [
-          ""
+          "Grunt: Adevăratul Director e încuiat aici. Cine stă sus în scaunul lui, nu e el!"
         ]
       },
       "after": {
@@ -84,7 +84,7 @@
           "Grunt: I've said too much, haven't I?"
         ],
         "text": [
-          ""
+          "Grunt: Am spus prea mult, nu-i așa?"
         ]
       }
     }

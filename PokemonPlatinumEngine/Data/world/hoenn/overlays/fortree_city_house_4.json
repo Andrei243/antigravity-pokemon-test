@@ -1,9 +1,11 @@
 {
-  // A house of Fortree City (plan 21 · H6): a boy waiting for his Wingull to come back from its errand, which is left for part b
+  // A house of Fortree City (plan 21 · H6): a boy who sends his Wingull off on an errand (Fortree's half of it, part c;
+  // Mossdeep's is plan 21 · H8's)
   "area": "fortree_city_house_4",
   "bgmTrack": "hoenn/fortree",
   "people": {
     "woman_4": { "name": "Woman", "dialog": [ "My son trained his Wingull to carry letters. It's such a clever bird!" ] },
-    "boy_3": { "name": "Boy", "dialog": [ "My Wingull flew off with a letter a while ago. I hope it comes back soon." ] }
+    "boy_3": { "name": "Boy", "script": "Boy", "still": true },
+    "fortree_house_wingull": { "name": "Wingull", "npcType": "Pokemon", "species": "Wingull", "script": "Wingull", "still": true }
   }
 }

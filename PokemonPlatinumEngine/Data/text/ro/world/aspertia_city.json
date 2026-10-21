@@ -1,0 +1,164 @@
+{
+  "people": {
+    "4": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Climb to the lookout at the top of town. On a clear day you can see halfway across Unova from there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "5": {
+      "name": {
+        "en": [
+          "Artist"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I come up here every morning to paint the hills. The light is never the same twice."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "6": {
+      "name": {
+        "en": [
+          "Youngster"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "That's the Trainers' School. The Gym is right behind it: you go through the school to get there."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "9": {
+      "name": {
+        "en": [
+          "Pokéfan"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "Aspertia is so high up that the clouds sometimes drift right down the street."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "10": {
+      "name": {
+        "en": [
+          "Woman"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "The gate in the north of town leads to Route 19. Wild Pokémon hide in the tall grass along it."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "11": {
+      "name": {
+        "en": [
+          "Boy"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "I'll be a Trainer as soon as I'm old enough. Then it's straight down the hill and off on a journey!"
+        ],
+        "text": [
+          ""
+        ]
+      }
+    },
+    "12": {
+      "name": {
+        "en": [
+          "Lass"
+        ],
+        "text": [
+          ""
+        ]
+      },
+      "dialog": {
+        "en": [
+          "If your Pokémon are tired, take them to the Pokémon Center. It heals them for free."
+        ],
+        "text": [
+          ""
+        ]
+      }
+    }
+  },
+  "signs": {
+    "14": {
+      "en": [
+        "TRAINER TIPS\nOpen the menu to check on your Pokémon\nand the things in your bag."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "15": {
+      "en": [
+        "{player}'s House"
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "16": {
+      "en": [
+        "Aspertia City\nA hillside town with a view that goes on forever."
+      ],
+      "text": [
+        ""
+      ]
+    },
+    "17": {
+      "en": [
+        "Aspertia City Trainers' School\nThe Gym is through the back of the school."
+      ],
+      "text": [
+        ""
+      ]
+    }
+  }
+}

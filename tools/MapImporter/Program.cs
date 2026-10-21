@@ -12,6 +12,7 @@
 //   dotnet run --project tools/MapImporter -- --game heartgold [--quick] [--data]   HeartGold's Johto and Kanto into out/johto, or Data/world/johto (plan 20 · J1)
 //   dotnet run --project tools/MapImporter -- --game heartgold --unknown <area>     the textures no rule sorts on an area's chunks, with counts (plan 20 · J8, part b)
 //   dotnet run --project tools/MapImporter -- --game black2 [--quick]    Black 2's Unova into out/unova: mosaics, a picture per area, report.md (plan 22 · U1)
+//   dotnet run --project tools/MapImporter -- --game black2 --data       rewrite what Data/world/unova/world.json opens (plan 22 · U2)
 //   dotnet run --project tools/MapImporter -- --game platinum  the same as no --game: Sinnoh
 //   dotnet run --project tools/MapImporter -- --chunk <id>    print which texture lies over each tile of a chunk (the names only), to sort a new area's ground by
 
@@ -29,7 +30,9 @@ bool quick = args.Contains("--quick");
 
 // Black 2 (plan 22 · U1): the third DS game, a decompilation of its own, out/unova/
 if (Arg("--game") is "black2" or "white2")
-    return MapImporter.Bw2.Bw2Import.Run(repo, decompDir, Path.Combine(outDir, MapImporter.Bw2.Bw2Import.Region), quick);
+    return args.Contains("--data")
+        ? MapImporter.Bw2.Bw2Import.Data(repo, decompDir, Arg("--data-dir"))
+        : MapImporter.Bw2.Bw2Import.Run(repo, decompDir, Path.Combine(outDir, MapImporter.Bw2.Bw2Import.Region), quick);
 
 // HeartGold (plan 20 · J1): the second DS game, its own pin, out/johto/
 if (Arg("--game") is "heartgold" or "soulsilver")

@@ -187,7 +187,9 @@ internal static class WorldWalk
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // A walkway of the Sunyshore Gym's gears that isn't there now is there once a button has turned them
                 // (GymTests searches the buttons; here every walkway counts as one that can be come to)
-                else if (step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears && mode == TravelMode.OnFoot
+                // and so is the Blackthorn Gym's lava, which its slabs carry the player over (BlackthornGymTests holds
+                // the slabs; here every tile of lava counts as one a slab can be brought under; plan 20 · J11, part c)
+                else if (step.Obstacle == Obstacle.Solid && map.Puzzle is SunyshoreGears or BlackthornPlatforms && mode == TravelMode.OnFoot
                          && map.InBounds(nx, ny) && !map.IsSolid(nx, ny) && MathF.Abs(map.HeightAt(nx, ny) - height) < FieldMovement.StepLimit)
                     Visit(map, nx, ny, mode, map.HeightAt(nx, ny), arrived: false);
                 // Someone who takes the player somewhere when spoken to (a ferry) is a way there too

@@ -1433,11 +1433,14 @@ public static class WorldMapBuilder
                 if (map.IsCave) (type, prop) = InACave(type, blocks, prop);
                 else if (map.IsVoid) (type, blocks, prop) = InTheVoid(cover, behaviour, solid, type, blocks, prop);
                 // A room's blocked texture that the cover's rules take for a fence (a rail along a DS room's back wall:
-                // Route 34's Day Care, Goldenrod's Underground, plan 20 · J5) is the room's wall, which builds no fence
-                else if (map.IsIndoors && prop == PropType.Fence) prop = null;
+                // Route 34's Day Care, Goldenrod's Underground, plan 20 · J5) is the room's wall, which builds no fence, and
+                // a light the rules take for a street's lamp is the room's own (Aspertia City's houses, plan 22 · U2)
+                else if (map.IsIndoors && prop is PropType.Fence or PropType.LampPost) prop = null;
                 // An area that isn't built yet is scenery: seen from its neighbours, entered by nobody
                 map.SetGroundTile(ox + x, oy + z, type, blocks || !area.Open);
-                if (cover is TerrainCover.Building or TerrainCover.Lamp && solid) under[(oy + z) * map.Width + ox + x] = true;
+                // (a DS room is cut to what its ways in reach, and the chunk's corner beyond it is no tile of the map:
+                // Black 2's rooms keep a wall's building texture there, plan 22 · U2)
+                if (cover is TerrainCover.Building or TerrainCover.Lamp && solid && map.InBounds(ox + x, oy + z)) under[(oy + z) * map.Width + ox + x] = true;
                 if (cover == TerrainCover.Unknown && !solid && type == TileType.Grass) vague.Add((ox + x, oy + z));
                 if (cover == TerrainCover.Unknown && solid && type == TileType.Tree) blank.Add((ox + x, oy + z));
                 if (prop is { } standing && (blocks || !area.Open)) map.Props.Add(new Prop { Type = standing, X = ox + x, Y = oy + z });
@@ -2156,7 +2159,8 @@ public static class WorldMapBuilder
         // (and Emerald's, plan 21 · H1)
         "cut_tree" or "tree" or "cuttable_tree" => PropType.CutTree,
         "rock_smash" or "breakrock" or "breakable_rock" => PropType.CrackedRock,
-        "strength_boulder" or "pushable_boulder" => PropType.StrengthBoulder,
+        // (HeartGold's boulder is "rock", plan 20 · J11, part c: its std_field_strength boulders were people till then)
+        "strength_boulder" or "pushable_boulder" or "rock" => PropType.StrengthBoulder,
         _ => null
     };
 

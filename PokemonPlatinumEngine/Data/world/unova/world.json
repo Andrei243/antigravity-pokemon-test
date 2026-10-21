@@ -1,0 +1,38 @@
+{
+  // What is built of Unova so far (plan 22). The maps are Black 2's, read by tools/MapImporter's third DS reader
+  // (plan 22 · U1, U2: --game black2) from fuddlesworth/pokebw2; "maps" are the maps the game makes from its matrices,
+  // "areas" the areas open to walk in. After adding an area, run `dotnet run --project tools/MapImporter -- --game black2
+  // --data` and write its overlay (overlays/<key>.json). Unova's keys are Black 2's zone constants without ZONE_, lower
+  // case (aspertia_city, floccesy_town), but a route's, Victory Road's and the League's take the region's name, since
+  // Kanto's routes have the same numbers (unova_route_19). A room is a matrix of its own ("Indoors"), several rooms
+  // sharing one: each has a map of its own, told apart by its area.
+  "region": "Unova",
+  "maps": [
+    // The overworld: Black 2's OVERWORLD matrix, 29 by 27 chunks
+    { "name": "Unova", "matrix": 0, "trees": "Round" },
+    // Plan 22 · U2: Aspertia City's rooms, its gate to Route 19, and its school with the Gym behind it
+    { "name": "AspertiaCity_PlayersHouse", "matrix": 257, "area": "aspertia_city_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaCity_House1_1F", "matrix": 406, "area": "aspertia_city_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaCity_House1_2F", "matrix": 258, "area": "aspertia_city_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaCity_House2_1F", "matrix": 406, "area": "aspertia_city_5", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaCity_House2_2F", "matrix": 262, "area": "aspertia_city_6", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaCity_House3_1F", "matrix": 406, "area": "aspertia_city_7", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaCity_House3_2F", "matrix": 262, "area": "aspertia_city_8", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaCity_TrainerSchool", "matrix": 51, "area": "aspertia_city_9", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaCity_Gym", "matrix": 275, "area": "aspertia_city_gym", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaCity_PokemonCenter", "matrix": 13, "area": "aspertia_city_pokemon_center", "trees": "Round", "setting": "Indoors" },
+    { "name": "AspertiaGate", "matrix": 12, "area": "aspertia_gate", "trees": "Round", "setting": "Indoors" },
+    // Floccesy Town's rooms, and the ranch's own field beyond its gate
+    { "name": "FloccesyTown_AldersHouse", "matrix": 259, "area": "floccesy_town_2", "trees": "Round", "setting": "Indoors" },
+    { "name": "FloccesyTown_House1", "matrix": 261, "area": "floccesy_town_3", "trees": "Round", "setting": "Indoors" },
+    { "name": "FloccesyTown_House2", "matrix": 261, "area": "floccesy_town_4", "trees": "Round", "setting": "Indoors" },
+    { "name": "FloccesyTown_PokemonCenter", "matrix": 13, "area": "floccesy_town_pokemon_center", "trees": "Round", "setting": "Indoors" },
+    { "name": "FloccesyRanch", "matrix": 255, "area": "floccesy_ranch_2", "trees": "Round" }
+  ],
+  "areas": [
+    "aspertia_city", "aspertia_city_2", "aspertia_city_3", "aspertia_city_4", "aspertia_city_5", "aspertia_city_6",
+    "aspertia_city_7", "aspertia_city_8", "aspertia_city_9", "aspertia_city_gym", "aspertia_city_pokemon_center",
+    "aspertia_gate", "unova_route_19", "floccesy_town", "floccesy_town_2", "floccesy_town_3", "floccesy_town_4",
+    "floccesy_town_pokemon_center", "unova_route_20", "floccesy_ranch", "floccesy_ranch_2"
+  ]
+}
