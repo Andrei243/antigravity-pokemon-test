@@ -82,7 +82,13 @@ public class ArchitectureTests
         new("Where the saves live needs no window (plan 12 · Q2): SavePaths, SaveEnvironment and SaveSlots use no raylib type",
             (root, u) => u.Namespace == $"{root}.Core" && SaveTypes.Contains(u.Caller) && Raylib(u)),
         new("Nothing but the game's own start finds a user's own folder (plan 12 · Q2): the real machine, SaveEnvironment.Here, is asked in Program alone",
-            (root, u) => u.TargetType == $"{Engine}.Core.SaveEnvironment" && u.Member == "Here" && !(u.Namespace == root && u.Caller == "Program"))
+            (root, u) => u.TargetType == $"{Engine}.Core.SaveEnvironment" && u.Member == "Here" && !(u.Namespace == root && u.Caller == "Program")),
+        new("Reading a player's own files needs no window (plan 08 · P20): Foreign uses no raylib type",
+            (root, u) => In(root, u, "Foreign") && Raylib(u)),
+        new("A player's own file is only read (plan 08 · P20): Foreign touches no File or Directory, and writes through no stream",
+            (root, u) => In(root, u, "Foreign")
+                && (u.TargetType is "System.IO.File" or "System.IO.Directory" or "System.IO.StreamWriter" or "System.IO.BinaryWriter"
+                    || u.TargetType == "System.IO.Stream" && u.Member.StartsWith("Write")))
     };
 
     // The command line and what it is read into (Core/CommandLine.cs)

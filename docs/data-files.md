@@ -593,6 +593,18 @@ Placeholders (`{player}`, `{var:VAR_X}`) and plan 09's markup pass through untou
 
 `regions/<id>.json` (plan 18 · W1; `Data/RegionFiles.cs`, read by `RegionDatabase`) is what a region is made of beyond its place in the chain: `id`, `folder` (its world's and its music's), `models` (the catalogue its props are looked up in), `map` (its overworld, where Fly and the way out noted for Dig land), `dex` (the PokeAPI identifier of its regional Pokédex) and `nationalUnlock` (the rule that opens the National one: `HallOfFameAndSeenAll`, Sinnoh's, the region's Hall of Fame with every species of its Pokédex seen; `Caught60`, a number of species caught, Kanto's sixty, any number after `Caught`; `HallOfFame`, which is also what an empty or unknown text means; `NationalUnlock.Parse`), `hasStory`, `rival` (the name the introduction offers; absent where the rival is the other hero), `heroes` (`boy`, `girl`: character types), `starters` (three, in the briefcase's order; the rival takes the next one round), `badges` (names in the card's order, none to eight: the story keeps a mask of them for the region, plan 18 · W2, and a script names them in any case) and `gates` (the badge each field move asks for there, by the move's name, `RockSmash`, to one of the region's badges: `FieldMoveRules.BadgeFor(move, region)`), `professor` (`name`, `look`, `species` shown, and `lines`: sixteen strings of the introduction, `{name}` and `{rival}` filled as it plays) and `spawns` (the places Fly lands: `id`, `area`, `x`, `y`, `room`, `unlockedOnArrival`, `flag`). A region with no file has an empty record.
 
+## Migration
+
+`migration.json` (plan 08 · P20; `Data/MigrationDatabase.cs`, written by `tools/DataImporter`'s `Importer.Migration.cs`, never by hand) holds the numbers and letters the readers of a player's own files (`Foreign/`, `docs/mechanics/rulings.md`, "Reading the player's own files") convert a Pokémon by:
+
+- `gbaSpecies`: the GBA's species numbers that differ from the National Pokédex's, as a number to a number (277 to 252; the numbers below 277 are the same);
+- `newAbilities`: the National numbers of the species that gained a second ability in Generation 4;
+- `hmMoves`: the names of the moves that refuse a Pokémon; `invalidItems`: the GBA item numbers that do;
+- `gbaItems`: a GBA item number to the name of the item here;
+- `gbaChars`: for each GBA language (1 Japanese, 2 English, 3 French, 4 Italian, 5 German, 7 Spanish) the 247 characters its codes 0x00 to 0xF6 stand for, as strings; `dsChars`: the DS's 16-bit codes to their characters.
+
+`migrate/` is the folder a player drops their own files in, beside the saves; it is git-ignored, and the game reads it and never writes in it.
+
 ## Sound map
 
 `Data/audio/sound-map.json` is what music a trainer class brings (`Data/SoundMap.cs`; `docs/music-format.md` has the roles):
