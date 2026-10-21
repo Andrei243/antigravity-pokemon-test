@@ -349,6 +349,12 @@ public static class ScriptParser
                 if (times < 1 || times > Acting.MostTimes) throw r.Error($"a gesture is played 1 to {Acting.MostTimes} times in a row");
                 return new Instruction { Op = Op.Act, Line = line, Name = who, Gesture = gesture, Number = times };
             }
+            case "pose":
+            {
+                // pose <who> <stance> (plan 11 · C7): sit, sitground, lie or stand, until the place is come to again
+                string who = r.Who();
+                return new Instruction { Op = Op.Pose, Line = line, Name = who, Stance = r.Enum<Stance>("a stance") };
+            }
             case "mood":
             {
                 // mood <who> <mood> (plan 11 · C11): the face held until it is changed or the place is come to again

@@ -91,5 +91,51 @@ partial class Harness
             }
             Save(faces, name);
         }
+
+        // Last, so nothing before moves: people on their furniture (plan 11 · C7), in a room built here, and the
+        // stances' sprite strips
+        foreach (var (type, anim) in new[] { ("Lass", "Sit"), ("Gentleman", "Lie"), ("Lass", "SitGround") })
+        {
+            string name = $"38_sheet_{type.ToLowerInvariant()}_{anim.ToLowerInvariant()}";
+            if (Wanted(name)) Save(Strip(type, anim, CharacterSprites.IdleFrames), name);
+        }
+        var poses = BuildPosesRoom();
+        game.Map = poses;
+        game.Player.SetPosition(6, 7, Direction.Up);
+        Frames(3);
+        foreach (var npc in poses.NPCs) Console.WriteLine($"  {npc.Name} on {poses.SeatUnder(npc)?.Type.ToString() ?? "the floor"}: {poses.StanceOf(npc)}, facing {npc.Facing}");
+        Shot("36d_lineup_poses");
+        ShotCrop("36e_lineup_poses_close", 560, 260, 800, 450, 2);
+    }
+
+    // A room of a house with a seat of every kind and a bed, someone on each, and one posed on the floor (plan 11 · C7)
+    static Map BuildPosesRoom()
+    {
+        var m = new Map(13, 10) { Name = "Poses", DisplayName = "Poses", Interior = InteriorStyle.House };
+        for (int x = 0; x < 13; x++)
+            for (int y = 0; y < 10; y++)
+            {
+                bool wall = y < 3 || x == 0 || x == 12 || y == 9;
+                m.SetGroundTile(x, y, wall ? TileType.Wall : TileType.Floor, wall);
+            }
+        void Put(PropType type, int x, int y, int w = 1, int d = 1) => m.Props.Add(new Prop { Type = type, X = x, Y = y, Width = w, Depth = d });
+        Put(PropType.Bench, 1, 3, 2);
+        Put(PropType.Table, 5, 4);
+        Put(PropType.Chair, 4, 4);
+        Put(PropType.Sofa, 7, 3, 2);
+        Put(PropType.Cushion, 3, 7);
+        Put(PropType.Bed, 10, 3, 1, 2);
+        void Seat(string type, int x, int y, Direction facing, PokemonPlatinumEngine.Overworld.Stance? posed = null) =>
+            m.NPCs.Add(new NPC { Name = $"{type}_{x}_{y}", NpcType = type, GridX = x, GridY = y, Facing = facing, Posed = posed });
+        Seat("Lass", 1, 3, Direction.Down);
+        Seat("Gentleman", 2, 3, Direction.Down);
+        Seat("Youngster", 4, 4, Direction.Right);
+        Seat("Mom", 7, 3, Direction.Down);
+        Seat("Lady", 8, 3, Direction.Down);
+        Seat("Rival", 3, 7, Direction.Down);
+        Seat("Rowan", 10, 3, Direction.Down);
+        Seat("Clerk", 9, 7, Direction.Left, PokemonPlatinumEngine.Overworld.Stance.SitGround);
+        Seat("Nurse", 5, 7, Direction.Down);
+        return m;
     }
 }

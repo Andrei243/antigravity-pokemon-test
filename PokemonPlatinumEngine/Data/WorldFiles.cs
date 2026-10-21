@@ -1031,6 +1031,9 @@ public sealed class OverlayPerson
     /// </summary>
     public bool Still { get; set; }
 
+    /// <summary>How they are set where the furniture under them doesn't decide it (<see cref="Overworld.NPC.Stance"/>, plan 11 · C7).</summary>
+    public Overworld.Stance? Stance { get; set; }
+
     /// <summary>
     /// The tile they stand on, where it isn't the one the area's file gives them (plan 06 · R16a: the Underground's
     /// hikers, whom the original stands by a table of its own code as the map is come to).

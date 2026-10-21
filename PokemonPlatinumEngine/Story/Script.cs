@@ -113,6 +113,8 @@ public enum Op
     TownMap,
     // A phrase of two words asked for on the phrase picker, kept by its name (plan 08 · P9)
     Phrase,
+    // Someone set to sit, to sit on the ground, to lie or to stand (plan 11 · C7)
+    Pose,
 }
 
 /// <summary>How two numbers are compared in a condition.</summary>
@@ -258,6 +260,9 @@ public sealed class Instruction
 
     /// <summary>For <see cref="Op.Mood"/>: the face held (plan 11 · C11).</summary>
     public Mood Mood { get; init; }
+
+    /// <summary>For <see cref="Op.Pose"/>: the stance they are set in (plan 11 · C7).</summary>
+    public Stance Stance { get; init; }
 
     /// <summary>A word that changes how the line is carried out: a walk at a run, a battle that may be lost, a fade to black.</summary>
     public bool Option { get; init; }

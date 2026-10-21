@@ -112,6 +112,12 @@ internal static class CharacterAnimation
         var extra = extraScratch is { } e && e.Count == pose.Count ? e : extraScratch = new SkeletonPose(pose.Count);
 
         Idle(p.Time, pose);
+        // A stance is breathed in as the idle is, and nothing else plays over it (plan 11 · C7)
+        if (p.Stance != Overworld.Stance.Stand)
+        {
+            StanceClip(rig, p.Stance, pose);
+            return;
+        }
         if (p.WalkBlend > 0f)
         {
             walk.Reset();
@@ -146,6 +152,56 @@ internal static class CharacterAnimation
     private static void Up(SkeletonPose pose, int bone, float dy) => pose.Offset[bone] += new Vector3(0, dy, 0);
 
     // ------------------------------------------------------------------ clips
+
+    /// <summary>
+    /// A stance over the idle (plan 11 · C7; style guide, "Characters", "Stances"). Sitting, the whole body drops by
+    /// the height between the hips and the knees, so with the thighs turned level ahead and the shins straight down
+    /// the feet stay on the ground; the hands rest on the lap and a skirt or a coat's tails lie forward. On the ground
+    /// the hips drop to it and the legs lie out ahead; lying, the body turns onto its back about the feet, the head
+    /// along the way behind them, lifted by the body's depth so the back rests on what is under it.
+    /// </summary>
+    private static void StanceClip(CharacterRig rig, Overworld.Stance stance, SkeletonPose pose)
+    {
+        float hips = rig.Skeleton[HumanBones.Hips].Joint.Y, knee = rig.Skeleton[HumanBones.ShinL].Joint.Y;
+        switch (stance)
+        {
+            case Overworld.Stance.Sit:
+                Up(pose, HumanBones.Root, -(hips - knee));
+                pose.Turn(HumanBones.ThighL, -MathF.PI / 2f, 0f, 0.05f);
+                pose.Turn(HumanBones.ThighR, -MathF.PI / 2f, 0f, -0.05f);
+                pose.Turn(HumanBones.ShinL, MathF.PI / 2f - 0.03f);
+                pose.Turn(HumanBones.ShinR, MathF.PI / 2f - 0.03f);
+                pose.Turn(HumanBones.UpperArmL, -0.4f, 0f, 0.1f);
+                pose.Turn(HumanBones.UpperArmR, -0.4f, 0f, -0.1f);
+                pose.Turn(HumanBones.ForeArmL, -0.85f);
+                pose.Turn(HumanBones.ForeArmR, -0.85f);
+                pose.Turn(HumanBones.Skirt, -1.25f);
+                break;
+            case Overworld.Stance.SitGround:
+                Up(pose, HumanBones.Root, -(hips - 0.075f));
+                pose.Turn(HumanBones.ThighL, -1.42f, 0f, 0.12f);
+                pose.Turn(HumanBones.ThighR, -1.42f, 0f, -0.12f);
+                pose.Turn(HumanBones.ShinL, 0.3f);
+                pose.Turn(HumanBones.ShinR, 0.3f);
+                pose.Turn(HumanBones.FootL, -0.35f);
+                pose.Turn(HumanBones.FootR, -0.35f);
+                pose.Turn(HumanBones.UpperArmL, 0.12f, 0f, -0.18f);
+                pose.Turn(HumanBones.UpperArmR, 0.12f, 0f, 0.18f);
+                pose.Turn(HumanBones.Skirt, -1.3f);
+                break;
+            case Overworld.Stance.Lie:
+                pose.Turn(HumanBones.Root, -MathF.PI / 2f);
+                Up(pose, HumanBones.Root, LieLift);
+                // The head lies back on the pillow rather than tipped up to the camera
+                pose.Turn(HumanBones.Head, 0.1f);
+                pose.Turn(HumanBones.UpperArmL, 0f, 0f, 0.12f);
+                pose.Turn(HumanBones.UpperArmR, 0f, 0f, -0.12f);
+                break;
+        }
+    }
+
+    /// <summary>How far a lier's body is lifted off what it lies on: the depth of the back behind the feet' line.</summary>
+    public const float LieLift = 0.1f;
 
     /// <summary>Standing: breathing, the arms down from the sculpted A-pose, the head tipped up toward the camera.</summary>
     private static void Idle(float t, SkeletonPose pose)

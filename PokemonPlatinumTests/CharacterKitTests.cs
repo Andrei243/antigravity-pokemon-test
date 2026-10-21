@@ -8,6 +8,7 @@ using Raylib_cs;
 using Acting = PokemonPlatinumEngine.Overworld.Acting;
 using Gesture = PokemonPlatinumEngine.Overworld.Gesture;
 using Mood = PokemonPlatinumEngine.Overworld.Mood;
+using Stance = PokemonPlatinumEngine.Overworld.Stance;
 
 namespace PokemonPlatinumTests;
 
@@ -188,6 +189,9 @@ public class CharacterAnimationTests
     [InlineData("Shrug", 6)]
     [InlineData("Point", 6)]
     [InlineData("Laugh", 6)]
+    [InlineData("Sit", 2)]
+    [InlineData("SitGround", 2)]
+    [InlineData("Lie", 2)]
     public void EveryFrameIsBakedFromAPoseThatShowsThatFrame(string anim, int frames)
     {
         var strip = Enum.Parse<SpriteAnim>(anim);
@@ -201,6 +205,41 @@ public class CharacterAnimationTests
                     // An emote shows its own face; everything else keeps the key's
                     Assert.Equal(key with { Expression = back.Expression }, back);
                 }
+    }
+
+    [Fact]
+    public void TheStancesSetTheBodyAsTheStyleGuideSays()
+    {
+        // Style guide, "Characters", "Stances" (plan 11 · C7)
+        var ankle = Player.Skeleton[HumanBones.FootL].Joint.Y;
+        Player.Animate(new CharacterPose { Time = 0.4f });
+        var standingHips = Joint(Player, HumanBones.Hips);
+        var standingHead = Joint(Player, HumanBones.Head);
+
+        // Sitting: the hips at the knees' height, the knees ahead of them at the same height, the feet on the ground
+        Player.Animate(new CharacterPose { Time = 0.4f, Stance = Stance.Sit });
+        var hips = Joint(Player, HumanBones.Hips);
+        var knee = Joint(Player, HumanBones.ShinL);
+        Assert.InRange(hips.Y, Player.Skeleton[HumanBones.ShinL].Joint.Y - 0.03f, Player.Skeleton[HumanBones.ShinL].Joint.Y + 0.03f);
+        Assert.True(hips.Y < standingHips.Y - 0.1f);
+        Assert.True(knee.Z > hips.Z + 0.1f && MathF.Abs(knee.Y - hips.Y) < 0.04f, $"the knee at {knee}, the hips at {hips}");
+        Assert.InRange(Joint(Player, HumanBones.FootL).Y, ankle - 0.04f, ankle + 0.04f);
+
+        // On the ground: the hips at the ground, the feet out ahead
+        Player.Animate(new CharacterPose { Time = 0.4f, Stance = Stance.SitGround });
+        Assert.True(Joint(Player, HumanBones.Hips).Y < 0.12f);
+        Assert.True(Joint(Player, HumanBones.FootL).Z > 0.2f);
+
+        // Lying: the head down at the ground's height behind the feet, the face up
+        Player.Animate(new CharacterPose { Time = 0.4f, Stance = Stance.Lie });
+        var head = Joint(Player, HumanBones.Head);
+        Assert.True(head.Y < 0.2f, $"the head lies at {head}");
+        Assert.True(head.Z < -standingHead.Y * 0.5f, $"the head lies at {head}, not behind the feet");
+
+        // Nothing else plays over a stance: a walk and a gesture leave a sitter as they were
+        Player.Animate(new CharacterPose { Time = 0.4f, Stance = Stance.Sit, Walk = 0.3f, WalkBlend = 1f, Emote = Emote.Wave, EmoteTime = 0.4f });
+        Assert.Equal(hips, Joint(Player, HumanBones.Hips));
+        Assert.Equal(SpriteAnim.Sit, CharacterSprites.KeyOf(Player, new CharacterPose { Stance = Stance.Sit, Emote = Emote.Wave, EmoteTime = 0.4f }, 0f).Anim);
     }
 
     [Fact]
@@ -432,6 +471,10 @@ public class CharacterAnimationTests
         Assert.Equal("up_shrug_5.png", CharacterSprites.OverrideName(new SpriteKey(Player, 2, SpriteAnim.Shrug, 5, false, Expression.Neutral)));
         Assert.Equal("left_point_1_blink.png", CharacterSprites.OverrideName(new SpriteKey(Player, 3, SpriteAnim.Point, 1, true, Expression.Neutral)));
         Assert.Equal("right_laugh_3_happy.png", CharacterSprites.OverrideName(new SpriteKey(Player, 1, SpriteAnim.Laugh, 3, false, Expression.Happy)));
+        // Plan 11 · C7's stances
+        Assert.Equal("down_sit_0.png", CharacterSprites.OverrideName(new SpriteKey(Player, 0, SpriteAnim.Sit, 0, false, Expression.Neutral)));
+        Assert.Equal("up_sitground_1.png", CharacterSprites.OverrideName(new SpriteKey(Player, 2, SpriteAnim.SitGround, 1, false, Expression.Neutral)));
+        Assert.Equal("left_lie_0_blink.png", CharacterSprites.OverrideName(new SpriteKey(Player, 3, SpriteAnim.Lie, 0, true, Expression.Neutral)));
     }
 
     [Fact]

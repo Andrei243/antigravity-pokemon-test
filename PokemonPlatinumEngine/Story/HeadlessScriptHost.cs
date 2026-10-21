@@ -458,6 +458,16 @@ public sealed class HeadlessScriptHost : IScriptHost
         Log.Add($"mood {who?.Name ?? "player"} {mood}");
     }
 
+    /// <summary>The stance a script set the player in (plan 11 · C7), standing when none is.</summary>
+    public Stance PlayerStance { get; private set; }
+
+    public void Pose(NPC? who, Stance stance)
+    {
+        if (who == null) PlayerStance = stance;
+        else who.Posed = stance;
+        Log.Add($"pose {who?.Name ?? "player"} {stance}");
+    }
+
     private void Check(NPC? who, int x, int y, string does)
     {
         if (Map == null) return;

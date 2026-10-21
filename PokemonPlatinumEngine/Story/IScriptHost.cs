@@ -96,6 +96,12 @@ public interface IScriptHost
     void Mood(NPC? who, Mood mood);
 
     /// <summary>
+    /// Someone is set to sit, to sit on the ground, to lie or to stand (plan 11 · C7), whatever is under them, until the
+    /// place is come to again (nobody is the player). Nothing is waited for: a stance is taken at once.
+    /// </summary>
+    void Pose(NPC? who, Stance stance);
+
+    /// <summary>
     /// The field's camera is told something (<c>CameraRig</c>; plan 09 · L4 for all but the first three): to look at a
     /// tile (<see cref="CameraMove.Pan"/>), to come back and bring the lens, the bars and the field's pace back with it
     /// (<c>Release</c>), to shake, to take its lens to a <paramref name="factor"/> (<c>Zoom</c>), to keep on
