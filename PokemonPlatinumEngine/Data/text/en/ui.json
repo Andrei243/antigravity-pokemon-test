@@ -19,6 +19,8 @@
       "open": "Open",
       "back": "Back",
       "change": "Change",
+      "play": "Play",
+      "mode": "Mode",
       "choose": "Choose",
       "menu": "Menu",
       "move": "Move",
@@ -587,7 +589,13 @@
   },
   "pokedex": {
     "title": "POKÉDEX",
-    "page": { "Info": "INFO", "Area": "AREA", "Size": "SIZE" },
+    "page": { "Info": "INFO", "Area": "AREA", "Cry": "CRY", "Size": "SIZE" },
+    "cry": {
+      "pitch": "Pitch", "chorus": "Chorus", "pan": "Pan", "reverb": "Reverb", "filter": "Filter", "loop": "Loop", "play": "Play",
+      "plain": "As it is", "semitones": "{n} semitones", "off": "Off", "on": "On", "centre": "Centre",
+      "left": "Left {n}", "right": "Right {n}", "ready": "Press to hear", "sounding": "Sounding",
+      "hint": "Press the confirm key to bend this cry."
+    },
     "mode": { "sinnoh": "SINNOH", "kanto": "KANTO", "national": "NATIONAL" },
     "modeName": { "sinnoh": "Sinnoh", "kanto": "Kanto", "national": "National" },
     "found": "FOUND",

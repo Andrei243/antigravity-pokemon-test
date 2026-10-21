@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using Raylib_cs;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -18,8 +19,11 @@ internal static partial class ModernUi
     /// <summary>The pages of an entry as tabs: INFO in Blue, AREA in Green, SIZE in Gold.</summary>
     private static (string Label, UiIcon Icon, Color Color)[] DexPages => new[]
     {
-        (Text.Of("pokedex.page.Info"), UiIcon.Dex, Blue), (Text.Of("pokedex.page.Area"), UiIcon.Pin, Green), (Text.Of("pokedex.page.Size"), UiIcon.Size, Gold)
+        (Text.Of("pokedex.page.Info"), UiIcon.Dex, Blue), (Text.Of("pokedex.page.Area"), UiIcon.Pin, Green), (Text.Of("pokedex.page.Cry"), UiIcon.Radio, CryPurple), (Text.Of("pokedex.page.Size"), UiIcon.Size, Gold)
     };
+
+    /// <summary>The cry page's tab colour (plan 08 · P18): a violet of its own beside Blue, Green and Gold.</summary>
+    private static readonly Color CryPurple = new(142, 96, 200, 255);
 
     /// <summary>The player's height on the size page, in metres.</summary>
     public const float PlayerHeight = 1.4f;
@@ -48,6 +52,13 @@ internal static partial class ModernUi
         ScreenTitle(Text.Of("pokedex.title"));
         switch (dex.Focus)
         {
+            case PokedexFocus.Entry when dex.Page == PokedexPage.Cry:
+                Hints(sw - Margin, 44, Hint("shared.keys.z", "shared.hints.choose"), Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.upDown", "shared.hints.species"), Hint("shared.keys.esc", "shared.hints.back"));
+                break;
+            case PokedexFocus.Cry:
+                Hints(sw - Margin, 44, Hint("shared.keys.z", dex.CryRow is PokedexCryRow.Stereo or PokedexCryRow.Room ? "shared.hints.mode" : dex.CryRow == PokedexCryRow.Loop ? "shared.hints.change" : "shared.hints.play"),
+                    Hint("shared.keys.leftRight", "shared.hints.change"), Hint("shared.keys.upDown", "shared.hints.choose"), Hint("shared.keys.esc", "shared.hints.back"));
+                break;
             case PokedexFocus.Entry:
                 Hints(sw - Margin, 44, Hint("shared.keys.leftRight", "shared.hints.page"), Hint("shared.keys.upDown", "shared.hints.species"), Hint("shared.keys.esc", "shared.hints.back"));
                 break;
@@ -73,13 +84,14 @@ internal static partial class ModernUi
             if (!pokedex.IsSeen(entry.Species.DexNumber)) DexUnseen(detail, entry);
             else
             {
-                var page = dex.Focus == PokedexFocus.Entry ? dex.Page : PokedexPage.Info;
-                Tabs(new Rectangle(detail.X + 32, detail.Y + 28, detail.Width - 64, 64), DexPages, Array.IndexOf(PokedexScreen.Pages, page));
+                var page = dex.Focus is PokedexFocus.Entry or PokedexFocus.Cry ? dex.Page : PokedexPage.Info;
+                Tabs(new Rectangle(detail.X + 32, detail.Y + 28, detail.Width - 64, 64), DexPages, dex.PagesOf(entry).ToList().IndexOf(page));
                 bool owned = pokedex.IsCaught(entry.Species.DexNumber);
                 switch (page)
                 {
                     case PokedexPage.Area: DexArea(detail, entry.Species, dex.AreaRegion); break;
                     case PokedexPage.Size: DexSize(detail, entry.Species, owned, dex.Portrait); break;
+                    case PokedexPage.Cry: DexCry(detail, dex); break;
                     default: DexInfo(detail, entry, owned, dex.EntryShown(entry.Species)); break;
                 }
             }
@@ -246,6 +258,48 @@ internal static partial class ModernUi
         float ky = map.Y + map.Height + 92;
         UiShapes.Shape(new Rectangle(kx, ky, 26, 26), 5, Selection, Selection, Color.White, 2.5f);
         UiFonts.DrawCentered(Text.Of("pokedex.mapKey"), map.X + 38, ky + 13, 22, Muted, UiWeight.ExtraBold);
+    }
+
+    /// <summary>
+    /// CRY (plan 08 · P18): the cry's wave as a scope across the top, the part the playhead has gone through lit, and
+    /// the controls under it as rows: PITCH, STEREO (a chorus or a pan), ROOM (a reverb or a filter), LOOP and PLAY.
+    /// </summary>
+    private static void DexCry(Rectangle detail, PokedexScreen dex)
+    {
+        var scope = new Rectangle(detail.X + 44, detail.Y + 124, detail.Width - 88, 220);
+        Card(scope, 26, false);
+        const float columnWidth = 8;
+        int columns = Math.Max(1, (int)((scope.Width - 48) / columnWidth));
+        var wave = dex.ScopeColumns(columns);
+        float mid = scope.Y + scope.Height / 2f, half = scope.Height / 2f - 26;
+        UiShapes.Fill(new Rectangle(scope.X + 24, mid - 1.5f, scope.Width - 48, 3), 1.5f, Rule);
+        for (int c = 0; c < wave.Length; c++)
+        {
+            float top = mid - MathF.Min(1f, wave[c].High) * half, bottom = mid - MathF.Max(-1f, wave[c].Low) * half;
+            var bar = new Rectangle(scope.X + 24 + c * columnWidth + 1, top, columnWidth - 2, MathF.Max(3f, bottom - top));
+            UiShapes.Fill(bar, 2, wave[c].Played ? CryPurple : new Color(188, 196, 214, 255));
+        }
+
+        var shape = dex.Shape;
+        bool inRows = dex.Focus == PokedexFocus.Cry;
+        string stereo = shape.Stereo == CryStereo.Pan
+            ? (shape.StereoAmount == 0 ? Text.Of("pokedex.cry.centre") : Text.Of(shape.StereoAmount < 0 ? "pokedex.cry.left" : "pokedex.cry.right", ("n", Math.Abs(shape.StereoAmount))))
+            : (shape.StereoAmount == 0 ? Text.Of("pokedex.cry.off") : shape.StereoAmount.ToString(CultureInfo.InvariantCulture));
+        string room = shape.RoomAmount == 0 ? Text.Of("pokedex.cry.off") : shape.RoomAmount.ToString(CultureInfo.InvariantCulture);
+        string pitch = shape.Pitch == 0 ? Text.Of("pokedex.cry.plain") : Text.Of("pokedex.cry.semitones", ("n", shape.Pitch.ToString("+0;-0", CultureInfo.InvariantCulture)));
+        var rows = new (string Label, string Value)[]
+        {
+            (Text.Of("pokedex.cry.pitch"), pitch),
+            (Text.Of(shape.Stereo == CryStereo.Pan ? "pokedex.cry.pan" : "pokedex.cry.chorus"), stereo),
+            (Text.Of(shape.Room == CryRoom.Filter ? "pokedex.cry.filter" : "pokedex.cry.reverb"), room),
+            (Text.Of("pokedex.cry.loop"), Text.Of(dex.Loop ? "pokedex.cry.on" : "pokedex.cry.off")),
+            (Text.Of("pokedex.cry.play"), Text.Of(dex.CryPlaying ? "pokedex.cry.sounding" : "pokedex.cry.ready"))
+        };
+        float y = scope.Y + scope.Height + 28;
+        const float pitchY = 84;
+        for (int i = 0; i < rows.Length; i++)
+            ValueRow(new Rectangle(detail.X + 44, y + i * pitchY, detail.Width - 88, 76), rows[i].Label, rows[i].Value, inRows && (int)dex.CryRow == i, 420);
+        if (!inRows) UiFonts.Draw(Text.Of("pokedex.cry.hint"), detail.X + 52, y + rows.Length * pitchY + 6, 24, Muted, UiWeight.ExtraBold);
     }
 
     /// <summary>A place's name from its key: <c>eterna_city</c> is Eterna City.</summary>

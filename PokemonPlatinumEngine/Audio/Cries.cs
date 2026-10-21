@@ -236,7 +236,7 @@ public sealed class CryRandom
 /// saw, pulse, sine and FM at the voice's pitch, sung through two formant filters for each syllable's vowel, with
 /// breath, a growl and a vibrato, then played in one of the original's modes. The last few dozen are kept.
 /// </summary>
-public static class Cries
+public static partial class Cries
 {
     private const int Rate = Synthesizer.SampleRate;
 

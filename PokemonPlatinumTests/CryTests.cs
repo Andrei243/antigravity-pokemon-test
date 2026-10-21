@@ -195,6 +195,72 @@ public class CryTests
     }
 
     [Fact]
+    public void APlainShapeIsTheCryTheEntryPlaysSampleForSample()
+    {
+        var starly = Species("Starly");
+        var plain = Cries.Get(starly, null, CryMode.Pokedex);
+        Assert.Same(plain, Cries.Shaped(starly, null, CryShape.None));
+        // A pan moves the cry in the room and leaves its samples alone
+        Assert.Same(plain, Cries.Shaped(starly, null, new CryShape(Stereo: CryStereo.Pan, StereoAmount: -5)));
+        Assert.Equal(-5 / 8f, new CryShape(Stereo: CryStereo.Pan, StereoAmount: -5).PanPosition);
+        Assert.Equal(0f, new CryShape(StereoAmount: 4).PanPosition);
+    }
+
+    [Fact]
+    public void AnOctaveUpGivesHalfTheLengthAndEveryShapeStaysInTheCryBusWindow()
+    {
+        var starly = Species("Starly");
+        var plain = Cries.Get(starly, null, CryMode.Pokedex);
+        var up = Cries.Shaped(starly, null, new CryShape(Pitch: 12));
+        Assert.InRange(up.Samples.Length / (double)plain.Samples.Length, 0.49, 0.51);
+        var down = Cries.Shaped(starly, null, new CryShape(Pitch: -12));
+        Assert.InRange(down.Samples.Length / (double)plain.Samples.Length, 1.95, 2.05);
+
+        var (low, high) = Loudness.Target(AudioBus.Cry);
+        foreach (var shape in new[]
+        {
+            new CryShape(Pitch: -24, StereoAmount: 8, RoomAmount: CryShape.MostRoom),
+            new CryShape(Pitch: 12, StereoAmount: 8, Room: CryRoom.Filter, RoomAmount: CryShape.MostRoom),
+            new CryShape(StereoAmount: 4, RoomAmount: 6),
+            new CryShape(Room: CryRoom.Filter, RoomAmount: 3)
+        })
+        {
+            var s = Cries.Shaped(starly, null, shape).Samples;
+            Assert.All(s, x => Assert.True(float.IsFinite(x)));
+            Assert.True(s.Max(MathF.Abs) <= Cries.Peak + 0.01f, shape.Key);
+            Assert.True(Loudness.Of(s) <= Loudness.CryCeiling + 0.05, shape.Key);
+            var mixer = new AudioMixer();
+            mixer.PlaySound(new SoundSample("shaped", s), AudioBus.Cry);
+            var heard = new float[(s.Length + Synthesizer.SampleRate / 10) * 2];
+            for (int done = 0; done < heard.Length; done += 2048)
+                mixer.Render(heard.AsSpan(done, Math.Min(2048, heard.Length - done)));
+            double loud = Loudness.Of(heard, 2);
+            Assert.True(loud >= low && loud <= high, $"{shape.Key} cries at {loud:0.0} dB, outside {low} to {high}");
+        }
+        // The same shape is the same cry every time
+        Assert.Equal(Cries.Shaped(starly, null, new CryShape(Pitch: 3, StereoAmount: 2)).Samples, Cries.Shaped(starly, null, new CryShape(Pitch: 3, StereoAmount: 2)).Samples);
+    }
+
+    [Fact]
+    public void TheGameHearsTheShapedCryByName()
+    {
+        var heard = Hear(() => AudioManager.PlayCry(Species("Starly"), null, new CryShape(Pitch: 3, StereoAmount: 4)));
+        Assert.Contains(heard, h => h.StartsWith("cry Starly") && h.EndsWith("shaped p3 chorus4 reverb0"));
+    }
+
+    [Fact]
+    public void TheScopesColumnsAreTheWavesLowsAndHighsAndHowFarThePlayheadHasGone()
+    {
+        // Four samples in two columns, worked out by hand: (0.5, -0.25) and (0.1, 0.9)
+        var columns = Cries.Scope(new[] { 0.5f, -0.25f, 0.1f, 0.9f }, 0.5f, 2);
+        Assert.Equal(new ScopeColumn(-0.25f, 0.5f, true), columns[0]);
+        Assert.Equal(new ScopeColumn(0f, 0.9f, false), columns[1]);
+        Assert.All(Cries.Scope(new[] { 0.5f, -0.25f, 0.1f, 0.9f }, 0f, 2), c => Assert.False(c.Played));
+        Assert.All(Cries.Scope(new[] { 0.5f, -0.25f, 0.1f, 0.9f }, 1f, 2), c => Assert.True(c.Played));
+        Assert.Empty(Cries.Scope(Array.Empty<float>(), 0.5f, 0).ToArray());
+    }
+
+    [Fact]
     public void AScriptMakesAPokemonCryInTheField()
     {
         var library = ScriptLibrary.FromSources(("test", "script S\n cry \"Shinx\"\n cry \"Giratina-Origin\"\nscript Wrong\n cry \"Nobody\""));

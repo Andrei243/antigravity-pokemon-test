@@ -1,5 +1,6 @@
 using System.Text.Json;
 using Raylib_cs;
+using PokemonPlatinumEngine.Audio;
 using PokemonPlatinumEngine.Core;
 using PokemonPlatinumEngine.Data;
 using PokemonPlatinumEngine.Graphics;
@@ -618,7 +619,7 @@ public class MenuScreenTests
     }
 
     [Fact]
-    public void APokedexEntryHasThreePagesAndStepsThroughTheSpeciesSeen()
+    public void APokedexEntryHasFourPagesAndStepsThroughTheSpeciesSeen()
     {
         var pokedex = new Pokedex();
         foreach (int n in new[] { 387, 396, 399 }) pokedex.RegisterSeen(n);   // Turtwig, Starly, Bidoof
@@ -637,9 +638,12 @@ public class MenuScreenTests
         dex.Sideways(1);
         Assert.Equal(PokedexPage.Area, dex.Page);
         dex.Sideways(1);
+        Assert.Equal(PokedexPage.Cry, dex.Page);
+        dex.Sideways(1);
         Assert.Equal(PokedexPage.Size, dex.Page);
         dex.Sideways(1);
         Assert.Equal(PokedexPage.Info, dex.Page);
+        Assert.Equal(new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size }, dex.PagesOf(dex.Selected));
         dex.Sideways(-1);
         Assert.Equal(PokedexPage.Size, dex.Page);
 
@@ -657,6 +661,101 @@ public class MenuScreenTests
         Assert.Equal((PokedexFocus.List, PokedexPage.Info), (dex.Focus, dex.Page));
         dex.Cancel();
         Assert.False(dex.IsActive);
+    }
+
+    [Fact]
+    public void TheCryPageStepsThroughItsRowsPlaysAndGoesBack()
+    {
+        var pokedex = new Pokedex();
+        pokedex.RegisterSeen(396);   // Starly
+        var dex = new PokedexScreen();
+        dex.Open(pokedex);
+        dex.Confirm();
+        dex.Sideways(1); dex.Sideways(1);
+        Assert.Equal(PokedexPage.Cry, dex.Page);
+        var heard = AudioManager.Listen();
+        try
+        {
+            // A moves into the rows, with nothing bent and nothing playing
+            dex.Confirm();
+            Assert.Equal((PokedexFocus.Cry, PokedexCryRow.Pitch), (dex.Focus, dex.CryRow));
+            Assert.True(dex.Shape.IsPlain);
+            Assert.False(dex.CryPlaying);
+
+            // Pitch: a semitone a press, stopping at each end of its range
+            dex.Sideways(1);
+            Assert.Equal(1, dex.Shape.Pitch);
+            for (int i = 0; i < 50; i++) dex.Sideways(-1);
+            Assert.Equal(CryShape.LowestPitch, dex.Shape.Pitch);
+            for (int i = 0; i < 50; i++) dex.Sideways(1);
+            Assert.Equal(CryShape.HighestPitch, dex.Shape.Pitch);
+
+            // The switch: a chorus from nothing to its most, then A makes it a pan, from the left to the right
+            dex.Move(1);
+            Assert.Equal(PokedexCryRow.Stereo, dex.CryRow);
+            for (int i = 0; i < 20; i++) dex.Sideways(1);
+            Assert.Equal((CryStereo.Chorus, CryShape.MostChorus), (dex.Shape.Stereo, dex.Shape.StereoAmount));
+            dex.Sideways(-1);
+            Assert.Equal(CryShape.MostChorus - 1, dex.Shape.StereoAmount);
+            dex.Confirm();
+            Assert.Equal((CryStereo.Pan, 0), (dex.Shape.Stereo, dex.Shape.StereoAmount));
+            for (int i = 0; i < 20; i++) dex.Sideways(-1);
+            Assert.Equal(-CryShape.FurthestPan, dex.Shape.StereoAmount);
+            Assert.Equal(-1f, dex.Shape.PanPosition);
+            for (int i = 0; i < 20; i++) dex.Sideways(1);
+            Assert.Equal(CryShape.FurthestPan, dex.Shape.StereoAmount);
+
+            // The dial: a reverb or a filter by notches, A switches which, and it holds at its ends
+            dex.Move(1);
+            Assert.Equal(PokedexCryRow.Room, dex.CryRow);
+            for (int i = 0; i < 30; i++) dex.Sideways(1);
+            Assert.Equal((CryRoom.Reverb, CryShape.MostRoom), (dex.Shape.Room, dex.Shape.RoomAmount));
+            dex.Confirm();
+            Assert.Equal(CryRoom.Filter, dex.Shape.Room);
+            for (int i = 0; i < 30; i++) dex.Sideways(-1);
+            Assert.Equal(0, dex.Shape.RoomAmount);
+
+            // Loop: left, right and A each turn it
+            dex.Move(1);
+            Assert.Equal(PokedexCryRow.Loop, dex.CryRow);
+            dex.Sideways(1);
+            Assert.True(dex.Loop);
+            dex.Confirm();
+            Assert.False(dex.Loop);
+
+            // Play: A plays the cry as shaped, and the playhead runs on the screen's own clock
+            dex.Move(1);
+            Assert.Equal(PokedexCryRow.Play, dex.CryRow);
+            dex.Confirm();
+            Assert.True(dex.CryPlaying);
+            Assert.Contains(heard.ToList(), h => h.StartsWith("cry Starly shaped p12 "));
+            float length = (float)dex.ShapedCry()!.Duration;
+            dex.AdvanceCry(length * 0.5f);
+            Assert.InRange(dex.CryPlayhead, 0.49f, 0.51f);
+            dex.AdvanceCry(length);
+            Assert.False(dex.CryPlaying);
+
+            // With the loop on, the cry is played again as it ends, until B goes back to the pages
+            dex.Move(-1);
+            dex.Sideways(1);
+            Assert.True(dex.Loop);
+            dex.Move(1);
+            dex.Confirm();
+            int before = heard.Count;
+            dex.AdvanceCry(length * 1.01f);
+            Assert.True(dex.CryPlaying && dex.CryPlayhead < 0.1f);
+            Assert.True(heard.Count > before);
+            dex.Cancel();
+            Assert.Equal((PokedexFocus.Entry, PokedexPage.Cry), (dex.Focus, dex.Page));
+            Assert.False(dex.CryPlaying);
+        }
+        finally
+        {
+            AudioManager.StopListening();
+        }
+        dex.Cancel();
+        Assert.Equal(PokedexFocus.List, dex.Focus);
+        Assert.True(dex.Shape.IsPlain);
     }
 
     [Fact]
