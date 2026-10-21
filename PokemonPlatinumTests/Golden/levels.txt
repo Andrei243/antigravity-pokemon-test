@@ -120,6 +120,10 @@ trainers 4, 23-28: black_belt_colby 27, black_belt_darren 25, black_belt_jeffery
 === acuity_lakefront
 Acuity Lakefront
 grass 32-35
+=== aspertia_city
+Aspertia City
+surf 5-15
+super rod 40-70
 === azalea_gym
 Azalea Town
 trainers 4, 7-13: johto_bug_catcher_al 12, johto_bug_catcher_benny 12, johto_bug_catcher_josh 13, johto_twins_amy_and_mimi 10
@@ -163,6 +167,23 @@ surf 20-40
 old rod 3-15
 good rod 10-35
 super rod 30-55
+=== cerulean_cave_1f
+Cerulean Cave
+grass 46-61
+surf 30-55
+old rod 5
+good rod 5-15
+super rod 15-35
+=== cerulean_cave_2f
+Cerulean Cave
+grass 49-64
+=== cerulean_cave_b1f
+Cerulean Cave
+grass 52-67
+surf 40-65
+old rod 5
+good rod 5-15
+super rod 15-35
 === cerulean_city
 Cerulean City
 surf 5-40
@@ -263,6 +284,128 @@ grass 14-16
 === fight_area
 Fight Area
 trainers 1, 56-58: elite_four_flint_fight_area 58
+=== five_island
+Five Island
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+=== five_island_lost_cave_room_1
+Lost Cave
+grass 22-52
+trainers 1, 47-49: kanto_ruin_maniac_lawson 49
+=== five_island_lost_cave_room_10
+Lost Cave
+grass 22-52
+=== five_island_lost_cave_room_11
+Lost Cave
+grass 15-52
+=== five_island_lost_cave_room_12
+Lost Cave
+grass 15-52
+=== five_island_lost_cave_room_13
+Lost Cave
+grass 15-52
+=== five_island_lost_cave_room_14
+Lost Cave
+grass 15-52
+=== five_island_lost_cave_room_2
+Lost Cave
+grass 22-52
+=== five_island_lost_cave_room_3
+Lost Cave
+grass 22-52
+=== five_island_lost_cave_room_4
+Lost Cave
+grass 22-52
+trainers 1, 48-49: kanto_psychic_laura 49
+=== five_island_lost_cave_room_5
+Lost Cave
+grass 22-52
+=== five_island_lost_cave_room_6
+Lost Cave
+grass 22-52
+=== five_island_lost_cave_room_7
+Lost Cave
+grass 22-52
+=== five_island_lost_cave_room_8
+Lost Cave
+grass 22-52
+=== five_island_lost_cave_room_9
+Lost Cave
+grass 22-52
+=== five_island_meadow
+Five Isle Meadow
+grass 10-50
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 3, 48-49: kanto_team_rocket_grunt_49 48, kanto_team_rocket_grunt_50 49, kanto_team_rocket_grunt_51 48
+=== five_island_memorial_pillar
+Memorial Pillar
+grass 6-16
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 3, 47-49: kanto_bird_keeper_chaz 49, kanto_bird_keeper_harold 49, kanto_bird_keeper_milo 49
+=== five_island_resort_gorgeous
+Resort Gorgeous
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 7, 47-50: kanto_lady_gillian 49, kanto_lady_jacki 50, kanto_painter_celina 50, kanto_painter_daisy 50, kanto_painter_rayna 50, kanto_swimmer_male_toby 48, kanto_youngster_destin 48
+=== five_island_rocket_warehouse
+Rocket Warehouse
+trainers 4, 48-54: kanto_team_rocket_admin 54, kanto_team_rocket_grunt_42 49, kanto_team_rocket_grunt_47 48, kanto_team_rocket_grunt_48 49
+=== five_island_water_labyrinth
+Water Labyrinth
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 1, 48: kanto_pkmn_breeder_alize 48
+=== floccesy_ranch
+Floccesy Ranch
+surf 5-15
+super rod 40-70
+=== floccesy_ranch_2
+Floccesy Ranch
+grass 4-7
+surf 5-15
+super rod 40-70
+trainers 3, 6: unova_janitor_orville 6, unova_lass_molly 6, unova_youngster_kenny 6
+=== fortree_city_gym
+Fortree City
+trainers 6, 27-30: hoenn_ashley 27, hoenn_darius 30, hoenn_edwardo 29, hoenn_flint 29, hoenn_humberto 30, hoenn_jared 27
+=== four_island
+Four Island
+surf 5-35
+old rod 5
+good rod 5-15
+super rod 15-35
+=== four_island_icefall_cave_1f
+Icefall Cave
+grass 23-48
+=== four_island_icefall_cave_b1f
+Icefall Cave
+grass 23-48
+=== four_island_icefall_cave_back
+Icefall Cave
+grass 40-53
+surf 5-45
+old rod 5
+good rod 5-15
+super rod 15-35
+=== four_island_icefall_cave_entrance
+Icefall Cave
+grass 40-53
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
 === fuchsia_city
 Fuchsia City
 surf 20-40
@@ -285,6 +428,27 @@ super rod 20-55
 === goldenrod_gym
 Goldenrod City
 trainers 4, 9-17: johto_beauty_samantha 16, johto_beauty_victoria 16, johto_lass_carrie 17, johto_lass_cathy 15
+=== goldenrod_radio_tower_2f
+Radio Tower
+trainers 4, 21-26: johto_team_rocket_f_grunt_2 26, johto_team_rocket_grunt_4 25, johto_team_rocket_grunt_5 23, johto_team_rocket_grunt_6 26
+=== goldenrod_radio_tower_3f
+Radio Tower
+trainers 4, 23-27: johto_scientist_gs_garett 27, johto_team_rocket_grunt_7 23, johto_team_rocket_grunt_8 26, johto_team_rocket_grunt_9 26
+=== goldenrod_radio_tower_4f
+Radio Tower
+trainers 3, 22-33: johto_executive_proton_proton_2 33, johto_scientist_gs_trenton 30, johto_team_rocket_grunt_10 24
+=== goldenrod_radio_tower_5f
+Radio Tower
+trainers 1, 32: johto_executive_ariana_ariana 32
+=== goldenrod_tunnel_b1f
+Goldenrod Tunnel
+trainers 4, 7-12: johto_poke_maniac_donald 11, johto_poke_maniac_issac 12, johto_super_nerd_eric 11, johto_super_nerd_teru 11
+=== goldenrod_tunnel_b2f
+Goldenrod City
+trainers 6, 23-27: johto_burglar_duncan 25, johto_burglar_orson 26, johto_team_rocket_f_grunt_3 25, johto_team_rocket_grunt_11 25, johto_team_rocket_grunt_12 27, johto_team_rocket_grunt_23 24
+=== goldenrod_tunnel_warehouse
+Goldenrod City
+trainers 3, 23-26: johto_team_rocket_grunt_13 24, johto_team_rocket_grunt_14 26, johto_team_rocket_grunt_22 25
 === granite_cave_1f
 Granite Cave
 grass 6-10
@@ -339,6 +503,36 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 20-55
+=== hoenn_safari_zone_north
+Safari Zone
+grass 27-31
+=== hoenn_safari_zone_northeast
+Safari Zone
+grass 33-40
+=== hoenn_safari_zone_northwest
+Safari Zone
+grass 27-31
+surf 20-40
+old rod 5-10
+good rod 10-30
+super rod 25-40
+=== hoenn_safari_zone_south
+Safari Zone
+grass 25-29
+=== hoenn_safari_zone_southeast
+Safari Zone
+grass 33-40
+surf 25-40
+old rod 25-30
+good rod 25-35
+super rod 25-40
+=== hoenn_safari_zone_southwest
+Safari Zone
+grass 25-29
+surf 20-35
+old rod 5-10
+good rod 10-30
+super rod 25-40
 === ice_path_1f
 Ice Path
 grass 21-23
@@ -390,6 +584,22 @@ grass 31-35
 Jagged Pass
 grass 20-22
 trainers 5, 19-21: hoenn_autumn 21, hoenn_diana_1 19, hoenn_eric 20, hoenn_ethan_1 20, hoenn_julio 21
+=== johto_route_22
+Route 22
+grass 3-7
+surf 5-10
+old rod 10
+good rod 20
+super rod 40
+=== johto_victory_road_1f
+Victory Road Jk
+grass 32-36
+=== johto_victory_road_2f
+Victory Road Jk
+grass 32-36
+=== johto_victory_road_3f
+Victory Road Jk
+grass 32-36
 === jubilife_city
 Jubilife City
 trainers 2, 11: galactic_grunt_jubilife_city_1 11, galactic_grunt_jubilife_city_2 11
@@ -941,6 +1151,28 @@ old rod 5-10
 good rod 10-30
 super rod 20-45
 trainers 9, 11-17: hoenn_aisha 17, hoenn_anna_and_meg_1 17, hoenn_brandi 17, hoenn_derek 16, hoenn_dylan_1 17, hoenn_isaac_1 11, hoenn_lydia_1 11, hoenn_maria_1 17, hoenn_melina 17
+=== route_118
+Route 118
+grass 24-27
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 7, 14-26: hoenn_barny 25, hoenn_chester 25, hoenn_dalton_1 15, hoenn_deandre 14, hoenn_perry 26, hoenn_rose_1 14, hoenn_wade 16
+=== route_119
+Route 119
+grass 24-27
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 17, 20-29: hoenn_brent 26, hoenn_catherine_1 26, hoenn_chris 29, hoenn_dayton 25, hoenn_donald 24, hoenn_doug 28, hoenn_fabian 26, hoenn_greg 25, hoenn_hideo 25, hoenn_hugh 25, hoenn_jackson_1 27, hoenn_kent 25, hoenn_phil 26, hoenn_rachel 26, hoenn_takashi 25, hoenn_taylor 27, hoenn_yasu 26
+=== route_119_weather_institute_1f
+Route 119
+trainers 2, 27-28: hoenn_grunt_weather_inst_1 27, hoenn_grunt_weather_inst_4 28
+=== route_119_weather_institute_2f
+Route 119
+trainers 4, 26-28: hoenn_grunt_weather_inst_2 27, hoenn_grunt_weather_inst_3 26, hoenn_grunt_weather_inst_5 27, hoenn_shelly_weather_institute 28
 === route_12
 Route 12
 grass 22-30
@@ -949,6 +1181,22 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 8, 21-29: kanto_camper_justin 29, kanto_fisherman_andrew 24, kanto_fisherman_chip 24, kanto_fisherman_elliot 21, kanto_fisherman_hank 27, kanto_fisherman_ned 22, kanto_rocker_luca 29, kanto_young_couple_gia_jes 24
+=== route_120
+Route 120
+grass 25-27
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 13, 27-30: hoenn_angelica 30, hoenn_callie 28, hoenn_chip 27, hoenn_clarissa 28, hoenn_colin 28, hoenn_jeffrey_1 27, hoenn_jenna 28, hoenn_jennifer 30, hoenn_keigo 28, hoenn_leonel 30, hoenn_lorenzo 28, hoenn_riley 28, hoenn_robert_1 29
+=== route_121
+Route 121
+grass 25-28
+surf 5-35
+old rod 5-10
+good rod 10-30
+super rod 20-45
+trainers 10, 25-32: hoenn_cale 29, hoenn_cristin_1 29, hoenn_jessica_1 29, hoenn_kate_and_joy 32, hoenn_marcel 29, hoenn_myles 25, hoenn_pat 25, hoenn_tammy 29, hoenn_vanessa 30, hoenn_walter_1 29
 === route_124
 Route 124
 surf 5-35
@@ -1283,6 +1531,22 @@ old rod 5
 good rod 5-15
 super rod 15-35
 trainers 9, 13-17: kanto_camper_flint 14, kanto_hiker_franklin 15, kanto_hiker_nob 13, kanto_hiker_wayne 17, kanto_lass_haley 13, kanto_picnicker_kelsey 15, kanto_youngster_chad 14, kanto_youngster_dan 17, kanto_youngster_joey 15
+=== route_26
+Route 26
+grass 28-32
+surf 25-30
+old rod 10
+good rod 20
+super rod 40
+trainers 6, 30-36: johto_ace_trainer_f_jamie 36, johto_ace_trainer_f_joyce 36, johto_ace_trainer_m_gaven 32, johto_ace_trainer_m_jake 35, johto_fisherman_scott 34, johto_psychic_m_vernon 36
+=== route_27
+Route 27
+grass 28-32
+surf 15-20
+old rod 10
+good rod 20
+super rod 40
+trainers 6, 30-40: johto_ace_trainer_f_megan 32, johto_ace_trainer_f_reena 36, johto_ace_trainer_m_blake 33, johto_ace_trainer_m_brian 35, johto_bird_keeper_gs_jose_2 40, johto_psychic_m_eli 34
 === route_29
 Route 29
 grass 2-4
@@ -1607,6 +1871,49 @@ surf 20-40
 old rod 3-15
 good rod 10-25
 super rod 30-55
+=== seven_island_sevault_canyon
+Sevault Canyon
+grass 15-54
+trainers 7, 47-52: kanto_cool_couple_lex_nya 52, kanto_cooltrainer_leroy 50, kanto_cooltrainer_michelle 50, kanto_crush_girl_cyndy 48, kanto_pkmn_ranger_jackson 49, kanto_pkmn_ranger_katelyn 52, kanto_tamer_evan 49
+=== seven_island_sevault_canyon_entrance
+Canyon Entrance
+grass 10-50
+trainers 5, 47-51: kanto_aroma_lady_miah 50, kanto_juggler_mason 47, kanto_pkmn_ranger_madeline 51, kanto_pkmn_ranger_nicolas 51, kanto_young_couple_eve_jon 50
+=== seven_island_tanoby_ruins
+Tanoby Ruins
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 4, 48-50: kanto_gentleman_clifford 49, kanto_painter_edna 50, kanto_ruin_maniac_benjamin 48, kanto_ruin_maniac_brandon 50
+=== seven_island_tanoby_ruins_dilford_chamber
+Dilford Chamber
+grass 25
+=== seven_island_tanoby_ruins_liptoo_chamber
+Liptoo Chamber
+grass 25
+=== seven_island_tanoby_ruins_monean_chamber
+Monean Chamber
+grass 25
+=== seven_island_tanoby_ruins_rixy_chamber
+Rixy Chamber
+grass 25
+=== seven_island_tanoby_ruins_scufib_chamber
+Scufib Chamber
+grass 25
+=== seven_island_tanoby_ruins_viapois_chamber
+Viapois Chamber
+grass 25
+=== seven_island_tanoby_ruins_weepth_chamber
+Weepth Chamber
+grass 25
+=== seven_island_trainer_tower
+Trainer Tower
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 2, 48-52: kanto_psychic_dario 52, kanto_psychic_rodette 50
 === silph_co_10f
 Silph Co.
 trainers 2, 29-33: kanto_scientist_travis 29, kanto_team_rocket_grunt_39 33
@@ -1637,6 +1944,43 @@ trainers 3, 26-29: kanto_scientist_parker 29, kanto_team_rocket_grunt_32 26, kan
 === silph_co_9f
 Silph Co.
 trainers 3, 28: kanto_scientist_ed 28, kanto_team_rocket_grunt_37 28, kanto_team_rocket_grunt_38 28
+=== six_island_altering_cave
+Altering Cave
+grass 6-16
+=== six_island_green_path
+Green Path
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 1, 48-49: kanto_psychic_jaclyn 49
+=== six_island_outcast_island
+Outcast Island
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 5, 48-50: kanto_fisherman_tylor 49, kanto_sis_and_bro_ava_geb 50, kanto_swimmer_female_nicole 50, kanto_swimmer_male_mymo 49, kanto_team_rocket_grunt_46 48
+=== six_island_pattern_bush
+Pattern Bush
+grass 6-30
+trainers 12, 45-50: kanto_bug_catcher_garret 49, kanto_bug_catcher_jonah 47, kanto_bug_catcher_vance 48, kanto_camper_riley 50, kanto_lass_dalia 48, kanto_lass_joana 49, kanto_picnicker_marcy 49, kanto_pkmn_breeder_allison 48, kanto_pkmn_breeder_bethany 50, kanto_ruin_maniac_layton 48, kanto_youngster_cordell 48, kanto_youngster_nash 49
+=== six_island_ruin_valley
+Ruin Valley
+grass 15-52
+surf 5-25
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 5, 48-50: kanto_hiker_daryl 50, kanto_pokemaniac_hector 49, kanto_ruin_maniac_foster 50, kanto_ruin_maniac_larry 49, kanto_ruin_maniac_stanly 48
+=== six_island_water_path
+Water Path
+grass 10-50
+surf 5-40
+old rod 5
+good rod 5-15
+super rod 15-35
+trainers 6, 46-50: kanto_aroma_lady_rose 49, kanto_hiker_earl 49, kanto_juggler_edward 48, kanto_swimmer_female_denise 49, kanto_swimmer_male_samir 50, kanto_twins_miu_mia 50
 === slateport_city
 Slateport City
 surf 5-35
@@ -1795,6 +2139,15 @@ surf 30-50
 old rod 3-15
 good rod 10-25
 super rod 20-55
+=== team_rocket_headquarters_b1f
+Team Rocket Hq
+trainers 2, 16-20: johto_scientist_gs_gregg 20, johto_team_rocket_grunt_15 16
+=== team_rocket_headquarters_b2f
+Team Rocket Hq
+trainers 5, 17-27: johto_executive_ariana_ariana_2 27, johto_team_rocket_grunt_16 18, johto_team_rocket_grunt_17 17, johto_team_rocket_grunt_18 18, johto_team_rocket_grunt_25 20
+=== team_rocket_headquarters_b3f
+Team Rocket Hq
+trainers 5, 18-24: johto_executive_petrel_petrel_2 24, johto_scientist_gs_mitch 24, johto_scientist_gs_ross 22, johto_team_rocket_f_grunt_5 18, johto_team_rocket_grunt_19 19
 === three_island_berry_forest
 Berry Forest
 grass 30-40
@@ -1813,6 +2166,13 @@ trainers 6, 34-38: kanto_aroma_lady_nikki 37, kanto_aroma_lady_violet 36, kanto_
 === three_island_port
 Three Island
 grass 5-35
+=== tohjo_falls
+Tohjo Falls
+grass 20-23
+surf 20
+old rod 10
+good rod 20
+super rod 40
 === trophy_garden
 Trophy Garden
 grass 21-24
@@ -1907,6 +2267,17 @@ old rod 10
 good rod 20
 super rod 40
 trainers 3, 22-28: johto_ace_trainer_f_emma 28, johto_ace_trainer_f_gwen 26, johto_ace_trainer_m_nick 26
+=== unova_route_19
+Route 19
+grass 2-4
+surf 5-15
+super rod 40-70
+=== unova_route_20
+Route 20
+grass 2-4
+surf 5-15
+super rod 40-70
+trainers 7, 4-11: unova_lass_isabel 4, unova_nursery_aide_kimya 11, unova_preschooler_albert 10, unova_preschooler_lin 10, unova_twins_lia_lily 9, unova_youngster_petey 4, unova_youngster_terrell 4
 === valley_windworks_outside
 Valley Windworks
 grass 9-12

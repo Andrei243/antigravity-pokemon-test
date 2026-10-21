@@ -6283,6 +6283,73 @@ from the tile read at 47,48 of BattleFrontier
 from the tile read at 47,49 of BattleFrontier
 way -
   > A statue of a trainer holding a Poké Ball high, with a Pokémon just caught inside it.
+=== blackthorn.DenGuard
+from Old Man at 672,133 of Johto
+way -
+  Old Man> No, no. Only trainers who have been chosen may go into the Den. Please turn back.
+=== blackthorn.DenGuardAside
+from Old Man at 673,133 of Johto
+way -
+  Old Man> If Clair agrees to it, so will her grandfather, our elder. Go on in.
+=== blackthorn.GymGuard
+from Man at 668,152 of Johto
+way -
+  Man> I'm sorry. Clair, our Leader, has gone into the Dragon's Den behind the Gym, and nobody knows when she'll be back.
+=== blackthorn.GymGuardAside
+from Man at 669,152 of Johto
+way -
+  Man> Clair is waiting for challengers. Just don't expect an ordinary trainer to stand a chance against her.
+=== blackthorn_gym.BackToTheDoor
+from the trigger at 23,41 of Blackthorn_Gym
+from the trigger at 3,62 of Blackthorn_Gym
+from the trigger at 5,9 of Blackthorn_Gym
+way -
+  * walk player onspot down onspot left onspot up onspot right
+  * sound warp
+  * warp Blackthorn_Gym 8 83
+=== blackthorn_gym.Clair
+from Clair at 12,3 of Blackthorn_Gym
+way 0
+  Clair> I am Clair, the finest master of Dragon-type Pokémon there is. I can stand up to the Elite Four themselves.
+  Clair> You still want to battle me? ...Fine. A Gym Leader holds nothing back, whoever comes. Here I come!
+  Clair> I won't accept this. I lost, yes, but you're still not ready for the Pokémon League.
+  Clair> I know. Take the dragon tamers' test. Behind this Gym is the Dragon's Den, and a shrine stands at its heart. Go there.
+  Clair> Show the elder you've left your soft ideas behind, and I'll admit you deserve a Badge.
+  * scene blackthorn_gym.Clair
+  * battle johto_leader_clair_clair Won
+  * defeat johto_ace_trainer_m_paulo
+  * defeat johto_ace_trainer_m_cody
+  * defeat johto_ace_trainer_m_mike
+  * defeat johto_ace_trainer_f_fran
+  * defeat johto_ace_trainer_f_lola
+  * endscene
+  + FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT
+  + FLAG_UNK_0D1
+  + beaten johto_ace_trainer_f_fran
+  + beaten johto_ace_trainer_f_lola
+  + beaten johto_ace_trainer_m_cody
+  + beaten johto_ace_trainer_m_mike
+  + beaten johto_ace_trainer_m_paulo
+  + beaten johto_leader_clair_clair
+  + seen blackthorn_gym.Clair
+way 1, from answer 1
+  * battle johto_leader_clair_clair Lost
+  * scene over, unseen
+=== blackthorn_gym.Guide
+from the trigger at 12,82 of Blackthorn_Gym
+way -
+  Gym Guide> Hey, champ in the making! Careful: the floor in here is lava, so you cross it on the stone slabs. Press the buttons on a slab to turn it or slide it.
+  Gym Guide> Clair's Pokémon are dragons, and dragons shrug off most attacks. Ice moves are what they hate.
+  * scene blackthorn_gym.The Blackthorn Gym's guide
+  * emote Gym Guide Exclaim
+  * endscene
+  + FLAG_UNK_138
+  = VAR_UNK_4120 0 -> 1
+  + seen blackthorn_gym.The Blackthorn Gym's guide
+=== blackthorn_gym.GuideTalk
+from Gym Guide at 15,82 of Blackthorn_Gym
+way -
+  Gym Guide> Clair's Pokémon are dragons, and dragons shrug off most attacks. Ice moves are what they hate. And mind the lava!
 === burned_tower_1f.Eusine
 from the trigger at 19,23 of BurnedTower_1F
 way -
@@ -6751,6 +6818,20 @@ way 1, from answer 1
   + FLAG_EXAMINED_CELESTIC_TOWN_CAVE_PAINTING
   + FLAG_HIDE_CELESTIC_TOWN_ELDER
   + seen celestic_town_cave.The painting
+=== cerulean_cave_b1f.Mewtwo
+from Mewtwo at 7,12 of CeruleanCave_B1F
+way 0
+  > Myuu...\nA cold, sharp will pressed against Lucas's mind!
+  * scene cerulean_cave_b1f.Mewtwo
+  * cry Mewtwo
+  * wildbattle Mewtwo 70 Won
+  * endscene
+  + FLAG_FOUGHT_MEWTWO
+  + FLAG_HIDE_MEWTWO
+  + seen cerulean_cave_b1f.Mewtwo
+way 1, from answer 1
+  * wildbattle Mewtwo 70 Lost
+  * scene over, unseen
 === cerulean_city.Grunt
 from Grunt at 297,46 of Kanto
 way 0
@@ -7517,6 +7598,10 @@ way -
   * fade out
   * fanfare FanfareHeal
   * fade in
+=== common.Bookshelf
+from a trainer with lines of their own
+way -
+  > The shelves are packed with books about Pokémon and the places they live.
 === common.Boulder
 from an obstacle, with every field move and every badge
 way 0
@@ -8204,6 +8289,49 @@ way -
 from a trainer with lines of their own
 way -
   > Lucas used an Escape Rope.
+=== common.GabbyAndTyAfterTheBattle
+from a trainer with lines of their own
+way 0
+  Gabby> By the way, who ARE you? A trainer who battles like that deserves an interview. Would you mind?
+  Gabby> Wonderful! Then tell us in two words: how did that battle feel?
+  Gabby> Perfect! That's just what the viewers want. We'll be seeing you!
+  ? By the way, who ARE you? A trainer who battles like that deserves an interview. Would you mind? = Yes
+  * open Phrase GABBY_AND_TY feelings:happy small:together
+  + FLAG_GABBY_AND_TY_ON_AIR
+  + FLAG_GABBY_AND_TY_QUOTE_PENDING
+  + FLAG_GABBY_AND_TY_SHOW_NEW
+  + FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN
+  = VAR_GABBY_AND_TY_BATTLE_NUM 0 -> 1
+  = VAR_GABBY_AND_TY_NEW_TRIVIA 0 -> 1
+  = VAR_GABBY_AND_TY_ROUTE 0 -> 111
+  = VAR_GABBY_AND_TY_TRIVIA 0 -> 1
+way 1, from answer 1
+  Gabby> Oh, no interview? We won't give up. We'll find you again!
+  ? By the way, who ARE you? A trainer who battles like that deserves an interview. Would you mind? = No
+  + FLAG_MAP_LOCAL_GABBY_AND_TY_BEATEN
+  = VAR_GABBY_AND_TY_BATTLE_NUM 0 -> 1
+  = VAR_GABBY_AND_TY_NEW_TRIVIA 0 -> 1
+  = VAR_GABBY_AND_TY_ROUTE 0 -> 111
+=== common.GabbyAndTyFight
+from a trainer with lines of their own
+way 0
+  * battle hoenn_gabby_and_ty_1 Won
+  = VAR_GABBY_AND_TY_MON_1 0 -> 387
+  + beaten hoenn_gabby_and_ty_1
+way 1, from answer 1
+  * battle hoenn_gabby_and_ty_1 Lost
+  = VAR_GABBY_AND_TY_MON_1 0 -> 387
+=== common.GabbyAndTyGabby
+from a trainer with lines of their own
+way -
+  Gabby> A double battle's what we're after, and you've only one Pokémon to fight with. Come back with two!
+=== common.GabbyAndTyTy
+from a trainer with lines of their own
+way -
+  Ty> Gabby wants a double battle, and one Pokémon makes only half of one. Come back with two.
+=== common.GabbyAndTyUpdateLocation
+from a trainer with lines of their own
+way -
 === common.Grown0
 from a trainer with lines of their own
 way -
@@ -8291,6 +8419,41 @@ way -
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
+=== common.HoennChapterSeven
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL
+  + FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1
+  + FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2
+  + FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
+  + FLAG_HIDE_ROUTE_119_RIVAL
+  + FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE
+  + FLAG_HIDE_ROUTE_119_SCOTT
+  + FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1
+  + FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
+  + FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_SHADOW
+  + FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
+  + FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
+  + FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
+  + FLAG_HOENN_CHAPTER_SEVEN
+=== common.HoennChapterSevenB
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION
+  + FLAG_HOENN_CHAPTER_SEVEN_B
+=== common.HoennChapterSevenC
+from a trainer with lines of their own
+way -
+  + FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL
+  + FLAG_HIDE_ROUTE_111_GABBY_AND_TY_1
+  + FLAG_HIDE_ROUTE_111_GABBY_AND_TY_2
+  + FLAG_HIDE_ROUTE_111_GABBY_AND_TY_3
+  + FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1
+  + FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2
+  + FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
+  + FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1
+  + FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
+  + FLAG_HOENN_CHAPTER_SEVEN_C
 === common.HoennChapterSix
 from a trainer with lines of their own
 way -
@@ -8327,6 +8490,18 @@ way -
   + FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDA
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
+=== common.HoennKecleonFound
+from a Kecleon seen through the Devon Scope
+way 0
+  * cry Kecleon
+  * wildbattle Kecleon 30 Won
+  + FLAG_HIDE_TEST_KECLEON
+way 1, from answer 1
+  * wildbattle Kecleon 30 Lost
+=== common.HoennKecleonLook
+from a trainer with lines of their own
+way -
+  > Something unseeable is in the way.
 === common.HoennNewGame
 from a trainer with lines of their own
 way -
@@ -8347,6 +8522,7 @@ way -
   + FLAG_HIDE_MAUVILLE_CITY_SCOTT
   + FLAG_HIDE_MAUVILLE_CITY_WATTSON
   + FLAG_HIDE_METEOR_FALLS_TEAM_AQUA
+  + FLAG_HIDE_MOSSDEEP_CITY_HOUSE_2_WINGULL
   + FLAG_HIDE_MR_BRINEY_DEWFORD_TOWN
   + FLAG_HIDE_MT_CHIMNEY_LAVA_COOKIE_LADY
   + FLAG_HIDE_MT_CHIMNEY_TRAINERS
@@ -8376,6 +8552,15 @@ way -
   + FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE
   + FLAG_HIDE_ROUTE_116_DEVON_EMPLOYEE
   + FLAG_HIDE_ROUTE_116_MR_BRINEY
+  + FLAG_HIDE_ROUTE_118_GABBY_AND_TY_1
+  + FLAG_HIDE_ROUTE_118_GABBY_AND_TY_2
+  + FLAG_HIDE_ROUTE_118_GABBY_AND_TY_3
+  + FLAG_HIDE_ROUTE_119_RIVAL
+  + FLAG_HIDE_ROUTE_119_RIVAL_ON_BIKE
+  + FLAG_HIDE_ROUTE_119_SCOTT
+  + FLAG_HIDE_ROUTE_120_GABBY_AND_TY_1
+  + FLAG_HIDE_ROUTE_120_GABBY_AND_TY_2
+  + FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE_SHADOW
   + FLAG_HIDE_RUSTBORO_CITY_AQUA_GRUNT
   + FLAG_HIDE_RUSTBORO_CITY_DEVON_CORP_3F_MR_STONE_2
   + FLAG_HIDE_RUSTBORO_CITY_DEVON_EMPLOYEE_1
@@ -8386,6 +8571,7 @@ way -
   + FLAG_HIDE_RUSTURF_TUNNEL_PEEKO
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDA
   + FLAG_HIDE_RUSTURF_TUNNEL_WANDAS_BOYFRIEND
+  + FLAG_HIDE_SAFARI_ZONE_SOUTH_EAST_EXPANSION
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_1
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_AQUA_GRUNT_2
   + FLAG_HIDE_SLATEPORT_CITY_OCEANIC_MUSEUM_2F_ARCHIE
@@ -8397,6 +8583,12 @@ way -
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLYS_UNCLE
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDA
   + FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WANDAS_BOYFRIEND
+  + FLAG_HIDE_WEATHER_INSTITUTE_1F_WORKERS
+  + FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
+  + FLAG_HIDE_WEATHER_INSTITUTE_2F_WORKERS
+  + FLAG_HOENN_CHAPTER_SEVEN
+  + FLAG_HOENN_CHAPTER_SEVEN_B
+  + FLAG_HOENN_CHAPTER_SEVEN_C
   = VAR_LITTLEROOT_HOUSES_STATE_MAY 0 -> 1
 === common.HoennOpeningDone
 from a trainer with lines of their own
@@ -8558,6 +8750,18 @@ way -
 === common.JohtoPokegear
 from a trainer with lines of their own
 way -
+=== common.JohtoTakeoverCall
+from a trainer with lines of their own
+way -
+  > Brrrring! Brrrring! It's the Pokégear...
+  Prof. Elm> Lucas! Is that you? Have you had the radio on? Every station's been playing the same thing for an hour.
+  Prof. Elm> It's Team Rocket! They're broadcasting from the Radio Tower in Goldenrod City. They say they've taken it over!
+  Prof. Elm> If they can reach every radio in Johto with that signal of theirs... Lucas, please be careful. Go and see what's happening!
+  > Click... The call has ended.
+  * sound select
+  + FLAG_ROCKET_TAKEOVER_ACTIVE
+  + FLAG_UNK_0C5
+  = VAR_SCENE_ROCKET_TAKEOVER 0 -> 2
 === common.KantoNewGame
 from a trainer with lines of their own
 way -
@@ -8849,6 +9053,86 @@ way -
   + FLAG_HIDE_CINNABAR_POKECENTER_BILL
   = VAR_MAP_SCENE_CINNABAR_ISLAND 0 -> 2
   = VAR_MAP_SCENE_ONE_ISLAND_HARBOR 0 -> 1
+=== common.SeagallopRainbow
+from a trainer with lines of their own
+way 0.0
+  Anyone> Where would you like to sail?
+  Anyone> Which port of Kanto?
+  Anyone> Ha! We're moored right here already. Pick another port, and we'll cast off.
+  ? Where would you like to sail? = KANTO
+  ? Which port of Kanto? = VERMILION CITY
+way 0.2, from answer 2
+  Anyone> Come back any time.
+  ? Which port of Kanto? = NOT NOW
+way 0.1, from answer 2
+  Anyone> All aboard for Cinnabar Island!
+  > The Seagallop sped across the waves.
+  ? Which port of Kanto? = CINNABAR ISLAND
+  * fade out
+  * warp Kanto 82 387
+  * fade in
+way 3, from answer 1
+  Anyone> Come back any time.
+  ? Where would you like to sail? = NOT NOW
+way 2.0, from answer 1
+  Anyone> Which island?
+  Anyone> All aboard for Four Island!
+  > The Seagallop sped across the waves.
+  ? Where would you like to sail? = FOUR TO SEVEN ISLAND
+  ? Which island? = FOUR ISLAND
+  * fade out
+  * warp FourIsland_Harbor 8 5
+  * fade in
+way 2.4, from answer 2
+  Anyone> Come back any time.
+  ? Which island? = NOT NOW
+way 2.3, from answer 2
+  Anyone> All aboard for Seven Island!
+  > The Seagallop sped across the waves.
+  ? Which island? = SEVEN ISLAND
+  * fade out
+  * warp SevenIsland_Harbor 8 5
+  * fade in
+way 2.2, from answer 2
+  Anyone> All aboard for Six Island!
+  > The Seagallop sped across the waves.
+  ? Which island? = SIX ISLAND
+  * fade out
+  * warp SixIsland_Harbor 8 5
+  * fade in
+way 2.1, from answer 2
+  Anyone> All aboard for Five Island!
+  > The Seagallop sped across the waves.
+  ? Which island? = FIVE ISLAND
+  * fade out
+  * warp FiveIsland_Harbor 8 5
+  * fade in
+way 1.0, from answer 1
+  Anyone> Which island?
+  Anyone> All aboard for One Island!
+  > The Seagallop sped across the waves.
+  ? Where would you like to sail? = ONE TO THREE ISLAND
+  ? Which island? = ONE ISLAND
+  * fade out
+  * warp OneIsland_Harbor 8 5
+  * fade in
+way 1.3, from answer 2
+  Anyone> Come back any time.
+  ? Which island? = NOT NOW
+way 1.2, from answer 2
+  Anyone> All aboard for Three Island!
+  > The Seagallop sped across the waves.
+  ? Which island? = THREE ISLAND
+  * fade out
+  * warp ThreeIsland_Harbor 8 5
+  * fade in
+way 1.1, from answer 2
+  Anyone> All aboard for Two Island!
+  > The Seagallop sped across the waves.
+  ? Which island? = TWO ISLAND
+  * fade out
+  * warp TwoIsland_Harbor 8 5
+  * fade in
 === common.SeagallopSails
 from a trainer with lines of their own
 way -
@@ -8861,12 +9145,40 @@ way -
   * fade out
   * warp Kanto 82 387
   * fade in
+=== common.SeagallopToFiveIsland
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+  * warp FiveIsland_Harbor 8 5
+  * fade in
+=== common.SeagallopToFourIsland
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+  * warp FourIsland_Harbor 8 5
+  * fade in
 === common.SeagallopToOneIsland
 from a trainer with lines of their own
 way -
   > The Seagallop sped across the waves.
   * fade out
   * warp OneIsland_Harbor 8 5
+  * fade in
+=== common.SeagallopToSevenIsland
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+  * warp SevenIsland_Harbor 8 5
+  * fade in
+=== common.SeagallopToSixIsland
+from a trainer with lines of their own
+way -
+  > The Seagallop sped across the waves.
+  * fade out
+  * warp SixIsland_Harbor 8 5
   * fade in
 === common.SeagallopToThreeIsland
 from a trainer with lines of their own
@@ -8914,6 +9226,12 @@ way -
 from a trainer with lines of their own
 way -
   Anyone> A line of its own.
+=== common.Television
+from a trainer with lines of their own
+way -
+  TV> "It's 10:00 on Monday, and this is the time check!"
+  TV> "Good morning! The dew is still on the grass, and the Pokémon are waking up."
+  TV> "That was the time check. Stay tuned!"
 === common.TimedPeople
 from a trainer with lines of their own
 way -
@@ -8929,6 +9247,10 @@ way -
   + FLAG_HIDE_ROUTE_215_JOGGER_SCOTT
   + FLAG_HIDE_ROUTE_222_POLICEMAN_THOMAS
   + FLAG_HIDE_VALLEY_WINDWORKS_OUTSIDE_DRIFLOON
+=== common.TownMap
+from a trainer with lines of their own
+way -
+  * open TownMap
 === common.Trainer
 from a trainer with lines of their own
 way 0
@@ -8955,6 +9277,10 @@ way 0
   + beaten anyone
 way 1, from answer 1
   * battle anyone and anyone with cheryl_eterna_forest Lost
+=== common.TrashCan
+from a trainer with lines of their own
+way -
+  > Nothing in it but a few scraps of paper.
 === common.UseCut
 from an obstacle, with every field move and every badge
 way -
@@ -9521,6 +9847,33 @@ way 0
   * warp TurnbackCaveGiratinaRoom 11 15
 way 1, from answer 1
   ? The air is torn here, and Turnback Cave shows through the tear. Leap into the portal? = No
+=== dragons_den.Clair
+from the trigger at 27,14 of DragonsDen
+way -
+  Clair> Wait!
+  Clair> I'm sorry about before. Here. Take this as my apology.
+  > Lucas received the TM59!
+  > TM59 holds the move Dragon Pulse.
+  > Lucas put it away in the TMs & HMs pocket.
+  Clair> That's Dragon Pulse. It's... a sort of great surge of energy. You don't have to use it if you don't want to.
+  Clair> If you're heading for the Pokémon League, go back to New Bark Town and Surf east along Route 27.
+  Clair> Something in your face says you've unfinished business. Whatever comes next, don't you dare give up!
+  * scene dragons_den.Clair in the Dragon's Den
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_GOT_TM59_FROM_CLAIR
+  + FLAG_HIDE_VICTORY_ROAD_CLAIR
+  = VAR_UNK_40C4 0 -> 2
+  + seen dragons_den.Clair in the Dragon's Den
+=== dragons_den.ClairTalk
+from Clair at 24,14 of DragonsDen
+way -
+  Clair> Hm? What is it? I'm on my way back to the Gym.
+=== dragons_den_shrine.Elder
+from Elder at 6,9 of DragonsDen_Shrine
+way -
+  Elder> Welcome to the Dragon Shrine. Here the dragon tamers of Blackthorn learn what it means to be strong.
+  Elder> When the time is right, I will ask you some questions. Not yet.
 === ecruteak.RivalBumps
 from the trigger at 397,174 of Johto
 way -
@@ -9941,6 +10294,102 @@ way 1, from answer 1
 from Volkner at 655,424 of Sinnoh
 way -
   Volkner> Sorry about my friend. He means well. He dragged me out here because he thinks it will do me good.
+=== five_island_harbor.Sailor
+from Sailor at 8,6 of FiveIsland_Harbor
+way -
+  Sailor> The Seagallop sails only for holders of a pass, I'm afraid.
+=== five_island_lost_cave_room_10.Selphy
+from Selphy at 5,5 of FiveIsland_LostCave_Room10
+way -
+  Selphy> Which way is out? Every room looks the same!
+=== five_island_meadow.WarehouseDoor
+from the tile read at 84,61 of FiveIsland
+way -
+  > A keypad by the door. Lucas typed in the password: 'Seel the deal'. Beep! A second password is needed.
+=== five_island_memorial_pillar.Memorial
+from the tile read at 105,103 of FiveIsland
+way -
+  > Words are cut into the stone: 'For Onix, my dearest friend.'
+=== five_island_memorial_pillar.MemorialMan
+from Man at 104,104 of FiveIsland
+way -
+  Man> This stone stands for my Onix. We were together for a long, long time.
+  Man> It loved Lemonade more than anything. I come here every day to keep it company.
+=== five_island_resort_gorgeous.Selphy
+from Selphy at 87,9 of FiveIsland
+way -
+  Selphy> Do come in! My house is just here.
+=== five_island_resort_gorgeous_house.Selphy
+from Selphy at 4,4 of FiveIsland_ResortGorgeous_House
+way -
+  Selphy> My hero! My butler has been fussing over me ever since I came home.
+  Selphy> Oh, but while you are here, would you hear one little wish of mine?
+  Selphy> I should dearly love to see some rare Pokémon, but I know of none at all.
+  Selphy> Travel a little and tell me what you find!
+=== five_island_rocket_warehouse.Admin2
+from Admin at 25,11 of FiveIsland_RocketWarehouse
+way 0
+  Admin> These islands are Team Rocket's hunting ground now. Their Pokémon will fetch a fine price far away.
+  Admin> Hmph. You're no ordinary child. Team Rocket will be back, you know, with or without our boss.
+  Admin> Everyone, we're pulling out! Leave the Pokémon!
+  * battle kanto_team_rocket_admin_2 Won
+  * fade out
+  * fade in
+  + FLAG_DEFEATED_ROCKETS_IN_WAREHOUSE
+  + FLAG_HIDE_FIVE_ISLAND_ROCKETS
+  = VAR_MAP_SCENE_ROCKET_WAREHOUSE 0 -> 1
+  + beaten kanto_team_rocket_admin_2
+way 1, from answer 1
+  * battle kanto_team_rocket_admin_2 Lost
+=== five_island_rocket_warehouse.Admin2Trigger
+from the trigger at 22,11 of FiveIsland_RocketWarehouse
+from the trigger at 23,11 of FiveIsland_RocketWarehouse
+from the trigger at 24,11 of FiveIsland_RocketWarehouse
+way -
+  Admin> So you're the brat who's been meddling all over the islands. Come here. I'll deal with you myself.
+  = VAR_MAP_SCENE_ROCKET_WAREHOUSE 0 -> 1
+=== five_island_rocket_warehouse.Cage
+from the tile read at 10,2 of FiveIsland_RocketWarehouse
+from the tile read at 10,4 of FiveIsland_RocketWarehouse
+from the tile read at 10,5 of FiveIsland_RocketWarehouse
+from the tile read at 11,2 of FiveIsland_RocketWarehouse
+from the tile read at 11,4 of FiveIsland_RocketWarehouse
+from the tile read at 11,5 of FiveIsland_RocketWarehouse
+from the tile read at 12,2 of FiveIsland_RocketWarehouse
+from the tile read at 2,4 of FiveIsland_RocketWarehouse
+from the tile read at 2,5 of FiveIsland_RocketWarehouse
+from the tile read at 3,4 of FiveIsland_RocketWarehouse
+from the tile read at 3,5 of FiveIsland_RocketWarehouse
+from the tile read at 4,3 of FiveIsland_RocketWarehouse
+from the tile read at 4,4 of FiveIsland_RocketWarehouse
+from the tile read at 5,3 of FiveIsland_RocketWarehouse
+from the tile read at 5,4 of FiveIsland_RocketWarehouse
+from the tile read at 7,2 of FiveIsland_RocketWarehouse
+from the tile read at 7,4 of FiveIsland_RocketWarehouse
+from the tile read at 7,5 of FiveIsland_RocketWarehouse
+from the tile read at 8,2 of FiveIsland_RocketWarehouse
+from the tile read at 8,4 of FiveIsland_RocketWarehouse
+from the tile read at 8,5 of FiveIsland_RocketWarehouse
+from the tile read at 9,2 of FiveIsland_RocketWarehouse
+way -
+  > Pokémon are shut in a pen here. They look frightened.
+=== five_island_rocket_warehouse.Gideon
+from Gideon at 27,4 of FiveIsland_RocketWarehouse
+way 0
+  Gideon> You followed me here? This gem is going to make me rich, and nobody is taking it away from me!
+  Gideon> Fine, fine! Take your precious stone. I only wanted to study it before I sold it, anyway.
+  > Lucas received the Sapphire!
+  > Lucas put it away in the Key Items pocket.
+  * battle kanto_scientist_gideon Won
+  * fanfare FanfareKeyItem
+  + FLAG_RECOVERED_SAPPHIRE
+  + beaten kanto_scientist_gideon
+way 1, from answer 1
+  * battle kanto_scientist_gideon Lost
+=== five_island_water_labyrinth.EggGentleman
+from Gentleman at 14,31 of FiveIsland
+way -
+  Gentleman> A trainer and a Pokémon who trust each other completely are a fine thing to see. Treat yours well, won't you?
 === floaroma_meadow.Grunts
 from the trigger at 12,48 of FloaromaMeadow
 way 0.0
@@ -10014,6 +10463,215 @@ from Galactic Grunt at 163,641 of Sinnoh
 way -
   Galactic Grunt> Leaning on some old guy for his Honey... Is this really what I signed up to Team Galactic for?
   Galactic Grunt> Quit moaning. Orders are orders. Now look tough, there's a kid watching.
+=== fortree_city.Kecleon
+from Kecleon at 345,8 of Hoenn
+way -
+  > Something unseeable is in the way.
+=== fortree_city.Woman
+from Woman at 352,10 of Hoenn
+way -
+  Woman> I want to go to the Gym, but something's in the way on the bridge. I can't see anything, yet I can't get past!
+=== fortree_city_gym.GymGuide
+from Gym Guide at 15,21 of FortreeCity_Gym
+way -
+  Gym Guide> Yo, champ in the making! Winona flies Bird Pokémon, so Electric, Ice and Rock moves will serve you well.
+  Gym Guide> The gates in here turn as you push through them. Mind which way you push, or you'll wall yourself in!
+=== fortree_city_gym.Winona
+from Winona at 15,2 of FortreeCity_Gym
+way 0
+  Winona> I am Winona, the Leader of Fortree's Gym. I have lived among the trees and the wind all my life.
+  Winona> My Bird Pokémon and I have learned to ride the wind as one. Can you keep your feet when we come at you?
+  Winona> I have never seen anyone hold their ground so well against my birds. You fly higher than I thought.
+  Winona> This is the Feather Badge. Take it with my respect.
+  > Lucas received the Feather Badge from Winona!
+  Winona> With the Feather Badge, your Pokémon can use Fly outside of battle to carry you to any town you know.
+  Winona> And please, accept this as well.
+  > Lucas received the TM40!
+  > TM40 holds the move Aerial Ace.
+  > Lucas put it away in the TMs & HMs pocket.
+  Winona> TM40 holds Aerial Ace. It strikes so fast that it can never miss. A move worthy of the sky!
+  * scene fortree_city_gym.Winona
+  * battle hoenn_winona_1 Won
+  * fanfare FanfareBadge
+  * defeat hoenn_jared
+  * defeat hoenn_flint
+  * defeat hoenn_ashley
+  * defeat hoenn_edwardo
+  * defeat hoenn_humberto
+  * defeat hoenn_darius
+  * fanfare FanfareTM
+  * endscene
+  + FLAG_DEFEATED_FORTREE_GYM
+  + FLAG_RECEIVED_TM_AERIAL_ACE
+  + FLAG_SCOTT_CALL_FORTREE_GYM
+  + beaten hoenn_ashley
+  + beaten hoenn_darius
+  + beaten hoenn_edwardo
+  + beaten hoenn_flint
+  + beaten hoenn_humberto
+  + beaten hoenn_jared
+  + beaten hoenn_winona_1
+  = badges Hoenn 0 -> 100000
+  + seen fortree_city_gym.Winona
+way 1, from answer 1
+  * battle hoenn_winona_1 Lost
+  * scene over, unseen
+=== fortree_city_house_1.Trader
+from Boy at 1,3 of FortreeCity_House1
+way 0
+  Boy> I've got a Plusle, but what I really want is a Volbeat. Will you trade me one?
+  Boy> Which Pokémon will you trade?
+  Boy> Huh? That's not a Volbeat. I'm only after a Volbeat.
+  ? I've got a Plusle, but what I really want is a Volbeat. Will you trade me one? = Yes
+  * open ChoosePokemon
+  * trade pluses refused
+way 1, from answer 1
+  Boy> No? If you ever catch a Volbeat, come back and see me.
+  ? I've got a Plusle, but what I really want is a Volbeat. Will you trade me one? = No
+=== fortree_city_house_2.HiddenPower
+from Old Woman at 2,3 of FortreeCity_House2
+way 0.0.0.0
+  Old Woman> Every Pokémon has a power hidden inside it. Nobody can see it, but it is there.
+  Old Woman> I've a game for you. I hold a coin in one hand, and you guess which.
+  Old Woman> Guess right three times running, and you'll have something worth having.
+  Old Woman> Shall we play?
+  Old Woman> Which hand holds the coin?
+  Old Woman> Right you are! Again, now. Which hand?
+  Old Woman> Right again! One more. Which hand?
+  Old Woman> Wrong hand, I'm afraid. Come and try again another time.
+  ? Shall we play? = Yes
+  ? Which hand holds the coin? = Right
+  ? Right you are! Again, now. Which hand? = Right
+  ? Right again! One more. Which hand? = Right
+  + FLAG_MET_HIDDEN_POWER_GIVER
+way 0.0.0.1, from answer 4
+  Old Woman> Three in a row! You see what others miss. This is yours.
+  > Lucas received the TM10!
+  > TM10 holds the move Hidden Power.
+  > Lucas put it away in the TMs & HMs pocket.
+  Old Woman> Hidden Power takes its type from the Pokémon that uses it. Every one of them is different.
+  ? Right again! One more. Which hand? = Left
+  * fanfare FanfareTM
+  + FLAG_MET_HIDDEN_POWER_GIVER
+  + FLAG_RECEIVED_TM_HIDDEN_POWER
+way 0.0.1, from answer 3
+  Old Woman> Wrong hand, I'm afraid. Come and try again another time.
+  ? Right you are! Again, now. Which hand? = Left
+  + FLAG_MET_HIDDEN_POWER_GIVER
+way 0.1, from answer 2
+  Old Woman> Wrong hand, I'm afraid. Come and try again another time.
+  ? Which hand holds the coin? = Left
+  + FLAG_MET_HIDDEN_POWER_GIVER
+way 1, from answer 1
+  Old Woman> Suit yourself. My hands will keep.
+  ? Shall we play? = No
+  + FLAG_MET_HIDDEN_POWER_GIVER
+=== fortree_city_house_2.SleepTalk
+from Old Man at 6,3 of FortreeCity_House2
+way 0
+  Old Man> A Pokémon that can fight in its sleep is never idle. Shall I teach one of yours Sleep Talk?
+  Old Man> Very well. Which one?
+  Old Man> Turtwig learned Sleep Talk!
+  Old Man> Pair Sleep Talk with Rest, and a Pokémon heals and fights at once. Zzz...
+  ? A Pokémon that can fight in its sleep is never idle. Shall I teach one of yours Sleep Talk? = Yes
+  * open ChoosePokemon
+  * fanfare FanfareLevelUp
+  + FLAG_MOVE_TUTOR_TAUGHT_SLEEP_TALK
+way 1, from answer 1
+  Old Man> Ah. Then I'll go back to my nap.
+  ? A Pokémon that can fight in its sleep is never idle. Shall I teach one of yours Sleep Talk? = No
+=== fortree_city_house_4.Boy
+from Boy at 1,3 of FortreeCity_House4
+way -
+  Boy> There! Off you go, bird Pokémon!
+  + FLAG_HIDE_FORTREE_CITY_HOUSE_4_WINGULL
+  + FLAG_WINGULL_SENT_ON_ERRAND
+=== fortree_city_house_4.Wingull
+from Wingull at 2,3 of FortreeCity_House4
+way -
+  Wingull> Wingull: Pihyoh!
+  * cry Wingull
+=== four_island_harbor.Sailor
+from Sailor at 8,6 of FourIsland_Harbor
+way -
+  Sailor> The Seagallop sails only for holders of a pass, I'm afraid.
+=== four_island_house_1.Tutor
+from Big Man at 8,3 of FourIsland_House1
+way 0
+  Big Man> There's nothing like throwing your whole weight at a problem! Shall I teach one of your Pokémon Body Slam?
+  Big Man> That's the spirit! Which Pokémon is to learn it?
+  Big Man> Turtwig learned Body Slam!
+  Big Man> A good Body Slam can leave the foe too stunned to move. Use it well!
+  ? There's nothing like throwing your whole weight at a problem! Shall I teach one of your Pokémon Body Slam? = Yes
+  * open ChoosePokemon
+  * fanfare FanfareLevelUp
+  + FLAG_TUTOR_BODY_SLAM
+way 1, from answer 1
+  Big Man> Suit yourself. I'll be right here, sitting heavily.
+  ? There's nothing like throwing your whole weight at a problem! Shall I teach one of your Pokémon Body Slam? = No
+=== four_island_icefall_cave_back.Grunt
+from Grunt at 10,15 of FourIsland_IcefallCave_Back
+from Grunt at 11,14 of FourIsland_IcefallCave_Back
+from Grunt at 13,14 of FourIsland_IcefallCave_Back
+way -
+  Grunt> Get lost, kid! This is grown-up business.
+=== four_island_icefall_cave_back.Lorelei
+from Lorelei at 12,16 of FourIsland_IcefallCave_Back
+way -
+  Lorelei> Team Rocket on my island... I won't stand for it.
+=== four_island_icefall_cave_back.Poachers
+from the trigger at 11,18 of FourIsland_IcefallCave_Back
+from the trigger at 12,18 of FourIsland_IcefallCave_Back
+from the trigger at 13,18 of FourIsland_IcefallCave_Back
+way 0
+  Lorelei> Keep your hands off those Pokémon! They live here, and they're not yours to take!
+  Grunt> Pipe down, lady. Nobody asked you. Go and find somewhere else to skate.
+  Lorelei> Lucas! What luck that you're here. Help me drive these poachers out of the cave!
+  Grunt> Some kid wants to play hero? Fine. I'll freeze you out myself!
+  Lorelei> Now, where have you taken the Pokémon you caught? Tell me!
+  Grunt> Like we'd tell you that!
+  Lorelei> Then perhaps my Lapras can loosen your tongue. It's very good at freezing things solid.
+  Grunt> W-wait! They're at our warehouse on Five Island, all right? Let's get out of here!
+  Lorelei> Thank you, Lucas. To think Team Rocket would come this far to steal Pokémon... It makes my blood run cold.
+  Lorelei> I grew up on this island, you know. I'll go home and think about what I can do. Please, come and see me.
+  * scene four_island_icefall_cave_back.Lorelei and the poachers
+  * emote Lorelei Exclaim
+  * music kanto/rocket_hideout
+  * battle kanto_team_rocket_grunt_45 Won
+  * cry Lapras
+  * fade out
+  * music area
+  * fade in
+  * endscene
+  + FLAG_HIDE_ICEFALL_CAVE_ROCKETS
+  + FLAG_HIDE_RUIN_VALLEY_SCIENTIST
+  = VAR_MAP_SCENE_ICEFALL_CAVE_BACK 0 -> 1
+  + beaten kanto_team_rocket_grunt_45
+  + seen four_island_icefall_cave_back.Lorelei and the poachers
+way 1, from answer 1
+  * battle kanto_team_rocket_grunt_45 Lost
+  * scene over, unseen
+=== four_island_loreleis_house.Doll
+from Doll at 0,2 of FourIsland_LoreleisHouse
+from Doll at 0,3 of FourIsland_LoreleisHouse
+from Doll at 0,5 of FourIsland_LoreleisHouse
+from Doll at 1,5 of FourIsland_LoreleisHouse
+from Doll at 10,0 of FourIsland_LoreleisHouse
+from Doll at 10,3 of FourIsland_LoreleisHouse
+from Doll at 10,4 of FourIsland_LoreleisHouse
+from Doll at 6,2 of FourIsland_LoreleisHouse
+from Doll at 6,4 of FourIsland_LoreleisHouse
+from Doll at 7,2 of FourIsland_LoreleisHouse
+from Doll at 9,0 of FourIsland_LoreleisHouse
+from Doll at 9,3 of FourIsland_LoreleisHouse
+from Doll at 9,4 of FourIsland_LoreleisHouse
+from Doll at 9,6 of FourIsland_LoreleisHouse
+way -
+  > A Pokémon doll, plump and soft. There are dolls everywhere in this house!
+=== four_island_loreleis_house.Lorelei
+from Lorelei at 7,4 of FourIsland_LoreleisHouse
+way -
+  Lorelei> This island is where I was born. If anything happened to it, or to the Pokémon that live here, I'd never forgive myself.
 === fuchsia_city.ChanseySign
 from the tile read at 233,310 of Kanto
 way -
@@ -10232,6 +10890,72 @@ way -
   * flicker Cresselia 6
   + FLAG_HIDE_FULLMOON_ISLAND_FOREST_CRESSELIA
   + FLAG_MET_CRESSELIA
+=== goldenrod.GateGuard
+from Grunt at 358,326 of Johto
+way -
+  Grunt> Where do you think you're going? We're in the middle of a job here!
+=== goldenrod.GateGuardTwo
+from Grunt at 359,326 of Johto
+way -
+  Grunt> Wrong way! The Radio Tower's back in the city!
+=== goldenrod.GruntAtTheGym
+from Grunt at 366,336 of Johto
+way -
+  Grunt> Gym Trainers. Always getting in the way. Go back to your Gym and stay there!
+=== goldenrod.GruntByTheTower
+from Grunt at 346,350 of Johto
+way -
+  Grunt> Take over the Radio Tower? Who said anything about that? Mind your own business!
+=== goldenrod.GruntEastOne
+from Grunt at 368,358 of Johto
+way -
+  Grunt> Pokémon? Tools for making money, that's all they are.
+=== goldenrod.GruntEastTwo
+from Grunt at 369,358 of Johto
+way -
+  Grunt> Friends with Pokémon? Don't make me laugh.
+=== goldenrod.GruntNorthOne
+from Grunt at 371,333 of Johto
+way -
+  Grunt> You want to join up? Bad timing. We've run out of uniforms.
+  Grunt> One of the lads went to borrow some from the photo studio in the passage under the city. What's keeping him?
+=== goldenrod.GruntNorthTwo
+from Grunt at 376,336 of Johto
+way -
+  Grunt> Can't you see the uniform? Black as night! Aren't you scared of Team Rocket?
+=== goldenrod.GruntSouth
+from Grunt at 354,361 of Johto
+way -
+  Grunt> You don't belong here, brat. Clear off!
+=== goldenrod.GruntWest
+from Grunt at 316,349 of Johto
+way -
+  Grunt> Trading with people all over the world? Not today. We've got bigger things going on.
+=== goldenrod.GymTrainer
+from Gym Trainer at 366,335 of Johto
+way -
+  Gym Trainer> Out of my way! We train at Whitney's Gym, and we won't let Team Rocket push our city around!
+=== goldenrod.ManInBlack
+from Woman at 352,351 of Johto
+way -
+  Woman> Did you see that man in black by the Radio Tower? He's dressed up as one of Team Rocket. What a strange costume!
+=== goldenrod.SouthGuard
+from the trigger at 354,376 of Johto
+way -
+  Grunt> Whoa, slow down! I'm the only one posted here, and nobody gets by. Don't make trouble for me, all right?
+  * scene goldenrod.The grunt at the way south
+  * emote Grunt Exclaim
+  * endscene
+  + seen goldenrod.The grunt at the way south
+=== goldenrod.SouthGuardTalk
+from Grunt at 359,377 of Johto
+way -
+  Grunt> I was sent here on my own, and I'm not budging. Go and bother someone else.
+=== goldenrod.TowerGrunt
+from Man in Black at 341,351 of Johto
+way -
+  Man in Black> So this is the Radio Tower...
+  Man in Black> What are you gawping at, kid? Beat it!
 === goldenrod_bike_shop.Owner
 from Owner at 8,6 of Goldenrod_BikeShop
 way 0.0
@@ -10340,6 +11064,10 @@ way 1, from answer 1
   * sound bump
   * fanfare FanfareItem
   * fanfare FanfareItem
+=== goldenrod_department_store_basement.Shutter
+from Shutter at 26,8 of Goldenrod_DeptStore_Basement
+way -
+  > The shutter is shut tight. It must be worked from the other side.
 === goldenrod_department_store_elevator.Attendant
 from Attendant at 1,6 of Goldenrod_DeptStore_Elevator
 way 0
@@ -10355,25 +11083,33 @@ way 5, from answer 1
   ? Welcome. Which floor would you like? = Stay here
   = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 1
 way 4.0, from answer 1
-  Attendant> The ground floor, or the second?
-  Attendant> Here we are. Please come again!
-  ? Welcome. Which floor would you like? = 1F OR 2F
-  ? The ground floor, or the second? = 1F
-  * warp Goldenrod_DeptStore_1F 19 3
-  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 1
-  = VAR_TEMP_1 0 -> 1
-way 4.2, from answer 2
-  ? The ground floor, or the second? = Stay here
-  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 1
-  = VAR_TEMP_1 0 -> 6
-way 4.1, from answer 2
+  Attendant> The second floor, the ground floor or the basement?
   Attendant> Going up!
   Attendant> Here we are. Please come again!
-  ? The ground floor, or the second? = 2F
+  ? Welcome. Which floor would you like? = LOWER FLOORS
+  ? The second floor, the ground floor or the basement? = 2F
   * anim elevator up 4
   * warp Goldenrod_DeptStore_2F 19 3
   = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 2
   = VAR_TEMP_1 0 -> 2
+way 4.3, from answer 2
+  ? The second floor, the ground floor or the basement? = Stay here
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 6
+way 4.2, from answer 2
+  Attendant> Going down!
+  Attendant> Here we are. Please come again!
+  ? The second floor, the ground floor or the basement? = B1F
+  * anim elevator down 4
+  * warp Goldenrod_DeptStore_Basement 18 7
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 7
+  = VAR_TEMP_1 0 -> 7
+way 4.1, from answer 2
+  Attendant> Here we are. Please come again!
+  ? The second floor, the ground floor or the basement? = 1F
+  * warp Goldenrod_DeptStore_1F 19 3
+  = VAR_GOLDENROD_STORE_LIFT_FLOOR 0 -> 1
+  = VAR_TEMP_1 0 -> 1
 way 3, from answer 1
   Attendant> Going up!
   Attendant> Here we are. Please come again!
@@ -10432,6 +11168,10 @@ way 0
 way 1, from answer 1
   * battle johto_leader_whitney Lost
   * scene over, unseen
+=== goldenrod_radio_tower_1f.Grunt
+from Grunt at 23,5 of Goldenrod_RadioTower_1F
+way -
+  Grunt> Stop right there. Only Team Rocket in uniform go up these stairs. Beat it, kid!
 === goldenrod_radio_tower_1f.Quiz
 from Receptionist at 13,12 of Goldenrod_RadioTower_1F
 way 0.0.0.0
@@ -10480,6 +11220,236 @@ way 0.1, from answer 2
 way 1, from answer 1
   Receptionist> No? Come back when you're feeling clever!
   ? It's quiz time at the Radio Tower! Answer five questions right and win a Radio Card for your Pokégear. Ready? = No
+=== goldenrod_radio_tower_1f.Receptionist
+from Receptionist at 5,12 of Goldenrod_RadioTower_1F
+way -
+  Receptionist> Welcome to the Radio Tower! Do look around the ground floor. The staff upstairs are hard at work on today's shows.
+=== goldenrod_radio_tower_2f.Jigglypuff
+from Jigglypuff at 20,5 of Goldenrod_RadioTower_2F
+way -
+  > Jigglypuff: Jiggly... puff...
+  * cry Jigglypuff
+=== goldenrod_radio_tower_2f.Policeman
+from Policeman at 3,5 of Goldenrod_RadioTower_2F
+way -
+  Policeman> Sorry, the upper floors are staff only. They never used to be so strict... Something's not right with the Director lately.
+=== goldenrod_radio_tower_2f.Woman
+from Woman at 24,7 of Goldenrod_RadioTower_2F
+way -
+  Woman> Did you know? When the radio plays a lullaby, the wild Pokémon in the grass doze off. You'll hardly meet any.
+=== goldenrod_radio_tower_3f.Shutter
+from Shutter at 23,11 of Goldenrod_RadioTower_3F
+from Shutter at 24,11 of Goldenrod_RadioTower_3F
+way -
+  > The shutter is locked. It must open with a Card Key.
+=== goldenrod_radio_tower_3f.Slot
+from the tile read at 22,11 of Goldenrod_RadioTower_3F
+way -
+  > It's a slot for a Card Key.
+=== goldenrod_radio_tower_3f.Woman
+from Woman at 24,14 of Goldenrod_RadioTower_3F
+way -
+  Woman> Their boss has shut himself away upstairs, past the shutters. Only the Director could open them, and he's on the fifth floor.
+  Woman> Please, help him!
+=== goldenrod_radio_tower_3f.Worker
+from Man at 3,9 of Goldenrod_RadioTower_3F
+way -
+  Man> We're on the air twenty-four hours a day. If the shows never sleep, neither do I!
+=== goldenrod_radio_tower_4f.Ben
+from Ben at 24,12 of Goldenrod_RadioTower_4F
+way -
+  Ben> Do you listen to our music? Pokémon March, the Lullaby... I pick every tune myself.
+=== goldenrod_radio_tower_4f.Guard
+from Grunt at 24,11 of Goldenrod_RadioTower_4F
+way 0
+  Grunt> Proton's leading this mission, you know. Isn't he just the coolest?
+  Grunt> Who are you, anyway? If you're getting in Proton's way... I mean Team Rocket's way, then I won't have it!
+  Grunt> Team Rocket and Proton are all I need. Pokémon? Who cares about them?
+  * battle johto_team_rocket_f_grunt_4 Won
+  + beaten johto_team_rocket_f_grunt_4
+way 1, from answer 1
+  * battle johto_team_rocket_f_grunt_4 Lost
+=== goldenrod_radio_tower_4f.Mary
+from Mary at 21,11 of Goldenrod_RadioTower_4F
+way -
+  Mary> There's my hero! Please, I'd like you to have this, as a thank-you.
+  > Lucas received the Bright Powder!
+  > Lucas put it away in the Items pocket.
+  Mary> Give it to a Pokémon to hold. Its glitter dazzles the other side, so their moves miss more often.
+  * fanfare FanfareItem
+  + FLAG_GOT_BRIGHTPOWDER_FROM_MARY
+=== goldenrod_radio_tower_4f.Meowth
+from Meowth at 21,12 of Goldenrod_RadioTower_4F
+way -
+  > Meowth: Meowth...
+  * cry Meowth
+=== goldenrod_radio_tower_5f.Director
+from Director at 5,13 of Goldenrod_RadioTower_5F
+from Petrel at 5,13 of Goldenrod_RadioTower_5F
+way -
+  Director> Ah, it's you! You know, I simply love Pokémon. I built this tower so that I could share that love with everyone.
+  Director> I do hope people enjoy our shows.
+=== goldenrod_radio_tower_observation_deck.Archer
+from Archer at 8,3 of Goldenrod_RadioTower_ObservationDeck
+way 0
+  Archer> So, you've made it all the way up here. You must be quite a Trainer.
+  Archer> We took this tower to tell the world Team Rocket is back. When he hears it, our leader Giovanni will come home from his training.
+  Archer> Team Rocket will be great again, and I won't let a child stand in our way!
+  Archer> How can this be? Everything we dreamed of, gone... I wasn't equal to it after all.
+  Archer> As Giovanni did before me, I'm breaking up Team Rocket, here and now. Farewell.
+  Director> You've beaten them already? Thank you! You've saved every Pokémon in the country. Here, you more than deserve this.
+  > Lucas received the Rainbow Wing!
+  > Lucas put it away in the Key Items pocket.
+  Director> A tower stood on this very spot long ago. When it came down to make way for the Radio Tower, that feather was found at its top.
+  Director> A friend of mine in Cianwood City tells me that whoever holds a Rainbow Wing may climb the Bell Tower in Ecruteak City.
+  Director> Well, I must get back to my office.
+  Director> Oh, I almost forgot! My friend says the legendary Pokémon won't come just for the wing. There's something else you need...
+  Director> Now what was it? I can't for the life of me remember.
+  Director> Waiting for something more, were you? That was a feint! Now I really must go. Goodbye!
+  * scene goldenrod_radio_tower_observation_deck.Archer on the observation deck
+  * battle johto_executive_archer_archer Won
+  * fade out
+  * sound stairs
+  * fade in
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_BEAT_RADIO_TOWER_ROCKETS
+  + FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT
+  + FLAG_HIDE_RADIO_TOWER_5F_PETREL_REVEALED
+  + FLAG_UNK_093
+  = VAR_SCENE_ROCKET_TAKEOVER 0 -> 5
+  = VAR_UNK_407A 0 -> 1
+  + beaten johto_executive_archer_archer
+  + seen goldenrod_radio_tower_observation_deck.Archer on the observation deck
+way 1, from answer 1
+  Archer> Know your place, child. Team Rocket's return can't be stopped.
+  * battle johto_executive_archer_archer Lost
+  * endscene
+  + seen goldenrod_radio_tower_observation_deck.Archer on the observation deck
+=== goldenrod_tunnel_1f.Man
+from Man at 9,8 of Goldenrod_Underground
+way -
+  Man> Somebody downstairs wanted to battle me. It's no place for the timid down there, so watch yourself.
+=== goldenrod_tunnel_1f.Woman
+from Woman at 3,25 of Goldenrod_Underground
+way -
+  Woman> There are shops down the stairs, but Trainers too. I'm too nervous to go down.
+=== goldenrod_tunnel_b1f.Disguise
+from the trigger at 15,7 of Goldenrod_Underground_B1F
+way -
+  Grunt> Hey, are you one of the new recruits too? We took on a whole crowd for the Radio Tower job and ran short of uniforms.
+  Grunt> The photo studio here keeps a rack of them for its pictures, so I'm helping myself. You'd better change too!
+  > Lucas pulled on a Team Rocket uniform from the studio's rack.
+  Grunt> Look at you! Very sharp. Just don't go scaring people in the street dressed like that, all right?
+  * scene goldenrod_tunnel_b1f.A uniform from the photo studio
+  * emote Grunt Exclaim
+  * fade out
+  * sound page
+  * sound page
+  * fade in
+  * endscene
+  = VAR_SCENE_ROCKET_TAKEOVER 0 -> 3
+  + seen goldenrod_tunnel_b1f.A uniform from the photo studio
+=== goldenrod_tunnel_b1f.Door
+from Door at 25,30 of Goldenrod_Underground_B1F
+way -
+  > STAFF ONLY BEYOND THIS DOOR
+=== goldenrod_tunnel_b1f.Grunt
+from Grunt at 15,6 of Goldenrod_Underground_B1F
+way -
+  Grunt> Look at you! Very sharp. Just don't go scaring people in the street dressed like that, all right?
+=== goldenrod_tunnel_b2f.Blue
+from the tile read at 8,8 of Goldenrod_Underground_B2F
+way -
+  * sound gear
+  + FLAG_GOLDENROD_B2F_GATE_2_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_3_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_4_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_5_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_7_SHUT
+=== goldenrod_tunnel_b2f.Gate
+from Shutter at 10,14 of Goldenrod_Underground_B2F
+from Shutter at 12,10 of Goldenrod_Underground_B2F
+from Shutter at 12,16 of Goldenrod_Underground_B2F
+from Shutter at 14,14 of Goldenrod_Underground_B2F
+from Shutter at 14,8 of Goldenrod_Underground_B2F
+from Shutter at 15,14 of Goldenrod_Underground_B2F
+from Shutter at 15,8 of Goldenrod_Underground_B2F
+from Shutter at 16,14 of Goldenrod_Underground_B2F
+from Shutter at 16,8 of Goldenrod_Underground_B2F
+from Shutter at 18,16 of Goldenrod_Underground_B2F
+from Shutter at 2,14 of Goldenrod_Underground_B2F
+from Shutter at 2,8 of Goldenrod_Underground_B2F
+from Shutter at 20,14 of Goldenrod_Underground_B2F
+from Shutter at 21,14 of Goldenrod_Underground_B2F
+from Shutter at 22,14 of Goldenrod_Underground_B2F
+from Shutter at 3,14 of Goldenrod_Underground_B2F
+from Shutter at 3,8 of Goldenrod_Underground_B2F
+from Shutter at 4,14 of Goldenrod_Underground_B2F
+from Shutter at 4,8 of Goldenrod_Underground_B2F
+from Shutter at 6,10 of Goldenrod_Underground_B2F
+from Shutter at 6,16 of Goldenrod_Underground_B2F
+from Shutter at 8,14 of Goldenrod_Underground_B2F
+from Shutter at 9,14 of Goldenrod_Underground_B2F
+way -
+  > The shutter is shut tight. A switch somewhere must work it.
+=== goldenrod_tunnel_b2f.Green
+from the tile read at 9,8 of Goldenrod_Underground_B2F
+way -
+  * sound gear
+  + FLAG_GOLDENROD_B2F_GATE_0_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_2_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_4_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_6_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_8_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_9_SHUT
+=== goldenrod_tunnel_b2f.Purple
+from the tile read at 23,14 of Goldenrod_Underground_B2F
+way -
+  * sound gear
+  + FLAG_OPENED_GOLDENROD_PURPLE_GATE
+=== goldenrod_tunnel_b2f.Red
+from the tile read at 10,8 of Goldenrod_Underground_B2F
+way -
+  * sound gear
+  + FLAG_GOLDENROD_B2F_GATE_1_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_3_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_5_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_6_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_7_SHUT
+  + FLAG_GOLDENROD_B2F_GATE_8_SHUT
+=== goldenrod_tunnel_b2f.Rival
+from the trigger at 19,5 of Goldenrod_Underground_B2F
+way 0
+  Barry> Not so fast. What I told you before was a lie. I thought if I stuck to you, you'd lead me to that Lance.
+  Barry> He never turned up. Never mind. I meant to beat you after him, but you'll do first. I always settle my debts!
+  Barry> ...I don't get it. Was that Lance right? That I don't treat my Pokémon properly? Love... trust... Is that what I'm missing?
+  Barry> Is that why I keep losing? I don't understand. But I'm not finished. Not now, not like this. I'll never give up!
+  * scene goldenrod_tunnel_b2f.The red-haired boy under Goldenrod
+  * music johto/rival
+  * emote player Exclaim
+  * battle johto_rival_silver_17 Won
+  * music area
+  * endscene
+  + FLAG_HIDE_GOLDENROD_B2F_RIVAL
+  = VAR_UNK_40A0 0 -> 1
+  + beaten johto_rival_silver_17
+  + seen goldenrod_tunnel_b2f.The red-haired boy under Goldenrod
+way 1, from answer 1
+  * battle johto_rival_silver_17 Lost
+  * scene over, unseen
+=== goldenrod_tunnel_warehouse.Director
+from Director at 20,13 of Goldenrod_Underground_Warehouse
+way -
+  Director> Who's there? You've come to get me out? Thank you! But tell me, what's become of the Radio Tower?
+  Director> Team Rocket have taken it? Then you'll need this. It's my Card Key.
+  > Lucas received the Card Key!
+  > Lucas put it away in the Key Items pocket.
+  Director> It opens the shutters on the tower's third floor.
+  Director> Please, I'm begging you. With the transmitter in their hands, there's no knowing what they'll do. They might even control Pokémon with some special signal!
+  Director> You're the only one I can turn to. Save the Radio Tower, and every Pokémon in the land!
+  * fanfare FanfareKeyItem
+  + FLAG_UNK_1C1
 === granite_cave_1f.Hiker
 from Hiker at 36,9 of GraniteCave_1F
 way -
@@ -10526,6 +11496,87 @@ from Gym Guide at 499,698 of Sinnoh
 way -
   Gym Guide> Hey there, champ in the making! Here to take on Fantina? Bad timing, I'm afraid. She's out.
   Gym Guide> When she's not in her Gym, you'll usually find her at the Contest Hall, watching the Pokémon on stage. Try there!
+=== hoenn_safari_zone_south.ExitAttendant
+from Attendant at 72,74 of HoennSafariZone
+way -
+  Attendant> Your game is over, but the way out is right behind me. This way, please!
+  * warp Route121_SafariZoneEntrance 2 4
+  = VAR_SAFARI_ZONE_STATE 0 -> 1
+=== ice_path_1f.KimonoGirl
+from Kimono Girl at 55,29 of IcePath_1F
+way -
+  Kimono Girl> Oh, Lucas! My feet are frozen to the ice. If someone pushed me from behind, I might slide free.
+=== ice_path_1f.Man
+from Man at 47,7 of IcePath_1F
+way -
+  Man> There's an HM lying right there, see? I can't use it, but you could. Go on, take it!
+=== ice_path_1f.Noticed
+from the trigger at 47,6 of IcePath_1F
+way -
+  Man> Oh! You gave me a fright. There's an HM lying right there, see? I can't use it, but you could. Go on, take it!
+  * scene ice_path_1f.The man by the HM
+  * emote Man Exclaim
+  * endscene
+  + seen ice_path_1f.The man by the HM
+=== ice_path_b1f.Boulder1
+from the pit at 11,10 of IcePath_B1F
+way -
+  * sound boulder
+  + FLAG_HIDE_ICE_PATH_BOULDER_1_INIT
+  + FLAG_ICE_PATH_HOLE_1_FILLED
+=== ice_path_b1f.Boulder2
+from the pit at 10,18 of IcePath_B1F
+way -
+  * sound boulder
+  + FLAG_HIDE_ICE_PATH_BOULDER_1_INIT
+  + FLAG_ICE_PATH_HOLE_2_FILLED
+=== ice_path_b1f.Boulder3
+from the pit at 18,7 of IcePath_B1F
+way -
+  * sound boulder
+  + FLAG_HIDE_ICE_PATH_BOULDER_1_INIT
+  + FLAG_ICE_PATH_HOLE_3_FILLED
+=== ice_path_b1f.Boulder4
+from the pit at 19,19 of IcePath_B1F
+way -
+  * sound boulder
+  + FLAG_HIDE_ICE_PATH_BOULDER_1_INIT
+  + FLAG_ICE_PATH_HOLE_4_FILLED
+=== ice_path_b1f.Hole1
+from the trigger at 11,10 of IcePath_B1F
+way -
+  * walk player onspot down onspot down
+  * sound ledge
+  * warp IcePath_B2F 12 12
+  = VAR_UNK_40AB 0 -> 1
+=== ice_path_b1f.Hole2
+from the trigger at 10,18 of IcePath_B1F
+way -
+  * walk player onspot down onspot down
+  * sound ledge
+  * warp IcePath_B2F 10 21
+  = VAR_UNK_40AB 0 -> 1
+=== ice_path_b1f.Hole3
+from the trigger at 18,7 of IcePath_B1F
+way -
+  * walk player onspot down onspot down
+  * sound ledge
+  * warp IcePath_B2F 20 10
+  = VAR_UNK_40AB 0 -> 1
+=== ice_path_b1f.Hole4
+from the trigger at 19,19 of IcePath_B1F
+way -
+  * walk player onspot down onspot down
+  * sound ledge
+  * warp IcePath_B2F 21 23
+  = VAR_UNK_40AB 0 -> 1
+=== ice_path_b2f.Fallen
+from Boulder at 11,21 of IcePath_B2F
+from Boulder at 12,13 of IcePath_B2F
+from Boulder at 19,10 of IcePath_B2F
+from Boulder at 20,22 of IcePath_B2F
+way -
+  > The boulder that fell from above is wedged fast in the ice. It won't budge.
 === ilex_forest.Apprentice
 from Apprentice at 15,64 of IlexForest
 way -
@@ -10619,6 +11670,10 @@ way -
 from Riley at 34,3 of IronIslandB2FLeft
 way -
   Riley> I'm looking into what is upsetting the Pokémon here. Come and find me when you're ready to team up.
+=== jubilife_city.Cameraman
+from Cameraman at 169,753 of Sinnoh
+way -
+  Cameraman> Don't look at me, look at the reporter! I'm only the one holding the camera.
 === jubilife_city.Clown1
 from Clown at 183,769 of Sinnoh
 way 0
@@ -10711,6 +11766,22 @@ from Grunt at 174,739 of Sinnoh
 from Grunt at 174,740 of Sinnoh
 way -
   Galactic Grunt> Beat it, kid! This is Team Galactic business!
+=== jubilife_city.Interview
+from Reporter at 168,753 of Sinnoh
+way 0
+  Reporter> Hi there! I'm a reporter for Jubilife TV, and that's my cameraman. We're asking trainers out on the street.
+  Reporter> How about it? Will you answer a question for Jubilife Street Talk?
+  Reporter> Wonderful! Look into the camera... Here's the question.
+  Reporter> What is life with Pokémon like for you? Tell us in just two words!
+  Reporter> "happy together"... I love it! Short, and straight from the heart.
+  Reporter> It will be on the air soon. Turn on any TV and you might just see yourself!
+  ? How about it? Will you answer a question for Jubilife Street Talk? = Yes
+  * open Phrase INTERVIEW feelings:happy small:together
+  + FLAG_DAILY_JUBILIFE_INTERVIEW
+  + FLAG_JUBILIFE_TV_INTERVIEW_ON_AIR
+way 1, from answer 1
+  Reporter> That's all right. We're out here every day, if you change your mind!
+  ? How about it? Will you answer a question for Jubilife Street Talk? = No
 === jubilife_city.Looker
 from Looker at 186,756 of Sinnoh
 way -
@@ -10843,6 +11914,42 @@ way -
   Barry> Lucas? What are you doing here? This lake's mine to watch, remember? You've got your own.
   Barry> There's nothing going on, anyway. And if anything does, I've got it covered. I've got my Pokémon with me, and you know how tough I am!
   + FLAG_TALKED_TO_LAKE_ACUITY_LOW_WATER_RIVAL
+=== lake_of_rage.Dragonite
+from Dragonite at 529,83 of Johto
+way -
+  > Dragonite: Graaoh!
+  * cry Dragonite
+=== lake_of_rage.Lance
+from Lance at 528,83 of Johto
+way 0
+  Lance> That was quite a battle. You and your Pokémon handled that Gyarados well.
+  Lance> I'm Lance, a Trainer like you. I've been looking into strange goings-on around this lake.
+  Lance> Magikarp don't turn into raging Gyarados by themselves. Someone is forcing them to evolve, and I mean to find out who.
+  Lance> There's a souvenir shop in Mahogany Town I have my doubts about. Will you help me look into it?
+  Lance> Good. I'll go on ahead. Meet me at the shop in Mahogany Town!
+  ? There's a souvenir shop in Mahogany Town I have my doubts about. Will you help me look into it? = Yes
+  * scene lake_of_rage.Lance by the Lake of Rage
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_LAKE_OF_RAGE_LANCE
+  = VAR_UNK_40A8 0 -> 1
+  + seen lake_of_rage.Lance by the Lake of Rage
+way 1, from answer 1
+  Lance> I see. Well, if you change your mind, I'll be right here.
+  ? There's a souvenir shop in Mahogany Town I have my doubts about. Will you help me look into it? = No
+  + FLAG_UNK_0C3
+=== lake_of_rage.RedGyarados
+from Gyarados at 525,71 of Johto
+way 0
+  > Gyaaarados! The red Gyarados is thrashing wildly!
+  > The lake has gone still. Something red glints in the water where the Gyarados was.
+  * cry Gyarados
+  * wildbattle Gyarados 30 Won
+  + FLAG_GOT_RED_SCALE
+  + FLAG_HIDE_LAKE_OF_RAGE_RED_GYARADOS
+way 1, from answer 1
+  * wildbattle Gyarados 30 Lost
 === lake_verity.Assistant
 from {assistant} at 54,38 of LakeVerityGalactic
 way -
@@ -11072,6 +12179,54 @@ way -
 from {rival} at 7,4 of LittlerootTown_ProfessorBirchsLab
 way -
   Barry> Dad's always running off into the grass without his Pokémon. One day I'll be a better field worker than him!
+=== mahogany_gym_leader_room.Pryce
+from Pryce at 7,4 of Mahogany_Gym_3
+way 0
+  Pryce> Pokémon have lived through a great deal, as I have. I have seen many winters, and they have taught me patience.
+  Pryce> I am Pryce, the winter's harsh cold made flesh. Let us see whether you can stand it.
+  Pryce> Hmm. Your Pokémon carried you through the cold. You have earned this: the Glacier Badge.
+  > Lucas received the Glacier Badge from Pryce!
+  Pryce> With it, your Pokémon will use Whirlpool outside of battle, and every Pokémon's Speed rises a little.
+  Pryce> Take this as well. It is the winter itself, in a disc.
+  > Lucas received the TM07!
+  > TM07 holds the move Hail.
+  > Lucas put it away in the TMs & HMs pocket.
+  Pryce> TM07 is Hail. It brings down a storm of ice that hurts every Pokémon not of the Ice type, for five turns.
+  * scene mahogany_gym_leader_room.Pryce
+  * battle johto_leader_pryce_pryce Won
+  * fanfare FanfareBadge
+  * defeat johto_boarder_deandre
+  * defeat johto_boarder_gerardo
+  * defeat johto_skier_jill
+  * defeat johto_skier_diana
+  * defeat johto_boarder_patton
+  * endscene
+  * fanfare FanfareTM
+  + FLAG_GOT_TM07_FROM_PRYCE
+  + beaten johto_boarder_deandre
+  + beaten johto_boarder_gerardo
+  + beaten johto_boarder_patton
+  + beaten johto_leader_pryce_pryce
+  + beaten johto_skier_diana
+  + beaten johto_skier_jill
+  = badges Johto 0 -> 1000000
+  + seen mahogany_gym_leader_room.Pryce
+way 1, from answer 1
+  * battle johto_leader_pryce_pryce Lost
+  * scene over, unseen
+=== mahogany_souvenir_shop.Customer
+from Man at 3,8 of Mahogany_SouvenirShop
+way -
+  Man> I stop in here every time I pass through. Something about this place always feels a little off.
+=== mahogany_souvenir_shop.Lance
+from Lance at 5,7 of Mahogany_SouvenirShop
+way -
+  Lance> Something about this shop doesn't sit right with me.
+=== mahogany_souvenir_shop.Salesman
+from Salesman at 6,3 of Mahogany_SouvenirShop
+way -
+  Salesman> Welcome, welcome! Rage Candy Bars, fresh today. Well... nearly fresh.
+  Salesman> Nothing back there but stock. Customers stay this side of the counter!
 === mauville_city.SchoolKid
 from Boy at 217,154 of Hoenn
 way -
@@ -11562,7 +12717,7 @@ from the trigger at 37,43 of MtEmber_Exterior
 from the trigger at 38,43 of MtEmber_Exterior
 from the trigger at 39,43 of MtEmber_Exterior
 way -
-  Grunt> So the first password's 'Seel the deal'? And the second one's... 'Ekans ate the cake'?
+  Grunt> So the first password's 'Seel the deal'? And the second one's... er, it'll come to me.
   Grunt> Keep your voice down! The first opens the warehouse door, the second gets you inside. Write 'em down!
   Grunt> Nah, I've got a great memory. Our warehouse on Five Island's safe as houses.
   Grunt> Hey! A kid's been listening in! Forget everything you just heard, got it?
@@ -12440,6 +13595,11 @@ way 1, from answer 1
 from {rival} at 6,8 of PokemonLeague_ChampionsRoom
 way -
   Barry> Go on, then. Don't keep the old man waiting.
+=== pokemon_league_entrance.DoorGuard
+from Guard at 11,8 of IndigoLeague_PokemonCenter_1F
+way -
+  Guard> Beyond this door the Elite Four are waiting. Only a Trainer with all eight of Johto's Gym Badges goes through.
+  Guard> Come back when you have all eight. The Elite Four won't see anyone with fewer.
 === pokemon_league_lances_room.Lance
 from Lance at 6,8 of PokemonLeague_LancesRoom
 way 0
@@ -13420,10 +14580,486 @@ way 0.1, from answer 2
   + beaten hoenn_maria_1
 way 1, from answer 1
   * battle hoenn_maria_1 Lost
+=== route_118.Dalton
+from Dalton at 257,151 of Hoenn
+way 0.0
+  Guitarist Dalton> Guitarist Dalton: Feel the rhythm! My Pokémon battle to the beat of my strings!
+  Dalton> Man, you rock! Let's swap numbers. I'll call when I've got a new song.
+  Dalton> Register Dalton in the PokéNav's Match Call?
+  Dalton> Sweet! Keep your ears open.
+  ? Register Dalton in the PokéNav's Match Call? = Yes
+  * battle hoenn_dalton_1 Won
+  * addcontact hoenn_dalton
+  + FLAG_PHONE_CONTACT_HOENN_DALTON
+  + beaten hoenn_dalton_1
+way 0.1, from answer 2
+  Dalton> No worries. The music goes on!
+  ? Register Dalton in the PokéNav's Match Call? = No
+  + beaten hoenn_dalton_1
+way 1, from answer 1
+  * battle hoenn_dalton_1 Lost
+=== route_118.GoodRodFisherman
+from Fisherman at 268,148 of Hoenn
+way 0
+  Fisherman> Ah, a fellow angler? A good rod makes all the difference, wouldn't you say?
+  Fisherman> Ha! I knew it the moment I saw you. Kindred spirits! Here, take this one. I've got a spare.
+  > Lucas received the Good Rod!
+  > Lucas put it away in the Key Items pocket.
+  Fisherman> Cast it where the water runs and see what bites. The fish here pull harder than you'd think!
+  ? Ah, a fellow angler? A good rod makes all the difference, wouldn't you say? = Yes
+  * fanfare FanfareKeyItem
+  + FLAG_RECEIVED_GOOD_ROD
+way 1, from answer 1
+  Fisherman> No? Then you've never felt a real bite on the line. Come back once you have.
+  ? Ah, a fellow angler? A good rod makes all the difference, wouldn't you say? = No
+=== route_118.Rose
+from Rose at 247,152 of Hoenn
+way 0.0
+  Aroma Lady Rose> Aroma Lady Rose: Do you smell that? My flowers are in full bloom, and so is their power!
+  Rose> What a lovely battle. May I have your number? I'd like to share news of my flowers.
+  Rose> Register Rose in the PokéNav's Match Call?
+  Rose> Thank you. I'll call when they bloom.
+  ? Register Rose in the PokéNav's Match Call? = Yes
+  * battle hoenn_rose_1 Won
+  * addcontact hoenn_rose
+  + FLAG_PHONE_CONTACT_HOENN_ROSE
+  + beaten hoenn_rose_1
+way 0.1, from answer 2
+  Rose> Oh, that's a shame. Perhaps another time.
+  ? Register Rose in the PokéNav's Match Call? = No
+  + beaten hoenn_rose_1
+way 1, from answer 1
+  * battle hoenn_rose_1 Lost
+=== route_118.StevenTrigger0
+from the trigger at 283,151 of Hoenn
+way -
+  Steven> Lucas! Funny, running into you out here. I've just come from the Weather Institute up the river.
+  Steven> Tell me, how are your Pokémon? Do you feel the two of you have grown stronger together since Granite Cave?
+  Steven> I'm heading on to Route 120 to look into something there. If you're passing, come and find me.
+  * scene route_118.Steven on Route 118 from the west
+  * sound ledge
+  * endscene
+  + FLAG_HIDE_ROUTE_118_STEVEN
+  = VAR_ROUTE118_STATE 0 -> 1
+  + seen route_118.Steven on Route 118 from the west
+=== route_118.StevenTrigger1
+from the trigger at 284,151 of Hoenn
+way -
+  Steven> Lucas! Funny, running into you out here. I've just come from the Weather Institute up the river.
+  Steven> Tell me, how are your Pokémon? Do you feel the two of you have grown stronger together since Granite Cave?
+  Steven> I'm heading on to Route 120 to look into something there. If you're passing, come and find me.
+  * scene route_118.Steven on Route 118
+  * sound ledge
+  * endscene
+  + FLAG_HIDE_ROUTE_118_STEVEN
+  = VAR_ROUTE118_STATE 0 -> 1
+  + seen route_118.Steven on Route 118
+=== route_118.StevenTrigger2
+from the trigger at 285,151 of Hoenn
+way -
+  Steven> Lucas! Funny, running into you out here. I've just come from the Weather Institute up the river.
+  Steven> Tell me, how are your Pokémon? Do you feel the two of you have grown stronger together since Granite Cave?
+  Steven> I'm heading on to Route 120 to look into something there. If you're passing, come and find me.
+  * scene route_118.Steven on Route 118 from the east
+  * sound ledge
+  * endscene
+  + FLAG_HIDE_ROUTE_118_STEVEN
+  = VAR_ROUTE118_STATE 0 -> 1
+  + seen route_118.Steven on Route 118 from the east
+=== route_119.BridgeAquaGrunt1
+from Team Aqua Grunt at 293,33 of Hoenn
+way -
+  Team Aqua Grunt> Our admin's busy inside. The weather people have something we want, and we're not leaving without it.
+=== route_119.BridgeAquaGrunt2
+from Team Aqua Grunt at 293,34 of Hoenn
+way -
+  Team Aqua Grunt> Rain, sun, storms... If we know how the weather works, we can make the sea grow. Now scram!
+=== route_119.Catherine
+from Catherine at 315,83 of Hoenn
+way 0.0
+  Catherine> Pkmn Ranger Catherine: I keep an eye on the Pokémon here. Let me see how you treat yours!
+  Catherine> You're strong! Can we keep in touch? I want to know how you're getting on.
+  Catherine> Register Catherine in the PokéNav's Match Call?
+  Catherine> Thanks! I'll call when my Gloom grows.
+  ? Register Catherine in the PokéNav's Match Call? = Yes
+  * battle hoenn_catherine_1 Won
+  * addcontact hoenn_catherine
+  + FLAG_PHONE_CONTACT_HOENN_CATHERINE
+  + beaten hoenn_catherine_1
+way 0.1, from answer 2
+  Catherine> Aww, okay. Good luck on the road!
+  ? Register Catherine in the PokéNav's Match Call? = No
+  + beaten hoenn_catherine_1
+way 1, from answer 1
+  * battle hoenn_catherine_1 Lost
+=== route_119.Jackson
+from Jackson at 287,74 of Hoenn
+way 0.0
+  Jackson> Pkmn Ranger Jackson: I patrol this route rain or shine. Show me you can handle yourself out here!
+  Jackson> You've got good instincts. Want to swap numbers? Rangers stick together.
+  Jackson> Register Jackson in the PokéNav's Match Call?
+  Jackson> Good. I'll check in after my patrol.
+  ? Register Jackson in the PokéNav's Match Call? = Yes
+  * battle hoenn_jackson_1 Won
+  * addcontact hoenn_jackson
+  + FLAG_PHONE_CONTACT_HOENN_JACKSON
+  + beaten hoenn_jackson_1
+way 0.1, from answer 2
+  Jackson> Understood. Stay safe out there.
+  ? Register Jackson in the PokéNav's Match Call? = No
+  + beaten hoenn_jackson_1
+way 1, from answer 1
+  * battle hoenn_jackson_1 Lost
+=== route_119.Kecleon1
+from Kecleon at 311,6 of Hoenn
+way -
+  > Something unseeable is in the way.
+=== route_119.Kecleon2
+from Kecleon at 305,15 of Hoenn
+way -
+  > Something unseeable is in the way.
+=== route_119.RivalTrigger1
+from the trigger at 305,31 of Hoenn
+way 0
+  Barry> Lucas! There you are! I heard Team Aqua was causing trouble at the Weather Institute. Did you sort it out?
+  Barry> You did? I knew it. I've been training nonstop since Lavaridge, so let's see whose team grew more!
+  Barry> Beaten again! You really are something, Lucas. I think Dad would want you to have this.
+  > Lucas received the HM02!
+  > HM02 holds the move Fly.
+  > Lucas put it away in the TMs & HMs pocket.
+  Barry> That's Fly. Teach it to a bird Pokémon and it'll carry you to any town you've been to before.
+  Barry> You'll need Fortree's Badge before you can use it outside battle, though. The Gym's just up the road!
+  Barry> I'm going to keep looking for Pokémon around here. See you, Lucas!
+  Scott> Lucas! I caught the end of that from up the path. You two pushed each other hard, didn't you?
+  Scott> And I hear Team Aqua was chased out of the Weather Institute too. You do get around!
+  Scott> Fortree's Leader, Winona, flies like no one else. I'd love to see how you fare against her. Good luck!
+  * scene route_119.The rival on Route 119
+  * music hoenn/rival
+  * emote player Exclaim
+  * battle hoenn_may_route_119_mudkip Won
+  * fanfare FanfareTM
+  * music area
+  * endscene
+  + FLAG_HIDE_ROUTE_119_RIVAL
+  + FLAG_HIDE_ROUTE_119_SCOTT
+  + FLAG_RECEIVED_HM_FLY
+  = VAR_ROUTE119_STATE 0 -> 1
+  = VAR_SCOTT_STATE 0 -> 1
+  + beaten hoenn_may_route_119_mudkip
+  + seen route_119.The rival on Route 119
+way 1, from answer 1
+  * battle hoenn_may_route_119_mudkip Lost
+  * scene over, unseen
+=== route_119.RivalTrigger2
+from the trigger at 306,31 of Hoenn
+way 0
+  Barry> Lucas! There you are! I heard Team Aqua was causing trouble at the Weather Institute. Did you sort it out?
+  Barry> You did? I knew it. I've been training nonstop since Lavaridge, so let's see whose team grew more!
+  Barry> Beaten again! You really are something, Lucas. I think Dad would want you to have this.
+  > Lucas received the HM02!
+  > HM02 holds the move Fly.
+  > Lucas put it away in the TMs & HMs pocket.
+  Barry> That's Fly. Teach it to a bird Pokémon and it'll carry you to any town you've been to before.
+  Barry> You'll need Fortree's Badge before you can use it outside battle, though. The Gym's just up the road!
+  Barry> I'm going to keep looking for Pokémon around here. See you, Lucas!
+  Scott> Lucas! I caught the end of that from up the path. You two pushed each other hard, didn't you?
+  Scott> And I hear Team Aqua was chased out of the Weather Institute too. You do get around!
+  Scott> Fortree's Leader, Winona, flies like no one else. I'd love to see how you fare against her. Good luck!
+  * scene route_119.The rival on Route 119 further east
+  * music hoenn/rival
+  * emote player Exclaim
+  * battle hoenn_may_route_119_mudkip Won
+  * fanfare FanfareTM
+  * music area
+  * endscene
+  + FLAG_HIDE_ROUTE_119_RIVAL
+  + FLAG_HIDE_ROUTE_119_SCOTT
+  + FLAG_RECEIVED_HM_FLY
+  = VAR_ROUTE119_STATE 0 -> 1
+  = VAR_SCOTT_STATE 0 -> 1
+  + beaten hoenn_may_route_119_mudkip
+  + seen route_119.The rival on Route 119 further east
+way 1, from answer 1
+  * battle hoenn_may_route_119_mudkip Lost
+  * scene over, unseen
+=== route_119_weather_institute_1f.Bed
+from the tile read at 0,2 of Route119_WeatherInstitute_1F
+from the tile read at 0,3 of Route119_WeatherInstitute_1F
+from the tile read at 1,2 of Route119_WeatherInstitute_1F
+from the tile read at 1,3 of Route119_WeatherInstitute_1F
+way -
+  > There's a bed here... A little rest wouldn't hurt.
+  > Lucas's Pokémon are fully rested.
+  * fade out
+  * fanfare FanfareHeal
+  * fade in
+=== route_119_weather_institute_1f.InstituteWorker1
+from Worker at 2,11 of Route119_WeatherInstitute_1F
+way -
+  Worker> We watch the weather all over Hoenn from here. Lately there have been odd readings: sudden rain, sudden sun.
+  Worker> Something out at sea, perhaps. It's as though the weather has a mind of its own.
+=== route_119_weather_institute_1f.InstituteWorker2
+from Worker at 5,4 of Route119_WeatherInstitute_1F
+way -
+  Worker> Thank you for chasing Team Aqua off. They took our data on rain and storms, but at least they're gone.
+=== route_119_weather_institute_1f.LittleBoy
+from Boy at 14,11 of Route119_WeatherInstitute_1F
+way -
+  Boy> Some scary people in blue barged in and went upstairs. My dad's up there! Please, help him!
+=== route_119_weather_institute_2f.Shelly
+from Shelly at 4,6 of Route119_WeatherInstitute_2F
+way 0
+  Shelly> Ahahaha! So you're the kid who keeps getting in Team Aqua's way. Archie told me all about you.
+  Shelly> We came for the research on rain. With it, we'll fill the world with sea. You won't stop us, sweetie!
+  Shelly> Ahaha... well, aren't you a tough one. Fine, I lost. But I've still got what I came for.
+  Team Aqua Grunt> Admin Shelly! Bad news! Team Magma's been seen heading for Mt. Pyre!
+  Shelly> Magma? At Mt. Pyre? Then they're after the orbs! Everyone out, we're going to Mt. Pyre!
+  Shelly> As for you, kid... stay out of grown-ups' business, or you'll get swept away.
+  Scientist> Thank you! Thank you so much! I thought they'd never leave.
+  Scientist> Please, take this Pokémon as our thanks. It's Castform. Its shape changes with the weather!
+  > Lucas received Castform!
+  Scientist> It's holding a Mystic Water, too. Raise it well, and watch how it changes in the sun and the rain.
+  * scene route_119_weather_institute_2f.Shelly at the Weather Institute
+  * battle hoenn_shelly_weather_institute Won
+  * emote Shelly Exclaim
+  * fade out
+  * fade in
+  * fanfare FanfarePokemon
+  * endscene
+  + FLAG_HIDE_ROUTE_119_TEAM_AQUA
+  + FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
+  + FLAG_RECEIVED_CASTFORM
+  = VAR_WEATHER_INSTITUTE_STATE 0 -> 1
+  + beaten hoenn_shelly_weather_institute
+  + seen route_119_weather_institute_2f.Shelly at the Weather Institute
+way 1, from answer 1
+  * battle hoenn_shelly_weather_institute Lost
+  * scene over, unseen
+=== route_119_weather_institute_2f.WeatherScientist
+from Scientist at 18,6 of Route119_WeatherInstitute_2F
+way -
+  Scientist> Th-they want our data on rain! What could anyone want with that much rain?
 === route_12.Snorlax
 from Snorlax at 398,220 of Kanto
 way -
   > A sleeping Pokémon blocks the way. It's snoring soundly.
+=== route_120.BerryBeauty
+from Beauty at 374,92 of Hoenn
+way 0
+  Beauty> Don't you think berries are a kind of love letter? From the soil, to whoever picks them?
+  Beauty> I knew you'd understand! Then you should have one of mine.
+  > Lucas received the Figy Berry!
+  > Lucas put it away in the Berries pocket.
+  Beauty> That one's hard to come by. Plant it and raise it with care!
+  ? Don't you think berries are a kind of love letter? From the soil, to whoever picks them? = Yes
+  * fanfare FanfareItem
+  + FLAG_DAILY_ROUTE_120_RECEIVED_BERRY
+way 1, from answer 1
+  Beauty> Oh, you'll see it one day. Here, maybe this will help you understand.
+  > Lucas received the Figy Berry!
+  > Lucas put it away in the Berries pocket.
+  Beauty> That one's hard to come by. Plant it and raise it with care!
+  ? Don't you think berries are a kind of love letter? From the soil, to whoever picks them? = No
+  * fanfare FanfareItem
+  + FLAG_DAILY_ROUTE_120_RECEIVED_BERRY
+=== route_120.BridgeKecleon
+from Kecleon at 372,16 of Hoenn
+way -
+  > Something unseeable is in the way.
+=== route_120.Jeffrey
+from Jeffrey at 379,80 of Hoenn
+way 0.0
+  Bug Maniac Jeffrey> Bug Maniac Jeffrey: Three Surskit, all raised in puddles! Behold!
+  Jeffrey> You know your stuff! Want my number? I'll tell you about every bug I find.
+  Jeffrey> Register Jeffrey in the PokéNav's Match Call?
+  Jeffrey> Brilliant! Expect lots of calls about Surskit.
+  ? Register Jeffrey in the PokéNav's Match Call? = Yes
+  * battle hoenn_jeffrey_1 Won
+  * addcontact hoenn_jeffrey
+  + FLAG_PHONE_CONTACT_HOENN_JEFFREY
+  + beaten hoenn_jeffrey_1
+way 0.1, from answer 2
+  Jeffrey> Fine, fine. More bugs for me!
+  ? Register Jeffrey in the PokéNav's Match Call? = No
+  + beaten hoenn_jeffrey_1
+way 1, from answer 1
+  * battle hoenn_jeffrey_1 Lost
+=== route_120.Kecleon1
+from Kecleon at 380,11 of Hoenn
+way -
+  > Something unseeable is in the way.
+=== route_120.Kecleon2
+from Kecleon at 387,2 of Hoenn
+way -
+  > Something unseeable is in the way.
+=== route_120.Kecleon3
+from Kecleon at 364,77 of Hoenn
+way -
+  > Something unseeable is in the way.
+=== route_120.Kecleon4
+from Kecleon at 379,48 of Hoenn
+way -
+  > Something unseeable is in the way.
+=== route_120.Kecleon5
+from Kecleon at 367,51 of Hoenn
+way -
+  > Something unseeable is in the way.
+=== route_120.Robert
+from Robert at 392,14 of Hoenn
+way 0.0
+  Bird Keeper Robert> Bird Keeper Robert: My Swablu's cotton wings are softer than clouds, but tough in battle!
+  Robert> Your Pokémon fly true! Let's exchange numbers and train together sometime.
+  Robert> Register Robert in the PokéNav's Match Call?
+  Robert> Great! I'll call when Swablu learns something new.
+  ? Register Robert in the PokéNav's Match Call? = Yes
+  * battle hoenn_robert_1 Won
+  * addcontact hoenn_robert
+  + FLAG_PHONE_CONTACT_HOENN_ROBERT
+  + beaten hoenn_robert_1
+way 0.1, from answer 2
+  Robert> Ah well. The sky's big enough for both of us.
+  ? Register Robert in the PokéNav's Match Call? = No
+  + beaten hoenn_robert_1
+way 1, from answer 1
+  * battle hoenn_robert_1 Lost
+=== route_120.Steven
+from Steven at 373,15 of Hoenn
+way 0.0
+  Steven> Lucas! Good timing. There's something on this bridge that nobody can see. Will you help me find out what?
+  Steven> Then show me what you and your Pokémon can do!
+  Steven> This is the Devon Scope. With it, a Pokémon that blends into its surroundings can't hide.
+  Steven> So it was a Kecleon. It changes its colours to match whatever is round it. Clever, isn't it?
+  Steven> You saw what the Scope can do. Take it. There are more of them about, and you'll find them now.
+  > Lucas received the Devon Scope!
+  > Lucas put it away in the Key Items pocket.
+  Steven> I'm going on ahead. Something is stirring in Hoenn, Lucas, and I want to see it with my own eyes.
+  Steven> We'll meet again. Take care of yourself.
+  ? Lucas! Good timing. There's something on this bridge that nobody can see. Will you help me find out what? = Yes
+  * scene route_120.Steven and the Kecleon on the bridge
+  * effect Sparkles 372 16
+  * cry Kecleon
+  * wildbattle Kecleon 30 Won
+  * fanfare FanfareKeyItem
+  * endscene
+  + FLAG_HIDE_ROUTE_120_KECLEON_BRIDGE
+  + FLAG_HIDE_ROUTE_120_STEVEN
+  + FLAG_RECEIVED_DEVON_SCOPE
+  + seen route_120.Steven and the Kecleon on the bridge
+way 0.1, from answer 2
+  * wildbattle Kecleon 30 Lost
+  * scene over, unseen
+way 1, from answer 1
+  Steven> No hurry. I'll wait here until you're ready.
+  ? Lucas! Good timing. There's something on this bridge that nobody can see. Will you help me find out what? = No
+  + FLAG_NOT_READY_FOR_BATTLE_ROUTE_120
+=== route_121.Cristin
+from Cristin at 472,89 of Hoenn
+way 0.0
+  Cooltrainer Cristin> Cooltrainer Cristin: You look like you've come a long way. Let's see if it shows.
+  Cristin> I want a rematch someday. Let's swap numbers, and I'll call when I'm ready.
+  Cristin> Register Cristin in the PokéNav's Match Call?
+  Cristin> Done! Next time, I won't hold back.
+  ? Register Cristin in the PokéNav's Match Call? = Yes
+  * battle hoenn_cristin_1 Won
+  * addcontact hoenn_cristin
+  + FLAG_PHONE_CONTACT_HOENN_CRISTIN
+  + beaten hoenn_cristin_1
+way 0.1, from answer 2
+  Cristin> Then I'll find you myself. Count on it.
+  ? Register Cristin in the PokéNav's Match Call? = No
+  + beaten hoenn_cristin_1
+way 1, from answer 1
+  * battle hoenn_cristin_1 Lost
+=== route_121.GruntsMoveOut
+from the trigger at 425,85 of Hoenn
+from the trigger at 425,86 of Hoenn
+from the trigger at 425,87 of Hoenn
+from the trigger at 425,88 of Hoenn
+way -
+  Team Aqua Grunt> Right, you lot! Orders from the top: we move out to Mt. Pyre. Now!
+  * scene route_121.Team Aqua leaves Route 121
+  * music hoenn/eye_galactic
+  * walk Team Aqua Grunt onspot right
+  * music area
+  * endscene
+  + FLAG_HIDE_ROUTE_121_TEAM_AQUA_GRUNTS
+  = VAR_ROUTE121_STATE 0 -> 1
+  + seen route_121.Team Aqua leaves Route 121
+=== route_121.Jessica
+from Jessica at 422,85 of Hoenn
+way 0.0
+  Beauty Jessica> Beauty Jessica: My Pokémon are as lovely as they are sly. Can you even see them coming?
+  Jessica> You're good at spotting things. Let's keep in touch, so I can tell you how my Kecleon is doing.
+  Jessica> Register Jessica in the PokéNav's Match Call?
+  Jessica> Lovely! Don't be surprised if I call out of nowhere.
+  ? Register Jessica in the PokéNav's Match Call? = Yes
+  * battle hoenn_jessica_1 Won
+  * addcontact hoenn_jessica
+  + FLAG_PHONE_CONTACT_HOENN_JESSICA
+  + beaten hoenn_jessica_1
+way 0.1, from answer 2
+  Jessica> Oh well. My Kecleon will just have to hide its sulk.
+  ? Register Jessica in the PokéNav's Match Call? = No
+  + beaten hoenn_jessica_1
+way 1, from answer 1
+  * battle hoenn_jessica_1 Lost
+=== route_121.Walter
+from Walter at 455,88 of Hoenn
+way 0.0
+  Gentleman Walter> Gentleman Walter: A stroll with my Manectric, and now a battle. A fine afternoon.
+  Walter> A splendid battle. May I have your number? My Manectric would enjoy hearing how you fare.
+  Walter> Register Walter in the PokéNav's Match Call?
+  Walter> Very good. I shall telephone now and then, at a polite hour.
+  ? Register Walter in the PokéNav's Match Call? = Yes
+  * battle hoenn_walter_1 Won
+  * addcontact hoenn_walter
+  + FLAG_PHONE_CONTACT_HOENN_WALTER
+  + beaten hoenn_walter_1
+way 0.1, from answer 2
+  Walter> Quite all right. Perhaps another day.
+  ? Register Walter in the PokéNav's Match Call? = No
+  + beaten hoenn_walter_1
+way 1, from answer 1
+  * battle hoenn_walter_1 Lost
+=== route_121_safari_zone_entrance.Counter
+from the trigger at 8,4 of Route121_SafariZoneEntrance
+way 0
+  Attendant> Welcome to the Safari Zone!
+  Attendant> Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game?
+  Attendant> That's $500, thank you. Here are your Safari Balls.
+  > Lucas received 30 Safari Balls!
+  Attendant> We'll let you know when your game is over. Until then, off you go into the wild!
+  ? Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game? = Yes
+  * sound select
+  * warp HoennSafariZone 72 75
+  = VAR_SAFARI_ZONE_STATE 0 -> 2
+way 1, from answer 1
+  Attendant> All right. Please come and play another time!
+  ? Catch as many Pokémon as you like for just $500! Would you like to play the Safari Game? = No
+=== route_121_safari_zone_entrance.CounterTalk
+from Attendant at 8,2 of Route121_SafariZoneEntrance
+way -
+  Attendant> Walk along the counter toward the zone's door, and I'll ask whether you'd like to play the Safari Game.
+=== route_121_safari_zone_entrance.Explain
+from Attendant at 10,2 of Route121_SafariZoneEntrance
+way 0
+  Attendant> Welcome to the Safari Zone! Is this your first visit?
+  Attendant> You go in with 30 Safari Balls, the only balls you may throw inside.
+  Attendant> The game is over when you've thrown your last ball, or when you've walked 500 steps.
+  Attendant> Come in and enjoy the Safari Zone!
+  ? Welcome to the Safari Zone! Is this your first visit? = Yes
+way 1, from answer 1
+  Attendant> Come in and enjoy the Safari Zone!
+  ? Welcome to the Safari Zone! Is this your first visit? = No
+=== route_121_safari_zone_entrance.Welcome
+from Attendant at 17,9 of Route121_SafariZoneEntrance
+way -
+  Attendant> Welcome to the Safari Zone! Pokémon you'll hardly ever see in Hoenn live here in the wild.
+  Attendant> And trainers may catch them to keep. Come in and enjoy yourself!
+=== route_12_fishing_house.Board
+from the tile read at 9,1 of Route12_FishingHouse
+way -
+  > A board of the Magikarp landed hereabouts. Not one is written up yet.
 === route_12_fishing_house.FishingGurusBrother
 from Fisherman at 4,4 of Route12_FishingHouse
 way 0
@@ -13432,6 +15068,7 @@ way 0
   > Lucas received the Super Rod!
   > Lucas put it away in the Key Items pocket.
   Fisherman> With a Super Rod, you can hook Pokémon that the other rods could only dream of!
+  Fisherman> And if you land a whopping great Magikarp, bring it here. I keep the measurements.
   ? I'm the youngest of the fishing brothers! Do you like to fish, too? = Yes
   * fanfare FanfareKeyItem
   + FLAG_GOT_SUPER_ROD
@@ -14088,6 +15725,19 @@ way -
 from the trigger at 7,2 of Route22_NorthEntrance
 way -
   Guard> Halt! Only trainers who hold the Boulder Badge may pass beyond this gate.
+=== route_22_pokemon_league_reception_gate.BadgeCheck
+from the trigger at 11,16 of Route22_LeagueReceptionGate
+way -
+  Guard> Hold on a moment. The road north is for trainers with all eight of Johto's Badges, and you don't have them yet.
+  Guard> Come back once you've won the rest.
+=== route_22_pokemon_league_reception_gate.Guard
+from Guard at 9,16 of Route22_LeagueReceptionGate
+way -
+  Guard> Only a trainer with all eight of Johto's Badges may take the road north to Victory Road.
+=== route_22_pokemon_league_reception_gate.KantoShut
+from the trigger at 14,8 of Route22_LeagueReceptionGate
+way -
+  Guard> Sorry, this door to Route 22 is closed. Kanto is open only to trainers who have stood before the League's Champion.
 === route_23.CascadeGuard
 from Guard at 15,179 of Kanto
 way -
@@ -14250,6 +15900,19 @@ way 1, from answer 1
 from the tile read at 4,5 of Route25_SeaCottage
 way -
   > The screen shows a diagram of the teleporter, with a button marked CELL SEPARATOR.
+=== route_26_north_house.Woman
+from Woman at 5,5 of Route26_NorthHouse
+way 0
+  Woman> The road to the League is a long one. Would your Pokémon like a rest?
+  Woman> Make yourselves at home.
+  Woman> There, everyone looks lively again. Do your best at the League!
+  ? The road to the League is a long one. Would your Pokémon like a rest? = Yes
+  * fade out
+  * fanfare FanfareHeal
+  * fade in
+way 1, from answer 1
+  Woman> All right. Come back if you get tired on the way.
+  ? The road to the League is a long one. Would your Pokémon like a rest? = No
 === route_29.Lesson
 from the trigger at 666,396 of Johto
 way -
@@ -14406,6 +16069,22 @@ way 0
 way 1, from answer 1
   Black Belt> Come back if you change your mind. My punches aren't going anywhere.
   ? A punch is all in the hips! Shall I teach one of your Pokémon Mega Punch? = No
+=== route_43_gatehouse.Guard
+from Guard at 1,8 of Route43_Gate
+way -
+  Guard> Those men locked me in the back room and charged everyone who came through. Thanks for running them off!
+  Guard> Here. They left this behind. I'd rather it went to someone who'll put it to good use.
+  > Lucas received the TM36!
+  > TM36 holds the move Sludge Bomb.
+  > Lucas put it away in the TMs & HMs pocket.
+  Guard> TM36 is Sludge Bomb. It's a strong Poison move, and it may poison the target too.
+  * fanfare FanfareTM
+  + FLAG_GOT_TM36_FROM_ROUTE_43_GUARD
+=== route_43_gatehouse.Rocket
+from Grunt at 3,8 of Route43_Gate
+from Grunt at 7,8 of Route43_Gate
+way -
+  Grunt> You've paid. Now beat it before we change our minds about the price.
 === route_47.Hiker
 from Hiker at 86,390 of Johto
 way -
@@ -15122,6 +16801,66 @@ way 1, from answer 1
 from Cynthia at 31,17 of SendoffSpring
 way -
   Cynthia> Go on. Tell Professor Rowan what you saw. I'd like to stay here a while and think about it.
+=== seven_island.Tutor
+from Cool Trainer at 55,58 of SevenIsland
+way 0
+  Cooltrainer> A battle can turn on a single dance. Shall I teach one of your Pokémon Swords Dance?
+  Cooltrainer> Good. Which Pokémon is to learn it?
+  Cooltrainer> Turtwig learned Swords Dance!
+  Cooltrainer> Swords Dance sharpens a Pokémon's Attack a great deal. Dance first, then strike!
+  ? A battle can turn on a single dance. Shall I teach one of your Pokémon Swords Dance? = Yes
+  * open ChoosePokemon
+  * fanfare FanfareLevelUp
+  + FLAG_TUTOR_SWORDS_DANCE
+way 1, from answer 1
+  Cooltrainer> Come back if you want to learn. The dance will wait.
+  ? A battle can turn on a single dance. Shall I teach one of your Pokémon Swords Dance? = No
+=== seven_island_harbor.Sailor
+from Sailor at 8,6 of SevenIsland_Harbor
+way -
+  Sailor> The Seagallop sails only for holders of a pass, I'm afraid.
+=== seven_island_sevault_canyon_tanoby_key.Switch1
+from the pit at 7,2 of SevenIsland_SevaultCanyon_TanobyKey
+way -
+  * sound select
+  + FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_1
+  = VAR_TANOBY_KEY_SWITCHES_PRESSED 0 -> 1
+=== seven_island_sevault_canyon_tanoby_key.Switch2
+from the pit at 4,4 of SevenIsland_SevaultCanyon_TanobyKey
+way -
+  * sound select
+  + FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_2
+  = VAR_TANOBY_KEY_SWITCHES_PRESSED 0 -> 1
+=== seven_island_sevault_canyon_tanoby_key.Switch3
+from the pit at 10,4 of SevenIsland_SevaultCanyon_TanobyKey
+way -
+  * sound select
+  + FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_3
+  = VAR_TANOBY_KEY_SWITCHES_PRESSED 0 -> 1
+=== seven_island_sevault_canyon_tanoby_key.Switch4
+from the pit at 5,6 of SevenIsland_SevaultCanyon_TanobyKey
+way -
+  * sound select
+  + FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_4
+  = VAR_TANOBY_KEY_SWITCHES_PRESSED 0 -> 1
+=== seven_island_sevault_canyon_tanoby_key.Switch5
+from the pit at 9,6 of SevenIsland_SevaultCanyon_TanobyKey
+way -
+  * sound select
+  + FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_5
+  = VAR_TANOBY_KEY_SWITCHES_PRESSED 0 -> 1
+=== seven_island_sevault_canyon_tanoby_key.Switch6
+from the pit at 5,8 of SevenIsland_SevaultCanyon_TanobyKey
+way -
+  * sound select
+  + FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_6
+  = VAR_TANOBY_KEY_SWITCHES_PRESSED 0 -> 1
+=== seven_island_sevault_canyon_tanoby_key.Switch7
+from the pit at 9,8 of SevenIsland_SevaultCanyon_TanobyKey
+way -
+  * sound select
+  + FLAG_MAP_LOCAL_TANOBY_KEY_SWITCH_7
+  = VAR_TANOBY_KEY_SWITCHES_PRESSED 0 -> 1
 === silph_co_10f.Door
 from Locked door at 12,11 of SilphCo_10F
 from Locked door at 12,12 of SilphCo_10F
@@ -15377,6 +17116,56 @@ way 1, from answer 1
   * warp SilphCo_2F 22 4
   = VAR_SILPH_CO_LIFT_FLOOR 0 -> 2
   = VAR_TEMP_1 0 -> 2
+=== six_island_dotted_hole_sapphire_room.Sapphire
+from Sapphire at 7,7 of SixIsland_DottedHole_SapphireRoom
+way -
+  > Lucas found the Sapphire! It shone a deep, clear blue.
+  Scientist> Ha! I knew it. I was right to follow you down here!
+  Scientist> I've been looking for this gem for years. I'll take that, thank you!
+  Scientist> Team Rocket will pay a fortune for a stone like this. All I have to do is take it to their warehouse on Five Island.
+  Scientist> The password for the inner door? 'Ekans ate the cake.' Ha! As if you could ever get that far. So long!
+  * scene six_island_dotted_hole_sapphire_room.The Sapphire
+  * fanfare FanfareKeyItem
+  * sound boulder
+  * camera Shake
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_DOTTED_HOLE_SCIENTIST
+  + FLAG_HIDE_SAPPHIRE
+  + FLAG_LEARNED_YES_NAH_CHANSEY
+  + seen six_island_dotted_hole_sapphire_room.The Sapphire
+=== six_island_dotted_hole_sapphire_room.Thief
+from Scientist at 5,9 of SixIsland_DottedHole_SapphireRoom
+way -
+  Scientist> The Sapphire is mine now!
+=== six_island_harbor.Sailor
+from Sailor at 8,6 of SixIsland_Harbor
+way -
+  Sailor> The Seagallop sails only for holders of a pass, I'm afraid.
+=== six_island_ruin_valley.DottedHoleDoor
+from the tile read at 48,184 of SixIsland
+way 0
+  > There's a door in the rock, covered in raised dots. Look at it more closely?
+  > The dots spell a single word: CUT.
+  ? There's a door in the rock, covered in raised dots. Look at it more closely? = Yes
+way 1, from answer 1
+  > Lucas left the door alone.
+  ? There's a door in the rock, covered in raised dots. Look at it more closely? = No
+=== six_island_ruin_valley.Scientist
+from Scientist at 48,185 of SixIsland
+way -
+  Scientist> I've studied this door for days, and I still can't work out how to get inside...
+  Scientist> Oh, hello. I found this place all by myself, you know. The dots must mean something, if only I could read them.
+=== six_island_water_path_house_1.Beauty
+from Beauty at 3,4 of SixIsland_WaterPath_House1
+way -
+  Beauty> Heracross are the most marvellous Pokémon! The bigger the horn, the better.
+  Beauty> Bring one to my door and I'll measure it for you, on my word.
+=== six_island_water_path_house_1.Chart
+from the tile read at 9,1 of SixIsland_WaterPath_House1
+way -
+  > A chart for writing down Heracross sizes. Nothing is written on it yet.
 === slateport_city.EnergyGuru
 from Energy Guru at 205,307 of Hoenn
 way -
@@ -15973,6 +17762,507 @@ way -
 from {rival} at 651,339 of Sinnoh
 way -
   Barry> Lucas! I'm piling up the wins at the Battle Frontier! My dad had better watch out. I'm coming for him!
+=== team_rocket_headquarters_b1f.BackToTheStairs
+from the trigger at 16,28 of TeamRocketHQ_B1F
+way -
+  > Whoa! The floor gave way!
+  * sound warp
+  * warp TeamRocketHQ_B1F 50 4
+=== team_rocket_headquarters_b1f.Computer
+from the tile read at 37,21 of TeamRocketHQ_B1F
+way 0
+  > A computer that runs the hideout's security. Switch the statues' alarms off?
+  > Lucas pressed a button. Click!
+  > The statues' eyes went dark. The alarm is off.
+  ? A computer that runs the hideout's security. Switch the statues' alarms off? = Yes
+  * sound pc_off
+  + FLAG_UNK_0D6
+  = VAR_UNK_40AD 0 -> 1
+  = VAR_UNK_40AE 0 -> 1
+  = VAR_UNK_40AF 0 -> 1
+  = VAR_UNK_40B0 0 -> 1
+  = VAR_UNK_40B1 0 -> 1
+way 1, from answer 1
+  ? A computer that runs the hideout's security. Switch the statues' alarms off? = No
+=== team_rocket_headquarters_b1f.GeodudeTrap1
+from the trigger at 15,16 of TeamRocketHQ_B1F
+way 0
+  > Crash! A Geodude burst out of a trap in the floor!
+  * sound rock_smash
+  * wildbattle Geodude 21 Won
+  = VAR_ROCKET_TRAP_GEODUDE_1 0 -> 1
+way 1, from answer 1
+  * wildbattle Geodude 21 Lost
+=== team_rocket_headquarters_b1f.GeodudeTrap2
+from the trigger at 11,18 of TeamRocketHQ_B1F
+way 0
+  > Crash! A Geodude burst out of a trap in the floor!
+  * sound rock_smash
+  * wildbattle Geodude 21 Won
+  = VAR_ROCKET_TRAP_GEODUDE_2 0 -> 1
+way 1, from answer 1
+  * wildbattle Geodude 21 Lost
+=== team_rocket_headquarters_b1f.GeodudeTrap3
+from the trigger at 13,19 of TeamRocketHQ_B1F
+way 0
+  > Crash! A Geodude burst out of a trap in the floor!
+  * sound rock_smash
+  * wildbattle Geodude 21 Won
+  = VAR_ROCKET_TRAP_GEODUDE_3 0 -> 1
+way 1, from answer 1
+  * wildbattle Geodude 21 Lost
+=== team_rocket_headquarters_b1f.GeodudeTrap4
+from the trigger at 14,21 of TeamRocketHQ_B1F
+way 0
+  > Crash! A Geodude burst out of a trap in the floor!
+  * sound rock_smash
+  * wildbattle Geodude 21 Won
+  = VAR_ROCKET_TRAP_GEODUDE_4 0 -> 1
+way 1, from answer 1
+  * wildbattle Geodude 21 Lost
+=== team_rocket_headquarters_b1f.GeodudeTrap5
+from the trigger at 16,22 of TeamRocketHQ_B1F
+way 0
+  > Crash! A Geodude burst out of a trap in the floor!
+  * sound rock_smash
+  * wildbattle Geodude 21 Won
+  = VAR_ROCKET_TRAP_GEODUDE_5 0 -> 1
+way 1, from answer 1
+  * wildbattle Geodude 21 Lost
+=== team_rocket_headquarters_b1f.KoffingTrap1
+from the trigger at 12,17 of TeamRocketHQ_B1F
+way 0
+  > A cloud of gas! A Koffing burst out of a trap in the floor!
+  * sound status_poison
+  * wildbattle Koffing 21 Won
+  = VAR_ROCKET_TRAP_KOFFING_1 0 -> 1
+way 1, from answer 1
+  * wildbattle Koffing 21 Lost
+=== team_rocket_headquarters_b1f.KoffingTrap2
+from the trigger at 15,18 of TeamRocketHQ_B1F
+way 0
+  > A cloud of gas! A Koffing burst out of a trap in the floor!
+  * sound status_poison
+  * wildbattle Koffing 21 Won
+  = VAR_ROCKET_TRAP_KOFFING_2 0 -> 1
+way 1, from answer 1
+  * wildbattle Koffing 21 Lost
+=== team_rocket_headquarters_b1f.KoffingTrap3
+from the trigger at 15,20 of TeamRocketHQ_B1F
+way 0
+  > A cloud of gas! A Koffing burst out of a trap in the floor!
+  * sound status_poison
+  * wildbattle Koffing 21 Won
+  = VAR_ROCKET_TRAP_KOFFING_3 0 -> 1
+way 1, from answer 1
+  * wildbattle Koffing 21 Lost
+=== team_rocket_headquarters_b1f.KoffingTrap4
+from the trigger at 12,21 of TeamRocketHQ_B1F
+way 0
+  > A cloud of gas! A Koffing burst out of a trap in the floor!
+  * sound status_poison
+  * wildbattle Koffing 21 Won
+  = VAR_ROCKET_TRAP_KOFFING_4 0 -> 1
+way 1, from answer 1
+  * wildbattle Koffing 21 Lost
+=== team_rocket_headquarters_b1f.KoffingTrap5
+from the trigger at 14,22 of TeamRocketHQ_B1F
+way 0
+  > A cloud of gas! A Koffing burst out of a trap in the floor!
+  * sound status_poison
+  * wildbattle Koffing 21 Won
+  = VAR_ROCKET_TRAP_KOFFING_5 0 -> 1
+way 1, from answer 1
+  * wildbattle Koffing 21 Lost
+=== team_rocket_headquarters_b1f.LookStatueMiddle
+from Persian statue at 44,10 of TeamRocketHQ_B1F
+way -
+  > A statue of a Persian. Its eyes glint red, watching everything that moves.
+=== team_rocket_headquarters_b1f.LookStatueNorthEast
+from Persian statue at 44,3 of TeamRocketHQ_B1F
+way -
+  > A statue of a Persian. Its eyes glint red, watching everything that moves.
+=== team_rocket_headquarters_b1f.LookStatueNorthWest
+from Persian statue at 18,3 of TeamRocketHQ_B1F
+way -
+  > A statue of a Persian. Its eyes glint red, watching everything that moves.
+=== team_rocket_headquarters_b1f.LookStatueSouthEast
+from Persian statue at 44,28 of TeamRocketHQ_B1F
+way -
+  > A statue of a Persian. Its eyes glint red, watching everything that moves.
+=== team_rocket_headquarters_b1f.LookStatueSouthWest
+from Persian statue at 18,28 of TeamRocketHQ_B1F
+way -
+  > A statue of a Persian. Its eyes glint red, watching everything that moves.
+=== team_rocket_headquarters_b1f.StatueMiddle
+from the trigger at 44,11 of TeamRocketHQ_B1F
+way 0.0
+  > Whoop-whoop! The Persian statue's eyes flashed! An alarm is blaring!
+  Grunt> An intruder! You tripped the alarm, so now you deal with me!
+  Grunt> Argh! I'm calling for backup!
+  Grunt> Backup's here! Nobody gets past the statues!
+  Grunt> Ugh... Fine. That alarm's not going off again, anyway.
+  * emote Persian statue Exclaim
+  * emote player Exclaim
+  * sound timer_alarm
+  * battle johto_team_rocket_grunt_20 Won
+  * battle johto_team_rocket_grunt_21 Won
+  + FLAG_UNK_1E8
+  = VAR_UNK_40AF 0 -> 2
+  + beaten johto_team_rocket_grunt_20
+  + beaten johto_team_rocket_grunt_21
+way 0.1, from answer 2
+  * battle johto_team_rocket_grunt_21 Lost
+  + beaten johto_team_rocket_grunt_20
+way 1, from answer 1
+  * battle johto_team_rocket_grunt_20 Lost
+=== team_rocket_headquarters_b1f.StatueNorthEast
+from the trigger at 44,4 of TeamRocketHQ_B1F
+way 0.0
+  > Whoop-whoop! The Persian statue's eyes flashed! An alarm is blaring!
+  Grunt> An intruder! You tripped the alarm, so now you deal with me!
+  Grunt> Argh! I'm calling for backup!
+  Grunt> Backup's here! Nobody gets past the statues!
+  Grunt> Ugh... Fine. That alarm's not going off again, anyway.
+  * emote Persian statue Exclaim
+  * emote player Exclaim
+  * sound timer_alarm
+  * battle johto_team_rocket_grunt_20 Won
+  * battle johto_team_rocket_grunt_21 Won
+  + FLAG_UNK_1E8
+  = VAR_UNK_40AD 0 -> 2
+  + beaten johto_team_rocket_grunt_20
+  + beaten johto_team_rocket_grunt_21
+way 0.1, from answer 2
+  * battle johto_team_rocket_grunt_21 Lost
+  + beaten johto_team_rocket_grunt_20
+way 1, from answer 1
+  * battle johto_team_rocket_grunt_20 Lost
+=== team_rocket_headquarters_b1f.StatueNorthWest
+from the trigger at 18,4 of TeamRocketHQ_B1F
+way 0.0
+  > Whoop-whoop! The Persian statue's eyes flashed! An alarm is blaring!
+  Grunt> An intruder! You tripped the alarm, so now you deal with me!
+  Grunt> Argh! I'm calling for backup!
+  Grunt> Backup's here! Nobody gets past the statues!
+  Grunt> Ugh... Fine. That alarm's not going off again, anyway.
+  * emote Persian statue Exclaim
+  * emote player Exclaim
+  * sound timer_alarm
+  * battle johto_team_rocket_grunt_20 Won
+  * battle johto_team_rocket_grunt_21 Won
+  + FLAG_UNK_1E8
+  = VAR_UNK_40AE 0 -> 2
+  + beaten johto_team_rocket_grunt_20
+  + beaten johto_team_rocket_grunt_21
+way 0.1, from answer 2
+  * battle johto_team_rocket_grunt_21 Lost
+  + beaten johto_team_rocket_grunt_20
+way 1, from answer 1
+  * battle johto_team_rocket_grunt_20 Lost
+=== team_rocket_headquarters_b1f.StatueSouthEast
+from the trigger at 44,29 of TeamRocketHQ_B1F
+way 0.0
+  > Whoop-whoop! The Persian statue's eyes flashed! An alarm is blaring!
+  Grunt> An intruder! You tripped the alarm, so now you deal with me!
+  Grunt> Argh! I'm calling for backup!
+  Grunt> Backup's here! Nobody gets past the statues!
+  Grunt> Ugh... Fine. That alarm's not going off again, anyway.
+  * emote Persian statue Exclaim
+  * emote player Exclaim
+  * sound timer_alarm
+  * battle johto_team_rocket_grunt_20 Won
+  * battle johto_team_rocket_grunt_21 Won
+  + FLAG_UNK_1E8
+  = VAR_UNK_40B0 0 -> 2
+  + beaten johto_team_rocket_grunt_20
+  + beaten johto_team_rocket_grunt_21
+way 0.1, from answer 2
+  * battle johto_team_rocket_grunt_21 Lost
+  + beaten johto_team_rocket_grunt_20
+way 1, from answer 1
+  * battle johto_team_rocket_grunt_20 Lost
+=== team_rocket_headquarters_b1f.StatueSouthWest
+from the trigger at 18,29 of TeamRocketHQ_B1F
+way 0.0
+  > Whoop-whoop! The Persian statue's eyes flashed! An alarm is blaring!
+  Grunt> An intruder! You tripped the alarm, so now you deal with me!
+  Grunt> Argh! I'm calling for backup!
+  Grunt> Backup's here! Nobody gets past the statues!
+  Grunt> Ugh... Fine. That alarm's not going off again, anyway.
+  * emote Persian statue Exclaim
+  * emote player Exclaim
+  * sound timer_alarm
+  * battle johto_team_rocket_grunt_20 Won
+  * battle johto_team_rocket_grunt_21 Won
+  + FLAG_UNK_1E8
+  = VAR_UNK_40B1 0 -> 2
+  + beaten johto_team_rocket_grunt_20
+  + beaten johto_team_rocket_grunt_21
+way 0.1, from answer 2
+  * battle johto_team_rocket_grunt_21 Lost
+  + beaten johto_team_rocket_grunt_20
+way 1, from answer 1
+  * battle johto_team_rocket_grunt_20 Lost
+=== team_rocket_headquarters_b1f.VoltorbTrap1
+from the trigger at 13,16 of TeamRocketHQ_B1F
+way 0
+  > Zzzt! A Voltorb burst out of a trap in the floor!
+  * sound status_paralysis
+  * wildbattle Voltorb 23 Won
+  = VAR_ROCKET_TRAP_VOLTORB_1 0 -> 1
+way 1, from answer 1
+  * wildbattle Voltorb 23 Lost
+=== team_rocket_headquarters_b1f.VoltorbTrap2
+from the trigger at 16,16 of TeamRocketHQ_B1F
+way 0
+  > Zzzt! A Voltorb burst out of a trap in the floor!
+  * sound status_paralysis
+  * wildbattle Voltorb 23 Won
+  = VAR_ROCKET_TRAP_VOLTORB_2 0 -> 1
+way 1, from answer 1
+  * wildbattle Voltorb 23 Lost
+=== team_rocket_headquarters_b1f.VoltorbTrap3
+from the trigger at 16,17 of TeamRocketHQ_B1F
+way 0
+  > Zzzt! A Voltorb burst out of a trap in the floor!
+  * sound status_paralysis
+  * wildbattle Voltorb 23 Won
+  = VAR_ROCKET_TRAP_VOLTORB_3 0 -> 1
+way 1, from answer 1
+  * wildbattle Voltorb 23 Lost
+=== team_rocket_headquarters_b1f.VoltorbTrap4
+from the trigger at 14,18 of TeamRocketHQ_B1F
+way 0
+  > Zzzt! A Voltorb burst out of a trap in the floor!
+  * sound status_paralysis
+  * wildbattle Voltorb 23 Won
+  = VAR_ROCKET_TRAP_VOLTORB_4 0 -> 1
+way 1, from answer 1
+  * wildbattle Voltorb 23 Lost
+=== team_rocket_headquarters_b1f.VoltorbTrap5
+from the trigger at 11,22 of TeamRocketHQ_B1F
+way 0
+  > Zzzt! A Voltorb burst out of a trap in the floor!
+  * sound status_paralysis
+  * wildbattle Voltorb 23 Won
+  = VAR_ROCKET_TRAP_VOLTORB_5 0 -> 1
+way 1, from answer 1
+  * wildbattle Voltorb 23 Lost
+=== team_rocket_headquarters_b1f.VoltorbTrap6
+from the trigger at 13,21 of TeamRocketHQ_B1F
+way 0
+  > Zzzt! A Voltorb burst out of a trap in the floor!
+  * sound status_paralysis
+  * wildbattle Voltorb 23 Won
+  = VAR_ROCKET_TRAP_VOLTORB_6 0 -> 1
+way 1, from answer 1
+  * wildbattle Voltorb 23 Lost
+=== team_rocket_headquarters_b2f.Ariana
+from the trigger at 30,19 of TeamRocketHQ_B2F
+way 0
+  ???> Hold it right there! Where do you think you're going?
+  Ariana> So you're the child who's been running about my hideout. Did you really think I'd let that go?
+  Ariana> This is where your little adventure ends.
+  Lance> Not while I'm here. Lucas, let's take them on together!
+  Ariana> Hmph. Fine. We'll leave this hideout. We have plans that matter far more than this one.
+  Ariana> And there's nothing you can do to stop them.
+  Lance> They've run. That leaves the signal. It comes from the generator in the room behind those shutters.
+  Lance> Its power comes from Electrode wired into the machine. Help me stop them, Lucas.
+  * scene team_rocket_headquarters_b2f.Ariana in the hideout
+  * battle johto_executive_ariana_ariana_2 and johto_team_rocket_grunt_25 with johto_pkmn_trainer_lance_lance Won
+  * fade out
+  * fade in
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_MAHOGANY_SHOP_SHADY_SALESMAN
+  + FLAG_HIDE_ROCKET_HIDEOUT_B2F_ARIANA
+  + FLAG_UNK_1E8
+  = VAR_UNK_40A9 0 -> 4
+  = VAR_UNK_40AC 0 -> 9
+  + beaten johto_executive_ariana_ariana_2
+  + beaten johto_team_rocket_grunt_25
+  + seen team_rocket_headquarters_b2f.Ariana in the hideout
+way 1, from answer 1
+  * battle johto_executive_ariana_ariana_2 and johto_team_rocket_grunt_25 with johto_pkmn_trainer_lance_lance Lost
+  * scene over, unseen
+=== team_rocket_headquarters_b2f.Door
+from Shutter at 30,22 of TeamRocketHQ_B2F
+from Shutter at 31,22 of TeamRocketHQ_B2F
+way -
+  > The shutter is locked tight. A speaker beside it crackles: 'Password?'
+=== team_rocket_headquarters_b2f.Dragonite
+from Dragonite at 14,24 of TeamRocketHQ_B2F
+way -
+  > Dragonite: Grroar!
+  * cry Dragonite
+=== team_rocket_headquarters_b2f.Electrode1
+from Electrode at 21,12 of TeamRocketHQ_B2F
+way 0
+  > An Electrode wired into the generator! It's glaring at you!
+  * cry Electrode
+  * wildbattle Electrode 23 Won
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_1_AND_4
+way 1, from answer 1
+  * wildbattle Electrode 23 Lost
+=== team_rocket_headquarters_b2f.Electrode2
+from Electrode at 21,14 of TeamRocketHQ_B2F
+way 0
+  > An Electrode wired into the generator! It's glaring at you!
+  * cry Electrode
+  * wildbattle Electrode 23 Won
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_2_AND_5
+way 1, from answer 1
+  * wildbattle Electrode 23 Lost
+=== team_rocket_headquarters_b2f.Electrode3
+from Electrode at 21,16 of TeamRocketHQ_B2F
+way 0
+  > An Electrode wired into the generator! It's glaring at you!
+  * cry Electrode
+  * wildbattle Electrode 23 Won
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_ELECTRODE_3_AND_6
+way 1, from answer 1
+  * wildbattle Electrode 23 Lost
+=== team_rocket_headquarters_b2f.Generator
+from the tile read at 28,16 of TeamRocketHQ_B2F
+from the tile read at 29,16 of TeamRocketHQ_B2F
+from the tile read at 30,16 of TeamRocketHQ_B2F
+from the tile read at 31,16 of TeamRocketHQ_B2F
+from the tile read at 32,16 of TeamRocketHQ_B2F
+from the tile read at 33,16 of TeamRocketHQ_B2F
+way -
+  > A huge machine thrums and crackles. Cables run from it to the Electrode around the room.
+=== team_rocket_headquarters_b2f.Lance
+from Lance at 15,24 of TeamRocketHQ_B2F
+way -
+  Lance> Rest when you need to. Team Rocket won't give you the chance once a battle starts.
+=== team_rocket_headquarters_b2f.LanceStops
+from the trigger at 28,10 of TeamRocketHQ_B2F
+from the trigger at 32,17 of TeamRocketHQ_B2F
+way -
+  Lance> Wait, Lucas. Not that way. The generator comes first: the Electrode are on the west side of the room.
+  * emote Lance Exclaim
+=== team_rocket_headquarters_b2f.MurkrowOne
+from the trigger at 11,4 of TeamRocketHQ_B2F
+way -
+  * scene team_rocket_headquarters_b2f.The Murkrow in the north corridor
+  * emote Murkrow Exclaim
+  * cry Murkrow
+  * endscene
+  + FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
+  = VAR_UNK_40AC 0 -> 5
+  + seen team_rocket_headquarters_b2f.The Murkrow in the north corridor
+=== team_rocket_headquarters_b2f.MurkrowTwo
+from the trigger at 50,29 of TeamRocketHQ_B2F
+way -
+  * scene team_rocket_headquarters_b2f.The Murkrow in the south corridor
+  * emote Murkrow Exclaim
+  * cry Murkrow
+  * endscene
+  + FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_2
+  = VAR_UNK_40AC 0 -> 7
+  + seen team_rocket_headquarters_b2f.The Murkrow in the south corridor
+=== team_rocket_headquarters_b2f.Password
+from Murkrow at 30,24 of TeamRocketHQ_B2F
+from the trigger at 27,24 of TeamRocketHQ_B2F
+from the trigger at 29,27 of TeamRocketHQ_B2F
+way -
+  Murkrow> Krah! The boss is back! The boss is back! Krah!
+  > The Murkrow keeps repeating the same words. That must be the password to the shutters!
+  > The Murkrow flew off down the corridor!
+  * scene team_rocket_headquarters_b2f.The password
+  * emote Murkrow Exclaim
+  * cry Murkrow
+  * sound warp
+  * endscene
+  + FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_1
+  + FLAG_HIDE_ROCKET_HIDEOUT_B2F_MURKROW_3
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
+  + FLAG_UNK_0D3
+  = VAR_UNK_40A9 0 -> 3
+  = VAR_UNK_40AC 0 -> 8
+  + seen team_rocket_headquarters_b2f.The password
+=== team_rocket_headquarters_b3f.Door
+from Shutter at 23,15 of TeamRocketHQ_B3F
+from Shutter at 24,15 of TeamRocketHQ_B3F
+way -
+  > The shutter is locked tight. A speaker beside it crackles: 'Password?'
+=== team_rocket_headquarters_b3f.Grunt
+from Grunt at 44,26 of TeamRocketHQ_B3F
+way -
+  Grunt> The password? Don't look at me. They only tell it to the ones who guard the doors.
+=== team_rocket_headquarters_b3f.GruntEast
+from Grunt at 38,15 of TeamRocketHQ_B3F
+way 0
+  Grunt> Grunt: You want to get into the boss's room? You'll have to get past me first!
+  Grunt> All right, all right! The other half of the password is... 'Persian'. Happy now?
+  * battle johto_team_rocket_f_grunt_5 Won
+  + beaten johto_team_rocket_f_grunt_5
+way 1, from answer 1
+  * battle johto_team_rocket_f_grunt_5 Lost
+=== team_rocket_headquarters_b3f.GruntWest
+from Grunt at 15,25 of TeamRocketHQ_B3F
+way 0
+  Grunt> Grunt: The password? As if I'd tell a kid like you! Unless you beat me, that is.
+  Grunt> Fine! The first half of the password is... 'Golden'. You won't get the other half, though!
+  * battle johto_team_rocket_grunt_19 Won
+  + beaten johto_team_rocket_grunt_19
+way 1, from answer 1
+  * battle johto_team_rocket_grunt_19 Lost
+=== team_rocket_headquarters_b3f.Murkrow
+from Murkrow at 19,4 of TeamRocketHQ_B3F
+way -
+  > The Murkrow keeps croaking the same words over and over.
+  * cry Murkrow
+=== team_rocket_headquarters_b3f.MurkrowTwo
+from the trigger at 50,4 of TeamRocketHQ_B3F
+way -
+  * scene team_rocket_headquarters_b3f.The Murkrow in the east corridor
+  * emote Murkrow Exclaim
+  * cry Murkrow
+  * endscene
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_2
+  = VAR_UNK_40AC 0 -> 6
+  + seen team_rocket_headquarters_b3f.The Murkrow in the east corridor
+=== team_rocket_headquarters_b3f.Petrel
+from the trigger at 23,12 of TeamRocketHQ_B3F
+way 0
+  Giovanni> So. You've made it this far. I am Giovanni, leader of Team Rocket, returned at last.
+  Giovanni> And you think you can stand against me? Then show me...
+  Petrel> Ha! Fooled you, didn't I? I'm Petrel, Team Rocket's master of disguise. The boss isn't here.
+  Petrel> But you've seen my face now, so you're not leaving!
+  Petrel> Argh! All right, you win. The radio signal? It comes from the generator on the floor above.
+  Petrel> But you'll never open the shutters to it. Only the boss's Murkrow knows that password!
+  Petrel> Hey! Murkrow, come back! ...Oh, forget it. I'm out of here.
+  * scene team_rocket_headquarters_b3f.Petrel's disguise
+  * battle johto_executive_petrel_petrel_2 Won
+  * emote Murkrow Exclaim
+  * cry Murkrow
+  * fade out
+  * fade in
+  * endscene
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_MURKROW_1
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_PETREL
+  = VAR_UNK_40AC 0 -> 4
+  + beaten johto_executive_petrel_petrel_2
+  + seen team_rocket_headquarters_b3f.Petrel's disguise
+way 1, from answer 1
+  * battle johto_executive_petrel_petrel_2 Lost
+  * scene over, unseen
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_GIOVANNI
+=== team_rocket_headquarters_b3f.Rival
+from the trigger at 20,17 of TeamRocketHQ_B3F
+way -
+  Barry> ...You again. What are you doing in a dump like this?
+  Barry> Team Rocket. They act tough in a gang, but on their own every one of them is weak.
+  Barry> I'm going to be strong enough to take them all on alone. Don't get in my way.
+  * scene team_rocket_headquarters_b3f.The rival in the hideout
+  * endscene
+  + FLAG_HIDE_ROCKET_HIDEOUT_B3F_RIVAL
+  = VAR_UNK_40AC 0 -> 3
+  + seen team_rocket_headquarters_b3f.The rival in the hideout
 === three_island.AntiBiker1
 from Man at 103,24 of ThreeIsland
 way -
@@ -16084,6 +18374,7 @@ way 1, from answer 1
   * scene over, unseen
 === three_island_dunsparce_tunnel.Prospector
 from Prospector at 23,2 of ThreeIsland_DunsparceTunnel
+from Prospector at 6,3 of ThreeIsland_DunsparceTunnel
 way -
   Prospector> I'm digging for gold under this island. Every day, a little deeper. One day I'll strike it rich!
 === three_island_harbor.Sailor
@@ -16172,6 +18463,21 @@ way -
   Clerk> Welcome! Have a look at what we've got in today.
   Clerk> Thank you! Do come again.
   * open Shop two_island_1
+=== two_island_cape_brink_house.Tutor
+from Old Woman at 4,4 of TwoIsland_CapeBrink_House
+way 0
+  Old Woman> My, a visitor all the way out at the cape! Sit, sit.
+  Old Woman> I've spent my life learning the oldest moves there are, the ones only a starter grown to its full strength can bear.
+  Old Woman> Shall I teach one of those moves to a Pokémon of yours?
+  Old Woman> Show me the one you'd like to learn it, dearie.
+  Old Woman> That Pokémon can't learn any of my moves. Only a starter grown to its last form can.
+  ? Shall I teach one of those moves to a Pokémon of yours? = Yes
+  * open ChoosePokemon
+  + FLAG_TALKED_TO_CAPE_BRINK_TUTOR
+way 1, from answer 1
+  Old Woman> Well, there's no hurry. The sea and I will still be here.
+  ? Shall I teach one of those moves to a Pokémon of yours? = No
+  + FLAG_TALKED_TO_CAPE_BRINK_TUTOR
 === two_island_harbor.Sailor
 from Sailor at 8,6 of TwoIsland_Harbor
 way -

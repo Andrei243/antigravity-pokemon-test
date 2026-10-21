@@ -296,6 +296,12 @@ public class PokemonTests
                 // Gym's trainers lie buried in its sand on the holes of its first floor (plan 21 · H4, part b)
                 if (!tiles!.Contains((warp.SourceX, warp.SourceY)) && map.GetNpcAt(warp.SourceX, warp.SourceY) is { } standing
                     && standing.Movement is not { Kind: PersonMoves.Wander or PersonMoves.Loop }) continue;
+                // The second of two warps to one place that lie one behind the other (Victory Road's way out north,
+                // Johto 3F 38,14 and 38,13) is never stepped on: whoever walks there is carried by the first
+                if (!tiles.Contains((warp.SourceX, warp.SourceY)) && map.Warps.Any(other => other != warp
+                    && other.TargetMap == warp.TargetMap && other.TargetX == warp.TargetX && other.TargetY == warp.TargetY
+                    && Math.Abs(other.SourceX - warp.SourceX) + Math.Abs(other.SourceY - warp.SourceY) == 1
+                    && tiles.Contains((other.SourceX, other.SourceY)))) continue;
                 Assert.True(tiles.Contains((warp.SourceX, warp.SourceY)),
                     $"{name}: the warp to {warp.TargetMap} at ({warp.SourceX},{warp.SourceY}) can't be reached from where the game starts");
             }

@@ -306,7 +306,27 @@ internal static class WorldWalk
         new("FourIsland_IcefallCave_B1F", 8, 9, Direction.Down),
     };
 
+    /// <summary>
+    /// Places a walk by the starting layouts can't join. Johto's Victory Road has a stretch no tile of the import joins to the rest: 2F's east and north-east and 3F's
+    /// middle, whose only edges are walls and ledges that hop out of it (the ladder at 3F 30,27 has no warp). The walk
+    /// sets out from inside it until plan 20 · J12, which writes the floors' own scenes, finds how HeartGold enters it
+    /// and takes the line out.
+    /// </summary>
+    public static readonly MapSpot[] NotYetLinked =
+    {
+        new("IndigoVictoryRoad_2F", 54, 23, Direction.Down),
+        // The port's east steps lead to the Dunsparce Tunnel's far end, which exists only once the dig has laid the tunnel
+        // out again (FLAG_THREE_ISLAND_TUNNEL_DUG_OUT): the walk goes by the layout before it
+        new("ThreeIsland", 134, 45, Direction.Down),
+        new("ThreeIsland_DunsparceTunnel", 25, 5, Direction.Down),
+        // Icefall Cave's thin ice (see FallenTo): the stairs it hides lead down to B1F
+        new("FourIsland_IcefallCave_1F", 12, 3, Direction.Down),
+        new("FourIsland_IcefallCave_1F", 15, 16, Direction.Down),
+        new("FourIsland_IcefallCave_B1F", 12, 3, Direction.Down),
+        new("FourIsland_IcefallCave_B1F", 15, 16, Direction.Down),
+    };
+
     /// <summary>The whole game from where each region that is built begins, and from where only the story takes the player.</summary>
     public static Dictionary<Map, HashSet<(int X, int Y)>> FromEveryStart(Func<string, Map> mapOf) =>
-        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).Concat(StoryArrivals).Concat(OpenedAhead).Concat(FallenTo).ToArray());
+        From(mapOf, RegionDatabase.All.Where(r => r.Start != null).Select(r => r.Start!).Concat(StoryArrivals).Concat(OpenedAhead).Concat(FallenTo).Concat(NotYetLinked).ToArray());
 }
