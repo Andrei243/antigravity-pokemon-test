@@ -75,7 +75,7 @@ Written 2026-10-06, before any session.
 - Tests and harness as C2, with `57_cast_battle_aroma_lady` showing the class where the field shows a Breeder; `38_sheet_fisherman_idle` shows the rod held at rest.
 - **Done when** every look placed in an open area is its own but the five plan 01 · M7 placed that are C4's (`sailor`, `policeman`, `roughneck`, `rich_boy`, `socialite`), every class the open areas' trainers have stands in battle as itself but the six M7 brought that are C4's (Bird Keeper, Dragon Tamer, Pokémon Ranger, PI, Belle & Pa, Double Team), and the boards are approved.
 
-**Built (2026-10-21); the boards wait for the user's approval.** What was built, and where it differs from the above:
+**Done (2026-10-21; the boards approved by the user the same day).** What was built, and where it differs from the above:
 - The kit (style guide, "Characters", "The second trainers' parts", first). A lab coat, a long coat and a dress needed no part: they are the coat in white, the coat, and the skirt in the top's colour. What is new is `CharacterStyle.Overalls`, `Apron` (a colour), `Vest` (a colour), `Robe` and `Swimsuit` (`BuildOverClothes`, and the robe in the coat's branch), `Headwear.Cowboy`, a held thing (`CharacterStyle.Holds`, `HeldProp`: `Rod`, `Parasol`, `Guitar`, `Net`, `Pickaxe`, `FloatRing`, in `PropColor` or its own; `BuildHeld`, each on the bone it moves with) and `BodyBuild.Elder` (an adult nine tenths as tall, the head forward). The enums' new values are at their ends, and every look made before builds the same shapes as before but the two C2 looks given a held thing: the Bug Catcher has the net and the Ruin Maniac the pickaxe. The rod's line is left out: a line two texels thin vanishes at the mesh's cell size.
 - Twenty-eight looks under the original's object names: the twenty-four of the plan's list and the three classes drawn only in battle (`aroma_lady`, `veteran`, `poke_kid`), with `scientist_m` the `scientist` look Kanto's plan 19 had made (now with glasses) through the `same` block. Their lines left `fallbacks` (with HeartGold's `expert_f`), and `classes` names fifteen classes for them, the woman's look second (`Pokéfan`, `Pokémon Breeder`, `Tuber`, `Swimmer`, `Scientist`); Emerald's `Expert`, `Old Couple` and `Pkmn Breeder` stand as Sinnoh's Experts, old folk and Breeders. Who is left falling back in the open areas is C4's seven (the snow's skiers, ace trainers and townswoman, the sailor and the roughneck).
 - Tests: the twenty-eight in `CharacterKitTests.Humans` (an elder's height allowed down to 0.9, a parasol over the head to 1.65, the top of a parasol moving with the body), the cowboy hat in `EveryHatShowsOverTheHair`; `CharacterTableTests.TheSecondTrainersAreEachTheirOwnLook` (each a look, none falling back, each class standing as its look, every new part worn) and `WhatIsHeldMovesWithItsBone` (a rod and a net with the right hand, a float ring with the hips); the open areas' unmade looks are down to C4's, the plain classes' ceiling to 63.
@@ -218,7 +218,7 @@ Written 2026-10-06, before any session.
 
 - [x] C1 The table and one name for a person
 - [x] C2 Parts I and the trainers of the open areas
-- [~] C3 Parts II and the rest of the open areas' people (built; the boards wait for the user's approval)
+- [x] C3 Parts II and the rest of the open areas' people
 - [ ] C4 The rest of Platinum's classes
 - [x] C5 The named cast of the first half of the story
 - [x] C6 The named cast of the second half
