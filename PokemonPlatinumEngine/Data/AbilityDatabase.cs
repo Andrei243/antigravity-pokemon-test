@@ -50,16 +50,21 @@ public static class AbilityDatabase
     }
 
     private static readonly Dictionary<string, Ability> Abilities = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly Dictionary<int, string> NamesById = new();
 
     static AbilityDatabase()
     {
         foreach (var record in GameDataFiles.Load<List<AbilityRecord>>(FileName))
         {
             Abilities[record.Name] = new Ability(record.Name, record.Description, AbilityEffectTable.Get(record.Name));
+            NamesById.TryAdd(record.Id, record.Name);
         }
     }
 
     public static void Initialize() { }
+
+    /// <summary>The ability Platinum's number is (the number a Pokémon of the DS games keeps), or null.</summary>
+    public static string? NameOf(int id) => NamesById.GetValueOrDefault(id);
 
     public static Ability? Get(string? name) => name != null && Abilities.TryGetValue(name, out var a) ? a : null;
 

@@ -89,3 +89,13 @@ namespace PokemonPlatinumTests.Probes.Core
         public static string? OwnFolder() => PokemonPlatinumEngine.Core.SaveEnvironment.Here().PerUserFolder;
     }
 }
+
+namespace PokemonPlatinumTests.Probes.Foreign
+{
+    // The readers of a player's own files need no window and write nothing (plan 08 · P20)
+    internal static class Reader
+    {
+        public static bool Window() => Raylib_cs.Raylib.IsWindowReady();
+        public static void Writes(string path) => System.IO.File.WriteAllBytes(path, new byte[1]);
+    }
+}

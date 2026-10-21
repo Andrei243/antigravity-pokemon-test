@@ -4059,3 +4059,53 @@ battles and Ho-Oh, and the small gifts are left (plan 20's J11 record says why).
 - **What the shrine's end sets for New Bark Town is J12's**: HeartGold sets the rival's room, `VAR_SCENE_ELMS_LAB` 8 and
   the way east as the Badge is given; here only the shrine's own state (`FLAG_UNK_998`, `FLAG_UNK_0EA`, `VAR_UNK_40C3`)
   and Clair's in the Den are set, and J12 writes the scenes those start.
+
+## Reading the player's own files (2026-10-21, plan 08 · P20)
+
+The migration of Pal Park (P21) needs the player's Pokémon out of files the player owns. P20 is only the readers: they take bytes,
+give plain data and write nothing, and nothing in the game calls them yet. No save or Pokémon file of the games is in the repository
+(`MigrationTests` builds every file it reads, byte by byte), and the readers are written from the decompilation's C
+(`src/main_menu/ov97_02235D18.c`, `gba_pokemon.c`, `src/pokemon.c`, `src/savedata.c`), never from a tool's source.
+
+- **The door** is `ForeignFile.Open(path)` (and `Read(bytes)` for bytes already in hand): a file is told by its size alone (80 or 100 bytes a
+  GBA Pokémon, 136 or 236 a DS Pokémon, 128 KiB and a few bytes more a GBA save, 512 KiB a Platinum save), opened read-only
+  with its size asked first (nothing over 512 KiB is ever loaded), and **refused whole** with a reason (`ForeignRefusal`:
+  `UnknownSize`, `DamagedSave`, `DamagedPokemon`, `Unreadable`) or read whole. A test holds the bytes, the modification time and the
+  folder's contents unchanged after a read, and the architecture test holds `Foreign` to no `File`, `Directory` or writing stream and
+  no raylib type.
+- **A GBA save** (`GbaSave`): two slots of fourteen 4 KiB sectors, each with its place among the fourteen, a checksum (the 32-bit
+  words added and the two halves of the sum added), the signature `0x08012025` and a counter in its last twelve bytes; a slot is whole
+  only if all fourteen are, and the newer whole slot is read (the counters compared as `ov97_02235FFC` compares them, the one that
+  wrapped from the top to nought the newer); a sector may lie in any turn of the fourteen. Of the save only the boxes (sectors 5 to 13:
+  the current box, fourteen boxes of thirty 80-byte Pokémon, their names) and the trainer (name and ID, in sector 0) are read, not
+  the party. **The game is told by the first sector's size** (Ruby and Sapphire 2192, which the decompilation gives; Emerald 3884 and
+  FireRed and LeafGreen 3876 are the sizes those games are known to use, not in it), and FireRed cannot be told from LeafGreen by a
+  save, so a Deoxys's forme goes by the Pokémon's own game of origin there. **Owed to a real file**: the decompilation has Ruby's
+  and Sapphire's sector sizes alone, so Emerald's and FireRed's first-sector sizes and the fifth sector's (3136 or 3816) are
+  candidates tried in order, with any size the checksum accepts as the last resort; the first real file of either decides them.
+- **A Platinum save** (`PlatinumSave`): a primary copy and a backup (0 and 0x40000), each a normal block and a boxes block that end in a
+  20-byte footer (two counters, the block's own size, the signature `0x20060623`, its number and a CRC-16). The blocks are found by
+  their footers (their sizes are in the footer, so the thirty-odd tables of the normal block need not be added up), and the pair is
+  chosen as `SaveData_LoadCheck` chooses (the newer copy of each block, the older normal block where the two disagree, a block with no
+  whole copy refusing the save). Of the normal block only the trainer is read (name at 0x68, ID at 0x78), of the boxes block the
+  `PCBoxes` at its start. **The CRC is the SDK's CRC-16/CCITT, whose code the decompilation leaves out**: both readings of it (the
+  polynomial taken from the high bit and from the low) are accepted, since a real file is the check neither can be given offline.
+- **A Pokémon** is a `ForeignPokemon` (plain data: nothing points back at the file). GBA (`GbaPokemon`): the 48 bytes of four
+  substructures are xored word by word with the trainer's ID and the personality, lie in the order the personality's remainder of 24
+  chooses and add up to the header's checksum; a failing checksum is a **bad Egg**, which is what the game itself shows (species 412),
+  not a refusal, so a damaged slot of a save costs its Pokémon alone; a slot that holds no species is empty. DS (`DsPokemon`): four
+  blocks of 32 bytes in the order bits 13 to 17 of the personality choose, encrypted by the linear congruential generator the checksum seeds;
+  an **empty slot is not zeroes** (`BoxPokemon_Init` clears it and then encrypts it, which with a checksum of nought is a pattern of its
+  own that decrypts to nothing). A `.pk3` or `.pk4` is the same bytes decrypted and in the fixed order, and is told from a `.ek3` or `.ek4` by
+  whether its blocks add up as they lie.
+- **The conversion** (`ForeignPokemon.ToSaved`, `BoxMonGBAToBoxMon`): a GBA species by the table (`Treecko` 277 is 252), friendship back to
+  70, the ability by the GBA's bit unless the species gained one in Generation 4 (then the first), Unown's letter from the
+  personality's bits (`(P & 0x3000000) >> 18 | (P & 0x30000) >> 12 | (P & 0x300) >> 6 | P & 3`, modulo 28), Deoxys's forme by the game,
+  the nature, gender and shininess from the personality as Platinum's follow them, the item through the table of GBA numbers, and the
+  texts through the language's character table (a code the table lacks makes the whole text question marks, as the original). The ball and
+  the original trainer's name, ID and gender, the place's level and the day are kept; the ribbons, the contest ranks and the game of origin
+  have no field here and are dropped. The checks that refuse a Pokémon (an HM move, a key item, an impossible species) are asked of the
+  read Pokémon (`KnowsAnHm`, `HoldsAnInvalidItem`, `HasARealSpecies`) and applied by P21.
+- **Left out**: a party Pokémon's extra bytes (HP, stats, status: nothing of them is read), the party itself, Pal Park's and a cartridge's
+  other tables, Ruby against Sapphire and FireRed against LeafGreen, and every file of another kind (a `.dsv`, a Showdown text, a Pokémon
+  Bank file) — a file of a size none of the four kinds has is refused at once.

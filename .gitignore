@@ -50,3 +50,6 @@ overrides/
 
 # The damage oracle's calculator (plan 24 · X6), fetched by `npm ci`: only its answers are committed
 node_modules/
+
+# The player's own files, read and never written (plan 08 · P20): saves and Pokémon files dropped here for the migration
+migrate/
