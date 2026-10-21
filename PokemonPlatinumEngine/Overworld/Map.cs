@@ -689,8 +689,9 @@ public class Map
         foreach (var npc in Everyone)
         {
             npc.Forced = null;
-            // So is a face a script had them hold, and a gesture under way (plan 11 · C11)
+            // So is a face a script had them hold, and a gesture under way (plan 11 · C11), and a stance (C7)
             npc.StopActing();
+            npc.Posed = null;
         }
     }
 
@@ -840,6 +841,31 @@ public class Map
 
     /// <summary>A counter or a table one talks across: a room's own, or a tile of the world that the original marks as one (Amity Square's gates).</summary>
     public bool IsCounter(int x, int y) => Props.Any(p => p.IsCounter && p.Covers(x, y)) || (behaviours != null && BehaviourAt(x, y) == TileBehavior.Counter);
+
+    /// <summary>The piece of furniture that gives a stance on a tile (a seat or a bed, plan 11 · C7), or null for none.</summary>
+    public Prop? SeatAt(int x, int y) => Props.FirstOrDefault(p => Seats.StanceOn(p.Type) != null && p.Covers(x, y));
+
+    /// <summary>The seat or bed under someone, looked for again only once they have moved (the props of a map are many).</summary>
+    public Prop? SeatUnder(NPC npc)
+    {
+        if (npc.SeatLookup is { } last && last.X == npc.GridX && last.Y == npc.GridY) return last.Seat;
+        var seat = SeatAt(npc.GridX, npc.GridY);
+        npc.SeatLookup = (npc.GridX, npc.GridY, seat);
+        return seat;
+    }
+
+    /// <summary>
+    /// How someone is set (plan 11 · C7; style guide, "Characters", "Stances"): as a script posed them, else as their
+    /// file gives, else as the furniture under them seats or lays them, else standing. Someone in the middle of a step
+    /// stands, whatever they step over.
+    /// </summary>
+    public Stance StanceOf(NPC npc)
+    {
+        if (npc.Posed is { } posed) return posed;
+        if (npc.Stance is { } given) return given;
+        if (npc.StepOffsetX != 0f || npc.StepOffsetY != 0f) return Stance.Stand;
+        return SeatUnder(npc) is { } seat ? Seats.StanceOn(seat.Type) ?? Stance.Stand : Stance.Stand;
+    }
 
     // ------------------------------------------------------------------ places the story reveals (plan 01 · M8)
 

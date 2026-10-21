@@ -272,6 +272,9 @@ public class Player
     public void TickGesture(float dt) => Gesture = Acting.Tick(Gesture, ref gestureAge, GestureTimes, dt);
 
     /// <summary>Ends any gesture and lets the face go: the place has been come to again.</summary>
+    /// <summary>The stance a script's <c>pose</c> set the player in (plan 11 · C7), until they come to another place; null standing.</summary>
+    public Stance? Posed { get; set; }
+
     public void StopActing()
     {
         Gesture = null;
@@ -715,6 +718,8 @@ public class Player
         IsHoppingLedge = hopArc > 0f;
         IsSliding = sliding;
         IsMoving = true;
+        // A step stands them up from whatever a script set them in (plan 11 · C7)
+        Posed = null;
         moveProgress = 0f;
         if (step.Kind is StepKind.Hop or StepKind.Jump) AudioManager.PlaySound("ledge");
         else if (Mode is not (TravelMode.Surfing or TravelMode.Diving) && SoundBank.StepSound(map.BehaviourAt(step.X, step.Y)) is { } footfall) AudioManager.PlaySound(footfall);

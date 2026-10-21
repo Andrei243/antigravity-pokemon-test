@@ -8,7 +8,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>Which strip of sprite frames a pose takes its frame from.</summary>
-internal enum SpriteAnim { Idle, Walk, Run, Hop, Wave, Surprised, Nod, Cheer, Bow, Shrug, Point, Laugh }
+internal enum SpriteAnim { Idle, Walk, Run, Hop, Wave, Surprised, Nod, Cheer, Bow, Shrug, Point, Laugh, Sit, SitGround, Lie }
 
 /// <summary>One baked sprite frame: a character type, facing, strip, frame, and its face.</summary>
 internal readonly record struct SpriteKey(CharacterRig Rig, int Facing, SpriteAnim Anim, int Frame, bool Blink, Expression Expression);
@@ -31,7 +31,7 @@ internal static class CharacterSprites
     private const float FrameW = SpriteW / (float)TexelsPerUnit, FrameH = SpriteH / (float)TexelsPerUnit;
 
     // Seen a little from above, like hand-drawn overworld sprites
-    private const float ViewPitchDeg = 24f;
+    internal const float ViewPitchDeg = 24f;
 
     public const int WalkFrames = 8, IdleFrames = 2, HopFrames = 3, EmoteFrames = 6;
 
@@ -85,6 +85,12 @@ internal static class CharacterSprites
             return new SpriteKey(rig, facing, SpriteAnim.Idle, 0, false, Expression.Neutral);
 
         var expression = CharacterAnimation.ExpressionOf(pose);
+        // A stance has its own two breaths, and nothing else shows over it (plan 11 · C7)
+        if (pose.Stance != Overworld.Stance.Stand)
+        {
+            int breathing = MathF.Sin(pose.Time * MathF.Tau / BreathPeriod) > 0f ? 1 : 0;
+            return new SpriteKey(rig, facing, StripOf(pose.Stance), breathing, pose.Blink, expression);
+        }
         if (pose.Hop > 0f && pose.Hop < 1f)
             return new SpriteKey(rig, facing, SpriteAnim.Hop, Math.Clamp((int)(pose.Hop * HopFrames), 0, HopFrames - 1), pose.Blink, expression);
 
@@ -120,6 +126,23 @@ internal static class CharacterSprites
         _ => SpriteAnim.Cheer
     };
 
+    /// <summary>The strip of a stance (plan 11 · C7).</summary>
+    private static SpriteAnim StripOf(Overworld.Stance stance) => stance switch
+    {
+        Overworld.Stance.Sit => SpriteAnim.Sit,
+        Overworld.Stance.SitGround => SpriteAnim.SitGround,
+        _ => SpriteAnim.Lie
+    };
+
+    /// <summary>The stance a strip is baked in, or null for a strip of standing.</summary>
+    internal static Overworld.Stance? StanceOf(SpriteAnim strip) => strip switch
+    {
+        SpriteAnim.Sit => Overworld.Stance.Sit,
+        SpriteAnim.SitGround => Overworld.Stance.SitGround,
+        SpriteAnim.Lie => Overworld.Stance.Lie,
+        _ => null
+    };
+
     /// <summary>The emote a strip's frames are baked from.</summary>
     private static Emote EmoteOf(SpriteAnim strip) => strip switch
     {
@@ -153,6 +176,13 @@ internal static class CharacterSprites
             case SpriteAnim.Hop:
                 pose.Hop = (key.Frame + 0.5f) / HopFrames;
                 pose.Time = 0.4f;
+                break;
+            case SpriteAnim.Sit:
+            case SpriteAnim.SitGround:
+            case SpriteAnim.Lie:
+                // A stance's two breaths, as the idle's (plan 11 · C7)
+                pose.Stance = StanceOf(key.Anim)!.Value;
+                pose.Time = (key.Frame == 0 ? 0.75f : 0.25f) * BreathPeriod;
                 break;
             default:
                 pose.Emote = EmoteOf(key.Anim);

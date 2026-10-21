@@ -1861,9 +1861,10 @@ public partial class GameEngine
         if (npc != null && TryKickBag(npc)) return;
         if (npc != null)
         {
-            // Face player (a trainer goes back to looking the old way if they win); a thing stays as it is
+            // Face player (a trainer goes back to looking the old way if they win); a thing stays as it is, and so does
+            // someone seated or lying, who keeps the seat's facing (plan 11 · C7)
             if (npc.IsTrainer) npc.LeavePost();
-            if (!npc.IsThing) npc.FaceTowards(flow.Player.GridX, flow.Player.GridY);
+            if (!npc.IsThing && flow.Map.StanceOf(npc) == Overworld.Stance.Stand) npc.FaceTowards(flow.Player.GridX, flow.Player.GridY);
             // Someone spoken to counts toward the Hallowed Tower's stirring, once each (plan 08 · P12)
             if (!npc.IsThing && !npc.IsPokemon) flow.Story.Greet(GreetingKey(flow.Map, npc));
 

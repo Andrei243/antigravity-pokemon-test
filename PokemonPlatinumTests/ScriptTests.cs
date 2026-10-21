@@ -149,6 +149,7 @@ public class ScriptTests
           act self wave
           act player laugh 2
           mood self happy
+          pose self sit
           show self
           hide self
           place self 3 4 down
@@ -1576,6 +1577,7 @@ public class ScriptTests
         public void Emote(NPC? who, EmoteBubble bubble, float seconds) { }
         public void Act(NPC? who, Gesture gesture, int times) { }
         public void Mood(NPC? who, Mood mood) { }
+        public void Pose(NPC? who, Stance stance) { }
         public float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null) => 0f;
         public void Letterbox(bool on, float seconds) { }
         public void SlowMotion(float share, float seconds) { }

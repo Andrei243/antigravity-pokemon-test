@@ -41,6 +41,9 @@ internal struct CharacterPose
     public float EmoteTime;
 
     public Expression Expression;
+
+    /// <summary>How they are set (plan 11 · C7): standing, sitting on a seat or on the ground, or lying; nobody walks, hops or plays a gesture but standing.</summary>
+    public Overworld.Stance Stance;
 }
 
 /// <summary>Bone numbers of every humanoid skeleton (L is the character's left, +X).</summary>

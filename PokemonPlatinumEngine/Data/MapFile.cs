@@ -220,6 +220,9 @@ public sealed class MapFile
 
         /// <summary>The height they stand at on a deck over the ground (<see cref="NPC.Level"/>); left out on the ground.</summary>
         public float? Level { get; set; }
+
+        /// <summary>How they are set where the furniture under them doesn't decide it (<see cref="NPC.Stance"/>, plan 11 · C7): <c>Sit</c>, <c>SitGround</c>, <c>Lie</c> or <c>Stand</c>; left out, the furniture decides.</summary>
+        public Overworld.Stance? Stance { get; set; }
     }
 
     public sealed class TrainerRecord
@@ -449,7 +452,8 @@ public sealed class MapFile
             Item = n.Item,
             ItemCount = n.Count ?? 1,
             Species = n.Species,
-            Level = n.Level
+            Level = n.Level,
+            Stance = n.Stance
         };
         if (n.Id != null) npc.Id = n.Id;
         if (n.Movement != null) npc.Movement = PersonMovement.Parse(n.Movement, n.RangeX ?? 0, n.RangeZ ?? 0, n.X, n.Y, n.Facing);
@@ -618,6 +622,7 @@ public sealed class MapFile
         RangeX = npc.Movement is { RangeX: > 0 } mx ? mx.RangeX : null,
         RangeZ = npc.Movement is { RangeZ: > 0 } mz ? mz.RangeZ : null,
         Level = npc.Level,
+        Stance = npc.Stance,
         Trainer = npc.IsTrainer && npc.TrainerData is { } t ? new TrainerRecord
         {
             Id = t.Id,

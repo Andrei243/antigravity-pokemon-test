@@ -1123,8 +1123,12 @@ public sealed class WorldRenderer
                 jump = 0f;
             }
             float nx = npc.DrawX + 0.5f, nz = npc.DrawY + 0.5f;
-            actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.CharacterFor(npc.NpcType), shaders),
-                new Vector3(nx + nudge, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz) - Rows(npc.Wading) + Rows(jump), nz), Player.YawOf(npc.Facing), pose));
+            var rig = CharacterModels.Get(PlayerIdentity.CharacterFor(npc.NpcType), shaders);
+            var at = new Vector3(nx + nudge, (npc.Level is { } level ? Relief.Under(map, nx, nz, level) : Relief.At(map, nx, nz)) - SinkAt(map, nx, nz) - Rows(npc.Wading) + Rows(jump), nz);
+            // Sitting or lying on their furniture, never in it (plan 11 · C7; style guide, "Characters", "Stances")
+            pose.Stance = map.StanceOf(npc);
+            if (pose.Stance != Overworld.Stance.Stand) at = Seated(rig, pose.Stance, at, npc.Facing, map.SeatUnder(npc), npc.Level != null, MapScene.PitchOf(map));
+            actors.Add(new Actor(rig, at, Player.YawOf(npc.Facing), pose));
         }
 
         // The player too may be shaken or flicker (nobody stands for them)
@@ -1155,7 +1159,15 @@ public sealed class WorldRenderer
         }
         float seat = carrier != null ? CarrierSeat(carrier) : SurfMount.Seat;
         float feet = groundY + lift + Rows(seat) * saddle + bob * saddle - SinkAt(map, px, pz) * (1f - saddle) + Rows(playerJump) - Rows(Life.PlankRows(map, px, pz)) * (1f - saddle);
-        actors.Add(new Actor(CharacterModels.Get(PlayerIdentity.Character, shaders), new Vector3(px + NudgeOf(null), feet, pz), player.Yaw, playerPose));
+        var playerRig = CharacterModels.Get(PlayerIdentity.Character, shaders);
+        var playerAt = new Vector3(px + NudgeOf(null), feet, pz);
+        // A stance a script set them in, while they stand still on foot (plan 11 · C7): a step stands them up again
+        if (player.Posed is { } posed && player.Mount == null && player.WalkBlend < 0.5f && player.HopProgress <= 0f)
+        {
+            playerPose.Stance = posed;
+            playerAt = Seated(playerRig, posed, playerAt, player.Facing, map.SeatAt(player.GridX, player.GridY), false, MapScene.PitchOf(map));
+        }
+        actors.Add(new Actor(playerRig, playerAt, player.Yaw, playerPose));
 
         if (player.Mount is { } ridden)
         {
@@ -1173,6 +1185,45 @@ public sealed class WorldRenderer
     internal static int CarrierSeat(FieldSprites.Strip carrier) => (int)MathF.Round((carrier.Rows - CarrierSunk(carrier)) * 0.55f);
 
     private static bool IsBlinking(float time, float seed) => (time + seed * 7.3f) % 4.1f < 0.13f;
+
+    /// <summary>
+    /// Where the card of someone in a stance stands (plan 11 · C7; style guide, "Characters", "Stances"), from where
+    /// they would stand: a sitter's lifted until the hips, at the knees' height once seated, are at the seat's and
+    /// moved along the way they face so the legs hang in front of its edge; someone on the ground lifted onto the
+    /// cushion and moved forward as a sitter is; a lier in a bed under its covers, their card on the pillow sunk until
+    /// the neck is at the mattress's top (the camera's <paramref name="pitchDeg"/> says how far upright cards are
+    /// stretched); a lier on the floor where they are. Whoever already stands at a height of their own
+    /// (<paramref name="raised"/>, a <c>level</c>) is lifted no more.
+    /// </summary>
+    internal static Vector3 Seated(CharacterRig rig, Overworld.Stance stance, Vector3 at, Data.Direction facing, Prop? seat, bool raised, float pitchDeg)
+    {
+        var (dx, dz) = FieldMovement.Delta(facing);
+        float height = raised || seat == null ? 0f : Seats.HeightOf(seat.Type);
+        switch (stance)
+        {
+            case Overworld.Stance.Sit:
+            {
+                float hips = rig.Skeleton[HumanBones.ShinL].Joint.Y * rig.Scale;
+                float forward = Seats.ForwardOn(seat?.Type);
+                return at + new Vector3(dx * forward, Math.Max(0f, height - hips), dz * forward);
+            }
+            case Overworld.Stance.SitGround:
+                return at + new Vector3(dx * Seats.ForwardOn(seat?.Type), height, dz * Seats.ForwardOn(seat?.Type));
+            case Overworld.Stance.Lie:
+            {
+                // In a bed, under its covers: the card stands on the pillow, sunk until the neck is at the mattress's
+                // top, which hides the body in front of it and leaves the head on the pillow. The neck stands as high
+                // on the card as the sprite's camera, 24° above, sees it behind the feet, stretched as every upright
+                // card is (1 / cos of the field's pitch)
+                if (seat == null) return at;
+                float neck = rig.Skeleton[HumanBones.Head].Joint.Y * rig.Scale;
+                float onCard = (CharacterAnimation.LieLift * MathF.Cos(CharacterSprites.ViewPitchDeg * MathF.PI / 180f) + neck * MathF.Sin(CharacterSprites.ViewPitchDeg * MathF.PI / 180f)) / MathF.Cos(pitchDeg * MathF.PI / 180f);
+                return at + new Vector3(-dx * 0.2f, height - onCard + 0.02f, -dz * 0.2f);
+            }
+            default:
+                return at;
+        }
+    }
 
     /// <summary>
     /// Poses someone by the gesture and the mood a script gave them (plan 11 · C11): the gesture's round as an emote

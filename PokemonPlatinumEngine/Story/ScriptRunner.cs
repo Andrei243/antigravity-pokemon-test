@@ -327,7 +327,7 @@ public sealed partial class ScriptRunner
         // A battle is fought
         Op.Battle or Op.WildBattle or Op.CatchingLesson or Op.SweetScent or Op.SmashEncounter or Op.Master => true,
         // People and the field: a walk ends where it would have, a warp arrives, a fade and a camera's move are over at once
-        Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
+        Op.Face or Op.Walk or Op.Move or Op.WaitMoves or Op.Emote or Op.Act or Op.Mood or Op.Pose or Op.Show or Op.Hide or Op.Place or Op.Warp or Op.Fade or Op.Wait => false,
         Op.Camera or Op.Letterbox or Op.SlowMotion or Op.Effect or Op.Anim or Op.Shake or Op.Flicker => false,
         // A field move's cut-in and what it does, a step out onto the water or up a face, a flight: the player's own to see
         Op.UseMove or Op.Surf or Op.Climb or Op.Fly or Op.Teleport or Op.Escape or Op.Dive => true,
@@ -742,6 +742,9 @@ public sealed partial class ScriptRunner
                 break;
             case Op.Mood:
                 host.Mood(Person(i.Name, i), i.Mood);
+                break;
+            case Op.Pose:
+                host.Pose(Person(i.Name, i), i.Stance);
                 break;
             case Op.Show:
             case Op.Hide:

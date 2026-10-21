@@ -139,6 +139,8 @@ public partial class GameEngine
         if (world.Camera.Following is { } followed && !flow.Map.Everyone.Contains(followed)) world.Camera.ComeHome();
         // A face held and a gesture under way are let go on coming to a place, as the people's are (plan 11 · C11)
         flow.Player.StopActing();
+        // and so is a stance a script set them in (plan 11 · C7)
+        flow.Player.Posed = null;
         actor = default;
         flow.Map.ApplyPresence(flow.Story.Has);
         // Whoever was still walking on the map left behind stands where they were going, not between two tiles
@@ -958,6 +960,12 @@ public partial class GameEngine
         {
             if (who == null) game.flow.Player.Mood = mood;
             else who.Mood = mood;
+        }
+
+        public void Pose(NPC? who, Overworld.Stance stance)
+        {
+            if (who == null) game.flow.Player.Posed = stance == Overworld.Stance.Stand ? null : stance;
+            else who.Posed = stance;
         }
 
         public float Camera(CameraMove move, int x, int y, float seconds, float factor = 1f, NPC? who = null, IReadOnlyList<(int X, int Y)>? path = null)

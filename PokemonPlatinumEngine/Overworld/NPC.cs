@@ -150,6 +150,18 @@ public class NPC
         Mood = Mood.Neutral;
     }
 
+    /// <summary>
+    /// The stance their file gives them (plan 11 · C7; an overlay's or a room's <c>stance</c>), null where the
+    /// furniture under them decides (<see cref="Map.StanceOf"/>).
+    /// </summary>
+    public Stance? Stance { get; set; }
+
+    /// <summary>The stance a script's <c>pose</c> set them in (plan 11 · C7), until the place is come to again; it wins over every other.</summary>
+    public Stance? Posed { get; set; }
+
+    // The seat under them as last looked up, and where (Map.SeatUnder): looked for again only once they have moved
+    internal (int X, int Y, Prop? Seat)? SeatLookup;
+
     public bool HasBattled { get; set; } = false;
 
     /// <summary>
