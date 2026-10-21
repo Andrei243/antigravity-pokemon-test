@@ -145,14 +145,16 @@ internal static partial class ModernUi
     /// <param name="ribbonCursor">On the ribbons' page, the ribbon looked at; -1 while the page only shows them.</param>
     /// <param name="rental">A rental Pokémon of the Battle Factory (plan 06 · R18b): its ability and what it holds stand where a Pokémon of one's own shows its experience.</param>
     /// <param name="title">The screen's title where it is neither the team's nor a rental's (the Battle Castle's counters, plan 06 · R18c).</param>
-    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, bool rental = false, string? title = null)
+    public static void DrawSummary(int sw, int sh, Pokemon p, int index, int count, float appear = 1f, int page = -1, int ribbonCursor = -1, int markCursor = -1, bool rental = false, string? title = null)
     {
         Backdrop(sw, sh);
         ScreenTitle(title ?? Text.Of(rental ? "summary.rental" : "summary.title"));
         var esc = Hint("shared.keys.esc", "shared.hints.back");
         var page2 = Hint("shared.keys.leftRight", "shared.hints.page");
         var next = Hint("shared.keys.upDown", "shared.hints.nextPokemon");
-        if (page == PartyScreen.RibbonsPage && ribbonCursor >= 0) Hints(sw - 64, 44, Hint("shared.keys.arrows", "shared.hints.ribbon"), esc);
+        if (page == PartyScreen.StatsPage && markCursor >= 0) Hints(sw - 64, 44, Hint("shared.keys.leftRight", "shared.hints.mark"), Hint("shared.keys.z", "shared.hints.mark"), esc);
+        else if (page == PartyScreen.StatsPage && !p.IsEgg && !rental) Hints(sw - 64, 44, Hint("shared.keys.z", "shared.hints.marks"), page2, next, esc);
+        else if (page == PartyScreen.RibbonsPage && ribbonCursor >= 0) Hints(sw - 64, 44, Hint("shared.keys.arrows", "shared.hints.ribbon"), esc);
         else if (page == PartyScreen.RibbonsPage && !p.IsEgg && p.Ribbons.Count > 0) Hints(sw - 64, 44, Hint("shared.keys.z", "shared.hints.look"), page2, esc);
         else if (page >= 0 && !p.IsEgg && count > 1) Hints(sw - 64, 44, page2, next, esc);
         else if (page >= 0 && !p.IsEgg) Hints(sw - 64, 44, page2, esc);
@@ -240,22 +242,40 @@ internal static partial class ModernUi
             return;
         }
 
-        // ---- Stats
-        var stats = new Rectangle(696 + slide, 132, 1160, 400);
-        Panel(stats, 34);
-        Label(Text.Of("summary.stats"), stats.X + 44, stats.Y + 30);
-        int[] values = { p.MaxHP, p.Attack, p.Defense, p.SpAttack, p.SpDefense, p.Speed };
-        int[] bases = { p.Species.BaseHP, p.Species.BaseAttack, p.Species.BaseDefense, p.Species.BaseSpAttack, p.Species.BaseSpDefense, p.Species.BaseSpeed };
-        for (int i = 0; i < 6; i++)
+        // ---- The skills, on their own page (plan 08 · P3): the stats at ease, then the ability and what it does
+        if (page == PartyScreen.SkillsPage)
         {
-            float cy = stats.Y + 92 + i * 52;
-            UiFonts.DrawCentered(Words.Stat(SummaryStats[i]), stats.X + 44, cy, 30, Ink, UiWeight.ExtraBold);
-            string value = i == 0 ? Text.Of("party.hpValue", ("hp", p.CurrentHP), ("max", p.MaxHP)) : values[i].ToString();
-            UiFonts.DrawCentered(value, stats.X + 380 - UiFonts.Measure(value, 32, UiWeight.Black), cy, 32, Ink, UiWeight.Black);
-            var track = new Rectangle(stats.X + 420, cy - 11, stats.Width - 420 - 44, 22);
-            if (i == 0) Bar(track, (float)p.CurrentHP / Math.Max(1, p.MaxHP), HpColor((float)p.CurrentHP / Math.Max(1, p.MaxHP)));
-            else Bar(track, bases[i] / 160f, StatColor(bases[i]));
+            var skills = new Rectangle(696 + slide, 132, 1160, 900);
+            Panel(skills, 34);
+            StatRows(skills, p, 92, 66);
+            UiShapes.Fill(new Rectangle(skills.X + 44, skills.Y + 536, skills.Width - 88, 3), 1.5f, Rule);
+            Label(Text.Of("summary.ability"), skills.X + 44, skills.Y + 566);
+            if (p.Ability is { } ability)
+            {
+                UiFonts.Draw(ability.DisplayName, skills.X + 44, skills.Y + 596, 40, Ink, UiWeight.Black);
+                DrawWrapped(ability.DisplayDescription, skills.X + 44, skills.Y + 660, skills.Width - 88, 30, Muted, 40, UiWeight.Bold);
+            }
+            return;
         }
+
+        // ---- The first page keeps the held item and the marks above the moves; a summary of one page (a rental's) keeps the stats there
+        var upper = new Rectangle(696 + slide, 132, 1160, 400);
+        Panel(upper, 34);
+        if (page == PartyScreen.StatsPage)
+        {
+            Label(Text.Of("summary.heldItem"), upper.X + 44, upper.Y + 30);
+            UiFonts.Draw(p.HeldItem?.DisplayName ?? Text.Of("summary.none"), upper.X + 44, upper.Y + 62, 40, Ink, UiWeight.Black);
+            if (p.HeldItem is { } held) DrawWrapped(held.DisplayDescription, upper.X + 44, upper.Y + 118, upper.Width - 88, 30, Muted, 40, UiWeight.Bold);
+            UiShapes.Fill(new Rectangle(upper.X + 44, upper.Y + 232, upper.Width - 88, 3), 1.5f, Rule);
+            Label(Text.Of("summary.marks"), upper.X + 44, upper.Y + 262);
+            for (int m = 0; m < MarkCount; m++)
+            {
+                var at = new Vector2(upper.X + 44 + 52 + m * 120, upper.Y + 340);
+                if (m == markCursor) UiShapes.Shape(new Rectangle(at.X - 48, at.Y - 48, 96, 96), 24, Lighter(Selection, 0.88f), Lighter(Selection, 0.8f), Selection, 4);
+                MarkShape(at, 52, m, SummaryView.HasMark(p, m) ? Ink : Rule);
+            }
+        }
+        else StatRows(upper, p, 92, 52);
 
         // ---- Moves
         var moves = new Rectangle(696 + slide, 556, 1160, 476);
@@ -288,6 +308,24 @@ internal static partial class ModernUi
         }
     }
 
+    /// <summary>The six stats as rows in a panel: the value, and a bar whose length and colour follow the species' base stat (HP shows its current share).</summary>
+    private static void StatRows(Rectangle panel, Pokemon p, float first, float pitch)
+    {
+        Label(Text.Of("summary.stats"), panel.X + 44, panel.Y + 30);
+        int[] values = { p.MaxHP, p.Attack, p.Defense, p.SpAttack, p.SpDefense, p.Speed };
+        int[] bases = { p.Species.BaseHP, p.Species.BaseAttack, p.Species.BaseDefense, p.Species.BaseSpAttack, p.Species.BaseSpDefense, p.Species.BaseSpeed };
+        for (int i = 0; i < 6; i++)
+        {
+            float cy = panel.Y + first + i * pitch;
+            UiFonts.DrawCentered(Words.Stat(SummaryStats[i]), panel.X + 44, cy, 30, Ink, UiWeight.ExtraBold);
+            string value = i == 0 ? Text.Of("party.hpValue", ("hp", p.CurrentHP), ("max", p.MaxHP)) : values[i].ToString();
+            UiFonts.DrawCentered(value, panel.X + 380 - UiFonts.Measure(value, 32, UiWeight.Black), cy, 32, Ink, UiWeight.Black);
+            var track = new Rectangle(panel.X + 420, cy - 11, panel.Width - 420 - 44, 22);
+            if (i == 0) Bar(track, (float)p.CurrentHP / Math.Max(1, p.MaxHP), HpColor((float)p.CurrentHP / Math.Max(1, p.MaxHP)));
+            else Bar(track, bases[i] / 160f, StatColor(bases[i]));
+        }
+    }
+
     /// <summary>
     /// The trainer memo (plan 08 · P3): its trainer and number, when and where it was met and at what level, its nature
     /// and characteristic, and its ability with what it does. A Pokémon of the player's own carries no mark and shows the
@@ -311,8 +349,9 @@ internal static partial class ModernUi
         string met = where.Length == 0 ? Text.Of("summary.memo.unknownLine")
             : p.MetLevel == 0 ? Text.Of("summary.memo.hatchedLine", ("where", where))
             : Text.Of("summary.memo.metLine", ("where", where), ("level", p.MetLevel));
-        DrawWrapped(met, x, r.Y + 250, wide, 30, Ink, 40, UiWeight.ExtraBold);
-        DrawWrapped(Text.Of("summary.memo.nature", ("nature", Words.Nature(p.Nature))), x, r.Y + 330, wide, 30, Ink, 40, UiWeight.ExtraBold);
+        float metY = p.MetDate != null ? r.Y + 250 : r.Y + 200;
+        DrawWrapped(met, x, metY, wide, 30, Ink, 40, UiWeight.ExtraBold);
+        DrawWrapped(Text.Of("summary.memo.nature", ("nature", Words.Nature(p.Nature))), x, metY + 80, wide, 30, Ink, 40, UiWeight.ExtraBold);
         UiShapes.Fill(new Rectangle(x, r.Y + 410, wide, 3), 1.5f, Rule);
 
         Label(Text.Of("summary.memo.characteristic"), x, r.Y + 436);

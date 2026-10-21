@@ -637,7 +637,9 @@ public class PoffinTests
         // (The memo page stands between the Pokémon's own page and the condition's: plan 08 · P3)
         screen.TurnSummaryPage(1);
         screen.TurnSummaryPage(1);
+        screen.TurnSummaryPage(1);
         Assert.Equal(PartyScreen.ConditionPage, screen.SummaryPage);
+        screen.TurnSummaryPage(-1);
         screen.TurnSummaryPage(-1);
         screen.TurnSummaryPage(-1);
         Assert.Equal(0, screen.SummaryPage);

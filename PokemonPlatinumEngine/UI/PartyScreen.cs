@@ -48,27 +48,36 @@ public class PartyScreen
     /// Whether the summary has a page for the contest condition (plan 06 · R14c): as in the original, once the
     /// Contest Hall has been visited (<c>PokemonSummaryScreen_ShowContestData</c>). The game sets it as it opens the menu.
     /// </summary>
-    public bool ShowCondition { get; set; }
+    public bool ShowCondition { get => View.HasCondition; set => View.HasCondition = value; }
 
-    /// <summary>The summary's page: 0 the Pokémon, its stats and moves; 1 its condition; 2 its ribbons (plan 06 · R17b).</summary>
-    public int SummaryPage { get; private set; }
+    /// <summary>The summary's pages and cursors (plan 08 · P3); the members below are this screen's way to them.</summary>
+    public SummaryView View { get; } = new();
 
-    public const int StatsPage = 0, ConditionPage = 1, RibbonsPage = 2;
+    /// <summary>The summary's page, by <see cref="SummaryPage"/>'s number: 0 the Pokémon, 1 its condition, 2 its ribbons, 3 its memo, 4 its skills.</summary>
+    public int SummaryPage => (int)View.Page;
 
-    /// <summary>The trainer memo (plan 08 · P3): who met it where and when, its characteristic and its ability. It follows the Pokémon's page.</summary>
-    public const int MemoPage = 3;
+    public const int StatsPage = (int)UI.SummaryPage.Info, ConditionPage = (int)UI.SummaryPage.Condition, RibbonsPage = (int)UI.SummaryPage.Ribbons;
 
-    /// <summary>How many ribbons a row of the ribbons' page shows, and how many rows (the original shows four by three).</summary>
-    public const int RibbonColumns = 6, RibbonRows = 3;
+    /// <summary>The trainer memo (plan 08 · P3): who met it where and when, its characteristic and its ability.</summary>
+    public const int MemoPage = (int)UI.SummaryPage.Memo;
+
+    /// <summary>The Pokémon's skills (plan 08 · P3): its stats and its ability.</summary>
+    public const int SkillsPage = (int)UI.SummaryPage.Skills;
+
+    /// <summary>How many ribbons a row of the ribbons' page shows, and how many rows (the original shows six by three).</summary>
+    public const int RibbonColumns = SummaryView.RibbonColumns, RibbonRows = SummaryView.RibbonRows;
 
     /// <summary>
     /// The ribbon under the cursor while the ribbons' page is looked through (the original's ribbon select, A on the
     /// page), by its place among the Pokémon's own; -1 while the page only shows them.
     /// </summary>
-    public int RibbonCursor { get; private set; } = -1;
+    public int RibbonCursor => View.RibbonCursor;
 
-    /// <summary>The pages a summary turns through: the condition's only once the Contest Hall has been visited.</summary>
-    public IReadOnlyList<int> SummaryPages => ShowCondition ? new[] { StatsPage, MemoPage, ConditionPage, RibbonsPage } : new[] { StatsPage, MemoPage, RibbonsPage };
+    /// <summary>The mark under the cursor while the marks are being set on the first page; -1 otherwise.</summary>
+    public int MarkCursor => View.MarkCursor;
+
+    /// <summary>The pages a summary turns through, by number: the condition's only once the Contest Hall has been visited.</summary>
+    public IReadOnlyList<int> SummaryPages => View.Pages.Select(p => (int)p).ToList();
 
     /// <summary>The chosen Pokémon's menu while it is open, and the entry under its cursor.</summary>
     public IReadOnlyList<PartyAction>? Actions { get; private set; }
@@ -281,8 +290,7 @@ public class PartyScreen
         {
             case PartyActionKind.Summary:
                 ShowSummary = true;
-                SummaryPage = 0;
-                RibbonCursor = -1;
+                View.Open();
                 summaryAge = 0f;
                 if (!party.Members[SelectedIndex].IsEgg) AudioManager.PlayCry(party.Members[SelectedIndex]);
                 break;
@@ -331,12 +339,8 @@ public class PartyScreen
     /// <summary>Turns the summary to its next page or the one before, round and round (<see cref="SummaryPages"/>).</summary>
     public void TurnSummaryPage(int dx)
     {
-        if (!ShowSummary || dx == 0) return;
-        var pages = SummaryPages;
-        int at = Math.Max(0, pages.ToList().IndexOf(SummaryPage));
-        SummaryPage = pages[UiNav.Wrap(at, Math.Sign(dx), pages.Count)];
-        RibbonCursor = -1;
-        AudioManager.PlaySound("page");
+        if (!ShowSummary) return;
+        View.Turn(dx);
     }
 
     /// <summary>
@@ -345,28 +349,17 @@ public class PartyScreen
     /// </summary>
     public bool SelectRibbons(Pokemon shown)
     {
-        if (!ShowSummary || SummaryPage != RibbonsPage || shown.IsEgg || shown.Ribbons.Count == 0) return false;
-        RibbonCursor = 0;
-        AudioManager.PlaySound("select");
-        return true;
+        return ShowSummary && View.SelectRibbons(shown);
     }
 
     /// <summary>Stops looking through the ribbons (the original's B).</summary>
-    public void LeaveRibbons()
-    {
-        RibbonCursor = -1;
-        AudioManager.PlaySound("cancel");
-    }
+    public void LeaveRibbons() => View.LeaveRibbons();
 
     /// <summary>Moves the ribbons' cursor over their rows of <see cref="RibbonColumns"/>, round at the edges.</summary>
-    public void MoveRibbon(int dx, int dy, int count)
-    {
-        if (RibbonCursor < 0 || count <= 0 || (dx == 0 && dy == 0)) return;
-        int next = UiNav.Grid(Math.Min(RibbonCursor, count - 1), count, RibbonColumns, dx, dy);
-        if (next == RibbonCursor) return;
-        RibbonCursor = next;
-        AudioManager.PlaySound("cursor");
-    }
+    public void MoveRibbon(int dx, int dy, int count) => View.MoveRibbon(dx, dy, count);
+
+    /// <summary>The confirm button on the first page: the cursor comes up on the marks, which the arrows move along and the button sets or clears.</summary>
+    public bool EditMarks(Pokemon shown) => ShowSummary && View.EditMarks(shown);
 
     /// <summary>Moves the cursor over the two-column list, or to the next Pokémon while the summary is open.</summary>
     public void MoveCursor(int dx, int dy, int count)
@@ -377,7 +370,7 @@ public class PartyScreen
             : UiNav.Grid(SelectedIndex, count, 2, dx, dy);
         if (next == SelectedIndex) return;
         SelectedIndex = next;
-        RibbonCursor = -1;
+        View.PutCursorsAway();
         AudioManager.PlaySound("cursor");
     }
 
@@ -402,7 +395,15 @@ public class PartyScreen
                 else MoveRibbon(dx, dy, shown.Ribbons.Count);
                 return;
             }
-            if (InputManager.IsActionPressed(GameAction.Confirm) && shown != null && SelectRibbons(shown)) return;
+            // Setting the marks: left and right move along them, the confirm button sets or clears one, cancel stops (plan 08 · P3)
+            if (MarkCursor >= 0 && shown != null)
+            {
+                if (InputManager.IsActionPressed(GameAction.Cancel)) View.LeaveMarks();
+                else if (InputManager.IsActionPressed(GameAction.Confirm)) View.ToggleMark(shown);
+                else View.MoveMark(dx);
+                return;
+            }
+            if (InputManager.IsActionPressed(GameAction.Confirm) && shown != null && (SelectRibbons(shown) || EditMarks(shown))) return;
             if (InputManager.IsActionPressed(GameAction.Cancel) || InputManager.IsActionPressed(GameAction.Confirm))
             {
                 ShowSummary = false;
@@ -445,7 +446,7 @@ public class PartyScreen
         if (ShowSummary && SelectedIndex < party.Count)
         {
             ModernUi.DrawSummary(screenWidth, screenHeight, party.Members[SelectedIndex], SelectedIndex, party.Count,
-                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor);
+                Math.Clamp(summaryAge / SummaryAppearTime, 0f, 1f), SummaryPage, RibbonCursor, MarkCursor);
         }
         else if (Entering)
         {
