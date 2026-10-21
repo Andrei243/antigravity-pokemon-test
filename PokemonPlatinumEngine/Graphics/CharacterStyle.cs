@@ -4,7 +4,7 @@ using Raylib_cs;
 namespace PokemonPlatinumEngine.Graphics;
 
 /// <summary>What is worn on the head (style guide, "Characters"; Helmet to Headband came with plan 11 · C2).</summary>
-internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask, Fedora, Helmet, HardHat, Beanie, Bandana, Headband, Cowboy }
+internal enum Headwear { None, Beret, Cap, NurseCap, Bow, Mask, Fedora, Helmet, HardHat, Beanie, Bandana, Headband, Cowboy, Visor, WideHat }
 
 /// <summary>How the hair is cut (style guide, "Characters"; Bowl to Bald came with plan 11 · C2).</summary>
 internal enum HairCut { Short, Spiky, Long, Swept, Afro, Bun, Braids, Bunches, Bowl, Ponytail, Curls, Bald }
@@ -13,7 +13,7 @@ internal enum HairCut { Short, Spiky, Long, Swept, Afro, Bun, Braids, Bunches, B
 internal enum BodyBuild { Kid, Adult, Little, Elder }
 
 /// <summary>Something a person holds (plan 11 · C3; style guide, "Characters", "The second trainers' parts").</summary>
-internal enum HeldProp { None, Rod, Parasol, Guitar, Net, Pickaxe, FloatRing }
+internal enum HeldProp { None, Rod, Parasol, Guitar, Net, Pickaxe, FloatRing, Camera }
 
 /// <summary>
 /// Outfit and colouring for one kind of character, shared by the 3D field models and the 2D trainer card art. Each

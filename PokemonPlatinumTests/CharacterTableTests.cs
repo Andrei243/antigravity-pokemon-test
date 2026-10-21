@@ -250,15 +250,13 @@ public class CharacterTableTests
                 if (person.Trainer == null && WorldMapBuilder.SpeciesFor(looks) != null) continue;
                 string stands = WorldMapBuilder.CharacterFor(looks);
                 Assert.True(Table.Has(stands) || stands == "StarterBriefcase", $"{key}: {id} ({looks}) stands as '{stands}', which is no look");
-                if (!Table.Has(looks) && !Table.Fallbacks.ContainsKey(looks)) unmade.Add(looks);
+                // (a fallback counts too: the starter's briefcase is a thing, not a person, and the rival, the professor
+                // and the nurse stand as their own looks by the names the game has always called them)
+                if (!Table.Has(looks) && looks is not ("briefcase" or "barry" or "prof_rowan" or "pokecenter_nurse")) unmade.Add(looks);
             }
         }
-        // The snow's and the east's people (plan 01 · M7 and M8): plan 11 · C4's (C3 drew the sea's)
-        // (Snowpoint's townsman is given a look that exists by his overlay since plan 02 · S11a)
-        Assert.Equal(new[]
-        {
-            "ace_trainer_snow_f", "ace_trainer_snow_m", "roughneck", "sailor", "skier_f", "skier_m", "snowpoint_npc_f"
-        }, unmade);
+        // Since plan 11 · C4 nobody of the open areas stands as a look they borrow
+        Assert.Empty(unmade);
     }
 
     /// <summary>
@@ -285,9 +283,11 @@ public class CharacterTableTests
             if (look == null) Assert.Equal("Roark", Table.InBattle(trainerClass, "Roark"));
             else if (!Table.Has(look)) plain.Add(trainerClass);
         }
-        // Plan 11 · C2 to C4 draw these: the count only falls (85 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, and K4's second part the Gamer and the Engineer of the sound map, which plan 11 · C13 and plan 20 · J14 will draw; 86 after plan 19 · K5 gave the Channeler a look and the sound map the Poké Maniac of FireRed's, "Pokemaniac"; 87 after K5's second part gave the Biker and the Cue Ball a look and the sound map FireRed's Rocker and Cooltrainer; 77 after plan 11 · C2 drew the first trainers of the open areas; 63 after C3 drew the rest)
-        Assert.True(plain.Count <= 63, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
-        Assert.Contains("Sailor", plain);
+        // Plan 11 · C2 to C4 draw these: the count only falls (85 after plan 19 · K4 and plan 20 · J4 added the classes of Kanto and Johto, and K4's second part the Gamer and the Engineer of the sound map, which plan 11 · C13 and plan 20 · J14 will draw; 86 after plan 19 · K5 gave the Channeler a look and the sound map the Poké Maniac of FireRed's, "Pokemaniac"; 87 after K5's second part gave the Biker and the Cue Ball a look and the sound map FireRed's Rocker and Cooltrainer; 77 after plan 11 · C2 drew the first trainers of the open areas; 63 after C3 drew the rest; 41 after C4 drew the rest of Platinum's)
+        Assert.True(plain.Count <= 41, $"{plain.Count} classes stand in the plain default: {string.Join(", ", plain)}");
+        // What is left is the later regions' (their plans draw them): Platinum's classes all stand as looks of their own since C4
+        Assert.Contains("Medium", plain);
+        foreach (string platinum in TrainerDatabase.All.Select(t => t.Class).Distinct()) Assert.DoesNotContain(platinum, plain);
         // Plan 11 · C2 drew these
         Assert.DoesNotContain("Hiker", plain);
         Assert.DoesNotContain("Ace Trainer", plain);
@@ -307,10 +307,11 @@ public class CharacterTableTests
         // ...a class plan 11 · C2 drew stands as its own look whatever the person wears...
         Assert.Equal("hiker", Table.InBattle("Hiker", "Gentleman"));
         Assert.Equal("grunt_f", Table.InBattle("Galactic", "grunt_f"));
-        // ...and a class with no look yet stands in the plain default it always did, under its own name (a Sailor,
-        // until plan 11 · C4 draws him)
-        Assert.Equal("Sailor", Table.InBattle("Sailor", "Gentleman"));
-        Assert.False(Table.Has("Sailor"));
+        // ...and a class with no look yet stands in the plain default it always did, under its own name (Johto's Medium,
+        // until plan 20 · J14 draws her; plan 11 · C4 drew the Sailor)
+        Assert.Equal("sailor", Table.InBattle("Sailor", "Gentleman"));
+        Assert.Equal("Medium", Table.InBattle("Medium", "Gentleman"));
+        Assert.False(Table.Has("Medium"));
         // A trainer nobody carries (a test's, the harness's) stands as the class
         Assert.Equal("Leader", Table.InBattle("Leader", null));
 
@@ -454,7 +455,7 @@ public class CharacterTableTests
         Assert.Contains(styles, s => s.Vest != null);
         Assert.Contains(styles, s => s.Hat == Headwear.Cowboy);
         Assert.Contains(styles, s => s.Build == BodyBuild.Elder);
-        foreach (var held in Enum.GetValues<HeldProp>().Where(h => h is not (HeldProp.None or HeldProp.Net or HeldProp.Pickaxe)))
+        foreach (var held in Enum.GetValues<HeldProp>().Where(h => h is not (HeldProp.None or HeldProp.Net or HeldProp.Pickaxe or HeldProp.Camera)))
             Assert.Contains(styles, s => s.Holds == held);
         // The net and the pickaxe went to two of C2's looks
         Assert.Equal(HeldProp.Net, Table.Get("bug_catcher").Holds);
@@ -483,5 +484,72 @@ public class CharacterTableTests
             .ToList();
         Assert.True(far.Count > 30, $"{type}: only {far.Count} vertices of what is held");
         Assert.All(far, v => Assert.True(mesh.WeightOf(v, bone) > 0.9f, $"{type}: a vertex at {mesh.Positions[v]} follows its bone {mesh.WeightOf(v, bone):F2} of the way"));
+    }
+
+    /// <summary>
+    /// Every person among the original's object looks (its <c>OBJ_EVENT_GFX_*</c>, from the decompilation's
+    /// <c>generated/object_events_gfx.txt</c>, written here by plan 11 · C4 since the importer's full run is not in the
+    /// repository): the player's own variants, the unused and dummy entries, the <c>var_*</c> stand-ins, the Pokémon and
+    /// the things are left out.
+    /// </summary>
+    public static readonly string[] OriginalsPeople =
+    {
+        "ninja_boy", "twin", "school_kid_m", "youngster", "bug_catcher", "lass", "battle_girl", "school_kid_f", "pokemon_breeder_m", "guitarist",
+        "ace_trainer_m", "pokemon_breeder_f", "beauty", "ace_trainer_f", "pokefan_m", "pokefan_f", "expert_m", "expert_f", "collector", "hiker",
+        "reporter", "cameraman", "cashier_m", "cashier_f", "pokecenter_nurse", "teala", "scientist_m", "scientist_f", "roughneck", "skier_m",
+        "skier_f", "policeman", "idol", "gentleman", "socialite", "cyclist_m", "cyclist_f", "worker", "rancher", "cowgirl", "clown", "artist",
+        "jogger", "swimmer_m", "swimmer_f", "tuber_f", "tuber_m", "ruin_maniac", "black_belt", "camper", "picnicker", "fisherman", "parasol_lady",
+        "sailor", "waiter", "waitress", "rich_boy", "lady", "snowpoint_npc_m", "snowpoint_npc_f", "ace_trainer_snow_m", "ace_trainer_snow_f",
+        "psychic", "baby_in_pram", "middle_aged_man", "middle_aged_woman", "prof_rowan", "cyrus", "mars", "saturn", "jupiter", "grunt_m", "grunt_f",
+        "roark", "gardenia", "crasher_wake", "maylene", "fantina", "candice", "byron", "volkner", "aaron", "bertha", "flint", "lucian", "cynthia",
+        "mom", "cheryl", "riley", "marley", "buck", "mira", "barry", "receptionist", "old_man", "old_woman", "prof_oak", "jasmine", "gym_guide",
+        "palmer", "maid", "mystery_gift_deliveryman", "kid_with_nds", "looker", "charon", "thorton", "argenta", "darach", "dahlia", "caitlin",
+        "frontier_single_attendant", "frontier_multi_attendant", "frontier_booth_attendant", "wifi_plaza_attendant_m", "wifi_plaza_attendant_f",
+        "game_director"
+    };
+
+    [Fact]
+    public void EveryPersonOfTheOriginalIsALookOfTheTable()
+    {
+        // None stands as another's look any more (plan 11 · C4): each is a look of the table or another name of one,
+        // but the named cast whose objects the game has always called by the look's own name (the rival, the
+        // professor, the nurse: what scripts and tests know them as)
+        var named = new Dictionary<string, string> { ["barry"] = "Rival", ["prof_rowan"] = "Rowan", ["pokecenter_nurse"] = "Nurse" };
+        foreach (string look in OriginalsPeople)
+        {
+            if (named.TryGetValue(look, out var whose))
+            {
+                Assert.Equal(whose, WorldMapBuilder.CharacterFor(look));
+                continue;
+            }
+            Assert.True(Table.Has(look), $"{look} has no look");
+            Assert.False(Table.Fallbacks.ContainsKey(look), $"{look} still falls back");
+            Assert.Equal(look, WorldMapBuilder.CharacterFor(look));
+        }
+        // What else is left in the fallbacks is no person of the original's list: its stand-in and the briefcase, and
+        // the GBA's and HeartGold's looks their plans give their own
+        Assert.DoesNotContain(Table.Fallbacks.Keys, k => OriginalsPeople.Contains(k) && !named.ContainsKey(k));
+    }
+
+    [Fact]
+    public void TheLastClassesStandAsTheirOwnLooks()
+    {
+        foreach (var (trainerClass, first, second) in new[]
+        {
+            ("Sailor", "sailor", "sailor"), ("Skier", "skier_m", "skier_f"), ("Policeman", "policeman", "policeman"), ("Roughneck", "roughneck", "roughneck"),
+            ("Idol", "idol", "idol"), ("Socialite", "socialite", "socialite"), ("Rich Boy", "rich_boy", "rich_boy"), ("Waiter", "waiter", "waiter"),
+            ("Waitress", "waitress", "waitress"), ("Maid", "maid", "maid"), ("Reporter", "reporter", "reporter"), ("Cameraman", "cameraman", "cameraman"),
+            ("Jogger", "jogger", "jogger"), ("Dragon Tamer", "dragon_tamer", "dragon_tamer"), ("Pokémon Ranger", "ranger_m", "ranger_f"), ("PI", "pi", "pi"),
+            ("Interviewers", "reporter", "cameraman"), ("Sis and Bro", "swimmer_f", "swimmer_m"), ("Belle & Pa", "lass", "middle_aged_man"),
+            ("Double Team", "ace_trainer_f", "ace_trainer_m"), ("Young Couple", "ace_trainer_m", "ace_trainer_f")
+        })
+        {
+            Assert.Equal(first, Table.InBattle(trainerClass, null));
+            Assert.Equal(second, Table.InBattle(trainerClass, second));
+        }
+        // C4's parts are worn
+        Assert.Equal(Headwear.Visor, Table.Get("jogger").Hat);
+        Assert.Equal(Headwear.WideHat, Table.Get("socialite").Hat);
+        Assert.Equal(HeldProp.Camera, Table.Get("cameraman").Holds);
     }
 }
