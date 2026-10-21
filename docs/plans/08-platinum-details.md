@@ -292,6 +292,8 @@ Owed: the shots looked at, and the full suite run, once merged.
 - The 376 species from Chespin to Pecharunt: 752 entries, written and checked as the design's "Batches" says, in two sittings if one session can't hold them (the floor shows where the first stopped).
 - **Done when** every species has two entries and a habitat word, and the check reports nothing shared.
 
+**Outcome (2026-10-21).** `Data/dex-entries.json` now holds all 1,025 species, 2,050 entries; the 376 of this session are Chespin to Pecharunt (Kalos, Alola, Galar, Hisui's seven and Paldea). They were written in nine batches of up to 42 under P13's shape, merged in National order by a script outside the repository (a dry run changes nothing, and the 649 entries before them are unchanged), and run through `--check-entries` after each: it found 2, 5, 0, 4, 1, 3, 0, 3 and 3 runs of six words, each rewritten, and ends at "2050 entries of 1025 names share no run of 6 words with 14496 English flavour texts". `DataFileTests.WrittenEntriesThrough` is 1025 and the shape tests pass (15 to 45 words, two to a species, nothing shared between a species' two entries to five words, ASCII but for `Pokémon` and the Nidoran signs of the names). **Habitats** are ours throughout (PokeAPI has none after Generation 4): the nine words by where each lives, `Rare` for legendaries, mythicals, Ultra Beasts, Paradox Pokémon, the Treasures of Ruin and the Loyal Three. **Written fast**: the Paradox Pokémon and the Ultra Beasts share a manner of speaking (each Paradox entry says it resembles a being from an old story), and many Generation 8 and 9 entries describe a species from its look and category alone; a later pass by a person is owed to make them as particular as the older ones. **Owed**: a shot of one of these INFO pages (`26n_pokedex_<species>`), and a human read of the whole file.
+
 ### P17 · Entries: the 541 forms
 - Every form by its Showdown name (`Charizard-Mega-X`), in National order of its species, written and checked as the design's "Batches" says; decision 3 may narrow them. The test then holds every species and form.
 - **Done when** `DataFileTests` holds the whole file and `DexEntries` gives each form its own entries, shown on P19's FORMS page.
@@ -379,7 +381,7 @@ Owed: the shots looked at, and the full suite run, once merged.
 - [x] P13 The entries file and the Sinnoh Pokédex (2026-10-13: `dex-entries.json` with the 210's 420 entries and habitats, `DexEntries`, the INFO page's entry in turn and its habitat, `--check-entries` clean)
 - [x] P14 Entries: the rest of Kanto and Johto (2026-10-13: 338 entries and habitat words for the 169 species to Celebi outside the Sinnoh Pokédex, written beside P13 and merged into its file; nothing shared at six words)
 - [x] P15 Entries: the rest of Hoenn, Sinnoh and Unova (2026-10-21: 270 species, 540 entries; the check reports nothing; `WrittenEntriesThrough` is 649)
-- [ ] P16 Entries: the rest of Kalos, Alola, Galar and Paldea
+- [x] P16 Entries: the rest of Kalos, Alola, Galar and Paldea (2026-10-21: 376 species, 752 entries; every species has two; `WrittenEntriesThrough` is 1025)
 - [ ] P17 Entries: the 541 forms
 - [ ] P18 The Pokédex's cry page
 - [ ] P19 The looks seen and the forms page

@@ -99,7 +99,7 @@ public class DataFileTests
     /// does every species to this National number. A batch raises it to its last species (P14: 251, Celebi; P15: 649,
     /// Genesect; P16: 1025), and P17 holds every form too.
     /// </summary>
-    private const int WrittenEntriesThrough = 649;
+    private const int WrittenEntriesThrough = 1025;
 
     [Fact]
     public void TheWrittenEntriesKeepTheirShape()
