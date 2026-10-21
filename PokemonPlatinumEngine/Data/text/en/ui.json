@@ -193,6 +193,36 @@
         "Set": "When a trainer's Pokémon faints, the next one comes straight out and you are not asked to switch."
       }
     },
+    "speedUp": {
+      "label": "Speed-up",
+      "value": { "Off": "Off", "Double": "×2", "Triple": "×3" },
+      "help": {
+        "Off": "Holding the run button changes nothing in battles, text and scenes.",
+        "Double": "While the run button is held, battles, text and the evolution scene play twice as fast. Nothing about how they turn out changes.",
+        "Triple": "While the run button is held, battles, text and the evolution scene play three times as fast. Nothing about how they turn out changes."
+      }
+    },
+    "autoAdvance": {
+      "label": "Auto-advance",
+      "value": { "Off": "Off", "Slow": "Slow", "Fast": "Fast" },
+      "help": {
+        "Off": "A line of text waits until you press a button.",
+        "Slow": "A line of text goes on by itself after a long pause. A question always waits for your answer.",
+        "Fast": "A line of text goes on by itself after a short pause. A question always waits for your answer."
+      }
+    },
+    "autorun": {
+      "label": "Autorun",
+      "help": {
+        "on": "You run without holding the run button, which then makes you walk. Needs the Running Shoes.",
+        "off": "You walk, and run while the run button is held."
+      }
+    },
+    "frame": {
+      "label": "Text frame",
+      "value": { "Plain": "Plain", "DoubleRule": "Double rule", "Wood": "Wood", "Stone": "Stone", "Glass": "Dark glass", "Ribbon": "Ribbon" },
+      "help": "The frame round the box that lines of text are written in."
+    },
     "buttonMode": {
       "label": "Button mode",
       "value": { "Normal": "Normal", "StartIsX": "Start = X", "LIsA": "L = A" },

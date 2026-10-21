@@ -958,8 +958,15 @@ public partial class BattleEngine
             {
                 ConfirmMessage();
             }
+            else if (AutoAdvanceAfter is { } pause && HUD.LevelUp == null)
+            {
+                // A whole line goes on by itself after its pause (plan 08 · P2); a level's panel and a question wait to be read
+                autoAdvanceWaited += dt;
+                if (autoAdvanceWaited >= pause) ConfirmMessage();
+            }
             return;
         }
+        autoAdvanceWaited = 0f;
 
         // A timed animation (the Poké Ball throw) holds the queue until it ends
         if (messageWaitTimer > 0f)
@@ -977,6 +984,13 @@ public partial class BattleEngine
 
         HandleMenuInput();
     }
+
+    /// <summary>
+    /// How long a whole line waits before it is read on by itself (the options' auto-advance, plan 08 · P2); null, the
+    /// default, when it waits for a press. Only plain lines: a question never goes on by itself.
+    /// </summary>
+    public float? AutoAdvanceAfter { get; set; }
+    private float autoAdvanceWaited;
 
     /// <summary>The message currently on screen. A tool may set it to show a line the log did not say (the harness's critical hit).</summary>
     public string CurrentMessage { get => currentMessage; internal set => currentMessage = value; }

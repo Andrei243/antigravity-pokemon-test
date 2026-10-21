@@ -116,6 +116,14 @@ Whether to do it at all is decision 7: it reopens plan 03 · decision 4.
 - Shots: the six frames over one line (`look_9_frames_*`), a battle at ×3 against the same at ×1 (`d*_fast`).
 - **Done when** holding Run plays a battle at three times the pace with the same result, and the defaults draw what they drew.
 
+**Outcome (2026-10-21).** Four rows stand after Battle Style, before the pad's (`OptionRow.SpeedUp`, `AutoAdvance`, `Autorun`, `Frame`; `GameSettings.SpeedUp`, `AutoAdvance`, `Autorun`, `Frame`, the enums `SpeedUp`, `AutoAdvance`, `TextFrame`), all off or plain unless chosen, with their words in `ui.json` (English and Romanian) and the frames in the style guide ("Field menus and notices", "Text frames") first.
+- **The speed-up** is `GameEngine.Pace`: the options' factor (×2, ×3) while Run is held, 1 otherwise, or a value a tool sets outright (`Pace = 3`, `ClearSpeedUp()`); `UpdateFrame` multiplies the `dt` it hands to the Battle, Dialogue and Evolution states by it (text types out faster by the same factor). The rules take no `dt`, so the log is the same at any pace. The Transition state is not sped up: its length is part of the way into a battle (plan 09 · L13), and scaling it would move every shot after one.
+- **Auto-advance**: `BattleEngine.AutoAdvanceAfter` (set every frame by the engine) confirms a whole line after 2.5 s (Slow) or 1.2 s (Fast), but not while the level-up panel is up; `DialogueManager.AutoAdvanceAfter` does the same for plain lines of the field, and a question never goes on by itself (the switch offer and the move-learning question are `LearnStep`s, not lines).
+- **Autorun**: `Player.Autorun` reads the run button the other way round in `Player.Update` (`Advance` is untouched), and running still needs the Running Shoes; the engine sets it from the options each frame. The Bicycle's gear change and the Underground's radar still read the button itself.
+- **Frames**: `ModernUi.DrawTextBox(rect, frame)` draws the six (`ModernUi.TextFrame`, set by `ApplySettings`) and returns the writing's colour; every `DrawDialogue` goes through it.
+- **Tests** (`QuickerBattleTests`): the defaults, the rows' laps, the file round trip and an older file, autorun with Run up and held and without the shoes, a battle played out at two paces reaching the same log and HP, auto-advance reading a line on and never answering a question; `FocusAndFrameCapTests` counts the rows from their new places.
+- **Not done**: the shots (`look_9_frames_*`, `d*_fast`) were not written or taken, and the options screen's new rows were not looked at; `diff` of `all` is expected to move nothing, as the defaults draw what they drew.
+
 ### P3 · The memo's fields and the first three pages
 - `MetLocation`, `MetLevel`, `MetDate`, `Markings` on `Pokemon` and `SavedPokemonData` beside R10's `OriginalTrainer`, set at the catch, the gift and the starter; the day from `GameClock.Today`, which the harness fixes; the migration in `ToPokemon`; `Characteristics`; `SummaryView` with `Info`, `Memo` and `Skills`, painted after the style guide's "Summary" is rewritten.
 - Tests: an older save's Pokémon reads as the player's own; a catch records the area's name and the level; `ACopyTakesOnEverythingThatCanChange` passes with the new fields; the characteristic for hand-worked IVs.
@@ -350,7 +358,7 @@ Owed: the shots looked at, and the full suite run, once merged.
 ## Status
 
 - [x] P1 Platinum's battle options (2026-10-13: the three rows, Shift's offer as a question in the core and on screen, the scene off in the face; tests and shots written, not run)
-- [ ] P2 A quicker battle, of our own
+- [x] P2 A quicker battle, of our own (2026-10-21: the four rows, the speed-up, auto-advance, autorun and six text frames; tests run and green, the shots not taken)
 - [ ] P3 The memo's fields and the first three pages
 - [ ] P4 The move pages and the other doors
 - [x] P5 The level-up panel (2026-10-12)
