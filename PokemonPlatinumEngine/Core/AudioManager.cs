@@ -134,6 +134,20 @@ public static class AudioManager
         mixer.PlaySound(Cries.Get(species, form, mode), AudioBus.Cry, 1f, pan);
     }
 
+    /// <summary>
+    /// Plays a species' cry (or one of its forms') bent by the Pokédex's cry page (plan 08 · P18): pitched, doubled,
+    /// rung or filtered as <paramref name="shape"/> says, and at the place its pan puts it. Tests hear it as
+    /// "cry &lt;name&gt; shaped &lt;shape&gt;".
+    /// </summary>
+    public static void PlayCry(PokemonSpecies species, string? form, CryShape shape)
+    {
+        if (hushed) return;
+        string name = species.Form(form)?.Name ?? species.Name;
+        heard?.Add($"cry {name} shaped {shape.Clamped().Key}");
+        if (isMuted || !isInitialized) return;
+        mixer.PlaySound(Cries.Shaped(species, form, shape), AudioBus.Cry, 1f, shape.Clamped().PanPosition);
+    }
+
     /// <summary>Makes the cries a scene is about to play on a worker, so none is made on the frame that plays it. Nothing without an audio device.</summary>
     public static void RequestCries(IEnumerable<Pokemon> pokemon)
     {

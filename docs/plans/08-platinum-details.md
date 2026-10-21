@@ -385,7 +385,7 @@ Owed: the shots looked at, and the full suite run, once merged.
 - [x] P15 Entries: the rest of Hoenn, Sinnoh and Unova (2026-10-21: 270 species, 540 entries; the check reports nothing; `WrittenEntriesThrough` is 649)
 - [x] P16 Entries: the rest of Kalos, Alola, Galar and Paldea (2026-10-21: 376 species, 752 entries; every species has two; `WrittenEntriesThrough` is 1025)
 - [x] P17 Entries: the 541 forms (2026-10-21: all 541, two each; the check reports nothing; `EveryFormHasItsOwnWrittenEntries`)
-- [ ] P18 The Pokédex's cry page
+- [x] P18 The Pokédex's cry page (2026-10-21: CRY between AREA and SIZE for every species seen, `PokedexScreen.PagesOf`, `PokedexFocus.Cry`; a scope of the shaped cry (`Cries.Scope`) over PITCH −24 to +12, STEREO (chorus or pan), ROOM (reverb or filter), LOOP and PLAY; `Cries.Shaped` and `AudioManager.PlayCry(species, form, CryShape)`; the screen's own playhead, so shots are deterministic; shots `26q` and `26r` of `menus`; the forms page is P19's)
 - [ ] P19 The looks seen and the forms page
 - [ ] P20 Reading the player's own files
 - [ ] P21 Migration, as Platinum's

@@ -11,10 +11,14 @@ using PokemonPlatinumEngine.UI.Kit;
 namespace PokemonPlatinumEngine.UI;
 
 /// <summary>Where the Pokédex's cursor is: its list, the entry beside it, the search panel or a diploma.</summary>
-public enum PokedexFocus { List, Entry, Search, Diploma }
+/// <summary>Where the cursor is: the list, an entry's pages, the search panel, a diploma, or the cry page's rows (plan 08 · P18).</summary>
+public enum PokedexFocus { List, Entry, Search, Diploma, Cry }
 
 /// <summary>The pages of an entry.</summary>
-public enum PokedexPage { Info, Area, Size }
+public enum PokedexPage { Info, Area, Cry, Size }
+
+/// <summary>The cry page's rows, top to bottom (plan 08 · P18).</summary>
+public enum PokedexCryRow { Pitch, Stereo, Room, Loop, Play }
 
 /// <summary>The rows of the search panel; <see cref="Buttons"/> is the row of SEARCH, RESET and DIPLOMA.</summary>
 public enum PokedexSearchRow { Mode, Order, Name, Type1, Type2, Shape, Buttons }
@@ -37,7 +41,11 @@ public class PokedexScreen
     /// <summary>How many species show at once, and how far left and right jump.</summary>
     public const int VisibleRows = 8, Jump = 10;
 
-    public static readonly PokedexPage[] Pages = Enum.GetValues<PokedexPage>();
+    /// <summary>
+    /// The pages an entry offers, in order (plan 08 · P18): INFO, AREA, CRY and SIZE for a species seen. The FORMS page
+    /// joins them once the Pokédex can show forms (plan 08 · P19).
+    /// </summary>
+    public IReadOnlyList<PokedexPage> PagesOf(PokedexEntry? entry) => new[] { PokedexPage.Info, PokedexPage.Area, PokedexPage.Cry, PokedexPage.Size };
     public static readonly PokedexSearchButton[] AllButtons = Enum.GetValues<PokedexSearchButton>();
 
     private readonly List<PokedexEntry> rows = new();
@@ -54,6 +62,60 @@ public class PokedexScreen
 
     public PokedexFocus Focus { get; private set; }
     public PokedexPage Page { get; private set; }
+
+    // ---- The cry page (plan 08 · P18)
+
+    /// <summary>How the cry page bends the cry: nothing until a control is changed. Kept while the entry is open.</summary>
+    public CryShape Shape { get; private set; }
+
+    /// <summary>Whether the cry is played again as it ends, until the page's rows are left.</summary>
+    public bool Loop { get; private set; }
+
+    /// <summary>The row of the cry page under the cursor.</summary>
+    public PokedexCryRow CryRow { get; private set; }
+
+    /// <summary>Whether the cry is sounding, and how far through it the screen's own playhead is (0 to 1): advanced by <see cref="Update"/>, never read from the audio thread, so a shot is the same every run.</summary>
+    public bool CryPlaying { get; private set; }
+    public float CryPlayhead { get; private set; }
+
+    private (int Species, CryShape Shape, SoundSample Sample)? cryMade;
+
+    /// <summary>The cry as the page has it shaped now, for the species selected: made once per species and shape, and kept.</summary>
+    public SoundSample? ShapedCry()
+    {
+        if (Selected is not { } entry) return null;
+        if (cryMade is { } kept && kept.Species == entry.Species.DexNumber && kept.Shape == Shape) return kept.Sample;
+        var sample = Cries.Shaped(entry.Species, null, Shape);
+        cryMade = (entry.Species.DexNumber, Shape, sample);
+        return sample;
+    }
+
+    /// <summary>The scope's columns for the cry as shaped now and the playhead's place (<see cref="Cries.Scope"/>).</summary>
+    public ScopeColumn[] ScopeColumns(int columns) => ShapedCry() is { } cry ? Cries.Scope(cry.Samples, CryPlaying ? CryPlayhead : 0f, columns) : new ScopeColumn[columns];
+
+    /// <summary>The cry sounds, from its start: A on the page's Play and Pitch rows, and again as a loop comes round.</summary>
+    public void PlayCry()
+    {
+        if (Selected is not { } entry || !pokedex.IsSeen(entry.Species.DexNumber)) return;
+        AudioManager.PlayCry(entry.Species, null, Shape);
+        CryPlaying = true;
+        CryPlayhead = 0f;
+    }
+
+    private void StopCry()
+    {
+        CryPlaying = false;
+        CryPlayhead = 0f;
+    }
+
+    /// <summary>Puts the page's controls back as they were: no pitch, no chorus, no reverb, no loop.</summary>
+    private void ResetCry()
+    {
+        Shape = CryShape.None;
+        Loop = false;
+        CryRow = PokedexCryRow.Pitch;
+        StopCry();
+    }
 
     /// <summary>The Pokédex the list shows; the screen remembers it between openings.</summary>
     public string Mode { get; private set; } = Pokedex.Sinnoh;
@@ -101,6 +163,7 @@ public class PokedexScreen
 
     private void Opened()
     {
+        StopCry();
         if (Selected is { } entry) openings[entry.Species.DexNumber] = openings.GetValueOrDefault(entry.Species.DexNumber) + 1;
     }
     public IReadOnlyList<PokedexEntry> Rows => rows;
@@ -124,6 +187,7 @@ public class PokedexScreen
         Results = null;
         Focus = PokedexFocus.List;
         Page = PokedexPage.Info;
+        ResetCry();
         Rebuild();
         int firstSeen = rows.FindIndex(r => this.pokedex.IsSeen(r.Species.DexNumber));
         SelectedIndex = Math.Max(0, firstSeen);
@@ -193,7 +257,42 @@ public class PokedexScreen
                 ButtonIndex = Math.Min(ButtonIndex, Buttons.Count - 1);
                 AudioManager.PlaySound("cursor");
                 break;
+            case PokedexFocus.Cry:
+                CryRow = (PokedexCryRow)UiNav.Wrap((int)CryRow, Math.Sign(step), Enum.GetValues<PokedexCryRow>().Length);
+                AudioManager.PlaySound("cursor");
+                break;
         }
+    }
+
+    /// <summary>
+    /// Left and right on the cry page change the row's value by a step, in its range: the pitch by a semitone, a chorus
+    /// or a pan by an eighth, a reverb or a filter by a notch, the loop on and off.
+    /// </summary>
+    private void ChangeCry(int step)
+    {
+        var shape = Shape;
+        switch (CryRow)
+        {
+            case PokedexCryRow.Pitch:
+                shape = shape with { Pitch = Math.Clamp(shape.Pitch + step, CryShape.LowestPitch, CryShape.HighestPitch) };
+                break;
+            case PokedexCryRow.Stereo:
+                int least = shape.Stereo == CryStereo.Pan ? -CryShape.FurthestPan : 0, most = shape.Stereo == CryStereo.Pan ? CryShape.FurthestPan : CryShape.MostChorus;
+                shape = shape with { StereoAmount = Math.Clamp(shape.StereoAmount + step, least, most) };
+                break;
+            case PokedexCryRow.Room:
+                shape = shape with { RoomAmount = Math.Clamp(shape.RoomAmount + step, 0, CryShape.MostRoom) };
+                break;
+            case PokedexCryRow.Loop:
+                Loop = !Loop;
+                AudioManager.PlaySound("cursor");
+                return;
+            default:
+                return;
+        }
+        if (shape == Shape) return;
+        Shape = shape;
+        AudioManager.PlaySound("cursor");
     }
 
     /// <summary>Left and right: a jump of ten in the list, a page in an entry, a value or a button in the search panel.</summary>
@@ -206,8 +305,14 @@ public class PokedexScreen
                 Move(step * Jump, held);
                 break;
             case PokedexFocus.Entry:
-                Page = Pages[UiNav.Wrap(Array.IndexOf(Pages, Page), Math.Sign(step), Pages.Length)];
+            {
+                var pages = PagesOf(Selected);
+                Page = pages[UiNav.Wrap(Math.Max(0, pages.ToList().IndexOf(Page)), Math.Sign(step), pages.Count)];
                 AudioManager.PlaySound("page");
+                break;
+            }
+            case PokedexFocus.Cry:
+                ChangeCry(Math.Sign(step));
                 break;
             case PokedexFocus.Search:
                 ChangeValue(Math.Sign(step));
@@ -243,6 +348,33 @@ public class PokedexScreen
                     AudioManager.PlayCry(entry.Species, null, CryMode.Pokedex);
                 }
                 break;
+            case PokedexFocus.Entry when Page == PokedexPage.Cry:
+                // A moves into the page's rows (plan 08 · P18)
+                Focus = PokedexFocus.Cry;
+                CryRow = PokedexCryRow.Pitch;
+                AudioManager.PlaySound("select");
+                break;
+            case PokedexFocus.Cry:
+                switch (CryRow)
+                {
+                    // The switch and the dial change what they bend, as the original's do when touched
+                    case PokedexCryRow.Stereo:
+                        Shape = Shape with { Stereo = Shape.Stereo == CryStereo.Chorus ? CryStereo.Pan : CryStereo.Chorus, StereoAmount = 0 };
+                        AudioManager.PlaySound("select");
+                        break;
+                    case PokedexCryRow.Room:
+                        Shape = Shape with { Room = Shape.Room == CryRoom.Reverb ? CryRoom.Filter : CryRoom.Reverb };
+                        AudioManager.PlaySound("select");
+                        break;
+                    case PokedexCryRow.Loop:
+                        Loop = !Loop;
+                        AudioManager.PlaySound("select");
+                        break;
+                    default:
+                        PlayCry();
+                        break;
+                }
+                break;
             case PokedexFocus.Search:
                 if (SearchRows[SearchIndex] != PokedexSearchRow.Buttons) Move(1);
                 else Press(Buttons[ButtonIndex]);
@@ -257,9 +389,15 @@ public class PokedexScreen
     {
         switch (Focus)
         {
+            case PokedexFocus.Cry:
+                // B from the rows goes back to the pages, and the loop stops
+                Focus = PokedexFocus.Entry;
+                StopCry();
+                break;
             case PokedexFocus.Entry:
                 Focus = PokedexFocus.List;
                 Page = PokedexPage.Info;
+                ResetCry();
                 break;
             case PokedexFocus.Search:
                 Focus = PokedexFocus.List;
@@ -430,6 +568,7 @@ public class PokedexScreen
         if (!IsActive) return;
         openAge += dt;
         tick.Update(dt);
+        AdvanceCry(dt);
 
         // A key kept down runs through the list (a species at a time, or ten) and through the entries; in the
         // search panel, and for an entry's pages, only a press counts
@@ -450,9 +589,24 @@ public class PokedexScreen
         {
             if (Focus == PokedexFocus.Search) Search();
             else if (Focus == PokedexFocus.Diploma) Confirm();
-            else OpenSearch();
+            else if (Focus != PokedexFocus.Cry) OpenSearch();
         }
         else if (InputManager.IsActionPressed(GameAction.Cancel)) Cancel();
+    }
+
+    /// <summary>
+    /// The playhead goes on at the screen's own pace while the cry sounds; at its end the cry is played again if the
+    /// loop is on (as <c>crysub.c</c>'s <c>LoopCry</c> does) and the playhead stops otherwise. Leaving the page's rows stops it.
+    /// </summary>
+    public void AdvanceCry(float dt)
+    {
+        if (!CryPlaying) return;
+        if (Focus != PokedexFocus.Cry && !(Focus == PokedexFocus.Entry && Page == PokedexPage.Cry)) { StopCry(); return; }
+        double length = Math.Max(0.05, ShapedCry()?.Duration ?? 0.5);
+        CryPlayhead += (float)(dt / length);
+        if (CryPlayhead < 1f) return;
+        if (Loop && Focus == PokedexFocus.Cry) PlayCry();
+        else StopCry();
     }
 
     public void Draw(int screenWidth, int screenHeight, Pokedex pokedex)

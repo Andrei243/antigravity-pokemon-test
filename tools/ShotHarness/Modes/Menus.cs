@@ -396,6 +396,20 @@ partial class Harness
         Frames(2); Shot("26h_pokedex_size_turtwig");
         Pick("Onix");
         Frames(2); Shot("26i_pokedex_size_onix");
+        // The cry page (plan 08 · P18), drawn without a frame of the game's clock and with the playhead moved by hand,
+        // so that the shots after it are taken at the moments they always were
+        Pick("Starly");
+        Page(PokedexPage.Cry);
+        engine.Draw(); Shot("26q_pokedex_cry_starly");
+        dexScreen.Confirm();                                     // into the rows
+        for (int i = 0; i < 3; i++) dexScreen.Sideways(1);       // three semitones up
+        dexScreen.Move(1);
+        for (int i = 0; i < 4; i++) dexScreen.Sideways(1);       // a chorus of four
+        dexScreen.PlayCry();
+        dexScreen.AdvanceCry((float)((dexScreen.ShapedCry()?.Duration ?? 1.0) * 0.5));
+        engine.Draw(); Shot("26r_pokedex_cry_playing");
+        Console.WriteLine($"  cry page: shape {dexScreen.Shape.Key}, playing {dexScreen.CryPlaying}, playhead {dexScreen.CryPlayhead:0.00}, row {dexScreen.CryRow}");
+        dexScreen.Cancel();                                      // out of the rows
         dexScreen.Cancel();
         dexScreen.OpenSearch();
         for (int i = 0; i < 2; i++) dexScreen.Sideways(1);   // the heaviest first
